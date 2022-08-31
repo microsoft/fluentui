@@ -8,9 +8,6 @@ exports[`PopoverSurface renders a default state 1`] = `
   data-testid="component"
   role="complementary"
 >
-  <div
-    class=""
-  />
   Default PopoverSurface
 </div>
 `;

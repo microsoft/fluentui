@@ -80,7 +80,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
-        <label htmlFor="changeWidth_Truncated">change Width:</label>
+        <label htmlFor="changeWidth_Truncated">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -88,8 +88,9 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
           max={1000}
           id="changeWidth_Truncated"
           onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Truncated">change Height:</label>
+        <label htmlFor="changeHeight_Truncated">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -97,6 +98,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
           max={1000}
           id="changeHeight_Truncated"
           onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
         <div style={rootStyle}>
           <GroupedVerticalBarChart

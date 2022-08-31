@@ -2,7 +2,11 @@ import { createContext, useContextSelector } from '@fluentui/react-context-selec
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import type { PopoverState } from './components/Popover/index';
 
-export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>({
+export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue | undefined>(
+  undefined,
+) as Context<PopoverContextValue>;
+const popoverContextDefaultValue: PopoverContextValue = {
+  open: false,
   setOpen: () => null,
   toggleOpen: () => null,
   triggerRef: { current: null },
@@ -10,16 +14,19 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   arrowRef: { current: null },
   openOnContext: false,
   openOnHover: false,
-  size: 'medium',
+  size: 'medium' as const,
   trapFocus: false,
   inline: false,
-});
+};
+
+export const PopoverProvider = PopoverContext.Provider;
 
 /**
  * Context shared between Popover and its children components
  */
 export type PopoverContextValue = Pick<
   PopoverState,
+  | 'open'
   | 'toggleOpen'
   | 'setOpen'
   | 'triggerRef'
@@ -27,13 +34,14 @@ export type PopoverContextValue = Pick<
   | 'openOnHover'
   | 'openOnContext'
   | 'mountNode'
-  | 'noArrow'
+  | 'withArrow'
   | 'arrowRef'
   | 'size'
   | 'appearance'
   | 'trapFocus'
+  | 'legacyTrapFocus'
   | 'inline'
 >;
 
 export const usePopoverContext_unstable = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
-  useContextSelector(PopoverContext, selector);
+  useContextSelector(PopoverContext, (ctx = popoverContextDefaultValue) => selector(ctx));

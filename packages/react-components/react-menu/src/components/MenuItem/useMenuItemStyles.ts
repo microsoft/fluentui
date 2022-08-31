@@ -1,4 +1,5 @@
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
@@ -6,10 +7,6 @@ import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `menuItemClassNames.root` instead.
- */
-export const menuItemClassName = 'fui-MenuItem';
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   root: 'fui-MenuItem',
   icon: 'fui-MenuItem__icon',
@@ -24,7 +21,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
@@ -38,6 +35,16 @@ const useStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       color: tokens.colorNeutralForeground2Hover,
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+      [`& .${menuItemClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandSelected,
+      },
     },
 
     userSelect: 'none',

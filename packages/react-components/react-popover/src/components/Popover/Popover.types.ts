@@ -1,55 +1,21 @@
 import * as React from 'react';
-import type { PopperVirtualElement, PositioningShorthand, usePopperMouseTarget } from '@fluentui/react-positioning';
+import type {
+  PositioningVirtualElement,
+  PositioningShorthand,
+  usePositioningMouseTarget,
+} from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
+import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 
 /**
  * Determines popover padding and arrow size
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
-  /**
-   * Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order
-   */
-  inline: boolean;
-
-  /**
-   * Controls the opening of the Popover
-   */
-  open: boolean;
-  /**
-   * Used to set the initial open state of the Popover in uncontrolled mode
-   */
-  defaultOpen?: boolean;
-  /**
-   * Call back when the component requests to change value
-   * The `open` value is used as a hint when directly controlling the component
-   */
-  onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
-  /**
-   * Flag to open the Popover by hovering the trigger
-   */
-  openOnHover?: boolean;
-
-  /**
-   * Sets the delay for closing popover on mouse leave
-   */
-  mouseLeaveDelay?: number;
-
-  /**
-   * Flag to open the Popover as a context menu. Disables all other interactions
-   */
-  openOnContext?: boolean;
-  /**
-   * Do not display the arrow
-   */
-  noArrow?: boolean;
-  /**
-   * Determines popover padding and arrow size
-   * @default medium
-   */
-  size?: PopoverSize;
-
+/**
+ * Popover Props
+ */
+export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   /**
    * A popover can appear styled with brand or inverted.
    * When not specified, the default style is used.
@@ -57,9 +23,70 @@ type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   appearance?: 'brand' | 'inverted';
 
   /**
-   * Should trap focus
+   * Can contain two children including {@link PopoverTrigger} and {@link PopoverSurface}.
+   * Alternatively can only contain {@link PopoverSurface} if using a custom `target`.
    */
-  trapFocus?: boolean;
+  children: [JSX.Element, JSX.Element] | JSX.Element;
+
+  /**
+   * Close when scroll outside of it
+   *
+   * @default false
+   */
+  closeOnScroll?: boolean;
+
+  /**
+   * Used to set the initial open state of the Popover in uncontrolled mode
+   *
+   * @default false
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order
+   *
+   * @default false
+   */
+  inline?: boolean;
+
+  /**
+   * Sets the delay for closing popover on mouse leave
+   */
+  mouseLeaveDelay?: number;
+
+  /**
+   * Display an arrow pointing to the target.
+   *
+   * @default false
+   */
+  withArrow?: boolean;
+
+  /**
+   * Call back when the component requests to change value
+   * The `open` value is used as a hint when directly controlling the component
+   */
+  onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
+
+  /**
+   * Controls the opening of the Popover
+   *
+   * @default false
+   */
+  open?: boolean;
+
+  /**
+   * Flag to open the Popover as a context menu. Disables all other interactions
+   *
+   * @default false
+   */
+  openOnContext?: boolean;
+
+  /**
+   * Flag to open the Popover by hovering the trigger
+   *
+   * @default false
+   */
+  openOnHover?: boolean;
 
   /**
    * Configures the position of the Popover
@@ -67,61 +94,87 @@ type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   positioning?: PositioningShorthand;
 
   /**
-   * Close when scroll outside of it
+   * Determines popover padding and arrow size
+   *
+   * @default medium
    */
-  closeOnScroll?: boolean;
-};
+  size?: PopoverSize;
 
-/**
- * Popover Props
- */
-export type PopoverProps = Partial<PopoverCommons> & {
   /**
-   * Can contain two children including {@link PopoverTrigger} and {@link PopoverSurface}.
-   * Alternatively can only contain {@link PopoverSurface} if using a custom `target`.
+   * Should trap focus
+   *
+   * @default false
    */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+  trapFocus?: UseModalAttributesOptions['trapFocus'];
+
+  /**
+   * Must be used with the `trapFocus` prop
+   * Enables older Fluent UI focus trap behavior where the user
+   * cannot tab into the window outside of the document. This is now
+   * non-standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+   * where the focus trap involves setting outside elements inert.
+   *
+   * @default false
+   */
+  legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
 };
 
 /**
  * Popover State
  */
-export type PopoverState = PopoverCommons &
+export type PopoverState = Pick<
+  PopoverProps,
+  | 'appearance'
+  | 'mountNode'
+  | 'onOpenChange'
+  | 'openOnContext'
+  | 'openOnHover'
+  | 'trapFocus'
+  | 'withArrow'
+  | 'legacyTrapFocus'
+> &
+  Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {
-    /**
-     * Callback to open/close the Popover
-     */
-    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
-    /**
-     * Callback to toggle the open state of the Popover
-     */
-    toggleOpen: (e: OpenPopoverEvents) => void;
-    /**
-     * Ref of the PopoverTrigger
-     */
-    triggerRef: React.MutableRefObject<HTMLElement | null>;
-    /**
-     * Ref of the PopoverSurface
-     */
-    contentRef: React.MutableRefObject<HTMLElement | null>;
     /**
      * Ref of the pointing arrow
      */
     arrowRef: React.MutableRefObject<HTMLDivElement | null>;
+
+    /**
+     * Ref of the PopoverSurface
+     */
+    contentRef: React.MutableRefObject<HTMLElement | null>;
+
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: PopperVirtualElement | undefined;
-    /**
-     * A callback to set the target of the popper to the mouse click for context events
-     */
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    contextTarget: PositioningVirtualElement | undefined;
 
-    size: NonNullable<PopoverProps['size']>;
+    popoverSurface: React.ReactElement | undefined;
 
     popoverTrigger: React.ReactElement | undefined;
 
-    popoverSurface: React.ReactElement | undefined;
+    /**
+     * A callback to set the target of the popper to the mouse click for context events
+     */
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
+
+    /**
+     * Callback to open/close the Popover
+     */
+    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+
+    size: NonNullable<PopoverProps['size']>;
+
+    /**
+     * Callback to toggle the open state of the Popover
+     */
+    toggleOpen: (e: OpenPopoverEvents) => void;
+
+    /**
+     * Ref of the PopoverTrigger
+     */
+    triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
 
 /**
@@ -135,6 +188,6 @@ export type OnOpenChangeData = { open: boolean };
 export type OpenPopoverEvents =
   | MouseEvent
   | TouchEvent
-  | React.MouseEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+  | React.MouseEvent<HTMLElement>;

@@ -1,45 +1,45 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { useSizeStyles } from '../Avatar/useAvatarStyles';
 import type { AvatarGroupSlots, AvatarGroupState } from './AvatarGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
-  popoverSurface: 'fui-AvatarGroup__popoverSurface',
-  popoverTrigger: 'fui-AvatarGroup__popoverTrigger',
-};
-
-export const extraAvatarGroupClassNames = {
-  popoverSurfaceItem: 'fui-AvatarGroup__popoverSurfaceItem',
 };
 
 /**
- * Styles for the root slot
+ * Styles for the root slot.
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  base: {
+    display: 'inline-flex',
+    position: 'relative',
   },
-
-  // TODO add additional classes for different states and/or slots
+  pie: {
+    clipPath: 'circle(50%)',
+    backgroundColor: tokens.colorTransparentStroke,
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
+  },
 });
 
 /**
  * Apply styling to the AvatarGroup slots based on the state
  */
 export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGroupState => {
+  const { layout, size } = state;
   const styles = useStyles();
-  state.root.className = mergeClasses(avatarGroupClassNames.root, styles.root, state.root.className);
+  const sizeStyles = useSizeStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
-  if (state.popoverSurface) {
-    state.popoverSurface.className = mergeClasses(avatarGroupClassNames.popoverSurface, state.popoverSurface.className);
-  }
-
-  if (state.popoverTrigger) {
-    state.popoverTrigger.className = mergeClasses(avatarGroupClassNames.popoverTrigger, state.popoverTrigger.className);
-  }
+  state.root.className = mergeClasses(
+    avatarGroupClassNames.root,
+    styles.base,
+    layout === 'pie' && sizeStyles[size],
+    layout === 'pie' && styles.pie,
+    state.root.className,
+  );
 
   return state;
 };

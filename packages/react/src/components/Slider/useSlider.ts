@@ -94,7 +94,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     theme,
     originFromZero,
     'aria-labelledby': ariaLabelledBy,
-    'aria-label': ariaLabel,
+    ariaLabel = props['aria-label'],
     ranged,
     onChange,
     onChanged,

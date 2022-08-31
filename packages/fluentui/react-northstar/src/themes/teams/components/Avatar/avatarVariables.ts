@@ -1,6 +1,6 @@
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
-import { TeamsSchemeMappingWithAreas } from '../../types';
 import { ItemType } from '../../../types';
+import { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const labelColorAreas = stringLiteralsArray('foreground', 'background');
 export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof labelColorAreas>>;
@@ -12,10 +12,10 @@ export interface AvatarVariables {
   squareAvatarBorderRadius: string;
   iconColor: string;
   iconBackgroundColor: string;
+
   // Status
   statusBorderColor: string;
   statusBorderWidth: string;
-  statusIconSize: string;
   statusSuccessBackgroundColor: string;
   statusSuccessColor: string;
   statusInfoBackgroundColor: string;
@@ -26,14 +26,15 @@ export interface AvatarVariables {
   statusErrorColor: string;
   statusBackgroundColor: string;
   statusColor: string;
+
   // Image
   imageWidth: string;
   imageHeight: string;
   imageAvatarRadius: string;
   imageAvatarSize: string;
   imageCircularRadius: string;
-  // Label
 
+  // Label
   labelCircularRadius: string;
   labelColor: string;
   labelBackground: string;
@@ -46,8 +47,8 @@ export const avatarVariables = (siteVariables): AvatarVariables => ({
   squareAvatarBorderRadius: siteVariables.borderRadiusMedium,
   iconColor: siteVariables.colors.white,
   iconBackgroundColor: siteVariables.colors.brand[600],
+
   statusBorderWidth: '2px',
-  statusIconSize: pxToRem(7),
   statusBorderColor: siteVariables.bodyBackground,
   statusSuccessBackgroundColor: siteVariables.colorScheme.green.background,
   statusSuccessColor: siteVariables.colorScheme.green.foreground1,
@@ -59,6 +60,7 @@ export const avatarVariables = (siteVariables): AvatarVariables => ({
   statusErrorColor: siteVariables.colorScheme.red.foreground2,
   statusBackgroundColor: siteVariables.colorScheme.default.background5,
   statusColor: siteVariables.colorScheme.default.foreground4,
+
   imageWidth: undefined,
   imageHeight: undefined,
   imageAvatarRadius: pxToRem(9999),

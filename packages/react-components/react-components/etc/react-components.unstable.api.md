@@ -4,23 +4,36 @@
 
 ```ts
 
+import { Alert } from '@fluentui/react-alert';
+import { alertClassNames } from '@fluentui/react-alert';
+import { AlertProps } from '@fluentui/react-alert';
+import { AlertSlots } from '@fluentui/react-alert';
+import { AlertState } from '@fluentui/react-alert';
+import { AvatarGroup } from '@fluentui/react-avatar';
+import { avatarGroupClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItem } from '@fluentui/react-avatar';
+import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItemProps } from '@fluentui/react-avatar';
+import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
+import { AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupProps } from '@fluentui/react-avatar';
+import { AvatarGroupSlots } from '@fluentui/react-avatar';
+import { AvatarGroupState } from '@fluentui/react-avatar';
 import { Card } from '@fluentui/react-card';
-import { cardClassName } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
+import { cardCSSVars } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
-import { cardFooterClassName } from '@fluentui/react-card';
 import { cardFooterClassNames } from '@fluentui/react-card';
 import { CardFooterProps } from '@fluentui/react-card';
 import { CardFooterSlots } from '@fluentui/react-card';
 import { CardFooterState } from '@fluentui/react-card';
 import { CardHeader } from '@fluentui/react-card';
-import { cardHeaderClassName } from '@fluentui/react-card';
 import { cardHeaderClassNames } from '@fluentui/react-card';
+import { cardHeaderCSSVars } from '@fluentui/react-card';
 import { CardHeaderProps } from '@fluentui/react-card';
 import { CardHeaderSlots } from '@fluentui/react-card';
 import { CardHeaderState } from '@fluentui/react-card';
 import { CardPreview } from '@fluentui/react-card';
-import { cardPreviewClassName } from '@fluentui/react-card';
 import { cardPreviewClassNames } from '@fluentui/react-card';
 import { CardPreviewProps } from '@fluentui/react-card';
 import { CardPreviewSlots } from '@fluentui/react-card';
@@ -28,78 +41,187 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { checkboxClassName } from '@fluentui/react-checkbox';
-import { checkboxClassNames } from '@fluentui/react-checkbox';
-import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { CheckboxSlots } from '@fluentui/react-checkbox';
-import { CheckboxState } from '@fluentui/react-checkbox';
-import { Input } from '@fluentui/react-input';
-import { inputClassName } from '@fluentui/react-input';
-import { inputClassNames } from '@fluentui/react-input';
-import { InputOnChangeData } from '@fluentui/react-input';
-import { InputProps } from '@fluentui/react-input';
-import { InputSlots } from '@fluentui/react-input';
-import { InputState } from '@fluentui/react-input';
-import { RegisterTabEventHandler } from '@fluentui/react-tabs';
+import { Combobox } from '@fluentui/react-combobox';
+import { comboboxClassNames } from '@fluentui/react-combobox';
+import { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
+import { ComboboxOpenEvents } from '@fluentui/react-combobox';
+import { ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxSlots } from '@fluentui/react-combobox';
+import { ComboboxState } from '@fluentui/react-combobox';
+import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
+import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
+import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { Dialog } from '@fluentui/react-dialog';
+import { DialogActions } from '@fluentui/react-dialog';
+import { dialogActionsClassNames } from '@fluentui/react-dialog';
+import { DialogActionsPosition } from '@fluentui/react-dialog';
+import { DialogActionsProps } from '@fluentui/react-dialog';
+import { DialogActionsSlots } from '@fluentui/react-dialog';
+import { DialogActionsState } from '@fluentui/react-dialog';
+import { DialogBody } from '@fluentui/react-dialog';
+import { dialogBodyClassNames } from '@fluentui/react-dialog';
+import { DialogBodyProps } from '@fluentui/react-dialog';
+import { DialogBodySlots } from '@fluentui/react-dialog';
+import { DialogBodyState } from '@fluentui/react-dialog';
+import { dialogClassNames } from '@fluentui/react-dialog';
+import { DialogOpenChangeData } from '@fluentui/react-dialog';
+import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
+import { DialogProps } from '@fluentui/react-dialog';
+import { DialogSlots } from '@fluentui/react-dialog';
+import { DialogState } from '@fluentui/react-dialog';
+import { DialogSurface } from '@fluentui/react-dialog';
+import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+import { DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import { DialogSurfaceState } from '@fluentui/react-dialog';
+import { DialogTitle } from '@fluentui/react-dialog';
+import { dialogTitleClassNames } from '@fluentui/react-dialog';
+import { DialogTitleProps } from '@fluentui/react-dialog';
+import { DialogTitleSlots } from '@fluentui/react-dialog';
+import { DialogTitleState } from '@fluentui/react-dialog';
+import { DialogTrigger } from '@fluentui/react-dialog';
+import { DialogTriggerAction } from '@fluentui/react-dialog';
+import { DialogTriggerChildProps } from '@fluentui/react-dialog';
+import { DialogTriggerProps } from '@fluentui/react-dialog';
+import { DialogTriggerState } from '@fluentui/react-dialog';
+import { Dropdown } from '@fluentui/react-combobox';
+import { dropdownClassNames } from '@fluentui/react-combobox';
+import { DropdownContextValues } from '@fluentui/react-combobox';
+import { DropdownOpenChangeData } from '@fluentui/react-combobox';
+import { DropdownOpenEvents } from '@fluentui/react-combobox';
+import { DropdownProps } from '@fluentui/react-combobox';
+import { DropdownSlots } from '@fluentui/react-combobox';
+import { DropdownState } from '@fluentui/react-combobox';
+import { Listbox } from '@fluentui/react-combobox';
+import { listboxClassNames } from '@fluentui/react-combobox';
+import { ListboxContextValues } from '@fluentui/react-combobox';
+import { ListboxProps } from '@fluentui/react-combobox';
+import { ListboxSlots } from '@fluentui/react-combobox';
+import { ListboxState } from '@fluentui/react-combobox';
+import { Option as Option_2 } from '@fluentui/react-combobox';
+import { optionClassNames } from '@fluentui/react-combobox';
+import { OptionGroup } from '@fluentui/react-combobox';
+import { optionGroupClassNames } from '@fluentui/react-combobox';
+import { OptionGroupProps } from '@fluentui/react-combobox';
+import { OptionGroupSlots } from '@fluentui/react-combobox';
+import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionProps } from '@fluentui/react-combobox';
+import { OptionSlots } from '@fluentui/react-combobox';
+import { OptionState } from '@fluentui/react-combobox';
+import { Overflow } from '@fluentui/react-overflow';
+import { OverflowItem } from '@fluentui/react-overflow';
+import { OverflowItemProps } from '@fluentui/react-overflow';
+import { OverflowProps } from '@fluentui/react-overflow';
+import { renderAlert_unstable } from '@fluentui/react-alert';
+import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
-import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
-import { renderInput_unstable } from '@fluentui/react-input';
-import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
-import { renderSpinner_unstable } from '@fluentui/react-spinner';
-import { renderSwitch_unstable } from '@fluentui/react-switch';
-import { renderTab_unstable } from '@fluentui/react-tabs';
-import { renderTabList_unstable } from '@fluentui/react-tabs';
-import { renderTextarea_unstable } from '@fluentui/react-textarea';
-import { SelectTabData } from '@fluentui/react-tabs';
-import { SelectTabEvent } from '@fluentui/react-tabs';
-import { SelectTabEventHandler } from '@fluentui/react-tabs';
-import { SpinButton } from '@fluentui/react-spinbutton';
-import { SpinButtonBounds } from '@fluentui/react-spinbutton';
-import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
-import { spinButtonClassNames } from '@fluentui/react-spinbutton';
-import { SpinButtonOnChangeData } from '@fluentui/react-spinbutton';
-import { SpinButtonProps } from '@fluentui/react-spinbutton';
-import { SpinButtonSlots } from '@fluentui/react-spinbutton';
-import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
-import { SpinButtonState } from '@fluentui/react-spinbutton';
-import { SpinButtonStrings } from '@fluentui/react-spinbutton';
-import { Spinner } from '@fluentui/react-spinner';
-import { spinnerClassNames } from '@fluentui/react-spinner';
-import { SpinnerProps } from '@fluentui/react-spinner';
-import { SpinnerSlots } from '@fluentui/react-spinner';
-import { SpinnerState } from '@fluentui/react-spinner';
-import { Switch } from '@fluentui/react-switch';
-import { switchClassNames } from '@fluentui/react-switch';
-import { SwitchOnChangeData } from '@fluentui/react-switch';
-import { SwitchProps } from '@fluentui/react-switch';
-import { SwitchSlots } from '@fluentui/react-switch';
-import { SwitchState } from '@fluentui/react-switch';
-import { Tab } from '@fluentui/react-tabs';
-import { tabClassName } from '@fluentui/react-tabs';
-import { tabClassNames } from '@fluentui/react-tabs';
-import { TabList } from '@fluentui/react-tabs';
-import { tabListClassName } from '@fluentui/react-tabs';
-import { tabListClassNames } from '@fluentui/react-tabs';
-import { TabListContextValue } from '@fluentui/react-tabs';
-import { TabListContextValues } from '@fluentui/react-tabs';
-import { TabListProps } from '@fluentui/react-tabs';
-import { TabListSlots } from '@fluentui/react-tabs';
-import { TabListState } from '@fluentui/react-tabs';
-import { TabProps } from '@fluentui/react-tabs';
-import { TabRegisterData } from '@fluentui/react-tabs';
-import { TabSlots } from '@fluentui/react-tabs';
-import { TabState } from '@fluentui/react-tabs';
-import { TabValue } from '@fluentui/react-tabs';
-import { Textarea } from '@fluentui/react-textarea';
-import { textareaClassNames } from '@fluentui/react-textarea';
-import { TextareaProps } from '@fluentui/react-textarea';
-import { TextareaSlots } from '@fluentui/react-textarea';
-import { TextareaState } from '@fluentui/react-textarea';
+import { renderCombobox_unstable } from '@fluentui/react-combobox';
+import { renderDialog_unstable } from '@fluentui/react-dialog';
+import { renderDialogActions_unstable } from '@fluentui/react-dialog';
+import { renderDialogBody_unstable } from '@fluentui/react-dialog';
+import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
+import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
+import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
+import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderOption_unstable } from '@fluentui/react-combobox';
+import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
+import { renderSelect_unstable } from '@fluentui/react-select';
+import { renderTable_unstable } from '@fluentui/react-table';
+import { renderTableBody_unstable } from '@fluentui/react-table';
+import { renderTableCell_unstable } from '@fluentui/react-table';
+import { renderTableCellActions_unstable } from '@fluentui/react-table';
+import { renderTableHeader_unstable } from '@fluentui/react-table';
+import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
+import { renderTablePrimaryCell_unstable } from '@fluentui/react-table';
+import { renderTableRow_unstable } from '@fluentui/react-table';
+import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
+import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { Select } from '@fluentui/react-select';
+import { selectClassNames } from '@fluentui/react-select';
+import { SelectProps } from '@fluentui/react-select';
+import { SelectSlots } from '@fluentui/react-select';
+import { SelectState } from '@fluentui/react-select';
+import { SortDirection } from '@fluentui/react-table';
+import { Table } from '@fluentui/react-table';
+import { TableBody } from '@fluentui/react-table';
+import { tableBodyClassName } from '@fluentui/react-table';
+import { tableBodyClassNames } from '@fluentui/react-table';
+import { TableBodyProps } from '@fluentui/react-table';
+import { TableBodySlots } from '@fluentui/react-table';
+import { TableBodyState } from '@fluentui/react-table';
+import { TableCell } from '@fluentui/react-table';
+import { TableCellActions } from '@fluentui/react-table';
+import { TableCellActionsProps } from '@fluentui/react-table';
+import { TableCellActionsSlots } from '@fluentui/react-table';
+import { TableCellActionsState } from '@fluentui/react-table';
+import { tableCellClassName } from '@fluentui/react-table';
+import { tableCellClassNames } from '@fluentui/react-table';
+import { TableCellProps } from '@fluentui/react-table';
+import { TableCellSlots } from '@fluentui/react-table';
+import { TableCellState } from '@fluentui/react-table';
+import { tableClassName } from '@fluentui/react-table';
+import { tableClassNames } from '@fluentui/react-table';
+import { TableContextProvider } from '@fluentui/react-table';
+import { TableContextValue } from '@fluentui/react-table';
+import { TableContextValues } from '@fluentui/react-table';
+import { TableHeader } from '@fluentui/react-table';
+import { TableHeaderCell } from '@fluentui/react-table';
+import { tableHeaderCellClassName } from '@fluentui/react-table';
+import { tableHeaderCellClassNames } from '@fluentui/react-table';
+import { TableHeaderCellProps } from '@fluentui/react-table';
+import { TableHeaderCellSlots } from '@fluentui/react-table';
+import { TableHeaderCellState } from '@fluentui/react-table';
+import { tableHeaderClassName } from '@fluentui/react-table';
+import { tableHeaderClassNames } from '@fluentui/react-table';
+import { TableHeaderProps } from '@fluentui/react-table';
+import { TableHeaderSlots } from '@fluentui/react-table';
+import { TableHeaderState } from '@fluentui/react-table';
+import { TablePrimaryCell } from '@fluentui/react-table';
+import { TablePrimaryCellProps } from '@fluentui/react-table';
+import { TablePrimaryCellSlots } from '@fluentui/react-table';
+import { TablePrimaryCellState } from '@fluentui/react-table';
+import { TableProps } from '@fluentui/react-table';
+import { TableRow } from '@fluentui/react-table';
+import { tableRowClassName } from '@fluentui/react-table';
+import { tableRowClassNames } from '@fluentui/react-table';
+import { TableRowProps } from '@fluentui/react-table';
+import { TableRowSlots } from '@fluentui/react-table';
+import { TableRowState } from '@fluentui/react-table';
+import { TableSelectionCell } from '@fluentui/react-table';
+import { tableSelectionCellClassNames } from '@fluentui/react-table';
+import { TableSelectionCellProps } from '@fluentui/react-table';
+import { TableSelectionCellSlots } from '@fluentui/react-table';
+import { TableSelectionCellState } from '@fluentui/react-table';
+import { TableSlots } from '@fluentui/react-table';
+import { TableState } from '@fluentui/react-table';
+import { Toolbar } from '@fluentui/react-toolbar';
+import { ToolbarButton } from '@fluentui/react-toolbar';
+import { ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarButtonState } from '@fluentui/react-toolbar';
+import { toolbarClassNames } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues } from '@fluentui/react-toolbar';
+import { ToolbarDivider } from '@fluentui/react-toolbar';
+import { ToolbarDividerProps } from '@fluentui/react-toolbar';
+import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarSlots } from '@fluentui/react-toolbar';
+import { ToolbarState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
+import { useAlert_unstable } from '@fluentui/react-alert';
+import { useAlertStyles_unstable } from '@fluentui/react-alert';
+import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -108,32 +230,92 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
-import { useCheckbox_unstable } from '@fluentui/react-checkbox';
-import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
-import { useInput_unstable } from '@fluentui/react-input';
-import { useInputStyles_unstable } from '@fluentui/react-input';
-import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
-import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
-import { useSpinner_unstable } from '@fluentui/react-spinner';
-import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
-import { useSwitch_unstable } from '@fluentui/react-switch';
-import { useSwitchStyles_unstable } from '@fluentui/react-switch';
-import { useTab_unstable } from '@fluentui/react-tabs';
-import { useTabList_unstable } from '@fluentui/react-tabs';
-import { useTabListStyles_unstable } from '@fluentui/react-tabs';
-import { useTabStyles_unstable } from '@fluentui/react-tabs';
-import { useTextarea_unstable } from '@fluentui/react-textarea';
-import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
+import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
+import { useDialog_unstable } from '@fluentui/react-dialog';
+import { useDialogActions_unstable } from '@fluentui/react-dialog';
+import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogBody_unstable } from '@fluentui/react-dialog';
+import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogSurface_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
+import { useDropdown_unstable } from '@fluentui/react-combobox';
+import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
+import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
+import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useOption_unstable } from '@fluentui/react-combobox';
+import { useOptionGroup_unstable } from '@fluentui/react-combobox';
+import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
+import { useOptionStyles_unstable } from '@fluentui/react-combobox';
+import { useOverflowMenu } from '@fluentui/react-overflow';
+import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelectStyles_unstable } from '@fluentui/react-select';
+import { useTable_unstable } from '@fluentui/react-table';
+import { useTableBody_unstable } from '@fluentui/react-table';
+import { useTableBodyStyles_unstable } from '@fluentui/react-table';
+import { useTableCell_unstable } from '@fluentui/react-table';
+import { useTableCellActions_unstable } from '@fluentui/react-table';
+import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
+import { useTableCellStyles_unstable } from '@fluentui/react-table';
+import { useTableContext } from '@fluentui/react-table';
+import { useTableHeader_unstable } from '@fluentui/react-table';
+import { useTableHeaderCell_unstable } from '@fluentui/react-table';
+import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
+import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
+import { useTablePrimaryCell_unstable } from '@fluentui/react-table';
+import { useTablePrimaryCellStyles_unstable } from '@fluentui/react-table';
+import { useTableRow_unstable } from '@fluentui/react-table';
+import { useTableRowStyles_unstable } from '@fluentui/react-table';
+import { useTableSelectionCell_unstable } from '@fluentui/react-table';
+import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useTableStyles_unstable } from '@fluentui/react-table';
+import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
+
+export { Alert }
+
+export { alertClassNames }
+
+export { AlertProps }
+
+export { AlertSlots }
+
+export { AlertState }
+
+export { AvatarGroup }
+
+export { avatarGroupClassNames }
+
+export { AvatarGroupItem }
+
+export { avatarGroupItemClassNames }
+
+export { AvatarGroupItemProps }
+
+export { AvatarGroupItemSlots }
+
+export { AvatarGroupItemState }
+
+export { AvatarGroupProps }
+
+export { AvatarGroupSlots }
+
+export { AvatarGroupState }
 
 export { Card }
 
-export { cardClassName }
-
 export { cardClassNames }
 
-export { CardFooter }
+export { cardCSSVars }
 
-export { cardFooterClassName }
+export { CardFooter }
 
 export { cardFooterClassNames }
 
@@ -145,9 +327,9 @@ export { CardFooterState }
 
 export { CardHeader }
 
-export { cardHeaderClassName }
-
 export { cardHeaderClassNames }
+
+export { cardHeaderCSSVars }
 
 export { CardHeaderProps }
 
@@ -156,8 +338,6 @@ export { CardHeaderSlots }
 export { CardHeaderState }
 
 export { CardPreview }
-
-export { cardPreviewClassName }
 
 export { cardPreviewClassNames }
 
@@ -173,35 +353,155 @@ export { CardSlots }
 
 export { CardState }
 
-export { Checkbox }
+export { Combobox }
 
-export { checkboxClassName }
+export { comboboxClassNames }
 
-export { checkboxClassNames }
+export { ComboboxContextValues }
 
-export { CheckboxOnChangeData }
+export { ComboboxOpenChangeData }
 
-export { CheckboxProps }
+export { ComboboxOpenEvents }
 
-export { CheckboxSlots }
+export { ComboboxProps }
 
-export { CheckboxState }
+export { ComboboxSlots }
 
-export { Input }
+export { ComboboxState }
 
-export { inputClassName }
+export { DATA_OVERFLOW_ITEM }
 
-export { inputClassNames }
+export { DATA_OVERFLOW_MENU }
 
-export { InputOnChangeData }
+export { DATA_OVERFLOWING }
 
-export { InputProps }
+export { Dialog }
 
-export { InputSlots }
+export { DialogActions }
 
-export { InputState }
+export { dialogActionsClassNames }
 
-export { RegisterTabEventHandler }
+export { DialogActionsPosition }
+
+export { DialogActionsProps }
+
+export { DialogActionsSlots }
+
+export { DialogActionsState }
+
+export { DialogBody }
+
+export { dialogBodyClassNames }
+
+export { DialogBodyProps }
+
+export { DialogBodySlots }
+
+export { DialogBodyState }
+
+export { dialogClassNames }
+
+export { DialogOpenChangeData }
+
+export { DialogOpenChangeEvent }
+
+export { DialogProps }
+
+export { DialogSlots }
+
+export { DialogState }
+
+export { DialogSurface }
+
+export { dialogSurfaceClassNames }
+
+export { DialogSurfaceProps }
+
+export { DialogSurfaceSlots }
+
+export { DialogSurfaceState }
+
+export { DialogTitle }
+
+export { dialogTitleClassNames }
+
+export { DialogTitleProps }
+
+export { DialogTitleSlots }
+
+export { DialogTitleState }
+
+export { DialogTrigger }
+
+export { DialogTriggerAction }
+
+export { DialogTriggerChildProps }
+
+export { DialogTriggerProps }
+
+export { DialogTriggerState }
+
+export { Dropdown }
+
+export { dropdownClassNames }
+
+export { DropdownContextValues }
+
+export { DropdownOpenChangeData }
+
+export { DropdownOpenEvents }
+
+export { DropdownProps }
+
+export { DropdownSlots }
+
+export { DropdownState }
+
+export { Listbox }
+
+export { listboxClassNames }
+
+export { ListboxContextValues }
+
+export { ListboxProps }
+
+export { ListboxSlots }
+
+export { ListboxState }
+
+export { Option_2 as Option }
+
+export { optionClassNames }
+
+export { OptionGroup }
+
+export { optionGroupClassNames }
+
+export { OptionGroupProps }
+
+export { OptionGroupSlots }
+
+export { OptionGroupState }
+
+export { OptionProps }
+
+export { OptionSlots }
+
+export { OptionState }
+
+export { Overflow }
+
+export { OverflowItem }
+
+export { OverflowItemProps }
+
+export { OverflowProps }
+
+export { renderAlert_unstable }
+
+export { renderAvatarGroup_unstable }
+
+export { renderAvatarGroupItem_unstable }
 
 export { renderCard_unstable }
 
@@ -211,111 +511,209 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
-export { renderCheckbox_unstable }
+export { renderCombobox_unstable }
 
-export { renderInput_unstable }
+export { renderDialog_unstable }
 
-export { renderSpinButton_unstable }
+export { renderDialogActions_unstable }
 
-export { renderSpinner_unstable }
+export { renderDialogBody_unstable }
 
-export { renderSwitch_unstable }
+export { renderDialogSurface_unstable }
 
-export { renderTab_unstable }
+export { renderDialogTitle_unstable }
 
-export { renderTabList_unstable }
+export { renderDialogTrigger_unstable }
 
-export { renderTextarea_unstable }
+export { renderDropdown_unstable }
 
-export { SelectTabData }
+export { renderListbox_unstable }
 
-export { SelectTabEvent }
+export { renderOption_unstable }
 
-export { SelectTabEventHandler }
+export { renderOptionGroup_unstable }
 
-export { SpinButton }
+export { renderSelect_unstable }
 
-export { SpinButtonBounds }
+export { renderTable_unstable }
 
-export { SpinButtonChangeEvent }
+export { renderTableBody_unstable }
 
-export { spinButtonClassNames }
+export { renderTableCell_unstable }
 
-export { SpinButtonOnChangeData }
+export { renderTableCellActions_unstable }
 
-export { SpinButtonProps }
+export { renderTableHeader_unstable }
 
-export { SpinButtonSlots }
+export { renderTableHeaderCell_unstable }
 
-export { SpinButtonSpinState }
+export { renderTablePrimaryCell_unstable }
 
-export { SpinButtonState }
+export { renderTableRow_unstable }
 
-export { SpinButtonStrings }
+export { renderTableSelectionCell_unstable }
 
-export { Spinner }
+export { renderToolbar_unstable }
 
-export { spinnerClassNames }
+export { Select }
 
-export { SpinnerProps }
+export { selectClassNames }
 
-export { SpinnerSlots }
+export { SelectProps }
 
-export { SpinnerState }
+export { SelectSlots }
 
-export { Switch }
+export { SelectState }
 
-export { switchClassNames }
+export { SortDirection }
 
-export { SwitchOnChangeData }
+export { Table }
 
-export { SwitchProps }
+export { TableBody }
 
-export { SwitchSlots }
+export { tableBodyClassName }
 
-export { SwitchState }
+export { tableBodyClassNames }
 
-export { Tab }
+export { TableBodyProps }
 
-export { tabClassName }
+export { TableBodySlots }
 
-export { tabClassNames }
+export { TableBodyState }
 
-export { TabList }
+export { TableCell }
 
-export { tabListClassName }
+export { TableCellActions }
 
-export { tabListClassNames }
+export { TableCellActionsProps }
 
-export { TabListContextValue }
+export { TableCellActionsSlots }
 
-export { TabListContextValues }
+export { TableCellActionsState }
 
-export { TabListProps }
+export { tableCellClassName }
 
-export { TabListSlots }
+export { tableCellClassNames }
 
-export { TabListState }
+export { TableCellProps }
 
-export { TabProps }
+export { TableCellSlots }
 
-export { TabRegisterData }
+export { TableCellState }
 
-export { TabSlots }
+export { tableClassName }
 
-export { TabState }
+export { tableClassNames }
 
-export { TabValue }
+export { TableContextProvider }
 
-export { Textarea }
+export { TableContextValue }
 
-export { textareaClassNames }
+export { TableContextValues }
 
-export { TextareaProps }
+export { TableHeader }
 
-export { TextareaSlots }
+export { TableHeaderCell }
 
-export { TextareaState }
+export { tableHeaderCellClassName }
+
+export { tableHeaderCellClassNames }
+
+export { TableHeaderCellProps }
+
+export { TableHeaderCellSlots }
+
+export { TableHeaderCellState }
+
+export { tableHeaderClassName }
+
+export { tableHeaderClassNames }
+
+export { TableHeaderProps }
+
+export { TableHeaderSlots }
+
+export { TableHeaderState }
+
+export { TablePrimaryCell }
+
+export { TablePrimaryCellProps }
+
+export { TablePrimaryCellSlots }
+
+export { TablePrimaryCellState }
+
+export { TableProps }
+
+export { TableRow }
+
+export { tableRowClassName }
+
+export { tableRowClassNames }
+
+export { TableRowProps }
+
+export { TableRowSlots }
+
+export { TableRowState }
+
+export { TableSelectionCell }
+
+export { tableSelectionCellClassNames }
+
+export { TableSelectionCellProps }
+
+export { TableSelectionCellSlots }
+
+export { TableSelectionCellState }
+
+export { TableSlots }
+
+export { TableState }
+
+export { Toolbar }
+
+export { ToolbarButton }
+
+export { ToolbarButtonProps }
+
+export { ToolbarButtonState }
+
+export { toolbarClassNames }
+
+export { ToolbarContextValue }
+
+export { ToolbarContextValues }
+
+export { ToolbarDivider }
+
+export { ToolbarDividerProps }
+
+export { ToolbarDividerState }
+
+export { ToolbarProps }
+
+export { ToolbarSlots }
+
+export { ToolbarState }
+
+export { ToolbarToggleButton }
+
+export { ToolbarToggleButtonProps }
+
+export { ToolbarToggleButtonState }
+
+export { useAlert_unstable }
+
+export { useAlertStyles_unstable }
+
+export { useAvatarGroup_unstable }
+
+export { useAvatarGroupItem_unstable }
+
+export { useAvatarGroupItemStyles_unstable }
+
+export { useAvatarGroupStyles_unstable }
 
 export { useCard_unstable }
 
@@ -333,37 +731,101 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
-export { useCheckbox_unstable }
+export { useCombobox_unstable }
 
-export { useCheckboxStyles_unstable }
+export { useComboboxStyles_unstable }
 
-export { useInput_unstable }
+export { useDialog_unstable }
 
-export { useInputStyles_unstable }
+export { useDialogActions_unstable }
 
-export { useSpinButton_unstable }
+export { useDialogActionsStyles_unstable }
 
-export { useSpinButtonStyles_unstable }
+export { useDialogBody_unstable }
 
-export { useSpinner_unstable }
+export { useDialogBodyStyles_unstable }
 
-export { useSpinnerStyles_unstable }
+export { useDialogStyles_unstable }
 
-export { useSwitch_unstable }
+export { useDialogSurface_unstable }
 
-export { useSwitchStyles_unstable }
+export { useDialogSurfaceStyles_unstable }
 
-export { useTab_unstable }
+export { useDialogTitle_unstable }
 
-export { useTabList_unstable }
+export { useDialogTitleStyles_unstable }
 
-export { useTabListStyles_unstable }
+export { useDialogTrigger_unstable }
 
-export { useTabStyles_unstable }
+export { useDropdown_unstable }
 
-export { useTextarea_unstable }
+export { useDropdownStyles_unstable }
 
-export { useTextareaStyles_unstable }
+export { useIsOverflowGroupVisible }
+
+export { useIsOverflowItemVisible }
+
+export { useListbox_unstable }
+
+export { useListboxStyles_unstable }
+
+export { useOption_unstable }
+
+export { useOptionGroup_unstable }
+
+export { useOptionGroupStyles_unstable }
+
+export { useOptionStyles_unstable }
+
+export { useOverflowMenu }
+
+export { useSelect_unstable }
+
+export { useSelectStyles_unstable }
+
+export { useTable_unstable }
+
+export { useTableBody_unstable }
+
+export { useTableBodyStyles_unstable }
+
+export { useTableCell_unstable }
+
+export { useTableCellActions_unstable }
+
+export { useTableCellActionsStyles_unstable }
+
+export { useTableCellStyles_unstable }
+
+export { useTableContext }
+
+export { useTableHeader_unstable }
+
+export { useTableHeaderCell_unstable }
+
+export { useTableHeaderCellStyles_unstable }
+
+export { useTableHeaderStyles_unstable }
+
+export { useTablePrimaryCell_unstable }
+
+export { useTablePrimaryCellStyles_unstable }
+
+export { useTableRow_unstable }
+
+export { useTableRowStyles_unstable }
+
+export { useTableSelectionCell_unstable }
+
+export { useTableSelectionCellStyles_unstable }
+
+export { useTableStyles_unstable }
+
+export { useToolbar_unstable }
+
+export { useToolbarDividerStyles_unstable }
+
+export { useToolbarStyles_unstable }
 
 // (No @packageDocumentation comment for this package)
 

@@ -14,9 +14,7 @@ export const useSplitButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): SplitButtonState => {
   const {
-    appearance,
-    // eslint-disable-next-line deprecation/deprecation
-    block = false,
+    appearance = 'secondary',
     children,
     disabled = false,
     disabledFocusable = false,
@@ -46,7 +44,6 @@ export const useSplitButton_unstable = (
   const primaryActionButtonShorthand = resolveShorthand(primaryActionButton, {
     defaultProps: {
       appearance,
-      block,
       children,
       disabled,
       disabledFocusable,
@@ -73,7 +70,6 @@ export const useSplitButton_unstable = (
   return {
     // Props passed at the top-level
     appearance,
-    block,
     disabled,
     disabledFocusable,
     iconPosition,

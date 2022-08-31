@@ -1,4 +1,4 @@
-import { Tree, logger, joinPathFragments } from '@nrwl/devkit';
+import { Tree, logger } from '@nrwl/devkit';
 import * as path from 'path';
 import * as childProcess from 'child_process';
 import * as chalk from 'chalk';

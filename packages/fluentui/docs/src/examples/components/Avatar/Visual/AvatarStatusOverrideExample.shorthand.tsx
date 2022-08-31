@@ -5,8 +5,8 @@ const AvatarExampleShorthand = () => (
   <Provider
     theme={{
       componentStyles: {
-        Avatar: {
-          status: ({ variables: v }) => ({ ...(v.isFoo && { backgroundColor: 'red' }) }),
+        AvatarStatus: {
+          root: ({ variables: v }) => ({ ...(v.isFoo && { backgroundColor: 'red' }) }),
         },
       },
     }}
@@ -21,8 +21,8 @@ const AvatarExampleShorthand = () => (
       status={{
         icon: <AcceptIcon />,
         title: 'Available',
+        variables: { isFoo: true },
       }}
-      variables={{ isFoo: true }}
     />
   </Provider>
 );

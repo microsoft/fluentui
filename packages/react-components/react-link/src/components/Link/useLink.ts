@@ -12,8 +12,9 @@ export const useLink_unstable = (
   props: LinkProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): LinkState => {
-  const { appearance, disabled, disabledFocusable, inline } = props;
+  const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
   const as = props.as || (props.href ? 'a' : 'button');
+  const type = as === 'button' ? 'button' : undefined;
 
   const state: LinkState = {
     // Props passed at the top-level
@@ -29,6 +30,7 @@ export const useLink_unstable = (
 
     root: getNativeElementProps(as, {
       ref,
+      type,
       ...props,
       as,
     }),

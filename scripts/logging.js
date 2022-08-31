@@ -53,7 +53,7 @@ function getPassFail(passed) {
 }
 
 function getTimePrefix(packageName) {
-  return `[${chalk.magenta(packageName)} ${chalk.gray(new Date().toLocaleTimeString({ hour12: false }))}]`;
+  return `[${chalk.magenta(packageName)} ${chalk.gray(new Date().toLocaleTimeString([], { hour12: false }))}]`;
 }
 
 function formatTime(milliseconds) {

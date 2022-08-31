@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Browser Support Matrix" />
+
+## Browser Support Matrix
+
+FluentUI supports browsers that are at or above the indicated versions below:
+
+**Desktop Browsers:**
+
+| Edge | Firefox | Chrome | Safari | Opera | Internet Explorer |
+| ---- | ------- | ------ | ------ | ----- | ----------------- |
+| >=84 | >=75    | >=84   | >=14.1 | >=73  | Not Supported     |
+
+**Mobile Browsers:**
+
+| Safari on iOS | Chrome for Android | Samsung |
+| ------------- | ------------------ | ------- |
+| >=14.5        | >=84               | >=16    |
+
+FluentUI will ensure that no browser, EcmaScript(ES), or CSS features that are incompatible with the support matrix laid out above are introduced.
+FluentUI will not be providing polyfills for features that we expect our browser support matrix to already support. This means that consumers who require the
+use/support of older browsers that don't support certain browser, ES, or CSS features (i.e. `ResizeObserver`),
+are expected to implement their own polyfills or use a third-party one.
+
+## Browser Support Going Forward
+
+With an eye towards being a modern library, FluentUI will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace
+with the ever evolving ecosystem of the web. This will allow the team to utilize modern tools and improve overall engineering efficiency while also providing
+consumers with performance and bundlesize improvements. These yearly audits will give FluentUI a reasonable timeframe to evaluate, decide and give notice if browser support
+changes are made.

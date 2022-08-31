@@ -48,6 +48,7 @@ import type { IPanelStyleProps, IPanelStyles } from '../../Panel';
 import type { IWithResponsiveModeState } from '../../ResponsiveMode';
 import type { ISelectableDroppableTextProps } from '../../SelectableOption';
 import type { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
+import { IFocusTrapZoneProps } from '../FocusTrapZone/FocusTrapZone.types';
 
 const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
@@ -594,6 +595,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
+    const focusTrapZoneProps: IFocusTrapZoneProps = { firstFocusableTarget: `#${this._listId}1` };
     const panelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
       : undefined;
@@ -608,10 +610,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     return isSmall ? (
       <Panel
+        closeButtonAriaLabel="Close"
+        focusTrapZoneProps={focusTrapZoneProps}
+        hasCloseButton
         isOpen={true}
         isLightDismiss={true}
         onDismiss={this._onDismiss}
-        hasCloseButton={false}
         styles={panelStyles}
         {...panelProps}
       >
@@ -833,7 +837,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           role: 'option',
           ...({
             'data-index': item.index,
-            'data-is-focusable': !item.disabled,
+            'data-is-focusable': !(item.disabled || item.hidden),
           } as any),
         }}
         label={item.text}
@@ -843,8 +847,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         className={itemClassName}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
-        ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
-        ariaSetSize={this._sizePosCache.optionSetSize}
+        ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}
+        ariaSetSize={!item.hidden ? this._sizePosCache.optionSetSize : undefined}
         ariaLabel={item.ariaLabel}
       />
     );

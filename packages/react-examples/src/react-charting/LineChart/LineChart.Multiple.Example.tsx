@@ -22,10 +22,26 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
   public render(): JSX.Element {
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Multiple">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Multiple"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Multiple">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Multiple"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <Toggle
           label="Enabled  multiple shapes for each line"
           onText="On"
@@ -61,6 +77,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'First',
         color: DefaultPalette.blue,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -74,6 +93,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Second',
         color: DefaultPalette.green,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -87,6 +109,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Third',
         color: DefaultPalette.red,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -100,6 +125,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Fourth',
         color: DefaultPalette.black,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -113,6 +141,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Fifth',
         color: DefaultPalette.magentaDark,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -126,6 +157,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Sixth',
         color: DefaultPalette.purple,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -139,6 +173,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Seventh',
         color: DefaultPalette.yellow,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -152,6 +189,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Eight',
         color: DefaultPalette.teal,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -165,6 +205,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Ninth',
         color: 'cyan',
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -178,6 +221,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Tenth',
         color: DefaultPalette.orangeLighter,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -191,6 +237,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Eleventh',
         color: 'magenta',
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -204,6 +253,9 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
         ],
         legend: 'Tweleth',
         color: DefaultPalette.redDark,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
     ];

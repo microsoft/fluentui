@@ -9,10 +9,8 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
-/**
- * @deprecated Use `buttonClassNames.root` instead.
- */
-export const buttonClassName = buttonClassNames.root;
+
+const iconSpacingVar = '--fui-Button__icon--spacing';
 
 const useRootStyles = makeStyles({
   // Base styles
@@ -77,20 +75,19 @@ const useRootStyles = makeStyles({
       },
 
       ':hover': {
+        backgroundColor: 'HighlightText',
         ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
 
       ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
     },
-  },
-
-  // Block styles
-  block: {
-    maxWidth: '100%',
-    width: '100%',
   },
 
   // Appearance variations
@@ -121,6 +118,9 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
+  },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -170,8 +170,7 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.gap('4px'),
-    ...shorthands.padding('0', '8px'),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
 
     height: '24px',
     minWidth: '64px',
@@ -183,8 +182,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.gap('6px'),
-    ...shorthands.padding('0', '12px'),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
 
     height: '32px',
     minWidth: '96px',
@@ -196,8 +194,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.gap('6px'),
-    ...shorthands.padding('0', '16px'),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
 
     height: '40px',
     minWidth: '96px',
@@ -295,6 +292,9 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
   },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
+  },
   subtle: {
     backgroundColor: 'transparent',
     ...shorthands.borderColor('transparent'),
@@ -326,19 +326,10 @@ const useRootDisabledStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  // TODO: `overflow: 'hidden'` on the root does not pay well with `position: absolute`
-  // used by the outline pseudo-element. Need to introduce a text container for children and set
-  // overflow there so that default focus outline can work
-  //
-  // base: createFocusOutlineStyle(),
-  // circular: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.circular } }),
-  // primary: createFocusOutlineStyle({ style: { outlineOffset: '2px' } }),
-  // square: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.none } }),
-
   base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineColor: 'transparent',
-    outlineWidth: '2px',
+    outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
     boxShadow: `
       ${tokens.shadow4},
@@ -347,17 +338,21 @@ const useRootFocusStyles = makeStyles({
     zIndex: 1,
   }),
 
+  // Shape variations
   circular: createCustomFocusIndicatorStyle({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   }),
-  rounded: {},
+  rounded: {
+    /* The rounded styles are exactly the same as the base styles. */
+  },
+  square: createCustomFocusIndicatorStyle({
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  }),
+
   // Primary styles
   primary: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
     boxShadow: `${tokens.shadow2}, 0 0 0 2px ${tokens.colorStrokeFocus2}`,
-  }),
-  square: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
   }),
 
   // Size variations
@@ -375,19 +370,19 @@ const useRootFocusStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     minWidth: '28px',
     maxWidth: '28px',
   },
   medium: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     minWidth: '32px',
     maxWidth: '32px',
   },
   large: {
-    ...shorthands.padding('6px'),
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
 
     minWidth: '40px',
     maxWidth: '40px',
@@ -407,16 +402,30 @@ const useIconStyles = makeStyles({
     fontSize: '20px',
     height: '20px',
     width: '20px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalXS,
   },
   medium: {
     fontSize: '20px',
     height: '20px',
     width: '20px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
   large: {
     fontSize: '24px',
     height: '24px',
     width: '24px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
+  },
+
+  // Icon position variations
+  before: {
+    marginRight: `var(${iconSpacingVar})`,
+  },
+  after: {
+    marginLeft: `var(${iconSpacingVar})`,
   },
 });
 
@@ -427,16 +436,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const {
-    appearance,
-    // eslint-disable-next-line deprecation/deprecation
-    block,
-    disabled,
-    disabledFocusable,
-    iconOnly,
-    shape,
-    size,
-  } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -444,7 +444,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     // Root styles
     rootStyles.base,
     rootStyles.highContrast,
-    block && rootStyles.block,
     appearance && rootStyles[appearance],
     rootStyles[size],
     rootStyles[shape],
@@ -468,7 +467,13 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(buttonClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(
+      buttonClassNames.icon,
+      iconStyles.base,
+      state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      iconStyles[size],
+      state.icon.className,
+    );
   }
 
   return state;

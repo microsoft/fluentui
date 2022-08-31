@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks",
+  "packageName": "@fluentui/react-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

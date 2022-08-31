@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableHeader renders a default state 1`] = `
+<table>
+  <thead
+    class="fui-TableHeader"
+  >
+    <tr />
+  </thead>
+</table>
+`;

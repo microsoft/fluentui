@@ -399,11 +399,6 @@ export const imgProperties = toObjectMap(htmlElementProperties, [
 ]);
 
 /**
- * @deprecated Use imgProperties for img elements.
- */
-export const imageProperties = imgProperties;
-
-/**
  * An array of DIV tag properties and events.
  *
  * @public
@@ -421,7 +416,8 @@ export const divProperties = htmlElementProperties;
  *
  * @public
  * @param props - The unfiltered input props
- * @param allowedPropsNames - The array or record of allowed prop names.
+ * @param allowedPropNames - The array or record of allowed prop names.
+ * @param excludedPropNames
  * @returns The filtered props
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

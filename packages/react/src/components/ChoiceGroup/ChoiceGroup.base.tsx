@@ -26,11 +26,15 @@ const getOptionId = (option: IChoiceGroupOption, id: string): string => {
   return `${id}-${option.key}`;
 };
 
-const findOption = (options: IChoiceGroupOption[], key: string | number | undefined) => {
+const findOption = (options: IChoiceGroupOption[], key: IChoiceGroupProps['selectedKey']) => {
   return key === undefined ? undefined : find(options, value => value.key === key);
 };
 
-const focusSelectedOption = (options: IChoiceGroupOption[], keyChecked: string | number | undefined, id: string) => {
+const focusSelectedOption = (
+  options: IChoiceGroupOption[],
+  keyChecked: IChoiceGroupProps['selectedKey'],
+  id: string,
+) => {
   const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
   const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
 
@@ -46,7 +50,7 @@ const focusFromFocusTrapZone = (evt: React.FocusEvent<HTMLElement>): boolean => 
 
 const useComponentRef = (
   options: IChoiceGroupOption[],
-  keyChecked: string | number | undefined,
+  keyChecked: IChoiceGroupProps['selectedKey'],
   id: string,
   componentRef?: IRefObject<IChoiceGroup>,
 ) => {

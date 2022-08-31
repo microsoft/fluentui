@@ -48,6 +48,11 @@
     outline: none;
   }
 
+  // Return the outline on the 'back to top' button
+  .back-to-top a[href]:focus {
+    @include focus-border(-2px);
+  }
+
   // Example card headers
   .ExampleCard-title {
     @include ms-fontSize-20;

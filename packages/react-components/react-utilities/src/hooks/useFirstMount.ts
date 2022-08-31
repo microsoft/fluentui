@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 /**
+ * @internal
  * Checks if components was mounted the first time.
  * Since concurrent mode will be released in the future this needs to be verified
  * Currently (React 17) will always render the initial mount once

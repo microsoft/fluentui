@@ -1,4 +1,4 @@
-import { KEYBOARD_NAV_SELECTOR, defaultOptions } from './constants';
+import { FOCUS_VISIBLE_CLASS, defaultOptions, FOCUS_WITHIN_CLASS } from './constants';
 import type { GriffelStyle } from '@griffel/react';
 
 export interface CreateCustomFocusIndicatorStyleOptions {
@@ -16,8 +16,22 @@ export const createCustomFocusIndicatorStyle = (
   style: GriffelStyle,
   { selector = defaultOptions.selector }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
 ): GriffelStyle => ({
+  ':focus': {
+    outlineStyle: 'none',
+  },
   ':focus-visible': {
     outlineStyle: 'none',
   },
-  [`${KEYBOARD_NAV_SELECTOR} :${selector}`]: style,
+  // Remove the `.fui-FluentProvider` global selector once Griffel supports chained global styles
+  // https://github.com/microsoft/griffel/issues/178
+  ...(selector === 'focus' && {
+    [`:global(.fui-FluentProvider)`]: {
+      [`& .${FOCUS_VISIBLE_CLASS}`]: style,
+    },
+  }),
+  ...(selector === 'focus-within' && {
+    [`:global(.fui-FluentProvider)`]: {
+      [`& .${FOCUS_WITHIN_CLASS}:${selector}`]: style,
+    },
+  }),
 });

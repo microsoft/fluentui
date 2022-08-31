@@ -126,6 +126,9 @@ export const buttonProperties: Record<string, number>;
 export function calculatePrecision(value: number | string): number;
 
 // @public
+export function canUseDOM(): boolean;
+
+// @public
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
@@ -291,12 +294,24 @@ export function focusAsync(element: HTMLElement | {
 } | undefined | null): void;
 
 // @public
-export function focusFirstChild(rootElement: HTMLElement): boolean;
+export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean): boolean;
 
 // @public
 export const FocusRects: React_2.FunctionComponent<{
     rootRef?: React_2.RefObject<HTMLElement>;
 }>;
+
+// @public (undocumented)
+export const FocusRectsContext: React_2.Context<IFocusRectsContext | undefined>;
+
+// @public (undocumented)
+export const FocusRectsProvider: React_2.FC<FocusRectsProviderProps>;
+
+// @public (undocumented)
+export type FocusRectsProviderProps = {
+    providerRef: React_2.RefObject<HTMLElement>;
+    layerRoot?: boolean;
+};
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -349,7 +364,7 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean): HTMLElement | null;
 
 export { getParent }
 
@@ -505,6 +520,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
     settings: ISettings | ISettingsFunction;
     scopedSettings: ISettings | ISettingsFunction;
 }> & {
+    children?: React_2.ReactNode;
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
 };
 
@@ -587,6 +603,14 @@ export interface IFitContentToBoundsOptions {
     maxScale?: number;
     mode: FitMode;
 }
+
+// @public (undocumented)
+export type IFocusRectsContext = {
+    readonly providerRef: React_2.RefObject<HTMLElement>;
+    readonly registeredProviders: React_2.RefObject<HTMLElement>[];
+    readonly registerProvider: (ref: React_2.RefObject<HTMLElement>) => void;
+    readonly unregisterProvider: (ref: React_2.RefObject<HTMLElement>) => void;
+};
 
 // @public
 export const iframeProperties: Record<string, number>;
@@ -721,6 +745,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange?(index: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -732,6 +758,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal?(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected?(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -1039,6 +1067,9 @@ export type RefObject<T> = {
 };
 
 // @public
+export function removeDirectionalKeyCode(which: number): void;
+
+// @public
 export function removeIndex<T>(array: T[], index: number): T[];
 
 // @public
@@ -1094,6 +1125,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange(fromIndex: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -1104,6 +1137,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -1147,7 +1182,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: React_2.RefObject<HTMLElement>[]): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
@@ -1165,7 +1200,7 @@ export { setPortalAttribute }
 // @public
 export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
 
-// @public
+// @public @deprecated
 export function setSSR(isEnabled: boolean): void;
 
 // @public @deprecated (undocumented)

@@ -17,13 +17,17 @@ ReactDOM.render(<ChevronDownIcon />, document.body.firstChild);
 If you do need to make SVG icons available to reference by name (for example, in Fluent UI React components which take `iconProps`), this can be done using `registerIcons` as follows:
 
 ```tsx
-import { registerIcons } from '@fluentui/react/lib/Styling';
+import { unregisterIcons, registerIcons } from '@fluentui/react/lib/Styling';
 // Note: This approach works with any SVG icon set, not just @fluentui/react-icons-mdl2
-import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
+import { ChevronDownIcon, BadgeIcon } from '@fluentui/react-icons-mdl2';
+
+// Note: For any icon name that has an icon already registered to it, you need to unregister it first before registering a new one
+unregisterIcons(['ChevronDown']);
 
 registerIcons({
   icons: {
     ChevronDown: <ChevronDownIcon />,
+    ANewIconName: <BadgeIcon />,
   },
 });
 ```

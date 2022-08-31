@@ -10,11 +10,6 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
 
-/**
- * @deprecated Use `splitButtonClassName.root` instead.
- */
-export const splitButtonClassName = splitButtonClassNames.root;
-
 const useFocusStyles = makeStyles({
   primaryActionButton: createCustomFocusIndicatorStyle({
     borderTopRightRadius: 0,
@@ -45,12 +40,8 @@ const useRootStyles = makeStyles({
       borderLeftWidth: 0,
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
+      minWidth: 0,
     },
-  },
-
-  // Block styles
-  block: {
-    width: '100%',
   },
 
   // Appearance variations
@@ -73,6 +64,9 @@ const useRootStyles = makeStyles({
         borderRightColor: tokens.colorNeutralForegroundInverted,
       },
     },
+  },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
@@ -159,18 +153,11 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
 
-  const {
-    appearance,
-    // eslint-disable-next-line deprecation/deprecation
-    block,
-    disabled,
-    disabledFocusable,
-  } = state;
+  const { appearance, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
     splitButtonClassNames.root,
     rootStyles.base,
-    block && rootStyles.block,
     appearance && rootStyles[appearance],
     (disabled || disabledFocusable) && rootStyles.disabled,
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,

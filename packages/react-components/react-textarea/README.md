@@ -16,12 +16,6 @@ To import Textarea:
 import { Textarea } from '@fluentui/react-textarea';
 ```
 
-Once the Textarea component is ready for production use, the component will be available at:
-
-```js
-import { Textarea } from '@fluentui/react-components';
-```
-
 ### Examples
 
 ```js

@@ -6,7 +6,8 @@ import type { MenuButtonProps } from './MenuButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * MenuButtons are buttons that handle opening and closing a menu when they are triggered.
+ * MenuButtons are buttons that have a chevron icon after the button contents and are usually clicked to open/close
+ * menus.
  */
 export const MenuButton: ForwardRefComponent<MenuButtonProps> = React.forwardRef((props, ref) => {
   const state = useMenuButton_unstable(props, ref);

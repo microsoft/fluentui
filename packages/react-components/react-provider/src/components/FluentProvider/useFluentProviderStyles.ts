@@ -1,12 +1,9 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, mergeClasses } from '@griffel/core';
+import { useRenderer_unstable } from '@griffel/react';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `fluentProviderClassNames.root` instead.
- */
-export const fluentProviderClassName = 'fui-FluentProvider';
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots> = {
   root: 'fui-FluentProvider',
 };
@@ -15,15 +12,15 @@ const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular,
+    textAlign: 'left',
+    ...typographyStyles.body1,
   },
 });
 
 /** Applies style classnames to slots */
 export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
-  const styles = useStyles();
+  const renderer = useRenderer_unstable();
+  const styles = useStyles({ dir: state.dir, renderer });
 
   state.root.className = mergeClasses(
     fluentProviderClassNames.root,

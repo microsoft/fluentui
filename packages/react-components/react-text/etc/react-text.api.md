@@ -13,47 +13,31 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-const Body_2: FunctionComponent<TextWrapperProps>;
-export { Body_2 as Body }
-
-// @public @deprecated (undocumented)
-export const bodyClassName = "fui-Body";
+export const Body1: FunctionComponent<TextWrapperProps>;
 
 // @public (undocumented)
-export const bodyClassNames: SlotClassNames<TextSlots>;
+export const body1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Caption: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const captionClassName = "fui-Caption";
+export const Caption1: FunctionComponent<TextWrapperProps>;
 
 // @public (undocumented)
-export const captionClassNames: SlotClassNames<TextSlots>;
+export const caption1ClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Caption2: FunctionComponent<TextWrapperProps>;
+
+// @public (undocumented)
+export const caption2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Display: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const displayClassName = "fui-Display";
 
 // @public (undocumented)
 export const displayClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Headline: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const headlineClassName = "fui-Headline";
-
-// @public (undocumented)
-export const headlineClassNames: SlotClassNames<TextSlots>;
-
-// @public
 export const LargeTitle: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const largeTitleClassName = "fui-LargeTitle";
 
 // @public (undocumented)
 export const largeTitleClassNames: SlotClassNames<TextSlots>;
@@ -62,40 +46,48 @@ export const largeTitleClassNames: SlotClassNames<TextSlots>;
 export const renderText_unstable: (state: TextState) => JSX.Element;
 
 // @public
-export const Subheadline: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const subheadlineClassName = "fui-Subheadline";
+export const Subtitle1: FunctionComponent<TextWrapperProps>;
 
 // @public (undocumented)
-export const subheadlineClassNames: SlotClassNames<TextSlots>;
+export const subtitle1ClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Subtitle2: FunctionComponent<TextWrapperProps>;
+
+// @public (undocumented)
+export const subtitle2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 const Text_2: ForwardRefComponent<TextProps>;
 export { Text_2 as Text }
 
-// @public @deprecated (undocumented)
-export const textClassName = "fui-Text";
-
 // @public (undocumented)
 export const textClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
-
-// @public
-export type TextSlots = {
-    root: Slot<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
+export type TextProps = ComponentProps<TextSlots> & {
+    align?: 'start' | 'center' | 'end' | 'justify';
+    block?: boolean;
+    font?: 'base' | 'monospace' | 'numeric';
+    italic?: boolean;
+    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    strikethrough?: boolean;
+    truncate?: boolean;
+    underline?: boolean;
+    weight?: 'regular' | 'medium' | 'semibold' | 'bold';
+    wrap?: boolean;
 };
 
 // @public
-export type TextState = ComponentState<TextSlots> & TextCommons;
+export type TextSlots = {
+    root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>;
+};
+
+// @public
+export type TextState = ComponentState<TextSlots> & Required<Pick<TextProps, 'align' | 'block' | 'font' | 'italic' | 'size' | 'strikethrough' | 'truncate' | 'underline' | 'weight' | 'wrap'>>;
 
 // @public
 export const Title1: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const title1ClassName = "fui-Title1";
 
 // @public (undocumented)
 export const title1ClassNames: SlotClassNames<TextSlots>;
@@ -103,17 +95,11 @@ export const title1ClassNames: SlotClassNames<TextSlots>;
 // @public
 export const Title2: FunctionComponent<TextWrapperProps>;
 
-// @public @deprecated (undocumented)
-export const title2ClassName = "fui-Title2";
-
 // @public (undocumented)
 export const title2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Title3: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const title3ClassName = "fui-Title3";
 
 // @public (undocumented)
 export const title3ClassNames: SlotClassNames<TextSlots>;

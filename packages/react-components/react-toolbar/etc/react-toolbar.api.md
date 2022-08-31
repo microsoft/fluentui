@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
@@ -12,11 +14,23 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { RadioGroupProps } from '@fluentui/react-radio';
+import { RadioGroupState } from '@fluentui/react-radio';
+import { RadioProps } from '@fluentui/react-radio';
+import { RadioState } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
+
+// @public (undocumented)
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
+
+// @public (undocumented)
+export type RadioGroupContextValues = {
+    radioGroup: RadioGroupContextValue;
+};
 
 // @public
 export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
@@ -39,11 +53,6 @@ export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonSt
 export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
 
 // @public (undocumented)
-export type ToolbarCommons = {
-    size?: 'small' | 'medium';
-};
-
-// @public (undocumented)
 export type ToolbarContextValue = {
     size: ToolbarProps['size'];
 };
@@ -63,7 +72,31 @@ export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
 
 // @public
-export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
+export type ToolbarProps = ComponentProps<ToolbarSlots> & {
+    size?: 'small' | 'medium';
+};
+
+// @public
+export const ToolbarRadio: ForwardRefComponent<ToolbarRadioProps>;
+
+// @public
+export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
+
+// @public
+export type ToolbarRadioGroupProps = RadioGroupProps;
+
+// @public
+export type ToolbarRadioGroupState = RadioGroupState;
+
+// @public
+export type ToolbarRadioProps = RadioProps & {
+    size?: 'small' | 'medium';
+};
+
+// @public
+export type ToolbarRadioState = RadioState & {
+    size?: 'small' | 'medium';
+};
 
 // @public (undocumented)
 export type ToolbarSlots = {
@@ -71,7 +104,7 @@ export type ToolbarSlots = {
 };
 
 // @public
-export type ToolbarState = ComponentState<ToolbarSlots> & ToolbarCommons;
+export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarProps, 'size'>>;
 
 // @public
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;

@@ -1,51 +1,106 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
+import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
+import { tokens } from '@fluentui/react-theme';
+import { TestWrapperDecorator } from '../utilities/index';
 
-const ExampleContent = () => {
+const PopoverPositioning: React.FC = () => {
+  const positions = [
+    ['above', 'start'],
+    ['above', 'center'],
+    ['above', 'end'],
+    ['below', 'start'],
+    ['below', 'center'],
+    ['below', 'end'],
+    ['before', 'top'],
+    ['before', 'center'],
+    ['before', 'bottom'],
+    ['after', 'top'],
+    ['after', 'center'],
+    ['after', 'bottom'],
+  ] as const;
+
+  const [target, setTarget] = React.useState<HTMLDivElement | null>(null);
+  const [open, setOpen] = React.useState<boolean>(false);
+
   return (
-    <div>
-      <h3>Popover content</h3>
+    <div style={{ display: 'flex', padding: '100px 150px' }}>
+      <div
+        ref={setTarget}
+        className="target"
+        style={{ width: '400px', height: '300px', border: `1px solid ${tokens.colorNeutralStroke1}` }}
+      >
+        {positions.map(([position, align]) => (
+          <Popover withArrow open={open} positioning={{ position, align, target }} key={position + '' + align}>
+            <PopoverSurface>
+              <div>{position + ' ' + align}</div>
+            </PopoverSurface>
+          </Popover>
+        ))}
 
-      <div>This is some popover content</div>
+        <button id="show-popovers" onClick={() => setOpen(true)}>
+          Show popovers
+        </button>
+      </div>
     </div>
   );
 };
 
-const positions: NonNullable<PopoverProps['positioning']>[] = [
-  'above',
-  'above-end',
-  'above-start',
-  'below',
-  'below-end',
-  'below-start',
-  'before',
-  'before-bottom',
-  'before-top',
-  'after',
-  'after-bottom',
-  'after-top',
-];
+storiesOf('Popover Converged', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .click('#show-popovers')
+        .snapshot('positioned popovers', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true });
 
-const stories = storiesOf('Popover Converged - positioning', module)
-  .addDecorator(story => <Screener>{story()}</Screener>)
-  .addDecorator(story => <div style={{ position: 'fixed', top: '50%', left: '50%' }}>{story()}</div>);
-
-positions.forEach(position => {
-  stories.addStory(
-    position as string,
-    () => (
-      <Popover open positioning={position}>
+storiesOf('Popover Converged', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().click('#show-popover').snapshot('PopoverSurface focused').end()}>
+      {story()}
+    </Screener>
+  ))
+  .addStory('avoid scrolling', () => {
+    return (
+      <Popover trapFocus>
         <PopoverTrigger>
-          <button>Toggle menu</button>
+          <button id="show-popover">Show Popover</button>
         </PopoverTrigger>
-
-        <PopoverSurface>
-          <ExampleContent />
+        <PopoverSurface
+          tabIndex={-1}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            maxWidth: '300px',
+            maxHeight: '300px',
+            overflowY: 'scroll',
+          }}
+        >
+          <span>{sampleText}</span>
+          <div>
+            <button>close</button>
+            <button>accept</button>
+          </div>
         </PopoverSurface>
       </Popover>
-    ),
-    { includeRtl: true },
-  );
-});
+    );
+  });
+
+const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+ et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed. In pellentesque massa placerat duis
+ ultricies lacus sed turpis. Eros donec ac odio tempor. Mattis molestie a iaculis at erat. Aenean euismod elementum nisi
+  quis eleifend quam. Penatibus et magnis dis parturient montes nascetur ridiculus mus mauris. Sed euismod nisi porta
+  lorem mollis aliquam ut porttitor leo. Lorem ipsum dolor sit amet. Id faucibus nisl tincidunt eget nullam. Fermentum
+  posuere urna nec tincidunt praesent semper. Dolor sit amet consectetur adipiscing. Ut enim blandit volutpat maecenas
+  volutpat blandit aliquam etiam erat. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed.
+  Dignissim convallis aenean et tortor at risus. Tristique senectus et netus et malesuada. Sed blandit libero volutpat
+  sed cras ornare arcu dui. Arcu dictum varius duis at consectetur lorem. Montes nascetur ridiculus mus mauris vitae. Ut
+   ornare lectus sit amet est placerat in egestas.`;

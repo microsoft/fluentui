@@ -2,16 +2,17 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Screener from 'screener-storybook/src/screener';
 import {
-  Body,
-  Caption,
+  Body1,
+  Caption1,
   Display,
-  Headline,
+  Subtitle1,
   LargeTitle,
-  Subheadline,
+  Subtitle2,
   Text,
   Title1,
   Title2,
   Title3,
+  Caption2,
 } from '@fluentui/react-text';
 
 storiesOf('Text Converged', module)
@@ -137,7 +138,7 @@ storiesOf('Text Converged', module)
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
-    'Display',
+    'Typography wrappers',
     () => (
       <>
         <Display block>Display</Display>
@@ -145,10 +146,11 @@ storiesOf('Text Converged', module)
         <Title1 block>Title1</Title1>
         <Title2 block>Title2</Title2>
         <Title3 block>Title3</Title3>
-        <Headline block>Headline</Headline>
-        <Subheadline block>Subheadline</Subheadline>
-        <Body block>Body</Body>
-        <Caption block>Caption</Caption>
+        <Subtitle1 block>Subtitle1</Subtitle1>
+        <Subtitle2 block>Subtitle2</Subtitle2>
+        <Body1 block>Body1</Body1>
+        <Caption1 block>Caption1</Caption1>
+        <Caption2 block>Caption2</Caption2>
       </>
     ),
     { includeRtl: true },

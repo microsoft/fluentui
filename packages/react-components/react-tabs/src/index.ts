@@ -1,5 +1,5 @@
 export type { TabProps, TabSlots, TabState, TabValue } from './Tab';
-export { renderTab_unstable, Tab, tabClassName, tabClassNames, useTabStyles_unstable, useTab_unstable } from './Tab';
+export { renderTab_unstable, Tab, tabClassNames, useTabStyles_unstable, useTab_unstable } from './Tab';
 export type {
   TabRegisterData,
   RegisterTabEventHandler,
@@ -15,7 +15,6 @@ export type {
 export {
   renderTabList_unstable,
   TabList,
-  tabListClassName,
   tabListClassNames,
   useTabListStyles_unstable,
   useTabList_unstable,

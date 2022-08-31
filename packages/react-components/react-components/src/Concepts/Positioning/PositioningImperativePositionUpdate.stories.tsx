@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
-import { PopperRefHandle } from '@fluentui/react-positioning';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import type { PopoverProps, PositioningImperativeRef } from '@fluentui/react-components';
 
 export const ImperativePositionUpdate = () => {
   const [loading, setLoading] = React.useState(true);
-  const popperRef = React.useRef<PopperRefHandle>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const timeoutRef = React.useRef(0);
 
   const onOpenChange = React.useCallback<NonNullable<PopoverProps['onOpenChange']>>((e, data) => {
@@ -19,7 +18,7 @@ export const ImperativePositionUpdate = () => {
 
   React.useEffect(() => {
     if (!loading) {
-      popperRef.current?.updatePosition();
+      positioningRef.current?.updatePosition();
     }
   }, [loading]);
 
@@ -28,7 +27,7 @@ export const ImperativePositionUpdate = () => {
   });
 
   return (
-    <Popover positioning={{ position: 'below', popperRef }} noArrow onOpenChange={onOpenChange}>
+    <Popover positioning={{ position: 'below', positioningRef }} onOpenChange={onOpenChange}>
       <PopoverTrigger>
         <Button appearance="primary">Click me</Button>
       </PopoverTrigger>
@@ -43,7 +42,7 @@ ImperativePositionUpdate.parameters = {
   docs: {
     description: {
       story: [
-        'The `popperRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
+        'The `positioningRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
         'to reposition the positioned element. This can be useful for scenarios where content is dynamically loaded.',
         '',
         'In this example, you can move your mouse in the red boundary and the tooltip will follow the mouse cursor',

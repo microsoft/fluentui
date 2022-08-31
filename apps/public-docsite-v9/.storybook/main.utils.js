@@ -6,6 +6,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Dependencies to exclude stories loading
+const excludedDependencies = ['@fluentui/react-overflow'];
+
 function getVnextStories() {
   /** @type {Record<string,unknown>} */
   const packageJson = JSON.parse(
@@ -18,17 +21,12 @@ function getVnextStories() {
   const dependencies = /** @type {Record<string,string>} */ (packageJson.dependencies);
 
   return Object.keys({ ...dependencies, '@fluentui/react-components': '' })
-    .filter(pkgName => pkgName.startsWith('@fluentui/'))
+    .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludedDependencies.includes(pkgName))
     .map(pkgName => {
       const name = pkgName.replace('@fluentui/', '');
-      const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
+      const storiesGlob = '/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
 
-      //TODO: simplify once all v9 packages have been moved to the new react-components subfolder.
-      if (fs.existsSync(`../../packages/${name}/package.json`)) {
-        return `../../../packages/${name}${storiesGlob}`;
-      } else {
-        return `../../../packages/react-components/${name}${storiesGlob}`;
-      }
+      return `../../../packages/react-components/${name}${storiesGlob}`;
     });
 }
 

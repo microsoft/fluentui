@@ -1,8 +1,118 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Fri, 15 Apr 2022 07:42:48 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Aug 2022 07:44:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.18)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.17..@fluentui/react-icon-provider_v1.3.18)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.10 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+
+## [1.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.17)
+
+Wed, 24 Aug 2022 16:36:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.16..@fluentui/react-icon-provider_v1.3.17)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.9 ([PR #24485](https://github.com/microsoft/fluentui/pull/24485) by beachball)
+
+## [1.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.16)
+
+Tue, 23 Aug 2022 07:22:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.15..@fluentui/react-icon-provider_v1.3.16)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.8 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+
+## [1.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.15)
+
+Thu, 18 Aug 2022 23:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.14..@fluentui/react-icon-provider_v1.3.15)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+
+## [1.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.14)
+
+Mon, 15 Aug 2022 07:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.13..@fluentui/react-icon-provider_v1.3.14)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.6 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+
+## [1.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.13)
+
+Mon, 08 Aug 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.12..@fluentui/react-icon-provider_v1.3.13)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/style-utilities to v8.7.5 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+
+## [1.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.12)
+
+Tue, 02 Aug 2022 07:44:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.11..@fluentui/react-icon-provider_v1.3.12)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.4 ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by beachball)
+
+## [1.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.11)
+
+Tue, 26 Jul 2022 07:39:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.10..@fluentui/react-icon-provider_v1.3.11)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.3 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+
+## [1.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.10)
+
+Tue, 12 Jul 2022 07:41:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.9..@fluentui/react-icon-provider_v1.3.10)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+
+## [1.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.9)
+
+Tue, 28 Jun 2022 07:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.8..@fluentui/react-icon-provider_v1.3.9)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.1 ([PR #23683](https://github.com/microsoft/fluentui/pull/23683) by beachball)
+
+## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.8)
+
+Tue, 07 Jun 2022 07:48:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.7..@fluentui/react-icon-provider_v1.3.8)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.0 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+
+## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.7)
+
+Fri, 13 May 2022 07:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.6..@fluentui/react-icon-provider_v1.3.7)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/style-utilities to v8.6.7 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
 
 ## [1.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.6)
 

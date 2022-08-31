@@ -127,13 +127,13 @@ describe('getInitials', () => {
     result = getInitials('+47 12 34 56 78 (X 5678)', false);
     expect(result).toEqual('');
 
-    result = getInitials('+47 12 34 56 78 (X 5678)', false, true);
+    result = getInitials('+47 12 34 56 78 (X 5678)', false, { allowPhoneInitials: true });
     expect(result).toEqual('4');
 
-    result = getInitials('47 12 34', false, true);
+    result = getInitials('47 12 34', false, { allowPhoneInitials: true });
     expect(result).toEqual('43');
 
-    result = getInitials('47 12', false, true);
+    result = getInitials('47 12', false, { allowPhoneInitials: true });
     expect(result).toEqual('41');
 
     result = getInitials('1 Ext 2', false);
@@ -153,5 +153,21 @@ describe('getInitials', () => {
 
     result = getInitials('A 2', false);
     expect(result).toEqual('A2');
+  });
+
+  it('calculates firstInitialOnly correctly in LTR', () => {
+    let result = getInitials('Kat Larrson', false, { firstInitialOnly: true });
+    expect(result).toEqual('K');
+
+    result = getInitials('Mona Howard Kane', false, { firstInitialOnly: true });
+    expect(result).toEqual('M');
+  });
+
+  it('calculates firstInitialOnly correctly in RTL', () => {
+    let result = getInitials('Kat Larrson', true, { firstInitialOnly: true });
+    expect(result).toEqual('K');
+
+    result = getInitials('Mona Howard Kane', true, { firstInitialOnly: true });
+    expect(result).toEqual('M');
   });
 });

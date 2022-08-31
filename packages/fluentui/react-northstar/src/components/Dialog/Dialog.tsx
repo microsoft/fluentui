@@ -258,10 +258,24 @@ export const Dialog = (React.forwardRef<HTMLDivElement, DialogProps>((props, ref
     },
   });
 
+  // when press left click on Dialog content and hold, and mouse up on Dialog overlay, Dialog should keep open
+  const isMouseDownInsideContent = React.useRef(false);
+  const registerMouseDownOnDialogContent = (e: React.MouseEvent) => {
+    if (e.button === 0) {
+      isMouseDownInsideContent.current = true;
+    }
+    if (unhandledProps.onMouseDown) {
+      _.invoke(unhandledProps, 'onMouseDown', e);
+    }
+  };
+
   const handleOverlayClick = (e: MouseEvent) => {
     // Dialog has different conditions to close than Popup, so we don't need to iterate across all
     // refs
-    const isInsideContentClick = doesNodeContainClick(contentRef.current, e, context.target);
+    const isInsideContentClick =
+      isMouseDownInsideContent.current || doesNodeContainClick(contentRef.current, e, context.target);
+    isMouseDownInsideContent.current = false;
+
     const isInsideOverlayClick = doesNodeContainClick(overlayRef.current, e, context.target);
 
     const shouldClose = !isInsideContentClick && isInsideOverlayClick;
@@ -318,6 +332,7 @@ export const Dialog = (React.forwardRef<HTMLDivElement, DialogProps>((props, ref
           className: classes.root,
           ref,
           ...unhandledProps,
+          onMouseDown: registerMouseDownOnDialogContent,
         })}
       >
         {Header.create(header, {

@@ -4,7 +4,7 @@ import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentu
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 /**

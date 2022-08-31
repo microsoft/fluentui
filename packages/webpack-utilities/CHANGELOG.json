@@ -2,6 +2,21 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 07:36:56 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.7",
+      "version": "8.1.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "f79394055c953c73943709259ff257982b143f1e",
+            "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Sep 2021 07:36:26 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.5",
       "version": "8.1.5",

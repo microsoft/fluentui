@@ -36,7 +36,7 @@ import { Radio, RadioGroup } from '@fluentui/react-radio';
 </RadioGroup>
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

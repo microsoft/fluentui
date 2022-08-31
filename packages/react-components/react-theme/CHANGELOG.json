@@ -2,6 +2,110 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:04:07 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e6bec62689022606e64b56b90506c6d75cbdcfce",
+            "comment": "fix: Fix issue preventing copying text out of theme storybook documentation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:24 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "769bfa3d797cb79aa6594aa8589e382403287a9d",
+            "comment": "Organize left navigation, add theme entries"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:13:21 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "7e21b27395eeca6273e8cc7fda1964a358ab5b50",
+            "comment": "chore: Move Theme stories to folder with index entry."
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c7b1348bdad7aa883c29bfbc96ef2a32e6ebc7dd",
+            "comment": "feat: Initial 9.0.0 release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jun 2022 14:25:31 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b00790b7a0ea1473d8c3cc49c7ca0088002957ed",
+            "comment": "BREAKING: reduce shared colors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 18:56:50 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Remove webHighContrast theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 12:13:56 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:27 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.7",
       "version": "9.0.0-rc.7",

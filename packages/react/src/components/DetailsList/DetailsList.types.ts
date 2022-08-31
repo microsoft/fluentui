@@ -332,6 +332,13 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Whether to disable the built-in SelectionZone, so the host component can provide its own. */
   disableSelectionZone?: boolean;
 
+  /**
+   * Determines if an item is selected on focus.
+   *
+   * @defaultvalue true
+   */
+  isSelectedOnFocus?: boolean;
+
   /** Whether to animate updates */
   enableUpdateAnimations?: boolean;
 
@@ -433,6 +440,9 @@ export interface IColumn {
   /** If true, allow the column to be collapsed when rendered in justified layout. */
   isCollapsible?: boolean;
 
+  /** If true, column header will render an icon indicating column is sortable while unsorted */
+  showSortIconWhenUnsorted?: boolean;
+
   /** Determines if the column is currently sorted. Renders a sort arrow in the column header. */
   isSorted?: boolean;
 
@@ -512,6 +522,12 @@ export interface IColumn {
    * This will be read after the main column header label.
    */
   sortDescendingAriaLabel?: string;
+
+  /**
+   * Accessible label for indicating that the list could be sorted by this column but isn't currently.
+   * This will be read after the main column header label.
+   */
+  sortableAriaLabel?: string;
 
   /** Accessible label for the status of this column when grouped. */
   groupAriaLabel?: string;

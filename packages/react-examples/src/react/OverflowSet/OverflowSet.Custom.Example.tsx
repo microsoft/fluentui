@@ -14,14 +14,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   if (item.onRender) {
     return item.onRender(item);
   }
-  return (
-    <CommandBarButton
-      role="menuitem"
-      iconProps={{ iconName: item.icon }}
-      menuProps={item.subMenuProps}
-      text={item.name}
-    />
-  );
+  return <CommandBarButton iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
 };
 
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
@@ -36,7 +29,6 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
   return (
     <CommandBarButton
       ariaLabel="More items"
-      role="menuitem"
       styles={buttonStyles}
       menuIconProps={{ iconName: 'More' }}
       menuProps={{ items: overflowItems! }}
@@ -47,12 +39,11 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
 export const OverflowSetCustomExample: React.FunctionComponent = () => (
   <OverflowSet
     aria-label="Custom Example"
-    role="menubar"
     items={[
       {
         key: 'checkbox',
         onRender: () => {
-          return <Checkbox inputProps={{ role: 'menuitemcheckbox' }} label="A Checkbox" styles={checkboxStyles} />;
+          return <Checkbox label="A Checkbox" styles={checkboxStyles} />;
         },
       },
       {

@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { PositioningProps } from '@fluentui/react-positioning';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
+import { Button, Popover, PopoverSurface, PopoverTrigger, PositioningProps } from '@fluentui/react-components';
 
 export const Default = (props: PositioningProps) => {
   return (
-    <Popover positioning={props} noArrow>
+    <Popover positioning={props}>
       <PopoverTrigger>
         <Button appearance="primary">Click me</Button>
       </PopoverTrigger>

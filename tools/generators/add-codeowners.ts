@@ -30,7 +30,7 @@ function processCodeowners(tree: Tree, options: ReturnType<typeof getProjectConf
   const changes: StringChange[] = [
     {
       type: ChangeType.Delete,
-      start: placeholderPosition + 1,
+      start: placeholderPosition,
       length: placeholder.length,
     },
     {
@@ -40,8 +40,8 @@ function processCodeowners(tree: Tree, options: ReturnType<typeof getProjectConf
     },
     {
       type: ChangeType.Insert,
-      index: placeholderPosition + 1,
-      text: placeholder + '\n',
+      index: placeholderPosition,
+      text: placeholder,
     },
   ];
 

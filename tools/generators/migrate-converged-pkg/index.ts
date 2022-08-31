@@ -12,7 +12,8 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
-  generateFiles,
+  offsetFromRoot,
+  names,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -100,7 +101,7 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
   });
 }
 
-function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
+function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
   if (options.owner) {
@@ -118,15 +119,17 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   }
 
   // 1. update TsConfigs
-  updatedLocalTsConfig(tree, options);
+  const { configs } = updatedLocalTsConfig(tree, options);
   updatedBaseTsConfig(tree, options);
 
   // 2. update Jest
   updateLocalJestConfig(tree, options);
 
+  const optionsWithTsConfigs = { ...options, tsconfigs: configs };
+
   // update package npm scripts
-  updatePackageJson(tree, options);
-  updateApiExtractorForLocalBuilds(tree, options);
+  updatePackageJson(tree, optionsWithTsConfigs);
+  updateApiExtractorForLocalBuilds(tree, optionsWithTsConfigs);
 
   // setup storybook
   setupStorybook(tree, options);
@@ -142,18 +145,27 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
 // ==== helpers ====
 
 const templates = {
-  apiExtractorLocal: {
-    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts',
+  apiExtractor: () => {
+    return {
+      main: {
+        $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+        extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+        // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+        dtsRollup: {
+          enabled: true,
+          untrimmedFilePath: '',
+          publicTrimmedFilePath: '<projectFolder>/dist/index.d.ts',
+        },
+      },
+    };
   },
-  apiExtractor: {
-    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
-    // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
-    mainEntryPointFilePath: '<projectFolder>/dist/types/index.d.ts',
-  },
-  tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
+
+  tsconfig: (options: {
+    platform: 'node' | 'web';
+    js: boolean;
+    hasConformance: boolean;
+    projectConfig: ProjectConfiguration;
+  }) => {
     return {
       main: () => {
         const tsConfig = {
@@ -194,9 +206,9 @@ const templates = {
           compilerOptions: {
             noEmit: false,
             lib: ['ES2019'],
-            outDir: 'dist',
             declaration: true,
-            declarationDir: 'dist/types',
+            declarationDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc/types',
+            outDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc',
             inlineSources: true,
             types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
@@ -288,7 +300,7 @@ const templates = {
 
       module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
           const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -470,7 +482,7 @@ function getPackageType(tree: Tree, options: NormalizedSchema) {
   const isNode =
     tags.includes('platform:node') ||
     Boolean(pkgJson.bin) ||
-    (scripts.build && scripts.build === 'just-scripts build --commonjs');
+    (scripts.build && scripts.build === 'just-scripts build --module cjs');
   const isWeb = tags.includes('platform:web') || !isNode;
 
   if (isNode) {
@@ -525,17 +537,16 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function updatePackageJson(tree: Tree, options: NormalizedSchema) {
-  /* eslint-disable @fluentui/max-len */
+interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
+  tsconfigs: ReturnType<typeof updatedLocalTsConfig>['configs'];
+}
+
+function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   const scripts = {
-    docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'node ../../../scripts/storybook/runner',
-    start: 'yarn storybook',
+    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
-  /* eslint-enable @fluentui/max-len */
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
     json.scripts = json.scripts || {};
@@ -544,6 +555,8 @@ function updatePackageJson(tree: Tree, options: NormalizedSchema) {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
+    delete json.scripts['build:local'];
+    delete json.scripts.docs;
 
     Object.assign(json.scripts, scripts);
 
@@ -558,18 +571,16 @@ function updatePackageJson(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema) {
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractorLocal);
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), templates.apiExtractor);
+function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
+  const apiExtractor = templates.apiExtractor();
+
+  tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   return tree;
 }
 
 function setupStorybook(tree: Tree, options: NormalizedSchema) {
-  function transformRelativePath(_path: string) {
-    return joinPathFragments('..', _path);
-  }
-
   const sbAction = shouldSetupStorybook(tree, options);
 
   const template = {
@@ -619,7 +630,17 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       return json;
     });
 
-    removeTsIgnorePragmas();
+    updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+      const scripts = {
+        storybook: `start-storybook`,
+        start: 'yarn storybook',
+      };
+      Object.assign(json.scripts, scripts);
+
+      return json;
+    });
+
+    moveStories(tree, options);
   }
 
   if (sbAction === 'remove') {
@@ -653,6 +674,8 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       return json;
     });
   }
+
+  removeTsIgnorePragmas();
 
   function removeTsIgnorePragmas() {
     const stories: string[] = [];
@@ -688,8 +711,44 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
+function moveStories(tree: Tree, options: NormalizedSchema) {
+  const componentName = names(options.normalizedPkgName).className.replace('React', '');
+  const sourceRoot = options.projectConfig.sourceRoot ?? '';
+  const oldStoriesPath = joinPathFragments(sourceRoot, 'stories');
+  const newStoriesPath = joinPathFragments(oldStoriesPath, componentName);
+  const storiesExistInNewPath = tree.exists(newStoriesPath);
+
+  if (storiesExistInNewPath) {
+    return;
+  }
+
+  visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
+    if (treePath.includes('.stories.') || treePath.includes('.md')) {
+      const storyFileName = path.basename(treePath);
+      const shouldBeMigratedToIndexFile = storyFileName.toLowerCase() === `${componentName.toLowerCase()}.stories.tsx`;
+
+      const newStoryPath = joinPathFragments(
+        newStoriesPath,
+        shouldBeMigratedToIndexFile ? 'index.stories.tsx' : storyFileName,
+      );
+
+      tree.rename(treePath, newStoryPath);
+      updateStoryFileImports(tree, options, newStoryPath);
+    }
+  });
+}
+
+function updateStoryFileImports(tree: Tree, options: NormalizedSchema, storyPath: string) {
+  if (!tree.exists(storyPath)) {
+    return;
+  }
+
+  const storyFile = tree.read(storyPath, 'utf8') as string;
+  const updatedStoryFile = storyFile.replace('../index', options.name);
+  tree.write(storyPath, updatedStoryFile);
+}
+
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
-  const hasStorybookConfig = tree.exists(options.paths.storybook.main);
   let hasStories = false;
 
   visitNotIgnoredFiles(tree, options.projectConfig.root, treePath => {
@@ -699,13 +758,10 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
     }
   });
 
-  const tags = options.projectConfig.tags || [];
-  const hasTags = tags.includes('vNext') && tags.includes('platform:web');
+  const shouldInit = hasStories;
+  const shouldDelete = !shouldInit;
 
-  const shouldInit = hasStories || hasTags;
-  const shouldDelete = !shouldInit && hasStorybookConfig;
-
-  if (shouldInit) {
+  if (hasStories) {
     return 'init';
   }
 
@@ -733,7 +789,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
     json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'e2e';
+    json.scripts.e2e = 'cypress run --component';
+    json.scripts['e2e:local'] = 'cypress open --component';
 
     return json;
   });
@@ -775,11 +832,11 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
-  createTsSolutionConfig(tree, options);
+  const { configs } = createTsSolutionConfig(tree, options);
 
   updateTsGlobalTypes(tree, options);
 
-  return tree;
+  return { tree, configs };
 }
 
 function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
@@ -787,12 +844,20 @@ function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
   const js = isJs(tree, options);
   const hasConformance = hasConformanceSetup(tree, options);
 
-  const tsConfigs = templates.tsconfig({ platform: packageType, js, hasConformance });
-  writeJson(tree, options.paths.tsconfig.main, tsConfigs.main());
-  writeJson(tree, options.paths.tsconfig.lib, tsConfigs.lib());
-  writeJson(tree, options.paths.tsconfig.test, tsConfigs.test());
+  const tsConfigs = templates.tsconfig({
+    platform: packageType,
+    js,
+    hasConformance,
+    projectConfig: options.projectConfig,
+  });
+  const main = tsConfigs.main();
+  const lib = tsConfigs.lib();
+  const test = tsConfigs.test();
+  writeJson(tree, options.paths.tsconfig.main, main);
+  writeJson(tree, options.paths.tsconfig.lib, lib);
+  writeJson(tree, options.paths.tsconfig.test, test);
 
-  return tree;
+  return { tree, configs: { main, lib, test } };
 }
 
 function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {

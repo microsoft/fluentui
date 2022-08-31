@@ -16,43 +16,26 @@ export const switchClassNames: SlotClassNames<SwitchSlots> = {
  */
 export const switchClassName = switchClassNames.root;
 
-// TODO replace these spacing constants with theme values once they're on the theme.
-const spacingXS = 4;
-const spacingS = 8;
-const spacingM = 12;
-
 // Thumb and track sizes used by the component.
 const spaceBetweenThumbAndTrack = 2;
-const thumbSize = 14;
 const trackHeight = 20;
 const trackWidth = 40;
+const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useRootStyles = makeStyles({
   base: {
+    alignItems: 'flex-start',
     boxSizing: 'border-box',
-    columnGap: `${spacingM}px`,
     display: 'inline-flex',
-    ...shorthands.padding(`${spacingS}px`),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     position: 'relative',
 
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
 
-  // Label position variations
-  above: {
+  vertical: {
     flexDirection: 'column',
-    paddingTop: `${spacingXS}px`,
-    rowGap: `${spacingXS}px`,
-  },
-  after: {
-    alignItems: 'flex-start',
-    columnGap: `${spacingM}px`,
-    flexDirection: 'row',
-  },
-  before: {
-    alignItems: 'flex-start',
-    columnGap: `${spacingM}px`,
-    flexDirection: 'row',
+    paddingTop: tokens.spacingVerticalXS,
   },
 });
 
@@ -64,7 +47,7 @@ const useIndicatorStyles = makeStyles({
     boxSizing: 'border-box',
     fill: 'currentColor',
     flexShrink: 0,
-    fontSize: `${thumbSize + spaceBetweenThumbAndTrack}px`,
+    fontSize: `${thumbSize}px`,
     height: `${trackHeight}px`,
     pointerEvents: 'none',
     transitionDuration: '200ms',
@@ -72,10 +55,18 @@ const useIndicatorStyles = makeStyles({
     transitionProperty: 'background, border, color',
     width: `${trackWidth}px`,
 
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
+
     '> *': {
       transitionDuration: '200ms',
       transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
       transitionProperty: 'transform',
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+      },
     },
   },
 });
@@ -96,7 +87,7 @@ const useInputStyles = makeStyles({
     ':checked': {
       [`& ~ .${switchClassNames.indicator}`]: {
         '> *': {
-          transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack * 2}px)`,
+          transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack}px)`,
         },
       },
     },
@@ -143,21 +134,21 @@ const useInputStyles = makeStyles({
     // Enabled and checked
     ':enabled:checked': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorBrandBackground,
-        color: tokens.colorNeutralForegroundOnBrand,
+        backgroundColor: tokens.colorCompoundBrandBackground,
+        color: tokens.colorNeutralForegroundInverted,
         ...shorthands.borderColor(tokens.colorTransparentStroke),
       },
 
       ':hover': {
         [`& ~ .${switchClassNames.indicator}`]: {
-          backgroundColor: tokens.colorBrandBackgroundHover,
+          backgroundColor: tokens.colorCompoundBrandBackgroundHover,
           ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
         },
       },
 
       ':hover:active': {
         [`& ~ .${switchClassNames.indicator}`]: {
-          backgroundColor: tokens.colorBrandBackgroundPressed,
+          backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
           ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
         },
       },
@@ -196,8 +187,14 @@ const useInputStyles = makeStyles({
 });
 
 const useLabelStyles = makeStyles({
-  base: {
-    userSelect: 'none',
+  above: {
+    marginBottom: tokens.spacingVerticalXS,
+  },
+  after: {
+    marginLeft: tokens.spacingHorizontalM,
+  },
+  before: {
+    marginRight: tokens.spacingHorizontalM,
   },
 });
 
@@ -215,7 +212,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   state.root.className = mergeClasses(
     switchClassNames.root,
     rootStyles.base,
-    rootStyles[labelPosition],
+    labelPosition === 'above' && rootStyles.vertical,
     state.root.className,
   );
 
@@ -229,7 +226,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   );
 
   if (state.label) {
-    state.label.className = mergeClasses(switchClassNames.label, labelStyles.base, state.label.className);
+    state.label.className = mergeClasses(switchClassNames.label, labelStyles[labelPosition], state.label.className);
   }
 
   return state;

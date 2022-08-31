@@ -28,7 +28,7 @@ export type TextareaProps = Omit<
    *
    * @default outline
    */
-  appearance?: 'outline' | 'filledDarker' | 'filledLighter';
+  appearance?: 'outline' | 'filled-darker' | 'filled-lighter';
 
   /**
    * The default value of the Textarea.

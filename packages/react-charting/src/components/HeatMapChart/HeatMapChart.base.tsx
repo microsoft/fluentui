@@ -186,7 +186,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       color: this.state.calloutTextColor,
       target: this.state.target,
       styles: this._classNames.subComponentStyles.calloutStyles,
-      directionalHint: DirectionalHint.bottomLeftEdge,
+      directionalHint: DirectionalHint.topAutoEdge,
       onDismiss: this._closeCallout,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
       preventDismissOnLostFocus: true,

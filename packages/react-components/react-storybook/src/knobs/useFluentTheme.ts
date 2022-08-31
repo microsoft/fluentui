@@ -1,7 +1,6 @@
 import {
   webLightTheme,
   webDarkTheme,
-  webHighContrastTheme,
   teamsLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
@@ -14,7 +13,6 @@ const themeSelectorLabel = 'Theme';
 const themeOptions = [
   { label: 'Web Light', theme: webLightTheme },
   { label: 'Web Dark', theme: webDarkTheme },
-  { label: 'Web High Contrast', theme: webHighContrastTheme },
   { label: 'Teams Light', theme: teamsLightTheme },
   { label: 'Teams Dark', theme: teamsDarkTheme },
   { label: 'Teams High Contrast', theme: teamsHighContrastTheme },

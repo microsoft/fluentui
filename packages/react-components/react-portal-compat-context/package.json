@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-portal-compat-context",
-  "version": "9.0.0-rc.1",
+  "version": "9.0.1",
   "description": "A package that holds React context for compatibility of React Contexts",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -12,16 +12,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "just-scripts build --module esm,cjs,amd",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
+    "lint": "just-scripts lint && just-scripts lint-imports",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-portal-compat-context/src && yarn docs",
-    "storybook": "node ../../../scripts/storybook/runner",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-portal-compat-context/src && yarn docs",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -38,8 +36,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   }
 }

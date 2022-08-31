@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: fix no-context-default-value lint violations",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

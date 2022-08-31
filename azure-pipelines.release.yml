@@ -69,7 +69,7 @@ jobs:
         displayName: yarn bundle
 
       - script: |
-          yarn publish:beachball -n $(npmToken)
+          yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-v8.config.js
           git reset --hard origin/master
         env:
           GITHUB_PAT: $(githubPAT)
@@ -189,7 +189,7 @@ jobs:
       # This would usually be run automatically (via a pipeline decorator from an extension), but the
       # thorough cleanup step prevents it from working. So run it manually here.
       - task: ComponentGovernanceComponentDetection@0
-        displayName: 'Component Detection'
+        displayName: 'Component governance detection'
         inputs:
           sourceScanPath: $(Agent.BuildDirectory)
         condition: succeeded()

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: typing moves active option in Dropdown",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

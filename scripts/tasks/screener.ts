@@ -1,5 +1,4 @@
-import { getAffectedPackages, getAllPackageInfo, findGitRoot } from '../monorepo';
-import { screenerRunner, cancelScreenerRun } from '../screener/screener.runner';
+import { screenerRunner, environment } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
 // @ts-ignore - screener-storybook has no typings
@@ -12,23 +11,19 @@ import { getStorybook } from '@storybook/react';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
-  console.log('screener config for run');
+  console.log('screener config for run:');
   console.log(JSON.stringify(screenerConfig, null, 2));
-  const screenerStates = await getScreenerStates(screenerConfig);
-  screenerConfig.states = screenerStates;
-
-  const packageInfos = getAllPackageInfo();
-  const packagePath = path.relative(findGitRoot(), process.cwd());
-  const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
-  const affectedPackages = getAffectedPackages();
-  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
 
   try {
-    if (!affectedPackages.has(affectedPackageInfo.packageJson.name) && isPrBuild) {
-      await cancelScreenerRun(screenerConfig, 'skipped');
-    } else {
-      await screenerRunner(screenerConfig);
+    console.log(`screener-runner: is artifact present ${JSON.stringify(environment.screener.isArtifactPresent)}`);
+    if (environment.screener.isArtifactPresent === 'true') {
+      //Skipping "getScreenerStates()" if artifacts were not build
+      console.log('Running screener test:');
+      const screenerStates = await getScreenerStates(screenerConfig);
+      screenerConfig.states = screenerStates;
     }
+    //call "screenerRunner()" since it controls CI checks on a PR and screener tests being run/skipped
+    await screenerRunner(screenerConfig);
   } catch (err) {
     console.error('failed to run screener task');
     console.error(err);

@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-const MenuGroupContext = React.createContext<MenuGroupContextValue>({ headerId: '' });
+const MenuGroupContext = React.createContext<MenuGroupContextValue | undefined>(
+  undefined,
+) as React.Context<MenuGroupContextValue>;
+
+const menuGroupContextDefaultValue: MenuGroupContextValue = {
+  headerId: '',
+};
 
 /**
  * Context used to guarantee correct aria-relationship between header
@@ -14,4 +20,4 @@ export type MenuGroupContextValue = {
 };
 
 export const MenuGroupContextProvider = MenuGroupContext.Provider;
-export const useMenuGroupContext_unstable = () => React.useContext(MenuGroupContext);
+export const useMenuGroupContext_unstable = () => React.useContext(MenuGroupContext) ?? menuGroupContextDefaultValue;

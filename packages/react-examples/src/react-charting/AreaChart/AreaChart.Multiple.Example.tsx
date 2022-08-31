@@ -184,7 +184,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
 
     return (
       <>
-        <label htmlFor="changeWidth_Multiple">change Width:</label>
+        <label htmlFor="changeWidth_Multiple">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -192,8 +192,9 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
           max={1000}
           id="changeWidth_Multiple"
           onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthslider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Multiple">change Height:</label>
+        <label htmlFor="changeHeight_Multiple">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -201,6 +202,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
           max={1000}
           id="changeHeight_Multiple"
           onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
         <div style={rootStyle}>
           <AreaChart

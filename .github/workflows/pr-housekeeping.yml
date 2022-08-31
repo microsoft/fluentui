@@ -5,6 +5,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  issues: write
 
 jobs:
   label:
@@ -17,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Assign to latest milestone
-        uses: andrefcdias/add-to-milestone@v1.2.2
+        uses: andrefcdias/add-to-milestone@v1.2.4
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           use-expression: true

@@ -5,17 +5,18 @@ import {
   useOnClickOutside,
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
-  usePopper,
+  usePositioning,
   resolvePositioningShorthand,
   mergeArrowOffset,
-  usePopperMouseTarget,
+  usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
+import { popoverSurfaceBorderRadius } from './constants';
 
 /**
  * Create the state required to render Popover.
@@ -26,7 +27,7 @@ import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.ty
  * @param props - props from this instance of Popover
  */
 export const usePopover_unstable = (props: PopoverProps): PopoverState => {
-  const [contextTarget, setContextTarget] = usePopperMouseTarget();
+  const [contextTarget, setContextTarget] = usePositioningMouseTarget();
   const initialState = {
     size: 'medium',
     contextTarget,
@@ -95,14 +96,14 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     [setOpen, open],
   );
 
-  const popperRefs = usePopoverRefs(initialState);
+  const positioningRefs = usePopoverRefs(initialState);
 
   const { targetDocument } = useFluent();
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
-    refs: [popperRefs.triggerRef, popperRefs.contentRef],
+    refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
     disabled: !open,
   });
 
@@ -112,22 +113,25 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
-    refs: [popperRefs.triggerRef, popperRefs.contentRef],
+    refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
     disabled: !open || !closeOnScroll,
   });
 
   const { findFirstFocusable } = useFocusFinders();
 
   React.useEffect(() => {
-    if (open && popperRefs.contentRef.current) {
-      const firstFocusable = findFirstFocusable(popperRefs.contentRef.current);
+    if (open && positioningRefs.contentRef.current) {
+      const containerTabIndex = positioningRefs.contentRef.current.getAttribute('tabIndex') ?? undefined;
+      const firstFocusable = isNaN(containerTabIndex)
+        ? findFirstFocusable(positioningRefs.contentRef.current)
+        : positioningRefs.contentRef.current;
       firstFocusable?.focus();
     }
-  }, [findFirstFocusable, open, popperRefs.contentRef]);
+  }, [findFirstFocusable, open, positioningRefs.contentRef]);
 
   return {
     ...initialState,
-    ...popperRefs,
+    ...positioningRefs,
     popoverTrigger,
     popoverSurface,
     open,
@@ -185,25 +189,27 @@ function useOpenState(
  * Creates and sets the necessary trigger, target and content refs used by Popover
  */
 function usePopoverRefs(
-  state: Pick<PopoverState, 'size' | 'contextTarget'> & Pick<PopoverProps, 'positioning' | 'openOnContext' | 'noArrow'>,
+  state: Pick<PopoverState, 'size' | 'contextTarget'> &
+    Pick<PopoverProps, 'positioning' | 'openOnContext' | 'withArrow'>,
 ) {
-  const popperOptions = {
+  const positioningOptions = {
     position: 'above' as const,
     align: 'center' as const,
+    arrowPadding: 2 * popoverSurfaceBorderRadius,
     target: state.openOnContext ? state.contextTarget : undefined,
     ...resolvePositioningShorthand(state.positioning),
   };
 
   // no reason to render arrow when covering the target
-  if (popperOptions.coverTarget) {
-    state.noArrow = true;
+  if (positioningOptions.coverTarget) {
+    state.withArrow = false;
   }
 
-  if (!state.noArrow) {
-    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeights[state.size]);
+  if (state.withArrow) {
+    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeights[state.size]);
   }
 
-  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(positioningOptions);
 
   return {
     triggerRef,

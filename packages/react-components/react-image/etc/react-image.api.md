@@ -15,14 +15,17 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
-// @public @deprecated (undocumented)
-export const imageClassName = "fui-Image";
-
 // @public (undocumented)
 export const imageClassNames: SlotClassNames<ImageSlots>;
 
 // @public (undocumented)
-export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
+export type ImageProps = ComponentProps<ImageSlots> & {
+    block?: boolean;
+    bordered?: boolean;
+    fit?: 'none' | 'center' | 'contain' | 'cover' | 'default';
+    shadow?: boolean;
+    shape?: 'square' | 'circular' | 'rounded';
+};
 
 // @public (undocumented)
 export type ImageSlots = {
@@ -30,7 +33,7 @@ export type ImageSlots = {
 };
 
 // @public (undocumented)
-export type ImageState = ComponentState<ImageSlots> & ImageCommons;
+export type ImageState = ComponentState<ImageSlots> & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
 
 // @public
 export const renderImage_unstable: (state: ImageState) => JSX.Element;

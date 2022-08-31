@@ -1,36 +1,29 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 
 export const OffsetValue = () => {
-  const [offsetY, setOffsetY] = React.useState(10);
-  const [offsetX, setOffsetX] = React.useState(10);
+  const [crossAxis, setCrossAxis] = React.useState(10);
+  const [mainAxis, setMainAxis] = React.useState(10);
 
-  const onChangeY = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOffsetY(parseInt(e.target.value, 10));
-  };
-
-  const onChangeX = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOffsetX(parseInt(e.target.value, 10));
-  };
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <label style={{ display: 'flex', gap: 10 }}>
-        Offset Y
-        <input onChange={onChangeY} value={offsetY} type="number" />
+        <code>crossAxis</code>
+        <input onChange={e => setCrossAxis(parseInt(e.target.value, 10))} value={crossAxis} type="number" />
       </label>
       <label style={{ display: 'flex', gap: 10 }}>
-        Offset X
-        <input onChange={onChangeX} value={offsetX} type="number" />
+        <code>mainAxis</code>
+        <input onChange={e => setMainAxis(parseInt(e.target.value, 10))} value={mainAxis} type="number" />
       </label>
-      <Popover positioning={{ position: 'after', offset: [offsetY, offsetX] }} noArrow>
+
+      <Popover positioning={{ position: 'after', offset: { crossAxis, mainAxis } }}>
         <PopoverTrigger>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
       </Popover>
-      <Popover positioning={{ position: 'after', offset: () => [offsetY, offsetX] }} noArrow>
+      <Popover positioning={{ position: 'after', offset: () => ({ crossAxis: crossAxis, mainAxis: mainAxis }) }}>
         <PopoverTrigger>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
@@ -48,8 +41,8 @@ OffsetValue.parameters = {
       story: [
         'The positioned element can be offset from the target element. The offset value can be set either by:',
         '',
-        '- Simple array with X and Y axis values',
-        '- A function that returns the array offset value',
+        '- An object with `mainAxis` and `crossAxis` values',
+        '- A function that returns the object value',
       ].join('\n'),
     },
   },

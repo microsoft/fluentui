@@ -32,6 +32,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         border: 'none',
         padding: '8px',
         background: 'none',
+        textTransform: 'capitalize',
       },
     ],
     rect: {

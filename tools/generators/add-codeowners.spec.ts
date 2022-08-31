@@ -28,6 +28,12 @@ describe(`#addCodeowner`, () => {
       sourceRoot: '/packages/react-three/src',
       targets: {},
     });
+    addProjectConfiguration(tree, '@proj/react-four', {
+      root: '/packages/react-four',
+      projectType: 'library',
+      sourceRoot: '/packages/react-four/src',
+      targets: {},
+    });
   });
 
   it(`should throw if no CODEOWNER exists`, () => {
@@ -58,8 +64,17 @@ describe(`#addCodeowner`, () => {
       "/packages/react-one @org/team-one
       /packages/react-one @org/team-two
       /packages/react-three @org/team-three
-      ## <%= NX-CODEOWNER-PLACEHOLDER %>
-      "
+      # <%= NX-CODEOWNER-PLACEHOLDER %>"
+    `);
+
+    addCodeowner(tree, { packageName: '@proj/react-four', owner: '@org/team-four' });
+
+    expect(tree.read(workspacePaths.github.codeowners, 'utf8')).toMatchInlineSnapshot(`
+      "/packages/react-one @org/team-one
+      /packages/react-one @org/team-two
+      /packages/react-three @org/team-three
+      /packages/react-four @org/team-four
+      # <%= NX-CODEOWNER-PLACEHOLDER %>"
     `);
   });
 });

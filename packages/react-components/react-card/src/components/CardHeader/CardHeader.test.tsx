@@ -10,7 +10,7 @@ describe('CardHeader', () => {
     testOptions: {
       'has-static-classnames': [
         {
-          props: { header: 'Header Test', action: 'Action Test' },
+          props: { image: 'Image Test', header: 'Header Test', description: 'Description Test', action: 'Action Test' },
         },
       ],
     },

@@ -6,9 +6,9 @@ const statuses: PresenceBadgeProps['status'][] = [
   'available',
   'away',
   'busy',
-  'doNotDisturb',
+  'do-not-disturb',
   'offline',
-  'outOfOffice',
+  'out-of-office',
   'unknown',
 ];
 

@@ -1,5 +1,5 @@
 {
-  "extends": ["plugin:@fluentui/eslint-plugin/node"],
+  "extends": ["plugin:@fluentui/eslint-plugin/node", "plugin:@fluentui/eslint-plugin/react"],
   "root": true,
   "overrides": [
     {

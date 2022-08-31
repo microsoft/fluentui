@@ -25,8 +25,10 @@ export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement | nul
   }, [target]);
 
   useIsomorphicLayoutEffect(() => {
+    const classes = className.split(' ').filter(Boolean);
+
     if (element) {
-      element.setAttribute('class', className);
+      element.classList.add(...classes);
 
       if (rtl) {
         element.setAttribute('dir', 'rtl');
@@ -34,6 +36,13 @@ export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement | nul
         element.removeAttribute('dir');
       }
     }
+
+    return () => {
+      if (element) {
+        element.classList.remove(...classes);
+        element.removeAttribute('dir');
+      }
+    };
   }, [className, element, rtl]);
 
   // This effect should always last as it removes element from HTML tree

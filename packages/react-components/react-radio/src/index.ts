@@ -1,7 +1,5 @@
 export {
   RadioGroup,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioGroupClassName,
   radioGroupClassNames,
   renderRadioGroup_unstable,
   useRadioGroupStyles_unstable,
@@ -15,14 +13,6 @@ export type {
   RadioGroupSlots,
   RadioGroupState,
 } from './RadioGroup';
-export {
-  Radio,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioClassName,
-  radioClassNames,
-  renderRadio_unstable,
-  useRadioStyles_unstable,
-  useRadio_unstable,
-} from './Radio';
+export { Radio, radioClassNames, renderRadio_unstable, useRadioStyles_unstable, useRadio_unstable } from './Radio';
 export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData } from './Radio';
-export { RadioGroupContext, useRadioGroupContextValues } from './contexts/index';
+export { RadioGroupProvider, useRadioGroupContextValues, useRadioGroupContext_unstable } from './contexts/index';

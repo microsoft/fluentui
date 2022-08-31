@@ -110,7 +110,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
 
     return (
       <>
-        <label htmlFor="changeWidth_Styled">change Width:</label>
+        <label htmlFor="changeWidth_Styled">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -118,8 +118,9 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
           max={1000}
           id="changeWidth_Styled"
           onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Styled">change Height:</label>
+        <label htmlFor="changeHeight_Styled">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -127,6 +128,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
           max={1000}
           id="changeHeight_Styled"
           onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
         <div style={rootStyle}>
           <AreaChart

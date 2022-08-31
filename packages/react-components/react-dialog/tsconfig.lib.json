@@ -13,6 +13,8 @@
     "./src/common/**",
     "**/*.spec.ts",
     "**/*.spec.tsx",
+    "**/*.mock.ts",
+    "**/*.mock.tsx",
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.stories.ts",

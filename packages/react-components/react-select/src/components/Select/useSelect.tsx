@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectProps, SelectState } from './Select.types';
 
@@ -13,18 +13,27 @@ import type { SelectProps, SelectState } from './Select.types';
  * @param ref - reference to the `<select>` element in Select
  */
 export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
-  const { select, icon, root, size = 'medium', appearance = 'outline', inline = false } = props;
+  const {
+    defaultValue,
+    value,
+    select,
+    icon,
+    root,
+    appearance = 'outline',
+
+    onChange,
+    size = 'medium',
+  } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'select',
-    excludedPropNames: ['appearance', 'inline', 'size'],
+    excludedPropNames: ['appearance', 'defaultValue', 'onChange', 'size', 'value'],
   });
 
-  return {
+  const state: SelectState = {
     size,
     appearance,
-    inline,
     components: {
       root: 'span',
       select: 'select',
@@ -33,6 +42,8 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     select: resolveShorthand(select, {
       required: true,
       defaultProps: {
+        defaultValue,
+        value,
         ref,
         ...nativeProps.primary,
       },
@@ -46,4 +57,10 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
       defaultProps: nativeProps.root,
     }),
   };
+
+  state.select.onChange = useEventCallback(event => {
+    onChange?.(event, { value: (event.target as HTMLSelectElement).value });
+  });
+
+  return state;
 };

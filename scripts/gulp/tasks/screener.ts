@@ -2,8 +2,8 @@ import { task, series } from 'gulp';
 import { argv } from 'yargs';
 
 import config from '../../config';
-import { getAffectedPackages, getAllPackageInfo } from '../../monorepo';
-import { screenerRunner, cancelScreenerRun } from '../../screener/screener.runner';
+import { getAllPackageInfo } from '../../monorepo';
+import { screenerRunner } from '../../screener/screener.runner';
 
 const { paths } = config;
 
@@ -17,7 +17,6 @@ task('screener:runner', cb => {
 
   const docsPackageName = '@fluentui/docs';
 
-  const changedPackages = getAffectedPackages();
   const packageInfos = getAllPackageInfo();
   if (Object.values(packageInfos).every(packageInfo => packageInfo.packageJson.name !== docsPackageName)) {
     throw new Error(`package ${docsPackageName} does not exist in the repo`);
@@ -38,13 +37,8 @@ task('screener:runner', cb => {
       });
 
   const screenerConfig = require(screenerConfigPath);
-  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
 
-  if (!changedPackages.has(docsPackageName) && isPrBuild) {
-    handlePromiseExit(cancelScreenerRun(screenerConfig, 'skipped'));
-  } else {
-    handlePromiseExit(screenerRunner(screenerConfig));
-  }
+  handlePromiseExit(screenerRunner(screenerConfig));
 });
 
 // ----------------------------------------

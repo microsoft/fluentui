@@ -86,6 +86,25 @@ describe('Dropdown', () => {
       expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
       expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
     });
+
+    it('is not visible when an empty array is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        multiple: true,
+        value: [],
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
+
+    it('is not visible when an empty string is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        value: '',
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
   });
 
   describe('open', () => {
@@ -1196,6 +1215,83 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('allowFreeForm', () => {
+    ['Enter', 'Tab'].forEach(key => {
+      it(`selects item that starts with query prefix on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('it');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(0)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item0');
+      });
+
+      it(`highlights first item matching prefix and selects it on ${key}`, () => {
+        const items = ['item0', 'item1', 'itemA1', 'itemB1'];
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+          items,
+        });
+
+        changeSearchInput('itemA');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemA1');
+      });
+
+      it(`keeps search query value when there is no match on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('itemX');
+        expect(searchInputNode).not.toHaveAttribute('aria-activedescendant');
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemX');
+      });
+
+      it(`keeps search query value when when selected by arrow key on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('item1');
+        keyDownOnSearchInput('ArrowDown');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item2');
+      });
+      return true;
+    });
+
+    it('selects item that starts with query prefix when user clicks on toggle', () => {
+      const { clickOnToggleIndicator, changeSearchInput, searchInputNode } = renderDropdown({
+        search: items => items,
+        allowFreeform: true,
+      });
+
+      changeSearchInput('it');
+      expect(searchInputNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
+      clickOnToggleIndicator();
+      expect(searchInputNode).toHaveValue('item0');
+    });
+  });
+
   describe('getA11ySelectionMessage', () => {
     afterEach(() => {
       jest.runAllTimers();
@@ -2024,14 +2120,47 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).not.toHaveAttribute('aria-label');
     });
 
-    it('trigger button should not have aria-labelledby', () => {
+    it('trigger button should have aria-labelledby which points to trigger button content', () => {
       const { triggerButtonNode } = renderDropdown({ items });
-      expect(triggerButtonNode).not.toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('__content');
+    });
+
+    it('trigger button merges props correctly', () => {
+      const { triggerButtonNode } = renderDropdown({ items, triggerButton: { 'data-test': 'ok' } });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode).toHaveAttribute('data-test');
+    });
+
+    it('trigger button merges props correctly when content is string', () => {
+      const { triggerButtonNode } = renderDropdown({ items, triggerButton: { content: 'ok' } });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode.firstChild.textContent).toBe('ok');
+    });
+
+    it('trigger button merges props correctly when content is object', () => {
+      const { triggerButtonNode } = renderDropdown({
+        items,
+        triggerButton: { content: { content: 'ok', 'data-test': 'ok' } },
+      });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode.firstChild.textContent).toBe('ok');
+      expect(triggerButtonNode.firstChild).toHaveAttribute('data-test');
     });
 
     it('trigger button should have aria-labelledby from user prop', () => {
       const { triggerButtonNode } = renderDropdown({ items, 'aria-labelledby': 'form-label' });
-      expect(triggerButtonNode).toHaveAttribute('aria-labelledby', 'form-label');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('form-label');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('__content');
     });
 
     it('trigger button should not have aria-describedby', () => {

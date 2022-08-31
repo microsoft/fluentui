@@ -1,6 +1,7 @@
 import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
 import * as rootPreview from '../../../.storybook/preview';
+import './docs-root-v9.css';
 
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
 export const decorators = rootPreview.decorators;
@@ -24,18 +25,15 @@ export const parameters = {
         [
           'Introduction',
           'Developer',
-          ['Quick Start', 'Styling Components', 'Positioning Components'],
+          ['Quick Start', 'Styling Components', 'Positioning Components', 'Component Poster'],
           'Upgrading',
           [
+            'Overview',
+            'Important changes',
+            'Planning your journey',
             'from v8',
-            [
-              'Overview',
-              'Important changes',
-              'Planning your journey',
-              'Component Mapping',
-              'Color Mapping',
-              'Troubleshooting',
-            ],
+            ['Component Mapping', 'Color Mapping', 'Troubleshooting'],
+            'from v0',
           ],
         ],
         'Theme',

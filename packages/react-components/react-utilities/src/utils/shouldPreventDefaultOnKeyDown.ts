@@ -2,6 +2,7 @@ import { Space, Enter } from '@fluentui/keyboard-keys';
 import * as React from 'react';
 
 /**
+ * @internal
  * Checks if the keyboard event should preventDefault() for Enter and Spacebar keys
  *
  * Useful for situations where a keydown needs to be transformed to a click event

@@ -5,10 +5,6 @@ import { MenuItemSlots } from '../index';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles';
 import type { MenuItemRadioState } from './MenuItemRadio.types';
 
-/**
- * @deprecated Use `menuItemRadioClassNames.root` instead.
- */
-export const menuItemRadioClassName = 'fui-MenuItemRadio';
 export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>> = {
   root: 'fui-MenuItemRadio',
   icon: 'fui-MenuItemRadio__icon',

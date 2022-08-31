@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(react-dialog): adds proper style to make DialogBody responsive",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

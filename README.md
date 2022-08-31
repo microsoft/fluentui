@@ -2,9 +2,7 @@
 
 [![Build Status](https://img.shields.io/azure-devops/build/uifabric/fabricpublic/164/master?style=flat-square)](https://dev.azure.com/uifabric/fabricpublic/_build?definitionId=164) ![GitHub contributors](https://img.shields.io/github/contributors/microsoft/fluentui?style=flat-square) ![GitHub top language](https://img.shields.io/github/languages/top/microsoft/fluentui?style=flat-square) [![Twitter Follow](https://img.shields.io/twitter/follow/fluentui?logo=twitter&style=flat-square)](https://twitter.com/FluentUI?ref_src=twsrc%5Etfw)
 
-> :tada: :tada: :tada: **Version 8 of `@fluentui/react` is now available on npm!** :tada: :tada: :tada:
->
-> See the [v8 release notes](https://github.com/microsoft/fluentui/wiki/Version-8-release-notes) for more info, and please file an issue if you have any problems.
+> Fluent UI React is shipping its v9 final stable release. Visit the [Fluent UI React v9 Release page on the wiki](https://github.com/microsoft/fluentui/wiki/Fluent-UI-React-v9-Release) to learn more about the upcoming release schedule.
 
 Fluent UI web represents a collection of utilities, React components, and web components for building web applications.
 
@@ -28,6 +26,14 @@ The following table will help you navigate the 3 projects and understand their d
 <!-- prettier-ignore-end -->
 
 > Why are there two React versions? See the [FAQ on Fabric and Stardust](https://github.com/microsoft/fluentui/wiki/FAQ---Fabric-and-Stardust-to-Fluent-UI).
+
+## FluentUI Insights
+
+[Fluent UI Insights](https://docs.microsoft.com/en-us/shows/fluent-ui-insights?utm_source=github) is a series that describes the design and decisions behind the Fluent UI design system.
+
+|                                                                                                            EP01: Positioning                                                                                                             |                                                                                                          EP02: Styling                                                                                                           |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://docs.microsoft.com/en-us/shows/fluent-ui-insights/fluent-ui-insights-positioning?utm_source=github" target="_blank"><img src="ghdocs/medias/fluentui-ep01-preview.gif" alt="Watch EP01: Positioning" width="240" /></a> | <a href="https://docs.microsoft.com/en-us/shows/fluent-ui-insights/fluent-ui-insights-styling?utm_source=github" target="_blank"><img src="ghdocs/medias/fluentui-ep02-preview.gif" alt="Watch EP02: Styling" width="240" /></a> |
 
 ## Licenses
 

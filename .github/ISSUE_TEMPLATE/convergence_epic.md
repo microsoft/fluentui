@@ -8,50 +8,41 @@ These issues are used by core contributors to track the list of items that shoul
 completed as part of converging a component. More info can be found here: https://github.com/microsoft/fluentui/wiki/Component-Convergence-Guide
 -->
 
-# Preparation:
+## Preparation:
 
-- [ ] Started prep
-- [ ] Open UI Research complete
+- [ ] Open UI Research
   - [link to https://open-ui.org/]
-- [ ] Comparison on v8 and v0 complete
-- [ ] Gather open GitHub issues related to component
-- [ ] react-\* package scaffolded
-  - [link to package]
+- [ ] Open GitHub issues related to component
+  - [link to each issue]
+- [ ] react-\* package scaffolded with the right ownership in CODEOWNERS
+  - [link to package / PR]
 - [ ] Component Spec authored and reviewed
-  - [link to spec in component package]
-- [ ] **Deliverable:** Reviewed component spec
+  - [link to spec in component package / PR]
 
-# Implementation
+## Implementation
 
 [link to react-* package folder]
 
-- [ ] Started impl
-- [ ] Implement component
-- [ ] Add storybook stories
-- [ ] Using hooks
-- [ ] Using makeStyles
-- [ ] Respects Figma tokens (and using provider)
-- [ ] Respects API principles, shorthands and slots handling
-- [ ] No dependency on v0/v7
-- [ ] Add tests - Conformance, Unit, and VR
+- [ ] Component implementation
+  - [link(s) to component implementation related PRs]
+- [ ] Storybook stories
+  - [link(s) to stories PRs]
+- [ ] Add tests: Conformance, Unit, and VR -- add PRs to all
   - [ ] Bundle size fixtures
   - [ ] Conformance tests
   - [ ] Unit tests
   - [ ] VR tests
   - [ ] Accessibility behavior tests
   - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): (issue link)
-- [ ] Write README.md covering basic usage
-- [ ] Write initial MIGRATION.md guide (include v8 and v0)
-- [ ] Set component ownership in CODEOWNERS
-- [ ] **Deliverable:** Experimental component ready for partner use, component re-exported in `react-components`
+  - [ ] Performance test scenario
+- [ ] README.md covering basic usage
+- [ ] MIGRATION.md guide (include v8 and v0)
 
-# Validation
+## Validation
 
-- [ ] Started validating
 - [ ] Add and validate in UI Builder
 - [ ] Add and validate in docs site
 - [ ] Validate with token pipeline
 - [ ] Validate in product
 - [ ] Finalize migration guide
   - [ ] Author codemods
-- [ ] **Deliverable:** Preview component ready for broader/3rd party use

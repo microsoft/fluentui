@@ -15,11 +15,11 @@ import { DefaultSvg } from './DefaultSvg';
  */
 export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
   // Props
-  const { appearance = 'primary', labelPosition = 'after', size = 'medium', status = 'active' } = props;
+  const { appearance = 'primary', labelPosition = 'after', size = 'medium' } = props;
   const baseId = useId('spinner');
 
-  const { tabIndex, ...rest } = props;
-  const nativeRoot = getNativeElementProps('div', { ref, ...rest }, ['size']);
+  const { role = 'progressbar', tabIndex, ...rest } = props;
+  const nativeRoot = getNativeElementProps('div', { ref, role, ...rest }, ['size']);
 
   const labelShorthand = resolveShorthand(props.label, {
     defaultProps: {
@@ -36,15 +36,14 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     },
   });
 
-  if (labelShorthand && spinnerShortHand && !spinnerShortHand['aria-labelledby']) {
-    spinnerShortHand['aria-labelledby'] = labelShorthand.id;
+  if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {
+    nativeRoot['aria-labelledby'] = labelShorthand.id;
   }
 
   const state: SpinnerState = {
     appearance,
     labelPosition,
     size,
-    status,
     components: {
       root: 'div',
       spinner: 'span',

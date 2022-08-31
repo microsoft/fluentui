@@ -6,37 +6,37 @@
 
 import * as React_2 from 'react';
 
-// @public (undocumented)
+// @internal (undocumented)
 export type Context<Value> = React_2.Context<Value> & {
     Provider: React_2.FC<React_2.ProviderProps<Value>>;
     Consumer: never;
 };
 
-// @public (undocumented)
+// @internal (undocumented)
 export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedValue;
 
-// @public (undocumented)
+// @internal (undocumented)
 export type ContextValue<Value> = {
     listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
     value: React_2.MutableRefObject<Value>;
     version: React_2.MutableRefObject<ContextVersion>;
 };
 
-// @public (undocumented)
+// @internal (undocumented)
 export type ContextValues<Value> = ContextValue<Value> & {
     listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
 };
 
-// @public (undocumented)
+// @internal (undocumented)
 export type ContextVersion = number;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const createContext: <Value>(defaultValue: Value) => Context<Value>;
 
-// @public
+// @internal
 export const useContextSelector: <Value, SelectedValue>(context: Context<Value>, selector: ContextSelector<Value, SelectedValue>) => SelectedValue;
 
-// @public
+// @internal
 export function useHasParentContext<Value>(context: Context<Value>): boolean;
 
 // (No @packageDocumentation comment for this package)

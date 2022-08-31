@@ -1,4 +1,5 @@
 /**
+ * @internal
  * Finds and swaps a provided key for it's right to left format.
  */
 export const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {

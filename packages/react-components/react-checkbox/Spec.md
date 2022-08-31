@@ -32,23 +32,24 @@ The v0 `Checkbox` component supports a mixed state, which is the same as indeter
 ```
 
 Component props:
-|Prop|Description|
-|---|---|
-|accessibility|Accessibility behavior if overridden by the user.|
-|as|Render as given string or component.|
-|checked|Checkbox's checked state.|
-|className|Additional styles.|
-|defaultChecked|Whether the checkbox should be set to checked by default.|
-|design|...|
-|disabled|Whether the checkbox is disabled or not.|
-|indicator|Checkbox's icon indicator.|
-|label|Label text or jsx to be rendered in the label.|
-|labelPosition|Whether the label is rendered on left or right (`start` or `end`).|
-|onChange|Event handler to be called after checked state has changed.|
-|onClick|Event handler to be called after the checkbox is clicked.|
-|styles|Additional styles.|
-|toggle|Render a toggle style checkbox with on and off choices.|
-|variables|Additional styles.|
+
+| Prop           | Description                                                        |
+| -------------- | ------------------------------------------------------------------ |
+| accessibility  | Accessibility behavior if overridden by the user.                  |
+| as             | Render as given string or component.                               |
+| checked        | Checkbox's checked state.                                          |
+| className      | Additional styles.                                                 |
+| defaultChecked | Whether the checkbox should be set to checked by default.          |
+| design         | ...                                                                |
+| disabled       | Whether the checkbox is disabled or not.                           |
+| indicator      | Checkbox's icon indicator.                                         |
+| label          | Label text or jsx to be rendered in the label.                     |
+| labelPosition  | Whether the label is rendered on left or right (`start` or `end`). |
+| onChange       | Event handler to be called after checked state has changed.        |
+| onClick        | Event handler to be called after the checkbox is clicked.          |
+| styles         | Additional styles.                                                 |
+| toggle         | Render a toggle style checkbox with on and off choices.            |
+| variables      | Additional styles.                                                 |
 
 ### [Checkbox in v8/Fabric](https://developer.microsoft.com/en-us/fluentui#/controls/web/checkbox)
 
@@ -66,32 +67,33 @@ Example
 ```
 
 Component props:
-|Prop|Description|
-|---|---|
-|ariaDescribedBy|Id of the element that describes the checkbox.|
-|ariaLabel|Accessible label for the checkbox.|
-|ariaLabelledBy|Id of the element that contains the label information of the checkbox.|
-|ariaPositionInSet|Number in the parent set (if in a set) for aria-posinset.|
-|ariaSetSize|The total size of the parent set (if in a set) for aria-setsize.|
-|boxSide|Wheter the checkbox should be shown before or after the label.|
-|checked|Checkbox's checked state.|
-|checkmarkIconProps|Icon to be rendered in the checkbox.|
-|className|Additional styles.|
-|componentRef|Optional ref.|
-|defaultChecked|Whether the checkbox should be set to checked by default.|
-|defaultIndeterminate|Whether the checkbox should be set to indeterminate by default.|
-|disabled|Whether the checkbox is disabled or not.|
-|id|Id for the checkbox input.|
-|indeterminate|Checkbox's indeterminate state.|
-|inputProps|Optional props to be applied to the input element before applying other props.|
-|label|String to display next to the checkbox.|
-|name|Name for the checkbox input.|
-|onChange|Event handler to be called after the checked value has changed.|
-|onRenderLabel|Custom render for the label.|
-|required|Required state of the checkbox.|
-|styles|Additional styles.|
-|theme|Additional styles.|
-|title|Title text applied to the root element and the hidden checkbox input.|
+
+| Prop                 | Description                                                                    |
+| -------------------- | ------------------------------------------------------------------------------ |
+| ariaDescribedBy      | Id of the element that describes the checkbox.                                 |
+| ariaLabel            | Accessible label for the checkbox.                                             |
+| ariaLabelledBy       | Id of the element that contains the label information of the checkbox.         |
+| ariaPositionInSet    | Number in the parent set (if in a set) for aria-posinset.                      |
+| ariaSetSize          | The total size of the parent set (if in a set) for aria-setsize.               |
+| boxSide              | Wheter the checkbox should be shown before or after the label.                 |
+| checked              | Checkbox's checked state.                                                      |
+| checkmarkIconProps   | Icon to be rendered in the checkbox.                                           |
+| className            | Additional styles.                                                             |
+| componentRef         | Optional ref.                                                                  |
+| defaultChecked       | Whether the checkbox should be set to checked by default.                      |
+| defaultIndeterminate | Whether the checkbox should be set to indeterminate by default.                |
+| disabled             | Whether the checkbox is disabled or not.                                       |
+| id                   | Id for the checkbox input.                                                     |
+| indeterminate        | Checkbox's indeterminate state.                                                |
+| inputProps           | Optional props to be applied to the input element before applying other props. |
+| label                | String to display next to the checkbox.                                        |
+| name                 | Name for the checkbox input.                                                   |
+| onChange             | Event handler to be called after the checked value has changed.                |
+| onRenderLabel        | Custom render for the label.                                                   |
+| required             | Required state of the checkbox.                                                |
+| styles               | Additional styles.                                                             |
+| theme                | Additional styles.                                                             |
+| title                | Title text applied to the root element and the hidden checkbox input.          |
 
 ### Conclusion
 
@@ -125,7 +127,7 @@ Component props:
 
 ### Checkbox Props
 
-See [Checkbox.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-checkbox/src/components/Checkbox/Checkbox.types.ts)
+See [Checkbox.types.ts](./src/components/Checkbox/Checkbox.types.ts)
 
 ## Structure
 
@@ -147,22 +149,22 @@ See [Checkbox.types.ts](https://github.com/microsoft/fluentui/blob/master/packag
 
 ```tsx
 <slots.root {...slotProps.root}>
-  {state.labelPosition === 'before' && <slots.label {...slotProps.label} />}
-  <slots.indicator {...slotProps.indicator} />
   <slots.input {...slotProps.input} />
-  {state.labelPosition === 'after' && <slots.label {...slotProps.label} />}
+  {state.labelPosition === 'before' && slots.label && <slots.label {...slotProps.label} />}
+  <slots.indicator {...slotProps.indicator} />
+  {state.labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
 </slots.root>
 ```
 
 ### **DOM**
 
 ```html
-<span class="fui-Checkbox root">
-  <div aria-hidden="true" class="indicator">
+<span class="fui-Checkbox">
+  <input type="checkbox" id="checkbox-1" class="fui-Checkbox__input" />
+  <div aria-hidden="true" class="fui-Checkbox__indicator">
     <CheckmarkRegular />
   </div>
-  <input type="checkbox" id="checkbox-1" class="input" />
-  <label for="checkbox-1" className="label">Example Checkbox</label>
+  <label for="checkbox-1" className="fui-Checkbox__label">Example Checkbox</label>
 </span>
 ```
 

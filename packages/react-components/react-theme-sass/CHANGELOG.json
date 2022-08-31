@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/react-theme-sass",
+  "entries": [
+    {
+      "date": "Tue, 28 Jun 2022 15:13:22 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "eeed967f604dc4f6a4b6b32b6347c0ed9360294c",
+            "comment": "Add SASS variables mapped to CSS variables provided by react-theme"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "03e380fac7237a246774aa83b3771bbbd67be8e6",
+            "comment": "fix(react-theme-sass): Remove color palette tokens which are no longer present in react-theme"
+          }
+        ]
+      }
+    }
+  ]
+}

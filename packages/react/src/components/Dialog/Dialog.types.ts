@@ -23,6 +23,7 @@ export interface IDialogProps
     // eslint-disable-next-line deprecation/deprecation
     IWithResponsiveModeState,
     IAccessiblePopupProps {
+  children?: React.ReactNode;
   /**
    * @deprecated Unused, returns no value
    */

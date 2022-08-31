@@ -5,10 +5,6 @@ import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `popoverSurfaceClassNames.root` instead.
- */
-export const popoverSurfaceClassName = 'fui-PopoverSurface';
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots> = {
   root: 'fui-PopoverSurface',
 };
@@ -26,20 +22,18 @@ const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow16,
-    ...shorthands.borderRadius('4px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
   },
 
   inverted: {
-    // TODO: neutral background inverted missing from superset and theme
-    backgroundColor: tokens.colorNeutralForeground1,
-    color: tokens.colorNeutralForegroundInverted,
+    backgroundColor: tokens.colorNeutralBackgroundStatic,
+    color: tokens.colorNeutralForegroundInvertedStatic,
   },
 
   brand: {
     backgroundColor: tokens.colorBrandBackground,
-    // TODO: clarify with designers what foreground color should be with brand background,
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundOnBrand,
   },
 
   smallPadding: {

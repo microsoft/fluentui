@@ -638,7 +638,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         aria-roledescription={buttonProps['aria-roledescription']}
         onFocusCapture={this._onSplitContainerFocusCapture}
       >
-        <span style={{ display: 'flex' }}>
+        <span style={{ display: 'flex', width: '100%' }}>
           {this._onRenderContent(tag, buttonProps)}
           {this._onRenderSplitButtonMenuButton(classNames, keytipAttributes)}
           {this._onRenderSplitButtonDivider(classNames)}
@@ -763,7 +763,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _onKeyPress = (
     ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
   ) => {
+    // eslint-disable-next-line deprecation/deprecation
     if (!this.props.disabled && this.props.onKeyPress !== undefined) {
+      // eslint-disable-next-line deprecation/deprecation
       this.props.onKeyPress(ev); // not cancelling event because it's not disabled
     }
   };

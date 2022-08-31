@@ -191,17 +191,19 @@ export const TreeTitle = (React.forwardRef<HTMLAnchorElement, TreeTitleProps>((p
     },
   });
 
-  const selectIndicator = Box.create(selectionIndicator, {
-    defaultProps: () => ({
-      as: 'span',
-      selected,
-      ...getA11Props('indicator', {
-        className: treeTitleSlotClassNames.indicator,
-        styles: resolvedStyles.selectionIndicator,
+  const selectionIndicatorElement =
+    selectable &&
+    Box.create(selectionIndicator, {
+      defaultProps: () => ({
+        as: 'span',
+        selected,
+        ...getA11Props('indicator', {
+          className: treeTitleSlotClassNames.indicator,
+          styles: resolvedStyles.selectionIndicator,
+        }),
       }),
-    }),
-    overrideProps: selectionIndicatorOverrideProps,
-  });
+      overrideProps: selectionIndicatorOverrideProps,
+    });
 
   const element = (
     <ElementType
@@ -215,7 +217,7 @@ export const TreeTitle = (React.forwardRef<HTMLAnchorElement, TreeTitleProps>((p
       })}
     >
       {childrenExist(children) ? children : content}
-      {selectIndicator}
+      {selectionIndicatorElement}
     </ElementType>
   );
   setEnd();

@@ -25,6 +25,7 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
   // Load api-extractor output from packages into a model
   const apiModel = new ApiModel();
   for (const apiJsonPath of apiJsonPaths) {
+    // eslint-disable-next-line no-console
     console.log('Loading ' + apiJsonPath);
 
     // If the file belongs to the compat layer.
@@ -53,6 +54,7 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
   const requestedPages = ([] as string[]).concat(...Object.values(pageGroups));
   for (const pageName of requestedPages) {
     if (!pageJsonByName.has(pageName)) {
+      // eslint-disable-next-line no-console
       console.warn('Warning: no API items found for expected @docCategory ' + pageName);
     }
   }
@@ -61,6 +63,7 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
   for (const [pageName, pageJson] of pageJsonByName.entries()) {
     const pageJsonPath = path.join(outputRoot, pageJson.group || '', pageName + '.page.json');
 
+    // eslint-disable-next-line no-console
     console.log('Writing ' + pageJsonPath);
     const json = min ? JSON.stringify(pageJson) : JSON.stringify(pageJson, null, 2);
     fse.writeFileSync(pageJsonPath, json);

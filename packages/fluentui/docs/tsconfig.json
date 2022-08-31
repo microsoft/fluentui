@@ -4,6 +4,7 @@
     "module": "esnext",
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
+      "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index"],
       "@fluentui/a11y-testing": ["packages/a11y-testing/src/index"],
       "@fluentui/set-version": ["packages/set-version/src"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],

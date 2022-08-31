@@ -6,7 +6,7 @@ import type { SplitButtonProps } from './SplitButton.types';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * SplitButtons are a grouping of two interactive surfaces where the interacting with the first one triggers a primary
+ * SplitButtons are a grouping of two interactive surfaces where interacting with the first one triggers a primary
  * action, while interacting with the second one opens a menu with secondary actions.
  */
 export const SplitButton: ForwardRefComponent<SplitButtonProps> = React.forwardRef((props, ref) => {

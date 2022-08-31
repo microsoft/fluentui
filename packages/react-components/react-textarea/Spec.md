@@ -64,42 +64,48 @@ Note: These colors are based on the design spec, therefore they come from the de
 ### Component props:
 
 ```ts
-type TextAreaProps = {
+/**
+ * Textarea Props
+ */
+export type TextareaProps = Omit<
+  ComponentProps<Partial<TextareaSlots>, 'textarea'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> & {
   /**
-   * Which direction the TextArea is allowed to be resized.
+   * Styling the Textarea should use.
    *
-   * @defaultvalue none
-   */
-  resize?: 'none' | 'horizontal' | 'vertical' | 'both';
-
-  /**
-   * Size of the TextArea.
-   *
-   * @defaultvalue medium
-   */
-  size?: 'small' | 'medium' | 'large';
-
-  /**
-   * Styling the TextArea should use.
-   *
-   * @defaultvalue outline
+   * @default outline
    */
   appearance?: 'outline' | 'filledDarker' | 'filledLighter';
 
   /**
-   * The value of the TextArea. Used when the component is controlled.
-   */
-  value?: string;
-
-  /**
-   * The default value of the TextArea. Used when the component is uncontrolled.
+   * The default value of the Textarea.
    */
   defaultValue?: string;
 
   /**
    * Callback for when the user changes the value.
    */
-  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
+
+  /**
+   * Which direction the Textarea is allowed to be resized.
+   *
+   * @default none
+   */
+  resize?: 'none' | 'horizontal' | 'vertical' | 'both';
+
+  /**
+   * Size of the Textarea.
+   *
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+
+  /**
+   * The value of the Textarea.
+   */
+  value?: string;
 };
 
 /**
@@ -132,7 +138,9 @@ The design spec mentions a character count, error message, and label which will 
 **Internal**
 
 ```tsx
-<slots.root {...slotProps.root}></slots.root>
+<slots.root {...slotProps.root}>
+  <slots.textarea {...slotProps.textarea} />
+</slots.root>
 ```
 
 **DOM** - how the component will be rendered as HTML elements
@@ -148,8 +156,6 @@ The design spec mentions a character count, error message, and label which will 
 See [MIGRATION.md](MIGRATION.md).
 
 ## Behaviors
-
-TODO: Until the upcoming design review, behavior hasn't been set and will be updated when approved.
 
 - Component States
   - Rest

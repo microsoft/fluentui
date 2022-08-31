@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `avatarClassNames.root` instead.
- */
-export const avatarClassName = 'fui-Avatar';
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   root: 'fui-Avatar',
   image: 'fui-Avatar__image',
@@ -103,7 +99,11 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
 
-    ':before': {
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
+
+    '::before': {
       content: '""',
       position: 'absolute',
       top: 0,
@@ -115,38 +115,43 @@ const useStyles = makeStyles({
       transitionProperty: 'margin, opacity',
       transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
       transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
   },
 
   ring: {
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorBrandBackgroundStatic),
       ...shorthands.borderStyle('solid'),
     },
   },
   ringThick: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThick})`),
       ...shorthands.borderWidth(tokens.strokeWidthThick),
     },
   },
   ringThicker: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThicker})`),
       ...shorthands.borderWidth(tokens.strokeWidthThicker),
     },
   },
   ringThickest: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThickest})`),
       ...shorthands.borderWidth(tokens.strokeWidthThickest),
     },
   },
 
-  shadow4: { ':before': { boxShadow: tokens.shadow4 } },
-  shadow8: { ':before': { boxShadow: tokens.shadow8 } },
-  shadow16: { ':before': { boxShadow: tokens.shadow16 } },
-  shadow28: { ':before': { boxShadow: tokens.shadow28 } },
+  shadow4: { '::before': { boxShadow: tokens.shadow4 } },
+  shadow8: { '::before': { boxShadow: tokens.shadow8 } },
+  shadow16: { '::before': { boxShadow: tokens.shadow16 } },
+  shadow28: { '::before': { boxShadow: tokens.shadow28 } },
 
   inactive: {
     opacity: '0.8',
@@ -156,13 +161,23 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
 
-    ':before': {
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+      transitionDelay: '0.01ms',
+    },
+
+    '::before': {
       ...shorthands.margin(0),
       opacity: 0,
 
       transitionProperty: 'margin, opacity',
       transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
       transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
   },
 
@@ -207,6 +222,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius('inherit'),
   },
 
+  icon12: { fontSize: '12px' },
   icon16: { fontSize: '16px' },
   icon20: { fontSize: '20px' },
   icon24: { fontSize: '24px' },
@@ -215,7 +231,8 @@ const useStyles = makeStyles({
   icon48: { fontSize: '48px' },
 });
 
-const useSizeStyles = makeStyles({
+export const useSizeStyles = makeStyles({
+  16: { width: '16px', height: '16px' },
   20: { width: '20px', height: '20px' },
   24: { width: '24px', height: '24px' },
   28: { width: '28px', height: '28px' },
@@ -237,10 +254,10 @@ const useColorStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground6,
   },
   brand: {
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundInvertedStatic,
     backgroundColor: tokens.colorBrandBackgroundStatic,
   },
-  darkRed: {
+  'dark-red': {
     color: tokens.colorPaletteDarkRedForeground2,
     backgroundColor: tokens.colorPaletteDarkRedBackground2,
   },
@@ -284,11 +301,11 @@ const useColorStyles = makeStyles({
     color: tokens.colorPaletteSeafoamForeground2,
     backgroundColor: tokens.colorPaletteSeafoamBackground2,
   },
-  darkGreen: {
+  'dark-green': {
     color: tokens.colorPaletteDarkGreenForeground2,
     backgroundColor: tokens.colorPaletteDarkGreenBackground2,
   },
-  lightTeal: {
+  'light-teal': {
     color: tokens.colorPaletteLightTealForeground2,
     backgroundColor: tokens.colorPaletteLightTealBackground2,
   },
@@ -304,7 +321,7 @@ const useColorStyles = makeStyles({
     color: tokens.colorPaletteBlueForeground2,
     backgroundColor: tokens.colorPaletteBlueBackground2,
   },
-  royalBlue: {
+  'royal-blue': {
     color: tokens.colorPaletteRoyalBlueForeground2,
     backgroundColor: tokens.colorPaletteRoyalBlueBackground2,
   },
@@ -451,7 +468,9 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
   if (state.icon) {
     let iconSizeClass;
-    if (size <= 24) {
+    if (size <= 16) {
+      iconSizeClass = styles.icon12;
+    } else if (size <= 24) {
       iconSizeClass = styles.icon16;
     } else if (size <= 40) {
       iconSizeClass = styles.icon20;

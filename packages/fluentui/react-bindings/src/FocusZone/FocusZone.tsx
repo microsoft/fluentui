@@ -12,14 +12,12 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 
-import {
-  elementContains,
-  findScrollableParent,
-  getDocument,
-  getParent,
-  getWindow,
-  shouldWrapFocus,
-} from '@uifabric/utilities';
+import { getDocument } from '../utils/getDocument';
+import { getWindow } from '../utils/getWindow';
+import { findScrollableParent } from '../utils/findScrollableParent';
+import { shouldWrapFocus } from '../utils/shouldWrapFocus';
+
+import { elementContains, getParent } from '@fluentui/dom-utilities';
 
 import { getElementType } from '../utils/getElementType';
 import { getUnhandledProps } from '../utils/getUnhandledProps';
