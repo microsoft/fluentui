@@ -201,19 +201,15 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
     ...(p.mine ? { marginRight: pxToRem(-5) } : { marginLeft: pxToRem(-5) }),
   }),
 
-  reactionGroup: ({ props: p }): ICSSInJSStyle => {
-    const styles: ICSSInJSStyle = {
-      position: 'relative',
-      display: 'flex',
-      mraginTop: pxToRem(2),
-      zIndex: 1,
-    };
-    if (p.mine) {
-      styles.float = 'right';
-      styles.marginRight = pxToRem(-4);
-    } else {
-      styles.float = 'left';
-    }
-    return styles;
-  },
+  reactionGroup: ({ props: p }): ICSSInJSStyle => ({
+    position: 'relative',
+    display: 'flex',
+    mraginTop: pxToRem(2),
+    float: 'left',
+    zIndex: 1,
+    ...(p.mine && {
+      float: 'right',
+      marginRight: pxToRem(-4),
+    }),
+  }),
 };
