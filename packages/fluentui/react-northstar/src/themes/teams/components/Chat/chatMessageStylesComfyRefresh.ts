@@ -61,22 +61,16 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
     textOverflow: 'ellipsis',
   }),
 
-  timestamp: ({ variables: v }): ICSSInJSStyle => {
-    const styles: ICSSInJSStyle = {
-      display: 'inline-block',
-      alignSelf: 'self-start',
-      whiteSpace: 'nowrap',
-      opacity: 0,
-    };
-    if (v.hasReducedHorizontalSpace) {
-      styles.fontSize = '1rem';
-      styles.marginTop = pxToRem(3);
-      styles.marginLeft = pxToRem(2.5);
-      styles.marginRight = pxToRem(2.5);
-      styles.marginBottom = 0;
-    }
-    return styles;
-  },
+  timestamp: ({ variables: v }): ICSSInJSStyle => ({
+    display: 'inline-block',
+    alignSelf: 'self-start',
+    whiteSpace: 'nowrap',
+    opacity: 0,
+    ...(v.hasReducedHorizontalSpace && {
+      fontSize: '1rem',
+      margin: `${pxToRem(3)} ${pxToRem(2.5)} 0`,
+    }),
+  }),
 
   body: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'flex',
