@@ -83,6 +83,7 @@ jobs:
 
       - name: Download env variables artifact
         uses: actions/download-artifact@v3
+        id: download
         with:
           name: env-artifact
 
@@ -93,6 +94,9 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
+
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
 
       - uses: actions/setup-node@v3
         with:
@@ -142,6 +146,7 @@ jobs:
 
       - name: Download a single artifact
         uses: actions/download-artifact@v3
+        id: download
         with:
           name: env-artifact
 
@@ -157,6 +162,9 @@ jobs:
         with:
           node-version: 14.18.1
           cache: 'yarn'
+
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -199,6 +207,7 @@ jobs:
 
       - name: Download a single artifact
         uses: actions/download-artifact@v3
+        id: download
         with:
           name: env-artifact
 
@@ -214,6 +223,10 @@ jobs:
         with:
           node-version: 14.18.1
           cache: 'yarn'
+
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
