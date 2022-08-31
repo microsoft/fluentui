@@ -186,27 +186,20 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
     }),
   }),
 
-  badge: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const styles: ICSSInJSStyle = {
-      position: 'relative',
-      top: pxToRem(-5),
-      width: pxToRem(25),
-      height: pxToRem(25),
-      backgroundColor: 'none',
-      color: v.isImportantColor,
-      zIndex: v.zIndex,
-      '& > :first-child': {
-        display: 'inline-flex',
-        margin: '0 auto',
-      },
-    };
-    if (p.mine) {
-      styles.marginRight = pxToRem(-5);
-    } else {
-      styles.marginLeft = pxToRem(-5);
-    }
-    return styles;
-  },
+  badge: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    position: 'relative',
+    top: pxToRem(-5),
+    width: pxToRem(25),
+    height: pxToRem(25),
+    backgroundColor: 'none',
+    color: v.isImportantColor,
+    zIndex: v.zIndex,
+    '& > :first-child': {
+      display: 'inline-flex',
+      margin: '0 auto',
+    },
+    ...(p.mine ? { marginRight: pxToRem(-5) } : { marginLeft: pxToRem(-5) }),
+  }),
 
   reactionGroup: ({ props: p }): ICSSInJSStyle => {
     const styles: ICSSInJSStyle = {
