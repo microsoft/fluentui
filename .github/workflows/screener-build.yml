@@ -94,7 +94,9 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
-
+      - name: Test if environment file exists
+        run: |
+          [ -f environment ] && echo "File exists" || echo "File does not exist"
       - name: Delete artifact file
         run: |
           rm environment
@@ -167,7 +169,9 @@ jobs:
         with:
           node-version: 14.18.1
           cache: 'yarn'
-
+      - name: Test if environment file exists
+        run: |
+          [ -f environment ] && echo "File exists" || echo "File does not exist"
       - name: Delete artifact file
         run: |
           rm environment
@@ -232,6 +236,10 @@ jobs:
         with:
           node-version: 14.18.1
           cache: 'yarn'
+
+      - name: Test if environment file exists
+        run: |
+          [ -f environment ] && echo "File exists" || echo "File does not exist"
 
       - name: Delete artifact file
         run: |
