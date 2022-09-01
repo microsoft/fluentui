@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added stub react-hooks",
+  "packageName": "@fluentui/react-hooks",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
