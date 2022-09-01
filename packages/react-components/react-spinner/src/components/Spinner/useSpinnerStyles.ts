@@ -208,7 +208,7 @@ const useTrackStyles = makeStyles({
     },
 
     ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: 'rgba(255, 255, 255, 0.2)', // this is whiteAlpha[20] but that token is not exported
+      stroke: 'rgba(255, 255, 255, 1)', // this is whiteAlpha[20] but that token is not exported
     },
   },
   primary: {
