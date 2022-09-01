@@ -15,7 +15,7 @@ import {
 
 import { Scenario } from './utils';
 
-export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
+export const PersonalFormAccordion = () => {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   React.useEffect(() => {
@@ -83,9 +83,4 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
       )}
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Personal form accordion',
-  id: 'accordion-accessibility-scenario',
 };
