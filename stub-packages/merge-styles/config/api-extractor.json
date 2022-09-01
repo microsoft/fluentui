@@ -1,0 +1,3 @@
+{
+  "extends": "@uifabric/build/api-extractor/api-extractor.common.json"
+}
