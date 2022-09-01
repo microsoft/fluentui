@@ -13,7 +13,7 @@
     "test": "just-scripts test",
     "just": "just-scripts",
     "start": "webpack-dev-server --mode=development --config=webpack.config.js",
-    "type-check": "tsc -b"
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -23,8 +23,8 @@
     "swc-loader": "^0.2.3"
   },
   "dependencies": {
-    "@fluentui/react": "^8.93.1",
-    "@fluentui/react-hooks": "^8.6.10",
+    "@fluentui/react": "8.93.1",
+    "@fluentui/react-hooks": "8.6.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.1.0"
