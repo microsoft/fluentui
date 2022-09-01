@@ -19,7 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Features
-- Add `FocusTrapZone` prop `preventScrollOnRestoreFocusToPreviouslyFocusedElement` to prevent scroll on focus when `FocusTrapZone` releases @yuanboxue-amber ([#24632](https://github.com/microsoft/fluentui/pull/24632))
+- Add `FocusTrapZone` prop `preventScrollOnRestoreFocus` to prevent scroll on focus when `FocusTrapZone` releases @yuanboxue-amber ([#24632](https://github.com/microsoft/fluentui/pull/24632))
 
 ### Fixes
 - Allow React 17 in `peerDependencies` of all packages and bump react-is to 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))

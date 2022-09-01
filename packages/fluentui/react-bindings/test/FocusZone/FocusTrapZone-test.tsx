@@ -819,9 +819,9 @@ describe('FocusTrapZone', () => {
     };
 
     it.each`
-      ftzProps                                                           | preventScroll
-      ${undefined}                                                       | ${undefined}
-      ${{ preventScrollOnRestoreFocusToPreviouslyFocusedElement: true }} | ${true}
+      ftzProps                                 | preventScroll
+      ${undefined}                             | ${undefined}
+      ${{ preventScrollOnRestoreFocus: true }} | ${true}
     `('focus on previously focused element after unmounting the FTZ', async ({ ftzProps, preventScroll }) => {
       const { testContainer, removeTestContainer } = createTestContainer();
 

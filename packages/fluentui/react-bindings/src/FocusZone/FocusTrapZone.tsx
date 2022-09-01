@@ -57,7 +57,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     disableFirstFocus: PropTypes.bool,
     focusPreviouslyFocusedInnerElement: PropTypes.bool,
     focusTriggerOnOutsideClick: PropTypes.bool,
-    preventScrollOnRestoreFocusToPreviouslyFocusedElement: PropTypes.bool,
+    preventScrollOnRestoreFocus: PropTypes.bool,
     innerRef: PropTypes.any,
   };
 
@@ -287,7 +287,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
       (this._root.current.contains(activeElement) || activeElement === doc.body)
     ) {
       this._focusAsync(this._previouslyFocusedElementOutsideTrapZone, {
-        preventScroll: this.props.preventScrollOnRestoreFocusToPreviouslyFocusedElement,
+        preventScroll: this.props.preventScrollOnRestoreFocus,
       });
     }
 
