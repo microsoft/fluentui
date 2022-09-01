@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.19.9",
+      "version": "0.19.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-stylesheets to v0.2.7",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "@fluentui/react-theme-provider_v0.19.8",
       "version": "0.19.8",

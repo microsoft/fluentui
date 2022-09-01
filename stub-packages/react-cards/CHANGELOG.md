@@ -1,8 +1,24 @@
-# Change Log - @uifabric/react-cards
+# Change Log - @fluentui/react-cards
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.119.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.119.0)
+
+Thu, 01 Sep 2022 23:27:06 GMT
+
+### Minor changes
+
+- Added stub react-cards ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.14 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/react-cards to v0.119.0 ([PR #24531](https://github.com/microsoft/fluentui/pull/24531) by caperez@microsoft.com)
+- Bump @uifabric/example-app-base to v7.22.14 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/theme-samples to v7.5.14 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/jest-serializer-merge-styles to v7.2.4 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [0.118.14](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.118.14)
 

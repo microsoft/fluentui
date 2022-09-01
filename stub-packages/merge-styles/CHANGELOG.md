@@ -1,8 +1,20 @@
-# Change Log - @uifabric/merge-styles
+# Change Log - @fluentui/merge-styles
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v7.20.0)
+
+Thu, 01 Sep 2022 23:27:06 GMT
+
+### Minor changes
+
+- Added stub merge-styles ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/merge-styles to v7.20.0 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.19.0)
 

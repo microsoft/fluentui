@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.1)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.9.3..@uifabric/file-type-icons_v7.10.1)
+
+### Patches
+
+- Update to use latest responsive SVGs in Fabric CDN for filetypes, fixing mapping of .classifier icon ([PR #24531](https://github.com/microsoft/fluentui/pull/24531) by caperez@microsoft.com)
 
 ## [7.9.3](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.3)
 

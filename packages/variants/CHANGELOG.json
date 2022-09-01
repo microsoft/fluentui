@@ -2,6 +2,21 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/variants_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/theme to v1.7.9",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/variants"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 00:07:57 GMT",
       "tag": "@uifabric/variants_v7.2.39",
       "version": "7.2.39",

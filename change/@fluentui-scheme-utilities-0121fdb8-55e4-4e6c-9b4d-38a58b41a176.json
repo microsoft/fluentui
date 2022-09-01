@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added stub scheme-utilities",
-  "packageName": "@fluentui/scheme-utilities",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

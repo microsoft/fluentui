@@ -1,4 +1,28 @@
 {
-  "name": "@uifabric/variants",
-  "entries": []
+  "name": "@fluentui/scheme-utilities",
+  "entries": [
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@fluentui/scheme-utilities_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added stub scheme-utilities",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/variants to v7.3.0",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    }
+  ]
 }

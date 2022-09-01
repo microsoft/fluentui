@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added stub react-cards",
-  "packageName": "@fluentui/react-cards",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

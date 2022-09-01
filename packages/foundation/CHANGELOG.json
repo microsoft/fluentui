@@ -2,6 +2,21 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/foundation_v7.10.9",
+      "version": "7.10.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/merge-styles to v7.20.0",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/foundation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "@uifabric/foundation_v7.10.8",
       "version": "7.10.8",
