@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/addon-docs';
 import { FullscreenLink } from './utils';
+export const parentPath = 'concepts-developer-accessibility-stories';
 
-<Meta title="Concepts/Developer/Accessibility/Stories" />
+<Meta title="Concepts/Developer/Accessibility/Stories/List of scenarios" />
 
 # Accessibility Scenarios
 
@@ -9,8 +10,8 @@ Accessibility scenarios are used to validate accessibility of components and dem
 
 ## Component: Accordion
 
-- <FullscreenLink content="Accordion / Personal form" parent="accessibilityscenarios" story="personal-form-accordion" />
-- <FullscreenLink content="Accordion / FAQ" parent="accordion-faq-accessibility-scenario" story="faq" />
+- <FullscreenLink content="Accordion / Personal form" parent={parentPath} story="personal-form-accordion" />
+- <FullscreenLink content="Accordion / FAQ" parent={parentPath}} story="faq-accordion" />
 
 ## Component: Button
 
