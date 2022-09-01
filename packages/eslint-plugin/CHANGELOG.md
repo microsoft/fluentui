@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 01 Aug 2022 07:39:02 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Aug 2022 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.2)
+
+Mon, 08 Aug 2022 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.1..@fluentui/eslint-plugin_v1.12.2)
+
+### Patches
+
+- remove unused dependency ([PR #24138](https://github.com/microsoft/fluentui/pull/24138) by martinhochel@microsoft.com)
 
 ## [1.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.1)
 

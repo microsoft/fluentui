@@ -1,6 +1,8 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { series, resolveCwd, copyTask, copyInstructionsTask } from 'just-scripts';
+import { series, resolveCwd, copyTask, copyInstructionsTask, logger } from 'just-scripts';
+import { getProjectMetadata, findGitRoot } from '../monorepo';
+import { getTsPathAliasesConfig } from './utils';
 
 export function expandSourcePath(pattern: string): string {
   if (!pattern) {
@@ -30,6 +32,64 @@ export function expandSourcePath(pattern: string): string {
   }
 }
 
+/**
+ *
+ * Used solely for packages that use TS solution config files with TS path aliases
+ */
+export function copyCompiled() {
+  const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
+  const root = findGitRoot();
+
+  const packageDir = process.cwd();
+
+  if (!isUsingTsSolutionConfigs) {
+    throw new Error(`this task compliant only with packages that use TS solution config files.`);
+  }
+
+  // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+  const hasNewCompilationSetup = (tsConfig.compilerOptions.outDir as string).includes('dist/out-tsc');
+
+  if (!hasNewCompilationSetup) {
+    logger.info('copy-compiled: noop ');
+
+    return;
+  }
+
+  const projectMetadata = getProjectMetadata({ root, name: packageJson.name });
+
+  const paths = {
+    esm: {
+      in: path.join(
+        packageDir,
+        tsConfig.compilerOptions.outDir as string,
+        path.dirname(packageJson.module),
+        projectMetadata.sourceRoot,
+      ),
+      out: path.join(packageDir, path.dirname(packageJson.module)),
+    },
+    commonJs: {
+      in: path.join(
+        packageDir,
+        tsConfig.compilerOptions.outDir as string,
+        path.dirname(packageJson.main),
+        projectMetadata.sourceRoot,
+      ),
+      out: path.join(packageDir, path.dirname(packageJson.main)),
+    },
+  };
+
+  return series(
+    copyTask({
+      paths: [paths.esm.in],
+      dest: paths.esm.out,
+    }),
+    copyTask({
+      paths: [paths.commonJs.in],
+
+      dest: paths.commonJs.out,
+    }),
+  );
+}
 export function copy() {
   const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 

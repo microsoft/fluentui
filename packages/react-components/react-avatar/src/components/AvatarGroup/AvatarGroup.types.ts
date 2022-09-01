@@ -13,7 +13,7 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
    * Layout the AvatarGroupItems should be displayed as.
    * @default spread
    */
-  layout?: 'spread' | 'stack';
+  layout?: 'spread' | 'stack' | 'pie';
 
   /**
    * Size of the AvatarGroupItems.

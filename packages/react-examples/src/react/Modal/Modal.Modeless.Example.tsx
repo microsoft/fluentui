@@ -16,6 +16,7 @@ const dragOptions: IDragOptions = {
   moveMenuItemText: 'Move',
   closeMenuItemText: 'Close',
   menu: ContextualMenu,
+  dragHandleSelector: '.ms-Modal-scrollableContent > div:first-child',
 };
 const cancelIcon: IIconProps = { iconName: 'Cancel' };
 

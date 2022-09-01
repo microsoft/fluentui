@@ -37,6 +37,9 @@ const useRootStyles = makeStyles({
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
   },
 
   interactive: {

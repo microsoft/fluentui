@@ -12,7 +12,7 @@ export const NoFocusableElement = () => {
         <DialogSurface>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogBody>
-            <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
+            <p>⛔️ A Dialog without focusable elements is not recommended! ⛔️</p>
             <p>Escape key and backdrop click still works to ensure this modal can be closed</p>
           </DialogBody>
         </DialogSurface>
@@ -24,8 +24,8 @@ export const NoFocusableElement = () => {
         <DialogSurface>
           <DialogTitle closeButton={null}>Dialog Title</DialogTitle>
           <DialogBody>
-            <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
-            <p>Escape key still works to ensure this modal can be closed</p>
+            <p>⛔️ A Dialog without focusable elements is not recommended! ⛔️</p>
+            <p>⛔️ Escape key doesn't work, you're trapped! ⛔️</p>
           </DialogBody>
         </DialogSurface>
       </Dialog>

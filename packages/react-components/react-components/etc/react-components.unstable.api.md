@@ -201,6 +201,7 @@ import { TableSelectionCellState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
 import { Toolbar } from '@fluentui/react-toolbar';
+import { ToolbarButton } from '@fluentui/react-toolbar';
 import { ToolbarButtonProps } from '@fluentui/react-toolbar';
 import { ToolbarButtonState } from '@fluentui/react-toolbar';
 import { toolbarClassNames } from '@fluentui/react-toolbar';
@@ -671,6 +672,8 @@ export { TableSlots }
 export { TableState }
 
 export { Toolbar }
+
+export { ToolbarButton }
 
 export { ToolbarButtonProps }
 

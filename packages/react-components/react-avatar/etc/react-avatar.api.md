@@ -54,7 +54,7 @@ export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSl
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: NonNullable<Slot<'div', 'li'>>;
     avatar: NonNullable<Slot<typeof Avatar>>;
     overflowLabel: NonNullable<Slot<'span'>>;
 };
@@ -67,29 +67,29 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 };
 
 // @public
-export const AvatarGroupOverflow: React_2.FC<AvatarGroupOverflowProps>;
+export const AvatarGroupPopover: React_2.FC<AvatarGroupPopoverProps>;
 
 // @public (undocumented)
-export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots>;
+export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots>;
 
 // @public
-export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
+export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & {
     indicator?: 'count' | 'icon';
     count?: number;
     children: React_2.ReactNode;
 };
 
 // @public (undocumented)
-export type AvatarGroupOverflowSlots = {
+export type AvatarGroupPopoverSlots = {
     root: NonNullable<Slot<PopoverProps>>;
     triggerButton: NonNullable<Slot<'button'>>;
-    content: NonNullable<Slot<'div'>>;
+    content: NonNullable<Slot<'ul'>>;
     popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
     tooltip: NonNullable<Slot<TooltipProps>>;
 };
 
 // @public
-export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> & Required<Pick<AvatarGroupOverflowProps, 'indicator'>> & {
+export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Required<Pick<AvatarGroupPopoverProps, 'indicator'>> & {
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
@@ -97,7 +97,7 @@ export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> 
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
-    layout?: 'spread' | 'stack';
+    layout?: 'spread' | 'stack' | 'pie';
     size?: AvatarSizes;
 };
 
@@ -143,8 +143,6 @@ export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProp
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "getInitials" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function getInitials(displayName: string | undefined | null, isRtl: boolean, options?: {
     allowPhoneInitials?: boolean;
@@ -174,7 +172,7 @@ export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues
 export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
 
 // @public
-export const renderAvatarGroupOverflow_unstable: (state: AvatarGroupOverflowState, contextValues: AvatarGroupContextValues) => JSX.Element;
+export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSX.Element;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
@@ -195,10 +193,10 @@ export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: Rea
 export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
 
 // @public
-export const useAvatarGroupOverflow_unstable: (props: AvatarGroupOverflowProps) => AvatarGroupOverflowState;
+export const useAvatarGroupPopover_unstable: (props: AvatarGroupPopoverProps) => AvatarGroupPopoverState;
 
 // @public
-export const useAvatarGroupOverflowStyles_unstable: (state: AvatarGroupOverflowState) => AvatarGroupOverflowState;
+export const useAvatarGroupPopoverStyles_unstable: (state: AvatarGroupPopoverState) => AvatarGroupPopoverState;
 
 // @public
 export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarGroupState;

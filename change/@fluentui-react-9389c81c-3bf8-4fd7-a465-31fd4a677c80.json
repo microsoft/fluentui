@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Breadcrumb overflowbutton focus outline now visible in HCM.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

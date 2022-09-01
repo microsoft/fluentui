@@ -4,14 +4,14 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "build-storybook -o dist/storybook",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
+    "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
     "screener": "just-scripts screener",
-    "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
-    "start": "just-scripts dev:storybook"
+    "screener:build": "yarn build",
+    "start": "start-storybook",
+    "type-check": "tsc"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*"
@@ -41,6 +41,7 @@
     "@fluentui/react-spinbutton": "^9.0.0",
     "@fluentui/react-switch": "^9.0.4",
     "@fluentui/react-tabs": "^9.0.4",
+    "@fluentui/react-table": "9.0.0-alpha.1",
     "@fluentui/react-text": "^9.0.4",
     "@fluentui/react-textarea": "^9.0.4",
     "@fluentui/react-theme": "^9.0.0",
@@ -48,8 +49,8 @@
     "@fluentui/react-utilities": "^9.0.2",
     "@fluentui/scripts": "^1.0.0",
     "@griffel/react": "^1.3.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "screener-storybook": "0.23.0",
     "tslib": "^2.1.0"
   }

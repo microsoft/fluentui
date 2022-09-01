@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../common/isConformant';
@@ -84,7 +85,7 @@ describe('Dropdown', () => {
   });
 
   it('closes the popup on click with defaultOpen', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -99,7 +100,6 @@ describe('Dropdown', () => {
 
     fireEvent.click(combobox);
 
-    expect(queryByRole('listbox')).toBeNull();
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
@@ -112,11 +112,15 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    expect(getByRole('listbox')).not.toBeNull();
-
-    fireEvent.click(getByRole('combobox'));
+    const combobox = getByRole('combobox');
 
     expect(getByRole('listbox')).not.toBeNull();
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
+
+    fireEvent.click(combobox);
+
+    expect(getByRole('listbox')).not.toBeNull();
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
   });
 
   it('opens the popup on enter', () => {
@@ -135,7 +139,7 @@ describe('Dropdown', () => {
   });
 
   it('opens and closes the popup with alt + arrow keys', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -143,17 +147,17 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowDown', altKey: true });
+    const combobox = getByRole('combobox');
 
-    expect(getByRole('listbox')).not.toBeNull();
+    fireEvent.keyDown(combobox, { key: 'ArrowDown', altKey: true });
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowUp', altKey: true });
-
-    expect(queryByRole('listbox')).toBeNull();
+    fireEvent.keyDown(combobox, { key: 'ArrowUp', altKey: true });
+    expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
   it('closes the popup with escape', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -163,7 +167,7 @@ describe('Dropdown', () => {
 
     fireEvent.keyDown(getByRole('combobox'), { key: 'Escape' });
 
-    expect(queryByRole('listbox')).toBeNull();
+    expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('false');
   });
 
   it('fires onOpen callback', () => {
@@ -419,5 +423,82 @@ describe('Dropdown', () => {
 
     fireEvent.keyDown(combobox, { key: 'ArrowUp' });
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+  });
+
+  it('should move to first matching active option by typing a matching string', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Groot</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'gr');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+  });
+
+  it('should clear active option when typing a string with no matches', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.click(combobox);
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
+
+    userEvent.keyboard('t');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toBeFalsy();
+  });
+
+  it('should cycle through options by repeating the same letter', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown open>
+        <Option>Cat</Option>
+        <Option>Dog</Option>
+        <Option>Dolphin</Option>
+        <Option>Duck</Option>
+        <Option>Horse</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'dd');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Dolphin').id);
+
+    userEvent.type(combobox, 'dd');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Dog').id);
+  });
+
+  it('should not move active option when typing a matching string', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Redder</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.tab();
+    userEvent.keyboard('red');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
   });
 });

@@ -183,7 +183,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       eventBubblingEnabled: false,
       ...layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
-      insertFirst: isModeless,
+      insertFirst: layerProps?.insertFirst || isModeless,
       className: classNames.layer,
     };
 

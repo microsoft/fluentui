@@ -9,7 +9,8 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, SortDirection } from '../..';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
+import { useTable, ColumnDefinition, ColumnId } from '../../hooks';
 
 type FileCell = {
   label: string;
@@ -37,8 +38,6 @@ type Item = {
   lastUpdated: LastUpdatedCell;
   lastUpdate: LastUpdateCell;
 };
-
-type ColumnKey = 'file' | 'author' | 'lastUpdate' | 'lastUpdated';
 
 const items: Item[] = [
   {
@@ -79,80 +78,59 @@ const items: Item[] = [
   },
 ];
 
-const columns: Record<string, { label: string; compare: (a: unknown, b: unknown) => number }> = {
-  file: {
-    label: 'File',
-    compare: (a: unknown, b: unknown) => (a as FileCell).label.localeCompare((b as FileCell).label),
+const columns: ColumnDefinition<Item>[] = [
+  {
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
   },
-  author: {
-    label: 'Author',
-    compare: (a: unknown, b: unknown) => (a as AuthorCell).label.localeCompare((b as AuthorCell).label),
+  {
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
   },
-  lastUpdated: {
-    label: 'Last updated',
-    compare: (a: unknown, b: unknown) => (b as LastUpdatedCell).timestamp - (a as LastUpdatedCell).timestamp,
+  {
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
   },
-  lastUpdate: {
-    label: 'Last update',
-    compare: (a: unknown, b: unknown) => (a as LastUpdateCell).label.localeCompare((b as LastUpdateCell).label),
+  {
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
   },
-};
+];
 
 export const Sort = () => {
-  const [sortState, setSortState] = React.useState<{ sortColumn: string; sortDirection: SortDirection }>({
-    sortColumn: 'file',
-    sortDirection: 'ascending',
+  const {
+    rows,
+    sort: { getSortDirection, toggleColumnSort },
+  } = useTable({ columns, items });
+
+  const headerSortProps = (columnId: ColumnId) => () => ({
+    onClick: () => toggleColumnSort(columnId),
+    sortDirection: getSortDirection(columnId),
   });
-  const { sortColumn, sortDirection } = sortState;
-
-  const sortedItems = items.slice().sort((a, b) => {
-    if (!sortColumn) {
-      return 1;
-    }
-
-    const columnKey = sortColumn as ColumnKey;
-    const mod = sortDirection === 'ascending' ? 1 : -1;
-    return columns[columnKey].compare(a[columnKey], b[columnKey]) * mod;
-  });
-
-  const onHeaderCellClick = (columnKey: string) => () => {
-    setSortState(s => {
-      const newState = { ...s, sortDirection: 'ascending' as SortDirection };
-
-      if (s.sortColumn === columnKey) {
-        newState.sortDirection = s.sortDirection === 'ascending' ? 'descending' : 'ascending';
-      } else {
-        newState.sortColumn = columnKey;
-      }
-
-      return newState;
-    });
-  };
 
   return (
-    <Table>
+    <Table sortable>
       <TableHeader>
         <TableRow>
-          {Object.keys(columns).map(columnKey => (
-            <TableHeaderCell
-              key={columnKey}
-              onClick={onHeaderCellClick(columnKey)}
-              sortDirection={sortColumn === columnKey ? sortDirection : undefined}
-            >
-              {columns[columnKey].label}
-            </TableHeaderCell>
-          ))}
+          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sortedItems.map(item => (
+        {rows.map(({ item }) => (
           <TableRow key={item.file.label}>
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
-            </TableCell>
+            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
           </TableRow>

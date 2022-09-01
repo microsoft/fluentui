@@ -7,6 +7,7 @@ import {
   useTelemetry,
   ForwardRefWithAs,
   useMergedRefs,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -322,7 +323,15 @@ const charKeyPressedCleanupTime = 500;
 function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): ShorthandCollection<DropdownItemProps> {
   const normalizedValue = Array.isArray(rawValue) ? rawValue : [rawValue];
 
-  return multiple ? normalizedValue : normalizedValue.slice(0, 1);
+  if (multiple) {
+    return normalizedValue;
+  }
+
+  if (normalizedValue[0] === '') {
+    return [];
+  }
+
+  return normalizedValue.slice(0, 1);
 }
 
 /**
@@ -525,7 +534,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   const popperRef = useMergedRefs(props.popperRef);
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     popperRef.current?.updatePosition();
   }, [filteredItems?.length, popperRef]);
 

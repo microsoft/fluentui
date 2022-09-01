@@ -24,7 +24,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '5px',
+      marginBottom: '3px',
     },
     singleChartRoot: {
       width: width ? width : '100%',

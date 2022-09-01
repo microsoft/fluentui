@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Add radius option to getFocusStyles",
+  "packageName": "@fluentui/style-utilities",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

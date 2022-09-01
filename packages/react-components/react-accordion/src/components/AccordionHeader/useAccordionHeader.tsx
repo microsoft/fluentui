@@ -3,8 +3,7 @@ import { getNativeElementProps, resolveShorthand, useEventCallback } from '@flue
 import { useAccordionItemContext_unstable } from '../AccordionItem/index';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { AccordionContext } from '../Accordion/AccordionContext';
+import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -24,10 +23,7 @@ export const useAccordionHeader_unstable = (
    * force disabled state on button if accordion isn't collapsible
    * and this is the only item opened
    */
-  const disabledFocusable = useContextSelector(
-    AccordionContext,
-    ctx => !ctx.collapsible && ctx.openItems.length === 1 && open,
-  );
+  const disabledFocusable = useAccordionContext_unstable(ctx => !ctx.collapsible && ctx.openItems.length === 1 && open);
 
   const { dir } = useFluent();
 
@@ -47,6 +43,7 @@ export const useAccordionHeader_unstable = (
       disabled,
       disabledFocusable,
       'aria-expanded': open,
+      type: 'button',
     },
   });
 
