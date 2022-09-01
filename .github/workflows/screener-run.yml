@@ -1,5 +1,4 @@
 name: Screener run
-
 on:
   workflow_run:
     workflows:
@@ -9,17 +8,13 @@ on:
 
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
-
 jobs:
   screener-react-northstar:
     runs-on: 'ubuntu-latest'
-
     name: Screener @fluentui/react-northstar
-
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{github.event.workflow_run.head_branch}}
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
@@ -27,21 +22,38 @@ jobs:
           node-version: 14.18.1
           cache: 'yarn'
 
+      - name: Check if test app artifact deployed
+        uses: actions/github-script@v6
+        id: skip-screener
+        with:
+          script: |
+            let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: context.payload.workflow_run.id,
+
+            });
+            let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "northstar-artifact"
+            })[0];
+            core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
+
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          workflow_conclusion: success
+          run_id: ${{github.event.workflow_run.id}}
           name: env-artifact
 
       - name: Download N* storybook artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          workflow_conclusion: success
+          run_id: ${{github.event.workflow_run.id}}
           name: northstar-artifact
           # downloads artifact to where it would be 'built'
           path: packages/fluentui/docs/dist
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Define env variables
         run: |
@@ -50,6 +62,7 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
+
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -64,6 +77,8 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
+
       - name: Start @fluentui/react-northstar VR Test
         run: yarn workspace @fluentui/docs vr:test
         env:
@@ -73,13 +88,10 @@ jobs:
 
   screener-react:
     runs-on: 'ubuntu-latest'
-
     name: Screener @fluentui/react
-
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{github.event.workflow_run.head_branch}}
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
@@ -87,20 +99,36 @@ jobs:
           node-version: 14.18.1
           cache: 'yarn'
 
+      - name: Check if test app artifact deployed
+        uses: actions/github-script@v6
+        id: skip-screener
+        with:
+          script: |
+            let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: context.payload.workflow_run.id,
+            });
+            let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "screener-artifact"
+            })[0];
+            core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
+
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          workflow_conclusion: success
+          run_id: ${{github.event.workflow_run.id}}
           name: env-artifact
 
       - name: Download screener storybook artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          workflow_conclusion: success
+          run_id: ${{github.event.workflow_run.id}}
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Define env variables
         run: |
@@ -109,6 +137,7 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
+
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -117,12 +146,13 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-
       - name: Upload @fluentui/react VR test site
         uses: azure/CLI@v1
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
+
       - name: Start @fluentui/react VR Test
         run: yarn workspace @fluentui/vr-tests screener
         env:
@@ -132,13 +162,10 @@ jobs:
 
   screener-react-components:
     runs-on: 'ubuntu-latest'
-
     name: Screener @fluentui/react-components
-
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{github.event.workflow_run.head_branch}}
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
@@ -146,20 +173,36 @@ jobs:
           node-version: 14.18.1
           cache: 'yarn'
 
+      - name: Check if test app artifact deployed
+        uses: actions/github-script@v6
+        id: skip-screener
+        with:
+          script: |
+            let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: context.payload.workflow_run.id,
+            });
+            let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "vnext-artifact"
+            })[0];
+            core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
+
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          workflow_conclusion: success
+          run_id: ${{github.event.workflow_run.id}}
           name: env-artifact
 
       - name: Download VNext storybook artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          workflow_conclusion: success
+          run_id: ${{github.event.workflow_run.id}}
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Define env variables
         run: |
@@ -183,6 +226,8 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
+
       - name: Start @fluentui/react-components VR Test
         run: yarn workspace @fluentui/vr-tests-react-components screener
         env:

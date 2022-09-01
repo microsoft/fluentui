@@ -53,7 +53,7 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorNeutralForegroundInvertedPressed: palette.white,
     colorNeutralForegroundInvertedSelected: palette.white,
     colorNeutralForegroundOnBrand: palette.white,
-    colorNeutralForegroundInvertedStatic: palette.white,
+    colorNeutralForegroundStaticInverted: palette.white,
     colorNeutralForegroundInvertedLink: palette.white,
     colorNeutralForegroundInvertedLinkHover: palette.white,
     colorNeutralForegroundInvertedLinkPressed: palette.white,

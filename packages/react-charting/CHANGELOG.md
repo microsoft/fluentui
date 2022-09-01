@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 26 Aug 2022 07:39:57 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 07:48:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.32)
+
+Thu, 01 Sep 2022 07:48:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.31..@fluentui/react-charting_v5.12.32)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.4 ([PR #24599](https://github.com/microsoft/fluentui/pull/24599) by beachball)
+- Bump @fluentui/react to v8.93.1 ([PR #24599](https://github.com/microsoft/fluentui/pull/24599) by beachball)
+
+## [5.12.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.31)
+
+Tue, 30 Aug 2022 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.30..@fluentui/react-charting_v5.12.31)
+
+### Patches
+
+- Add support for javascript date localization ([PR #24577](https://github.com/microsoft/fluentui/pull/24577) by atishay.jain@microsoft.com)
+
+## [5.12.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.30)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.29..@fluentui/react-charting_v5.12.30)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.3 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/react to v8.93.0 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
 
 ## [5.12.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.29)
 

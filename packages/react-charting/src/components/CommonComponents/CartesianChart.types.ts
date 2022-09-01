@@ -501,6 +501,11 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   culture?: string;
 
+  /**
+   * The prop used to define the date time localization options
+   */
+  dateLocalizeOptions?: Intl.DateTimeFormatOptions;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getAxisData?: any;
 
