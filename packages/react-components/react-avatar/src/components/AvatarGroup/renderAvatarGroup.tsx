@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { AvatarGroupProvider } from '../../contexts/AvatarGroupContext';
 import type { AvatarGroupState, AvatarGroupSlots, AvatarGroupContextValues } from './AvatarGroup.types';
 
 /**
@@ -10,8 +10,8 @@ export const renderAvatarGroup_unstable = (state: AvatarGroupState, contextValue
   const { slots, slotProps } = getSlots<AvatarGroupSlots>(state);
 
   return (
-    <AvatarGroupContext.Provider value={contextValues.avatarGroup}>
+    <AvatarGroupProvider value={contextValues.avatarGroup}>
       <slots.root {...slotProps.root} />
-    </AvatarGroupContext.Provider>
+    </AvatarGroupProvider>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { AvatarGroupProvider } from '../../contexts/AvatarGroupContext';
 import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
 import { getSlots } from '@fluentui/react-utilities';
 import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
@@ -23,9 +23,9 @@ export const renderAvatarGroupPopover_unstable = (
         </slots.tooltip>
       </PopoverTrigger>
       <slots.popoverSurface {...slotProps.popoverSurface}>
-        <AvatarGroupContext.Provider value={contextValues.avatarGroup}>
+        <AvatarGroupProvider value={contextValues.avatarGroup}>
           <slots.content {...slotProps.content} />
-        </AvatarGroupContext.Provider>
+        </AvatarGroupProvider>
       </slots.popoverSurface>
     </slots.root>
   );
