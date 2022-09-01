@@ -13,9 +13,9 @@ export const useToolbarToggleButton_unstable = (
   props: ToolbarToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarToggleButtonState => {
-  const { handleToggleButton } = useToolbarContext();
+  const { handleToggleButton, size } = useToolbarContext();
   const { onClick: onClickOriginal } = props;
-  const state = useToggleButton_unstable(props, ref) as ToolbarToggleButtonState;
+  const state = useToggleButton_unstable({ size, ...props }, ref) as ToolbarToggleButtonState;
 
   const handleOnClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>,
