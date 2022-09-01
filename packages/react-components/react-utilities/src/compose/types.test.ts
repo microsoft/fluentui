@@ -56,4 +56,16 @@ describe(`types`, () => {
       expect(componentEl).toBeDefined();
     });
   });
+
+  it(`allows data-* props`, () => {
+    const slot: Types.Slot<'div'> = {
+      'data-test': 42,
+      'data-example': 'string data',
+      id: 'test',
+    };
+
+    expect(slot?.['data-test']).toBe(42);
+    expect(slot?.['data-example']).toBe('string data');
+    expect(slot?.id).toBe('test');
+  });
 });
