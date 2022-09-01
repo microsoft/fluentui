@@ -26,7 +26,7 @@ export const config: BeachballConfig = {
     },
     {
       name: 'Experiments',
-      include: ['packages/experiments', 'stub-packages/experiments'],
+      include: ['packages/experiments', 'stub-packages/react-experiments'],
       disallowedChangeTypes: ['major'],
     },
     {
