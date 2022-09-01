@@ -1,17 +1,18 @@
 import * as React from 'react';
 import {
   ContextualMenuItemType,
-  css,
-  DefaultButton,
   DirectionalHint,
-  FocusZoneDirection,
-  IconButton,
+  IContextualMenuProps,
   IContextualMenuItem,
-  mergeStyleSets,
-} from '@fluentui/react';
+} from '@fluentui/react/lib/ContextualMenu';
+import { DefaultButton, IconButton } from '@fluentui/react/lib/Button';
+import { FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
+import { useConst } from '@fluentui/react-hooks';
 
 export const ContextualMenuExample: React.FunctionComponent = () => {
-  const menuProps = {
+  const menuProps = useConst<IContextualMenuProps>(() => ({
     shouldFocusOnMount: true,
     directionalHint: DirectionalHint.bottomLeftEdge,
     className: classNames.menu,
@@ -68,7 +69,7 @@ export const ContextualMenuExample: React.FunctionComponent = () => {
         },
       },
     ],
-  };
+  }));
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
