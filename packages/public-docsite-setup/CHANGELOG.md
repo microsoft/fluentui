@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite-setup
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 07:48:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.11)
+
+Thu, 01 Sep 2022 07:48:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.8..@fluentui/public-docsite-setup_v0.3.11)
+
+### Patches
+
+- fix: update fabric core URL and change selector for back to top button ([PR #24613](https://github.com/microsoft/fluentui/pull/24613) by mgodbolt@microsoft.com)
 
 ## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.7)
 

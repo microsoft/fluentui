@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Thu, 18 Aug 2022 23:39:31 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Aug 2022 07:44:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.10)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.9..@fluentui/react-hooks_v8.6.10)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.0 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+
+## [8.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.9)
+
+Wed, 24 Aug 2022 16:36:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.8..@fluentui/react-hooks_v8.6.9)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
+
+## [8.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.8)
+
+Tue, 23 Aug 2022 07:22:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.7..@fluentui/react-hooks_v8.6.8)
+
+### Patches
+
+- fix: Add React 17 support. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
 
 ## [8.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.7)
 

@@ -2,6 +2,51 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.10",
+      "version": "8.6.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/utilities to v8.13.0",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 16:36:04 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.9",
+      "version": "8.6.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "7c7f113c5db25307df478f48612dd0fa77f8e8d4",
+            "comment": "fix: fixes broken publish."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Aug 2022 07:22:49 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.8",
+      "version": "8.6.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Add React 17 support."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Aug 2022 23:39:31 GMT",
       "tag": "@fluentui/react-hooks_v8.6.7",
       "version": "8.6.7",

@@ -1,5 +1,4 @@
-import { getAffectedPackages, getAllPackageInfo, findGitRoot, getNthCommit } from '../monorepo';
-import { screenerRunner, cancelScreenerRun } from '../screener/screener.runner';
+import { screenerRunner, environment } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
 // @ts-ignore - screener-storybook has no typings
@@ -12,33 +11,19 @@ import { getStorybook } from '@storybook/react';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
-  console.log('screener config for run');
+  console.log('screener config for run:');
   console.log(JSON.stringify(screenerConfig, null, 2));
 
-  const packageInfos = getAllPackageInfo();
-  const packagePath = path.relative(findGitRoot(), process.cwd());
-  const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
-  let affectedPackages = new Set<string>();
-  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
-
-  if (isPrBuild) {
-    affectedPackages = getAffectedPackages();
-  } else {
-    // master CI build,
-    const previousMasterCommit = getNthCommit();
-    affectedPackages = getAffectedPackages(previousMasterCommit);
-  }
-
-  debugAffectedGraph(affectedPackages);
-
   try {
-    if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
-      await cancelScreenerRun(screenerConfig, 'skipped');
-    } else {
+    console.log(`screener-runner: is artifact present ${JSON.stringify(environment.screener.isArtifactPresent)}`);
+    if (environment.screener.isArtifactPresent === 'true') {
+      //Skipping "getScreenerStates()" if artifacts were not build
+      console.log('Running screener test:');
       const screenerStates = await getScreenerStates(screenerConfig);
       screenerConfig.states = screenerStates;
-      await screenerRunner(screenerConfig);
     }
+    //call "screenerRunner()" since it controls CI checks on a PR and screener tests being run/skipped
+    await screenerRunner(screenerConfig);
   } catch (err) {
     console.error('failed to run screener task');
     console.error(err);
@@ -80,15 +65,6 @@ async function getScreenerStates(screenerConfig: ScreenerRunnerConfig): Promise<
   await startStorybook(screenerConfig, {});
 
   return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, screenerConfig.baseUrl);
-}
-
-/**
- * Outputs debug output for the affected packages graph
- * @param affectedPackages  - set of affected packages
- */
-function debugAffectedGraph(affectedPackages: Set<string>) {
-  console.log('affected package tree');
-  console.log(Array.from(affectedPackages.values()));
 }
 
 type ScreenerStory = { steps?: ScreenerRunnerStep[] };

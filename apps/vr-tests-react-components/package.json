@@ -4,14 +4,14 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "build-storybook -o dist/storybook",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
+    "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
     "screener": "just-scripts screener",
-    "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
-    "start": "just-scripts dev:storybook"
+    "screener:build": "yarn build",
+    "start": "start-storybook",
+    "type-check": "tsc"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*"

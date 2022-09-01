@@ -70,7 +70,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       isSelected = false,
       selected = false,
       indentWidth,
-      onRenderTitle = this._onRenderTitle,
       onRenderGroupHeaderCheckbox,
       isCollapsedGroupSelectVisible = true,
       expandButtonProps,
@@ -86,6 +85,10 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       ariaRowIndex,
       useFastIcons,
     } = this.props;
+
+    const onRenderTitle = this.props.onRenderTitle
+      ? composeRenderFunction(this.props.onRenderTitle, this._onRenderTitle)
+      : this._onRenderTitle;
 
     const defaultCheckboxRender = useFastIcons ? this._fastDefaultCheckboxRender : this._defaultCheckboxRender;
 
@@ -175,16 +178,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             </button>
           </div>
 
-          <div
-            className={this._classNames.title}
-            id={this._id}
-            onClick={this._onHeaderClick}
-            role="gridcell"
-            aria-colspan={this.props.ariaColSpan}
-            data-selection-invoke={true}
-          >
-            {onRenderTitle(this.props, this._onRenderTitle)}
-          </div>
+          {onRenderTitle(this.props)}
           {isLoadingVisible && <Spinner label={loadingText} />}
         </div>
       </div>
@@ -250,6 +244,31 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
   }
 
   private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
+    const { group } = props;
+
+    if (!group) {
+      return null;
+    }
+
+    const onRenderName = props.onRenderName
+      ? composeRenderFunction(props.onRenderName, this._onRenderName)
+      : this._onRenderName;
+
+    return (
+      <div
+        className={this._classNames.title}
+        id={this._id}
+        onClick={this._onHeaderClick}
+        role="gridcell"
+        aria-colspan={this.props.ariaColSpan}
+        data-selection-invoke={true}
+      >
+        {onRenderName(props)}
+      </div>
+    );
+  };
+
+  private _onRenderName = (props: IGroupHeaderProps): JSX.Element | null => {
     const { group } = props;
 
     if (!group) {

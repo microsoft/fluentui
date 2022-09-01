@@ -1,4 +1,3 @@
-// @ts-check
 const semver = require('semver');
 const { readConfig } = require('../read-config');
 const { getProjectMetadata } = require('./utils');

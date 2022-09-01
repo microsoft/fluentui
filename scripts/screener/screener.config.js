@@ -1,6 +1,4 @@
-// @ts-check
-
-require('@fluentui/scripts/babel/register');
+require('../babel/register');
 
 const cp = require('child_process');
 

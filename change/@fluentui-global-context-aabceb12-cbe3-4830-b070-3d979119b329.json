@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: consume cypress.config from it's package boundary",
+  "packageName": "@fluentui/global-context",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

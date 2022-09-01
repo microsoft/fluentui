@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Fix typos in webpack integration instructions",
+  "packageName": "@fluentui/web-components",
+  "email": "aelkholy248@gmail.com",
+  "dependentChangeType": "none"
+}
