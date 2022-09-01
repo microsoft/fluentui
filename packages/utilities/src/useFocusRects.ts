@@ -108,7 +108,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;
     let onKeyUp: (ev: KeyboardEvent) => void;
-    if (context?.providerRef.current) {
+    if (context?.providerRef?.current) {
       el = context.providerRef.current;
       const callbacks = setCallbackMap(context);
       onMouseDown = callbacks.onMouseDown;
