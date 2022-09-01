@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update to latest CDN for filetype icons, and mapping .classifier to the correct icon.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
