@@ -1,8 +1,20 @@
-# Change Log - @uifabric/file-type-icons
+# Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 12:21:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v7.10.0)
+
+Thu, 01 Sep 2022 12:21:47 GMT
+
+### Minor changes
+
+- Added stub react-file-type-icons ([PR #24618](https://github.com/microsoft/fluentui/pull/24618) by gcox@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/file-type-icons to v7.10.0 ([PR #24618](https://github.com/microsoft/fluentui/pull/24618) by gcox@microsoft.com)
 
 ## [7.9.3](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.3)
 
