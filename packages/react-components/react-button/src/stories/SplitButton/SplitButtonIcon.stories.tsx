@@ -6,23 +6,8 @@ import {
   FilterFilled,
   FilterRegular,
 } from '@fluentui/react-icons';
-import {
-  makeStyles,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  SplitButton,
-  Tooltip,
-} from '@fluentui/react-components';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton, Tooltip } from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  longText: {
-    maxWidth: '350px',
-  },
-});
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const Filter = bundleIcon(FilterFilled, FilterRegular);
@@ -31,8 +16,6 @@ export const Icon = () => {
   const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
     HTMLButtonElement | HTMLAnchorElement | null
   >(null);
-
-  const styles = useStyles();
 
   return (
     <>
@@ -71,14 +54,7 @@ export const Icon = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton={{
-                className: styles.longText,
-              }}
-              icon={<CalendarMonth />}
-              menuIcon={<Filter />}
-            >
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} menuIcon={<Filter />}>
               With calendar icon and custom filter menu icon
             </SplitButton>
           )}
