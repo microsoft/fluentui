@@ -38,9 +38,7 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export interface ILegendState {
   selectedLegend: string;
-  selecetedLegendInHoverCard: string;
-  selectedState: boolean;
-  hoverState: boolean;
+  activeLegend: string;
   isHoverCardVisible: boolean;
   selectedLegends: string[];
 }
@@ -51,11 +49,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   public constructor(props: ILegendsProps) {
     super(props);
     this.state = {
-      selectedLegend: 'none',
-      selectedState: false,
-      hoverState: false,
+      selectedLegend: '',
+      activeLegend: '',
       isHoverCardVisible: false,
-      selecetedLegendInHoverCard: 'none',
       selectedLegends: [],
     };
   }
@@ -169,12 +165,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this.setState({
       //check if user selected all legends then empty it get the default behaviour
       selectedLegends: selectedLegends.length === this.props.legends.length ? [] : selectedLegends,
-      // make selectedState to false if none or all the legends selected
-      selectedState:
-        selectedLegends.length === 0 || selectedLegends.length === this.props.legends.length ? false : true,
-      selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
-      selectedLegend: 'none',
-      hoverState: false,
     });
   };
 
@@ -185,17 +175,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
    */
 
   private _canSelectOnlySingleLegend = (legend: ILegend): void => {
-    if (this.state.selectedState === true && this.state.selectedLegend === legend.title) {
+    if (this.state.selectedLegend === legend.title) {
       this.setState({
-        selectedState: false,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
+        selectedLegend: '',
       });
     } else {
       this.setState({
-        hoverState: true,
-        selectedState: true,
         selectedLegend: legend.title,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
     }
   };
@@ -256,18 +242,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const overflowString = overflowText ? overflowText : 'more';
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
-      const selectedOverflowItem = find(legends, (legend: ILegend) => legend.title === this.state.selectedLegend);
-      this.setState({ isHoverCardVisible: false }, () => {
-        if (selectedOverflowItem) {
-          if (!this.state.selectedState && this.state.hoverState) {
-            this.setState({ hoverState: false, selectedLegend: 'none' }, () => {
-              if (selectedOverflowItem.onMouseOutAction) {
-                selectedOverflowItem.onMouseOutAction(true);
-              }
-            });
-          }
+      this.setState({ isHoverCardVisible: false });
+      const activeOverflowItem = find(legends, (legend: ILegend) => legend.title === this.state.activeLegend);
+      if (activeOverflowItem) {
+        this.setState({ activeLegend: '' });
+        if (activeOverflowItem.onMouseOutAction) {
+          activeOverflowItem.onMouseOutAction();
         }
-      });
+      }
     };
     return (
       <HoverCard
@@ -304,20 +286,16 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _onHoverOverLegend = (legend: ILegend) => {
-    if (!this.state.selectedState) {
-      if (legend.hoverAction) {
-        this.setState({ hoverState: true, selectedLegend: legend.title });
-        legend.hoverAction();
-      }
+    if (legend.hoverAction) {
+      this.setState({ activeLegend: legend.title });
+      legend.hoverAction();
     }
   };
 
   private _onLeave = (legend: ILegend) => {
-    if (!this.state.selectedState) {
-      if (legend.onMouseOutAction) {
-        this.setState({ hoverState: false, selectedLegend: 'none' });
-        legend.onMouseOutAction();
-      }
+    if (legend.onMouseOutAction) {
+      this.setState({ activeLegend: '' });
+      legend.onMouseOutAction();
     }
   };
 
@@ -406,30 +384,22 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _getColor(title: string, color: string): string {
-    const { theme, canSelectMultipleLegends = false } = this.props;
+    const { theme } = this.props;
     const { palette } = theme!;
     let legendColor = color;
-    // below if statement  will get executed for the hovered legend.
-    // (which is also the slected legend see fucntion:-_onHoverOverLegend)
-    if (this.state.hoverState && this.state.selectedLegend === title) {
-      legendColor = color;
-    } // below esle if statement will get executed for  the  unselected-legend which is  hovered
-    else if (this.state.hoverState && this.state.selectedLegend !== 'none' && this.state.selectedLegend !== title) {
-      legendColor = palette.white;
-    } // below else if statement will get executed if the legends are in the selected state
-    // this is will only get executed  when we have ability to select multiple legends
-    else if (!!canSelectMultipleLegends && this.state.selectedState && this.state.selectedLegends.indexOf(title) > -1) {
-      legendColor = color;
-    } // below else if statement will get executed when no legend is selected and hovered
-    //(for example:- initial render of legends)
-    else if (
-      (!this.state.selectedState && this.state.selectedLegend === 'none') ||
-      this.state.selectedLegend === title ||
-      this.state.selectedLegends.length <= 0
-    ) {
-      legendColor = color;
+    const inSelectedState = this.state.selectedLegend !== '' || this.state.selectedLegends.length > 0;
+    if (inSelectedState) {
+      if (this.state.selectedLegend === title || this.state.selectedLegends.indexOf(title) > -1) {
+        legendColor = color;
+      } else {
+        legendColor = palette.white;
+      }
     } else {
-      legendColor = palette.white;
+      if (this.state.activeLegend === '' || this.state.activeLegend === title) {
+        legendColor = color;
+      } else {
+        legendColor = palette.white;
+      }
     }
     return legendColor;
   }

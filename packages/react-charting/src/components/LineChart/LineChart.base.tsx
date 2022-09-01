@@ -349,13 +349,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _handleSingleLegendSelectionAction = (lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) => {
     if (this.state.selectedLegend === lineChartItem.legend) {
-      this.setState({ selectedLegend: '', activeLegend: lineChartItem.legend });
+      this.setState({ selectedLegend: '' });
       this._handleLegendClick(lineChartItem, null);
     } else {
-      this.setState({
-        selectedLegend: lineChartItem.legend,
-        activeLegend: lineChartItem.legend,
-      });
+      this.setState({ selectedLegend: lineChartItem.legend });
       this._handleLegendClick(lineChartItem, lineChartItem.legend);
     }
   };
@@ -578,7 +575,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
 
         const isLegendSelected: boolean =
-          this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
+          this.state.selectedLegend === legendVal ||
+          (this.state.selectedLegend === '' &&
+            (this.state.activeLegend === legendVal || this.state.activeLegend === '')) ||
+          this.state.isSelectedLegend;
 
         const lineData: [number, number][] = [];
         for (let k = 0; k < this._points[i].data.length; k++) {
@@ -684,7 +684,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
 
           const isLegendSelected: boolean =
-            this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
+            this.state.selectedLegend === legendVal ||
+            (this.state.selectedLegend === '' &&
+              (this.state.activeLegend === legendVal || this.state.activeLegend === '')) ||
+            this.state.isSelectedLegend;
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           pointsForLine.push(
@@ -914,8 +917,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const startX = colorFillBar.data[j].startX;
         const endX = colorFillBar.data[j].endX;
         const opacity =
-          this.state.activeLegend === colorFillBar.legend ||
-          this.state.activeLegend === '' ||
+          this.state.selectedLegend === colorFillBar.legend ||
+          (this.state.selectedLegend === '' &&
+            (this.state.activeLegend === colorFillBar.legend || this.state.activeLegend === '')) ||
           this.state.isSelectedLegend
             ? this._colorFillBarsOpacity
             : 0.1;
