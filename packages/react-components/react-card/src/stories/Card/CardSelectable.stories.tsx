@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Checkbox, makeStyles, shorthands } from '@fluentui/react-components';
-import { SampleCardSmall as SampleCard } from './SampleCardSmall.stories';
+import { SampleCard } from './SampleCard.stories';
 import { CardOnSelectEvent } from '@fluentui/react-card';
 
 const useStyles = makeStyles({
