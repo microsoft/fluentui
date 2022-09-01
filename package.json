@@ -292,6 +292,8 @@
       "@fluentui/web-components/ts-loader",
       "@fluentui/web-components/ts-loader/**",
       "@fluentui/web-components/webpack",
+      "@fluentui/react-18-tests-v8/react",
+      "@fluentui/react-18-tests-v8/react-dom",
       "@fluentui/react-18-tests-v9/react",
       "@fluentui/react-18-tests-v9/react-dom"
     ]
@@ -313,7 +315,7 @@
     "peer": false,
     "source": [
       "package.json",
-      "apps/!(react-18-tests-v9)/package.json",
+      "apps/![react-18-tests-v8][react-18-tests-v9]/package.json",
       "packages/!(web-components)/package.json",
       "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",

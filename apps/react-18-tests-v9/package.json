@@ -10,7 +10,8 @@
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "webpack-dev-server --mode=development --config=webpack.config.js"
+    "start": "webpack-dev-server --mode=development --config=webpack.config.js",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

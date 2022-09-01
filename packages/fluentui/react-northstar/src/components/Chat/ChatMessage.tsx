@@ -73,11 +73,16 @@ export interface ChatMessageSlotClassNames {
   author: string;
   badge: string;
   bar: string;
+  bubble: string;
+  bubbleInset: string;
+  body: string;
   compactBody: string;
   content: string;
   reactionGroup: string;
   timestamp: string;
 }
+
+export type ChatMessageLayout = 'default' | 'refresh';
 
 export interface ChatMessageProps
   extends UIComponentProps,
@@ -119,6 +124,9 @@ export interface ChatMessageProps
 
   /** A message can have a custom header. */
   header?: ShorthandValue<ChatMessageHeaderProps>;
+
+  /** Optional slot for inserting content into the default header. */
+  headerContent?: React.ReactNode;
 
   /** Indicates whether message belongs to the current user. */
   mine?: boolean;
@@ -175,11 +183,32 @@ export interface ChatMessageProps
 
   /** Positions an actionMenu slot in "fixed" mode. */
   unstable_overflow?: boolean;
+
+  /** A message can render with different layouts. */
+  unstable_layout?: ChatMessageLayout;
+
+  /** Indicates whether the message is in a failed state. */
+  failed?: boolean;
+
+  /** A message can have a custom body element (only applicable to "refresh" layout). */
+  body?: ShorthandValue<BoxProps>;
+
+  /** A message can have a custom bubble element (only applicable to "refresh" layout). */
+  bubble?: ShorthandValue<BoxProps>;
+
+  /** A message can have a custom bubble inset element which sits next to the bubble (only applicable to "refresh" layout). */
+  bubbleInset?: ShorthandValue<BoxProps>;
+
+  /** Optional override for the content in the default bubble inset (only applicable to "refresh" layout). */
+  bubbleInsetContent?: React.ReactNode;
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
   hasBadge: boolean;
   hasHeaderReactionGroup: boolean;
+  hasReactions: boolean;
+  layout: ChatMessageLayout;
+  failed: boolean;
 
   // focused, hasActionMenu and showActionMenu controls the visibility of action menu
   focused: boolean;
@@ -193,6 +222,9 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   author: `${chatMessageClassName}__author`,
   badge: `${chatMessageClassName}__badge`,
   bar: `${chatMessageClassName}__bar`,
+  body: `${chatMessageClassName}__body`,
+  bubble: `${chatMessageClassName}__bubble`,
+  bubbleInset: `${chatMessageClassName}__bubble-inset`,
   compactBody: `${chatMessageClassName}__compact-body`,
   content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
@@ -258,8 +290,17 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     styles,
     timestamp,
     unstable_overflow: overflow,
+    unstable_layout: layout = 'default',
     variables,
+    failed,
+    bubble,
+    body,
+    bubbleInset,
+    bubbleInsetContent,
+    headerContent,
   } = props;
+
+  const isRefreshComfyLayout = layout === 'refresh' && density === 'comfy';
 
   const [actionMenuOptions, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
   const [actionMenu, inlineActionMenu, controlledShowActionMenu] = partitionActionMenuPropsFromShorthand(
@@ -293,7 +334,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   );
 
   const popperRef = React.useRef<PopperRefHandle>();
-  const { targetRef: messageRef, containerRef: actionsMenuRef } = usePopper({
+  const { targetRef: actionsMenuTargetRef, containerRef: actionsMenuRef } = usePopper({
     align: 'end',
     position: 'above',
     positionFixed: overflow,
@@ -320,8 +361,9 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       },
 
       focus: event => {
-        if (messageRef.current) {
-          messageRef.current.focus();
+        const target = actionsMenuTargetRef.current;
+        if (target) {
+          target.focus();
           event.stopPropagation();
         }
       },
@@ -347,6 +389,9 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       hasHeaderReactionGroup,
       mine,
       showActionMenu,
+      hasReactions: !!reactionGroup,
+      failed,
+      layout,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -549,6 +594,85 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
         {readStatusElement}
       </>
     );
+  } else if (isRefreshComfyLayout) {
+    const headerElement = createShorthand(ChatMessageHeader, header || {}, {
+      defaultProps: () => ({
+        styles: resolvedStyles.header,
+        content: (
+          <>
+            {authorElement}
+            {headerContent}
+            {detailsElement}
+          </>
+        ),
+      }),
+    });
+
+    const bubbleElement = Box.create(bubble || {}, {
+      defaultProps: () =>
+        getA11Props('bubble', {
+          className: chatMessageSlotClassNames.bubble,
+          styles: resolvedStyles.bubble,
+        }),
+      overrideProps: () => ({
+        ref: actionsMenuTargetRef,
+        content: (
+          <>
+            {actionMenuElement}
+            {messageContent}
+            {reactionGroupElement}
+            {readStatusElement}
+          </>
+        ),
+        onMouseEnter(e: React.SyntheticEvent) {
+          popperRef.current?.updatePosition();
+          handleMouseEnter(e);
+        },
+        onMouseLeave(e: React.SyntheticEvent) {
+          handleMouseLeave(e);
+        },
+      }),
+    });
+
+    const bubbleInsetElement = Box.create(bubbleInset || {}, {
+      defaultProps: () => ({
+        as: 'span',
+        className: chatMessageSlotClassNames.bubbleInset,
+        styles: resolvedStyles.bubbleInset,
+      }),
+      overrideProps: () => ({
+        content: (
+          <>
+            {badgeElement}
+            {bubbleInsetContent}
+            {timestampElement}
+          </>
+        ),
+      }),
+    });
+
+    const bodyElement = Box.create(body || {}, {
+      defaultProps: () =>
+        getA11Props('body', {
+          className: chatMessageSlotClassNames.body,
+          styles: resolvedStyles.body,
+        }),
+      overrideProps: () => ({
+        content: (
+          <>
+            {bubbleElement}
+            {bubbleInsetElement}
+          </>
+        ),
+      }),
+    });
+
+    elements = (
+      <>
+        {headerElement}
+        {bodyElement}
+      </>
+    );
   } else {
     const headerElement = createShorthand(ChatMessageHeader, header || {}, {
       overrideProps: () => ({
@@ -578,7 +702,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   }
 
   const element = (
-    <Ref innerRef={messageRef}>
+    <Ref innerRef={!isRefreshComfyLayout && actionsMenuTargetRef}>
       {getA11Props.unstable_wrapWithFocusZone(
         <ElementType
           {...getA11Props('root', {
@@ -635,6 +759,13 @@ ChatMessage.propTypes = {
   readStatus: customPropTypes.itemShorthand,
   timestamp: customPropTypes.itemShorthand,
   unstable_overflow: PropTypes.bool,
+  unstable_layout: PropTypes.oneOf(['default', 'refresh']),
+  failed: PropTypes.bool,
+  headerContent: PropTypes.node,
+  body: customPropTypes.itemShorthand,
+  bubble: customPropTypes.itemShorthand,
+  bubbleInset: customPropTypes.itemShorthand,
+  bubbleInsetContent: PropTypes.node,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
