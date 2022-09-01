@@ -4,50 +4,37 @@ import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utiliti
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 import type { CardOnSelectEvent, CardProps, CardRefElement } from './Card.types';
-import { cardClassNames } from './useCardStyles';
-
-function isTargetInSelectSlot(target: HTMLElement): boolean {
-  let parent = target.parentElement;
-
-  while (parent) {
-    if (parent.classList.contains(cardClassNames.select)) {
-      return true;
-    }
-
-    if (parent.classList.contains(cardClassNames.root)) {
-      return false;
-    }
-
-    parent = parent.parentElement;
-  }
-
-  return false;
-}
-
-function isTargetInFocusableGroup(focusableElements: HTMLElement[], target: HTMLElement): boolean {
-  return focusableElements.some(element => element.contains(target));
-}
 
 export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<CardRefElement>) => {
   const { select, selected, defaultSelected, onCardSelect } = props;
+
+  const { findAllFocusable } = useFocusFinders();
+  const selectableRef = React.useRef<HTMLDivElement>(null);
+
   const isSelectable = Boolean(selected || defaultSelected || onCardSelect);
   const hasSelectSlot = Boolean(select);
-  const { findAllFocusable } = useFocusFinders();
 
   const [isCardSelected, setIsCardSelected] = React.useState(() => Boolean(selected ?? defaultSelected));
-  const onChangeHandler = React.useCallback(
-    (event: CardOnSelectEvent) => {
-      if (!onCardSelect) {
-        return;
-      }
 
-      if (cardRef.current) {
+  const shouldRestrictTriggerAction = React.useCallback(
+    (event: CardOnSelectEvent) => {
+      if (cardRef.current && selectableRef.current) {
         const focusableElements = findAllFocusable(cardRef.current, Boolean);
         const target = event.target as HTMLElement;
+        const isTargetInFocusableGroup = focusableElements.some(element => element.contains(target));
+        const isTargetInSelectableSlot = selectableRef.current.contains(target);
 
-        if (isTargetInFocusableGroup(focusableElements, target) && !isTargetInSelectSlot(target)) {
-          return;
-        }
+        return isTargetInFocusableGroup && !isTargetInSelectableSlot;
+      }
+
+      return false;
+    },
+    [cardRef, findAllFocusable],
+  );
+  const onChangeHandler = React.useCallback(
+    (event: CardOnSelectEvent) => {
+      if (!onCardSelect || shouldRestrictTriggerAction(event)) {
+        return;
       }
 
       const newCheckedValue = !isCardSelected;
@@ -55,7 +42,7 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
       setIsCardSelected(newCheckedValue);
       onCardSelect(event, newCheckedValue);
     },
-    [onCardSelect, isCardSelected, findAllFocusable, cardRef],
+    [onCardSelect, isCardSelected, shouldRestrictTriggerAction],
   );
   const onKeyDownHandler = React.useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
@@ -80,10 +67,15 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
 
   const selectableSlot = React.useMemo(() => {
     if (hasSelectSlot) {
-      return resolveShorthand(select);
+      return resolveShorthand(select, {
+        defaultProps: {
+          ref: selectableRef,
+        },
+      });
     }
 
     return getNativeElementProps('div', {
+      ref: selectableRef,
       role: 'checkbox',
       'aria-checked': isCardSelected,
     });
