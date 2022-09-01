@@ -75,13 +75,13 @@ const useInputStyles = makeStyles({
   base: {
     boxSizing: 'border-box',
     cursor: 'pointer',
-    height: '100%',
-    left: 0,
+    height: `${trackHeight}px`,
+    left: tokens.spacingHorizontalS,
     ...shorthands.margin(0),
     opacity: 0,
     position: 'absolute',
-    top: 0,
-    width: '100%',
+    top: tokens.spacingVerticalS,
+    width: `${trackWidth}px`,
 
     // Checked (both enabled and disabled)
     ':checked': {
@@ -187,6 +187,9 @@ const useInputStyles = makeStyles({
 });
 
 const useLabelStyles = makeStyles({
+  base: {
+    cursor: 'pointer',
+  },
   above: {
     marginBottom: tokens.spacingVerticalXS,
   },
@@ -226,7 +229,12 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   );
 
   if (state.label) {
-    state.label.className = mergeClasses(switchClassNames.label, labelStyles[labelPosition], state.label.className);
+    state.label.className = mergeClasses(
+      switchClassNames.label,
+      labelStyles.base,
+      labelStyles[labelPosition],
+      state.label.className,
+    );
   }
 
   return state;

@@ -26,15 +26,13 @@ const useRootStyles = makeStyles({
 
 const useInputStyles = makeStyles({
   base: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
     boxSizing: 'border-box',
+    cursor: 'pointer',
+    left: tokens.spacingHorizontalS,
     ...shorthands.margin(0),
     opacity: 0,
-    cursor: 'pointer',
+    position: 'absolute',
+    top: tokens.spacingVerticalS,
 
     // When unchecked, hide the the checkmark icon (child of the indicator slot)
     [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
@@ -143,6 +141,16 @@ const useInputStyles = makeStyles({
       },
     },
   },
+
+  medium: {
+    height: indicatorSizeMedium,
+    width: indicatorSizeMedium,
+  },
+
+  large: {
+    height: indicatorSizeLarge,
+    width: indicatorSizeLarge,
+  },
 });
 
 const useIndicatorStyles = makeStyles({
@@ -163,15 +171,15 @@ const useIndicatorStyles = makeStyles({
   },
 
   medium: {
-    width: indicatorSizeMedium,
-    height: indicatorSizeMedium,
     fontSize: '12px',
+    height: indicatorSizeMedium,
+    width: indicatorSizeMedium,
   },
 
   large: {
-    width: indicatorSizeLarge,
-    height: indicatorSizeLarge,
     fontSize: '16px',
+    height: indicatorSizeLarge,
+    width: indicatorSizeLarge,
   },
 
   circular: {
@@ -182,7 +190,7 @@ const useIndicatorStyles = makeStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    cursor: 'inherit',
+    cursor: 'pointer',
     color: 'inherit',
   },
 
@@ -213,7 +221,12 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   state.root.className = mergeClasses(checkboxClassNames.root, rootStyles.base, state.root.className);
 
   const inputStyles = useInputStyles();
-  state.input.className = mergeClasses(checkboxClassNames.input, inputStyles.base, state.input.className);
+  state.input.className = mergeClasses(
+    checkboxClassNames.input,
+    inputStyles.base,
+    inputStyles[state.size],
+    state.input.className,
+  );
 
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
