@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { GroupedListV2, IGroup } from '@fluentui/react/lib/GroupedList';
+import { IGroup } from '@fluentui/react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from '@fluentui/react/lib/GroupedListV2';
 import { IColumn, DetailsRow } from '@fluentui/react/lib/DetailsList';
 import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { GroupedListV2, IGroup, IGroupHeaderProps, IGroupFooterProps } from '@fluentui/react/lib/GroupedList';
+import { IGroup, IGroupHeaderProps, IGroupFooterProps } from '@fluentui/react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from '@fluentui/react/lib/GroupedListV2';
 import { Link } from '@fluentui/react/lib/Link';
 import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 import { getTheme, mergeStyleSets, IRawStyle } from '@fluentui/react/lib/Styling';

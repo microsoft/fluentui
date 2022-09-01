@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   GroupHeader,
-  GroupedListV2,
   IGroupHeaderCheckboxProps,
   IGroupHeaderProps,
   IGroupRenderProps,
   IGroup,
 } from '@fluentui/react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from '@fluentui/react/lib/GroupedListV2';
 import { IColumn, IObjectWithKey, DetailsRow } from '@fluentui/react/lib/DetailsList';
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';

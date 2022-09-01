@@ -1,1 +1,1 @@
-export * from './components/GroupedList/index';
+export * from './components/GroupedList/GroupedListV2';

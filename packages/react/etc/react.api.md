@@ -2013,31 +2013,6 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
 }
 
 // @public (undocumented)
-export const GroupedListV2: React_2.FunctionComponent<IGroupedListProps>;
-
-// @public (undocumented)
-export const GroupedListV2FC: React_2.FC<IGroupedListV2Props>;
-
-// @public (undocumented)
-export class GroupedListV2Wrapper extends React_2.Component<IGroupedListProps, IGroupedListV2State> implements IGroupedList {
-    constructor(props: IGroupedListProps);
-    // (undocumented)
-    static displayName: string;
-    // (undocumented)
-    forceUpdate(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(nextProps: IGroupedListProps, previousState: IGroupedListV2State): IGroupedListV2State;
-    // (undocumented)
-    getStartItemIndexInView(): number;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
-    // (undocumented)
-    toggleCollapseAll(allCollapsed: boolean): void;
-}
-
-// @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
 
 // @public (undocumented)
@@ -6142,34 +6117,6 @@ export interface IGroupedListStyles {
     groupIsDropping: IStyle;
     // (undocumented)
     root: IStyle;
-}
-
-// @public (undocumented)
-export interface IGroupedListV2Props extends IGroupedListProps {
-    // (undocumented)
-    groupExpandedVersion: {};
-    // (undocumented)
-    listRef: React_2.Ref<List>;
-    // (undocumented)
-    version: {};
-}
-
-// @public (undocumented)
-export interface IGroupedListV2State {
-    // (undocumented)
-    compact?: IGroupedListProps['compact'];
-    // (undocumented)
-    groupExpandedVersion: {};
-    // (undocumented)
-    groups?: IGroup[];
-    // (undocumented)
-    items?: IGroupedListProps['items'];
-    // (undocumented)
-    listProps?: IGroupedListProps['listProps'];
-    // (undocumented)
-    selectionMode?: IGroupedListProps['selectionMode'];
-    // (undocumented)
-    version: {};
 }
 
 // @public (undocumented)
