@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add support for javascript date localization",
+  "comment": "Fix min width of bars as 1% for horizontal bar charts",
   "packageName": "@fluentui/react-charting",
   "email": "atishay.jain@microsoft.com",
   "dependentChangeType": "patch"
