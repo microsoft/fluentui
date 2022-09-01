@@ -11,7 +11,7 @@ export const renderCard_unstable = (state: CardState) => {
   return (
     <slots.root {...slotProps.root}>
       {slotProps.root.children}
-      {slots.select && <slots.select {...slotProps.select} />}
+      {state.isSelectable && slots.select && <slots.select {...slotProps.select} />}
     </slots.root>
   );
 };
