@@ -178,54 +178,54 @@ packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
 
 
 ## Components
-packages/react @microsoft/cxe-red
-packages/react/src/components/ActivityItem @microsoft/cxe-red @khmakoto
-packages/react/src/components/Announced @microsoft/cxe-red @khmakoto
-packages/react/src/components/Breadcrumb @microsoft/cxe-red @khmakoto
-packages/react/src/components/Button @microsoft/cxe-red @khmakoto
+packages/react @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/ActivityItem @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/Announced @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/Breadcrumb @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/Button @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Calendar @microsoft/fluent-date-time
 packages/react/src/components/CalendarDayGrid @microsoft/fluent-date-time
-packages/react/src/components/Check @microsoft/cxe-red @ThomasMichon @khmakoto
-packages/react/src/components/Checkbox @microsoft/cxe-red @khmakoto
-packages/react/src/components/ChoiceGroup @microsoft/cxe-red
-packages/react/src/components/Coachmark @microsoft/cxe-red @leddie24
-packages/react/src/components/ColorPicker @microsoft/cxe-red
+packages/react/src/components/Check @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @khmakoto
+packages/react/src/components/Checkbox @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal @leddie24
+packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/DatePicker @microsoft/fluent-date-time
-packages/react/src/components/DetailsList @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/DocumentCard @microsoft/cxe-red @yiminwu
-packages/react/src/components/Fabric @microsoft/cxe-red @dzearing
-packages/react/src/components/Facepile @microsoft/cxe-red
-packages/react/src/components/FolderCover @microsoft/cxe-red @ThomasMichon @bigbadcapers
-packages/react/src/components/FocusTrapZone @microsoft/cxe-red @khmakoto
-packages/react/src/components/GroupedList @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/HoverCard @microsoft/cxe-red @Jahnp
-packages/react/src/components/Icon @microsoft/cxe-red @dzearing
-packages/react/src/components/Image @microsoft/cxe-red @dzearing
-packages/react/src/components/Label @microsoft/cxe-red @khmakoto
-packages/react/src/components/Layer @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/Link @microsoft/cxe-red @khmakoto
-packages/react/src/components/List @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/MarqueeSelection @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/MessageBar @microsoft/cxe-red
-packages/react/src/components/Nav @microsoft/cxe-red
-packages/react/src/components/Overlay @microsoft/cxe-red @khmakoto
-packages/react/src/components/Panel @microsoft/cxe-red @khmakoto
-packages/react/src/components/Persona @microsoft/cxe-red
-packages/react/src/components/PersonaCoin @microsoft/cxe-red
-packages/react/src/components/Pivot @microsoft/cxe-red @behowell
-packages/react/src/components/SearchBox @microsoft/cxe-red
-packages/react/src/components/Shimmer @microsoft/cxe-red
-packages/react/src/components/SpinButton @microsoft/cxe-red
-packages/react/src/components/Stack @microsoft/cxe-red @khmakoto
-packages/react/src/components/SwatchColorPicker @microsoft/cxe-red
-packages/react/src/components/Text @microsoft/cxe-red @khmakoto
-packages/react/src/components/TextField @microsoft/cxe-red
-packages/react/src/components/Toggle @microsoft/cxe-red @khmakoto
-packages/react/src/components/Tooltip @microsoft/cxe-red @behowell
+packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal @yiminwu
+packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
+packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers
+packages/react/src/components/FocusTrapZone @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/HoverCard @microsoft/cxe-red @microsoft/cxe-coastal @Jahnp
+packages/react/src/components/Icon @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
+packages/react/src/components/Image @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
+packages/react/src/components/Label @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/Layer @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/Link @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/MarqueeSelection @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/MessageBar @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Nav @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Overlay @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/Panel @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/Persona @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/PersonaCoin @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Pivot @microsoft/cxe-red @microsoft/cxe-coastal @behowell
+packages/react/src/components/SearchBox @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Shimmer @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/SpinButton @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Stack @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/SwatchColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Text @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/TextField @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Toggle @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react/src/components/Tooltip @microsoft/cxe-red @microsoft/cxe-coastal @behowell
 packages/react/src/components/WeeklyDayPicker @microsoft/fluent-date-time
 
 ## Theming and styling
-packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
+packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 
 ## Experiments
 packages/react-experiments/src/components/Signals @ThomasMichon

@@ -8,42 +8,37 @@ import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
   grid: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: ' flex-start',
+    display: 'grid',
+    gridTemplateColumns: 'auto auto auto auto',
+    gridGap: '10px',
+    backgroundColor: '#F7F7F7',
 
-    '> span': {
+    '> div': {
       alignItems: 'center',
-      color: '#3b3a39',
+      backgroundColor: '#FFFFFF',
       display: 'flex',
       flexDirection: 'column',
-      height: '80px',
       justifyContent: 'space-around',
-      ...shorthands.padding(0),
-      width: '80px',
+      ...shorthands.padding('8px'),
       ...shorthands.overflow('hidden'),
 
-      '> div': {
-        fontSize: '11px',
-        opacity: '0',
-      },
-
-      '&:hover': {
-        ...shorthands.overflow('visible'),
-
-        '& div': {
-          opacity: '1',
-        },
+      '> code': {
+        fontSize: '8px',
+        display: 'inline-block',
+        height: 'auto',
+        ...shorthands.padding('0px 8px'),
       },
     },
   },
 
   searchBox: {
+    backgroundColor: '#F7F7F7',
     maxWidth: '320px',
     marginBottom: '10px',
   },
 
   radio: {
+    backgroundColor: '#F7F7F7',
     fontSize: '11px',
   },
 });
@@ -64,24 +59,32 @@ const ReactIconGrid = () => {
 
   const _filterBySize = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>) => {
     const newSize = ev ? (ev.currentTarget as HTMLInputElement).value : '';
-    newSize === 'All' ? setSize('') : setSize(newSize);
+    if (newSize === 'All') {
+      setSize('');
+    } else if (newSize === 'Unsized') {
+      setSize('Unsized');
+    } else {
+      setSize(newSize);
+    }
   };
 
   const _renderIcon = (Icon: React.FC<FluentIconsProps>): JSX.Element => {
     return (
-      <span key={Icon.displayName} aria-label={Icon.displayName}>
+      <div key={Icon.displayName} aria-label={Icon.displayName}>
         <Icon />
-        <div>{Icon.displayName}</div>
-      </span>
+        <br />
+        <code>{Icon.displayName}</code>
+      </div>
     );
   };
 
   const filteredIcons = React.useMemo(
     () =>
-      reactIcons.filter(
-        icon =>
-          icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
-          icon.displayName?.indexOf(String(size)) !== -1,
+      reactIcons.filter(icon =>
+        size === 'Unsized'
+          ? icon.displayName! && !/\d/.test(icon.displayName.toLowerCase())
+          : icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
+            icon.displayName?.indexOf(String(size)) !== -1,
       ),
     [search, size],
   );
@@ -97,7 +100,7 @@ const ReactIconGrid = () => {
         onChange={_onSearchQueryChanged}
         className={styles.searchBox}
       />
-      {[16, 20, 24, 28, 32, 48, 'All'].map(option => (
+      {[16, 20, 24, 28, 32, 48, 'Unsized', 'All'].map(option => (
         <>
           <input
             id={`option-${option}`}

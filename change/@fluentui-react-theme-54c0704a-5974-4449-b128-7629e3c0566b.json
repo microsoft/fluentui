@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Refactor global shared color tokens",
+  "packageName": "@fluentui/react-theme",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}

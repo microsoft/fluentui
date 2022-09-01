@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

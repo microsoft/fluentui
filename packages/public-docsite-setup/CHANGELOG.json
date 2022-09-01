@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 07:48:10 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.11",
+      "version": "0.3.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "0174dfc96d5ea925268fb3f51efaa6373ecabcc6",
+            "comment": "fix: update fabric core URL and change selector for back to top button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Apr 2022 07:38:08 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.8",
       "version": "0.3.8",

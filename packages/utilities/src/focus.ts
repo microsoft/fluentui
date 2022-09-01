@@ -110,10 +110,21 @@ export function getLastTabbable(
  *
  * @public
  * @param rootElement - Element to start the search for a focusable child.
+ * @param bypassHiddenElements - If true, focus will be not be set on hidden elements.
  * @returns True if focus was set, false if it was not.
  */
-export function focusFirstChild(rootElement: HTMLElement): boolean {
-  let element: HTMLElement | null = getNextElement(rootElement, rootElement, true, false, false, true);
+export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean): boolean {
+  let element: HTMLElement | null = getNextElement(
+    rootElement,
+    rootElement,
+    true,
+    false,
+    false,
+    true,
+    undefined,
+    undefined,
+    bypassHiddenElements,
+  );
 
   if (element) {
     focusAsync(element);
@@ -261,12 +272,15 @@ export function getNextElement(
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean,
   tabbable?: boolean,
+  bypassHiddenElements?: boolean,
 ): HTMLElement | null {
   if (!currentElement || (currentElement === rootElement && suppressChildTraversal && !allowFocusRoot)) {
     return null;
   }
 
-  let isCurrentElementVisible = isElementVisible(currentElement);
+  const checkElementVisibility = bypassHiddenElements ? isElementVisibleAndNotHidden : isElementVisible;
+
+  let isCurrentElementVisible = checkElementVisibility(currentElement);
 
   // Check the current node, if it's not the first traversal.
   if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement, tabbable)) {
@@ -288,6 +302,7 @@ export function getNextElement(
       includeElementsInFocusZones,
       allowFocusRoot,
       tabbable,
+      bypassHiddenElements,
     );
 
     if (childMatch) {
@@ -309,6 +324,7 @@ export function getNextElement(
     includeElementsInFocusZones,
     allowFocusRoot,
     tabbable,
+    bypassHiddenElements,
   );
 
   if (siblingMatch) {
@@ -325,6 +341,7 @@ export function getNextElement(
       includeElementsInFocusZones,
       allowFocusRoot,
       tabbable,
+      bypassHiddenElements,
     );
   }
 
