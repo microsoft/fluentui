@@ -79,7 +79,6 @@ InputField.displayName = 'InputField';
 The following field components will be defined. If more form components are added in the future, they should also include a Field version.
 
 - `CheckboxField`
-  - This will not use the Field's `label`, and instead forward the `label` prop to the underlying `Checkbox`.
 - `ComboboxField`
 - `DropdownField`
 - `InputField`
@@ -88,7 +87,6 @@ The following field components will be defined. If more form components are adde
 - `SliderField`
 - `SpinButtonField`
 - `SwitchField`
-  - _Open question:_ how should this handle the `label`? Should it forward to the underlying `Switch`, or keep the label in the same place as the field's label? Might need a prop to control this behavior.
 - `TextareaField`
 
 ## Variants
@@ -221,6 +219,21 @@ export type FieldState<T extends FieldComponent> = ComponentState<Required<Field
     classNames: SlotClassNames<FieldSlots<T>>;
   };
 ```
+
+### Label for Checkbox and Switch
+
+The Checkbox and Switch components already have a `label` prop, which conflicts with the Field's `label`.
+
+#### `CheckboxField`
+
+- The `label` prop will go to the Checkbox and NOT the Field
+- New `fieldLabel` prop for the label of the Field
+
+#### `SwitchField`
+
+- New `valueLabel` prop for the label of the Switch
+- The `label` prop will go to the Field and NOT the Switch
+- _NEEDS REVIEW_ - Should we rename the underlying Switch `label` prop to `valueLabel`? If so, then SwitchField would no longer be a special case.
 
 ## Structure
 
