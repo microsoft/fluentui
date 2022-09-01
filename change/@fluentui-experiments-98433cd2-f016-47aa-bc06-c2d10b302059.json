@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added stub fluentui/experiements",
-  "packageName": "@fluentui/experiments",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
