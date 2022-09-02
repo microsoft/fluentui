@@ -41,12 +41,16 @@ interface IRectRef {
 type RectanglesGraphData = { [key: string]: FlattenData[] };
 export interface IHeatMapChartState {
   /**
+   * contains the selected legend string
+   */
+  selectedLegend: string;
+  /**
    * determines if the legend any of the legend is selected or not
    * @default false
    */
   isLegendSelected: boolean;
   /**
-   * contains the seleted legend string
+   * contains the hovered legend string
    */
   activeLegend: string;
   /**
@@ -142,6 +146,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ): DataSet => this._createNewDataSet(data, xDate, xNum, yDate, yNum),
     );
     this.state = {
+      selectedLegend: '',
       isLegendSelected: false,
       activeLegend: '',
       isLegendHovered: false,
@@ -242,12 +247,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return { x, y };
   };
 
-  private _getOpacity = (legendTitle: string): string => {
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = legendTitle === this.state.activeLegend;
-    }
-    return shouldHighlight ? '1' : '0.1';
+  private _getOpacity = (legendTitle: string): number => {
+    const opacity =
+      this.state.selectedLegend === legendTitle ||
+      (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === legendTitle))
+        ? 1
+        : 0.1;
+    return opacity;
   };
 
   private _rectRefCallback = (rectElement: SVGGElement, index: number | string, dataPointObject: FlattenData): void => {
@@ -368,12 +374,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * @param legendTitle
    */
   private _onLegendHover = (legendTitle: string): void => {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: legendTitle,
-        isLegendHovered: true,
-      });
-    }
+    this.setState({
+      activeLegend: legendTitle,
+      isLegendHovered: true,
+    });
   };
 
   /**
@@ -383,14 +387,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * the legends which are in overflow card
    * @param isLegendFocused
    */
-  private _onLegendLeave = (isLegendFocused?: boolean): void => {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: '',
-        isLegendHovered: false,
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLegendLeave = (): void => {
+    this.setState({
+      activeLegend: '',
+      isLegendHovered: false,
+    });
   };
   /**
    * @param legendTitle
@@ -408,20 +409,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * if legend is not alredy selceted, simply set the isLegendSelected to true
      * and the active legend to the legendTitle of selected legend
      */
-    if (this.state.isLegendSelected) {
-      if (this.state.activeLegend === legendTitle) {
-        this.setState({
-          activeLegend: '',
-          isLegendSelected: false,
-        });
-      } else {
-        this.setState({ activeLegend: legendTitle });
-      }
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+        isLegendSelected: false,
+      });
     } else {
       this.setState({
-        activeLegend: legendTitle,
+        selectedLegend: legendTitle,
         isLegendSelected: true,
-        isLegendHovered: false,
       });
     }
   };
@@ -438,8 +434,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         hoverAction: () => {
           this._onLegendHover(item.legend);
         },
-        onMouseOutAction: (isLegendSelected?: boolean) => {
-          this._onLegendLeave(isLegendSelected);
+        onMouseOutAction: () => {
+          this._onLegendLeave();
         },
       };
       legends.push(legend);
