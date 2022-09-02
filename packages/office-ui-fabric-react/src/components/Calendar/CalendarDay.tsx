@@ -240,7 +240,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
         <FocusZone>
           <table
             className={css('ms-DatePicker-table', styles.table)}
-            aria-readonly="true"
             aria-multiselectable="false"
             aria-labelledby={monthAndYearId}
             aria-activedescendant={activeDescendantId}

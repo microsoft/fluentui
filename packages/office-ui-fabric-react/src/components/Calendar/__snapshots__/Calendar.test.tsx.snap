@@ -119,7 +119,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 aria-activedescendant="DatePickerDay-active0"
                 aria-labelledby="DatePickerDay-monthAndYear2"
                 aria-multiselectable="false"
-                aria-readonly="true"
                 className="ms-DatePicker-table"
                 role="grid"
               >
