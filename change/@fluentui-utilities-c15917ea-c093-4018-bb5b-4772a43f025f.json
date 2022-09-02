@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added lts-7 beachball tag",
+  "packageName": "@fluentui/utilities",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
