@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat(react-card): add option to have card as button or link",
+  "comment": "feat(react-card): new selectable cards",
   "packageName": "@fluentui/react-card",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
