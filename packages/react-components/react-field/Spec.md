@@ -233,7 +233,6 @@ The Checkbox and Switch components already have a `label` prop, which conflicts 
 
 - New `valueLabel` prop for the label of the Switch
 - The `label` prop will go to the Field and NOT the Switch
-- _NEEDS REVIEW_ - Should we rename the underlying Switch `label` prop to `valueLabel`? If so, then SwitchField would no longer be a special case.
 
 ## Structure
 
