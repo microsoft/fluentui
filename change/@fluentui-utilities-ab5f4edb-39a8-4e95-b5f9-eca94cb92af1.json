@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bump utilities to republish latest",
+  "packageName": "@fluentui/utilities",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
