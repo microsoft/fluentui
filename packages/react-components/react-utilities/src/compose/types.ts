@@ -101,7 +101,8 @@ export type Slot<
   ?
       | WithSlotShorthandValue<
           Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
-            ? { as?: Type } & WithSlotRenderFunction<IntrisicElementProps<Type>> & Record<`data-${string}`, unknown>
+            ? { as?: Type } & WithSlotRenderFunction<IntrisicElementProps<Type>> &
+                { [DataAttribute in `data-${string}`]: unknown }
             : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
             ? WithSlotRenderFunction<Props>
             : Type // Props types like `ButtonProps`
