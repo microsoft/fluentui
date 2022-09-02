@@ -21,7 +21,7 @@ export const config: BeachballConfig = {
     },
     {
       name: 'Icons',
-      include: ['packages/icons', 'stub-packages/font-icons-mdl2'],
+      include: ['packages/icons'],
       disallowedChangeTypes: ['major'],
     },
     {
