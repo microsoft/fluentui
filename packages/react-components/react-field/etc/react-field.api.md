@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+<<<<<<< HEAD
 import { Checkbox } from '@fluentui/react-checkbox';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { Combobox } from '@fluentui/react-combobox';
@@ -15,6 +16,13 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import { Label } from '@fluentui/react-label';
 import { RadioGroup } from '@fluentui/react-radio';
+=======
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Input } from '@fluentui/react-input';
+import { Label } from '@fluentui/react-label';
+>>>>>>> 330aa6b960d371456667aae70cccbf116ed58cef
 import * as React_2 from 'react';
 import { Select } from '@fluentui/react-select';
 import { Slider } from '@fluentui/react-slider';
@@ -22,6 +30,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import type { SlotShorthandValue } from '@fluentui/react-utilities';
+<<<<<<< HEAD
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { Switch } from '@fluentui/react-switch';
 import { Textarea } from '@fluentui/react-textarea';
@@ -140,6 +149,48 @@ export type TextareaFieldProps = FieldProps<typeof Textarea>;
 // @public
 export const useField_unstable: <T extends FieldComponent>(params: UseFieldParams<T>) => FieldState<T>;
 
+=======
+
+// @public
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+    orientation?: 'vertical' | 'horizontal';
+    validationState?: 'error' | 'warning' | 'success';
+};
+
+// @public
+export type FieldSlots<T extends FieldComponent> = {
+    root: NonNullable<Slot<'div'>>;
+    control: SlotComponent<T>;
+    label?: Slot<typeof Label>;
+    validationMessage?: Slot<'span'>;
+    validationMessageIcon?: Slot<'span'>;
+    hint?: Slot<'span'>;
+};
+
+// @public
+export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
+    classNames: SlotClassNames<FieldSlots<T>>;
+};
+
+// @public (undocumented)
+export const getFieldClassNames: (name: string) => SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export const InputField: ForwardRefComponent<InputFieldProps>;
+
+// @public (undocumented)
+export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type InputFieldProps = FieldProps<typeof Input>;
+
+// @public
+export const renderField_unstable: <T extends FieldComponent>(state: FieldState<T>) => JSX.Element;
+
+// @public
+export const useField_unstable: <T extends FieldComponent>(params: UseFieldParams<T>) => FieldState<T>;
+
+>>>>>>> 330aa6b960d371456667aae70cccbf116ed58cef
 // @public (undocumented)
 export type UseFieldParams<T extends FieldComponent> = {
     props: FieldProps<T> & OptionalFieldComponentProps;

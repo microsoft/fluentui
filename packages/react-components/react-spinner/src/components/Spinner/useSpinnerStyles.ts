@@ -58,6 +58,7 @@ const useRootStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    lineHeight: '0',
     ...shorthands.gap('8px'),
   },
 
@@ -255,7 +256,7 @@ const useTrackStyles = makeStyles({
 const useLabelStyles = makeStyles({
   // style for label
   inverted: {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: 'rgba(255, 255, 255, 1)', // This is white alpha but the token is not exported
   },
 
   primary: {}, // no change

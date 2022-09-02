@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: Update spec to match implementation, add best practices, and update README.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "none"
+}

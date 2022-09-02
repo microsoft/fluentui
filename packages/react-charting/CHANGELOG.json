@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 07:48:11 GMT",
+      "tag": "@fluentui/react-charting_v5.12.32",
+      "version": "5.12.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.4",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.93.1",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 07:41:54 GMT",
       "tag": "@fluentui/react-charting_v5.12.31",
       "version": "5.12.31",
