@@ -1,5 +1,5 @@
 import { Meta, Preview, Story } from '@storybook/addon-docs';
-import { MonochromeColors } from './MonochromeColors.stories';
+import { NeutralColors } from './NeutralColors.stories';
 import { NamedColors } from './NamedColors.stories';
 import { BrandColors } from './BrandColors.stories';
 import { SemanticColors } from './SemanticColors.stories';
@@ -20,9 +20,14 @@ The team of designers and engineers considered several for each color choice:
 - The holistic global colors defined in v9 (i.e. v9 colors are more neutral or cooler compared to v8)
 
 We applied this mapping in the theme shim methods.
-These methods help create a v8 theme that closely matches v9 and a v9 theme that closely matches v8.
 
-<MonochromeColors />
-<NamedColors />
+- The createV8Theme shim creates a v8 theme that closely matches v9.
+- The createV9Theme shim creates v9 theme that closely matches v8.
+
+v8 themes include an isInverted boolean to indicate they are a dark theme rather than a light theme, but v9 themes do not.
+The createV8Theme supports passing isDarkTheme to use inverted colors in the v8 palette.
+
+<NeutralColors />
 <BrandColors />
 <SemanticColors />
+<NamedColors />
