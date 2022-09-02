@@ -4,41 +4,69 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Input } from '@fluentui/react-input';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
+import type { SlotShorthandValue } from '@fluentui/react-utilities';
 
 // @public
-export const Field: ForwardRefComponent<FieldProps>;
-
-// @public (undocumented)
-export const fieldClassName = "fui-Field";
-
-// @public (undocumented)
-export const fieldClassNames: SlotClassNames<FieldSlots>;
-
-// @public
-export type FieldProps = ComponentProps<FieldSlots> & {};
-
-// @public (undocumented)
-export type FieldSlots = {
-    root: Slot<'div'>;
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+    orientation?: 'vertical' | 'horizontal';
+    validationState?: 'error' | 'warning' | 'success';
 };
 
 // @public
-export type FieldState = ComponentState<FieldSlots>;
+export type FieldSlots<T extends FieldComponent> = {
+    root: NonNullable<Slot<'div'>>;
+    control: SlotComponent<T>;
+    label?: Slot<typeof Label>;
+    validationMessage?: Slot<'span'>;
+    validationMessageIcon?: Slot<'span'>;
+    hint?: Slot<'span'>;
+};
 
 // @public
-export const renderField_unstable: (state: FieldState) => JSX.Element;
+export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
+    classNames: SlotClassNames<FieldSlots<T>>;
+};
+
+// @public (undocumented)
+export const getFieldClassNames: (name: string) => SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export const InputField: ForwardRefComponent<InputFieldProps>;
+
+// @public (undocumented)
+export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type InputFieldProps = FieldProps<typeof Input>;
 
 // @public
-export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLElement>) => FieldState;
+export const renderField_unstable: <T extends FieldComponent>(state: FieldState<T>) => JSX.Element;
 
 // @public
-export const useFieldStyles_unstable: (state: FieldState) => FieldState;
+export const useField_unstable: <T extends FieldComponent>(params: UseFieldParams<T>) => FieldState<T>;
+
+// @public (undocumented)
+export type UseFieldParams<T extends FieldComponent> = {
+    props: FieldProps<T> & OptionalFieldComponentProps;
+    ref: React_2.Ref<HTMLElement>;
+    component: T;
+    classNames: SlotClassNames<FieldSlots<T>>;
+    labelConnection?: 'htmlFor' | 'aria-labelledby';
+};
+
+// @public
+export const useFieldStyles_unstable: <T extends FieldComponent>(state: FieldState<T>) => void;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputField renders a default state 1`] = `
+<div>
+  <div
+    class="fui-InputField"
+  >
+    <span
+      class="fui-Input fui-InputField__control"
+    >
+      <input
+        class="fui-Input__input"
+        type="text"
+        value=""
+      />
+    </span>
+  </div>
+</div>
+`;
