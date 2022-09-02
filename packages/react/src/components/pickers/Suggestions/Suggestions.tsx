@@ -368,7 +368,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       if (noResultsFoundText) {
         return noResultsFoundText;
       }
-    } else if (isExtendedLoading) {
+    } else if (isLoading && isExtendedLoading) {
       return loadingText || '';
     }
     return '';

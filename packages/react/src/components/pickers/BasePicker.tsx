@@ -947,7 +947,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
   /** If suggestions are still loading after a predefined amount of time, set state to show user alert */
   private _startLoadTimer() {
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       if (this.state.suggestionsLoading) {
         this.setState({ suggestionsExtendedLoading: true });
       }
