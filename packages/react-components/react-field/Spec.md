@@ -2,7 +2,7 @@
 
 ## Background
 
-Fields add add a label, validation text, and hint text to form input components. The existing input components (such as `Input` and `Combobox`) are wrapped to create field versions of them (such as `InputField` and `ComboboxField`).
+Field adds a label, validation text, and hint text to form input components. The existing input components (such as `Input` and `Combobox`) are wrapped to create field versions of them (such as `InputField` and `ComboboxField`).
 
 Epic issue tracking implementation: https://github.com/microsoft/fluentui/issues/19627
 
