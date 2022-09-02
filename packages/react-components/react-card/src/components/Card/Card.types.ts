@@ -16,6 +16,13 @@ export type CardRefElement = HTMLDivElement | HTMLButtonElement | HTMLAnchorElem
 export type CardOnSelectEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
 
 /**
+ * Data sent from the selection events on a selectable card.
+ */
+export type CardOnSelectData = {
+  selected: boolean;
+};
+
+/**
  * Slots available in the Card component.
  */
 export type CardSlots = {
@@ -106,7 +113,7 @@ export type CardProps = ComponentProps<CardSlots> & {
   /**
    * Callback to be called when the selected state value changes.
    */
-  onCardSelect?: (event: CardOnSelectEvent, data: { selected: boolean }) => void;
+  onCardSelect?: (event: CardOnSelectEvent, data: CardOnSelectData) => void;
 };
 
 /**
