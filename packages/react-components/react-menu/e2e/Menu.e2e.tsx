@@ -74,6 +74,35 @@ describe('MenuTrigger', () => {
       .should('not.exist');
   });
 
+  it('should trigger focus and blur events when opening and closing', () => {
+    const onFocus = cy.stub().as('focus');
+    const onBlur = cy.stub().as('blur');
+
+    mount(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem onFocus={onFocus} onBlur={onBlur}>
+              Item
+            </MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    cy.get(menuTriggerSelector)
+      .click()
+      .get('@focus')
+      .should('have.been.calledOnce')
+      .get(menuItemSelector)
+      .type('{esc}')
+      .get('@blur')
+      .should('have.been.calledOnce');
+  });
+
   (['ArrowDown', 'Enter', 'Space'] as const).forEach(key => {
     it(`should open menu with ${key} and focus first menuitem`, () => {
       mount(

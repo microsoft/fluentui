@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Tab } from '@fluentui/keyboard-keys';
 import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
 import {
   useControllableState,
@@ -171,7 +172,7 @@ const useMenuOpenState = (
 
     if (data.keyboard) {
       shouldHandleKeyboard = true;
-      shouldHandleTab = (e as React.KeyboardEvent).key === 'Tab';
+      shouldHandleTab = (e as React.KeyboardEvent).key === Tab;
       pressedShift = (e as React.KeyboardEvent).shiftKey;
     }
 
@@ -180,7 +181,11 @@ const useMenuOpenState = (
 
       if (shouldHandleKeyboard) {
         if (shouldHandleTab && !state.isSubmenu) {
-          pressedShift ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
+          if (pressedShift) {
+            focusBeforeMenuTrigger();
+          } else {
+            focusAfterMenuTrigger();
+          }
         } else {
           state.triggerRef.current?.focus();
         }
