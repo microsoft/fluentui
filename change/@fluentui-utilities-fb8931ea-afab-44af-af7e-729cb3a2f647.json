@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add check for FocusRectsProvider providerRef being undefined",
-  "packageName": "@fluentui/utilities",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
