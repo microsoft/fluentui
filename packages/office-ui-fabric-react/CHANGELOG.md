@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 16:57:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.197.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.3)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.2..office-ui-fabric-react_v7.197.3)
+
+### Patches
+
+- fix: v7 fabric port: remove explicit readonly semantics from Calendar grid ([PR #24601](https://github.com/microsoft/fluentui/pull/24601) by sarah.higley@microsoft.com)
 
 ## [7.197.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.2)
 

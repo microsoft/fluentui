@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Renamed to react-experiments",
-  "packageName": "@fluentui/react-experiments",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

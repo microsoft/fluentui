@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 01 Sep 2022 12:21:47 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 16:57:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.45.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v7.45.0)
+
+Fri, 02 Sep 2022 16:57:15 GMT
+
+### Minor changes
+
+- Renamed to react-experiments ([PR #24648](https://github.com/microsoft/fluentui/pull/24648) by gcox@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.45.0 ([PR #24601](https://github.com/microsoft/fluentui/pull/24601) by sarah.higley@microsoft.com)
+- Bump @uifabric/example-app-base to v7.22.15 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
 
 ## [7.44.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v7.44.0)
 

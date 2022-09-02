@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Patch bump file-type-icons",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - todo-app
 
-This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 16:57:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/todo-app_v7.0.0)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/todo-app_v7.0.0..todo-app_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.3 ([PR #24601](https://github.com/microsoft/fluentui/pull/24601) by sarah.higley@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/todo-app_v7.0.0)
 

@@ -1,8 +1,29 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 16:57:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.45.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.45.0)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.44.1..@uifabric/experiments_v7.45.0)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.37.0 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/foundation to v7.10.10 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/react-hooks to v7.16.1 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/azure-themes to v7.10.15 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/example-app-base to v7.22.15 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/styling to v7.22.2 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/fluent-theme to v7.7.15 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @fluentui/theme to v1.7.10 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/theme-samples to v7.5.15 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/variants to v7.3.1 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+- Bump @uifabric/file-type-icons to v7.10.2 ([PR #24649](https://github.com/microsoft/fluentui/pull/24649) by gcox@microsoft.com)
+- Bump @uifabric/icons to v7.8.2 ([PR #24649](https://github.com/microsoft/fluentui/pull/24649) by gcox@microsoft.com)
+- Bump office-ui-fabric-react to v7.197.3 ([PR #24601](https://github.com/microsoft/fluentui/pull/24601) by sarah.higley@microsoft.com)
 
 ## [7.44.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.44.1)
 

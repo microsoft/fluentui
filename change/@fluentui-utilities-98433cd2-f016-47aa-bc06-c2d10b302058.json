@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added stub fluentui/utilities",
-  "packageName": "@fluentui/utilities",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

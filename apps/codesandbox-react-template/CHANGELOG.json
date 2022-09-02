@@ -2,6 +2,21 @@
   "name": "codesandbox-react-template",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "codesandbox-react-template_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v7.197.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b4b0a094e6b32fa8731e8257e677d4eaa78c6ccb",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Sep 2022 23:27:06 GMT",
       "tag": "codesandbox-react-template_v7.0.0",
       "version": "7.0.0",

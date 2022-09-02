@@ -2,6 +2,93 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "@uifabric/experiments_v7.45.0",
+      "version": "7.45.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.37.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.10",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.16.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.10.15",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.15",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.22.2",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/fluent-theme to v7.7.15",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v1.7.10",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.5.15",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/variants to v7.3.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.10.2",
+            "author": "gcox@microsoft.com",
+            "commit": "2912f6f605335663ce334b505495e1a5772fc3d6",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.8.2",
+            "author": "gcox@microsoft.com",
+            "commit": "2912f6f605335663ce334b505495e1a5772fc3d6",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b4b0a094e6b32fa8731e8257e677d4eaa78c6ccb",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Sep 2022 23:27:06 GMT",
       "tag": "@uifabric/experiments_v7.44.1",
       "version": "7.44.1",
