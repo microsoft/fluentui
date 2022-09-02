@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Features
+- Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
 - Add `FocusTrapZone` prop `preventScrollOnRestoreFocus` to prevent scroll on focus when `FocusTrapZone` releases @yuanboxue-amber ([#24632](https://github.com/microsoft/fluentui/pull/24632))
 
 ### Fixes

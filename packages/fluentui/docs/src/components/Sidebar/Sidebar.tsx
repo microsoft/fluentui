@@ -72,6 +72,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'chatRefresh',
+    title: { content: 'Chat Refresh', as: NavLink, to: '/prototype-chat-refresh' },
+    public: true,
+  },
+  {
     id: 'customscrollbar',
     title: { content: 'Custom Scrollbar', as: NavLink, to: '/prototype-custom-scrollbar' },
     public: true,

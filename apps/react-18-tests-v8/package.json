@@ -1,0 +1,31 @@
+{
+  "name": "@fluentui/react-18-tests-v8",
+  "description": "React 18 test application",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "start": "webpack-dev-server --mode=development --config=webpack.config.js"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.6",
+    "swc-loader": "^0.2.3"
+  },
+  "dependencies": {
+    "@fluentui/react": "8.94.0",
+    "@fluentui/react-hooks": "8.6.11",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tslib": "^2.1.0"
+  }
+}

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 07:48:52 GMT",
+      "tag": "@fluentui/web-components_v2.5.4",
+      "version": "2.5.4",
+      "comments": {
+        "none": [
+          {
+            "author": "aelkholy248@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f68ec25042436f1fd33d8edb7ca82bd622b80d3",
+            "comment": "Fix typos in webpack integration instructions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 07:41:54 GMT",
       "tag": "@fluentui/web-components_v2.5.4",
       "version": "2.5.4",

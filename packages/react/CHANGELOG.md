@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 01 Sep 2022 07:48:10 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 07:48:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.94.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.0)
+
+Fri, 02 Sep 2022 07:48:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.93.1..@fluentui/react_v8.94.0)
+
+### Minor changes
+
+- chore: export ButtonGlobalClassNames from classnames file ([PR #24624](https://github.com/microsoft/fluentui/pull/24624) by mgodbolt@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.20 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.13 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/react-focus to v8.8.5 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/react-hooks to v8.6.11 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/style-utilities to v8.7.12 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/theme to v2.6.16 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/utilities to v8.13.1 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/common-styles to v1.2.9 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
 
 ## [8.93.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.93.1)
 

@@ -32,6 +32,10 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-context-selector": "^9.0.2",
+    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-input": "^9.0.4",
+    "@fluentui/react-label": "^9.0.4",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",
     "@griffel/react": "^1.3.0",
