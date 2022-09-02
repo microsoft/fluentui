@@ -1,8 +1,17 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.10](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.7.10)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.7.10..@uifabric/api-docs_v7.7.10)
+
+### Patches
+
+- Bump @uifabric/merge-styles to v7.20.0 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [7.7.10](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.7.10)
 

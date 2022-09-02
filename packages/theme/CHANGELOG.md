@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 30 Aug 2022 00:07:57 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.7.9)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.7.8..@fluentui/theme_v1.7.9)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.1 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [1.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.7.8)
 

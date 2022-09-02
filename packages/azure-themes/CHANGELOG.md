@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.14](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.10.14)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.10.13..@uifabric/azure-themes_v7.10.14)
+
+### Patches
+
+- Bump @uifabric/merge-styles to v7.20.0 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [7.10.13](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.10.13)
 

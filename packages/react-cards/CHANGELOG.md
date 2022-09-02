@@ -1,8 +1,35 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.119.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.119.0)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.118.15..@uifabric/react-cards_v0.119.0)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.14 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/foundation to v7.10.9 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump office-ui-fabric-react to v7.197.2 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/example-app-base to v7.22.14 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/theme-samples to v7.5.14 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/jest-serializer-merge-styles to v7.2.4 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/react-hooks to v7.16.0 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/utilities to v7.36.1 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/styling to v7.22.1 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/file-type-icons to v7.10.1 ([PR #24531](https://github.com/microsoft/fluentui/pull/24531) by caperez@microsoft.com)
+
+## [0.118.15](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.118.15)
+
+Thu, 01 Sep 2022 12:21:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.118.14..@uifabric/react-cards_v0.118.15)
+
+### Patches
+
+- Bump @uifabric/file-type-icons to v7.10.0 ([PR #24618](https://github.com/microsoft/fluentui/pull/24618) by gcox@microsoft.com)
 
 ## [0.118.14](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.118.14)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "0.19.8",
+  "version": "0.19.9",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,8 +28,8 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/styling": "^7.22.0",
-    "@uifabric/test-utilities": "^7.3.2",
+    "@uifabric/styling": "^7.22.1",
+    "@uifabric/test-utilities": "^7.3.3",
     "@fluentui/eslint-plugin": "^0.54.2",
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "3.10.3",
@@ -46,14 +46,14 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.19",
-    "@fluentui/react-stylesheets": "^0.2.6",
-    "@fluentui/theme": "^1.7.8",
-    "@fluentui/react-window-provider": "^1.0.3",
-    "@uifabric/react-hooks": "^7.15.2",
+    "@fluentui/react-compose": "^0.19.20",
+    "@fluentui/react-stylesheets": "^0.2.7",
+    "@fluentui/theme": "^1.7.9",
+    "@fluentui/react-window-provider": "^1.0.4",
+    "@uifabric/react-hooks": "^7.16.0",
     "@uifabric/set-version": "^7.0.24",
-    "@uifabric/merge-styles": "^7.19.2",
-    "@uifabric/utilities": "^7.36.0",
+    "@uifabric/merge-styles": "^7.20.0",
+    "@uifabric/utilities": "^7.36.1",
     "classnames": "^2.2.6",
     "tslib": "^1.10.0"
   },

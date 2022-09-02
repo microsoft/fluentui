@@ -2,6 +2,90 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/react-cards_v0.119.0",
+      "version": "0.119.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.10.14",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.9",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.2",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.14",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.5.14",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/jest-serializer-merge-styles to v7.2.4",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.16.0",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.1",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.22.1",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.10.1",
+            "author": "caperez@microsoft.com",
+            "commit": "f252fcda3c4ae215e0f1408c1df12042ca77899c",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 12:21:47 GMT",
+      "tag": "@uifabric/react-cards_v0.118.15",
+      "version": "0.118.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.10.0",
+            "author": "gcox@microsoft.com",
+            "commit": "246e3c681bd699a3772af05fbeca99aaa0438016",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "@uifabric/react-cards_v0.118.14",
       "version": "0.118.14",

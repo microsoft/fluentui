@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added stub react-file-type-icons",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

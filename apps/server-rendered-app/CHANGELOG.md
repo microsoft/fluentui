@@ -1,8 +1,17 @@
 # Change Log - server-rendered-app
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump @uifabric/merge-styles to v7.20.0 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
 

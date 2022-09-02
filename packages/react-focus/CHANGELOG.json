@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@fluentui/react-focus_v7.18.10",
+      "version": "7.18.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/jest-serializer-merge-styles to v7.2.4",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "@fluentui/react-focus_v7.18.9",
       "version": "7.18.9",

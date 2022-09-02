@@ -2,6 +2,36 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "vr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.44.1",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 12:21:47 GMT",
+      "tag": "vr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.44.0",
+            "author": "gcox@microsoft.com",
+            "commit": "09b97c3f8328d5e92d5751ed9b693077e8a506e7",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "vr-tests_v7.0.0",
       "version": "7.0.0",

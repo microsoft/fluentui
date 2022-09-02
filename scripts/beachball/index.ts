@@ -39,6 +39,25 @@ export const config: BeachballConfig = {
       include: ['packages/utilities', 'stub-packages/utilities'],
       disallowedChangeTypes: ['major'],
     },
+      name: 'Merge Styles',
+      include: ['packages/merge-styles', 'stub-packages/merge-styles'],
+      disallowedChangeTypes: ['major'],
+    },
+    {
+      name: 'Cards',
+      include: ['packages/react-cards', 'stub-packages/react-cards'],
+      disallowedChangeTypes: ['major'],
+    },
+    {
+      name: 'Hooks',
+      include: ['packages/react-hooks', 'stub-packages/react-hooks'],
+      disallowedChangeTypes: ['major'],
+    },
+    {
+      name: 'Scheme Utilities',
+      include: ['packages/variants', 'stub-packages/scheme-utilities'],
+      disallowedChangeTypes: ['major'],
+    },
   ],
   changelog: {
     customRenderers: {

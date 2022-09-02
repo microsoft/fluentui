@@ -2,6 +2,36 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.10.15",
+      "version": "7.10.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.7.10",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 12:21:47 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.10.15",
+      "version": "7.10.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.15.15",
+            "author": "gcox@microsoft.com",
+            "commit": "09b97c3f8328d5e92d5751ed9b693077e8a506e7",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.10.15",
       "version": "7.10.15",

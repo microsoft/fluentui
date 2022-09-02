@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v0.1.4)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v0.1.3..@fluentui/react-shared-contexts_v0.1.4)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.3 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v0.1.3)
 
