@@ -284,7 +284,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         value = 1;
       }
       sumOfPercent += value;
+
+      return sumOfPercent;
     });
+
     const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {

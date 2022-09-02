@@ -208,7 +208,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         value = 99;
       }
       sumOfPercent += value;
+
+      return sumOfPercent;
     });
+
     const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
