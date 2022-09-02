@@ -24,9 +24,6 @@ export type FieldSlots<T extends FieldComponent> = {
 
   /**
    * The underlying component wrapped by this field.
-   *
-   * This is the PRIMARY slot: all intrinsic HTML properties will be applied to this slot,
-   * except `className` and `style`, which remain on the root slot.
    */
   control: SlotComponent<T>;
 
