@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Remove max-width style from Button components.",
+  "packageName": "@fluentui/react-button",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}

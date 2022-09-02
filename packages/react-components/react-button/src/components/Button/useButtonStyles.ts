@@ -22,8 +22,6 @@ const useRootStyles = makeStyles({
 
     ...shorthands.margin(0),
 
-    maxWidth: '280px',
-
     ...shorthands.overflow('hidden'),
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',

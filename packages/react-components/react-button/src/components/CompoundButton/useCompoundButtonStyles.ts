@@ -15,7 +15,6 @@ const useRootStyles = makeStyles({
   // Base styles
   base: {
     height: 'auto',
-    maxWidth: 'unset',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
