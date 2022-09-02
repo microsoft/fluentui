@@ -40,7 +40,9 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
       const newCheckedValue = !isCardSelected;
 
       setIsCardSelected(newCheckedValue);
-      onCardSelect(event, newCheckedValue);
+      onCardSelect(event, {
+        selected: newCheckedValue,
+      });
     },
     [onCardSelect, isCardSelected, shouldRestrictTriggerAction],
   );

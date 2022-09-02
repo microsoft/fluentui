@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Checkbox, makeStyles, shorthands } from '@fluentui/react-components';
 import { SampleCard } from './SampleCard.stories';
-import { CardOnSelectEvent } from '@fluentui/react-card';
 
 const useStyles = makeStyles({
   cardGrid: {
@@ -22,12 +21,12 @@ export const Selectable = () => {
       <SampleCard
         className={styles.cardGrid}
         selected={checked1}
-        onCardSelect={(event: CardOnSelectEvent, isSelected: boolean) => setChecked1(isSelected)}
+        onCardSelect={(event, { selected }) => setChecked1(selected)}
       />
       <SampleCard
         className={styles.cardGrid}
         selected={checked2}
-        onCardSelect={(event: CardOnSelectEvent, isSelected: boolean) => setChecked2(isSelected)}
+        onCardSelect={(event, { selected }) => setChecked2(selected)}
       />
     </div>
   );
@@ -52,13 +51,13 @@ export const SelectableWithCheckbox = () => {
         className={styles.cardGrid}
         select={<Checkbox checked={checked1} />}
         selected={checked1}
-        onCardSelect={(event: CardOnSelectEvent, isSelected: boolean) => setChecked1(isSelected)}
+        onCardSelect={(event, { selected }) => setChecked1(selected)}
       />
       <SampleCard
         className={styles.cardGrid}
         select={<Checkbox checked={checked2} />}
         selected={checked2}
-        onCardSelect={(event: CardOnSelectEvent, isSelected: boolean) => setChecked2(isSelected)}
+        onCardSelect={(event, { selected }) => setChecked2(selected)}
       />
     </div>
   );

@@ -106,7 +106,7 @@ export type CardProps = ComponentProps<CardSlots> & {
   /**
    * Callback to be called when the selected state value changes.
    */
-  onCardSelect?: (event: CardOnSelectEvent, selected: boolean) => void;
+  onCardSelect?: (event: CardOnSelectEvent, data: { selected: boolean }) => void;
 };
 
 /**

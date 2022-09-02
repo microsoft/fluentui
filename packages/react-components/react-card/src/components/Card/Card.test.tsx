@@ -8,6 +8,10 @@ describe('Card', () => {
   isConformant<CardProps>({
     Component: Card,
     displayName: 'Card',
+    requiredProps: {
+      selected: true,
+    },
+    disabledTests: ['component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {
