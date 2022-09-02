@@ -14,7 +14,7 @@ export type SelectionProps = {
   multiselect?: boolean;
 
   /* Callback when an option is selected */
-  onOptionSelect?: (event: SelectionEvents, data: OptionSelectData) => void;
+  onOptionSelect?: (event: SelectionEvents, data: OptionOnSelectData) => void;
 
   /**
    * An array of selected option keys.
@@ -36,7 +36,7 @@ export type SelectionValue = {
  * Data for the onOptionSelect callback.
  * `optionValue` will be undefined if the multiple options are modified at once.
  */
-export type OptionSelectData = { optionValue: string | undefined; selectedOptions: string[] };
+export type OptionOnSelectData = { optionValue: string | undefined; selectedOptions: string[] };
 
 /* Possible event types for onOptionSelect */
 export type SelectionEvents =
