@@ -2,6 +2,21 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 21:05:10 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v7.8.5",
+      "version": "7.8.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/icons to v7.8.4",
+            "author": "gcox@microsoft.com",
+            "commit": "7cb21990ded4cf86abd7fc7bf1d0e2e79793c2d3",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 16:57:15 GMT",
       "tag": "@fluentui/font-icons-mdl2_v7.8.3",
       "version": "7.8.3",

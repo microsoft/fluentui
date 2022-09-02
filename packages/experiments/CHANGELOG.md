@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 02 Sep 2022 18:25:04 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 21:05:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.45.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.45.2)
+
+Fri, 02 Sep 2022 21:05:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.45.1..@uifabric/experiments_v7.45.2)
+
+### Patches
+
+- Bump @uifabric/icons to v7.8.4 ([PR #24656](https://github.com/microsoft/fluentui/pull/24656) by gcox@microsoft.com)
 
 ## [7.45.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.45.1)
 

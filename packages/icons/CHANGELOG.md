@@ -1,8 +1,17 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Fri, 02 Sep 2022 18:25:04 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 21:05:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.4](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.4)
+
+Fri, 02 Sep 2022 21:05:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.8.3..@uifabric/icons_v7.8.4)
+
+### Patches
+
+- Bump icons version without bumping font-icons-mdl2 ([PR #24656](https://github.com/microsoft/fluentui/pull/24656) by gcox@microsoft.com)
 
 ## [7.8.3](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.3)
 

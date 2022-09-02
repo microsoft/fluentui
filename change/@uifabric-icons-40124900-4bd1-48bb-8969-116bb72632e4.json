@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Bump icons version without bumping font-icons-mdl2",
-  "packageName": "@uifabric/icons",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
