@@ -35,6 +35,11 @@ export const config: BeachballConfig = {
       disallowedChangeTypes: ['major'],
     },
     {
+      name: 'Utilities',
+      include: ['packages/utilities', 'stub-packages/utilities'],
+      disallowedChangeTypes: ['major'],
+    },
+    {
       name: 'Merge Styles',
       include: ['packages/merge-styles', 'stub-packages/merge-styles'],
       disallowedChangeTypes: ['major'],
