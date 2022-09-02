@@ -2,6 +2,27 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 07:48:53 GMT",
+      "tag": "@fluentui/style-utilities_v8.7.12",
+      "version": "8.7.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.16",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.13.1",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Sep 2022 07:48:10 GMT",
       "tag": "@fluentui/style-utilities_v8.7.11",
       "version": "8.7.11",

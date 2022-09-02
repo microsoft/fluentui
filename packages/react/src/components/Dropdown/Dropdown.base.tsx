@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  css,
   KeyCodes,
   classNamesFunction,
   divProperties,
@@ -844,7 +845,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
-        className={itemClassName}
+        className={css(itemClassName, 'is-multi-select')}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}

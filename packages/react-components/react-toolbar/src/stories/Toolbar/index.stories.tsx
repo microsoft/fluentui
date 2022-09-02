@@ -9,6 +9,7 @@ export { OverflowItems } from './ToolbarOverflow.stories';
 export { WithTooltip } from './ToolbarWithTooltip.stories';
 export { WithPopover } from './ToolbarWithPopover.stories';
 export { Subtle } from './ToolbarSubtle.stories';
+export { ControlledToggleButton } from './ToolbarControlledToggleButton.stories';
 
 export default {
   title: 'Preview Components/Toolbar',
