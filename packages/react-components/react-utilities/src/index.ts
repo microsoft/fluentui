@@ -1,4 +1,4 @@
-export { getSlots, resolveShorthand, isSlot } from './compose/index';
+export { getSlots, resolveShorthand, isResolvedShorthand } from './compose/index';
 export type {
   ExtractSlotProps,
   ComponentProps,

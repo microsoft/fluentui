@@ -1,31 +1,31 @@
 import * as React from 'react';
-import { isSlot } from './isSlot';
+import { isResolvedShorthand } from './isResolvedShorthand';
 
-describe('isSlot', () => {
+describe('isResolvedShorthand', () => {
   it('resolves a string', () => {
-    expect(isSlot('hello')).toEqual(false);
+    expect(isResolvedShorthand('hello')).toEqual(false);
   });
 
   it('resolves a JSX element', () => {
-    expect(isSlot(<div>hello</div>)).toEqual(false);
+    expect(isResolvedShorthand(<div>hello</div>)).toEqual(false);
   });
 
   it('resolves a number', () => {
-    expect(isSlot(42)).toEqual(false);
+    expect(isResolvedShorthand(42)).toEqual(false);
   });
 
   it('resolves null', () => {
-    expect(isSlot(null)).toEqual(false);
+    expect(isResolvedShorthand(null)).toEqual(false);
   });
 
   it('resolves undefined', () => {
-    expect(isSlot(undefined)).toEqual(false);
+    expect(isResolvedShorthand(undefined)).toEqual(false);
   });
 
   it('resolves object', () => {
-    expect(isSlot({})).toEqual(true);
+    expect(isResolvedShorthand({})).toEqual(true);
   });
   it('resolves array', () => {
-    expect(isSlot(['1', 2])).toEqual(false);
+    expect(isResolvedShorthand(['1', 2])).toEqual(false);
   });
 });
