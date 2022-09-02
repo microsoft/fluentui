@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/experiments",
+  "name": "@fluentui/react-experiments",
   "version": "7.44.1",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",

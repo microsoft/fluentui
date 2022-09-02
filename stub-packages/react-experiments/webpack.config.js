@@ -1,7 +1,7 @@
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 
-const BUNDLE_NAME = 'experiments';
+const BUNDLE_NAME = 'react-experiments';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 module.exports = [
@@ -15,7 +15,7 @@ module.exports = [
     },
     output: {
       libraryTarget: 'var',
-      library: 'FabricExperiments',
+      library: 'ReactExperiments',
     },
   }),
   require('./webpack.serve.config'),
