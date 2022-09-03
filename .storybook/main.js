@@ -90,6 +90,12 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
       // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
       config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
     }
+    if (config.module?.rules) {
+      config.module.rules.push({
+        test: /\.stories\.tsx$/,
+        use: [require.resolve('storybook-package-context-loader')],
+      });
+    }
 
     return config;
   },

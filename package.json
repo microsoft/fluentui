@@ -242,6 +242,7 @@
     "semver": "^6.2.0",
     "storybook-addon-export-to-codesandbox": "0.7.0",
     "storybook-addon-performance": "0.16.1",
+    "storybook-package-context-loader": "1.0.2",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
     "swc-loader": "0.2.3",

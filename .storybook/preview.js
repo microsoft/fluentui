@@ -1,4 +1,5 @@
 import { withFluentProvider, withStrictMode } from '@fluentui/react-storybook';
+import DocsPage from 'storybook-package-context-loader/dist/package-context-docs-page';
 import 'cypress-storybook/react';
 import * as dedent from 'dedent';
 import './docs-root.css';
@@ -36,6 +37,7 @@ export const parameters = {
     source: {
       excludeDecorators: true,
     },
+    page: DocsPage,
   },
   exportToCodeSandbox: {
     requiredDependencies: {

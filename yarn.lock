@@ -25212,6 +25212,13 @@ storybook-addon-performance@0.16.1:
     tiny-invariant "^1.1.0"
     xstate "^4.22.0"
 
+storybook-package-context-loader@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/storybook-package-context-loader/-/storybook-package-context-loader-1.0.2.tgz#74ae7d56c389b208dc4e24f7c0576559460c0a2a"
+  integrity sha512-DYDWhfBYye8bFNvBVB4HxyOHEqQcbkbxO05dNAHHEXLM1cVdO+FXov2/LUE1xfiFAbrduC7smjaBvpQ555YJUg==
+  dependencies:
+    typescript "^4.8.2"
+
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
@@ -26722,6 +26729,11 @@ typescript@4.3.5, typescript@~4.3.2:
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
   integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
+
+typescript@^4.8.2:
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.2.tgz#e3b33d5ccfb5914e4eeab6699cf208adee3fd790"
+  integrity sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw==
 
 typical@^4.0.0:
   version "4.0.0"
