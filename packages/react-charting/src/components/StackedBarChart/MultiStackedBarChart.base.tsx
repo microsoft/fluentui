@@ -26,6 +26,7 @@ export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
+  activeLegend: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
@@ -56,6 +57,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       isCalloutVisible: false,
       refArray: [],
       selectedLegendTitle: '',
+      activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
@@ -186,10 +188,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       startingPoint.push(prevPosition);
 
       const styles = this.props.styles;
-      let shouldHighlight = true;
-      if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
-      }
+      const shouldHighlight =
+        this.state.selectedLegendTitle === point.legend ||
+        (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === point.legend))
+          ? true
+          : false;
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
@@ -310,13 +313,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
   };
 
-  private _onHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: true,
-        selectedLegendTitle: customMessage,
-      });
-    }
+  private _onHover(legendTitle: string): void {
+    this.setState({
+      isLegendHovered: true,
+      activeLegend: legendTitle,
+    });
   }
 
   private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
@@ -344,8 +345,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               hoverAction: () => {
                 this._onHover(point.legend!);
               },
-              onMouseOutAction: (isLegendSelected?: boolean) => {
-                this._onLeave(isLegendSelected);
+              onMouseOutAction: () => {
+                this._onLeave();
               },
             };
             actions.push(legend);
@@ -369,8 +370,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             hoverAction: () => {
               this._onHover(point.legend!);
             },
-            onMouseOutAction: (isLegendSelected?: boolean) => {
-              this._onLeave(isLegendSelected);
+            onMouseOutAction: () => {
+              this._onLeave();
             },
           };
           actions.push(legend);
@@ -388,34 +389,25 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   };
 
-  private _onClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          selectedLegendTitle: customMessage,
-        });
-      } else {
-        this.setState({
-          selectedLegendTitle: customMessage,
-        });
-      }
+  private _onClick(legendTitle: string): void {
+    if (this.state.selectedLegendTitle === legendTitle) {
+      this.setState({
+        isLegendSelected: false,
+        selectedLegendTitle: '',
+      });
     } else {
       this.setState({
         isLegendSelected: true,
-        selectedLegendTitle: customMessage,
+        selectedLegendTitle: legendTitle,
       });
     }
   }
 
-  private _onLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: false,
-        selectedLegendTitle: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLeave(): void {
+    this.setState({
+      isLegendHovered: false,
+      activeLegend: '',
+    });
   }
 
   private _onBarHover(

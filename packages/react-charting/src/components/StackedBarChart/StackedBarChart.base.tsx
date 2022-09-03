@@ -13,6 +13,7 @@ const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBar
 export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   selectedLegendTitle: string;
+  activeLegend: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
@@ -43,6 +44,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.state = {
       isCalloutVisible: false,
       selectedLegendTitle: '',
+      activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
@@ -244,8 +246,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             : undefined,
         onMouseOutAction:
           total > 0
-            ? (isLegendFocused?: boolean) => {
-                this._onLeave(isLegendFocused);
+            ? () => {
+                this._onLeave();
               }
             : undefined,
       };
@@ -265,10 +267,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
-      let shouldHighlight = true;
-      if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
-      }
+      const shouldHighlight =
+        this.state.selectedLegendTitle === point.legend ||
+        (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === point.legend))
+          ? true
+          : false;
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
         shouldHighlight: shouldHighlight,
@@ -369,44 +372,32 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._refArray.push({ index: legendTitle, refElement: element });
   }
 
-  private _onClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          selectedLegendTitle: customMessage,
-          isLegendHovered: true,
-        });
-      } else {
-        this.setState({
-          selectedLegendTitle: customMessage,
-        });
-      }
+  private _onClick(legendTitle: string): void {
+    if (this.state.selectedLegendTitle === legendTitle) {
+      this.setState({
+        isLegendSelected: false,
+        selectedLegendTitle: '',
+      });
     } else {
       this.setState({
         isLegendSelected: true,
-        selectedLegendTitle: customMessage,
+        selectedLegendTitle: legendTitle,
       });
     }
   }
 
-  private _onHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: true,
-        selectedLegendTitle: customMessage,
-      });
-    }
+  private _onHover(legendTitle: string): void {
+    this.setState({
+      isLegendHovered: true,
+      activeLegend: legendTitle,
+    });
   }
 
-  private _onLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: false,
-        selectedLegendTitle: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLeave(): void {
+    this.setState({
+      isLegendHovered: false,
+      activeLegend: '',
+    });
   }
 
   private _onBarHover(
