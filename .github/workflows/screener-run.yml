@@ -70,7 +70,7 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Upload N* VR test site
         uses: azure/CLI@v1
@@ -145,7 +145,7 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Upload @fluentui/react VR test site
         uses: azure/CLI@v1
         with:
@@ -219,7 +219,7 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Upload @fluentui/react-components VR test site
         uses: azure/CLI@v1

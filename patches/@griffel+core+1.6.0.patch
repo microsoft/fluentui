@@ -360,11 +360,39 @@ index 0000000..e444623
 +
 +export { makeResetStyles };
 +//# sourceMappingURL=makeResetStyles.esm.js.map
+diff --git a/node_modules/@griffel/core/renderer/getStyleSheetForBucket.cjs.js b/node_modules/@griffel/core/renderer/getStyleSheetForBucket.cjs.js
+index 17b8bcc..05f479e 100644
+--- a/node_modules/@griffel/core/renderer/getStyleSheetForBucket.cjs.js
++++ b/node_modules/@griffel/core/renderer/getStyleSheetForBucket.cjs.js
+@@ -11,7 +11,8 @@ var createIsomorphicStyleSheet = require('./createIsomorphicStyleSheet.cjs.js');
+  * @internal
+  */
+ 
+-const styleBucketOrdering = [// catch-all
++const styleBucketOrdering = [// reset styles
++'r', // catch-all
+ 'd', // link
+ 'l', // visited
+ 'v', // focus-within
+diff --git a/node_modules/@griffel/core/renderer/getStyleSheetForBucket.esm.js b/node_modules/@griffel/core/renderer/getStyleSheetForBucket.esm.js
+index 4eab0d7..fbae72b 100644
+--- a/node_modules/@griffel/core/renderer/getStyleSheetForBucket.esm.js
++++ b/node_modules/@griffel/core/renderer/getStyleSheetForBucket.esm.js
+@@ -7,7 +7,8 @@ import { createIsomorphicStyleSheet } from './createIsomorphicStyleSheet.esm.js'
+  * @internal
+  */
+ 
+-const styleBucketOrdering = [// catch-all
++const styleBucketOrdering = [// reset styles
++'r', // catch-all
+ 'd', // link
+ 'l', // visited
+ 'v', // focus-within
 diff --git a/node_modules/@griffel/core/runtime/compileCSS.cjs.js b/node_modules/@griffel/core/runtime/compileCSS.cjs.js
-index 3a40183..0de2b38 100644
+index 3a40183..e303f5b 100644
 --- a/node_modules/@griffel/core/runtime/compileCSS.cjs.js
 +++ b/node_modules/@griffel/core/runtime/compileCSS.cjs.js
-@@ -7,6 +7,30 @@ var hyphenateProperty = require('./utils/hyphenateProperty.cjs.js');
+@@ -7,6 +7,40 @@ var hyphenateProperty = require('./utils/hyphenateProperty.cjs.js');
  var normalizeNestedProperty = require('./utils/normalizeNestedProperty.cjs.js');
  
  const PSEUDO_SELECTOR_REGEX = /,( *[^ &])/g;
@@ -376,11 +404,21 @@ index 3a40183..0de2b38 100644
 +      }
 +
 +      element.props = element.props.map(value => {
++        // console.log('value', value);
 +        return stylis.tokenize(value).reduce((acc, value, index, children) => {
 +          if (value === 'global') {
 +            // TODO: learn how to write loops
 +            acc.unshift(' ');
 +            acc.unshift(stylis.substr(children[index + 1], 1, -1));
++            console.log(children); // if (acc[acc.length - 2] !== ' ') {
++            //   throw new Error();
++            // }
++
++            if (acc[acc.length - 1] !== ':') {
++              throw new Error();
++            } // delete acc[acc.length - 2];
++
++
 +            delete acc[acc.length - 1];
 +            delete children[index + 1];
 +            return acc;
@@ -395,17 +433,47 @@ index 3a40183..0de2b38 100644
  /**
   * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
   *
-@@ -24,7 +48,7 @@ function normalizePseudoSelector(pseudoSelector) {
+@@ -18,13 +52,14 @@ const PSEUDO_SELECTOR_REGEX = /,( *[^ &])/g;
+  */
+ 
+ function normalizePseudoSelector(pseudoSelector) {
+-  return '&' + normalizeNestedProperty.normalizeNestedProperty( // Regex there replaces a comma, spaces and an ampersand if it's present with comma and an ampersand.
++  return '&' + normalizeNestedProperty.normalizeNestedProperty(pseudoSelector // Regex there replaces a comma, spaces and an ampersand if it's present with comma and an ampersand.
+   // This allows to normalize input, see examples in JSDoc.
+-  pseudoSelector.replace(PSEUDO_SELECTOR_REGEX, ',&$1'));
++  .replace(PSEUDO_SELECTOR_REGEX, ',&$1'));
  }
  function compileCSSRules(cssRules) {
-   const rules = [];
+-  const rules = [];
 -  stylis.serialize(stylis.compile(cssRules), stylis.middleware([stylis.prefixer, stylis.stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
-+  stylis.serialize(stylis.compile(cssRules), stylis.middleware([stylis.prefixer, global, stylis.stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
++  const rules = []; // console.dir(compile(cssRules), { depth: 10 });
++
++  stylis.serialize(stylis.compile(cssRules), stylis.middleware([global, stylis.prefixer, stylis.stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
    // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
    // individual rules to be used with this API
    stylis.rulesheet(rule => rules.push(rule))]));
-@@ -53,27 +77,11 @@ function compileCSS(options) {
-     rtlCSSDeclaration = Array.isArray(rtlValue) ? `{ ${rtlValue.map(v => `${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
+@@ -44,47 +79,49 @@ function compileCSS(options) {
+     value
+   } = options;
+   const classNameSelector = `.${className}`;
+-  const cssDeclaration = Array.isArray(value) ? `{ ${value.map(v => `${hyphenateProperty.hyphenateProperty(property)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty.hyphenateProperty(property)}: ${value}; }`;
++  const cssDeclaration = Array.isArray(value) ? `${value.map(v => `${hyphenateProperty.hyphenateProperty(property)}: ${v}`).join(';')};` : `${hyphenateProperty.hyphenateProperty(property)}: ${value};`;
+   let rtlClassNameSelector = null;
+   let rtlCSSDeclaration = null;
+ 
+   if (rtlProperty && rtlClassName) {
+     rtlClassNameSelector = `.${rtlClassName}`;
+-    rtlCSSDeclaration = Array.isArray(rtlValue) ? `{ ${rtlValue.map(v => `${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
++    rtlCSSDeclaration = Array.isArray(rtlValue) ? `${rtlValue.map(v => `${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${v}`).join(';')};` : `${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${rtlValue};`;
++  } // const normalizedPseudo = normalizePseudoSelector(pseudo);
++
++
++  let cssRule = cssDeclaration;
++
++  if (pseudo.length > 0) {
++    cssRule = pseudo.reduceRight((acc, selector, index) => {
++      return `${normalizePseudoSelector(selector)} { ${acc} }`;
++    }, cssDeclaration);
    }
  
 -  let cssRule = ''; // Should be handled by namespace plugin of Stylis, is buggy now
@@ -425,18 +493,41 @@ index 3a40183..0de2b38 100644
 -  } else {
 -    const normalizedPseudo = normalizePseudoSelector(pseudo);
 -    cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
-+  const normalizedPseudo = normalizePseudoSelector(pseudo);
-+  let cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
- 
+-
 -    if (rtlProperty) {
 -      cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
--    }
++  cssRule = `${classNameSelector}{${cssRule}}`; // `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
++
++  console.log('cssRule', cssRule);
++
 +  if (rtlProperty) {
-+    cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
++    let rtlCSSRule = rtlCSSDeclaration; // cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
++
++    if (pseudo.length > 0) {
++      rtlCSSRule = pseudo.reduceRight((acc, selector, index) => {
++        return `${normalizePseudoSelector(selector)} { ${acc} }`;
++      }, rtlCSSDeclaration);
+     }
++
++    cssRule = `${cssRule}${rtlClassNameSelector}{${rtlCSSRule}}`;
    }
  
-   if (media) {
-@@ -93,5 +101,6 @@ function compileCSS(options) {
+-  if (media) {
++  if (media.length > 0) {
+     cssRule = `@media ${media} { ${cssRule} }`;
+   }
+ 
+-  if (layer) {
++  if (layer.length > 0) {
+     cssRule = `@layer ${layer} { ${cssRule} }`;
+   }
+ 
+-  if (support) {
++  if (support.length > 0) {
+     cssRule = `@supports ${support} { ${cssRule} }`;
+   }
+ 
+@@ -93,5 +130,6 @@ function compileCSS(options) {
  
  exports.compileCSS = compileCSS;
  exports.compileCSSRules = compileCSSRules;
@@ -444,14 +535,18 @@ index 3a40183..0de2b38 100644
  exports.normalizePseudoSelector = normalizePseudoSelector;
  //# sourceMappingURL=compileCSS.cjs.js.map
 diff --git a/node_modules/@griffel/core/runtime/compileCSS.d.ts b/node_modules/@griffel/core/runtime/compileCSS.d.ts
-index 5e9f368..9008fb5 100644
+index 5e9f368..ba9497e 100644
 --- a/node_modules/@griffel/core/runtime/compileCSS.d.ts
 +++ b/node_modules/@griffel/core/runtime/compileCSS.d.ts
-@@ -1,3 +1,4 @@
+@@ -1,6 +1,7 @@
 +import type { Middleware } from 'stylis';
  export interface CompileCSSOptions {
      className: string;
-     pseudo: string;
+-    pseudo: string;
++    pseudo: string[];
+     media: string;
+     layer: string;
+     support: string;
 @@ -10,6 +11,7 @@ export interface CompileCSSOptions {
      rtlProperty?: string;
      rtlValue?: number | string | Array<number | string>;
@@ -461,10 +556,10 @@ index 5e9f368..9008fb5 100644
   * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
   *
 diff --git a/node_modules/@griffel/core/runtime/compileCSS.esm.js b/node_modules/@griffel/core/runtime/compileCSS.esm.js
-index c8f0e05..632d2e8 100644
+index c8f0e05..e39df8f 100644
 --- a/node_modules/@griffel/core/runtime/compileCSS.esm.js
 +++ b/node_modules/@griffel/core/runtime/compileCSS.esm.js
-@@ -1,8 +1,32 @@
+@@ -1,8 +1,42 @@
 -import { serialize, compile, middleware, prefixer, stringify, rulesheet } from 'stylis';
 +import { serialize, compile, middleware, prefixer, stringify, rulesheet, RULESET, tokenize, substr } from 'stylis';
  import { hyphenateProperty } from './utils/hyphenateProperty.esm.js';
@@ -479,11 +574,21 @@ index c8f0e05..632d2e8 100644
 +      }
 +
 +      element.props = element.props.map(value => {
++        // console.log('value', value);
 +        return tokenize(value).reduce((acc, value, index, children) => {
 +          if (value === 'global') {
 +            // TODO: learn how to write loops
 +            acc.unshift(' ');
 +            acc.unshift(substr(children[index + 1], 1, -1));
++            console.log(children); // if (acc[acc.length - 2] !== ' ') {
++            //   throw new Error();
++            // }
++
++            if (acc[acc.length - 1] !== ':') {
++              throw new Error();
++            } // delete acc[acc.length - 2];
++
++
 +            delete acc[acc.length - 1];
 +            delete children[index + 1];
 +            return acc;
@@ -498,17 +603,47 @@ index c8f0e05..632d2e8 100644
  /**
   * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
   *
-@@ -20,7 +44,7 @@ function normalizePseudoSelector(pseudoSelector) {
+@@ -14,13 +48,14 @@ const PSEUDO_SELECTOR_REGEX = /,( *[^ &])/g;
+  */
+ 
+ function normalizePseudoSelector(pseudoSelector) {
+-  return '&' + normalizeNestedProperty( // Regex there replaces a comma, spaces and an ampersand if it's present with comma and an ampersand.
++  return '&' + normalizeNestedProperty(pseudoSelector // Regex there replaces a comma, spaces and an ampersand if it's present with comma and an ampersand.
+   // This allows to normalize input, see examples in JSDoc.
+-  pseudoSelector.replace(PSEUDO_SELECTOR_REGEX, ',&$1'));
++  .replace(PSEUDO_SELECTOR_REGEX, ',&$1'));
  }
  function compileCSSRules(cssRules) {
-   const rules = [];
+-  const rules = [];
 -  serialize(compile(cssRules), middleware([prefixer, stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
-+  serialize(compile(cssRules), middleware([prefixer, global, stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
++  const rules = []; // console.dir(compile(cssRules), { depth: 10 });
++
++  serialize(compile(cssRules), middleware([global, prefixer, stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
    // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
    // individual rules to be used with this API
    rulesheet(rule => rules.push(rule))]));
-@@ -49,27 +73,11 @@ function compileCSS(options) {
-     rtlCSSDeclaration = Array.isArray(rtlValue) ? `{ ${rtlValue.map(v => `${hyphenateProperty(rtlProperty)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
+@@ -40,52 +75,54 @@ function compileCSS(options) {
+     value
+   } = options;
+   const classNameSelector = `.${className}`;
+-  const cssDeclaration = Array.isArray(value) ? `{ ${value.map(v => `${hyphenateProperty(property)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty(property)}: ${value}; }`;
++  const cssDeclaration = Array.isArray(value) ? `${value.map(v => `${hyphenateProperty(property)}: ${v}`).join(';')};` : `${hyphenateProperty(property)}: ${value};`;
+   let rtlClassNameSelector = null;
+   let rtlCSSDeclaration = null;
+ 
+   if (rtlProperty && rtlClassName) {
+     rtlClassNameSelector = `.${rtlClassName}`;
+-    rtlCSSDeclaration = Array.isArray(rtlValue) ? `{ ${rtlValue.map(v => `${hyphenateProperty(rtlProperty)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
++    rtlCSSDeclaration = Array.isArray(rtlValue) ? `${rtlValue.map(v => `${hyphenateProperty(rtlProperty)}: ${v}`).join(';')};` : `${hyphenateProperty(rtlProperty)}: ${rtlValue};`;
++  } // const normalizedPseudo = normalizePseudoSelector(pseudo);
++
++
++  let cssRule = cssDeclaration;
++
++  if (pseudo.length > 0) {
++    cssRule = pseudo.reduceRight((acc, selector, index) => {
++      return `${normalizePseudoSelector(selector)} { ${acc} }`;
++    }, cssDeclaration);
    }
  
 -  let cssRule = ''; // Should be handled by namespace plugin of Stylis, is buggy now
@@ -528,18 +663,40 @@ index c8f0e05..632d2e8 100644
 -  } else {
 -    const normalizedPseudo = normalizePseudoSelector(pseudo);
 -    cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
-+  const normalizedPseudo = normalizePseudoSelector(pseudo);
-+  let cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
- 
+-
 -    if (rtlProperty) {
 -      cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
--    }
++  cssRule = `${classNameSelector}{${cssRule}}`; // `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
++
++  console.log('cssRule', cssRule);
++
 +  if (rtlProperty) {
-+    cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
++    let rtlCSSRule = rtlCSSDeclaration; // cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
++
++    if (pseudo.length > 0) {
++      rtlCSSRule = pseudo.reduceRight((acc, selector, index) => {
++        return `${normalizePseudoSelector(selector)} { ${acc} }`;
++      }, rtlCSSDeclaration);
+     }
++
++    cssRule = `${cssRule}${rtlClassNameSelector}{${rtlCSSRule}}`;
    }
  
-   if (media) {
-@@ -87,5 +95,5 @@ function compileCSS(options) {
+-  if (media) {
++  if (media.length > 0) {
+     cssRule = `@media ${media} { ${cssRule} }`;
+   }
+ 
+-  if (layer) {
++  if (layer.length > 0) {
+     cssRule = `@layer ${layer} { ${cssRule} }`;
+   }
+ 
+-  if (support) {
++  if (support.length > 0) {
+     cssRule = `@supports ${support} { ${cssRule} }`;
+   }
+ 
    return compileCSSRules(cssRule);
  }
  
@@ -795,7 +952,7 @@ index 0000000..92d01cc
 +export { createStringFromStyles, resolveResetStyleRules };
 +//# sourceMappingURL=resolveResetStyleRules.esm.js.map
 diff --git a/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js b/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js
-index 154cc3f..6955e92 100644
+index 154cc3f..212e39c 100644
 --- a/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js
 +++ b/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js
 @@ -2,7 +2,7 @@
@@ -816,7 +973,12 @@ index 154cc3f..6955e92 100644
  
  function pushToClassesMap(classesMap, propertyKey, ltrClassname, rtlClassname) {
    classesMap[propertyKey] = rtlClassname ? [ltrClassname, rtlClassname] : ltrClassname;
-@@ -63,14 +63,22 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+@@ -59,18 +59,26 @@ function pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS, media
+  */
+ 
+ 
+-function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support = '', cssClassesMap = {}, cssRulesByBucket = {}, rtlValue) {
++function resolveStyleRules(styles, pseudo = [], media = '', layer = '', support = '', cssClassesMap = {}, cssRulesByBucket = {}, rtlValue) {
    // eslint-disable-next-line guard-for-in
    for (const property in styles) {
      // eslint-disable-next-line no-prototype-builtins
@@ -847,6 +1009,40 @@ index 154cc3f..6955e92 100644
      const value = styles[property]; // eslint-disable-next-line eqeqeq
  
      if (value == null) {
+@@ -79,13 +87,13 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+ 
+     if (typeof value === 'string' || typeof value === 'number') {
+       // uniq key based on a hash of property & selector, used for merging later
+-      const key = hashPropertyKey.hashPropertyKey(pseudo, media, support, property);
++      const key = hashPropertyKey.hashPropertyKey(pseudo.join(''), media, support, property);
+       const className = hashClassName.hashClassName({
+         media,
+         layer,
+         value: value.toString(),
+         support,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         property
+       });
+       const rtlDefinition = rtlValue && {
+@@ -96,7 +104,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+       const rtlClassName = flippedInRtl ? hashClassName.hashClassName({
+         value: rtlDefinition.value.toString(),
+         property: rtlDefinition.key,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         media,
+         layer,
+         support
+@@ -106,7 +114,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+         rtlProperty: rtlDefinition.key,
+         rtlValue: rtlDefinition.value
+       } : undefined;
+-      const styleBucketName = getStyleBucketName.getStyleBucketName(pseudo, layer, media, support);
++      const styleBucketName = getStyleBucketName.getStyleBucketName(pseudo.join(''), layer, media, support);
+       const [ltrCSS, rtlCSS] = compileCSS.compileCSS(Object.assign({
+         className,
+         media,
 @@ -126,7 +134,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
        for (const keyframeObject of animationNameValue) {
          const keyframeCSS = compileKeyframeCSS.compileKeyframeRule(keyframeObject);
@@ -865,8 +1061,61 @@ index 154cc3f..6955e92 100644
            rtlKeyframeRules = compileKeyframeCSS.compileKeyframesCSS(rtlAnimationName, rtlKeyframeCSS);
          }
  
+@@ -161,13 +169,13 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+         continue;
+       }
+ 
+-      const key = hashPropertyKey.hashPropertyKey(pseudo, media, support, property);
++      const key = hashPropertyKey.hashPropertyKey(pseudo.join(''), media, support, property);
+       const className = hashClassName.hashClassName({
+         media,
+         layer,
+         value: value.map(v => (v !== null && v !== void 0 ? v : '').toString()).join(';'),
+         support,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         property
+       });
+       const rtlDefinitions = value.map(v => core.convertProperty(property, v));
+@@ -189,7 +197,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+           return ((_a = v === null || v === void 0 ? void 0 : v.value) !== null && _a !== void 0 ? _a : '').toString();
+         }).join(';'),
+         property: rtlDefinitions[0].key,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         layer,
+         media,
+         support
+@@ -199,7 +207,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+         rtlProperty: rtlDefinitions[0].key,
+         rtlValue: rtlDefinitions.map(d => d.value)
+       } : undefined;
+-      const styleBucketName = getStyleBucketName.getStyleBucketName(pseudo, layer, media, support);
++      const styleBucketName = getStyleBucketName.getStyleBucketName(pseudo.join(''), layer, media, support);
+       const [ltrCSS, rtlCSS] = compileCSS.compileCSS(Object.assign({
+         className,
+         media,
+@@ -213,7 +221,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+       pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS, media);
+     } else if (isObject.isObject(value)) {
+       if (isNestedSelector.isNestedSelector(property)) {
+-        resolveStyleRules(value, pseudo + normalizeNestedProperty.normalizeNestedProperty(property), media, layer, support, cssClassesMap, cssRulesByBucket);
++        resolveStyleRules(value, [...pseudo, normalizeNestedProperty.normalizeNestedProperty(property)], media, layer, support, cssClassesMap, cssRulesByBucket);
+       } else if (isMediaQuerySelector.isMediaQuerySelector(property)) {
+         const combinedMediaQuery = generateCombinedMediaQuery.generateCombinedQuery(media, property.slice(6).trim());
+         resolveStyleRules(value, pseudo, combinedMediaQuery, layer, support, cssClassesMap, cssRulesByBucket);
+diff --git a/node_modules/@griffel/core/runtime/resolveStyleRules.d.ts b/node_modules/@griffel/core/runtime/resolveStyleRules.d.ts
+index e98d49b..6128a9f 100644
+--- a/node_modules/@griffel/core/runtime/resolveStyleRules.d.ts
++++ b/node_modules/@griffel/core/runtime/resolveStyleRules.d.ts
+@@ -4,4 +4,4 @@ import { GriffelStyle, CSSClassesMap, CSSRulesByBucket } from '../types';
+  *
+  * @internal
+  */
+-export declare function resolveStyleRules(styles: GriffelStyle, pseudo?: string, media?: string, layer?: string, support?: string, cssClassesMap?: CSSClassesMap, cssRulesByBucket?: CSSRulesByBucket, rtlValue?: string): [CSSClassesMap, CSSRulesByBucket];
++export declare function resolveStyleRules(styles: GriffelStyle, pseudo?: string[], media?: string, layer?: string, support?: string, cssClassesMap?: CSSClassesMap, cssRulesByBucket?: CSSRulesByBucket, rtlValue?: string): [CSSClassesMap, CSSRulesByBucket];
 diff --git a/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js b/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js
-index 83ad33a..774615c 100644
+index 83ad33a..a769896 100644
 --- a/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js
 +++ b/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js
 @@ -1,6 +1,6 @@
@@ -878,7 +1127,12 @@ index 83ad33a..774615c 100644
  import { compileCSS } from './compileCSS.esm.js';
  import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS.esm.js';
  import { generateCombinedQuery } from './utils/generateCombinedMediaQuery.esm.js';
-@@ -55,14 +55,22 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+@@ -51,18 +51,26 @@ function pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS, media
+  */
+ 
+ 
+-function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support = '', cssClassesMap = {}, cssRulesByBucket = {}, rtlValue) {
++function resolveStyleRules(styles, pseudo = [], media = '', layer = '', support = '', cssClassesMap = {}, cssRulesByBucket = {}, rtlValue) {
    // eslint-disable-next-line guard-for-in
    for (const property in styles) {
      // eslint-disable-next-line no-prototype-builtins
@@ -909,6 +1163,40 @@ index 83ad33a..774615c 100644
      const value = styles[property]; // eslint-disable-next-line eqeqeq
  
      if (value == null) {
+@@ -71,13 +79,13 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+ 
+     if (typeof value === 'string' || typeof value === 'number') {
+       // uniq key based on a hash of property & selector, used for merging later
+-      const key = hashPropertyKey(pseudo, media, support, property);
++      const key = hashPropertyKey(pseudo.join(''), media, support, property);
+       const className = hashClassName({
+         media,
+         layer,
+         value: value.toString(),
+         support,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         property
+       });
+       const rtlDefinition = rtlValue && {
+@@ -88,7 +96,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+       const rtlClassName = flippedInRtl ? hashClassName({
+         value: rtlDefinition.value.toString(),
+         property: rtlDefinition.key,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         media,
+         layer,
+         support
+@@ -98,7 +106,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+         rtlProperty: rtlDefinition.key,
+         rtlValue: rtlDefinition.value
+       } : undefined;
+-      const styleBucketName = getStyleBucketName(pseudo, layer, media, support);
++      const styleBucketName = getStyleBucketName(pseudo.join(''), layer, media, support);
+       const [ltrCSS, rtlCSS] = compileCSS(Object.assign({
+         className,
+         media,
 @@ -118,7 +126,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
        for (const keyframeObject of animationNameValue) {
          const keyframeCSS = compileKeyframeRule(keyframeObject);
@@ -927,6 +1215,49 @@ index 83ad33a..774615c 100644
            rtlKeyframeRules = compileKeyframesCSS(rtlAnimationName, rtlKeyframeCSS);
          }
  
+@@ -153,13 +161,13 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+         continue;
+       }
+ 
+-      const key = hashPropertyKey(pseudo, media, support, property);
++      const key = hashPropertyKey(pseudo.join(''), media, support, property);
+       const className = hashClassName({
+         media,
+         layer,
+         value: value.map(v => (v !== null && v !== void 0 ? v : '').toString()).join(';'),
+         support,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         property
+       });
+       const rtlDefinitions = value.map(v => convertProperty(property, v));
+@@ -181,7 +189,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+           return ((_a = v === null || v === void 0 ? void 0 : v.value) !== null && _a !== void 0 ? _a : '').toString();
+         }).join(';'),
+         property: rtlDefinitions[0].key,
+-        pseudo,
++        pseudo: pseudo.join(''),
+         layer,
+         media,
+         support
+@@ -191,7 +199,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+         rtlProperty: rtlDefinitions[0].key,
+         rtlValue: rtlDefinitions.map(d => d.value)
+       } : undefined;
+-      const styleBucketName = getStyleBucketName(pseudo, layer, media, support);
++      const styleBucketName = getStyleBucketName(pseudo.join(''), layer, media, support);
+       const [ltrCSS, rtlCSS] = compileCSS(Object.assign({
+         className,
+         media,
+@@ -205,7 +213,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+       pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS, media);
+     } else if (isObject(value)) {
+       if (isNestedSelector(property)) {
+-        resolveStyleRules(value, pseudo + normalizeNestedProperty(property), media, layer, support, cssClassesMap, cssRulesByBucket);
++        resolveStyleRules(value, [...pseudo, normalizeNestedProperty(property)], media, layer, support, cssClassesMap, cssRulesByBucket);
+       } else if (isMediaQuerySelector(property)) {
+         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
+         resolveStyleRules(value, pseudo, combinedMediaQuery, layer, support, cssClassesMap, cssRulesByBucket);
 diff --git a/node_modules/@griffel/core/runtime/utils/hashClassName.cjs.js b/node_modules/@griffel/core/runtime/utils/hashClassName.cjs.js
 index 24202b7..a882427 100644
 --- a/node_modules/@griffel/core/runtime/utils/hashClassName.cjs.js
