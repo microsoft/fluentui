@@ -46,7 +46,6 @@ interface IGVSingleDataPoint {
   [key: string]: IGVDataPoint;
 }
 export interface IGroupedVerticalBarChartState extends IBasestate {
-  titleForHoverCard: string;
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
@@ -85,15 +84,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
-      isLegendSelected: false,
-      isLegendHovered: false,
       refSelected: null,
-      titleForHoverCard: '',
+      selectedLegend: '',
       xCalloutValue: '',
       yCalloutValue: '',
       YValueHover: [],
       hoverXValue: '',
       calloutLegend: '',
+      activeLegend: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -214,12 +212,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
       : null;
   };
 
-  private _getOpacity = (legendTitle: string): string => {
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = this.state.titleForHoverCard === legendTitle;
-    }
-    return shouldHighlight ? '' : '0.1';
+  private _getOpacity = (legend: string): number => {
+    const opacity = this._legendHighlighted(legend) || this._noLegendHighlighted() ? 1 : 0.1;
+    return opacity;
   };
 
   private _onBarHover = (
@@ -234,9 +229,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       this.setState({
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        isCalloutVisible:
-          this.state.isLegendSelected === false ||
-          (this.state.isLegendSelected === true && this.state.titleForHoverCard === pointData.legend),
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === pointData.legend,
         calloutLegend: pointData.legend,
         dataForHoverCard: pointData.data,
         color: pointData.color,
@@ -272,9 +265,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         this.setState({
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible:
-            this.state.isLegendSelected === false ||
-            (this.state.isLegendSelected === true && this.state.titleForHoverCard === pointData.legend),
+          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === pointData.legend,
           calloutLegend: pointData.legend,
           dataForHoverCard: pointData.data,
           color: pointData.color,
@@ -441,43 +432,28 @@ export class GroupedVerticalBarChartBase extends React.Component<
     });
   };
 
-  private _onLegendClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.titleForHoverCard === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          titleForHoverCard: customMessage,
-        });
-      } else {
-        this.setState({
-          titleForHoverCard: customMessage,
-        });
-      }
+  private _onLegendClick(legend: string): void {
+    if (this.state.selectedLegend === legend) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        isLegendSelected: true,
-        titleForHoverCard: customMessage,
+        selectedLegend: legend,
       });
     }
   }
 
-  private _onLegendHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: true,
-        titleForHoverCard: customMessage,
-      });
-    }
+  private _onLegendHover(legend: string): void {
+    this.setState({
+      activeLegend: legend,
+    });
   }
 
-  private _onLegendLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: false,
-        titleForHoverCard: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLegendLeave(): void {
+    this.setState({
+      activeLegend: '',
+    });
   }
 
   private _getLegendData = (points: IGroupedVerticalBarChartData[], palette: IPalette): JSX.Element => {
@@ -501,8 +477,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
           hoverAction: () => {
             this._onLegendHover(point.legend);
           },
-          onMouseOutAction: (isLegendSelected?: boolean) => {
-            this._onLegendLeave(isLegendSelected);
+          onMouseOutAction: () => {
+            this._onLegendLeave();
           },
         };
 
@@ -525,5 +501,15 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
     }
+  };
+
+  private _legendHighlighted = (legend: string) => {
+    return (
+      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+    );
+  };
+
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }
