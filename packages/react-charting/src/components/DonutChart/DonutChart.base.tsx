@@ -18,7 +18,6 @@ export interface IDonutChartState {
   _height?: number | undefined;
   activeLegend?: string;
   color?: string | undefined;
-  isLegendSelected?: boolean;
   xCalloutValue?: string;
   yCalloutValue?: string;
   focusedArcId?: string;
@@ -61,10 +60,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       _height: this.props.height || 200,
       activeLegend: '',
       color: '',
-      isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
-      selectedLegend: 'none',
+      selectedLegend: '',
       focusedArcId: '',
     };
     this._hoverCallback = this._hoverCallback.bind(this);
@@ -124,7 +122,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 hoverLeaveCallback={this._hoverLeave}
                 uniqText={this._uniqText}
                 onBlurCallback={this._onBlur}
-                activeArc={this.state.activeLegend}
+                activeArc={this._highlightedLegend()}
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
@@ -196,22 +194,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           title: point.legend!,
           color: color,
           action: () => {
-            if (this.state.isLegendSelected) {
-              if (this.state.activeLegend !== point.legend || this.state.activeLegend === '') {
-                this.setState({ activeLegend: point.legend!, isLegendSelected: true });
-              } else {
-                this.setState({ activeLegend: point.legend });
-              }
+            if (this.state.selectedLegend === point.legend) {
+              this.setState({ selectedLegend: '' });
             } else {
-              this.setState({ activeLegend: point.legend!, isLegendSelected: true });
+              this.setState({ selectedLegend: point.legend! });
             }
           },
           hoverAction: () => {
-            if (this.state.activeLegend !== point.legend || this.state.activeLegend === '') {
-              this.setState({ activeLegend: point.legend! });
-            } else {
-              this.setState({ activeLegend: point.legend });
-            }
+            this.setState({ activeLegend: point.legend! });
           },
           onMouseOutAction: () => {
             this.setState({
@@ -229,7 +219,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
-        selectedLegend={this.state.selectedLegend}
         {...this.props.legendProps}
       />
     );
@@ -283,10 +272,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   };
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
-    if (valueInsideDonut !== undefined && this.state.activeLegend !== '' && !this.state.showHover) {
+    if (valueInsideDonut !== undefined && this._highlightedLegend() !== '' && !this.state.showHover) {
       let legendValue = valueInsideDonut;
       data!.map((point: IChartDataPoint, index: number) => {
-        if (point.legend === this.state.activeLegend) {
+        if (point.legend === this._highlightedLegend()) {
           legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
         }
         return;
@@ -303,5 +292,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       return data;
     }
     return localeString?.toString();
+  }
+
+  private _highlightedLegend() {
+    if (this.state.selectedLegend !== '') {
+      return this.state.selectedLegend;
+    }
+    return this.state.activeLegend;
   }
 }
