@@ -1,6 +1,9 @@
 name: Create label
 
 on:
+  push:
+    branches:
+      - main
   workflow_run:
     workflows:
       - Trigger comment
@@ -8,7 +11,7 @@ on:
       - completed
 
 jobs:
-  Action:
+  PR:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
@@ -24,6 +27,36 @@ jobs:
           var=$(head -1 number)
           echo "$var" >> $GITHUB_ENV
 
+      - name: Get PR info
+        uses: actions/github-script@v6
+        with:
+          script: |
+            let PR = await github.rest.pulls.get({
+              pull_number: ${{env.PR_NUMBER}},
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            core.exportVariable('SYSTEM_PULLREQUEST_TARGETBRANCH', PR.data.base.ref);
+            core.exportVariable('SYSTEM_PULLREQUEST_SOURCEBRANCH', PR.data.head.ref);
+            core.exportVariable('SYSTEM_PULLREQUEST_PULLREQUESTID', PR.data.id);
+            core.exportVariable('SYSTEM_PULLREQUEST_SOURCECOMMITID', PR.data.head.sha);
+            core.exportVariable('DEPLOYHOST', 'mock');
+      - name: Set env variables
+        run: |
+          cat <<EOT >> environment
+          SYSTEM_PULLREQUEST_TARGETBRANCH=${{ env.SYSTEM_PULLREQUEST_TARGETBRANCH }}
+          SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ env.SYSTEM_PULLREQUEST_SOURCEBRANCH }}
+          SYSTEM_PULLREQUEST_PULLREQUESTID=${{ env.SYSTEM_PULLREQUEST_PULLREQUESTID }}
+          SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ env.SYSTEM_PULLREQUEST_SOURCECOMMITID }}
+          DEPLOYBASEPATH=pull/${{env.PR_NUMBER}}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{env.PR_NUMBER}}
+          EOT
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: env-artifact
+          path: environment
+
       - run: |
           printenv | sort
 
@@ -37,3 +70,18 @@ jobs:
               repo: context.repo.repo,
               labels: ['Ready for VR']
             })
+  notPR:
+    if: ${{ github.event != 'workflow_run' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set env variables if there is not a PR
+        run: |
+          cat <<EOT >> environment
+          DEPLOYBASEPATH=heads/${{github.ref_name}}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{github.ref_name}}
+          BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
+          EOT
+      - uses: actions/upload-artifact@v2
+        with:
+          name: env-artifact
+          path: environment
