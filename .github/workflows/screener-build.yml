@@ -1,11 +1,11 @@
 name: Screener build
 
 on:
-  pull_request:
-  push:
-    branches:
-      - master
-  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Create label
+    types:
+      - completed
 
 env:
   DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'

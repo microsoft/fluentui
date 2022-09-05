@@ -1,0 +1,39 @@
+name: Create label
+
+on:
+  workflow_run:
+    workflows:
+      - Trigger comment
+    types:
+      - completed
+
+jobs:
+  Action:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download environment variables artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: trigger-comment.yml
+          run_id: ${{github.event.workflow_run.id}}
+          name: pr_number
+
+      - name: Define env variable
+        run: |
+          var=$(head -1 number)
+          echo "$var" >> $GITHUB_ENV
+
+      - run: |
+          printenv | sort
+
+      - name: script_label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: ${{env.PR_NUMBER}},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['Ready for VR']
+            })

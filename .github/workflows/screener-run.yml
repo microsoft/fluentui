@@ -10,6 +10,7 @@ env:
   AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
 jobs:
   screener-react-northstar:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-northstar
     steps:
@@ -87,6 +88,7 @@ jobs:
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
   screener-react:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react
     steps:
@@ -161,6 +163,7 @@ jobs:
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
   screener-react-components:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-components
     steps:

@@ -1,0 +1,16 @@
+name: Trigger comment
+on:
+  issue_comment:
+    types: [created, edited]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    if: github.event.comment.body == 'Run VR tests' && github.event.issue.pull_request
+    steps:
+      - run: |
+          echo "PR_NUMBER=${{github.event.issue.number}}" > number
+      - name: Upload the PR number
+        uses: actions/upload-artifact@v2
+        with:
+          name: pr_number
+          path: number
