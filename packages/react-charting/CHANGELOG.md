@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 02 Sep 2022 07:48:53 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Sep 2022 07:38:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.34)
+
+Mon, 05 Sep 2022 07:38:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.33..@fluentui/react-charting_v5.12.34)
+
+### Patches
+
+- Fix min width of bars as 1% for horizontal bar charts ([PR #24577](https://github.com/microsoft/fluentui/pull/24577) by atishay.jain@microsoft.com)
+- Bump @fluentui/react to v8.94.1 ([PR #24372](https://github.com/microsoft/fluentui/pull/24372) by beachball)
 
 ## [5.12.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.33)
 

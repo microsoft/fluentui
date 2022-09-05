@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Suggestions loading aria for extended Picker loading",
-  "packageName": "@fluentui/react",
-  "email": "daneuber@microsoft.com",
-  "dependentChangeType": "patch"
-}

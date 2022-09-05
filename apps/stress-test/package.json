@@ -29,7 +29,7 @@
     "bench:simple-stress:remove-node:firefox": "tach --config ./benchmarks/simple-stress/config/firefox.remove-node.json --json-file ./benchmarks/simple-stress/results/firefox.remove-node.results.json"
   },
   "dependencies": {
-    "@fluentui/react": "^8.94.0",
+    "@fluentui/react": "^8.94.1",
     "@fluentui/react-components": "^9.2.0",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/web-components": "^2.5.4",

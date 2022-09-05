@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 05 Sep 2022 07:38:29 GMT",
+      "tag": "@fluentui/react_v8.94.1",
+      "version": "8.94.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "daneuber@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3730802491c373313a9e56819f2befb16a0302fa",
+            "comment": "Update Suggestions loading aria for extended Picker loading"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0f463b704c9cee6e4b58aabbc37533ec14bbecf1",
+            "comment": "fix: Fix Dropdown item styles to correctly apply hover styles even when focus is on another page"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:52 GMT",
       "tag": "@fluentui/react_v8.94.0",
       "version": "8.94.0",

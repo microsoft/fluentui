@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 02 Sep 2022 07:48:52 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Sep 2022 07:38:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.94.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.1)
+
+Mon, 05 Sep 2022 07:38:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.0..@fluentui/react_v8.94.1)
+
+### Patches
+
+- Update Suggestions loading aria for extended Picker loading ([PR #24243](https://github.com/microsoft/fluentui/pull/24243) by daneuber@microsoft.com)
+- fix: Fix Dropdown item styles to correctly apply hover styles even when focus is on another page ([PR #24600](https://github.com/microsoft/fluentui/pull/24600) by mgodbolt@microsoft.com)
 
 ## [8.94.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.0)
 
