@@ -17,6 +17,7 @@ import {
   useUnhandledProps,
   useMergedRefs,
   ForwardRefWithAs,
+  mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -67,6 +68,7 @@ import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
+import { ChatMessageContent } from './ChatMessageContent';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -542,10 +544,10 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     }),
   });
 
-  const messageContent = Box.create(content, {
-    defaultProps: () => ({
-      className: chatMessageSlotClassNames.content,
-      styles: resolvedStyles.content,
+  const messageContent = createShorthand(ChatMessageContent, content, {
+    defaultProps: () => ({ attached, density, hasHeaderReactionGroup, mine }),
+    overrideProps: predefinedProps => ({
+      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     }),
   });
 
