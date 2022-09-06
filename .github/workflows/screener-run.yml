@@ -44,18 +44,6 @@ jobs:
         with:
           workflow: screener-build.yml
           run_id: ${{github.event.workflow_run.id}}
-          name: run-id
-
-      - name: Define env variable
-        run: |
-          var=$(head -1 run-id)
-          echo "$var" >> $GITHUB_ENV
-
-      - name: Download environment variables artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: create-label.yml
-          run_id: ${{env.RUN_ID}}
           name: env-artifact
 
       - name: Download N* storybook artifact
@@ -133,18 +121,6 @@ jobs:
         with:
           workflow: screener-build.yml
           run_id: ${{github.event.workflow_run.id}}
-          name: run-id
-
-      - name: Define env variable
-        run: |
-          var=$(head -1 run-id)
-          echo "$var" >> $GITHUB_ENV
-
-      - name: Download environment variables artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: create-label.yml
-          run_id: ${{env.RUN_ID}}
           name: env-artifact
 
       - name: Download screener storybook artifact
@@ -220,18 +196,6 @@ jobs:
         with:
           workflow: screener-build.yml
           run_id: ${{github.event.workflow_run.id}}
-          name: run-id
-
-      - name: Define env variable
-        run: |
-          var=$(head -1 run-id)
-          echo "$var" >> $GITHUB_ENV
-
-      - name: Download environment variables artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: create-label.yml
-          run_id: ${{env.RUN_ID}}
           name: env-artifact
 
       - name: Download VNext storybook artifact
