@@ -27,6 +27,16 @@ jobs:
           var=$(head -1 number)
           echo "$var" >> $GITHUB_ENV
 
+      - name: Set base env variables
+        run: |
+          cat <<EOT >> environment
+          BROWSERSLIST_IGNORE_OLD_DATA=true
+          DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
+          BUILD_BUILDID=${{ github.run_id }}
+          BUILD_SOURCEBRANCH=${{ github.ref }}
+          SCREENER_BUILD=1
+          EOT
+
       - name: Get PR info
         uses: actions/github-script@v6
         with:
@@ -40,7 +50,16 @@ jobs:
             core.exportVariable('SYSTEM_PULLREQUEST_SOURCEBRANCH', PR.data.head.ref);
             core.exportVariable('SYSTEM_PULLREQUEST_PULLREQUESTID', PR.data.id);
             core.exportVariable('SYSTEM_PULLREQUEST_SOURCECOMMITID', PR.data.head.sha);
-            core.exportVariable('DEPLOYHOST', 'mock');
+            core.exportVariable('DEPLOYHOST', 'fluentuipr.z22.web.core.windows.net');
+      ###########################################
+      # SYSTEM_PULLREQUEST_TARGETBRANCH = target branch name
+      # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
+      # SYSTEM_PULLREQUEST_PULLREQUESTID = ID of the PR
+      # SYSTEM_PULLREQUEST_SOURCECOMMITID = commit SHA of PR
+      # DEPLOYBASEPATH = path for deploy URL -> pull/<pr_number> for PRs
+      # DEPLOYURL= address for tests deployment, uses DEPLOYHOST and DEPLOYBASEPATH
+      # BUILD_SOURCEBRANCHNAME = 'merge' for PRs
+      ###########################################
       - name: Set env variables
         run: |
           cat <<EOT >> environment
@@ -48,6 +67,7 @@ jobs:
           SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ env.SYSTEM_PULLREQUEST_SOURCEBRANCH }}
           SYSTEM_PULLREQUEST_PULLREQUESTID=${{ env.SYSTEM_PULLREQUEST_PULLREQUESTID }}
           SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ env.SYSTEM_PULLREQUEST_SOURCECOMMITID }}
+          DEPLOYHOST=${{ env.DEPLOYHOST }}
           DEPLOYBASEPATH=pull/${{env.PR_NUMBER}}
           DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{env.PR_NUMBER}}
           EOT
@@ -74,6 +94,23 @@ jobs:
     if: ${{ github.event != 'workflow_run' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Define env variable
+        run: echo "DEPLOYHOST=fluentuipr.z22.web.core.windows.net" >> $GITHUB_ENV
+      ###########################################
+      # BROWSERSLIST_IGNORE_OLD_DATA = Prevents failures on CI when "caniuse-lite" becomes outdated
+      # DEPLOYHOST = address of host for screener tests deployment
+      # BUILD_BUILDID = unique ID of the workflow run within the repo
+      # BUILD_SOURCEBRANCH = branch that triggered the workflow -> refs/pull/<pr_number>/merge
+      - name: Set base env variables
+        run: |
+          cat <<EOT >> environment
+          BROWSERSLIST_IGNORE_OLD_DATA=true
+          DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
+          BUILD_BUILDID=${{ github.run_id }}
+          BUILD_SOURCEBRANCH=${{ github.ref }}
+          SCREENER_BUILD=1
+          EOT
+
       - name: Set env variables if there is not a PR
         run: |
           cat <<EOT >> environment
