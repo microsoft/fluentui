@@ -114,6 +114,12 @@ There are 4 Media variants:
 - PersonaAvatar
 - Image
 
+PersonaPresenceBadge, PersonaIcon, and PersonaAvatar are needed for the sizing behavior. PersonaContextProvider is provided by Persona and then consumed by these sub-components to update the persona's media state. This media state allows Persona to correctly style the text slots based on the media's type and size. See API section for more details on the context structure.
+
+PersonaContextProvider also passes down `numTextLines` to the sub-components. This value allows the media to change its size depeneding on the number of text slots used by the user.
+
+This means that using a `<PresenceBadge>`, `<icon>`, and `<Avatar>` is not supported and if used, Persona's sizing behavior will not work correctly.
+
 There are 2 sizing variants:
 
 - stretch: When the text lines have a larger height compared to the Media, stretch the Media to fit text lines height.
