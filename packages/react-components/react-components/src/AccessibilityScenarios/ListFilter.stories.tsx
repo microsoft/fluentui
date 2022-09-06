@@ -312,7 +312,7 @@ export const ListFilter: React.FunctionComponent = () => {
   };
 
   return (
-    <Scenario pageTitle="Filter scenario">
+    <Scenario pageTitle="List filter pattern">
       <form autoComplete="off">
         <div>
           <Label htmlFor="filterText">Country filter</Label>

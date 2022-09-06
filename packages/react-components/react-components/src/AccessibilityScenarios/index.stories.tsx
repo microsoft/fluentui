@@ -1,5 +1,6 @@
-export { PersonalFormAccordion } from './Accordion.stories';
+export { Infotip } from './Infotip.stories';
 export { ListFilter } from './ListFilter.stories';
+export { PersonalFormAccordion } from './Accordion.stories';
 export { FAQAccordion } from './AccordionFaq.stories';
 export { MessengerButtons } from './Button.stories';
 export { QuestionnaireAboutFoodCheckboxes } from './Checkbox.stories';
