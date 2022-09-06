@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Clarify the documentation of RadioGroup's required prop",
+  "comment": "docs: Clarify the documentation of RadioGroup's required prop",
   "packageName": "@fluentui/react-radio",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "none"
