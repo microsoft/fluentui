@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Force syncing icon versions",
+  "packageName": "@uifabric/icons",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
