@@ -14,7 +14,7 @@ export const WithLongText = () => {
     <>
       <ToggleButton>Short text</ToggleButton>
       <ToggleButton className={styles.longText}>
-        Long text truncates after it hits the max width of the component
+        Long text wraps after it hits the max width of the component
       </ToggleButton>
     </>
   );

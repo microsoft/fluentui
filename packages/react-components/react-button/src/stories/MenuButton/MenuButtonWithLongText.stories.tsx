@@ -28,7 +28,7 @@ export const WithLongText = () => {
       <Menu>
         <MenuTrigger>
           <MenuButton className={styles.longText}>
-            Long text truncates after it hits the max width of the component
+            Long text wraps after it hits the max width of the component
           </MenuButton>
         </MenuTrigger>
 

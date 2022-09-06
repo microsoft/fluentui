@@ -138,7 +138,7 @@ storiesOf('Button Converged', module)
     const styles = useStyles();
     return (
       <Button id={buttonId} className={styles.longText} icon="X" size="small">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </Button>
     );
   })
@@ -146,7 +146,7 @@ storiesOf('Button Converged', module)
     const styles = useStyles();
     return (
       <Button id={buttonId} className={styles.longText} icon="X" size="medium">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </Button>
     );
   })
@@ -154,7 +154,7 @@ storiesOf('Button Converged', module)
     const styles = useStyles();
     return (
       <Button id={buttonId} className={styles.longText} icon="X" size="large">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </Button>
     );
   })
@@ -408,7 +408,7 @@ storiesOf('ToggleButton Converged', module)
     const styles = useStyles();
     return (
       <ToggleButton id={buttonId} className={styles.longText} icon="X" size="small">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </ToggleButton>
     );
   })
@@ -416,7 +416,7 @@ storiesOf('ToggleButton Converged', module)
     const styles = useStyles();
     return (
       <ToggleButton id={buttonId} className={styles.longText} icon="X" size="medium">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </ToggleButton>
     );
   })
@@ -424,7 +424,7 @@ storiesOf('ToggleButton Converged', module)
     const styles = useStyles();
     return (
       <ToggleButton id={buttonId} className={styles.longText} icon="X" size="large">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </ToggleButton>
     );
   })
@@ -528,7 +528,7 @@ storiesOf('MenuButton Converged', module)
     const styles = useStyles();
     return (
       <MenuButton id={buttonId} className={styles.longText} icon="X" size="small">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </MenuButton>
     );
   })
@@ -536,7 +536,7 @@ storiesOf('MenuButton Converged', module)
     const styles = useStyles();
     return (
       <MenuButton id={buttonId} className={styles.longText} icon="X" size="medium">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </MenuButton>
     );
   })
@@ -544,7 +544,7 @@ storiesOf('MenuButton Converged', module)
     const styles = useStyles();
     return (
       <MenuButton id={buttonId} className={styles.longText} icon="X" size="large">
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </MenuButton>
     );
   })

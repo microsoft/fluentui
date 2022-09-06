@@ -13,7 +13,7 @@ export const WithLongText = () => {
   return (
     <>
       <Button>Short text</Button>
-      <Button className={styles.longText}>Long text truncates after it hits the max width of the component</Button>
+      <Button className={styles.longText}>Long text wraps after it hits the max width of the component</Button>
     </>
   );
 };

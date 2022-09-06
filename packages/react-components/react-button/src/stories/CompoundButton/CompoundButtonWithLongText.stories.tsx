@@ -16,7 +16,7 @@ export const WithLongText = () => {
         Short text
       </CompoundButton>
       <CompoundButton className={styles.maxWidth} secondaryContent="Secondary content">
-        Long text truncates after it hits the max width of the component
+        Long text wraps after it hits the max width of the component
       </CompoundButton>
     </>
   );

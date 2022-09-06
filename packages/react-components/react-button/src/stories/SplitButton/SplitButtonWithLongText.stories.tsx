@@ -38,7 +38,7 @@ export const WithLongText = () => {
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton primaryActionButton={{ className: styles.longText }} menuButton={triggerProps}>
-              Long text truncates after it hits the max width of the component
+              Long text wraps after it hits the max width of the component
             </SplitButton>
           )}
         </MenuTrigger>
