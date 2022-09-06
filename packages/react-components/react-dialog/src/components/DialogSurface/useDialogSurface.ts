@@ -1,21 +1,19 @@
 import * as React from 'react';
 import {
-  ExtractSlotProps,
   getNativeElementProps,
   resolveShorthand,
-  Slot,
   useEventCallback,
   useMergedRefs,
+  isResolvedShorthand,
 } from '@fluentui/react-utilities';
 import type {
   DialogSurfaceElement,
   DialogSurfaceElementIntersection,
   DialogSurfaceProps,
-  DialogSurfaceRootSlotProps,
   DialogSurfaceState,
 } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
-import { Escape } from '@fluentui/keyboard-keys';
+import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
 /**
  * Create the state required to render DialogSurface.
  *
@@ -37,9 +35,10 @@ export const useDialogSurface_unstable = (
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleID);
   const dialogBodyID = useDialogContext_unstable(ctx => ctx.dialogBodyID);
+  const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (isSlot(props.backdrop)) {
+    if (isResolvedShorthand(props.backdrop)) {
       props.backdrop.onClick?.(event);
     }
     if (modalType === 'modal' && !event.isDefaultPrevented()) {
@@ -54,19 +53,16 @@ export const useDialogSurface_unstable = (
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<DialogSurfaceElementIntersection>) => {
     props.onKeyDown?.(event);
 
-    if (
-      event.key === Escape &&
-      // `non-modal` should always have Escape key handling
-      // `modal` should only be handled in the case of non native dialog
-      (modalType === 'non-modal' || modalType === 'modal') &&
-      !event.isDefaultPrevented()
-    ) {
+    if (isEscapeKeyDismiss(event, modalType)) {
       requestOpenChange({
         event,
         open: false,
         type: 'escapeKeyDown',
       });
-      event.preventDefault();
+      if (isNestedDialog) {
+        // Escape keydown should be stopped to avoid closing multiple dialogs
+        event.stopPropagation();
+      }
     }
   });
 
@@ -82,26 +78,14 @@ export const useDialogSurface_unstable = (
         onClick: handledBackdropClick,
       },
     }),
-    root: getNativeElementProps(
-      as ?? 'div',
-      resolveShorthand(props as DialogSurfaceRootSlotProps, {
-        required: true,
-        defaultProps: {
-          onKeyDown: handleKeyDown,
-          'aria-describedby': dialogBodyID,
-          'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
-          'aria-modal': modalType !== 'non-modal',
-          role: props.role ?? (modalType === 'alert' ? 'alertdialog' : 'dialog'),
-          ref: useMergedRefs(ref, dialogRef) as React.Ref<DialogSurfaceElementIntersection>,
-        },
-      }),
-    ),
+    root: getNativeElementProps(as ?? 'div', {
+      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+      ...props,
+      onKeyDown: handleKeyDown,
+      'aria-describedby': dialogBodyID,
+      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+      'aria-modal': modalType !== 'non-modal',
+      ref: useMergedRefs(ref, dialogRef) as React.Ref<DialogSurfaceElementIntersection>,
+    }),
   };
 };
-
-// TODO: move this to @fluentui/react-utilities
-function isSlot<Shorthand extends Slot<{}>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand> {
-  return (
-    shorthand !== null && typeof shorthand === 'object' && !Array.isArray(shorthand) && !React.isValidElement(shorthand)
-  );
-}

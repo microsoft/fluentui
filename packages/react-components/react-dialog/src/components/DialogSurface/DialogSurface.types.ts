@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { DialogSurfaceContextValue } from '../../contexts';
 
 export type DialogSurfaceSlots = {
@@ -14,9 +14,6 @@ export type DialogSurfaceSlots = {
   backdrop?: Slot<'div'>;
   root: NonNullable<Slot<'div'>>;
 };
-
-/** @internal */
-export type DialogSurfaceRootSlotProps = ExtractSlotProps<DialogSurfaceSlots['root']>;
 
 /** @internal */
 export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
