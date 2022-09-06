@@ -12,7 +12,7 @@ import {
 
 import { Scenario } from './utils';
 
-export const MenuWithSplitItemAccessibilityScenario: React.FunctionComponent = () => {
+export const MenuWithSplitItem: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Menu with split item">
       <Menu>
@@ -45,9 +45,4 @@ export const MenuWithSplitItemAccessibilityScenario: React.FunctionComponent = (
       </Menu>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Menu with split item',
-  id: 'menu-splitgroup-accessibility-scenario',
 };

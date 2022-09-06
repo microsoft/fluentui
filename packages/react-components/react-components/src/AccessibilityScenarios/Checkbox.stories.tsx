@@ -4,7 +4,7 @@ import { Button, Checkbox, CheckboxOnChangeData, Label } from '@fluentui/react-c
 
 import { Scenario } from './utils';
 
-export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponent = () => {
+export const QuestionnaireAboutFoodCheckboxes: React.FunctionComponent = () => {
   const [isAppleSelected, setIsAppleSelected] = React.useState(false);
   const [isBananaSelected, setIsBananaSelected] = React.useState(false);
   const [isOrangeSelected, setIsOrangeSelected] = React.useState(false);
@@ -95,9 +95,4 @@ export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponen
       )}
     </Scenario>
   );
-};
-
-export default {
-  title: '  Accessibility Scenarios/ Checkboxes in questionnaire about food',
-  id: 'checkbox-accessibility-scenario',
 };

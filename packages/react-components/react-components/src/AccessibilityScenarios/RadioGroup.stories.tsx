@@ -4,7 +4,7 @@ import { Button, Label, RadioGroup, Radio, RadioGroupOnChangeData } from '@fluen
 
 import { Scenario } from './utils';
 
-export const QuestionnaireAboutTransportationAccessibilityScenario: React.FunctionComponent = () => {
+export const QuestionnaireAboutTransportationRadios: React.FunctionComponent = () => {
   const [isDrivingAllowed, setIsDrivingAllowed] = React.useState(true);
   const [isMotor, setIsMotor] = React.useState(false);
   const [preferredMeans, setPreferredMeans] = React.useState('bicycle');
@@ -74,9 +74,4 @@ export const QuestionnaireAboutTransportationAccessibilityScenario: React.Functi
       )}
     </Scenario>
   );
-};
-
-export default {
-  title: '  Accessibility Scenarios/ Radio groups in questionnaire about transportation',
-  id: 'radiogroup-accessibility-scenario',
 };

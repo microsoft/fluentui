@@ -416,13 +416,8 @@ const RegistrationFormInputsAccessibility = () => {
   );
 };
 
-export const RegistrationFormInputsAccessibilityScenario = () => (
+export const RegistrationFormInputs = () => (
   <PubSubProvider>
     <RegistrationFormInputsAccessibility />
   </PubSubProvider>
 );
-
-export default {
-  title: 'Accessibility Scenarios/ Registration form inputs',
-  id: 'input-accessibility-scenario',
-};

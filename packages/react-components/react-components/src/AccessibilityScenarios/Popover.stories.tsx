@@ -26,7 +26,7 @@ const AddPeopleContent: React.FunctionComponent<AddPeopleContentProps> = (props:
   );
 };
 
-export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = () => {
+export const AddPeoplePopover: React.FunctionComponent = () => {
   const [popoverOpened, setPopoverOpened] = React.useState(false);
 
   return (
@@ -48,9 +48,4 @@ export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = ()
       </Popover>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Add people popover',
-  id: 'popover-accessibility-scenario',
 };

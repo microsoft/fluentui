@@ -4,7 +4,7 @@ import { Button } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = () => {
+export const MessengerButtons: React.FunctionComponent = () => {
   const [sendButtonDisabled, setSendButtonDisabled] = React.useState<boolean | undefined>(true);
   const [deleteButtonDisabled, setDeleteButtonDisabled] = React.useState<boolean | undefined>(true);
   const [increaseFontButtonDisabled, setIncreaseFontButtonDisabled] = React.useState<boolean | undefined>(undefined);
@@ -97,9 +97,4 @@ export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = ()
       <p aria-live="polite">{statusText}</p>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Messenger buttons',
-  id: 'button-accessibility-scenario',
 };
