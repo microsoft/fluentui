@@ -19,9 +19,6 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     display: 'flex',
     ...shorthands.gap(DIALOG_GAP),
-    '> .fui-Button': {
-      maxWidth: '100%',
-    },
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       flexDirection: 'column',
       justifySelf: 'stretch',
