@@ -298,7 +298,7 @@ storiesOf('CompoundButton Converged', module)
         icon="X"
         size="small"
       >
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </CompoundButton>
     );
   })
@@ -312,7 +312,7 @@ storiesOf('CompoundButton Converged', module)
         icon="X"
         size="medium"
       >
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </CompoundButton>
     );
   })
@@ -326,7 +326,7 @@ storiesOf('CompoundButton Converged', module)
         icon="X"
         size="large"
       >
-        Hello, world
+        Long text wraps after it hits the max width of the component
       </CompoundButton>
     );
   })
