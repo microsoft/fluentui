@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Input, Label } from '@fluentui/react-components';
+import { Button, Checkbox, Input, Label } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
@@ -16,12 +16,34 @@ const regexes = {
   hasLowercaseLetter: /^\S*[a-z]\S*$/,
   hasUppercaseLetter: /^\S*[A-Z]\S*$/,
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
+  validDate: /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/,
+  validEmail: new RegExp(
+    // eslint-disable-next-line @fluentui/max-len
+    "(([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*]))?",
+  ),
+};
+
+const generateSecurityCode = (): string => {
+  let char;
+  let hash = 0;
+  const random = Math.random().toString();
+  for (let i = 0; i < random.length; i++) {
+    char = random.charCodeAt(i);
+    //eslint-disable-next-line no-bitwise
+    hash = (hash << 5) - hash + char;
+    //eslint-disable-next-line no-bitwise
+    hash |= 0; // Convert to 32bit integer
+  }
+  hash += 2147483647; // Convert to positive integer
+  return hash.toString().padStart(8, '0').substring(2);
 };
 
 interface FormInputs {
   fullName: string;
   nickname: string;
   password: string;
+  birthDate: string;
+  email: string;
 }
 
 interface FormValidation {
@@ -108,20 +130,18 @@ const RegistrationFormInputsAccessibility = () => {
   const formValidation = useFormValidation(handleSubmit);
 
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+  const [isSendNewsletter, setIsSendNewsletter] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
     // If the form is submitted and has errors, focus the first error fiel, otherwise do nothing
-    if (!formState.isSubmitting || formState.isValid) {
+    if (!formState.isSubmitted || formState.isValid) {
       return;
     }
     const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
     const firstErrorField = document.getElementById(firstErrorName);
-
-    setTimeout(() => formValidation.notifyFormFieldError(firstErrorName), 200);
-
     if (firstErrorField) {
-      firstErrorField.focus();
+      setTimeout(() => firstErrorField.focus(), 500);
     }
   }, [errors, formState, formValidation]);
 
@@ -142,9 +162,13 @@ const RegistrationFormInputsAccessibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
+  const onSendNewsletterChange = (event: React.ChangeEvent) => {
+    setIsSendNewsletter(!isSendNewsletter);
+  };
+
   return (
     <Scenario pageTitle="Registration form inputs">
-      <h2>Registration form</h2>
+      <h1>Registration form</h1>
       {!isSubmittedAndValid ? (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
           <Label htmlFor="fullName">Full name:</Label>
@@ -155,7 +179,6 @@ const RegistrationFormInputsAccessibility = () => {
               <Input
                 type="text"
                 id="fullName"
-                name="fullName"
                 aria-required="true"
                 aria-invalid={!!errors.fullName}
                 aria-describedby="fullNameErrors"
@@ -202,15 +225,7 @@ const RegistrationFormInputsAccessibility = () => {
           <Controller
             name="nickname"
             control={control}
-            as={
-              <Input
-                type="text"
-                id="nickname"
-                name="nickname"
-                aria-invalid={!!errors.nickname}
-                aria-describedby="nicknameErrors"
-              />
-            }
+            as={<Input type="text" id="nickname" aria-invalid={!!errors.nickname} aria-describedby="nicknameErrors" />}
             rules={{
               minLength: 2,
               maxLength: 20,
@@ -249,7 +264,6 @@ const RegistrationFormInputsAccessibility = () => {
               <Input
                 type={isPasswordVisible ? 'text' : 'password'}
                 id="password"
-                name="password"
                 aria-required="true"
                 aria-invalid={!!errors.password}
                 aria-describedby="passwordErrors"
@@ -275,8 +289,7 @@ const RegistrationFormInputsAccessibility = () => {
             }}
           />
 
-          <Label htmlFor="showPassword">Show password</Label>
-          <input type="checkbox" id="showPassword" name="showPassword" onChange={onShowPasswordChange} />
+          <Checkbox label="Show password" onChange={onShowPasswordChange} />
 
           {errors.password?.types && (
             <ValidationMessage id="password" formValidation={formValidation}>
@@ -305,10 +318,97 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
+          <Label htmlFor="birthDate">Birth date:</Label>
+          <Controller
+            name="birthDate"
+            control={control}
+            as={
+              <Input
+                type="text"
+                id="birthDate"
+                placeholder="E.g. 3/21/1995"
+                aria-required="true"
+                aria-invalid={!!errors.birthDate}
+                aria-describedby="birthDateErrors"
+              />
+            }
+            rules={{
+              required: true,
+              validate: {
+                validDate: value => regexes.validDate.test(value),
+                always: () => {
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('birthDate');
+                  }
+                  return true;
+                },
+              },
+            }}
+          />
+          {errors.birthDate?.types && (
+            <ValidationMessage id="birthDate" formValidation={formValidation}>
+              {'required' in errors.birthDate.types ? (
+                <p>Birth date is required.</p>
+              ) : (
+                <>
+                  <p>Birth date is invalid. It must:</p>
+                  <ul>{'validDate' in errors.birthDate.types && <li>Be in the MM/DD/YYYY format.</li>}</ul>
+                </>
+              )}
+            </ValidationMessage>
+          )}
+
+          <Checkbox label="Send me newsletter" onChange={onSendNewsletterChange} />
+
+          <Label htmlFor="email">E-mail:</Label>
+          <Controller
+            name="email"
+            control={control}
+            as={
+              <Input
+                type="text"
+                id="email"
+                disabled={!isSendNewsletter}
+                aria-required={isSendNewsletter}
+                aria-invalid={!!errors.email}
+                aria-describedby="emailErrors"
+              />
+            }
+            rules={{
+              required: isSendNewsletter,
+              validate: {
+                validEmail: value => regexes.validEmail.test(value),
+                always: () => {
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('birthDate');
+                  }
+                  return true;
+                },
+              },
+            }}
+          />
+          {errors.email?.types && (
+            <ValidationMessage id="email" formValidation={formValidation}>
+              {'required' in errors.email.types ? (
+                <p>E-mail is required.</p>
+              ) : (
+                <>
+                  <p>E-mail is invalid. It must:</p>
+                  <ul>
+                    {'validEmail' in errors.email.types && <li>Be a valid e-mail address, like name@example.com.</li>}
+                  </ul>
+                </>
+              )}
+            </ValidationMessage>
+          )}
+
+          <Label htmlFor="securityCode">Your security code:</Label>
+          <Input type="text" id="securityCode" value={generateSecurityCode()} readOnly />
+
           <Button type="submit">Register</Button>
         </form>
       ) : (
-        <p id="validMessage" role="alert" tabIndex={0}>
+        <p id="validMessage" role="alert" tabIndex={-1}>
           The form is valid and would have been submitted.
         </p>
       )}
@@ -316,13 +416,8 @@ const RegistrationFormInputsAccessibility = () => {
   );
 };
 
-export const RegistrationFormInputsAccessibilityScenario = () => (
+export const RegistrationFormInputs = () => (
   <PubSubProvider>
     <RegistrationFormInputsAccessibility />
   </PubSubProvider>
 );
-
-export default {
-  title: 'Accessibility Scenarios/ Registration form inputs',
-  id: 'input-accessibility-scenario',
-};
