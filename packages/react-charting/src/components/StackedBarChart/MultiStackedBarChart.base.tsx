@@ -25,14 +25,12 @@ export interface IRefArrayData {
 export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
-  selectedLegendTitle: string;
+  selectedLegend: string;
   activeLegend: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
-  isLegendHovered: boolean;
-  isLegendSelected: boolean;
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
@@ -56,13 +54,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.state = {
       isCalloutVisible: false,
       refArray: [],
-      selectedLegendTitle: '',
+      selectedLegend: '',
       activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
-      isLegendHovered: false,
-      isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
@@ -188,11 +184,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       startingPoint.push(prevPosition);
 
       const styles = this.props.styles;
-      const shouldHighlight =
-        this.state.selectedLegendTitle === point.legend ||
-        (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === point.legend))
-          ? true
-          : false;
+      const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
@@ -283,9 +275,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         this.setState({
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible:
-            this.state.isLegendSelected === false ||
-            (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
           color: color,
@@ -315,7 +305,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
   private _onHover(legendTitle: string): void {
     this.setState({
-      isLegendHovered: true,
       activeLegend: legendTitle,
     });
   }
@@ -390,22 +379,19 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   };
 
   private _onClick(legendTitle: string): void {
-    if (this.state.selectedLegendTitle === legendTitle) {
+    if (this.state.selectedLegend === legendTitle) {
       this.setState({
-        isLegendSelected: false,
-        selectedLegendTitle: '',
+        selectedLegend: '',
       });
     } else {
       this.setState({
-        isLegendSelected: true,
-        selectedLegendTitle: legendTitle,
+        selectedLegend: legendTitle,
       });
     }
   }
 
   private _onLeave(): void {
     this.setState({
-      isLegendHovered: false,
       activeLegend: '',
     });
   }
@@ -423,9 +409,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       this.setState({
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        isCalloutVisible:
-          this.state.isLegendSelected === false ||
-          (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
         color: color,
@@ -456,5 +440,16 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }

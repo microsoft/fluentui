@@ -40,7 +40,6 @@ enum CircleVisbility {
 }
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
 export interface IVerticalBarChartState extends IBasestate {
-  selectedLegendTitle: string;
   dataPointCalloutProps?: IVerticalBarChartDataPoint; // define this in hover and focus
   /**
    * data point of x, where rectangle is hovered or focused
@@ -77,10 +76,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
-      isLegendSelected: false,
-      isLegendHovered: false,
       refSelected: null,
-      selectedLegendTitle: '',
+      selectedLegend: '',
       activeLegend: '',
       xCalloutValue: '',
       yCalloutValue: '',
@@ -196,11 +193,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y((d: any) => yScale(d.y));
-    const shouldHighlight =
-      this.state.selectedLegendTitle === lineLegendText ||
-      (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === lineLegendText))
-        ? true
-        : false;
+    const shouldHighlight = this._legendHighlighted(lineLegendText!) || this._noLegendHighlighted() ? true : false;
     const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
       : 0;
@@ -398,9 +391,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.setState({
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        isCalloutVisible:
-          this.state.isLegendSelected === false ||
-          (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend,
         dataForHoverCard: point.y,
         calloutLegend: point.legend!,
         color: point.color || color,
@@ -437,9 +428,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this.setState({
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible:
-            this.state.isLegendSelected === false ||
-            (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
+          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend,
           calloutLegend: point.legend!,
           dataForHoverCard: point.y,
           color: point.color || color,
@@ -493,11 +482,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
-      const shouldHighlight =
-        this.state.selectedLegendTitle === point.legend ||
-        (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === point.legend))
-          ? true
-          : false;
+      const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
@@ -620,29 +605,25 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _onLegendClick(legendTitle: string): void {
-    if (this.state.selectedLegendTitle === legendTitle) {
+    if (this.state.selectedLegend === legendTitle) {
       this.setState({
-        isLegendSelected: false,
-        selectedLegendTitle: '',
+        selectedLegend: '',
       });
     } else {
       this.setState({
-        isLegendSelected: true,
-        selectedLegendTitle: legendTitle,
+        selectedLegend: legendTitle,
       });
     }
   }
 
   private _onLegendHover(legendTitle: string): void {
     this.setState({
-      isLegendHovered: true,
       activeLegend: legendTitle,
     });
   }
 
   private _onLegendLeave(): void {
     this.setState({
-      isLegendHovered: false,
       activeLegend: '',
     });
   }
@@ -704,5 +685,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
     }
+  };
+
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }

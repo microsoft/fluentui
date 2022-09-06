@@ -212,8 +212,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       : null;
   };
 
-  private _getOpacity = (legend: string): number => {
-    const opacity = this._legendHighlighted(legend) || this._noLegendHighlighted() ? 1 : 0.1;
+  private _getOpacity = (legendTitle: string): string => {
+    const opacity = this._legendHighlighted(legendTitle) || this._noLegendHighlighted() ? '' : '0.1';
     return opacity;
   };
 
@@ -432,21 +432,21 @@ export class GroupedVerticalBarChartBase extends React.Component<
     });
   };
 
-  private _onLegendClick(legend: string): void {
-    if (this.state.selectedLegend === legend) {
+  private _onLegendClick(legendTitle: string): void {
+    if (this.state.selectedLegend === legendTitle) {
       this.setState({
         selectedLegend: '',
       });
     } else {
       this.setState({
-        selectedLegend: legend,
+        selectedLegend: legendTitle,
       });
     }
   }
 
-  private _onLegendHover(legend: string): void {
+  private _onLegendHover(legendTitle: string): void {
     this.setState({
-      activeLegend: legend,
+      activeLegend: legendTitle,
     });
   }
 
@@ -503,9 +503,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   };
 
-  private _legendHighlighted = (legend: string) => {
+  private _legendHighlighted = (legendTitle: string) => {
     return (
-      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
     );
   };
 

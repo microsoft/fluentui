@@ -45,19 +45,9 @@ export interface IHeatMapChartState {
    */
   selectedLegend: string;
   /**
-   * determines if the legend any of the legend is selected or not
-   * @default false
-   */
-  isLegendSelected: boolean;
-  /**
    * contains the hovered legend string
    */
   activeLegend: string;
-  /**
-   * determines if the legend is hovered or not
-   * @default false
-   */
-  isLegendHovered: boolean;
   /**
    * determines wethere to show or hide the callout
    * @default false
@@ -147,9 +137,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     );
     this.state = {
       selectedLegend: '',
-      isLegendSelected: false,
       activeLegend: '',
-      isLegendHovered: false,
       isCalloutVisible: false,
       target: null,
       calloutLegend: '',
@@ -247,12 +235,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return { x, y };
   };
 
-  private _getOpacity = (legendTitle: string): number => {
-    const opacity =
-      this.state.selectedLegend === legendTitle ||
-      (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === legendTitle))
-        ? 1
-        : 0.1;
+  private _getOpacity = (legendTitle: string): string => {
+    const opacity = this._legendHighlighted(legendTitle) || this._noLegendHighlighted() ? '1' : '0.1';
     return opacity;
   };
 
@@ -369,28 +353,22 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   /**
    * when the legend is hovered we need to highlight
    * all the rectangles which fall under that category
-   * and un-highlight the rest of them, this functionality
-   * should happen only when there no legend Selected
+   * and un-highlight the rest of them
    * @param legendTitle
    */
   private _onLegendHover = (legendTitle: string): void => {
     this.setState({
       activeLegend: legendTitle,
-      isLegendHovered: true,
     });
   };
 
   /**
    * when the mouse is out from the legend , we need
-   * to show the graph in initial mode. isLegendFocused will
-   * be useful at the scenario where mouseout happend for
-   * the legends which are in overflow card
-   * @param isLegendFocused
+   * to show the graph in initial mode.
    */
   private _onLegendLeave = (): void => {
     this.setState({
       activeLegend: '',
-      isLegendHovered: false,
     });
   };
   /**
@@ -402,22 +380,16 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _onLegendClick = (legendTitle: string): void => {
     /**
      * check if the legend is already selceted,
-     * if yes, then check if the consumer has clicked already
-     * seleceted legend if yes un-select the legend, else
-     * set the acitve legend state to legendTitle
-     *
-     * if legend is not alredy selceted, simply set the isLegendSelected to true
-     * and the active legend to the legendTitle of selected legend
+     * if yes, un-select the legend, else
+     * set the selected legend state to legendTitle
      */
     if (this.state.selectedLegend === legendTitle) {
       this.setState({
         selectedLegend: '',
-        isLegendSelected: false,
       });
     } else {
       this.setState({
         selectedLegend: legendTitle,
-        isLegendSelected: true,
       });
     }
   };
@@ -688,5 +660,16 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }

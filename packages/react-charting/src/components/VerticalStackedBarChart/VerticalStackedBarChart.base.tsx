@@ -447,21 +447,21 @@ export class VerticalStackedBarChartBase extends React.Component<
       : null;
   };
 
-  private _onLegendClick(legend: string): void {
-    if (this.state.selectedLegend === legend) {
+  private _onLegendClick(legendTitle: string): void {
+    if (this.state.selectedLegend === legendTitle) {
       this.setState({
         selectedLegend: '',
       });
     } else {
       this.setState({
-        selectedLegend: legend,
+        selectedLegend: legendTitle,
       });
     }
   }
 
-  private _onLegendHover(legend: string): void {
+  private _onLegendHover(legendTitle: string): void {
     this.setState({
-      activeLegend: legend,
+      activeLegend: legendTitle,
     });
   }
 
@@ -907,9 +907,10 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
   };
 
-  private _legendHighlighted = (legend: string) => {
+  private _legendHighlighted = (legendTitle: string) => {
     return (
-      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
     );
   };
 

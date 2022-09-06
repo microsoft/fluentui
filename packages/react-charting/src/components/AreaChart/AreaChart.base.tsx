@@ -105,8 +105,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       activeLegend: '',
       hoverXValue: '',
       isCalloutVisible: false,
-      isLegendSelected: false,
-      isLegendHovered: false,
       refSelected: null,
       YValueHover: [],
       lineXValue: 0,
@@ -434,12 +432,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _onLegendClick(legend: string): void {
     if (this.state.selectedLegend === legend) {
       this.setState({
-        isLegendSelected: false,
         selectedLegend: '',
       });
     } else {
       this.setState({
-        isLegendSelected: true,
         selectedLegend: legend,
       });
     }
@@ -448,14 +444,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _onLegendHover(legend: string): void {
     this.setState({
       activeLegend: legend,
-      isLegendHovered: true,
     });
   }
 
   private _onLegendLeave(): void {
     this.setState({
       activeLegend: '',
-      isLegendHovered: false,
     });
   }
 
@@ -513,11 +507,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!this._isMultiStackChart) {
       return 0.7;
     } else {
-      const opacity =
-        this.state.selectedLegend === legend ||
-        (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === legend))
-          ? 0.7
-          : 0.1;
+      const opacity = this._legendHighlighted(legend) || this._noLegendHighlighted() ? 0.7 : 0.1;
       return opacity;
     }
   };
@@ -530,11 +520,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       if (this.state.isCalloutVisible) {
         opacity = 1;
       }
-      if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        opacity =
-          this.state.selectedLegend === legend || (!this.state.isLegendSelected && this.state.activeLegend === legend)
-            ? 0
-            : 0.1;
+      if (!this._noLegendHighlighted()) {
+        opacity = this._legendHighlighted(legend) ? 0 : 0.1;
       }
       return opacity;
     }
@@ -695,5 +682,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _legendHighlighted = (legend: string) => {
+    return (
+      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+    );
+  };
+
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }

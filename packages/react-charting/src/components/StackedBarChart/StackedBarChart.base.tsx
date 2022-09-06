@@ -12,14 +12,12 @@ import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
   isCalloutVisible: boolean;
-  selectedLegendTitle: string;
+  selectedLegend: string;
   activeLegend: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
-  isLegendHovered: boolean;
-  isLegendSelected: boolean;
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
@@ -43,13 +41,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     super(props);
     this.state = {
       isCalloutVisible: false,
-      selectedLegendTitle: '',
+      selectedLegend: '',
       activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
-      isLegendHovered: false,
-      isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
@@ -267,11 +263,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
-      const shouldHighlight =
-        this.state.selectedLegendTitle === point.legend ||
-        (!this.state.isLegendSelected && (!this.state.isLegendHovered || this.state.activeLegend === point.legend))
-          ? true
-          : false;
+      const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
         shouldHighlight: shouldHighlight,
@@ -334,9 +326,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         this.setState({
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible:
-            this.state.isLegendSelected === false ||
-            (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
           color: color,
@@ -373,29 +363,25 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _onClick(legendTitle: string): void {
-    if (this.state.selectedLegendTitle === legendTitle) {
+    if (this.state.selectedLegend === legendTitle) {
       this.setState({
-        isLegendSelected: false,
-        selectedLegendTitle: '',
+        selectedLegend: '',
       });
     } else {
       this.setState({
-        isLegendSelected: true,
-        selectedLegendTitle: legendTitle,
+        selectedLegend: legendTitle,
       });
     }
   }
 
   private _onHover(legendTitle: string): void {
     this.setState({
-      isLegendHovered: true,
       activeLegend: legendTitle,
     });
   }
 
   private _onLeave(): void {
     this.setState({
-      isLegendHovered: false,
       activeLegend: '',
     });
   }
@@ -412,9 +398,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.setState({
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        isCalloutVisible:
-          this.state.isLegendSelected === false ||
-          (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
         color: color,
@@ -445,5 +429,16 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }
