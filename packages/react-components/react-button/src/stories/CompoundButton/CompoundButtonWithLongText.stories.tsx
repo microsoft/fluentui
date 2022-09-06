@@ -24,7 +24,7 @@ export const WithLongText = () => {
 WithLongText.parameters = {
   docs: {
     description: {
-      story: 'Text truncates after it hits the max width of the component.',
+      story: 'Text wraps after it hits the max width of the component.',
     },
   },
 };

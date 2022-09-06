@@ -24,7 +24,6 @@ const useRootStyles = makeStyles({
 
     ...shorthands.overflow('hidden'),
     textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
 
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
@@ -170,7 +169,7 @@ const useRootStyles = makeStyles({
   small: {
     ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
 
-    height: '24px',
+    minHeight: '24px',
     minWidth: '64px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -182,7 +181,7 @@ const useRootStyles = makeStyles({
   medium: {
     ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
 
-    height: '32px',
+    minHeight: '32px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -194,7 +193,7 @@ const useRootStyles = makeStyles({
   large: {
     ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
 
-    height: '40px',
+    minHeight: '40px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
