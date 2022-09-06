@@ -333,9 +333,6 @@ exports[`TagPicker renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
-            &:placeholder-shown {
-              text-overflow: ellipsis;
-            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -729,9 +726,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
             }
             &::-ms-clear {
               display: none;
-            }
-            &:placeholder-shown {
-              text-overflow: ellipsis;
             }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
