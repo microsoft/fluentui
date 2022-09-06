@@ -5,7 +5,7 @@ import type { MenuButtonProps } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const EventReminderAccessibilityScenario: React.FunctionComponent = () => {
+export const EventReminderSplitButton: React.FunctionComponent = () => {
   const [statusText, setStatusText] = React.useState<string | undefined>(undefined);
 
   const focusStatus = () => {
@@ -90,9 +90,4 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
       </div>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Event reminder split button',
-  id: 'split-button-accessibility-scenario',
 };

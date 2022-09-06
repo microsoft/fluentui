@@ -4,15 +4,10 @@ import { Spinner } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const PostsLoadingSpinnerAccessibilityScenario: React.FunctionComponent = () => {
+export const PostsLoadingSpinner: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Posts loading spinner">
       <Spinner label="Loading posts..." />
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Posts loading spinner',
-  id: 'spinner-accessibility-scenario',
 };

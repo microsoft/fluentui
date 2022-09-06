@@ -343,13 +343,8 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
   );
 };
 
-export const QuestionnaireAboutCustomerExperienceAccessibilityScenario = () => (
+export const QuestionnaireAboutCustomerExperienceTextareas: React.FunctionComponent = () => (
   <PubSubProvider>
     <QuestionnaireAboutCustomerExperienceAccessibility />
   </PubSubProvider>
 );
-
-export default {
-  title: 'Accessibility Scenarios / Textareas in questionnaire about customer experience',
-  id: 'textarea-accessibility-scenario',
-};

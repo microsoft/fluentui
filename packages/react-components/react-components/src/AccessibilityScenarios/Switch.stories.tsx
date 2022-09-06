@@ -4,7 +4,7 @@ import { Switch } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const DeviceControlsSwitchAccessibilityScenario: React.FunctionComponent = () => {
+export const DeviceControlsSwitches: React.FunctionComponent = () => {
   const [hotspotSwitchDisabled, setHotSpotSwitchDisabled] = React.useState<boolean | undefined>(true);
   const [wiFiSwitchChecked, setWiFiSwitchChecked] = React.useState(false);
   const [hotspotSwitchChecked, setHotspotSwitchChecked] = React.useState(false);
@@ -35,9 +35,4 @@ export const DeviceControlsSwitchAccessibilityScenario: React.FunctionComponent 
       <Switch label="Bluetooth" />
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Device controls switches',
-  id: 'switch-accessibility-scenario',
 };

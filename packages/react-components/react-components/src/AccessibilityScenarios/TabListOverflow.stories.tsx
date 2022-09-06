@@ -132,7 +132,7 @@ const useSettingsStyles = makeStyles({
   },
 });
 
-export const MailSettingsOverflowTabListAccessibilityScenario: React.FunctionComponent = () => {
+export const MailSettingsOverflowTabList: React.FunctionComponent = () => {
   const styles = useSettingsStyles();
 
   const [selectedTabValue, setSelectedTabValue] = React.useState<TabValue>('general');
@@ -214,9 +214,4 @@ export const MailSettingsOverflowTabListAccessibilityScenario: React.FunctionCom
       {selectedTabValue === 'about' && <AboutPanel />}
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Mail settings with overflow tablist',
-  id: 'tablist-overflow-accessibility-scenario',
 };

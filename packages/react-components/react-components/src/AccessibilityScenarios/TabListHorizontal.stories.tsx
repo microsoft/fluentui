@@ -17,7 +17,7 @@ import { MusicNote1Filled, InfoRegular } from '@fluentui/react-icons';
 
 import { Scenario } from './utils';
 
-export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionComponent = () => {
+export const MailSettingsHorizontalTabList: React.FunctionComponent = () => {
   const [selectedTabValue, setSelectedTabValue] = React.useState<TabValue>('general');
 
   const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
@@ -96,9 +96,4 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
       {selectedTabValue === 'about' && <AboutPanel />}
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Mail settings with horizontal tablist',
-  id: 'tablist-horizontal-accessibility-scenario',
 };
