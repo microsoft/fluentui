@@ -250,7 +250,7 @@ const narrate = (message: string, priority = 'polite') => {
   }, 600);
 };
 
-export const FilterScenario: React.FunctionComponent = () => {
+export const ListFilter: React.FunctionComponent = () => {
   const [filterText, setFilterText] = React.useState('');
   const filterTextLowerCase = React.useMemo(() => {
     return filterText.toLowerCase();
@@ -333,9 +333,4 @@ export const FilterScenario: React.FunctionComponent = () => {
       </form>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Filter scenario',
-  id: 'filter-scenario',
 };
