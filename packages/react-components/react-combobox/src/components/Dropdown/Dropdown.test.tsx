@@ -323,6 +323,53 @@ describe('Dropdown', () => {
     expect(getByText('Blue').getAttribute('aria-selected')).toEqual('false');
   });
 
+  it('calls onOptionSelect with correct data for single-select', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Dropdown value="Red" onOptionSelect={onOptionSelect}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
+      optionValue: 'Green',
+      selectedOptions: ['Green'],
+    });
+  });
+
+  it('calls onOptionSelect with correct data for multi-select', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Dropdown value="Red" onOptionSelect={onOptionSelect} multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+    userEvent.click(getByText('Blue'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(2);
+    expect(onOptionSelect).toHaveBeenNthCalledWith(1, expect.anything(), {
+      optionValue: 'Green',
+      selectedOptions: ['Green'],
+    });
+    expect(onOptionSelect).toHaveBeenNthCalledWith(2, expect.anything(), {
+      optionValue: 'Blue',
+      selectedOptions: ['Green', 'Blue'],
+    });
+  });
+
   it('stays open on click for multiselect', () => {
     const { getByText, getByRole } = render(
       <Dropdown defaultOpen multiselect>

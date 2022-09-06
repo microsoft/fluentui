@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Fix Dropdown item styles to correctly apply hover styles even when focus is on another page",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

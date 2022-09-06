@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 05 Sep 2022 07:38:30 GMT",
+      "tag": "@fluentui/react-charting_v5.12.34",
+      "version": "5.12.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1fe1f9bc178992056a8bc175f6e95675fb00321b",
+            "comment": "Fix min width of bars as 1% for horizontal bar charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.94.1",
+            "commit": "f9f7d0fb7506d2af70af355a26d7a44b49df5f58"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:53 GMT",
       "tag": "@fluentui/react-charting_v5.12.33",
       "version": "5.12.33",

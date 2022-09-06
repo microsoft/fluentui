@@ -127,11 +127,24 @@ export const baseElementProperties = toObjectMap([
 ]);
 
 /**
+ * An array of microdata attributes that are allowed on every html element type.
+ *
+ * @public
+ */
+export const microdataProperties = toObjectMap([
+  'itemID', // global
+  'itemProp', // global
+  'itemRef', // global
+  'itemScope', // global
+  'itemType', // global
+]);
+
+/**
  * An array of HTML element properties and events.
  *
  * @public
  */
-export const htmlElementProperties = toObjectMap(baseElementProperties, baseElementEvents);
+export const htmlElementProperties = toObjectMap(baseElementProperties, baseElementEvents, microdataProperties);
 
 /**
  * An array of LABEL tag properties and events.
