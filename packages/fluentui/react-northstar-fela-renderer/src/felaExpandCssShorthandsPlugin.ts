@@ -34,10 +34,11 @@ export const felaExpandCssShorthandsPlugin = (styles: ICSSInJSStyle): ICSSInJSSt
       const expandedProps = expandProperty(cssPropertyName, cssPropertyValue);
 
       if (expandedProps) {
-        return { ...acc, ...expandedProps };
-      } 
-        acc[cssPropertyName] = cssPropertyValue;
-      
+        Object.assign(acc, expandedProps);
+        return acc;
+      }
+
+      acc[cssPropertyName] = cssPropertyValue;
     } else if (Array.isArray(cssPropertyValue)) {
       acc[cssPropertyName] = cssPropertyValue;
     } else if (typeof cssPropertyValue === 'object') {
