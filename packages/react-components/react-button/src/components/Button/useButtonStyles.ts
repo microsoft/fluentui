@@ -26,7 +26,6 @@ const useRootStyles = makeStyles({
     ...shorthands.margin(0),
 
     ...shorthands.overflow('hidden'),
-    textOverflow: 'ellipsis',
 
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
