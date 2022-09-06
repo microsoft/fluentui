@@ -96,6 +96,9 @@ exports[`PeoplePicker renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -798,6 +801,9 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             }
             &::-ms-clear {
               display: none;
+            }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
             }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
