@@ -9,7 +9,7 @@ export type ComboboxFieldProps = FieldProps<typeof Combobox>;
 export const comboboxFieldClassNames = getFieldClassNames('ComboboxField');
 
 export const ComboboxField: ForwardRefComponent<ComboboxFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable({ props, ref, component: Combobox, classNames: comboboxFieldClassNames });
+  const state = useField_unstable(props, ref, { component: Combobox, classNames: comboboxFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });

@@ -1,5 +1,5 @@
 export { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from './Field';
-export type { FieldProps, FieldSlots, FieldState, UseFieldParams } from './Field';
+export type { FieldProps, FieldSlots, FieldState, FieldConfig } from './Field';
 
 export { CheckboxField, checkboxFieldClassNames } from './CheckboxField';
 export type { CheckboxFieldProps } from './CheckboxField';

@@ -9,9 +9,7 @@ export type RadioGroupFieldProps = FieldProps<typeof RadioGroup>;
 export const radioGroupFieldClassNames = getFieldClassNames('RadioGroupField');
 
 export const RadioGroupField: ForwardRefComponent<RadioGroupFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable({
-    props,
-    ref,
+  const state = useField_unstable(props, ref, {
     component: RadioGroup,
     classNames: radioGroupFieldClassNames,
     labelConnection: 'aria-labelledby',

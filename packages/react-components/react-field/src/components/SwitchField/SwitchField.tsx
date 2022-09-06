@@ -9,7 +9,7 @@ export type SwitchFieldProps = FieldProps<typeof Switch>;
 export const switchFieldClassNames = getFieldClassNames('SwitchField');
 
 export const SwitchField: ForwardRefComponent<SwitchFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable({ props, ref, component: Switch, classNames: switchFieldClassNames });
+  const state = useField_unstable(props, ref, { component: Switch, classNames: switchFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });

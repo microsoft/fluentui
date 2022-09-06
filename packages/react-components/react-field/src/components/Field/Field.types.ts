@@ -90,6 +90,32 @@ export type OptionalFieldComponentProps = {
 };
 
 /**
+ * Configuration parameters for a Field class, passed to useField_unstable
+ */
+export type FieldConfig<T extends FieldComponent> = {
+  /**
+   * The underlying input component that this field is wrapping.
+   */
+  component: T;
+
+  /**
+   * Class names for this component, created by `getFieldClassNames`.
+   */
+  classNames: SlotClassNames<FieldSlots<T>>;
+
+  /**
+   * How the label be connected to the control.
+   * * htmlFor - Set the Label's htmlFor prop to the component's ID (and generate an ID if not provided).
+   *   This is the preferred method for components that use the underlying <input> tag.
+   * * aria-labelledby - Set the component's aria-labelledby prop to the Label's ID. Use this for components
+   *   that are not directly <input> elements (such as RadioGroup).
+   *
+   * @default htmlFor
+   */
+  labelConnection?: 'htmlFor' | 'aria-labelledby';
+};
+
+/**
  * State used in rendering Field
  */
 export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> &

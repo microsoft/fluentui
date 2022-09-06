@@ -23,18 +23,15 @@ export const checkboxFieldClassNames = getFieldClassNames('CheckboxField');
 export const CheckboxField: ForwardRefComponent<CheckboxFieldProps> = React.forwardRef((props, ref) => {
   const { fieldLabel, required, label, control, ...restOfProps } = props;
 
-  const state = useField_unstable({
-    props: {
-      // Use the fieldLabel prop as the Field's label
-      label: fieldLabel,
-      // Use the label prop as the Checkbox's label
-      control: { label, required, ...control },
-      ...restOfProps,
-    },
-    ref,
-    component: Checkbox,
-    classNames: checkboxFieldClassNames,
-  });
+  props = {
+    // Use the fieldLabel prop as the Field's label
+    label: fieldLabel,
+    // Use the label prop as the Checkbox's label
+    control: { label, required, ...control },
+    ...restOfProps,
+  };
+
+  const state = useField_unstable(props, ref, { component: Checkbox, classNames: checkboxFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });
