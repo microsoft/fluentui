@@ -14,6 +14,7 @@ import type {
 } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import { useModalAttributes } from '@fluentui/react-tabster';
 /**
  * Create the state required to render DialogSurface.
  *
@@ -66,6 +67,8 @@ export const useDialogSurface_unstable = (
     }
   });
 
+  const { modalAttributes } = useModalAttributes({ trapFocus: modalType !== 'non-modal' });
+
   return {
     components: {
       backdrop: 'div',
@@ -81,6 +84,7 @@ export const useDialogSurface_unstable = (
     root: getNativeElementProps(as ?? 'div', {
       role: modalType === 'alert' ? 'alertdialog' : 'dialog',
       ...props,
+      ...modalAttributes,
       onKeyDown: handleKeyDown,
       'aria-describedby': dialogBodyID,
       'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
