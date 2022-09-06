@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { normalizeDefaultPrevented, isEscapeKeyDismiss, useDisableBodyScroll } from '../../utils';
+import { normalizeDefaultPrevented, useDisableBodyScroll } from '../../utils';
 
 import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
 
@@ -171,21 +171,6 @@ function useFocusFirstElement({
       if (targetDocument.activeElement === trigger) {
         trigger.blur();
       }
-      const listener = (event: KeyboardEvent) => {
-        if (isEscapeKeyDismiss(event, modalType)) {
-          requestOpenChange({
-            event,
-            open: false,
-            type: 'documentEscapeKeyDown',
-          });
-          trigger.focus();
-          event.stopImmediatePropagation();
-        }
-      };
-      targetDocument.addEventListener('keydown', listener, { passive: false });
-      return () => {
-        targetDocument.removeEventListener('keydown', listener);
-      };
     }
   }, [findFirstFocusable, requestOpenChange, open, modalType, targetDocument]);
 

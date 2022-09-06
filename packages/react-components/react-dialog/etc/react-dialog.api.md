@@ -71,14 +71,6 @@ export type DialogOpenChangeData = {
     type: 'escapeKeyDown';
     open: boolean;
     event: React_2.KeyboardEvent;
-}
-/**
-* document escape keydown defers from internal escape keydown events because of the synthetic event API
-*/
-| {
-    type: 'documentEscapeKeyDown';
-    open: boolean;
-    event: KeyboardEvent;
 } | {
     type: 'backdropClick';
     open: boolean;
@@ -90,7 +82,7 @@ export type DialogOpenChangeData = {
 };
 
 // @public (undocumented)
-export type DialogOpenChangeEvent = React_2.KeyboardEvent | React_2.MouseEvent | KeyboardEvent;
+export type DialogOpenChangeEvent = React_2.KeyboardEvent | React_2.MouseEvent;
 
 // @public (undocumented)
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
