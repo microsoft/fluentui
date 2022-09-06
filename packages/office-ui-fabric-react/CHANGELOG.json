@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 06 Sep 2022 20:18:55 GMT",
+      "tag": "office-ui-fabric-react_v7.197.6",
+      "version": "7.197.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/icons to v7.8.6",
+            "author": "gcox@microsoft.com",
+            "commit": "824b51b60a37c0348006e564ab8b5bf5b77170bf",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 21:05:10 GMT",
       "tag": "office-ui-fabric-react_v7.197.5",
       "version": "7.197.5",

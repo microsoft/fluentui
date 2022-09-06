@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "4.23.4",
+  "version": "4.23.5",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,7 +34,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.22.17",
+    "@uifabric/example-app-base": "^7.22.18",
     "@uifabric/jest-serializer-merge-styles": "^7.2.4",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -53,9 +53,9 @@
     "@types/d3-selection": "1.4.1",
     "@types/d3-shape": "^1.2.3",
     "@types/d3-time-format": "^2.1.0",
-    "@uifabric/icons": "^7.8.4",
+    "@uifabric/icons": "^7.8.6",
     "@uifabric/set-version": "^7.0.24",
-    "@uifabric/charting": "^4.23.4",
+    "@uifabric/charting": "^4.23.5",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
     "d3-format": "^1.4.4",
@@ -68,7 +68,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
-    "office-ui-fabric-react": "^7.197.5",
+    "office-ui-fabric-react": "^7.197.6",
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0"

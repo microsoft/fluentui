@@ -2,6 +2,21 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Tue, 06 Sep 2022 20:18:55 GMT",
+      "tag": "@uifabric/fluent-theme_v7.7.18",
+      "version": "7.7.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.6",
+            "author": "gcox@microsoft.com",
+            "commit": "824b51b60a37c0348006e564ab8b5bf5b77170bf",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 21:05:10 GMT",
       "tag": "@uifabric/fluent-theme_v7.7.17",
       "version": "7.7.17",

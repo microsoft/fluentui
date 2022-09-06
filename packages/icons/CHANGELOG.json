@@ -2,6 +2,21 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Tue, 06 Sep 2022 20:18:55 GMT",
+      "tag": "@uifabric/icons_v7.8.6",
+      "version": "7.8.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Force syncing icon versions",
+            "author": "gcox@microsoft.com",
+            "commit": "824b51b60a37c0348006e564ab8b5bf5b77170bf",
+            "package": "@uifabric/icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 21:05:10 GMT",
       "tag": "@uifabric/icons_v7.8.4",
       "version": "7.8.4",
