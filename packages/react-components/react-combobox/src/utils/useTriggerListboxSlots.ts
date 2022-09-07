@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { mergeCallbacks, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
@@ -54,15 +53,11 @@ export function useTriggerListboxSlots(
   // handle trigger focus/blur
   const triggerRef: typeof ref = React.useRef(null);
 
-  // apply focus visible attribute on listbox for active option styles
-  const listboxRef = useMergedRefs(listboxSlot?.ref, useKeyboardNavAttribute<HTMLDivElement>());
-
   // resolve listbox shorthand props
   const listbox: typeof listboxSlot = listboxSlot && {
     multiselect,
     tabIndex: undefined,
     ...listboxSlot,
-    ref: listboxRef,
   };
 
   // resolve trigger shorthand props
