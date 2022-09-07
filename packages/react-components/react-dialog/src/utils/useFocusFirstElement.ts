@@ -6,8 +6,6 @@ import type { DialogModalType } from '../Dialog';
 
 /**
  * Focus first element on content when dialog is opened,
- * in case there's no focusable element, then a eventlistener is added to document
- * to ensure Escape keydown functionality
  */
 export function useFocusFirstElement(open: boolean, modalType: DialogModalType) {
   const { findFirstFocusable } = useFocusFinders();
