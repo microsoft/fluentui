@@ -344,6 +344,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     const detailsFooterProps = this._getDetailsFooterProps();
     const columnReorderProps = this._getColumnReorderProps();
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+    const colCount =
+      (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) +
+      (adjustedColumns ? adjustedColumns.length : 0) +
+      (groups ? 1 : 0);
 
     const list = groups ? (
       <GroupedList
@@ -363,16 +367,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         onShouldVirtualize={ onShouldVirtualize }
       />
     ) : (
-        <List
-          ref={ this._list }
-          role='presentation'
-          items={ enableShimmer && !items.length ? SHIMMER_ITEMS : items }
-          onRenderCell={ this._onRenderListCell(0) }
-          usePageCache={ usePageCache }
-          onShouldVirtualize={ onShouldVirtualize }
-          { ...additionalListProps }
-        />
-      );
+      <List
+        ref={ this._list }
+        role='presentation'
+        items={ enableShimmer && !items.length ? SHIMMER_ITEMS : items }
+        onRenderCell={ this._onRenderListCell(0) }
+        usePageCache={ usePageCache }
+        onShouldVirtualize={ onShouldVirtualize }
+        { ...additionalListProps }
+      />
+    );
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -397,7 +401,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           role='grid'
           aria-label={ ariaLabelForGrid }
           aria-rowcount={ rowCount }
-          aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
+          aria-colcount={ colCount }
           aria-readonly='true'
         >
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
@@ -451,8 +455,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   { list }
                 </SelectionZone>
               ) : (
-                  list
-                ) }
+                list
+              ) }
             </FocusZone>
           </div>
           { onRenderDetailsFooter(

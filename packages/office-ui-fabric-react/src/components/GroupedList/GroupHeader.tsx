@@ -73,43 +73,49 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
         }) }
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
-        aria-label={ group.ariaLabel || group.name }
+        role='row'
         data-is-focusable={ true }
+        aria-label={ group.ariaLabel || group.name }
       >
 
-        <FocusZone className={ styles.groupHeaderContainer } direction={ FocusZoneDirection.horizontal }>
+        <FocusZone className={ styles.groupHeaderContainer } direction={ FocusZoneDirection.horizontal } role='presentation'>
 
           { isSelectionCheckVisible ? (
-            <button
-              type='button'
-              className={ css('ms-GroupHeader-check', styles.check) }
-              data-selection-toggle={ true }
-              onClick={ this._onToggleSelectGroupClick }
-            >
-              <Check checked={ currentlySelected } />
-            </button>
+            <div role='gridcell'>
+              <button
+                type='button'
+                className={ css('ms-GroupHeader-check', styles.check) }
+                data-selection-toggle={ true }
+                onClick={ this._onToggleSelectGroupClick }
+              >
+                <Check checked={ currentlySelected } />
+              </button>
+            </div>
+
           ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
           }
 
           { GroupSpacer({ count: groupLevel as number }) }
 
-          <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) }>
+          <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) } role='presentation'>
             <Icon iconName='Tag' />
           </div>
-          <button
-            type='button'
-            className={ css('ms-GroupHeader-expand', styles.expand) }
-            onClick={ this._onToggleCollapse }
-          >
-            <Icon
-              className={ css(
-                isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)
-              ) }
-              iconName='ChevronDown'
-            />
-          </button>
+          <div role='gridcell'>
+            <button
+              type='button'
+              className={ css('ms-GroupHeader-expand', styles.expand) }
+              onClick={ this._onToggleCollapse }
+            >
+              <Icon
+                className={ css(
+                  isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)
+                ) }
+                iconName='ChevronDown'
+              />
+            </button>
+          </div>
 
-          <div className={ css('ms-GroupHeader-title', styles.title) }>
+          <div className={ css('ms-GroupHeader-title', styles.title) } role='gridcell'>
             <span>{ group.name }</span>
             {
               // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
