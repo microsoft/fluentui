@@ -64,9 +64,6 @@ export type DialogBodySlots = {
 export type DialogBodyState = ComponentState<DialogBodySlots>;
 
 // @public (undocumented)
-export const dialogClassNames: SlotClassNames<DialogSlots>;
-
-// @public (undocumented)
 export type DialogOpenChangeData = {
     type: 'escapeKeyDown';
     open: boolean;
@@ -94,9 +91,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 };
 
 // @public (undocumented)
-export type DialogSlots = {
-    backdrop?: Slot<'div'>;
-};
+export type DialogSlots = {};
 
 // @public (undocumented)
 export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
@@ -111,11 +106,12 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {};
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
-    root: Slot<'div', 'main'>;
+    backdrop?: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -196,10 +192,7 @@ export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<H
 export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
 
 // @public
-export const useDialogStyles_unstable: (state: DialogState) => DialogState;
-
-// @public
-export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<HTMLElement>) => DialogSurfaceState;
+export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;
 
 // @public
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;

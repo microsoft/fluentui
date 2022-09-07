@@ -167,9 +167,7 @@ export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow'
 
 export {
   Dialog,
-  dialogClassNames,
   useDialog_unstable,
-  useDialogStyles_unstable,
   renderDialog_unstable,
   DialogTitle,
   dialogTitleClassNames,
