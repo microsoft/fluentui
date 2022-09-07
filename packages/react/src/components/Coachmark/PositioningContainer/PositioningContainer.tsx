@@ -260,8 +260,10 @@ export function useHeightOffset(
   /**
    * Tracks the current height offset and updates during
    * the height animation when props.finalHeight is specified.
+   * State stored as object to ensure re-render even if the value does not change.
+   *  See https://github.com/microsoft/fluentui/issues/23545
    */
-  const [heightOffset, setHeightOffset] = React.useState<number>(0);
+  const [heightOffset, setHeightOffset] = React.useState<{ value: number }>({ value: 0 });
   const async = useAsync();
   const setHeightOffsetTimer = React.useRef<number>(0);
 
@@ -278,7 +280,7 @@ export function useHeightOffset(
         const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-        setHeightOffset(heightOffset + scrollDiff);
+        setHeightOffset({ value: heightOffset.value + scrollDiff });
 
         if (positioningContainerMainElem.offsetHeight < finalHeight) {
           setHeightOffsetEveryFrame();
@@ -292,14 +294,14 @@ export function useHeightOffset(
   // eslint-disable-next-line react-hooks/exhaustive-deps -- should only re-run if finalHeight changes
   React.useEffect(setHeightOffsetEveryFrame, [finalHeight]);
 
-  return heightOffset;
+  return heightOffset.value;
 }
 
 export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps> = React.forwardRef<
   HTMLDivElement,
   IPositioningContainerProps
 >((propsWithoutDefaults, forwardedRef) => {
-  const props = getPropsWithDefaults<IPositioningContainerProps>(DEFAULT_PROPS, propsWithoutDefaults);
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
   // @TODO rename to reflect the name of this class
   const contentHost = React.useRef<HTMLDivElement>(null);
@@ -370,7 +372,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     </div>
   );
 
-  return doNotLayer ? content : <Layer {...props.layerProps}>{content}</Layer>;
+  return doNotLayer ? content : <Layer>{content}</Layer>;
 });
 PositioningContainer.displayName = 'PositioningContainer';
 
