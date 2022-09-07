@@ -2012,6 +2012,9 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
     render(): JSX.Element;
 }
 
+// @public
+export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListProps>;
+
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
 
