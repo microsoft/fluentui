@@ -41,7 +41,7 @@ export const ChatMessageContent = compose<
 >(Box, {
   className: chatMessageContentClassName,
   displayName: 'ChatMessageContent',
-  handledProps: ['density', 'mine', 'unstable_layout'],
+  handledProps: ['badgePosition', 'density', 'failed', 'hasBadge', 'mine', 'unstable_layout'],
   mapPropsToStylesProps: ({ badgePosition, density, failed, hasBadge, mine, unstable_layout }) => ({
     badgePosition,
     density,
