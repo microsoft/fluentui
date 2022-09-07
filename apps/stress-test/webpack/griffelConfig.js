@@ -2,21 +2,11 @@ const { GriffelCSSExtractionPlugin } = require('@griffel/webpack-extraction-plug
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 /**
- * Webpack configuration object.
- * @typedef {import('webpack').Configuration} WebpackConfig
+ * @typedef {('runtime' | 'buildtime' | 'extraction')} GriffelMode
  */
 
 /**
- * Webpack rules set.
- * @typedef {import('webpack').RuleSetRule} WebpackRuleSetRule
- */
-
-/**
- * @typedef {('runtime' | 'buildtime' | 'extrraction')} GriffelMode
- */
-
-/**
- * @type {WebpackRuleSetRule}
+ * @type {import('webpack').RuleSetRule}
  */
 const griffelWebpackLoader = {
   test: /\.(ts|tsx)$/,
@@ -32,7 +22,7 @@ const griffelWebpackLoader = {
 };
 
 /**
- * @type {WebpackRuleSetRule}
+ * @type {import('webpack').RuleSetRule}
  */
 const griffelExtractionLoader = {
   test: /\.(js|ts|tsx)$/,
@@ -54,15 +44,17 @@ const cssLoader = {
  *
  * NOTE: this function mutates the `config` object passed in to it.
  *
- * @param {WebpackConfig} config - Webpack configuration object to modify.
+ * @param {import('webpack').Configuration} config - Webpack configuration object to modify.
  * @param {GriffelMode} griffelMode
- * @returns {WebpackConfig} Modified Webpack configuration object.
+ * @returns {import('webpack').Configuration} Modified Webpack configuration object.
  */
 const configureGriffel = (config, griffelMode) => {
   console.log(`Griffel running in ${griffelMode} mode.`);
 
+  config.module = config.module || {};
+
   let rules = config.module.rules || [];
-  let plugins = config.module.plugins || [];
+  let plugins = config.plugins || [];
 
   if (griffelMode === 'extraction') {
     rules = [griffelExtractionLoader, griffelWebpackLoader, cssLoader, ...rules];

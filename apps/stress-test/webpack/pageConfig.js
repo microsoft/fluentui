@@ -17,21 +17,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  */
 
 /**
- * Webpack configuration object.
- * @typedef {import('webpack').Configuration} WebpackConfig
- */
-
-/**
- * Webpack `entry` configuration object.
- * @typedef {import('webpack').Entry} WebpackEntry
- */
-
-/**
- * HtmlWebpackPlugin object.
- * @typedef {import('html-webpack-plugin')} HtmlWebpackPlugin
- */
-
-/**
  * Find all the source pages and map them to
  * config objects used to generate the Webpack config.
  *
@@ -65,13 +50,17 @@ const getPages = () => {
  * config's `entry`.
  *
  * @param {PageConfig[]} pages - List of page configuration objects.
- * @returns {WebpackEntry} `entry` object for Webpack configuration.
+ * @returns {import('webpack').Entry} `entry` object for Webpack configuration.
  */
 const getEntry = pages => {
+  /**
+   * @type {Object.<string, string>}
+   */
+  const init = {};
   return pages.reduce((config, page) => {
     config[page.name] = page.path;
     return config;
-  }, {});
+  }, init);
 };
 
 /**
@@ -79,7 +68,7 @@ const getEntry = pages => {
  * HTML plugins for the pages.
  *
  * @param {PageConfig[]} pages - List of page configuration objects.
- * @returns {HtmlWebpackPlugin[]} List of HtmlWebpackPlugins for all pages.
+ * @returns {import('html-webpack-plugin')[]} List of HtmlWebpackPlugins for all pages.
  */
 const getHtmlPlugin = pages => {
   return pages.map(page => {
@@ -98,8 +87,8 @@ const getHtmlPlugin = pages => {
  *
  * NOTE: this function mutates the `config` object passed in to it.
  *
- * @param {WebpackConfig} config - Webpack configuration object to modify.
- * @returns {WebpackConfig} Modified Webpack configuration object.
+ * @param {import('webpack').Configuration} config - Webpack configuration object to modify.
+ * @returns {import('webpack').Configuration} Modified Webpack configuration object.
  */
 const configurePages = config => {
   const pages = getPages();
