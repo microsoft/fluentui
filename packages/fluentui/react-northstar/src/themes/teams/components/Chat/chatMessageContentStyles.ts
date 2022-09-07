@@ -30,7 +30,7 @@ const getChatMessageVariantStyles = (props: ChatMessageContentStylesProps) => {
       });
 
     default:
-      return undefined;
+      return () => ({});
   }
 };
 
