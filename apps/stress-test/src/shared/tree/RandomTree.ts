@@ -1,4 +1,5 @@
-import { random, Random } from '../random';
+import { random, Random } from '../utils/random';
+import { TestFixture } from '../utils/testUtils';
 
 type TreeParams = {
   minDepth?: number;
@@ -52,6 +53,20 @@ export class RandomTree<T> {
     this.numNodes = 1;
     const root = createNode(null, 0, 0);
     return this._doBuild(createNode, root, 1);
+  };
+
+  public fromFixture = (fixture: TestFixture['tree'], parent: TreeNode<T> | null = null): TreeNode<T> => {
+    const root: TreeNode<T> = {
+      value: fixture.value,
+      children: [],
+      parent,
+    };
+
+    for (const child of fixture.children) {
+      root.children.push(this.fromFixture(child, root));
+    }
+
+    return root;
   };
 
   private _randomDepth = (max?: number): number => {

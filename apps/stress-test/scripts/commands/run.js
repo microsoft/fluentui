@@ -1,4 +1,3 @@
-const processOptions = require('../utils/processOptions');
 const configureYargs = require('../utils/configureYargs');
 const { startServer, stopServer } = require('../utils/server');
 const runTachometer = require('../utils/tachometer');
@@ -20,20 +19,8 @@ const { buildTestConfig } = require('./buildTestConfig');
  */
 
 const command = 'run';
-<<<<<<< HEAD
 
 /**
-=======
-exports.command = command;
-exports.describe = 'Builds configs and runs stress testing.';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
-
-/**
- *
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
  * @param {ConfigResult[]} testConfigs
  * @param {CLIServerOptions} options
  */
@@ -44,28 +31,18 @@ const run = async (testConfigs, options) => {
 };
 
 /**
-<<<<<<< HEAD
  * @param {CLIRunOptions} argv
  */
 const handler = argv => {
-=======
- *
- * @param {CLIRunOptions} argv
- */
-exports.handler = argv => {
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
-  const options = processOptions(argv);
-
-  const testConfigs = buildTestConfig(options);
-  run(testConfigs, options).finally(() => {
+  const testConfigs = buildTestConfig(argv);
+  run(testConfigs, argv).finally(() => {
     stopServer();
 
-    if (options.processResults) {
-      processResults(options);
+    if (argv.processResults) {
+      processResults(argv);
     }
   });
 };
-<<<<<<< HEAD
 
 /** @type {import('yargs').CommandModule} */
 const api = {
@@ -78,5 +55,3 @@ const api = {
 };
 
 module.exports = api;
-=======
->>>>>>> 76c9e7deb9 (stress-test: add cli application)

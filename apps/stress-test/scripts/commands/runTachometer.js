@@ -11,30 +11,11 @@ const runTachometer = require('../utils/tachometer');
  */
 
 const command = 'tachometer';
-<<<<<<< HEAD
 
 /**
  * @param {CLITachometerOptions} argv
  */
 const handler = async argv => {
-=======
-exports.command = command;
-exports.describe = 'Runs Tachometer for a provided scenario.';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
-
-const run = async testConfigs => {
-  await runTachometer(testConfigs);
-};
-
-/**
- *
- * @param {CLITachometerOptions} argv
- */
-exports.handler = argv => {
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
   const { scenario } = argv;
 
   const configDir = getConfigDir(scenario);
@@ -58,7 +39,6 @@ exports.handler = argv => {
     configs.push(configResult);
   }
 
-<<<<<<< HEAD
   await runTachometer(configs);
   console.log('Tachometer run complete!');
 };
@@ -74,7 +54,3 @@ const api = {
 };
 
 module.exports = api;
-=======
-  run(configs).then(() => console.log('Tachometer run complete!'));
-};
->>>>>>> 76c9e7deb9 (stress-test: add cli application)

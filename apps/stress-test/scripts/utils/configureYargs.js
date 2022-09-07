@@ -25,12 +25,8 @@ const cliOptions = {
     default: 25,
   },
   targets: {
-    describe: 'Libraries to target.',
-    default: ['v8', 'v9', 'wc'],
-  },
-  'use-config': {
-    describe: 'Use options from config, overriding any config values with command line arguments.',
-    default: true,
+    describe: 'Tests to target',
+    demand: true,
   },
   'process-results': {
     describe: 'Process the test results for display.',
@@ -47,6 +43,26 @@ const cliOptions = {
   'griffel-mode': {
     describe: 'Optimization mode for Griffel.',
     default: 'buildtime',
+  },
+  renderer: {
+    describe: 'Renderer to use for testing. This determines what is actually tested.',
+    demand: true,
+  },
+  'test-options': {
+    describe: 'Options to apply to each test. E.g., option1=value1 option2=value2',
+    coerce: arg => {
+      return arg.reduce((map, current) => {
+        const [key, value] = current.split('=');
+        if (!key || !value) {
+          throw new Error(`Invalid test option. Got ${current}. Expected the form "key=value".`);
+        }
+
+        map[key] = value;
+        return map;
+      }, {});
+      // return arg;
+    },
+    default: [],
   },
   mode: {
     describe: 'Build mode.',
@@ -78,6 +94,7 @@ const configure = (yargs, options) => {
       case 'test-cases':
       case 'browsers':
       case 'targets':
+      case 'test-options':
         y = y.array(option);
         break;
 
@@ -123,8 +140,9 @@ const configureYargs = (command, yargs) => {
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         port,
+        renderer,
       } = cliOptions;
       configure(yargs, {
         scenario,
@@ -133,8 +151,9 @@ const configureYargs = (command, yargs) => {
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         port,
+        renderer,
       });
       break;
     }
@@ -147,10 +166,11 @@ const configureYargs = (command, yargs) => {
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         'process-results': processResults,
         port,
         root,
+        renderer,
       } = cliOptions;
       configure(yargs, {
         scenario,
@@ -159,10 +179,11 @@ const configureYargs = (command, yargs) => {
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         'process-results': processResults,
         port,
         root,
+        renderer,
       });
       break;
     }

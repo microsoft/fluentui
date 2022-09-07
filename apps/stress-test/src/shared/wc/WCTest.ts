@@ -1,0 +1,55 @@
+import { getTestOptions } from '../utils/testOptions';
+import { loadTestData } from '../utils/testUtils';
+import { RandomSelectorTreeNode } from '../tree/RandomSelectorTreeNode';
+import { RandomTree } from '../tree/RandomTree';
+import { testInjectStyles } from '../vanilla/TestInjectStyles';
+import { testMount } from '../vanilla/TestMount';
+import { testRemoveAll } from '../vanilla/TestRemoveAll';
+import { testReRenderAll } from '../vanilla/TestReRenderAll';
+import { TestInjectStyles } from './TestInjectStyles';
+import { TestMount } from './TestMount';
+import { TestRemoveAll } from './TestRemoveAll';
+import { TestReRenderAll } from './TestReRenderAll';
+
+export const wcTest = (): Promise<HTMLElement | null> => {
+  const testOptions = getTestOptions();
+  const { test, fixtureName, rendererName } = testOptions;
+
+  return loadTestData('wc', fixtureName, rendererName).then(({ fixture, renderer }) => {
+    const selectors: string[] = fixture.selectors;
+    const fixtureTree = fixture.tree;
+
+    const treeBuilder = new RandomTree<RandomSelectorTreeNode>();
+    const tree = treeBuilder.fromFixture(fixtureTree);
+    const { wcRenderer } = testOptions;
+
+    let testFn;
+
+    const isVanilla = wcRenderer === 'vanilla';
+
+    if (test === 'inject-styles') {
+      testFn = isVanilla ? testInjectStyles : TestInjectStyles;
+    } else if (test === 'mount') {
+      testFn = isVanilla ? testMount : TestMount;
+    } else if (test === 're-render-all') {
+      testFn = isVanilla ? testReRenderAll : TestReRenderAll;
+    } else if (test === 'remove-all') {
+      testFn = isVanilla ? testRemoveAll : TestRemoveAll;
+    }
+
+    if (testFn) {
+      if (isVanilla) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return testFn(tree, selectors, renderer, testOptions);
+      } else {
+        /* eslint-disable */
+        // @ts-ignore
+        return new testFn(tree, selectors, renderer, testOptions);
+        /* eslint-enable */
+      }
+    }
+
+    return null;
+  });
+};

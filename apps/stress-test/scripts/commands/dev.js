@@ -11,15 +11,6 @@ const webpackConfig = require('../../webpack/webpack.config');
  */
 
 const command = 'dev';
-<<<<<<< HEAD
-=======
-exports.command = command;
-exports.describe = 'Run the app in development mode';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
->>>>>>> a82206debc (stress-test: add build commands)
 
 const shutdownServer = () => {
   if (server) {
@@ -47,7 +38,6 @@ const runServer = async argv => {
   await server.start();
 };
 
-<<<<<<< HEAD
 /** @type {import('yargs').CommandModule} */
 const api = {
   command,
@@ -61,8 +51,3 @@ const api = {
 };
 
 module.exports = api;
-=======
-exports.handler = argv => {
-  runServer(argv);
-};
->>>>>>> a82206debc (stress-test: add build commands)

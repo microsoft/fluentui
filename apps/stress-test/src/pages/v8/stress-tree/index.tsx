@@ -1,18 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { initializeIcons, DefaultButton, ThemeProvider } from '@fluentui/react';
-import { ReactSelectorTreeComponentRenderer } from '../../../shared/react/ReactSelectorTree';
-import { TestTree } from '../../../shared/react/TestTree';
+import { initializeIcons, ThemeProvider } from '@fluentui/react';
+import { getTestOptions } from '../../../shared/utils/testOptions';
+import { ReactTest } from '../../../shared/react/ReactTest';
 
 initializeIcons();
 
-const componentRenderer: ReactSelectorTreeComponentRenderer = (node, depth, index) => {
-  return <DefaultButton text={`${node.value.name}, ${index}`} />;
-};
+const { fixtureName, rendererName } = getTestOptions();
 
 ReactDOM.render(
   <ThemeProvider>
-    <TestTree componentRenderer={componentRenderer} />
+    <ReactTest target="v8" fixtureName={fixtureName} rendererName={rendererName} />
   </ThemeProvider>,
   document.getElementById('root'),
 );

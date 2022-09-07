@@ -1,32 +1,16 @@
 import * as React from 'react';
+import { styleInjector } from '../css/injectStyles';
+import { performanceMeasure } from '../utils/performanceMeasure';
 import { ReactSelectorTree } from './ReactSelectorTree';
 import type { TestProps } from './types';
 
-export const TestInjectStyles: React.FC<TestProps> = ({
-  minBreadth,
-  maxBreadth,
-  minDepth,
-  maxDepth,
-  seed,
-  componentRenderer,
-}) => {
-  const [injectStyles, setInjectStyles] = React.useState(false);
-
+export const TestInjectStyles: React.FC<TestProps> = ({ tree, selectors, componentRenderer }) => {
   React.useEffect(() => {
     setTimeout(() => {
-      setInjectStyles(true);
+      styleInjector(selectors);
+      performanceMeasure();
     }, 2000);
   }, []);
 
-  return (
-    <ReactSelectorTree
-      minBreadth={minBreadth}
-      maxBreadth={maxBreadth}
-      minDepth={minDepth}
-      maxDepth={maxDepth}
-      seed={seed}
-      componentRenderer={componentRenderer}
-      injectStyles={injectStyles}
-    />
-  );
+  return <ReactSelectorTree tree={tree} componentRenderer={componentRenderer} />;
 };

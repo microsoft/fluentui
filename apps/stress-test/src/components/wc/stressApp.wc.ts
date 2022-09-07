@@ -1,6 +1,6 @@
 import { FASTElement, customElement, attr, html, css, repeat, ValueConverter } from '@microsoft/fast-element';
-import { getTestParams } from '../../shared/testParams';
-import { performanceMeasure } from '../../shared/performanceMeasure';
+import { getTestOptions } from '../../shared/utils/testOptions';
+import { performanceMeasure } from '../../shared/utils/performanceMeasure';
 import { StressComponent } from './stressComponent.wc';
 
 const styles = css`
@@ -43,7 +43,7 @@ export class StressApp extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    const { test, numStartNodes, numAddNodes, numRemoveNodes } = getTestParams();
+    const { test, numStartNodes, numAddNodes, numRemoveNodes } = getTestOptions();
 
     if (test === 'prop-update') {
       setTimeout(() => {
@@ -53,12 +53,12 @@ export class StressApp extends FASTElement {
     } else if (test === 'add-node') {
       setTimeout(() => {
         performanceMeasure('stress', 'start');
-        this.numchildren = numStartNodes + numAddNodes;
+        this.numchildren = Number(numStartNodes) + Number(numAddNodes);
       }, 2000);
     } else if (test === 'remove-node') {
       setTimeout(() => {
         performanceMeasure('stress', 'start');
-        this.numchildren = numStartNodes - numRemoveNodes;
+        this.numchildren = Number(numStartNodes) - Number(numRemoveNodes);
       }, 2000);
     }
   }

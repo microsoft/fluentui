@@ -1,4 +1,4 @@
-import { random, Random } from '../random';
+import { random, Random } from '../utils/random';
 
 export const defaultSelectorTypes = [
   'class',

@@ -1,6 +1,5 @@
 // Inspired by: https://github.com/nolanlawson/shadow-selector-benchmark
-
-import { random } from '../random';
+import { random } from '../utils/random';
 
 const colors = [
   'aliceblue',
@@ -206,3 +205,7 @@ export function injectGlobalCss(css?: string) {
   performance.measure('fluent-inject-global-css', 'fluent-inject-global-css-start');
   return style;
 }
+
+export const styleInjector = (selectors: string[]): HTMLStyleElement => {
+  return injectGlobalCss(randomCssFromSelectors(selectors));
+};

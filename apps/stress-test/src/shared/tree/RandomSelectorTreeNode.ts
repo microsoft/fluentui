@@ -1,6 +1,6 @@
 import { RandomSelector } from '../css/RandomSelector';
 import { TreeNode, TreeNodeCreateCallback } from './RandomTree';
-import { random } from '../random';
+import { random } from '../utils/random';
 
 export type Attribute = {
   key: string;
@@ -15,6 +15,8 @@ export type RandomSelectorTreeNode = {
   siblings: string[];
   pseudos: string[];
 };
+
+export type SelectorTreeNode = TreeNode<RandomSelectorTreeNode>;
 
 const { coin, choice } = random();
 const randomSelector = new RandomSelector();

@@ -1,21 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
-import { ReactSelectorTreeComponentRenderer } from '../../../shared/react/ReactSelectorTree';
-import { TestTree } from '../../../shared/react/TestTree';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { ReactTest } from '../../../shared/react/ReactTest';
+import { getTestOptions } from '../../../shared/utils/testOptions';
 
-const componentRenderer: ReactSelectorTreeComponentRenderer = (node, depth, index) => {
-  return (
-    <Button>
-      {node.value.name}, {index}
-    </Button>
-  );
-};
+const { fixtureName, rendererName } = getTestOptions();
 
 ReactDOM.render(
   <FluentProvider theme={webLightTheme}>
-    <TestTree componentRenderer={componentRenderer} />
+    <ReactTest target="v9" fixtureName={fixtureName} rendererName={rendererName} />
   </FluentProvider>,
   document.getElementById('root'),
 );

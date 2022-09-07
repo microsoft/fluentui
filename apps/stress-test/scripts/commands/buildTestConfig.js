@@ -2,8 +2,6 @@ const fs = require('fs-extra');
 const path = require('path');
 const { getConfigDir, getResultsDir, ensureClean } = require('../utils/paths');
 const configureYargs = require('../utils/configureYargs');
-const getScenarioConfig = require('../utils/getScenarioConfig');
-const processOptions = require('../utils/processOptions');
 const querystring = require('querystring');
 
 /**
@@ -15,6 +13,8 @@ const querystring = require('querystring');
  * @property {number} sampleSize
  * @property {string[]} targets
  * @property {number} port
+ * @property {TestOptions} testOptions
+ * @property {string} renderer
  */
 
 /**
@@ -23,21 +23,11 @@ const querystring = require('querystring');
  * @property {string} resultsFile - Path to where test results should be written.
  */
 
-<<<<<<< HEAD
 /**
  * @typedef {Record.<string, any>} TestOptions
  */
 
 const command = 'build-test-config';
-=======
-const command = 'build-test-config';
-exports.command = command;
-exports.describe = 'Builds test configuration files.';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
 
 /**
  * @function buildTestConfig
@@ -45,8 +35,7 @@ exports.builder = yargs => {
  * @returns {ConfigResult[]} Paths to generated config files
  */
 const buildTestConfig = options => {
-  const { scenario, browsers, testCases, sampleSize, targets, sizes, port } = options;
-  const config = getScenarioConfig(scenario);
+  const { scenario, browsers, testCases, sampleSize, targets, sizes, port, testOptions, renderer } = options;
   const configDir = getConfigDir(scenario);
   ensureClean(configDir);
 
@@ -55,7 +44,17 @@ const buildTestConfig = options => {
   for (const browser of browsers) {
     for (const testCase of testCases) {
       for (const size of sizes) {
-        const json = makeConfigJson(scenario, browser, testCase, sampleSize, targets, size, config.sizes[size], port);
+        const json = makeConfigJson(
+          scenario,
+          browser,
+          testCase,
+          sampleSize,
+          targets,
+          size,
+          testOptions,
+          port,
+          renderer,
+        );
         const configName = [browser, testCase, size].join('.') + '.json';
         const configPath = path.join(configDir, configName);
         fs.writeFileSync(configPath, json, { encoding: 'utf8' });
@@ -83,17 +82,13 @@ const buildTestConfig = options => {
  * @param {string} testCase
  * @param {number} sampleSize
  * @param {string[]} targets
-<<<<<<< HEAD
  * @param {string} size
  * @param {TestOptions} testOptions
  * @param {number} port
-=======
- * @param {string[]} size
- * @param {TestOptions} testOptions
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
+ * @param {string} renderer
  * @returns {string} Stringified JSON
  */
-const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, testOptions, port) => {
+const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, testOptions, port, renderer) => {
   const baseUrl = `http://localhost:${port}`;
   const json = {
     $schema: 'https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json',
@@ -112,11 +107,16 @@ const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, 
         ],
 
         expand: targets.map(target => {
-          const params = querystring.stringify({ test: testCase, ...testOptions });
+          const params = querystring.stringify({
+            test: testCase,
+            fixtureName: `${size}_1`,
+            rendererName: renderer,
+            ...testOptions,
+          });
 
           return {
             name: `${target} - ${testCase} - ${size}`,
-            url: `${baseUrl}/${target}/${scenario}/?${params}`,
+            url: `${baseUrl}/${target}/?${params}`,
           };
         }),
       },
@@ -126,7 +126,6 @@ const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, 
   return JSON.stringify(json, null, 4);
 };
 
-<<<<<<< HEAD
 /** @type {import('yargs').CommandModule} */
 const api = {
   command,
@@ -138,9 +137,7 @@ const api = {
    * @param {CLIBuildTestConfigOptions} argv
    */
   handler: argv => {
-    const options = processOptions(argv);
-    // @ts-ignore
-    buildTestConfig(options);
+    buildTestConfig(argv);
   },
 };
 
@@ -148,15 +145,3 @@ module.exports = {
   ...api,
   buildTestConfig,
 };
-=======
-/**
- *
- * @param {CLIBuildTestConfigOptions} argv
- */
-exports.handler = argv => {
-  const options = processOptions(argv);
-  buildTestConfig(options);
-};
-
-exports.buildTestConfig = buildTestConfig;
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
