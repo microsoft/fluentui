@@ -7,8 +7,14 @@ import { ChatDensity } from './chatDensity';
 import { ChatMessageLayout } from './ChatMessage';
 
 export interface ChatMessageContentOwnProps {
+  /** A message can format the badge to appear at the start or the end of the message. */
+  badgePosition?: 'start' | 'end';
   /** Chat density. */
   density?: ChatDensity;
+  /** Indicates whether the message is in a failed state. */
+  failed?: boolean;
+  /** Indicates whether parent ChatMessage has badge. */
+  hasBadge?: boolean;
   /** Indicates whether message belongs to the current user. */
   mine?: boolean;
   /** A message can render with different layouts. */
@@ -16,7 +22,9 @@ export interface ChatMessageContentOwnProps {
 }
 export interface ChatMessageContentProps extends ChatMessageContentOwnProps, BoxProps {}
 
-export type ChatMessageContentStylesProps = Required<Pick<ChatMessageContentOwnProps, 'density' | 'mine'>> & {
+export type ChatMessageContentStylesProps = Required<
+  Pick<ChatMessageContentOwnProps, 'badgePosition' | 'density' | 'failed' | 'hasBadge' | 'mine'>
+> & {
   layout: ChatMessageLayout;
 };
 export const chatMessageContentClassName = 'ui-chat__messagecontent';
@@ -34,10 +42,13 @@ export const ChatMessageContent = compose<
   className: chatMessageContentClassName,
   displayName: 'ChatMessageContent',
   handledProps: ['density', 'mine', 'unstable_layout'],
-  mapPropsToStylesProps: ({ density, mine, unstable_layout }) => ({
+  mapPropsToStylesProps: ({ badgePosition, density, failed, hasBadge, mine, unstable_layout }) => ({
+    badgePosition,
     density,
-    mine,
+    failed,
+    hasBadge,
     layout: unstable_layout,
+    mine,
   }),
   overrideStyles: true,
   shorthandConfig: { mappedProp: 'content' },
@@ -45,7 +56,10 @@ export const ChatMessageContent = compose<
 
 ChatMessageContent.propTypes = {
   ...commonPropTypes.createCommon(),
+  badgePosition: PropTypes.oneOf(['start', 'end']),
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
+  failed: PropTypes.bool,
+  hasBadge: PropTypes.bool,
   mine: PropTypes.bool,
   unstable_layout: PropTypes.oneOf(['default', 'refresh']),
 };
