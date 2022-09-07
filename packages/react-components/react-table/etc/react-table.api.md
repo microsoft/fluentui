@@ -68,29 +68,7 @@ export interface RowState<TItem> {
 }
 
 // @public (undocumented)
-export interface SelectionState {
-    allRowsSelected: boolean;
-    clearRows: () => void;
-    deselectRow: (rowId: RowId) => void;
-    isRowSelected: (rowId: RowId) => boolean;
-    selectedRows: RowId[];
-    selectRow: (rowId: RowId) => void;
-    someRowsSelected: boolean;
-    toggleAllRows: () => void;
-    toggleRow: (rowId: RowId) => void;
-}
-
-// @public (undocumented)
 export type SortDirection = 'ascending' | 'descending';
-
-// @public (undocumented)
-export interface SortState {
-    getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
-    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
-    sortColumn: ColumnId | undefined;
-    sortDirection: SortDirection;
-    toggleColumnSort: (columnId: ColumnId) => void;
-}
 
 // @public
 export const Table: ForwardRefComponent<TableProps>;
@@ -286,9 +264,31 @@ export type TableSelectionCellSlots = {
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<TableCellState, 'media'> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'>;
 
 // @public (undocumented)
+export interface TableSelectionState {
+    allRowsSelected: boolean;
+    clearRows: () => void;
+    deselectRow: (rowId: RowId) => void;
+    isRowSelected: (rowId: RowId) => boolean;
+    selectedRows: RowId[];
+    selectRow: (rowId: RowId) => void;
+    someRowsSelected: boolean;
+    toggleAllRows: () => void;
+    toggleRow: (rowId: RowId) => void;
+}
+
+// @public (undocumented)
 export type TableSlots = {
     root: Slot<'table', 'div'>;
 };
+
+// @public (undocumented)
+export interface TableSortState {
+    getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
+    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
+    sortColumn: ColumnId | undefined;
+    sortDirection: SortDirection;
+    toggleColumnSort: (columnId: ColumnId) => void;
+}
 
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;

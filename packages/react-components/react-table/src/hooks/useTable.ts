@@ -1,5 +1,12 @@
 import * as React from 'react';
-import type { UseTableOptions, TableState, RowState, SelectionState, SortState, GetRowIdInternal } from './types';
+import type {
+  UseTableOptions,
+  TableState,
+  RowState,
+  TableSelectionState,
+  TableSortState,
+  GetRowIdInternal,
+} from './types';
 import { useSelection } from './useSelection';
 import { useSort } from './useSort';
 
@@ -30,7 +37,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     defaultSortState,
     onSortChange,
   });
-  const sortState: SortState = React.useMemo(
+  const sortState: TableSortState = React.useMemo(
     () => ({
       sortColumn,
       sortDirection,
@@ -60,7 +67,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     onSelectionChange,
   });
 
-  const selectionState: SelectionState = React.useMemo(
+  const selectionState: TableSelectionState = React.useMemo(
     () => ({
       isRowSelected,
       clearRows,

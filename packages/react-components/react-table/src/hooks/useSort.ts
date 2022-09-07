@@ -1,20 +1,20 @@
 import { SortDirection } from '../components/Table/Table.types';
 import { useControllableState } from '@fluentui/react-utilities';
-import type { ColumnDefinition, ColumnId, OnSortChangeCallback, SortStateInternal } from './types';
+import type { ColumnDefinition, ColumnId, OnSortChangeCallback, TableSortStateInternal } from './types';
 
-interface SortState {
+interface TableSortState {
   sortDirection: SortDirection;
   sortColumn: ColumnId | undefined;
 }
 
 interface UseSortOptions<TItem> {
   columns: ColumnDefinition<TItem>[];
-  sortState?: SortState;
-  defaultSortState?: SortState;
+  sortState?: TableSortState;
+  defaultSortState?: TableSortState;
   onSortChange?: OnSortChangeCallback;
 }
 
-export function useSort<TItem>(options: UseSortOptions<TItem>): SortStateInternal<TItem> {
+export function useSort<TItem>(options: UseSortOptions<TItem>): TableSortStateInternal<TItem> {
   const { columns, sortState, defaultSortState, onSortChange } = options;
 
   const [sorted, setSorted] = useControllableState({
@@ -42,7 +42,7 @@ export function useSort<TItem>(options: UseSortOptions<TItem>): SortStateInterna
     });
   };
 
-  const setColumnSort: SortStateInternal<TItem>['setColumnSort'] = (nextSortColumn, nextSortDirection) => {
+  const setColumnSort: TableSortStateInternal<TItem>['setColumnSort'] = (nextSortColumn, nextSortDirection) => {
     const newState = { sortColumn: nextSortColumn, sortDirection: nextSortDirection };
     onSortChange?.(newState);
     setSorted(newState);
@@ -59,7 +59,7 @@ export function useSort<TItem>(options: UseSortOptions<TItem>): SortStateInterna
       return sortColumnDef.compare(a, b) * mod;
     });
 
-  const getSortDirection: SortStateInternal<TItem>['getSortDirection'] = (columnId: ColumnId) => {
+  const getSortDirection: TableSortStateInternal<TItem>['getSortDirection'] = (columnId: ColumnId) => {
     return sortColumn === columnId ? sortDirection : undefined;
   };
 

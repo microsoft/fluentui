@@ -14,10 +14,10 @@ export interface ColumnDefinition<TItem> {
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,
-  state: { selection: SelectionState; sort: SortState },
+  state: { selection: TableSelectionState; sort: TableSortState },
 ) => TRowState;
 
-export interface SortStateInternal<TItem> {
+export interface TableSortStateInternal<TItem> {
   sortDirection: SortDirection;
   sortColumn: ColumnId | undefined;
   setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
@@ -67,7 +67,7 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
   rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }
 
-export interface SelectionStateInternal {
+export interface TableSelectionStateInternal {
   clearRows: () => void;
   deselectRow: (rowId: RowId) => void;
   selectRow: (rowId: RowId) => void;
@@ -79,7 +79,7 @@ export interface SelectionStateInternal {
   someRowsSelected: boolean;
 }
 
-export interface SortState {
+export interface TableSortState {
   /**
    * Current sort direction
    */
@@ -103,7 +103,7 @@ export interface SortState {
   getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
 }
 
-export interface SelectionState {
+export interface TableSelectionState {
   /**
    * Clears all selected rows
    */
@@ -162,9 +162,9 @@ export interface TableState<TItem, TRowState extends RowState<TItem> = RowState<
   /**
    * State and actions to manage row selection
    */
-  selection: SelectionState;
+  selection: TableSelectionState;
   /**
    * State and actions to manage row sorting
    */
-  sort: SortState;
+  sort: TableSortState;
 }

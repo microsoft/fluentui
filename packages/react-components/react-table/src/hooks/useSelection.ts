@@ -6,7 +6,7 @@ import type {
   OnSelectionChangeCallback,
   RowId,
   SelectionMode,
-  SelectionStateInternal,
+  TableSelectionStateInternal,
 } from './types';
 
 interface UseSelectionOptions<TItem> {
@@ -18,7 +18,7 @@ interface UseSelectionOptions<TItem> {
   onSelectionChange?: OnSelectionChangeCallback;
 }
 
-export function useSelection<TItem>(options: UseSelectionOptions<TItem>): SelectionStateInternal {
+export function useSelection<TItem>(options: UseSelectionOptions<TItem>): TableSelectionStateInternal {
   const { selectionMode, items, getRowId, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 
   const [selected, setSelected] = useControllableState({
@@ -36,28 +36,27 @@ export function useSelection<TItem>(options: UseSelectionOptions<TItem>): Select
     });
   }, [onSelectionChange, selectionMode, setSelected]);
 
-  const toggleAllRows: SelectionStateInternal['toggleAllRows'] = useEventCallback(() => {
+  const toggleAllRows: TableSelectionStateInternal['toggleAllRows'] = useEventCallback(() => {
     selectionManager.toggleAllItems(
       items.map((item, i) => getRowId(item, i)),
       selected,
     );
   });
 
-  const toggleRow: SelectionStateInternal['toggleRow'] = useEventCallback((rowId: RowId) =>
+  const toggleRow: TableSelectionStateInternal['toggleRow'] = useEventCallback((rowId: RowId) =>
     selectionManager.toggleItem(rowId, selected),
   );
 
-  const deselectRow: SelectionStateInternal['deselectRow'] = useEventCallback((rowId: RowId) =>
+  const deselectRow: TableSelectionStateInternal['deselectRow'] = useEventCallback((rowId: RowId) =>
     selectionManager.deselectItem(rowId, selected),
   );
 
-  const selectRow: SelectionStateInternal['selectRow'] = useEventCallback((rowId: RowId) =>
+  const selectRow: TableSelectionStateInternal['selectRow'] = useEventCallback((rowId: RowId) =>
     selectionManager.selectItem(rowId, selected),
   );
 
-  const isRowSelected: SelectionStateInternal['isRowSelected'] = useEventCallback((rowId: RowId) =>
-    selectionManager.isSelected(rowId, selected),
-  );
+  const isRowSelected: TableSelectionStateInternal['isRowSelected'] = (rowId: RowId) =>
+    selectionManager.isSelected(rowId, selected);
 
   return {
     someRowsSelected: selected.size > 0,
