@@ -545,7 +545,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   });
 
   const messageContent = createShorthand(ChatMessageContent, content, {
-    defaultProps: () => ({ attached, density, hasHeaderReactionGroup, mine }),
+    defaultProps: () => ({ density, unstable_layout: layout, mine }),
     overrideProps: predefinedProps => ({
       variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     }),
