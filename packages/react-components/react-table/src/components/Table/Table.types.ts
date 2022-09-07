@@ -21,7 +21,7 @@ export type TableContextValues = {
 /**
  * Table Props
  */
-export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue>;
+export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
 
 /**
  * State used in rendering Table
