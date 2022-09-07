@@ -17,7 +17,6 @@ const api = {
     configureYargs(command, yargs);
   },
   /**
-   *
    * @param {CLIServerOptions} argv
    */
   handler: argv => {

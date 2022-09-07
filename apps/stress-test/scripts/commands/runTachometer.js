@@ -12,12 +12,7 @@ const runTachometer = require('../utils/tachometer');
 
 const command = 'tachometer';
 
-// const run = async testConfigs => {
-//   await runTachometer(testConfigs);
-// };
-
 /**
- *
  * @param {CLITachometerOptions} argv
  */
 const handler = async argv => {

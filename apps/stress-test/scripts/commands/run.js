@@ -22,7 +22,6 @@ const { buildTestConfig } = require('./buildTestConfig');
 const command = 'run';
 
 /**
- *
  * @param {ConfigResult[]} testConfigs
  * @param {CLIServerOptions} options
  */
@@ -33,7 +32,6 @@ const run = async (testConfigs, options) => {
 };
 
 /**
- *
  * @param {CLIRunOptions} argv
  */
 const handler = argv => {
