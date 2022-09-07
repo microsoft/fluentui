@@ -2,7 +2,7 @@
   "name": "@fluentui/public-docsite-v9",
   "version": "1.0.0",
   "private": true,
-  "description": "A collection of examples demonstrating how to upgrade from v8 to v9",
+  "description": "Fluent UI React v9 documentation",
   "scripts": {
     "build": "just-scripts build",
     "build-storybook": "build-storybook -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
