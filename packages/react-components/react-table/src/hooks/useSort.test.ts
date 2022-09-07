@@ -3,21 +3,45 @@ import { ColumnDefinition } from './types';
 import { useSort } from './useSort';
 
 describe('useSort', () => {
+  it('should use default sort state', () => {
+    const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+    const { result } = renderHook(() =>
+      useSort({ columns: columnDefinition, defaultSortState: { sortColumn: 2, sortDirection: 'descending' } }),
+    );
+
+    expect(result.current.getSortDirection(2)).toBe('descending');
+    expect(result.current.sortColumn).toBe(2);
+  });
+
+  it('should use user sort state', () => {
+    const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+    const { result } = renderHook(() =>
+      useSort({ columns: columnDefinition, sortState: { sortColumn: 2, sortDirection: 'descending' } }),
+    );
+
+    expect(result.current.getSortDirection(2)).toBe('descending');
+    expect(result.current.sortColumn).toBe(2);
+  });
+
   describe('toggleColumnSort', () => {
     it('should sort a new column in ascending order', () => {
       const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
-      const { result } = renderHook(() => useSort({ columns: columnDefinition }));
+      const onSortChange = jest.fn();
+      const { result } = renderHook(() => useSort({ columns: columnDefinition, onSortChange }));
       act(() => {
         result.current.toggleColumnSort(1);
       });
 
       expect(result.current.sortColumn).toBe(1);
       expect(result.current.sortDirection).toBe('ascending');
+      expect(onSortChange).toHaveBeenCalledTimes(1);
+      expect(onSortChange).toHaveBeenCalledWith({ sortColumn: 1, sortDirection: 'ascending' });
     });
 
     it('should toggle sort direction on a column', () => {
       const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
-      const { result } = renderHook(() => useSort({ columns: columnDefinition }));
+      const onSortChange = jest.fn();
+      const { result } = renderHook(() => useSort({ columns: columnDefinition, onSortChange }));
       act(() => {
         result.current.toggleColumnSort(1);
       });
@@ -28,30 +52,38 @@ describe('useSort', () => {
 
       expect(result.current.sortColumn).toBe(1);
       expect(result.current.sortDirection).toBe('descending');
+      expect(onSortChange).toHaveBeenCalledTimes(2);
+      expect(onSortChange).toHaveBeenNthCalledWith(2, { sortColumn: 1, sortDirection: 'descending' });
     });
   });
 
   describe('setColumnSort', () => {
     it('should sort a column in ascending order', () => {
       const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
-      const { result } = renderHook(() => useSort({ columns: columnDefinition }));
+      const onSortChange = jest.fn();
+      const { result } = renderHook(() => useSort({ columns: columnDefinition, onSortChange }));
       act(() => {
         result.current.setColumnSort(1, 'ascending');
       });
 
       expect(result.current.sortColumn).toBe(1);
       expect(result.current.sortDirection).toBe('ascending');
+      expect(onSortChange).toHaveBeenCalledTimes(1);
+      expect(onSortChange).toHaveBeenCalledWith({ sortColumn: 1, sortDirection: 'ascending' });
     });
 
     it('should sort a column in descending order', () => {
       const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
-      const { result } = renderHook(() => useSort({ columns: columnDefinition }));
+      const onSortChange = jest.fn();
+      const { result } = renderHook(() => useSort({ columns: columnDefinition, onSortChange }));
       act(() => {
         result.current.setColumnSort(1, 'descending');
       });
 
       expect(result.current.sortColumn).toBe(1);
       expect(result.current.sortDirection).toBe('descending');
+      expect(onSortChange).toHaveBeenCalledTimes(1);
+      expect(onSortChange).toHaveBeenCalledWith({ sortColumn: 1, sortDirection: 'descending' });
     });
   });
 
