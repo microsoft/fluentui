@@ -111,6 +111,7 @@ There are 4 Media variants:
 
 - PersonaPresenceBadge
 - PersonaIcon
+  - PersonaIcon can only set the correct size (fontSize) when the icon is not sized. If the icon is sized, PersonaIcon only adds the context functionality.
 - PersonaAvatar
 - Image
 
@@ -239,7 +240,9 @@ export type PersonaIconSlots = {
  */
 export type PersonaIconProps = ComponentProps<PersonaIconSlots> & {
   /**
-   * Icon's size.
+   * Icon's fontSize.
+   *
+   * Note: That this will only work with icons that are not sized i.e. PersonCallRegular not PersonCall24Regular.
    */
   size?: 12 | 16 | 20 | 24 | 28 | 32 | 48;
 };
