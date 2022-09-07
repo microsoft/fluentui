@@ -8,7 +8,7 @@ As mentioned before, Fluent UI React v9 was designed to allow you to incremental
 You have a lot of flexibility on how you approach, plan, and execute moving to v9.
 
 This part of the guide will help you assess your project, choose your approach,
-and plan out an iterative cycle for a successful migrate.
+and plan out an iterative cycle for a successful migration.
 
 ## Assessing your application
 
@@ -24,7 +24,7 @@ You pass typical props and bind data from your components or application state.
 
 ```tsx
 <Button primary onClick={onStartMigration}>
-  Start migrate to version {version}
+  Start migration to version {version}
 </Button>
 ```
 
@@ -63,7 +63,7 @@ _Vertical_: migrating all the components in one part of your application.
 For example, migrating Button, Divider, Persona, and Link on a contact status side bar.
 This has the benefit that you can migrate one part of your application in isolation leaving the rest of the app unaffected.
 You can choose a non-critical part of your application to reduce risk of app-wide issues.
-It makes it easier to trace any issues caused by migrate.
+It makes it easier to trace any issues caused by migration.
 Vertical may allow you to find integration issues earlier as you are using multiple new components.
 
 You can also choose to migrate one component in one part of your application.
@@ -96,7 +96,7 @@ v0 will to some extent gradually converge its appearance. However, you might sti
 ### Manual changes, code mod scripts, or shims
 
 _Manual_: update each usage of Fluent React by hand.
-This is the brute force approach to migrate.
+This is the brute force approach to migration.
 It may be the best option especially for smaller projects.
 You may have a lot of variety in how you use components that preclude a search/replace or automated option.
 You may also have an existing wrapper around a component that allows you to migrate at a single code location.
@@ -105,7 +105,7 @@ how your code uses Fluent, and you can make incremental check-ins ensuring exist
 
 _Code mod_: author a script to update multiple locations in your code at once.
 You may be able to leverage existing scripts from previous migrations, from others who have migrated, or from the Fluent React team.
-If your codebase is very consistent in how it uses Fluent, this option can save a lot of extra effort over manual migrate.
+If your codebase is very consistent in how it uses Fluent, this option can save a lot of extra effort over manual migration.
 You can have code mods that add flighting logic around usage to have both v8/v0 and v9 available.
 The downside is that if your usage is complex or highly varied, authoring a code mod that covers all cases may be impractical.
 
@@ -140,13 +140,13 @@ Warning! Shims aren't free. You'll still need to modify code to migrate custom s
 
 If you have a large project with hundreds to thousands of Fluent component usages, we strongly recommend migrating horizontally. The Button component is a typical choice to migrate across the application.
 
-If your usage is mostly basic, we recommend authoring a code-mod to handle what would be too tedious with search & replace. Consider running code-mods to handle most cases and then do some manual migrate work to cover the rest.
+If your usage is mostly basic, we recommend authoring a code-mod to handle what would be too tedious with search & replace. Consider running code-mods to handle most cases and then do some manual migration work to cover the rest.
 
 ### Large with advanced usage
 
 If you have a large projects with thousands of Fluent component usages, a lot of advanced usage, and several resource constraints, we recommend creating an application-specific shim and permanent abstraction around the Fluent component.
 
-A permanent abstraction will give you a place to adapt for compatibility as you move from v8 props to v9 props. It will also be valuable with future migrations. v9 has a new hook-based composition model you can leverage to create a shim without introducing the extra virtual DOM elements of a wrapper. You can also introduce the flighting logic within your shim to be able to toggle the migrate on/off.
+A permanent abstraction will give you a place to adapt for compatibility as you move from v8 props to v9 props. It will also be valuable with future migrations. v9 has a new hook-based composition model you can leverage to create a shim without introducing the extra virtual DOM elements of a wrapper. You can also introduce the flighting logic within your shim to be able to toggle the migration on/off.
 
 You can consider code-mods to migrate the more basic usage, but will likely find too much variance to handle all the cases across your code.
 
@@ -156,7 +156,7 @@ If you have a subsystem of your application that is independent and similar to a
 
 ## Creating a plan
 
-We strongly recommend using a work item tracking system or Excel spreadsheet to plan out your migrate tasks.
+We strongly recommend using a work item tracking system or Excel spreadsheet to plan out your migration tasks.
 
 ### A plan for a plan
 
@@ -164,10 +164,10 @@ You should create and complete a set of planning tasks:
 
 1. Measure the current bundle size, render performance, and other metrics for later comparison.
 2. Determine the mechanism for how you will flight the migrated components to a subset of users.
-3. Decide on any pre-migrate improvements that you will make first to reduce migrate effort.
+3. Decide on any pre-migration improvements that you will make first to reduce migration effort.
 4. Determine what other constraints you have - maximum bundle size, performance bars, allowed style inconsistencies, etc.
 5. Assess the application and choose your approach.
-6. Choose a target deadline or milestone date for each phase of migrate.
+6. Choose a target deadline or milestone date for each phase of migration.
 
 ### Getting started tasks
 
@@ -180,7 +180,7 @@ You should plan a set of getting started tasks for migrating one component in on
 
 ### Iterative planning
 
-Plan a task or set of tasks to be able to 'rinse and repeat' each usage migrate.
+Plan a task or set of tasks to be able to 'rinse and repeat' each usage migration.
 
 - The type of tasks and their granularity will vary depending on your approach.
 - After migrating some instances, review how long each took and plan out the next set of tasks.
