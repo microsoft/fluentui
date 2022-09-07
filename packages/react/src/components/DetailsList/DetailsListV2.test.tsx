@@ -19,7 +19,7 @@ import type { IDetailsColumnProps } from './DetailsColumn';
 import type { IDetailsHeaderProps } from './DetailsHeader';
 import type { IColumn, IDetailsGroupDividerProps, IDetailsList } from './DetailsList.types';
 import type { IDetailsRowProps } from './DetailsRow';
-import { GroupedListV2 } from '../GroupedList/GroupedListV2';
+import { GroupedListV2_unstable as GroupedListV2 } from '../GroupedList/GroupedListV2';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {

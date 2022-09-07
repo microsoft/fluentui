@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { SelectionMode, Selection } from '../../Selection';
-import { GroupedListV2 } from './GroupedListV2';
+import { GroupedListV2_unstable as GroupedListV2 } from './GroupedListV2';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { List } from '../../List';
 import { GroupShowAll } from './GroupShowAll';
@@ -16,7 +16,7 @@ import type { IColumn } from '../DetailsList/DetailsList.types';
 describe('GroupedListV2', () => {
   isConformant({
     Component: GroupedListV2,
-    displayName: 'GroupedListV2',
+    displayName: 'GroupedListV2_unstable',
     componentPath: path.join(__dirname, 'GroupedListV2.ts'),
     requiredProps: {
       items: [],
