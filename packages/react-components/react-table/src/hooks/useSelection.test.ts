@@ -6,6 +6,22 @@ describe('useSelection', () => {
 
   const getRowId = (item: {}, index: number) => index;
 
+  it('should use default selected state', () => {
+    const { result } = renderHook(() =>
+      useSelection({ selectionMode: 'multiselect', items, getRowId, defaultSelectedItems: new Set([1]) }),
+    );
+
+    expect(Array.from(result.current.selectedRows)).toEqual([1]);
+  });
+
+  it('should use user selected state', () => {
+    const { result } = renderHook(() =>
+      useSelection({ selectionMode: 'multiselect', items, getRowId, selectedItems: new Set([1]) }),
+    );
+
+    expect(Array.from(result.current.selectedRows)).toEqual([1]);
+  });
+
   describe('multiselect', () => {
     it('should use custom row id', () => {
       const { result } = renderHook(() =>
@@ -24,17 +40,25 @@ describe('useSelection', () => {
 
     describe('toggleAllRows', () => {
       it('should select all rows', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleAllRows();
         });
         expect(result.current.selectedRows.size).toBe(items.length);
         expect(Array.from(result.current.selectedRows)).toEqual(items.map((_, i) => i));
+        expect(onSelectionChange).toHaveBeenCalledTimes(1);
+        expect(onSelectionChange).toHaveBeenCalledWith(new Set([0, 1, 2, 3]));
       });
 
       it('should deselect all rows', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleAllRows();
@@ -45,11 +69,16 @@ describe('useSelection', () => {
         });
 
         expect(result.current.selectedRows.size).toBe(0);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
     });
     describe('clearRows', () => {
       it('should clear selection', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleAllRows();
@@ -59,22 +88,32 @@ describe('useSelection', () => {
         });
 
         expect(result.current.selectedRows.size).toBe(0);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
     });
 
     describe('selectRow', () => {
       it('should select row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.selectRow(1);
         });
 
         expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(1);
+        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
 
       it('should select multiple rows', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.selectRow(1);
@@ -87,12 +126,17 @@ describe('useSelection', () => {
         expect(result.current.selectedRows.size).toBe(2);
         expect(result.current.selectedRows.has(1)).toBe(true);
         expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([1, 2]));
       });
     });
 
     describe('deselectRow', () => {
       it('should make row unselected', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.selectRow(1);
@@ -103,12 +147,17 @@ describe('useSelection', () => {
         });
 
         expect(result.current.selectedRows.size).toBe(0);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
     });
 
     describe('toggleRow', () => {
       it('should select unselected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleRow(1);
@@ -116,10 +165,15 @@ describe('useSelection', () => {
 
         expect(result.current.selectedRows.size).toBe(1);
         expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(1);
+        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
 
       it('should deselect selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleRow(1);
@@ -131,10 +185,15 @@ describe('useSelection', () => {
 
         expect(result.current.selectedRows.size).toBe(0);
         expect(result.current.selectedRows.has(1)).toBe(false);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
 
       it('should select another unselected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleRow(1);
@@ -147,6 +206,8 @@ describe('useSelection', () => {
         expect(result.current.selectedRows.size).toBe(2);
         expect(result.current.selectedRows.has(1)).toBe(true);
         expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([1, 2]));
       });
     });
 
@@ -208,26 +269,37 @@ describe('useSelection', () => {
   describe('single select', () => {
     describe('toggleAllRows', () => {
       it('should throw when not in production', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         expect(result.current.toggleAllRows).toThrowErrorMatchingInlineSnapshot(
           `"[react-table]: \`toggleAllItems\` should not be used in single selection mode"`,
         );
+        expect(onSelectionChange).toHaveBeenCalledTimes(0);
       });
 
       it('should be a noop in production', () => {
         const nodeEnv = (process.env.NODE_ENV = 'production');
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         result.current.toggleAllRows;
         expect(result.current.selectedRows.size).toBe(0);
+        expect(onSelectionChange).toHaveBeenCalledTimes(0);
 
         process.env.NODE_ENV = nodeEnv;
       });
     });
     describe('clearRows', () => {
       it('should clear selection', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.selectRow(1);
@@ -237,22 +309,32 @@ describe('useSelection', () => {
         });
 
         expect(result.current.selectedRows.size).toBe(0);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
     });
 
     describe('selectRow', () => {
       it('should select row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.selectRow(1);
         });
 
         expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(1);
+        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
 
       it('should select another row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.selectRow(1);
@@ -264,12 +346,17 @@ describe('useSelection', () => {
 
         expect(result.current.selectedRows.size).toBe(1);
         expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
       });
     });
 
     describe('deselectRow', () => {
       it('should make row unselected', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.selectRow(1);
@@ -280,12 +367,17 @@ describe('useSelection', () => {
         });
 
         expect(result.current.selectedRows.size).toBe(0);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
     });
 
     describe('toggleRow', () => {
       it('should select unselected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleRow(1);
@@ -293,10 +385,15 @@ describe('useSelection', () => {
 
         expect(result.current.selectedRows.size).toBe(1);
         expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(1);
+        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
 
       it('should deselect selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleRow(1);
@@ -308,10 +405,15 @@ describe('useSelection', () => {
 
         expect(result.current.selectedRows.size).toBe(1);
         expect(result.current.selectedRows.has(1)).toBe(false);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
       });
 
       it('should select another unselected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+        );
 
         act(() => {
           result.current.toggleRow(1);
@@ -324,6 +426,8 @@ describe('useSelection', () => {
         expect(result.current.selectedRows.size).toBe(1);
         expect(result.current.selectedRows.has(1)).toBe(false);
         expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
       });
     });
 
