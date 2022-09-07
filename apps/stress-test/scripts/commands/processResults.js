@@ -9,18 +9,11 @@ const { getResultsDir, readDirJson } = require('../utils/paths');
  */
 
 const command = 'process-results';
-exports.command = command;
-exports.describe = 'Processes test results for display with charts and graphs.';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
 
 /**
- *
  * @param {CLIProcessResultsOptions} argv
  */
-exports.handler = argv => {
+const handler = argv => {
   const { scenario } = argv;
 
   const resultsDir = getResultsDir(scenario);
@@ -54,3 +47,15 @@ exports.handler = argv => {
 
   fs.writeFileSync(path.join(resultsDir, 'processed-results.js'), js, { encoding: 'utf8' });
 };
+
+/** @type {import('yargs').CommandModule} */
+const api = {
+  command,
+  describe: 'Processes test results for display with charts and graphs.',
+  builder: yargs => {
+    configureYargs(command, yargs);
+  },
+  handler,
+};
+
+module.exports = api;

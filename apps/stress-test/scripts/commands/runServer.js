@@ -8,17 +8,21 @@ const { startServer } = require('../utils/server');
  */
 
 const command = 'serve';
-exports.command = command;
-exports.describe = 'Runs a test HTTP server.';
 
-exports.builder = yargs => {
-  configureYargs(command, yargs);
+/** @type {import('yargs').CommandModule} */
+const api = {
+  command,
+  describe: 'Runs a test HTTP server.',
+  builder: yargs => {
+    configureYargs(command, yargs);
+  },
+  /**
+   *
+   * @param {CLIServerOptions} argv
+   */
+  handler: argv => {
+    startServer(argv);
+  },
 };
 
-/**
- *
- * @param {CLIServerOptions} argv
- */
-exports.handler = argv => {
-  startServer(argv);
-};
+module.exports = api;

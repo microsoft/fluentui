@@ -22,7 +22,7 @@ The project is laid out with folders for each supported version of Fluent (`v8`,
 
 The `shared` folder is for utilities that are shared across Fluent versions.
 
-The `components` folder is also split by supported Fluent versions and is where compoenents that can be shared across test cases live.
+The `components` folder is also split by supported Fluent versions and is where components that can be shared across test cases live.
 
 The `benchmarks` folder houses Tachometer configurations and test results; and helper scripts for generating configurations and processing results.
 
@@ -48,7 +48,9 @@ The CLI is used to run tests and process the results of tests. The CLI handles c
 
 Invoke the CLI with
 
-    $ yarn workspace @fluentui/stress-test stress-test
+```shell
+$ yarn workspace @fluentui/stress-test stress-test
+```
 
 This will show the help documentation which will provide the details for each command. What follows is a high level overview of the CLI's features.
 
@@ -62,8 +64,10 @@ This will show the help documentation which will provide the details for each co
 
 ### Examples
 
-    # Run the "simple-stress" scenario with the "mount" and "prop-update" test cases against Firefox with small sizes and low sample size
-    $ yarn workspace @fluentui/stress-test stress-test run --scenario simple-stress --sample-size 2 --test-cases mount prop-update --browsers firefox --sizes xs s
+```shell
+# Run the "simple-stress" scenario with the "mount" and "prop-update" test cases against Firefox with small sizes and low sample size
+$ yarn workspace @fluentui/stress-test stress-test run --scenario simple-stress --sample-size 2 --test-cases mount prop-update --browsers firefox --sizes xs s
 
-    # Run the "simple-stress" scenario with the "mount" and "prop-update" test cases against the default browsers at the default sizes and sample size
-    $ yarn workspace @fluentui/stress-test stress-test run --scenario simple-stress --test-cases mount prop-update
+# Run the "simple-stress" scenario with the "mount" and "prop-update" test cases against the default browsers at the default sizes and sample size
+$ yarn workspace @fluentui/stress-test stress-test run --scenario simple-stress --test-cases mount prop-update
+```

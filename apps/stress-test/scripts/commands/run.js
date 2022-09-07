@@ -20,12 +20,6 @@ const { buildTestConfig } = require('./buildTestConfig');
  */
 
 const command = 'run';
-exports.command = command;
-exports.describe = 'Builds configs and runs stress testing.';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
 
 /**
  *
@@ -42,7 +36,7 @@ const run = async (testConfigs, options) => {
  *
  * @param {CLIRunOptions} argv
  */
-exports.handler = argv => {
+const handler = argv => {
   const options = processOptions(argv);
 
   const testConfigs = buildTestConfig(options);
@@ -54,3 +48,15 @@ exports.handler = argv => {
     }
   });
 };
+
+/** @type {import('yargs').CommandModule} */
+const api = {
+  command,
+  describe: 'Builds configs and runs stress testing.',
+  builder: yargs => {
+    configureYargs(command, yargs);
+  },
+  handler,
+};
+
+module.exports = api;

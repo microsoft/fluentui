@@ -24,12 +24,6 @@ const querystring = require('querystring');
  */
 
 const command = 'build-test-config';
-exports.command = command;
-exports.describe = 'Builds test configuration files.';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
 
 /**
  * @function buildTestConfig
@@ -112,13 +106,23 @@ const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, 
   return JSON.stringify(json, null, 4);
 };
 
-/**
- *
- * @param {CLIBuildTestConfigOptions} argv
- */
-exports.handler = argv => {
-  const options = processOptions(argv);
-  buildTestConfig(options);
+/** @type {import('yargs').CommandModule} */
+const api = {
+  command,
+  describe: 'Builds test configuration files.',
+  builder: yargs => {
+    configureYargs(command, yargs);
+  },
+  /**
+   * @param {CLIBuildTestConfigOptions} argv
+   */
+  handler: argv => {
+    const options = processOptions(argv);
+    buildTestConfig(options);
+  },
 };
 
-exports.buildTestConfig = buildTestConfig;
+module.exports = {
+  ...api,
+  buildTestConfig,
+};
