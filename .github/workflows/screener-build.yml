@@ -50,7 +50,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo
             });
-            console.log(labels);
+
             let foundLabel = labels.data.find((label) => {return label.name == 'Ready for VR'});
             if(foundLabel === undefined)
             core.exportVariable('SKIP_SCREENER', true);
