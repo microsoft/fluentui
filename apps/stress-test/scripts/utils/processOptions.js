@@ -1,8 +1,8 @@
 const getScenarioConfig = require('./getScenarioConfig');
 
 /**
- * @param {import('yargs').Options} parsedOptions
- * @returns {import('yargs').Options}
+ * @param {Object.<string, any>} parsedOptions
+ * @returns {Object.<string, any>}
  */
 const processOptions = parsedOptions => {
   if (parsedOptions.useConfig) {

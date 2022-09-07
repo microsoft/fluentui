@@ -8,8 +8,8 @@ const execAsync = promisify(exec);
 
 /**
  * @typedef {Object} CLIBuildOptions
- * @property {string} griffelMode
- * @property {string} mode
+ * @property {import('../../webpack/griffelConfig.js').GriffelMode} griffelMode
+ * @property {('development' | 'production' | 'none')} mode
  * @property {boolean} verbose
  * @property {boolean} buildDeps
  */
@@ -18,7 +18,7 @@ const command = 'build';
 
 /**
  * @param {CLIBuildOptions} argv
- * @returns {Promise}
+ * @returns {Promise<void>}
  */
 const run = async argv => {
   if (argv.buildDeps) {
@@ -31,42 +31,45 @@ const run = async argv => {
   }
 
   return new Promise((resolve, reject) => {
-    const config = webpackConfig(undefined, argv);
+    const config = webpackConfig(undefined, { griffelMode: argv.griffelMode, mode: argv.mode });
     webpack(config, (err, stats) => {
       if (err) {
         console.error(err.stack || err);
-        if (argv.verbose && err.details) {
-          console.error(err.details);
-        }
         return reject();
-      } else if (stats.hasErrors()) {
+      }
+
+      if (stats && stats.hasErrors()) {
         const { errors } = stats.toJson();
-        errors.forEach(error => {
-          console.error(error.message);
-          if (argv.verbose) {
-            error.details && console.error(error.details);
-            error.stack && console.error(error.stack);
-          }
-        });
+        errors &&
+          errors.forEach(error => {
+            console.error(error.message);
+            if (argv.verbose) {
+              error.details && console.error(error.details);
+              error.stack && console.error(error.stack);
+            }
+          });
 
         if (stats.hasWarnings()) {
           const { warnings } = stats.toJson();
-          warnings.forEach(warning => {
-            console.warn(warning.message);
-            if (argv.verbose) {
-              warning.details && console.warn(warning.details);
-              warning.stack && console.warn(warning.stack);
-            }
-          });
+          warnings &&
+            warnings.forEach(warning => {
+              console.warn(warning.message);
+              if (argv.verbose) {
+                warning.details && console.warn(warning.details);
+                warning.stack && console.warn(warning.stack);
+              }
+            });
         }
         return reject();
       }
 
-      console.log(
-        stats.toString({
-          colors: true, // Shows colors in the console
-        }),
-      );
+      if (stats) {
+        console.log(
+          stats.toString({
+            colors: true, // Shows colors in the console
+          }),
+        );
+      }
 
       resolve();
     });

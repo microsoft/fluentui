@@ -117,20 +117,53 @@ const configureYargs = (command, yargs) => {
   switch (command) {
     case 'build-test-config': {
       const {
-        'process-results': processResults,
-        verbose,
-        'build-deps': buildDeps,
-        'griffel-mode': griffelMode,
-        mode,
-        ...buildTestOptions
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        port,
       } = cliOptions;
-      configure(yargs, buildTestOptions);
+      configure(yargs, {
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        port,
+      });
       break;
     }
 
     case 'run': {
-      const { verbose, 'build-deps': buildDeps, 'griffel-mode': griffelMode, mode, ...runOptions } = cliOptions;
-      configure(yargs, runOptions);
+      const {
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        'process-results': processResults,
+        port,
+        root,
+      } = cliOptions;
+      configure(yargs, {
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        'process-results': processResults,
+        port,
+        root,
+      });
       break;
     }
 
