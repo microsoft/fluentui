@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir artifacts
+
       ###########################################
       # BROWSERSLIST_IGNORE_OLD_DATA = Prevents failures on CI when "caniuse-lite" becomes outdated
       # DEPLOYHOST = address of host for screener tests deployment
