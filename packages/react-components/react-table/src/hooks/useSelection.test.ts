@@ -8,7 +8,13 @@ describe('useSelection', () => {
 
   describe('multiselect', () => {
     it('should use custom row id', () => {
-      const { result } = renderHook(() => useSelection('multiselect', items, (item: { value: string }) => item.value));
+      const { result } = renderHook(() =>
+        useSelection({
+          selectionMode: 'multiselect',
+          items,
+          getRowId: (item: { value: string }) => item.value,
+        }),
+      );
       act(() => {
         result.current.toggleAllRows();
       });
@@ -18,7 +24,7 @@ describe('useSelection', () => {
 
     describe('toggleAllRows', () => {
       it('should select all rows', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleAllRows();
@@ -28,7 +34,7 @@ describe('useSelection', () => {
       });
 
       it('should deselect all rows', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleAllRows();
@@ -43,7 +49,7 @@ describe('useSelection', () => {
     });
     describe('clearRows', () => {
       it('should clear selection', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleAllRows();
@@ -58,7 +64,7 @@ describe('useSelection', () => {
 
     describe('selectRow', () => {
       it('should select row', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -68,7 +74,7 @@ describe('useSelection', () => {
       });
 
       it('should select multiple rows', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -86,7 +92,7 @@ describe('useSelection', () => {
 
     describe('deselectRow', () => {
       it('should make row unselected', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -102,7 +108,7 @@ describe('useSelection', () => {
 
     describe('toggleRow', () => {
       it('should select unselected row', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleRow(1);
@@ -113,7 +119,7 @@ describe('useSelection', () => {
       });
 
       it('should deselect selected row', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleRow(1);
@@ -128,7 +134,7 @@ describe('useSelection', () => {
       });
 
       it('should select another unselected row', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleRow(1);
@@ -146,7 +152,7 @@ describe('useSelection', () => {
 
     describe('allRowsSelected', () => {
       it('should return true if all rows are selected', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleAllRows();
@@ -156,14 +162,14 @@ describe('useSelection', () => {
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         expect(result.current.selectedRows.size).toBe(0);
         expect(result.current.allRowsSelected).toBe(false);
       });
 
       it('should return false if not all rows are selected', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.toggleAllRows();
@@ -180,7 +186,7 @@ describe('useSelection', () => {
 
     describe('someRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -191,7 +197,7 @@ describe('useSelection', () => {
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
 
         expect(result.current.selectedRows.size).toBe(0);
         expect(result.current.someRowsSelected).toBe(false);
@@ -202,7 +208,7 @@ describe('useSelection', () => {
   describe('single select', () => {
     describe('toggleAllRows', () => {
       it('should throw when not in production', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         expect(result.current.toggleAllRows).toThrowErrorMatchingInlineSnapshot(
           `"[react-table]: \`toggleAllItems\` should not be used in single selection mode"`,
@@ -211,7 +217,7 @@ describe('useSelection', () => {
 
       it('should be a noop in production', () => {
         const nodeEnv = (process.env.NODE_ENV = 'production');
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         result.current.toggleAllRows;
         expect(result.current.selectedRows.size).toBe(0);
@@ -221,7 +227,7 @@ describe('useSelection', () => {
     });
     describe('clearRows', () => {
       it('should clear selection', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -236,7 +242,7 @@ describe('useSelection', () => {
 
     describe('selectRow', () => {
       it('should select row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -246,7 +252,7 @@ describe('useSelection', () => {
       });
 
       it('should select another row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -263,7 +269,7 @@ describe('useSelection', () => {
 
     describe('deselectRow', () => {
       it('should make row unselected', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -279,7 +285,7 @@ describe('useSelection', () => {
 
     describe('toggleRow', () => {
       it('should select unselected row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.toggleRow(1);
@@ -290,7 +296,7 @@ describe('useSelection', () => {
       });
 
       it('should deselect selected row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.toggleRow(1);
@@ -305,7 +311,7 @@ describe('useSelection', () => {
       });
 
       it('should select another unselected row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.toggleRow(1);
@@ -323,7 +329,7 @@ describe('useSelection', () => {
 
     describe('allRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -334,7 +340,7 @@ describe('useSelection', () => {
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         expect(result.current.selectedRows.size).toBe(0);
         expect(result.current.allRowsSelected).toBe(false);
@@ -343,7 +349,7 @@ describe('useSelection', () => {
 
     describe('someRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         act(() => {
           result.current.selectRow(1);
@@ -354,7 +360,7 @@ describe('useSelection', () => {
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection('single', items, getRowId));
+        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
 
         expect(result.current.selectedRows.size).toBe(0);
         expect(result.current.someRowsSelected).toBe(false);

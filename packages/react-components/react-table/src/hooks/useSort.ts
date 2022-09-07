@@ -1,11 +1,29 @@
-import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
-import type { ColumnDefinition, ColumnId, SortStateInternal } from './types';
+import { useControllableState } from '@fluentui/react-utilities';
+import type { ColumnDefinition, ColumnId, OnSortChangeCallback, SortStateInternal } from './types';
 
-export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInternal<TItem> {
-  const [sorted, setSorted] = React.useState({
-    sortDirection: 'ascending' as SortDirection,
-    sortColumn: undefined as ColumnId | undefined,
+interface SortState {
+  sortDirection: SortDirection;
+  sortColumn: ColumnId | undefined;
+}
+
+interface UseSortOptions<TItem> {
+  columns: ColumnDefinition<TItem>[];
+  sortState?: SortState;
+  defaultSortState?: SortState;
+  onSortChange?: OnSortChangeCallback;
+}
+
+export function useSort<TItem>(options: UseSortOptions<TItem>): SortStateInternal<TItem> {
+  const { columns, sortState, defaultSortState, onSortChange } = options;
+
+  const [sorted, setSorted] = useControllableState({
+    initialState: {
+      sortDirection: 'ascending' as SortDirection,
+      sortColumn: undefined as ColumnId | undefined,
+    },
+    defaultState: defaultSortState,
+    state: sortState,
   });
 
   const { sortColumn, sortDirection } = sorted;
@@ -19,12 +37,15 @@ export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInt
         newState.sortDirection = 'ascending';
       }
 
+      onSortChange?.(newState);
       return newState;
     });
   };
 
   const setColumnSort: SortStateInternal<TItem>['setColumnSort'] = (nextSortColumn, nextSortDirection) => {
-    setSorted({ sortColumn: nextSortColumn, sortDirection: nextSortDirection });
+    const newState = { sortColumn: nextSortColumn, sortDirection: nextSortDirection };
+    onSortChange?.(newState);
+    setSorted(newState);
   };
 
   const sort = (items: TItem[]) =>

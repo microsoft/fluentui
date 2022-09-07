@@ -4,6 +4,8 @@ export type RowId = string | number;
 export type ColumnId = string | number;
 export type GetRowIdInternal<TItem> = (rowId: TItem, index: number) => RowId;
 export type SelectionMode = 'single' | 'multiselect';
+export type OnSelectionChangeCallback = (selectedItems: Set<RowId>) => void;
+export type OnSortChangeCallback = (state: { sortColumn: ColumnId | undefined; sortDirection: SortDirection }) => void;
 
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
@@ -31,6 +33,36 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
   selectionMode?: SelectionMode;
+  /**
+   * Used in uncontrolled mode to set initial selected rows on mount
+   */
+  defaultSelectedRows?: Set<RowId>;
+  /**
+   * Used to control row selection
+   */
+  selectedRows?: Set<RowId>;
+  /**
+   * Called when selection changes
+   */
+  onSelectionChange?: OnSelectionChangeCallback;
+  /**
+   * Used to control sorting
+   */
+  sortState?: {
+    sortColumn: ColumnId | undefined;
+    sortDirection: SortDirection;
+  };
+  /**
+   * Used in uncontrolled mode to set initial sort column and direction on mount
+   */
+  defaultSortState?: {
+    sortColumn: ColumnId | undefined;
+    sortDirection: SortDirection;
+  };
+  /**
+   * Called when sort changes
+   */
+  onSortChange?: OnSortChangeCallback;
   getRowId?: (item: TItem) => RowId;
   rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }

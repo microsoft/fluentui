@@ -11,6 +11,7 @@ import {
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
 import { useTable, ColumnDefinition, ColumnId } from '../../hooks';
+import { SortDirection } from '../../components/Table/Table.types';
 
 type FileCell = {
   label: string;
@@ -105,16 +106,19 @@ const columns: ColumnDefinition<Item>[] = [
   },
 ];
 
-export const Sort = () => {
+export const SortControlled = () => {
+  const [sortState, setSortState] = React.useState({
+    sortDirection: 'ascending' as SortDirection,
+    sortColumn: 'file' as ColumnId | undefined,
+  });
+
   const {
     rows,
     sort: { getSortDirection, toggleColumnSort },
-  } = useTable({ columns, items, defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } });
+  } = useTable({ columns, items, sortState, onSortChange: setSortState });
 
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => {
-      toggleColumnSort(columnId);
-    },
+    onClick: () => toggleColumnSort(columnId),
     sortDirection: getSortDirection(columnId),
   });
 

@@ -240,13 +240,7 @@ export type TablePrimaryCellSlots = {
 export type TablePrimaryCellState = ComponentState<TablePrimaryCellSlots>;
 
 // @public
-export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue> & {
-    onSortColumnChange?: (e: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, data: {
-        sortState: SortState_2;
-    }) => void;
-    sortState?: SortState_2;
-    defaultSortState?: SortState_2;
-};
+export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue>;
 
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
@@ -342,14 +336,26 @@ export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHe
 export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
     // (undocumented)
     columns: ColumnDefinition<TItem>[];
+    defaultSelectedRows?: Set<RowId>;
+    defaultSortState?: {
+        sortColumn: ColumnId | undefined;
+        sortDirection: SortDirection;
+    };
     // (undocumented)
     getRowId?: (item: TItem) => RowId;
     // (undocumented)
     items: TItem[];
+    onSelectionChange?: OnSelectionChangeCallback;
+    onSortChange?: OnSortChangeCallback;
     // (undocumented)
     rowEnhancer?: RowEnhancer<TItem, TRowState>;
+    selectedRows?: Set<RowId>;
     // (undocumented)
     selectionMode?: SelectionMode_2;
+    sortState?: {
+        sortColumn: ColumnId | undefined;
+        sortDirection: SortDirection;
+    };
 }
 
 // @public
