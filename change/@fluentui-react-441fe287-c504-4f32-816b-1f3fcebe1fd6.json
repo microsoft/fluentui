@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update basepicker styles to show ellipsis when placeholder is shown",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
