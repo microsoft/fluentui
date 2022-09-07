@@ -7,6 +7,11 @@ export type SelectionMode = 'single' | 'multiselect';
 export type OnSelectionChangeCallback = (selectedItems: Set<RowId>) => void;
 export type OnSortChangeCallback = (state: { sortColumn: ColumnId | undefined; sortDirection: SortDirection }) => void;
 
+export interface SortState {
+  sortColumn: ColumnId | undefined;
+  sortDirection: SortDirection;
+}
+
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
   compare?: (a: TItem, b: TItem) => number;
@@ -48,17 +53,11 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
   /**
    * Used to control sorting
    */
-  sortState?: {
-    sortColumn: ColumnId | undefined;
-    sortDirection: SortDirection;
-  };
+  sortState?: SortState;
   /**
    * Used in uncontrolled mode to set initial sort column and direction on mount
    */
-  defaultSortState?: {
-    sortColumn: ColumnId | undefined;
-    sortDirection: SortDirection;
-  };
+  defaultSortState?: SortState;
   /**
    * Called when sort changes
    */

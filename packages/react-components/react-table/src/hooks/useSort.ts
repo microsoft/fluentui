@@ -1,26 +1,20 @@
-import { SortDirection } from '../components/Table/Table.types';
 import { useControllableState } from '@fluentui/react-utilities';
-import type { ColumnDefinition, ColumnId, OnSortChangeCallback, TableSortStateInternal } from './types';
-
-interface TableSortState {
-  sortDirection: SortDirection;
-  sortColumn: ColumnId | undefined;
-}
+import type { ColumnDefinition, ColumnId, OnSortChangeCallback, SortState, TableSortStateInternal } from './types';
 
 interface UseSortOptions<TItem> {
   columns: ColumnDefinition<TItem>[];
-  sortState?: TableSortState;
-  defaultSortState?: TableSortState;
+  sortState?: SortState;
+  defaultSortState?: SortState;
   onSortChange?: OnSortChangeCallback;
 }
 
 export function useSort<TItem>(options: UseSortOptions<TItem>): TableSortStateInternal<TItem> {
   const { columns, sortState, defaultSortState, onSortChange } = options;
 
-  const [sorted, setSorted] = useControllableState({
+  const [sorted, setSorted] = useControllableState<SortState>({
     initialState: {
-      sortDirection: 'ascending' as SortDirection,
-      sortColumn: undefined as ColumnId | undefined,
+      sortDirection: 'ascending' as const,
+      sortColumn: undefined,
     },
     defaultState: defaultSortState,
     state: sortState,

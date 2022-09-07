@@ -337,10 +337,7 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
     // (undocumented)
     columns: ColumnDefinition<TItem>[];
     defaultSelectedRows?: Set<RowId>;
-    defaultSortState?: {
-        sortColumn: ColumnId | undefined;
-        sortDirection: SortDirection;
-    };
+    defaultSortState?: SortState;
     // (undocumented)
     getRowId?: (item: TItem) => RowId;
     // (undocumented)
@@ -352,10 +349,7 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
     selectedRows?: Set<RowId>;
     // (undocumented)
     selectionMode?: SelectionMode_2;
-    sortState?: {
-        sortColumn: ColumnId | undefined;
-        sortDirection: SortDirection;
-    };
+    sortState?: SortState;
 }
 
 // @public

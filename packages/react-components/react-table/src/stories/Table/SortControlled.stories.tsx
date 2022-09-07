@@ -10,8 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, ColumnId } from '../../hooks';
-import { SortDirection } from '../../components/Table/Table.types';
+import { useTable, ColumnDefinition, ColumnId, SortState } from '../../hooks';
 
 type FileCell = {
   label: string;
@@ -107,9 +106,9 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const SortControlled = () => {
-  const [sortState, setSortState] = React.useState({
-    sortDirection: 'ascending' as SortDirection,
-    sortColumn: 'file' as ColumnId | undefined,
+  const [sortState, setSortState] = React.useState<SortState>({
+    sortDirection: 'ascending' as const,
+    sortColumn: 'file',
   });
 
   const {
