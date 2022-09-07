@@ -15,12 +15,6 @@ const execAsync = promisify(exec);
  */
 
 const command = 'build';
-exports.command = command;
-exports.describe = 'Builds the application.';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
 
 /**
  * @param {CLIBuildOptions} argv
@@ -79,11 +73,21 @@ const run = async argv => {
   });
 };
 
-/**
- * @param {CLIBuildOptions} argv
- */
-exports.handler = argv => {
-  run(argv).then(() => {
-    console.log('Build complete!');
-  });
+/** @type {import('yargs').CommandModule} */
+const api = {
+  command,
+  describe: 'Builds the application.',
+  builder: yargs => {
+    configureYargs(command, yargs);
+  },
+  /**
+   * @param {CLIBuildOptions} argv
+   */
+  handler: argv => {
+    run(argv).then(() => {
+      console.log('Build complete!');
+    });
+  },
 };
+
+module.exports = api;

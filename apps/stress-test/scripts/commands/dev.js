@@ -11,12 +11,6 @@ const webpackConfig = require('../../webpack/webpack.config');
  */
 
 const command = 'dev';
-exports.command = command;
-exports.describe = 'Run the app in development mode';
-
-exports.builder = yargs => {
-  configureYargs(command, yargs);
-};
 
 const shutdownServer = () => {
   if (server) {
@@ -44,6 +38,16 @@ const runServer = async argv => {
   await server.start();
 };
 
-exports.handler = argv => {
-  runServer(argv);
+/** @type {import('yargs').CommandModule} */
+const api = {
+  command,
+  describe: 'Run the app in development mode',
+  builder: yargs => {
+    configureYargs(command, yargs);
+  },
+  handler: argv => {
+    runServer(argv);
+  },
 };
+
+module.exports = api;

@@ -1,7 +1,7 @@
 const { getBrowsers } = require('./getBrowsers');
 
 /**
- * @typedef {Object.<string, import('yargs').Options} YargsOptions
+ * @typedef {Object.<string, import('yargs').Options>} YargsOptions
  */
 
 const cliOptions = {
@@ -67,7 +67,6 @@ const cliOptions = {
 };
 
 /**
- *
  * @param {import('yargs').Argv} yargs
  * @param {YargsOptions} options
  */
@@ -111,7 +110,6 @@ const configure = (yargs, options) => {
 };
 
 /**
- *
  * @param {string} command
  * @param {import('yargs').Argv} yargs
  */
