@@ -183,12 +183,7 @@ describe('Dialog', () => {
           <DialogTrigger>
             <Button>Open dialog</Button>
           </DialogTrigger>
-          {/*
-              Cypress doesn't actually simulate a keyboard press.
-              Instead it fires a bunch of events manually to simulate keypress,
-              Which will not fire `cancel` event on `<dialog>`
-          */}
-          <DialogSurface as="div">
+          <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
