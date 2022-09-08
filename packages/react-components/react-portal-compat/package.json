@@ -15,6 +15,8 @@
     "build": "just-scripts build --module esm,cjs,amd",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint && just-scripts lint-imports",
     "test": "jest --passWithNoTests",
@@ -26,6 +28,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-components": "^9.2.0",
     "@fluentui/react-shared-contexts": "^9.0.0",
+    "@fluentui/react-tabster": "^9.1.0",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
