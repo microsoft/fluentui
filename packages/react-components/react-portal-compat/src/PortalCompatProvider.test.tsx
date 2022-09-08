@@ -64,24 +64,6 @@ describe('PortalCompatProvider', () => {
     expect(element.classList.length).toBe(0);
   });
 
-  it.only('adds focus-visible ponyfill to registered element', () => {
-    const element = document.createElement('div');
-    const button = document.createElement('button');
-    element.appendChild(button);
-
-    const { result } = renderHook(() => usePortalCompat(), {
-      wrapper: props => (
-        <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
-          <PortalCompatProvider>{props.children}</PortalCompatProvider>
-        </FluentProvider>
-      ),
-    });
-    result.current(element);
-
-    button.focus();
-    expect(button.classList).toMatchInlineSnapshot(`DOMTokenList {}`);
-  });
-
   it('during register adds only proper className', () => {
     const element = document.createElement('div');
     const { result } = renderHook(() => usePortalCompat(), {
