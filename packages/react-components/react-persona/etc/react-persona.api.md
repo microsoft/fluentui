@@ -14,8 +14,59 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
 
+// @public
+export const PersonaAvatar: ForwardRefComponent<PersonaAvatarProps>;
+
+// @public (undocumented)
+export const personaAvatarClassNames: SlotClassNames<PersonaAvatarSlots>;
+
+// @public
+export type PersonaAvatarProps = ComponentProps<PersonaAvatarSlots> & {};
+
+// @public (undocumented)
+export type PersonaAvatarSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type PersonaAvatarState = ComponentState<PersonaAvatarSlots>;
+
 // @public (undocumented)
 export const personaClassNames: SlotClassNames<PersonaSlots>;
+
+// @public
+export const PersonaIcon: ForwardRefComponent<PersonaIconProps>;
+
+// @public (undocumented)
+export const personaIconClassNames: SlotClassNames<PersonaIconSlots>;
+
+// @public
+export type PersonaIconProps = ComponentProps<PersonaIconSlots> & {};
+
+// @public (undocumented)
+export type PersonaIconSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type PersonaIconState = ComponentState<PersonaIconSlots>;
+
+// @public
+export const PersonaPresenceBadge: ForwardRefComponent<PersonaPresenceBadgeProps>;
+
+// @public (undocumented)
+export const personaPresenceBadgeClassNames: SlotClassNames<PersonaPresenceBadgeSlots>;
+
+// @public
+export type PersonaPresenceBadgeProps = ComponentProps<PersonaPresenceBadgeSlots> & {};
+
+// @public (undocumented)
+export type PersonaPresenceBadgeSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type PersonaPresenceBadgeState = ComponentState<PersonaPresenceBadgeSlots>;
 
 // @public
 export type PersonaProps = ComponentProps<PersonaSlots> & {};
@@ -32,7 +83,34 @@ export type PersonaState = ComponentState<PersonaSlots>;
 export const renderPersona_unstable: (state: PersonaState) => JSX.Element;
 
 // @public
+export const renderPersonaAvatar_unstable: (state: PersonaAvatarState) => JSX.Element;
+
+// @public
+export const renderPersonaIcon_unstable: (state: PersonaIconState) => JSX.Element;
+
+// @public
+export const renderPersonaPresenceBadge_unstable: (state: PersonaPresenceBadgeState) => JSX.Element;
+
+// @public
 export const usePersona_unstable: (props: PersonaProps, ref: React_2.Ref<HTMLElement>) => PersonaState;
+
+// @public
+export const usePersonaAvatar_unstable: (props: PersonaAvatarProps, ref: React_2.Ref<HTMLElement>) => PersonaAvatarState;
+
+// @public
+export const usePersonaAvatarStyles_unstable: (state: PersonaAvatarState) => PersonaAvatarState;
+
+// @public
+export const usePersonaIcon_unstable: (props: PersonaIconProps, ref: React_2.Ref<HTMLElement>) => PersonaIconState;
+
+// @public
+export const usePersonaIconStyles_unstable: (state: PersonaIconState) => PersonaIconState;
+
+// @public
+export const usePersonaPresenceBadge_unstable: (props: PersonaPresenceBadgeProps, ref: React_2.Ref<HTMLElement>) => PersonaPresenceBadgeState;
+
+// @public
+export const usePersonaPresenceBadgeStyles_unstable: (state: PersonaPresenceBadgeState) => PersonaPresenceBadgeState;
 
 // @public
 export const usePersonaStyles_unstable: (state: PersonaState) => PersonaState;
