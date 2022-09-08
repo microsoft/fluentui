@@ -1,5 +1,13 @@
 export { useTable } from './hooks';
-export type { UseTableOptions, SelectionState, SortState, ColumnDefinition, RowState, RowId, ColumnId } from './hooks';
+export type {
+  UseTableOptions,
+  TableSelectionState,
+  TableSortState,
+  ColumnDefinition,
+  RowState,
+  RowId,
+  ColumnId,
+} from './hooks';
 
 export {
   TableCell,

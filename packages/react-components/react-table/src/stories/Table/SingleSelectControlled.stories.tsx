@@ -9,8 +9,9 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, ColumnId } from '../../hooks';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
+import { useTable, ColumnDefinition, RowId } from '../../hooks';
+import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
   label: string;
@@ -81,56 +82,55 @@ const items: Item[] = [
 const columns: ColumnDefinition<Item>[] = [
   {
     columnId: 'file',
-    compare: (a, b) => {
-      return a.file.label.localeCompare(b.file.label);
-    },
   },
   {
     columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
   },
   {
     columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
   },
   {
     columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
   },
 ];
 
-export const Sort = () => {
-  const {
-    rows,
-    sort: { getSortDirection, toggleColumnSort },
-  } = useTable({ columns, items, defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } });
-
-  const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => {
-      toggleColumnSort(columnId);
-    },
-    sortDirection: getSortDirection(columnId),
+export const SingleSelectControlled = () => {
+  const [selectedRows, setSelectedRows] = React.useState(new Set<RowId>());
+  const { rows } = useTable({
+    columns,
+    items,
+    selectionMode: 'single',
+    selectedRows,
+    onSelectionChange: setSelectedRows,
+    rowEnhancer: (row, { selection }) => ({
+      ...row,
+      selected: selection.isRowSelected(row.rowId),
+      onClick: () => selection.toggleRow(row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          selection.toggleRow(row.rowId);
+        }
+      },
+    }),
   });
+  // eslint-disable-next-line deprecation/deprecation
+  const ref = useNavigationMode<HTMLDivElement>('row');
 
   return (
-    <Table sortable>
+    <Table ref={ref}>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
+          <TableSelectionCell type="radio" />
+          <TableHeaderCell>File</TableHeaderCell>
+          <TableHeaderCell>Author</TableHeaderCell>
+          <TableHeaderCell>Last updated</TableHeaderCell>
+          <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item }) => (
-          <TableRow key={item.file.label}>
+        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+            <TableSelectionCell type="radio" checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
