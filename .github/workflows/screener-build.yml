@@ -3,7 +3,7 @@ name: Screener build
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
 
