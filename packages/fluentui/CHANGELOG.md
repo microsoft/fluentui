@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixes
 - Allow React 17 in `peerDependencies` of all packages and bump react-is to 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
 - Fix `FocusTrapZone` to always remove `aria-hidden` on portal wrapper @yuanboxue-amber ([#24414](https://github.com/microsoft/fluentui/pull/24414))
+- Fix `FocusZone` to reset tabindex when focus is outside the zone with prop `shouldResetActiveElementWhenTabFromZone` @yuanboxue-amber ([#24463](https://github.com/microsoft/fluentui/pull/24463))
 - Change `useLayoutEffect` in `Dropdown` to `useIsomorphicLayoutEffect` @marwan38 ([#24559](https://github.com/microsoft/fluentui/pull/24559))
 
 ### Performance
