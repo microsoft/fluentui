@@ -31,9 +31,9 @@ The following table will help you navigate the 3 projects and understand their d
 
 [Fluent UI Insights](https://docs.microsoft.com/en-us/shows/fluent-ui-insights?utm_source=github) is a series that describes the design and decisions behind the Fluent UI design system.
 
-|                                                                                                                    EP01: Positioning                                                                                                                    |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://docs.microsoft.com/en-us/shows/fluent-ui-insights/fluent-ui-insights-positioning?utm_source=github" target="_blank"><img src="https://i.ytimg.com/vi_webp/yhzAn4A1gbk/mqdefault.webp" alt="Watch EP01: Positioning" width="240" /></a> |
+|                                                                                                            EP01: Positioning                                                                                                             |                                                                                                          EP02: Styling                                                                                                           |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://docs.microsoft.com/en-us/shows/fluent-ui-insights/fluent-ui-insights-positioning?utm_source=github" target="_blank"><img src="ghdocs/medias/fluentui-ep01-preview.gif" alt="Watch EP01: Positioning" width="240" /></a> | <a href="https://docs.microsoft.com/en-us/shows/fluent-ui-insights/fluent-ui-insights-styling?utm_source=github" target="_blank"><img src="ghdocs/medias/fluentui-ep02-preview.gif" alt="Watch EP02: Styling" width="240" /></a> |
 
 ## Licenses
 

@@ -1,10 +1,9 @@
 const execSync = require('child_process').execSync;
-const findGitRoot = require('./findGitRoot');
 
 /**
  * Returns SHA for the nth commit from a reference descending from the latest commit
  * @param {number} [n=1] nth commit from latest
- * @param {number} [ref=HEAD] The github ref/branch the filter
+ * @param {string} [ref=HEAD] The github ref/branch the filter
  * @returns - A git commit SHA
  */
 function getNthCommit(n = 1, ref = 'HEAD') {

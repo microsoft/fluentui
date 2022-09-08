@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Wrapping long text in Button components.",
+  "packageName": "@fluentui/react-button",
+  "email": "humberto_makoto@hotmail.com",
+  "dependentChangeType": "patch"
+}

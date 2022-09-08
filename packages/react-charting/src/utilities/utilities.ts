@@ -158,14 +158,28 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) 
  * @param {IXAxisParams} xAxisParams
  * @param {ITickParams} tickParams
  */
-export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
+export function createDateXAxis(
+  xAxisParams: IXAxisParams,
+  tickParams: ITickParams,
+  culture?: string,
+  options?: Intl.DateTimeFormatOptions,
+) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
+
+  if (culture && options) {
+    xAxis.tickFormat((domainValue: Date, _index: number) => {
+      return domainValue.toLocaleString(culture, options);
+    });
+  }
+
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
-  tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
+  if (culture === undefined) {
+    tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
+  }
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }

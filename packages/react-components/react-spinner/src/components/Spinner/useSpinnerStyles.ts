@@ -58,6 +58,7 @@ const useRootStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    lineHeight: '0',
     ...shorthands.gap('8px'),
   },
 
@@ -255,7 +256,7 @@ const useTrackStyles = makeStyles({
 const useLabelStyles = makeStyles({
   // style for label
   inverted: {
-    color: tokens.colorNeutralForegroundInvertedStatic,
+    color: 'rgba(255, 255, 255, 1)', // This is white alpha but the token is not exported
   },
 
   primary: {}, // no change
@@ -293,7 +294,7 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
-  const { labelPosition, size, appearance } = state;
+  const { labelPosition, size, appearance = 'primary' } = state;
   const rootStyles = useRootStyles();
   const spinnerStyles = useLoaderStyles();
   const labelStyles = useLabelStyles();
@@ -306,7 +307,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     (labelPosition === 'before' || labelPosition === 'after') && rootStyles.horizontal,
     state.root.className,
   );
-  if (state.spinner && appearance) {
+  if (state.spinner) {
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
       spinnerStyles.spinnerSVG,

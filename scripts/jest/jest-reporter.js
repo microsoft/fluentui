@@ -5,6 +5,10 @@ const { DefaultReporter } = require('@jest/reporters');
  * when there are no errors.
  */
 class JestReporter extends DefaultReporter {
+  /**
+   *
+   * @param  {ConstructorParameters<typeof DefaultReporter>} args
+   */
   constructor(...args) {
     super(...args);
 
@@ -18,6 +22,10 @@ class JestReporter extends DefaultReporter {
     };
   }
 
+  /**
+   *
+   * @param  {Parameters<DefaultReporter['printTestFileFailureMessage']>} args
+   */
   printTestFileFailureMessage(...args) {
     this._isLoggingError = true;
     super.printTestFileFailureMessage(...args);

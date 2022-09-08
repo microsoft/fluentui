@@ -745,7 +745,7 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
-    selectToRange(index: number, count: number, clearSelection?: boolean): void;
+    selectToRange?(index: number, count: number, clearSelection?: boolean): void;
     // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
@@ -759,7 +759,7 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     setModal?(isModal: boolean): void;
     // (undocumented)
-    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
+    setRangeSelected?(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)

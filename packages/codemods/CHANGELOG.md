@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Tue, 23 Aug 2022 07:22:49 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 16:36:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.4)
+
+Wed, 24 Aug 2022 16:36:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.3..@fluentui/codemods_v8.4.4)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
 
 ## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.3)
 

@@ -1,9 +1,9 @@
-// @ts-check
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
+
 const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
-const webpack = require('webpack');
 
 /**
  * Updates the given webpack config to include resolutions and other options for v8 packages.
@@ -20,7 +20,7 @@ module.exports = config => {
     ],
   };
 
-  config.module.rules.push(
+  config.module?.rules?.push(
     {
       test: /\.(ts|tsx)$/,
       use: [

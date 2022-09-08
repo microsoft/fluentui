@@ -99,6 +99,7 @@ export const SingleSelect = () => {
     columns,
     items,
     selectionMode: 'single',
+    defaultSelectedRows: new Set([1]),
     rowEnhancer: (row, { selection }) => ({
       ...row,
       selected: selection.isRowSelected(row.rowId),

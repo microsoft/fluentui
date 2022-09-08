@@ -1,10 +1,20 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { useModalAttributes } from '@fluentui/react-tabster';
-import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+import {
+  getNativeElementProps,
+  resolveShorthand,
+  useEventCallback,
+  useMergedRefs,
+  isResolvedShorthand,
+} from '@fluentui/react-utilities';
+import type {
+  DialogSurfaceElement,
+  DialogSurfaceElementIntersection,
+  DialogSurfaceProps,
+  DialogSurfaceState,
+} from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
-import { isEscapeKeyDismiss } from '../../utils';
-
+import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import { useModalAttributes } from '@fluentui/react-tabster';
 /**
  * Create the state required to render DialogSurface.
  *
@@ -16,39 +26,70 @@ import { isEscapeKeyDismiss } from '../../utils';
  */
 export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
+  const { backdrop, as } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
-  const { as = 'div' } = props;
 
-  const contentRef = useDialogContext_unstable(ctx => ctx.contentRef);
+  const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
+  const open = useDialogContext_unstable(ctx => ctx.open);
+  const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleID);
   const dialogBodyID = useDialogContext_unstable(ctx => ctx.dialogBodyID);
-  const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
+  const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
-  const { modalAttributes } = useModalAttributes({ trapFocus: modalType !== 'non-modal' });
-
-  const handleRootKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
-    props.onKeyDown?.(event);
-    if (isEscapeKeyDismiss(event, modalType)) {
-      requestOpenChange({ event, open: false, type: 'escapeKeyDown' });
-      event.preventDefault();
+  const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    if (isResolvedShorthand(props.backdrop)) {
+      props.backdrop.onClick?.(event);
+    }
+    if (modalType === 'modal' && !event.isDefaultPrevented()) {
+      requestOpenChange({
+        event,
+        open: false,
+        type: 'backdropClick',
+      });
     }
   });
 
+  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<DialogSurfaceElementIntersection>) => {
+    props.onKeyDown?.(event);
+
+    if (isEscapeKeyDismiss(event, modalType)) {
+      requestOpenChange({
+        event,
+        open: false,
+        type: 'escapeKeyDown',
+      });
+      if (isNestedDialog) {
+        // Escape keydown should be stopped to avoid closing multiple dialogs
+        event.stopPropagation();
+      }
+    }
+  });
+
+  const { modalAttributes } = useModalAttributes({ trapFocus: modalType !== 'non-modal' });
+
   return {
     components: {
+      backdrop: 'div',
       root: 'div',
     },
-    root: getNativeElementProps(as, {
-      ref: useMergedRefs(ref, contentRef),
-      'aria-modal': modalType !== 'non-modal',
-      'aria-describedby': dialogBodyID,
-      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+    backdrop: resolveShorthand(backdrop, {
+      required: open && modalType !== 'non-modal',
+      defaultProps: {
+        'aria-hidden': 'true',
+        onClick: handledBackdropClick,
+      },
+    }),
+    root: getNativeElementProps(as ?? 'div', {
       role: modalType === 'alert' ? 'alertdialog' : 'dialog',
       ...props,
       ...modalAttributes,
-      onKeyDown: handleRootKeyDown,
+      onKeyDown: handleKeyDown,
+      'aria-describedby': dialogBodyID,
+      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+      'aria-modal': modalType !== 'non-modal',
+      ref: useMergedRefs(ref, dialogRef) as React.Ref<DialogSurfaceElementIntersection>,
     }),
   };
 };

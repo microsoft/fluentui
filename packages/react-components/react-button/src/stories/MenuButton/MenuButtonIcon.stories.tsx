@@ -6,29 +6,12 @@ import {
   FilterFilled,
   FilterRegular,
 } from '@fluentui/react-icons';
-import {
-  makeStyles,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  Tooltip,
-} from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  longText: {
-    maxWidth: '380px',
-  },
-});
+import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger, Tooltip } from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const Filter = bundleIcon(FilterFilled, FilterRegular);
 
 export const Icon = () => {
-  const styles = useStyles();
-
   return (
     <>
       <Menu>
@@ -45,7 +28,7 @@ export const Icon = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton icon={<CalendarMonth />} menuIcon={<Filter />} className={styles.longText}>
+          <MenuButton icon={<CalendarMonth />} menuIcon={<Filter />}>
             With calendar icon and custom filter menu icon
           </MenuButton>
         </MenuTrigger>

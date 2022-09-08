@@ -3,7 +3,6 @@ import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { typographyStyles } from '@fluentui/react-theme';
-import { gridArea } from '../../utils/localShorthands';
 import { CLOSE_BUTTON_GRID_AREA, TITLE_GRID_AREA } from '../../contexts/constants';
 
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
@@ -17,7 +16,7 @@ export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
 const useStyles = makeStyles({
   root: {
     ...typographyStyles.subtitle1,
-    ...gridArea(TITLE_GRID_AREA),
+    ...shorthands.gridArea(TITLE_GRID_AREA),
   },
   rootWithoutCloseButton: {
     // ...shorthands.padding(DIALOG_CONTENT_PADDING, DIALOG_CONTENT_PADDING, '8px', DIALOG_CONTENT_PADDING),
@@ -30,7 +29,7 @@ const useStyles = makeStyles({
     lineHeight: '0',
     cursor: 'pointer',
     alignSelf: 'start',
-    ...gridArea(CLOSE_BUTTON_GRID_AREA),
+    ...shorthands.gridArea(CLOSE_BUTTON_GRID_AREA),
   },
   closeButtonFocusIndicator: createFocusOutlineStyle(),
   // TODO: this should be extracted to another package

@@ -12,7 +12,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
-export const useCheckedStyles = makeStyles({
+const useCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
@@ -144,7 +144,7 @@ export const useCheckedStyles = makeStyles({
   },
 });
 
-export const useDisabledStyles = makeStyles({
+const useDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,

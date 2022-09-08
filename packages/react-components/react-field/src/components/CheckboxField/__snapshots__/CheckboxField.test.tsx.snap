@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxField renders a default state 1`] = `
+<div>
+  <div
+    class="fui-CheckboxField"
+  >
+    <span
+      class="fui-Checkbox fui-CheckboxField__control"
+    >
+      <input
+        class="fui-Checkbox__input"
+        type="checkbox"
+      />
+      <div
+        aria-hidden="true"
+        class="fui-Checkbox__indicator"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 12 12"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 01-1.08.02L2.22 6.53a.75.75 0 011.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 011.06-.04z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <label
+        class="fui-Label fui-Checkbox__label"
+        for="checkbox-2"
+      >
+        Checkbox
+      </label>
+    </span>
+  </div>
+</div>
+`;

@@ -12,6 +12,9 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
+const buttonSpacingSmall = '3px';
+const buttonSpacingMedium = '5px';
+
 const useRootStyles = makeStyles({
   // Base styles
   base: {
@@ -22,11 +25,7 @@ const useRootStyles = makeStyles({
 
     ...shorthands.margin(0),
 
-    maxWidth: '280px',
-
     ...shorthands.overflow('hidden'),
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
 
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
@@ -170,21 +169,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
+    ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
-    height: '24px',
     minWidth: '64px',
 
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderRadius(buttonSpacingSmall),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
+    ...shorthands.padding(buttonSpacingMedium, tokens.spacingHorizontalM),
 
-    height: '32px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -194,9 +191,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalL),
 
-    height: '40px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),

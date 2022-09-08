@@ -1,5 +1,3 @@
-// @ts-check
-
 const { spawnSync } = require('child_process');
 const lernaBin = require.resolve('lerna/cli.js');
 const getAllPackageInfo = require('./getAllPackageInfo');
@@ -7,7 +5,6 @@ const os = require('os');
 
 const argv = process.argv.slice(2);
 
-// @ts-ignore
 if (require.main === module) {
   // Display a usage message when there are no projects specified
   if (argv.length < 2) {
@@ -58,6 +55,9 @@ function runTo(script, projects, rest) {
     }
   }
 
+  /**
+   * @type {string[]}
+   */
   const scopes = [];
   foundProjects.forEach(projectName => {
     // --scope limits build to a specified package
@@ -87,7 +87,7 @@ function runTo(script, projects, rest) {
   );
 
   if (result.status !== 0) {
-    process.exit(result.status);
+    process.exit(result.status ?? undefined);
   }
 }
 

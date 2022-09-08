@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted",
+  "packageName": "@fluentui/react-popover",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

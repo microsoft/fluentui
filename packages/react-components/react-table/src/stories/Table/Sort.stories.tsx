@@ -109,10 +109,12 @@ export const Sort = () => {
   const {
     rows,
     sort: { getSortDirection, toggleColumnSort },
-  } = useTable({ columns, items });
+  } = useTable({ columns, items, defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } });
 
-  const headerSortProps = (columnId: ColumnId) => () => ({
-    onClick: () => toggleColumnSort(columnId),
+  const headerSortProps = (columnId: ColumnId) => ({
+    onClick: () => {
+      toggleColumnSort(columnId);
+    },
     sortDirection: getSortDirection(columnId),
   });
 
