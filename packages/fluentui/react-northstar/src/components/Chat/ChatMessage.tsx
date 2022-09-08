@@ -17,6 +17,7 @@ import {
   useUnhandledProps,
   useMergedRefs,
   ForwardRefWithAs,
+  mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -67,6 +68,7 @@ import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
+import { ChatMessageTimestamp, ChatMessageTimestampProps } from './ChatMessageTimestamp';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -179,7 +181,7 @@ export interface ChatMessageProps
   readStatus?: ShorthandValue<ChatMessageReadStatusProps>;
 
   /** Timestamp of the message. */
-  timestamp?: ShorthandValue<TextProps>;
+  timestamp?: ShorthandValue<ChatMessageTimestampProps>;
 
   /** Positions an actionMenu slot in "fixed" mode. */
   unstable_overflow?: boolean;
@@ -539,14 +541,6 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     }),
   });
-  // Text.create(timestamp, {
-  //   defaultProps: () => ({
-  //     size: 'small',
-  //     styles: resolvedStyles.timestamp,
-  //     timestamp: true,
-  //     className: chatMessageSlotClassNames.timestamp,
-  //   }),
-  // });
 
   const messageContent = Box.create(content, {
     defaultProps: () => ({
