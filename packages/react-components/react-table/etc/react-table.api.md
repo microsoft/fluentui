@@ -218,7 +218,7 @@ export type TablePrimaryCellSlots = {
 export type TablePrimaryCellState = ComponentState<TablePrimaryCellSlots>;
 
 // @public
-export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue>;
+export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
 
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
