@@ -13,7 +13,7 @@ const mount = (element: JSX.Element) => {
   );
 };
 
-describe('Keyborg', () => {
+describe('PortalCompat', () => {
   const Example = () => {
     const registerPortal = usePortalCompat();
     const ref = React.useRef<HTMLDivElement>(null);
