@@ -28,11 +28,11 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-components": "^9.2.0",
     "@fluentui/react-shared-contexts": "^9.0.0",
-    "@fluentui/react-tabster": "^9.1.0",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/react-portal-compat-context": "^9.0.1",
+    "@fluentui/react-tabster": "^9.1.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
