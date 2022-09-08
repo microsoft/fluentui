@@ -12,10 +12,10 @@ jobs:
   determine-if-skipping:
     runs-on: 'ubuntu-latest'
     steps:
-      - name: Download environment variables artifact
+      - name: Download artifact to determine if skipping jobs
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: learn-github-actions.yml
+          workflow: screener-build.yml
           run_id: ${{github.event.workflow_run.id}}
           name: skip-screener
 
