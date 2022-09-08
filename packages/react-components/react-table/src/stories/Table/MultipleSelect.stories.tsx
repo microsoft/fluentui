@@ -95,29 +95,31 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const MultipleSelect = () => {
-  const {
-    rows,
-    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
-  } = useTable({
-    selection: useSelection({
-      items,
-      selectionMode: 'multiselect',
-      defaultSelectedItems: new Set([0, 1]),
-      getRowId: (item, index) => index,
-    }),
+  let tableState = useTable({
     columns,
     items,
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-      selected: selection.isRowSelected(row.rowId),
-    }),
   });
+
+  tableState = useSelection(tableState, {
+    selectionMode: 'multiselect',
+    defaultSelectedItems: new Set([0, 1]),
+  });
+
+  const {
+    rows: baseRows,
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+  } = tableState;
+
+  const rows = baseRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
 
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');

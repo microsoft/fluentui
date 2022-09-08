@@ -1,8 +1,16 @@
+import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
-import type { ColumnDefinition, ColumnId, OnSortChangeCallback, SortState, TableSortStateInternal } from './types';
+import type {
+  ColumnId,
+  OnSortChangeCallback,
+  RowEnhancer,
+  RowState,
+  SortState,
+  TableSortStateInternal,
+  TableState,
+} from './types';
 
-interface UseSortOptions<TItem> {
-  columns: ColumnDefinition<TItem>[];
+interface UseSortOptions {
   /**
    * Used to control sorting
    */
@@ -17,8 +25,10 @@ interface UseSortOptions<TItem> {
   onSortChange?: OnSortChangeCallback;
 }
 
-export function useSort<TItem>(options: UseSortOptions<TItem>): TableSortStateInternal<TItem> {
-  const { columns, sortState, defaultSortState, onSortChange } = options;
+const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
+export function useSort<TItem>(tableState: TableState<TItem>, options: UseSortOptions): TableState<TItem> {
+  const { columns, items, getRowId } = tableState;
+  const { sortState, defaultSortState, onSortChange } = options;
 
   const [sorted, setSorted] = useControllableState<SortState>({
     initialState: {
@@ -51,27 +61,39 @@ export function useSort<TItem>(options: UseSortOptions<TItem>): TableSortStateIn
     setSorted(newState);
   };
 
-  const sort = (items: TItem[]) =>
-    items.slice().sort((a, b) => {
-      const sortColumnDef = columns.find(column => column.columnId === sortColumn);
-      if (!sortColumnDef?.compare) {
-        return 0;
-      }
+  const sort = React.useCallback(
+    (itemsA: TItem[]) =>
+      itemsA.slice().sort((a, b) => {
+        const sortColumnDef = columns.find(column => column.columnId === sortColumn);
+        if (!sortColumnDef?.compare) {
+          return 0;
+        }
 
-      const mod = sortDirection === 'ascending' ? 1 : -1;
-      return sortColumnDef.compare(a, b) * mod;
-    });
+        const mod = sortDirection === 'ascending' ? 1 : -1;
+        return sortColumnDef.compare(a, b) * mod;
+      }),
+    [sortDirection, sortColumn, columns],
+  );
 
   const getSortDirection: TableSortStateInternal<TItem>['getSortDirection'] = (columnId: ColumnId) => {
     return sortColumn === columnId ? sortDirection : undefined;
   };
 
+  const rows = <TRowState extends RowState<TItem>>(
+    rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
+  ) => {
+    return sort(items).map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
+  };
+
   return {
-    sortColumn,
-    sortDirection,
-    sort,
-    setColumnSort,
-    toggleColumnSort,
-    getSortDirection,
+    ...tableState,
+    rows,
+    sort: {
+      sortColumn,
+      sortDirection,
+      setColumnSort,
+      toggleColumnSort,
+      getSortDirection,
+    },
   };
 }

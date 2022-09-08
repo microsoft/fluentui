@@ -106,14 +106,17 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const Sort = () => {
+  let tableState = useTable({
+    columns,
+    items,
+  });
+
+  tableState = useSort(tableState, { defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } });
+
   const {
     rows,
     sort: { getSortDirection, toggleColumnSort },
-  } = useTable({
-    columns,
-    items,
-    sort: useSort({ columns, defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
-  });
+  } = tableState;
 
   const headerSortProps = (columnId: ColumnId) => ({
     onClick: () => {
@@ -133,7 +136,7 @@ export const Sort = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item }) => (
+        {rows().map(({ item }) => (
           <TableRow key={item.file.label}>
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>

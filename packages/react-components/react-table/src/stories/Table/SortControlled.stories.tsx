@@ -111,10 +111,12 @@ export const SortControlled = () => {
     sortColumn: 'file',
   });
 
+  let tableState = useTable({ columns, items });
+  tableState = useSort(tableState, { sortState, onSortChange: setSortState });
   const {
     rows,
     sort: { getSortDirection, toggleColumnSort },
-  } = useTable({ columns, items, sort: useSort({ columns, sortState, onSortChange: setSortState }) });
+  } = tableState;
 
   const headerSortProps = (columnId: ColumnId) => ({
     onClick: () => toggleColumnSort(columnId),
@@ -132,7 +134,7 @@ export const SortControlled = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item }) => (
+        {rows().map(({ item }) => (
           <TableRow key={item.file.label}>
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>

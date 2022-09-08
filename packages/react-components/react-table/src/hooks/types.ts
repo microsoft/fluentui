@@ -19,7 +19,6 @@ export interface ColumnDefinition<TItem> {
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,
-  state: { selection: TableSelectionState; sort: TableSortState },
 ) => TRowState;
 
 export interface TableSortStateInternal<TItem> {
@@ -34,13 +33,12 @@ export interface TableSortStateInternal<TItem> {
   sort: (items: TItem[]) => TItem[];
 }
 
-export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
+export interface UseTableOptions<TItem> {
   selection?: TableSelectionStateInternal;
   sort?: TableSortStateInternal<TItem>;
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
   getRowId?: (item: TItem) => RowId;
-  rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }
 
 export interface TableSelectionStateInternal {
@@ -130,11 +128,22 @@ export interface RowState<TItem> {
   rowId: RowId;
 }
 
-export interface TableState<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
+export interface TableState<TItem> {
+  getRowId?: (item: TItem) => RowId;
+  /**
+   * Original user items
+   */
+  items: TItem[];
   /**
    * The row data for rendering
    */
-  rows: TRowState[];
+  rows: <TRowState extends RowState<TItem> = RowState<TItem>>(
+    rowEnhancer?: RowEnhancer<TItem, TRowState>,
+  ) => TRowState[];
+  /**
+   * Table columns
+   */
+  columns: ColumnDefinition<TItem>[];
   /**
    * State and actions to manage row selection
    */

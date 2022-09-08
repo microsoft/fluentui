@@ -95,26 +95,32 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const SingleSelect = () => {
-  const { rows } = useTable({
-    selection: useSelection({
-      items,
-      selectionMode: 'single',
-      defaultSelectedItems: new Set([1]),
-      getRowId: (item, index) => index,
-    }),
+  let tableState = useTable({
     columns,
     items,
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      selected: selection.isRowSelected(row.rowId),
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-    }),
   });
+
+  tableState = useSelection(tableState, {
+    selectionMode: 'single',
+    defaultSelectedItems: new Set([1]),
+  });
+
+  const {
+    rows: baseRows,
+    selection: { toggleRow, isRowSelected },
+  } = tableState;
+
+  const rows = baseRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
+
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
 

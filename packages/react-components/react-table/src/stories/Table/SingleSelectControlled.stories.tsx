@@ -96,28 +96,32 @@ const columns: ColumnDefinition<Item>[] = [
 
 export const SingleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(new Set<RowId>());
-  const { rows } = useTable({
+  let tableState = useTable({
     columns,
     items,
-    selection: useSelection({
-      items,
-      selectionMode: 'single',
-      defaultSelectedItems: new Set([1]),
-      getRowId: (item, index) => index,
-      selectedItems: selectedRows,
-      onSelectionChange: setSelectedRows,
-    }),
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      selected: selection.isRowSelected(row.rowId),
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-    }),
   });
+
+  tableState = useSelection(tableState, {
+    selectionMode: 'single',
+    selectedItems: selectedRows,
+    onSelectionChange: setSelectedRows,
+  });
+
+  const {
+    rows: baseRows,
+    selection: { toggleRow, isRowSelected },
+  } = tableState;
+
+  const rows = baseRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
 

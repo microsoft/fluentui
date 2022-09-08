@@ -1,17 +1,9 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { createSelectionManager } from './selectionManager';
-import type {
-  GetRowIdInternal,
-  OnSelectionChangeCallback,
-  RowId,
-  SelectionMode,
-  TableSelectionStateInternal,
-} from './types';
+import type { OnSelectionChangeCallback, RowId, SelectionMode, TableSelectionStateInternal, TableState } from './types';
 
 interface UseSelectionOptions<TItem> {
-  items: TItem[];
-  getRowId: GetRowIdInternal<TItem>;
   /**
    * Can be multi or single select
    */
@@ -30,8 +22,12 @@ interface UseSelectionOptions<TItem> {
   onSelectionChange?: OnSelectionChangeCallback;
 }
 
-export function useSelection<TItem>(options: UseSelectionOptions<TItem>): TableSelectionStateInternal {
-  const { selectionMode, items, getRowId, defaultSelectedItems, selectedItems, onSelectionChange } = options;
+export function useSelection<TItem>(
+  tableState: TableState<TItem>,
+  options: UseSelectionOptions<TItem>,
+): TableState<TItem> {
+  const { items, getRowId } = tableState;
+  const { selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 
   const [selected, setSelected] = useControllableState({
     initialState: new Set<RowId>(),
@@ -50,7 +46,7 @@ export function useSelection<TItem>(options: UseSelectionOptions<TItem>): TableS
 
   const toggleAllRows: TableSelectionStateInternal['toggleAllRows'] = useEventCallback(() => {
     selectionManager.toggleAllItems(
-      items.map((item, i) => getRowId(item, i)),
+      items.map((item, i) => getRowId?.(item) ?? i),
       selected,
     );
   });
@@ -71,14 +67,17 @@ export function useSelection<TItem>(options: UseSelectionOptions<TItem>): TableS
     selectionManager.isSelected(rowId, selected);
 
   return {
-    someRowsSelected: selected.size > 0,
-    allRowsSelected: selectionMode === 'single' ? selected.size > 0 : selected.size === items.length,
-    selectedRows: selected,
-    toggleRow,
-    toggleAllRows,
-    clearRows: selectionManager.clearItems,
-    deselectRow,
-    selectRow,
-    isRowSelected,
+    ...tableState,
+    selection: {
+      someRowsSelected: selected.size > 0,
+      allRowsSelected: selectionMode === 'single' ? selected.size > 0 : selected.size === items.length,
+      selectedRows: Array.from(selected),
+      toggleRow,
+      toggleAllRows,
+      clearRows: selectionManager.clearItems,
+      deselectRow,
+      selectRow,
+      isRowSelected,
+    },
   };
 }

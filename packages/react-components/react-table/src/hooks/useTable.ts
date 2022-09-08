@@ -1,16 +1,14 @@
-import * as React from 'react';
 import type {
   UseTableOptions,
   TableState,
   RowState,
-  TableSelectionState,
-  TableSortState,
-  GetRowIdInternal,
   TableSelectionStateInternal,
   TableSortStateInternal,
+  RowEnhancer,
 } from './types';
 
 const noop: () => void = () => undefined;
+const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
 const defaultSelectionState: TableSelectionStateInternal = {
   allRowsSelected: false,
   clearRows: noop,
@@ -32,33 +30,8 @@ const defaultSortState: TableSortStateInternal<unknown> = {
   toggleColumnSort: noop,
 };
 
-export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TItem>>(
-  options: UseTableOptions<TItem, TRowState>,
-): TableState<TItem, TRowState> {
-  const {
-    selection = defaultSelectionState,
-    sort: baseSort = defaultSortState as TableSortStateInternal<TItem>,
-    items: baseItems,
-    getRowId: getUserRowId = () => undefined,
-    rowEnhancer = (row: RowState<TItem>) => row as TRowState,
-  } = options;
-
-  const getRowId: GetRowIdInternal<TItem> = React.useCallback(
-    (item: TItem, index: number) => getUserRowId(item) ?? index,
-    [getUserRowId],
-  );
-
-  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = baseSort;
-  const sortState: TableSortState = React.useMemo(
-    () => ({
-      sortColumn,
-      sortDirection,
-      setColumnSort,
-      toggleColumnSort,
-      getSortDirection,
-    }),
-    [sortColumn, sortDirection, setColumnSort, toggleColumnSort, getSortDirection],
-  );
+export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TItem> {
+  const { items, getRowId, columns } = options;
 
   const {
     isRowSelected,
@@ -70,50 +43,27 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     someRowsSelected,
     selectRow,
     deselectRow,
-  } = selection;
+  } = defaultSelectionState;
 
-  const selectionState: TableSelectionState = React.useMemo(
-    () => ({
+  const rows = <TRowState extends RowState<TItem>>(rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>) =>
+    items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
+
+  return {
+    getRowId,
+    items,
+    columns,
+    rows,
+    selection: {
       isRowSelected,
-      clearRows,
-      deselectRow,
-      selectRow,
-      toggleAllRows,
       toggleRow,
+      toggleAllRows,
+      clearRows,
       selectedRows: Array.from(selectedRows),
       allRowsSelected,
       someRowsSelected,
-    }),
-    [
-      isRowSelected,
-      clearRows,
-      deselectRow,
       selectRow,
-      toggleAllRows,
-      toggleRow,
-      selectedRows,
-      allRowsSelected,
-      someRowsSelected,
-    ],
-  );
-
-  const rows = React.useMemo(
-    () =>
-      sort(baseItems).map((item, i) => {
-        return rowEnhancer(
-          {
-            item,
-            rowId: getRowId(item, i),
-          },
-          { selection: selectionState, sort: sortState },
-        );
-      }),
-    [baseItems, getRowId, sort, rowEnhancer, selectionState, sortState],
-  );
-
-  return {
-    rows,
-    selection: selectionState,
-    sort: sortState,
+      deselectRow,
+    },
+    sort: defaultSortState,
   };
 }
