@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
@@ -14,9 +13,12 @@ import {
   BODY_GRID_AREA,
   CLOSE_BUTTON_GRID_AREA,
 } from '../../contexts/constants';
+import { useDialogContext_unstable } from '../../contexts/dialogContext';
+import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
   root: 'fui-DialogSurface',
+  backdrop: 'fui-DialogSurface__backdrop',
 };
 
 /**
@@ -25,9 +27,6 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
 const useStyles = makeStyles({
   root: {
     position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
     width: '100%',
     height: 'fit-content',
     maxWidth: '600px',
@@ -59,6 +58,33 @@ const useStyles = makeStyles({
       `,
     },
   },
+  dialog: {
+    display: 'block',
+    position: 'fixed',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    width: 'fit-content',
+    height: 'fit-content',
+    backgroundColor: 'unset',
+    maxWidth: 'unset',
+    maxHeight: 'unset',
+    userSelect: 'unset',
+    visibility: 'unset',
+    ...shorthands.padding(0),
+    ...shorthands.margin('auto'),
+    ...shorthands.borderStyle('none'),
+    ...shorthands.overflow('unset'),
+  },
+  backdrop: {
+    position: 'fixed',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    ...shorthands.inset('0px'),
+  },
+  nestedDialogBackdrop: {
+    backgroundColor: 'transparent',
+  },
 });
 
 /**
@@ -66,6 +92,16 @@ const useStyles = makeStyles({
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogSurfaceClassNames.root, styles.root, state.root.className);
+  const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
+
+  state.root.className = mergeClasses(dialogSurfaceClassNames.root, styles.dialog, styles.root, state.root.className);
+  if (state.backdrop) {
+    state.backdrop.className = mergeClasses(
+      dialogSurfaceClassNames.backdrop,
+      styles.backdrop,
+      isNestedDialog && styles.nestedDialogBackdrop,
+      state.backdrop.className,
+    );
+  }
   return state;
 };

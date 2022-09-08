@@ -1,16 +1,8 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
-export type DialogSlots = {
-  /**
-   * Dimmed background of dialog.
-   * The default backdrop is rendered as a `<div>` with styling.
-   * This slot expects a `<div>` element which will replace the default backdrop.
-   * The backdrop should have `aria-hidden="true"`.
-   */
-  backdrop?: Slot<'div'>;
-};
+export type DialogSlots = {};
 
 export type DialogOpenChangeEvent = React.KeyboardEvent | React.MouseEvent;
 

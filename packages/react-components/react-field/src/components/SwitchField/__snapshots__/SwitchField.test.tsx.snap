@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwitchField renders a default state 1`] = `
+<div>
+  <div
+    class="fui-SwitchField"
+  >
+    <div
+      class="fui-Switch fui-SwitchField__control"
+    >
+      <input
+        class="fui-Switch__input"
+        role="switch"
+        type="checkbox"
+      />
+      <div
+        aria-hidden="true"
+        class="fui-Switch__indicator"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 2a8 8 0 100 16 8 8 0 000-16z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

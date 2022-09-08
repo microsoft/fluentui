@@ -1,16 +1,10 @@
 import * as React from 'react';
-import {
-  resolveShorthand,
-  useControllableState,
-  useEventCallback,
-  useId,
-  useIsomorphicLayoutEffect,
-} from '@fluentui/react-utilities';
-import { useFocusFinders } from '@fluentui/react-tabster';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { normalizeDefaultPrevented, useDisableBodyScroll } from '../../utils';
+import { useControllableState, useEventCallback, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
-import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
+import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
+import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
+import { useHasParentContext } from '@fluentui/react-context-selector';
+import { DialogContext } from '../../contexts/dialogContext';
 
 /**
  * Create the state required to render Dialog.
@@ -21,7 +15,7 @@ import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } 
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, backdrop, modalType = 'modal', onOpenChange } = props;
+  const { children, modalType = 'modal', onOpenChange } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -31,32 +25,17 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     initialState: false,
   });
 
-  const backdropShorthand = resolveShorthand(backdrop, {
-    required: modalType !== 'non-modal',
-    defaultProps: {
-      'aria-hidden': 'true',
-    },
-  });
-
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
-    const isDefaultPrevented = normalizeDefaultPrevented(data.event);
     onOpenChange?.(data.event, data);
 
     // if user prevents default then do not change state value
     // otherwise updates state value and trigger reference to the element that caused the opening
-    if (!isDefaultPrevented()) {
-      (triggerRef as React.MutableRefObject<HTMLElement | null>).current =
-        !open && data.open ? (data.event.currentTarget as HTMLElement) : null;
+    if (!data.event.isDefaultPrevented()) {
       setOpen(data.open);
     }
   });
 
-  const { contentRef, triggerRef } = useFocusFirstElement({
-    open,
-    modalType,
-    requestOpenChange,
-  });
-
+  const focusRef = useFocusFirstElement(open, modalType);
   const disableBodyScroll = useDisableBodyScroll();
   const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
 
@@ -66,30 +45,19 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   }, [disableBodyScroll, isBodyScrollLocked]);
 
-  const handleBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    backdropShorthand?.onClick?.(event);
-    if (isBackdropClickDismiss(event, modalType)) {
-      requestOpenChange({ event, open: false, type: 'backdropClick' });
-    }
-  });
-
   return {
     components: {
       backdrop: 'div',
     },
-    backdrop: backdropShorthand && {
-      ...backdropShorthand,
-      onClick: handleBackdropClick,
-    },
     open,
     modalType,
-    content,
+    content: open ? content : null,
     trigger,
-    triggerRef,
-    contentRef,
     requestOpenChange,
     dialogBodyID: useId('dialog-body-'),
     dialogTitleID: useId('dialog-title-'),
+    isNestedDialog: useHasParentContext(DialogContext),
+    dialogRef: focusRef,
   };
 };
 
@@ -120,59 +88,4 @@ function childrenToTriggerAndContent(
     default:
       return [undefined, undefined];
   }
-}
-
-/**
- * Checks is click event is a proper backdrop click dismiss
- */
-function isBackdropClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
-  const isDefaultPrevented = normalizeDefaultPrevented(event);
-  return type === 'modal' && !isDefaultPrevented();
-}
-
-/**
- * Focus first element on content when dialog is opened,
- * in case there's no focusable element, then a eventlistener is added to document
- * to ensure Escape keydown functionality
- */
-function useFocusFirstElement({
-  open,
-  requestOpenChange,
-  modalType,
-}: Pick<DialogState, 'open' | 'requestOpenChange' | 'modalType'>) {
-  const { findFirstFocusable } = useFocusFinders();
-  const { targetDocument } = useFluent_unstable();
-  const contentRef = React.useRef<HTMLElement>(null);
-  const triggerRef = React.useRef<HTMLElement>(null);
-
-  React.useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const element = contentRef.current && findFirstFocusable(contentRef.current);
-    if (element) {
-      element.focus();
-      // NOTE: if it's non-modal global listener to escape is necessary
-      if (modalType !== 'non-modal') {
-        return;
-      }
-    } else {
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn('A Dialog should have at least one focusable element inside DialogSurface');
-      }
-    }
-
-    if (triggerRef.current && targetDocument) {
-      const trigger = triggerRef.current;
-      // if the trigger is still the active element, the default behavior is to return focus to document.body,
-      // which can be achived by blurring
-      if (targetDocument.activeElement === trigger) {
-        trigger.blur();
-      }
-    }
-  }, [findFirstFocusable, requestOpenChange, open, modalType, targetDocument]);
-
-  return { contentRef, triggerRef };
 }

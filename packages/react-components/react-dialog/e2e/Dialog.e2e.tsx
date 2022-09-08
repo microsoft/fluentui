@@ -6,7 +6,12 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
-import { dialogSurfaceSelector, dialogTriggerCloseSelector, dialogTriggerOpenSelector } from './selectors';
+import {
+  dialogSurfaceSelector,
+  dialogTriggerCloseId,
+  dialogTriggerCloseSelector,
+  dialogTriggerOpenSelector,
+} from './selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -76,7 +81,7 @@ describe('Dialog', () => {
           </DialogBody>
           <DialogActions>
             <DialogTrigger>
-              <Button id="close-btn" appearance="secondary">
+              <Button id={dialogTriggerCloseId} appearance="secondary">
                 Close
               </Button>
             </DialogTrigger>
@@ -122,7 +127,7 @@ describe('Dialog', () => {
           </DialogBody>
           <DialogActions>
             <DialogTrigger>
-              <Button id="close-btn" appearance="secondary">
+              <Button id={dialogTriggerCloseId} appearance="secondary">
                 Close
               </Button>
             </DialogTrigger>
@@ -134,6 +139,42 @@ describe('Dialog', () => {
     cy.get(dialogTriggerOpenSelector).click();
     cy.get(dialogTriggerCloseSelector).click();
     cy.get(dialogTriggerOpenSelector).should('be.focused');
+  });
+  it('should allow change of focus on open', () => {
+    const CustomFocusedElementOnOpen = () => {
+      const buttonRef = React.useRef<HTMLButtonElement>(null);
+      const [open, setOpen] = React.useState(false);
+      React.useEffect(() => {
+        if (open && buttonRef.current) {
+          buttonRef.current.focus();
+        }
+      }, [open]);
+      return (
+        <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
+          <DialogTrigger>
+            <Button>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>This dialog focus on the second button instead of the first</DialogBody>
+            <DialogActions position="start">
+              <Button appearance="outline">Third Action</Button>
+            </DialogActions>
+            <DialogActions position="end">
+              <DialogTrigger>
+                <Button id={dialogTriggerCloseId} ref={buttonRef} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>
+      );
+    };
+    mount(<CustomFocusedElementOnOpen />);
+    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerCloseSelector).should('be.focused');
   });
   describe('modalType = modal', () => {
     it('should close with escape keydown', () => {
