@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix greyed out legend key contrast ratio",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
