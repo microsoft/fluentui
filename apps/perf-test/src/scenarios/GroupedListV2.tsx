@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
-import { GroupedListV2, Selection, SelectionMode, DetailsRow, IGroup, IColumn } from '@fluentui/react';
+import {
+  GroupedListV2_unstable as GroupedListV2,
+  Selection,
+  SelectionMode,
+  DetailsRow,
+  IGroup,
+  IColumn,
+} from '@fluentui/react';
 
 const groupCount = 5;
 const groupDepth = 5;
