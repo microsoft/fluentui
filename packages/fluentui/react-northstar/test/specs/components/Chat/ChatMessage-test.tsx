@@ -4,6 +4,7 @@ import { ChatMessage } from 'src/components/Chat/ChatMessage';
 import { Text } from 'src/components/Text/Text';
 import { Box } from 'src/components/Box/Box';
 import { ChatMessageDetails } from 'src/components/Chat/ChatMessageDetails';
+import { ChatMessageTimestamp } from 'src/components/Chat/ChatMessageTimestamp';
 
 const chatMessageImplementsShorthandProp = implementsShorthandProp(ChatMessage);
 
@@ -17,7 +18,7 @@ describe('ChatMessage', () => {
   // Temporary disabled as implementsPopper() should be reimplemented
   // chatMessageImplementsShorthandProp('actionMenu', Menu, { implementsPopper: true });
   chatMessageImplementsShorthandProp('author', Text);
-  chatMessageImplementsShorthandProp('timestamp', Text);
+  chatMessageImplementsShorthandProp('timestamp', ChatMessageTimestamp);
   chatMessageImplementsShorthandProp('details', ChatMessageDetails);
   chatMessageImplementsShorthandProp('content', Box, { mapsValueToProp: 'children' });
 

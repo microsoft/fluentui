@@ -33,6 +33,7 @@ export { chatItemVariables as ChatItem } from './components/Chat/chatItemVariabl
 export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessageVariables';
 export { chatMessageDetailsVariables as ChatMessageDetails } from './components/Chat/chatMessageDetailsVariables';
 export { chatMessageReadStatusVariables as ChatMessageReadStatus } from './components/Chat/chatMessageReadStatusVariables';
+export { chatMessageTimestampVariables as ChatMessageTimestamp } from './components/Chat/chatMessageTimestampVariables';
 
 export { checkboxVariables as Checkbox } from './components/Checkbox/checkboxVariables';
 

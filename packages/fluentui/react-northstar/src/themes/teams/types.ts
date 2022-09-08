@@ -117,6 +117,7 @@ import { PillContentStylesProps } from '../../components/Pill/PillContent';
 import { PillGroupStylesProps } from '../../components/Pill/PillGroup';
 import { PillImageStylesProps } from '../../components/Pill/PillImage';
 import { PillIconStylesProps } from '../../components/Pill/PillIcon';
+import { ChatMessageTimestampStylesProps } from '../../components/Chat/ChatMessageTimestamp';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -147,6 +148,7 @@ export type TeamsThemeStylesProps = {
   ChatMessageDetails: ChatMessageDetailsStylesProps;
   ChatMessageHeader: ChatMessageHeaderStylesProps;
   ChatMessageReadStatus: ChatMessageReadStatusStylesProps;
+  ChatMessageTimestamp: ChatMessageTimestampStylesProps;
   CarouselNavigation: CarouselNavigationStylesProps;
   Checkbox: CheckboxStylesProps;
   Divider: DividerStylesProps;
