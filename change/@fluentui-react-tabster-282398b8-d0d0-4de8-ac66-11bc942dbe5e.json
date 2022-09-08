@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Remove provider classname from focus styles",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
