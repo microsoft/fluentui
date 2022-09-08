@@ -1,4 +1,4 @@
-import { FontWeights } from '@fluentui/react';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 import { IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 
 export const getHeatMapChartStyles = (props: IHeatMapChartStyleProps): IHeatMapChartStyles => {
