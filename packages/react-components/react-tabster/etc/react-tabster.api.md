@@ -9,6 +9,9 @@ import * as React_2 from 'react';
 import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
+// @internal (undocumented)
+export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
+
 // @public
 export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
 
