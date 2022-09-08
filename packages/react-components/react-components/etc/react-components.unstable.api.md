@@ -41,9 +41,15 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { CheckboxField } from '@fluentui/react-field';
+import { checkboxFieldClassNames } from '@fluentui/react-field';
+import { CheckboxFieldProps } from '@fluentui/react-field';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxField } from '@fluentui/react-field';
+import { comboboxFieldClassNames } from '@fluentui/react-field';
+import { ComboboxFieldProps } from '@fluentui/react-field';
 import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
 import { ComboboxOpenEvents } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
@@ -92,6 +98,14 @@ import { DropdownOpenEvents } from '@fluentui/react-combobox';
 import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
+import { FieldConfig } from '@fluentui/react-field';
+import { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
+import { FieldState } from '@fluentui/react-field';
+import { getFieldClassNames } from '@fluentui/react-field';
+import { InputField } from '@fluentui/react-field';
+import { inputFieldClassNames } from '@fluentui/react-field';
+import { InputFieldProps } from '@fluentui/react-field';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
 import { ListboxContextValues } from '@fluentui/react-combobox';
@@ -112,6 +126,9 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
+import { RadioGroupField } from '@fluentui/react-field';
+import { radioGroupFieldClassNames } from '@fluentui/react-field';
+import { RadioGroupFieldProps } from '@fluentui/react-field';
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
@@ -127,6 +144,7 @@ import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
 import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
 import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderField_unstable } from '@fluentui/react-field';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
@@ -143,10 +161,22 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
+import { SelectField } from '@fluentui/react-field';
+import { selectFieldClassNames } from '@fluentui/react-field';
+import { SelectFieldProps } from '@fluentui/react-field';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
 import { SelectState } from '@fluentui/react-select';
+import { SliderField } from '@fluentui/react-field';
+import { sliderFieldClassNames } from '@fluentui/react-field';
+import { SliderFieldProps } from '@fluentui/react-field';
 import { SortDirection } from '@fluentui/react-table';
+import { SpinButtonField } from '@fluentui/react-field';
+import { spinButtonFieldClassNames } from '@fluentui/react-field';
+import { SpinButtonFieldProps } from '@fluentui/react-field';
+import { SwitchField } from '@fluentui/react-field';
+import { switchFieldClassNames } from '@fluentui/react-field';
+import { SwitchFieldProps } from '@fluentui/react-field';
 import { Table } from '@fluentui/react-table';
 import { TableBody } from '@fluentui/react-table';
 import { tableBodyClassName } from '@fluentui/react-table';
@@ -199,6 +229,9 @@ import { TableSelectionCellSlots } from '@fluentui/react-table';
 import { TableSelectionCellState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
+import { TextareaField } from '@fluentui/react-field';
+import { textareaFieldClassNames } from '@fluentui/react-field';
+import { TextareaFieldProps } from '@fluentui/react-field';
 import { Toolbar } from '@fluentui/react-toolbar';
 import { ToolbarButton } from '@fluentui/react-toolbar';
 import { ToolbarButtonProps } from '@fluentui/react-toolbar';
@@ -243,6 +276,8 @@ import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useField_unstable } from '@fluentui/react-field';
+import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
 import { useListbox_unstable } from '@fluentui/react-combobox';
@@ -351,11 +386,23 @@ export { CardSlots }
 
 export { CardState }
 
+export { CheckboxField }
+
+export { checkboxFieldClassNames }
+
+export { CheckboxFieldProps }
+
 export { Combobox }
 
 export { comboboxClassNames }
 
 export { ComboboxContextValues }
+
+export { ComboboxField }
+
+export { comboboxFieldClassNames }
+
+export { ComboboxFieldProps }
 
 export { ComboboxOpenChangeData }
 
@@ -453,6 +500,22 @@ export { DropdownSlots }
 
 export { DropdownState }
 
+export { FieldConfig }
+
+export { FieldProps }
+
+export { FieldSlots }
+
+export { FieldState }
+
+export { getFieldClassNames }
+
+export { InputField }
+
+export { inputFieldClassNames }
+
+export { InputFieldProps }
+
 export { Listbox }
 
 export { listboxClassNames }
@@ -493,6 +556,12 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
+export { RadioGroupField }
+
+export { radioGroupFieldClassNames }
+
+export { RadioGroupFieldProps }
+
 export { renderAlert_unstable }
 
 export { renderAvatarGroup_unstable }
@@ -522,6 +591,8 @@ export { renderDialogTitle_unstable }
 export { renderDialogTrigger_unstable }
 
 export { renderDropdown_unstable }
+
+export { renderField_unstable }
 
 export { renderListbox_unstable }
 
@@ -555,13 +626,37 @@ export { Select }
 
 export { selectClassNames }
 
+export { SelectField }
+
+export { selectFieldClassNames }
+
+export { SelectFieldProps }
+
 export { SelectProps }
 
 export { SelectSlots }
 
 export { SelectState }
 
+export { SliderField }
+
+export { sliderFieldClassNames }
+
+export { SliderFieldProps }
+
 export { SortDirection }
+
+export { SpinButtonField }
+
+export { spinButtonFieldClassNames }
+
+export { SpinButtonFieldProps }
+
+export { SwitchField }
+
+export { switchFieldClassNames }
+
+export { SwitchFieldProps }
 
 export { Table }
 
@@ -667,6 +762,12 @@ export { TableSlots }
 
 export { TableState }
 
+export { TextareaField }
+
+export { textareaFieldClassNames }
+
+export { TextareaFieldProps }
+
 export { Toolbar }
 
 export { ToolbarButton }
@@ -754,6 +855,10 @@ export { useDialogTrigger_unstable }
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
+
+export { useField_unstable }
+
+export { useFieldStyles_unstable }
 
 export { useIsOverflowGroupVisible }
 
