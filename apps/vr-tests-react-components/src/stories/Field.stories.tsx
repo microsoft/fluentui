@@ -43,36 +43,6 @@ const AllFields = (
   );
 };
 
-const AllFieldsWithValidationMessage = (
-  props: Pick<InputFieldProps, 'orientation' | 'required' | 'label' | 'hint'>,
-) => {
-  type ValidationProps = Pick<InputFieldProps, 'validationState' | 'validationMessage' | 'validationMessageIcon'>;
-  const error: ValidationProps = { validationState: 'error', validationMessage: 'Error message' };
-  const warning: ValidationProps = { validationState: 'warning', validationMessage: 'Warning message' };
-  const success: ValidationProps = { validationState: 'success', validationMessage: 'Success message' };
-  const custom: ValidationProps = { validationMessage: 'Custom message', validationMessageIcon: <SparkleFilled /> };
-
-  return (
-    <div style={{ display: 'grid', rowGap: '12px' }}>
-      <CheckboxField label="Checkbox" {...error} {...props} />
-      <ComboboxField label="Combo box field" {...warning} {...props} />
-      <InputField label="Input field" {...success} {...props} />
-      <RadioGroupField label="Radio group field" {...custom} {...props}>
-        <Radio label="Option one" />
-        <Radio label="Option two" />
-        <Radio label="Option three" />
-      </RadioGroupField>
-      <SelectField label="Select field" {...error} {...props}>
-        <option>Option</option>
-      </SelectField>
-      <SliderField label="Slider field" {...warning} {...props} />
-      <SpinButtonField label="Spin button field" {...success} {...props} />
-      <SwitchField label="Switch field" {...custom} {...props} />
-      <TextareaField label="Textarea field" {...error} {...props} />
-    </div>
-  );
-};
-
 storiesOf('Field Converged', module)
   .addDecorator(story => (
     <div style={{ display: 'flex' }}>
@@ -83,19 +53,24 @@ storiesOf('Field Converged', module)
   ))
   .addStory('base', () => <AllFields />)
   .addStory('required', () => <AllFields required />)
-  .addStory('validationMessage', () => <AllFieldsWithValidationMessage />)
+  .addStory('validation:error', () => <AllFields validationState="error" validationMessage="Error message" />)
+  .addStory('validation:warning', () => <AllFields validationState="warning" validationMessage="Warning message" />)
+  .addStory('validation:success', () => <AllFields validationState="success" validationMessage="Success message" />)
+  .addStory('validation:custom', () => (
+    <AllFields validationMessageIcon={<SparkleFilled />} validationMessage="Custom message" />
+  ))
   .addStory('hint', () => <AllFields hint="Hint message" />)
   .addStory('horizontal', () => <AllFields orientation="horizontal" />)
-  .addStory('horizontal+long-label', () => (
+  .addStory('horizontal+label:multiline', () => (
     <AllFields
       orientation="horizontal"
       label="This is a very long label that should wrap around to be multiple lines in height"
     />
   ))
-  .addStory('Horizontal+validationMessage+hint', () => (
-    <AllFieldsWithValidationMessage orientation="horizontal" hint="Hint text" />
+  .addStory('horizontal+validation:error+hint', () => (
+    <AllFields orientation="horizontal" validationState="error" validationMessage="Error message" hint="Hint text" />
   ))
-  .addStory('size=small', () => (
+  .addStory('size:small', () => (
     <div style={{ display: 'grid', rowGap: '12px' }}>
       <ComboboxField label="Combo box field" size="small" />
       <InputField label="Input field" size="small" />
@@ -107,7 +82,7 @@ storiesOf('Field Converged', module)
       <TextareaField label="Textarea field" size="small" />
     </div>
   ))
-  .addStory('size=large', () => (
+  .addStory('size:large', () => (
     <div style={{ display: 'grid', rowGap: '12px' }}>
       <CheckboxField label="Checkbox" size="large" />
       <ComboboxField label="Combo box field" size="large" />
