@@ -301,7 +301,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
   HTMLDivElement,
   IPositioningContainerProps
 >((propsWithoutDefaults, forwardedRef) => {
-  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+  const props = getPropsWithDefaults<IPositioningContainerProps>(DEFAULT_PROPS, propsWithoutDefaults);
 
   // @TODO rename to reflect the name of this class
   const contentHost = React.useRef<HTMLDivElement>(null);
@@ -372,7 +372,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     </div>
   );
 
-  return doNotLayer ? content : <Layer>{content}</Layer>;
+  return doNotLayer ? content : <Layer {...props.layerProps}>{content}</Layer>;
 });
 PositioningContainer.displayName = 'PositioningContainer';
 
