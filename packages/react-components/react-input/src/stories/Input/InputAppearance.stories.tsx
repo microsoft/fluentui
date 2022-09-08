@@ -59,12 +59,12 @@ export const Appearance = () => {
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={filledLighterId}>Filled lighter appearance with shadow</Label>
+        <Label htmlFor={filledLighterShadowId}>Filled lighter appearance with shadow</Label>
         <Input appearance="filled-lighter-shadow" id={filledLighterShadowId} />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={filledDarkerId}>Filled darker appearance with shadow</Label>
+        <Label htmlFor={filledDarkerShadowId}>Filled darker appearance with shadow</Label>
         <Input appearance="filled-darker-shadow" id={filledDarkerShadowId} />
       </div>
     </div>
