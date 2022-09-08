@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Coachmarks now properly animate when used in any of the center positions",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

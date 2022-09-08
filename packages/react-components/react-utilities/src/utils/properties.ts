@@ -412,6 +412,13 @@ export const imgProperties = toObjectMap(htmlElementProperties, [
 ]);
 
 /**
+ * An array of DIALOG tag properties and events.
+ *
+ * @public
+ */
+export const dialogProperties = toObjectMap(htmlElementProperties, ['open', 'onCancel', 'onClose']);
+
+/**
  * An array of DIV tag properties and events.
  *
  * @public
