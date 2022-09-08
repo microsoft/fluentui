@@ -23,6 +23,10 @@ const querystring = require('querystring');
  * @property {string} resultsFile - Path to where test results should be written.
  */
 
+/**
+ * @typedef {Record.<string, any>} TestOptions
+ */
+
 const command = 'build-test-config';
 
 /**
@@ -69,8 +73,9 @@ const buildTestConfig = options => {
  * @param {string} testCase
  * @param {number} sampleSize
  * @param {string[]} targets
- * @param {string[]} size
+ * @param {string} size
  * @param {TestOptions} testOptions
+ * @param {number} port
  * @returns {string} Stringified JSON
  */
 const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, testOptions, port) => {
@@ -118,6 +123,7 @@ const api = {
    */
   handler: argv => {
     const options = processOptions(argv);
+    // @ts-ignore
     buildTestConfig(options);
   },
 };

@@ -4,21 +4,38 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const { configurePages } = require('./pageConfig');
 const { configureGriffel } = require('./griffelConfig');
 
-module.exports = (env, argv) => {
+/**
+ * @typedef {Object} Argv
+ * @property {('development' | 'production' | 'none')} mode
+ * @property {import('./griffelConfig.js').GriffelMode} griffelMode
+ */
+
+/**
+ * @param {*} _env
+ * @param {Argv} argv
+ * @returns
+ */
+module.exports = (_env, argv) => {
+  console.log('env', _env);
   const isProd = argv.mode === 'production';
 
+  /** @typedef {import('webpack-dev-server')} */
+  /**
+   * @type {import('webpack').Configuration}
+   */
   let config = {
+    mode: argv.mode,
     output: {
       filename: '[name].[contenthash].bundle.js',
       sourceMapFilename: '[name].[contenthash].map',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(path.dirname(__dirname), 'dist'),
     },
     devtool: 'source-map',
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
       plugins: [
         new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, '../../tsconfig.base.json'),
+          configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
         }),
       ],
     },
@@ -61,7 +78,7 @@ module.exports = (env, argv) => {
     };
   }
 
-  config = configureGriffel(config);
+  config = configureGriffel(config, argv.griffelMode);
   config = configurePages(config);
 
   return config;

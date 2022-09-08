@@ -1,7 +1,7 @@
 const { getBrowsers } = require('./getBrowsers');
 
 /**
- * @typedef {Object.<string, import('yargs').Options} YargsOptions
+ * @typedef {Object.<string, import('yargs').Options>} YargsOptions
  */
 
 const cliOptions = {
@@ -44,10 +44,29 @@ const cliOptions = {
     describe: 'Root folder for test server relative to package root.',
     default: 'dist',
   },
+  'griffel-mode': {
+    describe: 'Optimization mode for Griffel.',
+    default: 'buildtime',
+  },
+  mode: {
+    describe: 'Build mode.',
+    default: 'production',
+  },
+  verbose: {
+    describe: 'Log more messages.',
+    default: false,
+  },
+  'build-deps': {
+    describe: 'Build dependencies for the app before building the app itself.',
+    default: false,
+  },
+  open: {
+    describe: 'Open the dev server in a new browser window.',
+    default: false,
+  },
 };
 
 /**
- *
  * @param {import('yargs').Argv} yargs
  * @param {YargsOptions} options
  */
@@ -73,26 +92,78 @@ const configure = (yargs, options) => {
 
       case 'use-config':
       case 'process-results':
+      case 'verbose':
+      case 'build-deps':
+      case 'open':
         y = y.boolean(option);
+        break;
+
+      case 'griffel-mode':
+        y = y.choices(option, ['runtime', 'buildtime', 'extraction']);
+        break;
+
+      case 'mode':
+        y = y.choices(option, ['production', 'development']);
+        break;
     }
   });
 };
 
 /**
- *
  * @param {string} command
  * @param {import('yargs').Argv} yargs
  */
 const configureYargs = (command, yargs) => {
   switch (command) {
     case 'build-test-config': {
-      const { 'process-results': processResults, ...buildTestOptions } = cliOptions;
-      configure(yargs, buildTestOptions);
+      const {
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        port,
+      } = cliOptions;
+      configure(yargs, {
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        port,
+      });
       break;
     }
 
     case 'run': {
-      configure(yargs, cliOptions);
+      const {
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        'process-results': processResults,
+        port,
+        root,
+      } = cliOptions;
+      configure(yargs, {
+        scenario,
+        'test-cases': testCases,
+        sizes,
+        browsers,
+        'sample-size': sampleSize,
+        targets,
+        'use-config': useConfig,
+        'process-results': processResults,
+        port,
+        root,
+      });
       break;
     }
 
@@ -111,6 +182,19 @@ const configureYargs = (command, yargs) => {
     case 'tachometer': {
       const { scenario } = cliOptions;
       configure(yargs, { scenario });
+      break;
+    }
+
+    case 'build': {
+      const { 'griffel-mode': griffelMode, mode, verbose, 'build-deps': buildDeps } = cliOptions;
+      configure(yargs, { 'griffel-mode': griffelMode, mode, verbose, 'build-deps': buildDeps });
+      break;
+    }
+
+    case 'dev': {
+      const { mode, open, 'griffel-mode': griffelMode } = cliOptions;
+      mode.default = 'development';
+      configure(yargs, { mode, open, 'griffel-mode': griffelMode });
       break;
     }
   }
