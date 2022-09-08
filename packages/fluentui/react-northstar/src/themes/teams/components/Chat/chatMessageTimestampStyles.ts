@@ -1,6 +1,8 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { defaultChatDensity } from '../../../../components/Chat/chatDensity';
 
 import { ChatMessageTimestampStylesProps } from '../../../../components/Chat/ChatMessageTimestamp';
+import { pxToRem, screenReaderContainerStyles } from '../../../../utils';
 import { ChatMessageTimestampVariables } from './chatMessageTimestampVariables';
 
 const getChatMessageVariantStyles = (props: ChatMessageTimestampStylesProps) => {
@@ -8,7 +10,6 @@ const getChatMessageVariantStyles = (props: ChatMessageTimestampStylesProps) => 
   switch (true) {
     case props.layout === 'refresh' && density === 'comfy':
       return ({ variables: v }): ICSSInJSStyle => ({
-        display: 'inline-block',
         alignSelf: 'self-start',
         whiteSpace: 'nowrap',
         opacity: 0,
@@ -33,7 +34,7 @@ const getChatMessageVariantStyles = (props: ChatMessageTimestampStylesProps) => 
         marginLeft: v.compactSpacing,
         marginTop: pxToRem(2),
         opacity: 0,
-      }),
+      });
   }
 };
 
@@ -42,11 +43,7 @@ export const chatMessageTimestampStyles: ComponentSlotStylesPrepared<
   ChatMessageTimestampVariables
 > = {
   root: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const {
-      props: p,
-      variables: v,
-      theme: { siteVariables },
-    } = componentStyleFunctionParam;
+    const { props: p, variables: v } = componentStyleFunctionParam;
 
     return {
       display: 'inline-block',
