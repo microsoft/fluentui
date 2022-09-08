@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix null-ref in useSlider() when <Slider/> unmounts before mouseUp fires",
-  "packageName": "@fluentui/react",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch"
-}

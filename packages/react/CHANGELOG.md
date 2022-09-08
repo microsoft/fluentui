@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 07 Sep 2022 07:54:43 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Sep 2022 20:52:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.94.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.3)
+
+Thu, 08 Sep 2022 20:52:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.2..@fluentui/react_v8.94.3)
+
+### Patches
+
+- fix: Coachmarks now properly animate when used in any of the center positions ([PR #24702](https://github.com/microsoft/fluentui/pull/24702) by mgodbolt@microsoft.com)
+- Fix null-ref in useSlider() when <Slider/> unmounts before mouseUp fires ([PR #24728](https://github.com/microsoft/fluentui/pull/24728) by miclo@microsoft.com)
 
 ## [8.94.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.2)
 
