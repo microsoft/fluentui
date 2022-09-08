@@ -146,436 +146,715 @@ export type TextareaFieldProps = FieldProps<typeof Textarea>;
 
 // @public
 export const useField_unstable: <T extends FieldComponent>(props: Omit<Partial<FieldSlots<T>>, never> & ("ref" extends keyof Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<React_2.ReactNode[], (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> ? (Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never, SlotShorthandValue | null | undefined>, keyof Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never, SlotShorthandValue | null | undefined> & "ref"> : Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never, SlotShorthandValue | null | undefined>) | (Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<React_2.ReactNode[], (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<React_2.ReactNode[], (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<React_2.ReactNode[], (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined>) : Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never, SlotShorthandValue | null | undefined> | Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<React_2.ReactNode[], (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
 } : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
 } ? Props : Props & {
     children?: undefined;
 }) & {
     children?: (Props extends {
-        children?: unknown;
+        children?: unknown; /**
+        * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+        * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+        */
     } ? Props : Props & {
         children?: undefined;
     })["children"] | SlotRenderFunction<Props extends {
-    children?: unknown;
+    children?: unknown; /**
+    * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
+    * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
+    */
     } ? Props : Props & {
     children?: undefined;
     }> | undefined;
