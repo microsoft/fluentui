@@ -41,7 +41,7 @@ jobs:
           EOT
         if: github.event_name == 'push'
 
-      - name: script_label
+      - name: Check if draft PR has 'Ready for VR' label
         uses: actions/github-script@v6
         with:
           script: |
@@ -54,7 +54,7 @@ jobs:
             let foundLabel = labels.data.find((label) => {return label.name == 'Ready for VR'});
             if(foundLabel === undefined)
             core.exportVariable('SKIP_SCREENER', true);
-        if: github.event.pull_request.draft == true && github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == true
 
       - run: echo "SKIP_SCREENER=${{env.SKIP_SCREENER}}" >> skip-screener
 
