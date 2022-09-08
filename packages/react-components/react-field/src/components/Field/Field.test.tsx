@@ -4,13 +4,7 @@ import { render } from '@testing-library/react';
 import type { FieldProps } from './index';
 import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from './index';
 
-type MockComponentProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  mockProp?: string;
-};
-const MockComponent = React.forwardRef((props: MockComponentProps, ref: React.Ref<HTMLInputElement>) => {
-  const { mockProp, ...intrinsicProps } = props;
-  return <input ref={ref} {...intrinsicProps} data-mock-prop={mockProp} />;
-});
+const MockComponent: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props => <input {...props} />;
 
 type MockFieldProps = FieldProps<typeof MockComponent>;
 const mockFieldClassNames = getFieldClassNames('MockField');
@@ -107,20 +101,5 @@ describe('Field', () => {
     const input = result.getByRole('textbox');
 
     expect(input.getAttribute('aria-invalid')).toBeTruthy();
-  });
-
-  it('forwards ref to the primary slot', () => {
-    const ref = React.createRef<HTMLInputElement>();
-    const result = render(<MockField ref={ref} />);
-    const input = result.getByRole('textbox');
-
-    expect(ref.current).toBe(input);
-  });
-
-  it('forwards custom props to the primary slot', () => {
-    const result = render(<MockField mockProp="test-value" />);
-    const input = result.getByRole('textbox');
-
-    expect(input.getAttribute('data-mock-prop')).toBe('test-value');
   });
 });
