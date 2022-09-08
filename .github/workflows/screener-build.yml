@@ -1,11 +1,11 @@
 name: Screener build
 
 on:
-  pull_request:
   push:
     branches:
       - master
-  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
 
 env:
   DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
@@ -15,12 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir artifacts
-      ###########################################
-      # Environment variables are passed as an artifact so that the run workflow
-      # can download and access them. There are two workflows used- `screener-build.yml`
-      # and `screener-run.yml` so that the screener checks can also be triggered by
-      # pull requests from forks. Note: This is a temporary change.
-      ###########################################
+
       ###########################################
       # BROWSERSLIST_IGNORE_OLD_DATA = Prevents failures on CI when "caniuse-lite" becomes outdated
       # DEPLOYHOST = address of host for screener tests deployment
@@ -36,6 +31,39 @@ jobs:
           BUILD_SOURCEBRANCH=${{ github.ref }}
           SCREENER_BUILD=1
           EOT
+
+      - name: Set env variables if there is not a PR
+        run: |
+          cat <<EOT >> artifacts/environment
+          DEPLOYBASEPATH=heads/${{github.ref_name}}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{github.ref_name}}
+          BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
+          EOT
+        if: github.event_name == 'push'
+
+      - name: Check if draft PR has 'Ready for VR' label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            let labels = await github.rest.issues.listLabelsOnIssue({
+              issue_number: ${{github.event.pull_request.number}},
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            let foundLabel = labels.data.find((label) => {return label.name == 'Ready for VR'});
+            if(foundLabel === undefined)
+            core.exportVariable('SKIP_SCREENER', true);
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == true
+
+      - run: echo "SKIP_SCREENER=${{env.SKIP_SCREENER}}" >> skip-screener
+
+      - name: Upload environment variables artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: skip-screener
+          path: skip-screener
+
       ###########################################
       # SYSTEM_PULLREQUEST_TARGETBRANCH = target branch name
       # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
@@ -56,24 +84,21 @@ jobs:
           DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{github.event.pull_request.number}}
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
-
-      - name: Set env variables if there is not a PR
-        run: |
-          cat <<EOT >> artifacts/environment
-          DEPLOYBASEPATH=heads/${{github.ref_name}}
-          DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{github.ref_name}}
-          BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
-          EOT
-        if: ${{!startsWith(github.ref, 'refs/pull/')}}
+        if: ${{ github.event_name == 'pull_request' && env.SKIP_SCREENER == ''}}
 
       - name: Upload environment variables artifact
         uses: actions/upload-artifact@v3
         with:
           name: env-artifact
           path: artifacts/environment
+        if: ${{env.SKIP_SCREENER == ''}}
+
+    outputs:
+      SKIP_SCREENER: ${{env.SKIP_SCREENER}}
 
   screener-react-northstar:
+    if: needs.environment-upload.outputs.SKIP_SCREENER == ''
+    needs: environment-upload
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-northstar
     steps:
@@ -137,6 +162,8 @@ jobs:
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react:
+    if: needs.environment-upload.outputs.SKIP_SCREENER == ''
+    needs: environment-upload
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react
     steps:
@@ -198,6 +225,8 @@ jobs:
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react-components:
+    if: needs.environment-upload.outputs.SKIP_SCREENER == ''
+    needs: environment-upload
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-components
     steps:

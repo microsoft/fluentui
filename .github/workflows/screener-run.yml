@@ -9,7 +9,26 @@ on:
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
 jobs:
+  determine-if-skipping:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Download environment variables artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: learn-github-actions.yml
+          run_id: ${{github.event.workflow_run.id}}
+          name: skip-screener
+
+      - name: Define env variable
+        run: |
+          var=$(head -1 skip-screener)
+          echo "$var" >> $GITHUB_ENV
+    outputs:
+      SKIP_SCREENER: ${{env.SKIP_SCREENER}}
+
   screener-react-northstar:
+    if: needs.determine-if-skipping.outputs.SKIP_SCREENER == ''
+    needs: determine-if-skipping
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-northstar
     steps:
@@ -87,6 +106,8 @@ jobs:
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
   screener-react:
+    if: needs.determine-if-skipping.outputs.SKIP_SCREENER == ''
+    needs: determine-if-skipping
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react
     steps:
@@ -161,6 +182,8 @@ jobs:
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
   screener-react-components:
+    if: needs.determine-if-skipping.outputs.SKIP_SCREENER == ''
+    needs: determine-if-skipping
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-components
     steps:
