@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition } from '../../hooks';
+import { useTable, ColumnDefinition, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
@@ -96,10 +96,14 @@ const columns: ColumnDefinition<Item>[] = [
 
 export const SingleSelect = () => {
   const { rows } = useTable({
+    selection: useSelection({
+      items,
+      selectionMode: 'single',
+      defaultSelectedItems: new Set([1]),
+      getRowId: (item, index) => index,
+    }),
     columns,
     items,
-    selectionMode: 'single',
-    defaultSelectedRows: new Set([1]),
     rowEnhancer: (row, { selection }) => ({
       ...row,
       selected: selection.isRowSelected(row.rowId),

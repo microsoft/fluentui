@@ -6,37 +6,49 @@ import type {
   TableSelectionState,
   TableSortState,
   GetRowIdInternal,
+  TableSelectionStateInternal,
+  TableSortStateInternal,
 } from './types';
-import { useSelection } from './useSelection';
-import { useSort } from './useSort';
+
+const noop: () => void = () => undefined;
+const defaultSelectionState: TableSelectionStateInternal = {
+  allRowsSelected: false,
+  clearRows: noop,
+  deselectRow: noop,
+  isRowSelected: () => false,
+  selectRow: noop,
+  selectedRows: new Set(),
+  someRowsSelected: false,
+  toggleAllRows: noop,
+  toggleRow: noop,
+};
+
+const defaultSortState: TableSortStateInternal<unknown> = {
+  getSortDirection: () => 'ascending',
+  setColumnSort: noop,
+  sort: (items: unknown[]) => items,
+  sortColumn: undefined,
+  sortDirection: 'ascending',
+  toggleColumnSort: noop,
+};
 
 export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TItem>>(
   options: UseTableOptions<TItem, TRowState>,
 ): TableState<TItem, TRowState> {
   const {
+    selection = defaultSelectionState,
+    sort: baseSort = defaultSortState as TableSortStateInternal<TItem>,
     items: baseItems,
-    columns,
     getRowId: getUserRowId = () => undefined,
-    selectionMode = 'multiselect',
     rowEnhancer = (row: RowState<TItem>) => row as TRowState,
-    defaultSelectedRows,
-    selectedRows: userSelectedRows,
-    onSelectionChange,
-    sortState: userSortState,
-    defaultSortState,
-    onSortChange,
   } = options;
 
   const getRowId: GetRowIdInternal<TItem> = React.useCallback(
     (item: TItem, index: number) => getUserRowId(item) ?? index,
     [getUserRowId],
   );
-  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = useSort({
-    columns,
-    sortState: userSortState,
-    defaultSortState,
-    onSortChange,
-  });
+
+  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = baseSort;
   const sortState: TableSortState = React.useMemo(
     () => ({
       sortColumn,
@@ -58,14 +70,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     someRowsSelected,
     selectRow,
     deselectRow,
-  } = useSelection({
-    selectionMode,
-    items: baseItems,
-    getRowId,
-    defaultSelectedItems: defaultSelectedRows,
-    selectedItems: userSelectedRows,
-    onSelectionChange,
-  });
+  } = selection;
 
   const selectionState: TableSelectionState = React.useMemo(
     () => ({

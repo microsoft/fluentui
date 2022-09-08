@@ -3,8 +3,17 @@ import type { ColumnDefinition, ColumnId, OnSortChangeCallback, SortState, Table
 
 interface UseSortOptions<TItem> {
   columns: ColumnDefinition<TItem>[];
+  /**
+   * Used to control sorting
+   */
   sortState?: SortState;
+  /**
+   * Used in uncontrolled mode to set initial sort column and direction on mount
+   */
   defaultSortState?: SortState;
+  /**
+   * Called when sort changes
+   */
   onSortChange?: OnSortChangeCallback;
 }
 

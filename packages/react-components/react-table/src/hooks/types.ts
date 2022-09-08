@@ -35,33 +35,10 @@ export interface TableSortStateInternal<TItem> {
 }
 
 export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
+  selection?: TableSelectionStateInternal;
+  sort?: TableSortStateInternal<TItem>;
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
-  selectionMode?: SelectionMode;
-  /**
-   * Used in uncontrolled mode to set initial selected rows on mount
-   */
-  defaultSelectedRows?: Set<RowId>;
-  /**
-   * Used to control row selection
-   */
-  selectedRows?: Set<RowId>;
-  /**
-   * Called when selection changes
-   */
-  onSelectionChange?: OnSelectionChangeCallback;
-  /**
-   * Used to control sorting
-   */
-  sortState?: SortState;
-  /**
-   * Used in uncontrolled mode to set initial sort column and direction on mount
-   */
-  defaultSortState?: SortState;
-  /**
-   * Called when sort changes
-   */
-  onSortChange?: OnSortChangeCallback;
   getRowId?: (item: TItem) => RowId;
   rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }

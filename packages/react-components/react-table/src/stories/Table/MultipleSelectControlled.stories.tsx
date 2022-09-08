@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition, RowId } from '../../hooks';
+import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
@@ -102,8 +102,14 @@ export const MultipleSelectControlled = () => {
   } = useTable({
     columns,
     items,
-    selectedRows,
-    onSelectionChange: setSelectedRows,
+    selection: useSelection({
+      items,
+      selectionMode: 'multiselect',
+      defaultSelectedItems: new Set([0, 1]),
+      getRowId: (item, index) => index,
+      selectedItems: selectedRows,
+      onSelectionChange: setSelectedRows,
+    }),
     rowEnhancer: (row, { selection }) => ({
       ...row,
       onClick: () => selection.toggleRow(row.rowId),

@@ -10,11 +10,23 @@ import type {
 } from './types';
 
 interface UseSelectionOptions<TItem> {
-  selectionMode: SelectionMode;
   items: TItem[];
   getRowId: GetRowIdInternal<TItem>;
+  /**
+   * Can be multi or single select
+   */
+  selectionMode: SelectionMode;
+  /**
+   * Used in uncontrolled mode to set initial selected rows on mount
+   */
   defaultSelectedItems?: Set<RowId>;
+  /**
+   * Used to control row selection
+   */
   selectedItems?: Set<RowId>;
+  /**
+   * Called when selection changes
+   */
   onSelectionChange?: OnSelectionChangeCallback;
 }
 

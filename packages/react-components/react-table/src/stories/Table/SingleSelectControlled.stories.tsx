@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition, RowId } from '../../hooks';
+import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
@@ -99,9 +99,14 @@ export const SingleSelectControlled = () => {
   const { rows } = useTable({
     columns,
     items,
-    selectionMode: 'single',
-    selectedRows,
-    onSelectionChange: setSelectedRows,
+    selection: useSelection({
+      items,
+      selectionMode: 'single',
+      defaultSelectedItems: new Set([1]),
+      getRowId: (item, index) => index,
+      selectedItems: selectedRows,
+      onSelectionChange: setSelectedRows,
+    }),
     rowEnhancer: (row, { selection }) => ({
       ...row,
       selected: selection.isRowSelected(row.rowId),
