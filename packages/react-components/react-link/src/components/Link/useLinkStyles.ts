@@ -10,7 +10,6 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    borderBottomColor: 'transparent',
     textDecorationColor: tokens.colorStrokeFocus2,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
@@ -18,12 +17,7 @@ const useStyles = makeStyles({
   // Common styles.
   root: {
     backgroundColor: 'transparent',
-    borderTopStyle: 'none',
-    borderLeftStyle: 'none',
-    borderRightStyle: 'none',
-    borderBottomColor: 'transparent',
-    borderBottomStyle: 'solid',
-    borderBottomWidth: tokens.strokeWidthThin,
+    ...shorthands.borderStyle('none'),
     boxSizing: 'border-box',
     color: tokens.colorBrandForegroundLink,
     cursor: 'pointer',
@@ -35,17 +29,19 @@ const useStyles = makeStyles({
     ...shorthands.padding(0),
     ...shorthands.overflow('inherit'),
     textAlign: 'left',
-    textDecorationLine: 'none',
+    textDecorationColor: 'transparent',
+    textDecorationLine: 'underline',
+    textDecorationThickness: tokens.strokeWidthThin,
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
-      borderBottomColor: tokens.colorBrandForegroundLinkHover,
+      textDecorationColor: tokens.colorBrandForegroundLinkHover,
       color: tokens.colorBrandForegroundLinkHover,
     },
 
     ':active': {
-      borderBottomColor: tokens.colorBrandForegroundLinkPressed,
+      textDecorationColor: tokens.colorBrandForegroundLinkPressed,
       color: tokens.colorBrandForegroundLinkPressed,
     },
   },
@@ -58,18 +54,18 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
-      borderBottomColor: tokens.colorNeutralForeground2Hover,
+      textDecorationColor: tokens.colorNeutralForeground2Hover,
       color: tokens.colorNeutralForeground2Hover,
     },
 
     ':active': {
-      borderBottomColor: tokens.colorNeutralForeground2Pressed,
+      textDecorationColor: tokens.colorNeutralForeground2Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
   // Overrides when the Link is rendered inline within text.
   inline: {
-    borderBottomColor: tokens.colorBrandForegroundLink,
+    textDecorationColor: tokens.colorBrandForegroundLink,
   },
   // Overrides when the Link is rendered inline within text and appears subtle.
   inlineSubtle: {
@@ -77,17 +73,17 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link is disabled.
   disabled: {
-    borderBottomColor: 'transparent',
+    textDecorationColor: 'transparent',
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
-      borderBottomColor: 'transparent',
+      textDecorationColor: 'transparent',
       color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':active': {
-      borderBottomColor: 'transparent',
+      textDecorationColor: 'transparent',
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
