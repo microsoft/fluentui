@@ -87,7 +87,7 @@ const useRootStyles = makeStyles({
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
   },

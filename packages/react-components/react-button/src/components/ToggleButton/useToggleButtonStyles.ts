@@ -90,18 +90,18 @@ const useCheckedStyles = makeStyles({
   },
   primary: {
     backgroundColor: tokens.colorBrandBackgroundSelected,
-    ...shorthands.borderColor('transparent'),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
     color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
       color: tokens.colorNeutralForegroundOnBrand,
     },
   },
@@ -110,35 +110,35 @@ const useCheckedStyles = makeStyles({
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    color: tokens.colorNeutralForeground2,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      color: tokens.colorNeutralForeground2,
     },
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
-    ...shorthands.borderColor('transparent'),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
     color: tokens.colorNeutralForeground2BrandSelected,
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
       color: tokens.colorNeutralForeground2BrandHover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
       color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
@@ -169,45 +169,60 @@ const useDisabledStyles = makeStyles({
     /* No styles */
   },
   primary: {
-    ...shorthands.borderColor('transparent'),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
 
     ':hover': {
-      ...shorthands.borderColor('transparent'),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
 
     ':hover:active': {
-      ...shorthands.borderColor('transparent'),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: 'transparent',
-    ...shorthands.borderColor('transparent'),
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
 
     ':hover': {
-      backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   transparent: {
-    backgroundColor: 'transparent',
-    ...shorthands.borderColor('transparent'),
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
 
     ':hover': {
-      backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
+  },
+});
+
+const useIconStyles = makeStyles({
+  // Appearance variations
+  subtle: {
+    color: tokens.colorNeutralForeground2BrandSelected,
+
+    ':hover': {
+      color: tokens.colorNeutralForeground2BrandHover,
+    },
+
+    ':hover:active': {
+      color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
 });
@@ -215,6 +230,7 @@ const useDisabledStyles = makeStyles({
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   const checkedStyles = useCheckedStyles();
   const disabledStyles = useDisabledStyles();
+  const iconStyles = useIconStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
@@ -235,7 +251,11 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(toggleButtonClassNames.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      toggleButtonClassNames.icon,
+      appearance === 'subtle' && iconStyles.subtle,
+      state.icon.className,
+    );
   }
 
   useButtonStyles_unstable(state);
