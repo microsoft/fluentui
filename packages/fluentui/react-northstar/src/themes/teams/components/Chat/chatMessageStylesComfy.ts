@@ -75,11 +75,4 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
     ...(p.hasBadge && p.badgePosition === 'end' && { marginRight: pxToRem(2) }),
     float: 'right',
   }),
-
-  timestamp: ({ props: p, variables: v }) => ({
-    marginBottom: v.headerMarginBottom,
-    ...((p.attached === 'bottom' || p.attached === true) &&
-      !p.hasHeaderReactionGroup &&
-      (screenReaderContainerStyles as ICSSInJSStyle)),
-  }),
 };

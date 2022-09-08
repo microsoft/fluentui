@@ -533,14 +533,20 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     }),
   });
 
-  const timestampElement = Text.create(timestamp, {
-    defaultProps: () => ({
-      size: 'small',
-      styles: resolvedStyles.timestamp,
-      timestamp: true,
-      className: chatMessageSlotClassNames.timestamp,
+  const timestampElement = createShorthand(ChatMessageTimestamp, timestamp, {
+    defaultProps: () => ({ size: 'small' }),
+    overrideProps: predefinedProps => ({
+      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     }),
   });
+  // Text.create(timestamp, {
+  //   defaultProps: () => ({
+  //     size: 'small',
+  //     styles: resolvedStyles.timestamp,
+  //     timestamp: true,
+  //     className: chatMessageSlotClassNames.timestamp,
+  //   }),
+  // });
 
   const messageContent = Box.create(content, {
     defaultProps: () => ({

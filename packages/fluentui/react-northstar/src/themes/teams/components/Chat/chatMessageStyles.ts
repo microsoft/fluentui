@@ -106,14 +106,6 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     return getChatMessageVariantStyles(p).compactBody?.(componentStyleFunctionParam);
   },
 
-  timestamp: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const { props: p } = componentStyleFunctionParam;
-    return {
-      display: 'inline-block',
-      ...getChatMessageVariantStyles(p).timestamp?.(componentStyleFunctionParam),
-    };
-  },
-
   content: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p, variables: v } = componentStyleFunctionParam;
     return {

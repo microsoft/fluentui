@@ -71,12 +71,4 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
     display: 'flex',
     marginTop: pxToRem(4),
   }),
-
-  timestamp: ({ variables: v }): ICSSInJSStyle => ({
-    alignSelf: 'flex-start',
-    flexShrink: 0,
-    marginLeft: v.compactSpacing,
-    marginTop: pxToRem(2),
-    opacity: 0,
-  }),
 };
