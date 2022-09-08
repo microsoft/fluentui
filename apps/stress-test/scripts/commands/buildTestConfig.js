@@ -24,7 +24,7 @@ const querystring = require('querystring');
  */
 
 /**
- * @typedef {Object.<string, any>} TestOptions
+ * @typedef {Record.<string, any>} TestOptions
  */
 
 const command = 'build-test-config';
