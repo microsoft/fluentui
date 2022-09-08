@@ -91,7 +91,7 @@ jobs:
         with:
           name: env-artifact
           path: artifacts/environment
-        if: ${{env.SKIP_SCREENER == ''}}
+        if: ${{ env.SKIP_SCREENER == '' }}
 
     outputs:
       SKIP_SCREENER: ${{env.SKIP_SCREENER}}
