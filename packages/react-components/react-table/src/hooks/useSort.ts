@@ -1,14 +1,6 @@
 import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
-import type {
-  ColumnId,
-  OnSortChangeCallback,
-  RowEnhancer,
-  RowState,
-  SortState,
-  TableSortStateInternal,
-  TableState,
-} from './types';
+import type { ColumnId, OnSortChangeCallback, RowState, SortState, TableSortStateInternal, TableState } from './types';
 
 interface UseSortOptions {
   /**
@@ -25,9 +17,8 @@ interface UseSortOptions {
   onSortChange?: OnSortChangeCallback;
 }
 
-const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
 export function useSort<TItem>(tableState: TableState<TItem>, options: UseSortOptions): TableState<TItem> {
-  const { columns, items, getRowId } = tableState;
+  const { columns } = tableState;
   const { sortState, defaultSortState, onSortChange } = options;
 
   const [sorted, setSorted] = useControllableState<SortState>({
@@ -62,15 +53,15 @@ export function useSort<TItem>(tableState: TableState<TItem>, options: UseSortOp
   };
 
   const sort = React.useCallback(
-    (itemsA: TItem[]) =>
-      itemsA.slice().sort((a, b) => {
+    (rows: RowState<TItem>[]) =>
+      rows.slice().sort((a, b) => {
         const sortColumnDef = columns.find(column => column.columnId === sortColumn);
         if (!sortColumnDef?.compare) {
           return 0;
         }
 
         const mod = sortDirection === 'ascending' ? 1 : -1;
-        return sortColumnDef.compare(a, b) * mod;
+        return sortColumnDef.compare(a.item, b.item) * mod;
       }),
     [sortDirection, sortColumn, columns],
   );
@@ -79,16 +70,10 @@ export function useSort<TItem>(tableState: TableState<TItem>, options: UseSortOp
     return sortColumn === columnId ? sortDirection : undefined;
   };
 
-  const rows = <TRowState extends RowState<TItem>>(
-    rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
-  ) => {
-    return sort(items).map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
-  };
-
   return {
     ...tableState,
-    rows,
     sort: {
+      sort,
       sortColumn,
       sortDirection,
       setColumnSort,

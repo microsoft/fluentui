@@ -115,7 +115,7 @@ export const Sort = () => {
 
   const {
     rows,
-    sort: { getSortDirection, toggleColumnSort },
+    sort: { getSortDirection, toggleColumnSort, sort },
   } = tableState;
 
   const headerSortProps = (columnId: ColumnId) => ({
@@ -136,7 +136,7 @@ export const Sort = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows().map(({ item }) => (
+        {sort(rows()).map(({ item }) => (
           <TableRow key={item.file.label}>
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>

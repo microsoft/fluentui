@@ -24,7 +24,7 @@ const defaultSelectionState: TableSelectionStateInternal = {
 const defaultSortState: TableSortStateInternal<unknown> = {
   getSortDirection: () => 'ascending',
   setColumnSort: noop,
-  sort: (items: unknown[]) => items,
+  sort: (rows: RowState<unknown>[]) => [...rows],
   sortColumn: undefined,
   sortDirection: 'ascending',
   toggleColumnSort: noop,
@@ -45,6 +45,8 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
     deselectRow,
   } = defaultSelectionState;
 
+  const { sort, getSortDirection, setColumnSort, sortColumn, sortDirection, toggleColumnSort } = defaultSortState;
+
   const rows = <TRowState extends RowState<TItem>>(rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>) =>
     items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
 
@@ -64,6 +66,13 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
       selectRow,
       deselectRow,
     },
-    sort: defaultSortState,
+    sort: {
+      sort: sort as (rows: RowState<TItem>[]) => RowState<TItem>[],
+      getSortDirection,
+      setColumnSort,
+      sortColumn,
+      sortDirection,
+      toggleColumnSort,
+    },
   };
 }

@@ -30,7 +30,7 @@ export interface TableSortStateInternal<TItem> {
   /**
    * Returns a sorted **shallow** copy of original items
    */
-  sort: (items: TItem[]) => TItem[];
+  sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
 }
 
 export interface UseTableOptions<TItem> {
@@ -53,7 +53,11 @@ export interface TableSelectionStateInternal {
   someRowsSelected: boolean;
 }
 
-export interface TableSortState {
+export interface TableSortState<TItem> {
+  /**
+   * @returns sorted rows
+   */
+  sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
   /**
    * Current sort direction
    */
@@ -151,5 +155,5 @@ export interface TableState<TItem> {
   /**
    * State and actions to manage row sorting
    */
-  sort: TableSortState;
+  sort: TableSortState<TItem>;
 }
