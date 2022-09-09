@@ -23,7 +23,7 @@ export const HorizontalBarChartBasicExample: React.FunctionComponent<{}> = () =>
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 100, y: 15000 },
           color: DefaultPalette.purple,
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',

@@ -154,14 +154,14 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) 
 }
 
 function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
-  const formatMillisecond = locale.format('.%L'),
-    formatSecond = locale.format(':%S'),
-    formatMinute = locale.format('%I:%M'),
-    formatHour = locale.format('%I %p'),
-    formatDay = locale.format('%a %d'),
-    formatWeek = locale.format('%b %d'),
-    formatMonth = locale.format('%B'),
-    formatYear = locale.format('%Y');
+  const formatMillisecond = locale.format('.%L');
+  const formatSecond = locale.format(':%S');
+  const formatMinute = locale.format('%I:%M');
+  const formatHour = locale.format('%I %p');
+  const formatDay = locale.format('%a %d');
+  const formatWeek = locale.format('%b %d');
+  const formatMonth = locale.format('%B');
+  const formatYear = locale.format('%Y');
 
   return (d3Time.timeSecond(date) < date
     ? formatMillisecond

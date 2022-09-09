@@ -13,6 +13,23 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
         yAxisCalloutData: '40%',
       },
       { legend: 'second', data: 1, color: DefaultPalette.green },
+      { legend: 'third', data: 10, color: DefaultPalette.red },
+      { legend: 'fourth', data: 5000, color: DefaultPalette.yellow },
+      { legend: 'f', data: 1, color: DefaultPalette.green },
+      { legend: 'g', data: 10, color: DefaultPalette.red },
+      { legend: 'h', data: 5000, color: DefaultPalette.yellow },
+      { legend: 'i', data: 1, color: DefaultPalette.green },
+      { legend: 'j', data: 10, color: DefaultPalette.red },
+      { legend: 'k', data: 5000, color: DefaultPalette.yellow },
+      { legend: 'l', data: 1, color: DefaultPalette.green },
+      { legend: 'm', data: 10, color: DefaultPalette.red },
+      { legend: 'n', data: 5000, color: DefaultPalette.yellow },
+      { legend: 'o', data: 1, color: DefaultPalette.green },
+      { legend: 'p', data: 10, color: DefaultPalette.red },
+      { legend: 'q', data: 1, color: DefaultPalette.yellow },
+      { legend: 'r', data: 1, color: DefaultPalette.green },
+      { legend: 's', data: 1, color: DefaultPalette.red },
+      { legend: 't', data: 1, color: DefaultPalette.yellow },
     ];
 
     const data0: IChartProps = {
