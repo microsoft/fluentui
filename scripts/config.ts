@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as _ from 'lodash';
 import * as webpack from 'webpack';
+import { URL } from 'url';
 
 // ------------------------------------
 // Environment vars
