@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat: Add *Field components to @fluentui/react-components/unstable",
   "packageName": "@fluentui/react-components",
   "email": "behowell@microsoft.com",
