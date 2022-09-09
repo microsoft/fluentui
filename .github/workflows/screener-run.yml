@@ -8,6 +8,7 @@ on:
 
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
+  BROWSERSLIST_IGNORE_OLD_DATA: true
 jobs:
   determine-if-skipping:
     runs-on: 'ubuntu-latest'

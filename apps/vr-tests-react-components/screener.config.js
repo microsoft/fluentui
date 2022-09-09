@@ -32,9 +32,7 @@ const config = {
   baseBranch,
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
-  ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
-    ? { commit: getCurrentHash() }
-    : null),
+  ...(process.env.BUILD_SOURCEBRANCHNAME !== 'master' ? { commit: getCurrentHash() } : null),
   baseUrl: `${process.env.DEPLOYURL}/react-components-screener/iframe.html`,
 };
 console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));

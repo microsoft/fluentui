@@ -9,6 +9,8 @@ on:
 
 env:
   DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
+  SCREENER_BUILD: 1
+  BROWSERSLIST_IGNORE_OLD_DATA: true
 
 jobs:
   environment-upload:
@@ -25,11 +27,7 @@ jobs:
       - name: Set base env variables
         run: |
           cat <<EOT >> artifacts/environment
-          BROWSERSLIST_IGNORE_OLD_DATA=true
-          DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
           BUILD_BUILDID=${{ github.run_id }}
-          BUILD_SOURCEBRANCH=${{ github.ref }}
-          SCREENER_BUILD=1
           EOT
 
       - name: Set env variables if there is not a PR
@@ -66,23 +64,20 @@ jobs:
 
       ###########################################
       # SYSTEM_PULLREQUEST_TARGETBRANCH = target branch name
-      # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
       # SYSTEM_PULLREQUEST_PULLREQUESTID = ID of the PR
       # SYSTEM_PULLREQUEST_SOURCECOMMITID = commit SHA of PR
-      # DEPLOYBASEPATH = path for deploy URL -> pull/<pr_number> for PRs
-      # DEPLOYURL= address for tests deployment, uses DEPLOYHOST and DEPLOYBASEPATH
-      # BUILD_SOURCEBRANCHNAME = 'merge' for PRs
+      # DEPLOYURL= address for tests deployment
+      # BUILD_SOURCEBRANCHNAME = source branch name
       ###########################################
       - name: Set env variables if there is a PR
         run: |
           cat <<EOT >> artifacts/environment
           SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}
-          SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}
           SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
           SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
           DEPLOYBASEPATH=pull/${{github.event.pull_request.number}}
           DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{github.event.pull_request.number}}
-          BUILD_SOURCEBRANCHNAME='merge'
+          BUILD_SOURCEBRANCHNAME=${{ github.event.pull_request.head.ref }}
           EOT
         if: ${{ github.event_name == 'pull_request' && env.SKIP_SCREENER == ''}}
 
