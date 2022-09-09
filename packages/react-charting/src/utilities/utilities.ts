@@ -4,6 +4,7 @@ import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3
 import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
+import * as d3Time from 'd3-time';
 import {
   IAccessibilityProps,
   IEventsAnnotationProps,
@@ -152,6 +153,33 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) 
   return xAxisScale;
 }
 
+function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
+  const formatMillisecond = locale.format('.%L'),
+    formatSecond = locale.format(':%S'),
+    formatMinute = locale.format('%I:%M'),
+    formatHour = locale.format('%I %p'),
+    formatDay = locale.format('%a %d'),
+    formatWeek = locale.format('%b %d'),
+    formatMonth = locale.format('%B'),
+    formatYear = locale.format('%Y');
+
+  return (d3Time.timeSecond(date) < date
+    ? formatMillisecond
+    : d3Time.timeMinute(date) < date
+    ? formatSecond
+    : d3Time.timeHour(date) < date
+    ? formatMinute
+    : d3Time.timeDay(date) < date
+    ? formatHour
+    : d3Time.timeMonth(date) < date
+    ? d3Time.timeWeek(date) < date
+      ? formatDay
+      : formatWeek
+    : d3Time.timeYear(date) < date
+    ? formatMonth
+    : formatYear)(date);
+}
+
 /**
  * Creating Date x axis of the Chart
  * @export
@@ -163,6 +191,7 @@ export function createDateXAxis(
   tickParams: ITickParams,
   culture?: string,
   options?: Intl.DateTimeFormatOptions,
+  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
@@ -173,6 +202,12 @@ export function createDateXAxis(
   if (culture && options) {
     xAxis.tickFormat((domainValue: Date, _index: number) => {
       return domainValue.toLocaleString(culture, options);
+    });
+  } else if (timeFormatLocale) {
+    const locale: d3TimeFormat.TimeLocaleObject = d3TimeFormat.timeFormatLocale(timeFormatLocale!);
+
+    xAxis.tickFormat((domainValue: Date, _index: number) => {
+      return multiFormat(domainValue, locale);
     });
   }
 
