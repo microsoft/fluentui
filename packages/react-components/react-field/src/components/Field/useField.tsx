@@ -1,8 +1,14 @@
 import * as React from 'react';
-import type { FieldComponent, FieldConfig, FieldProps, FieldState, OptionalFieldComponentProps } from './Field.types';
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import type {
+  FieldComponent,
+  FieldConfig,
+  FieldProps,
+  FieldPropsWithOptionalComponentProps,
+  FieldState,
+} from './Field.types';
 
 const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
@@ -61,7 +67,7 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
  * @param params - Configuration parameters for this Field
  */
 export const useField_unstable = <T extends FieldComponent>(
-  props: FieldProps<T> & OptionalFieldComponentProps,
+  props: FieldPropsWithOptionalComponentProps<T>,
   ref: React.Ref<HTMLElement>,
   params: FieldConfig<T>,
 ): FieldState<T> => {

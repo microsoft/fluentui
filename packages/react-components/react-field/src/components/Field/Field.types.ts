@@ -73,9 +73,13 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
 };
 
 /**
- * Props that are supported by Field, but not required to be supported by the component that implements field.
+ * FieldProps plus extra optional props that are supported by useField_unstable, but not required to be part of the
+ * API of every Field component.
+ *
+ * This allows Field to forward the required and size props to the label if the underlying component supports them,
+ * but doesn't add them to the public API of fields that don't support them.
  */
-export type OptionalFieldComponentProps = {
+export type FieldPropsWithOptionalComponentProps<T extends FieldComponent> = FieldProps<T> & {
   /**
    * Whether the field label should be marked as required.
    */

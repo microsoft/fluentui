@@ -19,6 +19,11 @@ type HTMLElementWithFocusVisibleScope = {
   focusVisible: boolean | undefined;
 } & HTMLElement;
 
+/**
+ * @internal
+ * @param scope - Applies the ponyfill to all DOM children
+ * @param win - window
+ */
 export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void {
   if (alreadyInScope(scope)) {
     // Focus visible polyfill already applied at this scope
