@@ -25,7 +25,7 @@ jobs:
       - name: Set base env variables
         run: |
           cat <<EOT >> artifacts/environment
-          BROWSERSLIST_IGNORE_OLD_DATA: true
+          BROWSERSLIST_IGNORE_OLD_DATA=true
           BUILD_BUILDID=${{ github.run_id }}
           SCREENER_BUILD=1
           EOT
