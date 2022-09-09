@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 08 Sep 2022 20:52:15 GMT",
+      "tag": "@fluentui/react_v8.94.3",
+      "version": "8.94.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "df5da1742ca38f993c71d6b0808ad62d6ba3a9a3",
+            "comment": "fix: Coachmarks now properly animate when used in any of the center positions"
+          },
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a07747ceae4ac6c360674ee0a2d6cdf61efe6164",
+            "comment": "Fix null-ref in useSlider() when <Slider/> unmounts before mouseUp fires"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Sep 2022 07:54:43 GMT",
       "tag": "@fluentui/react_v8.94.2",
       "version": "8.94.2",
