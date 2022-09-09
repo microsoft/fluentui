@@ -30,7 +30,6 @@ import {
   pointTypes,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
-import * as d3TimeFormat from 'd3-time-format';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 
