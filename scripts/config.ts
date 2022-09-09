@@ -10,8 +10,8 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-const deployURL = new URL(process.env.DEPLOYURL);
-const deployBasePath = deployURL.pathname;
+const deployURL = process.env.DEPLOYURL ? new URL(process.env.DEPLOYURL) : undefined;
+const deployBasePath = deployURL ? deployURL.pathname : undefined;
 let __BASENAME__ = deployBasePath
   ? // This needs a trailing slash or images won't work.
     // The path is different for standard PR deploy and screener deploy.
