@@ -13,6 +13,7 @@ export const tableClassNames: SlotClassNames<TableSlots> = {
 const useStyles = makeStyles({
   root: {
     width: '100%',
+    'border-collapse': 'collapse',
   },
 });
 
