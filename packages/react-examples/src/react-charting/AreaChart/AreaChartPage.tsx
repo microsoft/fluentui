@@ -83,7 +83,8 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
               use the date range and the multiformat specified in the definition to determine the correct format to show
               in the ticks. For example - If the date range is in days then the axis will show hourly ticks. If the date
               range spans across months then the axis will show months in tick labels and so on. Specify the custom
-              locale definition in the <code>timeFormatLocale</code> prop.
+              locale definition in the <code>timeFormatLocale</code> prop. Refer to the Custom Locale Date Axis example
+              in line chart for sample usage.
             </p>
           </div>
         }
