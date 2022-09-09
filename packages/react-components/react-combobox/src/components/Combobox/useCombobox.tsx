@@ -49,8 +49,17 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     excludedPropNames: ['children', 'size'],
   });
 
+  const rootRef = React.useRef<HTMLDivElement>(null);
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
+  // calculate listbox width style based on trigger width
+  const [popupWidth, setPopupWidth] = React.useState<string>();
+  React.useEffect(() => {
+    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
+    setPopupWidth(width);
+  }, [open]);
+
+  // handle input type-to-select
   const getSearchString = (inputValue: string): string => {
     // if there are commas in the value string, take the text after the last comma
     const searchString = inputValue.split(',').pop();
@@ -150,7 +159,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     open || hasFocus
       ? resolveShorthand(props.listbox, {
           required: true,
-          defaultProps: { children: props.children },
+          defaultProps: {
+            children: props.children,
+            style: { width: popupWidth },
+          },
         })
       : undefined;
 
@@ -181,6 +193,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ...baseState,
     setOpen,
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};

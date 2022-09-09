@@ -52,17 +52,9 @@ export function useTriggerListboxSlots(
   // handle trigger focus/blur
   const triggerRef: typeof ref = React.useRef(null);
 
-  // calculate listbox width style based on trigger width
-  const [popupWidth, setPopupWidth] = React.useState<number>();
-  React.useEffect(() => {
-    const width = open ? triggerRef.current?.clientWidth : undefined;
-    setPopupWidth(width);
-  }, [open]);
-
   // resolve listbox shorthand props
   const listbox: typeof listboxSlot = listboxSlot && {
     multiselect,
-    style: { width: `${popupWidth}px` },
     tabIndex: undefined,
     ...listboxSlot,
   };
