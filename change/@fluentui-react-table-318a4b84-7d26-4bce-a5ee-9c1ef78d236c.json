@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-table: Added 'border-collapse: collapse' property in order to remove the space between the thead and tbody.",
+  "packageName": "@fluentui/react-table",
+  "email": "kboeh3@gmail.com",
+  "dependentChangeType": "patch"
+}
