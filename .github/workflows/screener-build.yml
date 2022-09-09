@@ -9,7 +9,6 @@ on:
 
 env:
   DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-  SCREENER_BUILD: 1
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
 jobs:
@@ -28,6 +27,7 @@ jobs:
         run: |
           cat <<EOT >> artifacts/environment
           BUILD_BUILDID=${{ github.run_id }}
+          SCREENER_BUILD=1
           EOT
 
       - name: Set env variables if there is not a PR
