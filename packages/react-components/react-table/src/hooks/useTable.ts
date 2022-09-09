@@ -1,5 +1,12 @@
 import * as React from 'react';
-import type { UseTableOptions, TableState, RowState, SelectionState, SortState } from './types';
+import type {
+  UseTableOptions,
+  TableState,
+  RowState,
+  TableSelectionState,
+  TableSortState,
+  GetRowIdInternal,
+} from './types';
 import { useSelection } from './useSelection';
 import { useSort } from './useSort';
 
@@ -12,11 +19,25 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     getRowId: getUserRowId = () => undefined,
     selectionMode = 'multiselect',
     rowEnhancer = (row: RowState<TItem>) => row as TRowState,
+    defaultSelectedRows,
+    selectedRows: userSelectedRows,
+    onSelectionChange,
+    sortState: userSortState,
+    defaultSortState,
+    onSortChange,
   } = options;
 
-  const getRowId = React.useCallback((item: TItem, index: number) => getUserRowId(item) ?? index, [getUserRowId]);
-  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = useSort(columns);
-  const sortState: SortState = React.useMemo(
+  const getRowId: GetRowIdInternal<TItem> = React.useCallback(
+    (item: TItem, index: number) => getUserRowId(item) ?? index,
+    [getUserRowId],
+  );
+  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = useSort({
+    columns,
+    sortState: userSortState,
+    defaultSortState,
+    onSortChange,
+  });
+  const sortState: TableSortState = React.useMemo(
     () => ({
       sortColumn,
       sortDirection,
@@ -37,9 +58,16 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     someRowsSelected,
     selectRow,
     deselectRow,
-  } = useSelection(selectionMode, baseItems, getRowId);
+  } = useSelection({
+    selectionMode,
+    items: baseItems,
+    getRowId,
+    defaultSelectedItems: defaultSelectedRows,
+    selectedItems: userSelectedRows,
+    onSelectionChange,
+  });
 
-  const selectionState: SelectionState = React.useMemo(
+  const selectionState: TableSelectionState = React.useMemo(
     () => ({
       isRowSelected,
       clearRows,

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
 
+import story from './DialogNoFocusableElement.md';
+
 export const NoFocusableElement = () => {
   return (
     <>
@@ -12,8 +14,9 @@ export const NoFocusableElement = () => {
         <DialogSurface>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogBody>
-            <p>⛔️ A Dialog without focusable elements is not recommended! ⛔️</p>
-            <p>Escape key and backdrop click still works to ensure this modal can be closed</p>
+            <p>⛔️ A Dialog without focusable elements is not recommended!</p>
+            <p>⛔️ Escape key doesn't work here</p>
+            <p>✅ Backdrop click still works to ensure this modal can be closed</p>
           </DialogBody>
         </DialogSurface>
       </Dialog>
@@ -24,8 +27,9 @@ export const NoFocusableElement = () => {
         <DialogSurface>
           <DialogTitle closeButton={null}>Dialog Title</DialogTitle>
           <DialogBody>
-            <p>⛔️ A Dialog without focusable elements is not recommended! ⛔️</p>
-            <p>⛔️ Escape key doesn't work, you're trapped! ⛔️</p>
+            <p>⛔️ A Dialog without focusable elements is not recommended!</p>
+            <p>⛔️ Escape key doesn't work</p>
+            <p>⛔️ you're trapped!</p>
           </DialogBody>
         </DialogSurface>
       </Dialog>
@@ -36,7 +40,7 @@ export const NoFocusableElement = () => {
 NoFocusableElement.parameters = {
   docs: {
     description: {
-      story: '',
+      story,
     },
   },
 };

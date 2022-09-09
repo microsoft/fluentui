@@ -69,6 +69,9 @@ export const getTriggerChild: <P = any>(children: React_2.ReactNode) => React_2.
     ref?: React_2.Ref<unknown> | undefined;
 };
 
+// @public
+export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
+
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
 

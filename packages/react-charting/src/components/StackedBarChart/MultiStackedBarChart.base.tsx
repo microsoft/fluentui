@@ -169,10 +169,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         href: href,
       });
 
-      if (value < 1) {
-        return <React.Fragment key={index}> </React.Fragment>;
-      }
-
       return (
         <g
           key={index}

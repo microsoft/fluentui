@@ -1,5 +1,6 @@
 import { AvatarGroup } from '@fluentui/react-avatar';
 
+import bestPracticesMd from './AvatarGroupBestPractices.md';
 import descriptionMd from './AvatarGroupDescription.md';
 
 export { Default } from './AvatarGroupDefault.stories';
@@ -15,7 +16,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

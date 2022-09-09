@@ -170,7 +170,7 @@ export function createDateXAxis(
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
 
-  if (culture) {
+  if (culture && options) {
     xAxis.tickFormat((domainValue: Date, _index: number) => {
       return domainValue.toLocaleString(culture, options);
     });
