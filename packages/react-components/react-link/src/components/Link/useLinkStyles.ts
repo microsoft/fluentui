@@ -17,7 +17,6 @@ const useStyles = makeStyles({
   // Common styles.
   root: {
     backgroundColor: 'transparent',
-    ...shorthands.borderStyle('none'),
     boxSizing: 'border-box',
     color: tokens.colorBrandForegroundLink,
     cursor: 'pointer',
@@ -69,7 +68,7 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link is rendered inline within text and appears subtle.
   inlineSubtle: {
-    borderBottomColor: tokens.colorNeutralForeground2,
+    textDecorationColor: tokens.colorNeutralForeground2,
   },
   // Overrides when the Link is disabled.
   disabled: {
