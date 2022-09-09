@@ -3,5 +3,5 @@
   "comment": "Initial release",
   "packageName": "@fluentui/react-field",
   "email": "behowell@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
