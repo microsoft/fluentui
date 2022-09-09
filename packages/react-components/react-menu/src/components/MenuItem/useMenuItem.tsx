@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  useEventCallback,
-  shouldPreventDefaultOnKeyDown,
-  resolveShorthand,
-  useMergedRefs,
-  getNativeElementProps,
-} from '@fluentui/react-utilities';
+import { useEventCallback, resolveShorthand, useMergedRefs, getNativeElementProps } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
@@ -19,6 +13,12 @@ import {
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
+import {
+  ARIAButtonElement,
+  ARIAButtonElementIntersection,
+  ARIAButtonSlotProps,
+  useARIAButtonShorthand,
+} from '@fluentui/react-aria';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
 const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
@@ -26,22 +26,29 @@ const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
+export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
+  const isSubmenuTrigger = useMenuTriggerContext_unstable();
+  const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
+  const {
+    as = 'div',
+    disabled,
+    disabledFocusable,
+    hasSubmenu = isSubmenuTrigger,
+    persistOnClick = persistOnClickContext,
+  } = props;
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
-  const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
-  const dismissedWithKeyboardRef = React.useRef(false);
-
-  const isSubmenuTrigger = useMenuTriggerContext_unstable();
-  const hasSubmenu = props.hasSubmenu ?? isSubmenuTrigger;
 
   const { dir } = useFluent();
-  const innerRef = React.useRef<HTMLElement>(null);
+  const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
+
+  const isDisabled = Boolean(disabled || disabledFocusable);
 
   const state: MenuItemState = {
     hasSubmenu,
-    ...props,
+    disabled: isDisabled,
+    persistOnClick,
     components: {
       root: 'div',
       icon: 'span',
@@ -50,13 +57,32 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
       content: 'span',
       secondaryContent: 'span',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'menuitem',
-      tabIndex: 0,
-      'aria-disabled': props.disabled,
-      ...props,
-    }),
+    root: getNativeElementProps(
+      as,
+      useARIAButtonShorthand<ARIAButtonSlotProps<'div'>>(
+        { disabled: false, disabledFocusable: isDisabled, as },
+        {
+          required: true,
+          defaultProps: {
+            role: 'menuitem',
+            ...props,
+            ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
+            onMouseEnter: useEventCallback(event => {
+              innerRef.current?.focus();
+
+              props.onMouseEnter?.(event);
+            }),
+            onClick: useEventCallback(event => {
+              if (!hasSubmenu && !persistOnClick) {
+                setOpen(event, { open: false, keyboard: false, bubble: true });
+              }
+
+              props.onClick?.(event);
+            }),
+          },
+        },
+      ),
+    ),
     icon: resolveShorthand(props.icon, { required: hasIcons }),
     checkmark: resolveShorthand(props.checkmark, { required: hasCheckmarks }),
     submenuIndicator: resolveShorthand(props.submenuIndicator, {
@@ -71,52 +97,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
     }),
     secondaryContent: resolveShorthand(props.secondaryContent),
   };
-
-  const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state.root;
-  state.root.onKeyDown = e => {
-    if (shouldPreventDefaultOnKeyDown(e)) {
-      if (state.disabled) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-      }
-
-      dismissedWithKeyboardRef.current = true;
-      e.preventDefault();
-      (e.target as HTMLElement)?.click();
-    }
-
-    onKeyDownOriginal?.(e);
-  };
-
-  state.root.onClick = e => {
-    if (state.disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    let shouldPersist = persistOnClickContext;
-    // prop wins over context;
-    if (state.persistOnClick !== undefined && persistOnClickContext !== state.persistOnClick) {
-      shouldPersist = state.persistOnClick;
-    }
-
-    if (!hasSubmenu && !shouldPersist) {
-      setOpen(e, { open: false, keyboard: dismissedWithKeyboardRef.current, bubble: true });
-      dismissedWithKeyboardRef.current = false;
-    }
-
-    onClickOriginal?.(e);
-  };
-
-  const { onMouseEnter: onMouseEnterOriginal } = state.root;
-  state.root.onMouseEnter = useEventCallback(e => {
-    innerRef.current?.focus();
-
-    onMouseEnterOriginal?.(e);
-  });
-
   useCharacterSearch(state, innerRef);
   return state;
 };

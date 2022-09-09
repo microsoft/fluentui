@@ -7,12 +7,13 @@ import { MenuItemCheckbox } from './MenuItemCheckbox';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../common/mockUseMenuContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
+import { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 
 jest.mock('../../contexts/menuContext');
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({
-    Component: MenuItemCheckbox,
+    Component: MenuItemCheckbox as React.FunctionComponent<MenuItemCheckboxProps>,
     requiredProps: {
       name: 'checkbox',
       value: '1',

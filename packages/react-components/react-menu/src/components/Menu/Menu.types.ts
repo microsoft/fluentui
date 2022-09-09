@@ -162,6 +162,9 @@ export type MenuOpenChangeData = {
   bubble?: boolean;
   /**
    * Indicates whether the change of state was a keyboard interaction
+   * @deprecated
+   * This component will return false always,
+   * as this should not be used, since `Escape`, `Space` and click should be interepreted as the same thing as click
    */
   keyboard?: boolean;
   open: boolean;

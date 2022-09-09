@@ -7,12 +7,13 @@ import { isConformant } from '../../common/isConformant';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import { MenuItemProps } from './MenuItem.types';
 
 jest.mock('../../contexts/menuContext');
 
 describe('MenuItem', () => {
   isConformant({
-    Component: MenuItem,
+    Component: MenuItem as React.FunctionComponent<MenuItemProps>,
     displayName: 'MenuItem',
     testOptions: {
       'has-static-classnames': [
