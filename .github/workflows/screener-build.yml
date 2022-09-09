@@ -25,7 +25,6 @@ jobs:
         run: |
           cat <<EOT >> artifacts/environment
           BROWSERSLIST_IGNORE_OLD_DATA=true
-          DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
           BUILD_BUILDID=${{ github.run_id }}
           SCREENER_BUILD=1
           EOT
