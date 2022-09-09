@@ -5,7 +5,9 @@ import type {
   TableSelectionStateInternal,
   TableSortStateInternal,
   RowEnhancer,
+  TablePaginationState,
 } from './types';
+import { defaultPaginationState } from './usePagination';
 
 const noop: () => void = () => undefined;
 const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
@@ -47,14 +49,16 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
 
   const { sort, getSortDirection, setColumnSort, sortColumn, sortDirection, toggleColumnSort } = defaultSortState;
 
-  const rows = <TRowState extends RowState<TItem>>(rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>) =>
-    items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
+  const getRows = <TRowState extends RowState<TItem>>(
+    rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
+  ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
 
   return {
     getRowId,
     items,
     columns,
-    rows,
+    getRows,
+    pagination: defaultPaginationState as TablePaginationState<TItem>,
     selection: {
       isRowSelected,
       toggleRow,

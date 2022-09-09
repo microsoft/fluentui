@@ -114,7 +114,7 @@ export const Sort = () => {
   tableState = useSort(tableState, { defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } });
 
   const {
-    rows,
+    getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
   } = tableState;
 
@@ -136,7 +136,7 @@ export const Sort = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sort(rows()).map(({ item }) => (
+        {sort(getRows()).map(({ item }) => (
           <TableRow key={item.file.label}>
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>

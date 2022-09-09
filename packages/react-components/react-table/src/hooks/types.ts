@@ -132,6 +132,14 @@ export interface RowState<TItem> {
   rowId: RowId;
 }
 
+export interface TablePaginationState<TItem> {
+  getPageRows: (rows: RowState<TItem>[]) => RowState<TItem>[];
+  nextPage: () => void;
+  prevPage: () => void;
+  setPage: (page: number) => void;
+  currentPage: number;
+  pageCount: number;
+}
 export interface TableState<TItem> {
   getRowId?: (item: TItem) => RowId;
   /**
@@ -141,7 +149,7 @@ export interface TableState<TItem> {
   /**
    * The row data for rendering
    */
-  rows: <TRowState extends RowState<TItem> = RowState<TItem>>(
+  getRows: <TRowState extends RowState<TItem> = RowState<TItem>>(
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
   /**
@@ -156,4 +164,5 @@ export interface TableState<TItem> {
    * State and actions to manage row sorting
    */
   sort: TableSortState<TItem>;
+  pagination: TablePaginationState<TItem>;
 }

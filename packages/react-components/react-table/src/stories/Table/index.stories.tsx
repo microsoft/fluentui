@@ -10,6 +10,7 @@ export { SizeSmaller } from './SizeSmaller.stories';
 export { NonNativeElements } from './NonNativeElements.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
 export { SingleSelect } from './SingleSelect.stories';
+export { Pagination } from './Pagination.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { CellNavigationMode } from './CellNavigationMode.stories';

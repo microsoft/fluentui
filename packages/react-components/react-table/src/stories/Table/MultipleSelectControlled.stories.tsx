@@ -108,11 +108,11 @@ export const MultipleSelectControlled = () => {
   });
 
   const {
-    rows: baseRows,
+    getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
   } = tableState;
 
-  const rows = baseRows(row => ({
+  const rows = getRows(row => ({
     ...row,
     onClick: () => toggleRow(row.rowId),
     onKeyDown: (e: React.KeyboardEvent) => {
