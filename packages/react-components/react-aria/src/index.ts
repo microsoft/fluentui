@@ -4,4 +4,6 @@ export type {
   ARIAButtonProps,
   ARIAButtonResultProps,
   ARIAButtonType,
+  ARIAButtonElement,
+  ARIAButtonElementIntersection,
 } from './hooks/useARIAButton/index';

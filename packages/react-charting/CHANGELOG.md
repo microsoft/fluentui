@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 07 Sep 2022 07:54:43 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Sep 2022 20:52:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.36)
+
+Thu, 08 Sep 2022 20:52:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.35..@fluentui/react-charting_v5.12.36)
+
+### Patches
+
+- Fix greyed out legend key contrast ratio ([PR #24714](https://github.com/microsoft/fluentui/pull/24714) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react to v8.94.3 ([PR #24701](https://github.com/microsoft/fluentui/pull/24701) by beachball)
 
 ## [5.12.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.35)
 
