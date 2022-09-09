@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 07 Sep 2022 07:54:43 GMT",
+      "tag": "@fluentui/web-components_v2.5.5",
+      "version": "2.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "44bd582ade25f325c4707b75b94ab526fc657cb6",
+            "comment": "update fast-foundation to latest packages to resovle 24561"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:52 GMT",
       "tag": "@fluentui/web-components_v2.5.4",
       "version": "2.5.4",

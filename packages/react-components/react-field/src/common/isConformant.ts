@@ -8,6 +8,23 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     componentPath: module!.parent!.filename.replace('.test', ''),
     extraTests: griffelTests as TestObject<TProps>,
+
+    // Field-specific defaults
+    primarySlot: 'control' as keyof TProps,
+    testOptions: testInfo.testOptions?.['has-static-classnames']
+      ? undefined
+      : {
+          'has-static-classnames': [
+            {
+              props: {
+                label: 'label text',
+                validationState: 'error',
+                validationMessage: 'validation message text',
+                hint: 'hint text',
+              },
+            },
+          ],
+        },
   };
 
   baseIsConformant(defaultOptions, testInfo);

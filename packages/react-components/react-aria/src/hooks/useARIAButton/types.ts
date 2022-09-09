@@ -1,7 +1,24 @@
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
+
 export type ARIAButtonType = 'button' | 'a' | 'div';
+
+/**
+ * @internal
+ */
+export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
+  | HTMLButtonElement
+  | (AlternateAs extends 'a' ? HTMLAnchorElement : never)
+  | (AlternateAs extends 'div' ? HTMLDivElement : never);
+
+/**
+ * @internal
+ */
+export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = UnionToIntersection<
+  ARIAButtonElement<AlternateAs>
+>;
 
 /**
  * Props expected by `useARIAButtonProps` hooks
@@ -47,8 +64,6 @@ export type ARIAButtonAlteredProps<Type extends ARIAButtonType> =
   | (Type extends 'div'
       ? Pick<JSX.IntrinsicElements['div'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'>
       : never);
-
-type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 /**
  * Merge of props provided by the user and props provided internally.

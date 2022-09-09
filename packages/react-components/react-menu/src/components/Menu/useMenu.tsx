@@ -24,6 +24,16 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps): MenuState => {
+  const {
+    hoverDelay = 500,
+    inline = false,
+    hasCheckmarks = false,
+    hasIcons = false,
+    closeOnScroll = false,
+    openOnContext = false,
+    persistOnItemClick = false,
+    defaultCheckedValues,
+  } = props;
   const triggerId = useId('menu');
   const isSubmenu = useIsSubmenu();
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
@@ -59,33 +69,50 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   }
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
-  const initialState = {
-    hoverDelay: 500,
+  // TODO Better way to narrow types ?
+
+  const [open, setOpen] = useMenuOpenState({
+    hoverDelay,
+    isSubmenu,
+    setContextTarget,
+    closeOnScroll,
+    menuPopoverRef,
+    triggerRef,
+    open: props.open,
+    defaultOpen: props.defaultOpen,
+    onOpenChange: props.onOpenChange,
+    openOnContext,
+  });
+
+  const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
+    checkedValues: props.checkedValues,
+    defaultCheckedValues,
+    onCheckedValueChange: props.onCheckedValueChange,
+  });
+
+  return {
+    inline,
+    hoverDelay,
     triggerId,
-    isSubmenu: !!isSubmenu,
-    openOnHover: !!isSubmenu,
+    isSubmenu,
+    openOnHover: isSubmenu,
     contextTarget,
     setContextTarget,
-    ...props,
-    closeOnScroll: props.closeOnScroll ?? false,
+    hasCheckmarks,
+    hasIcons,
+    closeOnScroll,
     menuTrigger,
     menuPopover,
     triggerRef,
     menuPopoverRef,
     components: {},
-  } as const;
-
-  // TODO Better way to narrow types ?
-
-  const [open, setOpen] = useMenuOpenState(initialState);
-  const [checkedValues, onCheckedValueChange] = useMenuSelectableState(initialState);
-
-  return {
-    ...initialState,
+    openOnContext,
     open,
     setOpen,
     checkedValues,
+    defaultCheckedValues,
     onCheckedValueChange,
+    persistOnItemClick,
   };
 };
 
@@ -125,6 +152,7 @@ const useMenuOpenState = (
     | 'triggerRef'
     | 'openOnContext'
     | 'closeOnScroll'
+    | 'hoverDelay'
   > &
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {

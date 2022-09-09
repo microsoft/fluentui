@@ -13,8 +13,11 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build --module esm,cjs,amd",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint && just-scripts lint-imports",
     "test": "jest --passWithNoTests",
@@ -30,6 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-portal-compat-context": "^9.0.1",
+    "@fluentui/react-tabster": "^9.1.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

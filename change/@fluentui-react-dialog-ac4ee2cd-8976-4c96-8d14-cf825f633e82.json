@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(react-dialog): removes document listener to Escape keydown",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

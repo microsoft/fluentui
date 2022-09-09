@@ -9,7 +9,7 @@ export type InputFieldProps = FieldProps<typeof Input>;
 export const inputFieldClassNames = getFieldClassNames('InputField');
 
 export const InputField: ForwardRefComponent<InputFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable({ props, ref, component: Input, classNames: inputFieldClassNames });
+  const state = useField_unstable(props, ref, { component: Input, classNames: inputFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });

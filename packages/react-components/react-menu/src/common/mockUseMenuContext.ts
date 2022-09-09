@@ -16,6 +16,15 @@ export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
     openOnContext: false,
     openOnHover: false,
     isSubmenu: false,
+    checkedValues: {},
+    defaultCheckedValues: undefined,
+    hasCheckmarks: false,
+    hasIcons: false,
+    inline: false,
+    persistOnItemClick: false,
+    onCheckedValueChange: () => {
+      /* noop */
+    },
     triggerId: 'id',
     ...options,
   };
