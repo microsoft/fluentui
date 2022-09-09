@@ -7,7 +7,6 @@
 /// <reference types="react" />
 
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -129,7 +128,7 @@ export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
 // @public (undocumented)
 export type DialogTitleSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    closeButton?: Slot<ARIAButtonSlotProps>;
+    action?: Slot<'div'>;
 };
 
 // @public
