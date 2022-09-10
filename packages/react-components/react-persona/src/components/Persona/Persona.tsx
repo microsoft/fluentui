@@ -6,7 +6,8 @@ import type { PersonaProps } from './Persona.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Persona component - TODO: add more docs
+ * A Persona is a visual representation of a person or status that showcases an Avatar, PresenceBadge,
+ * or an Avatar with a PresenceBadge.
  */
 export const Persona: ForwardRefComponent<PersonaProps> = React.forwardRef((props, ref) => {
   const state = usePersona_unstable(props, ref);

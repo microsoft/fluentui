@@ -8,6 +8,14 @@ import type { PersonaState, PersonaSlots } from './Persona.types';
 export const renderPersona_unstable = (state: PersonaState) => {
   const { slots, slotProps } = getSlots<PersonaSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {slots.avatar && <slots.avatar {...slotProps.avatar} />}
+      {slots.presence && <slots.presence {...slotProps.presence} />}
+      {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
+      {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
+      {slots.tertiaryText && <slots.tertiaryText {...slotProps.tertiaryText} />}
+      {slots.quaternaryText && <slots.quaternaryText {...slotProps.quaternaryText} />}
+    </slots.root>
+  );
 };

@@ -1,43 +1,49 @@
 import * as React from 'react';
-import { Persona, PersonaProps } from '@fluentui/react-persona';
+import { Persona } from '@fluentui/react-persona';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
+    justifyItems: 'center',
   },
 });
 
-export const Default = (props: Partial<PersonaProps>) => {
+export const Position = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
       <Persona
-        avatar={{ name: 'Kevin Sturgis' }}
-        primaryText="PrimaryText"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-        quaternaryText="Quaternary text"
-        {...props}
-      />
-      <Persona
-        presence={{ status: 'out-of-office' }}
-        primaryText="PrimaryText"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-        quaternaryText="Quaternary text"
-        {...props}
-      />
-      <Persona
+        position="start"
+        sizing="scaled"
         avatar={{ name: 'Kevin Sturgis' }}
         presence={{ status: 'out-of-office' }}
-        primaryText="PrimaryText"
+        primaryText="Primary text"
         secondaryText="Secondary text"
         tertiaryText="Tertiary text"
         quaternaryText="Quaternary text"
-        {...props}
+      />
+      <Persona
+        position="center"
+        sizing="scaled"
+        avatar={{ name: 'Kevin Sturgis' }}
+        presence={{ status: 'out-of-office' }}
+        primaryText="Primary text"
+        secondaryText="Secondary text"
+        tertiaryText="Tertiary text"
+        quaternaryText="Quaternary text"
+      />
+      <Persona
+        position="end"
+        sizing="scaled"
+        avatar={{ name: 'Kevin Sturgis' }}
+        presence={{ status: 'out-of-office' }}
+        primaryText="Primary text"
+        secondaryText="Secondary text"
+        tertiaryText="Tertiary text"
+        quaternaryText="Quaternary text"
       />
     </div>
   );
