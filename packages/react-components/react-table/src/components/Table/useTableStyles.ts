@@ -13,6 +13,8 @@ export const tableClassNames: SlotClassNames<TableSlots> = {
 const useStyles = makeStyles({
   root: {
     width: '100%',
+    display: 'table',
+    tableLayout: 'fixed',
   },
 });
 
