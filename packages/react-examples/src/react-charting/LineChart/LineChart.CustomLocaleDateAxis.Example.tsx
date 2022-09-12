@@ -23,7 +23,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
   }
 
   public componentDidMount() {
-    this.getCustomLocale();
+    this._getCustomLocale();
   }
 
   public render(): JSX.Element {
@@ -40,7 +40,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
     this.setState({ allowMultipleShapes: checked });
   };
 
-  private getCustomLocale = () => {
+  private _getCustomLocale = () => {
     d3.json('https://unpkg.com/d3-time-format@2/locale/it-IT.json').then(locale =>
       this.setState({ customLocale: locale }),
     );
