@@ -86,11 +86,11 @@ const ChatMessageExampleStyled = () => (
             backgroundColor: '#FFFFE0',
           },
         },
-      },
-      ChatMessageTimestamp: {
-        root: {
-          ...slotLabelStyles('timestamp', {}, { display: 'inline-block' }),
-          backgroundColor: '#FFFFE0',
+        ChatMessageTimestamp: {
+          root: {
+            ...slotLabelStyles('timestamp', {}, { display: 'inline-block' }),
+            backgroundColor: '#FFFFE0',
+          },
         },
       },
       componentVariables: {
