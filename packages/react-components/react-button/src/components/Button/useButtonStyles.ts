@@ -103,18 +103,18 @@ const useRootStyles = makeStyles({
   },
   primary: {
     backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
   },
@@ -123,35 +123,35 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandHover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
@@ -278,14 +278,14 @@ const useRootDisabledStyles = makeStyles({
     },
   },
   primary: {
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
     },
   },
   secondary: {
@@ -293,30 +293,30 @@ const useRootDisabledStyles = makeStyles({
   },
   subtle: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor('transparent'),
     },
   },
 });
