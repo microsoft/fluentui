@@ -11,6 +11,10 @@ export interface ITreeChartDataPoint {
    */
   subname?: string | undefined;
   /**
+   * Bodytext value (optional)
+   */
+  bodytext?: string | undefined;
+  /**
    * Metric text value (optional)
    */
   metric?: string | undefined;
@@ -127,6 +131,10 @@ export interface ITreeDataStructure {
    */
   subName?: string | undefined;
   /**
+   * Bodytext value (optional)
+   */
+  bodyText?: string | undefined;
+  /**
    * Metric text value (optional)
    */
   metricName?: string | undefined;
@@ -179,6 +187,10 @@ export interface ITreeStyles {
    *  Style for the node sub Text
    */
   rectSubText: IStyle;
+  /**
+   *  Style for the node body Text
+   */
+  rectBodyText: IStyle;
   /**
    *  Style for the node metric value Text
    */
