@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 

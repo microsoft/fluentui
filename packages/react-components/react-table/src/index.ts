@@ -90,7 +90,7 @@ export {
 export type { TableCellActionsProps, TableCellActionsSlots, TableCellActionsState } from './TableCellActions';
 export {
   TableCellPrimaryItem,
-  tablePrimaryCellClassNames,
+  tableCellPrimaryItemClassNames,
   useTableCellPrimaryItemStyles_unstable,
   useTableCellPrimaryItem_unstable,
   renderTableCellPrimaryItem_unstable,
@@ -106,5 +106,6 @@ export {
   useTableCellItemStyles_unstable,
   useTableCellItem_unstable,
   renderTableCellItem_unstable,
+  tableCellItemClassNames,
 } from './TableCellItem';
 export type { TableCellItemProps, TableCellItemSlots, TableCellItemState } from './TableCellItem';

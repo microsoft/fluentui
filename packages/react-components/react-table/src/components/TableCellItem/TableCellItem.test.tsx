@@ -7,6 +7,15 @@ describe('TableCellItem', () => {
   isConformant({
     Component: TableCellItem,
     displayName: 'TableCellItem',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            media: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

@@ -5,7 +5,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tableCellItemClassNames: SlotClassNames<TableCellItemSlots> = {
   root: 'fui-TableCellItem',
-  media: 'fui-TableCellItem_media',
+  media: 'fui-TableCellItem__media',
 };
 
 /**
@@ -34,7 +34,7 @@ export const useTableCellItemStyles_unstable = (state: TableCellItemState): Tabl
   const styles = useStyles();
   state.root.className = mergeClasses(tableCellItemClassNames.root, styles.root, state.root.className);
   if (state.media) {
-    state.media.className = mergeClasses(styles.media, state.media.className);
+    state.media.className = mergeClasses(tableCellItemClassNames.media, styles.media, state.media.className);
   }
 
   return state;

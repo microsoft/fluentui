@@ -4,7 +4,7 @@ import type { TableCellPrimaryItemSlots, TableCellPrimaryItemState } from './Tab
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useTableCellItemStyles_unstable } from '../TableCellItem/useTableCellItemStyles';
 
-export const tablePrimaryCellClassNames: SlotClassNames<TableCellPrimaryItemSlots> = {
+export const tableCellPrimaryItemClassNames: SlotClassNames<TableCellPrimaryItemSlots> = {
   root: 'fui-TableCellPrimaryItem',
   media: 'fui-TableCellPrimaryItem__media',
   main: 'fui-TableCellPrimaryItem__main',
@@ -44,26 +44,30 @@ const useStyles = makeStyles({
 export const useTableCellPrimaryItemStyles_unstable = (state: TableCellPrimaryItemState): TableCellPrimaryItemState => {
   useTableCellItemStyles_unstable(state);
   const styles = useStyles();
-  state.root.className = mergeClasses(tablePrimaryCellClassNames.root, state.root.className);
+  state.root.className = mergeClasses(tableCellPrimaryItemClassNames.root, state.root.className);
 
   if (state.media) {
-    state.media.className = mergeClasses(tablePrimaryCellClassNames.media, styles.media, state.media.className);
+    state.media.className = mergeClasses(tableCellPrimaryItemClassNames.media, styles.media, state.media.className);
   }
 
   if (state.main) {
-    state.main.className = mergeClasses(tablePrimaryCellClassNames.main, styles.main, state.main.className);
+    state.main.className = mergeClasses(tableCellPrimaryItemClassNames.main, styles.main, state.main.className);
   }
 
   if (state.secondary) {
     state.secondary.className = mergeClasses(
-      tablePrimaryCellClassNames.secondary,
+      tableCellPrimaryItemClassNames.secondary,
       styles.secondary,
       state.secondary.className,
     );
   }
 
   if (state.wrapper) {
-    state.wrapper.className = mergeClasses(tablePrimaryCellClassNames.wrapper, styles.wrapper, state.wrapper.className);
+    state.wrapper.className = mergeClasses(
+      tableCellPrimaryItemClassNames.wrapper,
+      styles.wrapper,
+      state.wrapper.className,
+    );
   }
 
   return state;
