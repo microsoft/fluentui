@@ -5,11 +5,16 @@ import { ToggleButtonProps, ButtonSlots, ToggleButtonState } from '@fluentui/rea
  * ToolbarToggleButton Props
  */
 export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> &
-  Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable'>> & {
+  Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
   };
 
 /**
  * State used in rendering ToolbarToggleButton
  */
-export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState;
+export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> &
+  ToggleButtonState &
+  Required<Pick<ToggleButtonProps, 'checked'>> & {
+    name?: string;
+    value?: string;
+  };

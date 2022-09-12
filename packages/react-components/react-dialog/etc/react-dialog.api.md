@@ -7,7 +7,6 @@
 /// <reference types="react" />
 
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -64,21 +63,10 @@ export type DialogBodySlots = {
 export type DialogBodyState = ComponentState<DialogBodySlots>;
 
 // @public (undocumented)
-export const dialogClassNames: SlotClassNames<DialogSlots>;
-
-// @public (undocumented)
 export type DialogOpenChangeData = {
     type: 'escapeKeyDown';
     open: boolean;
     event: React_2.KeyboardEvent;
-}
-/**
-* document escape keydown defers from internal escape keydown events because of the synthetic event API
-*/
-| {
-    type: 'documentEscapeKeyDown';
-    open: boolean;
-    event: KeyboardEvent;
 } | {
     type: 'backdropClick';
     open: boolean;
@@ -90,7 +78,7 @@ export type DialogOpenChangeData = {
 };
 
 // @public (undocumented)
-export type DialogOpenChangeEvent = React_2.KeyboardEvent | React_2.MouseEvent | KeyboardEvent;
+export type DialogOpenChangeEvent = React_2.KeyboardEvent | React_2.MouseEvent;
 
 // @public (undocumented)
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
@@ -102,9 +90,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 };
 
 // @public (undocumented)
-export type DialogSlots = {
-    backdrop?: Slot<'div'>;
-};
+export type DialogSlots = {};
 
 // @public (undocumented)
 export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
@@ -119,11 +105,12 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {};
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
-    root: Slot<'div', 'main'>;
+    backdrop?: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -141,7 +128,7 @@ export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
 // @public (undocumented)
 export type DialogTitleSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    closeButton?: Slot<ARIAButtonSlotProps>;
+    action?: Slot<'div'>;
 };
 
 // @public
@@ -204,10 +191,7 @@ export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<H
 export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
 
 // @public
-export const useDialogStyles_unstable: (state: DialogState) => DialogState;
-
-// @public
-export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<HTMLElement>) => DialogSurfaceState;
+export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;
 
 // @public
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;

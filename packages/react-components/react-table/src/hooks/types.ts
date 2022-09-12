@@ -4,6 +4,13 @@ export type RowId = string | number;
 export type ColumnId = string | number;
 export type GetRowIdInternal<TItem> = (rowId: TItem, index: number) => RowId;
 export type SelectionMode = 'single' | 'multiselect';
+export type OnSelectionChangeCallback = (selectedItems: Set<RowId>) => void;
+export type OnSortChangeCallback = (state: { sortColumn: ColumnId | undefined; sortDirection: SortDirection }) => void;
+
+export interface SortState {
+  sortColumn: ColumnId | undefined;
+  sortDirection: SortDirection;
+}
 
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
@@ -12,10 +19,10 @@ export interface ColumnDefinition<TItem> {
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,
-  state: { selection: SelectionState; sort: SortState },
+  state: { selection: TableSelectionState; sort: TableSortState },
 ) => TRowState;
 
-export interface SortStateInternal<TItem> {
+export interface TableSortStateInternal<TItem> {
   sortDirection: SortDirection;
   sortColumn: ColumnId | undefined;
   setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
@@ -31,11 +38,35 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
   selectionMode?: SelectionMode;
+  /**
+   * Used in uncontrolled mode to set initial selected rows on mount
+   */
+  defaultSelectedRows?: Set<RowId>;
+  /**
+   * Used to control row selection
+   */
+  selectedRows?: Set<RowId>;
+  /**
+   * Called when selection changes
+   */
+  onSelectionChange?: OnSelectionChangeCallback;
+  /**
+   * Used to control sorting
+   */
+  sortState?: SortState;
+  /**
+   * Used in uncontrolled mode to set initial sort column and direction on mount
+   */
+  defaultSortState?: SortState;
+  /**
+   * Called when sort changes
+   */
+  onSortChange?: OnSortChangeCallback;
   getRowId?: (item: TItem) => RowId;
   rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }
 
-export interface SelectionStateInternal {
+export interface TableSelectionStateInternal {
   clearRows: () => void;
   deselectRow: (rowId: RowId) => void;
   selectRow: (rowId: RowId) => void;
@@ -47,7 +78,7 @@ export interface SelectionStateInternal {
   someRowsSelected: boolean;
 }
 
-export interface SortState {
+export interface TableSortState {
   /**
    * Current sort direction
    */
@@ -71,7 +102,7 @@ export interface SortState {
   getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
 }
 
-export interface SelectionState {
+export interface TableSelectionState {
   /**
    * Clears all selected rows
    */
@@ -130,9 +161,9 @@ export interface TableState<TItem, TRowState extends RowState<TItem> = RowState<
   /**
    * State and actions to manage row selection
    */
-  selection: SelectionState;
+  selection: TableSelectionState;
   /**
    * State and actions to manage row sorting
    */
-  sort: SortState;
+  sort: TableSortState;
 }

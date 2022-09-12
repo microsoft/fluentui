@@ -40,7 +40,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandForeground1: brand[80], // #0078d4 Global.Color.Brand.80
   colorBrandForeground2: brand[70], // #106ebe Global.Color.Brand.70
   colorNeutralForeground1Static: grey[14], // #242424 Global.Color.Grey.14
-  colorNeutralForegroundInvertedStatic: white, // #ffffff Global.Color.White
+  colorNeutralForegroundStaticInverted: white, // #ffffff Global.Color.White
   colorNeutralForegroundInverted: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedHover: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedPressed: white, // #ffffff Global.Color.White

@@ -101,6 +101,7 @@ export const MultipleSelect = () => {
   } = useTable({
     columns,
     items,
+    defaultSelectedRows: new Set([0, 1]),
     rowEnhancer: (row, { selection }) => ({
       ...row,
       onClick: () => selection.toggleRow(row.rowId),

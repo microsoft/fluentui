@@ -128,6 +128,9 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
           '::-ms-clear': {
             display: 'none',
           },
+          '&:placeholder-shown': {
+            textOverflow: 'ellipsis',
+          },
         },
       },
       getPlaceholderStyles(placeholderStyles),

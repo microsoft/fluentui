@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
+import { makeStyles } from '@griffel/react';
 
 const steps = new Screener.Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
@@ -12,6 +13,12 @@ const steps = new Screener.Steps()
   .end();
 
 const buttonId = 'button-id';
+
+const useStyles = makeStyles({
+  longText: {
+    width: '280px',
+  },
+});
 
 storiesOf('Button Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
@@ -127,6 +134,30 @@ storiesOf('Button Converged', module)
       Hello, world
     </Button>
   ))
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <Button id={buttonId} className={styles.longText} icon="X" size="small">
+        Long text wraps after it hits the max width of the component
+      </Button>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <Button id={buttonId} className={styles.longText} icon="X" size="medium">
+        Long text wraps after it hits the max width of the component
+      </Button>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <Button id={buttonId} className={styles.longText} icon="X" size="large">
+        Long text wraps after it hits the max width of the component
+      </Button>
+    );
+  })
   .addStory(
     'With icon before content',
     () => (
@@ -257,7 +288,48 @@ storiesOf('CompoundButton Converged', module)
       Hello, world
     </CompoundButton>
   ))
-
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <CompoundButton
+        id={buttonId}
+        className={styles.longText}
+        secondaryContent="This is some secondary text"
+        icon="X"
+        size="small"
+      >
+        Long text wraps after it hits the max width of the component
+      </CompoundButton>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <CompoundButton
+        id={buttonId}
+        className={styles.longText}
+        secondaryContent="This is some secondary text"
+        icon="X"
+        size="medium"
+      >
+        Long text wraps after it hits the max width of the component
+      </CompoundButton>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <CompoundButton
+        id={buttonId}
+        className={styles.longText}
+        secondaryContent="This is some secondary text"
+        icon="X"
+        size="large"
+      >
+        Long text wraps after it hits the max width of the component
+      </CompoundButton>
+    );
+  })
   .addStory('Icon only', () => <CompoundButton id={buttonId} icon="X" />)
   .addStory('Circular and icon only', () => <CompoundButton id={buttonId} shape="circular" icon="X" />, {
     includeRtl: true,
@@ -332,6 +404,30 @@ storiesOf('ToggleButton Converged', module)
       Hello, world
     </ToggleButton>
   ))
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <ToggleButton id={buttonId} className={styles.longText} icon="X" size="small">
+        Long text wraps after it hits the max width of the component
+      </ToggleButton>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <ToggleButton id={buttonId} className={styles.longText} icon="X" size="medium">
+        Long text wraps after it hits the max width of the component
+      </ToggleButton>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <ToggleButton id={buttonId} className={styles.longText} icon="X" size="large">
+        Long text wraps after it hits the max width of the component
+      </ToggleButton>
+    );
+  })
   .addStory('With icon before content', () => (
     <ToggleButton id={buttonId} icon="X">
       Hello, world
@@ -428,6 +524,30 @@ storiesOf('MenuButton Converged', module)
       Hello, world
     </MenuButton>
   ))
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <MenuButton id={buttonId} className={styles.longText} icon="X" size="small">
+        Long text wraps after it hits the max width of the component
+      </MenuButton>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <MenuButton id={buttonId} className={styles.longText} icon="X" size="medium">
+        Long text wraps after it hits the max width of the component
+      </MenuButton>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <MenuButton id={buttonId} className={styles.longText} icon="X" size="large">
+        Long text wraps after it hits the max width of the component
+      </MenuButton>
+    );
+  })
   .addStory('With icon', () => (
     <MenuButton id={buttonId} icon="X">
       Hello, world

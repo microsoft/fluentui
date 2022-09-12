@@ -62,7 +62,7 @@ export type ComboboxBaseProps = SelectionProps & {
 
   /**
    * The value displayed by the Combobox.
-   * Use this with `onSelect` to directly control the displayed value string
+   * Use this with `onOptionSelect` to directly control the displayed value string
    */
   value?: string;
 };

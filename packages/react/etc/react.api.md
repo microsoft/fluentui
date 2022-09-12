@@ -871,6 +871,19 @@ export class Button extends React_2.Component<IButtonProps, {}> {
 }
 
 // @public (undocumented)
+export const ButtonGlobalClassNames: {
+    msButton: string;
+    msButtonHasMenu: string;
+    msButtonIcon: string;
+    msButtonMenuIcon: string;
+    msButtonLabel: string;
+    msButtonDescription: string;
+    msButtonScreenReaderText: string;
+    msButtonFlexContainer: string;
+    msButtonTextContainer: string;
+};
+
+// @public (undocumented)
 export const ButtonGrid: React_2.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
@@ -2400,6 +2413,8 @@ export interface IBasePickerState<T> {
     selectionRemoved?: T;
     // (undocumented)
     suggestedDisplayValue?: string;
+    // (undocumented)
+    suggestionsExtendedLoading?: boolean;
     // (undocumented)
     suggestionsLoading?: boolean;
     // (undocumented)
@@ -8917,6 +8932,7 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
     forceResolveText?: string;
+    isExtendedLoading?: boolean;
     isLoading?: boolean;
     isMostRecentlyUsedVisible?: boolean;
     isResultsFooterVisible?: boolean;

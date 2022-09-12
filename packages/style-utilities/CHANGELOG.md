@@ -1,8 +1,27 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Mon, 29 Aug 2022 07:44:38 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 07:48:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.12](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.12)
+
+Fri, 02 Sep 2022 07:48:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.11..@fluentui/style-utilities_v8.7.12)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.16 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/utilities to v8.13.1 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+
+## [8.7.11](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.11)
+
+Thu, 01 Sep 2022 07:48:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.10..@fluentui/style-utilities_v8.7.11)
+
+### Patches
+
+- chore: Add radius option to getFocusStyles ([PR #24596](https://github.com/microsoft/fluentui/pull/24596) by mgodbolt@microsoft.com)
 
 ## [8.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.10)
 
