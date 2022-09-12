@@ -79,7 +79,6 @@ export interface ChatMessageSlotClassNames {
   bubbleInset: string;
   body: string;
   compactBody: string;
-  content: string;
   reactionGroup: string;
   timestamp: string;
 }
@@ -228,7 +227,6 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   bubble: `${chatMessageClassName}__bubble`,
   bubbleInset: `${chatMessageClassName}__bubble-inset`,
   compactBody: `${chatMessageClassName}__compact-body`,
-  content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
   timestamp: `${chatMessageClassName}__timestamp`,
 };
