@@ -111,18 +111,18 @@ const useCheckedStyles = makeStyles({
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground2Selected,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor(tokens.colorTransparentStroke),
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor(tokens.colorTransparentStroke),
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
