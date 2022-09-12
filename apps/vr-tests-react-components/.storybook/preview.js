@@ -25,27 +25,41 @@ setAddon({
    */
   addStory(storyName, storyFn, config = {}) {
     this.add(storyName, (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
-      return <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>;
+      return (
+        <React.StrictMode>
+          <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>
+        </React.StrictMode>
+      );
     });
     if (config.includeRtl) {
       this.add(storyName + ' - RTL', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
         return (
-          <FluentProvider theme={webLightTheme} dir="rtl">
-            {storyFn(context)}
-          </FluentProvider>
+          <React.StrictMode>
+            <FluentProvider theme={webLightTheme} dir="rtl">
+              {storyFn(context)}
+            </FluentProvider>
+          </React.StrictMode>
         );
       });
     }
     if (config.includeDarkMode) {
       this.add(storyName + ' - Dark Mode', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
-        return <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>;
+        return (
+          <React.StrictMode>
+            <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>
+          </React.StrictMode>
+        );
       });
     }
     if (config.includeHighContrast) {
       this.add(storyName + ' - High Contrast', (
         /** @type {import('../src/utilities/types').StoryContext} */ context,
       ) => {
-        return <FluentProvider theme={teamsHighContrastTheme}>{storyFn(context)}</FluentProvider>;
+        return (
+          <React.StrictMode>
+            <FluentProvider theme={teamsHighContrastTheme}>{storyFn(context)}</FluentProvider>
+          </React.StrictMode>
+        );
       });
     }
 

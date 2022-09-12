@@ -14,7 +14,9 @@
     "type-check": "tsc"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.6"
   },
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.4",
@@ -50,8 +52,23 @@
     "@fluentui/react-utilities": "^9.0.2",
     "@fluentui/scripts": "^1.0.0",
     "@griffel/react": "^1.3.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "@storybook/addon-a11y": "6.5.10",
+    "@storybook/addon-actions": "6.5.10",
+    "@storybook/addon-docs": "6.5.10",
+    "@storybook/addon-essentials": "6.5.10",
+    "@storybook/addons": "6.5.10",
+    "@storybook/api": "6.5.10",
+    "@storybook/builder-webpack5": "6.5.10",
+    "@storybook/channels": "6.5.10",
+    "@storybook/client-api": "6.5.10",
+    "@storybook/components": "6.5.10",
+    "@storybook/core": "6.5.10",
+    "@storybook/core-events": "6.5.10",
+    "@storybook/manager-webpack5": "6.5.10",
+    "@storybook/react": "6.5.10",
+    "@storybook/theming": "6.5.10",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "screener-storybook": "0.23.0",
     "tslib": "^2.1.0"
   }
