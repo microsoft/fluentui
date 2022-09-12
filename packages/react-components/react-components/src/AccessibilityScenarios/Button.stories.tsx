@@ -5,7 +5,6 @@ import { Button } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
 export const MessengerButtons: React.FunctionComponent = () => {
-  const [sendButtonDisabled, setSendButtonDisabled] = React.useState<boolean | undefined>(true);
   const [deleteButtonDisabled, setDeleteButtonDisabled] = React.useState<boolean | undefined>(true);
   const [increaseFontButtonDisabled, setIncreaseFontButtonDisabled] = React.useState<boolean | undefined>(undefined);
   const [decreaseFontButtonDisabled, setDecreaseFontButtonDisabled] = React.useState<boolean | undefined>(true);
@@ -23,13 +22,16 @@ export const MessengerButtons: React.FunctionComponent = () => {
 
   const resetMessage = () => {
     setMessage('');
-    setSendButtonDisabled(true);
     setDeleteButtonDisabled(true);
   };
 
   const onSendButtonClick = () => {
+    if (message.length > 0) {
+      setStatusText('Message has been sent.');
+    } else {
+      setStatusText('Please type a message.');
+    }
     resetMessage();
-    setStatusText('Message has been sent.');
   };
   const onDeleteButtonClick = () => {
     resetMessage();
@@ -59,11 +61,9 @@ export const MessengerButtons: React.FunctionComponent = () => {
   const onMessageTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value;
     if (value.length > 0) {
-      setSendButtonDisabled(undefined);
       setDeleteButtonDisabled(undefined);
       setStatusText('');
     } else {
-      setSendButtonDisabled(true);
       setDeleteButtonDisabled(true);
     }
     setMessage(value);
@@ -87,9 +87,7 @@ export const MessengerButtons: React.FunctionComponent = () => {
         value={message}
         style={messageStyle}
       />
-      <Button disabledFocusable={sendButtonDisabled} onClick={onSendButtonClick}>
-        Send
-      </Button>
+      <Button onClick={onSendButtonClick}>Send</Button>
       <Button disabledFocusable={deleteButtonDisabled} onClick={onDeleteButtonClick}>
         Delete
       </Button>
