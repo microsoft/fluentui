@@ -87,7 +87,7 @@ class StandardTree {
     subname: string | undefined,
     bodytext: string | undefined,
     metricName: string | undefined,
-    xCoordinate: number,
+    xCenterCoordinate: number,
     yCoordinate: number,
     fillColor: string,
     rectangleWidth: number,
@@ -96,13 +96,13 @@ class StandardTree {
     parentInfo: string,
   ) {
     const ariaLabel = `nodeId: ${nodeId} \nnodeMainText: ${name}\nsubText ${subname} ${parentInfo}`;
-    const x = xCoordinate - rectangleWidth / 2;
+    const xCoordinate = xCenterCoordinate - rectangleWidth / 2;
     if (metricName || nodeId !== 0 || !bodytext) {
       this._nodeElements.push(
         <rect
           width={rectangleWidth}
           height={rectangleHeight}
-          x={x}
+          x={xCoordinate}
           y={yCoordinate}
           tabIndex={0}
           role={'text'}
@@ -136,20 +136,20 @@ class StandardTree {
     // Sub-text position x = x + rectWidth/2, 2 is ratio for length
 
     const subValue = metricName ? (
-      <tspan className={this.styleClassNames.rectmetricText} dy="1.4em" x={x + rectangleWidth / 2}>
+      <tspan className={this.styleClassNames.rectmetricText} dy="1.4em" x={xCoordinate + rectangleWidth / 2}>
         {metricName}
       </tspan>
     ) : bodytext ? (
       <>
-        <tspan className={this.styleClassNames.rectSubText} dy="1.4em" x={x + rectangleWidth / 2}>
+        <tspan className={this.styleClassNames.rectSubText} dy="1.4em" x={xCoordinate + rectangleWidth / 2}>
           {subname}
         </tspan>
-        <tspan className={this.styleClassNames.rectBodyText} dy="1.4em" x={x + rectangleWidth / 2}>
+        <tspan className={this.styleClassNames.rectBodyText} dy="1.4em" x={xCoordinate + rectangleWidth / 2}>
           {bodytext}
         </tspan>
       </>
     ) : (
-      <tspan className={this.styleClassNames.rectSubText} dy="1.4em" x={x + rectangleWidth / 2}>
+      <tspan className={this.styleClassNames.rectSubText} dy="1.4em" x={xCoordinate + rectangleWidth / 2}>
         {subname}
       </tspan>
     );
@@ -160,7 +160,7 @@ class StandardTree {
           textAnchor="middle"
           className={this.styleClassNames.rectmetricText}
           dy={yCoordinate + rectangleHeight / 1.6}
-          x={x + rectangleWidth / 2}
+          x={xCoordinate + rectangleWidth / 2}
           key={`${nodeId}${this.styleClassNames.rectText}`}
         >
           {name}
@@ -172,7 +172,7 @@ class StandardTree {
           textAnchor="middle"
           className={metricName !== undefined ? this.styleClassNames.rectSubText : this.styleClassNames.rectText}
           dy={metricName !== undefined ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
-          x={x + rectangleWidth / 2}
+          x={xCoordinate + rectangleWidth / 2}
           key={`${nodeId}${this.styleClassNames.rectText}`}
         >
           {name}
@@ -251,7 +251,7 @@ class LayeredTree extends StandardTree {
     this.composition = composition;
     this._treeTraversal = _treeTraversal;
   }
-  public createTree(givenLayoutWidth: number | undefined, screenWidth: number, screenHeight: number) {
+  public createTree(givenLayoutWidth: number | undefined, screenWidth: number) {
     if (givenLayoutWidth !== undefined) {
       if (givenLayoutWidth < 65) {
         givenLayoutWidth = 65;
@@ -358,9 +358,9 @@ class LayeredTree extends StandardTree {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const children: any = treeDataStructure[d.parentID]?.children;
 
-        const dx1: number = treeDataStructure[d.parentID]?.x - newWidth / 2 - gap / 2;
-        const dx2: number = treeDataStructure[d.parentID]?.x + newWidth / 2 + gap / 2;
-        const dx3: number = treeDataStructure[d.parentID]?.x;
+        const compactNodeCenterX1: number = treeDataStructure[d.parentID]?.x - newWidth / 2 - gap / 2;
+        const compactNodeCenterX2: number = treeDataStructure[d.parentID]?.x + newWidth / 2 + gap / 2;
+        const longNodeCenterX: number = treeDataStructure[d.parentID]?.x;
         let dy: number = children[0]?.y;
 
         for (let itr = 0; itr < children.length; ++itr) {
@@ -375,7 +375,9 @@ class LayeredTree extends StandardTree {
                 child.data.subname,
                 child.data.bodytext,
                 child.data.metricName,
-                itr % 2 === 0 ? (children.length === 1 ? dx3 : dx1) : dx2,
+                // If the leaf node count is 1 ,
+                //irrespective of provided composition we should always use long composition
+                itr % 2 === 0 ? (children.length === 1 ? longNodeCenterX : compactNodeCenterX1) : compactNodeCenterX2,
                 dy,
                 child.data.fill,
                 children.length === 1 ? rectWidth : newWidth,
@@ -394,7 +396,7 @@ class LayeredTree extends StandardTree {
                 child.data.subname,
                 child.data.bodytext,
                 child.data.metricName,
-                dx3,
+                longNodeCenterX,
                 dy,
                 child.data.fill,
                 rectWidth,
@@ -414,7 +416,7 @@ class LayeredTree extends StandardTree {
                 child.data.subname,
                 child.data.bodytext,
                 child.data.metricName,
-                itr % 2 === 0 ? (children.length === 1 ? dx3 : dx1) : dx2,
+                itr % 2 === 0 ? (children.length === 1 ? longNodeCenterX : compactNodeCenterX1) : compactNodeCenterX2,
                 dy,
                 child.data.fill,
                 children.length === 1 ? rectWidth : newWidth,
@@ -431,7 +433,7 @@ class LayeredTree extends StandardTree {
                 child.data.subname,
                 child.data.bodytext,
                 child.data.metricName,
-                dx3,
+                longNodeCenterX,
                 dy,
                 child.data.fill,
                 rectWidth,
@@ -447,6 +449,7 @@ class LayeredTree extends StandardTree {
 
       if (d.children || treeHeight <= 2) {
         // <------------------ Nodes section ------------------>
+        // Since the height <=2 we will be using long compositon.
         this.addNodeShapetoSVG(
           d.dataName,
           d.subName,
@@ -556,8 +559,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       this._treeTraversal,
     );
     const width = this.state._width - this._margin.left - this._margin.right;
-    const height = this.state._height - this._margin.top - this._margin.bottom;
-    treeObject.createTree(this.props.layoutWidth, width, height);
+    treeObject.createTree(this.props.layoutWidth, width);
     this._nodeElements = nodeElements;
     this._linkElements = linkElements;
   }
