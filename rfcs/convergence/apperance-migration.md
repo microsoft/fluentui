@@ -1,6 +1,6 @@
 # RFC: Appearance migration
 
-@peta-duda
+[@petr-duda](https://github.com/petr-duda)
 
 ## Summary
 
@@ -28,6 +28,16 @@ Partners should also easily revert the decision to the default appearance value 
 
 Partners could create a new composed component in fluent and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composed component and have the default component without the appearance prop renders as `filled-darker`.
 
+#### Example
+
+```ts
+export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
+  const state = useInput_unstable({ appearance: 'filled-darker', ...props }, ref);
+
+  useInputStyles_unstable(state);
+  return renderInput_unstable(state);
+});
+```
 👍 Pros:
 
 - Is relatively safe
@@ -43,6 +53,14 @@ Partners could create a new composed component in fluent and modify the props in
 
 Partners could a new component wrapper that will wrap input components and modify the appearance prop on the application side.
 
+#### Example
+
+```tsx
+export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
+  return <BaseInput appearance='filled-darker' {...props} ref={ref} />
+})
+```
+
 👍 Pros:
 
 - Is safe and stable
@@ -50,6 +68,7 @@ Partners could a new component wrapper that will wrap input components and modif
 👎 Cons:
 
 - Creating new composed component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
+- Wrapper components in React's i.e. bigger React tree
 - Wrapper component apperance wouldn't match our Fluent V9 documentation
 - Would work in iframes only within the TMP repository
 - Does not work if repos have dependencies of another project with Fluent V9 input components (Nova)
@@ -104,3 +123,19 @@ Discuss with designers to unify V0 and V9 design, setting the appearance to fill
 
 - Inherits design from old V0 package that does not meet our needs/goals
 - According to the design team, this is currently a no-go
+
+### Use React context
+
+Another option is to use React Context to override `appearance` defaults in `FluentProvider`.
+
+#### Example
+
+```tsx
+function App() {
+  return (
+    <FluentProvider appearance="filled-darker">
+      <Input /> {/* has "filled-darker" */}
+      <Input appearance="underline" /> {/* has "underline" */}
+    </FluentProvider>
+  )
+}
