@@ -18,7 +18,6 @@ import {
   density,
   designUnit,
   disabledOpacity,
-  focusStrokeOuter,
   focusStrokeWidth,
   neutralFillSecondaryRecipe,
   neutralFillSecondaryRest,
@@ -31,6 +30,7 @@ import {
 } from '../design-tokens';
 import { Swatch } from '../color/swatch';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { insetFocusTreatment } from '../styles/patterns/focus';
 
 const ltr = css`
   .expand-collapse-button svg {
@@ -87,21 +87,12 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     ${display('block')} :host {
       contain: content;
       position: relative;
-      outline: none;
       color: ${neutralForegroundRest};
       fill: currentcolor;
       cursor: pointer;
       font-family: ${bodyFont};
       --expand-collapse-button-size: calc(${heightNumber} * 1px);
       --tree-item-nested-width: 0;
-    }
-
-    :host(:focus) > .positioning-region {
-      outline: none;
-    }
-
-    :host(:focus) .content-region {
-      outline: none;
     }
 
     .positioning-region {
@@ -115,8 +106,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(:${focusVisible}) .positioning-region {
-      border-color: ${focusStrokeOuter};
-      box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset;
+      ${insetFocusTreatment}
     }
 
     .positioning-region::before {
@@ -156,7 +146,6 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       background: none;
       border: none;
       border-radius: calc(${controlCornerRadius} * 1px);
-      outline: none;
       ${
         /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) -
             update when density story is figured out */ ''
@@ -269,8 +258,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
         }
         :host(:${focusVisible}) .positioning-region {
           forced-color-adjust: none;
-          border-color: ${SystemColors.ButtonText};
-          box-shadow: 0 0 0 2px inset ${SystemColors.ButtonFace};
+          outline-color: ${SystemColors.ButtonFace};
         }
         :host([disabled]),
         :host([disabled]) .content-region,

@@ -14,7 +14,6 @@ import {
   controlCornerRadius,
   designUnit,
   disabledOpacity,
-  focusStrokeOuter,
   focusStrokeWidth,
   neutralFillSecondaryActive,
   neutralFillSecondaryHover,
@@ -26,6 +25,7 @@ import {
   neutralForegroundRest,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { insetFocusTreatment } from '../styles/patterns/focus';
 
 export const optionStyles: (
   context: ElementDefinitionContext,
@@ -37,13 +37,11 @@ export const optionStyles: (
       ${typeRampBase}
       background: ${neutralFillStealthRest};
       border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${focusStrokeWidth} * 1px) solid transparent;
       box-sizing: border-box;
       color: ${neutralForegroundRest};
       cursor: pointer;
       fill: currentcolor;
       height: calc(${heightNumber} * 1px);
-      outline: none;
       overflow: hidden;
       align-items: center;
       padding: 0 calc(${designUnit} * 2.25px);
@@ -81,7 +79,7 @@ export const optionStyles: (
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
+      ${insetFocusTreatment}
       background: ${neutralFillStealthFocus};
     }
 
@@ -155,6 +153,9 @@ export const optionStyles: (
           color: ${SystemColors.GrayText};
           fill: currentcolor;
           opacity: 1;
+        }
+        :host(:${focusVisible}) {
+          outline-color: ${SystemColors.CanvasText};
         }
       `,
     ),

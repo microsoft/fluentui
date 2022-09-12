@@ -9,11 +9,10 @@ import {
 import {
   controlCornerRadius,
   designUnit,
-  focusStrokeOuter,
-  focusStrokeWidth,
   neutralForegroundRest,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { insetFocusTreatment } from '../styles/patterns/focus';
 
 export const dataGridCellStyles: (
   context: ElementDefinitionContext,
@@ -25,9 +24,7 @@ export const dataGridCellStyles: (
       color: ${neutralForegroundRest};
       box-sizing: border-box;
       ${typeRampBase}
-      border: transparent calc(${focusStrokeWidth} * 1px) solid;
       overflow: hidden;
-      outline: none;
       white-space: nowrap;
       border-radius: calc(${controlCornerRadius} * 1px);
     }
@@ -37,22 +34,19 @@ export const dataGridCellStyles: (
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
+      ${insetFocusTreatment}
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
         :host {
           forced-color-adjust: none;
-          border-color: transparent;
           background: ${SystemColors.Field};
           color: ${SystemColors.FieldText};
         }
 
         :host(:${focusVisible}) {
-          border-color: ${SystemColors.FieldText};
-          box-shadow: 0 0 0 2px inset ${SystemColors.Field};
-          color: ${SystemColors.FieldText};
+          outline-color: ${SystemColors.FieldText};
         }
       `,
     ),
