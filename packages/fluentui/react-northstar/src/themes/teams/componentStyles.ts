@@ -34,7 +34,7 @@ export { chatItemStyles as ChatItem } from './components/Chat/chatItemStyles';
 export { chatMessageStyles as ChatMessage } from './components/Chat/chatMessageStyles';
 export { chatMessageDetailsStyles as ChatMessageDetails } from './components/Chat/chatMessageDetailsStyles';
 export { chatMessageReadStatusStyles as ChatMessageReadStatus } from './components/Chat/chatMessageReadStatusStyles';
-export { chatMessageTimestampStyles as ChatMessageTimestampStyles } from './components/Chat/chatMessageTimestampStyles';
+export { chatMessageTimestampStyles as ChatMessageTimestamp } from './components/Chat/chatMessageTimestampStyles';
 
 export { checkboxStyles as Checkbox } from './components/Checkbox/checkboxStyles';
 

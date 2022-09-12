@@ -81,7 +81,6 @@ export interface ChatMessageSlotClassNames {
   compactBody: string;
   content: string;
   reactionGroup: string;
-  timestamp: string;
 }
 
 export type ChatMessageLayout = 'default' | 'refresh';
@@ -230,7 +229,6 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   compactBody: `${chatMessageClassName}__compact-body`,
   content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
-  timestamp: `${chatMessageClassName}__timestamp`,
 };
 
 function partitionActionMenuPropsFromShorthand<P>(
@@ -536,7 +534,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   });
 
   const timestampElement = createShorthand(ChatMessageTimestamp, timestamp, {
-    defaultProps: () => ({ size: 'small' }),
+    defaultProps: () => ({ attached, density, hasHeaderReactionGroup, unstable_layout: layout }),
     overrideProps: predefinedProps => ({
       variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     }),
