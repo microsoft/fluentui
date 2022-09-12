@@ -7,4 +7,4 @@ export const dialogSurfaceSelector = `.${dialogSurfaceClassNames.root}`;
 export const dialogTriggerOpenSelector = `[aria-haspopup="dialog"]`;
 export const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
 export const dialogTitleSelector = `.${dialogTitleClassNames.root}`;
-export const dialogCloseButtonSelector = `.${dialogTitleClassNames.closeButton}`;
+export const dialogActionSelector = `.${dialogTitleClassNames.action}`;

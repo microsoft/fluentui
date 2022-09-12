@@ -11,7 +11,7 @@ import {
   DIALOG_GAP,
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
   BODY_GRID_AREA,
-  CLOSE_BUTTON_GRID_AREA,
+  TITLE_ACTION_GRID_AREA,
 } from '../../contexts/constants';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     gridTemplateRows: 'auto 1fr auto',
     gridTemplateColumns: '1fr 1fr auto',
     gridTemplateAreas: `
-      "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${CLOSE_BUTTON_GRID_AREA}"
+      "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
       "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
       "${ACTIONS_START_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
     `,
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
       maxWidth: '100vw',
       gridTemplateRows: 'auto 1fr auto auto',
       gridTemplateAreas: `
-        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${CLOSE_BUTTON_GRID_AREA}"
+        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
         "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
         "${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA}"
         "${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"

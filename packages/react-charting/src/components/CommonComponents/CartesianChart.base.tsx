@@ -496,25 +496,29 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         // If there is no legend, need not to allocate some space from total chart space.
         legendContainerHeight = 0;
       } else {
-        const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+        const legendContainerComputedStyles = this.legendContainer && getComputedStyle(this.legendContainer);
         legendContainerHeight =
-          (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
-          parseFloat(legendContainerComputedStyles.marginTop || '0') +
-          parseFloat(legendContainerComputedStyles.marginBottom || '0');
+          ((this.legendContainer && this.legendContainer.getBoundingClientRect().height) ||
+            this.minLegendContainerHeight) +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
       }
-      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight =
-        container.getBoundingClientRect().height > legendContainerHeight
-          ? container.getBoundingClientRect().height
-          : 350;
-      const shouldResize =
-        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+      if (this.props.parentRef || this.chartContainer) {
+        const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
+        const currentContainerWidth = container.getBoundingClientRect().width;
+        const currentContainerHeight =
+          container.getBoundingClientRect().height > legendContainerHeight
+            ? container.getBoundingClientRect().height
+            : 350;
+        const shouldResize =
+          containerWidth !== currentContainerWidth ||
+          containerHeight !== currentContainerHeight - legendContainerHeight;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          });
+        }
       }
     });
   }
