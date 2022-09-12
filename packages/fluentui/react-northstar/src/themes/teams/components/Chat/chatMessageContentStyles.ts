@@ -38,8 +38,7 @@ export const chatMessageContentStyles: ComponentSlotStylesPrepared<
   ChatMessageContentStylesProps,
   ChatMessageVariables
 > = {
-  root: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const { props: p, variables: v } = componentStyleFunctionParam;
+  root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       color: v.contentColor,
       display: 'block',
