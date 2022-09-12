@@ -60,7 +60,7 @@ const columns = [
 
 export const SizeSmall = () => {
   return (
-    <Table noNativeElements size="small">
+    <Table size="small">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -77,7 +77,11 @@ export const SizeSmall = () => {
             <TableCell>
               <TableCellItem
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                    size={24}
+                  />
                 }
               >
                 {item.author.label}
