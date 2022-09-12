@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-docsite-components",
-  "version": "8.9.34",
+  "version": "8.9.35",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
     "@fluentui/theme": "^2.6.16",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.4.2",
-    "@fluentui/public-docsite-setup": "^0.3.11",
+    "@fluentui/public-docsite-setup": "^0.3.12",
     "@fluentui/react-hooks": "^8.6.11",
     "@fluentui/set-version": "^8.2.2",
     "@fluentui/react-monaco-editor": "^1.6.34",

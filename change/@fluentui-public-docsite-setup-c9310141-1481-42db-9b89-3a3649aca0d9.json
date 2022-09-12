@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "return skipToMain functionality and hide back to top button",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
