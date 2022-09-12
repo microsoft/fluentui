@@ -4,21 +4,12 @@ import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 import { ChatDensity } from './chatDensity';
-import { ChatMessageLayout } from './ChatMessage';
+import { ChatMessageLayout, ChatMessageProps } from './ChatMessage';
 
-export interface ChatMessageContentOwnProps {
-  /** A message can format the badge to appear at the start or the end of the message. */
-  badgePosition?: 'start' | 'end';
-  /** Chat density. */
-  density?: ChatDensity;
-  /** Indicates whether the message is in a failed state. */
-  failed?: boolean;
+export interface ChatMessageContentOwnProps
+  extends Pick<ChatMessageProps, 'badgePosition' | 'density' | 'failed' | 'mine' | 'unstable_layout'> {
   /** Indicates whether parent ChatMessage has badge. */
   hasBadge?: boolean;
-  /** Indicates whether message belongs to the current user. */
-  mine?: boolean;
-  /** A message can render with different layouts. */
-  unstable_layout?: ChatMessageLayout;
 }
 export interface ChatMessageContentProps extends ChatMessageContentOwnProps, BoxProps {}
 
