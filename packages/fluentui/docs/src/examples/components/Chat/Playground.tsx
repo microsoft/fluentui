@@ -130,7 +130,6 @@ const ChatPlayground: React.FunctionComponent = () => {
     <Chat density={density}>
       <ChatItem
         gutter={<Avatar icon={<PersonIcon />} size={size} />}
-        key="1"
         message={<Chat.Message mine={mine} reactionGroupPosition={reactionGroupPosition} {...chatMessageProps} />}
         {...chatItemProps}
       />
