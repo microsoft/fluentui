@@ -270,11 +270,11 @@ const useRootDisabledStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: tokens.colorTransparentBackground,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorTransparentBackground,
     },
   },
   primary: {
@@ -296,12 +296,12 @@ const useRootDisabledStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -310,12 +310,12 @@ const useRootDisabledStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
