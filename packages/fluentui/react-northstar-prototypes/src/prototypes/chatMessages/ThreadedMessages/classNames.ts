@@ -4,6 +4,7 @@ import {
   chatItemSlotClassNames,
   chatItemClassName,
   chatMessageClassName,
+  chatMessageTimestampClassName,
 } from '@fluentui/react-northstar';
 
 const classNames = {
@@ -12,7 +13,7 @@ const classNames = {
     threadBody: `${chatMessageClassName}__thread-body`,
     innerContent: `${chatMessageSlotClassNames.content}-inner`,
     author: `${chatMessageSlotClassNames.author}-inner`,
-    timestamp: `${chatMessageSlotClassNames.timestamp}-inner`,
+    timestamp: `${chatMessageTimestampClassName}-inner`,
   },
   threadReplies: {
     trigger: `${buttonClassName}__reply`,

@@ -1,6 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import { chatMessageTimestampClassName } from '../../../../components/Chat/ChatMessageTimestamp';
 import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
@@ -13,7 +14,7 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
     const highlight = {
       backgroundColor: v.compactHoverBackground,
       border: v.compactHoverBorder,
-      [`& .${chatMessageSlotClassNames.timestamp}`]: {
+      [`& .${chatMessageTimestampClassName}`]: {
         opacity: 1,
       },
     };

@@ -5,6 +5,7 @@ import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../c
 import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ChatMessageVariables } from './chatMessageVariables';
+import { chatMessageTimestampClassName } from '../../../../components/Chat/ChatMessageTimestamp';
 
 const displayActionMenu = (overlayZIndex: ICSSInJSStyle['zIndex']): ICSSInJSStyle => ({
   zIndex: overlayZIndex!,
@@ -31,7 +32,7 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
       alignItems: p.mine ? 'flex-end' : 'flex-start',
       outline: 'none',
 
-      [`&:focus-visible .${chatMessageSlotClassNames.timestamp}`]: {
+      [`&:focus-visible .${chatMessageTimestampClassName}`]: {
         opacity: 1,
       },
 
@@ -113,7 +114,7 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
           }),
         }),
 
-      [`&:hover + .${chatMessageSlotClassNames.bubbleInset} .${chatMessageSlotClassNames.timestamp}`]: {
+      [`&:hover + .${chatMessageSlotClassNames.bubbleInset} .${chatMessageTimestampClassName}`]: {
         opacity: 1,
       },
 
@@ -144,7 +145,7 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
     paddingRight: v.hasReducedHorizontalSpace ? pxToRem(2.5) : pxToRem(5),
     ...(p.mine ? { right: '100%', flexDirection: 'row-reverse' } : { left: '100%' }),
 
-    [`&:hover .${chatMessageSlotClassNames.timestamp}`]: {
+    [`&:hover .${chatMessageTimestampClassName}`]: {
       opacity: 1,
     },
   }),
