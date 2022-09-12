@@ -39,34 +39,6 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '87%',
     },
-    {
-      legend: 'A',
-      data: 1,
-      color: DefaultPalette.red,
-      xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '40%',
-    },
-    {
-      legend: 'B',
-      data: 1,
-      color: DefaultPalette.red,
-      xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '40%',
-    },
-    {
-      legend: 'C',
-      data: 1,
-      color: DefaultPalette.red,
-      xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '40%',
-    },
-    {
-      legend: 'D',
-      data: 1,
-      color: DefaultPalette.red,
-      xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '40%',
-    },
   ];
   const firstChartPoints1: IChartDataPoint[] = [
     {
