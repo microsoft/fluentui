@@ -30,6 +30,13 @@ require('tsconfig-paths').register({
 });
 
 const baseBranch = 'master';
+
+/**
+ *
+ * @param {string} SCREENER_API_KEY
+ * @param {string} BUILD_SOURCEBRANCHNAME
+ * @returns
+ */
 function getConfig(SCREENER_API_KEY, BUILD_SOURCEBRANCHNAME) {
   // https://github.com/screener-io/screener-runner
   return {

@@ -20,23 +20,39 @@ function getCurrentHash() {
   return '';
 }
 
-const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-  ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
-  : 'master';
+/**
+ *
+ * @param {string} SCREENER_API_KEY
+ * @param {string} BUILD_SOURCEBRANCHNAME
+ * @param {string} DEPLOYURL
+ * @param {string} SYSTEM_PULLREQUEST_TARGETBRANCH
+ * @returns
+ */
+function getConfig(
+  SCREENER_API_KEY,
+  BUILD_SOURCEBRANCHNAME,
+  DEPLOYURL,
+  SYSTEM_PULLREQUEST_TARGETBRANCH,
+) {
+  const baseBranch = SYSTEM_PULLREQUEST_TARGETBRANCH
+    ? SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
+    : 'master';
 
-// https://github.com/screener-io/screener-storybook#additional-configuration-options
-const config = {
-  projectRepo: 'microsoft/fluentui',
-  storybookStaticBuildDir: 'dist/storybook',
-  storybookConfigDir: '.storybook',
-  apiKey: process.env.SCREENER_API_KEY,
-  resolution: '1024x768',
-  baseBranch,
-  failureExitCode: 0,
-  alwaysAcceptBaseBranch: true,
-  ...(process.env.BUILD_SOURCEBRANCHNAME !== 'master' ? { commit: getCurrentHash() } : null),
-  baseUrl: `${process.env.DEPLOYURL}/react-screener/iframe.html`,
-};
-console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
+  // https://github.com/screener-io/screener-storybook#additional-configuration-options
+  const config = {
+    projectRepo: 'microsoft/fluentui',
+    storybookStaticBuildDir: 'dist/storybook',
+    storybookConfigDir: '.storybook',
+    apiKey: SCREENER_API_KEY,
+    resolution: '1024x768',
+    baseBranch,
+    failureExitCode: 0,
+    alwaysAcceptBaseBranch: true,
+    ...(BUILD_SOURCEBRANCHNAME !== 'master' ? { commit: getCurrentHash() } : null),
+    baseUrl: `${DEPLOYURL}/react-screener/iframe.html`,
+  };
+  console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
+  return config;
+}
 
-module.exports = config;
+module.exports = getConfig;
