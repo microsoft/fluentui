@@ -82,15 +82,6 @@ There are 2 sizing variants:
 - scaled: The content will be resized based on the number of text lines.
 - fixed: The content will remain the same size and the text lines will be styled based on the content's size.
 
-**⚠️Responsive text variants will be left out of the initial implementation due to the accessibility concerns, but they are added to this spec to start a discussion⚠️**
-
-There are 4 responsive text variants:
-
-- truncate: simple text truncation when the text doesn't fit in the container.
-- hidden: same as truncate, but has a default `min-width` of 36px. If the width is less than `min-width`, then the text is hidden.
-- wrap: simple text wrap. This can be opted-in per text slot.
-- lineclamp truncate: wraps text until specified number of lines and after those lines it truncates the text.
-
 ## API
 
 **Slots**
