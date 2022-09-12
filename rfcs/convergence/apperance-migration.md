@@ -24,9 +24,9 @@ Partners should also easily revert the decision to the default appearance value 
 
 ## Detailed Design or Proposal
 
-### Composed component
+### Compose components on application side
 
-Partners could create a new composed component in fluent and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composed component and have the default component without the appearance prop renders as `filled-darker`.
+Partners could create a new composed component on application side. and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composed component and have the default component without the appearance prop renders as `filled-darker`.
 
 #### Example
 
@@ -38,6 +38,7 @@ export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, r
   return renderInput_unstable(state);
 });
 ```
+
 👍 Pros:
 
 - Is relatively safe
@@ -57,8 +58,8 @@ Partners could a new component wrapper that will wrap input components and modif
 
 ```tsx
 export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
-  return <BaseInput appearance='filled-darker' {...props} ref={ref} />
-})
+  return <BaseInput appearance="filled-darker" {...props} ref={ref} />;
+});
 ```
 
 👍 Pros:
@@ -102,13 +103,15 @@ Adding a new alias color token (let's say `colorInputBackground`) and use it for
 - Negative impact on performance by increasing variables (as read here: [fluentui/theme-shared-colors.md at d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/blob/d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351/rfcs/react-components/convergence/theme-shared-colors.md))
 - Divergence themes from the original
 
+### New optional token with fallback to a theme token
+
 Another option is to add a possibility to override the background using a CSS variable:
 We can use `backgroundColor: var(--inputBackgroundOverride, ${tokens.colorNeutralBackground1})` without setting the `--inputBackgroundOverride` anywhere. Then an application can set that variable if it needs to override the background.
 
 👍 no additional tokens unless needed
 
 👎 new concept
-👎 one-off just for the Input background
+👎 one-off just for the Input background (although it would be used in multiple input components)
 
 ### Unify design
 
@@ -139,3 +142,9 @@ function App() {
     </FluentProvider>
   )
 }
+
+👍 more universal solution than a custom token - can be used to override different concepts, not only tokens - props, icons, etc.
+
+👎 new concept
+👎 one-off just for the Input background (although it would be used in multiple input components)
+```
