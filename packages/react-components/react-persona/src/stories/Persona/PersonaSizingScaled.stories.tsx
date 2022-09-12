@@ -5,12 +5,13 @@ import { makeStyles } from '@fluentui/react-components';
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, max-content)',
+    gridTemplateColumns: 'repeat(4, 1fr)',
     rowGap: '10px',
+    width: '800px',
   },
 });
 
-export const Sizing = () => {
+export const SizingScaled = () => {
   const styles = useStyles();
 
   return (
