@@ -16,6 +16,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'table-cell',
+    verticalAlign: 'middle',
   },
 
   resetButton: {
