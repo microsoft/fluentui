@@ -44,13 +44,16 @@ export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
 export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSX.Element;
 
 // @public
+export const renderTableCellItem_unstable: (state: TableCellItemState) => JSX.Element;
+
+// @public
+export const renderTableCellPrimaryItem_unstable: (state: TableCellPrimaryItemState) => JSX.Element;
+
+// @public
 export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Element;
 
 // @public
 export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSX.Element;
-
-// @public
-export const renderTablePrimaryCell_unstable: (state: TablePrimaryCellState) => JSX.Element;
 
 // @public
 export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
@@ -120,12 +123,48 @@ export const tableCellClassName = "fui-TableCell";
 export const tableCellClassNames: SlotClassNames<TableCellSlots>;
 
 // @public
+export const TableCellItem: ForwardRefComponent<TableCellItemProps>;
+
+// @public (undocumented)
+export const tableCellItemClassNames: SlotClassNames<TableCellItemSlots>;
+
+// @public
+export type TableCellItemProps = ComponentProps<TableCellItemSlots> & {};
+
+// @public (undocumented)
+export type TableCellItemSlots = {
+    root: Slot<'div'>;
+    media?: Slot<'span'>;
+};
+
+// @public
+export type TableCellItemState = ComponentState<TableCellItemSlots>;
+
+// @public
+export const TableCellPrimaryItem: ForwardRefComponent<TableCellPrimaryItemProps>;
+
+// @public (undocumented)
+export const tableCellPrimaryItemClassNames: SlotClassNames<TableCellPrimaryItemSlots>;
+
+// @public
+export type TableCellPrimaryItemProps = ComponentProps<Partial<TableCellPrimaryItemSlots>> & {};
+
+// @public (undocumented)
+export type TableCellPrimaryItemSlots = {
+    main: Slot<'span'>;
+    secondary: Slot<'span'>;
+    wrapper: Slot<'div'>;
+} & TableCellItemSlots;
+
+// @public
+export type TableCellPrimaryItemState = ComponentState<TableCellPrimaryItemSlots>;
+
+// @public
 export type TableCellProps = ComponentProps<TableCellSlots> & {};
 
 // @public (undocumented)
 export type TableCellSlots = {
     root: Slot<'td', 'div'>;
-    media?: Slot<'span'>;
 };
 
 // @public
@@ -199,25 +238,6 @@ export type TableHeaderSlots = {
 export type TableHeaderState = ComponentState<TableHeaderSlots>;
 
 // @public
-export const TablePrimaryCell: ForwardRefComponent<TablePrimaryCellProps>;
-
-// @public (undocumented)
-export const tablePrimaryCellClassNames: SlotClassNames<TablePrimaryCellSlots>;
-
-// @public
-export type TablePrimaryCellProps = ComponentProps<Partial<TablePrimaryCellSlots>> & {};
-
-// @public (undocumented)
-export type TablePrimaryCellSlots = {
-    main: Slot<'span'>;
-    secondary: Slot<'span'>;
-    wrapper: Slot<'div'>;
-} & TableCellSlots;
-
-// @public
-export type TablePrimaryCellState = ComponentState<TablePrimaryCellSlots>;
-
-// @public
 export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
 
 // @public
@@ -261,7 +281,7 @@ export type TableSelectionCellSlots = {
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<TableCellState, 'media'> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'>;
 
 // @public (undocumented)
 export interface TableSelectionState {
@@ -315,6 +335,18 @@ export const useTableCellActions_unstable: (props: TableCellActionsProps, ref: R
 export const useTableCellActionsStyles_unstable: (state: TableCellActionsState) => TableCellActionsState;
 
 // @public
+export const useTableCellItem_unstable: (props: TableCellItemProps, ref: React_2.Ref<HTMLElement>) => TableCellItemState;
+
+// @public
+export const useTableCellItemStyles_unstable: (state: TableCellItemState) => TableCellItemState;
+
+// @public
+export const useTableCellPrimaryItem_unstable: (props: TableCellPrimaryItemProps, ref: React_2.Ref<HTMLElement>) => TableCellPrimaryItemState;
+
+// @public
+export const useTableCellPrimaryItemStyles_unstable: (state: TableCellPrimaryItemState) => TableCellPrimaryItemState;
+
+// @public
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
 
 // @public (undocumented)
@@ -351,12 +383,6 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
     selectionMode?: SelectionMode_2;
     sortState?: SortState;
 }
-
-// @public
-export const useTablePrimaryCell_unstable: (props: TablePrimaryCellProps, ref: React_2.Ref<HTMLElement>) => TablePrimaryCellState;
-
-// @public
-export const useTablePrimaryCellStyles_unstable: (state: TablePrimaryCellState) => TablePrimaryCellState;
 
 // @public
 export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;
