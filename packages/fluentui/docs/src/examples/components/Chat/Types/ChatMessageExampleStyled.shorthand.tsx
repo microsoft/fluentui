@@ -73,10 +73,6 @@ const ChatMessageExampleStyled = () => (
             }),
           }),
           content: { ...slotLabelStyles('content'), backgroundColor: '#F08080' },
-          timestamp: {
-            ...slotLabelStyles('timestamp', {}, { display: 'inline-block' }),
-            backgroundColor: '#FFFFE0',
-          },
           badge: {
             ...slotLabelStyles(
               'badge',
@@ -89,6 +85,12 @@ const ChatMessageExampleStyled = () => (
             ...slotLabelStyles('reactions', {}, { padding: '8px' }),
             backgroundColor: '#FFFFE0',
           },
+        },
+      },
+      ChatMessageTimestamp: {
+        root: {
+          ...slotLabelStyles('timestamp', {}, { display: 'inline-block' }),
+          backgroundColor: '#FFFFE0',
         },
       },
       componentVariables: {
