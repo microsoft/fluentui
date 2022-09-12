@@ -20,12 +20,12 @@ export {
   renderAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
   useAvatarGroup_unstable,
-  useAvatarGroupItem_unstable,
-  useAvatarGroupPopover_unstable,
-  useAvatarGroupStyles_unstable,
-  useAvatarGroupItemStyles_unstable,
-  useAvatarGroupPopoverStyles_unstable,
   useAvatarGroupContext_unstable,
+  useAvatarGroupItem_unstable,
+  useAvatarGroupItemStyles_unstable,
+  useAvatarGroupPopover_unstable,
+  useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupStyles_unstable,
 } from '@fluentui/react-avatar';
 export type {
   AvatarGroupProps,
