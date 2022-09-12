@@ -17,6 +17,7 @@ const useStyles = makeStyles({
   root: {
     display: 'table-cell',
     verticalAlign: 'middle',
+    ...shorthands.padding(0),
   },
 
   resetButton: {
