@@ -21,7 +21,15 @@ import type { DropdownProps, DropdownState } from './Dropdown.types';
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   const baseState = useComboboxBaseState(props);
-  const { activeOption, getIndexOfId, getOptionsMatchingValue, open, setActiveOption, setOpen } = baseState;
+  const {
+    activeOption,
+    getIndexOfId,
+    getOptionsMatchingValue,
+    open,
+    setActiveOption,
+    setFocusVisible,
+    setOpen,
+  } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -86,6 +94,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
       const nextOption = getNextMatchingOption();
       setActiveOption(nextOption);
+      setFocusVisible(true);
     }
   };
 

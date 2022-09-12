@@ -16,6 +16,10 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
+  // track whether keyboard focus outline should be shown
+  // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
+  const [focusVisible, setFocusVisible] = React.useState(false);
+
   // track focused state to conditionally render collapsed listbox
   const [hasFocus, setHasFocus] = React.useState(false);
 
@@ -88,11 +92,13 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     ...selectionState,
     activeOption,
     appearance,
+    focusVisible,
     hasFocus,
     ignoreNextBlur,
     inlinePopup,
     open,
     setActiveOption,
+    setFocusVisible,
     setHasFocus,
     setOpen,
     setValue,

@@ -8,6 +8,7 @@ export type ComboboxContextValue = Pick<
   ComboboxState,
   | 'activeOption'
   | 'appearance'
+  | 'focusVisible'
   | 'open'
   | 'registerOption'
   | 'selectedOptions'
@@ -21,6 +22,7 @@ export type ComboboxContextValue = Pick<
 export const ComboboxContext = createContext<ComboboxContextValue>({
   activeOption: undefined,
   appearance: 'outline',
+  focusVisible: false,
   open: false,
   registerOption() {
     return () => undefined;
