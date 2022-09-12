@@ -14,11 +14,10 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
  */
 const useStyles = makeStyles({
   root: {
+    width: '1%',
+    whiteSpace: 'nowrap',
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
-    ...shorthands.flex(0, 1, '0px'),
+    display: 'table-cell',
   },
 
   radioIndicator: {

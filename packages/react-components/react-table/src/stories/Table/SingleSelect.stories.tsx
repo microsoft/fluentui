@@ -12,6 +12,7 @@ import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
 import { useTable, ColumnDefinition } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
+import { TableCellItem } from '../../components/TableCellItem/TableCellItem';
 
 type FileCell = {
   label: string;
@@ -128,11 +129,19 @@ export const SingleSelect = () => {
       <TableBody>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
           <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell type="radio" checked={selected} />
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
+            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+            <TableCell>
+              <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+            </TableCell>
+            <TableCell>
+              <TableCellItem media={<Avatar badge={{ status: item.author.status }} />}>
+                {item.author.label}
+              </TableCellItem>
+            </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

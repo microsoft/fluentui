@@ -89,11 +89,22 @@ export {
 
 export type { TableCellActionsProps, TableCellActionsSlots, TableCellActionsState } from './TableCellActions';
 export {
-  TablePrimaryCell,
+  TableCellPrimaryItem,
   tablePrimaryCellClassNames,
-  useTablePrimaryCellStyles_unstable,
-  useTablePrimaryCell_unstable,
-  renderTablePrimaryCell_unstable,
-} from './TablePrimaryCell';
+  useTableCellPrimaryItemStyles_unstable,
+  useTableCellPrimaryItem_unstable,
+  renderTableCellPrimaryItem_unstable,
+} from './TableCellPrimaryItem';
+export type {
+  TableCellPrimaryItemProps,
+  TableCellPrimaryItemSlots,
+  TableCellPrimaryItemState,
+} from './TableCellPrimaryItem';
 
-export type { TablePrimaryCellProps, TablePrimaryCellSlots, TablePrimaryCellState } from './TablePrimaryCell';
+export {
+  TableCellItem,
+  useTableCellItemStyles_unstable,
+  useTableCellItem_unstable,
+  renderTableCellItem_unstable,
+} from './TableCellItem';
+export type { TableCellItemProps, TableCellItemSlots, TableCellItemState } from './TableCellItem';

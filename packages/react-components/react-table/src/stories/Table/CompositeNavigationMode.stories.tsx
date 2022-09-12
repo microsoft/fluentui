@@ -9,7 +9,7 @@ import {
   Video16Regular as VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellItem } from '../..';
 import { useNavigationMode } from '../../navigationModes';
 
 const items = [
@@ -74,18 +74,21 @@ export const CompositeNavigationMode = () => {
       <TableBody>
         {items.map(item => (
           <TableRow tabIndex={0} key={item.file.label}>
-            <TableCell tabIndex={0} media={item.file.icon}>
-              {item.file.label}
+            <TableCell tabIndex={0}>
+              <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
             </TableCell>
-            <TableCell
-              tabIndex={0}
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
+            <TableCell tabIndex={0}>
+              <TableCellItem
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellItem>
             </TableCell>
             <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
-            <TableCell tabIndex={0} media={item.lastUpdate.icon}>
-              {item.lastUpdate.label}
+            <TableCell tabIndex={0}>
+              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
             </TableCell>
           </TableRow>
         ))}

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableCellPrimaryItem renders a default state 1`] = `
+<tr>
+  <td
+    class="fui-TableCellPrimaryItem fui-TableCell"
+  >
+    Default TableCellPrimaryItem
+  </td>
+</tr>
+`;

@@ -9,7 +9,16 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableSelectionCell,
+  TableCellItem,
+} from '../..';
 import { useTable, ColumnDefinition } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
@@ -135,10 +144,18 @@ export const MultipleSelect = () => {
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
           <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
             <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
+            <TableCell>
+              <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+            </TableCell>
+            <TableCell>
+              <TableCellItem media={<Avatar badge={{ status: item.author.status }} />}>
+                {item.author.label}
+              </TableCellItem>
+            </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

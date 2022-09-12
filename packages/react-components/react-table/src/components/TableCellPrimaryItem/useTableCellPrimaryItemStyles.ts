@@ -1,15 +1,15 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { TablePrimaryCellSlots, TablePrimaryCellState } from './TablePrimaryCell.types';
+import type { TableCellPrimaryItemSlots, TableCellPrimaryItemState } from './TableCellPrimaryItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useTableCellStyles_unstable } from '../TableCell/useTableCellStyles';
+import { useTableCellItemStyles_unstable } from '../TableCellItem/useTableCellItemStyles';
 
-export const tablePrimaryCellClassNames: SlotClassNames<TablePrimaryCellSlots> = {
-  root: 'fui-TablePrimaryCell',
-  media: 'fui-TablePrimaryCell__media',
-  main: 'fui-TablePrimaryCell__main',
-  secondary: 'fui-TablePrimaryCell__secondary',
-  wrapper: 'fui-TablePrimaryCell__wrapper',
+export const tablePrimaryCellClassNames: SlotClassNames<TableCellPrimaryItemSlots> = {
+  root: 'fui-TableCellPrimaryItem',
+  media: 'fui-TableCellPrimaryItem__media',
+  main: 'fui-TableCellPrimaryItem__main',
+  secondary: 'fui-TableCellPrimaryItem__secondary',
+  wrapper: 'fui-TableCellPrimaryItem__wrapper',
 };
 
 /**
@@ -36,15 +36,13 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase300,
     color: tokens.colorNeutralForeground2,
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
- * Apply styling to the TablePrimaryCell slots based on the state
+ * Apply styling to the TableCellPrimaryItem slots based on the state
  */
-export const useTablePrimaryCellStyles_unstable = (state: TablePrimaryCellState): TablePrimaryCellState => {
-  useTableCellStyles_unstable(state);
+export const useTableCellPrimaryItemStyles_unstable = (state: TableCellPrimaryItemState): TableCellPrimaryItemState => {
+  useTableCellItemStyles_unstable(state);
   const styles = useStyles();
   state.root.className = mergeClasses(tablePrimaryCellClassNames.root, state.root.className);
 

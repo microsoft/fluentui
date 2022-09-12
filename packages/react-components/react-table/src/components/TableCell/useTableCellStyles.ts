@@ -6,8 +6,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const tableCellClassName = 'fui-TableCell';
 export const tableCellClassNames: SlotClassNames<TableCellSlots> = {
   root: tableCellClassName,
-  media: 'fui-TableCell__media',
-  content: 'fui-TableCell__content',
 };
 
 /**
@@ -16,18 +14,7 @@ export const tableCellClassNames: SlotClassNames<TableCellSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'table-cell',
-  },
-  content: {
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
-    ...shorthands.flex(1, 1, '0px'),
-  },
-
-  media: {
-    display: 'flex',
-    alignItems: 'center',
   },
 });
 
@@ -37,12 +24,5 @@ const useStyles = makeStyles({
 export const useTableCellStyles_unstable = (state: TableCellState): TableCellState => {
   const styles = useStyles();
   state.root.className = mergeClasses(tableCellClassNames.root, styles.root, state.root.className);
-  if (state.content) {
-    state.content.className = mergeClasses(tableCellClassNames.content, styles.content, state.content.className);
-  }
-  if (state.media) {
-    state.media.className = mergeClasses(tableCellClassNames.media, styles.media);
-  }
-
   return state;
 };

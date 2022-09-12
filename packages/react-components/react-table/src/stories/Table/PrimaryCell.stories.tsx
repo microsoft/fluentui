@@ -18,7 +18,8 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellActions,
-  TablePrimaryCell,
+  TableCellPrimaryItem,
+  TableCellItem,
 } from '../..';
 
 const items = [
@@ -80,19 +81,27 @@ export const PrimaryCell = () => {
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TablePrimaryCell media={item.file.icon} main={item.file.label} secondary="Your organization">
-              <TableCellActions>
-                <Button icon={<EditRegular />} appearance="subtle" />
-                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-              </TableCellActions>
-            </TablePrimaryCell>
-            <TableCell
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
+            <TableCell>
+              <TableCellPrimaryItem media={item.file.icon} main={item.file.label} secondary="Your organization">
+                <TableCellActions>
+                  <Button icon={<EditRegular />} appearance="subtle" />
+                  <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                </TableCellActions>
+              </TableCellPrimaryItem>
+            </TableCell>
+            <TableCell>
+              <TableCellItem
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellItem>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
