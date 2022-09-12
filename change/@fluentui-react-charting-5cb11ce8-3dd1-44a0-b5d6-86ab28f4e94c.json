@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing Tree chart issues for adding the optional bodyText for parent node and adjusting the allignment of the tree in the screen",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
