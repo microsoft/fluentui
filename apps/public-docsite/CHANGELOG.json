@@ -2,6 +2,27 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Mon, 12 Sep 2022 07:39:53 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.41",
+      "version": "8.2.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/public-docsite-setup to v0.3.12",
+            "commit": "7f8bad094dadcdb671d5746848e96b5bd4b5791a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-docsite-components to v8.9.35",
+            "commit": "7f8bad094dadcdb671d5746848e96b5bd4b5791a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Sep 2022 20:52:16 GMT",
       "tag": "@fluentui/public-docsite_v8.2.41",
       "version": "8.2.41",

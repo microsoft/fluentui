@@ -1,6 +1,7 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
-import type { ARIAButtonProps, ARIAButtonResultProps, ARIAButtonType } from './types';
+import * as React from 'react';
+import type { ARIAButtonElementIntersection, ARIAButtonProps, ARIAButtonResultProps, ARIAButtonType } from './types';
 
 /**
  * @internal
@@ -48,7 +49,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
 
   const isDisabled = disabled || disabledFocusable || normalizedARIADisabled;
 
-  const handleClick: Props['onClick'] = useEventCallback(ev => {
+  const handleClick = useEventCallback((ev: React.MouseEvent<ARIAButtonElementIntersection>) => {
     if (isDisabled) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -57,7 +58,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
     }
   });
 
-  const handleKeyDown: Props['onKeyDown'] = useEventCallback(ev => {
+  const handleKeyDown = useEventCallback((ev: React.KeyboardEvent<ARIAButtonElementIntersection>) => {
     onKeyDown?.(ev);
 
     if (ev.isDefaultPrevented()) {
@@ -84,7 +85,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
     }
   });
 
-  const handleKeyUp: Props['onKeyUp'] = useEventCallback(ev => {
+  const handleKeyUp = useEventCallback((ev: React.KeyboardEvent<ARIAButtonElementIntersection>) => {
     onKeyUp?.(ev);
 
     if (ev.isDefaultPrevented()) {

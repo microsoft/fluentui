@@ -179,7 +179,7 @@ type DialogTitleProps = ComponentProps<DialogTitleSlots>;
 
 ### DialogTitle
 
-The DialogTitle component will expect to have a dialog title/header and will show the close (X icon) button if specified so. Apart from styling and presenting `closeButton`, this component does not have other behavior.
+The `DialogTitle` component expects to have a title/header and when `Dialog` is `non-modal` a close (X icon) button is provided through `action` slot by default.
 
 ```tsx
 type DialogTitleSlots = {
@@ -187,7 +187,10 @@ type DialogTitleSlots = {
    * By default this is a div, but can be a heading.
    */
   root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-  closeButton?: Slot<'button'>;
+  /**
+   * By default a Dialog with modalType='non-modal' will have a close button action
+   */
+  action?: Slot<'div'>;
 };
 
 type DialogTitleProps = ComponentProps<DialogTitleSlots>;
@@ -281,7 +284,7 @@ const dialog = <Dialog type="alert">
 >
   <div id="fui-dialog-title-id" class="fui-dialog-title">
     <span>Title</span>
-    <!-- closeButton -->
+    <!-- action -->
   </div>
   <div id="fui-dialog-body-id" class="fui-dialog-body">This is going to be inside the dialog</div>
   <div class="fui-dialog-actions">
@@ -343,7 +346,7 @@ const CustomDialog = () => {
 >
   <div id="fui-dialog-title-id" class="fui-dialog-title">
     <span>Title</span>
-    <!-- closeButton -->
+    <!-- action -->
   </div>
   <div id="fui-dialog-body-id" class="fui-dialog-body">This is going to be inside the dialog</div>
   <div class="fui-dialog-actions">
