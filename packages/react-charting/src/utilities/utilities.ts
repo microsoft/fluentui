@@ -4,7 +4,15 @@ import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3
 import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
-import * as d3Time from 'd3-time';
+import {
+  timeSecond as d3TimeSecond,
+  timeMinute as d3TimeMinute,
+  timeHour as d3TimeHour,
+  timeDay as d3TimeDay,
+  timeMonth as d3TimeMonth,
+  timeWeek as d3TimeWeek,
+  timeYear as d3TimeYear,
+} from 'd3-time';
 import {
   IAccessibilityProps,
   IEventsAnnotationProps,
@@ -154,28 +162,28 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) 
 }
 
 function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
-  const formatMillisecond = locale.format('.%L'),
-    formatSecond = locale.format(':%S'),
-    formatMinute = locale.format('%I:%M'),
-    formatHour = locale.format('%I %p'),
-    formatDay = locale.format('%a %d'),
-    formatWeek = locale.format('%b %d'),
-    formatMonth = locale.format('%B'),
-    formatYear = locale.format('%Y');
+  const formatMillisecond = locale.format('.%L');
+  const formatSecond = locale.format(':%S');
+  const formatMinute = locale.format('%I:%M');
+  const formatHour = locale.format('%I %p');
+  const formatDay = locale.format('%a %d');
+  const formatWeek = locale.format('%b %d');
+  const formatMonth = locale.format('%B');
+  const formatYear = locale.format('%Y');
 
-  return (d3Time.timeSecond(date) < date
+  return (d3TimeSecond(date) < date
     ? formatMillisecond
-    : d3Time.timeMinute(date) < date
+    : d3TimeMinute(date) < date
     ? formatSecond
-    : d3Time.timeHour(date) < date
+    : d3TimeHour(date) < date
     ? formatMinute
-    : d3Time.timeDay(date) < date
+    : d3TimeDay(date) < date
     ? formatHour
-    : d3Time.timeMonth(date) < date
-    ? d3Time.timeWeek(date) < date
+    : d3TimeMonth(date) < date
+    ? d3TimeWeek(date) < date
       ? formatDay
       : formatWeek
-    : d3Time.timeYear(date) < date
+    : d3TimeYear(date) < date
     ? formatMonth
     : formatYear)(date);
 }
