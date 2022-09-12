@@ -1,5 +1,4 @@
 import descriptionMd from './FieldDescription.md';
-import bestPracticesMd from './FieldBestPractices.md';
 
 export { Default } from './FieldDefault.stories';
 export { Label } from './FieldLabel.stories';
@@ -15,7 +14,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: descriptionMd,
       },
     },
   },
