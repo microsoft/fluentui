@@ -129,7 +129,7 @@ export const SingleSelect = () => {
       <TableBody>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
           <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
             <TableCell>
               <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
             </TableCell>
