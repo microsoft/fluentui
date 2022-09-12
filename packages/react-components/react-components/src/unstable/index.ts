@@ -11,14 +11,21 @@ export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 export {
   AvatarGroup,
   AvatarGroupItem,
+  AvatarGroupPopover,
+  AvatarGroupProvider,
   avatarGroupClassNames,
   avatarGroupItemClassNames,
+  avatarGroupPopoverClassNames,
   renderAvatarGroup_unstable,
   renderAvatarGroupItem_unstable,
+  renderAvatarGroupPopover_unstable,
   useAvatarGroup_unstable,
   useAvatarGroupItem_unstable,
+  useAvatarGroupPopover_unstable,
   useAvatarGroupStyles_unstable,
   useAvatarGroupItemStyles_unstable,
+  useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupContext_unstable,
 } from '@fluentui/react-avatar';
 export type {
   AvatarGroupProps,
@@ -27,6 +34,9 @@ export type {
   AvatarGroupItemProps,
   AvatarGroupItemSlots,
   AvatarGroupItemState,
+  AvatarGroupPopoverProps,
+  AvatarGroupPopoverSlots,
+  AvatarGroupPopoverState,
 } from '@fluentui/react-avatar';
 export {
   Card,
