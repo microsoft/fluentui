@@ -68,9 +68,17 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
     return () => formValidation.unsubscribe(id, alert);
   }, [formValidation, alert, id]);
   return (
-    <div role={isAlerting ? 'alert' : undefined} style={{ color: isAlerting ? 'red' : 'green' }} id={`${id}Errors`}>
-      {children}
-    </div>
+    <>
+      {isAlerting ? (
+        <div role="alert" style={{ color: 'red' }} id={`${id}Errors`}>
+          {children}
+        </div>
+      ) : (
+        <div style={{ color: 'green' }} id={`${id}Errors`}>
+          {children}
+        </div>
+      )}
+    </>
   );
 };
 
@@ -141,7 +149,7 @@ const RegistrationFormInputsAccessibility = () => {
     const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
     const firstErrorField = document.getElementById(firstErrorName);
     if (firstErrorField) {
-      setTimeout(() => firstErrorField.focus(), 500);
+      firstErrorField.focus();
     }
   }, [errors, formState, formValidation]);
 
