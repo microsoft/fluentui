@@ -508,6 +508,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-menu-shim-v8-v9": {
+      "root": "packages/react-components-migration/react-menu-shim-v8-v9",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components-migration/react-menu-shim-v8-v9/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
       "projectType": "library",
