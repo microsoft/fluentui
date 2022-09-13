@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add data prop to Option element to be passed through to callback data\"",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
