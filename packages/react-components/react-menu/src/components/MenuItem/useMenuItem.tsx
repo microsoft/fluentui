@@ -19,6 +19,7 @@ import {
   ARIAButtonSlotProps,
   useARIAButtonShorthand,
 } from '@fluentui/react-aria';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
 const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
@@ -42,6 +43,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
 
   const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
+  const dismissedWithKeyboardRef = React.useRef(false);
 
   const isDisabled = Boolean(disabled || disabledFocusable);
 
@@ -57,6 +59,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       content: 'span',
       secondaryContent: 'span',
     },
+    isNativeButton: as === 'button',
     root: getNativeElementProps(
       as,
       useARIAButtonShorthand<ARIAButtonSlotProps<'div'>>(
@@ -67,6 +70,12 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             role: 'menuitem',
             ...props,
             ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
+            onKeyDown: useEventCallback(event => {
+              props.onKeyDown?.(event);
+              if (!event.isDefaultPrevented() && (event.key === Space || event.key === Enter)) {
+                dismissedWithKeyboardRef.current = true;
+              }
+            }),
             onMouseEnter: useEventCallback(event => {
               innerRef.current?.focus();
 
@@ -74,7 +83,8 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             }),
             onClick: useEventCallback(event => {
               if (!hasSubmenu && !persistOnClick) {
-                setOpen(event, { open: false, keyboard: false, bubble: true });
+                setOpen(event, { open: false, keyboard: dismissedWithKeyboardRef.current, bubble: true });
+                dismissedWithKeyboardRef.current = false;
               }
 
               props.onClick?.(event);

@@ -168,7 +168,9 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
+export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    isNativeButton: boolean;
+};
 
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;

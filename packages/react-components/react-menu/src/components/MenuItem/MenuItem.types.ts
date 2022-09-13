@@ -49,4 +49,6 @@ export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
 };
 
 export type MenuItemState = ComponentState<MenuItemSlots> &
-  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
+  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    isNativeButton: boolean;
+  };

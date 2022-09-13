@@ -26,6 +26,7 @@ const useStyles = makeStyles({
     fontFamily: 'inherit',
     fontSize: 'inherit',
     lineHeight: 'normal',
+    ...shorthands.borderColor('transparent'),
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),
     WebkitAppearance: 'button',
@@ -33,7 +34,6 @@ const useStyles = makeStyles({
   },
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.borderColor('transparent'),
     position: 'relative',
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackground1,
@@ -115,7 +115,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     menuItemClassNames.root,
-    styles.resetButton,
+    state.isNativeButton && styles.resetButton,
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,
