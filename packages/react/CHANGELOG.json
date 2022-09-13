@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 13 Sep 2022 07:41:02 GMT",
+      "tag": "@fluentui/react_v8.94.4",
+      "version": "8.94.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a40ef34fa6d1122bdfdb708f79b90de9edb2827d",
+            "comment": "fix: remove readonly semantics from DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Sep 2022 20:52:15 GMT",
       "tag": "@fluentui/react_v8.94.3",
       "version": "8.94.3",

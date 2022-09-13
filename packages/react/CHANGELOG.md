@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 08 Sep 2022 20:52:15 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Sep 2022 07:41:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.94.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.4)
+
+Tue, 13 Sep 2022 07:41:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.3..@fluentui/react_v8.94.4)
+
+### Patches
+
+- fix: remove readonly semantics from DetailsList ([PR #24615](https://github.com/microsoft/fluentui/pull/24615) by sarah.higley@microsoft.com)
 
 ## [8.94.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.3)
 
