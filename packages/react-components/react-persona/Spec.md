@@ -144,9 +144,9 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
   sizing?: 'fixed' | 'scaled';
 
   /**
-   * Position the Avatar/PresenceBadge will be rendered in.
+   * Position the text will be rendered in.
    */
-  position?: 'start' | 'center' | 'end';
+  textPosition?: 'before' | 'after' | 'below';
 };
 ```
 
