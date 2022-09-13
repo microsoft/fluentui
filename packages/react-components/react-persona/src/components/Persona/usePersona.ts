@@ -14,7 +14,7 @@ import type { PersonaProps, PersonaState } from './Persona.types';
  * @param ref - reference to root HTMLElement of Persona
  */
 export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElement>): PersonaState => {
-  const { position = 'start', sizing = 'fixed' } = props;
+  const { textPosition = 'after', sizing = 'fixed' } = props;
   const numTextLines =
     (props.primaryText ? 1 : 0) +
     (props.secondaryText ? 1 : 0) +
@@ -23,7 +23,7 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
 
   const state: PersonaState = {
     numTextLines,
-    position,
+    textPosition,
     sizing,
 
     components: {

@@ -3,7 +3,7 @@ import { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type PersonaSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Avatar to display.
@@ -49,15 +49,15 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
   sizing?: 'fixed' | 'scaled';
 
   /**
-   * Position the Avatar/PresenceBadge will be rendered in.
+   * Position the text will be rendered in.
    */
-  position?: 'start' | 'center' | 'end';
+  textPosition?: 'before' | 'after' | 'below';
 };
 
 /**
  * State used in rendering Persona
  */
 export type PersonaState = ComponentState<PersonaSlots> &
-  Required<Pick<PersonaProps, 'position' | 'sizing'>> & {
+  Required<Pick<PersonaProps, 'textPosition' | 'sizing'>> & {
     numTextLines: number;
   };

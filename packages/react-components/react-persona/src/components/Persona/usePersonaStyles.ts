@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 });
 
 const useGridStyles = makeStyles({
-  start: {
+  after: {
     gridTemplateAreas: `
     "${COIN_GRID_AREA} ${PRIMARY_TEXT_GRID_AREA}"
     "${COIN_GRID_AREA} ${SECONDARY_TEXT_GRID_AREA}"
@@ -41,7 +41,7 @@ const useGridStyles = makeStyles({
     justifyItems: 'start',
     columnGap: '8px',
   },
-  center: {
+  below: {
     gridTemplateAreas: `
     "${COIN_GRID_AREA}"
     "${PRIMARY_TEXT_GRID_AREA}"
@@ -51,7 +51,7 @@ const useGridStyles = makeStyles({
     `,
     justifyItems: 'center',
   },
-  end: {
+  before: {
     gridTemplateAreas: `
     "${PRIMARY_TEXT_GRID_AREA} ${COIN_GRID_AREA}"
     "${SECONDARY_TEXT_GRID_AREA} ${COIN_GRID_AREA}"
@@ -90,13 +90,18 @@ const useGridStyles = makeStyles({
  * Apply styling to the Persona slots based on the state
  */
 export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => {
-  const { position, sizing } = state;
+  const { textPosition, sizing } = state;
   const styles = useStyles();
   const gridStyles = useGridStyles();
   const coinClassName = mergeClasses(gridStyles.coin, gridStyles[sizing]);
   const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state);
 
-  state.root.className = mergeClasses(personaClassNames.root, styles.root, gridStyles[position], state.root.className);
+  state.root.className = mergeClasses(
+    personaClassNames.root,
+    styles.root,
+    gridStyles[textPosition],
+    state.root.className,
+  );
 
   if (state.avatar) {
     state.avatar.className = mergeClasses(personaClassNames.avatar, coinClassName, state.avatar.className);

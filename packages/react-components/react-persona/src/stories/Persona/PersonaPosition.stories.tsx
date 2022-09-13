@@ -16,7 +16,7 @@ export const Position = () => {
   return (
     <div className={styles.root}>
       <Persona
-        position="start"
+        textPosition="after"
         sizing="scaled"
         avatar={{ name: 'Kevin Sturgis' }}
         presence={{ status: 'out-of-office' }}
@@ -26,7 +26,7 @@ export const Position = () => {
         quaternaryText="Quaternary text"
       />
       <Persona
-        position="center"
+        textPosition="below"
         sizing="scaled"
         avatar={{ name: 'Kevin Sturgis' }}
         presence={{ status: 'out-of-office' }}
@@ -36,7 +36,7 @@ export const Position = () => {
         quaternaryText="Quaternary text"
       />
       <Persona
-        position="end"
+        textPosition="before"
         sizing="scaled"
         avatar={{ name: 'Kevin Sturgis' }}
         presence={{ status: 'out-of-office' }}
