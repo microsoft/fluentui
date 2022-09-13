@@ -18,8 +18,8 @@ import {
   TableHeaderCell,
   TableCell,
   TableRow,
-  TableCellItem,
-  TableCellPrimaryItem,
+  TableCellLayout,
+  TableCellPrimaryLayout,
   TableSelectionCell,
   TableCellActions,
 } from '@fluentui/react-table';
@@ -92,26 +92,26 @@ storiesOf('Table - cell actions', module)
           {items.map(item => (
             <TableRow key={item.file.label} className="row">
               <TableCell>
-                <TableCellItem media={item.file.icon}>
+                <TableCellLayout media={item.file.icon}>
                   {item.file.label}
                   <TableCellActions>
                     <Button icon={<EditRegular />} appearance="subtle" />
                     <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
                   </TableCellActions>
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem
+                <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
                 >
                   {item.author.label}
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>{item.lastUpdated.label}</TableCell>
               <TableCell>
-                <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
@@ -137,22 +137,22 @@ storiesOf('Table', module)
           {items.map(item => (
             <TableRow key={item.file.label}>
               <TableCell>
-                <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem
+                <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
                 >
                   {item.author.label}
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem>{item.lastUpdated.label}</TableCellItem>
+                <TableCellLayout>{item.lastUpdated.label}</TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
@@ -174,10 +174,10 @@ storiesOf('Table', module)
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellItem
+              <TableCellLayout
                 media={
                   <Avatar
                     name={item.author.label}
@@ -187,11 +187,11 @@ storiesOf('Table', module)
                 }
               >
                 {item.author.label}
-              </TableCellItem>
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}
@@ -211,10 +211,10 @@ storiesOf('Table', module)
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellItem
+              <TableCellLayout
                 media={
                   <Avatar
                     name={item.author.label}
@@ -224,11 +224,11 @@ storiesOf('Table', module)
                 }
               >
                 {item.author.label}
-              </TableCellItem>
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}
@@ -248,16 +248,16 @@ storiesOf('Table', module)
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellPrimaryItem media={item.file.icon} main={item.file.label} secondary="Your organization" />
+              <TableCellPrimaryLayout media={item.file.icon} main={item.file.label} secondary="Your organization" />
             </TableCell>
-            <TableCellItem
+            <TableCellLayout
               media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
             >
               {item.author.label}
-            </TableCellItem>
+            </TableCellLayout>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}
@@ -281,20 +281,20 @@ storiesOf('Table', module)
             <TableRow key={item.file.label}>
               <TableSelectionCell />
               <TableCell>
-                <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem
+                <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
                 >
                   {item.author.label}
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>{item.lastUpdated.label}</TableCell>
               <TableCell>
-                <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
@@ -320,20 +320,20 @@ storiesOf('Table', module)
             <TableRow key={item.file.label}>
               <TableSelectionCell checked={true} />
               <TableCell>
-                <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem
+                <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
                 >
                   {item.author.label}
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>{item.lastUpdated.label}</TableCell>
               <TableCell>
-                <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
@@ -359,20 +359,20 @@ storiesOf('Table', module)
             <TableRow key={item.file.label}>
               <TableSelectionCell checked={!!(i % 2)} />
               <TableCell>
-                <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem
+                <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
                 >
                   {item.author.label}
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>{item.lastUpdated.label}</TableCell>
               <TableCell>
-                <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
@@ -398,20 +398,20 @@ storiesOf('Table', module)
             <TableRow key={item.file.label}>
               <TableSelectionCell type="radio" />
               <TableCell>
-                <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
               <TableCell>
-                <TableCellItem
+                <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
                 >
                   {item.author.label}
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>{item.lastUpdated.label}</TableCell>
               <TableCell>
-                <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
@@ -437,21 +437,21 @@ storiesOf('Table', module)
             <TableRow key={item.file.label}>
               <TableSelectionCell type="radio" checked={i === 1} />
               <TableCell>
-                <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
 
               <TableCell>
-                <TableCellItem
+                <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
                 >
                   {item.author.label}
-                </TableCellItem>
+                </TableCellLayout>
               </TableCell>
               <TableCell>{item.lastUpdated.label}</TableCell>
               <TableCell>
-                <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
