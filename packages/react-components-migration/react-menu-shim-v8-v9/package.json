@@ -2,7 +2,7 @@
   "name": "@fluentui/react-menu-shim-v8-v9",
   "version": "9.0.0-alpha.0",
   "private": true,
-  "description": "React components for building web experiences",
+  "description": "Fluent UI React Menu shim to help migration from v8 to v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "dist/index.d.ts",
