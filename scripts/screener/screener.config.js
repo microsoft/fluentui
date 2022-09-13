@@ -33,11 +33,12 @@ const baseBranch = 'master';
 
 /**
  *
- * @param {string} screenerApiKey
- * @param {string} sourceBranchName
+ * @param {Object} options
+ * @param {string} options.screenerApiKey
+ * @param {string} options.sourceBranchName
  * @returns
  */
-function getConfig(screenerApiKey, sourceBranchName) {
+function getConfig({ screenerApiKey, sourceBranchName }) {
   // https://github.com/screener-io/screener-runner
   return {
     apiKey: screenerApiKey,

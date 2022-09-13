@@ -19,13 +19,14 @@ function getCurrentHash() {
 }
 /**
  *
- * @param {string} screenerApiKey
- * @param {string} sourceBranchName
- * @param {string} deployUrl
- * @param {string} targetBranch
+ * @param {Object} options
+ * @param {string} options.screenerApiKey
+ * @param {string} options.sourceBranchName
+ * @param {string} options.deployUrl
+ * @param {string} options.targetBranch
  * @returns
  */
-function getConfig(screenerApiKey, sourceBranchName, deployUrl, targetBranch) {
+function getConfig({ screenerApiKey, sourceBranchName, deployUrl, targetBranch }) {
   const baseBranch = targetBranch ? targetBranch.replace(/^refs\/heads\//, '') : 'master';
   // https://github.com/screener-io/screener-storybook#additional-configuration-options
   const config = {
