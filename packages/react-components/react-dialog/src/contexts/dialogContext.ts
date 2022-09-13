@@ -1,9 +1,8 @@
-import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
-
-import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
 import * as React from 'react';
+import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
 import { DialogSurfaceElement } from '../DialogSurface';
+import type { Context } from '@fluentui/react-context-selector';
+import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
 
 export type DialogContextValue = {
   open: boolean;

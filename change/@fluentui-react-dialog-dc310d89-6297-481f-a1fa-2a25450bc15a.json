@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(react-dialog): 1st rule of ARIA for Dialog",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

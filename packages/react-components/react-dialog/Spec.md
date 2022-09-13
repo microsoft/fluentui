@@ -83,19 +83,7 @@ Sample usages will be give in the following section of this document [Sample cod
 The root level component serves as an interface for interaction with all possible behaviors exposed. It provides context down the hierarchy to `children` compound components to allow functionality. This component expects to receive as children either a `DialogSurface` or a `DialogTrigger` and a `DialogSurface` (or some component that will eventually render one of those compound components) in this specific order
 
 ```tsx
-type DialogSlots = {
-  /**
-   * Dimmed background of dialog.
-   * The default backdrop is rendered as a `<div>` with styling.
-   * This slot expects a `<div>` element which will replace the default backdrop.
-   * The backdrop should have `aria-hidden="true"`.
-   */
-  backdrop?: Slot<'div'>;
-  /**
-   * The root element of the Dialog right after Portal.
-   */
-  root: Slot<'div'>;
-};
+type DialogSlots = {};
 
 type DialogProps = ComponentProps<DialogSlots> & {
   /**
@@ -167,14 +155,21 @@ export type DialogTriggerProps = {
 The `DialogSurface` component represents the visual part of a `Dialog` as a whole, it contains everything that should be visible.
 
 ```tsx
-type DialogTitleSlots = {
+type DialogSurfaceSlots = {
   /**
-   * By default this is a div.
+   * Dimmed background of dialog.
+   * The default backdrop is rendered as a `<div>` with styling.
+   * This slot expects a `<div>` element which will replace the default backdrop.
+   * The backdrop should have `aria-hidden="true"`.
+   *
+   * By default if `DialogSurface` is `<dialog>` element the backdrop is ignored,
+   * since native `<dialog>` element supports [::backdrop](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop)
    */
-  root: Slot<'div', 'main'>;
+  backdrop?: Slot<'div'>;
+  root: NonNullable<Slot<'dialog', 'div'>>;
 };
 
-type DialogTitleProps = ComponentProps<DialogTitleSlots>;
+type DialogTitleProps = ComponentProps<DialogSurfaceSlots>;
 ```
 
 ### DialogTitle
@@ -403,6 +398,27 @@ function AsyncConfirmDialog() {
     </>
   );
 }
+```
+
+### Opting out of native `<dialog>`
+
+```tsx
+const dialog = <Dialog>
+  <DialogTrigger>
+    <Button>Open Dialog</Button>
+  <DialogTrigger>
+  <DialogSurface as="div">
+    This is as basic as it gets.
+  </DialogSurface>
+</Dialog>
+```
+
+```html
+<!-- expected DOM output  -->
+<button aria-haspopup="true" class="fui-button">Open Dialog</button>
+<!-- ... portal ... -->
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
+<div aria-modal="true" role="dialog" class="fui-dialog-content">This is as basic as it gets</div>
 ```
 
 ## Migration
