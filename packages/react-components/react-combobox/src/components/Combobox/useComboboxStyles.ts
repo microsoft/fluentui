@@ -132,6 +132,7 @@ const useInputStyles = makeStyles({
   input: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
+    color: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
 
     '&:focus': {

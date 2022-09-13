@@ -20,7 +20,7 @@ export const Required = () => {
 Required.parameters = {
   docs: {
     description: {
-      story: 'Use the `required` prop on `RadioGroup` to make all child `Radio`s required.',
+      story: 'Use the `required` prop on `RadioGroup` to indicate that one of the radio items must be selected.',
     },
   },
 };

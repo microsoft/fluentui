@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Adding missing AvatarGroup exports.",
+  "packageName": "@fluentui/react-components",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

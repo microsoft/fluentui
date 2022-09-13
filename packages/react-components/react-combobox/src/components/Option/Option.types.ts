@@ -33,6 +33,9 @@ export type OptionState = ComponentState<OptionSlots> &
     /* If true, this is the currently highlighted option */
     active: boolean;
 
+    // Whether the keyboard focus outline style should be visible
+    focusVisible: boolean;
+
     /* If true, the option is part of a multiselect combobox or listbox */
     multiselect?: boolean;
 

@@ -28,16 +28,33 @@ There's only one existent component similar to AvatarGroup in v8 `Facepile`. v0 
 ## Sample Code
 
 ```jsx
-import { AvatarGroup, Avatar } from '@fluentui/react-avatar';
+const names = [
+  'Johnie McConnell',
+  'Allan Munger',
+  'Erik Nason',
+  'Kristin Patterson',
+  'Daisy Phillips',
+  'Carole Poland',
+  'Carlos Slattery',
+  'Robert Tolbert',
+  'Kevin Sturgis',
+  'Charlotte Waltson',
+  'Elliot Woodward',
+];
 
-const App = () => {
+const AvatarGroup = () => {
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
+
   return (
-    <AvatarGroup layout="spread" size={32}>
-      <Avatar color="colorful" name="Katri Athokas" />
-      <Avatar color="colorful" name="Elvia Atkins" />
-      <Avatar color="colorful" name="Cameron Evans" />
-      <Avatar color="colorful" name="Wanda Howard" />
-      <Avatar color="colorful" name="Mona Kane" />
+    <AvatarGroup {...props}>
+      {inlineItems.map(name => (
+        <AvatarGroupItem name={name} key={name} />
+      ))}
+      <AvatarGroupPopover>
+        {overflowItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+      </AvatarGroupPopover>
     </AvatarGroup>
   );
 };
@@ -49,49 +66,31 @@ There are three layout variants in AvatarGroup:
 
 - Spread layout (Default): Avatars are spaced evenly.
 - Stack layout: Avatars are overlapped evenly.
-- Pie layout: For the pie layout there can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
-
-  - If the size of the avatar group is `36` or smaller then only the first letter of the initials will be displayed.
-  - `maxAvatars` will be ignored when using this layout.
-
-- The `spread` and `stack` layouts have a maximum of 5 avatars before overflowing by default, which can be overridden via the `maxAvatars` prop.
+- Pie layout: Avatars are "cut" in a pie design. When there are two Avatars inline, the Avatars will be cut in half and placed side by side. When there are three Avatars inline, the first Avatar will be cut in half and other two will be downscaled by 50%.
+  - The pie layout must have 3 or less Avatars inline and all Avatars must repeat in the `AvatarGroupPopover`. This is handled by `partitionAvatarGroupItems`.
+- If `partitionAvatarGroupItems` is used, the `spread` and `stack` layouts will have a maximum of 5 avatars before overflowing by default. This can be overridden via the `maxAvatars` option in `partitionAvatarGroupItems`.
 
 ## API
 
-See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) for more details.
+See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts), [AvatarGroupPopover.types.ts](./src/components/AvatarGroupPopover/AvatarGroupPopover.types.ts) and [AvatarGroupItem.types.ts](./src/components/AvatarGroupItem/AvatarGroupItem.types.ts) for more details.
 
 - `size`: Group size will override the children's current size. This is to ensure that the `AvatarGroup`'s spacing is correct because it changes depending on the group size.
-- `popoverSurface`: All Avatars in `popoverSurface` will have a size of 24 and will be encased in a div to apply stylings.
-- Avatar `color`: AvatarGroup's colors will follow the order below, but they can be overriden by providing a color specific color on a given avatar.
+- `AvatarGroupPopover`: All Avatars in `AvatarGroupPopover` will have a size of 24 and have a wrapper to apply stylings.
+- AvatarGroupItem `color`: Can be overridden by providing a specific color on a given avatar.
 
 #### Color override example:
 
-In this example, the first Avatar will have a `darkRed` color, while all the other avatars will follow the default color order.
+In this example, the first AvatarGroupItem will have a `darkRed` color, while all the other Avatars have their color assigned by Avatar.
 
 ```jsx
 <AvatarGroup>
-  <Avatar color="darkRed" name="Katri Athokas" />
-  <Avatar name="Elvia Atkins" />
-  <Avatar name="Cameron Evans" />
-  <Avatar name="Wanda Howard" />
-  <Avatar name="Mona Kane" />
+  <AvatarGroupItem color="darkRed" name="Katri Athokas" />
+  <AvatarGroupItem name="Elvia Atkins" />
+  <AvatarGroupItem name="Cameron Evans" />
+  <AvatarGroupItem name="Wanda Howard" />
+  <AvatarGroupItem name="Mona Kane" />
 </AvatarGroup>
 ```
-
-#### Color order:
-
-|                       |                    |                       |
-| --------------------- | ------------------ | --------------------- |
-| Avatar 1: Red         | Avatar 2: Blue     | Avatar 3: Purple      |
-| Avatar 4: Forest      | Avatar 5: Pink     | Avatar 6: Lavender    |
-| Avatar 7: Teal        | Avatar 8: Gold     | Avatar 9: Cranberry   |
-| Avatar 10: Cornflower | Avatar 11: Lilac   | Avatar 12: Anchor     |
-| Avatar 13: Dark Green | Avatar 14: Pumpkin | Avatar 15: Dark Red   |
-| Avatar 16: Mink       | Avatar 17: Grape   | Avatar 18: Platinum   |
-| Avatar 19: Royal Blue | Avatar 20: Brown   | Avatar 21: Peach      |
-| Avatar 22: Steel      | Avatar 23: Navy    | Avatar 24: Seafoam    |
-| Avatar 25: Magenta    | Avatar 26: Beige   | Avatar 27: Light Teal |
-| Avatar 28: Gold       | Avatar 29: Plum    | Avatar 30: Marigold   |
 
 ## Structure
 
@@ -99,29 +98,45 @@ In this example, the first Avatar will have a `darkRed` color, while all the oth
 
 ```jsx
 <AvatarGroup layout="spread" size={32}>
-  <Avatar name="Katri Athokas" />
-  <Avatar name="Elvia Atkins" />
-  <Avatar name="Cameron Evans" />
-  <Avatar name="Wanda Howard" />
-  <Avatar name="Mona Kane" />
+  <AvatarGroupItem name="Katri Athokas" />
+  <AvatarGroupItem name="Elvia Atkins" />
+  <AvatarGroupItem name="Cameron Evans" />
+  <AvatarGroupItem name="Wanda Howard" />
+  <AvatarGroupPopover>
+    <AvatarGroupItem name="Mona Kane" />
+    <AvatarGroupItem name="Kristin Patterson" />
+    <AvatarGroupItem name="Elliot Woodward" />
+    <AvatarGroupItem name="Charlotte Waltson" />
+  </AvatarGroupPopover>
 </AvatarGroup>
 ```
 
 - _**Internal**_
 
 ```jsx
+// AvatarGroup
+<AvatarGroupProvider value={contextValues.avatarGroup}>
+  <slots.root {...slotProps.root} />
+</AvatarGroupProvider>
+
+// AvatarGroupPopover
+<slots.root {...(slotProps.root as PopoverProps)}>
+  <PopoverTrigger>
+    <slots.tooltip {...(slotProps.tooltip as TooltipProps)}>
+      <slots.triggerButton {...slotProps.triggerButton} />
+    </slots.tooltip>
+  </PopoverTrigger>
+  <slots.popoverSurface {...slotProps.popoverSurface}>
+    <AvatarGroupProvider value={contextValues.avatarGroup}>
+      <slots.content {...slotProps.content} />
+    </AvatarGroupProvider>
+  </slots.popoverSurface>
+</slots.root>
+
+// AvatarGroupItem
 <slots.root {...slotProps.root}>
-  {state.root.children}
-  {slots.popoverSurface && slots.popoverTrigger && slotProps.popoverSurface.children && (
-    <Popover trapFocus size="small">
-      <PopoverTrigger>
-        <Tooltip content={state.tooltipContent} relationship="description" appearance="inverted">
-          <slots.popoverTrigger {...slotProps.popoverTrigger} />
-        </Tooltip>
-      </PopoverTrigger>
-      <slots.popoverSurface {...slotProps.popoverSurface} />
-    </Popover>
-  )}
+  <slots.avatar {...slotProps.avatar} />
+  {state.isOverflowItem && <slots.overflowLabel {...slotProps.overflowLabel} />}
 </slots.root>
 ```
 
@@ -129,46 +144,49 @@ In this example, the first Avatar will have a `darkRed` color, while all the oth
 
 ```html
 <div className="fui-AvatarGroup" role="group">
-  <Avatar />
-  <Avatar />
-  <Avatar />
-  <Avatar />
+  <div class="fui-AvatarGroupItem">
+    <Avatar />
+  </div>
+  <div class="fui-AvatarGroupItem">
+    <Avatar />
+  </div>
   <button>+1</button>
 </div>
 
 // on document.body
-<div class="fui-AvatarGroup__popoverSurface" role="complementary">
-  <div class="fui-AvatarGroup__popoverSurfaceItem">
-    <Avatar />
-    <label />
-  </div>
-  <!-- ... -->
-  <div class="fui-AvatarGroup__popoverSurfaceItem">
-    <Avatar />
-    <label />
-  </div>
+<div class="fui-AvatarGroupPopover" role="dialog" aria-label="Overflow">
+  <ul>
+    <li class="fui-AvatarGroupItem">
+      <Avatar />
+      <label />
+    </li>
+    <li class="fui-AvatarGroupItem">
+      <Avatar />
+      <label />
+    </li>
+  </ul>
 </div>
 ```
 
 ## Migration
 
-See [MIGRATION-AvatarGroup.md](MIGRATION-AvatarGroup.md) for details.
+See [v8 to v9 migration guide](https://react.fluentui.dev/?path=/docs/concepts-upgrading-from-v8-components-avatargroup-upgrade--page) for details.
 
 ## Behaviors
 
 _Explain how the component will behave in use, including:_
 
-- _Component States_
-  - Overflowed state: When there are more Avatars than the `maxAvatars`, an overflow indicator will be rendered that can be clicked to look at the rest of the avatars.
-    - `Pie` layout: since `maxAvatars` is ignored, the overflow indicator will be rendered strictly when there's more than three avatars.
-- _Interaction_
-  - _Keyboard_: Overflow indicator can be interacted with the keyboard and when enter is pressed a popover that traps focus will be rendered.
-  - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow. When the overflow indicator is hovered, a tooltip will read the number of people overflowed (`{numOverflowAvatars} more people` by default).
+- _AvatarGroupPopover Component States_
+
+  - _Keyboard_: `triggerButton` can be interacted with the keyboard and when enter is pressed a popover that traps focus on the PopoverSurface will be rendered.
+  - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow. When the overflow indicator is hovered, a tooltip will read `View more people.`.
   - _Screen readers_:
-    - `Avatar`: logic is handled by `Avatar` component.
-    - `AvatarGroup`:
-      - When a label is used alongside `AvatarGroup` and focused, all Avatars are read. If the overflow indicator is rendered, the popover localized text is read.
-      - Avatars can be focused and the name will be read. To get to the Avatars in the overflow menu, the Popover must be triggered, which will in turn set focus on it and let the user traverse through the set of overflowed Avatars.
+    - When the `triggerButton` is focused, its content will be read.
+
+- _AvatarGroupItem Component States_
+  - _Screen readers_:
+    - When AvatarGroupItem is rendered inline, logic is handled by `Avatar` component.
+    - When AvatarGroupItem is rendered inside AvatarGroupPopover, the label is disabled via `aria-label` and `Avatar` will handle the screen reader.
 
 ## Accessibility
 
@@ -176,10 +194,10 @@ Base accessibility information is included in the design document. After the spe
 
 - There's no native element for this component.
 
-- `AvatarGroup` will have a role of `group` and slots will be handled by their respective slot type.
-- Only the overflow indicator will be focusable by the keyboard. After the overflow indicator is pressed, the popover will handle focus using the `trapFocus` prop.
+- `AvatarGroup` will have a role of `group`.
+- Only the `popoverTrigger` will be focusable by the keyboard.
 - There are no live-regions in `AvatarGroup`.
-- A Tooltip will appear when the overflow indicator is hovered or focused.
-  - Screen reader: when overflow indicator is rendered and focused, screen reader will read the content of the tooltip.
-  - Tooltip cannot be focused itself.
-- Focus will only be trapped when the overflow indicator is triggered.
+- A Tooltip will appear when the `popoverTrigger` is hovered or focused.
+- Focus will only be trapped when the `popoverTrigger` is triggered.
+- The label rendered along with the Avatar inside AvatarGroupPopover is disabled via `aria-label`.
+- A `<ul>` with role list is rendered inside the PopoverSurface.

@@ -143,9 +143,9 @@ Combobox in v9 allows both controlled and uncontrolled selection, as do the corr
 | -------------------- | ------------------- | ------------------- | ------------------ | -------------------- | ------------ |
 | Initial selection    | initialSelectedKeys | defaultSelectedKeys | defaultSelectedKey | defaultSelectedItems | defaultValue |
 | Controlled selection | selectedKeys        | selectedKey         | selectedKey        | selectedItems        | value        |
-| Callback             | onSelect            | onChange            | onChange           | onChange             | onChange     |
+| Callback             | onOptionSelect      | onChange            | onChange           | onChange             | onChange     |
 
-The reason to move to `onSelect` over `onChange` in the v9 Combobox is because the editable Combobox uses an `<input>` element as its primary slot. Using `onSelect` allows the input to retain it's built-in `onChange` event. This could be revisited if we want to override `onChange` to handle both input value changes and selection changes.
+The reason to move to `onOptionSelect` over `onChange` in the v9 Combobox is because the editable Combobox uses an `<input>` element as its primary slot. Using `onOptionSelect` allows the input to retain it's built-in `onChange` event.
 
 ## Sample Code
 
@@ -344,7 +344,7 @@ type SimpleComboboxProps = {
   onOpenChange?(event: OpenEvents, data: OnOpenChangeData): void;
 
   /* Callback when an option is selected */
-  onSelect?(event: SelectionEvents, optionKey: string): void;
+  onOptionSelect?(event: SelectionEvents, optionKey: string): void;
 };
 ```
 
@@ -367,7 +367,7 @@ type SimpleListboxProps = {
   selectedKeys?: string[];
 
   /* Callback when an option is selected */
-  onSelect?(event: SelectionEvents, optionKey: string): void;
+  onOptionSelect?(event: SelectionEvents, optionKey: string): void;
 };
 ```
 

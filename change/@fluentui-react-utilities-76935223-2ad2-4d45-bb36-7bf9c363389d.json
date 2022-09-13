@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add microdata properties to allowed html properties",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

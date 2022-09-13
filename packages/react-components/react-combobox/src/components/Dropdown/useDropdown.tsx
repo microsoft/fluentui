@@ -9,6 +9,7 @@ import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
+import { useMergedRefs } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render Dropdown.
@@ -21,13 +22,29 @@ import type { DropdownProps, DropdownState } from './Dropdown.types';
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   const baseState = useComboboxBaseState(props);
-  const { activeOption, getIndexOfId, getOptionsMatchingValue, open, setActiveOption, setOpen } = baseState;
+  const {
+    activeOption,
+    getIndexOfId,
+    getOptionsMatchingValue,
+    open,
+    setActiveOption,
+    setFocusVisible,
+    setOpen,
+  } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
     excludedPropNames: ['children'],
   });
+
+  // set listbox popup width based off the root/trigger width
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const [popupWidth, setPopupWidth] = React.useState<string>();
+  React.useEffect(() => {
+    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
+    setPopupWidth(width);
+  }, [open]);
 
   // jump to matching option based on typing
   const searchString = React.useRef('');
@@ -86,6 +103,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
       const nextOption = getNextMatchingOption();
       setActiveOption(nextOption);
+      setFocusVisible(true);
     }
   };
 
@@ -108,7 +126,10 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     baseState.open || baseState.hasFocus
       ? resolveShorthand(props.listbox, {
           required: true,
-          defaultProps: { children: props.children },
+          defaultProps: {
+            children: props.children,
+            style: { width: popupWidth },
+          },
         })
       : undefined;
 
@@ -140,6 +161,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   return state;
 };

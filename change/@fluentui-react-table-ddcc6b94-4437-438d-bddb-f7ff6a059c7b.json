@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Add preview warning for Table component",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

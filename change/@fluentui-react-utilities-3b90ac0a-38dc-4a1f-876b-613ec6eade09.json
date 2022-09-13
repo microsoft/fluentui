@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add dialog properties to getNativeElementProps",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

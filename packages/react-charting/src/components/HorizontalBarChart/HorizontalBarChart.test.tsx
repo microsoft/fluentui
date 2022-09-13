@@ -5,6 +5,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, IHorizontalBarChartProps, HorizontalBarChart } from './index';
 import { IHorizontalBarChartState, HorizontalBarChartBase } from './HorizontalBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the HorizontalBarChart to be tested.
 let wrapper: ReactWrapper<IHorizontalBarChartProps, IHorizontalBarChartState, HorizontalBarChartBase> | undefined;
@@ -112,5 +113,44 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('HorizontalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', () => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+
+    wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(2).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+
+    wrapper = mount(
+      <HorizontalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+
+    jest.spyOn(global.Math, 'random').mockRestore();
   });
 });

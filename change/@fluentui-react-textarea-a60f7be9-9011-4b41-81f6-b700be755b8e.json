@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Change filled appearances' normal state's token.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -9,7 +9,7 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
 
 const items = [
   {
@@ -59,7 +59,7 @@ const columns = [
 
 export const SizeSmaller = () => {
   return (
-    <Table noNativeElements size="smaller">
+    <Table size="smaller">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -70,20 +70,26 @@ export const SizeSmaller = () => {
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell
-              media={
-                <Avatar
-                  size={20}
-                  name={item.author.label}
-                  badge={{ status: item.author.status as PresenceBadgeStatus }}
-                />
-              }
-            >
-              {item.author.label}
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                    size={20}
+                  />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

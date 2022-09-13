@@ -321,7 +321,12 @@ export interface ICartesianChartProps {
    * @default false
    * Used to rotate x axis labels by 45 degrees
    */
-  rotateXAxisLables?: boolean; // check for RTL
+  rotateXAxisLables?: boolean;
+
+  /**
+   * The prop used to define the date time localization options
+   */
+  dateLocalizeOptions?: Intl.DateTimeFormatOptions;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -495,11 +500,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
-
-  /**
-   * The prop used to define the date time localization options
-   */
-  dateLocalizeOptions?: Intl.DateTimeFormatOptions;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getAxisData?: any;
