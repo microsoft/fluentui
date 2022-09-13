@@ -104,7 +104,13 @@ const OverflowMenu = (props: OverflowMenuProps) => {
   return (
     <Menu hasIcons>
       <MenuTrigger>
-        <Button ref={ref} icon={<MoreHorizontalRegular />} aria-label={`${overflowCount} more tabs`} role="tab" />
+        <Button
+          ref={ref}
+          icon={<MoreHorizontalRegular />}
+          role="tab"
+          aria-label={`${overflowCount} more tabs`}
+          aria-selected="false"
+        />
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
