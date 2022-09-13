@@ -22,7 +22,7 @@ task('screener:runner', cb => {
     throw new Error(`package ${docsPackageName} does not exist in the repo`);
   }
 
-  const screenerConfigPath = paths.base('scripts/screener/screener.config.js');
+  const screenerConfigPath = paths.base('scripts/screener/screener.config-northstar.js');
 
   // kill the server when done
   const handlePromiseExit = promise =>
