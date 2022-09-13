@@ -12,7 +12,7 @@ import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
 import { useTable, ColumnDefinition } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
-import { TableCellItem } from '../../components/TableCellItem/TableCellItem';
+import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
   label: string;
@@ -131,16 +131,16 @@ export const SingleSelect = () => {
           <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
             <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
             <TableCell>
-              <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellItem media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
                 {item.author.label}
-              </TableCellItem>
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}

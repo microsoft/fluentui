@@ -18,7 +18,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellActions,
-  TableCellItem,
+  TableCellLayout,
 } from '../..';
 
 const items = [
@@ -81,26 +81,26 @@ export const CellActions = () => {
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellItem media={item.file.icon}>
+              <TableCellLayout media={item.file.icon}>
                 {item.file.label}
                 <TableCellActions>
                   <Button icon={<EditRegular />} appearance="subtle" />
                   <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
                 </TableCellActions>
-              </TableCellItem>
+              </TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellItem
+              <TableCellLayout
                 media={
                   <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                 }
               >
                 {item.author.label}
-              </TableCellItem>
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}

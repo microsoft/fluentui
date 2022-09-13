@@ -18,8 +18,8 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellActions,
-  TableCellPrimaryItem,
-  TableCellItem,
+  TableCellPrimaryLayout,
+  TableCellLayout,
 } from '../..';
 
 const items = [
@@ -82,25 +82,25 @@ export const PrimaryCell = () => {
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellPrimaryItem media={item.file.icon} main={item.file.label} secondary="Your organization">
+              <TableCellPrimaryLayout media={item.file.icon} main={item.file.label} secondary="Your organization">
                 <TableCellActions>
                   <Button icon={<EditRegular />} appearance="subtle" />
                   <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
                 </TableCellActions>
-              </TableCellPrimaryItem>
+              </TableCellPrimaryLayout>
             </TableCell>
             <TableCell>
-              <TableCellItem
+              <TableCellLayout
                 media={
                   <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                 }
               >
                 {item.author.label}
-              </TableCellItem>
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}

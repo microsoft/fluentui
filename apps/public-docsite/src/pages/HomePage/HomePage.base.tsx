@@ -125,7 +125,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.heroSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneHalf}>
-            <h2 className={this._classNames.heroTitle}>
+            <h1 className={this._classNames.heroTitle}>
               Fluent{' '}
               <svg width="128" height="92" viewBox="0 0 128 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <text x="0" y="90" fill="url(#paint0_linear)">
@@ -145,7 +145,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   </linearGradient>
                 </defs>
               </svg>
-            </h2>
+            </h1>
           </div>
           <div className={this._classNames.oneFourth} style={{ flexBasis: '31%' }}>
             <p>

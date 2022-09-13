@@ -680,7 +680,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         aria-label={ariaLabelForGrid || ariaLabel}
         aria-rowcount={isPlaceholderData ? 0 : rowCount}
         aria-colcount={colCount}
-        aria-readonly="true"
         aria-busy={isPlaceholderData}
       >
         <div onKeyDown={onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>

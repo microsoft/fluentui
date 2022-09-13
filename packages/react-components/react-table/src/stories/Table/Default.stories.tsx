@@ -9,7 +9,7 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellItem } from '../..';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
 
 const items = [
   {
@@ -71,20 +71,20 @@ export const Default = () => {
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellItem media={item.file.icon}>{item.file.label}</TableCellItem>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellItem
+              <TableCellLayout
                 media={
                   <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                 }
               >
                 {item.author.label}
-              </TableCellItem>
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellItem media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellItem>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}
