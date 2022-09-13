@@ -292,11 +292,7 @@
       "@fluentui/web-components/@storybook/html",
       "@fluentui/web-components/ts-loader",
       "@fluentui/web-components/ts-loader/**",
-      "@fluentui/web-components/webpack",
-      "@fluentui/react-18-tests-v8/react",
-      "@fluentui/react-18-tests-v8/react-dom",
-      "@fluentui/react-18-tests-v9/react",
-      "@fluentui/react-18-tests-v9/react-dom"
+      "@fluentui/web-components/webpack"
     ]
   },
   "resolutions": {
