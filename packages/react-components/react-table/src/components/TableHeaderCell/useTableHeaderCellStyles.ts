@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   root: {
     display: 'table-cell',
     verticalAlign: 'middle',
-    ...shorthands.padding(0),
+    ...shorthands.padding('0px', tokens.spacingHorizontalS),
   },
 
   resetButton: {
@@ -42,7 +42,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
     ...shorthands.gap(tokens.spacingHorizontalS),
     minHeight: '44px',
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
   sortable: {
