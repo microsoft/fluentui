@@ -218,11 +218,6 @@
       "projectType": "application",
       "implicitDependencies": []
     },
-    "@fluentui/stress-test": {
-      "root": "apps/stress-test",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
     "@fluentui/priority-overflow": {
       "root": "packages/react-components/priority-overflow",
       "projectType": "library",
@@ -258,6 +253,16 @@
     "@fluentui/react": {
       "root": "packages/react",
       "projectType": "library",
+      "implicitDependencies": []
+    },
+    "@fluentui/react-18-tests-v8": {
+      "root": "apps/react-18-tests-v8",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
+    "@fluentui/react-18-tests-v9": {
+      "root": "apps/react-18-tests-v9",
+      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
@@ -311,6 +316,13 @@
       "sourceRoot": "packages/react-components/react-button/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-button-shim-v8-v9": {
+      "root": "packages/react-components-migration/react-button-shim-v8-v9",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components-migration/react-button-shim-v8-v9/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-card": {
       "root": "packages/react-components/react-card",
@@ -774,6 +786,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/stress-test": {
+      "root": "apps/stress-test",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/style-utilities": {
       "root": "packages/style-utilities",
       "projectType": "library",
@@ -814,16 +831,6 @@
     },
     "@fluentui/theming-designer": {
       "root": "apps/theming-designer",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
-    "@fluentui/react-18-tests-v8": {
-      "root": "apps/react-18-tests-v8",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
-    "@fluentui/react-18-tests-v9": {
-      "root": "apps/react-18-tests-v9",
       "projectType": "application",
       "implicitDependencies": []
     },
