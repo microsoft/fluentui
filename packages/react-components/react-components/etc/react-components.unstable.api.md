@@ -194,13 +194,8 @@ import { tableCellClassName } from '@fluentui/react-table';
 import { tableCellClassNames } from '@fluentui/react-table';
 import { TableCellLayout } from '@fluentui/react-table';
 import { tableCellLayoutClassNames } from '@fluentui/react-table';
-import { TableCellLayoutProps } from '@fluentui/react-table';
-import { TableCellLayoutState } from '@fluentui/react-table';
 import { TableCellPrimaryLayout } from '@fluentui/react-table';
 import { tableCellPrimaryLayoutClassNames } from '@fluentui/react-table';
-import { TableCellPrimaryLayoutProps } from '@fluentui/react-table';
-import { TableCellPrimaryLayoutSlots } from '@fluentui/react-table';
-import { TableCellPrimaryLayoutState } from '@fluentui/react-table';
 import { TableCellProps } from '@fluentui/react-table';
 import { TableCellSlots } from '@fluentui/react-table';
 import { TableCellState } from '@fluentui/react-table';
@@ -700,19 +695,9 @@ export { TableCellLayout }
 
 export { tableCellLayoutClassNames }
 
-export { TableCellLayoutProps }
-
-export { TableCellLayoutState }
-
 export { TableCellPrimaryLayout }
 
 export { tableCellPrimaryLayoutClassNames }
-
-export { TableCellPrimaryLayoutProps }
-
-export { TableCellPrimaryLayoutSlots }
-
-export { TableCellPrimaryLayoutState }
 
 export { TableCellProps }
 

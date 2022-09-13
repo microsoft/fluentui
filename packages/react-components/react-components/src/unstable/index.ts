@@ -306,11 +306,6 @@ export type {
   TableCellActionsProps,
   TableCellActionsState,
   TableCellActionsSlots,
-  TableCellLayoutProps,
-  TableCellLayoutState,
-  TableCellPrimaryLayoutState,
-  TableCellPrimaryLayoutProps,
-  TableCellPrimaryLayoutSlots,
 } from '@fluentui/react-table';
 
 export {
