@@ -11,6 +11,7 @@ import {
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
 import { useTable, ColumnDefinition, ColumnId, SortState, useSort } from '../../hooks';
+import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
   label: string;
@@ -114,7 +115,7 @@ export const SortControlled = () => {
   let tableState = useTable({ columns, items });
   tableState = useSort(tableState, { sortState, onSortChange: setSortState });
   const {
-    rows,
+    getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
   } = tableState;
 
@@ -134,12 +135,24 @@ export const SortControlled = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sort(rows()).map(({ item }) => (
+        {sort(getRows()).map(({ item }) => (
           <TableRow key={item.file.label}>
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Mon, 12 Sep 2022 07:39:53 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.12",
+      "version": "0.3.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "21e6fe30633c31318137a066bc7ccb1b2cf299e4",
+            "comment": "return skipToMain functionality and hide back to top button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Sep 2022 07:48:10 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.11",
       "version": "0.3.11",

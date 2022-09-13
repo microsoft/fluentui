@@ -1,5 +1,604 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`StackedBarChart - mouse events Should render callout correctly on mouseover 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 3px;
+          }
+    >
+      <div
+        data-is-focusable={true}
+        role="text"
+      >
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
+      <div
+        data-is-focusable={true}
+        role="text"
+      >
+        <span
+          className=
+
+              {
+                color: #000000;
+                font-size: 12px;
+                font-weight: 600;
+              }
+        >
+          40
+        </span>
+        <span>
+          /
+          <span
+            className=
+
+                {
+                  color: #000000;
+                  font-size: 12px;
+                  opacity: 0.6;
+                }
+          >
+            63
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone2"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked bar chart 2nd example"
+        className=
+
+            {
+              height: 16px;
+              margin-bottom: 12px;
+              width: 100%;
+            }
+      >
+        <g>
+          <g
+            aria-label="Stacked bar chart"
+            aria-labelledby="callout0"
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            key="0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={8}
+              key="0"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Stacked bar chart"
+            aria-labelledby="callout0"
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            key="1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={8}
+              key="1"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
+        </g>
+        <div
+          className=
+              ms-Callout-container
+              {
+                position: relative;
+              }
+        >
+          <div
+            className=
+                ms-Callout
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border-radius: 2px;
+                  box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+                  box-sizing: border-box;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  position: absolute;
+                  z-index: 1000000;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  border-color: WindowText;
+                  border-style: solid;
+                  border-width: 1px;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+            data-is-focusable={false}
+            hidden={false}
+            id="callout0"
+            style={
+              Object {
+                "filter": "opacity(0)",
+                "opacity": 0,
+                "pointerEvents": "none",
+              }
+            }
+            tabIndex={-1}
+          >
+            <div
+              className=
+                  ms-Callout-main
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    position: relative;
+                    width: 100%;
+                  }
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="text"
+              style={
+                Object {
+                  "maxHeight": "100%",
+                  "outline": "none",
+                  "overflowY": undefined,
+                }
+              }
+            >
+              <div
+                className=
+
+                    {
+                      background-blend-mode: normal, luminosity;
+                      background-color: #ffffff;
+                      display: grid;
+                      overflow: hidden;
+                      padding-bottom: 10px;
+                      padding-left: 16px;
+                      padding-right: 16px;
+                      padding-top: 11px;
+                    }
+              >
+                <div
+                  className=
+
+                      {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                      }
+                >
+                  <div
+                    className=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          line-height: 16px;
+                          opacity: 0.8;
+                        }
+                  >
+                     
+                  </div>
+                </div>
+                <div
+                  className=""
+                >
+                  <div
+                    className=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          border-left: 4px solid #5c005c;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 28px;
+                          font-weight: 600;
+                          line-height: 22px;
+                          margin-top: unset;
+                          padding-left: 8px;
+                        }
+                  >
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                          }
+                    >
+                      first Lorem ipsum dolor sit amet
+                    </div>
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #5c005c;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 28px;
+                            font-weight: bold;
+                            line-height: 36px;
+                          }
+                    >
+                      40
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`StackedBarChart - mouse events Should render customized callout on mouseover 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 3px;
+          }
+    >
+      <div
+        data-is-focusable={true}
+        role="text"
+      >
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
+      <div
+        data-is-focusable={true}
+        role="text"
+      >
+        <span
+          className=
+
+              {
+                color: #000000;
+                font-size: 12px;
+                font-weight: 600;
+              }
+        >
+          40
+        </span>
+        <span>
+          /
+          <span
+            className=
+
+                {
+                  color: #000000;
+                  font-size: 12px;
+                  opacity: 0.6;
+                }
+          >
+            63
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone2"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked bar chart 2nd example"
+        className=
+
+            {
+              height: 16px;
+              margin-bottom: 12px;
+              width: 100%;
+            }
+      >
+        <g>
+          <g
+            aria-label="Stacked bar chart"
+            aria-labelledby="callout0"
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            key="0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={8}
+              key="0"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Stacked bar chart"
+            aria-labelledby="callout0"
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            key="1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={8}
+              key="1"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
+        </g>
+        <div
+          className=
+              ms-Callout-container
+              {
+                position: relative;
+              }
+        >
+          <div
+            className=
+                ms-Callout
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border-radius: 2px;
+                  box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+                  box-sizing: border-box;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  position: absolute;
+                  z-index: 1000000;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  border-color: WindowText;
+                  border-style: solid;
+                  border-width: 1px;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+            data-is-focusable={false}
+            hidden={false}
+            id="callout0"
+            style={
+              Object {
+                "filter": "opacity(0)",
+                "opacity": 0,
+                "pointerEvents": "none",
+              }
+            }
+            tabIndex={-1}
+          >
+            <div
+              className=
+                  ms-Callout-main
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    position: relative;
+                    width: 100%;
+                  }
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="text"
+              style={
+                Object {
+                  "maxHeight": "100%",
+                  "outline": "none",
+                  "overflowY": undefined,
+                }
+              }
+            >
+              <div>
+                <pre>
+                  {
+  "legend": "first Lorem ipsum dolor sit amet",
+  "data": 40,
+  "color": "#5c005c"
+}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] = `
 <div
   className=

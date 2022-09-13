@@ -5,19 +5,20 @@ const { getScenariosDir } = require('./paths');
 /**
  * @function getScenarioConfig
  * @param {string} scenarioName
- * @returns {ScenarioConfig}
+ * @returns {Object.<string, any>}
  */
 const getScenarioConfig = scenarioName => {
-  let scenarioConfig = require('../../scenarios/default.js');
+  const scenarioConfig = require('../../scenarios/default.js');
+  let returnConfig = { ...scenarioConfig };
   if (fs.existsSync(path.join(getScenariosDir(), `${scenarioName}.js`))) {
     const config = require(`../../scenarios/${scenarioName}.js`);
-    scenarioConfig = {
-      ...scenarioConfig,
+    returnConfig = {
+      ...returnConfig,
       ...config,
     };
   }
 
-  return scenarioConfig;
+  return returnConfig;
 };
 
 module.exports = getScenarioConfig;

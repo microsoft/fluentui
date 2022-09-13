@@ -111,18 +111,18 @@ const useCheckedStyles = makeStyles({
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: tokens.colorNeutralForeground2Selected,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
@@ -183,31 +183,46 @@ const useDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
+    },
+  },
+});
+
+const useIconStyles = makeStyles({
+  // Appearance variations
+  subtle: {
+    color: tokens.colorNeutralForeground2BrandSelected,
+
+    ':hover': {
+      color: tokens.colorNeutralForeground2BrandHover,
+    },
+
+    ':hover:active': {
+      color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
 });
@@ -215,6 +230,7 @@ const useDisabledStyles = makeStyles({
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   const checkedStyles = useCheckedStyles();
   const disabledStyles = useDisabledStyles();
+  const iconStyles = useIconStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
@@ -235,7 +251,11 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(toggleButtonClassNames.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      toggleButtonClassNames.icon,
+      appearance === 'subtle' && iconStyles.subtle,
+      state.icon.className,
+    );
   }
 
   useButtonStyles_unstable(state);

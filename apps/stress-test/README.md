@@ -20,10 +20,10 @@ Building produces a static application that can be served with a simple HTTP ser
 
 ```shell
 # Build all the dependencies for this application (e.g., `@fluentui/react`, `@fluentui/web-components`) along with the application.
-$ yarn workspace @fluentui/stress-test build:local
+$ yarn workspace @fluentui/stress-test stress-test build --build-deps
 
 # Build only this application.
-$ yarn workspace @fluentui/stress-test build:app
+$ yarn workspace @fluentui/stress-test stress-test build
 ```
 
 > NOTE: `build:local` is much slower, but is required the first time you're building the application or if you've pulled in lots of changes. Use `build:app` if you don't need to build dependencies like `@fluentui/react` as it's much faster.
@@ -48,7 +48,10 @@ $ yarn workspace @fluentui/stress-test stress-test run --scenario simple-stress 
 
 ## Development
 
-Use `yarn start` and select `@fluentui/stress-test` from the list of options to start the application in development mode.
+```shell
+# Run a development server. Useful for building new tests and debugging/investigating issues.
+$ yarn workspace @fluentui/stress-test stress-test dev
+```
 
 ### Project layout
 

@@ -25,7 +25,7 @@ export const NoFocusableElement = () => {
           <Button>Open non-modal dialog</Button>
         </DialogTrigger>
         <DialogSurface>
-          <DialogTitle closeButton={null}>Dialog Title</DialogTitle>
+          <DialogTitle action={null}>Dialog Title</DialogTitle>
           <DialogBody>
             <p>⛔️ A Dialog without focusable elements is not recommended!</p>
             <p>⛔️ Escape key doesn't work</p>

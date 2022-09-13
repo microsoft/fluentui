@@ -77,6 +77,9 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
 
+    // Whether the keyboard focus outline style should be visible
+    focusVisible: boolean;
+
     // whether the combobox/dropdown currently has focus
     hasFocus: boolean;
 
@@ -86,6 +89,8 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     selectOption(event: SelectionEvents, option: OptionValue): void;
 
     setActiveOption(option?: OptionValue): void;
+
+    setFocusVisible(focusVisible: boolean): void;
 
     setHasFocus(hasFocus: boolean): void;
 
