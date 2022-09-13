@@ -236,10 +236,6 @@ function replaceVersionsFromReference(
     if (packageJsons[0].version?.[0] !== '9') {
       throw new Error(`Converged reference package ${packageJsons[0].name} does not appear to have version 9.x`);
     }
-    // Update beachball config in package.json to match the current v9
-    if (packageJsons[0].beachball) {
-      newPackageJson.beachball = packageJsons[0].beachball;
-    }
   }
 }
 
