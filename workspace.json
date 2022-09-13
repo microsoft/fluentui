@@ -655,6 +655,13 @@
       "sourceRoot": "packages/react-components/react-spinner/src",
       "tags": ["vNext", "platform:web"]
     },
+    "@fluentui/react-stack-shim-v8-v9": {
+      "root": "packages/react-components-migration/react-stack-shim-v8-v9",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components-migration/react-stack-shim-v8-v9/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-storybook": {
       "root": "packages/react-components/react-storybook",
       "projectType": "library",
