@@ -10,7 +10,16 @@ import {
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellActions } from '../..';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableCellActions,
+  TableCellLayout,
+} from '../..';
 
 const items = [
   {
@@ -71,20 +80,28 @@ export const CellActions = () => {
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell media={item.file.icon}>
-              {item.file.label}
-              <TableCellActions>
-                <Button icon={<EditRegular />} appearance="subtle" />
-                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-              </TableCellActions>
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>
+                {item.file.label}
+                <TableCellActions>
+                  <Button icon={<EditRegular />} appearance="subtle" />
+                  <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                </TableCellActions>
+              </TableCellLayout>
             </TableCell>
-            <TableCell
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

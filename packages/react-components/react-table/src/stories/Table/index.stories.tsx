@@ -1,4 +1,5 @@
 import { Table } from '../..';
+import descriptionMd from './TableDescription.md';
 
 export { Default } from './Default.stories';
 export { Sort } from './Sort.stories';
@@ -19,4 +20,11 @@ export { CompositeNavigationMode } from './CompositeNavigationMode.stories';
 export default {
   title: 'Preview Components/Table',
   component: Table,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd].join('\n'),
+      },
+    },
+  },
 };

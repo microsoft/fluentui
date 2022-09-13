@@ -129,13 +129,13 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
@@ -270,11 +270,11 @@ const useRootDisabledStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: tokens.colorTransparentBackground,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorTransparentBackground,
     },
   },
   primary: {
@@ -292,30 +292,30 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -323,8 +323,8 @@ const useRootDisabledStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor('transparent'),
-    outlineColor: 'transparent',
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    outlineColor: tokens.colorTransparentStroke,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
     boxShadow: `
@@ -416,6 +416,17 @@ const useIconStyles = makeStyles({
     [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
 
+  // Appearance variations
+  subtle: {
+    ':hover': {
+      color: tokens.colorNeutralForeground2BrandHover,
+    },
+
+    ':hover:active': {
+      color: tokens.colorNeutralForeground2BrandPressed,
+    },
+  },
+
   // Icon position variations
   before: {
     marginRight: `var(${iconSpacingVar})`,
@@ -467,6 +478,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       buttonClassNames.icon,
       iconStyles.base,
       state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      appearance === 'subtle' && iconStyles.subtle,
       iconStyles[size],
       state.icon.className,
     );
