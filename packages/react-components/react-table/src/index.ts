@@ -89,25 +89,6 @@ export {
 
 export type { TableCellActionsProps, TableCellActionsSlots, TableCellActionsState } from './TableCellActions';
 export {
-  TablePrimaryCell,
-  tablePrimaryCellClassNames,
-  useTablePrimaryCellStyles_unstable,
-  useTablePrimaryCell_unstable,
-  renderTablePrimaryCell_unstable,
-} from './TablePrimaryCell';
-
-export type { TablePrimaryCellProps, TablePrimaryCellSlots, TablePrimaryCellState } from './TablePrimaryCell';
-
-export {
-  TableCellLayout,
-  useTableCellLayoutStyles_unstable,
-  useTableCellLayout_unstable,
-  renderTableCellLayout_unstable,
-  tableCellLayoutClassNames,
-} from './TableCellLayout';
-export type { TableCellLayoutProps, TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout';
-
-export {
   TableCellPrimaryLayout,
   tableCellPrimaryLayoutClassNames,
   useTableCellPrimaryLayoutStyles_unstable,
@@ -119,3 +100,12 @@ export type {
   TableCellPrimaryLayoutSlots,
   TableCellPrimaryLayoutState,
 } from './TableCellPrimaryLayout';
+
+export {
+  TableCellLayout,
+  useTableCellLayoutStyles_unstable,
+  useTableCellLayout_unstable,
+  renderTableCellLayout_unstable,
+  tableCellLayoutClassNames,
+} from './TableCellLayout';
+export type { TableCellLayoutProps, TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout';

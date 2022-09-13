@@ -263,10 +263,6 @@ export {
   useTableSelectionCell_unstable,
   renderTableSelectionCell_unstable,
   tableSelectionCellClassNames,
-  TablePrimaryCell,
-  useTablePrimaryCellStyles_unstable,
-  useTablePrimaryCell_unstable,
-  renderTablePrimaryCell_unstable,
   TableCellActions,
   useTableCellActionsStyles_unstable,
   useTableCellActions_unstable,
@@ -310,9 +306,6 @@ export type {
   TableCellActionsProps,
   TableCellActionsState,
   TableCellActionsSlots,
-  TablePrimaryCellProps,
-  TablePrimaryCellSlots,
-  TablePrimaryCellState,
 } from '@fluentui/react-table';
 
 export {

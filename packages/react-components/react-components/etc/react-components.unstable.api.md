@@ -157,7 +157,6 @@ import { renderTableCellLayout_unstable } from '@fluentui/react-table';
 import { renderTableCellPrimaryLayout_unstable } from '@fluentui/react-table';
 import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
-import { renderTablePrimaryCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
@@ -217,10 +216,6 @@ import { tableHeaderClassNames } from '@fluentui/react-table';
 import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
-import { TablePrimaryCell } from '@fluentui/react-table';
-import { TablePrimaryCellProps } from '@fluentui/react-table';
-import { TablePrimaryCellSlots } from '@fluentui/react-table';
-import { TablePrimaryCellState } from '@fluentui/react-table';
 import { TableProps } from '@fluentui/react-table';
 import { TableRow } from '@fluentui/react-table';
 import { tableRowClassName } from '@fluentui/react-table';
@@ -311,8 +306,6 @@ import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
-import { useTablePrimaryCell_unstable } from '@fluentui/react-table';
-import { useTablePrimaryCellStyles_unstable } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
 import { useTableSelectionCell_unstable } from '@fluentui/react-table';
@@ -628,8 +621,6 @@ export { renderTableHeader_unstable }
 
 export { renderTableHeaderCell_unstable }
 
-export { renderTablePrimaryCell_unstable }
-
 export { renderTableRow_unstable }
 
 export { renderTableSelectionCell_unstable }
@@ -747,14 +738,6 @@ export { TableHeaderProps }
 export { TableHeaderSlots }
 
 export { TableHeaderState }
-
-export { TablePrimaryCell }
-
-export { TablePrimaryCellProps }
-
-export { TablePrimaryCellSlots }
-
-export { TablePrimaryCellState }
 
 export { TableProps }
 
@@ -935,10 +918,6 @@ export { useTableHeaderCell_unstable }
 export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
-
-export { useTablePrimaryCell_unstable }
-
-export { useTablePrimaryCellStyles_unstable }
 
 export { useTableRow_unstable }
 

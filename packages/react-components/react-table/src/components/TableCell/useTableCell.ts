@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { TableCellProps, TableCellState } from './TableCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -20,9 +20,7 @@ export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTML
   return {
     components: {
       root: rootComponent,
-      media: 'span',
     },
-    media: resolveShorthand(props.media),
     root: getNativeElementProps(rootComponent, {
       ref,
       role: rootComponent === 'div' ? 'cell' : undefined,
