@@ -35,8 +35,14 @@ export type SelectionValue = {
 /*
  * Data for the onOptionSelect callback.
  * `optionValue` will be undefined if the multiple options are modified at once.
+ * `optionData` passes through any custom value defined in the selected Option's `data` attribute.
  */
-export type OptionOnSelectData = { optionValue: string | undefined; selectedOptions: string[] };
+export type OptionOnSelectData = {
+  optionValue: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  optionData: any;
+  selectedOptions: string[];
+};
 
 /* Possible event types for onOptionSelect */
 export type SelectionEvents =

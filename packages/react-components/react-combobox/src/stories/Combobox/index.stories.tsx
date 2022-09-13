@@ -11,6 +11,7 @@ export { Multiselect } from './ComboboxMultiselect.stories';
 export { Grouped } from './ComboboxGrouped.stories';
 export { Appearance } from './ComboboxAppearance.stories';
 export { Size } from './ComboboxSize.stories';
+export { Controlled } from './ComboboxControlled.stories';
 
 export default {
   title: 'Preview Components/Combobox',

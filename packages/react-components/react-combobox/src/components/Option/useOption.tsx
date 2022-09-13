@@ -31,7 +31,7 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { disabled, value } = props;
+  const { data, disabled, value } = props;
   const optionRef = React.useRef<HTMLElement>(null);
   const optionValue = getValueString(value, props.children);
 
@@ -39,8 +39,9 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const id = useId('fluent-option', props.id);
 
   // data used for context registration & events
-  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, value: optionValue }), [
+  const optionData = React.useMemo<OptionValue>(() => ({ id, data, disabled, value: optionValue }), [
     id,
+    data,
     disabled,
     optionValue,
   ]);

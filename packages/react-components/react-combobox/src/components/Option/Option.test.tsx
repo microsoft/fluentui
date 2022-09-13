@@ -112,9 +112,10 @@ describe('Option', () => {
 
   it('registers with default values', () => {
     const registerOption = jest.fn();
+    const testData = { key: 'test' };
     const { getByRole } = render(
       <ListboxContext.Provider value={{ ...defaultContextValues, registerOption }}>
-        <Option>Option 1</Option>
+        <Option data={testData}>Option 1</Option>
       </ListboxContext.Provider>,
     );
 
@@ -126,6 +127,7 @@ describe('Option', () => {
     expect(typeof registerProps?.id).toEqual('string');
     expect(registerProps?.disabled).toBeFalsy();
     expect(registerProps?.value).toEqual('Option 1');
+    expect(registerProps?.data).toEqual(testData);
     expect(registerRef).toEqual(getByRole('option'));
   });
 

@@ -13,14 +13,20 @@ export type OptionSlots = {
  */
 export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
   /**
+   * Add optional custom data to options, which will be passed through to onOptionSelect
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data?: any;
+
+  /**
    * Sets an option to the `disabled` state.
    * Disabled options cannot be selected, but are still keyboard navigable
    */
   disabled?: boolean;
 
   /*
-   * Defines a string value for the option, used for the parent Combobox's value.
-   * Use this if the children are not a string, or you wish the value to differ from the displayed text.
+   * Defines a string value for the option, used for the parent Combobox's value and filtering/typing logic.
+   * Use this if the children use JSX instead of a simple string (e.g. options that include an icon or image).
    */
   value?: string;
 };

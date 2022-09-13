@@ -1,4 +1,8 @@
 export type OptionValue = {
+  /** Custom author-provided data defined in the Option's `data` attribute */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+
   /** The disabled state of the option. */
   disabled?: boolean;
 
