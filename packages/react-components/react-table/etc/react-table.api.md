@@ -44,17 +44,7 @@ export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
 export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSX.Element;
 
 // @public
-<<<<<<< HEAD
 export const renderTableCellLayout_unstable: (state: TableCellLayoutState) => JSX.Element;
-=======
-export const renderTableCellLayout_unstable: (state: TableCellLayoutState) => JSX.Element;
-
-// @public
-export const renderTableCellPrimaryLayout_unstable: (state: TableCellPrimaryLayoutState) => JSX.Element;
-
-// @public
-export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Element;
->>>>>>> origin/master
 
 // @public
 export const renderTableCellPrimaryLayout_unstable: (state: TableCellPrimaryLayoutState) => JSX.Element;
@@ -133,7 +123,6 @@ export const tableCellClassName = "fui-TableCell";
 export const tableCellClassNames: SlotClassNames<TableCellSlots>;
 
 // @public
-<<<<<<< HEAD
 export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
 
 // @public (undocumented)
@@ -144,24 +133,11 @@ export type TableCellLayoutProps = ComponentProps<TableCellLayoutSlots> & {};
 
 // @public (undocumented)
 export type TableCellLayoutSlots = {
-=======
-export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
-
-// @public (undocumented)
-export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
-
-// @public
-export type TableCellLayoutProps = ComponentProps<TableCellLayoutSlots> & {};
-
-// @public (undocumented)
-export type TableCellLayoutSlots = {
->>>>>>> origin/master
     root: Slot<'div'>;
     media?: Slot<'span'>;
 };
 
 // @public
-<<<<<<< HEAD
 export type TableCellLayoutState = ComponentState<TableCellLayoutSlots>;
 
 // @public
@@ -182,28 +158,6 @@ export type TableCellPrimaryLayoutSlots = {
 
 // @public
 export type TableCellPrimaryLayoutState = ComponentState<TableCellPrimaryLayoutSlots>;
-=======
-export type TableCellLayoutState = ComponentState<TableCellLayoutSlots>;
-
-// @public
-export const TableCellPrimaryLayout: ForwardRefComponent<TableCellPrimaryLayoutProps>;
-
-// @public (undocumented)
-export const tableCellPrimaryLayoutClassNames: SlotClassNames<TableCellPrimaryLayoutSlots>;
-
-// @public
-export type TableCellPrimaryLayoutProps = ComponentProps<Partial<TableCellPrimaryLayoutSlots>> & {};
-
-// @public (undocumented)
-export type TableCellPrimaryLayoutSlots = {
-    main: Slot<'span'>;
-    secondary: Slot<'span'>;
-    wrapper: Slot<'div'>;
-} & TableCellLayoutSlots;
-
-// @public
-export type TableCellPrimaryLayoutState = ComponentState<TableCellPrimaryLayoutSlots>;
->>>>>>> origin/master
 
 // @public
 export type TableCellProps = ComponentProps<TableCellSlots> & {};
@@ -381,7 +335,6 @@ export const useTableCellActions_unstable: (props: TableCellActionsProps, ref: R
 export const useTableCellActionsStyles_unstable: (state: TableCellActionsState) => TableCellActionsState;
 
 // @public
-<<<<<<< HEAD
 export const useTableCellLayout_unstable: (props: TableCellLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutState;
 
 // @public
@@ -392,18 +345,6 @@ export const useTableCellPrimaryLayout_unstable: (props: TableCellPrimaryLayoutP
 
 // @public
 export const useTableCellPrimaryLayoutStyles_unstable: (state: TableCellPrimaryLayoutState) => TableCellPrimaryLayoutState;
-=======
-export const useTableCellLayout_unstable: (props: TableCellLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutState;
-
-// @public
-export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) => TableCellLayoutState;
-
-// @public
-export const useTableCellPrimaryLayout_unstable: (props: TableCellPrimaryLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellPrimaryLayoutState;
-
-// @public
-export const useTableCellPrimaryLayoutStyles_unstable: (state: TableCellPrimaryLayoutState) => TableCellPrimaryLayoutState;
->>>>>>> origin/master
 
 // @public
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
