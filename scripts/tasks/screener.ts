@@ -11,12 +11,12 @@ import { getStorybook } from '@storybook/react';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const getConfig = require(screenerConfigPath);
-  const screenerConfig: ScreenerRunnerConfig = getConfig(
-    process.env.SCREENER_API_KEY,
-    process.env.BUILD_SOURCEBRANCHNAME,
-    process.env.DEPLOYURL,
-    process.env.SYSYEM_PULLREQUEST_TARGETBRANCH,
-  );
+  const screenerConfig: ScreenerRunnerConfig = getConfig({
+    screenerApiKey: process.env.SCREENER_API_KEY,
+    sourceBranchName: process.env.BUILD_SOURCEBRANCHNAME,
+    deployUrl: process.env.DEPLOYURL,
+    targetBranch: process.env.SYSYEM_PULLREQUEST_TARGETBRANCH,
+  });
   console.log('screener config for run:');
   console.log(JSON.stringify(screenerConfig, null, 2));
 
