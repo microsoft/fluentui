@@ -41,7 +41,6 @@ Each icon also accepts `className` and `primaryFill` props for styling.
 
 ```tsx
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {
   AccessTimeFilled,
   AccessTimeRegular,
@@ -49,7 +48,7 @@ import {
   iconFilledClassName,
   iconRegularClassName,
 } from '@fluentui/react-icons';
-import { makeStyles } from '@griffel/react';
+import { makeStyles } from '@fluentui/react-components';
 
 const iconStyleProps: FluentIconsProps = {
   primaryFill: 'purple',
@@ -70,13 +69,14 @@ const useIconStyles = makeStyles({
 });
 
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
-const rootElement = document.getElementById('root');
-const styles = useIconStyles();
-ReactDOM.render(
-  <div className={styles.icon}>
-    <AccessTime aria-label="AccessTime" {...iconStyleProps} />
-  </div>,
-  rootElement,
+function App() {
+  const styles = useIconStyles();
+
+  return (
+    <div className={styles.icon}>
+      <AccessTime aria-label="An AccessTime icon" {...iconStyleProps} />
+    </div>
+  )
 );
 ```
 

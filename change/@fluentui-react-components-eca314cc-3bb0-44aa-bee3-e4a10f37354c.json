@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "(docs): update Icon docs with examples",
+  "comment": "docs: update Icon docs with examples",
   "packageName": "@fluentui/react-components",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
