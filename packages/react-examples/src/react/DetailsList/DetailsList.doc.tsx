@@ -53,6 +53,9 @@ const DetailsListKeyboardAccessibleResizeAndReorderExampleCode = require('!raw-l
 import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverrides.Example';
 const DetailsListKeyboardOverridesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
 
+import { DetailsListCumulativeGroupHeadersExample } from './DetailsList.CumulativeGroupHeaders.Example';
+const DetailsListCumulativeGroupHeadersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CumulativeGroupHeaders.Example.tsx') as string;
+
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
@@ -174,4 +177,10 @@ export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
   title: 'Keyboard overrides for selection',
   code: DetailsListKeyboardOverridesExampleCode,
   view: <DetailsListKeyboardOverridesExample />,
+});
+
+export const DetailsListCumulativeGroupHeadersProps: IDocPageProps = generateProps({
+  title: 'Cumulative headers example',
+  code: DetailsListCumulativeGroupHeadersExampleCode,
+  view: <DetailsListCumulativeGroupHeadersExample />,
 });
