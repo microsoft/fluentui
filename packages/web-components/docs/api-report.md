@@ -41,7 +41,6 @@ import { FlipperOptions } from '@microsoft/fast-foundation';
 import { FoundationElement } from '@microsoft/fast-foundation';
 import { FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { FoundationElementRegistry } from '@microsoft/fast-foundation';
-import { FoundationElementTemplate } from '@microsoft/fast-foundation';
 import { HorizontalScroll as HorizontalScroll_2 } from '@microsoft/fast-foundation';
 import { HorizontalScrollOptions } from '@microsoft/fast-foundation';
 import { Listbox as Listbox_2 } from '@microsoft/fast-foundation';
@@ -72,7 +71,6 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea as TextArea_2 } from '@microsoft/fast-foundation';
 import { TextField as TextField_2 } from '@microsoft/fast-foundation';
-import { TextFieldOptions } from '@microsoft/fast-foundation';
 import { Toolbar as Toolbar_2 } from '@microsoft/fast-foundation';
 import { Tooltip as Tooltip_2 } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
@@ -83,10 +81,8 @@ import { ViewTemplate } from '@microsoft/fast-element';
 // @public (undocumented)
 export const accentBaseColor: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "AccentButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const AccentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
+export const _accentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const accentFillActive: CSSDesignToken<Swatch>;
@@ -224,40 +220,8 @@ export const allComponents: {
     fluentTabs: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tabs>;
     fluentTab: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tab>;
     fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TabPanel>;
-    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<    {
-    baseName: string;
-    baseClass: typeof TextArea_2;
-    template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
-    styles: (context: any, definition: any) => ElementStyles;
-    shadowOptions: {
-    delegatesFocus: true;
-    };
-    }> | undefined) => FoundationElementRegistry<    {
-    baseName: string;
-    baseClass: typeof TextArea_2;
-    template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
-    styles: (context: any, definition: any) => ElementStyles;
-    shadowOptions: {
-    delegatesFocus: true;
-    };
-    }, TextArea>;
-    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<    {
-    baseName: string;
-    baseClass: typeof TextField_2;
-    template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
-    styles: (context: any, definition: any) => ElementStyles;
-    shadowOptions: {
-    delegatesFocus: true;
-    };
-    }> | undefined) => FoundationElementRegistry<    {
-    baseName: string;
-    baseClass: typeof TextField_2;
-    template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
-    styles: (context: any, definition: any) => ElementStyles;
-    shadowOptions: {
-    delegatesFocus: true;
-    };
-    }, TextField>;
+    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextArea>;
+    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextField>;
     fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Toolbar>;
     fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tooltip>;
     fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TreeView>;
@@ -308,16 +272,17 @@ export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
 // @public
 export const badgeStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "baseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
+// @internal
+export const _baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const baseHeightMultiplier: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const baseHorizontalSpacingMultiplier: CSSDesignToken<number>;
+
+// @internal
+export const _baseInputStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
 
 // @public (undocumented)
 export const baseLayerLuminance: CSSDesignToken<number>;
@@ -716,44 +681,12 @@ export const fluentTabs: (overrideDefinition?: OverrideFoundationElementDefiniti
 // Warning: (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
 //
 // @public
-export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<    {
-baseName: string;
-baseClass: typeof TextArea_2;
-template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
-styles: (context: any, definition: any) => ElementStyles;
-shadowOptions: {
-delegatesFocus: true;
-};
-}> | undefined) => FoundationElementRegistry<    {
-baseName: string;
-baseClass: typeof TextArea_2;
-template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
-styles: (context: any, definition: any) => ElementStyles;
-shadowOptions: {
-delegatesFocus: true;
-};
-}, typeof TextArea>;
+export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextArea>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
 //
 // @public
-export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<    {
-baseName: string;
-baseClass: typeof TextField_2;
-template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
-styles: (context: any, definition: any) => ElementStyles;
-shadowOptions: {
-delegatesFocus: true;
-};
-}> | undefined) => FoundationElementRegistry<    {
-baseName: string;
-baseClass: typeof TextField_2;
-template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
-styles: (context: any, definition: any) => ElementStyles;
-shadowOptions: {
-delegatesFocus: true;
-};
-}, typeof TextField>;
+export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextField>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
 //
@@ -842,35 +775,20 @@ export class HorizontalScroll extends HorizontalScroll_2 {
 // @public
 export const horizontalScrollStyles: (context: ElementDefinitionContext, definition: HorizontalScrollOptions) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const HypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
+export const _hypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "inputFilledForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const inputFilledForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+// @internal
+export const _inputFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "inputFilledStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const inputFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+export const _inputForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "inputForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const inputForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+// @internal
+export const _inputOutlineStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "inputStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const inputStateStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "inputStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const inputStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+// @internal
+export const _inputStateStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
 
 // @public (undocumented)
 export interface InteractiveColorRecipe {
@@ -894,10 +812,8 @@ export function isDark(color: Swatch): boolean;
 // @public (undocumented)
 export const layerCornerRadius: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const LightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
+export const _lightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export class Listbox extends Listbox_2 {
@@ -922,6 +838,9 @@ export const menuStyles: (context: ElementDefinitionContext, definition: Foundat
 
 // @public (undocumented)
 export const neutralBaseColor: CSSDesignToken<Swatch>;
+
+// @internal (undocumented)
+export const _neutralButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public @deprecated (undocumented)
 export const neutralContrastFillActive: CSSDesignToken<Swatch>;
@@ -1429,15 +1348,13 @@ export class NumberField extends NumberField_2 {
 export type NumberFieldAppearance = 'filled' | 'outline';
 
 // @public
-export const numberFieldStyles: (context: any, definition: any) => ElementStyles;
+export const numberFieldStyles: (context: ElementDefinitionContext, definition: NumberFieldOptions) => ElementStyles;
 
 // @public
 export const OptionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const OutlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
+export const _outlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public @deprecated (undocumented)
 export const outlineWidth: CSSDesignToken<number>;
@@ -1508,7 +1425,7 @@ export class Search extends Search_2 {
 export type SearchAppearance = 'filled' | 'outline';
 
 // @public
-export const searchStyles: (context: any, definition: any) => ElementStyles;
+export const searchStyles: (context: ElementDefinitionContext, definition: SearchOptions) => ElementStyles;
 
 // @public (undocumented)
 export const searchTemplate: (context: ElementDefinitionContext, definition: SearchOptions) => ViewTemplate<Search_2>;
@@ -1529,7 +1446,7 @@ export class Select extends Select_2 {
 export type SelectAppearance = 'filled' | 'outline' | 'stealth';
 
 // @public
-export const selectStyles: (context: any, definition: any) => ElementStyles;
+export const selectStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles;
 
 export { Skeleton }
 
@@ -1554,10 +1471,8 @@ export enum StandardLuminance {
     LightMode = 0.98
 }
 
-// Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const StealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
+export const _stealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const strokeWidth: CSSDesignToken<number>;
@@ -1626,7 +1541,7 @@ export class TextArea extends TextArea_2 {
 export type TextAreaAppearance = 'filled' | 'outline';
 
 // @public
-export const textAreaStyles: (context: any, definition: any) => ElementStyles;
+export const textAreaStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "TextField" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1644,7 +1559,7 @@ export class TextField extends TextField_2 {
 export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
-export const textFieldStyles: (context: any, definition: any) => ElementStyles;
+export const textFieldStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "Toolbar" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1786,9 +1701,9 @@ export const typeRampPlus6LineHeight: CSSDesignToken<string>;
 // dist/dts/custom-elements.d.ts:54:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
 // dist/dts/custom-elements.d.ts:57:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
 // dist/dts/custom-elements.d.ts:96:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-// dist/dts/custom-elements.d.ts:113:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-// dist/dts/custom-elements.d.ts:130:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
-// dist/dts/custom-elements.d.ts:131:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+// dist/dts/custom-elements.d.ts:97:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+// dist/dts/custom-elements.d.ts:98:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+// dist/dts/custom-elements.d.ts:99:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

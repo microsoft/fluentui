@@ -6,37 +6,28 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
+  _baseInputStyles,
+  _inputFilledStyles,
+  _inputForcedColorStyles,
+  _inputOutlineStyles,
+  _inputStateStyles,
   heightNumber,
-  inputFilledForcedColorStyles,
-  inputFilledStyles,
-  inputForcedColorStyles,
-  inputStateStyles,
-  inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { designUnit } from '../design-tokens';
 
-export const textAreaFilledStyles: (
+const logicalControlSelector: string = '.control';
+
+export const textAreaStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-  css`
-    ${inputFilledStyles(context, definition, '.control')}
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputFilledForcedColorStyles(context, definition, '.control')}
-      `,
-    ),
-  );
-
-export const textAreaStyles = (context, definition) =>
+) =>
   css`
     ${display('inline-flex')}
 
-    ${inputStyles(context, definition, '.control')}
+    ${_baseInputStyles(context, definition, logicalControlSelector)}
 
-    ${inputStateStyles(context, definition, '.control')}
+    ${_inputStateStyles(context, definition, logicalControlSelector)}
 
     :host {
       flex-direction: column;
@@ -64,10 +55,7 @@ export const textAreaStyles = (context, definition) =>
       resize: vertical;
     }
   `.withBehaviors(
-    appearanceBehavior('filled', textAreaFilledStyles(context, definition)),
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputForcedColorStyles(context, definition, '.control')}
-      `,
-    ),
+    appearanceBehavior('outline', _inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', _inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector)),
   );

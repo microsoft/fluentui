@@ -5,21 +5,22 @@ import {
   display,
   ElementDefinitionContext,
   forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  SearchOptions,
 } from '@microsoft/fast-foundation';
 import {
+  _baseInputStyles,
+  _inputFilledStyles,
+  _inputForcedColorStyles,
+  _inputOutlineStyles,
+  _inputStateStyles,
   heightNumber,
-  inputFilledForcedColorStyles,
-  inputFilledStyles,
-  inputForcedColorStyles,
-  inputStateStyles,
-  inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 import { Swatch } from '../color/swatch';
 
+const logicalControlSelector: string = '.root';
 
 const clearButtonHover = DesignToken.create<Swatch>("clear-button-hover").withDefault(
   (target: HTMLElement) => {
@@ -37,26 +38,17 @@ const clearButtonActive = DesignToken.create<Swatch>("clear-button-active").with
   }
 );
 
-
-export const searchFilledStyles: (
+export const searchStyles: (context: ElementDefinitionContext, definition: SearchOptions) => ElementStyles = (
   context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-  css`
-    ${inputFilledStyles(context, definition, '.root')}
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputFilledForcedColorStyles(context, definition, '.root')}
-      `,
-    ),
-  );
-
-export const searchStyles = (context, definition) =>
+  definition: SearchOptions,
+) =>
   css`
     ${display('inline-block')}
-    ${inputStyles(context, definition, '.root')}
-    ${inputStateStyles(context, definition, '.root')}
+
+    ${_baseInputStyles(context, definition, logicalControlSelector)}
+
+    ${_inputStateStyles(context, definition, logicalControlSelector)}
+
     .root {
       display: flex;
       flex-direction: row;
@@ -137,10 +129,7 @@ export const searchStyles = (context, definition) =>
       margin-inline-end: 1px;
     }
   `.withBehaviors(
-    appearanceBehavior('filled', searchFilledStyles(context, definition)),
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputForcedColorStyles(context, definition, '.root')}
-      `,
-    )
+    appearanceBehavior('outline', _inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', _inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector)),
   );

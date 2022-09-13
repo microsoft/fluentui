@@ -5,38 +5,28 @@ import {
   forcedColorsStylesheetBehavior,
   NumberFieldOptions,
 } from '@microsoft/fast-foundation';
-import { SystemColors } from "@microsoft/fast-web-utilities";
 import {
-  inputFilledForcedColorStyles,
-  inputFilledStyles,
-  inputForcedColorStyles,
-  inputStateStyles,
-  inputStyles,
+  _baseInputStyles,
+  _inputFilledStyles,
+  _inputForcedColorStyles,
+  _inputOutlineStyles,
+  _inputStateStyles,
 } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { designUnit } from '../design-tokens';
 
-export const numberFieldFilledStyles: (
+const logicalControlSelector: string = '.root';
+
+export const numberFieldStyles: (context: ElementDefinitionContext, definition: NumberFieldOptions) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: NumberFieldOptions,
-) => ElementStyles = (context: ElementDefinitionContext, definition: NumberFieldOptions) =>
-  css`
-    ${inputFilledStyles(context, definition, '.root')}
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputFilledForcedColorStyles(context, definition, '.root')}
-      `,
-    ),
-  );
-
-export const numberFieldStyles = (context, definition) =>
+) =>
   css`
     ${display('inline-block')}
 
-    ${inputStyles(context, definition, '.root')}
+    ${_baseInputStyles(context, definition, logicalControlSelector)}
 
-    ${inputStateStyles(context, definition, '.root')}
+    ${_inputStateStyles(context, definition, logicalControlSelector)}
 
     .root {
       display: flex;
@@ -96,14 +86,7 @@ export const numberFieldStyles = (context, definition) =>
       padding-top: 3px;
     }
   `.withBehaviors(
-    appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputForcedColorStyles(context, definition, '.root')}
-        .step-up,
-        .step-down {
-          fill: ${SystemColors.FieldText};
-        }
-      `,
-    ),
+    appearanceBehavior('outline', _inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', _inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector)),
   );
