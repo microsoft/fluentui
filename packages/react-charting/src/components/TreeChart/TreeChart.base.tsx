@@ -20,29 +20,16 @@ const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
 // Create a parent class for common tree components
 class StandardTree {
   public treeData: ITreeChartDataPoint;
-  public styleClassNames: {
-    rectmetricText: string | undefined;
-    rectSubText: string | undefined;
-    rectBodyText: string | undefined;
-    link: string;
-    rectNode: string;
-    rectText: string;
-  };
+  public styleClassNames: IProcessedStyleSet<ITreeStyles>;
 
-  private _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
-  private _linkElements: Array<React.SVGProps<SVGPathElement>> = [];
+  private _nodeElements: JSX.Element[] = [];
+  private _linkElements: JSX.Element[] = [];
+
   constructor(
     treeData: ITreeChartDataPoint,
-    styleClassNames: {
-      link: string;
-      rectNode: string;
-      rectText: string;
-      rectSubText: string;
-      rectBodyText: string;
-      rectmetricText: string;
-    },
-    _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [],
-    _linkElements: Array<React.SVGProps<SVGPathElement>> = [],
+    styleClassNames: IProcessedStyleSet<ITreeStyles>,
+    _nodeElements: JSX.Element[] = [],
+    _linkElements: JSX.Element[] = [],
   ) {
     this.treeData = treeData;
     this.styleClassNames = styleClassNames;
@@ -56,7 +43,7 @@ class StandardTree {
     let word: string = '';
     const tspan = select('.svgTree').append('text').attr('class', 'tempText').append('tspan').text(null);
 
-    if (styleClass !== undefined) {
+    if (styleClass) {
       tspan.attr('class', styleClass);
     }
 
@@ -115,18 +102,18 @@ class StandardTree {
       );
     }
 
-    if (subname !== undefined) {
+    if (subname) {
       subname = this.truncateText(subname, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectSubText);
     }
-    if (bodytext !== undefined) {
+    if (bodytext) {
       bodytext = this.truncateText(bodytext, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectBodyText);
     }
-    if (metricName !== undefined) {
+    if (metricName) {
       metricName = this.truncateText(
         metricName,
         rectangleWidth,
         rectangleWidth / 4,
-        this.styleClassNames.rectmetricText,
+        this.styleClassNames.rectMetricText,
       );
     }
     name = this.truncateText(name, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectText);
@@ -136,7 +123,7 @@ class StandardTree {
     // Sub-text position x = x + rectWidth/2, 2 is ratio for length
 
     const subValue = metricName ? (
-      <tspan className={this.styleClassNames.rectmetricText} dy="1.4em" x={xCoordinate + rectangleWidth / 2}>
+      <tspan className={this.styleClassNames.rectMetricText} dy="1.4em" x={xCoordinate + rectangleWidth / 2}>
         {metricName}
       </tspan>
     ) : bodytext ? (
@@ -154,11 +141,11 @@ class StandardTree {
       </tspan>
     );
 
-    if (subname === undefined && metricName === undefined && bodytext === undefined) {
+    if (!subname && !metricName && !bodytext) {
       this._nodeElements.push(
         <text
           textAnchor="middle"
-          className={this.styleClassNames.rectmetricText}
+          className={this.styleClassNames.rectMetricText}
           dy={yCoordinate + rectangleHeight / 1.6}
           x={xCoordinate + rectangleWidth / 2}
           key={`${nodeId}${this.styleClassNames.rectText}`}
@@ -170,8 +157,8 @@ class StandardTree {
       this._nodeElements.push(
         <text
           textAnchor="middle"
-          className={metricName !== undefined ? this.styleClassNames.rectSubText : this.styleClassNames.rectText}
-          dy={metricName !== undefined ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
+          className={metricName ? this.styleClassNames.rectSubText : this.styleClassNames.rectText}
+          dy={metricName ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
           x={xCoordinate + rectangleWidth / 2}
           key={`${nodeId}${this.styleClassNames.rectText}`}
         >
@@ -235,16 +222,9 @@ class LayeredTree extends StandardTree {
   constructor(
     treeData: ITreeChartDataPoint,
     composition: number | undefined,
-    styleClassNames: {
-      link: string;
-      rectNode: string;
-      rectText: string;
-      rectSubText: string;
-      rectBodyText: string;
-      rectmetricText: string;
-    },
-    _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [],
-    _linkElements: Array<React.SVGProps<SVGPathElement>> = [],
+    styleClassNames: IProcessedStyleSet<ITreeStyles>,
+    _nodeElements: JSX.Element[] = [],
+    _linkElements: JSX.Element[] = [],
     _treeTraversal: number | undefined,
   ) {
     super(treeData, styleClassNames, _nodeElements, _linkElements);
@@ -252,14 +232,7 @@ class LayeredTree extends StandardTree {
     this._treeTraversal = _treeTraversal;
   }
   public createTree(givenLayoutWidth: number | undefined, screenWidth: number) {
-    if (givenLayoutWidth !== undefined) {
-      if (givenLayoutWidth < 65) {
-        givenLayoutWidth = 65;
-      }
-      if (givenLayoutWidth > 90) {
-        givenLayoutWidth = 90;
-      }
-    }
+    givenLayoutWidth = givenLayoutWidth! < 65 ? 65 : givenLayoutWidth! > 90 ? 90 : givenLayoutWidth;
     const layoutWidth = givenLayoutWidth || 75;
     const root = hierarchy(this.treeData, d => {
       return d.children;
@@ -269,14 +242,14 @@ class LayeredTree extends StandardTree {
     const treeHeight = root?.height + 1;
 
     // Create tree layout, width: layoutWidth, height: layoutWidth/1.5 and add node separation
-    const treemap = tree()
+    const treeChart = tree()
       .nodeSize([layoutWidth, layoutWidth / 1.5])
       .separation((a, b) => {
         return a.parent === root && b.parent === root ? 3.5 : 1;
       });
 
     // Assigns the x and y position for the nodes
-    const treeData = treemap(root);
+    const treeData = treeChart(root);
 
     // Compute the new tree layout.
     const nodes = treeData.descendants();
@@ -336,8 +309,8 @@ class LayeredTree extends StandardTree {
 
       // check for leaf nodes
       if (!d.children && !parentSet.has(d.parentID) && treeHeight === 3) {
-        const newWidth = (rectWidth - gap) / 2;
-        const newHeight = rectHeight;
+        const compactNodeWidth = (rectWidth - gap) / 2;
+        const compactNodeHeight = rectHeight;
         parentSet.add(d.parentID);
 
         // <------------------ Links section ------------------>
@@ -358,8 +331,8 @@ class LayeredTree extends StandardTree {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const children: any = treeDataStructure[d.parentID]?.children;
 
-        const compactNodeCenterX1: number = treeDataStructure[d.parentID]?.x - newWidth / 2 - gap / 2;
-        const compactNodeCenterX2: number = treeDataStructure[d.parentID]?.x + newWidth / 2 + gap / 2;
+        const compactNodeCenterX1: number = treeDataStructure[d.parentID]?.x - compactNodeWidth / 2 - gap / 2;
+        const compactNodeCenterX2: number = treeDataStructure[d.parentID]?.x + compactNodeWidth / 2 + gap / 2;
         const longNodeCenterX: number = treeDataStructure[d.parentID]?.x;
         let dy: number = children[0]?.y;
 
@@ -380,13 +353,13 @@ class LayeredTree extends StandardTree {
                 itr % 2 === 0 ? (children.length === 1 ? longNodeCenterX : compactNodeCenterX1) : compactNodeCenterX2,
                 dy,
                 child.data.fill,
-                children.length === 1 ? rectWidth : newWidth,
+                children.length === 1 ? rectWidth : compactNodeWidth,
                 rectHeight,
                 child.id,
                 parentInfo,
               );
               if (itr % 2 === 1) {
-                dy += newHeight + gap;
+                dy += compactNodeHeight + gap;
               }
             }
             // For long compostion
@@ -404,7 +377,7 @@ class LayeredTree extends StandardTree {
                 child.id,
                 parentInfo,
               );
-              dy += newHeight + gap;
+              dy += compactNodeHeight + gap;
             }
           }
 
@@ -416,16 +389,16 @@ class LayeredTree extends StandardTree {
                 child.data.subname,
                 child.data.bodytext,
                 child.data.metricName,
-                itr % 2 === 0 ? (children.length === 1 ? longNodeCenterX : compactNodeCenterX1) : compactNodeCenterX2,
+                itr % 2 === 0 ? compactNodeCenterX1 : compactNodeCenterX2,
                 dy,
                 child.data.fill,
-                children.length === 1 ? rectWidth : newWidth,
+                children.length === 1 ? rectWidth : compactNodeWidth,
                 rectHeight,
                 child.id,
                 parentInfo,
               );
               if (itr % 2 === 1) {
-                dy += newHeight + gap;
+                dy += compactNodeHeight + gap;
               }
             } else {
               this.addNodeShapetoSVG(
@@ -441,7 +414,7 @@ class LayeredTree extends StandardTree {
                 child.id,
                 parentInfo,
               );
-              dy += newHeight + gap;
+              dy += compactNodeHeight + gap;
             }
           }
         }
@@ -484,8 +457,8 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _composition: number | undefined;
   private _classNames: IProcessedStyleSet<ITreeStyles>;
   private _margin: { left: number; right: number; top: number; bottom: number };
-  private _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
-  private _linkElements: Array<React.SVGProps<SVGPathElement>> = [];
+  private _nodeElements: JSX.Element[] = [];
+  private _linkElements: JSX.Element[] = [];
   private _treeTraversal: number | undefined;
 
   constructor(props: ITreeProps) {
@@ -537,23 +510,14 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     }
   }
   public createTreeChart() {
-    const nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
-    const linkElements: Array<React.SVGProps<SVGPathElement>> = [];
+    const nodeElements: JSX.Element[] = [];
+    const linkElements: JSX.Element[] = [];
 
-    // Create styleClass object to access it in parent class
-    const styleClassNames = {
-      link: this._classNames.link,
-      rectNode: this._classNames.rectNode,
-      rectText: this._classNames.rectText,
-      rectSubText: this._classNames.rectSubText,
-      rectBodyText: this._classNames.rectBodyText,
-      rectmetricText: this._classNames.rectMetricText,
-    };
     // Instantiate inherited class and call createTree function for the object
     const treeObject = new LayeredTree(
       this._treeData,
       this._composition,
-      styleClassNames,
+      this._classNames,
       nodeElements,
       linkElements,
       this._treeTraversal,
