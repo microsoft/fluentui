@@ -33,14 +33,14 @@ const baseBranch = 'master';
 
 /**
  *
- * @param {string} SCREENER_API_KEY
- * @param {string} BUILD_SOURCEBRANCHNAME
+ * @param {string} screenerApiKey
+ * @param {string} sourceBranchName
  * @returns
  */
-function getConfig(SCREENER_API_KEY, BUILD_SOURCEBRANCHNAME) {
+function getConfig(screenerApiKey, sourceBranchName) {
   // https://github.com/screener-io/screener-runner
   return {
-    apiKey: SCREENER_API_KEY,
+    apiKey: screenerApiKey,
     projectRepo: 'microsoft/fluentui/fluentui',
 
     diffOptions: {
@@ -61,7 +61,7 @@ function getConfig(SCREENER_API_KEY, BUILD_SOURCEBRANCHNAME) {
     baseBranch,
     failureExitCode: 0,
 
-    ...(BUILD_SOURCEBRANCHNAME !== 'master'
+    ...(sourceBranchName !== 'master'
       ? {
           commit: getCurrentHash(),
         }

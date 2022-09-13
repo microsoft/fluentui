@@ -19,7 +19,7 @@ let __BASENAME__ = deployBasePath
   : '/';
 
 if (process.env.OFFICIALRELEASE) {
-  __BASENAME__ = `/${deployBasePath}/`;
+  __BASENAME__ = `${deployBasePath}/`;
 }
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
