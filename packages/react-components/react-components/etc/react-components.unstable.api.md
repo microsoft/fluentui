@@ -135,9 +135,10 @@ import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
 import { renderTableCell_unstable } from '@fluentui/react-table';
 import { renderTableCellActions_unstable } from '@fluentui/react-table';
+import { renderTableCellItem_unstable } from '@fluentui/react-table';
+import { renderTableCellPrimaryItem_unstable } from '@fluentui/react-table';
 import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
-import { renderTablePrimaryCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
@@ -156,11 +157,21 @@ import { TableBodySlots } from '@fluentui/react-table';
 import { TableBodyState } from '@fluentui/react-table';
 import { TableCell } from '@fluentui/react-table';
 import { TableCellActions } from '@fluentui/react-table';
+import { tableCellActionsClassNames } from '@fluentui/react-table';
 import { TableCellActionsProps } from '@fluentui/react-table';
 import { TableCellActionsSlots } from '@fluentui/react-table';
 import { TableCellActionsState } from '@fluentui/react-table';
 import { tableCellClassName } from '@fluentui/react-table';
 import { tableCellClassNames } from '@fluentui/react-table';
+import { TableCellItem } from '@fluentui/react-table';
+import { tableCellItemClassNames } from '@fluentui/react-table';
+import { TableCellItemProps } from '@fluentui/react-table';
+import { TableCellItemState } from '@fluentui/react-table';
+import { TableCellPrimaryItem } from '@fluentui/react-table';
+import { tableCellPrimaryItemClassNames } from '@fluentui/react-table';
+import { TableCellPrimaryItemProps } from '@fluentui/react-table';
+import { TableCellPrimaryItemSlots } from '@fluentui/react-table';
+import { TableCellPrimaryItemState } from '@fluentui/react-table';
 import { TableCellProps } from '@fluentui/react-table';
 import { TableCellSlots } from '@fluentui/react-table';
 import { TableCellState } from '@fluentui/react-table';
@@ -181,10 +192,6 @@ import { tableHeaderClassNames } from '@fluentui/react-table';
 import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
-import { TablePrimaryCell } from '@fluentui/react-table';
-import { TablePrimaryCellProps } from '@fluentui/react-table';
-import { TablePrimaryCellSlots } from '@fluentui/react-table';
-import { TablePrimaryCellState } from '@fluentui/react-table';
 import { TableProps } from '@fluentui/react-table';
 import { TableRow } from '@fluentui/react-table';
 import { tableRowClassName } from '@fluentui/react-table';
@@ -260,14 +267,16 @@ import { useTableBodyStyles_unstable } from '@fluentui/react-table';
 import { useTableCell_unstable } from '@fluentui/react-table';
 import { useTableCellActions_unstable } from '@fluentui/react-table';
 import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
+import { useTableCellItem_unstable } from '@fluentui/react-table';
+import { useTableCellItemStyles_unstable } from '@fluentui/react-table';
+import { useTableCellPrimaryItem_unstable } from '@fluentui/react-table';
+import { useTableCellPrimaryItemStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
-import { useTablePrimaryCell_unstable } from '@fluentui/react-table';
-import { useTablePrimaryCellStyles_unstable } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
 import { useTableSelectionCell_unstable } from '@fluentui/react-table';
@@ -539,11 +548,13 @@ export { renderTableCell_unstable }
 
 export { renderTableCellActions_unstable }
 
+export { renderTableCellItem_unstable }
+
+export { renderTableCellPrimaryItem_unstable }
+
 export { renderTableHeader_unstable }
 
 export { renderTableHeaderCell_unstable }
-
-export { renderTablePrimaryCell_unstable }
 
 export { renderTableRow_unstable }
 
@@ -581,6 +592,8 @@ export { TableCell }
 
 export { TableCellActions }
 
+export { tableCellActionsClassNames }
+
 export { TableCellActionsProps }
 
 export { TableCellActionsSlots }
@@ -590,6 +603,24 @@ export { TableCellActionsState }
 export { tableCellClassName }
 
 export { tableCellClassNames }
+
+export { TableCellItem }
+
+export { tableCellItemClassNames }
+
+export { TableCellItemProps }
+
+export { TableCellItemState }
+
+export { TableCellPrimaryItem }
+
+export { tableCellPrimaryItemClassNames }
+
+export { TableCellPrimaryItemProps }
+
+export { TableCellPrimaryItemSlots }
+
+export { TableCellPrimaryItemState }
 
 export { TableCellProps }
 
@@ -630,14 +661,6 @@ export { TableHeaderProps }
 export { TableHeaderSlots }
 
 export { TableHeaderState }
-
-export { TablePrimaryCell }
-
-export { TablePrimaryCellProps }
-
-export { TablePrimaryCellSlots }
-
-export { TablePrimaryCellState }
 
 export { TableProps }
 
@@ -789,6 +812,14 @@ export { useTableCellActions_unstable }
 
 export { useTableCellActionsStyles_unstable }
 
+export { useTableCellItem_unstable }
+
+export { useTableCellItemStyles_unstable }
+
+export { useTableCellPrimaryItem_unstable }
+
+export { useTableCellPrimaryItemStyles_unstable }
+
 export { useTableCellStyles_unstable }
 
 export { useTableContext }
@@ -800,10 +831,6 @@ export { useTableHeaderCell_unstable }
 export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
-
-export { useTablePrimaryCell_unstable }
-
-export { useTablePrimaryCellStyles_unstable }
 
 export { useTableRow_unstable }
 
