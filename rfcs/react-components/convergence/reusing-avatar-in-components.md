@@ -68,6 +68,7 @@ avatar with these components.
 #### Cons
 
 - Users must know about design guidance
+- Cannot ship design updates i.e. users will need to upgrade all usages if design decides that "64px" will be new size
 - Extra work for users
 
 ### Style override
