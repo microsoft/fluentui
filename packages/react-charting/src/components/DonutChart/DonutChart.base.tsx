@@ -122,7 +122,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 hoverLeaveCallback={this._hoverLeave}
                 uniqText={this._uniqText}
                 onBlurCallback={this._onBlur}
-                activeArc={this._highlightedLegend()}
+                activeArc={this._getHighlightedLegend()}
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
@@ -272,10 +272,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   };
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
-    if (valueInsideDonut !== undefined && this._highlightedLegend() !== '' && !this.state.showHover) {
+    const highlightedLegend = this._getHighlightedLegend();
+    if (valueInsideDonut !== undefined && highlightedLegend !== '' && !this.state.showHover) {
       let legendValue = valueInsideDonut;
       data!.map((point: IChartDataPoint, index: number) => {
-        if (point.legend === this._highlightedLegend()) {
+        if (point.legend === highlightedLegend) {
           legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
         }
         return;
@@ -294,7 +295,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return localeString?.toString();
   }
 
-  private _highlightedLegend() {
+  private _getHighlightedLegend() {
     if (this.state.selectedLegend !== '') {
       return this.state.selectedLegend;
     }
