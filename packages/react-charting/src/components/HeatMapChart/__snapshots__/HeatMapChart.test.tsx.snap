@@ -669,7 +669,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -702,7 +702,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -996,7 +996,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -1029,7 +1029,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -1413,7 +1413,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -1446,7 +1446,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -1581,7 +1581,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -1614,7 +1614,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -1908,7 +1908,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -1941,7 +1941,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
