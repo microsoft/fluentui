@@ -1,6 +1,5 @@
 import { screenerRunner, environment } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
-import path from 'path';
 // @ts-ignore - screener-storybook has no typings
 import { startStorybook, getStorybook as screenerGetStorybook } from 'screener-storybook';
 import { getStorybook } from '@storybook/react';
@@ -8,9 +7,15 @@ import { getStorybook } from '@storybook/react';
  * Starts or cancels a screener run through the screener proxy.
  * Runs are cancelled if package does not appear in Lage's affected package graph.
  */
-export async function screener() {
-  const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
-  const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
+export async function screener({ version }) {
+  const getConfig = require('../screener/screener.config');
+  const screenerConfig: ScreenerRunnerConfig = getConfig({
+    version: version,
+    screenerApiKey: process.env.SCREENER_API_KEY,
+    sourceBranchName: process.env.BUILD_SOURCEBRANCHNAME,
+    deployUrl: process.env.DEPLOYURL,
+    targetBranch: process.env.SYSYEM_PULLREQUEST_TARGETBRANCH,
+  });
   console.log('screener config for run:');
   console.log(JSON.stringify(screenerConfig, null, 2));
 

@@ -1,4 +1,4 @@
-import { task, series, parallel, condition, option, addResolvePath } from 'just-scripts';
+import { task, series, parallel, condition, option, addResolvePath, argv } from 'just-scripts';
 
 import path from 'path';
 import fs from 'fs';
@@ -124,8 +124,8 @@ export function preset() {
     'bundle',
     condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
-
-  task('screener', screener);
+  option('v8');
+  task('screener', () => screener({ version: argv().v8 ? 'v8' : 'v9' }));
 }
 
 preset.basic = basicPreset;

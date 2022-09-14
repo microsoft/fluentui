@@ -175,7 +175,7 @@ jobs:
         if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Start @fluentui/react VR Test
-        run: yarn workspace @fluentui/vr-tests screener
+        run: yarn workspace @fluentui/vr-tests screener --v8
         env:
           SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
@@ -252,7 +252,7 @@ jobs:
         if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Start @fluentui/react-components VR Test
-        run: yarn workspace @fluentui/vr-tests-react-components screener
+        run: yarn workspace @fluentui/vr-tests-react-components screener --v9
         env:
           SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
