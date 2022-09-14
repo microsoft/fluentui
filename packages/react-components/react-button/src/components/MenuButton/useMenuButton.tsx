@@ -12,6 +12,7 @@ export const useMenuButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
   const buttonState = useButton_unstable(props, ref);
+
   return {
     // Button state
     ...buttonState,
@@ -26,6 +27,10 @@ export const useMenuButton_unstable = (
       menuIcon: 'span',
     },
 
+    root: {
+      ...buttonState.root,
+      'aria-expanded': props['aria-expanded'] ?? false,
+    },
     menuIcon: resolveShorthand(menuIcon, {
       defaultProps: {
         children: <ChevronDownRegular />,
