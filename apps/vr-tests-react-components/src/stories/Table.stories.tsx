@@ -19,7 +19,6 @@ import {
   TableCell,
   TableRow,
   TableCellLayout,
-  TableCellPrimaryLayout,
   TableSelectionCell,
   TableCellActions,
 } from '@fluentui/react-table';
@@ -248,7 +247,9 @@ storiesOf('Table', module)
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellPrimaryLayout media={item.file.icon} main={item.file.label} secondary="Your organization" />
+              <TableCellLayout media={item.file.icon} description="Your organization">
+                {item.file.label}
+              </TableCellLayout>
             </TableCell>
             <TableCellLayout
               media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
