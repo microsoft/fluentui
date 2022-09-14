@@ -5,8 +5,8 @@ import { isConformant } from '../../common/isConformant';
 import { TableCellLayoutProps } from './TableCellLayout.types';
 
 describe('TableCellLayout', () => {
-  isConformant({
-    Component: TableCellLayout as React.FC<TableCellLayoutProps>,
+  isConformant<TableCellLayoutProps>({
+    Component: TableCellLayout,
     displayName: 'TableCellLayout',
     testOptions: {
       'has-static-classnames': [
