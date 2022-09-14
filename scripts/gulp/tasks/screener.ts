@@ -36,7 +36,11 @@ task('screener:runner', cb => {
         process.exit(1);
       });
 
-  const screenerConfig = require(screenerConfigPath);
+  const getConfig = require(screenerConfigPath);
+  const screenerConfig = getConfig({
+    screenerApiKey: process.env.SCREENER_API_KEY,
+    sourceBranchName: process.env.BUILD_SOURCEBRANCHNAME,
+  });
 
   handlePromiseExit(screenerRunner(screenerConfig));
 });
