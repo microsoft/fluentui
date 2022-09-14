@@ -107,9 +107,9 @@ export const useDialogSurface_unstable = (
         open: false,
         type: 'escapeKeyDown',
       });
-      // prevent default to avoid conflicting with other elements that listen for `Escape`
+      // stop propagation to avoid conflicting with other elements that listen for `Escape`
       // e,g: nested Dialog, Popover, Menu and Tooltip
-      event.preventDefault();
+      event.stopPropagation();
     }
   });
 

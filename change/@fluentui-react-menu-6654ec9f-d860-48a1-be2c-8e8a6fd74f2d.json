@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "bugfix: prevent default on Escape keydown",
+  "comment": "bugfix: stops propagation on Escape keydown",
   "packageName": "@fluentui/react-menu",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

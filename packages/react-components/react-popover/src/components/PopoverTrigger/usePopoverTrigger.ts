@@ -50,9 +50,9 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === Escape && open) {
       setOpen(e, false);
-      // prevent default to avoid conflicting with other elements that listen for `Escape`
+      // stop propagation to avoid conflicting with other elements that listen for `Escape`
       // e,g: Dialog, Menu
-      e.preventDefault();
+      e.stopPropagation();
     }
   };
 

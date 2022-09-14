@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "bugfix(react-dialog): prevent default on Escape key",
+  "comment": "bugfix: stops propagation on Escape key",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
