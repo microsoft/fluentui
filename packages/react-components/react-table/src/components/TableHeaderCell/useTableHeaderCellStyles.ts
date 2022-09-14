@@ -15,14 +15,13 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    minHeight: '44px',
+    display: 'table-cell',
+    verticalAlign: 'middle',
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.flex(1, 1, '0px'),
   },
 
   resetButton: {
+    resize: 'horizontal',
     boxSizing: 'content-box',
     backgroundColor: 'inherit',
     color: 'inherit',
@@ -36,11 +35,14 @@ const useStyles = makeStyles({
     textAlign: 'unset',
   },
   button: {
+    width: '100%',
     display: 'flex',
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
     ...shorthands.gap(tokens.spacingHorizontalS),
+    minHeight: '44px',
+    ...shorthands.flex(1, 1, '0px'),
   },
   sortable: {
     cursor: 'pointer',

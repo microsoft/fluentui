@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as _ from 'lodash';
 import * as webpack from 'webpack';
+import { URL } from 'url';
 
 // ------------------------------------
 // Environment vars
@@ -9,14 +10,16 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-let __BASENAME__ = process.env.DEPLOYBASEPATH
+const deployUrl = process.env.DEPLOYURL ? new URL(process.env.DEPLOYURL) : undefined;
+const deployBasePath = deployUrl ? deployUrl.pathname : undefined;
+let __BASENAME__ = deployBasePath
   ? // This needs a trailing slash or images won't work.
     // The path is different for standard PR deploy and screener deploy.
-    `/${process.env.DEPLOYBASEPATH}/${process.env.SCREENER_BUILD ? 'react-northstar-screener' : 'react-northstar'}/`
+    `${deployBasePath}/${process.env.SCREENER_BUILD ? 'react-northstar-screener' : 'react-northstar'}/`
   : '/';
 
 if (process.env.OFFICIALRELEASE) {
-  __BASENAME__ = `/${process.env.DEPLOYBASEPATH}/`;
+  __BASENAME__ = `${deployBasePath}/`;
 }
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;

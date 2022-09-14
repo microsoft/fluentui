@@ -95,6 +95,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // determines if the given area chart has multiple stacked bar charts
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
+  private _highlightedCircleId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -121,6 +122,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
+  }
+
+  public componentDidUpdate() {
+    if (this.state.isShowCalloutPending) {
+      this.setState({
+        refSelected: `#${this._highlightedCircleId}`,
+        isCalloutVisible: true,
+        isShowCalloutPending: false,
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -537,13 +548,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
     if (this.state.nearestCircleToHighlight === xDataPoint) {
-      if (this.state.isShowCalloutPending) {
-        this.setState({
-          refSelected: `#${circleId}`,
-          isCalloutVisible: true,
-          isShowCalloutPending: false,
-        });
-      }
+      this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
         fillColor = this.props.theme!.palette.white;
       }

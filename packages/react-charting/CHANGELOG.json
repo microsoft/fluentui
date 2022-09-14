@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 13 Sep 2022 07:41:03 GMT",
+      "tag": "@fluentui/react-charting_v5.12.37",
+      "version": "5.12.37",
+      "comments": {
+        "none": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8c22e074ce562f164c897378aa225e0b609cc343",
+            "comment": "Add tests for hover states"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.94.4",
+            "commit": "a40ef34fa6d1122bdfdb708f79b90de9edb2827d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Sep 2022 20:52:16 GMT",
       "tag": "@fluentui/react-charting_v5.12.36",
       "version": "5.12.36",

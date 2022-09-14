@@ -11,7 +11,7 @@ import {
   DIALOG_GAP,
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
   BODY_GRID_AREA,
-  CLOSE_BUTTON_GRID_AREA,
+  TITLE_ACTION_GRID_AREA,
 } from '../../contexts/constants';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     gridTemplateRows: 'auto 1fr auto',
     gridTemplateColumns: '1fr 1fr auto',
     gridTemplateAreas: `
-      "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${CLOSE_BUTTON_GRID_AREA}"
+      "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
       "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
       "${ACTIONS_START_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
     `,
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
       maxWidth: '100vw',
       gridTemplateRows: 'auto 1fr auto auto',
       gridTemplateAreas: `
-        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${CLOSE_BUTTON_GRID_AREA}"
+        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
         "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
         "${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA}"
         "${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
@@ -76,6 +76,9 @@ const useStyles = makeStyles({
     ...shorthands.margin('auto'),
     ...shorthands.borderStyle('none'),
     ...shorthands.overflow('unset'),
+    '&::backdrop': {
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    },
   },
   backdrop: {
     position: 'fixed',
@@ -84,6 +87,11 @@ const useStyles = makeStyles({
   },
   nestedDialogBackdrop: {
     backgroundColor: 'transparent',
+  },
+  nestedNativeDialogBackdrop: {
+    '&::backdrop': {
+      backgroundColor: 'transparent',
+    },
   },
 });
 
@@ -94,7 +102,13 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const styles = useStyles();
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
-  state.root.className = mergeClasses(dialogSurfaceClassNames.root, styles.dialog, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    dialogSurfaceClassNames.root,
+    styles.dialog,
+    styles.root,
+    isNestedDialog && styles.nestedNativeDialogBackdrop,
+    state.root.className,
+  );
   if (state.backdrop) {
     state.backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,

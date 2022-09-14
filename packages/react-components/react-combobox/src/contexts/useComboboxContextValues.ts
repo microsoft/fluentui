@@ -4,6 +4,7 @@ export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBase
   const {
     activeOption,
     appearance,
+    focusVisible,
     open,
     registerOption,
     selectedOptions,
@@ -16,6 +17,7 @@ export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBase
   const combobox = {
     activeOption,
     appearance,
+    focusVisible,
     open,
     registerOption,
     selectedOptions,

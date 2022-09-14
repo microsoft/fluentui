@@ -33,7 +33,7 @@ describe('DialogTrigger', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogSurfaceSelector).should('not.exist');
   });
   it(`should open dialog when 'aria-disabled' is false`, () => {
@@ -58,7 +58,7 @@ describe('DialogTrigger', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogSurfaceSelector).should('exist');
   });
   it('should work with any element besides <button>', () => {
@@ -83,7 +83,7 @@ describe('DialogTrigger', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogSurfaceSelector).should('exist');
   });
 });

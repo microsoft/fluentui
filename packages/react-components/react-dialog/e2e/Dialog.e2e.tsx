@@ -63,7 +63,7 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogSurfaceSelector).should('exist');
   });
   it('should focus on first focusabled element when opened', () => {
@@ -90,7 +90,7 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogTriggerCloseSelector).should('be.focused');
   });
   it('should focus on body if no focusabled element in dialog', () => {
@@ -109,7 +109,7 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
     cy.focused().should('not.exist');
   });
   it('should focus back on trigger when dialog closed', () => {
@@ -136,8 +136,8 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get(dialogTriggerOpenSelector).click();
-    cy.get(dialogTriggerCloseSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
+    cy.get(dialogTriggerCloseSelector).realClick();
     cy.get(dialogTriggerOpenSelector).should('be.focused');
   });
   it('should allow change of focus on open', () => {
@@ -173,7 +173,7 @@ describe('Dialog', () => {
       );
     };
     mount(<CustomFocusedElementOnOpen />);
-    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogTriggerCloseSelector).should('be.focused');
   });
   describe('modalType = modal', () => {
@@ -199,8 +199,8 @@ describe('Dialog', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
-      cy.focused().type('{esc}');
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.focused().realType('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
     it('should lock body scroll when dialog open', () => {
@@ -225,7 +225,7 @@ describe('Dialog', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('have.css', 'overflow', 'hidden');
     });
   });
@@ -252,8 +252,8 @@ describe('Dialog', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
-      cy.focused().type('{esc}');
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.focused().realType('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
     it('should not lock body scroll when dialog open', () => {
@@ -278,7 +278,7 @@ describe('Dialog', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('not.have.css', 'overflow', 'hidden');
     });
   });
@@ -305,8 +305,8 @@ describe('Dialog', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
-      cy.focused().type('{esc}');
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.focused().realType('{esc}');
       cy.get(dialogSurfaceSelector).should('exist');
     });
     it('should lock body scroll when dialog open', () => {
@@ -331,7 +331,7 @@ describe('Dialog', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('have.css', 'overflow', 'hidden');
     });
   });

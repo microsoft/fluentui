@@ -113,12 +113,12 @@ const useStyles = makeStyles({
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
-  const { active, disabled, multiselect, selected } = state;
+  const { active, disabled, focusVisible, multiselect, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     optionClassNames.root,
     styles.root,
-    active && styles.active,
+    active && focusVisible && styles.active,
     disabled && styles.disabled,
     selected && styles.selected,
     state.root.className,
