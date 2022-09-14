@@ -111,6 +111,7 @@ const useStyles = makeStyles({
 
 #### Cons
 
+- Does not handle props
 - Harder for users to override styles since selectors are more specific
 - Not obvious for users how base component adjusts to the parent component - magic
 
