@@ -306,7 +306,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
           className={classNames.overflowIndicationTextStyle}
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
           {...(allowFocusOnLegends && {
-            role: 'link',
+            role: 'button',
             'aria-expanded': this.state.isHoverCardVisible,
             'aria-label': `${items.length} ${overflowString}`,
           })}

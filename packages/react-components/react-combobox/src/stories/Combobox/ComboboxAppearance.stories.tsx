@@ -22,15 +22,15 @@ const useStyles = makeStyles({
   },
   // filledLighter and filledDarker appearances depend on particular background colors
   filledLighter: {
-    backgroundColor: tokens.colorPaletteBerryForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
     '> label': {
-      color: tokens.colorNeutralForegroundInverted,
+      color: tokens.colorNeutralForegroundInverted2,
     },
   },
   filledDarker: {
-    backgroundColor: tokens.colorPaletteBerryForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
     '> label': {
-      color: tokens.colorNeutralForegroundInverted,
+      color: tokens.colorNeutralForegroundInverted2,
     },
   },
 });

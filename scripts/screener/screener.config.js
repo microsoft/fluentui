@@ -30,34 +30,43 @@ require('tsconfig-paths').register({
 });
 
 const baseBranch = 'master';
-const sourceBranch = process.env.BUILD_SOURCEBRANCH;
 
-// https://github.com/screener-io/screener-runner
-module.exports = {
-  apiKey: process.env.SCREENER_API_KEY,
-  projectRepo: 'microsoft/fluentui/fluentui',
+/**
+ *
+ * @param {Object} options
+ * @param {string} options.screenerApiKey
+ * @param {string} options.sourceBranchName
+ * @returns
+ */
+function getConfig({ screenerApiKey, sourceBranchName }) {
+  // https://github.com/screener-io/screener-runner
+  return {
+    apiKey: screenerApiKey,
+    projectRepo: 'microsoft/fluentui/fluentui',
 
-  diffOptions: {
-    structure: true,
-    layout: true,
-    style: true,
-    content: true,
-    minLayoutPosition: 1, // Optional threshold for Layout changes. Defaults to 4 pixels.
-    minLayoutDimension: 1, // Optional threshold for Layout changes. Defaults to 10 pixels.
-    minShiftGraphic: 1, // Optional threshold for pixel shifts in graphics.
-    compareSVGDOM: false, // Pass if SVG DOM is the same. Defaults to false.
-  },
+    diffOptions: {
+      structure: true,
+      layout: true,
+      style: true,
+      content: true,
+      minLayoutPosition: 1, // Optional threshold for Layout changes. Defaults to 4 pixels.
+      minLayoutDimension: 1, // Optional threshold for Layout changes. Defaults to 10 pixels.
+      minShiftGraphic: 1, // Optional threshold for pixel shifts in graphics.
+      compareSVGDOM: false, // Pass if SVG DOM is the same. Defaults to false.
+    },
 
-  // screenshot every example in maximized mode
-  states: require('./screener.states').default,
+    // screenshot every example in maximized mode
+    states: require('./screener.states').default,
 
-  alwaysAcceptBaseBranch: true,
-  baseBranch,
-  failureExitCode: 0,
+    alwaysAcceptBaseBranch: true,
+    baseBranch,
+    failureExitCode: 0,
 
-  ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
-    ? {
-        commit: getCurrentHash(),
-      }
-    : null),
-};
+    ...(sourceBranchName !== 'master'
+      ? {
+          commit: getCurrentHash(),
+        }
+      : null),
+  };
+}
+module.exports = getConfig;

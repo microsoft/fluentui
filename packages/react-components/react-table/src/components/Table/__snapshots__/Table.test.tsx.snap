@@ -34,7 +34,6 @@ exports[`Table renders as div if \`noNativeElements\` is set 1`] = `
           class="fui-TableCell"
           role="cell"
         >
-           
           Cell
         </div>
       </div>

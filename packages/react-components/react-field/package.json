@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-field",
   "version": "9.0.0-alpha.0",
-  "private": true,
-  "description": "Fluent UI Field component",
+  "description": "Fluent UI Field components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "dist/index.d.ts",
@@ -58,7 +57,8 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }

@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { resetIdsForTests } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
-import { CheckboxField, checkboxFieldClassNames } from './CheckboxField';
+import { CheckboxField } from './CheckboxField';
 
 describe('CheckboxField', () => {
   isConformant({
     Component: CheckboxField,
     displayName: 'CheckboxField',
-    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {
@@ -19,16 +17,23 @@ describe('CheckboxField', () => {
             validationMessage: 'validationMessage',
             hint: 'hint',
           },
-          expectedClassNames: checkboxFieldClassNames,
         },
       ],
     },
   });
 
-  beforeEach(resetIdsForTests);
+  // Most functionality is tested by Field.test.tsx, and Checkbox's tests
 
-  it('renders a default state', () => {
-    const result = render(<CheckboxField label="Checkbox" />);
-    expect(result.container).toMatchSnapshot();
+  it('sets htmlFor of both label and fieldLabel', () => {
+    const result = render(<CheckboxField label="checkbox label" fieldLabel="field label" />);
+
+    const checkbox = result.getByRole('checkbox');
+    const checkboxLabel = result.getByText('checkbox label') as HTMLLabelElement;
+    const fieldLabel = result.getByText('field label') as HTMLLabelElement;
+
+    expect(checkbox.id).toBeTruthy();
+    expect(checkboxLabel.htmlFor).toBe(checkbox.id);
+    expect(fieldLabel.htmlFor).toBe(checkbox.id);
+    expect(checkbox.getAttribute('aria-labelledby')).toBeFalsy();
   });
 });

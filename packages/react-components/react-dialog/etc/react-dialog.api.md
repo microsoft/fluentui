@@ -7,7 +7,6 @@
 /// <reference types="react" />
 
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -65,28 +64,35 @@ export type DialogBodyState = ComponentState<DialogBodySlots>;
 
 // @public (undocumented)
 export type DialogOpenChangeData = {
+    type: 'dialogCancel';
+    open: boolean;
+    event: React_2.SyntheticEvent<DialogSurfaceElement>;
+} | {
     type: 'escapeKeyDown';
     open: boolean;
-    event: React_2.KeyboardEvent;
+    event: React_2.KeyboardEvent<DialogSurfaceElement>;
 } | {
     type: 'backdropClick';
     open: boolean;
-    event: React_2.MouseEvent;
+    event: React_2.MouseEvent<DialogSurfaceElement>;
 } | {
     type: 'triggerClick';
     open: boolean;
-    event: React_2.MouseEvent;
+    event: React_2.MouseEvent<DialogSurfaceElement>;
 };
 
 // @public (undocumented)
-export type DialogOpenChangeEvent = React_2.KeyboardEvent | React_2.MouseEvent;
+export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
+
+// @public
+export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
 
 // @public (undocumented)
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     modalType?: DialogModalType;
     open?: boolean;
     defaultOpen?: boolean;
-    onOpenChange?: (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+    onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
 };
 
@@ -106,12 +112,12 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
     backdrop?: Slot<'div'>;
-    root: NonNullable<Slot<'div'>>;
+    root: NonNullable<Slot<'dialog', 'div'>>;
 };
 
 // @public
@@ -129,7 +135,7 @@ export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
 // @public (undocumented)
 export type DialogTitleSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    closeButton?: Slot<ARIAButtonSlotProps>;
+    action?: Slot<'div'>;
 };
 
 // @public
