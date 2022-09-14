@@ -13,12 +13,8 @@ import {
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
-import {
-  ARIAButtonElement,
-  ARIAButtonElementIntersection,
-  ARIAButtonSlotProps,
-  useARIAButtonShorthand,
-} from '@fluentui/react-aria';
+import type { ARIAButtonElement, ARIAButtonElementIntersection, ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);

@@ -6,9 +6,9 @@
 
 /// <reference types="react" />
 
-import { ARIAButtonElement } from '@fluentui/react-aria';
+import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';

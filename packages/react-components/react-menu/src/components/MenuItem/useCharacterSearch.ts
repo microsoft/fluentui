@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import type { MenuItemState } from '../../components/index';
-import { ARIAButtonElementIntersection } from '@fluentui/react-aria';
+import type { ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 export const useCharacterSearch = (state: MenuItemState, ref: React.RefObject<HTMLElement>) => {
   const setFocusByFirstCharacter = useMenuListContext_unstable(context => context.setFocusByFirstCharacter);

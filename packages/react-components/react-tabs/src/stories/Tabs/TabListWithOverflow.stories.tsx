@@ -27,7 +27,7 @@ import {
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import { useIsOverflowItemVisible, useOverflowMenu, Overflow, OverflowItem } from '@fluentui/react-overflow';
-import { ARIAButtonElement } from '@fluentui/react-aria/src/index';
+import type { ARIAButtonElement } from '@fluentui/react-aria';
 
 //----- Example Tab Data -----//
 

@@ -4,7 +4,7 @@ import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
-import { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
+import type { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.

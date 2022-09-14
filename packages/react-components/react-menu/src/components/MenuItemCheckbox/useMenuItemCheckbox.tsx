@@ -4,7 +4,7 @@ import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
+import type { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox_unstable = (
