@@ -310,7 +310,10 @@ const getInteractiveStyles = (state: CardState, styles: ReturnType<typeof useSty
     outline: styles.outlineInteractive,
     subtle: styles.subtleInteractive,
   };
-  const baseClass = state.isCardSelected ? selectedMap[state.appearance] : interactiveMap[state.appearance];
+  const baseClass = mergeClasses(
+    interactiveMap[state.appearance],
+    state.isCardSelected && selectedMap[state.appearance],
+  );
 
   if (state.components.root === 'button') {
     return mergeClasses(baseClass, styles.interactiveButton);
