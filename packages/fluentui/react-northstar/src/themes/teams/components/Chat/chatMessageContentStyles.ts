@@ -23,7 +23,6 @@ export const chatMessageContentStyles: ComponentSlotStylesPrepared<
 
       ...(p.layout === 'refresh' &&
         p.density === 'comfy' && {
-          color: v.contentColor,
           wordBreak: 'break-word',
           wordWrap: 'break-word',
           '& a': {
