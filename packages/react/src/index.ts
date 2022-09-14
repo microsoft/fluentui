@@ -111,4 +111,4 @@ export {
 export type { ComponentStyles, ComponentsStyles, PartialTheme, Theme } from './Theme';
 
 import './version';
-// a simple comment here
+// a simple comment
