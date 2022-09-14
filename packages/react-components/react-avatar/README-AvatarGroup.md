@@ -1,6 +1,6 @@
 # @fluentui/react-avatar
 
-**React AvatarGroup component for [Fluent UI](https://dev.microsoft.com/fluentui)**
+**React AvatarGroup component for [Fluent UI](https://react.fluentui.dev)**
 
 The AvatarGroup component represents a group of multiple people or entities by taking care of the arrangement of individual Avatars in a spread, stack, or pie layout.
 
@@ -10,30 +10,54 @@ These are not production-ready components and **should never be used in product*
 
 ## Usage
 
-To import AvatarGroup and AvatarGroupItem:
+To import AvatarGroup, AvatarGroupItem, AvatarGroupPopover, and partitionAvatarGroupItems:
 
 ```js
-import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 ```
 
 Once the AvatarGroup component graduates to a production release, the component will be available at:
 
 ```js
-import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-components';
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupPopover,
+  partitionAvatarGroupItems,
+} from '@fluentui/react-components';
 ```
 
 ### Examples
 
 ```jsx
-<AvatarGroup>
-  <AvatarGroupItem name="Katri Athokas" />
-  <AvatarGroupItem name="Elvia Atkins" />
-  <AvatarGroupItem name="Cameron Evans" />
-  <AvatarGroupItem name="Wanda Howard" />
-  <AvatarGroupItem name="Mona Kane" />
-  <AvatarGroupItem name="Allan Munger" />
-  <AvatarGroupItem name="Daisy Phillips" />
-  <AvatarGroupItem name="Robert Tolbert" />
-  <AvatarGroupItem name="Kevin Sturgis" />
-</AvatarGroup>
+const names = [
+  'Johnie McConnell',
+  'Allan Munger',
+  'Erik Nason',
+  'Kristin Patterson',
+  'Daisy Phillips',
+  'Carole Poland',
+  'Carlos Slattery',
+  'Robert Tolbert',
+  'Kevin Sturgis',
+  'Charlotte Waltson',
+  'Elliot Woodward',
+];
+
+const AvatarGroup = () => {
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
+
+  return (
+    <AvatarGroup {...props}>
+      {inlineItems.map(name => (
+        <AvatarGroupItem name={name} key={name} />
+      ))}
+      <AvatarGroupPopover>
+        {overflowItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+      </AvatarGroupPopover>
+    </AvatarGroup>
+  );
+};
 ```

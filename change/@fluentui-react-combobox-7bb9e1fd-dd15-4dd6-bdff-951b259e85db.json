@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: set popup Listbox width to trigger width",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -87,7 +87,6 @@ module.exports = function(env, { mode }) {
       app: ['./src/main.ts']
     },
     output: {
-      filename: 'bundle.js'
       filename: 'bundle.js',
       publicPath:'/'
     },
@@ -163,9 +162,9 @@ With all the basic pieces in place, let's run our app in dev mode with `npm run 
 First, open your `src/main.ts` file and add the following code:
 
 ```ts
-import { provideFluentDesignSystem, fastCard, fastButton } from '@fluentui/web-components';
+import { provideFluentDesignSystem, fluentCard, fluentButton } from '@fluentui/web-components';
 
-provideFluentDesignSystem().register(fastCard(), fastButton());
+provideFluentDesignSystem().register(fluentCard(), fluentButton());
 ```
 
 This code uses the Fluent Design System to register the `<fluent-card>` and `<fluent-button>` components. Once you save, the dev server will rebuild and refresh your browser. However, you still won't see anything. To get some UI showing up, we need to write some HTML that uses our components. Replace the contents of the `<body>` in your `index.html` file with the following markup:

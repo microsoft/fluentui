@@ -7,6 +7,7 @@ export const ToolbarContext = React.createContext<ToolbarContextValue | undefine
 
 const toolbarContextDefaultValue = {
   size: 'medium' as 'medium',
+  handleToggleButton: () => null,
 };
 
 export const useToolbarContext = () => React.useContext(ToolbarContext) ?? toolbarContextDefaultValue;

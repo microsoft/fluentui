@@ -1,8 +1,7 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { typographyStyles } from '@fluentui/react-theme';
-import * as localShorthands from '../../utils/localShorthands';
 import { BODY_GRID_AREA } from '../../contexts/constants';
 
 export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
@@ -19,7 +18,7 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     minHeight: '32px',
     boxSizing: 'border-box',
-    ...localShorthands.gridArea(BODY_GRID_AREA),
+    ...shorthands.gridArea(BODY_GRID_AREA),
     ...typographyStyles.body1,
   },
 });

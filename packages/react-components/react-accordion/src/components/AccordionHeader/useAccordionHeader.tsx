@@ -67,7 +67,7 @@ export const useAccordionHeader_unstable = (
     expandIcon: resolveShorthand(expandIcon, {
       required: true,
       defaultProps: {
-        children: <ChevronRightRegular transform={`rotate(${expandIconRotation})`} />,
+        children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
         'aria-hidden': true,
       },
     }),

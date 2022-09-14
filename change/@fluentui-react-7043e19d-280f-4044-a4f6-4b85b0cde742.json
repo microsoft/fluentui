@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added layer notification exports",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

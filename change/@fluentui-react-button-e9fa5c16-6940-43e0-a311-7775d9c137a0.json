@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Removing CompoundButtonAsToggleButton story since it was using non-exported functions.",
+  "packageName": "@fluentui/react-button",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "none"
+}

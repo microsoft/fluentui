@@ -41,6 +41,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   calendar: {
     extensions: ['ical', 'icalendar', 'ics', 'ifb', 'vcs'],
   },
+  classifier: {
+    extensions: ['classifier'],
+  },
   code: {
     extensions: [
       'abap',
@@ -409,7 +412,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['pub'],
   },
   spo: {
-    extensions: ['aspx', 'classifier'],
+    extensions: ['aspx'],
   },
   sponews: {},
   spreadsheet: {

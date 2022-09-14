@@ -1,5 +1,13 @@
 export { useTable } from './hooks';
-export type { UseTableOptions, SelectionState, SortState, ColumnDefinition, RowState, RowId, ColumnId } from './hooks';
+export type {
+  UseTableOptions,
+  TableSelectionState,
+  TableSortState,
+  ColumnDefinition,
+  RowState,
+  RowId,
+  ColumnId,
+} from './hooks';
 
 export {
   TableCell,
@@ -81,11 +89,23 @@ export {
 
 export type { TableCellActionsProps, TableCellActionsSlots, TableCellActionsState } from './TableCellActions';
 export {
-  TablePrimaryCell,
-  tablePrimaryCellClassNames,
-  useTablePrimaryCellStyles_unstable,
-  useTablePrimaryCell_unstable,
-  renderTablePrimaryCell_unstable,
-} from './TablePrimaryCell';
+  TableCellPrimaryLayout,
+  tableCellPrimaryLayoutClassNames,
+  useTableCellPrimaryLayoutStyles_unstable,
+  useTableCellPrimaryLayout_unstable,
+  renderTableCellPrimaryLayout_unstable,
+} from './TableCellPrimaryLayout';
+export type {
+  TableCellPrimaryLayoutProps,
+  TableCellPrimaryLayoutSlots,
+  TableCellPrimaryLayoutState,
+} from './TableCellPrimaryLayout';
 
-export type { TablePrimaryCellProps, TablePrimaryCellSlots, TablePrimaryCellState } from './TablePrimaryCell';
+export {
+  TableCellLayout,
+  useTableCellLayoutStyles_unstable,
+  useTableCellLayout_unstable,
+  renderTableCellLayout_unstable,
+  tableCellLayoutClassNames,
+} from './TableCellLayout';
+export type { TableCellLayoutProps, TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout';
