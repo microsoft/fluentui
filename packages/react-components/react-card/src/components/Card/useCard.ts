@@ -12,8 +12,7 @@ const focusMap = {
   'tab-only': 'unlimited',
 } as const;
 
-export const useCardFocusAttributes = (props: CardProps, isInteractive: boolean) => {
-  const { focusMode = 'off' } = props;
+export const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, isInteractive: boolean) => {
   const internalFocusMode: CardProps['focusMode'] = isInteractive ? 'no-tab' : focusMode;
 
   const groupperAttrs = useFocusableGroup({
