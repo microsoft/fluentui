@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { Checkbox, makeStyles, shorthands } from '@fluentui/react-components';
 import { SampleCard } from './SampleCard.stories';
 
 const useStyles = makeStyles({
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Selectable = () => {
+export const SelectableWithCheckbox = () => {
   const styles = useStyles();
   const [checked1, setChecked1] = React.useState(false);
   const [checked2, setChecked2] = React.useState(false);
@@ -20,11 +20,13 @@ export const Selectable = () => {
     <div>
       <SampleCard
         className={styles.cardGrid}
+        select={<Checkbox checked={checked1} />}
         selected={checked1}
         onCardSelect={(event, { selected }) => setChecked1(selected)}
       />
       <SampleCard
         className={styles.cardGrid}
+        select={<Checkbox checked={checked2} />}
         selected={checked2}
         onCardSelect={(event, { selected }) => setChecked2(selected)}
       />
@@ -32,10 +34,11 @@ export const Selectable = () => {
   );
 };
 
-Selectable.parameters = {
+SelectableWithCheckbox.parameters = {
   docs: {
     description: {
-      story: `Cards can be selectable and clicking the card surface can toggle its state to selected.`,
+      story: `By default, selectable cards do not include a checkbox to represent its selection state. Checkboxes, can
+      be provided using the \`select\` property`,
     },
   },
 };
