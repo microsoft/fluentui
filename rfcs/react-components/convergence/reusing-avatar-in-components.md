@@ -245,6 +245,7 @@ export function renderTable(state) {
 
 #### Cons
 
+- Extra code in base component
 - Needs prototyping and investigation
 - All avatars under this context will be affected
 - This might not scale - AvatarContext, IconContext...
