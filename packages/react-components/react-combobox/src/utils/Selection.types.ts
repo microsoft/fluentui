@@ -39,8 +39,7 @@ export type SelectionValue = {
  */
 export type OptionOnSelectData = {
   optionValue: string | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  optionData: any;
+  optionData: unknown;
   selectedOptions: string[];
 };
 

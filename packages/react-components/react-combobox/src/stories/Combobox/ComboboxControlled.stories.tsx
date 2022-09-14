@@ -58,7 +58,7 @@ export const Controlled = (props: Partial<ComboboxProps>) => {
 
   const onSelect: ComboboxProps['onOptionSelect'] = (event, data) => {
     setValue(data.optionValue);
-    setSelectedIcon(data.optionData);
+    setSelectedIcon(data.optionData as string | undefined);
   };
 
   return (

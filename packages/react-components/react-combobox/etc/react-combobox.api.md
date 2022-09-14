@@ -131,7 +131,7 @@ export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
 // @public
 export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
-    data?: any;
+    data?: unknown;
     disabled?: boolean;
     value?: string;
 };

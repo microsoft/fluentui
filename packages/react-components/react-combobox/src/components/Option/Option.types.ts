@@ -15,8 +15,7 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
   /**
    * Add optional custom data to options, which will be passed through to onOptionSelect
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data?: any;
+  data?: unknown;
 
   /**
    * Sets an option to the `disabled` state.
