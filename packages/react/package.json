@@ -1042,6 +1042,370 @@
       "import": "./lib/common/DocPage.types.js",
       "require": "./lib-commonjs/common/DocPage.types.js"
     },
+    "./lib-commonjs/ActivityItem": {
+      "types": "./lib-commonjs/ActivityItem.d.ts",
+      "require": "./lib-commonjs/ActivityItem.js"
+    },
+    "./lib-commonjs/Announced": {
+      "types": "./lib-commonjs/Announced.d.ts",
+      "require": "./lib-commonjs/Announced.js"
+    },
+    "./lib-commonjs/Autofill": {
+      "types": "./lib-commonjs/Autofill.d.ts",
+      "require": "./lib-commonjs/Autofill.js"
+    },
+    "./lib-commonjs/Breadcrumb": {
+      "types": "./lib-commonjs/Breadcrumb.d.ts",
+      "require": "./lib-commonjs/Breadcrumb.js"
+    },
+    "./lib-commonjs/Button": {
+      "types": "./lib-commonjs/Button.d.ts",
+      "require": "./lib-commonjs/Button.js"
+    },
+    "./lib-commonjs/ButtonGrid": {
+      "types": "./lib-commonjs/ButtonGrid.d.ts",
+      "require": "./lib-commonjs/ButtonGrid.js"
+    },
+    "./lib-commonjs/Calendar": {
+      "types": "./lib-commonjs/Calendar.d.ts",
+      "require": "./lib-commonjs/Calendar.js"
+    },
+    "./lib-commonjs/Callout": {
+      "types": "./lib-commonjs/Callout.d.ts",
+      "require": "./lib-commonjs/Callout.js"
+    },
+    "./lib-commonjs/Check": {
+      "types": "./lib-commonjs/Check.d.ts",
+      "require": "./lib-commonjs/Check.js"
+    },
+    "./lib-commonjs/Checkbox": {
+      "types": "./lib-commonjs/Checkbox.d.ts",
+      "require": "./lib-commonjs/Checkbox.js"
+    },
+    "./lib-commonjs/ChoiceGroupOption": {
+      "types": "./lib-commonjs/ChoiceGroupOption.d.ts",
+      "require": "./lib-commonjs/ChoiceGroupOption.js"
+    },
+    "./lib-commonjs/Coachmark": {
+      "types": "./lib-commonjs/Coachmark.d.ts",
+      "require": "./lib-commonjs/Coachmark.js"
+    },
+    "./lib-commonjs/Color": {
+      "types": "./lib-commonjs/Color.d.ts",
+      "require": "./lib-commonjs/Color.js"
+    },
+    "./lib-commonjs/ColorPicker": {
+      "types": "./lib-commonjs/ColorPicker.d.ts",
+      "require": "./lib-commonjs/ColorPicker.js"
+    },
+    "./lib-commonjs/ComboBox": {
+      "types": "./lib-commonjs/ComboBox.d.ts",
+      "require": "./lib-commonjs/ComboBox.js"
+    },
+    "./lib-commonjs/CommandBar": {
+      "types": "./lib-commonjs/CommandBar.d.ts",
+      "require": "./lib-commonjs/CommandBar.js"
+    },
+    "./lib-commonjs/ContextualMenu": {
+      "types": "./lib-commonjs/ContextualMenu.d.ts",
+      "require": "./lib-commonjs/ContextualMenu.js"
+    },
+    "./lib-commonjs/DatePicker": {
+      "types": "./lib-commonjs/DatePicker.d.ts",
+      "require": "./lib-commonjs/DatePicker.js"
+    },
+    "./lib-commonjs/DateTimeUtilities": {
+      "types": "./lib-commonjs/DateTimeUtilities.d.ts",
+      "require": "./lib-commonjs/DateTimeUtilities.js"
+    },
+    "./lib-commonjs/DetailsList": {
+      "types": "./lib-commonjs/DetailsList.d.ts",
+      "require": "./lib-commonjs/DetailsList.js"
+    },
+    "./lib-commonjs/Dialog": {
+      "types": "./lib-commonjs/Dialog.d.ts",
+      "require": "./lib-commonjs/Dialog.js"
+    },
+    "./lib-commonjs/Divider": {
+      "types": "./lib-commonjs/Divider.d.ts",
+      "require": "./lib-commonjs/Divider.js"
+    },
+    "./lib-commonjs/DocumentCard": {
+      "types": "./lib-commonjs/DocumentCard.d.ts",
+      "require": "./lib-commonjs/DocumentCard.js"
+    },
+    "./lib-commonjs/DragDrop": {
+      "types": "./lib-commonjs/DragDrop.d.ts",
+      "require": "./lib-commonjs/DragDrop.js"
+    },
+    "./lib-commonjs/Dropdown": {
+      "types": "./lib-commonjs/Dropdown.d.ts",
+      "require": "./lib-commonjs/Dropdown.js"
+    },
+    "./lib-commonjs/ExtendedPicker": {
+      "types": "./lib-commonjs/ExtendedPicker.d.ts",
+      "require": "./lib-commonjs/ExtendedPicker.js"
+    },
+    "./lib-commonjs/Fabric": {
+      "types": "./lib-commonjs/Fabric.d.ts",
+      "require": "./lib-commonjs/Fabric.js"
+    },
+    "./lib-commonjs/Facepile": {
+      "types": "./lib-commonjs/Facepile.d.ts",
+      "require": "./lib-commonjs/Facepile.js"
+    },
+    "./lib-commonjs/FloatingPicker": {
+      "types": "./lib-commonjs/FloatingPicker.d.ts",
+      "require": "./lib-commonjs/FloatingPicker.js"
+    },
+    "./lib-commonjs/FocusTrapZone": {
+      "types": "./lib-commonjs/FocusTrapZone.d.ts",
+      "require": "./lib-commonjs/FocusTrapZone.js"
+    },
+    "./lib-commonjs/FocusZone": {
+      "types": "./lib-commonjs/FocusZone.d.ts",
+      "require": "./lib-commonjs/FocusZone.js"
+    },
+    "./lib-commonjs/Grid": {
+      "types": "./lib-commonjs/Grid.d.ts",
+      "require": "./lib-commonjs/Grid.js"
+    },
+    "./lib-commonjs/GroupedList": {
+      "types": "./lib-commonjs/GroupedList.d.ts",
+      "require": "./lib-commonjs/GroupedList.js"
+    },
+    "./lib-commonjs/HoverCard": {
+      "types": "./lib-commonjs/HoverCard.d.ts",
+      "require": "./lib-commonjs/HoverCard.js"
+    },
+    "./lib-commonjs/Icon": {
+      "types": "./lib-commonjs/Icon.d.ts",
+      "require": "./lib-commonjs/Icon.js"
+    },
+    "./lib-commonjs/Icons": {
+      "types": "./lib-commonjs/Icons.d.ts",
+      "require": "./lib-commonjs/Icons.js"
+    },
+    "./lib-commonjs/Image": {
+      "types": "./lib-commonjs/Image.d.ts",
+      "require": "./lib-commonjs/Image.js"
+    },
+    "./lib-commonjs/Keytip": {
+      "types": "./lib-commonjs/Keytip.d.ts",
+      "require": "./lib-commonjs/Keytip.js"
+    },
+    "./lib-commonjs/KeytipData": {
+      "types": "./lib-commonjs/KeytipData.d.ts",
+      "require": "./lib-commonjs/KeytipData.js"
+    },
+    "./lib-commonjs/KeytipLayer": {
+      "types": "./lib-commonjs/KeytipLayer.d.ts",
+      "require": "./lib-commonjs/KeytipLayer.js"
+    },
+    "./lib-commonjs/Keytips": {
+      "types": "./lib-commonjs/Keytips.d.ts",
+      "require": "./lib-commonjs/Keytips.js"
+    },
+    "./lib-commonjs/Label": {
+      "types": "./lib-commonjs/Label.d.ts",
+      "require": "./lib-commonjs/Label.js"
+    },
+    "./lib-commonjs/Layer": {
+      "types": "./lib-commonjs/Layer.d.ts",
+      "require": "./lib-commonjs/Layer.js"
+    },
+    "./lib-commonjs/Link": {
+      "types": "./lib-commonjs/Link.d.ts",
+      "require": "./lib-commonjs/Link.js"
+    },
+    "./lib-commonjs/List": {
+      "types": "./lib-commonjs/List.d.ts",
+      "require": "./lib-commonjs/List.js"
+    },
+    "./lib-commonjs/MarqueeSelection": {
+      "types": "./lib-commonjs/MarqueeSelection.d.ts",
+      "require": "./lib-commonjs/MarqueeSelection.js"
+    },
+    "./lib-commonjs/MessageBar": {
+      "types": "./lib-commonjs/MessageBar.d.ts",
+      "require": "./lib-commonjs/MessageBar.js"
+    },
+    "./lib-commonjs/Modal": {
+      "types": "./lib-commonjs/Modal.d.ts",
+      "require": "./lib-commonjs/Modal.js"
+    },
+    "./lib-commonjs/Nav": {
+      "types": "./lib-commonjs/Nav.d.ts",
+      "require": "./lib-commonjs/Nav.js"
+    },
+    "./lib-commonjs/OverflowSet": {
+      "types": "./lib-commonjs/OverflowSet.d.ts",
+      "require": "./lib-commonjs/OverflowSet.js"
+    },
+    "./lib-commonjs/Overlay": {
+      "types": "./lib-commonjs/Overlay.d.ts",
+      "require": "./lib-commonjs/Overlay.js"
+    },
+    "./lib-commonjs/Panel": {
+      "types": "./lib-commonjs/Panel.d.ts",
+      "require": "./lib-commonjs/Panel.js"
+    },
+    "./lib-commonjs/Persona": {
+      "types": "./lib-commonjs/Persona.d.ts",
+      "require": "./lib-commonjs/Persona.js"
+    },
+    "./lib-commonjs/PersonaCoin": {
+      "types": "./lib-commonjs/PersonaCoin.d.ts",
+      "require": "./lib-commonjs/PersonaCoin.js"
+    },
+    "./lib-commonjs/PersonaPresence": {
+      "types": "./lib-commonjs/PersonaPresence.d.ts",
+      "require": "./lib-commonjs/PersonaPresence.js"
+    },
+    "./lib-commonjs/Pickers": {
+      "types": "./lib-commonjs/Pickers.d.ts",
+      "require": "./lib-commonjs/Pickers.js"
+    },
+    "./lib-commonjs/Pivot": {
+      "types": "./lib-commonjs/Pivot.d.ts",
+      "require": "./lib-commonjs/Pivot.js"
+    },
+    "./lib-commonjs/Popup": {
+      "types": "./lib-commonjs/Popup.d.ts",
+      "require": "./lib-commonjs/Popup.js"
+    },
+    "./lib-commonjs/Positioning": {
+      "types": "./lib-commonjs/Positioning.d.ts",
+      "require": "./lib-commonjs/Positioning.js"
+    },
+    "./lib-commonjs/PositioningContainer": {
+      "types": "./lib-commonjs/PositioningContainer.d.ts",
+      "require": "./lib-commonjs/PositioningContainer.js"
+    },
+    "./lib-commonjs/ProgressIndicator": {
+      "types": "./lib-commonjs/ProgressIndicator.d.ts",
+      "require": "./lib-commonjs/ProgressIndicator.js"
+    },
+    "./lib-commonjs/Rating": {
+      "types": "./lib-commonjs/Rating.d.ts",
+      "require": "./lib-commonjs/Rating.js"
+    },
+    "./lib-commonjs/ResizeGroup": {
+      "types": "./lib-commonjs/ResizeGroup.d.ts",
+      "require": "./lib-commonjs/ResizeGroup.js"
+    },
+    "./lib-commonjs/ResponsiveMode": {
+      "types": "./lib-commonjs/ResponsiveMode.d.ts",
+      "require": "./lib-commonjs/ResponsiveMode.js"
+    },
+    "./lib-commonjs/ScrollablePane": {
+      "types": "./lib-commonjs/ScrollablePane.d.ts",
+      "require": "./lib-commonjs/ScrollablePane.js"
+    },
+    "./lib-commonjs/SearchBox": {
+      "types": "./lib-commonjs/SearchBox.d.ts",
+      "require": "./lib-commonjs/SearchBox.js"
+    },
+    "./lib-commonjs/SelectableOption": {
+      "types": "./lib-commonjs/SelectableOption.d.ts",
+      "require": "./lib-commonjs/SelectableOption.js"
+    },
+    "./lib-commonjs/SelectedItemsList": {
+      "types": "./lib-commonjs/SelectedItemsList.d.ts",
+      "require": "./lib-commonjs/SelectedItemsList.js"
+    },
+    "./lib-commonjs/Selection": {
+      "types": "./lib-commonjs/Selection.d.ts",
+      "require": "./lib-commonjs/Selection.js"
+    },
+    "./lib-commonjs/Separator": {
+      "types": "./lib-commonjs/Separator.d.ts",
+      "require": "./lib-commonjs/Separator.js"
+    },
+    "./lib-commonjs/Shimmer": {
+      "types": "./lib-commonjs/Shimmer.d.ts",
+      "require": "./lib-commonjs/Shimmer.js"
+    },
+    "./lib-commonjs/ShimmeredDetailsList": {
+      "types": "./lib-commonjs/ShimmeredDetailsList.d.ts",
+      "require": "./lib-commonjs/ShimmeredDetailsList.js"
+    },
+    "./lib-commonjs/Slider": {
+      "types": "./lib-commonjs/Slider.d.ts",
+      "require": "./lib-commonjs/Slider.js"
+    },
+    "./lib-commonjs/SpinButton": {
+      "types": "./lib-commonjs/SpinButton.d.ts",
+      "require": "./lib-commonjs/SpinButton.js"
+    },
+    "./lib-commonjs/Spinner": {
+      "types": "./lib-commonjs/Spinner.d.ts",
+      "require": "./lib-commonjs/Spinner.js"
+    },
+    "./lib-commonjs/Stack": {
+      "types": "./lib-commonjs/Stack.d.ts",
+      "require": "./lib-commonjs/Stack.js"
+    },
+    "./lib-commonjs/Sticky": {
+      "types": "./lib-commonjs/Sticky.d.ts",
+      "require": "./lib-commonjs/Sticky.js"
+    },
+    "./lib-commonjs/Styling": {
+      "types": "./lib-commonjs/Styling.d.ts",
+      "require": "./lib-commonjs/Styling.js"
+    },
+    "./lib-commonjs/SwatchColorPicker": {
+      "types": "./lib-commonjs/SwatchColorPicker.d.ts",
+      "require": "./lib-commonjs/SwatchColorPicker.js"
+    },
+    "./lib-commonjs/TeachingBubble": {
+      "types": "./lib-commonjs/TeachingBubble.d.ts",
+      "require": "./lib-commonjs/TeachingBubble.js"
+    },
+    "./lib-commonjs/Text": {
+      "types": "./lib-commonjs/Text.d.ts",
+      "require": "./lib-commonjs/Text.js"
+    },
+    "./lib-commonjs/TextField": {
+      "types": "./lib-commonjs/TextField.d.ts",
+      "require": "./lib-commonjs/TextField.js"
+    },
+    "./lib-commonjs/Theme": {
+      "types": "./lib-commonjs/Theme.d.ts",
+      "require": "./lib-commonjs/Theme.js"
+    },
+    "./lib-commonjs/ThemeGenerator": {
+      "types": "./lib-commonjs/ThemeGenerator.d.ts",
+      "require": "./lib-commonjs/ThemeGenerator.js"
+    },
+    "./lib-commonjs/TimePicker": {
+      "types": "./lib-commonjs/TimePicker.d.ts",
+      "require": "./lib-commonjs/TimePicker.js"
+    },
+    "./lib-commonjs/Toggle": {
+      "types": "./lib-commonjs/Toggle.d.ts",
+      "require": "./lib-commonjs/Toggle.js"
+    },
+    "./lib-commonjs/Tooltip": {
+      "types": "./lib-commonjs/Tooltip.d.ts",
+      "require": "./lib-commonjs/Tooltip.js"
+    },
+    "./lib-commonjs/Utilities": {
+      "types": "./lib-commonjs/Utilities.d.ts",
+      "require": "./lib-commonjs/Utilities.js"
+    },
+    "./lib-commonjs/version": {
+      "types": "./lib-commonjs/version.d.ts",
+      "require": "./lib-commonjs/version.js"
+    },
+    "./lib-commonjs/WeeklyDayPicker": {
+      "types": "./lib-commonjs/WeeklyDayPicker.d.ts",
+      "require": "./lib-commonjs/WeeklyDayPicker.js"
+    },
+    "./lib-commonjs/WindowProvider": {
+      "types": "./lib-commonjs/WindowProvider.d.ts",
+      "require": "./lib-commonjs/WindowProvider.js"
+    },
     "./package.json": "./package.json"
   }
 }
