@@ -80,6 +80,7 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
       ref: selectableRef,
       role: 'checkbox',
       'aria-checked': isCardSelected,
+      tabIndex: -1,
     });
   }, [hasSelectSlot, select, isCardSelected]);
 
