@@ -12,7 +12,6 @@ const getChatMessageVariantStyles: ComponentSlotStyleFunction<ChatMessageContent
   return {
     ...(p.layout === 'refresh' &&
       p.density === 'comfy' && {
-        color: v.contentColor,
         wordBreak: 'break-word',
         wordWrap: 'break-word',
         '& a': {
