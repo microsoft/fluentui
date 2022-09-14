@@ -20,14 +20,14 @@ export const useCardFocusAttributes = (props: CardProps, isInteractive: boolean)
     tabBehavior: focusMap[internalFocusMode],
   });
 
-  if (internalFocusMode !== 'off') {
-    return {
-      ...groupperAttrs,
-      tabIndex: 0,
-    };
+  if (internalFocusMode === 'off') {
+    return {};
   }
 
-  return {};
+  return {
+    ...groupperAttrs,
+    tabIndex: 0,
+  };
 };
 
 /**
