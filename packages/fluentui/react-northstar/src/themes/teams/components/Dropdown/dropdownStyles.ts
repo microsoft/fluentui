@@ -12,11 +12,11 @@ const transparentColorStyle: ICSSInJSStyle = {
 
 const createTransparentColorStyleObj = (): ICSSInJSStyle => ({
   ...transparentColorStyle,
-  ':hover': transparentColorStyle,
-  ':active': transparentColorStyle,
+  ':hover': { ...transparentColorStyle },
+  ':active': { ...transparentColorStyle },
   ':focus': {
     ...transparentColorStyle,
-    ':active': transparentColorStyle,
+    ':active': { ...transparentColorStyle },
   },
 });
 
