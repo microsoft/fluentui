@@ -26,6 +26,10 @@ export const cardCSSVars = {
 const useStyles = makeStyles({
   root: {
     ...shorthands.overflow('hidden'),
+    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
+    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
+    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
+
     display: 'flex',
     position: 'relative',
     boxSizing: 'border-box',
@@ -45,10 +49,6 @@ const useStyles = makeStyles({
       ...shorthands.borderWidth(tokens.strokeWidthThin),
       ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
     },
-
-    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
-    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
-    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
 
     // Prevents CardHeader and CardFooter from shrinking.
     [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
