@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { TableCellLayoutProps, TableCellLayoutState } from './TableCellLayout.types';
+import { useTableContext } from '../../contexts/tableContext';
 
 /**
  * Create the state required to render TableCellLayout.
@@ -15,6 +16,8 @@ export const useTableCellLayout_unstable = (
   props: TableCellLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TableCellLayoutState => {
+  const size = useTableContext(ctx => ctx.size);
+
   return {
     components: {
       root: 'div',
@@ -29,5 +32,6 @@ export const useTableCellLayout_unstable = (
     media: resolveShorthand(props.media),
     description: resolveShorthand(props.description),
     wrapper: resolveShorthand(props.wrapper, { required: !!props.description || !!props.children }),
+    size,
   };
 };

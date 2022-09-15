@@ -76,11 +76,7 @@ export const SizeSmaller = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar
-                    name={item.author.label}
-                    badge={{ status: item.author.status as PresenceBadgeStatus }}
-                    size={20}
-                  />
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                 }
               >
                 {item.author.label}

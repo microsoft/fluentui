@@ -1,4 +1,10 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { AvatarContextValue } from '@fluentui/react-shared-contexts';
+import type { TableContextValue } from '../Table/Table.types';
+
+export type TableCellLayoutContextValues = {
+  avatar: AvatarContextValue;
+};
 
 export type TableCellLayoutSlots = {
   root: Slot<'div'>;
@@ -34,4 +40,5 @@ export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>>
 /**
  * State used in rendering TableCellLayout
  */
-export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'>;
+export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> &
+  Pick<TableCellLayoutProps, 'appearance'> & { size: TableContextValue['size'] };

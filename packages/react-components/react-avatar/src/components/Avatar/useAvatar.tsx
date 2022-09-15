@@ -4,11 +4,19 @@ import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent, useAvatarContext } from '@fluentui/react-shared-contexts';
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
+  const { size: contextSize } = useAvatarContext();
+  const {
+    name,
+    size = contextSize ?? 32,
+    shape = 'circular',
+    active = 'unset',
+    activeAppearance = 'ring',
+    idForColor,
+  } = props;
   let { color = 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
