@@ -73,5 +73,11 @@ export const ReactTest: React.FC<ReactTestProps> = ({ target, fixtureName, rende
       break;
   }
 
-  return <Test tree={tree!} selectors={selectors!} componentRenderer={renderer!} testOptions={testData.testOptions!} />;
+  return (
+    <>
+      {selectors && tree && (
+        <Test tree={tree} selectors={selectors} componentRenderer={renderer!} testOptions={testData.testOptions!} />
+      )}
+    </>
+  );
 };
