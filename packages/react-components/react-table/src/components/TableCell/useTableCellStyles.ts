@@ -13,6 +13,7 @@ export const tableCellClassNames: SlotClassNames<TableCellSlots> = {
  */
 const useStyles = makeStyles({
   root: {
+    position: 'relative',
     verticalAlign: 'middle',
     display: 'table-cell',
     ...shorthands.padding('0px', tokens.spacingHorizontalS),

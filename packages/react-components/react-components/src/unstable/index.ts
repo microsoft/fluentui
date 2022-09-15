@@ -282,11 +282,6 @@ export {
   useTableCellLayoutStyles_unstable,
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
-  TableCellPrimaryLayout,
-  useTableCellPrimaryLayout_unstable,
-  useTableCellPrimaryLayoutStyles_unstable,
-  renderTableCellPrimaryLayout_unstable,
-  tableCellPrimaryLayoutClassNames,
 } from '@fluentui/react-table';
 export type {
   SortDirection,

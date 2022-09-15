@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add type=button to button slot",
-  "packageName": "@fluentui/react-accordion",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
