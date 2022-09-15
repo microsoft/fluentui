@@ -15,6 +15,7 @@ import {
   Popover,
   PopoverSurface,
   PopoverTrigger,
+  Tooltip,
 } from '@fluentui/react-components';
 import {
   dialogSurfaceSelector,
@@ -215,22 +216,30 @@ describe('Dialog', () => {
           </DialogBody>
           <DialogActions>
             <DialogTrigger>
-              <Button id={dialogTriggerCloseId} appearance="secondary">
-                Close
-              </Button>
+              <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </Tooltip>
             </DialogTrigger>
             <Button appearance="primary">Do Something</Button>
           </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
+    // Open Menu and then close it with Escape
     cy.get(dialogTriggerOpenSelector).realClick();
     cy.get('#open-menu-btn').realClick();
     cy.focused().realType('{esc}');
     cy.get(dialogSurfaceSelector).should('exist');
 
+    // Open Popover and then close it with Escape
     cy.get('#open-popover-btn').realClick();
     cy.focused().realType('{esc}');
+    cy.get(dialogSurfaceSelector).should('exist');
+
+    // Open Tooltip, wait for the tooltip to appear and then close it with Escape
+    cy.get(dialogTriggerCloseSelector).focus().wait(0).realType('{esc}');
     cy.get(dialogSurfaceSelector).should('exist');
   });
   describe('modalType = modal', () => {

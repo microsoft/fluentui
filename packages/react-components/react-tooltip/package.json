@@ -32,6 +32,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.0",
     "@fluentui/react-portal": "^9.0.5",
     "@fluentui/react-positioning": "^9.2.0",
     "@fluentui/react-shared-contexts": "^9.0.1",
