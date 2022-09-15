@@ -6,5 +6,6 @@ describe('Persona', () => {
     Component: Persona,
     displayName: 'Persona',
     disabledTests: ['component-has-static-classnames-object'],
+    primarySlot: 'avatar',
   });
 });
