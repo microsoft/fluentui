@@ -7,6 +7,7 @@
     "@babel/runtime": "^7.10.4",
     "@fluentui/react-northstar-styles-renderer": "^0.64.0",
     "@fluentui/styles": "^0.64.0",
+    "@fluentui/react-utilities": "^9.0.2",
     "css-in-js-utils": "^3.0.0",
     "fela": "^10.6.1",
     "fela-plugin-embedded": "^10.6.1",
