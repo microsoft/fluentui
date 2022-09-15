@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Adding optional shadows to filled variants.",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
