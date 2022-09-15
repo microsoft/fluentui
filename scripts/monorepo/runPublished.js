@@ -23,6 +23,8 @@ const websitePackages = [
   '@fluentui/api-docs',
 ];
 
+const releaseScope = process.env.RELEASE_VNEXT ? 'v9' : 'v8';
+
 // Only include the packages that are published daily by beachball, and some website/doc packages
 // (which must be built and uploaded with each release). This is similar to "--scope \"!packages/fluentui/*\""
 // in the root package.json's publishing-related scripts and will need to be updated if --scope changes.
@@ -30,16 +32,17 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
     const isNorthstar = /[\\/]fluentui[\\/]/.test(packagePath);
 
+    // Northstar has separate release tooling, always ignore northstar
     if (isNorthstar) {
       return false;
     }
 
     const isConverged = isConvergedPackage({ packagePathOrJson: packageJson });
-    if (process.env.RELEASE_VNEXT && isConverged) {
+    if (releaseScope === 'v9') {
       return packageJson.private !== true;
     }
 
-    if (!isConverged) {
+    if (!isConverged && releaseScope === 'v8') {
       // v8 scope
       return websitePackages.includes(packageJson.name) || packageJson.private !== true;
     }
