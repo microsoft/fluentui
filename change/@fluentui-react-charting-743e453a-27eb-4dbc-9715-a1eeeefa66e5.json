@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "All /lib-commonjs/ top-level entries have been added to the exports map for backwards compatibility.",
+  "packageName": "@fluentui/react-charting",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "minor"
+}
