@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs(react-aria): re-generate api.md",
-  "packageName": "@fluentui/react-aria",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

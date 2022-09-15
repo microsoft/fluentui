@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove localShorthands in favor of griffel shorthands",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

@@ -2,6 +2,61 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:49:48 GMT",
+      "tag": "@fluentui/react-aria_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bf151e71e0ffa5de5c44cc722e629cdeb7abdbb2",
+            "comment": "chore: re-organize useARIAButton into its own folder"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs(react-aria): re-generate api.md"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "de08c96226ec5d425f705c22c5d94dbac5811eb6",
+            "comment": "chore(react-aria): improve internal typings"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "0547583ebcebe746110e5ef8d0599b0972b1f4c6",
+            "comment": "feat: upgrade typings on useARIAButtonProps to be more specific"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "81191d9a45e629126a416e7202af3e241cd5e0fc",
+            "comment": "feat: add helper types to assist DOM element handling"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:03:37 GMT",
       "tag": "@fluentui/react-aria_v9.1.0",
       "version": "9.1.0",

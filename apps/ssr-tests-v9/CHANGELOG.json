@@ -2,6 +2,21 @@
   "name": "@fluentui/ssr-tests-v9",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:50:08 GMT",
+      "tag": "@fluentui/ssr-tests-v9_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests-v9",
+            "comment": "Bump @fluentui/react-components to v9.3.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:04:10 GMT",
       "tag": "@fluentui/ssr-tests-v9_v9.0.0",
       "version": "9.0.0",

@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 03 Aug 2022 16:03:51 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.4..@fluentui/react-menu_v9.1.0)
+
+### Minor changes
+
+- chore(react-menu): Updates trigger to use useARIAButton ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.3 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-portal to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-positioning to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+### Patches
+
+- refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- bugfix: stops propagation on Escape keydown ([PR #24750](https://github.com/microsoft/fluentui/pull/24750) by bernardo.sunderhus@gmail.com)
+- chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.4)
 

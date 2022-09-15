@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Adding 'aria-expanded=false' to collapsed MenuButtons.",
-  "packageName": "@fluentui/react-button",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

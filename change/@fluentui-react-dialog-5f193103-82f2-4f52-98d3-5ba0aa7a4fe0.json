@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-dialog): moves backdrop slot from Dialog to DialogSurface",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

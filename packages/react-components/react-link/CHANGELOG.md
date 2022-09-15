@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 03 Aug 2022 16:03:51 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.5)
+
+Thu, 15 Sep 2022 09:49:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.4..@fluentui/react-link_v9.0.5)
+
+### Patches
+
+- fix: add type=button when rendered as a button ([PR #24327](https://github.com/microsoft/fluentui/pull/24327) by sarah.higley@microsoft.com)
+- fix: Replacing bottom border styles with text decoration underline. ([PR #24734](https://github.com/microsoft/fluentui/pull/24734) by humberto_makoto@hotmail.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.4)
 
