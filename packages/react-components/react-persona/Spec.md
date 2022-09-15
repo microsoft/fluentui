@@ -36,7 +36,7 @@ Other than styling and naming, the text lines in Persona remain the same.
 Persona with Avatar:
 
 ```jsx
-<Persona avatar={{ name: 'Kevin Sturgis' }} primaryText="Kevin Sturgis" secondaryText="Software Engineer" />
+<Persona name="Kevin Sturgis" primaryText="Kevin Sturgis" secondaryText="Software Engineer" />
 ```
 
 ![PresenceBadge](./etc/images/badge.png)
@@ -44,7 +44,7 @@ Persona with Avatar:
 Persona with PresenceBadge:
 
 ```jsx
-<Persona presence={{ status: 'offline', outOfOffice: true }} primaryText="Kevin Sturgis" />
+<Persona presenceOnly presence={{ status: 'offline', outOfOffice: true }} primaryText="Kevin Sturgis" />
 ```
 
 ![Avatar and PresenceBadge](./etc/images/avatar_badge.png)
@@ -53,7 +53,7 @@ Persona with Avatar + PresenceBadge:
 
 ```jsx
 <Persona
-  avatar={{ name: 'Kevin Sturgis' }}
+  name="Kevin Sturgis"
   presence={{ status: 'offline', outOfOffice: true }}
   primaryText="Kevin Sturgis"
   secondaryText="Software Engineer"
@@ -67,9 +67,9 @@ Persona with Avatar + PresenceBadge:
 
 There are three alignment variants:
 
-- start: Content on the left and text on the right.
-- center: Content on top and text on the bottom.
-- end: Content on the right and text on the left.
+- after: Content on the left and text on the right.
+- before: Content on top and text on the bottom.
+- below: Content on the right and text on the left.
 
 There are 3 content variants:
 
@@ -87,7 +87,7 @@ There are 2 sizing variants:
 **Slots**
 
 - `root`: The root slot for Persona.
-- `avatar`: The Avatar to display.
+- `avatar`: The Avatar to display and Persona's primary slot.
 - `presence`: The PresenceBadge to display.
 - `primaryText`: Primary text.
 - `secondaryText`: Secondary text.
@@ -98,53 +98,64 @@ There are 2 sizing variants:
 
 ```ts
 export type PersonaSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Avatar to display.
    */
-  avatar?: Slot<typeof Avatar>;
+  avatar: NonNullable<Slot<typeof Avatar>>;
 
   /**
    * PresenceBadge to display.
    */
-  presence?: Slot<typeof PresenceBadge>;
+  presence: Slot<typeof PresenceBadge>;
 
   /**
    * Primary text to display.
    */
-  primaryText?: Slot<'span'>;
+  primaryText: Slot<'span'>;
 
   /**
    * Secondary text to display.
    */
-  secondaryText?: Slot<'span'>;
+  secondaryText: Slot<'span'>;
 
   /**
    * Tertiary text to display.
    */
-  tertiaryText?: Slot<'span'>;
+  tertiaryText: Slot<'span'>;
 
   /**
    * Quaternary text to display.
    */
-  quaternaryText?: Slot<'span'>;
+  quaternaryText: Slot<'span'>;
 };
 
 /**
  * Persona Props
  */
-export type PersonaProps = ComponentProps<PersonaSlots> & {
+export type PersonaProps = Omit<ComponentProps<Partial<PersonaSlots>, 'avatar'>, 'badge'> & {
+  /**
+   * Whether to display only the presence.
+   *
+   * @default false
+   */
+  presenceOnly?: boolean;
+
   /**
    * Sizing type to use.
    *
    * `fixed`: Text lines adjust to content's size.
    * `scaled`: Content adjusts its size based on the number of text lines used.
+   *
+   * @default fixed
    */
   sizing?: 'fixed' | 'scaled';
 
   /**
    * Position the text will be rendered in.
+   *
+   * @default after
    */
   textPosition?: 'before' | 'after' | 'below';
 };
@@ -156,16 +167,16 @@ To avoid the [issue](https://github.com/microsoft/fluentui/issues/23386) v8 has,
 
 - _**CSS Grid**_
 
-  - ![Start](./etc/images/grid_start.png)
-  - ![Center](./etc/images/grid_center.png)
-  - ![End](./etc/images/grid_end.png)
+  - ![After](./etc/images/grid_after.png)
+  - ![Below](./etc/images/grid_below.png)
+  - ![Before](./etc/images/grid_before.png)
 
 - _**Internal**_
 
 ```jsx
 return (
   <slots.root {...slotProps.root}>
-    {slots.avatar && <slots.avatar {...slotProps.avatar} />}
+    {!badgeOnly && <slots.avatar {...slotProps.avatar} />}
     {slots.presence && <slots.presence {...slotProps.presence} />}
     {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
     {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
