@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-label": "^9.0.5",
-    "@fluentui/react-shared-contexts": "9.0.1",
+    "@fluentui/react-shared-contexts": "^9.0.1",
     "@fluentui/react-theme": "^9.1.0",
     "@fluentui/react-utilities": "^9.1.0",
     "@griffel/react": "^1.3.0",
