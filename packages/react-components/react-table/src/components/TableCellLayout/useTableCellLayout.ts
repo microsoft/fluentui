@@ -16,7 +16,7 @@ export const useTableCellLayout_unstable = (
   props: TableCellLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TableCellLayoutState => {
-  const size = useTableContext(ctx => ctx.size);
+  const { size } = useTableContext();
 
   return {
     components: {

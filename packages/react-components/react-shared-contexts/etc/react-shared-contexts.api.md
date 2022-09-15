@@ -13,7 +13,7 @@ export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefi
 // @internal (undocumented)
 export interface AvatarContextValue {
     // (undocumented)
-    size?: number;
+    size?: AvatarSizes;
 }
 
 // @internal (undocumented)

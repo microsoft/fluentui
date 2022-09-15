@@ -11,7 +11,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   const { size: contextSize } = useAvatarContext();
   const {
     name,
-    size = contextSize ?? 32,
+    size = contextSize ?? (32 as const),
     shape = 'circular',
     active = 'unset',
     activeAppearance = 'ring',
