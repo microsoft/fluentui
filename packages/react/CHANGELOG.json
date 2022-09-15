@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 19:15:25 GMT",
+      "tag": "@fluentui/react_v8.95.0",
+      "version": "8.95.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "682ead9953a1d519133193033aafe392173009f5",
+            "comment": "All /lib-commonjs/ top-level entries have been added to the exports map for backwards compatibility."
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b111dddd3dab26c409857723a6e34810a60c41b2",
+            "comment": "fix: update version mismatches triggered by v9 release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Sep 2022 07:41:02 GMT",
       "tag": "@fluentui/react_v8.94.4",
       "version": "8.94.4",

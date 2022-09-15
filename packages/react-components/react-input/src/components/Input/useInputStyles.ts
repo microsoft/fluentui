@@ -159,6 +159,14 @@ const useRootStyles = makeStyles({
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
+  'filled-darker-shadow': {
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: tokens.shadow2,
+  },
+  'filled-lighter-shadow': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow2,
+  },
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,

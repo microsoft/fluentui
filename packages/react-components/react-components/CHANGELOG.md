@@ -1,8 +1,237 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 03 Aug 2022 16:03:34 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:48:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.0)
+
+Thu, 15 Sep 2022 09:48:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.2.0..@fluentui/react-components_v9.3.0)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: add dialog properties to getNativeElementProps ([PR #24698](https://github.com/microsoft/fluentui/pull/24698) by bernardo.sunderhus@gmail.com)
+  - fix: Replace deprecated ReactNodeArray for React 17 support. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
+  - feat(react-utilities): adds isResolvedShorthand guard method ([PR #24535](https://github.com/microsoft/fluentui/pull/24535) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-input`
+  - feat: Adding optional shadow to filled appearances. ([PR #24730](https://github.com/microsoft/fluentui/pull/24730) by esteban.230@hotmail.com)
+- `@fluentui/react-menu`
+  - chore(react-menu): Updates trigger to use useARIAButton ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - chore(react-popover): Updates trigger to use useARIAButton ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - feat: Upgrade to Floating UI v1 ([PR #24254](https://github.com/microsoft/fluentui/pull/24254) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - feat: Add Body2 ([PR #24378](https://github.com/microsoft/fluentui/pull/24378) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-theme`
+  - feat: Add fontWeightBold, add Body2, fix font weight for *Stronger typography ([PR #24378](https://github.com/microsoft/fluentui/pull/24378) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-aria`
+  - feat: add helper types to assist DOM element handling ([PR #24722](https://github.com/microsoft/fluentui/pull/24722) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-avatar`
+  - feat: Adding functionality to AvatarGroupOverflow and updating AvatarGroup to use AvatarGroupOverflow. ([PR #24115](https://github.com/microsoft/fluentui/pull/24115) by esteban.230@hotmail.com)
+  - chore: Renaming AvatarGroupOverflow to AvatarGroupPopover. ([PR #24338](https://github.com/microsoft/fluentui/pull/24338) by esteban.230@hotmail.com)
+  - feat: Add pie layout implementation. ([PR #24241](https://github.com/microsoft/fluentui/pull/24241) by esteban.230@hotmail.com)
+- `@fluentui/react-components`
+  - feat: re-export GriffelRenderer type ([PR #24202](https://github.com/microsoft/fluentui/pull/24202) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tooltip`
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+  - fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+  - fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
+  - fix: add microdata properties to allowed html properties ([PR #24652](https://github.com/microsoft/fluentui/pull/24652) by yuanboxue@microsoft.com)
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - fix: Remove box-shadow from filled appearances. ([PR #24491](https://github.com/microsoft/fluentui/pull/24491) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - fix: add type=button when rendered as a button ([PR #24327](https://github.com/microsoft/fluentui/pull/24327) by sarah.higley@microsoft.com)
+  - fix: Replacing bottom border styles with text decoration underline. ([PR #24734](https://github.com/microsoft/fluentui/pull/24734) by humberto_makoto@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - bugfix: stops propagation on Escape keydown ([PR #24750](https://github.com/microsoft/fluentui/pull/24750) by bernardo.sunderhus@gmail.com)
+  - chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - fix: Allow PopoverSurface to trap focus when it's focusable. ([PR #24134](https://github.com/microsoft/fluentui/pull/24134) by esteban.230@hotmail.com)
+  - bugfix: stops propagation on Escape keydown ([PR #24750](https://github.com/microsoft/fluentui/pull/24750) by bernardo.sunderhus@gmail.com)
+  - fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+  - fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fix: Portal compat should apply `focus-visible` ponyfill ([PR #24712](https://github.com/microsoft/fluentui/pull/24712) by lingfangao@hotmail.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+  - chore: fix no-context-default-value lint violations for cxe ([PR #24277](https://github.com/microsoft/fluentui/pull/24277) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - (patch): Add line-height styling to Spinner ([PR #24643](https://github.com/microsoft/fluentui/pull/24643) by ololubek@microsoft.com)
+  - fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - (chore): Remove appearance conditional from Spinner slot styling ([PR #24480](https://github.com/microsoft/fluentui/pull/24480) by ololubek@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: add type=button to root slot  ([PR #24327](https://github.com/microsoft/fluentui/pull/24327) by sarah.higley@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: Remove provider classname from focus styles ([PR #24710](https://github.com/microsoft/fluentui/pull/24710) by lingfangao@hotmail.com)
+  - fix: Bumps tabster to 2.1.2 and removes deep import for KeyborgCallback ([PR #24376](https://github.com/microsoft/fluentui/pull/24376) by lingfangao@hotmail.com)
+  - chore: Exports `applyFocusVisible` as internal ([PR #24712](https://github.com/microsoft/fluentui/pull/24712) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - fix: Change filled appearances' normal state's token. ([PR #24701](https://github.com/microsoft/fluentui/pull/24701) by esteban.230@hotmail.com)
+  - fix: disabled textarea uses semantic contrast theme border color ([PR #24311](https://github.com/microsoft/fluentui/pull/24311) by sarah.higley@microsoft.com)
+- `@fluentui/react-theme`
+  - fix: update token values to fix failing color contrast ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - fix: update color neutral background inverted color in teams dark ([PR #24494](https://github.com/microsoft/fluentui/pull/24494) by seanmonahan@microsoft.com)
+  - fix: Update color tokens mapping ([PR #24608](https://github.com/microsoft/fluentui/pull/24608) by miroslav.stastny@microsoft.com)
+  - fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+  - fix: Change colorBrandForeground2 mapping in teamsDark theme ([PR #24579](https://github.com/microsoft/fluentui/pull/24579) by miroslav.stastny@microsoft.com)
+  - fix: Swap Background1 and Foreground1 in HC color palette ([PR #24498](https://github.com/microsoft/fluentui/pull/24498) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: fix no-context-default-value lint violations for cxe ([PR #24277](https://github.com/microsoft/fluentui/pull/24277) by lingfangao@hotmail.com)
+  - fix(Refactor accordion expandIcon styling) ([PR #24597](https://github.com/microsoft/fluentui/pull/24597) by ololubek@microsoft.com)
+  - fix: add type=button to button slot ([PR #24327](https://github.com/microsoft/fluentui/pull/24327) by sarah.higley@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-aria`
+  - docs(react-aria): re-generate api.md ([PR #23369](https://github.com/microsoft/fluentui/pull/23369) by martinhochel@microsoft.com)
+  - chore(react-aria): improve internal typings ([PR #24742](https://github.com/microsoft/fluentui/pull/24742) by bernardo.sunderhus@gmail.com)
+  - feat: upgrade typings on useARIAButtonProps to be more specific ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-avatar`
+  - chore: Change content to render as ul and list item to render as li. ([PR #24347](https://github.com/microsoft/fluentui/pull/24347) by esteban.230@hotmail.com)
+  - chore: Cleaning up use of AvatarGroup context. ([PR #24459](https://github.com/microsoft/fluentui/pull/24459) by esteban.230@hotmail.com)
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+  - fix: Making PopoverSurface focusable, moving Overflow aria-label to PopoverSurface, and moving content styles to PopoverSurface. ([PR #24417](https://github.com/microsoft/fluentui/pull/24417) by esteban.230@hotmail.com)
+  - fix: Set aria-hidden to AvatarGroupItem's label. ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+  - chore: Update tests and add e2e tests. ([PR #24348](https://github.com/microsoft/fluentui/pull/24348) by esteban.230@hotmail.com)
+  - fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - chore: fix no-context-default-value lint violations for cxe ([PR #24277](https://github.com/microsoft/fluentui/pull/24277) by lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - fix: Adding 'aria-expanded=false' to collapsed MenuButtons. ([PR #24782](https://github.com/microsoft/fluentui/pull/24782) by humberto_makoto@hotmail.com)
+  - chore: Remove max-width style from Button components. ([PR #24647](https://github.com/microsoft/fluentui/pull/24647) by makotom@microsoft.com)
+  - chore: Cleaning up tokens in Button components so they better adhere to the design spec. ([PR #24732](https://github.com/microsoft/fluentui/pull/24732) by humberto_makoto@hotmail.com)
+  - fix: Wrapping long text in Button components. ([PR #24682](https://github.com/microsoft/fluentui/pull/24682) by humberto_makoto@hotmail.com)
+  - refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Export `TableCellActions` and `TablePrimaryCell` as unstable ([PR #24232](https://github.com/microsoft/fluentui/pull/24232) by lingfangao@hotmail.com)
+  - fix: use caret for @fluentui/react-spinbutton ([PR #24206](https://github.com/microsoft/fluentui/pull/24206) by lingfangao@hotmail.com)
+  - chore: Stop exporting TablePrimaryCell and associated utilities and types ([PR #24762](https://github.com/microsoft/fluentui/pull/24762) by lingfangao@hotmail.com)
+  - feat: Adding missing AvatarGroup exports. ([PR #24770](https://github.com/microsoft/fluentui/pull/24770) by esteban.230@hotmail.com)
+  - feat: Remove TableCellPrimaryLayout, adds `appearance` prop to TableCellLayout for primary layout ([PR #24789](https://github.com/microsoft/fluentui/pull/24789) by lingfangao@hotmail.com)
+  - feat: Export table cell layout components from unstable ([PR #24773](https://github.com/microsoft/fluentui/pull/24773) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - feat: Export `TableSelectionCell` from unstable ([PR #24252](https://github.com/microsoft/fluentui/pull/24252) by lingfangao@hotmail.com)
+  - fix: export ToolbarButton ([PR #24366](https://github.com/microsoft/fluentui/pull/24366) by olfedias@microsoft.com)
+  - feat: Add *Field components to @fluentui/react-components/unstable ([PR #24235](https://github.com/microsoft/fluentui/pull/24235) by behowell@microsoft.com)
+  - Changed from upgrade to migrate terminology ([PR #24695](https://github.com/microsoft/fluentui/pull/24695) by gcox@microsoft.com)
+  - Move Icon Table to new page ([PR #24284](https://github.com/microsoft/fluentui/pull/24284) by ololubek@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-dialog`
+  - chore(react-dialog): Updates trigger to use useARIAButtonProps ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - chore(react-dialog): removes react-button max-width overrides ([PR #24674](https://github.com/microsoft/fluentui/pull/24674) by bernardo.sunderhus@gmail.com)
+  - feat: add scroll lock feature to Dialog ([PR #24375](https://github.com/microsoft/fluentui/pull/24375) by bernardo.sunderhus@gmail.com)
+  - feat(react-dialog): moves backdrop slot from Dialog to DialogSurface ([PR #24669](https://github.com/microsoft/fluentui/pull/24669) by bernardo.sunderhus@gmail.com)
+  - feat(react-dialog): adds proper style to make DialogBody responsive ([PR #24354](https://github.com/microsoft/fluentui/pull/24354) by bernardo.sunderhus@gmail.com)
+  - chore: renames overlay slot to backdrop ([PR #24220](https://github.com/microsoft/fluentui/pull/24220) by bernardo.sunderhus@gmail.com)
+  - bugfix: stops propagation on Escape key ([PR #24750](https://github.com/microsoft/fluentui/pull/24750) by bernardo.sunderhus@gmail.com)
+  - feat: Adds padding-right style to avoid jumping on scroll lock ([PR #24408](https://github.com/microsoft/fluentui/pull/24408) by bernardo.sunderhus@gmail.com)
+  - chore(react-dialog): removes document listener to Escape keydown ([PR #24668](https://github.com/microsoft/fluentui/pull/24668) by bernardo.sunderhus@gmail.com)
+  - feat(react-dialog): replace `closeButton` to a more generic `action` slot ([PR #24719](https://github.com/microsoft/fluentui/pull/24719) by bernardo.sunderhus@gmail.com)
+  - feat(react-dialog): 1st rule of ARIA for Dialog ([PR #24525](https://github.com/microsoft/fluentui/pull/24525) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-field`
+  - Initial release ([PR #24235](https://github.com/microsoft/fluentui/pull/24235) by behowell@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-table`
+  - implement `useTable` state hook ([PR #24329](https://github.com/microsoft/fluentui/pull/24329) by lingfangao@hotmail.com)
+  - feat: Remove TableCellPrimaryLayout, adds `appearance` prop to TableCellLayout for primary layout ([PR #24789](https://github.com/microsoft/fluentui/pull/24789) by lingfangao@hotmail.com)
+  - BREAKING: TableCell layouts are handled by layout components ([PR #24762](https://github.com/microsoft/fluentui/pull/24762) by lingfangao@hotmail.com)
+  - feat: Implement table cell layout components ([PR #24773](https://github.com/microsoft/fluentui/pull/24773) by lingfangao@hotmail.com)
+  - feat: Remove inferred row state and add `rowEnhancer` option ([PR #24346](https://github.com/microsoft/fluentui/pull/24346) by lingfangao@hotmail.com)
+  - feat: Implement unstable navigation modes ([PR #24383](https://github.com/microsoft/fluentui/pull/24383) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - refactor(useTable): selection manager to avoid calling multiple hooks ([PR #24377](https://github.com/microsoft/fluentui/pull/24377) by lingfangao@hotmail.com)
+  - feat: Implement `TableSelectionCell` ([PR #24252](https://github.com/microsoft/fluentui/pull/24252) by lingfangao@hotmail.com)
+  - refactor: Stop using context selector for Table primitives ([PR #24806](https://github.com/microsoft/fluentui/pull/24806) by lingfangao@hotmail.com)
+  - feat: autocontrolled `useTable` hook ([PR #24688](https://github.com/microsoft/fluentui/pull/24688) by lingfangao@hotmail.com)
+  - feat: Implement `TableCellActions` and `TablePrimaryCell` ([PR #24232](https://github.com/microsoft/fluentui/pull/24232) by lingfangao@hotmail.com)
+- `@fluentui/react-theme-sass`
+  - feat: add new color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+  - feat: Add fontWeightBold ([PR #24378](https://github.com/microsoft/fluentui/pull/24378) by miroslav.stastny@microsoft.com)
+  - fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+  - feat: add color neutral foreground inverted 2 token ([PR #24494](https://github.com/microsoft/fluentui/pull/24494) by seanmonahan@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-alert`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: typing moves active option in Dropdown ([PR #24437](https://github.com/microsoft/fluentui/pull/24437) by sarah.higley@microsoft.com)
+  - fix: Combobox and Dropdown hover/active border colors and padding styles ([PR #24362](https://github.com/microsoft/fluentui/pull/24362) by sarah.higley@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+  - fix: Combobox and Dropdown only show option focus outline when navigating by keyboard ([PR #24700](https://github.com/microsoft/fluentui/pull/24700) by sarah.higley@microsoft.com)
+  - fix: set popup Listbox width to trigger width ([PR #24733](https://github.com/microsoft/fluentui/pull/24733) by sarah.higley@microsoft.com)
+  - fix: open/close combobox on icon click ([PR #24147](https://github.com/microsoft/fluentui/pull/24147) by sarah.higley@microsoft.com)
+  - feat: Allow typing by default, add allowFreeform ([PR #23819](https://github.com/microsoft/fluentui/pull/23819) by sarah.higley@microsoft.com)
+  - feat: make listbox slot nullable ([PR #24392](https://github.com/microsoft/fluentui/pull/24392) by sarah.higley@microsoft.com)
+  - fix: react-combobox change onSelect to onOptionSelect to avoid conflicts with native onSelect ([PR #24550](https://github.com/microsoft/fluentui/pull/24550) by sarah.higley@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.2.0)
 

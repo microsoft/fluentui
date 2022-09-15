@@ -2,6 +2,59 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:49:39 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "9c97dc2efbfe7d22b3686cb765fd93916b303642",
+            "comment": "react-theme-sass dev-depends on react-theme"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "feat: add new color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "61557d7e48a7380b2fbf2bcc5c8faa4a3ed7d89f",
+            "comment": "feat: Add fontWeightBold"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "5c78472d96502d05a10016d9502eceada4edfd8a",
+            "comment": "feat: add color neutral foreground inverted 2 token"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 15:13:22 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.1",
       "version": "9.0.0-alpha.1",

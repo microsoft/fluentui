@@ -81,13 +81,11 @@ export const CellActions = () => {
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellLayout media={item.file.icon}>
-                {item.file.label}
-                <TableCellActions>
-                  <Button icon={<EditRegular />} appearance="subtle" />
-                  <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-                </TableCellActions>
-              </TableCellLayout>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
             </TableCell>
             <TableCell>
               <TableCellLayout

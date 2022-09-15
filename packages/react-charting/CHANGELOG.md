@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 13 Sep 2022 07:41:03 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 19:15:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.13.0)
+
+Thu, 15 Sep 2022 19:15:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.37..@fluentui/react-charting_v5.13.0)
+
+### Minor changes
+
+- All /lib-commonjs/ top-level entries have been added to the exports map for backwards compatibility. ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by dzearing@microsoft.com)
+- Bump @fluentui/react to v8.95.0 ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by beachball)
+
+### Patches
+
+- Add support for custom locale for date axis ([PR #24753](https://github.com/microsoft/fluentui/pull/24753) by atishay.jain@microsoft.com)
+- Fix value font-weight inside heatmap chart ([PR #24726](https://github.com/microsoft/fluentui/pull/24726) by kumarkshitij@microsoft.com)
+- Fix legend overflow-indication-text role ([PR #24756](https://github.com/microsoft/fluentui/pull/24756) by kumarkshitij@microsoft.com)
 
 ## [5.12.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.37)
 

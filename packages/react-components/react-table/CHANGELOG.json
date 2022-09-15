@@ -2,6 +2,137 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:49:26 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "851d0fd82f7d802d048be89dc363271f7cf1720a",
+            "comment": "implement `useTable` state hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e79be7955cfeef07aa3377bf123b88800e4af1cc",
+            "comment": "feat: Remove TableCellPrimaryLayout, adds `appearance` prop to TableCellLayout for primary layout"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b51ebaec4a0681dc71e8f67a28a9d28b051bcba8",
+            "comment": "BREAKING: TableCell layouts are handled by layout components"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "059b48cc66cbeb9c545b60ef842407895cd4e505",
+            "comment": "feat: Implement table cell layout components"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "8f420a1c55f283156b758bda1e7ef0591ec57a78",
+            "comment": "feat: Remove inferred row state and add `rowEnhancer` option"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "cf7b0b6c6941c1b798a57ead0bc67b98e4e0ddbb",
+            "comment": "feat: Implement unstable navigation modes"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "02a6a76a3350adfb4fd95cdfc178864801c8e2bf",
+            "comment": "refactor(useTable): selection manager to avoid calling multiple hooks"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b9b2c4cf2b69e8d5e4b0a8a01fcc8458b1c8efc6",
+            "comment": "feat: Implement `TableSelectionCell`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f5398157ebbea5c748d8d7336f18b378a8bdec16",
+            "comment": "refactor: Stop using context selector for Table primitives"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "573289549f9712357c5561057fc24e97f62a6c63",
+            "comment": "feat: autocontrolled `useTable` hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "9253171aac6e08d6830361d125d657f21ddfc90a",
+            "comment": "feat: Implement `TableCellActions` and `TablePrimaryCell`"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.2.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.5",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.1.1",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "9e604a18ef914090301b4d0cd0b602f646f5719c",
+            "comment": "chore: Add preview warning for Table component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:04:03 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.1",
       "version": "9.0.0-alpha.1",

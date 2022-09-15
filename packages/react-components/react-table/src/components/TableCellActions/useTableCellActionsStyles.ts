@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { TableCellActionsSlots, TableCellActionsState } from './TableCellActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -12,8 +13,14 @@ export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots> =
  */
 const useStyles = makeStyles({
   root: {
+    position: 'absolute',
+    right: '0px',
+    top: '50%',
+    transform: 'translateY(-50%)',
     opacity: 0,
     marginLeft: 'auto',
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+
     ...createCustomFocusIndicatorStyle(
       {
         opacity: 1,
