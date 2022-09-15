@@ -1812,6 +1812,9 @@ export { getGlobalClassNames }
 // @public
 export const GetGroupCount: (groups: IGroup[] | undefined) => number;
 
+// @public
+export const getGroupNestingDepth: (groups: IDetailsListProps['groups']) => number;
+
 export { getHighContrastNoAdjustStyle }
 
 export { getIcon }
