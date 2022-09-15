@@ -17,7 +17,7 @@ describe('GroupedListV2', () => {
   isConformant({
     Component: GroupedListV2,
     displayName: 'GroupedListV2_unstable',
-    componentPath: path.join(__dirname, 'GroupedListV2.ts'),
+    componentPath: path.join(__dirname, 'GroupedListV2.tsx'),
     requiredProps: {
       items: [],
       onRenderCell: () => {

@@ -27,7 +27,6 @@ import { GroupFooter } from './GroupFooter';
 import type { IGroupHeaderProps } from './GroupHeader';
 import type { IGroupShowAllProps } from './GroupShowAll.styles';
 import type { IGroupFooterProps } from './GroupFooter.types';
-import { useMount, useUnmount } from '@fluentui/react-hooks';
 
 export interface IGroupedListV2State {
   selectionMode?: IGroupedListProps['selectionMode'];
@@ -70,14 +69,14 @@ type IHeaderGroupedItem = {
 
 type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
 
-type FlattenItemsFn = (
+type FlattenItems = (
   groups: IGroup[] | undefined,
   items: any[],
   memoItems: IGroupedItem[],
-  groupProps: IGroupRenderProps,
+  groupProps: IGroupRenderProps['getGroupItemLimit'],
 ) => IGroupedItem[];
 
-const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
+const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit) => {
   if (!groups) {
     return items;
   }
@@ -125,7 +124,7 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
 
     if (group.isCollapsed !== true) {
       let itemIndex = group.startIndex;
-      const renderCount = groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit(group) : Infinity;
+      const renderCount = getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
       const count = !group.isShowingAll ? group.count : items.length;
       const itemEnd = itemIndex + Math.min(count, renderCount);
       while (itemIndex < itemEnd) {
@@ -180,20 +179,20 @@ type UseIsGroupSelected = (
 ) => boolean;
 
 const useIsGroupSelected: UseIsGroupSelected = (startIndex, count, selection, eventGroup) => {
-  const [isSelected, setIsSelected] = React.useState(selection?.isRangeSelected(startIndex, count) ?? false);
+  const [isSelected, setIsSelected] = React.useState(() => selection?.isRangeSelected(startIndex, count) ?? false);
 
   React.useEffect(() => {
-    const changeHandler = () => {
-      setIsSelected(selection?.isRangeSelected(startIndex, count) ?? false);
-    };
+    if (selection && eventGroup) {
+      const changeHandler = () => {
+        setIsSelected(selection?.isRangeSelected(startIndex, count) ?? false);
+      };
 
-    if (selection) {
-      eventGroup?.on(selection, SELECTION_CHANGE, changeHandler);
+      eventGroup.on(selection, SELECTION_CHANGE, changeHandler);
+
+      return () => {
+        eventGroup?.off(selection, SELECTION_CHANGE, changeHandler);
+      };
     }
-
-    return () => {
-      eventGroup?.off(selection, SELECTION_CHANGE, changeHandler);
-    };
   }, [startIndex, count, selection, eventGroup]);
 
   return isSelected;
@@ -302,9 +301,9 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
   const { shouldEnterInnerZone = isInnerZoneKeystroke } = focusZoneProps;
 
   const listView = React.useMemo(() => {
-    return flattenItems(groups, items, flatList.current, groupProps);
+    return flattenItems(groups, items, flatList.current, groupProps?.getGroupItemLimit);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups, groupProps, items, toggleVersion, flatList]);
+  }, [groups, groupProps?.getGroupItemLimit, items, toggleVersion, flatList]);
 
   const getPageSpecification = React.useCallback(
     (flattenedIndex: number): { key?: string } => {
@@ -316,16 +315,18 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     [listView],
   );
 
-  useMount(() => {
+  React.useEffect(() => {
     if (groupProps?.isAllGroupsCollapsed) {
       setGroupsCollapsedState(groups, groupProps.isAllGroupsCollapsed);
     }
     events.current = new EventGroup(this);
-  });
 
-  useUnmount(() => {
-    events.current?.dispose();
-  });
+    return () => {
+      events.current?.dispose();
+      events.current = undefined;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.useEffect(() => {
     setVersion({});
@@ -353,125 +354,103 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     [setToggleVersion, groupProps],
   );
 
-  const onToggleSelectGroup = React.useCallback(
-    (group: IGroup): void => {
-      if (group && selection && selectionMode === SelectionMode.multiple) {
-        selection.toggleRangeSelected(group.startIndex, group.count);
+  const onToggleSelectGroup = (group: IGroup): void => {
+    if (group && selection && selectionMode === SelectionMode.multiple) {
+      selection.toggleRangeSelected(group.startIndex, group.count);
+    }
+  };
+
+  const onToggleSummarize = (group: IGroup): void => {
+    const onToggleSummarizeFn = groupProps?.showAllProps?.onToggleSummarize;
+
+    if (onToggleSummarizeFn) {
+      onToggleSummarizeFn(group);
+    } else {
+      if (group) {
+        group.isShowingAll = !group.isShowingAll;
       }
-    },
-    [selection, selectionMode],
-  );
 
-  const onToggleSummarize = React.useCallback(
-    (group: IGroup): void => {
-      const onToggleSummarizeFn = groupProps?.showAllProps?.onToggleSummarize;
+      setVersion({});
+      setToggleVersion({});
+    }
+  };
 
-      if (onToggleSummarizeFn) {
-        onToggleSummarizeFn(group);
-      } else {
-        if (group) {
-          group.isShowingAll = !group.isShowingAll;
-        }
+  const getDividerProps = (group: IGroup, flattenedIndex: number) => {
+    const dividerProps = {
+      group,
+      groupIndex: flattenedIndex,
+      groupLevel: group.level ?? 0,
+      viewport,
+      selectionMode,
+      groups,
+      compact,
+      onToggleSelectGroup,
+      onToggleCollapse,
+      onToggleSummarize,
+    };
 
-        setVersion({});
-        setToggleVersion({});
-      }
-    },
-    [groupProps],
-  );
+    return dividerProps;
+  };
 
-  const getDividerProps = React.useCallback(
-    (group: IGroup, flattenedIndex: number) => {
-      const dividerProps = {
-        group,
-        groupIndex: flattenedIndex,
-        groupLevel: group.level ?? 0,
-        viewport,
-        selectionMode,
-        groups,
-        compact,
-        onToggleSelectGroup,
-        onToggleCollapse,
-        onToggleSummarize,
-      };
+  const renderHeader = (item: IHeaderGroupedItem, flattenedIndex: number): React.ReactNode => {
+    const group = item.group;
 
-      return dividerProps;
-    },
-    [compact, groups, onToggleCollapse, onToggleSelectGroup, onToggleSummarize, selectionMode, viewport],
-  );
+    const headerProps = {
+      ...groupProps!.headerProps,
+      ...getDividerProps(item.group, flattenedIndex),
+      key: group.key,
+      groupedListId: item.groupId,
+      ariaLevel: group.level ? group.level + 1 : 1,
+      ariaSetSize: groups ? groups.length : undefined,
+      ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
+    };
 
-  const renderHeader = React.useCallback(
-    (item: IHeaderGroupedItem, flattenedIndex: number): React.ReactNode => {
-      const group = item.group;
+    return (
+      <GroupItem
+        render={onRenderHeader}
+        defaultRender={renderGroupHeader}
+        item={item}
+        selection={selection}
+        eventGroup={events.current}
+        props={headerProps}
+      />
+    );
+  };
 
-      const headerProps = {
-        ...groupProps!.headerProps,
-        ...getDividerProps(item.group, flattenedIndex),
-        key: group.key,
-        groupedListId: item.groupId,
-        ariaLevel: group.level ? group.level + 1 : 1,
-        ariaSetSize: groups ? groups.length : undefined,
-        ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
-      };
+  const renderShowAll = (item: IShowAllGroupedItem, flattenedIndex: number): React.ReactNode => {
+    const group = item.group;
+    const groupShowAllProps = {
+      ...groupProps!.showAllProps,
+      ...getDividerProps(group, flattenedIndex),
+      key: group.key ? `${group.key}-show-all` : undefined,
+    };
 
-      return (
-        <GroupItem
-          render={onRenderHeader}
-          defaultRender={renderGroupHeader}
-          item={item}
-          selection={selection}
-          eventGroup={events.current}
-          props={headerProps}
-        />
-      );
-    },
-    [onRenderHeader, groupProps, groups, getDividerProps, selection],
-  );
+    return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
+  };
 
-  const renderShowAll = React.useCallback(
-    (item: IShowAllGroupedItem, flattenedIndex: number): React.ReactNode => {
-      const group = item.group;
-      const groupShowAllProps = {
-        ...groupProps!.showAllProps,
-        ...getDividerProps(group, flattenedIndex),
-        key: group.key ? `${group.key}-show-all` : undefined,
-      };
+  const renderFooter = (item: IFooterGroupedItem, flattenedIndex: number): React.ReactNode => {
+    const group = item.group;
+    const groupFooterProps = {
+      ...groupProps!.footerProps,
+      ...getDividerProps(group, flattenedIndex),
+      key: group.key ? `${group.key}-footer` : undefined,
+    };
 
-      return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
-    },
+    return onRenderFooter(groupFooterProps, renderGroupFooter);
+  };
 
-    [onRenderShowAll, groupProps, getDividerProps],
-  );
-
-  const renderFooter = React.useCallback(
-    (item: IFooterGroupedItem, flattenedIndex: number): React.ReactNode => {
-      const group = item.group;
-      const groupFooterProps = {
-        ...groupProps!.footerProps,
-        ...getDividerProps(group, flattenedIndex),
-        key: group.key ? `${group.key}-footer` : undefined,
-      };
-
-      return onRenderFooter(groupFooterProps, renderGroupFooter);
-    },
-    [onRenderFooter, groupProps, getDividerProps],
-  );
-
-  const renderItem = React.useCallback(
-    (item: IGroupedItem, flattenedIndex: number): React.ReactNode => {
-      if (item.type === 'header') {
-        return renderHeader(item, flattenedIndex);
-      } else if (item.type === 'showAll') {
-        return renderShowAll(item, flattenedIndex);
-      } else if (item.type === 'footer') {
-        return renderFooter(item, flattenedIndex);
-      } else if (item.type === 'item') {
-        const level = item.group.level ? item.group.level + 1 : 1;
-        return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex);
-      }
-    },
-    [onRenderCell, renderHeader, renderShowAll, renderFooter],
-  );
+  const renderItem = (item: IGroupedItem, flattenedIndex: number): React.ReactNode => {
+    if (item.type === 'header') {
+      return renderHeader(item, flattenedIndex);
+    } else if (item.type === 'showAll') {
+      return renderShowAll(item, flattenedIndex);
+    } else if (item.type === 'footer') {
+      return renderFooter(item, flattenedIndex);
+    } else {
+      const level = item.group.level ? item.group.level + 1 : 1;
+      return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex);
+    }
+  };
 
   return (
     <FocusZone
@@ -487,6 +466,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         ref={listRef}
         role={role}
         items={listView}
+        // eslint-disable-next-line
         onRenderCellConditional={renderItem}
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}
@@ -568,7 +548,7 @@ export class GroupedListV2Wrapper
   }
 
   public getStartItemIndexInView(): number {
-    return this._list.current!.getStartItemIndexInView() || 0;
+    return this._list.current?.getStartItemIndexInView() || 0;
   }
 
   public render(): JSX.Element {

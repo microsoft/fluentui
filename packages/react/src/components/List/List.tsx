@@ -615,12 +615,12 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         itemKey = index;
       }
 
-      const renderCell = onRenderCellConditional ? onRenderCellConditional : onRenderCell;
+      const renderCell = onRenderCellConditional ?? onRenderCell;
 
       const cell =
         renderCell?.(item, index, !this.props.ignoreScrollingState ? this.state.isScrolling : undefined) ?? null;
 
-      if (!onRenderCellConditional || (onRenderCellConditional! && cell !== null)) {
+      if (!onRenderCellConditional || cell) {
         cells.push(
           <div
             role={cellRole}
