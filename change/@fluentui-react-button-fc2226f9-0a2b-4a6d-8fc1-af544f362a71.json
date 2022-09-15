@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing ToggleButtonCommons type in @fluentui/react-button.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -26,7 +26,6 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
     },
     root: getNativeElementProps('div', {
       ref,
-      'aria-hidden': true,
       ...props,
     }),
     icon: resolveShorthand(props.icon),

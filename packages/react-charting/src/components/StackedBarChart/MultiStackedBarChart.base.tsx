@@ -12,7 +12,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -104,12 +104,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           target={this.state.refSelected}
           setInitialFocus={true}
           hidden={!(!this.props.hideTooltip && isCalloutVisible)}
-          directionalHint={DirectionalHint.topRightEdge}
+          directionalHint={DirectionalHint.topAutoEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
-          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
+          {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
           <>
             {this.props.onRenderCalloutPerDataPoint ? (
@@ -169,10 +169,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         href: href,
       });
 
-      if (value < 1) {
-        return <React.Fragment key={index}> </React.Fragment>;
-      }
-
       return (
         <g
           key={index}
@@ -218,18 +214,18 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData, culture)}>
+              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
-              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
                 <strong>{getChartData()}</strong>
                 {!hideDenominator && <span>/{convertToLocaleString(total, culture)}</span>}
               </div>
             )}
             {showNumber && (
-              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
                 <strong>{getChartData()}</strong>
               </div>
             )}
@@ -439,20 +435,5 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.setState({
       isCalloutVisible: false,
     });
-  };
-
-  private _getAccessibleDataObject = (
-    accessibleData?: IAccessibilityProps,
-    role: string = 'text',
-    isDataFocusable: boolean = true,
-  ) => {
-    accessibleData = accessibleData ?? {};
-    return {
-      role,
-      'data-is-focusable': isDataFocusable,
-      'aria-label': accessibleData!.ariaLabel,
-      'aria-labelledby': accessibleData!.ariaLabelledBy,
-      'aria-describedby': accessibleData!.ariaDescribedBy,
-    };
   };
 }

@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 05 May 2022 18:26:27 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0..@fluentui/react-theme_v9.1.0)
+
+### Minor changes
+
+- feat: Add fontWeightBold, add Body2, fix font weight for *Stronger typography ([PR #24378](https://github.com/microsoft/fluentui/pull/24378) by miroslav.stastny@microsoft.com)
+
+### Patches
+
+- fix: update token values to fix failing color contrast ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- fix: update color neutral background inverted color in teams dark ([PR #24494](https://github.com/microsoft/fluentui/pull/24494) by seanmonahan@microsoft.com)
+- fix: Update color tokens mapping ([PR #24608](https://github.com/microsoft/fluentui/pull/24608) by miroslav.stastny@microsoft.com)
+- fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+- fix: Change colorBrandForeground2 mapping in teamsDark theme ([PR #24579](https://github.com/microsoft/fluentui/pull/24579) by miroslav.stastny@microsoft.com)
+- fix: Swap Background1 and Foreground1 in HC color palette ([PR #24498](https://github.com/microsoft/fluentui/pull/24498) by miroslav.stastny@microsoft.com)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0)
+
+Tue, 28 Jun 2022 15:13:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.10..@fluentui/react-theme_v9.0.0)
+
+### Patches
+
+- feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.10)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.9..@fluentui/react-theme_v9.0.0-rc.10)
+
+### Changes
+
+- BREAKING: reduce shared colors ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.9)
+
+Mon, 23 May 2022 18:56:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.8..@fluentui/react-theme_v9.0.0-rc.9)
+
+### Changes
+
+- Remove webHighContrast theme ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.8)
+
+Mon, 23 May 2022 12:13:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.7..@fluentui/react-theme_v9.0.0-rc.8)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.7)
 

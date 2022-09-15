@@ -1,9 +1,5 @@
 # Switch Migration
 
-## STATUS: WIP 🚧
-
-This Migration guide is a work in progress and is not yet ready for use.
-
 ## Migration from v8's Toggle
 
 ### Props that remain as is
@@ -68,7 +64,7 @@ This Migration guide is a work in progress and is not yet ready for use.
 
 - `design`
 
-## Propery mapping
+## Property mapping
 
 | v8 `Toggle`      | v0 `Checkbox`   | v9 `Switch`      |
 | ---------------- | --------------- | ---------------- |

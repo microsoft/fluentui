@@ -12,6 +12,8 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  offsetFromRoot,
+  names,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -143,30 +145,27 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 // ==== helpers ====
 
 const templates = {
-  apiExtractor: (options: { tsconfig: TsConfig }) => {
-    const { tsconfig } = options;
-    if (!tsconfig.compilerOptions.declarationDir) {
-      throw new Error(`Provided TS config is missing declarationDir.`);
-    }
-
-    /* eslint-disable @fluentui/max-len */
+  apiExtractor: () => {
     return {
       main: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
-        // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
-        mainEntryPointFilePath: `<projectFolder>/${tsconfig.compilerOptions.declarationDir}/index.d.ts`,
+        // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+        dtsRollup: {
+          enabled: true,
+          untrimmedFilePath: '',
+          publicTrimmedFilePath: '<projectFolder>/dist/index.d.ts',
+        },
       },
-      local: {
-        $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-        extends: './api-extractor.json',
-        mainEntryPointFilePath: `<projectFolder>/${tsconfig.compilerOptions.declarationDir}/packages/react-components/<unscopedPackageName>/src/index.d.ts`,
-      },
-      /* eslint-enable @fluentui/max-len */
     };
   },
 
-  tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
+  tsconfig: (options: {
+    platform: 'node' | 'web';
+    js: boolean;
+    hasConformance: boolean;
+    projectConfig: ProjectConfiguration;
+  }) => {
     return {
       main: () => {
         const tsConfig = {
@@ -207,9 +206,9 @@ const templates = {
           compilerOptions: {
             noEmit: false,
             lib: ['ES2019'],
-            outDir: 'dist',
             declaration: true,
-            declarationDir: 'dist/types',
+            declarationDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc/types',
+            outDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc',
             inlineSources: true,
             types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
@@ -301,7 +300,7 @@ const templates = {
 
       module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
           const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -483,7 +482,7 @@ function getPackageType(tree: Tree, options: NormalizedSchema) {
   const isNode =
     tags.includes('platform:node') ||
     Boolean(pkgJson.bin) ||
-    (scripts.build && scripts.build === 'just-scripts build --commonjs');
+    (scripts.build && scripts.build === 'just-scripts build --module cjs');
   const isWeb = tags.includes('platform:web') || !isNode;
 
   if (isNode) {
@@ -543,16 +542,11 @@ interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
 }
 
 function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
-  /* eslint-disable @fluentui/max-len */
   const scripts = {
-    docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./${options.tsconfigs.lib.compilerOptions.declarationDir}/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'node ../../../scripts/storybook/runner',
-    start: 'yarn storybook',
+    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
-  /* eslint-enable @fluentui/max-len */
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
     json.scripts = json.scripts || {};
@@ -561,6 +555,8 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
+    delete json.scripts['build:local'];
+    delete json.scripts.docs;
 
     Object.assign(json.scripts, scripts);
 
@@ -576,8 +572,9 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 }
 
 function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
-  const apiExtractor = templates.apiExtractor({ tsconfig: options.tsconfigs.lib });
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), apiExtractor.local);
+  const apiExtractor = templates.apiExtractor();
+
+  tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   return tree;
@@ -633,7 +630,17 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       return json;
     });
 
-    removeTsIgnorePragmas();
+    updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+      const scripts = {
+        storybook: `start-storybook`,
+        start: 'yarn storybook',
+      };
+      Object.assign(json.scripts, scripts);
+
+      return json;
+    });
+
+    moveStories(tree, options);
   }
 
   if (sbAction === 'remove') {
@@ -667,6 +674,8 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       return json;
     });
   }
+
+  removeTsIgnorePragmas();
 
   function removeTsIgnorePragmas() {
     const stories: string[] = [];
@@ -702,8 +711,44 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
+function moveStories(tree: Tree, options: NormalizedSchema) {
+  const componentName = names(options.normalizedPkgName).className.replace('React', '');
+  const sourceRoot = options.projectConfig.sourceRoot ?? '';
+  const oldStoriesPath = joinPathFragments(sourceRoot, 'stories');
+  const newStoriesPath = joinPathFragments(oldStoriesPath, componentName);
+  const storiesExistInNewPath = tree.exists(newStoriesPath);
+
+  if (storiesExistInNewPath) {
+    return;
+  }
+
+  visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
+    if (treePath.includes('.stories.') || treePath.includes('.md')) {
+      const storyFileName = path.basename(treePath);
+      const shouldBeMigratedToIndexFile = storyFileName.toLowerCase() === `${componentName.toLowerCase()}.stories.tsx`;
+
+      const newStoryPath = joinPathFragments(
+        newStoriesPath,
+        shouldBeMigratedToIndexFile ? 'index.stories.tsx' : storyFileName,
+      );
+
+      tree.rename(treePath, newStoryPath);
+      updateStoryFileImports(tree, options, newStoryPath);
+    }
+  });
+}
+
+function updateStoryFileImports(tree: Tree, options: NormalizedSchema, storyPath: string) {
+  if (!tree.exists(storyPath)) {
+    return;
+  }
+
+  const storyFile = tree.read(storyPath, 'utf8') as string;
+  const updatedStoryFile = storyFile.replace('../index', options.name);
+  tree.write(storyPath, updatedStoryFile);
+}
+
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
-  const hasStorybookConfig = tree.exists(options.paths.storybook.main);
   let hasStories = false;
 
   visitNotIgnoredFiles(tree, options.projectConfig.root, treePath => {
@@ -713,13 +758,10 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
     }
   });
 
-  const tags = options.projectConfig.tags || [];
-  const hasTags = tags.includes('vNext') && tags.includes('platform:web');
+  const shouldInit = hasStories;
+  const shouldDelete = !shouldInit;
 
-  const shouldInit = hasStories || hasTags;
-  const shouldDelete = !shouldInit && hasStorybookConfig;
-
-  if (shouldInit) {
+  if (hasStories) {
     return 'init';
   }
 
@@ -747,7 +789,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
     json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'e2e';
+    json.scripts.e2e = 'cypress run --component';
+    json.scripts['e2e:local'] = 'cypress open --component';
 
     return json;
   });
@@ -801,7 +844,12 @@ function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
   const js = isJs(tree, options);
   const hasConformance = hasConformanceSetup(tree, options);
 
-  const tsConfigs = templates.tsconfig({ platform: packageType, js, hasConformance });
+  const tsConfigs = templates.tsconfig({
+    platform: packageType,
+    js,
+    hasConformance,
+    projectConfig: options.projectConfig,
+  });
   const main = tsConfigs.main();
   const lib = tsConfigs.lib();
   const test = tsConfigs.test();

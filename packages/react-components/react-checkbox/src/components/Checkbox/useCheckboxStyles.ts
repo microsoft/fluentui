@@ -4,10 +4,6 @@ import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `checkboxClassNames.root` instead.
- */
-export const checkboxClassName = 'fui-Checkbox';
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   root: 'fui-Checkbox',
   label: 'fui-Checkbox__label',
@@ -80,7 +76,7 @@ const useInputStyles = makeStyles({
       },
       [`& ~ .${checkboxClassNames.indicator}`]: {
         backgroundColor: tokens.colorCompoundBrandBackground,
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: tokens.colorNeutralForegroundInverted,
         ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
       },
 
@@ -186,7 +182,6 @@ const useIndicatorStyles = makeStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    userSelect: 'none',
     cursor: 'inherit',
     color: 'inherit',
   },

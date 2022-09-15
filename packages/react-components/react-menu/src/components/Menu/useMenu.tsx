@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { usePopperMouseTarget, usePopper, resolvePositioningShorthand } from '@fluentui/react-positioning';
-import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
+import {
+  useControllableState,
+  useId,
+  useOnClickOutside,
+  useEventCallback,
+  useOnScrollOutside,
+} from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
@@ -18,11 +24,21 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps): MenuState => {
+  const {
+    hoverDelay = 500,
+    inline = false,
+    hasCheckmarks = false,
+    hasIcons = false,
+    closeOnScroll = false,
+    openOnContext = false,
+    persistOnItemClick = false,
+    defaultCheckedValues,
+  } = props;
   const triggerId = useId('menu');
   const isSubmenu = useIsSubmenu();
-  const [contextTarget, setContextTarget] = usePopperMouseTarget();
+  const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
-  const popperState = {
+  const positioningState = {
     position: isSubmenu ? ('after' as const) : ('below' as const),
     align: isSubmenu ? ('top' as const) : ('start' as const),
     target: props.openOnContext ? contextTarget : undefined,
@@ -51,34 +67,52 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
-  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper(popperState);
+  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
-  const initialState = {
-    hoverDelay: 500,
+  // TODO Better way to narrow types ?
+
+  const [open, setOpen] = useMenuOpenState({
+    hoverDelay,
+    isSubmenu,
+    setContextTarget,
+    closeOnScroll,
+    menuPopoverRef,
+    triggerRef,
+    open: props.open,
+    defaultOpen: props.defaultOpen,
+    onOpenChange: props.onOpenChange,
+    openOnContext,
+  });
+
+  const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
+    checkedValues: props.checkedValues,
+    defaultCheckedValues,
+    onCheckedValueChange: props.onCheckedValueChange,
+  });
+
+  return {
+    inline,
+    hoverDelay,
     triggerId,
-    isSubmenu: !!isSubmenu,
-    openOnHover: !!isSubmenu,
+    isSubmenu,
+    openOnHover: isSubmenu,
     contextTarget,
     setContextTarget,
-    ...props,
+    hasCheckmarks,
+    hasIcons,
+    closeOnScroll,
     menuTrigger,
     menuPopover,
     triggerRef,
     menuPopoverRef,
     components: {},
-  } as const;
-
-  // TODO Better way to narrow types ?
-
-  const [open, setOpen] = useMenuOpenState(initialState);
-  const [checkedValues, onCheckedValueChange] = useMenuSelectableState(initialState);
-
-  return {
-    ...initialState,
+    openOnContext,
     open,
     setOpen,
     checkedValues,
+    defaultCheckedValues,
     onCheckedValueChange,
+    persistOnItemClick,
   };
 };
 
@@ -111,7 +145,14 @@ const useMenuSelectableState = (
 const useMenuOpenState = (
   state: Pick<
     MenuState,
-    'isSubmenu' | 'menuPopoverRef' | 'onOpenChange' | 'setContextTarget' | 'triggerRef' | 'openOnContext'
+    | 'isSubmenu'
+    | 'menuPopoverRef'
+    | 'onOpenChange'
+    | 'setContextTarget'
+    | 'triggerRef'
+    | 'openOnContext'
+    | 'closeOnScroll'
+    | 'hoverDelay'
   > &
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {
@@ -185,6 +226,19 @@ const useMenuOpenState = (
     ) as React.MutableRefObject<HTMLElement>[],
     callback: e => setOpen(e, { open: false }),
   });
+
+  // only close on scroll for context, or when closeOnScroll is specified
+  const closeOnScroll = state.openOnContext || state.closeOnScroll;
+  useOnScrollOutside({
+    contains: elementContains,
+    element: targetDocument,
+    callback: ev => setOpen(ev, { open: false }),
+    refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
+      Boolean,
+    ) as React.MutableRefObject<HTMLElement>[],
+    disabled: !open || !closeOnScroll,
+  });
+
   useOnMenuMouseEnter({
     element: targetDocument,
     callback: e => {

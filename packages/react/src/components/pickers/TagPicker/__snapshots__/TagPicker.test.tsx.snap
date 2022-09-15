@@ -128,13 +128,11 @@ exports[`TagPicker renders correctly 1`] = `
               &:hover .ms-TagItem-close {
                 color: #323130;
               }
-              &:focus-within {
-                background: #0078d4;
-                color: #ffffff;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
               }
+          data-selection-index={0}
+          onClick={[Function]}
           role="listitem"
         >
           <span
@@ -156,7 +154,7 @@ exports[`TagPicker renders correctly 1`] = `
             black
           </span>
           <button
-            aria-labelledby="id__1 id__1-text"
+            aria-labelledby="id__1-removeLabel id__1-text"
             className=
                 ms-Button
                 ms-Button--icon
@@ -195,13 +193,13 @@ exports[`TagPicker renders correctly 1`] = `
                   bottom: 2px;
                   content: "";
                   left: 2px;
-                  outline: 1px solid #605e5c;
+                  outline: 1px solid #ffffff;
                   position: absolute;
                   right: 2px;
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -218,7 +216,7 @@ exports[`TagPicker renders correctly 1`] = `
                   background: #e1dfdd;
                   color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -230,12 +228,15 @@ exports[`TagPicker renders correctly 1`] = `
                   background-color: #005a9e;
                   color: #ffffff;
                 }
+                .is-selected & {
+                  background: #0078d4;
+                  color: #ffffff;
+                }
                 &:focus:hover {
                   background: #005a9e;
                   color: #ffffff;
                 }
             data-is-focusable={true}
-            data-selection-index={0}
             id="id__1"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -295,6 +296,10 @@ exports[`TagPicker renders correctly 1`] = `
               </i>
             </span>
           </button>
+          <span
+            hidden={true}
+            id="id__1-removeLabel"
+          />
         </div>
       </span>
       <input
@@ -328,6 +333,9 @@ exports[`TagPicker renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -337,7 +345,7 @@ exports[`TagPicker renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
@@ -349,7 +357,7 @@ exports[`TagPicker renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
@@ -361,7 +369,7 @@ exports[`TagPicker renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
         data-lpignore={true}
@@ -517,13 +525,11 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
               &:hover .ms-TagItem-close {
                 color: #323130;
               }
-              &:focus-within {
-                background: #0078d4;
-                color: #ffffff;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
               }
+          data-selection-index={0}
+          onClick={[Function]}
           role="listitem"
         >
           <span
@@ -545,7 +551,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
             text
           </span>
           <button
-            aria-labelledby="id__1 id__1-text"
+            aria-labelledby="id__1-removeLabel id__1-text"
             className=
                 ms-Button
                 ms-Button--icon
@@ -584,13 +590,13 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   bottom: 2px;
                   content: "";
                   left: 2px;
-                  outline: 1px solid #605e5c;
+                  outline: 1px solid #ffffff;
                   position: absolute;
                   right: 2px;
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -607,7 +613,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   background: #e1dfdd;
                   color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -619,12 +625,15 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   background-color: #005a9e;
                   color: #ffffff;
                 }
+                .is-selected & {
+                  background: #0078d4;
+                  color: #ffffff;
+                }
                 &:focus:hover {
                   background: #005a9e;
                   color: #ffffff;
                 }
             data-is-focusable={true}
-            data-selection-index={0}
             id="id__1"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -684,6 +693,10 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
               </i>
             </span>
           </button>
+          <span
+            hidden={true}
+            id="id__1-removeLabel"
+          />
         </div>
       </span>
       <input
@@ -717,6 +730,9 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -726,7 +742,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
@@ -738,7 +754,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
@@ -750,7 +766,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
         data-lpignore={true}

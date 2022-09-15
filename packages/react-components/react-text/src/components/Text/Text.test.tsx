@@ -145,6 +145,7 @@ describe('Text', () => {
     ['regular', 'Regular'],
     ['medium', 'Medium'],
     ['semibold', 'Semibold'],
+    ['bold', 'Bold'],
   ] as const)('applies %s weight', (input, expectedValue) => {
     const { getByText } = render(<Text weight={input}>Test</Text>);
 

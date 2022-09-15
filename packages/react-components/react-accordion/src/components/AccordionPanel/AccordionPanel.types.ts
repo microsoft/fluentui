@@ -8,7 +8,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
   /**
-   * Internal open state, provided by context
+   * Internal open state, provided by context.
    */
   open: boolean;
 };

@@ -80,12 +80,9 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
     const { isTooltipVisible } = this.state;
     const tooltipId = id || this._defaultTooltipId;
-    const isContentPresent = !!(
-      content ||
-      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
-    );
-    const showTooltip = isTooltipVisible && isContentPresent;
-    const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
+    const tooltipContent = tooltipProps?.onRenderContent ? tooltipProps.onRenderContent() : content;
+    const showTooltip = isTooltipVisible && !!tooltipContent;
+    const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && !!tooltipContent ? tooltipId : undefined;
 
     return (
       <div
@@ -120,7 +117,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
           />
         )}
         <div hidden={true} id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
-          {content}
+          {tooltipContent}
         </div>
       </div>
     );

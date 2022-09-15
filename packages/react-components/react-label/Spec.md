@@ -16,14 +16,15 @@ Labels provide a name or title to a component or group of components, e.g., text
 ```
 
 Props used in v8 Label:
-|Prop|Description|
-|---|---|
-|as|Element type to render Label as|
-|componentRef|Optional callback to access the ILabel interface. Use this instead of ref for accessing the public methods and properties of the component|
-|disabled|Renders label as disabled, changing the Label's foreground color|
-|required|Renders an asterisk next to the given text|
-|styles|Custom styles for the Label|
-|theme|Theme provided by HOC|
+
+| Prop         | Description                                                                                                                                |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| as           | Element type to render Label as                                                                                                            |
+| componentRef | Optional callback to access the ILabel interface. Use this instead of ref for accessing the public methods and properties of the component |
+| disabled     | Renders label as disabled, changing the Label's foreground color                                                                           |
+| required     | Renders an asterisk next to the given text                                                                                                 |
+| styles       | Custom styles for the Label                                                                                                                |
+| theme        | Theme provided by HOC                                                                                                                      |
 
 ### Label in Northstar/v0
 
@@ -32,21 +33,22 @@ Props used in v8 Label:
 ```
 
 Props used in v0 Label:
-|Prop|Description|
-|---|---|
-|accessibility| Prop to override accessibility behavior|
-|as|Element type to render Label as|
-|circular|Renders Label with round corners|
-|className|Additional CSS class name to apply|
-|color|Color for the background of the label|
-|content|Label content|
-|fluid|Make it so Label takes the width of its container|
-|icon|Adds an icon to the label|
-|iconPosition|Choose where the icon is placed (Start or End)|
-|image|Adds an image to the label|
-|imagePosition|Choose where the image is placed (Start or End)|
-|styles|Additional custom styles for the component|
-|variables|Allows override of theme variables|
+
+| Prop          | Description                                       |
+| ------------- | ------------------------------------------------- |
+| accessibility | Prop to override accessibility behavior           |
+| as            | Element type to render Label as                   |
+| circular      | Renders Label with round corners                  |
+| className     | Additional CSS class name to apply                |
+| color         | Color for the background of the label             |
+| content       | Label content                                     |
+| fluid         | Make it so Label takes the width of its container |
+| icon          | Adds an icon to the label                         |
+| iconPosition  | Choose where the icon is placed (Start or End)    |
+| image         | Adds an image to the label                        |
+| imagePosition | Choose where the image is placed (Start or End)   |
+| styles        | Additional custom styles for the component        |
+| variables     | Allows override of theme variables                |
 
 ### Conclusion
 
@@ -74,50 +76,7 @@ The Label component should be simple as shown below. It will just need the text 
 
 ## API
 
-```ts
-export type LabelCommons = {
-  /**
-   * Renders the label as disabled
-   * @default false
-   */
-  disabled: boolean;
-
-  /**
-   * A label supports different sizes.
-   * @default 'medium'
-   */
-  size: 'small' | 'medium' | 'large';
-
-  /**
-   * A label supports semibold/strong fontweight.
-   * @default false
-   */
-  strong: boolean;
-};
-
-export type LabelSlots = {
-  root: IntrinsicSlotProps<'label'>;
-  required?: IntrinsicSlotProps<'span'>;
-};
-
-/**
- * State used in rendering Label
- */
-export type LabelState = ComponentState<LabelSlots> & LabelCommons;
-
-/**
- * Label Props
- */
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
-  Partial<LabelCommons> & {
-    /**
-     * Displays an indicator that the label is for a required field. The required prop can be set to true to display
-     * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
-     * @default false
-     */
-    required?: boolean | Slot<'span'>;
-  };
-```
+See API at [Label.types.ts](./src/components/Label/Label.types.ts).
 
 ## Structure
 

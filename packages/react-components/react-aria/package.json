@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.0.0-rc.8",
+  "version": "9.2.0",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,8 +20,8 @@
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-aria/src && yarn docs",
-    "storybook": "node ../../../scripts/storybook/runner",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/types/packages/react-components/react-aria/src && yarn docs",
+    "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -30,8 +30,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "9.0.0-rc.6",
-    "@fluentui/react-utilities": "9.0.0-rc.8",
+    "@fluentui/keyboard-keys": "^9.0.0",
+    "@fluentui/react-utilities": "^9.1.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -43,8 +43,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {

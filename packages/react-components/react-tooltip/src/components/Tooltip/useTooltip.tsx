@@ -1,17 +1,21 @@
 import * as React from 'react';
-import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
-import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
+import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import {
+  useTooltipVisibility_unstable as useTooltipVisibility,
+  useFluent_unstable as useFluent,
+} from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
   resolveShorthand,
   useControllableState,
-  useMergedEventCallbacks,
   useId,
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
   useTimeout,
   getTriggerChild,
+  mergeCallbacks,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -25,7 +29,7 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
-  const context = React.useContext(TooltipContext);
+  const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
@@ -81,17 +85,17 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   state.content.id = useId('tooltip-', state.content.id);
 
-  const popperOptions = {
+  const positioningOptions = {
     enabled: state.visible,
     arrowPadding: 2 * tooltipBorderRadius,
     position: 'above' as const,
     align: 'center' as const,
-    offset: [0, 4] as [number, number],
+    offset: 4,
     ...resolvePositioningShorthand(state.positioning),
   };
 
   if (state.withArrow) {
-    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
+    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeight);
   }
 
   const {
@@ -102,7 +106,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     targetRef: React.MutableRefObject<unknown>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper(popperOptions);
+  } = usePositioning(positioningOptions);
 
   state.content.ref = useMergedRefs(state.content.ref, containerRef);
   state.arrowRef = arrowRef;
@@ -185,8 +189,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
   // This keeps the tooltip visible when the pointer is moved over it.
-  state.content.onPointerEnter = useMergedEventCallbacks(state.content.onPointerEnter, clearDelayTimeout);
-  state.content.onPointerLeave = useMergedEventCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
+  state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
 
   const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
@@ -196,17 +200,20 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
     if (typeof state.content.children === 'string') {
       triggerAriaProps['aria-label'] = state.content.children;
-    } else if (!isServerSideRender) {
+    } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
       state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
-    if (!isServerSideRender) {
-      triggerAriaProps['aria-describedby'] = state.content.id;
-      // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
-      state.shouldRenderTooltip = true;
-    }
+    triggerAriaProps['aria-describedby'] = state.content.id;
+    // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
+    state.shouldRenderTooltip = true;
+  }
+
+  // Don't render the Tooltip in SSR to avoid hydration errors
+  if (isServerSideRender) {
+    state.shouldRenderTooltip = false;
   }
 
   const childTargetRef = useMergedRefs(child?.ref, targetRef);
@@ -216,11 +223,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ...triggerAriaProps,
     ...child?.props,
     // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-    ref: popperOptions.target === undefined ? childTargetRef : child?.ref,
-    onPointerEnter: useMergedEventCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedEventCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedEventCallbacks(child?.props?.onFocus, onEnterTrigger),
-    onBlur: useMergedEventCallbacks(child?.props?.onBlur, onLeaveTrigger),
+    ref: positioningOptions.target === undefined ? childTargetRef : child?.ref,
+    onPointerEnter: useEventCallback(mergeCallbacks(child?.props?.onPointerEnter, onEnterTrigger)),
+    onPointerLeave: useEventCallback(mergeCallbacks(child?.props?.onPointerLeave, onLeaveTrigger)),
+    onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
+    onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
   });
 
   return state;

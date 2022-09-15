@@ -429,8 +429,10 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   };
 
   const handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    ev.stopPropagation();
-    calendarDismissed();
+    if (isCalendarShown) {
+      ev.stopPropagation();
+      calendarDismissed();
+    }
   };
 
   const classNames = getClassNames(styles, {

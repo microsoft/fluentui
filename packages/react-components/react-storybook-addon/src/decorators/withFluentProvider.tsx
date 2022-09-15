@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-import { themes, defaultTheme, FluentProvider } from '../theme';
+import { FluentProvider } from '@fluentui/react-provider';
+import { Theme } from '@fluentui/react-theme';
+
+import { themes, defaultTheme } from '../theme';
 import { THEME_ID } from '../constants';
 import { FluentGlobals, FluentStoryContext } from '../hooks';
-
-import { Theme } from '@fluentui/react-theme';
 
 const getActiveFluentTheme = (globals: FluentGlobals) => {
   const selectedThemeId = globals[THEME_ID];

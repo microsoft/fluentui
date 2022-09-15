@@ -94,7 +94,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     theme,
     originFromZero,
     'aria-labelledby': ariaLabelledBy,
-    'aria-label': ariaLabel,
+    ariaLabel = props['aria-label'],
     ranged,
     onChange,
     onChanged,
@@ -334,10 +334,12 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     internalState.isAdjustingLowerValue = event.target === lowerValueThumbRef.current;
   };
 
-  const disposeListeners = (): void => {
+  const disposeListeners = React.useCallback((): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
-  };
+  }, []);
+
+  React.useEffect(() => disposeListeners, [disposeListeners]);
 
   const lowerValueThumbRef = React.useRef<HTMLElement>(null);
   const thumbRef = React.useRef<HTMLElement>(null);

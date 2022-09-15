@@ -8,9 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: 14.18.1
 
       - uses: actions/github-script@v6
         with:
@@ -34,9 +34,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: 14.18.1
 
       - uses: actions/github-script@v6
         with:
@@ -51,5 +51,4 @@ jobs:
             core.exportVariable('BEACHBALL_VERSION', beachballVersion);
 
       - run: |
-          cp scripts/beachball/.beachballrc.base.json .beachballrc.json
           npx beachball@$BEACHBALL_VERSION check

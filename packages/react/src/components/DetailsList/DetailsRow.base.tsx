@@ -195,6 +195,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       getRowAriaLabel,
       getRowAriaDescription,
       getRowAriaDescribedBy,
+      isGridRow,
       checkButtonAriaLabel,
       checkboxCellClassName,
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
@@ -295,6 +296,16 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     });
     const ariaLabelledby = `${id}-checkbox` + (hasRowHeader ? ` ${id}-header` : '');
 
+    // additional props for rows within a GroupedList
+    // these are needed for treegrid row semantics, but not grid row semantics
+    const groupedListRowProps = isGridRow
+      ? {}
+      : {
+          'aria-level': (groupNestingDepth && groupNestingDepth + 1) || undefined,
+          'aria-posinset': ariaPositionInSet,
+          'aria-setsize': ariaSetSize,
+        };
+
     return (
       <FocusZone
         data-is-focusable={true}
@@ -306,6 +317,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             }
           : {})}
         {...focusZoneProps}
+        {...groupedListRowProps}
         direction={focusZoneDirection}
         elementRef={this._root}
         componentRef={this._focusZone}
@@ -319,9 +331,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-disabled={disabled || undefined}
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
-        aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
-        aria-posinset={ariaPositionInSet}
-        aria-setsize={ariaSetSize}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}

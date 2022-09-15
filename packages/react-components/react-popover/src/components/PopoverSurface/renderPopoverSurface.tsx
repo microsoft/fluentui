@@ -11,7 +11,7 @@ export const renderPopoverSurface_unstable = (state: PopoverSurfaceState) => {
 
   const surface = (
     <slots.root {...slotProps.root}>
-      {!state.noArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
+      {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
       {slotProps.root.children}
     </slots.root>
   );

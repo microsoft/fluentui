@@ -11,16 +11,10 @@ export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
   secondaryContent: 'fui-CompoundButton__secondaryContent',
 };
 
-/**
- * @deprecated Use `compoundButtonClassName.root` instead.
- */
-export const compoundButtonClassName = compoundButtonClassNames.root;
-
 const useRootStyles = makeStyles({
   // Base styles
   base: {
     height: 'auto',
-    maxWidth: 'unset',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
@@ -87,13 +81,13 @@ const useRootStyles = makeStyles({
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
   },

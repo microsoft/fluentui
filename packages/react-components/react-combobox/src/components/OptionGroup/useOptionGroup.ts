@@ -20,8 +20,6 @@ export const useOptionGroup_unstable = (props: OptionGroupProps, ref: React.Ref<
       root: 'div',
       label: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
       role: 'group',

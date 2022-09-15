@@ -9,7 +9,6 @@ describe('Slider', () => {
     Component: Slider,
     displayName: 'Slider',
     primarySlot: 'input',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   afterEach(() => {
@@ -29,16 +28,6 @@ describe('Slider', () => {
 
   it('renders disabled Slider correctly', () => {
     const { container } = render(<Slider defaultValue={5} disabled min={0} max={10} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('renders horizontal origin Slider correctly', () => {
-    const { container } = render(<Slider defaultValue={5} origin={2} min={0} max={10} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('renders vertical origin Slider correctly', () => {
-    const { container } = render(<Slider defaultValue={5} origin={2} vertical min={0} max={10} />);
     expect(container).toMatchSnapshot();
   });
 

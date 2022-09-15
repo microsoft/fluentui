@@ -25,6 +25,7 @@ export const ShimmerBase: React.FunctionComponent<IShimmerProps> = React.forward
       ariaLabel,
       shimmerColors,
       isDataLoaded = false,
+      improveCSSPerformance,
     } = props;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
@@ -36,6 +37,7 @@ export const ShimmerBase: React.FunctionComponent<IShimmerProps> = React.forward
       transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL,
       shimmerColor: shimmerColors && shimmerColors.shimmer,
       shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave,
+      improveCSSPerformance: improveCSSPerformance || !customElementsGroup,
     });
 
     const internalState = useConst({

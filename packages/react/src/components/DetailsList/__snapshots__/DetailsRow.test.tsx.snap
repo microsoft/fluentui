@@ -35,7 +35,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -267,7 +266,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -313,7 +312,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -871,7 +870,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -1103,7 +1101,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -1149,7 +1147,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -1933,7 +1931,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 vertical-align: middle;
                 width: 18px;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: WindowText;
               }
           data-icon-name="CircleRing"
@@ -1979,7 +1977,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               &:hover {
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 forced-color-adjust: none;
               }
@@ -2006,7 +2004,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
     role="presentation"
   >
     <div
-      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2062,7 +2059,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
     <div
-      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2118,7 +2114,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
     <div
-      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2227,7 +2222,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -2459,7 +2453,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -2505,7 +2499,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -3063,7 +3057,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -3295,7 +3288,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -3341,7 +3334,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }

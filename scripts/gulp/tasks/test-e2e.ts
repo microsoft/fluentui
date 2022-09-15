@@ -40,7 +40,7 @@ task('test:e2e:run', cb => {
   const e2ePort = Number(process.env.E2E_PORT) || 8082;
   const serverUrl = `http://${serverHost}:${e2ePort}`;
 
-  return cypress({ serverUrl, rootDir: paths.e2eTests(), testNamePattern: argv.testNamePattern as string })(cb);
+  return cypress({ serverUrl })(cb);
 });
 
 task(

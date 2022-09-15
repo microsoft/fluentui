@@ -168,7 +168,6 @@ export class Site<TPlatforms extends string = string> extends React.Component<
             data-app-content-div="true"
             // This needs to be programmatically focusable for "jump to main content" functionality
             tabIndex={-1}
-            role="main"
           >
             {childrenWithPlatform}
           </div>

@@ -127,11 +127,24 @@ export const baseElementProperties = toObjectMap([
 ]);
 
 /**
+ * An array of microdata attributes that are allowed on every html element type.
+ *
+ * @public
+ */
+export const microdataProperties = toObjectMap([
+  'itemID', // global
+  'itemProp', // global
+  'itemRef', // global
+  'itemScope', // global
+  'itemType', // global
+]);
+
+/**
  * An array of HTML element properties and events.
  *
  * @public
  */
-export const htmlElementProperties = toObjectMap(baseElementProperties, baseElementEvents);
+export const htmlElementProperties = toObjectMap(baseElementProperties, baseElementEvents, microdataProperties);
 
 /**
  * An array of LABEL tag properties and events.
@@ -399,9 +412,11 @@ export const imgProperties = toObjectMap(htmlElementProperties, [
 ]);
 
 /**
- * @deprecated Use imgProperties for img elements.
+ * An array of DIALOG tag properties and events.
+ *
+ * @public
  */
-export const imageProperties = imgProperties;
+export const dialogProperties = toObjectMap(htmlElementProperties, ['open', 'onCancel', 'onClose']);
 
 /**
  * An array of DIV tag properties and events.
@@ -421,7 +436,8 @@ export const divProperties = htmlElementProperties;
  *
  * @public
  * @param props - The unfiltered input props
- * @param allowedPropsNames - The array or record of allowed prop names.
+ * @param allowedPropNames - The array or record of allowed prop names.
+ * @param excludedPropNames
  * @returns The filtered props
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

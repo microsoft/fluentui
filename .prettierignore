@@ -40,3 +40,5 @@ packages/web-components/src/default-palette.ts
 
 # template files which actually follow a different language's formatting
 *.hbs
+
+CODEOWNERS

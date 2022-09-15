@@ -233,6 +233,99 @@ describe('FocusZone', () => {
     expect(document.activeElement).toBe(testContainer.querySelector('#c'));
   });
 
+  it('does not hold on to first element after it is removed', () => {
+    testContainer = createTestContainer();
+
+    let focusZone: FocusZone | null = null;
+    // Render component.
+    ReactDOM.render(
+      <div key="-1">
+        <button key="0" id="outer" data-is-visible="true">
+          outer
+        </button>
+        <FocusZone key="fz" ref={focus => (focusZone = focus)}>
+          <button key="a" id="a" data-is-visible="true">
+            button a
+          </button>
+          <button key="b" id="b" data-is-visible="true">
+            button b
+          </button>
+          <button key="c" id="c" data-is-visible="true">
+            button c
+          </button>
+        </FocusZone>
+      </div>,
+      testContainer,
+    );
+
+    const buttonOuter = testContainer.querySelector('#outer') as HTMLElement;
+    const buttonA = testContainer.querySelector('#a') as HTMLElement;
+    buttonOuter.focus();
+
+    // Render component without button A.
+    ReactDOM.render(
+      <div key="-1">
+        <button key="0" id="outer" data-is-visible="true">
+          outer
+        </button>
+        <FocusZone key="fz" ref={focus => (focusZone = focus)}>
+          <button key="b" id="b" data-is-visible="true">
+            button b
+          </button>
+          <button key="c" id="c" data-is-visible="true">
+            button c
+          </button>
+        </FocusZone>
+      </div>,
+      testContainer,
+    );
+
+    expect(document.activeElement).toBe(testContainer.querySelector('#outer'));
+    expect(focusZone!.activeElement).not.toBe(buttonA);
+    expect(focusZone!.defaultFocusElement).not.toBe(buttonA);
+  });
+
+  it('does not hold on to focused element after it is removed', () => {
+    testContainer = createTestContainer();
+
+    let focusZone: FocusZone | null = null;
+    // Render component.
+    ReactDOM.render(
+      <FocusZone key="fz" ref={focus => (focusZone = focus)}>
+        <button key="a" id="a" data-is-visible="true">
+          button a
+        </button>
+        <button key="b" id="b" data-is-visible="true">
+          button b
+        </button>
+        <button key="c" id="c" data-is-visible="true">
+          button c
+        </button>
+      </FocusZone>,
+      testContainer,
+    );
+
+    const buttonA = testContainer.querySelector('#a') as HTMLElement;
+    buttonA.focus();
+
+    // Render component without button A.
+    ReactDOM.render(
+      <FocusZone key="fz" ref={focus => (focusZone = focus)}>
+        <button key="b" id="b" data-is-visible="true">
+          button b
+        </button>
+        <button key="c" id="c" data-is-visible="true">
+          button c
+        </button>
+      </FocusZone>,
+      testContainer,
+    );
+
+    expect(document.activeElement).toBe(testContainer.querySelector('#b'));
+    expect(focusZone!.activeElement).not.toBe(buttonA);
+    expect(focusZone!.defaultFocusElement).not.toBe(buttonA);
+  });
+
   it('can restore focus to the previous item when end item removed', () => {
     testContainer = createTestContainer();
 

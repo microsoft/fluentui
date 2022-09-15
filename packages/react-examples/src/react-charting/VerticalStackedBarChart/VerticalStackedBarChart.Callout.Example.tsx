@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { VerticalStackedBarChart, IVSChartDataPoint, IVerticalStackedChartProps } from '@fluentui/react-charting';
+import {
+  VerticalStackedBarChart,
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
@@ -53,45 +58,45 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
   private _basicExample(): JSX.Element {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 30, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
     const fourthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 10, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
     const fifthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 40, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
     const sixthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 20, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const seventhChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 80, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 20, color: DefaultPalette.blueLight },
     ];
     const eightChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 50, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 50, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 50, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 20, color: DefaultPalette.blueLight },
     ];
@@ -185,11 +190,13 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
       },
     ];
 
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
       <>
-        <label htmlFor="changeWidth_Callout">change Width:</label>
+        <label htmlFor="changeWidth_Callout">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -197,8 +204,9 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
           max={1000}
           id="changeWidth_Callout"
           onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Callout">change Height:</label>
+        <label htmlFor="changeHeight_Callout">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -206,6 +214,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
           max={1000}
           id="changeHeight_Callout"
           onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
         <label htmlFor="changeBarGapMax_Callout">BarGapMax:</label>
         <input
@@ -215,6 +224,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
           max={10}
           id="changeBarGapMax_Callout"
           onChange={e => this.setState({ barGapMax: +e.target.value })}
+          aria-valuetext={`ChangebarGapMaxSlider${this.state.barGapMax}`}
         />
         <ChoiceGroup
           options={options}
@@ -236,12 +246,13 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             height={this.state.height}
             width={this.state.width}
             yAxisTickCount={10}
+            lineOptions={lineOptions}
             isCalloutForStack={
               this.state.selectedCallout === 'MultiCallout' || this.state.selectedCallout === 'MultiCustomCallout'
             }
             yMaxValue={120}
             calloutProps={{
-              directionalHint: DirectionalHint.topCenter,
+              directionalHint: DirectionalHint.topAutoEdge,
             }}
             margins={{ left: 50 }}
             colors={['red', 'white', 'green', 'black']}

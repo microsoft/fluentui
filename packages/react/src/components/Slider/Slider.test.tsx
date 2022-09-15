@@ -42,6 +42,16 @@ describe('Slider', () => {
     expect(getByRole('slider').getAttribute('aria-labelledby')).toBe('custom-label');
   });
 
+  it('can set an aria-label attribute', () => {
+    const { getByRole } = render(<Slider aria-label="test" />);
+    expect(getByRole('slider').getAttribute('aria-label')).toBe('test');
+  });
+
+  it('can set ariaLabel as an aria-label attribute', () => {
+    const { getByRole } = render(<Slider ariaLabel="test" />);
+    expect(getByRole('slider').getAttribute('aria-label')).toBe('test');
+  });
+
   it('can provide the current value', () => {
     const slider = React.createRef<ISlider>();
 

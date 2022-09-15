@@ -1,18 +1,17 @@
 import * as React from 'react';
 
-import { MenuButton } from '@fluentui/react-button';
-
 import {
   Menu,
-  MenuTrigger,
-  MenuList,
-  MenuPopover,
+  MenuButton,
   MenuGroup,
   MenuGroupHeader,
   MenuItem,
   MenuItemCheckbox,
   MenuItemRadio,
-} from '@fluentui/react-menu';
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 

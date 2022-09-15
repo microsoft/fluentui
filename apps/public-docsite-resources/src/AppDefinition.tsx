@@ -217,6 +217,20 @@ export const AppDefinition: IAppDefinition = {
               name: 'DetailsList - Keyboard Column Reorder & Resize',
               url: '#/examples/detailslist/keyboardcolumnreorderresize',
             },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardOverridesPage')
+                .DetailsListKeyboardOverridesPage,
+              key: 'DetailsList - Keyboard Overrides',
+              name: 'DetailsList - Keyboard Overrides',
+              url: '#/examples/detailslist/keyboardoverrides',
+            },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListProportionalColumnsPage')
+                .DetailsListProportionalColumnsPage,
+              key: 'DetailsList - Proportional Columns',
+              name: 'DetailsList - Proportional Columns',
+              url: '#/examples/detailslist/proportionalcolumns',
+            },
           ],
         },
         {
@@ -368,6 +382,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Pivot',
           name: 'Pivot',
           url: '#/examples/pivot',
+        },
+        {
+          component: require<any>('./components/pages/PopupPage').PopupPage,
+          key: 'Popup',
+          name: 'Popup',
+          url: '#/examples/Popup',
         },
         {
           component: require<any>('./components/pages/ProgressIndicatorPage').ProgressIndicatorPage,

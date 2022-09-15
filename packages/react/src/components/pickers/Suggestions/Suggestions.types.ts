@@ -6,6 +6,7 @@ import type { IPersonaProps } from '../../Persona/Persona.types';
 import type { IStyle, ITheme } from '../../../Styling';
 import type { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 import type { ISuggestionItemProps } from './SuggestionsItem.types';
+import type { IReactProps } from '../../../common/React.types';
 import { IIconProps } from '../../Icon/Icon.types';
 /**
  * Suggestions component.
@@ -39,8 +40,7 @@ export interface ISuggestions<T> {
  * Type T is the type of the items that are displayed.
  * {@docCategory Pickers}
  */
-// eslint-disable-next-line deprecation/deprecation
-export interface ISuggestionsProps<T> extends React.Props<any> {
+export interface ISuggestionsProps<T> extends IReactProps<any> {
   /**
    * Optional callback to access the ISuggestions interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -144,6 +144,11 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * Used to indicate whether or not the suggestions are loading.
    */
   isLoading?: boolean;
+
+  /**
+   * Used to indicate whether or not the suggestions are taking an extended amount of time to load.
+   */
+  isExtendedLoading?: boolean;
 
   /**
    * Used to indicate whether or not the component is searching for more results.

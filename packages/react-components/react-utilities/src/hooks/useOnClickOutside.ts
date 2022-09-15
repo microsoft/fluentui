@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 
+/**
+ * @internal
+ */
 export type UseOnClickOrScrollOutsideOptions = {
   /**
    * The element to listen for the click event
@@ -30,6 +33,7 @@ export type UseOnClickOrScrollOutsideOptions = {
 };
 
 /**
+ * @internal
  * Utility to perform checks where a click/touch event was made outside a component
  */
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
@@ -145,7 +149,7 @@ const useIFrameFocus = (
     if (enableFrameFocusDispatch) {
       timeoutRef.current = targetDocument?.defaultView?.setInterval(() => {
         const activeElement = targetDocument?.activeElement;
-        if (activeElement?.tagName === 'IFRAME') {
+        if (activeElement?.tagName === 'IFRAME' || activeElement?.tagName === 'WEBVIEW') {
           const event = new CustomEvent(FUI_FRAME_EVENT, { bubbles: true });
           activeElement.dispatchEvent(event);
         }

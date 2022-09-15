@@ -74,8 +74,8 @@ By default, Text and all the typography wrappers render a `<span>` element. You 
 
 ```html
 <div>
-  <Headline as="h1">Headline</Headline>
-  <Subheadline as="h2">Subheadline</Subheadline>
+  <Subtitle1 as="h1">Subtitle1</Subtitle1>
+  <Subtitle2 as="h2">Subtitle2</Subtitle2>
   <Text as="p">This is simple example</Text>
 </div>
 ```
@@ -84,15 +84,15 @@ This will result in the following DOM structure:
 
 ```html
 <div>
-  <h1>Headline</h1>
-  <h2>Subheadline</h2>
+  <h1>Subtitle1</h1>
+  <h2>Subtitle2</h2>
   <p>This is simple example</p>
 </div>
 ```
 
 ## API
 
-For more information about the components, please refer to the [API documentation](https://aka.ms/fluentui-storybook).
+For more information about the components, please refer to the [API documentation](https://react.fluentui.dev/).
 
 ## Migration
 

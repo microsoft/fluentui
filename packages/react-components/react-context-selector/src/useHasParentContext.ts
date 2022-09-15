@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Context, ContextValue } from './types';
 
 /**
+ * @internal
  * Utility hook for contexts created by react-context-selector to determine if a parent context exists
  * WARNING: This hook will not work for native React contexts
  *

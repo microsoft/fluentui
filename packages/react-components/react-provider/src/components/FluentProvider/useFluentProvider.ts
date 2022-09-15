@@ -1,6 +1,9 @@
-import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
-import type { Theme } from '@fluentui/react-theme';
-import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
+import { useFocusVisible } from '@fluentui/react-tabster';
+import {
+  ThemeContext_unstable as ThemeContext,
+  useFluent_unstable as useFluent,
+} from '@fluentui/react-shared-contexts';
+import type { ThemeContextValue_unstable as ThemeContextValue } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
@@ -55,12 +58,12 @@ export const useFluentProvider_unstable = (
     root: getNativeElementProps('div', {
       ...props,
       dir,
-      ref: useMergedRefs(ref, useKeyboardNavAttribute()),
+      ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>()),
     }),
   };
 };
 
-function mergeThemes(a: Theme | Partial<Theme> | undefined, b: typeof a): Theme | Partial<Theme> | undefined {
+function mergeThemes(a: ThemeContextValue, b: ThemeContextValue): ThemeContextValue {
   // Merge impacts perf: we should like to avoid it if it's possible
   if (a && b) {
     return { ...a, ...b };
@@ -71,4 +74,8 @@ function mergeThemes(a: Theme | Partial<Theme> | undefined, b: typeof a): Theme 
   }
 
   return b;
+}
+
+function useTheme(): ThemeContextValue {
+  return React.useContext(ThemeContext);
 }

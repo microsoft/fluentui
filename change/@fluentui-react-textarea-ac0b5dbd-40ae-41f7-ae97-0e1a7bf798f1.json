@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove commons from react-textarea.",
-  "packageName": "@fluentui/react-textarea",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

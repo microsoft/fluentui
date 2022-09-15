@@ -3,7 +3,6 @@ import type { {{componentName}}Slots, {{componentName}}State } from './{{compone
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 
-export const {{componentNames.propertyName}}ClassName = 'fui-{{componentName}}'
 export const {{componentNames.propertyName}}ClassNames:SlotClassNames<{{componentName}}Slots> = {
   root: 'fui-{{componentName}}'
   // TODO: add class names for all slots on {{componentName}}Slots.
@@ -26,7 +25,7 @@ const useStyles = makeStyles({
  */
 export const use{{componentName}}Styles_unstable = (state: {{componentName}}State): {{componentName}}State => {
   const styles = useStyles();
-  state.root.className = mergeClasses({{componentNames.propertyName}}ClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses({{componentNames.propertyName}}ClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

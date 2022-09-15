@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
 import { select as d3Select } from 'd3-selection';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -110,7 +110,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topRightEdge,
+      directionalHint: DirectionalHint.topAutoEdge,
       id: `toolTip${this._calloutId}`,
       target: this.state.refSelected,
       isBeakVisible: false,
@@ -181,6 +181,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
+    const line: JSX.Element[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -196,15 +197,33 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
       shouldHighlight = this.state.selectedLegendTitle === lineLegendText;
     }
-    const line = (
+    const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
+      ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
+      : 0;
+
+    if (lineBorderWidth > 0) {
+      line.push(
+        <path
+          opacity={shouldHighlight ? 1 : 0.1}
+          d={linePath(lineData)!}
+          fill="transparent"
+          strokeLinecap="square"
+          strokeWidth={3 + lineBorderWidth * 2}
+          stroke={theme!.palette.white}
+        />,
+      );
+    }
+    line.push(
       <path
-        opacity={shouldHighlight ? 1 : 0.4}
+        opacity={shouldHighlight ? 1 : 0.1}
         d={linePath(lineData)!}
-        fill={'none'}
+        fill="transparent"
+        strokeLinecap="square"
         strokeWidth={3}
         stroke={lineLegendColor}
-      />
+      />,
     );
+
     const dots: React.ReactNode[] = lineData.map(
       (item: { x: number | string; y: number; point: IVerticalBarChartDataPoint; index: number }, index: number) => {
         return (
@@ -455,13 +474,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
-      const endpointDistance = 0.5 * ((containerWidth - this.margins.right!) / this._points.length);
-      const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [this._points.length - 1, 0] : [0, this._points.length - 1])
-        .range([
-          this.margins.left! + endpointDistance - 0.5 * this._barWidth,
-          containerWidth - this.margins.right! - endpointDistance - 0.5 * this._barWidth,
-        ]);
+      const xBarScale = d3ScaleBand()
+        .domain(this._xAxisLabels)
+        .range([this.margins.left!, containerWidth - this.margins.right!])
+        .padding(this.props.xAxisPadding || 0.1);
+
       const yBarScale = d3ScaleLinear()
         .domain([0, this._yMax])
         .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -546,7 +563,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       return (
         <rect
           key={point.x}
-          x={xBarScale(index)}
+          x={xBarScale(point.x)}
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
           height={barHeight}
@@ -563,6 +580,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           fill={point.color ? point.color : colorScale(point.y)}
+          transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}
         />
       );
     });

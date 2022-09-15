@@ -12,9 +12,6 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
-// TODO temporary export to pass conformance test.
-export const tabClassName = tabClassNames.root;
-
 /**
  * Styles for the root slot
  */

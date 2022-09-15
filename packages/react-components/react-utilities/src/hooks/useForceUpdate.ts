@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 
 /**
+ * @internal
  * Forces a re-render, similar to `forceUpdate` in class components.
  */
 export function useForceUpdate() {

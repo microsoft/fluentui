@@ -75,6 +75,8 @@ function cleanupDisplayName(displayName: string): string {
  *
  * @returns The 1 or 2 character initials based on the name. Or an empty string if no initials
  * could be derived from the name.
+ *
+ * @internal
  */
 export function getInitials(
   displayName: string | undefined | null,

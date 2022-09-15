@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -142,7 +142,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
     const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
       isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topRightEdge,
+      directionalHint: DirectionalHint.topAutoEdge,
       id: `toolTip${this._calloutId}`,
       target: this.state.refSelected,
       isBeakVisible: false,
@@ -273,7 +273,14 @@ export class VerticalStackedBarChartBase extends React.Component<
     const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumeric);
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
+    const borderForLines: React.ReactNode[] = [];
     const dots: React.ReactNode[] = [];
+    const { theme } = this.props;
+    const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
+      ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
+      : 0;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const xScaleBandwidthTranslate = isNumeric ? 0 : (xBarScale as any).bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
       let shouldHighlight = true;
       if (isLegendHovered || isLegendSelected) {
@@ -282,12 +289,32 @@ export class VerticalStackedBarChartBase extends React.Component<
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = isNumeric
           ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
-          : xBarScale(lineObject[item][i - 1].index) + this._additionalSpace;
+          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string) + this._additionalSpace;
         const y1 = yScale(lineObject[item][i - 1].y);
         const x2 = isNumeric
           ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
-          : xBarScale(lineObject[item][i].index) + this._additionalSpace;
+          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
         const y2 = yScale(lineObject[item][i].y);
+
+        if (lineBorderWidth > 0) {
+          borderForLines.push(
+            <line
+              key={`${index}-${i}-BorderLine`}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              opacity={shouldHighlight ? 1 : 0.1}
+              strokeWidth={3 + lineBorderWidth * 2}
+              fill="transparent"
+              strokeLinecap="round"
+              stroke={theme!.palette.white}
+              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            />,
+          );
+        }
         lines.push(
           <line
             key={`${index}-${i}-line`}
@@ -297,7 +324,9 @@ export class VerticalStackedBarChartBase extends React.Component<
             y2={y2}
             opacity={shouldHighlight ? 1 : 0.1}
             strokeWidth={3}
+            strokeLinecap="round"
             stroke={lineObject[item][i].color}
+            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             {...(isLegendSelected &&
               selectedLegendTitle === item && {
                 onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
@@ -315,7 +344,8 @@ export class VerticalStackedBarChartBase extends React.Component<
             cx={
               isNumeric
                 ? xScale(circlePoint.xItem.xAxisPoint as number)
-                : xBarScale(circlePoint.index) + this._additionalSpace
+                : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  (xBarScale as any)(circlePoint.xItem.xAxisPoint as string) + this._additionalSpace
             }
             cy={yScale(circlePoint.y)}
             onMouseOver={
@@ -332,12 +362,14 @@ export class VerticalStackedBarChartBase extends React.Component<
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
             visibility={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
+            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
           />,
         );
       });
     });
     return (
       <>
+        {borderForLines}
         {lines}
         {dots}
       </>
@@ -683,7 +715,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
       let yPoint = containerHeight - this.margins.bottom!;
       const xPoint = xBarScale(
-        this._xAxisType === XAxisTypes.NumericAxis ? (singleChartData.xAxisPoint as number) : indexNumber,
+        this._xAxisType === XAxisTypes.NumericAxis
+          ? (singleChartData.xAxisPoint as number)
+          : (singleChartData.xAxisPoint as string),
       );
 
       // Removing datapoints with zero data
@@ -729,6 +763,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
 
+        const xScaleBandwidthTranslate = this._xAxisType === XAxisTypes.NumericAxis ? 0 : xBarScale.bandwidth() / 2;
+
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
@@ -746,6 +782,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               `}
               fill={color}
               ref={e => (ref.refElement = e)}
+              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
               {...rectFocusProps}
             />
           );
@@ -765,6 +802,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
             role="text"
+            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
           />
         );
       });
@@ -833,13 +871,14 @@ export class VerticalStackedBarChartBase extends React.Component<
 
       return { xBarScale, yBarScale };
     } else {
-      const endpointDistance = 0.5 * ((containerWidth - this.margins.right!) / this._dataset.length);
-      const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [this._dataset.length - 1, 0] : [0, this._dataset.length - 1])
+      const xBarScale = d3ScaleBand()
+        .domain(this._xAxisLabels)
         .range([
-          this.margins.left! + endpointDistance - this._additionalSpace,
-          containerWidth - this.margins.right! - endpointDistance - this._additionalSpace,
-        ]);
+          this.margins.left! - this._additionalSpace,
+          containerWidth - this.margins.right! - this._additionalSpace,
+        ])
+        .padding(this.props.xAxisPadding || 0.1);
+
       return { xBarScale, yBarScale };
     }
   };

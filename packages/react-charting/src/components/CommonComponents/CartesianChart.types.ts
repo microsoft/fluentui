@@ -7,6 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
+import * as d3TimeFormat from 'd3-time-format';
 
 export interface ICartesianChartStyleProps {
   /**
@@ -40,7 +41,7 @@ export interface ICartesianChartStyleProps {
   href?: string;
 
   /**
-   * prop to check if the chart is selcted or hovered upon to determine opacity
+   * prop to check if the chart is selected or hovered upon to determine opacity
    */
   shouldHighlight?: boolean;
 
@@ -112,20 +113,23 @@ export interface ICartesianChartStyles {
   calloutDateTimeContainer?: IStyle;
 
   /**
-   * styles for callout Date time container
+   * styles for callout info container
    */
   calloutInfoContainer?: IStyle;
 
   /**
-   * styles for callout Date time container
+   * styles for callout block container
    */
   calloutBlockContainer?: IStyle;
 
   /**
-   * styles for callout y-content
+   * styles for callout legend text
    */
   calloutlegendText?: IStyle;
 
+  /**
+   * styles for tooltip
+   */
   tooltip?: IStyle;
 
   /**
@@ -139,7 +143,7 @@ export interface ICartesianChartStyles {
   opacityChangeOnHover?: IStyle;
 
   /**
-   * styles set for the shape object in the callout
+   * styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
 }
@@ -200,8 +204,9 @@ export interface ICartesianChartProps {
   tickValues?: number[] | Date[];
 
   /**
-   * the format in for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
-   * Please look at https://www.npmjs.com/package/d3-time-format for all the formats supported
+   * the format for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
+   * Please look at https://github.com/d3/d3-time-format for all the formats supported for date axis
+   * Only applicable for date axis. For y-axis format use yAxisTickFormat prop.
    */
   tickFormat?: string;
 
@@ -211,7 +216,7 @@ export interface ICartesianChartProps {
   strokeWidth?: number;
 
   /**
-   * x Axis labels tick padding
+   * x Axis labels tick padding. This defines the gap between tick labels and tick lines.
    * @default 10
    */
   xAxisTickPadding?: number;
@@ -236,25 +241,26 @@ export interface ICartesianChartProps {
 
   /**
    * Number of ticks on the y-axis.
-   * Tick count should be factor of difference between (yMinValue, yMaxValue)
+   * Tick count should be factor of difference between (yMinValue, yMaxValue)?
    * @default 4
    */
   yAxisTickCount?: number;
 
   /**
-   * defines the number of ticks on the x-axis
+   * defines the number of ticks on the x-axis. Tries to match the nearest interval satisfying the count.
+   * Does not work for string axis.
    * @default 6
    */
   xAxisTickCount?: number;
 
   /**
-   * define the size of the tick on the x-axis
+   * define the size of the tick lines on the x-axis
    * @default 10
    */
   xAxistickSize?: number;
 
   /**
-   * define the space between the tick and the data point
+   * defines the space between the tick line and the data label
    * @default 10
    */
   tickPadding?: number;
@@ -308,9 +314,25 @@ export interface ICartesianChartProps {
 
   /**
    * @default false
-   * Used to display x axis labels values (whole value)
+   * Used to wrap x axis labels values (whole value)
    */
   wrapXAxisLables?: boolean;
+
+  /**
+   * @default false
+   * Used to rotate x axis labels by 45 degrees
+   */
+  rotateXAxisLables?: boolean;
+
+  /**
+   * The prop used to define the date time localization options
+   */
+  dateLocalizeOptions?: Intl.DateTimeFormatOptions;
+
+  /**
+   * The prop used to define a custom locale for the date time format.
+   */
+  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -379,7 +401,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   yAxisType?: YAxisType;
 
   /**
-   * Legeds of the chart.
+   * Legends of the chart.
    */
   legendBars: JSX.Element;
 
@@ -420,6 +442,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   /**
    * Used for tick styles of the x axis of the chart
+   * Tick params are applicable for date axis only.
    */
   tickParams?: {
     tickValues?: number[] | Date[];
@@ -436,10 +459,13 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   yAxisPadding?: number;
 
+  /**
+   * Children elements specific to derived chart types.
+   */
   children(props: IChildProps): React.ReactNode;
 
   /**
-   * To enable callout for bar. Using for only Vertical stacked bar chart.
+   * To enable callout for individualbar or complete stack. Using for only Vertical stacked bar chart.
    * @default false
    * @type {boolean}
    */
@@ -477,7 +503,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   svgFocusZoneProps?: IFocusZoneProps;
 
   /**
-   * The prop used to define the culture to localized the numbers
+   * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
 

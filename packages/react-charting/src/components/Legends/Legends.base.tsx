@@ -128,15 +128,16 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       },
     };
     return (
-      <OverflowSet
-        {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}
-        items={data.primary}
-        overflowItems={data.overflow}
-        onRenderItem={this._renderButton}
-        onRenderOverflowButton={this._renderOverflowItems}
-        {...overflowProps}
-        styles={{ ...rootStyles, ...overflowProps?.styles }}
-      />
+      <FocusZone {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}>
+        <OverflowSet
+          items={data.primary}
+          overflowItems={data.overflow}
+          onRenderItem={this._renderButton}
+          onRenderOverflowButton={this._renderOverflowItems}
+          {...overflowProps}
+          styles={{ ...rootStyles, ...overflowProps?.styles }}
+        />
+      </FocusZone>
     );
   };
 
@@ -305,7 +306,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
           className={classNames.overflowIndicationTextStyle}
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
           {...(allowFocusOnLegends && {
-            role: 'link',
+            role: 'button',
             'aria-expanded': this.state.isHoverCardVisible,
             'aria-label': `${items.length} ${overflowString}`,
           })}
@@ -379,7 +380,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         {...(allowFocusOnLegends && {
           'aria-selected': this.state.selectedLegend === legend.title,
           role: 'option',
-          'aria-label': legend.title,
+          'aria-label': `${legend.title} selected`,
           'aria-setsize': data['aria-setsize'],
           'aria-posinset': data['aria-posinset'],
         })}

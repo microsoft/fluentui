@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update react-input dependency version to release candidate.",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

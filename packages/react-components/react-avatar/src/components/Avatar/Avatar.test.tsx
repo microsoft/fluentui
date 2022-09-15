@@ -150,7 +150,7 @@ describe('Avatar', () => {
     const rootRef = React.createRef<HTMLSpanElement>();
     render(<Avatar ref={rootRef} image={{ src: 'avatar.png' }} />);
 
-    expect(rootRef.current).toBe(screen.getByRole('img'));
+    expect(rootRef.current?.getAttribute('role')).toBe('img');
   });
 
   it('sets aria-label={name} on the root', () => {
@@ -168,12 +168,6 @@ describe('Avatar', () => {
     expect(image.getAttribute('role')).toEqual('presentation');
   });
 
-  it('sets aria-hidden on the initials', () => {
-    render(<Avatar name="First Last" />);
-
-    expect(screen.getByText('FL').getAttribute('aria-hidden')).toBeTruthy();
-  });
-
   it('sets aria-hidden on the icon', () => {
     const iconRef = React.createRef<HTMLSpanElement>();
     render(<Avatar icon={{ ref: iconRef }} />);
@@ -187,11 +181,19 @@ describe('Avatar', () => {
     expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe('initials-id');
   });
 
+  it('falls back to string initials for aria-labelledby', () => {
+    render(<Avatar initials="ABC" />);
+
+    const intialsId = screen.getByText('ABC').id;
+
+    expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe(intialsId);
+  });
+
   it('includes badge in aria-labelledby', () => {
     const name = 'First Last';
     render(<Avatar id="root-id" name={name} badge={{ status: 'away', id: 'badge-id' }} />);
 
-    expect(screen.getByRole('img').getAttribute('aria-label')).toBe(name);
-    expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe('root-id badge-id');
+    expect(screen.getAllByRole('img')[0].getAttribute('aria-label')).toBe(name);
+    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe('root-id badge-id');
   });
 });

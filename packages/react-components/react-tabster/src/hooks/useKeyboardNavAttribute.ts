@@ -1,12 +1,14 @@
 import { createKeyborg } from 'keyborg';
 import { useEffect, useMemo, useRef } from 'react';
 import { KEYBOARD_NAV_ATTRIBUTE } from '../focus/constants';
-import { useFluent } from '@fluentui/react-shared-contexts';
-import type { KeyborgCallback } from 'keyborg/dist/Keyborg';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import type { KeyborgCallback } from 'keyborg';
 import type { RefObject } from 'react';
 
 /**
- * instantiates keyborg and add attribute to ensure focus indicator synced to keyborg logic
+ * Instantiates [keyborg](https://github.com/microsoft/keyborg) and adds `data-keyboard-nav`
+ * attribute to a referenced element to ensure keyboard navigation awareness
+ * synced to keyborg logic without having to cause a re-render on react tree.
  */
 export function useKeyboardNavAttribute<E extends HTMLElement>() {
   const { targetDocument } = useFluent();

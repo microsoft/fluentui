@@ -124,7 +124,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const calloutProps = {
       target: this.state.refSelected,
       isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topRightEdge,
+      directionalHint: DirectionalHint.topAutoEdge,
       id: `toolTip${this._calloutId}`,
       gapSpace: 15,
       isBeakVisible: false,

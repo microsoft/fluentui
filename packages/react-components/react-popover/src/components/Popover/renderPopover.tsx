@@ -12,7 +12,7 @@ export const renderPopover_unstable = (state: PopoverState) => {
     contentRef,
     inline,
     mountNode,
-    noArrow,
+    open,
     openOnContext,
     openOnHover,
     setOpen,
@@ -20,6 +20,8 @@ export const renderPopover_unstable = (state: PopoverState) => {
     toggleOpen,
     trapFocus,
     triggerRef,
+    withArrow,
+    legacyTrapFocus,
   } = state;
 
   return (
@@ -30,7 +32,7 @@ export const renderPopover_unstable = (state: PopoverState) => {
         contentRef,
         inline,
         mountNode,
-        noArrow,
+        open,
         openOnContext,
         openOnHover,
         setOpen,
@@ -38,6 +40,8 @@ export const renderPopover_unstable = (state: PopoverState) => {
         triggerRef,
         size,
         trapFocus,
+        legacyTrapFocus,
+        withArrow,
       }}
     >
       {state.popoverTrigger}

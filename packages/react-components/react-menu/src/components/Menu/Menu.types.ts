@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePopperMouseTarget } from '@fluentui/react-positioning';
+import { usePositioningMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
@@ -79,24 +79,37 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Configures the positioned menu
      */
     positioning?: PositioningShorthand;
+
+    /**
+     * Close when scroll outside of it
+     *
+     * @default false
+     */
+    closeOnScroll?: boolean;
   };
 
 export type MenuState = ComponentState<MenuSlots> &
-  Pick<
-    MenuProps,
-    | 'defaultCheckedValues'
-    | 'hasCheckmarks'
-    | 'hasIcons'
-    | 'inline'
-    | 'onOpenChange'
-    | 'openOnContext'
-    | 'persistOnItemClick'
-  > &
-  Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover'>> & {
+  Pick<MenuProps, 'onOpenChange' | 'defaultCheckedValues'> &
+  Required<
+    Pick<
+      MenuProps,
+      | 'hasCheckmarks'
+      | 'hasIcons'
+      | 'inline'
+      | 'checkedValues'
+      | 'onCheckedValueChange'
+      | 'open'
+      | 'openOnHover'
+      | 'closeOnScroll'
+      | 'hoverDelay'
+      | 'openOnContext'
+      | 'persistOnItemClick'
+    >
+  > & {
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
+    contextTarget: ReturnType<typeof usePositioningMouseTarget>[0];
 
     /**
      * Whether this menu is a submenu
@@ -121,7 +134,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
 
     /**
      * Callback to open/close the popup

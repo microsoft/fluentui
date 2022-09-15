@@ -4,6 +4,7 @@ import { Tooltip } from '@fluentui/react-tooltip';
 import { TestWrapperDecorator } from '../utilities/index';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+import Screener from 'screener-storybook/src/screener';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -78,41 +79,59 @@ storiesOf('Tooltip Converged', module)
         <button>Target</button>
       </Tooltip>
     </div>
-  ))
-  .addStory(
-    'positioning',
-    () => {
-      const positions = [
-        ['above', 'start'],
-        ['above', 'center'],
-        ['above', 'end'],
-        ['below', 'start'],
-        ['below', 'center'],
-        ['below', 'end'],
-        ['before', 'top'],
-        ['before', 'center'],
-        ['before', 'bottom'],
-        ['after', 'top'],
-        ['after', 'center'],
-        ['after', 'bottom'],
-      ] as const;
-      const [target, setTarget] = React.useState<HTMLDivElement | null>(null);
-      return (
-        <div className={useStyles().wrapper}>
-          <div ref={setTarget} className="target" style={{ width: '300px', height: '150px' }}>
-            {positions.map(([position, align]) => (
-              <Tooltip
-                key={position + align}
-                content={position + ' ' + align}
-                relationship="label"
-                positioning={{ position, align, target }}
-                withArrow
-                visible
-              />
-            ))}
-          </div>
-        </div>
-      );
-    },
-    { includeRtl: true, includeHighContrast: true },
+  ));
+
+const TooltipPositioning: React.FC = () => {
+  const positions = [
+    ['above', 'start'],
+    ['above', 'center'],
+    ['above', 'end'],
+    ['below', 'start'],
+    ['below', 'center'],
+    ['below', 'end'],
+    ['before', 'top'],
+    ['before', 'center'],
+    ['before', 'bottom'],
+    ['after', 'top'],
+    ['after', 'center'],
+    ['after', 'bottom'],
+  ] as const;
+
+  const [target, setTarget] = React.useState<HTMLDivElement | null>(null);
+  const [visible, setVisible] = React.useState<boolean>(false);
+
+  return (
+    <div className={useStyles().wrapper}>
+      <div ref={setTarget} className="target" style={{ width: '300px', height: '300px' }}>
+        {positions.map(([position, align]) => (
+          <Tooltip
+            key={position + align}
+            content={{ children: position + ' ' + align, style: { height: 50 } }}
+            relationship="label"
+            positioning={{ position, align, target }}
+            withArrow
+            visible={visible}
+          />
+        ))}
+
+        <button id="show-tooltips" onClick={() => setVisible(true)}>
+          Show tooltips
+        </button>
+      </div>
+    </div>
   );
+};
+
+storiesOf('Tooltip Converged', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .click('#show-tooltips')
+        .snapshot('positioned tooltips', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('positioning', () => <TooltipPositioning />, { includeRtl: true, includeHighContrast: true });

@@ -21,7 +21,7 @@ import { Input } from '@fluentui/react-components';
 <Input value={value} onChange={onInputChange} />
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 
@@ -34,4 +34,4 @@ See [Spec.md](./Spec.md)
 
 ### Upgrade Guide
 
-If you're upgrading to Fluent UI v9 see the upgrade guide in [Storybook](https://aka.ms/fluentui-storybook) under Concepts > Upgrading.
+If you're upgrading to Fluent UI v9 see the upgrade guide in [Storybook](https://react.fluentui.dev/) under Concepts > Upgrading.

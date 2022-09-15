@@ -7,8 +7,6 @@ describe('OptionGroup', () => {
   isConformant({
     Component: OptionGroup,
     displayName: 'OptionGroup',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -20,10 +18,22 @@ describe('OptionGroup', () => {
     },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<OptionGroup>Default OptionGroup</OptionGroup>);
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('renders with a label', () => {
+    const result = render(<OptionGroup label="optgroup label">Default OptionGroup</OptionGroup>);
+    expect(result.container).toMatchSnapshot();
+  });
+
+  it('sets aria-labelledby to match the label id', () => {
+    const { getByText } = render(<OptionGroup label="optgroup label">Default OptionGroup</OptionGroup>);
+
+    const root = getByText('Default OptionGroup');
+    const label = getByText('optgroup label');
+
+    expect(root.getAttribute('aria-labelledby')).toEqual(label.id);
   });
 });

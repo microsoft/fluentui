@@ -18,7 +18,7 @@ export interface IScrollablePane {
  * {@docCategory ScrollablePane}
  */
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePaneBase> {
-  // export interface IScrollablePaneProps extends React.Props<ScrollablePaneBase> {
+  // export interface IScrollablePaneProps extends IReactProps<ScrollablePaneBase> {
   /**
    * Optional callback to access the IScrollablePane interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

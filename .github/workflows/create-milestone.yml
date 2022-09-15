@@ -1,0 +1,22 @@
+name: Create milestone
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  create-milestone:
+    name: Create this month's milestone
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create milestone
+        run: |
+          month=$(date +"%B")
+          quarter=$(date +"%q")
+          year=$(date +"%Y")
+          title="${month} Project Cycle Q${quarter} ${year}"
+          echo "Using title '${title}'"
+          gh api --method POST repos/microsoft/fluentui/milestones -f title="${title}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

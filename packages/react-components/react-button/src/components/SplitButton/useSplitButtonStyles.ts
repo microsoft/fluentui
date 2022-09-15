@@ -10,11 +10,6 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
 
-/**
- * @deprecated Use `splitButtonClassName.root` instead.
- */
-export const splitButtonClassName = splitButtonClassNames.root;
-
 const useFocusStyles = makeStyles({
   primaryActionButton: createCustomFocusIndicatorStyle({
     borderTopRightRadius: 0,
@@ -49,29 +44,24 @@ const useRootStyles = makeStyles({
     },
   },
 
-  // Block styles
-  block: {
-    width: '100%',
-  },
-
   // Appearance variations
   outline: {
     /* No styles */
   },
   primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralForegroundInverted,
+      borderRightColor: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralForegroundInverted,
+        borderRightColor: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralForegroundInverted,
+        borderRightColor: tokens.colorNeutralForegroundOnBrand,
       },
     },
   },
@@ -80,7 +70,7 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1Hover,
+      borderRightColor: tokens.colorNeutralStroke1,
     },
 
     ':hover': {
@@ -91,13 +81,13 @@ const useRootStyles = makeStyles({
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorNeutralStroke1Pressed,
       },
     },
   },
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1Hover,
+      borderRightColor: tokens.colorNeutralStroke1,
     },
 
     ':hover': {
@@ -108,7 +98,7 @@ const useRootStyles = makeStyles({
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorNeutralStroke1Pressed,
       },
     },
   },
@@ -163,18 +153,11 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
 
-  const {
-    appearance,
-    // eslint-disable-next-line deprecation/deprecation
-    block,
-    disabled,
-    disabledFocusable,
-  } = state;
+  const { appearance, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
     splitButtonClassNames.root,
     rootStyles.base,
-    block && rootStyles.block,
     appearance && rootStyles[appearance],
     (disabled || disabledFocusable) && rootStyles.disabled,
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,

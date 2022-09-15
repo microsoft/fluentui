@@ -14,13 +14,13 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
  * Radii for the Spinner circles
  */
 const rValues = {
-  tiny: '9',
-  extraSmall: '11',
-  small: '13',
-  medium: '14.5',
-  large: '16.5',
-  extraLarge: '18.5',
-  huge: '20',
+  tiny: '9px',
+  extraSmall: '11px',
+  small: '13px',
+  medium: '14.5px',
+  large: '16.5px',
+  extraLarge: '18.5px',
+  huge: '20px',
 };
 
 /*
@@ -58,6 +58,7 @@ const useRootStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    lineHeight: '0',
     ...shorthands.gap('8px'),
   },
 
@@ -73,8 +74,8 @@ const useRootStyles = makeStyles({
 const useLoaderStyles = makeStyles({
   // global SVG class
   spinnerSVG: {
-    ':focus-visible': {
-      outlineStyle: '3px solid transparent',
+    ':focus': {
+      ...shorthands.outline('3px', 'solid', 'transparent'),
     },
     ['& > svg']: {
       animationName: {
@@ -82,6 +83,11 @@ const useLoaderStyles = makeStyles({
         '100%': { transform: 'rotate(360deg)' },
       },
       ...spinnerAnimation.container,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
     ['& > svg > circle']: {
       cx: '50%',
@@ -101,7 +107,7 @@ const useLoaderStyles = makeStyles({
     },
   },
 
-  extraSmall: {
+  'extra-small': {
     ['& > svg']: {
       height: spinnnerSizes.extraSmall,
       width: spinnnerSizes.extraSmall,
@@ -145,7 +151,7 @@ const useLoaderStyles = makeStyles({
     },
   },
 
-  extraLarge: {
+  'extra-large': {
     ['& > svg']: {
       height: spinnnerSizes.extraLarge,
       width: spinnnerSizes.extraLarge,
@@ -194,10 +200,15 @@ const useTrackStyles = makeStyles({
       strokeLinecap: 'round',
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
 
     ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorNeutralBackgroundInverted,
+      stroke: 'rgba(255, 255, 255, 0.2)', // this is whiteAlpha[20] but that token is not exported
     },
   },
   primary: {
@@ -228,9 +239,13 @@ const useTrackStyles = makeStyles({
       strokeLinecap: 'round',
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
     ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorNeutralBackground4,
+      stroke: tokens.colorBrandStroke2,
       '@media screen and (forced-colors: active)': {
         stroke: tokens.colorNeutralBackgroundInverted,
       },
@@ -240,12 +255,17 @@ const useTrackStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   // style for label
+  inverted: {
+    color: 'rgba(255, 255, 255, 1)', // This is white alpha but the token is not exported
+  },
+
+  primary: {}, // no change
 
   tiny: {
     ...typographyStyles.body1,
   },
 
-  extraSmall: {
+  'extra-small': {
     ...typographyStyles.body1,
   },
 
@@ -261,7 +281,7 @@ const useLabelStyles = makeStyles({
     ...typographyStyles.subtitle2,
   },
 
-  extraLarge: {
+  'extra-large': {
     ...typographyStyles.subtitle2,
   },
 
@@ -274,7 +294,7 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
-  const { labelPosition, size = 'medium' } = state;
+  const { labelPosition, size, appearance = 'primary' } = state;
   const rootStyles = useRootStyles();
   const spinnerStyles = useLoaderStyles();
   const labelStyles = useLabelStyles();
@@ -287,23 +307,20 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     (labelPosition === 'before' || labelPosition === 'after') && rootStyles.horizontal,
     state.root.className,
   );
-  if (state.spinner && state.appearance) {
+  if (state.spinner) {
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
       spinnerStyles.spinnerSVG,
-      size === 'extra-small' && spinnerStyles.extraSmall,
-      size === 'extra-large' && spinnerStyles.extraLarge,
-      size !== 'extra-large' && size !== 'extra-small' && spinnerStyles[size],
-      trackStyles[state.appearance],
+      spinnerStyles[size],
+      trackStyles[appearance],
       state.spinner.className,
     );
   }
   if (state.label) {
     state.label.className = mergeClasses(
       spinnerClassNames.label,
-      size === 'extra-small' && labelStyles.extraSmall,
-      size === 'extra-large' && labelStyles.extraLarge,
-      size !== 'extra-large' && size !== 'extra-small' && labelStyles[size],
+      labelStyles[size],
+      labelStyles[appearance],
       state.label.className,
     );
   }

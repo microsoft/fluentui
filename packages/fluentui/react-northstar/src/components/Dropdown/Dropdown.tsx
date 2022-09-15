@@ -7,6 +7,7 @@ import {
   useTelemetry,
   ForwardRefWithAs,
   useMergedRefs,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -73,6 +74,9 @@ export interface DropdownSlotClassNames {
 export interface DropdownProps extends UIComponentProps<DropdownProps>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
   activeSelectedIndex?: number;
+
+  /** Whether the ComboBox allows freeform user input, rather than restricting to the provided options. */
+  allowFreeform?: boolean;
 
   /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
@@ -319,7 +323,15 @@ const charKeyPressedCleanupTime = 500;
 function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): ShorthandCollection<DropdownItemProps> {
   const normalizedValue = Array.isArray(rawValue) ? rawValue : [rawValue];
 
-  return multiple ? normalizedValue : normalizedValue.slice(0, 1);
+  if (multiple) {
+    return normalizedValue;
+  }
+
+  if (normalizedValue[0] === '') {
+    return [];
+  }
+
+  return normalizedValue.slice(0, 1);
 }
 
 /**
@@ -384,6 +396,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     'aria-labelledby': ariaLabelledby,
     'aria-describedby': ariaDescribedby,
     'aria-invalid': ariaInvalid,
+    allowFreeform,
     clearable,
     clearIndicator,
     checkable,
@@ -476,6 +489,11 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
   const [itemIsFromKeyboard, setItemIsFromKeyboard] = React.useState(false);
   const [startingString, setStartingString] = React.useState<string | undefined>(search ? undefined : '');
+  // used for keeping track of the source of the input, as Downshift does not pass events to the handlers
+  // for free form dropdown:
+  // - if the value is changed based on search query change (from input), accept any value even if not in the list
+  // - if the value is changed based on selection from list, use the value from the list item
+  const inListbox = React.useRef(false);
 
   const { filteredItems, filteredItemStrings } = getFilteredValues({
     itemToString,
@@ -516,7 +534,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   const popperRef = useMergedRefs(props.popperRef);
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     popperRef.current?.updatePosition();
   }, [filteredItems?.length, popperRef]);
 
@@ -552,7 +570,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const renderTriggerButton = (getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => any): JSX.Element => {
     const content = getSelectedItemAsString(value[0]);
     const triggerButtonId = triggerButton['id'] || defaultTriggerButtonId;
-
+    const triggerButtonContentId = `${triggerButtonId}__content`;
     const triggerButtonProps = getToggleButtonProps({
       disabled,
       onFocus: handleTriggerButtonOrListFocus,
@@ -562,7 +580,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       },
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      ...(ariaLabelledby && { 'aria-labelledby': ariaLabelledby }),
+      'aria-labelledby': [ariaLabelledby, triggerButtonContentId].filter(Boolean).join(' '),
       ...(open && { 'aria-expanded': true }),
     });
 
@@ -573,37 +591,48 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
-            content,
             disabled,
             id: triggerButtonId,
             fluid: true,
             styles: resolvedStyles.triggerButton,
             ...restTriggerButtonProps,
           }),
-          overrideProps: (predefinedProps: ButtonProps) => ({
-            onClick: e => {
-              onClick(e);
-              _.invoke(predefinedProps, 'onClick', e, predefinedProps);
-            },
-            onFocus: e => {
-              onFocus(e);
-              _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
-            },
-            onBlur: e => {
-              if (!disabled) {
-                onBlur(e);
-              }
+          overrideProps: (predefinedProps: ButtonProps) => {
+            // It can be a shorthand
+            const resolvedContent = _.isPlainObject(predefinedProps.content)
+              ? (predefinedProps.content as {})
+              : predefinedProps.content
+              ? { children: predefinedProps.content }
+              : {};
 
-              _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
-            },
-            onKeyDown: e => {
-              if (!disabled) {
-                onKeyDown(e);
-              }
+            return {
+              content:
+                // If `null` is passed we should not render the slot
+                predefinedProps.content === null ? null : { content, id: triggerButtonContentId, ...resolvedContent },
+              onClick: e => {
+                onClick(e);
+                _.invoke(predefinedProps, 'onClick', e, predefinedProps);
+              },
+              onFocus: e => {
+                onFocus(e);
+                _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
+              },
+              onBlur: e => {
+                if (!disabled) {
+                  onBlur(e);
+                }
 
-              _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
-            },
-          }),
+                _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
+              },
+              onKeyDown: e => {
+                if (!disabled) {
+                  onKeyDown(e);
+                }
+
+                _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
+              },
+            };
+          },
         })}
       </Ref>
     );
@@ -617,7 +646,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     toggleMenu: () => void,
     variables,
   ): JSX.Element => {
-    const noPlaceholder = searchQuery.length > 0 || (multiple && value.length > 0);
+    const noPlaceholder = searchQuery?.length > 0 || (multiple && value.length > 0);
 
     return DropdownSearchInput.create(searchInput || {}, {
       defaultProps: () => ({
@@ -874,7 +903,15 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       case Downshift.stateChangeTypes.changeInput: {
         const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
 
-        newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+        if (allowFreeform) {
+          // set highlighted index to first item starting with search query
+          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(changes.inputValue));
+          if (itemIndex !== -1) {
+            newState.highlightedIndex = itemIndex;
+          }
+        } else {
+          newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+        }
 
         if (shouldValueChange) {
           newState.value = [];
@@ -900,8 +937,19 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
         newState.searchQuery = getSelectedItemAsString(newValue);
+        if (allowFreeform && !inListbox.current && type === Downshift.stateChangeTypes.keyDownEnter) {
+          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+
+          // if there is an item that starts with searchQuery, still apply the search query
+          // to do auto complete (you enter '12:', can be completed to '12:00')
+          if (itemIndex === -1) {
+            delete newState.searchQuery;
+          }
+        }
+
         newState.open = false;
         newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
+        inListbox.current = false;
 
         if (!isSameItemSelected) {
           newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
@@ -960,7 +1008,17 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       case Downshift.stateChangeTypes.mouseUp:
         if (open) {
           newState.open = false;
-          newState.highlightedIndex = null;
+          if (allowFreeform) {
+            const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+
+            // if there is an item that starts with searchQuery, still apply the search query
+            // to do auto complete (you enter '12:', can be completed to '12:00')
+            if (itemIndex !== -1) {
+              newState.searchQuery = itemToString(items[itemIndex]);
+            }
+          } else {
+            newState.highlightedIndex = null;
+          }
         }
 
         break;
@@ -978,6 +1036,14 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
           if (!search) {
             listRef.current.focus();
+          }
+        } else if (allowFreeform) {
+          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+
+          // if there is an item that starts with searchQuery, still apply the search query
+          // to do auto complete (you enter '12:', can be completed to '12:00')
+          if (itemIndex !== -1) {
+            newState.searchQuery = itemToString(items[itemIndex]);
           }
         } else {
           newState.highlightedIndex = null;
@@ -1120,7 +1186,16 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
             if (open) {
               e.stopPropagation();
             }
+          case keyboardKey.ArrowUp:
+          case keyboardKey.ArrowDown:
+            if (allowFreeform) {
+              inListbox.current = true;
+            }
+            break;
           default:
+            if (getCode(e) !== keyboardKey.Enter) {
+              inListbox.current = false;
+            }
             break;
         }
       }
@@ -1509,17 +1584,19 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       return 0;
     }
 
-    if (!multiple && !search && value.length > 0) {
-      // in single selection, if there is a selected item, highlight it.
+    if (!multiple && value.length > 0) {
+      // in single selection (search or not search), if there is a selected item, highlight it.
       const offset = isArrowUp ? -1 : isArrowDown ? 1 : 0;
       const newHighlightedIndex = items.indexOf(value[0]) + offset;
       if (newHighlightedIndex >= itemsLength) {
         return 0;
       }
-      if (newHighlightedIndex < 0) {
+      if (isArrowUp && newHighlightedIndex < 0) {
         return itemsLength - 1;
       }
-      return newHighlightedIndex;
+      if (newHighlightedIndex > 0) {
+        return newHighlightedIndex;
+      }
     }
 
     if (isArrowDown) {
@@ -1709,6 +1786,7 @@ Dropdown.propTypes = {
     content: false,
   }),
   activeSelectedIndex: PropTypes.number,
+  allowFreeform: PropTypes.bool,
   checkable: PropTypes.bool,
   checkableIndicator: customPropTypes.shorthandAllowingChildren,
   clearable: PropTypes.bool,

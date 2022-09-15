@@ -25,44 +25,13 @@ A badge is an additional visual descriptor for UI elements. It can be used to de
 
 - Appearance: `default`, `rounded` and `circular`
 - Size: `tiny`, `extra-small`, `small`, `medium`, `large`, `extra-large`.
-- Styles: `filled`, `outline`, `ghost`, `tint`, `inverted filled`
+- Styles: `filled`, `outline`, `ghost`, `tint`
 
-## PROPS
+## API
 
-```typescript
-type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
+### Props
 
-type BadgeShape = 'rounded' | 'square' | 'circular';
-
-type BadgeSize = 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-
-type BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * A Badge can be sized.
-   */
-  size?: BadgeSize;
-
-  /**
-   * A Badge can be square, circular or rounded
-   */
-  shape?: BadgeShape;
-
-  /**
-   * A Badge can be filled, outline, ghost, inverted
-   */
-  appearance?: BadgeAppearance;
-
-  /**
-   * Icon slot
-   */
-  icon?: ShorthandProps<HTMLElement>;
-
-  /**
-   * Position for Icon to be rendered
-   */
-  iconPosition?: 'before' | 'after';
-}
-```
+See API at [Badge.types.ts](./src/components/Badge/Badge.types.ts).
 
 ## Structure
 
@@ -86,13 +55,7 @@ type BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 
 ## Migration
 
-- _Migration from v8_
-
-`Badge` can be passed to `Avatar`'s `badge` slot. The `PresenceBadge` will be the best replacement for `Persona` presence mapping status, icon and colors.
-
-- _Migration from v0_
-
-`Badge` can be passed to `Avatar`'s `badge` slot.
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
@@ -118,40 +81,14 @@ type BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 
 A Presence Badge represents someone's availbility or status
 
-```typescript
-export type PresenceBadgeStatus = 'busy' | 'oof' | 'away' | 'available' | 'offline';
+#### Props
 
-export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
-  /**
-   * A PresenceBadge can represent several status
-   * @defaultvalue available
-   */
-  status?: PresenceBadgeStatus;
-  /**
-   * A PresenceBadge can represent status of someone out of the office
-   * @defaultvalue true
-   */
-  inOffice?: boolean;
-};
-
-export type PresenceBadgeState = BadgeState & {
-  /**
-   * A PresenceBadge can represent several status
-   * @defaultvalue available
-   */
-  status: PresenceBadgeStatus;
-  /**
-   * A PresenceBadge can represent status of someone out of the office
-   * @defaultvalue true
-   */
-  inOffice: boolean;
-};
-```
+See API at [PresenceBadge.types.ts](./src/components/PresenceBadge/PresenceBadge.types.ts).
 
 ### Counter Badge
 
 A Counter Badge is a visual indicator for numeric values such as tallies and scores.
 
-```typescript
-export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & Partial<CounterBadgeCommons>;
-```
+#### Props
+
+See API at [CounterBadge.types.ts](./src/components/CounterBadge/CounterBadge.types.ts).

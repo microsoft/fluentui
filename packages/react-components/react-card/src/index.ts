@@ -1,9 +1,7 @@
-/* eslint-disable deprecation/deprecation -- https://github.com/microsoft/fluentui/pull/21960#issuecomment-1068991851*/
-
 export {
   Card,
-  cardClassName,
   cardClassNames,
+  cardCSSVars,
   renderCard_unstable,
   useCardStyles_unstable,
   useCard_unstable,
@@ -11,7 +9,6 @@ export {
 export type { CardProps, CardSlots, CardState } from './Card';
 export {
   CardFooter,
-  cardFooterClassName,
   cardFooterClassNames,
   renderCardFooter_unstable,
   useCardFooterStyles_unstable,
@@ -20,8 +17,8 @@ export {
 export type { CardFooterProps, CardFooterSlots, CardFooterState } from './CardFooter';
 export {
   CardHeader,
-  cardHeaderClassName,
   cardHeaderClassNames,
+  cardHeaderCSSVars,
   renderCardHeader_unstable,
   useCardHeaderStyles_unstable,
   useCardHeader_unstable,
@@ -29,7 +26,6 @@ export {
 export type { CardHeaderProps, CardHeaderSlots, CardHeaderState } from './CardHeader';
 export {
   CardPreview,
-  cardPreviewClassName,
   cardPreviewClassNames,
   renderCardPreview_unstable,
   useCardPreviewStyles_unstable,

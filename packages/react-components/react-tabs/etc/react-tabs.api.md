@@ -35,16 +35,10 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 export const Tab: ForwardRefComponent<TabProps>;
 
 // @public (undocumented)
-export const tabClassName: string;
-
-// @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;
 
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
-
-// @public (undocumented)
-export const tabListClassName: string;
 
 // @public (undocumented)
 export const tabListClassNames: SlotClassNames<TabListSlots>;

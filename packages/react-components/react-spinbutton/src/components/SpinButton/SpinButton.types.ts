@@ -32,20 +32,25 @@ export type SpinButtonSlots = {
 /**
  * SpinButton Props
  */
-export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'onChange' | 'size'> & {
+export type SpinButtonProps = Omit<
+  ComponentProps<Partial<SpinButtonSlots>, 'input'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> & {
   /**
    * Controls the colors and borders of the input.
    * @default 'outline'
    */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+  appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
 
   /**
    * Initial value of the control (assumed to be valid). Updates to this prop will not be respected.
    *
    * Use this if you intend for the SpinButton to be an uncontrolled component which maintains its
    * own value. For a controlled component, use `value` instead. (Mutually exclusive with `value`.)
+   *
+   * Use `null` to indicate the control has no value.
    */
-  defaultValue?: number;
+  defaultValue?: number | null;
 
   /**
    * String representation of `value`.
@@ -112,9 +117,13 @@ export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'inp
    *
    * Only provide this if the SpinButton is a controlled component where you are maintaining its
    * current state and passing updates based on change events; otherwise, use the `defaultValue`
-   * property. (Mutually exclusive with `defaultValue`.)
+   * property.
+   *
+   * Use `null` to indicate the control has no value.
+   *
+   * Mutually exclusive with `defaultValue`.
    */
-  value?: number;
+  value?: number | null;
 };
 
 /**
@@ -142,7 +151,7 @@ export type SpinButtonChangeEvent =
   | React.KeyboardEvent<HTMLInputElement>;
 
 export type SpinButtonOnChangeData = {
-  value?: number;
+  value?: number | null;
   displayValue?: string;
 };
 

@@ -7,6 +7,7 @@ export {
   DefaultEffects,
   DefaultFontStyles,
   DefaultPalette,
+  // eslint-disable-next-line deprecation/deprecation
   EdgeChromiumHighContrastSelector,
   FontClassNames,
   FontSizes,

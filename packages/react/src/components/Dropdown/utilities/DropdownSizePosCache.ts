@@ -14,6 +14,7 @@ import type { IDropdownOption } from '../Dropdown.types';
 export class DropdownSizePosCache {
   private _cachedOptions: IDropdownOption[];
   private _displayOnlyOptionsCache: number[];
+  private _notSelectableOptionsCache: number[];
   private _size = 0;
 
   /**
@@ -21,17 +22,24 @@ export class DropdownSizePosCache {
    */
   public updateOptions(options: IDropdownOption[]) {
     const displayOnlyOptionsCache = [];
+    const notSelectableOptionsCache = [];
     let size = 0;
     for (let i = 0; i < options.length; i++) {
-      if (options[i].itemType === DropdownMenuItemType.Divider || options[i].itemType === DropdownMenuItemType.Header) {
+      const { itemType, hidden } = options[i];
+
+      if (itemType === DropdownMenuItemType.Divider || itemType === DropdownMenuItemType.Header) {
         displayOnlyOptionsCache.push(i);
-      } else if (!options[i].hidden) {
+        notSelectableOptionsCache.push(i);
+      } else if (hidden) {
+        notSelectableOptionsCache.push(i);
+      } else {
         size++;
       }
     }
 
     this._size = size;
     this._displayOnlyOptionsCache = displayOnlyOptionsCache;
+    this._notSelectableOptionsCache = notSelectableOptionsCache;
     this._cachedOptions = [...options];
   }
 
@@ -62,12 +70,16 @@ export class DropdownSizePosCache {
     // we could possibly memoize this too but this should be good enough, most of the time (the expectation is that
     // when you have a lot of options, the selectable options will heavily dominate over the non-selectable options.
     let offset = 0;
-    while (index > this._displayOnlyOptionsCache[offset]) {
+    while (index > this._notSelectableOptionsCache[offset]) {
       offset++;
     }
 
     if (this._displayOnlyOptionsCache[offset] === index) {
       throw new Error(`Unexpected: Option at index ${index} is not a selectable element.`);
+    }
+
+    if (this._notSelectableOptionsCache[offset] === index) {
+      return undefined;
     }
 
     return index - offset + 1;

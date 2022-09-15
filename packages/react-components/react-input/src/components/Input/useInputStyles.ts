@@ -3,10 +3,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { InputSlots, InputState } from './Input.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `inputClassNames.root` instead.
- */
-export const inputClassName = 'fui-Input';
 export const inputClassNames: SlotClassNames<InputSlots> = {
   root: 'fui-Input',
   input: 'fui-Input__input',
@@ -72,6 +68,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationUltraFast,
       transitionDelay: tokens.curveAccelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within::after': {
       // Animation for focus IN
@@ -79,6 +80,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
       transitionDelay: tokens.curveDecelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
@@ -138,7 +144,6 @@ const useRootStyles = makeStyles({
     '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
-    boxShadow: tokens.shadow2, // optional shadow for filled appearances
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
   },
   filledInteractive: {
@@ -148,11 +153,19 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
+  },
+  'filled-darker-shadow': {
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: tokens.shadow2,
+  },
+  'filled-lighter-shadow': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow2,
   },
   disabled: {
     cursor: 'not-allowed',
@@ -180,9 +193,8 @@ const useInputElementStyles = makeStyles({
       color: tokens.colorNeutralForeground4,
       opacity: 1, // browser style override
     },
-    ':focus-visible': {
-      outlineStyle: 'none', // disable default browser outline
-    },
+
+    outlineStyle: 'none', // disable default browser outline
   },
   small: {
     // This is set on root but doesn't inherit

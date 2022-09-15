@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing ImageCommons type.",
-  "packageName": "@fluentui/react-image",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

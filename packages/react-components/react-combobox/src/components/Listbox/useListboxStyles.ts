@@ -13,6 +13,7 @@ export const listboxClassNames: SlotClassNames<ListboxSlots> = {
 const useStyles = makeStyles({
   root: {
     boxShadow: `${tokens.shadow16}`,
+    boxSizing: 'border-box',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     backgroundColor: tokens.colorNeutralBackground1,
     display: 'flex',

@@ -1,6 +1,6 @@
-// @ts-check
 const semver = require('semver');
 const { readConfig } = require('../read-config');
+const { getProjectMetadata } = require('./utils');
 
 /**
  *  @typedef {string | import('./index').PackageJson}  PathOrPackageJson
@@ -8,16 +8,32 @@ const { readConfig } = require('../read-config');
 
 /**
  * Determines whether a package is converged, based on its version.
- * @param {PathOrPackageJson} [packagePathOrJson] optional different package path to run in OR previously-read package.json
+ *
+ * @param {Object} [options]
+ * @param {PathOrPackageJson} [options.packagePathOrJson] - optional different package path to run in OR previously-read package.json
  * (defaults to reading package.json from `process.cwd()`)
+ * @param {'library' | 'application' | 'all'} [options.projectType] - filter for what project types you wanna apply the condition
+ *
  * @returns {boolean} true if it's a converged package (version >= 9)
  */
-function isConvergedPackage(packagePathOrJson) {
+function isConvergedPackage(options = {}) {
+  const { packagePathOrJson, projectType = 'all' } = options;
   const packageJson =
     !packagePathOrJson || typeof packagePathOrJson === 'string'
       ? readConfig('package.json', /** @type {string|undefined} */ (packagePathOrJson))
       : packagePathOrJson;
-  return !!packageJson && (semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version));
+
+  if (!packageJson) {
+    throw new Error(`package.json doesn't exist`);
+  }
+
+  const metadata = getProjectMetadata({ name: packageJson.name });
+
+  if (projectType !== 'all' && metadata.projectType !== projectType) {
+    return false;
+  }
+
+  return semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version);
 }
 
 /**

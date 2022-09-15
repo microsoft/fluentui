@@ -4,10 +4,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
 import type { CounterBadgeState } from './CounterBadge.types';
 
-/**
- * @deprecated Use `counterBadgeClassNames.root` instead.
- */
-export const counterBadgeClassName = 'fui-CounterBadge';
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots> = {
   root: 'fui-CounterBadge',
   icon: 'fui-CounterBadge__icon',

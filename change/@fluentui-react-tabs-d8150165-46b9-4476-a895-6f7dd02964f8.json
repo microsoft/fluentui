@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add aria-label for icon only story",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

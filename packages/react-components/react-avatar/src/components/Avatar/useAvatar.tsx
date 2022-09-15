@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
-import { useFluent } from '@fluentui/react-shared-contexts';
-import { useMergedEventCallbacks } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
@@ -36,7 +35,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     required: true,
     defaultProps: {
       children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
-      'aria-hidden': true,
+      id: baseId + '__initials',
     },
   });
 
@@ -49,7 +48,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       defaultProps: {
         children: <PersonRegular />,
         'aria-hidden': true,
-        id: baseId + '__initials',
       },
     });
   }
@@ -65,18 +63,14 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   });
 
   // Hide the image if it fails to load and restore it on a successful load
-  const imageOnError = useMergedEventCallbacks(image?.onError, () => setImageHidden(true));
-  const imageOnLoad = useMergedEventCallbacks(image?.onLoad, () => setImageHidden(undefined));
   if (image) {
-    image.onError = imageOnError;
-    image.onLoad = imageOnLoad;
+    image.onError = mergeCallbacks(image.onError, () => setImageHidden(true));
+    image.onLoad = mergeCallbacks(image.onLoad, () => setImageHidden(undefined));
   }
 
   const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
     defaultProps: {
       size: getBadgeSize(size),
-      role: 'presentation',
-      'aria-hidden': true,
       id: baseId + '__badge',
     },
   });
@@ -136,7 +130,7 @@ const getBadgeSize = (size: AvatarState['size']) => {
 };
 
 const avatarColors: AvatarNamedColor[] = [
-  'darkRed',
+  'dark-red',
   'cranberry',
   'red',
   'pumpkin',
@@ -147,12 +141,12 @@ const avatarColors: AvatarNamedColor[] = [
   'brown',
   'forest',
   'seafoam',
-  'darkGreen',
-  'lightTeal',
+  'dark-green',
+  'light-teal',
   'teal',
   'steel',
   'blue',
-  'royalBlue',
+  'royal-blue',
   'cornflower',
   'navy',
   'lavender',

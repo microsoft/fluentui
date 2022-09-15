@@ -105,7 +105,7 @@ Card goes for a more structural and generic approach to a card component and is 
 | Property    | Values                                                                               | Default    | Purpose                                                                          |
 | ----------- | ------------------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------- |
 | orientation | `vertical`, `horizontal`                                                             | `vertical` | Orientation of the card                                                          |
-| size        | `smallest`, `smaller`, `small`, `medium`, `large`                                    | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
+| size        | `small`, `medium`, `large`                                                           | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
 | scale       | `fixed`, `auto-width`, `auto-height`, `auto`, `fluid-width`, `fluid-height`, `fluid` | `auto`     | Manages how the card handles it's scaling depending on the content               |
 | appearance  | `filled`, `filled-alternative`, `outline`, `subtle`                                  | `filled`   | Define the appearance of the card                                                |
 | selectable  | boolean                                                                              | false      | Makes the card selectable by adding a checkbox to the _Actions_ area             |

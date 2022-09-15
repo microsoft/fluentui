@@ -1,9 +1,5 @@
 # Button Migration
 
-## STATUS: WIP 🚧
-
-This Migration guide is a work in progress and is not yet ready for use.
-
 ## Migration from v8
 
 ### Component renames
@@ -82,6 +78,8 @@ Common buttons now all map to `Button`:
 - `defaultRender`
 - `getClassNames`
 - `getSplitButtonClassNames`
+- `loader`
+- `loading`
 - `theme`
 - `uniqueId`
 
@@ -94,13 +92,10 @@ Common buttons now all map to `Button`:
 - `disabledFocusable`
 - `icon`
 - `iconPosition`
-- `loader`
-- `loading`
 - `size`
 
 ### Renamed props
 
-- `fluid` => `block`
 - `text` => `transparent`
 
 ### Props removed because we can get them from HTML props
@@ -124,7 +119,7 @@ Common buttons now all map to `Button`:
 
 ## Property mapping
 
-| v8 `Button`                        | v0 `Button`         | Converged `Button`     |
+| v8 `Button`                        | v0 `Button`         | v9 `Button`            |
 | ---------------------------------- | ------------------- | ---------------------- |
 |                                    | `accessibility`     |                        |
 | `allowDisabledFocus`               | `disabledFocusable` | `disabledFocusable`    |
@@ -142,7 +137,7 @@ Common buttons now all map to `Button`:
 | `description`                      |                     |                        |
 | `disabled`                         | `disabled`          | `disabled`             |
 | `elementRef`                       |                     | `ref`                  |
-|                                    | `fluid`             | `block`                |
+|                                    | `fluid`             |                        |
 | `getClassNames`                    |                     |                        |
 | `getSplitButtonClassNames`         |                     |                        |
 | `href`                             |                     | `href`                 |
@@ -152,8 +147,8 @@ Common buttons now all map to `Button`:
 | `iconProps`                        |                     |                        |
 |                                    | `inverted`          |                        |
 | `keytipProps`                      |                     |                        |
-|                                    | `loader`            | `loader`               |
-|                                    | `loading`           | `loading`              |
+|                                    | `loader`            |                        |
+|                                    | `loading`           |                        |
 | `menuAs`                           |                     |                        |
 | `menuIconProps`                    |                     |                        |
 | `menuProps`                        |                     |                        |

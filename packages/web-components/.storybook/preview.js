@@ -40,13 +40,13 @@ export const parameters = {
 };
 
 addons.getChannel().addListener(DOCS_RENDERED, name => {
-  if (name.toLowerCase() === 'components/accordion' || name.toLowerCase() === 'components/card') {
+  if (name.toLowerCase().includes('accordion') || name.toLowerCase().includes('card')) {
     fillColor.setValueFor(document.body, neutralLayer2);
   } else {
     fillColor.setValueFor(document.body, neutralLayer1);
   }
 
-  if (name.toLowerCase().indexOf('color-explorer') !== -1) {
+  if (name.toLowerCase().includes('color-explorer')) {
     document.body.classList.add('custom-fullscreen');
   } else {
     document.body.classList.remove('custom-fullscreen');

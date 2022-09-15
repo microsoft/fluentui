@@ -152,6 +152,7 @@ const useInputStyles = makeStyles({
     gridColumnEnd: '2',
     gridRowStart: '1',
     gridRowEnd: '3',
+    outlineStyle: 'none',
     ...shorthands.padding(0),
   },
 });
@@ -263,7 +264,7 @@ const useButtonStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
 
@@ -285,7 +286,7 @@ const useButtonStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
 
@@ -352,7 +353,7 @@ const useButtonDisabledStyles = makeStyles({
     },
   },
 
-  filledDarker: {
+  'filled-darker': {
     color: tokens.colorNeutralForegroundDisabled,
     ':enabled': {
       ':hover': {
@@ -370,7 +371,7 @@ const useButtonDisabledStyles = makeStyles({
     },
   },
 
-  filledLighter: {
+  'filled-lighter': {
     color: tokens.colorNeutralForegroundDisabled,
     ':enabled': {
       ':hover': {
@@ -393,7 +394,7 @@ const useButtonDisabledStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
-  const { appearance, atBound, size } = state;
+  const { appearance, atBound, spinState, size } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
@@ -438,7 +439,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
 
   state.incrementButton.className = mergeClasses(
     spinButtonClassNames.incrementButton,
-    state.spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
+    spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.incrementButton,
     buttonStyles[appearance],
@@ -449,7 +450,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   );
   state.decrementButton.className = mergeClasses(
     spinButtonClassNames.decrementButton,
-    state.spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
+    spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.decrementButton,
     buttonStyles[appearance],

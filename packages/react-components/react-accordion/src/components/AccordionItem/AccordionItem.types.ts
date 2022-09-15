@@ -16,11 +16,11 @@ export type AccordionItemSlots = {
 
 export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
   /**
-   * Disables opening/closing of panel
+   * Disables opening/closing of panel.
    */
   disabled?: boolean;
   /**
-   * required value that identifies this item inside an Accordion component
+   * Required value that identifies this item inside an Accordion component.
    */
   value: AccordionItemValue;
 };

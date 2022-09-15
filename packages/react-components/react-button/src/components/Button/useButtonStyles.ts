@@ -9,12 +9,11 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
-/**
- * @deprecated Use `buttonClassNames.root` instead.
- */
-export const buttonClassName = buttonClassNames.root;
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
+
+const buttonSpacingSmall = '3px';
+const buttonSpacingMedium = '5px';
 
 const useRootStyles = makeStyles({
   // Base styles
@@ -26,11 +25,7 @@ const useRootStyles = makeStyles({
 
     ...shorthands.margin(0),
 
-    maxWidth: '280px',
-
     ...shorthands.overflow('hidden'),
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
 
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
@@ -79,20 +74,19 @@ const useRootStyles = makeStyles({
       },
 
       ':hover': {
+        backgroundColor: 'HighlightText',
         ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
 
       ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
     },
-  },
-
-  // Block styles
-  block: {
-    maxWidth: '100%',
-    width: '100%',
   },
 
   // Appearance variations
@@ -135,13 +129,13 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
@@ -175,21 +169,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
+    ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
-    height: '24px',
     minWidth: '64px',
 
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderRadius(buttonSpacingSmall),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
+    ...shorthands.padding(buttonSpacingMedium, tokens.spacingHorizontalM),
 
-    height: '32px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -199,9 +191,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalL),
 
-    height: '40px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -279,11 +270,11 @@ const useRootDisabledStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: tokens.colorTransparentBackground,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorTransparentBackground,
     },
   },
   primary: {
@@ -301,30 +292,30 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -332,8 +323,8 @@ const useRootDisabledStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor('transparent'),
-    outlineColor: 'transparent',
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    outlineColor: tokens.colorTransparentStroke,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
     boxShadow: `
@@ -343,17 +334,21 @@ const useRootFocusStyles = makeStyles({
     zIndex: 1,
   }),
 
+  // Shape variations
   circular: createCustomFocusIndicatorStyle({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   }),
-  rounded: {},
+  rounded: {
+    /* The rounded styles are exactly the same as the base styles. */
+  },
+  square: createCustomFocusIndicatorStyle({
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  }),
+
   // Primary styles
   primary: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
     boxShadow: `${tokens.shadow2}, 0 0 0 2px ${tokens.colorStrokeFocus2}`,
-  }),
-  square: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
   }),
 
   // Size variations
@@ -421,6 +416,17 @@ const useIconStyles = makeStyles({
     [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
 
+  // Appearance variations
+  subtle: {
+    ':hover': {
+      color: tokens.colorNeutralForeground2BrandHover,
+    },
+
+    ':hover:active': {
+      color: tokens.colorNeutralForeground2BrandPressed,
+    },
+  },
+
   // Icon position variations
   before: {
     marginRight: `var(${iconSpacingVar})`,
@@ -437,17 +443,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const {
-    appearance,
-    // eslint-disable-next-line deprecation/deprecation
-    block,
-    disabled,
-    disabledFocusable,
-    iconOnly,
-    iconPosition,
-    shape,
-    size,
-  } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -455,7 +451,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     // Root styles
     rootStyles.base,
     rootStyles.highContrast,
-    block && rootStyles.block,
     appearance && rootStyles[appearance],
     rootStyles[size],
     rootStyles[shape],
@@ -483,6 +478,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       buttonClassNames.icon,
       iconStyles.base,
       state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      appearance === 'subtle' && iconStyles.subtle,
       iconStyles[size],
       state.icon.className,
     );

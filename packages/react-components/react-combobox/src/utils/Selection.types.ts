@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { OptionValue } from './OptionCollection.types';
 
 export type SelectionProps = {
   /* For an uncontrolled component, sets the initial selection */
@@ -13,11 +14,11 @@ export type SelectionProps = {
   multiselect?: boolean;
 
   /* Callback when an option is selected */
-  onSelect?(event: SelectionEvents, data: OnSelectData): void;
+  onOptionSelect?: (event: SelectionEvents, data: OptionOnSelectData) => void;
 
   /**
    * An array of selected option keys.
-   * Use this with `onSelect` to directly control the selected option(s)
+   * Use this with `onOptionSelect` to directly control the selected option(s)
    */
   selectedOptions?: string[];
 };
@@ -26,12 +27,19 @@ export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>> &
 
 /* Values returned by the useSelection hook */
 export type SelectionValue = {
+  clearSelection: (event: SelectionEvents) => void;
   selectedOptions: string[];
-  selectOption: (event: SelectionEvents, optionValue: string) => void;
+  selectOption: (event: SelectionEvents, option: OptionValue) => void;
 };
 
-/* Data for the onSelect callback */
-export type OnSelectData = { optionValue: string; selectedOptions: string[] };
+/*
+ * Data for the onOptionSelect callback.
+ * `optionValue` will be undefined if the multiple options are modified at once.
+ */
+export type OptionOnSelectData = { optionValue: string | undefined; selectedOptions: string[] };
 
-/* Possible event types for onSelect */
-export type SelectionEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
+/* Possible event types for onOptionSelect */
+export type SelectionEvents =
+  | React.ChangeEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.MouseEvent<HTMLElement>;

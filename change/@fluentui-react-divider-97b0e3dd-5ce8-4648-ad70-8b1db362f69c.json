@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-divider: Move to new common folder.",
-  "packageName": "@fluentui/react-divider",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

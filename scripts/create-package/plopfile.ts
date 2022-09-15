@@ -6,18 +6,18 @@ import * as jju from 'jju';
 import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
+import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
 import { findGitRoot, PackageJson } from '../monorepo/index';
-import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 
 const root = findGitRoot();
 
 const v8ReferencePackages = {
-  react: ['react'],
-  node: ['codemods'],
+  react: ['@fluentui/react'],
+  node: ['@fluentui/codemods'],
 };
 const convergedReferencePackages = {
-  react: ['react-provider'],
-  node: ['babel-make-styles'],
+  react: ['@fluentui/react-provider'],
+  node: ['@fluentui/react-conformance-griffel'],
 };
 
 interface Answers {
@@ -188,11 +188,20 @@ function replaceVersionsFromReference(
   newPackageJson: PackageJson,
   answers: Answers,
 ): void {
+  if (referencePackages.length === 0) {
+    return;
+  }
+
   const depTypes = ['dependencies', 'devDependencies', 'peerDependencies'] as const;
 
   // Read the package.json files of the given reference packages and combine into one object.
   // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
-  const packageJsons = referencePackages.map(pkg => fs.readJSONSync(path.join(root, 'packages', pkg, 'package.json')));
+  const packageJsons = referencePackages.map(pkgName => {
+    const metadata = getProjectMetadata({ root, name: pkgName });
+
+    return fs.readJSONSync(path.join(metadata.root, 'package.json'));
+  });
+
   const referenceDeps: Pick<PackageJson, 'dependencies' | 'devDependencies' | 'peerDependencies'> = _.merge(
     {},
     ...packageJsons.map(pkg => _.pick(pkg, ...depTypes)),
@@ -226,10 +235,6 @@ function replaceVersionsFromReference(
   if (answers.isConverged) {
     if (packageJsons[0].version?.[0] !== '9') {
       throw new Error(`Converged reference package ${packageJsons[0].name} does not appear to have version 9.x`);
-    }
-    // Update beachball config in package.json to match the current v9
-    if (packageJsons[0].beachball) {
-      newPackageJson.beachball = packageJsons[0].beachball;
     }
   }
 }
@@ -290,4 +295,12 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
 
   fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
+}
+
+function getProjectMetadata(options: { root: string; name: string }) {
+  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
+    fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
+  );
+
+  return nxWorkspace.projects[options.name];
 }

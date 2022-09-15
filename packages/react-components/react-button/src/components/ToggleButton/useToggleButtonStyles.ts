@@ -1,4 +1,5 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
@@ -11,12 +12,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
-/**
- * @deprecated Use `toggleButtonClassName.root` instead.
- */
-export const toggleButtonClassName = toggleButtonClassNames.root;
-
-export const useCheckedStyles = makeStyles({
+const useCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
@@ -48,18 +44,37 @@ export const useCheckedStyles = makeStyles({
   // High contrast styles
   highContrast: {
     '@media (forced-colors: active)': {
+      backgroundColor: 'Highlight',
       ...shorthands.borderColor('Highlight'),
-      color: 'Highlight',
+      color: 'HighlightText',
+      forcedColorAdjust: 'none',
+
+      ':hover': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+
+      ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
 
       ':focus': {
         ...shorthands.borderColor('Highlight'),
       },
     },
   },
+  highContrastFocusStyles: createCustomFocusIndicatorStyle({
+    ...shorthands.border('1px', 'solid', 'HighlightText'),
+    outlineColor: 'Highlight',
+  }),
 
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
@@ -68,6 +83,10 @@ export const useCheckedStyles = makeStyles({
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
+
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    }),
   },
   primary: {
     backgroundColor: tokens.colorBrandBackgroundSelected,
@@ -92,18 +111,18 @@ export const useCheckedStyles = makeStyles({
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: tokens.colorNeutralForeground2Selected,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
@@ -125,7 +144,7 @@ export const useCheckedStyles = makeStyles({
   },
 });
 
-export const useDisabledStyles = makeStyles({
+const useDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -164,31 +183,46 @@ export const useDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
+    },
+  },
+});
+
+const useIconStyles = makeStyles({
+  // Appearance variations
+  subtle: {
+    color: tokens.colorNeutralForeground2BrandSelected,
+
+    ':hover': {
+      color: tokens.colorNeutralForeground2BrandHover,
+    },
+
+    ':hover:active': {
+      color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
 });
@@ -196,6 +230,7 @@ export const useDisabledStyles = makeStyles({
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   const checkedStyles = useCheckedStyles();
   const disabledStyles = useDisabledStyles();
+  const iconStyles = useIconStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
@@ -216,7 +251,11 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(toggleButtonClassNames.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      toggleButtonClassNames.icon,
+      appearance === 'subtle' && iconStyles.subtle,
+      state.icon.className,
+    );
   }
 
   useButtonStyles_unstable(state);

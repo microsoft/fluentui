@@ -4,26 +4,27 @@ import { render, screen } from '@testing-library/react';
 
 import { isConformant } from '../../common/isConformant';
 import { Alert } from './Alert';
+import { alertClassNames } from './useAlertStyles';
 
 describe('Alert', () => {
   isConformant({
     Component: Alert,
     displayName: 'Alert',
-    // TODO - Follow up on the best option here
-    // testOptions: {
-    //   'has-static-classnames': [
-    //     {
-    //       props: {
-    //         action: { children: 'Test button ' },
-    //       },
-    //     },
-    //   ],
-    // },
-    disabledTests: [
-      // 'component-has-static-classname',
-      // 'component-has-static-classname-exported',
-      'component-has-static-classnames-object',
-    ],
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            action: 'Test Action',
+          },
+          expectedClassNames: {
+            root: alertClassNames.root,
+            icon: alertClassNames.icon,
+            action: alertClassNames.action,
+          },
+        },
+      ],
+    },
   });
 
   // TODO - create visual regression tests in /apps/vr-tests
@@ -39,8 +40,17 @@ describe('Alert', () => {
     expect(screen.getByTestId('foo')).toBeTruthy();
   });
 
+  it('renders an avatar', () => {
+    render(<Alert avatar={{ name: 'John Doe' }}>Test</Alert>);
+    expect(screen.getByText('JD')).toBeTruthy();
+  });
+
   it('renders a button', () => {
-    render(<Alert action={{ appearance: 'transparent', children: 'Undo' }}>Test</Alert>);
+    render(
+      <Alert action={{ children: 'Undo' }} appearance="inverted">
+        Test
+      </Alert>,
+    );
     expect(screen.getByText('Undo')).toBeTruthy();
   });
 
@@ -51,5 +61,25 @@ describe('Alert', () => {
       </Alert>,
     );
     expect(screen.getByTestId('foo')).toBeTruthy();
+  });
+
+  it('sets alert role based on intent', () => {
+    render(
+      <>
+        <Alert intent="error" data-testid="error">
+          Test
+        </Alert>
+        <Alert intent="error" data-testid="warning">
+          Test
+        </Alert>
+      </>,
+    );
+    expect(screen.getByTestId('error').getAttribute('role')).toBe('alert');
+    expect(screen.getByTestId('warning').getAttribute('role')).toBe('alert');
+  });
+
+  it('sets status role by default', () => {
+    render(<Alert data-testid="default">Test</Alert>);
+    expect(screen.getByTestId('default').getAttribute('role')).toBe('status');
   });
 });

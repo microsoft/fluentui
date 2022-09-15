@@ -19,27 +19,27 @@ const useActiveIndicatorStyles = makeStyles({
     ...shorthands.overflow('visible'),
   },
   animated: {
-    ':after': {
+    '::after': {
       transitionProperty: 'transform',
       transitionDuration: `${tokens.durationSlow}`,
       transitionTimingFunction: `${tokens.curveDecelerateMax}`,
     },
     '@media (prefers-reduced-motion: reduce)': {
-      ':after': {
+      '::after': {
         transitionProperty: 'none',
         transitionDuration: '0.01ms',
       },
     },
   },
   horizontal: {
-    ':after': {
+    '::after': {
       transformOrigin: 'left',
       transform: `translateX(var(${tabIndicatorCssVars_unstable.offsetVar}))
     scaleX(var(${tabIndicatorCssVars_unstable.scaleVar}))`,
     },
   },
   vertical: {
-    ':after': {
+    '::after': {
       transformOrigin: 'top',
       transform: `translateY(var(${tabIndicatorCssVars_unstable.offsetVar}))
         scaleY(var(${tabIndicatorCssVars_unstable.scaleVar}))`,

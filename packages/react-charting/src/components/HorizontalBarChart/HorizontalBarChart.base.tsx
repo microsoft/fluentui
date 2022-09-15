@@ -11,7 +11,7 @@ import {
   IRefArrayData,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
@@ -90,7 +90,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     {points!.chartTitle && (
                       <div
                         className={this._classNames.chartDataText}
-                        {...this._getAccessibleDataObject(points!.chartTitleAccessibilityData)}
+                        {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}
                       >
                         {points!.chartTitle}
                       </div>
@@ -130,12 +130,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           isBeakVisible={false}
           gapSpace={30}
           hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-          directionalHint={DirectionalHint.rightTopEdge}
+          directionalHint={DirectionalHint.topAutoEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
-          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData)}
+          {...getAccessibleDataObject(this.state.callOutAccessibilityData)}
         >
           <>
             {this.props.onRenderCalloutPerHorizontalBar ? (
@@ -224,7 +224,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
-    const accessibilityData = this._getAccessibleDataObject(data.chartDataAccessibilityData!);
+    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!);
     switch (chartDataMode) {
       case 'default':
         return (
@@ -274,6 +274,22 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     let prevPosition = 0;
     let value = 0;
 
+    let sumOfPercent = 0;
+    data.chartData!.map((point: IChartDataPoint, index: number) => {
+      const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
+      value = (pointData / total) * 100;
+      if (value < 0) {
+        value = 0;
+      } else if (value < 1 && value !== 0) {
+        value = 1;
+      }
+      sumOfPercent += value;
+
+      return sumOfPercent;
+    });
+
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
@@ -284,12 +300,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       if (value < 0) {
         value = 0;
       } else if (value < 1 && value !== 0) {
-        value = 1;
+        value = 1 / scalingRatio;
+      } else {
+        value = value / scalingRatio;
       }
       startingPoint.push(prevPosition);
-      if (value < 1) {
-        return <React.Fragment key={index}> </React.Fragment>;
-      }
+
       const xValue = point.horizontalBarChartdata!.x;
       return (
         <rect
@@ -317,16 +333,5 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this.setState({
       isCalloutVisible: false,
     });
-  };
-
-  private _getAccessibleDataObject = (accessibleData?: IAccessibilityProps, role: string = 'text') => {
-    accessibleData = accessibleData ?? {};
-    return {
-      role,
-      'data-is-focusable': true,
-      'aria-label': accessibleData!.ariaLabel,
-      'aria-labelledby': accessibleData!.ariaLabelledBy,
-      'aria-describedby': accessibleData!.ariaDescribedBy,
-    };
   };
 }

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated to focus on current selected tab",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

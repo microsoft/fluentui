@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Source } from '@storybook/addon-docs';
-import { makeStyles } from '@griffel/react';
+import { makeStyles } from '@fluentui/react-components';
 
 const useCodeComparisonStyles = makeStyles({
   root: {

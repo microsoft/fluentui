@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -17,16 +19,18 @@ export const renderSelect_unstable: (state: SelectState) => JSX.Element;
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
 
-// @public @deprecated (undocumented)
-export const selectClassName = "fui-Select";
-
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;
 
+// @public
+export type SelectOnChangeData = {
+    value: string;
+};
+
 // @public (undocumented)
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    inline?: boolean;
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
+    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+    onChange?: (ev: React_2.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
     size?: 'small' | 'medium' | 'large';
 };
 
@@ -38,7 +42,7 @@ export type SelectSlots = {
 };
 
 // @public (undocumented)
-export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'inline' | 'size'>>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
 
 // @public
 export const useSelect_unstable: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;

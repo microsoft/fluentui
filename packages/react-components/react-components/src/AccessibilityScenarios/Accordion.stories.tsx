@@ -1,9 +1,14 @@
 import * as React from 'react';
 
-import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
-import { Label } from '@fluentui/react-label';
-import { Input } from '@fluentui/react-input';
-import { Button } from '@fluentui/react-button';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  Button,
+  Input,
+  Label,
+} from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 

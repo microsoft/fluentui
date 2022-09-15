@@ -7,10 +7,6 @@ import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `menuItemClassNames.root` instead.
- */
-export const menuItemClassName = 'fui-MenuItem';
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   root: 'fui-MenuItem',
   icon: 'fui-MenuItem__icon',
@@ -25,7 +21,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
@@ -42,10 +38,12 @@ const useStyles = makeStyles({
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: tokens.colorNeutralForeground2BrandSelected,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
+      },
+      [`& .${menuItemClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandSelected,
       },
     },
 

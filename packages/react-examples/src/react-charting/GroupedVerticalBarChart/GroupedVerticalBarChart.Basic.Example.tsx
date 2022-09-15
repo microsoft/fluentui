@@ -134,7 +134,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
-        <label htmlFor="changeWidth_Basic">change Width:</label>
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -142,8 +142,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           max={1000}
           id="changeWidth_Basic"
           onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Basic">change Height:</label>
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -151,9 +152,10 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           max={1000}
           id="changeHeight_Basic"
           onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
         <br />
-        <label htmlFor="changeBarwidth">change Barwidth:</label>
+        <label htmlFor="changeBarwidth">Change Barwidth:</label>
         <input
           type="range"
           value={this.state.barwidth}
@@ -161,6 +163,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           max={70}
           id="changeBarwidth"
           onChange={this._onBarwidthChange}
+          aria-valuetext={`ChangeBarwidthslider${this.state.barwidth}`}
         />
         <label>{this.state.barwidth}</label>
         <ChoiceGroup

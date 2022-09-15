@@ -57,7 +57,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   public render(): JSX.Element | null {
-    const { styles, groups, className, isOnTop, theme } = this.props;
+    const { styles, groups, className, isOnTop, role = 'navigation', theme } = this.props;
 
     if (!groups) {
       return null;
@@ -68,8 +68,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone}>
-        <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
+      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone} {...this.props.focusZoneProps}>
+        <nav role={role} className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>
       </FocusZone>
@@ -161,7 +161,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     let finalExpandBtnAriaLabel = '';
     if (link.links && link.links.length > 0) {
       if (link.collapseAriaLabel || link.expandAriaLabel) {
-        finalExpandBtnAriaLabel = link.isExpanded ? link.collapseAriaLabel! : link.expandAriaLabel!;
+        // still respect link.collapseAriaLabel, even though it's deprecated in favor of expandAriaLabel
+        const collapseAriaLabel = link.collapseAriaLabel ?? link.expandAriaLabel;
+
+        finalExpandBtnAriaLabel = link.isExpanded ? collapseAriaLabel! : link.expandAriaLabel!;
       } else {
         // TODO remove when `expandButtonAriaLabel` is removed. This is not an ideal concatenation for localization.
         finalExpandBtnAriaLabel = expandButtonAriaLabel ? `${link.name} ${expandButtonAriaLabel}` : link.name;
@@ -261,7 +264,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups,
     });
 
-    const label = (isExpanded ? group.collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
+    // respect deprecated collapseAriaLabel, but default to expandAriaLabel for both states
+    // eslint-disable-next-line deprecation/deprecation
+    const collapseAriaLabel = group.collapseAriaLabel ?? group.expandAriaLabel;
+    const label = (isExpanded ? collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
 
     const { onHeaderClick } = group;
 

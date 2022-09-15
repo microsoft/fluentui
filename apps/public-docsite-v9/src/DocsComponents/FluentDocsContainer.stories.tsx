@@ -24,7 +24,9 @@ export const FluentDocsContainer: React.FC<IFluentDocsContainerProps> = ({ child
       </FluentProvider>
 
       {/** TODO add table of contents */}
-      <DocsContainer context={context}>{children}</DocsContainer>
+      <FluentProvider style={{ backgroundColor: 'transparent' }} theme={webLightTheme}>
+        <DocsContainer context={context}>{children}</DocsContainer>
+      </FluentProvider>
     </>
   );
 };

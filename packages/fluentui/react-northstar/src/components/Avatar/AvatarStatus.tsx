@@ -8,7 +8,7 @@ import {
   useUnhandledProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
-import { commonPropTypes, SizeValue, UIComponentProps, createShorthandFactory, createShorthand } from '../../utils';
+import { commonPropTypes, UIComponentProps, createShorthandFactory, createShorthand } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
@@ -16,6 +16,7 @@ import { Accessibility, statusBehavior as avatarStatusBehavior, StatusBehaviorPr
 import { AvatarStatusIcon, AvatarStatusIconProps } from './AvatarStatusIcon';
 import { AvatarStatusImage, AvatarStatusImageProps } from './AvatarStatusImage';
 import { statusClassName } from '../Status/Status';
+import { AvatarSizeValue } from './Avatar';
 
 export interface AvatarStatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -31,7 +32,7 @@ export interface AvatarStatusProps extends UIComponentProps {
   image?: ShorthandValue<AvatarStatusImageProps>;
 
   /** Size multiplier */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 
   /** The pre-defined state values which can be consumed directly. */
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';

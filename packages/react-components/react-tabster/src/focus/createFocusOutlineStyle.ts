@@ -39,7 +39,7 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
 
   return {
     ...shorthands.borderColor('transparent'),
-    ':after': {
+    '::after': {
       content: '""',
       position: 'absolute',
       pointerEvents: 'none',

@@ -14,12 +14,10 @@ storiesOf('Link Converged - Rendered as anchor', module)
         .hover('.fui-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
         // This needs to be added so that the focus outline is shown correctly
-        .executeScript(
-          "document.getElementsByClassName('fui-FluentProvider')[0].setAttribute('data-keyboard-nav', true)",
-        )
+        .executeScript("document.getElementsByClassName('fui-Link')[0].classList.add('fui-focus-visible')")
         .focus('.fui-Link')
         .snapshot('focused', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('fui-FluentProvider')[0].removeAttribute('data-keyboard-nav')")
+        .executeScript("document.getElementsByClassName('fui-Link')[0].classList.remove('fui-focus-visible')")
         .mouseDown('.fui-Link')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .mouseUp('.fui-Link')
@@ -96,12 +94,10 @@ storiesOf('Link Converged - Rendered as button', module)
         .hover('.fui-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
         // This needs to be added so that the focus outline is shown correctly
-        .executeScript(
-          "document.getElementsByClassName('fui-FluentProvider')[0].setAttribute('data-keyboard-nav', true)",
-        )
+        .executeScript("document.getElementsByClassName('fui-Link')[0].classList.add('fui-focus-visible')")
         .focus('.fui-Link')
         .snapshot('focused', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('fui-FluentProvider')[0].removeAttribute('data-keyboard-nav')")
+        .executeScript("document.getElementsByClassName('fui-Link')[0].classList.remove('fui-focus-visible')")
         .mouseDown('.fui-Link')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .mouseUp('.fui-Link')

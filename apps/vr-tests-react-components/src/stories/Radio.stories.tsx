@@ -85,9 +85,9 @@ storiesOf('Radio Converged', module)
     { includeRtl: true },
   )
   .addStory(
-    'group-horizontalStacked',
+    'group-horizontal-stacked',
     () => (
-      <RadioGroup layout="horizontalStacked">
+      <RadioGroup layout="horizontal-stacked">
         <Radio value="A" label="Option A" defaultChecked />
         <Radio value="B" label="Option B" />
         <Radio value="C" label="Option C" />

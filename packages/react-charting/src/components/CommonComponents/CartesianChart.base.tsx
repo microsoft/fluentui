@@ -25,6 +25,7 @@ import {
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
+  rotateXAxisLabels,
   Points,
   pointTypes,
 } from '../../utilities/index';
@@ -68,6 +69,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private _reqID: number;
   private _isRtl: boolean = getRTL();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xScale: any;
+
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
     this.state = {
@@ -105,10 +109,42 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
     }
+
+    if (
+      !this.props.wrapXAxisLables &&
+      this.props.rotateXAxisLables &&
+      this.props.xAxisType! === XAxisTypes.StringAxis
+    ) {
+      const rotateLabelProps = {
+        node: this.xAxisElement,
+        xAxis: this._xScale,
+      };
+      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
+      if (
+        this.state.isRemoveValCalculated &&
+        this.state._removalValueForTextTuncate !== rotatedHeight! + this.margins.bottom! &&
+        rotatedHeight! > 0
+      ) {
+        this.setState({
+          _removalValueForTextTuncate: rotatedHeight! + this.margins.bottom!,
+          isRemoveValCalculated: false,
+        });
+      }
+    }
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps, culture } = this.props;
+    const {
+      calloutProps,
+      points,
+      chartType,
+      chartHoverProps,
+      svgFocusZoneProps,
+      svgProps,
+      culture,
+      dateLocalizeOptions,
+      timeFormatLocale,
+    } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -162,7 +198,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
+        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, culture, dateLocalizeOptions, timeFormatLocale);
         break;
       case XAxisTypes.StringAxis:
         xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
@@ -170,9 +206,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       default:
         xScale = createNumericXAxis(XAxisParams, culture);
     }
+    this._xScale = xScale;
 
     /*
-     * To enable wrapping of x axis tick values or to disaply complete x axis tick values,
+     * To enable wrapping of x axis tick values or to display complete x axis tick values,
      * we need to calculate how much space it needed to render the text.
      * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
      * Required space will be calculated first time chart rendering and if any width/height of chart updated.
@@ -460,25 +497,29 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         // If there is no legend, need not to allocate some space from total chart space.
         legendContainerHeight = 0;
       } else {
-        const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+        const legendContainerComputedStyles = this.legendContainer && getComputedStyle(this.legendContainer);
         legendContainerHeight =
-          (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
-          parseFloat(legendContainerComputedStyles.marginTop || '0') +
-          parseFloat(legendContainerComputedStyles.marginBottom || '0');
+          ((this.legendContainer && this.legendContainer.getBoundingClientRect().height) ||
+            this.minLegendContainerHeight) +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
       }
-      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight =
-        container.getBoundingClientRect().height > legendContainerHeight
-          ? container.getBoundingClientRect().height
-          : 350;
-      const shouldResize =
-        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+      if (this.props.parentRef || this.chartContainer) {
+        const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
+        const currentContainerWidth = container.getBoundingClientRect().width;
+        const currentContainerHeight =
+          container.getBoundingClientRect().height > legendContainerHeight
+            ? container.getBoundingClientRect().height
+            : 350;
+        const shouldResize =
+          containerWidth !== currentContainerWidth ||
+          containerHeight !== currentContainerHeight - legendContainerHeight;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          });
+        }
       }
     });
   }

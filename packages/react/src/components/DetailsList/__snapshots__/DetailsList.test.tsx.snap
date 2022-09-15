@@ -4557,7 +4557,6 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -4823,7 +4822,6 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -5105,7 +5103,6 @@ exports[`DetailsList handles updates to items and groups 1`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={9}
       role="grid"
     >
@@ -5473,7 +5470,6 @@ exports[`DetailsList handles updates to items and groups 2`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={9}
       role="grid"
     >
@@ -5841,7 +5837,6 @@ exports[`DetailsList handles updates to items and groups 3`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -6123,7 +6118,6 @@ exports[`DetailsList handles updates to items and groups 4`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -6246,13 +6240,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D1
+                                  A1
                                 </div>
                                 <div>
-                                  E1
+                                  B1
                                 </div>
                                 <div>
-                                  F1
+                                  C1
                                 </div>
                               </div>
                             </div>
@@ -6264,13 +6258,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D2
+                                  A2
                                 </div>
                                 <div>
-                                  E2
+                                  B2
                                 </div>
                                 <div>
-                                  F2
+                                  C2
                                 </div>
                               </div>
                             </div>
@@ -6325,13 +6319,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D3
+                                  A3
                                 </div>
                                 <div>
-                                  E3
+                                  B3
                                 </div>
                                 <div>
-                                  F3
+                                  C3
                                 </div>
                               </div>
                             </div>
@@ -6343,13 +6337,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D4
+                                  A4
                                 </div>
                                 <div>
-                                  E4
+                                  B4
                                 </div>
                                 <div>
-                                  F4
+                                  C4
                                 </div>
                               </div>
                             </div>
@@ -6404,7 +6398,6 @@ exports[`DetailsList renders List correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -6636,7 +6629,7 @@ exports[`DetailsList renders List correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -6682,7 +6675,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -7388,7 +7381,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
   >
     <div
       aria-colcount={6}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -7620,7 +7612,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -7666,7 +7658,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -8469,7 +8461,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -8701,7 +8692,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -8747,7 +8738,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -9454,7 +9445,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -9686,7 +9676,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -9732,7 +9722,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -10438,7 +10428,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
   >
     <div
       aria-colcount={6}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -10670,7 +10659,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -10716,7 +10705,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -11533,7 +11522,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={8}
       role="grid"
     >
@@ -12334,7 +12322,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-expanded={true}
                         aria-labelledby="GroupHeader5"
-                        aria-level={1}
                         aria-rowindex={2}
                         className=
                             ms-GroupHeader
@@ -12384,7 +12371,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={0}
+                        data-selection-span={2}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -12523,7 +12511,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader5"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -12568,7 +12558,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={3}
                                 aria-selected={false}
                                 className=
@@ -12682,7 +12671,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -12738,7 +12726,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     0
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -12794,7 +12781,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 0
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -12874,7 +12860,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={4}
                                 aria-selected={false}
                                 className=
@@ -12988,7 +12973,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13044,7 +13028,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     1
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13100,7 +13083,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 1
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13201,7 +13183,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-expanded={true}
                         aria-labelledby="GroupHeader7"
-                        aria-level={1}
                         aria-rowindex={5}
                         className=
                             ms-GroupHeader
@@ -13251,7 +13232,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={2}
+                        data-selection-span={3}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -13390,7 +13372,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader7"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -13435,7 +13419,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={6}
                                 aria-selected={false}
                                 className=
@@ -13549,7 +13532,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13605,7 +13587,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     2
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13661,7 +13642,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 2
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13741,7 +13721,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={7}
                                 aria-selected={false}
                                 className=
@@ -13855,7 +13834,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13911,7 +13889,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     3
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -13967,7 +13944,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 3
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -14047,7 +14023,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={8}
                                 aria-selected={false}
                                 className=
@@ -14161,7 +14136,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -14217,7 +14191,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     4
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -14273,7 +14246,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 4
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {

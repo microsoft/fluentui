@@ -2,10 +2,6 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { RadioGroupSlots, RadioGroupState } from './RadioGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `radioGroupClassNames.root` instead.
- */
-export const radioGroupClassName = 'fui-RadioGroup';
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots> = {
   root: 'fui-RadioGroup',
 };

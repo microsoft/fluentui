@@ -1,7 +1,5 @@
 export {
   Divider,
-  // eslint-disable-next-line deprecation/deprecation
-  dividerClassName,
   dividerClassNames,
   renderDivider_unstable,
   useDividerStyles_unstable,

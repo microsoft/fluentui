@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -19,67 +21,61 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 
 // @public (undocumented)
-export type ComboboxContextValues = {
-    combobox: ComboboxContextValue;
-};
-
-// @public
-export type ComboboxOpenChangeData = {
-    open: boolean;
-};
+export type ComboboxContextValues = ComboboxBaseContextValues;
 
 // @public (undocumented)
-export type ComboboxOpenEvents = React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
+export type ComboboxOpenChangeData = ComboboxBaseOpenChangeData;
+
+// @public (undocumented)
+export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
 
 // @public
-export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & SelectionProps & {
-    appearance?: 'filledDarker' | 'filledLighter' | 'outline' | 'underline';
-    defaultOpen?: boolean;
-    defaultValue?: string;
-    inline?: boolean;
-    onOpenChange?: (e: ComboboxOpenEvents, data: ComboboxOpenChangeData) => void;
-    open?: boolean;
-    placeholder?: string;
-    positioning?: PositioningShorthand;
-    size?: 'small' | 'medium' | 'large';
-    value?: string;
+export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & ComboboxBaseProps & {
+    freeform?: boolean;
+    children?: React_2.ReactNode;
 };
 
 // @public (undocumented)
 export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
-    listbox: NonNullable<Slot<typeof Listbox>>;
-    trigger: NonNullable<Slot<typeof ComboButton>>;
-};
-
-// @public
-export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxProps, 'appearance' | 'inline' | 'open' | 'size'>> & Pick<ComboboxProps, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
-    activeOption?: OptionValue;
-    onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
-};
-
-// @public
-export const ComboButton: ForwardRefComponent<ComboButtonProps>;
-
-// @public (undocumented)
-export const comboButtonClassNames: SlotClassNames<ComboButtonSlots>;
-
-// @public
-export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    placeholder?: string;
-    value?: string;
-};
-
-// @public (undocumented)
-export type ComboButtonSlots = {
-    root: NonNullable<Slot<'div'>>;
-    content: NonNullable<Slot<'button'>>;
     expandIcon: Slot<'span'>;
+    input: NonNullable<Slot<'input'>>;
+    listbox?: Slot<typeof Listbox>;
 };
 
 // @public
-export type ComboButtonState = ComponentState<ComboButtonSlots> & Pick<ComboboxState, 'appearance' | 'size'>;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+
+// @public
+export const Dropdown: ForwardRefComponent<DropdownProps>;
+
+// @public (undocumented)
+export const dropdownClassNames: SlotClassNames<DropdownSlots>;
+
+// @public (undocumented)
+export type DropdownContextValues = ComboboxBaseContextValues;
+
+// @public (undocumented)
+export type DropdownOpenChangeData = ComboboxBaseOpenChangeData;
+
+// @public (undocumented)
+export type DropdownOpenEvents = ComboboxBaseOpenEvents;
+
+// @public
+export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & ComboboxBaseProps;
+
+// @public (undocumented)
+export type DropdownSlots = {
+    root: NonNullable<Slot<'div'>>;
+    expandIcon: Slot<'span'>;
+    button: NonNullable<Slot<'button'>>;
+    listbox?: Slot<typeof Listbox>;
+};
+
+// @public
+export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
+    placeholderVisible: boolean;
+};
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
@@ -103,7 +99,9 @@ export type ListboxSlots = {
 // @public
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
-    onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
+    focusVisible: boolean;
+    selectOption(event: SelectionEvents, option: OptionValue): void;
+    setActiveOption(option?: OptionValue): void;
 };
 
 // @public
@@ -146,6 +144,7 @@ export type OptionSlots = {
 // @public
 export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disabled'> & {
     active: boolean;
+    focusVisible: boolean;
     multiselect?: boolean;
     selected: boolean;
 };
@@ -154,7 +153,7 @@ export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disab
 export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
 
 // @public
-export const renderComboButton_unstable: (state: ComboButtonState) => JSX.Element;
+export const renderDropdown_unstable: (state: DropdownState, contextValues: DropdownContextValues) => JSX.Element;
 
 // @public
 export const renderListbox_unstable: (state: ListboxState, contextValues: ListboxContextValues) => JSX.Element;
@@ -166,16 +165,16 @@ export const renderOption_unstable: (state: OptionState) => JSX.Element;
 export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
 
 // @public
-export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLButtonElement>) => ComboboxState;
+export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;
 
 // @public
-export const useComboButton_unstable: (props: ComboButtonProps, ref: React_2.Ref<HTMLButtonElement>) => ComboButtonState;
+export const useDropdown_unstable: (props: DropdownProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownState;
 
 // @public
-export const useComboButtonStyles_unstable: (state: ComboButtonState) => ComboButtonState;
+export const useDropdownStyles_unstable: (state: DropdownState) => DropdownState;
 
 // @public
 export const useListbox_unstable: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;

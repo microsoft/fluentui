@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 
 export const AnchorToTarget = () => {
   const [target, setTarget] = React.useState<HTMLElement | null>(null);
   return (
     <div style={{ display: 'flex', gap: 10 }}>
-      <Popover positioning={{ position: 'above', align: 'start', target }} noArrow>
+      <Popover positioning={{ position: 'above', align: 'start', target }}>
         <PopoverTrigger>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>

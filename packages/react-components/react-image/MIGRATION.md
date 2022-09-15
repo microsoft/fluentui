@@ -2,28 +2,28 @@
 
 ## Introduction
 
-This guide is a reference for upgrading the Image component from v8 (Fabric) or v0 (Northstar) to v9 (FluentUI vNext).
+This guide is a reference for upgrading the `Image` component from v8 or v0 to v9 .
 
-## Migration from v8 (Fabric)
+## Migration from v8
 
 ### Property mapping
 
-The table below presents a mapping of props between the v8 (FabricUI) and v9 (Fluent UI vNext) in order to clarify which properties require changes to achieve the same result.
+The table below presents a mapping of props between the v8 and v9 `Image` components in order to clarify which properties require changes to achieve the same result.
 
 > ⚠️ Note - Properties not in this table are considered deprecated.
 
-| v7 / v8                 | v9      | Good to go? |
-| ----------------------- | ------- | ----------- |
-| `className`             | -       | ✔️          |
-| `coverStyle`            | `fit`   | ⚠️          |
-| `imageFit`              | `fit`   | ✔️          |
-| `maximizeFrame`         | `block` | ✔️          |
-| `loading`               | -       | ✔️          |
-| `onLoadingStateChanged` | -       | ❌          |
-| `shouldFadeIn`          | -       | ❌          |
-| `shouldStartVisible`    | -       | ❌          |
-| `styles`                | -       | ❌          |
-| `theme`                 | -       | ❓          |
+| v7 / v8                 | v9              | Good to go? |
+| ----------------------- | --------------- | ----------- |
+| `className`             | `className`     | ✔️          |
+| `coverStyle`            | `fit="cover"`   | ⚠️          |
+| `imageFit`              | `fit="contain"` | ✔️          |
+| `maximizeFrame`         | `block`         | ✔️          |
+| `loading`               | -               | ❌          |
+| `onLoadingStateChanged` | -               | ❌          |
+| `shouldFadeIn`          | -               | ❌          |
+| `shouldStartVisible`    | -               | ❌          |
+| `styles`                | -               | ❌          |
+| `theme`                 | -               | ❌          |
 
 ### className
 
@@ -55,7 +55,7 @@ This prop has been renamed to `block` which will result in the same behaviour as
 
 ### loading
 
-_This property has not changed and can be used as is._
+For v9, this feature is no longer supported. The alternative is to use the global events such as: `onLoad`, `onError` to detect the image loading state.
 
 ### onLoadingStateChanged
 
@@ -127,27 +127,27 @@ export default function App() {
 
 ### styles
 
-_This property has not changed and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
+For v9, you should migrate to use `make-styles` and do style customizations through the `className` prop.
 
 ### theme
 
-_This property has not changed and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
+For v9, you should use `tokens` in conjunction with `make-styles` and `FluentProvider` to achieve theming correctly.
 
-## Migration from v0 (Northstar)
+## Migration from v0
 
 ### Property mapping
 
-The table below presents a mapping of props between the v0 and v9 versions in order to make it clear which properties require changes to achieve the same result.
+The table below presents a mapping of props between the v0 and v9 versions of `Image` in order to make it clear which properties require changes to achieve the same result.
 
 | v0              | v9                 | Good to go? |
 | --------------- | ------------------ | ----------- |
 | `accessibility` | -                  | ❌          |
-| `alt`           | -                  | ✔️          |
-| `aria-label`    | -                  | ✔️          |
+| `alt`           | `alt`              | ✔️          |
+| `aria-label`    | `aria-label`       | ✔️          |
 | `as`            | -                  | ❌          |
 | `avatar`        | `shape="circular"` | ✔️          |
 | `circular`      | `shape="circular"` | ✔️          |
-| `className`     | -                  | ✔️          |
+| `className`     | `className`        | ✔️          |
 | `fluid`         | `block`            | ✔️          |
 | `styles`        | -                  | ❌          |
 | `variables`     | -                  | ❌          |
@@ -156,8 +156,8 @@ The table below presents a mapping of props between the v0 and v9 versions in or
 
 For v9, this property is no longer supported. It is recommended to follow the best practices of a11y in order for Image to be accessible to assistive tools. Thus:
 
-- It is important for Image to have the `alt` description.
-- In case the Image is decorative only, have either `role="presentation"` or `aria-hidden`. Ensure the correct usage of these two attributes, based on your objectives.
+- It is important for `Image` to have the `alt` description.
+- In case the `Image` is decorative only, have either `role="presentation"` or `aria-hidden`. Ensure the correct usage of these two attributes, based on your objectives.
 
 ### alt
 
@@ -169,7 +169,7 @@ _This property has not changed and can be left as is._
 
 ### as
 
-For v9, this property is no longer supported. The Image prop will always be an `<img/>` element, it is not possible to show an image as any other element.
+For v9, this property is no longer supported. The `Image` prop will always be an `<img/>` element, it is not possible to show an image as any other element.
 
 ### avatar
 
@@ -201,13 +201,13 @@ This prop has been renamed to `block` which will result into the same behaviour 
 
 ### styles
 
-_This property has not changed and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
+For v9, you should migrate to use `make-styles` and do style customizations through the `className` prop.
 
 ### variables
 
 For v9, this feature is no longer supported. The alternative is to apply styles through `make-styles`. Below is an example of a migration:
 
-#### v0 (Northstar) implementation
+#### v0 implementation
 
 ```jsx
 const MyComponent = () => {
@@ -215,7 +215,7 @@ const MyComponent = () => {
 };
 ```
 
-#### v9 (Fluent UI vNext) implementation
+#### v9 implementation
 
 ```jsx
 import { Image } from '@fluentui/react-image';

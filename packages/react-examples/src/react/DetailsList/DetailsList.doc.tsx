@@ -24,7 +24,7 @@ import { DetailsListAdvancedExample } from './DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListProportionalColumnsExample } from './DetailsList.ProportionalColumns.Example';
-const DetailsListProportionalColumnsCode = require('!raw-loader!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
+const DetailsListProportionalColumnsCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Example.tsx') as string;
@@ -49,6 +49,9 @@ const DetailsListCustomFooterExampleCode = require('!raw-loader?esModule=false!@
 
 import { DetailsListKeyboardAccessibleResizeAndReorderExample } from './DetailsList.KeyboardAccessibleResizeAndReorder.Example';
 const DetailsListKeyboardAccessibleResizeAndReorderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardAccessibleResizeAndReorder.Example.tsx') as string;
+
+import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverrides.Example';
+const DetailsListKeyboardOverridesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
@@ -165,4 +168,10 @@ export const DetailsListKeyboardAccessibleResizeAndReorderProps: IDocPageProps =
   title: 'Keyboard-accessible column reordering and resizing',
   code: DetailsListKeyboardAccessibleResizeAndReorderExampleCode,
   view: <DetailsListKeyboardAccessibleResizeAndReorderExample />,
+});
+
+export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
+  title: 'Keyboard overrides for selection',
+  code: DetailsListKeyboardOverridesExampleCode,
+  view: <DetailsListKeyboardOverridesExample />,
 });

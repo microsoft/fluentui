@@ -1,11 +1,9 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+
 import type { AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 
-/**
- * @deprecated Use `accordionPanelClassNames.root` instead.
- */
-export const accordionPanelClassName = 'fui-AccordionPanel';
 export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots> = {
   root: 'fui-AccordionPanel',
 };
@@ -15,8 +13,7 @@ export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    marginRight: '12px',
-    marginLeft: '12px',
+    ...shorthands.margin(0, tokens.spacingHorizontalM),
   },
 });
 

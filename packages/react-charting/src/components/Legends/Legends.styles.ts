@@ -32,6 +32,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         border: 'none',
         padding: '8px',
         background: 'none',
+        textTransform: 'capitalize',
       },
     ],
     rect: {
@@ -80,7 +81,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       ...fonts.small,
       lineHeight: '16px',
       color: theme?.semanticColors.bodyText,
-      opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
+      opacity: props.colorOnSelectedState === palette.white ? '0.67' : '',
     },
     hoverChange: {
       width: '12px',

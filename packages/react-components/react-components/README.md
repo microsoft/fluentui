@@ -31,4 +31,4 @@ ReactDOM.render(
 
 ### Docs
 
-Docs are hosted at https://aka.ms/fluentui-storybook.
+Docs are hosted at https://react.fluentui.dev/.

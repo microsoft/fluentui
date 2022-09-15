@@ -1,8 +1,44 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 17 May 2022 07:45:01 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Sep 2022 07:54:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.5)
+
+Wed, 07 Sep 2022 07:54:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.4..@fluentui/web-components_v2.5.5)
+
+### Patches
+
+- update fast-foundation to latest packages to resovle 24561 ([PR #24657](https://github.com/microsoft/fluentui/pull/24657) by chhol@microsoft.com)
+
+## [2.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.4)
+
+Tue, 30 Aug 2022 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.3..@fluentui/web-components_v2.5.4)
+
+### Patches
+
+- update FAST packages to resolve issues with form constraint validation on form associated elements ([PR #24557](https://github.com/microsoft/fluentui/pull/24557) by chhol@microsoft.com)
+
+## [2.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.3)
+
+Thu, 16 Jun 2022 23:03:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.2..@fluentui/web-components_v2.5.3)
+
+### Patches
+
+- update to latest stable versions of FAST packages ([PR #23585](https://github.com/microsoft/fluentui/pull/23585) by chhol@microsoft.com)
+
+## [2.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.2)
+
+Tue, 07 Jun 2022 07:48:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.1..@fluentui/web-components_v2.5.2)
+
+### Patches
+
+- (web-components) Fix issue loading Color Explorer values ([PR #23392](https://github.com/microsoft/fluentui/pull/23392) by 47367562+bheston@users.noreply.github.com)
 
 ## [2.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.1)
 

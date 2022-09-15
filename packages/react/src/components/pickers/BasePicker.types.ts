@@ -6,6 +6,7 @@ import type { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggesti
 import type { ICalloutProps } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import type { IReactProps } from '../../common/React.types';
 import { IIconProps } from '../Icon/Icon.types';
 
 /**
@@ -37,8 +38,7 @@ export interface IBasePicker<T> {
  * displaying persona's then type T could either be of Persona or IPersona props
  * {@docCategory Pickers}
  */
-// eslint-disable-next-line deprecation/deprecation
-export interface IBasePickerProps<T> extends React.Props<any> {
+export interface IBasePickerProps<T> extends IReactProps<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

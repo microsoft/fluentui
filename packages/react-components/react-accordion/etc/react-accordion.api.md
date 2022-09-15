@@ -4,11 +4,16 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -16,14 +21,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
-// @public @deprecated (undocumented)
-export const accordionClassName = "fui-Accordion";
-
 // @public (undocumented)
 export const accordionClassNames: SlotClassNames<AccordionSlots>;
-
-// @public (undocumented)
-export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
 export type AccordionContextValue = Required<Pick<AccordionProps, 'collapsible'>> & Pick<AccordionProps, 'navigation'> & {
@@ -38,9 +37,6 @@ export type AccordionContextValues = {
 
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
-
-// @public @deprecated (undocumented)
-export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
@@ -72,7 +68,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 // @public (undocumented)
 export type AccordionHeaderSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    button: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
     expandIcon: Slot<'span'>;
     icon?: Slot<'div'>;
 };
@@ -86,14 +82,8 @@ export type AccordionIndex = number | number[];
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
-// @public @deprecated (undocumented)
-export const accordionItemClassName = "fui-AccordionItem";
-
 // @public (undocumented)
 export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
-
-// @public (undocumented)
-export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
 export type AccordionItemContextValue = Required<Pick<AccordionItemProps, 'disabled'>> & {
@@ -113,6 +103,9 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
 };
 
 // @public (undocumented)
+export const AccordionItemProvider: React_2.Provider<AccordionItemContextValue>;
+
+// @public (undocumented)
 export type AccordionItemSlots = {
     root: Slot<'div'>;
 };
@@ -125,9 +118,6 @@ export type AccordionItemValue = unknown;
 
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
-
-// @public @deprecated (undocumented)
-export const accordionPanelClassName = "fui-AccordionPanel";
 
 // @public (undocumented)
 export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
@@ -154,6 +144,9 @@ export type AccordionProps = ComponentProps<AccordionSlots> & {
     onToggle?: AccordionToggleEventHandler;
     openItems?: AccordionItemValue | AccordionItemValue[];
 };
+
+// @public (undocumented)
+export const AccordionProvider: Provider<AccordionContextValue> & FC<ProviderProps<AccordionContextValue>>;
 
 // @public (undocumented)
 export type AccordionSlots = {
@@ -188,6 +181,9 @@ export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.
 
 // @public
 export const useAccordion_unstable: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
+
+// @public (undocumented)
+export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue, T>) => T;
 
 // @public (undocumented)
 export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;

@@ -20,7 +20,7 @@ export interface PackageInfo {
 
 export type AllPackageInfo = { [packageName: string]: PackageInfo };
 
-export declare function findGitRoot(cwd?: string): string;
+export declare function findGitRoot(): string;
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package
@@ -37,11 +37,19 @@ export declare function getAllPackageInfo(): AllPackageInfo;
 
 /**
  * Determines whether a package is converged, based on its version.
- * @param packagePathOrJson optional different package path to run in OR previously-read package.json
+ *
+ * @param {Object} [options]
+ * @param {PathOrPackageJson} [options.packagePathOrJson] - optional different package path to run in OR previously-read package.json
  * (defaults to reading package.json from `process.cwd()`)
- * @returns true if it's a converged package (version >= 9)
+ * @param {'library' | 'application' | 'all'} [options.projectType] - filter for what project types you wanna apply the condition
+ *
+ * @returns {boolean} true if it's a converged package (version >= 9)
  */
-export declare function isConvergedPackage(packagePathOrJson?: string | PackageJson): boolean;
+
+export declare function isConvergedPackage(option?: {
+  packagePathOrJson?: string | PackageJson;
+  projectType?: 'library' | 'application' | 'all';
+}): boolean;
 
 /**
  * @param since - Commit to compare against
@@ -56,3 +64,27 @@ export declare function getAffectedPackages(since?: string): Set<string>;
  * @returns - A git commit SHA
  */
 export declare function getNthCommit(n = 1, ref = 'HEAD'): string;
+
+/**
+ *
+ * Gets project metadata from monorepo source of truth which is `workspace.json`
+ */
+export declare function getProjectMetadata(options: {
+  /**
+   * repo root path
+   */
+  root?: string;
+  /**
+   * package name
+   */
+  name: string;
+}): import('@nrwl/devkit').ProjectConfiguration;
+
+/**
+ * Returns all the dependencies of a given package name
+ * @param packageName - including `@fluentui/` prefix
+ * @param options
+ * @param options.dev - include dev dependencies
+ * @param options.production - include production dependencies
+ */
+export async function getDependencies(packageName: string, options?: { production?: true; dev?: true }): string[];

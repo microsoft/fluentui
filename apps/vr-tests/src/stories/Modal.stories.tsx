@@ -20,4 +20,9 @@ storiesOf('Modal', module)
     <Modal isOpen isBlocking={false}>
       Modal content
     </Modal>
+  ))
+  .addStory('Modeless', () => (
+    <Modal isModeless isOpen>
+      Modeless Modal content
+    </Modal>
   ));

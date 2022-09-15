@@ -1,7 +1,7 @@
-import { usePopper } from '@fluentui/react-positioning';
+import { usePositioning } from '@fluentui/react-positioning';
 
-console.log(usePopper);
+console.log(usePositioning);
 
 export default {
-  name: 'usePopper',
+  name: 'usePositioning',
 };

@@ -1,26 +1,24 @@
 {
   "name": "@fluentui/react-builder",
   "description": "A drag and drop UI builder.",
-  "version": "0.63.0",
+  "version": "0.64.0",
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/accessibility": "^0.63.0",
-    "@fluentui/code-sandbox": "^0.63.0",
-    "@fluentui/docs-components": "^0.63.0",
-    "@fluentui/react-component-event-listener": "^0.63.0",
-    "@fluentui/react-component-ref": "^0.63.0",
-    "@fluentui/react-icons-northstar": "^0.63.0",
-    "@fluentui/react-northstar": "^0.63.0",
+    "@fluentui/accessibility": "^0.64.0",
+    "@fluentui/code-sandbox": "^0.64.0",
+    "@fluentui/docs-components": "^0.64.0",
+    "@fluentui/react-component-event-listener": "^0.64.0",
+    "@fluentui/react-component-ref": "^0.64.0",
+    "@fluentui/react-icons-northstar": "^0.64.0",
+    "@fluentui/react-northstar": "^0.64.0",
     "axe-core": "3.5.0",
     "immer": "^9.0.12",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
-    "react": "16.14.0",
     "react-document-title": "^2.0.3",
-    "react-dom": "16.14.0",
     "react-frame-component": "^4.1.1",
-    "react-is": "^16.6.3",
+    "react-is": "^17.0.2",
     "use-immer": "^0.6.0"
   },
   "devDependencies": {
@@ -30,7 +28,9 @@
     "lerna-alias": "^3.0.3-0"
   },
   "peerDependencies": {
-    "@babel/standalone": "^7.8.3"
+    "@babel/standalone": "^7.8.3",
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17"
   },
   "files": [
     "dist"

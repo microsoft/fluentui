@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/stress-test",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "stress-test": "node ./scripts/stressTest.js",
+    "type-check": "tsc -b tsconfig.type.json"
+  },
+  "dependencies": {
+    "@fluentui/react": "^8.94.4",
+    "@fluentui/react-components": "^9.2.0",
+    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/web-components": "^2.5.5",
+    "@microsoft/fast-element": "^1.10.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  }
+}

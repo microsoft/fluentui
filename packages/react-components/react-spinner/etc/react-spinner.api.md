@@ -26,7 +26,6 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
     appearance?: 'primary' | 'inverted';
     labelPosition?: 'above' | 'below' | 'before' | 'after';
     size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
-    status?: 'active' | 'inactive';
 };
 
 // @public (undocumented)
@@ -37,7 +36,7 @@ export type SpinnerSlots = {
 };
 
 // @public
-export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerProps, 'appearance' | 'labelPosition' | 'size' | 'status'>>;
+export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerProps, 'appearance' | 'labelPosition' | 'size'>>;
 
 // @public
 export const useSpinner_unstable: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) => SpinnerState;

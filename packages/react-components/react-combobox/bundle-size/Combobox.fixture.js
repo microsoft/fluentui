@@ -1,7 +1,7 @@
-import { Combobox } from '@fluentui/react-combobox';
+import { Combobox, Listbox, Option, OptionGroup } from '@fluentui/react-combobox';
 
-console.log(Combobox);
+console.log(Combobox, Listbox, Option, OptionGroup);
 
 export default {
-  name: 'Combobox',
+  name: 'Combobox (including child components)',
 };

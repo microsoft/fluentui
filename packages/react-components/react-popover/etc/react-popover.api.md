@@ -4,21 +4,26 @@
 
 ```ts
 
+import { ARIAButtonResultProps } from '@fluentui/react-aria';
+import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
-import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -34,11 +39,8 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTM
 // @public
 export const Popover: React_2.FC<PopoverProps>;
 
-// @public (undocumented)
-export const PopoverContext: Context<PopoverContextValue>;
-
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inline'>;
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'legacyTrapFocus' | 'inline'>;
 
 // @public
 export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
@@ -48,27 +50,31 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     defaultOpen?: boolean;
     inline?: boolean;
     mouseLeaveDelay?: number;
-    noArrow?: boolean;
+    withArrow?: boolean;
     onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
-    trapFocus?: boolean;
+    trapFocus?: UseModalAttributesOptions['trapFocus'];
+    legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
 };
+
+// @public (undocumented)
+export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<PopoverContextValue>>;
 
 // @public
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'noArrow' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
+export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'legacyTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
-    contextTarget: PopperVirtualElement | undefined;
+    contextTarget: PositioningVirtualElement | undefined;
     popoverSurface: React_2.ReactElement | undefined;
     popoverTrigger: React_2.ReactElement | undefined;
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     size: NonNullable<PopoverProps['size']>;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -77,9 +83,6 @@ export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'noAr
 
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
-
-// @public @deprecated (undocumented)
-export const popoverSurfaceClassName = "fui-PopoverSurface";
 
 // @public (undocumented)
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
@@ -93,23 +96,25 @@ export type PopoverSurfaceSlots = {
 };
 
 // @public
-export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'noArrow' | 'size'> & {
+export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'size' | 'withArrow'> & {
     arrowClassName?: string;
 };
 
 // @public
 export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComponent;
 
-// @public (undocumented)
-export type PopoverTriggerChildProps = {
-    ref?: React_2.Ref<never>;
-} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'>;
+// @public
+export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+    'aria-expanded'?: 'true' | 'false';
+    ref: React_2.Ref<unknown>;
+    onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+}>;
 
 // @public
 export type PopoverTriggerProps = {
-    children: (React_2.ReactElement & {
-        ref?: React_2.Ref<unknown>;
-    }) | ((props: PopoverTriggerChildProps) => React_2.ReactElement | null);
+    children: React_2.ReactElement | ((props: PopoverTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public

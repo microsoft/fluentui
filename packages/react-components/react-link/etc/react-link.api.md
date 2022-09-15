@@ -14,9 +14,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
 
-// @public @deprecated (undocumented)
-export const linkClassName = "fui-Link";
-
 // @public (undocumented)
 export const linkClassNames: SlotClassNames<LinkSlots>;
 

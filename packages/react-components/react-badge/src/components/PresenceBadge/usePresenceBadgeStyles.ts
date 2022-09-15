@@ -2,15 +2,19 @@ import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
-import type { PresenceBadgeState } from './PresenceBadge.types';
+import type { PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
 
-/**
- * @deprecated Use `presenceBadgeClassNames.root` instead.
- */
-export const presenceBadgeClassName = 'fui-PresenceBadge';
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
   root: 'fui-PresenceBadge',
   icon: 'fui-PresenceBadge__icon',
+};
+
+const getIsBusy = (status: PresenceBadgeStatus): boolean => {
+  if (status === 'busy' || status === 'do-not-disturb' || status === 'unknown') {
+    return true;
+  }
+
+  return false;
 };
 
 const useStyles = makeStyles({
@@ -89,20 +93,21 @@ const useStyles = makeStyles({
  */
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
+  const isBusy = getIsBusy(state.status);
   state.root.className = mergeClasses(
     presenceBadgeClassNames.root,
     styles.root,
-    ['busy', 'doNotDisturb', 'unknown'].includes(state.status) && styles.statusBusy,
+    isBusy && styles.statusBusy,
     state.status === 'away' && styles.statusAway,
     state.status === 'available' && styles.statusAvailable,
     state.status === 'offline' && styles.statusOffline,
-    state.status === 'outOfOffice' && styles.statusOutOfOffice,
+    state.status === 'out-of-office' && styles.statusOutOfOffice,
     state.outOfOffice && styles.outOfOffice,
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
-    state.outOfOffice && ['busy', 'doNotDisturb', 'unknown'].includes(state.status) && styles.outOfOfficeBusy,
+    state.outOfOffice && isBusy && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
     state.outOfOffice && state.status === 'offline' && styles.statusOffline,
-    state.outOfOffice && state.status === 'outOfOffice' && styles.statusOutOfOffice,
+    state.outOfOffice && state.status === 'out-of-office' && styles.statusOutOfOffice,
     state.size === 'tiny' && styles.tiny,
     state.size === 'large' && styles.large,
     state.size === 'extra-large' && styles.extraLarge,

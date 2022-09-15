@@ -38,6 +38,7 @@ See [Alert.types.ts](./src/components/Alert/Alert.types.ts)
 - `root`: The outermost `<div>` that contains the rest of the slots
 - `icon`: (optional) A `<span>` that renders an icon and is inferred by the `intent` prop or passed in via the `icon` prop
 - `action`: (optional) A `<button>` that prompts users to act on it
+- `avatar`: (optional) A slot that renders an `Avatar` component passed in via the `avatar` prop
 
 ### **Public**
 
@@ -50,6 +51,7 @@ See [Alert.types.ts](./src/components/Alert/Alert.types.ts)
 ```tsx
 <slots.root {...slotProps.root}>
   {slots.icon && <slots.icon {...slotProps.icon} />}
+  {slots.avatar && <slots.avatar {...slotProps.avatar} />}
   {slotProps.root.children}
   {slots.action && <slots.action {...slotProps.action} />}
 </slots.root>
