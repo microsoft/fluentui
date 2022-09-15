@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Adding optional shadows to filled appearances.",
+  "packageName": "@fluentui/react-combobox",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
