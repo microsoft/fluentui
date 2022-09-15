@@ -35,7 +35,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={14}
       role="grid"
     >
@@ -267,7 +266,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -313,7 +312,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -846,7 +845,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                       <div
                         aria-expanded={true}
                         aria-labelledby="GroupHeader5"
-                        aria-level={1}
                         aria-rowindex={2}
                         aria-selected={false}
                         className=
@@ -897,7 +895,8 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={0}
+                        data-selection-span={5}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -959,7 +958,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                               data-is-focusable={false}
                               data-selection-toggle={true}
                               id="GroupHeader5-check"
-                              onClick={[Function]}
                               role="checkbox"
                               type="button"
                             >
@@ -1033,7 +1031,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
@@ -1079,7 +1077,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
                                         forced-color-adjust: none;
                                       }
@@ -1229,7 +1227,9 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader5"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -1279,7 +1279,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                 <div
                                   aria-expanded={true}
                                   aria-labelledby="GroupHeader9"
-                                  aria-level={2}
                                   aria-rowindex={1}
                                   aria-selected={false}
                                   className=
@@ -1330,7 +1329,8 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         opacity: 0;
                                       }
                                   data-is-focusable={true}
-                                  onClick={[Function]}
+                                  data-selection-index={0}
+                                  data-selection-span={2}
                                   onKeyUp={[Function]}
                                   role="row"
                                   style={Object {}}
@@ -1392,7 +1392,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         data-is-focusable={false}
                                         data-selection-toggle={true}
                                         id="GroupHeader9-check"
-                                        onClick={[Function]}
                                         role="checkbox"
                                         type="button"
                                       >
@@ -1466,7 +1465,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                   vertical-align: middle;
                                                   width: 18px;
                                                 }
-                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                   color: WindowText;
                                                 }
                                             data-icon-name="CircleRing"
@@ -1512,7 +1511,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                 &:hover {
                                                   opacity: 1;
                                                 }
-                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                   -ms-high-contrast-adjust: none;
                                                   forced-color-adjust: none;
                                                 }
@@ -1672,7 +1671,9 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                             text-overflow: ellipsis;
                                             white-space: nowrap;
                                           }
+                                      data-selection-invoke={true}
                                       id="GroupHeader9"
+                                      onClick={[Function]}
                                       role="gridcell"
                                     >
                                       <span>
@@ -1717,7 +1718,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         role="presentation"
                                       >
                                         <div
-                                          aria-level={3}
                                           aria-rowindex={2}
                                           aria-selected={false}
                                           className=
@@ -1983,7 +1983,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                         vertical-align: middle;
                                                         width: 18px;
                                                       }
-                                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                         color: WindowText;
                                                       }
                                                   data-icon-name="CircleRing"
@@ -2029,7 +2029,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                       &:hover {
                                                         opacity: 1;
                                                       }
-                                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                         -ms-high-contrast-adjust: none;
                                                         forced-color-adjust: none;
                                                       }
@@ -2066,7 +2066,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                             role="presentation"
                                           >
                                             <div
-                                              aria-readonly={true}
                                               className=
                                                   ms-DetailsRow-cell
                                                   {
@@ -2122,7 +2121,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                               a
                                             </div>
                                             <div
-                                              aria-readonly={true}
                                               className=
                                                   ms-DetailsRow-cell
                                                   {
@@ -2202,7 +2200,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         role="presentation"
                                       >
                                         <div
-                                          aria-level={3}
                                           aria-rowindex={3}
                                           aria-selected={false}
                                           className=
@@ -2468,7 +2465,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                         vertical-align: middle;
                                                         width: 18px;
                                                       }
-                                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                         color: WindowText;
                                                       }
                                                   data-icon-name="CircleRing"
@@ -2514,7 +2511,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                       &:hover {
                                                         opacity: 1;
                                                       }
-                                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                         -ms-high-contrast-adjust: none;
                                                         forced-color-adjust: none;
                                                       }
@@ -2551,7 +2548,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                             role="presentation"
                                           >
                                             <div
-                                              aria-readonly={true}
                                               className=
                                                   ms-DetailsRow-cell
                                                   {
@@ -2607,7 +2603,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                               b
                                             </div>
                                             <div
-                                              aria-readonly={true}
                                               className=
                                                   ms-DetailsRow-cell
                                                   {
@@ -2713,7 +2708,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                       <div
                         aria-expanded={true}
                         aria-labelledby="GroupHeader7"
-                        aria-level={1}
                         aria-rowindex={8}
                         aria-selected={false}
                         className=
@@ -2764,7 +2758,8 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={0}
+                        data-selection-span={1}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -2826,7 +2821,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                               data-is-focusable={false}
                               data-selection-toggle={true}
                               id="GroupHeader7-check"
-                              onClick={[Function]}
                               role="checkbox"
                               type="button"
                             >
@@ -2900,7 +2894,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
@@ -2946,7 +2940,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
                                         forced-color-adjust: none;
                                       }
@@ -3096,7 +3090,9 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader7"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -3146,7 +3142,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                 <div
                                   aria-expanded={true}
                                   aria-labelledby="GroupHeader11"
-                                  aria-level={2}
                                   aria-rowindex={1}
                                   aria-selected={false}
                                   className=
@@ -3197,7 +3192,8 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         opacity: 0;
                                       }
                                   data-is-focusable={true}
-                                  onClick={[Function]}
+                                  data-selection-index={0}
+                                  data-selection-span={1}
                                   onKeyUp={[Function]}
                                   role="row"
                                   style={Object {}}
@@ -3259,7 +3255,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         data-is-focusable={false}
                                         data-selection-toggle={true}
                                         id="GroupHeader11-check"
-                                        onClick={[Function]}
                                         role="checkbox"
                                         type="button"
                                       >
@@ -3333,7 +3328,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                   vertical-align: middle;
                                                   width: 18px;
                                                 }
-                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                   color: WindowText;
                                                 }
                                             data-icon-name="CircleRing"
@@ -3379,7 +3374,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                 &:hover {
                                                   opacity: 1;
                                                 }
-                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                   -ms-high-contrast-adjust: none;
                                                   forced-color-adjust: none;
                                                 }
@@ -3539,7 +3534,9 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                             text-overflow: ellipsis;
                                             white-space: nowrap;
                                           }
+                                      data-selection-invoke={true}
                                       id="GroupHeader11"
+                                      onClick={[Function]}
                                       role="gridcell"
                                     >
                                       <span>
@@ -3589,7 +3586,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                           <div
                                             aria-expanded={true}
                                             aria-labelledby="GroupHeader17"
-                                            aria-level={3}
                                             aria-rowindex={1}
                                             aria-selected={false}
                                             className=
@@ -3640,7 +3636,8 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                   opacity: 0;
                                                 }
                                             data-is-focusable={true}
-                                            onClick={[Function]}
+                                            data-selection-index={2}
+                                            data-selection-span={1}
                                             onKeyUp={[Function]}
                                             role="row"
                                             style={Object {}}
@@ -3702,7 +3699,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                   data-is-focusable={false}
                                                   data-selection-toggle={true}
                                                   id="GroupHeader17-check"
-                                                  onClick={[Function]}
                                                   role="checkbox"
                                                   type="button"
                                                 >
@@ -3776,7 +3772,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                             vertical-align: middle;
                                                             width: 18px;
                                                           }
-                                                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                             color: WindowText;
                                                           }
                                                       data-icon-name="CircleRing"
@@ -3822,7 +3818,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                           &:hover {
                                                             opacity: 1;
                                                           }
-                                                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                             -ms-high-contrast-adjust: none;
                                                             forced-color-adjust: none;
                                                           }
@@ -3972,7 +3968,9 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                       text-overflow: ellipsis;
                                                       white-space: nowrap;
                                                     }
+                                                data-selection-invoke={true}
                                                 id="GroupHeader17"
+                                                onClick={[Function]}
                                                 role="gridcell"
                                               >
                                                 <span>
@@ -4017,7 +4015,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                   role="presentation"
                                                 >
                                                   <div
-                                                    aria-level={4}
                                                     aria-rowindex={4}
                                                     aria-selected={false}
                                                     className=
@@ -4283,7 +4280,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                                   vertical-align: middle;
                                                                   width: 18px;
                                                                 }
-                                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                                   color: WindowText;
                                                                 }
                                                             data-icon-name="CircleRing"
@@ -4329,7 +4326,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                                 &:hover {
                                                                   opacity: 1;
                                                                 }
-                                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                                                   -ms-high-contrast-adjust: none;
                                                                   forced-color-adjust: none;
                                                                 }
@@ -4366,7 +4363,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                       role="presentation"
                                                     >
                                                       <div
-                                                        aria-readonly={true}
                                                         className=
                                                             ms-DetailsRow-cell
                                                             {
@@ -4422,7 +4418,6 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                         c
                                                       </div>
                                                       <div
-                                                        aria-readonly={true}
                                                         className=
                                                             ms-DetailsRow-cell
                                                             {
