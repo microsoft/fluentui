@@ -1205,6 +1205,16 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                               </i>
                             </button>
                           </div>
+                          <span
+                            className="ms-GroupSpacer"
+                            role="presentation"
+                            style={
+                              Object {
+                                "display": "inline-block",
+                                "width": 72,
+                              }
+                            }
+                          />
                           <div
                             aria-colspan={2}
                             className=
@@ -1638,6 +1648,16 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         </i>
                                       </button>
                                     </div>
+                                    <span
+                                      className="ms-GroupSpacer"
+                                      role="presentation"
+                                      style={
+                                        Object {
+                                          "display": "inline-block",
+                                          "width": 36,
+                                        }
+                                      }
+                                    />
                                     <div
                                       aria-colspan={2}
                                       className=
@@ -3052,6 +3072,16 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                               </i>
                             </button>
                           </div>
+                          <span
+                            className="ms-GroupSpacer"
+                            role="presentation"
+                            style={
+                              Object {
+                                "display": "inline-block",
+                                "width": 72,
+                              }
+                            }
+                          />
                           <div
                             aria-colspan={2}
                             className=
@@ -3485,6 +3515,16 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                         </i>
                                       </button>
                                     </div>
+                                    <span
+                                      className="ms-GroupSpacer"
+                                      role="presentation"
+                                      style={
+                                        Object {
+                                          "display": "inline-block",
+                                          "width": 36,
+                                        }
+                                      }
+                                    />
                                     <div
                                       aria-colspan={2}
                                       className=
