@@ -34,7 +34,7 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
    */
   appearance?: 'primary' | 'inverted';
   /**
-   * The height of the Progress bar
+   * The thickness of the Progress bar
    * @default 'default'
    */
   barThickness?: 'default' | 'large';
