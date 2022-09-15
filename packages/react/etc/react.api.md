@@ -9105,6 +9105,8 @@ export interface ITeachingBubbleProps extends React_2.RefAttributes<HTMLDivEleme
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
+    // (undocumented)
+    children?: React_2.ReactNode;
     componentRef?: IRefObject<ITeachingBubble>;
     focusTrapZoneProps?: IFocusTrapZoneProps;
     footerContent?: string | JSX.Element;
