@@ -10,6 +10,8 @@ import { TestInjectStyles } from './TestInjectStyles';
 import { TestMount } from './TestMount';
 import { TestRemoveAll } from './TestRemoveAll';
 import { TestReRenderAll } from './TestReRenderAll';
+import { TestAdd } from './TestAdd';
+import { testAdd } from '../vanilla/TestAdd';
 
 export const wcTest = (): Promise<HTMLElement | null> => {
   const testOptions = getTestOptions();
@@ -35,6 +37,8 @@ export const wcTest = (): Promise<HTMLElement | null> => {
       testFn = isVanilla ? testReRenderAll : TestReRenderAll;
     } else if (test === 'remove-all') {
       testFn = isVanilla ? testRemoveAll : TestRemoveAll;
+    } else if (test === 'add') {
+      testFn = isVanilla ? testAdd : TestAdd;
     }
 
     if (testFn) {

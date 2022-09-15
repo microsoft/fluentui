@@ -7,6 +7,7 @@ import { TestInjectStyles } from './TestInjectStyles';
 import { TestMount } from './TestMount';
 import { TestRemoveAll } from './TestRemoveAll';
 import { TestReRenderAll } from './TestReRenderAll';
+import { TestAdd } from './TestAdd';
 
 type TestData = {
   tree?: TreeNode<RandomSelectorTreeNode>;
@@ -66,6 +67,10 @@ export const ReactTest: React.FC<ReactTestProps> = ({ target, fixtureName, rende
 
     case 'remove-all':
       Test = TestRemoveAll;
+      break;
+
+    case 'add':
+      Test = TestAdd;
       break;
 
     default:
