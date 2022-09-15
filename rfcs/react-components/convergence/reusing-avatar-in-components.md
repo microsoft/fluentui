@@ -229,16 +229,18 @@ const tableAvatarSizeMap = {
   smaller: 20,
 };
 
-export function renderTable(state) {
-  const { size } = state;
-  const { slots, slotProps } = getSlots(state);
+export const renderTableCellLayout_unstable = state => {
+  const { slots, slotProps } = getSlots<TableCellLayoutSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      <AvatarContext size={tableAvatarSizeMap[size]}>{slotProps.root.children}</AvatarContext>
+      {/* Only affects the specific slot */}
+      <AvatarContextProvider value={tableAvatarSizeGroup[state.size]}>
+        {slots.media && <slots.media {...slotProps.media} />}
+      </AvatarContextProvider>
     </slots.root>
   );
-}
+};
 ```
 
 #### Pros
@@ -250,7 +252,7 @@ export function renderTable(state) {
 
 - Extra code in base component
 - Needs prototyping and investigation
-- All avatars under this context will be affected
+- If the slot is not speicfic enough -> all avatars under this context will be affected
 - This might not scale - AvatarContext, IconContext...
 
 ## Discarded Solutions
