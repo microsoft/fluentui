@@ -15,6 +15,15 @@ const spinButtonExtraClassNames = {
   buttonActive: 'fui-SpinButton__button_active',
 };
 
+const appearanceMap: Record<string, string> = {
+  outline: 'outline',
+  underline: 'underline',
+  'filled-darker': 'filled-darker',
+  'filled-lighter': 'filled-lighter',
+  'filled-darker-shadow': 'filled-darker',
+  'filled-lighter-shadow': 'filled-lighter',
+};
+
 const useRootStyles = makeStyles({
   base: {
     display: 'inline-grid',
@@ -420,22 +429,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     },
   });
 
-  let buttonClassName: string;
-  let disabledButtonClassName: string;
-  if (appearance === 'outline') {
-    buttonClassName = buttonStyles.outline;
-    disabledButtonClassName = buttonDisabledStyles.outline;
-  } else if (appearance === 'underline') {
-    buttonClassName = buttonStyles.underline;
-    disabledButtonClassName = buttonDisabledStyles.underline;
-  } else if (appearance.includes('lighter')) {
-    buttonClassName = buttonStyles['filled-lighter'];
-    disabledButtonClassName = buttonDisabledStyles['filled-lighter'];
-  } else {
-    buttonClassName = buttonStyles['filled-darker'];
-    disabledButtonClassName = buttonDisabledStyles['filled-darker'];
-  }
-
   state.root.className = mergeClasses(
     state.root.className, // Get the classes from useInputStyles_unstable
     spinButtonClassNames.root,
@@ -458,10 +451,11 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.incrementButton,
-    buttonClassName,
+    buttonStyles[appearanceMap[appearance] as keyof typeof buttonStyles],
     size === 'small' ? buttonStyles.incrementButtonSmall : buttonStyles.incrementButtonMedium,
     (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
-    (atBound === 'max' || atBound === 'both') && disabledButtonClassName,
+    (atBound === 'max' || atBound === 'both') &&
+      buttonDisabledStyles[appearanceMap[appearance] as keyof typeof buttonDisabledStyles],
     state.incrementButton.className,
   );
   state.decrementButton.className = mergeClasses(
@@ -469,10 +463,11 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.decrementButton,
-    buttonClassName,
+    buttonStyles[appearanceMap[appearance] as keyof typeof buttonStyles],
     size === 'small' ? buttonStyles.decrementButtonSmall : buttonStyles.decrementButtonMedium,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
-    (atBound === 'min' || atBound === 'both') && disabledButtonClassName,
+    (atBound === 'min' || atBound === 'both') &&
+      buttonDisabledStyles[appearanceMap[appearance] as keyof typeof buttonDisabledStyles],
     state.decrementButton.className,
   );
 
