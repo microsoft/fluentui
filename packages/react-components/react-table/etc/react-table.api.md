@@ -11,11 +11,7 @@ import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Provider } from 'react';
-import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -160,7 +156,7 @@ export const tableClassName = "fui-Table";
 export const tableClassNames: SlotClassNames<TableSlots>;
 
 // @public (undocumented)
-export const TableContextProvider: Provider<TableContextValue | undefined> & FC<ProviderProps<TableContextValue | undefined>>;
+export const TableContextProvider: React_2.Provider<TableContextValue | undefined>;
 
 // @public (undocumented)
 export type TableContextValue = {
@@ -327,7 +323,7 @@ export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) =>
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
 
 // @public (undocumented)
-export const useTableContext: <T>(selector: ContextSelector<TableContextValue, T>) => T;
+export const useTableContext: () => TableContextValue;
 
 // @public
 export const useTableHeader_unstable: (props: TableHeaderProps, ref: React_2.Ref<HTMLElement>) => TableHeaderState;
