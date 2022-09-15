@@ -18,7 +18,7 @@ export const Position = () => {
       <Persona
         textPosition="after"
         sizing="scaled"
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -28,7 +28,7 @@ export const Position = () => {
       <Persona
         textPosition="below"
         sizing="scaled"
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -38,7 +38,7 @@ export const Position = () => {
       <Persona
         textPosition="before"
         sizing="scaled"
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"

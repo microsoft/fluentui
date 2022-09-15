@@ -20,6 +20,7 @@ export const PresenceSize = () => {
       {sizes.map(size => (
         <>
           <Persona
+            presenceOnly
             presence={{ status: 'out-of-office', size }}
             primaryText="PrimaryText"
             secondaryText="Secondary text"
@@ -27,17 +28,19 @@ export const PresenceSize = () => {
             quaternaryText="Quaternary text"
           />
           <Persona
+            presenceOnly
             presence={{ status: 'out-of-office', size }}
             primaryText="PrimaryText"
             secondaryText="Secondary text"
             tertiaryText="Tertiary text"
           />
           <Persona
+            presenceOnly
             presence={{ status: 'out-of-office', size }}
             primaryText="PrimaryText"
             secondaryText="Secondary text"
           />
-          <Persona presence={{ status: 'out-of-office', size }} primaryText="PrimaryText" />
+          <Persona presenceOnly presence={{ status: 'out-of-office', size }} primaryText="PrimaryText" />
         </>
       ))}
     </div>

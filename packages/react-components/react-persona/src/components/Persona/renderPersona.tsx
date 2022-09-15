@@ -6,11 +6,12 @@ import type { PersonaState, PersonaSlots } from './Persona.types';
  * Render the final JSX of Persona
  */
 export const renderPersona_unstable = (state: PersonaState) => {
+  const { presenceOnly } = state;
   const { slots, slotProps } = getSlots<PersonaSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      {slots.avatar && <slots.avatar {...slotProps.avatar} />}
+      {!presenceOnly && <slots.avatar {...slotProps.avatar} />}
       {slots.presence && <slots.presence {...slotProps.presence} />}
       {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
       {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}

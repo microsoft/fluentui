@@ -153,7 +153,6 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 const useTextStyles = makeStyles({
   base: {
     display: 'block',
-    height: 'fit-content',
   },
   primaryText: {
     color: tokens.colorNeutralForeground1,
@@ -182,8 +181,8 @@ const useTextClassNames = (
   const optionalTextClassNames: string[] = [textStyles.base, textStyles.optionalText];
 
   if (sizing === 'fixed') {
-    if (state.avatar && state.avatar.size) {
-      const size = state.avatar.size;
+    if (state.avatar.size) {
+      const { size } = state.avatar;
 
       if (size < 40) {
         primaryTextClassNames.push(textStyles.body1);
@@ -203,7 +202,7 @@ const useTextClassNames = (
         optionalTextClassNames.push(textStyles.body1);
       }
     } else if (state.presence) {
-      const size = state.presence.size;
+      const { size } = state.presence;
 
       if (size === 'extra-small' || size === 'tiny') {
         if (numTextLines > 1) {

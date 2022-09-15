@@ -16,21 +16,10 @@ export const SizingFixed = () => {
 
   return (
     <div className={styles.root}>
+      <Persona sizing="fixed" name="Kevin Sturgis" presence={{ status: 'out-of-office' }} primaryText="Primary text" />
       <Persona
         sizing="fixed"
-        avatar={{ name: 'Kevin Sturgis' }}
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-      />
-      <Persona
-        sizing="fixed"
-        avatar={{ name: 'Kevin Sturgis', size: 48 }}
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-      />
-      <Persona
-        sizing="fixed"
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -39,17 +28,30 @@ export const SizingFixed = () => {
       />
       <Persona
         sizing="fixed"
-        avatar={{ name: 'Kevin Sturgis', size: 48 }}
+        name="Kevin Sturgis"
+        size={48}
+        presence={{ status: 'out-of-office' }}
+        primaryText="Primary text"
+      />
+      <Persona
+        sizing="fixed"
+        name="Kevin Sturgis"
+        size={48}
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
         tertiaryText="Tertiary text"
         quaternaryText="Quaternary text"
       />
-      <Persona sizing="fixed" presence={{ status: 'out-of-office', size: 'extra-small' }} primaryText="Primary text" />
-      <Persona sizing="fixed" presence={{ status: 'out-of-office', size: 'extra-large' }} primaryText="Primary text" />
       <Persona
         sizing="fixed"
+        presenceOnly
+        presence={{ status: 'out-of-office', size: 'extra-small' }}
+        primaryText="Primary text"
+      />
+      <Persona
+        sizing="fixed"
+        presenceOnly
         presence={{ status: 'out-of-office', size: 'extra-small' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -58,6 +60,13 @@ export const SizingFixed = () => {
       />
       <Persona
         sizing="fixed"
+        presenceOnly
+        presence={{ status: 'out-of-office', size: 'extra-large' }}
+        primaryText="Primary text"
+      />
+      <Persona
+        sizing="fixed"
+        presenceOnly
         presence={{ status: 'out-of-office', size: 'extra-large' }}
         primaryText="Primary text"
         secondaryText="Secondary text"

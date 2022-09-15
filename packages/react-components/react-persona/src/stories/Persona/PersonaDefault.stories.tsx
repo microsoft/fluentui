@@ -15,7 +15,7 @@ export const Default = (props: Partial<PersonaProps>) => {
   return (
     <div className={styles.root}>
       <Persona
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         primaryText="PrimaryText"
         secondaryText="Secondary text"
         tertiaryText="Tertiary text"
@@ -23,6 +23,7 @@ export const Default = (props: Partial<PersonaProps>) => {
         {...props}
       />
       <Persona
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="PrimaryText"
         secondaryText="Secondary text"
@@ -31,7 +32,7 @@ export const Default = (props: Partial<PersonaProps>) => {
         {...props}
       />
       <Persona
-        avatar={{ name: 'Kevin Sturgis' }}
+        presenceOnly
         presence={{ status: 'out-of-office' }}
         primaryText="PrimaryText"
         secondaryText="Secondary text"

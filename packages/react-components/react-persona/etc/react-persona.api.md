@@ -22,24 +22,25 @@ export const Persona: ForwardRefComponent<PersonaProps>;
 export const personaClassNames: SlotClassNames<PersonaSlots>;
 
 // @public
-export type PersonaProps = ComponentProps<PersonaSlots> & {
+export type PersonaProps = Omit<ComponentProps<Partial<PersonaSlots>, 'avatar'>, 'badge'> & {
+    presenceOnly?: boolean;
     sizing?: 'fixed' | 'scaled';
-    position?: 'start' | 'center' | 'end';
+    textPosition?: 'before' | 'after' | 'below';
 };
 
 // @public (undocumented)
 export type PersonaSlots = {
-    root: Slot<'div'>;
-    avatar?: Slot<typeof Avatar>;
-    presence?: Slot<typeof PresenceBadge>;
-    primaryText?: Slot<'span'>;
-    secondaryText?: Slot<'span'>;
-    tertiaryText?: Slot<'span'>;
-    quaternaryText?: Slot<'span'>;
+    root: NonNullable<Slot<'div'>>;
+    avatar: NonNullable<Slot<typeof Avatar>>;
+    presence: Slot<typeof PresenceBadge>;
+    primaryText: Slot<'span'>;
+    secondaryText: Slot<'span'>;
+    tertiaryText: Slot<'span'>;
+    quaternaryText: Slot<'span'>;
 };
 
 // @public
-export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'position' | 'sizing'>> & {
+export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'textPosition' | 'sizing' | 'presenceOnly'>> & {
     numTextLines: number;
 };
 

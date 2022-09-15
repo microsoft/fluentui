@@ -20,7 +20,8 @@ export const AvatarSize = () => {
       {sizes.map(size => (
         <>
           <Persona
-            avatar={{ name: 'Kevin Sturgis', size }}
+            name="Kevin Sturgis"
+            size={size}
             presence={{ status: 'out-of-office' }}
             primaryText="PrimaryText"
             secondaryText="Secondary text"
@@ -28,23 +29,21 @@ export const AvatarSize = () => {
             quaternaryText="Quaternary text"
           />
           <Persona
-            avatar={{ name: 'Kevin Sturgis', size }}
+            name="Kevin Sturgis"
+            size={size}
             presence={{ status: 'out-of-office' }}
             primaryText="PrimaryText"
             secondaryText="Secondary text"
             tertiaryText="Tertiary text"
           />
           <Persona
-            avatar={{ name: 'Kevin Sturgis', size }}
+            name="Kevin Sturgis"
+            size={size}
             presence={{ status: 'out-of-office' }}
             primaryText="PrimaryText"
             secondaryText="Secondary text"
           />
-          <Persona
-            avatar={{ name: 'Kevin Sturgis', size }}
-            presence={{ status: 'out-of-office' }}
-            primaryText="PrimaryText"
-          />
+          <Persona name="Kevin Sturgis" size={size} presence={{ status: 'out-of-office' }} primaryText="PrimaryText" />
         </>
       ))}
     </div>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-avatar';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { PersonaProps, PersonaState } from './Persona.types';
 
@@ -14,17 +14,38 @@ import type { PersonaProps, PersonaState } from './Persona.types';
  * @param ref - reference to root HTMLElement of Persona
  */
 export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElement>): PersonaState => {
-  const { textPosition = 'after', sizing = 'fixed' } = props;
+  const {
+    className,
+    presenceOnly = false,
+    sizing = 'fixed',
+    style,
+    textPosition = 'after',
+    ...avatarSlotProps
+  } = props;
   const numTextLines =
     (props.primaryText ? 1 : 0) +
     (props.secondaryText ? 1 : 0) +
     (props.tertiaryText ? 1 : 0) +
     (props.quaternaryText ? 1 : 0);
 
+  let avatarSize = avatarSlotProps.size;
+  if (sizing === 'scaled') {
+    if (numTextLines === 1) {
+      avatarSize = 16;
+    } else if (numTextLines === 2) {
+      avatarSize = 32;
+    } else if (numTextLines === 3) {
+      avatarSize = 56;
+    } else {
+      avatarSize = 72;
+    }
+  }
+
   const state: PersonaState = {
     numTextLines,
-    textPosition,
+    presenceOnly,
     sizing,
+    textPosition,
 
     components: {
       root: 'div',
@@ -36,12 +57,20 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
       quaternaryText: 'span',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: {
+        style,
+        className,
+      },
     }),
     avatar: resolveShorthand(props.avatar, {
-      required: false,
+      required: true,
+      defaultProps: {
+        ref,
+        size: avatarSize,
+        ...avatarSlotProps,
+      },
     }),
     presence: resolveShorthand(props.presence, {
       required: false,
@@ -60,23 +89,11 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
     }),
   };
 
-  if (state.avatar && state.presence) {
+  if (!presenceOnly && state.avatar && state.presence) {
     state.avatar.badge = state.presence;
     state.presence = undefined;
-  }
-
-  if (sizing === 'scaled') {
-    if (state.avatar) {
-      if (numTextLines === 1) {
-        state.avatar.size = 16;
-      } else if (numTextLines === 2) {
-        state.avatar.size = 32;
-      } else if (numTextLines === 3) {
-        state.avatar.size = 56;
-      } else {
-        state.avatar.size = 72;
-      }
-    } else if (state.presence) {
+  } else if (state.presence) {
+    if (sizing === 'scaled') {
       if (numTextLines === 1) {
         state.presence.size = 'small';
       } else if (numTextLines === 2) {

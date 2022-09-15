@@ -18,7 +18,7 @@ export const SizingScaled = () => {
     <div className={styles.root}>
       <Persona
         sizing="scaled"
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -27,7 +27,7 @@ export const SizingScaled = () => {
       />
       <Persona
         sizing="scaled"
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -35,19 +35,15 @@ export const SizingScaled = () => {
       />
       <Persona
         sizing="scaled"
-        avatar={{ name: 'Kevin Sturgis' }}
+        name="Kevin Sturgis"
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
       />
+      <Persona sizing="scaled" name="Kevin Sturgis" presence={{ status: 'out-of-office' }} primaryText="Primary text" />
       <Persona
         sizing="scaled"
-        avatar={{ name: 'Kevin Sturgis' }}
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-      />
-      <Persona
-        sizing="scaled"
+        presenceOnly
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -56,6 +52,7 @@ export const SizingScaled = () => {
       />
       <Persona
         sizing="scaled"
+        presenceOnly
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
@@ -63,11 +60,12 @@ export const SizingScaled = () => {
       />
       <Persona
         sizing="scaled"
+        presenceOnly
         presence={{ status: 'out-of-office' }}
         primaryText="Primary text"
         secondaryText="Secondary text"
       />
-      <Persona sizing="scaled" presence={{ status: 'out-of-office' }} primaryText="Primary text" />
+      <Persona sizing="scaled" presenceOnly presence={{ status: 'out-of-office' }} primaryText="Primary text" />
     </div>
   );
 };
