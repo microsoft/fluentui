@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add shadow variant to filled appearances.",
+  "packageName": "@fluentui/react-select",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
