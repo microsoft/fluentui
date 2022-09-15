@@ -1,17 +1,46 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
+import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
 
 export type DialogSlots = {};
 
-export type DialogOpenChangeEvent = React.KeyboardEvent | React.MouseEvent;
+export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 
 export type DialogOpenChangeData =
-  | { type: 'escapeKeyDown'; open: boolean; event: React.KeyboardEvent }
-  | { type: 'backdropClick'; open: boolean; event: React.MouseEvent }
-  | { type: 'triggerClick'; open: boolean; event: React.MouseEvent };
+  | {
+      /**
+       * triggered when Escape key is pressed in a native `dialog`
+       */
+      type: 'dialogCancel';
+      open: boolean;
+      event: React.SyntheticEvent<DialogSurfaceElement>;
+    }
+  | {
+      type: 'escapeKeyDown';
+      open: boolean;
+      event: React.KeyboardEvent<DialogSurfaceElement>;
+    }
+  | {
+      type: 'backdropClick';
+      open: boolean;
+      event: React.MouseEvent<DialogSurfaceElement>;
+    }
+  | {
+      type: 'triggerClick';
+      open: boolean;
+      event: React.MouseEvent<DialogSurfaceElement>;
+    };
 
 export type DialogModalType = 'modal' | 'non-modal' | 'alert';
+
+/**
+ * Callback fired when the component changes value from open state.
+ *
+ * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
+ * @param data - A data object with relevant information, such as open value and type
+ */
+export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
@@ -52,13 +81,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @default false
    */
   defaultOpen?: boolean;
-  /**
-   * Callback fired when the component changes value from open state.
-   *
-   * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
-   * @param data - A data object with relevant information, such as open value and type
-   */
-  onOpenChange?: (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+  onOpenChange?: DialogOpenChangeEventHandler;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogSurface}.
    * Alternatively can only contain {@link DialogSurface} if using trigger outside dialog, or controlling state.

@@ -14,6 +14,7 @@ import { LineChartEventsExample } from './LineChart.Events.Example';
 import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibility.Example';
 import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
+import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
 
 const LineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
 const LineChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
@@ -22,6 +23,9 @@ const LineChartEventsExampleCode = require('!raw-loader?esModule=false!@fluentui
 const LineChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomAccessibility.Example.tsx') as string;
 const LineChartGapsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Gaps.Example.tsx') as string;
 const LineChartLargeDataExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
+const LineChartCustomLocaleDateAxisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
+
+// All line charts locale is impacted.
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -51,6 +55,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart large data" code={LineChartLargeDataExampleCode}>
               <LineChartLargeDataExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart custom date axis locale" code={LineChartCustomLocaleDateAxisExampleCode}>
+              <LineChartCustomLocaleDateAxisExample />
             </ExampleCard>
           </div>
         }
@@ -110,6 +117,23 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
               <code>xAxisCalloutAccessibilityData</code>
               and <code>callOutAccessibilityData</code> to configure x axis and y axis accessibility messages
               respectively.
+            </p>
+            <h4>Date Axis localization</h4>
+            <p>
+              The axes support 2 ways of localization. <br />
+              1. Javascript provided inbuilt localization for numeric and date axis. Specify the culture and
+              dateLocalizeOptions for date axis to define target localization. Refer the
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString">
+                Javascript localization guide
+              </a>
+              for usage. <br />
+              2. Custom locale definition: The consumer of the library can specify a custom locale definition as
+              supported by d3 <a href="https://github.com/d3/d3-time-format/blob/main/locale/en-US.json">like this</a>.
+              The date axis will use the date range and the multiformat specified in the definition to determine the
+              correct labels to show in the ticks. For example - If the date range is in days then the axis will show
+              hourly ticks. If the date range spans across months then the axis will show months in tick labels and so
+              on. Specify the custom locale definition in the <code>timeFormatLocale</code> prop. Refer to the Custom
+              Locale Date Axis example in line chart for sample usage.
             </p>
           </div>
         }

@@ -6,6 +6,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots> = {
   root: 'fui-TableCellLayout',
   media: 'fui-TableCellLayout__media',
+  main: 'fui-TableCellLayout__main',
+  description: 'fui-TableCellLayout__description',
+  wrapper: 'fui-TableCellLayout__wrapper',
 };
 
 /**
@@ -18,13 +21,31 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 
   media: {
     display: 'flex',
     alignItems: 'center',
   },
 
-  // TODO add additional classes for different states and/or slots
+  mediaPrimary: {
+    '& svg': {
+      width: '28px',
+      height: '28px',
+    },
+  },
+
+  mainPrimary: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
+
+  description: {
+    fontSize: tokens.fontSizeBase300,
+    color: tokens.colorNeutralForeground2,
+  },
 });
 
 /**
@@ -33,8 +54,35 @@ const useStyles = makeStyles({
 export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): TableCellLayoutState => {
   const styles = useStyles();
   state.root.className = mergeClasses(tableCellLayoutClassNames.root, styles.root, state.root.className);
+  const primary = state.appearance === 'primary';
+
   if (state.media) {
-    state.media.className = mergeClasses(tableCellLayoutClassNames.media, styles.media, state.media.className);
+    state.media.className = mergeClasses(
+      tableCellLayoutClassNames.media,
+      styles.media,
+      primary && styles.mediaPrimary,
+      state.media.className,
+    );
+  }
+
+  if (state.main) {
+    state.main.className = mergeClasses(
+      tableCellLayoutClassNames.main,
+      primary && styles.mainPrimary,
+      state.main.className,
+    );
+  }
+
+  if (state.description) {
+    state.description.className = mergeClasses(
+      tableCellLayoutClassNames.description,
+      styles.description,
+      state.description.className,
+    );
+  }
+
+  if (state.wrapper) {
+    state.wrapper.className = mergeClasses(tableCellLayoutClassNames.wrapper, styles.wrapper, state.wrapper.className);
   }
 
   return state;
