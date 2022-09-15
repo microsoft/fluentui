@@ -16,7 +16,7 @@ import { useProgressState_unstable } from './useProgressState';
  */
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
-  const { appearance = 'primary', barThickness = 'small', determinate = false } = props;
+  const { appearance = 'primary', barThickness = 'default', determinate = false } = props;
   const baseId = useId('Progress');
   const describedbyId = useId('ProgressDescription');
 

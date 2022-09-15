@@ -35,9 +35,9 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   appearance?: 'primary' | 'inverted';
   /**
    * The height of the Progress bar
-   * @default 'medium'
+   * @default 'default'
    */
-  barThickness?: 'small' | 'medium' | 'large';
+  barThickness?: 'default' | 'large';
   /**
    * Whether the Progress is determinate or intedeterminate
    * @default 'false'

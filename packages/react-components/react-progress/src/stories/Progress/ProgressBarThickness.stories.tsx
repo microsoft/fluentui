@@ -13,9 +13,7 @@ export const Thickness = () => {
 
   return (
     <div className={styles.container}>
-      <Progress barThickness="small" label="Small Progress" />
-
-      <Progress barThickness="medium" label="Medium Progress" />
+      <Progress barThickness="default" label="Default Progress" />
 
       <Progress barThickness="large" label="Large Progress" />
     </div>
