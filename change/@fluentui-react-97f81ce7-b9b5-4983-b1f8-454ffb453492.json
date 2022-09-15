@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update version mismatches triggered by v9 release",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
