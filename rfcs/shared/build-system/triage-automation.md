@@ -92,7 +92,7 @@ Based on selected project within issue template, additional select should be dyn
 
 <img width="569" alt="example of flow" src="https://user-images.githubusercontent.com/1223799/190431945-56fcd343-6eb7-4145-b2b2-62f5919b8c31.png">
 
-Unfortunately **dynamic input controls are not possible with github issues beta** which leaves us with following options how to implement this:
+Unfortunately **[dynamic input controls are not possible with github issues beta](https://github.com/community/community/discussions/29067)** which leaves us with following options how to implement this:
 
 - use only package names in "Library" picker
   - cons
