@@ -221,6 +221,8 @@ export function renderTableCellLayout() {
 We could consider a `AvatarContext` that is a part of `react-shared-contexts` that can be used by components that wish
 to reuse the `Avatar`.
 
+This solution is prototyped in [#24807](https://github.com/microsoft/fluentui/pull/24807)
+
 ```tsx
 const tableAvatarSizeMap = {
   small: 24,
@@ -242,6 +244,7 @@ export function renderTable(state) {
 #### Pros
 
 - We also use context for lots of other user cases - it works
+- Can be targeted to the speific slot that needs these overrides
 
 #### Cons
 
