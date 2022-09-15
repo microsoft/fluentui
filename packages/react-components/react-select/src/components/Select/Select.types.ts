@@ -22,7 +22,13 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
    *
    * @default 'outline'
    */
-  appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+  appearance?:
+    | 'outline'
+    | 'underline'
+    | 'filled-darker'
+    | 'filled-lighter'
+    | 'filled-darker-shadow'
+    | 'filled-lighter-shadow';
 
   /**
    * Called when the user changes the select element's value by selecting an option.

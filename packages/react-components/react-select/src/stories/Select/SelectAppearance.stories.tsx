@@ -71,6 +71,24 @@ export const Appearance = () => {
           <option>Blue</option>
         </Select>
       </div>
+
+      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+        <label htmlFor={`${selectId}-filledLighterShadow`}>Filled Lighter</label>
+        <Select id={`${selectId}-filledLighterShadow`} appearance="filled-lighter-shadow">
+          <option>Red</option>
+          <option>Green</option>
+          <option>Blue</option>
+        </Select>
+      </div>
+
+      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+        <label htmlFor={`${selectId}-filledDarkerShadow`}>Filled Darker</label>
+        <Select id={`${selectId}-filledDarkerShadow`} appearance="filled-darker-shadow">
+          <option>Red</option>
+          <option>Green</option>
+          <option>Blue</option>
+        </Select>
+      </div>
     </div>
   );
 };

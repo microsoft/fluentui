@@ -139,6 +139,14 @@ const useSelectStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  'filled-lighter-shadow': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow2,
+  },
+  'filled-darker-shadow': {
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: tokens.shadow2,
+  },
 });
 
 const useIconStyles = makeStyles({

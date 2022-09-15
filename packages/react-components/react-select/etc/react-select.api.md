@@ -29,7 +29,7 @@ export type SelectOnChangeData = {
 
 // @public (undocumented)
 export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
-    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
     onChange?: (ev: React_2.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
     size?: 'small' | 'medium' | 'large';
 };
