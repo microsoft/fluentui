@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: consume shared AvatarContext",
+  "packageName": "@fluentui/react-avatar",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
