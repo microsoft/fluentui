@@ -33,7 +33,7 @@ import { GetGroupCount, getGroupNestingDepth } from '../../utilities/groupedList
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
-import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
+import { GroupSpacer, SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 import { composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
 import type { IRenderFunction } from '../../Utilities';
@@ -441,13 +441,38 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       // pass through custom group header checkbox label
       headerProps: {
         ...groupProps?.headerProps,
+        onRenderTitle: (renderTitleProps, defaultRender) => {
+          const propsGroupLevel = renderTitleProps?.groupLevel;
+          const groupLevel = propsGroupLevel ?? 0;
+          const spacing = groupNestingDepth - groupLevel - 1;
+
+          const originalOnRenderTitle = groupProps?.headerProps?.onRenderTitle;
+          const fallbackTitle = defaultRender ?? (() => null);
+          const title = originalOnRenderTitle
+            ? originalOnRenderTitle(renderTitleProps, defaultRender)
+            : fallbackTitle(renderTitleProps);
+
+          return (
+            <>
+              <GroupSpacer indentWidth={renderTitleProps?.indentWidth} count={spacing} />
+              {title}
+            </>
+          );
+        },
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
           ...groupProps?.headerProps?.selectAllButtonProps,
         },
       },
     };
-  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
+  }, [
+    groupProps,
+    finalOnRenderDetailsGroupFooter,
+    finalOnRenderDetailsGroupHeader,
+    checkButtonGroupAriaLabel,
+    role,
+    groupNestingDepth,
+  ]);
 
   const sumColumnWidths = useConst(() =>
     memoizeFunction((columns: IColumn[]) => {
