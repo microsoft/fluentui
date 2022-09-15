@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: stops propagation on Escape keydown",
+  "packageName": "@fluentui/react-popover",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

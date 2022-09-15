@@ -10,6 +10,7 @@ import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { useARIAButtonProps } from '@fluentui/react-aria';
+import { Escape } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render PopoverTrigger.
@@ -47,8 +48,11 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === 'Escape') {
+    if (e.key === Escape && open) {
       setOpen(e, false);
+      // stop propagation to avoid conflicting with other elements that listen for `Escape`
+      // e,g: Dialog, Menu
+      e.stopPropagation();
     }
   };
 

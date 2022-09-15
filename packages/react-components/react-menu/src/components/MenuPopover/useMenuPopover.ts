@@ -19,6 +19,7 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
 export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
   const popoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const open = useMenuContext_unstable(context => context.open);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
@@ -74,8 +75,11 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     const key = e.key;
 
     if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
-      if (popoverRef.current?.contains(e.target as HTMLElement)) {
+      if (open && popoverRef.current?.contains(e.target as HTMLElement)) {
         setOpen(e, { open: false, keyboard: true });
+        // stop propagation to avoid conflicting with other elements that listen for `Escape`
+        // e,g: Dialog, Popover and Tooltip
+        e.stopPropagation();
       }
     }
 
