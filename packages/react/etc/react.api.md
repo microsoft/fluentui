@@ -4542,6 +4542,7 @@ export interface IDetailsItemProps {
     rowWidth?: number;
     selection?: ISelection | undefined;
     selectionMode?: SelectionMode_2 | undefined;
+    totalNestingDepth?: number;
     // @deprecated
     viewport?: IViewport | undefined;
 }
