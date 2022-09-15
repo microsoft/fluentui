@@ -91,6 +91,34 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
           <Option>Blue</Option>
         </Combobox>
       </div>
+
+      <div className={styles.filledDarker}>
+        <label id={`${comboId}-filledDarkerShadow`}>Filled Darker with shadow</label>
+        <Combobox
+          aria-labelledby={`${comboId}-filledDarkerShadow`}
+          placeholder="Select a color"
+          appearance="filled-darker-shadow"
+          {...props}
+        >
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>
+      </div>
+
+      <div className={styles.filledLighter}>
+        <label id={`${comboId}-filledLighterShadow`}>Filled Lighter with shadow</label>
+        <Combobox
+          aria-labelledby={`${comboId}-filledLighterShadow`}
+          placeholder="Select a color"
+          appearance="filled-lighter-shadow"
+          {...props}
+        >
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>
+      </div>
     </div>
   );
 };

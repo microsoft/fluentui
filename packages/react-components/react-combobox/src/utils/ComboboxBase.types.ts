@@ -13,7 +13,13 @@ export type ComboboxBaseProps = SelectionProps & {
    * Controls the colors and borders of the combobox trigger.
    * @default 'outline'
    */
-  appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
+  appearance?:
+    | 'filled-darker'
+    | 'filled-lighter'
+    | 'filled-darker-shadow'
+    | 'filled-lighter-shadow'
+    | 'outline'
+    | 'underline';
 
   /**
    * The default open state when open is uncontrolled
