@@ -21,7 +21,7 @@ export const progressClassNames: SlotClassNames<ProgressSlots>;
 // @public
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
     appearance?: 'primary' | 'inverted';
-    barThickness?: 'small' | 'medium' | 'large';
+    barThickness?: 'default' | 'large';
     determinate?: boolean;
     percentComplete?: number;
 };
