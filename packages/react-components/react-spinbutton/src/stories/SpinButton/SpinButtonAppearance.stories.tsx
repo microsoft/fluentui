@@ -36,6 +36,8 @@ export const Appearance = () => {
   const underlineId = useId('underline-id');
   const filledLighterId = useId('filledLighter-id');
   const filledDarkerId = useId('filledDarker-id');
+  const filledLighterShadowId = useId('filledLighterShadow-id');
+  const filledDarkerShadowId = useId('filledDarkerShadow-id');
 
   return (
     <div className={styles.base}>
@@ -57,6 +59,16 @@ export const Appearance = () => {
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
         <Label htmlFor={filledDarkerId}>Filled Darker</Label>
         <SpinButton appearance="filled-darker" id={filledDarkerId} />
+      </div>
+
+      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+        <Label htmlFor={filledLighterShadowId}>Filled Lighter with shadow</Label>
+        <SpinButton appearance="filled-lighter-shadow" id={filledLighterShadowId} />
+      </div>
+
+      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+        <Label htmlFor={filledDarkerShadowId}>Filled Darker with shadow</Label>
+        <SpinButton appearance="filled-darker-shadow" id={filledDarkerShadowId} />
       </div>
     </div>
   );

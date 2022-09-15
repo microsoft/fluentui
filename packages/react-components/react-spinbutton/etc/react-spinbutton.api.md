@@ -36,7 +36,7 @@ export type SpinButtonOnChangeData = {
 
 // @public
 export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
-    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
     defaultValue?: number | null;
     displayValue?: string;
     max?: number;

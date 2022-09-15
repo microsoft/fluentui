@@ -420,6 +420,22 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     },
   });
 
+  let buttonClassName: string;
+  let disabledButtonClassName: string;
+  if (appearance === 'outline') {
+    buttonClassName = buttonStyles.outline;
+    disabledButtonClassName = buttonDisabledStyles.outline;
+  } else if (appearance === 'underline') {
+    buttonClassName = buttonStyles.underline;
+    disabledButtonClassName = buttonDisabledStyles.underline;
+  } else if (appearance.includes('lighter')) {
+    buttonClassName = buttonStyles['filled-lighter'];
+    disabledButtonClassName = buttonDisabledStyles['filled-lighter'];
+  } else {
+    buttonClassName = buttonStyles['filled-darker'];
+    disabledButtonClassName = buttonDisabledStyles['filled-darker'];
+  }
+
   state.root.className = mergeClasses(
     state.root.className, // Get the classes from useInputStyles_unstable
     spinButtonClassNames.root,
@@ -442,10 +458,10 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.incrementButton,
-    buttonStyles[appearance],
+    buttonClassName,
     size === 'small' ? buttonStyles.incrementButtonSmall : buttonStyles.incrementButtonMedium,
     (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
-    (atBound === 'max' || atBound === 'both') && buttonDisabledStyles[appearance],
+    (atBound === 'max' || atBound === 'both') && disabledButtonClassName,
     state.incrementButton.className,
   );
   state.decrementButton.className = mergeClasses(
@@ -453,10 +469,10 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.decrementButton,
-    buttonStyles[appearance],
+    buttonClassName,
     size === 'small' ? buttonStyles.decrementButtonSmall : buttonStyles.decrementButtonMedium,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
-    (atBound === 'min' || atBound === 'both') && buttonDisabledStyles[appearance],
+    (atBound === 'min' || atBound === 'both') && disabledButtonClassName,
     state.decrementButton.className,
   );
 
