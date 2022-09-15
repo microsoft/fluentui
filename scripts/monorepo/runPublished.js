@@ -38,7 +38,7 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
     }
 
     const isConverged = isConvergedPackage({ packagePathOrJson: packageJson });
-    if (releaseScope === 'v9') {
+    if (releaseScope === 'v9' && isConverged) {
       return packageJson.private !== true;
     }
 
