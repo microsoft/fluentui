@@ -68,8 +68,8 @@ Persona with Avatar + PresenceBadge:
 There are three alignment variants:
 
 - after: Content on the left and text on the right.
-- before: Content on top and text on the bottom.
-- below: Content on the right and text on the left.
+- below: Content on top and text on the bottom.
+- before: Content on the right and text on the left.
 
 There are 3 content variants:
 
