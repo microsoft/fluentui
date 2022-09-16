@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 15 Sep 2022 19:15:25 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Sep 2022 07:37:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.95.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.95.1)
+
+Fri, 16 Sep 2022 07:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.95.0..@fluentui/react_v8.95.1)
+
+### Patches
+
+- Ensure toggling group state does not select it ([PR #24822](https://github.com/microsoft/fluentui/pull/24822) by tmichon@microsoft.com)
 
 ## [8.95.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.95.0)
 
