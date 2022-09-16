@@ -197,7 +197,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const rowId = getId('row');
 
-  const groupNestingDepth = getGroupNestingDepth(groups);
+  const totalNestingDepth = getGroupNestingDepth(groups);
   const groupedDetailsListIndexMap = useGroupedDetailsListIndexMap(groups);
 
   const additionalListProps = React.useMemo((): IListProps => {
@@ -259,7 +259,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const detailsFooterProps = React.useMemo((): IDetailsFooterProps => {
     return {
       columns: adjustedColumns,
-      groupNestingDepth,
+      groupNestingDepth: totalNestingDepth,
       selection,
       selectionMode,
       viewport,
@@ -269,7 +269,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     };
   }, [
     adjustedColumns,
-    groupNestingDepth,
+    totalNestingDepth,
     selection,
     selectionMode,
     viewport,
@@ -344,7 +344,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             {
               ...groupFooterProps,
               columns: adjustedColumns,
-              groupNestingDepth,
+              groupNestingDepth: totalNestingDepth,
               indentWidth,
               selection,
               selectionMode,
@@ -359,7 +359,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [
     onRenderDetailsGroupFooter,
     adjustedColumns,
-    groupNestingDepth,
+    totalNestingDepth,
     indentWidth,
     selection,
     selectionMode,
@@ -385,7 +385,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             {
               ...groupHeaderProps,
               columns: adjustedColumns,
-              groupNestingDepth,
+              groupNestingDepth: totalNestingDepth,
               indentWidth,
               selection,
               selectionMode: checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none,
@@ -424,7 +424,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
-    groupNestingDepth,
+    totalNestingDepth,
     indentWidth,
     isHeaderVisible,
     selection,
@@ -447,7 +447,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         onRenderTitle: (renderTitleProps, defaultRender) => {
           const propsGroupLevel = renderTitleProps?.groupLevel;
           const groupLevel = propsGroupLevel ?? 0;
-          const spacing = groupNestingDepth - groupLevel - 1;
+          const spacing = totalNestingDepth - groupLevel - 1;
 
           const originalOnRenderTitle = groupProps?.headerProps?.onRenderTitle;
           const fallbackTitle = defaultRender ?? (() => null);
@@ -474,7 +474,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     finalOnRenderDetailsGroupHeader,
     checkButtonGroupAriaLabel,
     role,
-    groupNestingDepth,
+    totalNestingDepth,
   ]);
 
   const sumColumnWidths = useConst(() =>
@@ -514,7 +514,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
-        totalNestingDepth: groupNestingDepth,
+        totalNestingDepth: totalNestingDepth,
         id: `${rowId}-${index}`,
         selectionMode,
         selection,
@@ -588,7 +588,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       rowWidth,
       role,
       groupedDetailsListIndexMap,
-      groupNestingDepth,
+      totalNestingDepth,
     ],
   );
 
@@ -723,7 +723,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
                 onColumnResized: onColumnResized,
                 onColumnIsSizingChanged: onColumnIsSizingChanged,
                 onColumnAutoResized: onColumnAutoResized,
-                groupNestingDepth: groupNestingDepth,
+                groupNestingDepth: totalNestingDepth,
                 isAllCollapsed: isCollapsed,
                 onToggleCollapseAll: onToggleCollapse,
                 ariaLabel: ariaLabelForListHeader,
