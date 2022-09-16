@@ -9,7 +9,7 @@ const config: ScreenerTestsConfig = {
         .click(`.${toolbarItemWrapperClassName} button`)
         .snapshot('Shows menu')
         .keys(`.${toolbarMenuItemClassName}:has-text("Play")`, keys.rightArrow)
-        .snapshot('Opens submenu')
+        .snapshot('Opens first submenu')
         .click(`.${toolbarMenuItemClassName}:has-text("Appearance")`)
         .snapshot('Opens second submenu'),
   ],
