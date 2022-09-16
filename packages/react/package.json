@@ -507,6 +507,11 @@
       "import": "./lib/components/GroupedList/GroupShowAll.styles.js",
       "require": "./lib-commonjs/components/GroupedList/GroupShowAll.styles.js"
     },
+    "./lib/GroupedListV2": {
+      "types": "./lib/GroupedList.d.ts",
+      "import": "./lib/GroupedListV2.js",
+      "require": "./lib-commonjs/GroupedListV2.js"
+    },
     "./lib/HoverCard": {
       "types": "./lib/HoverCard.d.ts",
       "import": "./lib/HoverCard.js",
