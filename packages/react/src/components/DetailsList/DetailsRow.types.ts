@@ -34,11 +34,6 @@ export interface IDetailsItemProps {
   groupNestingDepth?: number;
 
   /**
-   * Total nesting depth.  For spacing
-   */
-  totalNestingDepth?: number;
-
-  /**
    * How much to indent
    */
   indentWidth?: number | undefined;
@@ -246,6 +241,11 @@ export interface IDetailsRowBaseProps
 
   /** whether or not row should be rendered in disabled state */
   disabled?: boolean;
+
+  /**
+   * Total nesting depth.  For spacing
+   */
+  totalNestingDepth?: number;
 }
 
 /**
