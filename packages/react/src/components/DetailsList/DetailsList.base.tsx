@@ -340,6 +340,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupFooter = React.useMemo(() => {
     return onRenderDetailsGroupFooter
       ? (groupFooterProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          const spacingRenderFunction: IRenderFunction<IGroupDividerProps> = originalFooterProps => {
+            // need a copy ?
+            originalFooterProps!.groupLevel = totalNestingDepth - 1;
+            return defaultRender!(originalFooterProps);
+          };
           return onRenderDetailsGroupFooter(
             {
               ...groupFooterProps,
@@ -352,7 +357,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               checkboxVisibility,
               cellStyleProps,
             },
-            defaultRender,
+            spacingRenderFunction,
           );
         }
       : undefined;

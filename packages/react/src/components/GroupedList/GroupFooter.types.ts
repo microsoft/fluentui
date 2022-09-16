@@ -26,4 +26,5 @@ export type IGroupFooterStyleProps = Required<Pick<IGroupFooterProps, 'theme'>> 
  */
 export interface IGroupFooterStyles {
   root: IStyle;
+  title: IStyle;
 }

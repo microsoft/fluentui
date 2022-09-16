@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
+  CheckboxVisibility,
   DetailsHeader,
   DetailsList,
   IColumn,
+  IDetailsGroupRenderProps,
   IDetailsHeaderProps,
   IDetailsList,
   IGroup,
@@ -138,6 +140,7 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
           onRenderDetailsHeader={this._onRenderDetailsHeader}
           groupProps={{
             showEmptyGroups: true,
+            onRenderFooter: this._onRenderGroupFooter,
           }}
           onRenderItemColumn={this._onRenderColumn}
           compact={isCompactMode}
@@ -145,6 +148,11 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
       </div>
     );
   }
+
+  private _onRenderGroupFooter: IDetailsGroupRenderProps['onRenderFooter'] = (detailsFooterProps, defaultRender) => {
+    detailsFooterProps!.footerText = 'A footer';
+    return defaultRender!(detailsFooterProps);
+  };
 
   private _addItem = (): void => {
     const items = this.state.items;
