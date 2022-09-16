@@ -208,13 +208,17 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       styles,
       cellsByColumn,
       groupNestingDepth,
-      totalNestingDepth,
       useFastIcons = true,
       cellStyleProps,
       group,
       focusZoneProps,
       disabled = false,
     } = this.props;
+
+    let totalNestingDepth = this.props.totalNestingDepth;
+    if (totalNestingDepth === undefined) {
+      totalNestingDepth = groupNestingDepth;
+    }
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
     const isDraggable = dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined;
