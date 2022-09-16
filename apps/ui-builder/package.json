@@ -1,0 +1,49 @@
+{
+  "name": "@fluentui/ui-builder",
+  "description": "React 18 test application",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "type-check": "tsc -b",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "webpack-dev-server --mode=development --config=webpack.config.js",
+    "e2e:local": "cypress open --component"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.6",
+    "swc-loader": "^0.2.3"
+  },
+  "dependencies": {
+    "@fluentui/react-button": "^9.1.1",
+    "@fluentui/react-provider": "^9.1.1",
+    "@fluentui/react-theme": "^9.1.0",
+    "@fluentui/accessibility": "^0.64.0",
+    "@fluentui/code-sandbox": "^0.64.0",
+    "@fluentui/docs-components": "^0.64.0",
+    "@fluentui/react-component-event-listener": "^0.64.0",
+    "@fluentui/react-component-ref": "^0.64.0",
+    "@fluentui/react-icons-northstar": "^0.64.0",
+    "@fluentui/react-northstar": "^0.64.0",
+    "axe-core": "3.5.0",
+    "immer": "^9.0.12",
+    "lodash": "^4.17.15",
+    "lz-string": "^1.4.4",
+    "react-document-title": "^2.0.3",
+    "react-frame-component": "^4.1.1",
+    "react-is": "^17.0.2",
+    "use-immer": "^0.6.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@babel/standalone": "^7.8.3"
+  }
+}
