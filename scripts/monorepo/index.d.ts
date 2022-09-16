@@ -33,7 +33,7 @@ export declare function findRepoDeps(options?: {
   dev?: boolean;
 }): PackageInfo[];
 
-export declare function getAllPackageInfo(): AllPackageInfo;
+export declare function getAllPackageInfo(omittedPaths: string[]): AllPackageInfo;
 
 /**
  * Determines whether a package is converged, based on its version.
