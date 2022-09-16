@@ -87,6 +87,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     ${display('block')} :host {
       contain: content;
       position: relative;
+      outline: none;
       color: ${neutralForegroundRest};
       fill: currentcolor;
       cursor: pointer;

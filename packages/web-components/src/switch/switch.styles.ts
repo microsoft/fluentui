@@ -43,6 +43,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
 
     ${display('inline-flex')} :host {
       align-items: center;
+      outline: none;
       font-family: ${bodyFont};
       ${
         /*

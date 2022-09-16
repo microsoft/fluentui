@@ -16,6 +16,7 @@ import {
   neutralFillStealthHover,
   neutralForegroundHint,
   neutralForegroundRest,
+  strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 import { insetFocusTreatment } from '../styles/patterns/focus';
@@ -41,6 +42,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       fill: currentcolor;
       cursor: pointer;
       border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${strokeWidth} * 1px) solid transparent;
     }
 
     :host(.indent-0) {

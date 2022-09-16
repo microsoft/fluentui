@@ -9,7 +9,9 @@ import {
 import {
   controlCornerRadius,
   designUnit,
+  focusStrokeWidth,
   neutralForegroundRest,
+  strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 import { insetFocusTreatment } from '../styles/patterns/focus';
@@ -20,10 +22,11 @@ export const dataGridCellStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host {
-      padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
+      padding: calc((${designUnit} + ${focusStrokeWidth} - ${strokeWidth}) * 1px) calc(((${designUnit} * 3) + ${focusStrokeWidth} - ${strokeWidth}) * 1px);
       color: ${neutralForegroundRest};
       box-sizing: border-box;
       ${typeRampBase}
+      border: transparent calc(${strokeWidth} * 1px) solid;
       overflow: hidden;
       white-space: nowrap;
       border-radius: calc(${controlCornerRadius} * 1px);

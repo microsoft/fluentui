@@ -42,6 +42,7 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       user-select: none;
       box-sizing: border-box;
       border-radius: calc(${controlCornerRadius} * 1px);
+      outline: none;
       cursor: pointer;
     }
     :host(.horizontal) .positioning-region {
