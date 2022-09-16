@@ -43,6 +43,13 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 items: ['Play with audio', { content: 'Play with video', key: 'playVideo', menu: ['HD', 'Full HD'] }],
               },
             },
+            {
+              key: 'appearance',
+              content: 'Appearance',
+              menu: {
+                items: ['Centered Layout', 'Zen', 'Zoom In', 'Zoom Out'],
+              },
+            },
             { key: 'pause', content: 'Pause', icon: <PauseIcon /> },
             { key: 'divider', kind: 'divider' },
             'Without icon',
