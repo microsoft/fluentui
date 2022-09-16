@@ -11,7 +11,7 @@ let packageInfo;
 let cwdForPackageInfo;
 
 /**
- * @param {string[]} omittedPaths - paths to ommit from the list
+ * @param {string[]?} omittedPaths - paths to ommit from the list
  * @returns {import('./index').AllPackageInfo}
  */
 function getAllPackageInfo(omittedPaths) {
@@ -30,12 +30,13 @@ function getAllPackageInfo(omittedPaths) {
 
   for (const [packageName, packagePath] of Object.entries(packagePaths)) {
     let keep = true;
-    omittedPaths.forEach(omittedPath => {
-      if (packagePath.split('\\').join('/').includes(omittedPath)) {
-        keep = false;
-        return;
-      }
-    });
+    omittedPaths &&
+      omittedPaths.forEach(omittedPath => {
+        if (packagePath.split('\\').join('/').includes(omittedPath)) {
+          keep = false;
+          return;
+        }
+      });
     if (keep) {
       packageInfo[packageName] = {
         packagePath: path.relative(gitRoot, packagePath),
