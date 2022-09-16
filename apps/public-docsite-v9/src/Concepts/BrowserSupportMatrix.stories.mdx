@@ -54,6 +54,21 @@ List of features that are currently used in FluentUI that aren't supported out o
 2.  CSS min, max, clamp: Unsupported by Firefox and Opera
 3.  CSS revert value: Unsupported by Firefox and Opera
 
+## Browser Support Expectations:
+
+**Consumer Expectations:**
+
+1. Consumers are expected to perform down-level transpilation of the FluentUI library should they need to support browsers that fall below the full support matrix.
+2. Consumers are responsible for working around browser, ECMA and CSS feature gaps caused by needing to support browsers that fall below the full support matrix.
+
+**Developer Expectations:**
+
+1. FluentUI developers are internally expected to develop against the partial browser support matrix.
+   This means that no code which causes applications to crash on the partially supported browsers (with the exception of ES syntax which are transpilable)
+   should be present in the library. Should any application breaking errors be discovered in the future, FluentUI will be responsible for fixing it internally.
+2. FluentUI developers still reserve the right to use features that fall in between the partial and full browser support matrices (like flex gap) as
+   long as they don't result in applications crashing.
+
 ## Browser Support Going Forward
 
 With an eye towards being a modern library, FluentUI will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace
