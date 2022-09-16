@@ -2,6 +2,1479 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:48:53 GMT",
+      "tag": "@fluentui/react-components_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update color tokens"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8cd907f0c88ecd6d21d0f5b4ea1e60f57f9bd04f",
+            "comment": "fix: add microdata properties to allowed html properties"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "c868d64e3c84449d5e3d1235a5ef49f9eb0ec487",
+            "comment": "fix: Remove box-shadow from filled appearances."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "f17b8604209a099d354c212077832516dcfbbae2",
+            "comment": "fix: add type=button when rendered as a button"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "f97dc9f0f713bdf845cdd250d3b2d2993a0a5a0d",
+            "comment": "fix: Replacing bottom border styles with text decoration underline."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "6c6fe4c8246abec30d9cd3ba2079d379c4d7acb8",
+            "comment": "bugfix: stops propagation on Escape keydown"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "3b1fea37fa1f5c4abbf76919e37833f3f1010647",
+            "comment": "fix: Allow PopoverSurface to trap focus when it's focusable."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "6c6fe4c8246abec30d9cd3ba2079d379c4d7acb8",
+            "comment": "bugfix: stops propagation on Escape keydown"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update color tokens"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "f1f4ab4ac21226c8f6729ca263ca09c1ec9b76f2",
+            "comment": "fix: Portal compat should apply `focus-visible` ponyfill"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "a606fbedcf7d618d1a48706a5e15c26c4cd85ba6",
+            "comment": "chore: fix no-context-default-value lint violations for cxe"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "7c2ccadde562224609e08d5bdd2c42b078f5bef2",
+            "comment": "(patch): Add line-height styling to Spinner"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update color tokens"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "a210c2524d1961b6b9b7cb8774bec951dbbd9db0",
+            "comment": "(chore): Remove appearance conditional from Spinner slot styling"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update color tokens"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f17b8604209a099d354c212077832516dcfbbae2",
+            "comment": "fix: add type=button to root slot "
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e4d50f2c501c4a8be23b24373242f650a601fdaf",
+            "comment": "fix: Remove provider classname from focus styles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e2b71230d03f2cf03eff3cda02484dfcb72e9c51",
+            "comment": "fix: Bumps tabster to 2.1.2 and removes deep import for KeyborgCallback"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f1f4ab4ac21226c8f6729ca263ca09c1ec9b76f2",
+            "comment": "chore: Exports `applyFocusVisible` as internal"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "38bd1c146cb2e635bc181cda1b2f11b17a07c4c4",
+            "comment": "fix: Change filled appearances' normal state's token."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "15d5c09a2ba67362ea67cc5d4d5341f66e7ec65a",
+            "comment": "fix: disabled textarea uses semantic contrast theme border color"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update token values to fix failing color contrast"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "5c78472d96502d05a10016d9502eceada4edfd8a",
+            "comment": "fix: update color neutral background inverted color in teams dark"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "21af8da1d98c070a682b26b7d56775d43a749b3d",
+            "comment": "fix: Update color tokens mapping"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "817814abbc2b4acbf63eb5e6dfb75863aa033184",
+            "comment": "fix: Change colorBrandForeground2 mapping in teamsDark theme"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "018509c3926449f70b357b80952f40ff2aa9071f",
+            "comment": "fix: Swap Background1 and Foreground1 in HC color palette"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a606fbedcf7d618d1a48706a5e15c26c4cd85ba6",
+            "comment": "chore: fix no-context-default-value lint violations for cxe"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "7b9f91b1fc1c2281bff1037b860b92dfbf99dfb1",
+            "comment": "fix(Refactor accordion expandIcon styling)"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "f17b8604209a099d354c212077832516dcfbbae2",
+            "comment": "fix: add type=button to button slot"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs(react-aria): re-generate api.md"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "de08c96226ec5d425f705c22c5d94dbac5811eb6",
+            "comment": "chore(react-aria): improve internal typings"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "0547583ebcebe746110e5ef8d0599b0972b1f4c6",
+            "comment": "feat: upgrade typings on useARIAButtonProps to be more specific"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "5baea110a12d6c161c36b19b5b6768eeaa8370de",
+            "comment": "chore: Change content to render as ul and list item to render as li."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "abc61d6bf47190f96b5e32ed3b7df4b77614caaf",
+            "comment": "chore: Cleaning up use of AvatarGroup context."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "4de0899dd07982aabdc611b1837bf9acfca44efc",
+            "comment": "fix: Making PopoverSurface focusable, moving Overflow aria-label to PopoverSurface, and moving content styles to PopoverSurface."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4",
+            "comment": "fix: Set aria-hidden to AvatarGroupItem's label."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1542e766427a7f0b1ee122d507b7f50ebcb51a3c",
+            "comment": "chore: Update tests and add e2e tests."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update color tokens"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "a606fbedcf7d618d1a48706a5e15c26c4cd85ba6",
+            "comment": "chore: fix no-context-default-value lint violations for cxe"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "17b9063802b28bf7f4b1c4d439623819ad8940fa",
+            "comment": "fix: Adding 'aria-expanded=false' to collapsed MenuButtons."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "6bc03a4e9ee815da750466f9dc2d25df1373f3e9",
+            "comment": "chore: Remove max-width style from Button components."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "ef3ea2307fd97c893eded2164d96f1f56e378fd3",
+            "comment": "chore: Cleaning up tokens in Button components so they better adhere to the design spec."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "28f55597050bcdd293e57e7d1fdc87802150c59d",
+            "comment": "fix: Wrapping long text in Button components."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "fix: update color tokens"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "9253171aac6e08d6830361d125d657f21ddfc90a",
+            "comment": "feat: Export `TableCellActions` and `TablePrimaryCell` as unstable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "59479f0b1751fddf0cc8229f4ad6f2607584584a",
+            "comment": "fix: use caret for @fluentui/react-spinbutton"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b51ebaec4a0681dc71e8f67a28a9d28b051bcba8",
+            "comment": "chore: Stop exporting TablePrimaryCell and associated utilities and types"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "a7903208206d2a43394ce30b34a601c5eda9303b",
+            "comment": "feat: Adding missing AvatarGroup exports."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "e79be7955cfeef07aa3377bf123b88800e4af1cc",
+            "comment": "feat: Remove TableCellPrimaryLayout, adds `appearance` prop to TableCellLayout for primary layout"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "059b48cc66cbeb9c545b60ef842407895cd4e505",
+            "comment": "feat: Export table cell layout components from unstable"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b9b2c4cf2b69e8d5e4b0a8a01fcc8458b1c8efc6",
+            "comment": "feat: Export `TableSelectionCell` from unstable"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9b0a3e873d32876d844bb193bbb984af0ab3f423",
+            "comment": "fix: export ToolbarButton"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cd8f5a11fd89c77582950fe714fece2bdf9c08c0",
+            "comment": "feat: Add *Field components to @fluentui/react-components/unstable"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4c31b27421360e80d8435235092a634a67b0418a",
+            "comment": "Changed from upgrade to migrate terminology"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "76ec1f86ae20b24c103d6fcdf1ddd47f43289e49",
+            "comment": "Move Icon Table to new page"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs(react-utilities): re-generate api.md"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "5cd0e8dbc07b0a71ab0a48813cdcbbbd37a222e1",
+            "comment": "chore: remove localShorthands in favor of griffel shorthands"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "a105236ca0a6eac1035fee7bfca274972fb89da1",
+            "comment": "chore(react-menu): stop spreading props on state"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs: re-generate api.md files"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs: re-generate api.md files"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "22de26fac5b939224884052b0bf86cecc5f22fee",
+            "comment": "docs: Clarify the documentation of RadioGroup's required prop"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs(react-shared-contexts): re-generate api.md"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "jennz@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "7f7f925f576751f77c612bfdd6557232451f9990",
+            "comment": "docs: add accessibility documentation for SpinButton"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "9e604a18ef914090301b4d0cd0b602f646f5719c",
+            "comment": "chore: Add preview warning for Table component"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs: re-generate api.md files"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e95ba37f3a8155930542712bfc63055c306cce56",
+            "comment": "docs: Update readme"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "faf23288345ea43d3cfa8efbe2bd29917271128f",
+            "comment": "chore: Refactor global shared color tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "9c97dc2efbfe7d22b3686cb765fd93916b303642",
+            "comment": "react-theme-sass dev-depends on react-theme"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "bee2c5b4e2ced66d3897fe2ca7d255f17f5f865b",
+            "comment": "feat: add toolbar controlled state example for toggle buttons"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "92a2649587483cef44c5ce186f05b0254e015e02",
+            "comment": "chore: add e2e tests for toolbar"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "chore(priority-flow): re-generate api.md"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "rohitpag@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "045c66e2a2142e3d2380da05a9aa60b54de6888c",
+            "comment": "Adding appearance prop to the alert component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bf151e71e0ffa5de5c44cc722e629cdeb7abdbb2",
+            "comment": "chore: re-organize useARIAButton into its own folder"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c5249ee380c5e17651b5122a716fcf5e4c477ad1",
+            "comment": "docs: Updating AvatarGroup's migration guide."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "ab54d44126b26316d662551bbdd93bf5b044b022",
+            "comment": "docs: Update spec to match implementation, add best practices, and update README."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs: re-generate api.md files"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e176621e71d595c6d17655c108db0b73eb9ec188",
+            "comment": "chore: Removing CompoundButtonAsToggleButton story since it was using non-exported functions."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "84017b6464e13c46a7ae8c61875ead2ff4b6965b",
+            "comment": "bugfix: update useMergedEventCallbacks to mergeCallbacks"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b02e8f3ab48daf6b9db7f7efebbf026c6cbed740",
+            "comment": "chore: updates react-components export of react-dialog"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs(react-context-selector): re-generate api.md"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6fd8556690d3716c3f37b88b366dd51502d11d76",
+            "comment": "feat: add dialog properties to getNativeElementProps"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Replace deprecated ReactNodeArray for React 17 support."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a85b5f8ff499fddcb1edcee28c7b0dede92ab674",
+            "comment": "feat(react-utilities): adds isResolvedShorthand guard method"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "2f46a7abf0dd20cf3b07b4527d177ae1fff55b77",
+            "comment": "feat: Adding optional shadow to filled appearances."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0547583ebcebe746110e5ef8d0599b0972b1f4c6",
+            "comment": "chore(react-menu): Updates trigger to use useARIAButton"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "0547583ebcebe746110e5ef8d0599b0972b1f4c6",
+            "comment": "chore(react-popover): Updates trigger to use useARIAButton"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "4ba03b2e704668cb253f8ad16e8995a8a44b3d22",
+            "comment": "feat: Upgrade to Floating UI v1"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "61557d7e48a7380b2fbf2bcc5c8faa4a3ed7d89f",
+            "comment": "feat: Add Body2"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "61557d7e48a7380b2fbf2bcc5c8faa4a3ed7d89f",
+            "comment": "feat: Add fontWeightBold, add Body2, fix font weight for *Stronger typography"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "81191d9a45e629126a416e7202af3e241cd5e0fc",
+            "comment": "feat: add helper types to assist DOM element handling"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "66762e1ca870a21db46b72c9b0848c5b107b8e09",
+            "comment": "feat: Adding functionality to AvatarGroupOverflow and updating AvatarGroup to use AvatarGroupOverflow."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "84e2b1a8b1e8d2e9008297b6c35c76231ae3a31c",
+            "comment": "chore: Renaming AvatarGroupOverflow to AvatarGroupPopover."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "27a3480f5361aa5d99f8978817d8395d9037e3b7",
+            "comment": "feat: Add pie layout implementation."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9bbe648f7b7373fad7fcf39cecfe76d037a3e7bf",
+            "comment": "feat: re-export GriffelRenderer type"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0547583ebcebe746110e5ef8d0599b0972b1f4c6",
+            "comment": "chore(react-dialog): Updates trigger to use useARIAButtonProps"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "827dffa4e4a164682c29b157b572ceb63c5dd6a9",
+            "comment": "chore(react-dialog): removes react-button max-width overrides"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "7b46e969e352bd636f7094ac5e29177fb7e8bff2",
+            "comment": "feat: add scroll lock feature to Dialog"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b02e8f3ab48daf6b9db7f7efebbf026c6cbed740",
+            "comment": "feat(react-dialog): moves backdrop slot from Dialog to DialogSurface"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "9c10bc432b8fc8df6d51975c580a19603a10fd1e",
+            "comment": "feat(react-dialog): adds proper style to make DialogBody responsive"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "c9a58334a7abebf949f59d2c0a4bb1271074d808",
+            "comment": "chore: renames overlay slot to backdrop"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "6c6fe4c8246abec30d9cd3ba2079d379c4d7acb8",
+            "comment": "bugfix: stops propagation on Escape key"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "2630091d8093879d26c38dc6a4c585e886cff057",
+            "comment": "feat: Adds padding-right style to avoid jumping on scroll lock"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "94ab82dd00db0bf177908e7ccc60125efaa4e22d",
+            "comment": "chore(react-dialog): removes document listener to Escape keydown"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0865ee92c7cab7273aafd21b1b3dff9418c0d479",
+            "comment": "feat(react-dialog): replace `closeButton` to a more generic `action` slot"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "fd88d8b10fe32eb635c949aa28653c3376f64c3d",
+            "comment": "feat(react-dialog): 1st rule of ARIA for Dialog"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "cd8f5a11fd89c77582950fe714fece2bdf9c08c0",
+            "comment": "Initial release"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "851d0fd82f7d802d048be89dc363271f7cf1720a",
+            "comment": "implement `useTable` state hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e79be7955cfeef07aa3377bf123b88800e4af1cc",
+            "comment": "feat: Remove TableCellPrimaryLayout, adds `appearance` prop to TableCellLayout for primary layout"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b51ebaec4a0681dc71e8f67a28a9d28b051bcba8",
+            "comment": "BREAKING: TableCell layouts are handled by layout components"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "059b48cc66cbeb9c545b60ef842407895cd4e505",
+            "comment": "feat: Implement table cell layout components"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "8f420a1c55f283156b758bda1e7ef0591ec57a78",
+            "comment": "feat: Remove inferred row state and add `rowEnhancer` option"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "cf7b0b6c6941c1b798a57ead0bc67b98e4e0ddbb",
+            "comment": "feat: Implement unstable navigation modes"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "02a6a76a3350adfb4fd95cdfc178864801c8e2bf",
+            "comment": "refactor(useTable): selection manager to avoid calling multiple hooks"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b9b2c4cf2b69e8d5e4b0a8a01fcc8458b1c8efc6",
+            "comment": "feat: Implement `TableSelectionCell`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f5398157ebbea5c748d8d7336f18b378a8bdec16",
+            "comment": "refactor: Stop using context selector for Table primitives"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "573289549f9712357c5561057fc24e97f62a6c63",
+            "comment": "feat: autocontrolled `useTable` hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "9253171aac6e08d6830361d125d657f21ddfc90a",
+            "comment": "feat: Implement `TableCellActions` and `TablePrimaryCell`"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "feat: add new color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "61557d7e48a7380b2fbf2bcc5c8faa4a3ed7d89f",
+            "comment": "feat: Add fontWeightBold"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "5c78472d96502d05a10016d9502eceada4edfd8a",
+            "comment": "feat: add color neutral foreground inverted 2 token"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8484a3ec4abb520d716d199ea79a3cde57fa1da2",
+            "comment": "fix: typing moves active option in Dropdown"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "286479fb4e813506a9560c279215675e8b097500",
+            "comment": "fix: Combobox and Dropdown hover/active border colors and padding styles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "58026c94a40e8589645d3f6a6b0171a21ba3f879",
+            "comment": "fix: Combobox and Dropdown only show option focus outline when navigating by keyboard"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "83b033de0fe819bc30cc437ec7c4a83dd4c6997e",
+            "comment": "fix: set popup Listbox width to trigger width"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "a5b36f689a2eed64ffca5f43e48e213ccba1d925",
+            "comment": "fix: open/close combobox on icon click"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "7d19a95495b04963b9f88b45da993e590df06b6a",
+            "comment": "feat: Allow typing by default, add allowFreeform"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "cde2f43f6bf0522ddf189dbf3b2905ec1f2f7f88",
+            "comment": "feat: make listbox slot nullable"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4f921f9810a55ae8d2077de4013fad1516001c0c",
+            "comment": "fix: react-combobox change onSelect to onOptionSelect to avoid conflicts with native onSelect"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:03:34 GMT",
       "tag": "@fluentui/react-components_v9.2.0",
       "version": "9.2.0",

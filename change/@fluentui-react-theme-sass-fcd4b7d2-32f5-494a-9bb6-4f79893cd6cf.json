@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add color neutral foreground inverted 2 token",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -18,12 +18,16 @@ export const useTableCellLayout_unstable = (
   return {
     components: {
       root: 'div',
+      main: 'span',
+      description: 'span',
+      wrapper: 'div',
       media: 'span',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: getNativeElementProps('div', { ref, ...props }),
+    appearance: props.appearance,
+    main: resolveShorthand(props.main, { required: true }),
     media: resolveShorthand(props.media),
+    description: resolveShorthand(props.description),
+    wrapper: resolveShorthand(props.wrapper, { required: !!props.description || !!props.children }),
   };
 };

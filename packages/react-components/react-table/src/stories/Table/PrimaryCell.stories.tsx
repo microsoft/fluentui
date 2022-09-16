@@ -18,7 +18,6 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellActions,
-  TableCellPrimaryLayout,
   TableCellLayout,
 } from '../..';
 
@@ -82,13 +81,15 @@ export const PrimaryCell = () => {
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellPrimaryLayout media={item.file.icon} main={item.file.label} secondary="Your organization">
-                <TableCellActions>
-                  <Button icon={<EditRegular />} appearance="subtle" />
-                  <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-                </TableCellActions>
-              </TableCellPrimaryLayout>
+              <TableCellLayout media={item.file.icon} description="My Organization" appearance="primary">
+                {item.file.label}
+              </TableCellLayout>
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
             </TableCell>
+
             <TableCell>
               <TableCellLayout
                 media={

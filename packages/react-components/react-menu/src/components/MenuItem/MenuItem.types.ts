@@ -1,7 +1,8 @@
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: Slot<'div'>;
+  root: Slot<ARIAButtonSlotProps<'div'>>;
 
   /**
    * Icon slot rendered before children content
@@ -33,13 +34,6 @@ export type MenuItemSlots = {
 
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
   /**
-   * Applies disabled styles to menu item but remains focusable
-   *
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
    * If the menu item is a trigger for a submenu
    *
    * @default false
@@ -55,4 +49,6 @@ export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
 };
 
 export type MenuItemState = ComponentState<MenuItemSlots> &
-  Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>;
+  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    isNativeButton: boolean;
+  };

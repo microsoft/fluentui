@@ -165,6 +165,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
           <div role="gridcell">
             <button
               data-is-focusable={false}
+              data-selection-disabled={true}
               type="button"
               className={this._classNames.expand}
               onClick={this._onToggleClick}

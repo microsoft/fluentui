@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 03 Aug 2022 16:03:37 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.4..@fluentui/react-avatar_v9.1.0)
+
+### Minor changes
+
+- feat: Adding functionality to AvatarGroupOverflow and updating AvatarGroup to use AvatarGroupOverflow. ([PR #24115](https://github.com/microsoft/fluentui/pull/24115) by esteban.230@hotmail.com)
+- chore: Renaming AvatarGroupOverflow to AvatarGroupPopover. ([PR #24338](https://github.com/microsoft/fluentui/pull/24338) by esteban.230@hotmail.com)
+- feat: Add pie layout implementation. ([PR #24241](https://github.com/microsoft/fluentui/pull/24241) by esteban.230@hotmail.com)
+- Bump @fluentui/react-badge to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.3 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-popover to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tooltip to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+### Patches
+
+- chore: Change content to render as ul and list item to render as li. ([PR #24347](https://github.com/microsoft/fluentui/pull/24347) by esteban.230@hotmail.com)
+- chore: Cleaning up use of AvatarGroup context. ([PR #24459](https://github.com/microsoft/fluentui/pull/24459) by esteban.230@hotmail.com)
+- refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+- fix: Making PopoverSurface focusable, moving Overflow aria-label to PopoverSurface, and moving content styles to PopoverSurface. ([PR #24417](https://github.com/microsoft/fluentui/pull/24417) by esteban.230@hotmail.com)
+- fix: Set aria-hidden to AvatarGroupItem's label. ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by esteban.230@hotmail.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+- chore: Update tests and add e2e tests. ([PR #24348](https://github.com/microsoft/fluentui/pull/24348) by esteban.230@hotmail.com)
+- fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- chore: fix no-context-default-value lint violations for cxe ([PR #24277](https://github.com/microsoft/fluentui/pull/24277) by lingfangao@hotmail.com)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.4)
 

@@ -10,7 +10,13 @@ export const renderTableCellLayout_unstable = (state: TableCellLayoutState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {slots.media && <slots.media {...slotProps.media} />} {slotProps.root.children}
+      {slots.media && <slots.media {...slotProps.media} />}
+      {slots.wrapper && (
+        <slots.wrapper {...slotProps.wrapper}>
+          {slots.main && <slots.main {...slotProps.main}>{slotProps.root.children}</slots.main>}
+          {slots.description && <slots.description {...slotProps.description} />}
+        </slots.wrapper>
+      )}
     </slots.root>
   );
 };

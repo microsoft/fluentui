@@ -6,7 +6,9 @@
 
 /// <reference types="react" />
 
+import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -128,7 +130,6 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
 
 // @public (undocumented)
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
-    disabled?: boolean;
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
 };
@@ -153,14 +154,12 @@ export type MenuItemSelectableProps = {
 
 // @public
 export type MenuItemSelectableState = MenuItemSelectableProps & {
-    checkedItems: string[];
-    onCheckedValueChange: (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, checkedItems: string[]) => void;
     checked: boolean;
 };
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<'div'>;
+    root: Slot<ARIAButtonSlotProps<'div'>>;
     icon?: Slot<'span'>;
     checkmark?: Slot<'span'>;
     submenuIndicator?: Slot<'span'>;
@@ -169,7 +168,9 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>;
+export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    isNativeButton: boolean;
+};
 
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
@@ -398,16 +399,16 @@ export const useMenuGroupHeaderStyles_unstable: (state: MenuGroupHeaderState) =>
 export const useMenuGroupStyles_unstable: (state: MenuGroupState) => MenuGroupState;
 
 // @public
-export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<HTMLElement>) => MenuItemState;
+export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemState;
 
 // @public
-export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<HTMLElement>) => MenuItemCheckboxState;
+export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemCheckboxState;
 
 // @public (undocumented)
 export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => void;
 
 // @public
-export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<HTMLElement>) => MenuItemRadioState;
+export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemRadioState;
 
 // @public (undocumented)
 export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
