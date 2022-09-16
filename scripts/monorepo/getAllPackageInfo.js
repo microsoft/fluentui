@@ -11,9 +11,10 @@ let packageInfo;
 let cwdForPackageInfo;
 
 /**
+ * @param {string[]} omittedPaths - paths to ommit from the list
  * @returns {import('./index').AllPackageInfo}
  */
-function getAllPackageInfo() {
+function getAllPackageInfo(omittedPaths) {
   if (packageInfo && cwdForPackageInfo === process.cwd()) {
     return packageInfo;
   }
@@ -28,10 +29,19 @@ function getAllPackageInfo() {
   const gitRoot = findGitRoot();
 
   for (const [packageName, packagePath] of Object.entries(packagePaths)) {
-    packageInfo[packageName] = {
-      packagePath: path.relative(gitRoot, packagePath),
-      packageJson: fs.readJSONSync(path.join(packagePath, 'package.json')),
-    };
+    let keep = true;
+    omittedPaths.forEach(omittedPath => {
+      if (packagePath.split('\\').join('/').includes(omittedPath)) {
+        keep = false;
+        return;
+      }
+    });
+    if (keep) {
+      packageInfo[packageName] = {
+        packagePath: path.relative(gitRoot, packagePath),
+        packageJson: fs.readJSONSync(path.join(packagePath, 'package.json')),
+      };
+    }
   }
 
   return packageInfo;

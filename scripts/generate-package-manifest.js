@@ -6,7 +6,10 @@ const { getAllPackageInfo, findGitRoot } = require('./monorepo/index');
 
 // Generate "manifest" file with package.jsons of all the monorepo packages (mainly for ODSP)
 
-const allPackageInfo = getAllPackageInfo();
+const ommittedPackagePaths = ['react-components/', 'packages/fluentui/', 'web-components/', 'apps/'];
+
+const allPackageInfo = getAllPackageInfo(ommittedPackagePaths);
+
 const fuirVersion = allPackageInfo['@fluentui/react'].packageJson.version;
 const packageInfoString = JSON.stringify(allPackageInfo, null, 2);
 
