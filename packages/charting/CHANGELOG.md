@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 06 Sep 2022 20:18:55 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Sep 2022 12:22:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.6)
+
+Fri, 16 Sep 2022 12:22:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.23.5..@uifabric/charting_v4.23.6)
+
+### Patches
+
+- Fix legend overflow-indication-text role ([PR #24813](https://github.com/microsoft/fluentui/pull/24813) by kumarkshitij@microsoft.com)
 
 ## [4.23.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.5)
 

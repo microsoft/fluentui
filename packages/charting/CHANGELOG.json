@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 16 Sep 2022 12:22:58 GMT",
+      "tag": "@uifabric/charting_v4.23.6",
+      "version": "4.23.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix legend overflow-indication-text role",
+            "author": "kumarkshitij@microsoft.com",
+            "commit": "d1cdd4045af980b6c6a4858b0d55694edc8e84a8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Sep 2022 20:18:55 GMT",
       "tag": "@uifabric/charting_v4.23.5",
       "version": "4.23.5",
