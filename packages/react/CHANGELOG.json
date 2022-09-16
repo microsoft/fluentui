@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 16 Sep 2022 07:37:31 GMT",
+      "tag": "@fluentui/react_v8.95.1",
+      "version": "8.95.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a",
+            "comment": "Ensure toggling group state does not select it"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 19:15:25 GMT",
       "tag": "@fluentui/react_v8.95.0",
       "version": "8.95.0",
