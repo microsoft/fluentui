@@ -140,6 +140,22 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       0,
     );
 
+    let sumOfPercent = 0;
+    data.chartData!.map((point: IChartDataPoint, index: number) => {
+      const pointData = point.data ? point.data : 0;
+      value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+      if (value < 1 && value !== 0) {
+        value = 1;
+      } else if (value > 99 && value !== 100) {
+        value = 99;
+      }
+      sumOfPercent += value;
+
+      return sumOfPercent;
+    });
+
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+
     let prevPosition = 0;
     let value = 0;
 
@@ -154,6 +170,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         prevPosition += value;
       }
       value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+      if (value < 1 && value !== 0) {
+        value = 1 / scalingRatio;
+      } else if (value > 99 && value !== 100) {
+        value = 99 / scalingRatio;
+      } else {
+        value = value / scalingRatio;
+      }
 
       startingPoint.push(prevPosition);
 
