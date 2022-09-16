@@ -11,7 +11,7 @@ import {
   neutralStrokeRest,
   strokeWidth,
 } from '../design-tokens';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const listboxStyles: (
   context: ElementDefinitionContext,
@@ -31,6 +31,6 @@ export const listboxStyles: (
     }
 
     :host(:focus-within:not([disabled])) {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
   `

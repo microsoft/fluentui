@@ -34,7 +34,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -150,7 +150,7 @@ export const selectStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
 
     :host([disabled]) {

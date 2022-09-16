@@ -8,7 +8,7 @@ import {
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { designUnit, fillColor } from '../design-tokens';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const toolbarStyles: (
   context: ElementDefinitionContext,
@@ -25,7 +25,7 @@ export const toolbarStyles: (
     }
 
     :host(${focusVisible}) {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
 
     .positioning-region {

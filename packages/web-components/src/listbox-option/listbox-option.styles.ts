@@ -26,7 +26,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const optionStyles: (
   context: ElementDefinitionContext,
@@ -81,7 +81,7 @@ export const optionStyles: (
     }
 
     :host(:${focusVisible}) {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
       background: ${neutralFillStealthFocus};
     }
 

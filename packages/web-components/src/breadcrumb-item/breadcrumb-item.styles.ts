@@ -15,7 +15,7 @@ import {
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 import { heightNumber } from '../styles/index';
-import { offsetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentTight } from '../styles/focus';
 
 export const breadcrumbItemStyles: (
   context: ElementDefinitionContext,
@@ -61,7 +61,7 @@ export const breadcrumbItemStyles: (
     }
 
     .control:${focusVisible} {
-      ${offsetFocusTreatment}
+      ${focusTreatmentTight}
     }
 
     :host(:not([href])),

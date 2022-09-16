@@ -21,7 +21,7 @@ import {
   neutralStrokeLayerRest,
   strokeWidth,
 } from '../../design-tokens';
-import { insetFocusTreatment } from '../../styles/patterns/focus';
+import { focusTreatmentBase } from '../../styles/focus';
 import { typeRampBase } from '../../styles/patterns/type-ramp';
 import { heightNumber } from '../../styles/size';
 
@@ -103,7 +103,7 @@ export const accordionItemStyles: (
     }
 
     .button:${focusVisible}::before {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
       border-radius: calc(${layerCornerRadius} * 1px);
     }
 

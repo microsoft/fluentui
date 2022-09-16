@@ -20,7 +20,7 @@ import {
   neutralStrokeControlRest,
   strokeWidth,
 } from '../design-tokens';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -65,7 +65,7 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
     }
 
     :host(:${focusVisible}) {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
 
     :host::-moz-focus-inner {

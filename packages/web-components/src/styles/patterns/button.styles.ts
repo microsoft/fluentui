@@ -42,7 +42,7 @@ import {
   strokeWidth,
 } from '../../design-tokens';
 import { typeRampBase } from '../../styles/patterns/type-ramp';
-import { insetFocusTreatment, offsetFocusTreatment } from './focus';
+import { focusTreatmentBase, focusTreatmentTight } from '../focus';
 
 /**
  * @internal
@@ -108,7 +108,7 @@ export const baseButtonStyles = (
     }
 
     :host .control:${focusVisible} {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
 
     :host .control${nonInteractivitySelector} {
@@ -209,7 +209,7 @@ export const AccentButtonStyles = (
     }
 
     :host .control:${focusVisible} {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
       box-shadow: 0 0 0 calc(((${focusStrokeWidth} + ${strokeWidth}) - ${strokeWidth}) * 1px) ${focusStrokeInner} inset !important;
     }
 
@@ -306,7 +306,7 @@ export const HypertextStyles = (
     }
 
     :host .control:${focusVisible} {
-      ${offsetFocusTreatment}
+      ${focusTreatmentTight}
     }
 
     :host .control${nonInteractivitySelector} {

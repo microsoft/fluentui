@@ -19,7 +19,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -84,7 +84,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     }
 
     :host(:${focusVisible}) {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
 
     :host(:not([disabled]):hover) {

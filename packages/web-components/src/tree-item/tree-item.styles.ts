@@ -30,7 +30,7 @@ import {
 } from '../design-tokens';
 import { Swatch } from '../color/swatch';
 import { typeRampBase } from '../styles/patterns/type-ramp';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 const ltr = css`
   .expand-collapse-button svg {
@@ -107,7 +107,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(:${focusVisible}) .positioning-region {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
 
     .positioning-region::before {

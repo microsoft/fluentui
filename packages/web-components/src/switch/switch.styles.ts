@@ -30,7 +30,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
-import { offsetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentTight } from '../styles/focus';
 
 export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -88,7 +88,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
     }
 
     :host(:${focusVisible}) .switch {
-      ${offsetFocusTreatment}
+      ${focusTreatmentTight}
       background: ${neutralFillInputAltFocus};
     }
 

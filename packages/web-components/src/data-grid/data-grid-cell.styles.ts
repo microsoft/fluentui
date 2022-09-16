@@ -14,7 +14,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
-import { insetFocusTreatment } from '../styles/patterns/focus';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const dataGridCellStyles: (
   context: ElementDefinitionContext,
@@ -37,7 +37,7 @@ export const dataGridCellStyles: (
     }
 
     :host(:${focusVisible}) {
-      ${insetFocusTreatment}
+      ${focusTreatmentBase}
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(

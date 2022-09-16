@@ -16,7 +16,7 @@ import {
   strokeWidth,
 } from '../../design-tokens';
 import { typeRampBase } from '../../styles/patterns/type-ramp';
-import { insetFocusTreatment } from '../../styles/patterns/focus';
+import { focusTreatmentBase } from '../../styles/focus';
 
 export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
@@ -45,7 +45,7 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
       }
 
       :host(:${focusVisible}) {
-        ${insetFocusTreatment}
+        ${focusTreatmentBase}
       }
 
       :host(.vertical) {
