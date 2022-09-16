@@ -111,7 +111,7 @@ export type PersonaSlots = {
   presence: Slot<typeof PresenceBadge>;
 
   /**
-   * Primary text to display.
+   * The first line of text, larger than other lines of text.
    */
   primaryText: Slot<'span'>;
 
