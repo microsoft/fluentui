@@ -17,7 +17,6 @@ import {
   designUnit,
   disabledOpacity,
   fillColor,
-  focusStrokeOuter,
   layerCornerRadius,
   neutralFillActive,
   neutralFillHover,
@@ -35,6 +34,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -63,12 +63,6 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
       :host(:not([disabled]):not([open]):hover),
       :host(:not([disabled]):not([open]):active) {
         border-color: ${SystemColors.Highlight};
-      }
-      :host(:${focusVisible}) {
-        forced-color-adjust: none;
-        background: transparent;
-        border-color: ${SystemColors.Highlight};
-        box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
       }
     `,
   )
@@ -156,9 +150,7 @@ export const selectStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
-      outline: none;
-      box-shadow: 0 0 0 1px inset ${focusStrokeOuter};
+      ${focusTreatmentBase}
     }
 
     :host([disabled]) {
@@ -235,8 +227,7 @@ export const selectStyles = (context, definition) =>
       }
       :host(:${focusVisible}) {
         forced-color-adjust: none;
-        border-color: ${SystemColors.Highlight};
-        box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
+        outline-color: ${SystemColors.Highlight};
       }
       :host([open]) .listbox {
         background: ${SystemColors.ButtonFace};

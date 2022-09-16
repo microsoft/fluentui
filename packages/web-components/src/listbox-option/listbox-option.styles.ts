@@ -14,7 +14,6 @@ import {
   controlCornerRadius,
   designUnit,
   disabledOpacity,
-  focusStrokeOuter,
   focusStrokeWidth,
   neutralFillSecondaryActive,
   neutralFillSecondaryHover,
@@ -24,8 +23,10 @@ import {
   neutralFillStealthHover,
   neutralFillStealthRest,
   neutralForegroundRest,
+  strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const optionStyles: (
   context: ElementDefinitionContext,
@@ -37,16 +38,15 @@ export const optionStyles: (
       ${typeRampBase}
       background: ${neutralFillStealthRest};
       border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${focusStrokeWidth} * 1px) solid transparent;
+      border: calc(${strokeWidth} * 1px) solid transparent;
       box-sizing: border-box;
       color: ${neutralForegroundRest};
       cursor: pointer;
       fill: currentcolor;
       height: calc(${heightNumber} * 1px);
-      outline: none;
       overflow: hidden;
       align-items: center;
-      padding: 0 calc(${designUnit} * 2.25px);
+      padding: 0 calc(((${designUnit} * 3) - ${strokeWidth} - 1) * 1px);
       user-select: none;
       white-space: nowrap;
     }
@@ -55,7 +55,7 @@ export const optionStyles: (
       content: '';
       display: block;
       position: absolute;
-      left: 0;
+      left: calc((${focusStrokeWidth} - ${strokeWidth}) * 1px);
       top: calc((${heightNumber} / 4) - ${focusStrokeWidth} * 1px);
       width: 3px;
       height: calc((${heightNumber} / 2) * 1px);
@@ -81,7 +81,7 @@ export const optionStyles: (
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
+      ${focusTreatmentBase}
       background: ${neutralFillStealthFocus};
     }
 
@@ -155,6 +155,9 @@ export const optionStyles: (
           color: ${SystemColors.GrayText};
           fill: currentcolor;
           opacity: 1;
+        }
+        :host(:${focusVisible}) {
+          outline-color: ${SystemColors.CanvasText};
         }
       `,
     ),
