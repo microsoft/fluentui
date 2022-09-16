@@ -276,7 +276,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         item={item}
         itemIndex={itemIndex}
         isSelected={isSelected}
-        columnStartIndex={(showCheckbox ? 1 : 0) + (totalNestingDepth ? 1 : 0)}
+        columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0)}
         onRenderItemColumn={onRenderItemColumn}
         onRenderField={onRenderField}
         getCellValueKey={getCellValueKey}
