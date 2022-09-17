@@ -232,7 +232,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     const headerProps: IGroupHeaderProps = { ...groupProps!.headerProps, ...dividerProps };
     const showAllProps: IGroupShowAllProps = { ...groupProps!.showAllProps, ...dividerProps };
     const footerProps: IGroupFooterProps = { ...groupProps!.footerProps, ...dividerProps };
-    const groupNestingDepth = this._getGroupNestingDepth();
 
     if (!groupProps!.showEmptyGroups && group && group.count === 0) {
       return null;
@@ -253,7 +252,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         getGroupItemLimit={groupProps && groupProps.getGroupItemLimit}
         group={group}
         groupIndex={groupIndex}
-        groupNestingDepth={groupNestingDepth}
+        groupNestingDepth={1}
         groupProps={groupProps}
         headerProps={headerProps}
         listProps={finalListProps}
