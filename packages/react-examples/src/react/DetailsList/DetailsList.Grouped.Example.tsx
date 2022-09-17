@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  CheckboxVisibility,
   DetailsHeader,
   DetailsList,
   IColumn,
