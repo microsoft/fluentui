@@ -1178,6 +1178,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -1622,6 +1623,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                               background-color: #e1dfdd;
                                             }
                                         data-is-focusable={false}
+                                        data-selection-disabled={true}
                                         onClick={[Function]}
                                         type="button"
                                       >
@@ -3041,6 +3043,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -3485,6 +3488,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                               background-color: #e1dfdd;
                                             }
                                         data-is-focusable={false}
+                                        data-selection-disabled={true}
                                         onClick={[Function]}
                                         type="button"
                                       >
@@ -3929,6 +3933,7 @@ exports[`DetailsList correctly aligns nested groups 1`] = `
                                                         background-color: #e1dfdd;
                                                       }
                                                   data-is-focusable={false}
+                                                  data-selection-disabled={true}
                                                   onClick={[Function]}
                                                   type="button"
                                                 >
