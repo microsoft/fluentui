@@ -17,7 +17,6 @@ import type { IListProps } from '../../List';
 import type { IGroupHeaderProps } from './GroupHeader';
 import type { IGroupShowAllProps } from './GroupShowAll.styles';
 import type { IGroupFooterProps } from './GroupFooter.types';
-import { getGroupNestingDepth } from '../../utilities/groupedList/GroupedListUtility';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
@@ -309,11 +308,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   private _getGroupKey(group: IGroup | undefined, index: number): string {
     return 'group-' + (group && group.key ? group.key : String(index));
-  }
-
-  private _getGroupNestingDepth(): number {
-    const { groups } = this.state;
-    return getGroupNestingDepth(groups);
   }
 
   private _onToggleCollapse = (group: IGroup): void => {
