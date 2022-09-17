@@ -341,7 +341,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     return onRenderDetailsGroupFooter
       ? (groupFooterProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           const spacingRenderFunction: IRenderFunction<IGroupDividerProps> = originalFooterProps => {
-            // need a copy ?
             originalFooterProps!.groupLevel = totalNestingDepth - 1;
             return defaultRender!(originalFooterProps);
           };
@@ -352,7 +351,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               groupNestingDepth: totalNestingDepth,
               indentWidth,
               selection,
-              selectionMode,
               viewport,
               checkboxVisibility,
               cellStyleProps,
@@ -367,7 +365,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     totalNestingDepth,
     indentWidth,
     selection,
-    selectionMode,
     viewport,
     checkboxVisibility,
     cellStyleProps,
