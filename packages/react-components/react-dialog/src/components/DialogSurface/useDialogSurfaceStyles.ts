@@ -34,6 +34,7 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     boxShadow: tokens.shadow64,
     backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
     ...shorthands.gap(DIALOG_GAP),
     ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
     ...shorthands.borderRadius(SURFACE_BORDER_RADIUS),

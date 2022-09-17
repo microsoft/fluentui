@@ -18,7 +18,9 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorNeutralBackground1Hover,
         opacity: 1,
       },
     },

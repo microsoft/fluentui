@@ -99,7 +99,9 @@ export const TableCellActions: ForwardRefComponent<TableCellActionsProps>;
 export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots>;
 
 // @public
-export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {};
+export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {
+    visible?: boolean;
+};
 
 // @public (undocumented)
 export type TableCellActionsSlots = {
@@ -107,7 +109,7 @@ export type TableCellActionsSlots = {
 };
 
 // @public
-export type TableCellActionsState = ComponentState<TableCellActionsSlots>;
+export type TableCellActionsState = ComponentState<TableCellActionsSlots> & Pick<Required<TableCellActionsProps>, 'visible'>;
 
 // @public (undocumented)
 export const tableCellClassName = "fui-TableCell";

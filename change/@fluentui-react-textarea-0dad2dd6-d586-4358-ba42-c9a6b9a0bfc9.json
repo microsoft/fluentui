@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adding filled with shadow appearance.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

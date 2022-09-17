@@ -277,6 +277,7 @@ export {
   useTableCellActionsStyles_unstable,
   useTableCellActions_unstable,
   renderTableCellActions_unstable,
+  tableCellActionsClassNames,
   TableCellLayout,
   useTableCellLayout_unstable,
   useTableCellLayoutStyles_unstable,

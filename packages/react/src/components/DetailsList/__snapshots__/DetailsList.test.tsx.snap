@@ -12467,6 +12467,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -13328,6 +13329,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
