@@ -4664,7 +4664,6 @@ export interface IDetailsItemProps {
     rowWidth?: number;
     selection?: ISelection | undefined;
     selectionMode?: SelectionMode_2 | undefined;
-    totalNestingDepth?: number;
     // @deprecated
     viewport?: IViewport | undefined;
 }
@@ -4843,6 +4842,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     rowFieldsAs?: IComponentAs<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
+    totalNestingDepth?: number;
     useFastIcons?: boolean;
     useReducedRowRenderer?: boolean;
 }
@@ -6140,6 +6140,8 @@ export type IGroupFooterStyleProps = Required<Pick<IGroupFooterProps, 'theme'>> 
 export interface IGroupFooterStyles {
     // (undocumented)
     root: IStyle;
+    // (undocumented)
+    title: IStyle;
 }
 
 // @public (undocumented)
