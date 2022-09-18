@@ -43,7 +43,7 @@ export type FocusableElement = {
 export type SRNCPlatform = 'Win/JAWS' | 'Win/JAWS/VPC';
 
 export class NarrationComputer {
-  computedParts: Record<string, string> = {
+  public computedParts: Record<string, string> = {
     landmarksAndGroups: undefined,
     name: undefined,
     content: undefined,
@@ -56,33 +56,35 @@ export class NarrationComputer {
   };
 
   // Traverses the DOM rooted at the given element to find all the focusable elements and returns them.
-  async getFocusableElements(element: IAriaElement): Promise<FocusableElement[]> {
+  public async getFocusableElements(element: IAriaElement): Promise<FocusableElement[]> {
     // Prepare all the arrays
     const activeDescendantsParents: IAriaElement[] = [];
     const path: string[] = [];
     const focusableElements: FocusableElement[] = [];
 
-    // Traverse down the DOM tree rooted at the element to first find the activeDescendants parent elements, and then all the focusable elements and their paths
+    // Traverse down the DOM tree rooted at the element to first find the activeDescendants parent elements
+    // and then all the focusable elements and their paths
     this.findActiveDescendantsParents(element, activeDescendantsParents);
     await this.findFocusableElements(element, path, focusableElements, activeDescendantsParents);
 
     return focusableElements;
   } // End getFocusableElements
 
-  // Recursively traverses the DOM tree rooted at the given element to find all the parents which have the ariaActiveDescendantElement property set, and saves the found elements to the given parents array.
-  findActiveDescendantsParents(element: IAriaElement, parents: IAriaElement[]) {
-    if (element.ariaActiveDescendantElement != null) {
+  // Recursively traverses the DOM tree rooted at the given element to find all the parents
+  // which have the ariaActiveDescendantElement property set, and saves the found elements to the given parents array.
+  public findActiveDescendantsParents(element: IAriaElement, parents: IAriaElement[]) {
+    if (element.ariaActiveDescendantElement !== null) {
       // Begin if 1
       parents.push(element);
     } // End if 1
-    Array.from(element.children).forEach((child: IAriaElement) => {
+    Array.from(element.children).forEach((child: Element) => {
       // Begin forEach 1
-      this.findActiveDescendantsParents(child, parents);
+      this.findActiveDescendantsParents(child as IAriaElement, parents);
     }); // End forEach 1
   } // End findActiveDescendantsParents
 
   // Recursively traverses the given element to find all the focusable elements and saves their paths along the way.
-  async findFocusableElements(
+  public async findFocusableElements(
     element: IAriaElement,
     path: string[],
     focusableElements: FocusableElement[],
@@ -100,7 +102,7 @@ export class NarrationComputer {
 
     // If the element is focusable, save it together with its path
     const isDirectlyFocusable =
-      (element.getAttribute('tabindex') || element.tabIndex >= 0) && element.ariaActiveDescendantElement == null;
+      (element.getAttribute('tabindex') || element.tabIndex >= 0) && element.ariaActiveDescendantElement === null;
     const isActiveDescendant = activeDescendantsParents.some(parent => {
       // Begin some 1
       return parent.tabIndex >= 0 && parent.ariaActiveDescendantElement === element;
@@ -124,7 +126,7 @@ export class NarrationComputer {
   } // End findFocusableElements
 
   // Computes and returns the screen reader narration for the given element using the previous element and platform.
-  async getNarration(element: IAriaElement, prevElement: IAriaElement, platform: SRNCPlatform): Promise<string> {
+  public async getNarration(element: IAriaElement, prevElement: IAriaElement, platform: SRNCPlatform): Promise<string> {
     // Retrieve the computed accessible node
     const node = await (window as any).getComputedAccessibleNode(element);
 
@@ -141,8 +143,9 @@ export class NarrationComputer {
     return computedNarration;
   } // End getNarration
 
-  // Returns ARIA landmarks and groups that would be entered and narrated when focus moves from the given previous element to the given element, for the given platform inheritance list.
-  getEnteredLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, inheritance: string[]): string[] {
+  // Returns ARIA landmarks and groups that would be entered and narrated when focus moves from the given
+  // previous element to the given element, for the given platform inheritance list.
+  public getEnteredLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, inheritance: string[]): string[] {
     const landmarksAndGroups = [];
     const commonAncestor = this.getCommonAncestor(element, prevElement);
     if (!commonAncestor) {
@@ -150,14 +153,18 @@ export class NarrationComputer {
       return landmarksAndGroups;
     } // End if 1
 
-    // Find all the landmarks and groups between the element and the common ancestor, and compute and save their narration
+    // Find all the landmarks and groups between the element and the common ancestor
+    // and compute and save their narration
     let parent = element.parentElement as IAriaElement;
     while (parent !== commonAncestor) {
       // Begin while 1
       let skipParent = false;
 
-      // The "<header>" and "<footer>" elements don't create a landmark if they are a descendant of a sectioning element.
-      // Note: According to MDN, they should not create a landmark if they are descendants also of of sectioning roles (e.g. article or main), but using all JAWS, NVDA and VoiceOver they actually do. However, they do only when tabbed into, not when entered with virtual cursor. Therefore, in this code, we don't follow MDN, but follow how screen readers actually behave.
+      // The "<header>" and "<footer>" elements don't create a landmark if they are a descendant of a sectioning element
+      // Note: According to MDN, they should not create a landmark if they are descendants also of of sectioning roles
+      // (e.g. article or main), but using all JAWS, NVDA and VoiceOver they actually do.
+      // However, they do only when tabbed into, not when entered with virtual cursor. Therefore, in this code,
+      // we don't follow MDN, but follow how screen readers actually behave.
       // See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
       if (!parent.role && ['header', 'footer'].includes(parent.tagName.toLowerCase())) {
         // Begin if 1
@@ -201,8 +208,10 @@ export class NarrationComputer {
           definition = undefined;
         } // End if 2
 
-        // If the "aria-label" or "aria-labelledby" attribute exists together with a landmark or group element or role, or if it is the "narrateLabelIfNoRole" exception, add its value to the narration
-        // However, don't add its value to the narration if it is an exception that "aria-label" and "aria-labelledby" should be ignored""""
+        // If the "aria-label" or "aria-labelledby" attribute exists together with a landmark or group element or role,
+        // or if it is the "narrateLabelIfNoRole" exception, add its value to the narration
+        // However, don't add its value to the narration if it is an exception that "aria-label" and "aria-labelledby"
+        // should be ignored""""
         const ignoreLabel = this.getDefinition(inheritance, 'ignoreLabel');
         if (
           (definition || SRNC.narrateLabelIfNoRole.includes(inheritance[0])) &&
@@ -224,7 +233,8 @@ export class NarrationComputer {
           } // End if 3
         } // End if 2
 
-        // If the definition exists and it is not an exception that the landmark or group element or role also must have the "aria-label" or "aria-labelledby" attribute to be narrated, add the definition to the narration
+        // If the definition exists and it is not an exception that the landmark or group element or role also must have
+        //  the "aria-label" or "aria-labelledby" attribute to be narrated, add the definition to the narration
         const narrateOnlyWhenLabelled = this.getDefinition(inheritance, 'narrateOnlyWhenLabelled');
         if (
           definition &&
@@ -240,7 +250,7 @@ export class NarrationComputer {
     return landmarksAndGroups;
   } // End getEnteredLandmarksAndGroups
 
-  getCommonAncestor(element1: HTMLElement, element2: HTMLElement): HTMLElement {
+  public getCommonAncestor(element1: HTMLElement, element2: HTMLElement): HTMLElement {
     let parent1 = element1.parentElement;
     let parent2 = element2.parentElement;
     while (parent1 !== parent2 && parent1 !== element1.ownerDocument.body) {
@@ -270,7 +280,7 @@ export class NarrationComputer {
   } // End getCommonAncestor
 
   // Returns the platform inheritance list for the given platform
-  getPlatformInheritance(platform: SRNCPlatform): string[] {
+  public getPlatformInheritance(platform: SRNCPlatform): string[] {
     const inheritance = [platform];
     let inheritedPlatform = platform;
     while (SRNC.inheritance[inheritedPlatform]) {
@@ -281,8 +291,9 @@ export class NarrationComputer {
     return inheritance;
   } // End getPlatformInheritance
 
-  // Returns the definition based on the given definition key, platform inheritance list and definition type. If the definition doesn't exist, returns undefined.
-  getDefinitionByKey(key: string, inheritance: string[], type: string): string {
+  // Returns the definition based on the given definition key, platform inheritance list and definition type.
+  // If the definition doesn't exist, returns undefined.
+  public getDefinitionByKey(key: string, inheritance: string[], type: string): string {
     const definitions = SRNC[type];
 
     // Loop through the platform inheratance list to find the platform which has the searched key
@@ -294,8 +305,9 @@ export class NarrationComputer {
     return definition;
   } // End getDefinitionByKey
 
-  // Returns the definition based on the given platform inheritance list and definition type. If the definition doesn't exist, returns undefined.
-  getDefinition(inheritance: string[], type: string): string {
+  // Returns the definition based on the given platform inheritance list and definition type.
+  // If the definition doesn't exist, returns undefined.
+  public getDefinition(inheritance: string[], type: string): string {
     const definitions = SRNC[type];
 
     // Loop through the platform inheratance list to find the platform which has the definition
@@ -307,8 +319,9 @@ export class NarrationComputer {
     return definition;
   } // End getDefinition
 
-  // Returns the definition name and (possibly inherited) platform based on the given element, platform inheritance list and definition type. If the definition doesn't exist, returns undefined for both the definition name and platform.
-  getDefinitionNameAndPlatform(element: IAriaElement, inheritance: string[], type: string): string[] {
+  // Returns the definition name and (possibly inherited) platform based on the given element, platform inheritance list
+  // and definition type. If the definition doesn't exist, returns undefined for both the definition name and platform.
+  public getDefinitionNameAndPlatform(element: IAriaElement, inheritance: string[], type: string): string[] {
     const definitions = SRNC[type];
 
     let definitionName = '[default]';
@@ -353,8 +366,10 @@ export class NarrationComputer {
     return [definitionName, platform];
   } // End getDefinitionNameAndPlatform
 
-  // Returns the definition name and (possibly inherited) platform based on the given definition key, platform inheritance list and definition type. If the definition doesn't exist, returns undefined for both the definition name and platform.
-  getDefinitionNameAndPlatformByKey(key: string, inheritance: string[], type: string): string[] {
+  // Returns the definition name and (possibly inherited) platform based on the given definition key,
+  // platform inheritance list and definition type. If the definition doesn't exist,
+  // returns undefined for both the definition name and platform.
+  public getDefinitionNameAndPlatformByKey(key: string, inheritance: string[], type: string): string[] {
     const definitions = SRNC[type];
 
     // Loop through the platform inheratance list to find the platform which has the searched key
@@ -370,9 +385,10 @@ export class NarrationComputer {
     return [definitionName, platform];
   } // End getDefinitionNameAndPlatformByKey
 
-  // Computes and stores the landmarksAndGroups part of the narration for the given element, previous element and platform inheritance list.
-  computeLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, inheritance: string[]) {
-    if (prevElement == null) {
+  // Computes and stores the landmarksAndGroups part of the narration for the given element,
+  // previous element and platform inheritance list.
+  public computeLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, inheritance: string[]) {
+    if (prevElement === null) {
       this.computedParts.landmarksAndGroups = undefined;
       return;
     }
@@ -381,7 +397,7 @@ export class NarrationComputer {
   } // End computeLandmarksAndGroups
 
   // Computes and stores the usage part of the narration for the given definitionName, element and platform.
-  computeUsage(element: HTMLElement, inheritance: string[]) {
+  public computeUsage(element: HTMLElement, inheritance: string[]) {
     const [definitionName, platform] = this.getDefinitionNameAndPlatform(
       element as IAriaElement,
       inheritance,
@@ -402,12 +418,14 @@ export class NarrationComputer {
 
       // Find the usage which matches the element's state
       // If there are more matching states, the last usage definition will be used
+      // eslint-disable-next-line guard-for-in
       for (const usageName in usages) {
         // Begin for 1
         const [stateName, stateValue] = usageName.split('=');
         const stateNameAndValueMatch = element.getAttribute(stateName) === stateValue;
 
-        // Handle the special case of the "checked" state name where we are looking for the DOM property instead of the state attribute
+        // Handle the special case of the "checked" state name where we are looking for the DOM property
+        // instead of the state attribute
         const checkedDOMPropAndValueMatch =
           stateName === 'checked' && (element as HTMLInputElement).checked.toString() === stateValue;
         this.computedParts.usage =
@@ -416,8 +434,9 @@ export class NarrationComputer {
     } // End if 1
   } // End computeUsage
 
-  // Computes and stores the accessible description part of the narration for the given definitionName, element and platform inheritance list.
-  computeDescription(element: HTMLElement, inheritance: string[]) {
+  // Computes and stores the accessible description part of the narration for the given definitionName,
+  // element and platform inheritance list.
+  public computeDescription(element: HTMLElement, inheritance: string[]) {
     this.computedParts.description = undefined;
 
     // On some platforms the description part is not narrated
@@ -445,20 +464,23 @@ export class NarrationComputer {
         .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) || undefined;
   } // End computeDescription
 
-  // Computes and stores the accessible name, content and title parts of the narration for the given element using the given computed node.
-  computeNameContentAndTitle(node: any, element: HTMLElement) {
+  // Computes and stores the accessible name, content and title parts of the narration for the given element
+  // using the given computed node.
+  public computeNameContentAndTitle(node: any, element: HTMLElement) {
     this.computedParts.name = node.name;
     this.computedParts.content = node.valueText || element.textContent;
 
-    // If the title attribute is present, set its value as the description part of the narration if it was not computed as accessible name and if no accessible description was computed before
+    // If the title attribute is present, set its value as the description part of the narration
+    // if it was not computed as accessible name and if no accessible description was computed before
     this.computedParts.description =
       element.title && this.computedParts.name !== element.title && !this.computedParts.description
         ? element.title
         : this.computedParts.description;
   } // End computeNameContentAndTitle
 
-  // Sets the position and level narration parts as constant strings because the real computation of the position in set and level would be too difficult.
-  computePositionAndLevel(inheritance: string[]) {
+  // Sets the position and level narration parts as constant strings because the real computation of the position in set
+  // and level would be too difficult.
+  public computePositionAndLevel(inheritance: string[]) {
     this.computedParts.position = undefined;
     this.computedParts.level = undefined;
 
@@ -468,13 +490,15 @@ export class NarrationComputer {
       return;
     } // End if 1
 
-    // We can set the position and level parts for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order definition
+    // We can set the position and level parts for all elements regardless of the definition name because whether
+    // it will eventually be included in the final narration will be determined by the reading order definition
     this.computedParts.position = this.getDefinition(inheritance, 'positions');
     this.computedParts.level = this.getDefinition(inheritance, 'levels');
   } // End computePositionAndLevel
 
-  // Computes the type and state parts of the narration for the given definitionName, element and platform using the given computed node.
-  computeTypeAndState(node: any, element: HTMLElement, inheritance: string[]) {
+  // Computes the type and state parts of the narration for the given definitionName, element and platform
+  // using the given computed node.
+  public computeTypeAndState(node: any, element: HTMLElement, inheritance: string[]) {
     let [definitionName, platform] = this.getDefinitionNameAndPlatform(
       element as IAriaElement,
       inheritance,
@@ -488,7 +512,8 @@ export class NarrationComputer {
     const rules = SRNC.stateRules[platform] ? SRNC.stateRules[platform][definitionName] : undefined;
     if (rules) {
       // Begin if 1
-      // If the definition name has no states (i.e. is not a widget, like <h1>), the definition doesn't actually consist of state rules, but is just an object with a reference to the element type
+      // If the definition name has no states (i.e. is not a widget, like <h1>), the definition doesn't actually consist
+      //  of state rules, but is just an object with a reference to the element type
       if (typeof rules === 'object' && rules.constructor === Object) {
         // Begin if 2ė
         this.computedParts.type = this.getDefinitionByKey(rules.elementType, inheritance, 'elementTypes');
@@ -505,7 +530,9 @@ export class NarrationComputer {
           // Begin some 1
           const stateValue = element.getAttribute(possibleState);
 
-          // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansNotPresent" list. But let's define it the other way around so that there is not too much negations
+          // A state is considred not to be present on the element if it is null, or is false but is included in the
+          // "falseMeansNotPresent" list.
+          // But let's define it the other way around so that there is not too much negations
           const elementHasState =
             stateValue !== null && (stateValue !== 'false' || !SRNC.falseMeansNotPresent.includes(possibleState));
 
@@ -516,7 +543,8 @@ export class NarrationComputer {
           const elementHasStateOrCheckedProp = elementHasState || elementHasCheckedProp;
           const combinationHasState = combination.includes(possibleState);
 
-          // Check if the presence of the state on the element matches its presence in the combination list. If not, continue with the next rule
+          // Check if the presence of the state on the element matches its presence in the combination list.
+          // If not, continue with the next rule
           if (elementHasStateOrCheckedProp !== combinationHasState) {
             // Begin if 2
             return true;
@@ -546,16 +574,20 @@ export class NarrationComputer {
         } // End if 1
         const elementStates = SRNC.elementStates[platform][definitionName];
 
-        // If there is just one or no state in the combination list, the order does not have to be specified, an therefore the combination can be used as the order. But if the order is specified explicitly, use that order
+        // If there is just one or no state in the combination list, the order does not have to be specified,
+        // an therefore the combination can be used as the order. But if the order is specified explicitly,
+        // use that order
         const order = combination.length <= 1 && !rule.order ? combination : rule.order;
 
-        // Determine the state narration for each state in the order list by looking if corresponding state and its value exist in the state strings definitions
+        // Determine the state narration for each state in the order list by looking if corresponding state
+        // and its value exist in the state strings definitions
         order.forEach((stateName: string) => {
           // Begin forEach 1
           let stateValue;
           if (stateName === 'checked') {
             // Begin if 2
-            // Handle the special case of the "checked" state name where we are looking for the DOM property value instead of the state attribute value
+            // Handle the special case of the "checked" state name where we are looking for the DOM property value
+            // instead of the state attribute value
             stateValue = (element as HTMLInputElement).checked;
           } else {
             // Else if 2
@@ -563,7 +595,9 @@ export class NarrationComputer {
             stateValue = element.getAttribute(stateName) || 'false';
           } // End if 2
 
-          // Determine the state string by using "<stateName>=<stateValue>" as the definition key. If such key does not exist, try using "<stateName>=" as the key. Therefore, "<stateName>=" key will match the given stateName and any not defined stateValue
+          // Determine the state string by using "<stateName>=<stateValue>" as the definition key. If such key does not
+          // exist, try using "<stateName>=" as the key. Therefore, "<stateName>=" key will match the given stateName
+          // and any not defined stateValue
           const partialState = elementStates[`${stateName}=${stateValue}`] || elementStates[`${stateName}=`];
           if (partialState) {
             // Begin if 2
@@ -576,8 +610,9 @@ export class NarrationComputer {
     } // End if 1
   } // End computeTypeAndState
 
-  // Composes and returns the complete screen reader narration according to the values of all the internally stored computed parts in the correct order and based on the given definition name and platform.
-  composeNarrationFromParts(element: HTMLElement, inheritance: string[]): string {
+  // Composes and returns the complete screen reader narration according to the values of
+  // all the internally stored computed parts in the correct order and based on the given definition name and platform.
+  public composeNarrationFromParts(element: HTMLElement, inheritance: string[]): string {
     const [definitionName, platform] = this.getDefinitionNameAndPlatform(
       element as IAriaElement,
       inheritance,
