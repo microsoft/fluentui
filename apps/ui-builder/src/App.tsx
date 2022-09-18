@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { Provider, teamsTheme } from '@fluentui/react-northstar';
+import { Provider, teamsV2Theme } from '@fluentui/react-northstar';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Designer } from './components/Designer';
 
@@ -8,7 +8,7 @@ import { Designer } from './components/Designer';
 
 export const App = () => {
   return (
-    <Provider theme={teamsTheme}>
+    <Provider theme={teamsV2Theme}>
       <FluentProvider theme={webLightTheme}>
         <Designer />
       </FluentProvider>
