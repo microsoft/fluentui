@@ -5,6 +5,9 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 module.exports = () => {
   return {
+    devServer: {
+      historyApiFallback: true,
+    },
     entry: ['react-app-polyfill/ie11', './src/index.tsx'],
     output: {
       filename: 'ui-builder.js',

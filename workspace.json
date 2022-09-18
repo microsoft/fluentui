@@ -869,6 +869,13 @@
       "sourceRoot": "typings",
       "tags": ["platform:any"]
     },
+    "@fluentui/ui-builder": {
+      "root": "apps/ui-builder",
+      "projectType": "application",
+      "implicitDependencies": [],
+      "sourceRoot": "apps/ui-builder/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/utilities": {
       "root": "packages/utilities",
       "projectType": "library",

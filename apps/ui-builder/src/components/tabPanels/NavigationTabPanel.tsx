@@ -28,7 +28,7 @@ export const NavigatorTabPanel: React.FunctionComponent<NavigatorTabPanelProps> 
         />
       )}
       <ComponentTree
-        onAddComponent={props.onAddComponent}
+        onAddComponent={props.onOpenAddComponentDialog}
         onCloneComponent={props.onCloneComponent}
         onDeleteSelectedComponent={props.onDeleteSelectedComponent}
         onMoveComponent={props.onMoveComponent}
