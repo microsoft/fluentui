@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add type=button when rendered as a button",
-  "packageName": "@fluentui/react-link",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

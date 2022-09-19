@@ -5,8 +5,15 @@ exports[`TableCellLayout renders a default state 1`] = `
   <div
     class="fui-TableCellLayout"
   >
-     
-    Default TableCellLayout
+    <div
+      class="fui-TableCellLayout__wrapper"
+    >
+      <span
+        class="fui-TableCellLayout__main"
+      >
+        Default TableCellLayout
+      </span>
+    </div>
   </div>
 </div>
 `;

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Combobox and Dropdown only show option focus outline when navigating by keyboard",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -62,6 +62,23 @@ export type DialogBodySlots = {
 // @public
 export type DialogBodyState = ComponentState<DialogBodySlots>;
 
+// @public
+export const DialogContent: ForwardRefComponent<DialogContentProps>;
+
+// @public (undocumented)
+export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
+
+// @public
+export type DialogContentProps = ComponentProps<DialogContentSlots> & {};
+
+// @public (undocumented)
+export type DialogContentSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type DialogContentState = ComponentState<DialogContentSlots>;
+
 // @public (undocumented)
 export type DialogOpenChangeData = {
     type: 'dialogCancel';
@@ -110,6 +127,9 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 
 // @public (undocumented)
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
+
+// @public
+export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
 
 // @public
 export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
@@ -174,6 +194,9 @@ export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.El
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
+export const renderDialogContent_unstable: (state: DialogContentState) => JSX.Element;
+
+// @public
 export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSX.Element;
 
 // @public
@@ -196,6 +219,12 @@ export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<H
 
 // @public
 export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
+
+// @public
+export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLElement>) => DialogContentState;
+
+// @public
+export const useDialogContentStyles_unstable: (state: DialogContentState) => DialogContentState;
 
 // @public
 export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;

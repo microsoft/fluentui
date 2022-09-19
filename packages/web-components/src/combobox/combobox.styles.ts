@@ -1,8 +1,8 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { ComboboxOptions, disabledCursor, ElementDefinitionContext, focusVisible } from '@microsoft/fast-foundation';
+import { ComboboxOptions, disabledCursor, ElementDefinitionContext } from '@microsoft/fast-foundation';
 import { selectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
-import { strokeWidth } from '../design-tokens';
+import { neutralFillInputActive, neutralFillInputHover, neutralFillInputRest, neutralStrokeInputActive, neutralStrokeInputHover, neutralStrokeInputRest, strokeWidth } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles = (
@@ -11,6 +11,21 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
 ) =>
   css`
     ${selectStyles(context, definition)}
+
+    :host {
+      background: padding-box linear-gradient(${neutralFillInputRest}, ${neutralFillInputRest}),
+        border-box ${neutralStrokeInputRest};
+    }
+
+    :host(:not([disabled]):not([open]):hover) {
+      background: padding-box linear-gradient(${neutralFillInputHover}, ${neutralFillInputHover}),
+        border-box ${neutralStrokeInputHover};
+    }
+
+    :host(:not([disabled]):not([open]):active) {
+      background: padding-box linear-gradient(${neutralFillInputActive}, ${neutralFillInputActive}),
+        border-box ${neutralStrokeInputActive};
+    }
 
     :host(:empty) .listbox {
         display: none;
@@ -35,12 +50,6 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
         height: calc(100% - ${strokeWidth} * 1px));
         margin: auto 0;
         width: 100%;
-    }
-
-    .selected-value:hover,
-    .selected-value:${focusVisible},
-    .selected-value:disabled,
-    .selected-value:active {
         outline: none;
     }
 `.withBehaviors(

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Remove inferred row state and add `rowEnhancer` option",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

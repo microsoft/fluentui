@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Replacing bottom border styles with text decoration underline.",
-  "packageName": "@fluentui/react-link",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

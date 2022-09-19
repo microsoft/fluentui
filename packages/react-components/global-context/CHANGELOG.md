@@ -1,8 +1,18 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Thu, 14 Jul 2022 21:21:07 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.4)
+
+Thu, 15 Sep 2022 09:49:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.3..@fluentui/global-context_v9.0.0-beta.4)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.0.3 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.3)
 
