@@ -37,6 +37,11 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
+      - script: |
+          git config user.name "Fluent UI Build"
+          git config user.email "fluentui-internal@service.microsoft.com"
+        displayName: Configure git user (used by beachball)
+
       - task: Bash@3
         inputs:
           filePath: yarn-ci.sh
