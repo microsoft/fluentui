@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: improve groupedlist virtualization",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Standardized focus treatment to use `outline` instead of a combination of `border` and `box-shadow`",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
