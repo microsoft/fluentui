@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: scaffold DialogContent component",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "none"
+}

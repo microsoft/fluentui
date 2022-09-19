@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(react-dialog): removes react-button max-width overrides",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

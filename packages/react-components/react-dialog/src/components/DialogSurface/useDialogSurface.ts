@@ -36,7 +36,6 @@ export const useDialogSurface_unstable = (
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleID);
   const dialogBodyID = useDialogContext_unstable(ctx => ctx.dialogBodyID);
-  const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
   const handleNativeClick = useEventCallback((event: React.MouseEvent<DialogSurfaceElementIntersection>) => {
     props.onClick?.(event);
@@ -108,10 +107,9 @@ export const useDialogSurface_unstable = (
         open: false,
         type: 'escapeKeyDown',
       });
-      if (isNestedDialog) {
-        // Escape keydown should be stopped to avoid closing multiple dialogs
-        event.stopPropagation();
-      }
+      // stop propagation to avoid conflicting with other elements that listen for `Escape`
+      // e,g: nested Dialog, Popover, Menu and Tooltip
+      event.stopPropagation();
     }
   });
 

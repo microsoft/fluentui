@@ -2,6 +2,119 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:50:00 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8484a3ec4abb520d716d199ea79a3cde57fa1da2",
+            "comment": "fix: typing moves active option in Dropdown"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "286479fb4e813506a9560c279215675e8b097500",
+            "comment": "fix: Combobox and Dropdown hover/active border colors and padding styles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "58026c94a40e8589645d3f6a6b0171a21ba3f879",
+            "comment": "fix: Combobox and Dropdown only show option focus outline when navigating by keyboard"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "83b033de0fe819bc30cc437ec7c4a83dd4c6997e",
+            "comment": "fix: set popup Listbox width to trigger width"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "a5b36f689a2eed64ffca5f43e48e213ccba1d925",
+            "comment": "fix: open/close combobox on icon click"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "7d19a95495b04963b9f88b45da993e590df06b6a",
+            "comment": "feat: Allow typing by default, add allowFreeform"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "cde2f43f6bf0522ddf189dbf3b2905ec1f2f7f88",
+            "comment": "feat: make listbox slot nullable"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4f921f9810a55ae8d2077de4013fad1516001c0c",
+            "comment": "fix: react-combobox change onSelect to onOptionSelect to avoid conflicts with native onSelect"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.3",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.0.5",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.2.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "84017b6464e13c46a7ae8c61875ead2ff4b6965b",
+            "comment": "bugfix: update useMergedEventCallbacks to mergeCallbacks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:03:42 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.8",
       "version": "9.0.0-beta.8",

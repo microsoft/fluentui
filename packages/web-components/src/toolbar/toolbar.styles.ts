@@ -7,7 +7,8 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { designUnit, fillColor, focusStrokeWidth, neutralStrokeFocus, strokeWidth } from '../design-tokens';
+import { designUnit, fillColor } from '../design-tokens';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const toolbarStyles: (
   context: ElementDefinitionContext,
@@ -24,7 +25,7 @@ export const toolbarStyles: (
     }
 
     :host(${focusVisible}) {
-      outline: calc(${strokeWidth} * 1px) solid ${neutralStrokeFocus};
+      ${focusTreatmentBase}
     }
 
     .positioning-region {
@@ -78,7 +79,7 @@ export const toolbarStyles: (
     forcedColorsStylesheetBehavior(
       css`
         :host(:${focusVisible}) {
-          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.Highlight};
+          outline-color: ${SystemColors.Highlight};
           color: ${SystemColors.ButtonText};
           forced-color-adjust: none;
         }

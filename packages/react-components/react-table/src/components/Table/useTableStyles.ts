@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { TableSlots, TableState } from './Table.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
     borderCollapse: 'collapse',
     width: '100%',
     display: 'table',
-    tableLayout: 'fixed',
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 });
 

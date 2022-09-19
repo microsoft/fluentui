@@ -15,7 +15,9 @@ export type DialogSurfaceSlots = {
   root: NonNullable<Slot<'dialog', 'div'>>;
 };
 
-/** @internal */
+/**
+ * Union between all possible semantic element that represent a DialogSurface
+ */
 export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
 
 /** @internal */

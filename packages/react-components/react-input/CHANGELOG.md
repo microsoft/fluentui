@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 03 Aug 2022 16:03:49 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.4..@fluentui/react-input_v9.1.0)
+
+### Minor changes
+
+- feat: Adding optional shadow to filled appearances. ([PR #24730](https://github.com/microsoft/fluentui/pull/24730) by esteban.230@hotmail.com)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-text to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+### Patches
+
+- fix: Remove box-shadow from filled appearances. ([PR #24491](https://github.com/microsoft/fluentui/pull/24491) by esteban.230@hotmail.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.4)
 

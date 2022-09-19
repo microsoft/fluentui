@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(react-utilities): adds isResolvedShorthand guard method",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

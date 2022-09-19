@@ -2,6 +2,65 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:49:47 GMT",
+      "tag": "@fluentui/react-alert_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "rohitpag@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "045c66e2a2142e3d2380da05a9aa60b54de6888c",
+            "comment": "Adding appearance prop to the alert component"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-button to v9.1.1",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-utilities to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:03:36 GMT",
       "tag": "@fluentui/react-alert_v9.0.0-beta.8",
       "version": "9.0.0-beta.8",
