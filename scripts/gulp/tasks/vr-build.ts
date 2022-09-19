@@ -18,4 +18,4 @@ task('screener:states', cb => {
   });
 });
 
-task('screener:build', series('docs:build', 'screener:states'));
+task('screener:build', series('build:docs', 'screener:states'));
