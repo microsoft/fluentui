@@ -129,6 +129,9 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
+export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
+
+// @public
 export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
 
 // @public (undocumented)
