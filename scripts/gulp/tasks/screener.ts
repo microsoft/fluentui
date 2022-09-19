@@ -1,11 +1,15 @@
 import { task, series } from 'gulp';
 import { argv } from 'yargs';
+import fs from 'fs';
 
 import config from '../../config';
 import { getAllPackageInfo } from '../../monorepo';
 import { screenerRunner } from '../../screener/screener.runner';
+import states from '../../screener/screener.states';
+import getConfig from '../../screener/screener.config';
 
 const { paths } = config;
+const docsPackageName = '@fluentui/docs';
 
 // ----------------------------------------
 // Visual
@@ -15,14 +19,10 @@ task('screener:runner', cb => {
   // screener-runner doesn't allow to pass custom options
   if (argv.filter) process.env.SCREENER_FILTER = argv.filter as string;
 
-  const docsPackageName = '@fluentui/docs';
-
   const packageInfos = getAllPackageInfo();
   if (Object.values(packageInfos).every(packageInfo => packageInfo.packageJson.name !== docsPackageName)) {
     throw new Error(`package ${docsPackageName} does not exist in the repo`);
   }
-
-  const screenerConfigPath = paths.base('scripts/screener/screener.config.js');
 
   // kill the server when done
   const handlePromiseExit = promise =>
@@ -36,11 +36,14 @@ task('screener:runner', cb => {
         process.exit(1);
       });
 
-  const getConfig = require(screenerConfigPath);
   const screenerConfig = getConfig({
     screenerApiKey: process.env.SCREENER_API_KEY,
     sourceBranchName: process.env.BUILD_SOURCEBRANCHNAME,
+    deployUrl: process.env.DEPLOYURL,
   });
+
+  const screenerStates = require(paths.docsDist('screenerStates.json'));
+  screenerConfig.states = screenerStates;
 
   handlePromiseExit(screenerRunner(screenerConfig));
 });
@@ -49,4 +52,15 @@ task('screener:runner', cb => {
 // Default
 // ----------------------------------------
 
-task('screener:build', series('build:docs'));
+task('screener:states', cb => {
+  const statesJson = JSON.stringify(states, null, 2);
+  fs.writeFile(paths.docsDist('screenerStates.json'), statesJson, { encoding: 'utf8' }, err => {
+    if (err) {
+      cb(err);
+    }
+
+    cb();
+  });
+});
+
+task('screener:build', series('build:docs', 'screener:states'));
