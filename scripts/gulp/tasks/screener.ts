@@ -5,7 +5,6 @@ import fs from 'fs';
 import config from '../../config';
 import { getAllPackageInfo } from '../../monorepo';
 import { screenerRunner } from '../../screener/screener.runner';
-import states from '../../screener/screener.states';
 import getConfig from '../../screener/screener.config';
 
 const { paths } = config;
@@ -53,6 +52,8 @@ task('screener:runner', cb => {
 // ----------------------------------------
 
 task('screener:states', cb => {
+  const screenerStatesPath = paths.base('scripts/screener/screener.states.ts');
+  const states = require(screenerStatesPath);
   const statesJson = JSON.stringify(states, null, 2);
   fs.writeFile(paths.docsDist('screenerStates.json'), statesJson, { encoding: 'utf8' }, err => {
     if (err) {
