@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Body1, Caption1, Button } from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
 import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-card';
-import { ASSET_URL } from './SampleCard.stories';
 
+const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 const avatarElviaURL = ASSET_URL + '/assets/avatar_elvia.svg';
 const wordLogoURL = ASSET_URL + '/assets/word_logo.svg';
 const docTemplateURL = ASSET_URL + '/assets/doc_template.png';
