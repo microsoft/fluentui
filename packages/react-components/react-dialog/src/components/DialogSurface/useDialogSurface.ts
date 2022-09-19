@@ -34,8 +34,8 @@ export const useDialogSurface_unstable = (
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
-  const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleID);
-  const dialogBodyID = useDialogContext_unstable(ctx => ctx.dialogBodyID);
+  const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
+  const dialogBodyID = useDialogContext_unstable(ctx => ctx.dialogContentId);
 
   const handleNativeClick = useEventCallback((event: React.MouseEvent<DialogSurfaceElementIntersection>) => {
     props.onClick?.(event);
