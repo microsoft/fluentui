@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.95.1",
+  "version": "8.96.0",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -506,6 +506,11 @@
       "types": "./lib/components/GroupedList/GroupShowAll.styles.d.ts",
       "import": "./lib/components/GroupedList/GroupShowAll.styles.js",
       "require": "./lib-commonjs/components/GroupedList/GroupShowAll.styles.js"
+    },
+    "./lib/GroupedListV2": {
+      "types": "./lib/GroupedList.d.ts",
+      "import": "./lib/GroupedListV2.js",
+      "require": "./lib-commonjs/GroupedListV2.js"
     },
     "./lib/HoverCard": {
       "types": "./lib/HoverCard.d.ts",
