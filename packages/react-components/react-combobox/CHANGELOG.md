@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Wed, 03 Aug 2022 16:03:42 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:50:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.9)
+
+Thu, 15 Sep 2022 09:50:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.8..@fluentui/react-combobox_v9.0.0-beta.9)
+
+### Changes
+
+- fix: typing moves active option in Dropdown ([PR #24437](https://github.com/microsoft/fluentui/pull/24437) by sarah.higley@microsoft.com)
+- fix: Combobox and Dropdown hover/active border colors and padding styles ([PR #24362](https://github.com/microsoft/fluentui/pull/24362) by sarah.higley@microsoft.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- fix: Combobox and Dropdown only show option focus outline when navigating by keyboard ([PR #24700](https://github.com/microsoft/fluentui/pull/24700) by sarah.higley@microsoft.com)
+- fix: set popup Listbox width to trigger width ([PR #24733](https://github.com/microsoft/fluentui/pull/24733) by sarah.higley@microsoft.com)
+- fix: open/close combobox on icon click ([PR #24147](https://github.com/microsoft/fluentui/pull/24147) by sarah.higley@microsoft.com)
+- feat: Allow typing by default, add allowFreeform ([PR #23819](https://github.com/microsoft/fluentui/pull/23819) by sarah.higley@microsoft.com)
+- feat: make listbox slot nullable ([PR #24392](https://github.com/microsoft/fluentui/pull/24392) by sarah.higley@microsoft.com)
+- fix: react-combobox change onSelect to onOptionSelect to avoid conflicts with native onSelect ([PR #24550](https://github.com/microsoft/fluentui/pull/24550) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.3 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-portal to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-positioning to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.8)
 

@@ -2,6 +2,67 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 15 Sep 2022 09:48:57 GMT",
+      "tag": "@fluentui/react-utilities_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "16aa65dcae8f75c6a221225fd0eb43800650ac66",
+            "comment": "docs(react-utilities): re-generate api.md"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a0cfab0e5f74e3a3bfa9c269fff574295042d7f2",
+            "comment": "chore: fix no-context-default-value lint violations"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8cd907f0c88ecd6d21d0f5b4ea1e60f57f9bd04f",
+            "comment": "fix: add microdata properties to allowed html properties"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e598325b985cad3e5057f00893e0176416edd292",
+            "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6fd8556690d3716c3f37b88b366dd51502d11d76",
+            "comment": "feat: add dialog properties to getNativeElementProps"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Replace deprecated ReactNodeArray for React 17 support."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a85b5f8ff499fddcb1edcee28c7b0dede92ab674",
+            "comment": "feat(react-utilities): adds isResolvedShorthand guard method"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:04:09 GMT",
       "tag": "@fluentui/react-utilities_v9.0.2",
       "version": "9.0.2",

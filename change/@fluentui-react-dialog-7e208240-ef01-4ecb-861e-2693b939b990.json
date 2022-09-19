@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: renames overlay slot to backdrop",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
