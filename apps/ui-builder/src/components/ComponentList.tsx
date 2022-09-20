@@ -1,10 +1,48 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Box, Input, Tree, Tooltip } from '@fluentui/react-northstar';
-import { SearchIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+  Input,
+  Tooltip,
+  makeStyles,
+  tokens,
+  shorthands,
+} from '@fluentui/react-components';
+import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { ComponentInfo } from '../componentInfo/types';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { EXCLUDED_COMPONENTS, COMPONENT_GROUP } from '../config';
+
+const hoverBackgorund = { backgroundColor: tokens.colorBrandBackground2 };
+
+const useStyles = makeStyles({
+  search: { width: 'calc(100% - 4px)', marginLeft: '2px' },
+  clearFilterIcon: { cursor: 'pointer', '&:hover': { color: tokens.colorNeutralForeground1 } },
+  categoryItem: { '&:hover': { ...hoverBackgorund } },
+  categoryItems: { display: 'flex', flexDirection: 'column', ...shorthands.margin(0) },
+  componentItem: {
+    ...shorthands.padding('0.5rem', '1rem'),
+    ...shorthands.borderLeft('4px', 'solid', 'transparent'),
+    cursor: 'grab',
+    '&:hover': {
+      borderLeftColor: tokens.colorBrandForeground1,
+      ...hoverBackgorund,
+    },
+  },
+  unsupportedHeader: {
+    ...shorthands.borderTop('1px', 'solid', tokens.colorNeutralForeground1),
+    ...shorthands.margin(0, 0, '0.5rem'),
+    ...shorthands.padding('0.5rem', '0.5rem', 0),
+  },
+  unsupportedItem: {
+    ...shorthands.padding('0.25rem', '0.5rem'),
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground3,
+  },
+});
 
 export type ListProps = {
   onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => void;
@@ -14,11 +52,15 @@ export type ListProps = {
 export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
   const [filter, setFilter] = React.useState<string>('');
 
+  const styles = useStyles();
+
   const filterRegexp = React.useMemo(() => new RegExp(filter, 'i'), [filter]);
 
   const handleMouseDown = React.useCallback(
     componentInfo => e => {
-      if (onDragStart) onDragStart(componentInfo, e);
+      if (onDragStart) {
+        onDragStart(componentInfo, e);
+      }
     },
     [onDragStart],
   );
@@ -26,6 +68,10 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
   const handleFilterChange = React.useCallback((e, { value }) => {
     setFilter(value);
   }, []);
+
+  const clearFilter = React.useCallback(() => {
+    setFilter('');
+  }, [setFilter]);
 
   const [supportedComponents, unsupportedComponents] = React.useMemo(
     () =>
@@ -35,15 +81,6 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
     [filterRegexp],
   );
 
-  const titleComponent = (Component, { content, expanded, ...rest }) => {
-    return (
-      <Component {...rest}>
-        {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
-        {content}
-      </Component>
-    );
-  };
-
   const treeObj: Record<string, any> = React.useMemo(
     () =>
       Object.keys(COMPONENT_GROUP).reduce((acc, key) => {
@@ -51,40 +88,21 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
           ...acc,
           [key]: {
             id: key,
-            title: {
-              children: titleComponent,
-              content: key,
-            },
-            items: supportedComponents
-              .filter(info => COMPONENT_GROUP[key].includes(info.isChild ? info.parentDisplayName : info.displayName))
-              .map(info => ({
-                id: info.displayName,
-                title: (
-                  <Box
-                    as="span"
-                    key={info.displayName}
-                    onMouseDown={handleMouseDown(info)}
-                    styles={{
-                      padding: '0.25rem 0.75rem',
-                      cursor: 'pointer',
-                      ':hover': {
-                        background: '#ddd',
-                        borderLeft: '2px solid #000',
-                      },
-                      borderLeft: '2px solid transparent',
-                      marginLeft: '2px',
-                    }}
-                  >
-                    {info.displayName}
-                  </Box>
-                ),
-              })),
+            items: supportedComponents.filter(info =>
+              COMPONENT_GROUP[key].includes(info.isChild ? info.parentDisplayName : info.displayName),
+            ),
           },
         };
       }, {}),
-    [handleMouseDown, supportedComponents],
+    [supportedComponents],
   );
   const treeItems = Object.values(treeObj).filter(treeItem => treeItem.items.length > 0);
+
+  const unsupportedItem = displayName => (
+    <span key={displayName} className={styles.unsupportedItem}>
+      {displayName}
+    </span>
+  );
 
   return (
     <div
@@ -96,37 +114,53 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
       }}
     >
       <Input
-        fluid
-        icon={<SearchIcon />}
-        clearable
+        appearance="underline"
+        contentAfter={
+          filter.length ? (
+            <DismissRegular className={styles.clearFilterIcon} onClick={clearFilter} />
+          ) : (
+            <SearchRegular />
+          )
+        }
+        className={styles.search}
         placeholder="Search..."
         onChange={handleFilterChange}
         value={filter}
       />
-      {filter ? <Tree items={treeItems} activeItemIds={treeItems.map(e => e.id)} /> : <Tree items={treeItems} />}
-      {unsupportedComponents
-        .filter(info => info.displayName.match(filterRegexp))
-        .map(info => (
-          <Tooltip
-            pointing
-            position="after"
-            align="center"
-            key={info.displayName}
-            trigger={
-              <Box
-                key={info.displayName}
-                styles={{
-                  padding: '0.2em 0.5em',
-                  background: '#eee',
-                  color: '#888',
-                }}
-              >
-                {info.displayName}
-              </Box>
-            }
-            content={info.docblock.description + info.docblock.tags}
-          />
+      <Accordion multiple collapsible>
+        {treeItems.map(c => (
+          <AccordionItem key={c.id} value={c.id}>
+            <AccordionHeader size="medium" className={styles.categoryItem}>
+              {c.id}
+            </AccordionHeader>
+            <AccordionPanel className={styles.categoryItems}>
+              {c.items.map(i => (
+                <span key={i.displayName} className={styles.componentItem} onMouseDown={handleMouseDown(i)}>
+                  {i.displayName}
+                </span>
+              ))}
+            </AccordionPanel>
+          </AccordionItem>
         ))}
+      </Accordion>
+      <div className={styles.categoryItems}>
+        <h3 className={styles.unsupportedHeader}>Unsupported items</h3>
+        {unsupportedComponents
+          .filter(info => info.displayName.match(filterRegexp))
+          .map(info =>
+            (info.docblock.description + info.docblock.tags).length > 0 ? (
+              <Tooltip
+                key={info.displayName}
+                relationship="description"
+                content={info.docblock.description + info.docblock.tags}
+              >
+                {unsupportedItem(info.displayName)}
+              </Tooltip>
+            ) : (
+              unsupportedItem(info.displayName)
+            ),
+          )}
+      </div>
     </div>
   );
 };
