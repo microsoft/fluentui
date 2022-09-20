@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "bump react-conformance",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
