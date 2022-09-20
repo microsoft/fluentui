@@ -2,6 +2,87 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 20:55:42 GMT",
+      "tag": "@fluentui/react-components_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "30d0ecb1a37bd941f01be0bc4a673374c422752b",
+            "comment": "feat: Adds `visible` prop to `TableCellActions`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "cd9c220e8ca2c6ab0bc4b598801ce38eee21688f",
+            "comment": "fix: `TableCellActions` displays correctly inside `TableHeaderCell`"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "9617a5a46ef4c5e310a066a5374ff2ed61db3c66",
+            "comment": "bump react-conformance"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "79d1b0e32631bf916a52834e3731de464aa4898c",
+            "comment": "bugfix(react-dialog): Adds color style to DialogSurface"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "151520d8a82767f0270793ce040c5aa6eefa64c0",
+            "comment": "feat: Adding filled with shadow appearance."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "7c868d1d8a5f0e158ebda2b42d9dba486f72053a",
+            "comment": "fix: Divider - allow props to override default values"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e8f84e8262c165e5809b4ffc18381e6398b12c4f",
+            "comment": "feat: replace keydown handlers by useARIAButtonShorthand on MenuItem"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "81de40f0df0dfa8bac4e4fb522bf830d9fe8e066",
+            "comment": "bugfix: stops propagation on Escape key"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "e23edb70bfcde6fc5f82b676a1ddcf8d5a854dbd",
+            "comment": "fix: export `tableCellActionsClassNames` from unstable"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "81de40f0df0dfa8bac4e4fb522bf830d9fe8e066",
+            "comment": "Includes Tooltip Escape scenarios on e2e tests"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "cf5f5e14c86cc35ee8bfff6c6be130a36fb6d16d",
+            "comment": "chore: scaffold DialogContent component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:48:53 GMT",
       "tag": "@fluentui/react-components_v9.3.0",
       "version": "9.3.0",

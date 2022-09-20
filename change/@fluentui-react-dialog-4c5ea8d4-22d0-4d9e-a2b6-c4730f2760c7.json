@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Includes Tooltip Escape scenarios on e2e tests",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

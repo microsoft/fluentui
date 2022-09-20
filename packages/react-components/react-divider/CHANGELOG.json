@@ -2,6 +2,27 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 20:55:44 GMT",
+      "tag": "@fluentui/react-divider_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "7c868d1d8a5f0e158ebda2b42d9dba486f72053a",
+            "comment": "fix: Divider - allow props to override default values"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:04 GMT",
       "tag": "@fluentui/react-divider_v9.0.5",
       "version": "9.0.5",
