@@ -35,6 +35,7 @@ const useStyles = makeStyles({
     textAlign: 'unset',
   },
   button: {
+    position: 'relative',
     width: '100%',
     display: 'flex',
     flexGrow: 1,

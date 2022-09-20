@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 19 Sep 2022 07:47:30 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 07:47:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.13.3)
+
+Tue, 20 Sep 2022 07:47:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.13.2..@fluentui/react-charting_v5.13.3)
+
+### Patches
+
+- Fix multi stacked bar chart min width ([PR #24835](https://github.com/microsoft/fluentui/pull/24835) by atishay.jain@microsoft.com)
 
 ## [5.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.13.2)
 
