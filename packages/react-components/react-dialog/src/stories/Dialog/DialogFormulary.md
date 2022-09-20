@@ -1,1 +1,0 @@
-Having a formulary inside the `Dialog` its quite simple, you simply add a `<form>` element between `DialogSurface` and `DialogBody` to ensure all the content between them are properly wrapped inside the formulary. This allows a button inside `DialogActions` to be properly used as submission button.

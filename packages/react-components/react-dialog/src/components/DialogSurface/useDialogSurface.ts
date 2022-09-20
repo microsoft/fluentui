@@ -35,7 +35,7 @@ export const useDialogSurface_unstable = (
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
-  const dialogBodyID = useDialogContext_unstable(ctx => ctx.dialogContentId);
+  const dialogContentId = useDialogContext_unstable(ctx => ctx.dialogContentId);
 
   const handleNativeClick = useEventCallback((event: React.MouseEvent<DialogSurfaceElementIntersection>) => {
     props.onClick?.(event);
@@ -142,7 +142,7 @@ export const useDialogSurface_unstable = (
       ...props,
       ...modalAttributes,
       onKeyDown: handleKeyDown,
-      'aria-describedby': dialogBodyID,
+      'aria-describedby': dialogContentId,
       'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ref: useMergedRefs(ref, dialogRef),
     }),

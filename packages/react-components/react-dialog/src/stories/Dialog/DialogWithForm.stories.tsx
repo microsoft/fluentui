@@ -9,7 +9,7 @@ import {
   DialogActions,
 } from '@fluentui/react-dialog';
 import { Button, Input, Label, makeStyles } from '@fluentui/react-components';
-import story from './DialogFormulary.md';
+import story from './DialogWithForm.md';
 
 const useStyles = makeStyles({
   content: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Formulary = () => {
+export const WithForm = () => {
   const styles = useStyles();
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();
@@ -59,7 +59,7 @@ export const Formulary = () => {
   );
 };
 
-Formulary.parameters = {
+WithForm.parameters = {
   docs: {
     description: {
       story,

@@ -13,7 +13,7 @@ export { ControllingOpenAndClose } from './DialogControllingOpenAndClose.stories
 export { ChangeFocus } from './DialogChangeFocus.stories';
 export { TriggerOutsideDialog } from './DialogTriggerOutsideDialog.stories';
 export { CustomTrigger } from './DialogCustomTrigger.stories';
-export { Formulary } from './DialogFormulary.stories';
+export { WithForm } from './DialogWithForm.stories';
 
 export default {
   title: 'Preview Components/Dialog/Dialog',
