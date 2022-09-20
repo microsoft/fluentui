@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import type { AvatarSizes as AvatarSizes_2 } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -127,7 +128,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
 };
 
 // @public
-export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = AvatarSizes_2;
 
 // @public (undocumented)
 export type AvatarSlots = {

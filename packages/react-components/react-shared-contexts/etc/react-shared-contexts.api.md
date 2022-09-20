@@ -16,6 +16,9 @@ export interface AvatarContextValue {
     size?: AvatarSizes;
 }
 
+// @public (undocumented)
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+
 // @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
