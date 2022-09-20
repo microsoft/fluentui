@@ -23,9 +23,9 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
 
   let fixed = false;
   if (!presenceOnly && props.avatar) {
-    fixed = !!props.avatar.size;
-  } else if (props.presence) {
-    fixed = !!props.presence.size;
+    fixed = !!(props.avatar as AvatarProps).size;
+  } else if (props.presence && props.presence) {
+    fixed = !!(props.presence as PresenceBadgeProps).size;
   }
 
   let avatarSize: AvatarProps['size'] = undefined;

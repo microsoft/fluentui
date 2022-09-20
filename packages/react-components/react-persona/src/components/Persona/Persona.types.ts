@@ -16,22 +16,25 @@ export type PersonaSlots = {
   presence?: Slot<typeof PresenceBadge>;
 
   /**
-   * Primary text to display.
+   * The first line of text in the Persona, larger than the rest of the lines.
+   *
+   * This defaults to the `name` prop, and it is recomended that you only set its value if it should be different from
+   * from the `name` prop.
    */
   primaryText?: Slot<'span'>;
 
   /**
-   * Secondary text to display.
+   * The second line of text in the Persona.
    */
   secondaryText?: Slot<'span'>;
 
   /**
-   * Tertiary text to display.
+   * The third line of text in the Persona.
    */
   tertiaryText?: Slot<'span'>;
 
   /**
-   * Quaternary text to display.
+   * The fourth line of text in the Persona.
    */
   quaternaryText?: Slot<'span'>;
 };
@@ -62,11 +65,11 @@ export type PersonaProps = Omit<ComponentProps<PersonaSlots>, 'badge'> &
 export type PersonaState = ComponentState<PersonaSlots> &
   Required<Pick<PersonaProps, 'textPosition' | 'presenceOnly'>> & {
     /**
-     * The number of text lines used.
-     */
-    numTextLines: number;
-    /**
      * Whether the sizing type is fixed or not.
      */
     fixed: boolean;
+    /**
+     * The number of text lines used.
+     */
+    numTextLines: number;
   };

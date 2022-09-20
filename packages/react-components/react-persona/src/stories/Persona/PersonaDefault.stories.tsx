@@ -8,7 +8,6 @@ export const Default = (props: Partial<PersonaProps>) => {
       secondaryText="Out of office"
       presence={{ status: 'out-of-office' }}
       avatar={{
-        size: 48,
         image: {
           src: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png',
         },
