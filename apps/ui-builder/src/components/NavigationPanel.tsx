@@ -1,14 +1,37 @@
 import * as React from 'react';
-import { Header, Label, Menu } from '@fluentui/react-northstar';
-import { tabListBehavior } from '@fluentui/accessibility';
 import { AccessibilityTabPanel } from './tabPanels/AccessibilityTabPanel';
 import { NavigatorTabPanel } from './tabPanels/NavigationTabPanel';
-import { NavBarItem } from './NavBarItem';
-import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { useMode } from '../hooks/useMode';
 import { JSONTreeElement } from './types';
 import { AccessibilityError } from '../accessibility/types';
 import { AddTabPanel } from './tabPanels/AddTabPanel';
+
+import { TabList, Tab, Tooltip, makeStyles, shorthands, tokens, mergeClasses } from '@fluentui/react-components';
+import {
+  AddFilled,
+  AccessibilityFilled,
+  AccessibilityCheckmarkRegular,
+  TextBulletListTreeFilled,
+} from '@fluentui/react-icons';
+
+const useStyles = makeStyles({
+  container: { display: 'flex', minWidth: '1rem', ...shorthands.overflow('auto'), paddingLeft: '0.25rem' },
+  accessibilityError: { color: tokens.colorPaletteRedForeground1 },
+  panelContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: '22.85rem',
+    transitionProperty: 'opacity',
+    transitionDuration: '0.2s',
+  },
+  panelContainerModeUse: { pointerEvents: 'none', opacity: 0 },
+  panelContainerHeader: {
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralForegroundDisabled),
+    ...shorthands.padding('0', '10px', '10px', '20px'),
+  },
+});
 
 export type NavigationPanelProps = {
   accessibilityErrors: AccessibilityError[];
@@ -26,136 +49,126 @@ export type NavigationPanelProps = {
   selectedComponent?: JSONTreeElement;
 };
 
-export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (props: NavigationPanelProps) => {
+export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = ({
+  accessibilityErrors,
+  activeTab,
+  jsonTree,
+  onAddComponent,
+  onCloneComponent,
+  onDeleteSelectedComponent,
+  onDragStart,
+  onMoveComponent,
+  onOpenAddComponentDialog,
+  onSelectComponent,
+  onSwitchTab,
+  selectedComponent,
+}: NavigationPanelProps) => {
   const [{ mode }] = useMode();
+  const styles = useStyles();
 
-  const accessErrorLabelStyle = {
-    position: 'relative',
-    right: '8px',
-    top: '-5px',
-    transform: 'rotate(0deg);',
-    border: 'solid 1px white',
-    height: '18px',
-    width: '18px',
-    justifyContent: 'center',
-    alignItems: 'center',
+  // hack for invalid tooltip positioning
+  const [addRef, setAddRef] = React.useState<HTMLSpanElement | null>(null);
+  const [accessibilityRef, setAccessibilityRef] = React.useState<HTMLSpanElement | null>(null);
+  const [navRef, setNavRef] = React.useState<HTMLSpanElement | null>(null);
+
+  const onTabSelect = React.useCallback((_e, data) => onSwitchTab(data.value), [onSwitchTab]);
+
+  const printActiveTab = () => {
+    switch (activeTab) {
+      case 'add':
+        return <AddTabPanel onDragStart={onDragStart} />;
+
+      case 'accessibility':
+        return (
+          <AccessibilityTabPanel
+            accessibilityErrors={accessibilityErrors}
+            jsonTree={jsonTree}
+            onAddComponent={onAddComponent}
+            onCloneComponent={onCloneComponent}
+            onDeleteSelectedComponent={onDeleteSelectedComponent}
+            onDragStart={onDragStart}
+            onOpenAddComponentDialog={onOpenAddComponentDialog}
+            onMoveComponent={onMoveComponent}
+            onSelectComponent={onSelectComponent}
+            selectedComponent={selectedComponent}
+          />
+        );
+
+      case 'nav':
+        return (
+          <NavigatorTabPanel
+            jsonTree={jsonTree}
+            onAddComponent={onAddComponent}
+            onCloneComponent={onCloneComponent}
+            onDeleteSelectedComponent={onDeleteSelectedComponent}
+            onDragStart={onDragStart}
+            onOpenAddComponentDialog={onOpenAddComponentDialog}
+            onMoveComponent={onMoveComponent}
+            onSelectComponent={onSelectComponent}
+            selectedComponent={selectedComponent}
+          />
+        );
+
+      default:
+        return <></>;
+    }
   };
 
   return (
-    <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
-      <Menu
-        accessibility={tabListBehavior}
-        vertical
-        styles={({ theme }) => ({
-          background: '#FAF9F8',
-          border: '0px',
-          borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
-          borderRadius: '0px',
-          display: 'flex',
-          flexDirection: 'column',
-          width: '3.4rem',
-          transition: 'opacity 0.2s',
-          position: 'relative',
-          padding: '0px',
-          ...(mode === 'use' && {
-            pointerEvents: 'none',
-            opacity: 0,
-          }),
-        })}
-      >
-        <NavBarItem
-          title="Add components"
-          isSelected={props.activeTab === 'add'}
-          icon={<AddIcon size="large" outline />}
-          onClickHandler={() => props.onSwitchTab('add')}
-        />
-
-        <NavBarItem
-          title="Accessibility"
-          isSelected={props.activeTab === 'accessibility'}
-          icon={
-            props.accessibilityErrors.length !== 0 ? (
-              <>
-                {' '}
-                <AccessibilityIcon size="large" />
-                <Label
-                  design={accessErrorLabelStyle}
-                  color={'red'}
-                  content={props.accessibilityErrors.length}
-                  circular
-                  fluid
-                />{' '}
-              </>
-            ) : (
-              <AccessibilityIcon size="large" outline />
-            )
-          }
-          onClickHandler={() => props.onSwitchTab('accessibility')}
-        />
-
-        <NavBarItem
-          title="Navigator"
-          isSelected={props.activeTab === 'nav'}
-          icon={<MenuIcon size="large" outline />}
-          onClickHandler={() => props.onSwitchTab('nav')}
-        />
-      </Menu>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minWidth: '22.85rem',
-          transition: 'opacity 0.2s',
-          ...(mode === 'use' && {
-            pointerEvents: 'none',
-            opacity: 0,
-          }),
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0 10px 0 20px',
-            borderBottom: '1px solid #E1DFDD',
+    <div className={styles.container}>
+      <TabList vertical selectedValue={activeTab} onTabSelect={onTabSelect}>
+        <Tab
+          value="add"
+          icon={{
+            ref: setAddRef,
+            children: (
+              <Tooltip relationship="label" hideDelay={0} content="Add components" positioning={{ target: addRef }}>
+                <AddFilled />
+              </Tooltip>
+            ),
           }}
-        >
-          <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-            {props.activeTab === 'add'
-              ? 'Add components'
-              : props.activeTab === 'accessibility'
-              ? 'Accessibility'
-              : 'Navigator'}
-          </Header>
-        </div>
-        {props.activeTab === 'add' && <AddTabPanel onDragStart={props.onDragStart} />}
-        {props.activeTab === 'accessibility' && (
-          <AccessibilityTabPanel
-            accessibilityErrors={props.accessibilityErrors}
-            jsonTree={props.jsonTree}
-            onAddComponent={props.onAddComponent}
-            onCloneComponent={props.onCloneComponent}
-            onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-            onDragStart={props.onDragStart}
-            onOpenAddComponentDialog={props.onOpenAddComponentDialog}
-            onMoveComponent={props.onMoveComponent}
-            onSelectComponent={props.onSelectComponent}
-            selectedComponent={props.selectedComponent}
-          />
-        )}
-        {props.activeTab === 'nav' && (
-          <NavigatorTabPanel
-            jsonTree={props.jsonTree}
-            onAddComponent={props.onAddComponent}
-            onCloneComponent={props.onCloneComponent}
-            onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-            onDragStart={props.onDragStart}
-            onOpenAddComponentDialog={props.onOpenAddComponentDialog}
-            onMoveComponent={props.onMoveComponent}
-            onSelectComponent={props.onSelectComponent}
-            selectedComponent={props.selectedComponent}
-          />
-        )}
+        />
+        <Tab
+          value="accessibility"
+          icon={{
+            ref: setAccessibilityRef,
+            children: (
+              <Tooltip
+                relationship="label"
+                hideDelay={0}
+                positioning={{ target: accessibilityRef }}
+                content={
+                  accessibilityErrors.length === 0
+                    ? 'Accessibility'
+                    : 'Accessibility errors: ' + accessibilityErrors.length
+                }
+              >
+                {accessibilityErrors.length > 0 ? (
+                  <AccessibilityFilled className={styles.accessibilityError} />
+                ) : (
+                  <AccessibilityCheckmarkRegular />
+                )}
+              </Tooltip>
+            ),
+          }}
+        />
+        <Tab
+          value="nav"
+          icon={{
+            ref: setNavRef,
+            children: (
+              <Tooltip relationship="label" hideDelay={0} content="Navigator" positioning={{ target: navRef }}>
+                <TextBulletListTreeFilled />
+              </Tooltip>
+            ),
+          }}
+        />
+      </TabList>
+      <div className={mergeClasses(styles.panelContainer, mode === 'use' && styles.panelContainerModeUse)}>
+        <h2 className={styles.panelContainerHeader}>
+          {activeTab === 'add' ? 'Add components' : activeTab === 'accessibility' ? 'Accessibility' : 'Navigator'}
+        </h2>
+        {printActiveTab()}
       </div>
     </div>
   );
