@@ -27,7 +27,7 @@ function getCurrentHash() {
  * @param {string} options.sourceBranchName
  * @param {string} options.deployUrl
  * @param {string} options.targetBranch
- * @returns {import('@fluentui/scripts/screener/screener.types').ScreenerRunnerConfig}
+ * @returns
  */
 function getConfig({ screenerApiKey, sourceBranchName, deployUrl, targetBranch }) {
   const baseBranch = targetBranch ? targetBranch.replace(/^refs\/heads\//, '') : 'master';
@@ -44,7 +44,6 @@ function getConfig({ screenerApiKey, sourceBranchName, deployUrl, targetBranch }
     alwaysAcceptBaseBranch: true,
     ...(sourceBranchName !== 'master' ? { commit: getCurrentHash() } : null),
     baseUrl: `${deployUrl}/react-screener/iframe.html`,
-    states: [],
   };
   console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
   return config;
