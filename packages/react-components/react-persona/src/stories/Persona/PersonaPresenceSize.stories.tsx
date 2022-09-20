@@ -5,7 +5,8 @@ import { makeStyles, PresenceBadgeProps } from '@fluentui/react-components';
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, max-content)',
+    gridTemplateColumns: 'repeat(2, max-content)',
+    columnGap: '10px',
     rowGap: '10px',
   },
 });
@@ -18,31 +19,24 @@ export const PresenceSize = () => {
   return (
     <div className={styles.root}>
       {sizes.map(size => (
-        <>
-          <Persona
-            presenceOnly
-            presence={{ status: 'out-of-office', size }}
-            primaryText="PrimaryText"
-            secondaryText="Secondary text"
-            tertiaryText="Tertiary text"
-            quaternaryText="Quaternary text"
-          />
-          <Persona
-            presenceOnly
-            presence={{ status: 'out-of-office', size }}
-            primaryText="PrimaryText"
-            secondaryText="Secondary text"
-            tertiaryText="Tertiary text"
-          />
-          <Persona
-            presenceOnly
-            presence={{ status: 'out-of-office', size }}
-            primaryText="PrimaryText"
-            secondaryText="Secondary text"
-          />
-          <Persona presenceOnly presence={{ status: 'out-of-office', size }} primaryText="PrimaryText" />
-        </>
+        <Persona
+          presenceOnly
+          presence={{ status: 'available', size }}
+          name="Kevin Sturgis"
+          secondaryText="Available"
+          key={size}
+        />
       ))}
     </div>
   );
+};
+
+PresenceSize.parameters = {
+  docs: {
+    description: {
+      story:
+        `A Persona supports all PresenceBadge's sizes respecting its default size medium. When a size is specified ` +
+        `, Persona will apply styles to the text lines based on the size of the PresenceBadge.`,
+    },
+  },
 };

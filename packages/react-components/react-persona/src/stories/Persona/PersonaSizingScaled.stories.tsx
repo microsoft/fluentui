@@ -17,55 +17,30 @@ export const SizingScaled = () => {
   return (
     <div className={styles.root}>
       <Persona
-        sizing="scaled"
         name="Kevin Sturgis"
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-        quaternaryText="Quaternary text"
+        presence={{ status: 'available' }}
+        secondaryText="Available"
+        tertiaryText="Software engineer"
+        quaternaryText="Last seen 40 mins ago"
       />
       <Persona
-        sizing="scaled"
         name="Kevin Sturgis"
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
+        presence={{ status: 'available' }}
+        secondaryText="Available"
+        tertiaryText="Software engineer"
       />
-      <Persona
-        sizing="scaled"
-        name="Kevin Sturgis"
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-      />
-      <Persona sizing="scaled" name="Kevin Sturgis" presence={{ status: 'out-of-office' }} primaryText="Primary text" />
-      <Persona
-        sizing="scaled"
-        presenceOnly
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-        quaternaryText="Quaternary text"
-      />
-      <Persona
-        sizing="scaled"
-        presenceOnly
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-      />
-      <Persona
-        sizing="scaled"
-        presenceOnly
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-      />
-      <Persona sizing="scaled" presenceOnly presence={{ status: 'out-of-office' }} primaryText="Primary text" />
+      <Persona name="Kevin Sturgis" presence={{ status: 'available' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" presence={{ status: 'available' }} />
     </div>
   );
+};
+
+SizingScaled.parameters = {
+  docs: {
+    description: {
+      story:
+        "When a size is not provided to the Avatar or Presence, Persona will adjust the Avatar's or Presence's size" +
+        ' based on the number of text lines used.',
+    },
+  },
 };

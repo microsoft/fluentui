@@ -7,6 +7,7 @@
 /// <reference types="react" />
 
 import { Avatar } from '@fluentui/react-avatar';
+import { AvatarProps } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -22,26 +23,26 @@ export const Persona: ForwardRefComponent<PersonaProps>;
 export const personaClassNames: SlotClassNames<PersonaSlots>;
 
 // @public
-export type PersonaProps = Omit<ComponentProps<Partial<PersonaSlots>, 'avatar'>, 'badge'> & {
+export type PersonaProps = Omit<ComponentProps<PersonaSlots>, 'badge'> & Pick<AvatarProps, 'name'> & {
     presenceOnly?: boolean;
-    sizing?: 'fixed' | 'scaled';
     textPosition?: 'before' | 'after' | 'below';
 };
 
 // @public (undocumented)
 export type PersonaSlots = {
     root: NonNullable<Slot<'div'>>;
-    avatar: NonNullable<Slot<typeof Avatar>>;
-    presence: Slot<typeof PresenceBadge>;
-    primaryText: Slot<'span'>;
-    secondaryText: Slot<'span'>;
-    tertiaryText: Slot<'span'>;
-    quaternaryText: Slot<'span'>;
+    avatar?: Slot<typeof Avatar>;
+    presence?: Slot<typeof PresenceBadge>;
+    primaryText?: Slot<'span'>;
+    secondaryText?: Slot<'span'>;
+    tertiaryText?: Slot<'span'>;
+    quaternaryText?: Slot<'span'>;
 };
 
 // @public
-export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'textPosition' | 'sizing' | 'presenceOnly'>> & {
+export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'textPosition' | 'presenceOnly'>> & {
     numTextLines: number;
+    fixed: boolean;
 };
 
 // @public

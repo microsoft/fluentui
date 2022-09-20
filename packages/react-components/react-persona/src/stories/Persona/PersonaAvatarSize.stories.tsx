@@ -5,7 +5,8 @@ import { AvatarSizes, makeStyles } from '@fluentui/react-components';
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, max-content)',
+    gridTemplateColumns: 'repeat(2, max-content)',
+    columnGap: '10px',
     rowGap: '10px',
   },
 });
@@ -18,34 +19,24 @@ export const AvatarSize = () => {
   return (
     <div className={styles.root}>
       {sizes.map(size => (
-        <>
-          <Persona
-            name="Kevin Sturgis"
-            size={size}
-            presence={{ status: 'out-of-office' }}
-            primaryText="PrimaryText"
-            secondaryText="Secondary text"
-            tertiaryText="Tertiary text"
-            quaternaryText="Quaternary text"
-          />
-          <Persona
-            name="Kevin Sturgis"
-            size={size}
-            presence={{ status: 'out-of-office' }}
-            primaryText="PrimaryText"
-            secondaryText="Secondary text"
-            tertiaryText="Tertiary text"
-          />
-          <Persona
-            name="Kevin Sturgis"
-            size={size}
-            presence={{ status: 'out-of-office' }}
-            primaryText="PrimaryText"
-            secondaryText="Secondary text"
-          />
-          <Persona name="Kevin Sturgis" size={size} presence={{ status: 'out-of-office' }} primaryText="PrimaryText" />
-        </>
+        <Persona
+          name="Kevin Sturgis"
+          avatar={{ size }}
+          presence={{ status: 'available' }}
+          secondaryText="Available"
+          key={size}
+        />
       ))}
     </div>
   );
+};
+
+AvatarSize.parameters = {
+  docs: {
+    description: {
+      story:
+        'A Persona supports all Avatar sizes respecting its default size of 32. When a size is specified, Persona ' +
+        'will apply styles to the text lines based on the size of the Avatar.',
+    },
+  },
 };

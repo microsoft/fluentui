@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-avatar';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import { PresenceBadge } from '@fluentui/react-badge';
+import { Avatar, AvatarProps } from '@fluentui/react-avatar';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { PresenceBadge, PresenceBadgeProps } from '@fluentui/react-badge';
 import type { PersonaProps, PersonaState } from './Persona.types';
 
 /**
@@ -14,22 +14,31 @@ import type { PersonaProps, PersonaState } from './Persona.types';
  * @param ref - reference to root HTMLElement of Persona
  */
 export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElement>): PersonaState => {
-  const {
-    className,
-    presenceOnly = false,
-    sizing = 'fixed',
-    style,
-    textPosition = 'after',
-    ...avatarSlotProps
-  } = props;
+  const { presenceOnly = false, textPosition = 'after', name } = props;
   const numTextLines =
-    (props.primaryText ? 1 : 0) +
+    (props.primaryText || props.name ? 1 : 0) +
     (props.secondaryText ? 1 : 0) +
     (props.tertiaryText ? 1 : 0) +
     (props.quaternaryText ? 1 : 0);
 
-  let avatarSize = avatarSlotProps.size;
-  if (sizing === 'scaled') {
+  let fixed = false;
+  if (!presenceOnly && props.avatar) {
+    fixed = !!props.avatar.size;
+  } else if (props.presence) {
+    fixed = !!props.presence.size;
+  }
+
+  let avatarSize: AvatarProps['size'] = undefined;
+  let presenceSize: PresenceBadgeProps['size'] = undefined;
+  if (presenceOnly && !fixed) {
+    if (numTextLines === 1) {
+      presenceSize = 'small';
+    } else if (numTextLines === 2) {
+      presenceSize = 'large';
+    } else {
+      presenceSize = 'extra-large';
+    }
+  } else if (!fixed) {
     if (numTextLines === 1) {
       avatarSize = 16;
     } else if (numTextLines === 2) {
@@ -41,10 +50,29 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
     }
   }
 
-  const state: PersonaState = {
+  const avatar: PersonaState['avatar'] = !presenceOnly
+    ? resolveShorthand(props.avatar, {
+        required: true,
+        defaultProps: {
+          name,
+          badge: props.presence,
+          size: avatarSize,
+        },
+      })
+    : undefined;
+
+  const presence: PersonaState['presence'] = presenceOnly
+    ? resolveShorthand(props.presence, {
+        defaultProps: {
+          size: presenceSize,
+        },
+      })
+    : undefined;
+
+  return {
+    fixed,
     numTextLines,
     presenceOnly,
-    sizing,
     textPosition,
 
     components: {
@@ -57,52 +85,24 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
       quaternaryText: 'span',
     },
 
-    root: resolveShorthand(props.root, {
-      required: true,
-      defaultProps: {
-        style,
-        className,
-      },
-    }),
-    avatar: resolveShorthand(props.avatar, {
-      required: true,
-      defaultProps: {
+    root: getNativeElementProps(
+      'div',
+      {
+        ...props,
         ref,
-        size: avatarSize,
-        ...avatarSlotProps,
+      },
+      /* excludedPropNames */ ['name'],
+    ),
+    avatar,
+    presence,
+    primaryText: resolveShorthand(props.primaryText, {
+      required: true,
+      defaultProps: {
+        children: name,
       },
     }),
-    presence: resolveShorthand(props.presence, {
-      required: false,
-    }),
-    primaryText: resolveShorthand(props.primaryText, {
-      required: false,
-    }),
-    secondaryText: resolveShorthand(props.secondaryText, {
-      required: false,
-    }),
-    tertiaryText: resolveShorthand(props.tertiaryText, {
-      required: false,
-    }),
-    quaternaryText: resolveShorthand(props.quaternaryText, {
-      required: false,
-    }),
+    secondaryText: resolveShorthand(props.secondaryText),
+    tertiaryText: resolveShorthand(props.tertiaryText),
+    quaternaryText: resolveShorthand(props.quaternaryText),
   };
-
-  if (!presenceOnly && state.avatar && state.presence) {
-    state.avatar.badge = state.presence;
-    state.presence = undefined;
-  } else if (state.presence) {
-    if (sizing === 'scaled') {
-      if (numTextLines === 1) {
-        state.presence.size = 'small';
-      } else if (numTextLines === 2) {
-        state.presence.size = 'large';
-      } else {
-        state.presence.size = 'extra-large';
-      }
-    }
-  }
-
-  return state;
 };

@@ -15,36 +15,22 @@ export const Position = () => {
 
   return (
     <div className={styles.root}>
-      <Persona
-        textPosition="after"
-        sizing="scaled"
-        name="Kevin Sturgis"
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-        quaternaryText="Quaternary text"
-      />
-      <Persona
-        textPosition="below"
-        sizing="scaled"
-        name="Kevin Sturgis"
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-        quaternaryText="Quaternary text"
-      />
+      <Persona textPosition="after" name="Kevin Sturgis" presence={{ status: 'available' }} secondaryText="Available" />
+      <Persona textPosition="below" name="Kevin Sturgis" presence={{ status: 'available' }} secondaryText="Available" />
       <Persona
         textPosition="before"
-        sizing="scaled"
         name="Kevin Sturgis"
-        presence={{ status: 'out-of-office' }}
-        primaryText="Primary text"
-        secondaryText="Secondary text"
-        tertiaryText="Tertiary text"
-        quaternaryText="Quaternary text"
+        presence={{ status: 'available' }}
+        secondaryText="Available"
       />
     </div>
   );
+};
+
+Position.parameters = {
+  docs: {
+    description: {
+      story: 'A Persona supports three text positions, `after` being the default position.',
+    },
+  },
 };
