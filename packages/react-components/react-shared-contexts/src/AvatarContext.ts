@@ -6,7 +6,7 @@ const avatarContext = React.createContext<AvatarContextValue | undefined>(undefi
  * Sizes that can be used for the Avatar
  * Copied from the react-avatar package, if the sizes are incompatible then TS should fail
  */
-type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * @internal

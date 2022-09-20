@@ -3,6 +3,12 @@ import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utiliti
 import type { TableCellLayoutProps, TableCellLayoutState } from './TableCellLayout.types';
 import { useTableContext } from '../../contexts/tableContext';
 
+const tableAvatarSizeMap = {
+  medium: undefined,
+  small: 24,
+  smaller: 20,
+} as const;
+
 /**
  * Create the state required to render TableCellLayout.
  *
@@ -33,5 +39,6 @@ export const useTableCellLayout_unstable = (
     description: resolveShorthand(props.description),
     wrapper: resolveShorthand(props.wrapper, { required: !!props.description || !!props.children }),
     size,
+    avatarSize: tableAvatarSizeMap[size],
   };
 };
