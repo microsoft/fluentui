@@ -224,12 +224,13 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
         :host(.checked:not(.disabled)) .switch slot[name="switch"] {
           fill: ${SystemColors.HighlightText};
         }
-        :host(.checked:not(.disabled):hover) .switch slot[name='switch'] {
+        :host(.checked:not(.disabled):hover) .switch slot[name='switch'],
+        :host(.checked:not(.disabled):${focusVisible}) .switch slot[name='switch'] {
           fill: ${SystemColors.Highlight};
         }
         :host(:${focusVisible}) .switch {
           forced-color-adjust: none;
-          background: ${SystemColors.Field}; 
+          background: ${SystemColors.Field};
           border-color: ${SystemColors.Highlight};
           outline-color: ${SystemColors.FieldText};
         }
