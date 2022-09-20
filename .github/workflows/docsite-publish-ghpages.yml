@@ -1,5 +1,5 @@
 # Workflow name
-name: 'Docsite publish'
+name: 'Docsite publish to Github Pages'
 
 on:
   push:
