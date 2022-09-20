@@ -40,8 +40,10 @@ task('screener:runner', cb => {
     deployUrl: process.env.DEPLOYURL,
   });
 
-  const screenerStates = require(paths.docsDist('screenerStates.json'));
-  screenerConfig.states = screenerStates;
+  if (process.env.IS_ARTIFACT_PRESENT) {
+    const screenerStates = require(paths.docsDist('screenerStates.json'));
+    screenerConfig.states = screenerStates;
+  }
 
   handlePromiseExit(screenerRunner(screenerConfig));
 });
