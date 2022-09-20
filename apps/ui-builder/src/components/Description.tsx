@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Header } from '@fluentui/react-northstar';
+import { Badge } from '@fluentui/react-components';
 import { ComponentInfo } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 
@@ -16,7 +17,13 @@ export const Description: React.FunctionComponent<DescriptionProps> = ({ selecte
   return (
     <div>
       <Header as="h2" styles={{ display: 'inline-block', margin: 0 }}>
-        {componentInfo.displayName}
+        {componentInfo.shortName && componentInfo.componentLibrary ? (
+          <span>
+            {componentInfo.shortName} <Badge appearance="tint">{componentInfo.componentLibrary}</Badge>
+          </span>
+        ) : (
+          componentInfo.displayName
+        )}
       </Header>{' '}
       <code style={{ float: 'right' }}>uuid: {selectedJSONTreeElement.uuid}</code>
       <br />

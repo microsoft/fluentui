@@ -15,8 +15,12 @@ import { runAxe } from '../hooks/runAxe';
 
 const HEADER_HEIGHT = '3rem';
 
-export const Designer: React.FunctionComponent = () => {
-  debug('render');
+interface IDesignerProps {
+  components: 'fluent-v0' | 'fluent-v9';
+}
+
+export const Designer: React.FunctionComponent<IDesignerProps> = (props: IDesignerProps) => {
+  debug('render', props);
 
   const dragAndDropData = React.useRef<{
     position: { x: number; y: number };
@@ -49,7 +53,8 @@ export const Designer: React.FunctionComponent = () => {
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
-    ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
+    ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName] ||
+      componentInfoContext.byDisplayName[`FluentV0.${selectedJSONTreeElement.displayName}`]
     : null;
 
   const handleReset = React.useCallback(() => {

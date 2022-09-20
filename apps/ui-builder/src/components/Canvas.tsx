@@ -9,6 +9,7 @@ import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
 import { AccessibilityError } from '../accessibility/types';
+import { FluentV9FrameProvider } from './FluentV9FrameProvider';
 
 const pkg = require('../../package.json');
 
@@ -385,7 +386,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     >
       <FrameContextConsumer>
         {({ document }) => (
-          <>
+          <FluentV9FrameProvider targetDocument={document}>
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
@@ -466,7 +467,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 />
               </div>
             </Provider>
-          </>
+          </FluentV9FrameProvider>
         )}
       </FrameContextConsumer>
     </Frame>

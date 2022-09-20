@@ -14,8 +14,8 @@ import {
 } from '../config';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
-import { renderElementToJSX } from '@fluentui/docs-components';
 import { AccessibilityError } from '../accessibility/types';
+import { renderElementToJSX } from '../utils/renderElementToJSX';
 
 export type JSONTreeOrigin = 'store' | 'url';
 

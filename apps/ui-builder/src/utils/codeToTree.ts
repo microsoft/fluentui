@@ -48,6 +48,8 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
     }
 
     const uuid = props && !props.hasOwnProperty('data-builder-id') ? props['data-builder-id'] : getUUID();
+    const moduleName = props && props.hasOwnProperty('data-builder-module') ? props['data-builder-module'] : undefined;
+
     delete props?.['data-builder-id'];
 
     return {
@@ -56,6 +58,7 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
       uuid,
       ...(name.match(/^[A-Za-z]/) && { $$typeof: 'Symbol(react.element)' }),
       props: { ...props, ...(children.length > 0 && { children }) },
+      moduleName,
     };
   };
 

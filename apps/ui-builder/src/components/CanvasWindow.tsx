@@ -1,4 +1,4 @@
-import { CodeSandboxExporter, CodeSandboxState, renderElementToJSX } from '@fluentui/docs-components';
+import { CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { Button, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
@@ -11,6 +11,8 @@ import { Canvas } from './Canvas';
 import { ErrorBoundary } from './ErrorBoundary';
 import { GetShareableLink } from './GetShareableLink';
 import { JSONTreeElement } from './types';
+import { CodeEditor } from './CodeEditor';
+import { renderElementToJSX } from '../utils/renderElementToJSX';
 
 export type CanvasWindowProps = {
   selectedComponentAccessibilityErrors: AccessibilityError[];
@@ -145,13 +147,13 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
           <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
             {props.state.showCode && (
               <div role="complementary" aria-label="Code editor">
-                {/* <React.Suspense fallback={<div>Loading...</div>}>
+                <React.Suspense fallback={<div>Loading...</div>}>
                   <CodeEditor
                     code={props.state.code}
                     onCodeChange={props.onSourceCodeChange}
                     onCodeError={props.onSourceCodeError}
                   />
-                </React.Suspense> */}
+                </React.Suspense>
                 {props.state.codeError && (
                   <pre
                     style={{

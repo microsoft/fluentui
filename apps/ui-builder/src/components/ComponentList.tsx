@@ -2,9 +2,11 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { Box, Input, Tree, Tooltip } from '@fluentui/react-northstar';
 import { SearchIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
+import { Select } from '@fluentui/react-components/unstable';
 import { ComponentInfo } from '../componentInfo/types';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { EXCLUDED_COMPONENTS, COMPONENT_GROUP } from '../config';
+import { componentLibaries } from '../utils/componentLibraries';
 
 export type ListProps = {
   onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => void;
@@ -13,6 +15,10 @@ export type ListProps = {
 
 export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
   const [filter, setFilter] = React.useState<string>('');
+  const [componentLibrary, setComponentLibrary] = React.useState(componentLibaries[0]);
+  const onChangeComponentLibrary = (_, data) => {
+    setComponentLibrary(componentLibaries.find(l => l.name === data.value));
+  };
 
   const filterRegexp = React.useMemo(() => new RegExp(filter, 'i'), [filter]);
 
@@ -56,7 +62,13 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
               content: key,
             },
             items: supportedComponents
-              .filter(info => COMPONENT_GROUP[key].includes(info.isChild ? info.parentDisplayName : info.displayName))
+              .filter(info => {
+                const componentName = info.isChild ? info.parentDisplayName : info.displayName;
+                const componentType = componentName.split('.')[1] || componentName;
+                return (
+                  componentName.startsWith(componentLibrary.prefix) && COMPONENT_GROUP[key].includes(componentType)
+                );
+              })
               .map(info => ({
                 id: info.displayName,
                 title: (
@@ -75,14 +87,14 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
                       marginLeft: '2px',
                     }}
                   >
-                    {info.displayName}
+                    {info.shortName || info.displayName}
                   </Box>
                 ),
               })),
           },
         };
       }, {}),
-    [handleMouseDown, supportedComponents],
+    [handleMouseDown, supportedComponents, componentLibrary],
   );
   const treeItems = Object.values(treeObj).filter(treeItem => treeItem.items.length > 0);
 
@@ -95,6 +107,16 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
         userSelect: 'none',
       }}
     >
+      <Select
+        aria-label="Component library"
+        appearance="filled-darker"
+        value={componentLibrary.name}
+        onChange={onChangeComponentLibrary}
+      >
+        {componentLibaries.map(l => (
+          <option key={l.name}>{l.name}</option>
+        ))}
+      </Select>
       <Input
         fluid
         icon={<SearchIcon />}
@@ -121,7 +143,7 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
                   color: '#888',
                 }}
               >
-                {info.displayName}
+                {info.shortName || info.displayName}
               </Box>
             }
             content={info.docblock.description + info.docblock.tags}

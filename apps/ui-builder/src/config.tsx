@@ -3,6 +3,7 @@ import { isElement } from 'react-is';
 import * as _ from 'lodash';
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
+import * as FUIv9 from '@fluentui/react-components';
 
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
@@ -17,7 +18,20 @@ const docsComponentsPackageJson = require('@fluentui/docs-components/package.jso
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Actionable: [
+    'Button',
+    'MenuButton',
+    'SplitButton',
+    'Menu',
+    'MenuTrigger',
+    'MenuPopover',
+    'MenuList',
+    'MenuItem',
+    'Toolbar',
+    'CompoundButton',
+    'Link',
+    'ToggleButton',
+  ],
   Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
   Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Content: [
@@ -45,6 +59,26 @@ export const COMPONENT_GROUP = {
 };
 
 export const DRAGGING_ELEMENTS = {
+  // Fluent UI v9 Elements
+  'FluentV9.Button': <FUIv9.Button appearance="primary">Hello version 9</FUIv9.Button>,
+
+  'FluentV9.Menu': (
+    <FUIv9.Menu>
+      <FUIv9.MenuTrigger>
+        <FUIv9.Button>Toggle menu</FUIv9.Button>
+      </FUIv9.MenuTrigger>
+
+      <FUIv9.MenuPopover>
+        <FUIv9.MenuList>
+          <FUIv9.MenuItem>New </FUIv9.MenuItem>
+          <FUIv9.MenuItem>New Window</FUIv9.MenuItem>
+          <FUIv9.MenuItem disabled>Open File</FUIv9.MenuItem>
+          <FUIv9.MenuItem>Open Folder</FUIv9.MenuItem>
+        </FUIv9.MenuList>
+      </FUIv9.MenuPopover>
+    </FUIv9.Menu>
+  ),
+
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
   span: { children: 'I am a <span>' },
@@ -52,7 +86,7 @@ export const DRAGGING_ELEMENTS = {
 
   // TODO: sort
 
-  ButtonGroup: (
+  'FluentV0.ButtonGroup': (
     <FUI.ButtonGroup
       buttons={[
         {
@@ -85,19 +119,19 @@ export const DRAGGING_ELEMENTS = {
   // CardTopControls: <FUI.CardTopControls />,
 
   // FLUENT v0 COMPONENTS
-  Accordion: {
+  'FluentV0.Accordion': {
     props: {
       panels: [{ title: 'Accordion title', content: 'Accordion content' }],
     } as FUI.AccordionProps,
   },
 
-  Alert: {
+  'FluentV0.Alert': {
     props: { warning: true, icon: <FUIIcons.InfoIcon />, content: 'Info alert' } as FUI.AlertProps,
   },
 
   // Animation: { props: { name: 'fade' } as FUI.AnimationProps },
 
-  Attachment: {
+  'FluentV0.Attachment': {
     props: {
       icon: <FUIIcons.WordIcon />,
       header: 'A file attachment',
@@ -105,7 +139,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.AttachmentProps,
   },
 
-  Avatar: {
+  'FluentV0.Avatar': {
     props: { image: 'https://picsum.photos/100?random' } as FUI.AvatarProps,
   },
 
@@ -114,27 +148,27 @@ export const DRAGGING_ELEMENTS = {
   // },
 
   // this can be ReactElement directly 👍
-  Button: <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
+  'FluentV0.Button': <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
 
-  Carousel: {
+  'FluentV0.Carousel': {
     props: {
       getItemPositionText: (index: number, size: number) => `${index + 1} of ${size}`,
       items: [
         {
           key: 'one',
           id: 'one',
-          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
         {
           key: 'two',
           id: 'two',
-          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
       ],
     } as FUI.CarouselProps,
   },
 
-  Chat: {
+  'FluentV0.Chat': {
     props: {
       items: [
         {
@@ -158,7 +192,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ChatProps,
   },
 
-  Checkbox: {
+  'FluentV0.Checkbox': {
     props: { label: 'Checkbox' } as FUI.CheckboxProps,
   },
 
@@ -166,7 +200,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Design: { props: { config: {} } as FUI.DesignProps },
 
-  Dialog: {
+  'FluentV0.Dialog': {
     props: {
       trigger: <FUI.Button>Open Dialog</FUI.Button>,
       header: 'Header',
@@ -179,11 +213,11 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.DialogProps,
   },
 
-  Divider: {
+  'FluentV0.Divider': {
     props: { content: 'Divider' } as FUI.DividerProps,
   },
 
-  Dropdown: {
+  'FluentV0.Dropdown': {
     props: {
       placeholder: 'Dropdown',
       items: ['Item 1', 'Item 2', 'Item 3'],
@@ -192,13 +226,13 @@ export const DRAGGING_ELEMENTS = {
 
   // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
 
-  Flex: {
+  'FluentV0.Flex': {
     props: {} as FUI.FlexProps,
   },
 
   // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
 
-  Form: {
+  'FluentV0.Form': {
     props: {
       fields: [
         {
@@ -232,27 +266,27 @@ export const DRAGGING_ELEMENTS = {
 
   // Grid: { props: { content: 'Grid' } as FUI.GridProps},
 
-  Header: {
+  'FluentV0.Header': {
     props: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
   },
 
   // Icon: { props: { name: 'like' } as FUI.IconProps },
 
-  Image: {
+  'FluentV0.Image': {
     props: { src: 'https://picsum.photos/200' } as FUI.ImageProps,
   },
 
-  Input: {
+  'FluentV0.Input': {
     props: { placeholder: 'Type...' } as FUI.InputProps,
   },
 
   // ItemLayout: { props: { content: 'ItemLayout' } as FUI.ItemLayoutProps },
 
-  Label: {
+  'FluentV0.Label': {
     props: { icon: <FUIIcons.EmailIcon />, content: '23 Messages' } as FUI.LabelProps,
   },
 
-  Layout: {
+  'FluentV0.Layout': {
     props: {
       debug: true,
       start: 'Start content.',
@@ -261,7 +295,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.LayoutProps,
   },
 
-  List: {
+  'FluentV0.List': {
     props: {
       items: [
         {
@@ -289,19 +323,19 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ListProps,
   },
 
-  Loader: {
+  'FluentV0.Loader': {
     props: {
       label: 'Loading...',
     } as FUI.LoaderProps,
   },
 
-  Menu: {
+  'FluentV0.Menu': {
     props: {
       items: ['Item 1', 'Item 2', 'Item 3'],
     } as FUI.MenuProps,
   },
 
-  MenuButton: {
+  'FluentV0.MenuButton': {
     props: {
       trigger: <FUI.Button>MenuButton</FUI.Button>,
       menu: [
@@ -316,7 +350,7 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.MenuButtonProps,
   },
 
-  Popup: {
+  'FluentV0.Popup': {
     props: {
       trigger: <FUI.Button>Show Popup</FUI.Button>,
       content: 'Hello from popup!',
@@ -327,7 +361,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Provider: { props: { content: 'Provider' } as FUI.ProviderProps},
 
-  RadioGroup: {
+  'FluentV0.RadioGroup': {
     props: {
       items: [
         { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
@@ -337,31 +371,31 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.RadioGroupProps,
   },
 
-  Reaction: {
+  'FluentV0.Reaction': {
     props: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
   },
 
-  Segment: {
+  'FluentV0.Segment': {
     props: { content: 'Segment' } as FUI.SegmentProps,
   },
 
-  Slider: {
+  'FluentV0.Slider': {
     props: {} as FUI.SliderProps,
   },
 
   // SplitButton: { props: { content: 'SplitButton' } as FUI.SplitButtonProps},
 
-  Status: {
+  'FluentV0.Status': {
     props: { state: 'success' } as FUI.StatusProps,
   },
 
   // Table: { props: { content: 'Table' } as FUI.TableProps },
 
-  Text: {
+  'FluentV0.Text': {
     props: { content: 'Text' } as FUI.TextProps,
   },
 
-  TextArea: {
+  'FluentV0.TextArea': {
     props: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
   },
 
@@ -369,7 +403,7 @@ export const DRAGGING_ELEMENTS = {
 
   // Tooltip: { props: { content: 'Tooltip' } as FUI.TooltipProps },
 
-  Tree: {
+  'FluentV0.Tree': {
     props: {
       items: [
         {
@@ -418,8 +452,16 @@ export const DRAGGING_ELEMENTS = {
   // Video: { props: { content: 'Video' } as FUI.VideoProps },
 };
 
-export const resolveComponent = (displayName): React.ElementType => {
-  return FUI[displayName] || FUIIcons[displayName] || displayName;
+const resolveModule = {
+  '@fluentui/react-northstar': FUI,
+  '@fluentui/react-components': FUIv9,
+};
+
+export const resolveComponent = (displayName, moduleName): React.ElementType => {
+  if (moduleName) {
+    return resolveModule[moduleName][displayName.split('.')[1]] || resolveModule[moduleName][displayName] || 'div';
+  }
+  return FUI[displayName] || FUIIcons[displayName] || FUIv9[displayName] || displayName;
 };
 
 // FIXME: breaks for <button>btn</button>
@@ -546,68 +588,102 @@ export const renderJSONTreeToJSXElement = (
   props = resolveProps(props, iterator);
   const modifiedTree = iterator({ ...tree, props });
 
-  return React.createElement(resolveComponent(modifiedTree.type), {
+  return React.createElement(resolveComponent(modifiedTree.type, modifiedTree.moduleName), {
     ...modifiedTree.props,
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,
+    'data-builder-module': modifiedTree.moduleName,
   });
 };
 
-const packageImportList: Record<string, CodeSandboxImport> = {
-  '@fluentui/react-icons-northstar': {
-    version: projectPackageJson.version,
-    required: false,
-  },
-  '@fluentui/react-northstar': {
-    version: projectPackageJson.version,
-    required: false,
-  },
+export const JSONTreeToJSXCode = (tree, tab = '', moduleName = '') => {
+  tab += '\t';
+  let code = '';
+  if (tree.uuid !== 'builder-root' && !tree.$$typeof && Array.isArray(tree)) {
+    tree.forEach(entry => {
+      if (_.isPlainObject(entry)) {
+        code += `${tab}${JSONTreeToJSXCode(entry, tab)},\n`;
+      } else {
+        code += `"${entry}",`;
+      }
+    });
+    return code;
+  }
+  if (tree.uuid !== 'builder-root' && !tree.$$typeof && _.isPlainObject(tree)) {
+    return `{\n ${Object.entries(tree)
+      .map(entry => {
+        if (_.isPlainObject(entry[1])) {
+          return `${tab}${entry[0]}: ${JSONTreeToJSXCode(entry[1], tab)}`;
+        }
+        return `${tab}${entry[0]}:"${entry[1]}"`;
+      })
+      .join(',\n')} \n${tab.replace('\t', '')}}`;
+  }
+
+  const component = tree.displayName || tree.type;
+  if (!component) {
+    return '';
+  }
+  let propsString = `${tab}data-builder-id="${tree.uuid}"\n`;
+  tree.props &&
+    Object.entries(tree.props).forEach(entry => {
+      if (!(entry[0] === 'children' || typeof entry[1] === 'function')) {
+        if (Array.isArray(entry[1])) {
+          propsString += `${tab}${entry[0]}={[
+            ${JSONTreeToJSXCode(entry[1], tab)}
+          ]}\n`;
+        } else if (_.isPlainObject(entry[1])) {
+          propsString += `${tab}${entry[0]}={${JSONTreeToJSXCode(entry[1], tab)} ${tab}}\n`;
+        } else {
+          propsString += `${tab}${entry[0]}="${entry[1]}"\n`;
+        }
+      }
+    });
+  code += `<${component} \n ${propsString}`;
+  if (tree.props && tree.props.children) {
+    if (Array.isArray(tree.props.children)) {
+      code += `${tab}>\n`;
+      tree.props.children.forEach(item => {
+        if (typeof item !== 'string') {
+          code += `${tab}${JSONTreeToJSXCode(item, tab)}\n`;
+        }
+      });
+      code += `${tab.replace('\t', '')}</${component}>`;
+    } else {
+      code += `${tab}children="${tree.props.children}" \n ${tab.replace('\t', '')}/>\n`;
+    }
+  } else {
+    code += `${tab.replace('\t', '')}/>\n`;
+  }
+  return code;
 };
 
-export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
+export const getImportIcons = (tree: JSONTreeElement, imports = []) => {
   if (tree.props?.icon) {
     const iconModule =
       tree.moduleName === '@fluentui/react-northstar' ? '@fluentui/react-icons-northstar' : 'ErrorNoPackage';
     if (imports.hasOwnProperty(iconModule)) {
-      if (!imports[iconModule].includes(tree.props?.icon.type)) {
-        imports[iconModule].push(tree.props?.icon.type);
+      if (!imports.includes(tree.props?.icon.type)) {
+        imports.push(tree.props?.icon.type);
       }
     } else {
-      imports[iconModule] = [tree.props?.icon.type];
+      imports = [tree.props?.icon.type];
     }
   }
-  if (tree.moduleName && tree.props?.trigger) {
-    if (tree.props?.trigger.$$typeof === 'Symbol(react.element)') {
-      if (imports.hasOwnProperty(tree.moduleName)) {
-        if (!imports[tree.moduleName].includes(tree.props?.trigger.type)) {
-          imports[tree.moduleName].push(tree.props?.trigger.type);
-        }
-      } else {
-        imports[tree.moduleName] = [tree.props?.trigger.type];
+  Array.isArray(tree.props?.children) &&
+    tree.props?.children?.forEach(item => {
+      if (typeof item !== 'string') {
+        imports = getImportIcons(item, imports);
       }
-    }
-  }
-  if (tree.moduleName && tree.$$typeof === 'Symbol(react.element)') {
-    if (imports.hasOwnProperty(tree.moduleName)) {
-      if (!imports[tree.moduleName].includes(tree.displayName)) {
-        imports[tree.moduleName].push(tree.displayName);
-      }
-    } else {
-      imports[tree.moduleName] = [tree.displayName];
-    }
-  }
-
-  tree.props?.children?.forEach(item => {
-    if (typeof item !== 'string') {
-      imports = JSONTreeToImports(item, imports);
-    }
-  });
+    });
   return imports;
 };
 
 export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
-  const imports: Record<string, string[]> = JSONTreeToImports(tree);
-  let codeSandboxExport = 'import * as React from "react";\n';
+  let codeSandboxExport = `import * as React from "react";
+  import * as FluentV9 from "@fluentui/react-components";
+  import * as FluentV0 from "@fluentui/react-northstar";
+  import {${getImportIcons(tree).join(',')}} from "@fluentui/react-icons-northstar";`;
   const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
@@ -625,18 +701,21 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
       version: docsComponentsPackageJson.peerDependencies['prettier'],
       required: true,
     },
+    '@fluentui/react-icons-northstar': {
+      version: projectPackageJson.version,
+      required: false,
+    },
+    '@fluentui/react-northstar': {
+      version: projectPackageJson.version,
+      required: false,
+    },
+    '@fluentui/react-components': {
+      version: '^9.2.1',
+      required: false,
+    },
   };
-  for (const [module, components] of Object.entries(imports)) {
-    codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
-    if (packageImportList[module]) {
-      packageImports[module] = packageImportList[module];
-    } else {
-      console.error(
-        `Undefined module "${module}" for export to codesandbox for components {${components.join(', ')}} `,
-      );
-    }
-  }
-  codeSandboxExport += `\n export default function Example() { \n return (\n
+
+  codeSandboxExport += `\n export default function Example() { \n return (
   ${code} \n);}`;
 
   return { code: codeSandboxExport, imports: packageImports };
@@ -753,18 +832,18 @@ export const jsonTreeDeleteElement = (tree: JSONTreeElement, uuid: string | numb
   return omitChildWithUuid(tree, uuid);
 };
 
-export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any, preserveUuid: boolean): JSONTreeElement => {
+export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONTreeElement => {
   const result = _.transform(element, (acc, value, key) => {
     if (_.isPlainObject(value)) {
-      acc[key] = jsonTreeCloneElement(tree, value, preserveUuid);
+      acc[key] = jsonTreeCloneElement(tree, value);
     } else if (Array.isArray(value)) {
-      acc[key] = jsonTreeCloneElement(tree, value, preserveUuid);
+      acc[key] = jsonTreeCloneElement(tree, value);
     } else {
       acc[key] = value;
     }
   }) as any;
 
-  if (!preserveUuid && _.isPlainObject(result) && result.$$typeof === 'Symbol(react.element)' && result.uuid) {
+  if (_.isPlainObject(result) && result.$$typeof === 'Symbol(react.element)' && result.uuid) {
     result.uuid = getUUID();
   }
   return result;

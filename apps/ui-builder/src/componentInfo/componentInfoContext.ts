@@ -3,6 +3,7 @@
 
 import * as React from 'react';
 import { ComponentInfo } from './types';
+import { v9ComponentsInfo } from './v9componentsInfo';
 
 function importAll(contexts: __WebpackModuleApi.RequireContext[]): ComponentInfo[] {
   const cache: ComponentInfo[] = [];
@@ -31,9 +32,44 @@ export const componentInfoContext: {
 
 componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {
   next.moduleName = '@fluentui/react-northstar';
+  next.shortName = next.displayName;
+  next.displayName = `FluentV0.${next.displayName}`;
+  next.componentLibrary = 'Fluent UI v0';
+  next.parentDisplayName = `FluentV0.${next.parentDisplayName}`;
   acc[next.displayName] = next;
   return acc;
 }, {});
+
+v9ComponentsInfo.forEach(item => {
+  item.moduleName = '@fluentui/react-components';
+  item.shortName = item.displayName;
+  item.componentLibrary = 'Fluent UI v9';
+  item.displayName = `FluentV9.${item.displayName}`;
+
+  item.props.forEach((prop, i) => {
+    if (prop.name === 'children') {
+      item.props.splice(i, 1);
+      return false;
+    }
+    return true;
+  });
+
+  item.props.push({
+    defaultValue: '',
+    description: 'children property',
+    name: 'children',
+    required: false,
+    tags: [],
+    types: [
+      {
+        name: 'string',
+        keyword: true,
+      },
+    ],
+  });
+
+  componentInfoContext.byDisplayName[item.displayName] = item;
+});
 
 componentInfoContext.fromComponent = Component => {
   const displayName = Component.displayName || Component.name;

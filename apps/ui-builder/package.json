@@ -21,7 +21,7 @@
     "swc-loader": "^0.2.3"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.1.1",
+    "@fluentui/react-components": "^9.3.0",
     "@fluentui/react-provider": "^9.1.1",
     "@fluentui/react-theme": "^9.1.0",
     "@fluentui/accessibility": "^0.64.0",
@@ -36,8 +36,10 @@
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
     "react-document-title": "^2.0.3",
+    "react-element-to-jsx-string": "^14.0.2",
     "react-frame-component": "^4.1.1",
     "react-is": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "use-immer": "^0.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

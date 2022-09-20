@@ -14,6 +14,8 @@ export type ComponentInfo = {
   implementsCreateShorthand: boolean;
   mappedShorthandProp?: string;
   displayName: string;
+  shortName?: string;
+  componentLibrary?: string;
   filename: string;
   filenameWithoutExt: string;
   docblock: {
@@ -43,6 +45,7 @@ export type ComponentProp = {
     name: string;
   }[];
   types: ComponentPropType[];
+  resolvedType?: any[];
   required: boolean;
 };
 

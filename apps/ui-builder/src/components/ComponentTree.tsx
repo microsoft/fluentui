@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
-import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
+import { TreeItemProps, Tree, MenuButton, treeBehavior, treeAsListBehavior } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
@@ -105,18 +104,20 @@ const jsonTreeToTreeItems: (
         );
       },
     }),
-    items: tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(
-        item,
-        selectedComponentId,
-        handleSelectedComponent,
-        handleClone,
-        handleMove,
-        handleDeleteSelected,
-        handleAddComponent,
-        handleDeleteComponent,
+    items:
+      Array.isArray(tree.props?.children) &&
+      tree.props?.children?.map(item =>
+        jsonTreeToTreeItems(
+          item,
+          selectedComponentId,
+          handleSelectedComponent,
+          handleClone,
+          handleMove,
+          handleDeleteSelected,
+          handleAddComponent,
+          handleDeleteComponent,
+        ),
       ),
-    ),
   };
 };
 
@@ -190,18 +191,20 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
 
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
-    tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(
-        item,
-        selectedComponentId,
-        handleSelectComponent,
-        handleClone,
-        handleMove,
-        handleDeleteSelected,
-        handleAddComponent,
-        handleDeleteComponent,
-      ),
-    ) ?? [];
+    (Array.isArray(tree.props?.children) &&
+      tree.props?.children?.map(item =>
+        jsonTreeToTreeItems(
+          item,
+          selectedComponentId,
+          handleSelectComponent,
+          handleClone,
+          handleMove,
+          handleDeleteSelected,
+          handleAddComponent,
+          handleDeleteComponent,
+        ),
+      )) ??
+    [];
   items.forEach(item => getActiveItemIds(item));
 
   return (
