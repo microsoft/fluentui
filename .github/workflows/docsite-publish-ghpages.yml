@@ -25,7 +25,7 @@ jobs:
         with:
           files: |
             packages/react-components/react-components/package.json
-  deploy:
+  build:
     runs-on: ubuntu-latest
     needs: check
     if: needs.check.outputs.status == 'true'
@@ -46,7 +46,28 @@ jobs:
       - name: Build dependencies
         run: yarn build --to @fluentui/public-docsite-v9
 
-      - name: Publish to Chromatic
-        run: yarn workspace @fluentui/public-docsite-v9 chromatic
-        env:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Build storybook
+        run: yarn workspace @fluentui/public-docsite-v9 build-storybook
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './apps/public-docsite-v9/dist/storybook/'
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
