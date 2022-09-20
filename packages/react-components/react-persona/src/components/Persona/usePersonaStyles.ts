@@ -13,12 +13,6 @@ export const personaClassNames: SlotClassNames<PersonaSlots> = {
   quaternaryText: 'fui-Persona-quaternaryText',
 };
 
-export const COIN_GRID_AREA = 'coin';
-export const PRIMARY_TEXT_GRID_AREA = 'primary-text';
-export const SECONDARY_TEXT_GRID_AREA = 'secondary-text';
-export const TERTIARY_TEXT_GRID_AREA = 'tertiary-text';
-export const QUATERNARY_TEXT_GRID_AREA = 'quaternary-text';
-
 /**
  * Styles for the root slot
  */
