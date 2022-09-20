@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: upgrade typings on useARIAButtonProps to be more specific",
-  "packageName": "@fluentui/react-aria",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

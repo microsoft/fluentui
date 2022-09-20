@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Remove TableCellPrimaryLayout, adds `appearance` prop to TableCellLayout for primary layout",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

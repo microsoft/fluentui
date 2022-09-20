@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 03 Aug 2022 16:03:39 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.1)
+
+Thu, 15 Sep 2022 09:49:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.1.0..@fluentui/react-button_v9.1.1)
+
+### Patches
+
+- fix: Adding 'aria-expanded=false' to collapsed MenuButtons. ([PR #24782](https://github.com/microsoft/fluentui/pull/24782) by humberto_makoto@hotmail.com)
+- chore: Remove max-width style from Button components. ([PR #24647](https://github.com/microsoft/fluentui/pull/24647) by makotom@microsoft.com)
+- chore: Cleaning up tokens in Button components so they better adhere to the design spec. ([PR #24732](https://github.com/microsoft/fluentui/pull/24732) by humberto_makoto@hotmail.com)
+- fix: Wrapping long text in Button components. ([PR #24682](https://github.com/microsoft/fluentui/pull/24682) by humberto_makoto@hotmail.com)
+- refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.0)
 

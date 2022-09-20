@@ -5,7 +5,18 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  Tooltip,
+} from '@fluentui/react-components';
 import {
   dialogSurfaceSelector,
   dialogTriggerCloseId,
@@ -175,6 +186,61 @@ describe('Dialog', () => {
     mount(<CustomFocusedElementOnOpen />);
     cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogTriggerCloseSelector).should('be.focused');
+  });
+  it('should not close with Escape keydown while focusing other elements that control Escape', () => {
+    mount(
+      <Dialog modalType="non-modal">
+        <DialogTrigger>
+          <Button>Open dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogBody>
+            <Menu>
+              <MenuTrigger>
+                <Button id="open-menu-btn">Toggle menu</Button>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>Item</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+            <Popover>
+              <PopoverTrigger>
+                <Button id="open-popover-btn">Popover trigger</Button>
+              </PopoverTrigger>
+              <PopoverSurface aria-label="label">Content</PopoverSurface>
+            </Popover>
+          </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </Tooltip>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogSurface>
+      </Dialog>,
+    );
+    // Open Menu and then close it with Escape
+    cy.get(dialogTriggerOpenSelector).realClick();
+    cy.get('#open-menu-btn').realClick();
+    cy.focused().realType('{esc}');
+    cy.get(dialogSurfaceSelector).should('exist');
+
+    // Open Popover and then close it with Escape
+    cy.get('#open-popover-btn').realClick();
+    cy.focused().realType('{esc}');
+    cy.get(dialogSurfaceSelector).should('exist');
+
+    // Open Tooltip, wait for the tooltip to appear and then close it with Escape
+    cy.get(dialogTriggerCloseSelector).focus().wait(0).realType('{esc}');
+    cy.get(dialogSurfaceSelector).should('exist');
   });
   describe('modalType = modal', () => {
     it('should close with escape keydown', () => {

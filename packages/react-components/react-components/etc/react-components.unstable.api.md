@@ -193,6 +193,7 @@ import { TableBodySlots } from '@fluentui/react-table';
 import { TableBodyState } from '@fluentui/react-table';
 import { TableCell } from '@fluentui/react-table';
 import { TableCellActions } from '@fluentui/react-table';
+import { tableCellActionsClassNames } from '@fluentui/react-table';
 import { TableCellActionsProps } from '@fluentui/react-table';
 import { TableCellActionsSlots } from '@fluentui/react-table';
 import { TableCellActionsState } from '@fluentui/react-table';
@@ -697,6 +698,8 @@ export { TableBodyState }
 export { TableCell }
 
 export { TableCellActions }
+
+export { tableCellActionsClassNames }
 
 export { TableCellActionsProps }
 

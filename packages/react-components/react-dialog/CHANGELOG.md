@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Wed, 03 Aug 2022 16:03:47 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:48:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.8)
+
+Thu, 15 Sep 2022 09:48:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0-beta.7..@fluentui/react-dialog_v9.0.0-beta.8)
+
+### Changes
+
+- chore(react-dialog): Updates trigger to use useARIAButtonProps ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- chore(react-dialog): removes react-button max-width overrides ([PR #24674](https://github.com/microsoft/fluentui/pull/24674) by bernardo.sunderhus@gmail.com)
+- feat: add scroll lock feature to Dialog ([PR #24375](https://github.com/microsoft/fluentui/pull/24375) by bernardo.sunderhus@gmail.com)
+- feat(react-dialog): moves backdrop slot from Dialog to DialogSurface ([PR #24669](https://github.com/microsoft/fluentui/pull/24669) by bernardo.sunderhus@gmail.com)
+- feat(react-dialog): adds proper style to make DialogBody responsive ([PR #24354](https://github.com/microsoft/fluentui/pull/24354) by bernardo.sunderhus@gmail.com)
+- chore: renames overlay slot to backdrop ([PR #24220](https://github.com/microsoft/fluentui/pull/24220) by bernardo.sunderhus@gmail.com)
+- bugfix: stops propagation on Escape key ([PR #24750](https://github.com/microsoft/fluentui/pull/24750) by bernardo.sunderhus@gmail.com)
+- feat: Adds padding-right style to avoid jumping on scroll lock ([PR #24408](https://github.com/microsoft/fluentui/pull/24408) by bernardo.sunderhus@gmail.com)
+- chore(react-dialog): removes document listener to Escape keydown ([PR #24668](https://github.com/microsoft/fluentui/pull/24668) by bernardo.sunderhus@gmail.com)
+- feat(react-dialog): replace `closeButton` to a more generic `action` slot ([PR #24719](https://github.com/microsoft/fluentui/pull/24719) by bernardo.sunderhus@gmail.com)
+- feat(react-dialog): 1st rule of ARIA for Dialog ([PR #24525](https://github.com/microsoft/fluentui/pull/24525) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.3 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-aria to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-portal to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.7)
 

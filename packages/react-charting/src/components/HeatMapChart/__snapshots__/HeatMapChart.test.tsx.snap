@@ -122,7 +122,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
@@ -157,7 +157,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                 fill: #ffffff;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 pointer-events: none;
               }
           dominantBaseline="middle"
