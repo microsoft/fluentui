@@ -6,11 +6,11 @@ import { ReactTest } from '../../../shared/react/ReactTest';
 
 initializeIcons();
 
-const { fixtureName, rendererName } = getTestOptions();
+const { fixtureName, rendererName, r } = getTestOptions();
 
 ReactDOM.render(
   <ThemeProvider>
-    <ReactTest target="v8" fixtureName={fixtureName} rendererName={rendererName} />
+    <ReactTest target="v8" fixtureName={fixtureName} rendererName={rendererName ?? r} />
   </ThemeProvider>,
   document.getElementById('root'),
 );

@@ -44,9 +44,8 @@ const cliOptions = {
     describe: 'Optimization mode for Griffel.',
     default: 'buildtime',
   },
-  renderer: {
-    describe: 'Renderer to use for testing. This determines what is actually tested.',
-    demand: true,
+  renderers: {
+    describe: 'Renderers to use for testing. This determines what is actually tested.',
   },
   'test-options': {
     describe: 'Options to apply to each test. E.g., option1=value1 option2=value2',
@@ -60,7 +59,6 @@ const cliOptions = {
         map[key] = value;
         return map;
       }, {});
-      // return arg;
     },
     default: [],
   },
@@ -95,6 +93,7 @@ const configure = (yargs, options) => {
       case 'browsers':
       case 'targets':
       case 'test-options':
+      case 'renderers':
         y = y.array(option);
         break;
 
@@ -142,7 +141,7 @@ const configureYargs = (command, yargs) => {
         targets,
         'test-options': testOptions,
         port,
-        renderer,
+        renderers,
       } = cliOptions;
       configure(yargs, {
         scenario,
@@ -153,7 +152,7 @@ const configureYargs = (command, yargs) => {
         targets,
         'test-options': testOptions,
         port,
-        renderer,
+        renderers,
       });
       break;
     }
@@ -170,7 +169,7 @@ const configureYargs = (command, yargs) => {
         'process-results': processResults,
         port,
         root,
-        renderer,
+        renderers,
       } = cliOptions;
       configure(yargs, {
         scenario,
@@ -183,7 +182,7 @@ const configureYargs = (command, yargs) => {
         'process-results': processResults,
         port,
         root,
-        renderer,
+        renderers,
       });
       break;
     }

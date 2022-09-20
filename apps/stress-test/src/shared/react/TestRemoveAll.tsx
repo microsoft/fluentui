@@ -5,7 +5,7 @@ import { ReactSelectorTree } from './ReactSelectorTree';
 import type { TestProps } from './types';
 
 export const TestRemoveAll: React.FC<TestProps> = ({ tree, selectors, componentRenderer, testOptions }) => {
-  const [theTree, setTheTree] = React.useState<TestProps['tree'] | undefined>(tree);
+  const [theTree, setTheTree] = React.useState<TestProps['tree'] | undefined>();
 
   React.useEffect(() => {
     if (testOptions.withStyles === 'true') {

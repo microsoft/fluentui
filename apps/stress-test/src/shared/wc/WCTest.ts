@@ -15,9 +15,9 @@ import { testAdd } from '../vanilla/TestAdd';
 
 export const wcTest = (): Promise<HTMLElement | null> => {
   const testOptions = getTestOptions();
-  const { test, fixtureName, rendererName } = testOptions;
+  const { test, fixtureName, rendererName, r } = testOptions;
 
-  return loadTestData('wc', fixtureName, rendererName).then(({ fixture, renderer }) => {
+  return loadTestData('wc', fixtureName, rendererName ?? r).then(({ fixture, renderer }) => {
     const selectors: string[] = fixture.selectors;
     const fixtureTree = fixture.tree;
 

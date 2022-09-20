@@ -19,7 +19,10 @@ const handler = argv => {
   const resultsDir = getResultsDir(scenario);
   const files = readDirJson(resultsDir);
 
-  const browserData = {};
+  const browserData = {
+    scenario,
+    testCases: {},
+  };
   for (const file of files) {
     const contents = fs.readFileSync(path.join(resultsDir, file), {
       encoding: 'utf8',
@@ -27,16 +30,23 @@ const handler = argv => {
     const json = JSON.parse(contents);
     const benchmark = json.benchmarks[0];
     const browser = benchmark.browser.name;
-    const testCase = benchmark.name.split('-')[1].trim();
 
-    browserData[browser] = browserData[browser] || {};
+    const [, testCase, size] = benchmark.name.split(' - ');
 
-    browserData[browser][testCase] = json.benchmarks.map(test => {
+    browserData.testCases[testCase] = browserData.testCases[testCase] || { sizes: {} };
+    browserData.testCases[testCase].sizes[size] = browserData.testCases[testCase].sizes[size] || { browsers: {} };
+
+    browserData.testCases[testCase].sizes[size].browsers[browser] = json.benchmarks.map(bm => {
+      const [bmTarget, bmTestCase, bmSize] = bm.name.split(' - ');
+
       return {
-        name: test.name,
-        mean: test.mean,
-        differences: test.differences,
-        samples: test.samples,
+        name: bm.name,
+        mean: bm.mean,
+        differences: bm.differences,
+        samples: bm.samples,
+        target: bmTarget,
+        testCase: bmTestCase,
+        size: bmSize,
       };
     });
   }

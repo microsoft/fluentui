@@ -14,7 +14,7 @@ const querystring = require('querystring');
  * @property {string[]} targets
  * @property {number} port
  * @property {TestOptions} testOptions
- * @property {string} renderer
+ * @property {string[]} renderers
  */
 
 /**
@@ -35,7 +35,7 @@ const command = 'build-test-config';
  * @returns {ConfigResult[]} Paths to generated config files
  */
 const buildTestConfig = options => {
-  const { scenario, browsers, testCases, sampleSize, targets, sizes, port, testOptions, renderer } = options;
+  const { scenario, browsers, testCases, sampleSize, targets, sizes, port, testOptions, renderers } = options;
   const configDir = getConfigDir(scenario);
   ensureClean(configDir);
 
@@ -53,7 +53,7 @@ const buildTestConfig = options => {
           size,
           testOptions,
           port,
-          renderer,
+          renderers,
         );
         const configName = [browser, testCase, size].join('.') + '.json';
         const configPath = path.join(configDir, configName);
@@ -88,7 +88,7 @@ const buildTestConfig = options => {
  * @param {string} renderer
  * @returns {string} Stringified JSON
  */
-const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, testOptions, port, renderer) => {
+const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, testOptions, port, renderers) => {
   const baseUrl = `http://localhost:${port}`;
   const json = {
     $schema: 'https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json',
@@ -106,18 +106,34 @@ const makeConfigJson = (scenario, browser, testCase, sampleSize, targets, size, 
           },
         ],
 
-        expand: targets.map(target => {
+        expand: targets.flatMap(target => {
+          const targetParams = target.includes('?') ? querystring.parse(target.substring(target.indexOf('?') + 1)) : {};
           const params = querystring.stringify({
+            ...targetParams,
             test: testCase,
             fixtureName: `${size}_1`,
-            rendererName: renderer,
             ...testOptions,
           });
 
+          const targetWithoutParams = target.substring(0, target.indexOf('?'));
+
           return {
             name: `${target} - ${testCase} - ${size}`,
-            url: `${baseUrl}/${target}/?${params}`,
+            url: `${baseUrl}/${targetWithoutParams}/?${params}`,
           };
+          // return renderers.map(renderer => {
+          //   const params = querystring.stringify({
+          //     test: testCase,
+          //     fixtureName: `${size}_1`,
+          //     rendererName: renderer,
+          //     ...testOptions,
+          //   });
+
+          //   return {
+          //     name: `${renderer}\n${target} - ${testCase} - ${size}`,
+          //     url: `${baseUrl}/${target}/?${params}`,
+          //   };
+          // });
         }),
       },
     ],
