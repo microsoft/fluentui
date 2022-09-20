@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: stops propagation on Escape key",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
