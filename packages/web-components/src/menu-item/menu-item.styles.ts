@@ -12,8 +12,6 @@ import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
   controlCornerRadius,
   disabledOpacity,
-  focusStrokeOuter,
-  focusStrokeWidth,
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralForegroundHint,
@@ -21,6 +19,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -31,7 +30,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       contain: layout;
       overflow: visible;
       ${typeRampBase}
-      outline: none;
       box-sizing: border-box;
       height: calc(${heightNumber} * 1px);
       grid-template-columns: minmax(32px, auto) 1fr minmax(32px, auto);
@@ -86,8 +84,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     }
 
     :host(:${focusVisible}) {
-      border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-      box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
+      ${focusTreatmentBase}
     }
 
     :host(:not([disabled]):hover) {
@@ -173,7 +170,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       justify-content: center;
       position: relative;
       box-sizing: border-box;
-      outline: none;
     }
 
     :host .checkbox-indicator,
@@ -221,13 +217,11 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
         }
         :host(.expanded) {
           background: ${SystemColors.Highlight};
-          border-color: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
         }
         :host(:${focusVisible}) {
           background: ${SystemColors.Highlight};
-          border-color: ${SystemColors.ButtonText};
-          box-shadow: 0 0 0 calc(${strokeWidth} * 1px) inset ${SystemColors.HighlightText};
+          outline-color: ${SystemColors.ButtonText};
           color: ${SystemColors.HighlightText};
           fill: currentcolor;
         }
@@ -243,7 +237,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
           opacity: 1;
         }
         :host([disabled]:${focusVisible}) {
-          border-color: ${SystemColors.GrayText};
+          outline-color: ${SystemColors.GrayText};
         }
         :host .expanded-toggle,
         :host .checkbox,

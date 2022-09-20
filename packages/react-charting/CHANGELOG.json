@@ -2,6 +2,92 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 07:47:16 GMT",
+      "tag": "@fluentui/react-charting_v5.13.3",
+      "version": "5.13.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ead191a8368bf64ecabffce5ea0e02565f449a95",
+            "comment": "Fix multi stacked bar chart min width"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:30 GMT",
+      "tag": "@fluentui/react-charting_v5.13.2",
+      "version": "5.13.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.96.0",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Sep 2022 07:37:32 GMT",
+      "tag": "@fluentui/react-charting_v5.13.1",
+      "version": "5.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.95.1",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 19:15:26 GMT",
+      "tag": "@fluentui/react-charting_v5.13.0",
+      "version": "5.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "682ead9953a1d519133193033aafe392173009f5",
+            "comment": "All /lib-commonjs/ top-level entries have been added to the exports map for backwards compatibility."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.95.0",
+            "commit": "682ead9953a1d519133193033aafe392173009f5"
+          }
+        ],
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ca89bb0a920f267f049347ce63ad45424ce37f32",
+            "comment": "Add support for custom locale for date axis"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "eea486038db9ef0eca9a377bd38fcd61fde7b18d",
+            "comment": "Fix value font-weight inside heatmap chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bbf7b60d16ffbbfe6473b894297a40f18589e6d0",
+            "comment": "Fix legend overflow-indication-text role"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Sep 2022 07:41:03 GMT",
       "tag": "@fluentui/react-charting_v5.12.37",
       "version": "5.12.37",

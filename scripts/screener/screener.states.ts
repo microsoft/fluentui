@@ -7,42 +7,44 @@ import path from 'path';
 import getScreenerSteps from './screener.steps';
 import { ScreenerState } from './screener.types';
 
-const baseUrl = `${process.env.DEPLOYURL}/react-northstar-screener`;
-const examplePaths = glob.sync('packages/fluentui/docs/src/examples/**/*.tsx', {
-  ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx'],
-});
+export default function getScreenerStates() {
+  const baseUrl = `${process.env.DEPLOYURL}/react-northstar-screener`;
+  const examplePaths = glob.sync('packages/fluentui/docs/src/examples/**/*.tsx', {
+    ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx'],
+  });
 
-const pathFilter = process.env.SCREENER_FILTER;
-const filteredPaths: string[] = minimatch.match(examplePaths, pathFilter || '*', {
-  matchBase: true,
-});
+  const pathFilter = process.env.SCREENER_FILTER;
+  const filteredPaths: string[] = minimatch.match(examplePaths, pathFilter || '*', {
+    matchBase: true,
+  });
 
-if (pathFilter) {
-  console.log(chalk.bgGreen.black(' --filter '), pathFilter);
-  filteredPaths.forEach(filteredPath => console.log(`${_.repeat(' ', 10)} ${filteredPath}`));
-}
+  if (pathFilter) {
+    console.log(chalk.bgGreen.black(' --filter '), pathFilter);
+    filteredPaths.forEach(filteredPath => console.log(`${_.repeat(' ', 10)} ${filteredPath}`));
+  }
 
-const getStateForPath = (examplePath: string): ScreenerState => {
-  const { name: exampleNameWithoutExtension, base: exampleNameWithExtension, dir: exampleDir } = path.parse(
-    examplePath,
-  );
+  const getStateForPath = (examplePath: string): ScreenerState => {
+    const { name: exampleNameWithoutExtension, base: exampleNameWithExtension, dir: exampleDir } = path.parse(
+      examplePath,
+    );
 
-  const rtl = exampleNameWithExtension.endsWith('.rtl.tsx');
-  const exampleUrl = _.kebabCase(exampleNameWithoutExtension);
-  const pageUrl = `${baseUrl}/maximize/${exampleUrl}/${rtl}`;
+    const rtl = exampleNameWithExtension.endsWith('.rtl.tsx');
+    const exampleUrl = _.kebabCase(exampleNameWithoutExtension);
+    const pageUrl = `${baseUrl}/maximize/${exampleUrl}/${rtl}`;
 
-  return {
-    url: pageUrl,
-    name: exampleNameWithExtension,
+    return {
+      url: pageUrl,
+      name: exampleNameWithExtension,
 
-    // https://www.npmjs.com/package/screener-runner#testing-interactions
-    steps: getScreenerSteps(pageUrl, `${exampleDir}/${exampleNameWithoutExtension}.steps`),
+      // https://www.npmjs.com/package/screener-runner#testing-interactions
+      steps: getScreenerSteps(pageUrl, `${exampleDir}/${exampleNameWithoutExtension}.steps`),
+    };
   };
-};
 
-const screenerStates = filteredPaths.reduce((states, examplePath) => {
-  states.push(getStateForPath(examplePath));
-  return states;
-}, [] as ReturnType<typeof getStateForPath>[]);
+  const screenerStates = filteredPaths.reduce((states, examplePath) => {
+    states.push(getStateForPath(examplePath));
+    return states;
+  }, [] as ReturnType<typeof getStateForPath>[]);
 
-export default screenerStates;
+  return screenerStates;
+}

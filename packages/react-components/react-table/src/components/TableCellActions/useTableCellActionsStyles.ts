@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import type { TableCellActionsSlots, TableCellActionsState } from './TableCellActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -19,7 +18,6 @@ const useStyles = makeStyles({
     transform: 'translateY(-50%)',
     opacity: 0,
     marginLeft: 'auto',
-    backgroundColor: tokens.colorNeutralBackground1Hover,
 
     ...createCustomFocusIndicatorStyle(
       {
@@ -28,6 +26,10 @@ const useStyles = makeStyles({
       { selector: 'focus-within' },
     ),
   },
+
+  visible: {
+    opacity: 1,
+  },
 });
 
 /**
@@ -35,7 +37,12 @@ const useStyles = makeStyles({
  */
 export const useTableCellActionsStyles_unstable = (state: TableCellActionsState): TableCellActionsState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableCellActionsClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    tableCellActionsClassNames.root,
+    styles.root,
+    state.visible && styles.visible,
+    state.root.className,
+  );
 
   return state;
 };

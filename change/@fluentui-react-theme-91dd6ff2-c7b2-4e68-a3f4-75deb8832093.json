@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Change colorBrandForeground2 mapping in teamsDark theme",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bugfix: stops propagation on Escape key",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

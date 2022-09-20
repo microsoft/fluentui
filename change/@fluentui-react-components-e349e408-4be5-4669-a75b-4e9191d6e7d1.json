@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Changed from upgrade to migrate terminology",
-  "packageName": "@fluentui/react-components",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

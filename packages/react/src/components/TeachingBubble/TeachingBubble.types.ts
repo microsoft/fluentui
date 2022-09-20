@@ -21,6 +21,8 @@ export interface ITeachingBubble {
  * {@docCategory TeachingBubble}
  */
 export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+  children?: React.ReactNode;
+
   /**
    * Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

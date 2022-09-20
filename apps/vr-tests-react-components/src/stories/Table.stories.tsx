@@ -118,7 +118,89 @@ storiesOf('Table - cell actions', module)
       </Table>
     ),
     { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  );
+  )
+  .addStory(
+    'always visible',
+    () => (
+      <Table>
+        <TableHeader>
+          <TableRow>
+            {columns.map(column => (
+              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {items.map(item => (
+            <TableRow key={item.file.label} className="row">
+              <TableCell>
+                <TableCellLayout media={item.file.icon}>
+                  {item.file.label}
+                  <TableCellActions visible>
+                    <Button icon={<EditRegular />} appearance="subtle" />
+                    <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                  </TableCellActions>
+                </TableCellLayout>
+              </TableCell>
+              <TableCell>
+                <TableCellLayout
+                  media={
+                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  }
+                >
+                  {item.author.label}
+                </TableCellLayout>
+              </TableCell>
+              <TableCell>{item.lastUpdated.label}</TableCell>
+              <TableCell>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    ),
+    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
+  )
+  .addStory('in header cell', () => (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          {columns.map(column => (
+            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+          ))}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {items.map(item => (
+          <TableRow key={item.file.label} className="row">
+            <TableHeaderCell>
+              <TableCellLayout media={item.file.icon}>
+                {item.file.label}
+                <TableCellActions>
+                  <Button icon={<EditRegular />} appearance="subtle" />
+                  <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                </TableCellActions>
+              </TableCellLayout>
+            </TableHeaderCell>
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ));
 
 storiesOf('Table', module)
   .addStory(
@@ -247,7 +329,7 @@ storiesOf('Table', module)
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellLayout media={item.file.icon} description="Your organization">
+              <TableCellLayout media={item.file.icon} description="Your organization" appearance="primary">
                 {item.file.label}
               </TableCellLayout>
             </TableCell>
