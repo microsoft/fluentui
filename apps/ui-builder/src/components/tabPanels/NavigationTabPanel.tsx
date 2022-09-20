@@ -1,8 +1,11 @@
 import * as React from 'react';
 
 import { JSONTreeElement } from '../types';
-import { Button } from '@fluentui/react-northstar/src';
+import { Button, makeStyles, shorthands } from '@fluentui/react-components';
 import { ComponentTree } from '../ComponentTree';
+import { useCallback } from 'react';
+
+const useStyles = makeStyles({ button: { ...shorthands.margin('0.5rem', 'auto') } });
 
 export type NavigatorTabPanelProps = {
   jsonTree: JSONTreeElement;
@@ -16,25 +19,36 @@ export type NavigatorTabPanelProps = {
   selectedComponent?: JSONTreeElement;
 };
 
-export const NavigatorTabPanel: React.FunctionComponent<NavigatorTabPanelProps> = (props: NavigatorTabPanelProps) => {
+export const NavigatorTabPanel: React.FunctionComponent<NavigatorTabPanelProps> = ({
+  jsonTree,
+  onCloneComponent,
+  onDeleteSelectedComponent,
+  onMoveComponent,
+  onOpenAddComponentDialog,
+  onSelectComponent,
+  selectedComponent,
+}: NavigatorTabPanelProps) => {
+  const styles = useStyles();
+
+  const onClick = useCallback(() => {
+    onOpenAddComponentDialog('', 'first');
+  }, [onOpenAddComponentDialog]);
+
   return (
     <div>
-      {(!props.jsonTree?.props?.children || props.jsonTree?.props?.children?.length === 0) && (
-        <Button
-          text
-          content="Insert first component"
-          fluid
-          onClick={() => props.onOpenAddComponentDialog('', 'first')}
-        />
+      {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
+        <Button onClick={onClick} className={styles.button}>
+          Insert first component
+        </Button>
       )}
       <ComponentTree
-        onAddComponent={props.onOpenAddComponentDialog}
-        onCloneComponent={props.onCloneComponent}
-        onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-        onMoveComponent={props.onMoveComponent}
-        onSelectComponent={props.onSelectComponent}
-        selectedComponent={props.selectedComponent}
-        tree={props.jsonTree}
+        onAddComponent={onOpenAddComponentDialog}
+        onCloneComponent={onCloneComponent}
+        onDeleteSelectedComponent={onDeleteSelectedComponent}
+        onMoveComponent={onMoveComponent}
+        onSelectComponent={onSelectComponent}
+        selectedComponent={selectedComponent}
+        tree={jsonTree}
       />
     </div>
   );

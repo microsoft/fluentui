@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
+import { makeStyles, tokens, shorthands } from '@fluentui/react-components';
 import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
 import { JSONTreeElement } from './types';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
+import { ComponentTreeItem, ComponentTreeNode } from './ComponentTreeItem';
 
 export type ComponentTreeProps = {
   tree: JSONTreeElement;
@@ -120,6 +122,30 @@ const jsonTreeToTreeItems: (
   };
 };
 
+const treeToArray = (tree: JSONTreeElement | string, level: number): ComponentTreeNode[] => {
+  if (typeof tree === 'string') {
+    return [
+      {
+        id: Math.random().toString(36).slice(2),
+        title: 'string',
+        level: level,
+        element: null,
+      },
+    ];
+  }
+
+  let result = [];
+  const item = { title: tree.displayName, level: level, id: tree.uuid as string, element: tree };
+  result.push(item);
+  if (tree.props.children?.length > 0) {
+    tree.props.children.forEach(i => {
+      result = [...result, ...treeToArray(i, level + 1)];
+    });
+  }
+
+  return result;
+};
+
 export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   tree,
   selectedComponent,
@@ -204,17 +230,35 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     ) ?? [];
   items.forEach(item => getActiveItemIds(item));
 
+  const flat = treeToArray(tree, 0);
+
   return (
-    <Tree
-      accessibility={behavior}
-      onKeyDown={treeKeyDown}
-      items={items}
-      activeItemIds={activeItems}
-      styles={{
-        minHeight: '17rem',
-        maxHeight: '57rem',
-        overflowY: 'auto',
-      }}
-    />
+    <>
+      <Tree
+        accessibility={behavior}
+        onKeyDown={treeKeyDown}
+        items={items}
+        activeItemIds={activeItems}
+        styles={{
+          minHeight: '17rem',
+          maxHeight: '57rem',
+          overflowY: 'auto',
+        }}
+      />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {flat.map(i => (
+          <ComponentTreeItem
+            key={i.id}
+            node={i}
+            selected={i.id === selectedComponentId}
+            handleSelectComponent={onSelectComponent}
+            handleDeleteComponent={handleDeleteComponent}
+            handleDeleteSelected={handleDeleteSelected}
+            handleClone={handleClone}
+            handleMove={handleMove}
+          />
+        ))}
+      </div>
+    </>
   );
 };
