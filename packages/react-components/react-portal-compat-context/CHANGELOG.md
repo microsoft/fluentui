@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-This log was last generated on Fri, 15 Jul 2022 18:27:27 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.2)
+
+Thu, 15 Sep 2022 09:49:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.1..@fluentui/react-portal-compat-context_v9.0.2)
+
+### Patches
+
+- chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.1)
 

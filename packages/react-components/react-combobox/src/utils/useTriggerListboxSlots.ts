@@ -45,6 +45,7 @@ export function useTriggerListboxSlots(
     open,
     selectOption,
     setActiveOption,
+    setFocusVisible,
     setHasFocus,
     setOpen,
   } = state;
@@ -78,18 +79,17 @@ export function useTriggerListboxSlots(
      * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
      * 2. Do not close the listbox on button/input blur when clicking into the listbox
      */
-    const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = listbox;
-    listbox.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    listbox.onClick = mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
       triggerRef.current?.focus();
+    }, listbox.onClick);
 
-      onListboxClick?.(event);
-    };
+    listbox.onMouseOver = mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
+      setFocusVisible(false);
+    }, listbox.onMouseOver);
 
-    listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    listbox.onMouseDown = mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
       ignoreNextBlur.current = true;
-
-      onListboxMouseDown?.(event);
-    };
+    }, listbox.onMouseDown);
   }
 
   // the trigger should open/close the popup on click or blur
@@ -128,6 +128,7 @@ export function useTriggerListboxSlots(
       switch (action) {
         case 'Open':
           event.preventDefault();
+          setFocusVisible(true);
           setOpen(event, true);
           break;
         case 'Close':
@@ -153,9 +154,17 @@ export function useTriggerListboxSlots(
         // prevent default page scroll/keyboard action if the index changed
         event.preventDefault();
         setActiveOption(getOptionAtIndex(newIndex));
+        setFocusVisible(true);
       }
     },
     trigger.onKeyDown,
+  );
+
+  trigger.onMouseOver = mergeCallbacks(
+    (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
+      setFocusVisible(false);
+    },
+    trigger.onMouseOver,
   );
 
   return [trigger, listbox];

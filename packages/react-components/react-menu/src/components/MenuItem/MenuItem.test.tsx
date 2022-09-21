@@ -7,11 +7,12 @@ import { isConformant } from '../../common/isConformant';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import type { MenuItemProps } from './MenuItem.types';
 
 jest.mock('../../contexts/menuContext');
 
 describe('MenuItem', () => {
-  isConformant({
+  isConformant<MenuItemProps>({
     Component: MenuItem,
     displayName: 'MenuItem',
     testOptions: {

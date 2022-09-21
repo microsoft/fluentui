@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 19 Sep 2022 07:47:29 GMT",
+      "tag": "@fluentui/web-components_v2.5.6",
+      "version": "2.5.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d",
+            "comment": "Standardized focus treatment to use `outline` instead of a combination of `border` and `box-shadow`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Sep 2022 07:54:43 GMT",
       "tag": "@fluentui/web-components_v2.5.5",
       "version": "2.5.5",

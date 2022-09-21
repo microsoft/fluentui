@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: make listbox slot nullable",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

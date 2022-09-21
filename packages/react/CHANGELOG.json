@@ -2,6 +2,80 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 19 Sep 2022 07:47:29 GMT",
+      "tag": "@fluentui/react_v8.96.0",
+      "version": "8.96.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b7395d67b12bc51b0785a022a4a60930d7543d3c",
+            "comment": "feat: improve groupedlist virtualization"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "be154feb066542663a57cf60af0902fb365cb708",
+            "comment": "fix: Add explicit children prop to TeachingBubble to support React 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Sep 2022 07:37:31 GMT",
+      "tag": "@fluentui/react_v8.95.1",
+      "version": "8.95.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a",
+            "comment": "Ensure toggling group state does not select it"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 19:15:25 GMT",
+      "tag": "@fluentui/react_v8.95.0",
+      "version": "8.95.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "682ead9953a1d519133193033aafe392173009f5",
+            "comment": "All /lib-commonjs/ top-level entries have been added to the exports map for backwards compatibility."
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b111dddd3dab26c409857723a6e34810a60c41b2",
+            "comment": "fix: update version mismatches triggered by v9 release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Sep 2022 07:41:02 GMT",
+      "tag": "@fluentui/react_v8.94.4",
+      "version": "8.94.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a40ef34fa6d1122bdfdb708f79b90de9edb2827d",
+            "comment": "fix: remove readonly semantics from DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Sep 2022 20:52:15 GMT",
       "tag": "@fluentui/react_v8.94.3",
       "version": "8.94.3",

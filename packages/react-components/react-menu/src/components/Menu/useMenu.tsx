@@ -14,6 +14,7 @@ import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
+import { Tab } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render Menu.
@@ -160,7 +161,6 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const shouldHandleKeyboardRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);
   const pressedShiftRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
@@ -183,10 +183,9 @@ const useMenuOpenState = (
       state.setContextTarget(undefined);
     }
 
-    if (data.keyboard) {
-      shouldHandleKeyboardRef.current = true;
-      shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
-      pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
+    if (e.type === 'keydown' && (e as React.KeyboardEvent<HTMLElement>).key === Tab) {
+      shouldHandleTabRef.current = true;
+      pressedShiftRef.current = (e as React.KeyboardEvent<HTMLElement>).shiftKey;
     }
 
     if (data.bubble) {
@@ -288,7 +287,7 @@ const useMenuOpenState = (
       focusFirst();
     }
 
-    if (shouldHandleKeyboardRef.current && !open) {
+    if (!open) {
       if (shouldHandleTabRef.current && !state.isSubmenu) {
         pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
       } else {
@@ -296,7 +295,6 @@ const useMenuOpenState = (
       }
     }
 
-    shouldHandleKeyboardRef.current = false;
     shouldHandleTabRef.current = false;
     pressedShiftRef.current = false;
   }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);

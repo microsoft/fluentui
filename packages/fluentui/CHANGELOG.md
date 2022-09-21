@@ -28,10 +28,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove `rotate(360deg)` from `PopupContent` content styles @yuanboxue-amber ([#24432](https://github.com/microsoft/fluentui/pull/24432))
 - Fix `FocusZone` to reset tabindex when focus is outside the zone with prop `shouldResetActiveElementWhenTabFromZone` @yuanboxue-amber ([#24463](https://github.com/microsoft/fluentui/pull/24463))
 - Change `useLayoutEffect` in `Dropdown` to `useIsomorphicLayoutEffect` @marwan38 ([#24559](https://github.com/microsoft/fluentui/pull/24559))
+- Fix `Popup` trigger attribute being override @chpalac ([#24794](https://github.com/microsoft/fluentui/pull/24794))
+- Fix styling mutation when merging themes in `Dropdown` @petrjaros ([#24787](https://github.com/microsoft/fluentui/pull/24787))
 
 ### Performance
 - Avoid memory trashing in `felaExpandCssShorthandsPlugin` @layershifter ([#24663](https://github.com/microsoft/fluentui/pull/24663))
 
+### Documentation
+- Added theming documentation for windows high contrast mode support @ling1726 ([#24744](https://github.com/microsoft/fluentui/pull/24744))
 
 <!--------------------------------[ v0.64.0 ]------------------------------- -->
 ## [v0.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.64.0) (2022-08-10)

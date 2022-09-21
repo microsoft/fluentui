@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Change content to render as ul and list item to render as li.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

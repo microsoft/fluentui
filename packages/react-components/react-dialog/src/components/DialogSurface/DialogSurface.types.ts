@@ -12,10 +12,12 @@ export type DialogSurfaceSlots = {
    * since native `<dialog>` element supports [::backdrop](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop)
    */
   backdrop?: Slot<'div'>;
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'dialog', 'div'>>;
 };
 
-/** @internal */
+/**
+ * Union between all possible semantic element that represent a DialogSurface
+ */
 export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
 
 /** @internal */
@@ -23,8 +25,11 @@ export type DialogSurfaceElementIntersection = HTMLDialogElement & HTMLDivElemen
 
 /**
  * DialogSurface Props
+ *
+ * Omits basic types from native `dialog` (`open`, `onCancel` and `onClose`)
+ * to ensure `onOpenChange`, `open` and `defaultOpen` from `Dialog` is used instead
  */
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
 
 export type DialogSurfaceContextValues = {
   dialogSurface: DialogSurfaceContextValue;

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-dialog",
-  "version": "9.0.0-beta.7",
+  "version": "9.0.0-beta.9",
   "description": "Dialog component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,28 +22,27 @@
     "test": "jest --passWithNoTests",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-dialog/src && yarn docs",
     "storybook": "start-storybook",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.12",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.14",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@griffel/react": "^1.3.0",
-    "@fluentui/react-utilities": "^9.0.2",
+    "@fluentui/react-utilities": "^9.1.0",
     "@fluentui/keyboard-keys": "^9.0.0",
-    "@fluentui/react-context-selector": "^9.0.2",
-    "@fluentui/react-shared-contexts": "^9.0.0",
-    "@fluentui/react-aria": "^9.1.0",
+    "@fluentui/react-context-selector": "^9.0.3",
+    "@fluentui/react-shared-contexts": "^9.0.1",
+    "@fluentui/react-aria": "^9.2.0",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-tabster": "^9.1.0",
-    "@fluentui/react-theme": "^9.0.0",
-    "@fluentui/react-portal": "^9.0.4",
+    "@fluentui/react-tabster": "^9.1.1",
+    "@fluentui/react-theme": "^9.1.0",
+    "@fluentui/react-portal": "^9.0.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

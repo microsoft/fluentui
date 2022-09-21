@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "(patch): Add line-height styling to Spinner",
-  "packageName": "@fluentui/react-spinner",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

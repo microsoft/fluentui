@@ -6,7 +6,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
-import { dialogCloseButtonSelector, dialogTriggerOpenSelector } from './selectors';
+import { dialogActionSelector, dialogTriggerOpenSelector } from './selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -34,8 +34,8 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
-      cy.get(dialogCloseButtonSelector).should('not.exist');
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogActionSelector).should('not.exist');
     });
   });
   describe('modalType = non-modal', () => {
@@ -61,8 +61,8 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
-      cy.get(dialogCloseButtonSelector).should('exist');
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogActionSelector).should('exist');
     });
   });
   describe('modalType = alert', () => {
@@ -88,8 +88,8 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
-      cy.get(dialogCloseButtonSelector).should('not.exist');
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogActionSelector).should('not.exist');
     });
   });
 });

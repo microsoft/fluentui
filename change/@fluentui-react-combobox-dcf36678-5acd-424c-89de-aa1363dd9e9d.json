@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: react-combobox change onSelect to onOptionSelect to avoid conflicts with native onSelect",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

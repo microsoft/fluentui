@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Swap Background1 and Foreground1 in HC color palette",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

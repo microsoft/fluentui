@@ -7,7 +7,6 @@
 /// <reference types="react" />
 
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -63,30 +62,54 @@ export type DialogBodySlots = {
 // @public
 export type DialogBodyState = ComponentState<DialogBodySlots>;
 
+// @public
+export const DialogContent: ForwardRefComponent<DialogContentProps>;
+
+// @public (undocumented)
+export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
+
+// @public
+export type DialogContentProps = ComponentProps<DialogContentSlots> & {};
+
+// @public (undocumented)
+export type DialogContentSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type DialogContentState = ComponentState<DialogContentSlots>;
+
 // @public (undocumented)
 export type DialogOpenChangeData = {
+    type: 'dialogCancel';
+    open: boolean;
+    event: React_2.SyntheticEvent<DialogSurfaceElement>;
+} | {
     type: 'escapeKeyDown';
     open: boolean;
-    event: React_2.KeyboardEvent;
+    event: React_2.KeyboardEvent<DialogSurfaceElement>;
 } | {
     type: 'backdropClick';
     open: boolean;
-    event: React_2.MouseEvent;
+    event: React_2.MouseEvent<DialogSurfaceElement>;
 } | {
     type: 'triggerClick';
     open: boolean;
-    event: React_2.MouseEvent;
+    event: React_2.MouseEvent<DialogSurfaceElement>;
 };
 
 // @public (undocumented)
-export type DialogOpenChangeEvent = React_2.KeyboardEvent | React_2.MouseEvent;
+export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
+
+// @public
+export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
 
 // @public (undocumented)
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     modalType?: DialogModalType;
     open?: boolean;
     defaultOpen?: boolean;
-    onOpenChange?: (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+    onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
 };
 
@@ -106,12 +129,15 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
+
+// @public
+export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
     backdrop?: Slot<'div'>;
-    root: NonNullable<Slot<'div'>>;
+    root: NonNullable<Slot<'dialog', 'div'>>;
 };
 
 // @public
@@ -129,7 +155,7 @@ export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
 // @public (undocumented)
 export type DialogTitleSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    closeButton?: Slot<ARIAButtonSlotProps>;
+    action?: Slot<'div'>;
 };
 
 // @public
@@ -168,6 +194,9 @@ export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.El
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
+export const renderDialogContent_unstable: (state: DialogContentState) => JSX.Element;
+
+// @public
 export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSX.Element;
 
 // @public
@@ -190,6 +219,12 @@ export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<H
 
 // @public
 export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
+
+// @public
+export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLElement>) => DialogContentState;
+
+// @public
+export const useDialogContentStyles_unstable: (state: DialogContentState) => DialogContentState;
 
 // @public
 export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;
