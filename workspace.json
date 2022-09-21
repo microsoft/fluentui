@@ -758,6 +758,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-trigger": {
+      "root": "packages/react-components/react-trigger",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-trigger/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-utilities": {
       "root": "packages/react-components/react-utilities",
       "projectType": "library",
