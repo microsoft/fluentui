@@ -16,7 +16,8 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
     [`colorPalette${color}Border2`]: statusSharedColors[sharedColor].primary,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  Object.assign(acc, sharedColorTokens);
+  return acc;
 }, {} as StatusColorPaletteTokens);
 
 // one-off patch for yellow
@@ -30,7 +31,8 @@ const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedCol
     [`colorPalette${color}BorderActive`]: personaSharedColors[sharedColor].primary,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  Object.assign(acc, sharedColorTokens);
+  return acc;
 }, {} as PersonaColorPaletteTokens);
 
 export const colorPaletteTokens: ColorPaletteTokens = { ...statusColorPaletteTokens, ...personaColorPaletteTokens };
