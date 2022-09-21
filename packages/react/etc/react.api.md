@@ -6983,6 +6983,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
+    popupProps?: IPopupProps;
     responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
