@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "bugfix(react-dialog): Adds color style to DialogSurface",
+  "comment": "feat: implements DialogContent as a swap of DialogBody",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

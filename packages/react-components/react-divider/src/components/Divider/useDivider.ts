@@ -25,11 +25,11 @@ export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElem
     },
 
     root: getNativeElementProps('div', {
-      ...props,
-      ref,
       role: 'separator',
       'aria-orientation': vertical ? 'vertical' : 'horizontal',
       'aria-labelledby': props.children ? dividerId : undefined,
+      ...props,
+      ref,
     }),
     wrapper: resolveShorthand(wrapper, {
       required: true,

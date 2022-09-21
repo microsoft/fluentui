@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Add explicit children prop to TeachingBubble to support React 18",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

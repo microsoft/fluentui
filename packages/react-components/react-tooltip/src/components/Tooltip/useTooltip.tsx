@@ -19,6 +19,7 @@ import {
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
+import { Escape } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render Tooltip.
@@ -122,19 +123,26 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       context.visibleTooltip = thisTooltip;
 
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === 'Escape' || ev.key === 'Esc') {
+        if (ev.key === Escape) {
           thisTooltip.hide();
+          // stop propagation to avoid conflicting with other elements that listen for `Escape`
+          // e,g: Dialog, Popover, Menu
+          ev.stopPropagation();
         }
       };
 
-      targetDocument?.addEventListener('keydown', onDocumentKeyDown);
+      targetDocument?.addEventListener('keydown', onDocumentKeyDown, {
+        // As this event is added at targeted document,
+        // we need to capture the event to be sure keydown handling from tooltip happens first
+        capture: true,
+      });
 
       return () => {
         if (context.visibleTooltip === thisTooltip) {
           context.visibleTooltip = undefined;
         }
 
-        targetDocument?.removeEventListener('keydown', onDocumentKeyDown);
+        targetDocument?.removeEventListener('keydown', onDocumentKeyDown, { capture: true });
       };
     }
   }, [context, targetDocument, visible, setVisible]);

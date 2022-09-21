@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 15 Sep 2022 09:48:53 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 20:55:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.1)
+
+Tue, 20 Sep 2022 20:55:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.3.0..@fluentui/react-components_v9.3.1)
+
+### Minor changes
+
+- `@fluentui/react-textarea`
+  - feat: Adding filled with shadow appearance. ([PR #24512](https://github.com/microsoft/fluentui/pull/24512) by esteban.230@hotmail.com)
+- `@fluentui/react-divider`
+  - fix: Divider - allow props to override default values ([PR #24840](https://github.com/microsoft/fluentui/pull/24840) by mgodbolt@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: replace keydown handlers by useARIAButtonShorthand on MenuItem ([PR #24738](https://github.com/microsoft/fluentui/pull/24738) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-tooltip`
+  - bugfix: stops propagation on Escape key ([PR #24810](https://github.com/microsoft/fluentui/pull/24810) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - fix: export `tableCellActionsClassNames` from unstable ([PR #24830](https://github.com/microsoft/fluentui/pull/24830) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-table`
+  - feat: Adds `visible` prop to `TableCellActions` ([PR #24831](https://github.com/microsoft/fluentui/pull/24831) by lingfangao@hotmail.com)
+  - fix: `TableCellActions` displays correctly inside `TableHeaderCell` ([PR #24829](https://github.com/microsoft/fluentui/pull/24829) by lingfangao@hotmail.com)
+- `@fluentui/react-conformance-griffel`
+  - bump react-conformance ([PR #24870](https://github.com/microsoft/fluentui/pull/24870) by mgodbolt@microsoft.com)
+- `@fluentui/react-dialog`
+  - bugfix(react-dialog): Adds color style to DialogSurface ([PR #24832](https://github.com/microsoft/fluentui/pull/24832) by bernardo.sunderhus@gmail.com)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.0)
 

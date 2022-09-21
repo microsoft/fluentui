@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 19 Sep 2022 07:47:29 GMT",
+      "tag": "@fluentui/react_v8.96.0",
+      "version": "8.96.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b7395d67b12bc51b0785a022a4a60930d7543d3c",
+            "comment": "feat: improve groupedlist virtualization"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "be154feb066542663a57cf60af0902fb365cb708",
+            "comment": "fix: Add explicit children prop to TeachingBubble to support React 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Sep 2022 07:37:31 GMT",
       "tag": "@fluentui/react_v8.95.1",
       "version": "8.95.1",

@@ -789,6 +789,12 @@ export const focusStrokeOuterRecipe: DesignToken<ColorRecipe>;
 // @public (undocumented)
 export const focusStrokeWidth: CSSDesignToken<number>;
 
+// @public
+export const focusTreatmentBase: CSSDirective;
+
+// @public
+export const focusTreatmentTight: CSSDirective;
+
 // @public (undocumented)
 export const fontWeight: CSSDesignToken<number>;
 

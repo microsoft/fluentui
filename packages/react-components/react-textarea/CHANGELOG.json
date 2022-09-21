@@ -2,6 +2,27 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 20:55:42 GMT",
+      "tag": "@fluentui/react-textarea_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "151520d8a82767f0270793ce040c5aa6eefa64c0",
+            "comment": "feat: Adding filled with shadow appearance."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:34 GMT",
       "tag": "@fluentui/react-textarea_v9.0.5",
       "version": "9.0.5",

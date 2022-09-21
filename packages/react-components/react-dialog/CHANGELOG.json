@@ -2,6 +2,41 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 20:55:44 GMT",
+      "tag": "@fluentui/react-dialog_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "79d1b0e32631bf916a52834e3731de464aa4898c",
+            "comment": "bugfix(react-dialog): Adds color style to DialogSurface"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "81de40f0df0dfa8bac4e4fb522bf830d9fe8e066",
+            "comment": "Includes Tooltip Escape scenarios on e2e tests"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "cf5f5e14c86cc35ee8bfff6c6be130a36fb6d16d",
+            "comment": "chore: scaffold DialogContent component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:48:59 GMT",
       "tag": "@fluentui/react-dialog_v9.0.0-beta.8",
       "version": "9.0.0-beta.8",
