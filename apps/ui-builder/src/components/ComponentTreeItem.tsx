@@ -93,6 +93,7 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
   const styles = useStyles();
 
   const [deletePopoverOpened, setDeletePopoverOpened] = React.useState(false);
+  const [onHover, setOnHover] = React.useState(false);
 
   const openPopover = React.useCallback(() => setDeletePopoverOpened(true), [setDeletePopoverOpened]);
   const closePopover = React.useCallback(() => setDeletePopoverOpened(false), [setDeletePopoverOpened]);
@@ -104,9 +105,8 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
     handleSelectComponent(node.element);
   }, [handleSelectComponent, node, selected]);
 
-  const onkeydown = React.useCallback(
+  const onKeyDown = React.useCallback(
     e => {
-      console.log(e);
       // enter or space
       if (e.key === 'Enter' || e.keyCode === 32) {
         selectItem();
@@ -161,6 +161,9 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
     [node, deletePopoverOpened, openPopover, closePopover, handleDeleteSelected, styles],
   );
 
+  const onMouseEnter = React.useCallback(() => setOnHover(true), [setOnHover]);
+  const onMouseLeave = React.useCallback(() => setOnHover(true), [setOnHover]);
+
   const addAfter = React.useCallback(() => handleAddComponent(node.id, 'after'), [handleAddComponent, node.id]);
   const addBefore = React.useCallback(() => handleAddComponent(node.id, 'before'), [handleAddComponent, node.id]);
   const addChild = React.useCallback(() => handleAddComponent(node.id, 'child'), [handleAddComponent, node.id]);
@@ -171,13 +174,15 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
       <MenuTrigger>
         <div
           tabIndex={0}
-          onKeyDown={onkeydown}
+          onKeyDown={onKeyDown}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           onClick={selectItem}
           style={{ paddingLeft: `${node.level * 0.5}rem` }}
           className={mergeClasses(styles.treeItem, selected && styles.selected)}
         >
           <span className={styles.title}>{node.title}</span>
-          {selected && (
+          {(selected || onHover) && (
             <div>
               <Tooltip relationship="label" content="Move" withArrow>
                 <Button
