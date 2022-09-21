@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PersonaSlots, PersonaState } from './Persona.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -22,12 +22,14 @@ const useStyles = makeStyles({
     gridAutoColumns: 'max-content',
     gridAutoRows: 'max-content',
   },
-});
-
-const useGridStyles = makeStyles({
-  afterOrBefore: {
+  after: {
     gridAutoFlow: 'column',
     justifyItems: 'start',
+    columnGap: '8px',
+  },
+  before: {
+    gridAutoFlow: 'column',
+    justifyItems: 'end',
     columnGap: '8px',
   },
   below: {
@@ -49,24 +51,28 @@ const useGridStyles = makeStyles({
  * Apply styling to the Persona slots based on the state
  */
 export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => {
-  const { textPosition } = state;
+  const { fixed, textPosition } = state;
   const styles = useStyles();
-  const gridStyles = useGridStyles();
   const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state);
 
-  state.root.className = mergeClasses(
-    personaClassNames.root,
-    styles.root,
-    textPosition !== 'below' && gridStyles.afterOrBefore,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(personaClassNames.root, styles.root, styles[textPosition], state.root.className);
 
   if (state.avatar) {
-    state.avatar.className = mergeClasses(personaClassNames.avatar, gridStyles.coin, state.avatar.className);
+    state.avatar.className = mergeClasses(
+      personaClassNames.avatar,
+      styles.coin,
+      fixed ? styles.fixed : styles.scaled,
+      state.avatar.className,
+    );
   }
 
   if (state.presence) {
-    state.presence.className = mergeClasses(personaClassNames.presence, gridStyles.coin, state.presence.className);
+    state.presence.className = mergeClasses(
+      personaClassNames.presence,
+      styles.coin,
+      fixed ? styles.fixed : styles.scaled,
+      state.presence.className,
+    );
   }
 
   if (state.primaryText) {
