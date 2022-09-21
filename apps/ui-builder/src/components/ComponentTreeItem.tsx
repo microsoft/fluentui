@@ -61,8 +61,8 @@ const macKeyDown = (e, target: HTMLElement) => {
     if (activeElement) {
       const event = new MouseEvent('contextmenu', {
         bubbles: true,
-        clientX: target.clientLeft,
-        clientY: target.clientTop,
+        clientX: target.offsetLeft,
+        clientY: target.offsetTop,
       });
       activeElement.dispatchEvent(event);
     }
