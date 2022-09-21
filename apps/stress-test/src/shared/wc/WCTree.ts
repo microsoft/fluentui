@@ -7,8 +7,7 @@ template.innerHTML = `
   <div class="dom-tree-node"></div>
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class WCTree<T extends TreeNode<any>> extends HTMLElement {
+export class WCTree<T extends TreeNode<unknown>> extends HTMLElement {
   private _root: HTMLElement | ShadowRoot;
   private _tree: T | null;
   private _itemRenderer: WCTreeItemRenderer<T>;
@@ -53,9 +52,7 @@ export class WCTree<T extends TreeNode<any>> extends HTMLElement {
 
     this._tree.children.forEach((child, i) => {
       const node = new WCTree(this._itemRenderer, this._depth + 1, i + 1, this._useShadowRoot);
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      node.tree = child;
+      node.tree = child as T;
       this._root.appendChild(node);
     });
   }

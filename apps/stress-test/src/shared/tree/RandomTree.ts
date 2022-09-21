@@ -57,7 +57,7 @@ export class RandomTree<T> {
 
   public fromFixture = (fixture: TestFixture['tree'], parent: TreeNode<T> | null = null): TreeNode<T> => {
     const root: TreeNode<T> = {
-      value: fixture.value,
+      value: fixture.value as T,
       children: [],
       parent,
     };

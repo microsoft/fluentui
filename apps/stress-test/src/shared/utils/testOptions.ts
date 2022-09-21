@@ -7,6 +7,12 @@ export type TestOptions = {
 
 export type GetTestOptionsFn = () => TestOptions;
 
+declare global {
+  interface URLSearchParams {
+    keys: () => string[];
+  }
+}
+
 let params: TestOptions;
 export const getTestOptions = () => {
   if (params) {
@@ -46,10 +52,9 @@ export const getTestOptions = () => {
   params.numRemoveNodes = numRemoveNodes;
 
   const ignore = ['numStartNodes', 'numAddNodes', 'numRemoveNodes'];
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  for (const [key, value] of searchParams.entries()) {
-    if (!ignore.includes(key)) {
+  for (const key of searchParams.keys()) {
+    const value = searchParams.get(key);
+    if (value && !ignore.includes(key)) {
       params[key] = value;
     }
   }

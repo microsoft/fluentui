@@ -1,11 +1,9 @@
 export type TestFixture = {
   tree: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    value: any;
+    value: unknown;
     children: TestFixture['tree'][];
   };
   selectors: string[];
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type TestRenderer = (node: any, depth: number, index: number) => any;
+export type TestRenderer = (node: unknown, depth: number, index: number) => unknown;
