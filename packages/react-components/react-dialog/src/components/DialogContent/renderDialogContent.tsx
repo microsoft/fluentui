@@ -8,6 +8,5 @@ import type { DialogContentState, DialogContentSlots } from './DialogContent.typ
 export const renderDialogContent_unstable = (state: DialogContentState) => {
   const { slots, slotProps } = getSlots<DialogContentSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };

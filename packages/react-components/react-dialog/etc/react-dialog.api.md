@@ -69,7 +69,7 @@ export const DialogContent: ForwardRefComponent<DialogContentProps>;
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
 
 // @public
-export type DialogContentProps = ComponentProps<DialogContentSlots> & {};
+export type DialogContentProps = ComponentProps<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogContentSlots = {

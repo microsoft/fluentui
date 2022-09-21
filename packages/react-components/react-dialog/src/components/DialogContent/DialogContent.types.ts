@@ -7,7 +7,7 @@ export type DialogContentSlots = {
 /**
  * DialogContent Props
  */
-export type DialogContentProps = ComponentProps<DialogContentSlots> & {};
+export type DialogContentProps = ComponentProps<DialogContentSlots>;
 
 /**
  * State used in rendering DialogContent
