@@ -1,9 +1,15 @@
 import * as React from 'react';
 import {
   Button,
+  Tooltip,
   Popover,
   PopoverTrigger,
   PopoverSurface,
+  Menu,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuTrigger,
   makeStyles,
   tokens,
   shorthands,
@@ -19,8 +25,10 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    ...shorthands.borderLeft('4px', 'solid', 'transparent'),
     '&:hover': {
       backgroundColor: tokens.colorBrandBackground2,
+      borderLeftColor: tokens.colorBrandBackground,
     },
     '&:hover span': {
       color: tokens.colorNeutralForeground1,
@@ -28,6 +36,7 @@ const useStyles = makeStyles({
   },
   selected: {
     backgroundColor: tokens.colorBrandBackground,
+    borderLeftColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
   },
   title: { ...shorthands.padding('5px', 0) },
@@ -43,10 +52,28 @@ export type ComponentTreeNode = {
   element: JSONTreeElement | null;
 };
 
+const isMac = navigator.userAgent.indexOf('Mac OS X') !== -1;
+const macKeyDown = (e, target: HTMLElement) => {
+  const keyCode = e.keyCode || e.which;
+  const F10 = 121;
+  if (e.shiftKey && keyCode === F10) {
+    const activeElement = document.activeElement;
+    if (activeElement) {
+      const event = new MouseEvent('contextmenu', {
+        bubbles: true,
+        clientX: target.clientLeft,
+        clientY: target.clientTop,
+      });
+      activeElement.dispatchEvent(event);
+    }
+  }
+};
+
 interface IProps {
   node: ComponentTreeNode;
   selected: boolean;
-  handleDeleteComponent: (uuid) => void;
+  handleAddComponent: (id: string, where: string) => void;
+  handleDeleteComponent: (id: string) => void;
   handleDeleteSelected: React.MouseEventHandler<HTMLButtonElement>;
   handleSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   handleClone: React.MouseEventHandler<HTMLButtonElement>;
@@ -56,6 +83,7 @@ interface IProps {
 export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
   node,
   selected,
+  handleAddComponent,
   handleDeleteComponent,
   handleDeleteSelected,
   handleSelectComponent,
@@ -64,11 +92,10 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
 }) => {
   const styles = useStyles();
 
-  const [open, setOpen] = React.useState(false);
+  const [deletePopoverOpened, setDeletePopoverOpened] = React.useState(false);
 
-  const openPopover = React.useCallback(() => setOpen(true), [setOpen]);
-  const closePopover = React.useCallback(() => setOpen(false), [setOpen]);
-  // const deleteNode = React.useCallback(() => handleDeleteComponent(node.id), [node, handleDeleteComponent]);
+  const openPopover = React.useCallback(() => setDeletePopoverOpened(true), [setDeletePopoverOpened]);
+  const closePopover = React.useCallback(() => setDeletePopoverOpened(false), [setDeletePopoverOpened]);
 
   const selectItem = React.useCallback(() => {
     if (selected) {
@@ -79,16 +106,24 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
 
   const onkeydown = React.useCallback(
     e => {
+      console.log(e);
       // enter or space
       if (e.key === 'Enter' || e.keyCode === 32) {
         selectItem();
+        return;
       }
 
       if (e.key === 'ArrowDown') {
         e.target.nextSibling && e.target.nextSibling.focus();
+        return;
       }
       if (e.key === 'ArrowUp') {
         e.target.previousSibling && e.target.previousSibling.focus();
+        return;
+      }
+
+      if (isMac) {
+        macKeyDown(e, e.target);
       }
     },
     [selectItem],
@@ -96,21 +131,23 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
 
   React.useEffect(() => {
     if (!selected) {
-      setOpen(false);
+      setDeletePopoverOpened(false);
     }
   }, [selected]);
 
   const deleteButton = React.useMemo(
     () => (
-      <Popover open={open}>
+      <Popover open={deletePopoverOpened}>
         <PopoverTrigger>
-          <Button
-            icon={<DeleteRegular />}
-            appearance="subtle"
-            size="small"
-            onClick={openPopover}
-            className={styles.button}
-          />
+          <Tooltip relationship="label" content="Delete" withArrow>
+            <Button
+              icon={<DeleteRegular />}
+              appearance="subtle"
+              size="small"
+              onClick={openPopover}
+              className={styles.button}
+            />
+          </Tooltip>
         </PopoverTrigger>
         <PopoverSurface className={styles.deletePopover}>
           <span className={styles.deletePopoverCaption}>Are you sure you want to delete {node.title}?</span>
@@ -121,37 +158,58 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
         </PopoverSurface>
       </Popover>
     ),
-    [node, open, openPopover, closePopover, handleDeleteSelected, styles],
+    [node, deletePopoverOpened, openPopover, closePopover, handleDeleteSelected, styles],
   );
 
+  const addAfter = React.useCallback(() => handleAddComponent(node.id, 'after'), [handleAddComponent, node.id]);
+  const addBefore = React.useCallback(() => handleAddComponent(node.id, 'before'), [handleAddComponent, node.id]);
+  const addChild = React.useCallback(() => handleAddComponent(node.id, 'child'), [handleAddComponent, node.id]);
+  const remove = React.useCallback(() => handleDeleteComponent(node.id), [handleDeleteComponent, node.id]);
+
   return (
-    <div
-      tabIndex={0}
-      onKeyDown={onkeydown}
-      onClick={selectItem}
-      style={{ paddingLeft: `${node.level * 0.5}rem` }}
-      className={mergeClasses(styles.treeItem, selected && styles.selected)}
-    >
-      <span className={styles.title}>{node.title}</span>
-      {selected && (
-        <div>
-          <Button
-            icon={<ArrowMoveRegular />}
-            appearance="subtle"
-            size="small"
-            className={styles.button}
-            onClick={handleMove}
-          />
-          <Button
-            icon={<CopyRegular />}
-            appearance="subtle"
-            size="small"
-            className={styles.button}
-            onClick={handleClone}
-          />
-          {deleteButton}
+    <Menu openOnContext={true}>
+      <MenuTrigger>
+        <div
+          tabIndex={0}
+          onKeyDown={onkeydown}
+          onClick={selectItem}
+          style={{ paddingLeft: `${node.level * 0.5}rem` }}
+          className={mergeClasses(styles.treeItem, selected && styles.selected)}
+        >
+          <span className={styles.title}>{node.title}</span>
+          {selected && (
+            <div>
+              <Tooltip relationship="label" content="Move" withArrow>
+                <Button
+                  icon={<ArrowMoveRegular />}
+                  appearance="subtle"
+                  size="small"
+                  className={styles.button}
+                  onClick={handleMove}
+                />
+              </Tooltip>
+              <Tooltip relationship="label" content="Copy" withArrow>
+                <Button
+                  icon={<CopyRegular />}
+                  appearance="subtle"
+                  size="small"
+                  className={styles.button}
+                  onClick={handleClone}
+                />
+              </Tooltip>
+              {deleteButton}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem onClick={addAfter}>Add after</MenuItem>
+          <MenuItem onClick={addBefore}>Add before</MenuItem>
+          <MenuItem onClick={addChild}>Add child</MenuItem>
+          <MenuItem onClick={remove}>Remove</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   );
 };
