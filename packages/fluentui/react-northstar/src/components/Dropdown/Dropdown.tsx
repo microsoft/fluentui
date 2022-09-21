@@ -905,7 +905,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
         if (allowFreeform) {
           // set highlighted index to first item starting with search query
-          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(changes.inputValue));
+          const itemIndex = items.findIndex(i =>
+            itemToString(i)?.toLocaleLowerCase().startsWith(changes.inputValue?.toLowerCase()),
+          );
           if (itemIndex !== -1) {
             newState.highlightedIndex = itemIndex;
           }
@@ -938,7 +940,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
         newState.searchQuery = getSelectedItemAsString(newValue);
         if (allowFreeform && !inListbox.current && type === Downshift.stateChangeTypes.keyDownEnter) {
-          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+          const itemIndex = items.findIndex(i =>
+            itemToString(i)?.toLocaleLowerCase().startsWith(searchQuery?.toLocaleLowerCase()),
+          );
 
           // if there is an item that starts with searchQuery, still apply the search query
           // to do auto complete (you enter '12:', can be completed to '12:00')
@@ -1009,7 +1013,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         if (open) {
           newState.open = false;
           if (allowFreeform) {
-            const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+            const itemIndex = items.findIndex(i =>
+              itemToString(i)?.toLowerCase().startsWith(searchQuery?.toLowerCase()),
+            );
 
             // if there is an item that starts with searchQuery, still apply the search query
             // to do auto complete (you enter '12:', can be completed to '12:00')
@@ -1038,7 +1044,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
             listRef.current.focus();
           }
         } else if (allowFreeform) {
-          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+          const itemIndex = items.findIndex(i =>
+            itemToString(i)?.toLocaleLowerCase().startsWith(searchQuery.toLowerCase()),
+          );
 
           // if there is an item that starts with searchQuery, still apply the search query
           // to do auto complete (you enter '12:', can be completed to '12:00')
