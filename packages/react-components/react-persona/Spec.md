@@ -25,10 +25,6 @@ v8's Persona has a sub-component `PersonaCoin`, the equivalent in v9 is an Avata
 
 Persona has a slot for an `Avatar` and `PresenceBadge`, giving the user the ability to display an Avatar, a PresenceBadge, or Combine them into an Avatar with presence.
 
-### Text lines
-
-Other than styling and naming, the text lines in Persona remain the same.
-
 ## Sample Code
 
 ![Avatar](./etc/images/avatar.png)
@@ -36,7 +32,7 @@ Other than styling and naming, the text lines in Persona remain the same.
 Persona with Avatar:
 
 ```jsx
-<Persona name="Kevin Sturgis" primaryText="Kevin Sturgis" secondaryText="Software Engineer" />
+<Persona name="Kevin Sturgis" secondaryText="Software Engineer" />
 ```
 
 ![PresenceBadge](./etc/images/badge.png)
@@ -44,7 +40,7 @@ Persona with Avatar:
 Persona with PresenceBadge:
 
 ```jsx
-<Persona presenceOnly presence={{ status: 'offline', outOfOffice: true }} primaryText="Kevin Sturgis" />
+<Persona presenceOnly name="Kevin Sturgis" presence={{ status: 'offline', outOfOffice: true }} />
 ```
 
 ![Avatar and PresenceBadge](./etc/images/avatar_badge.png)
@@ -54,10 +50,9 @@ Persona with Avatar + PresenceBadge:
 ```jsx
 <Persona
   name="Kevin Sturgis"
-  presence={{ status: 'offline', outOfOffice: true }}
-  primaryText="Kevin Sturgis"
   secondaryText="Software Engineer"
   tertiaryText="Offline"
+  presence={{ status: 'offline', outOfOffice: true }}
 />
 ```
 
@@ -79,8 +74,8 @@ There are 3 content variants:
 
 There are 2 sizing variants:
 
-- scaled: The content will be resized based on the number of text lines.
-- fixed: The content will remain the same size and the text lines will be styled based on the content's size.
+- scaled: When there is no specified size in the props of either `avatar` or `presence`, the content is resized based on the number of text lines used.
+- fixed: When there is a specified size of either `avatar` or `presence`, the text lines are styled based on the size of the content.
 
 ## API
 
@@ -89,10 +84,10 @@ There are 2 sizing variants:
 - `root`: The root slot for Persona.
 - `avatar`: The Avatar to display and Persona's primary slot.
 - `presence`: The PresenceBadge to display.
-- `primaryText`: Primary text.
-- `secondaryText`: Secondary text.
-- `tertiaryText`: Tertiary text.
-- `quaternaryText`: Quaternary text.
+- `primaryText`: First line of text in Persona. By default its content will be the content of the `name` prop. It is highly encouraged to only use the `name` prop and only specify the content of `primaryText` when it is not a name.
+- `secondaryText`: Second line of text in Persona.
+- `tertiaryText`: Third line of text in Persona.
+- `quaternaryText`: Fourth line of text in Persona.
 
 **Types**
 
@@ -103,85 +98,80 @@ export type PersonaSlots = {
   /**
    * Avatar to display.
    */
-  avatar: NonNullable<Slot<typeof Avatar>>;
+  avatar?: Slot<typeof Avatar>;
 
   /**
    * PresenceBadge to display.
    */
-  presence: Slot<typeof PresenceBadge>;
+  presence?: Slot<typeof PresenceBadge>;
 
   /**
-   * The first line of text, larger than other lines of text.
+   * The first line of text in the Persona, larger than the rest of the lines.
+   *
+   * This defaults to the `name` prop, and it is recomended that you only set its value if it should be different from
+   * from the `name` prop.
    */
-  primaryText: Slot<'span'>;
+  primaryText?: Slot<'span'>;
 
   /**
-   * Secondary text to display.
+   * The second line of text in the Persona.
    */
-  secondaryText: Slot<'span'>;
+  secondaryText?: Slot<'span'>;
 
   /**
-   * Tertiary text to display.
+   * The third line of text in the Persona.
    */
-  tertiaryText: Slot<'span'>;
+  tertiaryText?: Slot<'span'>;
 
   /**
-   * Quaternary text to display.
+   * The fourth line of text in the Persona.
    */
-  quaternaryText: Slot<'span'>;
+  quaternaryText?: Slot<'span'>;
 };
 
 /**
  * Persona Props
  */
-export type PersonaProps = Omit<ComponentProps<Partial<PersonaSlots>, 'avatar'>, 'badge'> & {
-  /**
-   * Whether to display only the presence.
-   *
-   * @default false
-   */
-  presenceOnly?: boolean;
+export type PersonaProps = Omit<ComponentProps<PersonaSlots>, 'badge'> &
+  Pick<AvatarProps, 'name'> & {
+    /**
+     * Whether to display only the presence.
+     *
+     * @default false
+     */
+    presenceOnly?: boolean;
 
-  /**
-   * Sizing type to use.
-   *
-   * `fixed`: Text lines adjust to content's size.
-   * `scaled`: Content adjusts its size based on the number of text lines used.
-   *
-   * @default fixed
-   */
-  sizing?: 'fixed' | 'scaled';
-
-  /**
-   * Position the text will be rendered in.
-   *
-   * @default after
-   */
-  textPosition?: 'before' | 'after' | 'below';
-};
+    /**
+     * Position the text will be rendered in.
+     *
+     * @default after
+     */
+    textPosition?: 'before' | 'after' | 'below';
+  };
 ```
 
 ## Structure
 
 To avoid the [issue](https://github.com/microsoft/fluentui/issues/23386) v8 has, a css grid will be used instead of a flexbox that requires a general wrapper and a text container wrapper.
 
-- _**CSS Grid**_
-
-  - ![After](./etc/images/grid_after.png)
-  - ![Below](./etc/images/grid_below.png)
-  - ![Before](./etc/images/grid_before.png)
-
 - _**Internal**_
 
 ```jsx
+const coin = (
+  <>
+    {!presenceOnly && slots.avatar && <slots.avatar {...slotProps.avatar} />}
+    {presenceOnly && slots.presence && <slots.presence {...slotProps.presence} />}
+  </>
+);
+
 return (
   <slots.root {...slotProps.root}>
-    {!badgeOnly && <slots.avatar {...slotProps.avatar} />}
-    {slots.presence && <slots.presence {...slotProps.presence} />}
+    {(textPosition === 'after' || textPosition === 'below') && coin}
     {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
     {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
     {slots.tertiaryText && <slots.tertiaryText {...slotProps.tertiaryText} />}
     {slots.quaternaryText && <slots.quaternaryText {...slotProps.quaternaryText} />}
+    {textPosition === 'before' && coin}
   </slots.root>
 );
 ```
@@ -191,7 +181,7 @@ return (
 ```html
 <div class="fui-Persona">
   <div {/* Avatar, PresenceBadge, or Avatar with PresenceBadge */} />
-  <span class="fui-Persona__primaryText">Primary Text</span>
+  <span class="fui-Persona__primaryText">{/* name */}</span>
   <span class="fui-Persona__secondaryText">Secondary Text</span>
   <span class="fui-Persona__tertiaryText">Tertiary Text</span>
   <span class="fui-Persona__quaternaryText">Quaternary Text</span>
@@ -216,7 +206,7 @@ _Explain how the component will behave in use, including:_
   - _Touch_
     - Doesn't interact with touch.
   - _Screen readers_
-    - It first focuses on the media and then goes through each text line available.
+    - Contents will be read based on dom order.
 
 ## Accessibility
 
