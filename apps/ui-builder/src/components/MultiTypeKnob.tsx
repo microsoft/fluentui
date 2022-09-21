@@ -1,8 +1,15 @@
 import * as React from 'react';
-// import { isElement } from 'react-is';
-// import * as _ from 'lodash';
-// import * as FUI from '@fluentui/react-northstar';
-// import * as FUIIcons from '@fluentui/react-icons-northstar';
+import { Input, Button, SpinButton, Checkbox, TabList, Tab, makeStyles } from '@fluentui/react-components';
+import { DismissFilled } from '@fluentui/react-icons';
+import { Combobox, Option } from '@fluentui/react-components/unstable';
+
+const useStyles = makeStyles({
+  container: { display: 'flex', flexDirection: 'column', rowGap: '0.25rem' },
+  checkbox: { paddingLeft: 0, paddingTop: 0 },
+  row: { display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  combobox: { width: '100%', minWidth: '50%' },
+  clearButton: { marginLeft: '0.5rem' },
+});
 
 /**
  * Displays a knob with the ability to switch between data `types`.
@@ -17,89 +24,115 @@ export const MultiTypeKnob: React.FunctionComponent<{
   options: string[];
   required: boolean;
 }> = ({ label, types, value, onChange, onPropUpdate, onRemoveProp, options, required }) => {
+  const styles = useStyles();
   const defaultType = types[0];
   const [type, setType] = React.useState(defaultType);
 
   const knob = knobs[type];
-  const handleChangeType = React.useCallback(
-    e => setType(e.target.value), // @ts-ignore
-    [],
+  const handleChangeType = React.useCallback((_e, data) => setType(data.value), [setType]);
+  const handleValueChange = React.useCallback(
+    (e, data) => {
+      switch (type) {
+        case 'string':
+          onChange(e.target.value);
+          break;
+        case 'literal':
+          onChange(data.optionValue);
+          break;
+        case 'number':
+          onChange(Number(isNaN(data.value) ? e.target.value : data.value));
+          break;
+        case 'boolean':
+          onChange(!!e.target.checked);
+          break;
+      }
+    },
+    [type, onChange],
+  );
+
+  const doPropUpdate = React.useCallback(
+    e => {
+      if (type === 'number') {
+        onPropUpdate(Number(e.target.value));
+      } else {
+        onPropUpdate(e.target.value);
+      }
+    },
+    [type, onPropUpdate],
   );
 
   const propId = `prop-${label}`;
 
   return (
-    <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
-      <div>
-        {type !== 'boolean' && <label htmlFor={propId}>{label} </label>}
+    <div className={styles.container} style={{ opacity: knob ? 1 : 0.4 }}>
+      <div className={styles.row}>
+        <label htmlFor={propId}>{label} </label>
         {types.length === 1 ? (
-          <code style={{ float: 'right' }}>{type}</code>
+          <code>{type}</code>
         ) : (
-          types.map(t => (
-            <button key={t} onClick={() => handleChangeType(t)}>
-              {t}
-            </button>
-          ))
+          <TabList onTabSelect={handleChangeType} selectedValue={type} size="small">
+            {types.map(t => (
+              <Tab key={t} value={t}>
+                {t}
+              </Tab>
+            ))}
+          </TabList>
         )}
       </div>
-      {knob && knob({ options, value, onChange, onPropUpdate, id: propId })}
-      {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
-      {!required && type === 'literal' && value && (
-        <button
-          style={{
-            background: 'none',
-            border: '1px solid black',
-            borderRadius: 4,
-            margin: 8,
-          }}
-          aria-label="Remove"
-          onClick={_ => {
-            onRemoveProp();
-          }}
-        >
-          X
-        </button>
-      )}
+      <div className={styles.row}>
+        {knob &&
+          knob({
+            options,
+            value,
+            onChange: handleValueChange,
+            onPropUpdate: doPropUpdate,
+            id: propId,
+            styles,
+          })}
+        {!required && type === 'literal' && (
+          <Button
+            aria-label="Remove"
+            onClick={onRemoveProp}
+            icon={<DismissFilled />}
+            className={styles.clearButton}
+            disabled={!value}
+          />
+        )}
+      </div>
     </div>
   );
 };
 
 export const knobs = {
-  boolean: ({ value, onChange, id }) => (
-    <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
+  boolean: ({ value, onChange, id, styles }) => (
+    <Checkbox id={id} checked={!!value} onChange={onChange} className={styles.checkbox} />
   ),
 
   number: ({ value, onChange, onPropUpdate, id }) => (
-    <input
+    <SpinButton
       id={id}
       style={{ width: '100%' }}
       type="number"
       value={Number(value)}
-      onChange={e => onChange(Number(e.target.value))}
-      onBlur={e => onPropUpdate(Number(e.target.value))}
+      onChange={onChange}
+      onBlur={onPropUpdate}
     />
   ),
 
   string: ({ value, onChange, onPropUpdate, id }) => (
-    <input
-      id={id}
-      style={{ width: '100%' }}
-      value={String(value)}
-      onChange={e => onChange(e.target.value)}
-      onBlur={e => onPropUpdate(e.target.value)}
-    />
+    <Input id={id} style={{ width: '100%' }} value={String(value)} onChange={onChange} onBlur={onPropUpdate} />
   ),
 
-  literal: ({ options, value, onChange, id }) => (
-    <select id={id} onChange={e => onChange(e.target.value)} value={value}>
+  literal: ({ options, value, onChange, id, styles }) => (
+    <Combobox id={id} onOptionSelect={onChange} value={value} className={styles.combobox}>
       {options?.map((
         opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
       ) => (
-        <option key={opt} value={opt}>
+        <Option key={opt} value={opt}>
           {opt}
-        </option>
+        </Option>
       ))}
-    </select>
+    </Combobox>
   ),
 
   ReactText: ({ value, onChange, onPropUpdate, id }) => knobs.string({ value, onChange, onPropUpdate, id }),
