@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
 
 export type RowId = string | number;
@@ -140,6 +141,24 @@ export interface TablePaginationState<TItem> {
   currentPage: number;
   pageCount: number;
 }
+
+export interface ColumnWidthState {
+  columnId: ColumnId;
+  width: number;
+  minWidth: number;
+  maxWidth: number;
+  idealWidth: number;
+  padding: number;
+}
+
+export interface TableColumnSizingState {
+  getOnMouseDown: (columnId: ColumnId) => (e: React.MouseEvent<HTMLElement>) => void;
+  getColumnWidth: (columnId: ColumnId) => number;
+  getTotalWidth: () => number;
+  setColumnWidth: (columnId: ColumnId, newSize: number) => void;
+  getColumnWidths: () => ColumnWidthState[];
+}
+
 export interface TableState<TItem> {
   getRowId?: (item: TItem) => RowId;
   /**
@@ -153,6 +172,10 @@ export interface TableState<TItem> {
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
   /**
+   * Ref to the table HTML element
+   */
+  tableRef: React.RefObject<HTMLDivElement>;
+  /**
    * Table columns
    */
   columns: ColumnDefinition<TItem>[];
@@ -164,5 +187,13 @@ export interface TableState<TItem> {
    * State and actions to manage row sorting
    */
   sort: TableSortState<TItem>;
+  /**
+   * Pagination state
+   */
   pagination: TablePaginationState<TItem>;
+
+  /**
+   * Column sizing state
+   */
+  columnSizing: TableColumnSizingState;
 }

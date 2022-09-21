@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type {
   UseTableOptions,
   TableState,
@@ -6,6 +7,7 @@ import type {
   TableSortStateInternal,
   RowEnhancer,
   TablePaginationState,
+  TableColumnSizingState,
 } from './types';
 import { defaultPaginationState } from './usePagination';
 
@@ -32,8 +34,17 @@ const defaultSortState: TableSortStateInternal<unknown> = {
   toggleColumnSort: noop,
 };
 
+const defaultColumnSizingState: TableColumnSizingState = {
+  getColumnWidth: () => 0,
+  getColumnWidths: () => [],
+  getOnMouseDown: () => () => null,
+  getTotalWidth: () => 0,
+  setColumnWidth: () => null,
+};
+
 export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TItem> {
   const { items, getRowId, columns } = options;
+  const tableRef = React.useRef<HTMLDivElement>(null);
 
   const {
     isRowSelected,
@@ -78,5 +89,7 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
       sortDirection,
       toggleColumnSort,
     },
+    columnSizing: defaultColumnSizingState,
+    tableRef,
   };
 }

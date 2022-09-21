@@ -17,6 +17,7 @@ export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { CellNavigationMode } from './CellNavigationMode.stories';
 export { RowNavigationMode } from './RowNavigationMode.stories';
 export { CompositeNavigationMode } from './CompositeNavigationMode.stories';
+export { ColumnResize } from './ColumnResize.stories';
 
 export default {
   title: 'Preview Components/Table',
