@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: Removing filled with shadow appearance variant.",
+  "comment": "chore: Deprecating filled with shadow appearance variant.",
   "packageName": "@fluentui/react-textarea",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
