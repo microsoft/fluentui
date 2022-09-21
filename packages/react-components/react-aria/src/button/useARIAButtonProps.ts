@@ -1,6 +1,7 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { isARIAButtonComponent } from './isARIAButtonComponent';
 import type { ARIAButtonElementIntersection, ARIAButtonProps, ARIAButtonResultProps, ARIAButtonType } from './types';
 
 /**
@@ -10,9 +11,11 @@ import type { ARIAButtonElementIntersection, ARIAButtonProps, ARIAButtonResultPr
  * for multiple scenarios of non native button elements. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  *
- * @param type - the proper scenario to be interpreted by the hook.
+ * @param elementType - the proper scenario to be interpreted by the hook.
  *  1. `button` - Minimal interference from the hook, as semantic button already supports most of the states
  *  2. `a` or `div` - Proper keyboard/mouse handling plus other support to ensure ARIA behavior
+ * 3. `ARIAButtonComponent` - Minimal interference from the hook,
+ * a `ARIAButtonComponent` - is treated as a ARIA compliant element
  * @param props - the props to be passed down the line to the desired element.
  * This hook will encapsulate proper properties, such as `onClick`, `onKeyDown`, `onKeyUp`, etc,.
  *
@@ -31,7 +34,7 @@ import type { ARIAButtonElementIntersection, ARIAButtonProps, ARIAButtonResultPr
  * ```
  */
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(
-  type?: Type,
+  elementType: Type,
   props?: Props,
 ): ARIAButtonResultProps<Type, Props> {
   const {
@@ -107,7 +110,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
   });
 
   // If a <button> tag is to be rendered we just need to set disabled and aria-disabled correctly
-  if (type === 'button' || type === undefined) {
+  if (elementType === 'button') {
     return {
       ...rest,
       tabIndex,
@@ -120,7 +123,10 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
       onKeyDown: disabledFocusable ? undefined : onKeyDown,
     } as ARIAButtonResultProps<Type, Props>;
   }
-
+  // If a ARIAButtonComponent element is being passed, then there's nothing to be done
+  else if (isARIAButtonComponent(elementType)) {
+    return props as ARIAButtonResultProps<Type, Props>;
+  }
   // If an <a> or <div> tag is to be rendered we have to remove disabled and type,
   // and set aria-disabled, role and tabIndex.
   else {
@@ -137,7 +143,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
       tabIndex: disabled && !disabledFocusable ? undefined : tabIndex ?? 0,
     } as ARIAButtonResultProps<Type, Props>;
 
-    if (type === 'a' && isDisabled) {
+    if (elementType === 'a' && isDisabled) {
       (resultProps as ARIAButtonResultProps<'a', Props>).href = undefined;
     }
 

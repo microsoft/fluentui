@@ -9,6 +9,11 @@ import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
+// @internal
+export type ARIAButtonComponent = {
+    isARIAButtonComponent?: boolean;
+};
+
 // @internal (undocumented)
 export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = HTMLButtonElement | (AlternateAs extends 'a' ? HTMLAnchorElement : never) | (AlternateAs extends 'div' ? HTMLDivElement : never);
 
@@ -16,7 +21,7 @@ export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = H
 export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = UnionToIntersection<ARIAButtonElement<AlternateAs>>;
 
 // @public
-export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React_2.PropsWithRef<JSX.IntrinsicElements[Type]> & {
+export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React_2.PropsWithRef<JSX.IntrinsicElements[Extract<Type, string>]> & {
     disabled?: boolean;
     disabledFocusable?: boolean;
 };
@@ -27,11 +32,16 @@ export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props & 
 // @public (undocumented)
 export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & Pick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "ARIAButtonType" is marked as @public, but its signature references "ARIAButtonComponent" which is marked as @internal
+//
 // @public (undocumented)
-export type ARIAButtonType = 'button' | 'a' | 'div';
+export type ARIAButtonType = 'button' | 'a' | 'div' | ARIAButtonComponent;
 
 // @internal
-export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
+export function isARIAButtonComponent(value: unknown): value is ARIAButtonComponent;
+
+// @internal
+export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(elementType: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
 // @internal
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;

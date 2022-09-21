@@ -3,7 +3,7 @@ import * as React from 'react';
 
 type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
-export type ARIAButtonType = 'button' | 'a' | 'div';
+export type ARIAButtonType = 'button' | 'a' | 'div' | ARIAButtonComponent;
 
 /**
  * @internal
@@ -24,7 +24,7 @@ export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' 
  * Props expected by `useARIAButtonProps` hooks
  */
 export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React.PropsWithRef<
-  JSX.IntrinsicElements[Type]
+  JSX.IntrinsicElements[Extract<Type, string>]
 > & {
   disabled?: boolean;
   /**
@@ -70,3 +70,23 @@ export type ARIAButtonAlteredProps<Type extends ARIAButtonType> =
  */
 export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props &
   UnionToIntersection<ARIAButtonAlteredProps<Type>>;
+
+/**
+ * @internal
+ *
+ * Allows a component to be tagged as a FluentUI ARIAButton component.
+ *
+ * ARIAButton are special-case components: they implement ARIA specific button functionality.
+ * Having a component declared as being an ARIAButton component will ensure that ARIAButtonProps will consider
+ * that specific component as being a ARIA compliant button element
+ *
+ * A component can be tagged as a ARIAButton as follows:
+ * ```ts
+ * const MyComponent: React.FC<MyComponentProps> & ARIAButtonComponent = ...;
+ *
+ * MyComponent.isARIAButtonComponent = true; // MUST also set this to true
+ * ```
+ */
+export type ARIAButtonComponent = {
+  isARIAButtonComponent?: boolean;
+};
