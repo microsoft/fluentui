@@ -1,10 +1,9 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Menu } from '@fluentui/react-northstar';
+import { TabList, Tab, makeStyles } from '@fluentui/react-components';
 import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from './MultiTypeKnob';
-import { tabListBehavior } from '@fluentui/accessibility';
 import { AccessibilityError } from '../accessibility/types';
 import { ErrorPanel } from './ErrorPanel';
 
@@ -54,6 +53,11 @@ import { ErrorPanel } from './ErrorPanel';
 // ];
 //
 // const rowStyle = { padding: '0.1rem 0.25rem' };
+
+const useStyles = makeStyles({
+  container: { display: 'flex', flexDirection: 'column', rowGap: '0.5rem' },
+  tabs: { marginBottom: '0.75rem' },
+});
 
 const A11YPROPS: ComponentProp[] = [
   {
@@ -161,6 +165,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
   onPropDelete,
 }) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
+  const styles = useStyles();
   const getValues = React.useCallback(
     prop => {
       const propValue = jsonTreeElement.props?.[prop.name];
@@ -185,80 +190,43 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
     [jsonTreeElement],
   );
 
+  const onTabSelect = React.useCallback((_e, data) => setMenuActivePane(data.value), [setMenuActivePane]);
+
+  const printKnobs = collection =>
+    collection
+      .filter(prop => !/default[A-Z]/.test(prop.name))
+      .map(prop => {
+        const { types, options, value } = getValues(prop);
+
+        return (
+          <MultiTypeKnob
+            required={prop.required}
+            key={prop.name}
+            label={prop.name}
+            types={types as any}
+            options={options}
+            value={value}
+            onRemoveProp={() => {
+              onPropDelete({ jsonTreeElement, name: prop.name });
+            }}
+            onChange={value => {
+              onPropChange({ jsonTreeElement, name: prop.name, value });
+            }}
+            onPropUpdate={() => {
+              PROP_UPDATED({ jsonTreeElement });
+            }}
+          />
+        );
+      });
+
   return (
     <div>
       {!_.isEmpty(elementAccessibilityErrors) && <ErrorPanel elementAccessibilityErrors={elementAccessibilityErrors} />}
-      <Menu
-        accessibility={tabListBehavior}
-        defaultActiveIndex={0}
-        items={[
-          {
-            key: 'props',
-            content: 'Props',
-            onClick: () => setMenuActivePane('props'),
-          },
-          {
-            key: 'accessibility',
-            content: 'Accessibility',
-            onClick: () => setMenuActivePane('accessibility'),
-          },
-        ]}
-        underlined
-        primary
-        styles={{ marginBottom: '1rem', marginTop: '1.5rem' }}
-      />
-      {menuActivePane === 'props' &&
-        info.props
-          // only allow knobs for regular props, not default props
-          .filter(prop => !/default[A-Z]/.test(prop.name))
-          .map(prop => {
-            const { types, options, value } = getValues(prop);
-
-            return (
-              <MultiTypeKnob
-                required={prop.required}
-                key={prop.name}
-                label={prop.name}
-                types={types as any}
-                options={options}
-                value={value}
-                onRemoveProp={() => {
-                  onPropDelete({ jsonTreeElement, name: prop.name });
-                }}
-                onChange={value => {
-                  onPropChange({ jsonTreeElement, name: prop.name, value });
-                }}
-                onPropUpdate={() => {
-                  PROP_UPDATED({ jsonTreeElement });
-                }}
-              />
-            );
-          })}
-
-      {menuActivePane === 'accessibility' &&
-        A11YPROPS.filter(prop => !/default[A-Z]/.test(prop.name)).map(prop => {
-          const { types, options, value } = getValues(prop);
-
-          return (
-            <MultiTypeKnob
-              onRemoveProp={() => {
-                onPropDelete({ jsonTreeElement, name: prop.name });
-              }}
-              required={prop.required}
-              key={prop.name}
-              label={prop.name}
-              types={types as any}
-              options={options}
-              value={value}
-              onChange={value => {
-                onPropChange({ jsonTreeElement, name: prop.name, value });
-              }}
-              onPropUpdate={() => {
-                PROP_UPDATED({ jsonTreeElement });
-              }}
-            />
-          );
-        })}
+      <TabList onTabSelect={onTabSelect} selectedValue={menuActivePane} className={styles.tabs}>
+        <Tab value="props">Props</Tab>
+        <Tab value="accessibility">Accessibility</Tab>
+      </TabList>
+      <div className={styles.container}>{printKnobs(menuActivePane === 'props' ? info.props : A11YPROPS)}</div>
     </div>
   );
 };
