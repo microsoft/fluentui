@@ -388,7 +388,7 @@ const RegistrationFormInputsAccessibility = () => {
                 validEmail: value => regexes.validEmail.test(value),
                 always: () => {
                   if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated('birthDate');
+                    formValidation.onFieldValidated('email');
                   }
                   return true;
                 },
