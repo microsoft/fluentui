@@ -20,6 +20,7 @@ export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changel
   hooks: {
     precommit: () => {
       try {
+        // Fixes any dependency mismatches caused by beachball scoping
         const cmd = 'yarn nx workspace-generator dependency-mismatch';
         const out = execSync(cmd);
         console.log(out.toString());
