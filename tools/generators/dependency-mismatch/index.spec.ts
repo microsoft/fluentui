@@ -18,7 +18,7 @@ describe('dependency-mismatch generator', () => {
       name: 'public-docsite-v9',
       version: '9.0.0',
       dependencies: {
-        [`${workspaceNpmScope}/react-theme`]: '^9.0.0',
+        [`@${workspaceNpmScope}/react-theme`]: '^9.0.0',
       },
       devDependencies: {},
       peerDependencies: {},
@@ -36,7 +36,7 @@ describe('dependency-mismatch generator', () => {
     const packageJson: PackageJson = await readTargetPackageJson();
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
       Object {
-        "proj/react-theme": "^9.0.1",
+        "@proj/react-theme": "^9.0.1",
       }
     `);
   });
@@ -46,7 +46,7 @@ describe('dependency-mismatch generator', () => {
       name: 'public-docsite-v9',
       version: '9.0.0',
       devDependencies: {
-        [`${workspaceNpmScope}/react-theme`]: '^9.0.0',
+        [`@${workspaceNpmScope}/react-theme`]: '^9.0.0',
       },
       dependencies: {},
       peerDependencies: {},
@@ -64,7 +64,7 @@ describe('dependency-mismatch generator', () => {
     const packageJson: PackageJson = await readTargetPackageJson();
     expect(packageJson.devDependencies).toMatchInlineSnapshot(`
       Object {
-        "proj/react-theme": "^9.0.1",
+        "@proj/react-theme": "^9.0.1",
       }
     `);
   });
@@ -74,7 +74,7 @@ describe('dependency-mismatch generator', () => {
       name: 'public-docsite-v9',
       version: '9.0.0',
       peerDependencies: {
-        [`${workspaceNpmScope}/react-theme`]: '^9.0.0',
+        [`@${workspaceNpmScope}/react-theme`]: '^9.0.0',
       },
       dependencies: {},
       devDependencies: {},
@@ -92,7 +92,7 @@ describe('dependency-mismatch generator', () => {
     const packageJson: PackageJson = await readTargetPackageJson();
     expect(packageJson.peerDependencies).toMatchInlineSnapshot(`
       Object {
-        "proj/react-theme": "^9.0.1",
+        "@proj/react-theme": "^9.0.1",
       }
     `);
   });
@@ -102,8 +102,8 @@ describe('dependency-mismatch generator', () => {
       name: 'public-docsite-v9',
       version: '9.0.0',
       dependencies: {
-        [`${workspaceNpmScope}/react-select`]: '^9.0.0-beta.1',
-        [`${workspaceNpmScope}/react-spinbutton`]: '9.0.0-beta.1',
+        [`@${workspaceNpmScope}/react-select`]: '^9.0.0-beta.1',
+        [`@${workspaceNpmScope}/react-spinbutton`]: '9.0.0-beta.1',
       },
       devDependencies: {},
       peerDependencies: {},
@@ -128,8 +128,8 @@ describe('dependency-mismatch generator', () => {
     const packageJson: PackageJson = await readTargetPackageJson();
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
       Object {
-        "proj/react-select": "^9.0.0-beta.2",
-        "proj/react-spinbutton": "9.0.0-beta.2",
+        "@proj/react-select": "^9.0.0-beta.2",
+        "@proj/react-spinbutton": "9.0.0-beta.2",
       }
     `);
   });
@@ -139,7 +139,7 @@ describe('dependency-mismatch generator', () => {
       name: 'react',
       version: '8.0.0',
       dependencies: {
-        [`${workspaceNpmScope}/react-portal-compat-context`]: '^9.0.0',
+        [`@${workspaceNpmScope}/react-portal-compat-context`]: '^9.0.0',
       },
       devDependencies: {},
       peerDependencies: {},
@@ -157,7 +157,7 @@ describe('dependency-mismatch generator', () => {
     const packageJson: PackageJson = await readTargetPackageJson();
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
       Object {
-        "proj/react-portal-compat-context": "^9.0.1",
+        "@proj/react-portal-compat-context": "^9.0.1",
       }
     `);
   });
@@ -167,7 +167,7 @@ describe('dependency-mismatch generator', () => {
       name: 'react',
       version: '8.0.0',
       dependencies: {
-        [`${workspaceNpmScope}/tslib`]: '^2.1.1',
+        [`@${workspaceNpmScope}/tslib`]: '^2.1.1',
       },
       devDependencies: {},
       peerDependencies: {},
@@ -178,19 +178,19 @@ describe('dependency-mismatch generator', () => {
     const packageJson: PackageJson = await readTargetPackageJson();
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
       Object {
-        "proj/tslib": "^2.1.1",
+        "@proj/tslib": "^2.1.1",
       }
     `);
   });
 
-  it('should ignore northstar packages', async () => {
+  it('generator should not run on northstar packages', async () => {
     const { readPackageJson: readTargetPackageJson } = setupDummyPackage(
       appTree,
       {
         name: 'react-northstar',
         version: '0.66.0',
         dependencies: {
-          [`${workspaceNpmScope}/dom-utilities`]: '^1.1.1',
+          [`@${workspaceNpmScope}/dom-utilities`]: '^1.1.1',
         },
         devDependencies: {},
         peerDependencies: {},
@@ -211,7 +211,7 @@ describe('dependency-mismatch generator', () => {
     const packageJson: PackageJson = await readTargetPackageJson();
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
       Object {
-        "proj/dom-utilities": "^1.1.1",
+        "@proj/dom-utilities": "^1.1.1",
       }
     `);
   });
@@ -230,7 +230,7 @@ function setupDummyPackage(
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
 
-  const normalizedPkgName = `${workspaceConfig.npmScope}/${packageJson.name}`;
+  const normalizedPkgName = `@${workspaceConfig.npmScope}/${packageJson.name}`;
   const paths = {
     root: `packages/${packageJson.name}`,
   };
