@@ -3,10 +3,19 @@ import * as React from 'react';
 
 type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
+/**
+ * Possible element types supported by `ARIAButton`
+ * 1. `button` - Minimal interference from ARIAButton hooks, as semantic button already supports most of the states
+ * 2. `a` or `div` - Proper keyboard/mouse handling plus other support to ensure behavior
+ * 3. `ARIAButtonComponent` - No interface from ARIAButton hooks, as the given element already implements
+ * uses `ARIAButton` hooks under the hood.
+ */
 export type ARIAButtonType = 'button' | 'a' | 'div' | ARIAButtonComponent;
 
 /**
  * @internal
+ *
+ * An union of possible HTMLElement types found internally on `ARIAButton` hooks
  */
 export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
   | HTMLButtonElement
@@ -15,6 +24,8 @@ export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 
 /**
  * @internal
+ *
+ * An intersection of possible HTMLElement types found internally on `ARIAButton` hooks
  */
 export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = UnionToIntersection<
   ARIAButtonElement<AlternateAs>
@@ -38,6 +49,9 @@ export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = Reac
   disabledFocusable?: boolean;
 };
 
+/**
+ * Props expected by `useARIAButtonShorthands` hooks
+ */
 export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<
   Slot<'button', AlternateAs>
 > &
@@ -72,8 +86,6 @@ export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props &
   UnionToIntersection<ARIAButtonAlteredProps<Type>>;
 
 /**
- * @internal
- *
  * Allows a component to be tagged as a FluentUI ARIAButton component.
  *
  * ARIAButton are special-case components: they implement ARIA specific button functionality.

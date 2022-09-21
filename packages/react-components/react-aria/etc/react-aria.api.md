@@ -9,15 +9,15 @@ import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
-// @internal
+// @public
 export type ARIAButtonComponent = {
     isARIAButtonComponent?: boolean;
 };
 
-// @internal (undocumented)
+// @internal
 export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = HTMLButtonElement | (AlternateAs extends 'a' ? HTMLAnchorElement : never) | (AlternateAs extends 'div' ? HTMLDivElement : never);
 
-// @internal (undocumented)
+// @internal
 export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = UnionToIntersection<ARIAButtonElement<AlternateAs>>;
 
 // @public
@@ -29,12 +29,10 @@ export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = Reac
 // @public
 export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props & UnionToIntersection<ARIAButtonAlteredProps<Type>>;
 
-// @public (undocumented)
+// @public
 export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & Pick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "ARIAButtonType" is marked as @public, but its signature references "ARIAButtonComponent" which is marked as @internal
-//
-// @public (undocumented)
+// @public
 export type ARIAButtonType = 'button' | 'a' | 'div' | ARIAButtonComponent;
 
 // @internal
