@@ -66,11 +66,6 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = ({
   const [{ mode }] = useMode();
   const styles = useStyles();
 
-  // hack for invalid tooltip positioning
-  const [addRef, setAddRef] = React.useState<HTMLSpanElement | null>(null);
-  const [accessibilityRef, setAccessibilityRef] = React.useState<HTMLSpanElement | null>(null);
-  const [navRef, setNavRef] = React.useState<HTMLSpanElement | null>(null);
-
   const onTabSelect = React.useCallback((_e, data) => onSwitchTab(data.value), [onSwitchTab]);
 
   const printActiveTab = () => {
@@ -117,52 +112,31 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = ({
   return (
     <div className={styles.container}>
       <TabList vertical selectedValue={activeTab} onTabSelect={onTabSelect}>
-        <Tab
-          value="add"
-          icon={{
-            ref: setAddRef,
-            children: (
-              <Tooltip relationship="label" hideDelay={0} content="Add components" positioning={{ target: addRef }}>
-                <AddFilled />
-              </Tooltip>
-            ),
-          }}
-        />
-        <Tab
-          value="accessibility"
-          icon={{
-            ref: setAccessibilityRef,
-            children: (
-              <Tooltip
-                relationship="label"
-                hideDelay={0}
-                positioning={{ target: accessibilityRef }}
-                content={
-                  accessibilityErrors.length === 0
-                    ? 'Accessibility'
-                    : 'Accessibility errors: ' + accessibilityErrors.length
-                }
-              >
-                {accessibilityErrors.length > 0 ? (
-                  <AccessibilityFilled className={styles.accessibilityError} />
-                ) : (
-                  <AccessibilityCheckmarkRegular />
-                )}
-              </Tooltip>
-            ),
-          }}
-        />
-        <Tab
-          value="nav"
-          icon={{
-            ref: setNavRef,
-            children: (
-              <Tooltip relationship="label" hideDelay={0} content="Navigator" positioning={{ target: navRef }}>
-                <TextBulletListTreeFilled />
-              </Tooltip>
-            ),
-          }}
-        />
+        <Tooltip relationship="label" content="Add components" positioning="after" withArrow>
+          <Tab value="add" icon={<AddFilled />} />
+        </Tooltip>
+        <Tooltip
+          relationship="label"
+          positioning="after"
+          withArrow
+          content={
+            accessibilityErrors.length === 0 ? 'Accessibility' : 'Accessibility errors: ' + accessibilityErrors.length
+          }
+        >
+          <Tab
+            value="accessibility"
+            icon={
+              accessibilityErrors.length > 0 ? (
+                <AccessibilityFilled className={styles.accessibilityError} />
+              ) : (
+                <AccessibilityCheckmarkRegular />
+              )
+            }
+          />
+        </Tooltip>
+        <Tooltip relationship="label" content="Navigator" positioning="after" withArrow>
+          <Tab value="nav" icon={<TextBulletListTreeFilled />} />
+        </Tooltip>
       </TabList>
       <div className={mergeClasses(styles.panelContainer, mode === 'use' && styles.panelContainerModeUse)}>
         <h2 className={styles.panelContainerHeader}>
