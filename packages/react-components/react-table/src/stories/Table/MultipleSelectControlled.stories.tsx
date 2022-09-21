@@ -105,21 +105,23 @@ const columns: ColumnDefinition<Item>[] = [
 
 export const MultipleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(new Set<RowId>(new Set([0, 1])));
-  let tableState = useTable({
-    columns,
-    items,
-  });
-
-  tableState = useSelection(tableState, {
-    selectionMode: 'multiselect',
-    selectedItems: selectedRows,
-    onSelectionChange: setSelectedRows,
-  });
-
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = tableState;
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      tableState =>
+        useSelection(tableState, {
+          selectedItems: selectedRows,
+          onSelectionChange: setSelectedRows,
+          selectionMode: 'multiselect',
+        }),
+    ],
+  );
 
   const rows = getRows(row => ({
     ...row,

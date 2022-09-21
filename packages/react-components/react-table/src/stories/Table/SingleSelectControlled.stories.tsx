@@ -97,21 +97,23 @@ const columns: ColumnDefinition<Item>[] = [
 
 export const SingleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(new Set<RowId>());
-  let tableState = useTable({
-    columns,
-    items,
-  });
-
-  tableState = useSelection(tableState, {
-    selectionMode: 'single',
-    selectedItems: selectedRows,
-    onSelectionChange: setSelectedRows,
-  });
-
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
-  } = tableState;
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      tableState =>
+        useSelection(tableState, {
+          selectionMode: 'single',
+          selectedItems: selectedRows,
+          onSelectionChange: setSelectedRows,
+        }),
+    ],
+  );
 
   const rows = getRows(row => ({
     ...row,

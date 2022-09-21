@@ -8,6 +8,7 @@ import type {
   RowEnhancer,
   TablePaginationState,
   TableColumnSizingState,
+  TableStatePlugin,
 } from './types';
 import { defaultPaginationState } from './usePagination';
 
@@ -42,7 +43,7 @@ const defaultColumnSizingState: TableColumnSizingState = {
   setColumnWidth: () => null,
 };
 
-export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TItem> {
+export function useTable<TItem>(options: UseTableOptions<TItem>, plugins: TableStatePlugin[]): TableState<TItem> {
   const { items, getRowId, columns } = options;
   const tableRef = React.useRef<HTMLDivElement>(null);
 
@@ -64,7 +65,7 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
     rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
   ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
 
-  return {
+  const initialState = {
     getRowId,
     items,
     columns,
@@ -92,4 +93,6 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
     columnSizing: defaultColumnSizingState,
     tableRef,
   };
+
+  return plugins.reduce((state, plugin) => plugin(state), initialState);
 }

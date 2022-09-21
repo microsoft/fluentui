@@ -96,20 +96,22 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const SingleSelect = () => {
-  let tableState = useTable({
-    columns,
-    items,
-  });
-
-  tableState = useSelection(tableState, {
-    selectionMode: 'single',
-    defaultSelectedItems: new Set([1]),
-  });
-
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
-  } = tableState;
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      tableState =>
+        useSelection(tableState, {
+          selectionMode: 'single',
+          defaultSelectedItems: new Set([1]),
+        }),
+    ],
+  );
 
   const rows = getRows(row => ({
     ...row,

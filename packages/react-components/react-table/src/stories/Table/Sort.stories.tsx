@@ -107,17 +107,16 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const Sort = () => {
-  let tableState = useTable({
-    columns,
-    items,
-  });
-
-  tableState = useSort(tableState, { defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } });
-
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = tableState;
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [tableState => useSort(tableState, { defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
+  );
 
   const headerSortProps = (columnId: ColumnId) => ({
     onClick: () => {

@@ -39,18 +39,17 @@ const columns: ColumnDefinition<Item>[] = [
 const items: Item[] = new Array(10).fill(0).map((_, i) => ({ first: i, second: i, third: i, fourth: i }));
 
 export const ColumnResize = () => {
-  let tableState = useTable({
-    columns,
-    items,
-  });
-
-  tableState = useColumnSizing(tableState);
-
   const {
     getRows,
     columnSizing: { getColumnWidth, setColumnWidth, getOnMouseDown },
     tableRef,
-  } = tableState;
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [useColumnSizing],
+  );
 
   return (
     <>

@@ -39,19 +39,20 @@ const columns: ColumnDefinition<Item>[] = [
 const items: Item[] = new Array(1000).fill(0).map((_, i) => ({ first: i, second: i, third: i, fourth: i }));
 
 export const Pagination = () => {
-  let tableState = useTable({
-    columns,
-    items,
-  });
-
-  tableState = useSort(tableState, { defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } });
-  tableState = usePagination(tableState, { pageSize: 10 });
-
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
     pagination: { getPageRows, nextPage, prevPage, pageCount, currentPage },
-  } = tableState;
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      tableState => useSort(tableState, { defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
+      tableState => usePagination(tableState, { pageSize: 10 }),
+    ],
+  );
 
   const headerSortProps = (columnId: ColumnId) => ({
     onClick: () => {

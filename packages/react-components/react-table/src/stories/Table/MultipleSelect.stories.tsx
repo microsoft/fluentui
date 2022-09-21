@@ -104,20 +104,21 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const MultipleSelect = () => {
-  let tableState = useTable({
-    columns,
-    items,
-  });
-
-  tableState = useSelection(tableState, {
-    selectionMode: 'multiselect',
-    defaultSelectedItems: new Set([0, 1]),
-  });
-
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = tableState;
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      tableState =>
+        useSelection(tableState, {
+          selectionMode: 'multiselect',
+        }),
+    ],
+  );
 
   const rows = getRows(row => ({
     ...row,

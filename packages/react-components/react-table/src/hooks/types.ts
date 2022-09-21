@@ -197,3 +197,5 @@ export interface TableState<TItem> {
    */
   columnSizing: TableColumnSizingState;
 }
+
+export type TableStatePlugin = <TItem>(tableState: TableState<TItem>) => TableState<TItem>;
