@@ -46,10 +46,11 @@ const useStyles = makeStyles({
 
 export type ListProps = {
   onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => void;
+  selectedComponentInfo?: ComponentInfo;
   style?: React.CSSProperties;
 };
 
-export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
+export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart, selectedComponentInfo, style }) => {
   const [filter, setFilter] = React.useState<string>('');
 
   const styles = useStyles();
@@ -104,6 +105,22 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
     </span>
   );
 
+  const recommendedComponentsNames = selectedComponentInfo?.subcomponents || [];
+  if (selectedComponentInfo?.parentDisplayName) {
+    recommendedComponentsNames.push(selectedComponentInfo.parentDisplayName);
+  }
+
+  const recommendedComponentsList = recommendedComponentsNames.reduce(
+    (recommendedComponents, supportedComponentName) => {
+      const componentInfo = supportedComponents.find(component => component.displayName === supportedComponentName);
+      if (componentInfo) {
+        recommendedComponents.push(componentInfo);
+      }
+      return recommendedComponents;
+    },
+    [],
+  );
+
   return (
     <div
       role="complementary"
@@ -143,6 +160,16 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
           </AccordionItem>
         ))}
       </Accordion>
+      {recommendedComponentsList.length > 0 && (
+        <div className={styles.categoryItems}>
+          <h3 className={styles.unsupportedHeader}>Recommended components</h3>
+          {recommendedComponentsList.map(i => (
+            <span key={i.displayName} className={styles.componentItem} onMouseDown={handleMouseDown(i)}>
+              {i.displayName}
+            </span>
+          ))}
+        </div>
+      )}
       <div className={styles.categoryItems}>
         <h3 className={styles.unsupportedHeader}>Unsupported items</h3>
         {unsupportedComponents

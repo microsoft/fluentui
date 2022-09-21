@@ -64,6 +64,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
         onSelectComponent={props.onSelectComponent}
         onSwitchTab={props.onSwitchTab}
         selectedComponent={props.selectedComponent}
+        selectedComponentInfo={props.selectedComponentInfo}
       />
 
       <CanvasWindow
