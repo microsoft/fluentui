@@ -6,7 +6,7 @@ describe('useARIAButtonShorthands', () => {
     const {
       result: { current: buttonShorthand },
     } = renderHook(() => useARIAButtonShorthand({ as: 'button' }));
-    expect(buttonShorthand.as).toBe('button');
+    expect(buttonShorthand?.as).toBe('button');
     const {
       result: { current: buttonShorthand2 },
     } = renderHook(() => useARIAButtonShorthand({ as: undefined }));
@@ -14,10 +14,10 @@ describe('useARIAButtonShorthands', () => {
     const {
       result: { current: anchorShorthand },
     } = renderHook(() => useARIAButtonShorthand({ as: 'a' }));
-    expect(anchorShorthand.as).toBe('a');
+    expect(anchorShorthand?.as).toBe('a');
     const {
       result: { current: divShorthand },
     } = renderHook(() => useARIAButtonShorthand({ as: 'div' }));
-    expect(divShorthand.as).toBe('div');
+    expect(divShorthand?.as).toBe('div');
   });
 });
