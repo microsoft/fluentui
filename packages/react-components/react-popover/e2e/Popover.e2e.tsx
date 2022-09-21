@@ -11,7 +11,7 @@ const mount = (element: JSX.Element) => {
 };
 
 const popoverTriggerSelector = '[aria-expanded]';
-const popoverContentSelector = '[role="note"]';
+const popoverContentSelector = '[role="group"]';
 const popoverInteractiveContentSelector = '[role="dialog"]';
 
 describe('Popover', () => {
