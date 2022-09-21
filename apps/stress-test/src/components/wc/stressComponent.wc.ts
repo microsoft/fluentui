@@ -1,4 +1,20 @@
+import {
+  fluentButton,
+  fluentDivider,
+  fluentCheckbox,
+  fluentProgressRing,
+  fluentNumberField,
+  provideFluentDesignSystem,
+} from '@fluentui/web-components';
 import { FASTElement, customElement, attr, html, css } from '@microsoft/fast-element';
+
+provideFluentDesignSystem().register(
+  fluentButton(),
+  fluentDivider(),
+  fluentCheckbox(),
+  fluentProgressRing(),
+  fluentNumberField(),
+);
 
 const styles = css`
   :host {
