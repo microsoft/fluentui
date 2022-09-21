@@ -41,8 +41,8 @@ export type PersonaSlots = {
 
 // @public
 export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'textPosition' | 'presenceOnly'>> & {
-    numTextLines: number;
     fixed: boolean;
+    numTextLines: number;
 };
 
 // @public

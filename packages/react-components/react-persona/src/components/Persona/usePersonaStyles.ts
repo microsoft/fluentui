@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PersonaSlots, PersonaState } from './Persona.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
