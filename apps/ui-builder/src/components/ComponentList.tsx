@@ -145,6 +145,20 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
         value={filter}
       />
       <Accordion multiple collapsible>
+        {recommendedComponentsList.length > 0 && (
+          <AccordionItem key={'recommendedComponents'} value={'recommendedComponents'}>
+            <AccordionHeader size="medium" className={styles.categoryItem}>
+              Recommended components
+            </AccordionHeader>
+            <AccordionPanel className={styles.categoryItems}>
+              {recommendedComponentsList.map(i => (
+                <span key={i.displayName} className={styles.componentItem} onMouseDown={handleMouseDown(i)}>
+                  {i.displayName}
+                </span>
+              ))}
+            </AccordionPanel>
+          </AccordionItem>
+        )}
         {treeItems.map(c => (
           <AccordionItem key={c.id} value={c.id}>
             <AccordionHeader size="medium" className={styles.categoryItem}>
@@ -160,16 +174,6 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
           </AccordionItem>
         ))}
       </Accordion>
-      {recommendedComponentsList.length > 0 && (
-        <div className={styles.categoryItems}>
-          <h3 className={styles.unsupportedHeader}>Recommended components</h3>
-          {recommendedComponentsList.map(i => (
-            <span key={i.displayName} className={styles.componentItem} onMouseDown={handleMouseDown(i)}>
-              {i.displayName}
-            </span>
-          ))}
-        </div>
-      )}
       <div className={styles.categoryItems}>
         <h3 className={styles.unsupportedHeader}>Unsupported items</h3>
         {unsupportedComponents
