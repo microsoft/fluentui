@@ -10489,6 +10489,9 @@ export function updateT(color: IColor, t: number): IColor;
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
 // @public
+export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => ResponsiveMode;
+
+// @public
 export enum ValidationState {
     invalid = 2,
     valid = 0,
