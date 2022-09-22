@@ -48,7 +48,4 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
 };
 
 export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> &
-  Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>> & {
-    /** True if the badge should be hidden (based on count, showZero, children) */
-    hide: boolean;
-  };
+  Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
