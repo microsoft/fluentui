@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, useColumnSizing } from '../../hooks';
+import { useTable, ColumnDefinition, useColumnSizing, ColumnId } from '../../hooks';
 
 type Item = {
   first: number;
@@ -51,6 +51,11 @@ export const ColumnResize = () => {
     [useColumnSizing],
   );
 
+  const getColumnStyle = (columnId: ColumnId) => ({
+    minWidth: getColumnWidth(columnId),
+    maxWidth: getColumnWidth(columnId),
+  });
+
   return (
     <>
       <div style={{ display: 'grid', gridTemplateColumns: '50px 1fr', width: 200 }}>
@@ -71,19 +76,19 @@ export const ColumnResize = () => {
       <Table ref={tableRef}>
         <TableHeader>
           <TableRow>
-            <TableHeaderCell style={{ width: getColumnWidth('first') }}>
+            <TableHeaderCell style={getColumnStyle('first')}>
               First
               <Resizer onMouseDown={getOnMouseDown('first')} />
             </TableHeaderCell>
-            <TableHeaderCell style={{ width: getColumnWidth('second') }} onMouseDown={getOnMouseDown('second')}>
+            <TableHeaderCell style={getColumnStyle('second')} onMouseDown={getOnMouseDown('second')}>
               Second
               <Resizer onMouseDown={getOnMouseDown('second')} />
             </TableHeaderCell>
-            <TableHeaderCell style={{ width: getColumnWidth('third') }} onMouseDown={getOnMouseDown('third')}>
+            <TableHeaderCell style={getColumnStyle('third')} onMouseDown={getOnMouseDown('third')}>
               Third
               <Resizer onMouseDown={getOnMouseDown('third')} />
             </TableHeaderCell>
-            <TableHeaderCell style={{ width: getColumnWidth('fourth') }} onMouseDown={getOnMouseDown('fourth')}>
+            <TableHeaderCell style={getColumnStyle('fourth')} onMouseDown={getOnMouseDown('fourth')}>
               Fourth
               <Resizer onMouseDown={getOnMouseDown('fourth')} />
             </TableHeaderCell>
@@ -92,10 +97,10 @@ export const ColumnResize = () => {
         <TableBody>
           {getRows().map(({ item }, i) => (
             <TableRow key={i}>
-              <TableCell>{item.first}</TableCell>
-              <TableCell>{item.second}</TableCell>
-              <TableCell>{item.third}</TableCell>
-              <TableCell>{item.fourth}</TableCell>
+              <TableCell style={getColumnStyle('first')}>{item.first}</TableCell>
+              <TableCell style={getColumnStyle('second')}>{item.second}</TableCell>
+              <TableCell style={getColumnStyle('third')}>{item.third}</TableCell>
+              <TableCell style={getColumnStyle('fourth')}>{item.fourth}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -11,13 +11,16 @@ export { SizeSmaller } from './SizeSmaller.stories';
 export { NonNativeElements } from './NonNativeElements.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
 export { SingleSelect } from './SingleSelect.stories';
-export { Pagination } from './Pagination.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { CellNavigationMode } from './CellNavigationMode.stories';
 export { RowNavigationMode } from './RowNavigationMode.stories';
 export { CompositeNavigationMode } from './CompositeNavigationMode.stories';
 export { ColumnResize } from './ColumnResize.stories';
+export { Everything } from './Everything.stories';
+export { VirtualizationReactWindow } from './VirtualizationReactWindow.stories';
+export { VirtualizationContentVisibility } from './VirtualizationContentVisibility.stories';
+export { VirtualizationReactVirtual } from './VirtualizationReactVirtual.stories';
 
 export default {
   title: 'Preview Components/Table',

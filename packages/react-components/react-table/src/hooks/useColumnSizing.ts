@@ -10,6 +10,7 @@ import { ColumnId, TableState } from './types';
 
 export function useColumnSizing<TItem>(tableState: TableState<TItem>): TableState<TItem> {
   const { columns, tableRef } = tableState;
+
   const forceUpdate = React.useReducer(() => ({}), {})[1];
   const manager = React.useState(
     () =>
@@ -23,7 +24,7 @@ export function useColumnSizing<TItem>(tableState: TableState<TItem>): TableStat
     if (tableRef.current) {
       manager.init(tableRef.current);
     }
-  }, [manager]);
+  }, [manager, tableRef]);
 
   return {
     ...tableState,

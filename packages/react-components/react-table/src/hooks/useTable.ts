@@ -14,7 +14,7 @@ import { defaultPaginationState } from './usePagination';
 
 const noop: () => void = () => undefined;
 const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
-const defaultSelectionState: TableSelectionStateInternal = {
+export const defaultSelectionState: TableSelectionStateInternal = {
   allRowsSelected: false,
   clearRows: noop,
   deselectRow: noop,
@@ -26,7 +26,7 @@ const defaultSelectionState: TableSelectionStateInternal = {
   toggleRow: noop,
 };
 
-const defaultSortState: TableSortStateInternal<unknown> = {
+export const defaultSortState: TableSortStateInternal<unknown> = {
   getSortDirection: () => 'ascending',
   setColumnSort: noop,
   sort: (rows: RowState<unknown>[]) => [...rows],
@@ -35,7 +35,7 @@ const defaultSortState: TableSortStateInternal<unknown> = {
   toggleColumnSort: noop,
 };
 
-const defaultColumnSizingState: TableColumnSizingState = {
+export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidth: () => 0,
   getColumnWidths: () => [],
   getOnMouseDown: () => () => null,
@@ -47,20 +47,6 @@ export function useTable<TItem>(options: UseTableOptions<TItem>, plugins: TableS
   const { items, getRowId, columns } = options;
   const tableRef = React.useRef<HTMLDivElement>(null);
 
-  const {
-    isRowSelected,
-    toggleRow,
-    toggleAllRows,
-    clearRows,
-    selectedRows,
-    allRowsSelected,
-    someRowsSelected,
-    selectRow,
-    deselectRow,
-  } = defaultSelectionState;
-
-  const { sort, getSortDirection, setColumnSort, sortColumn, sortDirection, toggleColumnSort } = defaultSortState;
-
   const getRows = <TRowState extends RowState<TItem>>(
     rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
   ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
@@ -71,25 +57,8 @@ export function useTable<TItem>(options: UseTableOptions<TItem>, plugins: TableS
     columns,
     getRows,
     pagination: defaultPaginationState as TablePaginationState<TItem>,
-    selection: {
-      isRowSelected,
-      toggleRow,
-      toggleAllRows,
-      clearRows,
-      selectedRows: Array.from(selectedRows),
-      allRowsSelected,
-      someRowsSelected,
-      selectRow,
-      deselectRow,
-    },
-    sort: {
-      sort: sort as (rows: RowState<TItem>[]) => RowState<TItem>[],
-      getSortDirection,
-      setColumnSort,
-      sortColumn,
-      sortDirection,
-      toggleColumnSort,
-    },
+    selection: defaultSelectionState,
+    sort: defaultSortState,
     columnSizing: defaultColumnSizingState,
     tableRef,
   };

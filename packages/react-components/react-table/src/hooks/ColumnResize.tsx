@@ -1,4 +1,3 @@
-import { NumberSymbol16Filled } from '@fluentui/react-icons';
 import * as React from 'react';
 import { ColumnId, ColumnWidthState } from './types';
 
