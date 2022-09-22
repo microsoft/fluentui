@@ -99,13 +99,13 @@ export const FabricPalette: React.FunctionComponent<IFabricPaletteProps> = (prop
             <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralDark]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                slotRule={themeRules[FabricSlots[FabricSlots.neutralDark]]}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralQuaternary]]}
                 slot={FabricSlots.neutralQuaternary}
                 onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralDark]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralQuaternary]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
