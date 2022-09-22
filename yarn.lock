@@ -22565,6 +22565,11 @@ randexp@0.4.6:
     discontinuous-range "1.0.0"
     ret "~0.1.10"
 
+random-seedable@1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/random-seedable/-/random-seedable-1.0.8.tgz#d233ce5d49f64a20be398bbc3faa695cc39b8aa8"
+  integrity sha512-f6gzvNhAnZBht1Prn0e/tpukUNhkANntFF42uIdWDPriyEATYaRpyH8A9bYaGecUB3AL+dXeYtBUggy18fe3rw==
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
