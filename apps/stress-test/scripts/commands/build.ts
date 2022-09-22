@@ -1,26 +1,18 @@
-const { exec } = require('child_process');
-const { promisify } = require('util');
-const configureYargs = require('../utils/configureYargs');
-const webpack = require('webpack');
+import * as yargs from 'yargs';
+import { CLIBuildOptions } from '../utils/types';
+
+import { exec } from 'child_process';
+import { promisify } from 'util';
+import configureYargs from '../utils/configureYargs';
+import * as webpack from 'webpack';
+
 const webpackConfig = require('../../webpack/webpack.config');
 
 const execAsync = promisify(exec);
 
-/**
- * @typedef {Object} CLIBuildOptions
- * @property {import('../../webpack/griffelConfig.js').GriffelMode} griffelMode
- * @property {('development' | 'production' | 'none')} mode
- * @property {boolean} verbose
- * @property {boolean} buildDeps
- */
-
 const command = 'build';
 
-/**
- * @param {CLIBuildOptions} argv
- * @returns {Promise<void>}
- */
-const run = async argv => {
+const run: (argv: CLIBuildOptions) => Promise<void> = async argv => {
   if (argv.buildDeps) {
     const deps = ['@fluentui/react', '@fluentui/web-components'];
     console.log('Building dependencies', deps.join(', '));
@@ -76,21 +68,25 @@ const run = async argv => {
   });
 };
 
-/** @type {import('yargs').CommandModule} */
-const api = {
+const api: yargs.CommandModule = {
   command,
   describe: 'Builds the application.',
-  builder: yargs => {
-    configureYargs(command, yargs);
+  builder: y => {
+    return configureYargs(command, y);
   },
-  /**
-   * @param {CLIBuildOptions} argv
-   */
   handler: argv => {
-    run(argv).then(() => {
+    const args: CLIBuildOptions = {
+      griffelMode: argv.griffelMode as CLIBuildOptions['griffelMode'],
+      mode: argv.mode as CLIBuildOptions['mode'],
+      verbose: argv.verbose as boolean,
+      buildDeps: argv.buildDeps as boolean,
+    };
+
+    run(args).then(() => {
       console.log('Build complete!');
     });
   },
 };
 
-module.exports = api;
+export default api;
+// export { api };

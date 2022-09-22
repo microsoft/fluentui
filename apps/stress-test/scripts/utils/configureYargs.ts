@@ -1,8 +1,9 @@
-const { getBrowsers } = require('./getBrowsers');
+import * as yargs from 'yargs';
+import { getBrowsers } from './getBrowsers';
 
-/**
- * @typedef {Object.<string, import('yargs').Options>} YargsOptions
- */
+type YargsOptions = Record<string, yargs.Options>;
+type Configure = (y: yargs.Argv, options: YargsOptions) => void;
+type CongfigureYargs = (command: string, y: yargs.Argv) => yargs.Argv;
 
 const cliOptions = {
   scenario: {
@@ -25,12 +26,8 @@ const cliOptions = {
     default: 25,
   },
   targets: {
-    describe: 'Libraries to target.',
-    default: ['v8', 'v9', 'wc'],
-  },
-  'use-config': {
-    describe: 'Use options from config, overriding any config values with command line arguments.',
-    default: true,
+    describe: 'Tests to target.',
+    demand: true,
   },
   'process-results': {
     describe: 'Process the test results for display.',
@@ -47,6 +44,24 @@ const cliOptions = {
   'griffel-mode': {
     describe: 'Optimization mode for Griffel.',
     default: 'buildtime',
+  },
+  renderers: {
+    describe: 'Renderers to use for testing. This determines what is actually tested.',
+  },
+  'test-options': {
+    describe: 'Options to apply to each test. E.g., option1=value1 option2=value2',
+    coerce: (arg: string[]) => {
+      return arg.reduce((map: { [key: string]: string }, current) => {
+        const [key, value] = current.split('=');
+        if (!key || !value) {
+          throw new Error(`Invalid test option. Got ${current}. Expected the form "key=value".`);
+        }
+
+        map[key] = value;
+        return map;
+      }, {});
+    },
+    default: [],
   },
   mode: {
     describe: 'Build mode.',
@@ -66,54 +81,47 @@ const cliOptions = {
   },
 };
 
-/**
- * @param {import('yargs').Argv} yargs
- * @param {YargsOptions} options
- */
-const configure = (yargs, options) => {
-  let y = yargs.options(options);
+const configure: Configure = (y, options) => {
+  let _y = y.options(options);
 
   Object.keys(options).forEach(option => {
     switch (option) {
       case 'test-cases':
       case 'browsers':
       case 'targets':
-        y = y.array(option);
+      case 'test-options':
+      case 'renderers':
+        _y = _y.array(option);
         break;
 
       case 'sizes':
-        y = y.array(option).choices(option, ['xs', 's', 'm', 'l', 'xl']);
+        _y = _y.array(option).choices(option, ['xs', 's', 'm', 'l', 'xl']);
         break;
 
       case 'sample-size':
       case 'port':
-        y = y.number(option);
+        _y = _y.number(option);
         break;
 
-      case 'use-config':
       case 'process-results':
       case 'verbose':
       case 'build-deps':
       case 'open':
-        y = y.boolean(option);
+        _y = _y.boolean(option);
         break;
 
       case 'griffel-mode':
-        y = y.choices(option, ['runtime', 'buildtime', 'extraction']);
+        _y = _y.choices(option, ['runtime', 'buildtime', 'extraction']);
         break;
 
       case 'mode':
-        y = y.choices(option, ['production', 'development']);
+        _y = _y.choices(option, ['production', 'development']);
         break;
     }
   });
 };
 
-/**
- * @param {string} command
- * @param {import('yargs').Argv} yargs
- */
-const configureYargs = (command, yargs) => {
+const configureYargs: CongfigureYargs = (command, y) => {
   switch (command) {
     case 'build-test-config': {
       const {
@@ -123,18 +131,20 @@ const configureYargs = (command, yargs) => {
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         port,
+        renderers,
       } = cliOptions;
-      configure(yargs, {
+      configure(y, {
         scenario,
         'test-cases': testCases,
         sizes,
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         port,
+        renderers,
       });
       break;
     }
@@ -147,57 +157,61 @@ const configureYargs = (command, yargs) => {
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         'process-results': processResults,
         port,
         root,
+        renderers,
       } = cliOptions;
-      configure(yargs, {
+      configure(y, {
         scenario,
         'test-cases': testCases,
         sizes,
         browsers,
         'sample-size': sampleSize,
         targets,
-        'use-config': useConfig,
+        'test-options': testOptions,
         'process-results': processResults,
         port,
         root,
+        renderers,
       });
       break;
     }
 
     case 'process-results': {
       const { scenario } = cliOptions;
-      configure(yargs, { scenario });
+      configure(y, { scenario });
       break;
     }
 
     case 'serve': {
       const { port, root } = cliOptions;
-      configure(yargs, { port, root });
+      configure(y, { port, root });
       break;
     }
 
     case 'tachometer': {
       const { scenario } = cliOptions;
-      configure(yargs, { scenario });
+      configure(y, { scenario });
       break;
     }
 
     case 'build': {
       const { 'griffel-mode': griffelMode, mode, verbose, 'build-deps': buildDeps } = cliOptions;
-      configure(yargs, { 'griffel-mode': griffelMode, mode, verbose, 'build-deps': buildDeps });
+      configure(y, { 'griffel-mode': griffelMode, mode, verbose, 'build-deps': buildDeps });
       break;
     }
 
     case 'dev': {
       const { mode, open, 'griffel-mode': griffelMode } = cliOptions;
       mode.default = 'development';
-      configure(yargs, { mode, open, 'griffel-mode': griffelMode });
+      configure(y, { mode, open, 'griffel-mode': griffelMode });
       break;
     }
   }
+
+  return y;
 };
 
-module.exports = configureYargs;
+export default configureYargs;

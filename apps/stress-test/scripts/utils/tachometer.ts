@@ -1,14 +1,13 @@
-const { exec } = require('child_process');
-const { promisify } = require('util');
-const { ensureClean } = require('./paths');
+import { ConfigResult } from './types';
+import { exec } from 'child_process';
+import { promisify } from 'util';
+import { ensureClean } from './paths';
 
 const execAsync = promisify(exec);
 
-/**
- * @function runTachometer
- * @param {ConfigResult[]} options
- */
-const runTachometer = async testConfigs => {
+type RunTachometer = (testConfigs: ConfigResult[]) => void;
+
+const runTachometer: RunTachometer = async testConfigs => {
   // Everything will be going to the same results folder for a test run
   const { resultsDir } = testConfigs[0];
   ensureClean(resultsDir);
@@ -28,4 +27,4 @@ const runTachometer = async testConfigs => {
   }
 };
 
-module.exports = runTachometer;
+export default runTachometer;
