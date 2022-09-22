@@ -119,6 +119,7 @@ export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'p
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
     active?: 'active' | 'inactive' | 'unset';
     activeAppearance?: 'ring' | 'shadow' | 'ring-shadow';
+    activeAriaLabel?: string;
     color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     idForColor?: string | undefined;
     name?: string;
@@ -136,6 +137,7 @@ export type AvatarSlots = {
     initials?: Slot<'span'>;
     icon?: Slot<'span'>;
     badge?: Slot<typeof PresenceBadge>;
+    activeAriaLabel?: Slot<'span'>;
 };
 
 // @public

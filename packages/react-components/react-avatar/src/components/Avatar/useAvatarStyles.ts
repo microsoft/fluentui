@@ -9,6 +9,7 @@ export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   initials: 'fui-Avatar__initials',
   icon: 'fui-Avatar__icon',
   badge: 'fui-Avatar__badge',
+  activeAriaLabel: 'fui-Avatar__activeAriaLabel',
 };
 
 //
@@ -490,6 +491,10 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       iconSizeClass,
       state.icon.className,
     );
+  }
+
+  if (state.activeAriaLabel) {
+    state.activeAriaLabel.className = mergeClasses(avatarClassNames.activeAriaLabel, state.activeAriaLabel.className);
   }
 
   return state;

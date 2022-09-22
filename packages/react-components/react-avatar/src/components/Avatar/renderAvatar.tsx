@@ -11,6 +11,7 @@ export const renderAvatar_unstable = (state: AvatarState) => {
       {slots.icon && <slots.icon {...slotProps.icon} />}
       {slots.image && <slots.image {...slotProps.image} />}
       {slots.badge && <slots.badge {...slotProps.badge} />}
+      {slots.activeAriaLabel && <slots.activeAriaLabel {...slotProps.activeAriaLabel} />}
     </slots.root>
   );
 };

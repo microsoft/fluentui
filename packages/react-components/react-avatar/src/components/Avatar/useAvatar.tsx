@@ -6,6 +6,11 @@ import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
+export const DEFAULT_STRINGS = {
+  active: 'active',
+  inactive: 'inactive',
+};
+
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
   const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
@@ -75,18 +80,32 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     },
   });
 
+  // The activeAriaLabel slot is only used if there is an active state and no user-defined aria label
+  let activeAriaLabel;
+
   // Resolve aria-label and/or aria-labelledby if not provided by the user
   if (!root['aria-label'] && !root['aria-labelledby']) {
+    if (active === 'active' || active === 'inactive') {
+      activeAriaLabel = resolveShorthand(props.activeAriaLabel, {
+        required: true,
+        defaultProps: {
+          children: DEFAULT_STRINGS[active],
+          id: baseId + '__activeAriaLabel',
+          hidden: true,
+        },
+      });
+    }
+
     if (name) {
       root['aria-label'] = name;
 
-      // Include the badge in labelledby if it exists
-      if (badge) {
-        root['aria-labelledby'] = root.id + ' ' + badge.id;
+      // Include the badge and/or activeAriaLabel in labelledby if they exist
+      if (badge || activeAriaLabel) {
+        root['aria-labelledby'] = [root.id, badge?.id, activeAriaLabel?.id].filter(id => id).join(' ');
       }
     } else if (initials) {
       // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
-      root['aria-labelledby'] = initials.id + (badge ? ' ' + badge.id : '');
+      root['aria-labelledby'] = [initials.id, badge?.id, activeAriaLabel?.id].filter(id => id).join(' ');
     }
   }
 
@@ -103,6 +122,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       icon: 'span',
       image: 'img',
       badge: PresenceBadge,
+      activeAriaLabel: 'span',
     },
 
     root,
@@ -110,6 +130,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     icon,
     image,
     badge,
+    activeAriaLabel,
   };
 };
 

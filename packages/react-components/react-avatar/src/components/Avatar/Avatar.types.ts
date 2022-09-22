@@ -32,6 +32,17 @@ export type AvatarSlots = {
    * Badge to show the avatar's presence status.
    */
   badge?: Slot<typeof PresenceBadge>;
+
+  /**
+   * Hidden text that is appended to the generated aria-labelledby to describe the active state.
+   * This will be ignored if a custom `aria-label` or `aria-labelledby` is set on this Avatar.
+   *
+   * The default value depends on the `active` prop:
+   * * unset: `undefined`
+   * * active: `strings.active`
+   * * inactive: `strings.inactive`
+   */
+  activeAriaLabel?: Slot<'span'>;
 };
 
 /**
