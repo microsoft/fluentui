@@ -4,7 +4,7 @@ export { AvoidStateExample } from './NoCustomState.stories';
 export { AvoidPositionExample } from './NoCustomPosition.stories';
 export { NoRepeatText } from './NoTextRepeat.stories';
 export { NoFocusableTextExample } from './NoFocusableText.stories';
-export { FormErrorMessagesExample } from './formErrorMessages.stories';
+export { FormErrorMessagesExample } from './FormErrorsMessages.stories';
 export { LabelWithVisibleTextExample } from './LabelWithVisibleText.stories';
 
 export default {

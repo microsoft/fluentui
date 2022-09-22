@@ -18,8 +18,8 @@ import { Scenario } from './utils';
 
 export const NoRepeatText = () => {
   return (
-    <Scenario pageTitle="Avoid repeating text for item within one component ">
-      <h1>Avoid repeating text for item within one component</h1>
+    <Scenario pageTitle="Avoid repeating text for component inner items">
+      <h1>Avoid repeating text for component inner items</h1>
       <h2>Bad example</h2>
       <Menu>
         <MenuTrigger>
@@ -50,7 +50,7 @@ export const NoRepeatText = () => {
 
       <h3>Implementation details</h3>
       <ul>
-        <li>aria-label="Meeting participant [user name]" was applied on each menuitem</li>
+        <li>The aria-label="Meeting participant [user name]" attribute was applied on each menu item element.</li>
       </ul>
       <Divider appearance="strong" />
       <h2>Good example</h2>
@@ -82,18 +82,18 @@ export const NoRepeatText = () => {
       </Text>
       <h3>Implementation details</h3>
       <ul>
-        <li>no aria-label is needed for each menuitem</li>
-        <li>aria-label="Meeting participants" was applied on menu component</li>
+        <li>no "aria-label" attribute is needed for each menu item element.</li>
+        <li>The aria-label="Meeting participants" attribute was applied on the menu element.</li>
       </ul>
       <Divider appearance="strong" />
       <h2>Problem explanation</h2>
       <ul>
         <li>
-          Adding the repeating text on each item in the component prolongs the name narration by the screen reader. User
-          needs to wait for content to be narrated.
+          Adding a repeating text as a part of the accessible name of each item in the component prolongs the name
+          narration by the screen reader so the user needs to wait for the important content to be narrated.
         </li>
         <li> Recommendation would be to label the component (menu in our example) with appropriate name.</li>
-        <li> This general principle is valid as well for others components like Tree, List, Listbox, Toolbar, etc.</li>
+        <li> This general principle is valid as well for other components like Tree, List, Listbox, Toolbar, etc.</li>
       </ul>
     </Scenario>
   );

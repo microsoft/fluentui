@@ -57,7 +57,7 @@ export const AvoidPositionExample = () => {
       <h3>Implementation details</h3>
       <ul>
         <li>
-          The "X of Y" position information is hard-coded manually as the part of each menu item's "aria-label"
+          A custom "X of Y" position information is hard-coded manually as the part of each menu item's "aria-label"
           attribute value.
         </li>
       </ul>
@@ -100,18 +100,15 @@ export const AvoidPositionExample = () => {
       <h2>Problem explanation</h2>
       <ul>
         <li>
-          Even though the screen reader narration might seem similar, don't hard-code "X of Y" position information
-          manually as the part of the accessible name of each individual item, but instead use proper ARIA roles and let
-          the screen reader add the "X of Y" information for you.
+          Even though the screen reader narration might seem similar, don't hard-code a custom "X of Y" position
+          information manually as the part of the accessible name of each individual item, but instead use proper ARIA
+          roles and let the screen reader add the "X of Y" information for you.
         </li>
         <li>
-          The JAWS screen reader currently supports the "X of Y" information for the following roles: listbox,
-          menu,tablist. See the <a href="https://www.w3.org/TR/wai-aria-1.2/">ARIA specification</a> to learn which
-          required owned elements (such as option, menuitem or tab) should be used with these roles.
-        </li>
-        <li>
-          Letting the screen reader add the "X of Y" position information for you also avoids the need to manually
-          translate this information to the desired UI language.
+          The JAWS screen reader currently supports the "X of Y" information for the following roles: "listbox", "menu",
+          "tablist" and "tree". See the <a href="https://www.w3.org/TR/wai-aria-1.2/">ARIA specification</a> to learn
+          which required owned elements (such as "option", "menuitem", "tab" or "treeitem") should be used with these
+          roles.
         </li>
       </ul>
     </Scenario>

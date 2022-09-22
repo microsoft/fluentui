@@ -6,7 +6,7 @@ export const parentPath = 'concepts-developer-accessibility-accessibilityexample
 
 # Accessibility Examples
 
-The goal of accessibility examples is to identify good and bad practice when designing accessible interfaces.
+The goal of accessibility examples is to identify and describe good and bad practice when designing accessible HTML interfaces following the ARIA specification.
 
 ## Labelling examples
 
@@ -18,16 +18,13 @@ The goal of accessibility examples is to identify good and bad practice when des
   />
 - <FullscreenLink content="Avoid state in accessibility name" parent={parentPath} story="avoid-state-example" />
 - <FullscreenLink content="Avoid position in accessibility name" parent={parentPath} story="avoid-position-example" />
-- <FullscreenLink
-    content="Avoid repeating text for item within one component"
-    parent={parentPath}
-    story="no-repeat-text"
-  />
-- <FullscreenLink content="Avoid focus text element" parent={parentPath} story="no-focusable-text" />
+- <FullscreenLink content="Avoid repeating text for component inner items" parent={parentPath} story="no-repeat-text" />
 
 ## Using aria-label, aria-labelledby and aria-describedby examples
 
-- <FullscreenLink content="Error messages for form fields" parent={parentPath} story="form-error-messages" />
+- <FullscreenLink content="Avoid making text focusable" parent={parentPath} story="no-focusable-text" />
+
+- <FullscreenLink content="Narrating error messages for form fields" parent={parentPath} story="form-error-messages" />
 - <FullscreenLink
     content="Label component with visible text"
     parent={parentPath}

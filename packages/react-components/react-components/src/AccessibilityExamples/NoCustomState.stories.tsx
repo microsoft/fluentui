@@ -22,7 +22,7 @@ export const AvoidStateExample = () => {
       </Text>
       <h3>Implementation details</h3>
       <ul>
-        <li>aria-label="Files tab is active" was applied on the "Files" tab</li>
+        <li>The aria-label="Files tab is active" attribute was applied on the "Files" tab</li>
       </ul>
       <Divider appearance="strong" />
       <h2>Good example</h2>
@@ -37,15 +37,18 @@ export const AvoidStateExample = () => {
       </Text>
       <h3>Implementation details</h3>
       <ul>
-        <li>no aria-label is needed for "Files" tab</li>
+        <li>no aria-label attribute is needed for the "Files" tab</li>
       </ul>
       <Divider appearance="strong" />
       <h2>Problem explanation</h2>
       <ul>
-        <li>Adding custom state is not required, because this functionality should provide us the screen reader.</li>
         <li>
-          If state of coponent is not narrated, then verify there is used "aria-checked" or "aria-selected" attribute.
-          See aria documentation for{' '}
+          Adding a custom hard-coded state to the accessible name of the component is not required, because this
+          information will be provided by the screen reader if the component has the proper state attribute.
+        </li>
+        <li>
+          If the state of component is not narrated by the screen reader, verify the proper ARIA state attribute is
+          used, such as "aria-checked" or "aria-selected". See aria documentation for{' '}
           <Link href="https://www.w3.org/TR/wai-aria-1.1/#aria-selected" inline>
             aria-selected
           </Link>{' '}
@@ -53,7 +56,7 @@ export const AvoidStateExample = () => {
           <Link href="https://www.w3.org/TR/wai-aria-1.1/#aria-checked" inline>
             aria-checked
           </Link>{' '}
-          attribute.
+          attribute to find out which attribute should be used.
         </li>
       </ul>
     </Scenario>

@@ -18,7 +18,7 @@ export const AvoidActionExample = () => {
       </Text>
       <h3>Implementation details</h3>
       <ul>
-        <li>aria-label="Click here to send message" was applied on the component.</li>
+        <li>The aria-label="Click here to send message" attribute was applied on the component.</li>
       </ul>
       <Divider appearance="strong" />
       <h2>Good example</h2>
@@ -29,7 +29,7 @@ export const AvoidActionExample = () => {
       </Text>
       <h3>Implementation details</h3>
       <ul>
-        <li>aria-label="Send message " was applied on the component.</li>
+        <li>The aria-label="Send message " attribute was applied on the component.</li>
       </ul>
       <Divider appearance="strong" />
       <h2>Problem explanation</h2>
