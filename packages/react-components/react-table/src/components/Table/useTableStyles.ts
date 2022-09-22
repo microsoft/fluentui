@@ -8,15 +8,27 @@ export const tableClassNames: SlotClassNames<TableSlots> = {
   root: 'fui-Table',
 };
 
+const useNativeLayoutStyles = makeStyles({
+  root: {
+    display: 'table',
+    verticalAlign: 'middle',
+    width: '100%',
+    tableLayout: 'fixed',
+  },
+});
+
+const useFlexLayoutStyles = makeStyles({
+  root: {
+    display: 'block',
+  },
+});
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    verticalAlign: 'middle',
     borderCollapse: 'collapse',
-    width: '100%',
-    display: 'table',
     backgroundColor: tokens.colorNeutralBackground1,
   },
 });
@@ -26,7 +38,16 @@ const useStyles = makeStyles({
  */
 export const useTableStyles_unstable = (state: TableState): TableState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableClassName, styles.root, state.root.className);
+  const layoutStyles = {
+    native: useNativeLayoutStyles(),
+    flex: useFlexLayoutStyles(),
+  };
+  state.root.className = mergeClasses(
+    tableClassName,
+    styles.root,
+    layoutStyles[state.layoutType].root,
+    state.root.className,
+  );
 
   return state;
 };

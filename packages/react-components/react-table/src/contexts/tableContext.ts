@@ -7,6 +7,7 @@ export const tableContextDefaultValue: TableContextValue = {
   size: 'medium',
   noNativeElements: false,
   sortable: false,
+  layoutType: 'native',
 };
 
 export const TableContextProvider = tableContext.Provider;
