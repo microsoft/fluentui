@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "@fluentui/react: allowing Popup configuration on Modal component",
-  "packageName": "@fluentui/react",
-  "email": "gasramirez@microsoft.com",
-  "dependentChangeType": "patch"
-}

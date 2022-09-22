@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 19 Sep 2022 07:47:29 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Sep 2022 07:43:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.96.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.1)
+
+Thu, 22 Sep 2022 07:43:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.0..@fluentui/react_v8.96.1)
+
+### Patches
+
+- @fluentui/react: allowing Popup configuration on Modal component ([PR #24693](https://github.com/microsoft/fluentui/pull/24693) by gasramirez@microsoft.com)
 
 ## [8.96.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.0)
 

@@ -22,7 +22,7 @@
     "swc-loader": "^0.2.3"
   },
   "dependencies": {
-    "@fluentui/react": "8.96.0",
+    "@fluentui/react": "8.96.1",
     "@fluentui/react-hooks": "8.6.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
