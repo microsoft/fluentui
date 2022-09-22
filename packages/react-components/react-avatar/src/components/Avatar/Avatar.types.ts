@@ -155,5 +155,8 @@ export type AvatarState = ComponentState<AvatarSlots> &
      */
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
 
+    /**
+     * Hidden span to render the active state label for the purposes of including in the aria-labelledby, if needed.
+     */
     activeAriaLabelElement?: JSX.Element;
   };
