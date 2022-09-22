@@ -38,6 +38,17 @@ const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
   { key: 'remove', content: 'Remove', onClick: () => handleDeleteComponent(uuid) },
 ];
 
+const extractChildren = (children, mapItem) => {
+  if (children) {
+    if (Array.isArray(children)) {
+      return children.map(mapItem);
+    } else {
+      return [mapItem(children)];
+    }
+  }
+  return undefined;
+};
+
 const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
   selectedComponentId: string,
@@ -104,20 +115,18 @@ const jsonTreeToTreeItems: (
         );
       },
     }),
-    items:
-      Array.isArray(tree.props?.children) &&
-      tree.props?.children?.map(item =>
-        jsonTreeToTreeItems(
-          item,
-          selectedComponentId,
-          handleSelectedComponent,
-          handleClone,
-          handleMove,
-          handleDeleteSelected,
-          handleAddComponent,
-          handleDeleteComponent,
-        ),
+    items: extractChildren(tree.props?.children, item =>
+      jsonTreeToTreeItems(
+        item,
+        selectedComponentId,
+        handleSelectedComponent,
+        handleClone,
+        handleMove,
+        handleDeleteSelected,
+        handleAddComponent,
+        handleDeleteComponent,
       ),
+    ),
   };
 };
 
@@ -191,20 +200,18 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
 
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
-    (Array.isArray(tree.props?.children) &&
-      tree.props?.children?.map(item =>
-        jsonTreeToTreeItems(
-          item,
-          selectedComponentId,
-          handleSelectComponent,
-          handleClone,
-          handleMove,
-          handleDeleteSelected,
-          handleAddComponent,
-          handleDeleteComponent,
-        ),
-      )) ??
-    [];
+    extractChildren(tree.props?.children, item =>
+      jsonTreeToTreeItems(
+        item,
+        selectedComponentId,
+        handleSelectComponent,
+        handleClone,
+        handleMove,
+        handleDeleteSelected,
+        handleAddComponent,
+        handleDeleteComponent,
+      ),
+    ) ?? [];
   items.forEach(item => getActiveItemIds(item));
 
   return (

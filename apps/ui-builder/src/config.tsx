@@ -465,29 +465,38 @@ export const resolveComponent = (displayName, moduleName): React.ElementType => 
 };
 
 // FIXME: breaks for <button>btn</button>
-const toJSONTreeElement = input => {
+const toJSONTreeElement = (input, moduleName) => {
   if (input?.as && _.isPlainObject(input.as)) {
     return {
       type: input.as.displayName,
+      displayName: input.as.displayName,
+      uuid: getUUID(),
       props: { ...input, as: undefined },
       $$typeof: 'Symbol(react.element)',
+      moduleName,
     };
   }
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
+      uuid: getUUID(),
+      moduleName,
       type:
         typeof (input as React.ReactElement).type === 'string'
           ? (input as React.ReactElement).type
           : ((input as React.ReactElement).type as any).displayName,
-      props: toJSONTreeElement(input.props),
+      displayName:
+        typeof (input as React.ReactElement).type === 'string'
+          ? (input as React.ReactElement).type
+          : ((input as React.ReactElement).type as any).displayName,
+      props: toJSONTreeElement(input.props, moduleName),
     };
   }
   const result = _.transform(input, (acc, value, key) => {
     if (Array.isArray(value)) {
-      acc[key] = toJSONTreeElement(value);
+      acc[key] = toJSONTreeElement(value, moduleName);
     } else if (_.isPlainObject(value)) {
-      acc[key] = toJSONTreeElement(value);
+      acc[key] = toJSONTreeElement(value, moduleName);
     } else {
       acc[key] = value;
     }
@@ -500,7 +509,7 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
   module,
   draggingElements = DRAGGING_ELEMENTS,
 ) => {
-  const jsonTreeElement = toJSONTreeElement(draggingElements[displayName]);
+  const jsonTreeElement = toJSONTreeElement(draggingElements[displayName], module);
   return {
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
@@ -560,6 +569,10 @@ export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, 
 
 const resolveProps = (input, cb) => {
   const result = _.transform(input, (acc, value, key) => {
+    if (((key as unknown) as string) === 'children' && value && Array.isArray(value) && value.length === 1) {
+      value = value[0];
+    }
+
     if (_.isPlainObject(value)) {
       if ((value as any).$$typeof === 'Symbol(react.element)') {
         acc[key] = renderJSONTreeToJSXElement(value as any, cb);

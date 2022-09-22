@@ -12,12 +12,31 @@ import { AccessibilityError } from '../accessibility/types';
 import { Toolbar } from './Toolbar';
 import { Builder } from './Builder';
 import { runAxe } from '../hooks/runAxe';
+import {
+  componentLibaries,
+  componentLibariesByModuleName,
+  componentLibariesByPrefix,
+  DEFAULT_LIBRARY,
+} from '../utils/componentLibraries';
 
 const HEADER_HEIGHT = '3rem';
 
 interface IDesignerProps {
   components: 'fluent-v0' | 'fluent-v9';
 }
+
+const getComponentInfo = selectedJSONTreeElement => {
+  if (!selectedJSONTreeElement) {
+    return null;
+  }
+  const shortName = selectedJSONTreeElement.displayName.split('.')[1] || selectedJSONTreeElement.displayName;
+  const prefix = selectedJSONTreeElement.displayName.split[0];
+  const componentLibrary =
+    componentLibariesByPrefix[prefix] ||
+    componentLibariesByModuleName[selectedJSONTreeElement.moduleName] ||
+    DEFAULT_LIBRARY;
+  return selectedJSONTreeElement ? componentInfoContext.byDisplayName[`${componentLibrary.prefix}.${shortName}`] : null;
+};
 
 export const Designer: React.FunctionComponent<IDesignerProps> = (props: IDesignerProps) => {
   debug('render', props);
@@ -52,10 +71,7 @@ export const Designer: React.FunctionComponent<IDesignerProps> = (props: IDesign
   } = state;
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
-  const selectedComponentInfo = selectedJSONTreeElement
-    ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName] ||
-      componentInfoContext.byDisplayName[`FluentV0.${selectedJSONTreeElement.displayName}`]
-    : null;
+  const selectedComponentInfo = getComponentInfo(selectedJSONTreeElement);
 
   const handleReset = React.useCallback(() => {
     /* eslint-disable-next-line no-alert */
