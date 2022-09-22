@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import { join } from 'path';
 
 export const getPackageRoot: () => string = () => {
@@ -39,4 +39,8 @@ export const mkdirp: (path: string) => void = path => {
 export const ensureClean: (path: string) => void = path => {
   remove(path);
   mkdirp(path);
+};
+
+export const getFixturesDir: () => string = () => {
+  return join(getPackageRoot(), 'src', 'fixtures');
 };

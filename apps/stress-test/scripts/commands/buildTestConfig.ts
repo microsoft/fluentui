@@ -1,11 +1,11 @@
 import * as yargs from 'yargs';
 import { CLIBuildTestConfigOptions, ConfigResult, TestOptions } from '../utils/types';
 
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import * as path from 'path';
 
-import { getConfigDir, getResultsDir, ensureClean } from '../utils/paths';
-import configureYargs from '../utils/configureYargs';
+import { getConfigDir, getResultsDir, ensureClean } from '../utils/paths.js';
+import configureYargs from '../utils/configureYargs.js';
 import * as querystring from 'querystring';
 
 type BuildTestConfig = (options: CLIBuildTestConfigOptions) => ConfigResult[];

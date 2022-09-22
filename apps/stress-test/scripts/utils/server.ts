@@ -1,8 +1,8 @@
 import { CLIServerOptions } from './types';
-import * as express from 'express';
+import express from 'express';
 import { join } from 'path';
 import { Server } from 'http';
-import { getPackageRoot } from './paths';
+import { getPackageRoot } from './paths.js';
 
 const handleGracefulShutdown: (arg: unknown) => void = arg => {
   console.log('Shutting down...');

@@ -1,29 +1,28 @@
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
-const { configurePages } = require('./pageConfig');
-const { configureGriffel } = require('./griffelConfig');
+import * as path from 'path';
+import { fileURLToPath } from 'url';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+import { configurePages } from './pageConfig.js';
+import { configureGriffel } from './griffelConfig.js';
+import * as WebpackDevServer from 'webpack-dev-server';
+import { GriffelMode } from '../scripts/utils/types';
 
-/**
- * @typedef {Object} Argv
- * @property {('development' | 'production' | 'none')} mode
- * @property {import('./griffelConfig.js').GriffelMode} griffelMode
- */
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-/**
- * @param {*} _env
- * @param {Argv} argv
- * @returns
- */
-module.exports = (_env, argv) => {
-  console.log('env', _env);
+type WebpackArgs = {
+  mode: 'production' | 'development' | 'none';
+  griffelMode: GriffelMode;
+};
+
+type WebpackConfigurationCreator = (
+  env: string | undefined,
+  argv: WebpackArgs,
+) => WebpackDevServer.WebpackConfiguration;
+
+const createConfig: WebpackConfigurationCreator = (_env, argv) => {
   const isProd = argv.mode === 'production';
 
-  /** @typedef {import('webpack-dev-server')} */
-  /**
-   * @type {import('webpack').Configuration}
-   */
-  let config = {
+  let config: WebpackDevServer.WebpackConfiguration = {
     mode: argv.mode,
     output: {
       filename: '[name].[contenthash].bundle.js',
@@ -83,3 +82,5 @@ module.exports = (_env, argv) => {
 
   return config;
 };
+
+export default createConfig;

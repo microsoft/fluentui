@@ -1,6 +1,6 @@
-import { RandomSelector } from '../css/RandomSelector';
-import { TreeNode, TreeNodeCreateCallback } from './RandomTree';
-import { random } from '../utils/random';
+import { RandomSelector } from '../css/RandomSelector.js';
+import { TreeNode, TreeNodeCreateCallback } from './RandomTree.js';
+import { random } from '../utils/random.js';
 
 export type Attribute = {
   key: string;

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "scripts": {
-    "stress-test": "ts-node --project tsconfig.scripts.json ./scripts/stressTest.ts",
+    "stress-test": "ts-node-esm --project tsconfig.scripts.json ./scripts/stressTest.ts",
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
