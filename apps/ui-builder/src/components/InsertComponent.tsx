@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { Dropdown } from '@fluentui/react-northstar';
-import { Button, makeStyles, shorthands } from '@fluentui/react-components';
-import { Dialog, DialogSurface } from '@fluentui/react-components/unstable';
+import { Button, makeStyles } from '@fluentui/react-components';
+import {
+  Dialog,
+  DialogSurface,
+  DialogTitle,
+  DialogActions,
+  DialogTrigger,
+  DialogBody,
+} from '@fluentui/react-components/unstable';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 
 const useStyles = makeStyles({
@@ -12,13 +19,10 @@ const useStyles = makeStyles({
     rowGap: '2rem',
     zIndex: 10,
   },
-  header: {
-    ...shorthands.margin(0),
-  },
   buttonContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
   },
 });
 
@@ -41,14 +45,18 @@ export const InsertComponent = ({ onComponentAdded, onDismiss }) => {
   return (
     <Dialog open={true}>
       <DialogSurface className={styles.surface}>
-        <h2 className={styles.header}>Insert component</h2>
-        <Dropdown search highlightFirstItemOnOpen placeholder="Choose component" items={items} onChange={onChange} />
-        <div className={styles.buttonContainer}>
-          <Button onClick={dismiss}>Cancel</Button>
+        <DialogTitle>Insert component</DialogTitle>
+        <DialogBody>
+          <Dropdown search highlightFirstItemOnOpen placeholder="Choose component" items={items} onChange={onChange} />
+        </DialogBody>
+        <DialogActions className={styles.buttonContainer}>
+          <DialogTrigger>
+            <Button onClick={dismiss}>Cancel</Button>
+          </DialogTrigger>
           <Button onClick={confirm} appearance="primary">
             Insert
           </Button>
-        </div>
+        </DialogActions>
       </DialogSurface>
     </Dialog>
   );
