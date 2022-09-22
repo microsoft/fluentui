@@ -32,7 +32,7 @@ export const tooltipContentVariables = (siteVars: any): TooltipContentVariables 
 
   borderRadius: siteVars.borderRadiusMedium,
   borderColor: 'transparent',
-  borderSize: '1px',
+  borderSize: '0px',
   borderStyle: 'none',
   padding: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(7)} ${pxToRem(12)}`,
 
