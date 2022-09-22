@@ -1,3 +1,4 @@
+import { NumberSymbol16Filled } from '@fluentui/react-icons';
 import * as React from 'react';
 import { ColumnId, ColumnWidthState } from './types';
 
@@ -14,6 +15,7 @@ export class ColumnResize {
   private mouseX: number = 0;
   private onColumnWidthsUpdate: () => void;
   private container: HTMLElement;
+  private tableElement: HTMLElement | null = null;
   private resizing: boolean = false;
   private resizeObserver: ResizeObserver;
 
@@ -43,6 +45,7 @@ export class ColumnResize {
 
   public init(table: HTMLElement) {
     this.container = document.createElement('div');
+    this.tableElement = table;
     table.insertAdjacentElement('beforebegin', this.container);
     this.resetLayout();
     this.resizeObserver.observe(this.container);
@@ -166,9 +169,11 @@ export class ColumnResize {
   };
 
   private _updateTableStyles() {
-    Object.assign(this.container.style, {
-      tableLayout: 'fixed',
-      width: `${this.totalWidth}px`,
-    });
+    if (this.tableElement) {
+      Object.assign(this.tableElement.style, {
+        tableLayout: 'fixed',
+        width: `${this.totalWidth}px`,
+      });
+    }
   }
 }
