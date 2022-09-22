@@ -195,7 +195,7 @@ describe('dependency-mismatch generator', () => {
         devDependencies: {},
         peerDependencies: {},
       },
-      ['northstar'],
+      ['react-northstar'],
     );
 
     setupDummyPackage(appTree, {

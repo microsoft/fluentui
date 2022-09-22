@@ -12,7 +12,7 @@ export default async function (tree: Tree) {
 
     const { tags = [] } = readProjectConfiguration(tree, projectName);
     // Ignore northstar packages
-    if (tags.includes('northstar')) {
+    if (tags.includes('react-northstar')) {
       return;
     }
 
