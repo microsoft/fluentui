@@ -151,14 +151,6 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
     }
     this._fabricPaletteColorChangeTimeout = this._async.setTimeout(() => {
       const { themeRules } = this.state;
-      if (themeRules) {
-        const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
-        ThemeGenerator.setSlot(themeRules[FabricSlots[fabricSlot]], newColor, currentIsDark, true, true);
-        if (currentIsDark !== isDark(themeRules[FabricSlots[fabricSlot]].color!)) {
-          // isInverted got swapped, so need to refresh slots with new shading rules
-          ThemeGenerator.insureSlots(themeRules, currentIsDark);
-        }
-      }
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
   };
