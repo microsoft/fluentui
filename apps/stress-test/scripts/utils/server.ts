@@ -1,11 +1,10 @@
-const express = require('express');
-const { getPackageRoot } = require('./paths');
-const { join } = require('path');
+import { CLIServerOptions } from './types';
+import * as express from 'express';
+import { join } from 'path';
+import { Server } from 'http';
+import { getPackageRoot } from './paths';
 
-/**
- * @param {*} arg
- */
-const handleGracefulShutdown = arg => {
+const handleGracefulShutdown: (arg: unknown) => void = arg => {
   console.log('Shutting down...');
   if (server && server.close) {
     console.log('Closing HTTP server');
@@ -19,13 +18,8 @@ const handleGracefulShutdown = arg => {
   }
 };
 
-let server;
-/**
- *
- * @param {CLIServerOptions} options
- * @returns
- */
-const startServer = (options = {}) => {
+let server: Server;
+const startServer: (options: CLIServerOptions) => Promise<void> = (options = {}) => {
   return new Promise((resolve, reject) => {
     if (server) {
       return reject(new Error('Server already running.'));
@@ -55,7 +49,4 @@ const stopServer = () => {
   server.close();
 };
 
-module.exports = {
-  startServer,
-  stopServer,
-};
+export { startServer, stopServer };

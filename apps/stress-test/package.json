@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "stress-test": "node ./scripts/stressTest.js",
+    "stress-test": "ts-node --project tsconfig.scripts.json ./scripts/stressTest.ts",
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
