@@ -553,6 +553,27 @@ export const renderJSONTreeToJSXElement = (
   });
 };
 
+export const renderJSONTreeToSchemaJSX = (
+  tree: JSONTreeElement,
+  iterator: (jsonTreeElement: JSONTreeElement) => JSONTreeElement = x => x,
+) => {
+  if (tree === null) {
+    return null;
+  }
+
+  let { props = null } = tree;
+
+  props = resolveProps(props, iterator);
+  const modifiedTree = iterator({ ...tree, props });
+  console.log('modifiedTree', modifiedTree);
+
+  return React.createElement(resolveComponent(modifiedTree.type), {
+    ...modifiedTree.props,
+    key: modifiedTree.uuid,
+    'data-builder-id': modifiedTree.uuid,
+  });
+};
+
 const packageImportList: Record<string, CodeSandboxImport> = {
   '@fluentui/react-icons-northstar': {
     version: projectPackageJson.version,

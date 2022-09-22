@@ -50,6 +50,7 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
   //     default: _CodeEditor,
   //   };
   // });
+  console.log('mode', mode);
   return (
     <div
       style={{
@@ -135,6 +136,7 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
               enabledVirtualCursor={props.state.enabledVirtualCursor}
               role="main"
               inUseMode={mode === 'use'}
+              isSchemaMode={mode === 'schema'}
               setHeaderMessage={setHeaderMessage}
               selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
             />

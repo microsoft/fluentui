@@ -10,7 +10,7 @@ export type JSONTreeElement = {
   moduleName?: string;
 };
 
-export type DesignerMode = 'build' | 'design' | 'use';
+export type DesignerMode = 'build' | 'design' | 'use' | 'schema';
 
 export type DragAndDropData = {
   position: { x: number; y: number };

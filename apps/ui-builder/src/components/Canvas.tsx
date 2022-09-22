@@ -4,7 +4,12 @@ import Frame, { FrameContextConsumer } from 'react-frame-component';
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
+import {
+  fiberNavFindJSONTreeElement,
+  fiberNavFindOwnerInJSONTree,
+  renderJSONTreeToJSXElement,
+  renderJSONTreeToSchemaJSX,
+} from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
@@ -34,6 +39,7 @@ export type CanvasProps = {
   style?: React.CSSProperties;
   role?: string;
   inUseMode?: boolean;
+  isSchemaMode?: boolean;
   setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
   selectedComponentAccessibilityErrors?: AccessibilityError[];
 };
@@ -58,6 +64,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   style,
   role,
   inUseMode,
+  isSchemaMode,
   setHeaderMessage,
   selectedComponentAccessibilityErrors,
 }) => {
@@ -372,7 +379,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       setFocusedVcElement(null);
     }
   }, [enabledVirtualCursor, iframeId, virtualCursorElements]);
-
+  console.log('isSchemaMode', isSchemaMode);
   return (
     <Frame
       title="Designer Canvas"
@@ -383,92 +390,119 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       style={style}
       id={iframeId}
     >
-      <FrameContextConsumer>
-        {({ document }) => (
-          <>
-            {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
-              <div
-                style={{
-                  padding: '8rem',
-                  textAlign: 'center',
-                  position: 'absolute',
-                  pointerEvents: 'none',
-                  width: '100%',
-                }}
-              >
-                <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
-                  👈
-                </span>
-                <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
-              </div>
-            )}
+      {isSchemaMode ? (
+        <FrameContextConsumer key="schema-frame">
+          {({ document }) => (
+            <>
+              <div>hola</div>
+              {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
+                <div
+                  style={{
+                    padding: '8rem',
+                    textAlign: 'center',
+                    position: 'absolute',
+                    pointerEvents: 'none',
+                    width: '100%',
+                  }}
+                >
+                  <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
+                    👈
+                  </span>
+                  <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
+                </div>
+              )}
+              {renderJSONTreeToSchemaJSX(jsonTree, renderJSONTreeElement)}
+            </>
+          )}
+        </FrameContextConsumer>
+      ) : (
+        <FrameContextConsumer key="normal-frame">
+          {({ document }) => (
+            <>
+              {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
+                <div
+                  style={{
+                    padding: '8rem',
+                    textAlign: 'center',
+                    position: 'absolute',
+                    pointerEvents: 'none',
+                    width: '100%',
+                  }}
+                >
+                  <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
+                    👈
+                  </span>
+                  <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
+                </div>
+              )}
 
-            <DebugSelector
-              active={isSelecting}
-              key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
-              filter={fiberNav => {
-                const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
-                if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
-                  return null;
-                }
-                return owner;
-              }}
-              mountDocument={document}
-              renderLabel={fiberNav => fiberNav.name}
-              showBackground={false}
-              showClassName={false}
-              showElement={false}
-              showCropMarks={false}
-              onSelect={handleSelectComponent}
-            />
-            {selectedComponent && (
-              <DebugFrame
-                target={document}
-                selector={`[data-builder-id="${selectedComponent.uuid}"]`}
-                componentName={selectedComponent.displayName}
-                componentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                onClone={handleCloneComponent}
-                onMove={handleMoveComponent}
-                onDelete={onDeleteSelectedComponent}
-                onGoToParent={onGoToParentComponent}
-              />
-            )}
-            {draggingElement && (
-              <DropSelector
-                filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
-                jsonTree={jsonTree}
+              <DebugSelector
+                active={isSelecting}
+                key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
+                filter={fiberNav => {
+                  const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
+                  if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
+                    return null;
+                  }
+                  return owner;
+                }}
                 mountDocument={document}
-                onDropPositionChange={onDropPositionChange}
-                hideSelector={hideDropSelector}
+                renderLabel={fiberNav => fiberNav.name}
+                showBackground={false}
+                showClassName={false}
+                showElement={false}
+                showCropMarks={false}
+                onSelect={handleSelectComponent}
               />
-            )}
-            <EventListener type="keydown" listener={onKeyDown} target={document} />
-            <Provider theme={teamsTheme} target={document} tabIndex={0} style={{ outline: 'none' }}>
-              {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
-              {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-              {draggingElement && (
-                <EventListener
-                  type="scroll"
-                  listener={() => !hideDropSelector && setHideDropSelector(true)}
+              {selectedComponent && (
+                <DebugFrame
                   target={document}
+                  selector={`[data-builder-id="${selectedComponent.uuid}"]`}
+                  componentName={selectedComponent.displayName}
+                  componentAccessibilityErrors={selectedComponentAccessibilityErrors}
+                  onClone={handleCloneComponent}
+                  onMove={handleMoveComponent}
+                  onDelete={onDeleteSelectedComponent}
+                  onGoToParent={onGoToParentComponent}
                 />
               )}
-              {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
-              {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              {inUseMode && enabledVirtualCursor && (
-                <EventListener type="keydown" listener={handleKeyDown} target={document} />
-              )}
-              <div style={{ bottom: '0', position: 'absolute' }}>
-                <ReaderNarration
-                  vcElement={focusedVcElement}
-                  selector={selectedComponent ? `[data-builder-id="${selectedComponent.uuid}"]` : null}
-                  inUseMode={inUseMode}
+              {draggingElement && (
+                <DropSelector
+                  filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
+                  jsonTree={jsonTree}
+                  mountDocument={document}
+                  onDropPositionChange={onDropPositionChange}
+                  hideSelector={hideDropSelector}
                 />
-              </div>
-            </Provider>
-          </>
-        )}
-      </FrameContextConsumer>
+              )}
+              <EventListener type="keydown" listener={onKeyDown} target={document} />
+              <Provider theme={teamsTheme} target={document} tabIndex={0} style={{ outline: 'none' }}>
+                {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
+                {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+                {draggingElement && (
+                  <EventListener
+                    type="scroll"
+                    listener={() => !hideDropSelector && setHideDropSelector(true)}
+                    target={document}
+                  />
+                )}
+                {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
+                {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+                {inUseMode && enabledVirtualCursor && (
+                  <EventListener type="keydown" listener={handleKeyDown} target={document} />
+                )}
+                <div style={{ bottom: '0', position: 'absolute' }}>
+                  <ReaderNarration
+                    vcElement={focusedVcElement}
+                    selector={selectedComponent ? `[data-builder-id="${selectedComponent.uuid}"]` : null}
+                    inUseMode={inUseMode}
+                  />
+                </div>
+              </Provider>
+            </>
+          )}
+        </FrameContextConsumer>
+      )}
     </Frame>
   );
 };

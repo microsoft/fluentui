@@ -112,6 +112,13 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
                       onModeChange('use');
                     },
                   },
+                  {
+                    key: 'schema',
+                    content: 'Build schema',
+                    onClick: () => {
+                      onModeChange('schema');
+                    },
+                  },
                 ],
               },
             },
