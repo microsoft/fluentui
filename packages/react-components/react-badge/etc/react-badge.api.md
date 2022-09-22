@@ -55,7 +55,9 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
 };
 
 // @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>> & {
+    hide: boolean;
+};
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
