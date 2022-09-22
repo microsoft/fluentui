@@ -22,6 +22,7 @@ export interface IStackedBarChartState {
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -48,6 +49,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
+      calloutLegend: '',
     };
     this._refArray = [];
     this._onLeave = this._onLeave.bind(this);
@@ -146,6 +148,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 id={this._calloutId}
                 onDismiss={this._closeCallout}
                 preventDismissOnLostFocus={true}
+                shouldUpdateWhenHidden={true}
                 {...this.props.calloutProps}
                 {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
               >
@@ -154,7 +157,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                     this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
                   ) : (
                     <ChartHoverCard
-                      Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+                      Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend}
                       YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
                       color={this.state.color}
                       culture={culture}
@@ -317,26 +320,23 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _onBarFocus(pointData: number, color: string, point: IChartDataPoint): void {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
-    ) {
-      this._refArray.forEach((obj: IRefArrayData) => {
-        if (obj.index === point.legend!) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            selectedLegendTitle: point.legend!,
-            dataForHoverCard: pointData,
-            color: color,
-            xCalloutValue: point.xAxisCalloutData!,
-            yCalloutValue: point.yAxisCalloutData!,
-            dataPointCalloutProps: point,
-            callOutAccessibilityData: point.callOutAccessibilityData!,
-          });
-        }
-      });
-    }
+    this._refArray.forEach((obj: IRefArrayData) => {
+      if (obj.index === point.legend!) {
+        this.setState({
+          refSelected: obj.refElement,
+          isCalloutVisible:
+            this.state.isLegendSelected === false ||
+            (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+          calloutLegend: point.legend!,
+          dataForHoverCard: pointData,
+          color: color,
+          xCalloutValue: point.xAxisCalloutData! || point.legend!,
+          yCalloutValue: point.yAxisCalloutData! || pointData.toString(),
+          dataPointCalloutProps: point,
+          callOutAccessibilityData: point.callOutAccessibilityData!,
+        });
+      }
+    });
   }
 
   private _addLegend(legendDataItems: ILegend[], data?: IChartDataPoint): void {
@@ -409,20 +409,18 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
-    if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)) &&
-      this._calloutAnchorPoint !== point
-    ) {
+    if (this._calloutAnchorPoint !== point) {
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
-        isCalloutVisible: true,
-        selectedLegendTitle: point.legend!,
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+        calloutLegend: point.legend!,
         dataForHoverCard: pointData,
         color: color,
-        xCalloutValue: point.xAxisCalloutData!,
-        yCalloutValue: point.yAxisCalloutData!,
+        xCalloutValue: point.xAxisCalloutData! || point.legend!,
+        yCalloutValue: point.yAxisCalloutData! || pointData.toString(),
         dataPointCalloutProps: point,
         callOutAccessibilityData: point.callOutAccessibilityData!,
       });

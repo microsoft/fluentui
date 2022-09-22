@@ -257,7 +257,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _onRectFocus = (id: string, data: FlattenData): void => {
     this.setState({
       target: this._rectRefArray[id].refElement,
-      isCalloutVisible: true,
+      isCalloutVisible:
+        this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected === true && this.state.activeLegend === data.legend),
       calloutYValue: `${data.rectText}`,
       calloutTextColor: this._colorScale(data.value),
       calloutLegend: data.legend,
@@ -274,7 +276,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       this._calloutAnchorPoint = data;
       this.setState({
         target: this._rectRefArray[id].refElement,
-        isCalloutVisible: true,
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected === true && this.state.activeLegend === data.legend),
         calloutYValue: `${data.rectText}`,
         calloutTextColor: this._colorScale(data.value),
         calloutLegend: data.legend,
