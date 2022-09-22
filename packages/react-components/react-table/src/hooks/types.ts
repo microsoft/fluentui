@@ -58,7 +58,7 @@ export interface TableSortState<TItem> {
   /**
    * @returns sorted rows
    */
-  sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
+  sort: <TRowState extends RowState<TItem>>(rows: TRowState[]) => TRowState[];
   /**
    * Current sort direction
    */
