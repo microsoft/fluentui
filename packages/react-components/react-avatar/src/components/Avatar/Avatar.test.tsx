@@ -190,67 +190,67 @@ describe('Avatar', () => {
     expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe(intialsId);
   });
 
-  it('sets aria-labelledby to the avatar + badge', () => {
+  it('sets aria-labelledby to the name + badge', () => {
     const name = 'First Last';
     render(<Avatar id="root-id" name={name} badge={{ status: 'away', id: 'badge-id' }} />);
 
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-label')).toBe(name);
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe('root-id badge-id');
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe(name);
+    expect(root.getAttribute('aria-labelledby')).toBe('root-id badge-id');
   });
 
-  it('sets aria-labelledby to the avatar + activeAriaLabel when active="active"', () => {
-    render(<Avatar id="root-id" name="First Last" active="active" activeAriaLabel={{ id: 'active-id' }} />);
+  it('sets aria-label to the name + activeState when active="active"', () => {
+    const name = 'First Last';
+    render(<Avatar id="root-id" name={name} active="active" />);
 
-    const activeAriaLabel = screen.getByText(DEFAULT_STRINGS.active);
-
-    expect(activeAriaLabel.id).toBe('active-id');
-    expect(activeAriaLabel.hidden).toBeTruthy();
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe('root-id active-id');
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe(`${name} ${DEFAULT_STRINGS.active}`);
   });
 
-  it('sets aria-labelledby to the avatar + activeAriaLabel when active="inactive"', () => {
-    render(<Avatar id="root-id" name="First Last" active="inactive" />);
+  it('sets aria-label to the name + activeState when active="inactive"', () => {
+    const name = 'First Last';
+    render(<Avatar id="root-id" name={name} active="inactive" />);
 
-    const activeAriaLabel = screen.getByText(DEFAULT_STRINGS.inactive);
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe(`root-id ${activeAriaLabel.id}`);
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe(`${name} ${DEFAULT_STRINGS.inactive}`);
   });
 
-  it('sets aria-labelledby to the avatar + activeAriaLabel, when custom activeAriaLabel is provided', () => {
-    const customActiveAriaLabelText = 'custom active aria label';
-    render(<Avatar id="root-id" name="First Last" active="active" activeAriaLabel={customActiveAriaLabelText} />);
-
-    const activeAriaLabel = screen.getByText('hello world');
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe(`root-id ${activeAriaLabel.id}`);
-  });
-
-  it('sets aria-labelledby to the avatar + badge + activeAriaLabel', () => {
+  it('sets aria-labelledby to the name + badge + activeState when there is a badge and active state', () => {
     render(<Avatar id="root-id" name="First Last" badge={{ status: 'away', id: 'badge-id' }} active="active" />);
 
-    const activeAriaLabel = screen.getByText(DEFAULT_STRINGS.active);
+    const activeAriaLabelElement = screen.getByText(DEFAULT_STRINGS.active);
+    expect(activeAriaLabelElement.id).toBeTruthy();
+    expect(activeAriaLabelElement.hidden).toBeTruthy();
 
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe(
-      `root-id badge-id ${activeAriaLabel.id}`,
-    );
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-labelledby')).toBe(`root-id badge-id ${activeAriaLabelElement.id}`);
   });
 
-  it('sets aria-labelledby to the initials + badge + activeAriaLabel, if no name is provided', () => {
+  it('sets aria-labelledby to the initials + badge + activeState, if no name is provided', () => {
     render(
       <Avatar
         initials={{ children: 'FL', id: 'initials-id' }}
         badge={{ status: 'away', id: 'badge-id' }}
-        activeAriaLabel={{ id: 'active-id' }}
         active="inactive"
       />,
     );
 
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe('initials-id badge-id active-id');
+    const activeAriaLabelElement = screen.getByText(DEFAULT_STRINGS.inactive);
+    expect(activeAriaLabelElement.id).toBeTruthy();
+    expect(activeAriaLabelElement.hidden).toBeTruthy();
+
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-labelledby')).toBe(`initials-id badge-id ${activeAriaLabelElement.id}`);
   });
 
-  it('does not render an activeAriaLabel when active state is unset', () => {
-    const nonRenderedActiveAriaLabelText = 'this should not be rendered';
-    render(<Avatar name="First Last" activeAriaLabel={nonRenderedActiveAriaLabelText} />);
+  it('does not render an activeAriaLabelElement when active state is unset', () => {
+    render(<Avatar name="First Last" />);
 
-    expect(screen.queryByText(nonRenderedActiveAriaLabelText)).toBeFalsy();
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBeFalsy();
+    expect(screen.queryByText(DEFAULT_STRINGS.active)).toBeNull();
+    expect(screen.queryByText(DEFAULT_STRINGS.inactive)).toBeNull();
+
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe('First Last');
+    expect(root.getAttribute('aria-labelledby')).toBeFalsy();
   });
 });
