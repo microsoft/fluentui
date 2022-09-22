@@ -142,6 +142,7 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
           <Tooltip relationship="label" content="Delete" withArrow>
             <Button
               icon={<DeleteRegular />}
+              tabIndex={-1}
               appearance="subtle"
               size="small"
               onClick={openPopover}
@@ -187,6 +188,7 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
               <Tooltip relationship="label" content="Move" withArrow>
                 <Button
                   icon={<ArrowMoveRegular />}
+                  tabIndex={-1}
                   appearance="subtle"
                   size="small"
                   className={styles.button}
@@ -196,6 +198,7 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
               <Tooltip relationship="label" content="Copy" withArrow>
                 <Button
                   icon={<CopyRegular />}
+                  tabIndex={-1}
                   appearance="subtle"
                   size="small"
                   className={styles.button}
@@ -212,7 +215,9 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
           <MenuItem onClick={addAfter}>Add after</MenuItem>
           <MenuItem onClick={addBefore}>Add before</MenuItem>
           <MenuItem onClick={addChild}>Add child</MenuItem>
-          <MenuItem onClick={remove}>Remove</MenuItem>
+          <MenuItem onClick={handleMove}>Move</MenuItem>
+          <MenuItem onClick={handleClone}>Copy</MenuItem>
+          <MenuItem onClick={remove}>Delete</MenuItem>
         </MenuList>
       </MenuPopover>
     </Menu>
