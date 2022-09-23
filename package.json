@@ -303,8 +303,7 @@
     "@types/react@<18.0.0": "@types/react@17.0.44",
     "@types/react-dom@<18.0.0": "@types/react-dom@17.0.15",
     "eslint": "7.25.0",
-    "requestretry": "7.0.0",
-    "workspace-tools": "0.27.0"
+    "requestretry": "7.0.0"
   },
   "syncpack": {
     "prod": true,
