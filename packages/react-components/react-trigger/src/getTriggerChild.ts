@@ -2,6 +2,7 @@ import * as React from 'react';
 import { isFluentTrigger } from './isFluentTrigger';
 
 /**
+ * @internal
  * Gets the trigger element of a FluentTriggerComponent (such as Tooltip or MenuTrigger).
  *
  * In the case where the immediate child is itself a FluentTriggerComponent and/or React Fragment,
