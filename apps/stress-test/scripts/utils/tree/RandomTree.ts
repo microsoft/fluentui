@@ -10,6 +10,7 @@ type TreeParams = {
   minBreadth?: number;
   maxBreadth?: number;
   seed?: number;
+  targetSize?: number;
 };
 
 /**
@@ -30,14 +31,23 @@ export class RandomTree<T> {
   private maxDepth: number;
   private minBreadth: number;
   private maxBreadth: number;
+  private targetSize: number;
 
   private rando: LCG;
 
-  constructor({ minDepth = 1, maxDepth = 15, minBreadth = 1, maxBreadth = 15, seed = defaultSeed }: TreeParams = {}) {
+  constructor({
+    minDepth = 1,
+    maxDepth = 15,
+    minBreadth = 1,
+    maxBreadth = 15,
+    seed = defaultSeed,
+    targetSize,
+  }: TreeParams = {}) {
     this.minDepth = minDepth;
     this.maxDepth = maxDepth;
     this.minBreadth = minBreadth;
     this.maxBreadth = maxBreadth;
+    this.targetSize = targetSize ?? Infinity;
 
     this.rando = new LCG(seed);
     this.numNodes = 0;
@@ -46,7 +56,12 @@ export class RandomTree<T> {
   public build = (createNode: TreeNodeCreateCallback<T>): TreeNode<T> => {
     this.numNodes = 1;
     const root = createNode(null, 0, 0);
-    return this._doBuild(createNode, root, 1);
+    let tree = this._doBuild(createNode, root, 1);
+    while (this.numNodes < this.targetSize) {
+      tree = this._doBuild(createNode, root, 1);
+    }
+
+    return tree;
   };
 
   public fromFixture = (fixture: TestTreeFixture['tree'], parent: TreeNode<T> | null = null): TreeNode<T> => {
@@ -80,13 +95,13 @@ export class RandomTree<T> {
     const breadth = this._randomBreadth(currentBreadth);
     const depth = this._randomDepth(Math.max(this.maxDepth - currentDepth, this.minDepth));
 
-    for (let i = 0; i < breadth; i++) {
+    for (let i = 0; i < breadth && this.numNodes < this.targetSize; i++) {
       this.numNodes++;
       const node = createNode(parent, currentDepth, breadth);
 
       parent.children.push(node);
 
-      if (currentDepth < depth) {
+      if (currentDepth < depth && this.numNodes < this.targetSize) {
         this._doBuild(
           createNode,
           node,
