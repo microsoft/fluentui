@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat: Adds `visible` prop to `TableCellActions`",
+  "comment": "feat: Adds layoutType prop to Table with flex option ",
   "packageName": "@fluentui/react-table",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

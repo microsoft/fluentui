@@ -40,7 +40,7 @@ task('screener:runner', cb => {
     deployUrl: process.env.DEPLOYURL,
   });
 
-  if (process.env.IS_ARTIFACT_PRESENT) {
+  if (process.env.IS_ARTIFACT_PRESENT === 'true') {
     const screenerStates = require(paths.docsDist('screenerStates.json'));
     screenerConfig.states = screenerStates;
   }

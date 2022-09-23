@@ -14,7 +14,7 @@ import { useTableContext } from '../../contexts/tableContext';
  * @param ref - reference to root HTMLElement of TableHeader
  */
 export const useTableHeader_unstable = (props: TableHeaderProps, ref: React.Ref<HTMLElement>): TableHeaderState => {
-  const { noNativeElements, sortable } = useTableContext();
+  const { noNativeElements, sortable, layoutType } = useTableContext();
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'horizontal', circular: true });
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'thead';
@@ -28,5 +28,6 @@ export const useTableHeader_unstable = (props: TableHeaderProps, ref: React.Ref<
       ...(sortable && keyboardNavAttr),
       ...props,
     }),
+    layoutType,
   };
 };

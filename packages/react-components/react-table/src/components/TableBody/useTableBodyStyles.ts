@@ -2,9 +2,15 @@ import { mergeClasses, makeStyles } from '@griffel/react';
 import type { TableBodySlots, TableBodyState } from './TableBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-const useStyles = makeStyles({
+const useNativeLayoutStyles = makeStyles({
   root: {
     display: 'table-row-group',
+  },
+});
+
+const useFlexLayoutStyles = makeStyles({
+  root: {
+    display: 'block',
   },
 });
 
@@ -17,8 +23,11 @@ export const tableBodyClassNames: SlotClassNames<TableBodySlots> = {
  * Apply styling to the TableBody slots based on the state
  */
 export const useTableBodyStyles_unstable = (state: TableBodyState): TableBodyState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(tableBodyClassName, styles.root, state.root.className);
+  const layoutStyles = {
+    native: useNativeLayoutStyles(),
+    flex: useFlexLayoutStyles(),
+  };
+  state.root.className = mergeClasses(tableBodyClassName, layoutStyles[state.layoutType].root, state.root.className);
 
   return state;
 };
