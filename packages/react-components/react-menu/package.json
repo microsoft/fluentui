@@ -12,8 +12,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-menu/src && yarn docs",
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
@@ -25,7 +23,8 @@
     "start": "yarn storybook",
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
