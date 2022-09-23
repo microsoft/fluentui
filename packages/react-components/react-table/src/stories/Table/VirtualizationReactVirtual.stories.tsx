@@ -14,7 +14,7 @@ export const VirtualizationReactVirtual = () => {
   });
 
   return (
-    <Table>
+    <Table layoutType="flex">
       <TableHeader style={{ paddingRight: 16 }}>
         <TableRow>
           <TableHeaderCell>First</TableHeaderCell>

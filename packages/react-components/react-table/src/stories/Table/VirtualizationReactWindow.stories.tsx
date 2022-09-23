@@ -26,7 +26,7 @@ export const VirtualizationReactWindow = () => {
   );
 
   return (
-    <Table ref={tableRef} noNativeElements>
+    <Table ref={tableRef} noNativeElements layoutType="flex">
       <TableHeader style={{ paddingRight: 14 }}>
         <TableRow>
           <TableHeaderCell>First</TableHeaderCell>

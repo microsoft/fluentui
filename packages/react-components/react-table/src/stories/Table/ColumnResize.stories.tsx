@@ -73,7 +73,7 @@ export const ColumnResize = () => {
           );
         })}
       </div>
-      <Table ref={tableRef}>
+      <Table ref={tableRef} layoutType="flex">
         <TableHeader>
           <TableRow>
             <TableHeaderCell style={getColumnStyle('first')}>

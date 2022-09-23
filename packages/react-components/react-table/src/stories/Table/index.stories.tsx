@@ -19,8 +19,9 @@ export { CompositeNavigationMode } from './CompositeNavigationMode.stories';
 export { ColumnResize } from './ColumnResize.stories';
 export { Everything } from './Everything.stories';
 export { VirtualizationReactWindow } from './VirtualizationReactWindow.stories';
-export { VirtualizationContentVisibility } from './VirtualizationContentVisibility.stories';
 export { VirtualizationReactVirtual } from './VirtualizationReactVirtual.stories';
+export { VirtualizationRecyclerListView } from './VirtualizationRecyclerListView.stories';
+export { VirtualizationResembli } from './VirtualizationResembli.stories';
 
 export default {
   title: 'Preview Components/Table',

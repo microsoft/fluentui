@@ -151,7 +151,6 @@ export class ColumnResize {
       let i = this.columns.length - 1;
       while (i >= 0 && totalWidth > availableWidth) {
         const column = this.columns[i];
-        console.log(column.width, column.minWidth);
 
         if (column.width > column.minWidth) {
           const diffAvailableWidth = totalWidth - availableWidth;
