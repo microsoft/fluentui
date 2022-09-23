@@ -48,10 +48,11 @@ const useStyles = makeStyles({
 
 export type ListProps = {
   onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => void;
+  selectedComponentInfo?: ComponentInfo;
   style?: React.CSSProperties;
 };
 
-export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
+export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart, selectedComponentInfo, style }) => {
   const [filter, setFilter] = React.useState<string>('');
   const [componentLibrary, setComponentLibrary] = React.useState(componentLibaries[0]);
   const onChangeComponentLibrary = (_, data) => {
@@ -112,6 +113,22 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
     </span>
   );
 
+  const recommendedComponentsNames = selectedComponentInfo?.subcomponents || [];
+  if (selectedComponentInfo?.parentDisplayName) {
+    recommendedComponentsNames.push(selectedComponentInfo.parentDisplayName);
+  }
+
+  const recommendedComponentsList = recommendedComponentsNames.reduce(
+    (recommendedComponents, supportedComponentName) => {
+      const componentInfo = supportedComponents.find(component => component.displayName === supportedComponentName);
+      if (componentInfo) {
+        recommendedComponents.push(componentInfo);
+      }
+      return recommendedComponents;
+    },
+    [],
+  );
+
   return (
     <div
       role="complementary"
@@ -146,6 +163,20 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
         value={filter}
       />
       <Accordion multiple collapsible>
+        {recommendedComponentsList.length > 0 && (
+          <AccordionItem key={'recommendedComponents'} value={'recommendedComponents'}>
+            <AccordionHeader size="medium" className={styles.categoryItem}>
+              Recommended components
+            </AccordionHeader>
+            <AccordionPanel className={styles.categoryItems}>
+              {recommendedComponentsList.map(i => (
+                <span key={i.displayName} className={styles.componentItem} onMouseDown={handleMouseDown(i)}>
+                  {i.displayName}
+                </span>
+              ))}
+            </AccordionPanel>
+          </AccordionItem>
+        )}
         {treeItems.map(c => (
           <AccordionItem key={c.id} value={c.id}>
             <AccordionHeader size="medium" className={styles.categoryItem}>

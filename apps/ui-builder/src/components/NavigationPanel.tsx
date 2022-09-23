@@ -5,6 +5,7 @@ import { useMode } from '../hooks/useMode';
 import { JSONTreeElement } from './types';
 import { AccessibilityError } from '../accessibility/types';
 import { AddTabPanel } from './tabPanels/AddTabPanel';
+import { ComponentInfo } from '../componentInfo/types';
 
 import { TabList, Tab, Tooltip, makeStyles, shorthands, tokens, mergeClasses } from '@fluentui/react-components';
 import {
@@ -47,6 +48,7 @@ export type NavigationPanelProps = {
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onSwitchTab?: (tab: any) => void;
   selectedComponent?: JSONTreeElement;
+  selectedComponentInfo?: ComponentInfo;
 };
 
 export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = ({
@@ -62,6 +64,7 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = ({
   onSelectComponent,
   onSwitchTab,
   selectedComponent,
+  selectedComponentInfo,
 }: NavigationPanelProps) => {
   const [{ mode }] = useMode();
   const styles = useStyles();
@@ -71,7 +74,7 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = ({
   const printActiveTab = () => {
     switch (activeTab) {
       case 'add':
-        return <AddTabPanel onDragStart={onDragStart} />;
+        return <AddTabPanel onDragStart={onDragStart} selectedComponentInfo={selectedComponentInfo} />;
 
       case 'accessibility':
         return (
