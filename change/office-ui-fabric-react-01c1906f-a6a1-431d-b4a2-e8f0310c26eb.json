@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Export useResponsiveMode",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

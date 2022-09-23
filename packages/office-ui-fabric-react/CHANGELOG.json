@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 23 Sep 2022 12:27:02 GMT",
+      "tag": "office-ui-fabric-react_v7.198.0",
+      "version": "7.198.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: Export useResponsiveMode",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "0e88bb528204cdce2ae272d0572f0d0f0983b351",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Sep 2022 20:18:55 GMT",
       "tag": "office-ui-fabric-react_v7.197.6",
       "version": "7.197.6",

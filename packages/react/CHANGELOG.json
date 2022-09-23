@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 23 Sep 2022 12:27:02 GMT",
+      "tag": "@fluentui/react_v7.198.0",
+      "version": "7.198.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: Export useResponsiveMode",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "0e88bb528204cdce2ae272d0572f0d0f0983b351",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.198.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "0e88bb528204cdce2ae272d0572f0d0f0983b351",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 00:07:57 GMT",
       "tag": "@fluentui/react_v7.197.0",
       "version": "7.197.0",

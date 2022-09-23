@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 30 Aug 2022 00:07:57 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Sep 2022 12:27:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.198.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.198.0)
+
+Fri, 23 Sep 2022 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.197.0..@fluentui/react_v7.198.0)
+
+### Minor changes
+
+- fix: Export useResponsiveMode ([PR #24909](https://github.com/microsoft/fluentui/pull/24909) by mgodbolt@microsoft.com)
 
 ## [7.197.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.197.0)
 

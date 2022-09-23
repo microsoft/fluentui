@@ -56,7 +56,7 @@
     "@uifabric/utilities": "^7.38.0",
     "@uifabric/variants": "^7.3.2",
     "d3-format": "^1.4.4",
-    "office-ui-fabric-react": "^7.197.6",
+    "office-ui-fabric-react": "^7.198.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
