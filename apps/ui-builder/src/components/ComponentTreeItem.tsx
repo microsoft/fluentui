@@ -66,7 +66,6 @@ interface IProps {
 
 const isMac = navigator.userAgent.indexOf('Mac OS X') !== -1;
 const macKeyDown = e => {
-  console.log(e);
   const keyCode = e.keyCode || e.which;
   const F10 = 121;
   if (e.shiftKey && keyCode === F10) {

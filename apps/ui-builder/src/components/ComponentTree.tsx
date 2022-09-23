@@ -27,11 +27,11 @@ export type ComponentTreeProps = {
 };
 
 const isMac = navigator.userAgent.indexOf('Mac OS X') !== -1;
-const macKeyDown = e => {
+const macKeyDown = (e, target) => {
   const keyCode = e.keyCode || e.which;
   const F10 = 121;
   if (e.shiftKey && keyCode === F10) {
-    const activeElement = document.activeElement;
+    const activeElement = target;
     if (activeElement) {
       const event = new MouseEvent('contextmenu', {
         bubbles: true,
@@ -42,8 +42,6 @@ const macKeyDown = e => {
     }
   }
 };
-
-const treeKeyDown = isMac ? macKeyDown : undefined;
 
 const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
@@ -76,6 +74,11 @@ const jsonTreeToTreeItems: (
   }
   return {
     onTitleClick: () => handleSelectComponent(tree),
+    onKeyDown: (e, data) => {
+      if (isMac) {
+        macKeyDown(e, e.target.firstChild);
+      }
+    },
     id: tree.uuid as string,
     title: {
       content: tree.displayName,
@@ -197,13 +200,5 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     ) ?? [];
   items.forEach(item => getActiveItemIds(item));
 
-  return (
-    <Tree
-      // accessibility={behavior}
-      // onKeyDown={treeKeyDown}
-      items={items}
-      activeItemIds={activeItems}
-      className={styles.tree}
-    />
-  );
+  return <Tree items={items} activeItemIds={activeItems} className={styles.tree} />;
 };
