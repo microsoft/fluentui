@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make Menu openOnHover prop work again",
-  "packageName": "@fluentui/react-menu",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
