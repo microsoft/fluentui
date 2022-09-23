@@ -64,23 +64,6 @@ interface IProps {
   handleMove: React.MouseEventHandler<SVGElement | HTMLElement>;
 }
 
-const isMac = navigator.userAgent.indexOf('Mac OS X') !== -1;
-const macKeyDown = e => {
-  const keyCode = e.keyCode || e.which;
-  const F10 = 121;
-  if (e.shiftKey && keyCode === F10) {
-    const activeElement = document.activeElement;
-    if (activeElement) {
-      const event = new MouseEvent('contextmenu', {
-        bubbles: true,
-        clientX: e.target.offsetLeft,
-        clientY: e.target.offsetTop,
-      });
-      activeElement.dispatchEvent(event);
-    }
-  }
-};
-
 export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
   node,
   level,
@@ -100,12 +83,6 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
   const [popoverTarget, setPopoverTarget] = React.useState<HTMLElement | null>(null);
   const openPopover = React.useCallback(() => setDeletePopoverOpened(true), [setDeletePopoverOpened]);
   const closePopover = React.useCallback(() => setDeletePopoverOpened(false), [setDeletePopoverOpened]);
-
-  const onKeyDown = React.useCallback(e => {
-    if (isMac) {
-      macKeyDown(e);
-    }
-  }, []);
 
   React.useEffect(() => {
     if (!selected) {
@@ -156,7 +133,6 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
     <Menu openOnContext={true}>
       <MenuTrigger>
         <div
-          onKeyDown={onKeyDown}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           style={{ paddingLeft: `${(level + 1) * 0.5}rem` }}
