@@ -83,14 +83,12 @@ const jsonTreeToTreeItems: (
     renderItemTitle: (Component: React.ElementType<TreeTitleProps>, { content, ...props }) => {
       return (
         <Component {...props}>
-          {/*<span style={{ flex: 1 }}>{content} asdfx</span>*/}
           <ComponentTreeItem
             key={tree.uuid}
             node={tree}
             level={level}
             selected={tree.uuid === selectedComponentId}
             handleAddComponent={handleAddComponent}
-            handleSelectComponent={handleSelectComponent}
             handleDeleteComponent={handleDeleteComponent}
             handleDeleteSelected={handleDeleteSelected}
             handleClone={handleClone}

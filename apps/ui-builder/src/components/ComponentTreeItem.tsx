@@ -3,7 +3,6 @@ import {
   Button,
   Tooltip,
   Popover,
-  PopoverTrigger,
   PopoverSurface,
   Menu,
   MenuPopover,
@@ -61,7 +60,6 @@ interface IProps {
   handleAddComponent: (id: string, where: string) => void;
   handleDeleteComponent: (id: string) => void;
   handleDeleteSelected: React.MouseEventHandler<SVGElement | HTMLElement>;
-  handleSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   handleClone: React.MouseEventHandler<SVGElement | HTMLElement>;
   handleMove: React.MouseEventHandler<SVGElement | HTMLElement>;
 }
@@ -91,7 +89,6 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
   handleAddComponent,
   handleDeleteComponent,
   handleDeleteSelected,
-  handleSelectComponent,
   handleClone,
   handleMove,
 }) => {
@@ -100,6 +97,8 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
   const [deletePopoverOpened, setDeletePopoverOpened] = React.useState(false);
   const [onHover, setOnHover] = React.useState(false);
 
+  // popover ref to avoid aria-role button that would next focusable items
+  const [popoverTarget, setPopoverTarget] = React.useState<HTMLElement | null>(null);
   const openPopover = React.useCallback(() => setDeletePopoverOpened(true), [setDeletePopoverOpened]);
   const closePopover = React.useCallback(() => setDeletePopoverOpened(false), [setDeletePopoverOpened]);
 
@@ -117,24 +116,24 @@ export const ComponentTreeItem: (props: IProps) => JSX.Element = ({
 
   const deleteButton = React.useMemo(
     () => (
-      <Popover open={deletePopoverOpened}>
-        <PopoverTrigger>
-          <Tooltip relationship="label" content="Delete" withArrow>
-            <span onClick={openPopover} className={styles.icon}>
-              <Delete20Regular />
-            </span>
-          </Tooltip>
-        </PopoverTrigger>
-        <PopoverSurface className={styles.deletePopover}>
-          <span className={styles.deletePopoverCaption}>Are you sure you want to delete {node.displayName}?</span>
-          <Button onClick={closePopover}>Cancel</Button>
-          <Button appearance="primary" onClick={handleDeleteSelected}>
-            Delete
-          </Button>
-        </PopoverSurface>
-      </Popover>
+      <>
+        <Tooltip relationship="label" content="Delete" withArrow>
+          <span aria-haspopup onClick={openPopover} className={styles.icon} ref={setPopoverTarget}>
+            <Delete20Regular />
+          </span>
+        </Tooltip>
+        <Popover open={deletePopoverOpened} positioning={{ target: popoverTarget }}>
+          <PopoverSurface className={styles.deletePopover}>
+            <span className={styles.deletePopoverCaption}>Are you sure you want to delete {node.displayName}?</span>
+            <Button onClick={closePopover}>Cancel</Button>
+            <Button appearance="primary" onClick={handleDeleteSelected}>
+              Delete
+            </Button>
+          </PopoverSurface>
+        </Popover>
+      </>
     ),
-    [node, deletePopoverOpened, openPopover, closePopover, handleDeleteSelected, styles],
+    [node, deletePopoverOpened, openPopover, closePopover, handleDeleteSelected, styles, popoverTarget],
   );
 
   const onMouseEnter = React.useCallback(() => setOnHover(true), [setOnHover]);
