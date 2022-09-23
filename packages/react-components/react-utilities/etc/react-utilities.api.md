@@ -7,9 +7,6 @@
 import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
-// @internal
-export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactElement | null) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactElement | null;
-
 // @public
 export function canUseDOM(): boolean;
 
@@ -30,11 +27,6 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
-
-// @internal
-export type FluentTriggerComponent = {
-    isFluentTriggerComponent?: boolean;
-};
 
 // @public
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
@@ -62,11 +54,6 @@ export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
-};
-
-// @internal
-export const getTriggerChild: <P = any>(children: React_2.ReactNode) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> & {
-    ref?: React_2.Ref<unknown> | undefined;
 };
 
 // @public

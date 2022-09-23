@@ -4,6 +4,24 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @internal
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactElement | null) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactElement | null;
+
+// @public
+export type FluentTriggerComponent = {
+    isFluentTriggerComponent?: boolean;
+};
+
+// @internal
+export const getTriggerChild: <P = any>(children: React_2.ReactNode) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> & {
+    ref?: React_2.Ref<unknown> | undefined;
+};
+
+// @public
+export const isFluentTrigger: (element: React_2.ReactElement) => boolean | undefined;
+
 // (No @packageDocumentation comment for this package)
 
 ```

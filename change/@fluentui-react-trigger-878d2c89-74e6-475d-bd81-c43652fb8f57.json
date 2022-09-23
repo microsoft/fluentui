@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: move trigger methods from react-utilities",
+  "packageName": "@fluentui/react-trigger",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

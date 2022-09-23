@@ -40,7 +40,3 @@ export {
   mergeCallbacks,
   shouldPreventDefaultOnKeyDown,
 } from './utils/index';
-
-export { applyTriggerPropsToChildren, getTriggerChild } from './trigger/index';
-
-export type { FluentTriggerComponent } from './trigger/index';
