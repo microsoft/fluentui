@@ -265,7 +265,7 @@
     "webpack-dev-server": "4.7.4",
     "webpack-hot-middleware": "2.25.1",
     "webpack-merge": "5.7.3",
-    "workspace-tools": "0.18.4",
+    "workspace-tools": "0.27.0",
     "yargs": "13.3.2",
     "yargs-parser": "13.1.2",
     "yargs-unparser": "2.0.0"
@@ -303,7 +303,6 @@
     "@types/react@<18.0.0": "@types/react@17.0.44",
     "@types/react-dom@<18.0.0": "@types/react-dom@17.0.15",
     "eslint": "7.25.0",
-    "workspace-tools": "0.18.4",
     "requestretry": "7.0.0"
   },
   "syncpack": {
