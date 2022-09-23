@@ -120,7 +120,10 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
 
   const recommendedComponentsList = recommendedComponentsNames.reduce(
     (recommendedComponents, supportedComponentName) => {
-      const componentInfo = supportedComponents.find(component => component.displayName === supportedComponentName);
+      const componentInfo = supportedComponents.find(
+        component =>
+          component.moduleName === selectedComponentInfo.moduleName && component.shortName === supportedComponentName,
+      );
       if (componentInfo) {
         recommendedComponents.push(componentInfo);
       }
@@ -171,7 +174,7 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
             <AccordionPanel className={styles.categoryItems}>
               {recommendedComponentsList.map(i => (
                 <span key={i.displayName} className={styles.componentItem} onMouseDown={handleMouseDown(i)}>
-                  {i.displayName}
+                  {i.shortName || i.displayName}
                 </span>
               ))}
             </AccordionPanel>

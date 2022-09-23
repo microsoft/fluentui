@@ -26,7 +26,7 @@ interface IDesignerProps {
 }
 
 const getComponentInfo = selectedJSONTreeElement => {
-  if (!selectedJSONTreeElement) {
+  if (!selectedJSONTreeElement || selectedJSONTreeElement.uuid === 'builder-root') {
     return null;
   }
   const shortName = selectedJSONTreeElement.displayName.split('.')[1] || selectedJSONTreeElement.displayName;

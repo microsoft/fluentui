@@ -2,6 +2,7 @@
 // componentInfo should be a part of components package? -> discuss with Levi
 
 import * as React from 'react';
+import { V0, V9 } from '../utils/componentLibraries';
 import { ComponentInfo } from './types';
 import { v9ComponentsInfo } from './v9componentsInfo';
 
@@ -31,20 +32,22 @@ export const componentInfoContext: {
 } = {} as any;
 
 componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {
-  next.moduleName = '@fluentui/react-northstar';
+  next.moduleName = V0.moduleName;
   next.shortName = next.displayName;
-  next.displayName = `FluentV0.${next.displayName}`;
-  next.componentLibrary = 'Fluent UI v0';
-  next.parentDisplayName = `FluentV0.${next.parentDisplayName}`;
+  next.displayName = `${V0.prefix}.${next.displayName}`;
+  next.componentLibrary = V0.name;
+  if (next.parentDisplayName) {
+    next.parentDisplayName = `${V0.prefix}.${next.parentDisplayName}`;
+  }
   acc[next.displayName] = next;
   return acc;
 }, {});
 
 v9ComponentsInfo.forEach(item => {
-  item.moduleName = '@fluentui/react-components';
+  item.moduleName = V9.moduleName;
   item.shortName = item.displayName;
-  item.componentLibrary = 'Fluent UI v9';
-  item.displayName = `FluentV9.${item.displayName}`;
+  item.componentLibrary = V9.name;
+  item.displayName = `${V9.prefix}.${item.displayName}`;
 
   item.props.forEach((prop, i) => {
     if (prop.name === 'children') {
