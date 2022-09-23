@@ -5,13 +5,8 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
-import {
-  applyTriggerPropsToChildren,
-  getTriggerChild,
-  mergeCallbacks,
-  useEventCallback,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren, getTriggerChild } from '@fluentui/react-trigger';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 
 /**

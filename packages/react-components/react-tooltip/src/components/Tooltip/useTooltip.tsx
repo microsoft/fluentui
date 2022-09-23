@@ -5,7 +5,6 @@ import {
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
 import {
-  applyTriggerPropsToChildren,
   resolveShorthand,
   useControllableState,
   useId,
@@ -13,10 +12,10 @@ import {
   useIsSSR,
   useMergedRefs,
   useTimeout,
-  getTriggerChild,
   mergeCallbacks,
   useEventCallback,
 } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren, getTriggerChild } from '@fluentui/react-trigger';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { Escape } from '@fluentui/keyboard-keys';

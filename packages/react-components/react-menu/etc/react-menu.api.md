@@ -13,7 +13,7 @@ import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import type { FluentTriggerComponent } from '@fluentui/react-utilities';
+import type { FluentTriggerComponent } from '@fluentui/react-trigger';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';

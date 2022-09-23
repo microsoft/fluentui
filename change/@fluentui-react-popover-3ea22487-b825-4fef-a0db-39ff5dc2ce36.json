@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: updates dependencies from react-utilities to react-trigger",
+  "packageName": "@fluentui/react-popover",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "none"
+}

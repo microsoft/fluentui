@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  applyTriggerPropsToChildren,
-  getTriggerChild,
-  mergeCallbacks,
-  useMergedRefs,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren, getTriggerChild } from '@fluentui/react-trigger';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';

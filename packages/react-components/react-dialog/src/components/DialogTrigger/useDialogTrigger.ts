@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
+import { useEventCallback } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren, getTriggerChild } from '@fluentui/react-trigger';
 import { DialogTriggerChildProps, DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 import { useARIAButtonProps } from '@fluentui/react-aria';

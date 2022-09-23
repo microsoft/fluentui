@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@fluentui/priority-overflow';
-import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
+import { useMergedRefs } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren } from '@fluentui/react-trigger';
 
 import { OverflowContext } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';

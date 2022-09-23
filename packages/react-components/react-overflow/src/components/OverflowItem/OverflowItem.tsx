@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
+import { useMergedRefs } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren } from '@fluentui/react-trigger';
 import { useOverflowItem } from '../../useOverflowItem';
 import { OverflowItemProps } from './OverflowItem.types';
 
