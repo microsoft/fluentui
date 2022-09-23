@@ -1,8 +1,9 @@
 import fs from 'fs-extra';
 import { join } from 'path';
 import { getFixturesDir, remove } from './paths.js';
-import { RandomTree } from '../../src/shared/tree/RandomTree.js';
-import { RandomSelectorTreeNode, selectorTreeCreator } from '../../src/shared/tree/RandomSelectorTreeNode.js';
+import { RandomTree } from './tree/RandomTree.js';
+import { RandomSelectorTreeNode } from '../../src/shared/tree/types.js';
+import { selectorTreeCreator } from './tree/RandomSelectorTreeNode.js';
 import glob from 'glob';
 
 type BuildTreeFixture = (name: string, options: { [key: string]: string }) => void;

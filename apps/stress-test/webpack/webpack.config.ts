@@ -27,7 +27,7 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
     output: {
       filename: '[name].[contenthash].bundle.js',
       sourceMapFilename: '[name].[contenthash].map',
-      path: path.resolve(path.dirname(__dirname), 'dist'),
+      path: path.resolve(path.dirname(__dirname), !isProd ? 'dev-build' : 'dist'),
     },
     devtool: 'source-map',
     resolve: {

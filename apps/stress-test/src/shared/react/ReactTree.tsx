@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TreeNode } from '../tree/RandomTree';
+import { TreeNode } from '../tree/types';
 
 export type ReactTreeItemRenderer<T> = (node: T, depth: number, index: number) => JSX.Element;
 

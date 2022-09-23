@@ -1,24 +1,12 @@
-import { RandomSelector } from '../css/RandomSelector.js';
-import { TreeNode, TreeNodeCreateCallback } from './RandomTree.js';
-import { random } from '../utils/random.js';
+import { LCG } from 'random-seedable';
+import { RandomSelector } from '../../../src/shared/css/RandomSelector.js';
+import { Attribute, RandomSelectorTreeNode, TreeNode, TreeNodeCreateCallback } from '../../../src/shared/tree/types';
 
-export type Attribute = {
-  key: string;
-  value: string | undefined;
-  selector: string;
-};
+const rando: LCG = new LCG(4212021);
 
-export type RandomSelectorTreeNode = {
-  name: string;
-  classNames: string[];
-  attributes: Attribute[];
-  siblings: string[];
-  pseudos: string[];
-};
+const coin = (pTrue: number = 0.5): boolean => rando.coin(pTrue);
+const choice = <T>(choices: T[]): T => rando.choice(choices);
 
-export type SelectorTreeNode = TreeNode<RandomSelectorTreeNode>;
-
-const { coin, choice } = random();
 const randomSelector = new RandomSelector();
 
 const chances: { [key: string]: number } = {
@@ -70,7 +58,7 @@ const maybeNot = (selector: string): string => {
 };
 
 const getAttributes = () => {
-  const attributes = [];
+  const attributes = [] as Attribute[];
   if (coin(chances.addAttribute)) {
     const selector = randomSelector.randomSelector(['attribute-name', 'attribute-value']);
     const [key, value] = selector.replace(/(\[|\])/g, '').split('=');
@@ -81,7 +69,7 @@ const getAttributes = () => {
 };
 
 const getSiblingSelectors = () => {
-  const siblings = [];
+  const siblings = [] as string[];
 
   if (coin(chances.addSibling)) {
     siblings.push(randomSelector.randomSelector(['nth-child']));
@@ -91,7 +79,7 @@ const getSiblingSelectors = () => {
 };
 
 const getPseudoSelectors = () => {
-  const pseudo = [];
+  const pseudo = [] as string[];
 
   if (coin(chances.addPsuedo)) {
     pseudo.push(randomSelector.randomSelector(['pseudo-element']));

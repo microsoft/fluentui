@@ -1,5 +1,8 @@
-import { random, Random } from '../utils/random.js';
-import { TestFixture } from '../utils/testUtils.js';
+import { TreeNode, TreeNodeCreateCallback } from '../../../src/shared/tree/types';
+import { TestTreeFixture } from '../../../src/shared/utils/testUtils.js';
+import { LCG } from 'random-seedable';
+
+const defaultSeed = 4212021;
 
 type TreeParams = {
   minDepth?: number;
@@ -8,15 +11,6 @@ type TreeParams = {
   maxBreadth?: number;
   seed?: number;
 };
-
-export type TreeNode<T> = {
-  value: T;
-  children: TreeNode<T>[];
-  parent: TreeNode<T> | null;
-};
-
-export type TreeNodeCreateCallback<T> = (parent: TreeNode<T> | null, depth: number, breath: number) => TreeNode<T>;
-export type TreeNodeVisitCallback<T> = (node: TreeNode<T>) => void;
 
 /**
  * Exponential decay function.
@@ -37,15 +31,15 @@ export class RandomTree<T> {
   private minBreadth: number;
   private maxBreadth: number;
 
-  private rando: Random;
+  private rando: LCG;
 
-  constructor({ minDepth = 1, maxDepth = 15, minBreadth = 1, maxBreadth = 15, seed }: TreeParams = {}) {
+  constructor({ minDepth = 1, maxDepth = 15, minBreadth = 1, maxBreadth = 15, seed = defaultSeed }: TreeParams = {}) {
     this.minDepth = minDepth;
     this.maxDepth = maxDepth;
     this.minBreadth = minBreadth;
     this.maxBreadth = maxBreadth;
 
-    this.rando = random(seed);
+    this.rando = new LCG(seed);
     this.numNodes = 0;
   }
 
@@ -55,7 +49,7 @@ export class RandomTree<T> {
     return this._doBuild(createNode, root, 1);
   };
 
-  public fromFixture = (fixture: TestFixture['tree'], parent: TreeNode<T> | null = null): TreeNode<T> => {
+  public fromFixture = (fixture: TestTreeFixture['tree'], parent: TreeNode<T> | null = null): TreeNode<T> => {
     const root: TreeNode<T> = {
       value: fixture.value as T,
       children: [],
@@ -70,11 +64,11 @@ export class RandomTree<T> {
   };
 
   private _randomDepth = (max?: number): number => {
-    return this.rando.range(this.minDepth, max ?? this.maxDepth);
+    return this.rando.randRange(this.minDepth, max ?? this.maxDepth);
   };
 
   private _randomBreadth = (max?: number): number => {
-    return this.rando.range(this.minBreadth, max ?? this.maxBreadth);
+    return this.rando.randRange(this.minBreadth, max ?? this.maxBreadth);
   };
 
   private _doBuild = (
