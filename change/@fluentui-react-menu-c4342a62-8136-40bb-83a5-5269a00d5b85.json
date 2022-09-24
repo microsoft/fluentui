@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: replace keydown handlers by useARIAButtonShorthand on MenuItem",
-  "packageName": "@fluentui/react-menu",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

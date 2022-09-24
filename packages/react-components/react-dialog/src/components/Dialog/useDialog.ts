@@ -61,8 +61,8 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     content: open ? content : null,
     trigger,
     requestOpenChange,
-    dialogBodyID: useId('dialog-body-'),
-    dialogTitleID: useId('dialog-title-'),
+    dialogContentId: useId('dialog-content-'),
+    dialogTitleId: useId('dialog-title-'),
     isNestedDialog: useHasParentContext(DialogContext),
     dialogRef: useMergedRefs(focusRef, nativeControlRef),
   };

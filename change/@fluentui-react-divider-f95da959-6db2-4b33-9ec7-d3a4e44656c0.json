@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Divider - allow props to override default values",
-  "packageName": "@fluentui/react-divider",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

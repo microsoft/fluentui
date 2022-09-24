@@ -2,6 +2,21 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 20:55:45 GMT",
+      "tag": "@fluentui/react-persona_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:50:08 GMT",
       "tag": "@fluentui/react-persona_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

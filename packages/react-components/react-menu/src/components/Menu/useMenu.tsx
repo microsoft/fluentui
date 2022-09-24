@@ -25,6 +25,7 @@ import { Tab } from '@fluentui/keyboard-keys';
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps): MenuState => {
+  const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
     inline = false,
@@ -33,10 +34,10 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     closeOnScroll = false,
     openOnContext = false,
     persistOnItemClick = false,
+    openOnHover = isSubmenu,
     defaultCheckedValues,
   } = props;
   const triggerId = useId('menu');
-  const isSubmenu = useIsSubmenu();
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const positioningState = {
@@ -96,7 +97,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     hoverDelay,
     triggerId,
     isSubmenu,
-    openOnHover: isSubmenu,
+    openOnHover,
     contextTarget,
     setContextTarget,
     hasCheckmarks,

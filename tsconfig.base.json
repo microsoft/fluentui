@@ -29,6 +29,7 @@
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/src/index.ts"],
       "@fluentui/react-combobox": ["packages/react-components/react-combobox/src/index.ts"],
       "@fluentui/react-components": ["packages/react-components/react-components/src/index.ts"],
+      "@fluentui/react-components/unstable": ["packages/react-components/react-components/src/unstable/index.ts"],
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
@@ -71,6 +72,7 @@
       "@fluentui/react-theme-shim-v8-v9": ["packages/react-components-migration/react-theme-shim-v8-v9/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],
+      "@fluentui/react-trigger": ["packages/react-components/react-trigger/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"]
     }

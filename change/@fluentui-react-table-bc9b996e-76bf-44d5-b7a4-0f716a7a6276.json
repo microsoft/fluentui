@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: `TableCellActions` displays correctly inside `TableHeaderCell`",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
