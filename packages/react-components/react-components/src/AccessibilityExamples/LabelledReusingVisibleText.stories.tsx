@@ -13,11 +13,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const LabelWithVisibleTextExample = () => {
+export const LabelledReusingVisibleTextExample = () => {
   const styles = useStyles();
   return (
-    <Scenario pageTitle="Label with visible text">
-      <h1>Label component with visible text</h1>
+    <Scenario pageTitle="Component labelled reusing visible text">
+      <h1>Component labelled reusing visible text</h1>
       <h2>Bad example</h2>
       <>
         <h4>Members</h4>
@@ -33,7 +33,7 @@ export const LabelWithVisibleTextExample = () => {
         </div>
       </>
 
-      <h3>Screen reader narration</h3>
+      <h3>Screen reader narration for each button</h3>
       <Text block>
         <Text weight="semibold">JAWS: </Text>
         Remove Robert Tolbert Button To activate press spacebar. <br />
@@ -43,7 +43,7 @@ export const LabelWithVisibleTextExample = () => {
 
       <h3>Implementation details</h3>
       <ul>
-        <li> aria-label="Remove [user name]" was applied on each button</li>
+        <li>The aria-label="Remove [user name]" attribute was applied on each button</li>
       </ul>
       <Divider appearance="strong" />
 
@@ -56,8 +56,8 @@ export const LabelWithVisibleTextExample = () => {
           <Button
             icon={<PersonDelete24Regular />}
             aria-label="Remove"
-            id="remove-button"
-            aria-labelledby="remove-button user1"
+            id="remove-button1"
+            aria-labelledby="remove-button1 user1"
           />
         </div>
         <div className={styles.container}>
@@ -66,13 +66,13 @@ export const LabelWithVisibleTextExample = () => {
           <Button
             icon={<PersonDelete24Regular />}
             aria-label="Remove"
-            id="remove-button"
-            aria-labelledby="remove-button user2"
+            id="remove-button2"
+            aria-labelledby="remove-button2 user2"
           />
         </div>
       </>
 
-      <h3>Screen reader narration</h3>
+      <h3>Screen reader narration for each button</h3>
       <Text block>
         <Text weight="semibold">JAWS: </Text>
         Remove Robert Tolbert Button To activate press spacebar. <br />
@@ -82,30 +82,30 @@ export const LabelWithVisibleTextExample = () => {
 
       <h3>Implementation details</h3>
       <ul>
-        <li> ID="user[number]" was applied on 'span' with user name </li>
-        <li> ID="remove-button" was applied on remove button </li>
-        <li> aria-labelledby="remove-button user[number]" was applied on each "remove" button </li>
+        <li>The id="user[number]" attribute was applied on the span element with user name.</li>
+        <li>The id="remove-button[number]" attribute was applied on the "Remove" button.</li>
+        <li>The aria-labelledby="remove-button[number] user[number]" attribute was applied on each "Remove" button.</li>
       </ul>
       <Divider appearance="strong" />
       <h2>Problem explanation</h2>
       <ul>
-        <li>Even though the screen reader narration is the same for both examples implementation is different.</li>
-        <li>In generall we should reuse information visible/displayed in the UI.</li>
+        <li>Even though the screen reader narration is the same for both examples, implementation is different.</li>
+        <li>In general, for labelling we should reuse information that is visible/displayed in the UI.</li>
         <li>
-          In this particular example aria-label was added to "remove" button and then we can refer to the "remove"
-          button itself.
+          In this particular example, the aria-label attribute was added to the "Remove" button, and then, using the
+          aria-labelledby attribute on the same button, we can refer to the "Remove" button itself.
         </li>
         <li>
-          Using aria-labelledby in many cases avoids translation the element accessibility name to the desired UI
-          language.
+          In many cases , using the aria-labelledby attribute avoids the translation of the element accessibility name
+          to the desired UI language.
         </li>
         <li>
           {' '}
-          Approach when component refers with "aria-labelledby" to itself was taken from{' '}
+          The approach when a component refers to itself with the aria-labelledby attribute was taken from{' '}
           <Link href="https://www.w3.org/TR/accname-1.1/#terminology" inline>
             Accessible Name and Description Computation 1.1 page.
           </Link>{' '}
-          To find the example there go to "4.3.1 Terminology{'>'} 2B {'>'} Example"
+          To find the example on that page, go to "4.3.1 Terminology{'>'} 2B {'>'} Example"
         </li>
       </ul>
     </Scenario>

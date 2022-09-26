@@ -130,13 +130,13 @@ const FormExample: React.FC<FormExampleProps> = ({ variant }) => {
     if (firstErrorField) {
       firstErrorField.focus();
     }
-  }, [errors, formState, formValidation]);
+  }, [variant, errors, formState, formValidation]);
 
   React.useEffect(() => {
     if (isSubmittedAndValid) {
       document.getElementById(`${variant}-validMessage`)?.focus();
     }
-  }, [isSubmittedAndValid]);
+  }, [variant, isSubmittedAndValid]);
 
   const onSubmit = (data: FormInputs, event?: React.BaseSyntheticEvent) => {
     event?.preventDefault();
@@ -149,35 +149,37 @@ const FormExample: React.FC<FormExampleProps> = ({ variant }) => {
     <>
       {!isSubmittedAndValid ? (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
-          <Label htmlFor={fullNameId}>Full name</Label>
-          <Controller
-            name="fullName"
-            control={control}
-            as={
-              <Input
-                type="text"
-                id={fullNameId}
-                aria-required="true"
-                aria-invalid={!!errors.fullName}
-                aria-describedby={variant == 'bad' ? undefined : `${fullNameId}Errors`}
-              />
-            }
-            rules={{
-              required: true,
-              minLength: 2,
-              maxLength: 50,
-              validate: {
-                onlyNameChars: value => regexes.onlyNameChars.test(value),
-                startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
-                always: () => {
-                  if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated(fullNameId);
-                  }
-                  return true;
+          <div>
+            <Label htmlFor={fullNameId}>Full name</Label>
+            <Controller
+              name="fullName"
+              control={control}
+              as={
+                <Input
+                  type="text"
+                  id={fullNameId}
+                  aria-required="true"
+                  aria-invalid={!!errors.fullName}
+                  aria-describedby={variant === 'bad' ? undefined : `${fullNameId}Errors`}
+                />
+              }
+              rules={{
+                required: true,
+                minLength: 2,
+                maxLength: 50,
+                validate: {
+                  onlyNameChars: value => regexes.onlyNameChars.test(value),
+                  startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
+                  always: () => {
+                    if (!formState.isSubmitting) {
+                      formValidation.onFieldValidated(fullNameId);
+                    }
+                    return true;
+                  },
                 },
-              },
-            }}
-          />
+              }}
+            />
+          </div>
           {errors.fullName?.types && (
             <ValidationMessage id={fullNameId} formValidation={formValidation}>
               {'required' in errors.fullName.types ? (
@@ -199,32 +201,34 @@ const FormExample: React.FC<FormExampleProps> = ({ variant }) => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor={emailId}>E-mail</Label>
-          <Controller
-            name="email"
-            control={control}
-            as={
-              <Input
-                type="text"
-                id={emailId}
-                aria-required="true"
-                aria-invalid={!!errors.email}
-                aria-describedby={variant == 'bad' ? undefined : `${emailId}Errors`}
-              />
-            }
-            rules={{
-              required: true,
-              validate: {
-                validEmail: value => regexes.validEmail.test(value),
-                always: () => {
-                  if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated(emailId);
-                  }
-                  return true;
+          <div>
+            <Label htmlFor={emailId}>E-mail</Label>
+            <Controller
+              name="email"
+              control={control}
+              as={
+                <Input
+                  type="text"
+                  id={emailId}
+                  aria-required="true"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={variant === 'bad' ? undefined : `${emailId}Errors`}
+                />
+              }
+              rules={{
+                required: true,
+                validate: {
+                  validEmail: value => regexes.validEmail.test(value),
+                  always: () => {
+                    if (!formState.isSubmitting) {
+                      formValidation.onFieldValidated(emailId);
+                    }
+                    return true;
+                  },
                 },
-              },
-            }}
-          />
+              }}
+            />
+          </div>
           {errors.email?.types && (
             <ValidationMessage id={emailId} formValidation={formValidation}>
               {'required' in errors.email.types ? (

@@ -5,7 +5,7 @@ export { AvoidPositionExample } from './NoCustomPosition.stories';
 export { NoRepeatText } from './NoTextRepeat.stories';
 export { NoFocusableTextExample } from './NoFocusableText.stories';
 export { FormErrorMessagesExample } from './FormErrorsMessages.stories';
-export { LabelWithVisibleTextExample } from './LabelWithVisibleText.stories';
+export { LabelledReusingVisibleTextExample } from './LabelledReusingVisibleText.stories';
 
 export default {
   title: 'Concepts/Developer/Accessibility/AccessibilityExamples',
