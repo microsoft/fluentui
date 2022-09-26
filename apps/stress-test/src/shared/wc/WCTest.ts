@@ -28,30 +28,30 @@ export const wcTest = (): Promise<HTMLElement | null> => {
 
       let testFn;
 
-      const isVanilla = wcRenderer === 'vanilla';
+      const isWC = wcRenderer === 'wc';
 
       if (test === 'inject-styles') {
-        testFn = isVanilla ? testInjectStyles : TestInjectStyles;
-      } else if (test === 'mount') {
-        testFn = isVanilla ? testMount : TestMount;
+        testFn = isWC ? TestInjectStyles : testInjectStyles;
       } else if (test === 're-render-all') {
-        testFn = isVanilla ? testReRenderAll : TestReRenderAll;
+        testFn = isWC ? TestReRenderAll : testReRenderAll;
       } else if (test === 'remove-all') {
-        testFn = isVanilla ? testRemoveAll : TestRemoveAll;
+        testFn = isWC ? TestRemoveAll : testRemoveAll;
       } else if (test === 'add') {
-        testFn = isVanilla ? testAdd : TestAdd;
+        testFn = isWC ? TestAdd : testAdd;
+      } /*if (test === 'mount')*/ else {
+        testFn = isWC ? TestMount : testMount;
       }
 
       if (testFn) {
-        if (isVanilla) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          return testFn(tree, selectors, renderer, testOptions);
-        } else {
+        if (isWC) {
           /* eslint-disable */
           // @ts-ignore
           return new testFn(tree, selectors, renderer, testOptions);
           /* eslint-enable */
+        } else {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          return testFn(tree, selectors, renderer, testOptions);
         }
       }
 

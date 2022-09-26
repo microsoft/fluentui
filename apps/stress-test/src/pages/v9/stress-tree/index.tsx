@@ -6,6 +6,7 @@ import { ReactTest } from '../../../shared/react/ReactTest';
 import { getTestOptions } from '../../../shared/utils/testOptions';
 
 const { fixtureName, rendererName, r } = getTestOptions();
+document.title += ' | ' + r ?? rendererName;
 ReactDOM.render(
   <FluentProvider theme={webLightTheme}>
     <ReactTest target="v9" fixtureName={fixtureName} rendererName={rendererName ?? r} />

@@ -13,18 +13,6 @@ type TreeParams = {
   targetSize?: number;
 };
 
-/**
- * Exponential decay function.
- * See: https://www.cuemath.com/exponential-decay-formula/
- * @param a - Initial amount
- * @param r - Rate of decay
- * @param x - Decay interval
- * @returns Current amount after applying decay function.
- */
-const decay = (a: number, r: number, x: number): number => {
-  return a * Math.pow(1 - r, x);
-};
-
 export class RandomTree<T> {
   private numNodes: number;
   private minDepth: number;
@@ -43,11 +31,11 @@ export class RandomTree<T> {
     seed = defaultSeed,
     targetSize,
   }: TreeParams = {}) {
-    this.minDepth = minDepth;
-    this.maxDepth = maxDepth;
-    this.minBreadth = minBreadth;
-    this.maxBreadth = maxBreadth;
-    this.targetSize = targetSize ?? Infinity;
+    this.minDepth = Number(minDepth);
+    this.maxDepth = Number(maxDepth);
+    this.minBreadth = Number(minBreadth);
+    this.maxBreadth = Number(maxBreadth);
+    this.targetSize = targetSize ? Number(targetSize) : Infinity;
 
     this.rando = new LCG(seed);
     this.numNodes = 0;
@@ -102,12 +90,7 @@ export class RandomTree<T> {
       parent.children.push(node);
 
       if (currentDepth < depth && this.numNodes < this.targetSize) {
-        this._doBuild(
-          createNode,
-          node,
-          currentDepth + 1,
-          Math.max(Math.ceil(decay(this.maxBreadth, 0.005, this.numNodes)), this.minBreadth),
-        );
+        this._doBuild(createNode, node, currentDepth + 1);
       }
     }
 

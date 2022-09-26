@@ -134,7 +134,7 @@ export const buildTreeFixture: BuildTreeFixture = (name, options) => {
 
   const data = {
     tree: JSON.parse(jsonTree),
-    selectors,
+    selectors: Array.from(new Set(selectors)),
   };
 
   const js = `export default ${JSON.stringify(data, null, 2)};`;
