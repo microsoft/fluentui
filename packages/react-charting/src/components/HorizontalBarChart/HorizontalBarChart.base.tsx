@@ -274,6 +274,22 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     let prevPosition = 0;
     let value = 0;
 
+    let sumOfPercent = 0;
+    data.chartData!.map((point: IChartDataPoint, index: number) => {
+      const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
+      value = (pointData / total) * 100;
+      if (value < 0) {
+        value = 0;
+      } else if (value < 1 && value !== 0) {
+        value = 1;
+      }
+      sumOfPercent += value;
+
+      return sumOfPercent;
+    });
+
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
@@ -284,12 +300,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       if (value < 0) {
         value = 0;
       } else if (value < 1 && value !== 0) {
-        value = 1;
+        value = 1 / scalingRatio;
+      } else {
+        value = value / scalingRatio;
       }
       startingPoint.push(prevPosition);
-      if (value < 1) {
-        return <React.Fragment key={index}> </React.Fragment>;
-      }
+
       const xValue = point.horizontalBarChartdata!.x;
       return (
         <rect

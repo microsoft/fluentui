@@ -3,7 +3,6 @@ import {
   DesignToken,
   disabledCursor,
   ElementDefinitionContext,
-  focusVisible,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
@@ -74,7 +73,6 @@ export const inputStyles: (
     ${typeRampBase}
     color: ${neutralForegroundRest};
     fill: currentcolor;
-    outline: none;
     user-select: none;
     position: relative;
   }
@@ -95,12 +93,6 @@ export const inputStyles: (
 
   .control {
     width: 100%;
-  }
-
-  .control:hover,
-  .control:${focusVisible},
-  .control:disabled,
-  .control:active {
     outline: none;
   }
 
@@ -224,7 +216,6 @@ export const inputFilledStyles: (
 
   :host(:focus-within:not([disabled])) ${rootSelector} {
     border-color: transparent;
-    box-shadow: none;
   }
 `;
 

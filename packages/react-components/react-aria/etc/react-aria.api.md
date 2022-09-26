@@ -9,6 +9,12 @@ import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
+// @internal (undocumented)
+export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = HTMLButtonElement | (AlternateAs extends 'a' ? HTMLAnchorElement : never) | (AlternateAs extends 'div' ? HTMLDivElement : never);
+
+// @internal (undocumented)
+export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = UnionToIntersection<ARIAButtonElement<AlternateAs>>;
+
 // @public
 export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React_2.PropsWithRef<JSX.IntrinsicElements[Type]> & {
     disabled?: boolean;

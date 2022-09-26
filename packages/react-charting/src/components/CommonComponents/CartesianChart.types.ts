@@ -7,6 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
+import * as d3TimeFormat from 'd3-time-format';
 
 export interface ICartesianChartStyleProps {
   /**
@@ -321,7 +322,17 @@ export interface ICartesianChartProps {
    * @default false
    * Used to rotate x axis labels by 45 degrees
    */
-  rotateXAxisLables?: boolean; // check for RTL
+  rotateXAxisLables?: boolean;
+
+  /**
+   * The prop used to define the date time localization options
+   */
+  dateLocalizeOptions?: Intl.DateTimeFormatOptions;
+
+  /**
+   * The prop used to define a custom locale for the date time format.
+   */
+  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -492,7 +503,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   svgFocusZoneProps?: IFocusZoneProps;
 
   /**
-   * The prop used to define the culture to localize the numbers
+   * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
 

@@ -1,7 +1,3 @@
-// @ts-check
-
-/// <reference types="jest" />
-
 const { stripIndents } = require('@nrwl/devkit');
 const fs = require('fs');
 const path = require('path');

@@ -1,4 +1,3 @@
-// @ts-check
 const { spawnSync } = require('child_process');
 const getAllPackageInfo = require('./getAllPackageInfo');
 const isConvergedPackage = require('./isConvergedPackage');
@@ -64,4 +63,4 @@ const result = spawnSync(process.execPath, [lageBin, ...lageArgs], {
   maxBuffer: 500 * 1024 * 1024,
 });
 
-process.exit(result.status);
+process.exit(result.status ?? undefined);

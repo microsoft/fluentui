@@ -50,7 +50,7 @@ const isShorthandExpression = (componentName: string, path: NodePath<t.Assignmen
 /**
  * Checks that an expression is a compose() call.
  */
-function isCompose(path: NodePath<t.Expression>): path is NodePath<t.CallExpression> {
+function isCompose(path: NodePath<t.Expression | null | undefined>): path is NodePath<t.CallExpression> {
   if (path.isCallExpression()) {
     if (path.get('callee').isIdentifier({ name: 'compose' })) {
       return true;

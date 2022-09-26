@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fluentProviderClassNames, useThemeClassName } from '@fluentui/react-components';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
+import { applyFocusVisiblePolyfill } from '@fluentui/react-tabster';
 
 import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';
 
@@ -19,14 +20,19 @@ export const PortalCompatProvider: React.FC = props => {
 
   const registerPortalEl = React.useCallback<RegisterPortalFn>(
     element => {
+      let disposeFocusVisiblePolyfill: () => void = () => undefined;
       if (cssVariablesClassName) {
         element.classList.add(cssVariablesClassName);
+        if (element.ownerDocument.defaultView) {
+          disposeFocusVisiblePolyfill = applyFocusVisiblePolyfill(element, element.ownerDocument.defaultView);
+        }
       }
 
       return () => {
         if (cssVariablesClassName) {
           element.classList.remove(cssVariablesClassName);
         }
+        disposeFocusVisiblePolyfill();
       };
     },
     [cssVariablesClassName],

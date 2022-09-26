@@ -41,7 +41,7 @@ export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = p
     return <MenuItem icon={<TextItalic16Regular />}> Italic</MenuItem>;
   }
 
-  return <MenuItem {...rest}>Item {id}</MenuItem>;
+  return <MenuItem {...(rest as MenuItemProps)}>Item {id}</MenuItem>;
 };
 
 export const ToolbarMenuOverflowDivider: React.FC<{

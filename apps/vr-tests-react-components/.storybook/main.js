@@ -1,7 +1,7 @@
 const path = require('path');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
-module.exports = {
+module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConfig} */ ({
   stories: ['../src/**/*.stories.tsx'],
   core: {
     builder: 'webpack5',
@@ -20,20 +20,22 @@ module.exports = {
       config.resolve.plugins ? config.resolve.plugins.push(tsPaths) : (config.resolve.plugins = [tsPaths]);
     }
 
-    config.module.rules.unshift({
-      test: /\.(ts|tsx)$/,
-      use: [
-        {
-          loader: '@griffel/webpack-loader',
-          options: {
-            babelOptions: {
-              presets: ['@babel/preset-typescript'],
+    if (config.module) {
+      config.module.rules?.unshift({
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: '@griffel/webpack-loader',
+            options: {
+              babelOptions: {
+                presets: ['@babel/preset-typescript'],
+              },
             },
           },
-        },
-      ],
-    });
+        ],
+      });
+    }
 
     return config;
   },
-};
+});

@@ -18,7 +18,7 @@ export type Browser = {
 
 export async function createChrome(): Promise<Browser> {
   const options = safeLaunchOptions();
-  let browser: puppeteer.Browser;
+  let browser: puppeteer.Browser | undefined;
   let attempt = 1;
   while (!browser) {
     try {
@@ -38,7 +38,7 @@ export async function createChrome(): Promise<Browser> {
 
   return {
     openPage: async url => {
-      const page = await browser.newPage();
+      const page = await (browser as puppeteer.Browser).newPage();
 
       await page.goto(url);
 
@@ -49,11 +49,11 @@ export async function createChrome(): Promise<Browser> {
         close: async () => page.close(),
       };
     },
-    close: async () => browser.close(),
+    close: async () => (browser as puppeteer.Browser).close(),
   };
 }
 
-async function checkDevtoolsAvailability(host, port, timeout): Promise<boolean> {
+async function checkDevtoolsAvailability(host: string, port: number, timeout: number): Promise<boolean> {
   const promise = new Promise((resolve, reject) => {
     const socket = new net.Socket();
 
@@ -108,7 +108,7 @@ export async function createElectron(electronPath: string): Promise<Browser> {
   return {
     openPage: async url => {
       const electronProcess = spawn(electronPath, [`--remote-debugging-port=${devtoolsPort}`]);
-      let cdp;
+      let cdp: CDP.Client;
 
       try {
         await waitUntilDevtoolsAvailable('localhost', devtoolsPort);
@@ -118,6 +118,7 @@ export async function createElectron(electronPath: string): Promise<Browser> {
         await cdp.Runtime.enable();
 
         await cdp.Page.navigate({ url });
+        // @ts-expect-error - we use 0.30.0 types with 0.28.2 package version so the API might have changed ?
         await cdp.Page.loadEventFired();
       } catch (e) {
         electronProcess.kill('SIGKILL');

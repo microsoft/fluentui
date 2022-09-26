@@ -4,41 +4,151 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import { Checkbox } from '@fluentui/react-checkbox';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import { Combobox } from '@fluentui/react-combobox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Input } from '@fluentui/react-input';
+import { Label } from '@fluentui/react-label';
+import { RadioGroup } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { Select } from '@fluentui/react-select';
+import { Slider } from '@fluentui/react-slider';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
+import type { SlotShorthandValue } from '@fluentui/react-utilities';
+import { SpinButton } from '@fluentui/react-spinbutton';
+import { Switch } from '@fluentui/react-switch';
+import { Textarea } from '@fluentui/react-textarea';
+
+// @public (undocumented)
+export const CheckboxField: ForwardRefComponent<CheckboxFieldProps>;
+
+// @public (undocumented)
+export const checkboxFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type CheckboxFieldProps = Omit<FieldProps<typeof Checkbox>, 'label'> & {
+    label?: CheckboxProps['label'];
+    fieldLabel?: FieldProps<typeof Checkbox>['label'];
+};
+
+// @public (undocumented)
+export const ComboboxField: ForwardRefComponent<ComboboxFieldProps>;
+
+// @public (undocumented)
+export const comboboxFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type ComboboxFieldProps = FieldProps<typeof Combobox>;
 
 // @public
-export const Field: ForwardRefComponent<FieldProps>;
-
-// @public (undocumented)
-export const fieldClassName = "fui-Field";
-
-// @public (undocumented)
-export const fieldClassNames: SlotClassNames<FieldSlots>;
-
-// @public
-export type FieldProps = ComponentProps<FieldSlots> & {};
-
-// @public (undocumented)
-export type FieldSlots = {
-    root: Slot<'div'>;
+export type FieldConfig<T extends FieldComponent> = {
+    component: T;
+    classNames: SlotClassNames<FieldSlots<T>>;
+    labelConnection?: 'htmlFor' | 'aria-labelledby';
 };
 
 // @public
-export type FieldState = ComponentState<FieldSlots>;
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+    orientation?: 'vertical' | 'horizontal';
+    validationState?: 'error' | 'warning' | 'success';
+};
 
 // @public
-export const renderField_unstable: (state: FieldState) => JSX.Element;
+export type FieldSlots<T extends FieldComponent> = {
+    root: NonNullable<Slot<'div'>>;
+    control: SlotComponent<T>;
+    label?: Slot<typeof Label>;
+    validationMessage?: Slot<'span'>;
+    validationMessageIcon?: Slot<'span'>;
+    hint?: Slot<'span'>;
+};
 
 // @public
-export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLElement>) => FieldState;
+export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
+    classNames: SlotClassNames<FieldSlots<T>>;
+};
+
+// @public (undocumented)
+export const getFieldClassNames: (name: string) => SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export const InputField: ForwardRefComponent<InputFieldProps>;
+
+// @public (undocumented)
+export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type InputFieldProps = FieldProps<typeof Input>;
+
+// @public (undocumented)
+export const RadioGroupField: ForwardRefComponent<RadioGroupFieldProps>;
+
+// @public (undocumented)
+export const radioGroupFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type RadioGroupFieldProps = FieldProps<typeof RadioGroup>;
 
 // @public
-export const useFieldStyles_unstable: (state: FieldState) => FieldState;
+export const renderField_unstable: <T extends FieldComponent>(state: FieldState<T>) => JSX.Element;
+
+// @public (undocumented)
+export const SelectField: ForwardRefComponent<SelectFieldProps>;
+
+// @public (undocumented)
+export const selectFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SelectFieldProps = FieldProps<typeof Select>;
+
+// @public (undocumented)
+export const SliderField: ForwardRefComponent<SliderFieldProps>;
+
+// @public (undocumented)
+export const sliderFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SliderFieldProps = FieldProps<typeof Slider>;
+
+// @public (undocumented)
+export const SpinButtonField: ForwardRefComponent<SpinButtonFieldProps>;
+
+// @public (undocumented)
+export const spinButtonFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SpinButtonFieldProps = FieldProps<typeof SpinButton>;
+
+// @public (undocumented)
+export const SwitchField: ForwardRefComponent<SwitchFieldProps>;
+
+// @public (undocumented)
+export const switchFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SwitchFieldProps = FieldProps<typeof Switch>;
+
+// @public (undocumented)
+export const TextareaField: ForwardRefComponent<TextareaFieldProps>;
+
+// @public (undocumented)
+export const textareaFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type TextareaFieldProps = FieldProps<typeof Textarea>;
+
+// @public
+export const useField_unstable: <T extends FieldComponent>(props: FieldPropsWithOptionalComponentProps<T>, ref: React_2.Ref<HTMLElement>, params: FieldConfig<T>) => FieldState<T>;
+
+// @public
+export const useFieldStyles_unstable: <T extends FieldComponent>(state: FieldState<T>) => void;
 
 // (No @packageDocumentation comment for this package)
 
