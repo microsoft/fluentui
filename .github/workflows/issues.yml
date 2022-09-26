@@ -8,13 +8,10 @@ jobs:
   triage-issue:
     runs-on: ubuntu-latest
     steps:
-      - uses: Naturalclar/issue-action@v2.0.2
+      - uses: actions/checkout@v2
+      - uses: actions/github-script@v6
         with:
-          title-or-body: 'body'
-          parameters: '[
-            {"keywords": ["@fluentui/react-northstar"], "labels": ["Fluent UI react-northstar (v0)"], "assignees": []},
-            {"keywords": ["@fluentui/react"], "labels": ["Fluent UI react (v8)"], "assignees": []},
-            {"keywords": ["@fluentui/react-components"], "labels": ["Fluent UI react-components (v9)"], "assignees": []},
-            {"keywords": ["@fluentui/web-components"],"labels": ["web-components"],"assignees": ["@chrisdholt"]}
-            ]'
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          script: |
+            const config = require('./.github/triage-bot.config.json');
+            const run = require('./scripts/triage-bot');
+            await run({github,context,core,config});
