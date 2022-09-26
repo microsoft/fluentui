@@ -17,10 +17,8 @@ const regexes = {
   hasUppercaseLetter: /^\S*[A-Z]\S*$/,
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
   validDate: /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/,
-  validEmail: new RegExp(
-    // eslint-disable-next-line @fluentui/max-len
-    "(([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*]))?",
-  ),
+  // eslint-disable-next-line @fluentui/max-len
+  validEmail: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 };
 
 const generateSecurityCode = (): string => {
@@ -129,7 +127,7 @@ const useFormValidation = (
 };
 
 const RegistrationFormInputsAccessibility = () => {
-  const { control, handleSubmit, errors, formState } = useForm<FormInputs>({
+  const { control, handleSubmit, errors, formState, unregister } = useForm<FormInputs>({
     validateCriteriaMode: 'all',
     mode: 'onBlur',
     reValidateMode: 'onBlur',
@@ -171,6 +169,7 @@ const RegistrationFormInputsAccessibility = () => {
   };
 
   const onSendNewsletterChange = (event: React.ChangeEvent) => {
+    unregister('email');
     setIsSendNewsletter(!isSendNewsletter);
   };
 

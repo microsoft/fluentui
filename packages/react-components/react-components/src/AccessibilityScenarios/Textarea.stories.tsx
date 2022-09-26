@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Textarea, Checkbox, CheckboxOnChangeData, Label } from '@fluentui/react-components';
+import { Button, Textarea, Checkbox, Label } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
@@ -121,7 +121,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
   const formValidation = useFormValidation(handleSubmit);
 
-  const [isProblemNotSolvedSelected, setIsProblemSolvedSelected] = React.useState(false);
+  const [isProblemNotSolved, setIsProblemNotSolved] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
@@ -150,9 +150,9 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
     }
   };
 
-  const onProblemNotSolvedChange = (event: React.ChangeEvent, data: CheckboxOnChangeData) => {
+  const onProblemNotSolvedChange = (event: React.ChangeEvent) => {
     unregister('problemNotSolved');
-    setIsProblemSolvedSelected(!!data.checked);
+    setIsProblemNotSolved(!isProblemNotSolved);
   };
 
   return (
@@ -247,7 +247,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
             <div>
               <Checkbox
-                checked={isProblemNotSolvedSelected}
+                checked={isProblemNotSolved}
                 onChange={onProblemNotSolvedChange}
                 label="My problem has not been solved."
               />
@@ -261,14 +261,14 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
                 as={
                   <Textarea
                     id="problemNotSolved"
-                    disabled={!isProblemNotSolvedSelected}
-                    aria-required={isProblemNotSolvedSelected}
+                    disabled={!isProblemNotSolved}
+                    aria-required={isProblemNotSolved}
                     aria-invalid={!!errors.problemNotSolved}
                     aria-describedby="problemNotSolvedErrors"
                   />
                 }
                 rules={{
-                  required: isProblemNotSolvedSelected,
+                  required: isProblemNotSolved,
                   minLength: 20,
                   validate: {
                     always: () => {
