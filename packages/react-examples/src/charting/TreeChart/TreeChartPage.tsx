@@ -7,10 +7,10 @@ import { TreeChartThreeLayerLongExample } from './TreeChart.ThreeLayerLong.Examp
 import { TreeChartThreeLayerCompactExample } from './TreeChart.ThreeLayerCompact.Example';
 import { TreeChartThreeLayerExample } from './TreeChart.ThreeLayer.Example';
 
-const TreeChartTwoLayerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.TwoLayer.Example.tsx') as string;
-const TreeChartThreeLayerLongExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerLong.Example.tsx') as string;
-const TreeChartThreeLayerCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerCompact.Example.tsx') as string;
-const TreeChartThreeLayerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayer.Example.tsx') as string;
+const TreeChartTwoLayerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/charting/TreeChart/TreeChart.TwoLayer.Example.tsx') as string;
+const TreeChartThreeLayerLongExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/charting/TreeChart/TreeChart.ThreeLayerLong.Example.tsx') as string;
+const TreeChartThreeLayerCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/charting/TreeChart/TreeChart.ThreeLayerCompact.Example.tsx') as string;
+const TreeChartThreeLayerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/charting/TreeChart/TreeChart.ThreeLayer.Example.tsx') as string;
 
 export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -39,7 +39,7 @@ export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> 
             sources={[
               require<
                 string
-              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/TreeChart/TreeChart.types.ts'),
+              >('!raw-loader?esModule=false!@uifabric/charting/src/components/TreeChart/TreeChart.types.ts'),
             ]}
           />
         }
