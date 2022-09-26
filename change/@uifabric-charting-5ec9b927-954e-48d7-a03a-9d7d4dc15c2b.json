@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Adding tree chart for v7 branch",
+  "comment": "Adding tree diagram for v7 branch",
   "packageName": "@uifabric/charting",
   "email": "ankityadav@microsoft.com",
   "dependentChangeType": "patch"
