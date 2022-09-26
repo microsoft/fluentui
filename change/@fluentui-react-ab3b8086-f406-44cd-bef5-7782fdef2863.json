@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Ensure toggling group state does not select it",
-  "packageName": "@fluentui/react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

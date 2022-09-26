@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 15 Sep 2022 09:48:56 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 20:55:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.6)
+
+Tue, 20 Sep 2022 20:55:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.5..@fluentui/react-tooltip_v9.0.6)
+
+### Patches
+
+- bugfix: stops propagation on Escape key ([PR #24810](https://github.com/microsoft/fluentui/pull/24810) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.5)
 

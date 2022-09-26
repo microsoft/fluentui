@@ -1,6 +1,7 @@
 export interface PackageJson {
   name: string;
   version: string;
+  private?: boolean;
   main: string;
   types?: string;
   module?: string;

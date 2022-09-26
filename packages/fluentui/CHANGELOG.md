@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+-  Styles from `ChatMessage` content slot were moved to exact component `ChatMessageContent` @yuanboxue-amber ([#24691](https://github.com/microsoft/fluentui/pull/24691))
+
 ### Features
 
 - Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
@@ -28,6 +31,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove `rotate(360deg)` from `PopupContent` content styles @yuanboxue-amber ([#24432](https://github.com/microsoft/fluentui/pull/24432))
 - Fix `FocusZone` to reset tabindex when focus is outside the zone with prop `shouldResetActiveElementWhenTabFromZone` @yuanboxue-amber ([#24463](https://github.com/microsoft/fluentui/pull/24463))
 - Change `useLayoutEffect` in `Dropdown` to `useIsomorphicLayoutEffect` @marwan38 ([#24559](https://github.com/microsoft/fluentui/pull/24559))
+- Fix `Popup` trigger attribute being override @chpalac ([#24794](https://github.com/microsoft/fluentui/pull/24794))
+- Fix styling mutation when merging themes in `Dropdown` @petrjaros ([#24787](https://github.com/microsoft/fluentui/pull/24787))
 
 ### Performance
 - Avoid memory trashing in `felaExpandCssShorthandsPlugin` @layershifter ([#24663](https://github.com/microsoft/fluentui/pull/24663))

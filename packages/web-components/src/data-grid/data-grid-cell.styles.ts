@@ -9,11 +9,12 @@ import {
 import {
   controlCornerRadius,
   designUnit,
-  focusStrokeOuter,
   focusStrokeWidth,
   neutralForegroundRest,
+  strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const dataGridCellStyles: (
   context: ElementDefinitionContext,
@@ -21,13 +22,12 @@ export const dataGridCellStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host {
-      padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
+      padding: calc((${designUnit} + ${focusStrokeWidth} - ${strokeWidth}) * 1px) calc(((${designUnit} * 3) + ${focusStrokeWidth} - ${strokeWidth}) * 1px);
       color: ${neutralForegroundRest};
       box-sizing: border-box;
       ${typeRampBase}
-      border: transparent calc(${focusStrokeWidth} * 1px) solid;
+      border: transparent calc(${strokeWidth} * 1px) solid;
       overflow: hidden;
-      outline: none;
       white-space: nowrap;
       border-radius: calc(${controlCornerRadius} * 1px);
     }
@@ -37,22 +37,19 @@ export const dataGridCellStyles: (
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
+      ${focusTreatmentBase}
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
         :host {
           forced-color-adjust: none;
-          border-color: transparent;
           background: ${SystemColors.Field};
           color: ${SystemColors.FieldText};
         }
 
         :host(:${focusVisible}) {
-          border-color: ${SystemColors.FieldText};
-          box-shadow: 0 0 0 2px inset ${SystemColors.Field};
-          color: ${SystemColors.FieldText};
+          outline-color: ${SystemColors.FieldText};
         }
       `,
     ),

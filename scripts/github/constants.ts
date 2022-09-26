@@ -1,4 +1,4 @@
-import { IRepoDetails } from './types';
+import type { IRepoDetails } from './types';
 
 export const fluentRepoDetails: IRepoDetails = {
   owner: 'microsoft',

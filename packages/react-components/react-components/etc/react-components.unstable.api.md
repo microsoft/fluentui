@@ -76,6 +76,11 @@ import { dialogBodyClassNames } from '@fluentui/react-dialog';
 import { DialogBodyProps } from '@fluentui/react-dialog';
 import { DialogBodySlots } from '@fluentui/react-dialog';
 import { DialogBodyState } from '@fluentui/react-dialog';
+import { DialogContent } from '@fluentui/react-dialog';
+import { dialogContentClassNames } from '@fluentui/react-dialog';
+import { DialogContentProps } from '@fluentui/react-dialog';
+import { DialogContentSlots } from '@fluentui/react-dialog';
+import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
@@ -147,6 +152,7 @@ import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderDialog_unstable } from '@fluentui/react-dialog';
 import { renderDialogActions_unstable } from '@fluentui/react-dialog';
 import { renderDialogBody_unstable } from '@fluentui/react-dialog';
+import { renderDialogContent_unstable } from '@fluentui/react-dialog';
 import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
 import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
 import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
@@ -193,6 +199,7 @@ import { TableBodySlots } from '@fluentui/react-table';
 import { TableBodyState } from '@fluentui/react-table';
 import { TableCell } from '@fluentui/react-table';
 import { TableCellActions } from '@fluentui/react-table';
+import { tableCellActionsClassNames } from '@fluentui/react-table';
 import { TableCellActionsProps } from '@fluentui/react-table';
 import { TableCellActionsSlots } from '@fluentui/react-table';
 import { TableCellActionsState } from '@fluentui/react-table';
@@ -277,6 +284,8 @@ import { useDialogActions_unstable } from '@fluentui/react-dialog';
 import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogBody_unstable } from '@fluentui/react-dialog';
 import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogContent_unstable } from '@fluentui/react-dialog';
+import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
@@ -464,6 +473,16 @@ export { DialogBodySlots }
 
 export { DialogBodyState }
 
+export { DialogContent }
+
+export { dialogContentClassNames }
+
+export { DialogContentProps }
+
+export { DialogContentSlots }
+
+export { DialogContentState }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
@@ -606,6 +625,8 @@ export { renderDialogActions_unstable }
 
 export { renderDialogBody_unstable }
 
+export { renderDialogContent_unstable }
+
 export { renderDialogSurface_unstable }
 
 export { renderDialogTitle_unstable }
@@ -697,6 +718,8 @@ export { TableBodyState }
 export { TableCell }
 
 export { TableCellActions }
+
+export { tableCellActionsClassNames }
 
 export { TableCellActionsProps }
 
@@ -865,6 +888,10 @@ export { useDialogActionsStyles_unstable }
 export { useDialogBody_unstable }
 
 export { useDialogBodyStyles_unstable }
+
+export { useDialogContent_unstable }
+
+export { useDialogContentStyles_unstable }
 
 export { useDialogSurface_unstable }
 

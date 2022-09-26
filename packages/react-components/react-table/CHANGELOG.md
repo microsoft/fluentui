@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Thu, 15 Sep 2022 09:49:26 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 20:55:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.3)
+
+Tue, 20 Sep 2022 20:55:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.2..@fluentui/react-table_v9.0.0-alpha.3)
+
+### Changes
+
+- feat: Adds `visible` prop to `TableCellActions` ([PR #24831](https://github.com/microsoft/fluentui/pull/24831) by lingfangao@hotmail.com)
+- fix: `TableCellActions` displays correctly inside `TableHeaderCell` ([PR #24829](https://github.com/microsoft/fluentui/pull/24829) by lingfangao@hotmail.com)
+- Bump @fluentui/react-checkbox to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.2)
 

@@ -2,6 +2,66 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/react-charting_v5.13.4",
+      "version": "5.13.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.96.1",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Sep 2022 07:47:16 GMT",
+      "tag": "@fluentui/react-charting_v5.13.3",
+      "version": "5.13.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ead191a8368bf64ecabffce5ea0e02565f449a95",
+            "comment": "Fix multi stacked bar chart min width"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:30 GMT",
+      "tag": "@fluentui/react-charting_v5.13.2",
+      "version": "5.13.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.96.0",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Sep 2022 07:37:32 GMT",
+      "tag": "@fluentui/react-charting_v5.13.1",
+      "version": "5.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.95.1",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 19:15:26 GMT",
       "tag": "@fluentui/react-charting_v5.13.0",
       "version": "5.13.0",

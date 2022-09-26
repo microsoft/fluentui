@@ -30,7 +30,7 @@ export async function performBrowserTest(publicDirectory: string) {
   console.log('Started server. Launching Puppeteer...');
 
   const options = safeLaunchOptions();
-  let browser: puppeteer.Browser;
+  let browser: puppeteer.Browser | undefined;
   let attempt = 1;
   while (!browser) {
     try {
