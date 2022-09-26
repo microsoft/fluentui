@@ -1,8 +1,60 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Mon, 12 Sep 2022 07:39:53 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Sep 2022 07:47:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Mon, 19 Sep 2022 07:47:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.96.0 ([PR #24771](https://github.com/microsoft/fluentui/pull/24771) by beachball)
+- Bump @fluentui/react-docsite-components to v8.10.2 ([PR #24771](https://github.com/microsoft/fluentui/pull/24771) by beachball)
+- Bump @fluentui/react-experiments to v8.13.2 ([PR #24771](https://github.com/microsoft/fluentui/pull/24771) by beachball)
+- Bump @fluentui/theme-samples to v8.7.2 ([PR #24771](https://github.com/microsoft/fluentui/pull/24771) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.2 ([PR #24771](https://github.com/microsoft/fluentui/pull/24771) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Fri, 16 Sep 2022 07:37:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.95.1 ([PR #24822](https://github.com/microsoft/fluentui/pull/24822) by beachball)
+- Bump @fluentui/react-docsite-components to v8.10.1 ([PR #24822](https://github.com/microsoft/fluentui/pull/24822) by beachball)
+- Bump @fluentui/react-experiments to v8.13.1 ([PR #24822](https://github.com/microsoft/fluentui/pull/24822) by beachball)
+- Bump @fluentui/theme-samples to v8.7.1 ([PR #24822](https://github.com/microsoft/fluentui/pull/24822) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.1 ([PR #24822](https://github.com/microsoft/fluentui/pull/24822) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Thu, 15 Sep 2022 19:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Minor changes
+
+- Bump @fluentui/react to v8.95.0 ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by beachball)
+- Bump @fluentui/react-docsite-components to v8.10.0 ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by beachball)
+- Bump @fluentui/react-experiments to v8.13.0 ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by beachball)
+- Bump @fluentui/theme-samples to v8.7.0 ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.0 ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Tue, 13 Sep 2022 07:41:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.94.4 ([PR #24615](https://github.com/microsoft/fluentui/pull/24615) by beachball)
+- Bump @fluentui/react-docsite-components to v8.9.36 ([PR #24615](https://github.com/microsoft/fluentui/pull/24615) by beachball)
+- Bump @fluentui/react-experiments to v8.12.34 ([PR #24615](https://github.com/microsoft/fluentui/pull/24615) by beachball)
+- Bump @fluentui/theme-samples to v8.6.35 ([PR #24615](https://github.com/microsoft/fluentui/pull/24615) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.35 ([PR #24615](https://github.com/microsoft/fluentui/pull/24615) by beachball)
 
 ## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
 

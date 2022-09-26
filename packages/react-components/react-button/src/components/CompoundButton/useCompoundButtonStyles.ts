@@ -81,13 +81,13 @@ const useRootStyles = makeStyles({
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
   },

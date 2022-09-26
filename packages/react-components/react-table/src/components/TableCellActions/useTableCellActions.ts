@@ -24,5 +24,6 @@ export const useTableCellActions_unstable = (
       ref: useMergedRefs(ref, useFocusWithin()),
       ...props,
     }),
+    visible: props.visible ?? false,
   };
 };

@@ -17,26 +17,32 @@ function getCurrentHash() {
 
   return '';
 }
+/**
+ *
+ * @param {Object} options
+ * @param {string} options.screenerApiKey
+ * @param {string} options.sourceBranchName
+ * @param {string} options.deployUrl
+ * @param {string} options.targetBranch
+ * @returns
+ */
+function getConfig({ screenerApiKey, sourceBranchName, deployUrl, targetBranch }) {
+  const baseBranch = targetBranch ? targetBranch.replace(/^refs\/heads\//, '') : 'master';
+  // https://github.com/screener-io/screener-storybook#additional-configuration-options
+  const config = {
+    projectRepo: 'microsoft/fluentui/react-components',
+    storybookStaticBuildDir: 'dist/storybook',
+    storybookConfigDir: '.storybook',
+    apiKey: screenerApiKey,
+    resolution: '1024x768',
+    baseBranch,
+    failureExitCode: 0,
+    alwaysAcceptBaseBranch: true,
+    ...(sourceBranchName !== 'master' ? { commit: getCurrentHash() } : null),
+    baseUrl: `${deployUrl}/react-components-screener/iframe.html`,
+  };
+  console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
+  return config;
+}
 
-const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-  ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
-  : 'master';
-
-// https://github.com/screener-io/screener-storybook#additional-configuration-options
-const config = {
-  projectRepo: 'microsoft/fluentui/react-components',
-  storybookStaticBuildDir: 'dist/storybook',
-  storybookConfigDir: '.storybook',
-  apiKey: process.env.SCREENER_API_KEY,
-  resolution: '1024x768',
-  baseBranch,
-  failureExitCode: 0,
-  alwaysAcceptBaseBranch: true,
-  ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
-    ? { commit: getCurrentHash() }
-    : null),
-  baseUrl: `${process.env.DEPLOYURL}/react-components-screener/iframe.html`,
-};
-console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
-
-module.exports = config;
+module.exports = getConfig;

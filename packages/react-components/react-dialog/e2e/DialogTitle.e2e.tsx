@@ -34,7 +34,7 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogTriggerOpenSelector).realClick();
       cy.get(dialogActionSelector).should('not.exist');
     });
   });
@@ -61,7 +61,7 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogTriggerOpenSelector).realClick();
       cy.get(dialogActionSelector).should('exist');
     });
   });
@@ -88,7 +88,7 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogTriggerOpenSelector).realClick();
       cy.get(dialogActionSelector).should('not.exist');
     });
   });

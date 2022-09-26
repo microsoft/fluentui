@@ -17,6 +17,7 @@ describe('Option', () => {
 
   const defaultContextValues = {
     activeOption: undefined,
+    focusVisible: false,
     multiselect: false,
     registerOption() {
       return () => undefined;

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

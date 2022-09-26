@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 03 Aug 2022 16:03:56 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.2.0)
+
+Thu, 15 Sep 2022 09:49:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.1.2..@fluentui/react-positioning_v9.2.0)
+
+### Minor changes
+
+- feat: Upgrade to Floating UI v1 ([PR #24254](https://github.com/microsoft/fluentui/pull/24254) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.1.2)
 
