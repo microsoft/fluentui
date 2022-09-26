@@ -81,8 +81,10 @@ import { ViewTemplate } from '@microsoft/fast-element';
 // @public (undocumented)
 export const accentBaseColor: CSSDesignToken<Swatch>;
 
+// Warning: (ae-internal-missing-underscore) The name "AccentButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal (undocumented)
-export const _accentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const AccentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const accentFillActive: CSSDesignToken<Swatch>;
@@ -272,8 +274,10 @@ export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
 // @public
 export const badgeStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "baseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal
-export const _baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const baseHeightMultiplier: CSSDesignToken<number>;
@@ -281,8 +285,10 @@ export const baseHeightMultiplier: CSSDesignToken<number>;
 // @public (undocumented)
 export const baseHorizontalSpacingMultiplier: CSSDesignToken<number>;
 
+// Warning: (ae-internal-missing-underscore) The name "baseInputStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal
-export const _baseInputStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
+export const baseInputStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
 
 // @public (undocumented)
 export const baseLayerLuminance: CSSDesignToken<number>;
@@ -775,20 +781,30 @@ export class HorizontalScroll extends HorizontalScroll_2 {
 // @public
 export const horizontalScrollStyles: (context: ElementDefinitionContext, definition: HorizontalScrollOptions) => ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal (undocumented)
-export const _hypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const HypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "inputFilledStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal
-export const _inputFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
+export const inputFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "inputForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal (undocumented)
-export const _inputForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
+export const inputForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "inputOutlineStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal
-export const _inputOutlineStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
+export const inputOutlineStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "inputStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal
-export const _inputStateStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
+export const inputStateStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
 
 // @public (undocumented)
 export interface InteractiveColorRecipe {
@@ -812,8 +828,10 @@ export function isDark(color: Swatch): boolean;
 // @public (undocumented)
 export const layerCornerRadius: CSSDesignToken<number>;
 
+// Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal (undocumented)
-export const _lightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const LightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export class Listbox extends Listbox_2 {
@@ -839,8 +857,10 @@ export const menuStyles: (context: ElementDefinitionContext, definition: Foundat
 // @public (undocumented)
 export const neutralBaseColor: CSSDesignToken<Swatch>;
 
+// Warning: (ae-internal-missing-underscore) The name "NeutralButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal (undocumented)
-export const _neutralButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const NeutralButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public @deprecated (undocumented)
 export const neutralContrastFillActive: CSSDesignToken<Swatch>;
@@ -1353,8 +1373,10 @@ export const numberFieldStyles: (context: ElementDefinitionContext, definition: 
 // @public
 export const OptionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal (undocumented)
-export const _outlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const OutlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public @deprecated (undocumented)
 export const outlineWidth: CSSDesignToken<number>;
@@ -1471,8 +1493,10 @@ export enum StandardLuminance {
     LightMode = 0.98
 }
 
+// Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
 // @internal (undocumented)
-export const _stealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const StealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const strokeWidth: CSSDesignToken<number>;

@@ -5,12 +5,12 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
-  _accentButtonStyles,
-  _baseButtonStyles,
-  _lightweightButtonStyles,
-  _neutralButtonStyles,
-  _outlineButtonStyles,
-  _stealthButtonStyles,
+  AccentButtonStyles,
+  baseButtonStyles,
+  LightweightButtonStyles,
+  NeutralButtonStyles,
+  OutlineButtonStyles,
+  StealthButtonStyles,
 } from '../styles/';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { disabledOpacity } from '../design-tokens';
@@ -37,11 +37,11 @@ export const buttonStyles: (
       }
     }
 
-    ${_baseButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)}
+    ${baseButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)}
   `.withBehaviors(
-    appearanceBehavior('neutral', _neutralButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
-    appearanceBehavior('accent', _accentButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
-    appearanceBehavior('lightweight', _lightweightButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
-    appearanceBehavior('outline', _outlineButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
-    appearanceBehavior('stealth', _stealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('neutral', NeutralButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('accent', AccentButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('lightweight', LightweightButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('outline', OutlineButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('stealth', StealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
   );

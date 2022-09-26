@@ -49,7 +49,7 @@ import { focusTreatmentBase, focusTreatmentTight } from '../focus';
  * 
  * @internal
  */
-export const _baseButtonStyles = (
+export const baseButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string,
@@ -127,7 +127,7 @@ export const _baseButtonStyles = (
 /**
  * @internal
  */
-export const _neutralButtonStyles = (
+export const NeutralButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string,
@@ -199,7 +199,7 @@ export const _neutralButtonStyles = (
 /**
  * @internal
  */
-export const _accentButtonStyles = (
+export const AccentButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string,
@@ -276,7 +276,7 @@ export const _accentButtonStyles = (
 /**
  * @internal
  */
-export const _hypertextStyles = (
+export const HypertextStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string,
@@ -339,7 +339,7 @@ export const _hypertextStyles = (
 /**
  * @internal
  */
-export const _lightweightButtonStyles = (
+export const LightweightButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string,
@@ -411,7 +411,7 @@ export const _lightweightButtonStyles = (
 /**
  * @internal
  */
-export const _outlineButtonStyles = (
+export const OutlineButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string,
@@ -476,7 +476,7 @@ export const _outlineButtonStyles = (
 /**
  * @internal
  */
-export const _stealthButtonStyles = (
+export const StealthButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string,

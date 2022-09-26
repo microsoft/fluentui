@@ -8,11 +8,11 @@ import {
   SearchOptions,
 } from '@microsoft/fast-foundation';
 import {
-  _baseInputStyles,
-  _inputFilledStyles,
-  _inputForcedColorStyles,
-  _inputOutlineStyles,
-  _inputStateStyles,
+  baseInputStyles,
+  inputFilledStyles,
+  inputForcedColorStyles,
+  inputOutlineStyles,
+  inputStateStyles,
   heightNumber,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
@@ -45,9 +45,9 @@ export const searchStyles: (context: ElementDefinitionContext, definition: Searc
   css`
     ${display('inline-block')}
 
-    ${_baseInputStyles(context, definition, logicalControlSelector)}
+    ${baseInputStyles(context, definition, logicalControlSelector)}
 
-    ${_inputStateStyles(context, definition, logicalControlSelector)}
+    ${inputStateStyles(context, definition, logicalControlSelector)}
 
     .root {
       display: flex;
@@ -129,7 +129,7 @@ export const searchStyles: (context: ElementDefinitionContext, definition: Searc
       margin-inline-end: 1px;
     }
   `.withBehaviors(
-    appearanceBehavior('outline', _inputOutlineStyles(context, definition, logicalControlSelector)),
-    appearanceBehavior('filled', _inputFilledStyles(context, definition, logicalControlSelector)),
-    forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector)),
   );

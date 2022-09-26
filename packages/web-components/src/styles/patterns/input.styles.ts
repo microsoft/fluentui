@@ -64,7 +64,7 @@ const filledPlaceholderHover = DesignToken.create<Swatch>('input-filled-placehol
  * 
  * @internal
  */
-export const _baseInputStyles: (
+export const baseInputStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   logicalControlSelector: string,
@@ -130,7 +130,7 @@ export const _baseInputStyles: (
  * 
  * @internal
  */
-export const _inputStateStyles: (
+export const inputStateStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   logicalControlSelector: string,
@@ -174,7 +174,7 @@ export const _inputStateStyles: (
  * 
  * @internal
  */
- export const _inputOutlineStyles: (
+ export const inputOutlineStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   logicalControlSelector: string,
@@ -219,7 +219,7 @@ export const _inputStateStyles: (
  * 
  * @internal
  */
-export const _inputFilledStyles: (
+export const inputFilledStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   logicalControlSelector: string,
@@ -258,7 +258,7 @@ export const _inputFilledStyles: (
 /**
  * @internal
  */
-export const _inputForcedColorStyles: (
+export const inputForcedColorStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   logicalControlSelector: string,

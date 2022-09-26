@@ -23,7 +23,7 @@ import {
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 import { focusTreatmentBase } from '../styles/focus';
-import { _inputFilledStyles, _inputForcedColorStyles, _neutralButtonStyles, _stealthButtonStyles } from '../styles';
+import { inputFilledStyles, inputForcedColorStyles, NeutralButtonStyles, StealthButtonStyles } from '../styles';
 
 const logicalControlSelector: string = '.control';
 const interactivitySelector: string = ':not([disabled]):not([open])';
@@ -171,11 +171,11 @@ export const selectStyles: (context: ElementDefinitionContext, definition: Selec
 ) =>
   baseSelectStyles(context, definition)
   .withBehaviors(
-    appearanceBehavior('outline', _neutralButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('outline', NeutralButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
     appearanceBehavior('filled',
-      _inputFilledStyles(context, definition, logicalControlSelector, interactivitySelector)
-      .withBehaviors(forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector, interactivitySelector)))
+      inputFilledStyles(context, definition, logicalControlSelector, interactivitySelector)
+      .withBehaviors(forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector, interactivitySelector)))
     ),
-    appearanceBehavior('stealth', _stealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('stealth', StealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
     forcedColorsStylesheetBehavior(baseSelectForcedColorStyles(context, definition))
   );

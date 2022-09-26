@@ -6,11 +6,11 @@ import {
   NumberFieldOptions,
 } from '@microsoft/fast-foundation';
 import {
-  _baseInputStyles,
-  _inputFilledStyles,
-  _inputForcedColorStyles,
-  _inputOutlineStyles,
-  _inputStateStyles,
+  baseInputStyles,
+  inputFilledStyles,
+  inputForcedColorStyles,
+  inputOutlineStyles,
+  inputStateStyles,
 } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { designUnit } from '../design-tokens';
@@ -24,9 +24,9 @@ export const numberFieldStyles: (context: ElementDefinitionContext, definition: 
   css`
     ${display('inline-block')}
 
-    ${_baseInputStyles(context, definition, logicalControlSelector)}
+    ${baseInputStyles(context, definition, logicalControlSelector)}
 
-    ${_inputStateStyles(context, definition, logicalControlSelector)}
+    ${inputStateStyles(context, definition, logicalControlSelector)}
 
     .root {
       display: flex;
@@ -86,7 +86,7 @@ export const numberFieldStyles: (context: ElementDefinitionContext, definition: 
       padding-top: 3px;
     }
   `.withBehaviors(
-    appearanceBehavior('outline', _inputOutlineStyles(context, definition, logicalControlSelector)),
-    appearanceBehavior('filled', _inputFilledStyles(context, definition, logicalControlSelector)),
-    forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector)),
   );

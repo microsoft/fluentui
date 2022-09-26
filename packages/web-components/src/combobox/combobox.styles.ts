@@ -4,7 +4,7 @@ import { baseSelectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { strokeWidth } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
-import { _inputFilledStyles, _inputForcedColorStyles, _inputOutlineStyles, _inputStateStyles } from '../styles';
+import { inputFilledStyles, inputForcedColorStyles, inputOutlineStyles, inputStateStyles } from '../styles';
 
 const logicalControlSelector: string = '.control';
 const interactivitySelector: string = ':not([disabled]):not([open])';
@@ -16,7 +16,7 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
   css`
     ${baseSelectStyles(context, definition)}
 
-    ${_inputStateStyles(context, definition, logicalControlSelector)}
+    ${inputStateStyles(context, definition, logicalControlSelector)}
 
     :host(:empty) .listbox {
       display: none;
@@ -44,7 +44,7 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
       outline: none;
     }
   `.withBehaviors(
-    appearanceBehavior('outline', _inputOutlineStyles(context, definition, logicalControlSelector, interactivitySelector)),
-    appearanceBehavior('filled', _inputFilledStyles(context, definition, logicalControlSelector, interactivitySelector)),
-    forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector, interactivitySelector)),
+    appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector, interactivitySelector)),
+    appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector, interactivitySelector)),
+    forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector, interactivitySelector)),
   );

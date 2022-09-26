@@ -6,11 +6,11 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
-  _baseInputStyles,
-  _inputFilledStyles,
-  _inputForcedColorStyles,
-  _inputOutlineStyles,
-  _inputStateStyles,
+  baseInputStyles,
+  inputFilledStyles,
+  inputForcedColorStyles,
+  inputOutlineStyles,
+  inputStateStyles,
   heightNumber,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
@@ -25,9 +25,9 @@ export const textAreaStyles: (context: ElementDefinitionContext, definition: Fou
   css`
     ${display('inline-flex')}
 
-    ${_baseInputStyles(context, definition, logicalControlSelector)}
+    ${baseInputStyles(context, definition, logicalControlSelector)}
 
-    ${_inputStateStyles(context, definition, logicalControlSelector)}
+    ${inputStateStyles(context, definition, logicalControlSelector)}
 
     :host {
       flex-direction: column;
@@ -55,7 +55,7 @@ export const textAreaStyles: (context: ElementDefinitionContext, definition: Fou
       resize: vertical;
     }
   `.withBehaviors(
-    appearanceBehavior('outline', _inputOutlineStyles(context, definition, logicalControlSelector)),
-    appearanceBehavior('filled', _inputFilledStyles(context, definition, logicalControlSelector)),
-    forcedColorsStylesheetBehavior(_inputForcedColorStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector)),
   );
