@@ -1,5 +1,5 @@
 import { ChangelogJsonEntry } from 'beachball';
-import { IPullRequest } from '../github/index';
+import { IPullRequest } from '../github';
 
 /** Entry in a CHANGELOG.json's `entries` array, plus the package name */
 export interface IChangelogEntry extends ChangelogJsonEntry {
@@ -15,7 +15,7 @@ export interface ICommit {
   /** Author GitHub username */
   author: string;
   /** Author email */
-  authorEmail: string;
+  authorEmail?: string;
 }
 
 export interface IExtendedPullRequest extends IPullRequest {
