@@ -136,7 +136,7 @@ task('build:docs:assets:component:info', cb => {
   });
 
   if (result.status) {
-    throw new Error(result.error.toString() || `lerna run failed with status ${result.status}`);
+    throw new Error(result.error?.toString() || `lerna run failed with status ${result.status}`);
   }
 
   cb();
@@ -205,7 +205,7 @@ task('serve:docs:hot', async () => {
     );
 
     if (process.env.NODE_ENV !== 'production') {
-      app.use(WebpackHotMiddleware(compiler));
+      app.use(WebpackHotMiddleware(compiler as any));
     }
 
     return app;

@@ -2012,6 +2012,9 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
     render(): JSX.Element;
 }
 
+// @public
+export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListProps>;
+
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
 
@@ -2413,6 +2416,8 @@ export interface IBasePickerState<T> {
     selectionRemoved?: T;
     // (undocumented)
     suggestedDisplayValue?: string;
+    // (undocumented)
+    suggestionsExtendedLoading?: boolean;
     // (undocumented)
     suggestionsLoading?: boolean;
     // (undocumented)
@@ -4533,6 +4538,8 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsI
 
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
+    // (undocumented)
+    groupedListAs?: IComponentAs<IGroupedListProps>;
     // (undocumented)
     onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
     // (undocumented)
@@ -6733,6 +6740,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onPageRemoved?: (page: IPage<T>) => void;
     onPagesUpdated?: (pages: IPage<T>[]) => void;
     onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode;
+    onRenderCellConditional?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode | null;
     onRenderPage?: IRenderFunction<IPageProps<T>>;
     onRenderRoot?: IRenderFunction<IListOnRenderRootProps<T>>;
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
@@ -6975,6 +6983,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
+    popupProps?: IPopupProps;
     responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
@@ -8930,6 +8939,7 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
     forceResolveText?: string;
+    isExtendedLoading?: boolean;
     isLoading?: boolean;
     isMostRecentlyUsedVisible?: boolean;
     isResultsFooterVisible?: boolean;
@@ -9102,6 +9112,8 @@ export interface ITeachingBubbleProps extends React_2.RefAttributes<HTMLDivEleme
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
+    // (undocumented)
+    children?: React_2.ReactNode;
     componentRef?: IRefObject<ITeachingBubble>;
     focusTrapZoneProps?: IFocusTrapZoneProps;
     footerContent?: string | JSX.Element;
@@ -9766,6 +9778,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     static defaultProps: {
         startIndex: number;
         onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
+        onRenderCellConditional: undefined;
         renderedWindowsAhead: number;
         renderedWindowsBehind: number;
     };

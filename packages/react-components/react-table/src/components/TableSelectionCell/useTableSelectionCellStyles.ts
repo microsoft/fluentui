@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -14,17 +13,18 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
-    ...shorthands.flex(0, 1, '0px'),
+    width: '44px',
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    ...shorthands.padding(0),
+    display: 'table-cell',
   },
 
   radioIndicator: {
     display: 'flex',
+    flexGrow: 1,
     alignItems: 'center',
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
+    justifyContent: 'center',
     '& svg': {
       width: '16px',
       height: '16px',

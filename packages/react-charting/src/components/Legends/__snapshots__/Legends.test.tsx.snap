@@ -1578,7 +1578,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         font-size: 12px;
                         font-weight: 400;
                         line-height: 16px;
-                        opacity: 0.6;
+                        opacity: 0.67;
                       }
                 >
                   Legend 17
@@ -3171,7 +3171,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         font-size: 12px;
                         font-weight: 400;
                         line-height: 16px;
-                        opacity: 0.6;
+                        opacity: 0.67;
                       }
                 >
                   Legend 17
@@ -4764,7 +4764,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         font-size: 12px;
                         font-weight: 400;
                         line-height: 16px;
-                        opacity: 0.6;
+                        opacity: 0.67;
                       }
                 >
                   Legend 17
@@ -6357,7 +6357,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         font-size: 12px;
                         font-weight: 400;
                         line-height: 16px;
-                        opacity: 0.6;
+                        opacity: 0.67;
                       }
                 >
                   Legend 17

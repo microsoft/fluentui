@@ -12,14 +12,23 @@ export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots> =
  */
 const useStyles = makeStyles({
   root: {
+    position: 'absolute',
+    right: '0px',
+    top: '50%',
+    transform: 'translateY(-50%)',
     opacity: 0,
     marginLeft: 'auto',
+
     ...createCustomFocusIndicatorStyle(
       {
         opacity: 1,
       },
       { selector: 'focus-within' },
     ),
+  },
+
+  visible: {
+    opacity: 1,
   },
 });
 
@@ -28,7 +37,12 @@ const useStyles = makeStyles({
  */
 export const useTableCellActionsStyles_unstable = (state: TableCellActionsState): TableCellActionsState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableCellActionsClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    tableCellActionsClassNames.root,
+    styles.root,
+    state.visible && styles.visible,
+    state.root.className,
+  );
 
   return state;
 };

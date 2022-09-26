@@ -16,8 +16,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "gulp": "^4.0.2"
+    "@fluentui/scripts": "^1.0.0"
   },
   "publishConfig": {
     "access": "public"

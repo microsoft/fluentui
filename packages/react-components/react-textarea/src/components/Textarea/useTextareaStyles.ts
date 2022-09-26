@@ -102,14 +102,29 @@ const useRootStyles = makeStyles({
     },
   },
 
+  filled: {
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    ':hover,:focus-within': {
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+    },
+  },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
   },
-
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
+  },
+
+  'filled-darker-shadow': {
+    backgroundColor: tokens.colorNeutralBackground3,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
+    boxShadow: tokens.shadow2,
+  },
+
+  'filled-lighter-shadow': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
+    boxShadow: tokens.shadow2,
   },
 
   outline: {
@@ -217,14 +232,16 @@ const useTextareaResizeStyles = makeStyles({
  * Apply styling to the Textarea slots based on the state
  */
 export const useTextareaStyles_unstable = (state: TextareaState): TextareaState => {
-  const disabled = state.textarea.disabled;
   const { size, appearance, resize } = state;
+  const disabled = state.textarea.disabled;
+  const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     textareaClassNames.root,
     rootStyles.base,
     rootStyles[appearance],
+    filled && rootStyles.filled,
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,

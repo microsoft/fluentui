@@ -22,7 +22,7 @@ export const textareaClassNames: SlotClassNames<TextareaSlots>;
 
 // @public
 export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
-    appearance?: 'outline' | 'filled-darker' | 'filled-lighter';
+    appearance?: 'outline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
     defaultValue?: string;
     onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
     resize?: 'none' | 'horizontal' | 'vertical' | 'both';

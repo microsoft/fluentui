@@ -16,15 +16,6 @@ describe('TableCell', () => {
     renderOptions: {
       container: tr,
     },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            media: 'Test Icon',
-          },
-        },
-      ],
-    },
     displayName: 'TableCell',
   });
 

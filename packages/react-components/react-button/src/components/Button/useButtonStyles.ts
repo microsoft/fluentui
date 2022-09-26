@@ -12,6 +12,9 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
+const buttonSpacingSmall = '3px';
+const buttonSpacingMedium = '5px';
+
 const useRootStyles = makeStyles({
   // Base styles
   base: {
@@ -22,11 +25,7 @@ const useRootStyles = makeStyles({
 
     ...shorthands.margin(0),
 
-    maxWidth: '280px',
-
     ...shorthands.overflow('hidden'),
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
 
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
@@ -130,13 +129,13 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
@@ -170,21 +169,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
+    ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
-    height: '24px',
     minWidth: '64px',
 
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderRadius(buttonSpacingSmall),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
+    ...shorthands.padding(buttonSpacingMedium, tokens.spacingHorizontalM),
 
-    height: '32px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -194,9 +191,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalL),
 
-    height: '40px',
     minWidth: '96px',
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -274,11 +270,11 @@ const useRootDisabledStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: tokens.colorTransparentBackground,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorTransparentBackground,
     },
   },
   primary: {
@@ -296,30 +292,30 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -327,8 +323,8 @@ const useRootDisabledStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor('transparent'),
-    outlineColor: 'transparent',
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    outlineColor: tokens.colorTransparentStroke,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
     boxShadow: `
@@ -420,6 +416,17 @@ const useIconStyles = makeStyles({
     [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
 
+  // Appearance variations
+  subtle: {
+    ':hover': {
+      color: tokens.colorNeutralForeground2BrandHover,
+    },
+
+    ':hover:active': {
+      color: tokens.colorNeutralForeground2BrandPressed,
+    },
+  },
+
   // Icon position variations
   before: {
     marginRight: `var(${iconSpacingVar})`,
@@ -471,6 +478,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       buttonClassNames.icon,
       iconStyles.base,
       state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      appearance === 'subtle' && iconStyles.subtle,
       iconStyles[size],
       state.icon.className,
     );

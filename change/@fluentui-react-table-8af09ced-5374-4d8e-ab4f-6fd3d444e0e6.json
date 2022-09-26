@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor(useTable): selection manager to avoid calling multiple hooks",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

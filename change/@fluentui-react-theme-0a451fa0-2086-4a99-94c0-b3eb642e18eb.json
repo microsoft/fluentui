@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update token values to fix failing color contrast",
-  "packageName": "@fluentui/react-theme",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

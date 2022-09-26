@@ -80,6 +80,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     boxSizing: 'border-box',
+    color: tokens.colorNeutralForeground1,
     columnGap: tokens.spacingHorizontalXXS,
     cursor: 'pointer',
     display: 'grid',

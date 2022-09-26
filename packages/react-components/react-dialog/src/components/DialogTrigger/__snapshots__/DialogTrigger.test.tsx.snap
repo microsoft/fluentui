@@ -5,6 +5,7 @@ exports[`DialogTrigger renders a default state 1`] = `
   aria-haspopup="dialog"
   data-tabster="{\\"deloser\\":{}}"
   onClick={[Function]}
+  type="button"
 >
   Dialog trigger
 </button>

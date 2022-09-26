@@ -9,7 +9,16 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableSelectionCell,
+  TableCellLayout,
+} from '../..';
 import { useTable, ColumnDefinition } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
@@ -101,6 +110,7 @@ export const MultipleSelect = () => {
   } = useTable({
     columns,
     items,
+    defaultSelectedRows: new Set([0, 1]),
     rowEnhancer: (row, { selection }) => ({
       ...row,
       onClick: () => selection.toggleRow(row.rowId),
@@ -134,10 +144,18 @@ export const MultipleSelect = () => {
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
           <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
             <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

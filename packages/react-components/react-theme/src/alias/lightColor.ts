@@ -45,6 +45,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForegroundInvertedHover: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedPressed: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedSelected: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInverted2: white, // #ffffff Global.Color.White
   colorNeutralForegroundOnBrand: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLink: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkHover: white, // #ffffff Global.Color.White

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 07:48:52 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.8",
+      "version": "8.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "36d43203b60ede2e64c03670b75e37d770f9c1b6",
+            "comment": "Update to latest CDN for filetype icons, and mapping .classifier to the correct icon."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.12",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Sep 2022 07:48:11 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.7.7",
       "version": "8.7.7",

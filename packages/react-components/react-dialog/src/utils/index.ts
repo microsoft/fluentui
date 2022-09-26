@@ -1,4 +1,5 @@
 export * from './isEscapeKeyDown';
-export * from './localShorthands';
-export * from './normalizeDefaultPrevented';
 export * from './useDisableBodyScroll';
+export * from './useFocusFirstElement';
+export * from './isHTMLDialogElement';
+export * from './useControlNativeDialogOpenState';
