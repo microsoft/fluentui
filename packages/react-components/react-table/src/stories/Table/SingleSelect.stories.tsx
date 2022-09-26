@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition } from '../../hooks';
+import { useTable, ColumnDefinition, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
@@ -96,22 +96,32 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const SingleSelect = () => {
-  const { rows } = useTable({
-    columns,
-    items,
-    selectionMode: 'single',
-    defaultSelectedRows: new Set([1]),
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      selected: selection.isRowSelected(row.rowId),
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-    }),
-  });
+  const {
+    getRows,
+    selection: { toggleRow, isRowSelected },
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      useSelection({
+        selectionMode: 'single',
+        defaultSelectedItems: new Set([1]),
+      }),
+    ],
+  );
+
+  const rows = getRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
 
