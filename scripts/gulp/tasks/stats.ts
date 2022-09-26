@@ -2,7 +2,7 @@ import fs from 'fs';
 import { task, series } from 'gulp';
 import { log, PluginError } from 'gulp-util';
 import _ from 'lodash';
-import webpack from 'webpack';
+import webpack, { Configuration } from 'webpack';
 import stableStringify from 'json-stable-stringify-without-jsonify';
 import { argv } from 'yargs';
 import requestHttp from 'request-promise-native';
@@ -14,7 +14,7 @@ const { paths } = config;
 const UNRELEASED_VERSION_STRING = 'Unreleased';
 const SEMVER_MATCHER = /(\d+)\.(\d+)\.(\d+)/;
 
-const semverCmp = (a, b) => {
+const semverCmp = (a: { key: string }, b: { key: string }) => {
   const left = a.key;
   const right = b.key;
 
@@ -45,12 +45,12 @@ const semverCmp = (a, b) => {
   return 0;
 };
 
-function webpackAsync(webpackConfig): Promise<any> {
+function webpackAsync(webpackConfig: Configuration): Promise<any> {
   return new Promise((resolve, reject) => {
     const compiler = webpack(webpackConfig);
     compiler.run((err, stats) => {
-      const statsJson = stats.toJson();
-      const { errors, warnings } = statsJson;
+      const statsJson = stats?.toJson();
+      const { errors = [], warnings = [] } = statsJson || {};
 
       if (err) {
         log('Webpack compiler encountered a fatal error.');
@@ -70,8 +70,8 @@ function webpackAsync(webpackConfig): Promise<any> {
   });
 }
 
-async function compileOneByOne(allConfigs) {
-  let assets = [];
+async function compileOneByOne(allConfigs: any[]) {
+  let assets: any[] = [];
   for (const webpackConfig of allConfigs) {
     log('Compiling', webpackConfig.output.filename);
     try {
@@ -151,7 +151,7 @@ function readFlamegrillStats() {
 //    -> use camelCase name (docsite perf examples convention)
 //    -> and merge yarn perf (summaryPerf) and yarn perf:test (flamegrill) data
 // 3. the others are perf-test only examples -> store
-function mergePerfStats(summaryPerfStats, perfTestStats) {
+function mergePerfStats(summaryPerfStats: any, perfTestStats: any[]) {
   return _.transform(
     perfTestStats,
     (result, value, key: string) => {
@@ -166,7 +166,7 @@ function mergePerfStats(summaryPerfStats, perfTestStats) {
         result[key.replace(/\./g, '_')] = { flamegrill }; // mongodb does not allow dots in keys
       }
     },
-    {},
+    {} as Record<string, any>,
   );
 }
 
@@ -205,11 +205,14 @@ task('stats:save', async () => {
   };
 
   // payload sanity check
-  _.forEach(['sha', 'branch', 'build', 'bundleSize', 'performance'], fieldName => {
-    if (statsPayload[fieldName] === undefined) {
-      throw `Required field '${fieldName}' not set in stats payload`;
-    }
-  });
+  _.forEach(
+    ['sha', 'branch', 'build', 'bundleSize', 'performance'],
+    (fieldName: 'sha' | 'branch' | 'build' | 'bundleSize' | 'performance') => {
+      if (statsPayload[fieldName] === undefined) {
+        throw `Required field '${fieldName}' not set in stats payload`;
+      }
+    },
+  );
 
   const options = {
     method: 'POST',

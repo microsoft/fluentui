@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest';
 import { ChangelogEntry } from 'beachball';
-import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } from '../github/index';
+import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } from '../github';
 import { repoDetails, github } from './init';
 import { IExtendedPullRequest } from './types';
 

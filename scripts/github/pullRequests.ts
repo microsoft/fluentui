@@ -1,5 +1,5 @@
-import { Octokit } from '@octokit/rest';
-import { IPullRequest, IRepoDetails } from './types';
+import type { Octokit } from '@octokit/rest';
+import type { IPullRequest, IRepoDetails } from './types';
 
 export interface IGetPullRequestFromCommitParams {
   github: Octokit;
