@@ -7,11 +7,15 @@ export type PersonaSlots = {
 
   /**
    * Avatar to display.
+   *
+   * If a PresenceBadge and an Avatar are provided, the Avatar will display the PresenceBadge as its presence.
    */
   avatar?: Slot<typeof Avatar>;
 
   /**
    * PresenceBadge to display.
+   *
+   * If `presenceOnly` is true, the PresenceBadge will be displayed instead of the Avatar.
    */
   presence?: Slot<typeof PresenceBadge>;
 
