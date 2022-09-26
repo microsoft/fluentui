@@ -14,7 +14,7 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Toolbar
  */
 export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
-  const { size = 'medium' } = props;
+  const { size = 'medium', vertical = false } = props;
 
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,
@@ -23,7 +23,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
 
   const initialState: UninitializedToolbarState = {
     size,
-
+    vertical,
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
