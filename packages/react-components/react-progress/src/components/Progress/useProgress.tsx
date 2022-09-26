@@ -3,7 +3,11 @@ import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-
 import type { ProgressProps, ProgressState } from './Progress.types';
 import { Label } from '@fluentui/react-label';
 import { DefaultProgressDiv } from './DefaultProgressDiv';
-import { useProgressState_unstable } from './useProgressState';
+import { progressCssVars } from './useProgressStyles';
+
+// If the percentComplete is near 0, don't animate it.
+// This prevents animations on reset to 0 scenarios.
+const ZERO_THRESHOLD = 0.01;
 
 /**
  * Create the state required to render Progress.
@@ -16,9 +20,19 @@ import { useProgressState_unstable } from './useProgressState';
  */
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
-  const { appearance = 'primary', barThickness = 'default', determinate = false } = props;
+  const { appearance = 'primary', barThickness = 'default', determinate = false, percentComplete } = props;
+  const ariaValueMin = determinate ? 0 : undefined;
+  const ariaValueMax = determinate ? 100 : undefined;
+  const ariaValueNow = determinate ? Math.floor(percentComplete! * 100) : undefined;
   const baseId = useId('Progress');
   const describedbyId = useId('ProgressDescription');
+
+  const valuePercent = determinate ? Math.min(100, Math.max(0, percentComplete! * 100)) : undefined;
+  const progressBarStyles = {
+    [`${progressCssVars.percentageCssVar}`]: determinate ? valuePercent + '%' : '0',
+    [`${progressCssVars.transitionCssVar}`]:
+      valuePercent && determinate && valuePercent < ZERO_THRESHOLD ? 'none' : 'width .3s ease',
+  };
 
   const { role = 'progressbar', ...rest } = props;
   const nativeRoot = getNativeElementProps('div', { ref, role, ...rest });
@@ -41,6 +55,9 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     required: true,
     defaultProps: {
       children: <DefaultProgressDiv />,
+      'aria-valuemin': ariaValueMin,
+      'aria-valuemax': ariaValueMax,
+      'aria-valuenow': ariaValueNow,
     },
   });
 
@@ -64,6 +81,13 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     description: descriptionShorthand,
   };
 
-  useProgressState_unstable(state, props);
+  if (state.indicator) {
+    state.indicator.style = {
+      ...progressBarStyles,
+      ...state.indicator.style,
+    };
+  }
+
+  //useProgressState_unstable(state, props);
   return state;
 };
