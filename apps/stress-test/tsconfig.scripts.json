@@ -12,8 +12,9 @@
     "experimentalDecorators": true,
     "types": ["environment", "node"],
     "moduleResolution": "node",
-    "module": "CommonJS"
+    "module": "ESNext",
+    "esModuleInterop": true
   },
-  "include": ["src"],
+  "include": ["src", "scripts"],
   "exclude": ["node_modules"]
 }

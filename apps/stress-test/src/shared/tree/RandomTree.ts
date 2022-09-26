@@ -1,5 +1,5 @@
-import { random, Random } from '../utils/random';
-import { TestFixture } from '../utils/testUtils';
+import { random, Random } from '../utils/random.js';
+import { TestFixture } from '../utils/testUtils.js';
 
 type TreeParams = {
   minDepth?: number;

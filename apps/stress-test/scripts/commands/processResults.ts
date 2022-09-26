@@ -1,9 +1,9 @@
 import * as yargs from 'yargs';
 import { CLIProcessResultsOptions, ProcessedBrowserData, TachometerBenchmark } from '../utils/types';
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import * as path from 'path';
-import configureYargs from '../utils/configureYargs';
-import { getResultsDir, readDirJson } from '../utils/paths';
+import configureYargs from '../utils/configureYargs.js';
+import { getResultsDir, readDirJson } from '../utils/paths.js';
 
 const command = 'process-results';
 

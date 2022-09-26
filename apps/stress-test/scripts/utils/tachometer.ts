@@ -1,7 +1,7 @@
 import { ConfigResult } from './types';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { ensureClean } from './paths';
+import { ensureClean } from './paths.js';
 
 const execAsync = promisify(exec);
 

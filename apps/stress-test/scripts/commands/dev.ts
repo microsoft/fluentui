@@ -1,11 +1,11 @@
 import * as yargs from 'yargs';
 import { CLIDevOptions } from '../utils/types';
 
-import * as webpack from 'webpack';
-import * as WebpackDevServer from 'webpack-dev-server';
-
-import configureYargs from '../utils/configureYargs';
-const webpackConfig = require('../../webpack/webpack.config');
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import configureYargs from '../utils/configureYargs.js';
+import webpackConfig from '../../webpack/webpack.config.js';
+import { buildDefaultFixtures } from '../utils/fixtures.js';
 
 const command = 'dev';
 
@@ -46,6 +46,8 @@ const api: yargs.CommandModule = {
       open: argv.open as boolean,
       mode: argv.mode as CLIDevOptions['mode'],
     };
+
+    buildDefaultFixtures();
 
     runServer(args);
   },
