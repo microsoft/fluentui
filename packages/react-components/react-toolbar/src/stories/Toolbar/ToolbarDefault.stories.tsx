@@ -3,7 +3,7 @@ import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton } from '@fl
 import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Default = (props: Partial<ToolbarProps>) => (
-  <Toolbar vertical {...props}>
+  <Toolbar {...props}>
     <ToolbarButton>Click me</ToolbarButton>
     <ToolbarButton>Click me</ToolbarButton>
     <ToolbarDivider />
