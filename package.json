@@ -318,11 +318,7 @@
       "tools",
       "typings"
     ],
-    "nohoist": [
-      "@fluentui/react-northstar-fela-renderer/stylis",
-      "@fluentui/react-northstar-emotion-renderer/@types/stylis",
-      "@fluentui/react-northstar-emotion-renderer/stylis"
-    ]
+    "nohoist": []
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "4.22.0",
