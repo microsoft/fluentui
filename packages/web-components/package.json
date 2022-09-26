@@ -31,8 +31,9 @@
     "format": "prettier -w 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
     "code-style": "yarn format:check && yarn lint",
-    "start": "start-storybook -p 6006 --docs",
-    "build-storybook": "build-storybook -o ./dist/storybook --docs",
+    "start": "yarn start-storybook -p 6006 --docs",
+    "start-storybook": "node node_modules/@storybook/html/bin/index",
+    "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
     "test": "yarn doc:ci && yarn test-chrome:verbose",
     "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
@@ -46,6 +47,7 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
+    "@storybook/html": "6.5.5",
     "@types/chai": "4.3.3",
     "@types/chai-spies": "1.0.3",
     "@types/karma": "6.3.3",

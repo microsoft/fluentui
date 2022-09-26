@@ -24,7 +24,7 @@
     "check:change": "beachball check",
     "check:modified-files": "yarn workspace @fluentui/scripts just check-for-modified-files",
     "check:affected-package": "node ./scripts/monorepo/checkIfPackagesAffected.js",
-    "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/web-components|@storybook/html|@storybook/mdx2-csf|svelte|@testing-library|vue|@cypress/react|cypress|@swc/wasm|@cactuslab/usepubsub\"",
+    "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/html|@storybook/mdx2-csf|svelte|@testing-library|vue|@cypress/react|cypress|@swc/wasm|@cactuslab/usepubsub\"",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
     "codepen": "cd packages/react && node ../../scripts/local-codepen.js",
@@ -112,7 +112,6 @@
     "@storybook/core-events": "6.5.5",
     "@storybook/manager-webpack5": "6.5.5",
     "@storybook/react": "6.5.5",
-    "@storybook/html": "6.5.5",
     "@storybook/theming": "6.5.5",
     "@swc/core": "1.2.220",
     "@testing-library/dom": "8.11.3",
@@ -318,7 +317,9 @@
       "tools",
       "typings"
     ],
-    "nohoist": []
+    "nohoist": [
+      "@fluentui/web-components/@storybook/html"
+    ]
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "4.22.0",
