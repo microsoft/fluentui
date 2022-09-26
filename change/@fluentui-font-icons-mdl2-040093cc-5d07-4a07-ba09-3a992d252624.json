@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added IconNamesInput to exports",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
