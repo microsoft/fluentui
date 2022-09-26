@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
+    "pretty": true,
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
@@ -24,6 +25,30 @@
     },
     {
       "path": "./screener/tsconfig.json"
+    },
+    {
+      "path": "./github/tsconfig.json"
+    },
+    {
+      "path": "./puppeteer/tsconfig.json"
+    },
+    {
+      "path": "./gulp/tsconfig.json"
+    },
+    {
+      "path": "./dangerjs/tsconfig.json"
+    },
+    {
+      "path": "./projects-test/tsconfig.json"
+    },
+    {
+      "path": "./update-release-notes/tsconfig.json"
+    },
+    {
+      "path": "./prettier/tsconfig.json"
+    },
+    {
+      "path": "./fluentui-publish/tsconfig.json"
     },
     {
       "path": "./tsconfig.json"

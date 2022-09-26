@@ -2,6 +2,49 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 23 Sep 2022 10:32:29 GMT",
+      "tag": "@fluentui/react-components_v9.3.2",
+      "version": "9.3.2",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ce5f1ec6a0c0f766679ea708c40538fc2d56c6d9",
+            "comment": "chore: restructure folder organization"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517",
+            "comment": "chore: move spinbutton a11y spec to Concepts/Developer/Accessibility"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517",
+            "comment": "chore: move spinbutton a11y spec to Concepts/Developer/Accessibility"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "4dd18085b968e10d512c179705d31148e28148b4",
+            "comment": "feat: implements DialogContent as a swap of DialogBody"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f6202c4bb7ca9f352e7b4bc376242849648dcfd6",
+            "comment": "fix: Make Menu openOnHover prop work again"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:42 GMT",
       "tag": "@fluentui/react-components_v9.3.1",
       "version": "9.3.1",

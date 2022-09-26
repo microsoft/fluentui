@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/react_v8.96.1",
+      "version": "8.96.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gasramirez@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "62aadfe9a8429fbc5c0660c1e741e5e8171f8f23",
+            "comment": "@fluentui/react: allowing Popup configuration on Modal component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Sep 2022 07:47:29 GMT",
       "tag": "@fluentui/react_v8.96.0",
       "version": "8.96.0",

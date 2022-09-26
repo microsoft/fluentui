@@ -61,6 +61,7 @@ export * from './components/Breadcrumb/BreadcrumbLink';
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
+export * from './components/Chat/ChatMessageContent';
 export * from './components/Chat/ChatMessageDetails';
 export * from './components/Chat/ChatMessageHeader';
 export * from './components/Chat/ChatMessageReadStatus';

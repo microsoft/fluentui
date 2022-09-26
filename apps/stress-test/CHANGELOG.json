@@ -2,6 +2,21 @@
   "name": "@fluentui/stress-test",
   "entries": [
     {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/stress-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/stress-test",
+            "comment": "Bump @fluentui/react to v8.96.1",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 07:47:16 GMT",
       "tag": "@fluentui/stress-test_v1.0.0",
       "version": "1.0.0",

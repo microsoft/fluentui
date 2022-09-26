@@ -176,6 +176,7 @@ packages/react-components-migration/react-button-shim-v8-v9 @microsoft/cxe-coast
 packages/react-components-migration/react-menu-shim-v8-v9 @microsoft/cxe-coastal
 packages/react-components-migration/react-stack-shim-v8-v9 @microsoft/cxe-coastal
 packages/react-components-migration/react-theme-shim-v8-v9 @microsoft/cxe-coastal
+packages/react-components/react-trigger @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 

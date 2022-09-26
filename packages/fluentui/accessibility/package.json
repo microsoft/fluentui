@@ -11,8 +11,6 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
-    "@types/gulp": "^4.0.6",
-    "gulp": "^4.0.2",
     "lerna-alias": "^3.0.3-0"
   },
   "files": [

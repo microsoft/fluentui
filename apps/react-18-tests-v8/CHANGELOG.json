@@ -2,6 +2,21 @@
   "name": "@fluentui/react-18-tests-v8",
   "entries": [
     {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.96.1",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Sep 2022 07:47:30 GMT",
       "tag": "@fluentui/react-18-tests-v8_v1.0.0",
       "version": "1.0.0",

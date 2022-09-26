@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+-  Styles from `ChatMessage` content slot were moved to exact component `ChatMessageContent` @yuanboxue-amber ([#24691](https://github.com/microsoft/fluentui/pull/24691))
+
 ### Features
 
 - Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
