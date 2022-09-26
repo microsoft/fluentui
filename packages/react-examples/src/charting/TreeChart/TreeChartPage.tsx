@@ -36,11 +36,7 @@ export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> 
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@uifabric/charting/src/components/TreeChart/TreeChart.types.ts'),
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/TreeChart/TreeChart.types.ts')]}
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
