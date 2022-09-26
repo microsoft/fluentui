@@ -20,7 +20,7 @@ const ZERO_THRESHOLD = 0.01;
  */
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
-  const { appearance = 'primary', barThickness = 'default', determinate = false, percentComplete } = props;
+  const { barThickness = 'default', determinate = false, percentComplete } = props;
   const ariaValueMin = determinate ? 0 : undefined;
   const ariaValueMax = determinate ? 100 : undefined;
   const ariaValueNow = determinate ? Math.floor(percentComplete! * 100) : undefined;
@@ -51,7 +51,7 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     required: false,
   });
 
-  const indicatorShortHand = resolveShorthand(props.indicator, {
+  const barShortHand = resolveShorthand(props.bar, {
     required: true,
     defaultProps: {
       children: <DefaultProgressDiv />,
@@ -61,30 +61,36 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     },
   });
 
+  const trackShortHand = resolveShorthand(props.track, {
+    required: true,
+    defaultProps: {},
+  });
+
   if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {
     nativeRoot['aria-labelledby'] = labelShorthand.id;
   }
 
   const state: ProgressState = {
-    appearance,
     barThickness,
     determinate,
     components: {
       root: 'div',
-      indicator: 'span',
+      bar: 'span',
+      track: 'span',
       label: Label,
       description: Label,
     },
     root: nativeRoot,
-    indicator: indicatorShortHand,
+    bar: barShortHand,
+    track: trackShortHand,
     label: labelShorthand,
     description: descriptionShorthand,
   };
 
-  if (state.indicator) {
-    state.indicator.style = {
+  if (state.bar) {
+    state.bar.style = {
       ...progressBarStyles,
-      ...state.indicator.style,
+      ...state.bar.style,
     };
   }
 

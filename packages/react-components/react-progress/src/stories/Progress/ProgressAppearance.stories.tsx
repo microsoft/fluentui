@@ -13,9 +13,13 @@ export const Appearance = () => {
 
   return (
     <div className={styles.container}>
-      <Progress appearance="primary" label="Primary Progress" />
+      <Progress />
 
-      <Progress appearance="inverted" label="Inverted Progress" />
+      <Progress label="Progress Label" description="Progress Description" />
+
+      <Progress label="Label and ProgressBar" />
+
+      <Progress description="Description and ProgressBar" />
     </div>
   );
 };

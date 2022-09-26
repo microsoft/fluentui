@@ -6,7 +6,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const progressClassNames: SlotClassNames<ProgressSlots> = {
   root: 'fui-Progress',
-  indicator: 'fui-Progress__indicator',
+  bar: 'fui-Progress__bar',
+  track: 'fui-Progress__track',
   label: 'fui-Progress__label',
   description: 'fui-Progress__description',
 };
@@ -45,10 +46,15 @@ const IndeterminateProgressRTL = {
  */
 const useRootStyles = makeStyles({
   root: {
-    display: 'block',
+    display: 'grid',
     alignItems: 'center',
     justifyContent: 'center',
-    ...shorthands.gap('8px 0px'),
+    ...shorthands.gap('8px', '0px'),
+    width: '100%',
+    position: 'relative',
+    ...shorthands.overflow('hidden'),
+    height: barThicknessValues.default,
+    ...shorthands.padding('8px', '0px'),
   },
 });
 
@@ -75,234 +81,70 @@ const useDescriptionStyles = makeStyles({
 /**
  * Styles for the progress bar
  */
-const useIndicatorStyles = makeStyles({
-  determinateDefault: {
-    width: '100%',
-    ['& > div.fui-Progress__Container']: {
-      position: 'relative',
-      ...shorthands.overflow('hidden'),
-      height: barThicknessValues.default,
-      ...shorthands.padding('8px'),
+const useBarStyles = makeStyles({
+  base: {
+    backgroundColor: tokens.colorCompoundBrandBackground,
+    position: 'absolute',
 
-      ['& > div.fui-Progress__Track']: {
-        position: 'absolute',
-        width: '100%',
-        height: barThicknessValues.default,
-        backgroundColor: tokens.colorNeutralBackground6,
-
-        '@media screen and (forced-colors: active)': {
-          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
-        },
-      },
-
-      ['& > div.fui-Progress__Bar']: {
-        backgroundColor: tokens.colorCompoundBrandBackground,
-        height: barThicknessValues.default,
-        position: 'absolute',
-        width: `var(${progressCssVars.percentageCssVar})`,
-        transitionProperty: `var(${progressCssVars.transitionCssVar})`,
-
-        '@media screen and (forced-colors: active)': {
-          backgroundColor: 'Highlight',
-        },
-      },
+    '@media screen and (forced-colors: active)': {
+      backgroundColor: 'Highlight',
     },
   },
-  determinateLarge: {
+  defaultHeight: {
+    height: barThicknessValues.default,
+  },
+  largeHeight: {
+    height: barThicknessValues.large,
+  },
+  determinate: {
+    width: `var(${progressCssVars.percentageCssVar})`,
+    transitionProperty: `var(${progressCssVars.transitionCssVar})`,
+  },
+  indeterminate: {
+    width: 0,
+    transitionProperty: 'width .3s ease',
+    minWidth: '33%',
+  },
+  LTR: {
+    backgroundImage: `linear-gradient(
+      to right,
+      ${tokens.colorNeutralBackground6} 0%,
+      ${tokens.colorCompoundBrandBackground} 50%,
+      ${tokens.colorNeutralBackground6} 100%
+    )`,
+    animationName: IndeterminateProgress,
+    animationDuration: '3s',
+    animationIterationCount: 'infinite',
+  },
+
+  RTL: {
+    backgroundImage: `linear-gradient(
+      to left,
+      ${tokens.colorNeutralBackground6} 0%,
+      ${tokens.colorCompoundBrandBackground} 50%,
+      ${tokens.colorNeutralBackground6} 100%
+    )`,
+    animationName: IndeterminateProgressRTL,
+    animationDuration: '3s',
+    animationIterationCount: 'infinite',
+  },
+});
+
+const useTrackStyles = makeStyles({
+  base: {
+    position: 'absolute',
     width: '100%',
-    ['& > div.fui-Progress__Container']: {
-      position: 'relative',
-      ...shorthands.overflow('hidden'),
-      height: barThicknessValues.large,
-      ...shorthands.padding('8px'),
+    backgroundColor: tokens.colorNeutralBackground6,
 
-      ['& > div.fui-Progress__Track']: {
-        position: 'absolute',
-        width: '100%',
-        height: barThicknessValues.large,
-        backgroundColor: tokens.colorNeutralBackground6,
-
-        '@media screen and (forced-colors: active)': {
-          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
-        },
-      },
-
-      ['& > div.fui-Progress__Bar']: {
-        backgroundColor: tokens.colorCompoundBrandBackground,
-        height: barThicknessValues.large,
-        position: 'absolute',
-        width: `var(${progressCssVars.percentageCssVar})`,
-        transitionProperty: `var(${progressCssVars.transitionCssVar})`,
-
-        '@media screen and (forced-colors: active)': {
-          backgroundColor: 'Highlight',
-        },
-      },
+    '@media screen and (forced-colors: active)': {
+      ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
     },
   },
-  indeterminateLTRDefault: {
-    width: '100%',
-    ['& > div.fui-Progress__Container']: {
-      position: 'relative',
-      ...shorthands.overflow('hidden'),
-      height: barThicknessValues.default,
-      ...shorthands.padding('8px'),
-
-      ['& > div.fui-Progress__Track']: {
-        position: 'absolute',
-        width: '100%',
-        height: barThicknessValues.default,
-        backgroundColor: tokens.colorNeutralBackground6,
-
-        '@media (forced-colors: active)': {
-          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
-        },
-      },
-
-      ['& > div.fui-Progress__Bar']: {
-        height: barThicknessValues.default,
-        position: 'absolute',
-        width: 0,
-        transitionProperty: 'width .3s ease',
-        minWidth: '33%',
-        backgroundImage: `linear-gradient(
-          to right,
-          ${tokens.colorNeutralBackground6} 0%,
-          ${tokens.colorCompoundBrandBackground} 50%,
-          ${tokens.colorNeutralBackground6} 100%
-        )`,
-        animationName: IndeterminateProgress,
-        animationDuration: '3s',
-        animationIterationCount: 'infinite',
-
-        '@media (forced-colors: active)': {
-          backgroundColor: 'Highlight',
-        },
-      },
-    },
+  defaultHeight: {
+    height: barThicknessValues.default,
   },
-  indeterminateLTRLarge: {
-    width: '100%',
-    ['& > div.fui-Progress__Container']: {
-      position: 'relative',
-      ...shorthands.overflow('hidden'),
-      height: barThicknessValues.large,
-      ...shorthands.padding('8px'),
-
-      ['& > div.fui-Progress__Track']: {
-        position: 'absolute',
-        width: '100%',
-        height: barThicknessValues.large,
-        backgroundColor: tokens.colorNeutralBackground6,
-
-        '@media (forced-colors: active)': {
-          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
-        },
-      },
-
-      ['& > div.fui-Progress__Bar']: {
-        height: barThicknessValues.large,
-        position: 'absolute',
-        width: 0,
-        transitionProperty: 'width .3s ease',
-        minWidth: '33%',
-        backgroundImage: `linear-gradient(
-          to right,
-          ${tokens.colorNeutralBackground6} 0%,
-          ${tokens.colorCompoundBrandBackground} 50%,
-          ${tokens.colorNeutralBackground6} 100%
-        )`,
-        animationName: IndeterminateProgress,
-        animationDuration: '3s',
-        animationIterationCount: 'infinite',
-
-        '@media (forced-colors: active)': {
-          backgroundColor: 'Highlight',
-        },
-      },
-    },
-  },
-  indeterminateRTLDefault: {
-    width: '100%',
-    ['& > div.fui-Progress__Container']: {
-      position: 'relative',
-      ...shorthands.overflow('hidden'),
-      height: barThicknessValues.default,
-      ...shorthands.padding('8px'),
-
-      ['& > div.fui-Progress__Track']: {
-        position: 'absolute',
-        width: '100%',
-        height: barThicknessValues.default,
-        backgroundColor: tokens.colorNeutralBackground6,
-
-        '@media screen and (forced-colors: active)': {
-          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
-        },
-      },
-
-      ['& > div.fui-Progress__Bar']: {
-        height: barThicknessValues.default,
-        position: 'absolute',
-        width: 0,
-        transitionProperty: 'width .3s ease',
-        minWidth: '33%',
-        backgroundImage: `linear-gradient(
-          to left,
-          ${tokens.colorNeutralBackground6} 0%,
-          ${tokens.colorCompoundBrandBackground} 50%,
-          ${tokens.colorNeutralBackground6} 100%
-        )`,
-        animationName: IndeterminateProgressRTL,
-        animationDuration: '3s',
-        animationIterationCount: 'infinite',
-
-        '@media screen and (forced-colors: active)': {
-          backgroundColor: 'Highlight',
-        },
-      },
-    },
-  },
-  indeterminateRTLLarge: {
-    width: '100%',
-    ['& > div.fui-Progress__Container']: {
-      position: 'relative',
-      ...shorthands.overflow('hidden'),
-      height: barThicknessValues.large,
-      ...shorthands.padding('8px'),
-
-      ['& > div.fui-Progress__Track']: {
-        position: 'absolute',
-        width: '100%',
-        height: barThicknessValues.large,
-        backgroundColor: tokens.colorNeutralBackground6,
-
-        '@media screen and (forced-colors: active)': {
-          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
-        },
-      },
-
-      ['& > div.fui-Progress__Bar']: {
-        height: barThicknessValues.large,
-        position: 'absolute',
-        width: 0,
-        transitionProperty: 'width .3s ease',
-        minWidth: '33%',
-        backgroundImage: `linear-gradient(
-          to left,
-          ${tokens.colorNeutralBackground6} 0%,
-          ${tokens.colorCompoundBrandBackground} 50%,
-          ${tokens.colorNeutralBackground6} 100%
-        )`,
-        animationName: IndeterminateProgressRTL,
-        animationDuration: '3s',
-        animationIterationCount: 'infinite',
-
-        '@media screen and (forced-colors: active)': {
-          backgroundColor: 'Highlight',
-        },
-      },
-    },
+  largeHeight: {
+    height: barThicknessValues.large,
   },
 });
 
@@ -310,9 +152,10 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { appearance, determinate = false, barThickness = 'default' } = state;
+  const { determinate = false, barThickness = 'default' } = state;
   const rootStyles = useRootStyles();
-  const indicatorStyles = useIndicatorStyles();
+  const barStyles = useBarStyles();
+  const trackStyles = useTrackStyles();
   const labelStyles = useLabelStyles();
   const descriptionStyles = useDescriptionStyles();
   const { dir } = useFluent();
@@ -320,54 +163,47 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   state.root.className = mergeClasses(progressClassNames.root, rootStyles.root, state.root.className);
 
   // Determinate indicator when determinate is defined
-  if (state.indicator) {
-    state.indicator.className = mergeClasses(
-      progressClassNames.indicator,
-      appearance === 'primary' &&
-        !determinate &&
+  if (state.bar) {
+    state.bar.className = mergeClasses(
+      progressClassNames.bar,
+      barStyles.base,
+      !determinate &&
         dir === 'ltr' &&
         barThickness === 'default' &&
-        indicatorStyles.indeterminateLTRDefault,
-      appearance === 'primary' &&
-        !determinate &&
+        barStyles.LTR &&
+        barStyles.defaultHeight &&
+        barStyles.indeterminate,
+      !determinate &&
         dir === 'ltr' &&
         barThickness === 'large' &&
-        indicatorStyles.indeterminateLTRLarge,
-      appearance === 'primary' &&
-        !determinate &&
+        barStyles.LTR &&
+        barStyles.largeHeight &&
+        barStyles.indeterminate,
+      !determinate &&
         dir === 'rtl' &&
         barThickness === 'default' &&
-        indicatorStyles.indeterminateRTLDefault,
-      appearance === 'primary' &&
-        !determinate &&
+        barStyles.RTL &&
+        barStyles.defaultHeight &&
+        barStyles.indeterminate,
+      !determinate &&
         dir === 'rtl' &&
         barThickness === 'large' &&
-        indicatorStyles.indeterminateRTLLarge,
-      appearance === 'primary' && determinate && barThickness === 'default' && indicatorStyles.determinateDefault,
-      appearance === 'primary' && determinate && barThickness === 'large' && indicatorStyles.determinateLarge,
-      appearance === 'inverted' &&
-        !determinate &&
-        dir === 'ltr' &&
-        barThickness === 'default' &&
-        indicatorStyles.indeterminateLTRDefault,
-      appearance === 'inverted' &&
-        !determinate &&
-        dir === 'ltr' &&
-        barThickness === 'large' &&
-        indicatorStyles.indeterminateLTRLarge,
-      appearance === 'inverted' &&
-        !determinate &&
-        dir === 'rtl' &&
-        barThickness === 'default' &&
-        indicatorStyles.indeterminateRTLDefault,
-      appearance === 'inverted' &&
-        !determinate &&
-        dir === 'rtl' &&
-        barThickness === 'large' &&
-        indicatorStyles.indeterminateRTLLarge,
-      appearance === 'inverted' && determinate && barThickness === 'default' && indicatorStyles.determinateDefault,
-      appearance === 'inverted' && determinate && barThickness === 'large' && indicatorStyles.determinateLarge,
-      state.indicator.className,
+        barStyles.RTL &&
+        barStyles.largeHeight &&
+        barStyles.indeterminate,
+      determinate && barThickness === 'default' && barStyles.base && barStyles.defaultHeight && barStyles.determinate,
+      determinate && barThickness === 'large' && barStyles.base && barStyles.largeHeight && barStyles.determinate,
+      state.bar.className,
+    );
+  }
+
+  if (state.track) {
+    state.track.className = mergeClasses(
+      progressClassNames.track,
+      trackStyles.base,
+      barThickness === 'default' && trackStyles.defaultHeight,
+      barThickness === 'large' && trackStyles.largeHeight,
+      state.track.className,
     );
   }
 

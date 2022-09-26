@@ -10,7 +10,8 @@ export const renderProgress_unstable = (state: ProgressState) => {
   return (
     <slots.root {...slotProps.root}>
       {slots.label && <slots.label {...slotProps.label} />}
-      {slots.indicator && <slots.indicator {...slotProps.indicator} />}
+      {slots.bar && <slots.bar {...slotProps.bar} />}
+      {slots.track && <slots.track {...slotProps.track} />}
       {slots.description && <slots.description {...slotProps.description} />}
     </slots.root>
   );

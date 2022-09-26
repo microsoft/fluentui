@@ -14,9 +14,14 @@ export type ProgressSlots = {
   label?: Slot<typeof Label>;
   /**
    * The animated slot of the Progress
-   * The indicator slot receives the styling related to the loading bar associated with the Progress
+   * The bar slot receives the styling related to the loading bar associated with the Progress
    */
-  indicator?: NonNullable<Slot<'span'>>;
+  bar?: NonNullable<Slot<'span'>>;
+  /**
+   * The track slot of the Progress
+   * The track slot receives the styling related to the loading bar track associated with the Progress
+   */
+  track?: NonNullable<Slot<'span'>>;
   /**
    * The description slot of the Progress
    * The description slot receives the styling related to the description associated with the Progress
@@ -28,11 +33,6 @@ export type ProgressSlots = {
  * Progress Props
  */
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
-  /**
-   * The appearance of the Progress.
-   * @default 'primary'
-   */
-  appearance?: 'primary' | 'inverted';
   /**
    * The thickness of the Progress bar
    * @default 'default'
@@ -54,4 +54,4 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
  * State used in rendering Progress
  */
 export type ProgressState = ComponentState<ProgressSlots> &
-  Required<Pick<ProgressProps, 'appearance' | 'barThickness' | 'determinate'>>;
+  Required<Pick<ProgressProps, 'barThickness' | 'determinate'>>;
