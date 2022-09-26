@@ -37,6 +37,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
           menu: [
             {
               key: 'play',
+              id: 'ToolbarExampleMenuWithSubmenu_Play',
               content: 'Play',
               icon: <PlayIcon />,
               menu: {
@@ -45,6 +46,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
             },
             {
               key: 'appearance',
+              id: 'ToolbarExampleMenuWithSubmenu_Appearance',
               content: 'Appearance',
               menu: {
                 items: ['Centered Layout', 'Zen', 'Zoom In', 'Zoom Out'],
