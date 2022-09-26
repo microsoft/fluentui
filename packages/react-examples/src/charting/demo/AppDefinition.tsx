@@ -73,6 +73,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'HeatMapChart',
           url: '#/examples/HeatMapChart',
         },
+        {
+          component: require<any>('../TreeChart/TreeChartPage').TreeChartPage,
+          key: 'TreeChart',
+          name: 'Tree Chart',
+          url: '#/examples/treechart',
+        },
       ],
     },
   ],
