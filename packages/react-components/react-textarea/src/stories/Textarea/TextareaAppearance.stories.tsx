@@ -35,9 +35,7 @@ const useStyles = makeStyles({
 export const Appearance = () => {
   const outlineId = useId('textarea-outline');
   const filledDarkerId = useId('textarea-filleddarker');
-  const filledDarkerShadowId = useId('textarea-filleddarkershadow');
   const filledLighterId = useId('textarea-filledlighter');
-  const filledLighterShadowId = useId('textarea-filledlightershadow');
   const styles = useStyles();
 
   return (
@@ -55,26 +53,6 @@ export const Appearance = () => {
       <div className={styles.filledLighter}>
         <Label htmlFor={filledLighterId}>Textarea with Filled Lighter appearance.</Label>
         <Textarea id={filledLighterId} appearance="filled-lighter" placeholder="type here..." resize="both" />
-      </div>
-
-      <div className={styles.filledDarker}>
-        <Label htmlFor={filledDarkerShadowId}>Textarea with Filled Darker with shadow appearance.</Label>
-        <Textarea
-          id={filledDarkerShadowId}
-          appearance="filled-darker-shadow"
-          placeholder="type here..."
-          resize="both"
-        />
-      </div>
-
-      <div className={styles.filledLighter}>
-        <Label htmlFor={filledLighterShadowId}>Textarea with Filled Lighter with shadow appearance.</Label>
-        <Textarea
-          id={filledLighterShadowId}
-          appearance="filled-lighter-shadow"
-          placeholder="type here..."
-          resize="both"
-        />
       </div>
     </div>
   );
