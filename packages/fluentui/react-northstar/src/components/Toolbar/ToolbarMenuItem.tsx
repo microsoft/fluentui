@@ -416,7 +416,12 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
                     </ToolbarVariablesProvider>
                   </Popper>
                 </Ref>
-                <EventListener listener={outsideClickHandler(getRefs)} target={context.target} type="click" />
+                <EventListener
+                  capture={true}
+                  listener={outsideClickHandler(getRefs)}
+                  target={context.target}
+                  type="click"
+                />
               </>
             );
           }}

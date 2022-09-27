@@ -33,6 +33,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Change `useLayoutEffect` in `Dropdown` to `useIsomorphicLayoutEffect` @marwan38 ([#24559](https://github.com/microsoft/fluentui/pull/24559))
 - Fix `Popup` trigger attribute being override @chpalac ([#24794](https://github.com/microsoft/fluentui/pull/24794))
 - Fix styling mutation when merging themes in `Dropdown` @petrjaros ([#24787](https://github.com/microsoft/fluentui/pull/24787))
+- Fix `Toolbar` submenu closing when another submenu is opened @miroslavstastny ([#24836](https://github.com/microsoft/fluentui/pull/24836))
 
 ### Performance
 - Avoid memory trashing in `felaExpandCssShorthandsPlugin` @layershifter ([#24663](https://github.com/microsoft/fluentui/pull/24663))
