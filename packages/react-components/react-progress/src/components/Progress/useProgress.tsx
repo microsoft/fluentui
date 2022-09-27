@@ -85,7 +85,7 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     description: descriptionShorthand,
   };
 
-  if (state.bar) {
+  if (state.bar && determinate) {
     state.bar.style = {
       ...progressBarStyles,
       ...state.bar.style,
