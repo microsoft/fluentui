@@ -121,14 +121,14 @@ const FormExample: React.FC<FormExampleProps> = ({ variant }) => {
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
-    // If the form is submitted and has errors, focus the first error fiel, otherwise do nothing
-    if (!formState.isSubmitted || formState.isValid) {
+    // If the form is submitting and has errors, focus the first error fiel, otherwise do nothing
+    if (!formState.isSubmitting || formState.isValid) {
       return;
     }
     const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
     const firstErrorField = document.getElementById(`${variant}-${firstErrorName}`);
     if (firstErrorField) {
-      firstErrorField.focus();
+      setTimeout(() => firstErrorField.focus(), 500);
     }
   }, [variant, errors, formState, formValidation]);
 
