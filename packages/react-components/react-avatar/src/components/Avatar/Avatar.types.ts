@@ -1,6 +1,6 @@
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { AvatarSizes as AvatarContextSizes } from '@fluentui/react-shared-contexts';
+import type { AvatarSizes as AvatarContextSizes } from '@fluentui/react-avatar-context';
 
 export type AvatarSlots = {
   root: Slot<'span'>;

@@ -4,7 +4,8 @@ import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
-import { useFluent_unstable as useFluent, useAvatarContext } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useAvatarContext } from '@fluentui/react-avatar-context';
 
 export const DEFAULT_STRINGS = {
   active: 'active',

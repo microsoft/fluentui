@@ -15,6 +15,3 @@ export type { TooltipVisibilityContextValue as TooltipVisibilityContextValue_uns
 
 export { Provider as Provider_unstable, useFluent as useFluent_unstable } from './ProviderContext';
 export type { ProviderContextValue as ProviderContextValue_unstable } from './ProviderContext';
-
-export { AvatarContextProvider, useAvatarContext } from './AvatarContext';
-export type { AvatarContextValue, AvatarSizes } from './AvatarContext';

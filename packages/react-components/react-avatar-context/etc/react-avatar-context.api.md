@@ -4,6 +4,23 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @internal (undocumented)
+export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefined>;
+
+// @internal (undocumented)
+export interface AvatarContextValue {
+    // (undocumented)
+    size?: AvatarSizes;
+}
+
+// @public (undocumented)
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+
+// @internal (undocumented)
+export const useAvatarContext: () => AvatarContextValue;
+
 // (No @packageDocumentation comment for this package)
 
 ```
