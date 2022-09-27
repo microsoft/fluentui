@@ -1,8 +1,8 @@
 const path = require('path');
-// @ts-ignore
-const Project = require('@lerna/project');
-// @ts-ignore
-const PackageGraph = /** @type {Map<any,any>}*/ require('@lerna/package-graph');
+
+const { Project } = require('@lerna/project');
+
+const { PackageGraph } = require('@lerna/package-graph');
 
 const findGitRoot = require('./findGitRoot');
 
