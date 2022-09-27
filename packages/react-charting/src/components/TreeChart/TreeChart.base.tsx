@@ -182,6 +182,20 @@ class StandardTree {
   ): string {
     // gap adds ratio for parent.y to child.y
 
+    /*Below code is used to draw lines(___|) to show the parent child relation i.e a vertical line
+      emerging from the parent and
+      then a horzontal line encompassing all the its children which are
+      shown below it .so it gives a visual representation of tree branches.
+
+      So for making this path firstly we are moving to the childX which is the mid point of the node and then
+      we are subtracting the half of rectwidth to move the complete width of the rectangle and
+      we are subtracting gap from y cordinate as we are making this line at a little gap from node.
+      Then we are building that line horizonatlly till childXmax, again adding half rectwidth to complete
+      the line till end as childXmax will be midpoint.
+      Then last part is for making line vertical for that we move to the parentx position and
+      then draw the vertical till parenty + rectHeight + gap/2
+      We have seperate path for leaf node as we are using different composition like compact, long etc.*/
+
     const path = `M${childX - rectWidth / 2},${childY - gap} H${childXMax + rectWidth / 2} M${parentX},${childY - gap}
     V${parentY + rectHeight + gap / 2}`;
 
