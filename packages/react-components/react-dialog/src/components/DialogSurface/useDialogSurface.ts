@@ -15,6 +15,9 @@ import type {
 import { useDialogContext_unstable } from '../../contexts';
 import { isEscapeKeyDismiss, HTMLDialogElementProps } from '../../utils';
 import { useModalAttributes } from '@fluentui/react-tabster';
+
+const defaultDialogType: 'div' | 'dialog' = 'div';
+
 /**
  * Create the state required to render DialogSurface.
  *
@@ -118,7 +121,7 @@ export const useDialogSurface_unstable = (
   return {
     components: {
       backdrop: 'div',
-      root: 'dialog',
+      root: defaultDialogType,
     },
     backdrop: resolveShorthand(backdrop, {
       required: !isNativeDialog && open && modalType !== 'non-modal',
@@ -127,7 +130,7 @@ export const useDialogSurface_unstable = (
         onClick: handledBackdropClick,
       },
     }),
-    root: getNativeElementProps(as ?? 'dialog', {
+    root: getNativeElementProps(as ?? defaultDialogType, {
       ...(isNativeDialog
         ? {
             role: modalType === 'alert' ? 'alertdialog' : undefined,
