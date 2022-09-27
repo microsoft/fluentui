@@ -4,6 +4,7 @@ import { TreeChart, ITreeProps, ITreeState } from '@fluentui/react-charting';
 const threeLayerChart = {
   name: 'Root Node',
   subname: 'subtext',
+  bodytext: 'bodytext',
   fill: '#0099BC',
   children: [
     {
