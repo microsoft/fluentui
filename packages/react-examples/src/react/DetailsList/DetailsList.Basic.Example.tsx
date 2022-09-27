@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Announced } from '@fluentui/react/lib/Announced';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, ISelection, IColumn } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Text } from '@fluentui/react/lib/Text';
@@ -13,106 +13,86 @@ const exampleChildClass = mergeStyles({
 
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { maxWidth: '300px' } };
 
-export interface IDetailsListBasicExampleItem {
+interface IDetailsListBasicExampleItem {
   key: number;
   name: string;
   value: number;
 }
 
-export interface IDetailsListBasicExampleState {
-  items: IDetailsListBasicExampleItem[];
-  selectionDetails: string;
-}
+// Populate with items for demos.
+const allItems: IDetailsListBasicExampleItem[] = [...Array(200)].map((_, i) => ({
+  key: i,
+  name: `Item ${i}`,
+  value: i,
+}));
 
-export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
-  private _selection: Selection;
-  private _allItems: IDetailsListBasicExampleItem[];
-  private _columns: IColumn[];
+const columns: IColumn[] = [
+  { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+  { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
+];
 
-  constructor(props: {}) {
-    super(props);
+const getSelectionDetails = (selection: ISelection): string => {
+  const selectionCount = selection.getSelectedCount();
 
-    this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
-    });
-
-    // Populate with items for demos.
-    this._allItems = [];
-    for (let i = 0; i < 200; i++) {
-      this._allItems.push({
-        key: i,
-        name: 'Item ' + i,
-        value: i,
-      });
-    }
-
-    this._columns = [
-      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
-      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
-    ];
-
-    this.state = {
-      items: this._allItems,
-      selectionDetails: this._getSelectionDetails(),
-    };
+  switch (selectionCount) {
+    case 0:
+      return 'No items selected';
+    case 1:
+      return '1 item selected: ' + (selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
+    default:
+      return `${selectionCount} items selected`;
   }
+};
 
-  public render(): JSX.Element {
-    const { items, selectionDetails } = this.state;
+export const DetailsListBasicExample = () => {
+  const [items, setItems] = React.useState(allItems);
+  const [selectionDetails, setSelectionDetails] = React.useState('');
 
-    return (
-      <div>
-        <div className={exampleChildClass}>{selectionDetails}</div>
-        <Text>
-          Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this
-          example will show an alert.
-        </Text>
-        <Announced message={selectionDetails} />
-        <TextField
-          className={exampleChildClass}
-          label="Filter by name:"
-          onChange={this._onFilter}
-          styles={textFieldStyles}
-        />
-        <Announced message={`Number of items after filter applied: ${items.length}.`} />
-        <MarqueeSelection selection={this._selection}>
-          <DetailsList
-            items={items}
-            columns={this._columns}
-            setKey="set"
-            layoutMode={DetailsListLayoutMode.justified}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="select row"
-            onItemInvoked={this._onItemInvoked}
-          />
-        </MarqueeSelection>
-      </div>
-    );
-  }
+  const selection: ISelection = React.useMemo(
+    () =>
+      new Selection({
+        onSelectionChanged: () => setSelectionDetails(getSelectionDetails(selection)),
+      }),
+    [],
+  );
 
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
+  const onFilter = React.useCallback(
+    (_ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
+      setItems(text ? allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : allItems);
+    },
+    [],
+  );
 
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  }
-
-  private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({
-      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
-    });
-  };
-
-  private _onItemInvoked = (item: IDetailsListBasicExampleItem): void => {
+  const onItemInvoked = React.useCallback((item: IDetailsListBasicExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
-  };
-}
+  }, []);
+
+  return (
+    <div>
+      <div className={exampleChildClass}>{selectionDetails}</div>
+      <Text>
+        Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this example
+        will show an alert.
+      </Text>
+
+      <Announced message={selectionDetails} />
+      <TextField className={exampleChildClass} label="Filter by name:" onChange={onFilter} styles={textFieldStyles} />
+      <Announced message={`Number of items after filter applied: ${items.length}.`} />
+
+      <MarqueeSelection selection={selection}>
+        <DetailsList
+          items={items}
+          columns={columns}
+          setKey="set"
+          layoutMode={DetailsListLayoutMode.justified}
+          selection={selection}
+          selectionPreservedOnEmptyClick={true}
+          ariaLabelForSelectionColumn="Toggle selection"
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          checkButtonAriaLabel="select row"
+          onItemInvoked={onItemInvoked}
+        />
+      </MarqueeSelection>
+    </div>
+  );
+};
