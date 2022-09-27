@@ -74,11 +74,11 @@ const columns = [
 ];
 
 interface SharedVrTestArgs {
-  layoutType: TableProps['layoutType'];
+  noNativeElements: TableProps['noNativeElements'];
 }
 
-const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -115,8 +115,8 @@ const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const CellActionsAlwaysVisible: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const CellActionsAlwaysVisible: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -153,8 +153,8 @@ const CellActionsAlwaysVisible: React.FC<SharedVrTestArgs> = ({ layoutType }) =>
   </Table>
 );
 
-const CellActionsInHeaderCell: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const CellActionsInHeaderCell: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -191,8 +191,8 @@ const CellActionsInHeaderCell: React.FC<SharedVrTestArgs> = ({ layoutType }) => 
   </Table>
 );
 
-const SizeMedium: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const SizeMedium: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -225,8 +225,8 @@ const SizeMedium: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const SizeSmall: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table size="small" layoutType={layoutType}>
+const SizeSmall: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table size="small" noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -263,8 +263,8 @@ const SizeSmall: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const SizeSmaller: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table size="smaller" layoutType={layoutType}>
+const SizeSmaller: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table size="smaller" noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -301,8 +301,8 @@ const SizeSmaller: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const PrimaryCell: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const PrimaryCell: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -333,8 +333,8 @@ const PrimaryCell: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const Multiselect: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const Multiselect: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         <TableSelectionCell />
@@ -367,8 +367,8 @@ const Multiselect: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const MultiselectChecked: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const MultiselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         <TableSelectionCell checked={true} />
@@ -401,8 +401,8 @@ const MultiselectChecked: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const MultiselectMixed: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const MultiselectMixed: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         <TableSelectionCell checked="mixed" />
@@ -435,8 +435,8 @@ const MultiselectMixed: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const Singleselect: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const Singleselect: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         <TableSelectionCell type="radio" hidden />
@@ -469,8 +469,8 @@ const Singleselect: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
-  <Table layoutType={layoutType}>
+const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         <TableSelectionCell type="radio" hidden />
@@ -504,53 +504,54 @@ const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ layoutType }) => (
   </Table>
 );
 
-(['native', 'flex'] as const).forEach(layoutType => {
-  storiesOf(`Table layout ${layoutType} - cell actions`, module)
+([true, false] as const).forEach(noNativeElements => {
+  const layoutName = noNativeElements ? 'flex' : 'table';
+  storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
       <Screener steps={new Screener.Steps().hover('.row').snapshot('hover row').end()}>{story()}</Screener>
     ))
-    .addStory('default', () => <CellActionsDefault layoutType={layoutType} />, {
+    .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('always visible', () => <CellActionsAlwaysVisible layoutType={layoutType} />, {
+    .addStory('always visible', () => <CellActionsAlwaysVisible noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('in header cell', () => <CellActionsInHeaderCell layoutType={layoutType} />);
+    .addStory('in header cell', () => <CellActionsInHeaderCell noNativeElements={noNativeElements} />);
 
-  storiesOf(`Table layout ${layoutType}`, module)
-    .addStory('size - medium', () => <SizeMedium layoutType={layoutType} />, {
+  storiesOf(`Table layout ${layoutName}`, module)
+    .addStory('size - medium', () => <SizeMedium noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('size - small', () => <SizeSmall layoutType={layoutType} />)
-    .addStory('size - smaller', () => <SizeSmaller layoutType={layoutType} />)
-    .addStory('primary cell', () => <PrimaryCell layoutType={layoutType} />)
-    .addStory('multiselect', () => <Multiselect layoutType={layoutType} />, {
+    .addStory('size - small', () => <SizeSmall noNativeElements={noNativeElements} />)
+    .addStory('size - smaller', () => <SizeSmaller noNativeElements={noNativeElements} />)
+    .addStory('primary cell', () => <PrimaryCell noNativeElements={noNativeElements} />)
+    .addStory('multiselect', () => <Multiselect noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('multiselect (checked)', () => <MultiselectChecked layoutType={layoutType} />, {
+    .addStory('multiselect (checked)', () => <MultiselectChecked noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('multiselect (mixed)', () => <MultiselectMixed layoutType={layoutType} />, {
+    .addStory('multiselect (mixed)', () => <MultiselectMixed noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('single select', () => <Singleselect layoutType={layoutType} />, {
+    .addStory('single select', () => <Singleselect noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('single select (checked)', () => <SingleselectChecked layoutType={layoutType} />, {
+    .addStory('single select (checked)', () => <SingleselectChecked noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
