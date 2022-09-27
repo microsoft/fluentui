@@ -16,12 +16,12 @@ export type ProgressSlots = {
    * The animated slot of the Progress
    * The bar slot receives the styling related to the loading bar associated with the Progress
    */
-  bar?: NonNullable<Slot<'span'>>;
+  bar?: NonNullable<Slot<'div'>>;
   /**
    * The track slot of the Progress
    * The track slot receives the styling related to the loading bar track associated with the Progress
    */
-  track?: NonNullable<Slot<'span'>>;
+  track?: NonNullable<Slot<'div'>>;
   /**
    * The description slot of the Progress
    * The description slot receives the styling related to the description associated with the Progress

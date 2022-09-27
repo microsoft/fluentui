@@ -47,14 +47,9 @@ const IndeterminateProgressRTL = {
 const useRootStyles = makeStyles({
   root: {
     display: 'grid',
-    alignItems: 'center',
-    justifyContent: 'center',
     ...shorthands.gap('8px', '0px'),
     width: '100%',
-    position: 'relative',
     ...shorthands.overflow('hidden'),
-    height: barThicknessValues.default,
-    ...shorthands.padding('8px', '0px'),
   },
 });
 
@@ -63,6 +58,7 @@ const useRootStyles = makeStyles({
  */
 const useLabelStyles = makeStyles({
   default: {
+    gridRowStart: '1',
     ...typographyStyles.body1,
     color: tokens.colorNeutralForeground1,
   },
@@ -73,6 +69,7 @@ const useLabelStyles = makeStyles({
  */
 const useDescriptionStyles = makeStyles({
   default: {
+    gridRowStart: '3',
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
   },
@@ -83,8 +80,9 @@ const useDescriptionStyles = makeStyles({
  */
 const useBarStyles = makeStyles({
   base: {
+    gridColumnStart: '1',
+    gridRowStart: '2',
     backgroundColor: tokens.colorCompoundBrandBackground,
-    position: 'absolute',
 
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'Highlight',
@@ -132,7 +130,8 @@ const useBarStyles = makeStyles({
 
 const useTrackStyles = makeStyles({
   base: {
-    position: 'absolute',
+    gridRowStart: '2',
+    gridColumnStart: '1',
     width: '100%',
     backgroundColor: tokens.colorNeutralBackground6,
 
@@ -167,32 +166,12 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
     state.bar.className = mergeClasses(
       progressClassNames.bar,
       barStyles.base,
-      !determinate &&
-        dir === 'ltr' &&
-        barThickness === 'default' &&
-        barStyles.LTR &&
-        barStyles.defaultHeight &&
-        barStyles.indeterminate,
-      !determinate &&
-        dir === 'ltr' &&
-        barThickness === 'large' &&
-        barStyles.LTR &&
-        barStyles.largeHeight &&
-        barStyles.indeterminate,
-      !determinate &&
-        dir === 'rtl' &&
-        barThickness === 'default' &&
-        barStyles.RTL &&
-        barStyles.defaultHeight &&
-        barStyles.indeterminate,
-      !determinate &&
-        dir === 'rtl' &&
-        barThickness === 'large' &&
-        barStyles.RTL &&
-        barStyles.largeHeight &&
-        barStyles.indeterminate,
-      determinate && barThickness === 'default' && barStyles.base && barStyles.defaultHeight && barStyles.determinate,
-      determinate && barThickness === 'large' && barStyles.base && barStyles.largeHeight && barStyles.determinate,
+      !determinate && barStyles.indeterminate,
+      !determinate && dir === 'ltr' && barStyles.LTR,
+      !determinate && dir === 'rtl' && barStyles.RTL,
+      barThickness === 'default' && barStyles.defaultHeight,
+      barThickness === 'large' && barStyles.largeHeight,
+      determinate && barStyles.determinate,
       state.bar.className,
     );
   }

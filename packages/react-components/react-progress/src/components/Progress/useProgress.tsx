@@ -2,7 +2,6 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { ProgressProps, ProgressState } from './Progress.types';
 import { Label } from '@fluentui/react-label';
-import { DefaultProgressDiv } from './DefaultProgressDiv';
 import { progressCssVars } from './useProgressStyles';
 
 // If the percentComplete is near 0, don't animate it.
@@ -54,7 +53,6 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
   const barShortHand = resolveShorthand(props.bar, {
     required: true,
     defaultProps: {
-      children: <DefaultProgressDiv />,
       'aria-valuemin': ariaValueMin,
       'aria-valuemax': ariaValueMax,
       'aria-valuenow': ariaValueNow,
@@ -75,8 +73,8 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     determinate,
     components: {
       root: 'div',
-      bar: 'span',
-      track: 'span',
+      bar: 'div',
+      track: 'div',
       label: Label,
       description: Label,
     },
