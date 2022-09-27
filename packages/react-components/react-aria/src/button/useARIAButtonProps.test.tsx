@@ -106,7 +106,7 @@ describe('useARIAButton', () => {
     it('should be aria-disabled when disabled', () => {
       const {
         result: { current },
-      } = renderHook(() => useARIAButtonProps('a', { disabled: true }));
+      } = renderHook(() => useARIAButtonProps('div', { disabled: true }));
       expect(current).not.toHaveProperty('as');
       expect(current).not.toHaveProperty('disabledFocusable');
       expect(current).toEqual(
@@ -123,7 +123,7 @@ describe('useARIAButton', () => {
     it('should be aria-disabled when disabledFocusable but still focusabled', () => {
       const {
         result: { current },
-      } = renderHook(() => useARIAButtonProps('a', { disabledFocusable: true }));
+      } = renderHook(() => useARIAButtonProps('div', { disabledFocusable: true }));
       expect(current).not.toHaveProperty('as');
       expect(current).not.toHaveProperty('disabledFocusable');
       expect(current).toEqual(
@@ -133,7 +133,18 @@ describe('useARIAButton', () => {
         }),
       );
     });
+    it('should keep user defined tabIndex', () => {
+      const {
+        result: { current },
+      } = renderHook(() => useARIAButtonProps('div', { tabIndex: undefined }));
+      expect(current).toEqual(
+        expect.objectContaining<ARIAButtonProps>({
+          tabIndex: undefined,
+        }),
+      );
+    });
   });
+
   describe('<a>', () => {
     it('should omit href if disabled', () => {
       const href = '/';
@@ -153,6 +164,7 @@ describe('useARIAButton', () => {
       );
     });
   });
+
   it.each(['button', 'div', 'a'] as const)('should not be possible to click %p when aria-disabled is true', type => {
     const handleClick = jest.fn();
     const { getByRole } = render(<TestButton as={type} onClick={handleClick} aria-disabled />);
