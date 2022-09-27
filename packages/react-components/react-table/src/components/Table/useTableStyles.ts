@@ -8,7 +8,7 @@ export const tableClassNames: SlotClassNames<TableSlots> = {
   root: 'fui-Table',
 };
 
-const useNativeLayoutStyles = makeStyles({
+const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table',
     verticalAlign: 'middle',
@@ -39,13 +39,13 @@ const useStyles = makeStyles({
 export const useTableStyles_unstable = (state: TableState): TableState => {
   const styles = useStyles();
   const layoutStyles = {
-    native: useNativeLayoutStyles(),
+    table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
   state.root.className = mergeClasses(
     tableClassName,
     styles.root,
-    layoutStyles[state.layoutType].root,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
 

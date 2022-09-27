@@ -13,4 +13,4 @@ export type TableCellProps = ComponentProps<TableCellSlots> & {};
 /**
  * State used in rendering TableCell
  */
-export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'layoutType'>;
+export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;

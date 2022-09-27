@@ -24,4 +24,4 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
  * State used in rendering TableHeaderCell
  */
 export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> &
-  Pick<TableContextValue, 'layoutType' | 'sortable'>;
+  Pick<TableContextValue, 'noNativeElements' | 'sortable'>;

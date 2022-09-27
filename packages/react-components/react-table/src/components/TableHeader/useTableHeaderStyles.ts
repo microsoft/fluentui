@@ -12,7 +12,7 @@ const useFlexLayoutStyles = makeStyles({
     display: 'block',
   },
 
-  rootNative: {
+  roottable: {
     display: 'table-row-group',
   },
 
@@ -21,7 +21,7 @@ const useFlexLayoutStyles = makeStyles({
   },
 });
 
-const useNativeLayoutStyles = makeStyles({
+const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-row-group',
   },
@@ -32,10 +32,14 @@ const useNativeLayoutStyles = makeStyles({
  */
 export const useTableHeaderStyles_unstable = (state: TableHeaderState): TableHeaderState => {
   const layoutStyles = {
-    native: useNativeLayoutStyles(),
+    table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
-  state.root.className = mergeClasses(tableHeaderClassName, layoutStyles[state.layoutType].root, state.root.className);
+  state.root.className = mergeClasses(
+    tableHeaderClassName,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.root.className,
+  );
 
   return state;
 };

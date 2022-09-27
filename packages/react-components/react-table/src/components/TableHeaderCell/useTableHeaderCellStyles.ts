@@ -10,7 +10,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
   sortIcon: 'fui-TableHeaderCell__sortIcon',
 };
 
-const useNativeLayoutStyles = makeStyles({
+const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-cell',
     verticalAlign: 'middle',
@@ -74,13 +74,13 @@ const useStyles = makeStyles({
 export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): TableHeaderCellState => {
   const styles = useStyles();
   const layoutStyles = {
-    native: useNativeLayoutStyles(),
+    table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
   state.root.className = mergeClasses(
     tableHeaderCellClassNames.root,
     styles.root,
-    layoutStyles[state.layoutType].root,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
   state.button.className = mergeClasses(

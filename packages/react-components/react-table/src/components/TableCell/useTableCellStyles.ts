@@ -8,7 +8,7 @@ export const tableCellClassNames: SlotClassNames<TableCellSlots> = {
   root: tableCellClassName,
 };
 
-const useNativeLayoutStyles = makeStyles({
+const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-cell',
     verticalAlign: 'middle',
@@ -40,13 +40,13 @@ const useStyles = makeStyles({
 export const useTableCellStyles_unstable = (state: TableCellState): TableCellState => {
   const styles = useStyles();
   const layoutStyles = {
-    native: useNativeLayoutStyles(),
+    table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
   state.root.className = mergeClasses(
     tableCellClassNames.root,
     styles.root,
-    layoutStyles[state.layoutType].root,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
   return state;

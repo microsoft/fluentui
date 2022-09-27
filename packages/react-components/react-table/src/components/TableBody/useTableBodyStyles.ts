@@ -2,7 +2,7 @@ import { mergeClasses, makeStyles } from '@griffel/react';
 import type { TableBodySlots, TableBodyState } from './TableBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-const useNativeLayoutStyles = makeStyles({
+const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-row-group',
   },
@@ -24,10 +24,14 @@ export const tableBodyClassNames: SlotClassNames<TableBodySlots> = {
  */
 export const useTableBodyStyles_unstable = (state: TableBodyState): TableBodyState => {
   const layoutStyles = {
-    native: useNativeLayoutStyles(),
+    table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
-  state.root.className = mergeClasses(tableBodyClassName, layoutStyles[state.layoutType].root, state.root.className);
+  state.root.className = mergeClasses(
+    tableBodyClassName,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.root.className,
+  );
 
   return state;
 };

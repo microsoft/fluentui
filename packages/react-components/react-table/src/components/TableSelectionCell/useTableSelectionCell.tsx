@@ -20,7 +20,7 @@ export const useTableSelectionCell_unstable = (
   ref: React.Ref<HTMLElement>,
 ): TableSelectionCellState => {
   const tableCellState = useTableCell_unstable(props, ref);
-  const { layoutType } = useTableContext();
+  const { noNativeElements } = useTableContext();
   const type = props.type ?? 'checkbox';
 
   return {
@@ -40,6 +40,6 @@ export const useTableSelectionCell_unstable = (
     }),
     type,
     checked: props.checked ?? false,
-    layoutType,
+    noNativeElements,
   };
 };

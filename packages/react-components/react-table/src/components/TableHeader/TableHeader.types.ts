@@ -13,4 +13,4 @@ export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
 /**
  * State used in rendering TableHeader
  */
-export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'layoutType'>;
+export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'noNativeElements'>;

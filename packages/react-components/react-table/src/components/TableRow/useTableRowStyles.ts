@@ -9,7 +9,7 @@ export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
   root: tableRowClassName,
 };
 
-const useNativeLayoutStyles = makeStyles({
+const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-row',
   },
@@ -82,15 +82,15 @@ const useStyles = makeStyles({
 export const useTableRowStyles_unstable = (state: TableRowState): TableRowState => {
   const styles = useStyles();
   const layoutStyles = {
-    native: useNativeLayoutStyles(),
+    table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
   state.root.className = mergeClasses(
     tableRowClassNames.root,
     styles.root,
     styles[state.size],
-    layoutStyles[state.layoutType].root,
-    layoutStyles[state.layoutType][state.size],
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
     state.root.className,
   );
 

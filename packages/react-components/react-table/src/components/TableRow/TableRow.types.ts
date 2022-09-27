@@ -13,4 +13,4 @@ export type TableRowProps = ComponentProps<TableRowSlots> & {};
 /**
  * State used in rendering TableRow
  */
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'layoutType' | 'size'>;
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;

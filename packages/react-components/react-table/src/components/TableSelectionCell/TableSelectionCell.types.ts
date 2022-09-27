@@ -30,4 +30,4 @@ export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelection
  */
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> &
   Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> &
-  Pick<TableContextValue, 'layoutType'>;
+  Pick<TableContextValue, 'noNativeElements'>;

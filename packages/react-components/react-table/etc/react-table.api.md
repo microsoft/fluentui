@@ -87,7 +87,7 @@ export type TableBodySlots = {
 };
 
 // @public
-export type TableBodyState = ComponentState<TableBodySlots> & Pick<TableContextValue, 'layoutType'>;
+export type TableBodyState = ComponentState<TableBodySlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public
 export const TableCell: ForwardRefComponent<TableCellProps>;
@@ -149,7 +149,7 @@ export type TableCellSlots = {
 };
 
 // @public
-export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'layoutType'>;
+export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public (undocumented)
 export const tableClassName = "fui-Table";
@@ -164,7 +164,6 @@ export const TableContextProvider: React_2.Provider<TableContextValue | undefine
 export type TableContextValue = {
     size: 'small' | 'smaller' | 'medium';
     noNativeElements: boolean;
-    layoutType: 'native' | 'flex';
     sortable: boolean;
 };
 
@@ -198,7 +197,7 @@ export type TableHeaderCellSlots = {
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'layoutType' | 'sortable'>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";
@@ -215,7 +214,7 @@ export type TableHeaderSlots = {
 };
 
 // @public
-export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'layoutType'>;
+export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public
 export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
@@ -238,7 +237,7 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'layoutType' | 'size'>;
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
@@ -259,7 +258,7 @@ export type TableSelectionCellSlots = {
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> & Pick<TableContextValue, 'layoutType'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public (undocumented)
 export interface TableSelectionState {
@@ -289,7 +288,7 @@ export interface TableSortState {
 }
 
 // @public
-export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements' | 'layoutType'> & TableContextValue;
+export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
 // @public (undocumented)
 export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TItem>>(options: UseTableOptions<TItem, TRowState>): TableState_2<TItem, TRowState>;

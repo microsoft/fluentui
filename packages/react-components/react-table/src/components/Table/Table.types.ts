@@ -13,15 +13,9 @@ export type TableContextValue = {
 
   /**
    * Render all table elements as divs intead of semantic table elements
+   * Using divs no longer uses `display: table` layout but `display: flex`
    */
   noNativeElements: boolean;
-
-  /**
-   * Uses native browser `display: table` layout or flexbox layout.
-   * Recommended to use flx layout for virtualized tables
-   * @default native
-   */
-  layoutType: 'native' | 'flex';
 
   /**
    * Whether the table is sortable
@@ -44,5 +38,5 @@ export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>
  * State used in rendering Table
  */
 export type TableState = ComponentState<TableSlots> &
-  Pick<Required<TableProps>, 'size' | 'noNativeElements' | 'layoutType'> &
+  Pick<Required<TableProps>, 'size' | 'noNativeElements'> &
   TableContextValue;

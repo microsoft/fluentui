@@ -23,7 +23,7 @@ export const useTableHeaderCell_unstable = (
   props: TableHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): TableHeaderCellState => {
-  const { noNativeElements, sortable, layoutType } = useTableContext();
+  const { noNativeElements, sortable } = useTableContext();
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
   return {
@@ -55,6 +55,6 @@ export const useTableHeaderCell_unstable = (
       },
     }),
     sortable,
-    layoutType,
+    noNativeElements,
   };
 };

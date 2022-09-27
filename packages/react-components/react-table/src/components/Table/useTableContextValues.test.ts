@@ -13,7 +13,6 @@ describe('useTableContextValues', () => {
     expect(result.current).toMatchInlineSnapshot(`
       Object {
         "table": Object {
-          "layoutType": "native",
           "noNativeElements": false,
           "size": "medium",
           "sortable": false,
