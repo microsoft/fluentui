@@ -25,7 +25,7 @@ const barThicknessValues = {
 
 const IndeterminateProgress = {
   '0%': {
-    left: '-30%',
+    left: '0%',
   },
   '100%': {
     left: '100%',
@@ -48,7 +48,6 @@ const useRootStyles = makeStyles({
   root: {
     display: 'grid',
     ...shorthands.gap('8px', '0px'),
-    width: '100%',
     ...shorthands.overflow('hidden'),
   },
 });
@@ -104,6 +103,7 @@ const useBarStyles = makeStyles({
     minWidth: '33%',
   },
   LTR: {
+    position: 'relative',
     backgroundImage: `linear-gradient(
       to right,
       ${tokens.colorNeutralBackground6} 0%,
@@ -132,7 +132,6 @@ const useTrackStyles = makeStyles({
   base: {
     gridRowStart: '2',
     gridColumnStart: '1',
-    width: '100%',
     backgroundColor: tokens.colorNeutralBackground6,
 
     '@media screen and (forced-colors: active)': {
