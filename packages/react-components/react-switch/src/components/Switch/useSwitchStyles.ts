@@ -75,13 +75,15 @@ const useInputStyles = makeStyles({
   base: {
     boxSizing: 'border-box',
     cursor: 'pointer',
-    height: `${trackHeight}px`,
-    left: tokens.spacingHorizontalS,
+    height: '100%',
     ...shorthands.margin(0),
     opacity: 0,
     position: 'absolute',
-    top: tokens.spacingVerticalS,
-    width: `${trackWidth}px`,
+
+    // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it
+    // + the spacing between the indicator and the label. This is done so that clicking on that "empty space" still
+    // toggles the switch.
+    width: `calc(${trackWidth}px + ${tokens.spacingHorizontalS} + ${tokens.spacingHorizontalM})`,
 
     // Checked (both enabled and disabled)
     ':checked': {
@@ -184,14 +186,40 @@ const useInputStyles = makeStyles({
       },
     },
   },
+
+  before: {
+    right: 0,
+    top: 0,
+  },
+  after: {
+    left: 0,
+    top: 0,
+  },
+  above: {
+    bottom: 0,
+    height: `calc(${trackHeight}px + ${tokens.spacingVerticalS} + ${tokens.spacingVerticalXS})`,
+    width: '100%',
+  },
 });
 
 const useLabelStyles = makeStyles({
   base: {
     cursor: 'pointer',
+
+    // Use a (negative) margin to account for the difference between the track's height and the label's line height,
+    // as well as accounting for the introduced padding for handling the "empty space" around the label.
+    // This prevents the label from expanding the height of the switch, but preserves line height if the label wraps.
+    marginBottom: `calc(-1 * ${tokens.spacingVerticalS} + (${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc(-1 * ${tokens.spacingVerticalS} + (${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
+
+    // Introduce padding equal to the one used on the root of the component so the "empty space" around the label still
+    // toggles the switch.
+    ...shorthands.padding(tokens.spacingVerticalS, 0),
   },
   above: {
     marginBottom: tokens.spacingVerticalXS,
+    paddingBottom: 0,
+    width: '100%',
   },
   after: {
     marginLeft: tokens.spacingHorizontalM,
@@ -225,6 +253,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     switchClassNames.input,
     inputStyles.base,
     inputStyles.highContrast,
+    inputStyles[labelPosition],
     state.input.className,
   );
 

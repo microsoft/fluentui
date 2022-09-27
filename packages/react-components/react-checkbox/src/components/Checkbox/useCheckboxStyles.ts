@@ -214,7 +214,7 @@ const useLabelStyles = makeStyles({
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height,
   // as well as accounting for the introduced padding for handling the "empty space" around the label.
-  // This prevents the label from expanding the height of the Checkbox, but preserves line height if the label wraps.
+  // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
   medium: {
     marginTop: `calc(-1 * ${tokens.spacingVerticalS} + (${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
     marginBottom: `calc(-1 * ${tokens.spacingVerticalS} + (${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
