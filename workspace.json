@@ -305,6 +305,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-avatar-context": {
+      "root": "packages/react-components/react-avatar-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-avatar-context/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-badge": {
       "root": "packages/react-components/react-badge",
       "projectType": "library",
