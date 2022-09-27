@@ -1,10 +1,9 @@
-//@ts-ignore
-import Project from '@lerna/project';
-//@ts-ignore
-import PackageGraph from '@lerna/package-graph';
-import sh from '../gulp/sh';
+import { Project } from '@lerna/project';
+import { PackageGraph } from '@lerna/package-graph';
 import fs from 'fs-extra';
 import path from 'path';
+
+import sh from '../gulp/sh';
 
 import { createTempDir, shEcho } from './utils';
 
@@ -50,7 +49,7 @@ export async function packProjectPackages(
 
   const lernaProject = new Project(lernaRoot);
   // this is the list of package.json contents with some extra properties
-  const projectPackages: { name: string; location: string; main?: string }[] = await lernaProject.getPackages();
+  const projectPackages = await lernaProject.getPackages();
 
   logger(`✔️ Used lerna config: ${lernaProject.rootConfigLocation}`);
 
@@ -68,10 +67,14 @@ export async function packProjectPackages(
   await Promise.all(
     requiredPackages.map(async packageName => {
       const packageInfo = projectPackages.find(pkg => pkg.name === packageName);
-      const packagePath = packageInfo ? packageInfo.location : '';
+      if (!packageInfo) {
+        throw new Error(`Package ${packageName} doesn't exist`);
+      }
 
-      const entryPointPath = packageInfo && packageInfo.main && path.join(packagePath, packageInfo.main);
-      if (entryPointPath && !fs.existsSync(entryPointPath)) {
+      const packagePath = packageInfo.location;
+      const packageMain: string | undefined = packageInfo.get('main');
+      const entryPointPath = packageMain ? path.join(packagePath, packageMain) : '';
+      if (!fs.existsSync(entryPointPath)) {
         throw new Error(
           `Package ${packageName} does not appear to have been built yet. Please ensure that root package(s) ` +
             `${rootPackages.join(', ')} are listed in devDependencies of the package running the test.`,

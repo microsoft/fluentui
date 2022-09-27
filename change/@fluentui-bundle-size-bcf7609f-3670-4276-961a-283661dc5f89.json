@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: bump workspace-tools and add options to collectLocalReport api",
+  "packageName": "@fluentui/bundle-size",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
