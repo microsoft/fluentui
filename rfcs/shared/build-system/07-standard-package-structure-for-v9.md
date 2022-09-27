@@ -29,7 +29,7 @@ The proposed folder organization can be seen below:
       |- {ComponentName}.tsx
       |- {ComponentName}.types.ts
       |- {ComponentName}.test.tsx
-      |- {ComponentName}.e2e.tsx
+      |- {ComponentName}.cy.tsx
       |- render{ComponentName}.tsx
       |- use{ComponentName}.tsx
       |- use{ComponentName}Styles.ts
