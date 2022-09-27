@@ -2,6 +2,21 @@
   "name": "theming-designer",
   "entries": [
     {
+      "date": "Tue, 27 Sep 2022 12:23:24 GMT",
+      "tag": "theming-designer_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/icons to v7.9.0",
+            "author": "gcox@microsoft.com",
+            "commit": "3eba12292d9a694b271cd3b3c7459d5e46d9c0a0",
+            "package": "theming-designer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Sep 2022 12:27:02 GMT",
       "tag": "theming-designer_v7.0.0",
       "version": "7.0.0",

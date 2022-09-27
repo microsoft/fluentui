@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 16 Sep 2022 12:22:58 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Sep 2022 12:23:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.7)
+
+Tue, 27 Sep 2022 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.23.6..@uifabric/charting_v4.23.7)
+
+### Patches
+
+- Bump @uifabric/icons to v7.9.0 ([PR #24954](https://github.com/microsoft/fluentui/pull/24954) by gcox@microsoft.com)
 
 ## [4.23.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.6)
 

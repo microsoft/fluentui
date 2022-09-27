@@ -2,6 +2,21 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Tue, 27 Sep 2022 12:23:24 GMT",
+      "tag": "@uifabric/icons_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added IconNamesInput to exports",
+            "author": "gcox@microsoft.com",
+            "commit": "3eba12292d9a694b271cd3b3c7459d5e46d9c0a0",
+            "package": "@uifabric/icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Sep 2022 20:18:55 GMT",
       "tag": "@uifabric/icons_v7.8.6",
       "version": "7.8.6",

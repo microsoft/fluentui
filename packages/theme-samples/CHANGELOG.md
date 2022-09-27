@@ -1,8 +1,17 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Tue, 06 Sep 2022 20:18:55 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Sep 2022 12:23:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.5.19](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.5.19)
+
+Tue, 27 Sep 2022 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.5.18..@uifabric/theme-samples_v7.5.19)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.198.1 ([PR #24954](https://github.com/microsoft/fluentui/pull/24954) by gcox@microsoft.com)
 
 ## [7.5.18](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.5.18)
 

@@ -1,8 +1,17 @@
 # Change Log - a11y-tests
 
-This log was last generated on Fri, 16 Sep 2022 12:22:58 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Sep 2022 12:23:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v7.0.0)
+
+Tue, 27 Sep 2022 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v7.0.0..a11y-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/icons to v7.9.0 ([PR #24954](https://github.com/microsoft/fluentui/pull/24954) by gcox@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v7.0.0)
 

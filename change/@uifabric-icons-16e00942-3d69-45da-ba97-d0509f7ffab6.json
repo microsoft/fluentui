@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added IconNamesInput to exports",
-  "packageName": "@uifabric/icons",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
