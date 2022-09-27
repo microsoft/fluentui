@@ -2,7 +2,7 @@
 
 ## Background
 
-A `Progress` is a component that is used to display the current progress of an operation flow.
+The `Progress` component is used to display the current progress of an operation flow.
 
 ## Prior Art
 
@@ -23,9 +23,9 @@ The existing components are:
 
 ## Sample Code
 
-Basic examples:
+Basic example:
 
-```jsx=
+```jsx
 import { Progress } from "@fluentui/react-progress";
 
 function App() {
@@ -33,7 +33,6 @@ function App() {
         <Progress barHeight="medium" label="Loading" />
     )
 }
-
 ```
 
 ## Variants
@@ -89,8 +88,8 @@ See [MIGRATION.md](./MIGRATION.md).
 - **Display** - The Progress will use the following priority:
 
   - Adding `appearance={inverted}` will alter the way that the Progress is displayed.
-  - Adding `determinate` and specifying the `percentComplete` from `0` to `1` will alter the Progress from indeterminate to determinate
-  - The Progress also has `rtl` support that will animate the progress bar from right to left
+  - Adding `determinate` and specifying the `percentComplete` from `0` to `1` will alter the Progress from indeterminate to determinate.
+  - The component also has `rtl` support and will animate the progress bar from right to left if set.
 
 ### Interaction
 
