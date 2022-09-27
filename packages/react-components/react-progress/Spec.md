@@ -26,12 +26,10 @@ The existing components are:
 Basic example:
 
 ```jsx
-import { Progress } from "@fluentui/react-progress";
+import { Progress } from '@fluentui/react-progress';
 
 function App() {
-    return (
-        <Progress barHeight="medium" label="Loading" />
-    )
+  return <Progress barThickness="large" label="Loading" />;
 }
 ```
 
@@ -44,14 +42,15 @@ function App() {
 
 ### Shape
 
-The Progress is represented as a rectangular area with an inner animated bar that either travels across the area indefinitely or animates up till a specified point
+The Progress is represented as a rounded rectangular area with an inner animated bar that either travels across the area indefinitely or animates up till a specified point
 
 ## API
 
 ### Slots
 
 - `root` - The root element of the Progress. The html element is a `div`
-- `indicator` - The div element that gets animated into a Progress. The html element is `span`
+- `bar` - The div element that gets animated into a Progress bar. The html element is `div`
+- `track` - The div element that functions as the track for the Progress bar. The html element is `div`
 - `label` - The text shown above the Progress. This uses the `Label` control
 - `description` - The text shown below the Progress. This uses the `Label` control
 
@@ -65,13 +64,10 @@ See API at [Progress.types.tsx](./src/components/Progress/Progress.types.ts).
 <div class="fui-Progress">
   <!-- Label for Progress -->
   <label className="fui-Progress__label">Loading...</label>
-  <span className="fui-Progress__indicator" role="progressbar">
-    <!-- div that receives the animation. Classnames are used for animation -->
-    <div className="fui-Progress__Container">
-      <div className="fui-Progress__Track" />
-      <div className="fui-Progress__Tail" />
-    </div>
-  </span>
+  <!-- Track for Progress -->
+  <div class="fui-Progress__track" />
+  <!-- Bar for Progress -->
+  <div class="fui-Progess__bar" />
   <!-- Label for Progress description -->
   <label className="fui-Progress__description">Loading Text</label>
 </div>
@@ -87,7 +83,6 @@ See [MIGRATION.md](./MIGRATION.md).
 
 - **Display** - The Progress will use the following priority:
 
-  - Adding `appearance={inverted}` will alter the way that the Progress is displayed.
   - Adding `determinate` and specifying the `percentComplete` from `0` to `1` will alter the Progress from indeterminate to determinate.
   - The component also has `rtl` support and will animate the progress bar from right to left if set.
 
