@@ -32,15 +32,6 @@ const IndeterminateProgress = {
   },
 };
 
-const IndeterminateProgressRTL = {
-  '0%': {
-    right: '-30%',
-  },
-  '100%': {
-    right: '100%',
-  },
-};
-
 /**
  * Styles for the root slot
  */
@@ -116,15 +107,7 @@ const useBarStyles = makeStyles({
   },
 
   RTL: {
-    backgroundImage: `linear-gradient(
-      to left,
-      ${tokens.colorNeutralBackground6} 0%,
-      ${tokens.colorCompoundBrandBackground} 50%,
-      ${tokens.colorNeutralBackground6} 100%
-    )`,
-    animationName: IndeterminateProgressRTL,
-    animationDuration: '3s',
-    animationIterationCount: 'infinite',
+    animationDirection: 'reverse',
   },
 });
 
