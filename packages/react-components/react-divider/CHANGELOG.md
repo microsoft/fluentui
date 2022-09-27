@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Thu, 15 Sep 2022 09:49:04 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 20:55:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.1.0)
+
+Tue, 20 Sep 2022 20:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.5..@fluentui/react-divider_v9.1.0)
+
+### Minor changes
+
+- fix: Divider - allow props to override default values ([PR #24840](https://github.com/microsoft/fluentui/pull/24840) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.5)
 

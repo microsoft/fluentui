@@ -202,6 +202,11 @@ export {
   useDialogSurface_unstable,
   useDialogSurfaceStyles_unstable,
   renderDialogSurface_unstable,
+  DialogContent,
+  dialogContentClassNames,
+  useDialogContentStyles_unstable,
+  useDialogContent_unstable,
+  renderDialogContent_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -227,6 +232,9 @@ export type {
   DialogSurfaceProps,
   DialogSurfaceSlots,
   DialogSurfaceState,
+  DialogContentProps,
+  DialogContentSlots,
+  DialogContentState,
 } from '@fluentui/react-dialog';
 
 export {

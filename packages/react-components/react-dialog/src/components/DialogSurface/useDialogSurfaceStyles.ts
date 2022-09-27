@@ -2,18 +2,12 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
-  TITLE_GRID_AREA,
-  ACTIONS_END_GRID_AREA,
-  ACTIONS_START_GRID_AREA,
+  MEDIA_QUERY_BREAKPOINT_SELECTOR,
   SURFACE_BORDER_RADIUS,
   SURFACE_BORDER_WIDTH,
   SURFACE_PADDING,
-  DIALOG_GAP,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  BODY_GRID_AREA,
-  TITLE_ACTION_GRID_AREA,
-} from '../../contexts/constants';
-import { useDialogContext_unstable } from '../../contexts/dialogContext';
+  useDialogContext_unstable,
+} from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
@@ -26,6 +20,18 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
  */
 const useStyles = makeStyles({
   root: {
+    display: 'block',
+    userSelect: 'unset',
+    visibility: 'unset',
+    ...shorthands.inset(0),
+    ...shorthands.padding(0),
+    ...shorthands.padding(SURFACE_PADDING),
+    ...shorthands.margin('auto'),
+    ...shorthands.borderStyle('none'),
+    ...shorthands.overflow('unset'),
+    '&::backdrop': {
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    },
     position: 'fixed',
     width: '100%',
     height: 'fit-content',
@@ -35,50 +41,10 @@ const useStyles = makeStyles({
     boxShadow: tokens.shadow64,
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
-    ...shorthands.gap(DIALOG_GAP),
     ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
     ...shorthands.borderRadius(SURFACE_BORDER_RADIUS),
-    ...shorthands.margin('auto'),
-    display: 'grid',
-    gridTemplateRows: 'auto 1fr auto',
-    gridTemplateColumns: '1fr 1fr auto',
-    gridTemplateAreas: `
-      "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
-      "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
-      "${ACTIONS_START_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
-    `,
-    ...shorthands.padding(SURFACE_PADDING),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       maxWidth: '100vw',
-      gridTemplateRows: 'auto 1fr auto auto',
-      gridTemplateAreas: `
-        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
-        "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
-        "${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA}"
-        "${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
-      `,
-    },
-  },
-  dialog: {
-    display: 'block',
-    position: 'fixed',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    width: 'fit-content',
-    height: 'fit-content',
-    backgroundColor: 'unset',
-    maxWidth: 'unset',
-    maxHeight: 'unset',
-    userSelect: 'unset',
-    visibility: 'unset',
-    ...shorthands.padding(0),
-    ...shorthands.margin('auto'),
-    ...shorthands.borderStyle('none'),
-    ...shorthands.overflow('unset'),
-    '&::backdrop': {
-      backgroundColor: 'rgba(0, 0, 0, 0.4)',
     },
   },
   backdrop: {
@@ -105,7 +71,6 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
 
   state.root.className = mergeClasses(
     dialogSurfaceClassNames.root,
-    styles.dialog,
     styles.root,
     isNestedDialog && styles.nestedNativeDialogBackdrop,
     state.root.className,

@@ -3,8 +3,8 @@ import { Avatar } from '@fluentui/react-avatar';
 
 export const Active = () => (
   <div style={{ display: 'flex', gap: '20px' }}>
-    <Avatar active="active" name="Active" />
-    <Avatar active="inactive" name="Inactive" />
+    <Avatar active="active" name="Ashley McCarthy" />
+    <Avatar active="inactive" name="Isaac Fielder" badge={{ status: 'away' }} />
   </div>
 );
 

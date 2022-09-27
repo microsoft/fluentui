@@ -5,9 +5,7 @@ import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import { SampleCard, Title } from './SampleCard.stories';
 import Logo from '../../../assets/logo.svg';
 
-export const ASSET_URL =
-  'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
-
+const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 const avatarElviaURL = ASSET_URL + '/assets/avatar_elvia.svg';
 
 const useStyles = makeStyles({

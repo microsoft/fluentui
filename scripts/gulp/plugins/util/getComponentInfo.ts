@@ -11,6 +11,7 @@ import parseDocblock from './parseDocblock';
 import parseType from './parseType';
 import getShorthandInfo from './getShorthandInfo';
 import { getProgram, loadFiles } from './tsLanguageService';
+import { Program } from 'typescript';
 
 export type GetComponentInfoOptions = {
   /** Path to the file containing a single component. */
@@ -55,7 +56,7 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
 
   loadFiles([filePath]);
 
-  const components = docgen.parseWithProgramProvider(absPath, {}, {}, () => getProgram(tsconfigPath));
+  const components = docgen.parseWithProgramProvider(absPath, {}, {}, () => getProgram(tsconfigPath) as Program);
 
   if (!components.length) {
     throw new Error(`Could not find a component definition in "${filePath}".`);
