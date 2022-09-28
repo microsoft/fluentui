@@ -133,7 +133,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   // setup storybook
   setupStorybook(tree, options);
 
-  setupE2E(tree, options);
+  migrateE2ESetupToCypress(tree, options);
+  setupCypress(tree, options);
 
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
@@ -330,15 +331,15 @@ const templates = {
       include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
     },
   },
-  e2e: {
+  cypress: {
     tsconfig: {
-      extends: '../tsconfig.json',
+      extends: './tsconfig.json',
       compilerOptions: {
         isolatedModules: false,
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
-      include: ['**/*.ts', '**/*.tsx'],
+      include: ['**/*.cy.ts', '**/*.cy.tsx'],
     },
   },
   npmIgnoreConfig:
@@ -349,7 +350,6 @@ const templates = {
     config/
     coverage/
     docs/
-    e2e/
     etc/
     node_modules/
     src/
@@ -363,6 +363,7 @@ const templates = {
     *.api.json
     *.log
     *.spec.*
+    *.cy.*
     *.test.*
     *.yml
 
@@ -712,6 +713,40 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
+function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
+  const e2ePath = joinPathFragments(options.projectConfig.root, 'e2e');
+  const e2eFolderExists = tree.exists(e2ePath);
+
+  if (!e2eFolderExists) {
+    return;
+  }
+
+  visitNotIgnoredFiles(tree, e2ePath, treePath => {
+    if (treePath.includes('.e2e.')) {
+      const content = tree.read(treePath)?.toString('utf-8');
+      const fileName = path.basename(treePath).replace('e2e', 'cy');
+      const componentName = fileName.split('.')[0];
+      const newCypressTestPath = joinPathFragments(options.paths.sourceRoot, 'components', componentName, fileName);
+
+      tree.rename(treePath, newCypressTestPath);
+
+      //Update file imports of cypress component test files
+      if (content && content.includes('./selectors')) {
+        const newContent = content.replace('./selectors', '../../testing/selectors');
+        tree.write(newCypressTestPath, newContent);
+      }
+    } else if (treePath.includes('tsconfig.json')) {
+      const newCypressTSConfigPath = joinPathFragments(options.projectConfig.root, 'tsconfig.cy.json');
+
+      tree.rename(treePath, newCypressTSConfigPath);
+    } else if (treePath.includes('selectors.ts')) {
+      const newFilePath = joinPathFragments(options.paths.sourceRoot, 'testing', path.basename(treePath));
+
+      tree.rename(treePath, newFilePath);
+    }
+  });
+}
+
 function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
   const sourceRoot = options.projectConfig.sourceRoot ?? '';
   const oldStoriesPath = joinPathFragments(sourceRoot, 'stories');
@@ -768,18 +803,16 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
-function setupE2E(tree: Tree, options: NormalizedSchema) {
-  if (!shouldSetupE2E(tree, options)) {
+function setupCypress(tree: Tree, options: NormalizedSchema) {
+  if (!shouldSetupCypress(tree, options)) {
     return tree;
   }
 
-  tree.rename(joinPathFragments(options.paths.e2e.rootFolder, 'tsconfig.json'), options.paths.e2e.tsconfig);
-
-  writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
+  writeJson<TsConfig>(tree, options.paths.tsconfig.cypress, templates.cypress.tsconfig);
 
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
-      path: `./${path.basename(options.paths.e2e.rootFolder)}/${path.basename(options.paths.e2e.tsconfig)}`,
+      path: `./${path.basename(options.paths.tsconfig.cypress)}`,
     });
 
     return json;
@@ -796,11 +829,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
-  return (
-    tree.exists(joinPathFragments(options.paths.e2e.rootFolder, 'tsconfig.json')) ||
-    tree.exists(options.paths.e2e.tsconfig)
-  );
+function shouldSetupCypress(tree: Tree, options: NormalizedSchema) {
+  return tree.exists(options.paths.tsconfig.cypress);
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {

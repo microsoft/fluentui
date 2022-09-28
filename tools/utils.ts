@@ -92,6 +92,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
       main: joinPathFragments(projectConfig.root, 'tsconfig.json'),
       lib: joinPathFragments(projectConfig.root, 'tsconfig.lib.json'),
       test: joinPathFragments(projectConfig.root, 'tsconfig.spec.json'),
+      cypress: joinPathFragments(projectConfig.root, 'tsconfig.cy.json'),
     },
     sourceRoot: joinPathFragments(projectConfig.root, 'src'),
     conformanceSetup: joinPathFragments(projectConfig.root, 'src', 'common', 'isConformant.ts'),
@@ -109,11 +110,6 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
       tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
       main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
       preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
-    },
-    e2e: {
-      rootFolder: joinPathFragments(projectConfig.root, 'e2e'),
-      support: joinPathFragments(projectConfig.root, 'e2e', 'support.js'),
-      tsconfig: joinPathFragments(projectConfig.root, 'e2e', 'tsconfig.json'),
     },
   };
 

@@ -706,29 +706,28 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`e2e config`, () => {
+  describe(`cypress config`, () => {
     function setup(config: { projectName: string }) {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const paths = {
-        e2eRoot: `${projectConfig.root}/e2e`,
         packageJson: `${projectConfig.root}/package.json`,
         tsconfig: {
           main: `${projectConfig.root}/tsconfig.json`,
           lib: `${projectConfig.root}/tsconfig.lib.json`,
           test: `${projectConfig.root}/tsconfig.spec.json`,
-          e2e: `${projectConfig.root}/e2e/tsconfig.json`,
+          cypress: `${projectConfig.root}/tsconfig.cy.json`,
         },
       };
 
-      function createE2eSetup() {
-        writeJson<TsConfig>(tree, paths.tsconfig.e2e, {
+      function createCypressSetup() {
+        writeJson<TsConfig>(tree, paths.tsconfig.cypress, {
           extends: '../../tsconfig.base.json',
           compilerOptions: {},
         });
         tree.write(
-          `${paths.e2eRoot}/index.e2e.ts`,
+          `${projectConfig.sourceRoot}/components/index.cy.ts`,
           stripIndents`
-         describe('E2E test', () => {
+         describe('Cypress test', () => {
            before(() => {
             cy.visitStorybook();
            });
@@ -739,39 +738,39 @@ describe('migrate-converged-pkg generator', () => {
         return tree;
       }
 
-      return { projectConfig, paths, createE2eSetup };
+      return { projectConfig, paths, createCypressSetup };
     }
-    it(`should do nothing if e2e setup is missing`, async () => {
+    it(`should do nothing if cypress setup is missing`, async () => {
       const { paths } = setup({ projectName: options.name });
 
       await generator(tree, { name: options.name });
 
-      expect(tree.exists(paths.tsconfig.e2e)).toBeFalsy();
+      expect(tree.exists(paths.tsconfig.cypress)).toBeFalsy();
     });
 
-    it(`should setup e2e if present`, async () => {
-      const { paths, createE2eSetup } = setup({ projectName: options.name });
+    it(`should setup cypress if present`, async () => {
+      const { paths, createCypressSetup } = setup({ projectName: options.name });
 
-      createE2eSetup();
+      createCypressSetup();
 
-      expect(tree.exists(paths.tsconfig.e2e)).toBeTruthy();
+      expect(tree.exists(paths.tsconfig.cypress)).toBeTruthy();
 
       await generator(tree, { name: options.name });
 
       // // TS Updates
-      const e2eTsConfig: TsConfig = readJson(tree, paths.tsconfig.e2e);
+      const cypressTsConfig: TsConfig = readJson(tree, paths.tsconfig.cypress);
       const mainTsConfig: TsConfig = readJson(tree, paths.tsconfig.main);
 
-      expect(e2eTsConfig).toEqual({
-        extends: '../tsconfig.json',
+      expect(cypressTsConfig).toEqual({
+        extends: './tsconfig.json',
         compilerOptions: {
           isolatedModules: false,
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         },
-        include: ['**/*.ts', '**/*.tsx'],
+        include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });
-      expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
+      expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './tsconfig.cy.json' }]));
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
@@ -956,7 +955,6 @@ describe('migrate-converged-pkg generator', () => {
         config/
         coverage/
         docs/
-        e2e/
         etc/
         node_modules/
         src/
@@ -970,6 +968,7 @@ describe('migrate-converged-pkg generator', () => {
         *.api.json
         *.log
         *.spec.*
+        *.cy.*
         *.test.*
         *.yml
 
