@@ -160,6 +160,11 @@
       "import": "./lib/Signals.js",
       "require": "./lib-commonjs/Signals.js"
     },
+    "./lib/components/signals/Signal.scss": {
+      "types": "./lib/components/signals/Signal.scss.d.ts",
+      "import": "./lib/components/signals/Signal.scss.js",
+      "require": "./lib-commonjs/components/signals/Signal.scss.js"
+    },
     "./lib/components/signals/Signals.scss": {
       "types": "./lib/components/signals/Signals.scss.d.ts",
       "import": "./lib/components/signals/Signals.scss.js",
