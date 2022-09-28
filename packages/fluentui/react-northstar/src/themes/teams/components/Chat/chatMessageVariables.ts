@@ -27,8 +27,6 @@ export interface ChatMessageVariables {
   headerMarginBottom: string;
   isImportant: boolean;
   isImportantColor: string;
-  linkColor: string;
-  linkColorMine: string;
   offset: string;
   overlayZIndex: number;
   padding: string;
@@ -67,8 +65,6 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   headerMarginBottom: pxToRem(2),
   isImportant: false,
   isImportantColor: siteVars.colorScheme.red.background,
-  linkColor: siteVars.colorScheme.brand.foreground1,
-  linkColorMine: siteVars.colorScheme.brand.foreground2,
   offset: pxToRem(100),
   overlayZIndex: siteVars.zIndexes.overlay,
   padding: pxToRem(16),
