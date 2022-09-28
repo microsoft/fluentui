@@ -498,8 +498,8 @@ describe('migrate-converged-pkg generator', () => {
 
       const normalizedProjectNameNamesVariants = names(normalizedProjectName);
       const paths = {
-        storyOne: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
-        storyTwo: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+        storyOne: `${projectConfig.root}/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
+        storyTwo: `${projectConfig.root}/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
         tsconfig: {
           storybook: `${projectStorybookConfigPath}/tsconfig.json`,
           main: `${projectConfig.root}/tsconfig.json`,

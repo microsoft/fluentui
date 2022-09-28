@@ -682,7 +682,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
   function removeTsIgnorePragmas() {
     const stories: string[] = [];
-    visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
+    visitNotIgnoredFiles(tree, options.projectConfig.root, treePath => {
       if (treePath.includes('.stories.')) {
         stories.push(treePath);
       }
