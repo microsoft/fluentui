@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DetailsList adds DetailsFooter to rowcount if provided",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
