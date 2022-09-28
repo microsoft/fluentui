@@ -24,11 +24,9 @@ export const createCustomFocusIndicatorStyle = (
   },
 
   ...(selector === 'focus' && {
-    // [`&.${FOCUS_VISIBLE_CLASS}`]: style,
     [`&[${FOCUS_VISIBLE_ATTR}]`]: style,
   }),
   ...(selector === 'focus-within' && {
-    // [`&.${FOCUS_WITHIN_CLASS}:${selector}`]: style,
     [`&[${FOCUS_WITHIN_ATTR}]:${selector}`]: style,
   }),
 });
