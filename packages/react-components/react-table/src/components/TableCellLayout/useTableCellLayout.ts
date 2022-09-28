@@ -4,7 +4,7 @@ import type { TableCellLayoutProps, TableCellLayoutState } from './TableCellLayo
 import { useTableContext } from '../../contexts/tableContext';
 
 const tableAvatarSizeMap = {
-  medium: undefined,
+  medium: 32,
   small: 24,
   smaller: 20,
 } as const;
