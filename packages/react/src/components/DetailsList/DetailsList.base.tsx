@@ -1299,7 +1299,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
   /** Builds a set of columns to fix within the viewport width. */
   private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
-    const { selectionMode = this._selection.mode, checkboxVisibility } = props;
+    const { selectionMode = this._selection.mode, checkboxVisibility, skipViewportMeasures } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
@@ -1321,7 +1321,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return newColumn;
     });
 
-    if (availableWidth >= totalWidth) {
+    if (skipViewportMeasures) {
       return adjustedColumns;
     }
 
