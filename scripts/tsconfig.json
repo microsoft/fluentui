@@ -23,6 +23,7 @@
     "./update-release-notes/**",
     "./prettier/**",
     "./fluentui-publish/**",
-    "./puppeteer/**"
+    "./puppeteer/**",
+    "./triage-bot/**"
   ]
 }

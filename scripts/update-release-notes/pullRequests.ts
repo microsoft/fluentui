@@ -1,4 +1,4 @@
-import { Octokit } from '@octokit/rest';
+import type { RestEndpointMethodTypes } from '@octokit/rest';
 import { ChangelogEntry } from 'beachball';
 import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } from '../github';
 import { repoDetails, github } from './init';
@@ -54,7 +54,7 @@ async function getMatchingRecentPullRequest(entry: ChangelogEntry): Promise<IPul
     if (author) {
       // Get this author's recent PRs and look for one or more with a matching commit message and email
       possiblePrs = (await getRecentPrsByAuthor(author, authorEmail)).filter(pr =>
-        pr.commits!.some(commit => commit.message === message && commit.authorEmail === authorEmail),
+        (pr.commits ?? []).some(commit => commit.message === message && commit.authorEmail === authorEmail),
       );
     }
   } catch (ex) {
@@ -93,7 +93,7 @@ async function getRecentPrsByAuthor(
       // Get the author's 10 most recently updated merged PRs
       console.log(`Getting ${count} most recent PRs by ${authorUsername}...`);
       // (this is not quite the right type, since merge_commit_sha doesn't exist on the real response)
-      const result: Octokit.SearchIssuesAndPullRequestsResponseItemsItem[] = (
+      const result = (
         await github.search.issuesAndPullRequests({
           q: [
             'type:pr',
@@ -130,20 +130,25 @@ async function _addCommitInfo(prs: IPullRequest[]): Promise<IExtendedPullRequest
     console.log(`  Getting commits for #${pr.number}...`);
     try {
       const commits = await github.pulls.listCommits({ pull_number: pr.number, ...repoDetails });
+
       results.push({
         ...pr,
-        commits: commits.data
-          .filter(commit => !!commit.author)
-          .map(commit => ({
-            commit: commit.sha,
-            message: commit.commit.message,
-            author: commit.author.login,
-            authorEmail: commit.commit.author.email,
-          })),
+        commits: dataWithAuthor(commits.data).map(commit => ({
+          commit: commit.sha,
+          message: commit.commit.message,
+          author: commit.author.login,
+          authorEmail: commit.commit.author?.email,
+        })),
       });
     } catch (ex) {
       // ignore
     }
   }
   return results;
+
+  function dataWithAuthor(value: RestEndpointMethodTypes['pulls']['listCommits']['response']['data']) {
+    type Commit = typeof value[number];
+    type FilteredCommit = Omit<Commit, 'author'> & { author: NonNullable<Commit['author']> };
+    return value.filter(commit => Boolean(commit.author)) as FilteredCommit[];
+  }
 }

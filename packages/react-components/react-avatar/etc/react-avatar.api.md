@@ -141,6 +141,7 @@ export type AvatarSlots = {
 // @public
 export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
+    activeAriaLabelElement?: JSX.Element;
 };
 
 // @internal

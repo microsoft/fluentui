@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(eslint-plugin): properly resolve single-version policy dep issues in react-northstar packages",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

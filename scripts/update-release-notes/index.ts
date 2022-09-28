@@ -4,7 +4,7 @@
  * given tag.
  */
 
-import { Octokit } from '@octokit/rest';
+import type { RestEndpointMethodTypes } from '@octokit/rest';
 import { argv, repoDetails, github } from './init';
 import { getTagToChangelogMap, getTags } from './changelogsAndTags';
 import { getReleases } from './releases';
@@ -49,7 +49,9 @@ async function updateReleaseNotes() {
     console.log(`${hasBeenReleased ? 'Patching' : 'Creating'} release notes for ${entryInfo}...\n`);
     count++;
 
-    const releaseDetails: Partial<Octokit.ReposUpdateReleaseParams> = {
+    const releaseDetails:
+      | RestEndpointMethodTypes['repos']['updateRelease']['parameters']
+      | RestEndpointMethodTypes['repos']['createRelease']['parameters'] = {
       ...repoDetails,
       tag_name: entry.tag,
       name: `${entry.name} v${entry.version}`,
@@ -64,9 +66,13 @@ async function updateReleaseNotes() {
     if (argv.apply) {
       try {
         if (hasBeenReleased) {
-          await github.repos.updateRelease(releaseDetails as Octokit.ReposUpdateReleaseParams);
+          await github.repos.updateRelease(
+            releaseDetails as RestEndpointMethodTypes['repos']['updateRelease']['parameters'],
+          );
         } else {
-          await github.repos.createRelease(releaseDetails as Octokit.ReposCreateReleaseParams);
+          await github.repos.createRelease(
+            releaseDetails as RestEndpointMethodTypes['repos']['createRelease']['parameters'],
+          );
         }
         console.log(`Successfully ${hasBeenReleased ? 'updated' : 'created'} release notes for ${entryInfo}`);
       } catch (err) {

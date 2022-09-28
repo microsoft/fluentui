@@ -14,7 +14,6 @@
     "@mdx-js/loader": "^1.5.5",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@microsoft/loader-load-themed-styles": "^1.7.205",
-    "@octokit/rest": "^16.28.2",
     "@types/babel__traverse": "^7.0.4",
     "@types/inquirer": "^6.5.0",
     "@types/lerna-alias": "^3.0.0",

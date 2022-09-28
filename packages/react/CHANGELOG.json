@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 28 Sep 2022 07:37:48 GMT",
+      "tag": "@fluentui/react_v8.96.2",
+      "version": "8.96.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "adea89e6cc51161fbb544f465e298f60046fd55c",
+            "comment": "fix: Dropdown no longer sets incorrect and unnecessary aria-activedescendant"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Sep 2022 07:43:45 GMT",
       "tag": "@fluentui/react_v8.96.1",
       "version": "8.96.1",
