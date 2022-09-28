@@ -28,6 +28,7 @@ export function initializeThemeInCustomizations(): void {
   }
 }
 
+// Ensure theme is initialized when this package is referenced.
 initializeThemeInCustomizations();
 
 /**
