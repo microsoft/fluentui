@@ -27,7 +27,6 @@ const useRootStyles = makeStyles({
     alignItems: 'flex-start',
     boxSizing: 'border-box',
     display: 'inline-flex',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     position: 'relative',
 
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
@@ -69,6 +68,16 @@ const useIndicatorStyles = makeStyles({
       },
     },
   },
+
+  before: {
+    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS, tokens.spacingVerticalS, 0),
+  },
+  after: {
+    ...shorthands.margin(tokens.spacingVerticalS, 0, tokens.spacingVerticalS, tokens.spacingHorizontalS),
+  },
+  above: {
+    ...shorthands.margin(0, tokens.spacingHorizontalS, tokens.spacingVerticalS, tokens.spacingHorizontalS),
+  },
 });
 
 const useInputStyles = makeStyles({
@@ -80,10 +89,9 @@ const useInputStyles = makeStyles({
     opacity: 0,
     position: 'absolute',
 
-    // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it
-    // + the spacing between the indicator and the label. This is done so that clicking on that "empty space" still
-    // toggles the switch.
-    width: `calc(${trackWidth}px + ${tokens.spacingHorizontalS} + ${tokens.spacingHorizontalM})`,
+    // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
+    // This is done so that clicking on that "empty space" still toggles the switch.
+    width: `calc(${trackWidth}px + ${tokens.spacingHorizontalS})`,
 
     // Checked (both enabled and disabled)
     ':checked': {
@@ -197,7 +205,7 @@ const useInputStyles = makeStyles({
   },
   above: {
     bottom: 0,
-    height: `calc(${trackHeight}px + ${tokens.spacingVerticalS} + ${tokens.spacingVerticalXS})`,
+    height: `calc(${trackHeight}px + ${tokens.spacingVerticalS})`,
     width: '100%',
   },
 });
@@ -206,26 +214,22 @@ const useLabelStyles = makeStyles({
   base: {
     cursor: 'pointer',
 
-    // Use a (negative) margin to account for the difference between the track's height and the label's line height,
-    // as well as accounting for the introduced padding for handling the "empty space" around the label.
+    // Use a (negative) margin to account for the difference between the track's height and the label's line height.
     // This prevents the label from expanding the height of the switch, but preserves line height if the label wraps.
-    marginBottom: `calc(-1 * ${tokens.spacingVerticalS} + (${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
-    marginTop: `calc(-1 * ${tokens.spacingVerticalS} + (${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
 
-    // Introduce padding equal to the one used on the root of the component so the "empty space" around the label still
-    // toggles the switch.
-    ...shorthands.padding(tokens.spacingVerticalS, 0),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
   above: {
-    marginBottom: tokens.spacingVerticalXS,
-    paddingBottom: 0,
+    paddingBottom: tokens.spacingVerticalXS,
     width: '100%',
   },
   after: {
-    marginLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalM,
   },
   before: {
-    marginRight: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalM,
   },
 });
 
@@ -247,7 +251,12 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     state.root.className,
   );
 
-  state.indicator.className = mergeClasses(switchClassNames.indicator, indicatorStyles.base, state.indicator.className);
+  state.indicator.className = mergeClasses(
+    switchClassNames.indicator,
+    indicatorStyles.base,
+    indicatorStyles[labelPosition],
+    state.indicator.className,
+  );
 
   state.input.className = mergeClasses(
     switchClassNames.input,

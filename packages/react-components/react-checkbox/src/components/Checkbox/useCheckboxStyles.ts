@@ -19,7 +19,6 @@ const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     display: 'inline-flex',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
 });
@@ -149,14 +148,13 @@ const useInputStyles = makeStyles({
     left: 0,
   },
 
-  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it +
-  // the spacing between the indicator and the label. This is done so that clicking on that "empty space" still toggles
-  // the checkbox.
+  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
+  // This is done so that clicking on that "empty space" still toggles the checkbox.
   medium: {
-    width: `calc(${indicatorSizeMedium} + ${tokens.spacingHorizontalS} + ${tokens.spacingHorizontalM})`,
+    width: `calc(${indicatorSizeMedium} + ${tokens.spacingHorizontalS})`,
   },
   large: {
-    width: `calc(${indicatorSizeLarge} + ${tokens.spacingHorizontalS} + ${tokens.spacingHorizontalM})`,
+    width: `calc(${indicatorSizeLarge} + ${tokens.spacingHorizontalS})`,
   },
 });
 
@@ -175,6 +173,13 @@ const useIndicatorStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
     fill: 'currentColor',
     pointerEvents: 'none',
+  },
+
+  before: {
+    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS, tokens.spacingVerticalS, 0),
+  },
+  after: {
+    ...shorthands.margin(tokens.spacingVerticalS, 0, tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
   medium: {
@@ -197,31 +202,27 @@ const useIndicatorStyles = makeStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    cursor: 'pointer',
     color: 'inherit',
-
-    // Introduce padding equal to the one used on the root of the component so the "empty space" around the label still
-    // toggles the checkbox.
-    ...shorthands.padding(tokens.spacingVerticalS, 0),
+    cursor: 'pointer',
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
   before: {
-    marginRight: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalM,
   },
   after: {
-    marginLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalM,
   },
 
-  // Use a (negative) margin to account for the difference between the indicator's height and the label's line height,
-  // as well as accounting for the introduced padding for handling the "empty space" around the label.
+  // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
   // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
   medium: {
-    marginTop: `calc(-1 * ${tokens.spacingVerticalS} + (${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc(-1 * ${tokens.spacingVerticalS} + (${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
   },
   large: {
-    marginTop: `calc(-1 * ${tokens.spacingVerticalS} + (${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc(-1 * ${tokens.spacingVerticalS} + (${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
   },
 });
 
@@ -247,6 +248,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       checkboxClassNames.indicator,
       indicatorStyles.base,
       indicatorStyles[state.size],
+      indicatorStyles[state.labelPosition],
       state.shape === 'circular' && indicatorStyles.circular,
       state.indicator.className,
     );
