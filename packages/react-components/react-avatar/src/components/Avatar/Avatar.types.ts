@@ -1,6 +1,8 @@
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { AvatarSizes as AvatarContextSizes } from '../../contexts/AvatarContext';
+import type { AvatarSizes } from '../../contexts/AvatarContext';
+
+export type { AvatarSizes } from '../../contexts/AvatarContext';
 
 export type AvatarSlots = {
   root: Slot<'span'>;
@@ -69,11 +71,6 @@ export type AvatarNamedColor =
   | 'mink'
   | 'platinum'
   | 'anchor';
-
-/**
- * Sizes that can be used for the Avatar
- */
-export type AvatarSizes = AvatarContextSizes;
 
 /**
  * Properties for Avatar
