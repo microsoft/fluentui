@@ -85,7 +85,7 @@ const makeConfigJson: MakeConfigJson = (_scenario, browser, testCase, sampleSize
 
           return {
             name: `${target} - ${testCase} - ${size}`,
-            url: `${baseUrl}/${targetWithoutParams}/?${params}`,
+            url: `${baseUrl}/${targetWithoutParams}/${_scenario}/?${params}`,
           };
         }),
       },
