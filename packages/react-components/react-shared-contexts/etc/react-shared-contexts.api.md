@@ -8,18 +8,6 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
-export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefined>;
-
-// @internal (undocumented)
-export interface AvatarContextValue {
-    // (undocumented)
-    size?: AvatarSizes;
-}
-
-// @public (undocumented)
-export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
-
-// @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
@@ -52,9 +40,6 @@ export type TooltipVisibilityContextValue_unstable = {
 
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
-
-// @internal (undocumented)
-export const useAvatarContext: () => AvatarContextValue;
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
