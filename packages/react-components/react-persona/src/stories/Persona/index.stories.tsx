@@ -1,9 +1,12 @@
 import { Persona } from '@fluentui/react-persona';
 
 import descriptionMd from './PersonaDescription.md';
-import bestPracticesMd from './PersonaBestPractices.md';
 
 export { Default } from './PersonaDefault.stories';
+export { Position } from './PersonaPosition.stories';
+export { SizingScaled } from './PersonaSizingScaled.stories';
+export { PresenceSize } from './PersonaPresenceSize.stories';
+export { AvatarSize } from './PersonaAvatarSize.stories';
 
 export default {
   title: 'Preview Components/Persona',
@@ -11,7 +14,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd].join('\n'),
       },
     },
   },

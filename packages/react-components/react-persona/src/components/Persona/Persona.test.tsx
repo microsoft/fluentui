@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
 import { Persona } from './Persona';
 import { isConformant } from '../../common/isConformant';
 
@@ -7,12 +5,6 @@ describe('Persona', () => {
   isConformant({
     Component: Persona,
     displayName: 'Persona',
-  });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<Persona>Default Persona</Persona>);
-    expect(result.container).toMatchSnapshot();
+    disabledTests: ['component-has-static-classnames-object'],
   });
 });
