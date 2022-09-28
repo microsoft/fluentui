@@ -13,6 +13,7 @@ export {
   getTheme,
   loadTheme,
   createTheme,
+  initializeThemeInCustomizations,
   registerOnThemeChangeCallback,
   removeOnThemeChangeCallback,
 } from './theme';
