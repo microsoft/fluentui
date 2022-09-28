@@ -1027,6 +1027,11 @@
       "import": "./lib/Utilities.js",
       "require": "./lib-commonjs/Utilities.js"
     },
+    "./lib/Viewport": {
+      "types": "./lib/Viewport.d.ts",
+      "import": "./lib/Viewport.js",
+      "require": "./lib-commonjs/Viewport.js"
+    },
     "./lib/version": {
       "types": "./lib/version.d.ts",
       "import": "./lib/version.js",
