@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Removed style-utilities index side effect",
+  "packageName": "@fluentui/style-utilities",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
