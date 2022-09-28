@@ -1,11 +1,7 @@
 import * as React from 'react';
+import { AvatarSizes } from '../components/Avatar/Avatar.types';
 
 const avatarContext = React.createContext<AvatarContextValue | undefined>(undefined);
-
-/**
- * Sizes for the avatar
- */
-export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * @internal
