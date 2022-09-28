@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement AvatarContext",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
