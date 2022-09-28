@@ -3,10 +3,10 @@ import { CLIBuildOptions } from '../utils/types';
 
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import configureYargs from '../utils/configureYargs';
-import * as webpack from 'webpack';
-
-const webpackConfig = require('../../webpack/webpack.config');
+import configureYargs from '../utils/configureYargs.js';
+import webpack from 'webpack';
+import webpackConfig from '../../webpack/webpack.config.js';
+import { buildDefaultFixtures } from '../utils/fixtures.js';
 
 const execAsync = promisify(exec);
 
@@ -82,6 +82,8 @@ const api: yargs.CommandModule = {
       buildDeps: argv.buildDeps as boolean,
     };
 
+    buildDefaultFixtures();
+
     run(args).then(() => {
       console.log('Build complete!');
     });
@@ -89,4 +91,3 @@ const api: yargs.CommandModule = {
 };
 
 export default api;
-// export { api };

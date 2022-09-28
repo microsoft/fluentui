@@ -1,3 +1,10 @@
+export type CLIBuildFixtureOptions = {
+  type: 'tree';
+  name: string;
+  options: { [key: string]: string };
+  clean: boolean;
+};
+
 export type CLIBuildOptions = {
   griffelMode: GriffelMode;
   mode: WebpackMode;

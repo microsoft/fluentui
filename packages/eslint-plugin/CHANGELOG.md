@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 08 Aug 2022 07:39:31 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Sep 2022 07:46:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.3)
+
+Tue, 27 Sep 2022 07:46:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.2..@fluentui/eslint-plugin_v1.12.3)
+
+### Patches
+
+- fix(eslint-plugin): properly resolve single-version policy dep issues in react-northstar packages ([PR #24526](https://github.com/microsoft/fluentui/pull/24526) by martinhochel@microsoft.com)
 
 ## [1.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.2)
 

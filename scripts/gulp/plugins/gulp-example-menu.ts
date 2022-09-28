@@ -2,7 +2,7 @@ import gutil from 'gulp-util';
 import _ from 'lodash';
 import path from 'path';
 import { Transform } from 'stream';
-import through2 from 'through2';
+import through2, { FlushCallback, TransformFunction } from 'through2';
 import Vinyl from 'vinyl';
 
 import { parseDocSection } from './util';
@@ -19,7 +19,7 @@ const SECTION_ORDER = {
   Performance: 11,
 };
 
-const getSectionOrder = sectionName =>
+const getSectionOrder = (sectionName: string) =>
   _.find(SECTION_ORDER, (val, key) => _.includes(sectionName, key)) || SECTION_ORDER.DEFAULT_ORDER;
 
 const pluginName = 'gulp-example-menu';
@@ -37,7 +37,7 @@ export default () => {
     >
   > = {};
 
-  function bufferContents(this: Transform, file, enc, cb) {
+  const bufferContents: TransformFunction = function (file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -75,9 +75,9 @@ export default () => {
       ].join('\n\n');
       this.emit('error', pluginError);
     }
-  }
+  };
 
-  function endStream(this: Transform, cb) {
+  const endStream: FlushCallback = function (cb) {
     _.forEach(exampleFilesByDisplayName, (contents, displayName) => {
       const sortedContents = _.sortBy(contents, ['order', 'sectionName']).map(({ sectionName, examples }) => ({
         sectionName,
@@ -93,7 +93,7 @@ export default () => {
     });
 
     cb();
-  }
+  };
 
   return through2.obj(bufferContents, endStream);
 };

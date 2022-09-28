@@ -1,5 +1,6 @@
-const glob = require('glob');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import glob from 'glob';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpack from 'webpack';
 
 /**
  * Automatically configures Webpack to find pages so
@@ -7,22 +8,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  * the Webpack config.
  */
 
-/**
- * A page configuration object used to generate Webpack configuration.
- * @typedef {Object} PageConfig
- * @property {string} name - Name of the page.
- * @property {string} path - Path the the index file for the page. This is a tsx (React) or wc.ts (Web Component) file.
- * @property {string} template - HTML template for the page.
- * @property {string} output - Path to the output file
- */
+export type PageConfig = {
+  name: string;
+  path: string;
+  template: string;
+  output: string;
+};
 
 /**
  * Find all the source pages and map them to
  * config objects used to generate the Webpack config.
- *
- * @returns {PageConfig[]} List of page configuration objects.
  */
-const getPages = () => {
+const getPages: () => PageConfig[] = () => {
   const extPattern = /\.(tsx|wc.ts)/;
   const pagePattern = './src/pages/**/*/index.?(tsx|wc.ts)';
 
@@ -48,15 +45,9 @@ const getPages = () => {
 /**
  * Take data from getPages() and generate Webpack
  * config's `entry`.
- *
- * @param {PageConfig[]} pages - List of page configuration objects.
- * @returns {import('webpack').Entry} `entry` object for Webpack configuration.
  */
-const getEntry = pages => {
-  /**
-   * @type {Object.<string, string>}
-   */
-  const init = {};
+const getEntry: (pages: PageConfig[]) => webpack.Entry = pages => {
+  const init = {} as Record<string, string>;
   return pages.reduce((config, page) => {
     config[page.name] = page.path;
     return config;
@@ -66,11 +57,8 @@ const getEntry = pages => {
 /**
  * Take data from getPages() and generate
  * HTML plugins for the pages.
- *
- * @param {PageConfig[]} pages - List of page configuration objects.
- * @returns {import('html-webpack-plugin')[]} List of HtmlWebpackPlugins for all pages.
  */
-const getHtmlPlugin = pages => {
+const getHtmlPlugin: (pages: PageConfig[]) => HtmlWebpackPlugin[] = pages => {
   return pages.map(page => {
     return new HtmlWebpackPlugin({
       inject: 'body',
@@ -86,11 +74,8 @@ const getHtmlPlugin = pages => {
  * to automatically load pages.
  *
  * NOTE: this function mutates the `config` object passed in to it.
- *
- * @param {import('webpack').Configuration} config - Webpack configuration object to modify.
- * @returns {import('webpack').Configuration} Modified Webpack configuration object.
  */
-const configurePages = config => {
+const configurePages: (config: webpack.Configuration) => webpack.Configuration = config => {
   const pages = getPages();
 
   config.entry = getEntry(pages);
@@ -103,6 +88,4 @@ const configurePages = config => {
   return config;
 };
 
-module.exports = {
-  configurePages,
-};
+export { configurePages };

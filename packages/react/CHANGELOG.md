@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 22 Sep 2022 07:43:45 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Sep 2022 07:37:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.96.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.2)
+
+Wed, 28 Sep 2022 07:37:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.1..@fluentui/react_v8.96.2)
+
+### Patches
+
+- fix: Dropdown no longer sets incorrect and unnecessary aria-activedescendant ([PR #24593](https://github.com/microsoft/fluentui/pull/24593) by sarah.higley@microsoft.com)
 
 ## [8.96.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.1)
 
