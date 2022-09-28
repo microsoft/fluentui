@@ -32,7 +32,6 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-label": "^9.0.6",
     "@fluentui/react-shared-contexts": "^9.0.1",
     "@fluentui/react-theme": "^9.1.0",
     "@fluentui/react-utilities": "^9.1.0",

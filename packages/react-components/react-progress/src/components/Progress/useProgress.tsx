@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { ProgressProps, ProgressState } from './Progress.types';
-import { Label } from '@fluentui/react-label';
-import { progressCssVars } from './useProgressStyles';
-
-// If the percentComplete is near 0, don't animate it.
-// This prevents animations on reset to 0 scenarios.
-const ZERO_THRESHOLD = 0.01;
 
 /**
  * Create the state required to render Progress.
@@ -19,75 +13,57 @@ const ZERO_THRESHOLD = 0.01;
  */
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
-  const { barThickness = 'default', determinate = false, percentComplete = 0 } = props;
-  const ariaValueMin = determinate ? 0 : undefined;
-  const ariaValueMax = determinate ? 100 : undefined;
-  const ariaValueNow = determinate ? Math.floor(percentComplete * 100) : undefined;
+  const { thickness = 'medium', indeterminate = false, percentComplete = 0 } = props;
   const baseId = useId('progress-');
-  const describedbyId = useId('ProgressDescription');
-
-  const valuePercent = determinate ? Math.min(100, Math.max(0, percentComplete! * 100)) : undefined;
-  const progressBarStyles = {
-    [progressCssVars.percentageCssVar]: determinate ? valuePercent + '%' : undefined,
-    [`${progressCssVars.transitionCssVar}`]:
-      valuePercent && determinate && valuePercent < ZERO_THRESHOLD ? 'none' : 'width .3s ease',
-  };
 
   const root = getNativeElementProps('div', { ref, role: 'progressbar', ...props });
 
-  const labelShorthand = resolveShorthand(props.label, {
+  const label = resolveShorthand(props.label, {
     defaultProps: {
       id: baseId + '__label',
     },
   });
 
-  const descriptionShorthand = resolveShorthand(props.description, {
+  const description = resolveShorthand(props.description, {
     defaultProps: {
       id: baseId + '__description',
     },
-    required: false,
   });
 
-  const barShortHand = resolveShorthand(props.bar, {
+  const bar = resolveShorthand(props.bar, {
     required: true,
     defaultProps: {
-      'aria-valuemin': determinate ? 0 : undefined,
-      'aria-valuemax': determinate ? 100 : undefined,
-      'aria-valuenow': determinate ? Math.floor(percentComplete * 100) : undefined,
+      'aria-valuemin': !indeterminate ? 0 : undefined,
+      'aria-valuemax': !indeterminate ? 100 : undefined,
+      'aria-valuenow': !indeterminate ? Math.floor(percentComplete * 100) : undefined,
     },
   });
 
-  const trackShortHand = resolveShorthand(props.track, {
+  const track = resolveShorthand(props.track, {
     required: true,
   });
 
-  if (labelShorthand && !nativeRoot['aria-label'] && !nativeRoot['aria-labelledby']) {
-    nativeRoot['aria-labelledby'] = labelShorthand.id;
+  if (label && !root['aria-label'] && !root['aria-labelledby']) {
+    root['aria-labelledby'] = label.id;
   }
 
   const state: ProgressState = {
-    barThickness,
-    determinate,
+    indeterminate,
+    percentComplete,
+    thickness,
     components: {
       root: 'div',
       bar: 'div',
       track: 'div',
-      label: Label,
-      description: Label,
+      label: 'span',
+      description: 'span',
     },
-    root: nativeRoot,
-    bar: barShortHand,
-    track: trackShortHand,
-    label: labelShorthand,
-    description: descriptionShorthand,
+    root: root,
+    bar: bar,
+    track: track,
+    label: label,
+    description: description,
   };
-
-  if (state.bar && determinate) {
-    state.bar.style = {
-      ...progressBarStyles,
-      ...state.bar.style,
-    };
-  }
 
   return state;
 };

@@ -23,3 +23,14 @@ export const Appearance = () => {
     </div>
   );
 };
+
+Appearance.parameters = {
+  docs: {
+    description: {
+      story:
+        `Progress can be shown in a few different ways.\n` +
+        `It can be shown as just the bar, with the bar,label, and description, with just the bar and label, and with
+        just the bar and description`,
+    },
+  },
+};

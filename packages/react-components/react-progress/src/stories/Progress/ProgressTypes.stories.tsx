@@ -13,9 +13,9 @@ export const Types = () => {
 
   return (
     <div className={styles.container}>
-      <Progress label="Indeterminate Progress" />
+      <Progress indeterminate={true} label="Indeterminate Progress" />
 
-      <Progress determinate percentComplete={0.5} label="Determinate Progress" />
+      <Progress percentComplete={0.5} label="Determinate Progress" />
     </div>
   );
 };

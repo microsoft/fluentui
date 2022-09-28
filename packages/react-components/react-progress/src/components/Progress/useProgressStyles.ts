@@ -12,6 +12,10 @@ export const progressClassNames: SlotClassNames<ProgressSlots> = {
   description: 'fui-Progress__description',
 };
 
+// If the percentComplete is near 0, don't animate it.
+// This prevents animations on reset to 0 scenarios.
+const ZERO_THRESHOLD = 0.01;
+
 // Internal CSS vars
 export const progressCssVars = {
   percentageCssVar: '--fui-Progress--percentage',
@@ -19,7 +23,7 @@ export const progressCssVars = {
 };
 
 const barThicknessValues = {
-  default: '2px',
+  medium: '2px',
   large: '4px',
 };
 
@@ -78,22 +82,25 @@ const useBarStyles = makeStyles({
       backgroundColor: 'Highlight',
     },
   },
-  defaultHeight: {
-    height: barThicknessValues.default,
+  medium: {
+    height: barThicknessValues.medium,
   },
-  largeHeight: {
+  large: {
     height: barThicknessValues.large,
   },
   determinate: {
     width: `var(${progressCssVars.percentageCssVar})`,
-    transitionProperty: `var(${progressCssVars.transitionCssVar})`,
+  },
+  nonZeroDeterminate: {
+    width: `var(${progressCssVars.percentageCssVar})`,
+    transitionProperty: 'width',
+    transitionDuration: '0.3s',
+    transitionTimingFunction: 'ease',
   },
   indeterminate: {
-    width: 0,
-    transitionProperty: 'width .3s ease',
-    minWidth: '33%',
+    maxWidth: '33%',
   },
-  LTR: {
+  ltr: {
     position: 'relative',
     backgroundImage: `linear-gradient(
       to right,
@@ -106,7 +113,7 @@ const useBarStyles = makeStyles({
     animationIterationCount: 'infinite',
   },
 
-  RTL: {
+  rtl: {
     animationDirection: 'reverse',
   },
 });
@@ -121,10 +128,10 @@ const useTrackStyles = makeStyles({
       ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
     },
   },
-  defaultHeight: {
-    height: barThicknessValues.default,
+  medium: {
+    height: barThicknessValues.medium,
   },
-  largeHeight: {
+  large: {
     height: barThicknessValues.large,
   },
 });
@@ -133,13 +140,18 @@ const useTrackStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { determinate = false, barThickness = 'default' } = state;
+  const { indeterminate = false, thickness = 'medium', percentComplete = 0 } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const trackStyles = useTrackStyles();
   const labelStyles = useLabelStyles();
   const descriptionStyles = useDescriptionStyles();
   const { dir } = useFluent();
+
+  const valuePercent = !indeterminate ? Math.min(100, Math.max(0, percentComplete! * 100)) : undefined;
+  const progressBarStyles = {
+    [`${progressCssVars.percentageCssVar}`]: !indeterminate ? valuePercent + '%' : undefined,
+  };
 
   state.root.className = mergeClasses(progressClassNames.root, rootStyles.root, state.root.className);
 
@@ -148,10 +160,11 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
     state.bar.className = mergeClasses(
       progressClassNames.bar,
       barStyles.base,
-      !determinate && barStyles.indeterminate,
-      !determinate && barStyles[dir],
-      barStyles[barThickness],
-      determinate && barStyles.determinate,
+      indeterminate && barStyles.indeterminate,
+      indeterminate && barStyles[dir],
+      barStyles[thickness],
+      !indeterminate && barStyles.determinate,
+      !indeterminate && !!valuePercent && valuePercent > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       state.bar.className,
     );
   }
@@ -160,8 +173,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
     state.track.className = mergeClasses(
       progressClassNames.track,
       trackStyles.base,
-      barThickness === 'default' && trackStyles.defaultHeight,
-      barThickness === 'large' && trackStyles.largeHeight,
+      trackStyles[thickness],
       state.track.className,
     );
   }
@@ -177,5 +189,13 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       state.description.className,
     );
   }
+
+  if (state.bar && percentComplete) {
+    state.bar.style = {
+      ...progressBarStyles,
+      ...state.bar.style,
+    };
+  }
+
   return state;
 };
