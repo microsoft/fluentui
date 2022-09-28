@@ -30,6 +30,12 @@ export const avatarClassNames: SlotClassNames<AvatarSlots>;
 // @internal (undocumented)
 export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefined>;
 
+// @internal (undocumented)
+export interface AvatarContextValue {
+    // (undocumented)
+    size?: AvatarSizes;
+}
+
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 

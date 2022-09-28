@@ -45,3 +45,4 @@ export {
   AvatarContextProvider,
   useAvatarContext,
 } from './contexts/index';
+export type { AvatarContextValue } from './contexts/index';

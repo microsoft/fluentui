@@ -38,7 +38,6 @@ export const useTableCellLayout_unstable = (
     media: resolveShorthand(props.media),
     description: resolveShorthand(props.description),
     wrapper: resolveShorthand(props.wrapper, { required: !!props.description || !!props.children }),
-    size,
     avatarSize: tableAvatarSizeMap[size],
   };
 };
