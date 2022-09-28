@@ -141,6 +141,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   updateNxWorkspace(tree, options);
   moveDocsToSubfolder(tree, options);
+  migrateCommonFolderToTesting(tree, options);
 }
 
 // ==== helpers ====
@@ -712,7 +713,9 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
   return tree;
 }
-
+/**
+ * Remove function after migration is complete.
+ */
 function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
   const e2ePath = joinPathFragments(options.projectConfig.root, 'e2e');
   const e2eFolderExists = tree.exists(e2ePath);
@@ -722,34 +725,80 @@ function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
   }
 
   visitNotIgnoredFiles(tree, e2ePath, treePath => {
-    if (treePath.includes('.e2e.')) {
+    if (treePath.includes('selectors.ts')) {
+      const newFilePath = joinPathFragments(options.paths.sourceRoot, 'testing', path.basename(treePath));
+
+      // Move testing helper file to src/testing.
+      tree.rename(treePath, newFilePath);
+    } else if (treePath.includes('.e2e.')) {
       const content = tree.read(treePath)?.toString('utf-8');
       const fileName = path.basename(treePath).replace('e2e', 'cy');
       const componentName = fileName.split('.')[0];
       const newCypressTestPath = joinPathFragments(options.paths.sourceRoot, 'components', componentName, fileName);
-
+      // Move cypress component test file to appropriate src/components/{ComponentName} location.
       tree.rename(treePath, newCypressTestPath);
 
-      //Update file imports of cypress component test files
+      //Update file imports of cypress component test file.
       if (content && content.includes('./selectors')) {
         const newContent = content.replace('./selectors', '../../testing/selectors');
         tree.write(newCypressTestPath, newContent);
       }
     } else if (treePath.includes('tsconfig.json')) {
       const newCypressTSConfigPath = joinPathFragments(options.projectConfig.root, 'tsconfig.cy.json');
-
+      // Move e2e folder tsconfig.json to root
       tree.rename(treePath, newCypressTSConfigPath);
-    } else if (treePath.includes('selectors.ts')) {
-      const newFilePath = joinPathFragments(options.paths.sourceRoot, 'testing', path.basename(treePath));
-
-      tree.rename(treePath, newFilePath);
     }
   });
 }
 
+/**
+ * Remove function after migration is complete.
+ */
+function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
+  const sourceRoot = options.paths.sourceRoot;
+  const commonFolderPath = joinPathFragments(sourceRoot, 'common');
+  const commonFolderExists = tree.exists(commonFolderPath);
+
+  if (!commonFolderExists) {
+    return;
+  }
+
+  // Move any files in src/common/ to src/testing/
+  visitNotIgnoredFiles(tree, commonFolderPath, treePath => {
+    const fileName = path.basename(treePath);
+    const newPath = joinPathFragments(sourceRoot, 'testing', fileName);
+    tree.rename(treePath, newPath);
+  });
+
+  // Update any imports to reflect file location change from common/ to testing/
+  visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), treePath => {
+    const fileContent = tree.read(treePath)?.toString('utf-8');
+
+    if (fileContent && fileContent.includes('common/')) {
+      const newContent = fileContent.replace('common/', 'testing/');
+      tree.write(treePath, newContent);
+    }
+  });
+}
+
+function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
+  const root = options.projectConfig.root;
+  visitNotIgnoredFiles(tree, root, treePath => {
+    const currPath = treePath.toLowerCase();
+    if ((currPath.includes('.md') && currPath.includes('spec')) || currPath.includes('migration')) {
+      const fileName = path.basename(treePath);
+      const newPath = joinPathFragments(root, 'docs', fileName);
+
+      tree.rename(treePath, newPath);
+    }
+  });
+}
+
+/**
+ * Remove function after migration is complete.
+ */
 function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
-  const sourceRoot = options.projectConfig.sourceRoot ?? '';
-  const oldStoriesPath = joinPathFragments(sourceRoot, 'stories');
+  const oldStoriesPath = joinPathFragments(options.paths.sourceRoot, 'stories');
   const storiesExistInNewPath = tree.exists(options.paths.stories);
 
   if (storiesExistInNewPath) {
@@ -764,19 +813,6 @@ function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
         .join('/');
 
       tree.rename(treePath, newStoryPath);
-    }
-  });
-}
-
-function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
-  const root = options.projectConfig.root;
-  visitNotIgnoredFiles(tree, root, treePath => {
-    const currPath = treePath.toLowerCase();
-    if ((currPath.includes('.md') && currPath.includes('spec')) || currPath.includes('migration')) {
-      const fileName = path.basename(treePath);
-      const newPath = joinPathFragments(root, 'docs', fileName);
-
-      tree.rename(treePath, newPath);
     }
   });
 }
