@@ -1,7 +1,7 @@
 module.exports = function merge(obj1, obj2) {
   const merged = Object.assign({}, obj1);
 
-  for (prop in obj2) {
+  for (const prop in obj2) {
     const sourceValue = obj2[prop];
     const targetValue = obj1[prop];
 

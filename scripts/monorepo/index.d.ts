@@ -1,6 +1,7 @@
 export interface PackageJson {
   name: string;
   version: string;
+  private?: boolean;
   main: string;
   types?: string;
   module?: string;
@@ -79,3 +80,12 @@ export declare function getProjectMetadata(options: {
    */
   name: string;
 }): import('@nrwl/devkit').ProjectConfiguration;
+
+/**
+ * Returns all the dependencies of a given package name
+ * @param packageName - including `@fluentui/` prefix
+ * @param options
+ * @param options.dev - include dev dependencies
+ * @param options.production - include production dependencies
+ */
+export async function getDependencies(packageName: string, options?: { production?: true; dev?: true }): string[];

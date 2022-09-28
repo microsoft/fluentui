@@ -1,7 +1,8 @@
 import { execSync } from 'child_process';
 import * as semver from 'semver';
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 import yargs from 'yargs';
+
+import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo';
 
 function tagPackages(npmToken: string) {
   const packagesToTag = getPackagesToTag();
@@ -20,8 +21,8 @@ function tagPackages(npmToken: string) {
 }
 
 function tagPackage(name: string, version: string, npmToken: string): boolean {
-  const prerelease = semver.parse(version).prerelease;
-  if (prerelease.length == 0) {
+  const prerelease = semver.parse(version)?.prerelease;
+  if (prerelease == null || prerelease.length == 0) {
     return true;
   }
 
@@ -50,7 +51,7 @@ function getPackagesToTag() {
         };
       }
     })
-    .filter(Boolean);
+    .filter(Boolean) as Array<{ name: string; version: string }> | [];
 }
 
 if (require.main === module && process.env.RELEASE_VNEXT) {

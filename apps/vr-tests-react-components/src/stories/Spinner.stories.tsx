@@ -8,7 +8,7 @@ import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorat
 // or photo. This wrapper ensures a dark background so the Spinners
 // are consistently visible.
 const InvertedWrapper: React.FC = ({ children }) => {
-  return <div style={{ background: tokens.colorPaletteBerryForeground1, padding: '10px' }}>{children}</div>;
+  return <div style={{ background: tokens.colorBrandBackgroundStatic, padding: '10px' }}>{children}</div>;
 };
 
 storiesOf('Spinner converged', module)

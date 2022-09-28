@@ -1,9 +1,16 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { typographyStyles } from '@fluentui/react-theme';
-import * as localShorthands from '../../utils/localShorthands';
-import { BODY_GRID_AREA } from '../../contexts/constants';
+import {
+  ACTIONS_END_GRID_AREA,
+  ACTIONS_START_GRID_AREA,
+  CONTENT_GRID_AREA,
+  DIALOG_GAP,
+  MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  SURFACE_PADDING,
+  TITLE_ACTION_GRID_AREA,
+  TITLE_GRID_AREA,
+} from '../../contexts';
 
 export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
   root: 'fui-DialogBody',
@@ -14,13 +21,34 @@ export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    width: '100%',
-    height: '100%',
-    overflowY: 'auto',
-    minHeight: '32px',
+    display: 'grid',
+    '&::backdrop': {
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    },
+    width: `100%`,
+    height: 'fit-content',
+    maxWidth: '600px',
+    maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
     boxSizing: 'border-box',
-    ...localShorthands.gridArea(BODY_GRID_AREA),
-    ...typographyStyles.body1,
+    gridTemplateRows: 'auto 1fr auto',
+    gridTemplateColumns: '1fr 1fr auto',
+    gridTemplateAreas: `
+    "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
+    "${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA}"
+    "${ACTIONS_START_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
+    `,
+    ...shorthands.overflow('unset'),
+    ...shorthands.gap(DIALOG_GAP),
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      maxWidth: '100vw',
+      gridTemplateRows: 'auto 1fr auto auto',
+      gridTemplateAreas: `
+        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
+        "${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA}"
+        "${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA}"
+        "${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
+      `,
+    },
   },
 });
 
@@ -30,9 +58,6 @@ const useStyles = makeStyles({
 export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBodyState => {
   const styles = useStyles();
   state.root.className = mergeClasses(dialogBodyClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

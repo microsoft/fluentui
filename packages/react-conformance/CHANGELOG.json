@@ -2,6 +2,36 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Wed, 24 Aug 2022 16:36:05 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.3",
+      "version": "0.15.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "7c7f113c5db25307df478f48612dd0fa77f8e8d4",
+            "comment": "fix: fixes broken publish."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Aug 2022 07:22:48 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.2",
+      "version": "0.15.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Bump react-is dependency to version 17."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jul 2022 07:41:18 GMT",
       "tag": "@fluentui/react-conformance_v0.15.0",
       "version": "0.15.0",

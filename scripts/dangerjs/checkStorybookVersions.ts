@@ -40,10 +40,10 @@ export async function checkStorybookVersions({ danger, fail }: DangerJS) {
   const rootPackageJson: PackageJson = fs.readJSONSync(config.paths.base(packageJsonFilename));
   const webComponentsPackageJson: PackageJson = fs.readJSONSync(config.paths.base(webComponentsPackageJsonFilename));
 
-  const storybookReactVersion = rootPackageJson.devDependencies['@storybook/react'];
-  const storybookHtmlVersion = webComponentsPackageJson.devDependencies['@storybook/html'];
+  const storybookReactVersion = rootPackageJson.devDependencies?.['@storybook/react'];
+  const storybookHtmlVersion = webComponentsPackageJson.devDependencies?.['@storybook/html'];
 
-  if (!storybookHtmlVersion || rootPackageJson.devDependencies['@storybook/html']) {
+  if (!storybookHtmlVersion || rootPackageJson.devDependencies?.['@storybook/html']) {
     // PLEASE READ THE FUNCTION COMMENT BEFORE MODIFYING OR REMOVING THIS CHECK!!!
     fail(
       `\`@storybook/html\` dependency must be specified in ONLY in \`${webComponentsPackageJsonFilename}\`, ` +

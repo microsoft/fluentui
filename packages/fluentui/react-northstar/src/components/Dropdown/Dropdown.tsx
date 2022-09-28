@@ -7,6 +7,7 @@ import {
   useTelemetry,
   ForwardRefWithAs,
   useMergedRefs,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -533,7 +534,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   const popperRef = useMergedRefs(props.popperRef);
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     popperRef.current?.updatePosition();
   }, [filteredItems?.length, popperRef]);
 

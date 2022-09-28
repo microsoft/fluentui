@@ -20,24 +20,24 @@ const cacheNonCi: (...args: Parameters<typeof cache>) => NodeJS.ReadWriteStream 
 
 async function detectPaths() {
   const info = await readPkgUp();
-  const componentsSrc = info.packageJson.gulp.componentInfo;
+  const componentsSrc = info?.packageJson.gulp.componentInfo;
 
   if (!componentsSrc) {
     throw new Error(
-      `There is no "gulp.componentInfo" section in "${info.path}". Please add it before running this task`,
+      `There is no "gulp.componentInfo" section in "${info?.path}". Please add it before running this task`,
     );
   }
 
   return {
     componentsSrc,
-    outputPath: path.resolve(path.dirname(info.path), 'componentInfo'),
+    outputPath: path.resolve(path.dirname(info?.path ?? ''), 'componentInfo'),
     tsconfigPath: config.paths.docs('tsconfig.json'),
   };
 }
 
 gulp.task('clean:component-info', async () => {
   const info = await readPkgUp();
-  const outputPath = path.resolve(path.dirname(info.path), 'componentInfo');
+  const outputPath = path.resolve(path.dirname(info?.path ?? ''), 'componentInfo');
 
   return del([outputPath], { force: true });
 });

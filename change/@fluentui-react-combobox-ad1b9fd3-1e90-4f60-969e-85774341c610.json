@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: open/close combobox on icon click",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

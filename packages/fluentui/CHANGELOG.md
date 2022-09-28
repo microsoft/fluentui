@@ -18,9 +18,29 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+-  Styles from `ChatMessage` content slot were moved to exact component `ChatMessageContent` @yuanboxue-amber ([#24691](https://github.com/microsoft/fluentui/pull/24691))
+
+### Features
+
+- Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
+- Add new style to v0 Tooltip to match v9 Tooltip @GianoglioEnrico ([#24908](https://github.com/microsoft/fluentui/pull/24908))
+
 ### Fixes
 - Allow React 17 in `peerDependencies` of all packages and bump react-is to 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
 - Fix `FocusTrapZone` to always remove `aria-hidden` on portal wrapper @yuanboxue-amber ([#24414](https://github.com/microsoft/fluentui/pull/24414))
+- Remove `rotate(360deg)` from `PopupContent` content styles @yuanboxue-amber ([#24432](https://github.com/microsoft/fluentui/pull/24432))
+- Fix `FocusZone` to reset tabindex when focus is outside the zone with prop `shouldResetActiveElementWhenTabFromZone` @yuanboxue-amber ([#24463](https://github.com/microsoft/fluentui/pull/24463))
+- Change `useLayoutEffect` in `Dropdown` to `useIsomorphicLayoutEffect` @marwan38 ([#24559](https://github.com/microsoft/fluentui/pull/24559))
+- Fix `Popup` trigger attribute being override @chpalac ([#24794](https://github.com/microsoft/fluentui/pull/24794))
+- Fix styling mutation when merging themes in `Dropdown` @petrjaros ([#24787](https://github.com/microsoft/fluentui/pull/24787))
+- Fix `Toolbar` submenu closing when another submenu is opened @miroslavstastny ([#24836](https://github.com/microsoft/fluentui/pull/24836))
+
+### Performance
+- Avoid memory trashing in `felaExpandCssShorthandsPlugin` @layershifter ([#24663](https://github.com/microsoft/fluentui/pull/24663))
+
+### Documentation
+- Added theming documentation for windows high contrast mode support @ling1726 ([#24744](https://github.com/microsoft/fluentui/pull/24744))
 
 <!--------------------------------[ v0.64.0 ]------------------------------- -->
 ## [v0.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.64.0) (2022-08-10)

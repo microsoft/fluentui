@@ -6,9 +6,10 @@ import { MenuItemRadio } from './MenuItemRadio';
 import { isConformant } from '../../common/isConformant';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
+import type { MenuItemRadioProps } from './MenuItemRadio.types';
 
 describe('MenuItemRadio', () => {
-  isConformant({
+  isConformant<MenuItemRadioProps>({
     Component: MenuItemRadio,
     requiredProps: {
       name: 'radio',

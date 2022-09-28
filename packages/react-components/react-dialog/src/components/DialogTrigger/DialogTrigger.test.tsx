@@ -58,6 +58,7 @@ describe('DialogTrigger', () => {
         <button
           aria-haspopup="dialog"
           data-tabster="{\\"deloser\\":{}}"
+          type="button"
         >
           Trigger
         </button>,
@@ -88,6 +89,7 @@ describe('DialogTrigger', () => {
         <button
           aria-haspopup="dialog"
           data-tabster="{\\"deloser\\":{}}"
+          type="button"
         >
           Trigger
         </button>,

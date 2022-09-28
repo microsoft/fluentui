@@ -32,6 +32,8 @@ import type { IPickerItemProps } from './PickerItem.types';
 
 const legacyStyles: any = stylesImport;
 
+const EXTENDED_LOAD_TIME = 3000;
+
 export interface IBasePickerState<T> {
   items?: any;
   suggestedDisplayValue?: string;
@@ -41,6 +43,7 @@ export interface IBasePickerState<T> {
   isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
+  suggestionsExtendedLoading?: boolean;
   isResultsFooterVisible?: boolean;
   selectedIndices?: number[];
   selectionRemoved?: T;
@@ -364,6 +367,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           onGetMoreResults={this.onGetMoreResults}
           moreSuggestionsAvailable={this.state.moreSuggestionsAvailable}
           isLoading={this.state.suggestionsLoading}
+          isExtendedLoading={this.state.suggestionsExtendedLoading}
           isSearching={this.state.isSearching}
           isMostRecentlyUsedVisible={this.state.isMostRecentlyUsedVisible}
           isResultsFooterVisible={this.state.isResultsFooterVisible}
@@ -475,6 +479,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       this.setState({
         suggestionsLoading: true,
       });
+      this._startLoadTimer();
 
       // Clear suggestions
       this.suggestionStore.updateSuggestions([]);
@@ -515,7 +520,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         suggestedDisplayValue: itemValue,
         suggestionsVisible: this._getShowSuggestions(),
       },
-      () => this.setState({ suggestionsLoading: false }),
+      () => this.setState({ suggestionsLoading: false, suggestionsExtendedLoading: false }),
     );
   }
 
@@ -940,6 +945,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     );
   }
 
+  /** If suggestions are still loading after a predefined amount of time, set state to show user alert */
+  private _startLoadTimer() {
+    this._async.setTimeout(() => {
+      if (this.state.suggestionsLoading) {
+        this.setState({ suggestionsExtendedLoading: true });
+      }
+    }, EXTENDED_LOAD_TIME);
+  }
+
   /**
    * Takes in the current updated value and either resolves it with the new suggestions
    * or if updated value is undefined then it clears out currently suggested items
@@ -952,6 +966,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       if (this.state.suggestionsLoading) {
         this.setState({
           suggestionsLoading: false,
+          suggestionsExtendedLoading: false,
         });
       }
     }
