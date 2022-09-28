@@ -9,7 +9,7 @@ export { Thickness } from './ProgressBarThickness.stories';
 export { Types } from './ProgressTypes.stories';
 
 export default {
-  title: 'Components/Progress',
+  title: 'Preview Components/Progress',
   component: Progress,
   parameters: {
     docs: {

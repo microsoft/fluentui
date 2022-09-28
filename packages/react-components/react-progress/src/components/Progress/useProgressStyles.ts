@@ -149,10 +149,8 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       progressClassNames.bar,
       barStyles.base,
       !determinate && barStyles.indeterminate,
-      !determinate && dir === 'ltr' && barStyles.LTR,
-      !determinate && dir === 'rtl' && barStyles.RTL,
-      barThickness === 'default' && barStyles.defaultHeight,
-      barThickness === 'large' && barStyles.largeHeight,
+      !determinate && barStyles[dir],
+      barStyles[barThickness],
       determinate && barStyles.determinate,
       state.bar.className,
     );
