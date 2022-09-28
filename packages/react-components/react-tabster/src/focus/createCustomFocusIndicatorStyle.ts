@@ -1,4 +1,10 @@
-import { FOCUS_VISIBLE_CLASS, defaultOptions, FOCUS_WITHIN_CLASS } from './constants';
+import {
+  FOCUS_VISIBLE_CLASS,
+  defaultOptions,
+  FOCUS_WITHIN_CLASS,
+  FOCUS_VISIBLE_ATTR,
+  FOCUS_WITHIN_ATTR,
+} from './constants';
 import type { GriffelStyle } from '@griffel/react';
 
 export interface CreateCustomFocusIndicatorStyleOptions {
@@ -24,9 +30,11 @@ export const createCustomFocusIndicatorStyle = (
   },
 
   ...(selector === 'focus' && {
-    [`&.${FOCUS_VISIBLE_CLASS}`]: style,
+    // [`&.${FOCUS_VISIBLE_CLASS}`]: style,
+    [`&[${FOCUS_VISIBLE_ATTR}]`]: style,
   }),
   ...(selector === 'focus-within' && {
-    [`&.${FOCUS_WITHIN_CLASS}:${selector}`]: style,
+    // [`&.${FOCUS_WITHIN_CLASS}:${selector}`]: style,
+    [`&[${FOCUS_WITHIN_ATTR}]:${selector}`]: style,
   }),
 });
