@@ -5,7 +5,7 @@ import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types'
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useAvatarContext } from '@fluentui/react-avatar-context';
+import { useAvatarContext } from '../../contexts/AvatarContext';
 
 export const DEFAULT_STRINGS = {
   active: 'active',

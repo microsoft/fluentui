@@ -6,7 +6,6 @@
 
 /// <reference types="react" />
 
-import type { AvatarSizes as AvatarSizes_2 } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -27,6 +26,9 @@ export const Avatar: ForwardRefComponent<AvatarProps>;
 
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
+
+// @internal (undocumented)
+export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefined>;
 
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
@@ -178,6 +180,9 @@ export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState,
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @internal (undocumented)
+export const useAvatarContext: () => AvatarContextValue;
 
 // @public
 export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { AvatarContextProvider } from '@fluentui/react-avatar-context';
+import { AvatarContextProvider } from '@fluentui/react-avatar';
 import type { TableCellLayoutState, TableCellLayoutSlots, TableCellLayoutContextValues } from './TableCellLayout.types';
 
 /**
@@ -14,9 +14,11 @@ export const renderTableCellLayout_unstable = (
 
   return (
     <slots.root {...slotProps.root}>
-      <AvatarContextProvider value={contextValues.avatar}>
-        {slots.media && <slots.media {...slotProps.media} />}
-      </AvatarContextProvider>
+      {slots.media && (
+        <AvatarContextProvider value={contextValues.avatar}>
+          <slots.media {...slotProps.media} />
+        </AvatarContextProvider>
+      )}
       {slots.wrapper && (
         <slots.wrapper {...slotProps.wrapper}>
           {slots.main && <slots.main {...slotProps.main}>{slotProps.root.children}</slots.main>}

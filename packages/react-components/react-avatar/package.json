@@ -35,7 +35,6 @@
     "es6-weak-map": "^2.0.2"
   },
   "dependencies": {
-    "@fluentui/react-avatar-context": "^9.0.0-alpha",
     "@fluentui/react-badge": "^9.0.6",
     "@fluentui/react-context-selector": "^9.0.3",
     "@fluentui/react-icons": "^2.0.175",

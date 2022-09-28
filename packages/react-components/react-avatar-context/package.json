@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/react-avatar-context",
   "version": "9.0.0-alpha.0",
+  "private": true,
   "description": "Context to override avatar props",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
