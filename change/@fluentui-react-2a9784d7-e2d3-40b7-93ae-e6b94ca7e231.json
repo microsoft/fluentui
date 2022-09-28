@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Dropdown no longer sets incorrect and unnecessary aria-activedescendant",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

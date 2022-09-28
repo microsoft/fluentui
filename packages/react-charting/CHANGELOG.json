@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 28 Sep 2022 07:37:48 GMT",
+      "tag": "@fluentui/react-charting_v5.13.5",
+      "version": "5.13.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d4e63670b2df10d81954275eb3479c279787ac06",
+            "comment": "Fixing Tree chart issues for adding the optional bodyText for parent node and adjusting the allignment of the tree in the screen"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.96.2",
+            "commit": "316aa1e8df88bd9ec563d32222565dc48bc9fa29"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Sep 2022 07:43:45 GMT",
       "tag": "@fluentui/react-charting_v5.13.4",
       "version": "5.13.4",
