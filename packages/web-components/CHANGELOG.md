@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 30 Aug 2022 07:41:54 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Sep 2022 07:47:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.6)
+
+Mon, 19 Sep 2022 07:47:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.5..@fluentui/web-components_v2.5.6)
+
+### Patches
+
+- Standardized focus treatment to use `outline` instead of a combination of `border` and `box-shadow` ([PR #24771](https://github.com/microsoft/fluentui/pull/24771) by 47367562+bheston@users.noreply.github.com)
+
+## [2.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.5)
+
+Wed, 07 Sep 2022 07:54:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.4..@fluentui/web-components_v2.5.5)
+
+### Patches
+
+- update fast-foundation to latest packages to resovle 24561 ([PR #24657](https://github.com/microsoft/fluentui/pull/24657) by chhol@microsoft.com)
 
 ## [2.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.4)
 

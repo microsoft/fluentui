@@ -1,4 +1,4 @@
-import { Octokit } from '@octokit/rest';
+import type { Octokit, RestEndpointMethodTypes } from '@octokit/rest';
 import { IPullRequest, IRepoDetails } from './types';
 
 export interface IGetPullRequestFromCommitParams {
@@ -54,17 +54,18 @@ export async function getPullRequestForCommit(
  */
 export function processPullRequestApiResponse(
   pr:
-    | Octokit.ReposListPullRequestsAssociatedWithCommitResponseItem
-    | Octokit.SearchIssuesAndPullRequestsResponseItemsItem,
+    | RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items'][number]
+    | RestEndpointMethodTypes['repos']['listPullRequestsAssociatedWithCommit']['response']['data'][number],
   authorEmail?: string,
 ): IPullRequest {
+  const user = pr.user as NonNullable<typeof pr['user']>;
   return {
     number: pr.number,
     url: pr.html_url,
     author: {
       email: authorEmail,
-      username: pr.user.login,
-      url: pr.user.html_url,
+      username: user.login,
+      url: user.html_url,
     },
   };
 }

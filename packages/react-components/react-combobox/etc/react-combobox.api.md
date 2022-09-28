@@ -99,6 +99,7 @@ export type ListboxSlots = {
 // @public
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
+    focusVisible: boolean;
     selectOption(event: SelectionEvents, option: OptionValue): void;
     setActiveOption(option?: OptionValue): void;
 };
@@ -143,6 +144,7 @@ export type OptionSlots = {
 // @public
 export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disabled'> & {
     active: boolean;
+    focusVisible: boolean;
     multiselect?: boolean;
     selected: boolean;
 };

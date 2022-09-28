@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Avatar's aria label includes 'active' or 'inactive' when using the active prop",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

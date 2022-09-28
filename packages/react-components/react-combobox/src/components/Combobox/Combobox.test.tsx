@@ -406,6 +406,53 @@ describe('Combobox', () => {
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
 
+  it('calls onOptionSelect with correct data for single-select', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Combobox value="Red" onOptionSelect={onOptionSelect}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
+      optionValue: 'Green',
+      selectedOptions: ['Green'],
+    });
+  });
+
+  it('calls onOptionSelect with correct data for multi-select', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Combobox value="Red" onOptionSelect={onOptionSelect} multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+    userEvent.click(getByText('Blue'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(2);
+    expect(onOptionSelect).toHaveBeenNthCalledWith(1, expect.anything(), {
+      optionValue: 'Green',
+      selectedOptions: ['Green'],
+    });
+    expect(onOptionSelect).toHaveBeenNthCalledWith(2, expect.anything(), {
+      optionValue: 'Blue',
+      selectedOptions: ['Green', 'Blue'],
+    });
+  });
+
   /* Active option */
   it('should set active option on click', () => {
     const { getByTestId } = render(

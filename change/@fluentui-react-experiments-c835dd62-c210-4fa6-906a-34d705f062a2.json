@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: export signals.scss from react-experiments package.json",
+  "packageName": "@fluentui/react-experiments",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

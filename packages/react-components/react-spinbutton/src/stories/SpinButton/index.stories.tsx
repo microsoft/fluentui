@@ -1,7 +1,6 @@
 import { Meta } from '@storybook/react';
 import { SpinButton } from '@fluentui/react-components';
 
-import accessibilityMd from './SpinButtonAccessibility.md';
 import descriptionMd from './SpinButtonDescription.md';
 import bestPracticesMd from './SpinButtonBestPractices.md';
 
@@ -21,7 +20,7 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd, accessibilityMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

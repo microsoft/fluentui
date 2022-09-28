@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.12.30",
+  "version": "8.13.4",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
     "react-hooks-testing-library": "^0.5.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.94.0",
+    "@fluentui/react": "^8.96.2",
     "@fluentui/theme": "^2.6.16",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.4.2",
@@ -159,6 +159,11 @@
       "types": "./lib/Signals.d.ts",
       "import": "./lib/Signals.js",
       "require": "./lib-commonjs/Signals.js"
+    },
+    "./lib/components/signals/Signals.scss": {
+      "types": "./lib/components/signals/Signals.scss.d.ts",
+      "import": "./lib/components/signals/Signals.scss.js",
+      "require": "./lib-commonjs/components/signals/Signals.scss.js"
     },
     "./lib/Slider": {
       "types": "./lib/Slider.d.ts",

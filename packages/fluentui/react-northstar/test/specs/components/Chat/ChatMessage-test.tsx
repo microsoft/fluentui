@@ -2,8 +2,8 @@ import { handlesAccessibility, implementsShorthandProp, isConformant } from 'tes
 
 import { ChatMessage } from 'src/components/Chat/ChatMessage';
 import { Text } from 'src/components/Text/Text';
-import { Box } from 'src/components/Box/Box';
 import { ChatMessageDetails } from 'src/components/Chat/ChatMessageDetails';
+import { ChatMessageContent } from 'src/components/Chat/ChatMessageContent';
 
 const chatMessageImplementsShorthandProp = implementsShorthandProp(ChatMessage);
 
@@ -19,7 +19,7 @@ describe('ChatMessage', () => {
   chatMessageImplementsShorthandProp('author', Text);
   chatMessageImplementsShorthandProp('timestamp', Text);
   chatMessageImplementsShorthandProp('details', ChatMessageDetails);
-  chatMessageImplementsShorthandProp('content', Box, { mapsValueToProp: 'children' });
+  chatMessageImplementsShorthandProp('content', ChatMessageContent);
 
   describe('accessibility', () => {
     handlesAccessibility(ChatMessage);

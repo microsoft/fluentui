@@ -14,28 +14,30 @@ export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
+    display: 'table-row',
     color: tokens.colorNeutralForeground1,
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorNeutralBackground1Hover,
         opacity: 1,
       },
     },
   },
 
   medium: {
-    minHeight: '44px',
+    height: '44px',
     ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
   small: {
-    minHeight: '34px',
+    height: '34px',
     ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
   smaller: {
-    minHeight: '24px',
+    height: '24px',
     fontSize: tokens.fontSizeBase200,
   },
 });

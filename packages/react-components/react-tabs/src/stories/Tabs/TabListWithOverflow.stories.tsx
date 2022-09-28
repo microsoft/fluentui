@@ -27,6 +27,7 @@ import {
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import { useIsOverflowItemVisible, useOverflowMenu, Overflow, OverflowItem } from '@fluentui/react-overflow';
+import type { ARIAButtonElement } from '@fluentui/react-aria';
 
 //----- Example Tab Data -----//
 
@@ -88,7 +89,7 @@ const tabs: ExampleTab[] = [
 
 type OverflowMenuItemProps = {
   tab: ExampleTab;
-  onClick: React.MouseEventHandler<HTMLDivElement>;
+  onClick: React.MouseEventHandler<ARIAButtonElement<'div'>>;
 };
 
 /**

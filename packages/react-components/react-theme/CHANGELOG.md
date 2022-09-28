@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Tue, 28 Jun 2022 15:13:21 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Sep 2022 09:49:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0..@fluentui/react-theme_v9.1.0)
+
+### Minor changes
+
+- feat: Add fontWeightBold, add Body2, fix font weight for *Stronger typography ([PR #24378](https://github.com/microsoft/fluentui/pull/24378) by miroslav.stastny@microsoft.com)
+
+### Patches
+
+- fix: update token values to fix failing color contrast ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- fix: update color neutral background inverted color in teams dark ([PR #24494](https://github.com/microsoft/fluentui/pull/24494) by seanmonahan@microsoft.com)
+- fix: Update color tokens mapping ([PR #24608](https://github.com/microsoft/fluentui/pull/24608) by miroslav.stastny@microsoft.com)
+- fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+- fix: Change colorBrandForeground2 mapping in teamsDark theme ([PR #24579](https://github.com/microsoft/fluentui/pull/24579) by miroslav.stastny@microsoft.com)
+- fix: Swap Background1 and Foreground1 in HC color palette ([PR #24498](https://github.com/microsoft/fluentui/pull/24498) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0)
 

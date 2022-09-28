@@ -1,8 +1,96 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 02 Sep 2022 07:48:52 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Sep 2022 07:37:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.96.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.2)
+
+Wed, 28 Sep 2022 07:37:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.1..@fluentui/react_v8.96.2)
+
+### Patches
+
+- fix: Dropdown no longer sets incorrect and unnecessary aria-activedescendant ([PR #24593](https://github.com/microsoft/fluentui/pull/24593) by sarah.higley@microsoft.com)
+
+## [8.96.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.1)
+
+Thu, 22 Sep 2022 07:43:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.0..@fluentui/react_v8.96.1)
+
+### Patches
+
+- @fluentui/react: allowing Popup configuration on Modal component ([PR #24693](https://github.com/microsoft/fluentui/pull/24693) by gasramirez@microsoft.com)
+
+## [8.96.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.0)
+
+Mon, 19 Sep 2022 07:47:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.95.1..@fluentui/react_v8.96.0)
+
+### Minor changes
+
+- feat: improve groupedlist virtualization ([PR #24460](https://github.com/microsoft/fluentui/pull/24460) by seanmonahan@microsoft.com)
+- fix: Add explicit children prop to TeachingBubble to support React 18 ([PR #24823](https://github.com/microsoft/fluentui/pull/24823) by mgodbolt@microsoft.com)
+
+## [8.95.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.95.1)
+
+Fri, 16 Sep 2022 07:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.95.0..@fluentui/react_v8.95.1)
+
+### Patches
+
+- Ensure toggling group state does not select it ([PR #24822](https://github.com/microsoft/fluentui/pull/24822) by tmichon@microsoft.com)
+
+## [8.95.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.95.0)
+
+Thu, 15 Sep 2022 19:15:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.4..@fluentui/react_v8.95.0)
+
+### Minor changes
+
+- All /lib-commonjs/ top-level entries have been added to the exports map for backwards compatibility. ([PR #24792](https://github.com/microsoft/fluentui/pull/24792) by dzearing@microsoft.com)
+
+### Patches
+
+- fix: update version mismatches triggered by v9 release ([PR #24812](https://github.com/microsoft/fluentui/pull/24812) by martinhochel@microsoft.com)
+
+## [8.94.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.4)
+
+Tue, 13 Sep 2022 07:41:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.3..@fluentui/react_v8.94.4)
+
+### Patches
+
+- fix: remove readonly semantics from DetailsList ([PR #24615](https://github.com/microsoft/fluentui/pull/24615) by sarah.higley@microsoft.com)
+
+## [8.94.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.3)
+
+Thu, 08 Sep 2022 20:52:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.2..@fluentui/react_v8.94.3)
+
+### Patches
+
+- fix: Coachmarks now properly animate when used in any of the center positions ([PR #24702](https://github.com/microsoft/fluentui/pull/24702) by mgodbolt@microsoft.com)
+- Fix null-ref in useSlider() when <Slider/> unmounts before mouseUp fires ([PR #24728](https://github.com/microsoft/fluentui/pull/24728) by miclo@microsoft.com)
+
+## [8.94.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.2)
+
+Wed, 07 Sep 2022 07:54:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.1..@fluentui/react_v8.94.2)
+
+### Patches
+
+- fix: update basepicker styles to show ellipsis when placeholder is shown ([PR #24681](https://github.com/microsoft/fluentui/pull/24681) by mgodbolt@microsoft.com)
+
+## [8.94.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.1)
+
+Mon, 05 Sep 2022 07:38:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.0..@fluentui/react_v8.94.1)
+
+### Patches
+
+- Update Suggestions loading aria for extended Picker loading ([PR #24243](https://github.com/microsoft/fluentui/pull/24243) by daneuber@microsoft.com)
+- fix: Fix Dropdown item styles to correctly apply hover styles even when focus is on another page ([PR #24600](https://github.com/microsoft/fluentui/pull/24600) by mgodbolt@microsoft.com)
 
 ## [8.94.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.0)
 

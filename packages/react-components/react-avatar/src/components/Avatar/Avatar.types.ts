@@ -154,4 +154,9 @@ export type AvatarState = ComponentState<AvatarSlots> &
      * The Avatar's color, it matches props.color but with `'colorful'` resolved to a named color
      */
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
+
+    /**
+     * Hidden span to render the active state label for the purposes of including in the aria-labelledby, if needed.
+     */
+    activeAriaLabelElement?: JSX.Element;
   };

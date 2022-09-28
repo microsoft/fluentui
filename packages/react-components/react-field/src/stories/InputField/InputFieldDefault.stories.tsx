@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { InputField, InputFieldProps } from '@fluentui/react-field';
+import type { InputFieldProps } from '@fluentui/react-field';
+import { InputField } from '@fluentui/react-field';
 
 export const Default = (props: Partial<InputFieldProps>) => (
   <InputField
-    label="Example field"
+    label="Example input field"
     validationState="success"
     validationMessage="This is a success message"
-    hint="Fields can have hint text, but it should be used sparingly"
+    hint="This is a hint message"
     {...props}
   />
 );

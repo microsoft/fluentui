@@ -3,7 +3,7 @@ import { OptionValue } from './OptionCollection.types';
 import { SelectionEvents, SelectionProps, SelectionValue } from './Selection.types';
 
 export const useSelection = (props: SelectionProps): SelectionValue => {
-  const { defaultSelectedOptions, multiselect, onSelect } = props;
+  const { defaultSelectedOptions, multiselect, onOptionSelect } = props;
 
   const [selectedOptions, setSelectedOptions] = useControllableState({
     state: props.selectedOptions,
@@ -33,12 +33,12 @@ export const useSelection = (props: SelectionProps): SelectionValue => {
     }
 
     setSelectedOptions(newSelection);
-    onSelect?.(event, { optionValue: option.value, selectedOptions: newSelection });
+    onOptionSelect?.(event, { optionValue: option.value, selectedOptions: newSelection });
   };
 
   const clearSelection = (event: SelectionEvents) => {
     setSelectedOptions([]);
-    onSelect?.(event, { optionValue: undefined, selectedOptions: [] });
+    onOptionSelect?.(event, { optionValue: undefined, selectedOptions: [] });
   };
 
   return { clearSelection, selectOption, selectedOptions };
