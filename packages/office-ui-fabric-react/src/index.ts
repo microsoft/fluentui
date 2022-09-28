@@ -86,6 +86,7 @@ export * from './ThemeGenerator';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
+export * from './Viewport';
 export * from './WindowProvider';
 
 import './version';
