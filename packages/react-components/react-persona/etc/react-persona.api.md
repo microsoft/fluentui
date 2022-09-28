@@ -7,7 +7,6 @@
 /// <reference types="react" />
 
 import { Avatar } from '@fluentui/react-avatar';
-import { AvatarProps } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -23,7 +22,8 @@ export const Persona: ForwardRefComponent<PersonaProps>;
 export const personaClassNames: SlotClassNames<PersonaSlots>;
 
 // @public
-export type PersonaProps = Omit<ComponentProps<PersonaSlots>, 'badge'> & Pick<AvatarProps, 'name'> & {
+export type PersonaProps = ComponentProps<PersonaSlots> & {
+    name?: string;
     presenceOnly?: boolean;
     textPosition?: 'before' | 'after' | 'below';
 };

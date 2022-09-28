@@ -5,12 +5,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const personaClassNames: SlotClassNames<PersonaSlots> = {
   root: 'fui-Persona',
-  avatar: 'fui-Persona-avatar',
-  presence: 'fui-Persona-presence',
-  primaryText: 'fui-Persona-primaryText',
-  secondaryText: 'fui-Persona-secondaryText',
-  tertiaryText: 'fui-Persona-tertiaryText',
-  quaternaryText: 'fui-Persona-quaternaryText',
+  avatar: 'fui-Persona__avatar',
+  presence: 'fui-Persona__presence',
+  primaryText: 'fui-Persona__primaryText',
+  secondaryText: 'fui-Persona__secondaryText',
+  tertiaryText: 'fui-Persona__tertiaryText',
+  quaternaryText: 'fui-Persona__quaternaryText',
 };
 
 /**

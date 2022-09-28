@@ -1,4 +1,4 @@
-import { Avatar, AvatarProps } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-avatar';
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -46,22 +46,28 @@ export type PersonaSlots = {
 /**
  * Persona Props
  */
-export type PersonaProps = Omit<ComponentProps<PersonaSlots>, 'badge'> &
-  Pick<AvatarProps, 'name'> & {
-    /**
-     * Whether to display only the presence.
-     *
-     * @default false
-     */
-    presenceOnly?: boolean;
+export type PersonaProps = ComponentProps<PersonaSlots> & {
+  /**
+   * The name of the person or entity represented by the Persona.
+   *
+   * When `primaryText` is not provided, this will be used as the default value for `primaryText`.
+   */
+  name?: string;
 
-    /**
-     * Position the text will be rendered in.
-     *
-     * @default after
-     */
-    textPosition?: 'before' | 'after' | 'below';
-  };
+  /**
+   * Whether to display only the presence.
+   *
+   * @default false
+   */
+  presenceOnly?: boolean;
+
+  /**
+   * The position of the text relative to the avatar/presence.
+   *
+   * @default after
+   */
+  textPosition?: 'before' | 'after' | 'below';
+};
 
 /**
  * State used in rendering Persona

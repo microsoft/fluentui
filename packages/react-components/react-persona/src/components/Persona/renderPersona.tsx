@@ -9,12 +9,9 @@ export const renderPersona_unstable = (state: PersonaState) => {
   const { presenceOnly, textPosition } = state;
   const { slots, slotProps } = getSlots<PersonaSlots>(state);
 
-  const coin = (
-    <>
-      {!presenceOnly && slots.avatar && <slots.avatar {...slotProps.avatar} />}
-      {presenceOnly && slots.presence && <slots.presence {...slotProps.presence} />}
-    </>
-  );
+  const coin = presenceOnly
+    ? slots.presence && <slots.presence {...slotProps.presence} />
+    : slots.avatar && <slots.avatar {...slotProps.avatar} />;
 
   return (
     <slots.root {...slotProps.root}>

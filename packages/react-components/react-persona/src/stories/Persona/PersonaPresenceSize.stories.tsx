@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Persona } from '@fluentui/react-persona';
-import { makeStyles, PresenceBadgeProps } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -11,22 +11,47 @@ const useStyles = makeStyles({
   },
 });
 
-const sizes: PresenceBadgeProps['size'][] = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'];
-
 export const PresenceSize = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      {sizes.map(size => (
-        <Persona
-          presenceOnly
-          presence={{ status: 'available', size }}
-          name="Kevin Sturgis"
-          secondaryText="Available"
-          key={size}
-        />
-      ))}
+      <Persona
+        presenceOnly
+        presence={{ status: 'available', size: 'tiny' }}
+        name="Kevin Sturgis"
+        secondaryText="Available"
+      />
+      <Persona
+        presenceOnly
+        presence={{ status: 'available', size: 'extra-small' }}
+        name="Kevin Sturgis"
+        secondaryText="Available"
+      />
+      <Persona
+        presenceOnly
+        presence={{ status: 'available', size: 'small' }}
+        name="Kevin Sturgis"
+        secondaryText="Available"
+      />
+      <Persona
+        presenceOnly
+        presence={{ status: 'available', size: 'medium' }}
+        name="Kevin Sturgis"
+        secondaryText="Available"
+      />
+      <Persona
+        presenceOnly
+        presence={{ status: 'available', size: 'large' }}
+        name="Kevin Sturgis"
+        secondaryText="Available"
+      />
+      <Persona
+        presenceOnly
+        presence={{ status: 'available', size: 'extra-large' }}
+        name="Kevin Sturgis"
+        secondaryText="Available"
+      />
     </div>
   );
 };

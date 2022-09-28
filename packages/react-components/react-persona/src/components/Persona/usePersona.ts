@@ -15,11 +15,18 @@ import type { PersonaProps, PersonaState } from './Persona.types';
  */
 export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElement>): PersonaState => {
   const { presenceOnly = false, textPosition = 'after', name } = props;
-  const numTextLines =
-    (props.primaryText || props.name ? 1 : 0) +
-    (props.secondaryText ? 1 : 0) +
-    (props.tertiaryText ? 1 : 0) +
-    (props.quaternaryText ? 1 : 0);
+
+  const primaryText = resolveShorthand(props.primaryText, {
+    required: true,
+    defaultProps: {
+      children: name,
+    },
+  });
+  const secondaryText = resolveShorthand(props.secondaryText);
+  const tertiaryText = resolveShorthand(props.tertiaryText);
+  const quaternaryText = resolveShorthand(props.quaternaryText);
+
+  const numTextLines = [primaryText, secondaryText, tertiaryText, quaternaryText].filter(Boolean).length;
 
   let fixed = false;
   if (!presenceOnly && props.avatar) {
@@ -95,14 +102,9 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
     ),
     avatar,
     presence,
-    primaryText: resolveShorthand(props.primaryText, {
-      required: true,
-      defaultProps: {
-        children: name,
-      },
-    }),
-    secondaryText: resolveShorthand(props.secondaryText),
-    tertiaryText: resolveShorthand(props.tertiaryText),
-    quaternaryText: resolveShorthand(props.quaternaryText),
+    primaryText,
+    secondaryText,
+    tertiaryText,
+    quaternaryText,
   };
 };

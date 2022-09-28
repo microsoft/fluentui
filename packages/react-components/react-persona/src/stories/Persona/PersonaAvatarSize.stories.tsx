@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Persona } from '@fluentui/react-persona';
-import { AvatarSizes, makeStyles } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -11,22 +11,25 @@ const useStyles = makeStyles({
   },
 });
 
-const sizes: AvatarSizes[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
-
 export const AvatarSize = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      {sizes.map(size => (
-        <Persona
-          name="Kevin Sturgis"
-          avatar={{ size }}
-          presence={{ status: 'available' }}
-          secondaryText="Available"
-          key={size}
-        />
-      ))}
+      <Persona name="Kevin Sturgis" avatar={{ size: 16, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 20, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 24, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 28, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 32, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 36, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 40, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 48, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 56, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 64, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 72, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 96, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 120, color: 'colorful' }} secondaryText="Available" />
+      <Persona name="Kevin Sturgis" avatar={{ size: 128, color: 'colorful' }} secondaryText="Available" />
     </div>
   );
 };
