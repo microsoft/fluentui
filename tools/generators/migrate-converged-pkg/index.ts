@@ -783,13 +783,14 @@ function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
 
 function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
   const root = options.projectConfig.root;
+
   visitNotIgnoredFiles(tree, root, treePath => {
     const currPath = treePath.toLowerCase();
     if (currPath.includes('.md') && (currPath.includes('spec') || currPath.includes('migration'))) {
       const fileName = path.basename(treePath);
       const newPath = joinPathFragments(root, 'docs', fileName);
 
-      tree.rename(treePath, newPath);
+      !tree.exists(newPath) && tree.rename(treePath, newPath);
     }
   });
 }
