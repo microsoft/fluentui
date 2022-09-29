@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 29 Sep 2022 07:40:09 GMT",
+      "tag": "@fluentui/react-charting_v5.13.6",
+      "version": "5.13.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "cc8acd94d3f68011427d6e031201a156e3b04ed9",
+            "comment": "Fix vertical bar chart bugs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.96.3",
+            "commit": "cc8acd94d3f68011427d6e031201a156e3b04ed9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Sep 2022 07:37:48 GMT",
       "tag": "@fluentui/react-charting_v5.13.5",
       "version": "5.13.5",

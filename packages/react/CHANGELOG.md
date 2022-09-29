@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 28 Sep 2022 07:37:48 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Sep 2022 07:40:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.96.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.3)
+
+Thu, 29 Sep 2022 07:40:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.2..@fluentui/react_v8.96.3)
+
+### Patches
+
+- fix: MessageBar actions contrast in high contrast mode ([PR #24977](https://github.com/microsoft/fluentui/pull/24977) by sarah.higley@microsoft.com)
+- fix: DetailsList adds DetailsFooter to rowcount if provided ([PR #24983](https://github.com/microsoft/fluentui/pull/24983) by sarah.higley@microsoft.com)
+- chore: export useViewport via lib/Viewport ([PR #24995](https://github.com/microsoft/fluentui/pull/24995) by mgodbolt@microsoft.com)
 
 ## [8.96.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.2)
 

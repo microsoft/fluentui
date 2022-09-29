@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 29 Sep 2022 07:40:08 GMT",
+      "tag": "@fluentui/react_v8.96.3",
+      "version": "8.96.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d7c027ced7d54b83d6cc2897350a6adb856dcfef",
+            "comment": "fix: MessageBar actions contrast in high contrast mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a0d258e553f18b8a0162d642a94b4b06b8f365ba",
+            "comment": "fix: DetailsList adds DetailsFooter to rowcount if provided"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8f38bb63574e31bf2fa9f2f1d14b166d6c1a627f",
+            "comment": "chore: export useViewport via lib/Viewport"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Sep 2022 07:37:48 GMT",
       "tag": "@fluentui/react_v8.96.2",
       "version": "8.96.2",

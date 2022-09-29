@@ -2,6 +2,35 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 29 Sep 2022 07:40:08 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.0",
+      "version": "8.14.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "aa4de2b58ad22f0f093e52343380b9fc37325b21",
+            "comment": "chore: add export for signal.scss"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "615a471e1cab0e63c8d586a49031601f8749c7d6",
+            "comment": "fix: export signals.scss from react-experiments package.json"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.96.3",
+            "commit": "cc8acd94d3f68011427d6e031201a156e3b04ed9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Sep 2022 07:37:49 GMT",
       "tag": "@fluentui/react-experiments_v8.13.4",
       "version": "8.13.4",
