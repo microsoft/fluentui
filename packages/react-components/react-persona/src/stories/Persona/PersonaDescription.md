@@ -6,7 +6,7 @@ A Persona is a visual representation of a person or status that showcases an Ava
 >
 > ```jsx
 >
-> import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover } from '@fluentui/react-components/unstable';
+> import { Persona } from '@fluentui/react-components/unstable';
 >
 > ```
 >
