@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommandButton, IButtonProps, Icon, IIconProps } from '@fluentui/react';
 import { Button, webLightTheme, FluentProvider } from '@fluentui/react-components';
-import { CommandButtonShim } from '../../../../../shims/ButtonShim';
+import { CommandButtonShim } from '@fluentui/react-button-shim-v8-v9';
 
 const addIcon: IIconProps = { iconName: 'Add' };
 

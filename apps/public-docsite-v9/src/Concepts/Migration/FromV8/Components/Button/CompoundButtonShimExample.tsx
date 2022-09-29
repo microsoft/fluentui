@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CompoundButton as CompoundButtonV8, IButtonProps } from '@fluentui/react';
 import { CompoundButton as CompoundButtonV9, webLightTheme, FluentProvider } from '@fluentui/react-components';
-import { CompoundButtonShim } from '../../../../../shims/ButtonShim';
+import { CompoundButtonShim } from '@fluentui/react-button-shim-v8-v9';
 
 export const CompoundButtonShimExample = (props: IButtonProps) => {
   return (

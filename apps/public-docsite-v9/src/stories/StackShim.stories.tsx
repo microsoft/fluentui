@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Button, makeStyles } from '@fluentui/react-components';
 import { Checkbox, Dropdown, IDropdownOption, DropdownMenuItemType, Stack, TextField } from '@fluentui/react';
-import { StackShim, StackItemShim } from '../shims/StackShim/index';
+import { StackShim, StackItemShim } from '@fluentui/react-stack-shim-v8-v9';
 
 const horizontalAlignOptions: IDropdownOption[] = [
   {

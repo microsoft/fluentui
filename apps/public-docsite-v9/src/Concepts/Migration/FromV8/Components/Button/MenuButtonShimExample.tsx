@@ -20,7 +20,7 @@ import {
   MenuDivider,
   MenuItemCheckbox,
 } from '@fluentui/react-components';
-import { MenuButtonShim } from '../../../../../shims/ButtonShim';
+import { MenuButtonShim } from '@fluentui/react-button-shim-v8-v9';
 
 const addIcon: IIconProps = { iconName: 'Add' };
 const mailIcon: IIconProps = { iconName: 'Mail' };

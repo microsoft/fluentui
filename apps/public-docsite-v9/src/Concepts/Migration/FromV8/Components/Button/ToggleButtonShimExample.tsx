@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { DefaultButton, IButtonProps, Icon, IIconProps, initializeIcons } from '@fluentui/react';
 import { webLightTheme, FluentProvider, ToggleButton } from '@fluentui/react-components';
-import { ToggleButtonShim } from '../../../../../shims/ButtonShim';
+import { ToggleButtonShim } from '@fluentui/react-button-shim-v8-v9';
 
 initializeIcons();
 
