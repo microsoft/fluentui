@@ -117,12 +117,10 @@ const useInputStyles = makeStyles({
   },
 
   after: {
-    height: '100%',
     width: `calc(${indicatorSize} + 2 * ${tokens.spacingHorizontalS})`,
   },
   below: {
-    height: `calc(${indicatorSize} + ${tokens.spacingVerticalS})`,
-    width: '100%',
+    height: `calc(${indicatorSize} + 2 * ${tokens.spacingVerticalS})`,
   },
 });
 
@@ -173,7 +171,7 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Radio slots based on the state
  */
 export const useRadioStyles_unstable = (state: RadioState) => {
-  const { label, labelPosition } = state;
+  const { labelPosition } = state;
 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
