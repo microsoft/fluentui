@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-avatar';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { PresenceBadge, PresenceBadgeProps } from '@fluentui/react-badge';
-import type { PersonaProps, PersonaState } from './Persona.types';
-import { personaClassNames } from './usePersonaStyles';
 import { mergeClasses } from '@griffel/react';
+import { personaClassNames } from './usePersonaStyles';
+import { PresenceBadge } from '@fluentui/react-badge';
+import type { AvatarProps } from '@fluentui/react-avatar';
+import type { PersonaProps, PersonaState } from './Persona.types';
+import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
 /**
  * Create the state required to render Persona.
