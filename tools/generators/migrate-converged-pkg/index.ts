@@ -779,11 +779,11 @@ function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
     tree.rename(treePath, newPath);
 
     // Update files that import moved file to reflect file location change from common/ to testing/
-    visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), () => {
-      const fileContent = tree.read(treePath)?.toString('utf-8');
+    visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), nestedTreePath => {
+      const fileContent = tree.read(nestedTreePath)?.toString('utf-8');
       if (fileContent && fileContent.includes('common/')) {
         const newContent = fileContent.replace('common/', 'testing/');
-        tree.write(treePath, newContent);
+        tree.write(nestedTreePath, newContent);
       }
     });
   });
