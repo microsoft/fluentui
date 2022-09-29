@@ -44,14 +44,14 @@ storiesOf('Persona Converged', module)
   .addStory('size-avatar', () => (
     <>
       {avatarSizes.map(size => (
-        <Persona avatar={{ size }} name="Kevin Sturgis" secondaryText="Available" />
+        <Persona avatar={{ size }} name="Kevin Sturgis" secondaryText="Available" key={size} />
       ))}
     </>
   ))
   .addStory('size-presence', () => (
     <>
       {badgeSizes.map(size => (
-        <Persona presence={{ size }} name="Kevin Sturgis" secondaryText="Available" />
+        <Persona presence={{ size }} name="Kevin Sturgis" secondaryText="Available" key={size} />
       ))}
     </>
   ));
