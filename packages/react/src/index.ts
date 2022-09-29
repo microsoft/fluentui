@@ -86,6 +86,7 @@ export * from './TimePicker';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
+export * from './Viewport';
 export * from './WeeklyDayPicker';
 export * from './WindowProvider';
 /**

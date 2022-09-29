@@ -2,6 +2,21 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Fri, 23 Sep 2022 10:32:29 GMT",
+      "tag": "@fluentui/react-dialog_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "4dd18085b968e10d512c179705d31148e28148b4",
+            "comment": "feat: implements DialogContent as a swap of DialogBody"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:44 GMT",
       "tag": "@fluentui/react-dialog_v9.0.0-beta.9",
       "version": "9.0.0-beta.9",

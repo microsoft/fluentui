@@ -5,10 +5,24 @@ import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types'
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useAvatarContext } from '../../contexts/AvatarContext';
+
+export const DEFAULT_STRINGS = {
+  active: 'active',
+  inactive: 'inactive',
+};
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
+  const { size: contextSize } = useAvatarContext();
+  const {
+    name,
+    size = contextSize ?? (32 as const),
+    shape = 'circular',
+    active = 'unset',
+    activeAppearance = 'ring',
+    idForColor,
+  } = props;
   let { color = 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
@@ -75,6 +89,8 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     },
   });
 
+  let activeAriaLabelElement: AvatarState['activeAriaLabelElement'];
+
   // Resolve aria-label and/or aria-labelledby if not provided by the user
   if (!root['aria-label'] && !root['aria-labelledby']) {
     if (name) {
@@ -88,6 +104,24 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
       root['aria-labelledby'] = initials.id + (badge ? ' ' + badge.id : '');
     }
+
+    // Add the active state to the aria label
+    if (active === 'active' || active === 'inactive') {
+      const activeText = DEFAULT_STRINGS[active];
+      if (root['aria-labelledby']) {
+        // If using aria-labelledby, render a hidden span and append it to the labelledby
+        const activeId = baseId + '__active';
+        root['aria-labelledby'] += ' ' + activeId;
+        activeAriaLabelElement = (
+          <span hidden id={activeId}>
+            {activeText}
+          </span>
+        );
+      } else if (root['aria-label']) {
+        // Otherwise, just append it to the aria-label
+        root['aria-label'] += ' ' + activeText;
+      }
+    }
   }
 
   return {
@@ -95,6 +129,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     shape,
     active,
     activeAppearance,
+    activeAriaLabelElement,
     color,
 
     components: {

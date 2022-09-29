@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 23 Sep 2022 10:32:30 GMT",
+      "tag": "@fluentui/react-menu_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f6202c4bb7ca9f352e7b4bc376242849648dcfd6",
+            "comment": "fix: Make Menu openOnHover prop work again"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:45 GMT",
       "tag": "@fluentui/react-menu_v9.2.0",
       "version": "9.2.0",

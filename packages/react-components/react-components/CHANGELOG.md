@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 20 Sep 2022 20:55:42 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Sep 2022 10:32:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.2)
+
+Fri, 23 Sep 2022 10:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.3.1..@fluentui/react-components_v9.3.2)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: Make Menu openOnHover prop work again ([PR #24899](https://github.com/microsoft/fluentui/pull/24899) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-dialog`
+  - feat: implements DialogContent as a swap of DialogBody ([PR #24855](https://github.com/microsoft/fluentui/pull/24855) by bernardo.sunderhus@gmail.com)
 
 ## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.1)
 

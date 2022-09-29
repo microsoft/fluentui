@@ -72,7 +72,7 @@ describe('PopoverSurface', () => {
     expect(queryByRole('dialog')).not.toBeNull();
   });
 
-  it('should set role complementary if focus trap is not active', () => {
+  it('should set role group if focus trap is not active', () => {
     // Arrange
     mockPopoverContext({ trapFocus: false });
     const { getByTestId } = render(<PopoverSurface {...props}>Content</PopoverSurface>);

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 20 Sep 2022 20:55:44 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Sep 2022 10:32:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.10)
+
+Fri, 23 Sep 2022 10:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0-beta.9..@fluentui/react-dialog_v9.0.0-beta.10)
+
+### Changes
+
+- feat: implements DialogContent as a swap of DialogBody ([PR #24855](https://github.com/microsoft/fluentui/pull/24855) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.9)
 

@@ -1,5 +1,6 @@
 import express from 'express';
 import fs from 'fs';
+import type { Server } from 'http';
 import { series, task } from 'gulp';
 import { colors, log } from 'gulp-util';
 import _ from 'lodash';
@@ -23,7 +24,7 @@ import { Browser, createChrome, createElectron } from './browserAdapters';
 const { paths } = config;
 
 const DEFAULT_RUN_TIMES = 10;
-let server;
+let server: Server;
 
 const floor = (value: number) => _.floor(value, 2);
 
@@ -72,7 +73,7 @@ const sumByExample = (measures: ProfilerMeasureCycle[]): PerExamplePerfMeasures 
 
       return result;
     },
-    {},
+    {} as Record<string, ProfilerMeasure[]>,
   );
 
   return _.mapValues(perExampleMeasures, (profilerMeasures: ProfilerMeasure[]) => ({

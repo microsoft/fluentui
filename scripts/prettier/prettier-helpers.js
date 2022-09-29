@@ -1,4 +1,3 @@
-// @ts-check
 const path = require('path');
 const fs = require('fs');
 const { spawn, spawnSync } = require('child_process');

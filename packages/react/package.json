@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.96.1",
+  "version": "8.96.3",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -1026,6 +1026,11 @@
       "types": "./lib/Utilities.d.ts",
       "import": "./lib/Utilities.js",
       "require": "./lib-commonjs/Utilities.js"
+    },
+    "./lib/Viewport": {
+      "types": "./lib/Viewport.d.ts",
+      "import": "./lib/Viewport.js",
+      "require": "./lib-commonjs/Viewport.js"
     },
     "./lib/version": {
       "types": "./lib/version.d.ts",
