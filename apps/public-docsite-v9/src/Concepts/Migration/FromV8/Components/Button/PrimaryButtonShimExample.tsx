@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton, IButtonProps } from '@fluentui/react';
 import { Button, webLightTheme, FluentProvider } from '@fluentui/react-components';
-import { PrimaryButtonShim } from '../../../../../shims/ButtonShim';
+import { PrimaryButtonShim } from '@fluentui/react-button-shim-v8-v9';
 
 export const PrimaryButtonShimExample = (props: IButtonProps) => {
   return (

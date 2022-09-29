@@ -1,14 +1,6 @@
 import { colorMap } from './colorMap';
 import { ColorInfo, ColorKind } from './types';
-import {
-  black,
-  blackAlpha,
-  brandWeb,
-  grey,
-  sharedColors,
-  white,
-  whiteAlpha,
-} from '../../../../shims/ThemeShim/themeDuplicates';
+import { black, blackAlpha, brandWeb, grey, sharedColors, white, whiteAlpha } from '@fluentui/react-theme-shim-v8-v9';
 import { DefaultPalette } from '@fluentui/react';
 
 const palettePrefix = 'palette.';

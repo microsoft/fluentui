@@ -4,38 +4,154 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-
-// @public
-export const renderThemeShim_unstable: (state: ThemeShimState) => JSX.Element;
-
-// @public
-export const ThemeShim: ForwardRefComponent<ThemeShimProps>;
+import { BrandVariants } from '@fluentui/react-theme';
+import { IPalette } from '@fluentui/react';
+import { Theme } from '@fluentui/react-theme';
+import { Theme as Theme_2 } from '@fluentui/react';
+import { Theme as Theme_3 } from '@fluentui/react-components';
 
 // @public (undocumented)
-export const themeShimClassNames: SlotClassNames<ThemeShimSlots>;
-
-// @public
-export type ThemeShimProps = ComponentProps<ThemeShimSlots> & {};
+export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
 // @public (undocumented)
-export type ThemeShimSlots = {
-    root: Slot<'div'>;
+export const black = "#000000";
+
+// @public (undocumented)
+export const blackAlpha: Record<AlphaColors, string>;
+
+// @public (undocumented)
+export const brandWeb: BrandVariants;
+
+// @public
+export type ColorVariants = {
+    shade50: string;
+    shade40: string;
+    shade30: string;
+    shade20: string;
+    shade10: string;
+    primary: string;
+    tint10: string;
+    tint20: string;
+    tint30: string;
+    tint40: string;
+    tint50: string;
+    tint60: string;
 };
 
 // @public
-export type ThemeShimState = ComponentState<ThemeShimSlots>;
+export const createBrandVariants: (palette: IPalette, interpolation?: Interpolation) => BrandVariants;
 
 // @public
-export const useThemeShim_unstable: (props: ThemeShimProps, ref: React_2.Ref<HTMLElement>) => ThemeShimState;
+export const createv8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkTheme?: boolean, themeV8?: Theme_2 | undefined) => Theme_2;
 
 // @public
-export const useThemeShimStyles_unstable: (state: ThemeShimState) => ThemeShimState;
+export const createv9Theme: (themeV8: Theme_2, baseThemeV9?: Theme_3 | undefined) => Theme_3;
+
+// @public
+export type GlobalSharedColors = {
+    darkRed: ColorVariants;
+    burgundy: ColorVariants;
+    cranberry: ColorVariants;
+    red: ColorVariants;
+    darkOrange: ColorVariants;
+    bronze: ColorVariants;
+    pumpkin: ColorVariants;
+    orange: ColorVariants;
+    peach: ColorVariants;
+    marigold: ColorVariants;
+    yellow: ColorVariants;
+    gold: ColorVariants;
+    brass: ColorVariants;
+    brown: ColorVariants;
+    darkBrown: ColorVariants;
+    lime: ColorVariants;
+    forest: ColorVariants;
+    seafoam: ColorVariants;
+    lightGreen: ColorVariants;
+    green: ColorVariants;
+    darkGreen: ColorVariants;
+    lightTeal: ColorVariants;
+    teal: ColorVariants;
+    darkTeal: ColorVariants;
+    cyan: ColorVariants;
+    steel: ColorVariants;
+    lightBlue: ColorVariants;
+    blue: ColorVariants;
+    royalBlue: ColorVariants;
+    darkBlue: ColorVariants;
+    cornflower: ColorVariants;
+    navy: ColorVariants;
+    lavender: ColorVariants;
+    purple: ColorVariants;
+    darkPurple: ColorVariants;
+    orchid: ColorVariants;
+    grape: ColorVariants;
+    berry: ColorVariants;
+    lilac: ColorVariants;
+    pink: ColorVariants;
+    hotPink: ColorVariants;
+    magenta: ColorVariants;
+    plum: ColorVariants;
+    beige: ColorVariants;
+    mink: ColorVariants;
+    silver: ColorVariants;
+    platinum: ColorVariants;
+    anchor: ColorVariants;
+    charcoal: ColorVariants;
+};
+
+// @public (undocumented)
+export const grey: Record<Greys, string>;
+
+// @public (undocumented)
+export const grey14Alpha: Record<AlphaColors, string>;
+
+// @public (undocumented)
+export type Greys = 0 | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 26 | 28 | 30 | 32 | 34 | 36 | 38 | 40 | 42 | 44 | 46 | 48 | 50 | 52 | 54 | 56 | 58 | 60 | 62 | 64 | 66 | 68 | 70 | 72 | 74 | 76 | 78 | 80 | 82 | 84 | 86 | 88 | 90 | 92 | 94 | 96 | 98 | 100;
+
+// @public (undocumented)
+export const hcButtonFace = "#ffffff";
+
+// @public (undocumented)
+export const hcButtonText = "#000000";
+
+// @public (undocumented)
+export const hcCanvas = "#000000";
+
+// @public (undocumented)
+export const hcCanvasText = "#ffffff";
+
+// @public (undocumented)
+export const hcDisabled = "#3ff23f";
+
+// @public (undocumented)
+export const hcHighlight = "#1aebff";
+
+// @public (undocumented)
+export const hcHighlightText = "#000000";
+
+// @public (undocumented)
+export const hcHyperlink = "#ffff00";
+
+// @public (undocumented)
+export const sharedColors: GlobalSharedColors;
+
+// @public (undocumented)
+export type TextAlignment = 'inherit' | 'initial' | 'revert' | 'unset' | 'center' | 'end' | 'start' | 'justify' | 'left' | 'match-parent' | 'right';
+
+// @public (undocumented)
+export type TextAlignments = {
+    start: TextAlignment;
+    center: TextAlignment;
+    end: TextAlignment;
+    justify: TextAlignment;
+};
+
+// @public (undocumented)
+export const white = "#ffffff";
+
+// @public (undocumented)
+export const whiteAlpha: Record<AlphaColors, string>;
 
 // (No @packageDocumentation comment for this package)
 
