@@ -277,7 +277,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           types: ['static-assets', 'environment'],
         },
-        exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
+        exclude: ['./src/testing/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
         include: ['./src/**/*.ts', './src/**/*.tsx'],
       });
       expect(tsConfigTest).toEqual({
@@ -633,7 +633,7 @@ describe('migrate-converged-pkg generator', () => {
       // artificially add stories globs to exclude
       writeJson<TsConfig>(tree, paths.tsconfig.lib, {
         compilerOptions: {},
-        exclude: ['../src/common/**', '**/*.test.ts', '**/*.test.tsx', '**/*.stories.ts', '**/*.stories.tsx'],
+        exclude: ['../src/testing/**', '**/*.test.ts', '**/*.test.tsx', '**/*.stories.ts', '**/*.stories.tsx'],
       });
       // artificially create spec ts config
       writeJson<TsConfig>(tree, paths.tsconfig.test, {
@@ -1400,7 +1400,7 @@ function setupDummyPackage(
 function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
   // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
   const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'conformance-setup.ts__tmpl__'), 'utf-8');
-  tree.write(`${projectConfig.root}/src/common/isConformant.ts`, stripIndents`${template}`);
+  tree.write(`${projectConfig.root}/src/testing/isConformant.ts`, stripIndents`${template}`);
 }
 
 function addUnstableSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
