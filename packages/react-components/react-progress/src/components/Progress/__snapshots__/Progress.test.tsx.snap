@@ -6,21 +6,15 @@ exports[`Progress renders a default state 1`] = `
     class="fui-Progress"
     role="progressbar"
   >
-    <span
-      class="fui-Progress__indicator"
-      style="--fui-Progress--percentage: 0; --fui-Progress--transition: width .3s ease;"
-    >
-      <div
-        class="fui-Progress__Container"
-      >
-        <div
-          class="fui-Progress__Track"
-        />
-        <div
-          class="fui-Progress__Bar"
-        />
-      </div>
-    </span>
+    <div
+      class="fui-Progress__track"
+    />
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="0"
+      class="fui-Progress__bar"
+    />
   </div>
 </div>
 `;
