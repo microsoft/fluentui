@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Thu, 29 Sep 2022 12:30:34 GMT",
+      "tag": "@fluentui/style-utilities_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.23.0",
+            "author": "gcox@microsoft.com",
+            "commit": "329cfaed40945b42efc4d15ffdb2746c81c6abb3",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "@fluentui/style-utilities_v7.22.0",
       "version": "7.22.0",

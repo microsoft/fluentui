@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Removed the initializeThemeInCustomizations side effect from index",
-  "packageName": "@uifabric/styling",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
