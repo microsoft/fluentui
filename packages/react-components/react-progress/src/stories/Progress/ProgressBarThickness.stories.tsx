@@ -7,7 +7,7 @@ const intervalIncrement = 0.01;
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.padding('20px'),
+    ...shorthands.padding('20px', '0px'),
   },
 });
 
@@ -25,10 +25,20 @@ export const Thickness = () => {
   });
 
   return (
-    <div className={styles.container}>
-      <Progress thickness="medium" label="Medium Progress" percentComplete={percentComplete} />
+    <div>
+      <Progress
+        className={styles.container}
+        thickness="medium"
+        label="Medium Progress"
+        percentComplete={percentComplete}
+      />
 
-      <Progress thickness="large" label="Large Progress" percentComplete={percentComplete} />
+      <Progress
+        className={styles.container}
+        thickness="large"
+        label="Large Progress"
+        percentComplete={percentComplete}
+      />
     </div>
   );
 };

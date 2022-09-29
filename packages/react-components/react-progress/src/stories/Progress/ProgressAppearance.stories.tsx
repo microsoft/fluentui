@@ -2,24 +2,46 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 import { Progress } from '@fluentui/react-progress';
 
+const intervalDelay = 100;
+const intervalIncrement = 0.01;
+
 const useStyles = makeStyles({
   container: {
-    '> div': { ...shorthands.padding('20px') },
+    ...shorthands.padding('20px'),
   },
 });
 
 export const Appearance = () => {
   const styles = useStyles();
+  const [percentComplete, setPercentComplete] = React.useState(0);
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setPercentComplete((intervalIncrement + percentComplete) % 1);
+    }, intervalDelay);
+    return () => {
+      clearInterval(id);
+    };
+  });
 
   return (
-    <div className={styles.container}>
-      <Progress />
+    <div>
+      <Progress className={styles.container} percentComplete={percentComplete} />
 
-      <Progress label="Progress Label" description="Progress Description" />
+      <Progress
+        className={styles.container}
+        label="Progress Label"
+        description="Progress Description"
+        percentComplete={percentComplete}
+      />
 
-      <Progress label="Label and ProgressBar" />
+      <Progress className={styles.container} label="Label and ProgressBar" percentComplete={percentComplete} />
 
-      <Progress description="Description and ProgressBar" />
+      <Progress
+        className={styles.container}
+        description="Description and ProgressBar"
+        percentComplete={percentComplete}
+      />
     </div>
   );
 };
@@ -29,7 +51,7 @@ Appearance.parameters = {
     description: {
       story:
         `Progress can be shown in a few different ways.\n` +
-        `It can be shown as just the bar, with the bar,label, and description, with just the bar and label, and with
+        `It can be shown as just the bar, with the bar, label and description, with just the bar and label, and with
         just the bar and description`,
     },
   },
