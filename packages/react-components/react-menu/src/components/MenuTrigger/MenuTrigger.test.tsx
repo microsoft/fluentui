@@ -2,8 +2,8 @@ import * as React from 'react';
 import { MenuTrigger } from './MenuTrigger';
 import * as renderer from 'react-test-renderer';
 import { createEvent, fireEvent, render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
-import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import { isConformant } from '../../testing/isConformant';
+import { mockUseMenuContext } from '../../testing/mockUseMenuContext';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
 import { Enter } from '@fluentui/keyboard-keys';
 

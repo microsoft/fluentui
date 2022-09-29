@@ -10,7 +10,7 @@ import {
   menuTriggerSelector,
   menuItemSelector,
   menuSelector,
-} from './selectors';
+} from '../../testing/selectors';
 
 import {
   Menu,
