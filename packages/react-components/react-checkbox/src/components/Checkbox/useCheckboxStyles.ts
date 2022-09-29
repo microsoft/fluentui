@@ -121,6 +121,7 @@ const useInputStyles = makeStyles({
       cursor: 'default',
 
       [`& ~ .${checkboxClassNames.label}`]: {
+        cursor: 'default',
         color: tokens.colorNeutralForegroundDisabled,
         '@media (forced-colors: active)': {
           color: 'GrayText',
