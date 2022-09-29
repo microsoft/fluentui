@@ -12,7 +12,7 @@ storiesOf('Persona Converged', module)
   .addDecorator(story => (
     <div
       className="testWrapper"
-      style={{ display: 'grid', gap: '10px', padding: '10px', gridTemplateColumns: '1fr 1fr 1fr', maxWidth: '750px' }}
+      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
     >
       {story()}
     </div>
