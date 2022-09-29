@@ -1,6 +1,6 @@
 {
   "type": "patch",
   "comment": "fix: Correct the exported file in Foundation",
-  "packageName": " @fluentui/react-experiments",
+  "packageName": "@fluentui/react-experiments",
   "email": "mgodbolt@microsoft.com"
 }
