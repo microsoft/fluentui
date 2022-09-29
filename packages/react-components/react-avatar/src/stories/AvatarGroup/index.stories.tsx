@@ -11,7 +11,7 @@ export { SizePie } from './AvatarGroupSizePie.stories';
 export { Indicator } from './AvatarGroupIndicator.stories';
 
 export default {
-  title: 'Preview Components/AvatarGroup',
+  title: 'Components/AvatarGroup',
   component: AvatarGroup,
   parameters: {
     docs: {
