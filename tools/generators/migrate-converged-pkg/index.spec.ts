@@ -18,6 +18,7 @@ import {
   visitNotIgnoredFiles,
   writeJson,
   WorkspaceConfiguration,
+  joinPathFragments,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -777,6 +778,54 @@ describe('migrate-converged-pkg generator', () => {
       expect(packageJson.scripts).toEqual(
         expect.objectContaining({ e2e: 'cypress run --component', 'e2e:local': 'cypress open --component' }),
       );
+    });
+
+    it(`should migrate existing files in e2e folder to new setup`, async () => {
+      const { paths, projectConfig } = setup({ projectName: options.name });
+      const sourceRoot = joinPathFragments(projectConfig.root, 'src');
+      const e2eFolderPath = joinPathFragments(projectConfig.root, 'e2e');
+
+      function createOldE2eSetup() {
+        writeJson<TsConfig>(tree, joinPathFragments(e2eFolderPath, 'tsconfig.json'), {
+          extends: '../../tsconfig.base.json',
+          compilerOptions: {},
+        });
+        tree.write(
+          `${e2eFolderPath}/Dummy.e2e.ts`,
+          stripIndents`
+         describe('Cypress test', () => {
+           before(() => {
+            cy.visitStorybook();
+           });
+         });
+        `,
+        );
+
+        tree.write(
+          `${e2eFolderPath}/selectors.ts`,
+          stripIndents`
+          export const dummySelector = '[role="dummy"]';
+        `,
+        );
+
+        return tree;
+      }
+
+      createOldE2eSetup();
+
+      expect(tree.exists(joinPathFragments(e2eFolderPath, 'tsconfig.json'))).toBeTruthy();
+      expect(tree.exists(joinPathFragments(e2eFolderPath, 'selectors.ts'))).toBeTruthy();
+      expect(tree.exists(joinPathFragments(e2eFolderPath, 'Dummy.e2e.ts'))).toBeTruthy();
+
+      await generator(tree, { name: options.name });
+
+      expect(tree.exists(joinPathFragments(e2eFolderPath, 'tsconfig.json'))).toBeFalsy();
+      expect(tree.exists(joinPathFragments(e2eFolderPath, 'selectors.ts'))).toBeFalsy();
+      expect(tree.exists(joinPathFragments(e2eFolderPath, 'Dummy.e2e.ts'))).toBeFalsy();
+
+      expect(tree.exists(paths.tsconfig.cypress)).toBeTruthy();
+      expect(tree.exists(joinPathFragments(sourceRoot, 'components', 'Dummy', 'Dummy.cy.ts'))).toBeTruthy();
+      expect(tree.exists(joinPathFragments(sourceRoot, 'testing', 'selectors.ts'))).toBeTruthy();
     });
   });
 
