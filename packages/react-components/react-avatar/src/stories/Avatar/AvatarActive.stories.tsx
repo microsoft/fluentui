@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-components';
 
 export const Active = () => (
   <div style={{ display: 'flex', gap: '20px' }}>

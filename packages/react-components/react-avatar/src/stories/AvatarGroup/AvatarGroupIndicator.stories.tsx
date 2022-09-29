@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
-import { makeStyles } from '@fluentui/react-components';
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupPopover,
+  makeStyles,
+  partitionAvatarGroupItems,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
