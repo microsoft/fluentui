@@ -243,7 +243,15 @@ const templates = {
             outDir: 'dist',
             types: ['jest', 'node'],
           } as TsConfig['compilerOptions'],
-          include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
+          include: [
+            '**/*.spec.ts',
+            '**/*.spec.tsx',
+            '**/*.test.ts',
+            '**/*.test.tsx',
+            '**/*.d.ts',
+            './src/testing/**/*.ts',
+            './src/testing/**/*.tsx',
+          ],
         };
 
         if (options.js) {
@@ -588,7 +596,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
   const template = {
     projectReferences: { path: './.storybook/tsconfig.json' },
-    exclude: ['**/*.stories.ts', '**/*.stories.tsx'],
+    exclude: ['**/*.stories.ts', '**/*.stories.tsx', '**/*.cy.ts', '**/*.cy.tsx'],
   };
 
   const js = isJs(tree, options);

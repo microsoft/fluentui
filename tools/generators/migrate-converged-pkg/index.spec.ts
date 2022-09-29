@@ -287,7 +287,15 @@ describe('migrate-converged-pkg generator', () => {
           outDir: 'dist',
           types: ['jest', 'node'],
         },
-        include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
+        include: [
+          '**/*.spec.ts',
+          '**/*.spec.tsx',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '**/*.d.ts',
+          './src/testing/**/*.ts',
+          './src/testing/**/*.tsx',
+        ],
       });
     });
 
@@ -323,6 +331,8 @@ describe('migrate-converged-pkg generator', () => {
         '**/*.test.js',
         '**/*.test.jsx',
         '**/*.d.ts',
+        './src/testing/**/*.js',
+        './src/testing/**/*.jsx',
       ]);
     });
 
