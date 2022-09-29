@@ -44,14 +44,39 @@ storiesOf('Persona Converged', module)
   .addStory('size-avatar', () => (
     <>
       {avatarSizes.map(size => (
-        <Persona avatar={{ size }} name="Kevin Sturgis" secondaryText="Available" key={size} />
+        <Persona avatar={{ size }} name="Kevin Sturgis" secondaryText="Software Engineer" key={size} />
       ))}
     </>
   ))
   .addStory('size-presence', () => (
     <>
       {badgeSizes.map(size => (
-        <Persona presence={{ size }} name="Kevin Sturgis" secondaryText="Available" key={size} />
+        <Persona
+          presenceOnly
+          presence={{ size, status: 'available' }}
+          name="Kevin Sturgis"
+          secondaryText="Available"
+          key={size}
+        />
       ))}
+    </>
+  ))
+  .addStory('scaling', () => (
+    <>
+      <Persona name="Kevin Sturgis" presence={{ status: 'away' }} />
+      <Persona name="Kevin Sturgis" presence={{ status: 'away' }} secondaryText="Away" />
+      <Persona
+        name="Kevin Sturgis"
+        presence={{ status: 'away' }}
+        secondaryText="Away"
+        tertiaryText="Software Engineer"
+      />
+      <Persona
+        name="Kevin Sturgis"
+        presence={{ status: 'away' }}
+        secondaryText="Away"
+        tertiaryText="Software Engineer"
+        quaternaryText="Last available 4:00 pm"
+      />
     </>
   ));
