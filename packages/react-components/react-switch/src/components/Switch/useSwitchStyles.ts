@@ -48,6 +48,7 @@ const useIndicatorStyles = makeStyles({
     flexShrink: 0,
     fontSize: `${thumbSize}px`,
     height: `${trackHeight}px`,
+    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     pointerEvents: 'none',
     transitionDuration: '200ms',
     transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
@@ -69,14 +70,14 @@ const useIndicatorStyles = makeStyles({
     },
   },
 
-  before: {
-    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS, tokens.spacingVerticalS, 0),
+  labelBefore: {
+    marginLeft: 0,
   },
-  after: {
-    ...shorthands.margin(tokens.spacingVerticalS, 0, tokens.spacingVerticalS, tokens.spacingHorizontalS),
+  labelAfter: {
+    marginRight: 0,
   },
-  above: {
-    ...shorthands.margin(0, tokens.spacingHorizontalS, tokens.spacingVerticalS, tokens.spacingHorizontalS),
+  labelAbove: {
+    marginTop: 0,
   },
 });
 
@@ -91,7 +92,7 @@ const useInputStyles = makeStyles({
 
     // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
     // This is done so that clicking on that "empty space" still toggles the switch.
-    width: `calc(${trackWidth}px + ${tokens.spacingHorizontalS})`,
+    width: `calc(${trackWidth}px + 2 * ${tokens.spacingHorizontalS})`,
 
     // Checked (both enabled and disabled)
     ':checked': {
@@ -205,8 +206,15 @@ const useInputStyles = makeStyles({
   },
   above: {
     bottom: 0,
-    height: `calc(${trackHeight}px + ${tokens.spacingVerticalS})`,
+    height: `calc(${trackHeight}px + 2 * ${tokens.spacingVerticalS})`,
     width: '100%',
+  },
+
+  labelHorizontal: {
+    width: `calc(${trackWidth}px + ${tokens.spacingHorizontalS})`,
+  },
+  labelVertical: {
+    height: `calc(${trackHeight}px + ${tokens.spacingVerticalS})`,
   },
 });
 
@@ -242,7 +250,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   const inputStyles = useInputStyles();
   const labelStyles = useLabelStyles();
 
-  const { labelPosition } = state;
+  const { label, labelPosition } = state;
 
   state.root.className = mergeClasses(
     switchClassNames.root,
@@ -254,7 +262,9 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   state.indicator.className = mergeClasses(
     switchClassNames.indicator,
     indicatorStyles.base,
-    indicatorStyles[labelPosition],
+    label && labelPosition === 'before' && indicatorStyles.labelBefore,
+    label && labelPosition === 'after' && indicatorStyles.labelAfter,
+    label && labelPosition === 'above' && indicatorStyles.labelAbove,
     state.indicator.className,
   );
 
@@ -263,6 +273,8 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     inputStyles.base,
     inputStyles.highContrast,
     inputStyles[labelPosition],
+    label && (labelPosition === 'before' || labelPosition === 'after') && inputStyles.labelHorizontal,
+    label && labelPosition === 'above' && inputStyles.labelVertical,
     state.input.className,
   );
 
