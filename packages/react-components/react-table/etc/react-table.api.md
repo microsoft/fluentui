@@ -7,6 +7,7 @@
 /// <reference types="react" />
 
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { AvatarSizes } from '@fluentui/react-avatar';
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
@@ -40,7 +41,7 @@ export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
 export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSX.Element;
 
 // @public
-export const renderTableCellLayout_unstable: (state: TableCellLayoutState) => JSX.Element;
+export const renderTableCellLayout_unstable: (state: TableCellLayoutState, contextValues: TableCellLayoutContextValues) => JSX.Element;
 
 // @public
 export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Element;
@@ -138,7 +139,9 @@ export type TableCellLayoutSlots = {
 };
 
 // @public
-export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'>;
+export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'> & {
+    avatarSize: AvatarSizes | undefined;
+};
 
 // @public
 export type TableCellProps = ComponentProps<TableCellSlots> & {};
