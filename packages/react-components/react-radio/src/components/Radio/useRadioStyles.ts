@@ -21,7 +21,6 @@ const useRootStyles = makeStyles({
   base: {
     display: 'inline-flex',
     position: 'relative',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
   vertical: {
@@ -116,6 +115,22 @@ const useInputStyles = makeStyles({
       },
     },
   },
+
+  after: {
+    height: '100%',
+    width: `calc(${indicatorSize} + 2 * ${tokens.spacingHorizontalS})`,
+  },
+  below: {
+    height: `calc(${indicatorSize} + 2 * ${tokens.spacingVerticalS})`,
+    width: '100%',
+  },
+
+  labelAfter: {
+    width: `calc(${indicatorSize} + ${tokens.spacingHorizontalS})`,
+  },
+  labelBelow: {
+    height: `calc(${indicatorSize} + ${tokens.spacingVerticalS})`,
+  },
 });
 
 const useIndicatorStyles = makeStyles({
@@ -133,18 +148,28 @@ const useIndicatorStyles = makeStyles({
 
     ...shorthands.border(tokens.strokeWidthThin, 'solid'),
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     fill: 'currentColor',
     pointerEvents: 'none',
+  },
+
+  labelAfter: {
+    marginRight: 0,
+  },
+  labelBelow: {
+    marginBottom: 0,
   },
 });
 
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
+
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
   after: {
-    marginLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalM,
 
     // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
     // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
@@ -153,7 +178,7 @@ const useLabelStyles = makeStyles({
   },
 
   below: {
-    marginTop: tokens.spacingVerticalM,
+    paddingTop: tokens.spacingVerticalM,
     textAlign: 'center',
   },
 });
@@ -162,27 +187,42 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Radio slots based on the state
  */
 export const useRadioStyles_unstable = (state: RadioState) => {
+  const { label, labelPosition } = state;
+
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     radioClassNames.root,
     rootStyles.base,
     rootStyles.focusIndicator,
-    state.labelPosition === 'below' && rootStyles.vertical,
+    labelPosition === 'below' && rootStyles.vertical,
     state.root.className,
   );
 
   const inputStyles = useInputStyles();
-  state.input.className = mergeClasses(radioClassNames.input, inputStyles.base, state.input.className);
+  state.input.className = mergeClasses(
+    radioClassNames.input,
+    inputStyles.base,
+    inputStyles[labelPosition],
+    label && labelPosition === 'after' && inputStyles.labelAfter,
+    label && labelPosition === 'below' && inputStyles.labelBelow,
+    state.input.className,
+  );
 
   const indicatorStyles = useIndicatorStyles();
-  state.indicator.className = mergeClasses(radioClassNames.indicator, indicatorStyles.base, state.indicator.className);
+  state.indicator.className = mergeClasses(
+    radioClassNames.indicator,
+    indicatorStyles.base,
+    label && labelPosition === 'after' && indicatorStyles.labelAfter,
+    label && labelPosition === 'below' && indicatorStyles.labelBelow,
+    state.indicator.className,
+  );
 
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
       radioClassNames.label,
       labelStyles.base,
-      labelStyles[state.labelPosition],
+      labelStyles[labelPosition],
       state.label.className,
     );
   }
