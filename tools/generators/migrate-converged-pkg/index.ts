@@ -226,7 +226,7 @@ const templates = {
           tsConfig.compilerOptions.lib?.push('dom');
         }
         if (options.hasConformance) {
-          tsConfig.exclude.unshift('./src/common/**');
+          tsConfig.exclude.unshift('./src/testing/**');
         }
         if (options.js) {
           tsConfig.include = globsToJs(tsConfig.include);

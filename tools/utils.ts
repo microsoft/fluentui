@@ -95,7 +95,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
       cypress: joinPathFragments(projectConfig.root, 'tsconfig.cy.json'),
     },
     sourceRoot: joinPathFragments(projectConfig.root, 'src'),
-    conformanceSetup: joinPathFragments(projectConfig.root, 'src', 'common', 'isConformant.ts'),
+    conformanceSetup: joinPathFragments(projectConfig.root, 'src', 'testing', 'isConformant.ts'),
     babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
     jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
     jestSetupFile: joinPathFragments(projectConfig.root, 'config', 'tests.js'),
