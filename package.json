@@ -310,6 +310,7 @@
       "packages/*",
       "packages/fluentui/*",
       "packages/react-components/*",
+      "packages/react-components-migration/*",
       "scripts",
       "tools",
       "typings"
@@ -344,6 +345,7 @@
       "apps/![react-18-tests-v8][react-18-tests-v9]/package.json",
       "packages/!(web-components)/package.json",
       "packages/react-components/*/package.json",
+      "packages/react-components-migration/*/package.json",
       "packages/fluentui/*/package.json",
       "scripts/package.json"
     ],
