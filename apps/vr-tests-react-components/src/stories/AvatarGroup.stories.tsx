@@ -131,7 +131,9 @@ storiesOf('AvatarGroup Converged', module)
 storiesOf('AvatarGroup Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().click('#show-overflow').snapshot('overflowContentOpen').end()}>
+    <Screener
+      steps={new Screener.Steps().focus('#show-overflow').click('#show-overflow').snapshot('overflowContentOpen').end()}
+    >
       {story()}
     </Screener>
   ))
