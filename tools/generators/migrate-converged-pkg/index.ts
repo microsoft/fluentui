@@ -776,16 +776,15 @@ function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
     const fileName = path.basename(treePath);
     const newPath = joinPathFragments(sourceRoot, 'testing', fileName);
     tree.rename(treePath, newPath);
-  });
 
-  // Update any imports to reflect file location change from common/ to testing/
-  visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), treePath => {
-    const fileContent = tree.read(treePath)?.toString('utf-8');
-
-    if (fileContent && fileContent.includes('common/')) {
-      const newContent = fileContent.replace('common/', 'testing/');
-      tree.write(treePath, newContent);
-    }
+    // Update files that import moved file to reflect file location change from common/ to testing/
+    visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), () => {
+      const fileContent = tree.read(treePath)?.toString('utf-8');
+      if (fileContent && fileContent.includes('common/')) {
+        const newContent = fileContent.replace('common/', 'testing/');
+        tree.write(treePath, newContent);
+      }
+    });
   });
 }
 
