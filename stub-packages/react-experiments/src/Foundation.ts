@@ -1,1 +1,1 @@
-export * from '@uifabric/experiments/lib/LayoutGroup';
+export * from '@uifabric/experiments/lib/Foundation';
