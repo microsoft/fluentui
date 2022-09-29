@@ -121,15 +121,8 @@ const useInputStyles = makeStyles({
     width: `calc(${indicatorSize} + 2 * ${tokens.spacingHorizontalS})`,
   },
   below: {
-    height: `calc(${indicatorSize} + 2 * ${tokens.spacingVerticalS})`,
-    width: '100%',
-  },
-
-  labelAfter: {
-    width: `calc(${indicatorSize} + ${tokens.spacingHorizontalS})`,
-  },
-  labelBelow: {
     height: `calc(${indicatorSize} + ${tokens.spacingVerticalS})`,
+    width: '100%',
   },
 });
 
@@ -152,13 +145,6 @@ const useIndicatorStyles = makeStyles({
     fill: 'currentColor',
     pointerEvents: 'none',
   },
-
-  labelAfter: {
-    marginRight: 0,
-  },
-  labelBelow: {
-    marginBottom: 0,
-  },
 });
 
 const useLabelStyles = makeStyles({
@@ -169,7 +155,7 @@ const useLabelStyles = makeStyles({
   },
 
   after: {
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalXS,
 
     // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
     // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
@@ -178,7 +164,7 @@ const useLabelStyles = makeStyles({
   },
 
   below: {
-    paddingTop: tokens.spacingVerticalM,
+    paddingTop: tokens.spacingVerticalXS,
     textAlign: 'center',
   },
 });
@@ -203,19 +189,11 @@ export const useRadioStyles_unstable = (state: RadioState) => {
     radioClassNames.input,
     inputStyles.base,
     inputStyles[labelPosition],
-    label && labelPosition === 'after' && inputStyles.labelAfter,
-    label && labelPosition === 'below' && inputStyles.labelBelow,
     state.input.className,
   );
 
   const indicatorStyles = useIndicatorStyles();
-  state.indicator.className = mergeClasses(
-    radioClassNames.indicator,
-    indicatorStyles.base,
-    label && labelPosition === 'after' && indicatorStyles.labelAfter,
-    label && labelPosition === 'below' && indicatorStyles.labelBelow,
-    state.indicator.className,
-  );
+  state.indicator.className = mergeClasses(radioClassNames.indicator, indicatorStyles.base, state.indicator.className);
 
   const labelStyles = useLabelStyles();
   if (state.label) {
