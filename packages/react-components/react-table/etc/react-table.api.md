@@ -88,7 +88,7 @@ export type TableBodySlots = {
 };
 
 // @public
-export type TableBodyState = ComponentState<TableBodySlots>;
+export type TableBodyState = ComponentState<TableBodySlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public
 export const TableCell: ForwardRefComponent<TableCellProps>;
@@ -152,7 +152,7 @@ export type TableCellSlots = {
 };
 
 // @public
-export type TableCellState = ComponentState<TableCellSlots>;
+export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public (undocumented)
 export const tableClassName = "fui-Table";
@@ -200,9 +200,7 @@ export type TableHeaderCellSlots = {
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & {
-    sortable: boolean;
-};
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";
@@ -219,7 +217,7 @@ export type TableHeaderSlots = {
 };
 
 // @public
-export type TableHeaderState = ComponentState<TableHeaderSlots>;
+export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public
 export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
@@ -242,9 +240,7 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & {
-    size: TableState['size'];
-};
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
@@ -265,7 +261,7 @@ export type TableSelectionCellSlots = {
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public (undocumented)
 export interface TableSelectionState {
