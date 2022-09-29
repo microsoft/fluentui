@@ -19,22 +19,19 @@ const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     display: 'inline-flex',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
 });
 
 const useInputStyles = makeStyles({
   base: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
     boxSizing: 'border-box',
+    cursor: 'pointer',
+    height: '100%',
     ...shorthands.margin(0),
     opacity: 0,
-    cursor: 'pointer',
+    position: 'absolute',
+    top: 0,
 
     // When unchecked, hide the the checkmark icon (child of the indicator slot)
     [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
@@ -143,6 +140,29 @@ const useInputStyles = makeStyles({
       },
     },
   },
+
+  before: {
+    right: 0,
+  },
+  after: {
+    left: 0,
+  },
+
+  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
+  // This is done so that clicking on that "empty space" still toggles the checkbox.
+  medium: {
+    width: `calc(${indicatorSizeMedium} + 2 * ${tokens.spacingHorizontalS})`,
+  },
+  large: {
+    width: `calc(${indicatorSizeLarge} + 2 * ${tokens.spacingHorizontalS})`,
+  },
+
+  labelMedium: {
+    width: `calc(${indicatorSizeMedium} + ${tokens.spacingHorizontalS})`,
+  },
+  labelLarge: {
+    width: `calc(${indicatorSizeLarge} + ${tokens.spacingHorizontalS})`,
+  },
 });
 
 const useIndicatorStyles = makeStyles({
@@ -158,20 +178,28 @@ const useIndicatorStyles = makeStyles({
 
     ...shorthands.border(tokens.strokeWidthThin, 'solid'),
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     fill: 'currentColor',
     pointerEvents: 'none',
   },
 
+  labelBefore: {
+    marginLeft: 0,
+  },
+  labelAfter: {
+    marginRight: 0,
+  },
+
   medium: {
-    width: indicatorSizeMedium,
-    height: indicatorSizeMedium,
     fontSize: '12px',
+    height: indicatorSizeMedium,
+    width: indicatorSizeMedium,
   },
 
   large: {
-    width: indicatorSizeLarge,
-    height: indicatorSizeLarge,
     fontSize: '16px',
+    height: indicatorSizeLarge,
+    width: indicatorSizeLarge,
   },
 
   circular: {
@@ -182,19 +210,20 @@ const useIndicatorStyles = makeStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    cursor: 'inherit',
     color: 'inherit',
+    cursor: 'pointer',
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
   before: {
-    marginRight: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalM,
   },
   after: {
-    marginLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalM,
   },
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
-  // This prevents the label from expanding the height of the Checkbox, but preserves line height if the label wraps.
+  // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
   medium: {
     marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
     marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
@@ -212,16 +241,28 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(checkboxClassNames.root, rootStyles.base, state.root.className);
 
+  const { label, labelPosition, shape, size } = state;
+
   const inputStyles = useInputStyles();
-  state.input.className = mergeClasses(checkboxClassNames.input, inputStyles.base, state.input.className);
+  state.input.className = mergeClasses(
+    checkboxClassNames.input,
+    inputStyles.base,
+    inputStyles[size],
+    label && size === 'medium' && inputStyles.labelMedium,
+    label && size === 'large' && inputStyles.labelLarge,
+    inputStyles[labelPosition],
+    state.input.className,
+  );
 
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
     state.indicator.className = mergeClasses(
       checkboxClassNames.indicator,
       indicatorStyles.base,
-      indicatorStyles[state.size],
-      state.shape === 'circular' && indicatorStyles.circular,
+      indicatorStyles[size],
+      label && labelPosition === 'before' && indicatorStyles.labelBefore,
+      label && labelPosition === 'after' && indicatorStyles.labelAfter,
+      shape === 'circular' && indicatorStyles.circular,
       state.indicator.className,
     );
   }
@@ -231,8 +272,8 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
     state.label.className = mergeClasses(
       checkboxClassNames.label,
       labelStyles.base,
-      labelStyles[state.size],
-      labelStyles[state.labelPosition],
+      labelStyles[size],
+      labelStyles[labelPosition],
       state.label.className,
     );
   }
