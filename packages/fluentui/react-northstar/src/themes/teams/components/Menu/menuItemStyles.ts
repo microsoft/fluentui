@@ -11,6 +11,8 @@ export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
 export const verticalPointingBottomMargin = pxToRem(12);
 
+export const menuItemIconClassName = 'ui-menu__itemicon';
+
 export const underlinedItem = (color: string): ICSSInJSStyle => ({
   paddingBottom: 0,
   borderBottom: `solid ${pxToRem(4)} ${color}`,
@@ -200,7 +202,13 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
         color: v.colorHover,
 
         ...(underlined && { color: v.underlinedColorHover }),
-
+        ...(!disabled &&
+          vertical && {
+            [`&>.${menuItemIconClassName}`]: {
+              color: v.subMenuIconColor,
+              ...getIconFillOrOutlineStyles({ outline: false }),
+            },
+          }),
         ...(!disabled && {
           ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
           ...(primary
