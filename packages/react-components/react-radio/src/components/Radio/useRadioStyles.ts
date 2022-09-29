@@ -44,6 +44,9 @@ const useInputStyles = makeStyles({
 
     ':enabled': {
       cursor: 'pointer',
+      [`& ~ .${radioClassNames.label}`]: {
+        cursor: 'pointer',
+      },
     },
 
     // When unchecked, hide the circle icon (child of the indicator)
@@ -108,6 +111,7 @@ const useInputStyles = makeStyles({
     ':disabled': {
       [`& ~ .${radioClassNames.label}`]: {
         color: tokens.colorNeutralForegroundDisabled,
+        cursor: 'default',
       },
       [`& ~ .${radioClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
