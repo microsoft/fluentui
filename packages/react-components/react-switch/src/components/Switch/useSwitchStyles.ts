@@ -112,6 +112,7 @@ const useInputStyles = makeStyles({
       },
 
       [`& ~ .${switchClassNames.label}`]: {
+        cursor: 'default',
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
