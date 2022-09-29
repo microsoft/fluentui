@@ -18,6 +18,7 @@ export const defaultTableSelectionState: TableSelectionState = {
 };
 
 export function useSelection<TItem>(options: UseSelectionOptions) {
+  // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (tableState: TableState<TItem>) => useSelectionState(tableState, options);
 }

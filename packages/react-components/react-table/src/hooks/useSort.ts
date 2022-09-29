@@ -13,6 +13,7 @@ export const defaultTableSortState: TableSortState<unknown> = {
 };
 
 export function useSort<TItem>(options: UseSortOptions) {
+  // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (tableState: TableState<TItem>) => useSortState(tableState, options);
 }
