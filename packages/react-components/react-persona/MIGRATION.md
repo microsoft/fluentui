@@ -9,14 +9,14 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 - `className` => `className`
 - `coinProps` => Use `avatar`'s or `presence`'s slot props
 - `componentRef` => NOT SUPPORTED - use `ref` instead
+- `hidePersonaDetails` => NOT SUPPORTED
+- `imageShouldFadeIn` => NOT SUPPORTED
 - `isOutOfOffice` => Use `status` in `presence` slot props
 - `presence` => `presence`
 - `presenceTitle` => NOT SUPPORTED
-- `styles` => Use style customization through `className` instead
-- `hidePersonaDetails` => NOT SUPPORTED
-- `imageShouldFadeIn` => NOT SUPPORTED
 - `showOverflowTooltip` => NOT SUPPORTED
 - `showUnknownPersonaCoin` => NOT SUPPORTED
+- `styles` => Use style customization through `className` instead
 
 ## Property Mapping
 
@@ -26,16 +26,16 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 | `coinSize`               | `size` in the `badge` or `avatar` slot |
 | `className`              | `className`                            |
 | `componentRef`           | `ref`                                  |
+| `hidePersonaDetails`     | NOT SUPPORTED                          |
+| `imageShouldFadeIn`      | NOT SUPPORTED                          |
+| `isOutOfOffice`          | `status` in `presence` slot props      |
 | `optionalText`           | `quaternaryText`                       |
+| `presence`               | `presence`                             |
+| `presenceTitle`          | NOT SUPPORTED                          |
 | `primaryText`            | `primaryText`                          |
 | `secondaryText`          | `secondaryText`                        |
+| `showOverflowTooltip`    | NOT SUPPORTED                          |
+| `showUnknownPersonaCoin` | NOT SUPPORTED                          |
 | `styles`                 | `className`                            |
 | `tertiaryText`           | `tertiaryText`                         |
 | `text`                   | `name`                                 |
-| `isOutOfOffice`          | `status` in `presence` slot props      |
-| `presence`               | `presence`                             |
-| `presenceTitle`          | NOT SUPPORTED                          |
-| `hidePersonaDetails`     | NOT SUPPORTED                          |
-| `imageShouldFadeIn`      | NOT SUPPORTED                          |
-| `showOverflowTooltip`    | NOT SUPPORTED                          |
-| `showUnknownPersonaCoin` | NOT SUPPORTED                          |
