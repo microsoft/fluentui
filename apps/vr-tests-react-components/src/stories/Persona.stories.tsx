@@ -10,10 +10,7 @@ const badgeSizes: BadgeProps['size'][] = ['tiny', 'extra-small', 'small', 'mediu
 
 storiesOf('Persona Converged', module)
   .addDecorator(story => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
+    <div className="testWrapper" style={{ maxWidth: '750px' }}>
       {story()}
     </div>
   ))
@@ -23,33 +20,45 @@ storiesOf('Persona Converged', module)
   .addStory(
     'basic',
     () => (
-      <>
+      <div
+        className="testWrapper"
+        style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+      >
         <Persona name="Kevin Sturgis" secondaryText="Available" />
         <Persona name="Kevin Sturgis" secondaryText="Available" presence={{ status: 'available' }} />
         <Persona presenceOnly name="Kevin Sturgis" secondaryText="Available" presence={{ status: 'available' }} />
-      </>
+      </div>
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('single-double-lines', () => (
-    <>
+    <div
+      className="testWrapper"
+      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+    >
       <Persona name="Kevin Sturgis" />
       <Persona presence={{ status: 'available' }} name="Kevin Sturgis" />
       <Persona presenceOnly presence={{ status: 'available' }} name="Kevin Sturgis" />
       <Persona name="Kevin Sturgis" secondaryText="Available" />
       <Persona presence={{ status: 'available' }} name="Kevin Sturgis" secondaryText="Available" />
       <Persona presenceOnly presence={{ status: 'available' }} name="Kevin Sturgis" secondaryText="Available" />
-    </>
+    </div>
   ))
   .addStory('size-avatar', () => (
-    <>
+    <div
+      className="testWrapper"
+      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+    >
       {avatarSizes.map(size => (
         <Persona avatar={{ size }} name="Kevin Sturgis" secondaryText="Software Engineer" key={size} />
       ))}
-    </>
+    </div>
   ))
   .addStory('size-presence', () => (
-    <>
+    <div
+      className="testWrapper"
+      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+    >
       {badgeSizes.map(size => (
         <Persona
           presenceOnly
@@ -59,10 +68,13 @@ storiesOf('Persona Converged', module)
           key={size}
         />
       ))}
-    </>
+    </div>
   ))
   .addStory('scaling', () => (
-    <>
+    <div
+      className="testWrapper"
+      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+    >
       <Persona name="Kevin Sturgis" presence={{ status: 'away' }} />
       <Persona name="Kevin Sturgis" presence={{ status: 'away' }} secondaryText="Away" />
       <Persona
@@ -78,5 +90,5 @@ storiesOf('Persona Converged', module)
         tertiaryText="Software Engineer"
         quaternaryText="Last available 4:00 pm"
       />
-    </>
+    </div>
   ));
