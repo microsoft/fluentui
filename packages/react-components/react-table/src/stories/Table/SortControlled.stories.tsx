@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, ColumnId, SortState, useSort } from '../../hooks';
+import { useTable, ColumnDefinition, SortState, useSort, useProps } from '../../hooks';
 import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
@@ -114,19 +114,15 @@ export const SortControlled = () => {
 
   const {
     getRows,
-    sort: { getSortDirection, toggleColumnSort, sort },
+    sort: { sort },
+    props: { tableHeaderCell },
   } = useTable(
     {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: setSortState })],
+    [useSort({ sortState, onSortChange: setSortState }), useProps()],
   );
-
-  const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => toggleColumnSort(columnId),
-    sortDirection: getSortDirection(columnId),
-  });
 
   const rows = sort(getRows());
 
@@ -134,10 +130,10 @@ export const SortControlled = () => {
     <Table sortable>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('lastUpdate')}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>

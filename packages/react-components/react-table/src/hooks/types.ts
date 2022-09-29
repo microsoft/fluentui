@@ -1,4 +1,5 @@
 import { SortDirection } from '../components/Table/Table.types';
+import { TableHeaderCellProps, TableSelectionCellProps, TableRowProps } from '..';
 
 export type RowId = string | number;
 export type ColumnId = string | number;
@@ -85,6 +86,17 @@ export interface TableSelectionState {
    * Checks if a given rowId is selected
    */
   isRowSelected: (rowId: RowId) => boolean;
+  /**
+   * The selection mode of the table
+   */
+  selectionMode: SelectionMode;
+}
+
+export interface TablePropsState {
+  tableHeaderCell: (columnId: ColumnId) => Pick<TableHeaderCellProps, 'onClick' | 'sortDirection'>;
+  tableSelectionCell: (rowId: RowId) => Pick<TableSelectionCellProps, 'checked' | 'onClick' | 'type'>;
+  tableHeaderSelectionCell: () => Pick<TableSelectionCellProps, 'checked' | 'onClick'>;
+  tableRow: (rowId: RowId) => Pick<TableRowProps, 'onClick' | 'onKeyDown' | 'tabIndex' | 'aria-selected'>;
 }
 
 export interface RowState<TItem> {
@@ -106,6 +118,7 @@ export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' 
   getRows: <TRowState extends RowState<TItem> = RowState<TItem>>(
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
+
   /**
    * State and actions to manage row selection
    */
@@ -114,6 +127,10 @@ export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' 
    * State and actions to manage row sorting
    */
   sort: TableSortState<TItem>;
+  /**
+   *
+   */
+  props: TablePropsState;
   /**
    * Table columns
    */

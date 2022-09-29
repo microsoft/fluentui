@@ -15,6 +15,7 @@ export const defaultTableSelectionState: TableSelectionState = {
   someRowsSelected: false,
   toggleAllRows: noop,
   toggleRow: noop,
+  selectionMode: 'multiselect',
 };
 
 export function useSelection<TItem>(options: UseSelectionOptions) {
@@ -79,6 +80,7 @@ export function useSelectionState<TItem>(
       deselectRow,
       selectRow,
       isRowSelected,
+      selectionMode,
     },
   };
 }

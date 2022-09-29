@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, ColumnId, useSort } from '../../hooks';
+import { useTable, ColumnDefinition, useSort, useProps } from '../../hooks';
 import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
@@ -109,21 +109,15 @@ const columns: ColumnDefinition<Item>[] = [
 export const Sort = () => {
   const {
     getRows,
-    sort: { getSortDirection, toggleColumnSort, sort },
+    sort: { sort },
+    props: { tableHeaderCell },
   } = useTable(
     {
       columns,
       items,
     },
-    [useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
+    [useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }), useProps()],
   );
-
-  const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => {
-      toggleColumnSort(columnId);
-    },
-    sortDirection: getSortDirection(columnId),
-  });
 
   const rows = sort(getRows());
 
@@ -131,10 +125,10 @@ export const Sort = () => {
     <Table sortable>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...tableHeaderCell('lastUpdate')}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>

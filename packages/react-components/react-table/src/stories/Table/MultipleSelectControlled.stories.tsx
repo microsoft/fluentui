@@ -19,7 +19,7 @@ import {
   TableSelectionCell,
   TableCellLayout,
 } from '../..';
-import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
+import { useTable, ColumnDefinition, RowId, useSelection, useProps } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
@@ -110,7 +110,7 @@ export const MultipleSelectControlled = () => {
 
   const {
     getRows,
-    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+    props: { tableRow, tableSelectionCell, tableHeaderSelectionCell },
   } = useTable(
     {
       columns,
@@ -122,18 +122,14 @@ export const MultipleSelectControlled = () => {
         selectedItems: selectedRows,
         onSelectionChange: setSelectedRows,
       }),
+      useProps(),
     ],
   );
 
   const rows = getRows(row => ({
     ...row,
-    onClick: () => toggleRow(row.rowId),
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        toggleRow(row.rowId);
-      }
-    },
-    selected: isRowSelected(row.rowId),
+    rowProps: tableRow(row.rowId),
+    selectionCellProps: tableSelectionCell(row.rowId),
   }));
 
   // eslint-disable-next-line deprecation/deprecation
@@ -143,10 +139,7 @@ export const MultipleSelectControlled = () => {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell
-            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            onClick={toggleAllRows}
-          />
+          <TableSelectionCell {...tableHeaderSelectionCell()} />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
@@ -154,9 +147,9 @@ export const MultipleSelectControlled = () => {
         </TableRow>
       </TableHeader>
       <TableBody ref={ref}>
-        {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+        {rows.map(({ item, rowProps, selectionCellProps }) => (
+          <TableRow {...rowProps} key={item.file.label}>
+            <TableSelectionCell {...selectionCellProps} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
