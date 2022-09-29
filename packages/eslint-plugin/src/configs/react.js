@@ -45,7 +45,7 @@ module.exports = {
       },
     },
     {
-      files: '**.cy.{ts,tsx,js}',
+      files: '**/*.cy.{ts,tsx,js}',
       rules: {
         'import/no-extraneous-dependencies': 'off',
       },
