@@ -32,38 +32,44 @@ In your Webpack config, simply add the `@griffel/webpack-loader` to the list of 
 
 ```js
 // webpack.config.js
-module: {
-  rules: [
-    {
-      test: /\.(ts|tsx)$/,
-      exclude: /node_modules/,
-      use: {
-        loader: '@griffel/webpack-loader',
-        options: {
-          // see https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings
-          babelOptions: {
-            presets: ['@babel/preset-typescript'],
+module.exports = {
+  module: {
+    rules: [
+      // 💡 We recommend adding the Griffel webpack loader after `babel-loader`, `ts-loader`, etc.
+      //
+      //    The underlying Babel transforms used by the Webpack loader are configured by default to use
+      //    the most basic language features. Therefore, to avoid extra configuration or parsing errors,
+      //    using the Webpack loader after compilation is the required approach.
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: '@griffel/webpack-loader',
+          options: {
+            // see https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings
+            babelOptions: {
+              presets: ['@babel/preset-typescript'],
+            },
           },
         },
       },
-    },
-    {
-      test: /\.(ts|tsx)$/,
-      exclude: /node_modules/,
-      use: {
-        // or 'ts-loader'
-        loader: 'babel-loader',
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          // or 'ts-loader'
+          loader: 'babel-loader',
+        },
       },
-    },
-  ];
-}
+    ],
+  },
+};
 ```
 
-**💡 NOTE: we recommend adding the Griffel webpack loader after babel-loader or ts-loader.**. The underlying babel transforms
-used by the webpack loader are configured by default to use the most basic language features. Therefore to avoid
-extra configuration or parsing errors, using the webpack loader after transpilation is the required approach.
+> ℹ️ **Note**: A chain of webpack loaders is executed in reverse order
+> [https://webpack.js.org/concepts/loaders/#loader-features](https://webpack.js.org/concepts/loaders/#loader-features)
 
-#### Typescript (and additional transpilation) support
+#### Typescript (and additional compilation) support
 
 The Webpack loader [evaluate styles at runtime](#build-time-style-evaluation). For typescript
 it's necessary to install `@babel/preset-typescript` and configure it in the [babelOptions](https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings) of the loader. Similarly
