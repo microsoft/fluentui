@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: support ID prop in Calendar",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
