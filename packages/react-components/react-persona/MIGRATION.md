@@ -26,16 +26,16 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 | `coinSize`               | `size` in the `badge` or `avatar` slot |
 | `className`              | `className`                            |
 | `componentRef`           | `ref`                                  |
-| `hidePersonaDetails`     | NOT SUPPORTED                          |
-| `imageShouldFadeIn`      | NOT SUPPORTED                          |
+| `hidePersonaDetails`     | -                                      |
+| `imageShouldFadeIn`      | -                                      |
 | `isOutOfOffice`          | `status` in `presence` slot props      |
 | `optionalText`           | `quaternaryText`                       |
 | `presence`               | `presence`                             |
-| `presenceTitle`          | NOT SUPPORTED                          |
+| `presenceTitle`          |                                        |
 | `primaryText`            | `primaryText`                          |
 | `secondaryText`          | `secondaryText`                        |
-| `showOverflowTooltip`    | NOT SUPPORTED                          |
-| `showUnknownPersonaCoin` | NOT SUPPORTED                          |
+| `showOverflowTooltip`    | -                                      |
+| `showUnknownPersonaCoin` | -                                      |
 | `styles`                 | `className`                            |
 | `tertiaryText`           | `tertiaryText`                         |
 | `text`                   | `name`                                 |
