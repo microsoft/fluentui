@@ -116,6 +116,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
     );
     return;
   }
+  // Perform common folder migration first then update TsConfig files accordingly afterwards.
+  migrateCommonFolderToTesting(tree, options);
 
   // 1. update TsConfigs
   const { configs } = updatedLocalTsConfig(tree, options);
@@ -141,7 +143,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   updateNxWorkspace(tree, options);
   moveDocsToSubfolder(tree, options);
-  migrateCommonFolderToTesting(tree, options);
 }
 
 // ==== helpers ====
