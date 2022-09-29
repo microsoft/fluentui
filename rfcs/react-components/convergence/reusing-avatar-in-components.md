@@ -43,6 +43,48 @@ to do some extra work to make sure that the avatar follows design guidance.
 
 ## Detailed Design or Proposal
 
+### Shared context
+
+We could consider a `AvatarContext` that is a part of `react-shared-contexts` that can be used by components that wish
+to reuse the `Avatar`.
+
+This solution is prototyped in [#24807](https://github.com/microsoft/fluentui/pull/24807)
+
+```tsx
+const tableAvatarSizeMap = {
+  small: 24,
+  smaller: 20,
+};
+
+export const renderTableCellLayout_unstable = state => {
+  const { slots, slotProps } = getSlots<TableCellLayoutSlots>(state);
+
+  return (
+    <slots.root {...slotProps.root}>
+      {/* Only affects the specific slot */}
+      <AvatarContextProvider value={tableAvatarSizeGroup[state.size]}>
+        {slots.media && <slots.media {...slotProps.media} />}
+      </AvatarContextProvider>
+    </slots.root>
+  );
+};
+```
+
+#### Pros
+
+- We also use context for lots of other user cases - it works
+- Can be targeted to the speific slot that needs these overrides
+- Cheap cost of context ([#24991](https://github.com/microsoft/fluentui/pull/24991) measures perf
+
+#### Cons
+
+- Extra code in base component
+- Needs prototyping and investigation
+- If the slot is not speicfic enough -> all avatars under this context will be affected
+- This might not scale - AvatarContext, IconContext...
+
+## Discarded Solutions
+
 ### Userland problem
 
 We could treat this as a userland problem, and require that apps/features follow design guidance when using an
@@ -115,6 +157,10 @@ const useStyles = makeStyles({
 - Does not handle props
 - Harder for users to override styles since selectors are more specific
 - Not obvious for users how base component adjusts to the parent component - magic
+- Scope is not necessarily certain, in the case of avatar there are many factors that affect overrides
+  - font size
+  - icon size
+  - extra overrides for the badge
 
 ### Recompose components
 
@@ -216,49 +262,6 @@ export function renderTableCellLayout() {
 
 - Bundle size - users who don't want to use avatar will have it in their bundle
 - Confusing priorities - One slot wins over the other, it's why we have `appearance` prop
-
-### Shared context
-
-We could consider a `AvatarContext` that is a part of `react-shared-contexts` that can be used by components that wish
-to reuse the `Avatar`.
-
-This solution is prototyped in [#24807](https://github.com/microsoft/fluentui/pull/24807)
-
-```tsx
-const tableAvatarSizeMap = {
-  small: 24,
-  smaller: 20,
-};
-
-export const renderTableCellLayout_unstable = state => {
-  const { slots, slotProps } = getSlots<TableCellLayoutSlots>(state);
-
-  return (
-    <slots.root {...slotProps.root}>
-      {/* Only affects the specific slot */}
-      <AvatarContextProvider value={tableAvatarSizeGroup[state.size]}>
-        {slots.media && <slots.media {...slotProps.media} />}
-      </AvatarContextProvider>
-    </slots.root>
-  );
-};
-```
-
-#### Pros
-
-- We also use context for lots of other user cases - it works
-- Can be targeted to the speific slot that needs these overrides
-
-#### Cons
-
-- Extra code in base component
-- Needs prototyping and investigation
-- If the slot is not speicfic enough -> all avatars under this context will be affected
-- This might not scale - AvatarContext, IconContext...
-
-## Discarded Solutions
-
-> TODO put discarded solutions here
 
 ## Open Issues
 
