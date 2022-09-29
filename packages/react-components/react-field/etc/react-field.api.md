@@ -133,7 +133,7 @@ export const SwitchField: ForwardRefComponent<SwitchFieldProps>;
 export const switchFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
 
 // @public (undocumented)
-export type SwitchFieldProps = FieldProps<typeof Switch>;
+export type SwitchFieldProps = Omit<FieldProps<typeof Switch>, 'labelPosition'>;
 
 // @public (undocumented)
 export const TextareaField: ForwardRefComponent<TextareaFieldProps>;
