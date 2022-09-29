@@ -9430,11 +9430,17 @@ export enum PivotLinkFormat {
     tabs = 1
 }
 
+// @public
+export type PivotLinkFormatType = 'links' | 'tabs';
+
 // @public (undocumented)
 export enum PivotLinkSize {
     large = 1,
     normal = 0
 }
+
+// @public
+export type PivotLinkSizeType = 'normal' | 'large';
 
 // @public (undocumented)
 export const PlainCard: React.FunctionComponent<IPlainCardProps>;
