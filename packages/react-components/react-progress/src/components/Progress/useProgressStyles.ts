@@ -98,8 +98,6 @@ const useBarStyles = makeStyles({
   },
   indeterminate: {
     maxWidth: '33%',
-  },
-  ltr: {
     position: 'relative',
     backgroundImage: `linear-gradient(
       to right,
@@ -107,7 +105,7 @@ const useBarStyles = makeStyles({
       ${tokens.colorCompoundBrandBackground} 50%,
       ${tokens.colorNeutralBackground6} 100%
     )`,
-    animationName: IndeterminateProgress,
+    animationName: indeterminateProgress,
     animationDuration: '3s',
     animationIterationCount: 'infinite',
   },
@@ -147,11 +145,6 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   const descriptionStyles = useDescriptionStyles();
   const { dir } = useFluent();
 
-  const valuePercent = !indeterminate ? Math.min(100, Math.max(0, percentComplete * 100)) : undefined;
-  const progressBarStyles = {
-    [`${progressCssVars.percentageCssVar}`]: !indeterminate ? valuePercent + '%' : undefined,
-  };
-
   state.root.className = mergeClasses(progressClassNames.root, rootStyles.root, state.root.className);
 
   if (state.bar) {
@@ -159,7 +152,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       progressClassNames.bar,
       barStyles.base,
       indeterminate && barStyles.indeterminate,
-      indeterminate && barStyles[dir],
+      indeterminate && dir === 'rtl' && barStyles.rtl,
       barStyles[thickness],
       !indeterminate && barStyles.determinate,
       !indeterminate && percentComplete > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
@@ -177,20 +170,20 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   }
 
   if (state.label) {
-    state.label.className = mergeClasses(progressClassNames.label, labelStyles.default, state.label.className);
+    state.label.className = mergeClasses(progressClassNames.label, labelStyles.base, state.label.className);
   }
 
   if (state.description) {
     state.description.className = mergeClasses(
       progressClassNames.description,
-      descriptionStyles.default,
+      descriptionStyles.base,
       state.description.className,
     );
   }
 
   if (state.bar && !indeterminate) {
     state.bar.style = {
-      [progressCssVars.percentageCssVar]:  Math.min(100, Math.max(0, percentComplete * 100)) + '%',
+      [progressCssVars.percentageCssVar]: Math.min(100, Math.max(0, percentComplete)) + '%',
       ...state.bar.style,
     };
   }

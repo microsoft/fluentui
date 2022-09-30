@@ -9,7 +9,6 @@
 
 ### Don't
 
-- Use a `determinate` Progress when the total units to completion is indeterminate
 - Use only a single word description
 - Show text to the right or left of the bar
 - Cause progress to "rewind" to show new steps
