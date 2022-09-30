@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 29 Sep 2022 07:40:08 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 07:38:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.97.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.97.0)
+
+Fri, 30 Sep 2022 07:38:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.3..@fluentui/react_v8.97.0)
+
+### Minor changes
+
+- chore: support ID prop in Calendar ([PR #25013](https://github.com/microsoft/fluentui/pull/25013) by mgodbolt@microsoft.com)
 
 ## [8.96.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.3)
 
