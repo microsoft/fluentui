@@ -6,7 +6,7 @@ This log was last generated on Mon, 03 Oct 2022 07:37:49 GMT and should not be m
 
 ## [0.205.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.7)
 
-Mon, 03 Oct 2022 07:37:49 GMT 
+Mon, 03 Oct 2022 07:37:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.6..@fluentui/react-cards_v0.205.7)
 
 ### Patches
@@ -15,7 +15,7 @@ Mon, 03 Oct 2022 07:37:49 GMT
 
 ## [0.205.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.6)
 
-Fri, 30 Sep 2022 07:38:09 GMT 
+Fri, 30 Sep 2022 07:38:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.5..@fluentui/react-cards_v0.205.6)
 
 ### Patches
@@ -24,7 +24,7 @@ Fri, 30 Sep 2022 07:38:09 GMT
 
 ## [0.205.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.5)
 
-Thu, 29 Sep 2022 07:40:10 GMT 
+Thu, 29 Sep 2022 07:40:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.4..@fluentui/react-cards_v0.205.5)
 
 ### Patches
@@ -33,7 +33,7 @@ Thu, 29 Sep 2022 07:40:10 GMT
 
 ## [0.205.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.4)
 
-Wed, 28 Sep 2022 07:37:49 GMT 
+Wed, 28 Sep 2022 07:37:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.3..@fluentui/react-cards_v0.205.4)
 
 ### Patches
@@ -42,7 +42,7 @@ Wed, 28 Sep 2022 07:37:49 GMT
 
 ## [0.205.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.3)
 
-Thu, 22 Sep 2022 07:43:45 GMT 
+Thu, 22 Sep 2022 07:43:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.2..@fluentui/react-cards_v0.205.3)
 
 ### Patches
@@ -51,7 +51,7 @@ Thu, 22 Sep 2022 07:43:45 GMT
 
 ## [0.205.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.2)
 
-Mon, 19 Sep 2022 07:47:30 GMT 
+Mon, 19 Sep 2022 07:47:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.1..@fluentui/react-cards_v0.205.2)
 
 ### Patches
@@ -60,7 +60,7 @@ Mon, 19 Sep 2022 07:47:30 GMT
 
 ## [0.205.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.1)
 
-Fri, 16 Sep 2022 07:37:32 GMT 
+Fri, 16 Sep 2022 07:37:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.0..@fluentui/react-cards_v0.205.1)
 
 ### Patches
@@ -69,7 +69,7 @@ Fri, 16 Sep 2022 07:37:32 GMT
 
 ## [0.205.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.0)
 
-Thu, 15 Sep 2022 19:15:27 GMT 
+Thu, 15 Sep 2022 19:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.35..@fluentui/react-cards_v0.205.0)
 
 ### Minor changes
@@ -78,7 +78,7 @@ Thu, 15 Sep 2022 19:15:27 GMT
 
 ## [0.204.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.35)
 
-Tue, 13 Sep 2022 07:41:03 GMT 
+Tue, 13 Sep 2022 07:41:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.34..@fluentui/react-cards_v0.204.35)
 
 ### Patches
@@ -87,7 +87,7 @@ Tue, 13 Sep 2022 07:41:03 GMT
 
 ## [0.204.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.34)
 
-Thu, 08 Sep 2022 20:52:16 GMT 
+Thu, 08 Sep 2022 20:52:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.33..@fluentui/react-cards_v0.204.34)
 
 ### Patches
@@ -96,7 +96,7 @@ Thu, 08 Sep 2022 20:52:16 GMT
 
 ## [0.204.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.33)
 
-Wed, 07 Sep 2022 07:54:43 GMT 
+Wed, 07 Sep 2022 07:54:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.32..@fluentui/react-cards_v0.204.33)
 
 ### Patches
@@ -105,7 +105,7 @@ Wed, 07 Sep 2022 07:54:43 GMT
 
 ## [0.204.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.32)
 
-Mon, 05 Sep 2022 07:38:30 GMT 
+Mon, 05 Sep 2022 07:38:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.31..@fluentui/react-cards_v0.204.32)
 
 ### Patches
@@ -114,7 +114,7 @@ Mon, 05 Sep 2022 07:38:30 GMT
 
 ## [0.204.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.31)
 
-Fri, 02 Sep 2022 07:48:53 GMT 
+Fri, 02 Sep 2022 07:48:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.30..@fluentui/react-cards_v0.204.31)
 
 ### Patches
@@ -124,7 +124,7 @@ Fri, 02 Sep 2022 07:48:53 GMT
 
 ## [0.204.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.30)
 
-Thu, 01 Sep 2022 07:48:11 GMT 
+Thu, 01 Sep 2022 07:48:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.29..@fluentui/react-cards_v0.204.30)
 
 ### Patches
@@ -134,7 +134,7 @@ Thu, 01 Sep 2022 07:48:11 GMT
 
 ## [0.204.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.29)
 
-Mon, 29 Aug 2022 07:44:38 GMT 
+Mon, 29 Aug 2022 07:44:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.28..@fluentui/react-cards_v0.204.29)
 
 ### Patches
@@ -144,7 +144,7 @@ Mon, 29 Aug 2022 07:44:38 GMT
 
 ## [0.204.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.28)
 
-Fri, 26 Aug 2022 07:39:58 GMT 
+Fri, 26 Aug 2022 07:39:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.27..@fluentui/react-cards_v0.204.28)
 
 ### Patches
@@ -153,7 +153,7 @@ Fri, 26 Aug 2022 07:39:58 GMT
 
 ## [0.204.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.27)
 
-Thu, 25 Aug 2022 07:41:03 GMT 
+Thu, 25 Aug 2022 07:41:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.26..@fluentui/react-cards_v0.204.27)
 
 ### Patches
@@ -162,7 +162,7 @@ Thu, 25 Aug 2022 07:41:03 GMT
 
 ## [0.204.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.26)
 
-Wed, 24 Aug 2022 16:36:06 GMT 
+Wed, 24 Aug 2022 16:36:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.25..@fluentui/react-cards_v0.204.26)
 
 ### Patches
@@ -172,7 +172,7 @@ Wed, 24 Aug 2022 16:36:06 GMT
 
 ## [0.204.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.25)
 
-Wed, 24 Aug 2022 07:44:42 GMT 
+Wed, 24 Aug 2022 07:44:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.24..@fluentui/react-cards_v0.204.25)
 
 ### Patches
@@ -181,7 +181,7 @@ Wed, 24 Aug 2022 07:44:42 GMT
 
 ## [0.204.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.24)
 
-Tue, 23 Aug 2022 07:22:47 GMT 
+Tue, 23 Aug 2022 07:22:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.23..@fluentui/react-cards_v0.204.24)
 
 ### Patches
@@ -192,7 +192,7 @@ Tue, 23 Aug 2022 07:22:47 GMT
 
 ## [0.204.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.23)
 
-Mon, 22 Aug 2022 07:44:26 GMT 
+Mon, 22 Aug 2022 07:44:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.22..@fluentui/react-cards_v0.204.23)
 
 ### Patches
@@ -201,7 +201,7 @@ Mon, 22 Aug 2022 07:44:26 GMT
 
 ## [0.204.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.22)
 
-Thu, 18 Aug 2022 23:39:31 GMT 
+Thu, 18 Aug 2022 23:39:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.21..@fluentui/react-cards_v0.204.22)
 
 ### Patches
@@ -211,7 +211,7 @@ Thu, 18 Aug 2022 23:39:31 GMT
 
 ## [0.204.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.21)
 
-Thu, 18 Aug 2022 07:48:48 GMT 
+Thu, 18 Aug 2022 07:48:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.20..@fluentui/react-cards_v0.204.21)
 
 ### Patches
@@ -220,7 +220,7 @@ Thu, 18 Aug 2022 07:48:48 GMT
 
 ## [0.204.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.20)
 
-Mon, 15 Aug 2022 07:39:41 GMT 
+Mon, 15 Aug 2022 07:39:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.19..@fluentui/react-cards_v0.204.20)
 
 ### Patches
@@ -230,7 +230,7 @@ Mon, 15 Aug 2022 07:39:41 GMT
 
 ## [0.204.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.19)
 
-Fri, 12 Aug 2022 07:48:19 GMT 
+Fri, 12 Aug 2022 07:48:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.18..@fluentui/react-cards_v0.204.19)
 
 ### Patches
@@ -239,7 +239,7 @@ Fri, 12 Aug 2022 07:48:19 GMT
 
 ## [0.204.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.18)
 
-Mon, 08 Aug 2022 20:28:21 GMT 
+Mon, 08 Aug 2022 20:28:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.17..@fluentui/react-cards_v0.204.18)
 
 ### Patches
@@ -248,7 +248,7 @@ Mon, 08 Aug 2022 20:28:21 GMT
 
 ## [0.204.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.17)
 
-Mon, 08 Aug 2022 07:39:33 GMT 
+Mon, 08 Aug 2022 07:39:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.16..@fluentui/react-cards_v0.204.17)
 
 ### Patches
@@ -260,7 +260,7 @@ Mon, 08 Aug 2022 07:39:33 GMT
 
 ## [0.204.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.16)
 
-Thu, 04 Aug 2022 07:42:13 GMT 
+Thu, 04 Aug 2022 07:42:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.15..@fluentui/react-cards_v0.204.16)
 
 ### Patches
@@ -269,7 +269,7 @@ Thu, 04 Aug 2022 07:42:13 GMT
 
 ## [0.204.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.15)
 
-Tue, 02 Aug 2022 18:04:49 GMT 
+Tue, 02 Aug 2022 18:04:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.14..@fluentui/react-cards_v0.204.15)
 
 ### Patches
@@ -278,7 +278,7 @@ Tue, 02 Aug 2022 18:04:49 GMT
 
 ## [0.204.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.14)
 
-Tue, 02 Aug 2022 07:44:44 GMT 
+Tue, 02 Aug 2022 07:44:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.13..@fluentui/react-cards_v0.204.14)
 
 ### Patches
@@ -288,7 +288,7 @@ Tue, 02 Aug 2022 07:44:44 GMT
 
 ## [0.204.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.13)
 
-Mon, 01 Aug 2022 07:39:03 GMT 
+Mon, 01 Aug 2022 07:39:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.12..@fluentui/react-cards_v0.204.13)
 
 ### Patches
@@ -297,7 +297,7 @@ Mon, 01 Aug 2022 07:39:03 GMT
 
 ## [0.204.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.12)
 
-Fri, 29 Jul 2022 07:41:56 GMT 
+Fri, 29 Jul 2022 07:41:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.11..@fluentui/react-cards_v0.204.12)
 
 ### Patches
@@ -306,7 +306,7 @@ Fri, 29 Jul 2022 07:41:56 GMT
 
 ## [0.204.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.11)
 
-Thu, 28 Jul 2022 07:41:18 GMT 
+Thu, 28 Jul 2022 07:41:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.10..@fluentui/react-cards_v0.204.11)
 
 ### Patches
@@ -315,7 +315,7 @@ Thu, 28 Jul 2022 07:41:18 GMT
 
 ## [0.204.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.10)
 
-Wed, 27 Jul 2022 07:37:43 GMT 
+Wed, 27 Jul 2022 07:37:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.9..@fluentui/react-cards_v0.204.10)
 
 ### Patches
@@ -324,7 +324,7 @@ Wed, 27 Jul 2022 07:37:43 GMT
 
 ## [0.204.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.9)
 
-Tue, 26 Jul 2022 07:39:35 GMT 
+Tue, 26 Jul 2022 07:39:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.8..@fluentui/react-cards_v0.204.9)
 
 ### Patches
@@ -334,7 +334,7 @@ Tue, 26 Jul 2022 07:39:35 GMT
 
 ## [0.204.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.8)
 
-Mon, 25 Jul 2022 07:36:56 GMT 
+Mon, 25 Jul 2022 07:36:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.7..@fluentui/react-cards_v0.204.8)
 
 ### Patches
@@ -343,7 +343,7 @@ Mon, 25 Jul 2022 07:36:56 GMT
 
 ## [0.204.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.7)
 
-Fri, 22 Jul 2022 07:54:16 GMT 
+Fri, 22 Jul 2022 07:54:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.6..@fluentui/react-cards_v0.204.7)
 
 ### Patches
@@ -352,7 +352,7 @@ Fri, 22 Jul 2022 07:54:16 GMT
 
 ## [0.204.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.6)
 
-Thu, 21 Jul 2022 07:49:17 GMT 
+Thu, 21 Jul 2022 07:49:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.5..@fluentui/react-cards_v0.204.6)
 
 ### Patches
@@ -361,7 +361,7 @@ Thu, 21 Jul 2022 07:49:17 GMT
 
 ## [0.204.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.5)
 
-Wed, 20 Jul 2022 07:42:27 GMT 
+Wed, 20 Jul 2022 07:42:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.4..@fluentui/react-cards_v0.204.5)
 
 ### Patches
@@ -370,7 +370,7 @@ Wed, 20 Jul 2022 07:42:27 GMT
 
 ## [0.204.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.4)
 
-Tue, 19 Jul 2022 07:41:07 GMT 
+Tue, 19 Jul 2022 07:41:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.3..@fluentui/react-cards_v0.204.4)
 
 ### Patches
@@ -379,7 +379,7 @@ Tue, 19 Jul 2022 07:41:07 GMT
 
 ## [0.204.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.3)
 
-Fri, 15 Jul 2022 20:03:48 GMT 
+Fri, 15 Jul 2022 20:03:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.2..@fluentui/react-cards_v0.204.3)
 
 ### Patches
@@ -388,7 +388,7 @@ Fri, 15 Jul 2022 20:03:48 GMT
 
 ## [0.204.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.2)
 
-Thu, 14 Jul 2022 07:45:35 GMT 
+Thu, 14 Jul 2022 07:45:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.1..@fluentui/react-cards_v0.204.2)
 
 ### Patches
@@ -397,7 +397,7 @@ Thu, 14 Jul 2022 07:45:35 GMT
 
 ## [0.204.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.1)
 
-Tue, 12 Jul 2022 07:41:00 GMT 
+Tue, 12 Jul 2022 07:41:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.0..@fluentui/react-cards_v0.204.1)
 
 ### Patches
@@ -407,7 +407,7 @@ Tue, 12 Jul 2022 07:41:00 GMT
 
 ## [0.204.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.0)
 
-Fri, 08 Jul 2022 07:36:29 GMT 
+Fri, 08 Jul 2022 07:36:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.203.1..@fluentui/react-cards_v0.204.0)
 
 ### Minor changes
@@ -416,7 +416,7 @@ Fri, 08 Jul 2022 07:36:29 GMT
 
 ## [0.203.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.203.1)
 
-Thu, 07 Jul 2022 07:37:21 GMT 
+Thu, 07 Jul 2022 07:37:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.203.0..@fluentui/react-cards_v0.203.1)
 
 ### Patches
@@ -425,7 +425,7 @@ Thu, 07 Jul 2022 07:37:21 GMT
 
 ## [0.203.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.203.0)
 
-Wed, 06 Jul 2022 07:38:24 GMT 
+Wed, 06 Jul 2022 07:38:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.53..@fluentui/react-cards_v0.203.0)
 
 ### Minor changes
@@ -434,7 +434,7 @@ Wed, 06 Jul 2022 07:38:24 GMT
 
 ## [0.202.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.53)
 
-Thu, 30 Jun 2022 07:40:48 GMT 
+Thu, 30 Jun 2022 07:40:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.52..@fluentui/react-cards_v0.202.53)
 
 ### Patches
@@ -443,7 +443,7 @@ Thu, 30 Jun 2022 07:40:48 GMT
 
 ## [0.202.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.52)
 
-Tue, 28 Jun 2022 07:39:04 GMT 
+Tue, 28 Jun 2022 07:39:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.51..@fluentui/react-cards_v0.202.52)
 
 ### Patches
@@ -453,7 +453,7 @@ Tue, 28 Jun 2022 07:39:04 GMT
 
 ## [0.202.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.51)
 
-Fri, 24 Jun 2022 07:43:32 GMT 
+Fri, 24 Jun 2022 07:43:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.50..@fluentui/react-cards_v0.202.51)
 
 ### Patches
@@ -462,7 +462,7 @@ Fri, 24 Jun 2022 07:43:32 GMT
 
 ## [0.202.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.50)
 
-Mon, 20 Jun 2022 07:45:13 GMT 
+Mon, 20 Jun 2022 07:45:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.49..@fluentui/react-cards_v0.202.50)
 
 ### Patches
@@ -471,7 +471,7 @@ Mon, 20 Jun 2022 07:45:13 GMT
 
 ## [0.202.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.49)
 
-Fri, 17 Jun 2022 07:41:59 GMT 
+Fri, 17 Jun 2022 07:41:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.48..@fluentui/react-cards_v0.202.49)
 
 ### Patches
@@ -480,7 +480,7 @@ Fri, 17 Jun 2022 07:41:59 GMT
 
 ## [0.202.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.48)
 
-Wed, 15 Jun 2022 21:38:03 GMT 
+Wed, 15 Jun 2022 21:38:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.47..@fluentui/react-cards_v0.202.48)
 
 ### Patches
@@ -489,7 +489,7 @@ Wed, 15 Jun 2022 21:38:03 GMT
 
 ## [0.202.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.47)
 
-Wed, 15 Jun 2022 07:40:22 GMT 
+Wed, 15 Jun 2022 07:40:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.46..@fluentui/react-cards_v0.202.47)
 
 ### Patches
@@ -498,7 +498,7 @@ Wed, 15 Jun 2022 07:40:22 GMT
 
 ## [0.202.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.46)
 
-Tue, 14 Jun 2022 07:52:11 GMT 
+Tue, 14 Jun 2022 07:52:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.45..@fluentui/react-cards_v0.202.46)
 
 ### Patches
@@ -507,7 +507,7 @@ Tue, 14 Jun 2022 07:52:11 GMT
 
 ## [0.202.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.45)
 
-Mon, 13 Jun 2022 07:39:08 GMT 
+Mon, 13 Jun 2022 07:39:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.44..@fluentui/react-cards_v0.202.45)
 
 ### Patches
@@ -516,7 +516,7 @@ Mon, 13 Jun 2022 07:39:08 GMT
 
 ## [0.202.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.44)
 
-Fri, 10 Jun 2022 07:46:14 GMT 
+Fri, 10 Jun 2022 07:46:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.43..@fluentui/react-cards_v0.202.44)
 
 ### Patches
@@ -525,7 +525,7 @@ Fri, 10 Jun 2022 07:46:14 GMT
 
 ## [0.202.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.43)
 
-Thu, 09 Jun 2022 07:45:28 GMT 
+Thu, 09 Jun 2022 07:45:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.42..@fluentui/react-cards_v0.202.43)
 
 ### Patches
@@ -534,7 +534,7 @@ Thu, 09 Jun 2022 07:45:28 GMT
 
 ## [0.202.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.42)
 
-Tue, 07 Jun 2022 07:48:04 GMT 
+Tue, 07 Jun 2022 07:48:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.41..@fluentui/react-cards_v0.202.42)
 
 ### Patches
@@ -544,7 +544,7 @@ Tue, 07 Jun 2022 07:48:04 GMT
 
 ## [0.202.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.41)
 
-Thu, 02 Jun 2022 07:38:04 GMT 
+Thu, 02 Jun 2022 07:38:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.40..@fluentui/react-cards_v0.202.41)
 
 ### Patches
@@ -553,7 +553,7 @@ Thu, 02 Jun 2022 07:38:04 GMT
 
 ## [0.202.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.40)
 
-Wed, 01 Jun 2022 07:38:24 GMT 
+Wed, 01 Jun 2022 07:38:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.39..@fluentui/react-cards_v0.202.40)
 
 ### Patches
@@ -562,7 +562,7 @@ Wed, 01 Jun 2022 07:38:24 GMT
 
 ## [0.202.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.39)
 
-Mon, 30 May 2022 07:44:13 GMT 
+Mon, 30 May 2022 07:44:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.38..@fluentui/react-cards_v0.202.39)
 
 ### Patches
@@ -571,7 +571,7 @@ Mon, 30 May 2022 07:44:13 GMT
 
 ## [0.202.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.38)
 
-Fri, 27 May 2022 07:39:11 GMT 
+Fri, 27 May 2022 07:39:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.37..@fluentui/react-cards_v0.202.38)
 
 ### Patches
@@ -580,7 +580,7 @@ Fri, 27 May 2022 07:39:11 GMT
 
 ## [0.202.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.37)
 
-Wed, 25 May 2022 07:44:28 GMT 
+Wed, 25 May 2022 07:44:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.36..@fluentui/react-cards_v0.202.37)
 
 ### Patches
@@ -589,7 +589,7 @@ Wed, 25 May 2022 07:44:28 GMT
 
 ## [0.202.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.36)
 
-Tue, 24 May 2022 07:47:26 GMT 
+Tue, 24 May 2022 07:47:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.35..@fluentui/react-cards_v0.202.36)
 
 ### Patches
@@ -598,7 +598,7 @@ Tue, 24 May 2022 07:47:26 GMT
 
 ## [0.202.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.35)
 
-Mon, 23 May 2022 07:42:16 GMT 
+Mon, 23 May 2022 07:42:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.34..@fluentui/react-cards_v0.202.35)
 
 ### Patches
@@ -607,7 +607,7 @@ Mon, 23 May 2022 07:42:16 GMT
 
 ## [0.202.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.34)
 
-Thu, 19 May 2022 07:41:27 GMT 
+Thu, 19 May 2022 07:41:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.33..@fluentui/react-cards_v0.202.34)
 
 ### Patches
@@ -616,7 +616,7 @@ Thu, 19 May 2022 07:41:27 GMT
 
 ## [0.202.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.33)
 
-Tue, 17 May 2022 07:45:01 GMT 
+Tue, 17 May 2022 07:45:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.32..@fluentui/react-cards_v0.202.33)
 
 ### Patches
@@ -625,7 +625,7 @@ Tue, 17 May 2022 07:45:01 GMT
 
 ## [0.202.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.32)
 
-Mon, 16 May 2022 07:36:55 GMT 
+Mon, 16 May 2022 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.31..@fluentui/react-cards_v0.202.32)
 
 ### Patches
@@ -634,7 +634,7 @@ Mon, 16 May 2022 07:36:55 GMT
 
 ## [0.202.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.31)
 
-Fri, 13 May 2022 07:45:35 GMT 
+Fri, 13 May 2022 07:45:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.30..@fluentui/react-cards_v0.202.31)
 
 ### Patches
@@ -646,7 +646,7 @@ Fri, 13 May 2022 07:45:35 GMT
 
 ## [0.202.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.30)
 
-Wed, 11 May 2022 07:42:47 GMT 
+Wed, 11 May 2022 07:42:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.29..@fluentui/react-cards_v0.202.30)
 
 ### Patches
@@ -655,7 +655,7 @@ Wed, 11 May 2022 07:42:47 GMT
 
 ## [0.202.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.29)
 
-Mon, 09 May 2022 07:37:42 GMT 
+Mon, 09 May 2022 07:37:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.28..@fluentui/react-cards_v0.202.29)
 
 ### Patches
@@ -664,7 +664,7 @@ Mon, 09 May 2022 07:37:42 GMT
 
 ## [0.202.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.28)
 
-Thu, 28 Apr 2022 07:39:56 GMT 
+Thu, 28 Apr 2022 07:39:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.27..@fluentui/react-cards_v0.202.28)
 
 ### Patches
@@ -673,7 +673,7 @@ Thu, 28 Apr 2022 07:39:56 GMT
 
 ## [0.202.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.27)
 
-Wed, 27 Apr 2022 07:43:07 GMT 
+Wed, 27 Apr 2022 07:43:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.26..@fluentui/react-cards_v0.202.27)
 
 ### Patches
@@ -682,7 +682,7 @@ Wed, 27 Apr 2022 07:43:07 GMT
 
 ## [0.202.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.26)
 
-Mon, 25 Apr 2022 07:37:25 GMT 
+Mon, 25 Apr 2022 07:37:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.25..@fluentui/react-cards_v0.202.26)
 
 ### Patches
@@ -691,7 +691,7 @@ Mon, 25 Apr 2022 07:37:25 GMT
 
 ## [0.202.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.25)
 
-Thu, 21 Apr 2022 07:36:48 GMT 
+Thu, 21 Apr 2022 07:36:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.24..@fluentui/react-cards_v0.202.25)
 
 ### Patches
@@ -700,7 +700,7 @@ Thu, 21 Apr 2022 07:36:48 GMT
 
 ## [0.202.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.24)
 
-Wed, 20 Apr 2022 07:39:23 GMT 
+Wed, 20 Apr 2022 07:39:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.23..@fluentui/react-cards_v0.202.24)
 
 ### Patches
@@ -709,7 +709,7 @@ Wed, 20 Apr 2022 07:39:23 GMT
 
 ## [0.202.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.23)
 
-Tue, 19 Apr 2022 21:39:15 GMT 
+Tue, 19 Apr 2022 21:39:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.22..@fluentui/react-cards_v0.202.23)
 
 ### Patches
@@ -718,7 +718,7 @@ Tue, 19 Apr 2022 21:39:15 GMT
 
 ## [0.202.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.22)
 
-Mon, 18 Apr 2022 07:38:04 GMT 
+Mon, 18 Apr 2022 07:38:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.21..@fluentui/react-cards_v0.202.22)
 
 ### Patches
@@ -727,7 +727,7 @@ Mon, 18 Apr 2022 07:38:04 GMT
 
 ## [0.202.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.21)
 
-Fri, 15 Apr 2022 07:42:48 GMT 
+Fri, 15 Apr 2022 07:42:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.20..@fluentui/react-cards_v0.202.21)
 
 ### Patches
@@ -738,7 +738,7 @@ Fri, 15 Apr 2022 07:42:48 GMT
 
 ## [0.202.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.20)
 
-Thu, 14 Apr 2022 07:38:11 GMT 
+Thu, 14 Apr 2022 07:38:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.19..@fluentui/react-cards_v0.202.20)
 
 ### Patches
@@ -747,7 +747,7 @@ Thu, 14 Apr 2022 07:38:11 GMT
 
 ## [0.202.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.19)
 
-Tue, 12 Apr 2022 07:39:33 GMT 
+Tue, 12 Apr 2022 07:39:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.18..@fluentui/react-cards_v0.202.19)
 
 ### Patches
@@ -756,7 +756,7 @@ Tue, 12 Apr 2022 07:39:33 GMT
 
 ## [0.202.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.18)
 
-Mon, 11 Apr 2022 07:40:58 GMT 
+Mon, 11 Apr 2022 07:40:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.17..@fluentui/react-cards_v0.202.18)
 
 ### Patches
@@ -765,7 +765,7 @@ Mon, 11 Apr 2022 07:40:58 GMT
 
 ## [0.202.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.17)
 
-Wed, 06 Apr 2022 07:34:58 GMT 
+Wed, 06 Apr 2022 07:34:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.16..@fluentui/react-cards_v0.202.17)
 
 ### Patches
@@ -774,7 +774,7 @@ Wed, 06 Apr 2022 07:34:58 GMT
 
 ## [0.202.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.16)
 
-Mon, 04 Apr 2022 20:01:04 GMT 
+Mon, 04 Apr 2022 20:01:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.15..@fluentui/react-cards_v0.202.16)
 
 ### Patches
@@ -783,7 +783,7 @@ Mon, 04 Apr 2022 20:01:04 GMT
 
 ## [0.202.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.15)
 
-Thu, 31 Mar 2022 07:38:07 GMT 
+Thu, 31 Mar 2022 07:38:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.14..@fluentui/react-cards_v0.202.15)
 
 ### Patches
@@ -792,7 +792,7 @@ Thu, 31 Mar 2022 07:38:07 GMT
 
 ## [0.202.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.14)
 
-Wed, 30 Mar 2022 07:38:55 GMT 
+Wed, 30 Mar 2022 07:38:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.13..@fluentui/react-cards_v0.202.14)
 
 ### Patches
@@ -801,7 +801,7 @@ Wed, 30 Mar 2022 07:38:55 GMT
 
 ## [0.202.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.13)
 
-Mon, 28 Mar 2022 07:47:27 GMT 
+Mon, 28 Mar 2022 07:47:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.12..@fluentui/react-cards_v0.202.13)
 
 ### Patches
@@ -810,7 +810,7 @@ Mon, 28 Mar 2022 07:47:27 GMT
 
 ## [0.202.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.12)
 
-Fri, 25 Mar 2022 07:38:05 GMT 
+Fri, 25 Mar 2022 07:38:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.11..@fluentui/react-cards_v0.202.12)
 
 ### Patches
@@ -819,7 +819,7 @@ Fri, 25 Mar 2022 07:38:05 GMT
 
 ## [0.202.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.11)
 
-Wed, 23 Mar 2022 07:37:29 GMT 
+Wed, 23 Mar 2022 07:37:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.10..@fluentui/react-cards_v0.202.11)
 
 ### Patches
@@ -828,7 +828,7 @@ Wed, 23 Mar 2022 07:37:29 GMT
 
 ## [0.202.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.10)
 
-Mon, 21 Mar 2022 07:39:45 GMT 
+Mon, 21 Mar 2022 07:39:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.9..@fluentui/react-cards_v0.202.10)
 
 ### Patches
@@ -837,7 +837,7 @@ Mon, 21 Mar 2022 07:39:45 GMT
 
 ## [0.202.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.9)
 
-Fri, 18 Mar 2022 07:42:02 GMT 
+Fri, 18 Mar 2022 07:42:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.8..@fluentui/react-cards_v0.202.9)
 
 ### Patches
@@ -846,7 +846,7 @@ Fri, 18 Mar 2022 07:42:02 GMT
 
 ## [0.202.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.8)
 
-Wed, 16 Mar 2022 07:38:51 GMT 
+Wed, 16 Mar 2022 07:38:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.7..@fluentui/react-cards_v0.202.8)
 
 ### Patches
@@ -855,7 +855,7 @@ Wed, 16 Mar 2022 07:38:51 GMT
 
 ## [0.202.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.7)
 
-Tue, 15 Mar 2022 07:45:54 GMT 
+Tue, 15 Mar 2022 07:45:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.6..@fluentui/react-cards_v0.202.7)
 
 ### Patches
@@ -865,7 +865,7 @@ Tue, 15 Mar 2022 07:45:54 GMT
 
 ## [0.202.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.6)
 
-Sat, 12 Mar 2022 01:04:50 GMT 
+Sat, 12 Mar 2022 01:04:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.5..@fluentui/react-cards_v0.202.6)
 
 ### Patches
@@ -874,7 +874,7 @@ Sat, 12 Mar 2022 01:04:50 GMT
 
 ## [0.202.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.5)
 
-Fri, 11 Mar 2022 19:51:48 GMT 
+Fri, 11 Mar 2022 19:51:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.4..@fluentui/react-cards_v0.202.5)
 
 ### Patches
@@ -883,7 +883,7 @@ Fri, 11 Mar 2022 19:51:48 GMT
 
 ## [0.202.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.4)
 
-Fri, 11 Mar 2022 07:34:41 GMT 
+Fri, 11 Mar 2022 07:34:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.3..@fluentui/react-cards_v0.202.4)
 
 ### Patches
@@ -894,7 +894,7 @@ Fri, 11 Mar 2022 07:34:41 GMT
 
 ## [0.202.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.3)
 
-Thu, 10 Mar 2022 07:34:50 GMT 
+Thu, 10 Mar 2022 07:34:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.2..@fluentui/react-cards_v0.202.3)
 
 ### Patches
@@ -904,7 +904,7 @@ Thu, 10 Mar 2022 07:34:50 GMT
 
 ## [0.202.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.2)
 
-Wed, 09 Mar 2022 07:37:30 GMT 
+Wed, 09 Mar 2022 07:37:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.1..@fluentui/react-cards_v0.202.2)
 
 ### Patches
@@ -914,7 +914,7 @@ Wed, 09 Mar 2022 07:37:30 GMT
 
 ## [0.202.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.1)
 
-Tue, 08 Mar 2022 23:29:58 GMT 
+Tue, 08 Mar 2022 23:29:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.0..@fluentui/react-cards_v0.202.1)
 
 ### Patches
@@ -924,7 +924,7 @@ Tue, 08 Mar 2022 23:29:58 GMT
 
 ## [0.202.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.0)
 
-Tue, 08 Mar 2022 07:35:08 GMT 
+Tue, 08 Mar 2022 07:35:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.201.2..@fluentui/react-cards_v0.202.0)
 
 ### Minor changes
@@ -933,7 +933,7 @@ Tue, 08 Mar 2022 07:35:08 GMT
 
 ## [0.201.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.201.2)
 
-Mon, 07 Mar 2022 07:41:14 GMT 
+Mon, 07 Mar 2022 07:41:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.201.1..@fluentui/react-cards_v0.201.2)
 
 ### Patches
@@ -942,7 +942,7 @@ Mon, 07 Mar 2022 07:41:14 GMT
 
 ## [0.201.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.201.1)
 
-Fri, 04 Mar 2022 07:42:05 GMT 
+Fri, 04 Mar 2022 07:42:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.201.0..@fluentui/react-cards_v0.201.1)
 
 ### Patches
@@ -951,7 +951,7 @@ Fri, 04 Mar 2022 07:42:05 GMT
 
 ## [0.201.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.201.0)
 
-Thu, 03 Mar 2022 07:24:27 GMT 
+Thu, 03 Mar 2022 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.103..@fluentui/react-cards_v0.201.0)
 
 ### Minor changes
@@ -964,7 +964,7 @@ Thu, 03 Mar 2022 07:24:27 GMT
 
 ## [0.200.103](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.103)
 
-Wed, 02 Mar 2022 07:23:06 GMT 
+Wed, 02 Mar 2022 07:23:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.102..@fluentui/react-cards_v0.200.103)
 
 ### Patches
@@ -973,7 +973,7 @@ Wed, 02 Mar 2022 07:23:06 GMT
 
 ## [0.200.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.102)
 
-Tue, 01 Mar 2022 07:23:43 GMT 
+Tue, 01 Mar 2022 07:23:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.101..@fluentui/react-cards_v0.200.102)
 
 ### Patches
@@ -983,7 +983,7 @@ Tue, 01 Mar 2022 07:23:43 GMT
 
 ## [0.200.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.101)
 
-Thu, 24 Feb 2022 07:29:50 GMT 
+Thu, 24 Feb 2022 07:29:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.100..@fluentui/react-cards_v0.200.101)
 
 ### Patches
@@ -993,7 +993,7 @@ Thu, 24 Feb 2022 07:29:50 GMT
 
 ## [0.200.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.100)
 
-Wed, 23 Feb 2022 07:26:36 GMT 
+Wed, 23 Feb 2022 07:26:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.99..@fluentui/react-cards_v0.200.100)
 
 ### Patches
@@ -1002,7 +1002,7 @@ Wed, 23 Feb 2022 07:26:36 GMT
 
 ## [0.200.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.99)
 
-Thu, 17 Feb 2022 07:28:31 GMT 
+Thu, 17 Feb 2022 07:28:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.98..@fluentui/react-cards_v0.200.99)
 
 ### Patches
@@ -1012,7 +1012,7 @@ Thu, 17 Feb 2022 07:28:31 GMT
 
 ## [0.200.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.98)
 
-Mon, 14 Feb 2022 07:26:37 GMT 
+Mon, 14 Feb 2022 07:26:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.97..@fluentui/react-cards_v0.200.98)
 
 ### Patches
@@ -1021,7 +1021,7 @@ Mon, 14 Feb 2022 07:26:37 GMT
 
 ## [0.200.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.97)
 
-Fri, 11 Feb 2022 07:27:49 GMT 
+Fri, 11 Feb 2022 07:27:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.96..@fluentui/react-cards_v0.200.97)
 
 ### Patches
@@ -1031,7 +1031,7 @@ Fri, 11 Feb 2022 07:27:49 GMT
 
 ## [0.200.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.96)
 
-Thu, 10 Feb 2022 07:32:10 GMT 
+Thu, 10 Feb 2022 07:32:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.95..@fluentui/react-cards_v0.200.96)
 
 ### Patches
@@ -1040,7 +1040,7 @@ Thu, 10 Feb 2022 07:32:10 GMT
 
 ## [0.200.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.95)
 
-Wed, 09 Feb 2022 07:30:50 GMT 
+Wed, 09 Feb 2022 07:30:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.94..@fluentui/react-cards_v0.200.95)
 
 ### Patches
@@ -1050,7 +1050,7 @@ Wed, 09 Feb 2022 07:30:50 GMT
 
 ## [0.200.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.94)
 
-Tue, 08 Feb 2022 07:25:34 GMT 
+Tue, 08 Feb 2022 07:25:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.93..@fluentui/react-cards_v0.200.94)
 
 ### Patches
@@ -1059,7 +1059,7 @@ Tue, 08 Feb 2022 07:25:34 GMT
 
 ## [0.200.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.93)
 
-Fri, 04 Feb 2022 07:31:42 GMT 
+Fri, 04 Feb 2022 07:31:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.92..@fluentui/react-cards_v0.200.93)
 
 ### Patches
@@ -1068,7 +1068,7 @@ Fri, 04 Feb 2022 07:31:42 GMT
 
 ## [0.200.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.92)
 
-Thu, 03 Feb 2022 07:29:41 GMT 
+Thu, 03 Feb 2022 07:29:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.91..@fluentui/react-cards_v0.200.92)
 
 ### Patches
@@ -1079,7 +1079,7 @@ Thu, 03 Feb 2022 07:29:41 GMT
 
 ## [0.200.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.91)
 
-Tue, 01 Feb 2022 07:26:26 GMT 
+Tue, 01 Feb 2022 07:26:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.90..@fluentui/react-cards_v0.200.91)
 
 ### Patches
@@ -1088,7 +1088,7 @@ Tue, 01 Feb 2022 07:26:26 GMT
 
 ## [0.200.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.90)
 
-Mon, 31 Jan 2022 07:27:30 GMT 
+Mon, 31 Jan 2022 07:27:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.89..@fluentui/react-cards_v0.200.90)
 
 ### Patches
@@ -1097,7 +1097,7 @@ Mon, 31 Jan 2022 07:27:30 GMT
 
 ## [0.200.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.89)
 
-Wed, 26 Jan 2022 07:26:01 GMT 
+Wed, 26 Jan 2022 07:26:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.88..@fluentui/react-cards_v0.200.89)
 
 ### Patches
@@ -1106,7 +1106,7 @@ Wed, 26 Jan 2022 07:26:01 GMT
 
 ## [0.200.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.88)
 
-Tue, 25 Jan 2022 07:30:06 GMT 
+Tue, 25 Jan 2022 07:30:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.87..@fluentui/react-cards_v0.200.88)
 
 ### Patches
@@ -1115,7 +1115,7 @@ Tue, 25 Jan 2022 07:30:06 GMT
 
 ## [0.200.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.87)
 
-Mon, 24 Jan 2022 07:26:13 GMT 
+Mon, 24 Jan 2022 07:26:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.86..@fluentui/react-cards_v0.200.87)
 
 ### Patches
@@ -1124,7 +1124,7 @@ Mon, 24 Jan 2022 07:26:13 GMT
 
 ## [0.200.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.86)
 
-Fri, 21 Jan 2022 07:26:06 GMT 
+Fri, 21 Jan 2022 07:26:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.85..@fluentui/react-cards_v0.200.86)
 
 ### Patches
@@ -1133,7 +1133,7 @@ Fri, 21 Jan 2022 07:26:06 GMT
 
 ## [0.200.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.85)
 
-Mon, 17 Jan 2022 09:43:48 GMT 
+Mon, 17 Jan 2022 09:43:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.84..@fluentui/react-cards_v0.200.85)
 
 ### Patches
@@ -1142,7 +1142,7 @@ Mon, 17 Jan 2022 09:43:48 GMT
 
 ## [0.200.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.84)
 
-Fri, 14 Jan 2022 07:28:39 GMT 
+Fri, 14 Jan 2022 07:28:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.83..@fluentui/react-cards_v0.200.84)
 
 ### Patches
@@ -1151,7 +1151,7 @@ Fri, 14 Jan 2022 07:28:39 GMT
 
 ## [0.200.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.83)
 
-Thu, 13 Jan 2022 07:30:58 GMT 
+Thu, 13 Jan 2022 07:30:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.82..@fluentui/react-cards_v0.200.83)
 
 ### Patches
@@ -1160,7 +1160,7 @@ Thu, 13 Jan 2022 07:30:58 GMT
 
 ## [0.200.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.82)
 
-Wed, 12 Jan 2022 07:32:29 GMT 
+Wed, 12 Jan 2022 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.81..@fluentui/react-cards_v0.200.82)
 
 ### Patches
@@ -1169,7 +1169,7 @@ Wed, 12 Jan 2022 07:32:29 GMT
 
 ## [0.200.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.81)
 
-Tue, 11 Jan 2022 07:29:05 GMT 
+Tue, 11 Jan 2022 07:29:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.80..@fluentui/react-cards_v0.200.81)
 
 ### Patches
@@ -1178,7 +1178,7 @@ Tue, 11 Jan 2022 07:29:05 GMT
 
 ## [0.200.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.80)
 
-Mon, 10 Jan 2022 07:26:30 GMT 
+Mon, 10 Jan 2022 07:26:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.79..@fluentui/react-cards_v0.200.80)
 
 ### Patches
@@ -1187,7 +1187,7 @@ Mon, 10 Jan 2022 07:26:30 GMT
 
 ## [0.200.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.79)
 
-Fri, 07 Jan 2022 07:27:47 GMT 
+Fri, 07 Jan 2022 07:27:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.78..@fluentui/react-cards_v0.200.79)
 
 ### Patches
@@ -1196,7 +1196,7 @@ Fri, 07 Jan 2022 07:27:47 GMT
 
 ## [0.200.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.78)
 
-Mon, 03 Jan 2022 23:32:11 GMT 
+Mon, 03 Jan 2022 23:32:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.77..@fluentui/react-cards_v0.200.78)
 
 ### Patches
@@ -1207,7 +1207,7 @@ Mon, 03 Jan 2022 23:32:11 GMT
 
 ## [0.200.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.77)
 
-Wed, 22 Dec 2021 07:29:45 GMT 
+Wed, 22 Dec 2021 07:29:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.76..@fluentui/react-cards_v0.200.77)
 
 ### Patches
@@ -1216,7 +1216,7 @@ Wed, 22 Dec 2021 07:29:45 GMT
 
 ## [0.200.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.76)
 
-Thu, 16 Dec 2021 07:26:41 GMT 
+Thu, 16 Dec 2021 07:26:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.75..@fluentui/react-cards_v0.200.76)
 
 ### Patches
@@ -1225,7 +1225,7 @@ Thu, 16 Dec 2021 07:26:41 GMT
 
 ## [0.200.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.75)
 
-Wed, 15 Dec 2021 07:31:29 GMT 
+Wed, 15 Dec 2021 07:31:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.74..@fluentui/react-cards_v0.200.75)
 
 ### Patches
@@ -1235,7 +1235,7 @@ Wed, 15 Dec 2021 07:31:29 GMT
 
 ## [0.200.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.74)
 
-Tue, 14 Dec 2021 07:30:02 GMT 
+Tue, 14 Dec 2021 07:30:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.73..@fluentui/react-cards_v0.200.74)
 
 ### Patches
@@ -1244,7 +1244,7 @@ Tue, 14 Dec 2021 07:30:02 GMT
 
 ## [0.200.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.73)
 
-Fri, 10 Dec 2021 07:30:35 GMT 
+Fri, 10 Dec 2021 07:30:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.72..@fluentui/react-cards_v0.200.73)
 
 ### Patches
@@ -1253,7 +1253,7 @@ Fri, 10 Dec 2021 07:30:35 GMT
 
 ## [0.200.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.72)
 
-Thu, 09 Dec 2021 07:27:18 GMT 
+Thu, 09 Dec 2021 07:27:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.71..@fluentui/react-cards_v0.200.72)
 
 ### Patches
@@ -1262,7 +1262,7 @@ Thu, 09 Dec 2021 07:27:18 GMT
 
 ## [0.200.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.71)
 
-Wed, 08 Dec 2021 07:28:19 GMT 
+Wed, 08 Dec 2021 07:28:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.70..@fluentui/react-cards_v0.200.71)
 
 ### Patches
@@ -1271,7 +1271,7 @@ Wed, 08 Dec 2021 07:28:19 GMT
 
 ## [0.200.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.70)
 
-Tue, 07 Dec 2021 07:31:33 GMT 
+Tue, 07 Dec 2021 07:31:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.69..@fluentui/react-cards_v0.200.70)
 
 ### Patches
@@ -1280,7 +1280,7 @@ Tue, 07 Dec 2021 07:31:33 GMT
 
 ## [0.200.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.69)
 
-Fri, 03 Dec 2021 07:36:12 GMT 
+Fri, 03 Dec 2021 07:36:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.68..@fluentui/react-cards_v0.200.69)
 
 ### Patches
@@ -1289,7 +1289,7 @@ Fri, 03 Dec 2021 07:36:12 GMT
 
 ## [0.200.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.68)
 
-Wed, 01 Dec 2021 07:41:09 GMT 
+Wed, 01 Dec 2021 07:41:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.67..@fluentui/react-cards_v0.200.68)
 
 ### Patches
@@ -1298,7 +1298,7 @@ Wed, 01 Dec 2021 07:41:09 GMT
 
 ## [0.200.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.67)
 
-Tue, 30 Nov 2021 07:37:33 GMT 
+Tue, 30 Nov 2021 07:37:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.66..@fluentui/react-cards_v0.200.67)
 
 ### Patches
@@ -1307,7 +1307,7 @@ Tue, 30 Nov 2021 07:37:33 GMT
 
 ## [0.200.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.66)
 
-Thu, 25 Nov 2021 14:54:16 GMT 
+Thu, 25 Nov 2021 14:54:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.65..@fluentui/react-cards_v0.200.66)
 
 ### Patches
@@ -1319,7 +1319,7 @@ Thu, 25 Nov 2021 14:54:16 GMT
 
 ## [0.200.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.65)
 
-Tue, 23 Nov 2021 07:27:34 GMT 
+Tue, 23 Nov 2021 07:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.64..@fluentui/react-cards_v0.200.65)
 
 ### Patches
@@ -1328,7 +1328,7 @@ Tue, 23 Nov 2021 07:27:34 GMT
 
 ## [0.200.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.64)
 
-Mon, 22 Nov 2021 07:36:14 GMT 
+Mon, 22 Nov 2021 07:36:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.63..@fluentui/react-cards_v0.200.64)
 
 ### Patches
@@ -1337,7 +1337,7 @@ Mon, 22 Nov 2021 07:36:14 GMT
 
 ## [0.200.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.63)
 
-Fri, 19 Nov 2021 07:45:28 GMT 
+Fri, 19 Nov 2021 07:45:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.62..@fluentui/react-cards_v0.200.63)
 
 ### Patches
@@ -1346,7 +1346,7 @@ Fri, 19 Nov 2021 07:45:28 GMT
 
 ## [0.200.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.62)
 
-Thu, 18 Nov 2021 07:29:22 GMT 
+Thu, 18 Nov 2021 07:29:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.61..@fluentui/react-cards_v0.200.62)
 
 ### Patches
@@ -1355,7 +1355,7 @@ Thu, 18 Nov 2021 07:29:22 GMT
 
 ## [0.200.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.61)
 
-Wed, 17 Nov 2021 07:36:21 GMT 
+Wed, 17 Nov 2021 07:36:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.60..@fluentui/react-cards_v0.200.61)
 
 ### Patches
@@ -1364,7 +1364,7 @@ Wed, 17 Nov 2021 07:36:21 GMT
 
 ## [0.200.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.60)
 
-Tue, 16 Nov 2021 07:36:41 GMT 
+Tue, 16 Nov 2021 07:36:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.59..@fluentui/react-cards_v0.200.60)
 
 ### Patches
@@ -1373,7 +1373,7 @@ Tue, 16 Nov 2021 07:36:41 GMT
 
 ## [0.200.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.59)
 
-Mon, 15 Nov 2021 07:29:05 GMT 
+Mon, 15 Nov 2021 07:29:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.58..@fluentui/react-cards_v0.200.59)
 
 ### Patches
@@ -1382,7 +1382,7 @@ Mon, 15 Nov 2021 07:29:05 GMT
 
 ## [0.200.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.58)
 
-Wed, 10 Nov 2021 07:31:59 GMT 
+Wed, 10 Nov 2021 07:31:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.57..@fluentui/react-cards_v0.200.58)
 
 ### Patches
@@ -1393,7 +1393,7 @@ Wed, 10 Nov 2021 07:31:59 GMT
 
 ## [0.200.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.57)
 
-Tue, 09 Nov 2021 07:38:11 GMT 
+Tue, 09 Nov 2021 07:38:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.56..@fluentui/react-cards_v0.200.57)
 
 ### Patches
@@ -1402,7 +1402,7 @@ Tue, 09 Nov 2021 07:38:11 GMT
 
 ## [0.200.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.56)
 
-Mon, 08 Nov 2021 07:35:50 GMT 
+Mon, 08 Nov 2021 07:35:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.55..@fluentui/react-cards_v0.200.56)
 
 ### Patches
@@ -1411,7 +1411,7 @@ Mon, 08 Nov 2021 07:35:50 GMT
 
 ## [0.200.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.55)
 
-Fri, 05 Nov 2021 07:36:39 GMT 
+Fri, 05 Nov 2021 07:36:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.54..@fluentui/react-cards_v0.200.55)
 
 ### Patches
@@ -1420,7 +1420,7 @@ Fri, 05 Nov 2021 07:36:39 GMT
 
 ## [0.200.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.54)
 
-Thu, 04 Nov 2021 07:29:42 GMT 
+Thu, 04 Nov 2021 07:29:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.53..@fluentui/react-cards_v0.200.54)
 
 ### Patches
@@ -1429,7 +1429,7 @@ Thu, 04 Nov 2021 07:29:42 GMT
 
 ## [0.200.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.53)
 
-Wed, 03 Nov 2021 07:36:03 GMT 
+Wed, 03 Nov 2021 07:36:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.52..@fluentui/react-cards_v0.200.53)
 
 ### Patches
@@ -1438,7 +1438,7 @@ Wed, 03 Nov 2021 07:36:03 GMT
 
 ## [0.200.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.52)
 
-Tue, 02 Nov 2021 07:37:02 GMT 
+Tue, 02 Nov 2021 07:37:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.51..@fluentui/react-cards_v0.200.52)
 
 ### Patches
@@ -1448,7 +1448,7 @@ Tue, 02 Nov 2021 07:37:02 GMT
 
 ## [0.200.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.51)
 
-Mon, 01 Nov 2021 07:32:08 GMT 
+Mon, 01 Nov 2021 07:32:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.50..@fluentui/react-cards_v0.200.51)
 
 ### Patches
@@ -1458,7 +1458,7 @@ Mon, 01 Nov 2021 07:32:08 GMT
 
 ## [0.200.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.50)
 
-Fri, 29 Oct 2021 07:29:08 GMT 
+Fri, 29 Oct 2021 07:29:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.49..@fluentui/react-cards_v0.200.50)
 
 ### Patches
@@ -1467,7 +1467,7 @@ Fri, 29 Oct 2021 07:29:08 GMT
 
 ## [0.200.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.49)
 
-Thu, 28 Oct 2021 07:29:14 GMT 
+Thu, 28 Oct 2021 07:29:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.48..@fluentui/react-cards_v0.200.49)
 
 ### Patches
@@ -1476,7 +1476,7 @@ Thu, 28 Oct 2021 07:29:14 GMT
 
 ## [0.200.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.48)
 
-Wed, 27 Oct 2021 07:29:17 GMT 
+Wed, 27 Oct 2021 07:29:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.47..@fluentui/react-cards_v0.200.48)
 
 ### Patches
@@ -1485,7 +1485,7 @@ Wed, 27 Oct 2021 07:29:17 GMT
 
 ## [0.200.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.47)
 
-Tue, 26 Oct 2021 07:39:42 GMT 
+Tue, 26 Oct 2021 07:39:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.46..@fluentui/react-cards_v0.200.47)
 
 ### Patches
@@ -1494,7 +1494,7 @@ Tue, 26 Oct 2021 07:39:42 GMT
 
 ## [0.200.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.46)
 
-Mon, 25 Oct 2021 07:38:02 GMT 
+Mon, 25 Oct 2021 07:38:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.45..@fluentui/react-cards_v0.200.46)
 
 ### Patches
@@ -1503,7 +1503,7 @@ Mon, 25 Oct 2021 07:38:02 GMT
 
 ## [0.200.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.45)
 
-Thu, 21 Oct 2021 07:28:35 GMT 
+Thu, 21 Oct 2021 07:28:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.44..@fluentui/react-cards_v0.200.45)
 
 ### Patches
@@ -1512,7 +1512,7 @@ Thu, 21 Oct 2021 07:28:35 GMT
 
 ## [0.200.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.44)
 
-Wed, 20 Oct 2021 07:30:01 GMT 
+Wed, 20 Oct 2021 07:30:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.43..@fluentui/react-cards_v0.200.44)
 
 ### Patches
@@ -1521,7 +1521,7 @@ Wed, 20 Oct 2021 07:30:01 GMT
 
 ## [0.200.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.43)
 
-Wed, 13 Oct 2021 07:31:28 GMT 
+Wed, 13 Oct 2021 07:31:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.42..@fluentui/react-cards_v0.200.43)
 
 ### Patches
@@ -1530,7 +1530,7 @@ Wed, 13 Oct 2021 07:31:28 GMT
 
 ## [0.200.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.42)
 
-Mon, 11 Oct 2021 07:36:36 GMT 
+Mon, 11 Oct 2021 07:36:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.41..@fluentui/react-cards_v0.200.42)
 
 ### Patches
@@ -1539,7 +1539,7 @@ Mon, 11 Oct 2021 07:36:36 GMT
 
 ## [0.200.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.41)
 
-Fri, 08 Oct 2021 07:31:50 GMT 
+Fri, 08 Oct 2021 07:31:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.40..@fluentui/react-cards_v0.200.41)
 
 ### Patches
@@ -1548,7 +1548,7 @@ Fri, 08 Oct 2021 07:31:50 GMT
 
 ## [0.200.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.40)
 
-Tue, 05 Oct 2021 07:37:17 GMT 
+Tue, 05 Oct 2021 07:37:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.39..@fluentui/react-cards_v0.200.40)
 
 ### Patches
@@ -1558,7 +1558,7 @@ Tue, 05 Oct 2021 07:37:17 GMT
 
 ## [0.200.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.39)
 
-Mon, 04 Oct 2021 07:27:12 GMT 
+Mon, 04 Oct 2021 07:27:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.38..@fluentui/react-cards_v0.200.39)
 
 ### Patches
@@ -1567,7 +1567,7 @@ Mon, 04 Oct 2021 07:27:12 GMT
 
 ## [0.200.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.38)
 
-Thu, 30 Sep 2021 07:31:40 GMT 
+Thu, 30 Sep 2021 07:31:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.37..@fluentui/react-cards_v0.200.38)
 
 ### Patches
@@ -1576,7 +1576,7 @@ Thu, 30 Sep 2021 07:31:40 GMT
 
 ## [0.200.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.37)
 
-Wed, 29 Sep 2021 07:36:23 GMT 
+Wed, 29 Sep 2021 07:36:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.36..@fluentui/react-cards_v0.200.37)
 
 ### Patches
@@ -1585,7 +1585,7 @@ Wed, 29 Sep 2021 07:36:23 GMT
 
 ## [0.200.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.36)
 
-Tue, 28 Sep 2021 22:17:07 GMT 
+Tue, 28 Sep 2021 22:17:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.35..@fluentui/react-cards_v0.200.36)
 
 ### Patches
@@ -1596,7 +1596,7 @@ Tue, 28 Sep 2021 22:17:07 GMT
 
 ## [0.200.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.35)
 
-Tue, 28 Sep 2021 07:37:27 GMT 
+Tue, 28 Sep 2021 07:37:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.34..@fluentui/react-cards_v0.200.35)
 
 ### Patches
@@ -1605,7 +1605,7 @@ Tue, 28 Sep 2021 07:37:27 GMT
 
 ## [0.200.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.34)
 
-Mon, 27 Sep 2021 07:34:24 GMT 
+Mon, 27 Sep 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.33..@fluentui/react-cards_v0.200.34)
 
 ### Patches
@@ -1614,7 +1614,7 @@ Mon, 27 Sep 2021 07:34:24 GMT
 
 ## [0.200.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.33)
 
-Thu, 23 Sep 2021 07:35:13 GMT 
+Thu, 23 Sep 2021 07:35:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.32..@fluentui/react-cards_v0.200.33)
 
 ### Patches
@@ -1623,7 +1623,7 @@ Thu, 23 Sep 2021 07:35:13 GMT
 
 ## [0.200.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.32)
 
-Wed, 22 Sep 2021 09:55:02 GMT 
+Wed, 22 Sep 2021 09:55:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.31..@fluentui/react-cards_v0.200.32)
 
 ### Patches
@@ -1632,7 +1632,7 @@ Wed, 22 Sep 2021 09:55:02 GMT
 
 ## [0.200.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.31)
 
-Tue, 21 Sep 2021 07:42:34 GMT 
+Tue, 21 Sep 2021 07:42:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.30..@fluentui/react-cards_v0.200.31)
 
 ### Patches
@@ -1641,7 +1641,7 @@ Tue, 21 Sep 2021 07:42:34 GMT
 
 ## [0.200.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.30)
 
-Thu, 16 Sep 2021 07:38:39 GMT 
+Thu, 16 Sep 2021 07:38:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.29..@fluentui/react-cards_v0.200.30)
 
 ### Patches
@@ -1650,7 +1650,7 @@ Thu, 16 Sep 2021 07:38:39 GMT
 
 ## [0.200.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.29)
 
-Tue, 14 Sep 2021 07:38:18 GMT 
+Tue, 14 Sep 2021 07:38:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.28..@fluentui/react-cards_v0.200.29)
 
 ### Patches
@@ -1659,7 +1659,7 @@ Tue, 14 Sep 2021 07:38:18 GMT
 
 ## [0.200.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.28)
 
-Mon, 13 Sep 2021 07:37:03 GMT 
+Mon, 13 Sep 2021 07:37:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.27..@fluentui/react-cards_v0.200.28)
 
 ### Patches
@@ -1668,7 +1668,7 @@ Mon, 13 Sep 2021 07:37:03 GMT
 
 ## [0.200.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.27)
 
-Fri, 10 Sep 2021 07:39:51 GMT 
+Fri, 10 Sep 2021 07:39:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.26..@fluentui/react-cards_v0.200.27)
 
 ### Patches
@@ -1677,7 +1677,7 @@ Fri, 10 Sep 2021 07:39:51 GMT
 
 ## [0.200.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.26)
 
-Thu, 09 Sep 2021 07:39:06 GMT 
+Thu, 09 Sep 2021 07:39:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.25..@fluentui/react-cards_v0.200.26)
 
 ### Patches
@@ -1686,7 +1686,7 @@ Thu, 09 Sep 2021 07:39:06 GMT
 
 ## [0.200.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.25)
 
-Wed, 08 Sep 2021 07:34:11 GMT 
+Wed, 08 Sep 2021 07:34:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.24..@fluentui/react-cards_v0.200.25)
 
 ### Patches
@@ -1695,7 +1695,7 @@ Wed, 08 Sep 2021 07:34:11 GMT
 
 ## [0.200.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.24)
 
-Mon, 06 Sep 2021 07:34:53 GMT 
+Mon, 06 Sep 2021 07:34:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.23..@fluentui/react-cards_v0.200.24)
 
 ### Patches
@@ -1704,7 +1704,7 @@ Mon, 06 Sep 2021 07:34:53 GMT
 
 ## [0.200.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.23)
 
-Thu, 02 Sep 2021 07:36:46 GMT 
+Thu, 02 Sep 2021 07:36:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.22..@fluentui/react-cards_v0.200.23)
 
 ### Patches
@@ -1713,7 +1713,7 @@ Thu, 02 Sep 2021 07:36:46 GMT
 
 ## [0.200.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.22)
 
-Tue, 31 Aug 2021 07:37:47 GMT 
+Tue, 31 Aug 2021 07:37:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.21..@fluentui/react-cards_v0.200.22)
 
 ### Patches
@@ -1722,7 +1722,7 @@ Tue, 31 Aug 2021 07:37:47 GMT
 
 ## [0.200.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.21)
 
-Mon, 30 Aug 2021 07:35:05 GMT 
+Mon, 30 Aug 2021 07:35:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.20..@fluentui/react-cards_v0.200.21)
 
 ### Patches
@@ -1731,7 +1731,7 @@ Mon, 30 Aug 2021 07:35:05 GMT
 
 ## [0.200.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.20)
 
-Wed, 25 Aug 2021 07:35:19 GMT 
+Wed, 25 Aug 2021 07:35:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.19..@fluentui/react-cards_v0.200.20)
 
 ### Patches
@@ -1740,7 +1740,7 @@ Wed, 25 Aug 2021 07:35:19 GMT
 
 ## [0.200.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.19)
 
-Mon, 23 Aug 2021 07:35:43 GMT 
+Mon, 23 Aug 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.18..@fluentui/react-cards_v0.200.19)
 
 ### Patches
@@ -1749,7 +1749,7 @@ Mon, 23 Aug 2021 07:35:43 GMT
 
 ## [0.200.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.18)
 
-Thu, 19 Aug 2021 07:41:35 GMT 
+Thu, 19 Aug 2021 07:41:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.17..@fluentui/react-cards_v0.200.18)
 
 ### Patches
@@ -1758,7 +1758,7 @@ Thu, 19 Aug 2021 07:41:35 GMT
 
 ## [0.200.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.17)
 
-Mon, 16 Aug 2021 07:36:39 GMT 
+Mon, 16 Aug 2021 07:36:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.16..@fluentui/react-cards_v0.200.17)
 
 ### Patches
@@ -1767,7 +1767,7 @@ Mon, 16 Aug 2021 07:36:39 GMT
 
 ## [0.200.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.16)
 
-Fri, 13 Aug 2021 07:36:34 GMT 
+Fri, 13 Aug 2021 07:36:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.15..@fluentui/react-cards_v0.200.16)
 
 ### Patches
@@ -1776,7 +1776,7 @@ Fri, 13 Aug 2021 07:36:34 GMT
 
 ## [0.200.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.15)
 
-Thu, 12 Aug 2021 07:34:46 GMT 
+Thu, 12 Aug 2021 07:34:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.14..@fluentui/react-cards_v0.200.15)
 
 ### Patches
@@ -1785,7 +1785,7 @@ Thu, 12 Aug 2021 07:34:46 GMT
 
 ## [0.200.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.14)
 
-Wed, 11 Aug 2021 07:34:54 GMT 
+Wed, 11 Aug 2021 07:34:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.13..@fluentui/react-cards_v0.200.14)
 
 ### Patches
@@ -1794,7 +1794,7 @@ Wed, 11 Aug 2021 07:34:54 GMT
 
 ## [0.200.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.13)
 
-Mon, 09 Aug 2021 07:35:14 GMT 
+Mon, 09 Aug 2021 07:35:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.12..@fluentui/react-cards_v0.200.13)
 
 ### Patches
@@ -1803,7 +1803,7 @@ Mon, 09 Aug 2021 07:35:14 GMT
 
 ## [0.200.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.12)
 
-Thu, 05 Aug 2021 07:34:24 GMT 
+Thu, 05 Aug 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.11..@fluentui/react-cards_v0.200.12)
 
 ### Patches
@@ -1812,7 +1812,7 @@ Thu, 05 Aug 2021 07:34:24 GMT
 
 ## [0.200.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.11)
 
-Tue, 03 Aug 2021 07:39:30 GMT 
+Tue, 03 Aug 2021 07:39:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.10..@fluentui/react-cards_v0.200.11)
 
 ### Patches
@@ -1821,7 +1821,7 @@ Tue, 03 Aug 2021 07:39:30 GMT
 
 ## [0.200.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.10)
 
-Mon, 02 Aug 2021 07:36:20 GMT 
+Mon, 02 Aug 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.9..@fluentui/react-cards_v0.200.10)
 
 ### Patches
@@ -1830,7 +1830,7 @@ Mon, 02 Aug 2021 07:36:20 GMT
 
 ## [0.200.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.9)
 
-Fri, 30 Jul 2021 07:35:22 GMT 
+Fri, 30 Jul 2021 07:35:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.8..@fluentui/react-cards_v0.200.9)
 
 ### Patches
@@ -1839,7 +1839,7 @@ Fri, 30 Jul 2021 07:35:22 GMT
 
 ## [0.200.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.8)
 
-Thu, 29 Jul 2021 07:35:37 GMT 
+Thu, 29 Jul 2021 07:35:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.7..@fluentui/react-cards_v0.200.8)
 
 ### Patches
@@ -1848,7 +1848,7 @@ Thu, 29 Jul 2021 07:35:37 GMT
 
 ## [0.200.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.7)
 
-Wed, 28 Jul 2021 07:34:11 GMT 
+Wed, 28 Jul 2021 07:34:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.6..@fluentui/react-cards_v0.200.7)
 
 ### Patches
@@ -1857,7 +1857,7 @@ Wed, 28 Jul 2021 07:34:11 GMT
 
 ## [0.200.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.6)
 
-Tue, 27 Jul 2021 07:34:27 GMT 
+Tue, 27 Jul 2021 07:34:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.5..@fluentui/react-cards_v0.200.6)
 
 ### Patches
@@ -1866,7 +1866,7 @@ Tue, 27 Jul 2021 07:34:27 GMT
 
 ## [0.200.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.5)
 
-Mon, 26 Jul 2021 07:37:30 GMT 
+Mon, 26 Jul 2021 07:37:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.4..@fluentui/react-cards_v0.200.5)
 
 ### Patches
@@ -1875,7 +1875,7 @@ Mon, 26 Jul 2021 07:37:30 GMT
 
 ## [0.200.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.4)
 
-Fri, 23 Jul 2021 07:38:19 GMT 
+Fri, 23 Jul 2021 07:38:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.3..@fluentui/react-cards_v0.200.4)
 
 ### Patches
@@ -1884,7 +1884,7 @@ Fri, 23 Jul 2021 07:38:19 GMT
 
 ## [0.200.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.3)
 
-Thu, 22 Jul 2021 07:36:55 GMT 
+Thu, 22 Jul 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.2..@fluentui/react-cards_v0.200.3)
 
 ### Patches
@@ -1893,7 +1893,7 @@ Thu, 22 Jul 2021 07:36:55 GMT
 
 ## [0.200.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.2)
 
-Tue, 20 Jul 2021 22:23:17 GMT 
+Tue, 20 Jul 2021 22:23:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.1..@fluentui/react-cards_v0.200.2)
 
 ### Patches
@@ -1902,7 +1902,7 @@ Tue, 20 Jul 2021 22:23:17 GMT
 
 ## [0.200.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.1)
 
-Fri, 16 Jul 2021 22:53:17 GMT 
+Fri, 16 Jul 2021 22:53:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.115.53..@fluentui/react-cards_v0.200.1)
 
 ### Patches

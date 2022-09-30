@@ -6,7 +6,7 @@ This log was last generated on Mon, 03 Oct 2022 07:37:49 GMT and should not be m
 
 ## [8.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.7)
 
-Mon, 03 Oct 2022 07:37:49 GMT 
+Mon, 03 Oct 2022 07:37:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.6..@fluentui/cra-template_v8.4.7)
 
 ### Patches
@@ -15,7 +15,7 @@ Mon, 03 Oct 2022 07:37:49 GMT
 
 ## [8.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.6)
 
-Fri, 30 Sep 2022 07:38:09 GMT 
+Fri, 30 Sep 2022 07:38:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.5..@fluentui/cra-template_v8.4.6)
 
 ### Patches
@@ -24,7 +24,7 @@ Fri, 30 Sep 2022 07:38:09 GMT
 
 ## [8.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.5)
 
-Thu, 29 Sep 2022 07:40:10 GMT 
+Thu, 29 Sep 2022 07:40:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.4..@fluentui/cra-template_v8.4.5)
 
 ### Patches
@@ -33,7 +33,7 @@ Thu, 29 Sep 2022 07:40:10 GMT
 
 ## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.4)
 
-Wed, 28 Sep 2022 07:37:49 GMT 
+Wed, 28 Sep 2022 07:37:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.3..@fluentui/cra-template_v8.4.4)
 
 ### Patches
@@ -42,7 +42,7 @@ Wed, 28 Sep 2022 07:37:49 GMT
 
 ## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.3)
 
-Thu, 22 Sep 2022 07:43:45 GMT 
+Thu, 22 Sep 2022 07:43:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.2..@fluentui/cra-template_v8.4.3)
 
 ### Patches
@@ -51,7 +51,7 @@ Thu, 22 Sep 2022 07:43:45 GMT
 
 ## [8.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.2)
 
-Mon, 19 Sep 2022 07:47:30 GMT 
+Mon, 19 Sep 2022 07:47:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.1..@fluentui/cra-template_v8.4.2)
 
 ### Patches
@@ -60,7 +60,7 @@ Mon, 19 Sep 2022 07:47:30 GMT
 
 ## [8.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.1)
 
-Fri, 16 Sep 2022 07:37:32 GMT 
+Fri, 16 Sep 2022 07:37:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.0..@fluentui/cra-template_v8.4.1)
 
 ### Patches
@@ -69,7 +69,7 @@ Fri, 16 Sep 2022 07:37:32 GMT
 
 ## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.0)
 
-Thu, 15 Sep 2022 19:15:27 GMT 
+Thu, 15 Sep 2022 19:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.35..@fluentui/cra-template_v8.4.0)
 
 ### Minor changes
@@ -78,7 +78,7 @@ Thu, 15 Sep 2022 19:15:27 GMT
 
 ## [8.3.35](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.35)
 
-Tue, 13 Sep 2022 07:41:03 GMT 
+Tue, 13 Sep 2022 07:41:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.34..@fluentui/cra-template_v8.3.35)
 
 ### Patches
@@ -87,7 +87,7 @@ Tue, 13 Sep 2022 07:41:03 GMT
 
 ## [8.3.34](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.34)
 
-Thu, 08 Sep 2022 20:52:16 GMT 
+Thu, 08 Sep 2022 20:52:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.33..@fluentui/cra-template_v8.3.34)
 
 ### Patches
@@ -96,7 +96,7 @@ Thu, 08 Sep 2022 20:52:16 GMT
 
 ## [8.3.33](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.33)
 
-Wed, 07 Sep 2022 07:54:43 GMT 
+Wed, 07 Sep 2022 07:54:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.32..@fluentui/cra-template_v8.3.33)
 
 ### Patches
@@ -105,7 +105,7 @@ Wed, 07 Sep 2022 07:54:43 GMT
 
 ## [8.3.32](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.32)
 
-Mon, 05 Sep 2022 07:38:30 GMT 
+Mon, 05 Sep 2022 07:38:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.31..@fluentui/cra-template_v8.3.32)
 
 ### Patches
@@ -114,7 +114,7 @@ Mon, 05 Sep 2022 07:38:30 GMT
 
 ## [8.3.31](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.31)
 
-Fri, 02 Sep 2022 07:48:53 GMT 
+Fri, 02 Sep 2022 07:48:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.30..@fluentui/cra-template_v8.3.31)
 
 ### Patches
@@ -123,7 +123,7 @@ Fri, 02 Sep 2022 07:48:53 GMT
 
 ## [8.3.30](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.30)
 
-Thu, 01 Sep 2022 07:48:11 GMT 
+Thu, 01 Sep 2022 07:48:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.29..@fluentui/cra-template_v8.3.30)
 
 ### Patches
@@ -132,7 +132,7 @@ Thu, 01 Sep 2022 07:48:11 GMT
 
 ## [8.3.29](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.29)
 
-Mon, 29 Aug 2022 07:44:38 GMT 
+Mon, 29 Aug 2022 07:44:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.28..@fluentui/cra-template_v8.3.29)
 
 ### Patches
@@ -141,7 +141,7 @@ Mon, 29 Aug 2022 07:44:38 GMT
 
 ## [8.3.28](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.28)
 
-Fri, 26 Aug 2022 07:39:58 GMT 
+Fri, 26 Aug 2022 07:39:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.27..@fluentui/cra-template_v8.3.28)
 
 ### Patches
@@ -150,7 +150,7 @@ Fri, 26 Aug 2022 07:39:58 GMT
 
 ## [8.3.27](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.27)
 
-Thu, 25 Aug 2022 07:41:03 GMT 
+Thu, 25 Aug 2022 07:41:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.26..@fluentui/cra-template_v8.3.27)
 
 ### Patches
@@ -159,7 +159,7 @@ Thu, 25 Aug 2022 07:41:03 GMT
 
 ## [8.3.26](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.26)
 
-Wed, 24 Aug 2022 16:36:06 GMT 
+Wed, 24 Aug 2022 16:36:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.25..@fluentui/cra-template_v8.3.26)
 
 ### Patches
@@ -168,7 +168,7 @@ Wed, 24 Aug 2022 16:36:06 GMT
 
 ## [8.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.25)
 
-Wed, 24 Aug 2022 07:44:42 GMT 
+Wed, 24 Aug 2022 07:44:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.24..@fluentui/cra-template_v8.3.25)
 
 ### Patches
@@ -177,7 +177,7 @@ Wed, 24 Aug 2022 07:44:42 GMT
 
 ## [8.3.24](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.24)
 
-Tue, 23 Aug 2022 07:22:50 GMT 
+Tue, 23 Aug 2022 07:22:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.23..@fluentui/cra-template_v8.3.24)
 
 ### Patches
@@ -186,7 +186,7 @@ Tue, 23 Aug 2022 07:22:50 GMT
 
 ## [8.3.23](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.23)
 
-Mon, 22 Aug 2022 07:44:26 GMT 
+Mon, 22 Aug 2022 07:44:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.22..@fluentui/cra-template_v8.3.23)
 
 ### Patches
@@ -195,7 +195,7 @@ Mon, 22 Aug 2022 07:44:26 GMT
 
 ## [8.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.22)
 
-Thu, 18 Aug 2022 23:39:31 GMT 
+Thu, 18 Aug 2022 23:39:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.21..@fluentui/cra-template_v8.3.22)
 
 ### Patches
@@ -204,7 +204,7 @@ Thu, 18 Aug 2022 23:39:31 GMT
 
 ## [8.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.21)
 
-Thu, 18 Aug 2022 07:48:48 GMT 
+Thu, 18 Aug 2022 07:48:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.20..@fluentui/cra-template_v8.3.21)
 
 ### Patches
@@ -213,7 +213,7 @@ Thu, 18 Aug 2022 07:48:48 GMT
 
 ## [8.3.20](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.20)
 
-Mon, 15 Aug 2022 07:39:41 GMT 
+Mon, 15 Aug 2022 07:39:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.19..@fluentui/cra-template_v8.3.20)
 
 ### Patches
@@ -222,7 +222,7 @@ Mon, 15 Aug 2022 07:39:41 GMT
 
 ## [8.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.19)
 
-Fri, 12 Aug 2022 07:48:19 GMT 
+Fri, 12 Aug 2022 07:48:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.18..@fluentui/cra-template_v8.3.19)
 
 ### Patches
@@ -231,7 +231,7 @@ Fri, 12 Aug 2022 07:48:19 GMT
 
 ## [8.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.18)
 
-Mon, 08 Aug 2022 20:28:21 GMT 
+Mon, 08 Aug 2022 20:28:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.17..@fluentui/cra-template_v8.3.18)
 
 ### Patches
@@ -240,7 +240,7 @@ Mon, 08 Aug 2022 20:28:21 GMT
 
 ## [8.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.17)
 
-Mon, 08 Aug 2022 07:39:33 GMT 
+Mon, 08 Aug 2022 07:39:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.16..@fluentui/cra-template_v8.3.17)
 
 ### Patches
@@ -249,7 +249,7 @@ Mon, 08 Aug 2022 07:39:33 GMT
 
 ## [8.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.16)
 
-Thu, 04 Aug 2022 07:42:13 GMT 
+Thu, 04 Aug 2022 07:42:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.15..@fluentui/cra-template_v8.3.16)
 
 ### Patches
@@ -258,7 +258,7 @@ Thu, 04 Aug 2022 07:42:13 GMT
 
 ## [8.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.15)
 
-Tue, 02 Aug 2022 18:04:49 GMT 
+Tue, 02 Aug 2022 18:04:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.14..@fluentui/cra-template_v8.3.15)
 
 ### Patches
@@ -267,7 +267,7 @@ Tue, 02 Aug 2022 18:04:49 GMT
 
 ## [8.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.14)
 
-Tue, 02 Aug 2022 07:44:44 GMT 
+Tue, 02 Aug 2022 07:44:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.13..@fluentui/cra-template_v8.3.14)
 
 ### Patches
@@ -276,7 +276,7 @@ Tue, 02 Aug 2022 07:44:44 GMT
 
 ## [8.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.13)
 
-Mon, 01 Aug 2022 07:39:03 GMT 
+Mon, 01 Aug 2022 07:39:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.12..@fluentui/cra-template_v8.3.13)
 
 ### Patches
@@ -285,7 +285,7 @@ Mon, 01 Aug 2022 07:39:03 GMT
 
 ## [8.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.12)
 
-Fri, 29 Jul 2022 07:41:56 GMT 
+Fri, 29 Jul 2022 07:41:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.11..@fluentui/cra-template_v8.3.12)
 
 ### Patches
@@ -294,7 +294,7 @@ Fri, 29 Jul 2022 07:41:56 GMT
 
 ## [8.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.11)
 
-Thu, 28 Jul 2022 07:41:18 GMT 
+Thu, 28 Jul 2022 07:41:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.10..@fluentui/cra-template_v8.3.11)
 
 ### Patches
@@ -303,7 +303,7 @@ Thu, 28 Jul 2022 07:41:18 GMT
 
 ## [8.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.10)
 
-Wed, 27 Jul 2022 07:37:43 GMT 
+Wed, 27 Jul 2022 07:37:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.9..@fluentui/cra-template_v8.3.10)
 
 ### Patches
@@ -312,7 +312,7 @@ Wed, 27 Jul 2022 07:37:43 GMT
 
 ## [8.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.9)
 
-Tue, 26 Jul 2022 07:39:35 GMT 
+Tue, 26 Jul 2022 07:39:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.8..@fluentui/cra-template_v8.3.9)
 
 ### Patches
@@ -321,7 +321,7 @@ Tue, 26 Jul 2022 07:39:35 GMT
 
 ## [8.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.8)
 
-Mon, 25 Jul 2022 07:36:56 GMT 
+Mon, 25 Jul 2022 07:36:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.7..@fluentui/cra-template_v8.3.8)
 
 ### Patches
@@ -330,7 +330,7 @@ Mon, 25 Jul 2022 07:36:56 GMT
 
 ## [8.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.7)
 
-Fri, 22 Jul 2022 07:54:16 GMT 
+Fri, 22 Jul 2022 07:54:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.6..@fluentui/cra-template_v8.3.7)
 
 ### Patches
@@ -339,7 +339,7 @@ Fri, 22 Jul 2022 07:54:16 GMT
 
 ## [8.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.6)
 
-Thu, 21 Jul 2022 07:49:17 GMT 
+Thu, 21 Jul 2022 07:49:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.5..@fluentui/cra-template_v8.3.6)
 
 ### Patches
@@ -348,7 +348,7 @@ Thu, 21 Jul 2022 07:49:17 GMT
 
 ## [8.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.5)
 
-Wed, 20 Jul 2022 07:42:27 GMT 
+Wed, 20 Jul 2022 07:42:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.4..@fluentui/cra-template_v8.3.5)
 
 ### Patches
@@ -357,7 +357,7 @@ Wed, 20 Jul 2022 07:42:27 GMT
 
 ## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.4)
 
-Tue, 19 Jul 2022 07:41:07 GMT 
+Tue, 19 Jul 2022 07:41:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.3..@fluentui/cra-template_v8.3.4)
 
 ### Patches
@@ -366,7 +366,7 @@ Tue, 19 Jul 2022 07:41:07 GMT
 
 ## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.3)
 
-Fri, 15 Jul 2022 20:03:48 GMT 
+Fri, 15 Jul 2022 20:03:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.2..@fluentui/cra-template_v8.3.3)
 
 ### Patches
@@ -375,7 +375,7 @@ Fri, 15 Jul 2022 20:03:48 GMT
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.2)
 
-Thu, 14 Jul 2022 07:45:35 GMT 
+Thu, 14 Jul 2022 07:45:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.1..@fluentui/cra-template_v8.3.2)
 
 ### Patches
@@ -384,7 +384,7 @@ Thu, 14 Jul 2022 07:45:35 GMT
 
 ## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.1)
 
-Tue, 12 Jul 2022 07:41:00 GMT 
+Tue, 12 Jul 2022 07:41:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.3.0..@fluentui/cra-template_v8.3.1)
 
 ### Patches
@@ -393,7 +393,7 @@ Tue, 12 Jul 2022 07:41:00 GMT
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.3.0)
 
-Fri, 08 Jul 2022 07:36:29 GMT 
+Fri, 08 Jul 2022 07:36:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.2.1..@fluentui/cra-template_v8.3.0)
 
 ### Minor changes
@@ -402,7 +402,7 @@ Fri, 08 Jul 2022 07:36:29 GMT
 
 ## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.2.1)
 
-Thu, 07 Jul 2022 07:37:21 GMT 
+Thu, 07 Jul 2022 07:37:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.2.0..@fluentui/cra-template_v8.2.1)
 
 ### Patches
@@ -411,7 +411,7 @@ Thu, 07 Jul 2022 07:37:21 GMT
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.2.0)
 
-Wed, 06 Jul 2022 07:38:24 GMT 
+Wed, 06 Jul 2022 07:38:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.54..@fluentui/cra-template_v8.2.0)
 
 ### Minor changes
@@ -420,7 +420,7 @@ Wed, 06 Jul 2022 07:38:24 GMT
 
 ## [8.1.54](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.54)
 
-Thu, 30 Jun 2022 07:40:48 GMT 
+Thu, 30 Jun 2022 07:40:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.53..@fluentui/cra-template_v8.1.54)
 
 ### Patches
@@ -429,7 +429,7 @@ Thu, 30 Jun 2022 07:40:48 GMT
 
 ## [8.1.53](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.53)
 
-Tue, 28 Jun 2022 07:39:04 GMT 
+Tue, 28 Jun 2022 07:39:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.52..@fluentui/cra-template_v8.1.53)
 
 ### Patches
@@ -438,7 +438,7 @@ Tue, 28 Jun 2022 07:39:04 GMT
 
 ## [8.1.52](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.52)
 
-Fri, 24 Jun 2022 07:43:32 GMT 
+Fri, 24 Jun 2022 07:43:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.51..@fluentui/cra-template_v8.1.52)
 
 ### Patches
@@ -447,7 +447,7 @@ Fri, 24 Jun 2022 07:43:32 GMT
 
 ## [8.1.51](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.51)
 
-Mon, 20 Jun 2022 07:45:13 GMT 
+Mon, 20 Jun 2022 07:45:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.50..@fluentui/cra-template_v8.1.51)
 
 ### Patches
@@ -456,7 +456,7 @@ Mon, 20 Jun 2022 07:45:13 GMT
 
 ## [8.1.50](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.50)
 
-Fri, 17 Jun 2022 07:41:59 GMT 
+Fri, 17 Jun 2022 07:41:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.49..@fluentui/cra-template_v8.1.50)
 
 ### Patches
@@ -465,7 +465,7 @@ Fri, 17 Jun 2022 07:41:59 GMT
 
 ## [8.1.49](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.49)
 
-Wed, 15 Jun 2022 21:38:03 GMT 
+Wed, 15 Jun 2022 21:38:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.48..@fluentui/cra-template_v8.1.49)
 
 ### Patches
@@ -474,7 +474,7 @@ Wed, 15 Jun 2022 21:38:03 GMT
 
 ## [8.1.48](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.48)
 
-Wed, 15 Jun 2022 07:40:22 GMT 
+Wed, 15 Jun 2022 07:40:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.47..@fluentui/cra-template_v8.1.48)
 
 ### Patches
@@ -483,7 +483,7 @@ Wed, 15 Jun 2022 07:40:22 GMT
 
 ## [8.1.47](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.47)
 
-Tue, 14 Jun 2022 07:52:11 GMT 
+Tue, 14 Jun 2022 07:52:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.46..@fluentui/cra-template_v8.1.47)
 
 ### Patches
@@ -492,7 +492,7 @@ Tue, 14 Jun 2022 07:52:11 GMT
 
 ## [8.1.46](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.46)
 
-Mon, 13 Jun 2022 07:39:08 GMT 
+Mon, 13 Jun 2022 07:39:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.45..@fluentui/cra-template_v8.1.46)
 
 ### Patches
@@ -501,7 +501,7 @@ Mon, 13 Jun 2022 07:39:08 GMT
 
 ## [8.1.45](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.45)
 
-Fri, 10 Jun 2022 07:46:14 GMT 
+Fri, 10 Jun 2022 07:46:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.44..@fluentui/cra-template_v8.1.45)
 
 ### Patches
@@ -510,7 +510,7 @@ Fri, 10 Jun 2022 07:46:14 GMT
 
 ## [8.1.44](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.44)
 
-Thu, 09 Jun 2022 07:45:28 GMT 
+Thu, 09 Jun 2022 07:45:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.43..@fluentui/cra-template_v8.1.44)
 
 ### Patches
@@ -519,7 +519,7 @@ Thu, 09 Jun 2022 07:45:28 GMT
 
 ## [8.1.43](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.43)
 
-Tue, 07 Jun 2022 07:48:04 GMT 
+Tue, 07 Jun 2022 07:48:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.42..@fluentui/cra-template_v8.1.43)
 
 ### Patches
@@ -528,7 +528,7 @@ Tue, 07 Jun 2022 07:48:04 GMT
 
 ## [8.1.42](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.42)
 
-Thu, 02 Jun 2022 07:38:04 GMT 
+Thu, 02 Jun 2022 07:38:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.41..@fluentui/cra-template_v8.1.42)
 
 ### Patches
@@ -537,7 +537,7 @@ Thu, 02 Jun 2022 07:38:04 GMT
 
 ## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.41)
 
-Wed, 01 Jun 2022 07:38:24 GMT 
+Wed, 01 Jun 2022 07:38:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.40..@fluentui/cra-template_v8.1.41)
 
 ### Patches
@@ -546,7 +546,7 @@ Wed, 01 Jun 2022 07:38:24 GMT
 
 ## [8.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.40)
 
-Mon, 30 May 2022 07:44:13 GMT 
+Mon, 30 May 2022 07:44:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.39..@fluentui/cra-template_v8.1.40)
 
 ### Patches
@@ -555,7 +555,7 @@ Mon, 30 May 2022 07:44:13 GMT
 
 ## [8.1.39](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.39)
 
-Fri, 27 May 2022 07:39:11 GMT 
+Fri, 27 May 2022 07:39:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.38..@fluentui/cra-template_v8.1.39)
 
 ### Patches
@@ -564,7 +564,7 @@ Fri, 27 May 2022 07:39:11 GMT
 
 ## [8.1.38](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.38)
 
-Wed, 25 May 2022 07:44:28 GMT 
+Wed, 25 May 2022 07:44:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.37..@fluentui/cra-template_v8.1.38)
 
 ### Patches
@@ -573,7 +573,7 @@ Wed, 25 May 2022 07:44:28 GMT
 
 ## [8.1.37](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.37)
 
-Tue, 24 May 2022 07:47:26 GMT 
+Tue, 24 May 2022 07:47:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.36..@fluentui/cra-template_v8.1.37)
 
 ### Patches
@@ -582,7 +582,7 @@ Tue, 24 May 2022 07:47:26 GMT
 
 ## [8.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.36)
 
-Mon, 23 May 2022 07:42:16 GMT 
+Mon, 23 May 2022 07:42:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.35..@fluentui/cra-template_v8.1.36)
 
 ### Patches
@@ -591,7 +591,7 @@ Mon, 23 May 2022 07:42:16 GMT
 
 ## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.35)
 
-Thu, 19 May 2022 07:41:27 GMT 
+Thu, 19 May 2022 07:41:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.34..@fluentui/cra-template_v8.1.35)
 
 ### Patches
@@ -600,7 +600,7 @@ Thu, 19 May 2022 07:41:27 GMT
 
 ## [8.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.34)
 
-Tue, 17 May 2022 07:45:01 GMT 
+Tue, 17 May 2022 07:45:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.33..@fluentui/cra-template_v8.1.34)
 
 ### Patches
@@ -609,7 +609,7 @@ Tue, 17 May 2022 07:45:01 GMT
 
 ## [8.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.33)
 
-Mon, 16 May 2022 07:36:55 GMT 
+Mon, 16 May 2022 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.32..@fluentui/cra-template_v8.1.33)
 
 ### Patches
@@ -618,7 +618,7 @@ Mon, 16 May 2022 07:36:55 GMT
 
 ## [8.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.32)
 
-Fri, 13 May 2022 07:45:35 GMT 
+Fri, 13 May 2022 07:45:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.31..@fluentui/cra-template_v8.1.32)
 
 ### Patches
@@ -627,7 +627,7 @@ Fri, 13 May 2022 07:45:35 GMT
 
 ## [8.1.31](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.31)
 
-Wed, 11 May 2022 07:42:47 GMT 
+Wed, 11 May 2022 07:42:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.30..@fluentui/cra-template_v8.1.31)
 
 ### Patches
@@ -636,7 +636,7 @@ Wed, 11 May 2022 07:42:47 GMT
 
 ## [8.1.30](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.30)
 
-Mon, 09 May 2022 07:37:42 GMT 
+Mon, 09 May 2022 07:37:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.29..@fluentui/cra-template_v8.1.30)
 
 ### Patches
@@ -645,7 +645,7 @@ Mon, 09 May 2022 07:37:42 GMT
 
 ## [8.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.29)
 
-Tue, 03 May 2022 07:35:53 GMT 
+Tue, 03 May 2022 07:35:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.28..@fluentui/cra-template_v8.1.29)
 
 ### Patches
@@ -654,7 +654,7 @@ Tue, 03 May 2022 07:35:53 GMT
 
 ## [8.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.28)
 
-Thu, 28 Apr 2022 07:39:56 GMT 
+Thu, 28 Apr 2022 07:39:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.27..@fluentui/cra-template_v8.1.28)
 
 ### Patches
@@ -663,7 +663,7 @@ Thu, 28 Apr 2022 07:39:56 GMT
 
 ## [8.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.27)
 
-Wed, 27 Apr 2022 07:43:07 GMT 
+Wed, 27 Apr 2022 07:43:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.26..@fluentui/cra-template_v8.1.27)
 
 ### Patches
@@ -672,7 +672,7 @@ Wed, 27 Apr 2022 07:43:07 GMT
 
 ## [8.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.26)
 
-Mon, 25 Apr 2022 07:37:25 GMT 
+Mon, 25 Apr 2022 07:37:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.25..@fluentui/cra-template_v8.1.26)
 
 ### Patches
@@ -681,7 +681,7 @@ Mon, 25 Apr 2022 07:37:25 GMT
 
 ## [8.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.25)
 
-Thu, 21 Apr 2022 07:36:48 GMT 
+Thu, 21 Apr 2022 07:36:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.24..@fluentui/cra-template_v8.1.25)
 
 ### Patches
@@ -690,7 +690,7 @@ Thu, 21 Apr 2022 07:36:48 GMT
 
 ## [8.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.24)
 
-Wed, 20 Apr 2022 07:39:23 GMT 
+Wed, 20 Apr 2022 07:39:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.23..@fluentui/cra-template_v8.1.24)
 
 ### Patches
@@ -699,7 +699,7 @@ Wed, 20 Apr 2022 07:39:23 GMT
 
 ## [8.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.23)
 
-Tue, 19 Apr 2022 21:39:15 GMT 
+Tue, 19 Apr 2022 21:39:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.22..@fluentui/cra-template_v8.1.23)
 
 ### Patches
@@ -708,7 +708,7 @@ Tue, 19 Apr 2022 21:39:15 GMT
 
 ## [8.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.22)
 
-Mon, 18 Apr 2022 07:38:04 GMT 
+Mon, 18 Apr 2022 07:38:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.21..@fluentui/cra-template_v8.1.22)
 
 ### Patches
@@ -717,7 +717,7 @@ Mon, 18 Apr 2022 07:38:04 GMT
 
 ## [8.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.21)
 
-Fri, 15 Apr 2022 07:42:48 GMT 
+Fri, 15 Apr 2022 07:42:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.20..@fluentui/cra-template_v8.1.21)
 
 ### Patches
@@ -726,7 +726,7 @@ Fri, 15 Apr 2022 07:42:48 GMT
 
 ## [8.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.20)
 
-Thu, 14 Apr 2022 07:38:11 GMT 
+Thu, 14 Apr 2022 07:38:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.19..@fluentui/cra-template_v8.1.20)
 
 ### Patches
@@ -735,7 +735,7 @@ Thu, 14 Apr 2022 07:38:11 GMT
 
 ## [8.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.19)
 
-Tue, 12 Apr 2022 07:39:33 GMT 
+Tue, 12 Apr 2022 07:39:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.18..@fluentui/cra-template_v8.1.19)
 
 ### Patches
@@ -744,7 +744,7 @@ Tue, 12 Apr 2022 07:39:33 GMT
 
 ## [8.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.18)
 
-Mon, 11 Apr 2022 07:40:58 GMT 
+Mon, 11 Apr 2022 07:40:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.17..@fluentui/cra-template_v8.1.18)
 
 ### Patches
@@ -753,7 +753,7 @@ Mon, 11 Apr 2022 07:40:58 GMT
 
 ## [8.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.17)
 
-Wed, 06 Apr 2022 07:34:58 GMT 
+Wed, 06 Apr 2022 07:34:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.16..@fluentui/cra-template_v8.1.17)
 
 ### Patches
@@ -762,7 +762,7 @@ Wed, 06 Apr 2022 07:34:58 GMT
 
 ## [8.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.16)
 
-Mon, 04 Apr 2022 20:01:04 GMT 
+Mon, 04 Apr 2022 20:01:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.15..@fluentui/cra-template_v8.1.16)
 
 ### Patches
@@ -771,7 +771,7 @@ Mon, 04 Apr 2022 20:01:04 GMT
 
 ## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.15)
 
-Thu, 31 Mar 2022 07:38:07 GMT 
+Thu, 31 Mar 2022 07:38:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.14..@fluentui/cra-template_v8.1.15)
 
 ### Patches
@@ -780,7 +780,7 @@ Thu, 31 Mar 2022 07:38:07 GMT
 
 ## [8.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.14)
 
-Wed, 30 Mar 2022 07:38:55 GMT 
+Wed, 30 Mar 2022 07:38:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.13..@fluentui/cra-template_v8.1.14)
 
 ### Patches
@@ -789,7 +789,7 @@ Wed, 30 Mar 2022 07:38:55 GMT
 
 ## [8.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.13)
 
-Mon, 28 Mar 2022 07:47:27 GMT 
+Mon, 28 Mar 2022 07:47:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.12..@fluentui/cra-template_v8.1.13)
 
 ### Patches
@@ -798,7 +798,7 @@ Mon, 28 Mar 2022 07:47:27 GMT
 
 ## [8.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.12)
 
-Fri, 25 Mar 2022 07:38:05 GMT 
+Fri, 25 Mar 2022 07:38:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.11..@fluentui/cra-template_v8.1.12)
 
 ### Patches
@@ -807,7 +807,7 @@ Fri, 25 Mar 2022 07:38:05 GMT
 
 ## [8.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.11)
 
-Wed, 23 Mar 2022 07:37:29 GMT 
+Wed, 23 Mar 2022 07:37:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.10..@fluentui/cra-template_v8.1.11)
 
 ### Patches
@@ -816,7 +816,7 @@ Wed, 23 Mar 2022 07:37:29 GMT
 
 ## [8.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.10)
 
-Mon, 21 Mar 2022 07:39:45 GMT 
+Mon, 21 Mar 2022 07:39:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.9..@fluentui/cra-template_v8.1.10)
 
 ### Patches
@@ -825,7 +825,7 @@ Mon, 21 Mar 2022 07:39:45 GMT
 
 ## [8.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.9)
 
-Fri, 18 Mar 2022 07:42:02 GMT 
+Fri, 18 Mar 2022 07:42:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.8..@fluentui/cra-template_v8.1.9)
 
 ### Patches
@@ -834,7 +834,7 @@ Fri, 18 Mar 2022 07:42:02 GMT
 
 ## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.8)
 
-Wed, 16 Mar 2022 07:38:51 GMT 
+Wed, 16 Mar 2022 07:38:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.7..@fluentui/cra-template_v8.1.8)
 
 ### Patches
@@ -843,7 +843,7 @@ Wed, 16 Mar 2022 07:38:51 GMT
 
 ## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.7)
 
-Tue, 15 Mar 2022 07:45:54 GMT 
+Tue, 15 Mar 2022 07:45:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.6..@fluentui/cra-template_v8.1.7)
 
 ### Patches
@@ -852,7 +852,7 @@ Tue, 15 Mar 2022 07:45:54 GMT
 
 ## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.6)
 
-Sat, 12 Mar 2022 01:04:50 GMT 
+Sat, 12 Mar 2022 01:04:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.5..@fluentui/cra-template_v8.1.6)
 
 ### Patches
@@ -861,7 +861,7 @@ Sat, 12 Mar 2022 01:04:50 GMT
 
 ## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.5)
 
-Fri, 11 Mar 2022 19:51:48 GMT 
+Fri, 11 Mar 2022 19:51:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.4..@fluentui/cra-template_v8.1.5)
 
 ### Patches
@@ -870,7 +870,7 @@ Fri, 11 Mar 2022 19:51:48 GMT
 
 ## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.4)
 
-Fri, 11 Mar 2022 07:34:40 GMT 
+Fri, 11 Mar 2022 07:34:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.3..@fluentui/cra-template_v8.1.4)
 
 ### Patches
@@ -879,7 +879,7 @@ Fri, 11 Mar 2022 07:34:40 GMT
 
 ## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.3)
 
-Thu, 10 Mar 2022 07:34:50 GMT 
+Thu, 10 Mar 2022 07:34:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.2..@fluentui/cra-template_v8.1.3)
 
 ### Patches
@@ -888,7 +888,7 @@ Thu, 10 Mar 2022 07:34:50 GMT
 
 ## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.2)
 
-Wed, 09 Mar 2022 07:37:30 GMT 
+Wed, 09 Mar 2022 07:37:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.1..@fluentui/cra-template_v8.1.2)
 
 ### Patches
@@ -897,7 +897,7 @@ Wed, 09 Mar 2022 07:37:30 GMT
 
 ## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.1)
 
-Tue, 08 Mar 2022 23:29:58 GMT 
+Tue, 08 Mar 2022 23:29:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.0..@fluentui/cra-template_v8.1.1)
 
 ### Patches
@@ -906,7 +906,7 @@ Tue, 08 Mar 2022 23:29:58 GMT
 
 ## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.0)
 
-Tue, 08 Mar 2022 07:35:11 GMT 
+Tue, 08 Mar 2022 07:35:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.78..@fluentui/cra-template_v8.1.0)
 
 ### Minor changes
@@ -915,7 +915,7 @@ Tue, 08 Mar 2022 07:35:11 GMT
 
 ## [8.0.78](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.78)
 
-Mon, 07 Mar 2022 07:41:14 GMT 
+Mon, 07 Mar 2022 07:41:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.77..@fluentui/cra-template_v8.0.78)
 
 ### Patches
@@ -924,7 +924,7 @@ Mon, 07 Mar 2022 07:41:14 GMT
 
 ## [8.0.77](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.77)
 
-Fri, 04 Mar 2022 07:42:05 GMT 
+Fri, 04 Mar 2022 07:42:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.76..@fluentui/cra-template_v8.0.77)
 
 ### Patches
@@ -933,7 +933,7 @@ Fri, 04 Mar 2022 07:42:05 GMT
 
 ## [8.0.76](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.76)
 
-Thu, 03 Mar 2022 07:24:29 GMT 
+Thu, 03 Mar 2022 07:24:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.75..@fluentui/cra-template_v8.0.76)
 
 ### Patches
@@ -942,7 +942,7 @@ Thu, 03 Mar 2022 07:24:29 GMT
 
 ## [8.0.75](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.75)
 
-Wed, 02 Mar 2022 07:23:06 GMT 
+Wed, 02 Mar 2022 07:23:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.74..@fluentui/cra-template_v8.0.75)
 
 ### Patches
@@ -951,7 +951,7 @@ Wed, 02 Mar 2022 07:23:06 GMT
 
 ## [8.0.74](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.74)
 
-Tue, 01 Mar 2022 07:23:43 GMT 
+Tue, 01 Mar 2022 07:23:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.73..@fluentui/cra-template_v8.0.74)
 
 ### Patches
@@ -960,7 +960,7 @@ Tue, 01 Mar 2022 07:23:43 GMT
 
 ## [8.0.73](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.73)
 
-Thu, 24 Feb 2022 07:29:50 GMT 
+Thu, 24 Feb 2022 07:29:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.72..@fluentui/cra-template_v8.0.73)
 
 ### Patches
@@ -969,7 +969,7 @@ Thu, 24 Feb 2022 07:29:50 GMT
 
 ## [8.0.72](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.72)
 
-Wed, 23 Feb 2022 07:26:36 GMT 
+Wed, 23 Feb 2022 07:26:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.71..@fluentui/cra-template_v8.0.72)
 
 ### Patches
@@ -978,7 +978,7 @@ Wed, 23 Feb 2022 07:26:36 GMT
 
 ## [8.0.71](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.71)
 
-Thu, 17 Feb 2022 07:28:31 GMT 
+Thu, 17 Feb 2022 07:28:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.70..@fluentui/cra-template_v8.0.71)
 
 ### Patches
@@ -987,7 +987,7 @@ Thu, 17 Feb 2022 07:28:31 GMT
 
 ## [8.0.70](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.70)
 
-Mon, 14 Feb 2022 07:26:37 GMT 
+Mon, 14 Feb 2022 07:26:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.69..@fluentui/cra-template_v8.0.70)
 
 ### Patches
@@ -996,7 +996,7 @@ Mon, 14 Feb 2022 07:26:37 GMT
 
 ## [8.0.69](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.69)
 
-Fri, 11 Feb 2022 07:27:49 GMT 
+Fri, 11 Feb 2022 07:27:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.68..@fluentui/cra-template_v8.0.69)
 
 ### Patches
@@ -1005,7 +1005,7 @@ Fri, 11 Feb 2022 07:27:49 GMT
 
 ## [8.0.68](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.68)
 
-Thu, 10 Feb 2022 07:32:10 GMT 
+Thu, 10 Feb 2022 07:32:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.67..@fluentui/cra-template_v8.0.68)
 
 ### Patches
@@ -1014,7 +1014,7 @@ Thu, 10 Feb 2022 07:32:10 GMT
 
 ## [8.0.67](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.67)
 
-Wed, 09 Feb 2022 07:30:50 GMT 
+Wed, 09 Feb 2022 07:30:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.66..@fluentui/cra-template_v8.0.67)
 
 ### Patches
@@ -1023,7 +1023,7 @@ Wed, 09 Feb 2022 07:30:50 GMT
 
 ## [8.0.66](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.66)
 
-Tue, 08 Feb 2022 07:25:34 GMT 
+Tue, 08 Feb 2022 07:25:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.65..@fluentui/cra-template_v8.0.66)
 
 ### Patches
@@ -1032,7 +1032,7 @@ Tue, 08 Feb 2022 07:25:34 GMT
 
 ## [8.0.65](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.65)
 
-Fri, 04 Feb 2022 07:31:42 GMT 
+Fri, 04 Feb 2022 07:31:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.64..@fluentui/cra-template_v8.0.65)
 
 ### Patches
@@ -1042,7 +1042,7 @@ Fri, 04 Feb 2022 07:31:42 GMT
 
 ## [8.0.64](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.64)
 
-Thu, 03 Feb 2022 07:29:40 GMT 
+Thu, 03 Feb 2022 07:29:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.63..@fluentui/cra-template_v8.0.64)
 
 ### Patches
@@ -1053,7 +1053,7 @@ Thu, 03 Feb 2022 07:29:40 GMT
 
 ## [8.0.63](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.63)
 
-Tue, 01 Feb 2022 07:26:26 GMT 
+Tue, 01 Feb 2022 07:26:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.62..@fluentui/cra-template_v8.0.63)
 
 ### Patches
@@ -1062,7 +1062,7 @@ Tue, 01 Feb 2022 07:26:26 GMT
 
 ## [8.0.62](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.62)
 
-Mon, 31 Jan 2022 07:27:30 GMT 
+Mon, 31 Jan 2022 07:27:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.61..@fluentui/cra-template_v8.0.62)
 
 ### Patches
@@ -1071,7 +1071,7 @@ Mon, 31 Jan 2022 07:27:30 GMT
 
 ## [8.0.61](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.61)
 
-Wed, 26 Jan 2022 07:26:01 GMT 
+Wed, 26 Jan 2022 07:26:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.60..@fluentui/cra-template_v8.0.61)
 
 ### Patches
@@ -1080,7 +1080,7 @@ Wed, 26 Jan 2022 07:26:01 GMT
 
 ## [8.0.60](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.60)
 
-Tue, 25 Jan 2022 07:30:06 GMT 
+Tue, 25 Jan 2022 07:30:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.59..@fluentui/cra-template_v8.0.60)
 
 ### Patches
@@ -1089,7 +1089,7 @@ Tue, 25 Jan 2022 07:30:06 GMT
 
 ## [8.0.59](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.59)
 
-Mon, 24 Jan 2022 07:26:13 GMT 
+Mon, 24 Jan 2022 07:26:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.58..@fluentui/cra-template_v8.0.59)
 
 ### Patches
@@ -1098,7 +1098,7 @@ Mon, 24 Jan 2022 07:26:13 GMT
 
 ## [8.0.58](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.58)
 
-Fri, 21 Jan 2022 07:26:06 GMT 
+Fri, 21 Jan 2022 07:26:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.57..@fluentui/cra-template_v8.0.58)
 
 ### Patches
@@ -1107,7 +1107,7 @@ Fri, 21 Jan 2022 07:26:06 GMT
 
 ## [8.0.57](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.57)
 
-Mon, 17 Jan 2022 09:43:48 GMT 
+Mon, 17 Jan 2022 09:43:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.56..@fluentui/cra-template_v8.0.57)
 
 ### Patches
@@ -1116,7 +1116,7 @@ Mon, 17 Jan 2022 09:43:48 GMT
 
 ## [8.0.56](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.56)
 
-Fri, 14 Jan 2022 07:28:39 GMT 
+Fri, 14 Jan 2022 07:28:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.55..@fluentui/cra-template_v8.0.56)
 
 ### Patches
@@ -1125,7 +1125,7 @@ Fri, 14 Jan 2022 07:28:39 GMT
 
 ## [8.0.55](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.55)
 
-Thu, 13 Jan 2022 07:30:58 GMT 
+Thu, 13 Jan 2022 07:30:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.54..@fluentui/cra-template_v8.0.55)
 
 ### Patches
@@ -1134,7 +1134,7 @@ Thu, 13 Jan 2022 07:30:58 GMT
 
 ## [8.0.54](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.54)
 
-Wed, 12 Jan 2022 07:32:29 GMT 
+Wed, 12 Jan 2022 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.53..@fluentui/cra-template_v8.0.54)
 
 ### Patches
@@ -1143,7 +1143,7 @@ Wed, 12 Jan 2022 07:32:29 GMT
 
 ## [8.0.53](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.53)
 
-Tue, 11 Jan 2022 07:29:05 GMT 
+Tue, 11 Jan 2022 07:29:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.52..@fluentui/cra-template_v8.0.53)
 
 ### Patches
@@ -1152,7 +1152,7 @@ Tue, 11 Jan 2022 07:29:05 GMT
 
 ## [8.0.52](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.52)
 
-Mon, 10 Jan 2022 07:26:30 GMT 
+Mon, 10 Jan 2022 07:26:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.51..@fluentui/cra-template_v8.0.52)
 
 ### Patches
@@ -1161,7 +1161,7 @@ Mon, 10 Jan 2022 07:26:30 GMT
 
 ## [8.0.51](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.51)
 
-Fri, 07 Jan 2022 07:27:47 GMT 
+Fri, 07 Jan 2022 07:27:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.50..@fluentui/cra-template_v8.0.51)
 
 ### Patches
@@ -1170,7 +1170,7 @@ Fri, 07 Jan 2022 07:27:47 GMT
 
 ## [8.0.50](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.50)
 
-Mon, 03 Jan 2022 23:32:11 GMT 
+Mon, 03 Jan 2022 23:32:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.49..@fluentui/cra-template_v8.0.50)
 
 ### Patches
@@ -1179,7 +1179,7 @@ Mon, 03 Jan 2022 23:32:11 GMT
 
 ## [8.0.49](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.49)
 
-Wed, 22 Dec 2021 07:29:45 GMT 
+Wed, 22 Dec 2021 07:29:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.48..@fluentui/cra-template_v8.0.49)
 
 ### Patches
@@ -1188,7 +1188,7 @@ Wed, 22 Dec 2021 07:29:45 GMT
 
 ## [8.0.48](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.48)
 
-Thu, 16 Dec 2021 07:26:39 GMT 
+Thu, 16 Dec 2021 07:26:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.47..@fluentui/cra-template_v8.0.48)
 
 ### Patches
@@ -1197,7 +1197,7 @@ Thu, 16 Dec 2021 07:26:39 GMT
 
 ## [8.0.47](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.47)
 
-Wed, 15 Dec 2021 07:31:29 GMT 
+Wed, 15 Dec 2021 07:31:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.46..@fluentui/cra-template_v8.0.47)
 
 ### Patches
@@ -1206,7 +1206,7 @@ Wed, 15 Dec 2021 07:31:29 GMT
 
 ## [8.0.46](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.46)
 
-Tue, 14 Dec 2021 07:30:02 GMT 
+Tue, 14 Dec 2021 07:30:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.45..@fluentui/cra-template_v8.0.46)
 
 ### Patches
@@ -1215,7 +1215,7 @@ Tue, 14 Dec 2021 07:30:02 GMT
 
 ## [8.0.45](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.45)
 
-Fri, 10 Dec 2021 07:30:35 GMT 
+Fri, 10 Dec 2021 07:30:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.44..@fluentui/cra-template_v8.0.45)
 
 ### Patches
@@ -1224,7 +1224,7 @@ Fri, 10 Dec 2021 07:30:35 GMT
 
 ## [8.0.44](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.44)
 
-Thu, 09 Dec 2021 07:27:18 GMT 
+Thu, 09 Dec 2021 07:27:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.43..@fluentui/cra-template_v8.0.44)
 
 ### Patches
@@ -1233,7 +1233,7 @@ Thu, 09 Dec 2021 07:27:18 GMT
 
 ## [8.0.43](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.43)
 
-Wed, 08 Dec 2021 07:28:19 GMT 
+Wed, 08 Dec 2021 07:28:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.42..@fluentui/cra-template_v8.0.43)
 
 ### Patches
@@ -1242,7 +1242,7 @@ Wed, 08 Dec 2021 07:28:19 GMT
 
 ## [8.0.42](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.42)
 
-Tue, 07 Dec 2021 07:31:33 GMT 
+Tue, 07 Dec 2021 07:31:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.41..@fluentui/cra-template_v8.0.42)
 
 ### Patches
@@ -1251,7 +1251,7 @@ Tue, 07 Dec 2021 07:31:33 GMT
 
 ## [8.0.41](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.41)
 
-Fri, 03 Dec 2021 07:36:12 GMT 
+Fri, 03 Dec 2021 07:36:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.40..@fluentui/cra-template_v8.0.41)
 
 ### Patches
@@ -1260,7 +1260,7 @@ Fri, 03 Dec 2021 07:36:12 GMT
 
 ## [8.0.40](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.40)
 
-Wed, 01 Dec 2021 07:41:09 GMT 
+Wed, 01 Dec 2021 07:41:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.39..@fluentui/cra-template_v8.0.40)
 
 ### Patches
@@ -1269,7 +1269,7 @@ Wed, 01 Dec 2021 07:41:09 GMT
 
 ## [8.0.39](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.39)
 
-Tue, 30 Nov 2021 07:37:33 GMT 
+Tue, 30 Nov 2021 07:37:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.38..@fluentui/cra-template_v8.0.39)
 
 ### Patches
@@ -1278,7 +1278,7 @@ Tue, 30 Nov 2021 07:37:33 GMT
 
 ## [8.0.38](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.38)
 
-Thu, 25 Nov 2021 14:54:13 GMT 
+Thu, 25 Nov 2021 14:54:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.37..@fluentui/cra-template_v8.0.38)
 
 ### Patches
@@ -1287,7 +1287,7 @@ Thu, 25 Nov 2021 14:54:13 GMT
 
 ## [8.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.37)
 
-Tue, 23 Nov 2021 07:27:34 GMT 
+Tue, 23 Nov 2021 07:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.36..@fluentui/cra-template_v8.0.37)
 
 ### Patches
@@ -1296,7 +1296,7 @@ Tue, 23 Nov 2021 07:27:34 GMT
 
 ## [8.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.36)
 
-Mon, 22 Nov 2021 07:36:14 GMT 
+Mon, 22 Nov 2021 07:36:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.35..@fluentui/cra-template_v8.0.36)
 
 ### Patches
@@ -1305,7 +1305,7 @@ Mon, 22 Nov 2021 07:36:14 GMT
 
 ## [8.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.35)
 
-Fri, 19 Nov 2021 07:45:28 GMT 
+Fri, 19 Nov 2021 07:45:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.34..@fluentui/cra-template_v8.0.35)
 
 ### Patches
@@ -1314,7 +1314,7 @@ Fri, 19 Nov 2021 07:45:28 GMT
 
 ## [8.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.34)
 
-Thu, 18 Nov 2021 07:29:22 GMT 
+Thu, 18 Nov 2021 07:29:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.33..@fluentui/cra-template_v8.0.34)
 
 ### Patches
@@ -1323,7 +1323,7 @@ Thu, 18 Nov 2021 07:29:22 GMT
 
 ## [8.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.33)
 
-Wed, 17 Nov 2021 07:36:21 GMT 
+Wed, 17 Nov 2021 07:36:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.32..@fluentui/cra-template_v8.0.33)
 
 ### Patches
@@ -1332,7 +1332,7 @@ Wed, 17 Nov 2021 07:36:21 GMT
 
 ## [8.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.32)
 
-Tue, 16 Nov 2021 07:36:41 GMT 
+Tue, 16 Nov 2021 07:36:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.31..@fluentui/cra-template_v8.0.32)
 
 ### Patches
@@ -1341,7 +1341,7 @@ Tue, 16 Nov 2021 07:36:41 GMT
 
 ## [8.0.31](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.31)
 
-Mon, 15 Nov 2021 07:29:05 GMT 
+Mon, 15 Nov 2021 07:29:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.30..@fluentui/cra-template_v8.0.31)
 
 ### Patches
@@ -1350,7 +1350,7 @@ Mon, 15 Nov 2021 07:29:05 GMT
 
 ## [8.0.30](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.30)
 
-Wed, 10 Nov 2021 07:31:59 GMT 
+Wed, 10 Nov 2021 07:31:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.29..@fluentui/cra-template_v8.0.30)
 
 ### Patches
@@ -1359,7 +1359,7 @@ Wed, 10 Nov 2021 07:31:59 GMT
 
 ## [8.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.29)
 
-Tue, 09 Nov 2021 07:38:11 GMT 
+Tue, 09 Nov 2021 07:38:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.28..@fluentui/cra-template_v8.0.29)
 
 ### Patches
@@ -1368,7 +1368,7 @@ Tue, 09 Nov 2021 07:38:11 GMT
 
 ## [8.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.28)
 
-Mon, 08 Nov 2021 07:35:50 GMT 
+Mon, 08 Nov 2021 07:35:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.27..@fluentui/cra-template_v8.0.28)
 
 ### Patches
@@ -1377,7 +1377,7 @@ Mon, 08 Nov 2021 07:35:50 GMT
 
 ## [8.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.27)
 
-Fri, 05 Nov 2021 07:36:39 GMT 
+Fri, 05 Nov 2021 07:36:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.26..@fluentui/cra-template_v8.0.27)
 
 ### Patches
@@ -1386,7 +1386,7 @@ Fri, 05 Nov 2021 07:36:39 GMT
 
 ## [8.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.26)
 
-Thu, 04 Nov 2021 07:29:42 GMT 
+Thu, 04 Nov 2021 07:29:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.25..@fluentui/cra-template_v8.0.26)
 
 ### Patches
@@ -1395,7 +1395,7 @@ Thu, 04 Nov 2021 07:29:42 GMT
 
 ## [8.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.25)
 
-Wed, 03 Nov 2021 07:36:03 GMT 
+Wed, 03 Nov 2021 07:36:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.24..@fluentui/cra-template_v8.0.25)
 
 ### Patches
@@ -1404,7 +1404,7 @@ Wed, 03 Nov 2021 07:36:03 GMT
 
 ## [8.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.24)
 
-Tue, 02 Nov 2021 07:37:02 GMT 
+Tue, 02 Nov 2021 07:37:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.23..@fluentui/cra-template_v8.0.24)
 
 ### Patches
@@ -1413,7 +1413,7 @@ Tue, 02 Nov 2021 07:37:02 GMT
 
 ## [8.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.23)
 
-Mon, 01 Nov 2021 07:32:08 GMT 
+Mon, 01 Nov 2021 07:32:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.22..@fluentui/cra-template_v8.0.23)
 
 ### Patches
@@ -1422,7 +1422,7 @@ Mon, 01 Nov 2021 07:32:08 GMT
 
 ## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.22)
 
-Fri, 29 Oct 2021 07:29:08 GMT 
+Fri, 29 Oct 2021 07:29:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.21..@fluentui/cra-template_v8.0.22)
 
 ### Patches
@@ -1431,7 +1431,7 @@ Fri, 29 Oct 2021 07:29:08 GMT
 
 ## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.21)
 
-Thu, 28 Oct 2021 07:29:14 GMT 
+Thu, 28 Oct 2021 07:29:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.20..@fluentui/cra-template_v8.0.21)
 
 ### Patches
@@ -1440,7 +1440,7 @@ Thu, 28 Oct 2021 07:29:14 GMT
 
 ## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.20)
 
-Wed, 27 Oct 2021 07:29:17 GMT 
+Wed, 27 Oct 2021 07:29:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.19..@fluentui/cra-template_v8.0.20)
 
 ### Patches
@@ -1449,7 +1449,7 @@ Wed, 27 Oct 2021 07:29:17 GMT
 
 ## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.19)
 
-Tue, 26 Oct 2021 07:39:42 GMT 
+Tue, 26 Oct 2021 07:39:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.18..@fluentui/cra-template_v8.0.19)
 
 ### Patches
@@ -1458,7 +1458,7 @@ Tue, 26 Oct 2021 07:39:42 GMT
 
 ## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.18)
 
-Mon, 25 Oct 2021 07:38:02 GMT 
+Mon, 25 Oct 2021 07:38:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.17..@fluentui/cra-template_v8.0.18)
 
 ### Patches
@@ -1467,7 +1467,7 @@ Mon, 25 Oct 2021 07:38:02 GMT
 
 ## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.17)
 
-Thu, 21 Oct 2021 07:28:35 GMT 
+Thu, 21 Oct 2021 07:28:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.16..@fluentui/cra-template_v8.0.17)
 
 ### Patches
@@ -1476,7 +1476,7 @@ Thu, 21 Oct 2021 07:28:35 GMT
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.16)
 
-Wed, 20 Oct 2021 07:30:01 GMT 
+Wed, 20 Oct 2021 07:30:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.15..@fluentui/cra-template_v8.0.16)
 
 ### Patches
@@ -1485,7 +1485,7 @@ Wed, 20 Oct 2021 07:30:01 GMT
 
 ## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.15)
 
-Wed, 13 Oct 2021 07:31:28 GMT 
+Wed, 13 Oct 2021 07:31:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.14..@fluentui/cra-template_v8.0.15)
 
 ### Patches
@@ -1494,7 +1494,7 @@ Wed, 13 Oct 2021 07:31:28 GMT
 
 ## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.14)
 
-Mon, 11 Oct 2021 07:36:36 GMT 
+Mon, 11 Oct 2021 07:36:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.13..@fluentui/cra-template_v8.0.14)
 
 ### Patches
@@ -1503,7 +1503,7 @@ Mon, 11 Oct 2021 07:36:36 GMT
 
 ## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.13)
 
-Fri, 08 Oct 2021 07:31:50 GMT 
+Fri, 08 Oct 2021 07:31:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.12..@fluentui/cra-template_v8.0.13)
 
 ### Patches
@@ -1512,7 +1512,7 @@ Fri, 08 Oct 2021 07:31:50 GMT
 
 ## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.12)
 
-Tue, 05 Oct 2021 07:37:17 GMT 
+Tue, 05 Oct 2021 07:37:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.11..@fluentui/cra-template_v8.0.12)
 
 ### Patches
@@ -1521,7 +1521,7 @@ Tue, 05 Oct 2021 07:37:17 GMT
 
 ## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.11)
 
-Mon, 04 Oct 2021 07:27:12 GMT 
+Mon, 04 Oct 2021 07:27:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.10..@fluentui/cra-template_v8.0.11)
 
 ### Patches
@@ -1530,7 +1530,7 @@ Mon, 04 Oct 2021 07:27:12 GMT
 
 ## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.10)
 
-Thu, 30 Sep 2021 07:31:40 GMT 
+Thu, 30 Sep 2021 07:31:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.9..@fluentui/cra-template_v8.0.10)
 
 ### Patches
@@ -1539,7 +1539,7 @@ Thu, 30 Sep 2021 07:31:40 GMT
 
 ## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.9)
 
-Wed, 29 Sep 2021 07:36:23 GMT 
+Wed, 29 Sep 2021 07:36:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.8..@fluentui/cra-template_v8.0.9)
 
 ### Patches
@@ -1548,7 +1548,7 @@ Wed, 29 Sep 2021 07:36:23 GMT
 
 ## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.8)
 
-Tue, 28 Sep 2021 22:17:07 GMT 
+Tue, 28 Sep 2021 22:17:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.7..@fluentui/cra-template_v8.0.8)
 
 ### Patches
@@ -1557,7 +1557,7 @@ Tue, 28 Sep 2021 22:17:07 GMT
 
 ## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.7)
 
-Tue, 28 Sep 2021 07:37:27 GMT 
+Tue, 28 Sep 2021 07:37:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.6..@fluentui/cra-template_v8.0.7)
 
 ### Patches
@@ -1566,7 +1566,7 @@ Tue, 28 Sep 2021 07:37:27 GMT
 
 ## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.6)
 
-Mon, 27 Sep 2021 07:34:24 GMT 
+Mon, 27 Sep 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.5..@fluentui/cra-template_v8.0.6)
 
 ### Patches
@@ -1575,7 +1575,7 @@ Mon, 27 Sep 2021 07:34:24 GMT
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.5)
 
-Thu, 23 Sep 2021 07:35:13 GMT 
+Thu, 23 Sep 2021 07:35:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.4..@fluentui/cra-template_v8.0.5)
 
 ### Patches
@@ -1584,7 +1584,7 @@ Thu, 23 Sep 2021 07:35:13 GMT
 
 ## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.4)
 
-Wed, 22 Sep 2021 09:55:02 GMT 
+Wed, 22 Sep 2021 09:55:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.3..@fluentui/cra-template_v8.0.4)
 
 ### Patches
@@ -1593,7 +1593,7 @@ Wed, 22 Sep 2021 09:55:02 GMT
 
 ## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.3)
 
-Tue, 21 Sep 2021 07:42:34 GMT 
+Tue, 21 Sep 2021 07:42:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.2..@fluentui/cra-template_v8.0.3)
 
 ### Patches
@@ -1602,7 +1602,7 @@ Tue, 21 Sep 2021 07:42:34 GMT
 
 ## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.2)
 
-Thu, 16 Sep 2021 07:38:39 GMT 
+Thu, 16 Sep 2021 07:38:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.1..@fluentui/cra-template_v8.0.2)
 
 ### Patches
@@ -1612,7 +1612,7 @@ Thu, 16 Sep 2021 07:38:39 GMT
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.1)
 
-Wed, 30 Jun 2021 07:38:35 GMT 
+Wed, 30 Jun 2021 07:38:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v0.2.1..@fluentui/cra-template_v8.0.1)
 
 ### Patches
@@ -1621,7 +1621,7 @@ Wed, 30 Jun 2021 07:38:35 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v0.2.1)
 
-Mon, 01 Feb 2021 12:23:48 GMT 
+Mon, 01 Feb 2021 12:23:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v0.2.0..@fluentui/cra-template_v0.2.1)
 
 ### Patches

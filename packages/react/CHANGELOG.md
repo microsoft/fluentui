@@ -6,7 +6,7 @@ This log was last generated on Mon, 03 Oct 2022 07:37:49 GMT and should not be m
 
 ## [8.97.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.97.1)
 
-Mon, 03 Oct 2022 07:37:49 GMT 
+Mon, 03 Oct 2022 07:37:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.97.0..@fluentui/react_v8.97.1)
 
 ### Patches
@@ -15,7 +15,7 @@ Mon, 03 Oct 2022 07:37:49 GMT
 
 ## [8.97.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.97.0)
 
-Fri, 30 Sep 2022 07:38:08 GMT 
+Fri, 30 Sep 2022 07:38:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.3..@fluentui/react_v8.97.0)
 
 ### Minor changes
@@ -24,7 +24,7 @@ Fri, 30 Sep 2022 07:38:08 GMT
 
 ## [8.96.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.3)
 
-Thu, 29 Sep 2022 07:40:08 GMT 
+Thu, 29 Sep 2022 07:40:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.2..@fluentui/react_v8.96.3)
 
 ### Patches
@@ -35,7 +35,7 @@ Thu, 29 Sep 2022 07:40:08 GMT
 
 ## [8.96.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.2)
 
-Wed, 28 Sep 2022 07:37:48 GMT 
+Wed, 28 Sep 2022 07:37:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.1..@fluentui/react_v8.96.2)
 
 ### Patches
@@ -44,7 +44,7 @@ Wed, 28 Sep 2022 07:37:48 GMT
 
 ## [8.96.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.1)
 
-Thu, 22 Sep 2022 07:43:45 GMT 
+Thu, 22 Sep 2022 07:43:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.96.0..@fluentui/react_v8.96.1)
 
 ### Patches
@@ -53,7 +53,7 @@ Thu, 22 Sep 2022 07:43:45 GMT
 
 ## [8.96.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.96.0)
 
-Mon, 19 Sep 2022 07:47:29 GMT 
+Mon, 19 Sep 2022 07:47:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.95.1..@fluentui/react_v8.96.0)
 
 ### Minor changes
@@ -63,7 +63,7 @@ Mon, 19 Sep 2022 07:47:29 GMT
 
 ## [8.95.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.95.1)
 
-Fri, 16 Sep 2022 07:37:31 GMT 
+Fri, 16 Sep 2022 07:37:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.95.0..@fluentui/react_v8.95.1)
 
 ### Patches
@@ -72,7 +72,7 @@ Fri, 16 Sep 2022 07:37:31 GMT
 
 ## [8.95.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.95.0)
 
-Thu, 15 Sep 2022 19:15:25 GMT 
+Thu, 15 Sep 2022 19:15:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.4..@fluentui/react_v8.95.0)
 
 ### Minor changes
@@ -85,7 +85,7 @@ Thu, 15 Sep 2022 19:15:25 GMT
 
 ## [8.94.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.4)
 
-Tue, 13 Sep 2022 07:41:02 GMT 
+Tue, 13 Sep 2022 07:41:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.3..@fluentui/react_v8.94.4)
 
 ### Patches
@@ -94,7 +94,7 @@ Tue, 13 Sep 2022 07:41:02 GMT
 
 ## [8.94.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.3)
 
-Thu, 08 Sep 2022 20:52:15 GMT 
+Thu, 08 Sep 2022 20:52:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.2..@fluentui/react_v8.94.3)
 
 ### Patches
@@ -104,7 +104,7 @@ Thu, 08 Sep 2022 20:52:15 GMT
 
 ## [8.94.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.2)
 
-Wed, 07 Sep 2022 07:54:43 GMT 
+Wed, 07 Sep 2022 07:54:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.1..@fluentui/react_v8.94.2)
 
 ### Patches
@@ -113,7 +113,7 @@ Wed, 07 Sep 2022 07:54:43 GMT
 
 ## [8.94.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.1)
 
-Mon, 05 Sep 2022 07:38:29 GMT 
+Mon, 05 Sep 2022 07:38:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.94.0..@fluentui/react_v8.94.1)
 
 ### Patches
@@ -123,7 +123,7 @@ Mon, 05 Sep 2022 07:38:29 GMT
 
 ## [8.94.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.94.0)
 
-Fri, 02 Sep 2022 07:48:52 GMT 
+Fri, 02 Sep 2022 07:48:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.93.1..@fluentui/react_v8.94.0)
 
 ### Minor changes
@@ -140,7 +140,7 @@ Fri, 02 Sep 2022 07:48:52 GMT
 
 ## [8.93.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.93.1)
 
-Thu, 01 Sep 2022 07:48:10 GMT 
+Thu, 01 Sep 2022 07:48:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.93.0..@fluentui/react_v8.93.1)
 
 ### Patches
@@ -154,7 +154,7 @@ Thu, 01 Sep 2022 07:48:10 GMT
 
 ## [8.93.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.93.0)
 
-Mon, 29 Aug 2022 07:44:37 GMT 
+Mon, 29 Aug 2022 07:44:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.92.1..@fluentui/react_v8.93.0)
 
 ### Minor changes
@@ -172,7 +172,7 @@ Mon, 29 Aug 2022 07:44:37 GMT
 
 ## [8.92.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.92.1)
 
-Fri, 26 Aug 2022 07:39:57 GMT 
+Fri, 26 Aug 2022 07:39:57 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.92.0..@fluentui/react_v8.92.1)
 
 ### Patches
@@ -182,7 +182,7 @@ Fri, 26 Aug 2022 07:39:57 GMT
 
 ## [8.92.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.92.0)
 
-Thu, 25 Aug 2022 07:41:02 GMT 
+Thu, 25 Aug 2022 07:41:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.91.1..@fluentui/react_v8.92.0)
 
 ### Minor changes
@@ -194,7 +194,7 @@ Thu, 25 Aug 2022 07:41:02 GMT
 
 ## [8.91.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.91.1)
 
-Wed, 24 Aug 2022 16:36:06 GMT 
+Wed, 24 Aug 2022 16:36:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.91.0..@fluentui/react_v8.91.1)
 
 ### Patches
@@ -209,7 +209,7 @@ Wed, 24 Aug 2022 16:36:06 GMT
 
 ## [8.91.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.91.0)
 
-Wed, 24 Aug 2022 07:44:41 GMT 
+Wed, 24 Aug 2022 07:44:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.90.2..@fluentui/react_v8.91.0)
 
 ### Minor changes
@@ -220,7 +220,7 @@ Wed, 24 Aug 2022 07:44:41 GMT
 
 ## [8.90.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.2)
 
-Tue, 23 Aug 2022 07:22:50 GMT 
+Tue, 23 Aug 2022 07:22:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.90.1..@fluentui/react_v8.90.2)
 
 ### Patches
@@ -236,7 +236,7 @@ Tue, 23 Aug 2022 07:22:50 GMT
 
 ## [8.90.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.1)
 
-Mon, 22 Aug 2022 07:44:26 GMT 
+Mon, 22 Aug 2022 07:44:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.90.0..@fluentui/react_v8.90.1)
 
 ### Patches
@@ -246,7 +246,7 @@ Mon, 22 Aug 2022 07:44:26 GMT
 
 ## [8.90.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.0)
 
-Thu, 18 Aug 2022 23:39:29 GMT 
+Thu, 18 Aug 2022 23:39:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.89.0..@fluentui/react_v8.90.0)
 
 ### Minor changes
@@ -268,7 +268,7 @@ Thu, 18 Aug 2022 23:39:29 GMT
 
 ## [8.89.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.89.0)
 
-Thu, 18 Aug 2022 07:48:47 GMT 
+Thu, 18 Aug 2022 07:48:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.88.0..@fluentui/react_v8.89.0)
 
 ### Minor changes
@@ -282,7 +282,7 @@ Thu, 18 Aug 2022 07:48:47 GMT
 
 ## [8.88.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.88.0)
 
-Mon, 15 Aug 2022 07:39:40 GMT 
+Mon, 15 Aug 2022 07:39:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.87.2..@fluentui/react_v8.88.0)
 
 ### Minor changes
@@ -299,7 +299,7 @@ Mon, 15 Aug 2022 07:39:40 GMT
 
 ## [8.87.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.2)
 
-Fri, 12 Aug 2022 07:48:18 GMT 
+Fri, 12 Aug 2022 07:48:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.87.1..@fluentui/react_v8.87.2)
 
 ### Patches
@@ -308,7 +308,7 @@ Fri, 12 Aug 2022 07:48:18 GMT
 
 ## [8.87.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.1)
 
-Mon, 08 Aug 2022 20:28:21 GMT 
+Mon, 08 Aug 2022 20:28:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.87.0..@fluentui/react_v8.87.1)
 
 ### Patches
@@ -317,7 +317,7 @@ Mon, 08 Aug 2022 20:28:21 GMT
 
 ## [8.87.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.0)
 
-Mon, 08 Aug 2022 07:39:32 GMT 
+Mon, 08 Aug 2022 07:39:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.4..@fluentui/react_v8.87.0)
 
 ### Minor changes
@@ -347,7 +347,7 @@ Mon, 08 Aug 2022 07:39:32 GMT
 
 ## [8.86.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.4)
 
-Thu, 04 Aug 2022 07:42:12 GMT 
+Thu, 04 Aug 2022 07:42:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.3..@fluentui/react_v8.86.4)
 
 ### Patches
@@ -357,7 +357,7 @@ Thu, 04 Aug 2022 07:42:12 GMT
 
 ## [8.86.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.3)
 
-Tue, 02 Aug 2022 18:04:49 GMT 
+Tue, 02 Aug 2022 18:04:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.2..@fluentui/react_v8.86.3)
 
 ### Patches
@@ -366,7 +366,7 @@ Tue, 02 Aug 2022 18:04:49 GMT
 
 ## [8.86.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.2)
 
-Tue, 02 Aug 2022 07:44:44 GMT 
+Tue, 02 Aug 2022 07:44:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.1..@fluentui/react_v8.86.2)
 
 ### Patches
@@ -383,7 +383,7 @@ Tue, 02 Aug 2022 07:44:44 GMT
 
 ## [8.86.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.1)
 
-Mon, 01 Aug 2022 07:39:02 GMT 
+Mon, 01 Aug 2022 07:39:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.0..@fluentui/react_v8.86.1)
 
 ### Patches
@@ -393,7 +393,7 @@ Mon, 01 Aug 2022 07:39:02 GMT
 
 ## [8.86.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.0)
 
-Fri, 29 Jul 2022 07:41:56 GMT 
+Fri, 29 Jul 2022 07:41:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.85.1..@fluentui/react_v8.86.0)
 
 ### Minor changes
@@ -402,7 +402,7 @@ Fri, 29 Jul 2022 07:41:56 GMT
 
 ## [8.85.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.85.1)
 
-Thu, 28 Jul 2022 07:41:17 GMT 
+Thu, 28 Jul 2022 07:41:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.85.0..@fluentui/react_v8.85.1)
 
 ### Patches
@@ -412,7 +412,7 @@ Thu, 28 Jul 2022 07:41:17 GMT
 
 ## [8.85.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.85.0)
 
-Wed, 27 Jul 2022 07:37:42 GMT 
+Wed, 27 Jul 2022 07:37:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.84.0..@fluentui/react_v8.85.0)
 
 ### Minor changes
@@ -422,7 +422,7 @@ Wed, 27 Jul 2022 07:37:42 GMT
 
 ## [8.84.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.84.0)
 
-Tue, 26 Jul 2022 07:39:34 GMT 
+Tue, 26 Jul 2022 07:39:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.83.1..@fluentui/react_v8.84.0)
 
 ### Minor changes
@@ -439,7 +439,7 @@ Tue, 26 Jul 2022 07:39:34 GMT
 
 ## [8.83.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.83.1)
 
-Mon, 25 Jul 2022 07:36:55 GMT 
+Mon, 25 Jul 2022 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.83.0..@fluentui/react_v8.83.1)
 
 ### Patches
@@ -448,7 +448,7 @@ Mon, 25 Jul 2022 07:36:55 GMT
 
 ## [8.83.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.83.0)
 
-Fri, 22 Jul 2022 07:54:16 GMT 
+Fri, 22 Jul 2022 07:54:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.2..@fluentui/react_v8.83.0)
 
 ### Minor changes
@@ -457,7 +457,7 @@ Fri, 22 Jul 2022 07:54:16 GMT
 
 ## [8.82.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.2)
 
-Thu, 21 Jul 2022 07:49:17 GMT 
+Thu, 21 Jul 2022 07:49:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.1..@fluentui/react_v8.82.2)
 
 ### Patches
@@ -466,7 +466,7 @@ Thu, 21 Jul 2022 07:49:17 GMT
 
 ## [8.82.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.1)
 
-Wed, 20 Jul 2022 07:42:27 GMT 
+Wed, 20 Jul 2022 07:42:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.0..@fluentui/react_v8.82.1)
 
 ### Patches
@@ -476,7 +476,7 @@ Wed, 20 Jul 2022 07:42:27 GMT
 
 ## [8.82.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.0)
 
-Tue, 19 Jul 2022 07:41:07 GMT 
+Tue, 19 Jul 2022 07:41:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.1..@fluentui/react_v8.82.0)
 
 ### Minor changes
@@ -485,7 +485,7 @@ Tue, 19 Jul 2022 07:41:07 GMT
 
 ## [8.81.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.1)
 
-Fri, 15 Jul 2022 20:03:47 GMT 
+Fri, 15 Jul 2022 20:03:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.0..@fluentui/react_v8.81.1)
 
 ### Patches
@@ -494,7 +494,7 @@ Fri, 15 Jul 2022 20:03:47 GMT
 
 ## [8.81.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.0)
 
-Thu, 14 Jul 2022 07:45:34 GMT 
+Thu, 14 Jul 2022 07:45:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.80.0..@fluentui/react_v8.81.0)
 
 ### Minor changes
@@ -503,7 +503,7 @@ Thu, 14 Jul 2022 07:45:34 GMT
 
 ## [8.80.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.80.0)
 
-Tue, 12 Jul 2022 07:40:59 GMT 
+Tue, 12 Jul 2022 07:40:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.79.0..@fluentui/react_v8.80.0)
 
 ### Minor changes
@@ -526,7 +526,7 @@ Tue, 12 Jul 2022 07:40:59 GMT
 
 ## [8.79.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.79.0)
 
-Fri, 08 Jul 2022 07:36:28 GMT 
+Fri, 08 Jul 2022 07:36:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.78.1..@fluentui/react_v8.79.0)
 
 ### Minor changes
@@ -539,7 +539,7 @@ Fri, 08 Jul 2022 07:36:28 GMT
 
 ## [8.78.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.78.1)
 
-Thu, 07 Jul 2022 07:37:21 GMT 
+Thu, 07 Jul 2022 07:37:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.78.0..@fluentui/react_v8.78.1)
 
 ### Patches
@@ -548,7 +548,7 @@ Thu, 07 Jul 2022 07:37:21 GMT
 
 ## [8.78.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.78.0)
 
-Wed, 06 Jul 2022 07:38:24 GMT 
+Wed, 06 Jul 2022 07:38:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.3..@fluentui/react_v8.78.0)
 
 ### Minor changes
@@ -561,7 +561,7 @@ Wed, 06 Jul 2022 07:38:24 GMT
 
 ## [8.77.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.3)
 
-Thu, 30 Jun 2022 07:40:48 GMT 
+Thu, 30 Jun 2022 07:40:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.2..@fluentui/react_v8.77.3)
 
 ### Patches
@@ -570,7 +570,7 @@ Thu, 30 Jun 2022 07:40:48 GMT
 
 ## [8.77.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.2)
 
-Tue, 28 Jun 2022 07:39:04 GMT 
+Tue, 28 Jun 2022 07:39:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.1..@fluentui/react_v8.77.2)
 
 ### Patches
@@ -583,7 +583,7 @@ Tue, 28 Jun 2022 07:39:04 GMT
 
 ## [8.77.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.1)
 
-Fri, 24 Jun 2022 07:43:32 GMT 
+Fri, 24 Jun 2022 07:43:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.0..@fluentui/react_v8.77.1)
 
 ### Patches
@@ -592,7 +592,7 @@ Fri, 24 Jun 2022 07:43:32 GMT
 
 ## [8.77.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.0)
 
-Mon, 20 Jun 2022 07:45:12 GMT 
+Mon, 20 Jun 2022 07:45:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.76.1..@fluentui/react_v8.77.0)
 
 ### Minor changes
@@ -601,7 +601,7 @@ Mon, 20 Jun 2022 07:45:12 GMT
 
 ## [8.76.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.1)
 
-Fri, 17 Jun 2022 07:41:59 GMT 
+Fri, 17 Jun 2022 07:41:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.76.0..@fluentui/react_v8.76.1)
 
 ### Patches
@@ -610,7 +610,7 @@ Fri, 17 Jun 2022 07:41:59 GMT
 
 ## [8.76.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.0)
 
-Wed, 15 Jun 2022 21:38:03 GMT 
+Wed, 15 Jun 2022 21:38:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.75.1..@fluentui/react_v8.76.0)
 
 ### Minor changes
@@ -619,7 +619,7 @@ Wed, 15 Jun 2022 21:38:03 GMT
 
 ## [8.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.1)
 
-Wed, 15 Jun 2022 07:40:21 GMT 
+Wed, 15 Jun 2022 07:40:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.75.0..@fluentui/react_v8.75.1)
 
 ### Patches
@@ -629,7 +629,7 @@ Wed, 15 Jun 2022 07:40:21 GMT
 
 ## [8.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.0)
 
-Tue, 14 Jun 2022 07:52:11 GMT 
+Tue, 14 Jun 2022 07:52:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.74.0..@fluentui/react_v8.75.0)
 
 ### Minor changes
@@ -638,7 +638,7 @@ Tue, 14 Jun 2022 07:52:11 GMT
 
 ## [8.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.74.0)
 
-Mon, 13 Jun 2022 07:39:07 GMT 
+Mon, 13 Jun 2022 07:39:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.73.0..@fluentui/react_v8.74.0)
 
 ### Minor changes
@@ -652,7 +652,7 @@ Mon, 13 Jun 2022 07:39:07 GMT
 
 ## [8.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.73.0)
 
-Fri, 10 Jun 2022 07:46:13 GMT 
+Fri, 10 Jun 2022 07:46:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.3..@fluentui/react_v8.73.0)
 
 ### Minor changes
@@ -667,7 +667,7 @@ Fri, 10 Jun 2022 07:46:13 GMT
 
 ## [8.72.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.3)
 
-Thu, 09 Jun 2022 07:45:28 GMT 
+Thu, 09 Jun 2022 07:45:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.2..@fluentui/react_v8.72.3)
 
 ### Patches
@@ -676,7 +676,7 @@ Thu, 09 Jun 2022 07:45:28 GMT
 
 ## [8.72.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.2)
 
-Tue, 07 Jun 2022 07:48:02 GMT 
+Tue, 07 Jun 2022 07:48:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.1..@fluentui/react_v8.72.2)
 
 ### Patches
@@ -691,7 +691,7 @@ Tue, 07 Jun 2022 07:48:02 GMT
 
 ## [8.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.1)
 
-Thu, 02 Jun 2022 07:38:04 GMT 
+Thu, 02 Jun 2022 07:38:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.0..@fluentui/react_v8.72.1)
 
 ### Patches
@@ -700,7 +700,7 @@ Thu, 02 Jun 2022 07:38:04 GMT
 
 ## [8.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.0)
 
-Wed, 01 Jun 2022 07:38:24 GMT 
+Wed, 01 Jun 2022 07:38:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.71.1..@fluentui/react_v8.72.0)
 
 ### Minor changes
@@ -709,7 +709,7 @@ Wed, 01 Jun 2022 07:38:24 GMT
 
 ## [8.71.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.71.1)
 
-Mon, 30 May 2022 07:44:12 GMT 
+Mon, 30 May 2022 07:44:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.71.0..@fluentui/react_v8.71.1)
 
 ### Patches
@@ -718,7 +718,7 @@ Mon, 30 May 2022 07:44:12 GMT
 
 ## [8.71.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.71.0)
 
-Fri, 27 May 2022 07:39:11 GMT 
+Fri, 27 May 2022 07:39:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.70.0..@fluentui/react_v8.71.0)
 
 ### Minor changes
@@ -727,7 +727,7 @@ Fri, 27 May 2022 07:39:11 GMT
 
 ## [8.70.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.70.0)
 
-Wed, 25 May 2022 07:44:28 GMT 
+Wed, 25 May 2022 07:44:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.69.0..@fluentui/react_v8.70.0)
 
 ### Minor changes
@@ -736,7 +736,7 @@ Wed, 25 May 2022 07:44:28 GMT
 
 ## [8.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.69.0)
 
-Tue, 24 May 2022 07:47:25 GMT 
+Tue, 24 May 2022 07:47:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.4..@fluentui/react_v8.69.0)
 
 ### Minor changes
@@ -745,7 +745,7 @@ Tue, 24 May 2022 07:47:25 GMT
 
 ## [8.68.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.4)
 
-Mon, 23 May 2022 07:42:16 GMT 
+Mon, 23 May 2022 07:42:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.3..@fluentui/react_v8.68.4)
 
 ### Patches
@@ -754,7 +754,7 @@ Mon, 23 May 2022 07:42:16 GMT
 
 ## [8.68.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.3)
 
-Thu, 19 May 2022 07:41:27 GMT 
+Thu, 19 May 2022 07:41:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.2..@fluentui/react_v8.68.3)
 
 ### Patches
@@ -763,7 +763,7 @@ Thu, 19 May 2022 07:41:27 GMT
 
 ## [8.68.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.2)
 
-Tue, 17 May 2022 07:45:01 GMT 
+Tue, 17 May 2022 07:45:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.1..@fluentui/react_v8.68.2)
 
 ### Patches
@@ -772,7 +772,7 @@ Tue, 17 May 2022 07:45:01 GMT
 
 ## [8.68.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.1)
 
-Mon, 16 May 2022 07:36:55 GMT 
+Mon, 16 May 2022 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.0..@fluentui/react_v8.68.1)
 
 ### Patches
@@ -781,7 +781,7 @@ Mon, 16 May 2022 07:36:55 GMT
 
 ## [8.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.0)
 
-Fri, 13 May 2022 07:45:34 GMT 
+Fri, 13 May 2022 07:45:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.4..@fluentui/react_v8.68.0)
 
 ### Minor changes
@@ -806,7 +806,7 @@ Fri, 13 May 2022 07:45:34 GMT
 
 ## [8.67.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.4)
 
-Wed, 11 May 2022 07:42:46 GMT 
+Wed, 11 May 2022 07:42:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.3..@fluentui/react_v8.67.4)
 
 ### Patches
@@ -815,7 +815,7 @@ Wed, 11 May 2022 07:42:46 GMT
 
 ## [8.67.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.3)
 
-Mon, 09 May 2022 07:37:41 GMT 
+Mon, 09 May 2022 07:37:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.2..@fluentui/react_v8.67.3)
 
 ### Patches
@@ -824,7 +824,7 @@ Mon, 09 May 2022 07:37:41 GMT
 
 ## [8.67.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.2)
 
-Thu, 28 Apr 2022 07:39:55 GMT 
+Thu, 28 Apr 2022 07:39:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.1..@fluentui/react_v8.67.2)
 
 ### Patches
@@ -833,7 +833,7 @@ Thu, 28 Apr 2022 07:39:55 GMT
 
 ## [8.67.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.1)
 
-Wed, 27 Apr 2022 07:43:07 GMT 
+Wed, 27 Apr 2022 07:43:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.0..@fluentui/react_v8.67.1)
 
 ### Patches
@@ -844,7 +844,7 @@ Wed, 27 Apr 2022 07:43:07 GMT
 
 ## [8.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.0)
 
-Mon, 25 Apr 2022 07:37:24 GMT 
+Mon, 25 Apr 2022 07:37:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.66.2..@fluentui/react_v8.67.0)
 
 ### Minor changes
@@ -858,7 +858,7 @@ Mon, 25 Apr 2022 07:37:24 GMT
 
 ## [8.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.2)
 
-Thu, 21 Apr 2022 07:36:48 GMT 
+Thu, 21 Apr 2022 07:36:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.66.1..@fluentui/react_v8.66.2)
 
 ### Patches
@@ -867,7 +867,7 @@ Thu, 21 Apr 2022 07:36:48 GMT
 
 ## [8.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.1)
 
-Wed, 20 Apr 2022 07:39:22 GMT 
+Wed, 20 Apr 2022 07:39:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.66.0..@fluentui/react_v8.66.1)
 
 ### Patches
@@ -878,7 +878,7 @@ Wed, 20 Apr 2022 07:39:22 GMT
 
 ## [8.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.0)
 
-Tue, 19 Apr 2022 21:39:15 GMT 
+Tue, 19 Apr 2022 21:39:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.1..@fluentui/react_v8.66.0)
 
 ### Minor changes
@@ -892,7 +892,7 @@ Tue, 19 Apr 2022 21:39:15 GMT
 
 ## [8.65.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.1)
 
-Mon, 18 Apr 2022 07:38:03 GMT 
+Mon, 18 Apr 2022 07:38:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.0..@fluentui/react_v8.65.1)
 
 ### Patches
@@ -904,7 +904,7 @@ Mon, 18 Apr 2022 07:38:03 GMT
 
 ## [8.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.0)
 
-Fri, 15 Apr 2022 07:42:46 GMT 
+Fri, 15 Apr 2022 07:42:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.4..@fluentui/react_v8.65.0)
 
 ### Minor changes
@@ -931,7 +931,7 @@ Fri, 15 Apr 2022 07:42:46 GMT
 
 ## [8.64.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.4)
 
-Thu, 14 Apr 2022 07:38:09 GMT 
+Thu, 14 Apr 2022 07:38:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.3..@fluentui/react_v8.64.4)
 
 ### Patches
@@ -942,7 +942,7 @@ Thu, 14 Apr 2022 07:38:09 GMT
 
 ## [8.64.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.3)
 
-Tue, 12 Apr 2022 07:39:33 GMT 
+Tue, 12 Apr 2022 07:39:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.2..@fluentui/react_v8.64.3)
 
 ### Patches
@@ -951,7 +951,7 @@ Tue, 12 Apr 2022 07:39:33 GMT
 
 ## [8.64.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.2)
 
-Mon, 11 Apr 2022 07:40:57 GMT 
+Mon, 11 Apr 2022 07:40:57 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.1..@fluentui/react_v8.64.2)
 
 ### Patches
@@ -960,7 +960,7 @@ Mon, 11 Apr 2022 07:40:57 GMT
 
 ## [8.64.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.1)
 
-Wed, 06 Apr 2022 07:34:57 GMT 
+Wed, 06 Apr 2022 07:34:57 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.0..@fluentui/react_v8.64.1)
 
 ### Patches
@@ -969,7 +969,7 @@ Wed, 06 Apr 2022 07:34:57 GMT
 
 ## [8.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.0)
 
-Mon, 04 Apr 2022 20:01:03 GMT 
+Mon, 04 Apr 2022 20:01:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.63.1..@fluentui/react_v8.64.0)
 
 ### Minor changes
@@ -978,7 +978,7 @@ Mon, 04 Apr 2022 20:01:03 GMT
 
 ## [8.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.63.1)
 
-Thu, 31 Mar 2022 07:38:07 GMT 
+Thu, 31 Mar 2022 07:38:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.63.0..@fluentui/react_v8.63.1)
 
 ### Patches
@@ -987,7 +987,7 @@ Thu, 31 Mar 2022 07:38:07 GMT
 
 ## [8.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.63.0)
 
-Wed, 30 Mar 2022 07:38:54 GMT 
+Wed, 30 Mar 2022 07:38:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.4..@fluentui/react_v8.63.0)
 
 ### Minor changes
@@ -1001,7 +1001,7 @@ Wed, 30 Mar 2022 07:38:54 GMT
 
 ## [8.62.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.4)
 
-Mon, 28 Mar 2022 07:47:27 GMT 
+Mon, 28 Mar 2022 07:47:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.3..@fluentui/react_v8.62.4)
 
 ### Patches
@@ -1010,7 +1010,7 @@ Mon, 28 Mar 2022 07:47:27 GMT
 
 ## [8.62.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.3)
 
-Fri, 25 Mar 2022 07:38:05 GMT 
+Fri, 25 Mar 2022 07:38:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.2..@fluentui/react_v8.62.3)
 
 ### Patches
@@ -1019,7 +1019,7 @@ Fri, 25 Mar 2022 07:38:05 GMT
 
 ## [8.62.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.2)
 
-Wed, 23 Mar 2022 07:37:29 GMT 
+Wed, 23 Mar 2022 07:37:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.1..@fluentui/react_v8.62.2)
 
 ### Patches
@@ -1028,7 +1028,7 @@ Wed, 23 Mar 2022 07:37:29 GMT
 
 ## [8.62.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.1)
 
-Mon, 21 Mar 2022 07:39:45 GMT 
+Mon, 21 Mar 2022 07:39:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.0..@fluentui/react_v8.62.1)
 
 ### Patches
@@ -1037,7 +1037,7 @@ Mon, 21 Mar 2022 07:39:45 GMT
 
 ## [8.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.0)
 
-Fri, 18 Mar 2022 07:42:02 GMT 
+Fri, 18 Mar 2022 07:42:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.61.2..@fluentui/react_v8.62.0)
 
 ### Minor changes
@@ -1046,7 +1046,7 @@ Fri, 18 Mar 2022 07:42:02 GMT
 
 ## [8.61.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.61.2)
 
-Wed, 16 Mar 2022 07:38:50 GMT 
+Wed, 16 Mar 2022 07:38:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.61.1..@fluentui/react_v8.61.2)
 
 ### Patches
@@ -1057,7 +1057,7 @@ Wed, 16 Mar 2022 07:38:50 GMT
 
 ## [8.61.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.61.1)
 
-Tue, 15 Mar 2022 07:45:54 GMT 
+Tue, 15 Mar 2022 07:45:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.61.0..@fluentui/react_v8.61.1)
 
 ### Patches
@@ -1073,7 +1073,7 @@ Tue, 15 Mar 2022 07:45:54 GMT
 
 ## [8.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.61.0)
 
-Sat, 12 Mar 2022 01:04:49 GMT 
+Sat, 12 Mar 2022 01:04:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.60.4..@fluentui/react_v8.61.0)
 
 ### Minor changes
@@ -1082,7 +1082,7 @@ Sat, 12 Mar 2022 01:04:49 GMT
 
 ## [8.60.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.4)
 
-Fri, 11 Mar 2022 19:51:48 GMT 
+Fri, 11 Mar 2022 19:51:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.60.3..@fluentui/react_v8.60.4)
 
 ### Patches
@@ -1091,7 +1091,7 @@ Fri, 11 Mar 2022 19:51:48 GMT
 
 ## [8.60.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.3)
 
-Fri, 11 Mar 2022 07:34:41 GMT 
+Fri, 11 Mar 2022 07:34:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.60.2..@fluentui/react_v8.60.3)
 
 ### Patches
@@ -1109,7 +1109,7 @@ Fri, 11 Mar 2022 07:34:41 GMT
 
 ## [8.60.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.2)
 
-Thu, 10 Mar 2022 07:34:50 GMT 
+Thu, 10 Mar 2022 07:34:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.60.1..@fluentui/react_v8.60.2)
 
 ### Patches
@@ -1124,7 +1124,7 @@ Thu, 10 Mar 2022 07:34:50 GMT
 
 ## [8.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.1)
 
-Wed, 09 Mar 2022 07:37:29 GMT 
+Wed, 09 Mar 2022 07:37:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.60.0..@fluentui/react_v8.60.1)
 
 ### Patches
@@ -1142,7 +1142,7 @@ Wed, 09 Mar 2022 07:37:29 GMT
 
 ## [8.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.0)
 
-Tue, 08 Mar 2022 23:29:58 GMT 
+Tue, 08 Mar 2022 23:29:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.59.0..@fluentui/react_v8.60.0)
 
 ### Minor changes
@@ -1157,7 +1157,7 @@ Tue, 08 Mar 2022 23:29:58 GMT
 
 ## [8.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.59.0)
 
-Tue, 08 Mar 2022 07:35:07 GMT 
+Tue, 08 Mar 2022 07:35:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.58.0..@fluentui/react_v8.59.0)
 
 ### Minor changes
@@ -1166,7 +1166,7 @@ Tue, 08 Mar 2022 07:35:07 GMT
 
 ## [8.58.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.58.0)
 
-Mon, 07 Mar 2022 07:41:13 GMT 
+Mon, 07 Mar 2022 07:41:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.57.1..@fluentui/react_v8.58.0)
 
 ### Minor changes
@@ -1179,7 +1179,7 @@ Mon, 07 Mar 2022 07:41:13 GMT
 
 ## [8.57.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.57.1)
 
-Fri, 04 Mar 2022 07:42:05 GMT 
+Fri, 04 Mar 2022 07:42:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.57.0..@fluentui/react_v8.57.1)
 
 ### Patches
@@ -1188,7 +1188,7 @@ Fri, 04 Mar 2022 07:42:05 GMT
 
 ## [8.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.57.0)
 
-Thu, 03 Mar 2022 07:24:27 GMT 
+Thu, 03 Mar 2022 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.56.3..@fluentui/react_v8.57.0)
 
 ### Minor changes
@@ -1215,7 +1215,7 @@ Thu, 03 Mar 2022 07:24:27 GMT
 
 ## [8.56.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.56.3)
 
-Wed, 02 Mar 2022 07:23:05 GMT 
+Wed, 02 Mar 2022 07:23:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.56.2..@fluentui/react_v8.56.3)
 
 ### Patches
@@ -1225,7 +1225,7 @@ Wed, 02 Mar 2022 07:23:05 GMT
 
 ## [8.56.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.56.2)
 
-Tue, 01 Mar 2022 07:23:42 GMT 
+Tue, 01 Mar 2022 07:23:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.56.1..@fluentui/react_v8.56.2)
 
 ### Patches
@@ -1243,7 +1243,7 @@ Tue, 01 Mar 2022 07:23:42 GMT
 
 ## [8.56.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.56.1)
 
-Thu, 24 Feb 2022 07:29:50 GMT 
+Thu, 24 Feb 2022 07:29:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.56.0..@fluentui/react_v8.56.1)
 
 ### Patches
@@ -1259,7 +1259,7 @@ Thu, 24 Feb 2022 07:29:50 GMT
 
 ## [8.56.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.56.0)
 
-Wed, 23 Feb 2022 07:26:36 GMT 
+Wed, 23 Feb 2022 07:26:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.55.3..@fluentui/react_v8.56.0)
 
 ### Minor changes
@@ -1268,7 +1268,7 @@ Wed, 23 Feb 2022 07:26:36 GMT
 
 ## [8.55.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.3)
 
-Thu, 17 Feb 2022 07:28:31 GMT 
+Thu, 17 Feb 2022 07:28:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.55.2..@fluentui/react_v8.55.3)
 
 ### Patches
@@ -1284,7 +1284,7 @@ Thu, 17 Feb 2022 07:28:31 GMT
 
 ## [8.55.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.2)
 
-Mon, 14 Feb 2022 07:26:36 GMT 
+Mon, 14 Feb 2022 07:26:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.55.1..@fluentui/react_v8.55.2)
 
 ### Patches
@@ -1294,7 +1294,7 @@ Mon, 14 Feb 2022 07:26:36 GMT
 
 ## [8.55.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.1)
 
-Fri, 11 Feb 2022 07:27:47 GMT 
+Fri, 11 Feb 2022 07:27:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.55.0..@fluentui/react_v8.55.1)
 
 ### Patches
@@ -1312,7 +1312,7 @@ Fri, 11 Feb 2022 07:27:47 GMT
 
 ## [8.55.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.0)
 
-Thu, 10 Feb 2022 07:32:10 GMT 
+Thu, 10 Feb 2022 07:32:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.54.0..@fluentui/react_v8.55.0)
 
 ### Minor changes
@@ -1322,7 +1322,7 @@ Thu, 10 Feb 2022 07:32:10 GMT
 
 ## [8.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.54.0)
 
-Wed, 09 Feb 2022 07:30:48 GMT 
+Wed, 09 Feb 2022 07:30:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.53.0..@fluentui/react_v8.54.0)
 
 ### Minor changes
@@ -1344,7 +1344,7 @@ Wed, 09 Feb 2022 07:30:48 GMT
 
 ## [8.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.53.0)
 
-Tue, 08 Feb 2022 07:25:33 GMT 
+Tue, 08 Feb 2022 07:25:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.3..@fluentui/react_v8.53.0)
 
 ### Minor changes
@@ -1360,7 +1360,7 @@ Tue, 08 Feb 2022 07:25:33 GMT
 
 ## [8.52.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.3)
 
-Fri, 04 Feb 2022 07:31:42 GMT 
+Fri, 04 Feb 2022 07:31:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.2..@fluentui/react_v8.52.3)
 
 ### Patches
@@ -1370,7 +1370,7 @@ Fri, 04 Feb 2022 07:31:42 GMT
 
 ## [8.52.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.2)
 
-Thu, 03 Feb 2022 07:29:41 GMT 
+Thu, 03 Feb 2022 07:29:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.1..@fluentui/react_v8.52.2)
 
 ### Patches
@@ -1389,7 +1389,7 @@ Thu, 03 Feb 2022 07:29:41 GMT
 
 ## [8.52.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.1)
 
-Tue, 01 Feb 2022 07:26:25 GMT 
+Tue, 01 Feb 2022 07:26:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.0..@fluentui/react_v8.52.1)
 
 ### Patches
@@ -1400,7 +1400,7 @@ Tue, 01 Feb 2022 07:26:25 GMT
 
 ## [8.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.0)
 
-Mon, 31 Jan 2022 07:27:29 GMT 
+Mon, 31 Jan 2022 07:27:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.51.1..@fluentui/react_v8.52.0)
 
 ### Minor changes
@@ -1414,7 +1414,7 @@ Mon, 31 Jan 2022 07:27:29 GMT
 
 ## [8.51.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.1)
 
-Wed, 26 Jan 2022 07:26:00 GMT 
+Wed, 26 Jan 2022 07:26:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.51.0..@fluentui/react_v8.51.1)
 
 ### Patches
@@ -1423,7 +1423,7 @@ Wed, 26 Jan 2022 07:26:00 GMT
 
 ## [8.51.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.0)
 
-Tue, 25 Jan 2022 07:30:06 GMT 
+Tue, 25 Jan 2022 07:30:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.50.1..@fluentui/react_v8.51.0)
 
 ### Minor changes
@@ -1438,7 +1438,7 @@ Tue, 25 Jan 2022 07:30:06 GMT
 
 ## [8.50.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.50.1)
 
-Mon, 24 Jan 2022 07:26:13 GMT 
+Mon, 24 Jan 2022 07:26:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.50.0..@fluentui/react_v8.50.1)
 
 ### Patches
@@ -1448,7 +1448,7 @@ Mon, 24 Jan 2022 07:26:13 GMT
 
 ## [8.50.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.50.0)
 
-Fri, 21 Jan 2022 07:26:05 GMT 
+Fri, 21 Jan 2022 07:26:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.7..@fluentui/react_v8.50.0)
 
 ### Minor changes
@@ -1461,7 +1461,7 @@ Fri, 21 Jan 2022 07:26:05 GMT
 
 ## [8.49.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.7)
 
-Mon, 17 Jan 2022 09:43:48 GMT 
+Mon, 17 Jan 2022 09:43:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.6..@fluentui/react_v8.49.7)
 
 ### Patches
@@ -1470,7 +1470,7 @@ Mon, 17 Jan 2022 09:43:48 GMT
 
 ## [8.49.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.6)
 
-Fri, 14 Jan 2022 07:28:38 GMT 
+Fri, 14 Jan 2022 07:28:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.5..@fluentui/react_v8.49.6)
 
 ### Patches
@@ -1479,7 +1479,7 @@ Fri, 14 Jan 2022 07:28:38 GMT
 
 ## [8.49.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.5)
 
-Thu, 13 Jan 2022 07:30:57 GMT 
+Thu, 13 Jan 2022 07:30:57 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.4..@fluentui/react_v8.49.5)
 
 ### Patches
@@ -1488,7 +1488,7 @@ Thu, 13 Jan 2022 07:30:57 GMT
 
 ## [8.49.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.4)
 
-Wed, 12 Jan 2022 07:32:29 GMT 
+Wed, 12 Jan 2022 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.3..@fluentui/react_v8.49.4)
 
 ### Patches
@@ -1497,7 +1497,7 @@ Wed, 12 Jan 2022 07:32:29 GMT
 
 ## [8.49.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.3)
 
-Tue, 11 Jan 2022 07:29:05 GMT 
+Tue, 11 Jan 2022 07:29:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.2..@fluentui/react_v8.49.3)
 
 ### Patches
@@ -1506,7 +1506,7 @@ Tue, 11 Jan 2022 07:29:05 GMT
 
 ## [8.49.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.2)
 
-Mon, 10 Jan 2022 07:26:30 GMT 
+Mon, 10 Jan 2022 07:26:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.1..@fluentui/react_v8.49.2)
 
 ### Patches
@@ -1515,7 +1515,7 @@ Mon, 10 Jan 2022 07:26:30 GMT
 
 ## [8.49.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.1)
 
-Fri, 07 Jan 2022 07:27:47 GMT 
+Fri, 07 Jan 2022 07:27:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.0..@fluentui/react_v8.49.1)
 
 ### Patches
@@ -1524,7 +1524,7 @@ Fri, 07 Jan 2022 07:27:47 GMT
 
 ## [8.49.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.0)
 
-Mon, 03 Jan 2022 23:32:10 GMT 
+Mon, 03 Jan 2022 23:32:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.48.1..@fluentui/react_v8.49.0)
 
 ### Minor changes
@@ -1543,7 +1543,7 @@ Mon, 03 Jan 2022 23:32:10 GMT
 
 ## [8.48.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.48.1)
 
-Wed, 22 Dec 2021 07:29:44 GMT 
+Wed, 22 Dec 2021 07:29:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.48.0..@fluentui/react_v8.48.1)
 
 ### Patches
@@ -1552,7 +1552,7 @@ Wed, 22 Dec 2021 07:29:44 GMT
 
 ## [8.48.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.48.0)
 
-Thu, 16 Dec 2021 07:26:40 GMT 
+Thu, 16 Dec 2021 07:26:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.3..@fluentui/react_v8.48.0)
 
 ### Minor changes
@@ -1562,7 +1562,7 @@ Thu, 16 Dec 2021 07:26:40 GMT
 
 ## [8.47.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.3)
 
-Wed, 15 Dec 2021 07:31:27 GMT 
+Wed, 15 Dec 2021 07:31:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.2..@fluentui/react_v8.47.3)
 
 ### Patches
@@ -1582,7 +1582,7 @@ Wed, 15 Dec 2021 07:31:27 GMT
 
 ## [8.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.2)
 
-Tue, 14 Dec 2021 07:30:02 GMT 
+Tue, 14 Dec 2021 07:30:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.1..@fluentui/react_v8.47.2)
 
 ### Patches
@@ -1591,7 +1591,7 @@ Tue, 14 Dec 2021 07:30:02 GMT
 
 ## [8.47.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.1)
 
-Fri, 10 Dec 2021 07:30:34 GMT 
+Fri, 10 Dec 2021 07:30:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.0..@fluentui/react_v8.47.1)
 
 ### Patches
@@ -1601,7 +1601,7 @@ Fri, 10 Dec 2021 07:30:34 GMT
 
 ## [8.47.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.0)
 
-Thu, 09 Dec 2021 07:27:17 GMT 
+Thu, 09 Dec 2021 07:27:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.3..@fluentui/react_v8.47.0)
 
 ### Minor changes
@@ -1610,7 +1610,7 @@ Thu, 09 Dec 2021 07:27:17 GMT
 
 ## [8.46.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.3)
 
-Wed, 08 Dec 2021 07:28:19 GMT 
+Wed, 08 Dec 2021 07:28:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.2..@fluentui/react_v8.46.3)
 
 ### Patches
@@ -1619,7 +1619,7 @@ Wed, 08 Dec 2021 07:28:19 GMT
 
 ## [8.46.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.2)
 
-Tue, 07 Dec 2021 07:31:32 GMT 
+Tue, 07 Dec 2021 07:31:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.1..@fluentui/react_v8.46.2)
 
 ### Patches
@@ -1629,7 +1629,7 @@ Tue, 07 Dec 2021 07:31:32 GMT
 
 ## [8.46.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.1)
 
-Fri, 03 Dec 2021 07:36:11 GMT 
+Fri, 03 Dec 2021 07:36:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.0..@fluentui/react_v8.46.1)
 
 ### Patches
@@ -1638,7 +1638,7 @@ Fri, 03 Dec 2021 07:36:11 GMT
 
 ## [8.46.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.0)
 
-Wed, 01 Dec 2021 07:41:08 GMT 
+Wed, 01 Dec 2021 07:41:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.45.0..@fluentui/react_v8.46.0)
 
 ### Minor changes
@@ -1647,7 +1647,7 @@ Wed, 01 Dec 2021 07:41:08 GMT
 
 ## [8.45.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.45.0)
 
-Tue, 30 Nov 2021 07:37:32 GMT 
+Tue, 30 Nov 2021 07:37:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.44.0..@fluentui/react_v8.45.0)
 
 ### Minor changes
@@ -1661,7 +1661,7 @@ Tue, 30 Nov 2021 07:37:32 GMT
 
 ## [8.44.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.44.0)
 
-Thu, 25 Nov 2021 14:54:13 GMT 
+Thu, 25 Nov 2021 14:54:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.43.0..@fluentui/react_v8.44.0)
 
 ### Minor changes
@@ -1690,7 +1690,7 @@ Thu, 25 Nov 2021 14:54:13 GMT
 
 ## [8.43.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.43.0)
 
-Tue, 23 Nov 2021 07:27:34 GMT 
+Tue, 23 Nov 2021 07:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.5..@fluentui/react_v8.43.0)
 
 ### Minor changes
@@ -1699,7 +1699,7 @@ Tue, 23 Nov 2021 07:27:34 GMT
 
 ## [8.42.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.5)
 
-Mon, 22 Nov 2021 07:36:13 GMT 
+Mon, 22 Nov 2021 07:36:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.4..@fluentui/react_v8.42.5)
 
 ### Patches
@@ -1709,7 +1709,7 @@ Mon, 22 Nov 2021 07:36:13 GMT
 
 ## [8.42.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.4)
 
-Fri, 19 Nov 2021 07:45:28 GMT 
+Fri, 19 Nov 2021 07:45:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.3..@fluentui/react_v8.42.4)
 
 ### Patches
@@ -1718,7 +1718,7 @@ Fri, 19 Nov 2021 07:45:28 GMT
 
 ## [8.42.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.3)
 
-Thu, 18 Nov 2021 07:29:22 GMT 
+Thu, 18 Nov 2021 07:29:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.2..@fluentui/react_v8.42.3)
 
 ### Patches
@@ -1728,7 +1728,7 @@ Thu, 18 Nov 2021 07:29:22 GMT
 
 ## [8.42.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.2)
 
-Wed, 17 Nov 2021 07:36:21 GMT 
+Wed, 17 Nov 2021 07:36:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.1..@fluentui/react_v8.42.2)
 
 ### Patches
@@ -1738,7 +1738,7 @@ Wed, 17 Nov 2021 07:36:21 GMT
 
 ## [8.42.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.1)
 
-Tue, 16 Nov 2021 07:36:41 GMT 
+Tue, 16 Nov 2021 07:36:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.0..@fluentui/react_v8.42.1)
 
 ### Patches
@@ -1747,7 +1747,7 @@ Tue, 16 Nov 2021 07:36:41 GMT
 
 ## [8.42.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.0)
 
-Mon, 15 Nov 2021 07:29:05 GMT 
+Mon, 15 Nov 2021 07:29:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.4..@fluentui/react_v8.42.0)
 
 ### Minor changes
@@ -1757,7 +1757,7 @@ Mon, 15 Nov 2021 07:29:05 GMT
 
 ## [8.41.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.4)
 
-Wed, 10 Nov 2021 07:31:58 GMT 
+Wed, 10 Nov 2021 07:31:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.3..@fluentui/react_v8.41.4)
 
 ### Patches
@@ -1777,7 +1777,7 @@ Wed, 10 Nov 2021 07:31:58 GMT
 
 ## [8.41.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.3)
 
-Tue, 09 Nov 2021 07:38:10 GMT 
+Tue, 09 Nov 2021 07:38:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.2..@fluentui/react_v8.41.3)
 
 ### Patches
@@ -1786,7 +1786,7 @@ Tue, 09 Nov 2021 07:38:10 GMT
 
 ## [8.41.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.2)
 
-Mon, 08 Nov 2021 07:35:50 GMT 
+Mon, 08 Nov 2021 07:35:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.1..@fluentui/react_v8.41.2)
 
 ### Patches
@@ -1795,7 +1795,7 @@ Mon, 08 Nov 2021 07:35:50 GMT
 
 ## [8.41.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.1)
 
-Fri, 05 Nov 2021 07:36:39 GMT 
+Fri, 05 Nov 2021 07:36:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.0..@fluentui/react_v8.41.1)
 
 ### Patches
@@ -1806,7 +1806,7 @@ Fri, 05 Nov 2021 07:36:39 GMT
 
 ## [8.41.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.0)
 
-Thu, 04 Nov 2021 07:29:41 GMT 
+Thu, 04 Nov 2021 07:29:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.40.0..@fluentui/react_v8.41.0)
 
 ### Minor changes
@@ -1815,7 +1815,7 @@ Thu, 04 Nov 2021 07:29:41 GMT
 
 ## [8.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.40.0)
 
-Wed, 03 Nov 2021 07:36:03 GMT 
+Wed, 03 Nov 2021 07:36:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.39.0..@fluentui/react_v8.40.0)
 
 ### Minor changes
@@ -1824,7 +1824,7 @@ Wed, 03 Nov 2021 07:36:03 GMT
 
 ## [8.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.39.0)
 
-Tue, 02 Nov 2021 07:37:01 GMT 
+Tue, 02 Nov 2021 07:37:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.38.0..@fluentui/react_v8.39.0)
 
 ### Minor changes
@@ -1845,7 +1845,7 @@ Tue, 02 Nov 2021 07:37:01 GMT
 
 ## [8.38.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.38.0)
 
-Mon, 01 Nov 2021 07:32:07 GMT 
+Mon, 01 Nov 2021 07:32:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.6..@fluentui/react_v8.38.0)
 
 ### Minor changes
@@ -1864,7 +1864,7 @@ Mon, 01 Nov 2021 07:32:07 GMT
 
 ## [8.37.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.6)
 
-Fri, 29 Oct 2021 07:29:08 GMT 
+Fri, 29 Oct 2021 07:29:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.5..@fluentui/react_v8.37.6)
 
 ### Patches
@@ -1873,7 +1873,7 @@ Fri, 29 Oct 2021 07:29:08 GMT
 
 ## [8.37.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.5)
 
-Thu, 28 Oct 2021 07:29:14 GMT 
+Thu, 28 Oct 2021 07:29:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.4..@fluentui/react_v8.37.5)
 
 ### Patches
@@ -1882,7 +1882,7 @@ Thu, 28 Oct 2021 07:29:14 GMT
 
 ## [8.37.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.4)
 
-Wed, 27 Oct 2021 07:29:16 GMT 
+Wed, 27 Oct 2021 07:29:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.3..@fluentui/react_v8.37.4)
 
 ### Patches
@@ -1892,7 +1892,7 @@ Wed, 27 Oct 2021 07:29:16 GMT
 
 ## [8.37.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.3)
 
-Tue, 26 Oct 2021 07:39:42 GMT 
+Tue, 26 Oct 2021 07:39:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.2..@fluentui/react_v8.37.3)
 
 ### Patches
@@ -1902,7 +1902,7 @@ Tue, 26 Oct 2021 07:39:42 GMT
 
 ## [8.37.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.2)
 
-Mon, 25 Oct 2021 07:38:02 GMT 
+Mon, 25 Oct 2021 07:38:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.1..@fluentui/react_v8.37.2)
 
 ### Patches
@@ -1911,7 +1911,7 @@ Mon, 25 Oct 2021 07:38:02 GMT
 
 ## [8.37.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.1)
 
-Thu, 21 Oct 2021 07:28:35 GMT 
+Thu, 21 Oct 2021 07:28:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.0..@fluentui/react_v8.37.1)
 
 ### Patches
@@ -1920,7 +1920,7 @@ Thu, 21 Oct 2021 07:28:35 GMT
 
 ## [8.37.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.0)
 
-Wed, 20 Oct 2021 07:30:01 GMT 
+Wed, 20 Oct 2021 07:30:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.5..@fluentui/react_v8.37.0)
 
 ### Minor changes
@@ -1934,7 +1934,7 @@ Wed, 20 Oct 2021 07:30:01 GMT
 
 ## [8.36.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.5)
 
-Wed, 13 Oct 2021 07:31:28 GMT 
+Wed, 13 Oct 2021 07:31:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.4..@fluentui/react_v8.36.5)
 
 ### Patches
@@ -1943,7 +1943,7 @@ Wed, 13 Oct 2021 07:31:28 GMT
 
 ## [8.36.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.4)
 
-Mon, 11 Oct 2021 07:36:36 GMT 
+Mon, 11 Oct 2021 07:36:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.3..@fluentui/react_v8.36.4)
 
 ### Patches
@@ -1952,7 +1952,7 @@ Mon, 11 Oct 2021 07:36:36 GMT
 
 ## [8.36.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.3)
 
-Fri, 08 Oct 2021 07:31:50 GMT 
+Fri, 08 Oct 2021 07:31:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.2..@fluentui/react_v8.36.3)
 
 ### Patches
@@ -1961,7 +1961,7 @@ Fri, 08 Oct 2021 07:31:50 GMT
 
 ## [8.36.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.2)
 
-Tue, 05 Oct 2021 07:37:17 GMT 
+Tue, 05 Oct 2021 07:37:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.1..@fluentui/react_v8.36.2)
 
 ### Patches
@@ -1977,7 +1977,7 @@ Tue, 05 Oct 2021 07:37:17 GMT
 
 ## [8.36.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.1)
 
-Mon, 04 Oct 2021 07:27:12 GMT 
+Mon, 04 Oct 2021 07:27:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.0..@fluentui/react_v8.36.1)
 
 ### Patches
@@ -1988,7 +1988,7 @@ Mon, 04 Oct 2021 07:27:12 GMT
 
 ## [8.36.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.0)
 
-Thu, 30 Sep 2021 07:31:40 GMT 
+Thu, 30 Sep 2021 07:31:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.35.2..@fluentui/react_v8.36.0)
 
 ### Minor changes
@@ -1997,7 +1997,7 @@ Thu, 30 Sep 2021 07:31:40 GMT
 
 ## [8.35.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.35.2)
 
-Wed, 29 Sep 2021 07:36:23 GMT 
+Wed, 29 Sep 2021 07:36:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.35.1..@fluentui/react_v8.35.2)
 
 ### Patches
@@ -2006,7 +2006,7 @@ Wed, 29 Sep 2021 07:36:23 GMT
 
 ## [8.35.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.35.1)
 
-Tue, 28 Sep 2021 22:17:07 GMT 
+Tue, 28 Sep 2021 22:17:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.35.0..@fluentui/react_v8.35.1)
 
 ### Patches
@@ -2025,7 +2025,7 @@ Tue, 28 Sep 2021 22:17:07 GMT
 
 ## [8.35.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.35.0)
 
-Tue, 28 Sep 2021 07:37:27 GMT 
+Tue, 28 Sep 2021 07:37:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.7..@fluentui/react_v8.35.0)
 
 ### Minor changes
@@ -2042,7 +2042,7 @@ Tue, 28 Sep 2021 07:37:27 GMT
 
 ## [8.34.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.7)
 
-Mon, 27 Sep 2021 07:34:24 GMT 
+Mon, 27 Sep 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.6..@fluentui/react_v8.34.7)
 
 ### Patches
@@ -2054,7 +2054,7 @@ Mon, 27 Sep 2021 07:34:24 GMT
 
 ## [8.34.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.6)
 
-Thu, 23 Sep 2021 07:35:13 GMT 
+Thu, 23 Sep 2021 07:35:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.5..@fluentui/react_v8.34.6)
 
 ### Patches
@@ -2063,7 +2063,7 @@ Thu, 23 Sep 2021 07:35:13 GMT
 
 ## [8.34.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.5)
 
-Wed, 22 Sep 2021 09:55:02 GMT 
+Wed, 22 Sep 2021 09:55:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.4..@fluentui/react_v8.34.5)
 
 ### Patches
@@ -2072,7 +2072,7 @@ Wed, 22 Sep 2021 09:55:02 GMT
 
 ## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.4)
 
-Tue, 21 Sep 2021 07:42:34 GMT 
+Tue, 21 Sep 2021 07:42:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.3..@fluentui/react_v8.34.4)
 
 ### Patches
@@ -2081,7 +2081,7 @@ Tue, 21 Sep 2021 07:42:34 GMT
 
 ## [8.34.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.3)
 
-Mon, 20 Sep 2021 07:36:26 GMT 
+Mon, 20 Sep 2021 07:36:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.2..@fluentui/react_v8.34.3)
 
 ### Patches
@@ -2091,7 +2091,7 @@ Mon, 20 Sep 2021 07:36:26 GMT
 
 ## [8.34.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.2)
 
-Thu, 16 Sep 2021 07:38:39 GMT 
+Thu, 16 Sep 2021 07:38:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.1..@fluentui/react_v8.34.2)
 
 ### Patches
@@ -2100,7 +2100,7 @@ Thu, 16 Sep 2021 07:38:39 GMT
 
 ## [8.34.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.1)
 
-Tue, 14 Sep 2021 07:38:18 GMT 
+Tue, 14 Sep 2021 07:38:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.0..@fluentui/react_v8.34.1)
 
 ### Patches
@@ -2109,7 +2109,7 @@ Tue, 14 Sep 2021 07:38:18 GMT
 
 ## [8.34.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.0)
 
-Mon, 13 Sep 2021 07:37:03 GMT 
+Mon, 13 Sep 2021 07:37:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.33.0..@fluentui/react_v8.34.0)
 
 ### Minor changes
@@ -2122,7 +2122,7 @@ Mon, 13 Sep 2021 07:37:03 GMT
 
 ## [8.33.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.33.0)
 
-Fri, 10 Sep 2021 07:39:51 GMT 
+Fri, 10 Sep 2021 07:39:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.32.0..@fluentui/react_v8.33.0)
 
 ### Minor changes
@@ -2135,7 +2135,7 @@ Fri, 10 Sep 2021 07:39:51 GMT
 
 ## [8.32.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.32.0)
 
-Thu, 09 Sep 2021 07:39:06 GMT 
+Thu, 09 Sep 2021 07:39:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.31.0..@fluentui/react_v8.32.0)
 
 ### Minor changes
@@ -2144,7 +2144,7 @@ Thu, 09 Sep 2021 07:39:06 GMT
 
 ## [8.31.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.31.0)
 
-Wed, 08 Sep 2021 07:34:11 GMT 
+Wed, 08 Sep 2021 07:34:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.30.4..@fluentui/react_v8.31.0)
 
 ### Minor changes
@@ -2158,7 +2158,7 @@ Wed, 08 Sep 2021 07:34:11 GMT
 
 ## [8.30.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.30.4)
 
-Mon, 06 Sep 2021 07:34:53 GMT 
+Mon, 06 Sep 2021 07:34:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.30.3..@fluentui/react_v8.30.4)
 
 ### Patches
@@ -2167,7 +2167,7 @@ Mon, 06 Sep 2021 07:34:53 GMT
 
 ## [8.30.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.30.3)
 
-Thu, 02 Sep 2021 07:36:46 GMT 
+Thu, 02 Sep 2021 07:36:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.30.2..@fluentui/react_v8.30.3)
 
 ### Patches
@@ -2176,7 +2176,7 @@ Thu, 02 Sep 2021 07:36:46 GMT
 
 ## [8.30.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.30.2)
 
-Wed, 01 Sep 2021 07:39:56 GMT 
+Wed, 01 Sep 2021 07:39:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.30.1..@fluentui/react_v8.30.2)
 
 ### Patches
@@ -2185,7 +2185,7 @@ Wed, 01 Sep 2021 07:39:56 GMT
 
 ## [8.30.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.30.1)
 
-Tue, 31 Aug 2021 07:37:47 GMT 
+Tue, 31 Aug 2021 07:37:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.30.0..@fluentui/react_v8.30.1)
 
 ### Patches
@@ -2196,7 +2196,7 @@ Tue, 31 Aug 2021 07:37:47 GMT
 
 ## [8.30.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.30.0)
 
-Mon, 30 Aug 2021 07:35:05 GMT 
+Mon, 30 Aug 2021 07:35:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.29.2..@fluentui/react_v8.30.0)
 
 ### Minor changes
@@ -2205,7 +2205,7 @@ Mon, 30 Aug 2021 07:35:05 GMT
 
 ## [8.29.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.29.2)
 
-Wed, 25 Aug 2021 07:35:19 GMT 
+Wed, 25 Aug 2021 07:35:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.29.1..@fluentui/react_v8.29.2)
 
 ### Patches
@@ -2214,7 +2214,7 @@ Wed, 25 Aug 2021 07:35:19 GMT
 
 ## [8.29.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.29.1)
 
-Mon, 23 Aug 2021 07:35:43 GMT 
+Mon, 23 Aug 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.29.0..@fluentui/react_v8.29.1)
 
 ### Patches
@@ -2223,7 +2223,7 @@ Mon, 23 Aug 2021 07:35:43 GMT
 
 ## [8.29.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.29.0)
 
-Thu, 19 Aug 2021 07:41:35 GMT 
+Thu, 19 Aug 2021 07:41:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.28.2..@fluentui/react_v8.29.0)
 
 ### Minor changes
@@ -2245,7 +2245,7 @@ Thu, 19 Aug 2021 07:41:35 GMT
 
 ## [8.28.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.28.2)
 
-Mon, 16 Aug 2021 07:36:39 GMT 
+Mon, 16 Aug 2021 07:36:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.28.1..@fluentui/react_v8.28.2)
 
 ### Patches
@@ -2254,7 +2254,7 @@ Mon, 16 Aug 2021 07:36:39 GMT
 
 ## [8.28.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.28.1)
 
-Fri, 13 Aug 2021 07:36:34 GMT 
+Fri, 13 Aug 2021 07:36:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.28.0..@fluentui/react_v8.28.1)
 
 ### Patches
@@ -2264,7 +2264,7 @@ Fri, 13 Aug 2021 07:36:34 GMT
 
 ## [8.28.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.28.0)
 
-Thu, 12 Aug 2021 07:34:46 GMT 
+Thu, 12 Aug 2021 07:34:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.27.2..@fluentui/react_v8.28.0)
 
 ### Minor changes
@@ -2277,7 +2277,7 @@ Thu, 12 Aug 2021 07:34:46 GMT
 
 ## [8.27.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.27.2)
 
-Wed, 11 Aug 2021 07:34:54 GMT 
+Wed, 11 Aug 2021 07:34:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.27.1..@fluentui/react_v8.27.2)
 
 ### Patches
@@ -2286,7 +2286,7 @@ Wed, 11 Aug 2021 07:34:54 GMT
 
 ## [8.27.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.27.1)
 
-Mon, 09 Aug 2021 07:35:14 GMT 
+Mon, 09 Aug 2021 07:35:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.27.0..@fluentui/react_v8.27.1)
 
 ### Patches
@@ -2295,7 +2295,7 @@ Mon, 09 Aug 2021 07:35:14 GMT
 
 ## [8.27.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.27.0)
 
-Thu, 05 Aug 2021 07:34:24 GMT 
+Thu, 05 Aug 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.26.2..@fluentui/react_v8.27.0)
 
 ### Minor changes
@@ -2310,7 +2310,7 @@ Thu, 05 Aug 2021 07:34:24 GMT
 
 ## [8.26.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.2)
 
-Tue, 03 Aug 2021 07:39:30 GMT 
+Tue, 03 Aug 2021 07:39:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.26.1..@fluentui/react_v8.26.2)
 
 ### Patches
@@ -2319,7 +2319,7 @@ Tue, 03 Aug 2021 07:39:30 GMT
 
 ## [8.26.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.1)
 
-Mon, 02 Aug 2021 07:36:20 GMT 
+Mon, 02 Aug 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.26.0..@fluentui/react_v8.26.1)
 
 ### Patches
@@ -2328,7 +2328,7 @@ Mon, 02 Aug 2021 07:36:20 GMT
 
 ## [8.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.0)
 
-Fri, 30 Jul 2021 07:35:22 GMT 
+Fri, 30 Jul 2021 07:35:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.25.0..@fluentui/react_v8.26.0)
 
 ### Minor changes
@@ -2341,7 +2341,7 @@ Fri, 30 Jul 2021 07:35:22 GMT
 
 ## [8.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.25.0)
 
-Thu, 29 Jul 2021 07:35:37 GMT 
+Thu, 29 Jul 2021 07:35:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.24.0..@fluentui/react_v8.25.0)
 
 ### Minor changes
@@ -2361,7 +2361,7 @@ Thu, 29 Jul 2021 07:35:37 GMT
 
 ## [8.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.24.0)
 
-Wed, 28 Jul 2021 07:34:11 GMT 
+Wed, 28 Jul 2021 07:34:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.10..@fluentui/react_v8.24.0)
 
 ### Minor changes
@@ -2370,7 +2370,7 @@ Wed, 28 Jul 2021 07:34:11 GMT
 
 ## [8.23.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.10)
 
-Tue, 27 Jul 2021 07:34:27 GMT 
+Tue, 27 Jul 2021 07:34:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.9..@fluentui/react_v8.23.10)
 
 ### Patches
@@ -2379,7 +2379,7 @@ Tue, 27 Jul 2021 07:34:27 GMT
 
 ## [8.23.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.9)
 
-Mon, 26 Jul 2021 07:37:30 GMT 
+Mon, 26 Jul 2021 07:37:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.8..@fluentui/react_v8.23.9)
 
 ### Patches
@@ -2390,7 +2390,7 @@ Mon, 26 Jul 2021 07:37:30 GMT
 
 ## [8.23.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.8)
 
-Fri, 23 Jul 2021 07:38:19 GMT 
+Fri, 23 Jul 2021 07:38:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.7..@fluentui/react_v8.23.8)
 
 ### Patches
@@ -2400,7 +2400,7 @@ Fri, 23 Jul 2021 07:38:19 GMT
 
 ## [8.23.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.7)
 
-Thu, 22 Jul 2021 07:36:55 GMT 
+Thu, 22 Jul 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.6..@fluentui/react_v8.23.7)
 
 ### Patches
@@ -2409,7 +2409,7 @@ Thu, 22 Jul 2021 07:36:55 GMT
 
 ## [8.23.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.6)
 
-Tue, 20 Jul 2021 22:23:17 GMT 
+Tue, 20 Jul 2021 22:23:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.5..@fluentui/react_v8.23.6)
 
 ### Patches
@@ -2419,7 +2419,7 @@ Tue, 20 Jul 2021 22:23:17 GMT
 
 ## [8.23.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.5)
 
-Fri, 16 Jul 2021 07:32:14 GMT 
+Fri, 16 Jul 2021 07:32:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.4..@fluentui/react_v8.23.5)
 
 ### Patches
@@ -2428,7 +2428,7 @@ Fri, 16 Jul 2021 07:32:14 GMT
 
 ## [8.23.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.4)
 
-Fri, 16 Jul 2021 00:35:31 GMT 
+Fri, 16 Jul 2021 00:35:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.3..@fluentui/react_v8.23.4)
 
 ### Patches
@@ -2437,7 +2437,7 @@ Fri, 16 Jul 2021 00:35:31 GMT
 
 ## [8.23.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.3)
 
-Thu, 15 Jul 2021 07:36:18 GMT 
+Thu, 15 Jul 2021 07:36:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.2..@fluentui/react_v8.23.3)
 
 ### Patches
@@ -2446,7 +2446,7 @@ Thu, 15 Jul 2021 07:36:18 GMT
 
 ## [8.23.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.2)
 
-Wed, 14 Jul 2021 07:28:19 GMT 
+Wed, 14 Jul 2021 07:28:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.1..@fluentui/react_v8.23.2)
 
 ### Patches
@@ -2455,7 +2455,7 @@ Wed, 14 Jul 2021 07:28:19 GMT
 
 ## [8.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.1)
 
-Tue, 13 Jul 2021 22:32:58 GMT 
+Tue, 13 Jul 2021 22:32:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.0..@fluentui/react_v8.23.1)
 
 ### Patches
@@ -2464,7 +2464,7 @@ Tue, 13 Jul 2021 22:32:58 GMT
 
 ## [8.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.0)
 
-Tue, 13 Jul 2021 07:35:36 GMT 
+Tue, 13 Jul 2021 07:35:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.22.3..@fluentui/react_v8.23.0)
 
 ### Minor changes
@@ -2482,7 +2482,7 @@ Tue, 13 Jul 2021 07:35:36 GMT
 
 ## [8.22.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.3)
 
-Fri, 09 Jul 2021 07:39:31 GMT 
+Fri, 09 Jul 2021 07:39:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.22.2..@fluentui/react_v8.22.3)
 
 ### Patches
@@ -2491,7 +2491,7 @@ Fri, 09 Jul 2021 07:39:31 GMT
 
 ## [8.22.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.2)
 
-Thu, 08 Jul 2021 07:32:49 GMT 
+Thu, 08 Jul 2021 07:32:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.22.1..@fluentui/react_v8.22.2)
 
 ### Patches
@@ -2501,7 +2501,7 @@ Thu, 08 Jul 2021 07:32:49 GMT
 
 ## [8.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.1)
 
-Wed, 07 Jul 2021 07:32:54 GMT 
+Wed, 07 Jul 2021 07:32:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.22.0..@fluentui/react_v8.22.1)
 
 ### Patches
@@ -2510,7 +2510,7 @@ Wed, 07 Jul 2021 07:32:54 GMT
 
 ## [8.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.0)
 
-Thu, 01 Jul 2021 07:35:05 GMT 
+Thu, 01 Jul 2021 07:35:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.21.1..@fluentui/react_v8.22.0)
 
 ### Minor changes
@@ -2523,7 +2523,7 @@ Thu, 01 Jul 2021 07:35:05 GMT
 
 ## [8.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.21.1)
 
-Tue, 29 Jun 2021 07:33:32 GMT 
+Tue, 29 Jun 2021 07:33:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.21.0..@fluentui/react_v8.21.1)
 
 ### Patches
@@ -2532,7 +2532,7 @@ Tue, 29 Jun 2021 07:33:32 GMT
 
 ## [8.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.21.0)
 
-Mon, 28 Jun 2021 07:35:16 GMT 
+Mon, 28 Jun 2021 07:35:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.20.2..@fluentui/react_v8.21.0)
 
 ### Minor changes
@@ -2558,7 +2558,7 @@ Mon, 28 Jun 2021 07:35:16 GMT
 
 ## [8.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.2)
 
-Tue, 22 Jun 2021 07:35:11 GMT 
+Tue, 22 Jun 2021 07:35:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.20.1..@fluentui/react_v8.20.2)
 
 ### Patches
@@ -2567,7 +2567,7 @@ Tue, 22 Jun 2021 07:35:11 GMT
 
 ## [8.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.1)
 
-Mon, 21 Jun 2021 07:34:33 GMT 
+Mon, 21 Jun 2021 07:34:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.20.0..@fluentui/react_v8.20.1)
 
 ### Patches
@@ -2576,7 +2576,7 @@ Mon, 21 Jun 2021 07:34:33 GMT
 
 ## [8.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.0)
 
-Fri, 18 Jun 2021 07:30:58 GMT 
+Fri, 18 Jun 2021 07:30:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.19.1..@fluentui/react_v8.20.0)
 
 ### Minor changes
@@ -2585,7 +2585,7 @@ Fri, 18 Jun 2021 07:30:58 GMT
 
 ## [8.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.19.1)
 
-Wed, 16 Jun 2021 07:34:24 GMT 
+Wed, 16 Jun 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.19.0..@fluentui/react_v8.19.1)
 
 ### Patches
@@ -2594,7 +2594,7 @@ Wed, 16 Jun 2021 07:34:24 GMT
 
 ## [8.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.19.0)
 
-Tue, 15 Jun 2021 07:40:20 GMT 
+Tue, 15 Jun 2021 07:40:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.18.0..@fluentui/react_v8.19.0)
 
 ### Minor changes
@@ -2614,7 +2614,7 @@ Tue, 15 Jun 2021 07:40:20 GMT
 
 ## [8.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.18.0)
 
-Fri, 11 Jun 2021 07:34:26 GMT 
+Fri, 11 Jun 2021 07:34:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.4..@fluentui/react_v8.18.0)
 
 ### Minor changes
@@ -2623,7 +2623,7 @@ Fri, 11 Jun 2021 07:34:26 GMT
 
 ## [8.17.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.4)
 
-Thu, 10 Jun 2021 07:32:59 GMT 
+Thu, 10 Jun 2021 07:32:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.3..@fluentui/react_v8.17.4)
 
 ### Patches
@@ -2632,7 +2632,7 @@ Thu, 10 Jun 2021 07:32:59 GMT
 
 ## [8.17.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.3)
 
-Wed, 09 Jun 2021 07:33:38 GMT 
+Wed, 09 Jun 2021 07:33:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.2..@fluentui/react_v8.17.3)
 
 ### Patches
@@ -2641,7 +2641,7 @@ Wed, 09 Jun 2021 07:33:38 GMT
 
 ## [8.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.2)
 
-Tue, 08 Jun 2021 07:32:44 GMT 
+Tue, 08 Jun 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.1..@fluentui/react_v8.17.2)
 
 ### Patches
@@ -2650,7 +2650,7 @@ Tue, 08 Jun 2021 07:32:44 GMT
 
 ## [8.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.1)
 
-Mon, 07 Jun 2021 07:38:15 GMT 
+Mon, 07 Jun 2021 07:38:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.0..@fluentui/react_v8.17.1)
 
 ### Patches
@@ -2659,7 +2659,7 @@ Mon, 07 Jun 2021 07:38:15 GMT
 
 ## [8.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.0)
 
-Fri, 04 Jun 2021 07:37:23 GMT 
+Fri, 04 Jun 2021 07:37:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.16.0..@fluentui/react_v8.17.0)
 
 ### Minor changes
@@ -2672,7 +2672,7 @@ Fri, 04 Jun 2021 07:37:23 GMT
 
 ## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.16.0)
 
-Mon, 31 May 2021 07:33:15 GMT 
+Mon, 31 May 2021 07:33:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.15.1..@fluentui/react_v8.16.0)
 
 ### Minor changes
@@ -2681,7 +2681,7 @@ Mon, 31 May 2021 07:33:15 GMT
 
 ## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.15.1)
 
-Thu, 27 May 2021 07:33:21 GMT 
+Thu, 27 May 2021 07:33:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.15.0..@fluentui/react_v8.15.1)
 
 ### Patches
@@ -2690,7 +2690,7 @@ Thu, 27 May 2021 07:33:21 GMT
 
 ## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.15.0)
 
-Wed, 26 May 2021 07:35:43 GMT 
+Wed, 26 May 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.15..@fluentui/react_v8.15.0)
 
 ### Minor changes
@@ -2708,7 +2708,7 @@ Wed, 26 May 2021 07:35:43 GMT
 
 ## [8.14.15](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.15)
 
-Tue, 25 May 2021 01:11:03 GMT 
+Tue, 25 May 2021 01:11:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.14..@fluentui/react_v8.14.15)
 
 ### Patches
@@ -2717,7 +2717,7 @@ Tue, 25 May 2021 01:11:03 GMT
 
 ## [8.14.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.14)
 
-Mon, 24 May 2021 07:35:28 GMT 
+Mon, 24 May 2021 07:35:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.13..@fluentui/react_v8.14.14)
 
 ### Patches
@@ -2726,7 +2726,7 @@ Mon, 24 May 2021 07:35:28 GMT
 
 ## [8.14.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.13)
 
-Fri, 21 May 2021 07:34:54 GMT 
+Fri, 21 May 2021 07:34:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.12..@fluentui/react_v8.14.13)
 
 ### Patches
@@ -2738,7 +2738,7 @@ Fri, 21 May 2021 07:34:54 GMT
 
 ## [8.14.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.12)
 
-Thu, 20 May 2021 07:41:54 GMT 
+Thu, 20 May 2021 07:41:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.11..@fluentui/react_v8.14.12)
 
 ### Patches
@@ -2747,7 +2747,7 @@ Thu, 20 May 2021 07:41:54 GMT
 
 ## [8.14.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.11)
 
-Wed, 19 May 2021 07:34:20 GMT 
+Wed, 19 May 2021 07:34:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.10..@fluentui/react_v8.14.11)
 
 ### Patches
@@ -2756,7 +2756,7 @@ Wed, 19 May 2021 07:34:20 GMT
 
 ## [8.14.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.10)
 
-Tue, 18 May 2021 07:34:38 GMT 
+Tue, 18 May 2021 07:34:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.9..@fluentui/react_v8.14.10)
 
 ### Patches
@@ -2765,7 +2765,7 @@ Tue, 18 May 2021 07:34:38 GMT
 
 ## [8.14.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.9)
 
-Mon, 17 May 2021 07:33:48 GMT 
+Mon, 17 May 2021 07:33:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.8..@fluentui/react_v8.14.9)
 
 ### Patches
@@ -2774,7 +2774,7 @@ Mon, 17 May 2021 07:33:48 GMT
 
 ## [8.14.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.8)
 
-Fri, 14 May 2021 07:35:10 GMT 
+Fri, 14 May 2021 07:35:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.7..@fluentui/react_v8.14.8)
 
 ### Patches
@@ -2784,7 +2784,7 @@ Fri, 14 May 2021 07:35:10 GMT
 
 ## [8.14.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.7)
 
-Thu, 13 May 2021 07:36:55 GMT 
+Thu, 13 May 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.6..@fluentui/react_v8.14.7)
 
 ### Patches
@@ -2793,7 +2793,7 @@ Thu, 13 May 2021 07:36:55 GMT
 
 ## [8.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.6)
 
-Wed, 12 May 2021 07:36:20 GMT 
+Wed, 12 May 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.5..@fluentui/react_v8.14.6)
 
 ### Patches
@@ -2803,7 +2803,7 @@ Wed, 12 May 2021 07:36:20 GMT
 
 ## [8.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.5)
 
-Mon, 10 May 2021 07:36:07 GMT 
+Mon, 10 May 2021 07:36:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.4..@fluentui/react_v8.14.5)
 
 ### Patches
@@ -2816,7 +2816,7 @@ Mon, 10 May 2021 07:36:07 GMT
 
 ## [8.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.4)
 
-Fri, 07 May 2021 07:34:34 GMT 
+Fri, 07 May 2021 07:34:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.3..@fluentui/react_v8.14.4)
 
 ### Patches
@@ -2825,7 +2825,7 @@ Fri, 07 May 2021 07:34:34 GMT
 
 ## [8.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.3)
 
-Thu, 06 May 2021 07:35:51 GMT 
+Thu, 06 May 2021 07:35:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.2..@fluentui/react_v8.14.3)
 
 ### Patches
@@ -2835,7 +2835,7 @@ Thu, 06 May 2021 07:35:51 GMT
 
 ## [8.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.2)
 
-Wed, 05 May 2021 07:36:50 GMT 
+Wed, 05 May 2021 07:36:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.1..@fluentui/react_v8.14.2)
 
 ### Patches
@@ -2844,7 +2844,7 @@ Wed, 05 May 2021 07:36:50 GMT
 
 ## [8.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.1)
 
-Tue, 04 May 2021 07:36:35 GMT 
+Tue, 04 May 2021 07:36:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.0..@fluentui/react_v8.14.1)
 
 ### Patches
@@ -2853,7 +2853,7 @@ Tue, 04 May 2021 07:36:35 GMT
 
 ## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.0)
 
-Fri, 30 Apr 2021 07:42:23 GMT 
+Fri, 30 Apr 2021 07:42:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.13.1..@fluentui/react_v8.14.0)
 
 ### Minor changes
@@ -2885,7 +2885,7 @@ Fri, 30 Apr 2021 07:42:23 GMT
 
 ## [8.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.13.1)
 
-Wed, 28 Apr 2021 07:32:59 GMT 
+Wed, 28 Apr 2021 07:32:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.13.0..@fluentui/react_v8.13.1)
 
 ### Patches
@@ -2895,7 +2895,7 @@ Wed, 28 Apr 2021 07:32:59 GMT
 
 ## [8.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.13.0)
 
-Tue, 27 Apr 2021 07:34:03 GMT 
+Tue, 27 Apr 2021 07:34:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.12.1..@fluentui/react_v8.13.0)
 
 ### Minor changes
@@ -2910,7 +2910,7 @@ Tue, 27 Apr 2021 07:34:03 GMT
 
 ## [8.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.12.1)
 
-Mon, 26 Apr 2021 07:34:31 GMT 
+Mon, 26 Apr 2021 07:34:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.12.0..@fluentui/react_v8.12.1)
 
 ### Patches
@@ -2919,7 +2919,7 @@ Mon, 26 Apr 2021 07:34:31 GMT
 
 ## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.12.0)
 
-Fri, 23 Apr 2021 07:37:10 GMT 
+Fri, 23 Apr 2021 07:37:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.11.2..@fluentui/react_v8.12.0)
 
 ### Minor changes
@@ -2951,7 +2951,7 @@ Fri, 23 Apr 2021 07:37:10 GMT
 
 ## [8.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.2)
 
-Wed, 21 Apr 2021 07:31:50 GMT 
+Wed, 21 Apr 2021 07:31:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.11.1..@fluentui/react_v8.11.2)
 
 ### Patches
@@ -2961,7 +2961,7 @@ Wed, 21 Apr 2021 07:31:50 GMT
 
 ## [8.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.1)
 
-Mon, 19 Apr 2021 07:33:33 GMT 
+Mon, 19 Apr 2021 07:33:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.11.0..@fluentui/react_v8.11.1)
 
 ### Patches
@@ -2971,7 +2971,7 @@ Mon, 19 Apr 2021 07:33:33 GMT
 
 ## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.0)
 
-Fri, 16 Apr 2021 07:32:08 GMT 
+Fri, 16 Apr 2021 07:32:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.10.1..@fluentui/react_v8.11.0)
 
 ### Minor changes
@@ -2985,7 +2985,7 @@ Fri, 16 Apr 2021 07:32:08 GMT
 
 ## [8.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.10.1)
 
-Wed, 14 Apr 2021 07:34:12 GMT 
+Wed, 14 Apr 2021 07:34:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.10.0..@fluentui/react_v8.10.1)
 
 ### Patches
@@ -2994,7 +2994,7 @@ Wed, 14 Apr 2021 07:34:12 GMT
 
 ## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.10.0)
 
-Tue, 13 Apr 2021 14:55:56 GMT 
+Tue, 13 Apr 2021 14:55:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.4..@fluentui/react_v8.10.0)
 
 ### Minor changes
@@ -3018,7 +3018,7 @@ Tue, 13 Apr 2021 14:55:56 GMT
 
 ## [8.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.4)
 
-Sat, 10 Apr 2021 03:23:10 GMT 
+Sat, 10 Apr 2021 03:23:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.3..@fluentui/react_v8.9.4)
 
 ### Patches
@@ -3027,7 +3027,7 @@ Sat, 10 Apr 2021 03:23:10 GMT
 
 ## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.3)
 
-Fri, 09 Apr 2021 23:42:49 GMT 
+Fri, 09 Apr 2021 23:42:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.2..@fluentui/react_v8.9.3)
 
 ### Patches
@@ -3036,7 +3036,7 @@ Fri, 09 Apr 2021 23:42:49 GMT
 
 ## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.2)
 
-Thu, 08 Apr 2021 07:33:06 GMT 
+Thu, 08 Apr 2021 07:33:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.1..@fluentui/react_v8.9.2)
 
 ### Patches
@@ -3047,7 +3047,7 @@ Thu, 08 Apr 2021 07:33:06 GMT
 
 ## [8.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.1)
 
-Wed, 07 Apr 2021 08:04:03 GMT 
+Wed, 07 Apr 2021 08:04:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.0..@fluentui/react_v8.9.1)
 
 ### Patches
@@ -3058,7 +3058,7 @@ Wed, 07 Apr 2021 08:04:03 GMT
 
 ## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.0)
 
-Tue, 06 Apr 2021 07:34:10 GMT 
+Tue, 06 Apr 2021 07:34:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.8.0..@fluentui/react_v8.9.0)
 
 ### Minor changes
@@ -3071,7 +3071,7 @@ Tue, 06 Apr 2021 07:34:10 GMT
 
 ## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.8.0)
 
-Thu, 01 Apr 2021 07:33:24 GMT 
+Thu, 01 Apr 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.7.1..@fluentui/react_v8.8.0)
 
 ### Minor changes
@@ -3085,7 +3085,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [8.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.7.1)
 
-Wed, 31 Mar 2021 00:53:43 GMT 
+Wed, 31 Mar 2021 00:53:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.7.0..@fluentui/react_v8.7.1)
 
 ### Patches
@@ -3094,7 +3094,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.7.0)
 
-Tue, 30 Mar 2021 07:34:45 GMT 
+Tue, 30 Mar 2021 07:34:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.6.1..@fluentui/react_v8.7.0)
 
 ### Minor changes
@@ -3111,7 +3111,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.6.1)
 
-Thu, 25 Mar 2021 07:33:24 GMT 
+Thu, 25 Mar 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.6.0..@fluentui/react_v8.6.1)
 
 ### Patches
@@ -3120,7 +3120,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.6.0)
 
-Wed, 24 Mar 2021 07:32:21 GMT 
+Wed, 24 Mar 2021 07:32:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.1..@fluentui/react_v8.6.0)
 
 ### Minor changes
@@ -3133,7 +3133,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.1)
 
-Mon, 22 Mar 2021 07:34:09 GMT 
+Mon, 22 Mar 2021 07:34:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.0..@fluentui/react_v8.5.1)
 
 ### Patches
@@ -3143,7 +3143,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.0)
 
-Thu, 18 Mar 2021 20:15:34 GMT 
+Thu, 18 Mar 2021 20:15:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.4.0..@fluentui/react_v8.5.0)
 
 ### Minor changes
@@ -3156,7 +3156,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.4.0)
 
-Thu, 18 Mar 2021 07:33:22 GMT 
+Thu, 18 Mar 2021 07:33:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.2..@fluentui/react_v8.4.0)
 
 ### Minor changes
@@ -3169,7 +3169,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.2)
 
-Wed, 17 Mar 2021 07:35:44 GMT 
+Wed, 17 Mar 2021 07:35:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.1..@fluentui/react_v8.3.2)
 
 ### Patches
@@ -3180,7 +3180,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.1)
 
-Tue, 16 Mar 2021 07:32:44 GMT 
+Tue, 16 Mar 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.0..@fluentui/react_v8.3.1)
 
 ### Patches
@@ -3190,7 +3190,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.0)
 
-Mon, 15 Mar 2021 07:36:20 GMT 
+Mon, 15 Mar 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.2.1..@fluentui/react_v8.3.0)
 
 ### Minor changes
@@ -3200,7 +3200,7 @@ Mon, 15 Mar 2021 07:36:20 GMT
 
 ## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.2.1)
 
-Fri, 12 Mar 2021 20:04:27 GMT 
+Fri, 12 Mar 2021 20:04:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.2.0..@fluentui/react_v8.2.1)
 
 ### Patches
@@ -3209,7 +3209,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.2.0)
 
-Thu, 11 Mar 2021 07:33:03 GMT 
+Thu, 11 Mar 2021 07:33:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.8..@fluentui/react_v8.2.0)
 
 ### Minor changes
@@ -3222,7 +3222,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.8)
 
-Wed, 10 Mar 2021 07:34:39 GMT 
+Wed, 10 Mar 2021 07:34:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.7..@fluentui/react_v8.1.8)
 
 ### Patches
@@ -3232,7 +3232,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.7)
 
-Tue, 09 Mar 2021 07:32:29 GMT 
+Tue, 09 Mar 2021 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.6..@fluentui/react_v8.1.7)
 
 ### Patches
@@ -3242,7 +3242,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.6)
 
-Sun, 07 Mar 2021 23:34:51 GMT 
+Sun, 07 Mar 2021 23:34:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.5..@fluentui/react_v8.1.6)
 
 ### Patches
@@ -3251,7 +3251,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.5)
 
-Fri, 05 Mar 2021 20:30:59 GMT 
+Fri, 05 Mar 2021 20:30:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.4..@fluentui/react_v8.1.5)
 
 ### Patches
@@ -3260,7 +3260,7 @@ Fri, 05 Mar 2021 20:30:59 GMT
 
 ## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.4)
 
-Wed, 03 Mar 2021 07:45:18 GMT 
+Wed, 03 Mar 2021 07:45:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.3..@fluentui/react_v8.1.4)
 
 ### Patches
@@ -3269,7 +3269,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.3)
 
-Wed, 03 Mar 2021 00:10:09 GMT 
+Wed, 03 Mar 2021 00:10:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.2..@fluentui/react_v8.1.3)
 
 ### Patches
@@ -3279,7 +3279,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.2)
 
-Tue, 02 Mar 2021 07:24:27 GMT 
+Tue, 02 Mar 2021 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.1..@fluentui/react_v8.1.2)
 
 ### Patches
@@ -3290,7 +3290,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.1)
 
-Mon, 01 Mar 2021 07:20:46 GMT 
+Mon, 01 Mar 2021 07:20:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.0..@fluentui/react_v8.1.1)
 
 ### Patches
@@ -3300,7 +3300,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.0)
 
-Fri, 26 Feb 2021 01:16:27 GMT 
+Fri, 26 Feb 2021 01:16:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.63..@fluentui/react_v8.1.0)
 
 ### Minor changes
@@ -3338,7 +3338,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [8.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.63)
 
-Thu, 25 Feb 2021 20:16:39 GMT 
+Thu, 25 Feb 2021 20:16:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.62..@fluentui/react_v8.0.0-beta.63)
 
 ### Changes
@@ -3348,7 +3348,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.62)
 
-Thu, 25 Feb 2021 01:15:27 GMT 
+Thu, 25 Feb 2021 01:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.61..@fluentui/react_v8.0.0-beta.62)
 
 ### Patches
@@ -3361,7 +3361,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.61)
 
-Wed, 24 Feb 2021 07:19:56 GMT 
+Wed, 24 Feb 2021 07:19:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.60..@fluentui/react_v8.0.0-beta.61)
 
 ### Changes
@@ -3370,7 +3370,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.60)
 
-Wed, 24 Feb 2021 00:05:29 GMT 
+Wed, 24 Feb 2021 00:05:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.59..@fluentui/react_v8.0.0-beta.60)
 
 ### Changes
@@ -3381,7 +3381,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.59)
 
-Mon, 22 Feb 2021 12:26:22 GMT 
+Mon, 22 Feb 2021 12:26:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.58..@fluentui/react_v8.0.0-beta.59)
 
 ### Changes
@@ -3391,7 +3391,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.58)
 
-Thu, 18 Feb 2021 19:38:50 GMT 
+Thu, 18 Feb 2021 19:38:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.57..@fluentui/react_v8.0.0-beta.58)
 
 ### Changes
@@ -3400,7 +3400,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.57)
 
-Thu, 18 Feb 2021 12:27:34 GMT 
+Thu, 18 Feb 2021 12:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.56..@fluentui/react_v8.0.0-beta.57)
 
 ### Changes
@@ -3412,7 +3412,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.56)
 
-Wed, 17 Feb 2021 12:21:39 GMT 
+Wed, 17 Feb 2021 12:21:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.55..@fluentui/react_v8.0.0-beta.56)
 
 ### Changes
@@ -3421,7 +3421,7 @@ Wed, 17 Feb 2021 12:21:39 GMT
 
 ## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.55)
 
-Mon, 15 Feb 2021 12:22:00 GMT 
+Mon, 15 Feb 2021 12:22:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.54..@fluentui/react_v8.0.0-beta.55)
 
 ### Changes
@@ -3430,7 +3430,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.54)
 
-Fri, 12 Feb 2021 12:26:20 GMT 
+Fri, 12 Feb 2021 12:26:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.53..@fluentui/react_v8.0.0-beta.54)
 
 ### Changes
@@ -3442,7 +3442,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.53)
 
-Thu, 11 Feb 2021 00:58:10 GMT 
+Thu, 11 Feb 2021 00:58:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.52..@fluentui/react_v8.0.0-beta.53)
 
 ### Changes
@@ -3451,7 +3451,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [8.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.52)
 
-Wed, 10 Feb 2021 12:20:53 GMT 
+Wed, 10 Feb 2021 12:20:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.51..@fluentui/react_v8.0.0-beta.52)
 
 ### Changes
@@ -3460,7 +3460,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.51)
 
-Tue, 09 Feb 2021 12:24:19 GMT 
+Tue, 09 Feb 2021 12:24:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.50..@fluentui/react_v8.0.0-beta.51)
 
 ### Changes
