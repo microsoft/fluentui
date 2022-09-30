@@ -33,9 +33,9 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
   const bar = resolveShorthand(props.bar, {
     required: true,
     defaultProps: {
-      'aria-valuemin': !indeterminate ? 0 : undefined,
-      'aria-valuemax': !indeterminate ? 100 : undefined,
-      'aria-valuenow': !indeterminate ? Math.floor(percentComplete * 100) : undefined,
+      'aria-valuemin': indeterminate ? undefined : 0,
+      'aria-valuemax': indeterminate ? undefined : 100,
+      'aria-valuenow': indeterminate ? undefined : Math.floor(percentComplete * 100),
     },
   });
 
@@ -58,11 +58,11 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
       label: 'span',
       description: 'span',
     },
-    root: root,
-    bar: bar,
-    track: track,
-    label: label,
-    description: description,
+    root,
+    bar,
+    track,
+    label,
+    description,
   };
 
   return state;

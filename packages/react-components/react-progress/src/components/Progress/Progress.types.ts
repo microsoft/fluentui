@@ -38,8 +38,7 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
    */
   indeterminate?: boolean;
   /**
-   * Percentage of the operation's completeness, numerically between 0 and 1. If this is not set,
-   * the indeterminate progress animation will be shown instead.
+   * Percentage of the operation's completeness, numerically between 0 and 100.
    */
   percentComplete?: number | undefined;
   /**

@@ -16,7 +16,7 @@ export const Default = () => {
     };
   });
 
-  return <Progress percentComplete={percentComplete} />;
+  return <Progress percentComplete={percentComplete} {...props} />;
 };
 
 Default.parameters = {

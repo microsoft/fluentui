@@ -27,7 +27,7 @@ const barThicknessValues = {
   large: '4px',
 };
 
-const IndeterminateProgress = {
+const indeterminateProgress = {
   '0%': {
     left: '0%',
   },
@@ -51,7 +51,7 @@ const useRootStyles = makeStyles({
  * Styles for the title
  */
 const useLabelStyles = makeStyles({
-  default: {
+  base: {
     gridRowStart: '1',
     ...typographyStyles.body1,
     color: tokens.colorNeutralForeground1,
@@ -62,7 +62,7 @@ const useLabelStyles = makeStyles({
  * Styles for the description
  */
 const useDescriptionStyles = makeStyles({
-  default: {
+  base: {
     gridRowStart: '3',
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
@@ -92,7 +92,6 @@ const useBarStyles = makeStyles({
     width: `var(${progressCssVars.percentageCssVar})`,
   },
   nonZeroDeterminate: {
-    width: `var(${progressCssVars.percentageCssVar})`,
     transitionProperty: 'width',
     transitionDuration: '0.3s',
     transitionTimingFunction: 'ease',
@@ -140,7 +139,7 @@ const useTrackStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { indeterminate = false, thickness = 'medium', percentComplete = 0 } = state;
+  const { indeterminate, thickness, percentComplete } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const trackStyles = useTrackStyles();
@@ -148,14 +147,13 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   const descriptionStyles = useDescriptionStyles();
   const { dir } = useFluent();
 
-  const valuePercent = !indeterminate ? Math.min(100, Math.max(0, percentComplete! * 100)) : undefined;
+  const valuePercent = !indeterminate ? Math.min(100, Math.max(0, percentComplete * 100)) : undefined;
   const progressBarStyles = {
     [`${progressCssVars.percentageCssVar}`]: !indeterminate ? valuePercent + '%' : undefined,
   };
 
   state.root.className = mergeClasses(progressClassNames.root, rootStyles.root, state.root.className);
 
-  // Determinate indicator when determinate is defined
   if (state.bar) {
     state.bar.className = mergeClasses(
       progressClassNames.bar,
@@ -164,7 +162,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       indeterminate && barStyles[dir],
       barStyles[thickness],
       !indeterminate && barStyles.determinate,
-      !indeterminate && !!valuePercent && valuePercent > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
+      !indeterminate && percentComplete > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       state.bar.className,
     );
   }
@@ -190,9 +188,9 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
     );
   }
 
-  if (state.bar && percentComplete) {
+  if (state.bar && !indeterminate) {
     state.bar.style = {
-      ...progressBarStyles,
+      [progressCssVars.percentageCssVar]:  Math.min(100, Math.max(0, percentComplete * 100)) + '%',
       ...state.bar.style,
     };
   }
