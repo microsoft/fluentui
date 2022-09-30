@@ -40,7 +40,7 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   /**
    * Percentage of the operation's completeness, numerically between 0 and 100.
    */
-  percentComplete?: number | undefined;
+  percentComplete?: number;
   /**
    * The thickness of the Progress bar
    * @default 'medium'

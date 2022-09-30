@@ -19,7 +19,6 @@ const ZERO_THRESHOLD = 0.01;
 // Internal CSS vars
 export const progressCssVars = {
   percentageCssVar: '--fui-Progress--percentage',
-  transitionCssVar: '--fui-Progress--transition',
 };
 
 const barThicknessValues = {
@@ -42,7 +41,7 @@ const indeterminateProgress = {
 const useRootStyles = makeStyles({
   root: {
     display: 'grid',
-    ...shorthands.gap('8px', '0px'),
+    rowGap: '8px',
     ...shorthands.overflow('hidden'),
   },
 });

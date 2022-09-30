@@ -35,7 +35,7 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     defaultProps: {
       'aria-valuemin': indeterminate ? undefined : 0,
       'aria-valuemax': indeterminate ? undefined : 100,
-      'aria-valuenow': indeterminate ? undefined : Math.floor(percentComplete * 100),
+      'aria-valuenow': indeterminate ? undefined : Math.floor(percentComplete),
     },
   });
 
