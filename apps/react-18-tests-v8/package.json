@@ -12,7 +12,8 @@
     "lint": "just-scripts lint",
     "test": "just-scripts test",
     "just": "just-scripts",
-    "start": "webpack-dev-server --mode=development --config=webpack.config.js"
+    "start": "webpack-dev-server --mode=development --config=webpack.config.js",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
