@@ -832,7 +832,7 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
-      expect(pkgJson.typings).toEqual('dist/index.d.ts');
+      expect(pkgJson.typings).toEqual('./dist/index.d.ts');
     });
 
     it(`should update package npm scripts`, async () => {
@@ -880,6 +880,75 @@ describe('migrate-converged-pkg generator', () => {
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
+    });
+
+    it(`should update exports map`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const pkgJsonPath = `${projectConfig.root}/package.json`;
+
+      let pkgJson = readJson(tree, pkgJsonPath);
+
+      expect(pkgJson.exports).toBe(undefined);
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, pkgJsonPath);
+
+      expect(pkgJson.exports).toMatchInlineSnapshot(`
+        Object {
+          ".": Object {
+            "import": "./lib/index.js",
+            "require": "./lib-commonjs/index.js",
+            "types": "./dist/index.d.ts",
+          },
+          "./package.json": "./package.json",
+        }
+      `);
+    });
+
+    it(`should update exports map if unstable API is present`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const pkgJsonPath = `${projectConfig.root}/package.json`;
+      const pkgJsonUnstablePath = `${projectConfig.root}/src/unstable/package.json__tmpl__`;
+      writeJson(tree, pkgJsonUnstablePath, {
+        typings: './../dist/unstable.d.ts',
+      });
+
+      let pkgJson = readJson(tree, pkgJsonPath);
+      let pkgUnstableJson = readJson(tree, pkgJsonUnstablePath);
+
+      expect(pkgJson.exports).toBe(undefined);
+      expect(pkgUnstableJson.exports).toBe(undefined);
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, pkgJsonPath);
+      pkgUnstableJson = readJson(tree, pkgJsonUnstablePath);
+
+      expect(pkgJson.exports).toMatchInlineSnapshot(`
+        Object {
+          ".": Object {
+            "import": "./lib/index.js",
+            "require": "./lib-commonjs/index.js",
+            "types": "./dist/index.d.ts",
+          },
+          "./package.json": "./package.json",
+          "./unstable": Object {
+            "import": "./lib/unstable/index.js",
+            "require": "./lib-commonjs/unstable/index.js",
+            "types": "./dist/unstable.d.ts",
+          },
+        }
+      `);
+      expect(pkgUnstableJson.exports).toMatchInlineSnapshot(`
+        Object {
+          ".": Object {
+            "import": "./../lib/unstable/index.js",
+            "require": "./../lib-commonjs/unstable/index.js",
+            "types": "./../dist/unstable.d.ts",
+          },
+        }
+      `);
     });
 
     it(`should not add start scripts to node packages`, async () => {
