@@ -910,6 +910,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
           );
           if (itemIndex !== -1) {
             newState.highlightedIndex = itemIndex;
+            // for free form always keep searchQuery and inputValue in sync
+            // as state change might not be called after last letter was entered
+            newState.searchQuery = changes.inputValue;
           }
         } else {
           newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
