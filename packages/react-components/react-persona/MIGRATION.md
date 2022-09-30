@@ -9,7 +9,8 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 - `className` => `className`
 - `coinProps` => Use `avatar`'s or `presence`'s slot props
 - `componentRef` => NOT SUPPORTED - use `ref` instead
-- `hidePersonaDetails` => NOT SUPPORTED
+- `hidePersonaDetails` => Use the `Avatar` component for this case
+- ```
 - `imageShouldFadeIn` => NOT SUPPORTED
 - `isOutOfOffice` => Use `status` in `presence` slot props
 - `presence` => `presence`
