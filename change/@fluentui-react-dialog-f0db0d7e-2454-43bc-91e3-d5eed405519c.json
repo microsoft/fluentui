@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat: as=\"div\" by default",
+  "comment": "feat: removes DialogSurface native dialog support ",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
