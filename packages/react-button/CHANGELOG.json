@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@fluentui/react-button_v0.20.13",
+      "version": "0.20.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v0.19.13",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Sep 2022 12:30:34 GMT",
       "tag": "@fluentui/react-button_v0.20.12",
       "version": "0.20.12",

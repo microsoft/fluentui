@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Fri, 02 Sep 2022 18:25:04 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.23)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.19.22..@fluentui/react-compose_v0.19.23)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [0.19.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.22)
 

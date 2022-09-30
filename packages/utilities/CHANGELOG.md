@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 01 Sep 2022 23:27:06 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.38.1)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.36.1..@uifabric/utilities_v7.38.1)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.4 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [7.36.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.36.1)
 

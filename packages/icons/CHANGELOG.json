@@ -2,6 +2,21 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@uifabric/icons_v7.9.2",
+      "version": "7.9.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.1",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@uifabric/icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Sep 2022 12:30:34 GMT",
       "tag": "@uifabric/icons_v7.9.1",
       "version": "7.9.1",

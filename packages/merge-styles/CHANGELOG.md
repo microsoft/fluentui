@@ -1,8 +1,17 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.20.1)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.19.1..@uifabric/merge-styles_v7.20.1)
+
+### Patches
+
+- getVendorSettings.js file was leading to app crash if userAgent was null. Have added a null check for userAgent ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.19.0)
 

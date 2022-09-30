@@ -1,8 +1,17 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 29 Sep 2022 12:30:34 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.13](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.13)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.10.12..@uifabric/foundation_v7.10.13)
+
+### Patches
+
+- Bump @uifabric/merge-styles to v7.20.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [7.10.12](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.12)
 

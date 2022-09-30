@@ -2,6 +2,21 @@
   "name": "@fluentui/react-window-provider",
   "entries": [
     {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@fluentui/react-window-provider_v1.0.5",
+      "version": "1.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/test-utilities to v7.3.4",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@fluentui/react-window-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Sep 2022 23:27:06 GMT",
       "tag": "@fluentui/react-window-provider_v1.0.4",
       "version": "1.0.4",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 29 Sep 2022 12:30:34 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.18.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.18.14)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.18.13..@fluentui/react-focus_v7.18.14)
+
+### Patches
+
+- Bump @uifabric/jest-serializer-merge-styles to v7.2.5 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [7.18.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.18.13)
 

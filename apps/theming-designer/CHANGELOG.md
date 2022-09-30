@@ -1,8 +1,17 @@
 # Change Log - theming-designer
 
-This log was last generated on Fri, 30 Sep 2022 12:22:39 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/merge-styles to v7.20.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
 

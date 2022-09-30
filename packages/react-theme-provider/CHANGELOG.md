@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Thu, 29 Sep 2022 12:30:34 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.13)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.12..@fluentui/react-theme-provider_v0.19.13)
+
+### Patches
+
+- Bump @fluentui/react-stylesheets to v0.2.8 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [0.19.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.12)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "7.45.6",
+  "version": "7.45.7",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,8 +37,8 @@
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.22.21",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.4",
+    "@uifabric/example-app-base": "^7.22.22",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.5",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -49,7 +49,7 @@
     "sinon": "^4.1.3"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.45.6",
+    "@uifabric/experiments": "^7.45.7",
     "@uifabric/set-version": "^7.0.24",
     "tslib": "^1.10.0"
   },
