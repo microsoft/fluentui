@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Add Viewport file to export withViewport decorator",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
-}

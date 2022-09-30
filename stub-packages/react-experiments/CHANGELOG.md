@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 02 Sep 2022 16:57:15 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 12:22:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.45.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v7.45.6)
+
+Fri, 30 Sep 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v7.45.0..@fluentui/react-experiments_v7.45.6)
+
+### Patches
+
+- fix: Correct the exported file in Foundation ([PR #25011](https://github.com/microsoft/fluentui/pull/25011) by mgodbolt@microsoft.com)
 
 ## [7.45.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v7.45.0)
 

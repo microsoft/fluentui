@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 30 Sep 2022 12:22:39 GMT",
+      "tag": "@fluentui/react-experiments_v7.45.6",
+      "version": "7.45.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Correct the exported file in Foundation",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "6726c066c89b51a611a1db8157c81198f2bb8767",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 16:57:15 GMT",
       "tag": "@fluentui/react-experiments_v7.45.0",
       "version": "7.45.0",

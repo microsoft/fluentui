@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 30 Sep 2022 12:22:39 GMT",
+      "tag": "office-ui-fabric-react_v7.199.0",
+      "version": "7.199.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "chore: Add Viewport file to export withViewport decorator",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "211ec05b1715aa9d98dd319f9b68279aec300c04",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "chore: Added PivotLinkFormatType and PivotLinkSizeType.",
+            "author": "gcox@microsoft.com",
+            "commit": "62571bb47be2b38a0e3a0e30b274c4a7ac9c8d18",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Sep 2022 12:30:34 GMT",
       "tag": "office-ui-fabric-react_v7.198.2",
       "version": "7.198.2",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 23 Sep 2022 12:27:02 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 12:22:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.199.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.199.0)
+
+Fri, 30 Sep 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.198.0..@fluentui/react_v7.199.0)
+
+### Patches
+
+- chore: Add Viewport file to export withViewport decorator ([PR #25002](https://github.com/microsoft/fluentui/pull/25002) by mgodbolt@microsoft.com)
+- Bump office-ui-fabric-react to v7.199.0 ([PR #25019](https://github.com/microsoft/fluentui/pull/25019) by gcox@microsoft.com)
 
 ## [7.198.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.198.0)
 

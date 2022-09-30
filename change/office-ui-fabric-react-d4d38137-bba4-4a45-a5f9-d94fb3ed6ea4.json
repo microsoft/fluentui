@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Added PivotLinkFormatType and PivotLinkSizeType.",
-  "packageName": "office-ui-fabric-react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

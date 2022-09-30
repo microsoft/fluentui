@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 29 Sep 2022 12:30:34 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 12:22:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.199.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.0)
+
+Fri, 30 Sep 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.198.2..office-ui-fabric-react_v7.199.0)
+
+### Minor changes
+
+- chore: Added PivotLinkFormatType and PivotLinkSizeType. ([PR #25019](https://github.com/microsoft/fluentui/pull/25019) by gcox@microsoft.com)
+
+### Patches
+
+- chore: Add Viewport file to export withViewport decorator ([PR #25002](https://github.com/microsoft/fluentui/pull/25002) by mgodbolt@microsoft.com)
 
 ## [7.198.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.198.2)
 
