@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 30 Sep 2022 07:38:08 GMT",
+      "tag": "@fluentui/react_v8.97.0",
+      "version": "8.97.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "259506702ec479f4fd9d7b848061dcae1354e168",
+            "comment": "chore: support ID prop in Calendar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Sep 2022 07:40:08 GMT",
       "tag": "@fluentui/react_v8.96.3",
       "version": "8.96.3",
