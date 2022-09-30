@@ -1,22 +1,23 @@
 import * as React from 'react';
 import { IChartProps, ISankeyChartProps, SankeyChart } from '@fluentui/react-charting';
+//import { IPalette } from '@fluentui/react/lib/Styling';
 
 interface ISankeyChartBasicState {
   width: number;
   height: number;
 }
 
-export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBasicState> {
+export class SankeyChartOnePercentExample extends React.Component<{}, ISankeyChartBasicState> {
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
       width: 912,
-      height: 312,
+      height: 400,
     };
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div>{this._onePercentExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +27,7 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _basicExample(): JSX.Element {
+  private _onePercentExample(): JSX.Element {
     const data: IChartProps = {
       chartTitle: 'Sankey Chart',
       SankeyChartData: {
@@ -39,75 +40,85 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
           {
             nodeId: 1,
             name: 'node1',
-            color: '#EF6950',
+            color: '#0078D4',
           },
           {
             nodeId: 2,
             name: 'node2',
-            color: '#00188F',
+            color: '#0078D4',
           },
           {
             nodeId: 3,
             name: 'node3',
-            color: '#022F22',
+            color: '#0078D4',
           },
           {
             nodeId: 4,
             name: 'node4',
-            color: '#00A2AD',
+            color: '#0078D4',
           },
           {
             nodeId: 5,
             name: 'node5',
+            color: '#0078D4',
+          },
+          {
+            nodeId: 6,
+            name: 'node6',
+            color: '#E3008C',
+          },
+          {
+            nodeId: 7,
+            name: 'node7',
             color: '#E3008C',
           },
         ],
         links: [
           {
             source: 0,
-            target: 2,
-            value: 2,
+            target: 6,
+            value: 5,
           },
           {
             source: 1,
-            target: 2,
-            value: 2,
-          },
-          {
-            source: 1,
-            target: 3,
-            value: 2,
-          },
-          {
-            source: 0,
-            target: 4,
-            value: 2,
+            target: 6,
+            value: 5,
           },
           {
             source: 2,
-            target: 3,
-            value: 2,
-          },
-          {
-            source: 2,
-            target: 4,
-            value: 2,
+            target: 6,
+            value: 5,
           },
           {
             source: 3,
-            target: 4,
-            value: 4,
+            target: 6,
+            value: 5,
           },
           {
-            source: 3,
-            target: 4,
-            value: 4,
+            source: 4,
+            target: 7,
+            value: 900,
           },
           {
-            source: 3,
-            target: 5,
-            value: 4,
+            source: 5,
+            target: 7,
+            value: 80,
           },
+          // {
+          //   source: 3,
+          //   target: 4,
+          //   value: 4,
+          // },
+          // {
+          //   source: 3,
+          //   target: 4,
+          //   value: 4,
+          // },
+          // {
+          //   source: 3,
+          //   target: 5,
+          //   value: 4,
+          // },
         ],
       },
     };
@@ -116,26 +127,10 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
 
     return (
       <>
-        <label htmlFor="changeWidth_Basic">Change Width:</label>
-        <input
-          type="range"
-          value={this.state.width}
-          min={912}
-          max={1000}
-          id="changeWidth_Basic"
-          onChange={this._onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
-        />
-        <label htmlFor="changeHeight_Basic">Change Height:</label>
-        <input
-          type="range"
-          value={this.state.height}
-          min={312}
-          max={400}
-          id="changeHeight_Basic"
-          onChange={this._onHeightChange}
-          aria-valuetext={`ChangeHeightslider${this.state.height}`}
-        />
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={912} max={1600} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={312} max={800} onChange={this._onHeightChange} />
         <div style={rootStyle}>
           <SankeyChart
             data={data}
