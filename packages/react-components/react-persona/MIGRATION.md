@@ -31,7 +31,7 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 | `isOutOfOffice`          | `status` in `presence` slot props      |
 | `optionalText`           | `quaternaryText`                       |
 | `presence`               | `presence`                             |
-| `presenceTitle`          |                                        |
+| `presenceTitle`          | -                                      |
 | `primaryText`            | `primaryText`                          |
 | `secondaryText`          | `secondaryText`                        |
 | `showOverflowTooltip`    | -                                      |
