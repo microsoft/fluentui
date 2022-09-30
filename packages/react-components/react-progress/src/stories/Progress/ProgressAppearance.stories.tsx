@@ -2,9 +2,6 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 import { Progress } from '@fluentui/react-progress';
 
-const intervalDelay = 100;
-const intervalIncrement = 0.01;
-
 const useStyles = makeStyles({
   container: {
     ...shorthands.padding('20px'),
@@ -13,35 +10,21 @@ const useStyles = makeStyles({
 
 export const Appearance = () => {
   const styles = useStyles();
-  const [percentComplete, setPercentComplete] = React.useState(0);
-
-  React.useEffect(() => {
-    const id = setInterval(() => {
-      setPercentComplete((intervalIncrement + percentComplete) % 1);
-    }, intervalDelay);
-    return () => {
-      clearInterval(id);
-    };
-  });
 
   return (
     <div>
-      <Progress className={styles.container} percentComplete={percentComplete} />
+      <Progress className={styles.container} percentComplete={50} />
 
       <Progress
         className={styles.container}
         label="Progress Label"
         description="Progress Description"
-        percentComplete={percentComplete}
+        percentComplete={50}
       />
 
-      <Progress className={styles.container} label="Label and ProgressBar" percentComplete={percentComplete} />
+      <Progress className={styles.container} label="Label and ProgressBar" percentComplete={50} />
 
-      <Progress
-        className={styles.container}
-        description="Description and ProgressBar"
-        percentComplete={percentComplete}
-      />
+      <Progress className={styles.container} description="Description and ProgressBar" percentComplete={50} />
     </div>
   );
 };
