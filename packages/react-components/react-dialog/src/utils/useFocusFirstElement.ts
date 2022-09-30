@@ -3,7 +3,6 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { DialogSurfaceElement } from '../DialogSurface';
 import type { DialogModalType } from '../Dialog';
-import { isHTMLDialogElement } from './isHTMLDialogElement';
 
 /**
  * Focus first element on content when dialog is opened,
@@ -21,10 +20,7 @@ export function useFocusFirstElement(open: boolean, modalType: DialogModalType) 
     triggerRef.current = targetDocument?.activeElement as HTMLElement | undefined;
     const element = dialogRef.current && findFirstFocusable(dialogRef.current);
     if (element) {
-      // this is only required for non native dialogs
-      if (!isHTMLDialogElement(dialogRef.current)) {
-        element.focus();
-      }
+      element.focus();
     } else if (process.env.NODE_ENV !== 'production') {
       triggerRef.current?.blur();
       // eslint-disable-next-line no-console
