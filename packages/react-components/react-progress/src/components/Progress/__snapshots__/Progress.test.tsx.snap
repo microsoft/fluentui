@@ -14,6 +14,7 @@ exports[`Progress renders a default state 1`] = `
       aria-valuemin="0"
       aria-valuenow="0"
       class="fui-Progress__bar"
+      style="--fui-Progress--percentage: 0%;"
     />
   </div>
 </div>
