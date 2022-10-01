@@ -137,7 +137,7 @@ export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open'
 // @public (undocumented)
 export type DialogSurfaceSlots = {
     backdrop?: Slot<'div'>;
-    root: NonNullable<Slot<'dialog', 'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public

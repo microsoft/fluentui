@@ -34,7 +34,6 @@ const useRootStyles = makeStyles({
 
   vertical: {
     flexDirection: 'column',
-    paddingTop: tokens.spacingVerticalXS,
   },
 });
 
@@ -70,12 +69,6 @@ const useIndicatorStyles = makeStyles({
     },
   },
 
-  labelBefore: {
-    marginLeft: 0,
-  },
-  labelAfter: {
-    marginRight: 0,
-  },
   labelAbove: {
     marginTop: 0,
   },
@@ -112,6 +105,7 @@ const useInputStyles = makeStyles({
       },
 
       [`& ~ .${switchClassNames.label}`]: {
+        cursor: 'default',
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
@@ -206,15 +200,8 @@ const useInputStyles = makeStyles({
   },
   above: {
     bottom: 0,
-    height: `calc(${trackHeight}px + 2 * ${tokens.spacingVerticalS})`,
-    width: '100%',
-  },
-
-  labelHorizontal: {
-    width: `calc(${trackWidth}px + ${tokens.spacingHorizontalS})`,
-  },
-  labelVertical: {
     height: `calc(${trackHeight}px + ${tokens.spacingVerticalS})`,
+    width: '100%',
   },
 });
 
@@ -230,14 +217,15 @@ const useLabelStyles = makeStyles({
     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
   above: {
+    paddingTop: tokens.spacingVerticalXS,
     paddingBottom: tokens.spacingVerticalXS,
     width: '100%',
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalXS,
   },
   before: {
-    paddingRight: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalXS,
   },
 });
 
@@ -262,8 +250,6 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   state.indicator.className = mergeClasses(
     switchClassNames.indicator,
     indicatorStyles.base,
-    label && labelPosition === 'before' && indicatorStyles.labelBefore,
-    label && labelPosition === 'after' && indicatorStyles.labelAfter,
     label && labelPosition === 'above' && indicatorStyles.labelAbove,
     state.indicator.className,
   );
@@ -272,9 +258,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     switchClassNames.input,
     inputStyles.base,
     inputStyles.highContrast,
-    inputStyles[labelPosition],
-    label && (labelPosition === 'before' || labelPosition === 'after') && inputStyles.labelHorizontal,
-    label && labelPosition === 'above' && inputStyles.labelVertical,
+    label && inputStyles[labelPosition],
     state.input.className,
   );
 

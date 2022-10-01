@@ -22,8 +22,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 -  Styles from `ChatMessage` content slot were moved to exact component `ChatMessageContent` @yuanboxue-amber ([#24691](https://github.com/microsoft/fluentui/pull/24691))
 
 ### Features
-
 - Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
+- Add `FocusTrapZone` prop `preventScrollOnRestoreFocus` to prevent scroll on focus when `FocusTrapZone` releases @yuanboxue-amber ([#24632](https://github.com/microsoft/fluentui/pull/24632))
 - Add new style to v0 Tooltip to match v9 Tooltip @GianoglioEnrico ([#24908](https://github.com/microsoft/fluentui/pull/24908))
 
 ### Fixes

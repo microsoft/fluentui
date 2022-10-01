@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { BadgeState } from '../Badge/index';
 import { useBadge_unstable } from '../Badge/index';
 import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
 
@@ -16,7 +17,7 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
   } = props;
 
   const state: CounterBadgeState = {
-    ...(useBadge_unstable(props, ref) as CounterBadgeState),
+    ...(useBadge_unstable(props, ref) as Pick<CounterBadgeState, keyof BadgeState>),
     shape,
     appearance,
     showZero,
@@ -24,8 +25,8 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
     dot,
   };
 
-  if (!state.dot && !state.root.children) {
-    state.root.children = state.count > overflowCount ? `${overflowCount}+` : `${state.count}`;
+  if ((count !== 0 || showZero) && !dot && !state.root.children) {
+    state.root.children = count > overflowCount ? `${overflowCount}+` : `${count}`;
   }
 
   return state;
