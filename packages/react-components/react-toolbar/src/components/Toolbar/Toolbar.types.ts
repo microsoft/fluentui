@@ -62,7 +62,7 @@ export type ToolbarState = ComponentState<ToolbarSlots> &
     handleToggleButton: ToggableHandler;
   };
 
-export type ToolbarContextValue = Pick<ToolbarProps, 'size' | 'vertical'> & {
+export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical'> & {
   handleToggleButton?: ToggableHandler;
 };
 
