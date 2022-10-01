@@ -30,8 +30,8 @@ export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => 
   state.root.className = mergeClasses(
     toolbarClassNames.root,
     styles.root,
-    state.root.className,
     vertical && styles.vertical,
+    state.root.className,
   );
 
   return state;
