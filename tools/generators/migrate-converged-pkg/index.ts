@@ -698,7 +698,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
     });
 
     stories.forEach(storyPath => {
-      const content = tree.read(storyPath)?.toString('utf-8');
+      const content = tree.read(storyPath, 'utf8');
 
       if (!content) {
         throw new Error('story file has no code');
@@ -740,7 +740,7 @@ function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
       // Move testing helper file to src/testing.
       tree.rename(treePath, newFilePath);
     } else if (treePath.includes('.e2e.')) {
-      const content = tree.read(treePath)?.toString('utf-8');
+      const content = tree.read(treePath, 'utf8');
       const fileName = path.basename(treePath).replace('e2e', 'cy');
       const componentName = fileName.split('.')[0];
       const newCypressTestPath = joinPathFragments(options.paths.sourceRoot, 'components', componentName, fileName);
@@ -780,7 +780,7 @@ function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
 
     // Update files that import moved file to reflect file location change from common/ to testing/
     visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), nestedTreePath => {
-      const fileContent = tree.read(nestedTreePath)?.toString('utf-8');
+      const fileContent = tree.read(nestedTreePath, 'utf8');
       if (fileContent && fileContent.includes('common/')) {
         const newContent = fileContent.replace('common/', 'testing/');
         tree.write(nestedTreePath, newContent);
@@ -950,7 +950,7 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
   // update test TS config
   updateJson(tree, options.paths.tsconfig.test, (json: TsConfig) => {
     if (tree.exists(options.paths.jestSetupFile)) {
-      const jestSetupFile = tree.read(options.paths.jestSetupFile)?.toString('utf-8')!;
+      const jestSetupFile = tree.read(options.paths.jestSetupFile, 'utf8')!;
 
       if (jestSetupFile.includes(`require('@testing-library/jest-dom')`)) {
         json.compilerOptions.types = json.compilerOptions.types ?? [];
