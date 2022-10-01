@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     ...shorthands.gap('8px'),
   },
   vertical: {
-    display: 'flex',
     flexDirection: 'column',
     width: 'fit-content',
   },
