@@ -1263,7 +1263,7 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`migrateCommonFolderToTesting`, () => {
+  describe(`common folder migration`, () => {
     function setup(config: { projectName: string }) {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const sourceRoot = projectConfig.sourceRoot ?? joinPathFragments(projectConfig.root, 'src');
