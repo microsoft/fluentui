@@ -1,42 +1,38 @@
 import * as React from 'react';
-import {
-  Dialog,
-  DialogTrigger,
-  DialogSurface,
-  DialogTitle,
-  DialogActions,
-  DialogContent,
-  DialogBody,
-} from '@fluentui/react-dialog';
+import { Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody, DialogContent } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
-import story from './DialogTitleNoAction.md';
+import story from './DialogTitleCustomAction.md';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 
-export const NoAction = () => {
+export const TitleCustomAction = () => {
   return (
-    <Dialog modalType="non-modal">
+    <Dialog>
       <DialogTrigger>
-        <Button>Open non-modal dialog</Button>
+        <Button>Open dialog</Button>
       </DialogTrigger>
       <DialogSurface>
         <DialogBody>
-          <DialogTitle action={null}>Non-modal dialog title without an action</DialogTitle>
+          <DialogTitle
+            action={
+              <DialogTrigger action="close">
+                <Button appearance="subtle" aria-label="close" icon={<Dismiss24Regular />} />
+              </DialogTrigger>
+            }
+          >
+            Dialog title
+          </DialogTitle>
           <DialogContent>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, explicabo repudiandae impedit doloribus
             laborum quidem maxime dolores perspiciatis non ipsam, nostrum commodi quis autem sequi, incidunt cum?
             Consequuntur, repellendus nostrum?
           </DialogContent>
-          <DialogActions>
-            <DialogTrigger>
-              <Button appearance="primary">Close</Button>
-            </DialogTrigger>
-          </DialogActions>
         </DialogBody>
       </DialogSurface>
     </Dialog>
   );
 };
 
-NoAction.parameters = {
+TitleCustomAction.parameters = {
   docs: {
     description: {
       story,
