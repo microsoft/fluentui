@@ -739,7 +739,10 @@ function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
 
       // Move testing helper file to src/testing.
       tree.rename(treePath, newFilePath);
-    } else if (treePath.includes('.e2e.')) {
+      return;
+    }
+
+    if (treePath.includes('.e2e.')) {
       const content = tree.read(treePath, 'utf8');
       const fileName = path.basename(treePath).replace('e2e', 'cy');
       const componentName = fileName.split('.')[0];
@@ -752,10 +755,14 @@ function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
         const newContent = content.replace('./selectors', '../../testing/selectors');
         tree.write(newCypressTestPath, newContent);
       }
-    } else if (treePath.includes('tsconfig.json')) {
+      return;
+    }
+
+    if (treePath.includes('tsconfig.json')) {
       const newCypressTSConfigPath = joinPathFragments(options.projectConfig.root, 'tsconfig.cy.json');
       // Move e2e folder tsconfig.json to root
       tree.rename(treePath, newCypressTSConfigPath);
+      return;
     }
   });
 }
