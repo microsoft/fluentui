@@ -560,10 +560,28 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     'type-check': 'tsc -b tsconfig.json',
   };
 
-  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-    json.scripts = json.scripts || {};
-    json.typings = 'dist/index.d.ts';
+  const unstableApiDefinitions = processUnstableApiDefinitions();
 
+  if (unstableApiDefinitions) {
+    updateJson(tree, unstableApiDefinitions.unstablePackageJsonPath, (json: PackageJson) => {
+      json.exports = unstableApiDefinitions.unstableExportMap;
+      return json;
+    });
+  }
+
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.typings = './dist/index.d.ts';
+    json.exports = {
+      '.': {
+        types: json.typings,
+        import: './lib/index.js',
+        require: './lib-commonjs/index.js',
+      },
+      ...(unstableApiDefinitions ? unstableApiDefinitions.rootExportMap : null),
+      './package.json': './package.json',
+    };
+
+    json.scripts = json.scripts || {};
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
@@ -581,6 +599,39 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   });
 
   return tree;
+
+  function processUnstableApiDefinitions() {
+    const unstablePackageJsonPath = joinPathFragments(options.paths.unstable.rootPackageJson);
+    const hasUnstableApi = tree.exists(unstablePackageJsonPath);
+
+    if (!hasUnstableApi) {
+      return;
+    }
+
+    const unstablePackageJson = readJson<PackageJson>(tree, unstablePackageJsonPath);
+    const typePaths = {
+      rootExports: unstablePackageJson.typings?.replace(/\.\.\//g, ''),
+      unstableExports: unstablePackageJson.typings,
+    };
+
+    return {
+      unstablePackageJsonPath,
+      rootExportMap: {
+        './unstable': {
+          types: typePaths.rootExports,
+          import: './lib/unstable/index.js',
+          require: './lib-commonjs/unstable/index.js',
+        },
+      },
+      unstableExportMap: {
+        '.': {
+          types: typePaths.unstableExports,
+          import: './../lib/unstable/index.js',
+          require: './../lib-commonjs/unstable/index.js',
+        },
+      },
+    };
+  }
 }
 
 function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
@@ -597,7 +648,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
   const template = {
     projectReferences: { path: './.storybook/tsconfig.json' },
-    exclude: ['**/*.stories.ts', '**/*.stories.tsx', '**/*.cy.ts', '**/*.cy.tsx'],
+    exclude: ['**/*.stories.ts', '**/*.stories.tsx'],
   };
 
   const js = isJs(tree, options);
@@ -698,7 +749,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
     });
 
     stories.forEach(storyPath => {
-      const content = tree.read(storyPath)?.toString('utf-8');
+      const content = tree.read(storyPath, 'utf8');
 
       if (!content) {
         throw new Error('story file has no code');
@@ -723,7 +774,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 /**
- * Remove function after migration is complete.
+ * TODO: Remove function after migration is complete.
  */
 function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
   const e2ePath = joinPathFragments(options.projectConfig.root, 'e2e');
@@ -739,8 +790,11 @@ function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
 
       // Move testing helper file to src/testing.
       tree.rename(treePath, newFilePath);
-    } else if (treePath.includes('.e2e.')) {
-      const content = tree.read(treePath)?.toString('utf-8');
+      return;
+    }
+
+    if (treePath.includes('.e2e.')) {
+      const content = tree.read(treePath, 'utf8');
       const fileName = path.basename(treePath).replace('e2e', 'cy');
       const componentName = fileName.split('.')[0];
       const newCypressTestPath = joinPathFragments(options.paths.sourceRoot, 'components', componentName, fileName);
@@ -752,16 +806,20 @@ function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
         const newContent = content.replace('./selectors', '../../testing/selectors');
         tree.write(newCypressTestPath, newContent);
       }
-    } else if (treePath.includes('tsconfig.json')) {
+      return;
+    }
+
+    if (treePath.includes('tsconfig.json')) {
       const newCypressTSConfigPath = joinPathFragments(options.projectConfig.root, 'tsconfig.cy.json');
       // Move e2e folder tsconfig.json to root
       tree.rename(treePath, newCypressTSConfigPath);
+      return;
     }
   });
 }
 
 /**
- * Remove function after migration is complete.
+ * TODO: Remove function after migration is complete.
  */
 function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
   const sourceRoot = options.paths.sourceRoot;
@@ -780,7 +838,7 @@ function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
 
     // Update files that import moved file to reflect file location change from common/ to testing/
     visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), nestedTreePath => {
-      const fileContent = tree.read(nestedTreePath)?.toString('utf-8');
+      const fileContent = tree.read(nestedTreePath, 'utf8');
       if (fileContent && fileContent.includes('common/')) {
         const newContent = fileContent.replace('common/', 'testing/');
         tree.write(nestedTreePath, newContent);
@@ -804,7 +862,7 @@ function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
 }
 
 /**
- * Remove function after migration is complete.
+ * TODO: Remove function after migration is complete.
  */
 function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
   const oldStoriesPath = joinPathFragments(options.paths.sourceRoot, 'stories');
@@ -849,6 +907,10 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
 }
 
 function setupCypress(tree: Tree, options: NormalizedSchema) {
+  const template = {
+    exclude: ['**/*.cy.ts', '**/*.cy.tsx'],
+  };
+
   if (!shouldSetupCypress(tree, options)) {
     return tree;
   }
@@ -859,6 +921,15 @@ function setupCypress(tree: Tree, options: NormalizedSchema) {
     json.references?.push({
       path: `./${path.basename(options.paths.tsconfig.cypress)}`,
     });
+
+    return json;
+  });
+
+  // update lib ts with new exclude globs
+  updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
+    json.exclude = json.exclude || [];
+    json.exclude.push(...template.exclude);
+    json.exclude = uniqueArray(json.exclude);
 
     return json;
   });
@@ -937,7 +1008,7 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
   // update test TS config
   updateJson(tree, options.paths.tsconfig.test, (json: TsConfig) => {
     if (tree.exists(options.paths.jestSetupFile)) {
-      const jestSetupFile = tree.read(options.paths.jestSetupFile)?.toString('utf-8')!;
+      const jestSetupFile = tree.read(options.paths.jestSetupFile, 'utf8')!;
 
       if (jestSetupFile.includes(`require('@testing-library/jest-dom')`)) {
         json.compilerOptions.types = json.compilerOptions.types ?? [];

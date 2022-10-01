@@ -4,7 +4,7 @@ import * as constants from './eslint-constants';
 import * as fs from 'fs';
 
 const files = [path.join(process.cwd(), constants.directory)];
-const storiesPath = path.join(process.cwd(), constants.stories);
+const storiesPath = path.join(process.cwd(), 'stories');
 
 if (fs.existsSync(storiesPath)) {
   files.push(storiesPath);
@@ -12,7 +12,7 @@ if (fs.existsSync(storiesPath)) {
 
 export const eslint = eslintTask({
   // TODO: also lint config files?
-  files: files,
+  files,
   extensions: constants.extensions,
   cache: true, // only lint files changed since last lint
   fix: process.argv.includes('--fix'),

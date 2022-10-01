@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 28 Sep 2022 07:37:48 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 07:37:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.13.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.13.8)
+
+Mon, 03 Oct 2022 07:37:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.13.7..@fluentui/react-charting_v5.13.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.97.1 ([PR #25022](https://github.com/microsoft/fluentui/pull/25022) by beachball)
+
+## [5.13.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.13.7)
+
+Fri, 30 Sep 2022 07:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.13.6..@fluentui/react-charting_v5.13.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.97.0 ([PR #25025](https://github.com/microsoft/fluentui/pull/25025) by beachball)
+
+## [5.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.13.6)
+
+Thu, 29 Sep 2022 07:40:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.13.5..@fluentui/react-charting_v5.13.6)
+
+### Patches
+
+- Fix vertical bar chart bugs ([PR #24990](https://github.com/microsoft/fluentui/pull/24990) by atishay.jain@microsoft.com)
+- Bump @fluentui/react to v8.96.3 ([PR #24990](https://github.com/microsoft/fluentui/pull/24990) by beachball)
 
 ## [5.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.13.5)
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: enable object-shorthand in ESLint",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

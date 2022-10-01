@@ -7,6 +7,16 @@ describe('Progress', () => {
   isConformant({
     Component: Progress,
     displayName: 'Progress',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'Test Label',
+            description: 'Test Description',
+          },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

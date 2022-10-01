@@ -319,7 +319,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     }
   }, [columnReorderOptions, onColumnDragEnd]);
 
-  const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+  const rowCount =
+    (isHeaderVisible ? 1 : 0) +
+    (props.onRenderDetailsFooter ? 1 : 0) +
+    GetGroupCount(groups) +
+    (items ? items.length : 0);
   const colCount =
     (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) +
     (adjustedColumns ? adjustedColumns.length : 0) +

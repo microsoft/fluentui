@@ -5,7 +5,4 @@ module.exports = {
 
   /** Subdirectory to lint within package (relative path) */
   directory: 'src',
-
-  /** Subdirectory to lint stories within a v9 package */
-  stories: 'stories',
 };

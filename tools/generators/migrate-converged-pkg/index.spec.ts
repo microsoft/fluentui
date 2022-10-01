@@ -771,6 +771,7 @@ describe('migrate-converged-pkg generator', () => {
       // // TS Updates
       const cypressTsConfig: TsConfig = readJson(tree, paths.tsconfig.cypress);
       const mainTsConfig: TsConfig = readJson(tree, paths.tsconfig.main);
+      const libTsConfig: TsConfig = readJson(tree, paths.tsconfig.lib);
 
       expect(cypressTsConfig).toEqual({
         extends: './tsconfig.json',
@@ -782,6 +783,7 @@ describe('migrate-converged-pkg generator', () => {
         include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './tsconfig.cy.json' }]));
+      expect(libTsConfig.exclude).toEqual(expect.arrayContaining(['**/*.cy.ts', '**/*.cy.tsx']));
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
@@ -889,7 +891,7 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
-      expect(pkgJson.typings).toEqual('dist/index.d.ts');
+      expect(pkgJson.typings).toEqual('./dist/index.d.ts');
     });
 
     it(`should update package npm scripts`, async () => {
@@ -937,6 +939,75 @@ describe('migrate-converged-pkg generator', () => {
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
+    });
+
+    it(`should update exports map`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const pkgJsonPath = `${projectConfig.root}/package.json`;
+
+      let pkgJson = readJson(tree, pkgJsonPath);
+
+      expect(pkgJson.exports).toBe(undefined);
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, pkgJsonPath);
+
+      expect(pkgJson.exports).toMatchInlineSnapshot(`
+        Object {
+          ".": Object {
+            "import": "./lib/index.js",
+            "require": "./lib-commonjs/index.js",
+            "types": "./dist/index.d.ts",
+          },
+          "./package.json": "./package.json",
+        }
+      `);
+    });
+
+    it(`should update exports map if unstable API is present`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const pkgJsonPath = `${projectConfig.root}/package.json`;
+      const pkgJsonUnstablePath = `${projectConfig.root}/src/unstable/package.json__tmpl__`;
+      writeJson(tree, pkgJsonUnstablePath, {
+        typings: './../dist/unstable.d.ts',
+      });
+
+      let pkgJson = readJson(tree, pkgJsonPath);
+      let pkgUnstableJson = readJson(tree, pkgJsonUnstablePath);
+
+      expect(pkgJson.exports).toBe(undefined);
+      expect(pkgUnstableJson.exports).toBe(undefined);
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, pkgJsonPath);
+      pkgUnstableJson = readJson(tree, pkgJsonUnstablePath);
+
+      expect(pkgJson.exports).toMatchInlineSnapshot(`
+        Object {
+          ".": Object {
+            "import": "./lib/index.js",
+            "require": "./lib-commonjs/index.js",
+            "types": "./dist/index.d.ts",
+          },
+          "./package.json": "./package.json",
+          "./unstable": Object {
+            "import": "./lib/unstable/index.js",
+            "require": "./lib-commonjs/unstable/index.js",
+            "types": "./dist/unstable.d.ts",
+          },
+        }
+      `);
+      expect(pkgUnstableJson.exports).toMatchInlineSnapshot(`
+        Object {
+          ".": Object {
+            "import": "./../lib/unstable/index.js",
+            "require": "./../lib-commonjs/unstable/index.js",
+            "types": "./../dist/unstable.d.ts",
+          },
+        }
+      `);
     });
 
     it(`should not add start scripts to node packages`, async () => {
@@ -1258,6 +1329,76 @@ describe('migrate-converged-pkg generator', () => {
       const content = tree.read(workspacePaths.github.codeowners, 'utf8');
 
       expect(content).toContain(`packages/react-dummy @org/team-awesome`);
+    });
+  });
+
+  describe(`common folder migration`, () => {
+    function setup(config: { projectName: string }) {
+      const projectConfig = readProjectConfiguration(tree, config.projectName);
+      const sourceRoot = projectConfig.sourceRoot ?? joinPathFragments(projectConfig.root, 'src');
+      const paths = {
+        packageJson: `${projectConfig.root}/package.json`,
+        commonFolder: joinPathFragments(sourceRoot, 'common'),
+        testingFolder: joinPathFragments(sourceRoot, 'testing'),
+        components: joinPathFragments(sourceRoot, 'components'),
+      };
+
+      function createCommonFolderTestSetup() {
+        tree.write(
+          `${paths.commonFolder}/isConformant.ts`,
+          stripIndents`
+         export const isConformant(){}
+        `,
+        );
+        tree.write(
+          `${paths.commonFolder}/mockDummy.ts`,
+          stripIndents`
+         export const mockDummy(){}
+        `,
+        );
+        tree.write(
+          `${paths.components}/Dummy/Dummy.test.tsx`,
+          stripIndents`
+           import { isConformant } from "../../common/isConformant"
+           import { mockDummy } from "../../common/mockDummy"
+        `,
+        );
+
+        return tree;
+      }
+
+      return { projectConfig, paths, createCommonFolderTestSetup };
+    }
+
+    it(`should move all files from src/common to src/testing`, async () => {
+      const { paths, createCommonFolderTestSetup } = setup({ projectName: options.name });
+
+      createCommonFolderTestSetup();
+
+      expect(tree.exists(joinPathFragments(paths.commonFolder, 'isConformant.ts'))).toBeTruthy();
+      expect(tree.exists(joinPathFragments(paths.commonFolder, 'mockDummy.ts'))).toBeTruthy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(joinPathFragments(paths.commonFolder, 'isConformant.ts'))).toBeFalsy();
+      expect(tree.exists(joinPathFragments(paths.commonFolder, 'mockDummy.ts'))).toBeFalsy();
+
+      expect(tree.exists(joinPathFragments(paths.testingFolder, 'isConformant.ts'))).toBeTruthy();
+      expect(tree.exists(joinPathFragments(paths.testingFolder, 'mockDummy.ts'))).toBeTruthy();
+    });
+
+    it(`should update imports of files from common/ to testing/ correctly `, async () => {
+      const { paths, createCommonFolderTestSetup } = setup({ projectName: options.name });
+
+      createCommonFolderTestSetup();
+      const testFilePath = joinPathFragments(paths.components, 'Dummy', 'Dummy.test.tsx');
+
+      await generator(tree, options);
+
+      expect(tree.read(testFilePath)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "import { isConformant } from \\"../../testing/isConformant\\"
+        import { mockDummy } from \\"../../testing/mockDummy\\""
+      `);
     });
   });
 });

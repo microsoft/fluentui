@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Remove SwitchField's labelPosition prop, as it has no effect",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
