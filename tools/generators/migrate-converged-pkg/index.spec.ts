@@ -771,6 +771,7 @@ describe('migrate-converged-pkg generator', () => {
       // // TS Updates
       const cypressTsConfig: TsConfig = readJson(tree, paths.tsconfig.cypress);
       const mainTsConfig: TsConfig = readJson(tree, paths.tsconfig.main);
+      const libTsConfig: TsConfig = readJson(tree, paths.tsconfig.lib);
 
       expect(cypressTsConfig).toEqual({
         extends: './tsconfig.json',
@@ -782,6 +783,7 @@ describe('migrate-converged-pkg generator', () => {
         include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './tsconfig.cy.json' }]));
+      expect(libTsConfig.exclude).toEqual(expect.arrayContaining(['**/*.cy.ts', '**/*.cy.tsx']));
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);

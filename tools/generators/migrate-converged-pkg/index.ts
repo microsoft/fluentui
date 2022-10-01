@@ -597,7 +597,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
   const template = {
     projectReferences: { path: './.storybook/tsconfig.json' },
-    exclude: ['**/*.stories.ts', '**/*.stories.tsx', '**/*.cy.ts', '**/*.cy.tsx'],
+    exclude: ['**/*.stories.ts', '**/*.stories.tsx'],
   };
 
   const js = isJs(tree, options);
@@ -849,6 +849,10 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
 }
 
 function setupCypress(tree: Tree, options: NormalizedSchema) {
+  const template = {
+    exclude: ['**/*.cy.ts', '**/*.cy.tsx'],
+  };
+
   if (!shouldSetupCypress(tree, options)) {
     return tree;
   }
@@ -859,6 +863,15 @@ function setupCypress(tree: Tree, options: NormalizedSchema) {
     json.references?.push({
       path: `./${path.basename(options.paths.tsconfig.cypress)}`,
     });
+
+    return json;
+  });
+
+  // update lib ts with new exclude globs
+  updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
+    json.exclude = json.exclude || [];
+    json.exclude.push(...template.exclude);
+    json.exclude = uniqueArray(json.exclude);
 
     return json;
   });
