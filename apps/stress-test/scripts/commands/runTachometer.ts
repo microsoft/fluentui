@@ -1,11 +1,11 @@
 import * as yargs from 'yargs';
 import { CLITachometerOptions, ConfigResult } from '../utils/types';
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import * as path from 'path';
 
-import configureYargs from '../utils/configureYargs';
-import { getConfigDir, getResultsDir, readDirJson } from '../utils/paths';
-import runTachometer from '../utils/tachometer';
+import configureYargs from '../utils/configureYargs.js';
+import { getConfigDir, getResultsDir, readDirJson } from '../utils/paths.js';
+import runTachometer from '../utils/tachometer.js';
 
 const command = 'tachometer';
 

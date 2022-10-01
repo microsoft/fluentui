@@ -76,6 +76,11 @@ import { dialogBodyClassNames } from '@fluentui/react-dialog';
 import { DialogBodyProps } from '@fluentui/react-dialog';
 import { DialogBodySlots } from '@fluentui/react-dialog';
 import { DialogBodyState } from '@fluentui/react-dialog';
+import { DialogContent } from '@fluentui/react-dialog';
+import { dialogContentClassNames } from '@fluentui/react-dialog';
+import { DialogContentProps } from '@fluentui/react-dialog';
+import { DialogContentSlots } from '@fluentui/react-dialog';
+import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
@@ -132,6 +137,11 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
+import { Persona } from '@fluentui/react-persona';
+import { personaClassNames } from '@fluentui/react-persona';
+import { PersonaProps } from '@fluentui/react-persona';
+import { PersonaSlots } from '@fluentui/react-persona';
+import { PersonaState } from '@fluentui/react-persona';
 import { RadioGroupField } from '@fluentui/react-field';
 import { radioGroupFieldClassNames } from '@fluentui/react-field';
 import { RadioGroupFieldProps } from '@fluentui/react-field';
@@ -147,6 +157,7 @@ import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderDialog_unstable } from '@fluentui/react-dialog';
 import { renderDialogActions_unstable } from '@fluentui/react-dialog';
 import { renderDialogBody_unstable } from '@fluentui/react-dialog';
+import { renderDialogContent_unstable } from '@fluentui/react-dialog';
 import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
 import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
 import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
@@ -155,6 +166,7 @@ import { renderField_unstable } from '@fluentui/react-field';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
+import { renderPersona_unstable } from '@fluentui/react-persona';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
@@ -278,6 +290,8 @@ import { useDialogActions_unstable } from '@fluentui/react-dialog';
 import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogBody_unstable } from '@fluentui/react-dialog';
 import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogContent_unstable } from '@fluentui/react-dialog';
+import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
@@ -296,6 +310,8 @@ import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
+import { usePersona_unstable } from '@fluentui/react-persona';
+import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useTable_unstable } from '@fluentui/react-table';
@@ -465,6 +481,16 @@ export { DialogBodySlots }
 
 export { DialogBodyState }
 
+export { DialogContent }
+
+export { dialogContentClassNames }
+
+export { DialogContentProps }
+
+export { DialogContentSlots }
+
+export { DialogContentState }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
@@ -577,6 +603,16 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
+export { Persona }
+
+export { personaClassNames }
+
+export { PersonaProps }
+
+export { PersonaSlots }
+
+export { PersonaState }
+
 export { RadioGroupField }
 
 export { radioGroupFieldClassNames }
@@ -607,6 +643,8 @@ export { renderDialogActions_unstable }
 
 export { renderDialogBody_unstable }
 
+export { renderDialogContent_unstable }
+
 export { renderDialogSurface_unstable }
 
 export { renderDialogTitle_unstable }
@@ -622,6 +660,8 @@ export { renderListbox_unstable }
 export { renderOption_unstable }
 
 export { renderOptionGroup_unstable }
+
+export { renderPersona_unstable }
 
 export { renderSelect_unstable }
 
@@ -869,6 +909,10 @@ export { useDialogBody_unstable }
 
 export { useDialogBodyStyles_unstable }
 
+export { useDialogContent_unstable }
+
+export { useDialogContentStyles_unstable }
+
 export { useDialogSurface_unstable }
 
 export { useDialogSurfaceStyles_unstable }
@@ -904,6 +948,10 @@ export { useOptionGroupStyles_unstable }
 export { useOptionStyles_unstable }
 
 export { useOverflowMenu }
+
+export { usePersona_unstable }
+
+export { usePersonaStyles_unstable }
 
 export { useSelect_unstable }
 

@@ -24,6 +24,9 @@
     },
     {
       "path": "./custom-global/tsconfig.json"
+    },
+    {
+      "path": "./json-stable-stringify-without-jsonify/tsconfig.json"
     }
   ]
 }

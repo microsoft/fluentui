@@ -22,6 +22,7 @@
       "@fluentui/react-alert": ["packages/react-components/react-alert/src/index.ts"],
       "@fluentui/react-aria": ["packages/react-components/react-aria/src/index.ts"],
       "@fluentui/react-avatar": ["packages/react-components/react-avatar/src/index.ts"],
+      "@fluentui/react-avatar-context": ["packages/react-components/react-avatar-context/src/index.ts"],
       "@fluentui/react-badge": ["packages/react-components/react-badge/src/index.ts"],
       "@fluentui/react-button": ["packages/react-components/react-button/src/index.ts"],
       "@fluentui/react-button-shim-v8-v9": ["packages/react-components-migration/react-button-shim-v8-v9/src/index.ts"],

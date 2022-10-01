@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 27 Sep 2022 07:46:25 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.3",
+      "version": "1.12.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "f020ac1736d7b275d10d27ab868605343ca240e5",
+            "comment": "fix(eslint-plugin): properly resolve single-version policy dep issues in react-northstar packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Aug 2022 07:39:31 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.2",
       "version": "1.12.2",

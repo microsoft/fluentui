@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update popover role to be note when it does not trap focus",
+  "packageName": "@fluentui/react-popover",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,5 +1,5 @@
 import * as yargs from 'yargs';
-import { getBrowsers } from './getBrowsers';
+import { getBrowsers } from './getBrowsers.js';
 
 type YargsOptions = Record<string, yargs.Options>;
 type Configure = (y: yargs.Argv, options: YargsOptions) => void;
@@ -79,6 +79,31 @@ const cliOptions = {
     describe: 'Open the dev server in a new browser window.',
     default: false,
   },
+  type: {
+    describe: 'Type of fixture to build.',
+    default: 'tree',
+  },
+  name: {
+    describe: 'Name of the fixture.',
+  },
+  options: {
+    describe: 'Options for building the fixture. E.g., minBreadth=1 maxBreadth=20',
+    coerce: (arg: string[]) => {
+      return arg.reduce((map: { [key: string]: string }, current) => {
+        const [key, value] = current.split('=');
+        if (!key || !value) {
+          throw new Error(`Invalid test option. Got ${current}. Expected the form "key=value".`);
+        }
+
+        map[key] = value;
+        return map;
+      }, {});
+    },
+  },
+  clean: {
+    describe: 'Cleans fixtures.',
+    default: false,
+  },
 };
 
 const configure: Configure = (y, options) => {
@@ -91,6 +116,7 @@ const configure: Configure = (y, options) => {
       case 'targets':
       case 'test-options':
       case 'renderers':
+      case 'options':
         _y = _y.array(option);
         break;
 
@@ -107,6 +133,7 @@ const configure: Configure = (y, options) => {
       case 'verbose':
       case 'build-deps':
       case 'open':
+      case 'clean':
         _y = _y.boolean(option);
         break;
 
@@ -116,6 +143,10 @@ const configure: Configure = (y, options) => {
 
       case 'mode':
         _y = _y.choices(option, ['production', 'development']);
+        break;
+
+      case 'type':
+        _y = _y.choices(option, ['tree']);
         break;
     }
   });
@@ -207,6 +238,12 @@ const configureYargs: CongfigureYargs = (command, y) => {
       const { mode, open, 'griffel-mode': griffelMode } = cliOptions;
       mode.default = 'development';
       configure(y, { mode, open, 'griffel-mode': griffelMode });
+      break;
+    }
+
+    case 'build-fixture': {
+      const { type, name, options, clean } = cliOptions;
+      configure(y, { type, name, options, clean });
       break;
     }
   }

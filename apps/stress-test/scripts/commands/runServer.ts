@@ -1,7 +1,7 @@
 import * as yargs from 'yargs';
 
-import configureYargs from '../utils/configureYargs';
-import { startServer } from '../utils/server';
+import configureYargs from '../utils/configureYargs.js';
+import { startServer } from '../utils/server.js';
 import { CLIServerOptions } from '../utils/types';
 
 const command = 'serve';

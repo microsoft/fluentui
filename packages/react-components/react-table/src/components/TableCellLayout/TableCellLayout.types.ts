@@ -1,4 +1,11 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { AvatarSizes } from '@fluentui/react-avatar';
+
+export type TableCellLayoutContextValues = {
+  avatar: {
+    size?: AvatarSizes;
+  };
+};
 
 export type TableCellLayoutSlots = {
   root: Slot<'div'>;
@@ -34,4 +41,5 @@ export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>>
 /**
  * State used in rendering TableCellLayout
  */
-export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'>;
+export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> &
+  Pick<TableCellLayoutProps, 'appearance'> & { avatarSize: AvatarSizes | undefined };

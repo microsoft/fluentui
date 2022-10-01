@@ -3,7 +3,10 @@ const lernaAlias = require('lerna-alias');
 // northstar packages should pull these from npm, not the repo
 const excludedPackages = ['@fluentui/date-time-utilities', '@fluentui/dom-utilities'];
 
-module.exports = {
+/**
+ * @type {typeof lernaAlias}
+ */
+const api = {
   jest: options => {
     const aliases = lernaAlias.jest(options);
     for (const pkg of excludedPackages) {
@@ -26,3 +29,5 @@ module.exports = {
     return aliases;
   },
 };
+
+module.exports = api;

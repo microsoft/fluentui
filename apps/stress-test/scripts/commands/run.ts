@@ -1,10 +1,11 @@
 import * as yargs from 'yargs';
 import { CLIBuildTestConfigOptions, CLIRunOptions, CLIServerOptions, ConfigResult } from '../utils/types';
-import configureYargs from '../utils/configureYargs';
-import { startServer, stopServer } from '../utils/server';
-import runTachometer from '../utils/tachometer';
-import processResults from './processResults';
-import { buildTestConfig } from './buildTestConfig';
+import configureYargs from '../utils/configureYargs.js';
+import { startServer, stopServer } from '../utils/server.js';
+import runTachometer from '../utils/tachometer.js';
+import processResults from './processResults.js';
+import { buildTestConfig } from './buildTestConfig.js';
+import { buildDefaultFixtures } from '../utils/fixtures.js';
 
 const command = 'run';
 
@@ -31,6 +32,8 @@ const api: yargs.CommandModule = {
     return configureYargs(command, y);
   },
   handler: async argv => {
+    buildDefaultFixtures();
+
     const { $0, _, ...rest } = argv;
     const args = (rest as unknown) as CLIRunOptions;
     await handler(args);

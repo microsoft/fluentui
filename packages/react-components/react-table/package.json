@@ -18,11 +18,10 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-table/src && yarn docs",
     "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -32,6 +31,7 @@
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.2.0",
+    "@fluentui/react-avatar": "^9.1.1",
     "@fluentui/react-checkbox": "^9.0.6",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-tabster": "^9.1.1",
