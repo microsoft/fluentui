@@ -723,7 +723,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 /**
- * Remove function after migration is complete.
+ * TODO: Remove function after migration is complete.
  */
 function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
   const e2ePath = joinPathFragments(options.projectConfig.root, 'e2e');
@@ -761,7 +761,7 @@ function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
 }
 
 /**
- * Remove function after migration is complete.
+ * TODO: Remove function after migration is complete.
  */
 function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
   const sourceRoot = options.paths.sourceRoot;
@@ -804,7 +804,7 @@ function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
 }
 
 /**
- * Remove function after migration is complete.
+ * TODO: Remove function after migration is complete.
  */
 function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
   const oldStoriesPath = joinPathFragments(options.paths.sourceRoot, 'stories');
