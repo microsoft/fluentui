@@ -12,7 +12,7 @@ if (fs.existsSync(storiesPath)) {
 
 export const eslint = eslintTask({
   // TODO: also lint config files?
-  files: files,
+  files,
   extensions: constants.extensions,
   cache: true, // only lint files changed since last lint
   fix: process.argv.includes('--fix'),
