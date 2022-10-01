@@ -6,7 +6,7 @@ import type { ProgressProps } from './Progress.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Progress component - TODO: add more docs
+ * A progress bar shows the progression of a task.
  */
 export const Progress: ForwardRefComponent<ProgressProps> = React.forwardRef((props, ref) => {
   const state = useProgress_unstable(props, ref);

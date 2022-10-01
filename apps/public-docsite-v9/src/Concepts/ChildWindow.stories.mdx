@@ -10,7 +10,7 @@ In these cases, the target element is hosted in a different context, and thus ha
 
 ### Configuring rendering
 
-We need to configure a renderer for `makeStyles()` and pass a `targetDocument` to `FluentProvider`:
+We need to configure a renderer for `makeStyles()` and pass a `targetDocument` to `RendererProvider` & `FluentProvider`:
 
 ```js
 import { createDOMRenderer, FluentProvider, RendererProvider } from '@fluentui/react-components';
@@ -21,7 +21,7 @@ function MyComponent(props) {
   const renderer = React.useMemo(() => createDOMRenderer(targetDocument), [targetDocument]);
 
   return (
-    <RendererProvider renderer={renderer}>
+    <RendererProvider renderer={renderer} targetDocument={targetDocument}>
       <FluentProvider targetDocument={targetDocument}>{children}</FluentProvider>
     </RendererProvider>
   );

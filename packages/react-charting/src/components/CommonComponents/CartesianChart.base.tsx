@@ -144,6 +144,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       culture,
       dateLocalizeOptions,
       timeFormatLocale,
+      customDateTimeFormatter,
     } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -198,7 +199,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, culture, dateLocalizeOptions, timeFormatLocale);
+        xScale = createDateXAxis(
+          XAxisParams,
+          this.props.tickParams!,
+          culture,
+          dateLocalizeOptions,
+          timeFormatLocale,
+          customDateTimeFormatter,
+        );
         break;
       case XAxisTypes.StringAxis:
         xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);

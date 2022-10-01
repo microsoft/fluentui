@@ -57,6 +57,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     disableFirstFocus: PropTypes.bool,
     focusPreviouslyFocusedInnerElement: PropTypes.bool,
     focusTriggerOnOutsideClick: PropTypes.bool,
+    preventScrollOnRestoreFocus: PropTypes.bool,
     innerRef: PropTypes.any,
   };
 
@@ -236,9 +237,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     }
   };
 
-  _focusAsync(element: HTMLElement): void {
+  _focusAsync(element: HTMLElement, options?: FocusOptions): void {
     if (!this._isBumper(element)) {
-      focusAsync(element);
+      focusAsync(element, options);
     }
   }
 
@@ -285,7 +286,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
       // @ts-ignore
       (this._root.current.contains(activeElement) || activeElement === doc.body)
     ) {
-      this._focusAsync(this._previouslyFocusedElementOutsideTrapZone);
+      this._focusAsync(this._previouslyFocusedElementOutsideTrapZone, {
+        preventScroll: this.props.preventScrollOnRestoreFocus,
+      });
     }
 
     // if last active focus trap zone is going to be released - show previously hidden content in accessibility tree
