@@ -2,6 +2,35 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:39 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "5129090c2dedbaf91b8441898788413992c556e3",
+            "comment": "chore: Update tests for focus outline selectors"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.1.2",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.4.0",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Sep 2022 10:32:30 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.8",
       "version": "9.0.8",

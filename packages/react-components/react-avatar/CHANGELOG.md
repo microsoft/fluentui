@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.2.0)
+
+Mon, 03 Oct 2022 22:24:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.1.1..@fluentui/react-avatar_v9.2.0)
+
+### Minor changes
+
+- feat: Implement avatar context for slot overrides ([PR #24807](https://github.com/microsoft/fluentui/pull/24807) by lingfangao@hotmail.com)
+- feat: Avatar's aria label includes 'active' or 'inactive' when using the active prop ([PR #24901](https://github.com/microsoft/fluentui/pull/24901) by behowell@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.7 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-popover to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-tooltip to v9.0.7 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+
+### Patches
+
+- fix: Make AvatarGroupPopover's focus indicator the same for all layouts. ([PR #25006](https://github.com/microsoft/fluentui/pull/25006) by esteban.230@hotmail.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.1.1)
 

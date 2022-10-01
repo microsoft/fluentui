@@ -1,9 +1,10 @@
 import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 export type DialogTriggerAction = 'open' | 'close';
 
-export type DialogTriggerProps = {
+export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {
   /**
    * Explicitly declare if the trigger is responsible for opening or
    * closing a Dialog visibility state.
@@ -11,11 +12,6 @@ export type DialogTriggerProps = {
    * @default 'close' // if it's inside DialogSurface
    */
   action?: DialogTriggerAction;
-  /**
-   * Explicitly require single child or render function
-   * to inject properties
-   */
-  children: React.ReactElement | ((props: DialogTriggerChildProps) => React.ReactElement | null);
 };
 
 /**
@@ -24,7 +20,6 @@ export type DialogTriggerProps = {
 export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<
   Type,
   Props & {
-    ref: React.Ref<unknown>;
     'aria-haspopup'?: 'dialog';
   }
 >;

@@ -3,6 +3,7 @@
     "apps/*",
     "packages/*",
     "packages/react-components/*",
+    "packages/react-components-migration/*",
     "scripts",
     "packages/fluentui/*",
     "tools",

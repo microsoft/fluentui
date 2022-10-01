@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make AvatarGroupPopover's focus indicator the same for all layouts.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

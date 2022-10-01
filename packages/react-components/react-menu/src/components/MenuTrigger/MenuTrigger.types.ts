@@ -1,12 +1,8 @@
 import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-export type MenuTriggerProps = {
-  /**
-   * Explicitly require single child or render function
-   */
-  children: React.ReactElement | ((props: MenuTriggerChildProps) => React.ReactElement | null);
-};
+export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps>;
 
 /**
  * Props that are passed to the child of the MenuTrigger when cloned to ensure correct behaviour for the Menu
