@@ -3,6 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
+import { DecoratorFunction } from '@storybook/csf';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../utilities/index';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
@@ -162,21 +163,23 @@ const AvatarCustomSizeList: React.FC<
   );
 };
 
+const decorators: DecoratorFunction[] = [
+  story => (
+    <div style={{ display: 'flex' }}>
+      <div className="testWrapper" style={{ maxWidth: '750px' }}>
+        {story()}
+      </div>
+    </div>
+  ),
+  story => (
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+  ),
+];
+
 export default {
   title: 'Avatar Converged',
   Component: Avatar,
-  decorators: [
-    story => (
-      <div style={{ display: 'flex' }}>
-        <div className="testWrapper" style={{ maxWidth: '750px' }}>
-          {story()}
-        </div>
-      </div>
-    ),
-    story => (
-      <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-    ),
-  ],
+  decorators,
 } as ComponentMeta<typeof Avatar>;
 
 export const Basic = () => (
@@ -194,9 +197,9 @@ export const Basic = () => (
 );
 Basic.storyName = 'basic';
 
-export const BasicRTL = getStoryVariant(Basic, RTL);
-export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
-export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
+export const BasicRTL = getStoryVariant(Basic, RTL, decorators);
+export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST, decorators);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE, decorators);
 
 export const SizeName = () => <AvatarList names={examples.name} />;
 SizeName.storyName = 'size+name';
@@ -258,8 +261,8 @@ export const Color = () => {
 };
 Color.storyName = 'color';
 
-export const ColorHighContrast = getStoryVariant(Color, HIGH_CONTRAST);
-export const ColorDarkMode = getStoryVariant(Color, DARK_MODE);
+export const ColorHighContrast = getStoryVariant(Color, HIGH_CONTRAST, decorators);
+export const ColorDarkMode = getStoryVariant(Color, DARK_MODE, decorators);
 
 export const ImageBadUrl = () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />;
 
