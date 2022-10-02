@@ -3,12 +3,6 @@ import { setAddon } from '@storybook/react';
 import { webLightTheme, teamsHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 
-export const decorators = [
-  /** @type {import("@storybook/csf").DecoratorFunction} */ story => (
-    <FluentProvider theme={webLightTheme}>{story()}</FluentProvider>
-  ),
-];
-
 /**
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
  *

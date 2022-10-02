@@ -4,6 +4,8 @@ import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../utilities/index';
+import { FluentProvider } from '../../../../packages/react-components/react-provider/src/FluentProvider';
+import { webLightTheme } from '../../../../packages/react-components/react-theme/src/index';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
@@ -176,6 +178,7 @@ export default {
     story => (
       <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
     ),
+    story => <FluentProvider theme={webLightTheme}>{story()}</FluentProvider>,
   ],
 } as ComponentMeta<typeof Avatar>;
 

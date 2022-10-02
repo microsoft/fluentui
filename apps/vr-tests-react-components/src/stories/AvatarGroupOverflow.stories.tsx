@@ -4,6 +4,8 @@ import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupI
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../utilities/index';
+import { FluentProvider } from '../../../../packages/react-components/react-provider/src/FluentProvider';
+import { webLightTheme } from '../../../../packages/react-components/react-theme/src/index';
 
 const names = [
   'Katri Athokas',
@@ -47,6 +49,7 @@ export default {
         {story()}
       </Screener>
     ),
+    story => <FluentProvider theme={webLightTheme}>{story()}</FluentProvider>,
   ],
 } as ComponentMeta<typeof AvatarGroup>;
 
