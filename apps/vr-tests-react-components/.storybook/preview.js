@@ -55,6 +55,12 @@ setAddon({
 
 export const parameters = { layout: 'none' };
 
+export const decorators = [
+  /** @type {import("@storybook/csf").DecoratorFunction} */ story => (
+    <FluentProvider theme={webLightTheme}>{story()}</FluentProvider>
+  ),
+];
+
 // For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
 if (typeof window === 'object') {
   /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
