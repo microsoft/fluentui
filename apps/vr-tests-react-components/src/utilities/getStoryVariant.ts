@@ -26,7 +26,7 @@ export const getStoryVariant = (story: ComponentStory<any>, variant: 'RTL' | 'Da
   return {
     ...story,
     render: story,
-    storyName: `${story.storyName} - ${variant}`,
+    storyName: `${story.storyName ?? story.name} - ${variant}`,
     decorators: [decorator],
   };
 };
