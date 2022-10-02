@@ -10,6 +10,7 @@ export const RTL = 'RTL';
  */
 export const getStoryVariant = (story: ComponentStory<any>, variant: 'RTL' | 'Dark Mode' | 'High Contrast') => {
   let decorator;
+  const name = story.name.replace(/([a-z])([A-Z])/g, '$1 $2');
 
   if (variant === RTL) {
     decorator = RTLDecorator;
@@ -26,7 +27,7 @@ export const getStoryVariant = (story: ComponentStory<any>, variant: 'RTL' | 'Da
   return {
     ...story,
     render: story,
-    storyName: `${story.storyName ?? story.name} - ${variant}`,
+    storyName: `${story.storyName ?? name} - ${variant}`,
     decorators: [decorator],
   };
 };
