@@ -8,8 +8,8 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SelectionEvents } from '../../utils/Selection.types';
