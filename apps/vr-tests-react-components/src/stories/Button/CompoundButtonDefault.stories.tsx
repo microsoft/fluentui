@@ -17,9 +17,8 @@ export default {
       <Screener
         steps={new Screener.Steps()
           .snapshot('default', { cropTo: '.testWrapper' })
-          // https://github.com/microsoft/fluentui/issues/21998
-          // .hover('#button-id')
-          // .snapshot('hover', { cropTo: '.testWrapper' })
+          .hover('#button-id')
+          .snapshot('hover', { cropTo: '.testWrapper' })
           .mouseDown('#button-id')
           .snapshot('pressed', { cropTo: '.testWrapper' })
           .end()}
