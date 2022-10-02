@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import Screener from 'screener-storybook/src/screener';
 import {
   AvatarGroup,
@@ -10,6 +9,8 @@ import {
   partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+import { ComponentMeta } from '@storybook/react';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../utilities/index';
 
 const names = [
   'Katri Athokas',
@@ -68,94 +69,69 @@ const AvatarGroupList: React.FC<
   );
 };
 
-// Non-interactive stories
-storiesOf('AvatarGroup Converged', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .addStory('basic', () => <AvatarGroupList />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('layoutStack', () => <AvatarGroupList layout="stack" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory(
-    'layoutPie-1',
-    () => (
-      <div style={{ padding: '10px' }}>
-        <AvatarGroup layout="pie">
-          <AvatarGroupItem name={names[0]} />
-          <AvatarGroupPopover>
-            <AvatarGroupItem name={names[0]} />
-          </AvatarGroupPopover>
-        </AvatarGroup>
-      </div>
+export default {
+  title: 'AvatarGroup Converged',
+  component: AvatarGroup,
+  decorators: [
+    TestWrapperDecorator,
+    story => (
+      <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
     ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'layoutPie-2',
-    () => (
-      <div style={{ padding: '10px' }}>
-        <AvatarGroup layout="pie">
-          <AvatarGroupItem name={names[0]} />
-          <AvatarGroupItem name={names[1]} />
-          <AvatarGroupPopover>
-            <AvatarGroupItem name={names[0]} />
-            <AvatarGroupItem name={names[1]} />
-          </AvatarGroupPopover>
-        </AvatarGroup>
-      </div>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory('layoutPie', () => <AvatarGroupList layout="pie" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('overflowIndicator', () => <AvatarGroupList overflowIndicator="icon" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  });
+  ],
+} as ComponentMeta<typeof AvatarGroup>;
 
-// Interactive stories
-storiesOf('AvatarGroup Converged', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
-      {story()}
-    </Screener>
-  ))
-  .addStory(
-    'overflowContent',
-    () => {
-      const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
-      return (
-        <div style={{ padding: '10px' }}>
-          <AvatarGroup>
-            {inlineItems.map(name => (
-              <AvatarGroupItem key={name} name={name} />
-            ))}
-            <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
-              {overflowItems.map(name => (
-                <AvatarGroupItem key={name} name={name} />
-              ))}
-            </AvatarGroupPopover>
-          </AvatarGroup>
-        </div>
-      );
-    },
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  );
+export const Basic = () => <AvatarGroupList />;
+Basic.storyName = 'basic';
+
+export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
+
+export const LayoutStack = () => <AvatarGroupList layout="stack" />;
+LayoutStack.storyName = 'layoutStack';
+
+export const LayoutStackHighContrast = getStoryVariant(LayoutStack, HIGH_CONTRAST);
+export const LayoutStackDarkMode = getStoryVariant(LayoutStack, DARK_MODE);
+
+export const LayoutPie1 = () => (
+  <div style={{ padding: '10px' }}>
+    <AvatarGroup layout="pie">
+      <AvatarGroupItem name={names[0]} />
+      <AvatarGroupPopover>
+        <AvatarGroupItem name={names[0]} />
+      </AvatarGroupPopover>
+    </AvatarGroup>
+  </div>
+);
+LayoutPie1.storyName = 'layoutPie-1';
+
+export const LayoutPie1HighContrast = getStoryVariant(LayoutPie1, HIGH_CONTRAST);
+export const LayoutPie1DarkMode = getStoryVariant(LayoutPie1, DARK_MODE);
+
+export const LayoutPie2 = () => (
+  <div style={{ padding: '10px' }}>
+    <AvatarGroup layout="pie">
+      <AvatarGroupItem name={names[0]} />
+      <AvatarGroupItem name={names[1]} />
+      <AvatarGroupPopover>
+        <AvatarGroupItem name={names[0]} />
+        <AvatarGroupItem name={names[1]} />
+      </AvatarGroupPopover>
+    </AvatarGroup>
+  </div>
+);
+LayoutPie2.storyName = 'layoutPie-2';
+
+export const LayoutPie2HighContrast = getStoryVariant(LayoutPie2, HIGH_CONTRAST);
+export const LayoutPie2DarkMode = getStoryVariant(LayoutPie2, DARK_MODE);
+
+export const LayoutPie = () => <AvatarGroupList layout="pie" />;
+LayoutPie.storyName = 'layoutPie';
+
+export const LayoutPieHighContrast = getStoryVariant(LayoutPie, HIGH_CONTRAST);
+export const LayoutPieDarkMode = getStoryVariant(LayoutPie, DARK_MODE);
+
+export const OverflowIndicator = () => <AvatarGroupList overflowIndicator="icon" />;
+OverflowIndicator.storyName = 'overflowIndicator';
+
+export const OverflowIndicatorHighContrast = getStoryVariant(OverflowIndicator, HIGH_CONTRAST);
+export const OverflowIndicatorDarkMode = getStoryVariant(OverflowIndicator, DARK_MODE);
