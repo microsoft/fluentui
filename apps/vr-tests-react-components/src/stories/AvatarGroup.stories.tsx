@@ -89,8 +89,8 @@ export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 export const LayoutStack = () => <AvatarGroupList layout="stack" />;
 LayoutStack.storyName = 'layoutStack';
 
-export const LayoutStackHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
-export const LayoutStackDarkMode = getStoryVariant(Basic, DARK_MODE);
+export const LayoutStackHighContrast = getStoryVariant(LayoutStack, HIGH_CONTRAST);
+export const LayoutStackDarkMode = getStoryVariant(LayoutStack, DARK_MODE);
 
 export const LayoutPie1 = () => (
   <div style={{ padding: '10px' }}>
@@ -104,8 +104,8 @@ export const LayoutPie1 = () => (
 );
 LayoutPie1.storyName = 'layoutPie-1';
 
-export const LayoutPie1HighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
-export const LayoutPie1DarkMode = getStoryVariant(Basic, DARK_MODE);
+export const LayoutPie1HighContrast = getStoryVariant(LayoutPie1, HIGH_CONTRAST);
+export const LayoutPie1DarkMode = getStoryVariant(LayoutPie1, DARK_MODE);
 
 export const LayoutPie2 = () => (
   <div style={{ padding: '10px' }}>
@@ -121,17 +121,17 @@ export const LayoutPie2 = () => (
 );
 LayoutPie2.storyName = 'layoutPie-2';
 
-export const LayoutPie2HighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
-export const LayoutPie2DarkMode = getStoryVariant(Basic, DARK_MODE);
+export const LayoutPie2HighContrast = getStoryVariant(LayoutPie2, HIGH_CONTRAST);
+export const LayoutPie2DarkMode = getStoryVariant(LayoutPie2, DARK_MODE);
 
 export const LayoutPie = () => <AvatarGroupList layout="pie" />;
 LayoutPie.storyName = 'layoutPie';
 
-export const LayoutPieHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
-export const LayoutPieDarkMode = getStoryVariant(Basic, DARK_MODE);
+export const LayoutPieHighContrast = getStoryVariant(LayoutPie, HIGH_CONTRAST);
+export const LayoutPieDarkMode = getStoryVariant(LayoutPie, DARK_MODE);
 
 export const OverflowIndicator = () => <AvatarGroupList overflowIndicator="icon" />;
 OverflowIndicator.storyName = 'overflowIndicator';
 
-export const OverflowIndicatorHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
-export const OverflowIndicatorDarkMode = getStoryVariant(Basic, DARK_MODE);
+export const OverflowIndicatorHighContrast = getStoryVariant(OverflowIndicator, HIGH_CONTRAST);
+export const OverflowIndicatorDarkMode = getStoryVariant(OverflowIndicator, DARK_MODE);
