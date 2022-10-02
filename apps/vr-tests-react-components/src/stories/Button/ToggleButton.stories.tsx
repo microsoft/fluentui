@@ -33,8 +33,8 @@ export default {
 export const Default = () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>;
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
-export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
+export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 
 export const Circular = () => (
   <ToggleButton id={buttonId} shape="circular">

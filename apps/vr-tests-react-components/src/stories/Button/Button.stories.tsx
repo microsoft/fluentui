@@ -33,8 +33,8 @@ export default {
 export const Default = () => <Button id={buttonId}>Hello, world</Button>;
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
-export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
+export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 
 export const Circular = () => (
   <Button id={buttonId} shape="circular">
@@ -187,7 +187,7 @@ export const WithIconAfterContent = () => (
 
 WithIconAfterContent.storyName = 'With icon after content';
 
-export const WithIconAfterContentRTL = getStoryVariant(WithIconAfterContent, RTL);
+// export const WithIconAfterContentRTL = getStoryVariant(WithIconAfterContent, RTL);
 
 export const IconOnly = () => <Button id={buttonId} icon={<CalendarMonth />} />;
 
