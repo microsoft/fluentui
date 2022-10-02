@@ -1,5 +1,4 @@
 import { ComponentStory } from '@storybook/react';
-import { DecoratorFunction } from '@storybook/csf';
 import { DarkModeDecorator, HighContrastDecorator, RTLDecorator } from './StoryDecorators';
 
 export const DARK_MODE = 'Dark Mode';
@@ -9,11 +8,7 @@ export const RTL = 'RTL';
 /**
  * Helper function that returns a RTL, Dark Mode or High Contrast variant of an existing story.
  */
-export const getStoryVariant = (
-  story: ComponentStory<any>,
-  variant: 'RTL' | 'Dark Mode' | 'High Contrast',
-  decorators: DecoratorFunction[],
-) => {
+export const getStoryVariant = (story: ComponentStory<any>, variant: 'RTL' | 'Dark Mode' | 'High Contrast') => {
   let decorator;
 
   if (variant === RTL) {
@@ -32,6 +27,6 @@ export const getStoryVariant = (
     ...story,
     render: story,
     storyName: `${story.storyName} - ${variant}`,
-    decorators: [...decorators, decorator],
+    decorators: [decorator],
   };
 };
