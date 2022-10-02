@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: Add migration guide.",
+  "packageName": "@fluentui/react-persona",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
