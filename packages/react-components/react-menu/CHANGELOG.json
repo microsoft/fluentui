@@ -2,6 +2,47 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:37 GMT",
+      "tag": "@fluentui/react-menu_v9.2.2",
+      "version": "9.2.2",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f91303a8d285fd52e29c7bdfcc8cc29c3951db48",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b0b7f99bbbb05b0bd136432983a74fea252c7163",
+            "comment": "fix: Menu triggers no longer take focus when they are mounted"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-aria to v9.2.1",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.0.6",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.1.2",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Sep 2022 10:32:30 GMT",
       "tag": "@fluentui/react-menu_v9.2.1",
       "version": "9.2.1",

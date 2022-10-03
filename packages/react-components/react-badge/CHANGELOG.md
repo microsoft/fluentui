@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.6..@fluentui/react-badge_v9.0.7)
+
+### Patches
+
+- fix: CounterBadge now always renders its children if provided ([PR #24916](https://github.com/microsoft/fluentui/pull/24916) by behowell@microsoft.com)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.6)
 

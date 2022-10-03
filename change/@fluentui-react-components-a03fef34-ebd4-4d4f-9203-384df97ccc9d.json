@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor: normalize relative import for unstable package.json",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 23 Sep 2022 10:32:29 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.4.0)
+
+Mon, 03 Oct 2022 22:24:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.3.2..@fluentui/react-components_v9.4.0)
+
+### Minor changes
+
+- `@fluentui/react-avatar`
+  - feat: Implement avatar context for slot overrides ([PR #24807](https://github.com/microsoft/fluentui/pull/24807) by lingfangao@hotmail.com)
+  - feat: Avatar's aria label includes 'active' or 'inactive' when using the active prop ([PR #24901](https://github.com/microsoft/fluentui/pull/24901) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Moving Persona to unstable. ([PR #25008](https://github.com/microsoft/fluentui/pull/25008) by esteban.230@hotmail.com)
+- `@fluentui/react-input`
+  - chore: Deprecating filled with shadow appearance variant. ([PR #24900](https://github.com/microsoft/fluentui/pull/24900) by esteban.230@hotmail.com)
+- `@fluentui/react-persona`
+  - feat: Publishing package. ([PR #25008](https://github.com/microsoft/fluentui/pull/25008) by esteban.230@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: user defined tabIndex should prevail aria-button defined ([PR #24962](https://github.com/microsoft/fluentui/pull/24962) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-avatar`
+  - fix: Make AvatarGroupPopover's focus indicator the same for all layouts. ([PR #25006](https://github.com/microsoft/fluentui/pull/25006) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - fix: CounterBadge now always renders its children if provided ([PR #24916](https://github.com/microsoft/fluentui/pull/24916) by behowell@microsoft.com)
+- `@fluentui/react-checkbox`
+  - fix: Checkbox's label shouldn't have a pointer cursor when disabled ([PR #25018](https://github.com/microsoft/fluentui/pull/25018) by behowell@microsoft.com)
+  - fix: Making the hidden input only cover the indicator and not also the label. ([PR #24638](https://github.com/microsoft/fluentui/pull/24638) by makotom@microsoft.com)
+- `@fluentui/react-components`
+  - feat: exports DialogContent as unstable ([PR #24943](https://github.com/microsoft/fluentui/pull/24943) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - fix: Menu triggers no longer take focus when they are mounted ([PR #25016](https://github.com/microsoft/fluentui/pull/25016) by behowell@microsoft.com)
+- `@fluentui/react-persona`
+  - docs: Add migration guide. ([PR #25022](https://github.com/microsoft/fluentui/pull/25022) by esteban.230@hotmail.com)
+- `@fluentui/react-popover`
+  - fix: update popover role to be note when it does not trap focus ([PR #24897](https://github.com/microsoft/fluentui/pull/24897) by sarah.higley@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: Making the hidden input only cover the indicator and not also the label. ([PR #25025](https://github.com/microsoft/fluentui/pull/25025) by humberto_makoto@hotmail.com)
+- `@fluentui/react-switch`
+  - fix: Making the hidden input only cover the indicator and not also the label. ([PR #24638](https://github.com/microsoft/fluentui/pull/24638) by makotom@microsoft.com)
+  - fix: Switch's label shouldn't have a pointer cursor when disabled ([PR #25026](https://github.com/microsoft/fluentui/pull/25026) by behowell@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: focus outline selectors are data attributes ([PR #24994](https://github.com/microsoft/fluentui/pull/24994) by lingfangao@hotmail.com)
+- `@fluentui/react-textarea`
+  - chore: Deprecating filled with shadow appearance variant. ([PR #24900](https://github.com/microsoft/fluentui/pull/24900) by esteban.230@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-dialog`
+  - feat: removes DialogSurface native dialog support  ([PR #24979](https://github.com/microsoft/fluentui/pull/24979) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-field`
+  - fix: Remove SwitchField's labelPosition prop, as it has no effect ([PR #24876](https://github.com/microsoft/fluentui/pull/24876) by behowell@microsoft.com)
+- `@fluentui/react-table`
+  - feat: `noNativeElements` renders a flex layout ([PR #24913](https://github.com/microsoft/fluentui/pull/24913) by lingfangao@hotmail.com)
+  - feat: Use AvatarContext to override avatar size ([PR #24807](https://github.com/microsoft/fluentui/pull/24807) by lingfangao@hotmail.com)
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.2)
 
