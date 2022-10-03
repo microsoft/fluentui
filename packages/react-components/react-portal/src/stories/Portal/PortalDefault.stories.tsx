@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
-
-import { Portal } from '@fluentui/react-portal';
+import { Portal, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
