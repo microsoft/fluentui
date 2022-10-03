@@ -335,6 +335,11 @@ export interface ICartesianChartProps {
   timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
 
   /**
+   * The prop used to define a custom datetime formatter for date axis.
+   */
+  customDateTimeFormatter?: (dateTime: Date) => string;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
