@@ -103,7 +103,7 @@ module.exports = (plop: NodePlopAPI) => {
             stdio: 'inherit',
           });
 
-          execSync(`yarn workspace ${data.packageNpmName} build:local`, {
+          execSync(`yarn workspace ${data.packageNpmName} generate-api`, {
             cwd: root,
             stdio: 'inherit',
           });

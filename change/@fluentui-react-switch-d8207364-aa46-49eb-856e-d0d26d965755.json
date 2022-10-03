@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Switch's label shouldn't have a pointer cursor when disabled",
+  "packageName": "@fluentui/react-switch",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

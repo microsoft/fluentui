@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.2.0",
+    "@fluentui/react-avatar": "^9.1.1",
     "@fluentui/react-checkbox": "^9.0.6",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-tabster": "^9.1.1",

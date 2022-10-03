@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: add export for signal.scss",
-  "packageName": "@fluentui/react-experiments",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
