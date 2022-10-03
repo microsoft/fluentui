@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import { IStackProps, IStackTokens, classNamesFunction, IStackItemProps } from '@fluentui/react';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { getChildrenGapStyles, IStackShimStyles } from '../../stackUtils';
+import { getChildrenGapStyles, StackShimStyles } from '../../stackUtils';
 
 const stackClassNames = {
   root: 'ms-Stack',
   inner: 'ms-Stack-inner',
 };
 
-const getClassNames = classNamesFunction<IStackProps, IStackShimStyles>();
+const getClassNames = classNamesFunction<IStackProps, StackShimStyles>();
 
 const useStackStyles = makeStyles({
   root: {

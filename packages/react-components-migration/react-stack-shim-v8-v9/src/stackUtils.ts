@@ -112,7 +112,7 @@ export const parsePadding = (padding: number | string | undefined, theme: ITheme
   });
 };
 
-export interface IStackShimStyles {
+export interface StackShimStyles {
   root?: IStyle;
   inner?: IStyle;
 }
@@ -120,7 +120,7 @@ export interface IStackShimStyles {
  *
  * getStyles function for Stack.tokens.childrenGap prop styling
  */
-export const getChildrenGapStyles = (props: IStackProps): IStackShimStyles => {
+export const getChildrenGapStyles = (props: IStackProps): StackShimStyles => {
   const theme = getTheme();
 
   const { horizontal, reversed } = props;
