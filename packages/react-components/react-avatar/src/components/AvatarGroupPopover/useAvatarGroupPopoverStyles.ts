@@ -20,12 +20,8 @@ export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlot
 const useContentStyles = makeStyles({
   base: {
     listStyleType: 'none',
-    maxHeight: '220px',
     ...shorthands.margin('0'),
-    minHeight: '80px',
-    ...shorthands.overflow('hidden', 'scroll'),
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    width: '220px',
+    ...shorthands.padding('0'),
   },
 });
 
@@ -34,7 +30,11 @@ const useContentStyles = makeStyles({
  */
 const usePopoverSurfaceStyles = makeStyles({
   base: {
-    ...shorthands.padding(0),
+    maxHeight: '220px',
+    minHeight: '80px',
+    ...shorthands.overflow('hidden', 'scroll'),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    width: '220px',
   },
 });
 
@@ -67,16 +67,7 @@ const useTriggerButtonStyles = makeStyles({
     color: 'transparent',
   },
 
-  // These styles match the default button styles.
   focusIndicator: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor('transparent'),
-    outlineColor: tokens.colorStrokeFocus2,
-    outlineWidth: tokens.strokeWidthThick,
-    outlineStyle: 'solid',
-  }),
-
-  // This custom focus indicator is required for the pie layout due to the clip-path applied to the root
-  pieFocusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
   }),
 
@@ -179,8 +170,7 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
     sizeStyles[size],
     triggerButtonStyles.base,
     layout === 'pie' && triggerButtonStyles.pie,
-    layout === 'pie' && triggerButtonStyles.pieFocusIndicator,
-    layout !== 'pie' && triggerButtonStyles.focusIndicator,
+    triggerButtonStyles.focusIndicator,
     layout !== 'pie' && triggerButtonStyles.states,
     layout !== 'pie' && popoverOpen && triggerButtonStyles.selected,
     ...triggerButtonClasses,

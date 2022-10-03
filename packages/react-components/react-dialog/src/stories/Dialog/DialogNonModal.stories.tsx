@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody } from '@fluentui/react-dialog';
+import { Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody, DialogContent } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
 import story from './DialogNonModal.md';
 
@@ -10,11 +10,13 @@ export const NonModal = () => {
         <Button>Open non-modal dialog</Button>
       </DialogTrigger>
       <DialogSurface>
-        <DialogTitle>Non-modal dialog title</DialogTitle>
         <DialogBody>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, explicabo repudiandae impedit doloribus
-          laborum quidem maxime dolores perspiciatis non ipsam, nostrum commodi quis autem sequi, incidunt cum?
-          Consequuntur, repellendus nostrum?
+          <DialogTitle>Non-modal dialog title</DialogTitle>
+          <DialogContent>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, explicabo repudiandae impedit doloribus
+            laborum quidem maxime dolores perspiciatis non ipsam, nostrum commodi quis autem sequi, incidunt cum?
+            Consequuntur, repellendus nostrum?
+          </DialogContent>
         </DialogBody>
       </DialogSurface>
     </Dialog>

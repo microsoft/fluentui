@@ -7,15 +7,12 @@
 /// <reference types="react" />
 
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { AvatarSizes } from '@fluentui/react-avatar';
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Provider } from 'react';
-import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -44,13 +41,13 @@ export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
 export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSX.Element;
 
 // @public
+export const renderTableCellLayout_unstable: (state: TableCellLayoutState, contextValues: TableCellLayoutContextValues) => JSX.Element;
+
+// @public
 export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Element;
 
 // @public
 export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSX.Element;
-
-// @public
-export const renderTablePrimaryCell_unstable: (state: TablePrimaryCellState) => JSX.Element;
 
 // @public
 export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
@@ -68,29 +65,7 @@ export interface RowState<TItem> {
 }
 
 // @public (undocumented)
-export interface SelectionState {
-    allRowsSelected: boolean;
-    clearRows: () => void;
-    deselectRow: (rowId: RowId) => void;
-    isRowSelected: (rowId: RowId) => boolean;
-    selectedRows: RowId[];
-    selectRow: (rowId: RowId) => void;
-    someRowsSelected: boolean;
-    toggleAllRows: () => void;
-    toggleRow: (rowId: RowId) => void;
-}
-
-// @public (undocumented)
 export type SortDirection = 'ascending' | 'descending';
-
-// @public (undocumented)
-export interface SortState {
-    getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
-    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
-    sortColumn: ColumnId | undefined;
-    sortDirection: SortDirection;
-    toggleColumnSort: (columnId: ColumnId) => void;
-}
 
 // @public
 export const Table: ForwardRefComponent<TableProps>;
@@ -113,7 +88,7 @@ export type TableBodySlots = {
 };
 
 // @public
-export type TableBodyState = ComponentState<TableBodySlots>;
+export type TableBodyState = ComponentState<TableBodySlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public
 export const TableCell: ForwardRefComponent<TableCellProps>;
@@ -125,7 +100,9 @@ export const TableCellActions: ForwardRefComponent<TableCellActionsProps>;
 export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots>;
 
 // @public
-export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {};
+export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {
+    visible?: boolean;
+};
 
 // @public (undocumented)
 export type TableCellActionsSlots = {
@@ -133,7 +110,7 @@ export type TableCellActionsSlots = {
 };
 
 // @public
-export type TableCellActionsState = ComponentState<TableCellActionsSlots>;
+export type TableCellActionsState = ComponentState<TableCellActionsSlots> & Pick<Required<TableCellActionsProps>, 'visible'>;
 
 // @public (undocumented)
 export const tableCellClassName = "fui-TableCell";
@@ -142,16 +119,40 @@ export const tableCellClassName = "fui-TableCell";
 export const tableCellClassNames: SlotClassNames<TableCellSlots>;
 
 // @public
+export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
+
+// @public (undocumented)
+export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
+
+// @public
+export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
+    appearance?: 'primary';
+};
+
+// @public (undocumented)
+export type TableCellLayoutSlots = {
+    root: Slot<'div'>;
+    media: Slot<'span'>;
+    main: Slot<'span'>;
+    description: Slot<'span'>;
+    wrapper: Slot<'div'>;
+};
+
+// @public
+export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'> & {
+    avatarSize: AvatarSizes | undefined;
+};
+
+// @public
 export type TableCellProps = ComponentProps<TableCellSlots> & {};
 
 // @public (undocumented)
 export type TableCellSlots = {
     root: Slot<'td', 'div'>;
-    media?: Slot<'span'>;
 };
 
 // @public
-export type TableCellState = ComponentState<TableCellSlots>;
+export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public (undocumented)
 export const tableClassName = "fui-Table";
@@ -160,7 +161,7 @@ export const tableClassName = "fui-Table";
 export const tableClassNames: SlotClassNames<TableSlots>;
 
 // @public (undocumented)
-export const TableContextProvider: Provider<TableContextValue | undefined> & FC<ProviderProps<TableContextValue | undefined>>;
+export const TableContextProvider: React_2.Provider<TableContextValue | undefined>;
 
 // @public (undocumented)
 export type TableContextValue = {
@@ -199,9 +200,7 @@ export type TableHeaderCellSlots = {
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & {
-    sortable: boolean;
-};
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";
@@ -218,35 +217,10 @@ export type TableHeaderSlots = {
 };
 
 // @public
-export type TableHeaderState = ComponentState<TableHeaderSlots>;
+export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public
-export const TablePrimaryCell: ForwardRefComponent<TablePrimaryCellProps>;
-
-// @public (undocumented)
-export const tablePrimaryCellClassNames: SlotClassNames<TablePrimaryCellSlots>;
-
-// @public
-export type TablePrimaryCellProps = ComponentProps<Partial<TablePrimaryCellSlots>> & {};
-
-// @public (undocumented)
-export type TablePrimaryCellSlots = {
-    main: Slot<'span'>;
-    secondary: Slot<'span'>;
-    wrapper: Slot<'div'>;
-} & TableCellSlots;
-
-// @public
-export type TablePrimaryCellState = ComponentState<TablePrimaryCellSlots>;
-
-// @public
-export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue> & {
-    onSortColumnChange?: (e: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, data: {
-        sortState: SortState_2;
-    }) => void;
-    sortState?: SortState_2;
-    defaultSortState?: SortState_2;
-};
+export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
 
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
@@ -266,9 +240,7 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & {
-    size: TableState['size'];
-};
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
@@ -289,12 +261,34 @@ export type TableSelectionCellSlots = {
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<TableCellState, 'media'> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> & Pick<TableContextValue, 'noNativeElements'>;
+
+// @public (undocumented)
+export interface TableSelectionState {
+    allRowsSelected: boolean;
+    clearRows: () => void;
+    deselectRow: (rowId: RowId) => void;
+    isRowSelected: (rowId: RowId) => boolean;
+    selectedRows: RowId[];
+    selectRow: (rowId: RowId) => void;
+    someRowsSelected: boolean;
+    toggleAllRows: () => void;
+    toggleRow: (rowId: RowId) => void;
+}
 
 // @public (undocumented)
 export type TableSlots = {
     root: Slot<'table', 'div'>;
 };
+
+// @public (undocumented)
+export interface TableSortState {
+    getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
+    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
+    sortColumn: ColumnId | undefined;
+    sortDirection: SortDirection;
+    toggleColumnSort: (columnId: ColumnId) => void;
+}
 
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
@@ -321,10 +315,16 @@ export const useTableCellActions_unstable: (props: TableCellActionsProps, ref: R
 export const useTableCellActionsStyles_unstable: (state: TableCellActionsState) => TableCellActionsState;
 
 // @public
+export const useTableCellLayout_unstable: (props: TableCellLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutState;
+
+// @public
+export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) => TableCellLayoutState;
+
+// @public
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
 
 // @public (undocumented)
-export const useTableContext: <T>(selector: ContextSelector<TableContextValue, T>) => T;
+export const useTableContext: () => TableContextValue;
 
 // @public
 export const useTableHeader_unstable: (props: TableHeaderProps, ref: React_2.Ref<HTMLElement>) => TableHeaderState;
@@ -342,21 +342,21 @@ export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHe
 export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
     // (undocumented)
     columns: ColumnDefinition<TItem>[];
+    defaultSelectedRows?: Set<RowId>;
+    defaultSortState?: SortState;
     // (undocumented)
     getRowId?: (item: TItem) => RowId;
     // (undocumented)
     items: TItem[];
+    onSelectionChange?: OnSelectionChangeCallback;
+    onSortChange?: OnSortChangeCallback;
     // (undocumented)
     rowEnhancer?: RowEnhancer<TItem, TRowState>;
+    selectedRows?: Set<RowId>;
     // (undocumented)
     selectionMode?: SelectionMode_2;
+    sortState?: SortState;
 }
-
-// @public
-export const useTablePrimaryCell_unstable: (props: TablePrimaryCellProps, ref: React_2.Ref<HTMLElement>) => TablePrimaryCellState;
-
-// @public
-export const useTablePrimaryCellStyles_unstable: (state: TablePrimaryCellState) => TablePrimaryCellState;
 
 // @public
 export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;

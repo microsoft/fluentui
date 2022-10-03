@@ -1,22 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "es5",
-    "outDir": "lib",
+    "target": "ES2019",
     "module": "commonjs",
-    "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
+    "outDir": "lib",
     "noEmit": true,
+    "jsx": "react",
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
     "experimentalDecorators": true,
     "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
     "preserveConstEnums": true,
-    "skipLibCheck": true,
-    "types": ["webpack-env", "@storybook/react", "screener-storybook"]
+    "types": ["screener-storybook", "node"]
   },
-  "include": ["src"]
+  "include": ["./src", "./.storybook/*", "screener.config.js"]
 }

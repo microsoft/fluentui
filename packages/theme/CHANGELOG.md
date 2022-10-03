@@ -1,8 +1,53 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Mon, 15 Aug 2022 07:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 07:48:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.16)
+
+Fri, 02 Sep 2022 07:48:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.15..@fluentui/theme_v2.6.16)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.1 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+
+## [2.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.15)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.14..@fluentui/theme_v2.6.15)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.0 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+
+## [2.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.14)
+
+Wed, 24 Aug 2022 16:36:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.13..@fluentui/theme_v2.6.14)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
+
+## [2.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.13)
+
+Tue, 23 Aug 2022 07:22:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.12..@fluentui/theme_v2.6.13)
+
+### Patches
+
+- fix: Add React 17 support. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
+
+## [2.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.12)
+
+Thu, 18 Aug 2022 23:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.11..@fluentui/theme_v2.6.12)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.12.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
 
 ## [2.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.11)
 

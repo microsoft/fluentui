@@ -2,6 +2,59 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 07:48:51 GMT",
+      "tag": "@fluentui/utilities_v8.13.1",
+      "version": "8.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "130d5848fa9639db3c7eafcd6845b3e1ee91b1f6",
+            "comment": "fix: Add check for FocusRectsProvider providerRef being undefined"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/utilities_v8.13.0",
+      "version": "8.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665",
+            "comment": "Fix backwards compatibility of Group Selection changes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 23:39:30 GMT",
+      "tag": "@fluentui/utilities_v8.12.0",
+      "version": "8.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84",
+            "comment": "FocusZone: enable focus to be able to bypass hidden elements"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "3ce6e295fa7c514409413e5ce6b812338fd5ad1c",
+            "comment": "fix: Make focus rects visible again in Combobox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Aug 2022 07:39:40 GMT",
       "tag": "@fluentui/utilities_v8.11.0",
       "version": "8.11.0",

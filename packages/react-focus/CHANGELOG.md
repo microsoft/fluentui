@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Mon, 15 Aug 2022 07:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 07:48:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.5)
+
+Fri, 02 Sep 2022 07:48:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.8.4..@fluentui/react-focus_v8.8.5)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.12 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/utilities to v8.13.1 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+
+## [8.8.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.4)
+
+Thu, 01 Sep 2022 07:48:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.8.3..@fluentui/react-focus_v8.8.4)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.11 ([PR #24599](https://github.com/microsoft/fluentui/pull/24599) by beachball)
+
+## [8.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.3)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.8.2..@fluentui/react-focus_v8.8.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.10 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/utilities to v8.13.0 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+
+## [8.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.2)
+
+Wed, 24 Aug 2022 16:36:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.8.1..@fluentui/react-focus_v8.8.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.9 ([PR #24485](https://github.com/microsoft/fluentui/pull/24485) by beachball)
+
+## [8.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.1)
+
+Tue, 23 Aug 2022 07:22:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.8.0..@fluentui/react-focus_v8.8.1)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.8 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+
+## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.0)
+
+Thu, 18 Aug 2022 23:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.7.8..@fluentui/react-focus_v8.8.0)
+
+### Minor changes
+
+- FocusZone: enable focus to be able to bypass hidden elements ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by jspurlin@microsoft.com)
+- Bump @fluentui/style-utilities to v8.7.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/utilities to v8.12.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
 
 ## [8.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.7.8)
 

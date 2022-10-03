@@ -2,6 +2,114 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Fri, 02 Sep 2022 07:48:52 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.8",
+      "version": "8.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "36d43203b60ede2e64c03670b75e37d770f9c1b6",
+            "comment": "Update to latest CDN for filetype icons, and mapping .classifier to the correct icon."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.12",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 07:48:11 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.7",
+      "version": "8.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.11",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.6",
+      "version": "8.7.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.10",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 16:36:04 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.5",
+      "version": "8.7.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "7c7f113c5db25307df478f48612dd0fa77f8e8d4",
+            "comment": "fix: fixes broken publish."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.9",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Aug 2022 07:22:48 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.4",
+      "version": "8.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Add React 17 support."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.8",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 23:39:31 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.3",
+      "version": "8.7.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.7",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Aug 2022 07:39:41 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.7.2",
       "version": "8.7.2",

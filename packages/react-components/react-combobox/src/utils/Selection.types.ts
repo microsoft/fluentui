@@ -14,11 +14,11 @@ export type SelectionProps = {
   multiselect?: boolean;
 
   /* Callback when an option is selected */
-  onSelect?(event: SelectionEvents, data: OnSelectData): void;
+  onOptionSelect?: (event: SelectionEvents, data: OptionOnSelectData) => void;
 
   /**
    * An array of selected option keys.
-   * Use this with `onSelect` to directly control the selected option(s)
+   * Use this with `onOptionSelect` to directly control the selected option(s)
    */
   selectedOptions?: string[];
 };
@@ -33,12 +33,12 @@ export type SelectionValue = {
 };
 
 /*
- * Data for the onSelect callback.
+ * Data for the onOptionSelect callback.
  * `optionValue` will be undefined if the multiple options are modified at once.
  */
-export type OnSelectData = { optionValue: string | undefined; selectedOptions: string[] };
+export type OptionOnSelectData = { optionValue: string | undefined; selectedOptions: string[] };
 
-/* Possible event types for onSelect */
+/* Possible event types for onOptionSelect */
 export type SelectionEvents =
   | React.ChangeEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>

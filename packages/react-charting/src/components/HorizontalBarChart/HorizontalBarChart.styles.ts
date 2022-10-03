@@ -32,7 +32,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '5px',
+      marginBottom: '3px',
     },
     chartDataText: {
       fontWeight: FontWeights.bold,

@@ -6,6 +6,7 @@
 >
 > import {
 >  Dialog,
+>  DialogContent,
 >  DialogBody,
 >  DialogTitle,
 >  DialogSurface,

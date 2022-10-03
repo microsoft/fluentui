@@ -200,7 +200,7 @@ const defaultJSDoc: JSDoc = {
   tags: {},
 };
 
-const defaultPropFilter = (prop, component) => {
+const defaultPropFilter: PropFilter = (prop, component) => {
   // skip children property in case it has no custom documentation
   if (prop.name === 'children' && prop.description.length === 0) {
     return false;
@@ -208,7 +208,7 @@ const defaultPropFilter = (prop, component) => {
   return true;
 };
 
-const getComponentSymbolOfType = (type: MaybeIntersectType) => {
+const getComponentSymbolOfType = (type: MaybeIntersectType): ts.Symbol | undefined => {
   if (type.symbol) {
     const symbolName = type.symbol.getName();
     if (reactComponentSymbolNames.indexOf(symbolName) !== -1) {
@@ -357,7 +357,8 @@ export class Parser {
     return type.type === 'StringLiteral' || type.type === 'NumberLiteral' || type.type === 'BooleanLiteral';
   }
 
-  private customResolveTypeOverride(typeNode, name): ResolvedType | undefined {
+  private customResolveTypeOverride(typeNode: ts.Type, name: string): ResolvedType | undefined {
+    // @ts-expect-error ts.Type has no parent property ? ts definition BUG ?
     if (typeNode?.symbol?.parent?.getEscapedName?.() === 'React') {
       const symbolName = typeNode.symbol.getEscapedName?.();
       if (symbolName === 'ReactElement') {
@@ -397,7 +398,7 @@ export class Parser {
     return undefined;
   }
 
-  private resolveType(typeNode, depth = 0): ResolvedType {
+  private resolveType(typeNode: ts.Type, depth = 0): ResolvedType {
     const name = this.checker.typeToString(typeNode);
 
     const customType = this.customResolveTypeOverride(typeNode, name);
@@ -447,13 +448,21 @@ export class Parser {
       [TypeFlags.Number]: () => ({ type: 'number', name }),
       [TypeFlags.Boolean]: () => ({ type: 'boolean', name }),
       [TypeFlags.Enum]: () => ({ type: 'enum', name }), // FIXME
-      [TypeFlags.StringLiteral]: () => ({ type: 'StringLiteral', name, value: typeNode.value }),
-      [TypeFlags.NumberLiteral]: () => ({ type: 'NumberLiteral', name, value: typeNode.value }),
+      [TypeFlags.StringLiteral]: () => ({
+        type: 'StringLiteral',
+        name,
+        value: (typeNode as ts.StringLiteralType).value,
+      }),
+      [TypeFlags.NumberLiteral]: () => ({
+        type: 'NumberLiteral',
+        name,
+        value: (typeNode as ts.NumberLiteralType).value,
+      }),
       [TypeFlags.BooleanLiteral]: () => ({ type: 'BooleanLiteral', name, value: name === 'true' }),
     };
 
-    if (typeMap[typeNode.flags]) {
-      return typeMap[typeNode.flags]();
+    if (typeMap[typeNode.flags as keyof typeof typeMap]) {
+      return typeMap[typeNode.flags as keyof typeof typeMap]();
     } else if (typeNode.isIntersection()) {
       return {
         type: 'intersection',
@@ -461,12 +470,12 @@ export class Parser {
         name,
       } as RTIntersection;
     } else if (typeNode.isUnion()) {
-      const subTypes: any[] = typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1));
+      const subTypes = typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1));
       const allSubTypesAreLiterals = subTypes.filter(Parser.isLiteral).length === subTypes.length;
 
       // Convert union to enum
       if (allSubTypesAreLiterals) {
-        return subTypes.map(st => ({ name: 'literal', value: st.value, label: st.name })) as any;
+        return (subTypes as RTLiteral[]).map(st => ({ name: 'literal', value: st.value, label: st.name })) as any;
       }
 
       // Merge boolean literals to boolean type
@@ -514,7 +523,7 @@ export class Parser {
 
       const jsDocComment = this.findDocComment(prop);
 
-      let defaultValue: any = null;
+      let defaultValue = null;
 
       if (defaultProps[propName] !== undefined) {
         defaultValue = { value: defaultProps[propName] };

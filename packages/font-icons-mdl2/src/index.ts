@@ -88,6 +88,6 @@ export function initializeIcons(
 }
 
 // eslint-disable-next-line deprecation/deprecation
-export { IconNames } from './IconNames';
+export { IconNames, IconNamesInput } from './IconNames';
 
 import './version';

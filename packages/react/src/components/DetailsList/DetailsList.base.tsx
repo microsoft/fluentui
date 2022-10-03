@@ -34,7 +34,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction, getId } from '@fluentui/utilities';
+import { composeComponentAs, composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
 import type { IRenderFunction } from '../../Utilities';
 import type {
@@ -319,7 +319,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     }
   }, [columnReorderOptions, onColumnDragEnd]);
 
-  const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+  const rowCount =
+    (isHeaderVisible ? 1 : 0) +
+    (props.onRenderDetailsFooter ? 1 : 0) +
+    GetGroupCount(groups) +
+    (items ? items.length : 0);
   const colCount =
     (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) +
     (adjustedColumns ? adjustedColumns.length : 0) +
@@ -597,8 +601,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 
+  const FinalGroupedList =
+    groups && groupProps?.groupedListAs ? composeComponentAs(groupProps.groupedListAs, GroupedList) : GroupedList;
+
   const list = groups ? (
-    <GroupedList
+    <FinalGroupedList
       focusZoneProps={focusZoneInnerProps}
       componentRef={groupedListRef}
       groups={groups}
@@ -680,7 +687,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         aria-label={ariaLabelForGrid || ariaLabel}
         aria-rowcount={isPlaceholderData ? 0 : rowCount}
         aria-colcount={colCount}
-        aria-readonly="true"
         aria-busy={isPlaceholderData}
       >
         <div onKeyDown={onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>

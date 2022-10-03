@@ -144,7 +144,6 @@ const useRootStyles = makeStyles({
     '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
-    boxShadow: tokens.shadow2, // optional shadow for filled appearances
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
   },
   filledInteractive: {
@@ -159,6 +158,14 @@ const useRootStyles = makeStyles({
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
+  },
+  'filled-darker-shadow': {
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: tokens.shadow2,
+  },
+  'filled-lighter-shadow': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow2,
   },
   disabled: {
     cursor: 'not-allowed',

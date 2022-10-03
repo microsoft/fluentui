@@ -37,10 +37,19 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
           menu: [
             {
               key: 'play',
+              id: 'ToolbarExampleMenuWithSubmenu_Play',
               content: 'Play',
               icon: <PlayIcon />,
               menu: {
                 items: ['Play with audio', { content: 'Play with video', key: 'playVideo', menu: ['HD', 'Full HD'] }],
+              },
+            },
+            {
+              key: 'appearance',
+              id: 'ToolbarExampleMenuWithSubmenu_Appearance',
+              content: 'Appearance',
+              menu: {
+                items: ['Centered Layout', 'Zen', 'Zoom In', 'Zoom Out'],
               },
             },
             { key: 'pause', content: 'Pause', icon: <PauseIcon /> },

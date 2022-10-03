@@ -77,14 +77,16 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
     content: resolveShorthand(props.content, {
       required: true,
       defaultProps: {
-        'aria-label': 'Overflow',
         children: children,
         role: 'list',
-        tabIndex: 0,
       },
     }),
     popoverSurface: resolveShorthand(props.popoverSurface, {
       required: true,
+      defaultProps: {
+        'aria-label': 'Overflow',
+        tabIndex: 0,
+      },
     }),
     tooltip: resolveShorthand(props.tooltip, {
       required: true,

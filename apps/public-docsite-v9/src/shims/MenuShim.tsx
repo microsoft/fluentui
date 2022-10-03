@@ -15,6 +15,7 @@ import {
   MenuItemCheckbox,
   MenuItemCheckboxProps,
   MenuProps,
+  MenuDividerProps,
 } from '@fluentui/react-components';
 
 export const shimMenuProps = (props: IContextualMenuProps): Partial<MenuProps> => {
@@ -54,7 +55,7 @@ const shimMenuHeaderProps = (props: IContextualMenuItem): MenuGroupHeaderProps =
 export const MenuItemShim = (props: IContextualMenuItem) => {
   if (props.itemType === ContextualMenuItemType.Divider) {
     const shimProps = shimMenuItemProps(props);
-    return <MenuDivider {...shimProps} />;
+    return <MenuDivider {...(shimProps as MenuDividerProps)} />;
   }
 
   if (props.itemType === ContextualMenuItemType.Section) {

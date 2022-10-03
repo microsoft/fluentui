@@ -32,9 +32,12 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     clearSelection,
     getIndexOfId,
     getOptionsMatchingValue,
+    hasFocus,
+    open,
     selectOption,
     selectedOptions,
     setActiveOption,
+    setFocusVisible,
     setOpen,
     setValue,
     value,
@@ -47,14 +50,17 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     excludedPropNames: ['children', 'size'],
   });
 
+  const rootRef = React.useRef<HTMLDivElement>(null);
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
-  // track focused state to conditionally render collapsed listbox
-  const [hasFocus, setHasFocus] = React.useState(false);
-  const onTriggerFocus = () => {
-    setHasFocus(true);
-  };
+  // calculate listbox width style based on trigger width
+  const [popupWidth, setPopupWidth] = React.useState<string>();
+  React.useEffect(() => {
+    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
+    setPopupWidth(width);
+  }, [open]);
 
+  // handle input type-to-select
   const getSearchString = (inputValue: string): string => {
     // if there are commas in the value string, take the text after the last comma
     const searchString = inputValue.split(',').pop();
@@ -102,8 +108,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       // reset typed value when the input loses focus while collapsed, unless freeform is true
       setValue(undefined);
     }
-
-    setHasFocus(false);
   };
 
   baseState.setOpen = (ev, newState: boolean) => {
@@ -124,6 +128,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     const matchingOption = getOptionFromInput(inputValue);
     setActiveOption(matchingOption);
 
+    setFocusVisible(true);
+
     // clear selection for single-select if the input value no longer matches the selection
     if (
       !multiselect &&
@@ -136,7 +142,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   // resolve input and listbox slot props
   let triggerSlot: Slot<'input'>;
-  let listboxSlot: Slot<typeof Listbox>;
+  let listboxSlot: Slot<typeof Listbox> | undefined;
 
   triggerSlot = resolveShorthand(props.input, {
     required: true,
@@ -150,15 +156,21 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
-  triggerSlot.onFocus = mergeCallbacks(triggerSlot.onFocus, onTriggerFocus);
 
-  listboxSlot = resolveShorthand(props.listbox, {
-    required: true,
-    defaultProps: { children: props.children },
-  });
+  // only resolve listbox slot if needed
+  listboxSlot =
+    open || hasFocus
+      ? resolveShorthand(props.listbox, {
+          required: true,
+          defaultProps: {
+            children: props.children,
+            style: { width: popupWidth },
+          },
+        })
+      : undefined;
 
-  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerSlot, listboxSlot);
-  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
+  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
 
   const state: ComboboxState = {
     components: {
@@ -182,9 +194,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     ...baseState,
-    hasFocus,
     setOpen,
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};

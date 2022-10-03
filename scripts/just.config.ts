@@ -5,7 +5,7 @@ import fs from 'fs';
 
 import { babel } from './tasks/babel';
 import { clean } from './tasks/clean';
-import { copy } from './tasks/copy';
+import { copy, copyCompiled } from './tasks/copy';
 import { jest as jestTask, jestWatch } from './tasks/jest';
 import { sass } from './tasks/sass';
 import { ts } from './tasks/ts';
@@ -19,7 +19,6 @@ import { checkForModifiedFiles } from './tasks/check-for-modified-files';
 import { generateVersionFiles } from './tasks/generate-version-files';
 import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
-import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 import { isConvergedPackage } from './monorepo';
 import { getJustArgv } from './tasks/argv';
@@ -50,13 +49,13 @@ export function preset() {
   task('no-op', () => {}).cached();
   task('clean', clean);
   task('copy', copy);
+  task('copy-compiled', copyCompiled);
   task('jest', jestTask);
   task('jest-watch', jestWatch);
   task('sass', sass());
   task('ts:postprocess', postprocessTask());
   task('postprocess:amd', postprocessAmdTask);
-  task('postprocess:commonjs', postprocessCommonjsTask);
-  task('ts:commonjs', series(ts.commonjs, 'postprocess:commonjs'));
+  task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('eslint', eslint);
@@ -91,6 +90,7 @@ export function preset() {
   task('ts', () => {
     return series(
       'ts:compile',
+      condition('copy-compiled', () => isConvergedPackage({ projectType: 'library' })),
       'ts:postprocess',
       condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
     );

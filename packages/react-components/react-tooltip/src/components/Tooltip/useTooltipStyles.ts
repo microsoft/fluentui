@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 
   inverted: {
     backgroundColor: tokens.colorNeutralBackgroundStatic,
-    color: tokens.colorNeutralForegroundInvertedStatic,
+    color: tokens.colorNeutralForegroundStaticInverted,
   },
 
   arrow: createArrowStyles({ arrowHeight }),

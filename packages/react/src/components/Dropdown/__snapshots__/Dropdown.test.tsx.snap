@@ -356,6 +356,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           is-checked
                           is-enabled
                           ms-Dropdown-item
+                          is-multi-select
                           {
                             align-items: center;
                             background-color: #edebe9;
@@ -423,41 +424,32 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           & .ms-Button-flexContainer {
                             width: 100%;
                           }
-                          &:hover:focus {
+                          &:hover {
                             background-color: #edebe9;
                             color: #201f1e;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:focus {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                             background-color: Highlight;
                             border-color: Highlight;
                             color: HighlightText;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover:focus {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
-                          &:focus {
+                          &.is-multi-select:hover {
                             background-color: #edebe9;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                            background-color: Highlight;
-                            border-color: Highlight;
-                            color: HighlightText;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
-                            -ms-high-contrast-adjust: none;
-                            forced-color-adjust: none;
-                          }
-                          &:active {
+                          &:active:hover {
                             background-color: #f3f2f1;
                             color: #201f1e;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover {
                             background-color: Highlight;
                             border-color: Highlight;
                             color: HighlightText;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
@@ -622,6 +614,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         ms-Checkbox
                         is-enabled
                         ms-Dropdown-item
+                        is-multi-select
                         {
                           align-items: center;
                           background-color: transparent;
@@ -674,41 +667,32 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         & .ms-Button-flexContainer {
                           width: 100%;
                         }
-                        &:hover:focus {
+                        &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:focus {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                           background-color: Highlight;
                           border-color: Highlight;
                           color: HighlightText;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover:focus {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
-                        &:focus {
+                        &.is-multi-select:hover {
                           background-color: transparent;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                          background-color: Highlight;
-                          border-color: Highlight;
-                          color: HighlightText;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
-                          -ms-high-contrast-adjust: none;
-                          forced-color-adjust: none;
-                        }
-                        &:active {
-                          background-color: #ffffff;
+                        &:active:hover {
+                          background-color: #edebe9;
                           color: #201f1e;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover {
                           background-color: Highlight;
                           border-color: Highlight;
                           color: HighlightText;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -869,7 +853,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
       class="ms-Dropdown-container"
     >
       <div
-        aria-activedescendant="Dropdown0-list1"
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"
@@ -1224,7 +1207,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
       class="ms-Dropdown-container"
     >
       <div
-        aria-activedescendant="Dropdown0-list1"
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"
@@ -1643,20 +1625,19 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             color: HighlightText;
                           }
                           &:hover {
-                            color: #0078d4;
+                            background-color: #edebe9;
+                            color: #201f1e;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-                            color: Highlight;
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
                           }
                           &:hover .ms-Button-icon {
                             color: #0078d4;
                           }
-                          &:focus {
-                            background-color: #edebe9;
-                          }
                           &:active {
-                            background-color: #f3f2f1;
-                            color: #201f1e;
+                            color: #000000;
                           }
                           &:active .ms-Button-icon {
                             color: #004578;
@@ -1664,34 +1645,23 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           & .ms-Button-flexContainer {
                             width: 100%;
                           }
-                          &:hover:focus {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                          &.is-multi-select:hover {
                             background-color: #edebe9;
+                          }
+                          &:active:hover {
+                            background-color: #f3f2f1;
                             color: #201f1e;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:focus {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover {
                             background-color: Highlight;
                             border-color: Highlight;
                             color: HighlightText;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover:focus {
-                            -ms-high-contrast-adjust: none;
-                            forced-color-adjust: none;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                            background-color: Highlight;
-                            border-color: Highlight;
-                            color: HighlightText;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
-                            -ms-high-contrast-adjust: none;
-                            forced-color-adjust: none;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-                            background-color: Highlight;
-                            border-color: Highlight;
-                            color: HighlightText;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
@@ -1819,20 +1789,19 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           border: none;
                         }
                         &:hover {
-                          color: #0078d4;
+                          background-color: #f3f2f1;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-                          color: Highlight;
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
                         }
-                        &:focus {
-                          background-color: transparent;
-                        }
                         &:active {
-                          background-color: #ffffff;
-                          color: #201f1e;
+                          color: #000000;
                         }
                         &:active .ms-Button-icon {
                           color: #004578;
@@ -1840,34 +1809,23 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         & .ms-Button-flexContainer {
                           width: 100%;
                         }
-                        &:hover:focus {
-                          background-color: #f3f2f1;
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
+                          -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
+                        }
+                        &.is-multi-select:hover {
+                          background-color: transparent;
+                        }
+                        &:active:hover {
+                          background-color: #edebe9;
                           color: #201f1e;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:focus {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover {
                           background-color: Highlight;
                           border-color: Highlight;
                           color: HighlightText;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover:focus {
-                          -ms-high-contrast-adjust: none;
-                          forced-color-adjust: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                          background-color: Highlight;
-                          border-color: Highlight;
-                          color: HighlightText;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
-                          -ms-high-contrast-adjust: none;
-                          forced-color-adjust: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-                          background-color: Highlight;
-                          border-color: Highlight;
-                          color: HighlightText;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }

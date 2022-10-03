@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
+import { makeStyles, shorthands, Spinner, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   // Inverted Spinners are meant as overlays (e.g., over an image or similar)
   // so give it a solid, dark background so it is visible in all themes.
   invertedWrapper: {
-    backgroundColor: '#af33a1',
+    backgroundColor: tokens.colorBrandBackgroundStatic,
   },
 });
 

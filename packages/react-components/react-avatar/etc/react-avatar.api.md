@@ -27,6 +27,15 @@ export const Avatar: ForwardRefComponent<AvatarProps>;
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
+// @internal (undocumented)
+export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefined>;
+
+// @internal (undocumented)
+export interface AvatarContextValue {
+    // (undocumented)
+    size?: AvatarSizes;
+}
+
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 
@@ -141,10 +150,9 @@ export type AvatarSlots = {
 // @public
 export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
+    activeAriaLabelElement?: JSX.Element;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "getInitials" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function getInitials(displayName: string | undefined | null, isRtl: boolean, options?: {
     allowPhoneInitials?: boolean;
@@ -178,6 +186,9 @@ export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState,
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @internal (undocumented)
+export const useAvatarContext: () => AvatarContextValue;
 
 // @public
 export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
