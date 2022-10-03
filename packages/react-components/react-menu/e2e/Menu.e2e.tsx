@@ -115,6 +115,22 @@ describe('MenuTrigger', () => {
       cy.get(menuSelector).should('be.visible').get(menuItemSelector).first().should('be.focused');
     });
   });
+
+  it('should not automatically focus itself when mounted', () => {
+    mount(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+    cy.get(menuTriggerSelector).should('not.be.focused');
+  });
 });
 
 describe('Custom Trigger', () => {
