@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Add react-portal to react-components package",
+  "packageName": "@fluentui/react-components",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
