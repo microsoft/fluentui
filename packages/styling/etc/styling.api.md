@@ -219,9 +219,6 @@ export interface IIconSubsetRecord extends IIconSubset {
     isRegistered?: boolean;
 }
 
-// @public (undocumented)
-export function initializeThemeInCustomizations(): void;
-
 export { InjectionMode }
 
 export { IPalette }
