@@ -254,7 +254,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
-  const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
+  const chatItemProps = useContextSelector(ChatItemContext, v => v);
   const chatProps = useChatContextSelectors({
     density: v => v.density,
     accessibility: v => v.behaviors.message,
@@ -262,6 +262,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
 
   const props = {
     ...inputProps,
+    unstable_layout:
+      inputProps.unstable_layout === undefined ? chatItemProps.unstable_layout : inputProps.unstable_layout,
     density: inputProps.density === undefined ? chatProps.density : inputProps.density,
     accessibility:
       inputProps.accessibility === undefined
@@ -270,7 +272,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   };
   const {
     accessibility,
-    attached = parentAttached,
+    attached = chatItemProps.attached,
     author,
     badge,
     badgePosition,
