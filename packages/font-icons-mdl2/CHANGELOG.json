@@ -2,6 +2,24 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 07:37:49 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "6112cd720c2a15635eae7175f22ec53510dd511c",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:53 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.4.13",
       "version": "8.4.13",
