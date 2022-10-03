@@ -24,8 +24,7 @@ import {
 import { Box, BoxProps } from '../Box/Box';
 import { useChatContextSelectors } from './chatContext';
 import { ChatDensity } from './chatDensity';
-import { ChatItemContextProvider } from './chatItemContext';
-import type { ChatMessageLayout } from './ChatMessage';
+import { ChatItemContextProvider, ChatMessageLayout } from './chatItemContext';
 
 export interface ChatItemSlotClassNames {
   message: string;

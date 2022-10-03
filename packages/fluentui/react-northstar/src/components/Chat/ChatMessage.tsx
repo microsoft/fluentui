@@ -64,7 +64,7 @@ import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
 import { useChatContextSelectors } from './chatContext';
 import { ChatDensity } from './chatDensity';
-import { ChatItemContext } from './chatItemContext';
+import { ChatItemContext, ChatMessageLayout } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
@@ -82,8 +82,6 @@ export interface ChatMessageSlotClassNames {
   reactionGroup: string;
   timestamp: string;
 }
-
-export type ChatMessageLayout = 'default' | 'refresh';
 
 export interface ChatMessageProps
   extends UIComponentProps,

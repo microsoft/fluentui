@@ -4,7 +4,8 @@ import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 import { ChatDensity } from './chatDensity';
-import { ChatMessageLayout, ChatMessageProps } from './ChatMessage';
+import type { ChatMessageLayout } from './chatItemContext';
+import { ChatMessageProps } from './ChatMessage';
 
 export interface ChatMessageContentOwnProps
   extends Pick<ChatMessageProps, 'badgePosition' | 'density' | 'failed' | 'mine' | 'unstable_layout'> {

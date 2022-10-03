@@ -1,5 +1,6 @@
 import { createContext } from '@fluentui/react-bindings';
-import type { ChatMessageLayout } from './ChatMessage';
+
+export type ChatMessageLayout = 'default' | 'refresh';
 
 export type ChatItemContextValue = {
   attached: boolean | 'top' | 'bottom';
