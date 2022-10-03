@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-avatar';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { mergeClasses } from '@griffel/react';
-import { personaClassNames } from './usePersonaStyles';
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { AvatarProps } from '@fluentui/react-avatar';
 import type { PersonaProps, PersonaState } from './Persona.types';
@@ -79,13 +77,6 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
         },
       })
     : undefined;
-
-  // When there's a PresenceBadge and and Avatar, the presence will be displayed by the Avatar. This means
-  // usePersonaStyles will not add persona's presence className. This ensures it will be added to the Avatar's badge.
-  if (props.presence && !presenceOnly) {
-    const avatarBadge = avatar?.badge as PresenceBadgeProps;
-    avatarBadge.className = mergeClasses(avatarBadge.className, personaClassNames.presence);
-  }
 
   return {
     fixed,
