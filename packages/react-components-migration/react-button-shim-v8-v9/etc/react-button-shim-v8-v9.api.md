@@ -10,13 +10,12 @@ import { IButtonProps } from '@fluentui/react';
 import * as React_2 from 'react';
 
 // @public
-export const ActionButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+const ActionButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export { ActionButtonShim }
+export { ActionButtonShim as CommandButtonShim }
 
 // @public (undocumented)
 export const ButtonShim: React_2.ForwardRefExoticComponent<IBaseButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
-
-// @public
-export const CommandButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
 
 // @public
 export const CompoundButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
