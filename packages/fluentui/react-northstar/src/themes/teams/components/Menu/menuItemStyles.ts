@@ -203,10 +203,12 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
 
         ...(underlined && { color: v.underlinedColorHover }),
         ...(!disabled &&
+          !iconOnly &&
+          !primary &&
           vertical && {
             [`&>.${menuItemIconClassName}`]: {
               color: v.subMenuIconColor,
-              ...getIconFillOrOutlineStyles({ outline: false }),
+              ...(v.subMenuIconColor && getIconFillOrOutlineStyles({ outline: false })),
             },
           }),
         ...(!disabled && {
