@@ -361,6 +361,7 @@ function useDismissHandlers(
             on(targetWindow, 'resize', dismissOnResize, true),
             on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
             on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
+            on(targetWindow.document.documentElement, 'contextmenu', dismissOnLostFocus, true),
             on(targetWindow, 'blur', dismissOnTargetWindowBlur, true),
           ];
 
