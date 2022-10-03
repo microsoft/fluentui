@@ -57,5 +57,4 @@ export const menuVariables = (siteVars: any): Partial<MenuVariables> => ({
 
   borderColorFocus: siteVars.colors.black,
   outlineColorFocus: siteVars.accessibleCyan,
-  subMenuIconColor: undefined,
 });

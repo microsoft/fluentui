@@ -204,6 +204,6 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     indicatorColorHover: siteVars.colors.grey[500],
 
     subMenuBorderColor: siteVars.colorScheme.default.borderTransparent,
-    subMenuIconColor: siteVars.colors.brand[600],
+    subMenuIconColor: siteVars.colorScheme.brand.foregroundHover,
   };
 };
