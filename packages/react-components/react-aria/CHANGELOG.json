@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Fri, 23 Sep 2022 10:32:29 GMT",
+      "tag": "@fluentui/react-aria_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ce5f1ec6a0c0f766679ea708c40538fc2d56c6d9",
+            "comment": "chore: restructure folder organization"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:48 GMT",
       "tag": "@fluentui/react-aria_v9.2.0",
       "version": "9.2.0",

@@ -26,11 +26,10 @@ const getRuntimeDependencies = (packageName: string) => {
     throw new Error(error);
   }
 
-  return output
+  return (output
     .split('\n')
     .map(line => line.match(dependencyRegex))
-    .filter(Boolean)
-    .map(match => match[1]);
+    .filter(Boolean) as RegExpMatchArray[]).map(match => match[1]);
 };
 
 export default getRuntimeDependencies;

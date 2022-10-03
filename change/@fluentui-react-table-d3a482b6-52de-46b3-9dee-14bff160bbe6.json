@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Adds `visible` prop to `TableCellActions`",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

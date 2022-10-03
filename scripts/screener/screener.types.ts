@@ -2,7 +2,7 @@ export type ScreenerRunnerConfig = {
   apiKey: string;
   projectRepo: string;
 
-  diffOptions: {
+  diffOptions?: {
     structure: boolean;
     layout: boolean;
     style: boolean;
@@ -10,14 +10,14 @@ export type ScreenerRunnerConfig = {
     minLayoutPosition: number; // Optional threshold for Layout changes. Defaults to 4 pixels.
     minLayoutDimension: number; // Optional threshold for Layout changes. Defaults to 10 pixels.
     minShiftGraphic: number; // Optional threshold for pixel shifts in graphics.
-    compareSVGDOM: number; // Pass if SVG DOM is the same. Defaults to false.
+    compareSVGDOM: boolean; // Pass if SVG DOM is the same. Defaults to false.
   };
 
   states: ScreenerState[];
 
   alwaysAcceptBaseBranch: boolean;
   baseBranch: string;
-  commit: string;
+  commit?: string;
   failureExitCode: number;
 
   /** Base url of deployed storybook screener should test */

@@ -54,9 +54,15 @@ storiesOf('Switch Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory('With label above', () => <Switch className="test-class" label="Toggle switch" labelPosition="above" />)
-  .addStory('With label after', () => <Switch className="test-class" label="Toggle switch" labelPosition="after" />)
-  .addStory('With label before', () => <Switch className="test-class" label="Toggle switch" labelPosition="before" />)
+  .addStory('With label above', () => <Switch className="test-class" label="Toggle switch" labelPosition="above" />, {
+    includeRtl: true,
+  })
+  .addStory('With label after', () => <Switch className="test-class" label="Toggle switch" labelPosition="after" />, {
+    includeRtl: true,
+  })
+  .addStory('With label before', () => <Switch className="test-class" label="Toggle switch" labelPosition="before" />, {
+    includeRtl: true,
+  })
   .addStory('With label wrapping', () => (
     <Switch
       className="test-class"

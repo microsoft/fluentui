@@ -2,6 +2,39 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 20:55:42 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "30d0ecb1a37bd941f01be0bc4a673374c422752b",
+            "comment": "feat: Adds `visible` prop to `TableCellActions`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "cd9c220e8ca2c6ab0bc4b598801ce38eee21688f",
+            "comment": "fix: `TableCellActions` displays correctly inside `TableHeaderCell`"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.6",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:26 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

@@ -1,10 +1,12 @@
-// Type definitions extension for ignore-not-found-export-webpack-plugin 1.0.3
+// Type definitions for ignore-not-found-export-webpack-plugin 1.0.2
+
 declare module 'ignore-not-found-export-webpack-plugin' {
-  export interface Options {
+  import type { Compiler } from 'webpack';
+  interface Options {
     include: RegExp | RegExp[];
   }
 
-  declare class IgnoreNotFoundExportWebpackPlugin {
+  class IgnoreNotFoundExportWebpackPlugin {
     constructor(options?: Options);
     apply(compiler: Compiler): void;
   }

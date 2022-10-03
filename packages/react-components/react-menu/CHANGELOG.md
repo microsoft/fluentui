@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 15 Sep 2022 09:49:08 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Sep 2022 10:32:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.1)
+
+Fri, 23 Sep 2022 10:32:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.2.0..@fluentui/react-menu_v9.2.1)
+
+### Patches
+
+- fix: Make Menu openOnHover prop work again ([PR #24899](https://github.com/microsoft/fluentui/pull/24899) by behowell@microsoft.com)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.0)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.1.0..@fluentui/react-menu_v9.2.0)
+
+### Minor changes
+
+- feat: replace keydown handlers by useARIAButtonShorthand on MenuItem ([PR #24738](https://github.com/microsoft/fluentui/pull/24738) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.1.0)
 
