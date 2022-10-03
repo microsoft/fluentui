@@ -3,6 +3,7 @@ export { FAQAccordion } from './AccordionFaq.stories';
 export { MessengerButtons } from './Button.stories';
 export { QuestionnaireAboutFoodCheckboxes } from './Checkbox.stories';
 export { RegistrationFormInputs } from './Input.stories';
+export { RegistrationFormFields } from './Fields.stories';
 export { SiteNavigationLinks } from './Link.stories';
 export { ProfileMenu } from './Menu.stories';
 export { MenuWithSplitItem } from './MenuSplitGroup.stories';
