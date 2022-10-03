@@ -16,33 +16,20 @@ const useStyles = makeStyles({
   },
 });
 
-const Container: React.FC = ({ children }) => {
-  const styles = useStyles();
-  return (
-    <div className={styles.container}>
-      Portal nested within
-      {children}
-    </div>
-  );
-};
-
-const ExamplePortalContent: React.FC = ({ children }) => {
-  const styles = useStyles();
-
-  return <div className={styles.portalContent}>{children}</div>;
-};
-
 export const Default = () => {
+  const styles = useStyles();
+  const [rootElement, setRootElement] = React.useState<HTMLElement | null>(null);
   return (
-    <Container>
-      <Container>
-        <Portal>
-          <ExamplePortalContent>Portal content</ExamplePortalContent>
+    <div ref={setRootElement}>
+      <div style={{ overflow: 'hidden' }} className={styles.container}>
+        Overflow hidden parent
+        <Portal mountNode={rootElement}>
+          <div className={styles.portalContent}>Portal content</div>
+          <Portal mountNode={rootElement}>
+            <div className={styles.portalContent}>Portal within a Portal content</div>
+          </Portal>
         </Portal>
-        <Portal>
-          <ExamplePortalContent>Portal content</ExamplePortalContent>
-        </Portal>
-      </Container>
-    </Container>
+      </div>
+    </div>
   );
 };
