@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "undo removal of initializeThemeInCustomizations sideeffect",
+  "packageName": "@uifabric/styling",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
