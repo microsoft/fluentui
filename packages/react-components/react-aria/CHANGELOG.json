@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:33 GMT",
+      "tag": "@fluentui/react-aria_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "3b48ff5d92433635997aa69a59b138ec273172ea",
+            "comment": "chore: user defined tabIndex should prevail aria-button defined"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Sep 2022 10:32:29 GMT",
       "tag": "@fluentui/react-aria_v9.2.0",
       "version": "9.2.0",

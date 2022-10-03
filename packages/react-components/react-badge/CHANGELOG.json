@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:35 GMT",
+      "tag": "@fluentui/react-badge_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0885025f43076ebdf3a395cfb6ae65b3304cc5b2",
+            "comment": "fix: CounterBadge now always renders its children if provided"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:45 GMT",
       "tag": "@fluentui/react-badge_v9.0.6",
       "version": "9.0.6",
