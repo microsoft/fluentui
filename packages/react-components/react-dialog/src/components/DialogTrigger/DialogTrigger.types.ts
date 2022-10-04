@@ -3,9 +3,6 @@ import * as React from 'react';
 
 export type DialogTriggerAction = 'open' | 'close';
 
-/**
- * Testando
- */
 export type DialogTriggerProps = {
   /**
    * Explicitly declare if the trigger is responsible for opening or

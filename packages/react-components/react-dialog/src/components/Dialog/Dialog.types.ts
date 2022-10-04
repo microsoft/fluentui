@@ -34,6 +34,13 @@ export type DialogOpenChangeData =
 
 export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
+/**
+ * Callback fired when the component changes value from open state.
+ *
+ * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
+ * @param data - A data object with relevant information,
+ * such as open value and type of interaction that created the event
+ */
 export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
 
 export type DialogContextValues = {
