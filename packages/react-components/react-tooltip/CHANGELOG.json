@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:42 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "48d8c5c16b5367a3dfd295391512984051bbe727",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.0.6",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:43 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.6",
       "version": "9.0.6",

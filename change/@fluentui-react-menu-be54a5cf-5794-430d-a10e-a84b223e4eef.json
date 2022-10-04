@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Menu triggers no longer take focus when they are mounted",
-  "packageName": "@fluentui/react-menu",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
