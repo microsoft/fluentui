@@ -157,6 +157,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
   return {
     root: {
       backgroundColor: s.primaryButtonBackground,
+      border: `1px solid ${s.primaryButtonBackground}`,
       color: s.primaryButtonText,
       selectors: {
         [HighContrastSelector]: {
@@ -178,6 +179,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
     rootHovered: {
       backgroundColor: s.primaryButtonBackgroundHovered,
+      border: `1px solid ${s.primaryButtonBackgroundHovered}`,
       color: s.primaryButtonTextHovered,
       selectors: {
         [HighContrastSelector]: {
@@ -190,6 +192,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
     rootPressed: {
       backgroundColor: s.primaryButtonBackgroundPressed,
+      border: `1px solid ${s.primaryButtonBackgroundPressed}`,
       color: s.primaryButtonTextPressed,
       selectors: {
         [HighContrastSelector]: {
