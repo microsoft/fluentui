@@ -50,10 +50,10 @@ export const getStyles = memoizeFunction(
                   ...getHighContrastNoAdjustStyle(),
                 },
                 ':hover': {
-                  border: '0',
+                  border: 'none',
                 },
                 ':active': {
-                  border: '0',
+                  border: 'none',
                 },
               },
             },
