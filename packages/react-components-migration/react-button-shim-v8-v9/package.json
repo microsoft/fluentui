@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.97.1",
-    "@fluentui/react-components": "^9.3.2",
+    "@fluentui/react-components": "^9.4.0",
     "@fluentui/react-menu-shim-v8-v9": "9.0.0-alpha.0",
     "@fluentui/react-theme": "^9.1.0",
     "@fluentui/react-utilities": "^9.1.0",
