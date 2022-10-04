@@ -60,9 +60,13 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
 
                 {
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
             data-is-focusable={true}
             role="text"
+            title="one"
           >
             one
           </div>
@@ -195,9 +199,13 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
 
                 {
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
             data-is-focusable={true}
             role="text"
+            title="two"
           >
             two
           </div>
@@ -506,9 +514,13 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
 
                 {
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
             data-is-focusable={true}
             role="text"
+            title="one"
           >
             one
           </div>
@@ -641,9 +653,13 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
 
                 {
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
             data-is-focusable={true}
             role="text"
+            title="two"
           >
             two
           </div>
