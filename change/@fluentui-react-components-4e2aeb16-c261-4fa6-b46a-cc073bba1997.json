@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "chore: Add react-portal to react-components package",
+  "comment": "feat: Re-export Portal component and related bits",
   "packageName": "@fluentui/react-components",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch"
