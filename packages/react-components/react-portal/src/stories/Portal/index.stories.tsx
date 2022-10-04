@@ -16,7 +16,7 @@ export default {
   },
   decorators: [
     Story => (
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <div style={{ display: 'flex', gap: 16, flexDirection: 'column', alignItems: 'flex-start' }}>
         <Story />
       </div>
     ),

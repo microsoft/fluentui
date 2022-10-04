@@ -2,32 +2,31 @@ import * as React from 'react';
 import { Portal, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  container: {
-    ...shorthands.border('3px', 'solid', tokens.colorPaletteRedBackground3),
-    ...shorthands.padding('10px'),
-  },
-
-  portalContent: {
+  content: {
     backgroundColor: tokens.colorPaletteYellowBackground3,
     ...shorthands.border('3px', 'dashed'),
-    marginTop: '10px',
+    ...shorthands.padding('5px'),
+  },
+  container: {
+    ...shorthands.border('3px', 'dashed'),
+    ...shorthands.padding('5px'),
   },
 });
 
 export const Default = () => {
   const styles = useStyles();
   const [rootElement, setRootElement] = React.useState<HTMLElement | null>(null);
+
   return (
-    <div ref={setRootElement}>
-      <div style={{ overflow: 'hidden' }} className={styles.container}>
-        Overflow hidden parent
+    <>
+      <div className={styles.container} style={{ overflow: 'hidden' }}>
+        Clipping parent container
         <Portal mountNode={rootElement}>
-          <div className={styles.portalContent}>Portal content</div>
-          <Portal mountNode={rootElement}>
-            <div className={styles.portalContent}>Portal within a Portal content</div>
-          </Portal>
+          <div className={styles.content}>Portal content</div>
         </Portal>
       </div>
-    </div>
+
+      <div ref={setRootElement} />
+    </>
   );
 };
