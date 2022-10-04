@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 04 Oct 2022 07:45:02 GMT",
+      "tag": "@fluentui/react_v8.97.2",
+      "version": "8.97.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "e059a9f04ce12cd84892fe6c2f17ef7071ccd898",
+            "comment": "fix: Removing 2px margin that Safari adds to all buttons."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Oct 2022 07:37:49 GMT",
       "tag": "@fluentui/react_v8.97.1",
       "version": "8.97.1",

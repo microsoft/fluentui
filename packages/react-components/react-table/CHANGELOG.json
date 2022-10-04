@@ -2,6 +2,59 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:41 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0bece748c51ef324f23ddce3e83f0f796bfced5f",
+            "comment": "feat: `noNativeElements` renders a flex layout"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "9357de4af136dfb5e5ed37b68318024235aa4ba3",
+            "comment": "feat: Use AvatarContext to override avatar size"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.2.1",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.0",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.7",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.1.2",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "cd88ecf2e2407c308c8364b9167440b9bac171f3",
+            "comment": "chore: Migrate react-table to use new build"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:42 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.3",
       "version": "9.0.0-alpha.3",
