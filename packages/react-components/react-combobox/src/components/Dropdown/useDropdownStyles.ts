@@ -69,7 +69,9 @@ const useStyles = makeStyles({
     },
   },
 
-  listbox: {},
+  listbox: {
+    overflowY: 'auto',
+  },
 
   listboxCollapsed: {
     display: 'none',
