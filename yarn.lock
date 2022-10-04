@@ -5308,6 +5308,13 @@
   dependencies:
     "@types/babel__core" "*"
 
+"@types/babel__register@7.17.0":
+  version "7.17.0"
+  resolved "https://registry.yarnpkg.com/@types/babel__register/-/babel__register-7.17.0.tgz#fcb3ee6bfe9314215a0af5de7d9f19faf4144e50"
+  integrity sha512-/iL2G2eq5drPFQpzb/wMYk7B0LMWRpWajnPn1XuIzeQ2w+CRrzNbwJ5xpBdZkciYx0jqZa8h40dTXpMeTcGV7A==
+  dependencies:
+    "@types/babel__core" "*"
+
 "@types/babel__template@*":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@types/babel__template/-/babel__template-7.0.2.tgz#4ff63d6b52eddac1de7b975a5223ed32ecea9307"

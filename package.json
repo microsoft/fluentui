@@ -124,6 +124,7 @@
     "@testing-library/user-event": "13.5.0",
     "@tsconfig/node14": "1.0.3",
     "@types/babel__helper-plugin-utils": "7.10.0",
+    "@types/babel__register": "7.17.0",
     "@types/chrome-remote-interface": "0.30.0",
     "@types/circular-dependency-plugin": "5.0.5",
     "@types/copy-webpack-plugin": "6.4.0",
