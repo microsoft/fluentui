@@ -2,6 +2,41 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:38 GMT",
+      "tag": "@fluentui/react-persona_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "86b3133d97c177cac545b253deb11374ee829574",
+            "comment": "docs: Add migration guide."
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "2e8d044a4ce2c1095f13e08716c3ba13069ebf0d",
+            "comment": "feat: Publishing package."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.2.0",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.0.7",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:45 GMT",
       "tag": "@fluentui/react-persona_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

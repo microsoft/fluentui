@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.0)
+
+Mon, 03 Oct 2022 22:24:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.1.1..@fluentui/react-input_v9.2.0)
+
+### Minor changes
+
+- chore: Deprecating filled with shadow appearance variant. ([PR #24900](https://github.com/microsoft/fluentui/pull/24900) by esteban.230@hotmail.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.1.1)
 
