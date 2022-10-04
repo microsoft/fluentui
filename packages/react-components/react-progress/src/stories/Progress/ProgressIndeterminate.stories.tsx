@@ -8,7 +8,7 @@ export const Indeterminate = () => {
 Indeterminate.parameters = {
   docs: {
     description: {
-      story: `Progress is indeterminate by default.
+      story: `Progress is indeterminate when `value` is `undefined`.
       Indeterminate Progress is best used to show that an operation is being executed.`,
     },
   },
