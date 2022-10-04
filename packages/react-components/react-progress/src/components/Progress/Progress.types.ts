@@ -2,13 +2,11 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type ProgressSlots = {
   /**
-   * The root of the Progress. This slot will also function as the Progress's track
-   * The root slot receives the `className` and `style` specified directly on the `<Progress>`.
+   * The track behind the progress bar
    */
   root: NonNullable<Slot<'div'>>;
   /**
-   * The animated slot of the Progress
-   * The bar slot receives the styling related to the loading bar associated with the Progress
+   * The filled portion of the progress bar. Animated in the indeterminate state, when no value is provided.
    */
   bar?: NonNullable<Slot<'div'>>;
 };
@@ -18,8 +16,10 @@ export type ProgressSlots = {
  */
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   /**
-   * Percentage of the operation's completeness of the determinate progress
-   * in decimal format, numerically between 0 and 1.
+   * A decimal number between `0` and `1` (or between `0` and `max` if given),
+   * which specifies how much of the task has been completed. 
+   *
+   * If `undefined` (default), the Progress will display an **indeterminate** state.
    */
   value?: number;
   /**

@@ -39,7 +39,6 @@ const useRootStyles = makeStyles({
   root: {
     display: 'block',
     //rowGap: '8px',
-    ...shorthands.overflow('hidden'),
     backgroundColor: tokens.colorNeutralBackground6,
 
     '@media screen and (forced-colors: active)': {
@@ -125,15 +124,15 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       value === undefined && barStyles.indeterminate,
       value === undefined && dir === 'rtl' && barStyles.rtl,
       barStyles[thickness],
-      !!value && barStyles.determinate,
-      !!value && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
+      value !== undefined && barStyles.determinate,
+      value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       state.bar.className,
     );
   }
 
-  if (state.bar && !!value) {
+  if (state.bar && value !== undefined) {
     state.bar.style = {
-      [progressCssVars.percentageCssVar]: value > max ? max + '%' : Math.min(100, Math.max(0, value * 100)) + '%',
+     width: Math.min(100, Math.max(0, (value / max) * 100)) + '%',
       ...state.bar.style,
     };
   }

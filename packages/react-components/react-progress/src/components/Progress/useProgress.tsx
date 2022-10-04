@@ -21,8 +21,8 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     required: true,
     defaultProps: {
       'aria-valuemin': value ? 0 : undefined,
-      'aria-valuemax': value ? max * 100 : undefined,
-      'aria-valuenow': value ? Math.floor(value!! * 100) : undefined,
+      'aria-valuemax': value ? max : undefined,
+      'aria-valuenow': value,
     },
   });
 
