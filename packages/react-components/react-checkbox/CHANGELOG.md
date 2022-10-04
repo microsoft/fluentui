@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.6..@fluentui/react-checkbox_v9.0.7)
+
+### Patches
+
+- fix: Checkbox's label shouldn't have a pointer cursor when disabled ([PR #25018](https://github.com/microsoft/fluentui/pull/25018) by behowell@microsoft.com)
+- fix: Making the hidden input only cover the indicator and not also the label. ([PR #24638](https://github.com/microsoft/fluentui/pull/24638) by makotom@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.6)
 

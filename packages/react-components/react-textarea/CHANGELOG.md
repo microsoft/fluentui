@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Tue, 20 Sep 2022 20:55:42 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.1.1)
+
+Mon, 03 Oct 2022 22:24:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.1.0..@fluentui/react-textarea_v9.1.1)
+
+### Patches
+
+- chore: Deprecating filled with shadow appearance variant. ([PR #24900](https://github.com/microsoft/fluentui/pull/24900) by esteban.230@hotmail.com)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.1.0)
 

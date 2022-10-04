@@ -97,6 +97,10 @@ exports[`TagItem accepts title override 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 100%;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -347,6 +351,10 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 100%;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -573,6 +581,10 @@ exports[`TagItem renders correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 100%;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
