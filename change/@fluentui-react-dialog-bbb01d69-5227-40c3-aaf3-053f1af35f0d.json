@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: updates dialog stories",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

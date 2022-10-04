@@ -3,12 +3,17 @@ import * as React from 'react';
 
 export type DialogTriggerAction = 'open' | 'close';
 
+/**
+ * Testando
+ */
 export type DialogTriggerProps = {
   /**
    * Explicitly declare if the trigger is responsible for opening or
    * closing a Dialog visibility state.
-   * @default 'open' // if it's outside DialogSurface
-   * @default 'close' // if it's inside DialogSurface
+   *
+   * If `DialogTrigger` is outside `DialogSurface` then it'll be `open` by default
+   *
+   * If `DialogTrigger` is inside `DialogSurface` then it'll be `close` by default
    */
   action?: DialogTriggerAction;
   /**
