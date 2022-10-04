@@ -2,9 +2,9 @@ import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
 import { ListboxState } from '../Listbox';
 
-export function useScrollOptionsIntoView(state: ListboxState): React.MutableRefObject<any> | undefined {
+export function useScrollOptionsIntoView(state: ListboxState): React.Ref<HTMLDivElement> {
   const { activeOption } = state;
-  const scrollContainerRef = React.useRef<HTMLElement>(null);
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     if (scrollContainerRef.current && activeOption && canUseDOM()) {
@@ -30,7 +30,7 @@ export function useScrollOptionsIntoView(state: ListboxState): React.MutableRefO
         scrollContainerRef.current.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight + buffer);
       }
     }
-  }, [activeOption, open]);
+  }, [activeOption]);
 
   return scrollContainerRef;
 }
