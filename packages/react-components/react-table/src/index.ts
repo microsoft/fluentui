@@ -1,11 +1,13 @@
-export { useTable } from './hooks';
+export { useTable, useSelection, useSort } from './hooks';
 export type {
   UseTableOptions,
+  TableState as HeadlessTableState,
   TableSelectionState,
   TableSortState,
-  ColumnDefinition,
+  TableStatePlugin,
   RowState,
   RowId,
+  ColumnDefinition,
   ColumnId,
 } from './hooks';
 
