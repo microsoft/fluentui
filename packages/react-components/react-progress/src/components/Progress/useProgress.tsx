@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { ProgressProps, ProgressState } from './Progress.types';
 
 /**
@@ -14,7 +14,6 @@ import type { ProgressProps, ProgressState } from './Progress.types';
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
   const { thickness = 'medium', value, max = 1.0 } = props;
-  const baseId = useId('progress-');
 
   const root = getNativeElementProps('div', { ref, role: 'progressbar', ...props });
 
