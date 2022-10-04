@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
-import { DialogTriggerChildProps, DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
+import { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 
@@ -16,7 +16,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const { children, action = isInsideSurfaceDialog ? 'close' : 'open' } = props;
 
-  const child = React.isValidElement(children) ? getTriggerChild<DialogTriggerChildProps>(children) : undefined;
+  const child = getTriggerChild(children);
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
 
@@ -36,13 +36,13 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   );
 
   return {
-    children: applyTriggerPropsToChildren<DialogTriggerChildProps>(
+    children: applyTriggerPropsToChildren(
       children,
       useARIAButtonProps(child?.type === 'button' || child?.type === 'a' ? child.type : 'div', {
         type: 'button',
         ...child?.props,
         'aria-haspopup': action === 'close' ? undefined : 'dialog',
-        ref: child?.ref as React.Ref<never>,
+        ref: child?.ref,
         onClick: handleClick,
         ...triggerAttributes,
       }),
