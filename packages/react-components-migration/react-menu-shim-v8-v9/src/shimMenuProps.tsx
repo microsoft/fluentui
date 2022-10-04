@@ -26,7 +26,7 @@ export const shimMenuItemProps = (props: IContextualMenuItem): MenuItemProps => 
 export const shimMenuItemCheckboxProps = (props: IContextualMenuItem): MenuItemCheckboxProps => {
   return {
     ...shimMenuItemProps(props),
-    name: props.name || 'name',
+    name: props.text || 'name',
     value: props.value || 'value',
   };
 };
