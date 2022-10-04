@@ -13,11 +13,6 @@ export const progressClassNames: SlotClassNames<ProgressSlots> = {
 // This prevents animations on reset to 0 scenarios.
 const ZERO_THRESHOLD = 0.01;
 
-// Internal CSS vars
-export const progressCssVars = {
-  percentageCssVar: '--fui-Progress--percentage',
-};
-
 const barThicknessValues = {
   medium: '2px',
   large: '4px',
@@ -38,16 +33,12 @@ const indeterminateProgress = {
 const useRootStyles = makeStyles({
   root: {
     display: 'block',
-    //rowGap: '8px',
     backgroundColor: tokens.colorNeutralBackground6,
+    ...shorthands.overflow('hidden'),
 
     '@media screen and (forced-colors: active)': {
       ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
     },
-  },
-  base: {
-    //gridRowStart: '2',
-    //gridColumnStart: '1',
   },
   medium: {
     height: barThicknessValues.medium,
@@ -73,9 +64,6 @@ const useBarStyles = makeStyles({
   },
   large: {
     height: barThicknessValues.large,
-  },
-  determinate: {
-    width: `var(${progressCssVars.percentageCssVar})`,
   },
   nonZeroDeterminate: {
     transitionProperty: 'width',
@@ -124,7 +112,6 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       value === undefined && barStyles.indeterminate,
       value === undefined && dir === 'rtl' && barStyles.rtl,
       barStyles[thickness],
-      value !== undefined && barStyles.determinate,
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       state.bar.className,
     );
@@ -132,7 +119,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
 
   if (state.bar && value !== undefined) {
     state.bar.style = {
-     width: Math.min(100, Math.max(0, (value / max) * 100)) + '%',
+      width: Math.min(100, Math.max(0, (value / max) * 100)) + '%',
       ...state.bar.style,
     };
   }

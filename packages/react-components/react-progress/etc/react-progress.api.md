@@ -31,9 +31,7 @@ export type ProgressSlots = {
 };
 
 // @public
-export type ProgressState = (ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'thickness'>>) & {
-    value: ProgressProps['value'];
-};
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'thickness'>> & Pick<ProgressProps, 'value'>;
 
 // @public
 export const renderProgress_unstable: (state: ProgressState) => JSX.Element;

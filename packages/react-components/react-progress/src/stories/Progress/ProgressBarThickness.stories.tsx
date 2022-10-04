@@ -4,7 +4,7 @@ import { Progress } from '@fluentui/react-progress';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.padding('8px', '0px'),
+    ...shorthands.margin('20px', '0px'),
   },
 });
 

@@ -5,7 +5,8 @@ import bestPracticesMd from './ProgressBestPractices.md';
 
 export { Default } from './ProgressDefault.stories';
 export { Thickness } from './ProgressBarThickness.stories';
-export { Determinate } from './ProgressDeterminate.stories';
+export { Indeterminate } from './ProgressIndeterminate.stories';
+export { Max } from './ProgressMax.stories';
 
 export default {
   title: 'Preview Components/Progress',
