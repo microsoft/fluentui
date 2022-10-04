@@ -8,13 +8,13 @@ export function useScrollOptionsIntoView(state: ListboxState): React.Ref<HTMLDiv
 
   React.useEffect(() => {
     if (scrollContainerRef.current && activeOption && canUseDOM()) {
-      const activeOptionEl = scrollContainerRef.current.querySelector(`#${activeOption.id}`) as HTMLElement;
+      const activeOptionElement = scrollContainerRef.current.querySelector(`#${activeOption.id}`) as HTMLElement;
 
-      if (!activeOptionEl) {
+      if (!activeOptionElement) {
         return;
       }
 
-      const { offsetHeight, offsetTop } = activeOptionEl;
+      const { offsetHeight, offsetTop } = activeOptionElement;
       const { offsetHeight: parentOffsetHeight, scrollTop } = scrollContainerRef.current;
 
       const isAbove = offsetTop < scrollTop;
