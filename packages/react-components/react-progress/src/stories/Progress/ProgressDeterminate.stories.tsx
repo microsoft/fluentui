@@ -9,7 +9,7 @@ Determinate.parameters = {
   docs: {
     description: {
       story: `Progress can also come in a determinate form.
-      The determinate form is useful for showing how much a task has completed.`,
+      The determinate form is useful for showing how much of a task has completed.`,
     },
   },
 };

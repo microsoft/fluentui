@@ -19,7 +19,7 @@ export type ProgressSlots = {
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   /**
    * Percentage of the operation's completeness of the determinate progress
-   *  in decimal format, numerically between 0 and 1.
+   * in decimal format, numerically between 0 and 1.
    */
   value?: number;
   /**
@@ -37,6 +37,4 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
 /**
  * State used in rendering Progress
  */
-export type ProgressState = (ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'thickness'>>) & {
-  value: ProgressProps['value'];
-};
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'thickness'>> & Pick<ProgressProps, 'value'>;
