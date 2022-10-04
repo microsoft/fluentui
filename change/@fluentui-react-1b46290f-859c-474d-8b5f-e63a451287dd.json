@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixes ContextualMenu item text overflow ellipsis style.",
+  "packageName": "@fluentui/react",
+  "email": "ndresx@gmail.com",
+  "dependentChangeType": "patch"
+}

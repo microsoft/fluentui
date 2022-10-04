@@ -139,6 +139,7 @@ export const getMenuItemStyles = memoizeFunction(
         verticalAlign: 'middle',
         display: 'inline-block',
         flexGrow: '1',
+        overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
       },
