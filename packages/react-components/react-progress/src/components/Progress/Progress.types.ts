@@ -2,30 +2,15 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type ProgressSlots = {
   /**
-   * The root of the Progress
+   * The root of the Progress. This slot will also function as the Progress's track
    * The root slot receives the `className` and `style` specified directly on the `<Progress>`.
    */
   root: NonNullable<Slot<'div'>>;
-  /**
-   * The title of the Progress.
-   * The label slot receives the styling related to the title associated with the Progress.
-   */
-  label?: Slot<'span'>;
   /**
    * The animated slot of the Progress
    * The bar slot receives the styling related to the loading bar associated with the Progress
    */
   bar?: NonNullable<Slot<'div'>>;
-  /**
-   * The track slot of the Progress
-   * The track slot receives the styling related to the loading bar track associated with the Progress
-   */
-  track?: NonNullable<Slot<'div'>>;
-  /**
-   * The description slot of the Progress
-   * The description slot receives the styling related to the description associated with the Progress
-   */
-  description?: Slot<'span'>;
 };
 
 /**
@@ -33,14 +18,15 @@ export type ProgressSlots = {
  */
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   /**
-   * Prop to set whether the Progress is determinate or indeterminate
-   * @default false
+   * Percentage of the operation's completeness of the determinate progress
+   *  in decimal format, numerically between 0 and 1.
    */
-  indeterminate?: boolean;
+  value?: number;
   /**
-   * Percentage of the operation's completeness, numerically between 0 and 100.
+   * Max value of the determinate progress.
+   * @default 1
    */
-  percentComplete?: number;
+  max?: number;
   /**
    * The thickness of the Progress bar
    * @default 'medium'
@@ -51,5 +37,6 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
 /**
  * State used in rendering Progress
  */
-export type ProgressState = ComponentState<ProgressSlots> &
-  Required<Pick<ProgressProps, 'indeterminate' | 'percentComplete' | 'thickness'>>;
+export type ProgressState = (ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'thickness'>>) & {
+  value: ProgressProps['value'];
+};
