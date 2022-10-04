@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 04 Oct 2022 12:23:16 GMT",
+      "tag": "@fluentui/react-focus_v7.18.15",
+      "version": "7.18.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.24.0",
+            "author": "gcox@microsoft.com",
+            "commit": "c87f7ca5ac04d105c94f61f86e8885047133e417",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Sep 2022 21:44:22 GMT",
       "tag": "@fluentui/react-focus_v7.18.14",
       "version": "7.18.14",

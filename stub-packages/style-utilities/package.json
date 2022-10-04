@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/style-utilities",
-  "version": "7.23.1",
+  "version": "7.24.0",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": "^7.23.1",
+    "@uifabric/styling": "^7.24.0",
     "@uifabric/set-version": "^7.0.24",
     "tslib": "^1.10.0"
   },

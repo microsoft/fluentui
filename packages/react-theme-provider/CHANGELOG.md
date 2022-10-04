@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Oct 2022 12:23:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.14)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.13..@fluentui/react-theme-provider_v0.19.14)
+
+### Patches
+
+- Bump @uifabric/styling to v7.24.0 ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
 
 ## [0.19.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.13)
 
