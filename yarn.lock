@@ -13785,10 +13785,10 @@ find-cache-dir@^3.3.1:
     make-dir "^3.0.2"
     pkg-dir "^4.1.0"
 
-find-free-port@~2.0.0:
+find-free-port@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/find-free-port/-/find-free-port-2.0.0.tgz#4b22e5f6579eb1a38c41ac6bcb3efed1b6da9b1b"
-  integrity sha1-SyLl9leesaOMQaxryz7+0bbamxs=
+  integrity sha512-J1j8gfEVf5FN4PR5w5wrZZ7NYs2IvqsHcd03cAeQx3Ec/mo+lKceaVNhpsRKoZpZKbId88o8qh+dwUwzBV6WCg==
 
 find-replace@^3.0.0:
   version "3.0.0"
