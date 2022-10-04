@@ -17,6 +17,7 @@ import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
 export const Dialog: React_2.FC<DialogProps>;
@@ -169,14 +170,12 @@ export type DialogTriggerAction = 'open' | 'close';
 
 // @public
 export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
-    ref: React_2.Ref<unknown>;
     'aria-haspopup'?: 'dialog';
 }>;
 
 // @public (undocumented)
-export type DialogTriggerProps = {
+export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {
     action?: DialogTriggerAction;
-    children: React_2.ReactElement | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public (undocumented)
