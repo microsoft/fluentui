@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 04 Oct 2022 18:13:33 GMT",
+      "tag": "@uifabric/date-time_v7.23.24",
+      "version": "7.23.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.25.0",
+            "author": "gcox@microsoft.com",
+            "commit": "cbcc767fb704968a387823e2e9bf70d147809ad4",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Oct 2022 12:23:16 GMT",
       "tag": "@uifabric/date-time_v7.23.23",
       "version": "7.23.23",

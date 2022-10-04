@@ -1,8 +1,17 @@
 # Change Log - @uifabric/mdl2-theme
 
-This log was last generated on Tue, 04 Oct 2022 12:23:16 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Oct 2022 18:13:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.24](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.7.24)
+
+Tue, 04 Oct 2022 18:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/mdl2-theme_v0.7.23..@uifabric/mdl2-theme_v0.7.24)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.3 ([PR #25064](https://github.com/microsoft/fluentui/pull/25064) by gcox@microsoft.com)
 
 ## [0.7.23](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.7.23)
 

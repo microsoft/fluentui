@@ -2,6 +2,29 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Tue, 04 Oct 2022 18:13:33 GMT",
+      "tag": "@fluentui/style-utilities_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added export of lib/Utilities",
+            "author": "gcox@microsoft.com",
+            "commit": "cbcc767fb704968a387823e2e9bf70d147809ad4",
+            "package": "@fluentui/style-utilities"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.25.0",
+            "author": "gcox@microsoft.com",
+            "commit": "cbcc767fb704968a387823e2e9bf70d147809ad4",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Oct 2022 12:23:16 GMT",
       "tag": "@fluentui/style-utilities_v7.24.0",
       "version": "7.24.0",
