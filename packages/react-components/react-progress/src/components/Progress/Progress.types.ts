@@ -23,7 +23,8 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
    */
   value?: number;
   /**
-   * Max value of the determinate progress.
+   * The maximum value, which indicates the task is complete.
+   * The progress bar will be full when `value` equals `max`.
    * @default 1
    */
   max?: number;
