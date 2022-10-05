@@ -3,9 +3,9 @@ import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
 import { Body1, Caption1, Avatar } from '@fluentui/react-components';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
-import { ASSET_URL } from './SampleCard.stories';
 import type { CardProps } from '@fluentui/react-card';
 
+const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 const previewImage = ASSET_URL + '/assets/interactive-example.png';
 const appLogo = ASSET_URL + '/assets/app_logo.svg';
 
