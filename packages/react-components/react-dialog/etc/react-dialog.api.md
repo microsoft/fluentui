@@ -151,7 +151,7 @@ export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots>;
 
 // @public
-export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
+export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
 
 // @public (undocumented)
 export type DialogTitleSlots = {
