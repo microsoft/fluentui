@@ -1,8 +1,59 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 22 Sep 2022 07:43:45 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Oct 2022 07:45:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.3)
+
+Tue, 04 Oct 2022 07:45:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.2..@fluentui/react-experiments_v8.14.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.97.2 ([PR #24947](https://github.com/microsoft/fluentui/pull/24947) by beachball)
+
+## [8.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.2)
+
+Mon, 03 Oct 2022 07:37:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.1..@fluentui/react-experiments_v8.14.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.97.1 ([PR #25022](https://github.com/microsoft/fluentui/pull/25022) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.0 ([PR #25022](https://github.com/microsoft/fluentui/pull/25022) by beachball)
+
+## [8.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.1)
+
+Fri, 30 Sep 2022 07:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.0..@fluentui/react-experiments_v8.14.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.97.0 ([PR #25025](https://github.com/microsoft/fluentui/pull/25025) by beachball)
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.0)
+
+Thu, 29 Sep 2022 07:40:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.13.4..@fluentui/react-experiments_v8.14.0)
+
+### Minor changes
+
+- fix: export signals.scss from react-experiments package.json ([PR #24958](https://github.com/microsoft/fluentui/pull/24958) by mgodbolt@microsoft.com)
+- Bump @fluentui/react to v8.96.3 ([PR #24990](https://github.com/microsoft/fluentui/pull/24990) by beachball)
+
+### Patches
+
+- chore: add export for signal.scss ([PR #24993](https://github.com/microsoft/fluentui/pull/24993) by mgodbolt@microsoft.com)
+
+## [8.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.13.4)
+
+Wed, 28 Sep 2022 07:37:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.13.3..@fluentui/react-experiments_v8.13.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.96.2 ([PR #24900](https://github.com/microsoft/fluentui/pull/24900) by beachball)
 
 ## [8.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.13.3)
 

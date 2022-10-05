@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Tue, 20 Sep 2022 20:55:43 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.6..@fluentui/react-tooltip_v9.0.7)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.0.6 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.6)
 

@@ -10,13 +10,26 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
   sortIcon: 'fui-TableHeaderCell__sortIcon',
 };
 
+const useTableLayoutStyles = makeStyles({
+  root: {
+    display: 'table-cell',
+    verticalAlign: 'middle',
+  },
+});
+
+const useFlexLayoutStyles = makeStyles({
+  root: {
+    display: 'flex',
+    ...shorthands.flex(1, 1, '0px'),
+    minWidth: '0px',
+  },
+});
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    display: 'table-cell',
-    verticalAlign: 'middle',
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
   },
 
@@ -60,7 +73,16 @@ const useStyles = makeStyles({
  */
 export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): TableHeaderCellState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableHeaderCellClassNames.root, styles.root, state.root.className);
+  const layoutStyles = {
+    table: useTableLayoutStyles(),
+    flex: useFlexLayoutStyles(),
+  };
+  state.root.className = mergeClasses(
+    tableHeaderCellClassNames.root,
+    styles.root,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.root.className,
+  );
   state.button.className = mergeClasses(
     tableHeaderCellClassNames.button,
     styles.resetButton,

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:42 GMT",
+      "tag": "@fluentui/react-textarea_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "316aa1e8df88bd9ec563d32222565dc48bc9fa29",
+            "comment": "chore: Deprecating filled with shadow appearance variant."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:42 GMT",
       "tag": "@fluentui/react-textarea_v9.1.0",
       "version": "9.1.0",

@@ -8,16 +8,31 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
   radioIndicator: 'fui-TableSelectionCell__radioIndicator',
 };
 
+const useTableLayoutStyles = makeStyles({
+  root: {
+    display: 'table-cell',
+    width: '44px',
+  },
+});
+
+const useFlexLayoutStyles = makeStyles({
+  root: {
+    display: 'flex',
+    ...shorthands.flex(1, 1, '0px'),
+    minWidth: '44px',
+    maxWidth: '44px',
+    justifyContent: 'center',
+  },
+});
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    width: '44px',
     textAlign: 'center',
     whiteSpace: 'nowrap',
     ...shorthands.padding(0),
-    display: 'table-cell',
   },
 
   radioIndicator: {
@@ -41,7 +56,16 @@ const useStyles = makeStyles({
  */
 export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellState): TableSelectionCellState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableSelectionCellClassNames.root, styles.root, state.root.className);
+  const layoutStyles = {
+    table: useTableLayoutStyles(),
+    flex: useFlexLayoutStyles(),
+  };
+  state.root.className = mergeClasses(
+    tableSelectionCellClassNames.root,
+    styles.root,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.root.className,
+  );
   if (state.checkboxIndicator) {
     state.checkboxIndicator.className = mergeClasses(
       tableSelectionCellClassNames.checkboxIndicator,

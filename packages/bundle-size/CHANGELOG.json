@@ -2,6 +2,21 @@
   "name": "@fluentui/bundle-size",
   "entries": [
     {
+      "date": "Wed, 28 Sep 2022 07:37:48 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.7",
+      "version": "1.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "b7fc0c2998a2ed7584b6b7ca8a969b17793afd28",
+            "comment": "fix: bump workspace-tools and add options to collectLocalReport api"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 May 2022 07:41:44 GMT",
       "tag": "@fluentui/bundle-size_v1.1.6",
       "version": "1.1.6",

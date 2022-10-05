@@ -162,6 +162,7 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
+  const shouldHandleKeyboardRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);
   const pressedShiftRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
@@ -185,6 +186,7 @@ const useMenuOpenState = (
     }
 
     if (e.type === 'keydown' && (e as React.KeyboardEvent<HTMLElement>).key === Tab) {
+      shouldHandleKeyboardRef.current = true;
       shouldHandleTabRef.current = true;
       pressedShiftRef.current = (e as React.KeyboardEvent<HTMLElement>).shiftKey;
     }
@@ -288,7 +290,7 @@ const useMenuOpenState = (
       focusFirst();
     }
 
-    if (!open) {
+    if (shouldHandleKeyboardRef.current && !open) {
       if (shouldHandleTabRef.current && !state.isSubmenu) {
         pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
       } else {
@@ -296,6 +298,7 @@ const useMenuOpenState = (
       }
     }
 
+    shouldHandleKeyboardRef.current = false;
     shouldHandleTabRef.current = false;
     pressedShiftRef.current = false;
   }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);

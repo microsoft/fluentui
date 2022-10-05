@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Flex, Header } from '@fluentui/react-northstar';
 
 import pkg from '@fluentui/react-northstar/package.json';
@@ -47,6 +47,11 @@ const Introduction = () => (
     <h3>Start</h3>
     <p>
       If you want to get going right away, see the <NavLink to="quick-start">Quick Start</NavLink> guide.
+    </p>
+
+    <h3>Fluent UI React V9</h3>
+    <p>
+      This is our latest and more performant library, <Link to="https://react.fluentui.dev/">link to docs</Link>.
     </p>
   </div>
 );

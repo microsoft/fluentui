@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleButtonShim renders a default state 1`] = `
+<div>
+  <button
+    aria-pressed="false"
+    class="fui-Button fui-ToggleButton ms-Button--primary"
+    type="button"
+  >
+    Default ToggleButtonShim
+  </button>
+</div>
+`;

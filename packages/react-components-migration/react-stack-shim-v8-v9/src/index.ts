@@ -1,2 +1,2 @@
-// TODO: replace with real exports
-export {};
+export { StackShim } from './StackShim';
+export { StackItemShim } from './StackItemShim';
