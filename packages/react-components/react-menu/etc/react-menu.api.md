@@ -19,6 +19,7 @@ import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public
@@ -313,9 +314,7 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
 export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 
 // @public (undocumented)
-export type MenuTriggerProps = {
-    children: React_2.ReactElement | ((props: MenuTriggerChildProps) => React_2.ReactElement | null);
-};
+export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps>;
 
 // @public (undocumented)
 export type MenuTriggerState = {

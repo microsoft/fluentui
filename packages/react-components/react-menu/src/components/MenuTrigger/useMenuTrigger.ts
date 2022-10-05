@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -45,7 +45,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
-  const child = React.isValidElement(children) ? getTriggerChild<Partial<MenuTriggerChildProps>>(children) : undefined;
+  const child = getTriggerChild(children);
 
   const onContextMenu = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
@@ -127,27 +127,24 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     id: triggerId,
     ...child?.props,
     ref: useMergedRefs(triggerRef, child?.ref),
-    onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
-    onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
-    onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
-    onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
+    onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
+    onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
+    onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
+    onMouseMove: useEventCallback(mergeCallbacks(child?.props.onMouseMove, onMouseMove)),
   } as const;
 
   const ariaButtonTriggerProps = useARIAButtonProps(
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
     {
       ...triggerProps,
-      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
-      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
+      onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+      onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
     },
   );
 
   return {
     isSubmenu,
-    children: applyTriggerPropsToChildren<MenuTriggerChildProps>(
-      children,
-      openOnContext ? triggerProps : ariaButtonTriggerProps,
-    ),
+    children: applyTriggerPropsToChildren(children, openOnContext ? triggerProps : ariaButtonTriggerProps),
   };
 };
 

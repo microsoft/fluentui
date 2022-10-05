@@ -2,6 +2,39 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:36 GMT",
+      "tag": "@fluentui/react-dialog_v9.0.0-beta.11",
+      "version": "9.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "da8a1d4d97efdb6d95818b605136415d9428e811",
+            "comment": "feat: removes DialogSurface native dialog support "
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-aria to v9.2.1",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-tabster to v9.1.2",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-portal to v9.0.6",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Sep 2022 10:32:29 GMT",
       "tag": "@fluentui/react-dialog_v9.0.0-beta.10",
       "version": "9.0.0-beta.10",

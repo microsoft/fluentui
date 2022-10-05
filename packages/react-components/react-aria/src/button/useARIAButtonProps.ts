@@ -34,16 +34,8 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
   type?: Type,
   props?: Props,
 ): ARIAButtonResultProps<Type, Props> {
-  const {
-    disabled,
-    tabIndex,
-    disabledFocusable = false,
-    onClick,
-    onKeyDown,
-    onKeyUp,
-    ['aria-disabled']: ariaDisabled,
-    ...rest
-  } = props ?? {};
+  const { disabled, disabledFocusable = false, ['aria-disabled']: ariaDisabled, onClick, onKeyDown, onKeyUp, ...rest } =
+    props ?? {};
 
   const normalizedARIADisabled = typeof ariaDisabled === 'string' ? ariaDisabled === 'true' : ariaDisabled;
 
@@ -110,7 +102,6 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
   if (type === 'button' || type === undefined) {
     return {
       ...rest,
-      tabIndex,
       disabled: disabled && !disabledFocusable,
       'aria-disabled': disabledFocusable ? true : normalizedARIADisabled,
       // onclick should still use internal handler to ensure prevention if disabled
@@ -126,6 +117,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
   else {
     const resultProps = {
       role: 'button',
+      tabIndex: disabled && !disabledFocusable ? undefined : 0,
       ...rest,
       // If it's not a <button> than listeners are required even with disabledFocusable
       // Since you cannot assure the default behavior of the element
@@ -134,7 +126,6 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
       onKeyUp: handleKeyUp,
       onKeyDown: handleKeyDown,
       'aria-disabled': disabled || disabledFocusable || normalizedARIADisabled,
-      tabIndex: disabled && !disabledFocusable ? undefined : tabIndex ?? 0,
     } as ARIAButtonResultProps<Type, Props>;
 
     if (type === 'a' && isDisabled) {

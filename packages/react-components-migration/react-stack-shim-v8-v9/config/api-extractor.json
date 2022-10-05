@@ -5,5 +5,6 @@
     "enabled": true,
     "untrimmedFilePath": "",
     "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts"
-  }
+  },
+  "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components-migration/<unscopedPackageName>/src/index.d.ts"
 }

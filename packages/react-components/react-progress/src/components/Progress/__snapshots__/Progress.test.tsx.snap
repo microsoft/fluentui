@@ -4,8 +4,11 @@ exports[`Progress renders a default state 1`] = `
 <div>
   <div
     class="fui-Progress"
+    role="progressbar"
   >
-    Default Progress
+    <div
+      class="fui-Progress__bar"
+    />
   </div>
 </div>
 `;

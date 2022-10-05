@@ -21,6 +21,8 @@ const scriptFilename = path.relative(config.paths.base(), __filename);
  * If two dependencies specified in the same package.json (the workspace root in our case) define a `bin`
  * with the same name, it's **nondeterministic** which one "wins."
  *
+ * Github Issue https://github.com/storybookjs/storybook/issues/3980#issuecomment-411328585
+ *
  * The simplest and most reliable fix is that since `@storybook/html` is used only by web-components,
  * it should be specified there, with a `nohoist` entry in the root workspace config to ensure it's
  * installed under web-components rather than at the root.

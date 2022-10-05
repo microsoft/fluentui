@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.0.6..@fluentui/react-radio_v9.0.7)
+
+### Patches
+
+- fix: Making the hidden input only cover the indicator and not also the label. ([PR #25025](https://github.com/microsoft/fluentui/pull/25025) by humberto_makoto@hotmail.com)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.0.6)
 

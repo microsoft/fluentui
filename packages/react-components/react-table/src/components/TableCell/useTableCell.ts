@@ -26,5 +26,6 @@ export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTML
       role: rootComponent === 'div' ? 'cell' : undefined,
       ...props,
     }),
+    noNativeElements,
   };
 };

@@ -55,5 +55,6 @@ export const useTableHeaderCell_unstable = (
       },
     }),
     sortable,
+    noNativeElements,
   };
 };

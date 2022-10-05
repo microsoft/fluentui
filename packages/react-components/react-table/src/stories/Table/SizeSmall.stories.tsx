@@ -8,14 +8,14 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
 import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 const items = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
-    author: { label: 'Max Mustermann', status: 'available' },
+    author: { label: 'Max Mustermann', status: 'available' as const },
     lastUpdated: { label: '7h ago', timestamp: 1 },
     lastUpdate: {
       label: 'You edited this',
@@ -24,7 +24,7 @@ const items = [
   },
   {
     file: { label: 'Thursday presentation', icon: <FolderRegular /> },
-    author: { label: 'Erika Mustermann', status: 'busy' },
+    author: { label: 'Erika Mustermann', status: 'busy' as const },
     lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
     lastUpdate: {
       label: 'You recently opened this',
@@ -33,7 +33,7 @@ const items = [
   },
   {
     file: { label: 'Training recording', icon: <VideoRegular /> },
-    author: { label: 'John Doe', status: 'away' },
+    author: { label: 'John Doe', status: 'away' as const },
     lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
     lastUpdate: {
       label: 'You recently opened this',
@@ -42,7 +42,7 @@ const items = [
   },
   {
     file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
-    author: { label: 'Jane Doe', status: 'offline' },
+    author: { label: 'Jane Doe', status: 'offline' as const },
     lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
     lastUpdate: {
       label: 'You shared this in a Teams chat',
@@ -75,15 +75,7 @@ export const SizeSmall = () => {
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout
-                media={
-                  <Avatar
-                    name={item.author.label}
-                    badge={{ status: item.author.status as PresenceBadgeStatus }}
-                    size={24}
-                  />
-                }
-              >
+              <TableCellLayout media={<Avatar name={item.author.label} badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

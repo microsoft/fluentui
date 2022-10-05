@@ -727,6 +727,22 @@ describe('DetailsList', () => {
     );
   });
 
+  it('calculates DetailsHeader and DetailsFooter in rowcount', () => {
+    const onRenderDetailsHeaderMock = jest.fn();
+    const onRenderDetailsFooterMock = jest.fn();
+
+    const component = renderer.create(
+      <DetailsList
+        items={mockData(5)}
+        onRenderDetailsHeader={onRenderDetailsHeaderMock}
+        onRenderDetailsFooter={onRenderDetailsFooterMock}
+      />,
+    );
+
+    const grid = component.root.findByProps({ role: 'grid' });
+    expect(grid.props[`aria-rowcount`]).toEqual(7);
+  });
+
   it('invokes onRenderColumnHeaderTooltip to customize DetailsColumn tooltip rendering when provided', () => {
     const NUM_COLUMNS = 2;
     const onRenderColumnHeaderTooltipMock = jest.fn();
