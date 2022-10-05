@@ -33,16 +33,19 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
   );
   const onChangeHandler = React.useCallback(
     (event: CardOnSelectEvent) => {
-      if (!onCardSelect || shouldRestrictTriggerAction(event)) {
+      if (shouldRestrictTriggerAction(event)) {
         return;
       }
 
       const newCheckedValue = !isCardSelected;
 
       setIsCardSelected(newCheckedValue);
-      onCardSelect(event, {
-        selected: newCheckedValue,
-      });
+
+      if (onCardSelect) {
+        onCardSelect(event, {
+          selected: newCheckedValue,
+        });
+      }
     },
     [onCardSelect, isCardSelected, shouldRestrictTriggerAction],
   );
