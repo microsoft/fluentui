@@ -30,7 +30,7 @@ export const WithForm = () => {
       <DialogTrigger>
         <Button>Open formulary dialog</Button>
       </DialogTrigger>
-      <DialogSurface>
+      <DialogSurface aria-describedby={undefined}>
         <form onSubmit={handleSubmit}>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
