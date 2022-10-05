@@ -22,6 +22,9 @@ function main(options) {
   if (process.env.NODE_ENV !== 'test') {
     throw new Error('This is not supposed to be used as API only via direct node execution');
   }
+  if (!assertArgs(options.argv)) {
+    return;
+  }
 
   const lageArgs = getLageArgs(options);
 
@@ -46,8 +49,10 @@ function assertArgs(args) {
 This command runs <script> for all beachball-published packages, as well as packages for the version 8 website.
 `);
 
-    process.exit(0);
+    return false;
   }
+
+  return true;
 }
 
 /**
@@ -57,7 +62,6 @@ This command runs <script> for all beachball-published packages, as well as pack
  */
 function getLageArgs(options) {
   const { argv, workspacePackagesMetadata } = options;
-  assertArgs(argv);
 
   const releaseScope = process.env.RELEASE_VNEXT ? 'v9' : 'v8';
   const websitePackages = [

@@ -50,7 +50,27 @@ describe(`#runPublished`, () => {
     return { workspacePackagesMetadata, spawnSyncMock, getSpawnCallArguments };
   }
 
-  it(`should not do invoke lage with '--to' if all packages are private`, () => {
+  it(`should exit and provide help info if there are not arguments provided`, () => {
+    const { workspacePackagesMetadata, spawnSyncMock } = setup();
+    const logSpy = jest.spyOn(console, 'log');
+
+    main({
+      argv: [],
+      workspacePackagesMetadata,
+    });
+
+    expect(spawnSyncMock).not.toHaveBeenCalled();
+    expect(logSpy.mock.calls[0][0]).toMatchInlineSnapshot(`
+      "Usage:
+
+        yarn run:published <script> [<args>]
+
+      This command runs <script> for all beachball-published packages, as well as packages for the version 8 website.
+      "
+    `);
+  });
+
+  it(`should do not invoke lage with '--to' if all packages are private`, () => {
     const { workspacePackagesMetadata, getSpawnCallArguments } = setup();
     const metadataCopy = { ...workspacePackagesMetadata };
     metadataCopy['@fluentui/react'].packageJson.private = true;
