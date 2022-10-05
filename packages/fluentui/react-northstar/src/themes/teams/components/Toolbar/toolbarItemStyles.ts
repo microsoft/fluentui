@@ -10,6 +10,7 @@ export const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesPro
     const colors = getColorScheme(v.colorScheme);
     const { borderWidth } = siteVariables;
     const borderFocusStyles = getBorderFocusStyles({
+      borderRadius: v.borderRadius,
       variables: siteVariables,
     });
 
