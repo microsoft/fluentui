@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
-import { MoreHorizontal24Filled, Open16Regular, Share16Regular } from '@fluentui/react-icons';
+import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body1, Caption1 } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { action } from '@storybook/addon-actions';
@@ -15,7 +15,7 @@ const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
 const SampleCardContent = () => (
   <>
     <CardHeader
-      image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
+      image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
       header={
         <Body1>
           <b>App Name</b>
@@ -50,7 +50,7 @@ storiesOf('Card Converged', module)
           <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
         </CardPreview>
         <CardHeader
-          image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
+          image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
           header={
             <Body1>
               <b>Sales analysis 2019 presentation</b>
@@ -125,70 +125,6 @@ storiesOf('Card Converged', module)
         </Card>
       </div>
     </div>
-  ))
-  .addStory('CardHeader', () => (
-    <Card>
-      <CardHeader
-        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
-        header={
-          <Body1>
-            <b>App Name</b>
-          </Body1>
-        }
-        description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
-      />
-      <CardHeader
-        header={
-          <Body1>
-            <b>App Name</b>
-          </Body1>
-        }
-        description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
-      />
-      <CardHeader
-        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
-        header={
-          <Body1>
-            <b>App Name</b>
-          </Body1>
-        }
-        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
-      />
-      <CardHeader
-        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
-        header={
-          <Body1>
-            <b>App Name</b>
-          </Body1>
-        }
-        description={<Caption1>Developer</Caption1>}
-      />
-      <CardHeader
-        header={
-          <Body1>
-            <b>App Name</b>
-          </Body1>
-        }
-        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
-      />
-      <CardHeader
-        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
-        header={
-          <Body1>
-            <b>App Name</b>
-          </Body1>
-        }
-      />
-      <CardHeader
-        header={
-          <Body1>
-            <b>App Name</b>
-          </Body1>
-        }
-      />
-    </Card>
   ));
 
 storiesOf('Card Converged', module)
@@ -197,9 +133,9 @@ storiesOf('Card Converged', module)
       steps={new Screener.Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
         .hover('[role="group"]')
-        .snapshot('focused', { cropTo: '.testWrapper' })
+        .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('[role="group"]')
-        .snapshot('clicked', { cropTo: '.testWrapper' })
+        .snapshot('click', { cropTo: '.testWrapper' })
         .end()}
     >
       <div className="testWrapper" style={{ width: '300px' }}>
@@ -215,7 +151,6 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
@@ -228,7 +163,6 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
@@ -241,7 +175,6 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
@@ -254,8 +187,83 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
   );
+
+storiesOf('Card Converged', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .hover('[role="group"]')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('[role="group"]')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .mouseUp('[role="group"]')
+        .snapshot('selected', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
+    </Screener>
+  ))
+  .addStory(
+    'appearance selectable - Filled',
+    () => (
+      <Card defaultSelected={false} appearance="filled">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance selectable - Filled Alternative',
+    () => (
+      <Card defaultSelected={false} appearance="filled-alternative">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance selectable - Outline',
+    () => (
+      <Card defaultSelected={false} appearance="outline">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance selectable - Subtle',
+    () => (
+      <Card defaultSelected={false} appearance="subtle">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory('appearance focusable + selectable', () => (
+    <Card focusMode="no-tab" defaultSelected={false}>
+      <SampleCardContent />
+    </Card>
+  ));
