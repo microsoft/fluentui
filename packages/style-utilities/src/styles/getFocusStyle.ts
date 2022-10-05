@@ -92,6 +92,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
       [`.${IsFocusVisibleClassName} &${isFocusedOnly ? ':focus' : ''}:after`]: {
         content: '""',
         position: 'absolute',
+        pointerEvents: 'none',
         left: inset + 1,
         top: inset + 1,
         bottom: inset + 1,
