@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add justify-self styling to Progress styles",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
