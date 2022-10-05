@@ -92,13 +92,14 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
       main: joinPathFragments(projectConfig.root, 'tsconfig.json'),
       lib: joinPathFragments(projectConfig.root, 'tsconfig.lib.json'),
       test: joinPathFragments(projectConfig.root, 'tsconfig.spec.json'),
+      cypress: joinPathFragments(projectConfig.root, 'tsconfig.cy.json'),
     },
     sourceRoot: joinPathFragments(projectConfig.root, 'src'),
     unstable: {
       sourceRoot: joinPathFragments(projectConfig.root, 'src', 'unstable'),
       rootPackageJson: joinPathFragments(projectConfig.root, 'src', 'unstable', 'package.json__tmpl__'),
     },
-    conformanceSetup: joinPathFragments(projectConfig.root, 'src', 'common', 'isConformant.ts'),
+    conformanceSetup: joinPathFragments(projectConfig.root, 'src', 'testing', 'isConformant.ts'),
     babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
     jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
     jestSetupFile: joinPathFragments(projectConfig.root, 'config', 'tests.js'),
@@ -107,16 +108,12 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
     rootJestPreset: '/jest.preset.js',
     rootJestConfig: '/jest.config.js',
     npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
+    stories: joinPathFragments(projectConfig.root, 'stories'),
     storybook: {
       rootFolder: joinPathFragments(projectConfig.root, '.storybook'),
       tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
       main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
       preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
-    },
-    e2e: {
-      rootFolder: joinPathFragments(projectConfig.root, 'e2e'),
-      support: joinPathFragments(projectConfig.root, 'e2e', 'support.js'),
-      tsconfig: joinPathFragments(projectConfig.root, 'e2e', 'tsconfig.json'),
     },
   };
 
