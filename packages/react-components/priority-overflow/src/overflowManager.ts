@@ -8,6 +8,7 @@ import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOpt
  */
 export function createOverflowManager(): OverflowManager {
   let container: HTMLElement | undefined;
+  let overflowMenu: HTMLElement | undefined;
   const options: Required<ObserveOptions> = {
     padding: 10,
     overflowAxis: 'horizontal',
@@ -121,6 +122,8 @@ export function createOverflowManager(): OverflowManager {
       return;
     }
 
+    const overflowMenuSize = overflowMenu ? getOffsetSize(overflowMenu) : 0;
+
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
     const invisibleTop = invisibleItemQueue.peek();
@@ -141,6 +144,10 @@ export function createOverflowManager(): OverflowManager {
         break;
       }
       currentWidth -= makeItemInvisible();
+    }
+
+    if (invisibleItemQueue.size() > 0 && currentWidth + overflowMenuSize > availableSize) {
+      makeItemInvisible();
     }
 
     // only update when the state of visible/invisible items has changed
@@ -171,6 +178,10 @@ export function createOverflowManager(): OverflowManager {
   };
 
   const addItem: OverflowManager['addItem'] = item => {
+    if (overflowItems[item.id]) {
+      return;
+    }
+
     overflowItems[item.id] = item;
     visibleItemQueue.enqueue(item.id);
 
@@ -188,7 +199,19 @@ export function createOverflowManager(): OverflowManager {
     update();
   };
 
+  const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
+    overflowMenu = el;
+  };
+
+  const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
+    overflowMenu = undefined;
+  };
+
   const removeItem: OverflowManager['removeItem'] = itemId => {
+    if (!overflowItems[itemId]) {
+      return;
+    }
+
     const item = overflowItems[itemId];
     visibleItemQueue.remove(itemId);
     invisibleItemQueue.remove(itemId);
@@ -209,5 +232,7 @@ export function createOverflowManager(): OverflowManager {
     observe,
     removeItem,
     update,
+    addOverflowMenu,
+    removeOverflowMenu,
   };
 }
