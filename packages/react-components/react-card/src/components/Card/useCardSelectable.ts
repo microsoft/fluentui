@@ -11,7 +11,7 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
   const { findAllFocusable } = useFocusFinders();
   const selectableRef = React.useRef<HTMLDivElement>(null);
 
-  const isSelectable = Boolean(selected || defaultSelected || onCardSelect);
+  const isSelectable = [selected, defaultSelected, onCardSelect, select].some(bool => typeof bool !== 'undefined');
   const hasSelectSlot = Boolean(select);
 
   const [isCardSelected, setIsCardSelected] = React.useState(() => Boolean(selected ?? defaultSelected));
