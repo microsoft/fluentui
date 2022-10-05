@@ -72,14 +72,23 @@ export const useField_unstable = <T extends FieldComponent>(
   params: FieldConfig<T>,
 ): FieldState<T> => {
   const [fieldProps, controlProps] = getPartitionedFieldProps(props);
+  const { orientation = 'vertical', validationState } = fieldProps;
+  const { labelConnection = 'htmlFor' } = params;
 
   const baseId = useId('field-');
-
-  const { orientation = 'vertical', validationState } = fieldProps;
 
   const root = resolveShorthand(fieldProps.root, {
     required: true,
     defaultProps: getNativeElementProps('div', fieldProps),
+  });
+
+  const control = resolveShorthand(fieldProps.control, {
+    required: true,
+    defaultProps: {
+      ref,
+      id: baseId + '__control',
+      ...controlProps,
+    },
   });
 
   const label = resolveShorthand(fieldProps.label, {
@@ -87,7 +96,7 @@ export const useField_unstable = <T extends FieldComponent>(
       id: baseId + '__label',
       required: controlProps.required,
       size: typeof controlProps.size === 'string' ? controlProps.size : undefined,
-      // htmlFor is set below
+      htmlFor: labelConnection === 'htmlFor' ? control.id : undefined,
     },
   });
 
@@ -110,26 +119,16 @@ export const useField_unstable = <T extends FieldComponent>(
     },
   });
 
-  const { labelConnection = 'htmlFor' } = params;
-  const hasError = validationState === 'error';
-
-  const control = resolveShorthand(fieldProps.control, {
-    required: true,
-    defaultProps: {
-      ref,
-      // Add a default ID only if required for label's htmlFor prop
-      id: label && labelConnection === 'htmlFor' ? baseId + '__control' : undefined,
-      // Add aria-labelledby only if not using the label's htmlFor
-      'aria-labelledby': labelConnection !== 'htmlFor' ? label?.id : undefined,
-      'aria-describedby': hasError ? hint?.id : mergeAriaDescribedBy(validationMessage?.id, hint?.id),
-      'aria-errormessage': hasError ? validationMessage?.id : undefined,
-      'aria-invalid': hasError ? true : undefined,
-      ...controlProps,
-    },
-  });
-
-  if (labelConnection === 'htmlFor' && label && !label.htmlFor) {
-    label.htmlFor = control.id;
+  // Hook up aria props on the control
+  if (labelConnection === 'aria-labelledby') {
+    control['aria-labelledby'] ??= label?.id;
+  }
+  if (validationState === 'error') {
+    control['aria-invalid'] ??= true;
+    control['aria-errormessage'] ??= validationMessage?.id;
+    control['aria-describedby'] ??= hint?.id;
+  } else {
+    control['aria-describedby'] ??= mergeAriaDescribedBy(validationMessage?.id, hint?.id);
   }
 
   const state: FieldState<FieldComponent> = {
