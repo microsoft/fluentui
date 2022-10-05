@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: No pointer events on focus ring",
+  "packageName": "@fluentui/style-utilities",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
