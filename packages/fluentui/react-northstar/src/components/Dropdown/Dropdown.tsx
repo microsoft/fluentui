@@ -35,6 +35,7 @@ import {
   UIComponentProps,
   isFromKeyboard as detectIsFromKeyboard,
   createShorthand,
+  setWhatInputSource,
 } from '../../utils';
 import { List, ListProps } from '../List/List';
 import { DropdownItem, DropdownItemProps } from './DropdownItem';
@@ -1167,12 +1168,14 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
           case keyboardKey.ArrowLeft:
             e.stopPropagation();
             if (!context.rtl) {
+              setWhatInputSource(e.view.document, 'keyboard');
               trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.ArrowRight:
             e.stopPropagation();
             if (context.rtl) {
+              setWhatInputSource(e.view.document, 'keyboard');
               trySetLastSelectedItemAsActive();
             }
             break;
