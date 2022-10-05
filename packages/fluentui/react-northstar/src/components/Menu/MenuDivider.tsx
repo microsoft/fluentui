@@ -29,16 +29,27 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<MenuDividerBehaviorProps>;
 
+  /** Indicates whether the menu divider is part of submenu. */
   inSubmenu?: boolean;
-  secondary?: boolean;
+
+  /** A menu can adjust its appearance to de-emphasize its contents. */
   pills?: boolean;
+
+  /**
+   * A menu can point to show its relationship to nearby content.
+   * For vertical menu, it can point to the start of the item or to the end.
+   */
   pointing?: boolean | 'start' | 'end';
+
+  /** The menu divider can have primary type. */
   primary?: boolean;
+
+  /** A vertical menu displays elements vertically. */
   vertical?: boolean;
 }
 
 export type MenuDividerStylesProps = Required<
-  Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'pills' | 'primary' | 'pointing' | 'secondary'>
+  Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'pills' | 'primary' | 'pointing'>
 > & {
   hasContent: boolean;
 };
@@ -78,7 +89,6 @@ export const MenuDivider = (React.forwardRef<HTMLLIElement, MenuDividerProps>((i
     className,
     design,
     styles,
-    secondary,
     variables,
   } = props;
 
@@ -96,7 +106,6 @@ export const MenuDivider = (React.forwardRef<HTMLLIElement, MenuDividerProps>((i
       vertical,
       inSubmenu,
       primary,
-      secondary,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -138,7 +147,6 @@ MenuDivider.displayName = 'MenuDivider';
 MenuDivider.propTypes = {
   ...commonPropTypes.createCommon(),
   primary: PropTypes.bool,
-  secondary: PropTypes.bool,
   vertical: PropTypes.bool,
   inSubmenu: PropTypes.bool,
   pointing: PropTypes.oneOf(['start', 'end', true, false]),

@@ -9,7 +9,6 @@ import {
   useUnhandledProps,
   childrenExist,
 } from '@fluentui/react-bindings';
-import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
@@ -45,9 +44,6 @@ export interface MenuItemWrapperProps extends UIComponentProps, ContentComponent
   /** The menu item wrapper can have primary type. */
   primary?: boolean;
 
-  /** The menu item wrapper can have secondary type. */
-  secondary?: boolean;
-
   /** Menu items wrapper can by highlighted using underline. */
   underlined?: boolean;
 
@@ -68,7 +64,6 @@ export type MenuItemWrapperStylesProps = Required<
     | 'pills'
     | 'pointing'
     | 'primary'
-    | 'secondary'
     | 'underlined'
     | 'vertical'
     | 'on'
@@ -98,7 +93,6 @@ export const MenuItemWrapper = (React.forwardRef<HTMLLIElement, MenuItemWrapperP
     isFromKeyboard,
     pills,
     pointing,
-    secondary,
     underlined,
     vertical,
     primary,
@@ -114,7 +108,6 @@ export const MenuItemWrapper = (React.forwardRef<HTMLLIElement, MenuItemWrapperP
       isFromKeyboard,
       pills,
       pointing,
-      secondary,
       underlined,
       vertical,
       primary,
@@ -162,8 +155,7 @@ MenuItemWrapper.propTypes = {
   isFromKeyboard: PropTypes.bool,
   pills: PropTypes.bool,
   pointing: PropTypes.oneOf(['start', 'end', true, false]),
-  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  primary: PropTypes.bool,
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
   on: PropTypes.oneOf(['hover']),

@@ -43,9 +43,6 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
   /** A split button toggle can emphasize that it represents the primary action. */
   primary?: boolean;
 
-  /** A split button toggle can emphasize that it represents an alternative action. */
-  secondary?: boolean;
-
   /** A split button toggle can be sized */
   size?: SizeValue;
 
@@ -162,8 +159,7 @@ SplitButtonToggle.propTypes = {
   ...commonPropTypes.createCommon({}),
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  primary: PropTypes.bool,
   size: customPropTypes.size,
   flat: PropTypes.bool,
 };

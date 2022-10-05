@@ -50,7 +50,7 @@ export default () => (
          <Provider theme={teamsTheme}>
             <Button content="Button" />
             <Button icon={<AddIcon />} iconOnly primary />
-            <Button icon={<EmailIcon />} content="Send email" secondary />
+            <Button icon={<EmailIcon />} content="Send email" tinted />
             <EmojiIcon size="larger" />
             <Label content="Label with icon" icon={<CloseIcon />} />
          </Provider>
@@ -59,7 +59,7 @@ export default () => (
         <>
           <Button content="Button" />
           <Button icon={<AddIcon />} iconOnly primary />
-          <Button icon={<EmailIcon />} content="Send email" secondary />
+          <Button icon={<EmailIcon />} content="Send email" tinted />
           <EmojiIcon size="larger" />
           <Label content="Label with icon" icon={<CloseIcon />} />
         </>
@@ -90,7 +90,6 @@ export default () => (
           <Button
             content="Send email"
             icon={<EmailIcon styles={{ color: 'brown' }} />}
-            secondary
             styles={styles}
           />
 
@@ -122,7 +121,6 @@ export default () => (
         <Button
           content="Secure payment"
           icon={<LockIcon variables={{ color: 'blue' }} />}
-          secondary
           variables={{
             color: 'coral',
             backgroundColor: 'charcoal',
@@ -145,7 +143,6 @@ export default () => (
               }}
             />
           }
-          secondary
           variables={{
             color: 'coral',
             backgroundColor: 'charcoal',
@@ -198,10 +195,10 @@ export default () => (
               minWidth: '24px',
               borderRadius: '8px',
               color: 'darkred',
-              secondaryColor: '#ffffff',
-              secondaryBorderColor: 'transparent',
-              secondaryBackgroundColor: '#6699CC',
-              secondaryBackgroundColorHover: '#91A3B0',
+              tintedColor: '#ffffff',
+              tintedBorderColor: 'transparent',
+              tintedBackgroundColor: '#6699CC',
+              tintedBackgroundColorHover: '#91A3B0',
             },
           },
           componentStyles: {
@@ -218,7 +215,7 @@ export default () => (
             <div>
               <Button content="Button" />
               <Button icon={<AddIcon />} iconOnly primary />
-              <Button icon={<EmailIcon />} content="Send email" secondary />
+              <Button icon={<EmailIcon />} content="Send email" tinted />
               <EmojiIcon size="larger" />
               <Label content="Label with icon" icon={<CloseIcon />} />
             </div>
@@ -244,10 +241,10 @@ export default () => (
                   minWidth: '24px',
                   borderRadius: '8px',
                   color: 'darkred',
-                  secondaryColor: '#ffffff',
-                  secondaryBorderColor: 'transparent',
-                  secondaryBackgroundColor: '#6699CC',
-                  secondaryBackgroundColorHover: '#91A3B0',
+                  tintedColor: '#ffffff',
+                  tintedBorderColor: 'transparent',
+                  tintedBackgroundColor: '#6699CC',
+                  tintedBackgroundColorHover: '#91A3B0',
                 },
               },
               componentStyles: {
@@ -262,7 +259,7 @@ export default () => (
             <div>
               <Button content="Button" />
               <Button icon={<AddIcon />} iconOnly primary />
-              <Button icon={<EmailIcon />} content="Send email" secondary />
+              <Button icon={<EmailIcon />} content="Send email" tinted />
               <EmojiIcon size="larger" />
               <Label content="Label with icon" icon={<CloseIcon />} />
             </div>
@@ -283,7 +280,7 @@ export default () => (
           <Header as="h3" content="Default theming" />
           <Button content="Button" />
           <Button icon={<AddIcon />} iconOnly primary />
-          <Button icon={<EmailIcon />} content="Send email" secondary />
+          <Button icon={<EmailIcon />} content="Send email" tinted />
           <EmojiIcon size="larger" />
           <Label content="Label with icon" icon={<CloseIcon />} />
 
@@ -303,7 +300,7 @@ export default () => (
 
               <Button content="Button" />
               <Button icon={<AddIcon />} iconOnly primary />
-              <Button icon={<EmailIcon />} content="Send email" secondary />
+              <Button icon={<EmailIcon />} content="Send email" tinted />
               <EmojiIcon size="larger" />
               <Label content="Label with icon" icon={<CloseIcon />} />
 
@@ -322,7 +319,7 @@ export default () => (
 
                   <Button content="Button" />
                   <Button icon={<AddIcon />} iconOnly primary />
-                  <Button icon={<EmailIcon />} content="Send email" secondary />
+                  <Button icon={<EmailIcon />} content="Send email" tinted />
                   <EmojiIcon size="larger" />
                   <Label content="Label with icon" icon={<CloseIcon />} />
                 </div>
@@ -336,7 +333,7 @@ export default () => (
           <Header as="h3" content="Default theming" />
           <Button content="Button" />
           <Button icon={<AddIcon />} iconOnly primary />
-          <Button icon={<EmailIcon />} content="Send email" secondary />
+          <Button icon={<EmailIcon />} content="Send email" tinted />
           <EmojiIcon size="larger" />
           <Label content="Label with icon" icon={<CloseIcon />} />
 
@@ -354,7 +351,7 @@ export default () => (
 
               <Button content="Button" />
               <Button icon={<AddIcon />} iconOnly primary />
-              <Button icon={<EmailIcon />} content="Send email" secondary />
+              <Button icon={<EmailIcon />} content="Send email" tinted />
               <EmojiIcon size="larger" />
               <Label content="Label with icon" icon={<CloseIcon />} />
 
@@ -372,7 +369,7 @@ export default () => (
 
                   <Button content="Button" />
                   <Button icon={<AddIcon />} iconOnly primary />
-                  <Button icon={<EmailIcon />} content="Send email" secondary />
+                  <Button icon={<EmailIcon />} content="Send email" tinted />
                   <EmojiIcon size="larger" />
                   <Label content="Label with icon" icon={<CloseIcon />} />
                 </>

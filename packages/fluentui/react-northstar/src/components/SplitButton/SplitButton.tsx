@@ -87,9 +87,6 @@ export interface SplitButtonProps
   /** A split button can be formatted to show different levels of emphasis. */
   primary?: boolean;
 
-  /** A split button can be formatted to show different levels of emphasis. */
-  secondary?: boolean;
-
   /** A split button can be sized */
   size?: SizeValue;
 
@@ -120,7 +117,6 @@ export const SplitButton = (React.forwardRef<HTMLDivElement, SplitButtonProps>((
     disabled,
     menu,
     primary,
-    secondary,
     toggleButton,
     size,
     position,
@@ -223,7 +219,6 @@ export const SplitButton = (React.forwardRef<HTMLDivElement, SplitButtonProps>((
                   defaultProps: () => ({
                     styles: resolvedStyles.menuButton,
                     primary,
-                    secondary,
                     disabled,
                   }),
                   overrideProps: handleMenuButtonTriggerOverrides,
@@ -259,7 +254,6 @@ export const SplitButton = (React.forwardRef<HTMLDivElement, SplitButtonProps>((
             getA11yProps('toggleButton', {
               disabled,
               primary,
-              secondary,
               size,
               flat,
             }),
@@ -307,8 +301,7 @@ SplitButton.propTypes = {
   size: customPropTypes.size,
   flat: PropTypes.bool,
   popperRef: customPropTypes.ref,
-  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  primary: PropTypes.bool,
   toggleButton: customPropTypes.itemShorthand,
   position: PropTypes.oneOf(POSITIONS),
   align: PropTypes.oneOf(ALIGNMENTS),

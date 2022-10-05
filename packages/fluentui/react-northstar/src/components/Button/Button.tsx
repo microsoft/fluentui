@@ -88,9 +88,6 @@ export interface ButtonProps
   /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
   text?: boolean;
 
-  /** A button can emphasize that it represents an alternative action. */
-  secondary?: boolean;
-
   /** A button can emphasize that it represents the tinted style. */
   tinted?: boolean;
 
@@ -326,7 +323,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       'onFocus',
       'primary',
       'text',
-      'secondary',
       'size',
       'styles',
       'variables',
@@ -362,10 +358,9 @@ Button.propTypes = {
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
-  tinted: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  tinted: PropTypes.bool,
+  primary: PropTypes.bool,
   text: PropTypes.bool,
-  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   size: PropTypes.oneOf(['medium', 'small']),
 };
 

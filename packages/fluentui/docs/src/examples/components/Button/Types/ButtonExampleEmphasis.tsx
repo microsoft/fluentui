@@ -6,8 +6,8 @@ const ButtonExampleEmphasis = () => (
     <Button primary>
       <Button.Content>Primary</Button.Content>
     </Button>
-    <Button secondary>
-      <Button.Content>Secondary</Button.Content>
+    <Button>
+      <Button.Content>Default</Button.Content>
     </Button>
     <Button tinted>
       <Button.Content>Tinted</Button.Content>

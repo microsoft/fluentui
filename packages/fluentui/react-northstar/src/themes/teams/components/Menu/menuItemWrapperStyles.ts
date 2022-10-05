@@ -15,19 +15,7 @@ import {
 
 export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesProps, MenuVariables> = {
   root: ({ props, variables: v }): ICSSInJSStyle => {
-    const {
-      active,
-      disabled,
-      iconOnly,
-      isFromKeyboard,
-      pills,
-      pointing,
-      secondary,
-      underlined,
-      vertical,
-      primary,
-      on,
-    } = props;
+    const { active, disabled, iconOnly, isFromKeyboard, on, pills, pointing, primary, underlined, vertical } = props;
     const colors = getColorScheme(v.colorScheme, null, primary);
     return {
       color: 'inherit',
@@ -35,10 +23,6 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
       position: 'relative',
       verticalAlign: 'middle',
       display: 'block',
-
-      ...(secondary && {
-        background: 'salmon',
-      }),
 
       ...(vertical && {
         border: `solid ${v.verticalItemBorderWidth} ${v.verticalItemBorderColor}`,

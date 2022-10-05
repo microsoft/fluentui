@@ -54,9 +54,6 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
   /** The carousel navigation can have primary type. */
   primary?: boolean;
 
-  /** The carousel navigation can have secondary type. */
-  secondary?: boolean;
-
   /** A vertical carousel navigation displays elements vertically. */
   vertical?: boolean;
 
@@ -87,7 +84,6 @@ export const CarouselNavigation = (React.forwardRef<HTMLUListElement, CarouselNa
     iconOnly,
     items,
     primary,
-    secondary,
     vertical,
     thumbnails,
     styles,
@@ -136,7 +132,6 @@ export const CarouselNavigation = (React.forwardRef<HTMLUListElement, CarouselNa
             iconOnly,
             index,
             primary,
-            secondary,
             vertical,
             thumbnails,
             disableClickableNav,
@@ -176,8 +171,7 @@ CarouselNavigation.propTypes = {
   thumbnails: PropTypes.bool,
   items: customPropTypes.collectionShorthand,
   onItemClick: PropTypes.func,
-  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  primary: PropTypes.bool,
   vertical: PropTypes.bool,
   disableClickableNav: PropTypes.bool,
 };
