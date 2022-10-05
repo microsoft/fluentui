@@ -8,7 +8,7 @@ import { isBrowser } from './isBrowser';
  */
 
 // last used input type
-let currentInput = 'initial';
+let currentInput = 'mouse'; // assume happy path
 
 // event buffer timer
 let eventTimer = null;
