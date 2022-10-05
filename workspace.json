@@ -505,6 +505,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-infobutton": {
+      "root": "packages/react-components/react-infobutton",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-infobutton/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-input": {
       "root": "packages/react-components/react-input",
       "projectType": "library",
