@@ -39,6 +39,7 @@
       "@fluentui/react-field": ["packages/react-components/react-field/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
+      "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
