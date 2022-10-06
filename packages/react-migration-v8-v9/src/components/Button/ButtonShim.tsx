@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IBaseButtonProps } from '@fluentui/react';
+import type { IBaseButtonProps } from '@fluentui/react';
 
 import { Button } from '@fluentui/react-components';
 
