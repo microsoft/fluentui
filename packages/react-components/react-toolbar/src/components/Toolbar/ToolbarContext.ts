@@ -13,5 +13,5 @@ const toolbarContextDefaultValue = {
 
 export const useToolbarContext = () => React.useContext(ToolbarContext) ?? toolbarContextDefaultValue;
 
-export const useAccordionContext_unstable = <T>(selector: ContextSelector<ToolbarContextValue, T>): T =>
+export const useToolbarContext_unstable = <T>(selector: ContextSelector<ToolbarContextValue, T>): T =>
   useContextSelector(ToolbarContext, (ctx = toolbarContextDefaultValue) => selector(ctx));
