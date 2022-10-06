@@ -105,8 +105,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
-                <strong>{data!.chartTitle}</strong>
+              <div
+                className={this._classNames.chartTitleLeft}
+                title={data!.chartTitle}
+                {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}
+              >
+                {data!.chartTitle}
               </div>
             )}
             {showRatio && (
