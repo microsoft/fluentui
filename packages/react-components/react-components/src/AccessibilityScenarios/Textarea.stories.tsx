@@ -279,7 +279,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
                 }
                 rules={{
                   required: isProblemNotSolved,
-                  minLength: 20,
+                  minLength: isProblemNotSolved ? 20 : 0,
                   validate: {
                     always: () => {
                       if (!formState.isSubmitting) {
