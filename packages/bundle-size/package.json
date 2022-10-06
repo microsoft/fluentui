@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/bundle-size",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "bin": {
     "bundle-size": "./bin/bundle-size.js"
   },

@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 04 Oct 2022 07:45:02 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.4",
+      "version": "1.12.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "8e630de5cdb8b26e6627cd6378d7e3c6c1271fb6",
+            "comment": "chore: enable object-shorthand in ESLint"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Sep 2022 07:46:25 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.3",
       "version": "1.12.3",

@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
-import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
+import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { Escape } from '@fluentui/keyboard-keys';
 
@@ -22,9 +22,7 @@ import { Escape } from '@fluentui/keyboard-keys';
  */
 export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
   const { children } = props;
-  const child = React.isValidElement(children)
-    ? getTriggerChild<Partial<PopoverTriggerChildProps>>(children)
-    : undefined;
+  const child = getTriggerChild(children);
 
   const open = usePopoverContext_unstable(context => context.open);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
@@ -72,9 +70,9 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     ...triggerAttributes,
     'aria-expanded': `${open}`,
     ...child?.props,
-    onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
-    onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
-    onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
+    onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
+    onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
+    onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
     ref: useMergedRefs(triggerRef, child?.ref),
   } as const;
 
@@ -82,13 +80,13 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
     {
       ...triggerProps,
-      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
-      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
+      onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+      onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
     },
   );
 
   return {
-    children: applyTriggerPropsToChildren<PopoverTriggerChildProps>(
+    children: applyTriggerPropsToChildren(
       props.children,
       useARIAButtonProps(
         child?.type === 'button' || child?.type === 'a' ? child.type : 'div',

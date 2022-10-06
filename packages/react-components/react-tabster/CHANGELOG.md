@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 15 Sep 2022 09:49:31 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.2)
+
+Mon, 03 Oct 2022 22:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.1.1..@fluentui/react-tabster_v9.1.2)
+
+### Patches
+
+- fix: focus outline selectors are data attributes ([PR #24994](https://github.com/microsoft/fluentui/pull/24994) by lingfangao@hotmail.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.1)
 

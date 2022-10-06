@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonShim renders a default state 1`] = `
+<div>
+  <button
+    class="fui-Button ms-Button--default"
+    type="button"
+  >
+    Default ButtonShim
+  </button>
+</div>
+`;

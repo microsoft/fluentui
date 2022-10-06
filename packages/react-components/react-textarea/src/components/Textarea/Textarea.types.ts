@@ -27,6 +27,8 @@ export type TextareaProps = Omit<
    * Styling the Textarea should use.
    *
    * @default outline
+   *
+   * Note: 'filled-darker-shadow' and 'filled-lighter-shadow' are deprecated and will be removed in the future.
    */
   appearance?: 'outline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
 

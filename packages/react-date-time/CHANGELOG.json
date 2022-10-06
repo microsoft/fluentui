@@ -2,6 +2,81 @@
   "name": "@fluentui/react-date-time",
   "entries": [
     {
+      "date": "Tue, 04 Oct 2022 07:45:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.8",
+      "version": "8.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.97.2",
+            "commit": "33559052b672f787b021bd2fbc9826e88ce2a2de"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Oct 2022 07:37:49 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.7",
+      "version": "8.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.97.1",
+            "commit": "86b3133d97c177cac545b253deb11374ee829574"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 07:38:09 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.6",
+      "version": "8.7.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.97.0",
+            "commit": "fcb2ee2d270e6f584c6dbbd45f39a50c994c38be"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Sep 2022 07:40:10 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.5",
+      "version": "8.7.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.96.3",
+            "commit": "cc8acd94d3f68011427d6e031201a156e3b04ed9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Sep 2022 07:37:49 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.4",
+      "version": "8.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.96.2",
+            "commit": "316aa1e8df88bd9ec563d32222565dc48bc9fa29"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Sep 2022 07:43:45 GMT",
       "tag": "@fluentui/react-date-time_v8.7.3",
       "version": "8.7.3",

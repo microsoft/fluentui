@@ -28,5 +28,6 @@ export const useTableHeader_unstable = (props: TableHeaderProps, ref: React.Ref<
       ...(sortable && keyboardNavAttr),
       ...props,
     }),
+    noNativeElements,
   };
 };

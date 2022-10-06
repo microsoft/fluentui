@@ -2,6 +2,33 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:35 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "d8219051250909d31767845375b6e1ed6a053856",
+            "comment": "fix: Checkbox's label shouldn't have a pointer cursor when disabled"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e44263f522e3e690c49ac69e5eef8e522e6e0a4a",
+            "comment": "fix: Making the hidden input only cover the indicator and not also the label."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.1.2",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:45 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.6",
       "version": "9.0.6",

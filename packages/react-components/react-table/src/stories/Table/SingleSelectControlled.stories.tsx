@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition, RowId } from '../../hooks';
+import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
@@ -96,24 +96,36 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const SingleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(new Set<RowId>());
-  const { rows } = useTable({
-    columns,
-    items,
-    selectionMode: 'single',
-    selectedRows,
-    onSelectionChange: setSelectedRows,
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      selected: selection.isRowSelected(row.rowId),
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-    }),
-  });
+  const [selectedRows, setSelectedRows] = React.useState(
+    () => new Set<RowId>([1]),
+  );
+  const {
+    getRows,
+    selection: { toggleRow, isRowSelected },
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      useSelection({
+        selectionMode: 'single',
+        selectedItems: selectedRows,
+        onSelectionChange: setSelectedRows,
+      }),
+    ],
+  );
+
+  const rows = getRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
 

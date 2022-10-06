@@ -21,6 +21,7 @@ import {
   TableCellLayout,
   TableSelectionCell,
   TableCellActions,
+  TableProps,
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
@@ -72,474 +73,487 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-storiesOf('Table - cell actions', module)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().hover('.row').snapshot('hover row').end()}>{story()}</Screener>
-  ))
-  .addStory(
-    'default',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map(item => (
-            <TableRow key={item.file.label} className="row">
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>
-                  {item.file.label}
-                  <TableCellActions>
-                    <Button icon={<EditRegular />} appearance="subtle" />
-                    <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-                  </TableCellActions>
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  )
-  .addStory(
-    'always visible',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map(item => (
-            <TableRow key={item.file.label} className="row">
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>
-                  {item.file.label}
-                  <TableCellActions visible>
-                    <Button icon={<EditRegular />} appearance="subtle" />
-                    <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-                  </TableCellActions>
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  )
-  .addStory('in header cell', () => (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {items.map(item => (
-          <TableRow key={item.file.label} className="row">
-            <TableHeaderCell>
-              <TableCellLayout media={item.file.icon}>
-                {item.file.label}
-                <TableCellActions>
-                  <Button icon={<EditRegular />} appearance="subtle" />
-                  <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-                </TableCellActions>
-              </TableCellLayout>
-            </TableHeaderCell>
-            <TableCell>
-              <TableCellLayout
-                media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                }
-              >
-                {item.author.label}
-              </TableCellLayout>
-            </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ));
+interface SharedVrTestArgs {
+  noNativeElements: TableProps['noNativeElements'];
+}
 
-storiesOf('Table', module)
-  .addStory(
-    'default',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map(item => (
-            <TableRow key={item.file.label}>
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout>{item.lastUpdated.label}</TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  )
-  .addStory('size - small', () => (
-    <Table size="small">
-      <TableHeader>
-        <TableRow>
-          {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {items.map(item => (
-          <TableRow key={item.file.label}>
-            <TableCell>
-              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-            </TableCell>
-            <TableCell>
-              <TableCellLayout
-                media={
-                  <Avatar
-                    name={item.author.label}
-                    size={24}
-                    badge={{ status: item.author.status as PresenceBadgeStatus }}
-                  />
-                }
-              >
-                {item.author.label}
-              </TableCellLayout>
-            </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-            </TableCell>
-          </TableRow>
+const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
         ))}
-      </TableBody>
-    </Table>
-  ))
-  .addStory('size - smaller', () => (
-    <Table size="smaller">
-      <TableHeader>
-        <TableRow>
-          {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {items.map(item => (
-          <TableRow key={item.file.label}>
-            <TableCell>
-              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-            </TableCell>
-            <TableCell>
-              <TableCellLayout
-                media={
-                  <Avatar
-                    name={item.author.label}
-                    size={20}
-                    badge={{ status: item.author.status as PresenceBadgeStatus }}
-                  />
-                }
-              >
-                {item.author.label}
-              </TableCellLayout>
-            </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ))
-  .addStory('primary cell', () => (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {items.map(item => (
-          <TableRow key={item.file.label}>
-            <TableCell>
-              <TableCellLayout media={item.file.icon} description="Your organization" appearance="primary">
-                {item.file.label}
-              </TableCellLayout>
-            </TableCell>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label} className="row">
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>
+              {item.file.label}
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>
             <TableCellLayout
               media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
             >
               {item.author.label}
             </TableCellLayout>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ))
-  .addStory(
-    'multiselect',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableSelectionCell />
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map(item => (
-            <TableRow key={item.file.label}>
-              <TableSelectionCell />
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  )
-  .addStory(
-    'multiselect (checked)',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableSelectionCell checked={true} />
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map(item => (
-            <TableRow key={item.file.label}>
-              <TableSelectionCell checked={true} />
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  )
-  .addStory(
-    'multiselect (mixed)',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableSelectionCell checked="mixed" />
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map((item, i) => (
-            <TableRow key={item.file.label}>
-              <TableSelectionCell checked={!!(i % 2)} />
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  )
-  .addStory(
-    'single select',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableSelectionCell type="radio" hidden />
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map(item => (
-            <TableRow key={item.file.label}>
-              <TableSelectionCell type="radio" />
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  )
-  .addStory(
-    'single select (checked)',
-    () => (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableSelectionCell type="radio" hidden />
-            {columns.map(column => (
-              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {items.map((item, i) => (
-            <TableRow key={item.file.label}>
-              <TableSelectionCell type="radio" checked={i === 1} />
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
 
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ),
-    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
-  );
+const CellActionsAlwaysVisible: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label} className="row">
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>
+              {item.file.label}
+              <TableCellActions visible>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const CellActionsInHeaderCell: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label} className="row">
+          <TableHeaderCell>
+            <TableCellLayout media={item.file.icon}>
+              {item.file.label}
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
+            </TableCellLayout>
+          </TableHeaderCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const SizeMedium: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout>{item.lastUpdated.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const SizeSmall: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table size="small" noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={
+                <Avatar
+                  name={item.author.label}
+                  size={24}
+                  badge={{ status: item.author.status as PresenceBadgeStatus }}
+                />
+              }
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const SizeSmaller: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table size="smaller" noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={
+                <Avatar
+                  name={item.author.label}
+                  size={20}
+                  badge={{ status: item.author.status as PresenceBadgeStatus }}
+                />
+              }
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const PrimaryCell: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableCell>
+            <TableCellLayout media={item.file.icon} description="Your organization" appearance="primary">
+              {item.file.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCellLayout
+            media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+          >
+            {item.author.label}
+          </TableCellLayout>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const Multiselect: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableSelectionCell />
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const MultiselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell checked={true} />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableSelectionCell checked={true} />
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const MultiselectMixed: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell checked="mixed" />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map((item, i) => (
+        <TableRow key={item.file.label}>
+          <TableSelectionCell checked={!!(i % 2)} />
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const Singleselect: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell type="radio" hidden />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableSelectionCell type="radio" />
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell type="radio" hidden />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map((item, i) => (
+        <TableRow key={item.file.label}>
+          <TableSelectionCell type="radio" checked={i === 1} />
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+([true, false] as const).forEach(noNativeElements => {
+  const layoutName = noNativeElements ? 'flex' : 'table';
+  storiesOf(`Table layout ${layoutName} - cell actions`, module)
+    .addDecorator(story => (
+      <Screener steps={new Screener.Steps().hover('.row').snapshot('hover row').end()}>{story()}</Screener>
+    ))
+    .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    })
+    .addStory('always visible', () => <CellActionsAlwaysVisible noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    })
+    .addStory('in header cell', () => <CellActionsInHeaderCell noNativeElements={noNativeElements} />);
+
+  storiesOf(`Table layout ${layoutName}`, module)
+    .addStory('size - medium', () => <SizeMedium noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    })
+    .addStory('size - small', () => <SizeSmall noNativeElements={noNativeElements} />)
+    .addStory('size - smaller', () => <SizeSmaller noNativeElements={noNativeElements} />)
+    .addStory('primary cell', () => <PrimaryCell noNativeElements={noNativeElements} />)
+    .addStory('multiselect', () => <Multiselect noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    })
+    .addStory('multiselect (checked)', () => <MultiselectChecked noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    })
+    .addStory('multiselect (mixed)', () => <MultiselectMixed noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    })
+    .addStory('single select', () => <Singleselect noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    })
+    .addStory('single select (checked)', () => <SingleselectChecked noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    });
+});

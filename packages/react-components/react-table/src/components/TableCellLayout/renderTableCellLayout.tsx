@@ -1,16 +1,24 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { TableCellLayoutState, TableCellLayoutSlots } from './TableCellLayout.types';
+import { AvatarContextProvider } from '@fluentui/react-avatar';
+import type { TableCellLayoutState, TableCellLayoutSlots, TableCellLayoutContextValues } from './TableCellLayout.types';
 
 /**
  * Render the final JSX of TableCellLayout
  */
-export const renderTableCellLayout_unstable = (state: TableCellLayoutState) => {
+export const renderTableCellLayout_unstable = (
+  state: TableCellLayoutState,
+  contextValues: TableCellLayoutContextValues,
+) => {
   const { slots, slotProps } = getSlots<TableCellLayoutSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      {slots.media && <slots.media {...slotProps.media} />}
+      {slots.media && (
+        <AvatarContextProvider value={contextValues.avatar}>
+          <slots.media {...slotProps.media} />
+        </AvatarContextProvider>
+      )}
       {slots.wrapper && (
         <slots.wrapper {...slotProps.wrapper}>
           {slots.main && <slots.main {...slotProps.main}>{slotProps.root.children}</slots.main>}
