@@ -12,6 +12,8 @@ jobs:
   determine-if-skipping:
     runs-on: 'ubuntu-latest'
     steps:
+      - uses: haya14busa/action-workflow_run-status@v1
+
       - name: Download artifact to determine if skipping jobs
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -32,6 +34,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-northstar
     steps:
+      - uses: haya14busa/action-workflow_run-status@v1
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -111,6 +114,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react
     steps:
+      - uses: haya14busa/action-workflow_run-status@v1
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -187,6 +191,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-components
     steps:
+      - uses: haya14busa/action-workflow_run-status@v1
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
