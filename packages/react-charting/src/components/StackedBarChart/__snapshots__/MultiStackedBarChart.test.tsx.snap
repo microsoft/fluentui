@@ -55,12 +55,19 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Monitored"
           >
-            <strong>
-              Monitored
-            </strong>
+            Monitored
           </div>
           <div
             data-is-focusable={true}
@@ -207,12 +214,19 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Unmonitored"
           >
-            <strong>
-              Unmonitored
-            </strong>
+            Unmonitored
           </div>
           <div
             data-is-focusable={true}
@@ -610,12 +624,19 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Monitored"
           >
-            <strong>
-              Monitored
-            </strong>
+            Monitored
           </div>
           <div
             data-is-focusable={true}
@@ -762,12 +783,19 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Unmonitored"
           >
-            <strong>
-              Unmonitored
-            </strong>
+            Unmonitored
           </div>
           <div
             data-is-focusable={true}
@@ -1082,12 +1110,19 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Monitored"
           >
-            <strong>
-              Monitored
-            </strong>
+            Monitored
           </div>
           <div
             data-is-focusable={true}
@@ -1228,12 +1263,19 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Unmonitored"
           >
-            <strong>
-              Unmonitored
-            </strong>
+            Unmonitored
           </div>
           <div
             data-is-focusable={true}
@@ -1466,12 +1508,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Monitored"
           >
-            <strong>
-              Monitored
-            </strong>
+            Monitored
           </div>
           <div
             data-is-focusable={true}
@@ -1608,12 +1657,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Unmonitored"
           >
-            <strong>
-              Unmonitored
-            </strong>
+            Unmonitored
           </div>
           <div
             data-is-focusable={true}
@@ -1842,12 +1898,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Monitored"
           >
-            <strong>
-              Monitored
-            </strong>
+            Monitored
           </div>
           <div
             data-is-focusable={true}
@@ -1988,12 +2051,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Unmonitored"
           >
-            <strong>
-              Unmonitored
-            </strong>
+            Unmonitored
           </div>
           <div
             data-is-focusable={true}
@@ -2156,12 +2226,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Monitored"
           >
-            <strong>
-              Monitored
-            </strong>
+            Monitored
           </div>
         </div>
       </div>
@@ -2290,12 +2367,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Unmonitored"
           >
-            <strong>
-              Unmonitored
-            </strong>
+            Unmonitored
           </div>
           <div
             data-is-focusable={true}
@@ -2709,12 +2793,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Monitored"
           >
-            <strong>
-              Monitored
-            </strong>
+            Monitored
           </div>
           <div
             data-is-focusable={true}
@@ -2855,12 +2946,19 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               }
         >
           <div
+            className=
+
+                {
+                  font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             data-is-focusable={true}
             role="text"
+            title="Unmonitored"
           >
-            <strong>
-              Unmonitored
-            </strong>
+            Unmonitored
           </div>
           <div
             data-is-focusable={true}

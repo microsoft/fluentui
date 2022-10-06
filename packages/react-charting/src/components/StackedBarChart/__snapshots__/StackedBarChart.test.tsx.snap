@@ -42,12 +42,19 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
       <div
         data-is-focusable={true}
@@ -383,12 +390,19 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
       <div
         data-is-focusable={true}
@@ -641,12 +655,19 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
       <div
         data-is-focusable={true}
@@ -819,12 +840,19 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
       <div
         data-is-focusable={true}
@@ -997,12 +1025,19 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
       <div
         data-is-focusable={true}
@@ -1161,12 +1196,19 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
       <div
         data-is-focusable={true}
@@ -1339,12 +1381,19 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
     </div>
   </div>
@@ -1487,12 +1536,19 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
       <div
         data-is-focusable={true}
@@ -1665,12 +1721,19 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           }
     >
       <div
+        className=
+
+            {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         data-is-focusable={true}
         role="text"
+        title="Stacked bar chart 2nd example"
       >
-        <strong>
-          Stacked bar chart 2nd example
-        </strong>
+        Stacked bar chart 2nd example
       </div>
     </div>
   </div>
