@@ -47,7 +47,6 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "prerelease",
       "minor",
       "patch"
     ]
