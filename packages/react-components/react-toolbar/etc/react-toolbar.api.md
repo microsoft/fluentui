@@ -66,7 +66,9 @@ export type ToolbarContextValues = {
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
 // @public
-export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
+export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>> & {
+    vertical?: boolean;
+};
 
 // @public
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
