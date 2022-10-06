@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import descriptionMd from './Description.md';
 
-import { CommandButton, Icon, IIconProps } from '@fluentui/react';
+import { CommandButton, Icon } from '@fluentui/react';
+import type { IIconProps } from '@fluentui/react';
 import { FluentProvider, Button, webLightTheme, makeStyles, shorthands } from '@fluentui/react-components';
 import { CommandButtonShim } from '../../components/Button';
 
