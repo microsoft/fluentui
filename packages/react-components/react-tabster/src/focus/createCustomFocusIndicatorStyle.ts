@@ -16,13 +16,6 @@ export const createCustomFocusIndicatorStyle = (
   style: GriffelStyle,
   { selector = defaultOptions.selector }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
 ): GriffelStyle => ({
-  ':focus': {
-    outlineStyle: 'none',
-  },
-  ':focus-visible': {
-    outlineStyle: 'none',
-  },
-
   ...(selector === 'focus' && {
     [`&[${FOCUS_VISIBLE_ATTR}]`]: style,
   }),
