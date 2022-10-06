@@ -2,6 +2,21 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:38 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "fa59098280d8187ce9a62a568525694a56782e45",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:10 GMT",
       "tag": "@fluentui/react-overflow_v9.0.0-beta.10",
       "version": "9.0.0-beta.10",

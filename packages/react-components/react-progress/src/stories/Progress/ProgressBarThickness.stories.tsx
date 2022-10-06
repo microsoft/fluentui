@@ -4,7 +4,7 @@ import { Progress } from '@fluentui/react-progress';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.padding('20px', '0px'),
+    ...shorthands.margin('20px', '0px'),
   },
 });
 
@@ -13,9 +13,9 @@ export const Thickness = () => {
 
   return (
     <div>
-      <Progress className={styles.container} thickness="medium" label="Medium Progress" percentComplete={50} />
+      <Progress className={styles.container} thickness="medium" />
 
-      <Progress className={styles.container} thickness="large" label="Large Progress" percentComplete={50} />
+      <Progress className={styles.container} thickness="large" />
     </div>
   );
 };

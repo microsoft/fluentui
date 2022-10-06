@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement avatar context for slot overrides",
-  "packageName": "@fluentui/react-avatar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
