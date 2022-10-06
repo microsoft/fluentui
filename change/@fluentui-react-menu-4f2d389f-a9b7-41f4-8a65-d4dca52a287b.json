@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: improves MenuTrigger types",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

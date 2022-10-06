@@ -2,6 +2,207 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:33 GMT",
+      "tag": "@fluentui/react-components_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "3b48ff5d92433635997aa69a59b138ec273172ea",
+            "comment": "chore: user defined tabIndex should prevail aria-button defined"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "3bce1e54d85b7bd4255aba62b2b0afa020097d4e",
+            "comment": "fix: Make AvatarGroupPopover's focus indicator the same for all layouts."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0885025f43076ebdf3a395cfb6ae65b3304cc5b2",
+            "comment": "fix: CounterBadge now always renders its children if provided"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "d8219051250909d31767845375b6e1ed6a053856",
+            "comment": "fix: Checkbox's label shouldn't have a pointer cursor when disabled"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e44263f522e3e690c49ac69e5eef8e522e6e0a4a",
+            "comment": "fix: Making the hidden input only cover the indicator and not also the label."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "9b4a6b41db93754a43b8057a1d1881ecc7bd5802",
+            "comment": "feat: exports DialogContent as unstable"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b0b7f99bbbb05b0bd136432983a74fea252c7163",
+            "comment": "fix: Menu triggers no longer take focus when they are mounted"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "86b3133d97c177cac545b253deb11374ee829574",
+            "comment": "docs: Add migration guide."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "bb8f6add9449dcb9557b6b5d4485ec57e7179f32",
+            "comment": "fix: update popover role to be note when it does not trap focus"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "fcb2ee2d270e6f584c6dbbd45f39a50c994c38be",
+            "comment": "fix: Making the hidden input only cover the indicator and not also the label."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e44263f522e3e690c49ac69e5eef8e522e6e0a4a",
+            "comment": "fix: Making the hidden input only cover the indicator and not also the label."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "6a60b17a2e1ef2709a76c5b209d3b579e437feba",
+            "comment": "fix: Switch's label shouldn't have a pointer cursor when disabled"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5129090c2dedbaf91b8441898788413992c556e3",
+            "comment": "fix: focus outline selectors are data attributes"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "316aa1e8df88bd9ec563d32222565dc48bc9fa29",
+            "comment": "chore: Deprecating filled with shadow appearance variant."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "9357de4af136dfb5e5ed37b68318024235aa4ba3",
+            "comment": "feat: Implement avatar context for slot overrides"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1dcb695eb7e57a1128156049e08729206cc790ae",
+            "comment": "feat: Avatar's aria label includes 'active' or 'inactive' when using the active prop"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "2e8d044a4ce2c1095f13e08716c3ba13069ebf0d",
+            "comment": "feat: Moving Persona to unstable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "316aa1e8df88bd9ec563d32222565dc48bc9fa29",
+            "comment": "chore: Deprecating filled with shadow appearance variant."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "2e8d044a4ce2c1095f13e08716c3ba13069ebf0d",
+            "comment": "feat: Publishing package."
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1333dab7a897e846eb70a493339cd13d1a095cb2",
+            "comment": "chore: Migrate react-avatar to use new build"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9f774b95fbc119b55838315e2515e93b4ba62445",
+            "comment": "refactor: normalize relative import for unstable package.json"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f91303a8d285fd52e29c7bdfcc8cc29c3951db48",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "fa59098280d8187ce9a62a568525694a56782e45",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "53f71701af6d88abf66d0cb0a73543f97bd4da51",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "5129090c2dedbaf91b8441898788413992c556e3",
+            "comment": "chore: Update tests for focus outline selectors"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "cd88ecf2e2407c308c8364b9167440b9bac171f3",
+            "comment": "chore: Migrate react-table to use new build"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "48d8c5c16b5367a3dfd295391512984051bbe727",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "da8a1d4d97efdb6d95818b605136415d9428e811",
+            "comment": "feat: removes DialogSurface native dialog support "
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "9c2ca0da077238fa1d2dc9475eeacacde06f79d7",
+            "comment": "fix: Remove SwitchField's labelPosition prop, as it has no effect"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0bece748c51ef324f23ddce3e83f0f796bfced5f",
+            "comment": "feat: `noNativeElements` renders a flex layout"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "9357de4af136dfb5e5ed37b68318024235aa4ba3",
+            "comment": "feat: Use AvatarContext to override avatar size"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Sep 2022 10:32:29 GMT",
       "tag": "@fluentui/react-components_v9.3.2",
       "version": "9.3.2",

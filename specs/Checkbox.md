@@ -166,7 +166,7 @@ Removing the following two props because the ARIA spec dictates role='checkbox' 
 
 Props being removed:
 
-ariaPoisitionInSet and ariaSetSize - when writing parent component, user should set these on the checkbox.
+ariaPositionInSet and ariaSetSize - when writing parent component, user should set these on the checkbox.
 
 ## Slots
 
