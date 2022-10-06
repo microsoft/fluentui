@@ -82,6 +82,10 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1315,6 +1319,10 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1528,6 +1536,10 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1741,6 +1753,10 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2242,6 +2258,10 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.6..@fluentui/react-switch_v9.0.7)
+
+### Patches
+
+- fix: Making the hidden input only cover the indicator and not also the label. ([PR #24638](https://github.com/microsoft/fluentui/pull/24638) by makotom@microsoft.com)
+- fix: Switch's label shouldn't have a pointer cursor when disabled ([PR #25026](https://github.com/microsoft/fluentui/pull/25026) by behowell@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.6)
 

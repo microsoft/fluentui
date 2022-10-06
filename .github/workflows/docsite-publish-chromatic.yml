@@ -44,7 +44,10 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build dependencies
-        run: yarn build --to @fluentui/public-docsite-v9
+        uses: ./.github/actions/build-to
+        with:
+          workspaces: '@fluentui/public-docsite-v9'
+          backfill-cache-provider-options: ${{ secrets.BACKFILL_CACHE_PROVIDER_OPTIONS }}
 
       - name: Publish to Chromatic
         run: yarn workspace @fluentui/public-docsite-v9 chromatic

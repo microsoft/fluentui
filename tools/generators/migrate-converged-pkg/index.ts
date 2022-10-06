@@ -548,10 +548,28 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     'type-check': 'tsc -b tsconfig.json',
   };
 
-  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-    json.scripts = json.scripts || {};
-    json.typings = 'dist/index.d.ts';
+  const unstableApiDefinitions = processUnstableApiDefinitions();
 
+  if (unstableApiDefinitions) {
+    updateJson(tree, unstableApiDefinitions.unstablePackageJsonPath, (json: PackageJson) => {
+      json.exports = unstableApiDefinitions.unstableExportMap;
+      return json;
+    });
+  }
+
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.typings = './dist/index.d.ts';
+    json.exports = {
+      '.': {
+        types: json.typings,
+        import: './lib/index.js',
+        require: './lib-commonjs/index.js',
+      },
+      ...(unstableApiDefinitions ? unstableApiDefinitions.rootExportMap : null),
+      './package.json': './package.json',
+    };
+
+    json.scripts = json.scripts || {};
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
@@ -569,6 +587,39 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   });
 
   return tree;
+
+  function processUnstableApiDefinitions() {
+    const unstablePackageJsonPath = joinPathFragments(options.paths.unstable.rootPackageJson);
+    const hasUnstableApi = tree.exists(unstablePackageJsonPath);
+
+    if (!hasUnstableApi) {
+      return;
+    }
+
+    const unstablePackageJson = readJson<PackageJson>(tree, unstablePackageJsonPath);
+    const typePaths = {
+      rootExports: unstablePackageJson.typings?.replace(/\.\.\//g, ''),
+      unstableExports: unstablePackageJson.typings,
+    };
+
+    return {
+      unstablePackageJsonPath,
+      rootExportMap: {
+        './unstable': {
+          types: typePaths.rootExports,
+          import: './lib/unstable/index.js',
+          require: './lib-commonjs/unstable/index.js',
+        },
+      },
+      unstableExportMap: {
+        '.': {
+          types: typePaths.unstableExports,
+          import: './../lib/unstable/index.js',
+          require: './../lib-commonjs/unstable/index.js',
+        },
+      },
+    };
+  }
 }
 
 function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
