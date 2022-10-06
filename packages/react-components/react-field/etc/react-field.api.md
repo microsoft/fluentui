@@ -14,6 +14,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import { Label } from '@fluentui/react-label';
+import { Progress } from '@fluentui/react-progress';
 import { RadioGroup } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import { Select } from '@fluentui/react-select';
@@ -86,6 +87,15 @@ export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
 
 // @public (undocumented)
 export type InputFieldProps = FieldProps<typeof Input>;
+
+// @public (undocumented)
+export const ProgressField: ForwardRefComponent<ProgressFieldProps>;
+
+// @public (undocumented)
+export const progressFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type ProgressFieldProps = FieldProps<typeof Progress>;
 
 // @public (undocumented)
 export const RadioGroupField: ForwardRefComponent<RadioGroupFieldProps>;
