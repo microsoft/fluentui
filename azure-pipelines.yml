@@ -10,8 +10,6 @@ variables:
       - name: sinceArg
         value: --since $(targetBranch)
 
-  - group: fabric-variables
-
   - template: .devops/templates/variables.yml
 
 pool: '1ES-Host-Ubuntu'
