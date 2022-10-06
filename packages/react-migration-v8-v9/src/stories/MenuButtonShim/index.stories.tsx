@@ -2,15 +2,8 @@ import * as React from 'react';
 
 import descriptionMd from './Description.md';
 
-import {
-  ContextualMenuItemType,
-  DefaultButton,
-  Icon,
-  IContextualMenuItem,
-  IContextualMenuProps,
-  IIconProps,
-  initializeIcons,
-} from '@fluentui/react';
+import { ContextualMenuItemType, DefaultButton, Icon, initializeIcons } from '@fluentui/react';
+import type { IContextualMenuItem, IContextualMenuProps, IIconProps } from '@fluentui/react';
 import {
   FluentProvider,
   webLightTheme,
