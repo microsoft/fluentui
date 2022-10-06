@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import type { IButtonProps } from '@fluentui/react';
 
-import { ToggleButtonProps } from '@fluentui/react-components';
+import { ToggleButton } from '@fluentui/react-components';
 import type { ToggleButtonProps } from '@fluentui/react-components';
 
 import { shimButtonProps } from './shimButtonProps';
