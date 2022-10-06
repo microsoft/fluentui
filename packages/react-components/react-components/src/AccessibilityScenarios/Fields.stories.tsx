@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button } from '@fluentui/react-components';
-import { InputField, CheckboxField } from '@fluentui/react-components/unstable';
+import { Button, Radio } from '@fluentui/react-components';
+import { InputField, CheckboxField, RadioGroupField } from '@fluentui/react-components/unstable';
 
 import { Scenario } from './utils';
 
@@ -22,7 +22,7 @@ const regexes = {
   validEmail: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 };
 
-const generateSecurityCode = (): string => {
+const generateTicketNumber = (): string => {
   let char;
   let hash = 0;
   const random = Math.random().toString();
@@ -34,8 +34,10 @@ const generateSecurityCode = (): string => {
     hash |= 0; // Convert to 32bit integer
   }
   hash += 2147483647; // Convert to positive integer
-  return hash.toString().padStart(8, '0').substring(2);
+  return hash.toString().padStart(8, '0');
 };
+
+let isValidating = false;
 
 interface FormInputs {
   fullName: string;
@@ -43,6 +45,7 @@ interface FormInputs {
   password: string;
   birthDate: string;
   email: string;
+  acceptTerms: boolean;
 }
 
 interface FormValidation {
@@ -141,15 +144,24 @@ const RegistrationFormFieldsAccessibility = () => {
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
+    if (formState.isSubmitting) {
+      isValidating = true;
+    }
+  }, [formState]);
+
+  React.useEffect(() => {
     // If the form is submitting and has errors, focus the first error fiel, otherwise do nothing
-    if (!formState.isSubmitting || formState.isValid) {
+    if (!isValidating || !formState.isSubmitted || formState.isValid) {
       return;
     }
-    const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
-    const firstErrorField = document.getElementById(firstErrorName);
-    if (firstErrorField) {
-      setTimeout(() => firstErrorField.focus(), 500);
-    }
+    isValidating = false;
+    setTimeout(() => {
+      const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
+      const firstErrorField = document.getElementById(firstErrorName);
+      if (firstErrorField) {
+        firstErrorField.focus();
+      }
+    }, 500);
   }, [errors, formState, formValidation]);
 
   React.useEffect(() => {
@@ -175,10 +187,20 @@ const RegistrationFormFieldsAccessibility = () => {
   };
 
   return (
-    <Scenario pageTitle="Registration form fields">
-      <h1>Registration form</h1>
+    <Scenario pageTitle="Ticket registration form fields">
+      <h1>Ticket registration form</h1>
+
       {!isSubmittedAndValid ? (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
+          <InputField
+            type="text"
+            id="ticketNumber"
+            value={generateTicketNumber()}
+            readOnly
+            label="Your ticket number:"
+            hint="Please remember the ticket number. You will need it for identification."
+          />
+
           <Controller
             name="fullName"
             control={control}
@@ -350,6 +372,7 @@ const RegistrationFormFieldsAccessibility = () => {
                 id="birthDate"
                 placeholder="E.g. 3/21/1995"
                 label="Birth date:"
+                hint="We need this for special birthday offers."
                 validationState={errors.birthDate?.types ? 'error' : 'success'}
                 validationMessage={
                   !errors.birthDate?.types ? undefined : (
@@ -382,6 +405,13 @@ const RegistrationFormFieldsAccessibility = () => {
               },
             }}
           />
+
+          <RadioGroupField label="Highest level of education" hint="We need this for better product targetting.">
+            <Radio defaultChecked={true} label="None" />
+            <Radio label="Elementary school" />
+            <Radio label="High school" />
+            <Radio label="University or college" />
+          </RadioGroupField>
 
           <CheckboxField id="sendNewsletter" label="Send me newsletter" onChange={onSendNewsletterChange} />
 
@@ -421,7 +451,7 @@ const RegistrationFormFieldsAccessibility = () => {
             rules={{
               required: isSendNewsletter,
               validate: {
-                validEmail: value => regexes.validEmail.test(value),
+                validEmail: value => !isSendNewsletter || regexes.validEmail.test(value),
                 always: () => {
                   if (!formState.isSubmitting) {
                     formValidation.onFieldValidated('email');
@@ -432,12 +462,43 @@ const RegistrationFormFieldsAccessibility = () => {
             }}
           />
 
-          <InputField
-            type="text"
-            id="securityCode"
-            value={generateSecurityCode()}
-            readOnly
-            label="Your security code:"
+          <Controller
+            name="acceptTerms"
+            control={control}
+            as={
+              <CheckboxField
+                id="acceptTerms"
+                label="I accept terms and conditions"
+                hint={
+                  <>
+                    Check this field to confirm you have read and understand the <a href="#">terms and conditions</a>.
+                  </>
+                }
+                validationState={errors.acceptTerms?.types ? 'error' : 'success'}
+                validationMessage={
+                  !errors.acceptTerms?.types ? undefined : (
+                    <ValidationMessage id="acceptTerms" formValidation={formValidation}>
+                      {'required' in errors.acceptTerms.types && (
+                        <p>You have to accept the terms and conditions in order to register.</p>
+                      )}
+                    </ValidationMessage>
+                  )
+                }
+                aria-required="true"
+                aria-invalid={!!errors.acceptTerms}
+              />
+            }
+            rules={{
+              required: true,
+              validate: {
+                always: () => {
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('acceptTerms');
+                  }
+                  return true;
+                },
+              },
+            }}
           />
 
           <Button type="submit">Register</Button>
