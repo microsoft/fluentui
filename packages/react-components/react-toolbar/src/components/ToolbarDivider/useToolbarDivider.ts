@@ -4,13 +4,13 @@ import { useDivider_unstable } from '@fluentui/react-divider';
 import { useToolbarContext } from '../Toolbar/ToolbarContext';
 
 /**
- * Create the state required to render Toolbar.
+ * Create the state required to render ToolbarDivider.
  *
- * The returned state can be modified with hooks such as useToolbarStyles_unstable,
+ * The returned state can be modified with hooks such as useToolbarDividerStyles_unstable,
  * before being passed to renderToolbar_unstable.
  *
- * @param props - props from this instance of Toolbar
- * @param ref - reference to root HTMLElement of Toolbar
+ * @param props - props from this instance of ToolbarDivider
+ * @param ref - reference to root HTMLElement of ToolbarDivider
  */
 export const useToolbarDivider_unstable = (
   props: ToolbarDividerProps,
