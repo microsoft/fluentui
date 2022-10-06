@@ -1,8 +1,6 @@
-import {
-  createTheme,
-  DefaultPalette,
+import { createTheme, DefaultPalette, Theme as ThemeV8 } from '@fluentui/react';
+import type {
   IPalette,
-  Theme as ThemeV8,
   ISemanticColors,
   IFontStyles,
   IFontWeight,

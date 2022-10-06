@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { IContextualMenuItem, IContextualMenuProps, Icon } from '@fluentui/react';
-import { MenuItemProps, MenuGroupHeaderProps, MenuItemCheckboxProps, MenuProps } from '@fluentui/react-menu';
+import type { MenuItemProps, MenuGroupHeaderProps, MenuItemCheckboxProps, MenuProps } from '@fluentui/react-menu';
 
 export const shimMenuProps = (props: IContextualMenuProps): Partial<MenuProps> => {
   return {
