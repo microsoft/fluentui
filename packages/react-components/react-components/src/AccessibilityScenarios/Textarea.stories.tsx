@@ -336,8 +336,15 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
             <div>
               <Label htmlFor="customerId">Your customer id:</Label>
-              <Textarea id="customerId" defaultValue={generateCustomerId()} readOnly />
+              <Textarea
+                id="customerId"
+                defaultValue={generateCustomerId()}
+                readOnly
+                aria-describedby="customerIdHint"
+              />
             </div>
+
+            <p id="customerIdHint">We will use the customer id to track your feedback.</p>
 
             <Button type="submit">Submit</Button>
           </form>

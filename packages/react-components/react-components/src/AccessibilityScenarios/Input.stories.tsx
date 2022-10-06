@@ -21,7 +21,7 @@ const regexes = {
   validEmail: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 };
 
-const generateSecurityCode = (): string => {
+const generateTicketNumber = (): string => {
   let char;
   let hash = 0;
   const random = Math.random().toString();
@@ -126,7 +126,7 @@ const useFormValidation = (
   };
 };
 
-const RegistrationFormInputsAccessibility = () => {
+const TicketRegistrationFormInputsAccessibility = () => {
   const { control, handleSubmit, errors, formState, unregister } = useForm<FormInputs>({
     validateCriteriaMode: 'all',
     mode: 'onBlur',
@@ -174,10 +174,20 @@ const RegistrationFormInputsAccessibility = () => {
   };
 
   return (
-    <Scenario pageTitle="Registration form inputs">
-      <h1>Registration form</h1>
+    <Scenario pageTitle="Ticket registration form inputs">
+      <h1>Ticket registration form</h1>
       {!isSubmittedAndValid ? (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
+          <Label htmlFor="ticketNumber">Your ticket number:</Label>
+          <Input
+            type="text"
+            id="ticketNumber"
+            value={generateTicketNumber()}
+            readOnly
+            aria-describedby="ticketNumberHint"
+          />
+          <p id="ticketNumberHint">Please remember the ticket number. You will need it for identification.</p>
+
           <Label htmlFor="fullName">Full name:</Label>
           <Controller
             name="fullName"
@@ -409,9 +419,6 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor="securityCode">Your security code:</Label>
-          <Input type="text" id="securityCode" value={generateSecurityCode()} readOnly />
-
           <Button type="submit">Register</Button>
         </form>
       ) : (
@@ -423,8 +430,8 @@ const RegistrationFormInputsAccessibility = () => {
   );
 };
 
-export const RegistrationFormInputs = () => (
+export const TicketRegistrationFormInputs = () => (
   <PubSubProvider>
-    <RegistrationFormInputsAccessibility />
+    <TicketRegistrationFormInputsAccessibility />
   </PubSubProvider>
 );
