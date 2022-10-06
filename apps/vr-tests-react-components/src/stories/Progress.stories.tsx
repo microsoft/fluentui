@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Progress } from '@fluentui/react-progress';
-import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorator';
+//import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Progress converged', module)
-  .addDecorator(TestWrapperDecoratorNoAnimation)
+  //.addDecorator(TestWrapperDecoratorNoAnimation)
   .addStory('Indeterminate', () => <Progress />, {
     includeDarkMode: true,
     includeHighContrast: true,
