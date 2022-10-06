@@ -78,13 +78,14 @@ Based on selected project within issue template, we should add appropriate label
 
 > NOTE:
 >
-> - this is already implement via [github action](https://github.com/microsoft/fluentui/pull/24788)
+> - this is already implement via [github action](https://github.com/microsoft/fluentui/pull/24911)
 
 ### 2. package label assignment
 
 > Note:
 >
 > - by "package" we mean official package name used to publish to npm registry without `@scope` prefix
+> - by "Component name" we mean official package name transformed via following `toPascalCase(packageName.replace('@fluentui/react-'))`
 
 **Workflow:**
 
@@ -94,25 +95,85 @@ Based on selected project within issue template, additional select should be dyn
 
 Unfortunately **[dynamic input controls are not possible with github issues beta](https://github.com/community/community/discussions/29067)** which leaves us with following options how to implement this:
 
-- use only package names in "Library" picker
-  - cons
-    - huge list because we have quite a lot packages
-  - pros
-    - only 1 issue/feature template that we need to maintain
-    - removes need of `1. project label assignment` as labeling would be handled in one step
-- creating feature/bug templates per library
-  - cons
-    - 2 (feature/bug) x N templates (N is number of libraries in monorepo)
-  - pros
-    - clear separation that can be tweaked to particular library needs if needed
-- creating completely custom issue form solution (example [vuejs](https://github.com/vuejs/vue/issues/new/choose))
-  - cons
-    - big effort in terms of development and maintenance
-  - pros
-    - complete control about issue reporting
-    - another possible dog food for v9 controls
+1. use only package names or Component name in "Library" picker
 
-**How will we maintain list of packages in issue template:**
+- cons
+  - huge list because we have quite a lot packages
+- pros
+  - only 1 issue/feature template that we need to maintain
+  - removes need of `1. project label assignment` as labeling would be handled in one step
+
+2. creating feature/bug templates per library
+
+- cons
+  - 2 (feature/bug) x N templates (N is number of libraries in monorepo)
+- pros
+  - clear separation that can be tweaked to particular library needs if needed
+
+3. creating completely custom issue form solution (example [vuejs](https://github.com/vuejs/vue/issues/new/choose))
+
+- cons
+  - big effort in terms of development and maintenance
+- pros
+  - complete control about issue reporting
+  - another possible dog food for v9 controls
+
+**Workflow approach - summary:**
+
+After feedback and additional discussion the majority is in favor of "2. creating feature/bug templates per library", where the select list will contain "Component names".
+
+Simplified example of select box option for project issue template:
+
+```
+Component:
+ - Text
+ - Menu
+ - Dialog
+ - ...
+```
+
+Based no this labels should adhere to following:
+
+1. react-components(v9 and beyond)
+
+```
+Text -> components:Text
+Menu -> components:Menu
+Dialog -> components:Dialog
+```
+
+2. react-northstar(v0)
+
+```
+Text -> northstar:Text
+Menu -> northstar:Menu
+```
+
+3. react(v8)
+
+> NOTE:
+>
+> Why "fabric" ? while we wanna be consistent with project name mapping to label prefix, using "react" is very abstract, using v8 might be an option but for sake of consistency and distinction "fabric" feels the best option.
+
+```
+Text -> fabric:Text
+Menu -> fabric:Menu
+```
+
+4. web-components
+
+> NOTE:
+>
+> - web-components label will not be changed as for now only `web-components` general label is sufficient. In future we might introduce more granularity
+
+```
+Text -> wc:Text
+Menu -> wc:Menu
+```
+
+**Q&A:**
+
+**1. How will we maintain list of packages in issue template:**
 
 On library creation/removal we will tweak our issue/feature template automatically.
 
@@ -123,6 +184,10 @@ On library creation/removal we will tweak our issue/feature template automatical
 ### 3. assign issue to project board/team
 
 Based on assigned labels, we can automate assignment of issues based on our source of truth of ownership which is `CODEOWNERS` file.
+
+> 💡 NOTE:
+>
+> - every issue will still contain "Triage needed" flag, so it can be verified by person on shield duty
 
 **Workflow:**
 
@@ -157,5 +222,7 @@ graph TD;
 NONE
 
 ## Open Issues
+
+Not applicable
 
 <!-- Optional section, but useful for first drafts. Use this section to track open issues on unanswered questions regarding the design or proposal.  -->
