@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import { IButtonProps } from '@fluentui/react';
+import type { IButtonProps } from '@fluentui/react';
 
-import { CompoundButton, CompoundButtonProps } from '@fluentui/react-components';
+import { CompoundButton } from '@fluentui/react-components';
+import type { CompoundButtonProps } from '@fluentui/react-components';
 
 import { shimButtonProps } from './shimButtonProps';
 
