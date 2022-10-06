@@ -1,6 +1,7 @@
 import { IPalette } from '@fluentui/react';
-import { BrandVariants } from '@fluentui/react-components';
-import { ColorInput, TinyColor } from '@ctrl/tinycolor';
+import type { BrandVariants } from '@fluentui/react-components';
+import { TinyColor } from '@ctrl/tinycolor';
+import type { ColorInput } from '@ctrl/tinycolor';
 
 /**
  * A helper to mix colors using tiny color by an amount and get back a hex string.

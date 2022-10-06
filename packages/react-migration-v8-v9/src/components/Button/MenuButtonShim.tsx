@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import type { IButtonProps } from '@fluentui/react';
-import { MenuButton, MenuButtonProps, Menu, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { MenuButton, Menu, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import type { MenuButtonProps } from '@fluentui/react-components';
 import { MenuItemShim, shimMenuProps } from '../Menu';
 
 import { shimButtonProps } from './shimButtonProps';

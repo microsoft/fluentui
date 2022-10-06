@@ -1,11 +1,7 @@
-import { IEffects, IPalette, Theme as ThemeV8 } from '@fluentui/react';
-import {
-  BorderRadiusTokens,
-  ColorTokens,
-  ShadowTokens,
-  Theme as ThemeV9,
-  webLightTheme,
-} from '@fluentui/react-components';
+import { Theme as ThemeV8 } from '@fluentui/react';
+import type { IEffects, IPalette } from '@fluentui/react';
+import { Theme as ThemeV9, webLightTheme } from '@fluentui/react-components';
+import type { BorderRadiusTokens, ColorTokens, ShadowTokens } from '@fluentui/react-components';
 import { blackAlpha, whiteAlpha, grey } from './themeDuplicates';
 
 /**

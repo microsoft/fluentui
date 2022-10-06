@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IButtonProps } from '@fluentui/react';
+import type { IButtonProps } from '@fluentui/react';
 import { ButtonShim } from './ButtonShim';
 
 /**
