@@ -176,6 +176,7 @@ export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType
 // @public (undocumented)
 export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {
     action?: DialogTriggerAction;
+    disableButtonEnhancement?: boolean;
 };
 
 // @public (undocumented)

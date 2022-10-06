@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds disableButtonEnhancement property on PopoverTrigger",
+  "packageName": "@fluentui/react-popover",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
