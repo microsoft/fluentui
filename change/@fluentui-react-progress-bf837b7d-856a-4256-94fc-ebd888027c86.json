@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Add justify-self styling to Progress styles",
   "packageName": "@fluentui/react-progress",
   "email": "ololubek@microsoft.com",
