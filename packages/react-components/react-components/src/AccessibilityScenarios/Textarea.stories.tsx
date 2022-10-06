@@ -22,6 +22,8 @@ const generateCustomerId = (): string => {
   return hash.toString().padStart(10, '0').substring(2);
 };
 
+let isSubmitting = false;
+
 interface FormTextareas {
   knowledge: string;
   effort: string;
@@ -70,29 +72,29 @@ const useFormValidation = (
   handleSubmit: (callback: OnSubmit<FormTextareas>) => (e?: React.BaseSyntheticEvent) => Promise<void>,
 ) => {
   const pubSub = usePubSub();
-  const isSubmitting = React.useRef(false);
+  const isHandlingSubmit = React.useRef(false);
 
   const wrappedHandleSubmit = React.useCallback(
     (callback: OnSubmit<FormTextareas>) => {
       const handler = handleSubmit(callback);
       return async (e: React.BaseSyntheticEvent) => {
-        isSubmitting.current = true;
+        isHandlingSubmit.current = true;
         const result = await handler(e);
-        isSubmitting.current = false;
+        isHandlingSubmit.current = false;
         return result;
       };
     },
-    [isSubmitting, handleSubmit],
+    [isHandlingSubmit, handleSubmit],
   );
 
   const onFieldValidated = React.useCallback(
     (field: string) => {
-      if (!isSubmitting.current) {
+      if (!isHandlingSubmit.current) {
         pubSub.publish(field, 'validate');
       }
       return true;
     },
-    [isSubmitting, pubSub],
+    [isHandlingSubmit, pubSub],
   );
 
   const notifyFormFieldError = React.useCallback(
@@ -125,10 +127,18 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
+    if (formState.isSubmitting) {
+      isSubmitting = true;
+    }
+  }, [formState]);
+
+  React.useEffect(() => {
     // If the form is submitting and has errors, focus the first error fiel, otherwise do nothing
-    if (!formState.isSubmitting || formState.isValid) {
+    if (!isSubmitting || !formState.isSubmitted || formState.isValid) {
       return;
     }
+    isSubmitting = false;
+
     const firstErrorName = Object.keys(errors)[0] as keyof FormTextareas;
     const firstErrorField = document.getElementById(firstErrorName);
 
