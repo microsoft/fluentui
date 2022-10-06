@@ -132,43 +132,38 @@ Component:
  - ...
 ```
 
-Based no this labels should adhere to following:
+Based on this, all project labels should adhere to unified pattern based on issue origin(project):
 
-1. react-components(v9 and beyond)
-
-```
-Text -> components:Text
-Menu -> components:Menu
-Dialog -> components:Dialog
-```
-
-2. react-northstar(v0)
+1. issue origin: v9 template:
 
 ```
-Text -> northstar:Text
-Menu -> northstar:Menu
+Text -> package: react-text, Fluent UI react-components (v9)
+Menu -> package: react-menu, Fluent UI react-components (v9)
+Dialog -> package: react-dialog, Fluent UI react-components (v9)
 ```
 
-3. react(v8)
-
-> NOTE:
->
-> Why "fabric" ? while we wanna be consistent with project name mapping to label prefix, using "react" is very abstract, using v8 might be an option but for sake of consistency and distinction "fabric" feels the best option.
+2. issue origin: v8 template:
 
 ```
-Text -> fabric:Text
-Menu -> fabric:Menu
+Text -> package: react, Fluent UI react (v8)
+Menu -> package: react, Fluent UI react (v8)
+Dialog -> package: react, Fluent UI react (v8)
+Chart -> package: react-charting, Fluent UI react (v8)
 ```
 
-4. web-components
-
-> NOTE:
->
-> - web-components label will not be changed as for now only `web-components` general label is sufficient. In future we might introduce more granularity
+3. issue origin: v0 template:
 
 ```
-Text -> wc:Text
-Menu -> wc:Menu
+Text -> package: react-northstar, Fluent UI react-northstar (v0)
+Menu -> package: react-northstar, Fluent UI react-northstar (v0)
+Dialog -> package: react-northstar, Fluent UI react-northstar (v0)
+```
+
+4. issue origin: web-components template:
+
+```
+Text -> package: web-components
+Menu -> package: web-components
 ```
 
 **Q&A:**
