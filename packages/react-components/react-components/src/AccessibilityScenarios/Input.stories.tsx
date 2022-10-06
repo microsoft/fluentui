@@ -394,7 +394,7 @@ const TicketRegistrationFormInputsAccessibility = () => {
             rules={{
               required: isSendNewsletter,
               validate: {
-                validEmail: value => regexes.validEmail.test(value),
+                validEmail: value => !isSendNewsletter || regexes.validEmail.test(value),
                 always: () => {
                   if (!formState.isSubmitting) {
                     formValidation.onFieldValidated('email');
