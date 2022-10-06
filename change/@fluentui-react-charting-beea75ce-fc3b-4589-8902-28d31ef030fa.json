@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix text overflow in horizontal bar chart",
+  "comment": "Fix chart title overflow",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"
