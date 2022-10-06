@@ -2,7 +2,13 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Concepts/Developer/Browser Support Matrix" />
 
-## Browser Support Matrix
+## ECMAScript Target
+
+FluentUI will be targetting ES2020 as its Typescript target. FluentUI will not be performing any down-level transpilation below ES2020
+so this means that consumers who need to support older browsers (such as those that only support up to ES6) are responsible for transpiling down the FluentUI
+library to fit their needs. This ensures that those consumers who support modern browsers can get the added benefit of a reduced bundle size that the latest ES standards provide.
+
+## Full Browser Support Matrix
 
 FluentUI fully supports browsers that are at or above the indicated versions below:
 
@@ -25,7 +31,7 @@ Consumers who require the use/support of older browsers that don't support certa
 will need to implement or use a third-party polyfill to provide the functionality. See the partial support section below for features
 that may need to be polyfilled.
 
-## Partial Support:
+## Partial Browser Support Matrix:
 
 FluentUI provides partial support for the browsers below which will have limitations that will require consumers to transpile down and/or use polyfills to cover the support gaps.
 
@@ -43,16 +49,15 @@ FluentUI provides partial support for the browsers below which will have limitat
 
 List of features that are currently used in FluentUI that aren't supported out of the box by the partial support matrix above:
 
-**Unsupported ECMAScript Features:**
-
-1. Nullish Coalescing: Unsupported by Chrome, Edge, Firefox, Opera. Also an ES2020 feature, will require down-level transpilation to support older ECMAScript standards.
-2. Optional Chaining: Unsupported by Chrome, Edge, Firefox, Opera. Also an ES2020 feature, will require down-level transpilation to support older ECMAScript standards.
-
 **Unsupported CSS Features:**
 
 1.  Flex gap: Unsupported by Chrome, Edge, Firefox, Opera, Safari, Safari on IOS, Chrome on Android
 2.  CSS min, max, clamp: Unsupported by Firefox and Opera
 3.  CSS revert value: Unsupported by Firefox and Opera
+
+**Unsupported ECMAScript Features:**
+As outlined in the very beginning, FluentUI will be using ES2020 as its Typescript target; so ES2020 features such as nullish coalescing and optional chaining are already being utilized by the library.
+These ES2020 features are not guaranteed to work in all browsers within the partial support matrix so consumers will need to perform down-level transpilation of the library.
 
 ## Browser Support Expectations:
 
@@ -63,10 +68,10 @@ List of features that are currently used in FluentUI that aren't supported out o
 
 **Developer Expectations:**
 
-1. FluentUI developers are internally expected to develop against the partial browser support matrix.
-   This means that no code which causes applications to crash on the partially supported browsers (with the exception of ES syntax which are transpilable)
+1. FluentUI developers and contributors are internally expected to develop against the partial browser support matrix.
+   This means that no code which causes applications to crash on the partially supported browsers (with the exception of ES syntax which are transpilable by the consumer)
    should be present in the library. Should any application breaking errors be discovered in the future, FluentUI will be responsible for fixing it internally.
-2. FluentUI developers still reserve the right to use features that fall in between the partial and full browser support matrices (like flex gap) as
+2. FluentUI developers and contributors reserve the right to use features that fall in between the partial and full browser support matrices (like flex gap) as
    long as they don't result in applications crashing.
 
 ## Browser Support Going Forward
