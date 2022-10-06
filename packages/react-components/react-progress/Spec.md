@@ -45,6 +45,28 @@ function App() {
 - Determinate Progress
   - The determinate form of the Progress component that incrementally loads from 0% to 100%
 
+#### Adding Label and Description with ProgressField
+
+There is a `ProgressField` component that adds a `label`, validation state(`success`, `warning`, `error`), and hint text to the `Progress`.
+You can use it like so:
+
+```jsx
+import * as React from 'react';
+import type { ProgressFieldProps } from '@fluentui/react-field';
+import { ProgressField } from '@fluentui/react-field';
+
+export const Default = (props: ProgressFieldProps) => (
+  <ProgressField
+    label="Example Progress field"
+    value={0.75}
+    validationState="success"
+    validationMessage="This is a success message"
+    hint="This is a hint message"
+    {...props}
+  />
+);
+```
+
 ### Shape
 
 The Progress is represented as a rounded rectangular area with an inner animated bar that either travels across the area indefinitely or animates up till a specified point
