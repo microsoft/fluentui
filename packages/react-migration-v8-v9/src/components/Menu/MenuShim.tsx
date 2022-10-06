@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
+import { ContextualMenuItemType } from '@fluentui/react';
+import type { IContextualMenuItem } from '@fluentui/react';
 import {
   MenuItem,
   MenuDivider,
