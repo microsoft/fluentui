@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import descriptionMd from './Description.md';
 
-import { ActionButton, Icon, IIconProps, initializeIcons } from '@fluentui/react';
+import { ActionButton, Icon, initializeIcons } from '@fluentui/react';
+import type { IIconProps } from '@fluentui/react';
 import { FluentProvider, Button, webLightTheme, makeStyles, shorthands } from '@fluentui/react-components';
 import { ActionButtonShim } from '../../components/Button';
 
