@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: aria-* properties should be reassignable",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
