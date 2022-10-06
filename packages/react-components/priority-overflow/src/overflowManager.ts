@@ -164,7 +164,7 @@ export function createOverflowManager(): OverflowManager {
   const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
     Object.assign(options, userOptions);
     observing = true;
-    Object.values(overflowItems).forEach(item => addItem(item));
+    Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
 
     container = observedContainer;
     resizeObserver.observe(container);
