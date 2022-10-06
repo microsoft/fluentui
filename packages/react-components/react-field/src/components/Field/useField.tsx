@@ -17,12 +17,6 @@ const validationMessageIcons = {
 } as const;
 
 /**
- * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
- * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
- */
-const mergeAriaDescribedBy = (a?: string, b?: string) => (a && b ? `${a} ${b}` : a || b);
-
-/**
  * Partition the props used by the Field itself, from the props that are passed to the underlying field component.
  */
 export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent>>(props: Props) => {
@@ -120,15 +114,24 @@ export const useField_unstable = <T extends FieldComponent>(
   });
 
   // Hook up aria props on the control
-  if (labelConnection === 'aria-labelledby') {
-    control['aria-labelledby'] ??= label?.id;
+  if (label && labelConnection === 'aria-labelledby') {
+    control['aria-labelledby'] ??= label.id;
   }
+
   if (validationState === 'error') {
     control['aria-invalid'] ??= true;
-    control['aria-errormessage'] ??= validationMessage?.id;
-    control['aria-describedby'] ??= hint?.id;
+    if (validationMessage) {
+      control['aria-errormessage'] ??= validationMessage.id;
+    }
+    if (hint) {
+      control['aria-describedby'] ??= hint.id;
+    }
   } else {
-    control['aria-describedby'] ??= mergeAriaDescribedBy(validationMessage?.id, hint?.id);
+    // If the state is not an error, then the control is described by the validation message, or hint, or both
+    const describedby = validationMessage || hint;
+    if (describedby) {
+      control['aria-describedby'] ??= validationMessage && hint ? `${validationMessage.id} ${hint.id}` : describedby.id;
+    }
   }
 
   const state: FieldState<FieldComponent> = {
