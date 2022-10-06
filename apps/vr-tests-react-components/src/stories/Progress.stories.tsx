@@ -5,17 +5,15 @@ import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorat
 
 storiesOf('Progress converged', module)
   .addDecorator(TestWrapperDecoratorNoAnimation)
-  .addStory('Indeterminate', () => <Progress className="test-class" />, {
+  .addStory('Indeterminate', () => <Progress />, {
     includeDarkMode: true,
     includeHighContrast: true,
     includeRtl: true,
   })
-  .addStory('Indeterminate with thickness large', () => <Progress className="test-class" thickness="large" />)
-  .addStory('Determinate', () => <Progress className="test-class" value={0.5} />, {
+  .addStory('Indeterminate with thickness large', () => <Progress thickness="large" />)
+  .addStory('Determinate', () => <Progress value={0.5} />, {
     includeDarkMode: true,
     includeHighContrast: true,
     includeRtl: true,
   })
-  .addStory('Determinate with thickness large', () => (
-    <Progress className="test-class" value={0.5} thickness="large" />
-  ));
+  .addStory('Determinate with thickness large', () => <Progress value={0.5} thickness="large" />);
