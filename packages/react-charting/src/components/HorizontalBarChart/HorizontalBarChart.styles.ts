@@ -34,13 +34,13 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       justifyContent: 'space-between',
       marginBottom: '3px',
     },
-    chartDataTextLeft: {
+    chartTitleLeft: {
       fontWeight: FontWeights.bold,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
     },
-    chartDataTextRight: {
+    chartTitleRight: {
       fontWeight: FontWeights.bold,
     },
     chartDataTextDenominator: {
