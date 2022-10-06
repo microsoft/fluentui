@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import descriptionMd from './Description.md';
 
-import { DefaultButton, Icon, IIconProps, initializeIcons } from '@fluentui/react';
+import { DefaultButton, Icon, initializeIcons } from '@fluentui/react';
+import type { IIconProps } from '@fluentui/react';
 import { FluentProvider, webLightTheme, makeStyles, shorthands, ToggleButton } from '@fluentui/react-components';
 import { ToggleButtonShim } from '../../components/Button';
 
