@@ -43,18 +43,45 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip2"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
       <div
         data-is-focusable={true}
@@ -94,7 +121,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -391,18 +418,45 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip2"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
       <div
         data-is-focusable={true}
@@ -442,7 +496,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -656,18 +710,45 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip2"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
       <div
         data-is-focusable={true}
@@ -707,7 +788,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -820,7 +901,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone20"
+    data-focuszone-id="FocusZone26"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -841,18 +922,45 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip27"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
       <div
         data-is-focusable={true}
@@ -892,7 +1000,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone28"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -911,7 +1019,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout19"
+            aria-labelledby="callout25"
             className=
 
                 {
@@ -943,7 +1051,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout19"
+            aria-labelledby="callout25"
             className=
 
                 {
@@ -1005,7 +1113,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1026,18 +1134,45 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip18"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
       <div
         data-is-focusable={true}
@@ -1063,7 +1198,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone14"
+    data-focuszone-id="FocusZone19"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1082,7 +1217,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout12"
+            aria-labelledby="callout16"
             className=
 
                 {
@@ -1114,7 +1249,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout12"
+            aria-labelledby="callout16"
             className=
 
                 {
@@ -1176,7 +1311,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1197,18 +1332,45 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip6"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
       <div
         data-is-focusable={true}
@@ -1248,7 +1410,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone7"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1267,7 +1429,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout3"
+            aria-labelledby="callout4"
             className=
 
                 {
@@ -1299,7 +1461,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout3"
+            aria-labelledby="callout4"
             className=
 
                 {
@@ -1361,7 +1523,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone13"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1382,18 +1544,45 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip14"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
     </div>
   </div>
@@ -1403,7 +1592,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1422,7 +1611,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout9"
+            aria-labelledby="callout12"
             className=
 
                 {
@@ -1454,7 +1643,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout9"
+            aria-labelledby="callout12"
             className=
 
                 {
@@ -1516,7 +1705,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1537,18 +1726,45 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip10"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
       <div
         data-is-focusable={true}
@@ -1588,7 +1804,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1607,7 +1823,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout6"
+            aria-labelledby="callout8"
             className=
 
                 {
@@ -1639,7 +1855,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout6"
+            aria-labelledby="callout8"
             className=
 
                 {
@@ -1701,7 +1917,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone16"
+    data-focuszone-id="FocusZone21"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1722,18 +1938,45 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
     >
       <div
         className=
-
+            ms-TooltipHost
             {
+              display: block;
               font-weight: 700;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        data-is-focusable={true}
-        role="text"
-        title="Stacked bar chart 2nd example"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
       >
-        Stacked bar chart 2nd example
+        <span
+          data-is-focusable={true}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip22"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
       </div>
     </div>
   </div>
@@ -1743,7 +1986,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone23"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1762,7 +2005,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout15"
+            aria-labelledby="callout20"
             className=
 
                 {
@@ -1794,7 +2037,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout15"
+            aria-labelledby="callout20"
             className=
 
                 {
@@ -1878,7 +2121,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone24"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

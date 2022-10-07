@@ -56,18 +56,45 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Monitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Monitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip2"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -89,7 +116,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone3"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -194,7 +221,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -215,18 +242,45 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Unmonitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Unmonitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip5"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -248,7 +302,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -381,7 +435,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -625,18 +679,45 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Monitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Monitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip2"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -658,7 +739,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone3"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -763,7 +844,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -784,18 +865,45 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Unmonitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Unmonitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip5"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -817,7 +925,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -950,7 +1058,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1111,18 +1219,45 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Monitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Monitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip2"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -1144,7 +1279,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone3"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1243,7 +1378,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1264,18 +1399,45 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Unmonitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Unmonitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip5"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -1297,7 +1459,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1426,7 +1588,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1488,7 +1650,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone24"
+        data-focuszone-id="FocusZone32"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1509,18 +1671,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Monitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Monitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip33"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -1538,7 +1727,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone25"
+        data-focuszone-id="FocusZone34"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1555,7 +1744,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout31"
               className=
 
                   {
@@ -1586,7 +1775,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout31"
               className=
 
                   {
@@ -1637,7 +1826,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone35"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1658,18 +1847,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Unmonitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Unmonitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip36"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -1687,7 +1903,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone27"
+        data-focuszone-id="FocusZone37"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1704,7 +1920,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout31"
               className=
 
                   {
@@ -1735,7 +1951,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout31"
               className=
 
                   {
@@ -1816,7 +2032,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone28"
+              data-focuszone-id="FocusZone38"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1878,7 +2094,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone9"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1899,18 +2115,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Monitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Monitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip10"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -1932,7 +2175,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone11"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1949,7 +2192,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout8"
               className=
 
                   {
@@ -1980,7 +2223,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout8"
               className=
 
                   {
@@ -2031,7 +2274,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone12"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2052,18 +2295,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Unmonitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Unmonitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip13"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -2085,7 +2355,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone14"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2102,7 +2372,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout8"
               className=
 
                   {
@@ -2133,7 +2403,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout8"
               className=
 
                   {
@@ -2206,7 +2476,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone18"
+        data-focuszone-id="FocusZone24"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2227,18 +2497,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Monitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Monitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip25"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
           </div>
         </div>
       </div>
@@ -2248,7 +2545,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone19"
+        data-focuszone-id="FocusZone26"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2265,7 +2562,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -2296,7 +2593,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -2347,7 +2644,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone20"
+        data-focuszone-id="FocusZone27"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2368,18 +2665,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Unmonitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Unmonitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip28"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -2401,7 +2725,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone21"
+        data-focuszone-id="FocusZone29"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2418,7 +2742,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -2449,7 +2773,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -2530,7 +2854,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone22"
+              data-focuszone-id="FocusZone30"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2773,7 +3097,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone16"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2794,18 +3118,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Monitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Monitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip17"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -2827,7 +3178,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone18"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2844,7 +3195,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -2875,7 +3226,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -2926,7 +3277,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone19"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2947,18 +3298,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
-            title="Unmonitored"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            Unmonitored
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip20"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
           </div>
           <div
             data-is-focusable={true}
@@ -2980,7 +3358,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone15"
+        data-focuszone-id="FocusZone21"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2997,7 +3375,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -3028,7 +3406,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -3109,7 +3487,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone16"
+              data-focuszone-id="FocusZone22"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
