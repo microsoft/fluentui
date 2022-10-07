@@ -129,6 +129,40 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
+    tree = setupDummyPackage(tree, {
+      name: '@proj/react-button',
+      version: '9.0.0-alpha.0',
+      dependencies: {
+        '@proj/make-styles': '^9.0.0',
+      },
+      devDependencies: {
+        '@proj/make-styles': '^9.0.0',
+      },
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
+    });
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson(tree, 'packages/react-button/package.json');
+    expect(packageJson.dependencies).toMatchInlineSnapshot(`
+      Object {
+        "@proj/make-styles": "0.0.0-nightly.0",
+      }
+    `);
+    expect(packageJson.devDependencies).toMatchInlineSnapshot(`
+      Object {
+        "@proj/make-styles": "0.0.0-nightly.0",
+      }
+    `);
+  });
+
+  it('should remove carets for dependents when `nightly` is selected as the bump type', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '^9.0.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+    });
+
     await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');

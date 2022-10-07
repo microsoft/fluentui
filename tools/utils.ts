@@ -186,9 +186,11 @@ export function hasSchemaFlag<T, K extends keyof T>(schema: T, flag: K): schema 
 }
 
 export function isPackageVersionConverged(versionString: string) {
-  const version = semver.parse(versionString);
+  const versionWithoutCaret = versionString.replace('^', '');
+
+  const version = semver.parse(versionWithoutCaret);
   if (version === null) {
-    throw new Error(`${versionString} is not a valid semver version`);
+    throw new Error(`${versionWithoutCaret} is not a valid semver version`);
   }
   return version.major === 9;
 }

@@ -44,26 +44,42 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
   });
 
   if (nextVersion) {
-    updatePackageDependents(host, nextVersion, schema.name, userLog);
+    updatePackageDependents({ host, nextVersion, userLog, schema });
   }
 }
 
-function updatePackageDependents(host: Tree, nextVersion: string, dependencyName: string, userLog: UserLog) {
+function updatePackageDependents(options: {
+  host: Tree;
+  nextVersion: string;
+  userLog: UserLog;
+  schema: ValidatedSchema;
+}) {
+  const { host, nextVersion, userLog, schema } = options;
   const projects = getProjects(host);
 
   projects.forEach((project, projectName) => {
     const projectConfig = getProjectConfig(host, { packageName: projectName });
-    updatePackageDependent(host, nextVersion, dependencyName, projectConfig.paths.packageJson, userLog);
+    updatePackageDependent({
+      host,
+      nextVersion,
+      dependencyName: schema.name,
+      packageJsonPath: projectConfig.paths.packageJson,
+      userLog,
+      bumpType: schema.bumpType,
+    });
   });
 }
 
-function updatePackageDependent(
-  host: Tree,
-  nextVersion: string,
-  dependencyName: string,
-  packageJsonPath: string,
-  userLog: UserLog,
-) {
+function updatePackageDependent(options: {
+  host: Tree;
+  nextVersion: string;
+  dependencyName: string;
+  packageJsonPath: string;
+  userLog: UserLog;
+  bumpType: ValidatedSchema['bumpType'];
+}) {
+  const { host, nextVersion, dependencyName, packageJsonPath, userLog, bumpType } = options;
+
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     if (packageJson.dependencies?.[dependencyName]) {
       userLog.push({
@@ -71,7 +87,7 @@ function updatePackageDependent(
         message: `bumping dependency ${dependencyName} in ${packageJsonPath}`,
       });
 
-      bumpDependency(packageJson.dependencies, dependencyName, nextVersion);
+      bumpDependency({ dependencies: packageJson.dependencies, dependencyName, version: nextVersion, bumpType });
     }
 
     if (packageJson.devDependencies?.[dependencyName]) {
@@ -79,20 +95,23 @@ function updatePackageDependent(
         type: 'info',
         message: `bumping devDependency ${dependencyName} in ${packageJsonPath}`,
       });
-      bumpDependency(packageJson.devDependencies, dependencyName, nextVersion);
+      bumpDependency({ dependencies: packageJson.devDependencies, dependencyName, version: nextVersion, bumpType });
     }
 
     return packageJson;
   });
 }
 
-const bumpDependency = (
-  dependencies: NonNullable<PackageJson['dependencies'] | PackageJson['devDependencies']>,
-  dependencyName: string,
-  version: string,
-) => {
+const bumpDependency = (options: {
+  dependencies: NonNullable<PackageJson['dependencies'] | PackageJson['devDependencies']>;
+  dependencyName: string;
+  version: string;
+  bumpType: ValidatedSchema['bumpType'];
+}) => {
+  const { dependencies, dependencyName, version, bumpType } = options;
+
   const hasCaret = dependencies[dependencyName].includes('^');
-  const versionToBump = hasCaret ? `^${version}` : version;
+  const versionToBump = hasCaret && bumpType !== 'nightly' ? `^${version}` : version;
   dependencies[dependencyName] = versionToBump;
 };
 
