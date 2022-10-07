@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "new overflow items should only be enqueued while observing",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

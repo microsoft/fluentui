@@ -65,7 +65,7 @@ const cypressWebpackConfig = (): Configuration => {
 export default defineConfig({
   video: false,
   component: {
-    specPattern: path.join(process.cwd(), '**/*.e2e.tsx'),
+    specPattern: [path.join(process.cwd(), '**/*.e2e.tsx'), path.join(process.cwd(), '**/*.cy.tsx')],
     devServer: {
       framework: 'react',
       bundler: 'webpack',

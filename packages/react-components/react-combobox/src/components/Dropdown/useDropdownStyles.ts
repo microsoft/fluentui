@@ -85,7 +85,7 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     display: 'grid',
     fontFamily: tokens.fontFamilyBase,
-    gridTemplateColumns: '1fr auto',
+    gridTemplateColumns: '[content] 1fr [icon] auto [end]',
     justifyContent: 'space-between',
     textAlign: 'left',
     width: '100%',
@@ -167,6 +167,8 @@ const useIconStyles = makeStyles({
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     fontSize: tokens.fontSizeBase500,
+    gridColumnStart: 'icon',
+    gridColumnEnd: 'end',
 
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
