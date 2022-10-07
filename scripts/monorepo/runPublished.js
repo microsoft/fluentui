@@ -4,10 +4,12 @@ const isConvergedPackage = require('./isConvergedPackage');
 const lageBin = require.resolve('lage/bin/lage.js');
 
 /**
- * @typedef {{argv:string[]; workspacePackagesMetadata:ReturnType<typeof getAllPackageInfo>}} Options
+ * @typedef {{argv:string[]; workspacePackagesMetadata:ReturnType<typeof getAllPackageInfo>;}} Options
  */
 
-if (require.main === module) {
+const isExecutedFromCli = require.main === module;
+
+if (isExecutedFromCli) {
   const argv = process.argv.slice(2);
   main({ argv, workspacePackagesMetadata: getAllPackageInfo() });
 }
@@ -19,8 +21,8 @@ module.exports = main;
  * @param {Options} options
  */
 function main(options) {
-  if (process.env.NODE_ENV !== 'test') {
-    throw new Error('This is not supposed to be used as API only via direct node execution');
+  if (!(isExecutedFromCli || process.env.NODE_ENV === 'test')) {
+    throw new Error('This is NOT supposed to be used as API only via direct node execution');
   }
   if (!assertArgs(options.argv)) {
     return;
