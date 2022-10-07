@@ -104,4 +104,15 @@ export interface OverflowManager {
    * Manually update the overflow sync
    */
   forceUpdate: () => void;
+
+  /**
+   * Adds an element that opens an overflow menu. This is used to calculate
+   * available space and check if additional items need to overflow
+   */
+  addOverflowMenu: (element: HTMLElement) => void;
+
+  /**
+   * Unsets the overflow menu element
+   */
+  removeOverflowMenu: () => void;
 }

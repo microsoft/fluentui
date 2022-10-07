@@ -8,6 +8,7 @@ import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOpt
  */
 export function createOverflowManager(): OverflowManager {
   let container: HTMLElement | undefined;
+  let overflowMenu: HTMLElement | undefined;
   let observing = false;
   const options: Required<ObserveOptions> = {
     padding: 10,
@@ -122,6 +123,8 @@ export function createOverflowManager(): OverflowManager {
       return;
     }
 
+    const overflowMenuOffset = overflowMenu ? getOffsetSize(overflowMenu) : 0;
+
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
     const invisibleTop = invisibleItemQueue.peek();
@@ -142,6 +145,10 @@ export function createOverflowManager(): OverflowManager {
         break;
       }
       currentWidth -= makeItemInvisible();
+    }
+
+    if (invisibleItemQueue.size() > 0 && currentWidth + overflowMenuOffset > availableSize) {
+      makeItemInvisible();
     }
 
     // only update when the state of visible/invisible items has changed
@@ -176,6 +183,10 @@ export function createOverflowManager(): OverflowManager {
   };
 
   const addItem: OverflowManager['addItem'] = item => {
+    if (overflowItems[item.id]) {
+      return;
+    }
+
     overflowItems[item.id] = item;
 
     // some options can affect priority which are only set on `observe`
@@ -197,7 +208,19 @@ export function createOverflowManager(): OverflowManager {
     update();
   };
 
+  const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
+    overflowMenu = el;
+  };
+
+  const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
+    overflowMenu = undefined;
+  };
+
   const removeItem: OverflowManager['removeItem'] = itemId => {
+    if (!overflowItems[itemId]) {
+      return;
+    }
+
     const item = overflowItems[itemId];
     visibleItemQueue.remove(itemId);
     invisibleItemQueue.remove(itemId);
@@ -218,5 +241,7 @@ export function createOverflowManager(): OverflowManager {
     observe,
     removeItem,
     update,
+    addOverflowMenu,
+    removeOverflowMenu,
   };
 }

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Adds API to register overflow menus for better available space calculation",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
