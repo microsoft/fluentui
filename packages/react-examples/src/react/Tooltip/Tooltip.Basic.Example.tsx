@@ -8,12 +8,6 @@ const calloutProps = { gapSpace: 0 };
 // If that's causing sizing issues or tooltip positioning issues, try overriding to inline-block.
 const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 
-const info: JSX.Element[] = [
-  <a href={'https://www.microsoft.com'} target={'_blank'}>
-    {'Help Link'}
-  </a>,
-];
-
 export const TooltipBasicExample: React.FunctionComponent = () => {
   // Use useId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string and manually ensure uniqueness.)
@@ -22,7 +16,7 @@ export const TooltipBasicExample: React.FunctionComponent = () => {
   return (
     <div>
       <TooltipHost
-        content={info}
+        content="This is the tooltip content"
         // This id is used on the tooltip itself, not the host
         // (so an element with this id only exists when the tooltip is shown)
         id={tooltipId}
