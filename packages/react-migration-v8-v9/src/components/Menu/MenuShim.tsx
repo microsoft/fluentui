@@ -13,7 +13,7 @@ import {
   MenuPopover,
   MenuItemCheckbox,
   MenuDividerProps,
-} from '@fluentui/react-menu';
+} from '@fluentui/react-components';
 
 import { shimMenuHeaderProps, shimMenuItemCheckboxProps, shimMenuItemProps, shimMenuProps } from './shimMenuProps';
 

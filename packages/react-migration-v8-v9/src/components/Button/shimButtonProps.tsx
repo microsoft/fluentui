@@ -20,7 +20,7 @@ export const shimButtonProps = (props: IBaseButtonProps & React.RefAttributes<HT
     // spread incoming props to propagate HTML properties not part of IBaseButtonProps
     ...props,
     appearance: props.primary ? 'primary' : undefined,
-    className: className,
+    className,
     disabled: props.disabled,
     disabledFocusable: props.allowDisabledFocus,
     'aria-hidden': props.ariaHidden,
