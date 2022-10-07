@@ -1,5 +1,5 @@
-import { createTheme, DefaultPalette, Theme as ThemeV8 } from '@fluentui/react';
-import type { IPalette, ISemanticColors, IFontStyles, IFontWeight, IEffects } from '@fluentui/react';
+import { createTheme, DefaultPalette } from '@fluentui/react';
+import type { IPalette, ISemanticColors, IFontStyles, IFontWeight, IEffects, Theme as ThemeV8 } from '@fluentui/react';
 
 import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
 

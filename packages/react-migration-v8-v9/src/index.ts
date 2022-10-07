@@ -8,11 +8,11 @@ export {
   PrimaryButtonShim,
   shimButtonProps,
   ToggleButtonShim,
-} from './components/Button';
+} from './components/Button/index';
 
-export { MenuItemShim, shimMenuProps } from './components/Menu';
+export { MenuItemShim, shimMenuProps } from './components/Menu/index';
 
-export { StackItemShim, StackShim } from './components/Stack';
+export { StackItemShim, StackShim } from './components/Stack/index';
 
 export {
   black,
@@ -34,7 +34,7 @@ export {
   sharedColors,
   white,
   whiteAlpha,
-} from './components/Theme';
+} from './components/Theme/index';
 
 export type {
   AlphaColors,
@@ -43,4 +43,4 @@ export type {
   Greys,
   TextAlignment,
   TextAlignments,
-} from './components/Theme';
+} from './components/Theme/index';

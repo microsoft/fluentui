@@ -4,7 +4,7 @@ import descriptionMd from './Description.md';
 
 import { DefaultButton } from '@fluentui/react';
 import { FluentProvider, Button, webLightTheme, makeStyles, shorthands } from '@fluentui/react-components';
-import { DefaultButtonShim } from '../../components/Button';
+import { DefaultButtonShim } from '../../components/Button/index';
 
 const useStyles = makeStyles({
   root: {

@@ -18,7 +18,7 @@ import {
   MenuPopover,
   MenuTrigger,
 } from '@fluentui/react-components';
-import { MenuButtonShim } from '../../components/Button';
+import { MenuButtonShim } from '../../components/Button/index';
 
 initializeIcons();
 

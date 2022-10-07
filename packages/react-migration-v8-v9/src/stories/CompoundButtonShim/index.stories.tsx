@@ -10,7 +10,7 @@ import {
   makeStyles,
   shorthands,
 } from '@fluentui/react-components';
-import { CompoundButtonShim } from '../../components/Button';
+import { CompoundButtonShim } from '../../components/Button/index';
 
 const useStyles = makeStyles({
   root: {

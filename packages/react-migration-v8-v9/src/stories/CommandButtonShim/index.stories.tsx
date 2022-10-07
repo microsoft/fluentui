@@ -5,7 +5,7 @@ import descriptionMd from './Description.md';
 import { CommandButton, Icon } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
 import { FluentProvider, Button, webLightTheme, makeStyles, shorthands } from '@fluentui/react-components';
-import { CommandButtonShim } from '../../components/Button';
+import { CommandButtonShim } from '../../components/Button/index';
 
 const useStyles = makeStyles({
   root: {

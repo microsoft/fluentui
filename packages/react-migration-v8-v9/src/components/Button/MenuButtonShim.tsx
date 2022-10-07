@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { IButtonProps } from '@fluentui/react';
 import { MenuButton, Menu, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
-import { MenuItemShim, shimMenuProps } from '../Menu';
+import { MenuItemShim, shimMenuProps } from '../Menu/index';
 
 import { shimButtonProps } from './shimButtonProps';
 

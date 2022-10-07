@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
 import { Checkbox, Dropdown, DropdownMenuItemType, Stack, TextField } from '@fluentui/react';
 import type { IDropdownOption } from '@fluentui/react';
-import { StackShim, StackItemShim } from '../../components/Stack';
+import { StackShim, StackItemShim } from '../../components/Stack/index';
 
 import descriptionMd from './Description.md';
 
