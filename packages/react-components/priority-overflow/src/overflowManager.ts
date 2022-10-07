@@ -8,6 +8,7 @@ import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOpt
  */
 export function createOverflowManager(): OverflowManager {
   let container: HTMLElement | undefined;
+  let observing = false;
   const options: Required<ObserveOptions> = {
     padding: 10,
     overflowAxis: 'horizontal',
@@ -162,17 +163,25 @@ export function createOverflowManager(): OverflowManager {
 
   const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
     Object.assign(options, userOptions);
+    observing = true;
+    Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
+
     container = observedContainer;
     resizeObserver.observe(container);
   };
 
   const disconnect: OverflowManager['disconnect'] = () => {
+    observing = false;
     resizeObserver.disconnect();
   };
 
   const addItem: OverflowManager['addItem'] = item => {
     overflowItems[item.id] = item;
-    visibleItemQueue.enqueue(item.id);
+
+    // some options can affect priority which are only set on `observe`
+    if (observing) {
+      visibleItemQueue.enqueue(item.id);
+    }
 
     if (item.groupId) {
       if (!overflowGroups[item.groupId]) {
