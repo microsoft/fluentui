@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { createOverflowManager, OverflowManager } from '@fluentui/priority-overflow';
 import { useOverflowContainer } from './useOverflowContainer';
 import { renderHook } from '@testing-library/react-hooks';
-import React = require('react');
 
 jest.mock('@fluentui/priority-overflow');
 
