@@ -31,7 +31,7 @@ jobs:
         displayName: Build vr tests components package
 
       - script: |
-          yarn test:component
+          yarn lage test:component --verbose
         displayName: 'generate screenshots'
 
       - template: .devops/templates/cleanup.yml
