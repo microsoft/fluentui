@@ -19,10 +19,6 @@ describe('Progress', () => {
     },
   });
 
-  it('renders a default state', () => {
-    const result = render(<Progress>Default Progress</Progress>);
-    expect(result.container).toMatchSnapshot();
-  });
   it('has role progressbar', () => {
     const result = render(<Progress />);
     expect(result.getByRole('progressbar')).toBeDefined();
