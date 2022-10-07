@@ -10,7 +10,7 @@ import {
 
 import generator from './index';
 import { VersionBumpGeneratorSchema } from './schema';
-import { PackageJson } from '../../types';
+import { PackageJsonWithBeachball } from '../../types';
 
 const noop = () => null;
 
@@ -179,13 +179,13 @@ describe('version-string-replace generator', () => {
       },
     });
 
-    expect(readJson<PackageJson>(tree, 'packages/make-styles/package.json').beachball?.disallowedChangeTypes).toEqual([
-      'prerelease',
-    ]);
+    expect(
+      readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json').beachball?.disallowedChangeTypes,
+    ).toEqual(['prerelease']);
 
     await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
 
-    const packageJson = readJson<PackageJson>(tree, 'packages/make-styles/package.json');
+    const packageJson = readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
     expect(packageJson.beachball?.disallowedChangeTypes).toBeUndefined();
   });
@@ -308,7 +308,7 @@ function setupDummyPackage(
       devDependencies: Record<string, string>;
       dependencies: Record<string, string>;
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
-      beachball: PackageJson['beachball'];
+      beachball: PackageJsonWithBeachball['beachball'];
     }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);

@@ -1,7 +1,13 @@
 import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
 import * as semver from 'semver';
 import { VersionBumpGeneratorSchema } from './schema';
-import { getProjectConfig, isPackageVersionConverged, printUserLogs, UserLog } from '../../utils';
+import {
+  getProjectConfig,
+  isPackageVersionConverged,
+  packageJsonHasBeachballConfig,
+  printUserLogs,
+  UserLog,
+} from '../../utils';
 import { PackageJson } from '../../types';
 
 export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
@@ -35,7 +41,11 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
     nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
 
     // nightly releases should bypass beachball disallowed changetypes
-    if (schema.bumpType === 'nightly' && packageJson.beachball?.disallowedChangeTypes) {
+    if (
+      schema.bumpType === 'nightly' &&
+      packageJsonHasBeachballConfig(packageJson) &&
+      packageJson.beachball?.disallowedChangeTypes
+    ) {
       packageJson.beachball.disallowedChangeTypes = undefined;
     }
     packageJson.version = nextVersion;

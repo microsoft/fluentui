@@ -10,7 +10,7 @@ import {
   ProjectConfiguration,
   readJson,
 } from '@nrwl/devkit';
-import { PackageJson } from './types';
+import { PackageJson, PackageJsonWithBeachball } from './types';
 import * as semver from 'semver';
 
 /**
@@ -208,4 +208,8 @@ export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
 export function isV8Package(tree: Tree, project: ProjectConfiguration) {
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
   return packageJson.version.startsWith('8.');
+}
+
+export function packageJsonHasBeachballConfig(packageJson: PackageJson): packageJson is PackageJsonWithBeachball {
+  return !!(packageJson as PackageJsonWithBeachball).beachball;
 }
