@@ -199,6 +199,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   // This keeps the tooltip visible when the pointer is moved over it.
   state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
   state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
+  state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
   const child = getTriggerChild(children);
 
