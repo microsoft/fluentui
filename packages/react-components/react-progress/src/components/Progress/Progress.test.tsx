@@ -29,16 +29,14 @@ describe('Progress', () => {
   });
   it('does not add aria attributes for indeterminate', () => {
     const result = render(<Progress />);
-    expect(result.container.getElementsByClassName('fui-Progress__bar')[0].getAttribute('aria-valuenow')).toBeFalsy();
-    expect(result.container.getElementsByClassName('fui-Progress__bar')[0].getAttribute('aria-valuemax')).toBeFalsy();
-    expect(result.container.getElementsByClassName('fui-Progress__bar')[0].getAttribute('aria-valuemin')).toBeFalsy();
+    expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toBeFalsy();
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toBeFalsy();
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toBeFalsy();
   });
   it('adds aria attributes for determinate', () => {
     const result = render(<Progress value={0.52} />);
-    expect(result.container.getElementsByClassName('fui-Progress__bar')[0].getAttribute('aria-valuenow')).toEqual(
-      '0.52',
-    );
-    expect(result.container.getElementsByClassName('fui-Progress__bar')[0].getAttribute('aria-valuemin')).toEqual('0');
-    expect(result.container.getElementsByClassName('fui-Progress__bar')[0].getAttribute('aria-valuemax')).toEqual('1');
+    expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0.52');
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
   });
 });
