@@ -1,5 +1,5 @@
-let { createConfig, resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
-let path = require('path');
+import { createConfig, resolveMergeStylesSerializer } from '@fluentui/scripts/jest/jest-resources';
+import path from 'path';
 
 const config = createConfig({
   setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
