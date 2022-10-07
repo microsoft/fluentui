@@ -192,7 +192,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
     this._dismissTimerId = this._async.setTimeout(() => {
       this._hideTooltip();
-    }, 1);
+    }, 0);
   };
 
   // Show Tooltip
