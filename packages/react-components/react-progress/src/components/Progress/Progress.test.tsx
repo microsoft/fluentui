@@ -39,4 +39,10 @@ describe('Progress', () => {
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
   });
+  it('updates the max prop properly', () => {
+    const result = render(<Progress value={13} max={42} />);
+    expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('13');
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('42');
+  });
 });
