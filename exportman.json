@@ -1,11 +1,11 @@
 {
   "packages/fluentui/react-northstar": {
     "entryFiles": ["src/index.ts"],
-    "filePatterns": ["src/**/*.ts"]
+    "projectFiles": ["src/**/*.ts"]
   },
   "packages/*": {
     "entryFiles": ["src/index.ts", "src/**/*.spec.ts"],
-    "filePatterns": [
+    "projectFiles": [
       "src/**/*.ts",
       "!**/*.stories.ts",
       "!**/__test__",

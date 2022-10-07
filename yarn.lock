@@ -13209,10 +13209,10 @@ expect@^27.4.6:
     jest-matcher-utils "^27.4.6"
     jest-message-util "^27.4.6"
 
-exportman@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/exportman/-/exportman-0.0.6.tgz#233c32ed0bc2aa750c06b62ecc0094691297bb7c"
-  integrity sha512-7Ktahlw/Ef+qWeb9x84RfEmxFkMkur2H2QV341oTqd7/+Tnx7o+GxE2QsazcsY4ss+hcNr+oAcBfv+z4736GlA==
+exportman@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/exportman/-/exportman-0.1.0.tgz#2ae341a8dabb6fa395a3931715e9a91c151e50d6"
+  integrity sha512-SWAd4Dv2jBv4ZaU1+hg8Gztpt9yvDlaHdtdNm1W6iqcBwm+NLI+Rut8tohYXwvkMdgo/Rvx8+kjwGLR+XcbQqA==
   dependencies:
     micromatch "4.0.5"
     ts-morph "16.0.0"
