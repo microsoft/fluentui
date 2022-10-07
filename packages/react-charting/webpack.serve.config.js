@@ -1,3 +1,3 @@
-const resources = require('../../scripts/webpack/webpack-resources');
+import resources from '../../scripts/webpack/webpack-resources';
 
 module.exports = resources.createLegacyDemoAppConfig();
