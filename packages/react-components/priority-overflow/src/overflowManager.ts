@@ -123,7 +123,7 @@ export function createOverflowManager(): OverflowManager {
       return;
     }
 
-    const overflowMenuSize = overflowMenu ? getOffsetSize(overflowMenu) : 0;
+    const overflowMenuOffset = overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
@@ -147,7 +147,7 @@ export function createOverflowManager(): OverflowManager {
       currentWidth -= makeItemInvisible();
     }
 
-    if (invisibleItemQueue.size() > 0 && currentWidth + overflowMenuSize > availableSize) {
+    if (invisibleItemQueue.size() > 0 && currentWidth + overflowMenuOffset > availableSize) {
       makeItemInvisible();
     }
 
