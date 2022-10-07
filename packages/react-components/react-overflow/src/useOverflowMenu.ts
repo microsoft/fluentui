@@ -9,19 +9,12 @@ export function useOverflowMenu<TElement extends HTMLElement>(id?: string) {
   const registerOverflowMenu = useOverflowContext(v => v.registerOverflowMenu);
   const updateOverflow = useOverflowContext(v => v.updateOverflow);
   const ref = React.useRef<TElement>(null);
-  const offsetRef = React.useRef(0);
   const isOverflowing = overflowCount > 0;
 
   useIsomorphicLayoutEffect(() => {
-    const element = ref.current;
-    if (!element || !isOverflowing) {
-      offsetRef.current = 0;
-      return;
+    if (ref.current) {
+      return registerOverflowMenu(ref.current);
     }
-
-    offsetRef.current = 1;
-
-    return registerOverflowMenu(element);
   }, [registerOverflowMenu, isOverflowing, elementId]);
 
   useIsomorphicLayoutEffect(() => {
