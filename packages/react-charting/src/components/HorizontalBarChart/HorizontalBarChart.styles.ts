@@ -39,6 +39,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
+      display: 'block',
     },
     chartTitleRight: {
       fontWeight: FontWeights.bold,

@@ -41,6 +41,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
+      display: 'block',
     },
     legendContainer: {
       margin: '4px 0px 0px 4px',

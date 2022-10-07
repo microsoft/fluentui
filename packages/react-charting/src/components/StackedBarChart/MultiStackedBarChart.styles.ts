@@ -32,6 +32,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
+      display: 'block',
     },
     singleChartRoot: {
       width: width ? width : '100%',
