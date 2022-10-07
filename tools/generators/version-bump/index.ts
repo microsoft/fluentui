@@ -33,6 +33,11 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
 
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
+
+    // nightly releases should bypass beachball disallowed changetypes
+    if (schema.bumpType === 'nightly' && packageJson.beachball?.disallowedChangeTypes) {
+      packageJson.beachball.disallowedChangeTypes = undefined;
+    }
     packageJson.version = nextVersion;
 
     return packageJson;

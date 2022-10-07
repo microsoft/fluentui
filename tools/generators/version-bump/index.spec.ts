@@ -10,6 +10,7 @@ import {
 
 import generator from './index';
 import { VersionBumpGeneratorSchema } from './schema';
+import { PackageJson } from '../../types';
 
 const noop = () => null;
 
@@ -134,6 +135,27 @@ describe('version-string-replace generator', () => {
     expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
   });
 
+  it('should remove beachball disallowedChangeType config when bumping nightly', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '9.0.0-alpha.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+      beachball: {
+        disallowedChangeTypes: ['prerelease'],
+      },
+    });
+
+    expect(readJson<PackageJson>(tree, 'packages/make-styles/package.json').beachball?.disallowedChangeTypes).toEqual([
+      'prerelease',
+    ]);
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson<PackageJson>(tree, 'packages/make-styles/package.json');
+    expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
+    expect(packageJson.beachball?.disallowedChangeTypes).toBeUndefined();
+  });
+
   describe('--all', () => {
     beforeEach(() => {
       tree = setupDummyPackage(tree, {
@@ -252,6 +274,7 @@ function setupDummyPackage(
       devDependencies: Record<string, string>;
       dependencies: Record<string, string>;
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
+      beachball: PackageJson['beachball'];
     }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
@@ -279,6 +302,7 @@ function setupDummyPackage(
       version: normalizedOptions.version,
       dependencies: normalizedOptions.dependencies,
       devDependencies: normalizedOptions.devDependencies,
+      beachball: options.beachball,
     },
   };
 
