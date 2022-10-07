@@ -171,6 +171,7 @@ export function createOverflowManager(): OverflowManager {
   };
 
   const disconnect: OverflowManager['disconnect'] = () => {
+    observing = false;
     resizeObserver.disconnect();
   };
 
