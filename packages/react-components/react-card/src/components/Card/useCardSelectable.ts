@@ -14,7 +14,7 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
   const isSelectable = [selected, defaultSelected, onCardSelect, select].some(bool => typeof bool !== 'undefined');
   const hasSelectSlot = Boolean(select);
 
-  const [isCardSelected, setIsCardSelected] = React.useState(() => Boolean(selected ?? defaultSelected));
+  const [isCardSelected, setIsCardSelected] = React.useState(false);
 
   const shouldRestrictTriggerAction = React.useCallback(
     (event: CardOnSelectEvent) => {
@@ -87,7 +87,11 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
     });
   }, [hasSelectSlot, select, isCardSelected]);
 
-  React.useEffect(() => setIsCardSelected(Boolean(selected)), [selected, setIsCardSelected]);
+  React.useEffect(() => setIsCardSelected(Boolean(defaultSelected ?? selected)), [
+    defaultSelected,
+    selected,
+    setIsCardSelected,
+  ]);
 
   return {
     isCardSelected,
