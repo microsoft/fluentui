@@ -42,6 +42,16 @@ jobs:
             echo $file
             mv -- "$file" "${file//\"/}"
           done
+
+          for file in *"<"*; do
+            echo $file
+            mv -- "$file" "${file//</ }"
+          done
+
+          for file in *">"*; do
+            echo $file
+            mv -- "$file" "${file//>/ }"
+          done
         displayName: Collate Artifacts
 
       - task: PublishBuildArtifacts@1
