@@ -32,6 +32,17 @@ jobs:
 
       - script: |
           yarn lage test:component --verbose
-        displayName: 'generate screenshots'
+        displayName: 'Run VR tests'
+        
+      - script: |
+          mkdir -p screenshots
+          cp -rf apps/vr-tests-react-components/dist/screenshots/*.png screenshots/
+        displayName: Collate Artifacts
 
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: 'screenshots'
+          ArtifactName: 'vrscreenshot'
+          publishLocation: 'Container'
+          
       - template: .devops/templates/cleanup.yml
