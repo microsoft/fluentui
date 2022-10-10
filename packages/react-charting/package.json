@@ -17,7 +17,7 @@
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
+    "test": "just-scripts test node --experimental-vm-modules ./node_modules/.bin/jest",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

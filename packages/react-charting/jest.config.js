@@ -7,3 +7,5 @@ const config = createConfig({
 });
 
 module.exports = config;
+
+export default { transform: {} };
