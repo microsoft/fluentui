@@ -1,4 +1,4 @@
-import resources from '../../scripts/webpack/webpack-resources';
+const resources = require('../../scripts/webpack/webpack-resources');
 
 module.exports = [
   // Create a bundle for consumption in the browser
