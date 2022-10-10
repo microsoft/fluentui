@@ -4,7 +4,6 @@
 
 ```ts
 
-import { DecoratorFunction } from '@storybook/addons';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -20,7 +19,7 @@ export const RTL = "Rtl";
 export const withFluentProvider: (...args: any) => any;
 
 // @public (undocumented)
-export const withFluentVrTestVariants: DecoratorFunction<JSX.Element>;
+export const withFluentVrTestVariants: () => React_2.ReactNode;
 
 // @public (undocumented)
 export const withStrictMode: (storyFn: () => React_2.ReactNode) => JSX.Element;
