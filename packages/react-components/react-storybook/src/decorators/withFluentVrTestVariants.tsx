@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsHighContrastTheme, webDarkTheme, webLightTheme } from '@fluentui/react-theme';
-import { makeDecorator, LegacyStoryFn, StoryContext } from '@storybook/addons';
+import { makeDecorator } from '@storybook/addons';
+import type { DecoratorFn, StoryContext } from '@storybook/react';
 
 export const DARK_MODE = 'DarkMode';
 export const HIGH_CONTRAST = 'HighContrast';
@@ -13,7 +14,7 @@ interface AssertedMakeDecoratorOptions {
   parameterName: string;
   skipIfNoParametersOrOptions?: boolean;
   wrapper: (
-    storyFn: LegacyStoryFn,
+    storyFn: (context: StoryContext) => React.ReactNode,
     context: StoryContext,
     settings: {
       parameters: typeof DARK_MODE | typeof HIGH_CONTRAST | typeof RTL;
@@ -26,7 +27,7 @@ type AssertedMakeDecorator = ({
   parameterName,
   skipIfNoParametersOrOptions,
   wrapper,
-}: AssertedMakeDecoratorOptions) => () => React.ReactNode;
+}: AssertedMakeDecoratorOptions) => DecoratorFn;
 
 export const withFluentVrTestVariants = ((makeDecorator as unknown) as AssertedMakeDecorator)({
   name: 'withFluentVrTestVariants.',
