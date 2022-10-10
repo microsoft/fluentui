@@ -23,7 +23,7 @@ const cliOptions = {
   },
   'sample-size': {
     describe: 'Number of samples to run for each test case.',
-    default: 10,
+    default: 25,
   },
   targets: {
     describe: 'Tests to target.',
