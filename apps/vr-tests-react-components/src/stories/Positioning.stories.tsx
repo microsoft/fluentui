@@ -458,9 +458,11 @@ const ResetTarget = () => {
 
   return (
     <>
-      <button ref={setVirtualElement}>Virtual Target</button>
-      <button ref={targetRef}>Target</button>
-      <Box ref={containerRef}>Anchored to virtual element then reset to real target</Box>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <button ref={setVirtualElement}>Virtual Target</button>
+        <button ref={targetRef}>Target should be fully visible</button>
+      </div>
+      <Box ref={containerRef}>Anchored to virtual element then reset to real target.</Box>
     </>
   );
 };

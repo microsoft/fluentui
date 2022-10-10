@@ -123,11 +123,7 @@ export function usePositioning(
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (options.target) {
-      overrideTargetRef.current = options.target;
-    } else {
-      overrideTargetRef.current = null;
-    }
+    overrideTargetRef.current = options.target ?? null;
   }, [options.target, overrideTargetRef, containerRef]);
 
   useIsomorphicLayoutEffect(() => {
