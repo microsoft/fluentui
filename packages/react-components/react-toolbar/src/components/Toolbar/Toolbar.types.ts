@@ -26,6 +26,12 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
   size?: 'small' | 'medium';
 
   /**
+   * Toolbar can be vertical styled
+   * @default false
+   */
+  vertical?: boolean;
+
+  /**
    * Map of all checked values
    */
   checkedValues?: Record<string, string[]>;
@@ -48,7 +54,7 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
  * State used in rendering Toolbar
  */
 export type ToolbarState = ComponentState<ToolbarSlots> &
-  Required<Pick<ToolbarProps, 'size' | 'checkedValues'>> &
+  Required<Pick<ToolbarProps, 'size' | 'checkedValues' | 'vertical'>> &
   Pick<ToolbarProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
     /*
      * Toggles the state of a ToggleButton item
@@ -56,7 +62,7 @@ export type ToolbarState = ComponentState<ToolbarSlots> &
     handleToggleButton: ToggableHandler;
   };
 
-export type ToolbarContextValue = Pick<ToolbarProps, 'size'> & {
+export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical'> & {
   handleToggleButton?: ToggableHandler;
 };
 

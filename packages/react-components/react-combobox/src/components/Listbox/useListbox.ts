@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { getNativeElementProps, mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
-import { useSelection } from '../../utils/useSelection';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
+import type { OptionValue } from '../../utils/OptionCollection.types';
+import { useOptionCollection } from '../../utils/useOptionCollection';
+import { useScrollOptionsIntoView } from '../../utils/useScrollOptionsIntoView';
+import { useSelection } from '../../utils/useSelection';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
-import { useOptionCollection } from '../../utils/useOptionCollection';
-import { OptionValue } from '../../utils/OptionCollection.types';
 
 /**
  * Create the state required to render Listbox.
@@ -98,6 +99,9 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     ...optionCollection,
     ...optionContextValues,
   };
+
+  const scrollContainerRef = useScrollOptionsIntoView(state);
+  state.root.ref = useMergedRefs(state.root.ref, scrollContainerRef);
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
   state.root.onMouseOver = useEventCallback(mergeCallbacks(state.root.onMouseOver, onMouseOver));

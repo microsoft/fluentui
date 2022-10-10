@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 04 Oct 2022 07:45:02 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Oct 2022 07:38:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.98.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.0)
+
+Mon, 10 Oct 2022 07:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.97.2..@fluentui/react_v8.98.0)
+
+### Minor changes
+
+- fix: DetailsList should collapse columns even with horizontal scroll, and the CustomColumns example should not hide all columns ([PR #24959](https://github.com/microsoft/fluentui/pull/24959) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.21 ([PR #25138](https://github.com/microsoft/fluentui/pull/25138) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.1 ([PR #25138](https://github.com/microsoft/fluentui/pull/25138) by beachball)
+- Bump @fluentui/react-focus to v8.8.6 ([PR #25138](https://github.com/microsoft/fluentui/pull/25138) by beachball)
+- Bump @fluentui/style-utilities to v8.8.0 ([PR #25138](https://github.com/microsoft/fluentui/pull/25138) by beachball)
+- Bump @fluentui/common-styles to v1.2.10 ([PR #25138](https://github.com/microsoft/fluentui/pull/25138) by beachball)
+
+### Patches
+
+- fix: Tooltip should not hide if an element inside it gets focused. ([PR #25140](https://github.com/microsoft/fluentui/pull/25140) by makotom@microsoft.com)
+- fix: do not append first of month day letter after day name ([PR #25003](https://github.com/microsoft/fluentui/pull/25003) by sarah.higley@microsoft.com)
+- fix: Remove border in hover/pressed state of primary SplitButton. ([PR #25059](https://github.com/microsoft/fluentui/pull/25059) by esteban.230@hotmail.com)
+- fix: Removing background color for Primary SplitButton's menu button in HCM. ([PR #25066](https://github.com/microsoft/fluentui/pull/25066) by esteban.230@hotmail.com)
 
 ## [8.97.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.97.2)
 

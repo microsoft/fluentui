@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Adding subtle transition between states on Button components.",
+  "packageName": "@fluentui/react-button",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -82,11 +82,11 @@ export const useDialogSurface_unstable = (
     root: getNativeElementProps(as ?? 'div', {
       'aria-modal': modalType !== 'non-modal',
       role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+      'aria-describedby': dialogContentId,
+      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ...props,
       ...modalAttributes,
       onKeyDown: handleKeyDown,
-      'aria-describedby': dialogContentId,
-      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ref: useMergedRefs(ref, dialogRef),
     }),
   };

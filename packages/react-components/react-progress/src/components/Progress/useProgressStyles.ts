@@ -34,6 +34,7 @@ const useRootStyles = makeStyles({
   root: {
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground6,
+    justifySelf: 'stretch',
     ...shorthands.overflow('hidden'),
 
     '@media screen and (forced-colors: active)': {
