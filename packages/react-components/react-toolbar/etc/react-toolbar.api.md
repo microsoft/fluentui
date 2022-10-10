@@ -53,7 +53,7 @@ export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonSt
 export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
 
 // @public (undocumented)
-export type ToolbarContextValue = Pick<ToolbarProps, 'size'> & {
+export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical'> & {
     handleToggleButton?: ToggableHandler;
 };
 
@@ -66,7 +66,9 @@ export type ToolbarContextValues = {
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
 // @public
-export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
+export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>> & {
+    vertical?: boolean;
+};
 
 // @public
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
@@ -74,6 +76,7 @@ export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & Divide
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
     size?: 'small' | 'medium';
+    vertical?: boolean;
     checkedValues?: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;
     onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
@@ -107,7 +110,7 @@ export type ToolbarSlots = {
 };
 
 // @public
-export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarProps, 'size' | 'checkedValues'>> & Pick<ToolbarProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
+export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarProps, 'size' | 'checkedValues' | 'vertical'>> & Pick<ToolbarProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
     handleToggleButton: ToggableHandler;
 };
 

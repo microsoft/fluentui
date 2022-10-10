@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: apply single version policy",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

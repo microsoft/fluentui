@@ -49,7 +49,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     initializeComponentRef(this);
 
     this.state = {
-      isAriaPlaceholderRendered: false, // eslint-disable-line react/no-unused-state
+      isAriaPlaceholderRendered: false,
       isTooltipVisible: false,
     };
 
@@ -107,6 +107,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
             directionalHintForRTL={directionalHintForRTL}
             calloutProps={assign({}, calloutProps, {
               onDismiss: this._hideTooltip,
+              onFocus: this._onTooltipContentFocus,
               onMouseEnter: this._onTooltipMouseEnter,
               onMouseLeave: this._onTooltipMouseLeave,
             })}
@@ -170,6 +171,16 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     this._onTooltipMouseEnter(ev);
   };
 
+  private _onTooltipContentFocus = (ev: React.FocusEvent<HTMLElement>) => {
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
+      TooltipHostBase._currentVisibleTooltip.dismiss();
+    }
+    TooltipHostBase._currentVisibleTooltip = this;
+
+    this._clearDismissTimer();
+    this._clearOpenTimer();
+  };
+
   private _onTooltipBlur = (ev: React.FocusEvent<HTMLElement>) => {
     // The focused element gets a blur event when the document loses focus
     // (e.g. switching tabs in the browser), but we don't want to show the
@@ -179,7 +190,9 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     // See https://github.com/microsoft/fluentui/issues/13541
     this._ignoreNextFocusEvent = document?.activeElement === ev.target;
 
-    this._hideTooltip();
+    this._dismissTimerId = this._async.setTimeout(() => {
+      this._hideTooltip();
+    }, 0);
   };
 
   // Show Tooltip
