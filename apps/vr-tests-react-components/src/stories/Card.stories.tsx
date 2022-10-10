@@ -127,7 +127,7 @@ storiesOf('Card Converged', module)
     </div>
   ));
 
-storiesOf('Card Converged', module)
+storiesOf('Card Converged - Interactive', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -192,7 +192,7 @@ storiesOf('Card Converged', module)
     },
   );
 
-storiesOf('Card Converged', module)
+storiesOf('Card Converged - Selectable', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
