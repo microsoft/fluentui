@@ -297,7 +297,7 @@ const useStyles = makeStyles({
   },
 });
 
-const getInteractiveStyles = (state: CardState, styles: ReturnType<typeof useStyles>) => {
+const getInteractiveClassnames = (state: CardState, styles: ReturnType<typeof useStyles>) => {
   const selectedMap = {
     filled: styles.filledInteractiveSelected,
     'filled-alternative': styles.filledAlternativeInteractiveSelected,
@@ -356,7 +356,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     orientationMap[state.orientation],
     sizeMap[state.size],
     appearanceMap[state.appearance],
-    state.isInteractive && getInteractiveStyles(state, styles),
+    state.isInteractive && getInteractiveClassnames(state, styles),
     state.root.className,
   );
 
