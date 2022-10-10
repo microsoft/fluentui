@@ -9,6 +9,7 @@ permissions:
   actions: read
   statuses: write
   pull-requests: read
+  contents: read
 
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
