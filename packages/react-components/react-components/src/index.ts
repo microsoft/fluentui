@@ -471,6 +471,7 @@ export type {
   PopoverSurfaceState,
   PopoverTriggerProps,
   PopoverTriggerState,
+  PopoverTriggerChildProps,
 } from '@fluentui/react-popover';
 export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';

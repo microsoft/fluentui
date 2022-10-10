@@ -235,6 +235,7 @@ import { PopoverSurfaceProps } from '@fluentui/react-popover';
 import { PopoverSurfaceSlots } from '@fluentui/react-popover';
 import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTrigger } from '@fluentui/react-popover';
+import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
@@ -1001,6 +1002,8 @@ export { PopoverSurfaceSlots }
 export { PopoverSurfaceState }
 
 export { PopoverTrigger }
+
+export { PopoverTriggerChildProps }
 
 export { PopoverTriggerProps }
 
