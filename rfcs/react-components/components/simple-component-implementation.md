@@ -62,7 +62,8 @@ A great example of a recipe is the [Media Objects recipe](https://developer.mozi
 
 #### Cons
 
-- Allows for issues where
+- Allows for issues where the user-created component doesn't look like the design.
+- Could increase a11y issues in user-created components.
 - Could be overwhelming for the user to follow the recipe.
 
 ### Option 2: We provide the component
@@ -111,7 +112,7 @@ const MyMediaObject = () => {
 - We can add more design guidance
 - While the user still has to do more work than option 2, it's way easier than option 1.
 - Simpler to maintain than option 2.
-- Can make option1 easier to follow.
+- Can make option 1 easier to follow.
 
 #### Cons
 
