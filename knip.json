@@ -1,7 +1,7 @@
 {
   "packages/fluentui/react-northstar": {
     "entryFiles": ["src/index.ts"],
-    "projectFiles": ["src/**/*.ts"]
+    "projectFiles": ["src/**/*.{ts,tsx}"]
   },
   "packages/*": {
     "entryFiles": ["src/index.ts", "src/**/*.spec.ts"],
