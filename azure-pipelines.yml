@@ -32,7 +32,7 @@ jobs:
             --data-raw '	{
             "organization": "office",
             "projectName": "Office",
-            "prId": $(System.PullRequest.PullRequestId),
+            "prId": 10,
             "commitId": "$(Build.SourceVersion)",
               "generate":true,
               "blockingPipeline":{
