@@ -20,6 +20,7 @@ import {
   memoizeFunction,
   getPropsWithDefaults,
   getDocument,
+  FocusRects,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { Callout } from '../../Callout';
@@ -1293,6 +1294,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
                   : null}
                 {submenuProps && onRenderSubMenu(submenuProps, onDefaultRenderSubMenu)}
               </div>
+              <FocusRects />
             </Callout>
           )}
         </MenuContext.Consumer>
