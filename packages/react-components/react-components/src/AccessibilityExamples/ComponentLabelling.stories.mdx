@@ -19,20 +19,28 @@ import {
   ReuseVisibleTextGood,
 } from './Examples.tsx';
 
+import { FormErrorLabelBad, FormErrorLabelGood } from './ExampleFormErrorsMessages';
+
 import { Link } from '@fluentui/react-components';
 
 <Meta title="Concepts/Developer/Accessibility/AccessibilityExamples/Component labelling" />
 
 # Component labelling
 
-The goal of accessibility examples is to identify and describe good and bad practice when designing accessible HTML interfaces following the ARIA specification.
+Label should be clear and sufficiently explain the purpose of the component. It should not contain component type, role, action, state, position and repeating text.
+To understand more right labelling please see examples below.
 
-## Component labelled reusing visible text
+## Prefer reusing visible text for labels
 
-| Type of example | Code                                                                                                                                                                                                                                                                                                   | Screen reader narration                                                                                                          | Example                  |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| Bad             | aria-label="Remove [user name]" attribute was applied on each button                                                                                                                                                                                                                                   | JAWS: "Remove Robert Tolbert Button To activate press spacebar. <br /> Remove Celeste Burton Button To activate press spacebar." | <ReuseVisibleTextBad />  |
-| Good            | <ul><li>The id="user[number]" attribute was applied on the span element with user name.</li><li>The id="remove-button[number]" attribute was applied on the "Remove" button.</li><li>The aria-labelledby="remove-button[number] user[number]" attribute was applied on each "Remove" button.</li></ul> | JAWS: "Remove Robert Tolbert Button To activate press spacebar. <br />Remove Celeste Burton Button To activate press spacebar."  | <ReuseVisibleTextGood /> |
+ToDo: remove one example
+ToDo: zmenit odrazky pre narration
+ToDO: odstranit explanation...
+ToDO: zvyraznit zly text v code a aj v screen reader narration
+
+| Type of example | Code                                                                                                                                                                                                                                                                                                   | Screen reader narration (JAWS)                                                                                             | Example                  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| Bad             | <code>aria-label="Remove [user name]"</code> applied on each button                                                                                                                                                                                                                                    | "Remove Robert Tolbert Button To activate press spacebar. <br /> Remove Celeste Burton Button To activate press spacebar." | <ReuseVisibleTextBad />  |
+| Good            | <ul><li>The <code> id="user[number]" </code> applied on the span element with user name.</li><li>The <code> id="remove-button[number]"</code> applied on the "Remove" button.</li><li>The<code> aria-labelledby="remove-button[number] user[number]"</code> applied on each "Remove" button.</li></ul> | "Remove Robert Tolbert Button To activate press spacebar. <br />Remove Celeste Burton Button To activate press spacebar."  | <ReuseVisibleTextGood /> |
 
 Problem explanation
 
@@ -58,12 +66,19 @@ Problem explanation
   </li>
 </ul>
 
+## Form fields labelling
+
+| Type of example | Code                                                                                                       | Screen reader narration (JAWS)                                                                                                                                                                                                    | Example                |
+| --------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Bad             | Each form field is not connected to its corresponding error message.                                       | Full name field with invalid content: <br/> "Full name, Edit, Required, invalid entry, [field-content], Type in text."                                                                                                            | <FormErrorLabelBad />  |
+| Good            | The "aria-describedby" applied on each input field and references the corresponding error message element. | Full name field with invalid content: <br/> "Full name, Edit, Required, invalid entry, [field-content], Full name is invalid. It must: Contain only lowercase or uppercase letters, spaces or hyphens. Start and end wit letter." | <FormErrorLabelGood /> |
+
 ## Avoid action in accessibility name
 
-| Type of example | Code                                    | Screen reader narration                   | Example             |
-| --------------- | --------------------------------------- | ----------------------------------------- | ------------------- |
-| Bad             | aria-label="Click here to send message" | JAWS: "Click here to send message button" | <ActionAvoidBad />  |
-| Good            | aria-label="Send message "              | JAWS: "Send message button"               | <ActionAvoidGood /> |
+| Type of example | Code                                    | Screen reader narration (JAWS)      | Example             |
+| --------------- | --------------------------------------- | ----------------------------------- | ------------------- |
+| Bad             | aria-label="Click here to send message" | "Click here to send message button" | <ActionAvoidBad />  |
+| Good            | aria-label="Send message "              | "Send message button"               | <ActionAvoidGood /> |
 
 Problem explanation
 
@@ -81,10 +96,10 @@ Problem explanation
 
 ## Avoid component type in accessibility name
 
-| Type of example | Code                                | Screen reader narration               | Example                    |
-| --------------- | ----------------------------------- | ------------------------------------- | -------------------------- |
-| Bad             | aria-label="Mute microphone button" | JAWS: "Mute microphone button button" | <ComponentTypeAvoidBad />  |
-| Good            | aria-label="Mute microphone"        | JAWS: "Mute microphone button"        | <ComponentTypeAvoidGood /> |
+| Type of example | Code                                                 | Screen reader narration (JAWS)      | Example                    |
+| --------------- | ---------------------------------------------------- | ----------------------------------- | -------------------------- |
+| Bad             | <code>aria-label="Mute microphone **button**"</code> | "Mute microphone **button** button" | <ComponentTypeAvoidBad />  |
+| Good            | <code>aria-label="Mute microphone"</code>            | "Mute microphone button"            | <ComponentTypeAvoidGood /> |
 
 Problem explanation
 
@@ -101,10 +116,10 @@ Problem explanation
 
 ## Avoid state in accessibility name
 
-| Type of example | Code                                                                      | Screen reader narration                        | Example            |
-| --------------- | ------------------------------------------------------------------------- | ---------------------------------------------- | ------------------ |
-| Bad             | aria-label="Files tab is active" attribute was applied on the "Files" tab | JAWS:"Files tab is active tab selected 2 of 3" | <StateAvoidBad />  |
-| Good            | no aria-label attribute is needed for the "Files" tab                     | JAWS: "Files tab selected 2 of 3"              | <StateAvoidGood /> |
+| Type of example | Code                                                        | Screen reader narration (JAWS)            | Example            |
+| --------------- | ----------------------------------------------------------- | ----------------------------------------- | ------------------ |
+| Bad             | aria-label="Files tab is active" applied on the "Files" tab | "Files tab is active tab selected 2 of 3" | <StateAvoidBad />  |
+| Good            | no aria-label attribute is needed for the "Files" tab       | "Files tab selected 2 of 3"               | <StateAvoidGood /> |
 
 Problem explanation
 
@@ -129,10 +144,10 @@ Problem explanation
 
 ## Avoid position in accessibility name
 
-| Type of example | Code                                                                                                                                                                                                                                           | Screen reader narration                                                                                                                                                                                                                    | Example                     |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
-| Bad             | A custom "X of Y" position information is hard-coded manually as the part of each menu item's "aria-label" attribute value.                                                                                                                    | JAWS: "Profile menu <br/> Account settings..., first item of four. To move through items press up or down arrow. <br/> Change status message..., second item of four <br /> Help, third item of four <br /> Sign out, fourth item of four" | <CustomPositionAvoidBad />  |
-| Good            | The "X of Y" position information is added automatically by the screen reader for each menu item because the correct ARIA role is used both for all individual menu item elements (role="menuitem") and the parent menu element (role="menu"). | JAWS: "Profile menu <br /> Account settings..., 1 of 4. To move through items press up or down arrow. <br /> Change status message..., 2 of 4 <br /> Help, 3 of 4<br /> Sign out, 4 of 4"                                                  | <CustomPositionAvoidGood /> |
+| Type of example | Code                                                                                                                                                                                                                                           | Screen reader narration (JAWS)                                                                                                                                                                                                       | Example                     |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| Bad             | A custom "X of Y" position information is hard-coded manually as the part of each menu item's "aria-label" attribute value.                                                                                                                    | "Profile menu <br/> Account settings..., first item of four. To move through items press up or down arrow. <br/> Change status message..., second item of four <br /> Help, third item of four <br /> Sign out, fourth item of four" | <CustomPositionAvoidBad />  |
+| Good            | The "X of Y" position information is added automatically by the screen reader for each menu item because the correct ARIA role is used both for all individual menu item elements (role="menuitem") and the parent menu element (role="menu"). | "Profile menu <br /> Account settings..., 1 of 4. To move through items press up or down arrow. <br /> Change status message..., 2 of 4 <br /> Help, 3 of 4<br /> Sign out, 4 of 4"                                                  | <CustomPositionAvoidGood /> |
 
 Problem explanation
 
@@ -151,12 +166,10 @@ Problem explanation
 
 ## Avoid repeating text for component inner items
 
-ToDo: not label menu in bad example
-
-| Type of example | Code                                                                                                                                                                       | Screen reader narration                                                                                                                                                                                               | Example                 |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Bad             | aria-label="Meeting participant [user name]" attribute was applied on each menu item element.                                                                              | JAWS:"Participants menu <br /> Meeting participant Robert Tolbert 1 of 3 To move through items press up or down arrow. <br /> Meeting participant Celeste Burton 2 of 3 <br /> Meeting participant Cecil Folk 3 of 3" | <TextRepeatAvoidBad />  |
-| Good            | <ul><li>no "aria-label" attribute is needed for each menu item element.</li><li>The aria-label="Meeting participants" attribute was applied on the menu element.</li></ul> | JAWS: "Meeting participants menu <br /> Robert Tolbert 1 of 3 To move through items press up or down arrow. <br /> Celeste Burton 2 of 3 <br /> Cecil Folk 3 of 3"                                                    | <TextRepeatAvoidGood /> |
+| Type of example | Code                                                                                                                                                         | Screen reader narration (JAWS)                                                                                                                                                                                   | Example                 |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| Bad             | aria-label="Meeting participant [user name]" applied on each menu item element.                                                                              | "Participants menu <br /> Meeting participant Robert Tolbert 1 of 3 To move through items press up or down arrow. <br /> Meeting participant Celeste Burton 2 of 3 <br /> Meeting participant Cecil Folk 3 of 3" | <TextRepeatAvoidBad />  |
+| Good            | <ul><li>no "aria-label" attribute is needed for each menu item element.</li><li>The aria-label="Meeting participants" applied on the menu element.</li></ul> | "Meeting participants menu <br /> Robert Tolbert 1 of 3 To move through items press up or down arrow. <br /> Celeste Burton 2 of 3 <br /> Cecil Folk 3 of 3"                                                     | <TextRepeatAvoidGood /> |
 
 Problem explanation
 
@@ -171,10 +184,10 @@ Problem explanation
 
 ## Avoid making text focusable
 
-| Type of example | Code                                                                                                                                                                                                                                                                         | Screen reader narration                                                                                                                                                                                                                                                                  | Example                |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Bad             | The text is made focusable by adding the tabindex="0" attribute on the text element. When the user uses the TAB key, the text receives focus.                                                                                                                                | JAWS narration when the notification text is focused: "With this option, notifications won’t be displayed anymore. You can miss information about latest news." <br />JAWS narration when the checkbox is focused: "Display notification check box not checked To check press Spacebar." | <FocusTextAvoidBad/>   |
-| Good            | <ul> <li>The text is not focusable anymore, because the "tabindex" attribute does not exist on the text element.</li> <li>The text element has a unique id, like "notificationText".</li> <li>The checkbox has the aria-describedby="notificationText" attribute.</li> </ul> | "Display notification check box not checked <br />With this option, notifications won’t be displayed anymore. You can miss information about latest news.<br />To check press Spacebar"                                                                                                  | <FocusTextAvoidGood /> |
+| Type of example | Code                                                                                                                                                                                                                                                                         | Screen reader narration                                                                                                                                                                                                                                                   | Example                |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Bad             | The text is made focusable by adding the tabindex="0" attribute on the text element. When the user uses the TAB key, the text receives focus.                                                                                                                                | when the notification text is focused: "With this option, notifications won’t be displayed anymore. You can miss information about latest news." <br />JAWS narration when the checkbox is focused: "Display notification check box not checked To check press Spacebar." | <FocusTextAvoidBad/>   |
+| Good            | <ul> <li>The text is not focusable anymore, because the "tabindex" attribute does not exist on the text element.</li> <li>The text element has a unique id, like "notificationText".</li> <li>The checkbox has the aria-describedby="notificationText" attribute.</li> </ul> | "Display notification check box not checked <br />With this option, notifications won’t be displayed anymore. You can miss information about latest news.<br />To check press Spacebar"                                                                                   | <FocusTextAvoidGood /> |
 
 Problem explanation
 
@@ -190,7 +203,3 @@ Problem explanation
     focused.
   </li>
 </ul>
-
-## Using aria-label, aria-labelledby and aria-describedby examples
-
-- <FullscreenLink content="Narrating error messages for form fields" parent={parentPath} story="form-error-messages" />

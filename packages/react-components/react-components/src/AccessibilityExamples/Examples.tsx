@@ -14,9 +14,12 @@ import {
   Text,
   Checkbox,
   // makeStyles,
+  // RendererProvider,
+  // FluentProvider,
 } from '@fluentui/react-components';
 import { Send24Regular, Mic24Regular, PeopleRegular, PersonDelete24Regular } from '@fluentui/react-icons';
 import { FluentWapper } from './FluentUiWrapper';
+// import { createDOMRenderer } from '@griffel/react';
 
 // const useStyles = makeStyles({
 //   container: {
@@ -185,7 +188,12 @@ export const FocusTextAvoidGood = () => (
 );
 
 export const ReuseVisibleTextBad = () => {
+  // const targetDocument = document;
+  // const renderer = React.useMemo(() => createDOMRenderer(targetDocument), [targetDocument]);
+
   return (
+    // <RendererProvider renderer={renderer} targetDocument={targetDocument}>
+    //   <FluentProvider targetDocument={targetDocument}>
     <FluentWapper>
       <h4>Members</h4>
       {/* <div className={styles.container}> */}
@@ -202,6 +210,10 @@ export const ReuseVisibleTextBad = () => {
       </div>
     </FluentWapper>
   );
+  {
+    /* </FluentProvider>
+    </RendererProvider> */
+  }
 };
 
 export const ReuseVisibleTextGood = () => {
