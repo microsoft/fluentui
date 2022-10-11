@@ -3777,19 +3777,12 @@
     timsort "~0.3.0"
     z-schema "~5.0.2"
 
-"@rushstack/package-deps-hash@^3.2.4":
+"@rushstack/package-deps-hash@^3.2.4", "@rushstack/package-deps-hash@^3.2.5":
   version "3.2.40"
   resolved "https://registry.yarnpkg.com/@rushstack/package-deps-hash/-/package-deps-hash-3.2.40.tgz#0f14076694e65bd85de39bfcd83afb00483e0dae"
   integrity sha512-0nnhbWrYE8mdEZXYXY9wOGEMFW3VtZ7+vgh6CJeyY95MDqjz6Alx2PpAHM1T53TNDV/LNFagwl0AzivfJnjhCw==
   dependencies:
     "@rushstack/node-core-library" "3.50.1"
-
-"@rushstack/package-deps-hash@^3.2.5":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@rushstack/package-deps-hash/-/package-deps-hash-3.2.5.tgz#365c71c7ce6a8ff01b13c212c7ec858af4e74373"
-  integrity sha512-3G9hCbEZr8D66y5vSsj0xt+RgrQwsEIBwo8NDtoSPJSmSI0duBZNeU3ZM7eS4JszhJevr5cgaFytmGHvaK22BQ==
-  dependencies:
-    "@rushstack/node-core-library" "3.45.1"
 
 "@rushstack/rig-package@0.2.12":
   version "0.2.12"
