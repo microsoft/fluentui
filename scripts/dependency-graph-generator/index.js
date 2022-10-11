@@ -1,12 +1,18 @@
 const graphviz = require('graphviz');
-const parser = require('dotparser');
-const readFileSync = require('fs').readFileSync;
-const spawnSync = require('child_process').spawnSync;
-const findGitRoot = require('../monorepo/index').findGitRoot;
-const getDependencies = require('../monorepo/index').getDependencies;
+const parser = /** @type {typeof import('dotparser')['default']}*/ (/** @type {unknown} */ (require('dotparser')));
+const { readFileSync } = require('fs');
+const { spawnSync } = require('child_process');
 const path = require('path');
+const yargs = require('yargs');
+
+/** @typedef {import('yargs').Arguments<{root:string;'include-dev'?:string;'graphviz-path'?:string}>} CliArgs */
+
+const { findGitRoot, getDependencies } = require('../monorepo');
 
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
+/**
+ * @type {string[]}
+ */
 let ignoreDevDependencies = [];
 
 /**
@@ -14,6 +20,7 @@ let ignoreDevDependencies = [];
  *
  * For this utility to work you will actually need to install graphviz on your machine
  * http://www.graphviz.org
+ * @param {CliArgs} argv
  */
 async function main(argv) {
   if (!argv.root) {
@@ -81,8 +88,9 @@ function _parseDotFile(pathToDotFile) {
   const items = parsed[0].children;
   items.forEach(item => {
     if (item.type === 'node_stmt') {
-      graph.addNode(item.node_id.id);
+      graph.addNode(String(item.node_id.id));
     } else {
+      // @ts-expect-error - edge_list doesn't exist  on type definition - is this a bug ?
       graph.addEdge(item.edge_list[0].id, item.edge_list[1].id, { dir: 'forward' });
     }
   });
@@ -130,8 +138,11 @@ function _getSubTree(graph, rootPackage) {
  * @param {string} node id of the node
  */
 function _getEdgesAndChildren(graph, node) {
+  /** @type any[] */
   const edges = [];
+  /** @type any[] */
   const children = [];
+  // @ts-expect-error - edges prop doesn't exist on typings - wrong typings ?
   graph.edges.forEach(edge => {
     if (ignoreDevDependencies.includes(edge.nodeOne.id) || ignoreDevDependencies.includes(edge.nodeTwo.id)) {
       return;
@@ -146,7 +157,7 @@ function _getEdgesAndChildren(graph, node) {
   return { edges, children };
 }
 
-require('yargs')
+yargs
   .scriptName('dependency-graph-generator')
   .usage('$0 [args]')
   .command(
@@ -168,7 +179,7 @@ require('yargs')
           description: 'The path to graphviz which needs to be installed, required for windows users',
         });
     },
-    async argv => await main(argv),
+    async argv => await main(/** @type {CliArgs}*/ (argv)),
   )
   .demand('root')
   .help().argv;

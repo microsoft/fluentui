@@ -1,7 +1,6 @@
-// @ts-check
 const path = require('path');
 
-const { findRepoDeps, findGitRoot } = require('../monorepo/index');
+const { findRepoDeps, findGitRoot } = require('../monorepo');
 const { readConfig } = require('../read-config');
 
 /**
@@ -87,7 +86,6 @@ function getResolveAlias(useLib, cwd) {
 
 module.exports = getResolveAlias;
 
-// @ts-ignore
 if (require.main === module) {
   console.log(getResolveAlias());
 }

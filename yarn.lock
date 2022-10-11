@@ -5300,6 +5300,13 @@
   dependencies:
     "@types/babel__core" "*"
 
+"@types/babel__register@7.17.0":
+  version "7.17.0"
+  resolved "https://registry.yarnpkg.com/@types/babel__register/-/babel__register-7.17.0.tgz#fcb3ee6bfe9314215a0af5de7d9f19faf4144e50"
+  integrity sha512-/iL2G2eq5drPFQpzb/wMYk7B0LMWRpWajnPn1XuIzeQ2w+CRrzNbwJ5xpBdZkciYx0jqZa8h40dTXpMeTcGV7A==
+  dependencies:
+    "@types/babel__core" "*"
+
 "@types/babel__template@*":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@types/babel__template/-/babel__template-7.0.2.tgz#4ff63d6b52eddac1de7b975a5223ed32ecea9307"
@@ -5702,6 +5709,13 @@
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/@types/graceful-fs/-/graceful-fs-4.1.5.tgz#21ffba0d98da4350db64891f92a9e5db3cdb4e15"
   integrity sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==
+  dependencies:
+    "@types/node" "*"
+
+"@types/graphviz@0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/graphviz/-/graphviz-0.0.34.tgz#40657ce27383e3bd36bea6a4b7449866f3caa8eb"
+  integrity sha512-5pyobgT+/NhwKy/LMLw14xFInvYXBPx4ITc2a5FvZbm6hcudcP73DpTKTlaZbjr8fdNAkaK9KdP8GAEF0iBwlQ==
   dependencies:
     "@types/node" "*"
 
@@ -6436,6 +6450,15 @@
   dependencies:
     "@types/expect" "^1.20.4"
     "@types/node" "*"
+
+"@types/webpack-bundle-analyzer@4.4.3":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/@types/webpack-bundle-analyzer/-/webpack-bundle-analyzer-4.4.3.tgz#1f8eba759677a3bf094166572fc7debf68161f61"
+  integrity sha512-7+4XhCMxc1XyQr2lwAbEEeWTax+FX70xMeskU0WtxrODczoOZXTo9vrYh/XF7pAOn+NxqR4yRKW5gfz1HHNnfw==
+  dependencies:
+    "@types/node" "*"
+    tapable "^2.2.0"
+    webpack "^5"
 
 "@types/webpack-dev-middleware@4.1.0":
   version "4.1.0"
@@ -11901,10 +11924,10 @@ dotenv@~10.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-10.0.0.tgz#3d4227b8fb95f81096cdd2b66653fb2c7085ba81"
   integrity sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
 
-dotparser@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/dotparser/-/dotparser-1.0.0.tgz#32458fcfa855046705b90df929ed87a849e32304"
-  integrity sha512-yIvKnnQbK8dhh6aN44xNPd00FuHWVygAW8iYW05DCgzGzHJfe/VaQQAoq3QBDAa8cMFS7Lub8SCAsej/lLUomQ==
+dotparser@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/dotparser/-/dotparser-1.1.1.tgz#c474942f329638b44ddb3dff27e9a6385dbab2f9"
+  integrity sha512-8ojhUts0HbLnXJgjTiJOddwVVBUk6hg4SJ5kGiuhzgK/f+y79TiWvICwx1oCWlVbBC8YI3nEaIQg9fjGYbGBXw==
 
 download@^7.1.0:
   version "7.1.0"
@@ -13754,10 +13777,10 @@ find-cache-dir@^3.3.1:
     make-dir "^3.0.2"
     pkg-dir "^4.1.0"
 
-find-free-port@~2.0.0:
+find-free-port@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/find-free-port/-/find-free-port-2.0.0.tgz#4b22e5f6579eb1a38c41ac6bcb3efed1b6da9b1b"
-  integrity sha1-SyLl9leesaOMQaxryz7+0bbamxs=
+  integrity sha512-J1j8gfEVf5FN4PR5w5wrZZ7NYs2IvqsHcd03cAeQx3Ec/mo+lKceaVNhpsRKoZpZKbId88o8qh+dwUwzBV6WCg==
 
 find-replace@^3.0.0:
   version "3.0.0"
@@ -14967,7 +14990,7 @@ graceful-fs@^4.2.9:
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
   integrity sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=
 
-graphviz@0.0.9, graphviz@^0.0.9:
+graphviz@0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/graphviz/-/graphviz-0.0.9.tgz#0bbf1df588c6a92259282da35323622528c4bbc4"
   integrity sha512-SmoY2pOtcikmMCqCSy2NO1YsRfu9OO0wpTlOYW++giGjfX1a6gax/m1Fo8IdUd0/3H15cTOfR1SMKwohj4LKsg==
