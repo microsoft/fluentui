@@ -25,12 +25,9 @@ FluentUI fully supports browsers that are at or above the indicated versions bel
 | ------------- | ------------------ | ------- |
 | >=14.5        | >=84               | >=16    |
 
-FluentUI will ensure that no browser, EcmaScript(ES), or CSS features that are incompatible with the support matrix laid out above are introduced.
-FluentUI will not be providing our own polyfills for features that we expect our browser support matrix to already support.
-There are often well-tested third-party polyfills available that applications can use to fill in the gaps.
-Consumers who require the use/support of older browsers that don't support certain browser, ES, or CSS features (i.e. ResizeObserver),
-will need to implement or use a third-party polyfill to provide the functionality. See the partial support section below for features
-that may need to be polyfilled.
+FluentUI will ensure that no browser, ECMAScript, or CSS features that are incompatible with the support matrix laid out above are introduced.
+For consumers who require the use/support of older browsers, please see the partial support matrix and polyfill sections below for more information
+on what will need to be done.
 
 ## Partial Browser Support Matrix:
 
@@ -59,6 +56,16 @@ List of features that are currently used in FluentUI that aren't supported out o
 **Unsupported ECMAScript Features:**
 As outlined in the very beginning, FluentUI will be using ES2020 as its Typescript target; so ES2020 features such as nullish coalescing and optional chaining are already being utilized by the library.
 These ES2020 features are not guaranteed to work in all browsers within the partial support matrix so consumers will need to perform down-level transpilation of the library.
+
+## Polyfills
+
+FluentUI will not be providing polyfills for features we expect our full browser support matrix to already support.
+The only instance that a polyfill may be provided is when FluentUI's use of a feature causes an application to crash on
+the partial support browser matrix. Other than that, consumers will need to implement their own polyfills or use a third party one for their
+application. Handling polyfills on the application level ensures that those on modern browsers don't gain unnecessary overhead of
+polyfills being shipped with the FluentUI library by default; as well as prevents any unintended polyfill duplication from the library and app level.
+This also gives consumers the flexibility to provide robust solutions such as shipping a bundle to support older browsers with the necessary polyfills and one with a lighter,
+polyfill-free bundle to support modern browsers.
 
 ## Browser Support Expectations:
 
