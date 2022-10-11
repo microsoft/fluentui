@@ -22,6 +22,7 @@ import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
@@ -113,9 +114,7 @@ export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonTyp
 }>;
 
 // @public
-export type PopoverTriggerProps = {
-    children: React_2.ReactElement | ((props: PopoverTriggerChildProps) => React_2.ReactElement | null);
-};
+export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps>;
 
 // @public
 export type PopoverTriggerState = {

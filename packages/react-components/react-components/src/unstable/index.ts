@@ -202,6 +202,11 @@ export {
   useDialogSurface_unstable,
   useDialogSurfaceStyles_unstable,
   renderDialogSurface_unstable,
+  DialogContent,
+  dialogContentClassNames,
+  useDialogContentStyles_unstable,
+  useDialogContent_unstable,
+  renderDialogContent_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -227,6 +232,9 @@ export type {
   DialogSurfaceProps,
   DialogSurfaceSlots,
   DialogSurfaceState,
+  DialogContentProps,
+  DialogContentSlots,
+  DialogContentState,
 } from '@fluentui/react-dialog';
 
 export {
@@ -353,3 +361,12 @@ export type {
   SwitchFieldProps,
   TextareaFieldProps,
 } from '@fluentui/react-field';
+
+export {
+  Persona,
+  personaClassNames,
+  renderPersona_unstable,
+  usePersonaStyles_unstable,
+  usePersona_unstable,
+} from '@fluentui/react-persona';
+export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';

@@ -3,7 +3,7 @@ import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 import config from '../../../config';
 
-export const isCycleToSkip = (proposedCycle, benignCycles) => {
+export const isCycleToSkip = (proposedCycle: string[], benignCycles: string[][]) => {
   return benignCycles.some(benignCycle => {
     const fullBenignCycle = [...benignCycle, ...benignCycle];
     return fullBenignCycle.join(',').indexOf(proposedCycle.join(',')) >= 0;

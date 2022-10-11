@@ -51,6 +51,28 @@ describe('MenuTrigger', () => {
       .should('be.focused');
   });
 
+  it('should open menu on hover if openOnHover is set', () => {
+    mount(
+      <Menu openOnHover hoverDelay={1}>
+        <MenuTrigger>
+          <button>Menu</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+    cy.get(menuTriggerSelector)
+      .realHover()
+      .wait(1)
+      .get(menuSelector)
+      .should('be.visible')
+      .get(menuItemSelector)
+      .should('be.focused');
+  });
+
   it('should close menu on escape when focus is on the trigger', () => {
     mount(
       <Menu>
@@ -92,6 +114,22 @@ describe('MenuTrigger', () => {
       cy.get(menuTriggerSelector).focus().realPress(key);
       cy.get(menuSelector).should('be.visible').get(menuItemSelector).first().should('be.focused');
     });
+  });
+
+  it('should not automatically focus itself when mounted', () => {
+    mount(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+    cy.get(menuTriggerSelector).should('not.be.focused');
   });
 });
 

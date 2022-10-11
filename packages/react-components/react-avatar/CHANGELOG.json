@@ -2,6 +2,67 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 03 Oct 2022 22:24:34 GMT",
+      "tag": "@fluentui/react-avatar_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "3bce1e54d85b7bd4255aba62b2b0afa020097d4e",
+            "comment": "fix: Make AvatarGroupPopover's focus indicator the same for all layouts."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "9357de4af136dfb5e5ed37b68318024235aa4ba3",
+            "comment": "feat: Implement avatar context for slot overrides"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1dcb695eb7e57a1128156049e08729206cc790ae",
+            "comment": "feat: Avatar's aria label includes 'active' or 'inactive' when using the active prop"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.7",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.1.2",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.1.2",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.0.7",
+            "commit": "67a8c98b8d53cd2fa14d668cf639b867b68ad18a"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1333dab7a897e846eb70a493339cd13d1a095cb2",
+            "comment": "chore: Migrate react-avatar to use new build"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:45 GMT",
       "tag": "@fluentui/react-avatar_v9.1.1",
       "version": "9.1.1",

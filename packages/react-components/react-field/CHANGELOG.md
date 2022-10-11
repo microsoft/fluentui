@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.3)
+
+Mon, 03 Oct 2022 22:24:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.2..@fluentui/react-field_v9.0.0-alpha.3)
+
+### Changes
+
+- fix: Remove SwitchField's labelPosition prop, as it has no effect ([PR #24876](https://github.com/microsoft/fluentui/pull/24876) by behowell@microsoft.com)
+- Bump @fluentui/react-checkbox to v9.0.7 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-combobox to v9.0.0-beta.11 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-input to v9.2.0 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-radio to v9.0.7 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-slider to v9.0.6 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.3 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-switch to v9.0.7 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-textarea to v9.1.1 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.2)
 

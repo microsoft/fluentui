@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.2)
+
+Mon, 03 Oct 2022 22:24:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.2.1..@fluentui/react-menu_v9.2.2)
+
+### Patches
+
+- fix: Menu triggers no longer take focus when they are mounted ([PR #25016](https://github.com/microsoft/fluentui/pull/25016) by behowell@microsoft.com)
+- Bump @fluentui/react-aria to v9.2.1 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-portal to v9.0.6 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.1)
+
+Fri, 23 Sep 2022 10:32:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.2.0..@fluentui/react-menu_v9.2.1)
+
+### Patches
+
+- fix: Make Menu openOnHover prop work again ([PR #24899](https://github.com/microsoft/fluentui/pull/24899) by behowell@microsoft.com)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.0)
 

@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 20 Sep 2022 20:55:44 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 22:24:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.11)
+
+Mon, 03 Oct 2022 22:24:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0-beta.10..@fluentui/react-dialog_v9.0.0-beta.11)
+
+### Changes
+
+- feat: removes DialogSurface native dialog support  ([PR #24979](https://github.com/microsoft/fluentui/pull/24979) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.2.1 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-portal to v9.0.6 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+
+## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.10)
+
+Fri, 23 Sep 2022 10:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0-beta.9..@fluentui/react-dialog_v9.0.0-beta.10)
+
+### Changes
+
+- feat: implements DialogContent as a swap of DialogBody ([PR #24855](https://github.com/microsoft/fluentui/pull/24855) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.9)
 

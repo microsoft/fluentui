@@ -853,7 +853,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
       class="ms-Dropdown-container"
     >
       <div
-        aria-activedescendant="Dropdown0-list1"
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"
@@ -1208,7 +1207,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
       class="ms-Dropdown-container"
     >
       <div
-        aria-activedescendant="Dropdown0-list1"
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"
@@ -1580,6 +1578,10 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             font-weight: 400;
                             height: 0px;
                             line-height: 20px;
+                            margin-bottom: 0px;
+                            margin-left: 0px;
+                            margin-right: 0px;
+                            margin-top: 0px;
                             min-height: 36px;
                             outline: transparent;
                             overflow-wrap: break-word;
@@ -1746,6 +1748,10 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           font-weight: 400;
                           height: 0px;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
