@@ -13,7 +13,7 @@ export interface LoaderVariables {
   svgWidths: Record<SizeValue, string>;
 }
 
-export const loaderVariables = (): LoaderVariables => ({
+export const loaderVariables = (siteVariables: any): LoaderVariables => ({
   containerHeights: {
     smallest: pxToRem(24),
     smaller: pxToRem(24),
@@ -33,7 +33,7 @@ export const loaderVariables = (): LoaderVariables => ({
     largest: pxToRem(72),
   },
 
-  svgContent: loaderSvgDataUrl,
+  svgContent: loaderSvgDataUrl(siteVariables.colorScheme.brand.border2, siteVariables.colorScheme.brand.foreground),
   secondarySvgContent: loaderSecondarySvgDataUrl,
   svgHeights: {
     smaller: pxToRem(1464),
