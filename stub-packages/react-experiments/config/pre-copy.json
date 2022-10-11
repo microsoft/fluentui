@@ -1,8 +1,8 @@
 {
   "copyTo": {
-    "lib/components/signals/a": [
-      "@uifabric/experiments/lib/components/signals/Signal.scss.*",
-      "@uifabric/experiments/lib/components/signals/Signals.scss.*"
+    "lib/components/signals": [
+      "@uifabric/experiments/lib/components/signals/**/Signal.scss.*",
+      "@uifabric/experiments/lib/components/signals/**/Signals.scss.*"
     ],
     "dist": [
       "@uifabric/example-app-base/index.html",
