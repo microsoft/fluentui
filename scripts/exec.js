@@ -4,8 +4,10 @@ const child_process = require('child_process');
 const chalk = require('chalk');
 const { logStatus } = require('./logging');
 
-const SEPARATOR = process.platform === 'win32' ? ';' : ':',
-  env = Object.assign({}, process.env);
+const SEPARATOR = process.platform === 'win32' ? ';' : ':';
+// Make sure we read "path" case-insensitively
+const { PATH } = process.env;
+const env = Object.assign({}, process.env, { PATH });
 
 env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
 
