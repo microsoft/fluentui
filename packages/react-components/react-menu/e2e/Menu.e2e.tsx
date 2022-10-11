@@ -403,7 +403,14 @@ describe('Menu', () => {
         </MenuPopover>
       </Menu>,
     );
-    cy.get(menuTriggerSelector).click().focused().type('{esc}').get(menuSelector).should('not.exist');
+    cy.get(menuTriggerSelector)
+      .click()
+      .focused()
+      .type('{esc}')
+      .get(menuSelector)
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('be.focused');
   });
 
   it('should be dismissed on outside click', () => {
