@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Toolbar selection should work",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
