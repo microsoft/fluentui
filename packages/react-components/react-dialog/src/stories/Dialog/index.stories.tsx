@@ -14,7 +14,7 @@ export { ControllingOpenAndClose } from './DialogControllingOpenAndClose.stories
 export { ChangeFocus } from './DialogChangeFocus.stories';
 export { TriggerOutsideDialog } from './DialogTriggerOutsideDialog.stories';
 export { CustomTrigger } from './DialogCustomTrigger.stories';
-export { HavingAForm } from './DialogHavingAForm.stories';
+export { WithForm } from './DialogWithForm.stories';
 export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
 
