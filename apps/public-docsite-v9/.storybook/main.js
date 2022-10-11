@@ -8,6 +8,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../src/**/*.stories.mdx',
     '../src/**/*.stories.@(ts|tsx)',
     ...utils.getVnextStories(),
+    '../../../packages/react-migration-v8-v9/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],

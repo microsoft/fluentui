@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: The Tooltip should not hide if it gets keyboard focus",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

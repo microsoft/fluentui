@@ -2,6 +2,77 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 10 Oct 2022 07:38:22 GMT",
+      "tag": "@fluentui/react_v8.98.0",
+      "version": "8.98.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f6139229d6c95a0c02c62abc2c66831eadea6ad8",
+            "comment": "fix: Tooltip should not hide if an element inside it gets focused."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "604033f9ebd55f81635cc479195e36d4030d5c27",
+            "comment": "fix: do not append first of month day letter after day name"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "1c8b241a322ca3d2ddb5dbe78154bb7bab1271df",
+            "comment": "fix: Remove border in hover/pressed state of primary SplitButton."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "7e455241f8f4f8e3e499e377c399a65277c93c33",
+            "comment": "fix: Removing background color for Primary SplitButton's menu button in HCM."
+          }
+        ],
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "39d3a79d7bcdc29d3b15864e08a9b80a5700c424",
+            "comment": "fix: DetailsList should collapse columns even with horizontal scroll, and the CustomColumns example should not hide all columns"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.21",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.1",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.6",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.8.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.10",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Oct 2022 07:45:02 GMT",
       "tag": "@fluentui/react_v8.97.2",
       "version": "8.97.2",

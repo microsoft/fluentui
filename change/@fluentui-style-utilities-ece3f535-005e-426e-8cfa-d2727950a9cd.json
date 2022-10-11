@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added export of utilities/index",
-  "packageName": "@fluentui/style-utilities",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
