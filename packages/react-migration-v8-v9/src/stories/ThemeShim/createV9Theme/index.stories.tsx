@@ -63,8 +63,8 @@ export const Default = () => {
   const onCreateTheme = React.useCallback(() => {
     try {
       const v8Theme = JSON.parse(v8ThemeText);
-      const v9Theme = createV9Theme(v8Theme);
-      setV9Theme((v9Theme as unknown) as Record<string, string>);
+      const newV9Theme = createV9Theme(v8Theme);
+      setV9Theme((newV9Theme as unknown) as Record<string, string>);
     } catch (e) {
       setMessage((e as Error).message);
     }

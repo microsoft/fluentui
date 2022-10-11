@@ -120,12 +120,12 @@ export const Default = () => {
     try {
       const brandVariants = JSON.parse(brandVariantText) as BrandVariants;
       const v9Theme = JSON.parse(v9ThemeText) as ThemeV9;
-      const v8Theme = createV8Theme(brandVariants, v9Theme, isDarkTheme);
-      setV8Theme(v8Theme);
+      const newV8Theme = createV8Theme(brandVariants, v9Theme, isDarkTheme);
+      setV8Theme(newV8Theme);
     } catch (e) {
       setMessage((e as Error).message);
     }
-  }, [brandVariantText, v9ThemeText]);
+  }, [brandVariantText, isDarkTheme, v9ThemeText]);
 
   return (
     <div className={styles.root}>
