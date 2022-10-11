@@ -28,44 +28,8 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
     overflow: 'hidden',
   }),
   svg: ({ props: p, theme: t, variables: v }: ComponentStyleFunctionParam<LoaderStylesProps, LoaderVariables>) => {
-    const outerAnimation: ICSSInJSStyle = {
-      animationName: {
-        to: {
-          opacity: 1,
-        },
-      },
-      animationDelay: '1.5s',
-      animationDirection: 'normal',
-      animationDuration: '.3s',
-      animationFillMode: 'both',
-      animationIterationCount: '1',
-      animationPlayState: 'running',
-      animationTimingFunction: 'ease-out',
-      display: 'block',
-      overflow: 'hidden',
-      position: 'relative',
-    };
-    const svgAnimation: ICSSInJSStyle = {
-      animationName: {
-        to: {
-          transform: `translate3d(0, ${v.svgTranslatePosition[p.size]}, 0)`,
-        },
-      },
-      animationDelay: '0s',
-      animationDirection: 'normal',
-      animationDuration: '2s',
-      animationFillMode: 'both',
-      animationPlayState: 'running',
-      animationTimingFunction: 'steps(60, end)',
-      animationIterationCount: 'infinite',
-    };
-
     return {
-      ...outerAnimation,
-
       ':before': {
-        ...svgAnimation,
-
         backgroundImage: p.secondary ? v.secondarySvgContent : v.svgContent,
         content: '" "',
         display: 'block',
