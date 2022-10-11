@@ -21,6 +21,35 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
+      - bash: |
+          postPolicy="true";
+          response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
+            parsedResponse=${response/*"access_token"/}
+            token=${parsedResponse:3:${#parsedResponse}-5}
+            curl --location --request POST 'https://vrt-fluentapp.azurewebsites.net/api/policyState' \
+            --header 'Authorization: Bearer '"$token" \
+            --header 'Content-Type: application/json' \
+            --data-raw '	{
+            "organization": "office",
+            "projectName": "Office",
+            "prId": $(System.PullRequest.PullRequestId),
+            "commitId": "$(Build.SourceVersion)",
+              "generate":true,
+              "blockingPipeline":{
+              },
+              "nonBlockingPipeline":{
+                "15438": {
+                  "pipelineStatus": "PENDING",
+                  "pipelineName": "fluent-ui VRT Pipeline"
+                }
+              },
+              "postPolicy": '${postPolicy}',
+              "policyType": "OPTIONAL"
+            }'
+        displayName: "Call policy State Api"
+        env:
+          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+
       - task: Bash@3
         inputs:
           filePath: yarn-ci.sh
@@ -33,7 +62,7 @@ jobs:
       - script: |
           yarn lage test:component --verbose
         displayName: 'Run VR tests'
-        
+
       - script: |
           mkdir -p screenshots
           cp -rf apps/vr-tests-react-components/dist/screenshots/*.png screenshots/
@@ -59,5 +88,5 @@ jobs:
           PathtoPublish: 'screenshots'
           ArtifactName: 'vrscreenshot'
           publishLocation: 'Container'
-          
+
       - template: .devops/templates/cleanup.yml
