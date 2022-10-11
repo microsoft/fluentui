@@ -48,7 +48,8 @@ const setContainerSize = (size: number) => {
     .then(container => {
       container.css('width', `${size}px`);
     })
-    .log(`Setting container size to ${size}px`);
+    .log(`Setting container size to ${size}px`)
+    .wait(1);
 };
 
 const Item: React.FC<{ children?: React.ReactNode; width?: number } & Omit<OverflowItemProps, 'children'>> = ({
@@ -413,5 +414,25 @@ describe('Overflow', () => {
     setContainerSize(200);
     cy.get(`[${selectors.divider}="1"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 1);
+  });
+
+  it.only('should remove overflow menu if the last overflowed item can take its place', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    mount(
+      <Container>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    setContainerSize(497);
+    setContainerSize(498);
+    setContainerSize(499);
+    setContainerSize(500);
+    cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 });
