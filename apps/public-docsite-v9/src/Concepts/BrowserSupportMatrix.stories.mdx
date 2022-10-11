@@ -10,16 +10,10 @@ full benefits of the library while at the same time providing the necessary guid
 support older browsers. Details of a full and partial browser support matrix as well as actions consumers
 will need to take such as transpiling and polyfilling are outlined below.
 
-## ECMAScript Target & Transpilation
-
-FluentUI will be targetting ES2020 as its Typescript target. FluentUI will not be performing any down-level transpilation below ES2020
-which means that consumers who need to support older browsers (such as those that only support up to ES6) are responsible for transpiling down the FluentUI
-library to fit their needs. This ensures that consumers who support modern browsers are not penalized and can get the added benefit of a reduced bundle size that
-the latest ES standards provide.
-
 ## Full Browser Support Matrix
 
-FluentUI fully supports browsers that are at or above the indicated versions below:
+FluentUI fully supports browsers that are at or above the indicated versions below. Consumers who support these browsers
+are poised to experience the full performance and bundlesize benefits that the FluentUI library provides.
 
 **Desktop Browsers:**
 
@@ -39,7 +33,9 @@ on what will need to be done.
 
 ## Partial Browser Support Matrix:
 
-FluentUI provides partial support for the browsers below which will have limitations that will require consumers to transpile down and/or use polyfills to cover the support gaps.
+FluentUI introduces the concept of a partial browser support matrix as a means to find that balance between supporting modern browsers and older browsers.
+The partial browser matrix below will have limitations that will require consumers to transpile down and/or use polyfills to cover the support gaps. The feature gaps
+are listed below with subsequent recommendation on how to handle each case.
 
 **Desktop Browsers:**
 
@@ -57,14 +53,27 @@ List of features that are currently used in FluentUI that aren't supported out o
 
 **Unsupported CSS Features:**
 
+- Support for the CSS features below are lost within the partial support matrix. The lost of these features will not crash consumer applications,
+  it will simply degrade the user interface.
+
 1.  Flex gap: Unsupported by Chrome, Edge, Firefox, Opera, Safari, Safari on IOS, Chrome on Android
 2.  CSS min, max, clamp: Unsupported by Firefox and Opera
 3.  CSS revert value: Unsupported by Firefox and Opera
 
 **Unsupported ECMAScript Features:**
-ES2020 features such as nullish coalescing and optional chaining are already being utilized by the library.
-These ES2020 features are not guaranteed to work in all browsers within the partial support matrix so consumers
-will need to perform down-level transpilation of the library.
+
+- ES2020 features listed below are already being used within the FluentUI library. Consumers who follow the partial support matrix will need to transpile down
+  the FluentUI library to make it work since the use of these ES2020 features will result in the application crashing on some of the listed browsers.
+
+1. Nullish Coalescing: Unsupported by Chrome, Edge, Firefox, Opera.
+2. Optional Chaining: Unsupported by Chrome, Edge, Firefox, Opera.
+
+## ECMAScript Target & Transpilation
+
+FluentUI will be targetting ES2020 as its Typescript target. FluentUI will not be performing any down-level transpilation below ES2020
+which means that consumers who need to support older browsers (such as those that only support up to ES6) are responsible for transpiling down the FluentUI
+library to fit their needs. This ensures that consumers who support modern browsers are not penalized and can get the added benefit of a reduced bundle size that
+the latest ES standards provide.
 
 ## Polyfills
 
