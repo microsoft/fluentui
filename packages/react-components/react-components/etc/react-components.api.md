@@ -237,6 +237,9 @@ import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTrigger } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
+import { Portal } from '@fluentui/react-portal';
+import { PortalProps } from '@fluentui/react-portal';
+import { PortalState } from '@fluentui/react-portal';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
@@ -294,6 +297,7 @@ import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
 import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
+import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
@@ -498,6 +502,7 @@ import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
 import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
+import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioGroup_unstable } from '@fluentui/react-radio';
@@ -1001,6 +1006,12 @@ export { PopoverTriggerProps }
 
 export { PopoverTriggerState }
 
+export { Portal }
+
+export { PortalProps }
+
+export { PortalState }
+
 export { PositioningImperativeRef }
 
 export { PositioningProps }
@@ -1114,6 +1125,8 @@ export { renderPopover_unstable }
 export { renderPopoverSurface_unstable }
 
 export { renderPopoverTrigger_unstable }
+
+export { renderPortal_unstable }
 
 export { renderRadio_unstable }
 
@@ -1522,6 +1535,8 @@ export { usePopoverSurface_unstable }
 export { usePopoverSurfaceStyles_unstable }
 
 export { usePopoverTrigger_unstable }
+
+export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
 

@@ -1,8 +1,8 @@
 import { mergeStyleSets } from '@fluentui/react';
 import * as React from 'react';
-import { injectGlobalCss } from '../../shared/injectStyles';
-import { getTestParams } from '../../shared/testParams';
-import { performanceMeasure } from '../../shared/performanceMeasure';
+import { injectGlobalCss } from '../../shared/css/injectStyles';
+import { getTestOptions } from '../../shared/utils/testOptions';
+import { performanceMeasure } from '../../shared/utils/performanceMeasure';
 import { StressComponent } from './StressComponent';
 
 const styles = mergeStyleSets({
@@ -21,7 +21,7 @@ export const StressContainer: React.FC<StressContainerProps> = ({ numChildren = 
   const [checked, setChecked] = React.useState(false);
 
   React.useEffect(() => {
-    const { test } = getTestParams();
+    const { test } = getTestOptions();
     if (test === 'mount') {
       performanceMeasure('stress', 'start');
     } else if (test === 'inject-styles') {

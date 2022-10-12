@@ -5,7 +5,7 @@ import { SparkleFilled } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   stack: {
-    display: 'inline-grid',
+    display: 'grid',
     rowGap: tokens.spacingVerticalM,
     width: '400px',
   },

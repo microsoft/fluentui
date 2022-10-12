@@ -8,7 +8,9 @@ export const Default = (props: Partial<ToolbarProps>) => (
     <ToolbarButton>Click me</ToolbarButton>
     <ToolbarDivider />
     <ToolbarButton>Click me</ToolbarButton>
-    <ToolbarToggleButton>Click me to Toggle</ToolbarToggleButton>
+    <ToolbarToggleButton name="toggle" value="toggle">
+      Click me to Toggle
+    </ToolbarToggleButton>
     <ToolbarDivider />
   </Toolbar>
 );

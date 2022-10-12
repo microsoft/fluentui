@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Dropdown arrow icon layout when no placeholder or value is present",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

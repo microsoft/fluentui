@@ -49,6 +49,12 @@ export const getStyles = memoizeFunction(
                   borderRightWidth: '0',
                   ...getHighContrastNoAdjustStyle(),
                 },
+                ':hover': {
+                  border: 'none',
+                },
+                ':active': {
+                  border: 'none',
+                },
               },
             },
             '.ms-Button--primary + .ms-Button': {
