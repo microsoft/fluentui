@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 12 Oct 2022 12:22:45 GMT",
+      "tag": "office-ui-fabric-react_v7.199.4",
+      "version": "7.199.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure toggling group state does not select it",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "d05569d8499d95588dc54bbac5b5f414824480fc",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Oct 2022 18:13:33 GMT",
       "tag": "office-ui-fabric-react_v7.199.3",
       "version": "7.199.3",

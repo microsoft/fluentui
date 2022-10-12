@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fluent-theme",
-  "version": "7.7.24",
+  "version": "7.7.25",
   "description": "Fluent theming for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@uifabric/set-version": "^7.0.24",
     "@uifabric/styling": "^7.25.0",
     "@uifabric/variants": "^7.3.3",
-    "office-ui-fabric-react": "^7.199.3",
+    "office-ui-fabric-react": "^7.199.4",
     "tslib": "^1.10.0"
   }
 }

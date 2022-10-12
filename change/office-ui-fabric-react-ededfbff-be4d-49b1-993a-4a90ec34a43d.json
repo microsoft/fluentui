@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Ensure toggling group state does not select it",
-  "packageName": "office-ui-fabric-react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Oct 2022 18:13:33 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Oct 2022 12:22:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.199.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.4)
+
+Wed, 12 Oct 2022 12:22:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.3..office-ui-fabric-react_v7.199.4)
+
+### Patches
+
+- Ensure toggling group state does not select it ([PR #25149](https://github.com/microsoft/fluentui/pull/25149) by seanmonahan@microsoft.com)
 
 ## [7.199.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.3)
 

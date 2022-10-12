@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 30 Sep 2022 12:22:39 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Oct 2022 12:22:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.45.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v7.45.10)
+
+Wed, 12 Oct 2022 12:22:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v7.45.6..@fluentui/react-experiments_v7.45.10)
+
+### Patches
+
+- chore: add signal styles to pre-copy. ([PR #25146](https://github.com/microsoft/fluentui/pull/25146) by mgodbolt@microsoft.com)
 
 ## [7.45.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v7.45.6)
 
