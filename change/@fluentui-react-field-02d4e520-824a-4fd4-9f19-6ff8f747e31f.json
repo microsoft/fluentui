@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add ProgressField to @fluentui/react-field",
+  "packageName": "@fluentui/react-field",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

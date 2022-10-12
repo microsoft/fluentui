@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Fix focus returning to correct element on menu close",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

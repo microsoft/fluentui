@@ -1,48 +1,32 @@
 import * as React from 'react';
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
-
-import { Portal } from '@fluentui/react-portal';
+import { makeStyles, shorthands, tokens, Portal } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  container: {
-    ...shorthands.border('3px', 'solid', tokens.colorPaletteRedBackground3),
-    ...shorthands.padding('10px'),
-  },
-
-  portalContent: {
+  content: {
     backgroundColor: tokens.colorPaletteYellowBackground3,
     ...shorthands.border('3px', 'dashed'),
-    marginTop: '10px',
+    ...shorthands.padding('5px'),
+  },
+  container: {
+    ...shorthands.border('3px', 'dashed'),
+    ...shorthands.padding('5px'),
   },
 });
 
-const Container: React.FC = ({ children }) => {
-  const styles = useStyles();
-  return (
-    <div className={styles.container}>
-      Portal nested within
-      {children}
-    </div>
-  );
-};
-
-const ExamplePortalContent: React.FC = ({ children }) => {
-  const styles = useStyles();
-
-  return <div className={styles.portalContent}>{children}</div>;
-};
-
 export const Default = () => {
+  const styles = useStyles();
+  const [rootElement, setRootElement] = React.useState<HTMLElement | null>(null);
+
   return (
-    <Container>
-      <Container>
-        <Portal>
-          <ExamplePortalContent>Portal content</ExamplePortalContent>
+    <>
+      <div className={styles.container} style={{ overflow: 'hidden' }}>
+        Clipping parent container
+        <Portal mountNode={rootElement}>
+          <div className={styles.content}>Portal content</div>
         </Portal>
-        <Portal>
-          <ExamplePortalContent>Portal content</ExamplePortalContent>
-        </Portal>
-      </Container>
-    </Container>
+      </div>
+
+      <div ref={setRootElement} />
+    </>
   );
 };

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to webpack5 and apply single version policy",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
