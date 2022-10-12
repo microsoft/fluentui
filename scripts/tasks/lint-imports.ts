@@ -1,4 +1,4 @@
-import { getAllPackageInfo, findGitRoot } from '../monorepo/index';
+import { getAllPackageInfo, findGitRoot } from '../monorepo';
 import { readConfig } from '../read-config';
 import * as glob from 'glob';
 import * as path from 'path';
@@ -119,7 +119,7 @@ export function lintImports() {
       if (!exportStatements) {
         _addError(importErrors.exportMulti, relativePath, 'no exported class or const');
       } else if (exportStatements.length > 1) {
-        const exports = exportStatements.map(exp => exp.match(exportRegex)[2]);
+        const exports = exportStatements.map(exp => (exp.match(exportRegex) as RegExpMatchArray)[2]);
         _addError(importErrors.exportMulti, relativePath, 'choose one of ' + exports.join(', '));
       }
 
@@ -144,10 +144,10 @@ export function lintImports() {
     const importPath = importMatch[2];
     const packageRootPath = importPath.split('/')[0];
     const relativePath = path.relative(sourcePath, filePath);
-    let fullImportPath: string;
+    let fullImportPath: string | undefined;
     let pathIsRelative = false;
     let pathIsDeep = false;
-    let pkgName: string;
+    let pkgName: string | undefined = undefined;
 
     if (importPath[0] === '.') {
       // import is a file path. is this a file?
@@ -211,12 +211,15 @@ export function lintImports() {
         _addError(importErrors.pathDeep, relativePath, importPath);
       }
 
-      if (reExportedPackages[pkgName] && !allowedReexportedImports.includes(importPath)) {
+      if (
+        reExportedPackages[pkgName as keyof typeof reExportedPackages] &&
+        !allowedReexportedImports.includes(importPath)
+      ) {
         _addError(
           importErrors.pathReExported,
           relativePath,
           importPath,
-          '@fluentui/react/lib/' + reExportedPackages[pkgName],
+          '@fluentui/react/lib/' + reExportedPackages[pkgName as keyof typeof reExportedPackages],
         );
       }
 
@@ -238,7 +241,7 @@ export function lintImports() {
       }
     }
 
-    return undefined;
+    return;
   }
 
   function _addError(errorGroup: ImportErrorGroup, relativePath: string, importPath: string, alternative?: string) {
@@ -270,7 +273,7 @@ export function lintImports() {
     };
 
     let hasError = false;
-    for (const groupName of Object.keys(importErrors)) {
+    for (const groupName of Object.keys(importErrors) as Array<keyof ImportErrors>) {
       const errorGroup: ImportErrorGroup = importErrors[groupName];
       if (errorGroup.count) {
         hasError = true;

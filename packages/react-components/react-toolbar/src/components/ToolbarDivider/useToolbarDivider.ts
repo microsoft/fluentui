@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ToolbarDividerProps, ToolbarDividerState } from './ToolbarDivider.types';
 import { useDivider_unstable } from '@fluentui/react-divider';
-import { useToolbarContext } from '../Toolbar/ToolbarContext';
+import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 
 /**
  * Create the state required to render ToolbarDivider.
@@ -16,6 +16,6 @@ export const useToolbarDivider_unstable = (
   props: ToolbarDividerProps,
   ref: React.Ref<HTMLElement>,
 ): ToolbarDividerState => {
-  const { vertical } = useToolbarContext();
+  const vertical = useToolbarContext_unstable(ctx => ctx.vertical);
   return useDivider_unstable({ vertical: !vertical, ...props }, ref);
 };

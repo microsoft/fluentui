@@ -36,7 +36,7 @@ function parseModule(args: Arguments & { module?: string | string[] }) {
         );
       }
 
-      acc[outputType] = true;
+      acc[outputType as keyof JustArgs['module']] = true;
 
       return acc;
     },

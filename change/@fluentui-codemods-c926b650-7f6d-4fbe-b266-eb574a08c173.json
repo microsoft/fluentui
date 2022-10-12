@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Do not fail on empty configMod config",
-  "packageName": "@fluentui/codemods",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}
