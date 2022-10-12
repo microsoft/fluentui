@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { themeToTokensObject, tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
@@ -52,11 +52,19 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      color: tokens.colorNeutralForeground1Pressed,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorSubtleBackgroundPressed,
+        opacity: 1,
+      },
+    },
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -73,6 +81,28 @@ const useStyles = makeStyles({
 
   smaller: {
     fontSize: tokens.fontSizeBase200,
+  },
+
+  brand: {
+    backgroundColor: tokens.colorBrandBackgroundInvertedHover,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+    },
+  },
+
+  neutral: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
+    ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
   },
 });
 
@@ -91,6 +121,7 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
+    styles[state.appearance],
     state.root.className,
   );
 
