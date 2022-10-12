@@ -1,7 +1,7 @@
 import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
-import { injectGlobalCss } from '../../shared/injectStyles';
-import { getTestParams } from '../../shared/testParams';
-import { performanceMeasure } from '../../shared/performanceMeasure';
+import { injectGlobalCss } from '../../shared/css/injectStyles';
+import { getTestOptions } from '../../shared/utils/testOptions';
+import { performanceMeasure } from '../../shared/utils/performanceMeasure';
 
 const styles = css`
   :host {
@@ -26,7 +26,7 @@ export class StressContainer extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    const { test } = getTestParams();
+    const { test } = getTestOptions();
 
     if (test === 'mount') {
       performance.mark('start');
