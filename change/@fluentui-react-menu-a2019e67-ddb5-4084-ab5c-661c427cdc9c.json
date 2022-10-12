@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Migrate menu to new pkg structure",
+  "comment": "chore: Migrate to new package structure",
   "packageName": "@fluentui/react-menu",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"
