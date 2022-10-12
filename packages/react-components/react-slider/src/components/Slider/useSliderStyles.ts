@@ -221,6 +221,7 @@ const useThumbStyles = makeStyles({
  */
 const useInputStyles = makeStyles({
   input: {
+    cursor: 'pointer',
     opacity: 0,
     gridRowStart: 'slider',
     gridRowEnd: 'slider',
@@ -228,6 +229,9 @@ const useInputStyles = makeStyles({
     gridColumnEnd: 'slider',
     ...shorthands.padding(0),
     ...shorthands.margin(0),
+  },
+  disabled: {
+    cursor: 'default',
   },
   horizontal: {
     height: `var(${thumbSizeVar})`,
@@ -279,6 +283,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     sliderClassNames.input,
     inputStyles.input,
     isVertical ? inputStyles.vertical : inputStyles.horizontal,
+    state.disabled && inputStyles.disabled,
     state.input.className,
   );
 
