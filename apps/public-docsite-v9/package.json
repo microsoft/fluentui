@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.98.0",
+    "@fluentui/react-northstar": "^0.64.0",
+    "@fluentui/react-icons-northstar": "^0.64.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
     "@fluentui/react-components": "^9.4.0",
