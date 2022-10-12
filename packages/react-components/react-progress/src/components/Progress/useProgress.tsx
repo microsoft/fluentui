@@ -15,15 +15,17 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
   // Props
   const { thickness = 'medium', value, max = 1.0 } = props;
 
-  const root = getNativeElementProps('div', { ref, role: 'progressbar', ...props });
+  const root = getNativeElementProps('div', {
+    ref,
+    role: 'progressbar',
+    'aria-valuemin': value ? 0 : undefined,
+    'aria-valuemax': value ? max : undefined,
+    'aria-valuenow': value,
+    ...props,
+  });
 
   const bar = resolveShorthand(props.bar, {
     required: true,
-    defaultProps: {
-      'aria-valuemin': value ? 0 : undefined,
-      'aria-valuemax': value ? max : undefined,
-      'aria-valuenow': value,
-    },
   });
 
   const state: ProgressState = {
