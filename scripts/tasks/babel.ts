@@ -1,4 +1,4 @@
-import { transformAsync } from '@babel/core';
+import { BabelFileResult, transformAsync } from '@babel/core';
 import * as glob from 'glob';
 import fs from 'fs';
 import { logger } from 'just-task';
@@ -20,7 +20,7 @@ export async function babel() {
     const codeBuffer = await fs.promises.readFile(filePath);
     const sourceCode = codeBuffer.toString().replace(EOL_REGEX, '\n');
 
-    const result = await transformAsync(sourceCode, {
+    const result = (await transformAsync(sourceCode, {
       ast: false,
       sourceMaps: true,
 
@@ -32,7 +32,7 @@ export async function babel() {
       filename: filePath,
 
       sourceFileName: path.basename(filename),
-    });
+    })) /* Bad `transformAsync` types. it can be null only if 2nd param is null(config)*/ as NonNullableRecord<BabelFileResult>;
     const resultCode = addSourceMappingUrl(result.code, path.basename(filename) + '.map');
 
     if (resultCode === sourceCode) {
@@ -48,3 +48,7 @@ export async function babel() {
     await fs.promises.writeFile(sourceMapFile, JSON.stringify(result.map));
   }
 }
+
+type NonNullableRecord<T> = {
+  [P in keyof T]-?: NonNullable<T[P]>;
+};

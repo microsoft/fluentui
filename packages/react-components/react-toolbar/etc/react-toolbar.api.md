@@ -53,7 +53,7 @@ export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonSt
 export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
 
 // @public (undocumented)
-export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical'> & {
+export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical' | 'checkedValues'> & {
     handleToggleButton?: ToggableHandler;
 };
 
@@ -120,13 +120,12 @@ export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 // @public
 export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
+    name: string;
+    value: string;
 };
 
 // @public
-export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & {
-    name?: string;
-    value?: string;
-};
+export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarToggleButtonProps, 'name' | 'value'>;
 
 // @public
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;

@@ -9,7 +9,7 @@ const beachballBin = require.resolve('beachball/bin/beachball.js');
 const bumpCmd = [process.execPath, beachballBin, 'bump'];
 const gitRoot = findGitRoot();
 
-function run(args) {
+function run(args: string[]) {
   const [cmd, ...restArgs] = args;
   const runResult = spawnSync(cmd, restArgs, { cwd: gitRoot });
   if (runResult.status === 0) {
@@ -59,7 +59,7 @@ export function generateVersionFiles() {
   }
 
   // 2. gather version info
-  const updatedVersionContents = {};
+  const updatedVersionContents: Record<string, string> = {};
   const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
   packageJsons.forEach(packageJsonPath => {
     const versionFile = path.join(gitRoot, path.dirname(packageJsonPath), 'src/version.ts');
