@@ -24,21 +24,27 @@ const useStyles = makeStyles({
   },
 });
 
-const mapping = rawMapping.map(entry => {
-  const v0IconName = `${entry.v0}`;
-  const v9IconName = `${entry.v9}Regular`;
-  // @ts-expect-error - We want to index the exports by name here
-  const V0Icon = v0Icons[v0IconName] as V0IconComponent;
-  // @ts-expect-error - We want to index the exports by name here
-  const V9Icon = v9Icons[v9IconName] as V9IconComponent;
+const mapping = rawMapping
+  .map(entry => {
+    const v0IconName = `${entry.v0}`;
+    const v9IconName = `${entry.v9}Regular`;
+    // @ts-expect-error - We want to index the exports by name here
+    const V0Icon = v0Icons[v0IconName] as V0IconComponent;
+    // @ts-expect-error - We want to index the exports by name here
+    const V9Icon = v9Icons[v9IconName] as V9IconComponent;
 
-  return {
-    v9Search: entry.v9?.toLowerCase(),
-    v0Search: entry.v0.toLowerCase(),
-    V0Icon,
-    V9Icon,
-  };
-});
+    if (!V0Icon) {
+      return null;
+    }
+
+    return {
+      v9Search: entry.v9?.toLowerCase(),
+      v0Search: entry.v0.toLowerCase(),
+      V0Icon,
+      V9Icon,
+    };
+  })
+  .filter(Boolean);
 
 const IconCatalogInner: React.FC = () => {
   const styles = useStyles();

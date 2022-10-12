@@ -1,17 +1,10 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { FixedSizeList as List } from 'react-window';
+import type { ListChildComponentProps } from 'react-window';
 import { ComparisonTile as ComparisonTileBase } from './ComparisonTile';
 import { V0IconComponent, V9IconComponent } from './types';
 
 const ComparisonTile = React.memo(ComparisonTileBase);
-
-const useStyles = makeStyles({
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    ...shorthands.gap('10px'),
-  },
-});
 
 interface IIconGridProps {
   entries: {
@@ -20,19 +13,24 @@ interface IIconGridProps {
   }[];
 }
 
-const renderIcon = ({ V0Icon, V9Icon }: { V0Icon: V0IconComponent; V9Icon: V9IconComponent }) => {
-  if (!V0Icon) {
-    return null;
-  }
-
-  return <ComparisonTile key={V0Icon.displayName} V0Icon={V0Icon} V9Icon={V9Icon} />;
+const Row = ({ index, style, data }: ListChildComponentProps) => {
+  const start = index * 3;
+  const items = data.slice(start, start + 3) as IIconGridProps['entries'];
+  return (
+    <div style={style}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+        {items.map(({ V0Icon, V9Icon }) => (
+          <ComparisonTile key={V0Icon.displayName} V0Icon={V0Icon} V9Icon={V9Icon} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export const IconGrid: React.FC<IIconGridProps> = ({ entries }) => {
-  const styles = useStyles();
   return (
-    <div className={styles.grid} role="list">
-      {entries.map(renderIcon)}
-    </div>
+    <List width="100%" itemCount={entries.length / 3} height={500} itemData={entries} itemSize={110}>
+      {Row}
+    </List>
   );
 };

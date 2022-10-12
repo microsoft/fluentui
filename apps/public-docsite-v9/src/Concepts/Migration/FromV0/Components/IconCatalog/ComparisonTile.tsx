@@ -12,6 +12,7 @@ const useIconTileStyles = makeStyles({
     ...shorthands.padding('5px', '0px'),
     ...shorthands.gap('10px'),
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    maxHeight: '105px',
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground2Hover,
     },
