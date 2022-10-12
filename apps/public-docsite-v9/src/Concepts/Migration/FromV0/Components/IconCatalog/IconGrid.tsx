@@ -29,7 +29,7 @@ const Row = ({ index, style, data }: ListChildComponentProps) => {
 
 export const IconGrid: React.FC<IIconGridProps> = ({ entries }) => {
   return (
-    <List width="100%" itemCount={entries.length / 3} height={500} itemData={entries} itemSize={110}>
+    <List width="100%" itemCount={entries.length / 3} height={600} itemData={entries} itemSize={110}>
       {Row}
     </List>
   );
