@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useARIAButtonShorthand } from '../button';
-import type { ARIAButtonSlotProps } from '../button';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { getSlots } from '@fluentui/react-components';
 import type { ComponentState, Slot } from '@fluentui/react-components';
 
