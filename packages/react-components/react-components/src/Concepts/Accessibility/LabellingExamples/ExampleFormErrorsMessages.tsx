@@ -1,9 +1,15 @@
 import * as React from 'react';
 
-import { Button, Input, Label } from '@fluentui/react-components';
+import { Button, Input, Label, makeStyles } from '@fluentui/react-components';
 
 import { useForm, Controller, OnSubmit } from 'react-hook-form';
 import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
+
+const useStyles = makeStyles({
+  formsButton: {
+    marginTop: '5px !important',
+  },
+});
 
 const regexes = {
   onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
@@ -107,6 +113,7 @@ interface FormExampleProps {
 const FormExample: React.FC<FormExampleProps> = ({ variant }) => {
   const fullNameId = `${variant}-fullName`;
   const emailId = `${variant}-email`;
+  const styles = useStyles();
 
   const { control, handleSubmit, errors, formState } = useForm<FormInputs>({
     validateCriteriaMode: 'all',
@@ -242,7 +249,9 @@ const FormExample: React.FC<FormExampleProps> = ({ variant }) => {
             </ValidationMessage>
           )}
 
-          <Button type="submit">Subscribe</Button>
+          <Button type="submit" className={styles.formsButton}>
+            Subscribe
+          </Button>
         </form>
       ) : (
         <p id={`${variant}-validMessage`} role="alert" tabIndex={-1}>

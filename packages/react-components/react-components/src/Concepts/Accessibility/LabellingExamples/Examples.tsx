@@ -13,23 +13,24 @@ import {
   Avatar,
   Text,
   Checkbox,
-  // makeStyles,
-  // RendererProvider,
-  // FluentProvider,
+  makeStyles,
 } from '@fluentui/react-components';
 import { Send24Regular, Mic24Regular, PeopleRegular, PersonDelete24Regular } from '@fluentui/react-icons';
 import { FluentWapper } from './FluentUiWrapper';
-// import { createDOMRenderer } from '@griffel/react';
 
-// const useStyles = makeStyles({
-//   container: {
-//     marginTop: '10px',
-//     display: 'flex',
-//     width: '180px',
-//     justifyContent: 'space-between',
-//   },
-// });
-// const styles = useStyles();
+const useStyles = makeStyles({
+  visibleTextContainer: {
+    marginTop: '10px',
+    display: 'flex',
+    width: '180px',
+    justifyContent: 'space-between',
+  },
+  checkboxIndicator: {
+    '> .fui-Checkbox__indicator': {
+      marginTop: 'auto !important',
+    },
+  },
+});
 
 export const ActionAvoidBad = () => (
   <FluentWapper>
@@ -169,35 +170,36 @@ export const TextRepeatAvoidGood = () => (
   </FluentWapper>
 );
 
-export const FocusTextAvoidBad = () => (
-  <FluentWapper>
-    <Text tabIndex={0} block>
-      With this option, notifications won't be displayed anymore . You can miss information about latest news.{' '}
-    </Text>
-    <Checkbox label="Display notification" />
-  </FluentWapper>
-);
+export const FocusTextAvoidBad = () => {
+  const styles = useStyles();
+  return (
+    <FluentWapper>
+      <Text tabIndex={0} block>
+        With this option, notifications won't be displayed anymore . You can miss information about latest news.{' '}
+      </Text>
+      <Checkbox className={styles.checkboxIndicator} label="Display notification" />
+    </FluentWapper>
+  );
+};
 
-export const FocusTextAvoidGood = () => (
-  <FluentWapper>
-    <Text id="notificationText" block>
-      With this option, notifications won't be displayed anymore. You can miss information about latest news.
-    </Text>
-    <Checkbox label="Display notification" aria-describedby="notificationText" />
-  </FluentWapper>
-);
+export const FocusTextAvoidGood = () => {
+  const styles = useStyles();
+  return (
+    <FluentWapper>
+      <Text id="notificationText" block>
+        With this option, notifications won't be displayed anymore. You can miss information about latest news.
+      </Text>
+      <Checkbox className={styles.checkboxIndicator} label="Display notification" aria-describedby="notificationText" />
+    </FluentWapper>
+  );
+};
 
 export const ReuseVisibleTextBad = () => {
-  // const targetDocument = document;
-  // const renderer = React.useMemo(() => createDOMRenderer(targetDocument), [targetDocument]);
-
+  const styles = useStyles();
   return (
-    // <RendererProvider renderer={renderer} targetDocument={targetDocument}>
-    //   <FluentProvider targetDocument={targetDocument}>
     <FluentWapper>
       <h4>Members</h4>
-      {/* <div className={styles.container}> */}
-      <div>
+      <div className={styles.visibleTextContainer}>
         <Avatar />
         <span>Robert Tolbert</span>
         <Button icon={<PersonDelete24Regular />} aria-label="Remove Robert Tolbert" />
@@ -205,17 +207,15 @@ export const ReuseVisibleTextBad = () => {
     </FluentWapper>
   );
   {
-    /* </FluentProvider>
-    </RendererProvider> */
   }
 };
 
 export const ReuseVisibleTextGood = () => {
+  const styles = useStyles();
   return (
     <FluentWapper>
       <h4>Members</h4>
-      {/* <div className={styles.container}> */}
-      <div>
+      <div className={styles.visibleTextContainer}>
         <Avatar />
         <span id="userNameId">Robert Tolbert</span>
         <Button
