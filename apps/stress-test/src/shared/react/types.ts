@@ -1,6 +1,5 @@
+import { RandomSelectorTreeNode, SelectorTreeNode, TreeNode } from '../tree/types';
 import { TestOptions } from '../utils/testOptions';
-import { RandomSelectorTreeNode, SelectorTreeNode } from '../tree/RandomSelectorTreeNode';
-import { TreeNode } from '../tree/RandomTree';
 
 export type ReactSelectorTreeComponentRenderer = (node: SelectorTreeNode, depth: number, index: number) => JSX.Element;
 

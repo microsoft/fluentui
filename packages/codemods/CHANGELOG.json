@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 12 Oct 2022 07:38:30 GMT",
+      "tag": "@fluentui/codemods_v8.4.5",
+      "version": "8.4.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "90200f61726f12deb407611ec32067301efeb0e9",
+            "comment": "fix: Do not fail on empty configMod config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Aug 2022 16:36:05 GMT",
       "tag": "@fluentui/codemods_v8.4.4",
       "version": "8.4.4",

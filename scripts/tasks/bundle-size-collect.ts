@@ -10,7 +10,7 @@ export function bundleSizeCollect() {
   // information which gets reported by Size Auditor
 
   const distRoot = path.join(__dirname, '../../apps/test-bundles/dist');
-  const sizes = {};
+  const sizes: Record<string, number> = {};
   const outputFilename = 'bundlesize.json';
 
   var items = fs.readdirSync(distRoot);
@@ -25,11 +25,11 @@ export function bundleSizeCollect() {
 
   fs.writeFileSync(path.join(distRoot, outputFilename), JSON.stringify({ sizes }));
 
-  function getFilesizeInBytes(fileName) {
+  function getFilesizeInBytes(fileName: string) {
     return fs.statSync(fileName).size;
   }
 
-  function getComponentName(fileName) {
+  function getComponentName(fileName: string) {
     return path.basename(fileName, '.min.js');
   }
 }
