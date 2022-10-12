@@ -22257,17 +22257,17 @@ pkg-up@^4.0.0:
   dependencies:
     find-up "^6.2.0"
 
-playwright-core@1.26.1:
-  version "1.26.1"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.26.1.tgz#a162f476488312dcf12638d97685144de6ada512"
-  integrity sha512-hzFchhhxnEiPc4qVPs9q2ZR+5eKNifY2hQDHtg1HnTTUuphYCBP8ZRb2si+B1TR7BHirgXaPi48LIye5SgrLAA==
+playwright-core@1.27.1:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.27.1.tgz#840ef662e55a3ed759d8b5d3d00a5f885a7184f4"
+  integrity sha512-9EmeXDncC2Pmp/z+teoVYlvmPWUC6ejSSYZUln7YaP89Z6lpAaiaAnqroUt/BoLo8tn7WYShcfaCh+xofZa44Q==
 
-playwright@^1.11.1:
-  version "1.26.1"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.26.1.tgz#0082c1d6a1c9cefe3f7a593396ad8568746184d0"
-  integrity sha512-WQmEdCgYYe8jOEkhkW9QLcK0PB+w1RZztBLYIT10MEEsENYg251cU0IzebDINreQsUt+HCwwRhtdz4weH9ICcQ==
+playwright@^1.27.0:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.27.1.tgz#4eecac5899566c589d4220ca8acc16abe8a67450"
+  integrity sha512-xXYZ7m36yTtC+oFgqH0eTgullGztKSRMb4yuwLPl8IYSmgBM88QiB+3IWb1mRIC9/NNwcgbG0RwtFlg+EAFQHQ==
   dependencies:
-    playwright-core "1.26.1"
+    playwright-core "1.27.1"
 
 please-upgrade-node@^3.2.0:
   version "3.2.0"
@@ -25596,13 +25596,14 @@ storybook-addon-performance@0.16.1:
     tiny-invariant "^1.1.0"
     xstate "^4.22.0"
 
-storywright@0.0.22:
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.22.tgz#a3f472cbeedaf89c36ad26ae162a1b1109da1826"
-  integrity sha512-iKlyRbFOwlcwpyNqeRKTbAGkDECt5DnBnvgjcJD0xrwU3kdKOoUHNnsN4wkFfGPYUMsuFXCuxJxopYUvgIxNgg==
+storywright@0.0.23-beta.2:
+  version "0.0.23-beta.2"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.2.tgz#a70db5f1c1d79bc6aa0e4f021223116532770d8d"
+  integrity sha512-XTVR1F/GRzMbLHmGgJ6Gfqk5BI1tWVSdhWn9uPyqWJ8WNFOiGjp1l/2M/AZoLLdAlJMSMkfGJ5/FGpFnmL4Zbw==
   dependencies:
     "@types/react" "^17.0.8"
-    playwright "^1.11.1"
+    playwright "^1.27.0"
+    prop-types "^15.6.0"
     react "^17.0.2"
     yargs "^16.2.0"
 
