@@ -17,8 +17,7 @@ export const TimePickerPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/docs/TimePickerOverview.md'),
-  // need this?
-  // bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/docs/TimePickerBestPractices.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/docs/TimePickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
