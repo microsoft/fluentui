@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { Button, Input, Label, Text, Divider } from '@fluentui/react-components';
-
-import { Scenario } from './utils';
+import { Button, Input, Label } from '@fluentui/react-components';
 
 import { useForm, Controller, OnSubmit } from 'react-hook-form';
 import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
@@ -266,56 +264,3 @@ export const FormErrorLabelGood = () => (
     <FormExample variant="good" />
   </PubSubProvider>
 );
-
-export const FormErrorMessagesExample = () => {
-  return (
-    <Scenario pageTitle="Narrating error messages for form fields">
-      <h1>Narrating error messages for form fields</h1>
-
-      <h2>Bad example</h2>
-      <PubSubProvider>
-        <FormExample variant="bad" />
-      </PubSubProvider>
-
-      <h3>Screen reader narration for full name field with invalid content</h3>
-      <Text block>
-        <Text weight="semibold">JAWS:</Text> "Full name, Edit, Required, invalid entry, [field-content], Type in text."
-      </Text>
-
-      <h3>Implementation details</h3>
-      <ul>
-        <li>Each form field is not connected to its corresponding error message.</li>
-      </ul>
-
-      <Divider />
-      <h2>Good example</h2>
-      <PubSubProvider>
-        <FormExample variant="good" />
-      </PubSubProvider>
-
-      <h3>Screen reader narration for full name field with invalid content</h3>
-      <Text block>
-        <Text weight="semibold">JAWS:</Text> "Full name, Edit, Required, invalid entry, [field-content], Full name is
-        invalid. It must: Contain only lowercase or uppercase letters, spaces or hyphens. Start and end wit letter."
-      </Text>
-
-      <h3>Implementation details</h3>
-      <ul>
-        <li>
-          The "aria-describedby" attribute is applied on each input field and references the corresponding error message
-          element.
-        </li>
-      </ul>
-
-      <Divider />
-      <h2>Problem explanation</h2>
-      <ul>
-        <li>
-          Each form field should be referencing the corresponding error message element using the "aria-describedby"
-          attribute. This ensures that whenever the form field is focused, the error message is narrated by the screen
-          reader.
-        </li>
-      </ul>
-    </Scenario>
-  );
-};

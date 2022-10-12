@@ -202,12 +202,6 @@ export const ReuseVisibleTextBad = () => {
         <span>Robert Tolbert</span>
         <Button icon={<PersonDelete24Regular />} aria-label="Remove Robert Tolbert" />
       </div>
-      {/* <div className={styles.container}> */}
-      <div>
-        <Avatar />
-        <span>Celeste Burton</span>
-        <Button icon={<PersonDelete24Regular />} aria-label="Remove Celeste Burton" />
-      </div>
     </FluentWapper>
   );
   {
@@ -223,23 +217,12 @@ export const ReuseVisibleTextGood = () => {
       {/* <div className={styles.container}> */}
       <div>
         <Avatar />
-        <span id="user1">Robert Tolbert</span>
+        <span id="userNameId">Robert Tolbert</span>
         <Button
           icon={<PersonDelete24Regular />}
           aria-label="Remove"
-          id="remove-button1"
-          aria-labelledby="remove-button1 user1"
-        />
-      </div>
-      {/* <div className={styles.container}> */}
-      <div>
-        <Avatar />
-        <span id="user2">Celeste Burton</span>
-        <Button
-          icon={<PersonDelete24Regular />}
-          aria-label="Remove"
-          id="remove-button2"
-          aria-labelledby="remove-button2 user2"
+          id="removeButtonId"
+          aria-labelledby="removeButtonId userNameId"
         />
       </div>
     </FluentWapper>
