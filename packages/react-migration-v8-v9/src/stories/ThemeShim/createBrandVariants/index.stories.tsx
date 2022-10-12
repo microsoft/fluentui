@@ -90,17 +90,15 @@ export const Default = () => {
       <div>{message}</div>
       <h2>v9 BrandVariants</h2>
       <div className={styles.result}>
-        {Object.keys(brandVariants)
-          .sort()
-          .map(key => (
-            <>
-              <div>{key}</div>
-              <div>
-                {brandVariants[key]}&nbsp;
-                <span className={styles.colorBlock} style={{ backgroundColor: brandVariants[key] }} />
-              </div>
-            </>
-          ))}
+        {Object.keys(brandVariants).map(key => (
+          <>
+            <div>{key}</div>
+            <div>
+              {brandVariants[key]}&nbsp;
+              <span className={styles.colorBlock} style={{ backgroundColor: brandVariants[key] }} />
+            </div>
+          </>
+        ))}
       </div>
     </div>
   );
