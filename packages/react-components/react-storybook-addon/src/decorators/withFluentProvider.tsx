@@ -2,23 +2,33 @@ import * as React from 'react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { Theme } from '@fluentui/react-theme';
-
-import { themes, defaultTheme } from '../theme';
+import { themes, defaultTheme, ThemeIds } from '../theme';
 import { THEME_ID } from '../constants';
 import { FluentGlobals, FluentStoryContext } from '../hooks';
 
+const findTheme = (themeId?: ThemeIds) => {
+  if (!themeId) {
+    return;
+  }
+  return themes.find(value => value.id === themeId);
+};
+
 const getActiveFluentTheme = (globals: FluentGlobals) => {
   const selectedThemeId = globals[THEME_ID];
-  const { theme } = themes.find(value => value.id === selectedThemeId) ?? defaultTheme;
+  const { theme } = findTheme(selectedThemeId) ?? defaultTheme;
 
   return { theme };
 };
 
 export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
-  const { theme } = getActiveFluentTheme(context.globals);
+  const { globals, parameters } = context;
+
+  const globalTheme = getActiveFluentTheme(globals);
+  const paramTheme = findTheme(parameters.fluentTheme) ?? undefined;
+  const { theme } = paramTheme ?? globalTheme;
 
   return (
-    <FluentProvider theme={theme}>
+    <FluentProvider theme={theme} dir={parameters.dir}>
       <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>
     </FluentProvider>
   );
@@ -28,5 +38,5 @@ const FluentExampleContainer: React.FC<{ theme: Theme }> = props => {
   const { theme } = props;
 
   const backgroundColor = theme.colorNeutralBackground2;
-  return <div style={{ padding: '48px 24px', backgroundColor: backgroundColor }}>{props.children}</div>;
+  return <div style={{ padding: '48px 24px', backgroundColor }}>{props.children}</div>;
 };
