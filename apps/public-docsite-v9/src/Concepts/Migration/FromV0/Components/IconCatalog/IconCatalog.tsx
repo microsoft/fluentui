@@ -44,7 +44,7 @@ const mapping = rawMapping
       V9Icon,
     };
   })
-  .filter(Boolean);
+  .filter(Boolean) as { v9Search: string; v0Search: string; V0Icon: V0IconComponent; V9Icon: V9IconComponent }[];
 
 const IconCatalogInner: React.FC = () => {
   const styles = useStyles();
