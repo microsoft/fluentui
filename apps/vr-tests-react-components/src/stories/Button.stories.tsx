@@ -126,21 +126,37 @@ storiesOf('Button Converged', module)
       </Button>
     ),
     { includeHighContrast: true, includeDarkMode: true },
-  )
+  );
+
+const buttonIconId = 'button-icon-id';
+storiesOf('Button Converged with icon', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover(`#${buttonIconId}`)
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown(`#${buttonIconId}`)
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
   .addStory('Size small', () => (
-    <Button id={buttonId} icon={<CalendarMonth />} size="small">
+    <Button icon={{ children: <CalendarMonth />, id: buttonIconId }} size="small">
       Hello, world
     </Button>
   ))
   .addStory('Size large', () => (
-    <Button id={buttonId} icon={<CalendarMonth />} size="large">
+    <Button icon={{ children: <CalendarMonth />, id: buttonIconId }} size="large">
       Hello, world
     </Button>
   ))
   .addStory('Size small - with long text wrapping', () => {
     const styles = useStyles();
     return (
-      <Button id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="small">
+      <Button className={styles.longText} icon={{ children: <CalendarMonth />, id: buttonIconId }} size="small">
         Long text wraps after it hits the max width of the component
       </Button>
     );
@@ -148,7 +164,7 @@ storiesOf('Button Converged', module)
   .addStory('Size medium - with long text wrapping', () => {
     const styles = useStyles();
     return (
-      <Button id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="medium">
+      <Button className={styles.longText} icon={{ children: <CalendarMonth />, id: buttonIconId }} size="medium">
         Long text wraps after it hits the max width of the component
       </Button>
     );
@@ -156,18 +172,14 @@ storiesOf('Button Converged', module)
   .addStory('Size large - with long text wrapping', () => {
     const styles = useStyles();
     return (
-      <Button id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="large">
+      <Button className={styles.longText} icon={{ children: <CalendarMonth />, id: buttonIconId }} size="large">
         Long text wraps after it hits the max width of the component
       </Button>
     );
   })
   .addStory(
     'With icon before content',
-    () => (
-      <Button id={buttonId} icon={<CalendarMonth />}>
-        Hello, world
-      </Button>
-    ),
+    () => <Button icon={{ children: <CalendarMonth />, id: buttonIconId }}>Hello, world</Button>,
     {
       includeRtl: true,
     },
@@ -175,16 +187,20 @@ storiesOf('Button Converged', module)
   .addStory(
     'With icon after content',
     () => (
-      <Button id={buttonId} icon={<CalendarMonth />} iconPosition="after">
+      <Button icon={{ children: <CalendarMonth />, id: buttonIconId }} iconPosition="after">
         Hello, world
       </Button>
     ),
     { includeRtl: true },
   )
-  .addStory('Icon only', () => <Button id={buttonId} icon={<CalendarMonth />} />)
-  .addStory('Circular and icon only', () => <Button id={buttonId} shape="circular" icon={<CalendarMonth />} />, {
-    includeRtl: true,
-  });
+  .addStory('Icon only', () => <Button icon={{ children: <CalendarMonth />, id: buttonIconId }} />)
+  .addStory(
+    'Circular and icon only',
+    () => <Button shape="circular" icon={{ children: <CalendarMonth />, id: buttonIconId }} />,
+    {
+      includeRtl: true,
+    },
+  );
 
 storiesOf('CompoundButton Converged', module)
   .addDecorator(story => (
