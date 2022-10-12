@@ -5,13 +5,9 @@ const chalk = require('chalk');
 const { logStatus } = require('./logging');
 
 const SEPARATOR = process.platform === 'win32' ? ';' : ':';
-// Make sure we read "path" case-insensitively
-const { PATH } = process.env;
-const env = Object.assign({}, process.env, { PATH });
-
-env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
 
 /**
+ * @deprecated Use `child_process.exec` directly.
  * Execute a command.
  *
  * @typedef {{
@@ -31,7 +27,11 @@ function exec(cmd, displayName, cwd = process.cwd(), opts = {}) {
 
   const execOptions = {
     cwd,
-    env: env,
+    env: {
+      ...process.env,
+      // Make sure we read "path" case-insensitively (i.e., for Windows Powershell)
+      PATH: path.resolve('./node_modules/.bin') + SEPARATOR + process.env.PATH,
+    },
     encoding: 'utf8',
   };
 
