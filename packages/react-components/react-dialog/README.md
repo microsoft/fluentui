@@ -4,7 +4,7 @@
 
 To import React Dialog components:
 
-```js
+```jsx
 import * as React from 'react';
 import {
   Button,
