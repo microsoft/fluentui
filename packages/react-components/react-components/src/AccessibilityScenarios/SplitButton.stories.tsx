@@ -36,7 +36,7 @@ export const EventReminderSplitButton: React.FunctionComponent = () => {
           <p>Your meeting starts in 10 minutes.</p>
           <Button onClick={onDismissButtonClick}>Dismiss</Button>
           <Menu positioning="below-end">
-            <MenuTrigger>
+            <MenuTrigger disableButtonEnhancement>
               {(menuButtonProps: MenuButtonProps) => {
                 const extendedMenuButtonProps = {
                   ...menuButtonProps,

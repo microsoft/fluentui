@@ -144,7 +144,7 @@ const OverflowMenu = (props: OverflowMenuProps) => {
 
   return (
     <Menu hasIcons>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button
           appearance="transparent"
           className={styles.menuButton}

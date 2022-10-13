@@ -22,7 +22,7 @@ describe('DialogTrigger', () => {
   it(`should not open dialog when 'aria-disabled' is true`, () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <button aria-disabled>Open dialog</button>
         </DialogTrigger>
         <DialogSurface>
@@ -34,7 +34,7 @@ describe('DialogTrigger', () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
@@ -49,7 +49,7 @@ describe('DialogTrigger', () => {
   it(`should open dialog when 'aria-disabled' is false`, () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <button aria-disabled={false}>Open dialog</button>
         </DialogTrigger>
         <DialogSurface>
@@ -61,7 +61,7 @@ describe('DialogTrigger', () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
@@ -76,7 +76,7 @@ describe('DialogTrigger', () => {
   it('should work with any element besides <button>', () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <div>Open dialog</div>
         </DialogTrigger>
         <DialogSurface>
@@ -88,7 +88,7 @@ describe('DialogTrigger', () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>

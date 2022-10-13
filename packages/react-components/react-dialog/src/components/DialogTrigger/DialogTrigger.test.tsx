@@ -100,7 +100,7 @@ describe('DialogTrigger', () => {
     mockUseDialogContext({ requestOpenChange });
 
     const { getByRole } = render(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <button aria-disabled>trigger</button>
       </DialogTrigger>,
     );

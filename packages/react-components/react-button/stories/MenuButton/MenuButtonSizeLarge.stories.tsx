@@ -26,7 +26,7 @@ export const SizeLarge = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton size="large">Large</MenuButton>
         </MenuTrigger>
 
@@ -39,7 +39,7 @@ export const SizeLarge = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton icon={<CalendarMonth />} size="large">
             Large with calendar icon
           </MenuButton>
@@ -54,7 +54,7 @@ export const SizeLarge = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <Tooltip content="Large with calendar icon only" relationship="label">
             <MenuButton icon={<CalendarMonth />} size="large" />
           </Tooltip>

@@ -15,7 +15,7 @@ export const ControllingOpenAndClose = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open dialog</Button>
       </DialogTrigger>
       <DialogSurface>
@@ -27,7 +27,7 @@ export const ControllingOpenAndClose = () => {
             cumque eaque?
           </DialogContent>
           <DialogActions>
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
             <Button appearance="primary">Do Something</Button>
