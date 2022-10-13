@@ -5,6 +5,7 @@
 ```ts
 
 import { Args } from '@storybook/api';
+import { Parameters as Parameters_2 } from '@storybook/api';
 import { StoryContext } from '@storybook/addons';
 import type { Theme } from '@fluentui/react-theme';
 
@@ -14,11 +15,32 @@ export interface FluentGlobals extends Args {
     [THEME_ID]?: ThemeIds;
 }
 
+// @public
+export interface FluentParameters extends Parameters_2 {
+    // (undocumented)
+    dir?: 'ltr' | 'rtl';
+    // (undocumented)
+    fluentTheme?: ThemeIds;
+    // (undocumented)
+    isVrTest?: boolean;
+}
+
 // @public (undocumented)
 export interface FluentStoryContext extends StoryContext {
     // (undocumented)
     globals: FluentGlobals;
+    // (undocumented)
+    parameters: FluentParameters;
 }
+
+// @public (undocumented)
+export const TEAMS_DARK = "teams-dark";
+
+// @public (undocumented)
+export const TEAMS_HIGH_CONTRAST = "teams-high-contrast";
+
+// @public (undocumented)
+export const TEAMS_LIGHT = "teams-light";
 
 // @public (undocumented)
 export const THEME_ID: "storybook/fluentui-react-addon/theme";
@@ -48,6 +70,12 @@ export const themes: readonly [{
     readonly label: "Teams High Contrast";
     readonly theme: Theme;
 }];
+
+// @public (undocumented)
+export const WEB_DARK = "web-dark";
+
+// @public (undocumented)
+export const WEB_LIGHT = "web-light";
 
 // (No @packageDocumentation comment for this package)
 
