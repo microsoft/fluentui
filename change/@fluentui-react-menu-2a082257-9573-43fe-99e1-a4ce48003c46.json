@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds disableButtonEnhancement property on MenuTrigger",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
