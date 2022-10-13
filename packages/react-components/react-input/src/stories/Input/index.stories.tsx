@@ -7,6 +7,7 @@ import bestPracticesMd from './InputBestPractices.md';
 export { Default } from './InputDefault.stories';
 export { Appearance } from './InputAppearance.stories';
 export { ContentBeforeAfter } from './InputContentBeforeAfter.stories';
+export { Invalid } from './InputInvalid.stories';
 export { Disabled } from './InputDisabled.stories';
 export { Inline } from './InputInline.stories';
 export { Placeholder } from './InputPlaceholder.stories';

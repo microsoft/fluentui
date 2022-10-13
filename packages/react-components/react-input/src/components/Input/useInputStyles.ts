@@ -153,6 +153,14 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
+  invalid: {
+    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+  },
+  invalidInteractive: {
+    ':hover': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
@@ -243,7 +251,8 @@ const useContentStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles_unstable = (state: InputState): InputState => {
-  const { size, appearance } = state;
+  const { size, appearance, invalid } = state;
+  // const invalid = state.validationState === 'error';
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
@@ -256,11 +265,13 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     rootStyles.base,
     rootStyles[size],
     rootStyles[appearance],
+    filled && rootStyles.filled,
+    invalid && rootStyles.invalid,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
-    filled && rootStyles.filled,
+    !disabled && invalid && rootStyles.invalidInteractive,
     disabled && rootStyles.disabled,
     state.root.className,
   );

@@ -67,6 +67,8 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
     }),
   };
 
+  state.invalid = state.input['aria-invalid'] === true || state.input['aria-invalid'] === 'true';
+
   state.input.value = value;
   state.input.onChange = useEventCallback(ev => {
     const newValue = ev.target.value;

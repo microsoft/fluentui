@@ -58,6 +58,13 @@ export type InputProps = Omit<
     | 'filled-darker-shadow'
     | 'filled-lighter-shadow';
 
+  // /**
+  //  * When set to `error`, indicates the value entered by the user has failed validation.
+  //  * This will result in the border being red, and `aria-invalid` being set.
+  //  * It is recommended to set `aria-errormessage` as well.
+  //  */
+  // validationState?: 'error';
+
   /**
    * Default value of the input. Provide this if the input should be an uncontrolled component
    * which tracks its current state internally; otherwise, use `value`.
@@ -108,7 +115,11 @@ export type InputProps = Omit<
 /**
  * State used in rendering Input.
  */
-export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> &
+  ComponentState<InputSlots> & {
+    /** If invalid, renders with a red border */
+    invalid?: boolean;
+  };
 
 /**
  * Data passed to the `onChange` callback when a user changes the input's value.
