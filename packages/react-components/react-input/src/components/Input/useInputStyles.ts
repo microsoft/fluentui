@@ -252,7 +252,6 @@ const useContentStyles = makeStyles({
  */
 export const useInputStyles_unstable = (state: InputState): InputState => {
   const { size, appearance, invalid } = state;
-  // const invalid = state.validationState === 'error';
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 

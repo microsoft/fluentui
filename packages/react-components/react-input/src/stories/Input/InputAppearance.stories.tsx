@@ -38,22 +38,22 @@ export const Appearance = () => {
     <div className={styles.base}>
       <div className={styles.field}>
         <Label htmlFor={outlineId}>Outline appearance (default)</Label>
-        <Input appearance="outline" id={outlineId} />
+        <Input appearance="outline" id={outlineId} invalid />
       </div>
 
       <div className={styles.field}>
         <Label htmlFor={underlineId}>Underline appearance</Label>
-        <Input appearance="underline" id={underlineId} />
+        <Input appearance="underline" id={underlineId} invalid />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
         <Label htmlFor={filledLighterId}>Filled lighter appearance</Label>
-        <Input appearance="filled-lighter" id={filledLighterId} />
+        <Input appearance="filled-lighter" id={filledLighterId} invalid />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
         <Label htmlFor={filledDarkerId}>Filled darker appearance</Label>
-        <Input appearance="filled-darker" id={filledDarkerId} />
+        <Input appearance="filled-darker" id={filledDarkerId} invalid />
       </div>
     </div>
   );

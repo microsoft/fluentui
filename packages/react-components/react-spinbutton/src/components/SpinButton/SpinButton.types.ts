@@ -124,13 +124,20 @@ export type SpinButtonProps = Omit<
    * Mutually exclusive with `defaultValue`.
    */
   value?: number | null;
+
+  /**
+   * Causes the border to be red, indicating that the value entered by the user has failed validation.
+   *
+   * It is recommended to set `aria-invalid` and `aria-errormessage` as well.
+   */
+  invalid?: boolean;
 };
 
 /**
  * State used in rendering SpinButton
  */
 export type SpinButtonState = ComponentState<SpinButtonSlots> &
-  Required<Pick<SpinButtonProps, 'appearance' | 'size'>> & {
+  Required<Pick<SpinButtonProps, 'appearance' | 'size' | 'invalid'>> & {
     /**
      * State used to track which direction, if any, SpinButton is currently spinning.
      * @default 'rest'
@@ -142,11 +149,6 @@ export type SpinButtonState = ComponentState<SpinButtonSlots> &
      * @default 'none'
      */
     atBound: SpinButtonBounds;
-
-    /**
-     * If invalid, renders with a red border.
-     */
-    invalid?: boolean;
   };
 
 export type SpinButtonChangeEvent =

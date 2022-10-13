@@ -20,9 +20,9 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     icon,
     root,
     appearance = 'outline',
-
     onChange,
     size = 'medium',
+    invalid = false,
   } = props;
 
   const nativeProps = getPartitionedNativeProps({
@@ -34,6 +34,7 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
   const state: SelectState = {
     size,
     appearance,
+    invalid,
     components: {
       root: 'span',
       select: 'select',
@@ -57,8 +58,6 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
       defaultProps: nativeProps.root,
     }),
   };
-
-  state.invalid = state.select['aria-invalid'] === true || state.select['aria-invalid'] === 'true';
 
   state.select.onChange = useEventCallback(event => {
     onChange?.(event, { value: (event.target as HTMLSelectElement).value });

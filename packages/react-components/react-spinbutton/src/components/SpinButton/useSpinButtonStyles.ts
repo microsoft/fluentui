@@ -412,8 +412,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
-  console.log('spinButton invalid = ', invalid);
-
   const rootStyles = useRootStyles();
   const buttonStyles = useButtonStyles();
   const buttonDisabledStyles = useButtonDisabledStyles();
@@ -426,6 +424,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   useInputStyles_unstable({
     size,
     appearance,
+    invalid,
     input: state.input,
     root: state.root,
     components: {

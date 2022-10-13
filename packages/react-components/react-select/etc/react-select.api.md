@@ -32,6 +32,7 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
     appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
     onChange?: (ev: React_2.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
     size?: 'small' | 'medium' | 'large';
+    invalid?: boolean;
 };
 
 // @public (undocumented)
@@ -42,7 +43,7 @@ export type SelectSlots = {
 };
 
 // @public (undocumented)
-export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size' | 'invalid'>>;
 
 // @public
 export const useSelect_unstable: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;

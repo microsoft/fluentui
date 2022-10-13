@@ -47,6 +47,7 @@ export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'inp
     step?: number;
     stepPage?: number;
     value?: number | null;
+    invalid?: boolean;
 };
 
 // @public (undocumented)
@@ -61,7 +62,7 @@ export type SpinButtonSlots = {
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 
 // @public
-export type SpinButtonState = ComponentState<SpinButtonSlots> & Required<Pick<SpinButtonProps, 'appearance' | 'size'>> & {
+export type SpinButtonState = ComponentState<SpinButtonSlots> & Required<Pick<SpinButtonProps, 'appearance' | 'size' | 'invalid'>> & {
     spinState: SpinButtonSpinState;
     atBound: SpinButtonBounds;
 };

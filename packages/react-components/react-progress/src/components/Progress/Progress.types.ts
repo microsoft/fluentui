@@ -37,7 +37,7 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   /**
    * The status of the progress bar. Changes the color of the bar.
    */
-  validationState?: 'success' | 'warning' | 'error';
+  validationState?: 'success' | 'error';
 };
 
 /**

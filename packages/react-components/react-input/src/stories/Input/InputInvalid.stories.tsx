@@ -15,14 +15,12 @@ const useStyles = makeStyles({
 
 export const Invalid = () => {
   const inputId = useId('input');
-  const errorMessageId = useId('errorMessage');
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={inputId}>Input with an invalid value</Label>
-      <Input id={inputId} defaultValue="invalid value" aria-invalid aria-errormessage={errorMessageId} />
-      <div id={errorMessageId}>This is an example error message</div>
+      <Label htmlFor={inputId}>Input that has failed form validation</Label>
+      <Input id={inputId} defaultValue="invalid value" invalid />
     </div>
   );
 };
@@ -31,8 +29,8 @@ Invalid.parameters = {
   docs: {
     description: {
       story:
-        'When the `aria-invalid` prop is set, the input has a red border. It is recommended to also set ' +
-        '`aria-errormessage` to point to an element that describes the error.',
+        'When the `invalid` prop is set, the Input has a red border. It is recommended to also set ' +
+        '`aria-invalid`, and `aria-errormessage` with an element that describes the error.',
     },
   },
 };

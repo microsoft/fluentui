@@ -27,6 +27,7 @@ export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'chi
     children?: never;
     size?: 'small' | 'medium' | 'large';
     appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
+    invalid?: boolean;
     defaultValue?: string;
     value?: string;
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
@@ -42,7 +43,7 @@ export type InputSlots = {
 };
 
 // @public
-export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'size' | 'invalid'>> & ComponentState<InputSlots>;
 
 // @public
 export const renderInput_unstable: (state: InputState) => JSX.Element;

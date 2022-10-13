@@ -60,16 +60,20 @@ export type TextareaProps = Omit<
    * The value of the Textarea.
    */
   value?: string;
+
+  /**
+   * Causes the border to be red, indicating that the value entered by the user has failed validation.
+   *
+   * It is recommended to set `aria-invalid` and `aria-errormessage` as well.
+   */
+  invalid?: boolean;
 };
 
 /**
  * State used in rendering Textarea
  */
 export type TextareaState = ComponentState<TextareaSlots> &
-  Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>> & {
-    /** If invalid, renders with a red border */
-    invalid?: boolean;
-  };
+  Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size' | 'invalid'>>;
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.
