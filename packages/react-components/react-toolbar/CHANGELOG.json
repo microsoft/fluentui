@@ -2,6 +2,77 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 11:03:03 GMT",
+      "tag": "@fluentui/react-toolbar_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "2d36a7c692d301b420b6a4b1a78b139fdc955612",
+            "comment": "fix: Toolbar selection should work"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "1a527d440e0497ef8046b3ce240492241e7a04ac",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-button to v9.1.4",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-divider to v9.1.1",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-utilities to v9.1.1",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.4",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.0.8",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-tabster to v9.1.3",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          }
+        ],
+        "none": [
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "41c30da2fdb58551d5ec3ce2450ccab5d2d49969",
+            "comment": "chore: update api"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Oct 2022 22:24:42 GMT",
       "tag": "@fluentui/react-toolbar_v9.0.0-beta.8",
       "version": "9.0.0-beta.8",
