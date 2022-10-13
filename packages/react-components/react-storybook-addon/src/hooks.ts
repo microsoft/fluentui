@@ -10,17 +10,21 @@ export interface FluentStoryContext extends StorybookContext {
 }
 
 /**
- * Extends the storybook globals object to include fluent specific propoerties
+ * Extends the storybook globals object to include fluent specific properties
  */
 export interface FluentGlobals extends StorybookArgs {
   [THEME_ID]?: ThemeIds;
 }
 
-export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
-  return useStorybookGlobals();
+/**
+ * Extends the storybook parameters object to include fluent specific properties
+ */
+export interface FluentParameters extends Parameters {
+  dir?: 'ltr' | 'rtl';
+  fluentTheme?: ThemeIds;
+  isVrTest?: boolean;
 }
 
-export interface FluentParameters extends Parameters {
-  fluentTheme: ThemeIds;
-  dir: 'ltr' | 'rtl';
+export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
+  return useStorybookGlobals();
 }

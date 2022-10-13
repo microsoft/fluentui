@@ -22,14 +22,14 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
 
 export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
   const { globals, parameters } = context;
-
+  const { isVrTest } = parameters;
   const globalTheme = getActiveFluentTheme(globals);
-  const paramTheme = findTheme(parameters.fluentTheme) ?? undefined;
+  const paramTheme = findTheme(parameters.fluentTheme);
   const { theme } = paramTheme ?? globalTheme;
 
   return (
     <FluentProvider theme={theme} dir={parameters.dir}>
-      <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>
+      {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
     </FluentProvider>
   );
 };
