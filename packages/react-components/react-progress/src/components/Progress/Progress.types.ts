@@ -17,7 +17,7 @@ export type ProgressSlots = {
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   /**
    * A decimal number between `0` and `1` (or between `0` and `max` if given),
-   * which specifies how much of the task has been completed. 
+   * which specifies how much of the task has been completed.
    *
    * If `undefined` (default), the Progress will display an **indeterminate** state.
    */
@@ -38,4 +38,6 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
 /**
  * State used in rendering Progress
  */
-export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'thickness'>> & Pick<ProgressProps, 'value'>;
+export type ProgressState = ComponentState<ProgressSlots> &
+  Required<Pick<ProgressProps, 'max' | 'thickness'>> &
+  Pick<ProgressProps, 'value'>;
