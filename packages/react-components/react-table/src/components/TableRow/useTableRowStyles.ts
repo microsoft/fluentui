@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { themeToTokensObject, tokens } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
@@ -104,6 +104,8 @@ const useStyles = makeStyles({
     },
     ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
   },
+
+  none: {},
 });
 
 /**
