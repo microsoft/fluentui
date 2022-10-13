@@ -139,6 +139,11 @@ const useSelectStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -189,7 +194,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Select slots based on the state
  */
 export const useSelectStyles_unstable = (state: SelectState): SelectState => {
-  const { size, appearance } = state;
+  const { size, appearance, invalid } = state;
   const disabled = state.select.disabled;
 
   const iconStyles = useIconStyles();
@@ -204,6 +209,7 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     selectStyles[size],
     selectStyles[appearance],
     disabled && selectStyles.disabled,
+    invalid && selectStyles.invalid,
     state.select.className,
   );
 

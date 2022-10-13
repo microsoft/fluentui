@@ -197,6 +197,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setOpen,
   };
 
+  state.invalid = state.input['aria-invalid'] === true || state.input['aria-invalid'] === 'true';
+
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   /* handle open/close + focus change when clicking expandIcon */

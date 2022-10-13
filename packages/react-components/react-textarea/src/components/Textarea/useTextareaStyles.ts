@@ -146,6 +146,15 @@ const useRootStyles = makeStyles({
       borderBottomColor: tokens.colorCompoundBrandStroke,
     },
   },
+
+  invalid: {
+    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+  },
+  invalidInteractive: {
+    ':hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
 });
 
 /**
@@ -230,7 +239,7 @@ const useTextareaResizeStyles = makeStyles({
  * Apply styling to the Textarea slots based on the state
  */
 export const useTextareaStyles_unstable = (state: TextareaState): TextareaState => {
-  const { size, appearance, resize } = state;
+  const { size, appearance, resize, invalid } = state;
   const disabled = state.textarea.disabled;
   const filled = appearance.startsWith('filled');
 
@@ -240,9 +249,11 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     rootStyles.base,
     rootStyles[appearance],
     filled && rootStyles.filled,
+    invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
+    !disabled && rootStyles.invalidInteractive,
     state.root.className,
   );
 

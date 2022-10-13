@@ -63,6 +63,8 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
     }),
   };
 
+  state.invalid = state.textarea['aria-invalid'] === true || state.textarea['aria-invalid'] === 'true';
+
   state.textarea.value = value;
   state.textarea.onChange = useEventCallback(ev => {
     const newValue = ev.target.value;

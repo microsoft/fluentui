@@ -37,7 +37,11 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
   size?: 'small' | 'medium' | 'large';
 };
 
-export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
+export type SelectState = ComponentState<SelectSlots> &
+  Required<Pick<SelectProps, 'appearance' | 'size'>> & {
+    /** If invalid, renders with a red border */
+    invalid?: boolean;
+  };
 
 /**
  * Data passed to the `onChange` callback when a new option is selected.

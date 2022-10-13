@@ -305,6 +305,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
   }
 
+  state.invalid = state.input['aria-invalid'] === true || state.input['aria-invalid'] === 'true';
+
   state.input.value = valueToDisplay;
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;

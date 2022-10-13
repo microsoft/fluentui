@@ -15,6 +15,13 @@ export type ComboboxBaseProps = SelectionProps & {
    */
   appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
 
+  // /**
+  //  * When set to `error`, indicates the value entered by the user has failed validation.
+  //  * This will result in the border being red, and `aria-invalid` being set.
+  //  * It is recommended to set `aria-errormessage` as well.
+  //  */
+  // validationState?: 'error';
+
   /**
    * The default open state when open is uncontrolled
    */
@@ -85,6 +92,9 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
 
     /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
     ignoreNextBlur: React.MutableRefObject<boolean>;
+
+    /** If invalid, renders with a red border */
+    invalid?: boolean;
 
     selectOption(event: SelectionEvents, option: OptionValue): void;
 

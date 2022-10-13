@@ -58,6 +58,8 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     }),
   };
 
+  state.invalid = state.select['aria-invalid'] === true || state.select['aria-invalid'] === 'true';
+
   state.select.onChange = useEventCallback(event => {
     onChange?.(event, { value: (event.target as HTMLSelectElement).value });
   });

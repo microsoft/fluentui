@@ -142,6 +142,11 @@ export type SpinButtonState = ComponentState<SpinButtonSlots> &
      * @default 'none'
      */
     atBound: SpinButtonBounds;
+
+    /**
+     * If invalid, renders with a red border.
+     */
+    invalid?: boolean;
   };
 
 export type SpinButtonChangeEvent =

@@ -162,6 +162,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     ...baseState,
   };
 
+  state.invalid = state.button['aria-invalid'] === true || state.button['aria-invalid'] === 'true';
+
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   return state;

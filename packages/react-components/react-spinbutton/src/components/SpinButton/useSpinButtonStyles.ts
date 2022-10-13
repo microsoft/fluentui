@@ -120,6 +120,20 @@ const useRootStyles = makeStyles({
     },
   },
 
+  invalid: {
+    '::before': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+
+  invalidInteractive: {
+    ':hover': {
+      '::before': {
+        ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+      },
+    },
+  },
+
   disabled: {
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -394,9 +408,11 @@ const useButtonDisabledStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
-  const { appearance, atBound, spinState, size } = state;
+  const { appearance, atBound, invalid, spinState, size } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
+
+  console.log('spinButton invalid = ', invalid);
 
   const rootStyles = useRootStyles();
   const buttonStyles = useButtonStyles();
@@ -427,9 +443,11 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     appearance === 'outline' && rootStyles.outline,
     appearance === 'underline' && rootStyles.underline,
     filled && rootStyles.filled,
+    invalid && rootStyles.invalid,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
+    !disabled && invalid && rootStyles.invalidInteractive,
     disabled && rootStyles.disabled,
     disabled && appearance === 'outline' && rootStyles.outlineDisabled,
     disabled && appearance === 'underline' && rootStyles.underlineDisabled,

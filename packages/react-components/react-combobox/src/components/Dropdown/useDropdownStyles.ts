@@ -159,6 +159,11 @@ const useStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -196,11 +201,17 @@ const useIconStyles = makeStyles({
  * Apply styling to the Dropdown slots based on the state
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
-  const { appearance, open, placeholderVisible, size } = state;
+  const { appearance, invalid, open, placeholderVisible, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
-  state.root.className = mergeClasses(dropdownClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.root.className = mergeClasses(
+    dropdownClassNames.root,
+    styles.root,
+    styles[appearance],
+    invalid && styles.invalid,
+    state.root.className,
+  );
 
   state.button.className = mergeClasses(
     dropdownClassNames.button,

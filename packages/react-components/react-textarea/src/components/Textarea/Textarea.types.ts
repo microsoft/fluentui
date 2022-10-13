@@ -66,7 +66,10 @@ export type TextareaProps = Omit<
  * State used in rendering Textarea
  */
 export type TextareaState = ComponentState<TextareaSlots> &
-  Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>>;
+  Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>> & {
+    /** If invalid, renders with a red border */
+    invalid?: boolean;
+  };
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.

@@ -126,6 +126,11 @@ const useStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
 });
 
 const useInputStyles = makeStyles({
@@ -199,7 +204,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, open, size } = state;
+  const { appearance, invalid, open, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
@@ -209,6 +214,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     styles.root,
     styles[appearance],
     styles[size],
+    invalid && styles.invalid,
     state.root.className,
   );
 
