@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 11:02:47 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.15",
+      "version": "9.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1a527d440e0497ef8046b3ce240492241e7a04ac",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Sep 2022 20:55:43 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.14",
       "version": "9.0.0-beta.14",

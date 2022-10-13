@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 07:45:27 GMT",
+      "tag": "@fluentui/react_v8.98.1",
+      "version": "8.98.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7380b15b3c9997bad0e832fb17fade1b9db45aaf",
+            "comment": "docs: add @docCategory documentation comment to TimePicker"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "14e5b74b32528ee2ea7a1992243809de214f5dfc",
+            "comment": "ContextualMenu: Fix focus returning to correct element on menu close"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Oct 2022 07:38:22 GMT",
       "tag": "@fluentui/react_v8.98.0",
       "version": "8.98.0",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 07:45:27 GMT",
+      "tag": "@fluentui/react-charting_v5.13.11",
+      "version": "5.13.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.98.1",
+            "commit": "4f46035db0cd28a5987932120c68755e024869c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Oct 2022 07:38:24 GMT",
       "tag": "@fluentui/react-charting_v5.13.10",
       "version": "5.13.10",
