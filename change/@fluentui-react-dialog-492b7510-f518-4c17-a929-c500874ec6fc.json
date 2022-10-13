@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: adds disableButtonEnhancement property on DialogTrigger",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

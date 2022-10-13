@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 13 Oct 2022 11:02:53 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 12:56:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.3.0)
+
+Thu, 13 Oct 2022 12:56:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.2.3..@fluentui/react-menu_v9.3.0)
+
+### Minor changes
+
+- feat: adds disableButtonEnhancement property on MenuTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
 
 ## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.3)
 

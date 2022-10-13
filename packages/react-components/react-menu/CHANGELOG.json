@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 12:56:30 GMT",
+      "tag": "@fluentui/react-menu_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e563f3daaea9b7cc62f50bc15edd44edf5045107",
+            "comment": "feat: adds disableButtonEnhancement property on MenuTrigger"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 11:02:53 GMT",
       "tag": "@fluentui/react-menu_v9.2.3",
       "version": "9.2.3",

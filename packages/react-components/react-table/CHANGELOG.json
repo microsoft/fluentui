@@ -2,6 +2,21 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 12:56:30 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.2",
+            "commit": "77301c97c0539b9ebf891642eb0a077d1aeae9a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 11:03:01 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.5",
       "version": "9.0.0-alpha.5",
