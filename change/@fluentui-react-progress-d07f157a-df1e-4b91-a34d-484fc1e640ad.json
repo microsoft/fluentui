@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Progress should set aria-valuemin and aria-valuemax when the value is 0",
-  "packageName": "@fluentui/react-progress",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

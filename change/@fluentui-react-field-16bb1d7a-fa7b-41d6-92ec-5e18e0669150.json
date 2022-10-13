@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: CheckboxField to set a generated ID on the input, to match the label's htmlFor",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

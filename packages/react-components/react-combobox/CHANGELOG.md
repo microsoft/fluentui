@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 03 Oct 2022 22:24:42 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:02:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.12)
+
+Thu, 13 Oct 2022 11:02:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.11..@fluentui/react-combobox_v9.0.0-beta.12)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- fix: add ScrollIntoView hook for Listbox options ([PR #25080](https://github.com/microsoft/fluentui/pull/25080) by sarah.higley@microsoft.com)
+- feat: export contexts from react-combobox ([PR #25099](https://github.com/microsoft/fluentui/pull/25099) by sarah.higley@microsoft.com)
+- fix: Dropdown arrow icon layout when no placeholder or value is present ([PR #25049](https://github.com/microsoft/fluentui/pull/25049) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.4 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-portal to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-positioning to v9.2.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.11)
 

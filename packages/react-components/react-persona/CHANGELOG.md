@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Mon, 03 Oct 2022 22:24:38 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:02:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.0.1)
+
+Thu, 13 Oct 2022 11:02:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.0.0..@fluentui/react-persona_v9.0.1)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- chore: Add unit and conformance tests. ([PR #25007](https://github.com/microsoft/fluentui/pull/25007) by esteban.230@hotmail.com)
+- chore: Adding bundle-size command for bundle-size fixtures. ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by esteban.230@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-badge to v9.0.8 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.0.0)
 

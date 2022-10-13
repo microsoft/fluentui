@@ -7,8 +7,8 @@ import {
   DialogActions,
   DialogContent,
   DialogBody,
-} from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+  Button,
+} from '@fluentui/react-components';
 import story from './DialogTitleNoAction.md';
 
 export const TitleNoAction = () => {

@@ -35,7 +35,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
       required: modalType === 'non-modal',
       defaultProps: {
         children: (
-          <DialogTrigger action="close">
+          <DialogTrigger disableButtonEnhancement action="close">
             <button
               className={internalStyles.button}
               // TODO: find a better way to add internal labels
