@@ -49,6 +49,12 @@ const useRootStyles = makeStyles({
       ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
     },
   },
+  rounded: {
+    ...shorthands.borderRadius('4px'),
+  },
+  rectangular: {
+    ...shorthands.borderRadius('0px'),
+  },
   medium: {
     height: barThicknessValues.medium,
   },
@@ -67,6 +73,12 @@ const useBarStyles = makeStyles({
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'Highlight',
     },
+  },
+  rounded: {
+    ...shorthands.borderRadius('4px'),
+  },
+  rectangular: {
+    ...shorthands.borderRadius('0px'),
   },
   medium: {
     height: barThicknessValues.medium,
@@ -102,7 +114,7 @@ const useBarStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { max, thickness, value } = state;
+  const { appearance, max, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const { dir } = useFluent();
@@ -110,6 +122,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   state.root.className = mergeClasses(
     progressClassNames.root,
     rootStyles.root,
+    rootStyles[appearance],
     rootStyles[thickness],
     state.root.className,
   );
@@ -120,6 +133,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       barStyles.base,
       value === undefined && barStyles.indeterminate,
       value === undefined && dir === 'rtl' && barStyles.rtl,
+      barStyles[appearance],
       barStyles[thickness],
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       state.bar.className,
