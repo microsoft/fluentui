@@ -87,8 +87,8 @@ const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =>
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -125,8 +125,8 @@ const CellActionsAlwaysVisible: React.FC<SharedVrTestArgs> = ({ noNativeElements
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -544,7 +544,7 @@ const SortableHeaders: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
-      <Screener steps={new Screener.Steps().hover('.row').snapshot('hover row').end()}>{story()}</Screener>
+      <Screener steps={new Screener.Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</Screener>
     ))
     .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
