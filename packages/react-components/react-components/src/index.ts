@@ -2,6 +2,8 @@
 export {
   __css,
   __styles,
+  __resetStyles,
+  __resetCSS,
   createDOMRenderer,
   makeStaticStyles,
   makeStyles,
