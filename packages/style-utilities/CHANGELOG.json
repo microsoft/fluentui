@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Mon, 10 Oct 2022 07:38:23 GMT",
+      "tag": "@fluentui/style-utilities_v8.8.0",
+      "version": "8.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "0a36b540acac5eca7081a8aa479ca2a07708eb2b",
+            "comment": "Added export of utilities/index"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:53 GMT",
       "tag": "@fluentui/style-utilities_v8.7.12",
       "version": "8.7.12",

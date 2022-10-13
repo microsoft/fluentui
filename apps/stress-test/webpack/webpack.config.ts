@@ -7,6 +7,8 @@ import { configureGriffel } from './griffelConfig.js';
 import * as WebpackDevServer from 'webpack-dev-server';
 import { GriffelMode } from '../scripts/utils/types';
 
+const enabledReactProfiling = true;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 type WebpackArgs = {
@@ -27,10 +29,14 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
     output: {
       filename: '[name].[contenthash].bundle.js',
       sourceMapFilename: '[name].[contenthash].map',
-      path: path.resolve(path.dirname(__dirname), 'dist'),
+      path: path.resolve(path.dirname(__dirname), !isProd ? 'dev-build' : 'dist'),
     },
     devtool: 'source-map',
     resolve: {
+      alias: {
+        'react-dom$': 'react-dom/profiling',
+        'scheduler/tracing': 'scheduler/tracing-profiling',
+      },
       extensions: ['.tsx', '.ts', '.js'],
       plugins: [
         new TsconfigPathsPlugin({
@@ -67,6 +73,14 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
       },
     },
   };
+
+  if (enabledReactProfiling) {
+    config.resolve!.alias = {
+      ...config.resolve!.alias,
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
+    };
+  }
 
   if (!isProd) {
     config.devServer = {

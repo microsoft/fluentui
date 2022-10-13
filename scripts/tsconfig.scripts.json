@@ -12,6 +12,30 @@
   "files": [],
   "references": [
     {
+      "path": "./api-extractor/tsconfig.json"
+    },
+    {
+      "path": "./babel/tsconfig.json"
+    },
+    {
+      "path": "./lint-staged/tsconfig.json"
+    },
+    {
+      "path": "./typescript/tsconfig.json"
+    },
+    {
+      "path": "./tasks/tsconfig.json"
+    },
+    {
+      "path": "./jest/tsconfig.json"
+    },
+    {
+      "path": "./webpack/tsconfig.json"
+    },
+    {
+      "path": "./dependency-graph-generator/tsconfig.json"
+    },
+    {
       "path": "./triage-bot/tsconfig.json"
     },
     {

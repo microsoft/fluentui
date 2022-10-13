@@ -112,7 +112,7 @@ export function apiExtractor() {
                 }
               },
               onConfigLoaded: config => {
-                if (!isUsingTsSolutionConfigs) {
+                if (!(isUsingTsSolutionConfigs && tsConfig)) {
                   return;
                 }
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 10 Oct 2022 07:38:21 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.5",
+      "version": "1.12.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "ff55fc0e1abd7e61331bbcba18e066b6c449ba79",
+            "comment": "Turn off import/no-extraneous-dependencies rule for cypress component test files."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Oct 2022 07:45:02 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.4",
       "version": "1.12.4",
