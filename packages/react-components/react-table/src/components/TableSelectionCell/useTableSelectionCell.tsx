@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import { Checkbox } from '@fluentui/react-checkbox';
-import { CheckmarkFilled } from '@fluentui/react-icons';
+import { Radio } from '@fluentui/react-radio';
 import type { TableSelectionCellProps, TableSelectionCellState } from './TableSelectionCell.types';
 import { useTableCell_unstable } from '../TableCell/useTableCell';
 import { useTableContext } from '../../contexts/tableContext';
@@ -19,16 +19,17 @@ export const useTableSelectionCell_unstable = (
   props: TableSelectionCellProps,
   ref: React.Ref<HTMLElement>,
 ): TableSelectionCellState => {
+  const radioValue = useId('tableradio');
   const tableCellState = useTableCell_unstable(props, ref);
   const { noNativeElements } = useTableContext();
-  const type = props.type ?? 'checkbox';
+  const { type = 'checkbox', checked = false, subtle = false, hidden = false } = props;
 
   return {
     ...tableCellState,
     components: {
       ...tableCellState.components,
       checkboxIndicator: Checkbox,
-      radioIndicator: 'span',
+      radioIndicator: Radio,
     },
     checkboxIndicator: resolveShorthand(props.checkboxIndicator, {
       required: type === 'checkbox',
@@ -36,10 +37,13 @@ export const useTableSelectionCell_unstable = (
     }),
     radioIndicator: resolveShorthand(props.radioIndicator, {
       required: type === 'radio',
-      defaultProps: { children: <CheckmarkFilled /> },
+      defaultProps: { value: radioValue, name: radioValue },
     }),
     type,
-    checked: props.checked ?? false,
+    checked,
     noNativeElements,
+    radioValue,
+    subtle,
+    hidden,
   };
 };
