@@ -33,7 +33,7 @@
     "@fluentui/react-components": "^9.6.1",
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.1.2",
-    "@griffel/react": "^1.4.1",
+    "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
