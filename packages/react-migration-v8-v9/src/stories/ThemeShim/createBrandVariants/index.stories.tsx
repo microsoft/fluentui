@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { createTheme, DefaultPalette } from '@fluentui/react';
+import { DefaultPalette } from '@fluentui/react';
 import { Button, makeStyles, Textarea, TextareaProps, shorthands, RadioGroup, Radio } from '@fluentui/react-components';
-import { createBrandVariants, createV9Theme } from '../../../components/Theme/index';
+import { createBrandVariants } from '../../../components/Theme/index';
 
 import descriptionMd from './Description.md';
 import { Meta } from '@storybook/react';
