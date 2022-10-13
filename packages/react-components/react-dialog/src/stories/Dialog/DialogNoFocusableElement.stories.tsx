@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { Dialog, DialogTrigger, DialogSurface, DialogContent, DialogTitle, DialogBody } from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogContent,
+  DialogTitle,
+  DialogBody,
+  Button,
+} from '@fluentui/react-components';
 
 import story from './DialogNoFocusableElement.md';
 
