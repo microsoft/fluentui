@@ -8,6 +8,7 @@ export { Default } from './InputDefault.stories';
 export { Appearance } from './InputAppearance.stories';
 export { ContentBeforeAfter } from './InputContentBeforeAfter.stories';
 export { Disabled } from './InputDisabled.stories';
+export { Invalid } from './InputInvalid.stories';
 export { Inline } from './InputInline.stories';
 export { Placeholder } from './InputPlaceholder.stories';
 export { Size } from './InputSize.stories';

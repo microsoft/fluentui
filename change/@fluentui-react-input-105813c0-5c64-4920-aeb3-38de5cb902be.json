@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add `invalid` prop to Input, which causes the border to be red",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
