@@ -1256,6 +1256,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
               alignTargetEdge={alignTargetEdge}
               hidden={props.hidden || menuContext.hidden}
               ref={forwardedRef}
+              preventDismissOnEvent={props.preventDismissOnEvent}
             >
               <div
                 style={contextMenuStyle}

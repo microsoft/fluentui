@@ -294,6 +294,12 @@ export interface IContextualMenuProps
    * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+
+  /**
+   * If it returns true, the callout will not dismiss for this event.
+   * If not defined or returns false, the callout can dismiss for this event.
+   */
+  preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
 }
 
 /**
