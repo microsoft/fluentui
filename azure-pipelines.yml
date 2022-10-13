@@ -46,7 +46,7 @@ jobs:
               "postPolicy": '${postPolicy}',
               "policyType": "OPTIONAL"
             }'
-        displayName: "Call policy State Api"
+        displayName: 'Call policy State Api'
         env:
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
 
@@ -88,5 +88,8 @@ jobs:
           PathtoPublish: 'screenshots'
           ArtifactName: 'vrscreenshot'
           publishLocation: 'Container'
+
+      - bash: node packages/oouibot-screenshotdiff/lib/index.js ${{ parameters.buildType }} --clientType cloudtest --buildId $(Build.BuildId)
+        displayName: 'Run fluentui-screenshotdiff'
 
       - template: .devops/templates/cleanup.yml

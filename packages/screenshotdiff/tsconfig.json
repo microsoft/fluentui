@@ -1,0 +1,20 @@
+{
+  // "extends": "./tsconfig2.json",
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["dom", "es5", "ES2015", "ES2019.Array"],
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "composite": true,
+    "importHelpers": true,
+    "downlevelIteration": true,
+    "tsBuildInfoFile": "./lib/tsconfig.tsbuildinfo",
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+    // "types": ["bluebird", "glob", "jest", "lodash", "node", "rimraf", "webpack"]
+  },
+  "include": ["./src"]
+}
