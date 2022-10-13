@@ -69,13 +69,18 @@ const useStyles = makeStyles({
     },
     ...createCustomFocusIndicatorStyle(
       {
-        ...shorthands.outline('2px', 'solid'),
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
         [`& .${tableSelectionCellClassNames.root}`]: {
           opacity: 1,
         },
       },
       { selector: 'focus-within' },
+    ),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid'),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus', disableOutline: false },
     ),
   },
 
