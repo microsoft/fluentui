@@ -89,7 +89,7 @@ jobs:
           ArtifactName: 'vrscreenshot'
           publishLocation: 'Container'
 
-      - bash: node packages/oouibot-screenshotdiff/lib/index.js ${{ parameters.buildType }} --clientType cloudtest --buildId $(Build.BuildId)
+      - bash: node packages/oouibot-screenshotdiff/lib/index.js test --clientType "fluentui" --buildId 12345
         displayName: 'Run fluentui-screenshotdiff'
 
       - template: .devops/templates/cleanup.yml
