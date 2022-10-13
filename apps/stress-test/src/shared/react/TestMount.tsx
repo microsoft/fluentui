@@ -18,7 +18,7 @@ const debouncedOnRender: DebouncedOnRender = () => {
       clearTimeout(timeoutId);
     }
 
-    timeoutId = setTimeout(() => {
+    timeoutId = (setTimeout(() => {
       requestAnimationFrame(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -27,7 +27,7 @@ const debouncedOnRender: DebouncedOnRender = () => {
           end: performance.now(),
         });
       });
-    }, 250);
+    }, 250) as unknown) as number;
   };
 };
 
