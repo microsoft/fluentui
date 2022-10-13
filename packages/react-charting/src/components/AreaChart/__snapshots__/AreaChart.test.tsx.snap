@@ -376,6 +376,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             border: 0px;
           }
       data-is-focusable={true}
+      hidden={false}
       id="toolTipundefined"
       style={
         Object {
@@ -907,6 +908,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             border: 0px;
           }
       data-is-focusable={true}
+      hidden={false}
       id="toolTipundefined"
       style={
         Object {
@@ -1335,6 +1337,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             border: 0px;
           }
       data-is-focusable={true}
+      hidden={false}
       id="toolTipundefined"
       style={
         Object {
@@ -1725,6 +1728,9 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2046,6 +2052,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2228,6 +2237,9 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
       </g>
     </svg>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2569,6 +2581,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2910,6 +2925,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3251,6 +3269,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3592,5 +3613,8 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
