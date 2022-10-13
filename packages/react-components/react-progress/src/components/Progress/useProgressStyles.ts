@@ -20,7 +20,7 @@ const barThicknessValues = {
 
 const indeterminateProgress = {
   '0%': {
-    left: '0%',
+    left: '-33%',
   },
   '100%': {
     left: '100%',
@@ -28,7 +28,7 @@ const indeterminateProgress = {
 };
 const indeterminateProgressRTL = {
   '100%': {
-    right: '-100%',
+    right: '-33%',
   },
   '0%': {
     right: '100%',
@@ -85,16 +85,27 @@ const useBarStyles = makeStyles({
     backgroundImage: `linear-gradient(
       to right,
       ${tokens.colorNeutralBackground6} 0%,
-      ${tokens.colorCompoundBrandBackground} 50%,
+      ${tokens.colorTransparentBackground} 50%,
       ${tokens.colorNeutralBackground6} 100%
     )`,
     animationName: indeterminateProgress,
     animationDuration: '3s',
     animationIterationCount: 'infinite',
+    animationTimingFunction: 'linear',
   },
 
   rtl: {
     animationName: indeterminateProgressRTL,
+  },
+
+  error: {
+    backgroundColor: tokens.colorPaletteRedBorder2,
+  },
+  warning: {
+    // No special color for warning
+  },
+  success: {
+    backgroundColor: tokens.colorPaletteGreenBorder2,
   },
 });
 
@@ -102,7 +113,7 @@ const useBarStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { max, thickness, value } = state;
+  const { max, thickness, value, validationState } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const { dir } = useFluent();
@@ -122,6 +133,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       value === undefined && dir === 'rtl' && barStyles.rtl,
       barStyles[thickness],
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
+      validationState && barStyles[validationState],
       state.bar.className,
     );
   }

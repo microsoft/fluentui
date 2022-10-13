@@ -14,6 +14,7 @@ export const ProgressField: ForwardRefComponent<ProgressFieldProps> = React.forw
     classNames: progressFieldClassNames,
     labelConnection: 'aria-labelledby',
   });
+  state.control.validationState = state.validationState;
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });
