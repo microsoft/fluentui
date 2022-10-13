@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add support for a control's `invalid` prop on Field, as a synonym for validationState=\"error\"",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -66,7 +66,7 @@ export const useField_unstable = <T extends FieldComponent>(
   params: FieldConfig<T>,
 ): FieldState<T> => {
   const [fieldProps, controlProps] = getPartitionedFieldProps(props);
-  const { orientation = 'vertical', validationState } = fieldProps;
+  const { orientation = 'vertical', validationState = props.invalid ? 'error' : undefined } = fieldProps;
   const { labelConnection = 'htmlFor' } = params;
 
   const baseId = useId('field-');
@@ -81,6 +81,7 @@ export const useField_unstable = <T extends FieldComponent>(
     defaultProps: {
       ref,
       id: baseId + '__control',
+      invalid: validationState === 'error' ? true : undefined,
       ...controlProps,
     },
   });

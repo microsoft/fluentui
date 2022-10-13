@@ -4,7 +4,10 @@ import { render } from '@testing-library/react';
 import type { FieldProps } from './index';
 import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from './index';
 
-const MockComponent: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props => <input {...props} />;
+const MockComponent: React.FC<React.InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean }> = props => {
+  const { invalid, ...intrinsicProps } = props;
+  return <input {...intrinsicProps} data-mock-invalid={invalid} />;
+};
 
 type MockFieldProps = FieldProps<typeof MockComponent>;
 const mockFieldClassNames = getFieldClassNames('MockField');
@@ -96,11 +99,30 @@ describe('Field', () => {
     expect(input.getAttribute('aria-errormessage')).toBe(validationMessage.id);
   });
 
-  it('sets aria-invalid if an error', () => {
+  it('sets invalid and aria-invalid if an error', () => {
     const result = render(<MockField validationState="error" />);
     const input = result.getByRole('textbox');
 
+    expect(input.getAttribute('data-mock-invalid')).toBeTruthy();
     expect(input.getAttribute('aria-invalid')).toBeTruthy();
+  });
+
+  it('does not set invalid or aria-invalid if not an error', () => {
+    const result = render(<MockField validationState="warning" />);
+    const input = result.getByRole('textbox');
+
+    expect(input.getAttribute('data-mock-invalid')).toBeNull();
+    expect(input.getAttribute('aria-invalid')).toBeNull();
+  });
+
+  it('defaults validationState to "error" if the invalid prop is set', () => {
+    const result = render(<MockField invalid validationMessage="Test validation message" />);
+    const input = result.getByRole('textbox');
+    const validationMessage = result.getByText('Test validation message');
+
+    expect(input.getAttribute('aria-invalid')).toBeTruthy();
+    expect(input.getAttribute('data-mock-invalid')).toBeTruthy();
+    expect(input.getAttribute('aria-errormessage')).toBe(validationMessage.id);
   });
 
   it('does not override user aria props', () => {

@@ -91,6 +91,11 @@ export type FieldPropsWithOptionalComponentProps<T extends FieldComponent> = Fie
    * Number sizes will be ignored, but are allowed because the HTML `<input>` element has a prop `size?: number`.
    */
   size?: 'small' | 'medium' | 'large' | number;
+
+  /**
+   * If the control has an `invalid` prop, it will be used to set the default value of `validationState="error"`.
+   */
+  invalid?: boolean;
 };
 
 /**
