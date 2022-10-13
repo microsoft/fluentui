@@ -5,8 +5,8 @@ import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card'
 import type { CardProps } from '@fluentui/react-card';
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
-const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
-const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
+const powerpointLogoURL = ASSET_URL + '/stories/assets/powerpoint_logo.svg';
+const salesPresentationTemplateURL = ASSET_URL + '/stories/assets/sales_template.png';
 
 export const SampleCard = (props: CardProps) => (
   <Card {...props}>
