@@ -1,4 +1,4 @@
-import { Dialog, DialogSurface, DialogTitle, DialogActions, DialogTrigger } from '@fluentui/react-dialog';
+import { Dialog, DialogSurface, DialogTitle, DialogActions, DialogTrigger } from '@fluentui/react-components';
 
 import descriptionMd from './DialogDescription.md';
 import bestPracticesMd from './DialogBestPractices.md';
@@ -19,7 +19,7 @@ export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
 
 const metadata: ComponentMeta<typeof Dialog> = {
-  title: 'Preview Components/Dialog',
+  title: 'Components/Dialog',
   component: Dialog,
   subcomponents: {
     DialogTrigger,
