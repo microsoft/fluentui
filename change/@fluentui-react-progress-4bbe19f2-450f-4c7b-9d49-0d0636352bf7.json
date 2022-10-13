@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add appearance prop and stories",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
