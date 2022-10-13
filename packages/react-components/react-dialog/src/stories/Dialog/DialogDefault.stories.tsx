@@ -7,8 +7,8 @@ import {
   DialogBody,
   DialogActions,
   DialogContent,
-} from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+  Button,
+} from '@fluentui/react-components';
 
 export const Default = () => {
   return (

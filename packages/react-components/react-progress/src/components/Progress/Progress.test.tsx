@@ -41,4 +41,10 @@ describe('Progress', () => {
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('42');
   });
+  it('sets valuemin and valuemax when value is 0', () => {
+    const result = render(<Progress value={0} />);
+    expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0');
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
+    expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
+  });
 });

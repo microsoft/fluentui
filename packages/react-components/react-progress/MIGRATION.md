@@ -16,11 +16,11 @@ Here's how the API of v8's `Progress` compares to the one from v9's `Progress` c
 
 ## Property Mapping
 
-| v8 `ProgressIndicator` | v9 `Progress`                   |
-| ---------------------- | ------------------------------- |
-| `barHeight`            | `thickness`                     |
-| `className`            | `className`                     |
-| `componentRef`         | `ref`                           |
-| `description`          | use `ProgressField` hint |
-| `label`                | use `ProgressField` label       |
-| `percentComplete`      | `value`                         |
+| v8 `ProgressIndicator` | v9 `Progress`             |
+| ---------------------- | ------------------------- |
+| `barHeight`            | `thickness`               |
+| `className`            | `className`               |
+| `componentRef`         | `ref`                     |
+| `description`          | use `ProgressField` hint  |
+| `label`                | use `ProgressField` label |
+| `percentComplete`      | `value`                   |
