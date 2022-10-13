@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CardPreview } from '../../index';
+import { CardPreview } from '@fluentui/react-card';
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 const wordLogoURL = ASSET_URL + '/stories/assets/word_logo.svg';
