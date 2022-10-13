@@ -47,7 +47,7 @@ const App = () => (
 
 ## Typography wrappers
 
-![List of typography variants by sorted descending by size](./assets/typography-examples.gif 'Typography wrapper list')
+![List of typography variants by sorted descending by size](./docs/assets/typography-examples.gif 'Typography wrapper list')
 
 Wrappers offer an easy way to use text according to the Fluent Design System while also providing semantic code readability.
 
