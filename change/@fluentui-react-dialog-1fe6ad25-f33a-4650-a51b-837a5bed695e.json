@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: focus on surface if no focusable element is available",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Mon, 03 Oct 2022 22:24:36 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:02:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0)
+
+Thu, 13 Oct 2022 11:02:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0-beta.11..@fluentui/react-dialog_v9.0.0)
+
+### Patches
+
+- feat: react-dialog stable release ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.4 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-aria to v9.2.2 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-portal to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- feat: focus on surface if no focusable element is available ([PR #25173](https://github.com/microsoft/fluentui/pull/25173) by bernardo.sunderhus@gmail.com)
+- chore: improves DialogTrigger types ([PR #25044](https://github.com/microsoft/fluentui/pull/25044) by bernardo.sunderhus@gmail.com)
+- chore: cleanups in types ([PR #25070](https://github.com/microsoft/fluentui/pull/25070) by bernardo.sunderhus@gmail.com)
+- fix: aria-* properties should be reassignable ([PR #25092](https://github.com/microsoft/fluentui/pull/25092) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.11)
 

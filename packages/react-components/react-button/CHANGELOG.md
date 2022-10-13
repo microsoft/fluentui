@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 03 Oct 2022 22:24:42 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:02:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.4)
+
+Thu, 13 Oct 2022 11:02:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.1.3..@fluentui/react-button_v9.1.4)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- feat: Adding subtle transition between states on Button components. ([PR #25106](https://github.com/microsoft/fluentui/pull/25106) by makotom@microsoft.com)
+- Bump @fluentui/react-aria to v9.2.2 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.3)
 
