@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Bump v8 packages peer deps to include React 18",
+  "packageName": "@fluentui/react-date-time",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
