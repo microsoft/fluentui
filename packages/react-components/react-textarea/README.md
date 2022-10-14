@@ -4,10 +4,6 @@
 
 The Textarea component is a multiline text input that allows the user to enter
 
-## STATUS: WIP 🚧
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 ## Usage
 
 To import Textarea:
