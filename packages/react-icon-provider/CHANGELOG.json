@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icon-provider",
   "entries": [
     {
+      "date": "Fri, 14 Oct 2022 07:44:01 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.3.22",
+      "version": "1.3.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-icon-provider",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "chore: Bump v8 packages peer deps to include React 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Oct 2022 07:38:24 GMT",
       "tag": "@fluentui/react-icon-provider_v1.3.21",
       "version": "1.3.21",

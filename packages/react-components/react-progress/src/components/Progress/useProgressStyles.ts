@@ -26,6 +26,14 @@ const indeterminateProgress = {
     left: '100%',
   },
 };
+const indeterminateProgressRTL = {
+  '100%': {
+    right: '-100%',
+  },
+  '0%': {
+    right: '100%',
+  },
+};
 
 /**
  * Styles for the root slot
@@ -86,7 +94,7 @@ const useBarStyles = makeStyles({
   },
 
   rtl: {
-    animationDirection: 'reverse',
+    animationName: indeterminateProgressRTL,
   },
 });
 

@@ -185,10 +185,12 @@ const useMenuOpenState = (
       state.setContextTarget(undefined);
     }
 
-    if (e.type === 'keydown' && (e as React.KeyboardEvent<HTMLElement>).key === Tab) {
+    if (e.type === 'keydown') {
       shouldHandleKeyboardRef.current = true;
-      shouldHandleTabRef.current = true;
-      pressedShiftRef.current = (e as React.KeyboardEvent<HTMLElement>).shiftKey;
+      if ((e as React.KeyboardEvent<HTMLElement>).key === Tab) {
+        shouldHandleTabRef.current = true;
+        pressedShiftRef.current = (e as React.KeyboardEvent<HTMLElement>).shiftKey;
+      }
     }
 
     if (data.bubble) {

@@ -312,14 +312,14 @@ const mapEffects = (baseEffects: IEffects, theme: ThemeV9): IEffects => {
 };
 
 /**
- * Creates a v8 theme from v9 brand colora and theme.
+ * Creates a v8 theme from v9 brand colors and theme.
  * You can optionally pass a v8 base theme.
  * Otherwise the default v8 theme is used.
  *
  * The v9 colors, fonts, and effects are applied on top of the v8 theme
  * to allow v8 components to look as much like v9 components as possible.
  */
-export const createv8Theme = (
+export const createV8Theme = (
   brandColors: BrandVariants,
   themeV9: ThemeV9,
   isDarkTheme: boolean = false,
