@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Tab } from './Tab';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TabListContext } from '../TabList/TabListContext';
 import { TabListContextValue } from '../TabList/TabList.types';
 import { CalendarMonthRegular } from '@fluentui/react-icons';

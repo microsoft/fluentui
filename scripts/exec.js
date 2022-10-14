@@ -4,12 +4,8 @@ const child_process = require('child_process');
 const chalk = require('chalk');
 const { logStatus } = require('./logging');
 
-const SEPARATOR = process.platform === 'win32' ? ';' : ':',
-  env = Object.assign({}, process.env);
-
-env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
-
 /**
+ * @deprecated Use `child_process.exec` directly.
  * Execute a command.
  *
  * @typedef {{
@@ -29,7 +25,6 @@ function exec(cmd, displayName, cwd = process.cwd(), opts = {}) {
 
   const execOptions = {
     cwd,
-    env: env,
     encoding: 'utf8',
   };
 
