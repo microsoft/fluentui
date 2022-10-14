@@ -23,7 +23,7 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story: `Progress can be rounded or rectangular.\n` + `It can toggled using the appearance prop.`,
+      story: "Progress supports different appearances. `rounded` is the default.",
     },
   },
 };

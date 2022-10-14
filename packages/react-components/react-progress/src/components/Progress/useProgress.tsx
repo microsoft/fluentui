@@ -13,7 +13,7 @@ import type { ProgressProps, ProgressState } from './Progress.types';
  */
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
-  const { appearance = 'rounded', thickness = 'medium', value, max = 1.0 } = props;
+  const { appearance = 'rounded', max = 1.0, thickness = 'medium', value } = props;
 
   const root = getNativeElementProps('div', {
     ref,

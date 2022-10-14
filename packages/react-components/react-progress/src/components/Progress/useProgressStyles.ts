@@ -50,10 +50,10 @@ const useRootStyles = makeStyles({
     },
   },
   rounded: {
-    ...shorthands.borderRadius('4px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
   rectangular: {
-    ...shorthands.borderRadius('0px'),
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
   },
   medium: {
     height: barThicknessValues.medium,
@@ -75,10 +75,10 @@ const useBarStyles = makeStyles({
     },
   },
   rounded: {
-    ...shorthands.borderRadius('4px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
   rectangular: {
-    ...shorthands.borderRadius('0px'),
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
   },
   medium: {
     height: barThicknessValues.medium,
