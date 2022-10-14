@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 14 Oct 2022 07:43:59 GMT",
+      "tag": "@fluentui/react_v8.98.2",
+      "version": "8.98.2",
+      "comments": {
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "420c8625ed781dfac02f2a35c4952c54f0f079a9",
+            "comment": "docs: update ie11 support in fluent v8 readme"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "chore: Bump v8 packages peer deps to include React 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 07:45:27 GMT",
       "tag": "@fluentui/react_v8.98.1",
       "version": "8.98.1",
