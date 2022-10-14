@@ -1,7 +1,7 @@
 import { FASTElement, customElement, attr, html, css, repeat, ValueConverter } from '@microsoft/fast-element';
 import { getTestOptions } from '../../shared/utils/testOptions';
 import { performanceMeasure } from '../../shared/utils/performanceMeasure';
-import { StressComponent } from './stressComponent.wc';
+import { StressComponent } from './stressComponent';
 
 const styles = css`
   :host {

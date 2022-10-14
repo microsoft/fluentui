@@ -6,9 +6,9 @@ import {
   fluentNumberField,
   provideFluentDesignSystem,
 } from '@fluentui/web-components';
-import { StressApp } from '../../../components/wc/stressApp.wc';
-import { StressComponent } from '../../../components/wc/stressComponent.wc';
-import { StressContainer } from '../../../components/wc/stressContainer.wc';
+import { StressApp } from '../../../components/wc/stressApp';
+import { StressComponent } from '../../../components/wc/stressComponent';
+import { StressContainer } from '../../../components/wc/stressContainer';
 import { getTestOptions } from '../../../shared/utils/testOptions';
 
 const testOptions = getTestOptions();
