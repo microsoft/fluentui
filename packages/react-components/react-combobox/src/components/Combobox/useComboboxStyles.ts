@@ -131,6 +131,11 @@ const useStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
   },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
 });
 
 const useInputStyles = makeStyles({
@@ -215,7 +220,8 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     styles.root,
     styles[appearance],
     styles[size],
-    invalid && styles.invalid,
+    invalid && appearance !== 'underline' && styles.invalid,
+    invalid && appearance === 'underline' && styles.invalidUnderline,
     state.root.className,
   );
 

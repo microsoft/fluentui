@@ -164,6 +164,11 @@ const useStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
   },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -210,7 +215,8 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     dropdownClassNames.root,
     styles.root,
     styles[appearance],
-    invalid && styles.invalid,
+    invalid && appearance !== 'underline' && styles.invalid,
+    invalid && appearance === 'underline' && styles.invalidUnderline,
     state.root.className,
   );
 
