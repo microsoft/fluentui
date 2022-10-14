@@ -59,13 +59,6 @@ export type InputProps = Omit<
     | 'filled-lighter-shadow';
 
   /**
-   * Causes the border to be red, indicating that the value entered by the user has failed validation.
-   *
-   * It is recommended to set `aria-invalid` and `aria-errormessage` as well.
-   */
-  invalid?: boolean;
-
-  /**
    * Default value of the input. Provide this if the input should be an uncontrolled component
    * which tracks its current state internally; otherwise, use `value`.
    *
@@ -85,6 +78,14 @@ export type InputProps = Omit<
    * Called when the user changes the input's value.
    */
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+
+  /**
+   * Causes the border to be red and marks the input as `aria-invalid`, indicating that the value entered by the user
+   * has failed validation.
+   *
+   * It is recommended to include an error message linked by `aria-errormessage`, or use `InputField` to handle it.
+   */
+  invalid?: boolean;
 
   /**
    * An input can have different text-based [types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types)

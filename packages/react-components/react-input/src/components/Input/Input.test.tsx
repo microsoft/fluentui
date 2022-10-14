@@ -95,4 +95,9 @@ describe('Input', () => {
     renderedComponent.rerender(<Input value="world" onChange={onChange} />);
     expect(onChange).toHaveBeenCalledTimes(0);
   });
+
+  it('sets aria-invalid when invalid is true', () => {
+    renderedComponent = render(<Input invalid />);
+    expect(getInput().getAttribute('aria-invalid')).toEqual('true');
+  });
 });

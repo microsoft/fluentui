@@ -57,6 +57,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
       defaultProps: {
         type: 'text',
         ref,
+        'aria-invalid': invalid || undefined,
         ...nativeProps.primary,
       },
     }),
