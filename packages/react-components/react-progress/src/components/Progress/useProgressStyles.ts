@@ -73,12 +73,7 @@ const useBarStyles = makeStyles({
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'Highlight',
     },
-  },
-  rounded: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-  },
-  rectangular: {
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
+    ...shorthands.borderRadius('inherit'),
   },
   medium: {
     height: barThicknessValues.medium,
