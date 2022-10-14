@@ -5,5 +5,13 @@
     "outDir": "dist",
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },
-  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.d.ts"]
+  "include": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.d.ts",
+    "./src/testing/**/*.ts",
+    "./src/testing/**/*.tsx"
+  ]
 }

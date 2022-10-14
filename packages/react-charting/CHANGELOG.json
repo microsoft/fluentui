@@ -2,6 +2,35 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 14 Oct 2022 07:44:00 GMT",
+      "tag": "@fluentui/react-charting_v5.14.0",
+      "version": "5.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "77301c97c0539b9ebf891642eb0a077d1aeae9a6",
+            "comment": "Update d3-scale version to 4.0.0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.98.2",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "chore: Bump v8 packages peer deps to include React 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 07:45:27 GMT",
       "tag": "@fluentui/react-charting_v5.13.11",
       "version": "5.13.11",
