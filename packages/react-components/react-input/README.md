@@ -1,6 +1,6 @@
 # @fluentui/react-input
 
-**React Input components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Input components for [Fluent UI React](https://react.fluentui.dev)**
 
 Inputs give people a way to enter and edit text.
 

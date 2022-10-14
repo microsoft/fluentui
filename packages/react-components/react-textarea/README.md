@@ -1,6 +1,6 @@
 # @fluentui/react-textarea
 
-**React Textarea components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Textarea components for [Fluent UI React](https://react.fluentui.dev)**
 
 The Textarea component is a multiline text input that allows the user to enter
 

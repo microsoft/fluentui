@@ -1,6 +1,6 @@
 # @fluentui/react-popover
 
-**React Popover components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Popover components for [Fluent UI React](https://react.fluentui.dev)**
 
 To import React Popover components:
 

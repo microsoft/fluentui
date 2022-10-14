@@ -1,3 +1,3 @@
 # @fluentui/react-aria
 
-**React Aria components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Aria components for [Fluent UI React](https://react.fluentui.dev)**

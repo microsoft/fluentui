@@ -1,3 +1,3 @@
 # @fluentui/react-accordion
 
-**React Accordion components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Accordion components for [Fluent UI React](https://react.fluentui.dev)**
