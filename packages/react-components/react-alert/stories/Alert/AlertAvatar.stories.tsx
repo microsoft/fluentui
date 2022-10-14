@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DismissCircleRegular } from '@fluentui/react-icons';
 
-import { Alert } from '../../index';
+import { Alert } from '@fluentui/react-alert';
 
 export const Avatar = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>

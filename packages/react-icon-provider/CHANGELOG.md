@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Mon, 10 Oct 2022 07:38:24 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Oct 2022 07:44:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.22)
+
+Fri, 14 Oct 2022 07:44:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.21..@fluentui/react-icon-provider_v1.3.22)
+
+### Patches
+
+- chore: Bump v8 packages peer deps to include React 18 ([PR #24976](https://github.com/microsoft/fluentui/pull/24976) by mgodbolt@microsoft.com)
 
 ## [1.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.21)
 

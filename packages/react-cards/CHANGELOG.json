@@ -2,6 +2,27 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Fri, 14 Oct 2022 07:43:59 GMT",
+      "tag": "@fluentui/react-cards_v0.205.11",
+      "version": "0.205.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "chore: Bump v8 packages peer deps to include React 18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.98.2",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 07:45:27 GMT",
       "tag": "@fluentui/react-cards_v0.205.10",
       "version": "0.205.10",
