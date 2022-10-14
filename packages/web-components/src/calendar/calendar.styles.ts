@@ -20,7 +20,7 @@ import {
   neutralForegroundRest,
   strokeWidth,
 } from '../design-tokens';
-import { DirectionalStyleSheetBehavior } from '../styles';
+import { DirectionalStyleSheetBehavior, focusTreatmentBase } from '../styles';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 
 /**
@@ -59,6 +59,7 @@ ${display("inline-block")} :host {
   --calendar-gap: 2px;
   ${typeRampBase}
   color: ${neutralForegroundRest};
+  border: calc(${strokeWidth} * 1px) solid transparent;
 }
 
 .title {
@@ -153,7 +154,6 @@ ${display("inline-block")} :host {
         :host {
           forced-color-adjust: auto;
           background: ${SystemColors.ButtonFace};
-          outline: 1px solid ${SystemColors.CanvasText};
         }
         .day,
         .interact .day,
@@ -161,6 +161,7 @@ ${display("inline-block")} :host {
             background: ${SystemColors.Canvas};
             color: ${SystemColors.CanvasText};
             fill: currentcolor;
+            border-color: ${SystemColors.Canvas}
         }
         .interact .day:not(.disabled, .inactive):hover {
             background: ${SystemColors.ButtonFace};
@@ -170,10 +171,10 @@ ${display("inline-block")} :host {
         .week-day:${focusVisible},
         .interact .day:not(.disabled, .inactive):${focusVisible} {
             forced-color-adjust: none;
-            background: :${SystemColors.ButtonFace};
+            background: ${SystemColors.ButtonFace};
             border-color: transparent;
-            box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.Highlight} inset;
-            outline: none;
+            ${focusTreatmentBase}
+            outline-color: ${SystemColors.Highlight}
         }
         .day.disabled,
         .day.inactive {
