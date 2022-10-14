@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 13 Oct 2022 07:45:27 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Oct 2022 07:43:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.98.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.2)
+
+Fri, 14 Oct 2022 07:43:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.1..@fluentui/react_v8.98.2)
+
+### Patches
+
+- chore: Bump v8 packages peer deps to include React 18 ([PR #24976](https://github.com/microsoft/fluentui/pull/24976) by mgodbolt@microsoft.com)
 
 ## [8.98.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.1)
 

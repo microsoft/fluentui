@@ -1,4 +1,4 @@
-import { StressComponent } from '../../components/wc/stressComponent.wc';
+import { StressComponent } from '../../components/wc/stressComponent';
 import { DOMSelectorTreeComponentRenderer } from '../../shared/vanilla/types';
 
 typeof StressComponent;
