@@ -19,7 +19,7 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
    * The appearance of the bar and track.
    * @default 'rounded'
    */
-  appearance?: 'rounded' | 'rectangular';
+  shape?: 'rounded' | 'rectangular';
   /**
    * A decimal number between `0` and `1` (or between `0` and `max` if given),
    * which specifies how much of the task has been completed.
@@ -44,5 +44,5 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
  * State used in rendering Progress
  */
 export type ProgressState = ComponentState<ProgressSlots> &
-  Required<Pick<ProgressProps, 'max' | 'thickness' | 'appearance'>> &
+  Required<Pick<ProgressProps, 'max' | 'shape' | 'thickness'>> &
   Pick<ProgressProps, 'value'>;

@@ -8,22 +8,22 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = () => {
+export const Shape = () => {
   const styles = useStyles();
 
   return (
     <div>
-      <Progress className={styles.container} appearance="rounded" thickness="large" value={0.5} />
+      <Progress className={styles.container} shape="rounded" thickness="large" value={0.5} />
 
-      <Progress className={styles.container} appearance="rectangular" thickness="large" value={0.5} />
+      <Progress className={styles.container} shape="rectangular" thickness="large" value={0.5} />
     </div>
   );
 };
 
-Appearance.parameters = {
+Shape.parameters = {
   docs: {
     description: {
-      story: "Progress supports different appearances. `rounded` is the default.",
+      story: 'Progress supports different appearances. `rounded` is the default.',
     },
   },
 };

@@ -109,7 +109,7 @@ const useBarStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { appearance, max, thickness, value } = state;
+  const { max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const { dir } = useFluent();
@@ -117,7 +117,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   state.root.className = mergeClasses(
     progressClassNames.root,
     rootStyles.root,
-    rootStyles[appearance],
+    rootStyles[shape],
     rootStyles[thickness],
     state.root.className,
   );
@@ -128,7 +128,6 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
       barStyles.base,
       value === undefined && barStyles.indeterminate,
       value === undefined && dir === 'rtl' && barStyles.rtl,
-      barStyles[appearance],
       barStyles[thickness],
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       state.bar.className,
