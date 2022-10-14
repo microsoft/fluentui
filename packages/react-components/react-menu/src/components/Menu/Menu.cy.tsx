@@ -10,7 +10,7 @@ import {
   menuTriggerSelector,
   menuItemSelector,
   menuSelector,
-} from './selectors';
+} from '../../testing/selectors';
 
 import {
   Menu,
@@ -149,6 +149,7 @@ describe('Custom Trigger', () => {
     };
 
     return (
+      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger>
           <CustomMenuTrigger />
@@ -692,6 +693,7 @@ describe(`Nested Menus`, () => {
     };
 
     return (
+      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger>
           <MenuItem>Editor Layout</MenuItem>
@@ -715,6 +717,7 @@ describe(`Nested Menus`, () => {
     };
 
     return (
+      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger>
           <MenuItem>Appearance</MenuItem>
@@ -739,6 +742,7 @@ describe(`Nested Menus`, () => {
     };
 
     return (
+      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger>
           <MenuItem>Preferences</MenuItem>

@@ -4,7 +4,7 @@ import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
-import { menuTriggerSelector, menuItemSelector, menuSelector } from './selectors';
+import { menuTriggerSelector, menuItemSelector, menuSelector } from '../../testing/selectors';
 
 import { MenuList, MenuItem, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-menu';
 const mount = (element: JSX.Element) => {
