@@ -1250,6 +1250,11 @@ export { DelayedRender }
 export { Depths }
 
 // @public (undocumented)
+export const DesignTokensContext: React_2.Context<{
+    styleWithDesignTokens: boolean;
+} | undefined>;
+
+// @public (undocumented)
 export const DetailsColumn: React_2.FunctionComponent<IDetailsColumnProps>;
 
 // @public
@@ -11317,6 +11322,9 @@ export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | nul
 export type UseStylesOptions = {
     theme?: Theme;
 };
+
+// @public
+export const useStyleWithDesignTokens: () => boolean;
 
 // @public
 export const useTheme: () => Theme;
