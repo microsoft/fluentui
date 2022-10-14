@@ -4,35 +4,43 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import type { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PopoverProps } from '@fluentui/react-popover';
+import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const InfoButton: ForwardRefComponent<InfoButtonProps>;
+export const InfoButton: React_2.FC<InfoButtonProps>;
 
 // @public (undocumented)
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
-export type InfoButtonProps = ComponentProps<InfoButtonSlots> & {};
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'children'>;
 
 // @public (undocumented)
 export type InfoButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<PopoverProps>>;
+    trigger: NonNullable<Slot<typeof Button>>;
+    content: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & {
+    popoverOpen: boolean;
+};
 
 // @public
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
 
 // @public
-export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;
+export const useInfoButton_unstable: (props: InfoButtonProps) => InfoButtonState;
 
 // @public
 export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;

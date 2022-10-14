@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import type { InfoButtonState, InfoButtonSlots } from './InfoButton.types';
+import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
 
 /**
  * Render the final JSX of InfoButton
@@ -8,6 +9,12 @@ import type { InfoButtonState, InfoButtonSlots } from './InfoButton.types';
 export const renderInfoButton_unstable = (state: InfoButtonState) => {
   const { slots, slotProps } = getSlots<InfoButtonSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...(slotProps.root as PopoverProps)}>
+      <PopoverTrigger>
+        <slots.trigger {...slotProps.trigger} />
+      </PopoverTrigger>
+      <slots.content {...slotProps.content} />
+    </slots.root>
+  );
 };

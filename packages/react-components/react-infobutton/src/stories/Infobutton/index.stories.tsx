@@ -4,6 +4,7 @@ import descriptionMd from './InfoButtonDescription.md';
 import bestPracticesMd from './InfoButtonBestPractices.md';
 
 export { Default } from './InfoButtonDefault.stories';
+export { CustomIcon } from './InfoButtonCustomIcon.stories';
 
 export default {
   title: 'Preview Components/InfoButton',

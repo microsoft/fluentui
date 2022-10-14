@@ -1,33 +1,46 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
+import { tokens } from '@fluentui/react-theme';
 import type { InfoButtonSlots, InfoButtonState } from './InfoButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
+  // This classname is not applied, but it's left here to prevent a linting error.
   root: 'fui-InfoButton',
-  // TODO: add class names for all slots on InfoButtonSlots.
-  // Should be of the form `<slotName>: 'fui-InfoButton__<slotName>`
+  content: 'fui-InfoButton__content',
+  trigger: 'fui-InfoButton__trigger',
 };
 
 /**
- * Styles for the root slot
+ * Styles for the trigger slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
+const useTriggerStyles = makeStyles({
+  selected: {
+    color: tokens.colorNeutralForeground2BrandPressed,
 
-  // TODO add additional classes for different states and/or slots
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+  },
 });
 
 /**
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(infoButtonClassNames.root, styles.root, state.root.className);
+  const { popoverOpen } = state;
+  const triggerStyles = useTriggerStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.content.className = mergeClasses(infoButtonClassNames.content, state.content.className);
+  state.trigger.className = mergeClasses(
+    infoButtonClassNames.trigger,
+    popoverOpen && triggerStyles.selected,
+    state.trigger.className,
+  );
 
   return state;
 };
