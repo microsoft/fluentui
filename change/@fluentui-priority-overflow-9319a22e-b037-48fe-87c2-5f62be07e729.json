@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update package readme",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}
