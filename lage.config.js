@@ -12,6 +12,8 @@ module.exports = {
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
+    '@fluentui/react-button#type-check': ['@fluentui/a11y-testing#build'],
+    '@fluentui/react-link#type-check': ['@fluentui/a11y-testing#build'],
     '@fluentui/react-18-tests-v8#type-check': ['@fluentui/react#build'],
     '@fluentui/react-migration-v8-v9#type-check': ['@fluentui/react#build'],
     '@fluentui/stress-test#type-check': ['@fluentui/react#build', '@fluentui/web-components#build'],
