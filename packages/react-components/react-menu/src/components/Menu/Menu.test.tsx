@@ -2,7 +2,7 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
 import { MenuItem } from '../MenuItem/index';
