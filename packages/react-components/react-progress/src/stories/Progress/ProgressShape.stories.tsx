@@ -23,7 +23,7 @@ export const Shape = () => {
 Shape.parameters = {
   docs: {
     description: {
-      story: 'Progress supports different appearances. `rounded` is the default.',
+      story: 'Progress supports different shapes. `rounded` is the default.',
     },
   },
 };

@@ -16,7 +16,7 @@ export type ProgressSlots = {
  */
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
   /**
-   * The appearance of the bar and track.
+   * The shape of the bar and track.
    * @default 'rounded'
    */
   shape?: 'rounded' | 'rectangular';
