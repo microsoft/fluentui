@@ -65,20 +65,13 @@ export type ComboboxBaseProps = SelectionProps & {
    * Use this with `onOptionSelect` to directly control the displayed value string
    */
   value?: string;
-
-  /**
-   * Causes the border to be red, indicating that the value entered by the user has failed validation.
-   *
-   * It is recommended to set `aria-invalid` and `aria-errormessage` as well.
-   */
-  invalid?: boolean;
 };
 
 /**
  * State used in rendering Combobox
  */
 export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'inlinePopup' | 'size'>> &
-  Pick<ComboboxBaseProps, 'placeholder' | 'value' | 'invalid'> &
+  Pick<ComboboxBaseProps, 'placeholder' | 'value'> &
   OptionCollectionState &
   SelectionState & {
     /* Option data for the currently highlighted option (not the selected option) */

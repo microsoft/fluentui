@@ -63,7 +63,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     onChange,
     size = 'medium',
     appearance = 'outline',
-    invalid = false,
     root,
     input,
     incrementButton,
@@ -244,7 +243,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     appearance,
     spinState: keyboardSpinState,
     atBound: internalState.current.atBound,
-    invalid,
+
     components: {
       root: 'span',
       input: 'input',
@@ -261,7 +260,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         ref,
         autoComplete: 'off',
         role: 'spinbutton',
-        appearance,
+        appearance: appearance,
         type: 'text',
         ...nativeProps.primary,
       },

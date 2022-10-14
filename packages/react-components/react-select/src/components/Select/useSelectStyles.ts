@@ -194,8 +194,9 @@ const useIconStyles = makeStyles({
  * Apply styling to the Select slots based on the state
  */
 export const useSelectStyles_unstable = (state: SelectState): SelectState => {
-  const { size, appearance, invalid } = state;
+  const { size, appearance } = state;
   const disabled = state.select.disabled;
+  const invalid = `${state.select['aria-invalid']}` === 'true';
 
   const iconStyles = useIconStyles();
   const rootStyles = useRootStyles();

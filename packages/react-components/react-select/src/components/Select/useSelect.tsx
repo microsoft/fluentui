@@ -20,9 +20,9 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     icon,
     root,
     appearance = 'outline',
+
     onChange,
     size = 'medium',
-    invalid = false,
   } = props;
 
   const nativeProps = getPartitionedNativeProps({
@@ -34,7 +34,6 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
   const state: SelectState = {
     size,
     appearance,
-    invalid,
     components: {
       root: 'span',
       select: 'select',

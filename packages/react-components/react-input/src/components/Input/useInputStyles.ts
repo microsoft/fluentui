@@ -251,8 +251,9 @@ const useContentStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles_unstable = (state: InputState): InputState => {
-  const { size, appearance, invalid } = state;
+  const { size, appearance } = state;
   const disabled = state.input.disabled;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();

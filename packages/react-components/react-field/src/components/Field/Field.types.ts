@@ -91,11 +91,6 @@ export type FieldPropsWithOptionalComponentProps<T extends FieldComponent> = Fie
    * Number sizes will be ignored, but are allowed because the HTML `<input>` element has a prop `size?: number`.
    */
   size?: 'small' | 'medium' | 'large' | number;
-
-  /**
-   * Whether `validationState` defaults to `"error"`.
-   */
-  invalid?: boolean;
 };
 
 /**
@@ -122,13 +117,6 @@ export type FieldConfig<T extends FieldComponent> = {
    * @default htmlFor
    */
   labelConnection?: 'htmlFor' | 'aria-labelledby';
-
-  /**
-   * Should the Field set the control's `invalid={true}` when `validationState="error"`.
-   *
-   * @default false
-   */
-  invalidOnError?: boolean;
 };
 
 /**

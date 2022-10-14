@@ -17,7 +17,7 @@ import type { InputProps, InputState } from './Input.types';
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  const { size = 'medium', appearance = 'outline', invalid = false, onChange } = props;
+  const { size = 'medium', appearance = 'outline', onChange } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -45,7 +45,6 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
   const state: InputState = {
     size,
     appearance,
-    invalid,
     components: {
       root: 'span',
       input: 'input',

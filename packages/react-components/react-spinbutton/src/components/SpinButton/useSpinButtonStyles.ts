@@ -408,8 +408,9 @@ const useButtonDisabledStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
-  const { appearance, atBound, invalid, spinState, size } = state;
+  const { appearance, atBound, spinState, size } = state;
   const disabled = state.input.disabled;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
@@ -424,7 +425,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   useInputStyles_unstable({
     size,
     appearance,
-    invalid,
     input: state.input,
     root: state.root,
     components: {

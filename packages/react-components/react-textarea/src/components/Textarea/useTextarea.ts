@@ -17,7 +17,7 @@ import type { TextareaProps, TextareaState } from './Textarea.types';
  * @param ref - reference to root HTMLElement of Textarea
  */
 export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>): TextareaState => {
-  const { size = 'medium', appearance = 'outline', invalid = false, resize = 'none', onChange } = props;
+  const { size = 'medium', appearance = 'outline', resize = 'none', onChange } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -46,7 +46,6 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
     size,
     appearance,
     resize,
-    invalid,
     components: {
       root: 'span',
       textarea: 'textarea',

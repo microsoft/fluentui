@@ -28,7 +28,6 @@ export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textare
     resize?: 'none' | 'horizontal' | 'vertical' | 'both';
     size?: 'small' | 'medium' | 'large';
     value?: string;
-    invalid?: boolean;
 };
 
 // @public (undocumented)
@@ -38,7 +37,7 @@ export type TextareaSlots = {
 };
 
 // @public
-export type TextareaState = ComponentState<TextareaSlots> & Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size' | 'invalid'>>;
+export type TextareaState = ComponentState<TextareaSlots> & Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>>;
 
 // @public
 export const useTextarea_unstable: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;

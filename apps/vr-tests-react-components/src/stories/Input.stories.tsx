@@ -30,13 +30,13 @@ storiesOf('Input Converged', module)
       <Input appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Invalid: outline', () => <Input invalid placeholder="Placeholder" />)
-  .addStory('Invalid: underline', () => <Input invalid appearance="underline" placeholder="Placeholder" />)
-  .addStory('Invalid: filled-darker', () => <Input invalid appearance="filled-darker" placeholder="Placeholder" />)
+  .addStory('Invalid: outline', () => <Input aria-invalid placeholder="Placeholder" />)
+  .addStory('Invalid: underline', () => <Input aria-invalid appearance="underline" placeholder="Placeholder" />)
+  .addStory('Invalid: filled-darker', () => <Input aria-invalid appearance="filled-darker" placeholder="Placeholder" />)
   .addStory('Invalid: filled-lighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
-      <Input invalid appearance="filled-lighter" placeholder="Placeholder" />
+      <Input aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
   .addStory('Disabled', () => <Input disabled />)

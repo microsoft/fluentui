@@ -204,7 +204,8 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, invalid, open, size } = state;
+  const { appearance, open, size } = state;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();

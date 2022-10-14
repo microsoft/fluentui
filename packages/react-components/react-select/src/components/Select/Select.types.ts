@@ -35,16 +35,9 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
-
-  /**
-   * Causes the border to be red, indicating that the value entered by the user has failed validation.
-   *
-   * It is recommended to set `aria-invalid` and `aria-errormessage` as well.
-   */
-  invalid?: boolean;
 };
 
-export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size' | 'invalid'>>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
 
 /**
  * Data passed to the `onChange` callback when a new option is selected.

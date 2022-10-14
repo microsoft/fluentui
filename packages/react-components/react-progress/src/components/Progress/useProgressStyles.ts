@@ -20,7 +20,7 @@ const barThicknessValues = {
 
 const indeterminateProgress = {
   '0%': {
-    left: '-33%',
+    left: '0%',
   },
   '100%': {
     left: '100%',
@@ -28,7 +28,7 @@ const indeterminateProgress = {
 };
 const indeterminateProgressRTL = {
   '100%': {
-    right: '-33%',
+    right: '-100%',
   },
   '0%': {
     right: '100%',
@@ -91,7 +91,6 @@ const useBarStyles = makeStyles({
     animationName: indeterminateProgress,
     animationDuration: '3s',
     animationIterationCount: 'infinite',
-    animationTimingFunction: 'linear',
   },
 
   rtl: {
@@ -100,9 +99,6 @@ const useBarStyles = makeStyles({
 
   error: {
     backgroundColor: tokens.colorPaletteRedBorder2,
-  },
-  warning: {
-    // No special color for warning
   },
   success: {
     backgroundColor: tokens.colorPaletteGreenBorder2,

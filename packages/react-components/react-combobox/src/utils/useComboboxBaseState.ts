@@ -9,7 +9,7 @@ import type { ComboboxBaseProps, ComboboxBaseOpenEvents } from './ComboboxBase.t
  * State shared between Combobox and Dropdown components
  */
 export const useComboboxBaseState = (props: ComboboxBaseProps) => {
-  const { appearance = 'outline', inlinePopup = false, invalid, multiselect, onOpenChange, size = 'medium' } = props;
+  const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
 
   const optionCollection = useOptionCollection();
   const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
@@ -96,7 +96,6 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     hasFocus,
     ignoreNextBlur,
     inlinePopup,
-    invalid,
     open,
     setActiveOption,
     setFocusVisible,
