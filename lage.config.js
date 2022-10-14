@@ -13,6 +13,7 @@ module.exports = {
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
     '@fluentui/react-18-tests-v8#type-check': ['@fluentui/react#build'],
+    '@fluentui/react-migration-v8-v9#type-check': ['@fluentui/react#build'],
     '@fluentui/stress-test#type-check': ['@fluentui/react#build', '@fluentui/web-components#build'],
   },
 
