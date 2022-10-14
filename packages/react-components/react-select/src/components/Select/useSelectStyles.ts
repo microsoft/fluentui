@@ -144,6 +144,11 @@ const useSelectStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
   },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -209,8 +214,9 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     selectStyles.base,
     selectStyles[size],
     selectStyles[appearance],
+    invalid && appearance !== 'underline' && selectStyles.invalid,
+    invalid && appearance === 'underline' && selectStyles.invalidUnderline,
     disabled && selectStyles.disabled,
-    invalid && selectStyles.invalid,
     state.select.className,
   );
 
