@@ -85,14 +85,7 @@ polyfills being shipped with the Fluent UI library by default; as well as preven
 This also gives consumers the flexibility to provide robust solutions such as shipping a bundle with the necessary polyfills to support older browsers and one with a lighter,
 polyfill-free bundle to support modern browsers.
 
-## Browser Support Expectations:
-
-**Consumer Expectations:**
-
-1. Consumers will need to perform down-level transpilation of the Fluent UI library should they need to support browsers that fall below the full support matrix.
-2. Consumers will need to work around browser, ECMAScript and CSS feature gaps caused by needing to support browsers that fall below the full support matrix.
-
-**Developer Expectations:**
+## Developer Expectations:
 
 1. Fluent UI developers and contributors are internally expected to develop against the partial browser support matrix.
    This means that no code which causes applications to crash on the partially supported browsers (with the exception of ES syntax which are transpilable by the consumer)
