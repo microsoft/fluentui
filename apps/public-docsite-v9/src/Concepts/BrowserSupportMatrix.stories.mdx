@@ -3,17 +3,17 @@ import { Meta } from '@storybook/addon-docs';
 <Meta title="Concepts/Developer/Browser Support Matrix" />
 
 Defining a browser support matrix to account for all different consumer cases is a difficult undertaking.
-Browser matrix support takes into account various factors such as ECMAScript (ES), browser, and CSS
+This browser matrix takes into account various factors such as ECMAScript (ES), browser API, and CSS
 feature compatibility across different browsers and across different versions of those browsers.
-FluentUI strives to find a balance that enables consumers who support modern browsers to reap the
-full benefits of the library while at the same time providing the necessary guidance to consumers who
+Fluent UI strives to find a balance that enables consumers who support modern browsers to reap the
+full benefits of newer features while at the same time providing the necessary guidance to consumers who
 support older browsers. Details of a full and partial browser support matrix as well as actions consumers
-will need to take such as transpiling and polyfilling are outlined below.
+can take such as transpiling and polyfilling are outlined below.
 
 ## Full Browser Support Matrix
 
-FluentUI fully supports browsers that are at or above the indicated versions below. Consumers who support these browsers
-are poised to experience the full performance and bundlesize benefits that the FluentUI library provides.
+Fluent UI fully supports browsers that are at or above the indicated versions below. Consumers who support these browsers
+are poised to experience the full performance and bundlesize benefits that these modern browsers afford the Fluent UI React library.
 
 **Desktop Browsers:**
 
@@ -27,14 +27,14 @@ are poised to experience the full performance and bundlesize benefits that the F
 | ------------- | ------------------ | ------- |
 | >=14.5        | >=84               | >=16    |
 
-FluentUI will ensure that no browser, ECMAScript, or CSS features that are incompatible with the support matrix laid out above are introduced.
+Fluent UI will ensure that no browser, ECMAScript, or CSS features that are incompatible with the support matrix laid out above are introduced.
 For consumers who require the use/support of older browsers, please see the partial support matrix and polyfill sections below for more information
 on what will need to be done.
 
 ## Partial Browser Support Matrix:
 
-FluentUI introduces the concept of a partial browser support matrix as a means to find that balance between supporting modern browsers and older browsers.
-The partial browser matrix below will have limitations that will require consumers to transpile down and/or use polyfills to cover the support gaps. The feature gaps
+Fluent UI introduces a new concept of a partial browser support matrix as a means to find that balance between supporting modern browsers and older browsers.
+The partial browser matrix below will have limitations that require consumers to transpile down and/or use polyfills to cover the support gaps. The feature gaps
 are listed below with subsequent recommendation on how to handle each case.
 
 **Desktop Browsers:**
@@ -49,11 +49,11 @@ are listed below with subsequent recommendation on how to handle each case.
 | ------------- | ------------------ | ------- |
 | >=13.4        | >=79               | >=14    |
 
-List of features that are currently used in FluentUI that aren't supported out of the box by the partial support matrix above:
+List of features that are currently used in Fluent UI that aren't supported out of the box by the partial support matrix above:
 
 **Unsupported CSS Features:**
 
-- Support for the CSS features below are lost within the partial support matrix. The lost of these features will not crash consumer applications,
+- CSS features below are not supported by some browsers within the partial support matrix. The absence of these features will not crash consumer applications,
   it will simply degrade the user interface.
 
 1.  Flex gap: Unsupported by Chrome, Edge, Firefox, Opera, Safari, Safari on IOS, Chrome on Android
@@ -62,26 +62,26 @@ List of features that are currently used in FluentUI that aren't supported out o
 
 **Unsupported ECMAScript Features:**
 
-- ES2020 features listed below are already being used within the FluentUI library. Consumers who follow the partial support matrix will need to transpile down
-  the FluentUI library to make it work since the use of these ES2020 features will result in the application crashing on some of the listed browsers.
+- ES2020 features listed below are already being used within the Fluent UI library. Consumers who follow the partial support matrix will need to transpile down
+  the Fluent UI library to make it work since the use of these ES2020 features will result in the application crashing on some of the listed browsers.
 
 1. Nullish Coalescing: Unsupported by Chrome, Edge, Firefox, Opera.
 2. Optional Chaining: Unsupported by Chrome, Edge, Firefox, Opera.
 
 ## ECMAScript Target & Transpilation
 
-FluentUI will be targetting ES2020 as its Typescript target. FluentUI will not be performing any down-level transpilation below ES2020
-which means that consumers who need to support older browsers (such as those that only support up to ES6) are responsible for transpiling down the FluentUI
+Fluent UI will be targetting ES2020 as its Typescript target. Fluent UI will not be performing any down-level transpilation below ES2020
+which means that consumers who need to support older browsers (such as those that only support up to ES6) are responsible for transpiling down the Fluent UI
 library to fit their needs. This ensures that consumers who support modern browsers are not penalized and can get the added benefit of a reduced bundle size that
 the latest ES standards provide.
 
 ## Polyfills
 
-FluentUI will not be providing polyfills for features we expect our full browser support matrix to already support.
-The only instance that a polyfill may be provided is when FluentUI's use of a feature causes an application to crash on
+By default Fluent UI will not be providing polyfills for features we expect our full browser support matrix to already support.
+The only instance that a polyfill may be provided is when Fluent UI's use of a feature causes an application to crash on
 the partial support browser matrix. Other than that, consumers will need to implement their own polyfills or use a third party one for their
 applications. Handling polyfills on the application level ensures that those on modern browsers don't suffer from unnecessary overhead of
-polyfills being shipped with the FluentUI library by default; as well as prevents any unintended polyfill duplication from the library and app level.
+polyfills being shipped with the Fluent UI library by default; as well as prevents any unintended polyfill duplication from the library and app level.
 This also gives consumers the flexibility to provide robust solutions such as shipping a bundle with the necessary polyfills to support older browsers and one with a lighter,
 polyfill-free bundle to support modern browsers.
 
@@ -89,20 +89,20 @@ polyfill-free bundle to support modern browsers.
 
 **Consumer Expectations:**
 
-1. Consumers will need to perform down-level transpilation of the FluentUI library should they need to support browsers that fall below the full support matrix.
+1. Consumers will need to perform down-level transpilation of the Fluent UI library should they need to support browsers that fall below the full support matrix.
 2. Consumers will need to work around browser, ECMAScript and CSS feature gaps caused by needing to support browsers that fall below the full support matrix.
 
 **Developer Expectations:**
 
-1. FluentUI developers and contributors are internally expected to develop against the partial browser support matrix.
+1. Fluent UI developers and contributors are internally expected to develop against the partial browser support matrix.
    This means that no code which causes applications to crash on the partially supported browsers (with the exception of ES syntax which are transpilable by the consumer)
-   should be present in the library. Should any application breaking errors be discovered in the future, FluentUI will be responsible for fixing it internally.
-2. FluentUI developers and contributors reserve the right to use features that fall in between the partial and full browser support matrices (like flex gap) as
+   should be present in the library. Should any application breaking errors be discovered in the future, Fluent UI will be responsible for fixing it internally.
+2. Fluent UI developers and contributors reserve the right to use features that fall in between the partial and full browser support matrices (like flex gap) as
    long as they don't result in applications crashing.
 
 ## Browser Support Going Forward
 
-With an eye towards being a modern library, FluentUI will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace
+With an eye towards being a modern library, Fluent UI will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace
 with the ever evolving ecosystem of the web. This will allow the team to utilize modern tools and improve overall engineering efficiency while also providing
-consumers with performance and bundlesize improvements. These yearly audits will give FluentUI a reasonable timeframe to evaluate, decide and give notice if browser support
+consumers with performance and bundlesize improvements. These yearly audits will give Fluent UI a reasonable timeframe to evaluate, decide and give notice if browser support
 changes are made.
