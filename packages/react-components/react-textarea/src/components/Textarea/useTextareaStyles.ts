@@ -254,7 +254,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
-    !disabled && rootStyles.invalidInteractive,
+    !disabled && invalid && rootStyles.invalidInteractive,
     state.root.className,
   );
 
