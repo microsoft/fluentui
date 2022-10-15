@@ -6,6 +6,7 @@ import bestPracticesMd from './ProgressBestPractices.md';
 export { Default } from './ProgressDefault.stories';
 export { Thickness } from './ProgressBarThickness.stories';
 export { Indeterminate } from './ProgressIndeterminate.stories';
+export { ValidationState } from './ProgressValidationState.stories';
 export { Max } from './ProgressMax.stories';
 
 export default {

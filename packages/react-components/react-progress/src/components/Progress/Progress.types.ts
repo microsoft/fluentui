@@ -33,6 +33,11 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
    * @default 'medium'
    */
   thickness?: 'medium' | 'large';
+
+  /**
+   * The status of the progress bar. Changes the color of the bar.
+   */
+  validationState?: 'success' | 'error';
 };
 
 /**
@@ -40,4 +45,4 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
  */
 export type ProgressState = ComponentState<ProgressSlots> &
   Required<Pick<ProgressProps, 'max' | 'thickness'>> &
-  Pick<ProgressProps, 'value'>;
+  Pick<ProgressProps, 'value' | 'validationState'>;
