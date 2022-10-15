@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { DefaultPalette } from '@fluentui/react';
 import { Button, makeStyles, Textarea, TextareaProps, shorthands, RadioGroup, Radio } from '@fluentui/react-components';
-import { createBrandVariants } from '../../../components/Theme/index';
+import { createBrandVariants } from '../../../components/Theme';
 
 import descriptionMd from './Description.md';
 import { Meta } from '@storybook/react';
