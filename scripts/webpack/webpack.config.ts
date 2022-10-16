@@ -13,10 +13,11 @@ import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
 const { paths } = config;
 const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
 
-const webpackConfig: webpack.Configuration = {
+const webpackConfig: webpack.Configuration &
+  Required<Pick<webpack.Configuration, 'plugins' | 'optimization'>> & { entry: Record<string, string | string[]> } = {
   name: 'client',
   target: 'web',
-  mode: config.compiler_mode,
+  mode: config.compiler_mode!,
   entry: {
     app: paths.docsSrc('index'),
   },
@@ -109,16 +110,17 @@ const webpackConfig: webpack.Configuration = {
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&
-      // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
-      // spam the log (note that build:docs is the resolved command used by lerna run build --stream)
-      !process.env.TF_BUILD &&
-      !process.argv.includes('build:docs') &&
-      new webpack.ProgressPlugin({
-        entries: true,
-        modules: true,
-        modulesCount: 500,
-      } as any),
-  ].filter(Boolean),
+    // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
+    // spam the log (note that build:docs is the resolved command used by lerna run build --stream)
+    !process.env.TF_BUILD &&
+    !process.argv.includes('build:docs')
+      ? new webpack.ProgressPlugin({
+          entries: true,
+          modules: true,
+          modulesCount: 500,
+        })
+      : null,
+  ].filter(Boolean) as webpack.WebpackPluginInstance[],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
@@ -165,8 +167,9 @@ if (__DEV__) {
     },
     (val, key) => `&${key}=${val}`,
   ).join('')}`;
-  const entry = webpackConfig.entry as webpack.EntryObject;
-  entry.app = [webpackHotMiddlewareEntry].concat(entry.app as string);
+  const entry = webpackConfig.entry;
+
+  entry.app = [webpackHotMiddlewareEntry].concat(entry.app);
 
   webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
 }

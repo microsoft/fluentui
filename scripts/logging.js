@@ -3,10 +3,22 @@ const chalk = require('chalk');
 const isProduction = process.argv.indexOf('--production') > -1;
 const isVerbose = process.argv.indexOf('--verbose') > -1;
 
+/**
+ *
+ * @param {string} packageName
+ * @param {string} task
+ */
 module.exports.logStartTask = (packageName, task) => {
   console.log(`${getTimePrefix(packageName)} Starting: ${chalk.cyan(task)}`);
 };
 
+/**
+ *
+ * @param {string} packageName
+ * @param {string} task
+ * @param {number} startTime
+ * @param {string} errorMessage
+ */
 module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
   console.log(
     `${getTimePrefix(packageName)} ${getPassFail(errorMessage === undefined)}: ${chalk.cyan(task)} (${getDuration(
@@ -15,12 +27,22 @@ module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
   );
 };
 
+/**
+ *
+ * @param {unknown} taskStatus
+ */
 module.exports.logStatus = taskStatus => {
   if (isProduction || isVerbose) {
     console.log('  ' + taskStatus);
   }
 };
 
+/**
+ *
+ * @param {string} packageName
+ * @param {boolean} passed
+ * @param {number} startTime
+ */
 module.exports.logEndBuild = (packageName, passed, startTime) => {
   console.log();
   console.log(
@@ -43,19 +65,40 @@ module.exports.logEndBuild = (packageName, passed, startTime) => {
   );
 };
 
+/**
+ *
+ * @param {number} startTime
+ * @returns
+ */
 function getDuration(startTime) {
   let duration = new Date().getTime() - startTime;
 
   return chalk.yellow(formatTime(duration));
 }
+
+/**
+ *
+ * @param {boolean} passed
+ * @returns
+ */
 function getPassFail(passed) {
   return passed ? chalk.green('Pass') : chalk.red('Error');
 }
 
+/**
+ *
+ * @param {string} packageName
+ * @returns
+ */
 function getTimePrefix(packageName) {
   return `[${chalk.magenta(packageName)} ${chalk.gray(new Date().toLocaleTimeString([], { hour12: false }))}]`;
 }
 
+/**
+ *
+ * @param {number} milliseconds
+ * @returns
+ */
 function formatTime(milliseconds) {
   if (milliseconds >= 1000) {
     return milliseconds / 1000 + 's';

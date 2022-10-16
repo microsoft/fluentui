@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove border in hover/pressed state of primary SplitButton.",
-  "packageName": "@fluentui/react",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,5 +1,5 @@
 import { TestOptions } from '../utils/testOptions';
-import { SelectorTreeNode } from '../tree/RandomSelectorTreeNode';
+import { SelectorTreeNode } from '../tree/types';
 import { DOMSelectorTreeComponentRenderer } from './types';
 import { renderVanillaTree } from './VanillaTree';
 

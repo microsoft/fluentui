@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Tooltip should not hide if an element inside it gets focused.",
-  "packageName": "@fluentui/react",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}

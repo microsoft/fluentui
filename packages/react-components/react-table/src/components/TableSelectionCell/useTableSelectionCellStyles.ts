@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots> = {
   root: 'fui-TableSelectionCell',
@@ -46,6 +47,16 @@ const useStyles = makeStyles({
     },
   },
 
+  subtle: {
+    opacity: 0,
+    ...createCustomFocusIndicatorStyle(
+      {
+        opacity: 1,
+      },
+      { selector: 'focus-within' },
+    ),
+  },
+
   hidden: {
     visibility: 'hidden',
   },
@@ -64,6 +75,8 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
     tableSelectionCellClassNames.root,
     styles.root,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.subtle && state.checked === false && styles.subtle,
+    state.hidden && styles.hidden,
     state.root.className,
   );
   if (state.checkboxIndicator) {
@@ -77,7 +90,6 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
     state.radioIndicator.className = mergeClasses(
       tableSelectionCellClassNames.radioIndicator,
       styles.radioIndicator,
-      state.checked === false && styles.hidden,
       state.radioIndicator.className,
     );
   }

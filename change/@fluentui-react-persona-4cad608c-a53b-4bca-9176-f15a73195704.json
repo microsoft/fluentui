@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Add unit and conformance tests.",
-  "packageName": "@fluentui/react-persona",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

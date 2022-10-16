@@ -16,7 +16,7 @@ import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-compo
 
 Example Card usage:
 
-![example of a Card component in usage](./assets/card-example.png)
+![example of a Card component in usage](./docs/assets/card-example.png)
 
 ```jsx
 import { Share16Regular, ArrowReply16Regular } from '@fluentui/react-icons';

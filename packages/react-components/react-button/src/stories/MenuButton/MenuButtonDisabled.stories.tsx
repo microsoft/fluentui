@@ -1,9 +1,18 @@
 import * as React from 'react';
-import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { makeStyles, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
 export const Disabled = () => {
+  const styles = useStyles();
+
   return (
-    <>
+    <div className={styles.wrapper}>
       <Menu>
         <MenuTrigger>
           <MenuButton>Enabled state</MenuButton>
@@ -40,7 +49,7 @@ export const Disabled = () => {
           </MenuList>
         </MenuPopover>
       </Menu>
-    </>
+    </div>
   );
 };
 

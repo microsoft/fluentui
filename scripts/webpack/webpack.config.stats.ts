@@ -15,18 +15,19 @@ const { paths } = config;
 // ERROR:    https://github.com/webpack/webpack/issues/7378
 // HACK FIX: https://github.com/TypeStrong/ts-loader/issues/653
 class IgnoreNotFoundExportPlugin {
-  apply(compiler) {
+  apply(compiler: webpack.Compiler) {
     const messageRegExp = /export '.*'( \(reexported as '.*'\))? was not found in/;
 
-    const doneHook = stats => {
+    const doneHook = (stats: any) => {
       stats.compilation.warnings = stats.compilation.warnings.filter(
-        warn => !(warn && messageRegExp.test(warn.message)),
+        (warn: any) => !(warn && messageRegExp.test(warn.message)),
       );
     };
 
     if (compiler.hooks) {
       compiler.hooks.done.tap('IgnoreNotFoundExportPlugin', doneHook);
     } else {
+      // @ts-expect-error - TODO: this api is non existent thus this probably doesn't work anymore ?
       compiler.plugin('done', doneHook);
     }
   }
@@ -60,23 +61,25 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     react: 'react',
     'react-dom': 'reactDOM',
   },
-  ...(argv.debug && {
-    optimization: {
-      minimizer: [
-        new TerserWebpackPlugin({
-          parallel: true,
-          terserOptions: {
-            mangle: false,
-            output: {
-              beautify: true,
-              comments: true,
-              preserve_annotations: true,
-            },
-          },
-        }),
-      ],
-    },
-  }),
+  ...(argv.debug
+    ? {
+        optimization: {
+          minimizer: [
+            new TerserWebpackPlugin({
+              parallel: true,
+              terserOptions: {
+                mangle: false,
+                output: {
+                  beautify: true,
+                  comments: true,
+                  preserve_annotations: true,
+                },
+              },
+            }),
+          ],
+        },
+      }
+    : null),
   plugins: [
     new CleanWebpackPlugin(),
     new IgnoreNotFoundExportPlugin(),
@@ -94,7 +97,7 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
   },
 });
 
-const toEsDistPath = srcPath => {
+const toEsDistPath = (srcPath: string) => {
   return paths.packageDist('react-northstar', path.join('es', srcPath));
 };
 

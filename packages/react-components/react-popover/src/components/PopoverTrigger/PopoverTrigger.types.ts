@@ -5,7 +5,13 @@ import * as React from 'react';
 /**
  * PopoverTrigger Props
  */
-export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps>;
+export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps> & {
+  /**
+   * Disables internal trigger mechanism that ensures a child provided will be a compliant ARIA button.
+   * @default false
+   */
+  disableButtonEnhancement?: boolean;
+};
 
 /**
  * PopoverTrigger State
