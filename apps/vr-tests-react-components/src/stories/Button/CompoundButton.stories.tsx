@@ -2,15 +2,15 @@ import * as React from 'react';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, RTL } from '../../utilities';
-import { buttonId, useStyles, ButtonDecorator } from './utils';
+import { getStoryVariant, withScreenerSteps, RTL } from '../../utilities';
+import { buttonId, steps, useStyles } from './utils';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default {
   title: 'CompoundButton Converged',
   component: CompoundButton,
-  decorators: [ButtonDecorator],
+  decorators: [story => withScreenerSteps({ story, steps })],
 } as ComponentMeta<typeof CompoundButton>;
 
 export const Outline = () => (

@@ -2,15 +2,15 @@ import * as React from 'react';
 import { ToggleButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
-import { buttonId, useStyles, ButtonDecorator } from './utils';
+import { getStoryVariant, withScreenerSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { buttonId, steps, useStyles } from './utils';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default {
   title: 'ToggleButton Converged',
   component: ToggleButton,
-  decorators: [ButtonDecorator],
+  decorators: [story => withScreenerSteps({ story, steps })],
 } as ComponentMeta<typeof ToggleButton>;
 
 export const Default = () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>;
