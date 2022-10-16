@@ -53,13 +53,8 @@ setAddon({
   },
 });
 
-export const parameters = { layout: 'none' };
-
-export const decorators = [
-  /** @type {import("@storybook/csf").DecoratorFunction} */ story => (
-    <FluentProvider theme={webLightTheme}>{story()}</FluentProvider>
-  ),
-];
+/** @type {import("@fluentui/react-storybook-addon").FluentParameters} */
+export const parameters = { layout: 'none', mode: 'vr-test' };
 
 // For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
 if (typeof window === 'object') {

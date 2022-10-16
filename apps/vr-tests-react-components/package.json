@@ -43,6 +43,7 @@
     "@fluentui/react-slider": "^9.0.8",
     "@fluentui/react-spinner": "^9.0.8",
     "@fluentui/react-spinbutton": "^9.0.5",
+    "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
     "@fluentui/react-switch": "^9.0.9",
     "@fluentui/react-tabs": "^9.0.9",
     "@fluentui/react-table": "9.0.0-alpha.7",
