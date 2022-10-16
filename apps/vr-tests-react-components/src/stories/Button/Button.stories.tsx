@@ -19,6 +19,14 @@ export const DefaultRTL = getStoryVariant(Default, RTL);
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
 export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 
+export const AsAnAnchor = () => (
+  <Button id={buttonId} as="a" href="#">
+    Hello, world
+  </Button>
+);
+
+AsAnAnchor.storyName = 'As an anchor';
+
 export const Circular = () => (
   <Button id={buttonId} shape="circular">
     Hello, world
