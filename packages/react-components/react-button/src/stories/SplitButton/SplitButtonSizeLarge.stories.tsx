@@ -1,17 +1,35 @@
 import * as React from 'react';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton, Tooltip } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
+  Tooltip,
+} from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
 export const SizeLarge = () => {
   const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
     HTMLButtonElement | HTMLAnchorElement | null
   >(null);
 
+  const styles = useStyles();
+
   return (
-    <>
+    <div className={styles.wrapper}>
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
@@ -71,7 +89,7 @@ export const SizeLarge = () => {
           </MenuList>
         </MenuPopover>
       </Menu>
-    </>
+    </div>
   );
 };
 

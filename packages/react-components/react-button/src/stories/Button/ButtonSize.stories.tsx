@@ -1,17 +1,27 @@
 import * as React from 'react';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { Button, Tooltip } from '@fluentui/react-components';
+import { makeStyles, Button, Tooltip } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  innerWrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+  outerWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
+  },
+});
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export const Size = () => {
-  const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
-  const headerStyles: React.CSSProperties = { width: '100%', margin: 0 };
+  const styles = useStyles();
 
   return (
-    <>
-      <div style={groupStyles}>
-        <h4 style={headerStyles}>small</h4>
+    <div className={styles.outerWrapper}>
+      <div className={styles.innerWrapper}>
         <Button size="small">Small</Button>
         <Button size="small" icon={<CalendarMonth />}>
           Small with calendar icon
@@ -20,16 +30,14 @@ export const Size = () => {
           <Button size="small" icon={<CalendarMonth />} />
         </Tooltip>
       </div>
-      <div style={groupStyles}>
-        <h4 style={headerStyles}>medium</h4>
+      <div className={styles.innerWrapper}>
         <Button>Medium</Button>
         <Button icon={<CalendarMonth />}>Medium with calendar icon</Button>
         <Tooltip content="Medium with calendar icon only" relationship="label">
           <Button icon={<CalendarMonth />} />
         </Tooltip>
       </div>
-      <div style={groupStyles}>
-        <h4 style={headerStyles}>large</h4>
+      <div className={styles.innerWrapper}>
         <Button size="large">Large</Button>
         <Button size="large" icon={<CalendarMonth />}>
           Large with calendar icon
@@ -38,7 +46,7 @@ export const Size = () => {
           <Button size="large" icon={<CalendarMonth />} />
         </Tooltip>
       </div>
-    </>
+    </div>
   );
 };
 Size.parameters = {

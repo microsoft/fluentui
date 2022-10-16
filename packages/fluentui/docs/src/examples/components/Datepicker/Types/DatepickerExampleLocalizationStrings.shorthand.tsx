@@ -19,7 +19,6 @@ const DatepickerExampleLocalizationStrings = () => {
       'نوفمبر',
       'ديسمبر',
     ],
-    goToToday: 'اليوم',
     openCalendarTitle: 'تقويم مفتوح',
     inputPlaceholder: 'حدد التاريخ',
     weekNumberFormatString: 'رقم الأسبوع',

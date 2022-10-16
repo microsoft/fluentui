@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: update ie11 support in fluent v8 readme",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "none"
-}
