@@ -28,7 +28,7 @@ are poised to experience the full performance and bundlesize benefits that these
 | >=14.5        | >=84               | >=16    |
 
 Fluent UI will ensure that no browser or CSS features that are incompatible with the support matrix laid out above are introduced. The same goes for
-ECMAScript features, Fluent UI will be targetting ES2020 and thus will be shipping an ES2020 compliant bundle which will be fully compatible with the
+ECMAScript features, Fluent UI will be targeting ES2020 and thus will be shipping an ES2020 compliant code which will be fully compatible with the
 full browser support matrix. For consumers who require the use/support of older browsers, please see the partial support matrix and polyfill sections
 below for more information on what will need to be done.
 
@@ -63,7 +63,7 @@ List of features that are currently used in Fluent UI that aren't supported out 
 
 **Unsupported ECMAScript Features:**
 
-- As previously mentioned, Fluent UI will be targetting ES2020 as its Typescript target. Some ES2020 features are already present
+- As previously mentioned, Fluent UI will be targeting ES2020. Some ES2020 features are already present
   in the library and the partial support matrix does not fully support ES2020. This means that consumers who follow the partial support matrix or any browser versions below it
   will need to transpile down the Fluent UI library to make it work since the use of these ES2020 features results in the application crashing on the listed browsers below.
 
@@ -75,17 +75,20 @@ List of features that are currently used in Fluent UI that aren't supported out 
 By default Fluent UI will not be providing polyfills for features we expect our full browser support matrix to already support.
 The only instance that a polyfill may be provided is when Fluent UI's use of a feature causes an application to crash on
 the partial support browser matrix. Other than that, consumers will need to implement their own polyfills or use a third party one for their
-applications. Handling polyfills on the application level ensures that those on modern browsers don't suffer from unnecessary overhead of
-polyfills being shipped with the Fluent UI library by default; as well as prevents any unintended polyfill duplication from the library and app level.
-This also gives consumers the flexibility to provide robust solutions such as shipping a bundle with the necessary polyfills to support older browsers and one with a lighter,
-polyfill-free bundle to support modern browsers.
+applications because:
+
+- handling polyfills on the application level ensures that those on modern browsers don't suffer from unnecessary overhead of
+  polyfills being shipped with the Fluent UI library by default
+- prevents any unintended polyfill duplication from the library and app level
+- gives consumers the flexibility to provide robust solutions such as shipping a bundle with the necessary polyfills to support older browsers and one with a lighter,
+  polyfill-free bundle to support modern browsers
 
 ## Developer Expectations:
 
 1. Fluent UI developers and contributors are internally expected to develop against the partial browser support matrix.
    This means that no code which causes applications to crash on the partially supported browsers (with the exception of ES syntax which are transpilable by the consumer)
    should be present in the library. Should any application breaking errors be discovered in the future, Fluent UI will be responsible for fixing it internally.
-2. Since Fluent UI will be transpiling down and shipping an ES2020 bundle, Fluent UI developers will internally develop against the latest ES standards.
+2. Since Fluent UI will be transpiling down and shipping ES2020 code, Fluent UI developers will internally develop against the latest ECMA standards.
 3. Fluent UI developers and contributors reserve the right to use features that fall in between the partial and full browser support matrices (like flex gap) as
    long as they don't result in applications crashing.
 
