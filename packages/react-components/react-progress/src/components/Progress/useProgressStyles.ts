@@ -26,6 +26,14 @@ const indeterminateProgress = {
     left: '100%',
   },
 };
+const indeterminateProgressRTL = {
+  '100%': {
+    right: '-100%',
+  },
+  '0%': {
+    right: '100%',
+  },
+};
 
 /**
  * Styles for the root slot
@@ -34,11 +42,18 @@ const useRootStyles = makeStyles({
   root: {
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground6,
+    justifySelf: 'stretch',
     ...shorthands.overflow('hidden'),
 
     '@media screen and (forced-colors: active)': {
       ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
     },
+  },
+  rounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  rectangular: {
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
   },
   medium: {
     height: barThicknessValues.medium,
@@ -58,6 +73,7 @@ const useBarStyles = makeStyles({
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'Highlight',
     },
+    ...shorthands.borderRadius('inherit'),
   },
   medium: {
     height: barThicknessValues.medium,
@@ -85,7 +101,7 @@ const useBarStyles = makeStyles({
   },
 
   rtl: {
-    animationDirection: 'reverse',
+    animationName: indeterminateProgressRTL,
   },
 });
 
@@ -93,7 +109,7 @@ const useBarStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { max, thickness, value } = state;
+  const { max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const { dir } = useFluent();
@@ -101,6 +117,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   state.root.className = mergeClasses(
     progressClassNames.root,
     rootStyles.root,
+    rootStyles[shape],
     rootStyles[thickness],
     state.root.className,
   );

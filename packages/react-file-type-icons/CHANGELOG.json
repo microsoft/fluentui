@@ -2,6 +2,57 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 07:43:11 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.11",
+      "version": "8.7.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.8.1",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Oct 2022 07:39:53 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.10",
+      "version": "8.7.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "7faa9b03fcd97ff7bc834adcf6eee230ff8cd43b",
+            "comment": "Fixing mapping for Stream video icon and updating URL to the Fabric CDN."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:24 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.9",
+      "version": "8.7.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.8.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:52 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.7.8",
       "version": "8.7.8",

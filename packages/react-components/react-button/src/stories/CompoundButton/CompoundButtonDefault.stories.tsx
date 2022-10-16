@@ -5,10 +5,8 @@ import type { CompoundButtonProps } from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-export const Default = (props: CompoundButtonProps) => {
-  return (
-    <CompoundButton icon={<CalendarMonth />} secondaryContent="Secondary content" {...props}>
-      Example
-    </CompoundButton>
-  );
-};
+export const Default = (props: CompoundButtonProps) => (
+  <CompoundButton icon={<CalendarMonth />} secondaryContent="Secondary content" {...props}>
+    Example
+  </CompoundButton>
+);

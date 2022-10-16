@@ -43,6 +43,7 @@
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
+      "@fluentui/react-migration-v8-v9": ["packages/react-migration-v8-v9/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/src/index.ts"],
       "@fluentui/react-popover": ["packages/react-components/react-popover/src/index.ts"],
@@ -70,6 +71,7 @@
       "@fluentui/react-theme-sass": ["packages/react-components/react-theme-sass/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],
+      "@fluentui/react-tree": ["packages/react-components/react-tree/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"]
     }

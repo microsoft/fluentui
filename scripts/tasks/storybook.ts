@@ -1,9 +1,14 @@
 import { argv } from 'just-scripts';
 import * as fs from 'fs';
 import * as path from 'path';
-import { findGitRoot } from '../monorepo/index';
+import { findGitRoot } from '../monorepo';
 
-import storybook from '@storybook/react/standalone';
+// TODO: this should be replaced with `'@storybook/core-server';` API
+// @ts-ignore- standalone.js is basically private API/thus doesn't ship types. NOTE: Storybook can be run standalone from Node, although it should be noted this isn't officially supported any more. - https://github.com/storybookjs/storybook/blob/master/lib/core/docs/standalone.md#standalone-mode
+import _storybook from '@storybook/react/standalone';
+const storybook: StorybookStandaloneBuildFn = _storybook;
+
+type StorybookStandaloneBuildFn = (options?: StorybookDevOptions | StorybookStaticOptions) => Promise<void>;
 
 // Option types are documented here but not included in package for some reason
 // https://github.com/storybookjs/storybook/blob/master/lib/core/docs/standalone.md

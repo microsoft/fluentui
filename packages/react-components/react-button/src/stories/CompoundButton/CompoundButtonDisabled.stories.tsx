@@ -1,12 +1,24 @@
 import * as React from 'react';
-import { CompoundButton } from '@fluentui/react-components';
+import { makeStyles, CompoundButton } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  innerWrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+  outerWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
+  },
+});
 
 export const Disabled = () => {
-  const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
+  const styles = useStyles();
 
   return (
-    <>
-      <div style={groupStyles}>
+    <div className={styles.outerWrapper}>
+      <div className={styles.innerWrapper}>
         <CompoundButton secondaryContent="Secondary content">Enabled state</CompoundButton>
         <CompoundButton disabled secondaryContent="Secondary content">
           Disabled state
@@ -15,7 +27,7 @@ export const Disabled = () => {
           Disabled focusable state
         </CompoundButton>
       </div>
-      <div style={groupStyles}>
+      <div className={styles.innerWrapper}>
         <CompoundButton appearance="primary" secondaryContent="Secondary content">
           Enabled state
         </CompoundButton>
@@ -26,7 +38,7 @@ export const Disabled = () => {
           Disabled focusable state
         </CompoundButton>
       </div>
-    </>
+    </div>
   );
 };
 

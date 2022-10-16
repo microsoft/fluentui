@@ -132,9 +132,14 @@ export interface IHorizontalBarChartStyles {
   barWrapper: IStyle;
 
   /**
-   * Style for the chart data text.
+   * Style for left side text of the chart title
    */
-  chartDataText: IStyle;
+  chartTitleLeft: IStyle;
+
+  /**
+   * Style for right side text of the chart title
+   */
+  chartTitleRight: IStyle;
 
   /**
    * Style for the chart data text denominator.

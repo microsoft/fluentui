@@ -3,7 +3,7 @@ import * as glob from 'glob';
 import { sassTask } from 'just-scripts';
 import postcssModules from 'postcss-modules';
 
-const _fileNameToClassMap = {};
+const _fileNameToClassMap: Record<string, Record<string, string>> = {};
 
 function createTypeScriptModule(fileName: string, css: string) {
   const { splitStyles } = require('@microsoft/load-themed-styles');

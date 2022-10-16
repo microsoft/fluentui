@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Re-export Portal component and related bits",
-  "packageName": "@fluentui/react-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,23 +1,35 @@
 import * as React from 'react';
-import { CompoundButton } from '@fluentui/react-components';
+import { makeStyles, CompoundButton } from '@fluentui/react-components';
 
-export const Appearance = () => (
-  <>
-    <CompoundButton secondaryContent="Secondary content">Default</CompoundButton>
-    <CompoundButton secondaryContent="Secondary content" appearance="primary">
-      Primary
-    </CompoundButton>
-    <CompoundButton secondaryContent="Secondary content" appearance="outline">
-      Outline
-    </CompoundButton>
-    <CompoundButton secondaryContent="Secondary content" appearance="subtle">
-      Subtle
-    </CompoundButton>
-    <CompoundButton secondaryContent="Secondary content" appearance="transparent">
-      Transparent
-    </CompoundButton>
-  </>
-);
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
+
+export const Appearance = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <CompoundButton secondaryContent="Secondary content">Default</CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" appearance="primary">
+        Primary
+      </CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" appearance="outline">
+        Outline
+      </CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" appearance="subtle">
+        Subtle
+      </CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" appearance="transparent">
+        Transparent
+      </CompoundButton>
+    </div>
+  );
+};
+
 Appearance.parameters = {
   docs: {
     description: {

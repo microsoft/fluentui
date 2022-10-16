@@ -1,91 +1,111 @@
 import * as React from 'react';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
+} from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
 
-export const Appearance = () => (
-  <>
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Default</SplitButton>}
-      </MenuTrigger>
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+export const Appearance = () => {
+  const styles = useStyles();
 
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} appearance="primary">
-            Primary
-          </SplitButton>
-        )}
-      </MenuTrigger>
+  return (
+    <div className={styles.wrapper}>
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Default</SplitButton>}
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} appearance="outline">
-            Outline
-          </SplitButton>
-        )}
-      </MenuTrigger>
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} appearance="primary">
+              Primary
+            </SplitButton>
+          )}
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} appearance="subtle">
-            Subtle
-          </SplitButton>
-        )}
-      </MenuTrigger>
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} appearance="outline">
+              Outline
+            </SplitButton>
+          )}
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} appearance="transparent">
-            Transparent
-          </SplitButton>
-        )}
-      </MenuTrigger>
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} appearance="subtle">
+              Subtle
+            </SplitButton>
+          )}
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  </>
-);
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} appearance="transparent">
+              Transparent
+            </SplitButton>
+          )}
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
+  );
+};
+
 Appearance.parameters = {
   docs: {
     description: {

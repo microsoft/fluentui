@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
-import { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
+import type { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 
@@ -14,7 +14,7 @@ import { useARIAButtonProps } from '@fluentui/react-aria';
 export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTriggerState => {
   const isInsideSurfaceDialog = useDialogSurfaceContext_unstable();
 
-  const { children, action = isInsideSurfaceDialog ? 'close' : 'open' } = props;
+  const { children, disableButtonEnhancement = false, action = isInsideSurfaceDialog ? 'close' : 'open' } = props;
 
   const child = getTriggerChild(children);
 
@@ -35,17 +35,26 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
     },
   );
 
+  const triggerChildProps = {
+    ...child?.props,
+    'aria-haspopup': action === 'close' ? undefined : 'dialog',
+    ref: child?.ref,
+    onClick: handleClick,
+    ...triggerAttributes,
+  } as const;
+
+  const ariaButtonTriggerChildProps = useARIAButtonProps(
+    child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
+    {
+      ...triggerChildProps,
+      type: 'button',
+    },
+  );
+
   return {
     children: applyTriggerPropsToChildren(
       children,
-      useARIAButtonProps(child?.type === 'button' || child?.type === 'a' ? child.type : 'div', {
-        type: 'button',
-        ...child?.props,
-        'aria-haspopup': action === 'close' ? undefined : 'dialog',
-        ref: child?.ref,
-        onClick: handleClick,
-        ...triggerAttributes,
-      }),
+      disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
     ),
   };
 };

@@ -33,6 +33,12 @@ export interface PackageJson {
   exports?: Record<string, string | Partial<{ types: string; import: string; require: string }>>;
 }
 
+export interface PackageJsonWithBeachball extends PackageJson {
+  beachball?: {
+    disallowedChangeTypes?: string[];
+  };
+}
+
 // ===============
 //  Type Utilities
 // ===============

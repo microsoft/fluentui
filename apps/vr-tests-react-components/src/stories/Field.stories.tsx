@@ -7,6 +7,7 @@ import {
   ComboboxField,
   InputField,
   InputFieldProps,
+  ProgressField,
   RadioGroupField,
   SelectField,
   SliderField,
@@ -27,6 +28,7 @@ const AllFields = (
       <CheckboxField label="Checkbox" {...props} />
       <ComboboxField label="Combo box field" {...props} />
       <InputField label="Input field" {...props} />
+      <ProgressField label="Progress field" {...props} />
       <RadioGroupField label="Radio group field" {...props}>
         <Radio label="Option one" />
         <Radio label="Option two" />

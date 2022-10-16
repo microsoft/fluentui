@@ -1,9 +1,19 @@
 import * as React from 'react';
-import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { makeStyles, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  wrapper: {
+    alignItems: 'center',
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
 export const Size = () => {
+  const styles = useStyles();
+
   return (
-    <>
+    <div className={styles.wrapper}>
       <Menu>
         <MenuTrigger>
           <MenuButton size="small">Size: small</MenuButton>
@@ -42,7 +52,7 @@ export const Size = () => {
           </MenuList>
         </MenuPopover>
       </Menu>
-    </>
+    </div>
   );
 };
 

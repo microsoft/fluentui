@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: DetailsList should collapse columns even with horizontal scroll, and the CustomColumns example should not hide all columns",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
