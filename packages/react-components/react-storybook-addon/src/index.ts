@@ -2,3 +2,4 @@ export type { FluentGlobals, FluentParameters, FluentStoryContext } from './hook
 export type { ThemeIds } from './theme';
 export { themes } from './theme';
 export { THEME_ID } from './constants';
+export { parameters } from './hooks';

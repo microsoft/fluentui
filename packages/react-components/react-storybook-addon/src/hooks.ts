@@ -28,3 +28,7 @@ export interface FluentParameters extends Parameters {
 export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
   return useStorybookGlobals();
 }
+
+export function parameters(options?: FluentParameters) {
+  return { dir: 'ltr', fluentTheme: 'web-light', mode: 'default', ...options };
+}
