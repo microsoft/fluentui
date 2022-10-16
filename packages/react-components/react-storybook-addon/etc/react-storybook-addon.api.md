@@ -34,15 +34,6 @@ export interface FluentStoryContext extends StoryContext {
 }
 
 // @public (undocumented)
-export const TEAMS_DARK = "teams-dark";
-
-// @public (undocumented)
-export const TEAMS_HIGH_CONTRAST = "teams-high-contrast";
-
-// @public (undocumented)
-export const TEAMS_LIGHT = "teams-light";
-
-// @public (undocumented)
 export const THEME_ID: "storybook/fluentui-react-addon/theme";
 
 // @public (undocumented)
@@ -70,12 +61,6 @@ export const themes: readonly [{
     readonly label: "Teams High Contrast";
     readonly theme: Theme;
 }];
-
-// @public (undocumented)
-export const WEB_DARK = "web-dark";
-
-// @public (undocumented)
-export const WEB_LIGHT = "web-light";
 
 // (No @packageDocumentation comment for this package)
 
