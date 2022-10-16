@@ -22,7 +22,7 @@ export interface FluentParameters extends Parameters_2 {
     // (undocumented)
     fluentTheme?: ThemeIds;
     // (undocumented)
-    isVrTest?: boolean;
+    mode?: 'default' | 'vr-test';
 }
 
 // @public (undocumented)
@@ -32,6 +32,13 @@ export interface FluentStoryContext extends StoryContext {
     // (undocumented)
     parameters: FluentParameters;
 }
+
+// @public (undocumented)
+export function parameters(options?: FluentParameters): {
+    dir: string;
+    fluentTheme: string;
+    mode: string;
+};
 
 // @public (undocumented)
 export const THEME_ID: "storybook/fluentui-react-addon/theme";
