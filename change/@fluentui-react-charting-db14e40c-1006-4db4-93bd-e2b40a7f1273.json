@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update d3-scale version to 4.0.0",
-  "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}

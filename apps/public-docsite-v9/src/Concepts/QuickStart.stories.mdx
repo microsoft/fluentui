@@ -41,3 +41,17 @@ import { Button } from '@fluentui/react-components';
 
 export default () => <Button appearance="primary">Get started</Button>;
 ```
+
+### Strict mode
+
+Strict mode is currently not supported. Plese remove any `React.StrictMode` wrappers from your app.
+
+#### SSR with Next.js
+
+To avoid hydration issues, disable strict mode in your app by adding the following configuration to your `next.config.js` file:
+
+```js
+module.exports = {
+  reactStrictMode: false,
+};
+```

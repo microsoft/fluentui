@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-shared-contexts",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Fluent UI React Contexts shared by multiple components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,12 +27,12 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.0",
+    "@fluentui/react-theme": "^9.1.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0"
+    "@types/react": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

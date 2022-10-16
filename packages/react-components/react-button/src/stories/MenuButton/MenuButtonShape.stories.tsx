@@ -1,48 +1,59 @@
 import * as React from 'react';
-import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { makeStyles, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
-export const Shape = () => (
-  <>
-    <Menu>
-      <MenuTrigger>
-        <MenuButton>Rounded</MenuButton>
-      </MenuTrigger>
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+export const Shape = () => {
+  const styles = useStyles();
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton shape="circular">Circular</MenuButton>
-      </MenuTrigger>
+  return (
+    <div className={styles.wrapper}>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton>Rounded</MenuButton>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton shape="square">Square</MenuButton>
-      </MenuTrigger>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton shape="circular">Circular</MenuButton>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  </>
-);
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+
+      <Menu>
+        <MenuTrigger>
+          <MenuButton shape="square">Square</MenuButton>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
+  );
+};
 
 Shape.parameters = {
   docs: {

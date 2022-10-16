@@ -1,13 +1,24 @@
 import * as React from 'react';
-import { ToggleButton } from '@fluentui/react-components';
+import { makeStyles, ToggleButton } from '@fluentui/react-components';
 
-export const Shape = () => (
-  <>
-    <ToggleButton>Rounded</ToggleButton>
-    <ToggleButton shape="circular">Circular</ToggleButton>
-    <ToggleButton shape="square">Square</ToggleButton>
-  </>
-);
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
+
+export const Shape = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton>Rounded</ToggleButton>
+      <ToggleButton shape="circular">Circular</ToggleButton>
+      <ToggleButton shape="square">Square</ToggleButton>
+    </div>
+  );
+};
 
 Shape.parameters = {
   docs: {

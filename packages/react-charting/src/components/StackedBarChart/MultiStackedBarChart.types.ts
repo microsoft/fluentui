@@ -169,6 +169,11 @@ export interface IMultiStackedBarChartStyles {
   chartTitle: IStyle;
 
   /**
+   * Style for left side text of the chart title
+   */
+  chartTitleLeft: IStyle;
+
+  /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
