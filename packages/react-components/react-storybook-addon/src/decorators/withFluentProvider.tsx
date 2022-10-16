@@ -22,7 +22,9 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
 
 export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
   const { globals, parameters } = context;
-  const { isVrTest } = parameters;
+  const { mode } = parameters;
+  const isVrTest = mode === 'vr-test';
+
   const globalTheme = getActiveFluentTheme(globals);
   const paramTheme = findTheme(parameters.fluentTheme);
   const { theme } = paramTheme ?? globalTheme;

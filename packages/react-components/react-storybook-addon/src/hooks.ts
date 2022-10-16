@@ -22,7 +22,7 @@ export interface FluentGlobals extends StorybookArgs {
 export interface FluentParameters extends Parameters {
   dir?: 'ltr' | 'rtl';
   fluentTheme?: ThemeIds;
-  isVrTest?: boolean;
+  mode?: 'default' | 'vr-test';
 }
 
 export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
