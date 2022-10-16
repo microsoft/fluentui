@@ -170,7 +170,7 @@ export const WithIconAfterContent = () => (
 
 WithIconAfterContent.storyName = 'With icon after content';
 
-// export const WithIconAfterContentRTL = getStoryVariant(WithIconAfterContent, RTL);
+export const WithIconAfterContentRTL = getStoryVariant(WithIconAfterContent, RTL);
 
 export const IconOnly = () => <Button id={buttonId} icon={<CalendarMonth />} />;
 
