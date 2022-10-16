@@ -4,6 +4,7 @@ const { loadWorkspaceAddon } = require('@fluentui/scripts/storybook');
 
 module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConfig} */ ({
   addons: [loadWorkspaceAddon('@fluentui/react-storybook-addon')],
+
   stories: ['../src/**/*.stories.tsx'],
   core: {
     builder: 'webpack5',
