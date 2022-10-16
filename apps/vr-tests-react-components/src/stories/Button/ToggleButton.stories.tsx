@@ -1,33 +1,16 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
 import { ToggleButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { makeStyles } from '@griffel/react';
 import { ComponentMeta } from '@storybook/react';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities/index';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { buttonId, useStyles, ButtonDecorator } from './utils';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
-
-const steps = new Screener.Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
-  .hover('#button-id')
-  .snapshot('hover', { cropTo: '.testWrapper' })
-  .mouseDown('#button-id')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
-  .end();
-
-const buttonId = 'button-id';
-
-const useStyles = makeStyles({
-  longText: {
-    width: '280px',
-  },
-});
 
 export default {
   title: 'ToggleButton Converged',
   component: ToggleButton,
-  decorators: [story => <Screener steps={steps}>{story()}</Screener>],
+  decorators: [ButtonDecorator],
 } as ComponentMeta<typeof ToggleButton>;
 
 export const Default = () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>;

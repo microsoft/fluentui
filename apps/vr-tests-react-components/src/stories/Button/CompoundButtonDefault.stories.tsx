@@ -3,11 +3,10 @@ import Screener from 'screener-storybook/src/screener';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, RTL } from '../../utilities/index';
+import { getStoryVariant, RTL } from '../../utilities';
+import { buttonId } from './utils';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
-
-const buttonId = 'button-id';
 
 export default {
   title: 'CompoundButton Converged',

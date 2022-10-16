@@ -1,33 +1,16 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
 import { Button } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { makeStyles } from '@griffel/react';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities/index';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { buttonId, useStyles, ButtonDecorator } from './utils';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
-
-const steps = new Screener.Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
-  .hover('#button-id')
-  .snapshot('hover', { cropTo: '.testWrapper' })
-  .mouseDown('#button-id')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
-  .end();
-
-const buttonId = 'button-id';
-
-const useStyles = makeStyles({
-  longText: {
-    width: '280px',
-  },
-});
 
 export default {
   title: 'Button Converged',
   Component: Button,
-  decorators: [story => <Screener steps={steps}>{story()}</Screener>],
+  decorators: [ButtonDecorator],
 } as ComponentMeta<typeof Button>;
 
 export const Default = () => <Button id={buttonId}>Hello, world</Button>;
