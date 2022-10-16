@@ -105,7 +105,7 @@ export interface ILegend {
   shape?: LegendShape;
 
   /**
-   * Indicated whether of not to apply stripe pattern
+   * Indicated whether or not to apply stripe pattern
    */
   stripePattern?: boolean;
 

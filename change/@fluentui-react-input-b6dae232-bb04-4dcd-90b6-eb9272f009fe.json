@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove box-shadow from filled appearances.",
-  "packageName": "@fluentui/react-input",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     display: 'inline-block',
-    minWidth: '160px',
+    minWidth: '250px',
     position: 'relative',
 
     // windows high contrast mode focus indicator
@@ -38,10 +38,10 @@ const useStyles = makeStyles({
       left: '-1px',
       bottom: '-1px',
       right: '-1px',
-      height: `max(2px, ${tokens.borderRadiusMedium})`,
+      height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
       borderBottomLeftRadius: tokens.borderRadiusMedium,
       borderBottomRightRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderBottom('2px', 'solid', tokens.colorCompoundBrandStroke),
+      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
@@ -80,10 +80,12 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     boxSizing: 'border-box',
+    color: tokens.colorNeutralForeground1,
     columnGap: tokens.spacingHorizontalXXS,
+    cursor: 'pointer',
     display: 'grid',
     fontFamily: tokens.fontFamilyBase,
-    gridTemplateColumns: '1fr auto',
+    gridTemplateColumns: '[content] 1fr [icon] auto [end]',
     justifyContent: 'space-between',
     textAlign: 'left',
     width: '100%',
@@ -101,29 +103,54 @@ const useStyles = makeStyles({
   small: {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', tokens.spacingHorizontalSNudge),
+    ...shorthands.padding(
+      '3px',
+      tokens.spacingHorizontalSNudge,
+      '3px',
+      `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
   },
   medium: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', tokens.spacingHorizontalMNudge),
+    ...shorthands.padding(
+      '5px',
+      tokens.spacingHorizontalMNudge,
+      '5px',
+      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', tokens.spacingHorizontalM),
+    ...shorthands.padding(
+      '7px',
+      tokens.spacingHorizontalM,
+      '7px',
+      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
+    ),
   },
 
   // appearance variants
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
+
+    '&:hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
+
+    '&:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
     ...shorthands.borderRadius(0),
   },
   'filled-lighter': {
@@ -131,6 +158,16 @@ const useStyles = makeStyles({
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
+  },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
   },
 });
 
@@ -140,6 +177,8 @@ const useIconStyles = makeStyles({
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     fontSize: tokens.fontSizeBase500,
+    gridColumnStart: 'icon',
+    gridColumnEnd: 'end',
 
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
@@ -151,12 +190,15 @@ const useIconStyles = makeStyles({
   // icon size variants
   small: {
     fontSize: iconSizes.small,
+    marginLeft: tokens.spacingHorizontalXXS,
   },
   medium: {
     fontSize: iconSizes.medium,
+    marginLeft: tokens.spacingHorizontalXXS,
   },
   large: {
     fontSize: iconSizes.large,
+    marginLeft: tokens.spacingHorizontalSNudge,
   },
 });
 
@@ -165,10 +207,18 @@ const useIconStyles = makeStyles({
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
   const { appearance, open, placeholderVisible, size } = state;
+  const invalid = `${state.button['aria-invalid']}` === 'true';
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
-  state.root.className = mergeClasses(dropdownClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.root.className = mergeClasses(
+    dropdownClassNames.root,
+    styles.root,
+    styles[appearance],
+    invalid && appearance !== 'underline' && styles.invalid,
+    invalid && appearance === 'underline' && styles.invalidUnderline,
+    state.root.className,
+  );
 
   state.button.className = mergeClasses(
     dropdownClassNames.button,

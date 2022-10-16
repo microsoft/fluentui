@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add type=button to root slot ",
-  "packageName": "@fluentui/react-tabs",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

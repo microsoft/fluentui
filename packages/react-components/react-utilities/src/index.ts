@@ -1,4 +1,4 @@
-export { getSlots, resolveShorthand } from './compose/index';
+export { getSlots, resolveShorthand, isResolvedShorthand } from './compose/index';
 export type {
   ExtractSlotProps,
   ComponentProps,
@@ -41,6 +41,6 @@ export {
   shouldPreventDefaultOnKeyDown,
 } from './utils/index';
 
-export { applyTriggerPropsToChildren, getTriggerChild } from './trigger/index';
+export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';
 
-export type { FluentTriggerComponent } from './trigger/index';
+export type { FluentTriggerComponent, TriggerProps } from './trigger/index';

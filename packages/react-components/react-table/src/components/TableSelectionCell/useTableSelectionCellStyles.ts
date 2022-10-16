@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -9,22 +8,38 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
   radioIndicator: 'fui-TableSelectionCell__radioIndicator',
 };
 
+const useTableLayoutStyles = makeStyles({
+  root: {
+    display: 'table-cell',
+    width: '44px',
+  },
+});
+
+const useFlexLayoutStyles = makeStyles({
+  root: {
+    display: 'flex',
+    ...shorthands.flex(1, 1, '0px'),
+    minWidth: '44px',
+    maxWidth: '44px',
+    justifyContent: 'center',
+  },
+});
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
-    ...shorthands.flex(0, 1, '0px'),
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    ...shorthands.padding(0),
   },
 
   radioIndicator: {
     display: 'flex',
+    flexGrow: 1,
     alignItems: 'center',
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
+    justifyContent: 'center',
     '& svg': {
       width: '16px',
       height: '16px',
@@ -41,7 +56,16 @@ const useStyles = makeStyles({
  */
 export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellState): TableSelectionCellState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableSelectionCellClassNames.root, styles.root, state.root.className);
+  const layoutStyles = {
+    table: useTableLayoutStyles(),
+    flex: useFlexLayoutStyles(),
+  };
+  state.root.className = mergeClasses(
+    tableSelectionCellClassNames.root,
+    styles.root,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.root.className,
+  );
   if (state.checkboxIndicator) {
     state.checkboxIndicator.className = mergeClasses(
       tableSelectionCellClassNames.checkboxIndicator,

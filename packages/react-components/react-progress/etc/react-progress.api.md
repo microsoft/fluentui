@@ -18,15 +18,21 @@ export const Progress: ForwardRefComponent<ProgressProps>;
 export const progressClassNames: SlotClassNames<ProgressSlots>;
 
 // @public
-export type ProgressProps = ComponentProps<ProgressSlots> & {};
+export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
+    shape?: 'rounded' | 'rectangular';
+    value?: number;
+    max?: number;
+    thickness?: 'medium' | 'large';
+};
 
 // @public (undocumented)
 export type ProgressSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    bar?: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type ProgressState = ComponentState<ProgressSlots>;
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressProps, 'value'>;
 
 // @public
 export const renderProgress_unstable: (state: ProgressState) => JSX.Element;

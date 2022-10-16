@@ -1,6 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
-import { TableCellSlots, TableCellState } from '../TableCell/TableCell.types';
+import { TableCellSlots } from '../TableCell/TableCell.types';
+import { TableContextValue } from '../Table/Table.types';
 
 export type TableSelectionCellSlots = {
   /**
@@ -28,5 +29,5 @@ export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelection
  * State used in rendering TableSelectionCell
  */
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> &
-  Pick<TableCellState, 'media'> &
-  Pick<Required<TableSelectionCellProps>, 'type' | 'checked'>;
+  Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> &
+  Pick<TableContextValue, 'noNativeElements'>;

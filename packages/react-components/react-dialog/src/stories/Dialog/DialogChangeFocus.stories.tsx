@@ -1,8 +1,16 @@
 import * as React from 'react';
-import { Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody, DialogActions } from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogBody,
+  DialogActions,
+  Button,
+} from '@fluentui/react-components';
 
-export const CustomFocusedElementOnOpen = () => {
+export const ChangeFocus = () => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
@@ -15,26 +23,28 @@ export const CustomFocusedElementOnOpen = () => {
       <DialogTrigger>
         <Button>Open dialog</Button>
       </DialogTrigger>
-      <DialogSurface aria-label="label">
-        <DialogTitle>Dialog title</DialogTitle>
-        <DialogBody>This dialog focus on the second button instead of the first</DialogBody>
-        <DialogActions position="start">
-          <Button appearance="outline">Third Action</Button>
-        </DialogActions>
-        <DialogActions position="end">
-          <DialogTrigger>
-            <Button ref={buttonRef} appearance="secondary">
-              Close
-            </Button>
-          </DialogTrigger>
-          <Button appearance="primary">Do Something</Button>
-        </DialogActions>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>This dialog focus on the second button instead of the first</DialogContent>
+          <DialogActions position="start">
+            <Button appearance="outline">Third Action</Button>
+          </DialogActions>
+          <DialogActions position="end">
+            <DialogTrigger>
+              <Button ref={buttonRef} appearance="secondary">
+                Close
+              </Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogBody>
       </DialogSurface>
     </Dialog>
   );
 };
 
-CustomFocusedElementOnOpen.parameters = {
+ChangeFocus.parameters = {
   docs: {
     description: {
       story: 'Changing the default focused element can be done in an effect',

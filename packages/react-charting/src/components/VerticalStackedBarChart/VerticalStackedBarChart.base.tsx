@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
@@ -863,9 +863,10 @@ export class VerticalStackedBarChartBase extends React.Component<
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
     if (isNumeric) {
       const xMax = d3Max(this._dataset, (point: IDataPoint) => point.x as number)!;
+      const xMin = d3Min(this._dataset, (point: IDataPoint) => point.x as number)!;
 
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right! - this._barWidth]);
 

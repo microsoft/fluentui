@@ -64,7 +64,7 @@ export function getProgram(tsconfigPath: string) {
     services.set(tsconfigPath, ts.createLanguageService(servicesHost, ts.createDocumentRegistry()));
   }
 
-  return services.get(tsconfigPath).getProgram();
+  return services.get(tsconfigPath)?.getProgram();
 }
 
 export function loadFiles(filesToLoad: string[]): void {

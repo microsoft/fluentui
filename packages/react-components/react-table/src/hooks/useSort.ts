@@ -1,11 +1,34 @@
-import * as React from 'react';
-import { SortDirection } from '../components/Table/Table.types';
-import type { ColumnDefinition, ColumnId, SortStateInternal } from './types';
+import { useControllableState } from '@fluentui/react-utilities';
+import type { ColumnId, RowState, SortState, TableSortState, TableState, UseSortOptions } from './types';
 
-export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInternal<TItem> {
-  const [sorted, setSorted] = React.useState({
-    sortDirection: 'ascending' as SortDirection,
-    sortColumn: undefined as ColumnId | undefined,
+const noop = () => undefined;
+
+export const defaultTableSortState: TableSortState<unknown> = {
+  getSortDirection: () => 'ascending',
+  setColumnSort: noop,
+  sort: (rows: RowState<unknown>[]) => [...rows],
+  sortColumn: undefined,
+  sortDirection: 'ascending',
+  toggleColumnSort: noop,
+};
+
+export function useSort<TItem>(options: UseSortOptions) {
+  // False positive, these plugin hooks are intended to be run on every render
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return (tableState: TableState<TItem>) => useSortState(tableState, options);
+}
+
+export function useSortState<TItem>(tableState: TableState<TItem>, options: UseSortOptions): TableState<TItem> {
+  const { columns } = tableState;
+  const { sortState, defaultSortState, onSortChange } = options;
+
+  const [sorted, setSorted] = useControllableState<SortState>({
+    initialState: {
+      sortDirection: 'ascending' as const,
+      sortColumn: undefined,
+    },
+    defaultState: defaultSortState,
+    state: sortState,
   });
 
   const { sortColumn, sortDirection } = sorted;
@@ -19,35 +42,42 @@ export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInt
         newState.sortDirection = 'ascending';
       }
 
+      onSortChange?.(newState);
       return newState;
     });
   };
 
-  const setColumnSort: SortStateInternal<TItem>['setColumnSort'] = (nextSortColumn, nextSortDirection) => {
-    setSorted({ sortColumn: nextSortColumn, sortDirection: nextSortDirection });
+  const setColumnSort: TableSortState<TItem>['setColumnSort'] = (nextSortColumn, nextSortDirection) => {
+    const newState = { sortColumn: nextSortColumn, sortDirection: nextSortDirection };
+    onSortChange?.(newState);
+    setSorted(newState);
   };
 
-  const sort = (items: TItem[]) =>
-    items.slice().sort((a, b) => {
+  const sort = (rows: RowState<TItem>[]) => {
+    return rows.slice().sort((a, b) => {
       const sortColumnDef = columns.find(column => column.columnId === sortColumn);
       if (!sortColumnDef?.compare) {
         return 0;
       }
 
       const mod = sortDirection === 'ascending' ? 1 : -1;
-      return sortColumnDef.compare(a, b) * mod;
+      return sortColumnDef.compare(a.item, b.item) * mod;
     });
+  };
 
-  const getSortDirection: SortStateInternal<TItem>['getSortDirection'] = (columnId: ColumnId) => {
+  const getSortDirection: TableSortState<TItem>['getSortDirection'] = (columnId: ColumnId) => {
     return sortColumn === columnId ? sortDirection : undefined;
   };
 
   return {
-    sortColumn,
-    sortDirection,
-    sort,
-    setColumnSort,
-    toggleColumnSort,
-    getSortDirection,
+    ...tableState,
+    sort: {
+      sort,
+      sortColumn,
+      sortDirection,
+      setColumnSort,
+      toggleColumnSort,
+      getSortDirection,
+    },
   };
 }

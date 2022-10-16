@@ -89,17 +89,23 @@ export type MenuProps = ComponentProps<MenuSlots> &
   };
 
 export type MenuState = ComponentState<MenuSlots> &
-  Pick<
-    MenuProps,
-    | 'defaultCheckedValues'
-    | 'hasCheckmarks'
-    | 'hasIcons'
-    | 'inline'
-    | 'onOpenChange'
-    | 'openOnContext'
-    | 'persistOnItemClick'
-  > &
-  Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll'>> & {
+  Pick<MenuProps, 'onOpenChange' | 'defaultCheckedValues'> &
+  Required<
+    Pick<
+      MenuProps,
+      | 'hasCheckmarks'
+      | 'hasIcons'
+      | 'inline'
+      | 'checkedValues'
+      | 'onCheckedValueChange'
+      | 'open'
+      | 'openOnHover'
+      | 'closeOnScroll'
+      | 'hoverDelay'
+      | 'openOnContext'
+      | 'persistOnItemClick'
+    >
+  > & {
     /**
      * Anchors the popper to the mouse click for context events
      */
@@ -156,6 +162,8 @@ export type MenuOpenChangeData = {
   bubble?: boolean;
   /**
    * Indicates whether the change of state was a keyboard interaction
+   * @deprecated
+   * This should not be used, since `Enter`, `Space` and click should be interpreted as the same thing as a click
    */
   keyboard?: boolean;
   open: boolean;

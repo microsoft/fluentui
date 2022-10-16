@@ -9,8 +9,17 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition } from '../../hooks';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableSelectionCell,
+  TableCellLayout,
+} from '../..';
+import { useTable, ColumnDefinition, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
@@ -96,22 +105,31 @@ const columns: ColumnDefinition<Item>[] = [
 
 export const MultipleSelect = () => {
   const {
-    rows,
-    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
-  } = useTable({
-    columns,
-    items,
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-      selected: selection.isRowSelected(row.rowId),
-    }),
-  });
+    getRows,
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      useSelection({
+        selectionMode: 'multiselect',
+        defaultSelectedItems: new Set([0, 1]),
+      }),
+    ],
+  );
+
+  const rows = getRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
 
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
@@ -132,12 +150,27 @@ export const MultipleSelect = () => {
       </TableHeader>
       <TableBody ref={ref}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+          <TableRow
+            tabIndex={0}
+            key={item.file.label}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
+            aria-selected={selected}
+            appearance={selected ? 'brand' : 'none'}
+          >
             <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

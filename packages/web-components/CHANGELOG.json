@@ -2,6 +2,81 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 10 Oct 2022 07:38:23 GMT",
+      "tag": "@fluentui/web-components_v2.5.6",
+      "version": "2.5.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "337a32b1a4f2e82235e193e115666aee659c650c",
+            "comment": "chore: migrate to webpack5 and apply single version policy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:29 GMT",
+      "tag": "@fluentui/web-components_v2.5.6",
+      "version": "2.5.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d",
+            "comment": "Standardized focus treatment to use `outline` instead of a combination of `border` and `box-shadow`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Sep 2022 07:54:43 GMT",
+      "tag": "@fluentui/web-components_v2.5.5",
+      "version": "2.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "44bd582ade25f325c4707b75b94ab526fc657cb6",
+            "comment": "update fast-foundation to latest packages to resovle 24561"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:52 GMT",
+      "tag": "@fluentui/web-components_v2.5.4",
+      "version": "2.5.4",
+      "comments": {
+        "none": [
+          {
+            "author": "aelkholy248@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f68ec25042436f1fd33d8edb7ca82bd622b80d3",
+            "comment": "Fix typos in webpack integration instructions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 07:41:54 GMT",
+      "tag": "@fluentui/web-components_v2.5.4",
+      "version": "2.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9e86978c43db785ec3f40ee9e0bd35693e26189d",
+            "comment": "update FAST packages to resolve issues with form constraint validation on form associated elements"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Aug 2022 07:37:33 GMT",
       "tag": "@fluentui/web-components_v2.5.3",
       "version": "2.5.3",

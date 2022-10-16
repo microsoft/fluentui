@@ -2,6 +2,10 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+import { makeStyles } from '@griffel/react';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const steps = new Screener.Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
@@ -13,6 +17,12 @@ const steps = new Screener.Steps()
 
 const buttonId = 'button-id';
 
+const useStyles = makeStyles({
+  longText: {
+    width: '280px',
+  },
+});
+
 storiesOf('Button Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <Button id={buttonId}>Hello, world</Button>, {
@@ -20,6 +30,11 @@ storiesOf('Button Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
+  .addStory('As an anchor', () => (
+    <Button id={buttonId} as="a" href="#">
+      Hello, world
+    </Button>
+  ))
   .addStory('Circular', () => (
     <Button id={buttonId} shape="circular">
       Hello, world
@@ -118,19 +133,43 @@ storiesOf('Button Converged', module)
     { includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('Size small', () => (
-    <Button id={buttonId} icon="X" size="small">
+    <Button id={buttonId} icon={<CalendarMonth />} size="small">
       Hello, world
     </Button>
   ))
   .addStory('Size large', () => (
-    <Button id={buttonId} icon="X" size="large">
+    <Button id={buttonId} icon={<CalendarMonth />} size="large">
       Hello, world
     </Button>
   ))
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <Button id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="small">
+        Long text wraps after it hits the max width of the component
+      </Button>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <Button id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="medium">
+        Long text wraps after it hits the max width of the component
+      </Button>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <Button id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="large">
+        Long text wraps after it hits the max width of the component
+      </Button>
+    );
+  })
   .addStory(
     'With icon before content',
     () => (
-      <Button id={buttonId} icon="X">
+      <Button id={buttonId} icon={<CalendarMonth />}>
         Hello, world
       </Button>
     ),
@@ -141,14 +180,14 @@ storiesOf('Button Converged', module)
   .addStory(
     'With icon after content',
     () => (
-      <Button id={buttonId} icon="X" iconPosition="after">
+      <Button id={buttonId} icon={<CalendarMonth />} iconPosition="after">
         Hello, world
       </Button>
     ),
     { includeRtl: true },
   )
-  .addStory('Icon only', () => <Button id={buttonId} icon="X" />)
-  .addStory('Circular and icon only', () => <Button id={buttonId} shape="circular" icon="X" />, {
+  .addStory('Icon only', () => <Button id={buttonId} icon={<CalendarMonth />} />)
+  .addStory('Circular and icon only', () => <Button id={buttonId} shape="circular" icon={<CalendarMonth />} />, {
     includeRtl: true,
   });
 
@@ -179,7 +218,7 @@ storiesOf('CompoundButton Converged', module)
   .addStory(
     'With icon before content',
     () => (
-      <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X">
+      <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon={<CalendarMonth />}>
         Hello, world
       </CompoundButton>
     ),
@@ -188,7 +227,12 @@ storiesOf('CompoundButton Converged', module)
   .addStory(
     'With icon after content',
     () => (
-      <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X" iconPosition="after">
+      <CompoundButton
+        id={buttonId}
+        secondaryContent="This is some secondary text"
+        icon={<CalendarMonth />}
+        iconPosition="after"
+      >
         Hello, world
       </CompoundButton>
     ),
@@ -248,20 +292,65 @@ storiesOf('CompoundButton Converged', module)
     </CompoundButton>
   ))
   .addStory('Size small', () => (
-    <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X" size="small">
+    <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon={<CalendarMonth />} size="small">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Size large', () => (
-    <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X" size="large">
+    <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon={<CalendarMonth />} size="large">
       Hello, world
     </CompoundButton>
   ))
-
-  .addStory('Icon only', () => <CompoundButton id={buttonId} icon="X" />)
-  .addStory('Circular and icon only', () => <CompoundButton id={buttonId} shape="circular" icon="X" />, {
-    includeRtl: true,
-  });
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <CompoundButton
+        id={buttonId}
+        className={styles.longText}
+        secondaryContent="This is some secondary text"
+        icon={<CalendarMonth />}
+        size="small"
+      >
+        Long text wraps after it hits the max width of the component
+      </CompoundButton>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <CompoundButton
+        id={buttonId}
+        className={styles.longText}
+        secondaryContent="This is some secondary text"
+        icon={<CalendarMonth />}
+        size="medium"
+      >
+        Long text wraps after it hits the max width of the component
+      </CompoundButton>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <CompoundButton
+        id={buttonId}
+        className={styles.longText}
+        secondaryContent="This is some secondary text"
+        icon={<CalendarMonth />}
+        size="large"
+      >
+        Long text wraps after it hits the max width of the component
+      </CompoundButton>
+    );
+  })
+  .addStory('Icon only', () => <CompoundButton id={buttonId} icon={<CalendarMonth />} />)
+  .addStory(
+    'Circular and icon only',
+    () => <CompoundButton id={buttonId} shape="circular" icon={<CalendarMonth />} />,
+    {
+      includeRtl: true,
+    },
+  );
 
 storiesOf('ToggleButton Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
@@ -323,27 +412,51 @@ storiesOf('ToggleButton Converged', module)
     </ToggleButton>
   ))
   .addStory('Size small', () => (
-    <ToggleButton id={buttonId} icon="X" size="small">
+    <ToggleButton id={buttonId} icon={<CalendarMonth />} size="small">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Size large', () => (
-    <ToggleButton id={buttonId} icon="X" size="large">
+    <ToggleButton id={buttonId} icon={<CalendarMonth />} size="large">
       Hello, world
     </ToggleButton>
   ))
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <ToggleButton id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="small">
+        Long text wraps after it hits the max width of the component
+      </ToggleButton>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <ToggleButton id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="medium">
+        Long text wraps after it hits the max width of the component
+      </ToggleButton>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <ToggleButton id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="large">
+        Long text wraps after it hits the max width of the component
+      </ToggleButton>
+    );
+  })
   .addStory('With icon before content', () => (
-    <ToggleButton id={buttonId} icon="X">
+    <ToggleButton id={buttonId} icon={<CalendarMonth />}>
       Hello, world
     </ToggleButton>
   ))
   .addStory('With icon after content', () => (
-    <ToggleButton id={buttonId} icon="X" iconPosition="after">
+    <ToggleButton id={buttonId} icon={<CalendarMonth />} iconPosition="after">
       Hello, world
     </ToggleButton>
   ))
-  .addStory('Icon only', () => <ToggleButton id={buttonId} icon="X" />)
-  .addStory('Circular and icon only', () => <ToggleButton id={buttonId} shape="circular" icon="X" />)
+  .addStory('Icon only', () => <ToggleButton id={buttonId} icon={<CalendarMonth />} />)
+  .addStory('Circular and icon only', () => <ToggleButton id={buttonId} shape="circular" icon={<CalendarMonth />} />)
   .addStory('Checked', () => (
     <ToggleButton id={buttonId} checked>
       Hello, world
@@ -419,19 +532,43 @@ storiesOf('MenuButton Converged', module)
     </MenuButton>
   ))
   .addStory('Size small', () => (
-    <MenuButton id={buttonId} icon="X" size="small">
+    <MenuButton id={buttonId} icon={<CalendarMonth />} size="small">
       Hello, world
     </MenuButton>
   ))
   .addStory('Size large', () => (
-    <MenuButton id={buttonId} icon="X" size="large">
+    <MenuButton id={buttonId} icon={<CalendarMonth />} size="large">
       Hello, world
     </MenuButton>
   ))
+  .addStory('Size small - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <MenuButton id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="small">
+        Long text wraps after it hits the max width of the component
+      </MenuButton>
+    );
+  })
+  .addStory('Size medium - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <MenuButton id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="medium">
+        Long text wraps after it hits the max width of the component
+      </MenuButton>
+    );
+  })
+  .addStory('Size large - with long text wrapping', () => {
+    const styles = useStyles();
+    return (
+      <MenuButton id={buttonId} className={styles.longText} icon={<CalendarMonth />} size="large">
+        Long text wraps after it hits the max width of the component
+      </MenuButton>
+    );
+  })
   .addStory('With icon', () => (
-    <MenuButton id={buttonId} icon="X">
+    <MenuButton id={buttonId} icon={<CalendarMonth />}>
       Hello, world
     </MenuButton>
   ))
-  .addStory('Icon only', () => <MenuButton id={buttonId} icon="X" />)
-  .addStory('Circular and icon only', () => <MenuButton id={buttonId} shape="circular" icon="X" />);
+  .addStory('Icon only', () => <MenuButton id={buttonId} icon={<CalendarMonth />} />)
+  .addStory('Circular and icon only', () => <MenuButton id={buttonId} shape="circular" icon={<CalendarMonth />} />);

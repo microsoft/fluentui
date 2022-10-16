@@ -1,8 +1,83 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 03 Aug 2022 16:03:53 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 12:56:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.2.0)
+
+Thu, 13 Oct 2022 12:56:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.1.3..@fluentui/react-popover_v9.2.0)
+
+### Minor changes
+
+- feat: adds disableButtonEnhancement property on PopoverTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.1.3)
+
+Thu, 13 Oct 2022 11:02:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.1.2..@fluentui/react-popover_v9.1.3)
+
+### Patches
+
+- chore: improves PopoverTrigger types ([PR #25044](https://github.com/microsoft/fluentui/pull/25044) by bernardo.sunderhus@gmail.com)
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.2.2 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.4 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-portal to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-positioning to v9.2.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.1.2)
+
+Mon, 03 Oct 2022 22:24:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.1.1..@fluentui/react-popover_v9.1.2)
+
+### Patches
+
+- fix: update popover role to be note when it does not trap focus ([PR #24897](https://github.com/microsoft/fluentui/pull/24897) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-aria to v9.2.1 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-portal to v9.0.6 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.1.1)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.1.0..@fluentui/react-popover_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.4..@fluentui/react-popover_v9.1.0)
+
+### Minor changes
+
+- chore(react-popover): Updates trigger to use useARIAButton ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.3 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-portal to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-positioning to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+### Patches
+
+- fix: Allow PopoverSurface to trap focus when it's focusable. ([PR #24134](https://github.com/microsoft/fluentui/pull/24134) by esteban.230@hotmail.com)
+- bugfix: stops propagation on Escape keydown ([PR #24750](https://github.com/microsoft/fluentui/pull/24750) by bernardo.sunderhus@gmail.com)
+- fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- refactor: Replace useMergedEventCallbacks utility with mergeCallbacks ([PR #24152](https://github.com/microsoft/fluentui/pull/24152) by behowell@microsoft.com)
+- fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- chore: fix no-context-default-value lint violations ([PR #24276](https://github.com/microsoft/fluentui/pull/24276) by lingfangao@hotmail.com)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.4)
 

@@ -871,6 +871,19 @@ export class Button extends React_2.Component<IButtonProps, {}> {
 }
 
 // @public (undocumented)
+export const ButtonGlobalClassNames: {
+    msButton: string;
+    msButtonHasMenu: string;
+    msButtonIcon: string;
+    msButtonMenuIcon: string;
+    msButtonLabel: string;
+    msButtonDescription: string;
+    msButtonScreenReaderText: string;
+    msButtonFlexContainer: string;
+    msButtonTextContainer: string;
+};
+
+// @public (undocumented)
 export const ButtonGrid: React_2.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
@@ -1706,6 +1719,9 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
+export function getBasePickerStyles(props: IBasePickerStyleProps): IBasePickerStyles;
+
+// @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public (undocumented)
@@ -1793,6 +1809,9 @@ export function getFullColorString(color: IColor): string;
 
 export { getGlobalClassNames }
 
+// @public
+export const GetGroupCount: (groups: IGroup[] | undefined) => number;
+
 export { getHighContrastNoAdjustStyle }
 
 export { getIcon }
@@ -1866,6 +1885,12 @@ export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
 export { getParent }
 
+// @public (undocumented)
+export function getPeoplePickerItemStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles;
+
+// @public (undocumented)
+export function getPeoplePickerItemSuggestionStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeoplePickerItemSuggestionStyles;
+
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
@@ -1905,6 +1930,21 @@ export { getStartDateOfWeek }
 export function getSubmenuItems(item: IContextualMenuItem, options?: {
     target?: Target;
 }): IContextualMenuItem[] | undefined;
+
+// @public (undocumented)
+export function getSuggestionsItemStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemStyles;
+
+// @public (undocumented)
+export function getSuggestionsStyles(props: ISuggestionsStyleProps): ISuggestionsStyles;
+
+// @public (undocumented)
+export function getTagItemStyles(props: ITagItemStyleProps): ITagItemStyles;
+
+// @public (undocumented)
+export function getTagItemSuggestionStyles(props: ITagItemSuggestionStyleProps): ITagItemSuggestionStyles;
+
+// @public (undocumented)
+export function getTextFieldStyles(props: ITextFieldStyleProps): ITextFieldStyles;
 
 export { getTheme }
 
@@ -1971,6 +2011,9 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
     // (undocumented)
     render(): JSX.Element;
 }
+
+// @public
+export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListProps>;
 
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
@@ -2373,6 +2416,8 @@ export interface IBasePickerState<T> {
     selectionRemoved?: T;
     // (undocumented)
     suggestedDisplayValue?: string;
+    // (undocumented)
+    suggestionsExtendedLoading?: boolean;
     // (undocumented)
     suggestionsLoading?: boolean;
     // (undocumented)
@@ -2962,6 +3007,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React_2.RefAttrib
     firstWeekOfYear?: FirstWeekOfYear;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
+    id?: string;
     isDayPickerVisible?: boolean;
     isMonthPickerVisible?: boolean;
     maxDate?: Date;
@@ -4494,6 +4540,8 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsI
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     // (undocumented)
+    groupedListAs?: IComponentAs<IGroupedListProps>;
+    // (undocumented)
     onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
     // (undocumented)
     onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
@@ -5955,6 +6003,7 @@ export interface IGroupDividerProps {
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
     onGroupHeaderKeyUp?: (ev: React_2.KeyboardEvent<HTMLElement>, group?: IGroup) => void;
+    onRenderName?: IRenderFunction<IGroupHeaderProps>;
     onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
     onToggleCollapse?: (group: IGroup) => void;
     onToggleSelectGroup?: (group: IGroup) => void;
@@ -6692,6 +6741,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onPageRemoved?: (page: IPage<T>) => void;
     onPagesUpdated?: (pages: IPage<T>[]) => void;
     onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode;
+    onRenderCellConditional?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode | null;
     onRenderPage?: IRenderFunction<IPageProps<T>>;
     onRenderRoot?: IRenderFunction<IListOnRenderRootProps<T>>;
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
@@ -6934,6 +6984,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
+    popupProps?: IPopupProps;
     responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
@@ -7731,6 +7782,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     finalHeight?: number;
+    layerProps?: ILayerProps;
     minPagePadding?: number;
     offsetFromTarget?: number;
     onDismiss?: (ev?: any) => void;
@@ -8888,6 +8940,7 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
     forceResolveText?: string;
+    isExtendedLoading?: boolean;
     isLoading?: boolean;
     isMostRecentlyUsedVisible?: boolean;
     isResultsFooterVisible?: boolean;
@@ -9060,6 +9113,8 @@ export interface ITeachingBubbleProps extends React_2.RefAttributes<HTMLDivEleme
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
+    // (undocumented)
+    children?: React_2.ReactNode;
     componentRef?: IRefObject<ITeachingBubble>;
     focusTrapZoneProps?: IFocusTrapZoneProps;
     footerContent?: string | JSX.Element;
@@ -9557,6 +9612,12 @@ export interface IWithViewportProps {
 }
 
 // @public (undocumented)
+export interface IWithViewportState {
+    // (undocumented)
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
 export enum KeyboardSpinDirection {
     // (undocumented)
     down = -1,
@@ -9724,6 +9785,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     static defaultProps: {
         startIndex: number;
         onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
+        onRenderCellConditional: undefined;
         renderedWindowsAhead: number;
         renderedWindowsBehind: number;
     };
@@ -11313,6 +11375,11 @@ export { WindowProviderProps }
 // @public @deprecated (undocumented)
 export function withResponsiveMode<TProps extends {
     responsiveMode?: ResponsiveMode;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React_2.Component<TProps, TState>): any;
+
+// @public
+export function withViewport<TProps extends {
+    viewport?: IViewport;
 }, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React_2.Component<TProps, TState>): any;
 
 export { ZIndexes }

@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Wed, 03 Aug 2022 16:04:01 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:03:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.7)
+
+Thu, 13 Oct 2022 11:03:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.6..@fluentui/react-spinner_v9.0.7)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.6)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.5..@fluentui/react-spinner_v9.0.6)
+
+### Patches
+
+- Bump @fluentui/react-label to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.5)
+
+Thu, 15 Sep 2022 09:49:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.4..@fluentui/react-spinner_v9.0.5)
+
+### Patches
+
+- fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- (patch): Add line-height styling to Spinner ([PR #24643](https://github.com/microsoft/fluentui/pull/24643) by ololubek@microsoft.com)
+- fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- (chore): Remove appearance conditional from Spinner slot styling ([PR #24480](https://github.com/microsoft/fluentui/pull/24480) by ololubek@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-label to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.4)
 

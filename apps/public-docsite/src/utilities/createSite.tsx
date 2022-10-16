@@ -33,11 +33,9 @@ if (window.__siteConfig?.baseCDNUrl) {
 
 initializeIcons();
 
-const corePackageVersion: string = require<any>('office-ui-fabric-core/package.json').version;
+// blog storage is now immutable, so new versions of fabric-core will be at a new url based on the build number
 addCSSToHeader(
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
-    corePackageVersion +
-    '/css/fabric.min.css',
+  'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220825.001/office-ui-fabric-core/11.0.1/css/fabric.min.css',
 );
 
 let rootElement: HTMLElement;

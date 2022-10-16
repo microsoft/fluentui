@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Row and header interactive styles are separate",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

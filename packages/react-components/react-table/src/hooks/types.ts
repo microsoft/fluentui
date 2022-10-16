@@ -2,8 +2,12 @@ import { SortDirection } from '../components/Table/Table.types';
 
 export type RowId = string | number;
 export type ColumnId = string | number;
-export type GetRowIdInternal<TItem> = (rowId: TItem, index: number) => RowId;
 export type SelectionMode = 'single' | 'multiselect';
+
+export interface SortState {
+  sortColumn: ColumnId | undefined;
+  sortDirection: SortDirection;
+}
 
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
@@ -12,42 +16,9 @@ export interface ColumnDefinition<TItem> {
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,
-  state: { selection: SelectionState; sort: SortState },
 ) => TRowState;
 
-export interface SortStateInternal<TItem> {
-  sortDirection: SortDirection;
-  sortColumn: ColumnId | undefined;
-  setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
-  toggleColumnSort: (columnId: ColumnId) => void;
-  getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
-  /**
-   * Returns a sorted **shallow** copy of original items
-   */
-  sort: (items: TItem[]) => TItem[];
-}
-
-export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
-  columns: ColumnDefinition<TItem>[];
-  items: TItem[];
-  selectionMode?: SelectionMode;
-  getRowId?: (item: TItem) => RowId;
-  rowEnhancer?: RowEnhancer<TItem, TRowState>;
-}
-
-export interface SelectionStateInternal {
-  clearRows: () => void;
-  deselectRow: (rowId: RowId) => void;
-  selectRow: (rowId: RowId) => void;
-  toggleAllRows: () => void;
-  toggleRow: (rowId: RowId) => void;
-  isRowSelected: (rowId: RowId) => boolean;
-  selectedRows: Set<RowId>;
-  allRowsSelected: boolean;
-  someRowsSelected: boolean;
-}
-
-export interface SortState {
+export interface TableSortState<TItem> {
   /**
    * Current sort direction
    */
@@ -69,9 +40,14 @@ export interface SortState {
    * returns undefined if the column is not sorted
    */
   getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
+
+  /**
+   * Sorts rows and returns a **shallow** copy of original items
+   */
+  sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
 }
 
-export interface SelectionState {
+export interface TableSelectionState {
   /**
    * Clears all selected rows
    */
@@ -95,7 +71,7 @@ export interface SelectionState {
   /**
    * Collection of row ids corresponding to selected rows
    */
-  selectedRows: RowId[];
+  selectedRows: Set<RowId>;
   /**
    * Whether all rows are selected
    */
@@ -122,17 +98,66 @@ export interface RowState<TItem> {
   rowId: RowId;
 }
 
-export interface TableState<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
+export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
   /**
    * The row data for rendering
+   * @param rowEnhancer - Enhances the row with extra user data
    */
-  rows: TRowState[];
+  getRows: <TRowState extends RowState<TItem> = RowState<TItem>>(
+    rowEnhancer?: RowEnhancer<TItem, TRowState>,
+  ) => TRowState[];
   /**
    * State and actions to manage row selection
    */
-  selection: SelectionState;
+  selection: TableSelectionState;
   /**
    * State and actions to manage row sorting
    */
-  sort: SortState;
+  sort: TableSortState<TItem>;
+  /**
+   * Table columns
+   */
+  columns: ColumnDefinition<TItem>[];
 }
+
+export interface UseSortOptions {
+  /**
+   * Used to control sorting
+   */
+  sortState?: SortState;
+  /**
+   * Used in uncontrolled mode to set initial sort column and direction on mount
+   */
+  defaultSortState?: SortState;
+  /**
+   * Called when sort changes
+   */
+  onSortChange?: (state: SortState) => void;
+}
+
+export interface UseSelectionOptions {
+  /**
+   * Can be multi or single select
+   */
+  selectionMode: SelectionMode;
+  /**
+   * Used in uncontrolled mode to set initial selected rows on mount
+   */
+  defaultSelectedItems?: Set<RowId>;
+  /**
+   * Used to control row selection
+   */
+  selectedItems?: Set<RowId>;
+  /**
+   * Called when selection changes
+   */
+  onSelectionChange?: (selectedItems: Set<RowId>) => void;
+}
+
+export interface UseTableOptions<TItem> {
+  columns: ColumnDefinition<TItem>[];
+  items: TItem[];
+  getRowId?: (item: TItem) => RowId;
+}
+
+export type TableStatePlugin = <TItem>(tableState: TableState<TItem>) => TableState<TItem>;

@@ -6,12 +6,12 @@ const { __DEV__, __SKIP_ERRORS__ } = config.compiler_globals;
 
 const DEV_SKIP_ERRORS = __DEV__ && __SKIP_ERRORS__;
 
-const webpackPlugin = (webpackConfig, cb, onComplete = (err: any, stats: any) => {}) => {
+const webpackPlugin = (webpackConfig: any, cb: (errror?: any) => void, onComplete = (err: any, stats: any) => {}) => {
   webpack(webpackConfig).run((err, stats) => {
-    const { errors, warnings } = stats.toJson();
+    const { errors = [], warnings = [] } = stats?.toJson() ?? {};
     onComplete(err, stats);
 
-    log(stats.toString(config.compiler_stats));
+    log(stats?.toString(config.compiler_stats));
 
     if (err) {
       log('Webpack compiler encountered a fatal error.');

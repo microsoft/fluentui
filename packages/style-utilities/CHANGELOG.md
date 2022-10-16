@@ -1,8 +1,46 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 24 Aug 2022 16:36:04 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Oct 2022 07:38:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.8.0)
+
+Mon, 10 Oct 2022 07:38:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.12..@fluentui/style-utilities_v8.8.0)
+
+### Minor changes
+
+- Added export of utilities/index ([PR #25065](https://github.com/microsoft/fluentui/pull/25065) by gcox@microsoft.com)
+
+## [8.7.12](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.12)
+
+Fri, 02 Sep 2022 07:48:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.11..@fluentui/style-utilities_v8.7.12)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.16 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+- Bump @fluentui/utilities to v8.13.1 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+
+## [8.7.11](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.11)
+
+Thu, 01 Sep 2022 07:48:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.10..@fluentui/style-utilities_v8.7.11)
+
+### Patches
+
+- chore: Add radius option to getFocusStyles ([PR #24596](https://github.com/microsoft/fluentui/pull/24596) by mgodbolt@microsoft.com)
+
+## [8.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.10)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.9..@fluentui/style-utilities_v8.7.10)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.15 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/utilities to v8.13.0 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
 
 ## [8.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.9)
 

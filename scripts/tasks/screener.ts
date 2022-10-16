@@ -10,13 +10,19 @@ import { getStorybook } from '@storybook/react';
  */
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
-  const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
+  const getConfig = require(screenerConfigPath);
+  const screenerConfig: ScreenerRunnerConfig = getConfig({
+    screenerApiKey: process.env.SCREENER_API_KEY,
+    sourceBranchName: process.env.BUILD_SOURCEBRANCHNAME,
+    deployUrl: process.env.DEPLOYURL,
+    targetBranch: process.env.SYSYEM_PULLREQUEST_TARGETBRANCH,
+  });
   console.log('screener config for run:');
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
-    console.log(`screener-runner: skip build ${JSON.stringify(environment.screener.skipScreenerBuild)}`);
-    if (environment.screener.skipScreenerBuild !== 'true') {
+    console.log(`screener-runner: is artifact present ${JSON.stringify(environment.screener.isArtifactPresent)}`);
+    if (environment.screener.isArtifactPresent === 'true') {
       //Skipping "getScreenerStates()" if artifacts were not build
       console.log('Running screener test:');
       const screenerStates = await getScreenerStates(screenerConfig);

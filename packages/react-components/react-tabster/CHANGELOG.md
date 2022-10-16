@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 03 Aug 2022 16:04:04 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:03:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.3)
+
+Thu, 13 Oct 2022 11:03:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.1.2..@fluentui/react-tabster_v9.1.3)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.2)
+
+Mon, 03 Oct 2022 22:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.1.1..@fluentui/react-tabster_v9.1.2)
+
+### Patches
+
+- fix: focus outline selectors are data attributes ([PR #24994](https://github.com/microsoft/fluentui/pull/24994) by lingfangao@hotmail.com)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.1)
+
+Thu, 15 Sep 2022 09:49:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.1.0..@fluentui/react-tabster_v9.1.1)
+
+### Patches
+
+- fix: Remove provider classname from focus styles ([PR #24710](https://github.com/microsoft/fluentui/pull/24710) by lingfangao@hotmail.com)
+- fix: Bumps tabster to 2.1.2 and removes deep import for KeyborgCallback ([PR #24376](https://github.com/microsoft/fluentui/pull/24376) by lingfangao@hotmail.com)
+- chore: Exports `applyFocusVisible` as internal ([PR #24712](https://github.com/microsoft/fluentui/pull/24712) by lingfangao@hotmail.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.0)
 

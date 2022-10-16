@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: re-export GriffelRenderer type",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

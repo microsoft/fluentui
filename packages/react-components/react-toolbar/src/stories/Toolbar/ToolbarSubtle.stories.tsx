@@ -8,6 +8,8 @@ export const Subtle = (props: Partial<ToolbarProps>) => (
     <ToolbarButton appearance="subtle">Click me</ToolbarButton>
     <ToolbarButton appearance="subtle">Click me</ToolbarButton>
     <ToolbarDivider />
-    <ToolbarToggleButton appearance="subtle">Click me to Toggle</ToolbarToggleButton>
+    <ToolbarToggleButton name="toggle" value="toggle" appearance="subtle">
+      Click me to Toggle
+    </ToolbarToggleButton>
   </Toolbar>
 );

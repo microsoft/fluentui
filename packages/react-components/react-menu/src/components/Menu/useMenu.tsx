@@ -14,6 +14,7 @@ import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
+import { Tab } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render Menu.
@@ -24,8 +25,19 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps): MenuState => {
-  const triggerId = useId('menu');
   const isSubmenu = useIsSubmenu();
+  const {
+    hoverDelay = 500,
+    inline = false,
+    hasCheckmarks = false,
+    hasIcons = false,
+    closeOnScroll = false,
+    openOnContext = false,
+    persistOnItemClick = false,
+    openOnHover = isSubmenu,
+    defaultCheckedValues,
+  } = props;
+  const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const positioningState = {
@@ -59,33 +71,50 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   }
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
-  const initialState = {
-    hoverDelay: 500,
+  // TODO Better way to narrow types ?
+
+  const [open, setOpen] = useMenuOpenState({
+    hoverDelay,
+    isSubmenu,
+    setContextTarget,
+    closeOnScroll,
+    menuPopoverRef,
+    triggerRef,
+    open: props.open,
+    defaultOpen: props.defaultOpen,
+    onOpenChange: props.onOpenChange,
+    openOnContext,
+  });
+
+  const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
+    checkedValues: props.checkedValues,
+    defaultCheckedValues,
+    onCheckedValueChange: props.onCheckedValueChange,
+  });
+
+  return {
+    inline,
+    hoverDelay,
     triggerId,
-    isSubmenu: !!isSubmenu,
-    openOnHover: !!isSubmenu,
+    isSubmenu,
+    openOnHover,
     contextTarget,
     setContextTarget,
-    ...props,
-    closeOnScroll: props.closeOnScroll ?? false,
+    hasCheckmarks,
+    hasIcons,
+    closeOnScroll,
     menuTrigger,
     menuPopover,
     triggerRef,
     menuPopoverRef,
     components: {},
-  } as const;
-
-  // TODO Better way to narrow types ?
-
-  const [open, setOpen] = useMenuOpenState(initialState);
-  const [checkedValues, onCheckedValueChange] = useMenuSelectableState(initialState);
-
-  return {
-    ...initialState,
+    openOnContext,
     open,
     setOpen,
     checkedValues,
+    defaultCheckedValues,
     onCheckedValueChange,
+    persistOnItemClick,
   };
 };
 
@@ -125,6 +154,7 @@ const useMenuOpenState = (
     | 'triggerRef'
     | 'openOnContext'
     | 'closeOnScroll'
+    | 'hoverDelay'
   > &
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {
@@ -155,10 +185,12 @@ const useMenuOpenState = (
       state.setContextTarget(undefined);
     }
 
-    if (data.keyboard) {
+    if (e.type === 'keydown') {
       shouldHandleKeyboardRef.current = true;
-      shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
-      pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
+      if ((e as React.KeyboardEvent<HTMLElement>).key === Tab) {
+        shouldHandleTabRef.current = true;
+        pressedShiftRef.current = (e as React.KeyboardEvent<HTMLElement>).shiftKey;
+      }
     }
 
     if (data.bubble) {

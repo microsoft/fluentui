@@ -2,7 +2,7 @@
   "name": "@fluentui/public-docsite-v9",
   "version": "1.0.0",
   "private": true,
-  "description": "A collection of examples demonstrating how to upgrade from v8 to v9",
+  "description": "Fluent UI React v9 documentation",
   "scripts": {
     "build": "just-scripts build",
     "build-storybook": "build-storybook -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
@@ -21,13 +21,13 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.91.1",
+    "@fluentui/react": "^8.98.3",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.2.0",
+    "@fluentui/react-components": "^9.5.1",
     "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
-    "@fluentui/react-theme": "^9.0.0",
-    "@griffel/react": "^1.3.0",
+    "@fluentui/react-theme": "^9.1.0",
+    "@griffel/react": "^1.4.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"

@@ -1,16 +1,17 @@
-// @ts-check
-
 const fs = require('fs-extra');
 const path = require('path');
 const lernaAlias = require('lerna-alias');
 const findGitRoot = require('./findGitRoot');
 
-/** @type {import('./index').AllPackageInfo} */
+/** @type {import('./').AllPackageInfo} */
 let packageInfo;
+/**
+ * @type {string}
+ */
 let cwdForPackageInfo;
 
 /**
- * @returns {import('./index').AllPackageInfo}
+ * @returns {typeof packageInfo}
  */
 function getAllPackageInfo() {
   if (packageInfo && cwdForPackageInfo === process.cwd()) {

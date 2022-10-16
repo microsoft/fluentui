@@ -252,6 +252,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexDirection: 'row-reverse',
         alignItems: 'center',
         margin: '0 12px 0 8px',
+        // reset forced colors to browser control for inner actions
+        forcedColorAdjust: 'auto',
+        MsHighContrastAdjust: 'auto',
         selectors: {
           '& button:nth-child(n+2)': {
             marginLeft: 8,

@@ -2,6 +2,336 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Mon, 17 Oct 2022 07:49:17 GMT",
+      "tag": "@fluentui/cra-template_v8.4.12",
+      "version": "8.4.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.98.3",
+            "commit": "e14e5348f1f08aee8da7cb911a24a811d9f9cb09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Oct 2022 07:44:02 GMT",
+      "tag": "@fluentui/cra-template_v8.4.11",
+      "version": "8.4.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.98.2",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 07:45:27 GMT",
+      "tag": "@fluentui/cra-template_v8.4.10",
+      "version": "8.4.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.98.1",
+            "commit": "4f46035db0cd28a5987932120c68755e024869c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:24 GMT",
+      "tag": "@fluentui/cra-template_v8.4.9",
+      "version": "8.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.98.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 07:45:03 GMT",
+      "tag": "@fluentui/cra-template_v8.4.8",
+      "version": "8.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.97.2",
+            "commit": "33559052b672f787b021bd2fbc9826e88ce2a2de"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Oct 2022 07:37:49 GMT",
+      "tag": "@fluentui/cra-template_v8.4.7",
+      "version": "8.4.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.97.1",
+            "commit": "86b3133d97c177cac545b253deb11374ee829574"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 07:38:09 GMT",
+      "tag": "@fluentui/cra-template_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.97.0",
+            "commit": "fcb2ee2d270e6f584c6dbbd45f39a50c994c38be"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Sep 2022 07:40:10 GMT",
+      "tag": "@fluentui/cra-template_v8.4.5",
+      "version": "8.4.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.96.3",
+            "commit": "cc8acd94d3f68011427d6e031201a156e3b04ed9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Sep 2022 07:37:49 GMT",
+      "tag": "@fluentui/cra-template_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.96.2",
+            "commit": "316aa1e8df88bd9ec563d32222565dc48bc9fa29"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/cra-template_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.96.1",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:30 GMT",
+      "tag": "@fluentui/cra-template_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.96.0",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Sep 2022 07:37:32 GMT",
+      "tag": "@fluentui/cra-template_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.95.1",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 19:15:27 GMT",
+      "tag": "@fluentui/cra-template_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.95.0",
+            "commit": "682ead9953a1d519133193033aafe392173009f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Sep 2022 07:41:03 GMT",
+      "tag": "@fluentui/cra-template_v8.3.35",
+      "version": "8.3.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.94.4",
+            "commit": "a40ef34fa6d1122bdfdb708f79b90de9edb2827d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Sep 2022 20:52:16 GMT",
+      "tag": "@fluentui/cra-template_v8.3.34",
+      "version": "8.3.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.94.3",
+            "commit": "38bd1c146cb2e635bc181cda1b2f11b17a07c4c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Sep 2022 07:54:43 GMT",
+      "tag": "@fluentui/cra-template_v8.3.33",
+      "version": "8.3.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.94.2",
+            "commit": "2f740624c4e43d6bfe1b488e9d479c95ed71da09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Sep 2022 07:38:30 GMT",
+      "tag": "@fluentui/cra-template_v8.3.32",
+      "version": "8.3.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.94.1",
+            "commit": "f9f7d0fb7506d2af70af355a26d7a44b49df5f58"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:53 GMT",
+      "tag": "@fluentui/cra-template_v8.3.31",
+      "version": "8.3.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.94.0",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 07:48:11 GMT",
+      "tag": "@fluentui/cra-template_v8.3.30",
+      "version": "8.3.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.93.1",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/cra-template_v8.3.29",
+      "version": "8.3.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.93.0",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Aug 2022 07:39:58 GMT",
+      "tag": "@fluentui/cra-template_v8.3.28",
+      "version": "8.3.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.92.1",
+            "commit": "744f8e5ccf138ef8c893929c77a1e85f484415d4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Aug 2022 07:41:03 GMT",
+      "tag": "@fluentui/cra-template_v8.3.27",
+      "version": "8.3.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.92.0",
+            "commit": "4f36c51b9bde0c98b43da00ad13366a0cc0383cf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Aug 2022 16:36:06 GMT",
       "tag": "@fluentui/cra-template_v8.3.26",
       "version": "8.3.26",
