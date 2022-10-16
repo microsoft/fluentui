@@ -75,27 +75,28 @@ module.exports = {
   1. `dir` - determines whether to render story in `ltr` or `rtl` mode. Default is `undefined`.
   2. `fluentTheme` - determines whether to render story theme in `web-light`, `web-dark`, `teams-high-contrast`, `teams-dark`, or `teams-light`. Setting this
      parameter will disable ability to dynamically change the theme within story canvas or doc.
-  3. `isVrTest` - when set to `true`, this removes injected padding and background theme that's automatically applied from rendered story.
+  3. `mode` - when set to `vr-test`, this removes injected padding and background theme that's automatically applied from rendered story. Default is `default`.
 
 ```js
-import { TEAMS_HIGH_CONTRAST, WEB_DARK, WEB_LIGHT } from '@fluentui/react-storybook-addon';
+import { FluentParameters, parameters } from '@fluentui/react-storybook-addon';
 import { Button } from '@fluentui/react-components';
 
 export const Button = () => <Button> Hello World </Button>;
 
 export const ButtonDarkMode = {
   render: Button,
-  parameters: { fluentTheme: WEB_DARK }, // story renders in Dark mode.
+  parameters: { fluentTheme: 'web-dark' } as FluentParameters, // story renders in Dark mode.
 };
 
 export const ButtonHighContrast = {
   render: Button,
-  parameters: { fluentTheme: TEAMS_HIGH_CONTRAST, isVrTest: true }; // story renders in High Contrast mode without injected padding and background style.
+  parameters: { fluentTheme: 'teams-high-contrast', mode: 'vr-test' } as FluentParameters; // story renders in High Contrast mode without injected padding and background style.
 }
 
 export const ButtonRTL = {
   render: Button,
-  parameters: { fluentTheme: WEB_LIGHT, dir: 'rtl', isVrTest: true}, // story renders in RTL, Web light mode and without injected padding and background style.
+  // parameters identity function will have all TS type annotations built in for intellisense.
+  parameters: parameters({ fluentTheme: 'web-light', dir: 'rtl', mode: 'vr-test'}), // story renders in RTL, Web light mode and without injected padding and background style.
 };
 
 ```
