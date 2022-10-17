@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Overrides support (unstable)",
+  "packageName": "@fluentui/react-provider",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

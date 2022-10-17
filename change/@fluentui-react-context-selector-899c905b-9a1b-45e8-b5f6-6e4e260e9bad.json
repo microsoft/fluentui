@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Overrides context (unstable)",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
