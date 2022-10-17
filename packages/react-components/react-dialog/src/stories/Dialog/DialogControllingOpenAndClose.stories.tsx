@@ -7,8 +7,8 @@ import {
   DialogContent,
   DialogBody,
   DialogActions,
-} from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+  Button,
+} from '@fluentui/react-components';
 import story from './DialogControllingOpenAndClose.md';
 
 export const ControllingOpenAndClose = () => {

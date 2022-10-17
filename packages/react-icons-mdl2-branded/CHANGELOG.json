@@ -2,6 +2,27 @@
   "name": "@fluentui/react-icons-mdl2-branded",
   "entries": [
     {
+      "date": "Fri, 14 Oct 2022 07:44:01 GMT",
+      "tag": "@fluentui/react-icons-mdl2-branded_v1.2.25",
+      "version": "1.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2-branded",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "chore: Bump v8 packages peer deps to include React 18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2-branded",
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.3.24",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Oct 2022 07:38:24 GMT",
       "tag": "@fluentui/react-icons-mdl2-branded_v1.2.24",
       "version": "1.2.24",
