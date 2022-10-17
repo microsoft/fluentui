@@ -18,9 +18,9 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.98.2",
+    "@fluentui/react": "^8.98.3",
     "@fluentui/merge-styles": "^8.5.3",
-    "@fluentui/react-docsite-components": "^8.10.11",
+    "@fluentui/react-docsite-components": "^8.10.12",
     "@fluentui/foundation-legacy": "^8.2.21",
     "@fluentui/scheme-utilities": "^8.3.17",
     "@fluentui/set-version": "^8.2.2",
