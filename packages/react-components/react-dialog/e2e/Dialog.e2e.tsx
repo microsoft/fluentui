@@ -118,7 +118,7 @@ describe('Dialog', () => {
     cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogTriggerCloseSelector).should('be.focused');
   });
-  it('should focus on body if no focusabled element in dialog', () => {
+  it('should focus on dialog surface if no focusable element in dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger>
@@ -137,7 +137,7 @@ describe('Dialog', () => {
       </Dialog>,
     );
     cy.get(dialogTriggerOpenSelector).realClick();
-    cy.focused().should('not.exist');
+    cy.get(dialogSurfaceSelector).should('be.focused');
   });
   it('should focus back on trigger when dialog closed', () => {
     mount(

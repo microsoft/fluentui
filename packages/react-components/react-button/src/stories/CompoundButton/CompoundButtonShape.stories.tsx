@@ -1,17 +1,28 @@
 import * as React from 'react';
-import { CompoundButton } from '@fluentui/react-components';
+import { makeStyles, CompoundButton } from '@fluentui/react-components';
 
-export const Shape = () => (
-  <>
-    <CompoundButton secondaryContent="Secondary content">Rounded</CompoundButton>
-    <CompoundButton secondaryContent="Secondary content" shape="circular">
-      Circular
-    </CompoundButton>
-    <CompoundButton secondaryContent="Secondary content" shape="square">
-      Square
-    </CompoundButton>
-  </>
-);
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
+
+export const Shape = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <CompoundButton secondaryContent="Secondary content">Rounded</CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" shape="circular">
+        Circular
+      </CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" shape="square">
+        Square
+      </CompoundButton>
+    </div>
+  );
+};
 
 Shape.parameters = {
   docs: {

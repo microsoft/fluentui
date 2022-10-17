@@ -4,6 +4,7 @@ import descriptionMd from './ProgressDescription.md';
 import bestPracticesMd from './ProgressBestPractices.md';
 
 export { Default } from './ProgressDefault.stories';
+export { Shape } from './ProgressShape.stories';
 export { Thickness } from './ProgressBarThickness.stories';
 export { Indeterminate } from './ProgressIndeterminate.stories';
 export { Max } from './ProgressMax.stories';

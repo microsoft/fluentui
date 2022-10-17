@@ -18,7 +18,7 @@ const debouncedOnRender: DebouncedOnRender = () => {
       clearTimeout(timeoutId);
     }
 
-    timeoutId = setTimeout(() => {
+    timeoutId = window.setTimeout(() => {
       requestAnimationFrame(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
