@@ -67,7 +67,7 @@ export const useField_unstable = <T extends FieldComponent>(
 ): FieldState<T> => {
   const [fieldProps, controlProps] = getPartitionedFieldProps(props);
   const { orientation = 'vertical', validationState } = fieldProps;
-  const { labelConnection = 'htmlFor', ariaInvalidOnError = false } = params;
+  const { labelConnection = 'htmlFor', ariaInvalidOnError = true } = params;
 
   const baseId = useId('field-');
 
