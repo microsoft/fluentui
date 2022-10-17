@@ -50,10 +50,8 @@ export function useIsOverflowItemVisible(id: string): boolean;
 export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
 
 // @internal (undocumented)
-export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
+export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu'> {
     containerRef: React_2.RefObject<TElement>;
-    registerItem: OverflowContextValue['registerItem'];
-    updateOverflow: OverflowContextValue['updateOverflow'];
 }
 
 // @public (undocumented)

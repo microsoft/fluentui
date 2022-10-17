@@ -66,9 +66,9 @@ export type FieldSlots<T extends FieldComponent> = {
     root: NonNullable<Slot<'div'>>;
     control: SlotComponent<T>;
     label?: Slot<typeof Label>;
-    validationMessage?: Slot<'span'>;
+    validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;
-    hint?: Slot<'span'>;
+    hint?: Slot<'div'>;
 };
 
 // @public

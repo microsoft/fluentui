@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.scripts.json",
+  "compilerOptions": {
+    "types": ["node", "jest"]
+  },
+  "include": ["*"],
+  "files": ["../../typings/find-free-port/index.d.ts"]
+}

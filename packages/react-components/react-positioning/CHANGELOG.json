@@ -2,6 +2,33 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 11:02:57 GMT",
+      "tag": "@fluentui/react-positioning_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "1a527d440e0497ef8046b3ce240492241e7a04ac",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "16c7bcadf6f5a1f66dd8224f014ceee4c4800be3",
+            "comment": "fix `usePositioning` to reset `overrideTargetRef` when target in hook options is undefined"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.1.1",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:16 GMT",
       "tag": "@fluentui/react-positioning_v9.2.0",
       "version": "9.2.0",

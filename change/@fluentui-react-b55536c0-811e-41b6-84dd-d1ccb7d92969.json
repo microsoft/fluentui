@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Removing background color for Primary SplitButton's menu button in HCM.",
-  "packageName": "@fluentui/react",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

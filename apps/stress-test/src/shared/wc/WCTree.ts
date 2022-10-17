@@ -1,4 +1,4 @@
-import { TreeNode } from '../tree/RandomTree';
+import { TreeNode } from '../tree/types';
 
 export type WCTreeItemRenderer<T> = (node: T, depth: number, index: number) => HTMLElement;
 

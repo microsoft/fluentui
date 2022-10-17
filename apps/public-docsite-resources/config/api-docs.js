@@ -85,6 +85,7 @@ module.exports = {
       'TeachingBubble',
       'Text',
       'TextField',
+      'TimePicker',
       'Toggle',
       'Tooltip',
     ],

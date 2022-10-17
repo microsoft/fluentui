@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Turn off import/no-extraneous-dependencies rule for cypress component test files.",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

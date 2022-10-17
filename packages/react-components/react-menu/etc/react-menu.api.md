@@ -314,7 +314,9 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
 export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 
 // @public (undocumented)
-export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps>;
+export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
+    disableButtonEnhancement?: boolean;
+};
 
 // @public (undocumented)
 export type MenuTriggerState = {

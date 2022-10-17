@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Tue, 04 Oct 2022 07:45:02 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Oct 2022 07:38:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.5)
+
+Mon, 10 Oct 2022 07:38:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.4..@fluentui/eslint-plugin_v1.12.5)
+
+### Patches
+
+- Turn off import/no-extraneous-dependencies rule for cypress component test files. ([PR #24458](https://github.com/microsoft/fluentui/pull/24458) by tristan.watanabe@gmail.com)
 
 ## [1.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.4)
 

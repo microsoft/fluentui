@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Mon, 03 Oct 2022 22:24:42 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:03:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.9)
+
+Thu, 13 Oct 2022 11:03:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.8..@fluentui/react-toolbar_v9.0.0-beta.9)
+
+### Changes
+
+- fix: Toolbar selection should work ([PR #25153](https://github.com/microsoft/fluentui/pull/25153) by lingfangao@hotmail.com)
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.1.4 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-divider to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.4 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-radio to v9.0.8 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.8)
 
