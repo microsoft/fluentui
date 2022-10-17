@@ -148,10 +148,7 @@ const useRootStyles = makeStyles({
   },
 
   invalid: {
-    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-  },
-  invalidInteractive: {
-    ':hover:not(:focus-within)': {
+    ':not(:focus-within),:hover:not(:focus-within)': {
       ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
   },
@@ -250,11 +247,10 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     rootStyles.base,
     rootStyles[appearance],
     filled && rootStyles.filled,
-    invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
-    !disabled && invalid && rootStyles.invalidInteractive,
+    !disabled && invalid && rootStyles.invalid,
     state.root.className,
   );
 

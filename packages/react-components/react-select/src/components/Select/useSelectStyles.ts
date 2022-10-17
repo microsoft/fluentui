@@ -214,8 +214,8 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     selectStyles.base,
     selectStyles[size],
     selectStyles[appearance],
-    invalid && appearance !== 'underline' && selectStyles.invalid,
-    invalid && appearance === 'underline' && selectStyles.invalidUnderline,
+    !disabled && invalid && appearance !== 'underline' && selectStyles.invalid,
+    !disabled && invalid && appearance === 'underline' && selectStyles.invalidUnderline,
     disabled && selectStyles.disabled,
     state.select.className,
   );

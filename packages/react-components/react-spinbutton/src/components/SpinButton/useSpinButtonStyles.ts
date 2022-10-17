@@ -121,13 +121,7 @@ const useRootStyles = makeStyles({
   },
 
   invalid: {
-    '::before': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-    },
-  },
-
-  invalidInteractive: {
-    ':hover': {
+    ':not(:focus-within),:hover:not(:focus-within)': {
       '::before': {
         ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
       },
@@ -442,11 +436,10 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     appearance === 'outline' && rootStyles.outline,
     appearance === 'underline' && rootStyles.underline,
     filled && rootStyles.filled,
-    invalid && rootStyles.invalid,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
-    !disabled && invalid && rootStyles.invalidInteractive,
+    !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
     disabled && appearance === 'outline' && rootStyles.outlineDisabled,
     disabled && appearance === 'underline' && rootStyles.underlineDisabled,

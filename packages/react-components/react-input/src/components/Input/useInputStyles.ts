@@ -154,10 +154,7 @@ const useRootStyles = makeStyles({
     },
   },
   invalid: {
-    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-  },
-  invalidInteractive: {
-    ':hover': {
+    ':not(:focus-within),:hover:not(:focus-within)': {
       ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
   },
@@ -265,13 +262,12 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     rootStyles.base,
     rootStyles[size],
     rootStyles[appearance],
-    filled && rootStyles.filled,
-    invalid && rootStyles.invalid,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
-    !disabled && invalid && rootStyles.invalidInteractive,
+    filled && rootStyles.filled,
+    !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
     state.root.className,
   );
