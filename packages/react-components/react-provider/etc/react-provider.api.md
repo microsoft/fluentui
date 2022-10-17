@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
@@ -21,6 +22,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
+    overrides_unstable?: OverridesContextValue_unstable | undefined;
 } & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -32,6 +34,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
     themeClassName: ThemeClassNameContextValue_unstable;
     textDirection: 'ltr' | 'rtl';
     tooltip: TooltipVisibilityContextValue_unstable;
+    overrides: OverridesContextValue_unstable;
 };
 
 // @public (undocumented)
@@ -39,6 +42,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document;
     theme?: PartialTheme;
+    overrides_unstable?: OverridesContextValue_unstable;
 };
 
 // @public (undocumented)
@@ -50,6 +54,7 @@ export type FluentProviderSlots = {
 export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'dir'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
+    overrides: OverridesContextValue_unstable;
 };
 
 // @public

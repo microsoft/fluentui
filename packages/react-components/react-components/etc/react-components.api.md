@@ -259,6 +259,7 @@ import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
+import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import { PartialTheme } from '@fluentui/react-theme';
 import { Popover } from '@fluentui/react-popover';
 import { PopoverContextValue } from '@fluentui/react-popover';
@@ -1105,6 +1106,8 @@ export { OnOpenChangeData }
 export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
+
+export { OverridesContextValue_unstable }
 
 export { PartialTheme }
 
