@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 14 Oct 2022 07:43:59 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Oct 2022 07:49:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.98.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.3)
+
+Mon, 17 Oct 2022 07:49:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.2..@fluentui/react_v8.98.3)
+
+### Patches
+
+- fix: Panel should only aria hide siblings when isOpen is true ([PR #25223](https://github.com/microsoft/fluentui/pull/25223) by mgodbolt@microsoft.com)
 
 ## [8.98.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.2)
 

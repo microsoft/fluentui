@@ -7,11 +7,11 @@ type CongfigureYargs = (command: string, y: yargs.Argv) => yargs.Argv;
 
 const cliOptions = {
   scenario: {
-    describe: 'Scenario to run',
+    describe: 'Name applied to scenario that is about to be run',
     demand: true,
   },
   'test-cases': {
-    describe: 'List of test cases to run for the scenario. E.g., test1 test2',
+    describe: 'List of test cases to run for the scenario. E.g., mount inject-styles',
   },
   sizes: {
     describe: 'Sizes of each test case.',

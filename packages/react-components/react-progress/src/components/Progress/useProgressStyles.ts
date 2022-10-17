@@ -49,6 +49,12 @@ const useRootStyles = makeStyles({
       ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
     },
   },
+  rounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  rectangular: {
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  },
   medium: {
     height: barThicknessValues.medium,
   },
@@ -67,6 +73,7 @@ const useBarStyles = makeStyles({
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'Highlight',
     },
+    ...shorthands.borderRadius('inherit'),
   },
   medium: {
     height: barThicknessValues.medium,
@@ -102,7 +109,7 @@ const useBarStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { max, thickness, value } = state;
+  const { max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const { dir } = useFluent();
@@ -110,6 +117,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
   state.root.className = mergeClasses(
     progressClassNames.root,
     rootStyles.root,
+    rootStyles[shape],
     rootStyles[thickness],
     state.root.className,
   );
