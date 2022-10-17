@@ -2051,7 +2051,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         }
       }
     >
-
+      
     </div>
     <div
       className=
@@ -2106,7 +2106,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         }
       }
     >
-
+      
     </div>
     <div
       className=
@@ -2161,7 +2161,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         }
       }
     >
-
+      
     </div>
   </div>
   <span
