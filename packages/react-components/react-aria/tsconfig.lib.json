@@ -3,9 +3,9 @@
   "compilerOptions": {
     "noEmit": false,
     "lib": ["ES2019", "dom"],
+    "outDir": "dist",
     "declaration": true,
     "declarationDir": "dist/types",
-    "outDir": "dist",
     "inlineSources": true,
     "types": ["static-assets", "environment"]
   },
