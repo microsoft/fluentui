@@ -163,8 +163,8 @@ const CellActionsInHeaderCell: React.FC<SharedVrTestArgs> = ({ noNativeElements 
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableHeaderCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
