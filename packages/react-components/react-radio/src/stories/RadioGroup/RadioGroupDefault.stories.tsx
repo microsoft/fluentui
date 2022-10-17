@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { tokens, useId, Label, Radio, RadioGroup, makeStyles } from '@fluentui/react-components';
 import type { RadioGroupProps } from '@fluentui/react-components';
+import { Label, makeStyles, Radio, RadioGroup, tokens, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   field: {
