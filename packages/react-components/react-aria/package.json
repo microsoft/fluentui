@@ -21,7 +21,8 @@
     "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-aria/src && yarn docs"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
