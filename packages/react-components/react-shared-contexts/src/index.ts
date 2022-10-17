@@ -15,3 +15,9 @@ export type { TooltipVisibilityContextValue as TooltipVisibilityContextValue_uns
 
 export { Provider as Provider_unstable, useFluent as useFluent_unstable } from './ProviderContext';
 export type { ProviderContextValue as ProviderContextValue_unstable } from './ProviderContext';
+
+export {
+  OverridesProvider as OverridesProvider_unstable,
+  useOverrides as useOverrides_unstable,
+} from './OverridesContext';
+export type { OverridesContextValue as OverridesContextValue_unstable } from './OverridesContext';

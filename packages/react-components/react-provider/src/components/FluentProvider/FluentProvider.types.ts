@@ -1,4 +1,5 @@
 import type {
+  OverridesContextValue_unstable as OverridesContextValue,
   ProviderContextValue_unstable as ProviderContextValue,
   TooltipVisibilityContextValue_unstable as TooltipVisibilityContextValue,
   ThemeClassNameContextValue_unstable as ThemeClassNameContextValue,
@@ -19,6 +20,9 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
   targetDocument?: Document;
 
   theme?: PartialTheme;
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  overrides_unstable?: OverridesContextValue; // FIXME: better type
 };
 
 export type FluentProviderState = ComponentState<FluentProviderSlots> &
@@ -26,6 +30,7 @@ export type FluentProviderState = ComponentState<FluentProviderSlots> &
   Required<Pick<FluentProviderProps, 'dir'>> & {
     theme: ThemeContextValue;
     themeClassName: string;
+    overrides: OverridesContextValue;
   };
 
 export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
@@ -33,4 +38,5 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
   themeClassName: ThemeClassNameContextValue;
   textDirection: 'ltr' | 'rtl';
   tooltip: TooltipVisibilityContextValue;
+  overrides: OverridesContextValue;
 };

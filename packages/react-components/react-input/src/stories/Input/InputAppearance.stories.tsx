@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands, tokens, useId, Input, Label } from '@fluentui/react-components';
+import {
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  tokens,
+  useId,
+  Input,
+  Label,
+  FluentProvider,
+  OverridesContextValue_unstable,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
@@ -27,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = () => {
+const AppearanceExample = () => {
   const outlineId = useId('input-outline');
   const underlineId = useId('input-underline');
   const filledLighterId = useId('input-filledLighter');
@@ -35,7 +45,12 @@ export const Appearance = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.base}>
+    <>
+      <div className={styles.field}>
+        <Label htmlFor={outlineId}>No appearance (defaults to outline)</Label>
+        <Input id={outlineId} />
+      </div>
+
       <div className={styles.field}>
         <Label htmlFor={outlineId}>Outline appearance (default)</Label>
         <Input appearance="outline" id={outlineId} />
@@ -55,6 +70,27 @@ export const Appearance = () => {
         <Label htmlFor={filledDarkerId}>Filled darker appearance</Label>
         <Input appearance="filled-darker" id={filledDarkerId} />
       </div>
+    </>
+  );
+};
+
+export const Appearance = () => {
+  const styles = useStyles();
+  const [overrides, _] = React.useState<OverridesContextValue_unstable>({
+    inputDefaultAppearance: 'filled-darker',
+  });
+
+  return (
+    <div className={styles.base}>
+      <h2>No overrides</h2>
+
+      <AppearanceExample />
+
+      <FluentProvider overrides_unstable={overrides}>
+        <h2>With overrides</h2>
+
+        <AppearanceExample />
+      </FluentProvider>
     </div>
   );
 };
