@@ -12,7 +12,7 @@ trigger:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
-  - job: VRTool Update baseline
+  - job: VRToolUpdateBaseline
     workspace:
       clean: all
     steps:
