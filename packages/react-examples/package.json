@@ -32,7 +32,7 @@
     "@fluentui/merge-styles": "^8.5.3",
     "@fluentui/react": "^8.98.3",
     "@fluentui/react-cards": "^0.205.12",
-    "@fluentui/react-charting": "^5.14.1",
+    "@fluentui/react-charting": "^5.14.2",
     "@fluentui/react-docsite-components": "^8.10.12",
     "@fluentui/react-experiments": "^8.14.7",
     "@fluentui/react-file-type-icons": "^8.7.9",
