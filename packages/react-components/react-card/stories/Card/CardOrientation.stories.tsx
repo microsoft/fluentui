@@ -3,10 +3,10 @@ import { makeStyles, shorthands, Avatar, Body1, Button, Caption1 } from '@fluent
 import { MoreHorizontal24Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import { SampleCard, Title } from './SampleCard.stories';
-import Logo from '../../../assets/logo.svg';
+import Logo from '../assets/logo.svg';
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
-const avatarElviaURL = ASSET_URL + '/assets/avatar_elvia.svg';
+const avatarElviaURL = ASSET_URL + '/stories/assets/avatar_elvia.svg';
 
 const useStyles = makeStyles({
   root: {

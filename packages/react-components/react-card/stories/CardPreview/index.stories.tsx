@@ -1,4 +1,4 @@
-import { CardPreview } from '../../index';
+import { CardPreview } from '@fluentui/react-card';
 import descriptionMd from './CardPreviewDescription.md';
 
 export { Default } from './CardPreviewDefault.stories';
