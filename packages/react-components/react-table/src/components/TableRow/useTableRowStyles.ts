@@ -85,6 +85,7 @@ const useStyles = makeStyles({
 
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorNeutralForeground1Hover,
     ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
     ':hover': {
       backgroundColor: tokens.colorBrandBackground2,
@@ -92,10 +93,28 @@ const useStyles = makeStyles({
     ':active': {
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
     },
+
+    '@media(forced-colors: active)': {
+      ...shorthands.border('2px', 'solid', 'transparent'),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
+      ':focus-visible': {
+        outlineOffset: '-4px',
+      },
+    },
   },
 
   neutral: {
+    '@media(forced-colors: active)': {
+      ...shorthands.border('2px', 'solid', 'transparent'),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
+      ':focus-visible': {
+        outlineOffset: '-4px',
+      },
+    },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
+    color: tokens.colorNeutralForeground1Hover,
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
