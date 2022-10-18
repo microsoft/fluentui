@@ -1,9 +1,10 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
 import { createCustomFocusIndicatorStyle, createFocusOutlineStyle } from '@fluentui/react-tabster';
+import type { TableRowSlots, TableRowState } from './TableRow.types';
+import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
+import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 export const tableRowClassName = 'fui-TableRow';
 export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
@@ -53,14 +54,6 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground1Hover,
-      [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
-        opacity: 1,
-      },
-    },
     boxSizing: 'border-box',
     ...createCustomFocusIndicatorStyle(
       {
@@ -69,6 +62,17 @@ const useStyles = makeStyles({
       },
       { enableOutline: true, selector: 'focus-within' },
     ),
+  },
+
+  rootInteractive: {
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1Hover,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorNeutralBackground1Hover,
+        opacity: 1,
+      },
+    },
   },
 
   medium: {
@@ -88,6 +92,7 @@ const useStyles = makeStyles({
  * Apply styling to the TableRow slots based on the state
  */
 export const useTableRowStyles_unstable = (state: TableRowState): TableRowState => {
+  const isHeaderRow = useIsInTableHeader();
   const styles = useStyles();
   const layoutStyles = {
     table: useTableLayoutStyles(),
@@ -96,6 +101,7 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
   state.root.className = mergeClasses(
     tableRowClassNames.root,
     styles.root,
+    !isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],

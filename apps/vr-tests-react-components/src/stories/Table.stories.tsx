@@ -87,8 +87,8 @@ const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =>
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -125,8 +125,8 @@ const CellActionsAlwaysVisible: React.FC<SharedVrTestArgs> = ({ noNativeElements
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -163,8 +163,8 @@ const CellActionsInHeaderCell: React.FC<SharedVrTestArgs> = ({ noNativeElements 
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableHeaderCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -504,11 +504,47 @@ const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =
   </Table>
 );
 
+const SortableHeaders: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements} sortable>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell className="columnheader" key={column.columnKey} sortDirection={'ascending'}>
+            {column.label}
+          </TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout>{item.lastUpdated.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
 ([true, false] as const).forEach(noNativeElements => {
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
-      <Screener steps={new Screener.Steps().hover('.row').snapshot('hover row').end()}>{story()}</Screener>
+      <Screener steps={new Screener.Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</Screener>
     ))
     .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
@@ -555,5 +591,23 @@ const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
+    });
+
+  storiesOf(`Table layout ${layoutName} - headers`, module)
+    .addDecorator(story => (
+      <Screener
+        steps={new Screener.Steps()
+          .hover('.columnheader')
+          .snapshot('hover header')
+          .mouseDown('.columnheader')
+          .snapshot('press header')
+          .end()}
+      >
+        {story()}
+      </Screener>
+    ))
+    .addStory('sortable', () => <SortableHeaders noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
     });
 });
