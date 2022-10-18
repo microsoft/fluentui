@@ -60,6 +60,9 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   /** The carousel navigation item can have primary type. */
   primary?: boolean;
 
+  /** The carousel navigation item can have secondary type. */
+  secondary?: boolean;
+
   /** A vertical carousel navigation displays elements vertically. */
   vertical?: boolean;
 
@@ -204,7 +207,8 @@ CarouselNavigationItem.propTypes = {
   iconOnly: PropTypes.bool,
   index: PropTypes.number,
   onClick: PropTypes.func,
-  primary: PropTypes.bool,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   vertical: PropTypes.bool,
   thumbnails: PropTypes.bool,
   disableClickableNav: PropTypes.bool,

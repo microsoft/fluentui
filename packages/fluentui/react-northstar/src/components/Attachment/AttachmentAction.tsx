@@ -60,5 +60,6 @@ AttachmentAction.propTypes = {
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
-  primary: PropTypes.bool,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
 };

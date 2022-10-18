@@ -92,6 +92,9 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /** The menu can have primary type. */
   primary?: boolean;
 
+  /** The menu can have secondary type. */
+  secondary?: boolean;
+
   /** Menu items can by highlighted using underline. */
   underlined?: boolean;
 
@@ -109,7 +112,7 @@ export const menuClassName = 'ui-menu';
 
 export type MenuStylesProps = Pick<
   MenuProps,
-  'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu'
+  'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
 >;
 
 function useActualProps<P>(props: P) {
@@ -168,6 +171,7 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
     fluid,
     className,
     design,
+    secondary,
     accessibility,
   } = props;
 
@@ -179,6 +183,7 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
       pills: props.pills,
       pointing: props.pointing,
       primary: props.primary,
+      secondary: props.secondary,
       vertical: props.vertical,
     },
     item: {
@@ -188,6 +193,7 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
       pills: props.pills,
       pointing: props.pointing,
       primary: props.primary,
+      secondary: props.secondary,
       vertical: props.vertical,
       underlined: props.underlined,
     },
@@ -218,6 +224,7 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
       primary,
       underlined,
       vertical,
+      secondary,
       submenu,
     }),
     mapPropsToInlineStyles: () => ({
@@ -369,7 +376,8 @@ Menu.propTypes = {
   onActiveIndexChange: PropTypes.func,
   pills: PropTypes.bool,
   pointing: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'start' | 'end'>(['start', 'end'])]),
-  primary: PropTypes.bool,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
   submenu: PropTypes.bool,

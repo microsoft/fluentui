@@ -111,6 +111,9 @@ export interface MenuItemProps
   /** The menu item can have primary type. */
   primary?: boolean;
 
+  /** The menu item can have secondary type. */
+  secondary?: boolean;
+
   /** Menu items can by highlighted using underline. */
   underlined?: boolean;
 
@@ -154,7 +157,16 @@ export interface MenuItemProps
 export type MenuItemStylesProps = Required<
   Pick<
     MenuItemProps,
-    'active' | 'disabled' | 'iconOnly' | 'inSubmenu' | 'pills' | 'pointing' | 'primary' | 'underlined' | 'vertical'
+    | 'primary'
+    | 'underlined'
+    | 'active'
+    | 'vertical'
+    | 'pointing'
+    | 'secondary'
+    | 'disabled'
+    | 'iconOnly'
+    | 'pills'
+    | 'inSubmenu'
   >
 > & { isFromKeyboard: boolean };
 
@@ -197,6 +209,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     icon,
     wrapper,
     primary,
+    secondary,
     active,
     vertical,
     indicator,
@@ -265,6 +278,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
       active,
       vertical,
       pointing,
+      secondary,
       disabled,
       iconOnly,
       pills,
@@ -517,6 +531,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
                 className: menuItemSlotClassNames.submenu,
                 vertical: true,
                 primary: props.primary,
+                secondary: props.secondary,
                 submenu: true,
                 styles: resolvedStyles.menu,
                 indicator: props.indicator,
@@ -546,6 +561,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
           isFromKeyboard,
           pills,
           pointing,
+          secondary,
           underlined,
           vertical,
           primary,
@@ -590,7 +606,8 @@ MenuItem.propTypes = {
   onBlur: PropTypes.func,
   pills: PropTypes.bool,
   pointing: PropTypes.oneOf(['start', 'end', true, false]),
-  primary: PropTypes.bool,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
   wrapper: PropTypes.oneOfType([PropTypes.node, PropTypes.object]),
