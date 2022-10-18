@@ -155,6 +155,14 @@ export const DataGridExample = () => {
   const [sortState, setSortState] = React.useState<SortState>({ sortColumn: 'file', sortDirection: 'ascending' });
   const [selected, setSelected] = React.useState<RowId[]>([]);
 
+  // 2. virtualization by default (react-)
+  // 3. port column resizing prototype here - what codechanges are required on consumer side ?
+  // 4. columns render function - should treat selection cell as column ?
+  // 5. prototype column reordering - headless table too
+  // 6. How to do lazy loading with DetailsList?
+  // 7. prototype lazy loading in DataGrid/useTable
+  // 1. PRs DataGrid
+
   return (
     <DataGrid
       items={items}
