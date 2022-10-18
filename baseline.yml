@@ -9,6 +9,9 @@ trigger:
     include:
       - master
 
+variables:
+  skipComponentGovernanceDetection: true
+
 pool:
   vmImage: ubuntu-latest
 
