@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 18 Oct 2022 07:42:43 GMT",
+      "tag": "@fluentui/react-charting_v5.14.2",
+      "version": "5.14.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "eff4a290cbb0ca8fd7023be1e46b2719564743e6",
+            "comment": "Fix chart title overflow"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Oct 2022 07:49:17 GMT",
       "tag": "@fluentui/react-charting_v5.14.1",
       "version": "5.14.1",
