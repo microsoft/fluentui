@@ -24,14 +24,14 @@ import {
   MoreHorizontal48Regular,
 } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
-import appLogo from '../../../assets/app_logo.svg';
-import logo1 from '../../../assets/logo.svg';
-import logo2 from '../../../assets/logo2.svg';
-import logo3 from '../../../assets/logo3.svg';
-import excelLogo from '../../../assets/excel_logo.svg';
-import office1 from '../../../assets/office1.png';
-import office2 from '../../../assets/office2.png';
-import avatarColin from '../../../assets/avatar_colin.svg';
+import appLogo from '../assets/app_logo.svg';
+import logo1 from '../assets/logo.svg';
+import logo2 from '../assets/logo2.svg';
+import logo3 from '../assets/logo3.svg';
+import excelLogo from '../assets/excel_logo.svg';
+import office1 from '../assets/office1.png';
+import office2 from '../assets/office2.png';
+import avatarColin from '../assets/avatar_colin.svg';
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
