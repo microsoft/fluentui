@@ -13,10 +13,12 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
 
 // @public
-export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    // (undocumented)
+    enableOutline?: boolean;
     // (undocumented)
     selector?: 'focus' | 'focus-within';
 }

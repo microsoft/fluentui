@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createCustomFocusIndicatorStyle, createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
