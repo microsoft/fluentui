@@ -544,7 +544,7 @@ const SortableHeaders: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
-      <Screener steps={new Screener.Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</Screener>
+      <Screener steps={new Screener.Steps().hover('.row-1').snapshot('hover .row-1').end()}>{story()}</Screener>
     ))
     .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
