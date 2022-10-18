@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Add red border when aria-invalid is set",
+  "packageName": "@fluentui/react-textarea",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -7,8 +7,11 @@ import {
   DialogContent,
   DialogBody,
   DialogActions,
-} from '@fluentui/react-dialog';
-import { Button, Input, Label, makeStyles } from '@fluentui/react-components';
+  Button,
+  Input,
+  Label,
+  makeStyles,
+} from '@fluentui/react-components';
 import story from './DialogWithForm.md';
 
 const useStyles = makeStyles({

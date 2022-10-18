@@ -139,6 +139,16 @@ const useSelectStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -191,6 +201,7 @@ const useIconStyles = makeStyles({
 export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   const { size, appearance } = state;
   const disabled = state.select.disabled;
+  const invalid = `${state.select['aria-invalid']}` === 'true';
 
   const iconStyles = useIconStyles();
   const rootStyles = useRootStyles();
@@ -203,6 +214,8 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     selectStyles.base,
     selectStyles[size],
     selectStyles[appearance],
+    !disabled && invalid && appearance !== 'underline' && selectStyles.invalid,
+    !disabled && invalid && appearance === 'underline' && selectStyles.invalidUnderline,
     disabled && selectStyles.disabled,
     state.select.className,
   );

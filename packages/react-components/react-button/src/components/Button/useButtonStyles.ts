@@ -19,8 +19,10 @@ const useRootStyles = makeStyles({
   // Base styles
   base: {
     alignItems: 'center',
+    boxSizing: 'border-box',
     display: 'inline-flex',
     justifyContent: 'center',
+    textDecorationLine: 'none',
     verticalAlign: 'middle',
 
     ...shorthands.margin(0),
