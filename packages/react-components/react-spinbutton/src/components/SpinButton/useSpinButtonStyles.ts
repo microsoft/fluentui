@@ -64,7 +64,7 @@ const useRootStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalS,
   },
 
-  // intentially empty
+  // intentionally empty
   medium: {},
 
   outline: {
