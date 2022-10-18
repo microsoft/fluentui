@@ -2,6 +2,35 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 12:56:29 GMT",
+      "tag": "@fluentui/react-components_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e563f3daaea9b7cc62f50bc15edd44edf5045107",
+            "comment": "feat: adds disableButtonEnhancement property on DialogTrigger"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e563f3daaea9b7cc62f50bc15edd44edf5045107",
+            "comment": "feat: adds disableButtonEnhancement property on MenuTrigger"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e563f3daaea9b7cc62f50bc15edd44edf5045107",
+            "comment": "feat: adds disableButtonEnhancement property on PopoverTrigger"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 11:02:40 GMT",
       "tag": "@fluentui/react-components_v9.5.0",
       "version": "9.5.0",

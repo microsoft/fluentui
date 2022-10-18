@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 13 Oct 2022 11:02:40 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 12:56:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.1)
+
+Thu, 13 Oct 2022 12:56:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.0..@fluentui/react-components_v9.5.1)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feat: adds disableButtonEnhancement property on MenuTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - feat: adds disableButtonEnhancement property on PopoverTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-dialog`
+  - feat: adds disableButtonEnhancement property on DialogTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.0)
 

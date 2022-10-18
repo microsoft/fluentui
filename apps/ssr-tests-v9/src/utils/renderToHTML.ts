@@ -25,7 +25,7 @@ export async function renderToHTML(config: RenderToHTMLConfig): Promise<void> {
   }
 
   const resultHTML = ReactDOM.renderToString(
-    React.createElement(RendererProvider, { renderer }, React.createElement(App)),
+    React.createElement(RendererProvider, { renderer, children: React.createElement(App) }),
   );
   const resultStylesHTML = ReactDOM.renderToStaticMarkup(
     React.createElement(React.Fragment, null, renderToStyleElements(renderer)),

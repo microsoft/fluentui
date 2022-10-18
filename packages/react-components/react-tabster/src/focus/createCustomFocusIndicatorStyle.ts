@@ -4,10 +4,10 @@ import type { GriffelStyle } from '@griffel/react';
 export interface CreateCustomFocusIndicatorStyleOptions {
   selector?: 'focus' | 'focus-within';
   /**
-   * Disables the browser default outline style
-   * @default true
+   * Enables the browser default outline style
+   * @default false
    */
-  disableOutline?: boolean;
+  enableOutline?: boolean;
 }
 
 /**
@@ -21,14 +21,14 @@ export const createCustomFocusIndicatorStyle = (
   style: GriffelStyle,
   {
     selector = defaultOptions.selector,
-    disableOutline = true,
+    enableOutline = false,
   }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
 ): GriffelStyle => ({
   ':focus': {
-    outlineStyle: disableOutline ? 'none' : undefined,
+    outlineStyle: enableOutline ? undefined : 'none',
   },
   ':focus-visible': {
-    outlineStyle: disableOutline ? 'none' : undefined,
+    outlineStyle: enableOutline ? undefined : 'none',
   },
 
   ...(selector === 'focus' && {

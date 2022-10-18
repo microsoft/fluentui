@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Thu, 13 Oct 2022 11:02:56 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 12:56:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.2.0)
+
+Thu, 13 Oct 2022 12:56:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.1.3..@fluentui/react-popover_v9.2.0)
+
+### Minor changes
+
+- feat: adds disableButtonEnhancement property on PopoverTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.1.3)
 

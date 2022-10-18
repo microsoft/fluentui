@@ -57,14 +57,45 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            one
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              one
+            </span>
+            <div
+              hidden={true}
+              id="tooltip2"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              one
+            </div>
           </div>
           <div
             className=
@@ -85,7 +116,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone3"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -171,7 +202,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -192,14 +223,45 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            two
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              two
+            </span>
+            <div
+              hidden={true}
+              id="tooltip5"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              two
+            </div>
           </div>
           <div
             className=
@@ -220,7 +282,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -503,14 +565,45 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            one
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              one
+            </span>
+            <div
+              hidden={true}
+              id="tooltip2"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              one
+            </div>
           </div>
           <div
             className=
@@ -531,7 +624,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone3"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -617,7 +710,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -638,14 +731,45 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
         >
           <div
             className=
-
+                ms-TooltipHost
                 {
+                  display: block;
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 }
-            data-is-focusable={true}
-            role="text"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
           >
-            two
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              two
+            </span>
+            <div
+              hidden={true}
+              id="tooltip5"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              two
+            </div>
           </div>
           <div
             className=
@@ -666,7 +790,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

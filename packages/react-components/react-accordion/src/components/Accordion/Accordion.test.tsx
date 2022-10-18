@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Accordion } from './Accordion';
 import * as renderer from 'react-test-renderer';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Accordion', () => {
   isConformant({

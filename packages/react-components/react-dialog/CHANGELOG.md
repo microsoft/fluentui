@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Thu, 13 Oct 2022 11:02:48 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 12:56:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1-0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.1-0)
+
+Thu, 13 Oct 2022 12:56:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0..@fluentui/react-dialog_v9.0.1-0)
+
+### Changes
+
+- feat: adds disableButtonEnhancement property on DialogTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0)
 

@@ -31,11 +31,11 @@ $ yarn workspace @fluentui/stress-test stress-test build
 ### Examples
 
 ```shell
-# Run your "my-scenario" with the "mount" and "inject-styles" test cases against Firefox with small sizes and low sample size. Target the "stress-tree" page with "button" renderers.
-$ yarn workspace @fluentui/stress-test stress-test run --scenario my-scenario --test-cases mount inject-styles --browsers chrome firefox --sizes xs s --targets v8/stress-test?r=button v9/stress-test?r=button wc/stress-test?r=button
+# Run your "my-scenario" scenario with the "mount" and "inject-styles" test cases against Chrome and Firefox with small sizes. Target the "stress-tree" page with "button" renderers.
+$ yarn workspace @fluentui/stress-test stress-test run --scenario my-scenario --test-cases mount inject-styles --browsers chrome firefox --sizes xs s --targets v8/stress-tree?r=button v9/stress-tree?r=button wc/stress-tree?r=button
 
 # Run your "my-scenario" scenario with the "mount" and "inject-styles" test cases against the default browsers at the default sizes and sample size. Target the "stress-tree" page with "button" renderers.
-$ yarn workspace @fluentui/stress-test stress-test run --scenario my-scenario --test-cases mount inject-styles --targets v8/stress-test?r=button v9/stress-test?r=button wc/stress-test?r=button
+$ yarn workspace @fluentui/stress-test stress-test run --scenario my-scenario --test-cases mount inject-styles --targets v8/stress-tree?r=button v9/stress-tree?r=button wc/stress-tree?r=button
 ```
 
 > NOTE: Tests should be run against production builds. While tests can be run against development builds, and this is useful for gathering quick results and debugging, the performance characteristics of development and production builds can differ quite a bit.
@@ -49,10 +49,15 @@ $ yarn workspace @fluentui/stress-test stress-test run --scenario my-scenario --
 
 ## Development
 
+You can run a development server to see what is going to be tested and debugging/investigating issues with it by running the following command:
+
 ```shell
-# Run a development server. Useful for building new tests and debugging/investigating issues.
 $ yarn workspace @fluentui/stress-test stress-test dev
 ```
+
+Please note that you'll need to add the correct modifiers to the localhost server so that you see the correct test you are trying to debug. If you do not add these modifiers you will most likely just get a page with the message `Cannot GET /`.
+
+For example, if you want to test mount performance for v8 button with a medium-sized fixture you would need to go to add `/v8/stress-tree/?r=button&test=mount&fixtureName=l_1` after `localhost:9000` in the browser.
 
 ### Project layout
 
@@ -88,7 +93,7 @@ const componentRenderer: ReactSelectorTreeComponentRenderer = (node, depth, inde
 In your test specify the renderer with the `r` query parameter:
 
 ```shell
-yarn workspace @fluentui/stress-test stress-test run my-button-scenarion --test-cases mount --targets v9/stress-tree?r=myButton
+yarn workspace @fluentui/stress-test stress-test run my-button-scenario --test-cases mount --targets v9/stress-tree?r=myButton
 ```
 
 #### Adding new test fixtures
