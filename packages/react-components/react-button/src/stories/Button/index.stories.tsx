@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from '@fluentui/react-components';
 import descriptionMd from './ButtonDescription.md';
