@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "bump react peer dependency to react 18",
+  "comment": "chore: Bump react peer dependency to react 18.",
   "packageName": "@fluentui/foundation-legacy",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch"
