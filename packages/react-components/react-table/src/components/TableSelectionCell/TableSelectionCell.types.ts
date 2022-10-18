@@ -40,6 +40,4 @@ export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelection
  */
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> &
   Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> &
-  Pick<TableContextValue, 'noNativeElements'> & {
-    radioValue: string;
-  };
+  Pick<TableContextValue, 'noNativeElements'>;

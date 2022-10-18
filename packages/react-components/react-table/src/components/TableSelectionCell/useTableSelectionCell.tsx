@@ -19,7 +19,6 @@ export const useTableSelectionCell_unstable = (
   props: TableSelectionCellProps,
   ref: React.Ref<HTMLElement>,
 ): TableSelectionCellState => {
-  const radioValue = useId('tableradio');
   const tableCellState = useTableCell_unstable(props, ref);
   const { noNativeElements } = useTableContext();
   const { type = 'checkbox', checked = false, subtle = false, hidden = false } = props;
@@ -37,12 +36,11 @@ export const useTableSelectionCell_unstable = (
     }),
     radioIndicator: resolveShorthand(props.radioIndicator, {
       required: type === 'radio',
-      defaultProps: { value: radioValue, name: radioValue },
+      defaultProps: { checked: !!checked },
     }),
     type,
     checked,
     noNativeElements,
-    radioValue,
     subtle,
     hidden,
   };
