@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bump react peer dependency to react 18",
+  "packageName": "@fluentui/react-portal-compat-context",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
