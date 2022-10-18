@@ -36,12 +36,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Popup` trigger attribute being override @chpalac ([#24794](https://github.com/microsoft/fluentui/pull/24794))
 - Fix styling mutation when merging themes in `Dropdown` @petrjaros ([#24787](https://github.com/microsoft/fluentui/pull/24787))
 - Fix `Toolbar` submenu closing when another submenu is opened @miroslavstastny ([#24836](https://github.com/microsoft/fluentui/pull/24836))
+- Remove `secondary` `MenuItem` debug styling @Hirse ([#25085](https://github.com/microsoft/fluentui/pull/25085))
 
 ### Performance
 - Avoid memory trashing in `felaExpandCssShorthandsPlugin` @layershifter ([#24663](https://github.com/microsoft/fluentui/pull/24663))
 
 ### Documentation
 - Added theming documentation for windows high contrast mode support @ling1726 ([#24744](https://github.com/microsoft/fluentui/pull/24744))
+- Remove `Button` `secondary` prop from theming examples @Hirse ([#25085](https://github.com/microsoft/fluentui/pull/25085))
 
 <!--------------------------------[ v0.64.0 ]------------------------------- -->
 ## [v0.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.64.0) (2022-08-10)
