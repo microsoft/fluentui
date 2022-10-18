@@ -57,11 +57,19 @@ const useStyles = makeStyles({
   },
 
   rootInteractive: {
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      color: tokens.colorNeutralForeground1Pressed,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorSubtleBackgroundPressed,
+        opacity: 1,
+      },
+    },
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -78,6 +86,49 @@ const useStyles = makeStyles({
   smaller: {
     fontSize: tokens.fontSizeBase200,
   },
+
+  brand: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorNeutralForeground1Hover,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground2,
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+    },
+
+    '@media(forced-colors: active)': {
+      ...shorthands.border('2px', 'solid', 'transparent'),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
+      ':focus-visible': {
+        outlineOffset: '-4px',
+      },
+    },
+  },
+
+  neutral: {
+    '@media(forced-colors: active)': {
+      ...shorthands.border('2px', 'solid', 'transparent'),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
+      ':focus-visible': {
+        outlineOffset: '-4px',
+      },
+    },
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    color: tokens.colorNeutralForeground1Hover,
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
+    ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
+  },
+
+  none: {},
 });
 
 /**
@@ -97,6 +148,7 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
+    styles[state.appearance],
     state.root.className,
   );
 
