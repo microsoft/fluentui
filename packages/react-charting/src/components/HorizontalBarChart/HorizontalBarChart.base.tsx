@@ -76,7 +76,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
               x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
               y: points.chartData![0].horizontalBarChartdata!.y,
             },
-            color: palette.neutralTertiaryAlt,
+            color: palette.neutralLight,
           };
 
           const chartDataText = this._getChartDataText(points!);
@@ -84,7 +84,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           const keyVal = this._uniqLineText + '_' + index;
 
           return (
-            <div key={index} className={this._classNames.items}>
+            <div key={index} className={this._classNames.itemsWrapper}>
               <div className={this._classNames.items}>
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
@@ -201,7 +201,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   };
 
   private _adjustProps = (): void => {
-    this._barHeight = this.props.barHeight || 8;
+    this._barHeight = this.props.barHeight || 12;
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       width: this.props.width,
@@ -240,7 +240,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         return (
           <div {...accessibilityData}>
             <span className={this._classNames.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
-            <span className={this._classNames.chartDataTextDenominator}>{'/' + convertToLocaleString(y, culture)}</span>
+            <span className={this._classNames.chartDataTextDenominator}>
+              {' / ' + convertToLocaleString(y, culture)}
+            </span>
           </div>
         );
       case 'percentage':

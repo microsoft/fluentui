@@ -116,6 +116,12 @@ export interface IHorizontalBarChartStyles {
    * Styling for each item in the container
    */
   items: IStyle;
+
+  /**
+   * Styling for the item wrapper
+   */
+  itemsWrapper: IStyle;
+
   /**
    * Style for the chart.
    */

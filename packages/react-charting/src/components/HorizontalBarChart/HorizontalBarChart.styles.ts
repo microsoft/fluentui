@@ -1,4 +1,4 @@
-import { FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
@@ -14,15 +14,17 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       },
       className,
     ],
+    itemsWrapper: {
+      paddingLeft: '16px',
+      paddingRight: '16px',
+    },
     items: {
-      height: '32px',
-      marginTop: '5px',
       position: 'relative',
     },
     chart: {
       width: '100%',
-      height: '8px',
-      marginBottom: '11px',
+      height: '12px',
+      marginBottom: '10px',
     },
     barWrapper: {
       stroke: theme.palette.white,
@@ -32,20 +34,26 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '3px',
     },
     chartTitleLeft: {
-      fontWeight: FontWeights.bold,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
+      lineHeight: '16px',
+      color: '#171717',
+      marginBottom: '5px',
     },
     chartTitleRight: {
-      fontWeight: FontWeights.bold,
+      fontSize: FontSizes.medium,
+      lineHeight: '20px',
+      fontWeight: FontWeights.semibold,
+      color: theme.palette.neutralPrimary,
     },
     chartDataTextDenominator: {
-      fontWeight: FontWeights.semibold,
+      fontSize: FontSizes.medium,
+      lineHeight: '20px',
+      color: theme.palette.neutralPrimary,
     },
     triangle: {
       width: '0',
