@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TextBold24Regular, TextItalic24Regular } from '@fluentui/react-icons';
 import { Toolbar, ToolbarToggleButton, ToolbarProps } from '@fluentui/react-toolbar';
 
 export const ControlledToggleButton = () => {
@@ -11,12 +12,8 @@ export const ControlledToggleButton = () => {
 
   return (
     <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
-      <ToolbarToggleButton name="edit" value="cut">
-        Enable Group
-      </ToolbarToggleButton>
-      <ToolbarToggleButton name="edit" value="paste">
-        Enable Group
-      </ToolbarToggleButton>
+      <ToolbarToggleButton icon={<TextBold24Regular />} name="edit" value="cut" />
+      <ToolbarToggleButton icon={<TextItalic24Regular />} name="edit" value="paste" />
     </Toolbar>
   );
 };
