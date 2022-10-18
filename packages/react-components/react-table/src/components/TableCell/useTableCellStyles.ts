@@ -30,7 +30,6 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
-    position: 'relative',
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
     ...createCustomFocusIndicatorStyle(
       {

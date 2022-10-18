@@ -1,9 +1,10 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tableCellClassNames, useTableCellStyles_unstable } from '../TableCell/useTableCellStyles';
 
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots> = {
-  root: 'fui-TableSelectionCell',
+  root: tableCellClassNames.root,
   checkboxIndicator: 'fui-TableSelectionCell__checkboxIndicator',
   radioIndicator: 'fui-TableSelectionCell__radioIndicator',
 };
@@ -56,6 +57,7 @@ const useStyles = makeStyles({
  */
 export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellState): TableSelectionCellState => {
   const styles = useStyles();
+  useTableCellStyles_unstable(state);
   const layoutStyles = {
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),

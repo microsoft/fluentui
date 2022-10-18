@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
 import { useNavigationMode } from '../../navigationModes';
 
@@ -58,7 +58,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const CompositeNavigationMode = () => {
+export const CellNavigation = () => {
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('cell');
 
@@ -69,6 +69,7 @@ export const CompositeNavigationMode = () => {
           {columns.map(column => (
             <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
           ))}
+          <TableHeaderCell />
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -89,6 +90,11 @@ export const CompositeNavigationMode = () => {
             <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
             <TableCell tabIndex={0}>
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout>
+                <Button icon={<EditRegular />}>Edit</Button>
+              </TableCellLayout>
             </TableCell>
           </TableRow>
         ))}
