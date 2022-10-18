@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Thu, 15 Sep 2022 09:49:10 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:02:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.11)
+
+Thu, 13 Oct 2022 11:02:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-beta.10..@fluentui/react-overflow_v9.0.0-beta.11)
+
+### Changes
+
+- fix: useOverflowMenu should register overflow menu ([PR #25091](https://github.com/microsoft/fluentui/pull/25091) by lingfangao@hotmail.com)
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.0.0-beta.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.4 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.10)
 

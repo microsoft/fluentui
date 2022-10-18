@@ -1,23 +1,21 @@
-// @ts-check
-
 /**
  * @typedef {import("webpack").Configuration} WebpackConfig
  * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
  * @typedef {import("webpack").ModuleOptions} WebpackModule
  * @typedef {import("webpack").Configuration['output']} WebpackOutput
  */
-/** */
+
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
-/** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
-const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const getResolveAlias = require('./getResolveAlias');
-const { findGitRoot } = require('../monorepo/index');
+// @ts-ignore - accessing package.json is a private API access, thus ignoring TS here
+const webpackVersion = /** @type {string} */ (require('webpack/package.json').version);
 
-// @ts-ignore
-const webpackVersion = require('webpack/package.json').version;
+const merge = require('../tasks/merge');
+const { findGitRoot } = require('../monorepo');
+const getResolveAlias = require('./getResolveAlias');
+
 const getDefaultEnvironmentVars = require('./getDefaultEnvironmentVars');
 
 console.log(`Webpack version: ${webpackVersion}`);
@@ -318,8 +316,16 @@ module.exports = {
   },
 };
 
+/**
+ *
+ * @param {string} bundleName
+ * @param {boolean} isProduction
+ * @param {boolean} [profile]
+ * @returns
+ */
 function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  /** @type {webpack.WebpackPluginInstance[]} */
   const plugins = [new webpack.DefinePlugin(getDefaultEnvironmentVars(isProduction))];
 
   if (isProduction && profile) {

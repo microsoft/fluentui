@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 13 Oct 2022 11:03:05 GMT",
+      "tag": "@fluentui/react-utilities_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "17c5fe742918bbc41ed22f492a289f53bffc5008",
+            "comment": "chore: restricts trigger API types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:48:57 GMT",
       "tag": "@fluentui/react-utilities_v9.1.0",
       "version": "9.1.0",

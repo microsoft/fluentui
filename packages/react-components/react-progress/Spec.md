@@ -2,7 +2,7 @@
 
 ## Background
 
-The `Progress` component is used to display the current progress of an operation flow.
+The `Progress` component is used to display the current progress of an operation flow, or show that an operation is currently being executed.
 
 ## Prior Art
 
@@ -34,7 +34,7 @@ Basic example:
 import { Progress } from '@fluentui/react-progress';
 
 function App() {
-  return <Progress thickness="large" label="Loading" />;
+  return <Progress thickness="large" />;
 }
 ```
 
@@ -45,6 +45,28 @@ function App() {
 - Determinate Progress
   - The determinate form of the Progress component that incrementally loads from 0% to 100%
 
+#### Adding Label and Description with ProgressField
+
+There is a `ProgressField` component that adds a `label`, validation state(`success`, `warning`, `error`), and hint text to the `Progress`.
+You can use it like so:
+
+```jsx
+import * as React from 'react';
+import type { ProgressFieldProps } from '@fluentui/react-field';
+import { ProgressField } from '@fluentui/react-field';
+
+export const Default = (props: ProgressFieldProps) => (
+  <ProgressField
+    label="Example Progress field"
+    value={0.75}
+    validationState="success"
+    validationMessage="This is a success message"
+    hint="This is a hint message"
+    {...props}
+  />
+);
+```
+
 ### Shape
 
 The Progress is represented as a rounded rectangular area with an inner animated bar that either travels across the area indefinitely or animates up till a specified point
@@ -53,28 +75,19 @@ The Progress is represented as a rounded rectangular area with an inner animated
 
 ### Slots
 
-- `root` - The root element of the Progress. The html element is a `div`
+- `root` - The root element of the Progress, which also serves as the track for the Progress bar. The html element is a `div`
 - `bar` - The div element that gets animated into a Progress bar. The html element is `div`
-- `track` - The div element that functions as the track for the Progress bar. The html element is `div`
-- `label` - The text shown above the Progress. The html element is a `span`
-- `description` - The text shown below the Progress. The html element is a `span`
 
 ### Props
 
-See API at [Progress.types.tsx](./src/components/Progress/Progress.types.ts).
+See API at [Progress.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-progress/src/components/Progress/Progress.types.ts).
 
 ## Structure
 
 ```html
 <div class="fui-Progress">
-  <!-- Label for Progress -->
-  <span className="fui-Progress__label">Loading...</span>
-  <!-- Track for Progress -->
-  <div class="fui-Progress__track" />
   <!-- Bar for Progress -->
   <div class="fui-Progess__bar" />
-  <!-- Label for Progress description -->
-  <span className="fui-Progress__description">Loading Text</span>
 </div>
 ```
 
@@ -88,7 +101,7 @@ See [MIGRATION.md](./MIGRATION.md).
 
 - **Display** - The Progress will use the following priority:
 
-  - Specifying the `percentComplete` from `0` to `1` will alter the Progress from indeterminate to determinate.
+  - Specifying the `value` prop will alter the Progress from `indeterminate` to `determinate`.
   - The component also has `rtl` support and will animate the progress bar from right to left if set.
 
 ### Interaction
@@ -103,3 +116,5 @@ The Progress is non-interactive.
 - **Touch** - Nothing
 
 ## Accessibility
+
+- The `determinate` Progress has the proper `aria` attributes assigned to the element that will allow screen readers to get the `max` and current `value` of the `Progress`.

@@ -1,13 +1,13 @@
-import { Dialog, DialogSurface, DialogTitle, DialogActions, DialogTrigger } from '@fluentui/react-dialog';
+import { Dialog, DialogSurface, DialogTitle, DialogActions, DialogTrigger } from '@fluentui/react-components';
 
 import descriptionMd from './DialogDescription.md';
 import bestPracticesMd from './DialogBestPractices.md';
+import a11yMd from './DialogA11y.md';
 import { ComponentMeta } from '@storybook/react';
 
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';
-export { Nested } from './DialogNested.stories';
 export { ScrollingLongContent } from './DialogScrollingLongContent.stories';
 export { NoFocusableElement } from './DialogNoFocusableElement.stories';
 export { ControllingOpenAndClose } from './DialogControllingOpenAndClose.stories';
@@ -18,8 +18,8 @@ export { WithForm } from './DialogWithForm.stories';
 export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
 
-export default {
-  title: 'Preview Components/Dialog',
+const metadata: ComponentMeta<typeof Dialog> = {
+  title: 'Components/Dialog',
   component: Dialog,
   subcomponents: {
     DialogTrigger,
@@ -30,8 +30,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, a11yMd].join('\n'),
       },
     },
   },
-} as ComponentMeta<typeof Dialog>;
+};
+
+export default metadata;

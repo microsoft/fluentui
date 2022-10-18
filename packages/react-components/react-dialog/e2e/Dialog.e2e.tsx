@@ -4,7 +4,15 @@ import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
-import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
+import {
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogContent,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+} from '@fluentui/react-dialog';
 import {
   Button,
   Menu,
@@ -34,18 +42,20 @@ describe('Dialog', () => {
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
-          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-            cumque eaque?
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogBody>
-          <DialogActions>
-            <DialogTrigger>
-              <Button appearance="secondary">Close</Button>
-            </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
-          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -59,18 +69,20 @@ describe('Dialog', () => {
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
-          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-            cumque eaque?
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogBody>
-          <DialogActions>
-            <DialogTrigger>
-              <Button appearance="secondary">Close</Button>
-            </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
-          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -84,44 +96,48 @@ describe('Dialog', () => {
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
-          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-            cumque eaque?
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogBody>
-          <DialogActions>
-            <DialogTrigger>
-              <Button id={dialogTriggerCloseId} appearance="secondary">
-                Close
-              </Button>
-            </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
-          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
     cy.get(dialogTriggerOpenSelector).realClick();
     cy.get(dialogTriggerCloseSelector).should('be.focused');
   });
-  it('should focus on body if no focusabled element in dialog', () => {
+  it('should focus on dialog surface if no focusable element in dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface id="dialog-surface">
-          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-            cumque eaque?
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
     );
     cy.get(dialogTriggerOpenSelector).realClick();
-    cy.focused().should('not.exist');
+    cy.get(dialogSurfaceSelector).should('be.focused');
   });
   it('should focus back on trigger when dialog closed', () => {
     mount(
@@ -130,20 +146,22 @@ describe('Dialog', () => {
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
-          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-            cumque eaque?
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogBody>
-          <DialogActions>
-            <DialogTrigger>
-              <Button id={dialogTriggerCloseId} appearance="secondary">
-                Close
-              </Button>
-            </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
-          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -166,19 +184,21 @@ describe('Dialog', () => {
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogBody>This dialog focus on the second button instead of the first</DialogBody>
-            <DialogActions position="start">
-              <Button appearance="outline">Third Action</Button>
-            </DialogActions>
-            <DialogActions position="end">
-              <DialogTrigger>
-                <Button id={dialogTriggerCloseId} ref={buttonRef} appearance="secondary">
-                  Close
-                </Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            <DialogBody>
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogContent>This dialog focus on the second button instead of the first</DialogContent>
+              <DialogActions position="start">
+                <Button appearance="outline">Third Action</Button>
+              </DialogActions>
+              <DialogActions position="end">
+                <DialogTrigger>
+                  <Button id={dialogTriggerCloseId} ref={buttonRef} appearance="secondary">
+                    Close
+                  </Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
+            </DialogBody>
           </DialogSurface>
         </Dialog>
       );
@@ -194,36 +214,38 @@ describe('Dialog', () => {
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
-          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <Menu>
-              <MenuTrigger>
-                <Button id="open-menu-btn">Toggle menu</Button>
-              </MenuTrigger>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              <Menu>
+                <MenuTrigger>
+                  <Button id="open-menu-btn">Toggle menu</Button>
+                </MenuTrigger>
 
-              <MenuPopover>
-                <MenuList>
-                  <MenuItem>Item</MenuItem>
-                </MenuList>
-              </MenuPopover>
-            </Menu>
-            <Popover>
-              <PopoverTrigger>
-                <Button id="open-popover-btn">Popover trigger</Button>
-              </PopoverTrigger>
-              <PopoverSurface aria-label="label">Content</PopoverSurface>
-            </Popover>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem>Item</MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+              <Popover>
+                <PopoverTrigger>
+                  <Button id="open-popover-btn">Popover trigger</Button>
+                </PopoverTrigger>
+                <PopoverSurface aria-label="label">Content</PopoverSurface>
+              </Popover>
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
+                </Tooltip>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogBody>
-          <DialogActions>
-            <DialogTrigger>
-              <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
-                <Button id={dialogTriggerCloseId} appearance="secondary">
-                  Close
-                </Button>
-              </Tooltip>
-            </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
-          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -250,18 +272,20 @@ describe('Dialog', () => {
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
-            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogContent>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
             </DialogBody>
-            <DialogActions>
-              <DialogTrigger>
-                <Button appearance="secondary">Close</Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -303,18 +327,20 @@ describe('Dialog', () => {
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
-            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogContent>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
             </DialogBody>
-            <DialogActions>
-              <DialogTrigger>
-                <Button appearance="secondary">Close</Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -329,18 +355,20 @@ describe('Dialog', () => {
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
-            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogContent>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
             </DialogBody>
-            <DialogActions>
-              <DialogTrigger>
-                <Button appearance="secondary">Close</Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -356,18 +384,20 @@ describe('Dialog', () => {
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
-            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogContent>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
             </DialogBody>
-            <DialogActions>
-              <DialogTrigger>
-                <Button appearance="secondary">Close</Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -382,23 +412,78 @@ describe('Dialog', () => {
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
-            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogContent>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
+              </DialogContent>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button appearance="secondary">Close</Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
             </DialogBody>
-            <DialogActions>
-              <DialogTrigger>
-                <Button appearance="secondary">Close</Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('have.css', 'overflow', 'hidden');
     });
+  });
+
+  it('should allow nested dialogs', () => {
+    mount(
+      <Dialog>
+        <DialogTrigger>
+          <Button id="open-first-dialog-btn">Open nested dialog</Button>
+        </DialogTrigger>
+        <DialogSurface id="first-dialog">
+          <DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id="close-first-dialog-btn">Close</Button>
+              </DialogTrigger>
+              <Dialog>
+                <DialogTrigger>
+                  <Button id="open-second-dialog-btn" appearance="primary">
+                    Open inner dialog
+                  </Button>
+                </DialogTrigger>
+                <DialogSurface id="second-dialog">
+                  <DialogBody>
+                    <DialogTitle>Inner dialog title</DialogTitle>
+                    <DialogContent>
+                      ⛔️ just because you can doesn't mean you should have nested dialogs ⛔️
+                    </DialogContent>
+                    <DialogActions>
+                      <DialogTrigger>
+                        <Button id="close-second-dialog-btn" appearance="primary">
+                          Close
+                        </Button>
+                      </DialogTrigger>
+                    </DialogActions>
+                  </DialogBody>
+                </DialogSurface>
+              </Dialog>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>,
+    );
+    cy.get('#open-first-dialog-btn').realClick();
+    cy.get('#first-dialog').should('exist');
+    cy.get('#second-dialog').should('not.exist');
+    cy.get('#open-second-dialog-btn').should('exist').realClick();
+    cy.get('#second-dialog').should('exist');
+    cy.get('#close-second-dialog-btn').should('exist').realClick();
+    cy.get('#second-dialog').should('not.exist');
+    cy.get('#first-dialog').should('exist');
+    cy.get('#close-first-dialog-btn').should('exist').realClick();
+    cy.get('#second-dialog').should('not.exist');
+    cy.get('#first-dialog').should('not.exist');
   });
 });
