@@ -22,11 +22,4 @@ export default {
       },
     },
   },
-  decorators: [
-    Story => (
-      <div style={{ display: 'flex', gap: '1em', flexFlow: 'wrap', justifyContent: 'space-evenly' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta;

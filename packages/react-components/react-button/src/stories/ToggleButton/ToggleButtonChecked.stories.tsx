@@ -1,13 +1,24 @@
 import * as React from 'react';
-import { ToggleButton } from '@fluentui/react-components';
+import { makeStyles, ToggleButton } from '@fluentui/react-components';
 
-export const Checked = () => (
-  <>
-    <ToggleButton checked={true}>Controlled checked state</ToggleButton>
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
-    <ToggleButton checked={false}>Controlled unchecked state</ToggleButton>
-  </>
-);
+export const Checked = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton checked={true}>Controlled checked state</ToggleButton>
+      <ToggleButton checked={false}>Controlled unchecked state</ToggleButton>
+    </div>
+  );
+};
+
 Checked.parameters = {
   docs: {
     description: {

@@ -1,57 +1,76 @@
 import * as React from 'react';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
+} from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
 
-export const Shape = () => (
-  <>
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Rounded</SplitButton>}
-      </MenuTrigger>
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+export const Shape = () => {
+  const styles = useStyles();
 
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} shape="circular">
-            Circular
-          </SplitButton>
-        )}
-      </MenuTrigger>
+  return (
+    <div className={styles.wrapper}>
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Rounded</SplitButton>}
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} shape="square">
-            Square
-          </SplitButton>
-        )}
-      </MenuTrigger>
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} shape="circular">
+              Circular
+            </SplitButton>
+          )}
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  </>
-);
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} shape="square">
+              Square
+            </SplitButton>
+          )}
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
+  );
+};
 
 Shape.parameters = {
   docs: {
