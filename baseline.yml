@@ -9,7 +9,8 @@ trigger:
     include:
       - master
 
-vmImage: ubuntu-latest
+pool:
+  vmImage: ubuntu-latest
 
 jobs:
   - job: VRToolUpdateBaseline
