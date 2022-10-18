@@ -9,7 +9,7 @@ trigger:
     include:
       - master
 
-pool: '1ES-Host-Ubuntu'
+pool: 'ubuntu-latest'
 
 jobs:
   - job: VRToolUpdateBaseline
