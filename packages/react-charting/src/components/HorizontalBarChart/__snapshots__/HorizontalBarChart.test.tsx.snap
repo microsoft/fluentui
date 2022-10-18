@@ -12,18 +12,13 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
   onMouseLeave={[Function]}
 >
   <div
-    className=
-
-        {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
     key="0"
   >
     <div
       className=
 
           {
+            margin-bottom: 10px;
             position: relative;
           }
     >
@@ -127,8 +122,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           className=
 
               {
+                display: block;
                 height: 12px;
-                margin-bottom: 10px;
                 width: 100%;
               }
         >
@@ -177,18 +172,13 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
     </div>
   </div>
   <div
-    className=
-
-        {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
     key="1"
   >
     <div
       className=
 
           {
+            margin-bottom: 10px;
             position: relative;
           }
     >
@@ -292,8 +282,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           className=
 
               {
+                display: block;
                 height: 12px;
-                margin-bottom: 10px;
                 width: 100%;
               }
         >
@@ -518,18 +508,13 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
   onMouseLeave={[Function]}
 >
   <div
-    className=
-
-        {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
     key="0"
   >
     <div
       className=
 
           {
+            margin-bottom: 10px;
             position: relative;
           }
     >
@@ -633,8 +618,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           className=
 
               {
+                display: block;
                 height: 12px;
-                margin-bottom: 10px;
                 width: 100%;
               }
         >
@@ -683,18 +668,13 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
     </div>
   </div>
   <div
-    className=
-
-        {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
     key="1"
   >
     <div
       className=
 
           {
+            margin-bottom: 10px;
             position: relative;
           }
     >
@@ -798,8 +778,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           className=
 
               {
+                display: block;
                 height: 12px;
-                margin-bottom: 10px;
                 width: 100%;
               }
         >

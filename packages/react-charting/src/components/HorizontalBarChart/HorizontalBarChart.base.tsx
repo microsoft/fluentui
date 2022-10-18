@@ -84,7 +84,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           const keyVal = this._uniqLineText + '_' + index;
 
           return (
-            <div key={index} className={this._classNames.itemsWrapper}>
+            <div key={index}>
               <div className={this._classNames.items}>
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>

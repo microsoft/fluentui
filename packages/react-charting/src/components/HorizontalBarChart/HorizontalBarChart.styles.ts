@@ -14,17 +14,14 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       },
       className,
     ],
-    itemsWrapper: {
-      paddingLeft: '16px',
-      paddingRight: '16px',
-    },
     items: {
       position: 'relative',
+      marginBottom: '10px',
     },
     chart: {
       width: '100%',
       height: '12px',
-      marginBottom: '10px',
+      display: 'block',
     },
     barWrapper: {
       stroke: theme.palette.white,
