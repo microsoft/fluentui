@@ -1,5 +1,6 @@
 /**
- * This is the source of truth manual mapping of v0 icons to v9 icons.
+ * This file is the source of truth for mapping of v0 icons to v9 icons.
+ * This mapping was generated manually, any updates should be made directly to this file
  */
 
 export const iconMapping = [

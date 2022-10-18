@@ -9,13 +9,19 @@ const ComparisonTile = React.memo(ComparisonTileBase);
 interface IIconGridProps {
   entries: {
     V0Icon: V0IconComponent;
-    V9Icon: V9IconComponent;
+    V9Icon?: V9IconComponent;
   }[];
 }
 
-const Row = ({ index, style, data }: ListChildComponentProps) => {
-  const start = index * 3;
-  const items = data.slice(start, start + 3) as IIconGridProps['entries'];
+const ROW_SIZE = 3;
+
+interface IRowProps extends ListChildComponentProps {
+  data: IIconGridProps['entries'];
+}
+
+const Row = ({ index, style, data }: IRowProps) => {
+  const start = index * ROW_SIZE;
+  const items = data.slice(start, start + 3);
   return (
     <div style={style}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
@@ -29,7 +35,7 @@ const Row = ({ index, style, data }: ListChildComponentProps) => {
 
 export const IconGrid: React.FC<IIconGridProps> = ({ entries }) => {
   return (
-    <List width="100%" itemCount={entries.length / 3} height={600} itemData={entries} itemSize={110}>
+    <List width="100%" itemCount={entries.length / ROW_SIZE} height={600} itemData={entries} itemSize={110}>
       {Row}
     </List>
   );

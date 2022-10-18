@@ -24,14 +24,12 @@ const useStyles = makeStyles({
   },
 });
 
-const mapping = rawMapping
+const _mapping = rawMapping
   .map(entry => {
     const v0IconName = `${entry.v0}`;
     const v9IconName = `${entry.v9}Regular`;
-    // @ts-expect-error - We want to index the exports by name here
-    const V0Icon = v0Icons[v0IconName] as V0IconComponent;
-    // @ts-expect-error - We want to index the exports by name here
-    const V9Icon = v9Icons[v9IconName] as V9IconComponent;
+    const V0Icon = ((v0Icons as unknown) as Record<string, V0IconComponent>)[v0IconName];
+    const V9Icon = ((v9Icons as unknown) as Record<string, V9IconComponent | undefined>)[v9IconName];
 
     if (!V0Icon) {
       return null;
@@ -44,12 +42,13 @@ const mapping = rawMapping
       V9Icon,
     };
   })
-  .filter(Boolean) as { v9Search: string; v0Search: string; V0Icon: V0IconComponent; V9Icon: V9IconComponent }[];
+  .filter(Boolean);
+const mapping = _mapping.filter(Boolean) as Array<NonNullable<typeof _mapping[number]>>;
 
 const IconCatalogInner: React.FC = () => {
   const styles = useStyles();
   const [searchTerm, setSearchTerm] = React.useState<string | undefined>(undefined);
-  const [searchV0, setSearchV0] = React.useState<boolean>(true);
+  const [searchV0, setSearchV0] = React.useState(true);
 
   const updateSearch = React.useCallback(
     (newSearchTerm: string) => {
