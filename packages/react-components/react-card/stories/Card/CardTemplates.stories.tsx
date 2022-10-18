@@ -34,7 +34,7 @@ import office2 from '../assets/office2.png';
 import avatarColin from '../assets/avatar_colin.svg';
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
-const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
+const powerpointLogoURL = ASSET_URL + '/stories/assets/powerpoint_logo.svg';
 
 const useStyles = makeStyles({
   mainContainer: {
