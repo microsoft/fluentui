@@ -3,6 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
+import { createCustomFocusIndicatorStyle, createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const tableRowClassName = 'fui-TableRow';
 export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
@@ -61,6 +62,13 @@ const useStyles = makeStyles({
       },
     },
     boxSizing: 'border-box',
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { enableOutline: true, selector: 'focus-within' },
+    ),
   },
 
   medium: {
