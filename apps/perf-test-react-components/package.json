@@ -15,7 +15,7 @@
     "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
-    "@griffel/core": "^1.7.0",
+    "@griffel/core": "^1.8.0",
     "@fluentui/react-avatar": "^9.2.2",
     "@fluentui/react-button": "^9.1.4",
     "@fluentui/react-provider": "^9.1.4",
