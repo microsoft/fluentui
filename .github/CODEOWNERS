@@ -176,6 +176,7 @@ packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
 packages/react-components/react-avatar-context @microsoft/teams-prg
 packages/react-components/react-infobutton @microsoft/cxe-red @sopranopillow
 packages/react-migration-v8-v9 @microsoft/cxe-coastal @geoffcoxmsft
+packages/react-components/react-tree @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 
