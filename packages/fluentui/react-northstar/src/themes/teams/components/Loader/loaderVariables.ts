@@ -1,16 +1,15 @@
 import { pxToRem, SizeValue } from '../../../../utils';
-import { loaderSvgDataUrl } from './loaderSvgDataUrl';
-import { loaderSecondarySvgDataUrl } from './loaderSecondarySvgDataUrl';
 
 export interface LoaderVariables {
   containerHeights: Record<SizeValue, string>;
   containerWidths: Record<SizeValue, string>;
 
-  svgContent: string;
-  secondarySvgContent: string;
   svgHeights: Record<SizeValue, string>;
   svgTranslatePosition: Record<SizeValue, string>;
   svgWidths: Record<SizeValue, string>;
+  svgTrackColor: string;
+  svgTailColor: string;
+  svgSecondaryColor: string;
 }
 
 export const loaderVariables = (siteVariables: any): LoaderVariables => ({
@@ -33,8 +32,6 @@ export const loaderVariables = (siteVariables: any): LoaderVariables => ({
     largest: pxToRem(72),
   },
 
-  svgContent: loaderSvgDataUrl(siteVariables.colorScheme.brand.border2, siteVariables.colorScheme.brand.foreground),
-  secondarySvgContent: loaderSecondarySvgDataUrl,
   svgHeights: {
     smaller: pxToRem(1464),
     smallest: pxToRem(1464),
@@ -62,4 +59,7 @@ export const loaderVariables = (siteVariables: any): LoaderVariables => ({
     larger: pxToRem(72),
     largest: pxToRem(72),
   },
+  svgTrackColor: siteVariables.colorScheme.brand.border2,
+  svgTailColor: siteVariables.colorScheme.brand.foreground,
+  svgSecondaryColor: siteVariables.colorScheme.default.foreground3,
 });
