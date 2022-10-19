@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: AvatarGroupPopover does not render when children is an empty array, undefined, or null.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
