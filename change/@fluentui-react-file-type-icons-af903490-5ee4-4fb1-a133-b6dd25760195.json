@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing mapping for Stream video icon and updating URL to the Fabric CDN.",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
