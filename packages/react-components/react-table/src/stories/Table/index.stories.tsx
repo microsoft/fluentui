@@ -14,7 +14,6 @@ export { SingleSelect } from './SingleSelect.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { CellNavigationMode } from './CellNavigationMode.stories';
-export { RowNavigationMode } from './RowNavigationMode.stories';
 export { CompositeNavigationMode } from './CompositeNavigationMode.stories';
 
 export default {

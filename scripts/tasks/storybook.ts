@@ -4,7 +4,7 @@ import * as path from 'path';
 import { findGitRoot } from '../monorepo';
 
 // TODO: this should be replaced with `'@storybook/core-server';` API
-// @ts-expect-error - standalone.js is basically private API/thus doesn't ship types. NOTE: Storybook can be run standalone from Node, although it should be noted this isn't officially supported any more. - https://github.com/storybookjs/storybook/blob/master/lib/core/docs/standalone.md#standalone-mode
+// @ts-ignore- standalone.js is basically private API/thus doesn't ship types. NOTE: Storybook can be run standalone from Node, although it should be noted this isn't officially supported any more. - https://github.com/storybookjs/storybook/blob/master/lib/core/docs/standalone.md#standalone-mode
 import _storybook from '@storybook/react/standalone';
 const storybook: StorybookStandaloneBuildFn = _storybook;
 

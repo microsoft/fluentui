@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 17 Oct 2022 07:49:17 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Oct 2022 07:42:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.2)
+
+Tue, 18 Oct 2022 07:42:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.1..@fluentui/react-charting_v5.14.2)
+
+### Patches
+
+- Fix chart title overflow ([PR #25073](https://github.com/microsoft/fluentui/pull/25073) by kumarkshitij@microsoft.com)
 
 ## [5.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.1)
 
