@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Radio } from '@fluentui/react-radio';
 import type { TableSelectionCellProps, TableSelectionCellState } from './TableSelectionCell.types';
