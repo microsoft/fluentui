@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Bump react peer dependency to react 18.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
