@@ -775,6 +775,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-tree": {
+      "root": "packages/react-components/react-tree",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-tree/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-utilities": {
       "root": "packages/react-components/react-utilities",
       "projectType": "library",

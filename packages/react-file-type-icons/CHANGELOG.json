@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Wed, 19 Oct 2022 07:39:53 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.10",
+      "version": "8.7.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "7faa9b03fcd97ff7bc834adcf6eee230ff8cd43b",
+            "comment": "Fixing mapping for Stream video icon and updating URL to the Fabric CDN."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Oct 2022 07:38:24 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.7.9",
       "version": "8.7.9",

@@ -240,7 +240,9 @@ export const tableRowClassName = "fui-TableRow";
 export const tableRowClassNames: SlotClassNames<TableRowSlots>;
 
 // @public
-export type TableRowProps = ComponentProps<TableRowSlots> & {};
+export type TableRowProps = ComponentProps<TableRowSlots> & {
+    appearance?: 'brand' | 'neutral' | 'none';
+};
 
 // @public (undocumented)
 export type TableRowSlots = {
@@ -248,7 +250,7 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'>;
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;

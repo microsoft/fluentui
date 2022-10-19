@@ -49,25 +49,37 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
         {
           test: /\.(ts|tsx)?$/,
           exclude: /node_modules/,
-          oneOf: [
-            {
-              // Match Web Component files
-              // Not sure why babel-loader isn't working but
-              // the FAST docs use ts-loader and it "just works"
-              // so let's roll with it for now.
-              include: /\.wc\.(ts|tsx)?$/,
-              use: 'ts-loader',
+          use: {
+            loader: 'swc-loader',
+            options: {
+              jsc: {
+                minify: {
+                  compress: true,
+                },
+                target: 'es2019',
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  decorators: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  decoratorMetadata: true,
+                  legacyDecorator: true,
+                },
+                keepClassNames: true,
+                externalHelpers: true,
+                loose: true,
+              },
             },
-            {
-              use: 'swc-loader',
-            },
-          ],
+          },
         },
       ],
     },
     plugins: [new CleanWebpackPlugin()],
 
     optimization: {
+      minimize: false,
       splitChunks: {
         chunks: 'all',
       },
