@@ -9,10 +9,18 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableSelectionCell,
+  TableCellLayout,
+} from '../..';
+import { useTable, ColumnDefinition, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
-import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
   label: string;
@@ -95,13 +103,10 @@ const columns: ColumnDefinition<Item>[] = [
   },
 ];
 
-export const SingleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<RowId>([1]),
-  );
+export const SubtleSelection = () => {
   const {
     getRows,
-    selection: { toggleRow, isRowSelected },
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
   } = useTable(
     {
       columns,
@@ -109,9 +114,8 @@ export const SingleSelectControlled = () => {
     },
     [
       useSelection({
-        selectionMode: 'single',
-        selectedItems: selectedRows,
-        onSelectionChange: setSelectedRows,
+        selectionMode: 'multiselect',
+        defaultSelectedItems: new Set([0, 1]),
       }),
     ],
   );
@@ -126,31 +130,28 @@ export const SingleSelectControlled = () => {
     },
     selected: isRowSelected(row.rowId),
   }));
+
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
 
   return (
-    <Table ref={ref}>
+    <Table>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell type="radio" hidden />
+          <TableSelectionCell
+            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
+            onClick={toggleAllRows}
+          />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody ref={ref}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow
-            tabIndex={0}
-            key={item.file.label}
-            onClick={onClick}
-            onKeyDown={onKeyDown}
-            aria-selected={selected}
-            appearance={selected ? 'neutral' : 'none'}
-          >
-            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
+          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+            <TableSelectionCell subtle checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

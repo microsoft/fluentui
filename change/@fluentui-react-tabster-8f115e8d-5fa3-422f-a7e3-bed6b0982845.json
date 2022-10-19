@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Disabling default browser outline should be an option",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
