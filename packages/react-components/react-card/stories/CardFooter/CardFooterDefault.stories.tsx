@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles, Button } from '@fluentui/react-components';
 import { ArrowReply16Regular, MoreHorizontal16Filled, Share16Regular } from '@fluentui/react-icons';
-import { CardFooter } from '../../index';
+import { CardFooter } from '@fluentui/react-card';
 
 const useStyles = makeStyles({
   footer: {

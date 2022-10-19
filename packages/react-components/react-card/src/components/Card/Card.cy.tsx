@@ -14,7 +14,7 @@ const mountFluent = (element: JSX.Element) => {
 const CardSample = (props: CardProps) => {
   const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
 
-  const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
+  const powerpointLogoURL = ASSET_URL + '/stories/assets/powerpoint_logo.svg';
 
   return (
     <>
