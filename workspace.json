@@ -533,6 +533,12 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-migration-v8-v9": {
+      "root": "packages/react-migration-v8-v9",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-migration-v8-v9/src"
+    },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
       "projectType": "library",
@@ -768,6 +774,13 @@
       "sourceRoot": "packages/react-components/react-tooltip/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-tree": {
+      "root": "packages/react-components/react-tree",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-tree/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-utilities": {
       "root": "packages/react-components/react-utilities",

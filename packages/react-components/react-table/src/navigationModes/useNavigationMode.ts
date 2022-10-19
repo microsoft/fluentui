@@ -28,11 +28,6 @@ export function useNavigationMode<TElement extends HTMLElement>(mode: Navigation
       case 'composite':
         applyCompositeNavigation(ref.current);
         break;
-      case 'row':
-        if (rowNavigationAttr['data-tabster']) {
-          ref.current.setAttribute('data-tabster', rowNavigationAttr['data-tabster']);
-        }
-        break;
     }
   }, [rowNavigationAttr, mode]);
 

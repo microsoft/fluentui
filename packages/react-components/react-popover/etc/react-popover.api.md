@@ -114,7 +114,9 @@ export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonTyp
 }>;
 
 // @public
-export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps>;
+export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps> & {
+    disableButtonEnhancement?: boolean;
+};
 
 // @public
 export type PopoverTriggerState = {

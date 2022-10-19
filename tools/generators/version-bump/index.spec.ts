@@ -10,6 +10,7 @@ import {
 
 import generator from './index';
 import { VersionBumpGeneratorSchema } from './schema';
+import { PackageJsonWithBeachball } from '../../types';
 
 const noop = () => null;
 
@@ -128,10 +129,65 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
+    tree = setupDummyPackage(tree, {
+      name: '@proj/react-button',
+      version: '9.0.0-alpha.0',
+      dependencies: {
+        '@proj/make-styles': '^9.0.0',
+      },
+      devDependencies: {
+        '@proj/make-styles': '^9.0.0',
+      },
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
+    });
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson(tree, 'packages/react-button/package.json');
+    expect(packageJson.dependencies).toMatchInlineSnapshot(`
+      Object {
+        "@proj/make-styles": "0.0.0-nightly.0",
+      }
+    `);
+    expect(packageJson.devDependencies).toMatchInlineSnapshot(`
+      Object {
+        "@proj/make-styles": "0.0.0-nightly.0",
+      }
+    `);
+  });
+
+  it('should remove carets for dependents when `nightly` is selected as the bump type', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '^9.0.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+    });
+
     await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
+  });
+
+  it('should remove beachball disallowedChangeType config when bumping nightly', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '9.0.0-alpha.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+      beachball: {
+        disallowedChangeTypes: ['prerelease'],
+      },
+    });
+
+    expect(
+      readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json').beachball?.disallowedChangeTypes,
+    ).toEqual(['prerelease']);
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json');
+    expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
+    expect(packageJson.beachball?.disallowedChangeTypes).toBeUndefined();
   });
 
   describe('--all', () => {
@@ -252,6 +308,7 @@ function setupDummyPackage(
       devDependencies: Record<string, string>;
       dependencies: Record<string, string>;
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
+      beachball: PackageJsonWithBeachball['beachball'];
     }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
@@ -279,6 +336,7 @@ function setupDummyPackage(
       version: normalizedOptions.version,
       dependencies: normalizedOptions.dependencies,
       devDependencies: normalizedOptions.devDependencies,
+      beachball: options.beachball,
     },
   };
 

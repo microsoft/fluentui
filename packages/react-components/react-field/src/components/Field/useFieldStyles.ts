@@ -17,7 +17,7 @@ export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<Fiel
  */
 const useRootStyles = makeStyles({
   base: {
-    display: 'inline-grid',
+    display: 'grid',
     gridAutoFlow: 'row',
     justifyItems: 'start',
   },

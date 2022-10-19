@@ -195,10 +195,12 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
   );
 
-  // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
-  // This keeps the tooltip visible when the pointer is moved over it.
+  // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
+  // This keeps the tooltip visible when the mouse is moved over it, or it has focus within.
   state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
   state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
+  state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
   const child = getTriggerChild(children);
 

@@ -72,7 +72,6 @@ const makeConfigJson: MakeConfigJson = (_scenario, browser, testCase, sampleSize
         ],
 
         expand: targets.map(target => {
-          // const params = querystring.stringify({ test: testCase, ...testOptions });
           const targetParams = target.includes('?') ? querystring.parse(target.substring(target.indexOf('?') + 1)) : {};
           const params = querystring.stringify({
             ...targetParams,

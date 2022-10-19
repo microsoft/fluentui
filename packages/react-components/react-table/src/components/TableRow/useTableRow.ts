@@ -27,5 +27,6 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
     }),
     size,
     noNativeElements,
+    appearance: props.appearance ?? 'none',
   };
 };

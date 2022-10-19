@@ -14,6 +14,11 @@ export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {
    * If `DialogTrigger` is inside `DialogSurface` then it'll be `close` by default
    */
   action?: DialogTriggerAction;
+  /**
+   * Disables internal trigger mechanism that ensures a child provided will be a compliant ARIA button.
+   * @default false
+   */
+  disableButtonEnhancement?: boolean;
 };
 
 /**
