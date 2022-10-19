@@ -36,7 +36,7 @@
     "@fluentui/react-theme": "^9.1.0",
     "@fluentui/react-utilities": "^9.1.1",
     "keyborg": "^1.2.1",
-    "tabster": "^2.1.2",
+    "tabster": "^3.0.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

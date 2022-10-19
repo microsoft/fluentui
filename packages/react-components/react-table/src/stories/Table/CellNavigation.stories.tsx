@@ -8,9 +8,8 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, Button, useArrowNavigationGroup } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
-import { useNavigationMode } from '../../navigationModes';
 
 const items = [
   {
@@ -58,12 +57,11 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const CellNavigationMode = () => {
-  // eslint-disable-next-line deprecation/deprecation
-  const ref = useNavigationMode<HTMLDivElement>('cell');
+export const CellNavigation = () => {
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table ref={ref}>
+    <Table {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           {columns.map(column => (
