@@ -149,8 +149,8 @@ export const SubtleSelection = () => {
       </TableHeader>
       <TableBody {...keyboardNavAttr}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell subtle checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+          <TableRow key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+            <TableSelectionCell tabIndex={0} subtle checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
