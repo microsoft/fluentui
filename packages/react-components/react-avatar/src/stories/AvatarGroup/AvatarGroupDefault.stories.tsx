@@ -17,9 +17,7 @@ const names = [
 ];
 
 export const Default = (props: Partial<AvatarGroupProps>) => {
-  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, maxInlineItems: 4 });
-
-  console.log({ inlineItems, overflowItems });
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (
     <AvatarGroup {...props}>

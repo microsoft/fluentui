@@ -51,8 +51,8 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
     popoverOpen,
     layout,
     indicator,
-    size,
     shouldRender,
+    size,
 
     components: {
       root: Popover,
