@@ -44,7 +44,11 @@ export default () => <Button appearance="primary">Get started</Button>;
 
 ### Strict mode
 
-Strict mode is currently not supported. To avoid hydration issues, disable strict mode in your app by adding the following configuration to your `next.config.js` file:
+Strict mode is currently not supported. Plese remove any `React.StrictMode` wrappers from your app.
+
+#### SSR
+
+To avoid hydration issues, disable strict mode in your app by adding the following configuration to your `next.config.js` file:
 
 ```js
 module.exports = {
