@@ -2,6 +2,9 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
+import { tableSelectionCellClassNames } from '../TableSelectionCell/useTableSelectionCellStyles';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 export const tableRowClassName = 'fui-TableRow';
@@ -53,16 +56,47 @@ const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
     boxSizing: 'border-box',
+    ...createCustomFocusIndicatorStyle(
+      {
+        [`& .${tableSelectionCellClassNames.root}`]: {
+          opacity: 1,
+        },
+      },
+      { selector: 'focus-within' },
+    ),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid'),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus', enableOutline: true },
+    ),
   },
 
   rootInteractive: {
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground1Pressed,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorSubtleBackgroundPressed,
+        opacity: 1,
+      },
+      [`& .${tableSelectionCellClassNames.root}`]: {
+        backgroundColor: tokens.colorNeutralBackground1Hover,
+        opacity: 1,
+      },
     },
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorNeutralBackground1Hover,
+        opacity: 1,
+      },
+      [`& .${tableSelectionCellClassNames.root}`]: {
+        backgroundColor: tokens.colorNeutralBackground1Hover,
+        opacity: 1,
+      },
     },
   },
 

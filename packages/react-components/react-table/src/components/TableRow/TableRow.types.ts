@@ -21,4 +21,4 @@ export type TableRowProps = ComponentProps<TableRowSlots> & {
  */
 export type TableRowState = ComponentState<TableRowSlots> &
   Pick<TableContextValue, 'noNativeElements' | 'size'> &
-  Pick<Required<TableRowProps>, 'appearance'> & { renderSubtle: boolean };
+  Pick<Required<TableRowProps>, 'appearance'>;

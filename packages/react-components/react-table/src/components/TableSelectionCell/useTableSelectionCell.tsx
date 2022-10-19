@@ -5,7 +5,6 @@ import { Radio } from '@fluentui/react-radio';
 import type { TableSelectionCellProps, TableSelectionCellState } from './TableSelectionCell.types';
 import { useTableCell_unstable } from '../TableCell/useTableCell';
 import { useTableContext } from '../../contexts/tableContext';
-import { useTableRowSubtleContext } from '../../contexts/tableRowSubtleContext';
 
 /**
  * Create the state required to render TableSelectionCell.
@@ -20,7 +19,6 @@ export const useTableSelectionCell_unstable = (
   props: TableSelectionCellProps,
   ref: React.Ref<HTMLElement>,
 ): TableSelectionCellState => {
-  const renderSubtle = useTableRowSubtleContext();
   const tableCellState = useTableCell_unstable(props, ref);
   const { noNativeElements } = useTableContext();
   const { type = 'checkbox', checked = false, subtle = false, hidden = false } = props;
@@ -45,6 +43,5 @@ export const useTableSelectionCell_unstable = (
     noNativeElements,
     subtle,
     hidden,
-    renderSubtle,
   };
 };
