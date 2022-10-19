@@ -556,6 +556,41 @@ const SortableHeaders: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   </Table>
 );
 
+const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell type="radio" hidden />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map((item, i) => (
+        <TableRow key={item.file.label}>
+          <TableSelectionCell subtle type="radio" checked={i === 1} className={i === 1 ? 'selected' : 'not-selected'} />
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
 ([true, false] as const).forEach(noNativeElements => {
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
@@ -653,6 +688,13 @@ const SortableHeaders: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
       includeRtl: true,
     });
 
+  storiesOf(`Table ${layoutName} - subtle selection`, module)
+    .addDecorator(story => (
+      <Screener steps={new Screener.Steps().hover('.not-selected').snapshot('hover unselected row').end()}>
+        {story()}
+      </Screener>
+    ))
+    .addStory('rest', () => <SubtleSelection noNativeElements={noNativeElements} />);
   storiesOf(`Table layout ${layoutName} - headers`, module)
     .addDecorator(story => (
       <Screener

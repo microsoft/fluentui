@@ -133,7 +133,7 @@ export const SingleSelectControlled = () => {
     <Table ref={ref}>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell type="radio" />
+          <TableSelectionCell type="radio" hidden />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
