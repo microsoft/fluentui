@@ -1,5 +1,0 @@
-export const loaderSvgDataUrl = (trackColor: string, tailColor: string): string => {
-  return `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E%0Asvg %7B animation: 3s linear infinite svg-animation; %7D @keyframes svg-animation %7B 0%25 %7B transform: rotate(0deg); %7D 100%25 %7B transform: rotate(360deg) %7D%0A%7D circle%7B%0Afill:none;%0Astroke-width:10;%0Acx:50; cy:50; r:45;%0A%7D%0Acircle.spinner__tail%7B animation: 1.4s ease-in-out infinite both spinner-tail-animation; display: block; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 280; transform-origin: 50%25 50%25;%0A%7D @keyframes spinner-tail-animation %7B 0%25, 25%25 %7B stroke-dashoffset: 283; transform: rotate(0); %7D 50%25, 75%25 %7B stroke-dashoffset: 75; transform: rotate(45deg); %7D 100%25 %7B stroke-dashoffset: 280; transform: rotate(360deg); %7D%0A%7D %3C/style%3E%3Ccircle stroke='${encodeURIComponent(
-    trackColor,
-  )}' /%3E%3Ccircle class='spinner__tail' stroke='${encodeURIComponent(tailColor)}' /%3E%3C/svg%3E")`;
-};
