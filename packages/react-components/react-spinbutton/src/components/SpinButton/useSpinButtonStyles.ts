@@ -170,6 +170,18 @@ const useInputStyles = makeStyles({
     outlineStyle: 'none',
     ...shorthands.padding(0),
   },
+
+  small: {
+    // Originally the small padding was 6px but the design was
+    // updated to 8px to align with other small inputs.
+    // This negative margin is applied so the external size
+    // of the small SpinButton is not changed (i.e., this change
+    // won't affect anyone's page layout).
+    marginRight: '-2px',
+  },
+
+  // intentionally empty
+  medium: {},
 });
 
 const useButtonStyles = makeStyles({
@@ -477,7 +489,12 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     state.decrementButton.className,
   );
 
-  state.input.className = mergeClasses(spinButtonClassNames.input, state.input.className, inputStyles.base);
+  state.input.className = mergeClasses(
+    spinButtonClassNames.input,
+    state.input.className,
+    inputStyles.base,
+    inputStyles[size],
+  );
 
   return state;
 };
