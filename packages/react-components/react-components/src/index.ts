@@ -240,6 +240,7 @@ export type {
 } from '@fluentui/react-badge';
 export {
   Button,
+  ButtonCustomStylesContextProvider,
   CompoundButton,
   MenuButton,
   SplitButton,
@@ -281,6 +282,7 @@ export type {
   SplitButtonState,
   ToggleButtonProps,
   ToggleButtonState,
+  ButtonCustomStylesContextValue,
 } from '@fluentui/react-button';
 export {
   Checkbox,

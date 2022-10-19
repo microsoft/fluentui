@@ -9,7 +9,10 @@
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { FC } from 'react';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -19,6 +22,14 @@ export const Button: ForwardRefComponent<ButtonProps>;
 
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
+
+// @public (undocumented)
+export const ButtonCustomStylesContextProvider: Provider<ButtonCustomStylesContextValue> & FC<ProviderProps<ButtonCustomStylesContextValue>>;
+
+// @public (undocumented)
+export type ButtonCustomStylesContextValue = {
+    useCustomStyles?: (state: ButtonState) => ButtonState;
+};
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & {

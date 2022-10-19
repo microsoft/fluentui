@@ -4,6 +4,8 @@ import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { ButtonCustomStylesContext } from './ButtonCustomStylesContext';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
@@ -456,6 +458,8 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
+  const customStyles = useContextSelector(ButtonCustomStylesContext, context => context?.useCustomStyles);
+
   const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
@@ -496,6 +500,10 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       iconStyles[size],
       state.icon.className,
     );
+  }
+
+  if (customStyles) {
+    state = customStyles(state);
   }
 
   return state;

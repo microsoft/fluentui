@@ -5,6 +5,7 @@ import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
 
 export { Default } from './ButtonDefault.stories';
+export { CustomStyles } from './ButtonCustomStyles.stories';
 export { Shape } from './ButtonShape.stories';
 export { Appearance } from './ButtonAppearance.stories';
 export { Icon } from './ButtonIcon.stories';

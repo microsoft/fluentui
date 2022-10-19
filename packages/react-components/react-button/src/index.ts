@@ -1,11 +1,12 @@
 export {
   Button,
+  ButtonCustomStylesContextProvider,
   buttonClassNames,
   renderButton_unstable,
   useButtonStyles_unstable,
   useButton_unstable,
 } from './Button';
-export type { ButtonProps, ButtonSlots, ButtonState } from './Button';
+export type { ButtonCustomStylesContextValue, ButtonProps, ButtonSlots, ButtonState } from './Button';
 export {
   CompoundButton,
   compoundButtonClassNames,

@@ -60,6 +60,8 @@ import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { buttonClassNames } from '@fluentui/react-button';
+import { ButtonCustomStylesContextProvider } from '@fluentui/react-button';
+import { ButtonCustomStylesContextValue } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
@@ -707,6 +709,10 @@ export { BrandVariants }
 export { Button }
 
 export { buttonClassNames }
+
+export { ButtonCustomStylesContextProvider }
+
+export { ButtonCustomStylesContextValue }
 
 export { ButtonProps }
 

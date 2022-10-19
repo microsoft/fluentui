@@ -73,3 +73,7 @@ export type ButtonState = ComponentState<ButtonSlots> &
      */
     iconOnly: boolean;
   };
+
+export type ButtonCustomStylesContextValue = {
+  useCustomStyles?: (state: ButtonState) => ButtonState;
+};
