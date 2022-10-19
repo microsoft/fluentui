@@ -112,7 +112,7 @@ const addListeners = (eventTarget: Window) => {
  *
  * @param document document to apply the update to
  * @param eventKey keyboard key passed from the event
- * @returns true if mode should be switched, false if not (when focus is in inputs and key was not a navigational key)
+ * @returns true if mode should be switched, false if not (when an input-like element is focused, and the key was not a navigational key)
  */
 const keyboardInputFocused = (document: Document, eventKey: number) => {
   if (
