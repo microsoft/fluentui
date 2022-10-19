@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { TableCellActionsProps, TableCellActionsState } from './TableCellActions.types';
+import { useTableRowSubtleContext } from '../../contexts/tableRowSubtleContext';
 
 /**
  * Create the state required to render TableCellActions.
@@ -16,6 +17,7 @@ export const useTableCellActions_unstable = (
   props: TableCellActionsProps,
   ref: React.Ref<HTMLElement>,
 ): TableCellActionsState => {
+  const renderSubtle = useTableRowSubtleContext();
   return {
     components: {
       root: 'div',
@@ -24,6 +26,6 @@ export const useTableCellActions_unstable = (
       ref: useMergedRefs(ref, useFocusWithin()),
       ...props,
     }),
-    visible: props.visible ?? false,
+    visible: props.visible ?? renderSubtle,
   };
 };

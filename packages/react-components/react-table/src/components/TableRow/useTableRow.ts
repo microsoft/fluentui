@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TableRowProps, TableRowState } from './TableRow.types';
 import { useTableContext } from '../../contexts/tableContext';
 import { useFocusVisible } from '@fluentui/react-tabster';
@@ -17,6 +17,27 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
   const { noNativeElements, size } = useTableContext();
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'tr';
   const focusVisibleRef = useFocusVisible();
+  const [renderSubtle, setRenderSubtle] = React.useState(false);
+
+  const onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    setRenderSubtle(true);
+  };
+
+  const onMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    setRenderSubtle(false);
+  };
+
+  const onFocus = (e: React.FocusEvent) => {
+    if (e.currentTarget.contains(e.target)) {
+      setRenderSubtle(true);
+    }
+  };
+
+  const onBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setRenderSubtle(false);
+    }
+  };
 
   return {
     components: {
@@ -25,9 +46,14 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
     root: getNativeElementProps(rootComponent, {
       ref: useMergedRefs(ref, focusVisibleRef),
       role: rootComponent === 'div' ? 'row' : undefined,
+      onMouseEnter: useEventCallback(mergeCallbacks(onMouseEnter, props.onMouseEnter)),
+      onMouseLeave: useEventCallback(mergeCallbacks(onMouseLeave, props.onMouseLeave)),
+      onBlur: useEventCallback(mergeCallbacks(onBlur, props.onBlur)),
+      onFocus: useEventCallback(mergeCallbacks(onFocus, props.onFocus)),
       ...props,
     }),
     size,
     noNativeElements,
+    renderSubtle,
   };
 };
