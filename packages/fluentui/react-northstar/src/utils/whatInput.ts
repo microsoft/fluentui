@@ -108,7 +108,13 @@ const addListeners = (eventTarget: Window) => {
   eventTarget.addEventListener('keyup', eventBuffer, true);
 };
 
-const ignoreKeyboardFocused = (document: Document, eventKey: number) => {
+/**
+ *
+ * @param document document to apply the update to
+ * @param eventKey keyboard key passed from the event
+ * @returns true if mode should be switched, false if not (when focus is in inputs and key was not a navigational key)
+ */
+const keyboardInputFocused = (document: Document, eventKey: number) => {
   if (
     document.activeElement.tagName === 'INPUT' ||
     document.activeElement.tagName === 'TEXTAREA' ||
@@ -135,7 +141,7 @@ const setInput = (event: WhatInputEvents) => {
 
     const ignoreMatch = ignoreMap.indexOf(eventKey) === -1;
     const shouldUpdate =
-      (value === 'keyboard' && eventKey && ignoreMatch && ignoreKeyboardFocused(event.view.document, eventKey)) ||
+      (value === 'keyboard' && eventKey && ignoreMatch && keyboardInputFocused(event.view.document, eventKey)) ||
       value === 'mouse' ||
       value === 'touch';
 
