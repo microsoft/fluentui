@@ -14,6 +14,7 @@ export { SingleSelect } from './SingleSelect.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { CellNavigation } from './CellNavigation.stories';
+export { SubtleSelection } from './SubtleSelection.stories';
 
 export default {
   title: 'Preview Components/Table',

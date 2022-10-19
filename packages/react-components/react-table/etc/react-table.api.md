@@ -13,6 +13,7 @@ import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -262,16 +263,18 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
 export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
     type?: 'checkbox' | 'radio';
     checked?: CheckboxProps['checked'];
+    subtle?: boolean;
+    hidden?: boolean;
 };
 
 // @public (undocumented)
 export type TableSelectionCellSlots = {
     checkboxIndicator: Slot<typeof Checkbox>;
-    radioIndicator: Slot<'span'>;
+    radioIndicator: Slot<typeof Radio>;
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> & Pick<TableContextValue, 'noNativeElements'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public (undocumented)
 export interface TableSelectionState {
