@@ -27,6 +27,8 @@ export interface LoaderSlotClassNames {
   indicator: string;
   label: string;
   svg: string;
+  svgTrack: string;
+  svgTail: string;
 }
 
 export interface LoaderProps extends UIComponentProps {
@@ -68,6 +70,8 @@ export const loaderSlotClassNames: LoaderSlotClassNames = {
   indicator: `${loaderClassName}__indicator`,
   label: `${loaderClassName}__label`,
   svg: `${loaderClassName}__svg`,
+  svgTrack: `${loaderClassName}__track`,
+  svgTail: `${loaderClassName}__tail`,
 };
 
 export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | 'size' | 'secondary'>;
@@ -87,7 +91,6 @@ export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref
     secondary,
     label,
     indicator,
-    svg,
     inline,
     labelPosition,
     className,
@@ -142,9 +145,12 @@ export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref
     return () => clearTimeout(delayTimer.current);
   }, [delay]);
 
-  const svgElement = Box.create(svg, {
-    defaultProps: () => ({ className: loaderSlotClassNames.svg, styles: resolvedStyles.svg }),
-  });
+  const svgElement = (
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className={loaderSlotClassNames.svg}>
+      <circle className={loaderSlotClassNames.svgTrack} />
+      <circle className={loaderSlotClassNames.svgTail} />
+    </svg>
+  );
 
   const element = visible && (
     <ElementType
