@@ -1,4 +1,3 @@
-import type { Button } from '@fluentui/react-button';
 import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -8,7 +7,7 @@ export type InfoButtonSlots = {
   /**
    * The button that triggers the Popover.
    */
-  trigger: NonNullable<Slot<typeof Button>>;
+  button: NonNullable<Slot<'button'>>;
 
   /**
    * The content to be displayed in the Popover.

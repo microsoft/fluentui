@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
 import { DefaultInfoButtonIcon } from './DefaultInfoButtonIcon';
 import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
 import { resolveShorthand } from '@fluentui/react-utilities';
@@ -31,7 +30,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps): InfoButtonState 
 
     components: {
       root: Popover,
-      trigger: Button,
+      button: 'button',
       content: PopoverSurface,
     },
 
@@ -50,12 +49,11 @@ export const useInfoButton_unstable = (props: InfoButtonProps): InfoButtonState 
         role: 'dialog',
       },
     }),
-    trigger: resolveShorthand(props.trigger, {
+    button: resolveShorthand(props.button, {
       required: true,
       defaultProps: {
-        size: 'small',
-        appearance: 'transparent',
-        icon: <DefaultInfoButtonIcon />,
+        children: <DefaultInfoButtonIcon />,
+        type: 'button',
       },
     }),
   };

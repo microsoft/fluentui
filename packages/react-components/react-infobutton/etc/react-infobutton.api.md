@@ -6,7 +6,6 @@
 
 /// <reference types="react" />
 
-import type { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -27,7 +26,7 @@ export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'ch
 // @public (undocumented)
 export type InfoButtonSlots = {
     root: NonNullable<Slot<PopoverProps>>;
-    trigger: NonNullable<Slot<typeof Button>>;
+    button: NonNullable<Slot<'button'>>;
     content: NonNullable<Slot<typeof PopoverSurface>>;
 };
 

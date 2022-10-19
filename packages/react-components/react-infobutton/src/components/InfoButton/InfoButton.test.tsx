@@ -15,7 +15,7 @@ function queryByRoleDialog(result: RenderResult) {
 }
 
 const getPopoverSurfaceElement = (result: RenderResult) => {
-  // triggerButton needs to be clicked otherwise content won't be rendered.
+  // button needs to be clicked otherwise content won't be rendered.
   result.getByRole('button').click();
   const dialog = queryByRoleDialog(result);
   expect(dialog).not.toBeNull();
@@ -41,7 +41,7 @@ describe('InfoButton', () => {
           props: {},
           expectedClassNames: {
             // root shouldn't be expected since the root is a Popover
-            trigger: infoButtonClassNames.trigger,
+            button: infoButtonClassNames.button,
             content: infoButtonClassNames.content,
           },
           getPortalElement: getPopoverSurfaceElement,

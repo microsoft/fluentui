@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { InfoButton } from '@fluentui/react-infobutton';
 import { Link } from '@fluentui/react-components';
-import { bundleIcon, QuestionCircle12Regular, QuestionCircle12Filled } from '@fluentui/react-icons';
+import { bundleIcon, BookInformation20Regular, BookInformation20Filled } from '@fluentui/react-icons';
 
 export const CustomIcon = () => {
-  const Icon = bundleIcon(QuestionCircle12Filled, QuestionCircle12Regular);
+  const Icon = bundleIcon(BookInformation20Filled, BookInformation20Regular);
 
   return (
     <InfoButton
-      trigger={{ icon: <Icon /> }}
+      button={{ children: <Icon /> }}
       content={
         <>
           Popover above-start lorem ipsum dolor sit amet consectetur.{' '}
