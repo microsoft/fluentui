@@ -10,7 +10,7 @@ exports[`TableSelectionCell renders a default state 1`] = `
     >
       <input
         class="fui-Checkbox__input"
-        id="checkbox-8"
+        id="checkbox-9"
         type="checkbox"
       />
       <div
