@@ -6,7 +6,7 @@
 
 ## Summary
 
-Decide how to implement simple components that could be built with already created components.
+Decide how to implement components that could be built with already created components.
 
 ## Background
 
@@ -18,22 +18,22 @@ This is where this RFC will decide how to proceed with this portion of the probl
 
 ## Problem statement
 
-As we start working on new components, there might be some components that are simple and could be built with a simple layout and the already finished components. When creating these components, we currently don't have a guidance on whether to let the user build the component or us provide the component. This RFC offers three options, one that will require the user to build the components using instructions (recipes), another where we will provide the implementation of the component, and a combination of both option 1 and 2 providing a partial implementation and a recipe.
+As we start working on new components, there might be some components that are simple and could be built with a simple layout and the already finished components. When creating these components, we currently don't have a guidance on whether to let the user build the component or we provide the component. This RFC offers three options, one that will require the user to build the components using instructions (recipes), another where we will provide the implementation of the component, and a combination of both option 1 and 2 providing a partial implementation and a recipe.
 
 #### What makes a component a candidate for this RFC's solution?
 
-- Its implementation is simple.
-- The desired design is achievable adjusting the props of the inner components.
-- It doesn't have complex accessibility requirements.
-- It doesn't have strict design requirements.
+- It should encourage components that provide high value beyond general purpose layout.
+- It should promote the use of our composition model and already created components. This will help us achieve a consistent look and feel across apps.
+- It should be generic enough to be used in multiple scenarios. This is to avoid creating a component that is only used in one place.
+- It should provide more than a blurb of code snippets that the users might just copy and paste.
 
 ## Detailed Design or Proposal
 
 ### Option 1: Recipes section in docsite
 
-In this option we will add a section to our docs detailing how to create the component with our already created components.
+In this option we will add a section to our docs detailing how to create a component/layout/composition using already created components in a Fluent way. We could think of it as showing how to Fluentify known patterns or layouts.
 
-A great example of a recipe is the [Media Objects recipe](https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Media_objects) by MDN.
+It is also important to note that this option doesn't mean we will provide code snippets that you have to copy paste, but rather guide the user on what's the important part of the component and leave the rest to the user.
 
 #### Folder structure inside docs
 
@@ -73,13 +73,13 @@ For this option, we would implement the component and provide it like any other 
 #### Pros
 
 - We can ensure the design follows the design spec.
-- We control the accessibility behavior.
 - Makes it easier for the user.
 
 #### Cons
 
 - Another component package for a simple component.
 - More code to maintain.
+- More design figmas.
 
 ### Option 3: Option 1 + Option 2 `@fluentui/react-recipe-hooks`
 
@@ -107,9 +107,11 @@ const MyMediaObject = () => {
 };
 ```
 
+There will still be parts of the component that the user will have to implement, these hooks will not be a full implementation.
+
 #### Pros
 
-- We can add more design guidance
+- We can add more design guidance.
 - While the user still has to do more work than option 2, it's way easier than option 1.
 - Simpler to maintain than option 2.
 - Can make option 1 easier to follow.
