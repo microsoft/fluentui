@@ -14,19 +14,22 @@ export const renderAvatarGroupPopover_unstable = (
   contextValues: AvatarGroupContextValues,
 ) => {
   const { slots, slotProps } = getSlots<AvatarGroupPopoverSlots>(state);
+  const { shouldRender } = state;
 
   return (
-    <slots.root {...(slotProps.root as PopoverProps)}>
-      <PopoverTrigger>
-        <slots.tooltip {...(slotProps.tooltip as TooltipProps)}>
-          <slots.triggerButton {...slotProps.triggerButton} />
-        </slots.tooltip>
-      </PopoverTrigger>
-      <slots.popoverSurface {...slotProps.popoverSurface}>
-        <AvatarGroupProvider value={contextValues.avatarGroup}>
-          <slots.content {...slotProps.content} />
-        </AvatarGroupProvider>
-      </slots.popoverSurface>
-    </slots.root>
+    shouldRender && (
+      <slots.root {...(slotProps.root as PopoverProps)}>
+        <PopoverTrigger>
+          <slots.tooltip {...(slotProps.tooltip as TooltipProps)}>
+            <slots.triggerButton {...slotProps.triggerButton} />
+          </slots.tooltip>
+        </PopoverTrigger>
+        <slots.popoverSurface {...slotProps.popoverSurface}>
+          <AvatarGroupProvider value={contextValues.avatarGroup}>
+            <slots.content {...slotProps.content} />
+          </AvatarGroupProvider>
+        </slots.popoverSurface>
+      </slots.root>
+    )
   );
 };

@@ -16,6 +16,7 @@ export {
   avatarGroupClassNames,
   avatarGroupItemClassNames,
   avatarGroupPopoverClassNames,
+  partitionAvatarGroupItems,
   renderAvatarGroup_unstable,
   renderAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
@@ -37,6 +38,7 @@ export type {
   AvatarGroupPopoverProps,
   AvatarGroupPopoverSlots,
   AvatarGroupPopoverState,
+  PartitionAvatarGroupItemsOptions,
 } from '@fluentui/react-avatar';
 export {
   Card,

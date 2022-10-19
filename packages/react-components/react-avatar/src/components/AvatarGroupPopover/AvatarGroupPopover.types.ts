@@ -59,4 +59,9 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
+
+    /**
+     * When the AvatarGroupPopover recieves an empty array of children, null, or undefined, it should not render.
+     */
+    shouldRender: boolean;
   };
