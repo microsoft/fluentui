@@ -17,7 +17,7 @@ const ESLint = new CLIEngine({
 const pluginName = 'gulp-example-source';
 
 const createExampleSourceCode = (file: Vinyl): ExampleSource => {
-  const tsSource = file.contents.toString();
+  const tsSource = file.contents?.toString() ?? '';
 
   const babelResult = Babel.transform(tsSource, {
     // This plugin transforms TS files for docs, we want to apply exactly this config.
@@ -26,7 +26,7 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
     presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]],
     sourceType: 'module',
   });
-  const prettierResult = prettier.format(babelResult.code, {
+  const prettierResult = prettier.format(babelResult?.code ?? '', {
     ...prettierConfig,
     trailingComma: 'all',
     printWidth: 100,

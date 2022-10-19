@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 15 Sep 2022 09:48:57 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:03:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.1.1)
+
+Thu, 13 Oct 2022 11:03:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.1.0..@fluentui/react-utilities_v9.1.1)
+
+### Patches
+
+- chore: restricts trigger API types ([PR #25044](https://github.com/microsoft/fluentui/pull/25044) by bernardo.sunderhus@gmail.com)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.1.0)
 

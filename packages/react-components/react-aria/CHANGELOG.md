@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 15 Sep 2022 09:49:48 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:03:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.2)
+
+Thu, 13 Oct 2022 11:03:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.2.1..@fluentui/react-aria_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.1)
+
+Mon, 03 Oct 2022 22:24:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.2.0..@fluentui/react-aria_v9.2.1)
+
+### Patches
+
+- chore: user defined tabIndex should prevail aria-button defined ([PR #24962](https://github.com/microsoft/fluentui/pull/24962) by bernardo.sunderhus@gmail.com)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.0)
 

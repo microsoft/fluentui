@@ -348,7 +348,7 @@ Default popover
 </div>
 
 // on document.body
-<div role="complementary">
+<div role="group">
   {/** content */}
 </div>
 ```
@@ -499,7 +499,7 @@ Accessible markup is divided into two scenarios:
 ```tsx
 // Popover that does not trap focus
 <button aria-expanded="false">Trigger</button>
-<div role="complementary">
+<div role="group">
   No focus trap
 </div>
 

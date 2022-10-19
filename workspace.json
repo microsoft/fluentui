@@ -305,6 +305,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-avatar-context": {
+      "root": "packages/react-components/react-avatar-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-avatar-context/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-badge": {
       "root": "packages/react-components/react-badge",
       "projectType": "library",
@@ -330,13 +337,6 @@
       "sourceRoot": "packages/react-components/react-button/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
-    },
-    "@fluentui/react-button-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-button-shim-v8-v9",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-button-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-card": {
       "root": "packages/react-components/react-card",
@@ -498,6 +498,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-infobutton": {
+      "root": "packages/react-components/react-infobutton",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-infobutton/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-input": {
       "root": "packages/react-components/react-input",
       "projectType": "library",
@@ -526,12 +533,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-menu-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-menu-shim-v8-v9",
+    "@fluentui/react-migration-v8-v9": {
+      "root": "packages/react-migration-v8-v9",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-menu-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
+      "sourceRoot": "packages/react-migration-v8-v9/src"
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
@@ -679,13 +685,6 @@
       "sourceRoot": "packages/react-components/react-spinner/src",
       "tags": ["vNext", "platform:web"]
     },
-    "@fluentui/react-stack-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-stack-shim-v8-v9",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-stack-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
-    },
     "@fluentui/react-storybook": {
       "root": "packages/react-components/react-storybook",
       "projectType": "library",
@@ -762,13 +761,6 @@
       "sourceRoot": "packages/react-components/react-theme-sass/src",
       "tags": ["vNext", "platform:web"]
     },
-    "@fluentui/react-theme-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-theme-shim-v8-v9",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-theme-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
-    },
     "@fluentui/react-toolbar": {
       "root": "packages/react-components/react-toolbar",
       "projectType": "library",
@@ -783,11 +775,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-trigger": {
-      "root": "packages/react-components/react-trigger",
+    "@fluentui/react-tree": {
+      "root": "packages/react-components/react-tree",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-components/react-trigger/src",
+      "sourceRoot": "packages/react-components/react-tree/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-utilities": {

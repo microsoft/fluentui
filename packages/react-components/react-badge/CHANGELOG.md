@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:02:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.8)
+
+Thu, 13 Oct 2022 11:02:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.7..@fluentui/react-badge_v9.0.8)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.6..@fluentui/react-badge_v9.0.7)
+
+### Patches
+
+- fix: CounterBadge now always renders its children if provided ([PR #24916](https://github.com/microsoft/fluentui/pull/24916) by behowell@microsoft.com)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.6)
 

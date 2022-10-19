@@ -176,60 +176,6 @@ export {
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
 
 export {
-  Dialog,
-  useDialog_unstable,
-  renderDialog_unstable,
-  DialogTitle,
-  dialogTitleClassNames,
-  useDialogTitle_unstable,
-  useDialogTitleStyles_unstable,
-  renderDialogTitle_unstable,
-  DialogTrigger,
-  useDialogTrigger_unstable,
-  renderDialogTrigger_unstable,
-  DialogBody,
-  dialogBodyClassNames,
-  useDialogBody_unstable,
-  useDialogBodyStyles_unstable,
-  renderDialogBody_unstable,
-  DialogActions,
-  dialogActionsClassNames,
-  useDialogActions_unstable,
-  useDialogActionsStyles_unstable,
-  renderDialogActions_unstable,
-  DialogSurface,
-  dialogSurfaceClassNames,
-  useDialogSurface_unstable,
-  useDialogSurfaceStyles_unstable,
-  renderDialogSurface_unstable,
-} from '@fluentui/react-dialog';
-
-export type {
-  DialogProps,
-  DialogOpenChangeData,
-  DialogOpenChangeEvent,
-  DialogSlots,
-  DialogState,
-  DialogTriggerProps,
-  DialogTriggerChildProps,
-  DialogTriggerState,
-  DialogTriggerAction,
-  DialogActionsProps,
-  DialogActionsSlots,
-  DialogActionsState,
-  DialogActionsPosition,
-  DialogBodyProps,
-  DialogBodySlots,
-  DialogBodyState,
-  DialogTitleProps,
-  DialogTitleSlots,
-  DialogTitleState,
-  DialogSurfaceProps,
-  DialogSurfaceSlots,
-  DialogSurfaceState,
-} from '@fluentui/react-dialog';
-
-export {
   TableCell,
   tableCellClassNames,
   tableCellClassName,
@@ -353,3 +299,12 @@ export type {
   SwitchFieldProps,
   TextareaFieldProps,
 } from '@fluentui/react-field';
+
+export {
+  Persona,
+  personaClassNames,
+  renderPersona_unstable,
+  usePersonaStyles_unstable,
+  usePersona_unstable,
+} from '@fluentui/react-persona';
+export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';

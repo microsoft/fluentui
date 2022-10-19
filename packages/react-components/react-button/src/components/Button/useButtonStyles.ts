@@ -19,8 +19,10 @@ const useRootStyles = makeStyles({
   // Base styles
   base: {
     alignItems: 'center',
+    boxSizing: 'border-box',
     display: 'inline-flex',
     justifyContent: 'center',
+    textDecorationLine: 'none',
     verticalAlign: 'middle',
 
     ...shorthands.margin(0),
@@ -63,6 +65,17 @@ const useRootStyles = makeStyles({
       [`& .${iconRegularClassName}`]: {
         display: 'none',
       },
+    },
+  },
+
+  // Transition styles
+  transition: {
+    transitionDuration: '100ms',
+    transitionProperty: 'background, border, color',
+    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
     },
   },
 
@@ -450,6 +463,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
 
     // Root styles
     rootStyles.base,
+    rootStyles.transition,
     rootStyles.highContrast,
     appearance && rootStyles[appearance],
     rootStyles[size],

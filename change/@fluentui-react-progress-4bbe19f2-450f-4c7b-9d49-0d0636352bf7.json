@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add shape prop to Progress",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Tue, 20 Sep 2022 20:55:42 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 11:03:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.1.2)
+
+Thu, 13 Oct 2022 11:03:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.1.1..@fluentui/react-textarea_v9.1.2)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.1.1)
+
+Mon, 03 Oct 2022 22:24:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.1.0..@fluentui/react-textarea_v9.1.1)
+
+### Patches
+
+- chore: Deprecating filled with shadow appearance variant. ([PR #24900](https://github.com/microsoft/fluentui/pull/24900) by esteban.230@hotmail.com)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.1.0)
 

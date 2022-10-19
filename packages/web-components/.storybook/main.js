@@ -4,7 +4,7 @@ module.exports = {
   stories: ['../src/**/*.stories.@(ts|mdx)'],
   staticDirs: ['../public'],
   core: {
-    builder: 'webpack4',
+    builder: 'webpack5',
   },
   addons: [
     {
@@ -25,7 +25,7 @@ module.exports = {
       test: /\.ts$/,
       use: [
         {
-          loader: require.resolve('ts-loader'),
+          loader: 'ts-loader',
         },
       ],
     });

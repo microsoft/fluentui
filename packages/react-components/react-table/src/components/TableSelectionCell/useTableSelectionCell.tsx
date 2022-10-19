@@ -4,6 +4,7 @@ import { Checkbox } from '@fluentui/react-checkbox';
 import { CheckmarkFilled } from '@fluentui/react-icons';
 import type { TableSelectionCellProps, TableSelectionCellState } from './TableSelectionCell.types';
 import { useTableCell_unstable } from '../TableCell/useTableCell';
+import { useTableContext } from '../../contexts/tableContext';
 
 /**
  * Create the state required to render TableSelectionCell.
@@ -19,6 +20,7 @@ export const useTableSelectionCell_unstable = (
   ref: React.Ref<HTMLElement>,
 ): TableSelectionCellState => {
   const tableCellState = useTableCell_unstable(props, ref);
+  const { noNativeElements } = useTableContext();
   const type = props.type ?? 'checkbox';
 
   return {
@@ -38,5 +40,6 @@ export const useTableSelectionCell_unstable = (
     }),
     type,
     checked: props.checked ?? false,
+    noNativeElements,
   };
 };

@@ -19,7 +19,7 @@ import {
   TableSelectionCell,
   TableCellLayout,
 } from '../..';
-import { useTable, ColumnDefinition, RowId } from '../../hooks';
+import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
@@ -104,26 +104,37 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const MultipleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(new Set<RowId>());
+  const [selectedRows, setSelectedRows] = React.useState(
+    () => new Set<RowId>([0, 1]),
+  );
+
   const {
-    rows,
-    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
-  } = useTable({
-    columns,
-    items,
-    selectedRows,
-    onSelectionChange: setSelectedRows,
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-      selected: selection.isRowSelected(row.rowId),
-    }),
-  });
+    getRows,
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      useSelection({
+        selectionMode: 'multiselect',
+        selectedItems: selectedRows,
+        onSelectionChange: setSelectedRows,
+      }),
+    ],
+  );
+
+  const rows = getRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
 
   // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
@@ -144,7 +155,14 @@ export const MultipleSelectControlled = () => {
       </TableHeader>
       <TableBody ref={ref}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+          <TableRow
+            tabIndex={0}
+            key={item.file.label}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
+            aria-selected={selected}
+            appearance={selected ? 'neutral' : 'none'}
+          >
             <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>

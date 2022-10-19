@@ -1,8 +1,17 @@
 # Change Log - @fluentui/bundle-size
 
-This log was last generated on Thu, 12 May 2022 07:41:44 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Sep 2022 07:37:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.7)
+
+Wed, 28 Sep 2022 07:37:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.6..@fluentui/bundle-size_v1.1.7)
+
+### Patches
+
+- fix: bump workspace-tools and add options to collectLocalReport api ([PR #24891](https://github.com/microsoft/fluentui/pull/24891) by martinhochel@microsoft.com)
 
 ## [1.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.6)
 

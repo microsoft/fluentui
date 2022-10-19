@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody, DialogContent } from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogContent,
+  Button,
+} from '@fluentui/react-components';
 import story from './DialogNonModal.md';
 
 export const NonModal = () => {

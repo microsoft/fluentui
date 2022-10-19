@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Tue, 20 Sep 2022 20:55:42 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Oct 2022 12:56:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.6)
+
+Thu, 13 Oct 2022 12:56:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.5..@fluentui/react-table_v9.0.0-alpha.6)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.2.2 ([PR #25119](https://github.com/microsoft/fluentui/pull/25119) by beachball)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.5)
+
+Thu, 13 Oct 2022 11:03:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.4..@fluentui/react-table_v9.0.0-alpha.5)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- BREAKING: refactor `useTable` to be composable ([PR #24947](https://github.com/microsoft/fluentui/pull/24947) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.2.2 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-avatar to v9.2.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.8 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.4)
+
+Mon, 03 Oct 2022 22:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.3..@fluentui/react-table_v9.0.0-alpha.4)
+
+### Changes
+
+- feat: `noNativeElements` renders a flex layout ([PR #24913](https://github.com/microsoft/fluentui/pull/24913) by lingfangao@hotmail.com)
+- feat: Use AvatarContext to override avatar size ([PR #24807](https://github.com/microsoft/fluentui/pull/24807) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.2.1 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-avatar to v9.2.0 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.7 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.3)
 

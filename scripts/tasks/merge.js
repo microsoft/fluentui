@@ -1,4 +1,11 @@
-module.exports = function merge(obj1, obj2) {
+module.exports = merge;
+
+/**
+ *
+ * @param {Record<string,any>} obj1
+ * @param {Record<string,any>} obj2
+ */
+function merge(obj1, obj2) {
   const merged = Object.assign({}, obj1);
 
   for (const prop in obj2) {
@@ -15,4 +22,4 @@ module.exports = function merge(obj1, obj2) {
   }
 
   return merged;
-};
+}

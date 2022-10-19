@@ -9,10 +9,11 @@
  * Helper which resolves a specific set of environment variable values. If not present,
  * the provided default values will be returned.
  *
- * @param options - A object where the keys are the environment variables to read,
+ * @param {Record<string,string>} options - A object where the keys are the environment variables to read,
  * and their values represent the default value to use if the variable is not present.
  */
 const getVariables = options => {
+  /** @type {Record<string,string>} */
   const variables = {};
 
   for (const key of Object.keys(options)) {
@@ -28,9 +29,9 @@ const getVariables = options => {
  * Function which returns DefinePlugin options for a specific set of environment variables.
  * This is needed because Webpack 5 no longer automatically resolves process.env values.
  *
- * @param {boolean=} isProduction - If true will ensure NODE_ENV is 'production', even
+ * @param {boolean} [isProduction] - If true will ensure NODE_ENV is 'production', even
  * if environment variables specify otherwise.
- * @param {object=} otherValues - Other values to include in the environment. Key is the
+ * @param {Record<string,string>} [otherValues] - Other values to include in the environment. Key is the
  * environment variable name and value is the non-stringified value.
  */
 module.exports = (isProduction, otherValues) => ({
