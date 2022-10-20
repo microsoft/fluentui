@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: AvatarGroupPopover does not render when children is an empty array, undefined, or null.",
+  "comment": "fix: Add renderOverflowButton variable to partitionAvatarGroupItems.",
   "packageName": "@fluentui/react-avatar",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
