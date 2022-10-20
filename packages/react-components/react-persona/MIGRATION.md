@@ -13,7 +13,6 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 - ```
 
   ```
-
 - `imageShouldFadeIn` => NOT SUPPORTED
 - `isOutOfOffice` => Use the `outOfOffice` prop of the `presence` slot. E.g.: `presence={{ outOfOffice: true }}`
 - `presence` => Use the `status` prop of the `presence` slot. E.g.: `presence={{ status: 'away' }}`
