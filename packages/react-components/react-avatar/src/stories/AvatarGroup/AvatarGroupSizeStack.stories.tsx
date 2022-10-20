@@ -33,7 +33,7 @@ export const SizeStack = () => {
   return (
     <div className={styles.root}>
       {sizes.map(size => {
-        const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({
+        const { inlineItems, overflowItems } = partitionAvatarGroupItems({
           items: names,
           layout: 'stack',
         });
@@ -43,7 +43,7 @@ export const SizeStack = () => {
             {inlineItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
             ))}
-            {renderOverflowButton && (
+            {overflowItems && (
               <AvatarGroupPopover>
                 {overflowItems.map(name => (
                   <AvatarGroupItem name={name} key={name} />

@@ -35,7 +35,7 @@ export const Layout = () => {
         {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        {partitionedItems.renderOverflowButton && (
+        {partitionedItems.overflowItems && (
           <AvatarGroupPopover>
             {partitionedItems.overflowItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
@@ -47,7 +47,7 @@ export const Layout = () => {
         {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        {partitionedItems.renderOverflowButton && (
+        {partitionedItems.overflowItems && (
           <AvatarGroupPopover>
             {partitionedItems.overflowItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
@@ -59,7 +59,7 @@ export const Layout = () => {
         {piePartitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        {piePartitionedItems.renderOverflowButton && (
+        {piePartitionedItems.overflowItems && (
           <AvatarGroupPopover>
             {piePartitionedItems.overflowItems.map(name => (
               <AvatarGroupItem name={name} key={name} />

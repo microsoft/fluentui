@@ -29,7 +29,7 @@ const sizes: AvatarSizes[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 12
 
 export const SizePie = () => {
   const styles = useStyles();
-  const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({
     items: names,
     layout: 'pie',
   });
@@ -42,7 +42,7 @@ export const SizePie = () => {
             {inlineItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
             ))}
-            {renderOverflowButton && (
+            {overflowItems && (
               <AvatarGroupPopover>
                 {overflowItems.map(name => (
                   <AvatarGroupItem name={name} key={name} />

@@ -17,14 +17,14 @@ const names = [
 ];
 
 export const Default = (props: Partial<AvatarGroupProps>) => {
-  const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({ items: names });
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (
     <AvatarGroup {...props}>
       {inlineItems.map(name => (
         <AvatarGroupItem name={name} key={name} />
       ))}
-      {renderOverflowButton && (
+      {overflowItems && (
         <AvatarGroupPopover>
           {overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />

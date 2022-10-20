@@ -48,7 +48,7 @@ const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 const AvatarGroupList: React.FC<
   AvatarGroupProps & { overflowIndicator?: AvatarGroupPopoverProps['indicator'] }
 > = props => {
-  const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({
     items: names,
     layout: props.layout,
   });
@@ -60,7 +60,7 @@ const AvatarGroupList: React.FC<
           {inlineItems.map(name => (
             <AvatarGroupItem key={name} name={name} />
           ))}
-          {renderOverflowButton && (
+          {overflowItems && (
             <AvatarGroupPopover indicator={props.overflowIndicator}>
               {overflowItems.map(name => (
                 <AvatarGroupItem key={name} name={name} />
@@ -143,14 +143,14 @@ storiesOf('AvatarGroup Converged', module)
   .addStory(
     'overflowContent',
     () => {
-      const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({ items: names });
+      const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
       return (
         <div style={{ padding: '10px' }}>
           <AvatarGroup>
             {inlineItems.map(name => (
               <AvatarGroupItem key={name} name={name} />
             ))}
-            {renderOverflowButton && (
+            {overflowItems && (
               <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
                 {overflowItems.map(name => (
                   <AvatarGroupItem key={name} name={name} />

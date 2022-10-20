@@ -6,8 +6,7 @@ export type PartitionAvatarGroupItemsOptions<T> = {
 
 export type PartitionAvatarGroupItems<T> = {
   inlineItems: readonly T[];
-  overflowItems: readonly T[];
-  renderOverflowButton: boolean;
+  overflowItems?: readonly T[];
 };
 
 /**
@@ -26,17 +25,16 @@ export const partitionAvatarGroupItems = <T>(
   if (isPie) {
     return {
       inlineItems: items.slice(0, 3),
-      overflowItems: items,
-      renderOverflowButton: items.length > 3,
+      overflowItems: items.length > 0 ? items : undefined,
     };
   }
 
   const maxInlineItems = options.maxInlineItems ?? 5;
   const inlineCount = -(maxInlineItems - (items.length > maxInlineItems ? 1 : 0));
+  const overflowItems = items.slice(0, inlineCount);
 
   return {
     inlineItems: items.slice(inlineCount),
-    overflowItems: items.slice(0, inlineCount),
-    renderOverflowButton: items.length > maxInlineItems,
+    overflowItems: overflowItems.length > 0 ? overflowItems : undefined,
   };
 };

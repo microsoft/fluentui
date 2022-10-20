@@ -33,14 +33,14 @@ export const SizeSpread = () => {
   return (
     <div className={styles.root}>
       {sizes.map(size => {
-        const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({ items: names });
+        const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
         return (
           <AvatarGroup layout="spread" size={size} key={size}>
             {inlineItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
             ))}
-            {renderOverflowButton && (
+            {overflowItems && (
               <AvatarGroupPopover>
                 {overflowItems.map(name => (
                   <AvatarGroupItem name={name} key={name} />

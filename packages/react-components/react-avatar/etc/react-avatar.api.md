@@ -162,8 +162,7 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 // @public (undocumented)
 export type PartitionAvatarGroupItems<T> = {
     inlineItems: readonly T[];
-    overflowItems: readonly T[];
-    renderOverflowButton: boolean;
+    overflowItems?: readonly T[];
 };
 
 // @public
