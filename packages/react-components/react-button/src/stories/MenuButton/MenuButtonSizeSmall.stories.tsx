@@ -1,12 +1,30 @@
 import * as React from 'react';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger, Tooltip } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Tooltip,
+} from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
+
 export const SizeSmall = () => {
+  const styles = useStyles();
+
   return (
-    <>
+    <div className={styles.wrapper}>
       <Menu>
         <MenuTrigger>
           <MenuButton size="small">Small</MenuButton>
@@ -49,7 +67,7 @@ export const SizeSmall = () => {
           </MenuList>
         </MenuPopover>
       </Menu>
-    </>
+    </div>
   );
 };
 

@@ -1,10 +1,27 @@
 import * as React from 'react';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
+} from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
 
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
+
 export const Disabled = () => {
+  const styles = useStyles();
+
   return (
-    <>
+    <div className={styles.wrapper}>
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Enabled state</SplitButton>}
@@ -49,7 +66,7 @@ export const Disabled = () => {
           </MenuList>
         </MenuPopover>
       </Menu>
-    </>
+    </div>
   );
 };
 

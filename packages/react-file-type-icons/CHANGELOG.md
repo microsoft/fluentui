@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Mon, 10 Oct 2022 07:38:24 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Oct 2022 07:39:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.10)
+
+Wed, 19 Oct 2022 07:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.9..@fluentui/react-file-type-icons_v8.7.10)
+
+### Patches
+
+- Fixing mapping for Stream video icon and updating URL to the Fabric CDN. ([PR #25284](https://github.com/microsoft/fluentui/pull/25284) by caperez@microsoft.com)
 
 ## [8.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.9)
 

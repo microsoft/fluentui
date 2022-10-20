@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Bump react peer dependency to react 18.",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

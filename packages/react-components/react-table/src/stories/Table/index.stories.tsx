@@ -13,6 +13,7 @@ export { MultipleSelect } from './MultipleSelect.stories';
 export { SingleSelect } from './SingleSelect.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
+export { SubtleSelection } from './SubtleSelection.stories';
 export { CellNavigationMode } from './CellNavigationMode.stories';
 export { CompositeNavigationMode } from './CompositeNavigationMode.stories';
 
