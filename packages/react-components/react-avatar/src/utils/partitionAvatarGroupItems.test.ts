@@ -38,7 +38,7 @@ describe('partitionAvatarGroupItems', () => {
     const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
 
     expect(inlineItems).toEqual([0, 1, 2]);
-    expect(overflowItems).toEqual([]);
+    expect(overflowItems).toBeUndefined();
   });
 
   it('partitions the items correctly when there is no overflow when using the pie layout', () => {
@@ -63,13 +63,5 @@ describe('partitionAvatarGroupItems', () => {
 
     expect(inlineItems).toEqual([3, 4, 5, 6, 7, 8, 9]);
     expect(overflowItems).toEqual([0, 1, 2]);
-  });
-
-  it('returns undefined when there are no overflowing items', () => {
-    const items = [0, 1, 2, 3, 4, 5];
-    const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
-
-    expect(inlineItems).toEqual([0, 1, 2, 3, 4, 5]);
-    expect(overflowItems).toEqual(undefined);
   });
 });

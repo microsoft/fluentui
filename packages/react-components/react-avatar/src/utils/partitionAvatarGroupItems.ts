@@ -25,7 +25,7 @@ export const partitionAvatarGroupItems = <T>(
   if (isPie) {
     return {
       inlineItems: items.slice(0, 3),
-      overflowItems: items.length > 3 ? items : undefined,
+      overflowItems: items.length > 0 ? items : undefined,
     };
   }
 
