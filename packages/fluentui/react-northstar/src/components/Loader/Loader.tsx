@@ -146,9 +146,9 @@ export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref
   }, [delay]);
 
   const svgElement = (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className={loaderSlotClassNames.svg}>
-      <circle className={loaderSlotClassNames.svgTrack} />
-      <circle className={loaderSlotClassNames.svgTail} />
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className={classes.svg}>
+      <circle className={classes.svgTrack} />
+      <circle className={classes.svgTail} />
     </svg>
   );
 
