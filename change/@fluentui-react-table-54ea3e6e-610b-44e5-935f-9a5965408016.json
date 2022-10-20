@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(TableSelectionCell): Use Radio component, adds subtle and hidden",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Fixing the styles of Buttons rendered as anchor tags.",
-  "packageName": "@fluentui/react-button",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}

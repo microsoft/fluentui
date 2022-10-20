@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Bump tabster to 3.0.4",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
