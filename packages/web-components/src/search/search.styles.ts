@@ -9,11 +9,11 @@ import {
 } from '@microsoft/fast-foundation';
 import {
   baseInputStyles,
+  heightNumber,
   inputFilledStyles,
   inputForcedColorStyles,
   inputOutlineStyles,
   inputStateStyles,
-  heightNumber,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest } from '../design-tokens';
