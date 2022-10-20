@@ -533,10 +533,7 @@ export class GroupedListV2Wrapper
       selectionMode !== previousState.selectionMode ||
       compact !== previousState.compact
     ) {
-      nextState = {
-        ...nextState,
-        version: {},
-      };
+      nextState.version = {};
     }
 
     return nextState;
