@@ -48,10 +48,7 @@ const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 const AvatarGroupList: React.FC<
   AvatarGroupProps & { overflowIndicator?: AvatarGroupPopoverProps['indicator'] }
 > = props => {
-  const { inlineItems, overflowItems } = partitionAvatarGroupItems({
-    items: names,
-    layout: props.layout,
-  });
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: props.layout });
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>

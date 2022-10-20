@@ -29,10 +29,7 @@ const sizes: AvatarSizes[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 12
 
 export const SizePie = () => {
   const styles = useStyles();
-  const { inlineItems, overflowItems } = partitionAvatarGroupItems({
-    items: names,
-    layout: 'pie',
-  });
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: 'pie' });
 
   return (
     <div className={styles.root}>
