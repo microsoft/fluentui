@@ -521,7 +521,7 @@ export class GroupedListV2Wrapper
     const { groups, selectionMode, compact, items, listProps } = nextProps;
     const nextListVersion = listProps && listProps.version;
 
-    let nextState = {
+    const nextState = {
       ...previousState,
       groups,
     };
