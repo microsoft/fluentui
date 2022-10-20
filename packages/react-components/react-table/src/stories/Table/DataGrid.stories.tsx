@@ -31,7 +31,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useMergedRefs } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useMergedRefs, getSlots } from '@fluentui/react-components';
 import { TableCellLayoutProps } from '../../components/TableCellLayout/TableCellLayout.types';
 import { useTableCellLayout_unstable } from '../../components/TableCellLayout/useTableCellLayout';
 import { useTableCellLayoutStyles_unstable } from '../../components/TableCellLayout/useTableCellLayoutStyles';
@@ -39,24 +39,32 @@ import { renderTableCellLayout_unstable } from '../../components/TableCellLayout
 import { useSelection } from '../../hooks/useSelection';
 import { useTable } from '../../hooks/useTable';
 import { useTableCellLayoutContextValues_unstable } from '../../components/TableCellLayout/useTableCellLayoutContextValues';
-import { TableHeaderCellProps } from '../../components/TableHeaderCell/TableHeaderCell.types';
+import { TableHeaderCellProps, TableHeaderCellSlots } from '../../components/TableHeaderCell/TableHeaderCell.types';
 import { useTableHeaderCellStyles_unstable } from '../../components/TableHeaderCell/useTableHeaderCellStyles';
-import { renderTableHeaderCell_unstable } from '../../components/TableHeaderCell/renderTableHeaderCell';
 import { useTableHeaderCell_unstable } from '../../components/TableHeaderCell/useTableHeaderCell';
 import {
   ColumnDefinition,
   ColumnId,
   RowId,
   SortState,
-  TableSortState,
   TableState,
-  UseTableOptions,
+  UseSelectionOptions,
+  UseSortOptions,
 } from '../../hooks/types';
 import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 import { createContext } from '../../../../react-context-selector/src/createContext';
 import { useContextSelector } from '../../../../react-context-selector/src/useContextSelector';
 import { ContextSelector } from '../../../../react-context-selector/src/types';
 import { useSort } from '../../hooks/useSort';
+import { useColumnSizing } from '../../hooks/useColumnSizing';
+
+// 2. virtualization by default (react-)
+// 3. port column resizing prototype here - what codechanges are required on consumer side ?
+// 4. columns render function - should treat selection cell as column ?
+// 5. prototype column reordering - headless table too
+// 6. How to do lazy loading with DetailsList?
+// 7. prototype lazy loading in DataGrid/useTable
+// 1. PRs DataGrid
 
 type FileCell = {
   label: string;
@@ -130,11 +138,17 @@ const columns: ColumnDefinition<Item>[] = [
     compare: (a, b) => {
       return a.file.label.localeCompare(b.file.label);
     },
+    renderHeader: () => {
+      return <DataGridHeaderCell>File</DataGridHeaderCell>;
+    },
   },
   {
     columnId: 'author',
     compare: (a, b) => {
       return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeader: () => {
+      return <DataGridHeaderCell>Author</DataGridHeaderCell>;
     },
   },
   {
@@ -142,59 +156,51 @@ const columns: ColumnDefinition<Item>[] = [
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
+    renderHeader: () => {
+      return <DataGridHeaderCell>Last updated</DataGridHeaderCell>;
+    },
   },
   {
     columnId: 'lastUpdate',
     compare: (a, b) => {
       return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
     },
+    renderHeader: () => {
+      return <DataGridHeaderCell>Last update</DataGridHeaderCell>;
+    },
   },
 ];
 
 export const DataGridExample = () => {
   const [sortState, setSortState] = React.useState<SortState>({ sortColumn: 'file', sortDirection: 'ascending' });
-  const [selected, setSelected] = React.useState<RowId[]>([]);
-
-  // 2. virtualization by default (react-)
-  // 3. port column resizing prototype here - what codechanges are required on consumer side ?
-  // 4. columns render function - should treat selection cell as column ?
-  // 5. prototype column reordering - headless table too
-  // 6. How to do lazy loading with DetailsList?
-  // 7. prototype lazy loading in DataGrid/useTable
-  // 1. PRs DataGrid
+  const [selected, setSelected] = React.useState<Set<RowId>>(new Set<string>([]));
 
   return (
     <DataGrid
       items={items}
       columns={columns}
-      selectedRows={selected}
+      selectedRows={Array.from(selected)}
       sortState={sortState}
       onSortChange={setSortState}
       onSelectionChange={setSelected}
     >
       <DataGridHeader>
-        <DataGridRow>
-          <DataGridSelectionCell />
-          <DataGridHeaderCell columnId="file">File</DataGridHeaderCell>
-          <DataGridHeaderCell columnId="author">Author</DataGridHeaderCell>
-          <DataGridHeaderCell columnId="lastUpdated">Last updated</DataGridHeaderCell>
-          <DataGridHeaderCell columnId="lastUpdate">Last update</DataGridHeaderCell>
-        </DataGridRow>
+        <DataGridRow>{column => column.renderHeader?.()}</DataGridRow>
       </DataGridHeader>
       <DataGridBody>
         {(item: Item) => (
           <DataGridRow key={item.file.label}>
             <DataGridSelectionCell />
-            <DataGridCell>
+            <DataGridCell columnId="file">
               <DataGridCellLayout media={item.file.icon}>{item.file.label}</DataGridCellLayout>
             </DataGridCell>
-            <DataGridCell>
+            <DataGridCell columnId="author">
               <DataGridCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </DataGridCellLayout>
             </DataGridCell>
-            <DataGridCell>{item.lastUpdated.label}</DataGridCell>
-            <DataGridCell>
+            <DataGridCell columnId="lastUpdated">{item.lastUpdated.label}</DataGridCell>
+            <DataGridCell columnId="lastUpdate">
               <DataGridCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</DataGridCellLayout>
             </DataGridCell>
           </DataGridRow>
@@ -222,6 +228,7 @@ const DataGrid: React.FC<DataGridProps> = props => {
         defaultSortState: props.defaultSortState,
         onSortChange: props.onSortChange,
       }),
+      useColumnSizing(),
     ],
   );
   // eslint-disable-next-line deprecation/deprecation
@@ -229,7 +236,7 @@ const DataGrid: React.FC<DataGridProps> = props => {
   const ref = React.useRef<HTMLDivElement>(null);
   let componentState = useTable_unstable(
     { ...props, noNativeElements: true, role: 'grid' },
-    useMergedRefs(ref, navigationRef),
+    useMergedRefs(ref, navigationRef, tableState.tableRef),
   );
   componentState = useTableStyles_unstable(componentState);
   const contextValues = useTableContextValues_unstable(componentState);
@@ -246,12 +253,15 @@ const DataGridBody: React.FC<DataGridBodyProps> = props => {
   const getRows = useDataGridContext(ctx => ctx.state.getRows);
   const sort = useDataGridContext(ctx => ctx.state.sort.sort);
   const rows = sort(getRows());
-  const childItems = rows.map((row, i) => (
-    <DataGridRowContext.Provider key={i} value={i}>
-      {props.children(row.item)}
-    </DataGridRowContext.Provider>
-  ));
-  let componentState = useTableBody_unstable({ ...props, children: childItems }, ref);
+  let children = props.children;
+  if (typeof children === 'function') {
+    children = rows.map((row, i) => (
+      <DataGridRowContext.Provider key={i} value={i}>
+        {children(row.item)}
+      </DataGridRowContext.Provider>
+    ));
+  }
+  let componentState = useTableBody_unstable({ ...props, children }, ref);
   componentState = useTableBodyStyles_unstable(componentState);
 
   return renderTableBody_unstable(componentState);
@@ -271,9 +281,11 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = props => {
 
 const DataGridRow: React.FC<DataGridRowProps> = props => {
   const isInHeader = React.useContext(DataGridHeaderContext);
-  const rowId = React.useContext(DataGridRowContext) ?? '';
+  const contextRowId = React.useContext(DataGridRowContext);
+  const rowId = props.rowId ?? contextRowId ?? '';
   const checked = useDataGridContext(ctx => ctx.state.selection.isRowSelected(rowId));
   const toggleRow = useDataGridContext(ctx => ctx.state.selection.toggleRow);
+  const columnDefs = useDataGridContext(ctx => ctx.state.columns);
   const ref = React.useRef<HTMLDivElement>(null);
   const onClick = () => toggleRow(rowId);
   const onKeyDown = (e: React.KeyboardEvent) => e.key === ' ' && toggleRow(rowId);
@@ -285,30 +297,81 @@ const DataGridRow: React.FC<DataGridRowProps> = props => {
       }
     : {};
 
-  let componentState = useTableRow_unstable({ ...props, ...rowProps }, ref);
+  let children = props.children;
+  if (typeof children === 'function') {
+    children = columnDefs.map(columnDef => (
+      <DataGridCellContext.Provider value={columnDef.columnId} key={columnDef.columnId}>
+        {children(columnDef)}
+      </DataGridCellContext.Provider>
+    ));
+  }
+
+  let componentState = useTableRow_unstable({ ...props, ...rowProps, children }, ref);
   componentState = useTableRowStyles_unstable(componentState);
 
   return renderTableRow_unstable(componentState);
 };
 
 const DataGridCell: React.FC<DataGridCellProps> = props => {
+  const contextColumnId = React.useContext(DataGridCellContext);
+  const columnId = props.columnId ?? contextColumnId;
   const ref = React.useRef<HTMLDivElement>(null);
-  let componentState = useTableCell_unstable({ ...props, role: 'gridcell', tabIndex: 0 }, ref);
+  const getColumnWidth = useDataGridContext(ctx => ctx.state.columnSizing.getColumnWidth);
+  const columnStyles = {
+    minWidth: columnId ? getColumnWidth(columnId) : undefined,
+    maxWidth: columnId ? getColumnWidth(columnId) : undefined,
+  };
+  let componentState = useTableCell_unstable(
+    { ...props, role: 'gridcell', tabIndex: 0, style: { ...columnStyles } },
+    ref,
+  );
   componentState = useTableCellStyles_unstable(componentState);
 
   return renderTableCell_unstable(componentState);
 };
 
 const DataGridHeaderCell: React.FC<DataGridHeaderCellProps> = props => {
-  const sortDirection = useDataGridContext(ctx => ctx.state.sort.getSortDirection(props.columnId));
+  const contextColumnId = React.useContext(DataGridCellContext);
+  const columnId = props.columnId ?? contextColumnId;
+  const sortDirection = useDataGridContext(ctx => (columnId ? ctx.state.sort.getSortDirection(columnId) : undefined));
   const toggleColumnSort = useDataGridContext(ctx => ctx.state.sort.toggleColumnSort);
+  const getColumnWidth = useDataGridContext(ctx => ctx.state.columnSizing.getColumnWidth);
+  const getOnMouseDown = useDataGridContext(ctx => ctx.state.columnSizing.getOnMouseDown);
   const ref = React.useRef<HTMLDivElement>(null);
-  const onClick = () => toggleColumnSort(props.columnId);
+  const onClick = () => columnId && toggleColumnSort(columnId);
 
-  let componentState = useTableHeaderCell_unstable({ ...props, sortDirection, onClick }, ref);
+  const columnStyles = {
+    minWidth: columnId ? getColumnWidth(columnId) : undefined,
+    maxWidth: columnId ? getColumnWidth(columnId) : undefined,
+  };
+  let componentState = useTableHeaderCell_unstable(
+    { ...props, sortDirection, onClick, style: { ...columnStyles } },
+    ref,
+  );
   componentState = useTableHeaderCellStyles_unstable(componentState);
 
-  return renderTableHeaderCell_unstable(componentState);
+  const { slots, slotProps } = getSlots<TableHeaderCellSlots>(componentState);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.button {...slotProps.button} style={{ position: 'relative' }}>
+        {slotProps.root.children}
+        {slots.sortIcon && <slots.sortIcon {...slotProps.sortIcon} />}
+        <div
+          onMouseDown={getOnMouseDown(columnId)}
+          style={{
+            borderRight: '2px solid red',
+            height: '100%',
+            cursor: 'w-resize',
+            paddingLeft: 4,
+            paddingRight: 4,
+            position: 'absolute',
+            right: -8,
+          }}
+        />
+      </slots.button>
+    </slots.root>
+  );
 };
 
 const DataGridSelectionCell: React.FC<DataGridSelectionCellProps> = props => {
@@ -352,25 +415,33 @@ interface DataGridContextValue {
 }
 
 const DataGridRowContext = React.createContext<RowId | undefined>(undefined);
+const DataGridCellContext = React.createContext<ColumnId | undefined>(undefined);
 
 const DataGridHeaderContext = React.createContext<boolean | undefined>(undefined);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type DataGridProps = TableProps & {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: ColumnDefinition<any>[];
   sortState?: SortState;
   defaultSortState?: SortState;
-  onSelectionChange?: UseTableOptions['onSelectionChange'];
-  onSortChange?: UseTableOptions['onSortChange'];
+  onSelectionChange?: UseSelectionOptions['onSelectionChange'];
+  onSortChange?: UseSortOptions['onSortChange'];
   selectedRows?: RowId[];
   defaultSelectedRows?: RowId[];
 };
 type DataGridCellLayoutProps = TableCellLayoutProps & {};
 type DataGridSelectionCellProps = TableSelectionCellProps & {};
-type DataGridHeaderCellProps = TableHeaderCellProps & { columnId: ColumnId };
-type DataGridCellProps = TableCellProps & {};
-type DataGridRowProps = TableRowProps & {};
+type DataGridHeaderCellProps = TableHeaderCellProps & { columnId?: ColumnId };
+type DataGridCellProps = TableCellProps & { columnId?: ColumnId };
+type DataGridRowProps = Omit<TableRowProps, 'children'> & {
+  rowId?: RowId;
+  children: RenderFunction<ColumnDefinition<unknown>> | React.ReactNode;
+};
 type DataGridHeaderProps = TableHeaderProps & {};
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type DataGridBodyProps = Omit<TableBodyProps, 'children'> & { children: (item: any) => React.ReactNode };
+type RenderFunction<T = any> = (item: T) => React.ReactNode;
+type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
+  children: RenderFunction | React.ReactNode;
+};

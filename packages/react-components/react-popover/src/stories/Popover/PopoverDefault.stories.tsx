@@ -22,7 +22,14 @@ const ExampleContent = () => {
 export const Default = (props: PopoverProps) => (
   <Popover {...props}>
     <PopoverTrigger>
-      <Button>Popover trigger</Button>
+      {props => {
+        const { ref, ...rest } = props;
+        return (
+          <button {...rest} ref={ref}>
+            Popover
+          </button>
+        );
+      }}
     </PopoverTrigger>
 
     <PopoverSurface>

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
 
 export type RowId = string | number;
@@ -12,6 +13,8 @@ export interface SortState {
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
   compare?: (a: TItem, b: TItem) => number;
+  renderCell?: (item: TItem) => React.ReactNode;
+  renderHeader?: () => React.ReactNode;
 }
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
@@ -97,6 +100,22 @@ export interface RowState<TItem> {
    */
   rowId: RowId;
 }
+export interface ColumnWidthState {
+  columnId: ColumnId;
+  width: number;
+  minWidth: number;
+  maxWidth: number;
+  idealWidth: number;
+  padding: number;
+}
+
+export interface TableColumnSizingState {
+  getOnMouseDown: (columnId: ColumnId) => (e: React.MouseEvent<HTMLElement>) => void;
+  getColumnWidth: (columnId: ColumnId) => number;
+  getTotalWidth: () => number;
+  setColumnWidth: (columnId: ColumnId, newSize: number) => void;
+  getColumnWidths: () => ColumnWidthState[];
+}
 
 export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
   /**
@@ -118,6 +137,8 @@ export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' 
    * Table columns
    */
   columns: ColumnDefinition<TItem>[];
+  columnSizing: TableColumnSizingState;
+  tableRef: React.RefObject<HTMLDivElement>;
 }
 
 export interface UseSortOptions {
