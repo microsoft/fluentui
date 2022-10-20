@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix mapping for Stream video filetype, updated CDN url",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 12:24:26 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.8",
+      "version": "7.10.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix mapping for Stream video filetype, updated CDN url",
+            "author": "caperez@microsoft.com",
+            "commit": "a303adc6c133d1d2cddd5c4e8131d1d0321f833c",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Oct 2022 18:13:33 GMT",
       "tag": "@uifabric/file-type-icons_v7.10.7",
       "version": "7.10.7",

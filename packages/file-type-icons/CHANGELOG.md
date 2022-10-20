@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 04 Oct 2022 18:13:33 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 12:24:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.8](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.8)
+
+Thu, 20 Oct 2022 12:24:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.7..@uifabric/file-type-icons_v7.10.8)
+
+### Patches
+
+- Fix mapping for Stream video filetype, updated CDN url ([PR #25305](https://github.com/microsoft/fluentui/pull/25305) by caperez@microsoft.com)
 
 ## [7.10.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.7)
 
