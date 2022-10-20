@@ -27,8 +27,6 @@ export interface LoaderSlotClassNames {
   indicator: string;
   label: string;
   svg: string;
-  svgTrack: string;
-  svgTail: string;
 }
 
 export interface LoaderProps extends UIComponentProps {
@@ -70,8 +68,6 @@ export const loaderSlotClassNames: LoaderSlotClassNames = {
   indicator: `${loaderClassName}__indicator`,
   label: `${loaderClassName}__label`,
   svg: `${loaderClassName}__svg`,
-  svgTrack: `${loaderClassName}__track`,
-  svgTail: `${loaderClassName}__tail`,
 };
 
 export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | 'size' | 'secondary'>;
