@@ -23,7 +23,7 @@ task('screener:runner', cb => {
   }
 
   // kill the server when done
-  const handlePromiseExit = promise =>
+  const handlePromiseExit = (promise: Promise<void>) =>
     promise
       .then(() => {
         cb();
@@ -34,10 +34,12 @@ task('screener:runner', cb => {
         process.exit(1);
       });
 
+  const envVariables = getEnvVariables('SCREENER_API_KEY', 'BUILD_SOURCEBRANCHNAME', 'DEPLOYURL');
+
   const screenerConfig = getConfig({
-    screenerApiKey: process.env.SCREENER_API_KEY,
-    sourceBranchName: process.env.BUILD_SOURCEBRANCHNAME,
-    deployUrl: process.env.DEPLOYURL,
+    screenerApiKey: envVariables.SCREENER_API_KEY,
+    sourceBranchName: envVariables.BUILD_SOURCEBRANCHNAME,
+    deployUrl: envVariables.DEPLOYURL,
   });
 
   if (process.env.IS_ARTIFACT_PRESENT === 'true') {
@@ -47,3 +49,16 @@ task('screener:runner', cb => {
 
   handlePromiseExit(screenerRunner(screenerConfig));
 });
+
+function getEnvVariables<T extends string[]>(...values: T) {
+  return values.reduce((acc, value) => {
+    const envVarValue = process.env[value];
+    if (!envVarValue) {
+      throw new Error(`Env variable: ${value} is not defined`);
+    }
+
+    acc[value as T[number]] = envVarValue;
+
+    return acc;
+  }, {} as Record<T[number], string>);
+}

@@ -30,6 +30,13 @@ export interface PackageJson {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
+  exports?: Record<string, string | Partial<{ types: string; import: string; require: string }>>;
+}
+
+export interface PackageJsonWithBeachball extends PackageJson {
+  beachball?: {
+    disallowedChangeTypes?: string[];
+  };
 }
 
 // ===============

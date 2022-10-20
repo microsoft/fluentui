@@ -8,6 +8,7 @@ module.exports = {
     lint: ['build'],
     clean: [],
     test: ['build'],
+    'type-check': ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],

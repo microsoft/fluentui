@@ -25,7 +25,7 @@ export const CalendarMonthHeaderRow: React.FunctionComponent<ICalendarDayMonthHe
       {showWeekNumbers && <th className={classNames.dayCell} />}
       {dayLabels.map((val: string, index: number) => {
         const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
-        const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
+        const label = strings.days[i];
         return (
           <th
             className={css(classNames.dayCell, classNames.weekDayLabelCell)}

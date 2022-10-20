@@ -1,7 +1,7 @@
 import * as semver from 'semver';
 import { Tree, formatFiles, updateJson, readJson, readProjectConfiguration } from '@nrwl/devkit';
 
-import { getProjectConfig, getProjects, isPackageVersionConverged, isPackageVersionPrerelease } from '../../utils';
+import { getProjectConfig, getProjects, isPackageVersionPrerelease } from '../../utils';
 import { PackageJson } from '../../types';
 
 export default async function (tree: Tree) {
@@ -10,6 +10,12 @@ export default async function (tree: Tree) {
   projects.forEach((_project, projectName) => {
     const config = getProjectConfig(tree, { packageName: projectName });
 
+    const { tags = [] } = readProjectConfiguration(tree, projectName);
+    // Ignore northstar packages
+    if (tags.includes('react-northstar')) {
+      return;
+    }
+
     updateJson(tree, config.paths.packageJson, (packageJson: PackageJson) => {
       if (packageJson.dependencies) {
         packageJson.dependencies = getUpdatedDependencies(tree, packageJson.dependencies);
@@ -17,6 +23,10 @@ export default async function (tree: Tree) {
 
       if (packageJson.devDependencies) {
         packageJson.devDependencies = getUpdatedDependencies(tree, packageJson.devDependencies);
+      }
+
+      if (packageJson.peerDependencies) {
+        packageJson.peerDependencies = getUpdatedDependencies(tree, packageJson.peerDependencies);
       }
 
       return packageJson;
@@ -38,6 +48,10 @@ function isProjectInWorkspace(tree: Tree, projectName: string) {
 
 function getUpdatedDependencies(tree: Tree, dependencies: Record<string, string>) {
   return Object.entries(dependencies).reduce((acc, [dependencyName, versionRange]) => {
+    if (versionRange === '*') {
+      return acc;
+    }
+
     if (!isProjectInWorkspace(tree, dependencyName)) {
       return acc;
     }
@@ -45,10 +59,6 @@ function getUpdatedDependencies(tree: Tree, dependencies: Record<string, string>
     const minVersion = semver.minVersion(versionRange);
 
     if (!minVersion) {
-      return acc;
-    }
-
-    if (!isPackageVersionConverged(minVersion.raw)) {
       return acc;
     }
 

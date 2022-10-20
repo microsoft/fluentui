@@ -10,12 +10,14 @@
     "@fluentui/ability-attributes": {
       "root": "packages/fluentui/ability-attributes",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/accessibility": {
       "root": "packages/fluentui/accessibility",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/api-docs": {
       "root": "packages/api-docs",
@@ -45,12 +47,14 @@
     "@fluentui/circulars-test": {
       "root": "packages/fluentui/circulars-test",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/code-sandbox": {
       "root": "packages/fluentui/code-sandbox",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/codemods": {
       "root": "packages/codemods",
@@ -76,17 +80,20 @@
     "@fluentui/digest": {
       "root": "packages/fluentui/digest",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/docs": {
       "root": "packages/fluentui/docs",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/docs-components": {
       "root": "packages/fluentui/docs-components",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/dom-utilities": {
       "root": "packages/dom-utilities",
@@ -96,7 +103,8 @@
     "@fluentui/e2e": {
       "root": "packages/fluentui/e2e",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/eslint-plugin": {
       "root": "packages/eslint-plugin",
@@ -146,7 +154,8 @@
     "@fluentui/local-sandbox": {
       "root": "packages/fluentui/local-sandbox",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/merge-styles": {
       "root": "packages/merge-styles",
@@ -196,7 +205,8 @@
     "@fluentui/perf": {
       "root": "packages/fluentui/perf",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/perf-test": {
       "root": "apps/perf-test",
@@ -206,7 +216,8 @@
     "@fluentui/perf-test-northstar": {
       "root": "packages/fluentui/perf-test-northstar",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/perf-test-react-components": {
       "root": "apps/perf-test-react-components",
@@ -228,7 +239,8 @@
     "@fluentui/projects-test": {
       "root": "packages/fluentui/projects-test",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/public-docsite": {
       "root": "apps/public-docsite",
@@ -293,6 +305,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-avatar-context": {
+      "root": "packages/react-components/react-avatar-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-avatar-context/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-badge": {
       "root": "packages/react-components/react-badge",
       "projectType": "library",
@@ -303,12 +322,14 @@
     "@fluentui/react-bindings": {
       "root": "packages/fluentui/react-bindings",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-builder": {
       "root": "packages/fluentui/react-builder",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-button": {
       "root": "packages/react-components/react-button",
@@ -316,13 +337,6 @@
       "sourceRoot": "packages/react-components/react-button/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
-    },
-    "@fluentui/react-button-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-button-shim-v8-v9",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-button-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-card": {
       "root": "packages/react-components/react-card",
@@ -358,17 +372,20 @@
     "@fluentui/react-component-event-listener": {
       "root": "packages/fluentui/react-component-event-listener",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-component-nesting-registry": {
       "root": "packages/fluentui/react-component-nesting-registry",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-component-ref": {
       "root": "packages/fluentui/react-component-ref",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-components": {
       "root": "packages/react-components/react-components",
@@ -471,7 +488,8 @@
     "@fluentui/react-icons-northstar": {
       "root": "packages/fluentui/react-icons-northstar",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-image": {
       "root": "packages/react-components/react-image",
@@ -479,6 +497,13 @@
       "sourceRoot": "packages/react-components/react-image/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-infobutton": {
+      "root": "packages/react-components/react-infobutton",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-infobutton/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-input": {
       "root": "packages/react-components/react-input",
@@ -508,12 +533,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-menu-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-menu-shim-v8-v9",
+    "@fluentui/react-migration-v8-v9": {
+      "root": "packages/react-migration-v8-v9",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-menu-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
+      "sourceRoot": "packages/react-migration-v8-v9/src"
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
@@ -523,27 +547,32 @@
     "@fluentui/react-northstar": {
       "root": "packages/fluentui/react-northstar",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-northstar-emotion-renderer": {
       "root": "packages/fluentui/react-northstar-emotion-renderer",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-northstar-fela-renderer": {
       "root": "packages/fluentui/react-northstar-fela-renderer",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-northstar-prototypes": {
       "root": "packages/fluentui/react-northstar-prototypes",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-northstar-styles-renderer": {
       "root": "packages/fluentui/react-northstar-styles-renderer",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-overflow": {
       "root": "packages/react-components/react-overflow",
@@ -604,7 +633,8 @@
     "@fluentui/react-proptypes": {
       "root": "packages/fluentui/react-proptypes",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-provider": {
       "root": "packages/react-components/react-provider",
@@ -655,13 +685,6 @@
       "sourceRoot": "packages/react-components/react-spinner/src",
       "tags": ["vNext", "platform:web"]
     },
-    "@fluentui/react-stack-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-stack-shim-v8-v9",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-stack-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
-    },
     "@fluentui/react-storybook": {
       "root": "packages/react-components/react-storybook",
       "projectType": "library",
@@ -707,7 +730,8 @@
     "@fluentui/react-telemetry": {
       "root": "packages/fluentui/react-telemetry",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["react-northstar"]
     },
     "@fluentui/react-text": {
       "root": "packages/react-components/react-text",
@@ -737,13 +761,6 @@
       "sourceRoot": "packages/react-components/react-theme-sass/src",
       "tags": ["vNext", "platform:web"]
     },
-    "@fluentui/react-theme-shim-v8-v9": {
-      "root": "packages/react-components-migration/react-theme-shim-v8-v9",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components-migration/react-theme-shim-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
-    },
     "@fluentui/react-toolbar": {
       "root": "packages/react-components/react-toolbar",
       "projectType": "library",
@@ -758,11 +775,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-trigger": {
-      "root": "packages/react-components/react-trigger",
+    "@fluentui/react-tree": {
+      "root": "packages/react-components/react-tree",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-components/react-trigger/src",
+      "sourceRoot": "packages/react-components/react-tree/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-utilities": {

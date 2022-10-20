@@ -1,20 +1,20 @@
-// @ts-check
-
 const fs = require('fs-extra');
 const path = require('path');
-const merge = require('../tasks/merge');
 const resolve = require('resolve');
 const { resolveCwd } = require('just-scripts');
-const { findRepoDeps } = require('../monorepo/index');
+
+const merge = require('../tasks/merge');
+const { findRepoDeps } = require('../monorepo');
 const findConfig = require('../find-config');
 
-const packageJsonPath = findConfig('package.json');
+const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);
 
 const jestAliases = () => {
   // Get deps of the current package within the repo
   const packageDeps = findRepoDeps();
 
+  /** @type {Record<string,string>} */
   const aliases = {};
 
   for (const { packageJson } of packageDeps) {

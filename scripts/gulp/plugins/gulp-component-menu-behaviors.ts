@@ -1,6 +1,6 @@
 import gutil from 'gulp-util';
 import path from 'path';
-import through2 from 'through2';
+import through2, { TransformFunction } from 'through2';
 import Vinyl from 'vinyl';
 import _ from 'lodash';
 import fs from 'fs';
@@ -11,7 +11,16 @@ import config from '../../config';
 const { paths } = config;
 
 const pluginName = 'gulp-component-menu-behaviors';
-const extract = require('extract-comments');
+const extract: (
+  value: string,
+  options?: Record<string, unknown>,
+) => Array<{
+  type: string;
+  raw: string;
+  value: string;
+  loc: Record<string, any>;
+  code: Record<string, any>;
+}> = require('extract-comments');
 
 type BehaviorMenuItem = {
   displayName: string;
@@ -23,14 +32,14 @@ type BehaviorMenuItem = {
   };
 };
 
-const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
+const getTextFromCommentToken = (commentTokens: doctrine.Tag[], tokenTitle: string): string => {
   const resultToken = commentTokens.find(token => token.title === tokenTitle);
-  return resultToken ? resultToken.description : '';
+  return resultToken?.description ?? '';
 };
 
 export default () => {
   const result: BehaviorMenuItem[] = [];
-  function bufferContents(this: Transform, file, enc, cb) {
+  const bufferContents: TransformFunction = function (file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -72,7 +81,7 @@ export default () => {
         );
         // delete require cache only works for absolute file path. This is required to get latest changes in behaviors for watch process
         delete require.cache[absPathToBehaviorDefinition];
-        let definition;
+        let definition: any[] | undefined;
         try {
           // behavior definition file may not exist for components that haven't migrate to using a11y-testing
           definition = require(absPathToBehaviorDefinition)?.[definitionName];
@@ -115,7 +124,7 @@ export default () => {
       ].join('\n\n');
       this.emit('error', pluginError);
     }
-  }
+  };
 
   function getParsedResults() {
     return _.chain(result)
@@ -128,7 +137,7 @@ export default () => {
       .value();
   }
 
-  function endStream(this: Transform, cb) {
+  function endStream(this: Transform, cb: () => void) {
     const file = new Vinyl({
       path: './behaviorMenu.json',
       contents: Buffer.from(JSON.stringify(getParsedResults(), null, 2)),

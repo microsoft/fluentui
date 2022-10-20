@@ -10,7 +10,7 @@ const { paths } = config;
 type WebpackOptions = {
   packageName: string;
   outputFilePath: string;
-  onDependencyPackage: (packageName: string, packageVersion) => void;
+  onDependencyPackage: (packageName: string, packageVersion: string) => void;
 };
 
 export const prepareWebpackConfig = (options: WebpackOptions) => {

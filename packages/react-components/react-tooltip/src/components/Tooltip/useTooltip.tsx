@@ -17,7 +17,7 @@ import {
   mergeCallbacks,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import type { TooltipProps, TooltipState, TooltipChildProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { Escape } from '@fluentui/keyboard-keys';
 
@@ -195,14 +195,16 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
   );
 
-  // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
-  // This keeps the tooltip visible when the pointer is moved over it.
+  // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
+  // This keeps the tooltip visible when the mouse is moved over it, or it has focus within.
   state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
   state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
+  state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
-  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+  const child = getTriggerChild(children);
 
-  const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
+  const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
@@ -227,7 +229,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const childTargetRef = useMergedRefs(child?.ref, targetRef);
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  state.children = applyTriggerPropsToChildren<TooltipTriggerProps>(children, {
+  state.children = applyTriggerPropsToChildren(children, {
     ...triggerAriaProps,
     ...child?.props,
     // If the target prop is not provided, attach targetRef to the trigger element's ref prop

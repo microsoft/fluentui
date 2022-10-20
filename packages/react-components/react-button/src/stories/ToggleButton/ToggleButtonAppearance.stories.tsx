@@ -1,15 +1,27 @@
 import * as React from 'react';
-import { ToggleButton } from '@fluentui/react-components';
+import { makeStyles, ToggleButton } from '@fluentui/react-components';
 
-export const Appearance = () => (
-  <>
-    <ToggleButton>Default</ToggleButton>
-    <ToggleButton appearance="primary">Primary</ToggleButton>
-    <ToggleButton appearance="outline">Outline</ToggleButton>
-    <ToggleButton appearance="subtle">Subtle</ToggleButton>
-    <ToggleButton appearance="transparent">Transparent</ToggleButton>
-  </>
-);
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
+
+export const Appearance = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <ToggleButton>Default</ToggleButton>
+      <ToggleButton appearance="primary">Primary</ToggleButton>
+      <ToggleButton appearance="outline">Outline</ToggleButton>
+      <ToggleButton appearance="subtle">Subtle</ToggleButton>
+      <ToggleButton appearance="transparent">Transparent</ToggleButton>
+    </div>
+  );
+};
+
 Appearance.parameters = {
   docs: {
     description: {

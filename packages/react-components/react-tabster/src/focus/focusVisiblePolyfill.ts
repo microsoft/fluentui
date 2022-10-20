@@ -1,5 +1,5 @@
 import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
-import { FOCUS_VISIBLE_CLASS } from './constants';
+import { FOCUS_VISIBLE_ATTR } from './constants';
 
 /**
  * Because `addEventListener` type override falls back to 2nd definition (evt name is unknown string literal)
@@ -83,11 +83,11 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () =
 }
 
 function applyFocusVisibleClass(el: HTMLElement) {
-  el.classList.add(FOCUS_VISIBLE_CLASS);
+  el.setAttribute(FOCUS_VISIBLE_ATTR, '');
 }
 
 function removeFocusVisibleClass(el: HTMLElement) {
-  el.classList.remove(FOCUS_VISIBLE_CLASS);
+  el.removeAttribute(FOCUS_VISIBLE_ATTR);
 }
 
 function isHTMLElement(target: EventTarget | null): target is HTMLElement {
