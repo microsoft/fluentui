@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Bump react peer dependency to react 18.",
-  "packageName": "@fluentui/theme",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
