@@ -16,7 +16,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
     ],
     items: {
       position: 'relative',
-      marginBottom: '10px',
+      marginBottom: '16px',
     },
     chart: {
       width: '100%',
@@ -37,19 +37,16 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
-      lineHeight: '16px',
       color: '#171717',
-      marginBottom: '5px',
+      marginBottom: '8px',
     },
     chartTitleRight: {
       fontSize: FontSizes.medium,
-      lineHeight: '20px',
       fontWeight: FontWeights.semibold,
       color: theme.palette.neutralPrimary,
     },
     chartDataTextDenominator: {
       fontSize: FontSizes.medium,
-      lineHeight: '20px',
       color: theme.palette.neutralPrimary,
     },
     triangle: {
@@ -61,7 +58,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       borderTopColor: palette.blue,
       marginBottom: '4px',
       position: 'absolute',
-      top: '12px',
+      top: '17px',
     },
   };
 };

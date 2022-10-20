@@ -18,7 +18,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
       className=
 
           {
-            margin-bottom: 10px;
+            margin-bottom: 16px;
             position: relative;
           }
     >
@@ -52,8 +52,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 {
                   color: #171717;
                   display: block;
-                  line-height: 16px;
-                  margin-bottom: 5px;
+                  margin-bottom: 8px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -97,7 +96,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                   color: #323130;
                   font-size: 14px;
                   font-weight: 600;
-                  line-height: 20px;
                 }
             data-is-focusable={true}
             role="text"
@@ -178,7 +176,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
       className=
 
           {
-            margin-bottom: 10px;
+            margin-bottom: 16px;
             position: relative;
           }
     >
@@ -212,8 +210,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 {
                   color: #171717;
                   display: block;
-                  line-height: 16px;
-                  margin-bottom: 5px;
+                  margin-bottom: 8px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -257,7 +254,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                   color: #323130;
                   font-size: 14px;
                   font-weight: 600;
-                  line-height: 20px;
                 }
             data-is-focusable={true}
             role="text"
@@ -514,7 +510,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       className=
 
           {
-            margin-bottom: 10px;
+            margin-bottom: 16px;
             position: relative;
           }
     >
@@ -548,8 +544,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 {
                   color: #171717;
                   display: block;
-                  line-height: 16px;
-                  margin-bottom: 5px;
+                  margin-bottom: 8px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -593,7 +588,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                   color: #323130;
                   font-size: 14px;
                   font-weight: 600;
-                  line-height: 20px;
                 }
             data-is-focusable={true}
             role="text"
@@ -674,7 +668,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       className=
 
           {
-            margin-bottom: 10px;
+            margin-bottom: 16px;
             position: relative;
           }
     >
@@ -708,8 +702,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 {
                   color: #171717;
                   display: block;
-                  line-height: 16px;
-                  margin-bottom: 5px;
+                  margin-bottom: 8px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -753,7 +746,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                   color: #323130;
                   font-size: 14px;
                   font-weight: 600;
-                  line-height: 20px;
                 }
             data-is-focusable={true}
             role="text"
