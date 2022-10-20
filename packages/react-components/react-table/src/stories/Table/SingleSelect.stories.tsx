@@ -8,10 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
 import { useTable, ColumnDefinition, useSelection } from '../../hooks';
-import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
@@ -122,11 +121,10 @@ export const SingleSelect = () => {
     },
     selected: isRowSelected(row.rowId),
   }));
-  // eslint-disable-next-line deprecation/deprecation
-  const ref = useNavigationMode<HTMLDivElement>('row');
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table ref={ref}>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" hidden />
@@ -136,17 +134,16 @@ export const SingleSelect = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody {...keyboardNavAttr}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
           <TableRow
-            tabIndex={0}
             key={item.file.label}
             onClick={onClick}
             onKeyDown={onKeyDown}
             aria-selected={selected}
             appearance={selected ? 'brand' : 'none'}
           >
-            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
