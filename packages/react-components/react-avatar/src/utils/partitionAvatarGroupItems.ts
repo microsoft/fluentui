@@ -4,6 +4,12 @@ export type PartitionAvatarGroupItemsOptions<T> = {
   maxInlineItems?: number;
 };
 
+export type PartitionAvatarGroupItems<T> = {
+  inlineItems: readonly T[];
+  overflowItems: readonly T[];
+  renderOverflowButton: boolean;
+};
+
 /**
  * Get the inline items and overflowing items based on the array of AvatarGroupItems needed for AvatarGroup.
  *
@@ -11,7 +17,9 @@ export type PartitionAvatarGroupItemsOptions<T> = {
  *
  * @returns Two arrays split into inline items and overflow items based on maxInlineItems.
  */
-export const partitionAvatarGroupItems = <T>(options: PartitionAvatarGroupItemsOptions<T>) => {
+export const partitionAvatarGroupItems = <T>(
+  options: PartitionAvatarGroupItemsOptions<T>,
+): PartitionAvatarGroupItems<T> => {
   const { items } = options;
   const isPie = options.layout === 'pie';
 
@@ -19,6 +27,7 @@ export const partitionAvatarGroupItems = <T>(options: PartitionAvatarGroupItemsO
     return {
       inlineItems: items.slice(0, 3),
       overflowItems: items,
+      renderOverflowButton: items.length > 3,
     };
   }
 
@@ -28,5 +37,6 @@ export const partitionAvatarGroupItems = <T>(options: PartitionAvatarGroupItemsO
   return {
     inlineItems: items.slice(inlineCount),
     overflowItems: items.slice(0, inlineCount),
+    renderOverflowButton: items.length > maxInlineItems,
   };
 };

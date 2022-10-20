@@ -45,13 +45,11 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
     triggerButtonChildren = count > 99 ? '99+' : `+${count}`;
   }
 
-  const shouldRender = React.Children.count(children) > 0;
-
   return {
-    popoverOpen,
-    layout,
+    count,
     indicator,
-    shouldRender,
+    layout,
+    popoverOpen,
     size,
 
     components: {

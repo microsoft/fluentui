@@ -98,7 +98,7 @@ export type AvatarGroupPopoverSlots = {
 };
 
 // @public
-export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Required<Pick<AvatarGroupPopoverProps, 'indicator'>> & {
+export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Required<Pick<AvatarGroupPopoverProps, 'indicator' | 'count'>> & {
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
@@ -159,11 +159,15 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
     firstInitialOnly?: boolean;
 }): string;
 
-// @public
-export const partitionAvatarGroupItems: <T>(options: PartitionAvatarGroupItemsOptions<T>) => {
-    inlineItems: T[];
+// @public (undocumented)
+export type PartitionAvatarGroupItems<T> = {
+    inlineItems: readonly T[];
     overflowItems: readonly T[];
+    renderOverflowButton: boolean;
 };
+
+// @public
+export const partitionAvatarGroupItems: <T>(options: PartitionAvatarGroupItemsOptions<T>) => PartitionAvatarGroupItems<T>;
 
 // @public (undocumented)
 export type PartitionAvatarGroupItemsOptions<T> = {

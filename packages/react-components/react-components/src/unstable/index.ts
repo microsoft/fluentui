@@ -38,6 +38,7 @@ export type {
   AvatarGroupPopoverProps,
   AvatarGroupPopoverSlots,
   AvatarGroupPopoverState,
+  PartitionAvatarGroupItems,
   PartitionAvatarGroupItemsOptions,
 } from '@fluentui/react-avatar';
 export {

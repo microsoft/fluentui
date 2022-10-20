@@ -55,13 +55,8 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
  * State used in rendering AvatarGroupPopover
  */
 export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
-  Required<Pick<AvatarGroupPopoverProps, 'indicator'>> & {
+  Required<Pick<AvatarGroupPopoverProps, 'indicator' | 'count'>> & {
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
-
-    /**
-     * Whether the component should render or not.
-     */
-    shouldRender: boolean;
   };

@@ -26,7 +26,7 @@ const names = [
 
 export const Indicator = () => {
   const styles = useStyles();
-  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
+  const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({ items: names });
 
   return (
     <div className={styles.root}>
@@ -34,21 +34,25 @@ export const Indicator = () => {
         {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupPopover indicator="count">
-          {overflowItems.map(name => (
-            <AvatarGroupItem name={name} key={name} />
-          ))}
-        </AvatarGroupPopover>
+        {renderOverflowButton && (
+          <AvatarGroupPopover indicator="count">
+            {overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
       <AvatarGroup>
         {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupPopover indicator="icon">
-          {overflowItems.map(name => (
-            <AvatarGroupItem name={name} key={name} />
-          ))}
-        </AvatarGroupPopover>
+        {renderOverflowButton && (
+          <AvatarGroupPopover indicator="icon">
+            {overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
     </div>
   );

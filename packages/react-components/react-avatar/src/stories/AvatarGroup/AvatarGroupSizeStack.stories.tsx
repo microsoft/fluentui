@@ -33,18 +33,23 @@ export const SizeStack = () => {
   return (
     <div className={styles.root}>
       {sizes.map(size => {
-        const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: 'stack' });
+        const { inlineItems, overflowItems, renderOverflowButton } = partitionAvatarGroupItems({
+          items: names,
+          layout: 'stack',
+        });
 
         return (
           <AvatarGroup layout="stack" size={size} key={size}>
             {inlineItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
             ))}
-            <AvatarGroupPopover>
-              {overflowItems.map(name => (
-                <AvatarGroupItem name={name} key={name} />
-              ))}
-            </AvatarGroupPopover>
+            {renderOverflowButton && (
+              <AvatarGroupPopover>
+                {overflowItems.map(name => (
+                  <AvatarGroupItem name={name} key={name} />
+                ))}
+              </AvatarGroupPopover>
+            )}
           </AvatarGroup>
         );
       })}
