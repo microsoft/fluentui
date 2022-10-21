@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../utilities/index';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities/index';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
