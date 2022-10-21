@@ -1,118 +1,168 @@
 import * as React from 'react';
-import { Announced } from '@fluentui/react/lib/Announced';
-import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
-import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { Text } from '@fluentui/react/lib/Text';
 
-const exampleChildClass = mergeStyles({
-  display: 'block',
-  marginBottom: '10px',
-});
+import {
+  Dialog,
+  DialogType,
+  DialogFooter,
+  PrimaryButton,
+  DefaultButton,
+  hiddenContentStyle,
+  mergeStyles,
+  Toggle,
+  ContextualMenu,
+  getRTL,
+  FocusZone,
+  FocusZoneDirection,
+  Image,
+  ImageFit,
+  Icon,
+  List,
+  ITheme,
+  mergeStyleSets,
+  getTheme,
+  getFocusStyle,
+} from '@fluentui/react';
 
-const textFieldStyles: Partial<ITextFieldStyles> = { root: { maxWidth: '300px' } };
-
-export interface IDetailsListBasicExampleItem {
-  key: number;
-  name: string;
-  value: number;
-}
-
-export interface IDetailsListBasicExampleState {
-  items: IDetailsListBasicExampleItem[];
-  selectionDetails: string;
-}
+import { useId, useBoolean, useConst } from '@fluentui/react-hooks';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 
 export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
-  private _selection: Selection;
-  private _allItems: IDetailsListBasicExampleItem[];
-  private _columns: IColumn[];
-
   constructor(props: {}) {
     super(props);
-
-    this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
-    });
-
-    // Populate with items for demos.
-    this._allItems = [];
-    for (let i = 0; i < 200; i++) {
-      this._allItems.push({
-        key: i,
-        name: 'Item ' + i,
-        value: i,
-      });
-    }
-
-    this._columns = [
-      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
-      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
-    ];
-
-    this.state = {
-      items: this._allItems,
-      selectionDetails: this._getSelectionDetails(),
-    };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails } = this.state;
-
-    return (
-      <div>
-        <div className={exampleChildClass}>{selectionDetails}</div>
-        <Text>
-          Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this
-          example will show an alert.
-        </Text>
-        <Announced message={selectionDetails} />
-        <TextField
-          className={exampleChildClass}
-          label="Filter by name:"
-          onChange={this._onFilter}
-          styles={textFieldStyles}
-        />
-        <Announced message={`Number of items after filter applied: ${items.length}.`} />
-        <MarqueeSelection selection={this._selection}>
-          <DetailsList
-            items={items}
-            columns={this._columns}
-            setKey="set"
-            layoutMode={DetailsListLayoutMode.justified}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="select row"
-            onItemInvoked={this._onItemInvoked}
-          />
-        </MarqueeSelection>
-      </div>
-    );
+    return <DialogBasicExample />;
   }
-
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
-
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  }
-
-  private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({
-      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
-    });
-  };
-
-  private _onItemInvoked = (item: IDetailsListBasicExampleItem): void => {
-    alert(`Item invoked: ${item.name}`);
-  };
 }
+
+const dialogStyles = { main: { maxWidth: 450 } };
+const dragOptions = {
+  moveMenuItemText: 'Move',
+  closeMenuItemText: 'Close',
+  menu: ContextualMenu,
+  keepInBounds: true,
+};
+const screenReaderOnly = mergeStyles(hiddenContentStyle);
+const dialogContentProps = {
+  type: DialogType.normal,
+  title: 'Missing Subject',
+  closeButtonAriaLabel: 'Close',
+  subText: 'Do you want to send this message without a subject?',
+};
+
+const DialogBasicExample: React.FunctionComponent = () => {
+  const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
+  const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
+  const labelId: string = useId('dialogLabel');
+  const subTextId: string = useId('subTextLabel');
+
+  const modalProps = React.useMemo(
+    () => ({
+      titleAriaId: labelId,
+      subtitleAriaId: subTextId,
+      isBlocking: false,
+      styles: dialogStyles,
+      dragOptions: isDraggable ? dragOptions : undefined,
+    }),
+    [isDraggable, labelId, subTextId],
+  );
+
+  return (
+    <>
+      <Toggle label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
+      <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
+      <label id={labelId} className={screenReaderOnly}>
+        My sample label
+      </label>
+      <label id={subTextId} className={screenReaderOnly}>
+        My sample description
+      </label>
+
+      <Dialog
+        hidden={hideDialog}
+        onDismiss={toggleHideDialog}
+        dialogContentProps={dialogContentProps}
+        modalProps={modalProps}
+        maxWidth={600}
+      >
+        <ListBasicExample />
+        <DialogFooter>
+          <PrimaryButton onClick={toggleHideDialog} text="Send" onFocus={() => console.log('primary focus')} />
+          <DefaultButton onClick={toggleHideDialog} text="Don't send" onFocus={() => console.log('default focus')} />
+        </DialogFooter>
+      </Dialog>
+    </>
+  );
+};
+
+const theme: ITheme = getTheme();
+const { palette, semanticColors, fonts } = theme;
+
+const classNames = mergeStyleSets({
+  itemCell: [
+    getFocusStyle(theme, { inset: -1 }),
+    {
+      minHeight: 54,
+      padding: 10,
+      boxSizing: 'border-box',
+      borderBottom: `1px solid ${semanticColors.bodyDivider}`,
+      display: 'flex',
+      selectors: {
+        '&:hover': { background: palette.neutralLight },
+      },
+    },
+  ],
+  itemImage: {
+    flexShrink: 0,
+  },
+  itemContent: {
+    marginLeft: 10,
+    overflow: 'hidden',
+    flexGrow: 1,
+  },
+  itemName: [
+    fonts.xLarge,
+    {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    },
+  ],
+  itemIndex: {
+    fontSize: fonts.small.fontSize,
+    color: palette.neutralTertiary,
+    marginBottom: 10,
+  },
+  chevron: {
+    alignSelf: 'center',
+    marginLeft: 10,
+    color: palette.neutralTertiary,
+    fontSize: fonts.large.fontSize,
+    flexShrink: 0,
+  },
+});
+
+const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Element => {
+  return (
+    <div className={classNames.itemCell} data-is-focusable={true}>
+      <Image className={classNames.itemImage} src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
+      <div className={classNames.itemContent}>
+        <div className={classNames.itemName}>{item.name}</div>
+        <div className={classNames.itemIndex}>{`Item ${index}`}</div>
+        <div>{item.description}</div>
+      </div>
+      <Icon className={classNames.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
+    </div>
+  );
+};
+
+const ListBasicExample: React.FunctionComponent = () => {
+  const items = useConst(() => createListItems(2));
+
+  return (
+    <FocusZone defaultTabbableElement=".ms-List" direction={FocusZoneDirection.vertical}>
+      <List items={items} onRenderCell={onRenderCell} renderEarly={true} />
+    </FocusZone>
+  );
+};

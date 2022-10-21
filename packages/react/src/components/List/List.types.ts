@@ -279,6 +279,15 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * This is a performance optimization to let List skip a render cycle by not updating its scrolling state.
    */
   ignoreScrollingState?: boolean;
+
+  /**
+   * Whether to render the list earlier than the default.
+   * Use this in scenarios where the list is contained in a FocusZone or FocuseTrapZone
+   * as in a Dialog.
+   *
+   * @defaultvalue false
+   */
+  renderEarly?: boolean;
 }
 
 /**

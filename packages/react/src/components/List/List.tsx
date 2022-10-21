@@ -447,9 +447,15 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
   public render(): JSX.Element | null {
     const { className, role = 'list', onRenderSurface, onRenderRoot } = this.props;
-    const { pages = [] } = this.state;
+    const { pages: statePages = [] } = this.state;
     const pageElements: JSX.Element[] = [];
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+
+    let pages = statePages;
+    if (this.props.renderEarly && !this._hasCompletedFirstRender) {
+      const stuff = this._updatePages(this.props, this.state);
+      pages = stuff.pages || [];
+    }
 
     for (const page of pages) {
       pageElements.push(this._renderPage(page));
