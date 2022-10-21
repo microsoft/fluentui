@@ -1,11 +1,19 @@
 import * as React from 'react';
-import { tokens, useId, Label, Radio, RadioGroup } from '@fluentui/react-components';
+import { Label, makeStyles, Radio, RadioGroup, tokens, useId } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  field: {
+    display: 'grid',
+    gridRowGap: tokens.spacingVerticalS,
+  },
+});
 
 export const ControlledValue = () => {
   const [value, setValue] = React.useState('banana');
+  const styles = useStyles();
   const labelId = useId('label');
   return (
-    <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
+    <div className={styles.field}>
       <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup value={value} onChange={(_, data) => setValue(data.value)} aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />

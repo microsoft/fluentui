@@ -1,12 +1,20 @@
 import * as React from 'react';
-import { tokens, useId, Radio } from '@fluentui/react-components';
 import type { RadioProps } from '@fluentui/react-components';
+import { makeStyles, Radio, tokens, useId } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  field: {
+    display: 'grid',
+    gridRowGap: tokens.spacingVerticalS,
+  },
+});
 
 export const Default = (props: Partial<RadioProps>) => {
   const radioName = useId('radio');
+  const styles = useStyles();
   const labelId = useId('label');
   return (
-    <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
+    <div className={styles.field}>
       <label id={labelId}>Favorite Color</label>
       <div role="radiogroup" aria-labelledby={labelId}>
         <Radio name={radioName} value="apple" label="Apple" {...props} />

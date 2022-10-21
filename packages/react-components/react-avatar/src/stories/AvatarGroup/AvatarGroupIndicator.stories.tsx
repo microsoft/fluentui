@@ -34,21 +34,25 @@ export const Indicator = () => {
         {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupPopover indicator="count">
-          {overflowItems.map(name => (
-            <AvatarGroupItem name={name} key={name} />
-          ))}
-        </AvatarGroupPopover>
+        {overflowItems && (
+          <AvatarGroupPopover indicator="count">
+            {overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
       <AvatarGroup>
         {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupPopover indicator="icon">
-          {overflowItems.map(name => (
-            <AvatarGroupItem name={name} key={name} />
-          ))}
-        </AvatarGroupPopover>
+        {overflowItems && (
+          <AvatarGroupPopover indicator="icon">
+            {overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
     </div>
   );

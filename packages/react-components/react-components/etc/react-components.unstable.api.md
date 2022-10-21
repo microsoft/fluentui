@@ -100,6 +100,9 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
+import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
 import { Persona } from '@fluentui/react-persona';
 import { personaClassNames } from '@fluentui/react-persona';
 import { PersonaProps } from '@fluentui/react-persona';
@@ -472,6 +475,12 @@ export { OverflowItem }
 export { OverflowItemProps }
 
 export { OverflowProps }
+
+export { PartitionAvatarGroupItems }
+
+export { partitionAvatarGroupItems }
+
+export { PartitionAvatarGroupItemsOptions }
 
 export { Persona }
 

@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { tokens, useId, Label, Radio, RadioGroup, Text } from '@fluentui/react-components';
+import { Label, makeStyles, Radio, RadioGroup, Text, tokens, useId } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  field: {
+    display: 'grid',
+    gridRowGap: tokens.spacingVerticalS,
+  },
+});
 
 export const LabelSubtext = () => {
+  const styles = useStyles();
   const labelId = useId('label');
-
   return (
-    <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
+    <div className={styles.field}>
       <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup aria-labelledby={labelId}>
         <Radio
