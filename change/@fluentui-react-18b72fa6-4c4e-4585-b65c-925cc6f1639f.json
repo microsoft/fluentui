@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pass onRenderItem to Dropdown's onRenderContainer to allow use of onRenderList with default or custom onRenderItem",
-  "packageName": "@fluentui/react",
-  "email": "aepshtein@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 21 Oct 2022 07:44:53 GMT",
+      "tag": "@fluentui/react_v8.98.5",
+      "version": "8.98.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "aepshtein@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3757c89720f0273ed00441f11104a000fe0edc52",
+            "comment": "Pass onRenderItem to Dropdown's onRenderContainer to allow use of onRenderList with default or custom onRenderItem"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 07:43:14 GMT",
       "tag": "@fluentui/react_v8.98.4",
       "version": "8.98.4",

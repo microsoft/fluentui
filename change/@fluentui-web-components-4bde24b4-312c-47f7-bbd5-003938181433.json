@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cleaned up shared styles for button and input for improved reuse and color updates",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
