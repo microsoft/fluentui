@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 19 Sep 2022 07:47:29 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Oct 2022 07:44:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.7)
+
+Fri, 21 Oct 2022 07:44:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.6..@fluentui/web-components_v2.5.7)
+
+### Patches
+
+- Cleaned up shared styles for button and input for improved reuse and color updates ([PR #24929](https://github.com/microsoft/fluentui/pull/24929) by 47367562+bheston@users.noreply.github.com)
 
 ## [2.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.6)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 20 Oct 2022 07:43:14 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Oct 2022 07:44:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.98.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.5)
+
+Fri, 21 Oct 2022 07:44:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.4..@fluentui/react_v8.98.5)
+
+### Patches
+
+- Pass onRenderItem to Dropdown's onRenderContainer to allow use of onRenderList with default or custom onRenderItem ([PR #25255](https://github.com/microsoft/fluentui/pull/25255) by aepshtein@microsoft.com)
 
 ## [8.98.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.4)
 
