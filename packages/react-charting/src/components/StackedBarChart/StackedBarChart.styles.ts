@@ -27,21 +27,22 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     ],
     chart: {
       width: '100%',
-      height: barHeight ? barHeight : 16,
-      marginBottom: '12px',
+      height: barHeight ? barHeight : 12,
+      display: 'block',
+      marginBottom: '16px',
     },
     chartTitle: {
       ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '3px',
     },
     chartTitleLeft: {
-      fontWeight: FontWeights.bold,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
+      color: '#171717',
+      marginBottom: '8px',
     },
     legendContainer: {
       margin: '4px 0px 0px 4px',
@@ -59,18 +60,18 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       },
     },
     ratioNumerator: {
-      fontSize: FontSizes.small,
+      fontSize: FontSizes.medium,
       fontWeight: FontWeights.semibold,
-      color: theme.palette.black,
+      color: theme.palette.neutralPrimary,
     },
     ratioDenominator: {
-      fontSize: FontSizes.small,
-      color: theme.palette.black,
-      opacity: '0.6',
+      fontSize: FontSizes.medium,
+      color: theme.palette.neutralPrimary,
     },
     benchmarkContainer: {
       position: 'relative',
-      height: '12px',
+      height: '7px',
+      marginTop: '-3px',
     },
     benchmark: {
       position: 'absolute',
