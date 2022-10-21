@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 08:39:31 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.16",
+      "version": "9.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 11:02:47 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.15",
       "version": "9.0.0-beta.15",

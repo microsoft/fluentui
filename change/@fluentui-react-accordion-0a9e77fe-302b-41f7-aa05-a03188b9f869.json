@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Migrate to new package structure.",
-  "packageName": "@fluentui/react-accordion",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

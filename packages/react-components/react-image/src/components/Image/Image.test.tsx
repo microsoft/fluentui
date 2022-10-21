@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { render } from '@testing-library/react';
 import { Image } from './Image';
 
