@@ -486,6 +486,9 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
       const rowRole = role === defaultRole ? undefined : 'presentation';
 
+      // add tabindex="0" to first row if no header exists, to ensure the focuszone is in the tab order
+      const rowFocusZoneProps = isHeaderVisible || index > 0 ? {} : { tabIndex: 0 };
+
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
@@ -520,6 +523,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         useFastIcons,
         role: rowRole,
         isGridRow: true,
+        focusZoneProps: rowFocusZoneProps,
       };
 
       if (!item) {
