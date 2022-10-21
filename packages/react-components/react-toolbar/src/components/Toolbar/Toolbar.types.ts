@@ -7,7 +7,7 @@ export type ToolbarSlots = {
 
 export type ToolbarCheckedValueChangeData = {
   /** The items for this value that are checked */
-  checkedItems: string[];
+  checkedItems: string[] | string;
   /** The name of the value */
   name: string;
 };
@@ -34,12 +34,12 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
   /**
    * Map of all checked values
    */
-  checkedValues?: Record<string, string[]>;
+  checkedValues?: Record<string, string[] | string>;
 
   /**
    * Default values to be checked on mount
    */
-  defaultCheckedValues?: Record<string, string[]>;
+  defaultCheckedValues?: Record<string, string[] | string>;
 
   /**
    * Callback when checked items change for value with a name
@@ -60,17 +60,22 @@ export type ToolbarState = ComponentState<ToolbarSlots> &
      * Toggles the state of a ToggleButton item
      */
     handleToggleButton: ToggableHandler;
+    /*
+     * Toggles the state of a ToggleButton item
+     */
+    handleRadio: ToggableHandler;
   };
 
 export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical' | 'checkedValues'> & {
   handleToggleButton?: ToggableHandler;
+  handleRadio?: ToggableHandler;
 };
 
 export type ToolbarContextValues = {
   toolbar: ToolbarContextValue;
 };
 
-export type UninitializedToolbarState = Omit<ToolbarState, 'checkedValues' | 'handleToggleButton'> &
+export type UninitializedToolbarState = Omit<ToolbarState, 'checkedValues' | 'handleToggleButton' | 'handleRadio'> &
   Partial<Pick<ToolbarState, 'checkedValues'>>;
 
 export type ToggableHandler = (

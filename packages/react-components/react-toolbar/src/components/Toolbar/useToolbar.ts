@@ -64,9 +64,23 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     },
   );
 
+  const handleRadio: ToggableHandler = useEventCallback(
+    (e: React.MouseEvent | React.KeyboardEvent, name?: string, value?: string, checked?: boolean) => {
+      if (name && value) {
+        checkedValues?.[name];
+        onCheckedValueChange?.(e, {
+          name,
+          checkedItems: checkedValues?.[name],
+        });
+        setCheckedValues(s => ({ ...s, [name]: value }));
+      }
+    },
+  );
+
   return {
     ...initialState,
     handleToggleButton,
+    handleRadio,
     checkedValues: checkedValues ?? {},
   };
 };

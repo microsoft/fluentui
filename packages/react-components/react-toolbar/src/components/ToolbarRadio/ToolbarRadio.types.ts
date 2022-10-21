@@ -1,15 +1,20 @@
-import { RadioState, RadioProps } from '@fluentui/react-radio';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ToggleButtonProps, ButtonSlots, ToggleButtonState } from '@fluentui/react-button';
 
 /**
- * ToolbarRadio Props
+ * ToolbarToggleButton Props
  */
-export type ToolbarRadioProps = RadioProps & {
-  size?: 'small' | 'medium';
-};
+export type ToolbarRadioProps = ComponentProps<ButtonSlots> &
+  Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
+    appearance?: 'primary' | 'subtle';
+    name: string;
+    value: string;
+  };
 
 /**
- * State used in rendering ToolbarRadio
+ * State used in rendering ToolbarToggleButton
  */
-export type ToolbarRadioState = RadioState & {
-  size?: 'small' | 'medium';
-};
+export type ToolbarRadioState = ComponentState<Partial<ButtonSlots>> &
+  ToggleButtonState &
+  Required<Pick<ToggleButtonProps, 'checked'>> &
+  Pick<ToolbarRadioProps, 'name' | 'value'>;
