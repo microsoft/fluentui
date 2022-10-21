@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Thu, 13 Oct 2022 11:03:03 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.10)
+
+Thu, 20 Oct 2022 08:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.9..@fluentui/react-toolbar_v9.0.0-beta.10)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-button to v9.1.5 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-divider to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.5 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-radio to v9.0.9 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-tabster to v9.2.0 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.9)
 

@@ -2,6 +2,75 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 08:39:56 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "4f7430e2fa321b96ce6022882a42aa897fcf67c9",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.2.3",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.5",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.2.0",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-theme to v9.1.1",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-utilities to v9.1.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 11:02:42 GMT",
       "tag": "@fluentui/react-accordion_v9.0.8",
       "version": "9.0.8",

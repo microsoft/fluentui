@@ -2,6 +2,33 @@
   "name": "@fluentui/global-context",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 08:39:56 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.5",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.1.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 11:03:06 GMT",
       "tag": "@fluentui/global-context_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

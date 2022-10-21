@@ -1,8 +1,173 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 13 Oct 2022 12:56:29 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.2)
+
+Thu, 20 Oct 2022 08:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.1..@fluentui/react-components_v9.5.2)
+
+### Minor changes
+
+- `@fluentui/react-tabster`
+  - feat: Bump tabster to 3.0.4 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - fix: Fixing the styles of Buttons rendered as anchor tags. ([PR #25250](https://github.com/microsoft/fluentui/pull/25250) by makotom@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-context-selector`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: updates disallowed change types ([PR #25214](https://github.com/microsoft/fluentui/pull/25214) by bernardo.sunderhus@gmail.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - feat: Add red border when aria-invalid is set ([PR #25252](https://github.com/microsoft/fluentui/pull/25252) by behowell@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-label`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-link`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: Menu trigger should be focused when dismissed by menuitem click ([PR #25289](https://github.com/microsoft/fluentui/pull/25289) by lingfangao@hotmail.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Migrate to new package structure ([PR #25015](https://github.com/microsoft/fluentui/pull/25015) by tristan.watanabe@gmail.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25240](https://github.com/microsoft/fluentui/pull/25240) by tristan.watanabe@gmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - feat: Add red border when aria-invalid is set ([PR #25252](https://github.com/microsoft/fluentui/pull/25252) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: Migrate to new package structure. ([PR #25241](https://github.com/microsoft/fluentui/pull/25241) by tristan.watanabe@gmail.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - feat: Disabling default browser outline should be an option ([PR #25202](https://github.com/microsoft/fluentui/pull/25202) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - feat: Add red border when aria-invalid is set ([PR #25252](https://github.com/microsoft/fluentui/pull/25252) by behowell@microsoft.com)
+- `@fluentui/react-theme`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: Migrate to new package structure. ([PR #25196](https://github.com/microsoft/fluentui/pull/25196) by tristan.watanabe@gmail.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-aria`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-card`
+  - chore: Migrate to new package structure. ([PR #25229](https://github.com/microsoft/fluentui/pull/25229) by tristan.watanabe@gmail.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - feat: Add red border when aria-invalid is set ([PR #25252](https://github.com/microsoft/fluentui/pull/25252) by behowell@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- `@fluentui/react-field`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-progress`
+  - feat: Add shape prop to Progress ([PR #25219](https://github.com/microsoft/fluentui/pull/25219) by ololubek@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - feat: Add red border when aria-invalid is set ([PR #25252](https://github.com/microsoft/fluentui/pull/25252) by behowell@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- `@fluentui/react-table`
+  - fix: Row and header interactive styles are separate ([PR #25201](https://github.com/microsoft/fluentui/pull/25201) by lingfangao@hotmail.com)
+  - feat(TableSelectionCell): Use Radio component, adds subtle and hidden ([PR #25202](https://github.com/microsoft/fluentui/pull/25202) by lingfangao@hotmail.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - feat: Add `appearance` prop to `TableRow` ([PR #25192](https://github.com/microsoft/fluentui/pull/25192) by lingfangao@hotmail.com)
+- `@fluentui/react-toolbar`
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/global-context`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- `@fluentui/react-alert`
+  - chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25197](https://github.com/microsoft/fluentui/pull/25197) by tristan.watanabe@gmail.com)
+  - chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
 
 ## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.1)
 
