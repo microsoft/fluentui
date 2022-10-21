@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Thu, 13 Oct 2022 11:02:45 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.13)
+
+Thu, 20 Oct 2022 08:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.12..@fluentui/react-combobox_v9.0.0-beta.13)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- feat: Add red border when aria-invalid is set ([PR #25252](https://github.com/microsoft/fluentui/pull/25252) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.5 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-portal to v9.0.8 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-positioning to v9.2.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.12)
 

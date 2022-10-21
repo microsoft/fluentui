@@ -2,6 +2,93 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 08:39:37 GMT",
+      "tag": "@fluentui/react-menu_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "099d9f0f3d9e033ebb3bb450f31cf3e5765ec8f0",
+            "comment": "fix: Menu trigger should be focused when dismissed by menuitem click"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "61915ced2a350da17f8d1a1c520070796dc90d46",
+            "comment": "chore: Migrate to new package structure"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-aria to v9.2.3",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.5",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.0.8",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.2.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.2.0",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-theme to v9.1.1",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.1.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 12:56:30 GMT",
       "tag": "@fluentui/react-menu_v9.3.0",
       "version": "9.3.0",

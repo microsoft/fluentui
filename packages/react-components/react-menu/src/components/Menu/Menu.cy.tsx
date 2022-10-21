@@ -551,6 +551,26 @@ describe('Menu', () => {
     cy.get(menuTriggerSelector).click().get(menuSelector).should('exist').realPress(['Shift', 'Tab']);
     cy.contains('Before').should('be.focused').get(menuSelector).should('not.exist');
   });
+
+  (['Enter', 'Space'] as const).forEach(key => {
+    it(`should close menu and focus trigger on ${key}`, () => {
+      mount(
+        <Menu>
+          <MenuTrigger>
+            <button>Menu</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+      cy.get(menuTriggerSelector).click().get(menuSelector).should('exist').realPress(key);
+      cy.get(menuSelector).should('not.exist').get(menuTriggerSelector).should('be.focused');
+    });
+  });
 });
 
 describe('SplitMenuItem', () => {

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Bump peer deps to support React 18",
-  "packageName": "@fluentui/react-dialog",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

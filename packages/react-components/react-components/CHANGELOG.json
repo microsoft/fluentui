@@ -2,6 +2,687 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 08:39:25 GMT",
+      "tag": "@fluentui/react-components_v9.5.2",
+      "version": "9.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "db508a35cb86dac733878dab9e67feb4f39c2f83",
+            "comment": "fix: Fixing the styles of Buttons rendered as anchor tags."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "083a2c4c3bf07a279bbf01c1d8fad582857beda1",
+            "comment": "chore: updates disallowed change types"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d55f6633f62c5715c41c8dbc8c5a428bef424345",
+            "comment": "feat: Add red border when aria-invalid is set"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "099d9f0f3d9e033ebb3bb450f31cf3e5765ec8f0",
+            "comment": "fix: Menu trigger should be focused when dismissed by menuitem click"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "61915ced2a350da17f8d1a1c520070796dc90d46",
+            "comment": "chore: Migrate to new package structure"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "8b54aac14b71af53725108ee36b1b061624dc9e8",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d55f6633f62c5715c41c8dbc8c5a428bef424345",
+            "comment": "feat: Add red border when aria-invalid is set"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "6c47e6bc6ca2298df181b7417ce937b1783be31e",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "bd212e73e6a6e3c92495b793c6e682c24f27b6db",
+            "comment": "feat: Disabling default browser outline should be an option"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "d55f6633f62c5715c41c8dbc8c5a428bef424345",
+            "comment": "feat: Add red border when aria-invalid is set"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "4f7430e2fa321b96ce6022882a42aa897fcf67c9",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "ffad7cc2b7fd1da575db124105c4bc2dbb352cbb",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d55f6633f62c5715c41c8dbc8c5a428bef424345",
+            "comment": "feat: Add red border when aria-invalid is set"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "e14e5348f1f08aee8da7cb911a24a811d9f9cb09",
+            "comment": "feat: Add shape prop to Progress"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "d55f6633f62c5715c41c8dbc8c5a428bef424345",
+            "comment": "feat: Add red border when aria-invalid is set"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "15b7b57ee484f8d500b3c7afb9aa46c17a9beaeb",
+            "comment": "fix: Row and header interactive styles are separate"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "bd212e73e6a6e3c92495b793c6e682c24f27b6db",
+            "comment": "feat(TableSelectionCell): Use Radio component, adds subtle and hidden"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "66bf477e336a9248e138e31ee6e58d9672da8f8f",
+            "comment": "feat: Add `appearance` prop to `TableRow`"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "791ed7453a6bf65342e9bed5876b02ef0b9fc944",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "099d9f0f3d9e033ebb3bb450f31cf3e5765ec8f0",
+            "comment": "Remove it.only from unit tests"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "prettier update"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "prettier update"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "8f731012796f3a5a96116b029b3e7f9f5091b6d9",
+            "comment": "chore: Add documentation for Radio control, in addition to RadioGroup"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "5280dfeda349453f42b51ae49c9d128bc322c609",
+            "comment": "docs: Remove row navigation"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745",
+            "comment": "docs: Update keyboard navigation examples to use `useArrowNavigationGroup`"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "9d4b8f5d85760307e49781ad694ae5db19b2018b",
+            "comment": "chore: typo"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745",
+            "comment": "feat: Bump tabster to 3.0.4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 12:56:29 GMT",
       "tag": "@fluentui/react-components_v9.5.1",
       "version": "9.5.1",

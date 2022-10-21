@@ -1,17 +1,29 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-components';
+import { makeStyles, Button } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  innerWrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+  outerWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
+  },
+});
 
 export const Disabled = () => {
-  const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
+  const styles = useStyles();
 
   return (
-    <>
-      <div style={groupStyles}>
+    <div className={styles.outerWrapper}>
+      <div className={styles.innerWrapper}>
         <Button>Enabled state</Button>
         <Button disabled>Disabled state</Button>
         <Button disabledFocusable>Disabled focusable state</Button>
       </div>
-      <div style={groupStyles}>
+      <div className={styles.innerWrapper}>
         <Button appearance="primary">Enabled state</Button>
         <Button appearance="primary" disabled>
           Disabled state
@@ -20,7 +32,7 @@ export const Disabled = () => {
           Disabled focusable state
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

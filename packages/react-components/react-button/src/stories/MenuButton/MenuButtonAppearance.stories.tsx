@@ -1,74 +1,86 @@
 import * as React from 'react';
-import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { makeStyles, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
-export const Appearance = () => (
-  <>
-    <Menu>
-      <MenuTrigger>
-        <MenuButton>Default</MenuButton>
-      </MenuTrigger>
+const useStyles = makeStyles({
+  wrapper: {
+    columnGap: '15px',
+    display: 'flex',
+  },
+});
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+export const Appearance = () => {
+  const styles = useStyles();
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton appearance="primary">Primary</MenuButton>
-      </MenuTrigger>
+  return (
+    <div className={styles.wrapper}>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton>Default</MenuButton>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton appearance="outline">Outline</MenuButton>
-      </MenuTrigger>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton appearance="primary">Primary</MenuButton>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton appearance="subtle">Subtle</MenuButton>
-      </MenuTrigger>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton appearance="outline">Outline</MenuButton>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton appearance="transparent">Transparent</MenuButton>
-      </MenuTrigger>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton appearance="subtle">Subtle</MenuButton>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  </>
-);
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+
+      <Menu>
+        <MenuTrigger>
+          <MenuButton appearance="transparent">Transparent</MenuButton>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
+  );
+};
+
 Appearance.parameters = {
   docs: {
     description: {

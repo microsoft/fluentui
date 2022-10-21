@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Thu, 13 Oct 2022 11:02:44 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.9)
+
+Thu, 20 Oct 2022 08:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.8..@fluentui/react-checkbox_v9.0.9)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.8 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-tabster to v9.2.0 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
 
 ## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.8)
 
