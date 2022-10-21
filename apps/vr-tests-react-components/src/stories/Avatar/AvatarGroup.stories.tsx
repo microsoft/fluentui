@@ -8,41 +8,10 @@ import {
   AvatarGroupProps,
   partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
-import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecorator } from '../../utilities/TestWrapperDecorator';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../utilities/index';
-
-const names = [
-  'Katri Athokas',
-  'Elvia Atkins',
-  'Mauricio August',
-  'Colin Ballinger',
-  'Lydia Bauer',
-  'Amanda Brady',
-  'Henry Brill',
-  'Celeste Burton',
-  'Robin Counts',
-  'Tim Deboer',
-  'Cameron Evans',
-  'Isaac Fielder',
-  'Cecil Folk',
-  'Miguel Garcia',
-  'Wanda Howard',
-  'Mona Kane',
-  'Kat Larsson',
-  'Ashley McCarthy',
-  'Johnie McConnell',
-  'Allan Munger',
-  'Erik Nason',
-  'Kristin Patterson',
-  'Daisy Phillips',
-  'Carole Poland',
-  'Carlos Slattery',
-  'Robert Tolbert',
-  'Kevin Sturgis',
-  'Charlotte Waltson',
-  'Elliot Woodward',
-];
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities/index';
+import { names } from './utils';
 
 const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
