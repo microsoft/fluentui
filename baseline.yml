@@ -29,7 +29,7 @@ jobs:
 
       - script: |
           yarn workspace @fluentui/vr-tests-react-components screener:build
-        displayName: Build vr tests components package
+        displayName: Build VR tests components package
 
       - script: |
           yarn lage test:component --verbose
