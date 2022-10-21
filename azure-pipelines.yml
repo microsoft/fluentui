@@ -33,25 +33,10 @@ jobs:
       - script: |
           yarn lage test:component --verbose
         displayName: 'Run VR tests'
-        
+
       - script: |
           mkdir -p screenshots
           cp -rf apps/vr-tests-react-components/dist/screenshots/*.png screenshots/
-          cd screenshots
-          for file in *"\""*; do
-            echo $file
-            mv -- "$file" "${file//\"/}"
-          done
-
-          for file in *"<"*; do
-            echo $file
-            mv -- "$file" "${file//</ }"
-          done
-
-          for file in *">"*; do
-            echo $file
-            mv -- "$file" "${file//>/ }"
-          done
         displayName: Collate Artifacts
 
       - task: PublishBuildArtifacts@1
@@ -59,5 +44,5 @@ jobs:
           PathtoPublish: 'screenshots'
           ArtifactName: 'vrscreenshot'
           publishLocation: 'Container'
-          
+
       - template: .devops/templates/cleanup.yml
