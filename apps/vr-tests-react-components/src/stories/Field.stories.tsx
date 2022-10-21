@@ -91,11 +91,7 @@ storiesOfFieldWithSize('InputField converged', InputField);
 //
 // ProgressField
 //
-storiesOfField('ProgressField converged', props =>
-  props.validationState === 'warning' ? null : (
-    <ProgressField value={0.5} {...props} validationState={props.validationState} />
-  ),
-);
+storiesOfField('ProgressField converged', props => <ProgressField value={0.5} {...props} />);
 
 //
 // RadioGroupField
@@ -114,8 +110,6 @@ storiesOfField('RadioGroupField converged', props => (
 storiesOfFieldWithSize('SelectField converged', props => (
   <SelectField {...props}>
     <option>Option one</option>
-    <option>Option two</option>
-    <option>Option three</option>
   </SelectField>
 ));
 
