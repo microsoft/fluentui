@@ -33,10 +33,10 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
     animation: '3s linear infinite',
     animationName: {
       '0%': {
-        transform: 'rotate(0deg)',
+        transform: 'rotate(0deg) /* @noflip */',
       },
       '100%': {
-        transform: 'rotate(360deg)',
+        transform: 'rotate(360deg) /* @noflip */',
       },
     },
     width: v.svgWidths[p.size],
@@ -44,7 +44,7 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
     '& > circle': {
       cx: '50%',
       cy: '50%',
-      r: '45',
+      r: '45%',
       fill: 'none',
       strokeWidth: '8px',
     },
@@ -68,23 +68,23 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
     animationName: {
       '0%': {
         strokeDashoffset: '283',
-        transform: 'rotate(0)',
+        transform: 'rotate(0) /* @noflip */',
       },
       '25%': {
         strokeDashoffset: '283',
-        transform: 'rotate(0)',
+        transform: 'rotate(0) /* @noflip */',
       },
       '50%': {
         strokeDashoffset: '75',
-        transform: 'rotate(45deg)',
+        transform: 'rotate(45deg) /* @noflip */',
       },
       '75%': {
         strokeDashoffset: '75',
-        transform: 'rotate(45deg)',
+        transform: 'rotate(45deg) /* @noflip */',
       },
       '100%': {
         strokeDashoffset: '283',
-        transform: 'rotate(360deg)',
+        transform: 'rotate(360deg) /* @noflip */',
       },
     },
   }),
