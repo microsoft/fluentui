@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Wrap toggleScrollListener calls in requestAnimationFrame callback.",
+  "packageName": "@fluentui/react-positioning",
+  "email": "xinychen@microsoft.com",
+  "dependentChangeType": "patch"
+}
