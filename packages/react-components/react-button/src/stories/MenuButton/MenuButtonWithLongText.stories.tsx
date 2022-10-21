@@ -5,13 +5,18 @@ const useStyles = makeStyles({
   longText: {
     width: '280px',
   },
+  wrapper: {
+    alignItems: 'center',
+    columnGap: '15px',
+    display: 'flex',
+  },
 });
 
 export const WithLongText = () => {
   const styles = useStyles();
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Menu>
         <MenuTrigger>
           <MenuButton>Short text</MenuButton>
@@ -39,7 +44,7 @@ export const WithLongText = () => {
           </MenuList>
         </MenuPopover>
       </Menu>
-    </>
+    </div>
   );
 };
 

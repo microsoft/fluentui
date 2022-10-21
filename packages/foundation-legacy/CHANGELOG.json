@@ -2,6 +2,48 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Thu, 20 Oct 2022 07:43:14 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.2.22",
+      "version": "8.2.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/style-utilities to v8.8.1",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/utilities to v8.13.2",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:24 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.2.21",
+      "version": "8.2.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/style-utilities to v8.8.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:53 GMT",
       "tag": "@fluentui/foundation-legacy_v8.2.20",
       "version": "8.2.20",

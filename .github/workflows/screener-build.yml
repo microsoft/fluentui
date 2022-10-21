@@ -272,6 +272,10 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
+      - name: build @fluentui/react-storybook-addon
+        run: yarn build --to @fluentui/react-storybook-addon
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}

@@ -8,5 +8,5 @@ declare module '@storybook/addons' {
 }
 
 export * from './TestWrapperDecorator';
-export * from './StoryDecorators';
 export * from './getStoryVariant';
+export * from './withScreenerSteps';

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/test-utilities",
-  "version": "8.2.2",
+  "version": "8.2.3",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "typings": "lib-commonjs/index.d.ts",
@@ -23,9 +23,9 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react": ">=16.8.0 <19.0.0",
     "enzyme": "^3.0.0",
-    "react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <19.0.0",
     "react-test-renderer": ">=16.3.0 <18.0.0"
   }
 }

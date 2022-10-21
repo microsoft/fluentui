@@ -1,25 +1,15 @@
-import { RadioGroup } from '@fluentui/react-components';
-import bestPracticesMd from './RadioGroupBestPractices.md';
-import descriptionMd from './RadioGroupDescription.md';
+import { Radio } from '@fluentui/react-components';
+import descriptionMd from './RadioDescription.md';
 
-export { Default } from './RadioGroupDefault.stories';
-export { Labeled } from './RadioGroupLabeled.stories';
-export { Horizontal } from './RadioGroupHorizontal.stories';
-export { HorizontalStacked } from './RadioGroupHorizontalStacked.stories';
-export { ControlledValue } from './RadioGroupControlledValue.stories';
-export { UncontrolledValue } from './RadioGroupUncontrolledValue.stories';
-export { Required } from './RadioGroupRequired.stories';
-export { Disabled } from './RadioGroupDisabled.stories';
-export { DisabledItem } from './RadioGroupDisabledItem.stories';
-export { LabelSubtext } from './RadioGroupLabelSubtext.stories';
+export { Default } from './RadioDefault.stories';
 
 export default {
-  title: 'Components/RadioGroup',
-  component: RadioGroup,
+  title: 'Components/Radio',
+  component: Radio,
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: descriptionMd,
       },
     },
   },

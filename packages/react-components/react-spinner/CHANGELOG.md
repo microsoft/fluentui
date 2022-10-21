@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.8)
+
+Thu, 20 Oct 2022 08:39:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.7..@fluentui/react-spinner_v9.0.8)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-label to v9.0.8 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.7)
+
+Thu, 13 Oct 2022 11:03:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.6..@fluentui/react-spinner_v9.0.7)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.6)
 

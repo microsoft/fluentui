@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: adds cursor pointer style to dialog close button",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
