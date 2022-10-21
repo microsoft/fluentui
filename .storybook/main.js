@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path'); 
 const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox');
