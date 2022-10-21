@@ -15,6 +15,7 @@ export const ValidationState = () => {
   return (
     <div className={styles.container}>
       <Progress value={0.75} validationState="error" />
+      <Progress value={0.95} validationState="warning" />
       <Progress value={1} validationState="success" />
     </div>
   );
@@ -24,7 +25,9 @@ ValidationState.parameters = {
   docs: {
     name: 'Validation State',
     description: {
-      story: 'The `validationState` prop can be used to indicate an `"error"` (red) or `"success"` (green) state.',
+      story:
+        'The `validationState` prop can be used to indicate an `"error"` state (red), `"warning"` state (orange), ' +
+        'or `"success"` state (green).',
     },
   },
 };

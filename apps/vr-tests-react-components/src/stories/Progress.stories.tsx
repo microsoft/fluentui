@@ -16,4 +16,5 @@ storiesOf('Progress converged', module)
   })
   .addStory('Determinate with thickness large', () => <Progress value={0.5} thickness="large" />)
   .addStory('Error', () => <Progress value={0.5} validationState="error" />)
+  .addStory('Warning', () => <Progress value={0.5} validationState="warning" />)
   .addStory('Success', () => <Progress value={0.5} validationState="success" />);

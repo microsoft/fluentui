@@ -105,10 +105,13 @@ const useBarStyles = makeStyles({
   },
 
   error: {
-    backgroundColor: tokens.colorPaletteRedBorder2,
+    backgroundColor: tokens.colorPaletteRedForeground1,
+  },
+  warning: {
+    backgroundColor: tokens.colorPaletteDarkOrangeForeground1,
   },
   success: {
-    backgroundColor: tokens.colorPaletteGreenBorder2,
+    backgroundColor: tokens.colorPaletteGreenForeground1,
   },
 });
 
