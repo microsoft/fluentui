@@ -267,17 +267,21 @@ function useContainerRef(updatePosition: () => void, enabled: boolean) {
       Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
     }
 
-    toggleScrollListener(container, prevContainer, updatePosition);
-
-    updatePosition();
+    // toggleScrollListener requires computed styles; thus use RAF to prevent forced style reevaluation.
+    window.requestAnimationFrame(() => {
+      toggleScrollListener(container, prevContainer, updatePosition);
+      updatePosition();
+    });
   });
 }
 
 function useTargetRef(updatePosition: () => void) {
   return useCallbackRef<HTMLElement | PositioningVirtualElement | null>(null, (target, prevTarget) => {
-    toggleScrollListener(target, prevTarget, updatePosition);
-
-    updatePosition();
+    // toggleScrollListener requires computed styles; thus use RAF to prevent forced style reevaluation.
+    window.requestAnimationFrame(() => {
+      toggleScrollListener(target, prevTarget, updatePosition);
+      updatePosition();
+    });
   });
 }
 
