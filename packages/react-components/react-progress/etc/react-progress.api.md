@@ -23,7 +23,7 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
     value?: number;
     max?: number;
     thickness?: 'medium' | 'large';
-    validationState?: 'success' | 'error';
+    validationState?: 'success' | 'warning' | 'error';
 };
 
 // @public (undocumented)
