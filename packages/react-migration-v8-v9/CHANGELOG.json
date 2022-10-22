@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/react-migration-v8-v9",
+  "entries": [
+    {
+      "date": "Tue, 25 Oct 2022 07:43:18 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "0467df35d2d95e7d782e48755f811af576490795",
+            "comment": "publishing migration package"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react to v8.98.7",
+            "commit": "fd0e28e497856c9ddb6c82d0b6b336f5c263fb7e"
+          }
+        ]
+      }
+    }
+  ]
+}

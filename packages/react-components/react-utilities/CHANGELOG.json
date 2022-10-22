@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:39 GMT",
+      "tag": "@fluentui/react-utilities_v9.1.2",
+      "version": "9.1.2",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:56 GMT",
       "tag": "@fluentui/react-utilities_v9.1.2",
       "version": "9.1.2",

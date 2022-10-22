@@ -469,6 +469,7 @@ export type {
   PopoverSurfaceProps,
   PopoverSurfaceSlots,
   PopoverSurfaceState,
+  PopoverTriggerChildProps,
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';

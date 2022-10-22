@@ -326,25 +326,29 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {this.props.legendBars}
           </div>
         )}
-        {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
-          <Callout {...calloutProps}>
-            {/** Given custom callout, then it will render */}
-            {this.props.customizedCallout && this.props.customizedCallout}
-            {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-            {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-            {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-            {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-              <ChartHoverCard
-                XValue={calloutProps.XValue}
-                Legend={calloutProps.legend!}
-                YValue={calloutProps.YValue!}
-                color={calloutProps.color!}
-                culture={this.props.culture}
-                {...chartHoverProps}
-              />
-            )}
-          </Callout>
-        )}
+        {/** The callout is used for narration, so keep it mounted on the DOM */}
+        <Callout
+          hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+          /** Keep the callout updated with details of focused/hovered chart element */
+          shouldUpdateWhenHidden={true}
+          {...calloutProps}
+        >
+          {/** Given custom callout, then it will render */}
+          {this.props.customizedCallout && this.props.customizedCallout}
+          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+          {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+          {!this.props.customizedCallout && !this.props.isCalloutForStack && (
+            <ChartHoverCard
+              XValue={calloutProps.XValue}
+              Legend={calloutProps.legend!}
+              YValue={calloutProps.YValue!}
+              color={calloutProps.color!}
+              culture={this.props.culture}
+              {...chartHoverProps}
+            />
+          )}
+        </Callout>
       </div>
     );
   }

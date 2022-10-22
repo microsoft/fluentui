@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { Button, Input, Label, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
@@ -13,8 +13,8 @@ const AddPeopleContent: React.FunctionComponent<AddPeopleContentProps> = (props:
 
   return (
     <>
-      <label htmlFor="addPeopleInput">Enter name, email or tag</label>
-      <input type="text" name="addPeopleInput" id="addPeopleInput" />
+      <Label htmlFor="addPeopleInput">Enter name, email or tag</Label>
+      <Input type="text" name="addPeopleInput" id="addPeopleInput" />
       <Button
         onClick={() => {
           setPopoverOpened(false);
@@ -26,7 +26,7 @@ const AddPeopleContent: React.FunctionComponent<AddPeopleContentProps> = (props:
   );
 };
 
-export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = () => {
+export const AddPeoplePopover: React.FunctionComponent = () => {
   const [popoverOpened, setPopoverOpened] = React.useState(false);
 
   return (
@@ -48,9 +48,4 @@ export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = ()
       </Popover>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Add people popover',
-  id: 'popover-accessibility-scenario',
 };

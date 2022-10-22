@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-table",
-  "version": "9.0.0-alpha.7",
+  "version": "9.0.0-alpha.8",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.2.3",
-    "@fluentui/react-avatar": "^9.2.3",
-    "@fluentui/react-checkbox": "^9.0.9",
+    "@fluentui/react-avatar": "^9.2.4",
+    "@fluentui/react-checkbox": "^9.0.10",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-radio": "^9.0.9",
     "@fluentui/react-tabster": "^9.2.0",

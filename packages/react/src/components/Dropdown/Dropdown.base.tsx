@@ -316,6 +316,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
       onRenderLabel = this._onRenderLabel,
+      onRenderItem = this._onRenderItem,
       hoisted: { selectedIndices },
     } = props;
     const { isOpen, calloutRenderEdge, hasFocus } = this.state;
@@ -397,7 +398,15 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           </span>
           <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
         </div>
-        {isOpen && onRenderContainer({ ...props, onDismiss: this._onDismiss }, this._onRenderContainer)}
+        {isOpen &&
+          onRenderContainer(
+            {
+              ...props,
+              onDismiss: this._onDismiss,
+              onRenderItem,
+            },
+            this._onRenderContainer,
+          )}
         {hasErrorMessage && (
           <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
             {errorMessage}

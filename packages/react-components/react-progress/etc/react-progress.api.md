@@ -23,6 +23,7 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
     value?: number;
     max?: number;
     thickness?: 'medium' | 'large';
+    validationState?: 'success' | 'warning' | 'error';
 };
 
 // @public (undocumented)
@@ -32,7 +33,7 @@ export type ProgressSlots = {
 };
 
 // @public
-export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressProps, 'value'>;
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressProps, 'value' | 'validationState'>;
 
 // @public
 export const renderProgress_unstable: (state: ProgressState) => JSX.Element;

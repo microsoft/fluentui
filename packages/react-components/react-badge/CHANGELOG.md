@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 20 Oct 2022 08:39:27 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.10)
+
+Tue, 25 Oct 2022 00:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.9..@fluentui/react-badge_v9.0.10)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25335](https://github.com/microsoft/fluentui/pull/25335) by tristan.watanabe@gmail.com)
 
 ## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.9)
 

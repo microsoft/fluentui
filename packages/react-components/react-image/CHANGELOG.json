@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:32 GMT",
+      "tag": "@fluentui/react-image_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "c483be010271f3224064a9778e6432167f2249d0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:34 GMT",
       "tag": "@fluentui/react-image_v9.0.8",
       "version": "9.0.8",
