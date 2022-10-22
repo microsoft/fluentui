@@ -6,6 +6,7 @@ import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
   ICartesianChartStyles,
+  ILineChartLineOptions,
   IVerticalStackedChartProps,
   IVSChartDataPoint,
 } from '../../index';
@@ -106,6 +107,11 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * it's padding between bar's or lines in the graph
    */
   xAxisPadding?: number;
+
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
 }
 
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}

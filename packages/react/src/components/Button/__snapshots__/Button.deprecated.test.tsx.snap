@@ -21,6 +21,10 @@ exports[`Button renders CompoundButton correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: auto;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         max-width: 280px;
         min-height: 72px;
         outline: transparent;

@@ -7,6 +7,7 @@ exports[`Tab renders correctly 1`] = `
     class="fui-Tab"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
     value="1"
   >
     <span
@@ -24,6 +25,7 @@ exports[`Tab renders correctly when disabled 1`] = `
     class="fui-Tab"
     disabled=""
     role="tab"
+    type="button"
     value="1"
   >
     <span
@@ -42,6 +44,7 @@ exports[`Tab renders default correctly with icon slotted 1`] = `
     class="fui-Tab"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
     value="1"
   >
     <span
@@ -78,6 +81,7 @@ exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
     class="fui-Tab"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
     value="1"
   >
     <span
@@ -114,6 +118,7 @@ exports[`Tab renders small size correctly with icon slotted 1`] = `
     class="fui-Tab"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
     value="1"
   >
     <span
@@ -150,6 +155,7 @@ exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
     class="fui-Tab"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
     value="1"
   >
     <span
@@ -186,6 +192,7 @@ exports[`Tab renders vertical correctly with icon slotted 1`] = `
     class="fui-Tab"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
     value="1"
   >
     <span

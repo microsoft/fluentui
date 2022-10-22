@@ -14,7 +14,7 @@ export type ListenerCallbacks = {
   onKeyUp: (ev: KeyboardEvent) => void;
 };
 let mountCounters = new WeakMap<Window | HTMLElement, number>();
-let callbackMap = new WeakMap<HTMLElement, ListenerCallbacks>();
+let callbackMap = new WeakMap<IFocusRectsContext, ListenerCallbacks>();
 
 function setMountCounters(key: Window | HTMLElement, delta: number): number {
   let newValue;
@@ -29,29 +29,51 @@ function setMountCounters(key: Window | HTMLElement, delta: number): number {
   return newValue;
 }
 
-function setCallbackMap(key: HTMLElement): ListenerCallbacks {
-  let callbacks = callbackMap.get(key);
+function setCallbackMap(context: IFocusRectsContext): ListenerCallbacks {
+  let callbacks = callbackMap.get(context);
   if (callbacks) {
     return callbacks;
   }
 
-  const onMouseDown = (ev: MouseEvent) => _onMouseDown(ev, key);
-  const onPointerDown = (ev: PointerEvent) => _onPointerDown(ev, key);
-  const onKeyDown = (ev: KeyboardEvent) => _onKeyDown(ev, key);
-  const onKeyUp = (ev: KeyboardEvent) => _onKeyUp(ev, key);
+  const onMouseDown = (ev: MouseEvent) => _onMouseDown(ev, context.registeredProviders);
+  const onPointerDown = (ev: PointerEvent) => _onPointerDown(ev, context.registeredProviders);
+  const onKeyDown = (ev: KeyboardEvent) => _onKeyDown(ev, context.registeredProviders);
+  const onKeyUp = (ev: KeyboardEvent) => _onKeyUp(ev, context.registeredProviders);
   callbacks = { onMouseDown, onPointerDown, onKeyDown, onKeyUp };
 
-  callbackMap.set(key, callbacks);
+  callbackMap.set(context, callbacks);
   return callbacks;
 }
 
 type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
 
 export type IFocusRectsContext = {
-  providerRef?: React.RefObject<HTMLElement>;
+  /**
+   * Ref to the root element of the provider
+   */
+  readonly providerRef: React.RefObject<HTMLElement>;
+
+  /**
+   * Array of this and all child provider elements under this one in the React tree.
+   *
+   * Tracking all child providers will allow a focus event in the parent to also set focus styling in its descendants.
+   * This is needed for Combobox, for example, because the focus events happen on the parent context, but the visual
+   * focus indicator is in the combobox callout. The callout needs to be notified on focus events from the parent.
+   */
+  readonly registeredProviders: React.RefObject<HTMLElement>[];
+
+  /**
+   * Used by child FocusRectsProviders to register their element with the parent provider.
+   */
+  readonly registerProvider: (ref: React.RefObject<HTMLElement>) => void;
+
+  /**
+   * Used by child FocusRectsProviders to unregister their element from the parent provider.
+   */
+  readonly unregisterProvider: (ref: React.RefObject<HTMLElement>) => void;
 };
-export const FocusRectsContext = React.createContext<IFocusRectsContext>({});
-export const FocusRectsProvider = FocusRectsContext.Provider;
+
+export const FocusRectsContext = React.createContext<IFocusRectsContext | undefined>(undefined);
 
 /**
  * Initializes the logic which:
@@ -72,7 +94,7 @@ export const FocusRectsProvider = FocusRectsContext.Provider;
  * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
-  const { providerRef } = React.useContext(FocusRectsContext);
+  const context = React.useContext(FocusRectsContext);
 
   React.useEffect(() => {
     const win = getWindow(rootRef?.current) as AppWindow;
@@ -86,9 +108,9 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;
     let onKeyUp: (ev: KeyboardEvent) => void;
-    if (providerRef && providerRef.current) {
-      el = providerRef.current;
-      const callbacks = setCallbackMap(el as HTMLElement);
+    if (context?.providerRef?.current) {
+      el = context.providerRef.current;
+      const callbacks = setCallbackMap(context);
       onMouseDown = callbacks.onMouseDown;
       onPointerDown = callbacks.onPointerDown;
       onKeyDown = callbacks.onKeyDown;
@@ -120,7 +142,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
         el.removeEventListener('keyup', onKeyUp, true);
       }
     };
-  }, [providerRef, rootRef]);
+  }, [context, rootRef]);
 }
 
 /**
@@ -132,13 +154,13 @@ export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTM
   return null;
 };
 
-function _onMouseDown(ev: MouseEvent, providerElem?: Element): void {
-  setFocusVisibility(false, ev.target as Element, providerElem);
+function _onMouseDown(ev: MouseEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
+  setFocusVisibility(false, ev.target as Element, registeredProviders);
 }
 
-function _onPointerDown(ev: PointerEvent, providerElem?: Element): void {
+function _onPointerDown(ev: PointerEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
   if (ev.pointerType !== 'mouse') {
-    setFocusVisibility(false, ev.target as Element, providerElem);
+    setFocusVisibility(false, ev.target as Element, registeredProviders);
   }
 }
 
@@ -151,16 +173,16 @@ function _onPointerDown(ev: PointerEvent, providerElem?: Element): void {
 // every element that is being tabbed into.
 // This works because `classList.add` is smart and will not duplicate a classname that already exists on the classList
 // when focus visibility is turned on.
-function _onKeyDown(ev: KeyboardEvent, providerElem?: Element): void {
+function _onKeyDown(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
-    setFocusVisibility(true, ev.target as Element, providerElem);
+    setFocusVisibility(true, ev.target as Element, registeredProviders);
   }
 }
 
-function _onKeyUp(ev: KeyboardEvent, providerElem?: Element): void {
+function _onKeyUp(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
-    setFocusVisibility(true, ev.target as Element, providerElem);
+    setFocusVisibility(true, ev.target as Element, registeredProviders);
   }
 }

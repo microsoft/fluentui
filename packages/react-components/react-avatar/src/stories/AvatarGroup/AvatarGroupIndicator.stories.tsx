@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,32 +10,49 @@ const useStyles = makeStyles({
   },
 });
 
+const names = [
+  'Johnie McConnell',
+  'Allan Munger',
+  'Erik Nason',
+  'Kristin Patterson',
+  'Daisy Phillips',
+  'Carole Poland',
+  'Carlos Slattery',
+  'Robert Tolbert',
+  'Kevin Sturgis',
+  'Charlotte Waltson',
+  'Elliot Woodward',
+];
+
 export const Indicator = () => {
   const styles = useStyles();
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (
     <div className={styles.root}>
-      <AvatarGroup overflowIndicator="count">
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
+      <AvatarGroup>
+        {inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        {overflowItems && (
+          <AvatarGroupPopover indicator="count">
+            {overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
-      <AvatarGroup overflowIndicator="icon">
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
+      <AvatarGroup>
+        {inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        {overflowItems && (
+          <AvatarGroupPopover indicator="icon">
+            {overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
     </div>
   );
@@ -44,7 +61,7 @@ export const Indicator = () => {
 Indicator.parameters = {
   docs: {
     description: {
-      story: `An AvatarGroup supports an icon and a count overflow indicator.
+      story: `An AvatarGroup supports an icon and a count indicator.
         When size is less than 24, then icon will be used by default.`,
     },
   },

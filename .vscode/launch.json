@@ -57,7 +57,7 @@
       "name": "Build @fluentui/react",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/just-scripts.js",
+      "program": "${workspaceRoot}/node-modules/just-scripts/bin/just-scripts.js",
       "cwd": "${workspaceRoot}/packages/react",
       "stopOnEntry": false,
       "args": ["ts"],
@@ -128,7 +128,7 @@
       "protocol": "inspector",
       "cwd": "${workspaceRoot}",
       "args": [
-        "${workspaceRoot}/scripts/updateReleaseNotes/index.ts",
+        "${workspaceRoot}/scripts/update-release-notes/index.ts",
         "--token",
         // For local testing, generate a personal access token (https://github.com/settings/tokens)
         // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!

@@ -1,7 +1,3 @@
-// @ts-check
-
-/// <reference lib="es2019.array" />
-
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
@@ -84,7 +80,7 @@ function getAllFiles(dirPath, arrayOfFiles = []) {
     return filePath;
   });
 
-  return allFiles.flat(Infinity);
+  return /** @type {string[]} */ (allFiles.flat(Infinity));
 }
 
 /**

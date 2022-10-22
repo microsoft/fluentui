@@ -1,11 +1,19 @@
-// @ts-check
-
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * @type {string}
+ */
 let cwdForGitRoot;
+/**
+ * @type {string}
+ */
 let gitRoot;
 
+/**
+ *
+ * @returns {string}
+ */
 function findGitRoot() {
   let cwd = process.cwd();
 

@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IGroupedVerticalBarChartProps, GroupedVerticalBarChart, IGVBarChartSeriesPoint } from '../../index';
 import { IGroupedVerticalBarChartState, GroupedVerticalBarChartBase } from './GroupedVerticalBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the GroupedVerticalBarChart to be tested.
 let wrapper:
@@ -200,5 +201,45 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('GroupedVerticalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(2).simulate('mousemove');
+    const html1 = wrapper.html();
+    wrapper.find('rect').at(3).simulate('mousemove');
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <GroupedVerticalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: IGVBarChartSeriesPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

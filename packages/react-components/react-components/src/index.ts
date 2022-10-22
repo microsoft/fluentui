@@ -1,16 +1,16 @@
 // Utilities
 export {
-  RendererProvider,
   __css,
   __styles,
   createDOMRenderer,
   makeStaticStyles,
   makeStyles,
   mergeClasses,
+  RendererProvider,
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
-export type { GriffelStyle } from '@griffel/react';
+export type { GriffelStyle, GriffelRenderer } from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassNames,
@@ -472,6 +472,8 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
+export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
+export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Slider,
   sliderClassNames,
@@ -585,3 +587,65 @@ export type {
   PositioningImperativeRef,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
+
+export {
+  Dialog,
+  useDialog_unstable,
+  renderDialog_unstable,
+  DialogTitle,
+  dialogTitleClassNames,
+  useDialogTitle_unstable,
+  useDialogTitleStyles_unstable,
+  renderDialogTitle_unstable,
+  DialogTrigger,
+  useDialogTrigger_unstable,
+  renderDialogTrigger_unstable,
+  DialogBody,
+  dialogBodyClassNames,
+  useDialogBody_unstable,
+  useDialogBodyStyles_unstable,
+  renderDialogBody_unstable,
+  DialogActions,
+  dialogActionsClassNames,
+  useDialogActions_unstable,
+  useDialogActionsStyles_unstable,
+  renderDialogActions_unstable,
+  DialogSurface,
+  dialogSurfaceClassNames,
+  useDialogSurface_unstable,
+  useDialogSurfaceStyles_unstable,
+  renderDialogSurface_unstable,
+  DialogContent,
+  dialogContentClassNames,
+  useDialogContentStyles_unstable,
+  useDialogContent_unstable,
+  renderDialogContent_unstable,
+} from '@fluentui/react-dialog';
+
+export type {
+  DialogProps,
+  DialogOpenChangeData,
+  DialogOpenChangeEvent,
+  DialogSlots,
+  DialogState,
+  DialogTriggerProps,
+  DialogTriggerChildProps,
+  DialogTriggerState,
+  DialogTriggerAction,
+  DialogActionsProps,
+  DialogActionsSlots,
+  DialogActionsState,
+  DialogActionsPosition,
+  DialogBodyProps,
+  DialogBodySlots,
+  DialogBodyState,
+  DialogTitleProps,
+  DialogTitleSlots,
+  DialogTitleState,
+  DialogSurfaceProps,
+  DialogSurfaceSlots,
+  DialogSurfaceState,
+  DialogContentProps,
+  DialogContentSlots,
+  DialogContentState,
+} from '@fluentui/react-dialog';

@@ -25,6 +25,7 @@ export const ModalBasicExample: React.FunctionComponent = () => {
       closeMenuItemText: 'Close',
       menu: ContextualMenu,
       keepInBounds,
+      dragHandleSelector: '.ms-Modal-scrollableContent > div:first-child',
     }),
     [keepInBounds],
   );

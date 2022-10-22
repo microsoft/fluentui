@@ -351,7 +351,16 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   }
 
   private _getAlertText = () => {
-    const { isLoading, isSearching, suggestions, suggestionsAvailableAlertText, noResultsFoundText } = this.props;
+    const {
+      isLoading,
+      isSearching,
+      suggestions,
+      suggestionsAvailableAlertText,
+      noResultsFoundText,
+      isExtendedLoading,
+      loadingText,
+    } = this.props;
+
     if (!isLoading && !isSearching) {
       if (suggestions.length > 0) {
         return suggestionsAvailableAlertText || '';
@@ -359,6 +368,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       if (noResultsFoundText) {
         return noResultsFoundText;
       }
+    } else if (isLoading && isExtendedLoading) {
+      return loadingText || '';
     }
     return '';
   };

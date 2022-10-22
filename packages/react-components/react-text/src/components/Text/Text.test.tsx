@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Text } from './Text';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TextProps } from './Text.types';
 
 describe('Text', () => {
@@ -145,6 +145,7 @@ describe('Text', () => {
     ['regular', 'Regular'],
     ['medium', 'Medium'],
     ['semibold', 'Semibold'],
+    ['bold', 'Bold'],
   ] as const)('applies %s weight', (input, expectedValue) => {
     const { getByText } = render(<Text weight={input}>Test</Text>);
 

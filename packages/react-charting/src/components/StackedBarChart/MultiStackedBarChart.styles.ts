@@ -1,4 +1,5 @@
 import { IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
   const { className, width, barHeight, shouldHighlight, theme, href } = props;
@@ -24,7 +25,14 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '5px',
+      marginBottom: '3px',
+    },
+    chartTitleLeft: {
+      fontWeight: FontWeights.bold,
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      display: 'block',
     },
     singleChartRoot: {
       width: width ? width : '100%',

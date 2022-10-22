@@ -254,7 +254,7 @@ const useColorStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground6,
   },
   brand: {
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundStaticInverted,
     backgroundColor: tokens.colorBrandBackgroundStatic,
   },
   'dark-red': {

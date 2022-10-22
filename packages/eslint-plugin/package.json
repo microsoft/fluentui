@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "1.12.1",
+  "version": "1.12.5",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {
@@ -29,7 +29,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "fs-extra": "^8.1.0",
     "minimatch": "^3.0.4",
-    "@nrwl/tao": "13.8.1",
     "jju": "^1.4.0"
   },
   "peerDependencies": {

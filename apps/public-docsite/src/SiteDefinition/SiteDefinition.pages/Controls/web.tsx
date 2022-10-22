@@ -35,6 +35,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     DatePicker: {},
     PeoplePicker: {},
     SwatchColorPicker: {},
+    TimePicker: {},
   },
   'Items & Lists': {
     List: { title: 'Basic List' },
@@ -67,6 +68,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         DragDrop: { title: 'Drag & Drop', url: 'draganddrop' },
         NavigatingFocus: { title: 'Inner Navigation', url: 'innernavigation' },
         Shimmer: {},
+        ProportionalColumns: { title: 'Proportional Columns', url: 'proportionalcolumns' },
       },
     },
     GroupedList: {},
@@ -119,6 +121,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Layer: {},
     MarqueeSelection: {},
     Overlay: {},
+    Popup: {},
     ResizeGroup: {},
     Selection: {},
     Separator: {},

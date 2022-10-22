@@ -38,6 +38,8 @@ export const tokens: Record<keyof Theme, string> = {
   colorNeutralForegroundInvertedHover: 'var(--colorNeutralForegroundInvertedHover)',
   colorNeutralForegroundInvertedPressed: 'var(--colorNeutralForegroundInvertedPressed)',
   colorNeutralForegroundInvertedSelected: 'var(--colorNeutralForegroundInvertedSelected)',
+  colorNeutralForegroundInverted2: 'var(--colorNeutralForegroundInverted2)',
+  colorNeutralForegroundStaticInverted: 'var(--colorNeutralForegroundStaticInverted)',
   colorNeutralForegroundInvertedLink: 'var(--colorNeutralForegroundInvertedLink)',
   colorNeutralForegroundInvertedLinkHover: 'var(--colorNeutralForegroundInvertedLinkHover)',
   colorNeutralForegroundInvertedLinkPressed: 'var(--colorNeutralForegroundInvertedLinkPressed)',
@@ -74,6 +76,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorNeutralBackground5Pressed: 'var(--colorNeutralBackground5Pressed)',
   colorNeutralBackground5Selected: 'var(--colorNeutralBackground5Selected)',
   colorNeutralBackground6: 'var(--colorNeutralBackground6)',
+  colorNeutralBackgroundStatic: 'var(--colorNeutralBackgroundStatic)',
   colorNeutralBackgroundInverted: 'var(--colorNeutralBackgroundInverted)',
   colorSubtleBackground: 'var(--colorSubtleBackground)',
   colorSubtleBackgroundHover: 'var(--colorSubtleBackgroundHover)',
@@ -393,6 +396,7 @@ export const tokens: Record<keyof Theme, string> = {
   fontWeightRegular: 'var(--fontWeightRegular)',
   fontWeightMedium: 'var(--fontWeightMedium)',
   fontWeightSemibold: 'var(--fontWeightSemibold)',
+  fontWeightBold: 'var(--fontWeightBold)',
 
   // Line height tokens
   lineHeightBase100: 'var(--lineHeightBase100)',

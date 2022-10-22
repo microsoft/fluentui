@@ -26,7 +26,7 @@ class FlamegrillReporter {
   onTestResult(test, testResult, aggregatedResult) {
     this._watcher.close();
 
-    const profiles = {};
+    const profiles = /** @type {import('flamegrill/lib/profile').ScenarioProfiles} */ ({});
     const numLogFiles = this._logFiles.length;
     const numTests = testResult.testResults.length;
 

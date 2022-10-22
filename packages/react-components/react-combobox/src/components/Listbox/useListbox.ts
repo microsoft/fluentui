@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
-import { useSelection } from '../../utils/useSelection';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
+import type { OptionValue } from '../../utils/OptionCollection.types';
+import { useOptionCollection } from '../../utils/useOptionCollection';
+import { useScrollOptionsIntoView } from '../../utils/useScrollOptionsIntoView';
+import { useSelection } from '../../utils/useSelection';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
-import { useOptionCollection } from '../../utils/useOptionCollection';
-import { OptionValue } from '../../utils/OptionCollection.types';
 
 /**
  * Create the state required to render Listbox.
@@ -20,19 +21,15 @@ import { OptionValue } from '../../utils/OptionCollection.types';
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const { multiselect } = props;
   const optionCollection = useOptionCollection();
-  const { getCount, getOptionAtIndex, getOptionById, getIndexOfId } = optionCollection;
+  const { getCount, getOptionAtIndex, getIndexOfId } = optionCollection;
 
   const { selectedOptions, selectOption } = useSelection(props);
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
-    // clicked option should always become active option
-    setActiveOption(getOptionById(option.id));
-
-    // handle selection change
-    selectOption(event, option);
-  };
+  // track whether keyboard focus outline should be shown
+  // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
+  const [focusVisible, setFocusVisible] = React.useState(false);
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
@@ -53,29 +50,40 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       // prevent default page scroll/keyboard action if the index changed
       event.preventDefault();
       setActiveOption(getOptionAtIndex(newIndex));
+      setFocusVisible(true);
     }
+  };
+
+  const onMouseOver = (event: React.MouseEvent<HTMLElement>) => {
+    setFocusVisible(false);
   };
 
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const comboboxActiveOption = useContextSelector(ComboboxContext, ctx => ctx.activeOption);
-  const comboboxOnOptionClick = useContextSelector(ComboboxContext, ctx => ctx.onOptionClick);
+  const comboboxFocusVisible = useContextSelector(ComboboxContext, ctx => ctx.focusVisible);
   const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
+  const comboboxSelectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
+  const comboboxSetActiveOption = useContextSelector(ComboboxContext, ctx => ctx.setActiveOption);
 
   // without a parent combobox context, provide values directly from Listbox
   const optionContextValues = hasComboboxContext
     ? {
         activeOption: comboboxActiveOption,
-        onOptionClick: comboboxOnOptionClick,
+        focusVisible: comboboxFocusVisible,
         selectedOptions: comboboxSelectedOptions,
+        selectOption: comboboxSelectOption,
+        setActiveOption: comboboxSetActiveOption,
       }
     : {
         activeOption,
-        onOptionClick,
+        focusVisible,
         selectedOptions,
+        selectOption,
+        setActiveOption,
       };
 
-  return {
+  const state: ListboxState = {
     components: {
       root: 'div',
     },
@@ -85,11 +93,18 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
       'aria-multiselectable': multiselect,
       tabIndex: 0,
-      onKeyDown,
       ...props,
     }),
     multiselect,
     ...optionCollection,
     ...optionContextValues,
   };
+
+  const scrollContainerRef = useScrollOptionsIntoView(state);
+  state.root.ref = useMergedRefs(state.root.ref, scrollContainerRef);
+
+  state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
+  state.root.onMouseOver = useEventCallback(mergeCallbacks(state.root.onMouseOver, onMouseOver));
+
+  return state;
 };

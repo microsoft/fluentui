@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  css,
   KeyCodes,
   classNamesFunction,
   divProperties,
@@ -315,6 +316,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
       onRenderLabel = this._onRenderLabel,
+      onRenderItem = this._onRenderItem,
       hoisted: { selectedIndices },
     } = props;
     const { isOpen, calloutRenderEdge, hasFocus } = this.state;
@@ -332,11 +334,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const disabled = this._isDisabled();
 
     const errorMessageId = id + '-errorMessage';
-    const ariaActiveDescendant = disabled
-      ? undefined
-      : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
-      ? this._listId + selectedIndices[0]
-      : undefined;
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -373,7 +370,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-label={ariaLabel}
           aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
-          aria-activedescendant={ariaActiveDescendant}
           aria-required={required}
           aria-disabled={disabled}
           aria-controls={isOpen ? this._listId : undefined}
@@ -402,7 +398,15 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           </span>
           <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
         </div>
-        {isOpen && onRenderContainer({ ...props, onDismiss: this._onDismiss }, this._onRenderContainer)}
+        {isOpen &&
+          onRenderContainer(
+            {
+              ...props,
+              onDismiss: this._onDismiss,
+              onRenderItem,
+            },
+            this._onRenderContainer,
+          )}
         {hasErrorMessage && (
           <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
             {errorMessage}
@@ -844,7 +848,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
-        className={itemClassName}
+        className={css(itemClassName, 'is-multi-select')}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}

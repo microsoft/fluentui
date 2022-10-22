@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/babel-preset-global-context",
-  "version": "9.0.0-beta.3",
+  "version": "9.0.0-beta.6",
   "description": "Babel preset that transforms createContext calls to use global context shims",
   "main": "lib-commonjs/index.js",
   "typings": "dist/index.d.ts",
@@ -14,8 +14,8 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "pree2e": "yarn build",
-    "e2e": "yarn cypress run --component",
-    "e2e:local": "yarn cypress open --component",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
@@ -38,7 +38,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/global-context": "9.0.0-beta.3"
+    "@fluentui/global-context": "9.0.0-beta.6"
   },
   "beachball": {
     "disallowedChangeTypes": [

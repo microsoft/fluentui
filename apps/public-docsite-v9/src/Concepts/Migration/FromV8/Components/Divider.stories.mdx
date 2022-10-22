@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Separator to Divider Migration" />
+
+# Separator to Divider Migration
+
+The v8 `Separator` component is called `Divider` in v9.
+
+Migration should be a straightforward name change of the component.
+v9 `Divider` supports the same `alignContent`, `children` and `vertical` props.
+If you custom styled `Separator` then use `makeStyles` to set a `className` with `Divider`.
+
+Here is a vertical `Separator` with the content aligned at the end.
+
+```tsx
+<Separator vertical alignContent="end">
+  Content
+</Separator>
+```
+
+Here is an equivalent `Divider`.
+
+```tsx
+<Divider vertical alignContent="end">
+  Content
+</Divider>
+```
+
+## Divider Props Mapping
+
+| v8           | v9                             |
+| ------------ | ------------------------------ |
+| alignContent | alignContent                   |
+|              | appearance                     |
+|              | inset                          |
+| styles       | (use makeStyles and className) |
+| theme        | (use FluentProvider)           |
+| vertical     | vertical                       |

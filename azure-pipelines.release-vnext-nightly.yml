@@ -37,6 +37,11 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
+      - script: |
+          git config user.name "Fluent UI Build"
+          git config user.email "fluentui-internal@service.microsoft.com"
+        displayName: Configure git user (used by beachball)
+
       - task: Bash@3
         inputs:
           filePath: yarn-ci.sh
@@ -44,7 +49,7 @@ jobs:
 
         # Deletes all existing changefiles so that only bump that happens is for nightly
       - script: |
-          rm change/*
+          rm -f change/*
         displayName: 'Delete existing changefiles'
 
         # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
@@ -60,15 +65,15 @@ jobs:
       # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
       # https://github.com/microsoft/fluentui/issues/21686
       - script: |
-          yarn run:published test
+          yarn lage test --to @fluentui/react-components
         displayName: yarn test
 
       - script: |
-          yarn run:published lint
+          yarn lage lint --to @fluentui/react-components
         displayName: yarn lint
 
       - script: |
-          yarn run:published build --production
+          yarn lage build --to @fluentui/react-components
         displayName: yarn build
 
       - script: |

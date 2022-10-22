@@ -82,6 +82,10 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -111,11 +115,11 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
+                        bottom: 1px;
+                        left: 1px;
                         outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
+                        right: 1px;
+                        top: 1px;
                       }
                       &:active > span {
                         left: 0px;
@@ -1315,6 +1319,10 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1344,11 +1352,11 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
+                        bottom: 1px;
+                        left: 1px;
                         outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
+                        right: 1px;
+                        top: 1px;
                       }
                       &:active > span {
                         left: 0px;
@@ -1528,6 +1536,10 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1557,11 +1569,11 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
+                        bottom: 1px;
+                        left: 1px;
                         outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
+                        right: 1px;
+                        top: 1px;
                       }
                       &:active > span {
                         left: 0px;
@@ -1741,6 +1753,10 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1770,11 +1786,11 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
+                        bottom: 1px;
+                        left: 1px;
                         outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
+                        right: 1px;
+                        top: 1px;
                       }
                       &:active > span {
                         left: 0px;
@@ -2242,6 +2258,10 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2271,11 +2291,11 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
+                        bottom: 1px;
+                        left: 1px;
                         outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
+                        right: 1px;
+                        top: 1px;
                       }
                       &:active > span {
                         left: 0px;

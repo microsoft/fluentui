@@ -9,11 +9,15 @@ import * as React_2 from 'react';
 import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
+// @internal (undocumented)
+export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
+
 // @public
-export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    enableOutline?: boolean;
     // (undocumented)
     selector?: 'focus' | 'focus-within';
 }
@@ -89,8 +93,6 @@ export interface UseModalAttributesOptions {
     trapFocus?: boolean;
 }
 
-// Warning: (ae-internal-missing-underscore) The name "useTabsterAttributes" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 

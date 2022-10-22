@@ -34,7 +34,7 @@ describe('DialogTrigger', () => {
    */
   it('renders a default state', () => {
     const component = renderer.create(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <button>Dialog trigger</button>
       </DialogTrigger>,
     );
@@ -46,7 +46,7 @@ describe('DialogTrigger', () => {
     // Arrange
     const ref = jest.fn();
     render(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <button ref={ref}>Trigger</button>
       </DialogTrigger>,
     );
@@ -74,7 +74,7 @@ describe('DialogTrigger', () => {
         cb(ref.current);
       }, []);
       return (
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <button ref={ref}>Trigger</button>
         </DialogTrigger>
       );
@@ -114,7 +114,7 @@ describe('DialogTrigger', () => {
     mockUseDialogContext({ requestOpenChange });
 
     const { getByRole } = render(
-      <DialogTrigger action="open">
+      <DialogTrigger disableButtonEnhancement action="open">
         <button aria-disabled={false}>trigger</button>
       </DialogTrigger>,
     );
@@ -129,7 +129,7 @@ describe('DialogTrigger', () => {
     mockUseDialogContext({ requestOpenChange });
 
     const { getByRole } = render(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <button disabled>trigger</button>
       </DialogTrigger>,
     );
@@ -141,7 +141,7 @@ describe('DialogTrigger', () => {
   it('should not keyboard click when event is default prevented', () => {
     const onClick = jest.fn();
     const { getByRole } = render(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <div role="button" onClick={onClick}>
           trigger
         </div>

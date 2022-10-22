@@ -1,15 +1,17 @@
 import * as _ from 'lodash';
-import traverse from '@babel/traverse';
+import traverse, { NodePath } from '@babel/traverse';
 
 import parseBuffer from './parseBuffer';
+import { JSXOpeningElement } from '@babel/types';
 
-const getJSXAttributes = jsxPath =>
+const getJSXAttributes = (jsxPath: NodePath<JSXOpeningElement>) =>
   _.map(_.get(jsxPath, 'node.attributes'), attr => ({
     name: _.get(attr, 'name.name'),
     value: _.get(attr, 'value.value'),
   }));
 
-const getAttributeValue = (attributes, name) => _.get(_.find(attributes, { name }), 'value');
+const getAttributeValue = (attributes: ReturnType<typeof getJSXAttributes>, name: string) =>
+  _.get(_.find(attributes, { name }), 'value');
 
 type Example = {
   title: string;
@@ -21,7 +23,7 @@ type Example = {
  *
  * @param buffer - The content of a view
  */
-const parseDocSection = (buffer: any): { examples: Example[]; sectionName: string } => {
+const parseDocSection = (buffer: Buffer): { examples: Example[]; sectionName: string } => {
   const ast = parseBuffer(buffer);
   const examples: Example[] = [];
   let sectionName: string;
@@ -45,7 +47,7 @@ const parseDocSection = (buffer: any): { examples: Example[]; sectionName: strin
     },
   });
 
-  return { examples, sectionName };
+  return { examples, sectionName: sectionName! };
 };
 
 export default parseDocSection;

@@ -8,8 +8,10 @@ const config: ScreenerTestsConfig = {
       builder
         .click(`.${toolbarItemWrapperClassName} button`)
         .snapshot('Shows menu')
-        .keys(`.${toolbarMenuItemClassName}:nth-child(1)`, keys.rightArrow)
-        .snapshot('Opens submenu'),
+        .keys(`.${toolbarMenuItemClassName}#ToolbarExampleMenuWithSubmenu_Play`, keys.rightArrow)
+        .snapshot('Opens first submenu')
+        .click(`.${toolbarMenuItemClassName}#ToolbarExampleMenuWithSubmenu_Appearance`)
+        .snapshot('Opens second submenu'),
   ],
 };
 

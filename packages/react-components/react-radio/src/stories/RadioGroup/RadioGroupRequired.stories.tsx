@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { tokens, useId, Label, Radio, RadioGroup } from '@fluentui/react-components';
+import { Label, makeStyles, Radio, RadioGroup, tokens, useId } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  field: {
+    display: 'grid',
+    gridRowGap: tokens.spacingVerticalS,
+  },
+});
 
 export const Required = () => {
+  const styles = useStyles();
   const labelId = useId('label-');
   return (
-    <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
+    <div className={styles.field}>
       <Label id={labelId} required>
         Favorite Fruit
       </Label>
@@ -20,7 +28,7 @@ export const Required = () => {
 Required.parameters = {
   docs: {
     description: {
-      story: 'Use the `required` prop on `RadioGroup` to make all child `Radio`s required.',
+      story: 'Use the `required` prop on `RadioGroup` to indicate that one of the radio items must be selected.',
     },
   },
 };

@@ -2,6 +2,1185 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 21 Oct 2022 07:44:53 GMT",
+      "tag": "@fluentui/react_v8.98.5",
+      "version": "8.98.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "aepshtein@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3757c89720f0273ed00441f11104a000fe0edc52",
+            "comment": "Pass onRenderItem to Dropdown's onRenderContainer to allow use of onRenderList with default or custom onRenderItem"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 07:43:14 GMT",
+      "tag": "@fluentui/react_v8.98.4",
+      "version": "8.98.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.22",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.2",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.7",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.12",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.3",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.8.1",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.17",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.2",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.11",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/test-utilities to v8.2.3",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Oct 2022 07:49:17 GMT",
+      "tag": "@fluentui/react_v8.98.3",
+      "version": "8.98.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0a957e370cee8f3516761bb38547795a9ee30b88",
+            "comment": "fix: Panel should only aria hide siblings when isOpen is true"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Oct 2022 07:43:59 GMT",
+      "tag": "@fluentui/react_v8.98.2",
+      "version": "8.98.2",
+      "comments": {
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "420c8625ed781dfac02f2a35c4952c54f0f079a9",
+            "comment": "docs: update ie11 support in fluent v8 readme"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f",
+            "comment": "chore: Bump v8 packages peer deps to include React 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 07:45:27 GMT",
+      "tag": "@fluentui/react_v8.98.1",
+      "version": "8.98.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7380b15b3c9997bad0e832fb17fade1b9db45aaf",
+            "comment": "docs: add @docCategory documentation comment to TimePicker"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "14e5b74b32528ee2ea7a1992243809de214f5dfc",
+            "comment": "ContextualMenu: Fix focus returning to correct element on menu close"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:22 GMT",
+      "tag": "@fluentui/react_v8.98.0",
+      "version": "8.98.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f6139229d6c95a0c02c62abc2c66831eadea6ad8",
+            "comment": "fix: Tooltip should not hide if an element inside it gets focused."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "604033f9ebd55f81635cc479195e36d4030d5c27",
+            "comment": "fix: do not append first of month day letter after day name"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "1c8b241a322ca3d2ddb5dbe78154bb7bab1271df",
+            "comment": "fix: Remove border in hover/pressed state of primary SplitButton."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "7e455241f8f4f8e3e499e377c399a65277c93c33",
+            "comment": "fix: Removing background color for Primary SplitButton's menu button in HCM."
+          }
+        ],
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "39d3a79d7bcdc29d3b15864e08a9b80a5700c424",
+            "comment": "fix: DetailsList should collapse columns even with horizontal scroll, and the CustomColumns example should not hide all columns"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.21",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.1",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.6",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.8.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.10",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 07:45:02 GMT",
+      "tag": "@fluentui/react_v8.97.2",
+      "version": "8.97.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "e059a9f04ce12cd84892fe6c2f17ef7071ccd898",
+            "comment": "fix: Removing 2px margin that Safari adds to all buttons."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Oct 2022 07:37:49 GMT",
+      "tag": "@fluentui/react_v8.97.1",
+      "version": "8.97.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.0",
+            "commit": "86b3133d97c177cac545b253deb11374ee829574"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 07:38:08 GMT",
+      "tag": "@fluentui/react_v8.97.0",
+      "version": "8.97.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "259506702ec479f4fd9d7b848061dcae1354e168",
+            "comment": "chore: support ID prop in Calendar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Sep 2022 07:40:08 GMT",
+      "tag": "@fluentui/react_v8.96.3",
+      "version": "8.96.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d7c027ced7d54b83d6cc2897350a6adb856dcfef",
+            "comment": "fix: MessageBar actions contrast in high contrast mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a0d258e553f18b8a0162d642a94b4b06b8f365ba",
+            "comment": "fix: DetailsList adds DetailsFooter to rowcount if provided"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8f38bb63574e31bf2fa9f2f1d14b166d6c1a627f",
+            "comment": "chore: export useViewport via lib/Viewport"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Sep 2022 07:37:48 GMT",
+      "tag": "@fluentui/react_v8.96.2",
+      "version": "8.96.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "adea89e6cc51161fbb544f465e298f60046fd55c",
+            "comment": "fix: Dropdown no longer sets incorrect and unnecessary aria-activedescendant"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/react_v8.96.1",
+      "version": "8.96.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gasramirez@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "62aadfe9a8429fbc5c0660c1e741e5e8171f8f23",
+            "comment": "@fluentui/react: allowing Popup configuration on Modal component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:29 GMT",
+      "tag": "@fluentui/react_v8.96.0",
+      "version": "8.96.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b7395d67b12bc51b0785a022a4a60930d7543d3c",
+            "comment": "feat: improve groupedlist virtualization"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "be154feb066542663a57cf60af0902fb365cb708",
+            "comment": "fix: Add explicit children prop to TeachingBubble to support React 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Sep 2022 07:37:31 GMT",
+      "tag": "@fluentui/react_v8.95.1",
+      "version": "8.95.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a",
+            "comment": "Ensure toggling group state does not select it"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 19:15:25 GMT",
+      "tag": "@fluentui/react_v8.95.0",
+      "version": "8.95.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "682ead9953a1d519133193033aafe392173009f5",
+            "comment": "All /lib-commonjs/ top-level entries have been added to the exports map for backwards compatibility."
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b111dddd3dab26c409857723a6e34810a60c41b2",
+            "comment": "fix: update version mismatches triggered by v9 release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Sep 2022 07:41:02 GMT",
+      "tag": "@fluentui/react_v8.94.4",
+      "version": "8.94.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a40ef34fa6d1122bdfdb708f79b90de9edb2827d",
+            "comment": "fix: remove readonly semantics from DetailsList"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Sep 2022 20:52:15 GMT",
+      "tag": "@fluentui/react_v8.94.3",
+      "version": "8.94.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "df5da1742ca38f993c71d6b0808ad62d6ba3a9a3",
+            "comment": "fix: Coachmarks now properly animate when used in any of the center positions"
+          },
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a07747ceae4ac6c360674ee0a2d6cdf61efe6164",
+            "comment": "Fix null-ref in useSlider() when <Slider/> unmounts before mouseUp fires"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Sep 2022 07:54:43 GMT",
+      "tag": "@fluentui/react_v8.94.2",
+      "version": "8.94.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ff6eaee1c2f0702585ec8b5d6545e564a0ef5a86",
+            "comment": "fix: update basepicker styles to show ellipsis when placeholder is shown"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Sep 2022 07:38:29 GMT",
+      "tag": "@fluentui/react_v8.94.1",
+      "version": "8.94.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "daneuber@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3730802491c373313a9e56819f2befb16a0302fa",
+            "comment": "Update Suggestions loading aria for extended Picker loading"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0f463b704c9cee6e4b58aabbc37533ec14bbecf1",
+            "comment": "fix: Fix Dropdown item styles to correctly apply hover styles even when focus is on another page"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:52 GMT",
+      "tag": "@fluentui/react_v8.94.0",
+      "version": "8.94.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "238c4a17d7e5a35766050cbfc42b61089007fe03",
+            "comment": "chore: export ButtonGlobalClassNames from classnames file"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.20",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.13",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.5",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.11",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.12",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.16",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.1",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.9",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 07:48:10 GMT",
+      "tag": "@fluentui/react_v8.93.1",
+      "version": "8.93.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d0017be0862c4927c0ea0801b1e0d636adb71f88",
+            "comment": "chore: Fix people picker focused styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.19",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.12",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.4",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.11",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.8",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Aug 2022 07:44:37 GMT",
+      "tag": "@fluentui/react_v8.93.0",
+      "version": "8.93.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "740105eacc871432e02d16cda0681b9a417b4fa0",
+            "comment": "feat: Add layerProps to PositioningContainer and TeachingBubble"
+          },
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665",
+            "comment": "Fix backwards compatibility of Group Selection changes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.18",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.11",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.3",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.10",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.10",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.15",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.0",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.7",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Aug 2022 07:39:57 GMT",
+      "tag": "@fluentui/react_v8.92.1",
+      "version": "8.92.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "744f8e5ccf138ef8c893929c77a1e85f484415d4",
+            "comment": "fix: make picker items clickable, while moving focus on close button after click"
+          },
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "97ffee450a53285fd0228479e1294c4b0faf6151",
+            "comment": "fix: Respect insertFirst in Modal if passed in"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Aug 2022 07:41:02 GMT",
+      "tag": "@fluentui/react_v8.92.0",
+      "version": "8.92.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4f36c51b9bde0c98b43da00ad13366a0cc0383cf",
+            "comment": "Added exports of GroupedList utils in v8"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe",
+            "comment": "Added layer notification exports"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0fde7c623fa32da69667f1e50c546f7f42fc0ff1",
+            "comment": "Added exports to pickers"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "32a18d7fb1c0c9dd464bacdd7b35bb67b5b7e13d",
+            "comment": "Added exports for TextField getStyles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 16:36:06 GMT",
+      "tag": "@fluentui/react_v8.91.1",
+      "version": "8.91.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.17",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.10",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.2",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.9",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.9",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.14",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.6",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 07:44:41 GMT",
+      "tag": "@fluentui/react_v8.91.0",
+      "version": "8.91.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ca161f57e9663f0d92527f9700eec892830b1233",
+            "comment": "Exported getActivityItemStyles and getActivityItemClassNaes"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f3104008db3243375c8e3ab0c152adacafab46d0",
+            "comment": "Exported getCommandBarStyles and getCommandButtonStyles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "23a0768ad4a127f31c06449ae4b8ebf0b986bc19",
+            "comment": "Added exports for ContextualMenu getItemStyles and getItemClassNames"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Aug 2022 07:22:50 GMT",
+      "tag": "@fluentui/react_v8.90.2",
+      "version": "8.90.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Add React 17 support."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.16",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.9",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.1",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.8",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.8",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.13",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.5",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Aug 2022 07:44:26 GMT",
+      "tag": "@fluentui/react_v8.90.1",
+      "version": "8.90.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gasramirez@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a2c1111639bf378fdf2a68b6200847c16ab794dd",
+            "comment": "@fluentui/react: Adding TextField style file to export map"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0232344dc028b9054c9cd73211b09e491aaa8ab1",
+            "comment": "fix: Resolved ref issue causing tag items to not be selectable or deletable. Fixed styles to show selection without focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 23:39:29 GMT",
+      "tag": "@fluentui/react_v8.90.0",
+      "version": "8.90.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84",
+            "comment": "FocusZone: enable focus to be able to bypass hidden elements"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e10549cf02084db5919a71ffa0493c6797a38642",
+            "comment": "feat: Explicit exports for common-styles sass files copied into react package"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.15",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.8",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.0",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.7",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.7",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.12",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.12.0",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.4",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3ce6e295fa7c514409413e5ce6b812338fd5ad1c",
+            "comment": "fix: Make focus rects visible again in Combobox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 07:48:47 GMT",
+      "tag": "@fluentui/react_v8.89.0",
+      "version": "8.89.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "tonyhallett74@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "df602db552cade02f2a0922e7ba829975232c7dc",
+            "comment": "fix: add items prop to state to fix issue 23135"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c608ed1ca39d3aecb3a65c3710ab35c58903b24e",
+            "comment": "fix(List): solve stale props problem with getPageSpecification"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ee77a76375e07c52729fdac1a08471607c12652d",
+            "comment": "feat: Allow IChoiceGroupOption in callback signatures"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Aug 2022 07:39:40 GMT",
+      "tag": "@fluentui/react_v8.88.0",
+      "version": "8.88.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7c797fb44915964da8f764a93557f2b5c4c7067f",
+            "comment": "Support range selection from Group headers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.14",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.7",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.8",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.6",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.6",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.11",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.11.0",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.3",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Aug 2022 07:48:18 GMT",
+      "tag": "@fluentui/react_v8.87.2",
+      "version": "8.87.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "6ba787f09bb625f2f09124ddd766afd03266f7a8",
+            "comment": "fix: Remove caret from regex to correctly detect if the browser is Edge."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Aug 2022 20:28:21 GMT",
+      "tag": "@fluentui/react_v8.87.1",
+      "version": "8.87.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0ee609e7c8cc71d6c0af34d81fd59fe2c9b9cf0d",
+            "comment": "fix: Make focus rects visible inside of ContextualMenu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Aug 2022 07:39:32 GMT",
+      "tag": "@fluentui/react_v8.87.0",
+      "version": "8.87.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "alina.o.zaieva@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "33fd27ad75431298ac393887022120bc46ba6134",
+            "comment": "feat(Pivot): add overflowButtonAs prop to allow overflow button customization."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d",
+            "comment": "feat: add popupProps to Callout"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.5.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.13",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.6",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.5.3",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.7",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.5",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/set-version to v8.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.5",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.10",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.10.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/example-data to v8.4.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.20",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/test-utilities to v8.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/webpack-utilities to v8.1.8",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          }
+        ],
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "09c4fab73ecd3701fbcf58d6d149d9fdd9c35100",
+            "comment": "fix: Breadcrumb overflowbutton focus outline now visible in HCM."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Aug 2022 07:42:12 GMT",
+      "tag": "@fluentui/react_v8.86.4",
+      "version": "8.86.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d",
+            "comment": "create focus queue for multi level contextual menus"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d46a0242d4bda3f8f9a4b29c0179e74adf758539",
+            "comment": "task: fix precopy in react in include files from the correct folder"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Aug 2022 18:04:49 GMT",
       "tag": "@fluentui/react_v8.86.3",
       "version": "8.86.3",

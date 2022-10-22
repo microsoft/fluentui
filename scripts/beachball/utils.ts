@@ -7,6 +7,19 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monore
  * vNext scope includes all packages that have version > 8.x and shared internal packages that need versions bumped.
  * @returns {string[]} Array of package paths for beachball scope
  */
+export function getConfig({ version }: { version: 'v8' }): { scope: string[] };
+export function getConfig({
+  version,
+}: {
+  version: 'vNext';
+}): {
+  scope: string[];
+  groupConfig: {
+    masterPackageName: string;
+    changelogPath: string;
+    include: string[];
+  };
+};
 export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
   const allPackageInfo = getAllPackageInfo();
   const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
@@ -34,7 +47,7 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
 function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
   return Object.values(allPackageInfo)
     .map(packageInfo => {
-      if (isConvergedPackage(packageInfo.packageJson)) {
+      if (isConvergedPackage({ packagePathOrJson: packageInfo.packageJson })) {
         return packageInfo.packagePath;
       }
 

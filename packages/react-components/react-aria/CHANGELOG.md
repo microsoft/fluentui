@@ -1,8 +1,52 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Wed, 03 Aug 2022 16:03:37 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.3)
+
+Thu, 20 Oct 2022 08:39:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.2.2..@fluentui/react-aria_v9.2.3)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.2)
+
+Thu, 13 Oct 2022 11:03:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.2.1..@fluentui/react-aria_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.1)
+
+Mon, 03 Oct 2022 22:24:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.2.0..@fluentui/react-aria_v9.2.1)
+
+### Patches
+
+- chore: user defined tabIndex should prevail aria-button defined ([PR #24962](https://github.com/microsoft/fluentui/pull/24962) by bernardo.sunderhus@gmail.com)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.0)
+
+Thu, 15 Sep 2022 09:49:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.1.0..@fluentui/react-aria_v9.2.0)
+
+### Minor changes
+
+- feat: add helper types to assist DOM element handling ([PR #24722](https://github.com/microsoft/fluentui/pull/24722) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+### Patches
+
+- docs(react-aria): re-generate api.md ([PR #23369](https://github.com/microsoft/fluentui/pull/23369) by martinhochel@microsoft.com)
+- chore(react-aria): improve internal typings ([PR #24742](https://github.com/microsoft/fluentui/pull/24742) by bernardo.sunderhus@gmail.com)
+- feat: upgrade typings on useARIAButtonProps to be more specific ([PR #24177](https://github.com/microsoft/fluentui/pull/24177) by bernardo.sunderhus@gmail.com)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.1.0)
 

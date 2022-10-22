@@ -36,7 +36,6 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -302,7 +301,6 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -584,7 +582,6 @@ exports[`DetailsList handles updates to items and groups 1`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={9}
       role="grid"
     >
@@ -952,7 +949,6 @@ exports[`DetailsList handles updates to items and groups 2`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={9}
       role="grid"
     >
@@ -1320,7 +1316,6 @@ exports[`DetailsList handles updates to items and groups 3`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -1602,7 +1597,6 @@ exports[`DetailsList handles updates to items and groups 4`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -1725,13 +1719,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D1
+                                  A1
                                 </div>
                                 <div>
-                                  E1
+                                  B1
                                 </div>
                                 <div>
-                                  F1
+                                  C1
                                 </div>
                               </div>
                             </div>
@@ -1743,13 +1737,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D2
+                                  A2
                                 </div>
                                 <div>
-                                  E2
+                                  B2
                                 </div>
                                 <div>
-                                  F2
+                                  C2
                                 </div>
                               </div>
                             </div>
@@ -1804,13 +1798,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D3
+                                  A3
                                 </div>
                                 <div>
-                                  E3
+                                  B3
                                 </div>
                                 <div>
-                                  F3
+                                  C3
                                 </div>
                               </div>
                             </div>
@@ -1822,13 +1816,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D4
+                                  A4
                                 </div>
                                 <div>
-                                  E4
+                                  B4
                                 </div>
                                 <div>
-                                  F4
+                                  C4
                                 </div>
                               </div>
                             </div>
@@ -1883,7 +1877,6 @@ exports[`DetailsList renders List correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -2867,7 +2860,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
   >
     <div
       aria-colcount={6}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -3948,7 +3940,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -4933,7 +4924,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -5917,7 +5907,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
   >
     <div
       aria-colcount={6}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -7012,7 +7001,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={8}
       role="grid"
     >
@@ -7862,7 +7850,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={0}
+                        data-selection-span={2}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -7962,6 +7951,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -8001,7 +7991,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader5"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -8159,7 +8151,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8215,7 +8206,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     0
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8271,7 +8261,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 0
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8464,7 +8453,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8520,7 +8508,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     1
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8576,7 +8563,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 1
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8726,7 +8712,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={2}
+                        data-selection-span={3}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -8826,6 +8813,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -8865,7 +8853,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader7"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -9023,7 +9013,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9079,7 +9068,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     2
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9135,7 +9123,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 2
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9328,7 +9315,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9384,7 +9370,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     3
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9440,7 +9425,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 3
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9633,7 +9617,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9689,7 +9672,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     4
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9745,7 +9727,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 4
                                   </div>
                                   <div
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {

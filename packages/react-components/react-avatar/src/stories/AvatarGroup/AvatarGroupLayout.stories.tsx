@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,43 +10,62 @@ const useStyles = makeStyles({
   },
 });
 
+const names = [
+  'Johnie McConnell',
+  'Allan Munger',
+  'Erik Nason',
+  'Kristin Patterson',
+  'Daisy Phillips',
+  'Carole Poland',
+  'Carlos Slattery',
+  'Robert Tolbert',
+  'Kevin Sturgis',
+  'Charlotte Waltson',
+  'Elliot Woodward',
+];
+
 export const Layout = () => {
   const styles = useStyles();
+  const partitionedItems = partitionAvatarGroupItems({ items: names });
+  const piePartitionedItems = partitionAvatarGroupItems({ items: names, layout: 'pie' });
 
   return (
     <div className={styles.root}>
       <AvatarGroup layout="spread">
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
+        {partitionedItems.inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        {partitionedItems.overflowItems && (
+          <AvatarGroupPopover>
+            {partitionedItems.overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
       <AvatarGroup layout="stack">
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
+        {partitionedItems.inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        {partitionedItems.overflowItems && (
+          <AvatarGroupPopover>
+            {partitionedItems.overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
       <AvatarGroup layout="pie">
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
+        {piePartitionedItems.inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        {piePartitionedItems.overflowItems && (
+          <AvatarGroupPopover>
+            {piePartitionedItems.overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
     </div>
   );
@@ -55,7 +74,7 @@ export const Layout = () => {
 Layout.parameters = {
   docs: {
     description: {
-      story: `An AvatarGroup supports support three layouts: spread, stack, and pie. The default is spread.`,
+      story: `An AvatarGroup supports three layouts: spread, stack, and pie. The default is spread.`,
     },
   },
 };

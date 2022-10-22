@@ -5,6 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { createTestContainer } from './test-utils';
+import * as FocusUtilities from '../../src/FocusZone/focusUtilities';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {
@@ -729,6 +730,118 @@ describe('FocusTrapZone', () => {
         expect(FocusTrapZone._focusStack.length).toBe(1);
         expect(FocusTrapZone._focusStack[0]).toBe(baseFocusTrapZone);
       });
+
+      removeTestContainer();
+    });
+  });
+
+  describe('multiple FocusZone mount/unmount', () => {
+    it('remove aria-hidden from the 1st focusZone when the 2nd focusZone unmount', () => {
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const TestComponent = () => {
+        const [open, setOpen] = React.useState(true);
+
+        return (
+          <>
+            {ReactDOM.createPortal(
+              <>
+                {open && (
+                  <FocusTrapZone id="zone2">
+                    <button>zone2 button</button>
+                  </FocusTrapZone>
+                )}
+              </>,
+              document.body,
+            )}
+            {ReactDOM.createPortal(
+              <div id="zone1-wrapper">
+                <FocusTrapZone id="zone1">
+                  <button>zone1 button</button>
+                </FocusTrapZone>
+              </div>,
+              document.body,
+            )}
+
+            <button id="unmount-zone2-button" onClick={() => setOpen(false)}>
+              button
+            </button>
+          </>
+        );
+      };
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestComponent />, testContainer);
+      });
+
+      // initially both focusZone are mounted
+      let zone1Wrapper = document.body.querySelector('#zone1-wrapper') as HTMLElement;
+      expect(zone1Wrapper).toBeDefined();
+      expect(zone1Wrapper.getAttribute('aria-hidden')).toBe('true');
+
+      const zone2 = document.body.querySelector('#zone2') as HTMLElement;
+      expect(zone2).toBeDefined();
+      expect(zone2.getAttribute('aria-hidden')).toBe('true');
+
+      // unmount zone2
+      const unmountButton = testContainer.querySelector('#unmount-zone2-button') as HTMLElement;
+      expect(unmountButton).toBeDefined();
+      ReactTestUtils.Simulate.click(unmountButton);
+
+      // expect zone1 is mounted, but it's wrapper's aria-hidden attribute is removed
+      zone1Wrapper = document.body.querySelector('#zone1-wrapper') as HTMLElement;
+      expect(zone1Wrapper).toBeDefined();
+      expect(zone1Wrapper.getAttribute('aria-hidden')).toBeFalsy();
+
+      removeTestContainer();
+    });
+  });
+
+  describe('Restore focus on unmounting FTZ', () => {
+    const TestComponent = ({ ftzProps }: { ftzProps?: FocusTrapZoneProps }) => {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <>
+          {ReactDOM.createPortal(
+            <>
+              {open && (
+                <FocusTrapZone id="zone" {...ftzProps}>
+                  <button>zone button</button>
+                </FocusTrapZone>
+              )}
+            </>,
+            document.body,
+          )}
+
+          <button id="unmount-zone-button" onClick={() => setOpen(false)}>
+            button
+          </button>
+        </>
+      );
+    };
+
+    it.each`
+      ftzProps                                 | preventScroll
+      ${undefined}                             | ${undefined}
+      ${{ preventScrollOnRestoreFocus: true }} | ${true}
+    `('focus on previously focused element after unmounting the FTZ', async ({ ftzProps, preventScroll }) => {
+      const { testContainer, removeTestContainer } = createTestContainer();
+
+      const focusAsyncSpy = jest.spyOn(FocusUtilities, 'focusAsync');
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestComponent ftzProps={ftzProps} />, testContainer);
+      });
+
+      // initially FTZ is mounted
+      expect(document.body.querySelector('#zone') as HTMLElement).not.toBeNull();
+
+      // unmount FTZ
+      const unmountButton = testContainer.querySelector('#unmount-zone-button') as HTMLElement;
+      expect(unmountButton).not.toBeNull();
+      ReactTestUtils.Simulate.click(unmountButton);
+
+      // expect zone not is mounted, focus goes to button
+      expect(document.body.querySelector('#zone') as HTMLElement).toBeNull();
+
+      expect(focusAsyncSpy).toHaveBeenCalledWith(expect.any(HTMLElement), { preventScroll });
 
       removeTestContainer();
     });

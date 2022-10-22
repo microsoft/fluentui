@@ -16,7 +16,7 @@ import { names, WorkspaceJsonConfiguration } from '@nrwl/devkit';
 const convergedComponentPackages = Object.entries(getAllPackageInfo())
   .filter(
     ([pkgName, info]) =>
-      isConvergedPackage(info.packageJson) &&
+      isConvergedPackage({ packagePathOrJson: info.packageJson }) &&
       pkgName.startsWith('@fluentui/react-') &&
       info.packagePath.startsWith('packages') &&
       !!info.packageJson.dependencies?.['@fluentui/react-utilities'],
@@ -103,7 +103,7 @@ module.exports = (plop: NodePlopAPI) => {
             stdio: 'inherit',
           });
 
-          execSync(`yarn workspace ${data.packageNpmName} build:local`, {
+          execSync(`yarn workspace ${data.packageNpmName} generate-api`, {
             cwd: root,
             stdio: 'inherit',
           });

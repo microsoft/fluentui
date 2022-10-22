@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Alert } from './Alert';
 import { alertClassNames } from './useAlertStyles';
 
@@ -46,7 +46,11 @@ describe('Alert', () => {
   });
 
   it('renders a button', () => {
-    render(<Alert action={{ children: 'Undo' }}>Test</Alert>);
+    render(
+      <Alert action={{ children: 'Undo' }} appearance="inverted">
+        Test
+      </Alert>,
+    );
     expect(screen.getByText('Undo')).toBeTruthy();
   });
 

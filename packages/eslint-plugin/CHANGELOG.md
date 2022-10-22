@@ -1,8 +1,44 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 01 Aug 2022 07:39:02 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Oct 2022 07:38:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.5)
+
+Mon, 10 Oct 2022 07:38:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.4..@fluentui/eslint-plugin_v1.12.5)
+
+### Patches
+
+- Turn off import/no-extraneous-dependencies rule for cypress component test files. ([PR #24458](https://github.com/microsoft/fluentui/pull/24458) by tristan.watanabe@gmail.com)
+
+## [1.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.4)
+
+Tue, 04 Oct 2022 07:45:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.3..@fluentui/eslint-plugin_v1.12.4)
+
+### Patches
+
+- chore: enable object-shorthand in ESLint ([PR #25031](https://github.com/microsoft/fluentui/pull/25031) by olfedias@microsoft.com)
+
+## [1.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.3)
+
+Tue, 27 Sep 2022 07:46:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.2..@fluentui/eslint-plugin_v1.12.3)
+
+### Patches
+
+- fix(eslint-plugin): properly resolve single-version policy dep issues in react-northstar packages ([PR #24526](https://github.com/microsoft/fluentui/pull/24526) by martinhochel@microsoft.com)
+
+## [1.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.2)
+
+Mon, 08 Aug 2022 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.1..@fluentui/eslint-plugin_v1.12.2)
+
+### Patches
+
+- remove unused dependency ([PR #24138](https://github.com/microsoft/fluentui/pull/24138) by martinhochel@microsoft.com)
 
 ## [1.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.1)
 

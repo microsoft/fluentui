@@ -1,4 +1,4 @@
-A `non-modal` Dialog by default presents no `overlay`, allowing elements outside of the Dialog to be interacted with (unless `DialogSurface` `noTrapFocus` property is provided).
+A `non-modal` Dialog by default presents no `backdrop`, allowing elements outside of the Dialog to be interacted with (unless `DialogSurface` `noTrapFocus` property is provided).
 
 `DialogTitle` compound componet will present by default a `closeButton`.
 

@@ -35,6 +35,7 @@ export interface IMultiStackedBarChartProps {
 
   /**
    * This property tells whether to show ratio on top of stacked bar chart or not.
+   * This property is applicable only if there are 1 or 2 datapoints.
    */
   hideRatio?: boolean[];
 
@@ -64,6 +65,7 @@ export interface IMultiStackedBarChartProps {
 
   /**
    * If this value is set to true the denominator will not be shown for the ratio above the chart
+   * This prop is applicable only if hide ratio is false and there are exactly 2 datapoints.
    */
   hideDenominator?: boolean[];
 
@@ -165,6 +167,11 @@ export interface IMultiStackedBarChartStyles {
    * Styling for chart title of the stacked bar chart
    */
   chartTitle: IStyle;
+
+  /**
+   * Style for left side text of the chart title
+   */
+  chartTitleLeft: IStyle;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

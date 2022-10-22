@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
@@ -181,6 +181,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
+    const line: JSX.Element[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -189,28 +190,46 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       });
     const linePath = d3Line()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => (!isNumericAxis ? xBarScale(d.index) + 0.5 * this._barWidth : xScale(d.x)))
+      .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y((d: any) => yScale(d.y));
     let shouldHighlight = true;
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
       shouldHighlight = this.state.selectedLegendTitle === lineLegendText;
     }
-    const line = (
+    const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
+      ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
+      : 0;
+
+    if (lineBorderWidth > 0) {
+      line.push(
+        <path
+          opacity={shouldHighlight ? 1 : 0.1}
+          d={linePath(lineData)!}
+          fill="transparent"
+          strokeLinecap="square"
+          strokeWidth={3 + lineBorderWidth * 2}
+          stroke={theme!.palette.white}
+        />,
+      );
+    }
+    line.push(
       <path
-        opacity={shouldHighlight ? 1 : 0.4}
+        opacity={shouldHighlight ? 1 : 0.1}
         d={linePath(lineData)!}
-        fill={'none'}
+        fill="transparent"
+        strokeLinecap="square"
         strokeWidth={3}
         stroke={lineLegendColor}
-      />
+      />,
     );
+
     const dots: React.ReactNode[] = lineData.map(
       (item: { x: number | string; y: number; point: IVerticalBarChartDataPoint; index: number }, index: number) => {
         return (
           <circle
             key={index}
-            cx={!isNumericAxis ? xBarScale(item.index) + 0.5 * this._barWidth : xScale(item.x)}
+            cx={!isNumericAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={yScale(item.y)}
             onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
             onMouseOut={this._onBarLeave}
@@ -443,8 +462,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   ): { xBarScale: any; yBarScale: any } => {
     if (isNumericScale) {
       const xMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
+      const xMin = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([
           this.margins.left! + this._barWidth / 2,

@@ -1,3 +1,16 @@
+export { useTable, useSelection, useSort } from './hooks';
+export type {
+  UseTableOptions,
+  TableState as HeadlessTableState,
+  TableSelectionState,
+  TableSortState,
+  TableStatePlugin,
+  RowState,
+  RowId,
+  ColumnDefinition,
+  ColumnId,
+} from './hooks';
+
 export {
   TableCell,
   tableCellClassNames,
@@ -59,3 +72,29 @@ export {
 export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell';
 
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
+export {
+  TableSelectionCell,
+  useTableSelectionCellStyles_unstable,
+  useTableSelectionCell_unstable,
+  renderTableSelectionCell_unstable,
+  tableSelectionCellClassNames,
+} from './TableSelectionCell';
+
+export type { TableSelectionCellProps, TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell';
+export {
+  TableCellActions,
+  tableCellActionsClassNames,
+  useTableCellActionsStyles_unstable,
+  useTableCellActions_unstable,
+  renderTableCellActions_unstable,
+} from './TableCellActions';
+
+export type { TableCellActionsProps, TableCellActionsSlots, TableCellActionsState } from './TableCellActions';
+export {
+  TableCellLayout,
+  tableCellLayoutClassNames,
+  useTableCellLayoutStyles_unstable,
+  useTableCellLayout_unstable,
+  renderTableCellLayout_unstable,
+} from './TableCellLayout';
+export type { TableCellLayoutProps, TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout';
