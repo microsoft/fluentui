@@ -28,7 +28,7 @@ export const OverflowContent = () => {
           <AvatarGroupItem key={name} name={name} />
         ))}
         <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
-          {overflowItems.map(name => (
+          {overflowItems?.map(name => (
             <AvatarGroupItem key={name} name={name} />
           ))}
         </AvatarGroupPopover>
