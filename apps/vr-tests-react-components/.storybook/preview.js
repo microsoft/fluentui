@@ -60,9 +60,3 @@ export const parameters = { layout: 'none', mode: 'vr-test' };
 if (typeof window === 'object') {
   /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
 }
-
-export const decorators = [
-  /** @type {import("@storybook/csf").DecoratorFunction} */ story => (
-    <FluentProvider theme={webLightTheme}>{story()}</FluentProvider>
-  ),
-];
