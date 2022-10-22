@@ -71,7 +71,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
          */
         enforce: 'post',
         test: /\.stories\.tsx$/,
-        include: /src/,
+        include: /stories|src/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
