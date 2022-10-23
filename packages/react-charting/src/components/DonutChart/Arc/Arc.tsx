@@ -86,9 +86,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
     mouseEvent.persist();
-    if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
-      this.props.hoverOnCallback!(data, mouseEvent);
-    }
+    this.props.hoverOnCallback!(data, mouseEvent);
   }
 
   private _hoverOff = (): void => {

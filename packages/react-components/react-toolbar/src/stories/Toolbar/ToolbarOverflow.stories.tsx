@@ -198,8 +198,6 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           icon={<TextItalic16Regular />}
         />
 
-        <ToolbarOverflowDivider groupId="3" />
-
         <OverflowMenu
           itemIds={[
             ['underline-1', 'bold-1'],

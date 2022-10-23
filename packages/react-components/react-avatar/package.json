@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "9.2.3",
+  "version": "9.2.4",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,7 +34,7 @@
     "es6-weak-map": "^2.0.2"
   },
   "dependencies": {
-    "@fluentui/react-badge": "^9.0.9",
+    "@fluentui/react-badge": "^9.0.10",
     "@fluentui/react-context-selector": "^9.0.5",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-popover": "^9.2.1",

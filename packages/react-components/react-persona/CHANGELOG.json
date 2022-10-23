@@ -2,6 +2,41 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:33 GMT",
+      "tag": "@fluentui/react-persona_v9.1.0-beta.1",
+      "version": "9.1.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "69892eab60695a2da2dca35a067cc12fa3a44bac",
+            "comment": "chore: Change version back to beta."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.2.4",
+            "commit": "eef12b9ae58b64ff68576dc2d865b601e46c85b9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.0.10",
+            "commit": "eef12b9ae58b64ff68576dc2d865b601e46c85b9"
+          }
+        ],
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "eef12b9ae58b64ff68576dc2d865b601e46c85b9",
+            "comment": "chore: Update beachball settings."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:39 GMT",
       "tag": "@fluentui/react-persona_v9.0.3",
       "version": "9.0.3",

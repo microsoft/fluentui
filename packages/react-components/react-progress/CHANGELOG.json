@@ -2,6 +2,27 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:35 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "f9436f583d3c291921fe7a4531f69551096e758c",
+            "comment": "feat: Add validationState to Progress, to make the bar red or green"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "e255da7cf629534ebaaac05af3b5bb9a2f7def71",
+            "comment": "feat: add react-progress to react-components/unstable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:42 GMT",
       "tag": "@fluentui/react-progress_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

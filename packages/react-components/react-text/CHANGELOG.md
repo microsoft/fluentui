@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Thu, 20 Oct 2022 08:39:53 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.4)
+
+Tue, 25 Oct 2022 00:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.3..@fluentui/react-text_v9.1.4)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25231](https://github.com/microsoft/fluentui/pull/25231) by tristan.watanabe@gmail.com)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.3)
 

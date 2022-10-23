@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 22:09:51 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:32 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.5",
       "version": "9.0.5",

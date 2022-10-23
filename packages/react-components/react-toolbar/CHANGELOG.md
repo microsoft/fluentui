@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Thu, 20 Oct 2022 08:39:54 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.11)
+
+Tue, 25 Oct 2022 00:35:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.10..@fluentui/react-toolbar_v9.0.0-beta.11)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.1.6 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.10)
 

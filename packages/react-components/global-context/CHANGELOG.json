@@ -2,6 +2,27 @@
   "name": "@fluentui/global-context",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:27 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "07141711530bbdba82fd5198fe4bcef462403f40",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:56 GMT",
       "tag": "@fluentui/global-context_v9.0.0-beta.6",
       "version": "9.0.0-beta.6",
