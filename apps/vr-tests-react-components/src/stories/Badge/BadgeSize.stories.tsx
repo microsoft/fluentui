@@ -1,8 +1,9 @@
-import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { propValues, useStyles } from './utils';
+import { ComponentMeta } from '@storybook/react';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 const BadgeSampleRow: React.FC<BadgeProps> = props => {
   const styles = useStyles();
@@ -32,124 +33,129 @@ const BadgeSampleRow: React.FC<BadgeProps> = props => {
   );
 };
 
-// size stories
-propValues.size.forEach(size =>
-  storiesOf('Badge Converged', module)
-    .add(
-      'size: tiny',
-      () => {
-        const styles = useStyles();
-        return (
-          <div className={styles.groupSet}>
-            {propValues.appearance.map(appearance =>
-              // tiny + ghost is not supported
-              appearance === 'ghost' ? null : (
-                <div key={appearance} className={styles.group}>
-                  <span className={styles.groupLabel}>appearance: {appearance}</span>
-                  {propValues.shape.map(shape => (
-                    <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'tiny'} />
-                  ))}
-                </div>
-              ),
-            )}
-          </div>
-        );
-      },
-      { includeRtl: true },
-    )
-    .add(
-      'size: extra-small',
-      () => {
-        const styles = useStyles();
-        return (
-          <div className={styles.groupSet}>
-            {propValues.appearance.map(appearance => (
-              <div key={appearance} className={styles.group}>
-                <span className={styles.groupLabel}>appearance: {appearance}</span>
-                {propValues.shape.map(shape => (
-                  <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'extra-small'} />
-                ))}
-              </div>
+export default {
+  title: 'Badge Converged',
+} as ComponentMeta<typeof Badge>;
+
+export const SizeTiny = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.groupSet}>
+      {propValues.appearance.map(appearance =>
+        // tiny + ghost is not supported
+        appearance === 'ghost' ? null : (
+          <div key={appearance} className={styles.group}>
+            <span className={styles.groupLabel}>appearance: {appearance}</span>
+            {propValues.shape.map(shape => (
+              <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'tiny'} />
             ))}
           </div>
-        );
-      },
-      { includeRtl: true },
-    )
-    .add(
-      'size: small',
-      () => {
-        const styles = useStyles();
-        return (
-          <div className={styles.groupSet}>
-            {propValues.appearance.map(appearance => (
-              <div key={appearance} className={styles.group}>
-                <span className={styles.groupLabel}>appearance: {appearance}</span>
-                {propValues.shape.map(shape => (
-                  <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'small'} />
-                ))}
-              </div>
-            ))}
-          </div>
-        );
-      },
-      { includeRtl: true },
-    )
-    .add(
-      'size: medium',
-      () => {
-        const styles = useStyles();
-        return (
-          <div className={styles.groupSet}>
-            {propValues.appearance.map(appearance => (
-              <div key={appearance} className={styles.group}>
-                <span className={styles.groupLabel}>appearance: {appearance}</span>
-                {propValues.shape.map(shape => (
-                  <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'medium'} />
-                ))}
-              </div>
-            ))}
-          </div>
-        );
-      },
-      { includeRtl: true },
-    )
-    .add(
-      'size: large',
-      () => {
-        const styles = useStyles();
-        return (
-          <div className={styles.groupSet}>
-            {propValues.appearance.map(appearance => (
-              <div key={appearance} className={styles.group}>
-                <span className={styles.groupLabel}>appearance: {appearance}</span>
-                {propValues.shape.map(shape => (
-                  <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'large'} />
-                ))}
-              </div>
-            ))}
-          </div>
-        );
-      },
-      { includeRtl: true },
-    )
-    .add(
-      'size: extra-large',
-      () => {
-        const styles = useStyles();
-        return (
-          <div className={styles.groupSet}>
-            {propValues.appearance.map(appearance => (
-              <div key={appearance} className={styles.group}>
-                <span className={styles.groupLabel}>appearance: {appearance}</span>
-                {propValues.shape.map(shape => (
-                  <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'extra-large'} />
-                ))}
-              </div>
-            ))}
-          </div>
-        );
-      },
-      { includeRtl: true },
-    ),
-);
+        ),
+      )}
+    </div>
+  );
+};
+
+SizeTiny.storyName = 'size: tiny';
+
+export const SizeTinyRTL = getStoryVariant(SizeTiny, RTL);
+
+export const SizeExtraSmall = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.groupSet}>
+      {propValues.appearance.map(appearance => (
+        <div key={appearance} className={styles.group}>
+          <span className={styles.groupLabel}>appearance: {appearance}</span>
+          {propValues.shape.map(shape => (
+            <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'extra-small'} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+SizeExtraSmall.storyName = 'size: extra-small';
+
+export const SizeExtraSmallRTL = getStoryVariant(SizeExtraSmall, RTL);
+
+export const SizeSmall = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.groupSet}>
+      {propValues.appearance.map(appearance => (
+        <div key={appearance} className={styles.group}>
+          <span className={styles.groupLabel}>appearance: {appearance}</span>
+          {propValues.shape.map(shape => (
+            <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'small'} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+SizeSmall.storyName = 'size: small';
+
+export const SizeSmallRTL = getStoryVariant(SizeSmall, RTL);
+
+export const SizeMedium = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.groupSet}>
+      {propValues.appearance.map(appearance => (
+        <div key={appearance} className={styles.group}>
+          <span className={styles.groupLabel}>appearance: {appearance}</span>
+          {propValues.shape.map(shape => (
+            <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'medium'} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+SizeMedium.storyName = 'size: medium';
+
+export const SizeMediumRTL = getStoryVariant(SizeMedium, RTL);
+
+export const SizeLarge = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.groupSet}>
+      {propValues.appearance.map(appearance => (
+        <div key={appearance} className={styles.group}>
+          <span className={styles.groupLabel}>appearance: {appearance}</span>
+          {propValues.shape.map(shape => (
+            <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'large'} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+SizeLarge.storyName = 'size: large';
+
+export const SizeLargeRTL = getStoryVariant(SizeLarge, RTL);
+
+export const SizeExtraLarge = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.groupSet}>
+      {propValues.appearance.map(appearance => (
+        <div key={appearance} className={styles.group}>
+          <span className={styles.groupLabel}>appearance: {appearance}</span>
+          {propValues.shape.map(shape => (
+            <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'extra-large'} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+SizeExtraLarge.storyName = 'size: extra-large';
+
+export const SizeExtraLargeRTL = getStoryVariant(SizeExtraLarge, RTL);

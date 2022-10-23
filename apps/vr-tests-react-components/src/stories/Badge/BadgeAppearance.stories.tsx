@@ -1,9 +1,10 @@
-import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
 import { propValues, useStyles } from './utils';
+import { ComponentMeta } from '@storybook/react';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
   const styles = useStyles();
@@ -74,21 +75,34 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
   );
 };
 
-// appearance stories
-storiesOf('Badge Converged', module)
-  .add('filled', () => <BadgeAppearanceTemplate appearance={'filled'} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .add('outline', () => <BadgeAppearanceTemplate appearance={'outline'} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .add('tint', () => <BadgeAppearanceTemplate appearance={'tint'} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .add('ghost', () => <BadgeAppearanceTemplate appearance={'ghost'} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  });
+export default {
+  title: 'Badge Converged',
+} as ComponentMeta<typeof Badge>;
+
+export const Filled = () => <BadgeAppearanceTemplate appearance={'filled'} />;
+
+Filled.storyName = 'filled';
+
+export const FilledDarkMode = getStoryVariant(Filled, DARK_MODE);
+export const FilledHighContrast = getStoryVariant(Filled, HIGH_CONTRAST);
+
+export const Outline = () => <BadgeAppearanceTemplate appearance={'outline'} />;
+
+Outline.storyName = 'outline';
+
+export const OutlineDarkMode = getStoryVariant(Outline, DARK_MODE);
+export const OutlineHighContrast = getStoryVariant(Outline, HIGH_CONTRAST);
+
+export const Tint = () => <BadgeAppearanceTemplate appearance={'tint'} />;
+
+Tint.storyName = 'tint';
+
+export const TintDarkMode = getStoryVariant(Tint, DARK_MODE);
+export const TintHighContrast = getStoryVariant(Tint, HIGH_CONTRAST);
+
+export const Ghost = () => <BadgeAppearanceTemplate appearance={'ghost'} />;
+
+Ghost.storyName = 'ghost';
+
+export const GhostDarkMode = getStoryVariant(Ghost, DARK_MODE);
+export const GhostHighContrast = getStoryVariant(Ghost, HIGH_CONTRAST);
