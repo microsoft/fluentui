@@ -34,15 +34,7 @@ export const AppearanceInteractiveFilled = () => (
   </Card>
 );
 
-AppearanceInteractiveFilled.story = {
-  name: 'appearance interactive - Filled',
-
-  parameters: {
-    includeRtl: true,
-    includeHighContrast: true,
-    includeDarkMode: true,
-  },
-};
+AppearanceInteractiveFilled.storyName = 'appearance interactive - Filled';
 
 export const AppearanceInteractiveFilledDarkMode = getStoryVariant(AppearanceInteractiveFilled, DARK_MODE);
 export const AppearanceInteractiveFilledHighContrast = getStoryVariant(AppearanceInteractiveFilled, HIGH_CONTRAST);
@@ -54,15 +46,7 @@ export const AppearanceInteractiveFilledAlternative = () => (
   </Card>
 );
 
-AppearanceInteractiveFilledAlternative.story = {
-  name: 'appearance interactive - Filled Alternative',
-
-  parameters: {
-    includeRtl: true,
-    includeHighContrast: true,
-    includeDarkMode: true,
-  },
-};
+AppearanceInteractiveFilledAlternative.storyName = 'appearance interactive - Filled Alternative';
 
 export const AppearanceInteractiveFilledAlternativeDarkMode = getStoryVariant(
   AppearanceInteractiveFilledAlternative,
@@ -80,15 +64,7 @@ export const AppearanceInteractiveOutline = () => (
   </Card>
 );
 
-AppearanceInteractiveOutline.story = {
-  name: 'appearance interactive - Outline',
-
-  parameters: {
-    includeRtl: true,
-    includeHighContrast: true,
-    includeDarkMode: true,
-  },
-};
+AppearanceInteractiveOutline.storyName = 'appearance interactive - Outline';
 
 export const AppearanceInteractiveOutlineDarkMode = getStoryVariant(AppearanceInteractiveOutline, DARK_MODE);
 export const AppearanceInteractiveOutlineHighContrast = getStoryVariant(AppearanceInteractiveOutline, HIGH_CONTRAST);
@@ -100,15 +76,7 @@ export const AppearanceInteractiveSubtle = () => (
   </Card>
 );
 
-AppearanceInteractiveSubtle.story = {
-  name: 'appearance interactive - Subtle',
-
-  parameters: {
-    includeRtl: true,
-    includeHighContrast: true,
-    includeDarkMode: true,
-  },
-};
+AppearanceInteractiveSubtle.storyName = 'appearance interactive - Subtle';
 
 export const AppearanceInteractiveSubtleDarkMode = getStoryVariant(AppearanceInteractiveSubtle, DARK_MODE);
 export const AppearanceInteractiveSubtleHighContrast = getStoryVariant(AppearanceInteractiveSubtle, HIGH_CONTRAST);
