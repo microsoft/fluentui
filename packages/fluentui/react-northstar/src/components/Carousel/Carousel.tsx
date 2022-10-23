@@ -34,7 +34,7 @@ import {
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
-import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
+import { CarouselPaddlesContainer, CarouselPaddlesContainerProps } from './CarouselPaddlesContainer';
 import { getAnimationName } from './utils';
 
 export interface CarouselSlotClassNames {
@@ -82,6 +82,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   /** Shorthand array of props for CarouselItem. */
   items?: ShorthandCollection<CarouselItemProps>;
 
+  /** A navigation may have thumbnails. */
   thumbnails?: boolean;
 
   /** Shorthand array of props for the buttons of the CarouselNavigation. */
@@ -314,7 +315,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     }
   };
 
-  const overrideItemProps = predefinedProps => ({
+  const overrideItemProps = (predefinedProps: CarouselItemProps) => ({
     onFocus: (e, itemProps) => {
       actions.setShouldFocusContainer(e.currentTarget === e.target);
       actions.setIsFromKeyboard(isEventFromKeyboard());
@@ -325,6 +326,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
       actions.setIsFromKeyboard(false);
       _.invoke(predefinedProps, 'onBlur', e, itemProps);
     },
+    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
   });
 
   const renderContent = () => {
@@ -454,8 +456,9 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
       CarouselPaddlesContainer,
       {},
       {
-        overrideProps: () => ({
+        overrideProps: (predefinedProps: CarouselPaddlesContainerProps) => ({
           children: paddles,
+          variables: mergeVariablesOverrides(variables, predefinedProps.variables),
         }),
       },
     );
