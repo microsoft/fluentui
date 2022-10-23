@@ -3,7 +3,7 @@ import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { propValues, useStyles } from './utils';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
 
 const BadgeSampleRow: React.FC<BadgeProps> = props => {
   const styles = useStyles();
