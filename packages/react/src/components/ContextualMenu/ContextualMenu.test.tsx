@@ -185,6 +185,29 @@ describe('ContextualMenu', () => {
     expect(onDismissSpy).toHaveBeenCalled();
   });
 
+  it('menu closes on contextualMenu event(right click)', () => {
+    const items: IContextualMenuItem[] = [
+      { text: 'TestText 1', key: 'TestKey1' },
+      { text: 'TestText 2', key: 'TestKey2' },
+      { text: 'TestText 3', key: 'TestKey3' },
+      { text: 'TestText 4', key: 'TestKey4' },
+    ];
+
+    const onDismissSpy = jest.fn();
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <ContextualMenu items={items} onDismiss={onDismissSpy} />,
+      );
+    });
+
+    const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.contextMenu(menuList);
+    });
+
+    expect(onDismissSpy).toHaveBeenCalled();
+  });
   it('menu closes on alt + up arrow', () => {
     const items: IContextualMenuItem[] = [
       { text: 'TestText 1', key: 'TestKey1' },
