@@ -6,12 +6,11 @@ const LoaderExampleSecondary: React.FC = () => {
     <Provider.Consumer
       render={theme => {
         const themeBackgroundColor = theme.siteVariables.colorScheme.brand.background;
-        const siteVariablesColors = theme.siteVariables.colors;
+        const siteColors = theme.siteVariables.colors;
         return (
           <Flex
             style={{
-              backgroundColor:
-                themeBackgroundColor !== siteVariablesColors.white ? themeBackgroundColor : siteVariablesColors.black,
+              backgroundColor: themeBackgroundColor !== siteColors.white ? themeBackgroundColor : siteColors.black,
               padding: 8,
               width: 'fit-content',
             }}
