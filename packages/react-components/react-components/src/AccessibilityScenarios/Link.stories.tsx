@@ -4,7 +4,7 @@ import { Link } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const SiteNavigationAccessibilityScenario: React.FunctionComponent = () => {
+export const SiteNavigationLinks: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Site navigation links">
       <nav aria-label="Main menu">
@@ -43,9 +43,4 @@ export const SiteNavigationAccessibilityScenario: React.FunctionComponent = () =
       </nav>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Site navigation links',
-  id: 'link-accessibility-scenario',
 };

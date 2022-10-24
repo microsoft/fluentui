@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add uncomplete Input scenario",
+  "packageName": "@fluentui/react-components",
+  "email": "adam.samec@gmail.com",
+  "dependentChangeType": "patch"
+}
