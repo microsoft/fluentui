@@ -189,18 +189,20 @@ function formatApiViolationMessage(messages: string[]) {
     const [, packageName] = regexPkg.exec(curr) ?? [];
     const [, exportedToken] = exportedTokenRegex.exec(curr) ?? [];
     if (acc[packageName]) {
-      acc[packageName].push(exportedToken);
+      acc[packageName].add(exportedToken);
       return acc;
     }
-    acc[packageName] = [exportedToken];
+    acc[packageName] = new Set([exportedToken]);
     return acc;
-  }, {} as Record<string, string[]>);
+  }, {} as Record<string, Set<string>>);
 
   return Object.entries(byPackage)
     .map(([packageName, tokens]) => {
       return [
         chalk.red.underline(packageName) + ':',
-        tokens.map(token => chalk.italic.red('  - ' + token)).join('\n'),
+        Array.from(tokens)
+          .map(token => chalk.italic.red('  - ' + token))
+          .join('\n'),
       ].join('\n');
     })
     .join('\n');
