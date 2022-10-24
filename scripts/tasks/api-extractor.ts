@@ -1,6 +1,6 @@
 import * as glob from 'glob';
 import * as path from 'path';
-import { apiExtractorVerifyTask, task, series, logger, TaskFunction, tscTask } from 'just-scripts';
+import { apiExtractorVerifyTask, task, series, logger, TaskFunction } from 'just-scripts';
 import { ExtractorMessageCategory } from '@microsoft/api-extractor';
 import chalk from 'chalk';
 import { getTsPathAliasesConfig, getTsPathAliasesApiExtractorConfig } from './utils';
