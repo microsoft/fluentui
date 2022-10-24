@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 24 Oct 2022 07:45:24 GMT",
+      "tag": "@fluentui/react_v8.98.6",
+      "version": "8.98.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4583c6011dd20cc251f648d26e98d9b20199e846",
+            "comment": "fix: Fixing color of disabled links in High Contrast mode."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b818a916e7d905016e81125bff46c732f84af429",
+            "comment": "fix: GroupedListV2 state/prop updates trigger re-renders the same as GroupedList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Oct 2022 07:44:53 GMT",
       "tag": "@fluentui/react_v8.98.5",
       "version": "8.98.5",
