@@ -1,55 +1,61 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useSelection } from './useSelection';
+import { useSelectionState } from './useSelection';
+import { mockTableState } from '../common/mockTableState';
 
-describe('useSelection', () => {
+describe('useSelectionState', () => {
   const items = [{ value: 'a' }, { value: 'b' }, { value: 'c' }, { value: 'd' }];
-
-  const getRowId = (item: {}, index: number) => index;
 
   it('should use default selected state', () => {
     const { result } = renderHook(() =>
-      useSelection({ selectionMode: 'multiselect', items, getRowId, defaultSelectedItems: new Set([1]) }),
+      useSelectionState(mockTableState({ items }), {
+        selectionMode: 'multiselect',
+        defaultSelectedItems: new Set([1]),
+      }),
     );
 
-    expect(Array.from(result.current.selectedRows)).toEqual([1]);
+    expect(Array.from(result.current.selection.selectedRows)).toEqual([1]);
   });
 
   it('should use user selected state', () => {
     const { result } = renderHook(() =>
-      useSelection({ selectionMode: 'multiselect', items, getRowId, selectedItems: new Set([1]) }),
+      useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', selectedItems: new Set([1]) }),
     );
 
-    expect(Array.from(result.current.selectedRows)).toEqual([1]);
+    expect(Array.from(result.current.selection.selectedRows)).toEqual([1]);
   });
 
   describe('multiselect', () => {
     it('should use custom row id', () => {
       const { result } = renderHook(() =>
-        useSelection({
-          selectionMode: 'multiselect',
-          items,
-          getRowId: (item: { value: string }) => item.value,
-        }),
+        useSelectionState(
+          mockTableState({
+            getRowId: (item: { value: string }) => item.value,
+            items,
+          }),
+          {
+            selectionMode: 'multiselect',
+          },
+        ),
       );
       act(() => {
-        result.current.toggleAllRows();
+        result.current.selection.toggleAllRows();
       });
 
-      expect(Array.from(result.current.selectedRows)).toEqual(items.map(item => item.value));
+      expect(Array.from(result.current.selection.selectedRows)).toEqual(items.map(item => item.value));
     });
 
     describe('toggleAllRows', () => {
       it('should select all rows', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleAllRows();
+          result.current.selection.toggleAllRows();
         });
-        expect(result.current.selectedRows.size).toBe(items.length);
-        expect(Array.from(result.current.selectedRows)).toEqual(items.map((_, i) => i));
+        expect(result.current.selection.selectedRows.size).toBe(items.length);
+        expect(Array.from(result.current.selection.selectedRows)).toEqual(items.map((_, i) => i));
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
         expect(onSelectionChange).toHaveBeenCalledWith(new Set([0, 1, 2, 3]));
       });
@@ -57,18 +63,18 @@ describe('useSelection', () => {
       it('should deselect all rows', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleAllRows();
+          result.current.selection.toggleAllRows();
         });
 
         act(() => {
-          result.current.toggleAllRows();
+          result.current.selection.toggleAllRows();
         });
 
-        expect(result.current.selectedRows.size).toBe(0);
+        expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
@@ -77,17 +83,17 @@ describe('useSelection', () => {
       it('should clear selection', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleAllRows();
+          result.current.selection.toggleAllRows();
         });
         act(() => {
-          result.current.clearRows();
+          result.current.selection.clearRows();
         });
 
-        expect(result.current.selectedRows.size).toBe(0);
+        expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
@@ -97,14 +103,14 @@ describe('useSelection', () => {
       it('should select row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
-        expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
         expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
@@ -112,20 +118,20 @@ describe('useSelection', () => {
       it('should select multiple rows', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
         act(() => {
-          result.current.selectRow(2);
+          result.current.selection.selectRow(2);
         });
 
-        expect(result.current.selectedRows.size).toBe(2);
-        expect(result.current.selectedRows.has(1)).toBe(true);
-        expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(2);
+        expect(result.current.selection.selectedRows.has(1)).toBe(true);
+        expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([1, 2]));
       });
@@ -135,18 +141,18 @@ describe('useSelection', () => {
       it('should make row unselected', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
         act(() => {
-          result.current.deselectRow(1);
+          result.current.selection.deselectRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(0);
+        expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
@@ -156,15 +162,15 @@ describe('useSelection', () => {
       it('should select unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleRow(1);
+          result.current.selection.toggleRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
         expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
@@ -172,19 +178,19 @@ describe('useSelection', () => {
       it('should deselect selected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleRow(1);
+          result.current.selection.toggleRow(1);
         });
 
         act(() => {
-          result.current.toggleRow(1);
+          result.current.selection.toggleRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(0);
-        expect(result.current.selectedRows.has(1)).toBe(false);
+        expect(result.current.selection.selectedRows.size).toBe(0);
+        expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
@@ -192,20 +198,20 @@ describe('useSelection', () => {
       it('should select another unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'multiselect', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleRow(1);
+          result.current.selection.toggleRow(1);
         });
 
         act(() => {
-          result.current.toggleRow(2);
+          result.current.selection.toggleRow(2);
         });
 
-        expect(result.current.selectedRows.size).toBe(2);
-        expect(result.current.selectedRows.has(1)).toBe(true);
-        expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(2);
+        expect(result.current.selection.selectedRows.has(1)).toBe(true);
+        expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([1, 2]));
       });
@@ -213,55 +219,65 @@ describe('useSelection', () => {
 
     describe('allRowsSelected', () => {
       it('should return true if all rows are selected', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const { result } = renderHook(() =>
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+        );
 
         act(() => {
-          result.current.toggleAllRows();
+          result.current.selection.toggleAllRows();
         });
 
-        expect(result.current.allRowsSelected).toBe(true);
+        expect(result.current.selection.allRowsSelected).toBe(true);
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const { result } = renderHook(() =>
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+        );
 
-        expect(result.current.selectedRows.size).toBe(0);
-        expect(result.current.allRowsSelected).toBe(false);
+        expect(result.current.selection.selectedRows.size).toBe(0);
+        expect(result.current.selection.allRowsSelected).toBe(false);
       });
 
       it('should return false if not all rows are selected', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const { result } = renderHook(() =>
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+        );
 
         act(() => {
-          result.current.toggleAllRows();
+          result.current.selection.toggleAllRows();
         });
 
         act(() => {
-          result.current.deselectRow(1);
+          result.current.selection.deselectRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(3);
-        expect(result.current.allRowsSelected).toBe(false);
+        expect(result.current.selection.selectedRows.size).toBe(3);
+        expect(result.current.selection.allRowsSelected).toBe(false);
       });
     });
 
     describe('someRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const { result } = renderHook(() =>
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+        );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.someRowsSelected).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.someRowsSelected).toBe(true);
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'multiselect', items, getRowId }));
+        const { result } = renderHook(() =>
+          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+        );
 
-        expect(result.current.selectedRows.size).toBe(0);
-        expect(result.current.someRowsSelected).toBe(false);
+        expect(result.current.selection.selectedRows.size).toBe(0);
+        expect(result.current.selection.someRowsSelected).toBe(false);
       });
     });
   });
@@ -271,10 +287,10 @@ describe('useSelection', () => {
       it('should throw when not in production', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
-        expect(result.current.toggleAllRows).toThrowErrorMatchingInlineSnapshot(
+        expect(result.current.selection.toggleAllRows).toThrowErrorMatchingInlineSnapshot(
           `"[react-table]: \`toggleAllItems\` should not be used in single selection mode"`,
         );
         expect(onSelectionChange).toHaveBeenCalledTimes(0);
@@ -284,11 +300,11 @@ describe('useSelection', () => {
         const nodeEnv = (process.env.NODE_ENV = 'production');
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
-        result.current.toggleAllRows;
-        expect(result.current.selectedRows.size).toBe(0);
+        result.current.selection.toggleAllRows;
+        expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(0);
 
         process.env.NODE_ENV = nodeEnv;
@@ -298,17 +314,17 @@ describe('useSelection', () => {
       it('should clear selection', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
         act(() => {
-          result.current.clearRows();
+          result.current.selection.clearRows();
         });
 
-        expect(result.current.selectedRows.size).toBe(0);
+        expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
@@ -318,14 +334,14 @@ describe('useSelection', () => {
       it('should select row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
-        expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
         expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
@@ -333,19 +349,19 @@ describe('useSelection', () => {
       it('should select another row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
         act(() => {
-          result.current.selectRow(2);
+          result.current.selection.selectRow(2);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
       });
@@ -355,18 +371,18 @@ describe('useSelection', () => {
       it('should make row unselected', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
         act(() => {
-          result.current.deselectRow(1);
+          result.current.selection.deselectRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(0);
+        expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
       });
@@ -376,15 +392,15 @@ describe('useSelection', () => {
       it('should select unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleRow(1);
+          result.current.selection.toggleRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.selectedRows.has(1)).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
         expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
       });
@@ -392,19 +408,19 @@ describe('useSelection', () => {
       it('should deselect selected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleRow(1);
+          result.current.selection.toggleRow(1);
         });
 
         act(() => {
-          result.current.toggleRow(2);
+          result.current.selection.toggleRow(2);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.selectedRows.has(1)).toBe(false);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
       });
@@ -412,20 +428,20 @@ describe('useSelection', () => {
       it('should select another unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelection({ selectionMode: 'single', items, getRowId, onSelectionChange }),
+          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
-          result.current.toggleRow(1);
+          result.current.selection.toggleRow(1);
         });
 
         act(() => {
-          result.current.toggleRow(2);
+          result.current.selection.toggleRow(2);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.selectedRows.has(1)).toBe(false);
-        expect(result.current.selectedRows.has(2)).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.selectedRows.has(1)).toBe(false);
+        expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
       });
@@ -433,41 +449,41 @@ describe('useSelection', () => {
 
     describe('allRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.allRowsSelected).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.allRowsSelected).toBe(true);
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
 
-        expect(result.current.selectedRows.size).toBe(0);
-        expect(result.current.allRowsSelected).toBe(false);
+        expect(result.current.selection.selectedRows.size).toBe(0);
+        expect(result.current.selection.allRowsSelected).toBe(false);
       });
     });
 
     describe('someRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
 
         act(() => {
-          result.current.selectRow(1);
+          result.current.selection.selectRow(1);
         });
 
-        expect(result.current.selectedRows.size).toBe(1);
-        expect(result.current.someRowsSelected).toBe(true);
+        expect(result.current.selection.selectedRows.size).toBe(1);
+        expect(result.current.selection.someRowsSelected).toBe(true);
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelection({ selectionMode: 'single', items, getRowId }));
+        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
 
-        expect(result.current.selectedRows.size).toBe(0);
-        expect(result.current.someRowsSelected).toBe(false);
+        expect(result.current.selection.selectedRows.size).toBe(0);
+        expect(result.current.selection.someRowsSelected).toBe(false);
       });
     });
   });

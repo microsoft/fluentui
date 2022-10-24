@@ -13,7 +13,7 @@ import type {
 } from '@fluentui/priority-overflow';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM } from './constants';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
 /**
  * @internal
@@ -82,10 +82,24 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     overflowManager?.update();
   }, [overflowManager]);
 
+  const registerOverflowMenu = React.useCallback(
+    (el: HTMLElement) => {
+      overflowManager?.addOverflowMenu(el);
+      el.setAttribute(DATA_OVERFLOW_MENU, '');
+
+      return () => {
+        overflowManager?.removeOverflowMenu();
+        el.removeAttribute(DATA_OVERFLOW_MENU);
+      };
+    },
+    [overflowManager],
+  );
+
   return {
     containerRef,
     registerItem,
     updateOverflow,
+    registerOverflowMenu,
   };
 };
 

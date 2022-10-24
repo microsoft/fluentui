@@ -120,6 +120,14 @@ const useRootStyles = makeStyles({
     },
   },
 
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      '::before': {
+        ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+      },
+    },
+  },
+
   disabled: {
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -396,6 +404,7 @@ const useButtonDisabledStyles = makeStyles({
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
   const { appearance, atBound, spinState, size } = state;
   const disabled = state.input.disabled;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
@@ -430,6 +439,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
+    !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
     disabled && appearance === 'outline' && rootStyles.outlineDisabled,
     disabled && appearance === 'underline' && rootStyles.underlineDisabled,

@@ -211,6 +211,11 @@ export interface IStackedBarChartStyles {
   chartTitle: IStyle;
 
   /**
+   * Style for left side text of the chart title
+   */
+  chartTitleLeft: IStyle;
+
+  /**
    * Style for the legend container div
    */
   legendContainer: IStyle;

@@ -3,6 +3,38 @@ on:
   pull_request:
 
 jobs:
+  dependency-deduplication:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - uses: tj-actions/changed-files@v32
+        id: changed-files-specific
+        with:
+          files: |
+            yarn.lock
+
+      - name: Check package duplicates
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo "yarn.lock changed! Verifying package deduplication ..."
+
+          npx yarn-deduplicate --strategy fewer --list --fail
+
+          if [[ $? -ne 0 ]]; then
+            echo "Your changes introduced package duplication 🚨"
+            echo "Run 'npx yarn-deduplicate --strategy fewer' to fix those."
+          else
+            echo "No duplicate packages introduced ✅"
+          fi
+
   dependency-mismatches:
     runs-on: ubuntu-latest
     steps:

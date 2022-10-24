@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/common-styles",
-  "version": "1.2.9",
+  "version": "1.2.11",
   "description": "Common style definitions for Fluent UI React components",
   "repository": {
     "type": "git",
@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/style-utilities": "^8.7.12"
+    "@fluentui/style-utilities": "^8.8.1"
   }
 }

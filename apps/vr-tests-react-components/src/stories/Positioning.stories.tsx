@@ -442,6 +442,31 @@ const VirtualElement = () => {
   );
 };
 
+const ResetTarget = () => {
+  const [virtualElement, setVirtualElement] = React.useState<PositioningVirtualElement | null>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    align: 'end',
+    target: virtualElement,
+  });
+
+  React.useEffect(() => {
+    if (virtualElement) {
+      setVirtualElement(null);
+    }
+  }, [virtualElement]);
+
+  return (
+    <>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <button ref={setVirtualElement}>Virtual Target</button>
+        <button ref={targetRef}>Target should be fully visible</button>
+      </div>
+      <Box ref={containerRef}>Anchored to virtual element then reset to real target.</Box>
+    </>
+  );
+};
+
 const TargetProp = () => {
   const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
 
@@ -562,6 +587,7 @@ storiesOf('Positioning', module)
   .addStory('disable tether', () => <DisableTether />)
   .addStory('position fixed', () => <PositionAndAlignProps positionFixed />, { includeRtl: true })
   .addStory('virtual element', () => <VirtualElement />)
+  .addStory('reset target', () => <ResetTarget />)
   .addStory('target property', () => <TargetProp />)
   .addStory('imperative target', () => <ImperativeTarget />)
   .addStory('visibility modifiers', () => (

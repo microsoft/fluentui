@@ -2,7 +2,7 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
 import { MenuItem } from '../MenuItem/index';
@@ -25,7 +25,7 @@ describe('Menu', () => {
     displayName: 'Menu',
     requiredProps: {
       children: [
-        <MenuTrigger key="trigger">
+        <MenuTrigger disableButtonEnhancement key="trigger">
           <button>MenuTrigger</button>
         </MenuTrigger>,
         <MenuPopover key="popover">
@@ -47,7 +47,7 @@ describe('Menu', () => {
   it('renders a default state', () => {
     const { container } = render(
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -66,7 +66,7 @@ describe('Menu', () => {
     const onOpenChange = jest.fn();
     const { getByRole } = render(
       <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -90,7 +90,7 @@ describe('Menu', () => {
     const onOpenChange = jest.fn();
     const { getByRole } = render(
       <Menu onOpenChange={onOpenChange}>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -119,7 +119,7 @@ describe('Menu', () => {
     // Arrange
     const { getByRole } = render(
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -150,7 +150,7 @@ describe('Menu', () => {
     // Arrange
     const { getByRole } = render(
       <Menu open>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -178,7 +178,7 @@ describe('Menu', () => {
     // Arrange
     const { getByRole } = render(
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -203,7 +203,7 @@ describe('Menu', () => {
     // Arrange
     const { getByRole } = render(
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -230,7 +230,7 @@ describe('Menu', () => {
     // Arrange
     const { container } = render(
       <Menu open>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
@@ -250,7 +250,7 @@ describe('Menu', () => {
     // Arrange
     const { container } = render(
       <Menu open inline>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuPopover>
