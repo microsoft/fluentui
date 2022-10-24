@@ -80,7 +80,7 @@ export class ColumnResize {
       this.resizing = true;
 
       this.mouseX = mouseDownEvent.clientX;
-      const onMouseUp = () => {
+      const onMouseUp = (e: MouseEvent) => {
         document.removeEventListener('mouseup', onMouseUp);
         document.removeEventListener('mousemove', onMouseMove);
         this.resizing = false;

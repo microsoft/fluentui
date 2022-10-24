@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTable_unstable, useTableStyles_unstable, renderTable_unstable } from '@fluentui/react-table';
 import type { TableProps } from '@fluentui/react-table';
 import { useTableContextValues_unstable } from '../../components/Table/useTableContextValues';
-import { TableBodyProps } from '../../components/TableBody/TableBody.types';
+import { TableBodyProps, TableBodySlots } from '../../components/TableBody/TableBody.types';
 import { useTableBody_unstable } from '../../components/TableBody/useTableBody';
 import { useTableBodyStyles_unstable } from '../../components/TableBody/useTableBodyStyles';
 import { renderTableBody_unstable } from '../../components/TableBody/renderTableBody';
@@ -10,7 +10,7 @@ import { TableHeaderProps } from '../../components/TableHeader/TableHeader.types
 import { useTableHeader_unstable } from '../../components/TableHeader/useTableHeader';
 import { useTableHeaderStyles_unstable } from '../../components/TableHeader/useTableHeaderStyles';
 import { renderTableHeader_unstable } from '../../components/TableHeader/renderTableHeader';
-import { TableRowProps } from '../../components/TableRow/TableRow.types';
+import { TableRowProps, TableRowSlots } from '../../components/TableRow/TableRow.types';
 import { useTableRow_unstable } from '../../components/TableRow/useTableRow';
 import { useTableRowStyles_unstable } from '../../components/TableRow/useTableRowStyles';
 import { renderTableRow_unstable } from '../../components/TableRow/renderTableRow';
@@ -46,6 +46,7 @@ import {
   ColumnDefinition,
   ColumnId,
   RowId,
+  RowState,
   SortState,
   TableState,
   UseSelectionOptions,
@@ -57,6 +58,24 @@ import { useContextSelector } from '../../../../react-context-selector/src/useCo
 import { ContextSelector } from '../../../../react-context-selector/src/types';
 import { useSort } from '../../hooks/useSort';
 import { useColumnSizing } from '../../hooks/useColumnSizing';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core';
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  useSortable,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import { useColumnOrdering } from '../../hooks/useColumnOrdering';
+import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 
 // 2. virtualization by default (react-)
 // 3. port column resizing prototype here - what codechanges are required on consumer side ?
@@ -93,7 +112,7 @@ type Item = {
   lastUpdate: LastUpdateCell;
 };
 
-const items: Item[] = [
+const rawItems: Item[] = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
@@ -132,6 +151,11 @@ const items: Item[] = [
   },
 ];
 
+const items: Item[] = [];
+for (let i = 0; i < 40; i++) {
+  items.push(...rawItems);
+}
+
 const columns: ColumnDefinition<Item>[] = [
   {
     columnId: 'file',
@@ -139,7 +163,10 @@ const columns: ColumnDefinition<Item>[] = [
       return a.file.label.localeCompare(b.file.label);
     },
     renderHeader: () => {
-      return <DataGridHeaderCell>File</DataGridHeaderCell>;
+      return 'File';
+    },
+    renderCell: item => {
+      return <DataGridCellLayout media={item.file.icon}>{item.file.label}</DataGridCellLayout>;
     },
   },
   {
@@ -148,7 +175,14 @@ const columns: ColumnDefinition<Item>[] = [
       return a.author.label.localeCompare(b.author.label);
     },
     renderHeader: () => {
-      return <DataGridHeaderCell>Author</DataGridHeaderCell>;
+      return 'Author';
+    },
+    renderCell: item => {
+      return (
+        <DataGridCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+          {item.author.label}
+        </DataGridCellLayout>
+      );
     },
   },
   {
@@ -157,7 +191,11 @@ const columns: ColumnDefinition<Item>[] = [
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
     renderHeader: () => {
-      return <DataGridHeaderCell>Last updated</DataGridHeaderCell>;
+      return 'Last updated';
+    },
+
+    renderCell: item => {
+      return item.lastUpdated.label;
     },
   },
   {
@@ -166,7 +204,10 @@ const columns: ColumnDefinition<Item>[] = [
       return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
     },
     renderHeader: () => {
-      return <DataGridHeaderCell>Last update</DataGridHeaderCell>;
+      return 'Last update';
+    },
+    renderCell: item => {
+      return <DataGridCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</DataGridCellLayout>;
     },
   },
 ];
@@ -185,27 +226,13 @@ export const DataGridExample = () => {
       onSelectionChange={setSelected}
     >
       <DataGridHeader>
-        <DataGridRow>{column => column.renderHeader?.()}</DataGridRow>
+        <DataGridRow>{column => <DataGridHeaderCell>{column.renderHeader?.()}</DataGridHeaderCell>}</DataGridRow>
       </DataGridHeader>
-      <DataGridBody>
-        {(item: Item) => (
-          <DataGridRow key={item.file.label}>
-            <DataGridSelectionCell />
-            <DataGridCell columnId="file">
-              <DataGridCellLayout media={item.file.icon}>{item.file.label}</DataGridCellLayout>
-            </DataGridCell>
-            <DataGridCell columnId="author">
-              <DataGridCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
-                {item.author.label}
-              </DataGridCellLayout>
-            </DataGridCell>
-            <DataGridCell columnId="lastUpdated">{item.lastUpdated.label}</DataGridCell>
-            <DataGridCell columnId="lastUpdate">
-              <DataGridCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</DataGridCellLayout>
-            </DataGridCell>
-          </DataGridRow>
+      <DataGridVirtualBody>
+        {(item: Item, style) => (
+          <DataGridRow style={style}>{column => <DataGridCell>{column.renderCell?.(item)}</DataGridCell>}</DataGridRow>
         )}
-      </DataGridBody>
+      </DataGridVirtualBody>
     </DataGrid>
   );
 };
@@ -229,8 +256,10 @@ const DataGrid: React.FC<DataGridProps> = props => {
         onSortChange: props.onSortChange,
       }),
       useColumnSizing(),
+      useColumnOrdering(),
     ],
   );
+
   // eslint-disable-next-line deprecation/deprecation
   const navigationRef = useNavigationMode('cell');
   const ref = React.useRef<HTMLDivElement>(null);
@@ -269,13 +298,36 @@ const DataGridBody: React.FC<DataGridBodyProps> = props => {
 
 const DataGridHeader: React.FC<DataGridHeaderProps> = props => {
   const ref = React.useRef<HTMLDivElement>(null);
+  const moveColumn = useDataGridContext(ctx => ctx.state.columnOrdering.moveColumn);
+  const tableColumns = useDataGridContext(ctx => ctx.state.columns);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (active.id !== over?.id) {
+      const next = tableColumns.findIndex(col => col.columnId === over?.id);
+      moveColumn(next, active.id);
+    }
+  };
+
   let componentState = useTableHeader_unstable(props, ref);
   componentState = useTableHeaderStyles_unstable(componentState);
 
   return (
-    <DataGridHeaderContext.Provider value={true}>
-      {renderTableHeader_unstable(componentState)}
-    </DataGridHeaderContext.Provider>
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+      <SortableContext items={tableColumns.map(col => col.columnId)} strategy={verticalListSortingStrategy}>
+        <DataGridHeaderContext.Provider value={true}>
+          {renderTableHeader_unstable(componentState)}
+        </DataGridHeaderContext.Provider>
+      </SortableContext>
+    </DndContext>
   );
 };
 
@@ -309,7 +361,14 @@ const DataGridRow: React.FC<DataGridRowProps> = props => {
   let componentState = useTableRow_unstable({ ...props, ...rowProps, children }, ref);
   componentState = useTableRowStyles_unstable(componentState);
 
-  return renderTableRow_unstable(componentState);
+  const { slots, slotProps } = getSlots<TableRowSlots>(componentState);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <DataGridSelectionCell />
+      {slotProps.root.children}
+    </slots.root>
+  );
 };
 
 const DataGridCell: React.FC<DataGridCellProps> = props => {
@@ -339,15 +398,23 @@ const DataGridHeaderCell: React.FC<DataGridHeaderCellProps> = props => {
   const getOnMouseDown = useDataGridContext(ctx => ctx.state.columnSizing.getOnMouseDown);
   const ref = React.useRef<HTMLDivElement>(null);
   const onClick = () => columnId && toggleColumnSort(columnId);
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: columnId });
+
+  const dragStyles = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
 
   const columnStyles = {
     minWidth: columnId ? getColumnWidth(columnId) : undefined,
     maxWidth: columnId ? getColumnWidth(columnId) : undefined,
   };
+
   let componentState = useTableHeaderCell_unstable(
-    { ...props, sortDirection, onClick, style: { ...columnStyles } },
-    ref,
+    { ...props, sortDirection, onClick, style: { ...columnStyles, ...dragStyles }, ...attributes, ...listeners },
+    useMergedRefs(ref, setNodeRef),
   );
+
   componentState = useTableHeaderCellStyles_unstable(componentState);
 
   const { slots, slotProps } = getSlots<TableHeaderCellSlots>(componentState);
@@ -358,7 +425,8 @@ const DataGridHeaderCell: React.FC<DataGridHeaderCellProps> = props => {
         {slotProps.root.children}
         {slots.sortIcon && <slots.sortIcon {...slotProps.sortIcon} />}
         <div
-          onMouseDown={getOnMouseDown(columnId)}
+          onPointerDown={e => e.stopPropagation()}
+          onMouseDown={columnId ? getOnMouseDown(columnId) : () => null}
           style={{
             borderRight: '2px solid red',
             height: '100%',
@@ -379,14 +447,23 @@ const DataGridSelectionCell: React.FC<DataGridSelectionCellProps> = props => {
   const rowId = React.useContext(DataGridRowContext) ?? '';
   const checked = useDataGridContext(ctx => {
     if (isInHeader) {
-      return ctx.state.selection.allRowsSelected ? true : 'mixed';
+      return ctx.state.selection.allRowsSelected ? true : ctx.state.selection.someRowsSelected ? 'mixed' : false;
     }
 
     return ctx.state.selection.isRowSelected(rowId);
   });
+  const toggleAll = useDataGridContext(ctx => {
+    return ctx.state.selection.toggleAllRows;
+  });
+
+  const onClick = () => {
+    if (isInHeader) {
+      toggleAll();
+    }
+  };
   const ref = React.useRef<HTMLDivElement>(null);
   let componentState = useTableSelectionCell_unstable(
-    { ...props, tabIndex: 0, checked, checkboxIndicator: { tabIndex: -1 } },
+    { ...props, tabIndex: 0, checked, checkboxIndicator: { tabIndex: -1 }, onClick },
     ref,
   );
   componentState = useTableSelectionCellStyles_unstable(componentState);
@@ -400,6 +477,33 @@ const DataGridCellLayout: React.FC<DataGridCellLayoutProps> = props => {
   componentState = useTableCellLayoutStyles_unstable(componentState);
 
   return renderTableCellLayout_unstable(componentState, useTableCellLayoutContextValues_unstable(componentState));
+};
+
+const DataGridVirtualBody: React.FC<DataGridBodyProps> = props => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const getRows = useDataGridContext(ctx => ctx.state.getRows);
+  const sort = useDataGridContext(ctx => ctx.state.sort.sort);
+  const itemCount = useDataGridContext(ctx => ctx.items.length);
+  const getTotalWidth = useDataGridContext(ctx => ctx.state.columnSizing.getTotalWidth);
+  const rows = sort(getRows());
+  let children = props.children;
+  let componentState = useTableBody_unstable({ ...props }, ref);
+  componentState = useTableBodyStyles_unstable(componentState);
+
+  const { slots, slotProps } = getSlots<TableBodySlots>(componentState);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <List height={600} itemCount={itemCount} itemSize={50} width={getTotalWidth()} itemData={rows}>
+        {({ data, index, style }: ListChildComponentProps) => {
+          const row: RowState<unknown> = data[index];
+          return (
+            <DataGridRowContext.Provider value={row.rowId}>{children(row.item, style)}</DataGridRowContext.Provider>
+          );
+        }}
+      </List>
+    </slots.root>
+  );
 };
 
 const DataGridContext = createContext<DataGridContextValue | undefined>(undefined);

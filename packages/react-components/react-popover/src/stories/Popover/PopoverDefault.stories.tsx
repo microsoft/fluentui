@@ -1,39 +1,54 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { Popover, PopoverSurface, Switch, PositioningImperativeRef } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+export const Default = (props: PopoverProps) => {
+  const positioningRef = React.useRef<PositioningImperativeRef | null>(null);
+  const switchRef = React.useRef<HTMLInputElement>(null);
+  const popoverSurfaceRef = React.useRef<HTMLDivElement>(null);
+  const [open, setOpen] = React.useState(false);
+  React.useEffect(() => {
+    if (positioningRef.current && switchRef.current) {
+      positioningRef.current.setTarget(switchRef.current);
+    }
+  }, []);
 
-const ExampleContent = () => {
-  const styles = useStyles();
+  React.useEffect(() => {
+    if (open) {
+      switchRef.current?.focus();
+    }
+  }, [open]);
+
+  const onFocus = () => {
+    setOpen(true);
+  };
+
+  const onBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setOpen(false);
+    }
+  };
+
+  const onMouseOver = (e: React.MouseEvent) => {
+    setOpen(true);
+  };
+
+  const onMouseLeave = (e: React.MouseEvent) => {
+    setOpen(false);
+  };
+
   return (
-    <div>
-      <h3 className={styles.contentHeader}>Popover content</h3>
+    <span onFocus={onFocus} onBlur={onBlur} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+      <Switch ref={switchRef} />
+      <Popover inline positioning={{ positioningRef }} open={open}>
+        <PopoverSurface ref={popoverSurfaceRef}>
+          <div>
+            <h3>Popover content</h3>
 
-      <div>This is some popover content</div>
-    </div>
+            <button>Button</button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+    </span>
   );
 };
-
-export const Default = (props: PopoverProps) => (
-  <Popover {...props}>
-    <PopoverTrigger>
-      {props => {
-        const { ref, ...rest } = props;
-        return (
-          <button {...rest} ref={ref}>
-            Popover
-          </button>
-        );
-      }}
-    </PopoverTrigger>
-
-    <PopoverSurface>
-      <ExampleContent />
-    </PopoverSurface>
-  </Popover>
-);

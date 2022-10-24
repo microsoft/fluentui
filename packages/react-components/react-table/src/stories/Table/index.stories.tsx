@@ -16,6 +16,8 @@ export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { CellNavigationMode } from './CellNavigationMode.stories';
 export { CompositeNavigationMode } from './CompositeNavigationMode.stories';
 export { DataGridExample } from './DataGrid.stories';
+export { ColumnOrdering } from './ColumnOrdering.stories';
+export { LazyLoading } from './LazyLoading.stories';
 
 export default {
   title: 'Preview Components/Table',

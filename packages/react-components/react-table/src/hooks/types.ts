@@ -19,6 +19,7 @@ export interface ColumnDefinition<TItem> {
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,
+  index: number,
 ) => TRowState;
 
 export interface TableSortState<TItem> {
@@ -117,6 +118,15 @@ export interface TableColumnSizingState {
   getColumnWidths: () => ColumnWidthState[];
 }
 
+export interface TableColumnOrderingState {
+  moveColumn: (next: number, columnId: ColumnId) => void;
+}
+
+export interface TableLazyScrollingState {
+  isTargetPosition: (position: number) => boolean;
+  observeRef: React.Ref<HTMLElement>;
+}
+
 export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
   /**
    * The row data for rendering
@@ -138,7 +148,9 @@ export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' 
    */
   columns: ColumnDefinition<TItem>[];
   columnSizing: TableColumnSizingState;
+  columnOrdering: TableColumnOrderingState;
   tableRef: React.RefObject<HTMLDivElement>;
+  lazyScrolling: TableLazyScrollingState;
 }
 
 export interface UseSortOptions {

@@ -11,7 +11,7 @@ export function useTable<TItem>(options: UseTableOptions<TItem>, plugins: TableS
 
   const getRows = <TRowState extends RowState<TItem>>(
     rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
-  ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
+  ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }, i));
 
   const initialState: TableState<TItem> = {
     getRowId,
@@ -22,6 +22,13 @@ export function useTable<TItem>(options: UseTableOptions<TItem>, plugins: TableS
     sort: defaultTableSortState as TableSortState<TItem>,
     columnSizing: defaultColumnSizingState,
     tableRef: React.useRef<HTMLDivElement>(null),
+    columnOrdering: {
+      moveColumn: () => undefined,
+    },
+    lazyScrolling: {
+      targetPosition: 0,
+      observeRef: React.useRef<HTMLElement>(null),
+    },
   };
 
   return plugins.reduce((state, plugin) => plugin(state), initialState);
