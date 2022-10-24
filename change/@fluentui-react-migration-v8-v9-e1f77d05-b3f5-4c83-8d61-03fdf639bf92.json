@@ -1,6 +1,6 @@
 {
   "comment": "publishing migration package",
-  "type": "none",
+  "type": "patch",
   "packageName": "@fluentui/react-migration-v8-v9",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "none"
