@@ -66,23 +66,23 @@ export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & Divide
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
     size?: 'small' | 'medium';
     vertical?: boolean;
-    checkedValues?: Record<string, string[] | string>;
-    defaultCheckedValues?: Record<string, string[] | string>;
+    checkedValues?: Record<string, string[]>;
+    defaultCheckedValues?: Record<string, string[]>;
     onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
 };
 
 // @public
-export const ToolbarRadio: ForwardRefComponent<ToolbarRadioProps>;
+export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 
 // @public
-export type ToolbarRadioProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
+export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
     name: string;
     value: string;
 };
 
 // @public
-export type ToolbarRadioState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarRadioProps, 'name' | 'value'>;
+export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
 
 // @public (undocumented)
 export type ToolbarSlots = {

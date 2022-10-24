@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEventCallback } from '@fluentui/react-hooks';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 import { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './ToolbarRadioButton.types';
@@ -25,18 +26,16 @@ export const useToolbarRadioButton_unstable = (
     value: props.value,
   };
 
-  const handleOnClick = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  ) => {
-    if (state.disabled) {
+  const handleOnClick = useEventCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
       e.preventDefault();
       e.stopPropagation();
       return;
-    }
 
-    handleRadio?.(e, state.name, state.value, state.checked);
-    onClickOriginal?.(e);
-  };
+      handleRadio?.(e, state.name, state.value, state.checked);
+      onClickOriginal?.(e);
+    },
+  );
 
   state.root.onClick = handleOnClick;
   return state;
