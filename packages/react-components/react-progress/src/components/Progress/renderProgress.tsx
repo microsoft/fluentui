@@ -7,7 +7,5 @@ import type { ProgressState, ProgressSlots } from './Progress.types';
  */
 export const renderProgress_unstable = (state: ProgressState) => {
   const { slots, slotProps } = getSlots<ProgressSlots>(state);
-
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return <slots.root {...slotProps.root}>{slots.bar && <slots.bar {...slotProps.bar} />}</slots.root>;
 };

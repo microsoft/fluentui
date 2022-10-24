@@ -4,7 +4,7 @@ import { series, resolveCwd, copyTask, copyInstructionsTask, logger } from 'just
 import { getProjectMetadata, findGitRoot } from '../monorepo';
 import { getTsPathAliasesConfig } from './utils';
 
-export function expandSourcePath(pattern: string): string {
+export function expandSourcePath(pattern: string): string | null {
   if (!pattern) {
     return null;
   }
@@ -29,6 +29,7 @@ export function expandSourcePath(pattern: string): string {
     return pattern.replace(packageName, path.dirname(resolvedPackageJson));
   } catch (e) {
     console.error(e);
+    return null;
   }
 }
 
@@ -42,7 +43,7 @@ export function copyCompiled() {
 
   const packageDir = process.cwd();
 
-  if (!isUsingTsSolutionConfigs) {
+  if (!(isUsingTsSolutionConfigs && tsConfig)) {
     throw new Error(`this task compliant only with packages that use TS solution config files.`);
   }
 
@@ -56,6 +57,13 @@ export function copyCompiled() {
   }
 
   const projectMetadata = getProjectMetadata({ root, name: packageJson.name });
+
+  if (!projectMetadata.sourceRoot) {
+    throw new Error(`${packageJson.name} is missing 'sourceRoot' in workspace.json`);
+  }
+  if (!packageJson.module) {
+    throw new Error(`${packageJson.name} is missing 'module' property in package.json`);
+  }
 
   const paths = {
     esm: {
@@ -110,7 +118,7 @@ export function copy() {
 
     if (Array.isArray(sources)) {
       return copyTask({
-        paths: sources.map(src => expandSourcePath(src)),
+        paths: sources.map(src => expandSourcePath(src)).filter(Boolean) as string[],
         dest: destinationPath,
       });
     }

@@ -20,7 +20,7 @@ export const parameters = {
         [
           'Introduction',
           'Developer',
-          ['Quick Start', 'Styling Components', 'Positioning Components'],
+          ['Quick Start', 'Styling Components', 'Positioning Components', 'Accessibility', ['*', 'Components']],
           'Upgrading',
           [
             'from v8',

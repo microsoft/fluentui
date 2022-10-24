@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 15 Sep 2022 09:48:56 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.9)
+
+Thu, 20 Oct 2022 08:39:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.8..@fluentui/react-tooltip_v9.0.9)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.8 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-positioning to v9.2.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.8)
+
+Thu, 13 Oct 2022 11:03:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.7..@fluentui/react-tooltip_v9.0.8)
+
+### Patches
+
+- chore: improves Tooltip types ([PR #25044](https://github.com/microsoft/fluentui/pull/25044) by bernardo.sunderhus@gmail.com)
+- fix: The Tooltip should not hide if it gets keyboard focus ([PR #25138](https://github.com/microsoft/fluentui/pull/25138) by behowell@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-positioning to v9.2.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.6..@fluentui/react-tooltip_v9.0.7)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.0.6 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.6)
+
+Tue, 20 Sep 2022 20:55:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.5..@fluentui/react-tooltip_v9.0.6)
+
+### Patches
+
+- bugfix: stops propagation on Escape key ([PR #24810](https://github.com/microsoft/fluentui/pull/24810) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.5)
 

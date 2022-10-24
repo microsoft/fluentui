@@ -20,10 +20,10 @@ export const ReverseDomOrder = () => {
   return (
     <Overflow overflowDirection="start">
       <div className={styles.container}>
+        <OverflowMenu itemIds={itemIds} />
         {itemIds.map(i => (
           <TestOverflowItem key={i} id={i} />
         ))}
-        <OverflowMenu itemIds={itemIds} />
       </div>
     </Overflow>
   );

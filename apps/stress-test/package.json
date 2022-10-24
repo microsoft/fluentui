@@ -3,18 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "scripts": {
-    "stress-test": "node ./scripts/stressTest.js",
+    "stress-test": "ts-node-esm --project tsconfig.scripts.json ./scripts/stressTest.ts",
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
-    "@fluentui/react": "^8.95.1",
-    "@fluentui/react-components": "^9.2.0",
+    "@fluentui/react": "^8.98.6",
+    "@fluentui/react-components": "^9.5.2",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/web-components": "^2.5.5",
+    "@fluentui/web-components": "^2.5.7",
     "@microsoft/fast-element": "^1.10.4",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "random-seedable": "1.0.8"
   }
 }

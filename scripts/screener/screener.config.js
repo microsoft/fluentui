@@ -36,11 +36,13 @@ const baseBranch = 'master';
  * @param {Object} options
  * @param {string} options.screenerApiKey
  * @param {string} options.sourceBranchName
- * @returns
+ * @param {string} options.deployUrl
+ * @returns {import('./screener.types').ScreenerRunnerConfig}
  */
-function getConfig({ screenerApiKey, sourceBranchName }) {
+function getConfig({ screenerApiKey, sourceBranchName, deployUrl }) {
   // https://github.com/screener-io/screener-runner
   return {
+    baseUrl: `${deployUrl}/react-northstar-screener`,
     apiKey: screenerApiKey,
     projectRepo: 'microsoft/fluentui/fluentui',
 
@@ -54,9 +56,7 @@ function getConfig({ screenerApiKey, sourceBranchName }) {
       minShiftGraphic: 1, // Optional threshold for pixel shifts in graphics.
       compareSVGDOM: false, // Pass if SVG DOM is the same. Defaults to false.
     },
-
-    // screenshot every example in maximized mode
-    states: require('./screener.states').default,
+    states: [],
 
     alwaysAcceptBaseBranch: true,
     baseBranch,

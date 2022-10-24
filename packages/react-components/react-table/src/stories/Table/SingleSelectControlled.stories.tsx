@@ -8,10 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition, RowId } from '../../hooks';
-import { useNavigationMode } from '../../navigationModes/useNavigationMode';
+import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
 import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
@@ -96,42 +95,60 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const SingleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(new Set<RowId>());
-  const { rows } = useTable({
-    columns,
-    items,
-    selectionMode: 'single',
-    selectedRows,
-    onSelectionChange: setSelectedRows,
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      selected: selection.isRowSelected(row.rowId),
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-    }),
-  });
-  // eslint-disable-next-line deprecation/deprecation
-  const ref = useNavigationMode<HTMLDivElement>('row');
+  const [selectedRows, setSelectedRows] = React.useState(
+    () => new Set<RowId>([1]),
+  );
+  const {
+    getRows,
+    selection: { toggleRow, isRowSelected },
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      useSelection({
+        selectionMode: 'single',
+        selectedItems: selectedRows,
+        onSelectionChange: setSelectedRows,
+      }),
+    ],
+  );
+
+  const rows = getRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
+
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table ref={ref}>
+    <Table>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell type="radio" />
+          <TableSelectionCell type="radio" hidden />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody {...keyboardNavAttr}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
+          <TableRow
+            key={item.file.label}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
+            aria-selected={selected}
+            appearance={selected ? 'neutral' : 'none'}
+          >
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add react-progress to react-components/unstable",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

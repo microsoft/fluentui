@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -19,8 +19,7 @@ import {
   TableSelectionCell,
   TableCellLayout,
 } from '../..';
-import { useTable, ColumnDefinition } from '../../hooks';
-import { useNavigationMode } from '../../navigationModes/useNavigationMode';
+import { useTable, ColumnDefinition, useSelection } from '../../hooks';
 
 type FileCell = {
   label: string;
@@ -105,26 +104,34 @@ const columns: ColumnDefinition<Item>[] = [
 
 export const MultipleSelect = () => {
   const {
-    rows,
-    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
-  } = useTable({
-    columns,
-    items,
-    defaultSelectedRows: new Set([0, 1]),
-    rowEnhancer: (row, { selection }) => ({
-      ...row,
-      onClick: () => selection.toggleRow(row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRow(row.rowId);
-        }
-      },
-      selected: selection.isRowSelected(row.rowId),
-    }),
-  });
+    getRows,
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [
+      useSelection({
+        selectionMode: 'multiselect',
+        defaultSelectedItems: new Set([0, 1]),
+      }),
+    ],
+  );
+
+  const rows = getRows(row => ({
+    ...row,
+    onClick: () => toggleRow(row.rowId),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        toggleRow(row.rowId);
+      }
+    },
+    selected: isRowSelected(row.rowId),
+  }));
 
   // eslint-disable-next-line deprecation/deprecation
-  const ref = useNavigationMode<HTMLDivElement>('row');
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
     <Table>
@@ -140,10 +147,16 @@ export const MultipleSelect = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody ref={ref}>
+      <TableBody {...keyboardNavAttr}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+          <TableRow
+            key={item.file.label}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
+            aria-selected={selected}
+            appearance={selected ? 'brand' : 'none'}
+          >
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

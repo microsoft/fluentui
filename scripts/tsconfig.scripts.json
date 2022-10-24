@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
+    "pretty": true,
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
@@ -10,6 +11,33 @@
   "include": [],
   "files": [],
   "references": [
+    {
+      "path": "./api-extractor/tsconfig.json"
+    },
+    {
+      "path": "./babel/tsconfig.json"
+    },
+    {
+      "path": "./lint-staged/tsconfig.json"
+    },
+    {
+      "path": "./typescript/tsconfig.json"
+    },
+    {
+      "path": "./tasks/tsconfig.json"
+    },
+    {
+      "path": "./jest/tsconfig.json"
+    },
+    {
+      "path": "./webpack/tsconfig.json"
+    },
+    {
+      "path": "./dependency-graph-generator/tsconfig.json"
+    },
+    {
+      "path": "./triage-bot/tsconfig.json"
+    },
     {
       "path": "./cypress/tsconfig.json"
     },
@@ -24,6 +52,30 @@
     },
     {
       "path": "./screener/tsconfig.json"
+    },
+    {
+      "path": "./github/tsconfig.json"
+    },
+    {
+      "path": "./puppeteer/tsconfig.json"
+    },
+    {
+      "path": "./gulp/tsconfig.json"
+    },
+    {
+      "path": "./dangerjs/tsconfig.json"
+    },
+    {
+      "path": "./projects-test/tsconfig.json"
+    },
+    {
+      "path": "./update-release-notes/tsconfig.json"
+    },
+    {
+      "path": "./prettier/tsconfig.json"
+    },
+    {
+      "path": "./fluentui-publish/tsconfig.json"
     },
     {
       "path": "./tsconfig.json"

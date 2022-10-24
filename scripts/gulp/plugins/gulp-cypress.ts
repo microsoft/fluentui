@@ -6,7 +6,7 @@ export type CypressPluginConfig = {
   testNamePattern?: string;
 };
 
-const cypress = (config: CypressPluginConfig) => cb => {
+const cypress = (config: CypressPluginConfig) => (cb: () => void) => {
   process.env.NODE_ENV = 'test';
   process.env.CI = process.env.TF_BUILD ? 'true' : undefined;
 

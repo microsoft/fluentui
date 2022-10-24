@@ -35,6 +35,7 @@ import {
   UIComponentProps,
   isFromKeyboard as detectIsFromKeyboard,
   createShorthand,
+  setWhatInputSource,
 } from '../../utils';
 import { List, ListProps } from '../List/List';
 import { DropdownItem, DropdownItemProps } from './DropdownItem';
@@ -1178,12 +1179,22 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
           case keyboardKey.ArrowLeft:
             e.stopPropagation();
             if (!context.rtl) {
+              // https://github.com/testing-library/user-event/issues/709
+              // JSDOM does not implement `event.view` so prune this code path in test
+              if (process.env.NODE_ENV !== 'test') {
+                setWhatInputSource(e.view.document, 'keyboard');
+              }
               trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.ArrowRight:
             e.stopPropagation();
             if (context.rtl) {
+              // https://github.com/testing-library/user-event/issues/709
+              // JSDOM does not implement `event.view` so prune this code path in test
+              if (process.env.NODE_ENV !== 'test') {
+                setWhatInputSource(e.view.document, 'keyboard');
+              }
               trySetLastSelectedItemAsActive();
             }
             break;

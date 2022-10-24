@@ -34,6 +34,6 @@ describe('PortalCompat', () => {
   it('should apply focus visible ponyfill', () => {
     mount(<Example />);
     cy.contains('First').focus().realPress('Tab');
-    cy.contains('Second').should('have.class', 'fui-focus-visible');
+    cy.contains('Second').should('have.attr', 'data-fui-focus-visible');
   });
 });

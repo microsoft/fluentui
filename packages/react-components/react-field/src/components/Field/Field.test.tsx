@@ -102,4 +102,26 @@ describe('Field', () => {
 
     expect(input.getAttribute('aria-invalid')).toBeTruthy();
   });
+
+  it('does not override user aria props', () => {
+    const result = render(
+      <MockField
+        label="test label"
+        validationState="error"
+        validationMessage="test description"
+        hint="test hint"
+        aria-labelledby="test-labelledby"
+        aria-describedby="test-describedby"
+        aria-errormessage="test-errormessage"
+        aria-invalid={false}
+      />,
+    );
+
+    const input = result.getByRole('textbox');
+
+    expect(input.getAttribute('aria-labelledby')).toBe('test-labelledby');
+    expect(input.getAttribute('aria-describedby')).toBe('test-describedby');
+    expect(input.getAttribute('aria-errormessage')).toBe('test-errormessage');
+    expect(input.getAttribute('aria-invalid')).toBe('false');
+  });
 });

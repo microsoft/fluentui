@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { TableCellLayoutProps, TableCellLayoutState } from './TableCellLayout.types';
+import { useTableContext } from '../../contexts/tableContext';
+
+const tableAvatarSizeMap = {
+  medium: 32,
+  small: 24,
+  smaller: 20,
+} as const;
 
 /**
  * Create the state required to render TableCellLayout.
@@ -15,6 +22,8 @@ export const useTableCellLayout_unstable = (
   props: TableCellLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TableCellLayoutState => {
+  const { size } = useTableContext();
+
   return {
     components: {
       root: 'div',
@@ -29,5 +38,6 @@ export const useTableCellLayout_unstable = (
     media: resolveShorthand(props.media),
     description: resolveShorthand(props.description),
     wrapper: resolveShorthand(props.wrapper, { required: !!props.description || !!props.children }),
+    avatarSize: tableAvatarSizeMap[size],
   };
 };

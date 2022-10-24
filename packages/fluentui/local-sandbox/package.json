@@ -12,9 +12,7 @@
   "dependencies": {
     "@fluentui/react-northstar": "^0.64.0"
   },
-  "devDependencies": {
-    "source-map-loader": "2.0.0"
-  },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public"
   }
