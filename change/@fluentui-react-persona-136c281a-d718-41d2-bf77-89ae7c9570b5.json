@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "chore: Change version back to beta.",
   "packageName": "@fluentui/react-persona",
   "email": "esteban.230@hotmail.com",
