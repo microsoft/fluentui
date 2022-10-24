@@ -1,6 +1,6 @@
 import { createContext, createContextSelector } from '@fluentui/global-context';
-import { SYMBOL_NAMESPACE } from '../src/global-context';
-import { SYMBOL_NAMESPACE as CONTEXT_SELECTOR_SYMBOL_NAMESPACE } from '../src/global-context-selector';
+import { SYMBOL_NAMESPACE } from './global-context';
+import { SYMBOL_NAMESPACE as CONTEXT_SELECTOR_SYMBOL_NAMESPACE } from './global-context-selector';
 
 function cleanWindowSymbols(namespace: string) {
   getGlobalContextSymbols(namespace).forEach(sym => {
@@ -28,13 +28,13 @@ describe('createContext', () => {
   beforeEach(() => cleanWindowSymbols(SYMBOL_NAMESPACE));
 
   it('should create context on window', () => {
-    const MyContext = createContext({}, 'MyContext', 'package', '9.0.0');
+    const MyContext = createContext(undefined, 'MyContext', 'package', '9.0.0');
     expect(getWindowProperty(getGlobalContextSymbols(SYMBOL_NAMESPACE)[0])).equals(MyContext);
   });
 
   it('should create single context', () => {
-    const MyContext = createContext({}, 'MyContext', 'package', '9.0.0');
-    const MyContext2 = createContext({}, 'MyContext', 'package', '9.0.0');
+    const MyContext = createContext(undefined, 'MyContext', 'package', '9.0.0');
+    const MyContext2 = createContext(undefined, 'MyContext', 'package', '9.0.0');
 
     expect(getGlobalContextSymbols(SYMBOL_NAMESPACE).length).equals(1);
     expect(getWindowProperty(getGlobalContextSymbols(SYMBOL_NAMESPACE)[0])).equals(MyContext);
