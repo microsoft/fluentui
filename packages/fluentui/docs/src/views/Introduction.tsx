@@ -34,9 +34,11 @@ const Introduction = () => (
       Fluent UI provides extensible vanilla JavaScript solutions to component state, styling, and accessibility. These
       powerful features are exposed behind simple APIs based on natural language.
     </p>
+
+    <h3>Status</h3>
     <p>
-      Fluent UI React is being built as an exemplar of the Fluent UI design language, component specifications, and
-      utilities.
+      Fluent UI React Northstar has been superseded by{' '}
+      <Link to="https://react.fluentui.dev/">Fluent UI React Components v9</Link>.
     </p>
 
     <h3>Learn</h3>
@@ -47,11 +49,6 @@ const Introduction = () => (
     <h3>Start</h3>
     <p>
       If you want to get going right away, see the <NavLink to="quick-start">Quick Start</NavLink> guide.
-    </p>
-
-    <h3>Fluent UI React V9</h3>
-    <p>
-      This is our latest and more performant library, <Link to="https://react.fluentui.dev/">link to docs</Link>.
     </p>
   </div>
 );

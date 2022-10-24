@@ -4,7 +4,7 @@ import { ToggleButton } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const DeviceControlsToggleButtonsAccessibilityScenario: React.FunctionComponent = () => {
+export const DeviceControlsToggleButtons: React.FunctionComponent = () => {
   const [hotspotButtonDisabled, setHotspotButtonDisabled] = React.useState<boolean | undefined>(true);
   const [wiFiButtonPressed, setWiFiButtonPressed] = React.useState(false);
   const [hotspotButtonPressed, setHotspotButtonPressed] = React.useState(false);
@@ -36,9 +36,4 @@ export const DeviceControlsToggleButtonsAccessibilityScenario: React.FunctionCom
       <ToggleButton>Bluetooth</ToggleButton>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Device controls toggle buttons',
-  id: 'toggle-button-accessibility-scenario',
 };
