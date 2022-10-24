@@ -208,7 +208,7 @@ const useButtonStyles = makeStyles({
   // Padding values numbers don't align with design specs
   // but visually the padding aligns.
   // The icons are set in a 16x16px square but the artwork is inset from that
-  // so I've had to compute the numbers by handle.
+  // so these padding values are computed by hand.
   // Additionally the design uses fractional values so these are
   // rounded to the nearest integer.
   incrementButtonSmall: {
