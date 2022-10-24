@@ -311,3 +311,12 @@ export {
   usePersona_unstable,
 } from '@fluentui/react-persona';
 export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
+
+export {
+  Progress,
+  progressClassNames,
+  renderProgress_unstable,
+  useProgressStyles_unstable,
+  useProgress_unstable,
+} from '@fluentui/react-progress';
+export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/react-progress';

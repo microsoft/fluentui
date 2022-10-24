@@ -304,6 +304,7 @@ exports[`Link renders disabled Link correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: auto;
         border-bottom: none;
+        color: GrayText;
         forced-color-adjust: auto;
       }
       &:link {
@@ -361,7 +362,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         border-bottom: none;
-        color: LinkText;
+        color: GrayText;
         forced-color-adjust: none;
       }
       &:link {

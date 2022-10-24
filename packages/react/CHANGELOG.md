@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 21 Oct 2022 07:44:53 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Oct 2022 07:45:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.98.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.6)
+
+Mon, 24 Oct 2022 07:45:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.5..@fluentui/react_v8.98.6)
+
+### Patches
+
+- fix: Fixing color of disabled links in High Contrast mode. ([PR #25344](https://github.com/microsoft/fluentui/pull/25344) by makotom@microsoft.com)
+- fix: GroupedListV2 state/prop updates trigger re-renders the same as GroupedList ([PR #25301](https://github.com/microsoft/fluentui/pull/25301) by seanmonahan@microsoft.com)
 
 ## [8.98.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.5)
 
