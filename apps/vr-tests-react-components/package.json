@@ -32,7 +32,7 @@
     "@fluentui/react-label": "^9.0.8",
     "@fluentui/react-link": "^9.0.9",
     "@fluentui/react-menu": "^9.3.1",
-    "@fluentui/react-persona": "^9.0.3",
+    "@fluentui/react-persona": "^9.1.0-beta.0",
     "@fluentui/react-popover": "^9.2.1",
     "@fluentui/react-positioning": "^9.2.2",
     "@fluentui/react-progress": "9.0.0-alpha.2",
