@@ -43,7 +43,7 @@ See the doc site at https://aka.ms/fluent-ui.
 
 ### What is the future of Fluent UI React Northstar?
 
-The future of `@fluentui/react-northstar` is called `@fluentui/react-components`. It builds on top of many base principles that were present in Northstar, streamlines the API and brings significanlty improved performance.
+The future of `@fluentui/react-northstar` is called `@fluentui/react-components`. It builds on top of many base principles that were present in Northstar, streamlines the API and brings significantly improved performance.
 
 ### How can we migrate to Fluent UI React Components v9?
 
