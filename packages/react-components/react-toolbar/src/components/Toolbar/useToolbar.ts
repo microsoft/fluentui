@@ -71,7 +71,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
           name,
           checkedItems: checkedValues?.[name],
         });
-        setCheckedValues(s => ({ ...s, [name]: value }));
+        setCheckedValues(s => ({ ...s, [name]: [value] }));
       }
     },
   );

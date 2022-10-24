@@ -7,7 +7,7 @@ export type ToolbarSlots = {
 
 export type ToolbarCheckedValueChangeData = {
   /** The items for this value that are checked */
-  checkedItems: string[] | string;
+  checkedItems: string[];
   /** The name of the value */
   name: string;
 };
@@ -34,12 +34,12 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
   /**
    * Map of all checked values
    */
-  checkedValues?: Record<string, string[] | string>;
+  checkedValues?: Record<string, string[]>;
 
   /**
    * Default values to be checked on mount
    */
-  defaultCheckedValues?: Record<string, string[] | string>;
+  defaultCheckedValues?: Record<string, string[]>;
 
   /**
    * Callback when checked items change for value with a name
