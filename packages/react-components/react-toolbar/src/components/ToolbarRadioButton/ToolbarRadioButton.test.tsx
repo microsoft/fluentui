@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { ToolbarRadio } from './ToolbarRadio';
+import { ToolbarRadioButton } from './ToolbarRadioButton';
 import { isConformant } from '../../common/isConformant';
 import { ToggleButtonProps } from '@fluentui/react-button';
 
-describe('ToolbarRadio', () => {
+describe('ToolbarRadioButton', () => {
   isConformant({
-    Component: ToolbarRadio as React.FunctionComponent<ToggleButtonProps>,
-    displayName: 'ToolbarRadio',
+    Component: ToolbarRadioButton as React.FunctionComponent<ToggleButtonProps>,
+    displayName: 'ToolbarRadioButton',
     disabledTests: ['component-has-static-classnames-object'],
   });
 
@@ -15,9 +15,9 @@ describe('ToolbarRadio', () => {
 
   it('renders a default state', () => {
     const result = render(
-      <ToolbarRadio name="name" value="value">
+      <ToolbarRadioButton name="name" value="value">
         Default ToolbarRadio
-      </ToolbarRadio>,
+      </ToolbarRadioButton>,
     );
     expect(result.container).toMatchSnapshot();
   });

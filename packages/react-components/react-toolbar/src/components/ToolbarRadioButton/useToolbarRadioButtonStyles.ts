@@ -1,7 +1,7 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
-import { ToolbarRadioState } from './ToolbarRadio.types';
+import { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
 
 const useBaseStyles = makeStyles({
   selected: {
@@ -10,9 +10,9 @@ const useBaseStyles = makeStyles({
 });
 
 /**
- * Apply styling to the ToolbarToggleButton slots based on the state
+ * Apply styling to the ToolbarRadioButton slots based on the state
  */
-export const useToolbarRadioStyles_unstable = (state: ToolbarRadioState) => {
+export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState) => {
   useToggleButtonStyles_unstable(state);
   const toggleButtonStyles = useBaseStyles();
 

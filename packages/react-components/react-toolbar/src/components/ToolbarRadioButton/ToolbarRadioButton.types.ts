@@ -2,9 +2,9 @@ import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { ToggleButtonProps, ButtonSlots, ToggleButtonState } from '@fluentui/react-button';
 
 /**
- * ToolbarToggleButton Props
+ * ToolbarRadioButton Props
  */
-export type ToolbarRadioProps = ComponentProps<ButtonSlots> &
+export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> &
   Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
     name: string;
@@ -12,9 +12,9 @@ export type ToolbarRadioProps = ComponentProps<ButtonSlots> &
   };
 
 /**
- * State used in rendering ToolbarToggleButton
+ * State used in rendering ToolbarRadioButton
  */
-export type ToolbarRadioState = ComponentState<Partial<ButtonSlots>> &
+export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> &
   ToggleButtonState &
   Required<Pick<ToggleButtonProps, 'checked'>> &
-  Pick<ToolbarRadioProps, 'name' | 'value'>;
+  Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
