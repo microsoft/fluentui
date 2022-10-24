@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Change version back to beta.",
+  "packageName": "@fluentui/react-persona",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
