@@ -24,8 +24,8 @@ Fluent UI React Northstar has been superseded by Fluent UI React Components v9. 
 - [Issues](#issues)
 - [Documentation and usage examples](#documentation-and-usage-examples)
 - [FAQs](#faqs)
-  - [Why the move?](#why-the-move)
-  - [Why the separate folder?](#why-the-separate-folder)
+  - [What is the future of Fluent UI React Northstar?](#what-is-the-future-of-fluent-ui-react-northstar)
+  - [How can we migrate to Fluent UI React Components v9?](#how-can-we-migrate-to-fluent-ui-react-components-v9)
   - [What's happening with Teams support?](#whats-happening-with-teams-support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
