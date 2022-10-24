@@ -45,7 +45,7 @@ function App() {
 - Determinate Progress
   - The determinate form of the Progress component that incrementally loads from 0% to 100%
 - Error/success
-  - The validationState prop can be set to "error" or "success" to make the bar red or green, respectively.
+  - The validationState prop can be set to "error", "warning", or "success" to make the bar red, orange, or green, respectively.
   - The prop name was chosen to align with the Field prop of the same name, allowing ProgressField to have the same API as other fields.
 
 #### Adding Label and Description with ProgressField
