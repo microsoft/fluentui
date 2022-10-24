@@ -4,7 +4,11 @@
 
 This is the home for `@fluentui/react-northstar` and related packages which were migrated from the [`microsoft/fluent-ui-react` repo][1].
 
-> Fluent UI React Northstar has been superseded by Fluent UI React Components v9. For more details about migration to Fluent UI React Components v9, see [Migration documentation][5].
+**Status**
+
+Fluent UI React Northstar has been superseded by Fluent UI React Components v9. For more details about migration to Fluent UI React Components v9, see [Migration documentation][5].
+
+**Versioning**
 
 > Since the `@fluentui/react-northstar` packages are on version 0.x, note that:
 >
