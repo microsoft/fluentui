@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { ProgressState, ProgressSlots } from './Progress.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -7,19 +7,11 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const progressClassNames: SlotClassNames<ProgressSlots> = {
   root: 'fui-Progress',
   bar: 'fui-Progress__bar',
-  track: 'fui-Progress__track',
-  label: 'fui-Progress__label',
-  description: 'fui-Progress__description',
 };
 
 // If the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios.
 const ZERO_THRESHOLD = 0.01;
-
-// Internal CSS vars
-export const progressCssVars = {
-  percentageCssVar: '--fui-Progress--percentage',
-};
 
 const barThicknessValues = {
   medium: '2px',
@@ -34,37 +26,40 @@ const indeterminateProgress = {
     left: '100%',
   },
 };
+const indeterminateProgressRTL = {
+  '100%': {
+    right: '-100%',
+  },
+  '0%': {
+    right: '100%',
+  },
+};
 
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
   root: {
-    display: 'grid',
-    rowGap: '8px',
+    display: 'block',
+    backgroundColor: tokens.colorNeutralBackground6,
+    justifySelf: 'stretch',
     ...shorthands.overflow('hidden'),
-  },
-});
 
-/**
- * Styles for the title
- */
-const useLabelStyles = makeStyles({
-  base: {
-    gridRowStart: '1',
-    ...typographyStyles.body1,
-    color: tokens.colorNeutralForeground1,
+    '@media screen and (forced-colors: active)': {
+      ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
+    },
   },
-});
-
-/**
- * Styles for the description
- */
-const useDescriptionStyles = makeStyles({
-  base: {
-    gridRowStart: '3',
-    ...typographyStyles.caption1,
-    color: tokens.colorNeutralForeground2,
+  rounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  rectangular: {
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  },
+  medium: {
+    height: barThicknessValues.medium,
+  },
+  large: {
+    height: barThicknessValues.large,
   },
 });
 
@@ -73,22 +68,18 @@ const useDescriptionStyles = makeStyles({
  */
 const useBarStyles = makeStyles({
   base: {
-    gridColumnStart: '1',
-    gridRowStart: '2',
     backgroundColor: tokens.colorCompoundBrandBackground,
 
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'Highlight',
     },
+    ...shorthands.borderRadius('inherit'),
   },
   medium: {
     height: barThicknessValues.medium,
   },
   large: {
     height: barThicknessValues.large,
-  },
-  determinate: {
-    width: `var(${progressCssVars.percentageCssVar})`,
   },
   nonZeroDeterminate: {
     transitionProperty: 'width',
@@ -101,7 +92,7 @@ const useBarStyles = makeStyles({
     backgroundImage: `linear-gradient(
       to right,
       ${tokens.colorNeutralBackground6} 0%,
-      ${tokens.colorCompoundBrandBackground} 50%,
+      ${tokens.colorTransparentBackground} 50%,
       ${tokens.colorNeutralBackground6} 100%
     )`,
     animationName: indeterminateProgress,
@@ -110,25 +101,17 @@ const useBarStyles = makeStyles({
   },
 
   rtl: {
-    animationDirection: 'reverse',
+    animationName: indeterminateProgressRTL,
   },
-});
 
-const useTrackStyles = makeStyles({
-  base: {
-    gridRowStart: '2',
-    gridColumnStart: '1',
-    backgroundColor: tokens.colorNeutralBackground6,
-
-    '@media screen and (forced-colors: active)': {
-      ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
-    },
+  error: {
+    backgroundColor: tokens.colorPaletteRedForeground1,
   },
-  medium: {
-    height: barThicknessValues.medium,
+  warning: {
+    backgroundColor: tokens.colorPaletteDarkOrangeForeground1,
   },
-  large: {
-    height: barThicknessValues.large,
+  success: {
+    backgroundColor: tokens.colorPaletteGreenForeground1,
   },
 });
 
@@ -136,53 +119,35 @@ const useTrackStyles = makeStyles({
  * Apply styling to the Progress slots based on the state
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
-  const { indeterminate, thickness, percentComplete } = state;
+  const { max, shape, thickness, validationState, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
-  const trackStyles = useTrackStyles();
-  const labelStyles = useLabelStyles();
-  const descriptionStyles = useDescriptionStyles();
   const { dir } = useFluent();
 
-  state.root.className = mergeClasses(progressClassNames.root, rootStyles.root, state.root.className);
+  state.root.className = mergeClasses(
+    progressClassNames.root,
+    rootStyles.root,
+    rootStyles[shape],
+    rootStyles[thickness],
+    state.root.className,
+  );
 
   if (state.bar) {
     state.bar.className = mergeClasses(
       progressClassNames.bar,
       barStyles.base,
-      indeterminate && barStyles.indeterminate,
-      indeterminate && dir === 'rtl' && barStyles.rtl,
+      value === undefined && barStyles.indeterminate,
+      value === undefined && dir === 'rtl' && barStyles.rtl,
       barStyles[thickness],
-      !indeterminate && barStyles.determinate,
-      !indeterminate && percentComplete > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
+      value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
+      validationState && barStyles[validationState],
       state.bar.className,
     );
   }
 
-  if (state.track) {
-    state.track.className = mergeClasses(
-      progressClassNames.track,
-      trackStyles.base,
-      trackStyles[thickness],
-      state.track.className,
-    );
-  }
-
-  if (state.label) {
-    state.label.className = mergeClasses(progressClassNames.label, labelStyles.base, state.label.className);
-  }
-
-  if (state.description) {
-    state.description.className = mergeClasses(
-      progressClassNames.description,
-      descriptionStyles.base,
-      state.description.className,
-    );
-  }
-
-  if (state.bar && !indeterminate) {
+  if (state.bar && value !== undefined) {
     state.bar.style = {
-      [progressCssVars.percentageCssVar]: Math.min(100, Math.max(0, percentComplete)) + '%',
+      width: Math.min(100, Math.max(0, (value / max) * 100)) + '%',
       ...state.bar.style,
     };
   }

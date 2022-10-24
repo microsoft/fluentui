@@ -5,12 +5,11 @@ import type { MenuButtonProps } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const EventReminderAccessibilityScenario: React.FunctionComponent = () => {
+export const EventReminderSplitButton: React.FunctionComponent = () => {
   const [statusText, setStatusText] = React.useState<string | undefined>(undefined);
-  const statusRef = React.useRef<HTMLParagraphElement>(null);
 
   const focusStatus = () => {
-    statusRef.current!.focus();
+    document.getElementById('statusText')?.focus();
   };
 
   const onDismissButtonClick = () => {
@@ -31,6 +30,7 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
 
   return (
     <Scenario pageTitle="Event reminder split button">
+      <h1>Event reminder</h1>
       {!statusText && (
         <>
           <p>Your meeting starts in 10 minutes.</p>
@@ -85,14 +85,9 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
           </Menu>
         </>
       )}
-      <div ref={statusRef} tabIndex={0}>
+      <div id="statusText" tabIndex={-1}>
         {statusText && <p>{statusText}</p>}
       </div>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Event reminder split button',
-  id: 'split-button-accessibility-scenario',
 };

@@ -35,31 +35,37 @@ export const Layout = () => {
         {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupPopover>
-          {partitionedItems.overflowItems.map(name => (
-            <AvatarGroupItem name={name} key={name} />
-          ))}
-        </AvatarGroupPopover>
+        {partitionedItems.overflowItems && (
+          <AvatarGroupPopover>
+            {partitionedItems.overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
       <AvatarGroup layout="stack">
         {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupPopover>
-          {partitionedItems.overflowItems.map(name => (
-            <AvatarGroupItem name={name} key={name} />
-          ))}
-        </AvatarGroupPopover>
+        {partitionedItems.overflowItems && (
+          <AvatarGroupPopover>
+            {partitionedItems.overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
       <AvatarGroup layout="pie">
         {piePartitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupPopover>
-          {piePartitionedItems.overflowItems.map(name => (
-            <AvatarGroupItem name={name} key={name} />
-          ))}
-        </AvatarGroupPopover>
+        {piePartitionedItems.overflowItems && (
+          <AvatarGroupPopover>
+            {piePartitionedItems.overflowItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+          </AvatarGroupPopover>
+        )}
       </AvatarGroup>
     </div>
   );

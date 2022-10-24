@@ -7,7 +7,7 @@ export {
 } from './Avatar';
 export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState, AvatarSizes } from './Avatar';
 export { getInitials, partitionAvatarGroupItems } from './utils/index';
-export type { PartitionAvatarGroupItemsOptions } from './utils/index';
+export type { PartitionAvatarGroupItems, PartitionAvatarGroupItemsOptions } from './utils/index';
 export {
   AvatarGroup,
   avatarGroupClassNames,

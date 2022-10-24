@@ -7,8 +7,11 @@ import {
   DialogContent,
   DialogBody,
   DialogActions,
-} from '@fluentui/react-dialog';
-import { Button, Input, Label, makeStyles } from '@fluentui/react-components';
+  Button,
+  Input,
+  Label,
+  makeStyles,
+} from '@fluentui/react-components';
 import story from './DialogWithForm.md';
 
 const useStyles = makeStyles({
@@ -30,7 +33,7 @@ export const WithForm = () => {
       <DialogTrigger>
         <Button>Open formulary dialog</Button>
       </DialogTrigger>
-      <DialogSurface>
+      <DialogSurface aria-describedby={undefined}>
         <form onSubmit={handleSubmit}>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>

@@ -25,7 +25,63 @@ You can import the sized icons in a similar way:
 import { AccessTime24Filled } from '@fluentui/react-icons';
 ```
 
+### List of available props
+
 Each icon also accepts `className` and `primaryFill` props for styling.
+You can also use the `bundleIcon` method to bundle a `filled` and unfilled version of an icon and this will combine them into one icon.
+
+| - Name -    | Description                                                                                                            | Default        |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- | -------------- |
+| className   | Used to style the icon                                                                                                 | -              |
+| filled      | Used to determine whether the filled or unfilled version of an icon is the default when `bundleIcon` is used `boolean` | -              |
+| primaryFill | Used to change the primary fill of the icon                                                                            | `currentColor` |
+| title       | Specifies the title attribute for the svg                                                                              | -              |
+
+### Example
+
+In this example, the `bundleIcon` method is used to combine the `regular` and `filled` versions of the `AccessTime` icons
+and toggle between them on hover.
+
+```tsx
+import * as React from 'react';
+import {
+  AccessTimeFilled,
+  AccessTimeRegular,
+  bundleIcon,
+  iconFilledClassName,
+  iconRegularClassName,
+} from '@fluentui/react-icons';
+import { makeStyles } from '@fluentui/react-components';
+
+const iconStyleProps: FluentIconsProps = {
+  primaryFill: 'purple',
+  className: 'iconClass',
+};
+
+const useIconStyles = makeStyles({
+  icon: {
+    ':hover': {
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
+    },
+  },
+});
+
+const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
+function App() {
+  const styles = useIconStyles();
+
+  return (
+    <div className={styles.icon}>
+      <AccessTime aria-label="An AccessTime icon" {...iconStyleProps} />
+    </div>
+  )
+);
+```
 
 ### Fluent icons as fonts
 

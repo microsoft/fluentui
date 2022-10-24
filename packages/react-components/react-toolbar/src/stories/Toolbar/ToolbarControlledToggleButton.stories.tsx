@@ -11,8 +11,12 @@ export const ControlledToggleButton = () => {
 
   return (
     <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
-      <ToolbarToggleButton name="group">Enable Group</ToolbarToggleButton>
-      <ToolbarToggleButton name="group">Enable Group</ToolbarToggleButton>
+      <ToolbarToggleButton name="edit" value="cut">
+        Enable Group
+      </ToolbarToggleButton>
+      <ToolbarToggleButton name="edit" value="paste">
+        Enable Group
+      </ToolbarToggleButton>
     </Toolbar>
   );
 };

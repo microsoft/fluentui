@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Migrate to new package structure.",
+  "packageName": "@fluentui/react-text",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

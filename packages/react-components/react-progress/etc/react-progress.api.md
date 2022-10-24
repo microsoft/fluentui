@@ -19,22 +19,21 @@ export const progressClassNames: SlotClassNames<ProgressSlots>;
 
 // @public
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
-    indeterminate?: boolean;
-    percentComplete?: number;
+    shape?: 'rounded' | 'rectangular';
+    value?: number;
+    max?: number;
     thickness?: 'medium' | 'large';
+    validationState?: 'success' | 'warning' | 'error';
 };
 
 // @public (undocumented)
 export type ProgressSlots = {
     root: NonNullable<Slot<'div'>>;
-    label?: Slot<'span'>;
     bar?: NonNullable<Slot<'div'>>;
-    track?: NonNullable<Slot<'div'>>;
-    description?: Slot<'span'>;
 };
 
 // @public
-export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'indeterminate' | 'percentComplete' | 'thickness'>>;
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressProps, 'value' | 'validationState'>;
 
 // @public
 export const renderProgress_unstable: (state: ProgressState) => JSX.Element;
