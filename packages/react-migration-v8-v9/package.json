@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-migration-v8-v9",
-  "version": "1.0.0-alpha.0",
-  "private": true,
-  "description": "Migration shim components for hybrid v8/v9 apps.",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Migration shim components and methods for hybrid v8/v9 applications building on Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
