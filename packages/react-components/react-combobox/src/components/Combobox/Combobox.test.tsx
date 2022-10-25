@@ -26,9 +26,9 @@ describe('Combobox', () => {
   it('renders a default state', () => {
     const result = render(
       <Combobox>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
     expect(result.container).toMatchSnapshot();
@@ -37,9 +37,9 @@ describe('Combobox', () => {
   it('renders an open listbox', () => {
     const result = render(
       <Combobox open inlinePopup>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
     expect(result.container).toMatchSnapshot();
@@ -48,9 +48,9 @@ describe('Combobox', () => {
   it('renders the popup under document.body by default', () => {
     const { container } = render(
       <Combobox open>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
     expect(container.querySelector('[role=listbox]')).toBeNull();
@@ -60,9 +60,9 @@ describe('Combobox', () => {
   it('renders the popup inline when specified', () => {
     const { container } = render(
       <Combobox open inlinePopup>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
@@ -72,9 +72,9 @@ describe('Combobox', () => {
   it('opens the popup on click', () => {
     const { getByRole } = render(
       <Combobox>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -87,9 +87,9 @@ describe('Combobox', () => {
   it('closes the popup on click with defaultOpen', () => {
     const { getByRole, queryByRole } = render(
       <Combobox defaultOpen>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -107,9 +107,9 @@ describe('Combobox', () => {
   it('opens the popup on expand icon click', () => {
     const { getByRole, getByTestId } = render(
       <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -121,9 +121,9 @@ describe('Combobox', () => {
   it('closes the popup on expand icon click', () => {
     const { getByTestId, queryByRole } = render(
       <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -136,9 +136,9 @@ describe('Combobox', () => {
   it('does not close the combobox on click with controlled open', () => {
     const { getByRole } = render(
       <Combobox open>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -152,9 +152,9 @@ describe('Combobox', () => {
   it('opens the popup on enter', () => {
     const { getByRole } = render(
       <Combobox>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -168,9 +168,9 @@ describe('Combobox', () => {
   it('opens and closes the popup with alt + arrow keys', () => {
     const { getByRole, queryByRole } = render(
       <Combobox>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -187,9 +187,9 @@ describe('Combobox', () => {
   it('closes the popup with escape', () => {
     const { queryByRole } = render(
       <Combobox defaultOpen>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -204,9 +204,9 @@ describe('Combobox', () => {
 
     const { getByRole } = render(
       <Combobox onOpenChange={onOpen}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -220,9 +220,9 @@ describe('Combobox', () => {
   it('should set defaultSelectedOptions', () => {
     const { getByTestId } = render(
       <Combobox open defaultSelectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option data-testid="green">Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option data-testid="green" label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -232,9 +232,9 @@ describe('Combobox', () => {
   it('should set multiple defaultSelectedOptions', () => {
     const { getByTestId } = render(
       <Combobox open multiselect defaultSelectedOptions={['Green', 'Red']}>
-        <Option data-testid="red">Red</Option>
-        <Option data-testid="green">Green</Option>
-        <Option data-testid="blue">Blue</Option>
+        <Option data-testid="red" label="Red" />
+        <Option data-testid="green" label="Green" />
+        <Option data-testid="blue" label="Blue" />
       </Combobox>,
     );
 
@@ -243,24 +243,51 @@ describe('Combobox', () => {
     expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('false');
   });
 
+  it('should set defaultSelectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Combobox open multiselect defaultSelectedOptions={['b', 'c']}>
+        <Option label="Red" value="a" />
+        <Option data-testid="green" label="Green" value="b" />
+        <Option data-testid="blue" label="Blue" value="c" />
+      </Combobox>,
+    );
+
+    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
+  });
+
   it('should set selectedOptions', () => {
     const { getByTestId } = render(
       <Combobox open selectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option data-testid="green">Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option data-testid="green" label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
   });
 
+  it('should set selectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Combobox open multiselect selectedOptions={['a', 'c']}>
+        <Option data-testid="red" label="Red" value="a" />
+        <Option data-testid="green" label="Green" value="b" />
+        <Option data-testid="blue" label="Blue" value="c" />
+      </Combobox>,
+    );
+
+    expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('false');
+  });
+
   it('should change defaultSelectedOptions on click', () => {
     const { getByTestId } = render(
       <Combobox open defaultSelectedOptions={['Green']}>
-        <Option data-testid="red">Red</Option>
-        <Option data-testid="green">Green</Option>
-        <Option>Blue</Option>
+        <Option data-testid="red" label="Red" />
+        <Option data-testid="green" label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -273,9 +300,9 @@ describe('Combobox', () => {
   it('selects an option on click', () => {
     const { getByTestId, getByRole } = render(
       <Combobox defaultOpen>
-        <Option data-testid="red">Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option data-testid="red" label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -287,9 +314,9 @@ describe('Combobox', () => {
   it('selects an option on enter and space', () => {
     const { getByTestId, getByRole } = render(
       <Combobox open data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -308,9 +335,9 @@ describe('Combobox', () => {
   it('does not select a disabled option with the keyboard', () => {
     const { getByTestId, getByRole } = render(
       <Combobox open data-testid="combobox">
-        <Option disabled>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" disabled />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -324,9 +351,9 @@ describe('Combobox', () => {
   it('selects an option when tabbing away from an open combobox', () => {
     const { getByRole } = render(
       <Combobox defaultOpen>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -339,9 +366,9 @@ describe('Combobox', () => {
   it('adds to selection for multiselect', () => {
     const { getByText } = render(
       <Combobox open multiselect defaultSelectedOptions={['Red']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -355,9 +382,9 @@ describe('Combobox', () => {
   it('stays open on click for multiselect', () => {
     const { getByText, getByRole } = render(
       <Combobox defaultOpen multiselect>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -369,9 +396,9 @@ describe('Combobox', () => {
   it('should respect value over selected options', () => {
     const { getByRole } = render(
       <Combobox value="foo" selectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -381,9 +408,9 @@ describe('Combobox', () => {
   it('should change defaultValue on select', () => {
     const { getByRole, getByText } = render(
       <Combobox defaultValue="foo" defaultOpen>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -395,9 +422,9 @@ describe('Combobox', () => {
   it('should not change value on select', () => {
     const { getByRole, getByText } = render(
       <Combobox value="Red" defaultOpen>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -411,9 +438,9 @@ describe('Combobox', () => {
 
     const { getByRole, getByText } = render(
       <Combobox value="Red" onOptionSelect={onOptionSelect}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -423,7 +450,30 @@ describe('Combobox', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(1);
     expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
       optionValue: 'Green',
+      optionLabel: 'Green',
       selectedOptions: ['Green'],
+    });
+  });
+
+  it('calls onOptionSelect with Option value prop', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Combobox value="Red" onOptionSelect={onOptionSelect}>
+        <Option label="Red" />
+        <Option label="Green" value="test" />
+        <Option label="Blue" />
+      </Combobox>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
+      optionValue: 'test',
+      optionLabel: 'Green',
+      selectedOptions: ['test'],
     });
   });
 
@@ -432,9 +482,9 @@ describe('Combobox', () => {
 
     const { getByRole, getByText } = render(
       <Combobox value="Red" onOptionSelect={onOptionSelect} multiselect>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -445,10 +495,12 @@ describe('Combobox', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(2);
     expect(onOptionSelect).toHaveBeenNthCalledWith(1, expect.anything(), {
       optionValue: 'Green',
+      optionLabel: 'Green',
       selectedOptions: ['Green'],
     });
     expect(onOptionSelect).toHaveBeenNthCalledWith(2, expect.anything(), {
       optionValue: 'Blue',
+      optionLabel: 'Blue',
       selectedOptions: ['Green', 'Blue'],
     });
   });
@@ -457,9 +509,9 @@ describe('Combobox', () => {
   it('should set active option on click', () => {
     const { getByTestId } = render(
       <Combobox open data-testid="combobox">
-        <Option>Red</Option>
-        <Option data-testid="clicked">Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option data-testid="clicked" label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -472,9 +524,9 @@ describe('Combobox', () => {
   it('should move active option with arrow down', () => {
     const { getByTestId, getByText } = render(
       <Combobox defaultOpen data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -489,9 +541,9 @@ describe('Combobox', () => {
   it('should move active option with arrow up', () => {
     const { getByTestId, getByText } = render(
       <Combobox open data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -506,9 +558,9 @@ describe('Combobox', () => {
   it('should move active option based on typing', () => {
     const { getByTestId, getByText } = render(
       <Combobox open data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -521,10 +573,10 @@ describe('Combobox', () => {
   it('should not move active option based on typing if the current option matches', () => {
     const { getByTestId, getByText } = render(
       <Combobox open data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Gold</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Gold" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -540,9 +592,9 @@ describe('Combobox', () => {
   it('should allow text input', () => {
     const { getByRole, getByTestId } = render(
       <Combobox open data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -555,9 +607,9 @@ describe('Combobox', () => {
   it('should revert value to matching selection on blur', () => {
     const { getByRole, getByTestId, getByText } = render(
       <Combobox defaultOpen data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -573,9 +625,9 @@ describe('Combobox', () => {
   it('should clear selection with an empty/unmatching string', () => {
     const { getByRole, getByTestId, getByText } = render(
       <Combobox open data-testid="combobox">
-        <Option>Red</Option>
-        <Option data-testid="green">Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option data-testid="green" label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -592,9 +644,9 @@ describe('Combobox', () => {
   it('should revert value to the empty string on blur when collapsed with no selected options', () => {
     const { getByRole } = render(
       <Combobox data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -608,9 +660,9 @@ describe('Combobox', () => {
   it('selects an option on blur from a closed combobox when the full value is typed', () => {
     const { getByRole } = render(
       <Combobox data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 
@@ -624,9 +676,9 @@ describe('Combobox', () => {
   it('should not revert value on blur with freeform', () => {
     const { getByRole, getByTestId, getByText } = render(
       <Combobox defaultOpen freeform data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Combobox>,
     );
 

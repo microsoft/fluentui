@@ -13,9 +13,9 @@ describe('Listbox', () => {
   it('renders a default state', () => {
     const result = render(
       <Listbox>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
     expect(result.container).toMatchSnapshot();
@@ -24,9 +24,9 @@ describe('Listbox', () => {
   it('renders with a selected option', () => {
     const result = render(
       <Listbox selectedOptions={['Red']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
     expect(result.container).toMatchSnapshot();
@@ -36,9 +36,9 @@ describe('Listbox', () => {
   it('should set active option on click', () => {
     const { getByTestId } = render(
       <Listbox data-testid="listbox">
-        <Option>Red</Option>
-        <Option data-testid="clicked">Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option data-testid="clicked" label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -51,9 +51,9 @@ describe('Listbox', () => {
   it('should move active option with arrow down', () => {
     const { getByTestId, getByText } = render(
       <Listbox data-testid="listbox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -69,9 +69,9 @@ describe('Listbox', () => {
   it('should move active option with arrow up', () => {
     const { getByTestId, getByText } = render(
       <Listbox data-testid="listbox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -86,9 +86,9 @@ describe('Listbox', () => {
   it('should not wrap from bottom to top with arrow keys', () => {
     const { getByTestId, getByText } = render(
       <Listbox data-testid="listbox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -107,9 +107,9 @@ describe('Listbox', () => {
   it('should move active option with pageDown', () => {
     const { getByTestId, getByText } = render(
       <Listbox data-testid="listbox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -122,9 +122,9 @@ describe('Listbox', () => {
   it('should move active option with pageUp', () => {
     const { getByTestId, getByText } = render(
       <Listbox data-testid="listbox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -140,9 +140,9 @@ describe('Listbox', () => {
   it('should set defaultSelectedOptions', () => {
     const { getByText } = render(
       <Listbox defaultSelectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -152,9 +152,9 @@ describe('Listbox', () => {
   it('should set multiple defaultSelectedOptions', () => {
     const { getByText } = render(
       <Listbox multiselect defaultSelectedOptions={['Green', 'Red']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -166,9 +166,9 @@ describe('Listbox', () => {
   it('should set selectedOptions', () => {
     const { getByText } = render(
       <Listbox selectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -178,9 +178,9 @@ describe('Listbox', () => {
   it('should change defaultSelectedOptions on click', () => {
     const { getByText } = render(
       <Listbox defaultSelectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -193,9 +193,9 @@ describe('Listbox', () => {
   it('should add to defaultSelectedOptions on click on multiselect', () => {
     const { getByText } = render(
       <Listbox multiselect defaultSelectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -210,16 +210,20 @@ describe('Listbox', () => {
 
     const { getByText } = render(
       <Listbox onOptionSelect={onOptionSelect}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
     fireEvent.click(getByText('Red'));
 
     expect(onOptionSelect).toHaveBeenCalled();
-    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({
+      optionValue: 'Red',
+      optionLabel: 'Red',
+      selectedOptions: ['Red'],
+    });
   });
 
   it('should not change selection with selectedOptions', () => {
@@ -227,9 +231,9 @@ describe('Listbox', () => {
 
     const { getByText } = render(
       <Listbox onOptionSelect={onOptionSelect} selectedOptions={['Green']}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -239,7 +243,11 @@ describe('Listbox', () => {
 
     expect(option.getAttribute('aria-selected')).toEqual('false');
     expect(onOptionSelect).toHaveBeenCalled();
-    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({
+      optionValue: 'Red',
+      optionLabel: 'Red',
+      selectedOptions: ['Red'],
+    });
   });
 
   it('should select option with the enter key', () => {
@@ -247,9 +255,9 @@ describe('Listbox', () => {
 
     const { getByTestId } = render(
       <Listbox data-testid="listbox" onOptionSelect={onOptionSelect}>
-        <Option data-testid="red">Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option data-testid="red" label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 
@@ -266,9 +274,9 @@ describe('Listbox', () => {
 
     const { getByTestId } = render(
       <Listbox data-testid="listbox" onOptionSelect={onOptionSelect}>
-        <Option data-testid="red">Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option data-testid="red" label="Red" />
+        <Option label="Green" />
+        <Option label="Blue" />
       </Listbox>,
     );
 

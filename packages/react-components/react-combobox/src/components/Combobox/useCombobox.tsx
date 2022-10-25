@@ -76,7 +76,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       return;
     }
 
-    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString) === 0;
+    const matcher = (optionLabel: string) => optionLabel.toLowerCase().indexOf(searchString) === 0;
     const matches = getOptionsMatchingLabel(matcher);
 
     // return first matching option after the current active option, looping back to the top
