@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 20 Oct 2022 08:39:58 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.2.4)
+
+Tue, 25 Oct 2022 00:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.2.3..@fluentui/react-avatar_v9.2.4)
+
+### Patches
+
+- fix: Add undefined option to overflowItems in partitionAvatarGroupItems. ([PR #25310](https://github.com/microsoft/fluentui/pull/25310) by esteban.230@hotmail.com)
+- Bump @fluentui/react-badge to v9.0.10 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
 
 ## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.2.3)
 

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:32 GMT",
+      "tag": "@fluentui/react-input_v9.2.3",
+      "version": "9.2.3",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.4",
+            "commit": "eef12b9ae58b64ff68576dc2d865b601e46c85b9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:35 GMT",
       "tag": "@fluentui/react-input_v9.2.2",
       "version": "9.2.2",

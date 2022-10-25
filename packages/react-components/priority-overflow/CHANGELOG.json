@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:27 GMT",
+      "tag": "@fluentui/priority-overflow_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Oct 2022 11:02:41 GMT",
       "tag": "@fluentui/priority-overflow_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",

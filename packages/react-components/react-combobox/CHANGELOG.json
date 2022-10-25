@@ -2,6 +2,27 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:29 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.13",
+      "version": "9.0.0-beta.13",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d9dda6aafb1571b08e5cc0ba3437a24a20c694f6",
+            "comment": "feat: add full Dropdown component accessibility spec"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:30 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.13",
       "version": "9.0.0-beta.13",

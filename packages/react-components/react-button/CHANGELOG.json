@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:29 GMT",
+      "tag": "@fluentui/react-button_v9.1.6",
+      "version": "9.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "619b625d628ba1b30398052d7dc6b8110aff2c80",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:27 GMT",
       "tag": "@fluentui/react-button_v9.1.5",
       "version": "9.1.5",

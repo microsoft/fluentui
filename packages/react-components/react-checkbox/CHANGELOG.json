@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:29 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.10",
+      "version": "9.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "11156f964c91c90f778a08e1d7ec650104756f80",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:29 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.9",
       "version": "9.0.9",

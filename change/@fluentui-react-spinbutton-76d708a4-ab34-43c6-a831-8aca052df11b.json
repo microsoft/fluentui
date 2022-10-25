@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: updates internal SpinButton padding",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

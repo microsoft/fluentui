@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Thu, 20 Oct 2022 08:39:46 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.6)
+
+Tue, 25 Oct 2022 00:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.5..@fluentui/react-spinbutton_v9.0.6)
+
+### Patches
+
+- feat: updates internal SpinButton padding ([PR #25286](https://github.com/microsoft/fluentui/pull/25286) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-input to v9.2.3 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.5)
 
