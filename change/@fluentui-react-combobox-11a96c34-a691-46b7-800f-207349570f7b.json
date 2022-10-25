@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": " feat: update Option value to be a non-display value, and add required Option label prop",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
