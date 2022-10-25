@@ -3,13 +3,24 @@ import { render } from '@testing-library/react';
 import { Card } from './Card';
 import { isConformant } from '../../testing/isConformant';
 import { CardProps } from './Card.types';
+import { cardClassNames } from './useCardStyles';
 
 describe('Card', () => {
   isConformant<CardProps>({
     Component: Card,
     displayName: 'Card',
-    requiredProps: {
-      selected: true,
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            select: 'Test Select',
+          },
+          expectedClassNames: {
+            root: cardClassNames.root,
+            select: cardClassNames.select,
+          },
+        },
+      ],
     },
     disabledTests: ['component-has-static-classname-exported'],
   });
