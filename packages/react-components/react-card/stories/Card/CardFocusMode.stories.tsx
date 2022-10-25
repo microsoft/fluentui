@@ -100,7 +100,8 @@ export const FocusMode = () => {
       <section>
         <Header
           title="'off' (Default)"
-          description="The contents might still be focusable, but the Card won't manage the focus of its contents or be focusable."
+          description="The contents might still be focusable, but the Card won't manage the focus of its contents or be
+          focusable."
         />
         <CardExample />
       </section>
@@ -108,7 +109,8 @@ export const FocusMode = () => {
       <section>
         <Header
           title="'no-tab'"
-          description="The Card will be focusable and trap the focus. You can use Tab to navigate between the contents and escaping focus only by pressing the Esc key."
+          description="The Card will be focusable and trap the focus. You can use Tab to navigate between the contents
+          and escaping focus only by pressing the Esc key."
         />
         <CardExample focusMode="no-tab" />
       </section>
@@ -124,7 +126,8 @@ export const FocusMode = () => {
       <section>
         <Header
           title="'tab-only'"
-          description="The Card will not trap focus but will still be focusable and allow Tab navigation of its contents."
+          description="The Card will not trap focus but will still be focusable and allow Tab navigation of its
+          contents."
         />
         <CardExample focusMode="tab-only" />
       </section>

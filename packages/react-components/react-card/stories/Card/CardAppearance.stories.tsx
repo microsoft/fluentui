@@ -106,7 +106,8 @@ export const Appearance = () => {
       <section>
         <Header
           title="Default"
-          description="This is the default style to use for cards. Use this style variant for most of your card designs."
+          description="This is the default style to use for cards. Use this style variant for most of your card
+          designs."
         />
         <CardExample />
       </section>
@@ -114,7 +115,8 @@ export const Appearance = () => {
       <section>
         <Header
           title="Filled Alternative"
-          description="Use if your card is being displayed on a lighter gray or white surface. This ensures that you have adequate contrast between the card surface and the background of the application."
+          description="Use if your card is being displayed on a lighter gray or white surface. This ensures that you
+          have adequate contrast between the card surface and the background of the application."
         />
         <CardExample appearance="filled-alternative" />
       </section>
@@ -122,7 +124,8 @@ export const Appearance = () => {
       <section>
         <Header
           title="Outline"
-          description="Use when you don't want a filled background color but a discernable outline (border) on the card."
+          description="Use when you don't want a filled background color but a discernable outline (border) on the
+          card."
         />
         <CardExample appearance="outline" />
       </section>
@@ -130,7 +133,8 @@ export const Appearance = () => {
       <section>
         <Header
           title="Subtle"
-          description="This variant doesn't have a background or border for the card container. However, it does include interaction states that display a visible footprint when interacting with the card item."
+          description="This variant doesn't have a background or border for the card container. However, it does include
+          interaction states that display a visible footprint when interacting with the card item."
         />
         <CardExample appearance="subtle" />
       </section>

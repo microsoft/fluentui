@@ -32,10 +32,10 @@ const CardSample = (props: CardProps) => {
           plum.
         </div>
         <CardFooter>
-          <Button id="open-button" onClick={() => console.log('open-button clicked')} appearance="primary">
+          <Button id="open-button" appearance="primary">
             Open
           </Button>
-          <Button id="close-button" onClick={() => console.log('close-button clicked')} appearance="outline">
+          <Button id="close-button" appearance="outline">
             Close
           </Button>
         </CardFooter>
@@ -281,7 +281,13 @@ describe('Card', () => {
     });
 
     it('should have internal checkbox when selectable - onCardSelect prop', () => {
-      mountFluent(<CardSample onCardSelect={() => ({})} />);
+      const Example = () => {
+        const onCardSelect = React.useCallback(() => null, []);
+
+        return <CardSample onCardSelect={onCardSelect} />;
+      };
+
+      mountFluent(<Example />);
 
       cy.get(`.${cardClassNames.select}`).should('exist');
     });
@@ -347,10 +353,12 @@ describe('Card', () => {
       const Example = () => {
         const [checked, setChecked] = React.useState(false);
 
+        const onCardSelect = React.useCallback((event, { selected }) => setChecked(selected), []);
+
         return (
           <CardSample
             select={<input type="checkbox" className="custom-select-slot" checked={checked} />}
-            onCardSelect={(event, { selected }) => setChecked(selected)}
+            onCardSelect={onCardSelect}
           />
         );
       };

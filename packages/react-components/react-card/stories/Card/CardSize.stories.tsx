@@ -109,7 +109,8 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: `Size options are mainly to provide variety, and consistency when using cards for different usages. It relates to padding and border-radius and not so much the actual dimensions of the card.`,
+      story: `Size options are mainly to provide variety, and consistency when using cards for different usages. It
+      relates to padding and border-radius and not so much the actual dimensions of the card.`,
     },
   },
 };
