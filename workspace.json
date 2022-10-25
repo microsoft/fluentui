@@ -898,6 +898,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/virtualizer": {
+      "root": "packages/react-components/virtualizer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/virtualizer/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application",
