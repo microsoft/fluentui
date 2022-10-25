@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 20 Oct 2022 08:39:27 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.6)
+
+Tue, 25 Oct 2022 00:35:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.1.5..@fluentui/react-button_v9.1.6)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25336](https://github.com/microsoft/fluentui/pull/25336) by tristan.watanabe@gmail.com)
 
 ## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.5)
 

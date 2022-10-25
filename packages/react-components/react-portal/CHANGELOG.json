@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:34 GMT",
+      "tag": "@fluentui/react-portal_v9.0.8",
+      "version": "9.0.8",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:40 GMT",
       "tag": "@fluentui/react-portal_v9.0.8",
       "version": "9.0.8",

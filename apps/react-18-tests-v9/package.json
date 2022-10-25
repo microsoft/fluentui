@@ -21,7 +21,7 @@
     "swc-loader": "^0.2.3"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.1.5",
+    "@fluentui/react-button": "^9.1.6",
     "@fluentui/react-provider": "^9.1.5",
     "@fluentui/react-theme": "^9.1.1",
     "react": "18.2.0",

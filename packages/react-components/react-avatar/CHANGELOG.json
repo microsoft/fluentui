@@ -2,6 +2,27 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:28 GMT",
+      "tag": "@fluentui/react-avatar_v9.2.4",
+      "version": "9.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "28364be921fa9e04eb472a069416b61b30da8652",
+            "comment": "fix: Add undefined option to overflowItems in partitionAvatarGroupItems."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.10",
+            "commit": "eef12b9ae58b64ff68576dc2d865b601e46c85b9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:58 GMT",
       "tag": "@fluentui/react-avatar_v9.2.3",
       "version": "9.2.3",

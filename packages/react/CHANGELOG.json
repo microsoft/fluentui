@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 07:43:18 GMT",
+      "tag": "@fluentui/react_v8.98.7",
+      "version": "8.98.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f39b79696f9b5eb150d07b937a6bb58be6be0e95",
+            "comment": "fix: DetailsList is still tabbable when header is not visible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Oct 2022 07:45:24 GMT",
       "tag": "@fluentui/react_v8.98.6",
       "version": "8.98.6",

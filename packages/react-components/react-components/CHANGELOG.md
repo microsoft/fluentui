@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 20 Oct 2022 08:39:25 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.3)
+
+Tue, 25 Oct 2022 00:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.2..@fluentui/react-components_v9.5.3)
+
+### Patches
+
+- `@fluentui/react-avatar`
+  - fix: Add undefined option to overflowItems in partitionAvatarGroupItems. ([PR #25310](https://github.com/microsoft/fluentui/pull/25310) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - chore: Migrate to new package structure. ([PR #25335](https://github.com/microsoft/fluentui/pull/25335) by tristan.watanabe@gmail.com)
+- `@fluentui/react-button`
+  - chore: Migrate to new package structure. ([PR #25336](https://github.com/microsoft/fluentui/pull/25336) by tristan.watanabe@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: Migrate to new package structure. ([PR #25337](https://github.com/microsoft/fluentui/pull/25337) by tristan.watanabe@gmail.com)
+- `@fluentui/react-components`
+  - feat: add react-progress to react-components/unstable ([PR #25226](https://github.com/microsoft/fluentui/pull/25226) by ololubek@microsoft.com)
+  - chore: Export missing partitionAvatarGroupItems in unstable. ([PR #25310](https://github.com/microsoft/fluentui/pull/25310) by esteban.230@hotmail.com)
+  - chore: Updating react-persona's version. ([PR #25357](https://github.com/microsoft/fluentui/pull/25357) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - bugfix: adds cursor pointer style to dialog close button ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-image`
+  - chore: Migrate to new package structure. ([PR #25230](https://github.com/microsoft/fluentui/pull/25230) by tristan.watanabe@gmail.com)
+- `@fluentui/react-spinbutton`
+  - feat: updates internal SpinButton padding ([PR #25286](https://github.com/microsoft/fluentui/pull/25286) by seanmonahan@microsoft.com)
+- `@fluentui/react-text`
+  - chore: Migrate to new package structure. ([PR #25231](https://github.com/microsoft/fluentui/pull/25231) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- `@fluentui/react-components`
+  - Add uncomplete Input scenario ([PR #21651](https://github.com/microsoft/fluentui/pull/21651) by adam.samec@gmail.com)
+- `@fluentui/react-field`
+  - feat: Add support for validationState to ProgressField ([PR #25253](https://github.com/microsoft/fluentui/pull/25253) by behowell@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: Change version back to beta. ([PR #25357](https://github.com/microsoft/fluentui/pull/25357) by esteban.230@hotmail.com)
+- `@fluentui/react-progress`
+  - feat: Add validationState to Progress, to make the bar red or green ([PR #25253](https://github.com/microsoft/fluentui/pull/25253) by behowell@microsoft.com)
+  - feat: add react-progress to react-components/unstable ([PR #25226](https://github.com/microsoft/fluentui/pull/25226) by ololubek@microsoft.com)
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.2)
 

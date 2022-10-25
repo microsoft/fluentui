@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Thu, 20 Oct 2022 08:39:32 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.3)
+
+Tue, 25 Oct 2022 00:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.2..@fluentui/react-dialog_v9.0.3)
+
+### Patches
+
+- bugfix: adds cursor pointer style to dialog close button ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.2)
 

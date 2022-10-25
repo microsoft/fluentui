@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 24 Oct 2022 07:45:24 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 07:43:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.98.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.7)
+
+Tue, 25 Oct 2022 07:43:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.6..@fluentui/react_v8.98.7)
+
+### Patches
+
+- fix: DetailsList is still tabbable when header is not visible ([PR #25342](https://github.com/microsoft/fluentui/pull/25342) by sarah.higley@microsoft.com)
 
 ## [8.98.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.6)
 
