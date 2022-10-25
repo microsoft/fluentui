@@ -395,6 +395,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
+        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         isCalloutVisible:
           this.state.isLegendSelected === false ||
           (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
@@ -433,6 +434,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       if (obj.index === point.legend! && refArrayIndexNumber === index) {
         this.setState({
           refSelected: obj.refElement,
+          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
           isCalloutVisible:
             this.state.isLegendSelected === false ||
             (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),

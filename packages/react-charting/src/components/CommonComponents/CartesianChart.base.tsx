@@ -318,8 +318,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {this.props.legendBars}
           </div>
         )}
+        {/** The callout is used for narration, so keep it mounted on the DOM */}
         <Callout
           hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+          /** Keep the callout updated with details of focused/hovered chart element */
           shouldUpdateWhenHidden={true}
           {...calloutProps}
         >

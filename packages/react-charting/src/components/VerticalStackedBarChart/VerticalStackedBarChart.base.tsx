@@ -576,6 +576,10 @@ export class VerticalStackedBarChartBase extends React.Component<
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected,
+        /**
+         * Show the callout if highlighted bar is focused/hovered
+         * and Hide it if unhighlighted bar is focused/hovered
+         */
         isCalloutVisible:
           this.state.isLegendSelected === false ||
           (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),

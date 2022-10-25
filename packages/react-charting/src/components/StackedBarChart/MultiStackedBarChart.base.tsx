@@ -110,6 +110,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
+          /** Keep the callout updated with details of focused/hovered bar */
           shouldUpdateWhenHidden={true}
           {...this.props.calloutProps!}
           {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
@@ -273,6 +274,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (obj.legendText === point.legend!) {
         this.setState({
           refSelected: obj.refElement,
+          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
           isCalloutVisible:
             this.state.isLegendSelected === false ||
             (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
@@ -423,6 +425,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
+        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         isCalloutVisible:
           this.state.isLegendSelected === false ||
           (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
