@@ -575,7 +575,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
         } else if (
           // eslint-disable-next-line deprecation/deprecation
           (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) &&
-          (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT')
+          (target.tagName === 'BUTTON' ||
+            target.tagName === 'A' ||
+            target.tagName === 'INPUT' ||
+            target.tagName === 'SUMMARY')
         ) {
           return false;
         } else if (target === itemRoot) {
