@@ -9,8 +9,7 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
 
 const items = [
   {
@@ -58,9 +57,9 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const SizeSmall = () => {
+export const SizeSmaller = () => {
   return (
-    <Table size="small">
+    <Table size="smaller">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
