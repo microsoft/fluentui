@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Migrate to new package structure.",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
