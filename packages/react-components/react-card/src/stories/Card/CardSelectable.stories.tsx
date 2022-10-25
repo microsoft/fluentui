@@ -1,32 +1,88 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
-import { SampleCard } from './SampleCard.stories';
+import { makeStyles, shorthands, Button, Caption1, Body1, tokens } from '@fluentui/react-components';
+import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-card';
+
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
+
+  return `${ASSET_URL}${asset}`;
+};
 
 const useStyles = makeStyles({
-  cardGrid: {
-    ...shorthands.margin('8px'),
-    width: '280px',
+  main: {
+    ...shorthands.gap('16px'),
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+
+  card: {
+    width: '400px',
     maxWidth: '100%',
-    display: 'inline-flex',
+    height: 'fit-content',
+  },
+
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+
+  smallRadius: {
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+  },
+
+  grayBackground: {
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+
+  logoBadge: {
+    ...shorthands.padding('5px'),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    backgroundColor: '#FFF',
+    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
   },
 });
 
-export const Selectable = () => {
+const CardExample = (props: CardProps) => {
   const styles = useStyles();
-  const [checked1, setChecked1] = React.useState(false);
-  const [checked2, setChecked2] = React.useState(false);
 
   return (
-    <div>
-      <SampleCard
-        className={styles.cardGrid}
-        selected={checked1}
-        onCardSelect={(event, { selected }) => setChecked1(selected)}
+    <Card className={styles.card} {...props}>
+      <CardPreview
+        className={styles.grayBackground}
+        logo={<img className={styles.logoBadge} alt="app logo" src={resolveAsset('logo3.svg')} />}
+      >
+        <img alt="presentation preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
+      </CardPreview>
+
+      <CardHeader
+        header={<Body1 weight="semibold">iOS App Prototype</Body1>}
+        description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
       />
-      <SampleCard
-        className={styles.cardGrid}
-        selected={checked2}
-        onCardSelect={(event, { selected }) => setChecked2(selected)}
+    </Card>
+  );
+};
+
+export const Selectable = () => {
+  const styles = useStyles();
+
+  const [selected1, setSelected1] = React.useState(false);
+  const [selected2, setSelected2] = React.useState(false);
+
+  const getCardLabel = React.useCallback((isSelected: boolean) => (isSelected ? 'Unselect card' : 'Select card'), []);
+
+  return (
+    <div className={styles.main}>
+      <CardExample
+        aria-label={getCardLabel(selected1)}
+        selected={selected1}
+        onCardSelect={(_, { selected }) => setSelected1(selected)}
+      />
+      <CardExample
+        aria-label={getCardLabel(selected2)}
+        selected={selected2}
+        onCardSelect={(_, { selected }) => setSelected2(selected)}
       />
     </div>
   );
