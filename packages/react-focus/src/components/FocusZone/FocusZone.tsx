@@ -850,7 +850,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         target.tagName === 'A' ||
         target.tagName === 'INPUT' ||
         target.tagName === 'TEXTAREA' ||
-        target.tagName === 'DETAILS'
+        target.tagName === 'SUMMARY'
       ) {
         return false;
       }

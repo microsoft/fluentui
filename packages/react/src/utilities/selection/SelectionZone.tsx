@@ -578,7 +578,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           (target.tagName === 'BUTTON' ||
             target.tagName === 'A' ||
             target.tagName === 'INPUT' ||
-            target.tagName === 'DETAILS')
+            target.tagName === 'SUMMARY')
         ) {
           return false;
         } else if (target === itemRoot) {
