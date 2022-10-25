@@ -14,9 +14,7 @@ const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: string[
   return (
     <OptionGroup label={{ style: { fontStyle: 'italic' }, ...labelSlot }}>
       {props.options.map(option => (
-        <CustomOption key={option} disabled={option === 'Ferret'}>
-          {option}
-        </CustomOption>
+        <CustomOption key={option} label={option} disabled={option === 'Ferret'} />
       ))}
     </OptionGroup>
   );

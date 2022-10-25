@@ -12,7 +12,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
   const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
+  const { getOptionAtIndex, getOptionsMatchingLabel } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -70,7 +70,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     if (open && !activeOption) {
       // if there is a selection, start at the most recently selected item
       if (selectedOptions.length > 0) {
-        const lastSelectedOption = getOptionsMatchingValue(
+        const lastSelectedOption = getOptionsMatchingLabel(
           v => v === selectedOptions[selectedOptions.length - 1],
         ).pop();
         lastSelectedOption && setActiveOption(lastSelectedOption);

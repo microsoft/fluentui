@@ -9,6 +9,7 @@ export { Default } from './DropdownDefault.stories';
 export { Appearance } from './DropdownAppearance.stories';
 export { Grouped } from './DropdownGrouped.stories';
 export { CustomOptions } from './DropdownCustomOptions.stories';
+export { ComplexOptions } from './DropdownComplexOptions.stories';
 export { Multiselect } from './DropdownMultiselect.stories';
 export { Size } from './DropdownSize.stories';
 

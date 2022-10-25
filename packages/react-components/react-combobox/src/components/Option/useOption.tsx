@@ -7,20 +7,6 @@ import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
-function getValueString(value: string | undefined, children: React.ReactNode) {
-  if (value) {
-    return value;
-  }
-
-  let valueString = '';
-  React.Children.forEach(children, child => {
-    if (typeof child === 'string') {
-      valueString += child;
-    }
-  });
-  return valueString;
-}
-
 /**
  * Create the state required to render Option.
  *
@@ -31,17 +17,19 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { disabled, value } = props;
+  const { children, disabled, label, value } = props;
   const optionRef = React.useRef<HTMLElement>(null);
-  const optionValue = getValueString(value, props.children);
+  const optionValue = value ?? label;
+  const optionChildren = children ?? label;
 
   // use the id if provided, otherwise use a generated id
   const id = useId('fluent-option', props.id);
 
   // data used for context registration & events
-  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, value: optionValue }), [
+  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, label, value: optionValue }), [
     id,
     disabled,
+    label,
     optionValue,
   ]);
 
@@ -109,6 +97,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       id,
       ...props,
       onClick,
+      children: optionChildren,
     }),
     checkIcon: resolveShorthand(props.checkIcon, {
       required: true,

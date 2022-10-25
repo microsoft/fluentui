@@ -21,7 +21,7 @@ export type ComboboxBaseProps = SelectionProps & {
   defaultOpen?: boolean;
 
   /**
-   * The default value when the combobox's value is uncontrolled
+   * The default value displayed in the trigger input or button when the combobox's value is uncontrolled
    */
   defaultValue?: string;
 

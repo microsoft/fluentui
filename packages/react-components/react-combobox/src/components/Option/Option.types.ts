@@ -18,9 +18,17 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
    */
   disabled?: boolean;
 
+  /**
+   * A string used as the option's display value if no children are present.
+   * This is used as the Dropdown button's or Combobox input's value when the option is selected,
+   * and as the comparison for type-to-find keyboard functionality.
+   */
+  label: string;
+
   /*
-   * Defines a string value for the option, used for the parent Combobox's value.
-   * Use this if the children are not a string, or you wish the value to differ from the displayed text.
+   * Defines a string value for the option, used as a unique identifier for the option.
+   * Use this to control selectedOptions, or to get the option value in the onOptionSelect callback.
+   * Defaults to `label` if not provided.
    */
   value?: string;
 };

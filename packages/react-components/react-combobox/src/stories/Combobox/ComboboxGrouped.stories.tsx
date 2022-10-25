@@ -25,14 +25,12 @@ export const Grouped = (props: Partial<ComboboxProps>) => {
       <Combobox aria-labelledby={comboId} placeholder="Select an animal" {...props}>
         <OptionGroup label="Land">
           {land.map(option => (
-            <Option key={option} disabled={option === 'Ferret'}>
-              {option}
-            </Option>
+            <Option key={option} label={option} disabled={option === 'Ferret'} />
           ))}
         </OptionGroup>
         <OptionGroup label="Sea">
           {water.map(option => (
-            <Option key={option}>{option}</Option>
+            <Option key={option} label={option} />
           ))}
         </OptionGroup>
       </Combobox>
