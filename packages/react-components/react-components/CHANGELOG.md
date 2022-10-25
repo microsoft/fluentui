@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 25 Oct 2022 00:35:26 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 22:09:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.0)
+
+Tue, 25 Oct 2022 22:09:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.3..@fluentui/react-components_v9.6.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - fix: Change react-persona to pinned version. ([PR #25367](https://github.com/microsoft/fluentui/pull/25367) by esteban.230@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - fix: Export PopoverTriggerChildProps ([PR #25159](https://github.com/microsoft/fluentui/pull/25159) by lingfangao@hotmail.com)
 
 ## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.3)
 

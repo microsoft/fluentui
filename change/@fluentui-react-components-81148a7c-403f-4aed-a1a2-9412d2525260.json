@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Export PopoverTriggerChildProps",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

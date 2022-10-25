@@ -30,7 +30,7 @@
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
     "@fluentui/react": "^8.98.7",
-    "@fluentui/react-components": "^9.5.3",
+    "@fluentui/react-components": "^9.6.0",
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.1.2",
     "@griffel/react": "^1.4.1",

@@ -2,6 +2,67 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 22:09:49 GMT",
+      "tag": "@fluentui/react-components_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "none": [
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "dba7e9c342ca32d05d49d341b3912cd79652f238",
+            "comment": "chore: remove best practices"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "9bde21168a1032d2a429939b9b2d7d3ba590726f",
+            "comment": "feat: replace ToolbarRadio implementation by usage of toggle button as radio"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "acb0fd721bd23f4d66d18a0f27abd399d3877bc4",
+            "comment": "fix: Change react-persona to pinned version."
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "025e0740b1c47bd105b9cc6277072941bf855b8c",
+            "comment": "fix: Export PopoverTriggerChildProps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:26 GMT",
       "tag": "@fluentui/react-components_v9.5.3",
       "version": "9.5.3",

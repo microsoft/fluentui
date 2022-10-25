@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 22:09:51 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.14",
+      "version": "9.0.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.6.0",
+            "commit": "7733f95a5a23ec57c4be1e2353a21fc391d8374d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:40 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.13",
       "version": "9.0.13",
