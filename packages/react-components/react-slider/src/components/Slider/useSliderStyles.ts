@@ -54,12 +54,14 @@ const useRootStyles = makeStyles({
   horizontal: {
     minWidth: '120px',
     height: `var(${thumbSizeVar})`,
+    ...shorthands.padding(0, `calc(var(${thumbSizeVar}) / 2)`),
   },
 
   vertical: {
     width: `var(${thumbSizeVar})`,
     minHeight: '120px',
     gridTemplateColumns: `var(${thumbSizeVar})`,
+    ...shorthands.padding(`calc(var(${thumbSizeVar}) / 2)`, 0),
   },
 
   enabled: {
@@ -189,7 +191,6 @@ const useThumbStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
-    transform: 'translateX(-50%)',
     '::before': {
       position: 'absolute',
       top: '0px',
@@ -208,10 +209,13 @@ const useThumbStyles = makeStyles({
     },
   },
   horizontal: {
+    transform: 'translate(-50%, -50%)',
+    top: '50%',
     left: `var(${sliderProgressVar})`,
   },
   vertical: {
-    transform: 'translateY(50%)',
+    transform: 'translate(-50%, 50%)',
+    left: '50%',
     bottom: `var(${sliderProgressVar})`,
   },
 });

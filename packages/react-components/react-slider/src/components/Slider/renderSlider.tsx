@@ -11,8 +11,9 @@ export const renderSlider_unstable = (state: SliderState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.input {...slotProps.input} />
-      <slots.rail {...slotProps.rail} />
-      <slots.thumb {...slotProps.thumb} />
+      <slots.rail {...slotProps.rail}>
+        <slots.thumb {...slotProps.thumb} />
+      </slots.rail>
     </slots.root>
   );
 };
