@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 import type { CardOnSelectEvent, CardProps, CardRefElement } from './Card.types';
@@ -64,28 +64,33 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
       return null;
     }
 
-    return {
+    const selectableEvents = {
       onClick: onChangeHandler,
       onKeyDown: onKeyDownHandler,
     };
-  }, [isSelectable, onChangeHandler, onKeyDownHandler]);
 
-  const selectableSlot = React.useMemo(() => {
-    if (hasSelectSlot) {
-      return resolveShorthand(select, {
-        defaultProps: {
-          ref: selectableRef,
-        },
-      });
+    if (!hasSelectSlot) {
+      return {
+        ...selectableEvents,
+        role: 'checkbox',
+        'aria-checked': isCardSelected,
+      };
     }
 
-    return getNativeElementProps('div', {
-      ref: selectableRef,
-      role: 'checkbox',
-      'aria-checked': isCardSelected,
-      tabIndex: -1,
+    return selectableEvents;
+  }, [hasSelectSlot, isCardSelected, isSelectable, onChangeHandler, onKeyDownHandler]);
+
+  const selectableSlot = React.useMemo(() => {
+    if (!hasSelectSlot) {
+      return undefined;
+    }
+
+    return resolveShorthand(select, {
+      defaultProps: {
+        ref: selectableRef,
+      },
     });
-  }, [hasSelectSlot, select, isCardSelected]);
+  }, [hasSelectSlot, select]);
 
   React.useEffect(() => setIsCardSelected(Boolean(defaultSelected ?? selected)), [
     defaultSelected,

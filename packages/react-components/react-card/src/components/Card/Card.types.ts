@@ -34,7 +34,7 @@ export type CardSlots = {
   /**
    * Select element represents a checkbox.
    */
-  select?: Slot<'div'>;
+  select?: Slot<'div', 'input'>;
 };
 
 /**
