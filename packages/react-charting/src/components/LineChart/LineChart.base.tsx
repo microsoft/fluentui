@@ -158,7 +158,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private lines: JSX.Element[];
   private _renderedColorFillBars: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
-  private _colorFillBarsOpacity: number;
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
@@ -182,7 +181,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     this._colorFillBars = [];
-    this._colorFillBarsOpacity = 0.5;
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
@@ -416,7 +414,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             hoverAction: () => {
               this.setState({ activeLegend: title });
             },
-            opacity: this._colorFillBarsOpacity,
+            opacity: this._getColorFillBarOpacity(colorFillBar),
             stripePattern: colorFillBar.applyPattern,
           };
           return legend;
@@ -912,7 +910,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const endX = colorFillBar.data[j].endX;
         const opacity =
           this._legendHighlighted(colorFillBar.legend) || this._noLegendHighlighted() || this.state.isSelectedLegend
-            ? this._colorFillBarsOpacity
+            ? this._getColorFillBarOpacity(colorFillBar)
             : 0.1;
         colorFillBars.push(
           <rect
@@ -1304,5 +1302,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getColorFillBarOpacity = (colorFillBar: IColorFillBarsProps) => {
+    return colorFillBar.applyPattern ? 1 : 0.4;
   };
 }
