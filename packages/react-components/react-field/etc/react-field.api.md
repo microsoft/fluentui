@@ -53,6 +53,7 @@ export type FieldConfig<T extends FieldComponent> = {
     component: T;
     classNames: SlotClassNames<FieldSlots<T>>;
     labelConnection?: 'htmlFor' | 'aria-labelledby';
+    ariaInvalidOnError?: boolean;
 };
 
 // @public

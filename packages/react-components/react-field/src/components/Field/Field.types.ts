@@ -117,6 +117,13 @@ export type FieldConfig<T extends FieldComponent> = {
    * @default htmlFor
    */
   labelConnection?: 'htmlFor' | 'aria-labelledby';
+
+  /**
+   * Should the aria-invalid and aria-errormessage attributes be set when validationState="error".
+   *
+   * @default true
+   */
+  ariaInvalidOnError?: boolean;
 };
 
 /**

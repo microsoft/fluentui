@@ -21,7 +21,7 @@ import { useARIAButtonProps } from '@fluentui/react-aria';
  * @param props - props from this instance of MenuTrigger
  */
 export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerState => {
-  const { children } = props;
+  const { children, disableButtonEnhancement = false } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
   const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
@@ -121,7 +121,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const triggerProps = {
+  const contextMenuProps = {
     'aria-haspopup': 'menu',
     'aria-expanded': !open && !isSubmenu ? undefined : open,
     id: triggerId,
@@ -133,18 +133,23 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     onMouseMove: useEventCallback(mergeCallbacks(child?.props.onMouseMove, onMouseMove)),
   } as const;
 
-  const ariaButtonTriggerProps = useARIAButtonProps(
+  const triggerChildProps = {
+    ...contextMenuProps,
+    onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+    onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
+  };
+
+  const ariaButtonTriggerChildProps = useARIAButtonProps(
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
-    {
-      ...triggerProps,
-      onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
-      onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
-    },
+    triggerChildProps,
   );
 
   return {
     isSubmenu,
-    children: applyTriggerPropsToChildren(children, openOnContext ? triggerProps : ariaButtonTriggerProps),
+    children: applyTriggerPropsToChildren(
+      children,
+      openOnContext ? contextMenuProps : disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
+    ),
   };
 };
 

@@ -1,8 +1,6 @@
 # @fluentui/react-portal
 
-**React Portal components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+**React Portal components for [Fluent UI React](https://react.fluentui.dev)**
 
 This package contains the `Portal` component, which allow consumers to render [React portals](https://reactjs.org/docs/portals.html) with Fluent styling and RTL awareness.
 

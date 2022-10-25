@@ -57,11 +57,13 @@ const AvatarGroupList: React.FC<
           {inlineItems.map(name => (
             <AvatarGroupItem key={name} name={name} />
           ))}
-          <AvatarGroupPopover indicator={props.overflowIndicator}>
-            {overflowItems.map(name => (
-              <AvatarGroupItem key={name} name={name} />
-            ))}
-          </AvatarGroupPopover>
+          {overflowItems && (
+            <AvatarGroupPopover indicator={props.overflowIndicator}>
+              {overflowItems.map(name => (
+                <AvatarGroupItem key={name} name={name} />
+              ))}
+            </AvatarGroupPopover>
+          )}
         </AvatarGroup>
       ))}
     </div>
@@ -145,11 +147,13 @@ storiesOf('AvatarGroup Converged', module)
             {inlineItems.map(name => (
               <AvatarGroupItem key={name} name={name} />
             ))}
-            <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
-              {overflowItems.map(name => (
-                <AvatarGroupItem key={name} name={name} />
-              ))}
-            </AvatarGroupPopover>
+            {overflowItems && (
+              <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
+                {overflowItems.map(name => (
+                  <AvatarGroupItem key={name} name={name} />
+                ))}
+              </AvatarGroupPopover>
+            )}
           </AvatarGroup>
         </div>
       );

@@ -13,23 +13,27 @@ import type { ProgressProps, ProgressState } from './Progress.types';
  */
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
-  const { thickness = 'medium', value, max = 1.0 } = props;
+  const { max = 1.0, shape = 'rounded', thickness = 'medium', validationState, value } = props;
 
-  const root = getNativeElementProps('div', { ref, role: 'progressbar', ...props });
+  const root = getNativeElementProps('div', {
+    ref,
+    role: 'progressbar',
+    'aria-valuemin': value !== undefined ? 0 : undefined,
+    'aria-valuemax': value !== undefined ? max : undefined,
+    'aria-valuenow': value,
+    ...props,
+  });
 
   const bar = resolveShorthand(props.bar, {
     required: true,
-    defaultProps: {
-      'aria-valuemin': value ? 0 : undefined,
-      'aria-valuemax': value ? max : undefined,
-      'aria-valuenow': value,
-    },
   });
 
   const state: ProgressState = {
     max,
+    shape,
     thickness,
     value,
+    validationState,
     components: {
       root: 'div',
       bar: 'div',

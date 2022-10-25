@@ -60,22 +60,27 @@ export type ToolbarState = ComponentState<ToolbarSlots> &
      * Toggles the state of a ToggleButton item
      */
     handleToggleButton: ToggableHandler;
+    /*
+     * Toggles the state of a ToggleButton item
+     */
+    handleRadio: ToggableHandler;
   };
 
 export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical' | 'checkedValues'> & {
   handleToggleButton?: ToggableHandler;
+  handleRadio?: ToggableHandler;
 };
 
 export type ToolbarContextValues = {
   toolbar: ToolbarContextValue;
 };
 
-export type UninitializedToolbarState = Omit<ToolbarState, 'checkedValues' | 'handleToggleButton'> &
+export type UninitializedToolbarState = Omit<ToolbarState, 'checkedValues' | 'handleToggleButton' | 'handleRadio'> &
   Partial<Pick<ToolbarState, 'checkedValues'>>;
 
 export type ToggableHandler = (
   e: React.MouseEvent | React.KeyboardEvent,
-  name?: string,
-  value?: string,
+  name: string,
+  value: string,
   checked?: boolean,
 ) => void;

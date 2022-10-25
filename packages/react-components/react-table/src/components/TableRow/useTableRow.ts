@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import type { TableRowProps, TableRowState } from './TableRow.types';
 import { useTableContext } from '../../contexts/tableContext';
+import { useFocusVisible } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TableRow.
@@ -15,17 +16,19 @@ import { useTableContext } from '../../contexts/tableContext';
 export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLElement>): TableRowState => {
   const { noNativeElements, size } = useTableContext();
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'tr';
+  const focusVisibleRef = useFocusVisible();
 
   return {
     components: {
       root: rootComponent,
     },
     root: getNativeElementProps(rootComponent, {
-      ref,
+      ref: useMergedRefs(ref, focusVisibleRef),
       role: rootComponent === 'div' ? 'row' : undefined,
       ...props,
     }),
     size,
     noNativeElements,
+    appearance: props.appearance ?? 'none',
   };
 };

@@ -67,7 +67,7 @@ export const useField_unstable = <T extends FieldComponent>(
 ): FieldState<T> => {
   const [fieldProps, controlProps] = getPartitionedFieldProps(props);
   const { orientation = 'vertical', validationState } = fieldProps;
-  const { labelConnection = 'htmlFor' } = params;
+  const { labelConnection = 'htmlFor', ariaInvalidOnError = true } = params;
 
   const baseId = useId('field-');
 
@@ -118,7 +118,7 @@ export const useField_unstable = <T extends FieldComponent>(
     control['aria-labelledby'] ??= label.id;
   }
 
-  if (validationState === 'error') {
+  if (validationState === 'error' && ariaInvalidOnError) {
     control['aria-invalid'] ??= true;
     if (validationMessage) {
       control['aria-errormessage'] ??= validationMessage.id;
