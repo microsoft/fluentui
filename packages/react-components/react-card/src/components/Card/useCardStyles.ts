@@ -361,11 +361,11 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   );
 
   if (state.select) {
-    if (state.hasSelectSlot) {
-      state.select.className = mergeClasses(cardClassNames.select, styles.select, state.select.className);
-    } else {
-      state.select.className = mergeClasses(cardClassNames.select, styles.selectHidden, state.select.className);
-    }
+    state.select.className = mergeClasses(
+      cardClassNames.select,
+      state.hasSelectSlot ? styles.select : styles.selectHidden,
+      state.select.className,
+    );
   }
 
   return state;

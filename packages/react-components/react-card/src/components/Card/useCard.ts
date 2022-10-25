@@ -13,7 +13,7 @@ const focusMap = {
 } as const;
 
 const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, isInteractive: boolean) => {
-  const internalFocusMode: CardProps['focusMode'] = isInteractive ? 'no-tab' : focusMode;
+  const internalFocusMode = isInteractive ? 'no-tab' : focusMode;
 
   const groupperAttrs = useFocusableGroup({
     tabBehavior: focusMap[internalFocusMode],
@@ -42,7 +42,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<CardRefElement
   const { appearance = 'filled', orientation = 'vertical', size = 'medium', as = 'div' } = props;
   const cardRef = React.useRef<CardRefElement>(null);
 
-  const { isSelectable, hasSelectSlot, selectableProps, selectableSlot, isCardSelected } = useCardSelectable(
+  const { isSelectable, hasSelectSlot, isCardSelected, selectableSlot, selectableProps } = useCardSelectable(
     props,
     cardRef,
   );
