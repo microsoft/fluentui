@@ -58,8 +58,19 @@ export function getTsPathAliasesApiExtractorConfig(options: {
     compilerOptions: {
       ...options.tsConfig.compilerOptions,
       ...enableAllowSyntheticDefaultImports({ pkgJson: options.packageJson }),
+      /**
+       * This option has no effect on type declarations '.d.ts' thus can be turned off. For more info see https://www.typescriptlang.org/tsconfig#non-module-files
+       *
+       * NOTE: Some v8 packages (font-icons-mdl2) use `preserveConstEnums: false` which clashes with isolateModules - TSC will error
+       */
+      isolatedModules: false,
+      /**
+       * needs to be explicitly set to `false` so errors propagate to api-extractor
+       */
       skipLibCheck: false,
-      // NOTE: just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
+      /**
+       * just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
+       */
       paths: undefined,
     },
   };

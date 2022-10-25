@@ -87,6 +87,9 @@ export function apiExtractor() {
               configJsonFilePath: args.config ?? configPath,
               localBuild: args.local ?? !process.env.TF_BUILD,
               onResult: result => {
+                if (!isUsingTsSolutionConfigs) {
+                  return;
+                }
                 if (result.succeeded === true) {
                   return;
                 }
