@@ -335,6 +335,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   public componentDidMount(): void {
+    this.setState({ hasMounted: true });
     this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
     this._scrollTop = 0;
 
