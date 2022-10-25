@@ -11,7 +11,7 @@ const { paths } = config;
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
-  mode: !!argv.debug ? 'development' : 'production',
+  mode: Boolean(argv.debug) ? 'development' : 'production',
   entry: {
     app: paths.perfSrc('index'),
   },
