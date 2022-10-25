@@ -11,6 +11,13 @@ const rootFlexDirections: ObjectOf<Property.FlexDirection> = {
   start: 'row-reverse',
   end: 'row',
 };
+const getCircleStyles = (): ICSSInJSStyle => ({
+  cx: '50%',
+  cy: '50%',
+  r: '45%',
+  fill: 'none',
+  strokeWidth: '8px',
+});
 
 export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, LoaderVariables> = {
   root: ({ props: p }: ComponentStyleFunctionParam<LoaderStylesProps, LoaderVariables>): ICSSInJSStyle => ({
@@ -41,24 +48,19 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
     },
     width: v.svgWidths[p.size],
     height: v.svgHeights[p.size],
-    '& > circle': {
-      cx: '50%',
-      cy: '50%',
-      r: '45%',
-      fill: 'none',
-      strokeWidth: '8px',
-    },
   }),
   svgTrack: ({
     props: p,
     variables: v,
   }: ComponentStyleFunctionParam<LoaderStylesProps, LoaderVariables>): ICSSInJSStyle => ({
     stroke: !p.secondary && v.svgTrackColor,
+    ...getCircleStyles(),
   }),
   svgTail: ({
     props: p,
     variables: v,
   }: ComponentStyleFunctionParam<LoaderStylesProps, LoaderVariables>): ICSSInJSStyle => ({
+    ...getCircleStyles(),
     animation: '1.5s cubic-bezier(0.33,0,0.67,1) infinite',
     strokeLinecap: 'round',
     strokeDasharray: '283',
