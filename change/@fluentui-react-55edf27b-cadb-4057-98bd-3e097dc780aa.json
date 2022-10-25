@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: DetailsList is still tabbable when header is not visible",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
