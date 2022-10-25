@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-components';
 import {
   Dialog,
   DialogSurface,
@@ -8,7 +7,8 @@ import {
   DialogActions,
   DialogTrigger,
   DialogBody,
-} from '@fluentui/react-dialog';
+  Button,
+} from '@fluentui/react-components';
 import story from './DialogTriggerOutsideDialog.md';
 
 export const TriggerOutsideDialog = () => {

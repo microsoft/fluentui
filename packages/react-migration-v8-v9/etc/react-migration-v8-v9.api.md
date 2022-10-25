@@ -63,10 +63,10 @@ export const CompoundButtonShim: React_2.ForwardRefExoticComponent<IButtonProps 
 export const createBrandVariants: (palette: IPalette, interpolation?: Interpolation) => BrandVariants;
 
 // @public
-export const createv8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkTheme?: boolean, themeV8?: Theme_2 | undefined) => Theme_2;
+export const createV8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkTheme?: boolean, themeV8?: Theme_2 | undefined) => Theme_2;
 
 // @public
-export const createv9Theme: (themeV8: Theme_2, baseThemeV9?: Theme | undefined) => Theme;
+export const createV9Theme: (themeV8: Theme_2, baseThemeV9?: Theme | undefined) => Theme;
 
 // @public
 export const DefaultButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;

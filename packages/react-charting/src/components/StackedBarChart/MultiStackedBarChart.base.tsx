@@ -13,6 +13,7 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -35,6 +36,7 @@ export interface IMultiStackedBarChartState {
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -61,6 +63,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
+      calloutLegend: '',
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
@@ -79,7 +82,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       theme: theme!,
     });
 
-    const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle;
+    const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
     const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
@@ -108,6 +111,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
+          /** Keep the callout updated with details of focused/hovered bar */
+          shouldUpdateWhenHidden={true}
           {...this.props.calloutProps!}
           {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
@@ -237,9 +242,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
-                <strong>{data!.chartTitle}</strong>
-              </div>
+              <TooltipHost
+                overflowMode={TooltipOverflowMode.Self}
+                hostClassName={this._classNames.chartTitleLeft}
+                content={data!.chartTitle}
+              >
+                <span {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>{data!.chartTitle}</span>
+              </TooltipHost>
             )}
             {showRatio && (
               <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
@@ -266,26 +275,24 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   private _onBarFocus(pointData: number, color: string, point: IChartDataPoint): void {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
-    ) {
-      this.state.refArray.forEach((obj: IRefArrayData) => {
-        if (obj.legendText === point.legend!) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            selectedLegendTitle: point.legend!,
-            dataForHoverCard: pointData,
-            color: color,
-            xCalloutValue: point.xAxisCalloutData!,
-            yCalloutValue: point.yAxisCalloutData!,
-            dataPointCalloutProps: point,
-            callOutAccessibilityData: point.callOutAccessibilityData!,
-          });
-        }
-      });
-    }
+    this.state.refArray.forEach((obj: IRefArrayData) => {
+      if (obj.legendText === point.legend!) {
+        this.setState({
+          refSelected: obj.refElement,
+          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
+          isCalloutVisible:
+            this.state.isLegendSelected === false ||
+            (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+          calloutLegend: point.legend!,
+          dataForHoverCard: pointData,
+          color: color,
+          xCalloutValue: point.xAxisCalloutData!,
+          yCalloutValue: point.yAxisCalloutData!,
+          dataPointCalloutProps: point,
+          callOutAccessibilityData: point.callOutAccessibilityData!,
+        });
+      }
+    });
   }
 
   private _refCallback(element: SVGGElement, legendTitle: string): void {
@@ -419,16 +426,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   ): void {
     mouseEvent.persist();
 
-    if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)) &&
-      this._calloutAnchorPoint !== point
-    ) {
+    if (this._calloutAnchorPoint !== point) {
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
-        isCalloutVisible: true,
-        selectedLegendTitle: point.legend!,
+        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+        calloutLegend: point.legend!,
         dataForHoverCard: pointData,
         color: color,
         xCalloutValue: point.xAxisCalloutData!,

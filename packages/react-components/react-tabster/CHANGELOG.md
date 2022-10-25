@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 03 Oct 2022 22:24:41 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.2.0)
+
+Thu, 20 Oct 2022 08:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.1.3..@fluentui/react-tabster_v9.2.0)
+
+### Minor changes
+
+- feat: Bump tabster to 3.0.4 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- feat: Disabling default browser outline should be an option ([PR #25202](https://github.com/microsoft/fluentui/pull/25202) by lingfangao@hotmail.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.3)
+
+Thu, 13 Oct 2022 11:03:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.1.2..@fluentui/react-tabster_v9.1.3)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.2)
 

@@ -184,7 +184,7 @@ const mapBorderRadiusTokens = (effects: IEffects): Partial<BorderRadiusTokens> =
  * Creates a v9 theme from a v8 theme.
  * You can optional pass a base v9 theme; otherwise webLightTheme is used.
  */
-export const createv9Theme = (themeV8: ThemeV8, baseThemeV9?: ThemeV9): ThemeV9 => {
+export const createV9Theme = (themeV8: ThemeV8, baseThemeV9?: ThemeV9): ThemeV9 => {
   const baseTheme = baseThemeV9 ?? webLightTheme;
 
   return {

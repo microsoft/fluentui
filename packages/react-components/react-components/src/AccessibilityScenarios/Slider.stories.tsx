@@ -4,7 +4,7 @@ import { Label, Slider } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const SoundControlSlidersAccessibilityScenario: React.FunctionComponent = () => {
+export const SoundControlSliders: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Sound control sliders">
       <h1>Sound control panel</h1>
@@ -19,9 +19,4 @@ export const SoundControlSlidersAccessibilityScenario: React.FunctionComponent =
       <Slider id="treble" defaultValue={5} min={0} max={10} vertical />
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Sound control sliders',
-  id: 'slider-accessibility-scenario',
 };

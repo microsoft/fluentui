@@ -33,6 +33,15 @@ const useStyles = makeStyles({
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
   },
 
+  rootInteractive: {
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+    },
+  },
+
   resetButton: {
     resize: 'horizontal',
     boxSizing: 'content-box',
@@ -80,6 +89,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   state.root.className = mergeClasses(
     tableHeaderCellClassNames.root,
     styles.root,
+    state.sortable && styles.rootInteractive,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );

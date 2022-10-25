@@ -1,8 +1,82 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 10 Oct 2022 07:38:22 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 07:43:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.98.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.7)
+
+Tue, 25 Oct 2022 07:43:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.6..@fluentui/react_v8.98.7)
+
+### Patches
+
+- fix: DetailsList is still tabbable when header is not visible ([PR #25342](https://github.com/microsoft/fluentui/pull/25342) by sarah.higley@microsoft.com)
+
+## [8.98.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.6)
+
+Mon, 24 Oct 2022 07:45:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.5..@fluentui/react_v8.98.6)
+
+### Patches
+
+- fix: Fixing color of disabled links in High Contrast mode. ([PR #25344](https://github.com/microsoft/fluentui/pull/25344) by makotom@microsoft.com)
+- fix: GroupedListV2 state/prop updates trigger re-renders the same as GroupedList ([PR #25301](https://github.com/microsoft/fluentui/pull/25301) by seanmonahan@microsoft.com)
+
+## [8.98.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.5)
+
+Fri, 21 Oct 2022 07:44:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.4..@fluentui/react_v8.98.5)
+
+### Patches
+
+- Pass onRenderItem to Dropdown's onRenderContainer to allow use of onRenderList with default or custom onRenderItem ([PR #25255](https://github.com/microsoft/fluentui/pull/25255) by aepshtein@microsoft.com)
+
+## [8.98.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.4)
+
+Thu, 20 Oct 2022 07:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.3..@fluentui/react_v8.98.4)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.2.22 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.2 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/react-focus to v8.8.7 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/react-hooks to v8.6.12 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.3 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/style-utilities to v8.8.1 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/theme to v2.6.17 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/utilities to v8.13.2 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/common-styles to v1.2.11 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+- Bump @fluentui/test-utilities to v8.2.3 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+
+## [8.98.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.3)
+
+Mon, 17 Oct 2022 07:49:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.2..@fluentui/react_v8.98.3)
+
+### Patches
+
+- fix: Panel should only aria hide siblings when isOpen is true ([PR #25223](https://github.com/microsoft/fluentui/pull/25223) by mgodbolt@microsoft.com)
+
+## [8.98.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.2)
+
+Fri, 14 Oct 2022 07:43:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.1..@fluentui/react_v8.98.2)
+
+### Patches
+
+- chore: Bump v8 packages peer deps to include React 18 ([PR #24976](https://github.com/microsoft/fluentui/pull/24976) by mgodbolt@microsoft.com)
+
+## [8.98.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.1)
+
+Thu, 13 Oct 2022 07:45:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.0..@fluentui/react_v8.98.1)
+
+### Patches
+
+- docs: add @docCategory documentation comment to TimePicker ([PR #25175](https://github.com/microsoft/fluentui/pull/25175) by seanmonahan@microsoft.com)
+- ContextualMenu: Fix focus returning to correct element on menu close ([PR #25063](https://github.com/microsoft/fluentui/pull/25063) by mgodbolt@microsoft.com)
 
 ## [8.98.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.0)
 
