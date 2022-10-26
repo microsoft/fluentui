@@ -50,6 +50,8 @@ import { CardState } from '@fluentui/react-card';
 import { CheckboxField } from '@fluentui/react-field';
 import { checkboxFieldClassNames } from '@fluentui/react-field';
 import { CheckboxFieldProps } from '@fluentui/react-field';
+import { ColumnDefinition } from '@fluentui/react-table';
+import { ColumnId } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
@@ -143,6 +145,8 @@ import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { RowId } from '@fluentui/react-table';
+import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectField } from '@fluentui/react-field';
@@ -210,8 +214,11 @@ import { tableSelectionCellClassNames } from '@fluentui/react-table';
 import { TableSelectionCellProps } from '@fluentui/react-table';
 import { TableSelectionCellSlots } from '@fluentui/react-table';
 import { TableSelectionCellState } from '@fluentui/react-table';
+import { TableSelectionState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
+import { TableSortState } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
+import { TableStatePlugin } from '@fluentui/react-table';
 import { TextareaField } from '@fluentui/react-field';
 import { textareaFieldClassNames } from '@fluentui/react-field';
 import { TextareaFieldProps } from '@fluentui/react-field';
@@ -268,7 +275,10 @@ import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { useProgress_unstable } from '@fluentui/react-progress';
 import { useProgressStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelection } from '@fluentui/react-table';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
+import { useSort } from '@fluentui/react-table';
+import { useTable } from '@fluentui/react-table';
 import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
@@ -283,6 +293,7 @@ import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
+import { UseTableOptions } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
 import { useTableSelectionCell_unstable } from '@fluentui/react-table';
@@ -383,6 +394,10 @@ export { CheckboxField }
 export { checkboxFieldClassNames }
 
 export { CheckboxFieldProps }
+
+export { ColumnDefinition }
+
+export { ColumnId }
 
 export { Combobox }
 
@@ -570,6 +585,10 @@ export { renderTableSelectionCell_unstable }
 
 export { renderToolbar_unstable }
 
+export { RowId }
+
+export { RowState }
+
 export { Select }
 
 export { selectClassNames }
@@ -704,9 +723,16 @@ export { TableSelectionCellSlots }
 
 export { TableSelectionCellState }
 
+export { TableSelectionState }
+
 export { TableSlots }
 
+export { TableSortState }
+
+export { TableState as HeadlessTableState }
 export { TableState }
+
+export { TableStatePlugin }
 
 export { TextareaField }
 
@@ -820,7 +846,13 @@ export { useProgressStyles_unstable }
 
 export { useSelect_unstable }
 
+export { useSelection }
+
 export { useSelectStyles_unstable }
+
+export { useSort }
+
+export { useTable }
 
 export { useTable_unstable }
 
@@ -849,6 +881,8 @@ export { useTableHeaderCell_unstable }
 export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
+
+export { UseTableOptions }
 
 export { useTableRow_unstable }
 
