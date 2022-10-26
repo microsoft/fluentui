@@ -403,12 +403,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             & > * {
               text-overflow: ellipsis;
             }
-            & > *:not(:first-child) {
-              margin-left: 0px;
-            }
-            & > *:not(.ms-StackItem) {
-              flex-shrink: 1;
-            }
             & .ms-Button:not(:first-child) {
               margin-left: 10px;
             }
@@ -1196,12 +1190,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
             }
             & > * {
               text-overflow: ellipsis;
-            }
-            & > *:not(:first-child) {
-              margin-left: 0px;
-            }
-            & > *:not(.ms-StackItem) {
-              flex-shrink: 1;
             }
             & .ms-Button:not(:first-child) {
               margin-left: 10px;
