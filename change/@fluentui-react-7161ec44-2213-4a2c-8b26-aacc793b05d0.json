@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add support for HTML defails element",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

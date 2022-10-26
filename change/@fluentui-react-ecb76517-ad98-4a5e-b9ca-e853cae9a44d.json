@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Improve Stack's style recalculation performance by selectively applying children selectors.",
-  "packageName": "@fluentui/react",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}
