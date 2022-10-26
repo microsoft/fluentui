@@ -7,6 +7,8 @@ import { configureGriffel } from './griffelConfig.js';
 import * as WebpackDevServer from 'webpack-dev-server';
 import { GriffelMode } from '../scripts/utils/types';
 
+const enabledReactProfiling = true;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 type WebpackArgs = {
@@ -27,10 +29,14 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
     output: {
       filename: '[name].[contenthash].bundle.js',
       sourceMapFilename: '[name].[contenthash].map',
-      path: path.resolve(path.dirname(__dirname), 'dist'),
+      path: path.resolve(path.dirname(__dirname), !isProd ? 'dev-build' : 'dist'),
     },
     devtool: 'source-map',
     resolve: {
+      alias: {
+        'react-dom$': 'react-dom/profiling',
+        'scheduler/tracing': 'scheduler/tracing-profiling',
+      },
       extensions: ['.tsx', '.ts', '.js'],
       plugins: [
         new TsconfigPathsPlugin({
@@ -43,30 +49,47 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
         {
           test: /\.(ts|tsx)?$/,
           exclude: /node_modules/,
-          oneOf: [
-            {
-              // Match Web Component files
-              // Not sure why babel-loader isn't working but
-              // the FAST docs use ts-loader and it "just works"
-              // so let's roll with it for now.
-              include: /\.wc\.(ts|tsx)?$/,
-              use: 'ts-loader',
+          use: {
+            loader: 'swc-loader',
+            options: {
+              jsc: {
+                target: 'es2019',
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  decorators: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  decoratorMetadata: true,
+                  legacyDecorator: true,
+                },
+                keepClassNames: true,
+                externalHelpers: true,
+                loose: true,
+              },
             },
-            {
-              use: 'swc-loader',
-            },
-          ],
+          },
         },
       ],
     },
     plugins: [new CleanWebpackPlugin()],
 
     optimization: {
+      minimize: isProd,
       splitChunks: {
         chunks: 'all',
       },
     },
   };
+
+  if (enabledReactProfiling) {
+    config.resolve!.alias = {
+      ...config.resolve!.alias,
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
+    };
+  }
 
   if (!isProd) {
     config.devServer = {

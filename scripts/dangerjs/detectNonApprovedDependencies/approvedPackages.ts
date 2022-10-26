@@ -97,6 +97,7 @@ export default [
   'react-fela@10.6.1',
   'react-is@16.8.2',
   'react-is@16.9.0',
+  'react-is@16.13.1',
   'react-is@17.0.2',
   'react-resize-detector@4.2.0',
   'react-transition-group@4.4.1',

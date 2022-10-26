@@ -43,6 +43,30 @@ storiesOf('Select Converged', module)
         <option>text</option>
       </Select>
     </div>
+  ))
+  .addStory('Invalid: outline', () => (
+    <Select aria-invalid>
+      <option>text</option>
+    </Select>
+  ))
+  .addStory('Invalid: underline', () => (
+    <Select aria-invalid appearance="underline">
+      <option>text</option>
+    </Select>
+  ))
+  .addStory('Invalid: filled-darker', () => (
+    <div style={{ background: '#00335c', padding: '10px' }}>
+      <Select aria-invalid appearance="filled-darker">
+        <option>text</option>
+      </Select>
+    </div>
+  ))
+  .addStory('Invalid: filled-lighter', () => (
+    <div style={{ background: '#00335c', padding: '10px' }}>
+      <Select aria-invalid appearance="filled-lighter">
+        <option>text</option>
+      </Select>
+    </div>
   ));
 
 // Non-interactive stories

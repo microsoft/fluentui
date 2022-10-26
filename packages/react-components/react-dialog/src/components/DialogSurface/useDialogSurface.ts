@@ -80,13 +80,14 @@ export const useDialogSurface_unstable = (
       },
     }),
     root: getNativeElementProps(as ?? 'div', {
+      tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
       'aria-modal': modalType !== 'non-modal',
       role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+      'aria-describedby': dialogContentId,
+      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ...props,
       ...modalAttributes,
       onKeyDown: handleKeyDown,
-      'aria-describedby': dialogContentId,
-      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ref: useMergedRefs(ref, dialogRef),
     }),
   };

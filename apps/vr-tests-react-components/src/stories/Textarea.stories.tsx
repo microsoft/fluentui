@@ -27,6 +27,15 @@ storiesOf('Textarea Converged', module)
       <Textarea appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
+  .addStory('Invalid: outline', () => <Textarea aria-invalid placeholder="Placeholder" />)
+  .addStory('Invalid: filled-darker', () => (
+    <Textarea aria-invalid appearance="filled-darker" placeholder="Placeholder" />
+  ))
+  .addStory('Invalid: filled-lighter', () => (
+    <div style={{ background: '#f5f5f5', padding: '10px' }}>
+      <Textarea aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
+    </div>
+  ))
   .addStory('Disabled', () => <Textarea disabled />)
   .addStory('With value', () => <Textarea defaultValue="Value" />);
 

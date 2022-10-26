@@ -30,6 +30,11 @@ storiesOf('Button Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
+  .addStory('As an anchor', () => (
+    <Button id={buttonId} as="a" href="#">
+      Hello, world
+    </Button>
+  ))
   .addStory('Circular', () => (
     <Button id={buttonId} shape="circular">
       Hello, world

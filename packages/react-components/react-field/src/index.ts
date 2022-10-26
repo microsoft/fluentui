@@ -10,6 +10,9 @@ export type { ComboboxFieldProps } from './ComboboxField';
 export { InputField, inputFieldClassNames } from './InputField';
 export type { InputFieldProps } from './InputField';
 
+export { ProgressField, progressFieldClassNames } from './ProgressField';
+export type { ProgressFieldProps } from './ProgressField';
+
 export { RadioGroupField, radioGroupFieldClassNames } from './RadioGroupField';
 export type { RadioGroupFieldProps } from './RadioGroupField';
 

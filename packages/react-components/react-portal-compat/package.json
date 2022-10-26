@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-portal-compat",
-  "version": "9.0.9",
+  "version": "9.0.14",
   "description": "A package that contains compatibility layer for React Portals",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,19 +27,19 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-components": "^9.4.0",
-    "@fluentui/react-shared-contexts": "^9.0.1",
+    "@fluentui/react-components": "^9.6.0",
+    "@fluentui/react-shared-contexts": "^9.0.2",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-portal-compat-context": "^9.0.2",
-    "@fluentui/react-tabster": "^9.1.2",
+    "@fluentui/react-portal-compat-context": "^9.0.3",
+    "@fluentui/react-tabster": "^9.2.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.4.0",
-    "@types/react": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0"
+    "@fluentui/react-components": "^9.6.0",
+    "@types/react": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

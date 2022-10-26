@@ -31,23 +31,23 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.0",
-    "@fluentui/react-utilities": "^9.1.0",
-    "@griffel/react": "^1.3.0",
+    "@fluentui/react-theme": "^9.1.1",
+    "@fluentui/react-utilities": "^9.1.2",
+    "@griffel/react": "^1.4.1",
     "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.4.0",
+    "@fluentui/react-components": "^9.6.0",
     "@fluentui/react-icons": "^2.0.175",
     "@fluent-blocks/colors": "9.2.0",
     "codesandbox-import-utils": "2.2.3",
     "@types/dedent": "0.7.0",
-    "@fluentui/react-alert": "9.0.0-beta.11",
-    "@fluentui/react-context-selector": "^9.0.3"
+    "@fluentui/react-alert": "9.0.0-beta.15",
+    "@fluentui/react-context-selector": "^9.0.5"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "@types/react-dom": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

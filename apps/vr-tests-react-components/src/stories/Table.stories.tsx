@@ -22,6 +22,7 @@ import {
   TableSelectionCell,
   TableCellActions,
   TableProps,
+  TableRowProps,
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
@@ -75,6 +76,7 @@ const columns = [
 
 interface SharedVrTestArgs {
   noNativeElements: TableProps['noNativeElements'];
+  selectedRowAppearance?: TableRowProps['appearance'];
 }
 
 const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
@@ -87,8 +89,8 @@ const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =>
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -125,8 +127,8 @@ const CellActionsAlwaysVisible: React.FC<SharedVrTestArgs> = ({ noNativeElements
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -163,8 +165,8 @@ const CellActionsInHeaderCell: React.FC<SharedVrTestArgs> = ({ noNativeElements 
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label} className="row">
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
           <TableHeaderCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
@@ -367,7 +369,7 @@ const Multiselect: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   </Table>
 );
 
-const MultiselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+const MultiselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements, selectedRowAppearance }) => (
   <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
@@ -378,30 +380,34 @@ const MultiselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =>
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map(item => (
-        <TableRow key={item.file.label}>
-          <TableSelectionCell checked={true} />
-          <TableCell>
-            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-          </TableCell>
-          <TableCell>
-            <TableCellLayout
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
-            </TableCellLayout>
-          </TableCell>
-          <TableCell>{item.lastUpdated.label}</TableCell>
-          <TableCell>
-            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-          </TableCell>
-        </TableRow>
-      ))}
+      {items.map(item => {
+        return (
+          <TableRow key={item.file.label} appearance={selectedRowAppearance}>
+            <TableSelectionCell checked />
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+          </TableRow>
+        );
+      })}
     </TableBody>
   </Table>
 );
 
-const MultiselectMixed: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+const MultiselectMixed: React.FC<SharedVrTestArgs> = ({ noNativeElements, selectedRowAppearance }) => (
   <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
@@ -412,25 +418,30 @@ const MultiselectMixed: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
       </TableRow>
     </TableHeader>
     <TableBody>
-      {items.map((item, i) => (
-        <TableRow key={item.file.label}>
-          <TableSelectionCell checked={!!(i % 2)} />
-          <TableCell>
-            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-          </TableCell>
-          <TableCell>
-            <TableCellLayout
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
-            </TableCellLayout>
-          </TableCell>
-          <TableCell>{item.lastUpdated.label}</TableCell>
-          <TableCell>
-            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-          </TableCell>
-        </TableRow>
-      ))}
+      {items.map((item, i) => {
+        const checked = !!(i % 2);
+        return (
+          <TableRow key={item.file.label} appearance={checked ? selectedRowAppearance : 'none'}>
+            <TableSelectionCell checked={checked} />
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+          </TableRow>
+        );
+      })}
     </TableBody>
   </Table>
 );
@@ -469,7 +480,83 @@ const Singleselect: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   </Table>
 );
 
-const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements, selectedRowAppearance }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell type="radio" hidden />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map((item, i) => {
+        const checked = i === 1;
+        return (
+          <TableRow key={item.file.label} appearance={checked ? selectedRowAppearance : undefined}>
+            <TableSelectionCell type="radio" checked={checked} />
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+          </TableRow>
+        );
+      })}
+    </TableBody>
+  </Table>
+);
+
+const SortableHeaders: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements} sortable>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell className="columnheader" key={column.columnKey} sortDirection={'ascending'}>
+            {column.label}
+          </TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map(item => (
+        <TableRow key={item.file.label}>
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout>{item.lastUpdated.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
+const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
@@ -482,7 +569,7 @@ const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =
     <TableBody>
       {items.map((item, i) => (
         <TableRow key={item.file.label}>
-          <TableSelectionCell type="radio" checked={i === 1} />
+          <TableSelectionCell subtle type="radio" checked={i === 1} className={i === 1 ? 'selected' : 'not-selected'} />
           <TableCell>
             <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
           </TableCell>
@@ -508,7 +595,7 @@ const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
-      <StoryWright steps={new Steps().hover('.row').snapshot('hover row').end()}>{story()}</StoryWright>
+      <StoryWright steps={new Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</StoryWright>
     ))
     .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
@@ -536,24 +623,93 @@ const SingleselectChecked: React.FC<SharedVrTestArgs> = ({ noNativeElements }) =
       includeHighContrast: true,
       includeRtl: true,
     })
-    .addStory('multiselect (checked)', () => <MultiselectChecked noNativeElements={noNativeElements} />, {
-      includeDarkMode: true,
-      includeHighContrast: true,
-      includeRtl: true,
-    })
-    .addStory('multiselect (mixed)', () => <MultiselectMixed noNativeElements={noNativeElements} />, {
-      includeDarkMode: true,
-      includeHighContrast: true,
-      includeRtl: true,
-    })
+    .addStory(
+      'multiselect (checked) - brand',
+      () => <MultiselectChecked noNativeElements={noNativeElements} selectedRowAppearance="brand" />,
+      {
+        includeDarkMode: true,
+        includeHighContrast: true,
+        includeRtl: true,
+      },
+    )
+    .addStory(
+      'multiselect (mixed) - brand',
+      () => <MultiselectMixed noNativeElements={noNativeElements} selectedRowAppearance="brand" />,
+      {
+        includeDarkMode: true,
+        includeHighContrast: true,
+        includeRtl: true,
+      },
+    )
     .addStory('single select', () => <Singleselect noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
     })
+    .addStory(
+      'single select (checked) - brand',
+      () => <SingleselectChecked noNativeElements={noNativeElements} selectedRowAppearance="brand" />,
+      {
+        includeDarkMode: true,
+        includeHighContrast: true,
+        includeRtl: true,
+      },
+    )
+    .addStory(
+      'multiselect (checked) - neutral',
+      () => <MultiselectChecked noNativeElements={noNativeElements} selectedRowAppearance="neutral" />,
+      {
+        includeDarkMode: true,
+        includeHighContrast: true,
+        includeRtl: true,
+      },
+    )
+    .addStory(
+      'multiselect (mixed) - neutral',
+      () => <MultiselectMixed noNativeElements={noNativeElements} selectedRowAppearance="neutral" />,
+      {
+        includeDarkMode: true,
+        includeHighContrast: true,
+        includeRtl: true,
+      },
+    )
+    .addStory(
+      'single select (checked) - neutral',
+      () => <SingleselectChecked noNativeElements={noNativeElements} selectedRowAppearance="neutral" />,
+      {
+        includeDarkMode: true,
+        includeHighContrast: true,
+        includeRtl: true,
+      },
+    )
     .addStory('single select (checked)', () => <SingleselectChecked noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
+    });
+
+  storiesOf(`Table ${layoutName} - subtle selection`, module)
+    .addDecorator(story => (
+      <Screener steps={new Screener.Steps().hover('.not-selected').snapshot('hover unselected row').end()}>
+        {story()}
+      </Screener>
+    ))
+    .addStory('rest', () => <SubtleSelection noNativeElements={noNativeElements} />);
+  storiesOf(`Table layout ${layoutName} - headers`, module)
+    .addDecorator(story => (
+      <Screener
+        steps={new Screener.Steps()
+          .hover('.columnheader')
+          .snapshot('hover header')
+          .mouseDown('.columnheader')
+          .snapshot('press header')
+          .end()}
+      >
+        {story()}
+      </Screener>
+    ))
+    .addStory('sortable', () => <SortableHeaders noNativeElements={noNativeElements} />, {
+      includeDarkMode: true,
+      includeHighContrast: true,
     });
 });

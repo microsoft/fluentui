@@ -25,12 +25,20 @@ export interface PackageJson {
   typings?: string;
   private?: boolean;
   name: string;
+  main: string;
+  module?: string;
   version: string;
   scripts?: Record<string, string>;
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
   exports?: Record<string, string | Partial<{ types: string; import: string; require: string }>>;
+}
+
+export interface PackageJsonWithBeachball extends PackageJson {
+  beachball?: {
+    disallowedChangeTypes?: string[];
+  };
 }
 
 // ===============

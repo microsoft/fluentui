@@ -64,6 +64,15 @@ storiesOf('SpinButton Converged', module)
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
+  .addStory('Invalid: outline', () => <SpinButton aria-invalid value={10} />)
+  .addStory('Invalid: underline', () => <SpinButton aria-invalid appearance="underline" value={10} />)
+  .addStory('Invalid: filled-darker', () => <SpinButton aria-invalid appearance="filled-darker" value={10} />)
+  .addStory('Invalid: filled-lighter', () => (
+    // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
+    <div style={{ background: '#f5f5f5', padding: '10px' }}>
+      <SpinButton aria-invalid appearance="filled-lighter" value={10} />
+    </div>
+  ))
   .addStory('Display Value', () => <SpinButton value={10} displayValue="$10.00" />, {
     includeRtl: true,
     includeHighContrast: true,

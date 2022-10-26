@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Mon, 10 Oct 2022 07:38:21 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.12",
+      "version": "0.3.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "337a32b1a4f2e82235e193e115666aee659c650c",
+            "comment": "chore: apply single version policy"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Sep 2022 07:39:53 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.12",
       "version": "0.3.12",

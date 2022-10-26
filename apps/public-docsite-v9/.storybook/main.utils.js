@@ -24,9 +24,14 @@ function getVnextStories() {
     .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludedDependencies.includes(pkgName))
     .map(pkgName => {
       const name = pkgName.replace('@fluentui/', '');
-      const storiesGlob = '/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+      const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
 
-      return `../../../packages/react-components/${name}${storiesGlob}`;
+      //TODO: simplify once v9 migration [https://github.com/microsoft/fluentui/issues/24129] is complete.
+      if (fs.existsSync(`../../packages/react-components/${name}/stories/`)) {
+        return `../../../packages/react-components/${name}/stories/${storiesGlob}`;
+      } else {
+        return `../../../packages/react-components/${name}/src/${storiesGlob}`;
+      }
     });
 }
 

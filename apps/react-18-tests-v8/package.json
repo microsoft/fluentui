@@ -23,8 +23,8 @@
     "swc-loader": "^0.2.3"
   },
   "dependencies": {
-    "@fluentui/react": "^8.97.2",
-    "@fluentui/react-hooks": "^8.6.11",
+    "@fluentui/react": "^8.98.8",
+    "@fluentui/react-hooks": "^8.6.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.1.0"
