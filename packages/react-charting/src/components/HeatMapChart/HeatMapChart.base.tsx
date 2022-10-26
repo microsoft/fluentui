@@ -248,9 +248,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     this.setState({
       target: this._rectRefArray[id].refElement,
       /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
-      isCalloutVisible:
-        this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected === true && this.state.activeLegend === data.legend),
+      isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
       calloutYValue: `${data.rectText}`,
       calloutTextColor: this._colorScale(data.value),
       calloutLegend: data.legend,
@@ -268,9 +266,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       this.setState({
         target: this._rectRefArray[id].refElement,
         /** Show the callout if highlighted rectangle is hovered and Hide it if unhighlighted rectangle is hovered */
-        isCalloutVisible:
-          this.state.isLegendSelected === false ||
-          (this.state.isLegendSelected === true && this.state.activeLegend === data.legend),
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         calloutYValue: `${data.rectText}`,
         calloutTextColor: this._colorScale(data.value),
         calloutLegend: data.legend,

@@ -204,10 +204,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             this.setState({ activeLegend: point.legend! });
           },
           onMouseOutAction: () => {
-            this.setState({
-              showHover: false,
-              activeLegend: '',
-            });
+            this.setState({ activeLegend: '' });
           },
         };
         return legend;
@@ -229,7 +226,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._currentHoverElement = element;
     this.setState({
       /** Show the callout if highlighted arc is focused and Hide it if unhighlighted arc is focused */
-      showHover: this.state.activeLegend === data.legend || this.state.activeLegend === '',
+      showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
@@ -247,7 +244,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       this._currentHoverElement = e;
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
-        showHover: this.state.activeLegend === data.legend || this.state.activeLegend === '',
+        showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         value: data.data!.toString(),
         legend: data.legend,
         color: data.color!,
@@ -296,9 +293,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   private _getHighlightedLegend() {
-    if (this.state.selectedLegend !== '') {
-      return this.state.selectedLegend;
-    }
-    return this.state.activeLegend;
+    return this.state.selectedLegend || this.state.activeLegend;
   }
 }
