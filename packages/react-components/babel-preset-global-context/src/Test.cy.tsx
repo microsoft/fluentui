@@ -2,15 +2,16 @@
  * These tests are run with the specific cypress.config.ts file
  * in this project in order to consume @fluentui/babel-preset-global-context during bundling
  */
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mount } from '@cypress/react';
-import { ProviderContext as ProviderContextV1 } from './fake_node_modules/context-v1.0.0';
-import { ProviderContext as ProviderContextV11 } from './fake_node_modules/context-v1.1.0';
-import { ProviderContext as ProviderContextV2 } from './fake_node_modules/context-v2.0.0';
+import { ProviderContext as ProviderContextV1 } from './testing/fake_node_modules/context-v1.0.0';
+import { ProviderContext as ProviderContextV11 } from './testing/fake_node_modules/context-v1.1.0';
+import { ProviderContext as ProviderContextV2 } from './testing/fake_node_modules/context-v2.0.0';
 
-import { ProviderContext as IgnoredContextV1 } from './fake_node_modules/ignored-context-v1.0.0';
-import { ProviderContext as IgnoredContextV11 } from './fake_node_modules/ignored-context-v1.1.0';
+import { ProviderContext as IgnoredContextV1 } from './testing/fake_node_modules/ignored-context-v1.0.0';
+import { ProviderContext as IgnoredContextV11 } from './testing/fake_node_modules/ignored-context-v1.1.0';
 
 describe('babel-preset-global-context', () => {
   describe('targeted packages', () => {
@@ -18,6 +19,7 @@ describe('babel-preset-global-context', () => {
     const v1Bar = 'v1-bar';
     const v2Bar = 'v2-bar';
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     function Consumer() {
       const ctx = React.useContext(ProviderContextV1);
       const ctxV11 = React.useContext(ProviderContextV11);
@@ -32,7 +34,7 @@ describe('babel-preset-global-context', () => {
         </>
       );
     }
-
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     function Example() {
       return (
         <ProviderContextV1.Provider value={{ foo: 'red', bar: 'blue' }}>
@@ -69,7 +71,7 @@ describe('babel-preset-global-context', () => {
   // configured in cypress.config.ts
   describe('untargeted packages', () => {
     const v1Foo = 'v1-foo';
-
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     function Consumer() {
       const ctx = React.useContext(IgnoredContextV1);
       const ctxV11 = React.useContext(IgnoredContextV11);
@@ -80,7 +82,7 @@ describe('babel-preset-global-context', () => {
         </>
       );
     }
-
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     function Example() {
       return (
         <IgnoredContextV1.Provider value={{ foo: 'red' }}>
