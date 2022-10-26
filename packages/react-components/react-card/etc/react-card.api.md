@@ -102,7 +102,7 @@ export type CardProps = ComponentProps<CardSlots> & {
 // @public
 export type CardSlots = {
     root: Slot<'div', 'a' | 'button'>;
-    select?: Slot<'div'>;
+    select?: Slot<'div', 'input'>;
 };
 
 // @public
