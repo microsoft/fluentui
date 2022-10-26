@@ -33,7 +33,7 @@ const useRootStyles = makeStyles({
   root: {
     position: 'relative',
     display: 'inline-grid',
-    gridTemplateAreas: '"slider"',
+    gridTemplateAreas: '". . ." ". slider ." ". . ."',
     touchAction: 'none',
     alignItems: 'center',
     justifyItems: 'center',
@@ -54,13 +54,15 @@ const useRootStyles = makeStyles({
   horizontal: {
     minWidth: '120px',
     height: `var(${thumbSizeVar})`,
-    ...shorthands.padding(0, `calc(var(${thumbSizeVar}) / 2)`),
+    gridTemplateRows: `1fr var(${thumbSizeVar}) 1fr`,
+    gridTemplateColumns: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
   },
 
   vertical: {
     width: `var(${thumbSizeVar})`,
     minHeight: '120px',
-    gridTemplateColumns: `var(${thumbSizeVar})`,
+    gridTemplateRows: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
+    gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
     ...shorthands.padding(`calc(var(${thumbSizeVar}) / 2)`, 0),
   },
 
@@ -183,6 +185,10 @@ const useRailStyles = makeStyles({
 const useThumbStyles = makeStyles({
   thumb: {
     position: 'absolute',
+    gridRowStart: 'slider',
+    gridRowEnd: 'slider',
+    gridColumnStart: 'slider',
+    gridColumnEnd: 'slider',
     width: `var(${thumbSizeVar})`,
     height: `var(${thumbSizeVar})`,
     pointerEvents: 'none',
@@ -226,19 +232,19 @@ const useThumbStyles = makeStyles({
 const useInputStyles = makeStyles({
   input: {
     opacity: 0,
-    gridRowStart: 'slider',
-    gridRowEnd: 'slider',
-    gridColumnStart: 'slider',
-    gridColumnEnd: 'slider',
+    gridRowStart: '1',
+    gridRowEnd: '-1',
+    gridColumnStart: '1',
+    gridColumnEnd: '-1',
     ...shorthands.padding(0),
     ...shorthands.margin(0),
   },
   horizontal: {
     height: `var(${thumbSizeVar})`,
-    width: `calc(100% + var(${thumbSizeVar}))`,
+    width: '100%',
   },
   vertical: {
-    height: `calc(100% + var(${thumbSizeVar}))`,
+    height: '100%',
     width: `var(${thumbSizeVar})`,
     '-webkit-appearance': 'slider-vertical',
   },

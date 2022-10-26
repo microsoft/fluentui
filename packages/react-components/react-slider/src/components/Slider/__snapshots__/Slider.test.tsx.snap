@@ -17,11 +17,10 @@ exports[`Slider renders disabled Slider correctly 1`] = `
     />
     <div
       class="fui-Slider__rail"
-    >
-      <div
-        class="fui-Slider__thumb"
-      />
-    </div>
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;
@@ -42,11 +41,10 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
     />
     <div
       class="fui-Slider__rail"
-    >
-      <div
-        class="fui-Slider__thumb"
-      />
-    </div>
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;
@@ -68,11 +66,10 @@ exports[`Slider renders vertical Slider correctly 1`] = `
     />
     <div
       class="fui-Slider__rail"
-    >
-      <div
-        class="fui-Slider__thumb"
-      />
-    </div>
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;
