@@ -63,7 +63,6 @@ const useRootStyles = makeStyles({
     minHeight: '120px',
     gridTemplateRows: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
     gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
-    ...shorthands.padding(`calc(var(${thumbSizeVar}) / 2)`, 0),
   },
 
   enabled: {
