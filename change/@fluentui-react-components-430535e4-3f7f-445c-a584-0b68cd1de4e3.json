@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: export react-table logic hooks",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
