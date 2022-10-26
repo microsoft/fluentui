@@ -20,13 +20,11 @@ export const focusOuterBorderColor = colors.black;
 //
 // SHADOW LEVELS
 //
-export const shadowLevel1 = '0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.14)';
-export const shadowLevel2 = '0 0 2px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.14)';
-export const shadowLevel3 = '0 0 2px rgba(0,0,0,0.12),0 8px 16px rgba(0,0,0,0.14)';
-export const shadowLevel4 = '0 0 8px rgba(0,0,0,0.12), 0 32px 64px rgba(0,0,0,0.14)';
-
-// Clarification needed before opening PR
-export const shadowLevel1Dark = '0 0 2px rgba(0,0,0,0.30), 0 2px 4px rgba(0,0,0,0.25)';
+export const shadowLevel1 = '0 .2rem .4rem -.075rem rgba(0, 0, 0, .1)';
+export const shadowLevel2 = '0 .4rem .7rem -.1rem rgba(0, 0, 0, .1)';
+export const shadowLevel3 = '0 .8rem 1rem -.2rem rgba(0, 0, 0, .1)';
+export const shadowLevel4 = '0 1.6rem 1.8rem -.4rem rgba(0, 0, 0, .1)';
+export const shadowLevel1Dark = '0 .2rem .4rem -.075rem rgba(0, 0, 0, .25)';
 
 export const shadow2 = '0 0 2px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .14)';
 export const shadow4 = '0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .14)';

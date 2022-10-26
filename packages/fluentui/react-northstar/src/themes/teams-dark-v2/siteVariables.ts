@@ -148,3 +148,9 @@ export const colorScheme = {
     backgroundDisabled1: colors.grey['800'],
   },
 };
+
+// SHADOW LEVELS
+export const shadowLevel1 = '0 0 2px rgba(0,0,0,0.30), 0 2px 4px rgba(0,0,0,0.25)';
+export const shadowLevel2 = '0 0 2px rgba(0,0,0,0.24), 0 4px 8px rgba(0,0,0,0.28)';
+export const shadowLevel3 = '0 0 2px rgba(0,0,0,0.24), 0 8px 16px rgba(0,0,0,0.28)';
+export const shadowLevel4 = '0 0 8px rgba(0,0,0,0.24), 0 32px 64px rgba(0,0,0,0.28)';
