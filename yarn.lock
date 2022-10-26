@@ -22295,7 +22295,7 @@ react@16.14.0, react@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-react@17.0.2, react@^17.0.2:
+react@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
@@ -24304,15 +24304,14 @@ storybook-addon-performance@0.16.1:
     tiny-invariant "^1.1.0"
     xstate "^4.22.0"
 
-storywright@0.0.23-beta.4:
-  version "0.0.23-beta.4"
-  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.4.tgz#89293566e019e68e5af7386ce18b5942c7349537"
-  integrity sha512-uJvJmRlJJU+8sVCK1XRaAZZqZd5vJsV8T23iSkDwsbdLXrTL4+DYtTwFQa1wwCVpHJG02LSjaE48tmdmIxaB+g==
+storywright@0.0.23-beta.5:
+  version "0.0.23-beta.5"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.5.tgz#7be1f5ef6ebd371d302a6009079e5fb2a0e91c2f"
+  integrity sha512-9tSmEwBnQH71JI4JbgHrXFEHZaG9yeehtxaFk5vGONKBXpYpgHT4oaV2pQ0qydwJrpbGt36eKFAKFmMZVXa8LQ==
   dependencies:
     "@types/react" "^17.0.8"
     playwright "^1.27.0"
     prop-types "^15.6.0"
-    react "^17.0.2"
     yargs "^16.2.0"
 
 stream-browserify@^2.0.1:
