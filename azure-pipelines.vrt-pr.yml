@@ -94,7 +94,7 @@ jobs:
       #   displayName: 'Build'
       # TODO: Currenly LKG CI build contains static build ID
 
-      - bash: node node_modules/screenshotdiff/lib/index.js pr --clientType "fluentui" --buildId $(Build.BuildId) --lkgCIBuild 271302
+      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "fluentui" --buildId $(Build.BuildId) --lkgCIBuild 271302
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
