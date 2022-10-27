@@ -18,14 +18,14 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
 
   const shouldRestrictTriggerAction = React.useCallback(
     (event: CardOnSelectEvent) => {
-      if (!(cardRef.current && selectableRef.current)) {
+      if (!cardRef.current) {
         return false;
       }
 
       const focusableElements = findAllFocusable(cardRef.current, Boolean);
       const target = event.target as HTMLElement;
       const isTargetInFocusableGroup = focusableElements.some(element => element.contains(target));
-      const isTargetInSelectableSlot = selectableRef.current.contains(target);
+      const isTargetInSelectableSlot = selectableRef?.current?.contains(target);
 
       return isTargetInFocusableGroup && !isTargetInSelectableSlot;
     },
