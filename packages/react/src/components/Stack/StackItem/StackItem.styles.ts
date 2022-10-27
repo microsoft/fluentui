@@ -40,7 +40,7 @@ export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tok
         alignSelf: alignMap[align] || align,
       },
       order && {
-        order: order,
+        order,
       },
       className,
     ],
