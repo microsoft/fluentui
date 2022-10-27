@@ -1,4 +1,4 @@
-import { Table } from '../..';
+import { Table } from '@fluentui/react-components/unstable';
 import descriptionMd from './TableDescription.md';
 
 export { Default } from './Default.stories';

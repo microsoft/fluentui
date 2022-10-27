@@ -35,7 +35,7 @@
     "@fluentui/react-charting": "^5.14.7",
     "@fluentui/react-docsite-components": "^8.10.17",
     "@fluentui/react-experiments": "^8.14.12",
-    "@fluentui/react-file-type-icons": "^8.7.11",
+    "@fluentui/react-file-type-icons": "^8.8.0",
     "@fluentui/react-focus": "^8.8.8",
     "@fluentui/react-hooks": "^8.6.12",
     "@fluentui/react-icons-mdl2": "^1.3.25",

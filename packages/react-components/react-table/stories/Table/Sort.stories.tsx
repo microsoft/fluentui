@@ -9,14 +9,52 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  useTable,
+  ColumnDefinition,
+  ColumnId,
+  useSort,
+  TableCellLayout,
+} from '@fluentui/react-components/unstable';
 
-const items = [
+type FileCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
-    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdated: { label: '7h ago', timestamp: 3 },
     lastUpdate: {
       label: 'You edited this',
       icon: <EditRegular />,
@@ -43,7 +81,7 @@ const items = [
   {
     file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
     author: { label: 'Jane Doe', status: 'offline' },
-    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 1 },
     lastUpdate: {
       label: 'You shared this in a Teams chat',
       icon: <PeopleRegular />,
@@ -51,25 +89,66 @@ const items = [
   },
 ];
 
-const columns = [
-  { columnKey: 'file', label: 'File' },
-  { columnKey: 'author', label: 'Author' },
-  { columnKey: 'lastUpdated', label: 'Last updated' },
-  { columnKey: 'lastUpdate', label: 'Last update' },
+const columns: ColumnDefinition<Item>[] = [
+  {
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+  },
+  {
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+  },
+  {
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+  },
+  {
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+  },
 ];
 
-export const NonNativeElements = () => {
+export const Sort = () => {
+  const {
+    getRows,
+    sort: { getSortDirection, toggleColumnSort, sort },
+  } = useTable(
+    {
+      columns,
+      items,
+    },
+    [useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
+  );
+
+  const headerSortProps = (columnId: ColumnId) => ({
+    onClick: () => {
+      toggleColumnSort(columnId);
+    },
+    sortDirection: getSortDirection(columnId),
+  });
+
+  const rows = sort(getRows());
+
   return (
-    <Table noNativeElements>
+    <Table sortable>
       <TableHeader>
         <TableRow>
-          {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-          ))}
+          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {items.map(item => (
+        {rows.map(({ item }) => (
           <TableRow key={item.file.label}>
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>

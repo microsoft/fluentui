@@ -15,7 +15,7 @@ export const NoFocusableElement = () => {
   return (
     <>
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open modal dialog</Button>
         </DialogTrigger>
         <DialogSurface>
@@ -30,7 +30,7 @@ export const NoFocusableElement = () => {
         </DialogSurface>
       </Dialog>
       <Dialog modalType="non-modal">
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open non-modal dialog</Button>
         </DialogTrigger>
         <DialogSurface>

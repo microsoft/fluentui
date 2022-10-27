@@ -18,8 +18,10 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-} from '../..';
-import { useTable, ColumnDefinition, RowId, useSelection } from '../../hooks';
+  useTable,
+  ColumnDefinition,
+  useSelection,
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
@@ -102,11 +104,7 @@ const columns: ColumnDefinition<Item>[] = [
   },
 ];
 
-export const MultipleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<RowId>([0, 1]),
-  );
-
+export const MultipleSelect = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
@@ -118,8 +116,7 @@ export const MultipleSelectControlled = () => {
     [
       useSelection({
         selectionMode: 'multiselect',
-        selectedItems: selectedRows,
-        onSelectionChange: setSelectedRows,
+        defaultSelectedItems: new Set([0, 1]),
       }),
     ],
   );
@@ -135,6 +132,7 @@ export const MultipleSelectControlled = () => {
     selected: isRowSelected(row.rowId),
   }));
 
+  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
@@ -158,7 +156,7 @@ export const MultipleSelectControlled = () => {
             onClick={onClick}
             onKeyDown={onKeyDown}
             aria-selected={selected}
-            appearance={selected ? 'neutral' : 'none'}
+            appearance={selected ? 'brand' : 'none'}
           >
             <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell>
