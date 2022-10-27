@@ -2,6 +2,35 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 18:05:51 GMT",
+      "tag": "@fluentui/react-components_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "326827f375a50719f96395a4d92ed941611d602b",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bd5530ed0c9b2435d14f6e87878324343547ca34",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "32865fdfad96c52b75ffdce36120e30940871229",
+            "comment": "feat: export react-table logic hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 22:09:49 GMT",
       "tag": "@fluentui/react-components_v9.6.0",
       "version": "9.6.0",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { SpinButton, spinButtonClassNames } from '@fluentui/react-spinbutton';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
@@ -9,7 +9,7 @@ const cropTo = '.testWrapper';
 storiesOf('SpinButton Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <StoryWright
+    <Screener
       steps={new Steps()
         .snapshot('rest', { cropTo })
         .hover('input')
@@ -37,7 +37,7 @@ storiesOf('SpinButton Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory('Appearance: outline (default)', () => <SpinButton value={10} />, {
     includeRtl: true,
@@ -88,7 +88,7 @@ storiesOf('SpinButton Converged', module)
 storiesOf('SpinButton Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <StoryWright
+    <Screener
       steps={new Steps()
         .snapshot('rest', { cropTo })
         .hover('input')
@@ -116,7 +116,7 @@ storiesOf('SpinButton Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory('At Max Bound', () => <SpinButton value={10} max={10} />, {
     includeRtl: true,
@@ -128,7 +128,7 @@ storiesOf('SpinButton Converged', module)
 storiesOf('SpinButton Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <StoryWright
+    <Screener
       steps={new Steps()
         .snapshot('rest', { cropTo })
         .hover('input')
@@ -156,7 +156,7 @@ storiesOf('SpinButton Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory('At Min Bound', () => <SpinButton value={10} min={10} />, {
     includeRtl: true,
@@ -166,7 +166,7 @@ storiesOf('SpinButton Converged', module)
 
 storiesOf('SpinButton Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => <StoryWright steps={new Steps().snapshot('default', { cropTo }).end()}>{story()}</StoryWright>)
+  .addDecorator(story => <Screener steps={new Steps().snapshot('default', { cropTo }).end()}>{story()}</Screener>)
   .addStory('Size: small', () => <SpinButton size="small" value={10} />, {
     includeRtl: true,
     includeHighContrast: true,

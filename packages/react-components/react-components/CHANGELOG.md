@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 25 Oct 2022 22:09:49 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Oct 2022 18:05:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.1)
+
+Wed, 26 Oct 2022 18:05:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.0..@fluentui/react-components_v9.6.1)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: export react-table logic hooks ([PR #25386](https://github.com/microsoft/fluentui/pull/25386) by bernardo.sunderhus@gmail.com)
 
 ## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.0)
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Radio } from '@fluentui/react-radio';
 import {
@@ -27,11 +27,11 @@ type FieldComponentProps = Pick<
  */
 const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldComponentProps>) =>
   storiesOf(name, module)
-    .addDecorator(story => <StoryWright steps={new Steps().snapshot('default').end()}>{story()}</StoryWright>)
+    .addDecorator(story => <Screener steps={new Steps().snapshot('default').end()}>{story()}</Screener>)
     .addDecorator(story => (
       <div style={{ display: 'flex' }}>
         <div className="testWrapper" style={{ padding: '10px', width: '480px' }}>
-          <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+          <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
         </div>
       </div>
     ))

@@ -1,13 +1,13 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles } from '@griffel/react';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const steps = new Steps()
+const steps = new Screener.Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
   .hover('#button-id')
   .snapshot('hover', { cropTo: '.testWrapper' })
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 storiesOf('Button Converged', module)
-  .addDecorator(story => <StoryWright steps={steps}>{story()}</StoryWright>)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <Button id={buttonId}>Hello, world</Button>, {
     includeRtl: true,
     includeHighContrast: true,
@@ -193,8 +193,8 @@ storiesOf('Button Converged', module)
 
 storiesOf('CompoundButton Converged', module)
   .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+    <Screener
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         // https://github.com/microsoft/fluentui/issues/21998
         // .hover('#button-id')
@@ -204,7 +204,7 @@ storiesOf('CompoundButton Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory(
     'Default',
@@ -240,7 +240,7 @@ storiesOf('CompoundButton Converged', module)
   );
 
 storiesOf('CompoundButton Converged', module)
-  .addDecorator(story => <StoryWright steps={steps}>{story()}</StoryWright>)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Outline', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="outline">
       Hello, world
@@ -353,7 +353,7 @@ storiesOf('CompoundButton Converged', module)
   );
 
 storiesOf('ToggleButton Converged', module)
-  .addDecorator(story => <StoryWright steps={steps}>{story()}</StoryWright>)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>, {
     includeRtl: true,
     includeHighContrast: true,
@@ -479,7 +479,7 @@ storiesOf('ToggleButton Converged', module)
   ));
 
 storiesOf('MenuButton Converged', module)
-  .addDecorator(story => <StoryWright steps={steps}>{story()}</StoryWright>)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <MenuButton id={buttonId}>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <MenuButton id={buttonId} shape="circular">

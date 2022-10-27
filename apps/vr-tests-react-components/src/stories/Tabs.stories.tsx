@@ -1,12 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { TabList, Tab } from '@fluentui/react-tabs';
 
 storiesOf('TabList and Tab Converged', module)
   .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+    <Screener
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.mouse-target')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -16,7 +16,7 @@ storiesOf('TabList and Tab Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory(
     'Default',

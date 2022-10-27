@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
 import { MoreHorizontal24Filled, Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body1, Caption1 } from '@fluentui/react-text';
@@ -37,11 +37,11 @@ const SampleCardContent = () => (
 
 storiesOf('Card Converged', module)
   .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '600px' }}>
         {story()}
       </div>
-    </StoryWright>
+    </Screener>
   ))
   .addStory('card templates', () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -193,8 +193,8 @@ storiesOf('Card Converged', module)
 
 storiesOf('Card Converged', module)
   .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+    <Screener
+      steps={new Screener.Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
         .hover('[role="group"]')
         .snapshot('focused', { cropTo: '.testWrapper' })
@@ -205,7 +205,7 @@ storiesOf('Card Converged', module)
       <div className="testWrapper" style={{ width: '300px' }}>
         {story()}
       </div>
-    </StoryWright>
+    </Screener>
   ))
   .addStory(
     'appearance interactive - Filled',

@@ -6,6 +6,7 @@
   "scripts": {
     "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
     "build": "build-storybook -o dist/storybook",
+    "convert": "bash convertStoriesToStoryWright.sh",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
@@ -16,7 +17,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "storywright": "0.0.23-beta.5"
+    "storywright": "0.0.23-beta.6"
   },
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.9",

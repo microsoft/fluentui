@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Switch } from '@fluentui/react-switch';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
@@ -7,7 +7,7 @@ import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 storiesOf('Switch Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <StoryWright
+    <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.test-class')
@@ -18,7 +18,7 @@ storiesOf('Switch Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory(
     'Enabled and unchecked',

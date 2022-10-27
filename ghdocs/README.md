@@ -1,4 +1,4 @@
-## Docs have been moved to Wiki repo.1
+## Docs have been moved to Wiki repo.
 
 ### https://github.com/microsoft/fluentui/wiki
 

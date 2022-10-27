@@ -1,13 +1,13 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
 import { CircleRegular } from '@fluentui/react-icons';
 
 storiesOf('Accordion Converged', module)
   .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+    <Screener
+      steps={new Screener.Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
         .focus('#opened-btn')
         .snapshot('focus opened', { cropTo: '.testWrapper' })
@@ -18,7 +18,7 @@ storiesOf('Accordion Converged', module)
       <div className="testWrapper" style={{ width: '300px' }}>
         {story()}
       </div>
-    </StoryWright>
+    </Screener>
   ))
 
   .addStory(
@@ -40,11 +40,11 @@ storiesOf('Accordion Converged', module)
 
 storiesOf('Accordion Converged', module)
   .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '300px' }}>
         {story()}
       </div>
-    </StoryWright>
+    </Screener>
   ))
 
   .addStory(

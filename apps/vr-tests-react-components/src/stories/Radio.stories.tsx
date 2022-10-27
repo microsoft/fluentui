@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Radio, RadioGroup } from '@fluentui/react-radio';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
@@ -7,7 +7,7 @@ import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorato
 storiesOf('Radio Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <StoryWright
+    <Screener
       steps={new Steps()
         .snapshot('rest', { cropTo: '.testWrapper' })
         .hover('input')
@@ -17,7 +17,7 @@ storiesOf('Radio Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory('unchecked', () => <Radio label="Unchecked" />, {
     includeDarkMode: true,
@@ -35,7 +35,7 @@ storiesOf('Radio Converged', module)
 storiesOf('Radio Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory('disabled+checked', () => <Radio disabled checked label="Disabled checked" />, {
     includeDarkMode: true,

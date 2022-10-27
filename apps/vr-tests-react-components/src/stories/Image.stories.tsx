@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { Image } from '@fluentui/react-image';
 
 const imageUrl = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
 storiesOf('Image Converged', module)
   .addDecorator((story: () => React.ReactNode) => (
-    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory('Default', () => (
     <Image src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png" alt="Placeholder image" />

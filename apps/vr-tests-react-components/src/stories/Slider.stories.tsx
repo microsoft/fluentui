@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Slider } from '@fluentui/react-slider';
 
 storiesOf('Slider Converged', module)
   .addDecorator(story => (
-    <StoryWright
+    <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.test-class')
@@ -16,7 +16,7 @@ storiesOf('Slider Converged', module)
         .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory('Root', () => <Slider className="test-class" defaultValue={30} />, {
     includeRtl: true,

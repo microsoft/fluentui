@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Label } from '@fluentui/react-label';
 
 storiesOf('Label Converged', module)
   .addDecorator(story =>
     // prettier-ignore
-    <StoryWright
-      steps={new Steps()
+    <Screener
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </StoryWright>,
+    </Screener>,
   )
   .addStory('Root', () => <Label>I'm a label</Label>, {
     includeRtl: true,
