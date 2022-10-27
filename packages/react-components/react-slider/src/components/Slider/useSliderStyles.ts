@@ -117,7 +117,9 @@ const useRailStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     pointerEvents: 'none',
     gridRowStart: '2',
+    gridRowEnd: '2',
     gridColumnStart: '2',
+    gridColumnEnd: '2',
     position: 'relative',
     forcedColorAdjust: 'none',
     // Background gradient represents the progress of the slider
@@ -181,8 +183,10 @@ const useRailStyles = makeStyles({
 const useThumbStyles = makeStyles({
   thumb: {
     gridRowStart: '2',
+    gridRowEnd: '2',
     gridColumnStart: '2',
-    position: 'relative',
+    gridColumnEnd: '2',
+    position: 'absolute',
     width: `var(${thumbSizeVar})`,
     height: `var(${thumbSizeVar})`,
     pointerEvents: 'none',
@@ -209,10 +213,12 @@ const useThumbStyles = makeStyles({
     },
   },
   horizontal: {
-    left: `calc(var(${sliderProgressVar}) - 50%)`,
+    transform: 'translateX(-50%)',
+    left: `var(${sliderProgressVar})`,
   },
   vertical: {
-    bottom: `calc(var(${sliderProgressVar}) - 50%)`,
+    transform: 'translateY(50%)',
+    bottom: `var(${sliderProgressVar})`,
   },
 });
 
