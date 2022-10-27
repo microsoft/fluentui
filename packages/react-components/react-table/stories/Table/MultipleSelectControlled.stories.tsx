@@ -18,8 +18,11 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-} from '../..';
-import { useTable, ColumnDefinition, RowId, useSelection } from '../../src/hooks';
+  useTable,
+  ColumnDefinition,
+  RowId,
+  useSelection,
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;

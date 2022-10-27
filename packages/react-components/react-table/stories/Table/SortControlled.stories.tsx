@@ -9,9 +9,19 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, ColumnId, SortState, useSort } from '../../src/hooks';
-import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  useTable,
+  ColumnDefinition,
+  ColumnId,
+  useSort,
+  TableCellLayout,
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
@@ -107,7 +117,10 @@ const columns: ColumnDefinition<Item>[] = [
 ];
 
 export const SortControlled = () => {
-  const [sortState, setSortState] = React.useState<SortState>({
+  const [sortState, setSortState] = React.useState<{
+    sortDirection: 'ascending' | 'descending';
+    sortColumn: ColumnId | undefined;
+  }>({
     sortDirection: 'ascending' as const,
     sortColumn: 'file',
   });

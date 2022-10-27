@@ -9,7 +9,15 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar, Button, useArrowNavigationGroup } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableCellLayout,
+} from '@fluentui/react-components/unstable';
 
 const items = [
   {

@@ -9,9 +9,20 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition, RowId, useSelection } from '../../src/hooks';
-import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableSelectionCell,
+  useTable,
+  ColumnDefinition,
+  RowId,
+  useSelection,
+  TableCellLayout,
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
