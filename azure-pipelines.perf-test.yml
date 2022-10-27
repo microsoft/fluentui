@@ -65,7 +65,7 @@ jobs:
           yarn perf:test
         condition: eq(variables.isPR, true)
         workingDirectory: packages/fluentui/perf-test-northstar
-        displayName: Run Perf Test (Northstar)
+        displayName: Run Performance Test (Northstar)
 
       - task: AzureUpload@2
         condition: eq(variables.isPR, true)
