@@ -6,12 +6,11 @@ import {
   Caption1,
   Subtitle1,
   Avatar,
-  Button,
   Text,
   mergeClasses,
 } from '@fluentui/react-components';
 import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-card';
-import { MoreHorizontal20Filled, Comment16Regular } from '@fluentui/react-icons';
+import { Comment16Regular } from '@fluentui/react-icons';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -89,7 +88,6 @@ const CardExample = (props: CardProps) => {
             <span>Colin replied to a comment</span>
           </Caption1>
         }
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
       />
     </Card>
   );
