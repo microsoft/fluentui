@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add support for wbtx file",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "51342814+jieleiwang@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
