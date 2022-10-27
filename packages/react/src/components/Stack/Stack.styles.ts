@@ -7,22 +7,24 @@ const nameMap: { [key: string]: string } = {
   end: 'flex-end',
 };
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   root: 'ms-Stack',
   inner: 'ms-Stack-inner',
+  child: 'ms-Stack-child',
 };
 
 export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackStylesReturnType => {
   const {
-    verticalFill,
-    horizontal,
-    reversed,
-    grow,
-    wrap,
-    horizontalAlign,
-    verticalAlign,
-    disableShrink,
     className,
+    disableShrink,
+    enableScopedSelectors,
+    grow,
+    horizontal,
+    horizontalAlign,
+    reversed,
+    verticalAlign,
+    verticalFill,
+    wrap,
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -44,10 +46,15 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
     textOverflow: 'ellipsis',
   };
 
-  // selectors to be applied regardless of wrap or direction
   const disableShrinkStyles = {
     // flexShrink styles are applied by the StackItem
-    '> *:not(.ms-StackItem)': {
+    [`> *:not(.ms-StackItem)`]: {
+      flexShrink: 0,
+    },
+  };
+  const disableShrinkScopedStyles = {
+    // flexShrink styles are applied by the StackItem
+    [`> .${GlobalClassNames.child}:not(.ms-StackItem)`]: {
       flexShrink: 0,
     },
   };
@@ -97,13 +104,52 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
           width: columnGap.value === 0 ? '100%' : `calc(100% + ${columnGap.value}${columnGap.unit})`,
           maxWidth: '100vw',
 
-          '> *': {
+          [`> .${GlobalClassNames.child}`]: {
             margin: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
 
             ...childStyles,
           },
         },
-        disableShrink && disableShrinkStyles,
+        !enableScopedSelectors && [
+          {
+            '> *': {
+              margin: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
+
+              ...childStyles,
+            },
+          },
+          disableShrink && disableShrinkStyles,
+          horizontal && {
+            '> *': {
+              maxWidth: columnGap.value === 0 ? '100%' : `calc(100% - ${columnGap.value}${columnGap.unit})`,
+            },
+          },
+          !horizontal && {
+            '> *': {
+              maxHeight: rowGap.value === 0 ? '100%' : `calc(100% - ${rowGap.value}${rowGap.unit})`,
+            },
+          },
+        ],
+        enableScopedSelectors && [
+          {
+            [`> .${GlobalClassNames.child}`]: {
+              margin: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
+
+              ...childStyles,
+            },
+          },
+          disableShrink && disableShrinkScopedStyles,
+          horizontal && {
+            [`> .${GlobalClassNames.child}`]: {
+              maxWidth: columnGap.value === 0 ? '100%' : `calc(100% - ${columnGap.value}${columnGap.unit})`,
+            },
+          },
+          !horizontal && {
+            [`> .${GlobalClassNames.child}`]: {
+              maxHeight: rowGap.value === 0 ? '100%' : `calc(100% - ${rowGap.value}${rowGap.unit})`,
+            },
+          },
+        ],
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign,
         },
@@ -115,18 +161,10 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
 
           // avoid unnecessary calc() calls if vertical gap is 0
           height: rowGap.value === 0 ? '100%' : `calc(100% + ${rowGap.value}${rowGap.unit})`,
-
-          '> *': {
-            maxWidth: columnGap.value === 0 ? '100%' : `calc(100% - ${columnGap.value}${columnGap.unit})`,
-          },
         },
         !horizontal && {
           flexDirection: reversed ? 'column-reverse' : 'column',
           height: `calc(100% + ${rowGap.value}${rowGap.unit})`,
-
-          '> *': {
-            maxHeight: rowGap.value === 0 ? '100%' : `calc(100% - ${rowGap.value}${rowGap.unit})`,
-          },
         },
       ],
     } as IStackStyles;
@@ -145,35 +183,61 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
         maxHeight,
         padding: parsePadding(padding, theme),
         boxSizing: 'border-box',
-
-        '> *': childStyles,
       },
-      disableShrink && disableShrinkStyles,
       grow && {
         flexGrow: grow === true ? 1 : grow,
       },
-      horizontal &&
-        columnGap.value > 0 && {
-          // apply gap margin to every direct child except the first direct child if the direction is not reversed,
-          // and the last direct one if it is
-          [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: {
-            marginLeft: `${columnGap.value}${columnGap.unit}`,
-          },
-        },
-      !horizontal &&
-        rowGap.value > 0 && {
-          // apply gap margin to every direct child except the first direct child if the direction is not reversed,
-          // and the last direct one if it is
-          [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: {
-            marginTop: `${rowGap.value}${rowGap.unit}`,
-          },
-        },
+
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign,
       },
       verticalAlign && {
         [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign,
       },
+      !enableScopedSelectors && [
+        { '> *': childStyles },
+        disableShrink && disableShrinkStyles,
+        horizontal &&
+          columnGap.value > 0 && {
+            // apply gap margin to every direct child except the first direct child if the direction is not reversed,
+            // and the last direct one if it is
+            [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: {
+              marginLeft: `${columnGap.value}${columnGap.unit}`,
+            },
+          },
+        !horizontal &&
+          rowGap.value > 0 && {
+            // apply gap margin to every direct child except the first direct child if the direction is not reversed,
+            // and the last direct one if it is
+            [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: {
+              marginTop: `${rowGap.value}${rowGap.unit}`,
+            },
+          },
+      ],
+      enableScopedSelectors && [
+        { [`> .${GlobalClassNames.child}`]: childStyles },
+        disableShrink && disableShrinkScopedStyles,
+        horizontal &&
+          columnGap.value > 0 && {
+            // apply gap margin to every direct child except the first direct child if the direction is not reversed,
+            // and the last direct one if it is
+            [reversed
+              ? `> .${GlobalClassNames.child}:not(:last-child)`
+              : `> .${GlobalClassNames.child}:not(:first-child)`]: {
+              marginLeft: `${columnGap.value}${columnGap.unit}`,
+            },
+          },
+        !horizontal &&
+          rowGap.value > 0 && {
+            // apply gap margin to every direct child except the first direct child if the direction is not reversed,
+            // and the last direct one if it is
+            [reversed
+              ? `> .${GlobalClassNames.child}:not(:last-child)`
+              : `> .${GlobalClassNames.child}:not(:first-child)`]: {
+              marginTop: `${rowGap.value}${rowGap.unit}`,
+            },
+          },
+      ],
       className,
     ],
     // TODO: this cast may be hiding some potential issues with styling and name
