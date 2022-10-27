@@ -8,13 +8,21 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button, useArrowNavigationGroup } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
+import { Avatar } from '@fluentui/react-components';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableCellLayout,
+} from '@fluentui/react-components/unstable';
 
 const items = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
-    author: { label: 'Max Mustermann', status: 'available' },
+    author: { label: 'Max Mustermann', status: 'available' as const },
     lastUpdated: { label: '7h ago', timestamp: 1 },
     lastUpdate: {
       label: 'You edited this',
@@ -23,7 +31,7 @@ const items = [
   },
   {
     file: { label: 'Thursday presentation', icon: <FolderRegular /> },
-    author: { label: 'Erika Mustermann', status: 'busy' },
+    author: { label: 'Erika Mustermann', status: 'busy' as const },
     lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
     lastUpdate: {
       label: 'You recently opened this',
@@ -32,7 +40,7 @@ const items = [
   },
   {
     file: { label: 'Training recording', icon: <VideoRegular /> },
-    author: { label: 'John Doe', status: 'away' },
+    author: { label: 'John Doe', status: 'away' as const },
     lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
     lastUpdate: {
       label: 'You recently opened this',
@@ -41,7 +49,7 @@ const items = [
   },
   {
     file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
-    author: { label: 'Jane Doe', status: 'offline' },
+    author: { label: 'Jane Doe', status: 'offline' as const },
     lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
     lastUpdate: {
       label: 'You shared this in a Teams chat',
@@ -57,42 +65,30 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const CellNavigation = () => {
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
-
+export const SizeSmall = () => {
   return (
-    <Table {...keyboardNavAttr}>
+    <Table size="small">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
             <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
           ))}
-          <TableHeaderCell />
         </TableRow>
       </TableHeader>
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell tabIndex={0}>
+            <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>
-              <TableCellLayout
-                media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                }
-              >
+            <TableCell>
+              <TableCellLayout media={<Avatar name={item.author.label} badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
-            <TableCell tabIndex={0}>
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellLayout>
-                <Button icon={<EditRegular />}>Edit</Button>
-              </TableCellLayout>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}

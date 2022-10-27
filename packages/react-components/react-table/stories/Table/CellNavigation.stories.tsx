@@ -7,9 +7,8 @@ import {
   PeopleRegular,
   DocumentPdfRegular,
   VideoRegular,
-  MoreHorizontalRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, Button, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -17,9 +16,8 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  TableCellActions,
   TableCellLayout,
-} from '../..';
+} from '@fluentui/react-components/unstable';
 
 const items = [
   {
@@ -67,30 +65,26 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const PrimaryCell = () => {
+export const CellNavigation = () => {
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+
   return (
-    <Table>
+    <Table {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           {columns.map(column => (
             <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
           ))}
+          <TableHeaderCell />
         </TableRow>
       </TableHeader>
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell>
-              <TableCellLayout media={item.file.icon} description="My Organization" appearance="primary">
-                {item.file.label}
-              </TableCellLayout>
-              <TableCellActions>
-                <Button icon={<EditRegular />} appearance="subtle" />
-                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
-              </TableCellActions>
+            <TableCell tabIndex={0}>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-
-            <TableCell>
+            <TableCell tabIndex={0}>
               <TableCellLayout
                 media={
                   <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
@@ -99,9 +93,14 @@ export const PrimaryCell = () => {
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
+            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
+            <TableCell tabIndex={0}>
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout>
+                <Button icon={<EditRegular />}>Edit</Button>
+              </TableCellLayout>
             </TableCell>
           </TableRow>
         ))}
