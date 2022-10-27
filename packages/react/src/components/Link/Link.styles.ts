@@ -89,6 +89,11 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             '&:link, &:visited': {
               pointerEvents: 'none',
             },
+
+            [HighContrastSelector]: {
+              // We need to specify the color in High Contrast because of the case of Links rendering as buttons.
+              color: 'GrayText',
+            },
           },
         },
       ],

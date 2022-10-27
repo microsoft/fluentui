@@ -24,7 +24,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
   const { isUsingTsSolutionConfigs, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
 
-  if (isUsingTsSolutionConfigs) {
+  if (isUsingTsSolutionConfigs && tsConfig) {
     logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
 
     const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;

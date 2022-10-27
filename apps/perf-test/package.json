@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@fluentui/example-data": "^8.4.2",
-    "@fluentui/react": "^8.97.2",
+    "@fluentui/react": "^8.98.8",
     "@fluentui/scripts": "^1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",

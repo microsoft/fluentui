@@ -6,16 +6,16 @@ import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 export const WithPopover = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props} size="small">
-    <Popover>
+    <Popover withArrow>
       <PopoverTrigger>
-        <ToolbarButton>Click here</ToolbarButton>
+        <ToolbarButton appearance="primary">See more...</ToolbarButton>
       </PopoverTrigger>
       <PopoverSurface>
         <div>Popover content</div>
       </PopoverSurface>
     </Popover>
     <ToolbarDivider />
-    <Popover>
+    <Popover withArrow>
       <PopoverTrigger>
         <ToolbarButton icon={<CalendarMonthRegular />} />
       </PopoverTrigger>

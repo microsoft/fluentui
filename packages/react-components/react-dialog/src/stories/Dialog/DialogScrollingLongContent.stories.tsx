@@ -7,8 +7,8 @@ import {
   DialogBody,
   DialogContent,
   DialogActions,
-} from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+  Button,
+} from '@fluentui/react-components';
 
 export const ScrollingLongContent = () => {
   return (

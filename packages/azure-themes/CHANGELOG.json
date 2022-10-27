@@ -2,6 +2,141 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 07:52:54 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.17",
+      "version": "8.5.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.8",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 07:43:18 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.16",
+      "version": "8.5.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.7",
+            "commit": "fd0e28e497856c9ddb6c82d0b6b336f5c263fb7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Oct 2022 07:45:24 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.15",
+      "version": "8.5.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.6",
+            "commit": "e255da7cf629534ebaaac05af3b5bb9a2f7def71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Oct 2022 07:44:53 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.14",
+      "version": "8.5.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.5",
+            "commit": "dd063ac623ca90e1fe919ff4471eae017bbf5576"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 07:43:14 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.13",
+      "version": "8.5.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.4",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Oct 2022 07:49:17 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.12",
+      "version": "8.5.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.3",
+            "commit": "e14e5348f1f08aee8da7cb911a24a811d9f9cb09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Oct 2022 07:44:02 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.11",
+      "version": "8.5.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.2",
+            "commit": "82650ef8b3d436c039e33f3eb8a658a3d878064f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 07:45:27 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.10",
+      "version": "8.5.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.1",
+            "commit": "4f46035db0cd28a5987932120c68755e024869c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:24 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.9",
+      "version": "8.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.98.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Oct 2022 07:45:03 GMT",
       "tag": "@fluentui/azure-themes_v8.5.8",
       "version": "8.5.8",

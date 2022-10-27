@@ -144,6 +144,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
+          /** Keep the callout updated with details of focused/hovered arc */
+          shouldUpdateWhenHidden={true}
           {...this.props.calloutProps!}
           {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
@@ -237,12 +239,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _focusCallback = (data: IChartDataPoint, id: string, element: SVGPathElement): void => {
     this._currentHoverElement = element;
     this.setState({
-      showHover: true,
+      /** Show the callout if highlighted arc is focused and Hide it if unhighlighted arc is focused */
+      showHover: this.state.activeLegend === data.legend || this.state.activeLegend === '',
       value: data.data!.toString(),
       legend: data.legend,
-      activeLegend: data.legend,
       color: data.color!,
-      selectedLegend: data.legend!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
       focusedArcId: id,
@@ -256,25 +257,24 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       this._calloutAnchorPoint = data;
       this._currentHoverElement = e;
       this.setState({
-        showHover: true,
+        /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
+        showHover: this.state.activeLegend === data.legend || this.state.activeLegend === '',
         value: data.data!.toString(),
-        selectedLegend: data.legend!,
         legend: data.legend,
         color: data.color!,
         xCalloutValue: data.xAxisCalloutData!,
         yCalloutValue: data.yAxisCalloutData!,
-        activeLegend: data.legend,
         dataPointCalloutProps: data,
         callOutAccessibilityData: data.callOutAccessibilityData!,
       });
     }
   };
   private _onBlur = (): void => {
-    this.setState({ showHover: false, focusedArcId: '', activeLegend: '', selectedLegend: 'none' });
+    this.setState({ focusedArcId: '' });
   };
 
   private _hoverLeave(): void {
-    this.setState({ activeLegend: '', selectedLegend: 'none', focusedArcId: '' });
+    /**/
   }
 
   private _handleChartMouseLeave = () => {

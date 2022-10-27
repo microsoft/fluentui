@@ -2,6 +2,87 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:28 GMT",
+      "tag": "@fluentui/react-badge_v9.0.10",
+      "version": "9.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1420e05c305e7396bc62028ff2563d79fbc1cc70",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 08:39:27 GMT",
+      "tag": "@fluentui/react-badge_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.1.1",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.1.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 11:02:43 GMT",
+      "tag": "@fluentui/react-badge_v9.0.8",
+      "version": "9.0.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1a527d440e0497ef8046b3ce240492241e7a04ac",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.1.1",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Oct 2022 22:24:35 GMT",
       "tag": "@fluentui/react-badge_v9.0.7",
       "version": "9.0.7",

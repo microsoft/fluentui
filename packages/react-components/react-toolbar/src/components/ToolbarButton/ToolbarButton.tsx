@@ -2,14 +2,14 @@ import * as React from 'react';
 import type { ToolbarButtonProps } from './ToolbarButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderButton_unstable, useButtonStyles_unstable, useButton_unstable } from '@fluentui/react-button';
-import { useToolbarContext } from '../Toolbar/ToolbarContext';
+import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 
 /**
  * ToolbarButton component is a Button to be used inside Toolbar
  * which will respect toolbar props such as `size`
  */
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps> = React.forwardRef((props, ref) => {
-  const { size } = useToolbarContext();
+  const size = useToolbarContext_unstable(ctx => ctx.size);
   const state = useButton_unstable({ size, appearance: 'transparent', ...props }, ref);
   useButtonStyles_unstable(state);
   return renderButton_unstable(state);

@@ -71,7 +71,7 @@ export const Playground = () => {
   const [paddingToken, setPaddingToken] = React.useState<number | string>('10px');
 
   const onCheckboxChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-    const { name } = ev.target;
+    const { name } = ev?.target as HTMLInputElement;
 
     setState({ ...state, [name]: checked });
   };

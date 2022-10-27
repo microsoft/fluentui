@@ -2,19 +2,16 @@ import * as React from 'react';
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
 import type { ToolbarProps } from '@fluentui/react-toolbar';
 import { Tooltip } from '@fluentui/react-components';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { CalendarMonthRegular, TextBold24Regular } from '@fluentui/react-icons';
 
 export const WithTooltip = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props} size="small">
-    <Tooltip content="No Icon On this one" relationship="label" withArrow>
-      <ToolbarButton>Hover me</ToolbarButton>
+    <Tooltip content="Makes text bold" relationship="label" withArrow>
+      <ToolbarButton appearance="primary" icon={<TextBold24Regular />} />
     </Tooltip>
     <ToolbarDivider />
     <Tooltip content="With calendar icon" relationship="label" withArrow>
       <ToolbarButton icon={<CalendarMonthRegular />} />
     </Tooltip>
-    <ToolbarButton>Click me</ToolbarButton>
-    <ToolbarButton>Hover me</ToolbarButton>
-    <ToolbarDivider />
   </Toolbar>
 );

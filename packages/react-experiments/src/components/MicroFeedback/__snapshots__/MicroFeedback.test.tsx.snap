@@ -19,12 +19,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
       & > * {
         text-overflow: ellipsis;
       }
-      & > *:not(:first-child) {
-        margin-top: 0px;
-      }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
 >
   <div
     className=
@@ -40,12 +34,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 0px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
         }
   >
     <div>
@@ -335,12 +323,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
       & > * {
         text-overflow: ellipsis;
       }
-      & > *:not(:first-child) {
-        margin-top: 0px;
-      }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
 >
   <div
     className=
@@ -356,12 +338,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 0px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
         }
   >
     <div>

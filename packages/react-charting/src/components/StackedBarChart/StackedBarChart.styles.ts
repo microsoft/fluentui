@@ -36,6 +36,13 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       justifyContent: 'space-between',
       marginBottom: '3px',
     },
+    chartTitleLeft: {
+      fontWeight: FontWeights.bold,
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      display: 'block',
+    },
     legendContainer: {
       margin: '4px 0px 0px 4px',
     },

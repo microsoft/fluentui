@@ -13,6 +13,7 @@ import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -240,7 +241,9 @@ export const tableRowClassName = "fui-TableRow";
 export const tableRowClassNames: SlotClassNames<TableRowSlots>;
 
 // @public
-export type TableRowProps = ComponentProps<TableRowSlots> & {};
+export type TableRowProps = ComponentProps<TableRowSlots> & {
+    appearance?: 'brand' | 'neutral' | 'none';
+};
 
 // @public (undocumented)
 export type TableRowSlots = {
@@ -248,7 +251,7 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'>;
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
@@ -260,16 +263,18 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
 export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
     type?: 'checkbox' | 'radio';
     checked?: CheckboxProps['checked'];
+    subtle?: boolean;
+    hidden?: boolean;
 };
 
 // @public (undocumented)
 export type TableSelectionCellSlots = {
     checkboxIndicator: Slot<typeof Checkbox>;
-    radioIndicator: Slot<'span'>;
+    radioIndicator: Slot<typeof Radio>;
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'> & Pick<TableContextValue, 'noNativeElements'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public (undocumented)
 export interface TableSelectionState {

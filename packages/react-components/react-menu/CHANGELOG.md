@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 03 Oct 2022 22:24:37 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.3.1)
+
+Thu, 20 Oct 2022 08:39:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.3.0..@fluentui/react-menu_v9.3.1)
+
+### Patches
+
+- fix: Menu trigger should be focused when dismissed by menuitem click ([PR #25289](https://github.com/microsoft/fluentui/pull/25289) by lingfangao@hotmail.com)
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- chore: Migrate to new package structure ([PR #25015](https://github.com/microsoft/fluentui/pull/25015) by tristan.watanabe@gmail.com)
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.2.3 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.5 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-portal to v9.0.8 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-positioning to v9.2.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-tabster to v9.2.0 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.3.0)
+
+Thu, 13 Oct 2022 12:56:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.2.3..@fluentui/react-menu_v9.3.0)
+
+### Minor changes
+
+- feat: adds disableButtonEnhancement property on MenuTrigger ([PR #25112](https://github.com/microsoft/fluentui/pull/25112) by bernardo.sunderhus@gmail.com)
+
+## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.3)
+
+Thu, 13 Oct 2022 11:02:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.2.2..@fluentui/react-menu_v9.2.3)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- chore: improves MenuTrigger types ([PR #25044](https://github.com/microsoft/fluentui/pull/25044) by bernardo.sunderhus@gmail.com)
+- fix: Menu trigger should be focused when menu is closed with keyboard ([PR #25165](https://github.com/microsoft/fluentui/pull/25165) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.2.2 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.4 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-portal to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-positioning to v9.2.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.2.2)
 
