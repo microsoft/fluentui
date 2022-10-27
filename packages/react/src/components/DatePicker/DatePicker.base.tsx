@@ -450,11 +450,12 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
   const readOnly = !allowTextInput && !disabled;
 
+  const dataIsFocusable = (textFieldProps as any)['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
+
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
       <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
         <TextField
-          data-is-focusable
           role="combobox"
           label={label}
           aria-expanded={isCalendarShown}
@@ -472,6 +473,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           tabIndex={tabIndex}
           readOnly={!allowTextInput}
           {...textFieldProps}
+          data-is-focusable={dataIsFocusable}
           id={textFieldId}
           className={css(classNames.textField, textFieldProps && textFieldProps.className)}
           iconProps={{
