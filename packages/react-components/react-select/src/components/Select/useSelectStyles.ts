@@ -124,6 +124,8 @@ const useSelectStyles = makeStyles({
     cursor: 'pointer',
     flexGrow: 1,
     maxWidth: '100%',
+    paddingBottom: 0,
+    paddingTop: 0,
 
     ':focus': {
       outlineWidth: '2px',
@@ -143,26 +145,20 @@ const useSelectStyles = makeStyles({
 
   small: {
     height: fieldHeights.small,
-    paddingBottom: 0,
     paddingLeft: paddingLeft.small,
     paddingRight: paddingRight.small,
-    paddingTop: 0,
     ...typographyStyles.caption1,
   },
   medium: {
     height: fieldHeights.medium,
-    paddingBottom: 0,
     paddingLeft: paddingLeft.medium,
     paddingRight: paddingRight.medium,
-    paddingTop: 0,
     ...typographyStyles.body1,
   },
   large: {
     height: fieldHeights.large,
-    paddingBottom: 0,
     paddingLeft: paddingLeft.large,
     paddingRight: paddingRight.large,
-    paddingTop: 0,
     ...contentSizes[400],
   },
   outline: {
