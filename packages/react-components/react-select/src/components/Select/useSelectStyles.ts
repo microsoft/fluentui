@@ -72,14 +72,6 @@ const useRootStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     position: 'relative',
 
-    // provide select-specific padding variables for customization
-    '--selectSpacingRightS': paddingRight.small,
-    '--selectSpacingLeftS': paddingLeft.small,
-    '--selectSpacingRightM': paddingRight.medium,
-    '--selectSpacingLeftM': paddingLeft.medium,
-    '--selectSpacingRightL': paddingRight.large,
-    '--selectSpacingLeftL': paddingLeft.large,
-
     '&::after': {
       backgroundImage: `linear-gradient(
         0deg,
@@ -152,24 +144,24 @@ const useSelectStyles = makeStyles({
   small: {
     height: fieldHeights.small,
     paddingBottom: 0,
-    paddingLeft: 'var(--selectSpacingLeftS)',
-    paddingRight: 'var(--selectSpacingRightS)',
+    paddingLeft: paddingLeft.small,
+    paddingRight: paddingRight.small,
     paddingTop: 0,
     ...typographyStyles.caption1,
   },
   medium: {
     height: fieldHeights.medium,
     paddingBottom: 0,
-    paddingLeft: 'var(--selectSpacingLeftM)',
-    paddingRight: 'var(--selectSpacingRightM)',
+    paddingLeft: paddingLeft.medium,
+    paddingRight: paddingRight.medium,
     paddingTop: 0,
     ...typographyStyles.body1,
   },
   large: {
     height: fieldHeights.large,
     paddingBottom: 0,
-    paddingLeft: 'var(--selectSpacingLeftL)',
-    paddingRight: 'var(--selectSpacingRightL)',
+    paddingLeft: paddingLeft.large,
+    paddingRight: paddingRight.large,
     paddingTop: 0,
     ...contentSizes[400],
   },
