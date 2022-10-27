@@ -69,7 +69,7 @@ jobs:
 
       - task: AzureUpload@2
         condition: eq(variables.isPR, true)
-        displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
+        displayName: Upload Performance Test Result to PR deploy site (Fluent N*)
         inputs:
           SourcePath: 'packages/fluentui/perf-test-northstar/dist'
           azureSubscription: $(azureSubscription)
