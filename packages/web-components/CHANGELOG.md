@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 21 Oct 2022 07:44:53 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Oct 2022 07:52:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.8)
+
+Wed, 26 Oct 2022 07:52:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.7..@fluentui/web-components_v2.5.8)
+
+### Patches
+
+- emit activeid as part of accordion change event ([PR #25364](https://github.com/microsoft/fluentui/pull/25364) by chhol@microsoft.com)
 
 ## [2.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.7)
 

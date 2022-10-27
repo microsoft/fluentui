@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 27 Oct 2022 07:43:42 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.8.0",
+      "version": "8.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "51342814+jieleiwang@users.noreply.github.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "9cbf82e22c21e744601adcd6a3d064e406d015d8",
+            "comment": "add support for wbtx file"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 07:43:11 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.7.11",
       "version": "8.7.11",

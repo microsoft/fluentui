@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 07:52:54 GMT",
+      "tag": "@fluentui/react-focus_v8.8.8",
+      "version": "8.8.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "4afa85e9437c0ccdf33cdccce48f5b3aa8da138a",
+            "comment": "fix: add support for HTML details element"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 07:43:12 GMT",
       "tag": "@fluentui/react-focus_v8.8.7",
       "version": "8.8.7",

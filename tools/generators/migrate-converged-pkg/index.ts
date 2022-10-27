@@ -143,6 +143,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   updateNxWorkspace(tree, options);
   moveDocsToSubfolder(tree, options);
+
+  setupUnstableApi(tree, optionsWithTsConfigs);
 }
 
 // ==== helpers ====
@@ -158,6 +160,22 @@ const templates = {
           enabled: true,
           untrimmedFilePath: '',
           publicTrimmedFilePath: '<projectFolder>/dist/index.d.ts',
+        },
+      },
+      unstable: {
+        $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+        extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+        mainEntryPointFilePath:
+          // eslint-disable-next-line @fluentui/max-len
+          '<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts',
+        apiReport: {
+          enabled: true,
+          reportFileName: '<unscopedPackageName>.unstable.api.md',
+        },
+        dtsRollup: {
+          enabled: true,
+          untrimmedFilePath: '<projectFolder>/dist/unstable-untrimmed.d.ts',
+          publicTrimmedFilePath: '<projectFolder>/dist/unstable.d.ts',
         },
       },
     };
@@ -553,32 +571,88 @@ interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
   tsconfigs: ReturnType<typeof updatedLocalTsConfig>['configs'];
 }
 
-function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
-  const scripts = {
-    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
-    test: 'jest --passWithNoTests',
-    'type-check': 'tsc -b tsconfig.json',
-  };
+function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
+  const unstablePackageJsonPath = options.paths.unstable.rootPackageJson;
+  const hasUnstableApi = tree.exists(unstablePackageJsonPath);
 
-  const unstableApiDefinitions = processUnstableApiDefinitions();
-
-  if (unstableApiDefinitions) {
-    updateJson(tree, unstableApiDefinitions.unstablePackageJsonPath, (json: PackageJson) => {
-      json.exports = unstableApiDefinitions.unstableExportMap;
-      return json;
-    });
+  if (!hasUnstableApi) {
+    return;
   }
 
-  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-    json.typings = './dist/index.d.ts';
-    json.exports = {
-      '.': {
-        types: json.typings,
-        import: './lib/index.js',
-        require: './lib-commonjs/index.js',
-      },
-      ...(unstableApiDefinitions ? unstableApiDefinitions.rootExportMap : null),
-      './package.json': './package.json',
+  updateUnstablePackageJson();
+  updateUnstableApiExtractorForLocalBuilds();
+
+  return tree;
+
+  function updateUnstableApiExtractorForLocalBuilds() {
+    const apiExtractor = templates.apiExtractor();
+
+    writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.unstable.json'), apiExtractor.unstable);
+
+    return;
+  }
+
+  function updateUnstablePackageJson() {
+    const packageJsonPath = options.paths.packageJson;
+
+    let unstablePackageJson = readJson<PackageJson>(tree, unstablePackageJsonPath);
+    let packageJson = readJson<PackageJson>(tree, packageJsonPath);
+
+    Object.assign(unstablePackageJson, {
+      main: '../lib-commonjs/unstable/index.js',
+      ...(packageJson.module ? { module: '../lib/unstable/index.js' } : null),
+      typings: './../dist/unstable.d.ts',
+    });
+
+    const updates = setupExportMaps(unstablePackageJson, packageJson);
+
+    unstablePackageJson = updates.json;
+    packageJson = updates.rootJson;
+
+    writeJson(tree, unstablePackageJsonPath, unstablePackageJson);
+    writeJson(tree, packageJsonPath, packageJson);
+
+    return;
+
+    function setupExportMaps(unstableJson: PackageJson, stableJson: PackageJson) {
+      unstableJson.exports = {
+        '.': {
+          types: unstableJson.typings,
+          ...(packageJson.module ? { import: './../lib/unstable/index.js' } : null),
+          require: './../lib-commonjs/unstable/index.js',
+        },
+      };
+
+      Object.assign(stableJson.exports, {
+        './unstable': {
+          types: unstableJson.typings?.replace(/\.\.\//g, ''),
+          ...(packageJson.module ? { import: './lib/unstable/index.js' } : null),
+          require: './lib-commonjs/unstable/index.js',
+        },
+      });
+
+      return { json: unstableJson, rootJson: stableJson };
+    }
+  }
+}
+
+function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
+  let packageJson = readJson(tree, options.paths.packageJson);
+
+  packageJson.typings = './dist/index.d.ts';
+
+  packageJson = setupScripts(packageJson);
+  packageJson = setupExportMaps(packageJson);
+
+  writeJson(tree, options.paths.packageJson, packageJson);
+
+  return tree;
+
+  function setupScripts(json: PackageJson) {
+    const scripts = {
+      'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+      test: 'jest --passWithNoTests',
+      'type-check': 'tsc -b tsconfig.json',
     };
 
     json.scripts = json.scripts || {};
@@ -596,41 +670,23 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     }
 
     return json;
-  });
+  }
 
-  return tree;
+  function setupExportMaps(json: PackageJson) {
+    json.exports = {
+      '.': {
+        types: json.typings,
+        ...(json.module ? { import: normalizePackageEntryPointPaths(json.module) } : null),
+        ...(json.main ? { require: normalizePackageEntryPointPaths(json.main) } : null),
+      },
+      './package.json': './package.json',
+    };
 
-  function processUnstableApiDefinitions() {
-    const unstablePackageJsonPath = joinPathFragments(options.paths.unstable.rootPackageJson);
-    const hasUnstableApi = tree.exists(unstablePackageJsonPath);
+    return json;
 
-    if (!hasUnstableApi) {
-      return;
+    function normalizePackageEntryPointPaths(entryPath: string) {
+      return './' + path.normalize(entryPath);
     }
-
-    const unstablePackageJson = readJson<PackageJson>(tree, unstablePackageJsonPath);
-    const typePaths = {
-      rootExports: unstablePackageJson.typings?.replace(/\.\.\//g, ''),
-      unstableExports: unstablePackageJson.typings,
-    };
-
-    return {
-      unstablePackageJsonPath,
-      rootExportMap: {
-        './unstable': {
-          types: typePaths.rootExports,
-          import: './lib/unstable/index.js',
-          require: './lib-commonjs/unstable/index.js',
-        },
-      },
-      unstableExportMap: {
-        '.': {
-          types: typePaths.unstableExports,
-          import: './../lib/unstable/index.js',
-          require: './../lib-commonjs/unstable/index.js',
-        },
-      },
-    };
   }
 }
 

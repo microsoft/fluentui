@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 18:05:52 GMT",
+      "tag": "@fluentui/react-aria_v9.2.3",
+      "version": "9.2.3",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bd5530ed0c9b2435d14f6e87878324343547ca34",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:28 GMT",
       "tag": "@fluentui/react-aria_v9.2.3",
       "version": "9.2.3",

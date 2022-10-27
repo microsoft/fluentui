@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 07:52:53 GMT",
+      "tag": "@fluentui/react-charting_v5.14.7",
+      "version": "5.14.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fd0e28e497856c9ddb6c82d0b6b336f5c263fb7e",
+            "comment": "Fix wrong narration when legend selected"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.8",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.98.8",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 07:43:18 GMT",
       "tag": "@fluentui/react-charting_v5.14.6",
       "version": "5.14.6",
