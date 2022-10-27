@@ -88,6 +88,7 @@ jobs:
 
       # - bash: cd packages/screenshotdiff && yarn build
       #   displayName: 'Build'
+      # TODO: Currenly LKG CI build contains static build ID
 
       - bash: node node_modules/screenshotdiff/lib/index.js pr --clientType "fluentui" --buildId $(Build.BuildId) --lkgCIBuild 271302
         displayName: 'Run fluentui-screenshotdiff'
