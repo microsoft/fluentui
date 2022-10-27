@@ -454,6 +454,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
       <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
         <TextField
+          data-is-focusable
           role="combobox"
           label={label}
           aria-expanded={isCalendarShown}
