@@ -65,5 +65,9 @@ const generateContent = () => {
 };
 
 export const Virtualized = () => {
-  return <Virtualizer itemSize={50}>{generateContent()}</Virtualizer>;
+  return (
+    <Virtualizer isReversed virtualizerLength={25} itemSize={50}>
+      {generateContent()}
+    </Virtualizer>
+  );
 };

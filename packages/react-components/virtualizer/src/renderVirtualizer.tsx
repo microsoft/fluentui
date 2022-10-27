@@ -7,8 +7,11 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const { isReversed, flow, beforeBufferHeight, afterBufferHeight, totalVirtualizerHeight, bufferSize } = state;
 
   const isVertical = flow === VirtualizerFlow.Vertical;
-  const direction =
-    flow === VirtualizerFlow.Vertical ? (isReversed ? 'column-reverse' : 'column') : isReversed ? 'row-reverse' : 'row';
+  const direction = isVertical ? (isReversed ? 'column-reverse' : 'column') : isReversed ? 'row-reverse' : 'row';
+
+  console.log('GOT flow: ', flow);
+  console.log('GOT isReversed: ', isReversed);
+  console.log('GOT DIRECTION: ', direction);
 
   const totalHeightPx = totalVirtualizerHeight + 'px';
   const beforeHeightPx = beforeBufferHeight + 'px';
@@ -41,6 +44,7 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
 
   // We need to define the dynamically changing height styles to match virtualization index.
   const containerStyle = {
+    display: 'flex',
     flexDirection: direction,
     height: isVertical ? totalHeightPx : '100%',
     width: isVertical ? '100%' : totalHeightPx,

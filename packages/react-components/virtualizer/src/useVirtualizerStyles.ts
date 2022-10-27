@@ -11,11 +11,23 @@ export const virtualizerClassNames: SlotClassNames<VirtualizerSlots> = {
   afterContainer: 'fui-Bookend-AfterContainer',
 };
 
-const useStyles = makeStyles({
+const useColumnStyles = makeStyles({
   root: {
     display: 'flex',
     overflowAnchor: 'none',
+    flexDirection: 'column',
   },
+});
+
+const useReverseColumnStyles = makeStyles({
+  root: {
+    display: 'flex',
+    overflowAnchor: 'none',
+    flexDirection: 'column-reverse',
+  },
+});
+
+const useStyles = makeStyles({
   before: {
     display: 'flex',
   },
@@ -34,9 +46,16 @@ const useStyles = makeStyles({
  * Apply styling to the Virtualizer states
  */
 export const useVirtualizerStyles_unstable = (state: VirtualizerState): VirtualizerState => {
+  const { isReversed } = state;
   const styles = useStyles();
+  const containerStyles = {
+    column: useColumnStyles(),
+    reverseColumn: useReverseColumnStyles(),
+  };
 
-  state.root.className = mergeClasses(virtualizerClassName, styles.root, state.root.className);
+  const rootContainerStyle = isReversed ? containerStyles.reverseColumn : containerStyles.column;
+
+  state.root.className = mergeClasses(virtualizerClassName, rootContainerStyle.root, state.root.className);
 
   if (state.before) {
     state.before.className = mergeClasses(virtualizerClassName, styles.before, state.before.className);
