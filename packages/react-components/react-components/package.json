@@ -31,6 +31,7 @@
     "react-hook-form": "^5.7.2"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@fluentui/react-accordion": "^9.0.12",
     "@fluentui/react-alert": "9.0.0-beta.18",
     "@fluentui/react-avatar": "^9.2.7",
@@ -71,6 +72,7 @@
     "@fluentui/react-tooltip": "^9.1.2",
     "@fluentui/react-utilities": "^9.2.2",
     "@fluentui/react-text": "^9.1.7",
+    "@fluentui/virtualizer": "9.0.0-alpha.0",
     "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },

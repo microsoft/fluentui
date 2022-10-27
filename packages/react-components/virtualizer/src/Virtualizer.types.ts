@@ -60,7 +60,7 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> &
     bufferSize: number;
   };
 
-export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> &
+export type VirtualizerProps = ComponentProps<VirtualizerSlots> &
   Partial<VirtualizerContextValue> & {
     /**
      * Default row height to use if no custom callback provided.

@@ -78,7 +78,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
           ? scrollViewRef?.current?.scrollTop ?? 0
           : scrollViewRef?.current?.scrollLeft ?? 0;
 
-      if (scrollViewRef === null) {
+      if (!scrollViewRef) {
         // We are not inside a direct parent scroll view, use bookends to chop down until we find position.
         // We do NOT use scroll position as this implies we are unbounded - (scroll start pos may not be 0)
         const latestEntry = entries.find(entry => {
@@ -115,7 +115,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
         bufferedIndex = onCalculateIndex(bufferedIndex);
       }
 
-      const maxIndex = Math.max(childArray.length - bufferItems, 0);
+      const maxIndex = Math.max(childArray.length - virtualizerLength, 0);
       // Safety limits
       const newStartIndex = Math.min(Math.max(bufferedIndex, 0), maxIndex);
 
@@ -287,18 +287,18 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
       ...props,
       ref,
     }),
-    before: resolveShorthand(props.before, {
+    before: resolveShorthand(props.before ?? 'div', {
       defaultProps: {
         ref: setBeforeRef,
       },
     }),
-    after: resolveShorthand(props.after, {
+    after: resolveShorthand(props.after ?? 'div', {
       defaultProps: {
         ref: setAfterRef,
       },
     }),
-    beforeContainer: resolveShorthand(props.beforeContainer),
-    afterContainer: resolveShorthand(props.afterContainer),
+    beforeContainer: resolveShorthand(props.beforeContainer ?? 'div'),
+    afterContainer: resolveShorthand(props.afterContainer ?? 'div'),
     beforeBufferHeight: calculateBefore(),
     afterBufferHeight: calculateAfter(),
     totalVirtualizerHeight: calculateTotalSize(),
