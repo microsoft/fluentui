@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Allow empty string as valid value for text property of ComboBox",
+  "packageName": "@fluentui/react",
+  "email": "sebastian.vanik@gmail.com",
+  "dependentChangeType": "patch"
+}
