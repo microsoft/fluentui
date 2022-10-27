@@ -81,9 +81,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
       if (!scrollViewRef) {
         // We are not inside a direct parent scroll view, use bookends to chop down until we find position.
         // We do NOT use scroll position as this implies we are unbounded - (scroll start pos may not be 0)
-        const latestEntry = entries.find(entry => {
-          return entry.intersectionRatio > 0;
-        });
+        const latestEntry =
+          entries.length === 1
+            ? entries[0]
+            : entries.find(entry => {
+                return entry.intersectionRatio > 0;
+              });
 
         if (!latestEntry) {
           // If we don't find an intersecting area, ignore for now.
@@ -287,18 +290,18 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
       ...props,
       ref,
     }),
-    before: resolveShorthand(props.before ?? 'div', {
+    before: resolveShorthand(props.before ?? { as: 'div' }, {
       defaultProps: {
         ref: setBeforeRef,
       },
     }),
-    after: resolveShorthand(props.after ?? 'div', {
+    after: resolveShorthand(props.after ?? { as: 'div' }, {
       defaultProps: {
         ref: setAfterRef,
       },
     }),
-    beforeContainer: resolveShorthand(props.beforeContainer ?? 'div'),
-    afterContainer: resolveShorthand(props.afterContainer ?? 'div'),
+    beforeContainer: resolveShorthand(props.beforeContainer ?? { as: 'div' }),
+    afterContainer: resolveShorthand(props.afterContainer ?? { as: 'div' }),
     beforeBufferHeight: calculateBefore(),
     afterBufferHeight: calculateAfter(),
     totalVirtualizerHeight: calculateTotalSize(),
