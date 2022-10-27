@@ -93,20 +93,15 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
           return;
         }
 
-        console.log('GET SIZE Entries:', entries);
         if (latestEntry.target === afterElementRef.current) {
           measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
-          console.log('GET SIZE AFTER: ', measurementPos);
         } else if (latestEntry.target === beforeElementRef.current) {
           measurementPos = calculateBefore();
           measurementPos = isReversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
-          console.log('GET SIZE BEFORE: ', measurementPos);
         }
       }
 
-      console.log('Reverse the position: ', measurementPos);
       if (isReversed) {
-        console.log('Reversing the position');
         // We're reversed, up is down, left is right, reverso the metric .
         const sizeVar =
           flow === VirtualizerFlow.Vertical
@@ -114,7 +109,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
             : scrollViewRef?.current?.scrollWidth ?? calculateTotalSize();
 
         measurementPos = Math.max(sizeVar - measurementPos, 0);
-        console.log('New position: ', measurementPos);
       }
 
       // For now lets use hardcoded size to assess current element to paginate on
@@ -130,8 +124,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
       // Safety limits
       const newStartIndex = Math.min(Math.max(bufferedIndex, 0), maxIndex);
 
-      console.log('Old index: ', virtualizerStartIndex);
-      console.log('New index: ', newStartIndex);
       if (virtualizerStartIndex !== newStartIndex) {
         // Set new index, trigger render!
         if (onUpdateIndex) {

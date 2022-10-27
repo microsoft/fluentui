@@ -12,8 +12,7 @@ import { renderVirtualizer_unstable } from './renderVirtualizer';
 export const Virtualizer: ForwardRefComponent<VirtualizerProps> = React.forwardRef((props, ref) => {
   const state = useVirtualizer_unstable(props, ref);
   useVirtualizerStyles_unstable(state);
-  console.log('Rendering virtualizer - state:', state);
-  console.log('Rendering virtualizer - props:', props);
+
   return renderVirtualizer_unstable(state);
 });
 
