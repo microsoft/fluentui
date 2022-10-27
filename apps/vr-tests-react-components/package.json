@@ -6,7 +6,7 @@
   "scripts": {
     "build": "build-storybook -o dist/storybook",
     "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 2 --headless true",
-    "convert": "bash convert.sh",
+    "convert": "bash convertStoriesToStoryWright.sh",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
