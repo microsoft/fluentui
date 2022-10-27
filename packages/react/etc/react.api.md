@@ -2012,6 +2012,9 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
     render(): JSX.Element;
 }
 
+// @public
+export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListProps>;
+
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
 
@@ -3004,6 +3007,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React_2.RefAttrib
     firstWeekOfYear?: FirstWeekOfYear;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
+    id?: string;
     isDayPickerVisible?: boolean;
     isMonthPickerVisible?: boolean;
     maxDate?: Date;
@@ -4535,6 +4539,8 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsI
 
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
+    // (undocumented)
+    groupedListAs?: IComponentAs<IGroupedListProps>;
     // (undocumented)
     onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
     // (undocumented)
@@ -6735,6 +6741,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onPageRemoved?: (page: IPage<T>) => void;
     onPagesUpdated?: (pages: IPage<T>[]) => void;
     onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode;
+    onRenderCellConditional?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode | null;
     onRenderPage?: IRenderFunction<IPageProps<T>>;
     onRenderRoot?: IRenderFunction<IListOnRenderRootProps<T>>;
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
@@ -6977,6 +6984,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
+    popupProps?: IPopupProps;
     responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
@@ -9105,6 +9113,8 @@ export interface ITeachingBubbleProps extends React_2.RefAttributes<HTMLDivEleme
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
+    // (undocumented)
+    children?: React_2.ReactNode;
     componentRef?: IRefObject<ITeachingBubble>;
     focusTrapZoneProps?: IFocusTrapZoneProps;
     footerContent?: string | JSX.Element;
@@ -9602,6 +9612,12 @@ export interface IWithViewportProps {
 }
 
 // @public (undocumented)
+export interface IWithViewportState {
+    // (undocumented)
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
 export enum KeyboardSpinDirection {
     // (undocumented)
     down = -1,
@@ -9769,6 +9785,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     static defaultProps: {
         startIndex: number;
         onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
+        onRenderCellConditional: undefined;
         renderedWindowsAhead: number;
         renderedWindowsBehind: number;
     };
@@ -11358,6 +11375,11 @@ export { WindowProviderProps }
 // @public @deprecated (undocumented)
 export function withResponsiveMode<TProps extends {
     responsiveMode?: ResponsiveMode;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React_2.Component<TProps, TState>): any;
+
+// @public
+export function withViewport<TProps extends {
+    viewport?: IViewport;
 }, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React_2.Component<TProps, TState>): any;
 
 export { ZIndexes }

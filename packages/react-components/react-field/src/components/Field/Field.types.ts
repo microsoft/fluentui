@@ -24,9 +24,6 @@ export type FieldSlots<T extends FieldComponent> = {
 
   /**
    * The underlying component wrapped by this field.
-   *
-   * This is the PRIMARY slot: all intrinsic HTML properties will be applied to this slot,
-   * except `className` and `style`, which remain on the root slot.
    */
   control: SlotComponent<T>;
 
@@ -38,7 +35,7 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * A message about the validation state. The appearance of the `validationMessage` depends on `validationState`.
    */
-  validationMessage?: Slot<'span'>;
+  validationMessage?: Slot<'div'>;
 
   /**
    * The icon associated with the `validationMessage`. If the `validationState` prop is set, this will default to an
@@ -51,7 +48,7 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * Additional hint text below the field.
    */
-  hint?: Slot<'span'>;
+  hint?: Slot<'div'>;
 };
 
 /**
@@ -76,9 +73,13 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
 };
 
 /**
- * Props that are supported by Field, but not required to be supported by the component that implements field.
+ * FieldProps plus extra optional props that are supported by useField_unstable, but not required to be part of the
+ * API of every Field component.
+ *
+ * This allows Field to forward the required and size props to the label if the underlying component supports them,
+ * but doesn't add them to the public API of fields that don't support them.
  */
-export type OptionalFieldComponentProps = {
+export type FieldPropsWithOptionalComponentProps<T extends FieldComponent> = FieldProps<T> & {
   /**
    * Whether the field label should be marked as required.
    */
@@ -90,6 +91,39 @@ export type OptionalFieldComponentProps = {
    * Number sizes will be ignored, but are allowed because the HTML `<input>` element has a prop `size?: number`.
    */
   size?: 'small' | 'medium' | 'large' | number;
+};
+
+/**
+ * Configuration parameters for a Field class, passed to useField_unstable
+ */
+export type FieldConfig<T extends FieldComponent> = {
+  /**
+   * The underlying input component that this field is wrapping.
+   */
+  component: T;
+
+  /**
+   * Class names for this component, created by `getFieldClassNames`.
+   */
+  classNames: SlotClassNames<FieldSlots<T>>;
+
+  /**
+   * How the label be connected to the control.
+   * * htmlFor - Set the Label's htmlFor prop to the component's ID (and generate an ID if not provided).
+   *   This is the preferred method for components that use the underlying <input> tag.
+   * * aria-labelledby - Set the component's aria-labelledby prop to the Label's ID. Use this for components
+   *   that are not directly <input> elements (such as RadioGroup).
+   *
+   * @default htmlFor
+   */
+  labelConnection?: 'htmlFor' | 'aria-labelledby';
+
+  /**
+   * Should the aria-invalid and aria-errormessage attributes be set when validationState="error".
+   *
+   * @default true
+   */
+  ariaInvalidOnError?: boolean;
 };
 
 /**

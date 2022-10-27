@@ -76,10 +76,10 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
-  let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
+  let branchName = process.env.BUILD_SOURCEBRANCHNAME;
 
   if (!branchName) {
-    throw new Error('SYSTEM_PULLREQUEST_SOURCEBRANCH or BUILD_SOURCEBRANCHNAME env variable doesnt exist');
+    throw new Error('BUILD_SOURCEBRANCHNAME env variable doesnt exist');
   }
   if (!process.env.BUILD_BUILDID) {
     throw new Error('BUILD_BUILDID env variable doesnt exist');

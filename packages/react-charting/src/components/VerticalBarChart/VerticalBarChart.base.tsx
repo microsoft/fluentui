@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
@@ -49,6 +49,7 @@ export interface IVerticalBarChartState extends IBasestate {
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -85,6 +86,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       activeXdataPoint: null,
       YValueHover: [],
       hoverXValue: '',
+      calloutLegend: '',
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
@@ -120,7 +122,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       }),
       gapSpace: 15,
       color: this.state.color,
-      legend: this.state.selectedLegendTitle,
+      legend: this.state.calloutLegend,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       onDismiss: this._closeCallout,
@@ -190,7 +192,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       });
     const linePath = d3Line()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => (!isNumericAxis ? xBarScale(d.index) + 0.5 * this._barWidth : xScale(d.x)))
+      .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y((d: any) => yScale(d.y));
     let shouldHighlight = true;
@@ -229,7 +231,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         return (
           <circle
             key={index}
-            cx={!isNumericAxis ? xBarScale(item.index) + 0.5 * this._barWidth : xScale(item.x)}
+            cx={!isNumericAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={yScale(item.y)}
             onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
             onMouseOut={this._onBarLeave}
@@ -389,17 +391,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     mouseEvent.persist();
 
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
-    if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
-      this._calloutAnchorPoint !== point
-    ) {
+    if (this._calloutAnchorPoint !== point) {
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
-        isCalloutVisible: true,
+        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
         dataForHoverCard: point.y,
-        selectedLegendTitle: point.legend!,
+        calloutLegend: point.legend!,
         color: point.color || color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
         xCalloutValue: point.xAxisCalloutData || point.x.toString(),
@@ -428,30 +429,28 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _onBarFocus = (point: IVerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void => {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
-    ) {
-      const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
-      this._refArray.forEach((obj: IRefArrayData, index: number) => {
-        if (obj.index === point.legend! && refArrayIndexNumber === index) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            selectedLegendTitle: point.legend!,
-            dataForHoverCard: point.y,
-            color: point.color || color,
-            xCalloutValue: point.xAxisCalloutData || point.x.toString(),
-            yCalloutValue: point.yAxisCalloutData!,
-            dataPointCalloutProps: point,
-            activeXdataPoint: point.x,
-            YValueHover,
-            hoverXValue,
-            callOutAccessibilityData: point.callOutAccessibilityData,
-          });
-        }
-      });
-    }
+    const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
+    this._refArray.forEach((obj: IRefArrayData, index: number) => {
+      if (obj.index === point.legend! && refArrayIndexNumber === index) {
+        this.setState({
+          refSelected: obj.refElement,
+          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
+          isCalloutVisible:
+            this.state.isLegendSelected === false ||
+            (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
+          calloutLegend: point.legend!,
+          dataForHoverCard: point.y,
+          color: point.color || color,
+          xCalloutValue: point.xAxisCalloutData || point.x.toString(),
+          yCalloutValue: point.yAxisCalloutData!,
+          dataPointCalloutProps: point,
+          activeXdataPoint: point.x,
+          YValueHover,
+          hoverXValue,
+          callOutAccessibilityData: point.callOutAccessibilityData,
+        });
+      }
+    });
   };
 
   private _getScales = (
@@ -462,8 +461,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   ): { xBarScale: any; yBarScale: any } => {
     if (isNumericScale) {
       const xMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
+      const xMin = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([
           this.margins.left! + this._barWidth / 2,

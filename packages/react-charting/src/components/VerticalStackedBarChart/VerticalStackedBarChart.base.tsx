@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
@@ -65,6 +65,7 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   stackCalloutProps?: IVerticalStackedChartProps;
   activeXAxisDataPoint: number | string;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -102,6 +103,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       xCalloutValue: '',
       yCalloutValue: '',
       activeXAxisDataPoint: '',
+      calloutLegend: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       colors: 'IVSChartDataPoint.color',
@@ -148,7 +150,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       isBeakVisible: false,
       gapSpace: 15,
       color: this.state.color,
-      legend: this.state.selectedLegendTitle,
+      legend: this.state.calloutLegend,
       XValue: this.state.xCalloutValue!,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       YValueHover: this.state.YValueHover,
@@ -570,16 +572,18 @@ export class VerticalStackedBarChartBase extends React.Component<
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
-    if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
-      this._calloutAnchorPoint !== point
-    ) {
+    if (this._calloutAnchorPoint !== point) {
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected,
-        isCalloutVisible: true,
-        selectedLegendTitle: point.legend,
+        /**
+         * Show the callout if highlighted bar is focused/hovered
+         * and Hide it if unhighlighted bar is focused/hovered
+         */
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
+        calloutLegend: point.legend,
         dataForHoverCard: point.data,
         color,
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
@@ -863,9 +867,10 @@ export class VerticalStackedBarChartBase extends React.Component<
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
     if (isNumeric) {
       const xMax = d3Max(this._dataset, (point: IDataPoint) => point.x as number)!;
+      const xMin = d3Min(this._dataset, (point: IDataPoint) => point.x as number)!;
 
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right! - this._barWidth]);
 

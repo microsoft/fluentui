@@ -3,6 +3,7 @@
   "compilerOptions": {
     "noEmit": false,
     "allowJs": true,
+    "checkJs": true,
     "importHelpers": true,
     "isolatedModules": true,
     "jsx": "react",
@@ -13,5 +14,5 @@
     "outDir": "./dist"
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/fixtures"]
 }

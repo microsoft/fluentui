@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Portal } from '@fluentui/react-portal';
+import { Portal } from '@fluentui/react-components';
 import descriptionMd from './PortalDescription.md';
 export { Default } from './PortalDefault.stories';
-export { Nested } from './PortalNested.stories';
 
 export default {
   title: 'Components/Portal',
@@ -17,7 +16,7 @@ export default {
   },
   decorators: [
     Story => (
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <div style={{ display: 'flex', gap: 16, flexDirection: 'column', alignItems: 'flex-start' }}>
         <Story />
       </div>
     ),

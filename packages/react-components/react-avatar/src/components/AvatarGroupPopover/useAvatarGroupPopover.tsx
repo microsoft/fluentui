@@ -46,9 +46,10 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
   }
 
   return {
-    popoverOpen,
-    layout,
+    count,
     indicator,
+    layout,
+    popoverOpen,
     size,
 
     components: {
@@ -77,7 +78,7 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
     content: resolveShorthand(props.content, {
       required: true,
       defaultProps: {
-        children: children,
+        children,
         role: 'list',
       },
     }),

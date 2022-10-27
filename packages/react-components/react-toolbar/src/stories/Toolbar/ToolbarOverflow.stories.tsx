@@ -41,7 +41,7 @@ export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = p
     return <MenuItem icon={<TextItalic16Regular />}> Italic</MenuItem>;
   }
 
-  return <MenuItem {...rest}>Item {id}</MenuItem>;
+  return <MenuItem {...(rest as MenuItemProps)}>Item {id}</MenuItem>;
 };
 
 export const ToolbarMenuOverflowDivider: React.FC<{
@@ -65,7 +65,7 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
 
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button ref={ref} icon={<MoreHorizontal20Filled />} appearance="subtle" />
       </MenuTrigger>
 
@@ -197,8 +197,6 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           appearance="subtle"
           icon={<TextItalic16Regular />}
         />
-
-        <ToolbarOverflowDivider groupId="3" />
 
         <OverflowMenu
           itemIds={[

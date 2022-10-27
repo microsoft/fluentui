@@ -6,12 +6,19 @@ import { ListboxState } from '../components/Listbox/Listbox.types';
  */
 export type ListboxContextValue = Pick<
   ListboxState,
-  'activeOption' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'
+  | 'activeOption'
+  | 'focusVisible'
+  | 'multiselect'
+  | 'registerOption'
+  | 'selectedOptions'
+  | 'selectOption'
+  | 'setActiveOption'
 >;
 
 // eslint-disable-next-line @fluentui/no-context-default-value
 export const ListboxContext = createContext<ListboxContextValue>({
   activeOption: undefined,
+  focusVisible: false,
   multiselect: false,
   registerOption() {
     return () => undefined;
@@ -24,3 +31,5 @@ export const ListboxContext = createContext<ListboxContextValue>({
     // noop
   },
 });
+
+export const ListboxProvider = ListboxContext.Provider;

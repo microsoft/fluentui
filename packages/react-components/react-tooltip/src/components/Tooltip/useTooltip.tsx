@@ -17,8 +17,9 @@ import {
   mergeCallbacks,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import type { TooltipProps, TooltipState, TooltipChildProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
+import { Escape } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render Tooltip.
@@ -122,19 +123,26 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       context.visibleTooltip = thisTooltip;
 
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === 'Escape' || ev.key === 'Esc') {
+        if (ev.key === Escape) {
           thisTooltip.hide();
+          // stop propagation to avoid conflicting with other elements that listen for `Escape`
+          // e,g: Dialog, Popover, Menu
+          ev.stopPropagation();
         }
       };
 
-      targetDocument?.addEventListener('keydown', onDocumentKeyDown);
+      targetDocument?.addEventListener('keydown', onDocumentKeyDown, {
+        // As this event is added at targeted document,
+        // we need to capture the event to be sure keydown handling from tooltip happens first
+        capture: true,
+      });
 
       return () => {
         if (context.visibleTooltip === thisTooltip) {
           context.visibleTooltip = undefined;
         }
 
-        targetDocument?.removeEventListener('keydown', onDocumentKeyDown);
+        targetDocument?.removeEventListener('keydown', onDocumentKeyDown, { capture: true });
       };
     }
   }, [context, targetDocument, visible, setVisible]);
@@ -187,14 +195,16 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
   );
 
-  // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
-  // This keeps the tooltip visible when the pointer is moved over it.
+  // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
+  // This keeps the tooltip visible when the mouse is moved over it, or it has focus within.
   state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
   state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
+  state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
-  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+  const child = getTriggerChild(children);
 
-  const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
+  const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
@@ -219,7 +229,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const childTargetRef = useMergedRefs(child?.ref, targetRef);
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  state.children = applyTriggerPropsToChildren<TooltipTriggerProps>(children, {
+  state.children = applyTriggerPropsToChildren(children, {
     ...triggerAriaProps,
     ...child?.props,
     // If the target prop is not provided, attach targetRef to the trigger element's ref prop

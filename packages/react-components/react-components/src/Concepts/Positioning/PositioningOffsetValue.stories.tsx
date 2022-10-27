@@ -17,14 +17,14 @@ export const OffsetValue = () => {
       </label>
 
       <Popover positioning={{ position: 'after', offset: { crossAxis, mainAxis } }}>
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
       </Popover>
       <Popover positioning={{ position: 'after', offset: () => ({ crossAxis: crossAxis, mainAxis: mainAxis }) }}>
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 

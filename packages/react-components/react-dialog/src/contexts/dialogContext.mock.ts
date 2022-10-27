@@ -10,8 +10,8 @@ export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}) 
   const mockContext: DialogContextValue = {
     open: false,
     modalType: 'modal',
-    triggerRef: { current: null },
-    contentRef: { current: null },
+    isNestedDialog: false,
+    dialogRef: { current: null },
     requestOpenChange() {
       /* noop */
     },

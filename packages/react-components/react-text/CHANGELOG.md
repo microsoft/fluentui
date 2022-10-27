@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Wed, 03 Aug 2022 16:04:06 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.4)
+
+Tue, 25 Oct 2022 00:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.3..@fluentui/react-text_v9.1.4)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25231](https://github.com/microsoft/fluentui/pull/25231) by tristan.watanabe@gmail.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.3)
+
+Thu, 20 Oct 2022 08:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.2..@fluentui/react-text_v9.1.3)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.2)
+
+Thu, 13 Oct 2022 11:03:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.1..@fluentui/react-text_v9.1.2)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.1)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.0..@fluentui/react-text_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.4..@fluentui/react-text_v9.1.0)
+
+### Minor changes
+
+- feat: Add Body2 ([PR #24378](https://github.com/microsoft/fluentui/pull/24378) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.4)
 

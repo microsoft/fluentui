@@ -14,15 +14,15 @@ const useStyles = makeStyles({
     ...shorthands.padding(tokens.spacingHorizontalMNudge),
   },
   filledLighter: {
-    backgroundColor: tokens.colorPaletteBerryForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
     '> label': {
-      color: tokens.colorNeutralForegroundInverted,
+      color: tokens.colorNeutralForegroundInverted2,
     },
   },
   filledDarker: {
-    backgroundColor: tokens.colorPaletteBerryForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
     '> label': {
-      color: tokens.colorNeutralForegroundInverted,
+      color: tokens.colorNeutralForegroundInverted2,
     },
   },
 });

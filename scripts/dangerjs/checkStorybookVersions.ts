@@ -21,6 +21,8 @@ const scriptFilename = path.relative(config.paths.base(), __filename);
  * If two dependencies specified in the same package.json (the workspace root in our case) define a `bin`
  * with the same name, it's **nondeterministic** which one "wins."
  *
+ * Github Issue https://github.com/storybookjs/storybook/issues/3980#issuecomment-411328585
+ *
  * The simplest and most reliable fix is that since `@storybook/html` is used only by web-components,
  * it should be specified there, with a `nohoist` entry in the root workspace config to ensure it's
  * installed under web-components rather than at the root.
@@ -40,10 +42,10 @@ export async function checkStorybookVersions({ danger, fail }: DangerJS) {
   const rootPackageJson: PackageJson = fs.readJSONSync(config.paths.base(packageJsonFilename));
   const webComponentsPackageJson: PackageJson = fs.readJSONSync(config.paths.base(webComponentsPackageJsonFilename));
 
-  const storybookReactVersion = rootPackageJson.devDependencies['@storybook/react'];
-  const storybookHtmlVersion = webComponentsPackageJson.devDependencies['@storybook/html'];
+  const storybookReactVersion = rootPackageJson.devDependencies?.['@storybook/react'];
+  const storybookHtmlVersion = webComponentsPackageJson.devDependencies?.['@storybook/html'];
 
-  if (!storybookHtmlVersion || rootPackageJson.devDependencies['@storybook/html']) {
+  if (!storybookHtmlVersion || rootPackageJson.devDependencies?.['@storybook/html']) {
     // PLEASE READ THE FUNCTION COMMENT BEFORE MODIFYING OR REMOVING THIS CHECK!!!
     fail(
       `\`@storybook/html\` dependency must be specified in ONLY in \`${webComponentsPackageJsonFilename}\`, ` +

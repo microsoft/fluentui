@@ -727,6 +727,22 @@ describe('DetailsList', () => {
     );
   });
 
+  it('calculates DetailsHeader and DetailsFooter in rowcount', () => {
+    const onRenderDetailsHeaderMock = jest.fn();
+    const onRenderDetailsFooterMock = jest.fn();
+
+    const component = renderer.create(
+      <DetailsList
+        items={mockData(5)}
+        onRenderDetailsHeader={onRenderDetailsHeaderMock}
+        onRenderDetailsFooter={onRenderDetailsFooterMock}
+      />,
+    );
+
+    const grid = component.root.findByProps({ role: 'grid' });
+    expect(grid.props[`aria-rowcount`]).toEqual(7);
+  });
+
   it('invokes onRenderColumnHeaderTooltip to customize DetailsColumn tooltip rendering when provided', () => {
     const NUM_COLUMNS = 2;
     const onRenderColumnHeaderTooltipMock = jest.fn();
@@ -1060,5 +1076,15 @@ describe('DetailsList', () => {
 
     const groupNameId = checkbox.getAttribute('aria-labelledby')?.split(' ')[1];
     expect(container.querySelector(`#${groupNameId} span`)!.textContent).toEqual('Group 0');
+  });
+
+  it('makes the first row tabbable if isHeaderVisible is false', () => {
+    const component = renderer.create(
+      <DetailsList items={mockData(5)} columns={mockData(5, true)} isHeaderVisible={false} />,
+    );
+
+    const firstRow = component.root.findAllByType(DetailsRow)[0];
+
+    expect(firstRow.props.focusZoneProps?.tabIndex).toEqual(0);
   });
 });

@@ -10,7 +10,13 @@ import { getStorybook } from '@storybook/react';
  */
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
-  const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
+  const getConfig = require(screenerConfigPath);
+  const screenerConfig: ScreenerRunnerConfig = getConfig({
+    screenerApiKey: process.env.SCREENER_API_KEY,
+    sourceBranchName: process.env.BUILD_SOURCEBRANCHNAME,
+    deployUrl: process.env.DEPLOYURL,
+    targetBranch: process.env.SYSYEM_PULLREQUEST_TARGETBRANCH,
+  });
   console.log('screener config for run:');
   console.log(JSON.stringify(screenerConfig, null, 2));
 

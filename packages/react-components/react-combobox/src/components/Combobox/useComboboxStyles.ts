@@ -126,12 +126,23 @@ const useStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
 });
 
 const useInputStyles = makeStyles({
   input: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
+    color: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
 
     '&:focus': {
@@ -199,6 +210,7 @@ const useIconStyles = makeStyles({
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
   const { appearance, open, size } = state;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
@@ -208,6 +220,8 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     styles.root,
     styles[appearance],
     styles[size],
+    invalid && appearance !== 'underline' && styles.invalid,
+    invalid && appearance === 'underline' && styles.invalidUnderline,
     state.root.className,
   );
 

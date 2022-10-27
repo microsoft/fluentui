@@ -5,6 +5,15 @@ import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from '
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
+  timeSecond as d3TimeSecond,
+  timeMinute as d3TimeMinute,
+  timeHour as d3TimeHour,
+  timeDay as d3TimeDay,
+  timeMonth as d3TimeMonth,
+  timeWeek as d3TimeWeek,
+  timeYear as d3TimeYear,
+} from 'd3-time';
+import {
   IAccessibilityProps,
   IEventsAnnotationProps,
   ILineChartPoints,
@@ -152,6 +161,33 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) 
   return xAxisScale;
 }
 
+function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
+  const formatMillisecond = locale.format('.%L');
+  const formatSecond = locale.format(':%S');
+  const formatMinute = locale.format('%I:%M');
+  const formatHour = locale.format('%I %p');
+  const formatDay = locale.format('%a %d');
+  const formatWeek = locale.format('%b %d');
+  const formatMonth = locale.format('%B');
+  const formatYear = locale.format('%Y');
+
+  return (d3TimeSecond(date) < date
+    ? formatMillisecond
+    : d3TimeMinute(date) < date
+    ? formatSecond
+    : d3TimeHour(date) < date
+    ? formatMinute
+    : d3TimeDay(date) < date
+    ? formatHour
+    : d3TimeMonth(date) < date
+    ? d3TimeWeek(date) < date
+      ? formatDay
+      : formatWeek
+    : d3TimeYear(date) < date
+    ? formatMonth
+    : formatYear)(date);
+}
+
 /**
  * Creating Date x axis of the Chart
  * @export
@@ -163,16 +199,27 @@ export function createDateXAxis(
   tickParams: ITickParams,
   culture?: string,
   options?: Intl.DateTimeFormatOptions,
+  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition,
+  customDateTimeFormatter?: (dateTime: Date) => string,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
-
-  if (culture && options) {
+  if (customDateTimeFormatter) {
+    xAxis.tickFormat((domainValue: Date, _index: number) => {
+      return customDateTimeFormatter(domainValue);
+    });
+  } else if (culture && options) {
     xAxis.tickFormat((domainValue: Date, _index: number) => {
       return domainValue.toLocaleString(culture, options);
+    });
+  } else if (timeFormatLocale) {
+    const locale: d3TimeFormat.TimeLocaleObject = d3TimeFormat.timeFormatLocale(timeFormatLocale!);
+
+    xAxis.tickFormat((domainValue: Date, _index: number) => {
+      return multiFormat(domainValue, locale);
     });
   }
 

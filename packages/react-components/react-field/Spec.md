@@ -231,8 +231,8 @@ The Checkbox and Switch components already have a `label` prop, which conflicts 
 
 #### `SwitchField`
 
-- New `valueLabel` prop for the label of the Switch
 - The `label` prop will go to the Field and NOT the Switch
+- The Switch's `labelPosition` prop is therefore not supported, and is omitted from SwitchField.
 
 ## Structure
 

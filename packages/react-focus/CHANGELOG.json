@@ -2,6 +2,69 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 07:52:54 GMT",
+      "tag": "@fluentui/react-focus_v8.8.8",
+      "version": "8.8.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "4afa85e9437c0ccdf33cdccce48f5b3aa8da138a",
+            "comment": "fix: add support for HTML details element"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 07:43:12 GMT",
+      "tag": "@fluentui/react-focus_v8.8.7",
+      "version": "8.8.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.8.1",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.13.2",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/test-utilities to v8.2.3",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:24 GMT",
+      "tag": "@fluentui/react-focus_v8.8.6",
+      "version": "8.8.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.8.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Sep 2022 07:48:53 GMT",
       "tag": "@fluentui/react-focus_v8.8.5",
       "version": "8.8.5",

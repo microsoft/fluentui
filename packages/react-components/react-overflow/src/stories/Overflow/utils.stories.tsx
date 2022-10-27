@@ -51,7 +51,7 @@ export const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
 
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button ref={ref}>+{overflowCount} items</Button>
       </MenuTrigger>
 
@@ -84,7 +84,8 @@ export const TestOverflowMenuItem: React.FC<TestOverflowMenuItemProps> = props =
     return null;
   }
 
-  return <MenuItem {...rest}>Item {id}</MenuItem>;
+  // As an union between button props and div props may be conflicting, casting is required
+  return <MenuItem {...(rest as MenuItemProps)}>Item {id}</MenuItem>;
 };
 
 export const TestOverflowMenuDivider: React.FC<{

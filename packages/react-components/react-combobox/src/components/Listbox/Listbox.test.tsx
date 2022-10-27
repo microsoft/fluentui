@@ -206,10 +206,10 @@ describe('Listbox', () => {
   });
 
   it('should fire onChange when an option is selected', () => {
-    const onSelect = jest.fn();
+    const onOptionSelect = jest.fn();
 
     const { getByText } = render(
-      <Listbox onSelect={onSelect}>
+      <Listbox onOptionSelect={onOptionSelect}>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -218,15 +218,15 @@ describe('Listbox', () => {
 
     fireEvent.click(getByText('Red'));
 
-    expect(onSelect).toHaveBeenCalled();
-    expect(onSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect).toHaveBeenCalled();
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
   });
 
   it('should not change selection with selectedOptions', () => {
-    const onSelect = jest.fn();
+    const onOptionSelect = jest.fn();
 
     const { getByText } = render(
-      <Listbox onSelect={onSelect} selectedOptions={['Green']}>
+      <Listbox onOptionSelect={onOptionSelect} selectedOptions={['Green']}>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -238,15 +238,15 @@ describe('Listbox', () => {
     fireEvent.click(option);
 
     expect(option.getAttribute('aria-selected')).toEqual('false');
-    expect(onSelect).toHaveBeenCalled();
-    expect(onSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect).toHaveBeenCalled();
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
   });
 
   it('should select option with the enter key', () => {
-    const onSelect = jest.fn();
+    const onOptionSelect = jest.fn();
 
     const { getByTestId } = render(
-      <Listbox data-testid="listbox" onSelect={onSelect}>
+      <Listbox data-testid="listbox" onOptionSelect={onOptionSelect}>
         <Option data-testid="red">Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -258,14 +258,14 @@ describe('Listbox', () => {
     fireEvent.keyDown(listbox, { key: 'Enter' });
 
     expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
-    expect(onSelect).toHaveBeenCalled();
+    expect(onOptionSelect).toHaveBeenCalled();
   });
 
   it('should select option with the space key', () => {
-    const onSelect = jest.fn();
+    const onOptionSelect = jest.fn();
 
     const { getByTestId } = render(
-      <Listbox data-testid="listbox" onSelect={onSelect}>
+      <Listbox data-testid="listbox" onOptionSelect={onOptionSelect}>
         <Option data-testid="red">Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -277,6 +277,6 @@ describe('Listbox', () => {
     fireEvent.keyDown(listbox, { key: ' ' });
 
     expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
-    expect(onSelect).toHaveBeenCalled();
+    expect(onOptionSelect).toHaveBeenCalled();
   });
 });

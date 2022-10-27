@@ -27,7 +27,21 @@ async function build() {
 
   const generateStartTime = process.hrtime();
 
-  const rawStoriesGlobs = getVnextStories() as string[];
+  // Portals currently do not support hydration
+  // https://github.com/facebook/react/issues/13097
+  const skippedPaths = ['react-portal'];
+
+  const rawStoriesGlobs = getVnextStories().filter(
+    (storyPath: string) =>
+      // only return entries that don't match any of the skippedPaths
+      !skippedPaths.find(skippedPath => {
+        if (storyPath.includes(skippedPath)) {
+          return true;
+        }
+        return false;
+      }),
+  ) as string[];
+
   rawStoriesGlobs.push(path.resolve(path.join(__dirname, './stories/**/index.stories.tsx')));
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇
