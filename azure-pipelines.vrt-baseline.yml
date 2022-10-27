@@ -47,7 +47,6 @@ jobs:
           publishLocation: 'Container'
 
       - bash: node packages/screenshotdiff/dist/index.js release --buildId $(Build.BuildId)
-        displayName: "Run Screenshotdiff update baseline"
+        displayName: 'Run Screenshotdiff update baseline'
 
       - template: .devops/templates/cleanup.yml
-
