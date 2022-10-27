@@ -50,8 +50,8 @@ jobs:
           ArtifactName: 'vrscreenshot'
           publishLocation: 'Container'
 
-      - bash: cd packages/screenshotdiff && yarn build
-        displayName: 'Build'
+      # - bash: cd packages/screenshotdiff && yarn build
+      #   displayName: 'Build'
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentui" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'
