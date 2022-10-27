@@ -103,12 +103,6 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
           // avoid unnecessary calc() calls if horizontal gap is 0
           width: columnGap.value === 0 ? '100%' : `calc(100% + ${columnGap.value}${columnGap.unit})`,
           maxWidth: '100vw',
-
-          [`> .${GlobalClassNames.child}`]: {
-            margin: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
-
-            ...childStyles,
-          },
         },
         !enableScopedSelectors && [
           {

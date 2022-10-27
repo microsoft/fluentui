@@ -9,7 +9,7 @@ import type { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import type { IStackItemProps } from './StackItem/StackItem.types';
 
 const StackView: IStackComponent['view'] = props => {
-  const { as: RootType = 'div', disableShrink = false, wrap, ...rest } = props;
+  const { as: RootType = 'div', disableShrink = false, enableScopedSelectors = false, wrap, ...rest } = props;
 
   warnDeprecations('Stack', props, {
     gap: 'tokens.childrenGap',
@@ -18,7 +18,7 @@ const StackView: IStackComponent['view'] = props => {
     padding: 'tokens.padding',
   });
 
-  const stackChildren = _processStackChildren(props.children, disableShrink);
+  const stackChildren = _processStackChildren(props.children, { disableShrink, enableScopedSelectors });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
@@ -40,7 +40,7 @@ const StackView: IStackComponent['view'] = props => {
 
 function _processStackChildren(
   children: React.ReactNode,
-  disableShrink: boolean,
+  { disableShrink, enableScopedSelectors }: { disableShrink: boolean; enableScopedSelectors: boolean },
 ): (React.ReactChild | React.ReactFragment | React.ReactPortal)[] {
   let childrenArray = React.Children.toArray(children);
 
@@ -50,7 +50,9 @@ function _processStackChildren(
     }
 
     if (child.type === React.Fragment) {
-      return child.props.children ? _processStackChildren(child.props.children, disableShrink) : null;
+      return child.props.children
+        ? _processStackChildren(child.props.children, { disableShrink, enableScopedSelectors })
+        : null;
     }
 
     const childAsReactElement = child as React.ReactElement;
@@ -63,7 +65,9 @@ function _processStackChildren(
     return React.cloneElement(childAsReactElement, {
       ...defaultItemProps,
       ...childAsReactElement.props,
-      className: css(StackGlobalClassNames.child, childAsReactElement.props.className),
+      className: enableScopedSelectors
+        ? css(StackGlobalClassNames.child, childAsReactElement.props.className)
+        : childAsReactElement.props.className,
     });
   });
 
