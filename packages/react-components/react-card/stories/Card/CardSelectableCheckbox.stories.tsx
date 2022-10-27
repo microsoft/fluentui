@@ -72,19 +72,22 @@ export const SelectableWithCheckbox = () => {
 
   const getCardLabel = React.useCallback((isSelected: boolean) => (isSelected ? 'Unselect card' : 'Select card'), []);
 
+  const onFirstCardSelected = React.useCallback((_, { selected }) => setSelected1(selected), [setSelected1]);
+  const onSecondCardSelected = React.useCallback((_, { selected }) => setSelected2(selected), [setSelected2]);
+
   return (
     <div className={styles.main}>
       <CardExample
         aria-label={getCardLabel(selected1)}
         select={<Checkbox checked={selected1} aria-label={getCardLabel(selected1)} />}
         selected={selected1}
-        onCardSelect={(event, { selected }) => setSelected1(selected)}
+        onCardSelect={onFirstCardSelected}
       />
       <CardExample
         aria-label={getCardLabel(selected2)}
         select={<Checkbox checked={selected2} aria-label={getCardLabel(selected2)} />}
         selected={selected2}
-        onCardSelect={(event, { selected }) => setSelected2(selected)}
+        onCardSelect={onSecondCardSelected}
       />
     </div>
   );

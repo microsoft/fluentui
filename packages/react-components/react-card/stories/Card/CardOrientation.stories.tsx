@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  shorthands,
-  Avatar,
-  Body1,
-  Button,
-  Caption1,
-  Text,
-  tokens,
-  Subtitle1,
-} from '@fluentui/react-components';
+import { makeStyles, shorthands, Avatar, Button, Caption1, Text, tokens, Subtitle1 } from '@fluentui/react-components';
 import { MoreHorizontal20Filled } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 
