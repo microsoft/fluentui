@@ -22,7 +22,7 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
         return false;
       }
 
-      const focusableElements = findAllFocusable(cardRef.current, Boolean);
+      const focusableElements = findAllFocusable(cardRef.current);
       const target = event.target as HTMLElement;
       const isTargetInFocusableGroup = focusableElements.some(element => element.contains(target));
       const isTargetInSelectableSlot = selectableRef?.current?.contains(target);
