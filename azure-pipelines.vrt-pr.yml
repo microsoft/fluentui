@@ -44,5 +44,3 @@ jobs:
           PathtoPublish: 'screenshots'
           ArtifactName: 'vrscreenshot'
           publishLocation: 'Container'
-
-      - template: .devops/templates/cleanup.yml
