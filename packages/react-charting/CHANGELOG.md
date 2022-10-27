@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 25 Oct 2022 07:43:18 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Oct 2022 07:52:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.7)
+
+Wed, 26 Oct 2022 07:52:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.6..@fluentui/react-charting_v5.14.7)
+
+### Patches
+
+- Fix wrong narration when legend selected ([PR #24903](https://github.com/microsoft/fluentui/pull/24903) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react-focus to v8.8.8 ([PR #25381](https://github.com/microsoft/fluentui/pull/25381) by beachball)
+- Bump @fluentui/react to v8.98.8 ([PR #25381](https://github.com/microsoft/fluentui/pull/25381) by beachball)
 
 ## [5.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.6)
 

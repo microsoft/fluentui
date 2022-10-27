@@ -23,7 +23,7 @@ const CustomDialogTrigger = React.forwardRef<HTMLButtonElement, DialogTriggerChi
 export const CustomTrigger = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <CustomDialogTrigger />
       </DialogTrigger>
       <DialogSurface>
@@ -35,7 +35,7 @@ export const CustomTrigger = () => {
             cumque eaque?
           </DialogContent>
           <DialogActions>
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
             <Button appearance="primary">Do Something</Button>

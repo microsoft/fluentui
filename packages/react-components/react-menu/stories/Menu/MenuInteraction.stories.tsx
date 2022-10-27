@@ -18,7 +18,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 export const Interaction = (props: Partial<MenuProps>) => {
   return (
     <Menu {...props}>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button>Edit content</Button>
       </MenuTrigger>
 

@@ -23,7 +23,7 @@ describe('DialogTitle', () => {
     it('should not have closeButton by default', () => {
       mount(
         <Dialog modalType="modal">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -35,7 +35,7 @@ describe('DialogTitle', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -52,7 +52,7 @@ describe('DialogTitle', () => {
     it('should have closeButton by default', () => {
       mount(
         <Dialog modalType="non-modal">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -64,7 +64,7 @@ describe('DialogTitle', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -81,7 +81,7 @@ describe('DialogTitle', () => {
     it('should not have closeButton by default', () => {
       mount(
         <Dialog modalType="alert">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -93,7 +93,7 @@ describe('DialogTitle', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>

@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 07:52:53 GMT",
+      "tag": "@fluentui/react_v8.98.8",
+      "version": "8.98.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4afa85e9437c0ccdf33cdccce48f5b3aa8da138a",
+            "comment": "fix: add support for HTML defails element"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e",
+            "comment": "fix: Improve Stack's style recalculation performance by selectively applying children selectors."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.8",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 07:43:18 GMT",
       "tag": "@fluentui/react_v8.98.7",
       "version": "8.98.7",

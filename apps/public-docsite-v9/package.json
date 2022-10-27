@@ -21,12 +21,12 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.98.7",
+    "@fluentui/react": "^8.98.8",
     "@fluentui/react-northstar": "^0.64.0",
     "@fluentui/react-icons-northstar": "^0.64.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.5.3",
+    "@fluentui/react-components": "^9.6.1",
     "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
     "@fluentui/react-theme": "^9.1.1",
     "@griffel/react": "^1.4.1",

@@ -65,7 +65,7 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
 
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button ref={ref} icon={<MoreHorizontal20Filled />} appearance="subtle" />
       </MenuTrigger>
 

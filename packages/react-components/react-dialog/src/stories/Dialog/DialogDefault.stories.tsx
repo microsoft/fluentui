@@ -13,7 +13,7 @@ import {
 export const Default = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open dialog</Button>
       </DialogTrigger>
       <DialogSurface>
@@ -25,7 +25,7 @@ export const Default = () => {
             cumque eaque?
           </DialogContent>
           <DialogActions>
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
             <Button appearance="primary">Do Something</Button>
