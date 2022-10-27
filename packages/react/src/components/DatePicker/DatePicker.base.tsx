@@ -450,7 +450,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
   const readOnly = !allowTextInput && !disabled;
 
-  const dataIsFocusable = (textFieldProps as any)['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
+  const dataIsFocusable = (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
 
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
