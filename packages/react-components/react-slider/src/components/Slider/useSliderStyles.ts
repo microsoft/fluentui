@@ -33,7 +33,6 @@ const useRootStyles = makeStyles({
   root: {
     position: 'relative',
     display: 'inline-grid',
-    gridTemplateAreas: '". . ." ". slider ." ". . ."',
     touchAction: 'none',
     alignItems: 'center',
     justifyItems: 'center',
@@ -53,14 +52,14 @@ const useRootStyles = makeStyles({
 
   horizontal: {
     minWidth: '120px',
-    height: `var(${thumbSizeVar})`,
+    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
     gridTemplateRows: `1fr var(${thumbSizeVar}) 1fr`,
     gridTemplateColumns: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
   },
 
   vertical: {
-    width: `var(${thumbSizeVar})`,
     minHeight: '120px',
+    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
     gridTemplateRows: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
     gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
   },
@@ -117,10 +116,8 @@ const useRailStyles = makeStyles({
   rail: {
     ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     pointerEvents: 'none',
-    gridRowStart: 'slider',
-    gridRowEnd: 'slider',
-    gridColumnStart: 'slider',
-    gridColumnEnd: 'slider',
+    gridRowStart: '2',
+    gridColumnStart: '2',
     position: 'relative',
     forcedColorAdjust: 'none',
     // Background gradient represents the progress of the slider
@@ -183,11 +180,9 @@ const useRailStyles = makeStyles({
  */
 const useThumbStyles = makeStyles({
   thumb: {
-    position: 'absolute',
-    gridRowStart: 'slider',
-    gridRowEnd: 'slider',
-    gridColumnStart: 'slider',
-    gridColumnEnd: 'slider',
+    gridRowStart: '2',
+    gridColumnStart: '2',
+    position: 'relative',
     width: `var(${thumbSizeVar})`,
     height: `var(${thumbSizeVar})`,
     pointerEvents: 'none',
@@ -214,14 +209,10 @@ const useThumbStyles = makeStyles({
     },
   },
   horizontal: {
-    transform: 'translate(-50%, -50%)',
-    top: '50%',
-    left: `var(${sliderProgressVar})`,
+    left: `calc(var(${sliderProgressVar}) - 50%)`,
   },
   vertical: {
-    transform: 'translate(-50%, 50%)',
-    left: '50%',
-    bottom: `var(${sliderProgressVar})`,
+    bottom: `calc(var(${sliderProgressVar}) - 50%)`,
   },
 });
 
