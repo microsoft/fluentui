@@ -10,7 +10,7 @@ export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps
     marginBottom: v.marginBottom,
 
     ...(p.labelPosition === 'inside' && {
-      bottom: v.insideLabelBottom,
+      bottom: 0,
       top: 0,
       left: 0,
       margin: 0,
@@ -18,10 +18,12 @@ export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps
       display: 'flex',
       alignItems: 'center',
       zIndex: 100,
+      color: v.inputLabelColor,
       paddingLeft: v.insideLabelPaddingLeft,
       ...(p.hasValue && {
         transform: 'translateY(-16px)',
         fontSize: v.insideLabelActiveFontSize,
+        paddingTop: v.insideLabelActivePaddingTop,
       }),
     }),
     ...(p.labelPosition === 'inline' && {
