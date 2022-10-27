@@ -13,7 +13,7 @@ import story from './DialogNonModal.md';
 export const NonModal = () => {
   return (
     <Dialog modalType="non-modal">
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open non-modal dialog</Button>
       </DialogTrigger>
       <DialogSurface>

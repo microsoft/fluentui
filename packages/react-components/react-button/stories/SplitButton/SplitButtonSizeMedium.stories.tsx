@@ -31,7 +31,7 @@ export const SizeMedium = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} size="medium">
               Medium
@@ -48,7 +48,7 @@ export const SizeMedium = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} size="medium">
               Medium with calendar icon
@@ -65,7 +65,7 @@ export const SizeMedium = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <Tooltip
               content="Medium with calendar icon only"

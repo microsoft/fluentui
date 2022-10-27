@@ -38,7 +38,7 @@ export const Icon = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} icon={<CalendarMonth />}>
               With calendar icon before contents
@@ -54,7 +54,7 @@ export const Icon = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} iconPosition="after">
               With calendar icon after contents
@@ -70,7 +70,7 @@ export const Icon = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} menuIcon={<Filter />}>
               With calendar icon and custom filter menu icon
@@ -86,7 +86,7 @@ export const Icon = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <Tooltip
               content="With calendar icon only"

@@ -38,7 +38,7 @@ describe('Dialog', () => {
   it('should be closed by default', () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
@@ -50,7 +50,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
@@ -65,7 +65,7 @@ describe('Dialog', () => {
   it('should open when trigger is clicked', () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
@@ -77,7 +77,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
@@ -92,7 +92,7 @@ describe('Dialog', () => {
   it('should focus on first focusabled element when opened', () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
@@ -104,7 +104,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
@@ -121,7 +121,7 @@ describe('Dialog', () => {
   it('should focus on dialog surface if no focusable element in dialog', () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface id="dialog-surface">
@@ -142,7 +142,7 @@ describe('Dialog', () => {
   it('should focus back on trigger when dialog closed', () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
@@ -154,7 +154,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
@@ -180,7 +180,7 @@ describe('Dialog', () => {
       }, [open]);
       return (
         <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -191,7 +191,7 @@ describe('Dialog', () => {
                 <Button appearance="outline">Third Action</Button>
               </DialogActions>
               <DialogActions position="end">
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button id={dialogTriggerCloseId} ref={buttonRef} appearance="secondary">
                     Close
                   </Button>
@@ -210,7 +210,7 @@ describe('Dialog', () => {
   it('should not close with Escape keydown while focusing other elements that control Escape', () => {
     mount(
       <Dialog modalType="non-modal">
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
@@ -218,7 +218,7 @@ describe('Dialog', () => {
             <DialogTitle>Dialog title</DialogTitle>
             <DialogContent>
               <Menu>
-                <MenuTrigger>
+                <MenuTrigger disableButtonEnhancement>
                   <Button id="open-menu-btn">Toggle menu</Button>
                 </MenuTrigger>
 
@@ -229,14 +229,14 @@ describe('Dialog', () => {
                 </MenuPopover>
               </Menu>
               <Popover>
-                <PopoverTrigger>
+                <PopoverTrigger disableButtonEnhancement>
                   <Button id="open-popover-btn">Popover trigger</Button>
                 </PopoverTrigger>
                 <PopoverSurface aria-label="label">Content</PopoverSurface>
               </Popover>
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
                   <Button id={dialogTriggerCloseId} appearance="secondary">
                     Close
@@ -268,7 +268,7 @@ describe('Dialog', () => {
     it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="modal">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -280,7 +280,7 @@ describe('Dialog', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -296,7 +296,7 @@ describe('Dialog', () => {
     it('should lock body scroll when dialog open', () => {
       mount(
         <Dialog modalType="modal">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -307,7 +307,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogBody>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
@@ -323,7 +323,7 @@ describe('Dialog', () => {
     it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="non-modal">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -335,7 +335,7 @@ describe('Dialog', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -351,7 +351,7 @@ describe('Dialog', () => {
     it('should not lock body scroll when dialog open', () => {
       mount(
         <Dialog modalType="non-modal">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -363,7 +363,7 @@ describe('Dialog', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -380,7 +380,7 @@ describe('Dialog', () => {
     it('should not close with escape keydown', () => {
       mount(
         <Dialog modalType="alert">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -392,7 +392,7 @@ describe('Dialog', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -408,7 +408,7 @@ describe('Dialog', () => {
     it('should lock body scroll when dialog open', () => {
       mount(
         <Dialog modalType="alert">
-          <DialogTrigger>
+          <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -420,7 +420,7 @@ describe('Dialog', () => {
                 natus iure cumque eaque?
               </DialogContent>
               <DialogActions>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -437,18 +437,18 @@ describe('Dialog', () => {
   it('should allow nested dialogs', () => {
     mount(
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <Button id="open-first-dialog-btn">Open nested dialog</Button>
         </DialogTrigger>
         <DialogSurface id="first-dialog">
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button id="close-first-dialog-btn">Close</Button>
               </DialogTrigger>
               <Dialog>
-                <DialogTrigger>
+                <DialogTrigger disableButtonEnhancement>
                   <Button id="open-second-dialog-btn" appearance="primary">
                     Open inner dialog
                   </Button>
@@ -460,7 +460,7 @@ describe('Dialog', () => {
                       ⛔️ just because you can doesn't mean you should have nested dialogs ⛔️
                     </DialogContent>
                     <DialogActions>
-                      <DialogTrigger>
+                      <DialogTrigger disableButtonEnhancement>
                         <Button id="close-second-dialog-btn" appearance="primary">
                           Close
                         </Button>

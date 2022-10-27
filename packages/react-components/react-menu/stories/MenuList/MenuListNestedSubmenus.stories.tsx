@@ -23,7 +23,7 @@ export const MenuListWithNestedSubmenus = () => {
         <MenuItem>Paste</MenuItem>
         <MenuItem>Edit</MenuItem>
         <Menu>
-          <MenuTrigger>
+          <MenuTrigger disableButtonEnhancement>
             <MenuItem>Preferences</MenuItem>
           </MenuTrigger>
           <MenuPopover>
