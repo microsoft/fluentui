@@ -18,7 +18,9 @@ export interface InputVariables {
   inputPadding: string;
   inputFocusBorderColor: string;
   inputFocusBorderRadius: string;
-  inputInsideLabelPaddingTop: string;
+  inputInsideLabelPadding: string;
+  inputInsideLabelActivePadding: string;
+  inputInsideLabelHeight: string;
   placeholderColor: string;
   successfulColor: string;
   borderColorError: string;
@@ -36,8 +38,9 @@ export const inputVariables = (siteVars): InputVariables => ({
   inputPaddingWithIconAtStart: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(5)} ${pxToRem(34)}`,
   inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(35)} ${pxToRem(5)} ${pxToRem(12)}`,
   inputPadding: `${pxToRem(5)} ${pxToRem(12)}`,
-  inputInsideLabelPaddingTop: pxToRem(14),
-
+  inputInsideLabelPadding: `${pxToRem(11)} ${pxToRem(12)}`,
+  inputInsideLabelActivePadding: `${pxToRem(20)} ${pxToRem(12)} ${pxToRem(4)}`,
+  inputInsideLabelHeight: pxToRem(44),
   borderColor: 'transparent',
   borderRadius: siteVars.borderRadiusMedium,
   borderWidth: `0 0 ${pxToRem(2)} 0`,
