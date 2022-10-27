@@ -11,7 +11,7 @@
     "node": "^14.18.1 || ^16.0.0"
   },
   "scripts": {
-    "build": "lage build",
+    "build": "lage build --verbose",
     "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components",
     "build:fluentui:docs": "gulp build:docs",
     "buildci": "lage build test lint type-check --verbose",
