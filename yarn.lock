@@ -5914,15 +5914,6 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^17.0.8":
-  version "17.0.51"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.51.tgz#ee8ee128b36d360cae2dc7986caa325079e4365c"
-  integrity sha512-YMddzAE+nSH04BiTJ5GydTxk0/3hckqyuOclg0s6zQYj/XzfRVNzHZAFwZb5SCSavkzTYUtcq/gwjLnvt2Y4cg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
 "@types/read-pkg-up@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@types/read-pkg-up/-/read-pkg-up-6.0.0.tgz#7926c93cf14d906e9829a859e790323d0f338684"
@@ -24484,12 +24475,11 @@ storybook-addon-performance@0.16.1:
     tiny-invariant "^1.1.0"
     xstate "^4.22.0"
 
-storywright@0.0.23-beta.5:
-  version "0.0.23-beta.5"
-  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.5.tgz#7be1f5ef6ebd371d302a6009079e5fb2a0e91c2f"
-  integrity sha512-9tSmEwBnQH71JI4JbgHrXFEHZaG9yeehtxaFk5vGONKBXpYpgHT4oaV2pQ0qydwJrpbGt36eKFAKFmMZVXa8LQ==
+storywright@0.0.23-beta.6:
+  version "0.0.23-beta.6"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.6.tgz#cf44dadd29caddd51a7b1b6af1074f8efc876f76"
+  integrity sha512-Kwhk0xlRdy+e8CP21ZueAVSkw0e367MgO2XJPqPdet/RsE+rr4j0VOGA/TjqsHP+G25/FxwZI0UL/6q9alNUfQ==
   dependencies:
-    "@types/react" "^17.0.8"
     playwright "^1.27.0"
     prop-types "^15.6.0"
     yargs "^16.2.0"

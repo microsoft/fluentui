@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
 import { TestWrapperDecorator } from '../utilities/index';
@@ -50,20 +50,23 @@ const PopoverPositioning: React.FC = () => {
 storiesOf('Popover Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <StoryWright
-      steps={new Steps().click('#show-popovers').snapshot('positioned popovers', { cropTo: '.testWrapper' }).end()}
+    <Screener
+      steps={new Screener.Steps()
+        .click('#show-popovers')
+        .snapshot('positioned popovers', { cropTo: '.testWrapper' })
+        .end()}
     >
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true });
 
 storiesOf('Popover Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <StoryWright steps={new Steps().click('#show-popover').snapshot('PopoverSurface focused').end()}>
+    <Screener steps={new Screener.Steps().click('#show-popover').snapshot('PopoverSurface focused').end()}>
       {story()}
-    </StoryWright>
+    </Screener>
   ))
   .addStory('avoid scrolling', () => {
     return (

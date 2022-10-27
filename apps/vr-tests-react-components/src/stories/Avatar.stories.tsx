@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 
@@ -170,7 +170,7 @@ storiesOf('Avatar Converged', module)
     </div>
   ))
   .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory(
     'basic',

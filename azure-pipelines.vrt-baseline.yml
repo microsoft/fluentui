@@ -28,6 +28,10 @@ jobs:
         displayName: yarn (install packages)
 
       - script: |
+          yarn workspace @fluentui/vr-tests-react-components convert
+        displayName: Convert screener component to storywright
+
+      - script: |
           yarn workspace @fluentui/vr-tests-react-components screener:build
         displayName: Build VR tests components package
 

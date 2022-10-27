@@ -35,7 +35,7 @@
     "@fluentui/react-utilities": "^9.1.2",
     "@griffel/react": "^1.4.1",
     "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.6.0",
+    "@fluentui/react-components": "^9.6.1",
     "@fluentui/react-icons": "^2.0.175",
     "@fluent-blocks/colors": "9.2.0",
     "codesandbox-import-utils": "2.2.3",

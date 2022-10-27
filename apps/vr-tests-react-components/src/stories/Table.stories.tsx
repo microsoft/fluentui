@@ -26,7 +26,7 @@ import {
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
-import { StoryWright, Steps } from 'storywright';
+import Screener from 'screener-storybook/src/screener';
 
 const items = [
   {
@@ -595,7 +595,7 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
-      <StoryWright steps={new Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</StoryWright>
+      <Screener steps={new Screener.Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</Screener>
     ))
     .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
