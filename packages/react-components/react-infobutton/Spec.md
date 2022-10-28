@@ -47,30 +47,18 @@ Visual (only the button has a variant)
 
 ```ts
 export type InfoButtonSlots = {
-  root: NonNullable<Slot<PopoverProps>>;
+  root: NonNullable<Slot<'button'>>;
 
   /**
-   * The button that triggers the Popover.
+   * The PopoverSurface to be displayed when the button is pressed.
    */
-  button: NonNullable<Slot<'button'>>;
-
-  /**
-   * The content to be displayed in the Popover.
-   */
-  content: NonNullable<Slot<typeof PopoverSurface>>;
+  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**
  * InfoButton Props
  */
-export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'children'>;
-
-/**
- * State used in rendering InfoButton
- */
-export type InfoButtonState = ComponentState<InfoButtonSlots> & {
-  popoverOpen: boolean;
-};
+export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>> & Omit<PopoverProps, 'children'>;
 ```
 
 ## Structure
@@ -78,19 +66,26 @@ export type InfoButtonState = ComponentState<InfoButtonSlots> & {
 _**Public**_
 
 ```jsx
-<InfoButton content="This is some additional information." />
+<InfoButton
+  popoverSurface={
+    <>
+      Popover above-start lorem ipsum dolor sit amet consectetur.{' '}
+      <Link href="https://react.fluentui.dev">Learn more</Link>
+    </>
+  }
+/>
 ```
 
 _**Internal**_
 
 ```jsx
 return (
-  <slots.root {...(slotProps.root as PopoverProps)}>
+  <Popover {...(state as Omit<PopoverProps, 'children'>)}>
     <PopoverTrigger>
-      <slots.button {...slotProps.button} />
+      <slots.root {...slotProps.root} />
     </PopoverTrigger>
-    <slots.content {...slotProps.content} />
-  </slots.root>
+    <slots.popoverSurface {...slotProps.popoverSurface} />
+  </Popover>
 );
 ```
 
@@ -102,7 +97,10 @@ _**DOM**_
 </button>
 
 <!-- on document.body -->
-<div role="tooltip" class="fui-PopoverSurface fui-InfoButton__content">This is some additional information.</div>
+<div role="tooltip" class="fui-PopoverSurface fui-InfoButton__content">
+  Popover above-start lorem ipsum dolor sit amet consectetur.
+  <a href="https://react.fluentui.dev">Learn more</a>
+</div>
 ```
 
 ## Migration
