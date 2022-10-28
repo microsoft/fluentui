@@ -7,7 +7,7 @@ const related: ISideRailLink[] = [
   { text: 'iOS Button', url: '#/controls/ios/button' },
   { text: 'Android Button', url: '#/controls/android/button' },
   { text: 'macOS Button', url: '#/controls/mac/button' },
-  { text: 'Cross-platform Button', url: '#/controls/cross/button' },
+  { text: 'Cross-platform Button', url: '#/controls/crossplatform/button' },
 ];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/ButtonPage';
