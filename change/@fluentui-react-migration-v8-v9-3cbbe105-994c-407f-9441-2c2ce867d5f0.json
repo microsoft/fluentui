@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Updated to tsconfig to publish to dist.",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
