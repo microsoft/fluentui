@@ -25,9 +25,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
   // Safe access array version of children
   const childArray = useMemo(() => (Array.isArray(children) ? children : [children]), [children]);
 
-  // We store the previous child array to detect changes pre-emptively
-  const prevChildren = useRef<ReactNode[] | null>(null);
-
   // Tracks the initial item to start virtualizer at
   const [virtualizerStartIndex, setVirtualizerStartIndex] = useState<number>(0);
 
@@ -62,7 +59,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
   }, [childArray, sizeOfChild]);
 
   useEffect(() => {
-    // TODO: Remove? (We calc size prior to render if children change)
+    // TODO: Optimize how often this is called if possible (only on child length change?)
     populateSizeArrays();
   }, [children, childArray, childArray.length, populateSizeArrays, sizeOfChild]);
 
@@ -232,19 +229,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
     return childArray.slice(virtualizerStartIndex, end);
   };
 
-  /*
-    We need to trigger these calculations prior to render
-    so that our calculations are always up to date / accurate.
-  */
-  if (
-    sizeOfChild &&
-    prevChildren &&
-    (prevChildren.current !== childArray || prevChildren.current.length !== childArray.length)
-  ) {
-    populateSizeArrays();
-    prevChildren.current = childArray;
-  }
-
   const setBeforeRef = (element: HTMLDivElement) => {
     if (!element || beforeElementRef.current === element) {
       return;
@@ -278,6 +262,50 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
     // Ensure we update array if after element changed
     setIOList(newList);
   };
+
+  // We have to initialize size array prior to any size calls
+  const hasInitialized = useRef<boolean>(false);
+  const initializeSizeArray = () => {
+    if (hasInitialized.current === false) {
+      hasInitialized.current = true;
+      populateSizeArrays();
+    }
+  };
+
+  const updateCurrentItemSizes = () => {
+    if (!sizeOfChild) {
+      // Static sizes, not required.
+      return;
+    }
+    // We should always call our size function before a render (only for the items that will be rendered)
+    // This ensures we grab any state and up to date change when it happens.
+    const endIndex = Math.max(virtualizerStartIndex + virtualizerLength, childArray.length);
+
+    let didUpdate = false;
+    for (let i = virtualizerStartIndex; i < endIndex; i++) {
+      const newSize = sizeOfChild(childArray[i], i);
+      if (newSize !== childSizes.current[i]) {
+        childSizes.current[i] = sizeOfChild(childArray[i], i);
+        didUpdate = true;
+      }
+    }
+
+    if (didUpdate) {
+      // Update our progessive size array
+      for (let i = virtualizerStartIndex; i < childArray.length; i++) {
+        const prevSize = i > 0 ? childProgressiveSizes.current[i - 1] : 0;
+        childProgressiveSizes.current[i] = prevSize + childSizes.current[i];
+      }
+    }
+  };
+
+  // Ensure we have run through and updated the whole size list array at least once.
+  initializeSizeArray();
+  /*
+    We need to update our dynamic size array for the to-be rendered items
+    then our virtualizer calculations are always up to date / accurate.
+  */
+  updateCurrentItemSizes();
 
   return {
     components: {
