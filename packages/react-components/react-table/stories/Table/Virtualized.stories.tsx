@@ -9,7 +9,7 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { Virtualizer, VirtualizerFlow } from '@fluentui/virtualizer'; // TODO: Add this to react-components export?
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 
 const repeatCount = 25;
 const largeSize = 250;
@@ -86,10 +86,19 @@ const getSizeOfChild = (target: ReactNode, index: number) => {
 };
 
 export const Virtualized = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const vFlow = isVertical ? VirtualizerFlow.Vertical : VirtualizerFlow.Horizontal;
   return (
-    <Virtualizer flow={vFlow} virtualizerLength={25} itemSize={50} sizeOfChild={getSizeOfChild}>
-      {generateContent()}
-    </Virtualizer>
+    <div style={{ height: '500px', overflowY: 'auto', paddingRight: '20px' }} ref={containerRef}>
+      <Virtualizer
+        scrollViewRef={containerRef}
+        flow={vFlow}
+        virtualizerLength={25}
+        itemSize={50}
+        sizeOfChild={getSizeOfChild}
+      >
+        {generateContent()}
+      </Virtualizer>
+    </div>
   );
 };
