@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Async,
   EventGroup,
+  canUseDOM,
   css,
   divProperties,
   findIndex,
@@ -496,6 +497,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       nextProps.version !== this.props.version ||
       !previousState.hasMounted
     ) {
+      if (!canUseDOM()) {
+        return previousState;
+      }
       // We have received new items so we want to make sure that initially we only render a single window to
       // fill the currently visible rect, and then later render additional windows.
       this._resetRequiredWindows();
