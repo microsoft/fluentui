@@ -50,15 +50,25 @@ export type InfoButtonSlots = {
   root: NonNullable<Slot<'button'>>;
 
   /**
-   * The PopoverSurface to be displayed when the button is pressed.
+   * The Popover element that wraps the content and root. Use this slot to pass props to the Popover.
    */
-  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  popover: NonNullable<Slot<PopoverProps>>;
+
+  /**
+   * The content to be displayed in the PopoverSurface when the button is pressed.
+   */
+  content: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**
  * InfoButton Props
  */
-export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>> & Omit<PopoverProps, 'children'>;
+export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>>;
+
+/**
+ * State used in rendering InfoButton
+ */
+export type InfoButtonState = ComponentState<InfoButtonSlots>;
 ```
 
 ## Structure
@@ -67,7 +77,7 @@ _**Public**_
 
 ```jsx
 <InfoButton
-  popoverSurface={
+  content={
     <>
       Popover above-start lorem ipsum dolor sit amet consectetur.{' '}
       <Link href="https://react.fluentui.dev">Learn more</Link>
@@ -80,12 +90,12 @@ _**Internal**_
 
 ```jsx
 return (
-  <Popover {...(state as Omit<PopoverProps, 'children'>)}>
+  <slots.popover {...(slotProps.popover as PopoverProps)}>
     <PopoverTrigger>
       <slots.root {...slotProps.root} />
     </PopoverTrigger>
-    <slots.popoverSurface {...slotProps.popoverSurface} />
-  </Popover>
+    <slots.content {...slotProps.content} />
+  </slots.popover>
 );
 ```
 
