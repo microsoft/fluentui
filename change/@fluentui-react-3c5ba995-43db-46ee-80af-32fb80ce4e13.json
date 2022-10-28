@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Panel should only aria hide siblings when isOpen is true",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

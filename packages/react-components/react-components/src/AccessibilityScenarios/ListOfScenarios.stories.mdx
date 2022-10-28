@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/addon-docs';
 import { FullscreenLink } from './utils';
+export const parentPath = 'concepts-developer-accessibility-stories';
 
-<Meta title="Accessibility Scenarios/ List of Scenarios " />
+<Meta title="Concepts/Developer/Accessibility/Stories/List of scenarios" />
 
 # Accessibility Scenarios
 
@@ -9,66 +10,92 @@ Accessibility scenarios are used to validate accessibility of components and dem
 
 ## Component: Accordion
 
-- <FullscreenLink content="Accordion / Personal form" parent="accordion-accessibility-scenario" story="personal-form" />
-- <FullscreenLink content="Accordion / FAQ" parent="accordion-faq-accessibility-scenario" story="faq" />
+- <FullscreenLink content="Accordion / Personal form" parent={parentPath} story="personal-form-accordion" />
+- <FullscreenLink content="Accordion / FAQ" parent={parentPath} story="faq-accordion" />
 
 ## Component: Button
 
-- <FullscreenLink content="Button / Messenger" parent="button-accessibility-scenario" story="messenger-buttons" />
+- <FullscreenLink content="Button / Messenger" parent={parentPath} story="messenger-buttons" />
+
+## Component: Checkbox
+
+- <FullscreenLink
+    content="Checkbox / Questionnaire about food"
+    parent={parentPath}
+    story="questionnaire-about-food-checkboxes"
+  />
 
 ## Component: Input
 
-- <FullscreenLink
-    content="Input / Registration form"
-    parent="input-accessibility-scenario"
-    story="registration-form-inputs"
-  />
+- <FullscreenLink content="Input / Ticket order form" parent={parentPath} story="ticket-order-form-inputs" />
 
 ## Component: Link
 
-- <FullscreenLink content="Link / Site navigation" parent="link-accessibility-scenario" story="site-navigation" />
+- <FullscreenLink content="Link / Site navigation" parent={parentPath} story="site-navigation-links" />
 
 ## Component: Menu
 
-- <FullscreenLink content="Menu / Profile menu" parent="menu-accessibility-scenario" story="profile-menu" />
-- <FullscreenLink
-    content="Menu / Menu with split item"
-    parent="menu-splitgroup-accessibility-scenario"
-    story="menu-with-split-item"
-  />
+- <FullscreenLink content="Menu / Profile menu" parent={parentPath} story="profile-menu" />
+- <FullscreenLink content="Menu / Menu with split item" parent={parentPath} story="menu-with-split-item" />
 
 ## Component: Popover
 
-- <FullscreenLink content="Popover / Add people" parent="popover-accessibility-scenario" story="add-people" />
+- <FullscreenLink content="Popover / Add people" parent={parentPath} story="add-people-popover" />
+
+## Component: RadioGroup
+
+- <FullscreenLink
+    content="RadioGroup / Questionnaire about transportation"
+    parent={parentPath}
+    story="questionnaire-about-transportation-radios"
+  />
 
 ## Component: Slider
 
-- <FullscreenLink
-    content="Slider / Sound control"
-    parent="slider-accessibility-scenario"
-    story="sound-control-sliders"
-  />
+- <FullscreenLink content="Slider / Sound control" parent={parentPath} story="sound-control-sliders" />
+
+## Component: Spinner
+
+- <FullscreenLink content="Spinner / Posts loading" parent={parentPath} story="posts-loading-spinner" />
 
 ## Component: SplitButton
 
+- <FullscreenLink content="SplitButton / Event reminder" parent={parentPath} story="event-reminder-split-button" />
+
+## Component: Switch
+
+- <FullscreenLink content="Switch / Device controls" parent={parentPath} story="device-controls-switches" />
+
+## Component: TabList
+
 - <FullscreenLink
-    content="SplitButton / Event remindar"
-    parent="split-button-accessibility-scenario"
-    story="event-reminder"
+    content="TabList / Mail settings with horizontal tablist"
+    parent={parentPath}
+    story="mail-settings-horizontal-tab-list"
+  />
+- <FullscreenLink
+    content="TabList / Mail settings with vertical tablist"
+    parent={parentPath}
+    story="mail-settings-vertical-tab-list"
+  />
+- <FullscreenLink
+    content="TabList / Mail settings with overflow tablist"
+    parent={parentPath}
+    story="mail-settings-overflow-tab-list"
+  />
+
+## Component: Textarea
+
+- <FullscreenLink
+    content="Textarea / Questionnaire about customer experience"
+    parent={parentPath}
+    story="questionnaire-about-customer-experience-textareas"
   />
 
 ## Component: ToggleButton
 
-- <FullscreenLink
-    content="ToggleButton / Device controls"
-    parent="toggle-button-accessibility-scenario"
-    story="device-controls"
-  />
+- <FullscreenLink content="ToggleButton / Device controls" parent={parentPath} story="device-controls-toggle-buttons" />
 
 ## Component: Tooltip
 
-- <FullscreenLink
-    content="Tooltip / Buttons with tooltip"
-    parent="tooltip-accessibility-scenario"
-    story="buttons-with-tooltip"
-  />
+- <FullscreenLink content="Tooltip / Buttons with tooltip" parent={parentPath} story="buttons-with-tooltip" />

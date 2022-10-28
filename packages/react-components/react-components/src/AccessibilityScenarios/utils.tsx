@@ -18,7 +18,10 @@ export const FullscreenLink = (props: FullscreenLinkProps) => (
 );
 
 export const ScenariosListLink: React.FC = props => (
-  <a className="sbdocs sbdocs-a" href={`iframe.html?id=accessibility-scenarios-list-of-scenarios--page`}>
+  <a
+    className="sbdocs sbdocs-a"
+    href={`iframe.html?id=concepts-developer-accessibility-stories-list-of-scenarios--page`}
+  >
     {props.children}
   </a>
 );

@@ -90,7 +90,7 @@ const OverflowMenu: React.FC<{
 
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button ref={ref}>+{overflowCount} items</Button>
       </MenuTrigger>
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Pad in slider so the thumb does not render outside the bounds of the root element",
+  "packageName": "@fluentui/react-slider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

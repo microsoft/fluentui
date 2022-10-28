@@ -13,7 +13,7 @@ const FirstNestedPopover = () => {
 
   return (
     <Popover trapFocus>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <Button>First nested trigger</Button>
       </PopoverTrigger>
 
@@ -39,7 +39,7 @@ const SecondNestedPopover = () => {
 
   return (
     <Popover trapFocus>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <Button>Second nested trigger</Button>
       </PopoverTrigger>
 
@@ -63,7 +63,7 @@ export const NestedPopovers = () => {
 
   return (
     <Popover trapFocus>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <Button>Root trigger</Button>
       </PopoverTrigger>
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Migrate to new package structure.",
-  "packageName": "@fluentui/react-alert",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

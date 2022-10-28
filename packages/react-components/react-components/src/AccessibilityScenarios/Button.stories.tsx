@@ -4,8 +4,7 @@ import { Button } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
-export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = () => {
-  const [sendButtonDisabled, setSendButtonDisabled] = React.useState<boolean | undefined>(true);
+export const MessengerButtons: React.FunctionComponent = () => {
   const [deleteButtonDisabled, setDeleteButtonDisabled] = React.useState<boolean | undefined>(true);
   const [increaseFontButtonDisabled, setIncreaseFontButtonDisabled] = React.useState<boolean | undefined>(undefined);
   const [decreaseFontButtonDisabled, setDecreaseFontButtonDisabled] = React.useState<boolean | undefined>(true);
@@ -23,13 +22,16 @@ export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = ()
 
   const resetMessage = () => {
     setMessage('');
-    setSendButtonDisabled(true);
     setDeleteButtonDisabled(true);
   };
 
   const onSendButtonClick = () => {
+    if (message.length > 0) {
+      setStatusText('Message has been sent.');
+    } else {
+      setStatusText('Please type a message.');
+    }
     resetMessage();
-    setStatusText('Message has been sent.');
   };
   const onDeleteButtonClick = () => {
     resetMessage();
@@ -59,11 +61,9 @@ export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = ()
   const onMessageTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value;
     if (value.length > 0) {
-      setSendButtonDisabled(undefined);
       setDeleteButtonDisabled(undefined);
       setStatusText('');
     } else {
-      setSendButtonDisabled(true);
       setDeleteButtonDisabled(true);
     }
     setMessage(value);
@@ -71,38 +71,28 @@ export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = ()
 
   return (
     <Scenario pageTitle="Messenger buttons">
-      <Button disabledFocusable={sendButtonDisabled} onClick={onSendButtonClick}>
-        Send
-      </Button>
-      <Button disabledFocusable={deleteButtonDisabled} onClick={onDeleteButtonClick}>
-        Delete
-      </Button>
       <Button ref={increaseFontButtonRef} disabled={increaseFontButtonDisabled} onClick={onIncreaseFontButtonClick}>
         Increase font size
       </Button>
       <Button ref={decreaseFontButtonRef} disabled={decreaseFontButtonDisabled} onClick={onDecreaseFontButtonClick}>
         Decrease font size
       </Button>
-      <div>
-        <textarea
-          name="message"
-          rows={3}
-          cols={50}
-          placeholder="Enter message here...."
-          aria-label="Message"
-          onChange={onMessageTextareaChange}
-          value={message}
-          style={messageStyle}
-        />
-      </div>
-      <p>
-        <span aria-live="polite">{statusText}</span>
-      </p>
+      <textarea
+        name="message"
+        rows={3}
+        cols={50}
+        placeholder="Enter message here...."
+        aria-label="Message"
+        onChange={onMessageTextareaChange}
+        value={message}
+        style={messageStyle}
+      />
+      <Button onClick={onSendButtonClick}>Send</Button>
+      <Button disabledFocusable={deleteButtonDisabled} onClick={onDeleteButtonClick}>
+        Delete
+      </Button>
+
+      <p aria-live="polite">{statusText}</p>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / Messenger buttons',
-  id: 'button-accessibility-scenario',
 };

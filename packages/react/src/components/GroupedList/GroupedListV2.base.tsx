@@ -276,6 +276,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     viewport,
     listRef,
     groupExpandedVersion,
+    version: versionFromProps,
   } = props;
 
   const {
@@ -330,7 +331,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
 
   React.useEffect(() => {
     setVersion({});
-  }, [compact]);
+  }, [versionFromProps]);
 
   React.useEffect(() => {
     const newIsSomeGroupExpanded = computeIsSomeGroupExpanded(groups);
@@ -501,7 +502,7 @@ const GroupItem = <T,>({
   const isSelected = useIsGroupSelected(group.startIndex, group.count, selection, eventGroup);
   const mergedProps = {
     ...props,
-    isSelected: isSelected,
+    isSelected,
     selected: isSelected,
   };
   return render(mergedProps, defaultRender);
@@ -517,16 +518,25 @@ export class GroupedListV2Wrapper
     nextProps: IGroupedListProps,
     previousState: IGroupedListV2State,
   ): IGroupedListV2State {
-    const { groups } = nextProps;
+    const { groups, selectionMode, compact, items, listProps } = nextProps;
+    const nextListVersion = listProps && listProps.version;
 
-    if (groups !== previousState.groups) {
-      return {
-        ...previousState,
-        groups,
-      };
+    const nextState = {
+      ...previousState,
+      groups,
+    };
+
+    if (
+      nextListVersion !== previousState.version ||
+      items !== previousState.items ||
+      groups !== previousState.groups ||
+      selectionMode !== previousState.selectionMode ||
+      compact !== previousState.compact
+    ) {
+      nextState.version = {};
     }
 
-    return previousState;
+    return nextState;
   }
 
   constructor(props: IGroupedListProps) {
