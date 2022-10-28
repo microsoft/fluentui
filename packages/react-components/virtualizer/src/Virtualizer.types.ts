@@ -3,10 +3,10 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type VirtualizerSlots = {
   root: NonNullable<Slot<'div'>>;
-  before: Slot<'div'>;
-  beforeContainer: Slot<'div'>;
-  after: Slot<'div'>;
-  afterContainer: Slot<'div'>;
+  before?: Slot<'div'>;
+  beforeContainer?: Slot<'div'>;
+  after?: Slot<'div'>;
+  afterContainer?: Slot<'div'>;
 };
 
 /**

@@ -8,12 +8,13 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { Virtualizer } from '@fluentui/virtualizer'; // TODO: Add this to react-components export?
+import { Virtualizer, VirtualizerFlow } from '@fluentui/virtualizer'; // TODO: Add this to react-components export?
 import { ReactNode } from 'react';
 
 const repeatCount = 25;
-const largeSize = 50;
-const smallSize = 250;
+const largeSize = 250;
+const smallSize = 100;
+const isVertical = true;
 
 const items = [
   {
@@ -62,12 +63,15 @@ const generateContent = () => {
       contentList.push(
         <div
           style={{
-            height: isEven ? largeSize : smallSize,
+            height: isVertical ? (isEven ? largeSize : smallSize) : '100%',
+            width: isVertical ? '100%' : isEven ? largeSize : smallSize,
+            minHeight: smallSize,
             backgroundColor: isEven ? 'black' : 'white',
             color: isEven ? 'white' : 'black',
             justifyContent: 'center',
             alignItems: 'center',
             display: 'flex',
+            padding: '8px',
           }}
           key={`item-${i}-${index}`}
         >{`${item.file.label}-${item.author.label}-${i}`}</div>,
@@ -82,16 +86,9 @@ const getSizeOfChild = (target: ReactNode, index: number) => {
 };
 
 export const Virtualized = () => {
+  const vFlow = isVertical ? VirtualizerFlow.Vertical : VirtualizerFlow.Horizontal;
   return (
-    <Virtualizer
-      virtualizerLength={25}
-      itemSize={50}
-      sizeOfChild={getSizeOfChild}
-      before={null}
-      beforeContainer={null}
-      after={null}
-      afterContainer={null}
-    >
+    <Virtualizer flow={vFlow} virtualizerLength={25} itemSize={50} sizeOfChild={getSizeOfChild}>
       {generateContent()}
     </Virtualizer>
   );

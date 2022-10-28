@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
+import { VirtualizerFlow, VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const virtualizerClassName = 'fui-Virtualizer';
@@ -27,6 +27,22 @@ const useReverseColumnStyles = makeStyles({
   },
 });
 
+const useRowStyles = makeStyles({
+  root: {
+    display: 'flex',
+    overflowAnchor: 'none',
+    flexDirection: 'row',
+  },
+});
+
+const useReverseRowStyles = makeStyles({
+  root: {
+    display: 'flex',
+    overflowAnchor: 'none',
+    flexDirection: 'row-reverse',
+  },
+});
+
 const useStyles = makeStyles({
   before: {
     display: 'flex',
@@ -46,14 +62,19 @@ const useStyles = makeStyles({
  * Apply styling to the Virtualizer states
  */
 export const useVirtualizerStyles_unstable = (state: VirtualizerState): VirtualizerState => {
-  const { isReversed } = state;
+  const { isReversed, flow } = state;
+  const isVertical = flow === VirtualizerFlow.Vertical;
   const styles = useStyles();
   const containerStyles = {
     column: useColumnStyles(),
     reverseColumn: useReverseColumnStyles(),
+    row: useRowStyles(),
+    reverseRow: useReverseRowStyles(),
   };
 
-  const rootContainerStyle = isReversed ? containerStyles.reverseColumn : containerStyles.column;
+  const columnStyle = isReversed ? containerStyles.reverseColumn : containerStyles.column;
+  const rowStyle = isReversed ? containerStyles.reverseRow : containerStyles.row;
+  const rootContainerStyle = isVertical ? columnStyle : rowStyle;
 
   state.root.className = mergeClasses(virtualizerClassName, rootContainerStyle.root, state.root.className);
 
