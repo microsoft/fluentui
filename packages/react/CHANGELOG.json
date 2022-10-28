@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 28 Oct 2022 07:45:07 GMT",
+      "tag": "@fluentui/react_v8.99.0",
+      "version": "8.99.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "277d440d579167614823f740f58758f05cb40ca2",
+            "comment": "feat: Add enableScopedSelectors prop to Stack that, when true, makes the Stack styles selectors be more scoped to not be as expensive in style recalculation."
+          },
+          {
+            "author": "sebastian.vanik@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "6682e6f4e59ca3fe479564219ed4b1b9a91b9907",
+            "comment": "Allow empty string as valid value for text property of ComboBox"
+          }
+        ],
+        "patch": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "6c136eb60ae73382d3336b2ff11b113924d6eddc",
+            "comment": "fix: Allowing DatePicker to be focusable within FocusZones by default."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Oct 2022 07:52:53 GMT",
       "tag": "@fluentui/react_v8.98.8",
       "version": "8.98.8",

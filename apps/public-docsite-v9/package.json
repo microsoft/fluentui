@@ -21,7 +21,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.98.8",
+    "@fluentui/react": "^8.99.0",
     "@fluentui/react-northstar": "^0.64.0",
     "@fluentui/react-icons-northstar": "^0.64.0",
     "@fluentui/scripts": "^1.0.0",

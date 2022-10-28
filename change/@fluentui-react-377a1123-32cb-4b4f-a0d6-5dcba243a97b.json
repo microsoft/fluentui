@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add enableScopedSelectors prop to Stack that, when true, makes the Stack styles selectors be more scoped to not be as expensive in style recalculation.",
-  "packageName": "@fluentui/react",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 26 Oct 2022 07:52:53 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Oct 2022 07:45:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.99.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.0)
+
+Fri, 28 Oct 2022 07:45:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.8..@fluentui/react_v8.99.0)
+
+### Minor changes
+
+- feat: Add enableScopedSelectors prop to Stack that, when true, makes the Stack styles selectors be more scoped to not be as expensive in style recalculation. ([PR #25397](https://github.com/microsoft/fluentui/pull/25397) by humberto_makoto@hotmail.com)
+- Allow empty string as valid value for text property of ComboBox ([PR #24665](https://github.com/microsoft/fluentui/pull/24665) by sebastian.vanik@gmail.com)
+
+### Patches
+
+- fix: Allowing DatePicker to be focusable within FocusZones by default. ([PR #25428](https://github.com/microsoft/fluentui/pull/25428) by humberto_makoto@hotmail.com)
 
 ## [8.98.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.8)
 
