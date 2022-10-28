@@ -36,14 +36,14 @@ export const OverflowBoundary = () => {
       <Checkbox label="Open" checked={open} onChange={(e, data) => setOpen(data.checked as boolean)} />
       <div ref={setBoundaryRef} className={styles.boundary}>
         <Popover open={open} positioning={{ overflowBoundary: boundaryRef, position: 'below', align: 'start' }}>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <Button className={styles.trigger}>Align: end</Button>
           </PopoverTrigger>
           <PopoverSurface>Stays within the overflow boundary</PopoverSurface>
         </Popover>
 
         <Popover open={open} positioning={{ position: 'above', align: 'start' }}>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <Button className={styles.trigger}>Align: end</Button>
           </PopoverTrigger>
           <PopoverSurface>Overflows the overflow boundary</PopoverSurface>

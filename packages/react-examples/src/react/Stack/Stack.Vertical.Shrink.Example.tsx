@@ -49,7 +49,7 @@ export const VerticalStackShrinkExample: React.FunctionComponent = () => {
   };
 
   return (
-    <Stack tokens={outerStackTokens}>
+    <Stack enableScopedSelectors tokens={outerStackTokens}>
       <Slider
         label="Change the stack height to see how child items shrink:"
         min={1}
@@ -60,7 +60,7 @@ export const VerticalStackShrinkExample: React.FunctionComponent = () => {
         onChange={setStackHeight}
       />
       <div className={mergeStyles(containerStyles)}>
-        <Stack styles={stackStyles} tokens={innerStackTokens}>
+        <Stack enableScopedSelectors styles={stackStyles} tokens={innerStackTokens}>
           <Stack.Item grow styles={stackItemStyles}>
             I shrink
           </Stack.Item>

@@ -106,7 +106,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={0.1}
+              opacity={1}
               role="text"
             />
             <text
@@ -364,7 +364,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   <button
                     aria-label="first selected"
                     aria-posinset={1}
-                    aria-selected={true}
+                    aria-selected={false}
                     aria-setsize={2}
                     className=
 
@@ -649,7 +649,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={0.1}
+              opacity={1}
               role="text"
             />
             <text
@@ -825,7 +825,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   <button
                     aria-label="first selected"
                     aria-posinset={1}
-                    aria-selected={true}
+                    aria-selected={false}
                     aria-setsize={2}
                     className=
 

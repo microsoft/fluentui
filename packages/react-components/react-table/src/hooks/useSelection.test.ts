@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useSelectionState } from './useSelection';
-import { mockTableState } from '../common/mockTableState';
+import { mockTableState } from '../testing/mockTableState';
 
 describe('useSelectionState', () => {
   const items = [{ value: 'a' }, { value: 'b' }, { value: 'c' }, { value: 'd' }];

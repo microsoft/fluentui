@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Adding bundle-size command for bundle-size fixtures.",
-  "packageName": "@fluentui/react-persona",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -35,6 +35,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     DatePicker: {},
     PeoplePicker: {},
     SwatchColorPicker: {},
+    TimePicker: {},
   },
   'Items & Lists': {
     List: { title: 'Basic List' },

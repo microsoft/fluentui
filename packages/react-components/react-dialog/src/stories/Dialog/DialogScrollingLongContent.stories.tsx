@@ -7,13 +7,13 @@ import {
   DialogBody,
   DialogContent,
   DialogActions,
-} from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-components';
+  Button,
+} from '@fluentui/react-components';
 
 export const ScrollingLongContent = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open dialog</Button>
       </DialogTrigger>
       <DialogSurface>
@@ -126,7 +126,7 @@ export const ScrollingLongContent = () => {
             </p>
           </DialogContent>
           <DialogActions>
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
             <Button appearance="primary">Do Something</Button>
