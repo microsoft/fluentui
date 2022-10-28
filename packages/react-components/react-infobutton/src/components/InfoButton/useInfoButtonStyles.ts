@@ -11,7 +11,7 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
 };
 
 /**
- * Styles for the button slot
+ * Styles for the root slot
  */
 const useButtonStyles = makeStyles({
   base: {
