@@ -122,4 +122,10 @@ There will still be parts of the component that the user will have to implement,
 
 ## Discarded Solutions
 
+Option 2 and 3
+
+## Chosen Solution
+
+Option 1 was chosen. We will test how this works and if we see issues with this approach, we will consider option 2. Option 3 was discarded because it's too similar to option 2 and it's not clear if it's better than option 1. A follow-up RFC will be created to discuss what is expected of a recipe and when it's needed.
+
 ## Open Issues
