@@ -1,15 +1,13 @@
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { InfoButtonSlots, InfoButtonState } from './InfoButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
-  // This classname is not applied, but it's left here to prevent a linting error.
   root: 'fui-InfoButton',
-  content: 'fui-InfoButton__content',
-  button: 'fui-InfoButton__button',
+  popoverSurface: 'fui-InfoButton__popoverSurface',
 };
 
 /**
@@ -89,9 +87,9 @@ const useButtonStyles = makeStyles({
   }),
 
   transition: {
-    transitionDuration: '100ms',
+    transitionDuration: tokens.durationFaster,
     transitionProperty: 'background, border, color',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionTimingFunction: tokens.curveEasyEase,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -143,23 +141,22 @@ const useDisabledButtonStyles = makeStyles({
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
-  const { popoverOpen } = state;
-  const { disabled } = state.button;
+  const { open } = state;
+  const { disabled } = state.root;
   const buttonStyles = useButtonStyles();
   const disabledButtonStyles = useDisabledButtonStyles();
 
-  state.content.className = mergeClasses(infoButtonClassNames.content, state.content.className);
-  state.button.className = mergeClasses(
-    infoButtonClassNames.button,
+  state.popoverSurface.className = mergeClasses(infoButtonClassNames.popoverSurface, state.popoverSurface.className);
+  state.root.className = mergeClasses(
+    infoButtonClassNames.root,
     buttonStyles.base,
     buttonStyles.focusIndicator,
     buttonStyles.transition,
-    popoverOpen && buttonStyles.selected,
+    open && buttonStyles.selected,
 
-    // Disabled styles
     disabled && disabledButtonStyles.base,
 
-    state.button.className,
+    state.root.className,
   );
 
   return state;

@@ -5,7 +5,7 @@ import { Link } from '@fluentui/react-components';
 export const Default = (props: Partial<InfoButtonProps>) => (
   <InfoButton
     {...props}
-    content={
+    popoverSurface={
       <>
         Popover above-start lorem ipsum dolor sit amet consectetur.{' '}
         <Link href="https://react.fluentui.dev">Learn more</Link>

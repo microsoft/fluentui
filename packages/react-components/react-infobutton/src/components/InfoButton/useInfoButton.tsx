@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon } from './DefaultInfoButtonIcon';
-import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { OnOpenChangeData, OpenPopoverEvents, PopoverSurface } from '@fluentui/react-popover';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 
@@ -13,47 +13,42 @@ import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
  *
  * @param props - props from this instance of InfoButton
  */
-export const useInfoButton_unstable = (props: InfoButtonProps): InfoButtonState => {
+export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
+  const { positioning = 'above-start', size = 'small', withArrow = true, open, defaultOpen, onOpenChange } = props;
+
   const [popoverOpen, setPopoverOpen] = useControllableState({
-    state: props.open,
-    defaultState: props.defaultOpen,
+    state: open,
+    defaultState: defaultOpen,
     initialState: false,
   });
 
   const handleOnPopoverChange = (e: OpenPopoverEvents, data: OnOpenChangeData) => {
-    props.onOpenChange?.(e, data);
+    onOpenChange?.(e, data);
     setPopoverOpen(data.open);
   };
 
   return {
-    popoverOpen,
+    open: popoverOpen,
+    onOpenChange: handleOnPopoverChange,
+    positioning,
+    size,
+    withArrow,
 
     components: {
-      root: Popover,
-      button: 'button',
-      content: PopoverSurface,
+      root: 'button',
+      popoverSurface: PopoverSurface,
     },
 
-    root: {
-      children: <></>,
-      size: 'small',
-      withArrow: true,
-      positioning: 'above-start',
+    root: getNativeElementProps('button', {
+      children: <DefaultInfoButtonIcon />,
+      type: 'button',
       ...props,
-      open: popoverOpen,
-      onOpenChange: handleOnPopoverChange,
-    },
-    content: resolveShorthand(props.content, {
+      ref,
+    }),
+    popoverSurface: resolveShorthand(props.popoverSurface, {
       required: true,
       defaultProps: {
         role: 'dialog',
-      },
-    }),
-    button: resolveShorthand(props.button, {
-      required: true,
-      defaultProps: {
-        children: <DefaultInfoButtonIcon />,
-        type: 'button',
       },
     }),
   };

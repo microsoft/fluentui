@@ -1,11 +1,11 @@
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../common/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles';
-import { RenderResult } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleDialog(result: RenderResult) {
-  const dialogs = result.baseElement.querySelectorAll('*[role="dialog"]');
+  const dialogs = result.baseElement.querySelectorAll('[role="dialog"]');
   if (!dialogs?.length) {
     return null;
   } else {
@@ -27,22 +27,17 @@ describe('InfoButton', () => {
     Component: InfoButton,
     displayName: 'InfoButton',
     requiredProps: {
-      content: 'Popover content',
+      popoverSurface: 'Popover content',
     },
-    disabledTests: [
-      'component-handles-ref',
-      'component-has-root-ref',
-      'component-handles-classname',
-      'make-styles-overrides-win',
-    ],
     testOptions: {
       'has-static-classnames': [
         {
-          props: {},
+          props: {
+            popoverSurface: 'Popover content',
+          },
           expectedClassNames: {
-            // root shouldn't be expected since the root is a Popover
-            button: infoButtonClassNames.button,
-            content: infoButtonClassNames.content,
+            root: infoButtonClassNames.root,
+            popoverSurface: infoButtonClassNames.popoverSurface,
           },
           getPortalElement: getPopoverSurfaceElement,
         },
