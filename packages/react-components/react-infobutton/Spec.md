@@ -4,7 +4,7 @@ Convergence epic issue: [#25062](https://github.com/microsoft/fluentui/issues/25
 
 ## Background
 
-An InfoButton provides a way for users to get more information about a particular UI element. It is a button that displays an icon and when clicked a Popover displays the additional information.
+An InfoButton provides a way for users to get more information about a particular UI element. It is a button that displays an icon and when clicked a Popover displays the additional information. InfoButton may contain focusable items inside the Popover.
 
 Because the Popover isn't always visible, it should not contain information that people must know in order to complete the field.
 
@@ -79,7 +79,7 @@ _**Public**_
 <InfoButton
   content={
     <>
-      Popover above-start lorem ipsum dolor sit amet consectetur.{' '}
+      Popover above-start lorem ipsum dolor sit amet consectetur.
       <Link href="https://react.fluentui.dev">Learn more</Link>
     </>
   }
@@ -145,7 +145,7 @@ There's no migration guide as `v0` and `v8` do not have an InfoButton component.
 - Tab order
   - When tabbing through the page, the button should be a tab stop.
   - When focused on the button, pressing `Enter` or `Space` should open the Popover.
-    - Focus is not trapped within the Popover, it should stay in the button.
+    - If the popover does not contain any focusable items, focus should stay on the button.
   - When focused on the button, pressing `Escape` should close the Popover.
   - When the Popover is open and it has focusable items, tabbing should move to the next focusable item.
     - When focused on an item inside the Popover, pressing `Escape` should close the Popover and return to the button.
