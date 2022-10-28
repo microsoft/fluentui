@@ -12,6 +12,8 @@ import { Virtualizer } from '@fluentui/virtualizer'; // TODO: Add this to react-
 import { ReactNode } from 'react';
 
 const repeatCount = 25;
+const largeSize = 50;
+const smallSize = 250;
 
 const items = [
   {
@@ -56,17 +58,40 @@ const generateContent = () => {
   const contentList: ReactNode[] = [];
   for (let i = 0; i < repeatCount; i++) {
     items.forEach((item, index) => {
+      const isEven = index % 2 === 0;
       contentList.push(
-        <div style={{ height: 50 }} key={`item-${i}-${index}`}>{`${item.file.label}-${item.author.label}-${i}`}</div>,
+        <div
+          style={{
+            height: isEven ? largeSize : smallSize,
+            backgroundColor: isEven ? 'black' : 'white',
+            color: isEven ? 'white' : 'black',
+            justifyContent: 'center',
+            alignItems: 'center',
+            display: 'flex',
+          }}
+          key={`item-${i}-${index}`}
+        >{`${item.file.label}-${item.author.label}-${i}`}</div>,
       );
     });
   }
   return contentList;
 };
 
+const getSizeOfChild = (target: ReactNode, index: number) => {
+  return index % 2 === 0 ? largeSize : smallSize;
+};
+
 export const Virtualized = () => {
   return (
-    <Virtualizer virtualizerLength={25} itemSize={50}>
+    <Virtualizer
+      virtualizerLength={25}
+      itemSize={50}
+      sizeOfChild={getSizeOfChild}
+      before={null}
+      beforeContainer={null}
+      after={null}
+      afterContainer={null}
+    >
       {generateContent()}
     </Virtualizer>
   );

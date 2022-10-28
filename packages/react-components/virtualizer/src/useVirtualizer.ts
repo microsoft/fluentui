@@ -66,6 +66,16 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
   // Observe intersections of virtualized components
   const [setIOList, _setIOInit, _observer] = useIntersectionObserver(
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      /* Sanity check - do we even need virtualization? */
+      if (virtualizerLength > childArray.length) {
+        if (virtualizerStartIndex !== 0) {
+          onUpdateIndex?.(0, virtualizerStartIndex);
+          setVirtualizerStartIndex(0);
+        }
+        // No-op
+        return;
+      }
+
       /* IO initiates this function when needed,
       we don't need to iterate through the results,
       we simply need to know that an interaction has happened to efficiently update based
@@ -93,7 +103,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
         if (latestEntry.target === afterElementRef.current) {
           measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
         } else if (latestEntry.target === beforeElementRef.current) {
-          measurementPos = calculateBefore();
           measurementPos = isReversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
         }
       }
@@ -123,10 +132,13 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
 
       if (virtualizerStartIndex !== newStartIndex) {
         // Set new index, trigger render!
-        if (onUpdateIndex) {
-          onUpdateIndex(newStartIndex, virtualizerStartIndex);
-        }
+        onUpdateIndex?.(newStartIndex, virtualizerStartIndex);
         setVirtualizerStartIndex(newStartIndex);
+        /*
+          We need to update our dynamic size array for the to-be rendered items
+          then our virtualizer calculations are always up to date / accurate.
+        */
+        updateCurrentItemSizes();
       }
     },
     {
@@ -203,16 +215,15 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
   };
 
   const calculateAfter = () => {
+    const lastItemIndex = Math.min(virtualizerStartIndex + virtualizerLength, childArray.length - 1);
     if (!sizeOfChild) {
       // The missing items from after virtualization ends height
-      const lastItemIndex = virtualizerStartIndex + virtualizerLength;
       const remainingItems = childArray.length - lastItemIndex;
 
       return remainingItems * itemSize;
     }
 
     // Time for custom size calcs
-    const lastItemIndex = virtualizerStartIndex + virtualizerLength;
 
     return childProgressiveSizes.current[childArray.length - 1] - childProgressiveSizes.current[lastItemIndex];
   };
@@ -301,11 +312,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
 
   // Ensure we have run through and updated the whole size list array at least once.
   initializeSizeArray();
-  /*
-    We need to update our dynamic size array for the to-be rendered items
-    then our virtualizer calculations are always up to date / accurate.
-  */
-  updateCurrentItemSizes();
 
   return {
     components: {
