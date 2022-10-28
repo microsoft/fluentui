@@ -1,14 +1,12 @@
 import * as React from 'react';
 
 /**
- * @internal
  * A Ref function which can be treated like a ref object in that it has an attached
  * current property, which will be updated as the ref is evaluated.
  */
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
 
 /**
- * @internal
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
  * @param refs - Refs to collectively update with one ref value.

@@ -78,7 +78,7 @@ export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(sh
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
 
-// @internal
+// @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
@@ -133,7 +133,7 @@ export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | Reac
 // @public
 export const SSRProvider: React_2.FC;
 
-// @internal
+// @public
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
 };
@@ -160,13 +160,13 @@ export function useForceUpdate(): DispatchWithoutAction;
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
-// @internal
+// @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
 export function useIsSSR(): boolean;
 
-// @internal
+// @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @internal (undocumented)
