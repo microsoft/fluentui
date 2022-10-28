@@ -22,16 +22,17 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
-export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>> & Omit<PopoverProps, 'children'>;
+export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>>;
 
 // @public (undocumented)
 export type InfoButtonSlots = {
     root: NonNullable<Slot<'button'>>;
-    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+    popover: NonNullable<Slot<PopoverProps>>;
+    content: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots> & Omit<PopoverProps, 'children'>;
+export type InfoButtonState = ComponentState<InfoButtonSlots>;
 
 // @public
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;

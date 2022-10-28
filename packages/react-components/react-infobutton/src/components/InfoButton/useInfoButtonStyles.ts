@@ -7,7 +7,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
   root: 'fui-InfoButton',
-  popoverSurface: 'fui-InfoButton__popoverSurface',
+  // this className won't be used, but it's needed to satisfy the type checker
+  popover: 'fui-InfoButton__popover',
+  content: 'fui-InfoButton__content',
 };
 
 /**
@@ -110,8 +112,6 @@ const useDisabledButtonStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundDisabled,
 
-      cursor: 'not-allowed',
-
       [`& .${iconFilledClassName}`]: {
         display: 'none',
       },
@@ -124,8 +124,6 @@ const useDisabledButtonStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundDisabled,
-
-      cursor: 'not-allowed',
 
       [`& .${iconFilledClassName}`]: {
         display: 'none',
@@ -141,12 +139,12 @@ const useDisabledButtonStyles = makeStyles({
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
-  const { open } = state;
+  const { open } = state.popover;
   const { disabled } = state.root;
   const buttonStyles = useButtonStyles();
   const disabledButtonStyles = useDisabledButtonStyles();
 
-  state.popoverSurface.className = mergeClasses(infoButtonClassNames.popoverSurface, state.popoverSurface.className);
+  state.content.className = mergeClasses(infoButtonClassNames.content, state.content.className);
   state.root.className = mergeClasses(
     infoButtonClassNames.root,
     buttonStyles.base,

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon } from './DefaultInfoButtonIcon';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { OnOpenChangeData, OpenPopoverEvents, PopoverSurface } from '@fluentui/react-popover';
+import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
+import type { PopoverProps } from '@fluentui/react-popover';
 
 /**
  * Create the state required to render InfoButton.
@@ -14,29 +15,11 @@ import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
  * @param props - props from this instance of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
-  const { positioning = 'above-start', size = 'small', withArrow = true, open, defaultOpen, onOpenChange } = props;
-
-  const [popoverOpen, setPopoverOpen] = useControllableState({
-    state: open,
-    defaultState: defaultOpen,
-    initialState: false,
-  });
-
-  const handleOnPopoverChange = (e: OpenPopoverEvents, data: OnOpenChangeData) => {
-    onOpenChange?.(e, data);
-    setPopoverOpen(data.open);
-  };
-
-  return {
-    open: popoverOpen,
-    onOpenChange: handleOnPopoverChange,
-    positioning,
-    size,
-    withArrow,
-
+  const state: InfoButtonState = {
     components: {
       root: 'button',
-      popoverSurface: PopoverSurface,
+      popover: Popover,
+      content: PopoverSurface,
     },
 
     root: getNativeElementProps('button', {
@@ -45,11 +28,39 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       ...props,
       ref,
     }),
-    popoverSurface: resolveShorthand(props.popoverSurface, {
+    popover: resolveShorthand(props.popover, {
+      required: true,
+      defaultProps: {
+        children: <></>,
+        positioning: 'above-start',
+        size: 'small',
+        withArrow: true,
+      },
+    }),
+    content: resolveShorthand(props.content, {
       required: true,
       defaultProps: {
         role: 'dialog',
       },
     }),
   };
+
+  const [popoverOpen, setPopoverOpen] = useControllableState({
+    state: (props.popover as PopoverProps)?.open,
+    defaultState: (props.popover as PopoverProps)?.defaultOpen,
+    initialState: false,
+  });
+
+  const handleOnPopoverChange = React.useCallback(
+    (e: OpenPopoverEvents, data: OnOpenChangeData) => {
+      (props.popover as PopoverProps)?.onOpenChange?.(e, data);
+      setPopoverOpen(data.open);
+    },
+    [props.popover, setPopoverOpen],
+  );
+
+  state.popover.open = popoverOpen;
+  state.popover.onOpenChange = handleOnPopoverChange;
+
+  return state;
 };
