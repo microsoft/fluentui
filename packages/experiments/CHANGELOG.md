@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 20 Oct 2022 12:24:26 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Oct 2022 12:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.45.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.45.12)
+
+Fri, 28 Oct 2022 12:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.45.11..@uifabric/experiments_v7.45.12)
+
+### Patches
+
+- Bump @uifabric/file-type-icons to v7.10.9 ([PR #25423](https://github.com/microsoft/fluentui/pull/25423) by 51342814+jieleiwang@users.noreply.github.com)
 
 ## [7.45.11](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.45.11)
 

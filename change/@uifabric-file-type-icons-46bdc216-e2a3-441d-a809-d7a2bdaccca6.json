@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Add support for the wbtx whiteboard file extension (#25346)",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "51342814+jieleiwang@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

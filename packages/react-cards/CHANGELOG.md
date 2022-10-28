@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 20 Oct 2022 12:24:26 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Oct 2022 12:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.119.13](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.119.13)
+
+Fri, 28 Oct 2022 12:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.119.12..@uifabric/react-cards_v0.119.13)
+
+### Patches
+
+- Bump @uifabric/file-type-icons to v7.10.9 ([PR #25423](https://github.com/microsoft/fluentui/pull/25423) by 51342814+jieleiwang@users.noreply.github.com)
 
 ## [0.119.12](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.119.12)
 

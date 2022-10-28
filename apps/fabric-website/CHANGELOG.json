@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 28 Oct 2022 12:21:22 GMT",
+      "tag": "@uifabric/fabric-website_v7.17.15",
+      "version": "7.17.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.10.9",
+            "author": "51342814+jieleiwang@users.noreply.github.com",
+            "commit": "dc582c795f45e7f7397cb0c3831d288f8b83bbee",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 12:24:26 GMT",
       "tag": "@uifabric/fabric-website_v7.17.15",
       "version": "7.17.15",

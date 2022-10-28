@@ -1,8 +1,17 @@
 # Change Log - theming-designer
 
-This log was last generated on Thu, 20 Oct 2022 12:24:26 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Oct 2022 12:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Fri, 28 Oct 2022 12:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/react-cards to v0.119.13 ([PR #25423](https://github.com/microsoft/fluentui/pull/25423) by 51342814+jieleiwang@users.noreply.github.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
 

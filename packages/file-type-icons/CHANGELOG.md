@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 20 Oct 2022 12:24:26 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Oct 2022 12:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.9](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.9)
+
+Fri, 28 Oct 2022 12:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.8..@uifabric/file-type-icons_v7.10.9)
+
+### Patches
+
+- feat: Add support for the wbtx whiteboard file extension (#25346) ([PR #25423](https://github.com/microsoft/fluentui/pull/25423) by 51342814+jieleiwang@users.noreply.github.com)
 
 ## [7.10.8](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.8)
 
