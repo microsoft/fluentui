@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
+import { PopoverTrigger } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
 import type { InfoButtonState, InfoButtonSlots } from './InfoButton.types';
 
 /**

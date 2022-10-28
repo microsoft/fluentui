@@ -13,6 +13,7 @@ import type { PopoverProps } from '@fluentui/react-popover';
  * before being passed to renderInfoButton_unstable.
  *
  * @param props - props from this instance of InfoButton
+ * @param ref - reference to root HTMLElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
   const state: InfoButtonState = {
