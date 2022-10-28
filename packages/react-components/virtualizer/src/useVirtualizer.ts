@@ -148,6 +148,30 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
     },
   );
 
+  const findIndexRecursive = (scrollPos: number, lowIndex: number, highIndex: number): number => {
+    if (lowIndex > highIndex) {
+      // We shouldn't get here - but no-op the index if we do.
+      return virtualizerStartIndex;
+    }
+    const midpoint = Math.floor((lowIndex + highIndex) / 2);
+    const iBefore = Math.max(midpoint - 1, 0);
+    const iAfter = Math.min(midpoint + 1, childProgressiveSizes.current.length - 1);
+    const indexValue = childProgressiveSizes.current[midpoint];
+    const afterIndexValue = childProgressiveSizes.current[iAfter];
+    const beforeIndexValue = childProgressiveSizes.current[iBefore];
+    if (indexValue === scrollPos || (scrollPos <= afterIndexValue && scrollPos >= beforeIndexValue)) {
+      /* We've found our index - if we are exactly matching before/after index that's ok,
+      better to reduce checks if it's right on the boundary. */
+      return midpoint;
+    }
+
+    if (indexValue > scrollPos) {
+      return findIndexRecursive(scrollPos, lowIndex, midpoint - 1);
+    } else {
+      return findIndexRecursive(scrollPos, midpoint + 1, highIndex);
+    }
+  };
+
   const getIndexFromSizeArray = (scrollPos: number): number => {
     /* TODO: We should use some kind of logN calc, cut array in half and measure etc.
      * Just simple array iteration for now to ensure rest of design works in tandem.
@@ -166,21 +190,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
       return childProgressiveSizes.current.length - 1;
     }
 
-    for (let index = 1; index < childProgressiveSizes.current.length; index++) {
-      const iBefore = Math.max(index - 1, 0);
-      const iAfter = Math.min(index + 1, childProgressiveSizes.current.length - 1);
-      const indexValue = childProgressiveSizes.current[index];
-      const afterIndexValue = childProgressiveSizes.current[iAfter];
-      const beforeIndexValue = childProgressiveSizes.current[iBefore];
-
-      if (indexValue === scrollPos || (scrollPos < afterIndexValue && scrollPos > beforeIndexValue)) {
-        // We've found our index
-        return index;
-      }
-    }
-
-    // Failed to find - return initial index
-    return 0;
+    return findIndexRecursive(scrollPos, 0, childProgressiveSizes.current.length - 1);
   };
 
   const getIndexFromScrollPosition = (scrollPos: number) => {
