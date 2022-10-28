@@ -292,6 +292,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return localeString?.toString();
   }
 
+  /**
+   * This function returns
+   * the selected legend if there is one
+   * or the hovered legend if none of the legends is selected.
+   * Note: This won't work in case of multiple legends selection.
+   */
   private _getHighlightedLegend() {
     return this.state.selectedLegend || this.state.activeLegend;
   }

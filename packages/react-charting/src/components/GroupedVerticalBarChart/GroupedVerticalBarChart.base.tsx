@@ -503,6 +503,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   };
 
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
   private _legendHighlighted = (legendTitle: string) => {
     return (
       this.state.selectedLegend === legendTitle ||
@@ -510,6 +516,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
     );
   };
 
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };

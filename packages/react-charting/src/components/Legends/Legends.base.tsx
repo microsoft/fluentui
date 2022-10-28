@@ -237,6 +237,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
       this.setState({ isHoverCardVisible: false });
+      /** Unhighlight the focused legend in the hover card */
       const activeOverflowItem = find(legends, (legend: ILegend) => legend.title === this.state.activeLegend);
       if (activeOverflowItem) {
         this.setState({ activeLegend: '' });
@@ -383,15 +384,24 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     let legendColor = color;
     const inSelectedState = this.state.selectedLegend !== '' || this.state.selectedLegends.length > 0;
     if (inSelectedState) {
+      /** if one or more legends are selected */
       if (this.state.selectedLegend === title || this.state.selectedLegends.indexOf(title) > -1) {
+        /** if the given legend (title) is one of the selected legends */
         legendColor = color;
       } else {
+        /** if the given legend is unselected */
         legendColor = palette.white;
       }
     } else {
-      if (this.state.activeLegend === '' || this.state.activeLegend === title) {
+      /** if no legend is selected */
+      if (this.state.activeLegend === title || this.state.activeLegend === '') {
+        /**
+         * if the given legend is hovered
+         * or none of the legends is hovered
+         */
         legendColor = color;
       } else {
+        /** if there is a hovered legend but the given legend is not the one */
         legendColor = palette.white;
       }
     }
