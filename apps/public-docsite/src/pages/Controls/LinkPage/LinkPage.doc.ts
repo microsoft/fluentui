@@ -5,7 +5,7 @@ import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 const related: ISideRailLink[] = [
   { text: 'Web Link', url: '#/controls/web/link' },
   { text: 'macOS Link', url: '#/controls/mac/link' },
-  { text: 'Cross-platform Link', url: '#/controls/crossplatform/link' },
+  { text: 'Cross-platform Link', url: '#/controls/cross/link' },
 ];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/LinkPage';
