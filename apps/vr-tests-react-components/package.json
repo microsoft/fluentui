@@ -5,6 +5,8 @@
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
     "build": "build-storybook -o dist/storybook",
+    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
+    "convert": "bash convertStoriesToStoryWright.sh",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
@@ -14,7 +16,8 @@
     "type-check": "tsc"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "storywright": "0.0.23-beta.6"
   },
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.9",
