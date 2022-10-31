@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix cherry-pick of FocusTrapZone changes",
+  "comment": "fix: Fixing previous incorrect implementation of iframe handling in FocusTrapZone.",
   "packageName": "office-ui-fabric-react",
   "email": "tmichon@microsoft.com",
   "dependentChangeType": "patch"
