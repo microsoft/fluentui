@@ -60,7 +60,7 @@ jobs:
         inputs:
           githubOwner: sunilsurana
           githubRepo: 'fluentuifork1'
-          blobFilePath: 'packages/bundle-size/dist/bundle-size.md'
+          blobFilePath: 'screenshotdiffcomment.md'
           status: 'success'
           uniqueId: 'bundleSizeComment9423'
 
