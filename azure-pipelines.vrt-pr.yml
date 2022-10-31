@@ -55,6 +55,15 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn (install packages)
 
+      - task: GithubPRComment@0
+        displayName: Post results to PR (PR only)
+        inputs:
+          githubOwner: sunilsurana
+          githubRepo: 'fluentuifork1'
+          blobFilePath: 'packages/bundle-size/dist/bundle-size.md'
+          status: 'success'
+          uniqueId: 'bundleSizeComment9423'
+
       - script: |
           yarn workspace @fluentui/vr-tests-react-components convert
         displayName: Convert screener component to storywright
