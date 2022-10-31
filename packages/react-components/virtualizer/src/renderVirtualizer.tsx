@@ -57,18 +57,25 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
     ...afterBuffer,
   };
 
+  {
+    slots.icon && <slots.icon {...slotProps.icon} />;
+  }
   return (
     <React.Fragment>
       {/* The 'before' bookend to hold items in place and detect scroll previous */}
-      <slots.beforeContainer style={beforeContainerStyle} {...slotProps.beforeContainer}>
-        <slots.before style={beforeStyle} {...slotProps.before} />
-      </slots.beforeContainer>
+      {slots.beforeContainer && slots.before && (
+        <slots.beforeContainer style={beforeContainerStyle} {...slotProps.beforeContainer}>
+          <slots.before style={beforeStyle} {...slotProps.before} />
+        </slots.beforeContainer>
+      )}
       {/* The reduced list of non-virtualized children to be rendered */}
       {state.virtualizedChildren}
       {/* The 'after' bookend to hold items in place and detect scroll next */}
-      <slots.afterContainer style={afterContainerStyle} {...slotProps.afterContainer}>
-        <slots.after style={afterStyle} {...slotProps.after} />
-      </slots.afterContainer>
+      {slots.afterContainer && slots.after && (
+        <slots.afterContainer style={afterContainerStyle} {...slotProps.afterContainer}>
+          <slots.after style={afterStyle} {...slotProps.after} />
+        </slots.afterContainer>
+      )}
     </React.Fragment>
   );
 };

@@ -165,10 +165,13 @@ export const Virtualized = () => {
       </TableHeader>
       <TableBody>
         <Virtualizer
-          // scrollViewRef={containerRef}
           flow={VirtualizerFlow.Vertical}
           virtualizerLength={25}
           itemSize={44}
+          /* The scrollViewRef is optional if you want to encapsulate inside a scroll view
+            it will be more efficient with this method, but is not required.
+            scrollViewRef={containerRef}
+          */
         >
           {rows.map(({ item }) => (
             <TableRow key={item.file.label}>
