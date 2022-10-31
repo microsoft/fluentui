@@ -6,12 +6,11 @@ import { getColorScheme } from '../../colors';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { menuItemIconClassName } from '../../../../components/Menu/MenuItemIcon';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
 export const verticalPointingBottomMargin = pxToRem(12);
-
-export const menuItemIconClassName = 'ui-menu__itemicon';
 
 export const underlinedItem = (color: string): ICSSInJSStyle => ({
   paddingBottom: 0,
