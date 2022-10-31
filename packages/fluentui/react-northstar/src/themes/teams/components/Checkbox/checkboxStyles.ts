@@ -177,11 +177,10 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
 
     ':before': {
       ...commonToggleBeforeStyles(v),
-      borderColor: p.disabled ? v.disabledToggleIndicatorColor : v.toggleBorderColor,
       borderStyle: v.borderStyle,
       borderWidth: v.borderWidth,
       margin: v.togglePadding,
-      background: v.toggleBackground,
+      background: p.disabled ? v.disabledToggleIndicatorColor : v.toggleBorderColor,
     },
 
     ...(p.checked && {
