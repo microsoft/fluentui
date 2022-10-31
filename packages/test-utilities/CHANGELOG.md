@@ -1,8 +1,17 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.5](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.3.5)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.3.4..@uifabric/test-utilities_v7.3.5)
+
+### Patches
+
+- Bump @uifabric/jest-serializer-merge-styles to v7.2.6 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
 
 ## [7.3.4](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.3.4)
 

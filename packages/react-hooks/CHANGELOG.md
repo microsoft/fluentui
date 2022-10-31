@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Fri, 30 Sep 2022 21:44:22 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.4](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.16.4)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.16.3..@uifabric/react-hooks_v7.16.4)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.5 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
 
 ## [7.16.3](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.16.3)
 

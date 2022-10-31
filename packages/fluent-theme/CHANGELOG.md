@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 12 Oct 2022 12:22:45 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.26](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.7.26)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.7.25..@uifabric/fluent-theme_v7.7.26)
+
+### Patches
+
+- Bump @uifabric/merge-styles to v7.20.2 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
 
 ## [7.7.25](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.7.25)
 

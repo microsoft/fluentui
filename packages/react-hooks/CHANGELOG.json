@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@uifabric/react-hooks_v7.16.4",
+      "version": "7.16.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/test-utilities to v7.3.5",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Sep 2022 21:44:22 GMT",
       "tag": "@uifabric/react-hooks_v7.16.3",
       "version": "7.16.3",

@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@fluentui/theme_v1.7.13",
+      "version": "1.7.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.2",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Sep 2022 21:44:22 GMT",
       "tag": "@fluentui/theme_v1.7.12",
       "version": "1.7.12",

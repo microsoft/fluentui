@@ -2,6 +2,21 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@uifabric/fluent-theme_v7.7.26",
+      "version": "7.7.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/merge-styles to v7.20.2",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Oct 2022 12:22:45 GMT",
       "tag": "@uifabric/fluent-theme_v7.7.25",
       "version": "7.7.25",

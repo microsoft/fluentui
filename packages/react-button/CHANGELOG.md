@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 04 Oct 2022 18:13:33 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.16)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.20.15..@fluentui/react-button_v0.20.16)
+
+### Patches
+
+- Bump @fluentui/react-theme-provider to v0.19.16 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
 
 ## [0.20.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.15)
 

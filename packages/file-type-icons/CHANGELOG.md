@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 28 Oct 2022 12:21:22 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.10](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.10)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.9..@uifabric/file-type-icons_v7.10.10)
+
+### Patches
+
+- Bump @uifabric/styling to v7.25.1 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
 
 ## [7.10.9](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.9)
 
