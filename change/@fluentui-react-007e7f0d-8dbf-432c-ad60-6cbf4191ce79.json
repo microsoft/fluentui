@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: update List to render children on first render() call",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
