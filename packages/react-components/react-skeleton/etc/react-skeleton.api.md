@@ -4,6 +4,39 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
+
+// @public
+export const Skeleton: ForwardRefComponent<SkeletonProps>;
+
+// @public (undocumented)
+export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
+
+// @public
+export type SkeletonProps = ComponentProps<SkeletonSlots> & {};
+
+// @public (undocumented)
+export type SkeletonSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SkeletonState = ComponentState<SkeletonSlots>;
+
+// @public
+export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
+
+// @public
+export const useSkeletonStyles_unstable: (state: SkeletonState) => SkeletonState;
+
 // (No @packageDocumentation comment for this package)
 
 ```

@@ -20,7 +20,9 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
