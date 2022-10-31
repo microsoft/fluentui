@@ -62,7 +62,7 @@ jobs:
           githubRepo: 'fluentuifork1'
           blobFilePath: 'screenshotdiffcomment.md'
           status: 'success'
-          uniqueId: 'bundleSizeComment9423'
+          uniqueId: 'vrtTest'
 
       - script: |
           yarn workspace @fluentui/vr-tests-react-components convert
