@@ -664,6 +664,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-skeleton": {
+      "root": "packages/react-components/react-skeleton",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-skeleton/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-slider": {
       "root": "packages/react-components/react-slider",
       "projectType": "library",
