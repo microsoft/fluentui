@@ -57,9 +57,6 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
     ...afterBuffer,
   };
 
-  {
-    slots.icon && <slots.icon {...slotProps.icon} />;
-  }
   return (
     <React.Fragment>
       {/* The 'before' bookend to hold items in place and detect scroll previous */}
