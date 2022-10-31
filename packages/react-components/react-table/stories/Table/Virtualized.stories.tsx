@@ -1,5 +1,3 @@
-import { Virtualizer, VirtualizerFlow } from '@fluentui/virtualizer'; // TODO: Add this to react-components export?
-
 import * as React from 'react';
 import {
   FolderRegular,
@@ -11,9 +9,10 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { Virtualizer, VirtualizerFlow } from '@fluentui/react-components/unstable';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, ColumnId, useSort } from '../../hooks';
-import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
+import { useTable, ColumnDefinition, ColumnId, useSort } from '../../src/hooks';
+import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
 
 type FileCell = {
   label: string;

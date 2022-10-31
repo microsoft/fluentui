@@ -334,15 +334,25 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     before: resolveShorthand(props.before ?? { as: 'div' }, {
       defaultProps: {
         ref: setBeforeRef,
+        role: 'none',
       },
     }),
     after: resolveShorthand(props.after ?? { as: 'div' }, {
       defaultProps: {
         ref: setAfterRef,
+        role: 'none',
       },
     }),
-    beforeContainer: resolveShorthand(props.beforeContainer ?? { as: 'div' }),
-    afterContainer: resolveShorthand(props.afterContainer ?? { as: 'div' }),
+    beforeContainer: resolveShorthand(props.beforeContainer ?? { as: 'div' }, {
+      defaultProps: {
+        role: 'none',
+      },
+    }),
+    afterContainer: resolveShorthand(props.afterContainer ?? { as: 'div' }, {
+      defaultProps: {
+        role: 'none',
+      },
+    }),
     beforeBufferHeight: calculateBefore(),
     afterBufferHeight: calculateAfter(),
     totalVirtualizerHeight: calculateTotalSize(),
