@@ -33,14 +33,35 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
           fill: 'rgb(0, 0, 0)',
         },
       },
-      text: {
-        fill: 'rgb(0, 0, 0)',
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            fill: 'rgb(255, 255, 255)',
+    },
+    toolTip: {
+      ...props.theme!.fonts.medium,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '8px',
+      position: 'absolute',
+      textAlign: 'center',
+      top: '0px',
+      background: props.theme!.semanticColors.bodyBackground,
+      borderRadius: '2px',
+      pointerEvents: 'none',
+    },
+    nodeTextContainer: {
+      selectors: {
+        text: {
+          fill: theme.semanticColors.bodyText,
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              fill: 'rgb(179, 179, 179)',
+            },
           },
         },
       },
+
+      marginTop: '4px',
+      marginLeft: '8px',
+      marginBottom: '4px',
+      marginRight: '8px',
     },
   };
 };

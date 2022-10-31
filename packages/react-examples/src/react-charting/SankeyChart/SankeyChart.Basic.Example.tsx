@@ -11,7 +11,7 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
     super(props);
     this.state = {
       width: 912,
-      height: 312,
+      height: 412,
     };
   }
 
@@ -34,32 +34,38 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
           {
             nodeId: 0,
             name: 'node0',
-            color: '#0078D4',
+            color: '#00758F',
+            borderColor: '#002E39',
           },
           {
             nodeId: 1,
             name: 'node1',
-            color: '#EF6950',
+            color: '#77004D',
+            borderColor: '#43002C',
           },
           {
             nodeId: 2,
             name: 'node2',
-            color: '#00188F',
+            color: '#4F6BED',
+            borderColor: '#3B52B4',
           },
           {
             nodeId: 3,
             name: 'node3',
-            color: '#022F22',
+            color: '#937600',
+            borderColor: '#6D5700',
           },
           {
             nodeId: 4,
             name: 'node4',
-            color: '#00A2AD',
+            color: '#286EA8',
+            borderColor: '#00457E',
           },
           {
             nodeId: 5,
             name: 'node5',
-            color: '#E3008C',
+            color: '#A43FB1',
+            borderColor: '#7C158A',
           },
         ],
         links: [

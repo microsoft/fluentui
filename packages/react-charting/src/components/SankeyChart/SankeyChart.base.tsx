@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
-import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
+import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import { sum as d3Sum } from 'd3-array';
+import { ChartHoverCard } from '../../index';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
+import { select } from 'd3-selection';
 
-// import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-// import { sum as d3Sum, min as d3Min } from 'd3-array';
-// import { SNode } from '../HorizontalBarChart/index';
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
-const SPACE_TO_NODE_RATIO = 0.4;
+const PADDING_PERCENTAGE = 0.3;
 
-//type  SankeyNodeMappedData = { [key: number]: SNode[] };
 type NodesInColumns = { [key: number]: any[] };
 
 interface ISankeyChartState {
@@ -24,22 +23,53 @@ interface ISankeyChartState {
   selectedNodes: any[];
   selectedNode?: any;
   appliedHeightChange: boolean;
+  nodeElement?: any;
+  linkElement?: any;
+  selectedLink?: any;
+  textHover: boolean;
+  shouldOverflow: boolean;
 }
 
-const REST_NODE_OPACITY: number = 1;
-const REST_STREAM_OPACITY: number = 0.5;
-const NON_SELECTED_OPACITY: number = 0.7;
-//const NON_SELECTED_NODE_LABEL_OPACITY: number = 0.6;
-const SELECTED_STREAM_OPACITY: number = 0.8;
-//const SELECTED_NODE_WIDTH: number = 100;
-const NON_SLECTED_NODE_AND_STREAM_COLOR: string = '#323130';
+const INACTIVE_FILL_COLOR = '#F5F5F5';
+const NON_SELECTED_NODE_AND_STREAM_COLOR: string = '#757575';
+const DEFAULT_NODE_COLORS = [
+  '#00758F',
+  '#77004D',
+  '#4F6BED',
+  '#937600',
+  '#286EA8',
+  '#A43FB1',
+  '#CC3595',
+  '#0E7878',
+  '#8764B8',
+  '#9C663F',
+];
+const DEFAULT_NODE_BORDER_COLORS = [
+  '#002E39',
+  '#43002C',
+  '#3B52B4',
+  '#6D5700',
+  '#00457E',
+  '#7C158A',
+  '#7F215D',
+  '#004E4E',
+  '#4B3867',
+  '#6D4123',
+];
+
+const MIN_HEIGHT_FOR_DOUBLINE_TYPE = 45;
+const MIN_HEIGHT_FOR_TYPE = 24;
+const TEXT_FONTSIZE_SINGLELINE = 10;
+const NODETEXT_FONTSIZE_DOUBLELINE = 14;
+const NODEWEIGHT_FONTSIZE_SINGLELINE = 14;
+const NODEWEIGHT_FONTSIZE_DOBLELINE = 20;
 
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
   private chartContainer: HTMLDivElement;
   private _reqID: number;
-  private _nodePadding: number;
-  private _nodesInColumn: NodesInColumns = {};
+  private _nodePadding: number = 8;
+
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
@@ -49,6 +79,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       selectedLinks: [],
       selectedNodes: [],
       appliedHeightChange: false,
+      textHover: false,
+      shouldOverflow: false,
     };
   }
   public componentDidMount(): void {
@@ -73,78 +105,126 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       className,
     });
     const margin = { top: 36, right: 48, bottom: 32, left: 48 };
-    const width = this.state.containerWidth - margin.left - margin.right;
-    const height =
-      this.state.containerHeight - margin.top - margin.bottom > 0
-        ? this.state.containerHeight - margin.top - margin.bottom
-        : 0;
-    //const medianNodeValue=
-    // const flowMin: number = d3Min(this.props.data.SankeyChartData!.links, (link: any) => link.value as number)!;
-    // const flowSum: number = d3Sum(this.props.data.SankeyChartData!.links, (link: any) => link.value as number)!;
-    // if (flowSum > 112) {
-    //   const scale = d3ScaleLinear().domain([flowMin, flowSum]).range([0, 112]);
-    //   this.props.data.SankeyChartData!.links.forEach((singleLink: any, index: number) => {
-    //     const normalizedValue = scale(singleLink.value);
-    //     singleLink.originalValue = singleLink.value;
-    //     singleLink.value = normalizedValue;
-    //   });
-    // }
+    const width = this.state.containerWidth - margin.right;
+    const height = this.state.containerHeight - margin.bottom > 0 ? this.state.containerHeight - margin.bottom : 0;
+
     const sankey = d3Sankey
       .sankey()
       .nodeWidth(124)
       .extent([
-        [1, 1],
+        [margin.left, margin.top],
         [width - 1, height - 6],
       ]);
 
-    this._populateNodeInColumns(sankey);
+    const nodesInColumn: NodesInColumns = this._populateNodeInColumns(sankey);
     if (!this.state.appliedHeightChange) {
-      this._adjustOnePercentHeightNodes(sankey);
-      this._nodePadding = this._adjustPadding(sankey, height);
+      this._adjustOnePercentHeightNodes(sankey, nodesInColumn);
+      this._nodePadding = this._adjustPadding(sankey, height - 6, nodesInColumn);
       this.setState({
         appliedHeightChange: true,
       });
     }
     sankey.nodePadding(this._nodePadding);
     sankey(this.props.data.SankeyChartData!);
-
-    // arrangeNodesWithMinHeight();
+    this._populateNodeActualValue(this.props.data.SankeyChartData!);
+    this._calculateTheTotalNodeValue(height - 6);
+    this._assignNodeColors();
     const nodeData = this._createNodes(width);
     const linkData = this._createLinks();
     return (
-      <div
-        className={this._classNames.root}
-        role={'presentation'}
-        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
-      >
-        <svg width={width} height={height} id={getId('sankeyChart')}>
-          <g className={this._classNames.links} strokeOpacity={0.2}>
-            {linkData}
-          </g>
-          <g className={this._classNames.nodes}>{nodeData}</g>
-        </svg>
-      </div>
+      <>
+        <div id="tooltip" className={this._classNames.toolTip} style={{ position: 'absolute', display: 'none' }} />
+        <div
+          className={this._classNames.root}
+          role={'presentation'}
+          ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        >
+          <svg width={width} height={height} id={getId('sankeyChart')}>
+            <g className={this._classNames.links} strokeOpacity={1}>
+              {linkData}
+            </g>
+            <g className={this._classNames.nodes}>{nodeData}</g>
+          </svg>
+        </div>
+      </>
     );
   }
+
+  /**
+   *
+   * This is used to calculate the total coloumn weight and also to group nodes by column index.
+   */
+  private _calculateTheTotalNodeValue(height: number) {
+    const nodesColumn: NodesInColumns = {};
+    this.props.data.SankeyChartData!.nodes.forEach((node: any) => {
+      const columnId = node.layer;
+      if (nodesColumn[columnId]) {
+        nodesColumn[columnId].push(node);
+      } else {
+        nodesColumn[columnId] = [node];
+      }
+    });
+    const totalColumnValue = Object.values(nodesColumn).map((column: any[]) => {
+      return d3Sum(column, (node: any) => (node.y1 - node.y0 > 0 ? node.y1 - node.y0 : node.y0 - node.y1));
+    });
+    totalColumnValue.forEach((nodeHeight: number, index: number) => {
+      const paddingpercentage = 100 - (nodeHeight / height) * 100;
+      // eslint-disable-next-line no-console
+      console.log(`PaddingPercentage for column "${index}" is "${paddingpercentage}"`);
+    });
+  }
+
+  /**
+   * This is used for calculating the node non normalized value based on link non normalized value.
+   *
+   */
+  private _populateNodeActualValue(data: ISankeyChartData) {
+    data.links.forEach((link: any) => {
+      if (!link.originalValue) {
+        link.originalValue = link.value;
+      }
+    });
+    data.nodes.forEach((node: any) => {
+      node.actualValue = Math.max(
+        d3Sum(node.sourceLinks, (link: any) => link.originalValue),
+        d3Sum(node.targetLinks, (link: any) => link.originalValue),
+      );
+    });
+  }
+
+  /**
+   *
+   * This is used to group nodes by column index.
+   */
   private _populateNodeInColumns(sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>) {
     const graph = { ...this.props.data.SankeyChartData! };
     sankey(graph);
+    const nodesInColumn: NodesInColumns = {};
     graph.nodes.forEach((node: any) => {
       const columnId = node.layer;
-      if (this._nodesInColumn[columnId]) {
-        this._nodesInColumn[columnId].push(node);
+      if (nodesInColumn[columnId]) {
+        nodesInColumn[columnId].push(node);
       } else {
-        this._nodesInColumn[columnId] = [node];
+        nodesInColumn[columnId] = [node];
       }
     });
+    return nodesInColumn;
   }
-  private _adjustOnePercentHeightNodes(sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>) {
-    const totalColumnValue = Object.values(this._nodesInColumn).map((column: any[]) => {
+
+  /**
+   * This is used to normalize the nodes value whose value is less than 1% of the total column value.
+   *
+   */
+  private _adjustOnePercentHeightNodes(
+    sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>,
+    nodesInColumn: NodesInColumns,
+  ) {
+    const totalColumnValue = Object.values(nodesInColumn).map((column: any[]) => {
       return d3Sum(column, (node: any) => node.value);
     });
     totalColumnValue.forEach((columnValue: number, index: number) => {
       let totalPercentage = 0;
-      this._nodesInColumn[index].forEach((node: any) => {
+      nodesInColumn[index].forEach((node: any) => {
         const nodePercentage = (node.value / columnValue) * 100;
         node.actualValue = node.value;
         if (nodePercentage < 1) {
@@ -156,50 +236,70 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       });
       const scalingRatio = totalPercentage !== 0 ? totalPercentage / 100 : 1;
       if (scalingRatio > 1) {
-        this._nodesInColumn[index].forEach((node: any) => {
+        nodesInColumn[index].forEach((node: any) => {
           node.value = node.value / scalingRatio;
           this._changeColumnValue(node, node.actualValue, node.value);
         });
       }
     });
   }
+
+  /**
+   *
+   * This is used for normalizing each links value for reflecting the normalized node value.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _changeColumnValue(node: any, originalValue: number, increasedValue: number) {
     node.sourceLinks.forEach((link: any) => {
+      link.originalValue = link.value;
       const linkRatio = link.value / originalValue;
       link.value = increasedValue * linkRatio;
     });
     node.targetLinks.forEach((link: any) => {
+      link.originalValue = link.value;
       const linkRatio = link.value / originalValue;
       link.value = increasedValue * linkRatio;
     });
   }
-  private _adjustPadding(sankey: any, height: number) {
+
+  /**
+   *
+   * This is used to introduce dynamic padding for cases where the number of nodes in a column is huge
+   * so that we maintain a node to space ratio for such columns as if we fail to do so the
+   * chart is devoid of nodes and only shows links.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _adjustPadding(sankey: any, height: number, nodesInColumn: NodesInColumns) {
     let padding = sankey.nodePadding();
-    Object.values(this._nodesInColumn).forEach((column: any[]) => {
-      const minPadding = SPACE_TO_NODE_RATIO * height;
-      const nodePadding = height - (column.length - 1) * padding;
-      if (minPadding > nodePadding) {
-        padding = Math.min(padding, (height - minPadding) / (column.length - 1));
+    Object.values(nodesInColumn).forEach((column: any[]) => {
+      const minPadding = PADDING_PERCENTAGE * height;
+      const toatlPaddingInColumn =
+        height - d3Sum(column, (node: any) => (node.y1 - node.y0 > 0 ? node.y1 - node.y0 : node.y0 - node.y1));
+      if (minPadding < toatlPaddingInColumn) {
+        padding = Math.min(padding, minPadding / (column.length - 1));
       }
     });
-    //sankey.nodePadding(padding);
-    //sankey(graph);
     return padding;
   }
 
   private _createLinks(): React.ReactNode[] | undefined {
     const links: React.ReactNode[] = [];
+    const calloutProps = {
+      isCalloutVisible: this.state.selectedState && !this.state.selectedNode,
+      directionalHint: DirectionalHint.bottomCenter,
+      id: `toolTip${getId('link')}`,
+      target: this.state.linkElement,
+      isBeakVisible: false,
+      gapSpace: 15,
+      onDismiss: this._onStreamLeave,
+      preventDismissOnLostFocus: true,
+    };
     if (this.props.data.SankeyChartData) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.props.data.SankeyChartData.links.forEach((singleLink: any, index: number) => {
-        //const path = d3Sankey.sankeyLinkHorizontal();
-        const onHoverHandler = () => {
-          this._onStreamHover(singleLink);
-        };
         const onMouseOut = () => {
           this._onStreamLeave(singleLink);
         };
-        //const pathValue = path(singleLink);
 
         const data = (d: any) => {
           return [
@@ -226,32 +326,23 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               key={index}
               d={linkArea(dataPoints)!}
               id={getId('link')}
-              //fill="grey"
-              // fill={`url(#gradient-${index})`}
-              // fill={
-              //   this.state.selectedState &&
-              //   this.state.selectedLinks.indexOf(singleLink) !== -1 &&
-              //   this.state.selectedNode
-              //     ? this.state.selectedNode.color
-              //     : `url(#gradient-${index})`
-              // }
               fill={this._fillStreamColors(singleLink, gradientUrl)}
-              // stroke={
-              //   this.state.selectedState &&
-              //   this.state.selectedLinks.indexOf(singleLink) !== -1 &&
-              //   this.state.selectedNode
-              //     ? this.state.selectedNode.color
-              //     : `url(#gradient-${index})`
-              // }
               stroke={this._fillStreamBorder(singleLink, gradientUrl)}
               strokeWidth="2"
-              onMouseOver={onHoverHandler}
+              onMouseOver={this._onStreamHover.bind(this, singleLink)}
               onMouseOut={onMouseOut}
-              opacity={this._getOpacityStream(singleLink)}
+              opacity="1"
             >
-              <title>
-                <text>{singleLink.source.name + ' → ' + singleLink.target.name + '\n' + singleLink.value}</text>
-              </title>
+              {calloutProps.isCalloutVisible && (
+                <Callout {...calloutProps}>
+                  <ChartHoverCard
+                    XValue={this.state.selectedLink!.target.name}
+                    YValue={this.state.selectedLink!.originalValue}
+                    color={this.state.selectedLink!.source.color}
+                    descriptionMessage={'from ' + this.state.selectedLink.source.name}
+                  />
+                </Callout>
+              )}
             </path>
           </>
         );
@@ -263,23 +354,29 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   private _createNodes(width: number): React.ReactNode[] | undefined {
     const nodes: React.ReactNode[] = [];
+
     if (this.props.data.SankeyChartData) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.props.data.SankeyChartData.nodes.forEach((singleNode: any, index: number) => {
-        const onHoverHandler = () => {
-          this._onHover(singleNode);
-        };
         const onMouseOut = () => {
           this._onLeave(singleNode);
         };
-        // const fillNodeColor = () =>{
-        //    return this._fillNodeColors(singleNode);
-        // };
         const height = singleNode.y1 - singleNode.y0 > 0 ? singleNode.y1 - singleNode.y0 : 0;
-        // const singleNodeValue = Math.max(
-        //   d3Sum(singleNode.sourceLinks, (link: any) => link.originalValue),
-        //   d3Sum(singleNode.targetLinks, (link: any) => link.originalValue),
-        // );
+        const calloutProps = {
+          isCalloutVisible:
+            this.state.selectedState &&
+            this.state.selectedNode &&
+            this.state.selectedNode!.y1 - this.state.selectedNode!.y0 < MIN_HEIGHT_FOR_TYPE,
+          directionalHint: DirectionalHint.topAutoEdge,
+          id: `toolTip${getId('nodeGElement')}`,
+          target: this.state.nodeElement,
+          isBeakVisible: false,
+          gapSpace: 15,
+          onDismiss: this._onLeave,
+          preventDismissOnLostFocus: true,
+        };
+        const truncatedname: string = this._truncateText(singleNode.name, 124, 8);
+        const isTruncated: boolean = truncatedname.slice(-4) === '... ';
 
         const node = (
           <g id={getId('nodeGElement')} key={index}>
@@ -288,49 +385,63 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               y={singleNode.y0}
               height={height}
               width={singleNode.x1 - singleNode.x0}
-              //fill={singleNode.color}
-              // fill={
-              //   this.state.selectedState &&
-              //   this.state.selectedNodes.indexOf(singleNode) !== -1 &&
-              //   this.state.selectedNode
-              //     ? this.state.selectedNode.color
-              //     : 'rgb(255,255,255)'
-              // }
               fill={this._fillNodeColors(singleNode)}
               id={getId('nodeBar')}
-              onMouseOver={onHoverHandler}
+              onMouseOver={this._onHover.bind(this, singleNode)}
               onMouseOut={onMouseOut}
-              //stroke={singleNode.color}
               stroke={this._fillNodeBorder(singleNode)}
               strokeWidth="2"
-              opacity={this._getOpacityNode(singleNode)}
+              opacity="1"
             />
-            <text
-              x={singleNode.x0}
-              y={singleNode.y0}
-              dy={'1.2em'}
-              dx={'0.4em'}
-              textAnchor="start"
-              fontStyle="bold"
-              // opacity={this._getOpacityNodeLabel(singleNode)}
-            >
-              {singleNode.name}
-            </text>
-            <text
-              x={singleNode.x0}
-              y={singleNode.y0}
-              dy={'2.4em'}
-              dx={'0.4em'}
-              textAnchor="start"
-              fontWeight={12}
-              fontStyle="bold"
-              //opacity={this._getOpacityNodeLabel(singleNode)}
-            >
-              {singleNode.value}
-            </text>
-            <title>
-              <text>{singleNode.name + '\n' + singleNode.value}</text>
-            </title>
+
+            {calloutProps.isCalloutVisible && (
+              <Callout {...calloutProps}>
+                <ChartHoverCard
+                  XValue={this.state.selectedNode!.name}
+                  YValue={this.state.selectedNode!.actualValue}
+                  color={this.state.selectedNode!.color}
+                />
+              </Callout>
+            )}
+
+            {singleNode.y1 - singleNode.y0 > MIN_HEIGHT_FOR_TYPE && (
+              <g className={this._classNames.nodeTextContainer}>
+                <g className="nodeName">
+                  <text
+                    x={singleNode.x0}
+                    y={singleNode.y0}
+                    dy={'1.2em'}
+                    dx={'0.4em'}
+                    textAnchor="start"
+                    fontWeight="regular"
+                    fill="black"
+                    fontSize={
+                      height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? NODETEXT_FONTSIZE_DOUBLELINE : TEXT_FONTSIZE_SINGLELINE
+                    }
+                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated)}
+                    onMouseOut={this._hideTooltip.bind(this)}
+                  >
+                    {truncatedname}
+                  </text>
+                </g>
+
+                <text
+                  x={singleNode.x0}
+                  y={singleNode.y0}
+                  dy={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '2em' : '1em'}
+                  dx={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '0.4em' : '7em'}
+                  textAnchor="start"
+                  fontWeight="bold"
+                  fontSize={
+                    height > MIN_HEIGHT_FOR_DOUBLINE_TYPE
+                      ? NODEWEIGHT_FONTSIZE_DOBLELINE
+                      : NODEWEIGHT_FONTSIZE_SINGLELINE
+                  }
+                >
+                  {singleNode.actualValue}
+                </text>
+              </g>
+            )}
           </g>
         );
         nodes.push(node);
@@ -352,7 +463,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _onHover(singleNode: any) {
+  private _onHover(singleNode: any, mouseEvent: React.MouseEvent<SVGElement>) {
+    mouseEvent.persist();
     if (!this.state.selectedState) {
       const selectedLinks = this._getSelectedLinks(singleNode);
       const selectedNodes = this._getSelectedNodes(selectedLinks);
@@ -362,20 +474,22 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: selectedNodes,
         selectedLinks: selectedLinks,
         selectedNode: singleNode,
+        nodeElement: mouseEvent,
       });
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _onStreamHover(singleLink: any) {
+  private _onStreamHover(singleLink: any, mouseEvent: React.MouseEvent<SVGElement>) {
+    mouseEvent.persist();
     if (!this.state.selectedState) {
-      //const selectedNodes = this._getSelectedNodes([singleLink]);
       const { selectedLinks, selectedNodes } = this._getSelectedLinksforStreamHover(singleLink);
       this.setState({
         selectedState: true,
         selectedNodes: selectedNodes,
-        //selectedLinks: [singleLink],
         selectedLinks: selectedLinks,
+        linkElement: mouseEvent,
+        selectedLink: singleLink,
       });
     }
   }
@@ -394,23 +508,51 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _fillNodeColors(singleNode: any): string {
     if (!this.state.selectedState) {
-      return 'rgb(255,255,255)';
+      return singleNode.color;
     } else if (
       this.state.selectedState &&
       this.state.selectedNodes.indexOf(singleNode) !== -1 &&
       this.state.selectedNode
     ) {
       return this.state.selectedNode.color;
-    } else if (this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) !== -1) {
+    } else if (this.state.selectedState && !this.state.selectedNode) {
       return singleNode.color;
     }
-    return 'rgb(255,255,255)';
+    return INACTIVE_FILL_COLOR;
+  }
+
+  /**
+   * This is used to assign node fillcolors and borderColor cyclically when the user doesnt
+   * provide color to  individual node.
+   */
+  private _assignNodeColors() {
+    let colors: string[];
+    let borders: string[];
+    if (this.props.colorsForNodes && this.props.borderColorsForNodes) {
+      colors = this.props.colorsForNodes;
+      borders = this.props.borderColorsForNodes;
+    } else {
+      colors = DEFAULT_NODE_COLORS;
+      borders = DEFAULT_NODE_BORDER_COLORS;
+    }
+    let currentIndex = 0;
+    this.props.data.SankeyChartData!.nodes.forEach((node: any) => {
+      if (!node.color && !node.borderColor) {
+        node.color = colors[currentIndex];
+        node.borderColor = borders[currentIndex];
+      } else if (node.color && !node.borderColor) {
+        node.borderColor = '#757575';
+      } else if (node.borderColor && !node.color) {
+        node.color = '#F5F5F5';
+      }
+      currentIndex = (currentIndex + 1) % colors.length;
+    });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _fillStreamColors(singleLink: any, gradientUrl: string): string {
     if (!this.state.selectedState) {
-      return gradientUrl;
+      return INACTIVE_FILL_COLOR;
     } else if (
       this.state.selectedState &&
       this.state.selectedLinks.indexOf(singleLink) !== -1 &&
@@ -420,47 +562,40 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     } else if (this.state.selectedState && this.state.selectedLinks.indexOf(singleLink) !== -1) {
       return gradientUrl;
     }
-    return 'rgb(255,255,255)';
+    return INACTIVE_FILL_COLOR;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _fillStreamBorder(singleLink: any, gradientUrl: string): string {
     if (!this.state.selectedState) {
-      return gradientUrl;
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     } else if (
       this.state.selectedState &&
       this.state.selectedLinks.indexOf(singleLink) !== -1 &&
       this.state.selectedNode
     ) {
-      return this.state.selectedNode.color;
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     } else if (this.state.selectedState && this.state.selectedLinks.indexOf(singleLink) !== -1) {
       return gradientUrl;
     }
-    return NON_SLECTED_NODE_AND_STREAM_COLOR;
+    return NON_SELECTED_NODE_AND_STREAM_COLOR;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _fillNodeBorder(singleNode: any): string {
     if (!this.state.selectedState) {
-      return singleNode.color;
+      return singleNode.borderColor;
     } else if (
       this.state.selectedState &&
       this.state.selectedNodes.indexOf(singleNode) !== -1 &&
       this.state.selectedNode
     ) {
-      return this.state.selectedNode.color;
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     } else if (this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) !== -1) {
-      return singleNode.color;
+      return singleNode.borderColor;
     }
-    return NON_SLECTED_NODE_AND_STREAM_COLOR;
+    return singleNode.borderColor;
   }
-
-  // private _reflectingNodeDetails(singleNode: any): string {
-  //   if (singleNode.height < '24') {
-  //     return singleNode.name + '\n' + singleNode.value;
-  //   }
-  //   return '';
-  // }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getSelectedNodes(selectedLinks: any[]): any[] {
@@ -478,23 +613,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getSelectedLinks(singleNode: any): any[] {
-    //let links: any = [];
-    // const nodes: any = [];
-    // nodes.push(singleNode);
-    // finalLinks.push(singleNode.sourceLinks);
-    // //links.push(singleNode.sourceLinks);
-    // //let iteratorForLinks: number = 0;
-
-    // // while (iteratorForLinks < links.length) {
-    // //   // if (nodes.indexOf(link.target) === -1) {
-    // //   nodes.push(links[iteratorForLinks].target);
-    // //   //if (link.target.sourceLinks) {
-    // //   const tempNode: any = links[iteratorForLinks].target;
-
-    // //   links = links.concat(tempNode.sourceLinks);
-    // //   iteratorForLinks++;
-    // // }
-
     // eslint-disable-next-line no-array-constructor
     const q: any = new Array<any>();
     const finalLinks: any = [];
@@ -534,8 +652,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
 
     return finalLinks;
-
-    // return singleNode.sourceLinks;
   }
 
   private _getSelectedLinksforStreamHover(singleLink: any): any {
@@ -545,7 +661,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const finalNodes: any = [];
 
     q.push(singleLink.source);
-
     finalLinks.push(singleLink);
     while (q.length > 0) {
       const poppedNode: any = q.shift();
@@ -577,26 +692,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getOpacityStream(singleLink: any): number {
-    if (this.state.selectedState) {
-      if (this.state.selectedLinks.indexOf(singleLink) === -1) {
-        return NON_SELECTED_OPACITY;
-      } else {
-        return SELECTED_STREAM_OPACITY;
-      }
-    }
-    return REST_STREAM_OPACITY;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getOpacityNode(singleNode: any): number {
-    if (this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) === -1) {
-      return NON_SELECTED_OPACITY;
-    } else {
-      return REST_NODE_OPACITY;
-    }
-  }
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
@@ -612,26 +707,53 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       }
     });
   }
+
+  private _truncateText(text: string, rectangleWidth: number, padding: number) {
+    let truncatedText = '';
+    const words = text.split(/\s+/).reverse();
+    let word: string = '';
+    const tspan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
+
+    const line: string[] = [];
+    while ((word = words.pop()!)) {
+      line.push(word);
+      tspan.text(line.join(' ') + ' ');
+      if (tspan.node() !== null) {
+        const w = tspan.node()!.getComputedTextLength();
+        if (w > 115) {
+          line.pop();
+          line.push('...');
+          break;
+        }
+      }
+    }
+    let maxHeight: number = 12;
+    truncatedText = line.join(' ') + ' ';
+    tspan.selectAll('text').each(() => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const outerHTMLElement = document.getElementById('tempText') as any;
+      const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
+      const boxHeight = BoxCordinates && BoxCordinates.height;
+      if (boxHeight > maxHeight) {
+        maxHeight = boxHeight;
+      }
+    });
+    return truncatedText;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _showTooltip(text: string, checkTrcuncated: boolean, evt: any) {
+    if (checkTrcuncated) {
+      const tooltip = document.getElementById('tooltip')!;
+      tooltip.innerHTML = text;
+      tooltip.style.display = 'block';
+      tooltip.style.left = evt.pageX + 'px';
+      tooltip.style.top = evt.pageY - 28 + 'px';
+    }
+  }
+
+  private _hideTooltip() {
+    const tooltip = document.getElementById('tooltip')!;
+    tooltip.style.display = 'none';
+  }
 }
-
-// function arrangeNodesWithMinHeight() {
-//  const sankeyNodes:SNode[]=[];
-
-//  this.props.data.SankeyChartData.nodes.forEach((singleNode: any) => {
-//       sankeyNodes.push(singleNode,singleNode.x0);
-// });
-// const groupedNodes: SankeyNodeMappedData = {};
-// this.props.data.SankeyChartData.nodes.forEach((item: SNode) => {
-//   const checkNodePresence: number = item.x0!;
-
-//   if (groupedNodes[checkNodePresence]) {
-//     groupedNodes[checkNodePresence] = [...groupedNodes[checkNodePresence], item];
-//   } else {
-//     groupedNodes[checkNodePresence] = [item];
-//   }
-// });
-
-// Object.keys(groupedNodes).forEach(item:number) =>{
-//   groupedNodes[item].sort()
-// }
-// }

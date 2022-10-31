@@ -35,42 +35,42 @@ export class SankeyChartOnePercentExample extends React.Component<{}, ISankeyCha
           {
             nodeId: 0,
             name: 'node0',
-            color: '#0078D4',
+            //color: '#0078D4',
           },
           {
             nodeId: 1,
             name: 'node1',
-            color: '#0078D4',
+            //color: '#0078D4',
           },
           {
             nodeId: 2,
             name: 'node2',
-            color: '#0078D4',
+            // color: '#0078D4',
           },
           {
             nodeId: 3,
             name: 'node3',
-            color: '#0078D4',
+            //color: '#0078D4',
           },
           {
             nodeId: 4,
             name: 'node4',
-            color: '#0078D4',
+            //color: '#0078D4',
           },
           {
             nodeId: 5,
             name: 'node5',
-            color: '#0078D4',
+            //color: '#0078D4',
           },
           {
             nodeId: 6,
             name: 'node6',
-            color: '#E3008C',
+            //color: '#E3008C',
           },
           {
             nodeId: 7,
             name: 'node7',
-            color: '#E3008C',
+            //color: '#E3008C',
           },
         ],
         links: [
@@ -123,6 +123,7 @@ export class SankeyChartOnePercentExample extends React.Component<{}, ISankeyCha
       },
     };
 
+    //const nodeColors = ['#E3008C', '#00A2AD', '#022F22', '#00188F'];
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -134,6 +135,7 @@ export class SankeyChartOnePercentExample extends React.Component<{}, ISankeyCha
         <div style={rootStyle}>
           <SankeyChart
             data={data}
+            //colorsForNodes={nodeColors}
             height={this.state.height}
             width={this.state.width}
             shouldResize={this.state.width + this.state.height}
