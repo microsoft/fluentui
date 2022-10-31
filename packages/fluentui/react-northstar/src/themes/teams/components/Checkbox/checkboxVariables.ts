@@ -60,8 +60,8 @@ const defaultValue = 'red';
 export const checkboxVariables = (siteVars: any): CheckboxVariables => ({
   checkboxColor: 'transparent',
 
-  toggleBackground: 'transparent',
-  toggleBorderColor: siteVars.colors.grey[300],
+  toggleBackground: _.get(siteVars, 'colorScheme.default.foreground2', defaultValue),
+  toggleBorderColor: _.get(siteVars, 'colorScheme.default.foreground2', defaultValue),
   toggleBorderStyle: `solid`,
   toggleBorderWidth: pxToRem(1),
   toggleIndicatorColor: 'inherit',
