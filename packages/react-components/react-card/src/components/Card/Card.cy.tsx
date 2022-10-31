@@ -268,19 +268,19 @@ describe('Card', () => {
       cy.get(`.${cardClassNames.select}`).should('not.exist');
     });
 
-    it('should have internal checkbox when selectable - selected prop', () => {
+    it('should role="checkbox" when selectable - selected prop', () => {
       mountFluent(<CardSample selected />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get('#card').should('have.attr', 'role', 'checkbox');
     });
 
-    it('should have internal checkbox when selectable - defaultSelected prop', () => {
+    it('should role="checkbox" when selectable - defaultSelected prop', () => {
       mountFluent(<CardSample defaultSelected />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get('#card').should('have.attr', 'role', 'checkbox');
     });
 
-    it('should have internal checkbox when selectable - onCardSelect prop', () => {
+    it('should role="checkbox" when selectable - onCardSelect prop', () => {
       const Example = () => {
         const onCardSelect = React.useCallback(() => null, []);
 
@@ -289,13 +289,14 @@ describe('Card', () => {
 
       mountFluent(<Example />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get('#card').should('have.attr', 'role', 'checkbox');
     });
 
     it('should have internal checkbox when selectable - onCardSelect prop', () => {
       mountFluent(<CardSample select={<span />} />);
 
       cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get(`.${cardClassNames.root}`).should('not.have.attr', 'role', 'checkbox');
     });
 
     it('should render checkbox when passing a custom slot', () => {
@@ -307,31 +308,31 @@ describe('Card', () => {
     it('should select with a mouse click', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
     });
 
     it('should have checkbox pre-selected and toggle its value', () => {
       mountFluent(<CardSample defaultSelected />);
 
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
     });
 
     it('should select with the Space key', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
       cy.get(`.${cardClassNames.root}`).focus().realPress('Space');
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
     });
 
     it('should NOT select with the Enter key if card has any actions inside', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
       cy.get(`.${cardClassNames.root}`).focus().realPress('Enter');
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
       cy.get(`.${cardClassNames.root} button`).first().should('be.focused');
     });
 
@@ -339,14 +340,14 @@ describe('Card', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
       cy.get(`.${cardClassNames.root} button`).first().focus().realPress('Enter');
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
     });
 
     it('should select with the Enter key if card has any actions inside', () => {
       mountFluent(<CardSampleNoActions defaultSelected={false} />);
 
       cy.get(`.${cardClassNames.root}`).focus().realPress('Enter');
-      cy.get(`.${cardClassNames.select}`).should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
     });
 
     it('should sync selected value with custom slot', () => {
