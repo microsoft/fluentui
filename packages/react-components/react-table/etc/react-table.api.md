@@ -29,6 +29,114 @@ export interface ColumnDefinition<TItem> {
 // @public (undocumented)
 export type ColumnId = string | number;
 
+// @public
+export const DataGrid: ForwardRefComponent<DataGridProps>;
+
+// @public
+export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
+
+// @public (undocumented)
+export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots>;
+
+// @public
+export type DataGridBodyProps = TableBodyProps;
+
+// @public (undocumented)
+export type DataGridBodySlots = TableBodySlots;
+
+// @public
+export type DataGridBodyState = TableBodyState;
+
+// @public
+export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
+
+// @public (undocumented)
+export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
+
+// @public
+export type DataGridCellProps = TableCellProps;
+
+// @public (undocumented)
+export type DataGridCellSlots = TableCellSlots;
+
+// @public
+export type DataGridCellState = TableCellState;
+
+// @public (undocumented)
+export const dataGridClassNames: SlotClassNames<DataGridSlots>;
+
+// @public (undocumented)
+export type DataGridContextValues = TableContextValues;
+
+// @public
+export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
+
+// @public
+export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
+
+// @public (undocumented)
+export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
+
+// @public
+export type DataGridHeaderCellProps = TableHeaderCellProps;
+
+// @public (undocumented)
+export type DataGridHeaderCellSlots = TableHeaderCellSlots;
+
+// @public
+export type DataGridHeaderCellState = TableHeaderCellState;
+
+// @public (undocumented)
+export const dataGridHeaderClassNames: SlotClassNames<DataGridHeaderSlots>;
+
+// @public
+export type DataGridHeaderProps = TableHeaderProps;
+
+// @public (undocumented)
+export type DataGridHeaderSlots = TableHeaderSlots;
+
+// @public
+export type DataGridHeaderState = TableHeaderState;
+
+// @public
+export type DataGridProps = TableProps;
+
+// @public
+export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
+
+// @public (undocumented)
+export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
+
+// @public
+export type DataGridRowProps = TableRowProps;
+
+// @public (undocumented)
+export type DataGridRowSlots = TableRowSlots;
+
+// @public
+export type DataGridRowState = TableRowState;
+
+// @public
+export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
+
+// @public (undocumented)
+export const dataGridSelectionCellClassNames: SlotClassNames<DataGridSelectionCellSlots>;
+
+// @public
+export type DataGridSelectionCellProps = TableSelectionCellProps;
+
+// @public (undocumented)
+export type DataGridSelectionCellSlots = TableSelectionCellSlots;
+
+// @public
+export type DataGridSelectionCellState = TableSelectionCellState;
+
+// @public (undocumented)
+export type DataGridSlots = TableSlots;
+
+// @public
+export type DataGridState = TableState;
+
 // @public (undocumented)
 export interface HeadlessTableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
     columns: ColumnDefinition<TItem>[];
@@ -36,6 +144,27 @@ export interface HeadlessTableState<TItem> extends Pick<UseTableOptions<TItem>, 
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
 }
+
+// @public
+export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
+
+// @public
+export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;
+
+// @public
+export const renderDataGridCell_unstable: (state: DataGridCellState) => JSX.Element;
+
+// @public
+export const renderDataGridHeader_unstable: (state: DataGridHeaderState) => JSX.Element;
+
+// @public
+export const renderDataGridHeaderCell_unstable: (state: DataGridHeaderCellState) => JSX.Element;
+
+// @public
+export const renderDataGridRow_unstable: (state: DataGridRowState) => JSX.Element;
+
+// @public
+export const renderDataGridSelectionCell_unstable: (state: DataGridSelectionCellState) => JSX.Element;
 
 // @public
 export const renderTable_unstable: (state: TableState, contextValues: TableContextValues) => JSX.Element;
@@ -309,6 +438,48 @@ export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>,
 
 // @public (undocumented)
 export type TableStatePlugin = <TItem>(tableState: HeadlessTableState<TItem>) => HeadlessTableState<TItem>;
+
+// @public
+export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
+
+// @public
+export const useDataGridBody_unstable: (props: DataGridBodyProps, ref: React_2.Ref<HTMLElement>) => DataGridBodyState;
+
+// @public
+export const useDataGridBodyStyles_unstable: (state: DataGridBodyState) => DataGridBodyState;
+
+// @public
+export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.Ref<HTMLElement>) => DataGridCellState;
+
+// @public
+export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
+
+// @public
+export const useDataGridHeader_unstable: (props: DataGridHeaderProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderState;
+
+// @public
+export const useDataGridHeaderCell_unstable: (props: DataGridHeaderCellProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderCellState;
+
+// @public
+export const useDataGridHeaderCellStyles_unstable: (state: DataGridHeaderCellState) => DataGridHeaderCellState;
+
+// @public
+export const useDataGridHeaderStyles_unstable: (state: DataGridHeaderState) => DataGridHeaderState;
+
+// @public
+export const useDataGridRow_unstable: (props: DataGridRowProps, ref: React_2.Ref<HTMLElement>) => DataGridRowState;
+
+// @public
+export const useDataGridRowStyles_unstable: (state: DataGridRowState) => DataGridRowState;
+
+// @public
+export const useDataGridSelectionCell_unstable: (props: DataGridSelectionCellProps, ref: React_2.Ref<HTMLElement>) => DataGridSelectionCellState;
+
+// @public
+export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionCellState) => DataGridSelectionCellState;
+
+// @public
+export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
 
 // @public (undocumented)
 export function useSelection<TItem>(options: UseSelectionOptions): (tableState: HeadlessTableState<TItem>) => HeadlessTableState<TItem>;
