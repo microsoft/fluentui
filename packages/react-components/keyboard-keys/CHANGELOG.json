@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 22:09:50 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:44 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0",
       "version": "9.0.0",

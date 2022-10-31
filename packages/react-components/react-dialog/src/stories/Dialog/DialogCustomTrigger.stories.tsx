@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-components';
 import {
+  Button,
   Dialog,
   DialogSurface,
   DialogTitle,
@@ -8,8 +8,8 @@ import {
   DialogContent,
   DialogActions,
   DialogTrigger,
-} from '@fluentui/react-dialog';
-import type { DialogTriggerChildProps } from '@fluentui/react-dialog';
+} from '@fluentui/react-components';
+import type { DialogTriggerChildProps } from '@fluentui/react-components';
 import story from './DialogCustomTrigger.md';
 
 const CustomDialogTrigger = React.forwardRef<HTMLButtonElement, DialogTriggerChildProps>((props, ref) => {
@@ -23,7 +23,7 @@ const CustomDialogTrigger = React.forwardRef<HTMLButtonElement, DialogTriggerChi
 export const CustomTrigger = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <CustomDialogTrigger />
       </DialogTrigger>
       <DialogSurface>
@@ -35,7 +35,7 @@ export const CustomTrigger = () => {
             cumque eaque?
           </DialogContent>
           <DialogActions>
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
             <Button appearance="primary">Do Something</Button>

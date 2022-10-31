@@ -7,8 +7,11 @@ import {
   DialogContent,
   DialogBody,
   DialogActions,
-} from '@fluentui/react-dialog';
-import { Button, Input, Label, makeStyles } from '@fluentui/react-components';
+  Button,
+  Input,
+  Label,
+  makeStyles,
+} from '@fluentui/react-components';
 import story from './DialogWithForm.md';
 
 const useStyles = makeStyles({
@@ -27,10 +30,10 @@ export const WithForm = () => {
   };
   return (
     <Dialog modalType="non-modal">
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open formulary dialog</Button>
       </DialogTrigger>
-      <DialogSurface>
+      <DialogSurface aria-describedby={undefined}>
         <form onSubmit={handleSubmit}>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
@@ -45,7 +48,7 @@ export const WithForm = () => {
               <Input required type="password" id={'password-input'} />
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button type="submit" appearance="primary">

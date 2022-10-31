@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Deprecating filled with shadow appearance variant.",
-  "packageName": "@fluentui/react-textarea",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

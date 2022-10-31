@@ -13,6 +13,7 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -88,12 +89,15 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
                     {points!.chartTitle && (
-                      <div
-                        className={this._classNames.chartDataText}
-                        {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}
+                      <TooltipHost
+                        overflowMode={TooltipOverflowMode.Self}
+                        hostClassName={this._classNames.chartTitleLeft}
+                        content={points!.chartTitle}
                       >
-                        {points!.chartTitle}
-                      </div>
+                        <span {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}>
+                          {points!.chartTitle}
+                        </span>
+                      </TooltipHost>
                     )}
                     {chartDataText}
                   </div>
@@ -228,21 +232,21 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     switch (chartDataMode) {
       case 'default':
         return (
-          <div className={this._classNames.chartDataText} {...accessibilityData}>
+          <div className={this._classNames.chartTitleRight} {...accessibilityData}>
             {convertToLocaleString(x, culture)}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={this._classNames.chartDataText}>{convertToLocaleString(x, culture)}</span>
+            <span className={this._classNames.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
             <span className={this._classNames.chartDataTextDenominator}>{'/' + convertToLocaleString(y, culture)}</span>
           </div>
         );
       case 'percentage':
         const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
-          <div className={this._classNames.chartDataText} {...accessibilityData}>
+          <div className={this._classNames.chartTitleRight} {...accessibilityData}>
             {dataRatioPercentage}
           </div>
         );

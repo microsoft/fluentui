@@ -13,8 +13,9 @@ import type {
   DialogSurfaceState,
 } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
-import { isEscapeKeyDismiss, HTMLDialogElementProps } from '../../utils';
+import { isEscapeKeyDismiss } from '../../utils';
 import { useModalAttributes } from '@fluentui/react-tabster';
+
 /**
  * Create the state required to render DialogSurface.
  *
@@ -29,61 +30,12 @@ export const useDialogSurface_unstable = (
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
   const { backdrop, as } = props;
-  const isNativeDialog = as === 'dialog' || as === undefined;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
   const dialogContentId = useDialogContext_unstable(ctx => ctx.dialogContentId);
-
-  const handleNativeClick = useEventCallback((event: React.MouseEvent<DialogSurfaceElementIntersection>) => {
-    props.onClick?.(event);
-    if (modalType === 'alert' || event.target !== event.currentTarget) {
-      return;
-    }
-    const { clientX, clientY } = event;
-    const { top, left, width, height } = event.currentTarget.getBoundingClientRect();
-    const isBackdropClick = top > clientY || clientY > top + height || left > clientX || clientX > left + width;
-    if (isBackdropClick) {
-      requestOpenChange({
-        event,
-        open: false,
-        type: 'backdropClick',
-      });
-    }
-  });
-
-  const handleNativeCancel = useEventCallback((event: React.SyntheticEvent<DialogSurfaceElementIntersection>) => {
-    (props as HTMLDialogElementProps).onCancel?.(event);
-    if (event.currentTarget !== event.target) {
-      return;
-    }
-    if (modalType !== 'alert') {
-      requestOpenChange({
-        event,
-        open: false,
-        type: 'dialogCancel',
-      });
-    }
-    event.preventDefault();
-  });
-
-  const handleNativeClose = useEventCallback((event: React.SyntheticEvent<DialogSurfaceElementIntersection>) => {
-    (props as HTMLDialogElementProps).onClose?.(event);
-    // Ensure dialog remains open if force closed by close event
-    if (event.currentTarget.open !== open) {
-      if (open) {
-        if (modalType === 'non-modal') {
-          event.currentTarget.show();
-        } else {
-          event.currentTarget.showModal();
-        }
-      } else {
-        event.currentTarget.close();
-      }
-    }
-  });
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -118,32 +70,24 @@ export const useDialogSurface_unstable = (
   return {
     components: {
       backdrop: 'div',
-      root: 'dialog',
+      root: 'div',
     },
     backdrop: resolveShorthand(backdrop, {
-      required: !isNativeDialog && open && modalType !== 'non-modal',
+      required: open && modalType !== 'non-modal',
       defaultProps: {
         'aria-hidden': 'true',
         onClick: handledBackdropClick,
       },
     }),
-    root: getNativeElementProps(as ?? 'dialog', {
-      ...(isNativeDialog
-        ? {
-            role: modalType === 'alert' ? 'alertdialog' : undefined,
-            onClose: handleNativeClose,
-            onClick: handleNativeClick,
-            onCancel: handleNativeCancel,
-          }
-        : {
-            'aria-modal': modalType !== 'non-modal',
-            role: modalType === 'alert' ? 'alertdialog' : 'dialog',
-          }),
+    root: getNativeElementProps(as ?? 'div', {
+      tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
+      'aria-modal': modalType !== 'non-modal',
+      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+      'aria-describedby': dialogContentId,
+      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ...props,
       ...modalAttributes,
       onKeyDown: handleKeyDown,
-      'aria-describedby': dialogContentId,
-      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ref: useMergedRefs(ref, dialogRef),
     }),
   };

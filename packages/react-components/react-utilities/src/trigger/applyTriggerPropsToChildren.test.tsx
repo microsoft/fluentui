@@ -1,21 +1,25 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { applyTriggerPropsToChildren } from './applyTriggerPropsToChildren';
-import { TestTrigger } from './getTriggerChild.test';
+import type { FluentTriggerComponent } from './types';
+
+export const TestTrigger: React.FC<{ id?: string }> & FluentTriggerComponent = props => <>{props.children}</>;
+TestTrigger.displayName = 'TestTrigger';
+TestTrigger.isFluentTriggerComponent = true;
 
 describe('applyTriggerPropsToChildren', () => {
   const dataTestId = 'dataTestId';
   const child: React.ReactElement = <div data-testid={dataTestId}>This is a valid React element</div>;
-  const triggerProps = { id: 'testId', className: 'testClassName', 'data-testattr': 'testAttr' };
+  const triggerChildProps = { id: 'testId', className: 'testClassName', 'data-testattr': 'testAttr' };
 
   it('returns the child with the props applied if a React element is sent as the child', () => {
-    const result = applyTriggerPropsToChildren(child, triggerProps);
+    const result = applyTriggerPropsToChildren(child, triggerChildProps);
     const div = render(result as React.ReactElement).getByTestId(dataTestId);
 
     expect(div.tagName).toBe('DIV');
-    expect(div.id).toBe(triggerProps.id);
-    expect(div.className).toBe(triggerProps.className);
-    expect(div.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
+    expect(div.id).toBe(triggerChildProps.id);
+    expect(div.className).toBe(triggerChildProps.className);
+    expect(div.getAttribute('data-testattr')).toBe(triggerChildProps['data-testattr']);
   });
 
   it('returns the output of the function if a function component is sent as the child', () => {
@@ -25,13 +29,13 @@ describe('applyTriggerPropsToChildren', () => {
         This is a valid element
       </div>
     );
-    let result = applyTriggerPropsToChildren(functionComponent, triggerProps);
+    let result = applyTriggerPropsToChildren(functionComponent, triggerChildProps);
     const div = render(result as React.ReactElement).getByTestId(dataTestId);
 
     expect(div.tagName).toBe('DIV');
-    expect(div.id).toBe(triggerProps.id);
-    expect(div.className).toBe(triggerProps.className);
-    expect(div.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
+    expect(div.id).toBe(triggerChildProps.id);
+    expect(div.className).toBe(triggerChildProps.className);
+    expect(div.getAttribute('data-testattr')).toBe(triggerChildProps['data-testattr']);
 
     // With props being custom applied
     const dataTestId2 = dataTestId + '2';
@@ -48,18 +52,18 @@ describe('applyTriggerPropsToChildren', () => {
         </span>
       </div>
     );
-    result = applyTriggerPropsToChildren(functionComponent, triggerProps);
+    result = applyTriggerPropsToChildren(functionComponent, triggerChildProps);
     const span = render(result as React.ReactElement).getByTestId(dataTestId2);
 
     expect(span.tagName).toBe('SPAN');
-    expect(span.id).toBe(triggerProps.id);
-    expect(span.className).toBe(triggerProps.className);
-    expect(span.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
+    expect(span.id).toBe(triggerChildProps.id);
+    expect(span.className).toBe(triggerChildProps.className);
+    expect(span.getAttribute('data-testattr')).toBe(triggerChildProps['data-testattr']);
   });
 
   it(`throws an error if a React fragment with a single child is sent as the child`, () => {
     const fragment = <>{child}</>;
-    expect(() => applyTriggerPropsToChildren(fragment, triggerProps)).toThrow();
+    expect(() => applyTriggerPropsToChildren(fragment, triggerChildProps)).toThrow();
   });
 
   it('throws an error if a React fragment with multiple children is sent as the child', () => {
@@ -70,7 +74,7 @@ describe('applyTriggerPropsToChildren', () => {
         {child}
       </>
     );
-    expect(() => applyTriggerPropsToChildren(fragment, triggerProps)).toThrow();
+    expect(() => applyTriggerPropsToChildren(fragment, triggerChildProps)).toThrow();
   });
 
   it('applies props to the child if a valid element is sent as the child', () => {
@@ -86,7 +90,9 @@ describe('applyTriggerPropsToChildren', () => {
       <TestTrigger id="trigger">
         <div id="child" />
       </TestTrigger>,
-      { 'data-test': 'test-value' },
+      {
+        'data-test': 'test-value',
+      },
     );
 
     expect(result).toEqual(
@@ -105,7 +111,9 @@ describe('applyTriggerPropsToChildren', () => {
           </TestTrigger>
         </TestTrigger>
       </TestTrigger>,
-      { 'data-test': 'test-value' },
+      {
+        'data-test': 'test-value',
+      },
     );
 
     expect(result).toEqual(

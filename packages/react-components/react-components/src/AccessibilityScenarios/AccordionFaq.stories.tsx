@@ -4,7 +4,7 @@ import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@flue
 
 import { Scenario } from './utils';
 
-export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => {
+export const FAQAccordion: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="FAQ accordion">
       <h1>Frequently asked questions about Windows</h1>
@@ -52,9 +52,4 @@ export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => 
       </Accordion>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios / FAQ accordion',
-  id: 'accordion-faq-accessibility-scenario',
 };

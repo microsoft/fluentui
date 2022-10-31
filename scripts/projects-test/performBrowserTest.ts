@@ -11,9 +11,7 @@ function startServer(publicDirectory: string, listenPort: number) {
       const app = express();
       app.use(express.static(publicDirectory));
 
-      const server = app.listen(listenPort, config.server_host, e => {
-        if (e) return reject(e);
-
+      const server = app.listen(listenPort, config.server_host, () => {
         resolve(server);
       });
     } catch (err) {

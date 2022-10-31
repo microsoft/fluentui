@@ -28,8 +28,8 @@ const innerStackTokens: IStackTokens = {
 
 export const VerticalStackGrowExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={outerStackTokens}>
-      <Stack styles={stackStyles} tokens={innerStackTokens}>
+    <Stack enableScopedSelectors tokens={outerStackTokens}>
+      <Stack enableScopedSelectors styles={stackStyles} tokens={innerStackTokens}>
         <Stack.Item grow={3} styles={stackItemStyles}>
           Grow is 3
         </Stack.Item>

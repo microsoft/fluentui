@@ -101,6 +101,9 @@ export type PositioningVirtualElement = {
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
+// @public (undocumented)
+export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
+
 // @internal (undocumented)
 export function usePositioning(options: UsePositioningOptions): {
     targetRef: React_2.MutableRefObject<any>;
@@ -109,7 +112,7 @@ export function usePositioning(options: UsePositioningOptions): {
 };
 
 // @internal
-export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
 // (No @packageDocumentation comment for this package)
 

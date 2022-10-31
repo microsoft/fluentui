@@ -19,6 +19,11 @@ const consoleError = console.error;
 console.error = customError.bind(null, 'error');
 console.warn = customError.bind(null, 'warn');
 
+/**
+ *
+ * @param {string} type
+ * @param  {any[]} args
+ */
 function customError(type, ...args) {
   if (type === 'warn') {
     consoleWarn(...args);

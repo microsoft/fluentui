@@ -85,7 +85,7 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     display: 'grid',
     fontFamily: tokens.fontFamilyBase,
-    gridTemplateColumns: '1fr auto',
+    gridTemplateColumns: '[content] 1fr [icon] auto [end]',
     justifyContent: 'space-between',
     textAlign: 'left',
     width: '100%',
@@ -159,6 +159,16 @@ const useStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -167,6 +177,8 @@ const useIconStyles = makeStyles({
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     fontSize: tokens.fontSizeBase500,
+    gridColumnStart: 'icon',
+    gridColumnEnd: 'end',
 
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
@@ -195,10 +207,18 @@ const useIconStyles = makeStyles({
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
   const { appearance, open, placeholderVisible, size } = state;
+  const invalid = `${state.button['aria-invalid']}` === 'true';
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
-  state.root.className = mergeClasses(dropdownClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.root.className = mergeClasses(
+    dropdownClassNames.root,
+    styles.root,
+    styles[appearance],
+    invalid && appearance !== 'underline' && styles.invalid,
+    invalid && appearance === 'underline' && styles.invalidUnderline,
+    state.root.className,
+  );
 
   state.button.className = mergeClasses(
     dropdownClassNames.button,

@@ -472,6 +472,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             border: 0px;
           }
       data-is-focusable={true}
+      hidden={false}
       id="toolTipcallout0"
       style={
         Object {
@@ -1076,6 +1077,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             border: 0px;
           }
       data-is-focusable={true}
+      hidden={false}
       id="toolTipcallout0"
       style={
         Object {
@@ -1712,6 +1714,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             border: 0px;
           }
       data-is-focusable={true}
+      hidden={false}
       id="toolTipcallout0"
       style={
         Object {
@@ -2133,6 +2136,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2466,6 +2472,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2570,6 +2579,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
       <g />
     </svg>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2923,6 +2935,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3276,6 +3291,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3629,6 +3647,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3982,6 +4003,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -4335,5 +4359,8 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;

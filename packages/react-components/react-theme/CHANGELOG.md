@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 15 Sep 2022 09:49:36 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 08:39:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.1)
+
+Thu, 20 Oct 2022 08:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.0..@fluentui/react-theme_v9.1.1)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.0)
 

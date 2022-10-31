@@ -16,6 +16,7 @@ export {
   avatarGroupClassNames,
   avatarGroupItemClassNames,
   avatarGroupPopoverClassNames,
+  partitionAvatarGroupItems,
   renderAvatarGroup_unstable,
   renderAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
@@ -37,6 +38,8 @@ export type {
   AvatarGroupPopoverProps,
   AvatarGroupPopoverSlots,
   AvatarGroupPopoverState,
+  PartitionAvatarGroupItems,
+  PartitionAvatarGroupItemsOptions,
 } from '@fluentui/react-avatar';
 export {
   Card,
@@ -176,68 +179,6 @@ export {
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
 
 export {
-  Dialog,
-  useDialog_unstable,
-  renderDialog_unstable,
-  DialogTitle,
-  dialogTitleClassNames,
-  useDialogTitle_unstable,
-  useDialogTitleStyles_unstable,
-  renderDialogTitle_unstable,
-  DialogTrigger,
-  useDialogTrigger_unstable,
-  renderDialogTrigger_unstable,
-  DialogBody,
-  dialogBodyClassNames,
-  useDialogBody_unstable,
-  useDialogBodyStyles_unstable,
-  renderDialogBody_unstable,
-  DialogActions,
-  dialogActionsClassNames,
-  useDialogActions_unstable,
-  useDialogActionsStyles_unstable,
-  renderDialogActions_unstable,
-  DialogSurface,
-  dialogSurfaceClassNames,
-  useDialogSurface_unstable,
-  useDialogSurfaceStyles_unstable,
-  renderDialogSurface_unstable,
-  DialogContent,
-  dialogContentClassNames,
-  useDialogContentStyles_unstable,
-  useDialogContent_unstable,
-  renderDialogContent_unstable,
-} from '@fluentui/react-dialog';
-
-export type {
-  DialogProps,
-  DialogOpenChangeData,
-  DialogOpenChangeEvent,
-  DialogSlots,
-  DialogState,
-  DialogTriggerProps,
-  DialogTriggerChildProps,
-  DialogTriggerState,
-  DialogTriggerAction,
-  DialogActionsProps,
-  DialogActionsSlots,
-  DialogActionsState,
-  DialogActionsPosition,
-  DialogBodyProps,
-  DialogBodySlots,
-  DialogBodyState,
-  DialogTitleProps,
-  DialogTitleSlots,
-  DialogTitleState,
-  DialogSurfaceProps,
-  DialogSurfaceSlots,
-  DialogSurfaceState,
-  DialogContentProps,
-  DialogContentSlots,
-  DialogContentState,
-} from '@fluentui/react-dialog';
-
-export {
   TableCell,
   tableCellClassNames,
   tableCellClassName,
@@ -291,7 +232,11 @@ export {
   useTableCellLayoutStyles_unstable,
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
+  useTable,
+  useSelection,
+  useSort,
 } from '@fluentui/react-table';
+
 export type {
   SortDirection,
   TableHeaderCellProps,
@@ -320,6 +265,15 @@ export type {
   TableCellActionsProps,
   TableCellActionsState,
   TableCellActionsSlots,
+  UseTableOptions,
+  TableState as HeadlessTableState,
+  TableSelectionState,
+  TableSortState,
+  TableStatePlugin,
+  RowState,
+  RowId,
+  ColumnDefinition,
+  ColumnId,
 } from '@fluentui/react-table';
 
 export {
@@ -361,3 +315,21 @@ export type {
   SwitchFieldProps,
   TextareaFieldProps,
 } from '@fluentui/react-field';
+
+export {
+  Persona,
+  personaClassNames,
+  renderPersona_unstable,
+  usePersonaStyles_unstable,
+  usePersona_unstable,
+} from '@fluentui/react-persona';
+export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
+
+export {
+  Progress,
+  progressClassNames,
+  renderProgress_unstable,
+  useProgressStyles_unstable,
+  useProgress_unstable,
+} from '@fluentui/react-progress';
+export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/react-progress';

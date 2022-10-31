@@ -67,16 +67,7 @@ const useTriggerButtonStyles = makeStyles({
     color: 'transparent',
   },
 
-  // These styles match the default button styles.
   focusIndicator: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor('transparent'),
-    outlineColor: tokens.colorStrokeFocus2,
-    outlineWidth: tokens.strokeWidthThick,
-    outlineStyle: 'solid',
-  }),
-
-  // This custom focus indicator is required for the pie layout due to the clip-path applied to the root
-  pieFocusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
   }),
 
@@ -127,7 +118,7 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
   const triggerButtonStyles = useTriggerButtonStyles();
   const contentStyles = useContentStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
-  const groupChildClassName = useGroupChildClassName(layout, size, true);
+  const groupChildClassName = useGroupChildClassName(layout, size);
 
   const triggerButtonClasses = [];
 
@@ -179,8 +170,7 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
     sizeStyles[size],
     triggerButtonStyles.base,
     layout === 'pie' && triggerButtonStyles.pie,
-    layout === 'pie' && triggerButtonStyles.pieFocusIndicator,
-    layout !== 'pie' && triggerButtonStyles.focusIndicator,
+    triggerButtonStyles.focusIndicator,
     layout !== 'pie' && triggerButtonStyles.states,
     layout !== 'pie' && popoverOpen && triggerButtonStyles.selected,
     ...triggerButtonClasses,

@@ -62,7 +62,9 @@ Fluent UI React adheres to [semantic versioning](http://www.semver.org/). Howeve
 
 ### Browser support
 
-Fluent UI React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/microsoft/fluentui/wiki/Browser-Support) for more information.
+Fluent UI React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer<sup>\*</sup>. See the [browser support doc](https://github.com/microsoft/fluentui/wiki/Browser-Support) for more information.
+
+<sup>\*</sup>**NOTE**: [Internet Explorer 11 has been sunset](https://github.com/microsoft/fluentui/wiki/Internet-Explorer-11-Sunset). Features and bug fixes after the sunset date may not be compatible with IE11.
 
 ### Right-to-left support
 

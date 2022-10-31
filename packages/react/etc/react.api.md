@@ -3007,6 +3007,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React_2.RefAttrib
     firstWeekOfYear?: FirstWeekOfYear;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
+    id?: string;
     isDayPickerVisible?: boolean;
     isMonthPickerVisible?: boolean;
     maxDate?: Date;
@@ -8744,6 +8745,7 @@ export interface IStackItemTokens {
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ElementType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    enableScopedSelectors?: boolean;
     // @deprecated
     gap?: number | string;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';

@@ -121,6 +121,7 @@ const useInputStyles = makeStyles({
       cursor: 'default',
 
       [`& ~ .${checkboxClassNames.label}`]: {
+        cursor: 'default',
         color: tokens.colorNeutralForegroundDisabled,
         '@media (forced-colors: active)': {
           color: 'GrayText',
@@ -156,13 +157,6 @@ const useInputStyles = makeStyles({
   large: {
     width: `calc(${indicatorSizeLarge} + 2 * ${tokens.spacingHorizontalS})`,
   },
-
-  labelMedium: {
-    width: `calc(${indicatorSizeMedium} + ${tokens.spacingHorizontalS})`,
-  },
-  labelLarge: {
-    width: `calc(${indicatorSizeLarge} + ${tokens.spacingHorizontalS})`,
-  },
 });
 
 const useIndicatorStyles = makeStyles({
@@ -181,13 +175,6 @@ const useIndicatorStyles = makeStyles({
     ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     fill: 'currentColor',
     pointerEvents: 'none',
-  },
-
-  labelBefore: {
-    marginLeft: 0,
-  },
-  labelAfter: {
-    marginRight: 0,
   },
 
   medium: {
@@ -216,10 +203,10 @@ const useLabelStyles = makeStyles({
   },
 
   before: {
-    paddingRight: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalXS,
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalXS,
   },
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
@@ -241,15 +228,13 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(checkboxClassNames.root, rootStyles.base, state.root.className);
 
-  const { label, labelPosition, shape, size } = state;
+  const { labelPosition, shape, size } = state;
 
   const inputStyles = useInputStyles();
   state.input.className = mergeClasses(
     checkboxClassNames.input,
     inputStyles.base,
     inputStyles[size],
-    label && size === 'medium' && inputStyles.labelMedium,
-    label && size === 'large' && inputStyles.labelLarge,
     inputStyles[labelPosition],
     state.input.className,
   );
@@ -260,8 +245,6 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       checkboxClassNames.indicator,
       indicatorStyles.base,
       indicatorStyles[size],
-      label && labelPosition === 'before' && indicatorStyles.labelBefore,
-      label && labelPosition === 'after' && indicatorStyles.labelAfter,
       shape === 'circular' && indicatorStyles.circular,
       state.indicator.className,
     );
