@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "exposes internal typings: ARIAButtonAlteredProps and ARIAButtonElement",
+  "packageName": "@fluentui/react-aria",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

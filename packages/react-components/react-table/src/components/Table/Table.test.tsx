@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Table } from './Table';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableProps } from './Table.types';
 import { TableRow } from '../TableRow/TableRow';
 import { TableCell } from '../TableCell/TableCell';

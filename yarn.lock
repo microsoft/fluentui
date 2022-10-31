@@ -21155,6 +21155,18 @@ pkg-up@^4.0.0:
   dependencies:
     find-up "^6.2.0"
 
+playwright-core@1.27.1:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.27.1.tgz#840ef662e55a3ed759d8b5d3d00a5f885a7184f4"
+  integrity sha512-9EmeXDncC2Pmp/z+teoVYlvmPWUC6ejSSYZUln7YaP89Z6lpAaiaAnqroUt/BoLo8tn7WYShcfaCh+xofZa44Q==
+
+playwright@^1.27.0:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.27.1.tgz#4eecac5899566c589d4220ca8acc16abe8a67450"
+  integrity sha512-xXYZ7m36yTtC+oFgqH0eTgullGztKSRMb4yuwLPl8IYSmgBM88QiB+3IWb1mRIC9/NNwcgbG0RwtFlg+EAFQHQ==
+  dependencies:
+    playwright-core "1.27.1"
+
 please-upgrade-node@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.2.0.tgz#aeddd3f994c933e4ad98b99d9a556efa0e2fe942"
@@ -24282,6 +24294,15 @@ storybook-addon-performance@0.16.1:
     styled-components "^5.1.1"
     tiny-invariant "^1.1.0"
     xstate "^4.22.0"
+
+storywright@0.0.23-beta.6:
+  version "0.0.23-beta.6"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.6.tgz#cf44dadd29caddd51a7b1b6af1074f8efc876f76"
+  integrity sha512-Kwhk0xlRdy+e8CP21ZueAVSkw0e367MgO2XJPqPdet/RsE+rr4j0VOGA/TjqsHP+G25/FxwZI0UL/6q9alNUfQ==
+  dependencies:
+    playwright "^1.27.0"
+    prop-types "^15.6.0"
+    yargs "^16.2.0"
 
 stream-browserify@^2.0.1:
   version "2.0.2"

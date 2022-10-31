@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -16,10 +16,12 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  TableSelectionCell,
+  useTable,
+  ColumnDefinition,
+  ColumnId,
+  useSort,
   TableCellLayout,
-} from '../..';
-import { useTable, ColumnDefinition, useSelection } from '../../hooks';
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
@@ -90,78 +92,79 @@ const items: Item[] = [
 const columns: ColumnDefinition<Item>[] = [
   {
     columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
   },
   {
     columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
   },
   {
     columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
   },
   {
     columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
   },
 ];
 
-export const MultipleSelect = () => {
+export const SortControlled = () => {
+  const [sortState, setSortState] = React.useState<{
+    sortDirection: 'ascending' | 'descending';
+    sortColumn: ColumnId | undefined;
+  }>({
+    sortDirection: 'ascending' as const,
+    sortColumn: 'file',
+  });
+
   const {
     getRows,
-    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+    sort: { getSortDirection, toggleColumnSort, sort },
   } = useTable(
     {
       columns,
       items,
     },
-    [
-      useSelection({
-        selectionMode: 'multiselect',
-        defaultSelectedItems: new Set([0, 1]),
-      }),
-    ],
+    [useSort({ sortState, onSortChange: setSortState })],
   );
 
-  const rows = getRows(row => ({
-    ...row,
-    onClick: () => toggleRow(row.rowId),
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        toggleRow(row.rowId);
-      }
-    },
-    selected: isRowSelected(row.rowId),
-  }));
+  const headerSortProps = (columnId: ColumnId) => ({
+    onClick: () => toggleColumnSort(columnId),
+    sortDirection: getSortDirection(columnId),
+  });
 
-  // eslint-disable-next-line deprecation/deprecation
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+  const rows = sort(getRows());
 
   return (
-    <Table>
+    <Table sortable>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell
-            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            onClick={toggleAllRows}
-          />
-          <TableHeaderCell>File</TableHeaderCell>
-          <TableHeaderCell>Author</TableHeaderCell>
-          <TableHeaderCell>Last updated</TableHeaderCell>
-          <TableHeaderCell>Last update</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
-        {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow
-            key={item.file.label}
-            onClick={onClick}
-            onKeyDown={onKeyDown}
-            aria-selected={selected}
-            appearance={selected ? 'brand' : 'none'}
-          >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+      <TableBody>
+        {rows.map(({ item }) => (
+          <TableRow key={item.file.label}>
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

@@ -17,7 +17,6 @@ const themeClassNameContextDefaultVaue = '';
 export const ThemeClassNameProvider = ThemeClassNameContext.Provider;
 
 /**
- * @internal
  * @returns CSS class that applies css variables
  */
 export function useThemeClassName(): ThemeClassNameContextValue {

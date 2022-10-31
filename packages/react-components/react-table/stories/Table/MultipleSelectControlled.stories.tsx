@@ -9,9 +9,20 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
-import { useTable, ColumnDefinition, useSelection } from '../../hooks';
-import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableSelectionCell,
+  TableCellLayout,
+  useTable,
+  ColumnDefinition,
+  RowId,
+  useSelection,
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
@@ -94,10 +105,14 @@ const columns: ColumnDefinition<Item>[] = [
   },
 ];
 
-export const SingleSelect = () => {
+export const MultipleSelectControlled = () => {
+  const [selectedRows, setSelectedRows] = React.useState(
+    () => new Set<RowId>([0, 1]),
+  );
+
   const {
     getRows,
-    selection: { toggleRow, isRowSelected },
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
   } = useTable(
     {
       columns,
@@ -105,8 +120,9 @@ export const SingleSelect = () => {
     },
     [
       useSelection({
-        selectionMode: 'single',
-        defaultSelectedItems: new Set([1]),
+        selectionMode: 'multiselect',
+        selectedItems: selectedRows,
+        onSelectionChange: setSelectedRows,
       }),
     ],
   );
@@ -121,13 +137,17 @@ export const SingleSelect = () => {
     },
     selected: isRowSelected(row.rowId),
   }));
+
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell type="radio" hidden />
+          <TableSelectionCell
+            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
+            onClick={toggleAllRows}
+          />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
@@ -141,9 +161,9 @@ export const SingleSelect = () => {
             onClick={onClick}
             onKeyDown={onKeyDown}
             aria-selected={selected}
-            appearance={selected ? 'brand' : 'none'}
+            appearance={selected ? 'neutral' : 'none'}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

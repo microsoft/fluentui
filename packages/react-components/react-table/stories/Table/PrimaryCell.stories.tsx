@@ -7,9 +7,19 @@ import {
   PeopleRegular,
   DocumentPdfRegular,
   VideoRegular,
+  MoreHorizontalRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableCellLayout } from '../..';
+import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableCellActions,
+  TableCellLayout,
+} from '@fluentui/react-components/unstable';
 
 const items = [
   {
@@ -57,7 +67,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const Default = () => {
+export const PrimaryCell = () => {
   return (
     <Table>
       <TableHeader>
@@ -71,8 +81,15 @@ export const Default = () => {
         {items.map(item => (
           <TableRow key={item.file.label}>
             <TableCell>
-              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+              <TableCellLayout media={item.file.icon} description="My Organization" appearance="primary">
+                {item.file.label}
+              </TableCellLayout>
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
             </TableCell>
+
             <TableCell>
               <TableCellLayout
                 media={

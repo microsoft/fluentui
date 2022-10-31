@@ -17,9 +17,12 @@ import {
   TableHeader,
   TableHeaderCell,
   TableSelectionCell,
+  useTable,
+  ColumnDefinition,
+  RowId,
+  useSelection,
   TableCellLayout,
-} from '../..';
-import { useTable, ColumnDefinition, useSelection } from '../../hooks';
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
@@ -102,10 +105,13 @@ const columns: ColumnDefinition<Item>[] = [
   },
 ];
 
-export const SubtleSelection = () => {
+export const SingleSelectControlled = () => {
+  const [selectedRows, setSelectedRows] = React.useState(
+    () => new Set<RowId>([1]),
+  );
   const {
     getRows,
-    selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+    selection: { toggleRow, isRowSelected },
   } = useTable(
     {
       columns,
@@ -113,8 +119,9 @@ export const SubtleSelection = () => {
     },
     [
       useSelection({
-        selectionMode: 'multiselect',
-        defaultSelectedItems: new Set([0, 1]),
+        selectionMode: 'single',
+        selectedItems: selectedRows,
+        onSelectionChange: setSelectedRows,
       }),
     ],
   );
@@ -130,17 +137,13 @@ export const SubtleSelection = () => {
     selected: isRowSelected(row.rowId),
   }));
 
-  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell
-            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            onClick={toggleAllRows}
-          />
+          <TableSelectionCell type="radio" hidden />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
@@ -149,8 +152,14 @@ export const SubtleSelection = () => {
       </TableHeader>
       <TableBody {...keyboardNavAttr}>
         {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell tabIndex={0} subtle checked={selected} />
+          <TableRow
+            key={item.file.label}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
+            aria-selected={selected}
+            appearance={selected ? 'neutral' : 'none'}
+          >
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

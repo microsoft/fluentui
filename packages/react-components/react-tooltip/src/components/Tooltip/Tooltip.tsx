@@ -8,7 +8,7 @@ import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 /**
  * A tooltip provides light weight contextual information on top of its target element.
  */
-export const Tooltip: React.FC<TooltipProps> & FluentTriggerComponent = props => {
+export const Tooltip: React.FC<TooltipProps> = props => {
   const state = useTooltip_unstable(props);
 
   useTooltipStyles_unstable(state);
@@ -16,4 +16,5 @@ export const Tooltip: React.FC<TooltipProps> & FluentTriggerComponent = props =>
 };
 
 Tooltip.displayName = 'Tooltip';
-Tooltip.isFluentTriggerComponent = true;
+// type casting here is required to ensure internal type FluentTriggerComponent is not leaked
+(Tooltip as FluentTriggerComponent).isFluentTriggerComponent = true;
