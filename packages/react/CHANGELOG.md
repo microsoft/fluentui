@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 28 Oct 2022 07:45:07 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 07:45:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.99.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.1)
+
+Mon, 31 Oct 2022 07:45:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.99.0..@fluentui/react_v8.99.1)
+
+### Patches
+
+- chore: Reducing bundle size of Stack by moving selector used in multiple places to local const. ([PR #25429](https://github.com/microsoft/fluentui/pull/25429) by humberto_makoto@hotmail.com)
 
 ## [8.99.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.0)
 

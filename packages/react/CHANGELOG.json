@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 07:45:40 GMT",
+      "tag": "@fluentui/react_v8.99.1",
+      "version": "8.99.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "aa6aca3508e3578b5182d82be8173a42eb17d906",
+            "comment": "chore: Reducing bundle size of Stack by moving selector used in multiple places to local const."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Oct 2022 07:45:07 GMT",
       "tag": "@fluentui/react_v8.99.0",
       "version": "8.99.0",

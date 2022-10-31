@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Reducing bundle size of Stack by moving selector used in multiple places to local const.",
-  "packageName": "@fluentui/react",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}
