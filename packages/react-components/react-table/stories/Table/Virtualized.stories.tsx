@@ -1,3 +1,5 @@
+import { Virtualizer, VirtualizerFlow } from '@fluentui/virtualizer'; // TODO: Add this to react-components export?
+
 import * as React from 'react';
 import {
   FolderRegular,
@@ -8,19 +10,43 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { Virtualizer, VirtualizerFlow } from '@fluentui/virtualizer'; // TODO: Add this to react-components export?
-import { ReactNode, useRef } from 'react';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
+import { useTable, ColumnDefinition, ColumnId, useSort } from '../../hooks';
+import { TableCellLayout } from '../../components/TableCellLayout/TableCellLayout';
 
-const repeatCount = 25;
-const largeSize = 250;
-const smallSize = 100;
-const isVertical = true;
+type FileCell = {
+  label: string;
+  icon: JSX.Element;
+};
 
-const items = [
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
-    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdated: { label: '7h ago', timestamp: 3 },
     lastUpdate: {
       label: 'You edited this',
       icon: <EditRegular />,
@@ -47,7 +73,7 @@ const items = [
   {
     file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
     author: { label: 'Jane Doe', status: 'offline' },
-    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 1 },
     lastUpdate: {
       label: 'You shared this in a Teams chat',
       icon: <PeopleRegular />,
@@ -55,50 +81,117 @@ const items = [
   },
 ];
 
-const generateContent = () => {
-  const contentList: ReactNode[] = [];
+const repeatCount = 25;
+const generateContent = (): Item[] => {
+  const contentList: Item[] = [];
   for (let i = 0; i < repeatCount; i++) {
     items.forEach((item, index) => {
-      const isEven = index % 2 === 0;
-      contentList.push(
-        <div
-          style={{
-            height: isVertical ? (isEven ? largeSize : smallSize) : '100%',
-            width: isVertical ? '100%' : isEven ? largeSize : smallSize,
-            minHeight: smallSize,
-            backgroundColor: isEven ? 'black' : 'white',
-            color: isEven ? 'white' : 'black',
-            justifyContent: 'center',
-            alignItems: 'center',
-            display: 'flex',
-            padding: '8px',
-          }}
-          key={`item-${i}-${index}`}
-        >{`${item.file.label}-${item.author.label}-${i}`}</div>,
-      );
+      const newItem: Item = {
+        file: { ...item.file },
+        author: { ...item.author },
+        lastUpdated: { ...item.lastUpdated },
+        lastUpdate: { ...item.lastUpdate },
+      };
+      // Update labels to make unique
+      newItem.author.label = `${newItem.author.label}-${i}-${index}`;
+      newItem.file.label = `${newItem.file.label}-${i}-${index}`;
+      newItem.lastUpdate.label = `${newItem.lastUpdate.label}-${i}-${index}`;
+      newItem.lastUpdated.label = `${newItem.lastUpdated.label}-${i}-${index}`;
+      contentList.push(newItem);
     });
   }
   return contentList;
 };
 
-const getSizeOfChild = (target: ReactNode, index: number) => {
-  return index % 2 === 0 ? largeSize : smallSize;
-};
+const fullItemList: Item[] = generateContent();
+
+const columns: ColumnDefinition<Item>[] = [
+  {
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+  },
+  {
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+  },
+  {
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+  },
+  {
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+  },
+];
 
 export const Virtualized = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const vFlow = isVertical ? VirtualizerFlow.Vertical : VirtualizerFlow.Horizontal;
+  const {
+    getRows,
+    sort: { getSortDirection, toggleColumnSort, sort },
+  } = useTable(
+    {
+      columns,
+      items: fullItemList,
+    },
+    [useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
+  );
+
+  const headerSortProps = (columnId: ColumnId) => ({
+    onClick: () => {
+      toggleColumnSort(columnId);
+    },
+    sortDirection: getSortDirection(columnId),
+  });
+
+  const rows = sort(getRows());
+
   return (
-    <div style={{ height: '500px', overflowY: 'auto', paddingRight: '20px' }} ref={containerRef}>
-      <Virtualizer
-        scrollViewRef={containerRef}
-        flow={vFlow}
-        virtualizerLength={25}
-        itemSize={50}
-        sizeOfChild={getSizeOfChild}
-      >
-        {generateContent()}
-      </Virtualizer>
-    </div>
+    <Table sortable>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <Virtualizer
+          // scrollViewRef={containerRef}
+          flow={VirtualizerFlow.Vertical}
+          virtualizerLength={25}
+          itemSize={44}
+        >
+          {rows.map(({ item }) => (
+            <TableRow key={item.file.label}>
+              <TableCell>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+              </TableCell>
+              <TableCell>
+                <TableCellLayout
+                  media={
+                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  }
+                >
+                  {item.author.label}
+                </TableCellLayout>
+              </TableCell>
+              <TableCell>{item.lastUpdated.label}</TableCell>
+              <TableCell>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+              </TableCell>
+            </TableRow>
+          ))}
+        </Virtualizer>
+      </TableBody>
+    </Table>
   );
 };

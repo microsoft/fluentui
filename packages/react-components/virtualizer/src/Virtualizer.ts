@@ -9,8 +9,8 @@ import { renderVirtualizer_unstable } from './renderVirtualizer';
 /**
  * Virtualizer wrapper to contain logic within a single component.
  */
-export const Virtualizer: ForwardRefComponent<VirtualizerProps> = React.forwardRef((props, ref) => {
-  const state = useVirtualizer_unstable(props, ref);
+export const Virtualizer: React.FC<VirtualizerProps> = React.forwardRef(props => {
+  const state = useVirtualizer_unstable(props);
   useVirtualizerStyles_unstable(state);
 
   return renderVirtualizer_unstable(state);

@@ -4,10 +4,9 @@ import { VirtualizerFlow, VirtualizerSlots, VirtualizerState } from './Virtualiz
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const { slots, slotProps } = getSlots<VirtualizerSlots>(state);
-  const { isReversed, flow, beforeBufferHeight, afterBufferHeight, totalVirtualizerHeight, bufferSize } = state;
+  const { isReversed, flow, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
 
   const isVertical = flow === VirtualizerFlow.Vertical;
-  const totalHeightPx = totalVirtualizerHeight + 'px';
   const beforeHeightPx = beforeBufferHeight + 'px';
   const afterHeightPx = afterBufferHeight + 'px';
   const beforeBufferHeightPx = beforeBufferHeight + bufferSize + 'px';
@@ -36,12 +35,6 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
     ...(isReversed && !isVertical && { right: bottomPosPx }),
   };
 
-  // We need to define the dynamically changing height styles to match virtualization index.
-  const containerStyle = {
-    height: isVertical ? totalHeightPx : '100%',
-    width: isVertical ? '100%' : totalHeightPx,
-  };
-
   const beforeStyle = {
     height: isVertical ? beforeBufferHeightPx : '100%',
     width: isVertical ? '100%' : beforeBufferHeightPx,
@@ -65,7 +58,7 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   };
 
   return (
-    <slots.root style={containerStyle} {...slotProps.root}>
+    <React.Fragment>
       {/* The 'before' bookend to hold items in place and detect scroll previous */}
       <slots.beforeContainer style={beforeContainerStyle} {...slotProps.beforeContainer}>
         <slots.before style={beforeStyle} {...slotProps.before} />
@@ -76,6 +69,6 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
       <slots.afterContainer style={afterContainerStyle} {...slotProps.afterContainer}>
         <slots.after style={afterStyle} {...slotProps.after} />
       </slots.afterContainer>
-    </slots.root>
+    </React.Fragment>
   );
 };

@@ -5,9 +5,9 @@ import * as React from 'react';
 
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 import { VirtualizerFlow } from './Virtualizer.types';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 
-export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<HTMLElement>): VirtualizerState {
+export function useVirtualizer_unstable(props: React.PropsWithChildren<VirtualizerProps>): VirtualizerState {
   const {
     children,
     sizeOfChild,
@@ -325,17 +325,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps, ref: React.Ref<
 
   return {
     components: {
-      root: 'div',
       before: 'div',
       after: 'div',
       beforeContainer: 'div',
       afterContainer: 'div',
     },
     virtualizedChildren: generateRows(),
-    root: getNativeElementProps('div', {
-      ...props,
-      ref,
-    }),
     before: resolveShorthand(props.before ?? { as: 'div' }, {
       defaultProps: {
         ref: setBeforeRef,
