@@ -12,7 +12,7 @@ const commonToggleBeforeStyles = v => ({
   borderRadius: '50%',
   width: v.toggleIndicatorSize,
   height: v.toggleIndicatorSize,
-  transition: 'margin .3s ease',
+  transition: 'margin .2s ease',
 });
 
 export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxVariables> = {
