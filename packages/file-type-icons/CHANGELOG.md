@@ -1,8 +1,143 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.10](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.10)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.9..@uifabric/file-type-icons_v7.10.10)
+
+### Patches
+
+- Bump @uifabric/styling to v7.25.1 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.10.9](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.9)
+
+Fri, 28 Oct 2022 12:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.8..@uifabric/file-type-icons_v7.10.9)
+
+### Patches
+
+- feat: Add support for the wbtx whiteboard file extension (#25346) ([PR #25423](https://github.com/microsoft/fluentui/pull/25423) by 51342814+jieleiwang@users.noreply.github.com)
+
+## [7.10.8](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.8)
+
+Thu, 20 Oct 2022 12:24:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.7..@uifabric/file-type-icons_v7.10.8)
+
+### Patches
+
+- Fix mapping for Stream video filetype, updated CDN url ([PR #25305](https://github.com/microsoft/fluentui/pull/25305) by caperez@microsoft.com)
+
+## [7.10.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.7)
+
+Tue, 04 Oct 2022 18:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.6..@uifabric/file-type-icons_v7.10.7)
+
+### Patches
+
+- Bump @uifabric/styling to v7.25.0 ([PR #25064](https://github.com/microsoft/fluentui/pull/25064) by gcox@microsoft.com)
+
+## [7.10.6](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.6)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.5..@uifabric/file-type-icons_v7.10.6)
+
+### Patches
+
+- Bump @uifabric/styling to v7.24.0 ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
+
+## [7.10.5](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.5)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.4..@uifabric/file-type-icons_v7.10.5)
+
+### Patches
+
+- Bump @uifabric/styling to v7.23.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [7.10.4](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.4)
+
+Thu, 29 Sep 2022 12:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.3..@uifabric/file-type-icons_v7.10.4)
+
+### Patches
+
+- Bump @uifabric/styling to v7.23.0 ([PR #24998](https://github.com/microsoft/fluentui/pull/24998) by gcox@microsoft.com)
+
+## [7.10.3](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.3)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.2..@uifabric/file-type-icons_v7.10.3)
+
+### Patches
+
+- Bump @uifabric/styling to v7.22.3 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [7.10.2](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.2)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.1..@uifabric/file-type-icons_v7.10.2)
+
+### Patches
+
+- Patch bump file-type-icons ([PR #24649](https://github.com/microsoft/fluentui/pull/24649) by gcox@microsoft.com)
+
+## [7.10.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.1)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.9.3..@uifabric/file-type-icons_v7.10.1)
+
+### Patches
+
+- Update to use latest responsive SVGs in Fabric CDN for filetypes, fixing mapping of .classifier icon ([PR #24531](https://github.com/microsoft/fluentui/pull/24531) by caperez@microsoft.com)
+
+## [7.9.3](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.3)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.9.2..@uifabric/file-type-icons_v7.9.3)
+
+### Patches
+
+- Bump @uifabric/styling to v7.22.0 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+
+## [7.9.2](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.2)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.9.1..@uifabric/file-type-icons_v7.9.2)
+
+### Patches
+
+- Bump @uifabric/styling to v7.21.3 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.9.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.1)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.9.0..@uifabric/file-type-icons_v7.9.1)
+
+### Patches
+
+- Bump @uifabric/styling to v7.21.2 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.0)
+
+Fri, 05 Aug 2022 12:21:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.11..@uifabric/file-type-icons_v7.9.0)
+
+### Minor changes
+
+- Update to UIFabric (v7 Branch) to pick up latest filetype icon system. Here's the changes: - New icontype 'loop' to align to the brand (keeping 'fluid' around since it's still referenced). - Renaming the KFM folders (currently un-referenced) so their names are correct. - Cleanup of video, stream, audio icons to align to one brand. - Replacing the icon-generation pipeline from Adobe Illustrator to Figma. - Adding 20x1.5 and 64 sized icons that were previously missing (thanks to new Figma workflow!) ([PR #24188](https://github.com/microsoft/fluentui/pull/24188) by caperez@microsoft.com)
+
+## [7.8.11](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.11)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.10..@uifabric/file-type-icons_v7.8.11)
+
+### Patches
+
+- Bump @uifabric/styling to v7.21.1 ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
 
 ## [7.8.10](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.10)
 

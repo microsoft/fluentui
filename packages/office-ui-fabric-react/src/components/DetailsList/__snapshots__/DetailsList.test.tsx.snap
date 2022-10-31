@@ -98,7 +98,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone276"
+            data-focuszone-id="FocusZone319"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -139,7 +139,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection277"
+                        id="GroupedListSection320"
                         role="rowgroup"
                       >
                         <div
@@ -210,7 +210,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection278"
+                        id="GroupedListSection321"
                         role="rowgroup"
                       >
                         <div
@@ -364,7 +364,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone276"
+            data-focuszone-id="FocusZone319"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -405,7 +405,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection277"
+                        id="GroupedListSection320"
                         role="rowgroup"
                       >
                         <div
@@ -484,7 +484,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection278"
+                        id="GroupedListSection321"
                         role="rowgroup"
                       >
                         <div
@@ -646,7 +646,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone265"
+            data-focuszone-id="FocusZone308"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -687,7 +687,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection266"
+                        id="GroupedListSection309"
                         role="rowgroup"
                       >
                         <div
@@ -748,7 +748,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection267"
+                        id="GroupedListSection310"
                         role="rowgroup"
                       >
                         <div
@@ -809,7 +809,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection268"
+                        id="GroupedListSection311"
                         role="rowgroup"
                       >
                         <div
@@ -870,7 +870,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection269"
+                        id="GroupedListSection312"
                         role="rowgroup"
                       >
                         <div
@@ -1014,7 +1014,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone265"
+            data-focuszone-id="FocusZone308"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1055,7 +1055,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection266"
+                        id="GroupedListSection309"
                         role="rowgroup"
                       >
                         <div
@@ -1116,7 +1116,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection267"
+                        id="GroupedListSection310"
                         role="rowgroup"
                       >
                         <div
@@ -1177,7 +1177,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection268"
+                        id="GroupedListSection311"
                         role="rowgroup"
                       >
                         <div
@@ -1238,7 +1238,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection269"
+                        id="GroupedListSection312"
                         role="rowgroup"
                       >
                         <div
@@ -1382,7 +1382,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone265"
+            data-focuszone-id="FocusZone308"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1423,7 +1423,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection272"
+                        id="GroupedListSection315"
                         role="rowgroup"
                       >
                         <div
@@ -1502,7 +1502,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection273"
+                        id="GroupedListSection316"
                         role="rowgroup"
                       >
                         <div
@@ -1664,7 +1664,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone265"
+            data-focuszone-id="FocusZone308"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1705,7 +1705,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection272"
+                        id="GroupedListSection315"
                         role="rowgroup"
                       >
                         <div
@@ -1784,7 +1784,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection273"
+                        id="GroupedListSection316"
                         role="rowgroup"
                       >
                         <div
@@ -2113,7 +2113,7 @@ exports[`DetailsList renders List correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -2156,7 +2156,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -3098,7 +3098,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -3141,7 +3141,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -4299,7 +4299,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -4342,7 +4342,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -5285,7 +5285,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -5328,7 +5328,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -6270,7 +6270,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -6313,7 +6313,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -8091,7 +8091,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={0}
+                        data-selection-span={2}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -8190,6 +8191,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -8228,7 +8230,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader58"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -8945,7 +8949,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={2}
+                        data-selection-span={3}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -9044,6 +9049,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -9082,7 +9088,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader60"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>

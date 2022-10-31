@@ -1,8 +1,147 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.5](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.9.5)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.9.4..@uifabric/icons_v7.9.5)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.2 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.9.4](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.9.4)
+
+Tue, 04 Oct 2022 18:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.9.3..@uifabric/icons_v7.9.4)
+
+### Patches
+
+- Bump @uifabric/styling to v7.25.0 ([PR #25064](https://github.com/microsoft/fluentui/pull/25064) by gcox@microsoft.com)
+
+## [7.9.3](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.9.3)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.9.2..@uifabric/icons_v7.9.3)
+
+### Patches
+
+- Bump @uifabric/styling to v7.24.0 ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
+
+## [7.9.2](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.9.2)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.9.1..@uifabric/icons_v7.9.2)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [7.9.1](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.9.1)
+
+Thu, 29 Sep 2022 12:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.9.0..@uifabric/icons_v7.9.1)
+
+### Patches
+
+- Bump @uifabric/styling to v7.23.0 ([PR #24998](https://github.com/microsoft/fluentui/pull/24998) by gcox@microsoft.com)
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.9.0)
+
+Tue, 27 Sep 2022 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.8.6..@uifabric/icons_v7.9.0)
+
+### Minor changes
+
+- Added IconNamesInput to exports ([PR #24954](https://github.com/microsoft/fluentui/pull/24954) by gcox@microsoft.com)
+
+## [7.8.6](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.6)
+
+Tue, 06 Sep 2022 20:18:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.8.4..@uifabric/icons_v7.8.6)
+
+### Patches
+
+- Force syncing icon versions ([PR #24673](https://github.com/microsoft/fluentui/pull/24673) by gcox@microsoft.com)
+
+## [7.8.4](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.4)
+
+Fri, 02 Sep 2022 21:05:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.8.3..@uifabric/icons_v7.8.4)
+
+### Patches
+
+- Bump icons version without bumping font-icons-mdl2 ([PR #24656](https://github.com/microsoft/fluentui/pull/24656) by gcox@microsoft.com)
+
+## [7.8.3](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.3)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.8.2..@uifabric/icons_v7.8.3)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.0 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [7.8.2](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.2)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.8.1..@uifabric/icons_v7.8.2)
+
+### Patches
+
+- Patch bumping to match font-icons-mdl2 ([PR #24649](https://github.com/microsoft/fluentui/pull/24649) by gcox@microsoft.com)
+
+## [7.8.1](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.1)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.8.0..@uifabric/icons_v7.8.1)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.1 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [7.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.8.0)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.7.6..@uifabric/icons_v7.8.0)
+
+### Minor changes
+
+- Bumping version to match font-icons-mdl2 ([PR #24590](https://github.com/microsoft/fluentui/pull/24590) by gcox@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/styling to v7.22.0 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+
+## [7.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.7.6)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.7.5..@uifabric/icons_v7.7.6)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.7.5](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.7.5)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.7.4..@uifabric/icons_v7.7.5)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.35.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.7.4)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.7.3..@uifabric/icons_v7.7.4)
+
+### Patches
+
+- Bump @uifabric/styling to v7.21.1 ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
 
 ## [7.7.3](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.7.3)
 

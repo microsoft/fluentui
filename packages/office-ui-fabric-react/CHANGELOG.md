@@ -1,8 +1,270 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.199.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.5)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.4..office-ui-fabric-react_v7.199.5)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.16 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.199.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.4)
+
+Wed, 12 Oct 2022 12:22:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.3..office-ui-fabric-react_v7.199.4)
+
+### Patches
+
+- Ensure toggling group state does not select it ([PR #25149](https://github.com/microsoft/fluentui/pull/25149) by seanmonahan@microsoft.com)
+
+## [7.199.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.3)
+
+Tue, 04 Oct 2022 18:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.2..office-ui-fabric-react_v7.199.3)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.15 ([PR #25064](https://github.com/microsoft/fluentui/pull/25064) by gcox@microsoft.com)
+
+## [7.199.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.2)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.1..office-ui-fabric-react_v7.199.2)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.14 ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
+
+## [7.199.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.1)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.0..office-ui-fabric-react_v7.199.1)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.13 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [7.199.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.0)
+
+Fri, 30 Sep 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.198.2..office-ui-fabric-react_v7.199.0)
+
+### Minor changes
+
+- chore: Added PivotLinkFormatType and PivotLinkSizeType. ([PR #25019](https://github.com/microsoft/fluentui/pull/25019) by gcox@microsoft.com)
+
+### Patches
+
+- chore: Add Viewport file to export withViewport decorator ([PR #25002](https://github.com/microsoft/fluentui/pull/25002) by mgodbolt@microsoft.com)
+
+## [7.198.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.198.2)
+
+Thu, 29 Sep 2022 12:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.198.1..office-ui-fabric-react_v7.198.2)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.12 ([PR #24998](https://github.com/microsoft/fluentui/pull/24998) by gcox@microsoft.com)
+
+## [7.198.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.198.1)
+
+Tue, 27 Sep 2022 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.198.0..office-ui-fabric-react_v7.198.1)
+
+### Patches
+
+- Bump @uifabric/icons to v7.9.0 ([PR #24954](https://github.com/microsoft/fluentui/pull/24954) by gcox@microsoft.com)
+
+## [7.198.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.198.0)
+
+Fri, 23 Sep 2022 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.6..office-ui-fabric-react_v7.198.0)
+
+### Minor changes
+
+- fix: Export useResponsiveMode ([PR #24909](https://github.com/microsoft/fluentui/pull/24909) by mgodbolt@microsoft.com)
+
+## [7.197.6](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.6)
+
+Tue, 06 Sep 2022 20:18:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.5..office-ui-fabric-react_v7.197.6)
+
+### Patches
+
+- Bump @uifabric/icons to v7.8.6 ([PR #24673](https://github.com/microsoft/fluentui/pull/24673) by gcox@microsoft.com)
+
+## [7.197.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.5)
+
+Fri, 02 Sep 2022 21:05:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.4..office-ui-fabric-react_v7.197.5)
+
+### Patches
+
+- Bump @uifabric/icons to v7.8.4 ([PR #24656](https://github.com/microsoft/fluentui/pull/24656) by gcox@microsoft.com)
+
+## [7.197.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.4)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.3..office-ui-fabric-react_v7.197.4)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.11 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [7.197.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.3)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.2..office-ui-fabric-react_v7.197.3)
+
+### Patches
+
+- fix: v7 fabric port: remove explicit readonly semantics from Calendar grid ([PR #24601](https://github.com/microsoft/fluentui/pull/24601) by sarah.higley@microsoft.com)
+
+## [7.197.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.2)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.1..office-ui-fabric-react_v7.197.2)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.9 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [7.197.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.1)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.197.0..office-ui-fabric-react_v7.197.1)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.8 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+
+## [7.197.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.0)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.196.0..office-ui-fabric-react_v7.197.0)
+
+### Minor changes
+
+- Fix backwards-compatibility of Group Selection additions (#24554) ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/foundation to v7.10.7 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/icons to v7.7.6 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @fluentui/react-focus to v7.18.8 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/react-hooks to v7.15.2 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/styling to v7.21.3 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.196.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.196.0)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.195.0..office-ui-fabric-react_v7.196.0)
+
+### Minor changes
+
+- Added exports to pickers ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+- Added exports for textfield styles ([PR #24510](https://github.com/microsoft/fluentui/pull/24510) by gcox@microsoft.com)
+- Added exports for GroupedList utilities in v7 ([PR #24514](https://github.com/microsoft/fluentui/pull/24514) by gcox@microsoft.com)
+
+## [7.195.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.195.0)
+
+Wed, 24 Aug 2022 17:07:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.194.0..office-ui-fabric-react_v7.195.0)
+
+### Minor changes
+
+- Added exports for ContextualMenu getItemStyles and getItemClassNames to v8 (#24484) ([PR #24493](https://github.com/microsoft/fluentui/pull/24493) by gcox@microsoft.com)
+- Added exports from Layer ([PR #24495](https://github.com/microsoft/fluentui/pull/24495) by gcox@microsoft.com)
+
+## [7.194.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.194.0)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.193.0..office-ui-fabric-react_v7.194.0)
+
+### Minor changes
+
+- Added getStyles exports for details list components ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+- Exported getActivityItemStyles and getActivityItemClassNames ([PR #24473](https://github.com/microsoft/fluentui/pull/24473) by gcox@microsoft.com)
+- Export getCommandBarStyles and getCommandButtonStyles ([PR #24476](https://github.com/microsoft/fluentui/pull/24476) by gcox@microsoft.com)
+
+## [7.193.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.193.0)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.191.0..office-ui-fabric-react_v7.193.0)
+
+### Minor changes
+
+- Standardize selection behavior of Groups in SelectionZone (#24278) ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.35.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+- Bump @uifabric/foundation to v7.10.6 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+- Bump @uifabric/icons to v7.7.5 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+- Bump @fluentui/react-focus to v7.18.7 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+- Bump @uifabric/react-hooks to v7.15.1 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+- Bump @uifabric/styling to v7.21.2 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.191.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.191.0)
+
+Fri, 29 Jul 2022 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.190.3..office-ui-fabric-react_v7.191.0)
+
+### Minor changes
+
+- chore: Added exports for decorators missing from v7. ([PR #24097](https://github.com/microsoft/fluentui/pull/24097) by gcox@microsoft.com)
+- chore: Added exports for decorators missing from v7. ([PR #24097](https://github.com/microsoft/fluentui/pull/24097) by gcox@microsoft.com)
+
+## [7.190.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.3)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.190.2..office-ui-fabric-react_v7.190.3)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.5 ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
+
+## [7.190.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.2)
+
+Tue, 26 Jul 2022 12:27:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.190.1..office-ui-fabric-react_v7.190.2)
+
+### Patches
+
+- Update SelectionZone to support disallowing behaviors (#23848) ([PR #24069](https://github.com/microsoft/fluentui/pull/24069) by tmichon@microsoft.com)
+
+## [7.190.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.1)
+
+Mon, 25 Jul 2022 12:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.190.0..office-ui-fabric-react_v7.190.1)
+
+### Patches
+
+- fix: Remove explicit readonly semantics from Calendar grid. ([PR #23990](https://github.com/microsoft/fluentui/pull/23990) by sarah.higley@microsoft.com)
+
+## [7.190.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.0)
+
+Tue, 19 Jul 2022 12:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.189.1..office-ui-fabric-react_v7.190.0)
+
+### Minor changes
+
+- feat: adds keyboard overrides to SelectionZone and DetailsList ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
+
+## [7.189.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.189.1)
+
+Fri, 15 Jul 2022 12:21:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.189.0..office-ui-fabric-react_v7.189.1)
+
+### Patches
+
+- fix: Handle when FocusTrapZone wraps an iframe ([PR #23893](https://github.com/microsoft/fluentui/pull/23893) by cqc@cuiqingcai.com)
 
 ## [7.189.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.189.0)
 

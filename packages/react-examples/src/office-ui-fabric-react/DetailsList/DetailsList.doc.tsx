@@ -47,6 +47,9 @@ const DetailsListShimmerExampleCode = require('!raw-loader!@fluentui/react-examp
 import { DetailsListCustomFooterExample } from './DetailsList.CustomFooter.Example';
 const DetailsListCustomFooterExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/DetailsList/DetailsList.CustomFooter.Example.tsx') as string;
 
+import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverrides.Example';
+const DetailsListKeyboardOverridesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/office-ui-fabric-react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
+
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
@@ -162,4 +165,10 @@ export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
   title: 'Rendering custom DetailsList footer',
   code: DetailsListCustomFooterExampleCode,
   view: <DetailsListCustomFooterExample />,
+});
+
+export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
+  title: 'Keyboard overrides for selection',
+  code: DetailsListKeyboardOverridesExampleCode,
+  view: <DetailsListKeyboardOverridesExample />,
 });

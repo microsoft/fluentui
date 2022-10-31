@@ -2,6 +2,524 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "office-ui-fabric-react_v7.199.5",
+      "version": "7.199.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.16",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Oct 2022 12:22:45 GMT",
+      "tag": "office-ui-fabric-react_v7.199.4",
+      "version": "7.199.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure toggling group state does not select it",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "d05569d8499d95588dc54bbac5b5f414824480fc",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 18:13:33 GMT",
+      "tag": "office-ui-fabric-react_v7.199.3",
+      "version": "7.199.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.15",
+            "author": "gcox@microsoft.com",
+            "commit": "cbcc767fb704968a387823e2e9bf70d147809ad4",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 12:23:16 GMT",
+      "tag": "office-ui-fabric-react_v7.199.2",
+      "version": "7.199.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.14",
+            "author": "gcox@microsoft.com",
+            "commit": "c87f7ca5ac04d105c94f61f86e8885047133e417",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "office-ui-fabric-react_v7.199.1",
+      "version": "7.199.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.13",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 12:22:39 GMT",
+      "tag": "office-ui-fabric-react_v7.199.0",
+      "version": "7.199.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "chore: Add Viewport file to export withViewport decorator",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "211ec05b1715aa9d98dd319f9b68279aec300c04",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "chore: Added PivotLinkFormatType and PivotLinkSizeType.",
+            "author": "gcox@microsoft.com",
+            "commit": "62571bb47be2b38a0e3a0e30b274c4a7ac9c8d18",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Sep 2022 12:30:34 GMT",
+      "tag": "office-ui-fabric-react_v7.198.2",
+      "version": "7.198.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.12",
+            "author": "gcox@microsoft.com",
+            "commit": "329cfaed40945b42efc4d15ffdb2746c81c6abb3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Sep 2022 12:23:24 GMT",
+      "tag": "office-ui-fabric-react_v7.198.1",
+      "version": "7.198.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/icons to v7.9.0",
+            "author": "gcox@microsoft.com",
+            "commit": "3eba12292d9a694b271cd3b3c7459d5e46d9c0a0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Sep 2022 12:27:02 GMT",
+      "tag": "office-ui-fabric-react_v7.198.0",
+      "version": "7.198.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: Export useResponsiveMode",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "0e88bb528204cdce2ae272d0572f0d0f0983b351",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Sep 2022 20:18:55 GMT",
+      "tag": "office-ui-fabric-react_v7.197.6",
+      "version": "7.197.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/icons to v7.8.6",
+            "author": "gcox@microsoft.com",
+            "commit": "824b51b60a37c0348006e564ab8b5bf5b77170bf",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 21:05:10 GMT",
+      "tag": "office-ui-fabric-react_v7.197.5",
+      "version": "7.197.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/icons to v7.8.4",
+            "author": "gcox@microsoft.com",
+            "commit": "7cb21990ded4cf86abd7fc7bf1d0e2e79793c2d3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 18:25:04 GMT",
+      "tag": "office-ui-fabric-react_v7.197.4",
+      "version": "7.197.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.11",
+            "author": "gcox@microsoft.com",
+            "commit": "26cac141351b351aadd175f37ef0e0030bdd698e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "office-ui-fabric-react_v7.197.3",
+      "version": "7.197.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: v7 fabric port: remove explicit readonly semantics from Calendar grid",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b4b0a094e6b32fa8731e8257e677d4eaa78c6ccb",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "office-ui-fabric-react_v7.197.2",
+      "version": "7.197.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.9",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 19:01:23 GMT",
+      "tag": "office-ui-fabric-react_v7.197.1",
+      "version": "7.197.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.8",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "office-ui-fabric-react_v7.197.0",
+      "version": "7.197.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fix backwards-compatibility of Group Selection additions (#24554)",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.7",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.8",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.2",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.21.3",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 22:39:29 GMT",
+      "tag": "office-ui-fabric-react_v7.196.0",
+      "version": "7.196.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added exports to pickers",
+            "author": "gcox@microsoft.com",
+            "commit": "d646713bd4da0335f880e0a1ea00873fb8f3a519",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Added exports for textfield styles",
+            "author": "gcox@microsoft.com",
+            "commit": "a5af77d9f41e3443cfe0e5ab6b4dbcae8dcbc1d6",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Added exports for GroupedList utilities in v7",
+            "author": "gcox@microsoft.com",
+            "commit": "b09c7757541d44887928f6b811689305819f2a06",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 17:07:21 GMT",
+      "tag": "office-ui-fabric-react_v7.195.0",
+      "version": "7.195.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added exports for ContextualMenu getItemStyles and getItemClassNames to v8 (#24484)",
+            "author": "gcox@microsoft.com",
+            "commit": "759a19808120e0eed325ede1fd38ec175eec12fc",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Added exports from Layer",
+            "author": "gcox@microsoft.com",
+            "commit": "40fce200fa8bb93bd5171c3d1d5996bfec1e8407",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 12:24:20 GMT",
+      "tag": "office-ui-fabric-react_v7.194.0",
+      "version": "7.194.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added getStyles exports for details list components",
+            "author": "gcox@microsoft.com",
+            "commit": "d35595a956fbff6174b7d72c0ba232e28b4f8cbe",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Exported getActivityItemStyles and getActivityItemClassNames",
+            "author": "gcox@microsoft.com",
+            "commit": "0bc3300f373be2f596cab45bb319cc4afb09c082",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Export getCommandBarStyles and getCommandButtonStyles",
+            "author": "gcox@microsoft.com",
+            "commit": "540089254659311a7de9868c5fec570b72acda0d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Aug 2022 12:21:32 GMT",
+      "tag": "office-ui-fabric-react_v7.193.0",
+      "version": "7.193.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Standardize selection behavior of Groups in SelectionZone (#24278)",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.35.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.5",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.7",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.1",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.21.2",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Jul 2022 12:21:50 GMT",
+      "tag": "office-ui-fabric-react_v7.191.0",
+      "version": "7.191.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "chore: Added exports for decorators missing from v7.",
+            "author": "gcox@microsoft.com",
+            "commit": "b716ea148c4bd8a097e30b27bf7f4cd13c503628",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "chore: Added exports for decorators missing from v7.",
+            "author": "gcox@microsoft.com",
+            "commit": "b716ea148c4bd8a097e30b27bf7f4cd13c503628",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 12:27:44 GMT",
+      "tag": "office-ui-fabric-react_v7.190.3",
+      "version": "7.190.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snaps",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.5",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jul 2022 12:27:40 GMT",
+      "tag": "office-ui-fabric-react_v7.190.2",
+      "version": "7.190.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update SelectionZone to support disallowing behaviors (#23848)",
+            "author": "tmichon@microsoft.com",
+            "commit": "f25e5ac1f4a6155c1aacd3bf561a1d1b0d91e213",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 12:22:59 GMT",
+      "tag": "office-ui-fabric-react_v7.190.1",
+      "version": "7.190.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Remove explicit readonly semantics from Calendar grid.",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf31bb07e968a0385c644b394f86141e12ed940c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 12:21:01 GMT",
+      "tag": "office-ui-fabric-react_v7.190.0",
+      "version": "7.190.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: adds keyboard overrides to SelectionZone and DetailsList",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "4a5c25a3552854a1ff872092817ef38af55301c2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 12:21:53 GMT",
+      "tag": "office-ui-fabric-react_v7.189.1",
+      "version": "7.189.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Handle when FocusTrapZone wraps an iframe",
+            "author": "cqc@cuiqingcai.com",
+            "commit": "ebef2bb545a317d3997706a6e03010fc0798bad2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "office-ui-fabric-react_v7.189.0",
       "version": "7.189.0",

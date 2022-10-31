@@ -1,8 +1,116 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.16)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.15..@fluentui/react-theme-provider_v0.19.16)
+
+### Patches
+
+- Bump @fluentui/react-stylesheets to v0.2.9 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [0.19.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.15)
+
+Tue, 04 Oct 2022 18:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.14..@fluentui/react-theme-provider_v0.19.15)
+
+### Patches
+
+- Bump @uifabric/styling to v7.25.0 ([PR #25064](https://github.com/microsoft/fluentui/pull/25064) by gcox@microsoft.com)
+
+## [0.19.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.14)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.13..@fluentui/react-theme-provider_v0.19.14)
+
+### Patches
+
+- Bump @uifabric/styling to v7.24.0 ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
+
+## [0.19.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.13)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.12..@fluentui/react-theme-provider_v0.19.13)
+
+### Patches
+
+- Bump @fluentui/react-stylesheets to v0.2.8 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [0.19.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.12)
+
+Thu, 29 Sep 2022 12:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.11..@fluentui/react-theme-provider_v0.19.12)
+
+### Patches
+
+- Bump @uifabric/styling to v7.23.0 ([PR #24998](https://github.com/microsoft/fluentui/pull/24998) by gcox@microsoft.com)
+
+## [0.19.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.11)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.10..@fluentui/react-theme-provider_v0.19.11)
+
+### Patches
+
+- Bump @fluentui/react-compose to v0.19.22 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [0.19.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.10)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.9..@fluentui/react-theme-provider_v0.19.10)
+
+### Patches
+
+- Bump @fluentui/react-compose to v0.19.21 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+
+## [0.19.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.9)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.8..@fluentui/react-theme-provider_v0.19.9)
+
+### Patches
+
+- Bump @fluentui/react-stylesheets to v0.2.7 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [0.19.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.8)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.7..@fluentui/react-theme-provider_v0.19.8)
+
+### Patches
+
+- Bump @uifabric/styling to v7.22.0 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+
+## [0.19.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.7)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.6..@fluentui/react-theme-provider_v0.19.7)
+
+### Patches
+
+- Bump @fluentui/react-compose to v0.19.19 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [0.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.6)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.5..@fluentui/react-theme-provider_v0.19.6)
+
+### Patches
+
+- Bump @fluentui/react-compose to v0.19.18 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [0.19.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.5)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.19.4..@fluentui/react-theme-provider_v0.19.5)
+
+### Patches
+
+- Bump @uifabric/styling to v7.21.1 ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
 
 ## [0.19.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.19.4)
 

@@ -75,7 +75,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -114,7 +114,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -170,15 +170,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
-                  }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    position: relative;
                   }
               data-focuszone-id="FocusZone3"
               onFocus={[Function]}
@@ -188,181 +181,201 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             >
               <div
                 className=
-                    ms-OverflowSet-item
-                    {
-                      display: inherit;
-                      flex-shrink: 0;
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
                     }
-              >
-                <button
-                  aria-label="first selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={2}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #E5E5E5;
-                          background-image: ;
-                          border-color: #E5E5E5;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    first
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
                     }
+                data-focuszone-id="FocusZone4"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
               >
-                <button
-                  aria-label="second selected"
-                  aria-posinset={2}
-                  aria-selected={false}
-                  aria-setsize={2}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
-                  <div
+                  <button
+                    aria-label="first selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
                     className=
 
                         {
-                          background-color: #0078D4;
-                          background-image: ;
-                          border-color: #0078D4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078D4, #0078D4);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    second
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            background-image: ;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                >
+                  <button
+                    aria-label="second selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            background-image: ;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -397,7 +410,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -418,7 +431,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         >
           <g>
             <path
-              aria-labelledby="callout11"
+              aria-labelledby="callout13"
               className=
 
                   {
@@ -432,7 +445,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_12first20000"
+              id="_Pie_14first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -448,7 +461,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -457,7 +470,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           </g>
           <g>
             <path
-              aria-labelledby="callout11"
+              aria-labelledby="callout13"
               className=
 
                   {
@@ -471,7 +484,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_12second39000"
+              id="_Pie_14second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -487,7 +500,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -543,17 +556,10 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
                   }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    position: relative;
-                  }
-              data-focuszone-id="FocusZone14"
+              data-focuszone-id="FocusZone16"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -561,181 +567,201 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             >
               <div
                 className=
-                    ms-OverflowSet-item
-                    {
-                      display: inherit;
-                      flex-shrink: 0;
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
                     }
-              >
-                <button
-                  aria-label="first selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={2}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #E5E5E5;
-                          background-image: ;
-                          border-color: #E5E5E5;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    first
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
                     }
+                data-focuszone-id="FocusZone17"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
               >
-                <button
-                  aria-label="second selected"
-                  aria-posinset={2}
-                  aria-selected={false}
-                  aria-setsize={2}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
-                  <div
+                  <button
+                    aria-label="first selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
                     className=
 
                         {
-                          background-color: #0078D4;
-                          background-image: ;
-                          border-color: #0078D4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078D4, #0078D4);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    second
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            background-image: ;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                >
+                  <button
+                    aria-label="second selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            background-image: ;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -770,7 +796,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone7"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -791,7 +817,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout4"
+              aria-labelledby="callout5"
               className=
 
                   {
@@ -805,7 +831,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_5first20000"
+              id="_Pie_6first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -821,7 +847,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -830,7 +856,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout4"
+              aria-labelledby="callout5"
               className=
 
                   {
@@ -844,7 +870,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_5second39000"
+              id="_Pie_6second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -860,7 +886,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -901,7 +927,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -922,7 +948,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout7"
+              aria-labelledby="callout8"
               className=
 
                   {
@@ -936,7 +962,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_8first20000"
+              id="_Pie_9first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -952,7 +978,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -961,7 +987,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout7"
+              aria-labelledby="callout8"
               className=
 
                   {
@@ -975,7 +1001,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_8second39000"
+              id="_Pie_9second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -991,7 +1017,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -1047,17 +1073,10 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
                   }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    position: relative;
-                  }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1065,181 +1084,201 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             >
               <div
                 className=
-                    ms-OverflowSet-item
-                    {
-                      display: inherit;
-                      flex-shrink: 0;
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
                     }
-              >
-                <button
-                  aria-label="first selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={2}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #E5E5E5;
-                          background-image: ;
-                          border-color: #E5E5E5;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    first
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
                     }
+                data-focuszone-id="FocusZone12"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
               >
-                <button
-                  aria-label="second selected"
-                  aria-posinset={2}
-                  aria-selected={false}
-                  aria-setsize={2}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
-                  <div
+                  <button
+                    aria-label="first selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
                     className=
 
                         {
-                          background-color: #0078D4;
-                          background-image: ;
-                          border-color: #0078D4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078D4, #0078D4);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    second
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            background-image: ;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                >
+                  <button
+                    aria-label="second selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            background-image: ;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1274,7 +1313,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone20"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1295,7 +1334,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout15"
+              aria-labelledby="callout18"
               className=
 
                   {
@@ -1309,7 +1348,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_16first20000"
+              id="_Pie_19first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1325,7 +1364,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -1336,7 +1375,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout15"
+              aria-labelledby="callout18"
               className=
 
                   {
@@ -1350,7 +1389,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M0,0Z"
               data-is-focusable={true}
-              id="_Pie_16second39000"
+              id="_Pie_19second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1366,7 +1405,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -1424,17 +1463,10 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
                   }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    position: relative;
-                  }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone21"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1442,181 +1474,201 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             >
               <div
                 className=
-                    ms-OverflowSet-item
-                    {
-                      display: inherit;
-                      flex-shrink: 0;
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
                     }
-              >
-                <button
-                  aria-label="first selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={2}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #E5E5E5;
-                          background-image: ;
-                          border-color: #E5E5E5;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    first
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
                     }
+                data-focuszone-id="FocusZone22"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
               >
-                <button
-                  aria-label="second selected"
-                  aria-posinset={2}
-                  aria-selected={false}
-                  aria-setsize={2}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
-                  <div
+                  <button
+                    aria-label="first selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
                     className=
 
                         {
-                          background-color: #0078D4;
-                          background-image: ;
-                          border-color: #0078D4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078D4, #0078D4);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    second
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            background-image: ;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                >
+                  <button
+                    aria-label="second selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            background-image: ;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

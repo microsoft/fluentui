@@ -2,6 +2,123 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@uifabric/react-hooks_v7.16.4",
+      "version": "7.16.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/test-utilities to v7.3.5",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@uifabric/react-hooks_v7.16.3",
+      "version": "7.16.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/test-utilities to v7.3.4",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 18:25:04 GMT",
+      "tag": "@uifabric/react-hooks_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.0",
+            "author": "gcox@microsoft.com",
+            "commit": "26cac141351b351aadd175f37ef0e0030bdd698e",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "@uifabric/react-hooks_v7.16.1",
+      "version": "7.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.37.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/react-hooks_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/test-utilities to v7.3.3",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "Bump @fluentui/react-window-provider to v1.0.4",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.1",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "@uifabric/react-hooks_v7.15.2",
+      "version": "7.15.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Aug 2022 12:21:32 GMT",
+      "tag": "@uifabric/react-hooks_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.35.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "@uifabric/react-hooks_v7.15.0",
       "version": "7.15.0",

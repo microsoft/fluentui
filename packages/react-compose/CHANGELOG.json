@@ -2,6 +2,111 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@fluentui/react-compose_v0.19.24",
+      "version": "0.19.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.2",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@fluentui/react-compose_v0.19.23",
+      "version": "0.19.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.1",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 18:25:04 GMT",
+      "tag": "@fluentui/react-compose_v0.19.22",
+      "version": "0.19.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.0",
+            "author": "gcox@microsoft.com",
+            "commit": "26cac141351b351aadd175f37ef0e0030bdd698e",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "@fluentui/react-compose_v0.19.21",
+      "version": "0.19.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.37.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@fluentui/react-compose_v0.19.20",
+      "version": "0.19.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.1",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "@fluentui/react-compose_v0.19.19",
+      "version": "0.19.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Aug 2022 12:21:32 GMT",
+      "tag": "@fluentui/react-compose_v0.19.18",
+      "version": "0.19.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.35.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "@fluentui/react-compose_v0.19.17",
       "version": "0.19.17",

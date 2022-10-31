@@ -2,6 +2,411 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/merge-styles to v7.20.2",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Oct 2022 12:22:45 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.199.4",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "d05569d8499d95588dc54bbac5b5f414824480fc",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 18:13:33 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.25.0",
+            "author": "gcox@microsoft.com",
+            "commit": "cbcc767fb704968a387823e2e9bf70d147809ad4",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 12:23:16 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.24.0",
+            "author": "gcox@microsoft.com",
+            "commit": "c87f7ca5ac04d105c94f61f86e8885047133e417",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/merge-styles to v7.20.1",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 12:22:39 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.199.0",
+            "author": "gcox@microsoft.com",
+            "commit": "62571bb47be2b38a0e3a0e30b274c4a7ac9c8d18",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Sep 2022 12:30:34 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.23.0",
+            "author": "gcox@microsoft.com",
+            "commit": "329cfaed40945b42efc4d15ffdb2746c81c6abb3",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Sep 2022 12:23:24 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.198.1",
+            "author": "gcox@microsoft.com",
+            "commit": "3eba12292d9a694b271cd3b3c7459d5e46d9c0a0",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Sep 2022 12:27:02 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.198.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "0e88bb528204cdce2ae272d0572f0d0f0983b351",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Sep 2022 20:18:55 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.6",
+            "author": "gcox@microsoft.com",
+            "commit": "824b51b60a37c0348006e564ab8b5bf5b77170bf",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 21:05:10 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.5",
+            "author": "gcox@microsoft.com",
+            "commit": "7cb21990ded4cf86abd7fc7bf1d0e2e79793c2d3",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 18:25:04 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.0",
+            "author": "gcox@microsoft.com",
+            "commit": "26cac141351b351aadd175f37ef0e0030bdd698e",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.37.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/merge-styles to v7.20.0",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 19:01:23 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.22.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 22:39:29 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.196.0",
+            "author": "gcox@microsoft.com",
+            "commit": "d646713bd4da0335f880e0a1ea00873fb8f3a519",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 17:07:21 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.195.0",
+            "author": "gcox@microsoft.com",
+            "commit": "759a19808120e0eed325ede1fd38ec175eec12fc",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 12:24:20 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.194.0",
+            "author": "gcox@microsoft.com",
+            "commit": "d35595a956fbff6174b7d72c0ba232e28b4f8cbe",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Aug 2022 12:21:32 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.35.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 21:25:23 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.192.0",
+            "author": "gcox@microsoft.com",
+            "commit": "654ac95610c72c7f254650c5b7332308577fce5b",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Jul 2022 12:21:50 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.191.0",
+            "author": "gcox@microsoft.com",
+            "commit": "b716ea148c4bd8a097e30b27bf7f4cd13c503628",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 12:27:44 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.21.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jul 2022 12:27:40 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.190.2",
+            "author": "tmichon@microsoft.com",
+            "commit": "f25e5ac1f4a6155c1aacd3bf561a1d1b0d91e213",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 12:22:59 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.190.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf31bb07e968a0385c644b394f86141e12ed940c",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 12:21:01 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.190.0",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "4a5c25a3552854a1ff872092817ef38af55301c2",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 12:21:53 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.189.1",
+            "author": "cqc@cuiqingcai.com",
+            "commit": "ebef2bb545a317d3997706a6e03010fc0798bad2",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "@uifabric/api-docs_v7.7.10",
       "version": "7.7.10",

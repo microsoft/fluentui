@@ -79,7 +79,7 @@ export { DefaultFontStyles }
 export { DefaultPalette }
 
 // @public @deprecated (undocumented)
-export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active)";
+export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)";
 
 // @public
 export function focusClear(): IRawStyle;
@@ -148,13 +148,13 @@ export type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
 export const hiddenContentStyle: IRawStyle;
 
 // @public (undocumented)
-export const HighContrastSelector = "@media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active)";
+export const HighContrastSelector = "@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)";
 
 // @public (undocumented)
-export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark)";
+export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark)";
 
 // @public (undocumented)
-export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white), @media screen and (forced-colors: active) and (prefers-color-scheme: light)";
+export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light)";
 
 export { IAnimationStyles }
 

@@ -2,6 +2,231 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.10",
+      "version": "7.10.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.25.1",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Oct 2022 12:21:22 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.9",
+      "version": "7.10.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat: Add support for the wbtx whiteboard file extension (#25346)",
+            "author": "51342814+jieleiwang@users.noreply.github.com",
+            "commit": "dc582c795f45e7f7397cb0c3831d288f8b83bbee",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 12:24:26 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.8",
+      "version": "7.10.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix mapping for Stream video filetype, updated CDN url",
+            "author": "caperez@microsoft.com",
+            "commit": "a303adc6c133d1d2cddd5c4e8131d1d0321f833c",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 18:13:33 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.7",
+      "version": "7.10.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.25.0",
+            "author": "gcox@microsoft.com",
+            "commit": "cbcc767fb704968a387823e2e9bf70d147809ad4",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 12:23:16 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.6",
+      "version": "7.10.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.24.0",
+            "author": "gcox@microsoft.com",
+            "commit": "c87f7ca5ac04d105c94f61f86e8885047133e417",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.5",
+      "version": "7.10.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.23.1",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Sep 2022 12:30:34 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.4",
+      "version": "7.10.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.23.0",
+            "author": "gcox@microsoft.com",
+            "commit": "329cfaed40945b42efc4d15ffdb2746c81c6abb3",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 18:25:04 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.3",
+      "version": "7.10.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.22.3",
+            "author": "gcox@microsoft.com",
+            "commit": "26cac141351b351aadd175f37ef0e0030bdd698e",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Patch bump file-type-icons",
+            "author": "gcox@microsoft.com",
+            "commit": "2912f6f605335663ce334b505495e1a5772fc3d6",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update to use latest responsive SVGs in Fabric CDN for filetypes, fixing mapping of .classifier icon",
+            "author": "caperez@microsoft.com",
+            "commit": "f252fcda3c4ae215e0f1408c1df12042ca77899c",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 19:01:23 GMT",
+      "tag": "@uifabric/file-type-icons_v7.9.3",
+      "version": "7.9.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.22.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "@uifabric/file-type-icons_v7.9.2",
+      "version": "7.9.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.21.3",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Aug 2022 12:21:32 GMT",
+      "tag": "@uifabric/file-type-icons_v7.9.1",
+      "version": "7.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.21.2",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Aug 2022 12:21:13 GMT",
+      "tag": "@uifabric/file-type-icons_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update to UIFabric (v7 Branch) to pick up latest filetype icon system. Here's the changes: - New icontype 'loop' to align to the brand (keeping 'fluid' around since it's still referenced). - Renaming the KFM folders (currently un-referenced) so their names are correct. - Cleanup of video, stream, audio icons to align to one brand. - Replacing the icon-generation pipeline from Adobe Illustrator to Figma. - Adding 20x1.5 and 64 sized icons that were previously missing (thanks to new Figma workflow!)",
+            "author": "caperez@microsoft.com",
+            "commit": "7a8c496c0eba5972578ad8bda73265537d68911a",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 12:27:44 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.11",
+      "version": "7.8.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.21.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.10",
       "version": "7.8.10",

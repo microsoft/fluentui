@@ -1,8 +1,53 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.38.2)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.38.1..@uifabric/utilities_v7.38.2)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.5 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.38.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.38.1)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.36.1..@uifabric/utilities_v7.38.1)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.4 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [7.36.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.36.1)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.36.0..@uifabric/utilities_v7.36.1)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.3 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [7.36.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.36.0)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.35.0..@uifabric/utilities_v7.36.0)
+
+### Minor changes
+
+- Fix backwards-compatibility of Group Selection additions (#24554) ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.35.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.35.0)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.34.1..@uifabric/utilities_v7.35.0)
+
+### Minor changes
+
+- Standardize selection behavior of Groups in SelectionZone (#24278) ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
 
 ## [7.34.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.34.1)
 

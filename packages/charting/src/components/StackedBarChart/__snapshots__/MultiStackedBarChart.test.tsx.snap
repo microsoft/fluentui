@@ -352,22 +352,35 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
-                  }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
                   }
               data-focuszone-id="FocusZone5"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="listbox"
-            />
+            >
+              <div
+                className=
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
+                    }
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                data-focuszone-id="FocusZone6"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -412,7 +425,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone24"
+        data-focuszone-id="FocusZone27"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -455,7 +468,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone25"
+        data-focuszone-id="FocusZone28"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -472,7 +485,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout26"
               className=
 
                   {
@@ -503,7 +516,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout26"
               className=
 
                   {
@@ -554,7 +567,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone29"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -597,7 +610,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone27"
+        data-focuszone-id="FocusZone30"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -614,7 +627,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout26"
               className=
 
                   {
@@ -645,7 +658,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout23"
+              aria-labelledby="callout26"
               className=
 
                   {
@@ -723,22 +736,35 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
                   }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
-                  }
-              data-focuszone-id="FocusZone28"
+              data-focuszone-id="FocusZone31"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="listbox"
-            />
+            >
+              <div
+                className=
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
+                    }
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                data-focuszone-id="FocusZone32"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -783,7 +809,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone8"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -830,7 +856,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone9"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -847,7 +873,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout7"
               className=
 
                   {
@@ -878,7 +904,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout7"
               className=
 
                   {
@@ -929,7 +955,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone10"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -976,7 +1002,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone11"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -993,7 +1019,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout7"
               className=
 
                   {
@@ -1024,7 +1050,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout7"
               className=
 
                   {
@@ -1097,7 +1123,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone18"
+        data-focuszone-id="FocusZone20"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1132,7 +1158,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone19"
+        data-focuszone-id="FocusZone21"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1149,7 +1175,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout19"
               className=
 
                   {
@@ -1180,7 +1206,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout19"
               className=
 
                   {
@@ -1231,7 +1257,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone20"
+        data-focuszone-id="FocusZone22"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1278,7 +1304,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone21"
+        data-focuszone-id="FocusZone23"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1295,7 +1321,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout19"
               className=
 
                   {
@@ -1326,7 +1352,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout17"
+              aria-labelledby="callout19"
               className=
 
                   {
@@ -1404,17 +1430,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
                   }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
-                  }
-              data-focuszone-id="FocusZone22"
+              data-focuszone-id="FocusZone24"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1422,181 +1441,201 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             >
               <div
                 className=
-                    ms-OverflowSet-item
-                    {
-                      display: inherit;
-                      flex-shrink: 0;
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
                     }
-              >
-                <button
-                  aria-label="Debit card numbers (EU and USA) selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={2}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #e81123;
-                          background-image: ;
-                          border-color: #e81123;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #e81123, #e81123);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    Debit card numbers (EU and USA)
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
                     }
+                data-focuszone-id="FocusZone25"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
               >
-                <button
-                  aria-label="Passport numbers (USA) selected"
-                  aria-posinset={2}
-                  aria-selected={false}
-                  aria-setsize={2}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
-                  <div
+                  <button
+                    aria-label="Debit card numbers (EU and USA) selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
                     className=
 
                         {
-                          background-color: #107c10;
-                          background-image: ;
-                          border-color: #107c10;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #107c10, #107c10);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    Passport numbers (USA)
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: #e81123;
+                            background-image: ;
+                            border-color: #e81123;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #e81123, #e81123);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Debit card numbers (EU and USA)
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                >
+                  <button
+                    aria-label="Passport numbers (USA) selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #107c10;
+                            background-image: ;
+                            border-color: #107c10;
+                            border: 1px solid;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #107c10, #107c10);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Passport numbers (USA)
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1643,7 +1682,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone13"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1690,7 +1729,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone14"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1707,7 +1746,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout12"
               className=
 
                   {
@@ -1738,7 +1777,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout12"
               className=
 
                   {
@@ -1789,7 +1828,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone15"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1836,7 +1875,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone15"
+        data-focuszone-id="FocusZone16"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1853,7 +1892,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout12"
               className=
 
                   {
@@ -1884,7 +1923,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout11"
+              aria-labelledby="callout12"
               className=
 
                   {
@@ -1962,22 +2001,35 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               aria-label="Legends"
               className=
                   ms-FocusZone
-                  ms-OverflowSet
                   &:focus {
                     outline: none;
                   }
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
-                  }
-              data-focuszone-id="FocusZone16"
+              data-focuszone-id="FocusZone17"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="listbox"
-            />
+            >
+              <div
+                className=
+                    ms-FocusZone
+                    ms-OverflowSet
+                    &:focus {
+                      outline: none;
+                    }
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                data-focuszone-id="FocusZone18"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
+                role="group"
+              />
+            </div>
           </div>
         </div>
       </div>
