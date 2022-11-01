@@ -69,7 +69,7 @@ const useButtonStyles = makeStyles({
     outlineStyle: 'solid',
     boxShadow: `
       ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
+      0 0 0 ${tokens.borderRadiusSmall} ${tokens.colorStrokeFocus2}
     `,
     zIndex: 1,
   }),
