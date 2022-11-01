@@ -217,7 +217,7 @@ exports[`ComboBox Renders correctly 1`] = `
               color: #605e5c;
               cursor: default;
               display: inline-block;
-              font-family: inherit;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
@@ -553,7 +553,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
               color: #201f1e;
               cursor: default;
               display: inline-block;
-              font-family: inherit;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
@@ -1325,7 +1325,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               color: #201f1e;
               cursor: default;
               display: inline-block;
-              font-family: inherit;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
@@ -2210,7 +2210,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               color: #605e5c;
               cursor: default;
               display: inline-block;
-              font-family: inherit;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
