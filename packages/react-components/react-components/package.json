@@ -71,7 +71,7 @@
     "@fluentui/react-tooltip": "^9.0.9",
     "@fluentui/react-utilities": "^9.1.2",
     "@fluentui/react-text": "^9.1.4",
-    "@griffel/react": "^1.4.1",
+    "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
