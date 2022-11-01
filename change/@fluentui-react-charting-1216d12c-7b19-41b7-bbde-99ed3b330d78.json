@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix wrong narration when legend selected",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

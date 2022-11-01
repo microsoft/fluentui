@@ -4,7 +4,7 @@
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "@fluentui/react-tabster": "^9.2.0",
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.1.2",
-    "@griffel/react": "^1.4.1",
+    "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -53,5 +53,13 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

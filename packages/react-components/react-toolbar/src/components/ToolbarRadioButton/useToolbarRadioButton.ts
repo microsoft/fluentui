@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback } from '@fluentui/react-hooks';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 import { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './ToolbarRadioButton.types';

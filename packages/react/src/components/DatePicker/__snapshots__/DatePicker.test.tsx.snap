@@ -157,6 +157,7 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
+            data-is-focusable={true}
             id="DatePicker0-label"
             onBlur={[Function]}
             onChange={[Function]}
@@ -390,6 +391,7 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
                   overflow: hidden;
                   text-overflow: ellipsis;
                 }
+            data-is-focusable={true}
             id="DatePicker0-label"
             onBlur={[Function]}
             onChange={[Function]}
@@ -622,6 +624,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   overflow: hidden;
                   text-overflow: ellipsis;
                 }
+            data-is-focusable={true}
             id="DatePicker0-label"
             onBlur={[Function]}
             onChange={[Function]}

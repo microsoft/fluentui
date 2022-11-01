@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 25 Oct 2022 07:43:18 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Nov 2022 07:49:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.99.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.2)
+
+Tue, 01 Nov 2022 07:49:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.99.1..@fluentui/react_v8.99.2)
+
+### Patches
+
+- feat: update List to render children on first render() call ([PR #25331](https://github.com/microsoft/fluentui/pull/25331) by seanmonahan@microsoft.com)
+
+## [8.99.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.1)
+
+Mon, 31 Oct 2022 07:45:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.99.0..@fluentui/react_v8.99.1)
+
+### Patches
+
+- chore: Reducing bundle size of Stack by moving selector used in multiple places to local const. ([PR #25429](https://github.com/microsoft/fluentui/pull/25429) by humberto_makoto@hotmail.com)
+
+## [8.99.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.0)
+
+Fri, 28 Oct 2022 07:45:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.8..@fluentui/react_v8.99.0)
+
+### Minor changes
+
+- feat: Add enableScopedSelectors prop to Stack that, when true, makes the Stack styles selectors be more scoped to not be as expensive in style recalculation. ([PR #25397](https://github.com/microsoft/fluentui/pull/25397) by humberto_makoto@hotmail.com)
+- Allow empty string as valid value for text property of ComboBox ([PR #24665](https://github.com/microsoft/fluentui/pull/24665) by sebastian.vanik@gmail.com)
+
+### Patches
+
+- fix: Allowing DatePicker to be focusable within FocusZones by default. ([PR #25428](https://github.com/microsoft/fluentui/pull/25428) by humberto_makoto@hotmail.com)
+
+## [8.98.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.8)
+
+Wed, 26 Oct 2022 07:52:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.98.7..@fluentui/react_v8.98.8)
+
+### Patches
+
+- fix: add support for HTML defails element ([PR #25324](https://github.com/microsoft/fluentui/pull/25324) by seanmonahan@microsoft.com)
+- fix: Improve Stack's style recalculation performance by selectively applying children selectors. ([PR #25381](https://github.com/microsoft/fluentui/pull/25381) by makotom@microsoft.com)
+- Bump @fluentui/react-focus to v8.8.8 ([PR #25381](https://github.com/microsoft/fluentui/pull/25381) by beachball)
 
 ## [8.98.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.98.7)
 

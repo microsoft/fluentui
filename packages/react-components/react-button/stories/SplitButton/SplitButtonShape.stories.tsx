@@ -23,7 +23,7 @@ export const Shape = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Rounded</SplitButton>}
         </MenuTrigger>
 
@@ -36,7 +36,7 @@ export const Shape = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} shape="circular">
               Circular
@@ -53,7 +53,7 @@ export const Shape = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} shape="square">
               Square

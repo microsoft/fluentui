@@ -171,6 +171,7 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
         ...(vertical && {
           color: v.wrapperColorHover,
           background: v.backgroundColorHover || colors.backgroundHover,
+          borderRadius: pxToRem(4),
         }),
 
         ...(primary && {

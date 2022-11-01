@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add support for HTML details element",
-  "packageName": "@fluentui/react-focus",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

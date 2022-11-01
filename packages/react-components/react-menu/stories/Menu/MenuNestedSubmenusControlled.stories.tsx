@@ -11,7 +11,7 @@ const EditorLayoutSubMenu = () => {
 
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <MenuItem>Editor Layout</MenuItem>
       </MenuTrigger>
 
@@ -34,7 +34,7 @@ const AppearanceSubMenu = () => {
 
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <MenuItem>Appearance</MenuItem>
       </MenuTrigger>
 
@@ -58,7 +58,7 @@ const PreferencesSubMenu = () => {
 
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <MenuItem>Preferences</MenuItem>
       </MenuTrigger>
 
@@ -78,7 +78,7 @@ const PreferencesSubMenu = () => {
 export const NestedSubmenusControlled = () => {
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
 

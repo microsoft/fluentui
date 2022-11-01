@@ -2,6 +2,27 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 22:09:49 GMT",
+      "tag": "@fluentui/react-toolbar_v9.0.0-beta.11",
+      "version": "9.0.0-beta.11",
+      "comments": {
+        "none": [
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "dba7e9c342ca32d05d49d341b3912cd79652f238",
+            "comment": "chore: remove best practices"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "9bde21168a1032d2a429939b9b2d7d3ba590726f",
+            "comment": "feat: replace ToolbarRadio implementation by usage of toggle button as radio"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:39 GMT",
       "tag": "@fluentui/react-toolbar_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",

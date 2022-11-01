@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Change react-persona to pinned version.",
-  "packageName": "@fluentui/react-components",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

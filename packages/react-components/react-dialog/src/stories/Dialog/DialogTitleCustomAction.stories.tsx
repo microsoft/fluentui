@@ -14,7 +14,7 @@ import { Dismiss24Regular } from '@fluentui/react-icons';
 export const TitleCustomAction = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open dialog</Button>
       </DialogTrigger>
       <DialogSurface>

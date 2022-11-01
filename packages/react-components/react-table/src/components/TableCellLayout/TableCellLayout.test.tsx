@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableCellLayout } from './TableCellLayout';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableCellLayoutProps } from './TableCellLayout.types';
 
 describe('TableCellLayout', () => {

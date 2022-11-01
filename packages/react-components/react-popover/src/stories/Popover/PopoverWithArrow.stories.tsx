@@ -20,7 +20,7 @@ const ExampleContent = () => {
 
 export const WithArrow = () => (
   <Popover withArrow>
-    <PopoverTrigger>
+    <PopoverTrigger disableButtonEnhancement>
       <Button>Popover trigger</Button>
     </PopoverTrigger>
 

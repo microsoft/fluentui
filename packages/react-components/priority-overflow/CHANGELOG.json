@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 22:09:50 GMT",
+      "tag": "@fluentui/priority-overflow_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:27 GMT",
       "tag": "@fluentui/priority-overflow_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",
