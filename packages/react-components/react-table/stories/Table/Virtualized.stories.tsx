@@ -13,6 +13,7 @@ import { Virtualizer, VirtualizerFlow } from '@fluentui/react-components/unstabl
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
 import { useTable, ColumnDefinition, ColumnId, useSort } from '../../src/hooks';
 import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
+import { useRef } from '@storybook/addons';
 
 type FileCell = {
   label: string;
@@ -80,7 +81,7 @@ const items: Item[] = [
   },
 ];
 
-const repeatCount = 250;
+const repeatCount = 1000;
 const generateContent = (): Item[] => {
   const contentList: Item[] = [];
   for (let i = 0; i < repeatCount; i++) {
@@ -152,48 +153,52 @@ export const Virtualized = () => {
 
   const rows = sort(getRows());
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   return (
-    <Table sortable>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <Virtualizer
-          flow={VirtualizerFlow.Vertical}
-          virtualizerLength={100}
-          itemSize={44}
-          /* The scrollViewRef is optional if you want to encapsulate inside a scroll view
+    <div style={{ height: '500px', overflow: 'auto' }} ref={containerRef}>
+      <Table sortable>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
+            <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
+            <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
+            <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <Virtualizer
+            flow={VirtualizerFlow.Vertical}
+            virtualizerLength={100}
+            itemSize={44}
+            /* The scrollViewRef is optional if you want to encapsulate inside a scroll view
             it will be more efficient with this method, but is not required.
-            scrollViewRef={containerRef}
           */
-        >
-          {rows.map(({ item }) => (
-            <TableRow key={item.file.label}>
-              <TableCell>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
-              <TableCell>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell>{item.lastUpdated.label}</TableCell>
-              <TableCell>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
-            </TableRow>
-          ))}
-        </Virtualizer>
-      </TableBody>
-    </Table>
+            scrollViewRef={containerRef}
+          >
+            {rows.map(({ item }) => (
+              <TableRow key={item.file.label}>
+                <TableCell>
+                  <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+                </TableCell>
+                <TableCell>
+                  <TableCellLayout
+                    media={
+                      <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                    }
+                  >
+                    {item.author.label}
+                  </TableCellLayout>
+                </TableCell>
+                <TableCell>{item.lastUpdated.label}</TableCell>
+                <TableCell>
+                  <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+                </TableCell>
+              </TableRow>
+            ))}
+          </Virtualizer>
+        </TableBody>
+      </Table>
+    </div>
   );
 };
