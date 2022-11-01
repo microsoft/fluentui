@@ -39,10 +39,12 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
     }
     managerRef.current = null;
 
-    if (enabled && canUseDOM() && targetRef.current && containerRef.current) {
+    const target = overrideTargetRef.current ?? targetRef.current;
+
+    if (enabled && canUseDOM() && target && containerRef.current) {
       managerRef.current = createPositionManager({
         container: containerRef.current,
-        target: overrideTargetRef.current ?? targetRef.current,
+        target,
         arrow: arrowRef.current,
         ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
