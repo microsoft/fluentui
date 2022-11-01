@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { makeStyles, ToggleButton } from '@fluentui/react-components';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const useStyles = makeStyles({
   wrapper: {
@@ -9,15 +12,59 @@ const useStyles = makeStyles({
 });
 
 export const Appearance = () => {
+  const [checked1, setChecked1] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
+  const [checked3, setChecked3] = React.useState(false);
   const styles = useStyles();
+
+  const toggleChecked = React.useCallback(
+    (buttonIndex: number) => {
+      switch (buttonIndex) {
+        case 1:
+          setChecked1(!checked1);
+          break;
+        case 2:
+          setChecked2(!checked2);
+          break;
+        case 3:
+          setChecked3(!checked3);
+          break;
+      }
+    },
+    [checked1, checked2, checked3],
+  );
 
   return (
     <div className={styles.wrapper}>
-      <ToggleButton>Default</ToggleButton>
-      <ToggleButton appearance="primary">Primary</ToggleButton>
-      <ToggleButton appearance="outline">Outline</ToggleButton>
-      <ToggleButton appearance="subtle">Subtle</ToggleButton>
-      <ToggleButton appearance="transparent">Transparent</ToggleButton>
+      <ToggleButton
+        checked={checked1}
+        icon={checked1 ? <CalendarMonth /> : <CalendarMonthRegular />}
+        onClick={() => toggleChecked(1)}
+      >
+        Default
+      </ToggleButton>
+      <ToggleButton
+        appearance="primary"
+        checked={checked2}
+        icon={checked2 ? <CalendarMonth /> : <CalendarMonthRegular />}
+        onClick={() => toggleChecked(2)}
+      >
+        Primary
+      </ToggleButton>
+      <ToggleButton
+        appearance="outline"
+        checked={checked3}
+        icon={checked3 ? <CalendarMonth /> : <CalendarMonthRegular />}
+        onClick={() => toggleChecked(3)}
+      >
+        Outline
+      </ToggleButton>
+      <ToggleButton appearance="subtle" icon={<CalendarMonth />}>
+        Subtle
+      </ToggleButton>
+      <ToggleButton appearance="transparent" icon={<CalendarMonth />}>
+        Transparent
+      </ToggleButton>
     </div>
   );
 };
