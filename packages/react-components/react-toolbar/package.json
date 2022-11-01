@@ -38,7 +38,6 @@
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.1.2",
     "@fluentui/react-context-selector": "^9.0.5",
-    "@fluentui/react-hooks": "^8.6.12",
     "@fluentui/react-radio": "^9.0.9",
     "@fluentui/react-tabster": "^9.2.0",
     "@griffel/react": "^1.4.1",
