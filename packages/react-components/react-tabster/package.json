@@ -31,7 +31,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "^1.4.1",
+    "@griffel/react": "^1.4.2",
     "@fluentui/react-shared-contexts": "^9.0.2",
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.1.2",
