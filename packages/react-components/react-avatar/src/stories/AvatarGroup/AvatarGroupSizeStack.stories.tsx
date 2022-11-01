@@ -40,11 +40,13 @@ export const SizeStack = () => {
             {inlineItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
             ))}
-            <AvatarGroupPopover>
-              {overflowItems.map(name => (
-                <AvatarGroupItem name={name} key={name} />
-              ))}
-            </AvatarGroupPopover>
+            {overflowItems && (
+              <AvatarGroupPopover>
+                {overflowItems.map(name => (
+                  <AvatarGroupItem name={name} key={name} />
+                ))}
+              </AvatarGroupPopover>
+            )}
           </AvatarGroup>
         );
       })}

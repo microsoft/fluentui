@@ -19,6 +19,7 @@ import {
   writeJson,
   WorkspaceConfiguration,
   joinPathFragments,
+  ProjectConfiguration,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -941,73 +942,55 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
-    it(`should update exports map`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      const pkgJsonPath = `${projectConfig.root}/package.json`;
+    describe(`export-maps`, () => {
+      function setup(config: { name: string; addModuleField?: boolean }) {
+        const addModuleField = config.addModuleField ?? true;
+        const projectConfig = readProjectConfiguration(tree, config.name);
+        const pkgJsonPath = `${projectConfig.root}/package.json`;
 
-      let pkgJson = readJson(tree, pkgJsonPath);
-
-      expect(pkgJson.exports).toBe(undefined);
-
-      await generator(tree, options);
-
-      pkgJson = readJson(tree, pkgJsonPath);
-
-      expect(pkgJson.exports).toMatchInlineSnapshot(`
-        Object {
-          ".": Object {
-            "import": "./lib/index.js",
-            "require": "./lib-commonjs/index.js",
-            "types": "./dist/index.d.ts",
-          },
-          "./package.json": "./package.json",
+        if (addModuleField) {
+          updateJson(tree, pkgJsonPath, json => {
+            json.module = './lib/index.js';
+            return json;
+          });
         }
-      `);
-    });
 
-    it(`should update exports map if unstable API is present`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      const pkgJsonPath = `${projectConfig.root}/package.json`;
-      const pkgJsonUnstablePath = `${projectConfig.root}/src/unstable/package.json__tmpl__`;
-      writeJson(tree, pkgJsonUnstablePath, {
-        typings: './../dist/unstable.d.ts',
+        const getPackageJson = () => readJson(tree, pkgJsonPath);
+
+        return { getPackageJson };
+      }
+
+      it(`should update exports map`, async () => {
+        const { getPackageJson } = setup({ name: options.name });
+
+        let pkgJson = getPackageJson();
+
+        expect(pkgJson.exports).toBe(undefined);
+
+        await generator(tree, options);
+
+        pkgJson = getPackageJson();
+
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+                  Object {
+                    ".": Object {
+                      "import": "./lib/index.js",
+                      "require": "./lib-commonjs/index.js",
+                      "types": "./dist/index.d.ts",
+                    },
+                    "./package.json": "./package.json",
+                  }
+              `);
       });
 
-      let pkgJson = readJson(tree, pkgJsonPath);
-      let pkgUnstableJson = readJson(tree, pkgJsonUnstablePath);
+      it(`should update exports map based on main,module fields`, async () => {
+        const { getPackageJson } = setup({ name: options.name, addModuleField: false });
 
-      expect(pkgJson.exports).toBe(undefined);
-      expect(pkgUnstableJson.exports).toBe(undefined);
+        await generator(tree, options);
 
-      await generator(tree, options);
-
-      pkgJson = readJson(tree, pkgJsonPath);
-      pkgUnstableJson = readJson(tree, pkgJsonUnstablePath);
-
-      expect(pkgJson.exports).toMatchInlineSnapshot(`
-        Object {
-          ".": Object {
-            "import": "./lib/index.js",
-            "require": "./lib-commonjs/index.js",
-            "types": "./dist/index.d.ts",
-          },
-          "./package.json": "./package.json",
-          "./unstable": Object {
-            "import": "./lib/unstable/index.js",
-            "require": "./lib-commonjs/unstable/index.js",
-            "types": "./dist/unstable.d.ts",
-          },
-        }
-      `);
-      expect(pkgUnstableJson.exports).toMatchInlineSnapshot(`
-        Object {
-          ".": Object {
-            "import": "./../lib/unstable/index.js",
-            "require": "./../lib-commonjs/unstable/index.js",
-            "types": "./../dist/unstable.d.ts",
-          },
-        }
-      `);
+        const pkgJson = getPackageJson();
+        expect(pkgJson.exports['.'].module).toBe(undefined);
+      });
     });
 
     it(`should not add start scripts to node packages`, async () => {
@@ -1401,6 +1384,128 @@ describe('migrate-converged-pkg generator', () => {
       `);
     });
   });
+
+  describe(`unstable API`, () => {
+    const getPkgJsonUnstablePath = (projectConfig: ProjectConfiguration) => {
+      return `${projectConfig.root}/src/unstable/package.json__tmpl__`;
+    };
+
+    describe(`export-maps`, () => {
+      function setup(config: { name: string; addModuleField?: boolean }) {
+        const addModuleField = config.addModuleField ?? true;
+        const projectConfig = readProjectConfiguration(tree, config.name);
+        const pkgJsonPath = `${projectConfig.root}/package.json`;
+        const pkgJsonUnstablePath = getPkgJsonUnstablePath(projectConfig);
+
+        if (addModuleField) {
+          updateJson(tree, pkgJsonPath, json => {
+            json.module = './lib/index.js';
+            return json;
+          });
+        }
+
+        writeJson(tree, pkgJsonUnstablePath, {
+          typings: './../dist/unstable.d.ts',
+          ...(addModuleField ? { module: './../lib/index.js' } : null),
+        });
+        const getUnstablePackageJson = () => readJson(tree, pkgJsonUnstablePath);
+
+        const getPackageJson = () => readJson(tree, pkgJsonPath);
+
+        return { getPackageJson, getUnstablePackageJson };
+      }
+
+      it(`should update exports map in stable package.json`, async () => {
+        const { getPackageJson } = setup({ name: options.name });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+
+        expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
+          Object {
+            "import": "./lib/unstable/index.js",
+            "require": "./lib-commonjs/unstable/index.js",
+            "types": "./dist/unstable.d.ts",
+          }
+        `);
+      });
+
+      it(`should update exports map`, async () => {
+        const { getUnstablePackageJson } = setup({ name: options.name });
+
+        let pkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports).toBe(undefined);
+
+        await generator(tree, options);
+
+        pkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+          Object {
+            ".": Object {
+              "import": "./../lib/unstable/index.js",
+              "require": "./../lib-commonjs/unstable/index.js",
+              "types": "./../dist/unstable.d.ts",
+            },
+          }
+        `);
+      });
+
+      it(`should update exports map based on main,module fields`, async () => {
+        const { getPackageJson, getUnstablePackageJson } = setup({
+          name: options.name,
+          addModuleField: false,
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        const unstablePkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports['./unstable'].module).toBe(undefined);
+        expect(unstablePkgJson.exports['.'].module).toBe(undefined);
+      });
+    });
+
+    describe(`api-extractor`, () => {
+      it(`should create api-extractor.json`, async () => {
+        const projectConfig = readProjectConfiguration(tree, options.name);
+        const pkgJsonUnstablePath = getPkgJsonUnstablePath(projectConfig);
+        writeJson(tree, pkgJsonUnstablePath, {
+          description: 'unstable api',
+          sideEffects: false,
+          main: '../lib-commonjs/unstable/index.js',
+        });
+        const apiExtractorConfigPath = `${projectConfig.root}/config/api-extractor.unstable.json`;
+
+        expect(tree.exists(apiExtractorConfigPath)).toBeFalsy();
+
+        await generator(tree, options);
+
+        expect(tree.exists(apiExtractorConfigPath)).toBeTruthy();
+        /* eslint-disable @fluentui/max-len */
+        expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
+          Object {
+            "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+            "apiReport": Object {
+              "enabled": true,
+              "reportFileName": "<unscopedPackageName>.unstable.api.md",
+            },
+            "dtsRollup": Object {
+              "enabled": true,
+              "publicTrimmedFilePath": "<projectFolder>/dist/unstable.d.ts",
+              "untrimmedFilePath": "<projectFolder>/dist/unstable-untrimmed.d.ts",
+            },
+            "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
+            "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
+          }
+        `);
+        /* eslint-enable @fluentui/max-len */
+      });
+    });
+  });
 });
 
 // ==== helpers ====
@@ -1457,6 +1562,7 @@ function setupDummyPackage(
       name: pkgName,
       version: normalizedOptions.version,
       typings: 'lib/index.d.ts',
+      main: 'lib-commonjs/index.js',
       scripts: {
         build: 'just-scripts build',
         clean: 'just-scripts clean',

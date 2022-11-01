@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add `appearance` prop to `TableRow`",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface } from '@fluentui/react-components';
-import type { PopoverProps } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import type { PopoverTriggerChildProps } from '@fluentui/react-components';
 const useStyles = makeStyles({
   contentHeader: {
     marginTop: '0',
@@ -18,29 +18,24 @@ const ExampleContent = () => {
   );
 };
 
-export const CustomTrigger = () => {
-  const [open, setOpen] = React.useState(false);
-  const [target, setTarget] = React.useState<HTMLElement | null>(null);
-
-  const onClick = () => setOpen(s => !s);
-  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
-    // handle custom trigger interactions separately
-    if (e.target !== target) {
-      setOpen(data.open);
-    }
-  };
-
+const CustomPopoverTrigger = React.forwardRef<HTMLButtonElement, Partial<PopoverTriggerChildProps>>((props, ref) => {
   return (
-    <>
-      <Button aria-expanded={`${open}`} ref={setTarget} onClick={onClick}>
-        Custom trigger
-      </Button>
-      <Popover positioning={{ target }} open={open} onOpenChange={onOpenChange}>
-        <PopoverSurface>
-          <ExampleContent />
-        </PopoverSurface>
-      </Popover>
-    </>
+    <Button {...props} ref={ref}>
+      Custom Trigger
+    </Button>
+  );
+});
+
+export const CustomTrigger = () => {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <CustomPopoverTrigger />
+      </PopoverTrigger>
+      <PopoverSurface>
+        <ExampleContent />
+      </PopoverSurface>
+    </Popover>
   );
 };
 

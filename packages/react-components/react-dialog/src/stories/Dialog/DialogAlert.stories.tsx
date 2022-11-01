@@ -14,7 +14,7 @@ import story from './DialogAlert.md';
 export const Alert = () => {
   return (
     <Dialog modalType="alert">
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open Alert dialog</Button>
       </DialogTrigger>
       <DialogSurface>
@@ -25,7 +25,7 @@ export const Alert = () => {
             pressed to dismiss this Alert
           </DialogContent>
           <DialogActions>
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
             <Button appearance="primary">Do Something</Button>

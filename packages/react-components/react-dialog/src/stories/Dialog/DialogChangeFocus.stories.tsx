@@ -20,7 +20,7 @@ export const ChangeFocus = () => {
   }, [open]);
   return (
     <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open dialog</Button>
       </DialogTrigger>
       <DialogSurface>
@@ -31,7 +31,7 @@ export const ChangeFocus = () => {
             <Button appearance="outline">Third Action</Button>
           </DialogActions>
           <DialogActions position="end">
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button ref={buttonRef} appearance="secondary">
                 Close
               </Button>

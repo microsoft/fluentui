@@ -16,7 +16,7 @@ export const MenuWithSplitItem: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Menu with split item">
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton>More actions</MenuButton>
         </MenuTrigger>
 
@@ -27,7 +27,7 @@ export const MenuWithSplitItem: React.FunctionComponent = () => {
             <Menu>
               <MenuSplitGroup>
                 <MenuItem>Open</MenuItem>
-                <MenuTrigger>
+                <MenuTrigger disableButtonEnhancement>
                   <MenuItem id="nestedTrigger" aria-label="More open options" />
                 </MenuTrigger>
               </MenuSplitGroup>
