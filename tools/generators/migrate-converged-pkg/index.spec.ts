@@ -972,15 +972,15 @@ describe('migrate-converged-pkg generator', () => {
         pkgJson = getPackageJson();
 
         expect(pkgJson.exports).toMatchInlineSnapshot(`
-          Object {
-            ".": Object {
-              "import": "./lib\\\\index.js",
-              "require": "./lib-commonjs\\\\index.js",
-              "types": "./dist/index.d.ts",
-            },
-            "./package.json": "./package.json",
-          }
-        `);
+                  Object {
+                    ".": Object {
+                      "import": "./lib/index.js",
+                      "require": "./lib-commonjs/index.js",
+                      "types": "./dist/index.d.ts",
+                    },
+                    "./package.json": "./package.json",
+                  }
+              `);
       });
 
       it(`should update exports map based on main,module fields`, async () => {
