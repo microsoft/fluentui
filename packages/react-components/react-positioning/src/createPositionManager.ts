@@ -32,6 +32,7 @@ interface PositionManagerOptions {
 }
 
 /**
+ * @internal
  * @returns manager that handles positioning out of the react lifecycle
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
