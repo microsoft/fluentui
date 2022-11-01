@@ -49,11 +49,8 @@ export function writeContainerUpdates(options: {
     container.setAttribute(DATA_POSITIONING_HIDDEN, '');
   }
 
-  // decmial translate values can cause blurriness
-  const floorX = Math.floor(x);
-  const floorY = Math.floor(y);
   Object.assign(container.style, {
-    transform: lowPPI ? `translate(${floorX}px, ${floorY}px)` : `translate3d(${floorX}px, ${floorY}px, 0)`,
+    transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
     position: strategy,
   });
 }
