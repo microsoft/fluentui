@@ -13,10 +13,11 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
 
 // @public
-export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    enableOutline?: boolean;
     // (undocumented)
     selector?: 'focus' | 'focus-within';
 }
@@ -63,7 +64,7 @@ export interface UseFocusableGroupOptions {
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
+    findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findNextFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;

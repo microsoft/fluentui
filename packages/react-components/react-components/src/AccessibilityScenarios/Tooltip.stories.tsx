@@ -6,9 +6,10 @@ import { TextItalic24Regular, TextUnderline24Regular, TextBold24Regular } from '
 
 import { Scenario } from './utils';
 
-export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = () => {
+export const ButtonsWithTooltip: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Buttons with tooltip">
+      <h1>Tooltip variants</h1>
       <h2>Tooltips for text formatting icon-only buttons</h2>
       <Tooltip relationship="label" content="Make text bold">
         <Button icon={<TextBold24Regular />} />
@@ -28,9 +29,4 @@ export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = 
       </Tooltip>
     </Scenario>
   );
-};
-
-export default {
-  title: 'Accessibility Scenarios/ Buttons with tooltip',
-  id: 'tooltip-accessibility-scenario',
 };

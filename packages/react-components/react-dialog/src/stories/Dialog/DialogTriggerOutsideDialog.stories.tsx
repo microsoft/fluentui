@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-components';
 import {
   Dialog,
   DialogSurface,
@@ -8,14 +7,15 @@ import {
   DialogActions,
   DialogTrigger,
   DialogBody,
-} from '@fluentui/react-dialog';
+  Button,
+} from '@fluentui/react-components';
 import story from './DialogTriggerOutsideDialog.md';
 
 export const TriggerOutsideDialog = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button onClick={() => setOpen(true)}>Open Dialog</Button>
       </DialogTrigger>
       <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
@@ -28,7 +28,7 @@ export const TriggerOutsideDialog = () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>

@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Mon, 03 Oct 2022 22:24:41 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.8)
+
+Tue, 25 Oct 2022 00:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.7..@fluentui/react-table_v9.0.0-alpha.8)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.2.4 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.10 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.7)
+
+Thu, 20 Oct 2022 08:39:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.6..@fluentui/react-table_v9.0.0-alpha.7)
+
+### Changes
+
+- fix: Row and header interactive styles are separate ([PR #25201](https://github.com/microsoft/fluentui/pull/25201) by lingfangao@hotmail.com)
+- feat(TableSelectionCell): Use Radio component, adds subtle and hidden ([PR #25202](https://github.com/microsoft/fluentui/pull/25202) by lingfangao@hotmail.com)
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- feat: Add `appearance` prop to `TableRow` ([PR #25192](https://github.com/microsoft/fluentui/pull/25192) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.2.3 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-avatar to v9.2.3 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.9 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-radio to v9.0.9 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-tabster to v9.2.0 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.6)
+
+Thu, 13 Oct 2022 12:56:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.5..@fluentui/react-table_v9.0.0-alpha.6)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.2.2 ([PR #25119](https://github.com/microsoft/fluentui/pull/25119) by beachball)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.5)
+
+Thu, 13 Oct 2022 11:03:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.4..@fluentui/react-table_v9.0.0-alpha.5)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- BREAKING: refactor `useTable` to be composable ([PR #24947](https://github.com/microsoft/fluentui/pull/24947) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.2.2 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-avatar to v9.2.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.8 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.4)
 

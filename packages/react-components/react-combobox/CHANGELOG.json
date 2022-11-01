@@ -2,6 +2,153 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:29 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.13",
+      "version": "9.0.0-beta.13",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d9dda6aafb1571b08e5cc0ba3437a24a20c694f6",
+            "comment": "feat: add full Dropdown component accessibility spec"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 08:39:30 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.13",
+      "version": "9.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d55f6633f62c5715c41c8dbc8c5a428bef424345",
+            "comment": "feat: Add red border when aria-invalid is set"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.5",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.0.8",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.2.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-theme to v9.1.1",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.1.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 11:02:45 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "1a527d440e0497ef8046b3ce240492241e7a04ac",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "610eaf4725950121d3646e07a452d541ea3f3776",
+            "comment": "fix: add ScrollIntoView hook for Listbox options"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "0bf5374da5df0649ac7fdc065d141f0b8cd7ddf6",
+            "comment": "feat: export contexts from react-combobox"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e154da8243c0b3a900aeaaa55d91c4ca96f8a705",
+            "comment": "fix: Dropdown arrow icon layout when no placeholder or value is present"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.4",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.0.7",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.2.1",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.1.1",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Oct 2022 22:24:42 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",

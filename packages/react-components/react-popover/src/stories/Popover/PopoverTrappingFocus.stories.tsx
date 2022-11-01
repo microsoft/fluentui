@@ -13,7 +13,7 @@ export const TrappingFocus = () => {
 
   return (
     <Popover trapFocus>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <Button>Popover trigger</Button>
       </PopoverTrigger>
 

@@ -51,7 +51,7 @@ export const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
 
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button ref={ref}>+{overflowCount} items</Button>
       </MenuTrigger>
 

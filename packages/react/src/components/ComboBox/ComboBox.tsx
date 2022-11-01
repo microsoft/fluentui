@@ -694,7 +694,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // unless we are open and have a valid current pending index
     if (
       !(isOpen && currentPendingIndexValid) &&
-      text &&
+      (text || text === '') &&
       (currentPendingValue === null || currentPendingValue === undefined)
     ) {
       return text;

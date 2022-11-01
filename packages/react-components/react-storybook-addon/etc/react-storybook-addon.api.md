@@ -5,6 +5,7 @@
 ```ts
 
 import { Args } from '@storybook/api';
+import { Parameters as Parameters_2 } from '@storybook/api';
 import { StoryContext } from '@storybook/addons';
 import type { Theme } from '@fluentui/react-theme';
 
@@ -14,11 +15,30 @@ export interface FluentGlobals extends Args {
     [THEME_ID]?: ThemeIds;
 }
 
+// @public
+export interface FluentParameters extends Parameters_2 {
+    // (undocumented)
+    dir?: 'ltr' | 'rtl';
+    // (undocumented)
+    fluentTheme?: ThemeIds;
+    // (undocumented)
+    mode?: 'default' | 'vr-test';
+}
+
 // @public (undocumented)
 export interface FluentStoryContext extends StoryContext {
     // (undocumented)
     globals: FluentGlobals;
+    // (undocumented)
+    parameters: FluentParameters;
 }
+
+// @public (undocumented)
+export function parameters(options?: FluentParameters): {
+    dir: string;
+    fluentTheme: string;
+    mode: string;
+};
 
 // @public (undocumented)
 export const THEME_ID: "storybook/fluentui-react-addon/theme";

@@ -97,6 +97,7 @@ export interface MenuVariables {
   indicatorColorHover: string;
 
   subMenuBorderColor: string;
+  subMenuIconColor: string;
 }
 
 export const menuVariables = (siteVars: any): MenuVariables => {
@@ -203,5 +204,6 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     indicatorColorHover: siteVars.colors.grey[500],
 
     subMenuBorderColor: siteVars.colorScheme.default.borderTransparent,
+    subMenuIconColor: siteVars.colorScheme.brand.foregroundHover,
   };
 };

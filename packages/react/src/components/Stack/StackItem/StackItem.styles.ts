@@ -1,7 +1,7 @@
 import { getGlobalClassNames } from '../../../Styling';
 import type { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType } from './StackItem.types';
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   root: 'ms-StackItem',
 };
 
@@ -40,7 +40,7 @@ export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tok
         alignSelf: alignMap[align] || align,
       },
       order && {
-        order: order,
+        order,
       },
       className,
     ],
