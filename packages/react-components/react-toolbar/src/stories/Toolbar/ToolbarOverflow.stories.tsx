@@ -128,6 +128,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="underline-1"
           overflowGroupId="1"
           appearance="subtle"
+          aria-label="Italic option ( Group 1 )"
           icon={<TextUnderline16Regular />}
         />
 
@@ -135,6 +136,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="bold-1"
           overflowGroupId="1"
           appearance="subtle"
+          aria-label="Bold option ( Group 1 )"
           icon={<TextBold16Regular />}
         />
 
@@ -144,6 +146,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="underline-2"
           overflowGroupId="2"
           appearance="subtle"
+          aria-label="Underline option ( Group 2 )"
           icon={<TextUnderline16Regular />}
         />
 
@@ -151,6 +154,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="bold-2"
           overflowGroupId="2"
           appearance="subtle"
+          aria-label="Bold option ( Group 2 )"
           icon={<TextBold16Regular />}
         />
 
@@ -158,6 +162,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="italic-1"
           overflowGroupId="2"
           appearance="subtle"
+          aria-label="Italic option ( Group 2 )"
           icon={<TextItalic16Regular />}
         />
 
@@ -165,6 +170,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="underline-3"
           overflowGroupId="2"
           appearance="subtle"
+          aria-label="Underline option ( Group 2 )"
           icon={<TextUnderline16Regular />}
         />
 
@@ -172,6 +178,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="bold-3"
           overflowGroupId="2"
           appearance="subtle"
+          aria-label="Bold option ( Group 2 )"
           icon={<TextBold16Regular />}
         />
 
@@ -181,6 +188,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="underline-4"
           overflowGroupId="3"
           appearance="subtle"
+          aria-label="Underline option ( Group 3 )"
           icon={<TextUnderline16Regular />}
         />
 
@@ -188,6 +196,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="bold-4"
           overflowGroupId="3"
           appearance="subtle"
+          aria-label="Bold option ( Group 3 )"
           icon={<TextBold16Regular />}
         />
 
@@ -195,6 +204,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           overflowId="italic-2"
           overflowGroupId="3"
           appearance="subtle"
+          aria-label="Italic option ( Group 3 )"
           icon={<TextItalic16Regular />}
         />
 
