@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Nov 2022 12:23:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.199.6](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.6)
+
+Tue, 01 Nov 2022 12:23:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.5..office-ui-fabric-react_v7.199.6)
+
+### Patches
+
+- fix: Fixing previous incorrect implementation of iframe handling in FocusTrapZone. ([PR #23896](https://github.com/microsoft/fluentui/pull/23896) by tmichon@microsoft.com)
 
 ## [7.199.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.5)
 
