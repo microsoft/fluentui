@@ -29,7 +29,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         textDecoration: isUnderlined ? 'underline' : 'none',
 
         selectors: {
-          '.ms-Fabric--isFocusVisible &:focus': {
+          '.ms-Fabric--isFocusVisible &:focus, &:focus-visible': {
             // Can't use getFocusStyle because it doesn't support wrapping links
             // https://github.com/microsoft/fluentui/issues/4883#issuecomment-406743543
             // Using box-shadow and outline allows the focus rect to wrap links that span multiple lines

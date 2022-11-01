@@ -18,10 +18,6 @@ export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> 
 };
 
 export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const win: any = useWindow();
-  if (win) {
-    win.FabricConfig = { disableFocusRects: true };
-  }
   return (
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
@@ -32,10 +28,6 @@ export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnTy
 };
 
 export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const win: any = useWindow();
-  if (win) {
-    win.FabricConfig = { disableFocusRects: true };
-  }
   return (
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
@@ -46,10 +38,6 @@ export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<ExtendedStory
 };
 
 export const TestWrapperDecoratorFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const win: any = useWindow();
-  if (win) {
-    win.FabricConfig = { disableFocusRects: true };
-  }
   return (
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
@@ -60,10 +48,6 @@ export const TestWrapperDecoratorFixedWidth: DecoratorFunction<ExtendedStoryFnRe
 };
 
 export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const win: any = useWindow();
-  if (win) {
-    win.FabricConfig = { disableFocusRects: true };
-  }
   return (
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>

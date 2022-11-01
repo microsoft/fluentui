@@ -1,4 +1,4 @@
-import { registerIcons, on, KeyCodes, setRTL } from '@fluentui/react';
+import { registerIcons, on, KeyCodes, setRTL, getWindow } from '@fluentui/react';
 import { initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
 import { createSite } from './utilities/createSite';
 import * as platformPickerStyles from '@fluentui/react-docsite-components/lib/components/PlatformPicker/PlatformPicker.module.scss';
@@ -8,6 +8,9 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { androidLogo, appleLogo, webLogo, macLogo, windowsLogo, crossPlatformLogo } from './utilities/index';
 
 // TODO: handle redirects
+
+const win: any = getWindow();
+win.FabricConfig = { disableFocusRects: true };
 
 initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/assets/item-types/');
 

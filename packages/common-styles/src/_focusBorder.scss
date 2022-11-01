@@ -107,4 +107,10 @@
     outline: $width $ms-focus-border-style $color;
     outline-offset: -$inset;
   }
+
+  &:focus-visible {
+    outline: $width $ms-focus-border-style $color;
+    outline-offset: -$inset;
+  }
+
 }
