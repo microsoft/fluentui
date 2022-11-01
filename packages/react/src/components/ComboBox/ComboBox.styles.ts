@@ -200,6 +200,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
     const styles: IButtonStyles = {
       root: {
         color: caret.buttonTextColor,
+        fontFamily: 'inherit',
         fontSize: fonts.small.fontSize,
         position: 'absolute',
         top: 0,

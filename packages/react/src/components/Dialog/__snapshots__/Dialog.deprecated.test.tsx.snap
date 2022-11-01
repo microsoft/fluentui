@@ -17,15 +17,6 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
           font-weight: 400;
           visibility: visible;
         }
-        & button {
-          font-family: inherit;
-        }
-        & input {
-          font-family: inherit;
-        }
-        & textarea {
-          font-family: inherit;
-        }
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -330,15 +321,6 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
           font-weight: 400;
           visibility: visible;
         }
-        & button {
-          font-family: inherit;
-        }
-        & input {
-          font-family: inherit;
-        }
-        & textarea {
-          font-family: inherit;
-        }
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -642,15 +624,6 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
           font-size: 14px;
           font-weight: 400;
           visibility: visible;
-        }
-        & button {
-          font-family: inherit;
-        }
-        & input {
-          font-family: inherit;
-        }
-        & textarea {
-          font-family: inherit;
         }
     onBlur={[Function]}
     onChange={[Function]}
@@ -1089,15 +1062,6 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
           font-size: 14px;
           font-weight: 400;
           visibility: visible;
-        }
-        & button {
-          font-family: inherit;
-        }
-        & input {
-          font-family: inherit;
-        }
-        & textarea {
-          font-family: inherit;
         }
     onBlur={[Function]}
     onChange={[Function]}

@@ -397,15 +397,6 @@ exports[`Stack renders horizontal Stack with a gap in rtl context correctly 1`] 
         font-size: 14px;
         font-weight: 400;
       }
-      & button {
-        font-family: inherit;
-      }
-      & input {
-        font-family: inherit;
-      }
-      & textarea {
-        font-family: inherit;
-      }
   dir="rtl"
 >
   <div

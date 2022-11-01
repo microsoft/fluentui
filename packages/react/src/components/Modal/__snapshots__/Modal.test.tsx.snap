@@ -48,15 +48,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
               font-weight: 400;
               visibility: visible;
             }
-            & button {
-              font-family: inherit;
-            }
-            & input {
-              font-family: inherit;
-            }
-            & textarea {
-              font-family: inherit;
-            }
       >
         <div
           aria-modal="false"
@@ -199,15 +190,6 @@ exports[`Modal renders Modal correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               visibility: visible;
-            }
-            & button {
-              font-family: inherit;
-            }
-            & input {
-              font-family: inherit;
-            }
-            & textarea {
-              font-family: inherit;
             }
       >
         <div
@@ -367,15 +349,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               visibility: visible;
-            }
-            & button {
-              font-family: inherit;
-            }
-            & input {
-              font-family: inherit;
-            }
-            & textarea {
-              font-family: inherit;
             }
       >
         <div
