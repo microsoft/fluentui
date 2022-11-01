@@ -14,7 +14,6 @@ import {
   density,
   designUnit,
   fillColor,
-  focusStrokeWidth,
   foregroundOnAccentRest,
   neutralForegroundHint,
   neutralForegroundRest,
@@ -103,6 +102,11 @@ ${display("inline-block")} :host {
   cursor: pointer;
 }
 
+.week-day:${focusVisible},
+.interact .day:not(.disabled, .inactive):${focusVisible} {
+    ${focusTreatmentBase}
+}
+
 .date {
   height: 100%;
 }
@@ -155,25 +159,19 @@ ${display("inline-block")} :host {
           forced-color-adjust: auto;
           background: ${SystemColors.ButtonFace};
         }
-        .day,
-        .interact .day,
-        .week-day {
-            background: ${SystemColors.Canvas};
-            color: ${SystemColors.CanvasText};
-            fill: currentcolor;
+        .day {
             border-color: ${SystemColors.Canvas}
         }
         .interact .day:not(.disabled, .inactive):hover {
             background: ${SystemColors.ButtonFace};
             color: ${SystemColors.ButtonText};
-            outline: 1px solid ${SystemColors.Highlight};
+            border-color: ${SystemColors.Highlight};
         }
         .week-day:${focusVisible},
         .interact .day:not(.disabled, .inactive):${focusVisible} {
             forced-color-adjust: none;
             background: ${SystemColors.ButtonFace};
             border-color: transparent;
-            ${focusTreatmentBase}
             outline-color: ${SystemColors.Highlight}
         }
         .day.disabled,
@@ -182,14 +180,10 @@ ${display("inline-block")} :host {
             opacity:1;
             outline: none;
         }
-        .day.inactive:${focusVisible} {
-            outline: calc(${focusStrokeWidth} * 1px) solid ${SystemColors.GrayText};
-            box-shadow: none;
-        }
         .day.selected,
         .day.selected:not(.disabled, .inactive):hover {
             color: ${SystemColors.Highlight};
-            outline: 1px solid ${SystemColors.Highlight}
+            border-color: ${SystemColors.Highlight}
         }
         .interact .today,
         .today,
@@ -198,11 +192,6 @@ ${display("inline-block")} :host {
             forced-color-adjust: none;
             background: ${SystemColors.Highlight};
             color: ${SystemColors.HighlightText};
-            fill: currentcolor;
-        }
-        .interact .today:not(.disabled, .inactive):${focusVisible} {
-            box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${SystemColors.Highlight} inset,
-                0 0 0 calc(((${focusStrokeWidth} * 2) - ${strokeWidth}) * 1px) ${SystemColors.HighlightText} inset ;
         }
       `
   ),
