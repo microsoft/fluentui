@@ -64,4 +64,20 @@ describe('partitionAvatarGroupItems', () => {
     expect(inlineItems).toEqual([3, 4, 5, 6, 7, 8, 9]);
     expect(overflowItems).toEqual([0, 1, 2]);
   });
+
+  it('makes space for AvatarGroupPopover when addOverflowIndicatorSpace is true', () => {
+    const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
+
+    expect(inlineItems).toEqual([6, 7, 8, 9]);
+    expect(overflowItems).toEqual([0, 1, 2, 3, 4, 5]);
+  });
+
+  it('makes space for AvatarGroupPopover when addOverflowIndicatorSpace is true', () => {
+    const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items, addOverflowIndicatorSpace: false });
+
+    expect(inlineItems).toEqual([5, 6, 7, 8, 9]);
+    expect(overflowItems).toEqual([0, 1, 2, 3, 4]);
+  });
 });
