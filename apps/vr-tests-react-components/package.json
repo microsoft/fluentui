@@ -11,10 +11,12 @@
     "screener": "just-scripts screener",
     "screener:build": "yarn build",
     "start": "start-storybook",
+    "test": "just-scripts test",
     "type-check": "tsc"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.9",
