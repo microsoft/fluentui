@@ -35,7 +35,7 @@ export type PartitionAvatarGroupItems<T> = {
  *
  * @param options - Configure the partition options
  *
- * @returns Two arrays partitioned into inline items and overflow items based on maxInlineItems.
+ * @returns Two arrays, one containing the inline items and another the overflow items.
  */
 export const partitionAvatarGroupItems = <T>(
   options: PartitionAvatarGroupItemsOptions<T>,
