@@ -38,7 +38,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const { container, target, arrow, strategy, middleware, placement } = options;
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
-  const defaultView = container.ownerDocument.defaultView;
+  const targetWindow = container.ownerDocument.defaultView;
 
   const forceUpdate = () => {
     if (!target || !container) {
@@ -61,8 +61,6 @@ export function createPositionManager(options: PositionManagerOptions): Position
       isFirstUpdate = false;
     }
 
-    const targetDocument = container.ownerDocument;
-
     Object.assign(container.style, { position: strategy });
     computePosition(target, container, { placement, middleware, strategy })
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
@@ -72,7 +70,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
           middlewareData,
           placement: computedPlacement,
           coordinates: { x, y },
-          lowPPI: (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1,
+          lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
           strategy,
         });
       })
@@ -94,9 +92,9 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const updatePosition = debounce(() => forceUpdate());
 
   const dispose = () => {
-    if (defaultView) {
-      defaultView.removeEventListener('scroll', updatePosition);
-      defaultView.removeEventListener('resize', updatePosition);
+    if (targetWindow) {
+      targetWindow.removeEventListener('scroll', updatePosition);
+      targetWindow.removeEventListener('resize', updatePosition);
     }
 
     scrollParents.forEach(scrollParent => {
@@ -104,9 +102,9 @@ export function createPositionManager(options: PositionManagerOptions): Position
     });
   };
 
-  if (defaultView) {
-    defaultView.addEventListener('scroll', updatePosition);
-    defaultView.addEventListener('resize', updatePosition);
+  if (targetWindow) {
+    targetWindow.addEventListener('scroll', updatePosition);
+    targetWindow.addEventListener('resize', updatePosition);
   }
 
   // Update the position on initialization
