@@ -74,7 +74,8 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
     isFocusedOnly = true,
   } = options;
 
-  const win = getWindow();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const win: any = getWindow();
 
   const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
 
