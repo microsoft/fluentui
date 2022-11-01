@@ -166,7 +166,7 @@ export interface PositioningProps
   /**
    * Manual override for the target element. Useful for scenarios where a component accepts user prop to override target
    */
-  target?: TargetElement;
+  target?: TargetElement | null;
 }
 
 export type PositioningShorthandValue =
