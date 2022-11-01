@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: usePortalMount node updates mount node attributes in memo",
+  "packageName": "@fluentui/react-portal",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

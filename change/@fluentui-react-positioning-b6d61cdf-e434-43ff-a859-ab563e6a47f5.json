@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "refactor: modifies target and container ref handling to reduce getScrollParent calls",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
