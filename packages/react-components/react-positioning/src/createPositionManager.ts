@@ -37,15 +37,18 @@ interface PositionManagerOptions {
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   const { container, target, arrow, strategy, middleware, placement } = options;
+  if (!target || !container) {
+    return {
+      updatePosition: () => undefined,
+      dispose: () => undefined,
+    };
+  }
+
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
   const targetWindow = container.ownerDocument.defaultView;
 
   const forceUpdate = () => {
-    if (!target || !container) {
-      return;
-    }
-
     if (isFirstUpdate) {
       scrollParents.add(getScrollParent(container));
       if (target instanceof HTMLElement) {
