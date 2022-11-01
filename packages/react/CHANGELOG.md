@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 31 Oct 2022 07:45:40 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Nov 2022 07:49:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.99.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.2)
+
+Tue, 01 Nov 2022 07:49:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.99.1..@fluentui/react_v8.99.2)
+
+### Patches
+
+- feat: update List to render children on first render() call ([PR #25331](https://github.com/microsoft/fluentui/pull/25331) by seanmonahan@microsoft.com)
 
 ## [8.99.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.1)
 
