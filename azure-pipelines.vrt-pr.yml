@@ -91,7 +91,7 @@ jobs:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
       # - bash: cd packages/screenshotdiff && yarn build
-      #   displayName: 'Build'
+      #   display-Name: 'Build'
       # TODO: Currenly  LKG CI build contains static build ID
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "fluentui" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId)
