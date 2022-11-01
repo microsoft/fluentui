@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Removing blanket selectors from Fabric component and adding them to specific components that use them.",
+  "packageName": "@fluentui/react",
+  "email": "humberto_makoto@hotmail.com",
+  "dependentChangeType": "patch"
+}
