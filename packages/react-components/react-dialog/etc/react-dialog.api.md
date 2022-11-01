@@ -10,7 +10,6 @@ import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
@@ -163,7 +162,7 @@ export type DialogTitleSlots = {
 export type DialogTitleState = ComponentState<DialogTitleSlots>;
 
 // @public
-export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
+export const DialogTrigger: React_2.FC<DialogTriggerProps>;
 
 // @public (undocumented)
 export type DialogTriggerAction = 'open' | 'close';

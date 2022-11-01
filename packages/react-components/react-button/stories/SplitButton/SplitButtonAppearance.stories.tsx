@@ -23,7 +23,7 @@ export const Appearance = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Default</SplitButton>}
         </MenuTrigger>
 
@@ -36,7 +36,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} appearance="primary">
               Primary
@@ -53,7 +53,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} appearance="outline">
               Outline
@@ -70,7 +70,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} appearance="subtle">
               Subtle
@@ -87,7 +87,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} appearance="transparent">
               Transparent

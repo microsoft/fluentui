@@ -18,7 +18,7 @@ describe('Popover', () => {
   ['uncontrolled', 'controlled'].forEach(scenario => {
     const UncontrolledExample = () => (
       <Popover>
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <button>Trigger</button>
         </PopoverTrigger>
         <PopoverSurface>This is a popover</PopoverSurface>
@@ -30,7 +30,7 @@ describe('Popover', () => {
 
       return (
         <Popover open={open} onOpenChange={(e, data) => setOpen(data.open)}>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -83,7 +83,7 @@ describe('Popover', () => {
     beforeEach(() => {
       mount(
         <Popover openOnHover>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -110,7 +110,7 @@ describe('Popover', () => {
     it('should dismiss on click outside', () => {
       mount(
         <Popover>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <CustomTrigger />
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -124,7 +124,7 @@ describe('Popover', () => {
     beforeEach(() => {
       mount(
         <Popover openOnContext>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -151,7 +151,7 @@ describe('Popover', () => {
     beforeEach(() => {
       mount(
         <Popover closeOnScroll>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -171,7 +171,7 @@ describe('Popover', () => {
       const id = 'first';
       return (
         <Popover trapFocus>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>First nested trigger</button>
           </PopoverTrigger>
 
@@ -188,7 +188,7 @@ describe('Popover', () => {
       const id = 'second';
       return (
         <Popover trapFocus>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>Second nested trigger</button>
           </PopoverTrigger>
 
@@ -202,7 +202,7 @@ describe('Popover', () => {
     const Example = () => {
       return (
         <Popover trapFocus>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>Root trigger</button>
           </PopoverTrigger>
 
@@ -297,7 +297,7 @@ describe('Popover', () => {
 
       return (
         <Popover onOpenChange={onOpenChange}>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <button>Popover trigger</button>
           </PopoverTrigger>
 
@@ -333,7 +333,7 @@ describe('Popover', () => {
         <>
           <div>
             <Popover inline>
-              <PopoverTrigger>
+              <PopoverTrigger disableButtonEnhancement>
                 <button>Popover trigger</button>
               </PopoverTrigger>
 
@@ -359,7 +359,7 @@ describe('Popover', () => {
       it('Tab should not go to the window', () => {
         mount(
           <Popover trapFocus legacyTrapFocus>
-            <PopoverTrigger>
+            <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>
             </PopoverTrigger>
 
@@ -383,7 +383,7 @@ describe('Popover', () => {
       it('should focus on PopoverSurface when its tabIndex is a number', () => {
         mount(
           <Popover trapFocus legacyTrapFocus>
-            <PopoverTrigger>
+            <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>
             </PopoverTrigger>
 

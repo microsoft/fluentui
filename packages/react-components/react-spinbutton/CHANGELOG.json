@@ -2,6 +2,27 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:36 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.6",
+      "version": "9.0.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "ab9bf285848173c8a3f2113b9dac63dbbebf7407",
+            "comment": "feat: updates internal SpinButton padding"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.2.3",
+            "commit": "eef12b9ae58b64ff68576dc2d865b601e46c85b9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:46 GMT",
       "tag": "@fluentui/react-spinbutton_v9.0.5",
       "version": "9.0.5",

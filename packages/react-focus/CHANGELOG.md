@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 20 Oct 2022 07:43:12 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Oct 2022 07:52:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.8)
+
+Wed, 26 Oct 2022 07:52:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.8.7..@fluentui/react-focus_v8.8.8)
+
+### Patches
+
+- fix: add support for HTML details element ([PR #25324](https://github.com/microsoft/fluentui/pull/25324) by seanmonahan@microsoft.com)
 
 ## [8.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.7)
 

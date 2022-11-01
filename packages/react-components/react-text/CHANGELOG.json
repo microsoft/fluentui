@@ -2,6 +2,29 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:37 GMT",
+      "tag": "@fluentui/react-text_v9.1.4",
+      "version": "9.1.4",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ],
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "36a3fc729e3ece19ba59fdf996a685578c0d0876",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:53 GMT",
       "tag": "@fluentui/react-text_v9.1.3",
       "version": "9.1.3",

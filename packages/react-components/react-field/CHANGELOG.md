@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Thu, 20 Oct 2022 08:39:33 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.6)
+
+Tue, 25 Oct 2022 00:35:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.5..@fluentui/react-field_v9.0.0-alpha.6)
+
+### Changes
+
+- feat: Add support for validationState to ProgressField ([PR #25253](https://github.com/microsoft/fluentui/pull/25253) by behowell@microsoft.com)
+- Bump @fluentui/react-checkbox to v9.0.10 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-input to v9.2.3 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-progress to v9.0.0-alpha.3 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.6 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.5)
 

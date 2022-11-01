@@ -30,7 +30,7 @@ export const WithForm = () => {
   };
   return (
     <Dialog modalType="non-modal">
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open formulary dialog</Button>
       </DialogTrigger>
       <DialogSurface aria-describedby={undefined}>
@@ -48,7 +48,7 @@ export const WithForm = () => {
               <Input required type="password" id={'password-input'} />
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button type="submit" appearance="primary">

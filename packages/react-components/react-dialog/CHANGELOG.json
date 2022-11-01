@@ -2,6 +2,29 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:31 GMT",
+      "tag": "@fluentui/react-dialog_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc",
+            "comment": "bugfix: adds cursor pointer style to dialog close button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:32 GMT",
       "tag": "@fluentui/react-dialog_v9.0.2",
       "version": "9.0.2",

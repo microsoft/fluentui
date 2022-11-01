@@ -3016,17 +3016,17 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.3.1.tgz#defc59874176e42316be7e6d24c31885ead8ca56"
   integrity sha512-72RZXVfCbwQzvo5sXXkuLXLT7rMeYaSf5r/6ewQiv/trBtqpWRm4DEH2EilHw/iWTBKOXs1qZNQndgUMa5n4LA==
 
-"@microsoft/fast-element@^1.10.4", "@microsoft/fast-element@^1.10.5":
-  version "1.10.5"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.10.5.tgz#0ccedb56bd1fa9d981acb33665d074abb3bf76f5"
-  integrity sha512-7aqo60dh+ip+NyReRPRiR8ndb4ZX7An3ms6TNhnrdLUtCon4kOv0GVxJdlVjqsSvrk9nOMN58A6Sg6ertt8hXQ==
+"@microsoft/fast-element@^1.10.4", "@microsoft/fast-element@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.11.0.tgz#494f6c87057bcbb42406982d68a92887d6b5acb1"
+  integrity sha512-VKJYMkS5zgzHHb66sY7AFpYv6IfFhXrjQcAyNgi2ivD65My1XOhtjfKez5ELcLFRJfgZNAxvI8kE69apXERTkw==
 
-"@microsoft/fast-foundation@^2.46.14":
-  version "2.46.14"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.46.14.tgz#75e9b31ba0781f5f437710f1135fa903076d9fb3"
-  integrity sha512-r97fidZZ7uMjqg/HPYEY7EofZaPS8mCnQWWuvG9oS0JuE1XeLeYD3eMo/mG1Xn68IZc9kztyzA2sGUrm4piq/Q==
+"@microsoft/fast-foundation@^2.47.0":
+  version "2.47.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.47.0.tgz#a4cc8c5277e21d080215f5adcaed4266a8dd8a8e"
+  integrity sha512-EyFuioaZQ9ngjUNRQi8R3dIPPsaNQdUOS+tP0G7b1MJRhXmQWIitBM6IeveQA6ZvXG6H21dqgrfEWlsYrUZ2sw==
   dependencies:
-    "@microsoft/fast-element" "^1.10.5"
+    "@microsoft/fast-element" "^1.11.0"
     "@microsoft/fast-web-utilities" "^5.4.1"
     tabbable "^5.2.0"
     tslib "^1.13.0"
@@ -21155,6 +21155,18 @@ pkg-up@^4.0.0:
   dependencies:
     find-up "^6.2.0"
 
+playwright-core@1.27.1:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.27.1.tgz#840ef662e55a3ed759d8b5d3d00a5f885a7184f4"
+  integrity sha512-9EmeXDncC2Pmp/z+teoVYlvmPWUC6ejSSYZUln7YaP89Z6lpAaiaAnqroUt/BoLo8tn7WYShcfaCh+xofZa44Q==
+
+playwright@^1.27.0:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.27.1.tgz#4eecac5899566c589d4220ca8acc16abe8a67450"
+  integrity sha512-xXYZ7m36yTtC+oFgqH0eTgullGztKSRMb4yuwLPl8IYSmgBM88QiB+3IWb1mRIC9/NNwcgbG0RwtFlg+EAFQHQ==
+  dependencies:
+    playwright-core "1.27.1"
+
 please-upgrade-node@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.2.0.tgz#aeddd3f994c933e4ad98b99d9a556efa0e2fe942"
@@ -24282,6 +24294,15 @@ storybook-addon-performance@0.16.1:
     styled-components "^5.1.1"
     tiny-invariant "^1.1.0"
     xstate "^4.22.0"
+
+storywright@0.0.23-beta.6:
+  version "0.0.23-beta.6"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.6.tgz#cf44dadd29caddd51a7b1b6af1074f8efc876f76"
+  integrity sha512-Kwhk0xlRdy+e8CP21ZueAVSkw0e367MgO2XJPqPdet/RsE+rr4j0VOGA/TjqsHP+G25/FxwZI0UL/6q9alNUfQ==
+  dependencies:
+    playwright "^1.27.0"
+    prop-types "^15.6.0"
+    yargs "^16.2.0"
 
 stream-browserify@^2.0.1:
   version "2.0.2"

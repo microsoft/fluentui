@@ -139,7 +139,7 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
 
   loaderBorderSize: pxToRem(2),
   loaderSize: pxToRem(20),
-  loaderSvgHeight: pxToRem(1220),
+  loaderSvgHeight: pxToRem(20),
   loaderSvgAnimationHeight: pxToRem(-1200),
 
   sizeSmallContentFontSize: siteVars.fontSizes.small,
@@ -149,6 +149,6 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
   sizeSmallPadding: `0 ${pxToRem(8)}`,
   sizeSmallLoaderBorderSize: pxToRem(2),
   sizeSmallLoaderSize: pxToRem(15),
-  sizeSmallLoaderSvgHeight: pxToRem(895),
+  sizeSmallLoaderSvgHeight: pxToRem(15),
   sizeSmallLoaderSvgAnimationHeight: pxToRem(-880),
 });

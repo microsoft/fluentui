@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Fixing color of disabled links in High Contrast mode.",
-  "packageName": "@fluentui/react",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}

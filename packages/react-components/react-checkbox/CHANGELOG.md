@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Thu, 20 Oct 2022 08:39:29 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Oct 2022 00:35:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.10)
+
+Tue, 25 Oct 2022 00:35:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.9..@fluentui/react-checkbox_v9.0.10)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25337](https://github.com/microsoft/fluentui/pull/25337) by tristan.watanabe@gmail.com)
 
 ## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.9)
 
