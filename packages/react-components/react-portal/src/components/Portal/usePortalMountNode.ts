@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import {
   useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
