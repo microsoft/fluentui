@@ -42,13 +42,14 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
 
   const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
-  const { placement, middleware, strategy } = resolvePositioningOptions(containerRef.current, arrowRef.current);
 
   const forceUpdate = useEventCallback(() => {
     const target = targetRef.current;
     if (!canUseDOM || !enabled || !target || !containerRef.current) {
       return;
     }
+
+    const { placement, middleware, strategy } = resolvePositioningOptions(containerRef.current, arrowRef.current);
 
     // Container is always initialized with `position: fixed` to avoid scroll jumps
     // Before computing the positioned coordinates, revert the container to the deisred positioning strategy
