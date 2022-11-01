@@ -43,7 +43,7 @@ function getDir(variant: Variant) {
 
 function getStoryName(story: ComponentStory<any>) {
   if (story.storyName) {
-    return story;
+    return story.storyName;
   }
 
   return story.name.replace(/([a-z])([A-Z])/g, '$1 $2');
