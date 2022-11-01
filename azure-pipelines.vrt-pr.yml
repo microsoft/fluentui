@@ -60,7 +60,7 @@ jobs:
         inputs:
           githubOwner: sunilsurana
           githubRepo: 'fluentuifork1'
-          blobFilePath: 'screenshotdiffcomment.md'
+          blobFilePath: 'node_modules/vrscreenshotdiff/vr-comment.txt'
           status: 'success'
           uniqueId: 'vrtTest'
 

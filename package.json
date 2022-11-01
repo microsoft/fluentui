@@ -64,7 +64,7 @@
     "update-snapshots": "lage update-snapshots --verbose"
   },
   "devDependencies": {
-    "vrscreenshotdiff": "0.0.2",
+    "vrscreenshotdiff": "0.0.3",
     "@actions/core": "1.9.1",
     "@actions/github": "5.0.3",
     "@azure/data-tables": "13.0.0",
