@@ -4,7 +4,7 @@ Convergence epic issue: [#25062](https://github.com/microsoft/fluentui/issues/25
 
 ## Background
 
-An InfoButton provides a way for users to get more information about a particular UI element. It is a button that displays an icon and when clicked a Popover displays the additional information. InfoButton may contain focusable items inside the Popover.
+An InfoButton provides a way for users to get more information about a particular UI element. It is a button containing an icon that, when clicked, displays a Popover with the additional information. InfoButton may contain focusable items inside the Popover.
 
 Because the Popover isn't always visible, it should not contain information that people must know in order to complete the field.
 
@@ -25,7 +25,7 @@ Because the Popover isn't always visible, it should not contain information that
 #### Comparison with v0 and v8
 
 - v0 does not have an InfoButton component.
-- v8 does not have an InfoButton component, but does have a TextField component that has an example of how to add an info button to a TextField, see Open UI section above for more details.
+- v8 does not have an InfoButton component, but does have a TextField component that has an example of how to add an info button to a TextField, see "Prior Art" section above for more details.
 
 ## Sample Code
 
@@ -119,7 +119,7 @@ There's no migration guide as `v0` and `v8` do not have an InfoButton component.
 
 ## Behaviors
 
-> Note: The behavior will change when used in conjunction with the `Field` component. It is mentioned that when a form has many infobuttons, it may be better to not make a full tab stop in the button. The idea is to have each field have a "shortcut" that will let you focus on the infobutton. This will be implemented by Field if needed.
+> Note: The behavior will change when used in conjunction with the `Field` component. It is mentioned that when a form has many InfoButtons, it may be better to not make a full tab stop in the button. The idea is to have each field have a "shortcut" that will let you focus on the infobutton. This will be implemented by Field if needed.
 
 - _Component States_
   - Popover open: The Popover is open and content visible.
