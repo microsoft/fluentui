@@ -80,7 +80,7 @@ const items: Item[] = [
   },
 ];
 
-const repeatCount = 25;
+const repeatCount = 250;
 const generateContent = (): Item[] => {
   const contentList: Item[] = [];
   for (let i = 0; i < repeatCount; i++) {
@@ -165,7 +165,7 @@ export const Virtualized = () => {
       <TableBody>
         <Virtualizer
           flow={VirtualizerFlow.Vertical}
-          virtualizerLength={25}
+          virtualizerLength={100}
           itemSize={44}
           /* The scrollViewRef is optional if you want to encapsulate inside a scroll view
             it will be more efficient with this method, but is not required.

@@ -102,8 +102,20 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
 
         if (latestEntry.target === afterElementRef.current) {
           measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
+          // Since we know the intersection ratio, we can figure out how far we have scrolled, up to a max of viewport
+          const ratioDiff = latestEntry.intersectionRatio * measurementPos;
+          if (isReversed) {
+            ratioDiff * -1;
+          }
+          measurementPos += ratioDiff;
         } else if (latestEntry.target === beforeElementRef.current) {
           measurementPos = isReversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
+          // Since we know the intersection ratio, we can figure out how far we have scrolled, up to a max of viewport.
+          const ratioDiff = latestEntry.intersectionRatio * measurementPos;
+          if (isReversed) {
+            ratioDiff * -1;
+          }
+          measurementPos -= latestEntry.intersectionRatio * measurementPos;
         }
       }
 
