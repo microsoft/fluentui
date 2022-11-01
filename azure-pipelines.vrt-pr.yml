@@ -106,12 +106,3 @@ jobs:
           STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
           BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-
-      - task: GithubPRComment@0
-        displayName: Post results to PR (PR only)
-        inputs:
-          githubOwner: sunilsurana
-          githubRepo: 'fluentuifork1'
-          blobFilePath: 'node_modules/vrscreenshotdiff/vr-comment.txt'
-          status: 'success'
-          uniqueId: 'vrtTest'
