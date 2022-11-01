@@ -1,17 +1,25 @@
 import { computePosition, hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
-import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from '@floating-ui/dom';
+import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
-import type { PositioningOptions, PositioningProps, PositioningVirtualElement } from './types';
+import type {
+  PositioningOptions,
+  PositioningVirtualElement,
+  TargetType,
+  UsePositioningOptions,
+  UsePositioningReturn,
+} from './types';
 import {
   useCallbackRef,
   toFloatingUIPlacement,
-  toggleScrollListener,
   hasAutofocusFilter,
   debounce,
   hasScrollParent,
+  getScrollParent,
+  writeArrowUpdates,
+  writeContainerUpdates,
 } from './utils';
 import {
   shift as shiftMiddleware,
@@ -21,45 +29,26 @@ import {
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware';
-import {
-  DATA_POSITIONING_ESCAPED,
-  DATA_POSITIONING_INTERSECTING,
-  DATA_POSITIONING_HIDDEN,
-  DATA_POSITIONING_PLACEMENT,
-} from './constants';
 
 /**
  * @internal
  */
-export function usePositioning(
-  options: UsePositioningOptions,
-): {
-  // React refs are supposed to be contravariant
-  // (allows a more general type to be passed rather than a more specific one)
-  // However, Typescript currently can't infer that fact for refs
-  // See https://github.com/microsoft/TypeScript/issues/30748 for more information
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  targetRef: React.MutableRefObject<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  containerRef: React.MutableRefObject<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  arrowRef: React.MutableRefObject<any>;
-} {
+export function usePositioning(options: UsePositioningOptions): UsePositioningReturn {
+  const containerRef = React.useRef<HTMLElement | null>(null);
+  const targetRef = React.useRef<HTMLElement | PositioningVirtualElement | null>(null);
+  const arrowRef = React.useRef<HTMLElement | null>(null);
+
   const { targetDocument } = useFluent();
+
   const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
+  const { placement, middleware, strategy } = resolvePositioningOptions(containerRef.current, arrowRef.current);
 
   const forceUpdate = useEventCallback(() => {
-    const target = overrideTargetRef.current ?? targetRef.current;
+    const target = targetRef.current;
     if (!canUseDOM || !enabled || !target || !containerRef.current) {
       return;
     }
-
-    const { placement, middleware, strategy } = resolvePositioningOptions(
-      target,
-      containerRef.current,
-      arrowRef.current,
-    );
 
     // Container is always initialized with `position: fixed` to avoid scroll jumps
     // Before computing the positioned coordinates, revert the container to the deisred positioning strategy
@@ -93,16 +82,51 @@ export function usePositioning(
 
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
-  const targetRef = useTargetRef(updatePosition);
-  const overrideTargetRef = useTargetRef(updatePosition);
-  const containerRef = useContainerRef(updatePosition, enabled);
-  const arrowRef = useArrowRef(updatePosition);
+  const cleanupScrollListenersRef = React.useRef<() => void>(() => null);
+  const handleRefUpdate = React.useCallback(() => {
+    if (containerRef.current) {
+      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
+      // Without this scroll jumps can occur when the element is rendered initially and receives focus
+      Object.assign(containerRef.current.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
+    }
+
+    cleanupScrollListenersRef.current();
+    const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
+    if (enabled && containerRef.current && targetRef.current) {
+      // `getScrollParent` will cause reflow, running it when when enabled, container and target
+      // are all correctly set will make sure that it is run as little as possible
+      scrollParents.add(getScrollParent(containerRef.current));
+      if (targetRef.current instanceof HTMLElement) {
+        scrollParents.add(getScrollParent(targetRef.current));
+      }
+
+      scrollParents.forEach(scrollParent => {
+        scrollParent.addEventListener('scroll', updatePosition);
+      });
+
+      cleanupScrollListenersRef.current = () => {
+        scrollParents.forEach(scrollParent => {
+          scrollParent.removeEventListener('scroll', updatePosition);
+        });
+      };
+    }
+
+    updatePosition();
+  }, [enabled, updatePosition]);
+
+  const overrideTarget = React.useCallback(
+    (target: TargetType) => {
+      targetRef.current = target;
+      handleRefUpdate();
+    },
+    [handleRefUpdate],
+  );
 
   React.useImperativeHandle(
     options.positioningRef,
     () => ({
       updatePosition,
-      setTarget: (target: HTMLElement | PositioningVirtualElement) => {
+      setTarget: (target: TargetType) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console
@@ -111,7 +135,7 @@ export function usePositioning(
           console.warn(err.stack);
         }
 
-        overrideTargetRef.current = target;
+        overrideTarget(target);
       },
     }),
     // Missing deps:
@@ -123,8 +147,10 @@ export function usePositioning(
   );
 
   useIsomorphicLayoutEffect(() => {
-    overrideTargetRef.current = options.target ?? null;
-  }, [options.target, overrideTargetRef, containerRef]);
+    if (options.target) {
+      overrideTarget(options.target);
+    }
+  }, [options.target, overrideTarget]);
 
   useIsomorphicLayoutEffect(() => {
     updatePosition();
@@ -186,14 +212,21 @@ export function usePositioning(
     }, []);
   }
 
-  return { targetRef, containerRef, arrowRef };
-}
+  const setTargetElement = useCallbackRef<TargetType>(null, target => {
+    targetRef.current = target;
+    handleRefUpdate();
+  });
+  const setContainerElement = useCallbackRef<HTMLElement | null>(null, container => {
+    containerRef.current = container;
+    handleRefUpdate();
+  });
+  const setArrowElement = useCallbackRef<HTMLElement | null>(null, arrow => {
+    containerRef.current = arrow;
+    handleRefUpdate();
+  });
 
-interface UsePositioningOptions extends PositioningProps {
-  /**
-   * If false, does not position anything
-   */
-  enabled?: boolean;
+  // Users should consume callback refs so they can set them like 'standard' HTML refs
+  return { targetRef: setTargetElement, containerRef: setContainerElement, arrowRef: setArrowElement };
 }
 
 function usePositioningOptions(options: PositioningOptions) {
@@ -216,11 +249,7 @@ function usePositioningOptions(options: PositioningOptions) {
   const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
 
   return React.useCallback(
-    (
-      target: HTMLElement | PositioningVirtualElement | null,
-      container: HTMLElement | null,
-      arrow: HTMLElement | null,
-    ) => {
+    (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -257,96 +286,4 @@ function usePositioningOptions(options: PositioningOptions) {
       strategy,
     ],
   );
-}
-
-function useContainerRef(updatePosition: () => void, enabled: boolean) {
-  return useCallbackRef<HTMLElement | null>(null, (container, prevContainer) => {
-    if (container && enabled) {
-      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
-      // Without this scroll jumps can occur when the element is rendered initially and receives focus
-      Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
-    }
-
-    toggleScrollListener(container, prevContainer, updatePosition);
-
-    updatePosition();
-  });
-}
-
-function useTargetRef(updatePosition: () => void) {
-  return useCallbackRef<HTMLElement | PositioningVirtualElement | null>(null, (target, prevTarget) => {
-    toggleScrollListener(target, prevTarget, updatePosition);
-
-    updatePosition();
-  });
-}
-
-function useArrowRef(updatePosition: () => void) {
-  return useCallbackRef<HTMLElement | null>(null, updatePosition);
-}
-
-/**
- * Writes all DOM element updates after position is computed
- */
-function writeContainerUpdates(options: {
-  container: HTMLElement | null;
-  placement: Placement;
-  middlewareData: MiddlewareData;
-  /**
-   * Layer acceleration can disable subpixel rendering which causes slightly
-   * blurry text on low PPI displays, so we want to use 2D transforms
-   * instead
-   */
-  lowPPI: boolean;
-  strategy: Strategy;
-  coordinates: Coords;
-}) {
-  const {
-    container,
-    placement,
-    middlewareData,
-    strategy,
-    lowPPI,
-    coordinates: { x, y },
-  } = options;
-  if (!container) {
-    return;
-  }
-  container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
-  container.removeAttribute(DATA_POSITIONING_INTERSECTING);
-  if (middlewareData.intersectionObserver.intersecting) {
-    container.setAttribute(DATA_POSITIONING_INTERSECTING, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_ESCAPED);
-  if (middlewareData.hide?.escaped) {
-    container.setAttribute(DATA_POSITIONING_ESCAPED, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_HIDDEN);
-  if (middlewareData.hide?.referenceHidden) {
-    container.setAttribute(DATA_POSITIONING_HIDDEN, '');
-  }
-
-  Object.assign(container.style, {
-    transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
-    position: strategy,
-  });
-}
-
-/**
- * Writes all DOM element updates after position is computed
- */
-function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewareData: MiddlewareData }) {
-  const { arrow, middlewareData } = options;
-  if (!middlewareData.arrow || !arrow) {
-    return;
-  }
-
-  const { x: arrowX, y: arrowY } = middlewareData.arrow;
-
-  Object.assign(arrow.style, {
-    left: `${arrowX}px`,
-    top: `${arrowY}px`,
-  });
 }

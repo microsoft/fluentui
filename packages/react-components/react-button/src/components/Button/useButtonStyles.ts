@@ -70,7 +70,7 @@ const useRootStyles = makeStyles({
 
   // Transition styles
   transition: {
-    transitionDuration: '100ms',
+    transitionDuration: '2000ms',
     transitionProperty: 'background, border, color',
     transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
 
