@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Toolbar, ToolbarButton, ToolbarToggleButton, ToolbarDivider } from '@fluentui/react-components/unstable';
-import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-toolbar';
+import type { ToolbarProps, ToolbarButtonProps, ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
 
 import {
   Button,
@@ -31,19 +31,56 @@ import {
 
 import { Scenario } from './utils';
 
-const toolbarItems = [
+interface ToolbarItem {
+  id: string;
+  type: 'default';
+  label: string;
+}
+
+interface ToolbarToggleItem {
+  id: string;
+  type: 'toggle';
+  name: string;
+  value: string;
+  label: string;
+}
+
+type OverflowToolbarItems = Array<Array<ToolbarItem | ToolbarToggleItem>>;
+
+const overflowToolbarItems: OverflowToolbarItems = [
   [
     {
       id: 'align-left',
+      type: 'toggle',
+      name: 'align',
+      value: 'align-left',
       label: 'Align left',
     },
     {
       id: 'align-center',
+      type: 'toggle',
+      name: 'align',
+      value: 'align-center',
       label: 'Align center',
     },
     {
       id: 'align-right',
+      type: 'toggle',
+      name: 'align',
+      value: 'align-right',
       label: 'Align right',
+    },
+  ],
+  [
+    {
+      id: 'increase-indent',
+      type: 'default',
+      label: 'Increase indent',
+    },
+    {
+      id: 'decrease-indent',
+      type: 'default',
+      label: 'Decrease indent',
     },
   ],
 ];
@@ -91,13 +128,13 @@ const OverflowMenu: React.FC = () => {
 
       <MenuPopover>
         <MenuList>
-          {toolbarItems.map((group, groupIndex) => {
-            const isLast = groupIndex === toolbarItems.length - 1;
+          {overflowToolbarItems.map((group, groupIndex) => {
+            const isLast = groupIndex === overflowToolbarItems.length - 1;
             return (
               <React.Fragment key={group.map(item => item.id).join()}>
-                {group.map(item => (
-                  <ToolbarOverflowMenuItem key={item.id} id={item.id} label={item.label} />
-                ))}
+                {group.map(item => {
+                  return <ToolbarOverflowMenuItem key={item.id} id={item.id} label={item.label} />;
+                })}
                 {!isLast && <ToolbarMenuOverflowDivider id={`${groupIndex + 1}`} />}
               </React.Fragment>
             );
@@ -108,15 +145,28 @@ const OverflowMenu: React.FC = () => {
   );
 };
 
-type ToolbarOverflowMenuProps = {
+type ToolbarOverflowButtonProps = {
   overflowId: string;
   overflowGroupId: string;
 } & ToolbarButtonProps;
 
-const ToolbarOverflowButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowMenuProps) => {
+type ToolbarOverflowToggleButtonProps = {
+  overflowId: string;
+  overflowGroupId: string;
+} & ToolbarToggleButtonProps;
+
+const ToolbarOverflowButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowButtonProps) => {
   return (
     <OverflowItem id={overflowId} groupId={overflowGroupId}>
       <ToolbarButton {...props} />
+    </OverflowItem>
+  );
+};
+
+const ToolbarOverflowToggleButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowToggleButtonProps) => {
+  return (
+    <OverflowItem id={overflowId} groupId={overflowGroupId}>
+      <ToolbarToggleButton {...props} />
     </OverflowItem>
   );
 };
@@ -135,39 +185,74 @@ const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps) => {
   return null;
 };
 
-const OverflowToolbar = (props: Partial<ToolbarProps>) => (
-  <div
-    style={{
-      resize: 'horizontal',
-      overflow: 'hidden',
-    }}
-  >
-    <Overflow padding={90}>
-      <Toolbar {...props} size="small" aria-label="Paragraph">
-        {toolbarItems.map((group, groupIndex) => {
-          const isLast = groupIndex === toolbarItems.length - 1;
-          return (
-            <React.Fragment key={group.map(item => item.id).join()}>
-              {group.map(item => (
-                <ToolbarOverflowButton
-                  key={item.id}
-                  overflowId={item.id}
-                  overflowGroupId={`${groupIndex + 1}`}
-                  appearance="subtle"
-                >
-                  {item.label}
-                </ToolbarOverflowButton>
-              ))}
-              {!isLast && <ToolbarOverflowDivider groupId={`${groupIndex + 1}`} />}
-            </React.Fragment>
-          );
-        })}
+const OverflowToolbar = (props: Partial<ToolbarProps>) => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
+    align: ['align-left', 'align-center', 'align-right'],
+  });
+  const onChange: ToolbarProps['onCheckedValueChange'] = (event, { name, checkedItems }) => {
+    alert('test');
+    alert(checkedItems);
+    setCheckedValues(s => {
+      return { [name]: checkedItems };
+    });
+  };
 
-        <OverflowMenu />
-      </Toolbar>
-    </Overflow>
-  </div>
-);
+  return (
+    <div
+      style={{
+        resize: 'horizontal',
+        overflow: 'hidden',
+      }}
+    >
+      <Overflow padding={90}>
+        <Toolbar
+          {...props}
+          size="small"
+          checkedValues={checkedValues}
+          onCheckedValueChange={onChange}
+          aria-label="Paragraph"
+        >
+          {overflowToolbarItems.map((group, groupIndex) => {
+            const isLast = groupIndex === overflowToolbarItems.length - 1;
+            return (
+              <React.Fragment key={group.map(item => item.id).join()}>
+                {group.map(item => {
+                  if (item.type === 'toggle') {
+                    return (
+                      <ToolbarOverflowToggleButton
+                        key={item.id}
+                        name={item.name}
+                        value={item.value}
+                        appearance="subtle"
+                        overflowId={item.id}
+                        overflowGroupId={`${groupIndex + 1}`}
+                      >
+                        {item.label}
+                      </ToolbarOverflowToggleButton>
+                    );
+                  }
+                  return (
+                    <ToolbarOverflowButton
+                      key={item.id}
+                      overflowId={item.id}
+                      overflowGroupId={`${groupIndex + 1}`}
+                      appearance="subtle"
+                    >
+                      {item.label}
+                    </ToolbarOverflowButton>
+                  );
+                })}
+                {!isLast && <ToolbarOverflowDivider groupId={`${groupIndex + 1}`} />}
+              </React.Fragment>
+            );
+          })}
+
+          <OverflowMenu />
+        </Toolbar>
+      </Overflow>
+    </div>
+  );
+};
 
 export const TextEditorToolbars: React.FunctionComponent = () => {
   return (
