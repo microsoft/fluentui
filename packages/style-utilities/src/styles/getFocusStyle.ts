@@ -1,5 +1,5 @@
 import { HighContrastSelector } from './CommonStyles';
-import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import { IsFocusVisibleClassName, getWindow } from '@fluentui/utilities';
 import { ZIndexes } from './zIndexes';
 import type { IRawStyle } from '@fluentui/merge-styles';
 import type { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
@@ -74,6 +74,14 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
     isFocusedOnly = true,
   } = options;
 
+  const win = getWindow();
+
+  const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
+
+  const selector = focusVisibleSupported
+    ? `&${isFocusedOnly ? ':focus-visible' : ''}:after`
+    : `.${IsFocusVisibleClassName} &${isFocusedOnly ? ':focus' : ''}:after`;
+
   return {
     // Clear browser-specific focus styles and use 'transparent' as placeholder for focus style.
     outline: 'transparent',
@@ -89,7 +97,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
 
       // When the element that uses this mixin is in a :focus state, add a pseudo-element to
       // create a border.
-      [`.${IsFocusVisibleClassName} &${isFocusedOnly ? ':focus' : ''}:after`]: {
+      [selector]: {
         content: '""',
         position: 'absolute',
         left: inset + 1,
@@ -99,7 +107,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
         border: `${width}px solid ${borderColor}`,
         outline: `${width}px solid ${outlineColor}`,
         zIndex: ZIndexes.FocusStyle,
-        borderRadius: borderRadius,
+        borderRadius,
         selectors: {
           [HighContrastSelector]: highContrastStyle,
         },
@@ -136,9 +144,10 @@ export function focusClear(): IRawStyle {
  * @returns The style object.
  */
 export function getFocusOutlineStyle(theme: ITheme, inset: number = 0, width: number = 1, color?: string): IRawStyle {
+  const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
   return {
     selectors: {
-      [`:global(${IsFocusVisibleClassName}) &:focus`]: {
+      [focusVisibleSupported ? `:global(${IsFocusVisibleClassName}) &:focus` : '&:focus-visible']: {
         outline: `${width} solid ${color || theme.palette.neutralSecondary}`,
         outlineOffset: `${-inset}px`,
       },

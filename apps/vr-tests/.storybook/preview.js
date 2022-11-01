@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
+import { useWindow } from '@fluentui/react';
 
 /**
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
@@ -38,6 +39,17 @@ setAddon({
     return this;
   },
 });
+
+export const decorators = [
+  Story => {
+    const win = useWindow();
+    if (win) {
+      // @ts-ignore
+      win.FabricConfig = { disableFocusRects: true };
+    }
+    return <Story />;
+  },
+];
 
 export const parameters = { layout: 'none' };
 
