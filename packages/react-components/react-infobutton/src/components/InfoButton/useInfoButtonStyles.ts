@@ -18,66 +18,52 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
 const useButtonStyles = makeStyles({
   base: {
     alignItems: 'center',
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
+    boxSizing: 'border-box',
     display: 'inline-flex',
     justifyContent: 'center',
-    maxWidth: '28px',
-    minWidth: '28px',
-    outlineStyle: 'none',
-    ...shorthands.padding(tokens.spacingHorizontalXS),
+    textDecorationLine: 'none',
+    verticalAlign: 'middle',
 
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+    backgroundColor: tokens.colorTransparentBackground,
+    color: tokens.colorNeutralForeground2,
+    fontFamily: tokens.fontFamilyBase,
 
-      cursor: 'pointer',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline-flex',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-
-    ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
-
-      outlineStyle: 'none',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline-flex',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-  },
-
-  selected: {
-    color: tokens.colorNeutralForeground2BrandPressed,
+    ...shorthands.overflow('hidden'),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+    ...shorthands.margin(0),
 
     [`& .${iconFilledClassName}`]: {
+      display: 'none',
+    },
+    [`& .${iconRegularClassName}`]: {
       display: 'inline-flex',
     },
 
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
+    ':enabled:hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+      color: tokens.colorNeutralForeground2BrandHover,
 
-    '@media (forced-colors: active)': {
-      color: 'Highlight',
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline-flex',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+    },
+    ':enabled:hover:active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      color: tokens.colorNeutralForeground2BrandPressed,
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      color: tokens.colorNeutralForegroundDisabled,
     },
   },
 
   focusIndicator: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
     outlineColor: tokens.colorTransparentStroke,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
@@ -88,49 +74,15 @@ const useButtonStyles = makeStyles({
     zIndex: 1,
   }),
 
-  transition: {
-    transitionDuration: tokens.durationFaster,
-    transitionProperty: 'background, border, color',
-    transitionTimingFunction: tokens.curveEasyEase,
+  selected: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    color: tokens.colorNeutralForeground2BrandSelected,
 
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      transitionDuration: '0.01ms',
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline-flex',
     },
-  },
-});
-
-const useDisabledButtonStyles = makeStyles({
-  base: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundDisabled,
-
-    cursor: 'not-allowed',
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundDisabled,
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'none',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'inline-flex',
-      },
-    },
-
-    ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundDisabled,
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'none',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'inline-flex',
-      },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
     },
   },
 });
@@ -140,20 +92,14 @@ const useDisabledButtonStyles = makeStyles({
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
   const { open } = state.popover;
-  const { disabled } = state.root;
   const buttonStyles = useButtonStyles();
-  const disabledButtonStyles = useDisabledButtonStyles();
 
   state.content.className = mergeClasses(infoButtonClassNames.content, state.content.className);
   state.root.className = mergeClasses(
     infoButtonClassNames.root,
     buttonStyles.base,
     buttonStyles.focusIndicator,
-    buttonStyles.transition,
     open && buttonStyles.selected,
-
-    disabled && disabledButtonStyles.base,
-
     state.root.className,
   );
 

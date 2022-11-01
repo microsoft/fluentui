@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon } from './DefaultInfoButtonIcon';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
+import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
-import type { PopoverProps } from '@fluentui/react-popover';
 
 /**
  * Create the state required to render InfoButton.
@@ -47,21 +46,13 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
   };
 
   const [popoverOpen, setPopoverOpen] = useControllableState({
-    state: (props.popover as PopoverProps)?.open,
-    defaultState: (props.popover as PopoverProps)?.defaultOpen,
+    state: state.popover.open,
+    defaultState: state.popover.defaultOpen,
     initialState: false,
   });
 
-  const handleOnPopoverChange = React.useCallback(
-    (e: OpenPopoverEvents, data: OnOpenChangeData) => {
-      (props.popover as PopoverProps)?.onOpenChange?.(e, data);
-      setPopoverOpen(data.open);
-    },
-    [props.popover, setPopoverOpen],
-  );
-
   state.popover.open = popoverOpen;
-  state.popover.onOpenChange = handleOnPopoverChange;
+  state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (e, data) => setPopoverOpen(data.open));
 
   return state;
 };
