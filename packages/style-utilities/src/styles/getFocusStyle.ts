@@ -145,6 +145,8 @@ export function focusClear(): IRawStyle {
  * @returns The style object.
  */
 export function getFocusOutlineStyle(theme: ITheme, inset: number = 0, width: number = 1, color?: string): IRawStyle {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const win: any = getWindow();
   const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
   return {
     selectors: {
