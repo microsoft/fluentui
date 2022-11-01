@@ -14,7 +14,7 @@ export type OffsetFunctionParam = {
   alignment?: Alignment;
 };
 
-export type TargetType = HTMLElement | PositioningVirtualElement | null;
+export type TargetElement = HTMLElement | PositioningVirtualElement;
 
 /**
  * @internal
@@ -24,6 +24,14 @@ export interface UsePositioningOptions extends PositioningProps {
    * If false, does not position anything
    */
   enabled?: boolean;
+}
+
+/**
+ * @internal
+ */
+export interface PositionManager {
+  updatePosition: () => void;
+  dispose: () => void;
 }
 
 export interface UsePositioningReturn {
@@ -65,7 +73,7 @@ export type PositioningImperativeRef = {
    * Sets the target and updates positioning imperatively.
    * Useful for avoiding double renders with the target option.
    */
-  setTarget: (target: TargetType) => void;
+  setTarget: (target: TargetElement) => void;
 };
 
 export type PositioningVirtualElement = {
@@ -158,7 +166,7 @@ export interface PositioningProps
   /**
    * Manual override for the target element. Useful for scenarios where a component accepts user prop to override target
    */
-  target?: TargetType;
+  target?: TargetElement;
 }
 
 export type PositioningShorthandValue =

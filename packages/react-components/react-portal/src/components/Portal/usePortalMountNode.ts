@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import {
   useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
@@ -32,29 +33,37 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
 
   const className = mergeClasses(themeClassName, classes.root);
 
-  const mountNode = React.useMemo(() => {
+  const element = React.useMemo(() => {
     if (targetDocument === undefined || options.disabled) {
       return null;
     }
 
-    const element = targetDocument.createElement('div');
-    focusVisibleRef.current = element;
+    const newElement = targetDocument.createElement('div');
+    targetDocument.body.appendChild(newElement);
 
-    const classesToApply = className.split(' ').filter(Boolean);
-    element.classList.add(...classesToApply);
+    return newElement;
+  }, [targetDocument, options.disabled]);
 
-    element.setAttribute('dir', dir);
+  React.useMemo(() => {
+    if (element) {
+      const classesToApply = className.split(' ').filter(Boolean);
 
-    targetDocument.body.appendChild(element);
+      element.classList.add(...classesToApply);
+      element.setAttribute('dir', dir);
+      focusVisibleRef.current = element;
 
-    return element;
-  }, [targetDocument, options.disabled, focusVisibleRef, className, dir]);
+      return () => {
+        element.classList.remove(...classesToApply);
+        element.removeAttribute('dir');
+      };
+    }
+  }, [className, dir, element, focusVisibleRef]);
 
   React.useEffect(() => {
     return () => {
-      mountNode?.remove();
+      element?.parentElement?.removeChild(element);
     };
-  }, [mountNode]);
+  }, [element]);
 
-  return mountNode;
+  return element;
 };

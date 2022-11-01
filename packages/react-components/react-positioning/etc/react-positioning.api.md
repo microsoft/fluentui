@@ -68,13 +68,13 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
-    setTarget: (target: TargetType) => void;
+    setTarget: (target: TargetElement) => void;
 };
 
 // @public (undocumented)
 export interface PositioningProps extends Omit<PositioningOptions, 'positionFixed' | 'unstable_disableTether'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
-    target?: TargetType;
+    target?: TargetElement;
 }
 
 // @public (undocumented)

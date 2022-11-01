@@ -1,26 +1,16 @@
-import { computePosition, hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
 import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type {
   PositioningOptions,
-  PositioningVirtualElement,
-  TargetType,
-  UsePositioningOptions,
+  PositioningProps,
+  PositionManager,
+  TargetElement,
   UsePositioningReturn,
 } from './types';
-import {
-  useCallbackRef,
-  toFloatingUIPlacement,
-  hasAutofocusFilter,
-  debounce,
-  hasScrollParent,
-  getScrollParent,
-  writeArrowUpdates,
-  writeContainerUpdates,
-} from './utils';
+import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent } from './utils';
 import {
   shift as shiftMiddleware,
   flip as flipMiddleware,
@@ -29,105 +19,49 @@ import {
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware';
+import { createPositionManager } from './createPositionManager';
 
 /**
  * @internal
  */
 export function usePositioning(options: UsePositioningOptions): UsePositioningReturn {
+  const managerRef = React.useRef<PositionManager | null>(null);
+  const targetRef = React.useRef<TargetElement | null>(null);
+  const overrideTargetRef = React.useRef<TargetElement | null>(null);
   const containerRef = React.useRef<HTMLElement | null>(null);
-  const targetRef = React.useRef<HTMLElement | PositioningVirtualElement | null>(null);
   const arrowRef = React.useRef<HTMLElement | null>(null);
-
-  const { targetDocument } = useFluent();
 
   const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
-
-  const forceUpdate = useEventCallback(() => {
-    const target = targetRef.current;
-    if (!canUseDOM || !enabled || !target || !containerRef.current) {
-      return;
+  const updatePositionManager = React.useCallback(() => {
+    if (managerRef.current) {
+      managerRef.current.dispose();
     }
+    managerRef.current = null;
 
-    const { placement, middleware, strategy } = resolvePositioningOptions(containerRef.current, arrowRef.current);
-
-    // Container is always initialized with `position: fixed` to avoid scroll jumps
-    // Before computing the positioned coordinates, revert the container to the deisred positioning strategy
-    Object.assign(containerRef.current.style, { position: strategy });
-    computePosition(target, containerRef.current, { placement, middleware, strategy })
-      .then(({ x, y, middlewareData, placement: computedPlacement }) => {
-        writeArrowUpdates({ arrow: arrowRef.current, middlewareData });
-        writeContainerUpdates({
-          container: containerRef.current,
-          middlewareData,
-          placement: computedPlacement,
-          coordinates: { x, y },
-          lowPPI: (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1,
-          strategy,
-        });
-      })
-      .catch(err => {
-        // https://github.com/floating-ui/floating-ui/issues/1845
-        // FIXME for node > 14
-        // node 15 introduces promise rejection which means that any components
-        // tests need to be `it('', async () => {})` otherwise there can be race conditions with
-        // JSDOM being torn down before this promise is resolved so globals like `window` and `document` don't exist
-        // Unless all tests that ever use `usePositioning` are turned into async tests, any logging during testing
-        // will actually be counter productive
-        if (process.env.NODE_ENV === 'development') {
-          // eslint-disable-next-line no-console
-          console.error('[usePositioning]: Failed to calculate position', err);
-        }
+    if (enabled && canUseDOM() && targetRef.current && containerRef.current) {
+      managerRef.current = createPositionManager({
+        container: containerRef.current,
+        target: overrideTargetRef.current ?? targetRef.current,
+        arrow: arrowRef.current,
+        ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
-  });
-
-  const updatePosition = React.useState(() => debounce(forceUpdate))[0];
-
-  const cleanupScrollListenersRef = React.useRef<() => void>(() => null);
-  const handleRefUpdate = React.useCallback(() => {
-    if (containerRef.current) {
-      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
-      // Without this scroll jumps can occur when the element is rendered initially and receives focus
-      Object.assign(containerRef.current.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
     }
+  }, [enabled, resolvePositioningOptions]);
 
-    cleanupScrollListenersRef.current();
-    const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
-    if (enabled && containerRef.current && targetRef.current) {
-      // `getScrollParent` will cause reflow, running it when when enabled, container and target
-      // are all correctly set will make sure that it is run as little as possible
-      scrollParents.add(getScrollParent(containerRef.current));
-      if (targetRef.current instanceof HTMLElement) {
-        scrollParents.add(getScrollParent(targetRef.current));
-      }
-
-      scrollParents.forEach(scrollParent => {
-        scrollParent.addEventListener('scroll', updatePosition);
-      });
-
-      cleanupScrollListenersRef.current = () => {
-        scrollParents.forEach(scrollParent => {
-          scrollParent.removeEventListener('scroll', updatePosition);
-        });
-      };
-    }
-
-    updatePosition();
-  }, [enabled, updatePosition]);
-
-  const overrideTarget = React.useCallback(
-    (target: TargetType) => {
-      targetRef.current = target;
-      handleRefUpdate();
+  const setOverrideTarget = React.useCallback(
+    (target: TargetElement | null) => {
+      overrideTargetRef.current = target;
+      updatePositionManager();
     },
-    [handleRefUpdate],
+    [updatePositionManager],
   );
 
   React.useImperativeHandle(
     options.positioningRef,
     () => ({
-      updatePosition,
-      setTarget: (target: TargetType) => {
+      updatePosition: () => managerRef.current?.updatePosition(),
+      setTarget: (target: TargetElement) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console
@@ -136,40 +70,19 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
           console.warn(err.stack);
         }
 
-        overrideTarget(target);
+        setOverrideTarget(target);
       },
     }),
-    // Missing deps:
-    // options.target - only used for a runtime warning
-    // overrideTargetRef - Stable between renders
-    // updatePosition - Stable between renders
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [options.target, setOverrideTarget],
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (options.target) {
-      overrideTarget(options.target);
-    }
-  }, [options.target, overrideTarget]);
+    setOverrideTarget(options.target ?? null);
+  }, [options.target, setOverrideTarget]);
 
   useIsomorphicLayoutEffect(() => {
-    updatePosition();
-  }, [enabled, resolvePositioningOptions, updatePosition]);
-
-  // Add window resize and scroll listeners to update position
-  useIsomorphicLayoutEffect(() => {
-    const win = targetDocument?.defaultView;
-    if (win) {
-      win.addEventListener('resize', updatePosition);
-      win.addEventListener('scroll', updatePosition);
-
-      return () => {
-        win.removeEventListener('resize', updatePosition);
-        win.removeEventListener('scroll', updatePosition);
-      };
-    }
-  }, [updatePosition, targetDocument]);
+    updatePositionManager();
+  }, [enabled, resolvePositioningOptions, updatePositionManager]);
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode
@@ -213,21 +126,36 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
     }, []);
   }
 
-  const setTargetElement = useCallbackRef<TargetType>(null, target => {
-    targetRef.current = target;
-    handleRefUpdate();
-  });
-  const setContainerElement = useCallbackRef<HTMLElement | null>(null, container => {
-    containerRef.current = container;
-    handleRefUpdate();
-  });
-  const setArrowElement = useCallbackRef<HTMLElement | null>(null, arrow => {
-    containerRef.current = arrow;
-    handleRefUpdate();
+  const setTarget = useCallbackRef<TargetElement>(null, target => {
+    if (targetRef.current !== target) {
+      targetRef.current = target;
+      updatePositionManager();
+    }
   });
 
-  // Users should consume callback refs so they can set them like 'standard' HTML refs
-  return { targetRef: setTargetElement, containerRef: setContainerElement, arrowRef: setArrowElement };
+  const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
+    if (containerRef.current !== container) {
+      containerRef.current = container;
+      updatePositionManager();
+    }
+  });
+
+  const setArrow = useCallbackRef<HTMLElement | null>(null, arrow => {
+    if (arrowRef.current !== arrow) {
+      arrowRef.current = arrow;
+      updatePositionManager();
+    }
+  });
+
+  // Let users use callback refs so they feel like 'normal' DOM refs
+  return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
+}
+
+interface UsePositioningOptions extends PositioningProps {
+  /**
+   * If false, does not position anything
+   */
+  enabled?: boolean;
 }
 
 function usePositioningOptions(options: PositioningOptions) {
