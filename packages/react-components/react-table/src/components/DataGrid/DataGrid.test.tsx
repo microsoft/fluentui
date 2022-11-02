@@ -7,6 +7,7 @@ import { ColumnDefinition, RowState } from '../../hooks';
 import { DataGridBody } from '../DataGridBody/DataGridBody';
 import { DataGridRow } from '../DataGridRow/DataGridRow';
 import { DataGridCell } from '../DataGridCell/DataGridCell';
+import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
 describe('DataGrid', () => {
   isConformant<DataGridProps>({
@@ -20,7 +21,11 @@ describe('DataGrid', () => {
     third: string;
   }
 
-  const testColumns: ColumnDefinition<Item>[] = [{ columnId: 'first' }, { columnId: 'second' }, { columnId: 'third' }];
+  const testColumns: ColumnDefinition<Item>[] = [
+    { columnId: 'first', renderHeader: () => 'first', renderCell: item => item.first },
+    { columnId: 'second', renderHeader: () => 'second', renderCell: item => item.second },
+    { columnId: 'third', renderHeader: () => 'third', renderCell: item => item.third },
+  ];
   const testItems: Item[] = [
     { first: 'first', second: 'second', third: 'third' },
     { first: 'first', second: 'second', third: 'third' },
@@ -30,12 +35,15 @@ describe('DataGrid', () => {
   it('renders a default state', () => {
     const result = render(
       <DataGrid items={testItems} columns={testColumns}>
+        <DataGridHeader>
+          <DataGridRow>
+            {({ renderHeader, columnId }) => <DataGridCell key={columnId}>{renderHeader()}</DataGridCell>}
+          </DataGridRow>
+        </DataGridHeader>
         <DataGridBody>
           {({ item, rowId }: RowState<Item>) => (
             <DataGridRow key={rowId}>
-              <DataGridCell>{item.first}</DataGridCell>
-              <DataGridCell>{item.second}</DataGridCell>
-              <DataGridCell>{item.third}</DataGridCell>
+              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
             </DataGridRow>
           )}
         </DataGridBody>

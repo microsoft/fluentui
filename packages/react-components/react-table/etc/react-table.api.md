@@ -24,6 +24,10 @@ export interface ColumnDefinition<TItem> {
     columnId: ColumnId;
     // (undocumented)
     compare?: (a: TItem, b: TItem) => number;
+    // (undocumented)
+    renderCell?: (item: TItem) => React_2.ReactNode;
+    // (undocumented)
+    renderHeader?: () => React_2.ReactNode;
 }
 
 // @public (undocumented)
@@ -115,7 +119,9 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps = TableRowProps;
+export type DataGridRowProps = Omit<TableRowProps, 'children'> & {
+    children: CellRenderFunction;
+};
 
 // @public (undocumented)
 export type DataGridRowSlots = TableRowSlots;

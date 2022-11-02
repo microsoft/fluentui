@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
 
 export type RowId = string | number;
@@ -12,7 +13,13 @@ export interface SortState {
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
   compare?: (a: TItem, b: TItem) => number;
+  renderHeader?: () => React.ReactNode;
+  renderCell?: (item: TItem) => React.ReactNode;
 }
+
+export interface ColumnDefinitionRender<TItem>
+  extends Omit<ColumnDefinition<TItem>, 'renderHeader' | 'renderCell'>,
+    Required<Pick<ColumnDefinition<TItem>, 'renderHeader' | 'renderCell'>> {}
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,
