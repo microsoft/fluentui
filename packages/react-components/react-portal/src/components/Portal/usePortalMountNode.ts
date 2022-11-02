@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import {
   useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
@@ -44,7 +43,11 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     return newElement;
   }, [targetDocument, options.disabled]);
 
-  useIsomorphicLayoutEffect(() => {
+  // This useMemo call is intentional
+  // We don't want to re-create the portal element when its attributes change.
+  // This also should not be done in an effect because, changing the value of css variables
+  // after initial mount can trigger interesting CSS side effects like transitions.
+  React.useMemo(() => {
     if (element) {
       const classesToApply = className.split(' ').filter(Boolean);
 

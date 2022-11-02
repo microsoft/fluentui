@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: position updates are handled out of react lifecycle",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
