@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Tue, 01 Nov 2022 07:49:22 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 07:55:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.6)
+
+Wed, 02 Nov 2022 07:55:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.5..@fluentui/react-migration-v8-v9_v1.0.6)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
 
 ## [1.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.5)
 

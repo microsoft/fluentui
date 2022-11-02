@@ -2,6 +2,21 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Wed, 02 Nov 2022 07:55:20 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v1.0.6",
+      "version": "1.0.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Nov 2022 07:49:22 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v1.0.5",
       "version": "1.0.5",
