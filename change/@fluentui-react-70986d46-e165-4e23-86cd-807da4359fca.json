@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: fix deprecation warning on Buttons elementRef and fix PanelConfirm example to use element ref for focus",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
