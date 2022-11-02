@@ -39,7 +39,9 @@ export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
 export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots>;
 
 // @public
-export type DataGridBodyProps = TableBodyProps;
+export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
+    children: RowRenderFunction;
+};
 
 // @public (undocumented)
 export type DataGridBodySlots = TableBodySlots;
@@ -66,7 +68,12 @@ export type DataGridCellState = TableCellState;
 export const dataGridClassNames: SlotClassNames<DataGridSlots>;
 
 // @public (undocumented)
-export type DataGridContextValues = TableContextValues;
+export type DataGridContextValue = HeadlessTableState<any>;
+
+// @public (undocumented)
+export type DataGridContextValues = TableContextValues & {
+    dataGrid: DataGridContextValue;
+};
 
 // @public
 export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
@@ -99,7 +106,7 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps;
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'>;
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
@@ -135,7 +142,9 @@ export type DataGridSelectionCellState = TableSelectionCellState;
 export type DataGridSlots = TableSlots;
 
 // @public
-export type DataGridState = TableState;
+export type DataGridState = TableState & {
+    tableState: HeadlessTableState<unknown>;
+};
 
 // @public (undocumented)
 export interface HeadlessTableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
@@ -195,6 +204,9 @@ export const renderTableSelectionCell_unstable: (state: TableSelectionCellState)
 
 // @public (undocumented)
 export type RowId = string | number;
+
+// @public (undocumented)
+export type RowRenderFunction<TItem = any> = (row: RowState<TItem>) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface RowState<TItem> {

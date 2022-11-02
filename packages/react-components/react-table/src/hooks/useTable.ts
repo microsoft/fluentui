@@ -4,6 +4,15 @@ import { defaultTableSortState } from './useSort';
 
 const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
 
+export const defaultTableState: TableState<unknown> = {
+  selection: defaultTableSelectionState,
+  sort: defaultTableSortState,
+  getRows: () => [],
+  getRowId: () => '',
+  items: [],
+  columns: [],
+};
+
 export function useTable<TItem>(options: UseTableOptions<TItem>, plugins: TableStatePlugin[] = []): TableState<TItem> {
   const { items, getRowId, columns } = options;
 
