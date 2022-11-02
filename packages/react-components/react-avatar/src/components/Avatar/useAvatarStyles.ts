@@ -380,12 +380,6 @@ const useColorStyles = makeStyles({
 });
 
 const useActiveRingColorStyles = makeStyles({
-  neutral: {
-    '::before': { ...shorthands.borderColor(tokens.colorBrandStroke1) },
-  },
-  brand: {
-    '::before': { ...shorthands.borderColor(tokens.colorBrandStroke1) },
-  },
   'dark-red': {
     '::before': { ...shorthands.borderColor(tokens.colorPaletteDarkRedBorderActive) },
   },
