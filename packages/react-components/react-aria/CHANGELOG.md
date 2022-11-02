@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 20 Oct 2022 08:39:58 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 11:57:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.0)
+
+Wed, 02 Nov 2022 11:57:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.2.3..@fluentui/react-aria_v9.3.0)
+
+### Minor changes
+
+- exposes internal typings: ARIAButtonAlteredProps and ARIAButtonElement ([PR #25403](https://github.com/microsoft/fluentui/pull/25403) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
 
 ## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.2.3)
 
