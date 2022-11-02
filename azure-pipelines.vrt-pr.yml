@@ -79,7 +79,7 @@ jobs:
           publishLocation: 'Container'
 
       - powershell: |
-          $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=203&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
+          $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
           Write-Host "Looking up latest official build via url: $url"
           $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
           Write-Host "Response: $pipelineBuildInfo"
@@ -89,6 +89,7 @@ jobs:
         name: GetLatestGreenCIBuild
         env:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+          BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
 
       # - bash: cd packages/screenshotdiff && yarn build
       #   display-Name: 'Build'
