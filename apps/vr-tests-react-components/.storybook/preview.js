@@ -53,7 +53,8 @@ setAddon({
   },
 });
 
-export const parameters = { layout: 'none' };
+/** @type {import("@fluentui/react-storybook-addon").FluentParameters} */
+export const parameters = { layout: 'none', mode: 'vr-test' };
 
 // For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
 if (typeof window === 'object') {

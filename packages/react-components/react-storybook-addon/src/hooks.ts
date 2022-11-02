@@ -1,5 +1,5 @@
-import { useGlobals as useStorybookGlobals, Args as StorybookArgs, Parameters } from '@storybook/api';
-import { StoryContext as StorybookContext } from '@storybook/addons';
+import { useGlobals as useStorybookGlobals, Args as StorybookArgs } from '@storybook/api';
+import { StoryContext as StorybookContext, Parameters } from '@storybook/addons';
 
 import { THEME_ID } from './constants';
 import { ThemeIds } from './theme';
