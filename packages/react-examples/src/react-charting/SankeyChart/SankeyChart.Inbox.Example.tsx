@@ -36,46 +36,55 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
             nodeId: 0,
             name: '192.168.42.72 is the node for testing the wrap',
             color: '#8764B8',
+            borderColor: '#4B3867',
           },
           {
             nodeId: 1,
             name: '172.152.48.13',
             color: '#8764B8',
+            borderColor: '#4B3867',
           },
           {
             nodeId: 2,
             name: '124.360.55.1',
             color: '#8764B8',
+            borderColor: '#4B3867',
           },
           {
             nodeId: 3,
             name: '192.564.10.2',
             color: '#8764B8',
+            borderColor: '#4B3867',
           },
           {
             nodeId: 4,
             name: '124.124.50.1',
             color: '#8764B8',
+            borderColor: '#4B3867',
           },
           {
             nodeId: 5,
             name: '172.630.89.4',
             color: '#8764B8',
+            borderColor: '#4B3867',
           },
           {
             nodeId: 6,
             name: 'inbox',
             color: '#0E7878',
+            borderColor: '#004E4E',
           },
           {
             nodeId: 7,
             name: 'Junk Folder',
             color: '#0E7878',
+            borderColor: '#004E4E',
           },
           {
             nodeId: 8,
             name: 'Deleted Folder',
             color: '#0E7878',
+            borderColor: '#004E4E',
           },
           {
             nodeId: 9,
@@ -86,22 +95,14 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
             nodeId: 10,
             name: 'Opened',
             color: '#4F6BED',
+            borderColor: '#3B52B4',
           },
           {
             nodeId: 11,
             name: 'No action',
             color: '#4F6BED',
+            borderColor: '#3B52B4',
           },
-          // {
-          //   nodeId: 12,
-          //   name: '172.630.80.1',
-          //   color: 'purple',
-          // },
-          // {
-          //   nodeId: 13,
-          //   name: '202.630.80.1',
-          //   color: 'purple',
-          // },
         ],
         links: [
           {
