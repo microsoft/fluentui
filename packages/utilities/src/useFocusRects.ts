@@ -97,7 +97,8 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
   const context = React.useContext(FocusRectsContext);
 
   React.useEffect(() => {
-    const win = getWindow(rootRef?.current) as AppWindow;
+    // const win = getWindow(rootRef?.current) as AppWindow;
+    const win = { FabricConfig: { disableFocusRects: true } };
 
     if (!win || win.FabricConfig?.disableFocusRects === true) {
       return undefined;

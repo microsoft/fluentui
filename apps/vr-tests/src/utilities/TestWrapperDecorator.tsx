@@ -4,10 +4,6 @@ import { ExtendedStoryFnReturnType } from './types';
 import { useWindow } from '@fluentui/react';
 
 export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const win: any = useWindow();
-  if (win) {
-    win.FabricConfig = { disableFocusRects: true };
-  }
   return (
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
