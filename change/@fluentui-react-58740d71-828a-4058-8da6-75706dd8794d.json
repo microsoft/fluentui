@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Removing blanket selectors from Fabric component and adding them to specific components that use them.",
+  "comment": "fix: Preventing blanket selectors from Fabric component from being applied via new preventBlanketFontInheritance prop.",
   "packageName": "@fluentui/react",
   "email": "humberto_makoto@hotmail.com",
   "dependentChangeType": "patch"
