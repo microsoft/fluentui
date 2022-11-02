@@ -12,6 +12,8 @@
     "**/*.spec.tsx",
     "**/*.test.ts",
     "**/*.test.tsx",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "./src/testing/**/*.ts",
+    "./src/testing/**/*.tsx"
   ]
 }
