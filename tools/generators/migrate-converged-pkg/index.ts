@@ -265,12 +265,12 @@ const templates = {
           include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
         };
 
-        if (options.js) {
-          tsConfig.include = globsToJs(tsConfig.include);
-        }
-
         if (options.hasConformance) {
           tsConfig.include.push('./src/testing/**/*.ts', './src/testing/**/*.tsx');
+        }
+
+        if (options.js) {
+          tsConfig.include = globsToJs(tsConfig.include);
         }
 
         return tsConfig;
