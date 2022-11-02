@@ -15,7 +15,7 @@ export const Size = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton size="small">Size: small</MenuButton>
         </MenuTrigger>
 
@@ -28,7 +28,7 @@ export const Size = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton size="medium">Size: medium</MenuButton>
         </MenuTrigger>
 
@@ -41,7 +41,7 @@ export const Size = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton size="large">Size: large</MenuButton>
         </MenuTrigger>
 

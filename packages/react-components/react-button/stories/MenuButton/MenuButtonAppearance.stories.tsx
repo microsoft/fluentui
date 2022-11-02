@@ -14,7 +14,7 @@ export const Appearance = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton>Default</MenuButton>
         </MenuTrigger>
 
@@ -27,7 +27,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton appearance="primary">Primary</MenuButton>
         </MenuTrigger>
 
@@ -40,7 +40,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton appearance="outline">Outline</MenuButton>
         </MenuTrigger>
 
@@ -53,7 +53,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton appearance="subtle">Subtle</MenuButton>
         </MenuTrigger>
 
@@ -66,7 +66,7 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton appearance="transparent">Transparent</MenuButton>
         </MenuTrigger>
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableCell } from './TableCell';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableCellProps } from './TableCell.types';
 import { TableContextProvider, tableContextDefaultValue } from '../../contexts/tableContext';
 

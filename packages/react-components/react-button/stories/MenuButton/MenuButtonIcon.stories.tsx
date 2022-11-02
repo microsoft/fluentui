@@ -33,7 +33,7 @@ export const Icon = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton icon={<CalendarMonth />}>With calendar icon</MenuButton>
         </MenuTrigger>
         <MenuPopover>
@@ -45,7 +45,7 @@ export const Icon = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton icon={<CalendarMonth />} menuIcon={<Filter />}>
             With calendar icon and custom filter menu icon
           </MenuButton>
@@ -59,7 +59,7 @@ export const Icon = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <Tooltip content="With calendar icon and no contents" relationship="label">
             <MenuButton icon={<CalendarMonth />} />
           </Tooltip>

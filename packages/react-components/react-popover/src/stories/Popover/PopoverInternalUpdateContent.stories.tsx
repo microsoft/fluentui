@@ -31,7 +31,7 @@ export const InternalUpdateContent = () => {
 
   return (
     <Popover onOpenChange={onOpenChange}>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <Button>Popover trigger</Button>
       </PopoverTrigger>
 

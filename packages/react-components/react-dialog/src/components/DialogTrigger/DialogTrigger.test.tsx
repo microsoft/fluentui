@@ -95,20 +95,6 @@ describe('DialogTrigger', () => {
     `);
   });
 
-  it('should not open dialog when aria-disabled is true', () => {
-    const requestOpenChange = jest.fn();
-    mockUseDialogContext({ requestOpenChange });
-
-    const { getByRole } = render(
-      <DialogTrigger>
-        <button aria-disabled>trigger</button>
-      </DialogTrigger>,
-    );
-    fireEvent.click(getByRole('button'));
-
-    expect(requestOpenChange).toBeCalledTimes(0);
-  });
-
   it('should open dialog when aria-disabled is false', () => {
     const requestOpenChange = jest.fn();
     mockUseDialogContext({ requestOpenChange });

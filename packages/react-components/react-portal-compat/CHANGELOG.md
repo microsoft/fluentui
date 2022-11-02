@@ -1,12 +1,32 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Wed, 26 Oct 2022 18:05:52 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 14:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
 
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.17)
+
+Wed, 02 Nov 2022 14:27:34 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.16..@fluentui/react-portal-compat_v9.0.17)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.6.3 ([PR #25476](https://github.com/microsoft/fluentui/pull/25476) by beachball)
+
+## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.16)
+
+Wed, 02 Nov 2022 11:58:07 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.15..@fluentui/react-portal-compat_v9.0.16)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.2.1 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-components to v9.6.2 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
 ## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.15)
 
-Wed, 26 Oct 2022 18:05:52 GMT 
+Wed, 26 Oct 2022 18:05:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.14..@fluentui/react-portal-compat_v9.0.15)
 
 ### Patches
@@ -15,7 +35,7 @@ Wed, 26 Oct 2022 18:05:52 GMT
 
 ## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.14)
 
-Tue, 25 Oct 2022 22:09:51 GMT 
+Tue, 25 Oct 2022 22:09:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.13..@fluentui/react-portal-compat_v9.0.14)
 
 ### Patches
@@ -24,7 +44,7 @@ Tue, 25 Oct 2022 22:09:51 GMT
 
 ## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.13)
 
-Tue, 25 Oct 2022 00:35:40 GMT 
+Tue, 25 Oct 2022 00:35:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.12..@fluentui/react-portal-compat_v9.0.13)
 
 ### Patches
@@ -33,7 +53,7 @@ Tue, 25 Oct 2022 00:35:40 GMT
 
 ## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.12)
 
-Thu, 20 Oct 2022 08:39:41 GMT 
+Thu, 20 Oct 2022 08:39:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.11..@fluentui/react-portal-compat_v9.0.12)
 
 ### Patches
@@ -46,7 +66,7 @@ Thu, 20 Oct 2022 08:39:41 GMT
 
 ## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.11)
 
-Thu, 13 Oct 2022 12:56:30 GMT 
+Thu, 13 Oct 2022 12:56:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.10..@fluentui/react-portal-compat_v9.0.11)
 
 ### Patches
@@ -55,7 +75,7 @@ Thu, 13 Oct 2022 12:56:30 GMT
 
 ## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.10)
 
-Thu, 13 Oct 2022 11:03:06 GMT 
+Thu, 13 Oct 2022 11:03:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.9..@fluentui/react-portal-compat_v9.0.10)
 
 ### Patches
@@ -65,7 +85,7 @@ Thu, 13 Oct 2022 11:03:06 GMT
 
 ## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.9)
 
-Mon, 03 Oct 2022 22:24:39 GMT 
+Mon, 03 Oct 2022 22:24:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.8..@fluentui/react-portal-compat_v9.0.9)
 
 ### Patches
@@ -75,7 +95,7 @@ Mon, 03 Oct 2022 22:24:39 GMT
 
 ## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.8)
 
-Fri, 23 Sep 2022 10:32:30 GMT 
+Fri, 23 Sep 2022 10:32:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.7..@fluentui/react-portal-compat_v9.0.8)
 
 ### Patches
@@ -84,7 +104,7 @@ Fri, 23 Sep 2022 10:32:30 GMT
 
 ## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.7)
 
-Tue, 20 Sep 2022 20:55:45 GMT 
+Tue, 20 Sep 2022 20:55:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.6..@fluentui/react-portal-compat_v9.0.7)
 
 ### Patches
@@ -93,7 +113,7 @@ Tue, 20 Sep 2022 20:55:45 GMT
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.6)
 
-Thu, 15 Sep 2022 09:49:15 GMT 
+Thu, 15 Sep 2022 09:49:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.5..@fluentui/react-portal-compat_v9.0.6)
 
 ### Patches
@@ -106,7 +126,7 @@ Thu, 15 Sep 2022 09:49:15 GMT
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.5)
 
-Wed, 03 Aug 2022 16:03:54 GMT 
+Wed, 03 Aug 2022 16:03:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.4..@fluentui/react-portal-compat_v9.0.5)
 
 ### Patches
@@ -116,7 +136,7 @@ Wed, 03 Aug 2022 16:03:54 GMT
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.4)
 
-Fri, 15 Jul 2022 18:27:27 GMT 
+Fri, 15 Jul 2022 18:27:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.3..@fluentui/react-portal-compat_v9.0.4)
 
 ### Patches
@@ -125,7 +145,7 @@ Fri, 15 Jul 2022 18:27:27 GMT
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.3)
 
-Thu, 14 Jul 2022 21:21:13 GMT 
+Thu, 14 Jul 2022 21:21:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.2..@fluentui/react-portal-compat_v9.0.3)
 
 ### Patches
@@ -134,7 +154,7 @@ Thu, 14 Jul 2022 21:21:13 GMT
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.2)
 
-Thu, 14 Jul 2022 17:06:26 GMT 
+Thu, 14 Jul 2022 17:06:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.1..@fluentui/react-portal-compat_v9.0.2)
 
 ### Patches
@@ -143,7 +163,7 @@ Thu, 14 Jul 2022 17:06:26 GMT
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.1)
 
-Tue, 28 Jun 2022 17:39:54 GMT 
+Tue, 28 Jun 2022 17:39:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0..@fluentui/react-portal-compat_v9.0.1)
 
 ### Patches
@@ -152,7 +172,7 @@ Tue, 28 Jun 2022 17:39:54 GMT
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0)
 
-Tue, 28 Jun 2022 15:13:50 GMT 
+Tue, 28 Jun 2022 15:13:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-rc.7..@fluentui/react-portal-compat_v9.0.0)
 
 ### Patches
@@ -168,7 +188,7 @@ Tue, 28 Jun 2022 15:13:50 GMT
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0-rc.7)
 
-Thu, 23 Jun 2022 14:25:31 GMT 
+Thu, 23 Jun 2022 14:25:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-rc.6..@fluentui/react-portal-compat_v9.0.0-rc.7)
 
 ### Changes
@@ -178,7 +198,7 @@ Thu, 23 Jun 2022 14:25:31 GMT
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0-rc.6)
 
-Tue, 31 May 2022 21:28:42 GMT 
+Tue, 31 May 2022 21:28:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-rc.5..@fluentui/react-portal-compat_v9.0.0-rc.6)
 
 ### Changes
@@ -189,7 +209,7 @@ Tue, 31 May 2022 21:28:42 GMT
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0-rc.5)
 
-Thu, 26 May 2022 21:01:32 GMT 
+Thu, 26 May 2022 21:01:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-rc.4..@fluentui/react-portal-compat_v9.0.0-rc.5)
 
 ### Changes
@@ -198,7 +218,7 @@ Thu, 26 May 2022 21:01:32 GMT
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0-rc.4)
 
-Mon, 23 May 2022 18:56:51 GMT 
+Mon, 23 May 2022 18:56:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-rc.3..@fluentui/react-portal-compat_v9.0.0-rc.4)
 
 ### Changes
@@ -208,7 +228,7 @@ Mon, 23 May 2022 18:56:51 GMT
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0-rc.3)
 
-Mon, 23 May 2022 12:13:33 GMT 
+Mon, 23 May 2022 12:13:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-rc.2..@fluentui/react-portal-compat_v9.0.0-rc.3)
 
 ### Changes
@@ -221,7 +241,7 @@ Mon, 23 May 2022 12:13:33 GMT
 
 ## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0-rc.2)
 
-Thu, 05 May 2022 18:26:25 GMT 
+Thu, 05 May 2022 18:26:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-rc.1..@fluentui/react-portal-compat_v9.0.0-rc.2)
 
 ### Changes

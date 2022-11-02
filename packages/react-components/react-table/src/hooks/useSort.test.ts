@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { ColumnDefinition } from './types';
 import { useSortState } from './useSort';
-import { mockTableState } from '../common/mockTableState';
+import { mockTableState } from '../testing/mockTableState';
 
 describe('useSortState', () => {
   it('should use default sort state', () => {
