@@ -3,7 +3,7 @@ import { DialogTrigger } from './DialogTrigger';
 import * as renderer from 'react-test-renderer';
 import { createEvent, fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
-import { mockUseDialogContext } from '../../testing/mockDialogContext';
+import { mockUseDialogContext } from '../../testing/mockUseDialogContext';
 import { Enter } from '@fluentui/keyboard-keys';
 import { DialogTriggerProps } from './DialogTrigger.types';
 

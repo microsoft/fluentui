@@ -7,8 +7,6 @@
   },
   "include": [
     "**/*.spec.ts",
-    "**/*.mock.ts",
-    "**/*.mock.tsx",
     "**/*.spec.tsx",
     "**/*.test.ts",
     "**/*.test.tsx",
