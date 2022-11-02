@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AvatarGroup } from './AvatarGroup';
 import { AvatarGroupItem } from '../AvatarGroupItem';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { AvatarGroupPopover } from '../AvatarGroupPopover/AvatarGroupPopover';
 import { render, screen } from '@testing-library/react';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Avatar } from './Avatar';
 import { render, screen } from '@testing-library/react';
 import { avatarClassNames } from './useAvatarStyles';
