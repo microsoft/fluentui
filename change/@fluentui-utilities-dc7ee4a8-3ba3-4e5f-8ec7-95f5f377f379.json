@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "force forcus rects off",
+  "packageName": "@fluentui/utilities",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
