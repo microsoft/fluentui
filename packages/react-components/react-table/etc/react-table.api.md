@@ -427,7 +427,7 @@ export type TableSlots = {
 export interface TableSortState<TItem> {
     getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
     setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
-    sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
+    sort: <TRowState extends RowState<TItem>>(rows: TRowState[]) => TRowState[];
     sortColumn: ColumnId | undefined;
     sortDirection: SortDirection;
     toggleColumnSort: (columnId: ColumnId) => void;
