@@ -48,6 +48,10 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
   const targetWindow = container.ownerDocument.defaultView;
 
+  // When the container is first resolved, set position `fixed` to avoid scroll jumps.
+  // Without this scroll jumps can occur when the element is rendered initially and receives focus
+  Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
+
   const forceUpdate = () => {
     if (isFirstUpdate) {
       scrollParents.add(getScrollParent(container));
@@ -59,9 +63,6 @@ export function createPositionManager(options: PositionManagerOptions): Position
         scrollParent.addEventListener('scroll', updatePosition);
       });
 
-      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
-      // Without this scroll jumps can occur when the element is rendered initially and receives focus
-      Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
       isFirstUpdate = false;
     }
 

@@ -84,7 +84,7 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
 
   useIsomorphicLayoutEffect(() => {
     updatePositionManager();
-  }, [enabled, resolvePositioningOptions, updatePositionManager]);
+  }, [updatePositionManager]);
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode
