@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: Update Avatar active ring color to match base color",
+  "comment": "fix: Update Avatar active ring color to match base color",
   "packageName": "@fluentui/react-avatar",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
