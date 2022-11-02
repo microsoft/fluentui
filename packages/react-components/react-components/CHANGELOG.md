@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 02 Nov 2022 11:57:45 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 14:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.3)
+
+Wed, 02 Nov 2022 14:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.2..@fluentui/react-components_v9.6.3)
+
+### Changes
+
+- `@fluentui/react-table`
+  - fix(useTable): sort should adapt to enhanced row types ([PR #25487](https://github.com/microsoft/fluentui/pull/25487) by lingfangao@hotmail.com)
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.2)
 

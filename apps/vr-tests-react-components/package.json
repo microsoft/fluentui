@@ -48,7 +48,7 @@
     "@fluentui/react-spinbutton": "^9.0.7",
     "@fluentui/react-switch": "^9.0.10",
     "@fluentui/react-tabs": "^9.0.10",
-    "@fluentui/react-table": "9.0.0-alpha.9",
+    "@fluentui/react-table": "9.0.0-alpha.10",
     "@fluentui/react-text": "^9.1.5",
     "@fluentui/react-textarea": "^9.1.4",
     "@fluentui/react-theme": "^9.1.1",
