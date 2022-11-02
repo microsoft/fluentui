@@ -33,14 +33,6 @@ Because the Popover isn't always visible, it should not contain information that
 <InfoButton content="This is some additional information." />
 ```
 
-## Variants
-
-Visual (only the button has a variant)
-
-- `transparent` (default)
-
-![transparent](./etc/images/transparent-infobutton.png)
-
 ## API
 
 #### Props
