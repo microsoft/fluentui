@@ -4,7 +4,6 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 /**
  * Card refs to the root element slot.
  */
-
 export type CardRefElement = HTMLDivElement | HTMLButtonElement | HTMLAnchorElement;
 
 /**
@@ -12,7 +11,6 @@ export type CardRefElement = HTMLDivElement | HTMLButtonElement | HTMLAnchorElem
  *
  * This event is fired when a selectable card changes its selection state.
  */
-
 export type CardOnSelectEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
 
 /**
@@ -48,13 +46,13 @@ export type CardProps = ComponentProps<CardSlots> & {
    * The card will have a shadow, border and background color.
    *
    * `filled-alternative`
-   * This appearance is similar to `filled` but the background color will be a little darker.
+   * This appearance is similar to `filled`, but the background color will be a little darker.
    *
    * `outline`
-   * This appearance is similar to `filled` but the background color will be transparent and no shadow applied.
+   * This appearance is similar to `filled`, but the background color will be transparent and no shadow applied.
    *
    * `subtle`
-   * This appearance is similar to `filled-alternative` but no border is applied.
+   * This appearance is similar to `filled-alternative`, but no border is applied.
    *
    * @default 'filled'
    */

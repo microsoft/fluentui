@@ -40,7 +40,7 @@ const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, { isInteractiv
  * before being passed to renderCard_unstable.
  *
  * @param props - props from this instance of Card
- * @param ref - reference to root HTMLElement of Card
+ * @param ref - reference to the root element of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<CardRefElement>): CardState => {
   const { appearance = 'filled', orientation = 'vertical', size = 'medium', as = 'div' } = props;
