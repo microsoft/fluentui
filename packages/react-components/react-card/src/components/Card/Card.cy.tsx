@@ -292,14 +292,14 @@ describe('Card', () => {
       cy.get('#card').should('have.attr', 'role', 'checkbox');
     });
 
-    it('should have internal checkbox when selectable - onCardSelect prop', () => {
+    it('should have internal checkbox when selectable - select prop', () => {
       mountFluent(<CardSample select={<span />} />);
 
       cy.get(`.${cardClassNames.select}`).should('exist');
       cy.get(`.${cardClassNames.root}`).should('not.have.attr', 'role', 'checkbox');
     });
 
-    it('should render checkbox when passing a custom slot', () => {
+    it('should render custom select slot', () => {
       mountFluent(<CardSample select={<input type="checkbox" />} />);
 
       cy.get(`.${cardClassNames.select} input[type="checkbox"]`).should('exist');
@@ -343,7 +343,7 @@ describe('Card', () => {
       cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
     });
 
-    it('should select with the Enter key if card has any actions inside', () => {
+    it('should select with the Enter key if card does not have any actions inside', () => {
       mountFluent(<CardSampleNoActions defaultSelected={false} />);
 
       cy.get(`.${cardClassNames.root}`).focus().realPress('Enter');
