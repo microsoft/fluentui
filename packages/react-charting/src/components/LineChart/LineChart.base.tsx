@@ -158,7 +158,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private lines: JSX.Element[];
   private _renderedColorFillBars: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
-  private _colorFillBarsOpacity: number;
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
@@ -182,7 +181,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     this._colorFillBars = [];
-    this._colorFillBarsOpacity = 0.5;
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
@@ -349,13 +347,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _handleSingleLegendSelectionAction = (lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) => {
     if (this.state.selectedLegend === lineChartItem.legend) {
-      this.setState({ selectedLegend: '', activeLegend: lineChartItem.legend });
+      this.setState({ selectedLegend: '' });
       this._handleLegendClick(lineChartItem, null);
     } else {
-      this.setState({
-        selectedLegend: lineChartItem.legend,
-        activeLegend: lineChartItem.legend,
-      });
+      this.setState({ selectedLegend: lineChartItem.legend });
       this._handleLegendClick(lineChartItem, lineChartItem.legend);
     }
   };
@@ -419,7 +414,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             hoverAction: () => {
               this.setState({ activeLegend: title });
             },
-            opacity: this._colorFillBarsOpacity,
+            opacity: this._getColorFillBarOpacity(colorFillBar),
             stripePattern: colorFillBar.applyPattern,
           };
           return legend;
@@ -578,7 +573,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
 
         const isLegendSelected: boolean =
-          this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
+          this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
 
         const lineData: [number, number][] = [];
         for (let k = 0; k < this._points[i].data.length; k++) {
@@ -684,7 +679,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
 
           const isLegendSelected: boolean =
-            this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
+            this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           pointsForLine.push(
@@ -914,10 +909,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const startX = colorFillBar.data[j].startX;
         const endX = colorFillBar.data[j].endX;
         const opacity =
-          this.state.activeLegend === colorFillBar.legend ||
-          this.state.activeLegend === '' ||
-          this.state.isSelectedLegend
-            ? this._colorFillBarsOpacity
+          this._legendHighlighted(colorFillBar.legend) || this._noLegendHighlighted() || this.state.isSelectedLegend
+            ? this._getColorFillBarOpacity(colorFillBar)
             : 0.1;
         colorFillBars.push(
           <rect
@@ -1290,5 +1283,28 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       selectedLegendPoints: [],
       isSelectedLegend: false,
     });
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legend: string) => {
+    return (
+      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getColorFillBarOpacity = (colorFillBar: IColorFillBarsProps) => {
+    return colorFillBar.applyPattern ? 1 : 0.4;
   };
 }
