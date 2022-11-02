@@ -73,14 +73,9 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   virtualizerLength?: number;
 
   /**
-   * Provide external access to the scroll ref container for control.
+   * Scroll view reference - must be specified as null if not provided, so that user is aware performance will be sub-optimal
    */
   scrollViewRef: MutableRefObject<HTMLDivElement | null> | null;
-
-  /**
-   * Enable debug stylization (Easier to see virtualization).
-   */
-  enableDebug?: boolean;
 
   /**
    * Tells the virtualizer to measure in the reverse direction (for column-reverse order etc.)
@@ -108,9 +103,4 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
    * Allow users to intervene in index calculation changes
    */
   onCalculateIndex?: (newIndex: number) => number;
-
-  /**
-   * Allow users to render their own container
-   */
-  onRenderContainer?: (virtualizedChildren: ReactNode[], containerProps: HTMLAttributes<ReactNode>) => ReactNode;
 };

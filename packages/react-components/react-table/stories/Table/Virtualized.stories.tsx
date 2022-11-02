@@ -179,6 +179,7 @@ export const Virtualized = () => {
               it will be more efficient with this method, but is not required.
             */
             scrollViewRef={containerRef}
+            // scrollViewRef={null}
           >
             {rows.map(({ item }, index) => (
               <TableRow key={item.file.label} style={{ height: index % 2 == 0 ? '88px' : '44px' }}>
