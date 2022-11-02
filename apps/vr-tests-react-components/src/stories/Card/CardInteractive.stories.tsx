@@ -4,7 +4,7 @@ import { Card } from '@fluentui/react-card';
 import { action } from '@storybook/addon-actions';
 import { SampleCardContent } from './utils';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 
 export default {
   title: 'Card Converged - Interactive',
