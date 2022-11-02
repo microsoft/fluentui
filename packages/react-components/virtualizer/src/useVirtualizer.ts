@@ -117,18 +117,39 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
         if (latestEntry.target === afterElementRef.current) {
           measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
           if (isVertical) {
-            measurementPos += Math.abs(latestEntry.boundingClientRect.top);
+            if (isReversed) {
+              measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
+              console.log('Latest entry - after: ', latestEntry);
+            } else {
+              measurementPos += Math.abs(latestEntry.boundingClientRect.top);
+              console.log('Latest entry - after: ', latestEntry);
+            }
           } else {
-            measurementPos += Math.abs(latestEntry.boundingClientRect.left);
+            if (isReversed) {
+              // measurementPos += Math.abs(latestEntry.boundingClientRect.right);
+              console.log('Latest entry - after: ', latestEntry);
+            } else {
+              measurementPos += Math.abs(latestEntry.boundingClientRect.left);
+              console.log('Latest entry - after: ', latestEntry);
+            }
           }
         } else if (latestEntry.target === beforeElementRef.current) {
           measurementPos = isReversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
           if (isVertical) {
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
+            if (isReversed) {
+              measurementPos += Math.abs(latestEntry.boundingClientRect.top);
+            } else {
+              measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
+            }
           } else {
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
+            if (isReversed) {
+              measurementPos += Math.abs(latestEntry.boundingClientRect.left);
+              console.log('Latest entry - before: ', latestEntry);
+            } else {
+              measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
+              console.log('Latest entry - before: ', latestEntry);
+            }
           }
-          measurementPos -= latestEntry.intersectionRatio * measurementPos;
         }
       }
 
@@ -158,6 +179,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
 
       if (virtualizerStartIndex !== newStartIndex) {
         // Set new index, trigger render!
+        console.log('SETTING NEW INDEX: ', newStartIndex);
         onUpdateIndex?.(newStartIndex, virtualizerStartIndex);
         setVirtualizerStartIndex(newStartIndex);
         /*
@@ -260,7 +282,6 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     }
 
     // Time for custom size calcs
-
     return childProgressiveSizes.current[childArray.length - 1] - childProgressiveSizes.current[lastItemIndex];
   };
 
