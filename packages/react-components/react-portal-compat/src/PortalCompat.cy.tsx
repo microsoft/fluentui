@@ -21,7 +21,7 @@ describe('PortalCompat', () => {
       if (ref.current) {
         return registerPortal(ref.current);
       }
-    }, []);
+    }, [registerPortal]);
 
     return (
       <div ref={ref}>
