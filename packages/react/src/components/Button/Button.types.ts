@@ -55,8 +55,7 @@ export interface IButtonProps
   componentRef?: IRefObject<IButton>;
 
   /**
-   * Optional callback to access the root DOM element.
-   * @deprecated Temporary solution which will be replaced with ref in the V8 release.
+   * Optional callback to access the root DOM element as an HTMLElement.
    */
   elementRef?: React.Ref<HTMLElement>;
 

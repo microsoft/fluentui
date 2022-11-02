@@ -16,6 +16,7 @@ const dialogModalProps = {
 export const PanelConfirmDismissExample: React.FunctionComponent = () => {
   const [isPanelOpen, setIsPanelOpen] = React.useState(false);
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
+  const buttonElRef = React.useRef<HTMLElement>(null);
 
   const openPanel = React.useCallback(() => setIsPanelOpen(true), []);
   const onDismiss = React.useCallback((ev?: React.SyntheticEvent | KeyboardEvent) => {
@@ -28,7 +29,6 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
 
   const hideDialog = React.useCallback(() => setIsDialogVisible(false), []);
   const hideDialogAndPanel = React.useCallback(() => {
-    setIsPanelOpen(false);
     setIsDialogVisible(false);
   }, []);
 
@@ -37,7 +37,7 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
       {explanation}
       <br />
       <br />
-      <DefaultButton text="Open panel" onClick={openPanel} />
+      <DefaultButton elementRef={buttonElRef} text="Open panel" onClick={openPanel} />
       <Panel
         headerText="Panel with custom close behavior"
         isOpen={isPanelOpen}
@@ -51,6 +51,7 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
         onDismiss={hideDialog}
         dialogContentProps={dialogContentProps}
         modalProps={dialogModalProps}
+        elementToFocusOnDismiss={buttonElRef.current || undefined}
       >
         <DialogFooter>
           <PrimaryButton onClick={hideDialogAndPanel} text="Yes" />
