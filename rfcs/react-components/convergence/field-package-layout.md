@@ -6,6 +6,8 @@ Contributors: @behowell
 
 ## Summary
 
+This RFC explores several options for which packages Field-related components should live in.
+
 ## Background
 
 All form components have both a base version without a label (e.g. `Input`), and a Field version that adds a label, message, and layout options (e.g. `InputField`).
