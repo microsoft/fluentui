@@ -4,10 +4,11 @@ import { Body1, Caption1 } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 
-const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
+const ASSET_URL =
+  'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
 
-export const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
-export const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
+export const powerpointLogoURL = ASSET_URL + 'powerpoint_logo.svg';
+export const salesPresentationTemplateURL = ASSET_URL + 'sales_template.png';
 
 export const SampleCardContent = () => (
   <>
