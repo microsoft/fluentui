@@ -23,7 +23,7 @@ completed as part of creating a v9 component. More info can be found here: https
   - [link to PR]
   - [link to Spec.md: `https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-<your-component>/Spec.md`]
 
-## Implementation and release to unstable
+## Implementation
 
 - [ ] [Component implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#implement-the-control)
   - [link(s) to component implementation related PRs]
@@ -35,7 +35,7 @@ completed as part of creating a v9 component. More info can be found here: https
 - [ ] Component exported from `@fluentui/react-components/unstable`
   - [link to PR]
 
-## Stable release
+## Validation
 
 - [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
   - [ ] Unit and conformance tests
