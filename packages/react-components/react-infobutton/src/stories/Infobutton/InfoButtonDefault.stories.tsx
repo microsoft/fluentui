@@ -7,8 +7,7 @@ export const Default = (props: Partial<InfoButtonProps>) => (
     {...props}
     content={
       <>
-        Popover above-start lorem ipsum dolor sit amet consectetur.{' '}
-        <Link href="https://react.fluentui.dev">Learn more</Link>
+        This is example content for an InfoButton. <Link href="https://react.fluentui.dev">Learn more</Link>
       </>
     }
   />
