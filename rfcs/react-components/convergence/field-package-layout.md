@@ -8,17 +8,15 @@ Contributors: @behowell
 
 This RFC explores several options for which packages Field-related components should live in.
 
-## Background
-
-All form components have both a base version without a label (e.g. `Input`), and a Field version that adds a label, message, and layout options (e.g. `InputField`).
-
 ## Problem statement
 
 Currently, all Field versions of the components are exported from a single package: `@fluentui/react-field` (this is described in more detail as Option 0 below). This results in a large package with unrelated components exported from it. This RFC aims to decide what is the best place to put the Field component definitions.
 
-## Detailed Design or Proposal
+## Background
 
-### Option 0 (current): Export all from `@fluentui/react-field`
+All form components have both a base version without a label (e.g. `Input`), and a Field version that adds a label, message, and layout options (e.g. `InputField`).
+
+### Current package layout: export all from `@fluentui/react-field`
 
 This is how the packages are currently organized: the `@fluentui/react-field` package exports all of the individual component field types (`InputField`, `TextareaField`, etc.), and has dependencies on each components' packages.
 
@@ -53,18 +51,9 @@ This is how the packages are currently organized: the `@fluentui/react-field` pa
   - `@fluentui/react-icons`
   - `@fluentui/react-label`
 
-#### Pros
+## Detailed Design or Proposal
 
-- Keeps react-field dependencies (including `@fluentui/react-label` and `@fluentui/react-icons`) out of base component packages.
-- All Field-related code is in the same package.
-
-#### Cons
-
-- The `@fluentui/react-field` package depends on many other packages that are unrelated to each other.
-- The code related to the base component and its Field version are split between two packages.
-- Potentially unexpected that `Input` and `InputField` are in different packages.
-
-### Option 1: Export Field version from base component package
+### ✅ Option 1: Export Field version from base component package
 
 This would invert the dependencies, and have `@fluentui/react-field` be a utility package that only exports the definitions required to create Field components.
 
@@ -94,7 +83,24 @@ This would invert the dependencies, and have `@fluentui/react-field` be a utilit
 
 - Adds dependencies on field, label, and icons, to all form component packages. However, this should be tree-shaken out.
 
-### Option 2: Add `-field` versions of each package
+## Discarded solutions
+
+### ❌ Option 0: Keep things as they are today
+
+No change: export all field components from `@fluentui/react-field`
+
+#### Pros
+
+- Keeps react-field dependencies (including `@fluentui/react-label` and `@fluentui/react-icons`) out of base component packages.
+- All Field-related code is in the same package.
+
+#### Cons
+
+- The `@fluentui/react-field` package depends on many other packages that are unrelated to each other.
+- The code related to the base component and its Field version are split between two packages.
+- Potentially unexpected that `Input` and `InputField` are in different packages.
+
+### ❌ Option 2: Add `-field` versions of each package
 
 Add the following packages:
 
