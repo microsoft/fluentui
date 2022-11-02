@@ -23,7 +23,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
       {
         color: theme.palette.neutralPrimary,
       },
-      preventBlanketFontInheritance && {
+      !preventBlanketFontInheritance && {
         '& button': inheritFont,
         '& input': inheritFont,
         '& textarea': inheritFont,
