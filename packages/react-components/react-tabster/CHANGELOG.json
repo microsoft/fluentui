@@ -2,6 +2,39 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Wed, 02 Nov 2022 11:58:04 GMT",
+      "tag": "@fluentui/react-tabster_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "dd1a128086fc22c5402f5e8ddbaeaad181803289",
+            "comment": "make allowCondition a optional parameter for findAllFocusable function"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:37 GMT",
       "tag": "@fluentui/react-tabster_v9.2.0",
       "version": "9.2.0",

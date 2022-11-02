@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Thu, 20 Oct 2022 08:39:33 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 11:57:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.1.3)
+
+Wed, 02 Nov 2022 11:57:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.1.2..@fluentui/react-divider_v9.1.3)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25360](https://github.com/microsoft/fluentui/pull/25360) by tristan.watanabe@gmail.com)
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.1.2)
 

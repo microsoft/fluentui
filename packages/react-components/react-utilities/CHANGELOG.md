@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 20 Oct 2022 08:39:56 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 11:58:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.0)
+
+Wed, 02 Nov 2022 11:58:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.1.2..@fluentui/react-utilities_v9.2.0)
+
+### Minor changes
+
+- feat: exposes internal methods that are used in the API surface ([PR #25406](https://github.com/microsoft/fluentui/pull/25406) by bernardo.sunderhus@gmail.com)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.1.2)
 

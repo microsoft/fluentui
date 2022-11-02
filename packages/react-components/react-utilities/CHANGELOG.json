@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 02 Nov 2022 11:58:06 GMT",
+      "tag": "@fluentui/react-utilities_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ee9ca8f32362b41776a26e4eea182b39f378b6ee",
+            "comment": "feat: exposes internal methods that are used in the API surface"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:39 GMT",
       "tag": "@fluentui/react-utilities_v9.1.2",
       "version": "9.1.2",

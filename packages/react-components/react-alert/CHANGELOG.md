@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Tue, 25 Oct 2022 00:35:27 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 11:57:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.16)
+
+Wed, 02 Nov 2022 11:57:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.15..@fluentui/react-alert_v9.0.0-beta.16)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.2.5 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-button to v9.1.7 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
 
 ## [9.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.15)
 

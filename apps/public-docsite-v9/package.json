@@ -26,7 +26,7 @@
     "@fluentui/react-icons-northstar": "^0.64.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.6.1",
+    "@fluentui/react-components": "^9.6.2",
     "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
     "@fluentui/react-theme": "^9.1.1",
     "@griffel/react": "^1.4.2",

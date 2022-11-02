@@ -2,6 +2,39 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Wed, 02 Nov 2022 11:57:53 GMT",
+      "tag": "@fluentui/react-label_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "e55cbfd57ae01ffb350142f0da3e6fabdd7b4c35",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:35 GMT",
       "tag": "@fluentui/react-label_v9.0.8",
       "version": "9.0.8",
