@@ -14,7 +14,7 @@ import story from './DialogTitleNoAction.md';
 export const TitleNoAction = () => {
   return (
     <Dialog modalType="non-modal">
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button>Open non-modal dialog</Button>
       </DialogTrigger>
       <DialogSurface>
@@ -26,7 +26,7 @@ export const TitleNoAction = () => {
             Consequuntur, repellendus nostrum?
           </DialogContent>
           <DialogActions>
-            <DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
               <Button appearance="primary">Close</Button>
             </DialogTrigger>
           </DialogActions>

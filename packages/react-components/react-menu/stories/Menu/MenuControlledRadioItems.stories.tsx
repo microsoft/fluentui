@@ -24,7 +24,7 @@ export const ControlledRadioItems = () => {
 
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
       <MenuPopover>

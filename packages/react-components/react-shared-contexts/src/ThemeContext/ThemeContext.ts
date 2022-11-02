@@ -1,9 +1,6 @@
 import * as React from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
-/**
- * @internal
- */
 export type ThemeContextValue = Theme | Partial<Theme> | undefined;
 
 /**

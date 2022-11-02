@@ -232,7 +232,11 @@ export {
   useTableCellLayoutStyles_unstable,
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
+  useTable,
+  useSelection,
+  useSort,
 } from '@fluentui/react-table';
+
 export type {
   SortDirection,
   TableHeaderCellProps,
@@ -261,6 +265,15 @@ export type {
   TableCellActionsProps,
   TableCellActionsState,
   TableCellActionsSlots,
+  UseTableOptions,
+  TableState as HeadlessTableState,
+  TableSelectionState,
+  TableSortState,
+  TableStatePlugin,
+  RowState,
+  RowId,
+  ColumnDefinition,
+  ColumnId,
 } from '@fluentui/react-table';
 
 export {

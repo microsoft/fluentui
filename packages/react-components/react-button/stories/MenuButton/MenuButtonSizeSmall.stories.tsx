@@ -26,7 +26,7 @@ export const SizeSmall = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton size="small">Small</MenuButton>
         </MenuTrigger>
 
@@ -39,7 +39,7 @@ export const SizeSmall = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton icon={<CalendarMonth />} size="small">
             Small with calendar icon
           </MenuButton>
@@ -54,7 +54,7 @@ export const SizeSmall = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <Tooltip content="Small with calendar icon only" relationship="label">
             <MenuButton icon={<CalendarMonth />} size="small" />
           </Tooltip>

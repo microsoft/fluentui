@@ -15,7 +15,7 @@ export const TriggerOutsideDialog = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <Button onClick={() => setOpen(true)}>Open Dialog</Button>
       </DialogTrigger>
       <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
@@ -28,7 +28,7 @@ export const TriggerOutsideDialog = () => {
               cumque eaque?
             </DialogContent>
             <DialogActions>
-              <DialogTrigger>
+              <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
