@@ -4,7 +4,7 @@ import { DialogSurface } from './DialogSurface';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { DialogSurfaceProps } from './DialogSurface.types';
-import { mockUseDialogContext } from '../../contexts/dialogContext.mock';
+import { mockUseDialogContext } from '../../testing/mockDialogContext';
 
 jest.mock('../../contexts/dialogContext.ts');
 
