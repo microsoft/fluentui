@@ -33,6 +33,7 @@
     "@fluentui/react-aria": "^9.3.0",
     "@fluentui/react-avatar": "^9.2.5",
     "@fluentui/react-checkbox": "^9.0.11",
+    "@fluentui/react-context-selector": "^9.1.0",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-radio": "^9.0.10",
     "@fluentui/react-tabster": "^9.2.1",
