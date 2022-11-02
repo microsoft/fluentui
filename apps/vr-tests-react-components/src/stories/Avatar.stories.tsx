@@ -169,7 +169,6 @@ const AvatarColors: React.FC<Pick<AvatarProps, 'active' | 'activeAppearance'>> =
       <div style={rowStyles}>
         <Avatar color="neutral" {...props} />
         <Avatar color="brand" {...props} />
-        <Avatar color="colorful" name={examples.name[0]} image={{ src: examples.image[0] }} {...props} />
       </div>
       <div style={rowStyles}>
         {examples.name.map(name => (
