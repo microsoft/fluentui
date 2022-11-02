@@ -86,7 +86,7 @@ This would invert the dependencies, and have `@fluentui/react-field` be a utilit
 #### Pros
 
 - Keeps code related to a component and its Field version in the same place, and doesn't require modifying the base `@fluentui/react-field` package when adding a new component.
-- Third parties can use the `@fluentui/react-field` package to create Field versions of their own components without
+- Third parties can use the `@fluentui/react-field` package to create Field versions of their own components without pulling in dependencies on all input controls.
 
 #### Cons
 
