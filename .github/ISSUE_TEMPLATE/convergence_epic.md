@@ -8,8 +8,6 @@ These issues are used by core contributors to track the list of items that shoul
 completed as part of creating a v9 component. More info can be found here: https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide
 -->
 
-https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide
-
 ## Preparation
 
 - [ ] [Open UI Research](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#open-ui-research)
@@ -21,16 +19,17 @@ https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide
   - [link to package: `https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-<your-component>`]
 - [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
   - [link to PR, if applicable]
-- [ ] [Component Spec authored and reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec)
-  - [link to spec in component package / PR]
+- [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
+  - [link to PR]
+  - [link to Spec.md: `https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-<your-component>/Spec.md`]
 
 ## Implementation and release to unstable
 
-- [ ] Component implementation
+- [ ] [Component implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#implement-the-control)
   - [link(s) to component implementation related PRs]
-- [ ] Add initial unit tests (validate basic functionality)
-- [ ] Initial documentation
-  - [ ] Storybook stories
+- [ ] Initial conformance and unit tests (validate basic functionality)
+- [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
+  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
   - [ ] README.md covering basic usage
   - [ ] MIGRATION.md guide (include v8 and v0)
 - [ ] Component exported from `@fluentui/react-components/unstable`
@@ -38,14 +37,19 @@ https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide
 
 ## Stable release
 
-- [ ] Add tests
-  - [ ] Bundle size fixtures ([link to PR])
-  - [ ] Conformance tests ([link to PR])
-  - [ ] Unit tests ([link to PR])
-  - [ ] VR tests ([link to PR])
-  - [ ] Accessibility behavior tests ([link to PR])
-  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): (issue link)
-  - [ ] Performance test scenario ([link to PR])
-- [ ] Validate in product
-- [ ] Finalize migration guide
-  - [ ] Author codemods
+- [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
+  - [ ] Unit and conformance tests
+  - [ ] VR tests
+  - [ ] Bundle size fixtures
+  - [ ] Performance test scenario
+  - [ ] Accessibility behavior tests
+  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
+  - [Link to PR(s)]
+- [ ] [Validate in product](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
+- [ ] Finalize documentation
+  - [ ] Review and add any missing storybook stories
+  - [ ] Finalize migration guide
+- [ ] [Component released as stable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#stable-release) from `@fluentui/react-components`
+  - [ ] Ensure exports are removed from from `@fluentui/react-components/unstable`
+  - [ ] In package.json: Remove the alpha/beta tag from the version number in package.json
+  - [ ] In package.json: Change beachball's `disallowedChangeTypes` to `"major", "prerelease"`
