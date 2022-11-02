@@ -125,7 +125,7 @@ const useStyles = makeStyles({
 
   ring: {
     '::before': {
-      ...shorthands.borderColor(tokens.colorBrandBackgroundStatic),
+      ...shorthands.borderColor(tokens.colorBrandStroke1),
       ...shorthands.borderStyle('solid'),
     },
   },
@@ -379,12 +379,112 @@ const useColorStyles = makeStyles({
   },
 });
 
+const useActiveRingColorStyles = makeStyles({
+  neutral: {
+    '::before': { ...shorthands.borderColor(tokens.colorBrandStroke1) },
+  },
+  brand: {
+    '::before': { ...shorthands.borderColor(tokens.colorBrandStroke1) },
+  },
+  'dark-red': {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteDarkRedBorderActive) },
+  },
+  cranberry: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteCranberryBorderActive) },
+  },
+  red: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteRedBorderActive) },
+  },
+  pumpkin: {
+    '::before': { ...shorthands.borderColor(tokens.colorPalettePumpkinBorderActive) },
+  },
+  peach: {
+    '::before': { ...shorthands.borderColor(tokens.colorPalettePeachBorderActive) },
+  },
+  marigold: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteMarigoldBorderActive) },
+  },
+  gold: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteGoldBorderActive) },
+  },
+  brass: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteBrassBorderActive) },
+  },
+  brown: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteBrownBorderActive) },
+  },
+  forest: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteForestBorderActive) },
+  },
+  seafoam: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteSeafoamBorderActive) },
+  },
+  'dark-green': {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteDarkGreenBorderActive) },
+  },
+  'light-teal': {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteLightTealBorderActive) },
+  },
+  teal: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteTealBorderActive) },
+  },
+  steel: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteSteelBorderActive) },
+  },
+  blue: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteBlueBorderActive) },
+  },
+  'royal-blue': {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteRoyalBlueBorderActive) },
+  },
+  cornflower: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteCornflowerBorderActive) },
+  },
+  navy: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteNavyBorderActive) },
+  },
+  lavender: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteLavenderBorderActive) },
+  },
+  purple: {
+    '::before': { ...shorthands.borderColor(tokens.colorPalettePurpleBorderActive) },
+  },
+  grape: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteGrapeBorderActive) },
+  },
+  lilac: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteLilacBorderActive) },
+  },
+  pink: {
+    '::before': { ...shorthands.borderColor(tokens.colorPalettePinkBorderActive) },
+  },
+  magenta: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteMagentaBorderActive) },
+  },
+  plum: {
+    '::before': { ...shorthands.borderColor(tokens.colorPalettePlumBorderActive) },
+  },
+  beige: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteBeigeBorderActive) },
+  },
+  mink: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteMinkBorderActive) },
+  },
+  platinum: {
+    '::before': { ...shorthands.borderColor(tokens.colorPalettePlatinumBorderActive) },
+  },
+  anchor: {
+    '::before': { ...shorthands.borderColor(tokens.colorPaletteAnchorBorderActive) },
+  },
+});
+
 export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const { size, shape, active, activeAppearance, color } = state;
 
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const colorStyles = useColorStyles();
+  const activeRingColorStyles = useActiveRingColorStyles();
 
   const rootClasses = [styles.root, sizeStyles[size], colorStyles[color]];
 
@@ -419,6 +519,11 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
     if (activeAppearance === 'ring' || activeAppearance === 'ring-shadow') {
       rootClasses.push(styles.ring);
+
+      // Make the ring color match the avatar color when there is no image
+      if (!state.image && color !== 'neutral' && color !== 'brand') {
+        rootClasses.push(activeRingColorStyles[color]);
+      }
 
       if (size <= 48) {
         rootClasses.push(styles.ringThick);

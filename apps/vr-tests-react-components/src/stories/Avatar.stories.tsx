@@ -161,6 +161,30 @@ const AvatarCustomSizeList: React.FC<
   );
 };
 
+const AvatarColors: React.FC<Pick<AvatarProps, 'active' | 'activeAppearance'>> = props => {
+  const rowStyles = { display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '12px', padding: '12px' } as const;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={rowStyles}>
+        <Avatar color="neutral" {...props} />
+        <Avatar color="brand" {...props} />
+        <Avatar color="colorful" name={examples.name[0]} image={{ src: examples.image[0] }} {...props} />
+      </div>
+      <div style={rowStyles}>
+        {examples.name.map(name => (
+          <Avatar color="colorful" name={name} key={name} {...props} />
+        ))}
+      </div>
+      <div style={rowStyles}>
+        {examples.namedColors.map(color => (
+          <Avatar color={color} key={color} {...props} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 storiesOf('Avatar Converged', module)
   .addDecorator(story => (
     <div style={{ display: 'flex' }}>
@@ -209,30 +233,12 @@ storiesOf('Avatar Converged', module)
     <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
   ))
   .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" />)
-  .addStory(
-    'color',
-    () => {
-      const rowStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '8px' };
-
-      return (
-        <div style={{ display: 'flex', gap: '24px', flexDirection: 'row' }}>
-          <div style={rowStyles}>
-            <Avatar color="neutral" />
-            <Avatar color="brand" />
-          </div>
-          <div style={rowStyles}>
-            {examples.name.map(name => (
-              <Avatar color="colorful" name={name} key={name} />
-            ))}
-          </div>
-          <div style={rowStyles}>
-            {examples.namedColors.map(color => (
-              <Avatar color={color} key={color} />
-            ))}
-          </div>
-        </div>
-      );
-    },
-    { includeHighContrast: true, includeDarkMode: true },
-  )
+  .addStory('color', () => <AvatarColors />, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('color+active', () => <AvatarColors active="active" />, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('image-bad-url', () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />);
