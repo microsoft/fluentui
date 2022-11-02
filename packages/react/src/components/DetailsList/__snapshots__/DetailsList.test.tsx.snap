@@ -8114,7 +8114,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone9"
+                                data-focuszone-id="FocusZone7"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
@@ -8416,7 +8416,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone11"
+                                data-focuszone-id="FocusZone9"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
@@ -8662,7 +8662,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-labelledby="GroupHeader7"
+                        aria-labelledby="GroupHeader11"
                         aria-rowindex={5}
                         className=
                             ms-GroupHeader
@@ -8854,7 +8854,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   white-space: nowrap;
                                 }
                             data-selection-invoke={true}
-                            id="GroupHeader7"
+                            id="GroupHeader11"
                             onClick={[Function]}
                             role="gridcell"
                           >
@@ -8881,7 +8881,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-label="Group 1"
                         className="ms-List"
-                        id="GroupedListSection6"
+                        id="GroupedListSection10"
                         role="rowgroup"
                       >
                         <div

@@ -8,7 +8,7 @@ const related: ISideRailLink[] = [
   { text: 'Android Separator', url: '#/controls/android/separator' },
   { text: 'Android ListItemDivider', url: '#/controls/android/listcells' },
   { text: 'macOS Separator', url: '#/controls/mac/separator' },
-  { text: 'Cross-platform Separator', url: '#/controls/crossplatform/separator' },
+  { text: 'Cross-platform Separator', url: '#/controls/cross/separator' },
 ];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/SeparatorPage';

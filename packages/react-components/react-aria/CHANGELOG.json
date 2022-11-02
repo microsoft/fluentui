@@ -2,6 +2,27 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Wed, 02 Nov 2022 11:57:47 GMT",
+      "tag": "@fluentui/react-aria_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f76f56fc1ddbe64b241e7a6ab1c767bcf67d06f6",
+            "comment": "exposes internal typings: ARIAButtonAlteredProps and ARIAButtonElement"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Oct 2022 18:05:52 GMT",
       "tag": "@fluentui/react-aria_v9.2.3",
       "version": "9.2.3",

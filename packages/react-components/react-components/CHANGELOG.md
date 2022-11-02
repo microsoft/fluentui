@@ -1,8 +1,130 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 26 Oct 2022 18:05:51 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 11:57:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.2)
+
+Wed, 02 Nov 2022 11:57:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.1..@fluentui/react-components_v9.6.2)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - exposes internal typings: ARIAButtonAlteredProps and ARIAButtonElement ([PR #25403](https://github.com/microsoft/fluentui/pull/25403) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-context-selector`
+  - exposes internal type: ContextSelector ([PR #25404](https://github.com/microsoft/fluentui/pull/25404) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25408](https://github.com/microsoft/fluentui/pull/25408) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25410](https://github.com/microsoft/fluentui/pull/25410) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25411](https://github.com/microsoft/fluentui/pull/25411) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - exposes new typings to avoid exposing internal methods ([PR #25407](https://github.com/microsoft/fluentui/pull/25407) by bernardo.sunderhus@gmail.com)
+  - feat: position updates are handled out of react lifecycle ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by lingfangao@hotmail.com)
+- `@fluentui/react-shared-contexts`
+  - exposes internal methods and types that are used in the API surface ([PR #25405](https://github.com/microsoft/fluentui/pull/25405) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tooltip`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25409](https://github.com/microsoft/fluentui/pull/25409) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - feat: exposes internal methods that are used in the API surface ([PR #25406](https://github.com/microsoft/fluentui/pull/25406) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: Removing gaps between ::after pseudo-element and AvatarGroupItem/AvatarGroupPopover." ([PR #25382](https://github.com/microsoft/fluentui/pull/25382) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: Migrate to new package structure. ([PR #25360](https://github.com/microsoft/fluentui/pull/25360) by tristan.watanabe@gmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25469](https://github.com/microsoft/fluentui/pull/25469) by tristan.watanabe@gmail.com)
+- `@fluentui/react-label`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25470](https://github.com/microsoft/fluentui/pull/25470) by tristan.watanabe@gmail.com)
+- `@fluentui/react-link`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25471](https://github.com/microsoft/fluentui/pull/25471) by tristan.watanabe@gmail.com)
+- `@fluentui/react-menu`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - refactor: usePortalMount node updates mount node attributes in memo ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-slider`
+  - Adding cursor pointer to the Slider component ([PR #25184](https://github.com/microsoft/fluentui/pull/25184) by petrduda@microsoft.com)
+  - fix: Pad in slider so the thumb does not render outside the bounds of the root element ([PR #25378](https://github.com/microsoft/fluentui/pull/25378) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - make allowCondition a optional parameter for findAllFocusable function ([PR #25416](https://github.com/microsoft/fluentui/pull/25416) by marcosvmmoura@gmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-field`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - fix: update styles based on design review ([PR #24339](https://github.com/microsoft/fluentui/pull/24339) by sarah.higley@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25359](https://github.com/microsoft/fluentui/pull/25359) by tristan.watanabe@gmail.com)
+- `@fluentui/react-table`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - feat: Initialize DataGrid components ([PR #25442](https://github.com/microsoft/fluentui/pull/25442) by lingfangao@hotmail.com)
+- `@fluentui/react-toolbar`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: remove dependencies on Fluent UI v8 ([PR #25466](https://github.com/microsoft/fluentui/pull/25466) by olfedias@microsoft.com)
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.1)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding cursor pointer to the Slider component",
-  "packageName": "@fluentui/react-slider",
-  "email": "petrduda@microsoft.com",
-  "dependentChangeType": "patch"
-}
