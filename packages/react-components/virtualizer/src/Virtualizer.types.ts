@@ -73,9 +73,10 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   virtualizerLength?: number;
 
   /**
-   * Scroll view reference - must be specified as null if not provided, so that user is aware performance will be sub-optimal
+   * DEPRECATED: This may be removed for stable release, the IO has been optimized to a point that this is unnecessary.
+   * Scroll view reference can be provided if the virtualizer is wrapped inside an overflow container.
    */
-  scrollViewRef: MutableRefObject<HTMLDivElement | null> | null;
+  scrollViewRef?: MutableRefObject<HTMLDivElement | null>;
 
   /**
    * Tells the virtualizer to measure in the reverse direction (for column-reverse order etc.)

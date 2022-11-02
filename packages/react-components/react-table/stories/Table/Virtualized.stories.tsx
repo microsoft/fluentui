@@ -153,57 +153,47 @@ export const Virtualized = () => {
 
   const rows = sort(getRows());
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
   return (
-    <div style={{ height: '500px', overflow: 'auto', overflowAnchor: 'none' }} ref={containerRef}>
-      <Table sortable>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
-            <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
-            <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
-            <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <Virtualizer
-            flow={VirtualizerFlow.Vertical}
-            virtualizerLength={100}
-            itemSize={44}
-            sizeOfChild={(node, index) => {
-              return index % 2 == 0 ? 88 : 44;
-            }}
-            /*
-              The scrollViewRef is optional if you want to encapsulate inside a scroll view
-              it will be more efficient with this method, but is not required.
-            */
-            scrollViewRef={containerRef}
-            // scrollViewRef={null}
-          >
-            {rows.map(({ item }, index) => (
-              <TableRow key={item.file.label} style={{ height: index % 2 == 0 ? '88px' : '44px' }}>
-                <TableCell>
-                  <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-                </TableCell>
-                <TableCell>
-                  <TableCellLayout
-                    media={
-                      <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                    }
-                  >
-                    {item.author.label}
-                  </TableCellLayout>
-                </TableCell>
-                <TableCell>{item.lastUpdated.label}</TableCell>
-                <TableCell>
-                  <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-                </TableCell>
-              </TableRow>
-            ))}
-          </Virtualizer>
-        </TableBody>
-      </Table>
-    </div>
+    <Table sortable>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <Virtualizer
+          flow={VirtualizerFlow.Vertical}
+          virtualizerLength={100}
+          itemSize={44}
+          sizeOfChild={(node, index) => {
+            return index % 2 == 0 ? 88 : 44;
+          }}
+        >
+          {rows.map(({ item }, index) => (
+            <TableRow key={item.file.label} style={{ height: index % 2 == 0 ? '88px' : '44px' }}>
+              <TableCell>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+              </TableCell>
+              <TableCell>
+                <TableCellLayout
+                  media={
+                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  }
+                >
+                  {item.author.label}
+                </TableCellLayout>
+              </TableCell>
+              <TableCell>{item.lastUpdated.label}</TableCell>
+              <TableCell>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+              </TableCell>
+            </TableRow>
+          ))}
+        </Virtualizer>
+      </TableBody>
+    </Table>
   );
 };
