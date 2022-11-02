@@ -7,6 +7,7 @@ export const ToolbarContext = createContext<ToolbarContextValue | undefined>(und
 const toolbarContextDefaultValue: ToolbarContextValue = {
   size: 'medium' as 'medium',
   handleToggleButton: () => null,
+  handleRadio: () => null,
   vertical: false,
   checkedValues: {},
 };

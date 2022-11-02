@@ -315,10 +315,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>
-                {this._renderLink('#/controls/crossplatform', 'Controls', { ariaLabel: 'Controls: Cross-platform' })}
+                {this._renderLink('#/controls/cross', 'Controls', { ariaLabel: 'Controls: Cross-platform' })}
               </li>
               <li className={classNames.cardListItem}>
-                {this._renderLink('#/get-started/crossplatform', 'Get started', {
+                {this._renderLink('#/get-started/cross', 'Get started', {
                   ariaLabel: 'Get started: Cross-platform',
                 })}
               </li>

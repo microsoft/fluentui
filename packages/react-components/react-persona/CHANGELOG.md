@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Thu, 20 Oct 2022 08:39:39 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 11:57:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.0-beta.2)
+
+Wed, 02 Nov 2022 11:57:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.0-beta.1..@fluentui/react-persona_v9.1.0-beta.2)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.2.5 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-badge to v9.0.11 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
+## [9.1.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.0-beta.1)
+
+Tue, 25 Oct 2022 00:35:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.0.3..@fluentui/react-persona_v9.1.0-beta.1)
+
+### Changes
+
+- chore: Change version back to beta. ([PR #25357](https://github.com/microsoft/fluentui/pull/25357) by esteban.230@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.4 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-badge to v9.0.10 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.0.3)
 

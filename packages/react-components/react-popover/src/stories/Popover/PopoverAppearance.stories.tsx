@@ -32,7 +32,7 @@ export const Appearance = () => {
   return (
     <div className={layoutStyles.root}>
       <Popover>
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button>Default appearance Popover trigger</Button>
         </PopoverTrigger>
 
@@ -42,7 +42,7 @@ export const Appearance = () => {
       </Popover>
 
       <Popover appearance="brand">
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button>Brand appearance Popover trigger</Button>
         </PopoverTrigger>
 
@@ -52,7 +52,7 @@ export const Appearance = () => {
       </Popover>
 
       <Popover appearance="inverted">
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button>Inverted appearance Popover trigger</Button>
         </PopoverTrigger>
 

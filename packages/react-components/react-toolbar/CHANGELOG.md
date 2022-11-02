@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Thu, 20 Oct 2022 08:39:54 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Nov 2022 11:58:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.12)
+
+Wed, 02 Nov 2022 11:58:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.11..@fluentui/react-toolbar_v9.0.0-beta.12)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- chore: remove dependencies on Fluent UI v8 ([PR #25466](https://github.com/microsoft/fluentui/pull/25466) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.1.7 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-divider to v9.1.3 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-radio to v9.0.10 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-tabster to v9.2.1 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.11)
+
+Tue, 25 Oct 2022 00:35:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.10..@fluentui/react-toolbar_v9.0.0-beta.11)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.1.6 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.10)
 

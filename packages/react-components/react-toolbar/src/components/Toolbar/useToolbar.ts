@@ -39,16 +39,14 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     }),
   };
 
-  const [checkedValues, setCheckedValues] = useControllableState({
-    state: initialState.checkedValues,
-    defaultState: initialState.defaultCheckedValues,
-    initialState: {},
+  const [checkedValues, onCheckedValueChange] = useToolbarSelectableState({
+    checkedValues: props.checkedValues,
+    defaultCheckedValues: props.defaultCheckedValues,
+    onCheckedValueChange: props.onCheckedValueChange,
   });
 
-  const { onCheckedValueChange } = initialState;
-
   const handleToggleButton: ToggableHandler = useEventCallback(
-    (e: React.MouseEvent | React.KeyboardEvent, name?: string, value?: string, checked?: boolean) => {
+    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked?: boolean) => {
       if (name && value) {
         const checkedItems = checkedValues?.[name] || [];
         const newCheckedItems = [...checkedItems];
@@ -57,9 +55,18 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
         } else {
           newCheckedItems.push(value);
         }
-
         onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
-        setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
+      }
+    },
+  );
+
+  const handleRadio: ToggableHandler = useEventCallback(
+    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked?: boolean) => {
+      if (name && value) {
+        onCheckedValueChange?.(e, {
+          name,
+          checkedItems: checkedValues?.[name],
+        });
       }
     },
   );
@@ -67,6 +74,33 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
   return {
     ...initialState,
     handleToggleButton,
+    handleRadio,
     checkedValues: checkedValues ?? {},
   };
+};
+
+/**
+ * Adds appropriate state values and handlers for selectable items
+ * i.e checkboxes and radios
+ */
+const useToolbarSelectableState = (
+  state: Pick<ToolbarProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+) => {
+  const [checkedValues, setCheckedValues] = useControllableState({
+    state: state.checkedValues,
+    defaultState: state.defaultCheckedValues,
+    initialState: {},
+  });
+  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
+  const onCheckedValueChange: ToolbarState['onCheckedValueChange'] = useEventCallback((e, { name, checkedItems }) => {
+    if (onCheckedValueChangeOriginal) {
+      onCheckedValueChangeOriginal(e, { name, checkedItems });
+    }
+
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  });
+
+  return [checkedValues, onCheckedValueChange] as const;
 };

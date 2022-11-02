@@ -2,6 +2,107 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 01 Nov 2022 07:49:22 GMT",
+      "tag": "@fluentui/react_v8.99.2",
+      "version": "8.99.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a180b67ce1107e8d4cb02aceb2e92a9e162b532e",
+            "comment": "feat: update List to render children on first render() call"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Oct 2022 07:45:40 GMT",
+      "tag": "@fluentui/react_v8.99.1",
+      "version": "8.99.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "aa6aca3508e3578b5182d82be8173a42eb17d906",
+            "comment": "chore: Reducing bundle size of Stack by moving selector used in multiple places to local const."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Oct 2022 07:45:07 GMT",
+      "tag": "@fluentui/react_v8.99.0",
+      "version": "8.99.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "277d440d579167614823f740f58758f05cb40ca2",
+            "comment": "feat: Add enableScopedSelectors prop to Stack that, when true, makes the Stack styles selectors be more scoped to not be as expensive in style recalculation."
+          },
+          {
+            "author": "sebastian.vanik@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "6682e6f4e59ca3fe479564219ed4b1b9a91b9907",
+            "comment": "Allow empty string as valid value for text property of ComboBox"
+          }
+        ],
+        "patch": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "6c136eb60ae73382d3336b2ff11b113924d6eddc",
+            "comment": "fix: Allowing DatePicker to be focusable within FocusZones by default."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Oct 2022 07:52:53 GMT",
+      "tag": "@fluentui/react_v8.98.8",
+      "version": "8.98.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4afa85e9437c0ccdf33cdccce48f5b3aa8da138a",
+            "comment": "fix: add support for HTML defails element"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e",
+            "comment": "fix: Improve Stack's style recalculation performance by selectively applying children selectors."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.8",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 07:43:18 GMT",
+      "tag": "@fluentui/react_v8.98.7",
+      "version": "8.98.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f39b79696f9b5eb150d07b937a6bb58be6be0e95",
+            "comment": "fix: DetailsList is still tabbable when header is not visible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Oct 2022 07:45:24 GMT",
       "tag": "@fluentui/react_v8.98.6",
       "version": "8.98.6",

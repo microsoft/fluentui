@@ -6,6 +6,7 @@ import { getColorScheme } from '../../colors';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { menuItemIconClassName } from '../../../../components/Menu/MenuItemIcon';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -201,6 +202,14 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
 
         ...(underlined && { color: v.underlinedColorHover }),
 
+        ...(!disabled &&
+          !primary &&
+          vertical && {
+            [`&>.${menuItemIconClassName}`]: {
+              color: v.subMenuIconColor,
+              ...getIconFillOrOutlineStyles({ outline: false }),
+            },
+          }),
         ...(!disabled && {
           ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
           ...(primary

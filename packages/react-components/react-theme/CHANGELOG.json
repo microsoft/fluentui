@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:38 GMT",
+      "tag": "@fluentui/react-theme_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:54 GMT",
       "tag": "@fluentui/react-theme_v9.1.1",
       "version": "9.1.1",

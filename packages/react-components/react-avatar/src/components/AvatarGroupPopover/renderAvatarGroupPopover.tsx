@@ -17,7 +17,7 @@ export const renderAvatarGroupPopover_unstable = (
 
   return (
     <slots.root {...(slotProps.root as PopoverProps)}>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <slots.tooltip {...(slotProps.tooltip as TooltipProps)}>
           <slots.triggerButton {...slotProps.triggerButton} />
         </slots.tooltip>
