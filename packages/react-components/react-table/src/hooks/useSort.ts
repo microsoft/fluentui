@@ -6,7 +6,7 @@ const noop = () => undefined;
 export const defaultTableSortState: TableSortState<unknown> = {
   getSortDirection: () => 'ascending',
   setColumnSort: noop,
-  sort: (rows: RowState<unknown>[]) => [...rows],
+  sort: <TRowState extends RowState<unknown>>(rows: TRowState[]) => [...rows],
   sortColumn: undefined,
   sortDirection: 'ascending',
   toggleColumnSort: noop,
@@ -53,7 +53,7 @@ export function useSortState<TItem>(tableState: TableState<TItem>, options: UseS
     setSorted(newState);
   };
 
-  const sort = (rows: RowState<TItem>[]) => {
+  const sort = <TRowState extends RowState<TItem>>(rows: TRowState[]) => {
     return rows.slice().sort((a, b) => {
       const sortColumnDef = columns.find(column => column.columnId === sortColumn);
       if (!sortColumnDef?.compare) {

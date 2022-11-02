@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat: Initialize DataGrid components",
+  "comment": "feat:  Implement child render function for DataGrid rows",
   "packageName": "@fluentui/react-table",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

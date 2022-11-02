@@ -44,7 +44,7 @@ export interface TableSortState<TItem> {
   /**
    * Sorts rows and returns a **shallow** copy of original items
    */
-  sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
+  sort: <TRowState extends RowState<TItem>>(rows: TRowState[]) => TRowState[];
 }
 
 export interface TableSelectionState {

@@ -124,7 +124,7 @@ export {
   useDataGridBody_unstable,
   renderDataGridBody_unstable,
 } from './DataGridBody';
-export type { DataGridBodyProps, DataGridBodyState, DataGridBodySlots } from './DataGridBody';
+export type { DataGridBodyProps, DataGridBodyState, DataGridBodySlots, RowRenderFunction } from './DataGridBody';
 
 export {
   DataGrid,
@@ -133,7 +133,13 @@ export {
   useDataGrid_unstable,
   renderDataGrid_unstable,
 } from './DataGrid';
-export type { DataGridProps, DataGridSlots, DataGridState, DataGridContextValues } from './DataGrid';
+export type {
+  DataGridProps,
+  DataGridSlots,
+  DataGridState,
+  DataGridContextValues,
+  DataGridContextValue,
+} from './DataGrid';
 
 export {
   DataGridHeader,
