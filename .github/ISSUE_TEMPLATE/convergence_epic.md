@@ -25,14 +25,14 @@ completed as part of creating a v9 component. More info can be found here: https
 
 ## Implementation
 
-- [ ] [Component implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#implement-the-control)
+- [ ] [Component implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#implementation)
   - [link(s) to component implementation related PRs]
 - [ ] Initial conformance and unit tests (validate basic functionality)
 - [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
   - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
   - [ ] README.md covering basic usage
   - [ ] MIGRATION.md guide (include v8 and v0)
-- [ ] Component exported from `@fluentui/react-components/unstable`
+- [ ] [Component released as unstable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#unstable-release) from `@fluentui/react-components/unstable`
   - [link to PR]
 
 ## Validation
@@ -46,7 +46,7 @@ completed as part of creating a v9 component. More info can be found here: https
   - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
   - [Link to PR(s)]
 - [ ] [Validate in product](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
-- [ ] Finalize documentation
+- [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
   - [ ] Review and add any missing storybook stories
   - [ ] Finalize migration guide
 - [ ] [Component released as stable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#stable-release) from `@fluentui/react-components`
