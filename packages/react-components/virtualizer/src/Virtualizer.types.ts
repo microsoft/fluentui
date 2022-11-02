@@ -75,7 +75,7 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   /**
    * Provide external access to the scroll ref container for control.
    */
-  scrollViewRef?: MutableRefObject<HTMLDivElement | null>;
+  scrollViewRef: MutableRefObject<HTMLDivElement | null> | null;
 
   /**
    * Enable debug stylization (Easier to see virtualization).

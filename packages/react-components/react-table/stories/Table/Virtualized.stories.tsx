@@ -156,7 +156,7 @@ export const Virtualized = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div style={{ height: '500px', overflow: 'auto' }} ref={containerRef}>
+    <div style={{ height: '500px', overflow: 'auto', overflowAnchor: 'none' }} ref={containerRef}>
       <Table sortable>
         <TableHeader>
           <TableRow>
@@ -171,13 +171,17 @@ export const Virtualized = () => {
             flow={VirtualizerFlow.Vertical}
             virtualizerLength={100}
             itemSize={44}
-            /* The scrollViewRef is optional if you want to encapsulate inside a scroll view
-            it will be more efficient with this method, but is not required.
-          */
+            sizeOfChild={(node, index) => {
+              return index % 2 == 0 ? 88 : 44;
+            }}
+            /*
+              The scrollViewRef is optional if you want to encapsulate inside a scroll view
+              it will be more efficient with this method, but is not required.
+            */
             scrollViewRef={containerRef}
           >
-            {rows.map(({ item }) => (
-              <TableRow key={item.file.label}>
+            {rows.map(({ item }, index) => (
+              <TableRow key={item.file.label} style={{ height: index % 2 == 0 ? '88px' : '44px' }}>
                 <TableCell>
                   <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
                 </TableCell>

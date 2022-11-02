@@ -34,7 +34,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
   // Store ref to before padding element
   const afterElementRef = useRef<Element | null>(null);
 
-  // We need to store an array to track previous sizes, we can use this to incrementally update changes
+  // We need to store an array to track dynamic sizes, we can use this to incrementally update changes
   const childSizes = useRef<number[]>(new Array<number>(sizeOfChild ? childArray.length : 0));
 
   /* We keep track of the progressive sizing/placement down the list,
@@ -45,6 +45,14 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     if (!sizeOfChild) {
       // Static sizes, never mind!
       return;
+    }
+
+    if (childArray.length > childSizes.current.length) {
+      childSizes.current = new Array<number>(childArray.length);
+    }
+
+    if (childArray.length > childProgressiveSizes.current.length) {
+      childProgressiveSizes.current = new Array<number>(childArray.length);
     }
 
     childArray.forEach((child, index) => {
@@ -58,10 +66,15 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     });
   }, [childArray, sizeOfChild]);
 
-  useEffect(() => {
-    // TODO: Optimize how often this is called if possible (only on child length change?)
+  if (
+    sizeOfChild &&
+    (childArray.length !== childSizes.current.length || childArray.length !== childProgressiveSizes.current.length)
+  ) {
+    // Dynamically sized items.
+    // Child length has changed, do a full recalculation.
+    // Otherwise, incremental updater will handle.
     populateSizeArrays();
-  }, [children, childArray, childArray.length, populateSizeArrays, sizeOfChild]);
+  }
 
   // Observe intersections of virtualized components
   const [setIOList, _setIOInit, _observer] = useIntersectionObserver(
@@ -87,7 +100,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
 
       if (!scrollViewRef) {
         // We are not inside a direct parent scroll view, use bookends to chop down until we find position.
-        // We do NOT use scroll position as this implies we are unbounded - (scroll start pos may not be 0)
+        // We do NOT use scroll position as this implies we are unbounded - (scroll start pos may not be 0 or local)
         const latestEntry =
           entries.length === 1
             ? entries[0]
@@ -134,12 +147,13 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
       let bufferedIndex = Math.max(startIndex - bufferItems, 0);
 
       if (onCalculateIndex) {
-        // User has chance to intervene/customize
+        // User has chance to intervene/customize prior to render
+        // They may want to normalize this value.
         bufferedIndex = onCalculateIndex(bufferedIndex);
       }
 
-      const maxIndex = Math.max(childArray.length - virtualizerLength, 0);
       // Safety limits
+      const maxIndex = Math.max(childArray.length - virtualizerLength, 0);
       const newStartIndex = Math.min(Math.max(bufferedIndex, 0), maxIndex);
 
       if (virtualizerStartIndex !== newStartIndex) {
@@ -147,8 +161,8 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
         onUpdateIndex?.(newStartIndex, virtualizerStartIndex);
         setVirtualizerStartIndex(newStartIndex);
         /*
-          We need to update our dynamic size array for the to-be rendered items
-          then our virtualizer calculations are always up to date / accurate.
+          We need to ensure our dynamic size array
+          calculations are always up to date prior to render.
         */
         updateCurrentItemSizes();
       }
@@ -296,22 +310,13 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     setIOList(newList);
   };
 
-  // We have to initialize size array prior to any size calls
-  const hasInitialized = useRef<boolean>(false);
-  const initializeSizeArray = () => {
-    if (hasInitialized.current === false) {
-      hasInitialized.current = true;
-      populateSizeArrays();
-    }
-  };
-
   const updateCurrentItemSizes = () => {
     if (!sizeOfChild) {
       // Static sizes, not required.
       return;
     }
-    // We should always call our size function before a render (only for the items that will be rendered)
-    // This ensures we grab any state and up to date change when it happens.
+    // We should always call our size function on index change (only for the items that will be rendered)
+    // This ensures we request the latest data for incoming items in case sizing has changed.
     const endIndex = Math.max(virtualizerStartIndex + virtualizerLength, childArray.length);
 
     let didUpdate = false;
@@ -324,11 +329,20 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     }
 
     if (didUpdate) {
-      // Update our progessive size array
+      // Update our progressive size array
       for (let i = virtualizerStartIndex; i < childArray.length; i++) {
         const prevSize = i > 0 ? childProgressiveSizes.current[i - 1] : 0;
         childProgressiveSizes.current[i] = prevSize + childSizes.current[i];
       }
+    }
+  };
+
+  // Initialize the size array before first render.
+  const hasInitialized = useRef<boolean>(false);
+  const initializeSizeArray = () => {
+    if (hasInitialized.current === false) {
+      hasInitialized.current = true;
+      populateSizeArrays();
     }
   };
 
