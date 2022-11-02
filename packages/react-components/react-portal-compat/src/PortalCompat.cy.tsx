@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { PortalCompatProvider } from '../src';
+import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 
 const mount = (element: JSX.Element) => {
