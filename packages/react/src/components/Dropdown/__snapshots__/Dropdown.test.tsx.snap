@@ -211,6 +211,15 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
               font-weight: 400;
               visibility: visible;
             }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
+            }
       >
         <div
           class=
@@ -1405,6 +1414,15 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
               font-size: 14px;
               font-weight: 400;
               visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
             }
       >
         <div

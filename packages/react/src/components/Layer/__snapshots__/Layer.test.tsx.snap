@@ -17,6 +17,15 @@ exports[`Layer renders Layer correctly 1`] = `
           font-weight: 400;
           visibility: visible;
         }
+        & button {
+          font-family: inherit;
+        }
+        & input {
+          font-family: inherit;
+        }
+        & textarea {
+          font-family: inherit;
+        }
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}

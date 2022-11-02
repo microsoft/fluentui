@@ -18,6 +18,15 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
             font-weight: 400;
             visibility: visible;
           }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
+          }
     >
       <div
         class=
@@ -241,6 +250,15 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
             font-size: 14px;
             font-weight: 400;
             visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
           }
     >
       <div
@@ -467,6 +485,15 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
             font-size: 14px;
             font-weight: 400;
             visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
           }
     >
       <div
