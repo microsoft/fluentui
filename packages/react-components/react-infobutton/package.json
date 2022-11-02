@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-popover": "^9.2.1",
-    "@fluentui/react-tabster": "^9.2.0",
+    "@fluentui/react-popover": "^9.3.0",
+    "@fluentui/react-tabster": "^9.2.1",
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.1.2",
     "@griffel/react": "^1.4.1",
