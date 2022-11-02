@@ -273,6 +273,10 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: build vr-tests-react-components storybook
+        run: yarn lage build --to @fluentui/vr-tests-react-components
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+
+      - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
