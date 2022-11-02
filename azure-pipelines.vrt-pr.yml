@@ -92,7 +92,7 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
 
       # - bash: cd packages/screenshotdiff && yarn build
-      #   display-Name: 'Build'
+      #   displayName: 'Build'
       # TODO: Currenly LKG CI build contains static build ID
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "fluentui" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId)
