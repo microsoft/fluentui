@@ -11,6 +11,9 @@ export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   badge: 'fui-Avatar__badge',
 };
 
+// CSS variable for the color of the ring when active
+const avatarRingColor = '--fui-Avatar-ringColor';
+
 //
 // TODO: All animation constants should go to theme or globals?
 // https://github.com/microsoft/fluentui/issues/16372#issuecomment-778240665
@@ -125,7 +128,7 @@ const useStyles = makeStyles({
 
   ring: {
     '::before': {
-      ...shorthands.borderColor(tokens.colorBrandStroke1),
+      ...shorthands.borderColor(`var(${avatarRingColor})`),
       ...shorthands.borderStyle('solid'),
     },
   },
@@ -380,95 +383,101 @@ const useColorStyles = makeStyles({
 });
 
 const useActiveRingColorStyles = makeStyles({
+  neutral: {
+    [avatarRingColor]: tokens.colorBrandStroke1,
+  },
+  brand: {
+    [avatarRingColor]: tokens.colorBrandStroke1,
+  },
   'dark-red': {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteDarkRedBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteDarkRedBorderActive,
   },
   cranberry: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteCranberryBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteCranberryBorderActive,
   },
   red: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteRedBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteRedBorderActive,
   },
   pumpkin: {
-    '::before': { ...shorthands.borderColor(tokens.colorPalettePumpkinBorderActive) },
+    [avatarRingColor]: tokens.colorPalettePumpkinBorderActive,
   },
   peach: {
-    '::before': { ...shorthands.borderColor(tokens.colorPalettePeachBorderActive) },
+    [avatarRingColor]: tokens.colorPalettePeachBorderActive,
   },
   marigold: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteMarigoldBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteMarigoldBorderActive,
   },
   gold: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteGoldBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteGoldBorderActive,
   },
   brass: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteBrassBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteBrassBorderActive,
   },
   brown: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteBrownBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteBrownBorderActive,
   },
   forest: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteForestBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteForestBorderActive,
   },
   seafoam: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteSeafoamBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteSeafoamBorderActive,
   },
   'dark-green': {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteDarkGreenBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteDarkGreenBorderActive,
   },
   'light-teal': {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteLightTealBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteLightTealBorderActive,
   },
   teal: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteTealBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteTealBorderActive,
   },
   steel: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteSteelBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteSteelBorderActive,
   },
   blue: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteBlueBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteBlueBorderActive,
   },
   'royal-blue': {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteRoyalBlueBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteRoyalBlueBorderActive,
   },
   cornflower: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteCornflowerBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteCornflowerBorderActive,
   },
   navy: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteNavyBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteNavyBorderActive,
   },
   lavender: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteLavenderBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteLavenderBorderActive,
   },
   purple: {
-    '::before': { ...shorthands.borderColor(tokens.colorPalettePurpleBorderActive) },
+    [avatarRingColor]: tokens.colorPalettePurpleBorderActive,
   },
   grape: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteGrapeBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteGrapeBorderActive,
   },
   lilac: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteLilacBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteLilacBorderActive,
   },
   pink: {
-    '::before': { ...shorthands.borderColor(tokens.colorPalettePinkBorderActive) },
+    [avatarRingColor]: tokens.colorPalettePinkBorderActive,
   },
   magenta: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteMagentaBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteMagentaBorderActive,
   },
   plum: {
-    '::before': { ...shorthands.borderColor(tokens.colorPalettePlumBorderActive) },
+    [avatarRingColor]: tokens.colorPalettePlumBorderActive,
   },
   beige: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteBeigeBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteBeigeBorderActive,
   },
   mink: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteMinkBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteMinkBorderActive,
   },
   platinum: {
-    '::before': { ...shorthands.borderColor(tokens.colorPalettePlatinumBorderActive) },
+    [avatarRingColor]: tokens.colorPalettePlatinumBorderActive,
   },
   anchor: {
-    '::before': { ...shorthands.borderColor(tokens.colorPaletteAnchorBorderActive) },
+    [avatarRingColor]: tokens.colorPaletteAnchorBorderActive,
   },
 });
 
@@ -513,11 +522,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
     if (activeAppearance === 'ring' || activeAppearance === 'ring-shadow') {
       rootClasses.push(styles.ring);
-
-      // Make the ring color match the avatar color when there is no image
-      if (!state.image && color !== 'neutral' && color !== 'brand') {
-        rootClasses.push(activeRingColorStyles[color]);
-      }
+      rootClasses.push(activeRingColorStyles[color]);
 
       if (size <= 48) {
         rootClasses.push(styles.ringThick);
