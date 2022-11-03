@@ -187,11 +187,23 @@ const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps) => {
 
 const OverflowToolbar = (props: Partial<ToolbarProps>) => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
-    align: ['align-left', 'align-center', 'align-right'],
+    align: ['align-left'],
   });
   const onChange: ToolbarProps['onCheckedValueChange'] = (event, { name, checkedItems }) => {
     setCheckedValues(s => {
-      return { [name]: checkedItems };
+      // Ensure that at least one item within a group is selected
+      if (checkedItems.length === 0) {
+        return s;
+      }
+      const prevCheckedItems = s[name];
+      const newCheckedItems: string[] = [];
+      checkedItems.forEach(value => {
+        // Only check the item if it is different than the previously checked item
+        if (prevCheckedItems[0] !== value) {
+          newCheckedItems.push(value);
+        }
+      });
+      return s ? { ...s, [name]: newCheckedItems } : { [name]: newCheckedItems };
     });
   };
 
