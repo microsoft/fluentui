@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/vr-tests-react-components",
+  "name": "@fluentui/vr-tests-northstar",
   "version": "9.0.0-rc.0",
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",

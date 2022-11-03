@@ -910,6 +910,11 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/vr-tests-northstar": {
+      "root": "apps/vr-tests-northstar",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/vr-tests-react-components": {
       "root": "apps/vr-tests-react-components",
       "projectType": "application",
