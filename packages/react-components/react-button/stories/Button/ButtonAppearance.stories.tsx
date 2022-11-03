@@ -20,7 +20,7 @@ export const Appearance = () => {
       <Button appearance="primary" icon={<CalendarMonthRegular />}>
         Primary
       </Button>
-      <Button appearance="outline" icon={<CalendarMonthRegular />}>
+      <Button appearance="outline" icon={<CalendarMonth />}>
         Outline
       </Button>
       <Button appearance="subtle" icon={<CalendarMonth />}>

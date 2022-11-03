@@ -22,7 +22,7 @@ export const Appearance = () => {
       <CompoundButton secondaryContent="Secondary content" appearance="primary" icon={<CalendarMonthRegular />}>
         Primary
       </CompoundButton>
-      <CompoundButton secondaryContent="Secondary content" appearance="outline" icon={<CalendarMonthRegular />}>
+      <CompoundButton secondaryContent="Secondary content" appearance="outline" icon={<CalendarMonth />}>
         Outline
       </CompoundButton>
       <CompoundButton secondaryContent="Secondary content" appearance="subtle" icon={<CalendarMonth />}>

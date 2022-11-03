@@ -14,7 +14,6 @@ const useStyles = makeStyles({
 export const Appearance = () => {
   const [checked1, setChecked1] = React.useState(false);
   const [checked2, setChecked2] = React.useState(false);
-  const [checked3, setChecked3] = React.useState(false);
   const styles = useStyles();
 
   const toggleChecked = React.useCallback(
@@ -26,12 +25,9 @@ export const Appearance = () => {
         case 2:
           setChecked2(!checked2);
           break;
-        case 3:
-          setChecked3(!checked3);
-          break;
       }
     },
-    [checked1, checked2, checked3],
+    [checked1, checked2],
   );
 
   return (
@@ -51,12 +47,7 @@ export const Appearance = () => {
       >
         Primary
       </ToggleButton>
-      <ToggleButton
-        appearance="outline"
-        checked={checked3}
-        icon={checked3 ? <CalendarMonth /> : <CalendarMonthRegular />}
-        onClick={() => toggleChecked(3)}
-      >
+      <ToggleButton appearance="outline" icon={<CalendarMonth />} onClick={() => toggleChecked(3)}>
         Outline
       </ToggleButton>
       <ToggleButton appearance="subtle" icon={<CalendarMonth />}>
