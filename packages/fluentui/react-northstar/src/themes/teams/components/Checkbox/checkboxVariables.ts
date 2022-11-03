@@ -20,6 +20,7 @@ export type CheckboxVariables = {
   padding: string;
 
   toggleBackground: string;
+  toggleBackgroundHover: string;
   toggleBorderColor: string;
   toggleBorderStyle: string;
   toggleBorderRadius: string;
@@ -61,6 +62,7 @@ export const checkboxVariables = (siteVars: any): CheckboxVariables => ({
   checkboxColor: 'transparent',
 
   toggleBackground: _.get(siteVars, 'colorScheme.default.foreground2', defaultValue),
+  toggleBackgroundHover: _.get(siteVars, 'colorScheme.default.foreground', defaultValue),
   toggleBorderColor: _.get(siteVars, 'colorScheme.default.foreground2', defaultValue),
   toggleBorderStyle: `solid`,
   toggleBorderWidth: pxToRem(1),

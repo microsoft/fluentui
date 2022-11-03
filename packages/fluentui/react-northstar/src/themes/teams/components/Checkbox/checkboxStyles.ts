@@ -63,7 +63,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
               borderStyle: v.borderStyle,
               borderWidth: v.borderWidth,
               margin: v.togglePadding,
-              background: 'transparent',
+              background: v.toggleBackgroundHover,
             },
 
             ...(p.checked && {
