@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Toolbar, ToolbarButton, ToolbarToggleButton, ToolbarDivider } from '@fluentui/react-components/unstable';
 import type { ToolbarProps, ToolbarButtonProps, ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButton } from '@fluentui/react-toolbar';
 
 import {
   Button,
@@ -53,21 +54,21 @@ const overflowToolbarItems: OverflowToolbarItems = [
       id: 'align-left',
       type: 'toggle',
       name: 'align',
-      value: 'align-left',
+      value: 'left',
       label: 'Align left',
     },
     {
       id: 'align-center',
       type: 'toggle',
       name: 'align',
-      value: 'align-center',
+      value: 'center',
       label: 'Align center',
     },
     {
       id: 'align-right',
       type: 'toggle',
       name: 'align',
-      value: 'align-right',
+      value: 'right',
       label: 'Align right',
     },
   ],
@@ -187,7 +188,7 @@ const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps) => {
 
 const OverflowToolbar = (props: Partial<ToolbarProps>) => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
-    align: ['align-left'],
+    align: ['left'],
   });
   const onChange: ToolbarProps['onCheckedValueChange'] = (event, { name, checkedItems }) => {
     setCheckedValues(s => {
@@ -220,7 +221,7 @@ const OverflowToolbar = (props: Partial<ToolbarProps>) => {
           size="small"
           checkedValues={checkedValues}
           onCheckedValueChange={onChange}
-          aria-label="Paragraph"
+          aria-label="Paragraph formatting"
         >
           {overflowToolbarItems.map((group, groupIndex) => {
             const isLast = groupIndex === overflowToolbarItems.length - 1;
@@ -267,7 +268,7 @@ const OverflowToolbar = (props: Partial<ToolbarProps>) => {
 export const TextEditorToolbars: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Text editor Toolbars">
-      <Toolbar aria-label="Font type">
+      <Toolbar aria-label="Character formatting">
         <ToolbarToggleButton name="bold" value="bold" icon={<TextBold24Regular />} aria-label="Bold" />
         <ToolbarToggleButton name="italic" value="italic" icon={<TextItalic24Regular />} aria-label="Italic" />
         <ToolbarToggleButton
@@ -276,6 +277,18 @@ export const TextEditorToolbars: React.FunctionComponent = () => {
           icon={<TextUnderline24Regular />}
           aria-label="Underline"
         />
+
+        <ToolbarDivider />
+
+        <ToolbarRadioButton name="index" value="upper">
+          Upper index
+        </ToolbarRadioButton>
+        <ToolbarRadioButton name="index" value="no">
+          No index
+        </ToolbarRadioButton>
+        <ToolbarRadioButton name="index" value="lower">
+          Lower index
+        </ToolbarRadioButton>
       </Toolbar>
 
       <OverflowToolbar />
