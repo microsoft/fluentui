@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { series, resolveCwd, copyTask, copyInstructionsTask, logger } from 'just-scripts';
+import { series, resolveCwd, copyTask, copyInstructionsTask, logger, TaskFunction } from 'just-scripts';
 import { getProjectMetadata, findGitRoot } from '../monorepo';
 import { getTsPathAliasesConfig } from './utils';
 
@@ -61,20 +61,19 @@ export function copyCompiled() {
   if (!projectMetadata.sourceRoot) {
     throw new Error(`${packageJson.name} is missing 'sourceRoot' in workspace.json`);
   }
-  if (!packageJson.module) {
-    throw new Error(`${packageJson.name} is missing 'module' property in package.json`);
-  }
 
   const paths = {
-    esm: {
-      in: path.join(
-        packageDir,
-        tsConfig.compilerOptions.outDir as string,
-        path.dirname(packageJson.module),
-        projectMetadata.sourceRoot,
-      ),
-      out: path.join(packageDir, path.dirname(packageJson.module)),
-    },
+    esm: packageJson.module
+      ? {
+          in: path.join(
+            packageDir,
+            tsConfig.compilerOptions.outDir as string,
+            path.dirname(packageJson.module),
+            projectMetadata.sourceRoot,
+          ),
+          out: path.join(packageDir, path.dirname(packageJson.module)),
+        }
+      : null,
     commonJs: {
       in: path.join(
         packageDir,
@@ -86,17 +85,21 @@ export function copyCompiled() {
     },
   };
 
-  return series(
-    copyTask({
-      paths: [paths.esm.in],
-      dest: paths.esm.out,
-    }),
+  const tasks = [
+    paths.esm
+      ? copyTask({
+          paths: [paths.esm.in],
+          dest: paths.esm.out,
+        })
+      : null,
     copyTask({
       paths: [paths.commonJs.in],
 
       dest: paths.commonJs.out,
     }),
-  );
+  ].filter(Boolean) as TaskFunction[];
+
+  return series(...tasks);
 }
 export function copy() {
   const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
