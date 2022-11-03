@@ -17,7 +17,7 @@ We need to define a custom styling mechanism or pattern for these partners.
 
 Fluent UI React v9 strongly conforms to the Fluent 2 Design to provide consistency in component behavior, layout,
 and style. Most partners are expected to adopt the Fluent 2 Design and remove custom styling that deviates from the
-design direction for Office.
+design direction for Microsoft.
 
 Some of our partner teams are building component libraries on top of Fluent UI React.
 They have customers who need to diverge from the Fluent 2 design for both the partners components and our components.
