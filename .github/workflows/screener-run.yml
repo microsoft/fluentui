@@ -71,7 +71,7 @@ jobs:
           run_id: ${{github.event.workflow_run.id}}
           name: northstar-artifact
           # downloads artifact to where it would be 'built'
-          path: packages/fluentui/docs/dist
+          path: apps/vr-tests-northstar/dist/storybook
         if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Define env variables
@@ -95,11 +95,11 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'apps/vr-tests-northstar/dist/storybook' --overwrite
         if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Start @fluentui/react-northstar VR Test
-        run: yarn workspace @fluentui/docs vr:test
+        run: yarn workspace @fluentui/vr-tests-northstar screener
         env:
           SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}

@@ -129,7 +129,7 @@ jobs:
 
       - run: |
           echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{startsWith(github.ref, 'refs/pull/')}})
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-northstar --pr=${{startsWith(github.ref, 'refs/pull/')}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -146,7 +146,7 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: build FUI N* VR Test
-        run: yarn workspace @fluentui/docs vr:build
+        run: yarn workspace @fluentui/vr-tests-northstar build
         env:
           SCREENER_BUILD: 1
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
@@ -154,7 +154,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: northstar-artifact
-          path: packages/fluentui/docs/dist
+          path: apps/vr-tests-northstar/dist/storybook
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react:
