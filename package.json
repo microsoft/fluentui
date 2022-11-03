@@ -339,8 +339,7 @@
     "@typescript-eslint/parser": "4.22.0",
     "@types/jest-axe/axe-core": "4.2.1",
     "eslint": "7.25.0",
-    "requestretry": "7.0.0",
-    "@types/node": "14.18.32"
+    "requestretry": "7.0.0"
   },
   "syncpack": {
     "prod": true,
