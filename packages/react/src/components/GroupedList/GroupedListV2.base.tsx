@@ -65,6 +65,7 @@ type IHeaderGroupedItem = {
   type: 'header';
   group: IGroup;
   groupId: string;
+  groupIndex: number;
 };
 
 type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
@@ -75,6 +76,11 @@ type FlattenItems = (
   memoItems: IGroupedItem[],
   groupProps: IGroupRenderProps['getGroupItemLimit'],
 ) => IGroupedItem[];
+
+type GroupStackItem = {
+  group: IGroup;
+  groupIndex: number;
+};
 
 const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit) => {
   if (!groups) {
@@ -90,19 +96,22 @@ const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit)
 
   let index = 0;
 
-  const stack: IGroup[] = [];
+  // const stack: IGroup[] = [];
+  const stack: GroupStackItem[] = [];
   let j = groups.length - 1;
   while (j >= 0) {
-    stack.push(groups[j]);
+    stack.push({ group: groups[j], groupIndex: j + 1 });
     j--;
   }
 
   while (stack.length > 0) {
-    let group = stack.pop()!;
+    // eslint-disable-next-line prefer-const
+    let { group, groupIndex } = stack.pop()!;
     memoItems[index] = {
       group,
       groupId: getId('GroupedListSection'),
       type: 'header',
+      groupIndex,
     };
 
     index++;
@@ -110,7 +119,7 @@ const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit)
     while (group.isCollapsed !== true && group?.children && group.children.length > 0) {
       j = group.children.length - 1;
       while (j > 0) {
-        stack.push(group.children[j]);
+        stack.push({ group: group.children[j], groupIndex: j + 1 });
         j--;
       }
       group = group.children[0];
@@ -118,6 +127,7 @@ const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit)
         group,
         groupId: getId('GroupedListSection'),
         type: 'header',
+        groupIndex: 1,
       };
       index++;
     }
@@ -396,14 +406,27 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
   const renderHeader = (item: IHeaderGroupedItem, flattenedIndex: number): React.ReactNode => {
     const group = item.group;
 
+    let ariaProps;
+    if (role === 'treegrid') {
+      // GroupedList default role
+      ariaProps = {
+        ariaLevel: group.level ? group.level + 1 : 1,
+        ariaSetSize: groups ? groups.length : undefined,
+        ariaPosInSet: item.groupIndex,
+      };
+    } else {
+      // Grouped DetailsList
+      ariaProps = {
+        ariaRowIndex: flattenedIndex,
+      };
+    }
+
     const headerProps = {
       ...groupProps!.headerProps,
       ...getDividerProps(item.group, flattenedIndex),
       key: group.key,
       groupedListId: item.groupId,
-      ariaLevel: group.level ? group.level + 1 : 1,
-      ariaSetSize: groups ? groups.length : undefined,
-      ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
+      ...ariaProps,
     };
 
     return (
