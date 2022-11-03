@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getWindow } from './dom/getWindow';
+// import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
@@ -45,7 +45,7 @@ function setCallbackMap(context: IFocusRectsContext): ListenerCallbacks {
   return callbacks;
 }
 
-type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
+// type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
 
 export type IFocusRectsContext = {
   /**
