@@ -58,7 +58,6 @@ import type { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Cal
 import type { IProcessedStyleSet } from '../../Styling';
 import type { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import type { IPopupRestoreFocusParams } from '../../Popup';
-import { useMergedRefs } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -709,9 +708,7 @@ function useMouseHandlers(
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.memo(
   React.forwardRef<HTMLDivElement, IContextualMenuProps>((propsWithoutDefaults, forwardedRef) => {
     const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
-    const rootRef = React.useRef<HTMLDivElement>(null);
     const hostElement = React.useRef<HTMLDivElement>(null);
-
     const asyncTracker = useAsync();
     const menuId = useId(COMPONENT_NAME, props.id);
 
