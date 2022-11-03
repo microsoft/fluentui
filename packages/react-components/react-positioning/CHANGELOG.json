@@ -2,6 +2,47 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 02 Nov 2022 11:57:57 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "acbfdcac87c7626542838000f34dbf2283c10f4e",
+            "comment": "exposes new typings to avoid exposing internal methods"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b",
+            "comment": "feat: position updates are handled out of react lifecycle"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:34 GMT",
       "tag": "@fluentui/react-positioning_v9.2.2",
       "version": "9.2.2",

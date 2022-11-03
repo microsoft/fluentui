@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "removes exposing of internal type FluentTriggerComponent",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

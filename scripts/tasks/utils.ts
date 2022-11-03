@@ -2,8 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as jju from 'jju';
 import type { TscTaskOptions } from 'just-scripts';
-import { offsetFromRoot } from '@nrwl/devkit';
-import { appRootPath } from '@nrwl/tao/src/utils/app-root';
 
 export function getTsPathAliasesConfig() {
   const cwd = process.cwd();
@@ -46,26 +44,34 @@ export function getTsPathAliasesApiExtractorConfig(options: {
   tsConfigPath: string;
   packageJson: PackageJson;
 }) {
-  const rootOffset = offsetFromRoot(path.dirname(options.tsConfigPath.replace(appRootPath, '')));
   /**
-   * This special TSConfig config is all that's needed for api-extractor so it has all type information used for package:
+   * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
    *
    * NOTES:
-   * - `compilerOptions.paths` doesn't work, nor is possible to turn them off when `extends` is used
+   * - `extends` is properly resolved via api-extractor which uses TS api
+   * - `skipLibCheck` needs to be explicitly set to `false` so errors propagate to api-extractor
+   * - `paths` is set to `undefined` so api-extractor won't use source files rather rollup-ed declaration files only
    *
    */
   const apiExtractorTsConfig: TsConfig = {
-    include: options.tsConfig.include,
-    /**
-     * `files` might be used to specify additional `d.ts` or global type definitions. IF they exist in package tsconfig we need to include them
-     */
-    ...(options.tsConfig.files ? { files: options.tsConfig.files } : null),
+    ...options.tsConfig,
     compilerOptions: {
+      ...options.tsConfig.compilerOptions,
       ...enableAllowSyntheticDefaultImports({ pkgJson: options.packageJson }),
-      strict: true,
-      lib: options.tsConfig.compilerOptions.lib,
-      typeRoots: ['node_modules/@types', `${rootOffset}typings`],
-      types: options.tsConfig.compilerOptions.types,
+      /**
+       * This option has no effect on type declarations '.d.ts' thus can be turned off. For more info see https://www.typescriptlang.org/tsconfig#non-module-files
+       *
+       * NOTE: Some v8 packages (font-icons-mdl2) use `preserveConstEnums: false` which clashes with isolateModules - TSC will error
+       */
+      isolatedModules: false,
+      /**
+       * needs to be explicitly set to `false` so errors propagate to api-extractor
+       */
+      skipLibCheck: false,
+      /**
+       * just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
+       */
+      paths: undefined,
     },
   };
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 02 Nov 2022 11:58:00 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "81f33ef87e837711bf9efd55d343d1a6cc4eb346",
+            "comment": "exposes internal methods and types that are used in the API surface"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:36 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.0.2",
       "version": "9.0.2",

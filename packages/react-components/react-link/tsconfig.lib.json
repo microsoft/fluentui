@@ -10,7 +10,7 @@
     "types": ["static-assets", "environment"]
   },
   "exclude": [
-    "./src/common/**",
+    "./src/testing/**",
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.test.ts",

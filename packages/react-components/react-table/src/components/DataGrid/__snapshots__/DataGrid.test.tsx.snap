@@ -6,7 +6,80 @@ exports[`DataGrid renders a default state 1`] = `
     class="fui-DataGrid fui-Table"
     role="table"
   >
-    Default DataGrid
+    <div
+      class="fui-DataGridBody fui-TableBody"
+      role="rowgroup"
+    >
+      <div
+        class="fui-DataGridRow fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          first
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          second
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          third
+        </div>
+      </div>
+      <div
+        class="fui-DataGridRow fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          first
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          second
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          third
+        </div>
+      </div>
+      <div
+        class="fui-DataGridRow fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          first
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          second
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="cell"
+        >
+          third
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
