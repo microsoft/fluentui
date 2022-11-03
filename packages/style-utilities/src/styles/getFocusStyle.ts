@@ -1,5 +1,5 @@
 import { HighContrastSelector } from './CommonStyles';
-import { IsFocusVisibleClassName, getWindow } from '@fluentui/utilities';
+import { IsFocusVisibleClassName } from '@fluentui/utilities';
 import { ZIndexes } from './zIndexes';
 import type { IRawStyle } from '@fluentui/merge-styles';
 import type { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
