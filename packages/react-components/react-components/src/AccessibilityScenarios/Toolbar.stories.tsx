@@ -190,8 +190,6 @@ const OverflowToolbar = (props: Partial<ToolbarProps>) => {
     align: ['align-left', 'align-center', 'align-right'],
   });
   const onChange: ToolbarProps['onCheckedValueChange'] = (event, { name, checkedItems }) => {
-    alert('test');
-    alert(checkedItems);
     setCheckedValues(s => {
       return { [name]: checkedItems };
     });

@@ -38,7 +38,7 @@ export const AddPeoplePopover: React.FunctionComponent = () => {
         }}
         trapFocus
       >
-        <PopoverTrigger disableButtonEnhancement>
+        <PopoverTrigger>
           <Button>Add people</Button>
         </PopoverTrigger>
 
