@@ -229,6 +229,10 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   color: Window;
                   forced-color-adjust: none;
                 }
+                &:focus-visible:after {
+                  border: none;
+                  outline-color: #ffffff;
+                }
                 &:hover {
                   background-color: #deecf9;
                   border-color: #deecf9;
