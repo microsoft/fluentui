@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Make callbacks able to take one param type or the other rather than requiring both.",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
