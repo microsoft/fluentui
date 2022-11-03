@@ -145,6 +145,12 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
+      - name: build FUI N*
+        run: yarn workspace @fluentui/react-northstar build
+        env:
+          SCREENER_BUILD: 1
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+
       - name: build FUI N* VR Test
         run: yarn workspace @fluentui/vr-tests-northstar build
         env:
