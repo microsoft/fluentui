@@ -153,19 +153,20 @@ export const Virtualized = () => {
 
   const rows = sort(getRows());
 
-  // Use this for now to test vertical/horizontal/reversed basic layout
+  /* Use this for now to test vertical/horizontal/reversed basic layout */
   // return (
   //   <div
   //     style={{
   //       display: 'flex',
-  //       flexDirection: 'row-reverse',
+  //       flexDirection: 'column',
   //       overflowAnchor: 'none',
   //       overflow: 'auto',
+  //       width: '500px',
   //     }}
   //   >
-  //     <Virtualizer flow={VirtualizerFlow.Horizontal} virtualizerLength={100} itemSize={100} isReversed>
+  //     <Virtualizer isReversed flow={VirtualizerFlow.Vertical} virtualizerLength={100} itemSize={100}>
   //       {fullItemList.map((item, index) => (
-  //         <div style={{ height: '250px', width: '100px' }}>{item.file.label}</div>
+  //         <div style={{ display: 'flex', minHeight: '100px', width: '100%' }}>{item.file.label}</div>
   //       ))}
   //     </Virtualizer>
   //   </div>

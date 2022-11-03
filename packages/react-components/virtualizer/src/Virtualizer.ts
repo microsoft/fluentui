@@ -11,7 +11,7 @@ import { renderVirtualizer_unstable } from './renderVirtualizer';
 export const Virtualizer: React.FC<VirtualizerProps> = props => {
   const state = useVirtualizer_unstable(props);
   useVirtualizerStyles_unstable(state);
-
+  console.log('RENDERING STATE:', state);
   return renderVirtualizer_unstable(state);
 };
 

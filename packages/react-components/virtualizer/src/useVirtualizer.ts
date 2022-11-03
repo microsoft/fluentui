@@ -93,10 +93,11 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
       we don't need to iterate through the results,
       we simply need to know that an interaction has happened to efficiently update based
       on scroll position from container ref */
-      let measurementPos =
+      let measurementPos = Math.abs(
         flow === VirtualizerFlow.Vertical
           ? scrollViewRef?.current?.scrollTop ?? 0
-          : scrollViewRef?.current?.scrollLeft ?? 0;
+          : scrollViewRef?.current?.scrollLeft ?? 0,
+      );
 
       if (!scrollViewRef) {
         // We are not inside a direct parent scroll view, use bookends to chop down until we find position.
@@ -119,18 +120,14 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
           if (isVertical) {
             if (isReversed) {
               measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
-              console.log('Latest entry - after: ', latestEntry);
             } else {
               measurementPos += Math.abs(latestEntry.boundingClientRect.top);
-              console.log('Latest entry - after: ', latestEntry);
             }
           } else {
             if (isReversed) {
-              // measurementPos += Math.abs(latestEntry.boundingClientRect.right);
-              console.log('Latest entry - after: ', latestEntry);
+              measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
             } else {
               measurementPos += Math.abs(latestEntry.boundingClientRect.left);
-              console.log('Latest entry - after: ', latestEntry);
             }
           }
         } else if (latestEntry.target === beforeElementRef.current) {
@@ -144,23 +141,16 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
           } else {
             if (isReversed) {
               measurementPos += Math.abs(latestEntry.boundingClientRect.left);
-              console.log('Latest entry - before: ', latestEntry);
             } else {
               measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
-              console.log('Latest entry - before: ', latestEntry);
             }
           }
         }
-      }
 
-      if (isReversed) {
-        // We're reversed, up is down, left is right, reverso the metric .
-        const sizeVar =
-          flow === VirtualizerFlow.Vertical
-            ? scrollViewRef?.current?.scrollHeight ?? calculateTotalSize()
-            : scrollViewRef?.current?.scrollWidth ?? calculateTotalSize();
-
-        measurementPos = Math.max(sizeVar - measurementPos, 0);
+        if (isReversed) {
+          // We're reversed, up is down, left is right, invert the scroll measure.
+          measurementPos = Math.max(calculateTotalSize() - Math.abs(measurementPos), 0);
+        }
       }
 
       // For now lets use hardcoded size to assess current element to paginate on
@@ -179,7 +169,6 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
 
       if (virtualizerStartIndex !== newStartIndex) {
         // Set new index, trigger render!
-        console.log('SETTING NEW INDEX: ', newStartIndex);
         onUpdateIndex?.(newStartIndex, virtualizerStartIndex);
         setVirtualizerStartIndex(newStartIndex);
         /*
@@ -273,10 +262,13 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
   };
 
   const calculateAfter = () => {
+    if (childArray.length === 0) {
+      return 0;
+    }
     const lastItemIndex = Math.min(virtualizerStartIndex + virtualizerLength, childArray.length - 1);
     if (!sizeOfChild) {
       // The missing items from after virtualization ends height
-      const remainingItems = childArray.length - lastItemIndex;
+      const remainingItems = childArray.length - lastItemIndex - 1;
 
       return remainingItems * itemSize;
     }
