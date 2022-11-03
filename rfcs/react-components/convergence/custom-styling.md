@@ -11,7 +11,7 @@ Fluent UI React v9 is built today to enforce adopting the Fluent 2 design styles
 libraries don't know how provide their customers the ability to deviate from Fluent 2 design like they could
 with v0, v7, or v8.
 
-We need to define a custom styling escape hatch mechanism or pattern for these partners.
+We need to define a custom styling mechanism or pattern for these partners.
 
 ## Background
 
