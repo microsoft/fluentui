@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import { getWindow } from './dom/getWindow';
+import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
@@ -45,7 +45,7 @@ function setCallbackMap(context: IFocusRectsContext): ListenerCallbacks {
   return callbacks;
 }
 
-// type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
+type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
 
 export type IFocusRectsContext = {
   /**
@@ -97,15 +97,13 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
   const context = React.useContext(FocusRectsContext);
 
   React.useEffect(() => {
-    // const win = getWindow(rootRef?.current) as AppWindow;
-    const win = { FabricConfig: { disableFocusRects: true } };
+    const win = getWindow(rootRef?.current) as AppWindow;
 
     if (!win || win.FabricConfig?.disableFocusRects === true) {
       return undefined;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let el: Window | HTMLElement | any = win;
+    let el: Window | HTMLElement = win;
     let onMouseDown: (ev: MouseEvent) => void;
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;

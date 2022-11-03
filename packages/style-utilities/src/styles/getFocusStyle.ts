@@ -1,5 +1,5 @@
 import { HighContrastSelector } from './CommonStyles';
-import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import { IsFocusVisibleClassName, getWindow } from '@fluentui/utilities';
 import { ZIndexes } from './zIndexes';
 import type { IRawStyle } from '@fluentui/merge-styles';
 import type { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
@@ -75,9 +75,8 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
   } = options;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // const win: any = getWindow();
-  // const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
-  const focusVisibleSupported = true;
+  const win: any = getWindow();
+  const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
 
   const selector = focusVisibleSupported
     ? `&${isFocusedOnly ? ':focus-visible' : ''}:after`
@@ -146,9 +145,8 @@ export function focusClear(): IRawStyle {
  */
 export function getFocusOutlineStyle(theme: ITheme, inset: number = 0, width: number = 1, color?: string): IRawStyle {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // const win: any = getWindow();
-  // const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
-  const focusVisibleSupported = true;
+  const win: any = getWindow();
+  const focusVisibleSupported = win?.FabricConfig?.disableFocusRects === true;
   return {
     selectors: {
       [focusVisibleSupported ? `:global(${IsFocusVisibleClassName}) &:focus` : '&:focus-visible']: {
