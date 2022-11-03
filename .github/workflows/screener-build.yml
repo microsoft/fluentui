@@ -146,7 +146,7 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: build FUI N*
-        run: yarn workspace @fluentui/react-northstar build
+        run: yarn build --to @fluentui/react-northstar
         env:
           SCREENER_BUILD: 1
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
