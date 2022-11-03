@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Preventing blanket selectors from Fabric component from being applied via new preventBlanketFontInheritance prop.",
-  "packageName": "@fluentui/react",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

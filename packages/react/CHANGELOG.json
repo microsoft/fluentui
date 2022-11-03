@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 03 Nov 2022 07:52:12 GMT",
+      "tag": "@fluentui/react_v8.99.3",
+      "version": "8.99.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "e2933893722b3de0c5358bd5f20b54992a316514",
+            "comment": "fix: Preventing blanket selectors from Fabric component from being applied via new preventBlanketFontInheritance prop."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Nov 2022 07:49:22 GMT",
       "tag": "@fluentui/react_v8.99.2",
       "version": "8.99.2",
