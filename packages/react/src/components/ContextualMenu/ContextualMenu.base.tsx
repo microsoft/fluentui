@@ -710,7 +710,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   React.forwardRef<HTMLDivElement, IContextualMenuProps>((propsWithoutDefaults, forwardedRef) => {
     const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
     const rootRef = React.useRef<HTMLDivElement>(null);
-    const hostElement = useMergedRefs(forwardedRef, rootRef);
+    const hostElement = React.useRef<HTMLDivElement>(null);
 
     const asyncTracker = useAsync();
     const menuId = useId(COMPONENT_NAME, props.id);
