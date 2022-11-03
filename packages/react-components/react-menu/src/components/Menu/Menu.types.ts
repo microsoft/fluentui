@@ -160,6 +160,10 @@ export type MenuContextValues = {
  * The supported events that will trigger open/close of the menu
  */
 export type MenuOpenEvent = MenuOpenChangeData['event'];
+/**
+ * @deprecated use MenuOpenEvent instead
+ */
+export type MenuOpenEvents = MenuOpenEvent;
 
 /**
  * Data attached to open/close events

@@ -261,6 +261,9 @@ export type MenuOpenChangeData = {
 // @public
 export type MenuOpenEvent = MenuOpenChangeData['event'];
 
+// @public @deprecated (undocumented)
+export type MenuOpenEvents = MenuOpenEvent;
+
 // @public
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
 
