@@ -3,21 +3,21 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
-import type { CardOnSelectEvent, CardProps, CardRefElement } from './Card.types';
+import type { CarOnSelectionChangeEvent, CardProps, CardRefElement } from './Card.types';
 
 export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<CardRefElement>) => {
-  const { select, selected, defaultSelected, onCardSelect } = props;
+  const { select, selected, defaultSelected, onSelectionChange } = props;
 
   const { findAllFocusable } = useFocusFinders();
   const selectableRef = React.useRef<HTMLDivElement>(null);
 
-  const isSelectable = [selected, defaultSelected, onCardSelect, select].some(bool => typeof bool !== 'undefined');
+  const isSelectable = [selected, defaultSelected, onSelectionChange, select].some(bool => typeof bool !== 'undefined');
   const hasSelectSlot = Boolean(select);
 
   const [isCardSelected, setIsCardSelected] = React.useState(false);
 
   const shouldRestrictTriggerAction = React.useCallback(
-    (event: CardOnSelectEvent) => {
+    (event: CarOnSelectionChangeEvent) => {
       if (!cardRef.current) {
         return false;
       }
@@ -32,7 +32,7 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
     [cardRef, findAllFocusable],
   );
   const onChangeHandler = React.useCallback(
-    (event: CardOnSelectEvent) => {
+    (event: CarOnSelectionChangeEvent) => {
       if (shouldRestrictTriggerAction(event)) {
         return;
       }
@@ -41,13 +41,13 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
 
       setIsCardSelected(newCheckedValue);
 
-      if (onCardSelect) {
-        onCardSelect(event, {
+      if (onSelectionChange) {
+        onSelectionChange(event, {
           selected: newCheckedValue,
         });
       }
     },
-    [onCardSelect, isCardSelected, shouldRestrictTriggerAction],
+    [onSelectionChange, isCardSelected, shouldRestrictTriggerAction],
   );
   const onKeyDownHandler = React.useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
@@ -99,8 +99,8 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
   ]);
 
   return {
-    isCardSelected,
-    isSelectable,
+    selected: isCardSelected,
+    selectable: isSelectable,
     hasSelectSlot,
     selectableProps,
     selectableSlot,

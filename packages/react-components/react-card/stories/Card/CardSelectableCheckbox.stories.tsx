@@ -81,13 +81,13 @@ export const SelectableWithCheckbox = () => {
         aria-label={getCardLabel(selected1)}
         select={<Checkbox checked={selected1} aria-label={getCardLabel(selected1)} />}
         selected={selected1}
-        onCardSelect={onFirstCardSelected}
+        onSelectionChange={onFirstCardSelected}
       />
       <CardExample
         aria-label={getCardLabel(selected2)}
         select={<Checkbox checked={selected2} aria-label={getCardLabel(selected2)} />}
         selected={selected2}
-        onCardSelect={onSecondCardSelected}
+        onSelectionChange={onSecondCardSelected}
       />
     </div>
   );

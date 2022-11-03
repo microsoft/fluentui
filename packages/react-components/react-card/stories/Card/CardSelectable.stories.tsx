@@ -77,12 +77,12 @@ export const Selectable = () => {
       <CardExample
         aria-label={getCardLabel(selected1)}
         selected={selected1}
-        onCardSelect={(_, { selected }) => setSelected1(selected)}
+        onSelectionChange={(_, { selected }) => setSelected1(selected)}
       />
       <CardExample
         aria-label={getCardLabel(selected2)}
         selected={selected2}
-        onCardSelect={(_, { selected }) => setSelected2(selected)}
+        onSelectionChange={(_, { selected }) => setSelected2(selected)}
       />
     </div>
   );

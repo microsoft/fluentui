@@ -68,9 +68,6 @@ export type CardHeaderSlots = {
 export type CardHeaderState = ComponentState<CardHeaderSlots>;
 
 // @public
-export type CardOnSelectEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
-
-// @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
 // @public
@@ -96,7 +93,7 @@ export type CardProps = ComponentProps<CardSlots> & {
     size?: 'small' | 'medium' | 'large';
     selected?: boolean;
     defaultSelected?: boolean;
-    onCardSelect?: (event: CardOnSelectEvent, data: CardOnSelectData) => void;
+    onSelectionChange?: (event: CarOnSelectionChangeEvent, data: CardOnSelectData) => void;
 };
 
 // @public
@@ -107,11 +104,14 @@ export type CardSlots = {
 
 // @public
 export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
-    isInteractive: boolean;
-    isSelectable: boolean;
+    interactive: boolean;
+    selectable: boolean;
     hasSelectSlot: boolean;
-    isCardSelected: boolean;
+    selected: boolean;
 }>;
+
+// @public
+export type CarOnSelectionChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

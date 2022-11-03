@@ -13,11 +13,11 @@ const focusMap = {
 } as const;
 
 type UseCardFocusAttributesOptions = {
-  isInteractive: boolean;
+  interactive: boolean;
 };
 
-const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, { isInteractive }: UseCardFocusAttributesOptions) => {
-  const internalFocusMode = isInteractive ? 'no-tab' : focusMode;
+const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, { interactive }: UseCardFocusAttributesOptions) => {
+  const internalFocusMode = interactive ? 'no-tab' : focusMode;
 
   const groupperAttrs = useFocusableGroup({
     tabBehavior: focusMap[internalFocusMode],
@@ -46,13 +46,10 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<CardRefElement
   const { appearance = 'filled', orientation = 'vertical', size = 'medium', as = 'div' } = props;
   const cardRef = React.useRef<CardRefElement>(null);
 
-  const { isSelectable, hasSelectSlot, isCardSelected, selectableSlot, selectableProps } = useCardSelectable(
-    props,
-    cardRef,
-  );
+  const { selectable, hasSelectSlot, selected, selectableSlot, selectableProps } = useCardSelectable(props, cardRef);
 
-  const isInteractive = Boolean(
-    isSelectable ||
+  const interactive = Boolean(
+    selectable ||
       ['a', 'button'].includes(as) ||
       props.onClick ||
       props.onDoubleClick ||
@@ -64,16 +61,16 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<CardRefElement
       props.onTouchEnd,
   );
 
-  const focusAttributes = useCardFocusAttributes(props, { isInteractive });
+  const focusAttributes = useCardFocusAttributes(props, { interactive });
 
   return {
     appearance,
     orientation,
     size,
-    isInteractive,
-    isSelectable,
+    interactive,
+    selectable,
     hasSelectSlot,
-    isCardSelected,
+    selected,
 
     components: {
       root: as,

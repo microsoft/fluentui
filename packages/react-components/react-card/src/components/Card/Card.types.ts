@@ -11,7 +11,7 @@ export type CardRefElement = HTMLDivElement | HTMLButtonElement | HTMLAnchorElem
  *
  * This event is fired when a selectable card changes its selection state.
  */
-export type CardOnSelectEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
+export type CarOnSelectionChangeEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
 
 /**
  * Data sent from the selection events on a selectable card.
@@ -111,7 +111,7 @@ export type CardProps = ComponentProps<CardSlots> & {
   /**
    * Callback to be called when the selected state value changes.
    */
-  onCardSelect?: (event: CardOnSelectEvent, data: CardOnSelectData) => void;
+  onSelectionChange?: (event: CarOnSelectionChangeEvent, data: CardOnSelectData) => void;
 };
 
 /**
@@ -125,14 +125,14 @@ export type CardState = ComponentState<CardSlots> &
        *
        * @default false
        */
-      isInteractive: boolean;
+      interactive: boolean;
 
       /**
        * Represents a selectable card.
        *
        * @default false
        */
-      isSelectable: boolean;
+      selectable: boolean;
 
       /**
        * Represents a selectable card that contains a slot for the select element.
@@ -146,6 +146,6 @@ export type CardState = ComponentState<CardSlots> &
        *
        * @default false
        */
-      isCardSelected: boolean;
+      selected: boolean;
     }
   >;

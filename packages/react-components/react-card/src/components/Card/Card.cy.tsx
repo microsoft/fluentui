@@ -280,11 +280,11 @@ describe('Card', () => {
       cy.get('#card').should('have.attr', 'role', 'checkbox');
     });
 
-    it('should role="checkbox" when selectable - onCardSelect prop', () => {
+    it('should role="checkbox" when selectable - onSelectionChange prop', () => {
       const Example = () => {
-        const onCardSelect = React.useCallback(() => null, []);
+        const onSelectionChange = React.useCallback(() => null, []);
 
-        return <CardSample onCardSelect={onCardSelect} />;
+        return <CardSample onSelectionChange={onSelectionChange} />;
       };
 
       mountFluent(<Example />);
@@ -354,12 +354,12 @@ describe('Card', () => {
       const Example = () => {
         const [checked, setChecked] = React.useState(false);
 
-        const onCardSelect = React.useCallback((event, { selected }) => setChecked(selected), []);
+        const onSelectionChange = React.useCallback((event, { selected }) => setChecked(selected), []);
 
         return (
           <CardSample
             select={<input type="checkbox" className="custom-select-slot" checked={checked} />}
-            onCardSelect={onCardSelect}
+            onSelectionChange={onSelectionChange}
           />
         );
       };

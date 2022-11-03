@@ -310,10 +310,7 @@ const getInteractiveClassnames = (state: CardState, styles: ReturnType<typeof us
     outline: styles.outlineInteractive,
     subtle: styles.subtleInteractive,
   };
-  const baseClass = mergeClasses(
-    interactiveMap[state.appearance],
-    state.isCardSelected && selectedMap[state.appearance],
-  );
+  const baseClass = mergeClasses(interactiveMap[state.appearance], state.selected && selectedMap[state.appearance]);
 
   if (state.components.root === 'button') {
     return mergeClasses(baseClass, styles.interactiveButton);
@@ -356,7 +353,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     orientationMap[state.orientation],
     sizeMap[state.size],
     appearanceMap[state.appearance],
-    state.isInteractive && getInteractiveClassnames(state, styles),
+    state.interactive && getInteractiveClassnames(state, styles),
     state.root.className,
   );
 
