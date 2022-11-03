@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat(react-card): new selectable cards",
+  "comment": "feat: add selectable feature to card",
   "packageName": "@fluentui/react-card",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
