@@ -104,7 +104,8 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       return undefined;
     }
 
-    let el: Window | HTMLElement = win;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let el: Window | HTMLElement | any = win;
     let onMouseDown: (ev: MouseEvent) => void;
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;
