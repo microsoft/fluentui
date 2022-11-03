@@ -332,8 +332,6 @@ describe('migrate-converged-pkg generator', () => {
         '**/*.test.js',
         '**/*.test.jsx',
         '**/*.d.ts',
-        './src/testing/**/*.js',
-        './src/testing/**/*.jsx',
       ]);
     });
 
