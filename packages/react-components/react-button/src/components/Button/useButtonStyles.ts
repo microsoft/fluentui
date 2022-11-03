@@ -143,12 +143,20 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Hover,
+
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
+
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandPressed,
+      },
     },
   },
   transparent: {
@@ -429,17 +437,6 @@ const useIconStyles = makeStyles({
     [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
 
-  // Appearance variations
-  subtle: {
-    ':hover': {
-      color: tokens.colorNeutralForeground2BrandHover,
-    },
-
-    ':hover:active': {
-      color: tokens.colorNeutralForeground2BrandPressed,
-    },
-  },
-
   // Icon position variations
   before: {
     marginRight: `var(${iconSpacingVar})`,
@@ -492,7 +489,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       buttonClassNames.icon,
       iconStyles.base,
       state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
-      appearance === 'subtle' && iconStyles.subtle,
       iconStyles[size],
       state.icon.className,
     );
