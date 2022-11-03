@@ -268,19 +268,19 @@ describe('Card', () => {
       cy.get(`.${cardClassNames.select}`).should('not.exist');
     });
 
-    it('should role="checkbox" when selectable - selected prop', () => {
+    it('should be checked when prop is present - selected prop', () => {
       mountFluent(<CardSample selected />);
 
-      cy.get('#card').should('have.attr', 'role', 'checkbox');
+      cy.get('#card').should('have.attr', 'aria-checked', 'true');
     });
 
-    it('should role="checkbox" when selectable - defaultSelected prop', () => {
+    it('should be checked when prop is present - defaultSelected prop', () => {
       mountFluent(<CardSample defaultSelected />);
 
-      cy.get('#card').should('have.attr', 'role', 'checkbox');
+      cy.get('#card').should('have.attr', 'aria-checked', 'true');
     });
 
-    it('should role="checkbox" when selectable - onSelectionChange prop', () => {
+    it('should not be checked when prop is present - onSelectionChange prop', () => {
       const Example = () => {
         const onSelectionChange = React.useCallback(() => null, []);
 
@@ -289,14 +289,13 @@ describe('Card', () => {
 
       mountFluent(<Example />);
 
-      cy.get('#card').should('have.attr', 'role', 'checkbox');
+      cy.get('#card').should('have.attr', 'aria-checked', 'false');
     });
 
     it('should have internal checkbox when selectable - select prop', () => {
       mountFluent(<CardSample select={<span />} />);
 
       cy.get(`.${cardClassNames.select}`).should('exist');
-      cy.get(`.${cardClassNames.root}`).should('not.have.attr', 'role', 'checkbox');
     });
 
     it('should render custom select slot', () => {

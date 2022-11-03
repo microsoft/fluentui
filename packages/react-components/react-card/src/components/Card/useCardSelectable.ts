@@ -72,7 +72,6 @@ export const useCardSelectable = (props: CardProps, cardRef: React.RefObject<Car
     if (!hasSelectSlot) {
       return {
         ...selectableEvents,
-        role: 'checkbox',
         'aria-checked': isCardSelected,
       };
     }
