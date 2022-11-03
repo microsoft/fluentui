@@ -58,7 +58,8 @@
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized": "^9.21.8",
-    "@types/react-window": "^1.8.2"
+    "@types/react-window": "^1.8.2",
+    "storywright": "0.0.23-beta.6"
   },
   "publishConfig": {
     "access": "public"
@@ -70,6 +71,7 @@
     "start": "gulp docs",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
     "vr:build": "cross-env NODE_ENV=production gulp screener:build",
-    "vr:test": "gulp screener:runner"
+    "vr:test": "gulp screener:runner",
+    "test:component": "storywright  --browsers chromium --url dist --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }
 }
