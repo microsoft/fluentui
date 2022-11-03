@@ -91,15 +91,27 @@ export type CardProps = ComponentProps<CardSlots> & {
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
     orientation?: 'horizontal' | 'vertical';
     size?: 'small' | 'medium' | 'large';
+    selected?: boolean;
+    defaultSelected?: boolean;
+    onSelectionChange?: (event: CarOnSelectionChangeEvent, data: CardOnSelectData) => void;
 };
 
 // @public
 export type CardSlots = {
-    root: Slot<'div'>;
+    root: Slot<'div', 'a' | 'button'>;
+    select?: Slot<'div', 'input'>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
+    interactive: boolean;
+    selectable: boolean;
+    hasSelectSlot: boolean;
+    selected: boolean;
+}>;
+
+// @public
+export type CarOnSelectionChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;
@@ -114,7 +126,7 @@ export const renderCardHeader_unstable: (state: CardHeaderState) => JSX.Element;
 export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Element;
 
 // @public
-export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLElement>) => CardState;
+export const useCard_unstable: (props: CardProps, ref: React_2.Ref<CardRefElement>) => CardState;
 
 // @public
 export const useCardFooter_unstable: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;

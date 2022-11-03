@@ -1,17 +1,18 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles';
 import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
 import type { CardSlots, CardState } from './Card.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 /**
  * Static CSS class names used internally for the component slots.
  */
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
+  select: 'fui-Card__select',
 };
 
 /**
@@ -24,9 +25,14 @@ export const cardCSSVars = {
 
 const useStyles = makeStyles({
   root: {
+    ...shorthands.overflow('hidden'),
+    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
+    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
+    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
+
     display: 'flex',
     position: 'relative',
-    ...shorthands.overflow('hidden'),
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
 
     // Border setting using after pseudo element to allow CardPreview to render behind it.
@@ -43,10 +49,6 @@ const useStyles = makeStyles({
       ...shorthands.borderWidth(tokens.strokeWidthThin),
       ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
     },
-
-    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
-    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
-    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
 
     // Prevents CardHeader and CardFooter from shrinking.
     [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
@@ -111,15 +113,29 @@ const useStyles = makeStyles({
     [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
   },
 
-  interactiveNoOutline: {
-    ':hover::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
-    ':active::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
+  interactiveLink: {
+    textDecorationLine: 'none',
+  },
+  interactiveButton: {
+    ...shorthands.border('0'),
+    width: '100%',
+    alignItems: 'normal',
+    appearance: 'none',
+    lineHeight: 'inherit',
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
+    fontWeight: 'inherit',
+    textAlign: 'start',
   },
 
+  filled: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow4,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
+  },
   filledInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground1,
@@ -137,8 +153,20 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground1Pressed,
     },
   },
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground1,
+  filledInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Selected,
+    },
+  },
+
+  filledAlternative: {
+    backgroundColor: tokens.colorNeutralBackground2,
     boxShadow: tokens.shadow4,
 
     '::after': {
@@ -162,12 +190,24 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground2Pressed,
     },
   },
-  filledAlternative: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
+  filledAlternativeInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground2Selected,
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground2Selected,
+    },
+  },
+
+  outline: {
+    backgroundColor: tokens.colorTransparentBackground,
+    boxShadow: 'none',
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
   },
   outlineInteractive: {
@@ -194,12 +234,24 @@ const useStyles = makeStyles({
       },
     },
   },
-  outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+  outlineInteractiveSelected: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundSelected,
+    },
+  },
+
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackground,
     boxShadow: 'none',
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   subtleInteractive: {
@@ -218,15 +270,58 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
   },
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    boxShadow: 'none',
+  subtleInteractiveSelected: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
   },
+
+  select: {
+    position: 'absolute',
+    top: '4px',
+    right: '4px',
+  },
+
+  selectHidden: {
+    width: 0,
+    height: 0,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
 });
+
+const getInteractiveClassnames = (state: CardState, styles: ReturnType<typeof useStyles>) => {
+  const selectedMap = {
+    filled: styles.filledInteractiveSelected,
+    'filled-alternative': styles.filledAlternativeInteractiveSelected,
+    outline: styles.outlineInteractiveSelected,
+    subtle: styles.subtleInteractiveSelected,
+  };
+  const interactiveMap = {
+    filled: styles.filledInteractive,
+    'filled-alternative': styles.filledAlternativeInteractive,
+    outline: styles.outlineInteractive,
+    subtle: styles.subtleInteractive,
+  };
+  const baseClass = mergeClasses(interactiveMap[state.appearance], state.selected && selectedMap[state.appearance]);
+
+  if (state.components.root === 'button') {
+    return mergeClasses(baseClass, styles.interactiveButton);
+  }
+
+  if (state.components.root === 'a') {
+    return mergeClasses(baseClass, styles.interactiveLink);
+  }
+
+  return baseClass;
+};
 
 /**
  * Apply styling to the Card slots based on the state.
@@ -237,39 +332,38 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   const orientationMap = {
     horizontal: styles.orientationHorizontal,
     vertical: styles.orientationVertical,
-  } as const;
+  };
 
   const sizeMap = {
     small: styles.sizeSmall,
     medium: styles.sizeMedium,
     large: styles.sizeLarge,
-  } as const;
+  };
 
-  const interactive =
-    state.root.onClick ||
-    state.root.onMouseUp ||
-    state.root.onMouseDown ||
-    state.root.onPointerUp ||
-    state.root.onPointerDown ||
-    state.root.onTouchStart ||
-    state.root.onTouchEnd;
+  const appearanceMap = {
+    filled: styles.filled,
+    'filled-alternative': styles.filledAlternative,
+    outline: styles.outline,
+    subtle: styles.subtle,
+  };
 
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
     orientationMap[state.orientation],
     sizeMap[state.size],
-    state.appearance === 'filled' && styles.filled,
-    state.appearance === 'filled-alternative' && styles.filledAlternative,
-    state.appearance === 'outline' && styles.outline,
-    state.appearance === 'subtle' && styles.subtle,
-    interactive && state.appearance === 'filled' && styles.filledInteractive,
-    interactive && state.appearance === 'filled-alternative' && styles.filledAlternativeInteractive,
-    interactive && state.appearance === 'outline' && styles.outlineInteractive,
-    interactive && state.appearance === 'subtle' && styles.subtleInteractive,
-    interactive && state.appearance !== 'outline' && styles.interactiveNoOutline,
+    appearanceMap[state.appearance],
+    state.interactive && getInteractiveClassnames(state, styles),
     state.root.className,
   );
+
+  if (state.select) {
+    state.select.className = mergeClasses(
+      cardClassNames.select,
+      state.hasSelectSlot ? styles.select : styles.selectHidden,
+      state.select.className,
+    );
+  }
 
   return state;
 };

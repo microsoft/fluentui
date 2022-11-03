@@ -1,55 +1,112 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Avatar, Body1, Button, Caption1 } from '@fluentui/react-components';
-import { MoreHorizontal24Regular } from '@fluentui/react-icons';
+import { makeStyles, shorthands, Avatar, Button, Caption1, Text, tokens, Subtitle1 } from '@fluentui/react-components';
+import { MoreHorizontal20Filled } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
-import { SampleCard, Title } from './SampleCard.stories';
-import Logo from '../assets/logo.svg';
 
-const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
-const avatarElviaURL = ASSET_URL + '/stories/assets/avatar_elvia.svg';
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
+
+  return `${ASSET_URL}${asset}`;
+};
 
 const useStyles = makeStyles({
-  root: {
+  main: {
+    ...shorthands.gap('36px'),
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('30px'),
-
-    ['> *']: {
-      width: 'fit-content',
-    },
+    flexWrap: 'wrap',
   },
-  horizontalPreview: {
+
+  section: {
+    width: 'fit-content',
+  },
+
+  title: {
+    ...shorthands.margin(0, 0, '12px'),
+  },
+
+  horizontalCard: {
     height: '60px',
   },
+
+  verticalCard: {
+    width: '360px',
+    maxWidth: '100%',
+    height: 'fit-content',
+  },
+
+  headerImage: {
+    ...shorthands.borderRadius('4px'),
+    maxWidth: '42px',
+    maxHeight: '42px',
+  },
+
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+
+  text: {
+    ...shorthands.margin(0),
+  },
 });
+
+const Title = ({ children }: React.PropsWithChildren<{}>) => {
+  const styles = useStyles();
+
+  return (
+    <Subtitle1 as="h4" block className={styles.title}>
+      {children}
+    </Subtitle1>
+  );
+};
 
 export const Orientation = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.root}>
-      <div>
-        <Title title="'horizontal'" />
-        <Card size="small" orientation="horizontal">
-          <CardPreview className={styles.horizontalPreview}>
-            <img src={Logo} alt="company logo template" />
-          </CardPreview>
+    <div className={styles.main}>
+      <section className={styles.section}>
+        <Title>'vertical' (Default)</Title>
+        <Card className={styles.verticalCard}>
           <CardHeader
-            image={<Avatar badge={{ status: 'available' }} image={{ src: avatarElviaURL }} />}
-            header={
-              <Body1>
-                <b>Strategy 2021</b>
-              </Body1>
-            }
+            image={<img src={resolveAsset('app_logo.svg')} className={styles.headerImage} />}
+            header={<Text weight="semibold">App Name</Text>}
+            description={<Caption1 className={styles.caption}>Developer</Caption1>}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+          />
+
+          <p className={styles.text}>
+            Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar
+            plum.
+          </p>
+        </Card>
+      </section>
+
+      <section className={styles.section}>
+        <Title>'horizontal'</Title>
+
+        <Card size="small" orientation="horizontal">
+          <CardPreview className={styles.horizontalCard}>
+            <img src={resolveAsset('logo.svg')} alt="Company Logo" />
+          </CardPreview>
+
+          <CardHeader
+            image={<Avatar badge={{ status: 'available' }} image={{ src: resolveAsset('avatar_elvia.svg') }} />}
+            header={<Text weight="semibold">Strategy 2021</Text>}
             description={<Caption1>https://aka.ms/fluentui</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal24Regular />} />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
           />
         </Card>
-      </div>
-      <div>
-        <Title title="'vertical' (Default)" />
-        <SampleCard />
-      </div>
+      </section>
     </div>
   );
+};
+
+Orientation.parameters = {
+  docs: {
+    description: {
+      story: 'Cards can have a different anatomy and be displayed either vertically (by default) or horizontally.',
+    },
+  },
 };

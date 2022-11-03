@@ -3,10 +3,6 @@ import { CardHeader } from '@fluentui/react-card';
 import { makeStyles, shorthands, Button, Body1, Caption1 } from '@fluentui/react-components';
 import { MoreHorizontal20Filled } from '@fluentui/react-icons';
 
-const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
-
-const powerpointLogoURL = ASSET_URL + '/stories/assets/powerpoint_logo.svg';
-
 const useStyles = makeStyles({
   container: {
     display: 'flex',
@@ -19,8 +15,17 @@ const useStyles = makeStyles({
   },
 });
 
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
+
+  return `${ASSET_URL}${asset}`;
+};
+
 export const Default = () => {
   const styles = useStyles();
+
+  const powerpointLogoURL = resolveAsset('powerpoint_logo.svg');
 
   return (
     <div className={styles.container}>
@@ -35,6 +40,7 @@ export const Default = () => {
         description={<Caption1>Developer</Caption1>}
         action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
       />
+
       <CardHeader
         className={styles.header}
         header={
@@ -45,6 +51,7 @@ export const Default = () => {
         description={<Caption1>Developer</Caption1>}
         action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
       />
+
       <CardHeader
         className={styles.header}
         image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
@@ -55,6 +62,7 @@ export const Default = () => {
         }
         action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
       />
+
       <CardHeader
         className={styles.header}
         image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
@@ -65,6 +73,7 @@ export const Default = () => {
         }
         description={<Caption1>Developer</Caption1>}
       />
+
       <CardHeader
         className={styles.header}
         header={
@@ -74,6 +83,7 @@ export const Default = () => {
         }
         action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
       />
+
       <CardHeader
         className={styles.header}
         header={
@@ -83,6 +93,7 @@ export const Default = () => {
         }
         description={<Caption1>Developer</Caption1>}
       />
+
       <CardHeader
         className={styles.header}
         image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
@@ -92,6 +103,7 @@ export const Default = () => {
           </Body1>
         }
       />
+
       <CardHeader
         className={styles.header}
         header={
