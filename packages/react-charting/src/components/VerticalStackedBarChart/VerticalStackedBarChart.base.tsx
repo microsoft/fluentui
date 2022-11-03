@@ -60,7 +60,6 @@ enum CircleVisbility {
 }
 
 export interface IVerticalStackedBarChartState extends IBasestate {
-  selectedLegendTitle: string;
   dataPointCalloutProps?: IVSChartDataPoint;
   stackCalloutProps?: IVerticalStackedChartProps;
   activeXAxisDataPoint: number | string;
@@ -92,9 +91,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     super(props);
     this.state = {
       isCalloutVisible: false,
-      isLegendSelected: false,
-      isLegendHovered: false,
-      selectedLegendTitle: '',
+      selectedLegend: '',
+      activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
@@ -214,7 +212,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const { isCalloutForStack = false } = this.props;
     let shouldFocusStackOnly: boolean = false;
     if (_isHavingLines) {
-      if (this.state.isLegendSelected) {
+      if (this.state.selectedLegend !== '') {
         shouldFocusStackOnly = false;
       } else {
         shouldFocusStackOnly = true;
@@ -270,7 +268,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     containerHeight: number,
     containerWidth: number,
   ): JSX.Element => {
-    const { isLegendHovered, isLegendSelected, selectedLegendTitle } = this.state;
     const isNumeric = this._xAxisType === XAxisTypes.NumericAxis;
     const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumeric);
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
@@ -284,10 +281,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const xScaleBandwidthTranslate = isNumeric ? 0 : (xBarScale as any).bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
-      let shouldHighlight = true;
-      if (isLegendHovered || isLegendSelected) {
-        shouldHighlight = selectedLegendTitle === item; // item is legend name;
-      }
+      const shouldHighlight = this._legendHighlighted(item) || this._noLegendHighlighted(); // item is legend name
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = isNumeric
           ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
@@ -329,11 +323,10 @@ export class VerticalStackedBarChartBase extends React.Component<
             strokeLinecap="round"
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            {...(isLegendSelected &&
-              selectedLegendTitle === item && {
-                onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
-                onMouseLeave: this._lineHoverOut,
-              })}
+            {...(this.state.selectedLegend === item && {
+              onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
+              onMouseLeave: this._lineHoverOut,
+            })}
           />,
         );
       }
@@ -351,14 +344,13 @@ export class VerticalStackedBarChartBase extends React.Component<
             }
             cy={yScale(circlePoint.y)}
             onMouseOver={
-              isLegendSelected && selectedLegendTitle === item
+              this.state.selectedLegend === item
                 ? this._lineHover.bind(this, circlePoint)
                 : this._onStackHover.bind(this, circlePoint.xItem)
             }
-            {...(isLegendSelected &&
-              selectedLegendTitle === item && {
-                onMouseLeave: this._lineHoverOut,
-              })}
+            {...(this.state.selectedLegend === item && {
+              onMouseLeave: this._lineHoverOut,
+            })}
             r={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
             stroke={circlePoint.color}
             fill={this.props.theme!.palette.white}
@@ -382,11 +374,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     xAxispoint: string | number,
     legend: string,
   ): { visibility: CircleVisbility; radius: number } => {
-    const { isLegendSelected, activeXAxisDataPoint, selectedLegendTitle } = this.state;
-    if (isLegendSelected) {
-      if (xAxispoint === activeXAxisDataPoint && legend === selectedLegendTitle) {
+    const { selectedLegend, activeXAxisDataPoint } = this.state;
+    if (selectedLegend !== '') {
+      if (xAxispoint === activeXAxisDataPoint && selectedLegend === legend) {
         return { visibility: CircleVisbility.show, radius: 8 };
-      } else if (legend === selectedLegendTitle) {
+      } else if (selectedLegend === legend) {
         return { visibility: CircleVisbility.show, radius: 0.3 };
       } else {
         return { visibility: CircleVisbility.hide, radius: 0 };
@@ -455,43 +447,28 @@ export class VerticalStackedBarChartBase extends React.Component<
       : null;
   };
 
-  private _onLegendClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          selectedLegendTitle: customMessage,
-        });
-      } else {
-        this.setState({
-          selectedLegendTitle: customMessage,
-        });
-      }
+  private _onLegendClick(legendTitle: string): void {
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        isLegendSelected: true,
-        selectedLegendTitle: customMessage,
+        selectedLegend: legendTitle,
       });
     }
   }
 
-  private _onLegendHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: true,
-        selectedLegendTitle: customMessage,
-      });
-    }
+  private _onLegendHover(legendTitle: string): void {
+    this.setState({
+      activeLegend: legendTitle,
+    });
   }
 
-  private _onLegendLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: false,
-        selectedLegendTitle: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLegendLeave(): void {
+    this.setState({
+      activeLegend: '',
+    });
   }
 
   private _getLegendData(
@@ -521,7 +498,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             this._onLegendClick(point.legend);
           },
           hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.legend) : undefined,
-          onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
+          onMouseOutAction: allowHoverOnLegend ? () => this._onLegendLeave() : undefined,
         };
 
         actions.push(legend);
@@ -538,7 +515,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             this._onLegendClick(point.title);
           },
           hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.title) : undefined,
-          onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
+          onMouseOutAction: allowHoverOnLegend ? () => this._onLegendLeave() : undefined,
         };
         legendsOfLine.push(legend);
       });
@@ -580,9 +557,7 @@ export class VerticalStackedBarChartBase extends React.Component<
          * Show the callout if highlighted bar is focused/hovered
          * and Hide it if unhighlighted bar is focused/hovered
          */
-        isCalloutVisible:
-          this.state.isLegendSelected === false ||
-          (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend,
         calloutLegend: point.legend,
         dataForHoverCard: point.data,
         color,
@@ -741,10 +716,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         const color = point.color ? point.color : this._colors[index];
         const ref: IRefArrayData = {};
 
-        let shouldHighlight = true;
-        if (this.state.isLegendHovered || this.state.isLegendSelected) {
-          shouldHighlight = this.state.selectedLegendTitle === point.legend;
-        }
+        const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         const classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
           shouldHighlight: shouldHighlight,
@@ -933,5 +905,25 @@ export class VerticalStackedBarChartBase extends React.Component<
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
     }
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }
