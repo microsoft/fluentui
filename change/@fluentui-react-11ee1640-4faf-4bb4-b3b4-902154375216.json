@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: pass forward ref into contextual menu",
+  "comment": "fix: Deprecate the ContextualMenu componentRef because it has no public methods",
   "packageName": "@fluentui/react",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch"
