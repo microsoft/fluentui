@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { ExtendedStoryFnReturnType } from './types';
-import { useWindow } from '@fluentui/react';
 
 export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
   return (
