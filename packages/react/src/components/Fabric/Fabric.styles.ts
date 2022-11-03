@@ -14,7 +14,7 @@ export interface IFabricClassNames {
 }
 
 export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
-  const { theme, className, applyTheme } = props;
+  const { applyTheme, className, preventBlanketFontInheritance, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   return {
     root: [
@@ -22,11 +22,11 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,
-        selectors: {
-          '& button': inheritFont,
-          '& input': inheritFont,
-          '& textarea': inheritFont,
-        },
+      },
+      !preventBlanketFontInheritance && {
+        '& button': inheritFont,
+        '& input': inheritFont,
+        '& textarea': inheritFont,
       },
       // apply theme to only if applyTheme is true
       applyTheme && {

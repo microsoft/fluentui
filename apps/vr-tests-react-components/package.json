@@ -13,10 +13,12 @@
     "screener": "just-scripts screener",
     "screener:build": "yarn build",
     "start": "start-storybook",
+    "test": "just-scripts test",
     "type-check": "tsc"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
     "storywright": "0.0.23-beta.6"
   },
   "dependencies": {
@@ -46,6 +48,7 @@
     "@fluentui/react-slider": "^9.0.9",
     "@fluentui/react-spinner": "^9.0.9",
     "@fluentui/react-spinbutton": "^9.0.7",
+    "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
     "@fluentui/react-switch": "^9.0.10",
     "@fluentui/react-tabs": "^9.0.10",
     "@fluentui/react-table": "9.0.0-alpha.10",
