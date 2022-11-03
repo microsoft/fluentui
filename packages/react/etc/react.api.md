@@ -5798,6 +5798,7 @@ export interface IFabricProps extends React_2.HTMLAttributes<HTMLDivElement>, Re
     // (undocumented)
     componentRef?: IRefObject<{}>;
     dir?: 'rtl' | 'ltr' | 'auto';
+    preventBlanketFontInheritance?: boolean;
     styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
     theme?: ITheme;
 }
@@ -6593,6 +6594,7 @@ export interface ILayerProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
+    fabricProps?: IFabricProps;
     hostId?: string;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
