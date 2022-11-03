@@ -1,7 +1,7 @@
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { InfoButtonSlots, InfoButtonState } from './InfoButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -26,11 +26,10 @@ const useButtonStyles = makeStyles({
 
     backgroundColor: tokens.colorTransparentBackground,
     color: tokens.colorNeutralForeground2,
-    fontFamily: tokens.fontFamilyBase,
 
     ...shorthands.overflow('hidden'),
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.margin(0),
 
     [`& .${iconFilledClassName}`]: {
@@ -40,7 +39,7 @@ const useButtonStyles = makeStyles({
       display: 'inline-flex',
     },
 
-    ':enabled:hover': {
+    ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
       color: tokens.colorNeutralForeground2BrandHover,
 
@@ -51,28 +50,11 @@ const useButtonStyles = makeStyles({
         display: 'none',
       },
     },
-    ':enabled:hover:active': {
+    ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       color: tokens.colorNeutralForeground2BrandPressed,
     },
-    ':disabled': {
-      cursor: 'not-allowed',
-      color: tokens.colorNeutralForegroundDisabled,
-    },
   },
-
-  focusIndicator: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-    outlineColor: tokens.colorTransparentStroke,
-    outlineWidth: tokens.strokeWidthThick,
-    outlineStyle: 'solid',
-    boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 ${tokens.borderRadiusSmall} ${tokens.colorStrokeFocus2}
-    `,
-    zIndex: 1,
-  }),
 
   selected: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
@@ -84,21 +66,86 @@ const useButtonStyles = makeStyles({
     [`& .${iconRegularClassName}`]: {
       display: 'none',
     },
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'Highlight',
+      ...shorthands.borderColor('Canvas'),
+      color: 'Canvas',
+    },
   },
+
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('Canvas'),
+      color: 'CanvasText',
+
+      ':hover': {
+        forcedColorAdjust: 'none',
+        backgroundColor: 'Highlight',
+        ...shorthands.borderColor('Canvas'),
+        color: 'Canvas',
+      },
+
+      ':hover:active': {
+        forcedColorAdjust: 'none',
+        backgroundColor: 'Highlight',
+        ...shorthands.borderColor('Canvas'),
+        color: 'Canvas',
+      },
+    },
+  },
+
+  focusIndicator: createCustomFocusIndicatorStyle({
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    outlineColor: tokens.colorTransparentStroke,
+    outlineWidth: tokens.strokeWidthThick,
+    outlineStyle: 'solid',
+    boxShadow: `
+      ${tokens.shadow4},
+      0 0 0 2px ${tokens.colorStrokeFocus2}
+    `,
+    zIndex: 1,
+  }),
+
+  small: {
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+  },
+  medium: {
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+  },
+  large: {
+    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingVerticalXXS),
+  },
+});
+
+const usePopoverSurfaceStyles = makeStyles({
+  small: typographyStyles.caption1,
+  medium: typographyStyles.caption1,
+  large: typographyStyles.body1,
 });
 
 /**
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
+  const { size } = state;
   const { open } = state.popover;
   const buttonStyles = useButtonStyles();
+  const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
-  state.content.className = mergeClasses(infoButtonClassNames.content, state.content.className);
+  state.content.className = mergeClasses(
+    infoButtonClassNames.content,
+    popoverSurfaceStyles[size],
+    state.content.className,
+  );
+
   state.root.className = mergeClasses(
     infoButtonClassNames.root,
     buttonStyles.base,
+    buttonStyles.highContrast,
     buttonStyles.focusIndicator,
+    buttonStyles[size],
     open && buttonStyles.selected,
     state.root.className,
   );
