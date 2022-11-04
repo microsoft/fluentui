@@ -12,5 +12,5 @@ import { useTableCell_unstable } from '../TableCell/useTableCell';
  * @param ref - reference to root HTMLElement of DataGridCell
  */
 export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Ref<HTMLElement>): DataGridCellState => {
-  return useTableCell_unstable({ ...props, as: 'div' }, ref);
+  return useTableCell_unstable({ as: 'div', role: 'gridcell', tabIndex: 0, ...props }, ref);
 };
