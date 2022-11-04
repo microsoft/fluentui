@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 03 Nov 2022 07:52:12 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Nov 2022 07:48:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.100.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.100.0)
+
+Fri, 04 Nov 2022 07:48:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.99.3..@fluentui/react_v8.100.0)
+
+### Minor changes
+
+- Make callbacks able to take one param type or the other rather than requiring both. ([PR #25475](https://github.com/microsoft/fluentui/pull/25475) by gcox@microsoft.com)
 
 ## [8.99.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.3)
 
