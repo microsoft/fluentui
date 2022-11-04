@@ -90,22 +90,25 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  createColumn<Item>({
-    columnId: 'file',
-  }),
-  createColumn<Item>({
-    columnId: 'author',
-  }),
-  createColumn<Item>({
-    columnId: 'lastUpdated',
-  }),
-  createColumn<Item>({
-    columnId: 'lastUpdate',
-  }),
-];
-
 export const SingleSelect = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+      }),
+    ],
+    [],
+  );
+
   const {
     getRows,
     selection: { toggleRow, isRowSelected },

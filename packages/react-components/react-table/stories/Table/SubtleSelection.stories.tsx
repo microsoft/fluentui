@@ -90,22 +90,25 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  createColumn<Item>({
-    columnId: 'file',
-  }),
-  createColumn<Item>({
-    columnId: 'author',
-  }),
-  createColumn<Item>({
-    columnId: 'lastUpdated',
-  }),
-  createColumn<Item>({
-    columnId: 'lastUpdate',
-  }),
-];
-
 export const SubtleSelection = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+      }),
+    ],
+    [],
+  );
+
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
