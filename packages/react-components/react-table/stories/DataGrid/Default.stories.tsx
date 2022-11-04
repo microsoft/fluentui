@@ -12,13 +12,14 @@ import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableCellLayout } from '@fluentui/react-components/unstable';
 import {
   DataGridBody,
-  DataGridCell,
   DataGridRow,
   DataGrid,
   DataGridHeader,
   DataGridHeaderCell,
+  DataGridCell,
   ColumnDefinition,
   RowState,
+  createColumn,
 } from '@fluentui/react-table';
 
 type FileCell = {
@@ -88,10 +89,57 @@ const items: Item[] = [
 ];
 
 const columns: ColumnDefinition<Item>[] = [
-  { columnId: 'file' },
-  { columnId: 'author' },
-  { columnId: 'lastUpdated' },
-  { columnId: 'lastUpdate' },
+  createColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return 'File';
+    },
+    renderCell: item => {
+      return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
+    },
+  }),
+  createColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return 'Author';
+    },
+    renderCell: item => {
+      return (
+        <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCellLayout>
+      );
+    },
+  }),
+  createColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return 'Last updated';
+    },
+
+    renderCell: item => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return 'Last update';
+    },
+    renderCell: item => {
+      return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
+    },
+  }),
 ];
 
 export const Default = () => {
@@ -99,31 +147,17 @@ export const Default = () => {
     <DataGrid items={items} columns={columns}>
       <DataGridHeader>
         <DataGridRow>
-          <DataGridHeaderCell>File</DataGridHeaderCell>
-          <DataGridHeaderCell>Author</DataGridHeaderCell>
-          <DataGridHeaderCell>Last updated</DataGridHeaderCell>
-          <DataGridHeaderCell>Last update</DataGridHeaderCell>
+          {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+            <DataGridHeaderCell key={columnId}>{renderHeaderCell()}</DataGridHeaderCell>
+          )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody>
         {({ item, rowId }: RowState<Item>) => (
           <DataGridRow key={rowId}>
-            <DataGridCell>
-              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-            </DataGridCell>
-            <DataGridCell>
-              <TableCellLayout
-                media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                }
-              >
-                {item.author.label}
-              </TableCellLayout>
-            </DataGridCell>
-            <DataGridCell>{item.lastUpdated.label}</DataGridCell>
-            <DataGridCell>
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-            </DataGridCell>
+            {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+              <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
+            )}
           </DataGridRow>
         )}
       </DataGridBody>

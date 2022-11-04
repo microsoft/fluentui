@@ -13,7 +13,7 @@ describe('DataGridRow', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<DataGridRow>Default DataGridRow</DataGridRow>);
+    const result = render(<DataGridRow>{() => 'foo'}</DataGridRow>);
     expect(result.container).toMatchSnapshot();
   });
 });

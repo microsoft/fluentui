@@ -2,10 +2,15 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { ColumnDefinition } from './types';
 import { useSortState } from './useSort';
 import { mockTableState } from '../testing/mockTableState';
+import { createColumn } from './createColumn';
 
 describe('useSortState', () => {
   it('should use default sort state', () => {
-    const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+    const columnDefinition = [
+      createColumn({ columnId: 1 }),
+      createColumn({ columnId: 2 }),
+      createColumn({ columnId: 3 }),
+    ];
     const { result } = renderHook(() =>
       useSortState(mockTableState({ columns: columnDefinition }), {
         defaultSortState: { sortColumn: 2, sortDirection: 'descending' },
@@ -17,7 +22,11 @@ describe('useSortState', () => {
   });
 
   it('should use user sort state', () => {
-    const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+    const columnDefinition = [
+      createColumn({ columnId: 1 }),
+      createColumn({ columnId: 2 }),
+      createColumn({ columnId: 3 }),
+    ];
     const { result } = renderHook(() =>
       useSortState(mockTableState({ columns: columnDefinition }), {
         sortState: { sortColumn: 2, sortDirection: 'descending' },
@@ -30,7 +39,11 @@ describe('useSortState', () => {
 
   describe('toggleColumnSort', () => {
     it('should sort a new column in ascending order', () => {
-      const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+      const columnDefinition = [
+        createColumn({ columnId: 1 }),
+        createColumn({ columnId: 2 }),
+        createColumn({ columnId: 3 }),
+      ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
@@ -46,7 +59,11 @@ describe('useSortState', () => {
     });
 
     it('should toggle sort direction on a column', () => {
-      const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+      const columnDefinition = [
+        createColumn({ columnId: 1 }),
+        createColumn({ columnId: 2 }),
+        createColumn({ columnId: 3 }),
+      ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
@@ -68,7 +85,11 @@ describe('useSortState', () => {
 
   describe('setColumnSort', () => {
     it('should sort a column in ascending order', () => {
-      const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+      const columnDefinition = [
+        createColumn({ columnId: 1 }),
+        createColumn({ columnId: 2 }),
+        createColumn({ columnId: 3 }),
+      ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
@@ -84,7 +105,11 @@ describe('useSortState', () => {
     });
 
     it('should sort a column in descending order', () => {
-      const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+      const columnDefinition = [
+        createColumn({ columnId: 1 }),
+        createColumn({ columnId: 2 }),
+        createColumn({ columnId: 3 }),
+      ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
@@ -105,9 +130,9 @@ describe('useSortState', () => {
     it('should use the compare function for the sorted column', () => {
       const compare = createMockCompare();
       const columnDefinition = [
-        { columnId: 1, compare: createMockCompare() },
-        { columnId: 2, compare },
-        { columnId: 3, compare: createMockCompare() },
+        createColumn({ columnId: 1, compare: createMockCompare() }),
+        createColumn({ columnId: 2, compare }),
+        createColumn({ columnId: 3, compare: createMockCompare() }),
       ];
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
@@ -124,7 +149,7 @@ describe('useSortState', () => {
 
     it('should sort ascending', () => {
       const columnDefinition: ColumnDefinition<{ value: number }>[] = [
-        { columnId: 1, compare: (a, b) => a.value - b.value },
+        createColumn({ columnId: 1, compare: (a, b) => a.value - b.value }),
       ];
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
@@ -145,7 +170,7 @@ describe('useSortState', () => {
 
     it('should sort descending', () => {
       const columnDefinition: ColumnDefinition<{ value: number }>[] = [
-        { columnId: 1, compare: (a, b) => a.value - b.value },
+        createColumn({ columnId: 1, compare: (a, b) => a.value - b.value }),
       ];
 
       const items = [{ value: 1 }, { value: 2 }];
@@ -171,7 +196,7 @@ describe('useSortState', () => {
 
   describe('getSortDirection', () => {
     it('should return sort direction for the sorted column', () => {
-      const columnDefinition: ColumnDefinition<{ value: number }>[] = [{ columnId: 1 }];
+      const columnDefinition: ColumnDefinition<{ value: number }>[] = [createColumn({ columnId: 1 })];
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
@@ -182,7 +207,10 @@ describe('useSortState', () => {
     });
 
     it('should return undefined for unsorted column', () => {
-      const columnDefinition: ColumnDefinition<{ value: number }>[] = [{ columnId: 1 }, { columnId: 2 }];
+      const columnDefinition: ColumnDefinition<{ value: number }>[] = [
+        createColumn({ columnId: 1 }),
+        createColumn({ columnId: 2 }),
+      ];
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {

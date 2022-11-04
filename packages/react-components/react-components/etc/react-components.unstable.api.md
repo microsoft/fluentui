@@ -63,6 +63,8 @@ import { ComboboxOpenEvents } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import { ComboboxState } from '@fluentui/react-combobox';
+import { createColumn } from '@fluentui/react-table';
+import { CreateColumnOptions } from '@fluentui/react-table';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
@@ -420,6 +422,10 @@ export { ComboboxProps }
 export { ComboboxSlots }
 
 export { ComboboxState }
+
+export { createColumn }
+
+export { CreateColumnOptions }
 
 export { DATA_OVERFLOW_ITEM }
 

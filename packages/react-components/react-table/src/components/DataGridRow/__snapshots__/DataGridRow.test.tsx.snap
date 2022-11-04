@@ -5,8 +5,6 @@ exports[`DataGridRow renders a default state 1`] = `
   <div
     class="fui-DataGridRow fui-TableRow"
     role="row"
-  >
-    Default DataGridRow
-  </div>
+  />
 </div>
 `;

@@ -15,19 +15,41 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { ReactNode } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export type CellRenderFunction = (column: ColumnDefinition<any>) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface ColumnDefinition<TItem> {
     // (undocumented)
     columnId: ColumnId;
     // (undocumented)
-    compare?: (a: TItem, b: TItem) => number;
+    compare: (a: TItem, b: TItem) => number;
+    // (undocumented)
+    renderCell: (item: TItem) => React_2.ReactNode;
+    // (undocumented)
+    renderHeaderCell: () => React_2.ReactNode;
 }
 
 // @public (undocumented)
 export type ColumnId = string | number;
+
+// @public
+export function createColumn<TItem>(options: CreateColumnOptions<TItem>): {
+    columnId: ColumnId;
+    renderCell: (item: TItem) => ReactNode;
+    renderHeaderCell: () => ReactNode;
+    compare: (a: TItem, b: TItem) => number;
+};
+
+// @public (undocumented)
+export interface CreateColumnOptions<TItem> extends Partial<ColumnDefinition<TItem>> {
+    // (undocumented)
+    columnId: ColumnId;
+}
 
 // @public
 export const DataGrid: ForwardRefComponent<DataGridProps>;
@@ -115,7 +137,9 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps = TableRowProps;
+export type DataGridRowProps = Omit<TableRowProps, 'children'> & {
+    children: CellRenderFunction;
+};
 
 // @public (undocumented)
 export type DataGridRowSlots = TableRowSlots;
