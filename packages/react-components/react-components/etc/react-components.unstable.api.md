@@ -114,6 +114,9 @@ import { PersonaSlots } from '@fluentui/react-persona';
 import { PersonaState } from '@fluentui/react-persona';
 import { Progress } from '@fluentui/react-progress';
 import { progressClassNames } from '@fluentui/react-progress';
+import { ProgressField } from '@fluentui/react-field';
+import { progressFieldClassNames } from '@fluentui/react-field';
+import { ProgressFieldProps } from '@fluentui/react-field';
 import { ProgressProps } from '@fluentui/react-progress';
 import { ProgressSlots } from '@fluentui/react-progress';
 import { ProgressState } from '@fluentui/react-progress';
@@ -524,6 +527,12 @@ export { PersonaState }
 export { Progress }
 
 export { progressClassNames }
+
+export { ProgressField }
+
+export { progressFieldClassNames }
+
+export { ProgressFieldProps }
 
 export { ProgressProps }
 
