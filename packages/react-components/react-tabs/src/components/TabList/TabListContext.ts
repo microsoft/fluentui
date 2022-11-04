@@ -5,7 +5,7 @@ import { TabListContextValue } from './TabList.types';
 // eslint-disable-next-line @fluentui/no-context-default-value
 export const TabListContext: Context<TabListContextValue> = createContext<TabListContextValue>({
   appearance: 'transparent',
-  keepTabSizeConsistent: true,
+  reserveSelectedTabSpace: true,
   disabled: false,
   selectedValue: undefined,
   onRegister: () => {

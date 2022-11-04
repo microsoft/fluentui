@@ -12,6 +12,10 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
+const reservedSpaceClassNames = {
+  content: 'fui-Tab__content--reserved-space',
+};
+
 /**
  * Styles for the root slot
  */
@@ -406,9 +410,9 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   }
 
   // This needs to be before state.content.className is updated
-  if (state.selectedTabContentClass !== undefined) {
-    state.selectedTabContentClass = mergeClasses(
-      tabClassNames.content,
+  if (state.contentReservedSpaceClassName !== undefined) {
+    state.contentReservedSpaceClassName = mergeClasses(
+      reservedSpaceClassNames.content,
       contentStyles.base,
       contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,

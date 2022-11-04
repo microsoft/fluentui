@@ -21,7 +21,7 @@ import { TabValue } from '../Tab/Tab.types';
 export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
   const {
     appearance = 'transparent',
-    keepTabSizeConsistent = true,
+    reserveSelectedTabSpace = true,
     disabled = false,
     onTabSelect,
     size = 'medium',
@@ -88,7 +88,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
       ...props,
     }),
     appearance,
-    keepTabSizeConsistent,
+    reserveSelectedTabSpace,
     disabled,
     selectedValue,
     size,

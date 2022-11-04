@@ -12,8 +12,8 @@ export const renderTab_unstable = (state: TabState) => {
     <slots.root {...slotProps.root}>
       {slots.icon && <slots.icon {...slotProps.icon} />}
       {!state.iconOnly && <slots.content {...slotProps.content} />}
-      {!state.selected && !state.iconOnly && state.selectedTabContentClassName !== undefined && (
-        <slots.content {...slotProps.content} className={state.selectedTabContentClassName} />
+      {!state.selected && !state.iconOnly && state.contentReservedSpaceClassName !== undefined && (
+        <slots.content {...slotProps.content} className={state.contentReservedSpaceClassName} />
       )}
     </slots.root>
   );

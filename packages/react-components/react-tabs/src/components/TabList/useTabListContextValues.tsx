@@ -3,7 +3,7 @@ import { TabListContextValue, TabListContextValues, TabListState } from './TabLi
 export function useTabListContextValues(state: TabListState): TabListContextValues {
   const {
     appearance,
-    keepTabSizeConsistent,
+    reserveSelectedTabSpace: keepTabSizeConsistent,
     disabled,
     selectedValue: selectedKey,
     onRegister,
@@ -16,7 +16,7 @@ export function useTabListContextValues(state: TabListState): TabListContextValu
 
   const tabList: TabListContextValue = {
     appearance,
-    keepTabSizeConsistent,
+    reserveSelectedTabSpace: keepTabSizeConsistent,
     disabled,
     selectedValue: selectedKey,
     onSelect,
