@@ -21,6 +21,7 @@ import {
   useTable,
   ColumnDefinition,
   useSelection,
+  createColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -90,18 +91,18 @@ const items: Item[] = [
 ];
 
 const columns: ColumnDefinition<Item>[] = [
-  {
+  createColumn<Item>({
     columnId: 'file',
-  },
-  {
+  }),
+  createColumn<Item>({
     columnId: 'author',
-  },
-  {
+  }),
+  createColumn<Item>({
     columnId: 'lastUpdated',
-  },
-  {
+  }),
+  createColumn<Item>({
     columnId: 'lastUpdate',
-  },
+  }),
 ];
 
 export const MultipleSelect = () => {
@@ -121,16 +122,20 @@ export const MultipleSelect = () => {
     ],
   );
 
-  const rows = getRows(row => ({
-    ...row,
-    onClick: () => toggleRow(row.rowId),
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        toggleRow(row.rowId);
-      }
-    },
-    selected: isRowSelected(row.rowId),
-  }));
+  const rows = getRows(row => {
+    const selected = isRowSelected(row.rowId);
+    return {
+      ...row,
+      onClick: () => toggleRow(row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          toggleRow(row.rowId);
+        }
+      },
+      selected,
+      appearance: selected ? ('brand' as const) : ('none' as const),
+    };
+  });
 
   // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
@@ -150,13 +155,13 @@ export const MultipleSelect = () => {
         </TableRow>
       </TableHeader>
       <TableBody {...keyboardNavAttr}>
-        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+        {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
             onClick={onClick}
             onKeyDown={onKeyDown}
             aria-selected={selected}
-            appearance={selected ? 'brand' : 'none'}
+            appearance={appearance}
           >
             <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell>

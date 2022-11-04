@@ -10,16 +10,16 @@ export interface SortState {
   sortDirection: SortDirection;
 }
 
-export interface ColumnDefinition<TItem> {
+export interface CreateColumnOptions<TItem> extends Partial<ColumnDefinition<TItem>> {
   columnId: ColumnId;
-  compare?: (a: TItem, b: TItem) => number;
-  renderHeader?: () => React.ReactNode;
-  renderCell?: (item: TItem) => React.ReactNode;
 }
 
-export interface ColumnDefinitionRender<TItem>
-  extends Omit<ColumnDefinition<TItem>, 'renderHeader' | 'renderCell'>,
-    Required<Pick<ColumnDefinition<TItem>, 'renderHeader' | 'renderCell'>> {}
+export interface ColumnDefinition<TItem> {
+  columnId: ColumnId;
+  compare: (a: TItem, b: TItem) => number;
+  renderHeaderCell: () => React.ReactNode;
+  renderCell: (item: TItem) => React.ReactNode;
+}
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,

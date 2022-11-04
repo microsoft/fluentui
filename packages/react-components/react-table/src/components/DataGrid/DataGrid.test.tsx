@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { DataGrid } from './DataGrid';
 import { isConformant } from '../../testing/isConformant';
 import { DataGridProps } from './DataGrid.types';
-import { ColumnDefinition, RowState } from '../../hooks';
+import { ColumnDefinition, createColumn, RowState } from '../../hooks';
 import { DataGridBody } from '../DataGridBody/DataGridBody';
 import { DataGridRow } from '../DataGridRow/DataGridRow';
 import { DataGridCell } from '../DataGridCell/DataGridCell';
@@ -22,9 +22,9 @@ describe('DataGrid', () => {
   }
 
   const testColumns: ColumnDefinition<Item>[] = [
-    { columnId: 'first', renderHeader: () => 'first', renderCell: item => item.first },
-    { columnId: 'second', renderHeader: () => 'second', renderCell: item => item.second },
-    { columnId: 'third', renderHeader: () => 'third', renderCell: item => item.third },
+    createColumn({ columnId: 'first', renderHeaderCell: () => 'first', renderCell: item => item.first }),
+    createColumn({ columnId: 'second', renderHeaderCell: () => 'second', renderCell: item => item.second }),
+    createColumn({ columnId: 'third', renderHeaderCell: () => 'third', renderCell: item => item.third }),
   ];
   const testItems: Item[] = [
     { first: 'first', second: 'second', third: 'third' },
@@ -37,7 +37,7 @@ describe('DataGrid', () => {
       <DataGrid items={testItems} columns={testColumns}>
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeader, columnId }) => <DataGridCell key={columnId}>{renderHeader()}</DataGridCell>}
+            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
