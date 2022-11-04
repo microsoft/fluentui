@@ -124,9 +124,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
             if (isReversed) {
               measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
             } else {
-              console.log('MEAASUREMENT BEFORE:', measurementPos);
               measurementPos += Math.abs(latestEntry.boundingClientRect.top);
-              console.log('MEAASUREMENT AFTER:', measurementPos);
             }
           } else {
             if (isReversed) {
@@ -175,7 +173,6 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
       if (virtualizerStartIndex !== newStartIndex) {
         // Set new index, trigger render!
         onUpdateIndex?.(newStartIndex, virtualizerStartIndex);
-        console.log('UPDATING INDEX: ', newStartIndex);
         setVirtualizerStartIndex(newStartIndex);
         /*
           We need to ensure our dynamic size array
