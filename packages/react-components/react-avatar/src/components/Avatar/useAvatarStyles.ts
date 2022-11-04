@@ -11,52 +11,16 @@ export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   badge: 'fui-Avatar__badge',
 };
 
-//
-// TODO: All animation constants should go to theme or globals?
-// https://github.com/microsoft/fluentui/issues/16372#issuecomment-778240665
-
-const animationDuration = {
-  duration50: '50ms',
-  duration100: '100ms',
-  duration150: '150ms',
-  duration200: '200ms',
-  duration300: '300ms',
-  duration400: '400ms',
-  duration500: '500ms',
-};
-
-const animationTiming = {
-  ultraFast: animationDuration.duration50,
-  faster: animationDuration.duration100,
-  fast: animationDuration.duration150,
-  normal: animationDuration.duration200,
-  slow: animationDuration.duration300,
-  slower: animationDuration.duration400,
-  ultraSlow: animationDuration.duration500,
-};
-
-const animationLines = {
-  decelerateMax: 'cubic-bezier(0.00,0.00,0.00,1.00)',
-  decelerateMid: 'cubic-bezier(0.10,0.90,0.20,1.00)',
-  decelerateMin: 'cubic-bezier(0.33,0.00,0.10,1.00)',
-  accelerateMax: 'cubic-bezier(1.00,0.00,1.00,1.00)',
-  accelerateMid: 'cubic-bezier(0.90,0.10,1.00,0.20)',
-  accelerateMin: 'cubic-bezier(0.80,0.00,0.78,1.00)',
-  maxEasyEase: 'cubic-bezier(0.80,0.00,0.20,1.00)',
-  easyEase: 'cubic-bezier(0.33,0.00,0.67,1.00)',
-  linear: 'linear',
-};
-
 const animations = {
-  fastOutSlowInMax: animationLines.decelerateMax,
-  fastOutSlowInMid: animationLines.decelerateMid,
-  fastOutSlowInMin: animationLines.decelerateMin,
-  slowOutFastInMax: animationLines.accelerateMax,
-  slowOutFastInMid: animationLines.accelerateMid,
-  slowOutFastInMin: animationLines.accelerateMin,
-  fastEase: animationLines.maxEasyEase,
-  normalEase: animationLines.easyEase,
-  nullEasing: animationLines.linear,
+  fastOutSlowInMax: tokens.curveDecelerateMax,
+  fastOutSlowInMid: tokens.curveDecelerateMid,
+  fastOutSlowInMin: tokens.curveDecelerateMin,
+  slowOutFastInMax: tokens.curveAccelerateMax,
+  slowOutFastInMid: tokens.curveAccelerateMid,
+  slowOutFastInMin: tokens.curveAccelerateMin,
+  fastEase: tokens.curveEasyEaseMax,
+  normalEase: tokens.curveEasyEase,
+  nullEasing: tokens.curveLinear,
 };
 
 const useStyles = makeStyles({
@@ -96,7 +60,7 @@ const useStyles = makeStyles({
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
     transitionProperty: 'transform, opacity',
-    transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
+    transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationFaster}`,
     transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
@@ -113,7 +77,7 @@ const useStyles = makeStyles({
 
       ...shorthands.borderRadius('inherit'),
       transitionProperty: 'margin, opacity',
-      transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
+      transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlower}`,
       transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
@@ -158,7 +122,7 @@ const useStyles = makeStyles({
     transform: 'scale(0.875)',
 
     transitionProperty: 'transform, opacity',
-    transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
+    transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationFaster}`,
     transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
@@ -171,7 +135,7 @@ const useStyles = makeStyles({
       opacity: 0,
 
       transitionProperty: 'margin, opacity',
-      transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
+      transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlower}`,
       transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
