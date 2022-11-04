@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme.",
+  "packageName": "@fluentui/react-spinner",
+  "email": "humberto_makoto@hotmail.com",
+  "dependentChangeType": "patch"
+}
