@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Nov 2022 07:48:06 GMT",
+      "tag": "@fluentui/react_v8.100.0",
+      "version": "8.100.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f5a12b344a9aa1f4923fb4eff3676574249886ec",
+            "comment": "Make callbacks able to take one param type or the other rather than requiring both."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Nov 2022 07:52:12 GMT",
       "tag": "@fluentui/react_v8.99.3",
       "version": "8.99.3",
