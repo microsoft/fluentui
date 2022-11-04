@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: DataGrid cells navigable by default, apply role=\"grid\" correctly",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
