@@ -235,6 +235,7 @@ export {
   useTable,
   useSelection,
   useSort,
+  createColumn,
 } from '@fluentui/react-table';
 
 export type {
@@ -274,6 +275,7 @@ export type {
   RowId,
   ColumnDefinition,
   ColumnId,
+  CreateColumnOptions,
 } from '@fluentui/react-table';
 
 export {
