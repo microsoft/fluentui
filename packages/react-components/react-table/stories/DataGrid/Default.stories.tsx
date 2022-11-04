@@ -16,6 +16,7 @@ import {
   DataGrid,
   DataGridHeader,
   DataGridHeaderCell,
+  DataGridCell,
   ColumnDefinition,
   RowState,
   createColumn,
@@ -155,7 +156,7 @@ export const Default = () => {
         {({ item, rowId }: RowState<Item>) => (
           <DataGridRow key={rowId}>
             {({ renderCell, columnId }: ColumnDefinition<Item>) => (
-              <DataGridHeaderCell key={columnId}>{renderCell(item)}</DataGridHeaderCell>
+              <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
             )}
           </DataGridRow>
         )}
