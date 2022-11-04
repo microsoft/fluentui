@@ -1,5 +1,6 @@
 pr:
   - master
+  - web-components-v3
 
 trigger:
   - master
