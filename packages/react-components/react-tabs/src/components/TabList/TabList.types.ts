@@ -48,6 +48,16 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   appearance?: 'transparent' | 'subtle';
 
   /**
+   * Tab size may change between unselected and selected states.
+   * The default scenario is the selected tab has bold text.
+   *
+   * When true, this property causes unselected tabs to be the same size as when selected.
+   * This is done by rendering the content again with the selected styles and visibility:hidden.
+   * @default 'true'
+   */
+  keepTabSizeConsistent?: boolean;
+
+  /**
    * The value of the tab to be selected by default.
    * Typically useful when the selectedValue is uncontrolled.
    */
@@ -83,7 +93,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
 };
 
 export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue'> &
-  Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
+  Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical' | 'keepTabSizeConsistent'>> & {
     /** A callback to allow a tab to register itself with the tab list. */
     onRegister: RegisterTabEventHandler;
 
