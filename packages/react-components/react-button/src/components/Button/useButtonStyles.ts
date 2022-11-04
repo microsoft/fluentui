@@ -72,7 +72,7 @@ const useRootStyles = makeStyles({
   transition: {
     transitionDuration: '100ms',
     transitionProperty: 'background, border, color',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionTimingFunction: tokens.curveEasyEase,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -465,6 +465,8 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     appearance && rootStyles[appearance],
     rootStyles[size],
     rootStyles[shape],
+
+    // Expanded styles
 
     // Disabled styles
     (disabled || disabledFocusable) && rootDisabledStyles.base,
