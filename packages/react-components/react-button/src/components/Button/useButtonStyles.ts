@@ -72,7 +72,7 @@ const useRootStyles = makeStyles({
   transition: {
     transitionDuration: '100ms',
     transitionProperty: 'background, border, color',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionTimingFunction: tokens.curveEasyEase,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',

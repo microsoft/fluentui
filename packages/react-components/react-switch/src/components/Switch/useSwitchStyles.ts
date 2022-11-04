@@ -50,7 +50,7 @@ const useIndicatorStyles = makeStyles({
     ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     pointerEvents: 'none',
     transitionDuration: '200ms',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionTimingFunction: tokens.curveEasyEase,
     transitionProperty: 'background, border, color',
     width: `${trackWidth}px`,
 
@@ -60,7 +60,7 @@ const useIndicatorStyles = makeStyles({
 
     '> *': {
       transitionDuration: '200ms',
-      transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+      transitionTimingFunction: tokens.curveEasyEase,
       transitionProperty: 'transform',
 
       '@media screen and (prefers-reduced-motion: reduce)': {
