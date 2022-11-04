@@ -13,7 +13,6 @@ import { Virtualizer, VirtualizerFlow } from '@fluentui/react-components/unstabl
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
 import { useTable, ColumnDefinition, ColumnId, useSort } from '../../src/hooks';
 import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
-import { useRef } from '@storybook/addons';
 
 type FileCell = {
   label: string;
@@ -188,6 +187,7 @@ export const Virtualized = () => {
           virtualizerLength={100}
           itemSize={44}
           sizeOfChild={(node, index) => {
+            // An example of simple dynamic sizing
             return index % 2 == 0 ? 88 : 44;
           }}
         >
