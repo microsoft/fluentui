@@ -49,7 +49,7 @@ const useIndicatorStyles = makeStyles({
     height: `${trackHeight}px`,
     ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     pointerEvents: 'none',
-    transitionDuration: '200ms',
+    transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
     transitionProperty: 'background, border, color',
     width: `${trackWidth}px`,
@@ -59,7 +59,7 @@ const useIndicatorStyles = makeStyles({
     },
 
     '> *': {
-      transitionDuration: '200ms',
+      transitionDuration: tokens.durationNormal,
       transitionTimingFunction: tokens.curveEasyEase,
       transitionProperty: 'transform',
 
