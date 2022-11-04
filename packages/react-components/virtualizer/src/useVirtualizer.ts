@@ -99,6 +99,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
           : scrollViewRef?.current?.scrollLeft ?? 0,
       );
 
+      let bufferCount = bufferItems;
       if (!scrollViewRef) {
         // We are not inside a direct parent scroll view, use bookends to chop down until we find position.
         // We do NOT use scroll position as this implies we are unbounded - (scroll start pos may not be 0 or local)
@@ -114,14 +115,18 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
           return;
         }
 
-        const isVertical = flow == VirtualizerFlow.Vertical;
+        const isVertical = flow === VirtualizerFlow.Vertical;
         if (latestEntry.target === afterElementRef.current) {
+          // We need to inverse the buffer count
+          bufferCount = virtualizerLength - bufferItems;
           measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
           if (isVertical) {
             if (isReversed) {
               measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
             } else {
+              console.log('MEAASUREMENT BEFORE:', measurementPos);
               measurementPos += Math.abs(latestEntry.boundingClientRect.top);
+              console.log('MEAASUREMENT AFTER:', measurementPos);
             }
           } else {
             if (isReversed) {
@@ -155,7 +160,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
 
       // For now lets use hardcoded size to assess current element to paginate on
       const startIndex = getIndexFromScrollPosition(measurementPos);
-      let bufferedIndex = Math.max(startIndex - bufferItems, 0);
+      let bufferedIndex = Math.max(startIndex - bufferCount, 0);
 
       if (onCalculateIndex) {
         // User has chance to intervene/customize prior to render
@@ -170,6 +175,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
       if (virtualizerStartIndex !== newStartIndex) {
         // Set new index, trigger render!
         onUpdateIndex?.(newStartIndex, virtualizerStartIndex);
+        console.log('UPDATING INDEX: ', newStartIndex);
         setVirtualizerStartIndex(newStartIndex);
         /*
           We need to ensure our dynamic size array

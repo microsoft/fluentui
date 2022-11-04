@@ -54,27 +54,31 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> & {
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   /**
    * Default row height to use if no custom callback provided.
+   * You must provide a value, even if it is just an assumed average or minimum size.
    */
-  itemSize?: number;
+  itemSize: number;
 
   /**
-   * Determines how many elements to render before the current index. (Ensure it's enough items to cover viewport).
+   * Number of elements to render in the list after virtualization.
+   * This should cover at least the size of the viewport at least 250px (bufferSize)
+   */
+  virtualizerLength: number;
+
+  /**
+   * Determines how many elements to render before the current index. (Ensure it's enough items to cover viewport)
+   * This will default to 1/3rd of virtualizerLength which is recommended.
    */
   bufferItems?: number;
 
   /**
    * The length (in pixels) before the end/start where the virtualizer will be triggered.
+   * You can increase this if you wish for the virtualization to recalculate earlier
    */
   bufferSize?: number;
 
   /**
-   * Determines how many elements to render at once in the list.
-   */
-  virtualizerLength?: number;
-
-  /**
-   * DEPRECATED: This may be removed for stable release, the IO has been optimized to a point that this is unnecessary.
-   * Scroll view reference can be provided if the virtualizer is wrapped inside an overflow container.
+   * This should be passed if you have a scrollview that is offset
+   * so that the intersection observer correctly fires.
    */
   scrollViewRef?: MutableRefObject<HTMLDivElement | null>;
 
