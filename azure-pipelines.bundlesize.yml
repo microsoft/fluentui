@@ -1,5 +1,6 @@
 pr:
   - master
+  - web-components-v3 # Remove before merging to master
 
 trigger:
   - master
