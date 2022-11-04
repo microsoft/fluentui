@@ -14,7 +14,7 @@ describe(`main utils`, () => {
 
       const first = actual[0];
       expect(first.startsWith('../../react-')).toBeTruthy();
-      expect(first.endsWith('/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
+      expect(first.endsWith('/stories/**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
     });
   });
 });
