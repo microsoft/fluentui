@@ -20,7 +20,7 @@ export type InfoButtonSlots = {
  */
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
   /**
-   * Size of the InfoButton and its Popover.
+   * Size of the InfoButton.
    *
    * @default medium
    */
