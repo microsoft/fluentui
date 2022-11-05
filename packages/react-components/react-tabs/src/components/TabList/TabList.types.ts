@@ -52,7 +52,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
    * The default scenario is a selected tab has bold text.
    *
    * When true, this property requests tabs be the same size whether unselected or selected.
-   * @default 'true'
+   * @default true
    */
   reserveSelectedTabSpace?: boolean;
 
