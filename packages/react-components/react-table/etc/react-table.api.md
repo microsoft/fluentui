@@ -90,7 +90,9 @@ export type DataGridCellState = TableCellState;
 export const dataGridClassNames: SlotClassNames<DataGridSlots>;
 
 // @public (undocumented)
-export type DataGridContextValue = HeadlessTableState<any>;
+export type DataGridContextValue = HeadlessTableState<any> & {
+    focusMode: FocusMode;
+};
 
 // @public (undocumented)
 export type DataGridContextValues = TableContextValues & {
@@ -128,7 +130,7 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'>;
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'>;
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
@@ -168,7 +170,10 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: HeadlessTableState<unknown>;
-};
+} & Pick<DataGridContextValue, 'focusMode'>;
+
+// @public (undocumented)
+export type FocusMode = 'none' | 'cell';
 
 // @public (undocumented)
 export interface HeadlessTableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {

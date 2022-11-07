@@ -51,4 +51,69 @@ describe('DataGrid', () => {
     );
     expect(result.container).toMatchSnapshot();
   });
+
+  it('should render tabster attributes when `focusMode` has value `cell`', () => {
+    const result = render(
+      <DataGrid items={testItems} columns={testColumns} focusMode="cell">
+        <DataGridHeader>
+          <DataGridRow>
+            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
+          </DataGridRow>
+        </DataGridHeader>
+        <DataGridBody>
+          {({ item, rowId }: RowState<Item>) => (
+            <DataGridRow key={rowId}>
+              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>,
+    );
+
+    expect(result.getByRole('grid').getAttribute('data-tabster')).toMatchInlineSnapshot(
+      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"`,
+    );
+  });
+
+  it('should not render tabster attributes when `focusMode` has value `none`', () => {
+    const result = render(
+      <DataGrid items={testItems} columns={testColumns} focusMode="none">
+        <DataGridHeader>
+          <DataGridRow>
+            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
+          </DataGridRow>
+        </DataGridHeader>
+        <DataGridBody>
+          {({ item, rowId }: RowState<Item>) => (
+            <DataGridRow key={rowId}>
+              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>,
+    );
+
+    expect(result.getByRole('grid').hasAttribute('data-tabster')).toBe(false);
+  });
+
+  it('should not render tabster attributes when `focusMode` prop is not set', () => {
+    const result = render(
+      <DataGrid items={testItems} columns={testColumns}>
+        <DataGridHeader>
+          <DataGridRow>
+            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
+          </DataGridRow>
+        </DataGridHeader>
+        <DataGridBody>
+          {({ item, rowId }: RowState<Item>) => (
+            <DataGridRow key={rowId}>
+              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>,
+    );
+
+    expect(result.getByRole('grid').hasAttribute('data-tabster')).toBe(false);
+  });
 });

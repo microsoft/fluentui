@@ -140,6 +140,7 @@ export type {
   DataGridState,
   DataGridContextValues,
   DataGridContextValue,
+  FocusMode,
 } from './DataGrid';
 
 export {

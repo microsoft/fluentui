@@ -88,63 +88,68 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  createColumn<Item>({
-    columnId: 'file',
-    compare: (a, b) => {
-      return a.file.label.localeCompare(b.file.label);
-    },
-    renderHeaderCell: () => {
-      return 'File';
-    },
-    renderCell: item => {
-      return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
-    },
-  }),
-  createColumn<Item>({
-    columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
-    renderHeaderCell: () => {
-      return 'Author';
-    },
-    renderCell: item => {
-      return (
-        <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCellLayout>
-      );
-    },
-  }),
-  createColumn<Item>({
-    columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
-    renderHeaderCell: () => {
-      return 'Last updated';
-    },
-
-    renderCell: item => {
-      return item.lastUpdated.label;
-    },
-  }),
-  createColumn<Item>({
-    columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
-    renderHeaderCell: () => {
-      return 'Last update';
-    },
-    renderCell: item => {
-      return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
-    },
-  }),
-];
-
 export const Default = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+        compare: (a, b) => {
+          return a.file.label.localeCompare(b.file.label);
+        },
+        renderHeaderCell: () => {
+          return 'File';
+        },
+        renderCell: item => {
+          return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+        compare: (a, b) => {
+          return a.author.label.localeCompare(b.author.label);
+        },
+        renderHeaderCell: () => {
+          return 'Author';
+        },
+        renderCell: item => {
+          return (
+            <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              {item.author.label}
+            </TableCellLayout>
+          );
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+        compare: (a, b) => {
+          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+        },
+        renderHeaderCell: () => {
+          return 'Last updated';
+        },
+
+        renderCell: item => {
+          return item.lastUpdated.label;
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+        compare: (a, b) => {
+          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+        },
+        renderHeaderCell: () => {
+          return 'Last update';
+        },
+        renderCell: item => {
+          return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
+        },
+      }),
+    ],
+    [],
+  );
+
   return (
-    <DataGrid items={items} columns={columns}>
+    <DataGrid items={items} columns={columns} focusMode="cell">
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (

@@ -15,5 +15,5 @@ export const useDataGridSelectionCell_unstable = (
   props: DataGridSelectionCellProps,
   ref: React.Ref<HTMLElement>,
 ): DataGridSelectionCellState => {
-  return useTableSelectionCell_unstable({ ...props, as: 'div' }, ref);
+  return useTableSelectionCell_unstable({ as: 'div', role: 'gridcell', ...props }, ref);
 };
