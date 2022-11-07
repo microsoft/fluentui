@@ -121,3 +121,4 @@ The Progress is non-interactive.
 ## Accessibility
 
 - The `determinate` Progress has the proper `aria` attributes assigned to the element that will allow screen readers to get the `max` and current `value` of the `Progress`.
+- When `reduced-motion` is active, the `indeterminate` `Progress` will animate only once. Use `ProgressField` to add a `description` and `hint` message to the `Progress` bar.
