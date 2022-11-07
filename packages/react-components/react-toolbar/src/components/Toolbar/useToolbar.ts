@@ -65,7 +65,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
       if (name && value) {
         onCheckedValueChange?.(e, {
           name,
-          checkedItems: checkedValues?.[name],
+          checkedItems: [value],
         });
       }
     },
