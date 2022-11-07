@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextBold24Regular, TextItalic24Regular } from '@fluentui/react-icons';
+import { TextBold24Regular, TextItalic24Regular, TextUnderline24Regular } from '@fluentui/react-icons';
 import { Toolbar, ToolbarToggleButton, ToolbarProps } from '@fluentui/react-toolbar';
 
 export const ControlledToggleButton = () => {
@@ -25,6 +25,12 @@ export const ControlledToggleButton = () => {
         icon={<TextItalic24Regular />}
         name="textOptions"
         value="italic"
+      />
+      <ToolbarToggleButton
+        aria-label="Text option - Underline"
+        icon={<TextUnderline24Regular />}
+        name="textOptions"
+        value="underline"
       />
     </Toolbar>
   );
