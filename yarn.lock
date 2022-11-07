@@ -6778,6 +6778,11 @@ adm-zip@0.5.9:
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.5.9.tgz#b33691028333821c0cf95c31374c5462f2905a83"
   integrity sha512-s+3fXLkeeLjZ2kLjCBwQufpI5fuN+kIGBxu6530nVQZGVol0d7Y/M88/xw9HGGUcJjKf8LutN3VPRUBq6N7Ajg==
 
+afterframe@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/afterframe/-/afterframe-1.0.2.tgz#c63e17cdb29e4e60be2e618a315caf5ab5ade0c0"
+  integrity sha512-0JeMZI7dIfVs5guqLgidQNV7c6jBC2HO0QNSekAUB82Hr7PdU9QXNAF3kpFkvATvHYDDTGto7FPsRu1ey+aKJQ==
+
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.3.0.tgz#8165f01c436009bccad0b1d122f05ed770efc6ee"
