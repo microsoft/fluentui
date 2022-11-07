@@ -4,7 +4,7 @@ exports[`DataGrid renders a default state 1`] = `
 <div>
   <div
     class="fui-DataGrid fui-Table"
-    role="table"
+    role="grid"
   >
     <div
       class="fui-DataGridHeader fui-TableHeader"
@@ -16,19 +16,19 @@ exports[`DataGrid renders a default state 1`] = `
       >
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           first
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           second
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           third
         </div>
@@ -44,19 +44,19 @@ exports[`DataGrid renders a default state 1`] = `
       >
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           first
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           second
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           third
         </div>
@@ -67,19 +67,19 @@ exports[`DataGrid renders a default state 1`] = `
       >
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           first
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           second
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           third
         </div>
@@ -90,19 +90,19 @@ exports[`DataGrid renders a default state 1`] = `
       >
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           first
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           second
         </div>
         <div
           class="fui-DataGridCell fui-TableCell"
-          role="cell"
+          role="gridcell"
         >
           third
         </div>
