@@ -1,7 +1,7 @@
-import { fluentCheckbox, provideFluentDesignSystem } from '@fluentui/web-components';
+// import { fluentCheckbox, provideFluentDesignSystem } from '@fluentui/web-components';
 import { DOMSelectorTreeComponentRenderer } from '../../shared/vanilla/types';
 
-provideFluentDesignSystem().register(fluentCheckbox());
+// provideFluentDesignSystem().register(fluentCheckbox());
 
 const componentRenderer: DOMSelectorTreeComponentRenderer = (node, depth, index) => {
   const checkbox = document.createElement('fluent-checkbox') as HTMLInputElement;
