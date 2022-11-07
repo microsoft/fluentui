@@ -10,4 +10,13 @@ module.exports = {
     'jsdoc/check-tag-names': 'off',
     '@griffel/no-shorthands': 'off',
   },
+  overrides: [
+    {
+      files: '**/src/index.{ts,tsx,js}',
+      rules: {
+        // TODO: propagate to `error` once all packages barrel files have been fixed
+        '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
+      },
+    },
+  ],
 };
