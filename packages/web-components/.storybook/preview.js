@@ -1,14 +1,9 @@
 import { addons } from '@storybook/addons';
 import { DOCS_RENDERED } from '@storybook/core-events';
 import * as Fluent from '../src/index-rollup';
-import { fillColor, neutralLayer1, neutralLayer2 } from '../src/design-tokens';
 import webcomponentsTheme from './theme';
-import { toggleBgMode, toggleLtr } from '../public/switches';
 
 Fluent;
-
-document.getElementById('luminance-switch').addEventListener('change', toggleBgMode, false);
-document.getElementById('direction-switch').addEventListener('change', toggleLtr, false);
 
 export const parameters = {
   layout: 'fullscreen',

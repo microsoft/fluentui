@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Reset web-components for v3 development",
+  "packageName": "@fluentui/web-components",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}
