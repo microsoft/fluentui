@@ -10,6 +10,7 @@
 - Use one Spinner at a time.
 - Descriptive verbs are appropriate under a Spinner to help the user understand what's happening. Ie: Saving, processing, updating.
 - Use a Spinner when confirming a change has been made or a task is being processed.
+- Add a description to a Spinner when reduced-motion is active
 
 ### Don't
 
