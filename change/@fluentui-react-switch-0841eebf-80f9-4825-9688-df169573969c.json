@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "fix: create valid export maps",
   "packageName": "@fluentui/react-switch",
   "email": "martinhochel@microsoft.com",
