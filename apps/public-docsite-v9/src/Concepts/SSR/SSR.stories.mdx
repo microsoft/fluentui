@@ -7,6 +7,32 @@ import { SSRDefaultOpen } from './MenuSSRDefaultOpen.stories';
 
 Fluent UI React v9 fully supports Server-Side Rendering.
 
+## Basic setup
+
+For any setup using SSR, you need to provide a `RendererProvider`, `SSRProvider` and `ThemeProvider` in the root file of your app. If these providers are not added, there will be issues when hydrating. See the following example:
+
+```tsx
+import {
+  createDOMRenderer,
+  FluentProvider,
+  SSRProvider,
+  RendererProvider,
+  webLightTheme,
+} from '@fluentui/react-components';
+
+function App() {
+  return (
+    <RendererProvider renderer={createDOMRenderer()}>
+      <SSRProvider>
+        <FluentProvider theme={webLightTheme}>
+          <div className="App">{/* ... */}</div>
+        </FluentProvider>
+      </SSRProvider>
+    </RendererProvider>
+  );
+}
+```
+
 ### Next.js
 
 For basic instructions on getting Next.js set up, see [Getting Started](https://nextjs.org/docs/getting-started).
