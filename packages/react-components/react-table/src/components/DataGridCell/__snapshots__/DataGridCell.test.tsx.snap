@@ -5,7 +5,6 @@ exports[`DataGridCell renders a default state 1`] = `
   <div
     class="fui-DataGridCell fui-TableCell"
     role="gridcell"
-    tabindex="0"
   >
     Default DataGridCell
   </div>
