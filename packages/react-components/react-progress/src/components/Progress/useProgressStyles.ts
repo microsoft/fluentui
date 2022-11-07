@@ -98,6 +98,10 @@ const useBarStyles = makeStyles({
     animationName: indeterminateProgress,
     animationDuration: '3s',
     animationIterationCount: 'infinite',
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      animationDuration: '0.01ms',
+      animationIterationCount: '1',
+    },
   },
 
   rtl: {
