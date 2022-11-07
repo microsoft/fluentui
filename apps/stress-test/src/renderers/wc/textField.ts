@@ -1,7 +1,8 @@
-import { fluentTextField, provideFluentDesignSystem } from '@fluentui/web-components';
+// import { fluentTextField, provideFluentDesignSystem } from '@fluentui/web-components';
 import { DOMSelectorTreeComponentRenderer } from '../../shared/vanilla/types';
 
-provideFluentDesignSystem().register(fluentTextField());
+// DO NOT MERGE TO MASTER - WC is not yet implemented in the branch
+// provideFluentDesignSystem().register(fluentTextField());
 
 const componentRenderer: DOMSelectorTreeComponentRenderer = (node, depth, index) => {
   const field = document.createElement('fluent-text-field') as HTMLInputElement;
