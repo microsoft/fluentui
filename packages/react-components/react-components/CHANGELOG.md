@@ -6,7 +6,7 @@ This log was last generated on Wed, 02 Nov 2022 14:27:34 GMT and should not be m
 
 ## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.3)
 
-Wed, 02 Nov 2022 14:27:34 GMT
+Wed, 02 Nov 2022 14:27:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.2..@fluentui/react-components_v9.6.3)
 
 ### Changes
@@ -16,7 +16,7 @@ Wed, 02 Nov 2022 14:27:34 GMT
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.2)
 
-Wed, 02 Nov 2022 11:57:45 GMT
+Wed, 02 Nov 2022 11:57:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.1..@fluentui/react-components_v9.6.2)
 
 ### Minor changes
@@ -138,7 +138,7 @@ Wed, 02 Nov 2022 11:57:45 GMT
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.1)
 
-Wed, 26 Oct 2022 18:05:51 GMT
+Wed, 26 Oct 2022 18:05:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.0..@fluentui/react-components_v9.6.1)
 
 ### Patches
@@ -148,7 +148,7 @@ Wed, 26 Oct 2022 18:05:51 GMT
 
 ## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.0)
 
-Tue, 25 Oct 2022 22:09:49 GMT
+Tue, 25 Oct 2022 22:09:49 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.3..@fluentui/react-components_v9.6.0)
 
 ### Minor changes
@@ -163,7 +163,7 @@ Tue, 25 Oct 2022 22:09:49 GMT
 
 ## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.3)
 
-Tue, 25 Oct 2022 00:35:26 GMT
+Tue, 25 Oct 2022 00:35:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.2..@fluentui/react-components_v9.5.3)
 
 ### Patches
@@ -203,7 +203,7 @@ Tue, 25 Oct 2022 00:35:26 GMT
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.2)
 
-Thu, 20 Oct 2022 08:39:25 GMT
+Thu, 20 Oct 2022 08:39:25 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.1..@fluentui/react-components_v9.5.2)
 
 ### Minor changes
@@ -368,7 +368,7 @@ Thu, 20 Oct 2022 08:39:25 GMT
 
 ## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.1)
 
-Thu, 13 Oct 2022 12:56:29 GMT
+Thu, 13 Oct 2022 12:56:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.0..@fluentui/react-components_v9.5.1)
 
 ### Minor changes
@@ -385,7 +385,7 @@ Thu, 13 Oct 2022 12:56:29 GMT
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.0)
 
-Thu, 13 Oct 2022 11:02:40 GMT
+Thu, 13 Oct 2022 11:02:40 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.4.0..@fluentui/react-components_v9.5.0)
 
 ### Minor changes
@@ -512,7 +512,7 @@ Thu, 13 Oct 2022 11:02:40 GMT
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.4.0)
 
-Mon, 03 Oct 2022 22:24:33 GMT
+Mon, 03 Oct 2022 22:24:33 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.3.2..@fluentui/react-components_v9.4.0)
 
 ### Minor changes
@@ -568,7 +568,7 @@ Mon, 03 Oct 2022 22:24:33 GMT
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.2)
 
-Fri, 23 Sep 2022 10:32:29 GMT
+Fri, 23 Sep 2022 10:32:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.3.1..@fluentui/react-components_v9.3.2)
 
 ### Patches
@@ -583,7 +583,7 @@ Fri, 23 Sep 2022 10:32:29 GMT
 
 ## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.1)
 
-Tue, 20 Sep 2022 20:55:42 GMT
+Tue, 20 Sep 2022 20:55:42 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.3.0..@fluentui/react-components_v9.3.1)
 
 ### Minor changes
@@ -614,7 +614,7 @@ Tue, 20 Sep 2022 20:55:42 GMT
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.3.0)
 
-Thu, 15 Sep 2022 09:48:53 GMT
+Thu, 15 Sep 2022 09:48:53 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.2.0..@fluentui/react-components_v9.3.0)
 
 ### Minor changes
@@ -843,7 +843,7 @@ Thu, 15 Sep 2022 09:48:53 GMT
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.2.0)
 
-Wed, 03 Aug 2022 16:03:34 GMT
+Wed, 03 Aug 2022 16:03:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.1.1..@fluentui/react-components_v9.2.0)
 
 ### Minor changes
@@ -969,7 +969,7 @@ Wed, 03 Aug 2022 16:03:34 GMT
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.1.1)
 
-Fri, 15 Jul 2022 18:27:26 GMT
+Fri, 15 Jul 2022 18:27:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.1.1..@fluentui/react-components_v9.1.1)
 
 ### Patches
@@ -979,7 +979,7 @@ Fri, 15 Jul 2022 18:27:26 GMT
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.1.1)
 
-Thu, 14 Jul 2022 21:21:00 GMT
+Thu, 14 Jul 2022 21:21:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.1.0..@fluentui/react-components_v9.1.1)
 
 ### Patches
@@ -1062,7 +1062,7 @@ Thu, 14 Jul 2022 21:21:00 GMT
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.1.0)
 
-Thu, 14 Jul 2022 17:06:12 GMT
+Thu, 14 Jul 2022 17:06:12 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.1..@fluentui/react-components_v9.1.0)
 
 ### Minor changes
@@ -1126,7 +1126,7 @@ Thu, 14 Jul 2022 17:06:12 GMT
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.1)
 
-Tue, 28 Jun 2022 17:39:45 GMT
+Tue, 28 Jun 2022 17:39:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0..@fluentui/react-components_v9.0.1)
 
 ### Patches
@@ -1203,7 +1203,7 @@ Tue, 28 Jun 2022 17:39:45 GMT
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0)
 
-Tue, 28 Jun 2022 15:13:15 GMT
+Tue, 28 Jun 2022 15:13:15 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.15..@fluentui/react-components_v9.0.0)
 
 ### Patches
@@ -1488,7 +1488,7 @@ Tue, 28 Jun 2022 15:13:15 GMT
 
 ## [9.0.0-rc.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.15)
 
-Thu, 23 Jun 2022 14:25:31 GMT
+Thu, 23 Jun 2022 14:25:31 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.14..@fluentui/react-components_v9.0.0-rc.15)
 
 ### Changes
@@ -1498,7 +1498,7 @@ Thu, 23 Jun 2022 14:25:31 GMT
 
 ## [9.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.14)
 
-Tue, 31 May 2022 21:28:34 GMT
+Tue, 31 May 2022 21:28:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.13..@fluentui/react-components_v9.0.0-rc.14)
 
 ### Changes
@@ -1598,7 +1598,7 @@ Tue, 31 May 2022 21:28:34 GMT
 
 ## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.13)
 
-Thu, 26 May 2022 21:01:21 GMT
+Thu, 26 May 2022 21:01:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.12..@fluentui/react-components_v9.0.0-rc.13)
 
 ### Changes
@@ -1645,7 +1645,7 @@ Thu, 26 May 2022 21:01:21 GMT
 
 ## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.12)
 
-Mon, 23 May 2022 18:56:39 GMT
+Mon, 23 May 2022 18:56:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.11..@fluentui/react-components_v9.0.0-rc.12)
 
 ### Changes
@@ -1722,7 +1722,7 @@ Mon, 23 May 2022 18:56:39 GMT
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.11)
 
-Mon, 23 May 2022 12:13:29 GMT
+Mon, 23 May 2022 12:13:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.10..@fluentui/react-components_v9.0.0-rc.11)
 
 ### Changes
@@ -1926,7 +1926,7 @@ Mon, 23 May 2022 12:13:29 GMT
 
 ## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.10)
 
-Thu, 05 May 2022 18:26:23 GMT
+Thu, 05 May 2022 18:26:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.9..@fluentui/react-components_v9.0.0-rc.10)
 
 ### Changes
@@ -1974,7 +1974,7 @@ Thu, 05 May 2022 18:26:23 GMT
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.9)
 
-Wed, 04 May 2022 13:26:33 GMT
+Wed, 04 May 2022 13:26:33 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.8..@fluentui/react-components_v9.0.0-rc.9)
 
 ### Changes
@@ -2052,7 +2052,7 @@ Wed, 04 May 2022 13:26:33 GMT
 
 ## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.8)
 
-Mon, 25 Apr 2022 09:32:14 GMT
+Mon, 25 Apr 2022 09:32:14 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.7..@fluentui/react-components_v9.0.0-rc.8)
 
 ### Changes
@@ -2086,7 +2086,7 @@ Mon, 25 Apr 2022 09:32:14 GMT
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.7)
 
-Tue, 19 Apr 2022 19:16:44 GMT
+Tue, 19 Apr 2022 19:16:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.6..@fluentui/react-components_v9.0.0-rc.7)
 
 ### Changes
