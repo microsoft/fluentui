@@ -7,6 +7,7 @@ export function useDataGridContextValues_unstable(state: DataGridState): DataGri
     ...tableContextValues,
     dataGrid: {
       ...state.tableState,
+      focusMode: state.focusMode,
     },
   };
 }

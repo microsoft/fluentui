@@ -14,13 +14,18 @@ import { useTable } from '../../hooks/useTable';
  * @param ref - reference to root HTMLElement of DataGrid
  */
 export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLElement>): DataGridState => {
-  const { items, columns } = props;
+  const { items, columns, focusMode = 'none' } = props;
+  const navigable = focusMode !== 'none';
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
   const tableState = useTable({ items, columns }, []);
-  const baseTableState = useTable_unstable({ role: 'grid', as: 'div', ...keyboardNavAttr, ...props }, ref);
+  const baseTableState = useTable_unstable(
+    { role: 'grid', as: 'div', ...(navigable && keyboardNavAttr), ...props },
+    ref,
+  );
 
   return {
     ...baseTableState,
+    focusMode,
     tableState,
   };
 };
