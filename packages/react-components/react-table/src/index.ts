@@ -1,4 +1,4 @@
-export { useTable, useSelection, useSort } from './hooks';
+export { useTable, useSelection, useSort, createColumn } from './hooks';
 export type {
   UseTableOptions,
   TableState as HeadlessTableState,
@@ -9,6 +9,7 @@ export type {
   RowId,
   ColumnDefinition,
   ColumnId,
+  CreateColumnOptions,
 } from './hooks';
 
 export {
@@ -115,7 +116,7 @@ export {
   useDataGridRow_unstable,
   renderDataGridRow_unstable,
 } from './DataGridRow';
-export type { DataGridRowProps, DataGridRowState, DataGridRowSlots } from './DataGridRow';
+export type { DataGridRowProps, DataGridRowState, DataGridRowSlots, CellRenderFunction } from './DataGridRow';
 
 export {
   DataGridBody,

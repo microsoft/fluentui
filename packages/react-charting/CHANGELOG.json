@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 04 Nov 2022 07:48:06 GMT",
+      "tag": "@fluentui/react-charting_v5.14.12",
+      "version": "5.14.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6fe1046ebcf6ccc769cb3bb0e58960fbd4e00b42",
+            "comment": "Fix legends selection bugs"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6dcd17c6c6e46df9f9bb8eaa44ceb6a3ce8950d2",
+            "comment": "Fix overlay opacity in line chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.100.0",
+            "commit": "176464a38a9b6210505d6950e8bd81df959427e0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Nov 2022 07:52:12 GMT",
       "tag": "@fluentui/react-charting_v5.14.11",
       "version": "5.14.11",
