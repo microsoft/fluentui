@@ -1,4 +1,3 @@
-/* eslint-disable deprecation/deprecation */
 export { ActivityItem, getActivityItemClassNames, getActivityItemStyles } from './ActivityItem';
 export type { IActivityItemClassNames, IActivityItemProps, IActivityItemStyles } from './ActivityItem';
 export { Autofill } from './Autofill';
@@ -7,6 +6,7 @@ export { Announced, AnnouncedBase } from './Announced';
 export type { IAnnouncedProps, IAnnouncedStyleProps, IAnnouncedStyles } from './Announced';
 export { Breadcrumb, BreadcrumbBase } from './Breadcrumb';
 export type {
+  // eslint-disable-next-line deprecation/deprecation
   IBreadCrumbData,
   IBreadcrumb,
   IBreadcrumbData,
@@ -19,6 +19,7 @@ export type {
 export {
   ActionButton,
   BaseButton,
+  // eslint-disable-next-line deprecation/deprecation
   Button,
   ButtonGlobalClassNames,
   ButtonType,
@@ -57,6 +58,7 @@ export {
   FirstWeekOfYear,
   defaultCalendarNavigationIcons,
   defaultCalendarStrings,
+  // eslint-disable-next-line deprecation/deprecation
   defaultDayPickerStrings,
 } from './Calendar';
 export type {
@@ -69,7 +71,9 @@ export type {
   ICalendarDayProps,
   ICalendarDayStyleProps,
   ICalendarDayStyles,
+  // eslint-disable-next-line deprecation/deprecation
   ICalendarFormatDateCallbacks,
+  // eslint-disable-next-line deprecation/deprecation
   ICalendarIconStrings,
   ICalendarMonth,
   ICalendarMonthProps,
@@ -122,6 +126,7 @@ export type {
   ICoachmarkProps,
   ICoachmarkStyleProps,
   ICoachmarkStyles,
+  // eslint-disable-next-line deprecation/deprecation
   ICoachmarkTypes,
   IEntityRect,
 } from './Coachmark';
@@ -130,6 +135,7 @@ export {
   MAX_COLOR_ALPHA,
   MAX_COLOR_HUE,
   MAX_COLOR_RGB,
+  // eslint-disable-next-line deprecation/deprecation
   MAX_COLOR_RGBA,
   MAX_COLOR_SATURATION,
   MAX_COLOR_VALUE,
@@ -212,6 +218,7 @@ export {
   ContextualMenuItemBase,
   ContextualMenuItemType,
   canAnyMenuItemsCheck,
+  // eslint-disable-next-line deprecation/deprecation
   getContextualMenuItemClassNames,
   getContextualMenuItemStyles,
   getMenuItemStyles,
@@ -219,6 +226,7 @@ export {
 } from './ContextualMenu';
 export type {
   IContextualMenu,
+  // eslint-disable-next-line deprecation/deprecation
   IContextualMenuClassNames,
   IContextualMenuItem,
   IContextualMenuItemProps,
@@ -233,6 +241,7 @@ export type {
   IContextualMenuStyleProps,
   IContextualMenuStyles,
   IContextualMenuSubComponentStyles,
+  // eslint-disable-next-line deprecation/deprecation
   IMenuItemClassNames,
   IMenuItemStyles,
 } from './ContextualMenu';
@@ -392,6 +401,7 @@ export type {
 } from './Dialog';
 export { VerticalDivider } from './Divider';
 export type {
+  // eslint-disable-next-line deprecation/deprecation
   IVerticalDividerClassNames,
   IVerticalDividerProps,
   IVerticalDividerPropsStyles,
@@ -474,7 +484,11 @@ export type {
   IExtendedPeoplePickerProps,
   IPeoplePickerItemProps,
 } from './ExtendedPicker';
-export { Fabric, FabricBase } from './Fabric';
+export {
+  // eslint-disable-next-line deprecation/deprecation
+  Fabric,
+  FabricBase,
+} from './Fabric';
 export type { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric';
 export { Facepile, FacepileBase, OverflowButtonType } from './Facepile';
 export type { IFacepile, IFacepilePersona, IFacepileProps, IFacepileStyleProps, IFacepileStyles } from './Facepile';
@@ -529,7 +543,9 @@ export type {
   IGroupShowAllStyleProps,
   IGroupShowAllStyles,
   IGroupSpacerProps,
+  // eslint-disable-next-line deprecation/deprecation
   IGroupSpacerStyleProps,
+  // eslint-disable-next-line deprecation/deprecation
   IGroupSpacerStyles,
   IGroupedListSectionProps,
   IGroupedListSectionState,
@@ -562,7 +578,16 @@ export type {
   IPlainCardStyleProps,
   IPlainCardStyles,
 } from './HoverCard';
-export { FontIcon, Icon, IconBase, IconType, ImageIcon, getFontIcon, getIconContent } from './Icon';
+export {
+  FontIcon,
+  Icon,
+  IconBase,
+  // eslint-disable-next-line deprecation/deprecation
+  IconType,
+  ImageIcon,
+  getFontIcon,
+  getIconContent,
+} from './Icon';
 export type {
   IFontIconProps,
   IIconContent,
@@ -573,7 +598,10 @@ export type {
   IImageIconProps,
 } from './Icon';
 export { initializeIcons } from './Icons';
-export type { IconNames } from './Icons';
+export type {
+  // eslint-disable-next-line deprecation/deprecation
+  IconNames,
+} from './Icons';
 export { Image, ImageBase, ImageCoverStyle, ImageFit, ImageLoadState } from './Image';
 export type { IImage, IImageProps, IImageState, IImageStyleProps, IImageStyles } from './Image';
 export {
@@ -641,7 +669,14 @@ export {
 } from './Layer';
 export type { ILayer, ILayerHost, ILayerHostProps, ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer';
 export { Link, LinkBase } from './Link';
-export type { ILink, ILinkHTMLAttributes, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link';
+export type {
+  ILink,
+  // eslint-disable-next-line deprecation/deprecation
+  ILinkHTMLAttributes,
+  ILinkProps,
+  ILinkStyleProps,
+  ILinkStyles,
+} from './Link';
 export { List, ScrollToMode } from './List';
 export type {
   IList,
@@ -775,8 +810,10 @@ export type {
   IPeoplePickerItemSuggestionProps,
   IPeoplePickerItemSuggestionStyleProps,
   IPeoplePickerItemSuggestionStyles,
+  // eslint-disable-next-line deprecation/deprecation
   IPeoplePickerItemWithMenuProps,
   IPeoplePickerProps,
+  // eslint-disable-next-line deprecation/deprecation
   IPersonaWithMenu,
   IPickerAriaIds,
   IPickerItem,
@@ -801,7 +838,15 @@ export type {
   ITagItemSuggestionStyles,
   ITagPickerProps,
 } from './Pickers';
-export { Pivot, PivotBase, PivotItem, PivotLinkFormat, PivotLinkSize } from './Pivot';
+export {
+  Pivot,
+  PivotBase,
+  PivotItem,
+  // eslint-disable-next-line deprecation/deprecation
+  PivotLinkFormat,
+  // eslint-disable-next-line deprecation/deprecation
+  PivotLinkSize,
+} from './Pivot';
 export type {
   IPivot,
   IPivotItemProps,
@@ -829,6 +874,7 @@ export type {
   ICalloutPositionedInfo,
   IElementPosition,
   IElementPositionInfo,
+  // eslint-disable-next-line deprecation/deprecation
   IPoint,
   IPosition,
   IPositionDirectionalHintData,
@@ -842,6 +888,7 @@ export { PositioningContainer, useHeightOffset } from './PositioningContainer';
 export type {
   IPositioningContainer,
   IPositioningContainerProps,
+  // eslint-disable-next-line deprecation/deprecation
   IPositioningContainerTypes,
 } from './PositioningContainer';
 export { ProgressIndicator, ProgressIndicatorBase } from './ProgressIndicator';
@@ -874,9 +921,13 @@ export {
   initializeResponsiveMode,
   setResponsiveMode,
   useResponsiveMode,
+  // eslint-disable-next-line deprecation/deprecation
   withResponsiveMode,
 } from './ResponsiveMode';
-export type { IWithResponsiveModeState } from './ResponsiveMode';
+export type {
+  // eslint-disable-next-line deprecation/deprecation
+  IWithResponsiveModeState,
+} from './ResponsiveMode';
 export { ScrollablePane, ScrollablePaneBase, ScrollablePaneContext, ScrollbarVisibility } from './ScrollablePane';
 export type {
   IScrollablePane,
@@ -961,7 +1012,13 @@ export { Slider, SliderBase } from './Slider';
 export type { ISlider, ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider';
 export { KeyboardSpinDirection, SpinButton } from './SpinButton';
 export type { ISpinButton, ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles } from './SpinButton';
-export { Spinner, SpinnerBase, SpinnerSize, SpinnerType } from './Spinner';
+export {
+  Spinner,
+  SpinnerBase,
+  SpinnerSize,
+  // eslint-disable-next-line deprecation/deprecation
+  SpinnerType,
+} from './Spinner';
 export type { ISpinner, ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerLabelPosition } from './Spinner';
 export { Stack, StackItem } from './Stack';
 export type {
@@ -993,6 +1050,7 @@ export {
   DefaultEffects,
   DefaultFontStyles,
   DefaultPalette,
+  // eslint-disable-next-line deprecation/deprecation
   EdgeChromiumHighContrastSelector,
   FontClassNames,
   FontSizes,
@@ -1025,9 +1083,11 @@ export {
   createTheme,
   focusClear,
   fontFace,
+  // eslint-disable-next-line deprecation/deprecation
   getEdgeChromiumNoHighContrastAdjustSelector,
   getFadedOverflowStyle,
   getFocusOutlineStyle,
+  // eslint-disable-next-line deprecation/deprecation
   getFocusStyle,
   getGlobalClassNames,
   getHighContrastNoAdjustStyle,
@@ -1154,8 +1214,10 @@ export type {
 export {
   Async,
   AutoScroll,
+  // eslint-disable-next-line deprecation/deprecation
   BaseComponent,
   Customizations,
+  // eslint-disable-next-line deprecation/deprecation
   Customizer,
   CustomizerContext,
   DATA_IS_SCROLLABLE_ATTRIBUTE,
@@ -1236,6 +1298,7 @@ export {
   getRTL,
   getRTLSafeKeyCode,
   getRect,
+  // eslint-disable-next-line deprecation/deprecation
   getResourceUrl,
   getScrollbarWidth,
   getVirtualParent,
@@ -1247,9 +1310,11 @@ export {
   hoistStatics,
   htmlElementProperties,
   iframeProperties,
+  // eslint-disable-next-line deprecation/deprecation
   imageProperties,
   imgProperties,
   initializeComponentRef,
+  // eslint-disable-next-line deprecation/deprecation
   initializeFocusRects,
   inputProperties,
   isControlled,
@@ -1281,6 +1346,7 @@ export {
   optionProperties,
   portalContainsElement,
   precisionRound,
+  // eslint-disable-next-line deprecation/deprecation
   raiseClick,
   removeDirectionalKeyCode,
   removeIndex,
@@ -1291,12 +1357,15 @@ export {
   safeRequestAnimationFrame,
   safeSetTimeout,
   selectProperties,
+  // eslint-disable-next-line deprecation/deprecation
   setBaseUrl,
   setFocusVisibility,
+  // eslint-disable-next-line deprecation/deprecation
   setLanguage,
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
+  // eslint-disable-next-line deprecation/deprecation
   setSSR,
   setVirtualParent,
   setWarningCallback,
@@ -1327,6 +1396,7 @@ export type {
   ICancelable,
   IChangeDescription,
   IChangeEventCallback,
+  // eslint-disable-next-line deprecation/deprecation
   IClassNames,
   IClassNamesFunctionOptions,
   IComponentAs,
@@ -1364,9 +1434,12 @@ export type {
   IStyleFunctionOrObject,
   IVirtualElement,
   IWarnControlledUsageParams,
+  // eslint-disable-next-line deprecation/deprecation
   Omit,
   RefObject,
+  // eslint-disable-next-line deprecation/deprecation
   Settings,
+  // eslint-disable-next-line deprecation/deprecation
   SettingsFunction,
   StyleFunction,
 } from './Utilities';
@@ -1392,8 +1465,19 @@ export type { WindowProviderProps } from './WindowProvider';
  * Styles and Theme both exported the same names which causes conflicting
  * star exports with webpack5. See here: https://github.com/microsoft/fluentui/issues/21601.
  */
-export { ThemeContext, ThemeProvider, makeStyles, useTheme } from './utilities/ThemeProvider/index';
-export type { StylesClassMapping, ThemeProviderProps, UseStylesOptions } from './utilities/ThemeProvider/index';
+export {
+  ThemeContext,
+  ThemeProvider,
+  // eslint-disable-next-line deprecation/deprecation
+  makeStyles,
+  useTheme,
+} from './utilities/ThemeProvider/index';
+export type {
+  StylesClassMapping,
+  ThemeProviderProps,
+  // eslint-disable-next-line deprecation/deprecation
+  UseStylesOptions,
+} from './utilities/ThemeProvider/index';
 export {
   CommunicationColors,
   DefaultSpacing,
