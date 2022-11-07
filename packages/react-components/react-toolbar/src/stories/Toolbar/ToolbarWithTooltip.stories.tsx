@@ -10,7 +10,7 @@ export const WithTooltip = (props: Partial<ToolbarProps>) => (
       <ToolbarButton aria-label="Text Options - Bold" appearance="primary" icon={<TextBold24Regular />} />
     </Tooltip>
     <ToolbarDivider />
-    <Tooltip content="With calendar icon" relationship="label" withArrow>
+    <Tooltip content="Tooltip Content - Show something here" relationship="label" withArrow>
       <ToolbarButton aria-label="Calendar" icon={<CalendarMonthRegular />} />
     </Tooltip>
   </Toolbar>
