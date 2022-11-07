@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 01 Nov 2022 07:49:22 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Nov 2022 07:48:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.12)
+
+Fri, 04 Nov 2022 07:48:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.11..@fluentui/react-charting_v5.14.12)
+
+### Patches
+
+- Fix legends selection bugs ([PR #24563](https://github.com/microsoft/fluentui/pull/24563) by kumarkshitij@microsoft.com)
+- Fix overlay opacity in line chart ([PR #25366](https://github.com/microsoft/fluentui/pull/25366) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react to v8.100.0 ([PR #25493](https://github.com/microsoft/fluentui/pull/25493) by beachball)
+
+## [5.14.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.11)
+
+Thu, 03 Nov 2022 07:52:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.10..@fluentui/react-charting_v5.14.11)
+
+### Patches
+
+- Bump @fluentui/react to v8.99.3 ([PR #25453](https://github.com/microsoft/fluentui/pull/25453) by beachball)
 
 ## [5.14.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.10)
 

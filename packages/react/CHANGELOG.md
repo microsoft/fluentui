@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 01 Nov 2022 07:49:22 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Nov 2022 07:48:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.100.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.100.0)
+
+Fri, 04 Nov 2022 07:48:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.99.3..@fluentui/react_v8.100.0)
+
+### Minor changes
+
+- Make callbacks able to take one param type or the other rather than requiring both. ([PR #25475](https://github.com/microsoft/fluentui/pull/25475) by gcox@microsoft.com)
+
+## [8.99.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.3)
+
+Thu, 03 Nov 2022 07:52:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.99.2..@fluentui/react_v8.99.3)
+
+### Patches
+
+- fix: Preventing blanket selectors from Fabric component from being applied via new preventBlanketFontInheritance prop. ([PR #25453](https://github.com/microsoft/fluentui/pull/25453) by humberto_makoto@hotmail.com)
 
 ## [8.99.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.99.2)
 

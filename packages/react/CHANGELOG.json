@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Nov 2022 07:48:06 GMT",
+      "tag": "@fluentui/react_v8.100.0",
+      "version": "8.100.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f5a12b344a9aa1f4923fb4eff3676574249886ec",
+            "comment": "Make callbacks able to take one param type or the other rather than requiring both."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Nov 2022 07:52:12 GMT",
+      "tag": "@fluentui/react_v8.99.3",
+      "version": "8.99.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "e2933893722b3de0c5358bd5f20b54992a316514",
+            "comment": "fix: Preventing blanket selectors from Fabric component from being applied via new preventBlanketFontInheritance prop."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Nov 2022 07:49:22 GMT",
       "tag": "@fluentui/react_v8.99.2",
       "version": "8.99.2",
