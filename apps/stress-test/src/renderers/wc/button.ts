@@ -1,7 +1,7 @@
-import { fluentButton, provideFluentDesignSystem } from '@fluentui/web-components';
+// import { fluentButton, provideFluentDesignSystem } from '@fluentui/web-components';
 import { DOMSelectorTreeComponentRenderer } from '../../shared/vanilla/types';
 
-provideFluentDesignSystem().register(fluentButton());
+// provideFluentDesignSystem().register(fluentButton());
 
 const componentRenderer: DOMSelectorTreeComponentRenderer = (node, depth, index) => {
   const btn = document.createElement('fluent-button') as HTMLElement;
