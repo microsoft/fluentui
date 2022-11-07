@@ -5,8 +5,18 @@ import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Radio = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
-    <ToolbarRadioButton name="text-style" value="italic" icon={<TextItalic24Regular />} />
-    <ToolbarRadioButton name="text-style" value="bold" icon={<TextBold24Regular />} />
-    <ToolbarRadioButton name="text-style" value="underline" icon={<TextUnderline24Regular />} />
+    <ToolbarRadioButton
+      aria-label="Radio Option - Italic"
+      name="text-style"
+      value="italic"
+      icon={<TextItalic24Regular />}
+    />
+    <ToolbarRadioButton aria-label="Radio Option - Bold" name="text-style" value="bold" icon={<TextBold24Regular />} />
+    <ToolbarRadioButton
+      aria-label="Radio Option - Underline"
+      name="text-style"
+      value="underline"
+      icon={<TextUnderline24Regular />}
+    />
   </Toolbar>
 );

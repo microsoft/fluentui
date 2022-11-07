@@ -7,11 +7,11 @@ import { CalendarMonthRegular, TextBold24Regular } from '@fluentui/react-icons';
 export const WithTooltip = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props} size="small">
     <Tooltip content="Makes text bold" relationship="label" withArrow>
-      <ToolbarButton appearance="primary" icon={<TextBold24Regular />} />
+      <ToolbarButton aria-label="Text Options - Bold" appearance="primary" icon={<TextBold24Regular />} />
     </Tooltip>
     <ToolbarDivider />
     <Tooltip content="With calendar icon" relationship="label" withArrow>
-      <ToolbarButton icon={<CalendarMonthRegular />} />
+      <ToolbarButton aria-label="Calendar" icon={<CalendarMonthRegular />} />
     </Tooltip>
   </Toolbar>
 );
