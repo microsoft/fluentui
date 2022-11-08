@@ -260,20 +260,20 @@ export const colorScheme: ColorSchemeMapping = {
     foreground1: colors.white,
     foreground2: colors.grey[800],
 
-    background: colors.red[300],
+    background: colors.red[500],
     background1: colors.red[800],
-    background2: colors.ruby[500],
-    background3: colors.red[400],
+    background2: colors.red[500],
+    background3: colors.red[500],
 
-    border: colors.red[900],
-    border1: colors.red[200],
+    border: colors.red[500],
+    border1: colors.red[300],
 
     foregroundHover: colors.white,
-    backgroundHover: colors.ruby[600],
-    backgroundHover1: colors.red[400],
+    backgroundHover: colors.red[600],
+    backgroundHover1: colors.red[600],
 
     foregroundPressed: colors.white,
-    backgroundPressed: colors.ruby[700],
+    backgroundPressed: colors.red[650],
   }),
   yellow: createColorScheme({
     foreground: colors.yellow[300],
