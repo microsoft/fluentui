@@ -42,6 +42,7 @@ const useIndicatorStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.borderWidth('1px'),
+    lineHeight: 0,
     boxSizing: 'border-box',
     fill: 'currentColor',
     flexShrink: 0,
