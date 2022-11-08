@@ -416,7 +416,7 @@ describe('Overflow', () => {
     cy.get(`[${selectors.divider}]`).should('have.length', 1);
   });
 
-  it.only('should remove overflow menu if the last overflowed item can take its place', () => {
+  it('should remove overflow menu if the last overflowed item can take its place', () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     mount(
       <Container>
