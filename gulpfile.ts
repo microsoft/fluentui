@@ -30,6 +30,7 @@ require('./scripts/gulp/tasks/perf');
 require('./scripts/gulp/tasks/test-e2e');
 require('./scripts/gulp/tasks/test-circulars');
 require('./scripts/gulp/tasks/test-dependencies');
+require('./scripts/gulp/tasks/screener');
 
 // global tasks
 task('build', parallel('build:docs'));
