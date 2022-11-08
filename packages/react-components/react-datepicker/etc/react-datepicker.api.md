@@ -20,20 +20,10 @@ import type { ITheme } from '@fluentui/style-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
-export const DatePicker: React_2.FunctionComponent<IDatePickerProps>;
+export const DatePicker: React_2.FunctionComponent<DatePickerProps>;
 
 // @public (undocumented)
-export const DatePickerBase: React_2.FunctionComponent<IDatePickerProps>;
-
-// @public (undocumented)
-export interface IDatePicker {
-    focus(): void;
-    reset(): void;
-    showDatePickerPopup(): void;
-}
-
-// @public (undocumented)
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface DatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     allowTextInput?: boolean;
     ariaLabel?: string;
@@ -67,8 +57,8 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLA
     showGoToToday?: boolean;
     showMonthPickerAsOverlay?: boolean;
     showWeekNumbers?: boolean;
-    strings?: IDatePickerStrings;
-    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
+    strings?: DatePickerStrings;
+    styles?: IStyleFunctionOrObject<DatePickerStyleProps, DatePickerStyles>;
     tabIndex?: number;
     textField?: ITextFieldProps;
     theme?: ITheme;
@@ -78,7 +68,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLA
 }
 
 // @public (undocumented)
-export interface IDatePickerStrings extends ICalendarStrings {
+export interface DatePickerStrings extends ICalendarStrings {
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
@@ -86,7 +76,7 @@ export interface IDatePickerStrings extends ICalendarStrings {
 }
 
 // @public (undocumented)
-export interface IDatePickerStyleProps {
+export interface DatePickerStyleProps {
     className?: string;
     // (undocumented)
     disabled?: boolean;
@@ -94,13 +84,12 @@ export interface IDatePickerStyleProps {
     isDatePickerShown?: boolean;
     // (undocumented)
     label?: boolean;
-    theme: ITheme;
     // (undocumented)
     underlined?: boolean;
 }
 
 // @public (undocumented)
-export interface IDatePickerStyles {
+export interface DatePickerStyles {
     // (undocumented)
     callout: IStyle;
     // (undocumented)
@@ -116,6 +105,16 @@ export interface IDatePickerStyles {
     textField: IStyle;
     // (undocumented)
     wrapper?: IStyle;
+}
+
+// @public (undocumented)
+export const defaultDatePickerStrings: DatePickerStrings;
+
+// @public (undocumented)
+export interface IDatePicker {
+    focus(): void;
+    reset(): void;
+    showDatePickerPopup(): void;
 }
 
 // (No @packageDocumentation comment for this package)
