@@ -65,11 +65,13 @@
   },
   "scripts": {
     "build": "gulp build:docs",
+    "build:storybook": "build-storybook -o dist/storybook",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
-    "vr:build": "cross-env NODE_ENV=production gulp screener:build",
-    "vr:test": "gulp screener:runner"
+    "start:storybook": "yarn start-storybook",
+    "vr:build": "yarn build:storybook",
+    "vr:test": "gulp screener"
   }
 }
