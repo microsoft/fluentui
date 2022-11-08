@@ -12,7 +12,7 @@ import type { SlotComponent } from './SlotComponent.types';
 export type FieldComponent = React.VoidFunctionComponent<
   Pick<
     React.HTMLAttributes<HTMLElement>,
-    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-errormessage'
+    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid'
   >
 >;
 
@@ -119,7 +119,7 @@ export type FieldConfig<T extends FieldComponent> = {
   labelConnection?: 'htmlFor' | 'aria-labelledby';
 
   /**
-   * Should the aria-invalid and aria-errormessage attributes be set when validationState="error".
+   * Should the aria-invalid attribute be set when validationState="error".
    *
    * @default true
    */

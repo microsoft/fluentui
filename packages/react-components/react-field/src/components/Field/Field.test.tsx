@@ -67,7 +67,7 @@ describe('Field', () => {
     expect(input.getAttribute('aria-describedby')).toBe(hint.id);
   });
 
-  it('sets aria-describedby to the validationMessage if not an error', () => {
+  it('sets aria-describedby to the validationMessage', () => {
     const result = render(<MockField validationMessage="Test validation message" validationState="warning" />);
     const input = result.getByRole('textbox');
     const validationMessage = result.getByText('Test validation message');
@@ -76,24 +76,15 @@ describe('Field', () => {
     expect(input.getAttribute('aria-describedby')).toBe(validationMessage.id);
   });
 
-  it('sets aria-describedby to the hint + validationMessage if not an error', () => {
+  it('sets aria-describedby to the hint + validationMessage', () => {
     const result = render(
-      <MockField hint="Test hint" validationMessage="Test validation message" validationState="success" />,
+      <MockField hint="Test hint" validationMessage="Test validation message" validationState="error" />,
     );
     const input = result.getByRole('textbox');
     const hint = result.getByText('Test hint');
     const validationMessage = result.getByText('Test validation message');
 
     expect(input.getAttribute('aria-describedby')).toBe(validationMessage.id + ' ' + hint.id);
-  });
-
-  it('sets aria-errormessage to the validationMessage if an error', () => {
-    const result = render(<MockField validationMessage="Test validation message" validationState="error" />);
-    const input = result.getByRole('textbox');
-    const validationMessage = result.getByText('Test validation message');
-
-    expect(validationMessage.id).toBeTruthy();
-    expect(input.getAttribute('aria-errormessage')).toBe(validationMessage.id);
   });
 
   it('sets aria-invalid if an error', () => {

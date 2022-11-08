@@ -118,20 +118,14 @@ export const useField_unstable = <T extends FieldComponent>(
     control['aria-labelledby'] ??= label.id;
   }
 
+  if (validationMessage || hint) {
+    // The control is described by the validation message, or hint, or both
+    control['aria-describedby'] ??=
+      validationMessage && hint ? `${validationMessage.id} ${hint.id}` : validationMessage?.id || hint?.id;
+  }
+
   if (validationState === 'error' && ariaInvalidOnError) {
     control['aria-invalid'] ??= true;
-    if (validationMessage) {
-      control['aria-errormessage'] ??= validationMessage.id;
-    }
-    if (hint) {
-      control['aria-describedby'] ??= hint.id;
-    }
-  } else {
-    // If the state is not an error, then the control is described by the validation message, or hint, or both
-    const describedby = validationMessage || hint;
-    if (describedby) {
-      control['aria-describedby'] ??= validationMessage && hint ? `${validationMessage.id} ${hint.id}` : describedby.id;
-    }
   }
 
   const state: FieldState<FieldComponent> = {
