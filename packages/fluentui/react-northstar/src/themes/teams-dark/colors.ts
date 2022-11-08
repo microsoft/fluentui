@@ -233,13 +233,13 @@ export const colorScheme: ColorSchemeMapping = {
   green: createColorScheme({
     foreground: colors.green[200],
     foreground1: colors.grey[800],
-    foreground2: colors.green[200],
+    foreground2: colors.green[300],
     foreground3: colors.green[750],
-    background: colors.green[200],
-    background1: colors.green[200],
+    background: colors.green[500],
+    background1: colors.green[500],
     background2: colors.green[800],
-    border: colors.green[900],
-    border1: colors.green[200],
+    border: colors.green[500],
+    border1: colors.green[300],
   }),
   orange: createColorScheme({
     foreground: colors.orange[300],
