@@ -1,0 +1,37 @@
+{
+  "name": "@fluentui/react-recipes",
+  "version": "9.0.0-alpha.0",
+  "description": "Recipes for building web experiences",
+  "private": true,
+  "main": "lib-commonjs/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build --module cjs",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "jest --passWithNoTests",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  }
+}
