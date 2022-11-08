@@ -19,11 +19,7 @@ export default {
   decorators: [
     story => <Provider theme={teamsTheme}>{story()}</Provider>,
     story => (
-      <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-        <div className="testWrapper" style={{ width: '300px' }}>
-          {story()}
-        </div>
-      </Screener>
+      <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
     ),
   ],
 } as ComponentMeta<typeof Accordion>;
