@@ -135,12 +135,19 @@ const useSelectStyles = makeStyles({
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
+  },
+  disabledUnderline: {
+    ...shorthands.borderColor(
+      tokens.colorTransparentStrokeDisabled,
+      tokens.colorTransparentStrokeDisabled,
+      tokens.colorNeutralStrokeDisabled,
+    ),
   },
 
   small: {
@@ -261,6 +268,7 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     !disabled && invalid && appearance !== 'underline' && selectStyles.invalid,
     !disabled && invalid && appearance === 'underline' && selectStyles.invalidUnderline,
     disabled && selectStyles.disabled,
+    disabled && appearance === 'underline' && selectStyles.disabledUnderline,
     state.select.className,
   );
 

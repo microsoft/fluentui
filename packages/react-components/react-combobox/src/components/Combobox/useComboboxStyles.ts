@@ -25,7 +25,6 @@ const fieldHeights = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     columnGap: tokens.spacingHorizontalXXS,
@@ -104,7 +103,9 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  },
 
+  outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       borderBottomColor: tokens.colorNeutralStrokeAccessible,
@@ -122,9 +123,11 @@ const useStyles = makeStyles({
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
@@ -134,6 +137,15 @@ const useStyles = makeStyles({
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
       borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
+
+  disabled: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
     },
   },
 });
@@ -174,6 +186,14 @@ const useInputStyles = makeStyles({
     lineHeight: tokens.lineHeightBase400,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
   },
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: tokens.colorTransparentBackground,
+    cursor: 'not-allowed',
+    '::placeholder': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -203,6 +223,9 @@ const useIconStyles = makeStyles({
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
   },
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
 });
 
 /**
@@ -211,6 +234,7 @@ const useIconStyles = makeStyles({
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
   const { appearance, open, size } = state;
   const invalid = `${state.input['aria-invalid']}` === 'true';
+  const disabled = state.input.disabled;
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
@@ -220,8 +244,10 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     styles.root,
     styles[appearance],
     styles[size],
+    !disabled && appearance === 'outline' && styles.outlineInteractive,
     invalid && appearance !== 'underline' && styles.invalid,
     invalid && appearance === 'underline' && styles.invalidUnderline,
+    disabled && styles.disabled,
     state.root.className,
   );
 
@@ -229,6 +255,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     comboboxClassNames.input,
     inputStyles.input,
     inputStyles[size],
+    disabled && inputStyles.disabled,
     state.input.className,
   );
 
@@ -246,6 +273,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
       comboboxClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[size],
+      disabled && iconStyles.disabled,
       state.expandIcon.className,
     );
   }

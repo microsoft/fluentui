@@ -175,8 +175,7 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
