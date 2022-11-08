@@ -47,7 +47,7 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions)
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal' | 'grid';
+    axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
     circular?: boolean;
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
