@@ -92,70 +92,70 @@ jobs:
     outputs:
       SKIP_SCREENER: ${{env.SKIP_SCREENER}}
 
-  screener-react-northstar:
-    if: needs.environment-upload.outputs.SKIP_SCREENER == ''
-    needs: environment-upload
-    runs-on: 'ubuntu-latest'
-    name: Screener @fluentui/react-northstar
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  # screener-react-northstar:
+  #   if: needs.environment-upload.outputs.SKIP_SCREENER == ''
+  #   needs: environment-upload
+  #   runs-on: 'ubuntu-latest'
+  #   name: Screener @fluentui/react-northstar
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Download env variables artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: env-artifact
+  #     - name: Download env variables artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: env-artifact
 
-      - name: Define env variables
-        run: |
-          input_file="environment"
-          while read line
-          do
-          echo "$line" >> $GITHUB_ENV
-          done < "$input_file"
+  #     - name: Define env variables
+  #       run: |
+  #         input_file="environment"
+  #         while read line
+  #         do
+  #         echo "$line" >> $GITHUB_ENV
+  #         done < "$input_file"
 
-      - name: Delete environment file
-        run: |
-          rm environment
+  #     - name: Delete environment file
+  #       run: |
+  #         rm environment
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-          cache: 'yarn'
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14.18.1
+  #         cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+  #     - name: Install dependencies
+  #       run: yarn install --frozen-lockfile
 
-      - run: |
-          echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{startsWith(github.ref, 'refs/pull/')}})
-          if [[ $packageAffected == false ]]; then
-            echo "Should skip screener"
-            echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
-          else
-            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
-            echo "Should NOT skip screener"
-          fi
-        name: Check if northstar packages were affected
+  #     - run: |
+  #         echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
+  #         packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{startsWith(github.ref, 'refs/pull/')}})
+  #         if [[ $packageAffected == false ]]; then
+  #           echo "Should skip screener"
+  #           echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
+  #         else
+  #           echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
+  #           echo "Should NOT skip screener"
+  #         fi
+  #       name: Check if northstar packages were affected
 
-      - name: Log environment variables (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          printenv | sort ;\
-          echo "SHELLOPTS $SHELLOPTS" ;\
+  #     - name: Log environment variables (Linux)
+  #       if: runner.os == 'Linux'
+  #       run: |
+  #         printenv | sort ;\
+  #         echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: build N* package
-        run: yarn build --to @fluentui/docs
-        env:
-          SCREENER_BUILD: 1
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+  #     - name: build N* package
+  #       run: yarn build --to @fluentui/docs
+  #       env:
+  #         SCREENER_BUILD: 1
+  #       if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
-      - name: build FUI N* VR Test
-        run: yarn workspace @fluentui/docs vr:build
-        env:
-          SCREENER_BUILD: 1
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+  #     - name: build FUI N* VR Test
+  #       run: yarn workspace @fluentui/docs vr:build
+  #       env:
+  #         SCREENER_BUILD: 1
+  #       if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   # screener-react:
   #   if: needs.environment-upload.outputs.SKIP_SCREENER == ''
