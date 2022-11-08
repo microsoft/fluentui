@@ -14,7 +14,7 @@ import {
   DialogTrigger,
 } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
-import { dialogActionSelector, dialogTriggerOpenSelector } from './selectors';
+import { dialogActionSelector, dialogTriggerOpenSelector } from '../../testing/selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
