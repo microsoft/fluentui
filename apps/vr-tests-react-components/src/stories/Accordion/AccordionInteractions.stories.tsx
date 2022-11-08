@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accordion, accordionTitleSlotClassNames } from '@fluentui/react-northstar';
+import { Accordion, Provider, accordionTitleSlotClassNames, teamsTheme } from '@fluentui/react-northstar';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Screener, { Steps } from 'screener-storybook/src/screener';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -10,6 +10,7 @@ export default {
   component: Accordion,
   title: 'Accordion',
   decorators: [
+    story => <Provider theme={teamsTheme}>{story()}</Provider>,
     story => (
       <Screener
         steps={new Steps()

@@ -272,6 +272,12 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
+      - name: build N* package
+        run: yarn build --to @fluentui/docs
+        env:
+          SCREENER_BUILD: 1
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+
       - name: build  @fluentui/react-storybook-addon
         run: yarn build --to @fluentui/react-storybook-addon
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
