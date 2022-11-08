@@ -12,14 +12,19 @@ import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
-    <ToolbarButton appearance="primary" icon={<TextBold24Regular />} />
-    <ToolbarButton icon={<TextItalic24Regular />} />
-    <ToolbarButton icon={<TextUnderline24Regular />} />
+    <ToolbarButton aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
     <ToolbarDivider />
-    <ToolbarToggleButton name="toggle" value="toggle" icon={<AlertSnooze24Regular />} />
+    <ToolbarToggleButton
+      aria-label="Snooze Alert Option"
+      name="toggle"
+      value="toggle"
+      icon={<AlertSnooze24Regular />}
+    />
     <Menu>
       <MenuTrigger>
-        <ToolbarButton icon={<MoreHorizontal24Filled />} />
+        <ToolbarButton aria-label="More menu" icon={<MoreHorizontal24Filled />} />
       </MenuTrigger>
 
       <MenuPopover>
