@@ -251,9 +251,9 @@ export const colorScheme: ColorSchemeMapping = {
   }),
   pink: createColorScheme({
     foreground: colors.pink[200],
-    foreground1: colors.pink[400],
+    foreground1: colors.pink[300],
     background: colors.pink[800],
-    border: colors.pink[900],
+    border: colors.pink[500],
   }),
   red: createColorScheme({
     foreground: colors.red[200],
