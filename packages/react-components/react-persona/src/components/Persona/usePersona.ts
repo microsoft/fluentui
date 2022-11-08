@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar, AvatarSizes } from '@fluentui/react-avatar';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
-import type { AvatarProps } from '@fluentui/react-avatar';
 import type { PersonaProps, PersonaState } from './Persona.types';
 import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
@@ -16,7 +15,7 @@ import type { PresenceBadgeProps } from '@fluentui/react-badge';
  * @param ref - reference to root HTMLElement of Persona
  */
 export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElement>): PersonaState => {
-  const { presenceOnly = false, textPosition = 'after', name } = props;
+  const { name, presenceOnly = false, size = 'medium', textAlignment = 'start', textPosition = 'after' } = props;
 
   const primaryText = resolveShorthand(props.primaryText, {
     required: true,
@@ -30,34 +29,8 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
 
   const numTextLines = [primaryText, secondaryText, tertiaryText, quaternaryText].filter(Boolean).length;
 
-  let fixed = false;
-  if (!presenceOnly && props.avatar) {
-    fixed = !!(props.avatar as AvatarProps).size;
-  } else if (props.presence && props.presence) {
-    fixed = !!(props.presence as PresenceBadgeProps).size;
-  }
-
-  let avatarSize: AvatarProps['size'] = undefined;
-  let presenceSize: PresenceBadgeProps['size'] = undefined;
-  if (presenceOnly && !fixed) {
-    if (numTextLines === 1) {
-      presenceSize = 'small';
-    } else if (numTextLines === 2) {
-      presenceSize = 'large';
-    } else {
-      presenceSize = 'extra-large';
-    }
-  } else if (!fixed) {
-    if (numTextLines === 1) {
-      avatarSize = 16;
-    } else if (numTextLines === 2) {
-      avatarSize = 32;
-    } else if (numTextLines === 3) {
-      avatarSize = 56;
-    } else {
-      avatarSize = 72;
-    }
-  }
+  const presenceSize: PresenceBadgeProps['size'] = presenceSizes[size];
+  const avatarSize: AvatarSizes = avatarSizes[size];
 
   const avatar: PersonaState['avatar'] = !presenceOnly
     ? resolveShorthand(props.avatar, {
@@ -79,9 +52,10 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
     : undefined;
 
   return {
-    fixed,
     numTextLines,
     presenceOnly,
+    size,
+    textAlignment,
     textPosition,
 
     components: {
@@ -110,3 +84,21 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
     quaternaryText,
   };
 };
+
+const presenceSizes = {
+  'extra-small': 'tiny',
+  small: 'extra-small',
+  medium: 'small',
+  large: 'medium',
+  'extra-large': 'large',
+  '2-extra-large': 'extra-large',
+} as const;
+
+const avatarSizes = {
+  'extra-small': 20,
+  small: 28,
+  medium: 32,
+  large: 36,
+  'extra-large': 40,
+  '2-extra-large': 56,
+} as const;
