@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: adds line-height=0 to switch indicator slot",
+  "packageName": "@fluentui/react-switch",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
