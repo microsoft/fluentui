@@ -1,7 +1,7 @@
 import { webpackCliTask, argv, logger } from 'just-scripts';
 import * as path from 'path';
 import * as fs from 'fs';
-import execSync from '../exec-sync';
+import { execSync } from 'child_process';
 import { getJustArgv } from './argv';
 
 export function webpack() {
@@ -48,7 +48,7 @@ export function webpackDevServer(
 
       process.env.cached = String(args.cached);
 
-      execSync(cmd);
+      execSync(cmd, { stdio: 'inherit' });
     }
   };
 }
