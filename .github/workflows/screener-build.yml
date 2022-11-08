@@ -151,7 +151,7 @@ jobs:
           SCREENER_BUILD: 1
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
-      - name: build FUI N* VR Test
+      - name: build N* package
         run: yarn workspace @fluentui/docs vr:build
         env:
           SCREENER_BUILD: 1
@@ -160,7 +160,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: northstar-artifact
-          path: packages/fluentui/docs/dist
+          path: packages/fluentui/docs/dist/storybook
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react:
