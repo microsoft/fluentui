@@ -72,6 +72,6 @@
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
     "start:storybook": "yarn start-storybook",
     "vr:build": "yarn build:storybook",
-    "vr:test": "gulp screener"
+    "vr:test": "gulp screener:runner"
   }
 }

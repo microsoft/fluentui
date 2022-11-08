@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { task } from 'gulp';
 import { argv } from 'yargs';
 
@@ -5,6 +6,9 @@ import config from '../../config';
 import { getAllPackageInfo } from '../../monorepo';
 import { screenerRunner } from '../../screener/screener.runner';
 import getConfig from '../../screener/screener.config';
+// @ts-ignore - screener-storybook has no typings
+import { startStorybook, getStorybook as screenerGetStorybook } from 'screener-storybook';
+import { getStorybook } from '@storybook/react';
 
 const { paths } = config;
 const docsPackageName = '@fluentui/docs';
@@ -13,7 +17,7 @@ const docsPackageName = '@fluentui/docs';
 // Visual
 // ----------------------------------------
 
-task('screener:runner', cb => {
+task('screener:runner', async cb => {
   // screener-runner doesn't allow to pass custom options
   if (argv.filter) process.env.SCREENER_FILTER = argv.filter as string;
 
@@ -43,7 +47,7 @@ task('screener:runner', cb => {
   });
 
   if (process.env.IS_ARTIFACT_PRESENT === 'true') {
-    const screenerStates = require(paths.docsDist('screenerStates.json'));
+    const screenerStates = await getScreenerStates(screenerConfig);
     screenerConfig.states = screenerStates;
   }
 
@@ -61,4 +65,29 @@ function getEnvVariables<T extends string[]>(...values: T) {
 
     return acc;
   }, {} as Record<T[number], string>);
+}
+
+async function getScreenerStates(screenerConfig) {
+  await startStorybook(screenerConfig, {});
+
+  return transformToStates(screenerGetStorybook(), screenerConfig.baseUrl);
+}
+
+function transformToStates(storybook, baseUrl) {
+  return storybook.reduce((states, component) => {
+    const componentStates = component.stories.map(story => {
+      const previewUrl = `${baseUrl}?dataId=0&selectedKind=${encodeURIComponent(
+        component.kind,
+      )}&selectedStory=${encodeURIComponent(story.name)}`;
+      const steps = story.steps;
+
+      return {
+        url: previewUrl,
+        name: `${component.kind}: ${story.name}`,
+        ...(steps && { steps }),
+      };
+    });
+
+    return states.concat(componentStates);
+  }, []);
 }
