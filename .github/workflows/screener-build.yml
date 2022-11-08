@@ -145,13 +145,13 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: build FUI N* VR Test
+      - name: build N* package
         run: yarn build --to @fluentui/docs
         env:
           SCREENER_BUILD: 1
         if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
-      - name: build N* package
+      - name: build FUI N* VR Test
         run: yarn workspace @fluentui/docs vr:build
         env:
           SCREENER_BUILD: 1
