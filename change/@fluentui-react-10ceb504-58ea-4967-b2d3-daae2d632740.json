@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "This change removes top-level export * from the index.js of @fluentui/react, which was implicitly exporting duplicates of symbols. Changing to explicit exports means that the export * as the top level barrel file can't introduce duplicate names. This works around an issue identified in esbuild: https://github.com/evanw/esbuild/issues/2658",
+  "packageName": "@fluentui/react",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}

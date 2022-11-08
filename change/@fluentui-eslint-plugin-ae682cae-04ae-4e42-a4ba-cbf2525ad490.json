@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updating react-legacy linting to warn on export star usage.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}
