@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { fieldConformanceTestOptions } from '@fluentui/react-field';
 import { Radio } from '@fluentui/react-radio';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
@@ -10,7 +9,19 @@ describe('RadioGroupField', () => {
     Component: RadioGroupField,
     displayName: 'RadioGroupField',
     primarySlot: 'control',
-    testOptions: fieldConformanceTestOptions,
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'label text',
+            validationState: 'error',
+            validationMessage: 'validation message text',
+            hint: 'hint text',
+          },
+        },
+      ],
+    },
+    disabledTests: ['exported-top-level'], // TODO re-enable once component is exported without _unstable
   });
 
   // Most functionality is tested by Field.test.tsx, and RadioGroup's tests
