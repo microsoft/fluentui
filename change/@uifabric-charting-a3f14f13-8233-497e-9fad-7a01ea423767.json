@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update d3 scale version from 2.0 to 4.0",
+  "packageName": "@uifabric/charting",
+  "email": "atisjai@microsoft.com",
+  "dependentChangeType": "patch"
+}
