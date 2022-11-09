@@ -56,6 +56,18 @@ export type FieldConfig<T extends FieldComponent> = {
     ariaInvalidOnError?: boolean;
 };
 
+// @internal
+export const fieldConformanceTestOptions: {
+    'has-static-classnames': {
+        props: {
+            label: string;
+            validationState: string;
+            validationMessage: string;
+            hint: string;
+        };
+    }[];
+};
+
 // @public
 export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
     orientation?: 'vertical' | 'horizontal';

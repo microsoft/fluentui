@@ -1,4 +1,4 @@
-import { SwitchField } from '@fluentui/react-field';
+import { SwitchField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './SwitchFieldDescription.md';
 

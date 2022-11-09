@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { fieldConformanceTestOptions } from '@fluentui/react-field';
 import { Radio } from '@fluentui/react-radio';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
@@ -8,6 +9,8 @@ describe('RadioGroupField', () => {
   isConformant({
     Component: RadioGroupField,
     displayName: 'RadioGroupField',
+    primarySlot: 'control',
+    testOptions: fieldConformanceTestOptions,
   });
 
   // Most functionality is tested by Field.test.tsx, and RadioGroup's tests

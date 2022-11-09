@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { fieldConformanceTestOptions } from '@fluentui/react-field';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { ProgressField } from './ProgressField';
@@ -7,6 +8,8 @@ describe('ProgressField', () => {
   isConformant({
     Component: ProgressField,
     displayName: 'ProgressField',
+    primarySlot: 'control',
+    testOptions: fieldConformanceTestOptions,
   });
 
   // Most functionality is tested by Field.test.tsx and Progress.test.tsx

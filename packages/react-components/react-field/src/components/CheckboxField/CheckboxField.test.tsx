@@ -7,6 +7,7 @@ describe('CheckboxField', () => {
   isConformant({
     Component: CheckboxField,
     displayName: 'CheckboxField',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {
