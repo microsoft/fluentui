@@ -215,19 +215,7 @@ const useRootDisabledStyles = makeStyles({
 
 const useIconCheckedStyles = makeStyles({
   // Appearance variations
-  outline: {
-    /* The outline styles are exactly the same as the base styles. */
-  },
-  primary: {
-    /* The primary styles are exactly the same as the base styles. */
-  },
-  secondary: {
-    /* The secondary styles are exactly the same as the base styles. */
-  },
-  subtle: {
-    color: tokens.colorNeutralForeground2BrandSelected,
-  },
-  transparent: {
+  subtleOrTransparent: {
     color: tokens.colorNeutralForeground2BrandSelected,
   },
 });
@@ -258,7 +246,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      appearance && iconCheckedStyles[appearance],
+      (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
       state.icon.className,
     );
   }

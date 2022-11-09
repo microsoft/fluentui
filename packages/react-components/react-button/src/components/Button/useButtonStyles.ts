@@ -466,8 +466,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     rootStyles[size],
     rootStyles[shape],
 
-    // Expanded styles
-
     // Disabled styles
     (disabled || disabledFocusable) && rootDisabledStyles.base,
     (disabled || disabledFocusable) && rootDisabledStyles.highContrast,
