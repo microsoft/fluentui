@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
+import { createColumn } from './createColumn';
 import { defaultTableSelectionState, useSelection } from './useSelection';
 import { defaultTableSortState, useSort } from './useSort';
 import { useTable } from './useTable';
@@ -8,7 +9,7 @@ describe('useTable', () => {
     const { result } = renderHook(() =>
       useTable(
         {
-          columns: [{ columnId: 1 }],
+          columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
         [useSort({})],
@@ -32,7 +33,7 @@ describe('useTable', () => {
     const { result } = renderHook(() =>
       useTable(
         {
-          columns: [{ columnId: 1 }],
+          columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
         [useSelection({ selectionMode: 'multiselect' })],
@@ -56,7 +57,7 @@ describe('useTable', () => {
     it('should enahnce rows', () => {
       const { result } = renderHook(() =>
         useTable({
-          columns: [{ columnId: 1 }],
+          columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         }),
       );
@@ -90,7 +91,7 @@ describe('useTable', () => {
     it('should use custom rowId', () => {
       const { result } = renderHook(() =>
         useTable({
-          columns: [{ columnId: 1 }],
+          columns: [createColumn({ columnId: 1 })],
           items: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
           getRowId: item => item.value,
         }),
@@ -103,7 +104,7 @@ describe('useTable', () => {
     it('should return original items', () => {
       const { result } = renderHook(() =>
         useTable({
-          columns: [{ columnId: 1 }],
+          columns: [createColumn({ columnId: 1 })],
           items: [{ value: 1 }, { value: 2 }, { value: 3 }],
         }),
       );

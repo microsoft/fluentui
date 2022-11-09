@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { makeStyles, CompoundButton } from '@fluentui/react-components';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const useStyles = makeStyles({
   wrapper: {
@@ -13,17 +16,19 @@ export const Appearance = () => {
 
   return (
     <div className={styles.wrapper}>
-      <CompoundButton secondaryContent="Secondary content">Default</CompoundButton>
-      <CompoundButton secondaryContent="Secondary content" appearance="primary">
+      <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />}>
+        Default
+      </CompoundButton>
+      <CompoundButton secondaryContent="Secondary content" appearance="primary" icon={<CalendarMonthRegular />}>
         Primary
       </CompoundButton>
-      <CompoundButton secondaryContent="Secondary content" appearance="outline">
+      <CompoundButton secondaryContent="Secondary content" appearance="outline" icon={<CalendarMonth />}>
         Outline
       </CompoundButton>
-      <CompoundButton secondaryContent="Secondary content" appearance="subtle">
+      <CompoundButton secondaryContent="Secondary content" appearance="subtle" icon={<CalendarMonth />}>
         Subtle
       </CompoundButton>
-      <CompoundButton secondaryContent="Secondary content" appearance="transparent">
+      <CompoundButton secondaryContent="Secondary content" appearance="transparent" icon={<CalendarMonth />}>
         Transparent
       </CompoundButton>
     </div>

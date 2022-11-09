@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Exports `createColumn` utility from `@fluentui/react-table` as unstable",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

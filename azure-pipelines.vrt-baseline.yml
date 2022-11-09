@@ -1,0 +1,49 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+
+variables:
+  skipComponentGovernanceDetection: true
+
+pool: '1ES-Host-Ubuntu'
+
+jobs:
+  - job: VRToolUpdateBaseline
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn (install packages)
+
+      - script: |
+          yarn workspace @fluentui/vr-tests-react-components screener:build
+        displayName: Build VR tests components package
+
+      - script: |
+          yarn lage test:component --verbose
+        displayName: 'Run VR tests'
+
+      - script: |
+          mkdir -p screenshots
+          cp -rf apps/vr-tests-react-components/dist/screenshots/*.png screenshots/
+        displayName: Collate Artifacts
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: 'screenshots'
+          ArtifactName: 'vrscreenshot'
+          publishLocation: 'Container'
+
+      - bash: node packages/screenshotdiff/dist/index.js release --buildId $(Build.BuildId)
+        displayName: 'Run Screenshotdiff update baseline'

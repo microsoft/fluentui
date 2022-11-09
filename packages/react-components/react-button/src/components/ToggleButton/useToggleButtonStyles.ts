@@ -212,25 +212,17 @@ const useDisabledStyles = makeStyles({
   },
 });
 
-const useIconStyles = makeStyles({
+const useIconCheckedStyles = makeStyles({
   // Appearance variations
   subtle: {
     color: tokens.colorNeutralForeground2BrandSelected,
-
-    ':hover': {
-      color: tokens.colorNeutralForeground2BrandHover,
-    },
-
-    ':hover:active': {
-      color: tokens.colorNeutralForeground2BrandPressed,
-    },
   },
 });
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   const checkedStyles = useCheckedStyles();
   const disabledStyles = useDisabledStyles();
-  const iconStyles = useIconStyles();
+  const iconStyles = useIconCheckedStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
@@ -253,7 +245,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      appearance === 'subtle' && iconStyles.subtle,
+      appearance === 'subtle' && checked && iconStyles.subtle,
       state.icon.className,
     );
   }

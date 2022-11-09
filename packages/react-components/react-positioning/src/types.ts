@@ -14,6 +14,39 @@ export type OffsetFunctionParam = {
   alignment?: Alignment;
 };
 
+export type TargetElement = HTMLElement | PositioningVirtualElement;
+
+/**
+ * @internal
+ */
+export interface UsePositioningOptions extends PositioningProps {
+  /**
+   * If false, does not position anything
+   */
+  enabled?: boolean;
+}
+
+/**
+ * @internal
+ */
+export interface PositionManager {
+  updatePosition: () => void;
+  dispose: () => void;
+}
+
+export interface UsePositioningReturn {
+  // React refs are supposed to be contravariant
+  // (allows a more general type to be passed rather than a more specific one)
+  // However, Typescript currently can't infer that fact for refs
+  // See https://github.com/microsoft/TypeScript/issues/30748 for more information
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  targetRef: React.MutableRefObject<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  containerRef: React.MutableRefObject<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  arrowRef: React.MutableRefObject<any>;
+}
+
 export type OffsetObject = { crossAxis?: number; mainAxis: number };
 
 export type OffsetShorthand = number;
@@ -40,7 +73,7 @@ export type PositioningImperativeRef = {
    * Sets the target and updates positioning imperatively.
    * Useful for avoiding double renders with the target option.
    */
-  setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
+  setTarget: (target: TargetElement) => void;
 };
 
 export type PositioningVirtualElement = {
@@ -56,6 +89,8 @@ export type PositioningVirtualElement = {
   };
   contextElement?: Element;
 };
+
+export type SetVirtualMouseTarget = (event: React.MouseEvent | MouseEvent | undefined | null) => void;
 
 export interface PositioningOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
@@ -131,7 +166,7 @@ export interface PositioningProps
   /**
    * Manual override for the target element. Useful for scenarios where a component accepts user prop to override target
    */
-  target?: HTMLElement | PositioningVirtualElement | null;
+  target?: TargetElement | null;
 }
 
 export type PositioningShorthandValue =
