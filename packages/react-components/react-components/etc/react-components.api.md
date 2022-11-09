@@ -278,6 +278,7 @@ import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
 import { PartialTheme } from '@fluentui/react-theme';
+import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
 import { Popover } from '@fluentui/react-popover';
@@ -1175,6 +1176,8 @@ export { OnVisibleChangeData }
 export { OpenPopoverEvents }
 
 export { PartialTheme }
+
+export { PartitionAvatarGroupItems }
 
 export { partitionAvatarGroupItems }
 

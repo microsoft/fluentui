@@ -229,7 +229,6 @@ export {
   renderAvatarGroupPopover_unstable,
   useAvatarGroupPopoverStyles_unstable,
   useAvatarGroupPopover_unstable,
-  useAvatarContext,
   useAvatarGroupContext_unstable,
   partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
