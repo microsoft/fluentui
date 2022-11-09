@@ -44,7 +44,7 @@ export const SizeSmall = () => {
 SizeSmall.parameters = {
   docs: {
     description: {
-      story: 'A tab list can have `small` tabs. The default size is `medium`.',
+      story: 'A tab list can have `small` tabs.',
     },
   },
 };
