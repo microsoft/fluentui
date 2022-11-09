@@ -31,6 +31,7 @@ const useButtonStyles = makeStyles({
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.margin(0),
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
 
     [`& .${iconFilledClassName}`]: {
       display: 'none',
@@ -79,14 +80,7 @@ const useButtonStyles = makeStyles({
       ...shorthands.borderColor('Canvas'),
       color: 'CanvasText',
 
-      ':hover': {
-        forcedColorAdjust: 'none',
-        backgroundColor: 'Highlight',
-        ...shorthands.borderColor('Canvas'),
-        color: 'Canvas',
-      },
-
-      ':hover:active': {
+      ':hover, :hover:active': {
         forcedColorAdjust: 'none',
         backgroundColor: 'Highlight',
         ...shorthands.borderColor('Canvas'),
@@ -108,20 +102,13 @@ const useButtonStyles = makeStyles({
     zIndex: 1,
   }),
 
-  small: {
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
-  },
-  medium: {
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
-  },
   large: {
     ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingVerticalXXS),
   },
 });
 
 const usePopoverSurfaceStyles = makeStyles({
-  small: typographyStyles.caption1,
-  medium: typographyStyles.caption1,
+  smallMedium: typographyStyles.caption1,
   large: typographyStyles.body1,
 });
 
@@ -136,7 +123,7 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
 
   state.content.className = mergeClasses(
     infoButtonClassNames.content,
-    popoverSurfaceStyles[size],
+    size === 'large' && popoverSurfaceStyles.large,
     state.content.className,
   );
 
@@ -145,8 +132,8 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
     buttonStyles.base,
     buttonStyles.highContrast,
     buttonStyles.focusIndicator,
-    buttonStyles[size],
     open && buttonStyles.selected,
+    size === 'large' && buttonStyles.large,
     state.root.className,
   );
 
