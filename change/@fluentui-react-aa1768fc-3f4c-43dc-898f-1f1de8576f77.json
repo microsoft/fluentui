@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: export useViewport via lib/Viewport",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

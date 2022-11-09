@@ -41,6 +41,7 @@ const VerticalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleO
   return (
     <div style={containerStyles}>
       <Stack
+        enableScopedSelectors
         wrap
         horizontalAlign={horizontalAlignment}
         verticalAlign={verticalAlignment}
@@ -89,8 +90,8 @@ export const VerticalStackWrapAdvancedExample: React.FunctionComponent = () => {
   const [overflow, setOverflow] = React.useState<Overflow>('visible');
 
   return (
-    <Stack tokens={sectionStackTokens}>
-      <Stack horizontal>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
+      <Stack enableScopedSelectors horizontal>
         <Stack.Item grow>
           <Slider
             label="Stack height:"
@@ -115,7 +116,7 @@ export const VerticalStackWrapAdvancedExample: React.FunctionComponent = () => {
         </Stack.Item>
       </Stack>
 
-      <Stack horizontal tokens={wrapStackTokens}>
+      <Stack enableScopedSelectors horizontal tokens={wrapStackTokens}>
         <Stack.Item grow>
           <Dropdown
             selectedKey={horizontalAlignment}

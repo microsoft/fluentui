@@ -12,7 +12,7 @@ export type DialogSurfaceSlots = {
    * since native `<dialog>` element supports [::backdrop](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop)
    */
   backdrop?: Slot<'div'>;
-  root: NonNullable<Slot<'dialog', 'div'>>;
+  root: Slot<'div'>;
 };
 
 /**

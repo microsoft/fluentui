@@ -60,6 +60,13 @@ const useRootStyles = makeStyles({
     },
   },
 
+  small: {
+    paddingLeft: tokens.spacingHorizontalS,
+  },
+
+  // intentionally empty
+  medium: {},
+
   outline: {
     '::before': {
       ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
@@ -120,28 +127,21 @@ const useRootStyles = makeStyles({
     },
   },
 
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      '::before': {
+        ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+      },
+    },
+  },
+
   disabled: {
-    '@media (forced-colors: active)': {
-      ...shorthands.borderColor('GrayText'),
-    },
-  },
-
-  outlineDisabled: {
     '::before': {
-      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
-    },
-  },
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
 
-  underlineDisabled: {
-    '::before': {
-      ...shorthands.borderBottom('1px', 'solid', tokens.colorTransparentStrokeDisabled),
-    },
-  },
-
-  filledDisabled: {
-    '::before': {
-      ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
+      '@media (forced-colors: active)': {
+        ...shorthands.borderColor('GrayText'),
+      },
     },
   },
 });
@@ -190,15 +190,14 @@ const useButtonStyles = makeStyles({
     ...shorthands.borderRadius(0, tokens.borderRadiusMedium, 0, 0),
   },
 
-  // TODO: revisit these padding numbers for aligning the icon.
-  // Padding values aren't perfect.
-  // The icon doesn't align perfectly with the Figma designs.
-  // It's set in a 16x16px square but the artwork is inset from that
-  // so I've had to compute the numbers by handle.
+  // Padding values numbers don't align with design specs
+  // but visually the padding aligns.
+  // The icons are set in a 16x16px square but the artwork is inset from that
+  // so these padding values are computed by hand.
   // Additionally the design uses fractional values so these are
   // rounded to the nearest integer.
   incrementButtonSmall: {
-    ...shorthands.padding('3px', '5px', '0px', '5px'),
+    ...shorthands.padding('3px', '6px', '0px', '4px'),
   },
 
   incrementButtonMedium: {
@@ -214,7 +213,7 @@ const useButtonStyles = makeStyles({
   },
 
   decrementButtonSmall: {
-    ...shorthands.padding('0px', '5px', '3px', '5px'),
+    ...shorthands.padding('0px', '6px', '3px', '4px'),
   },
 
   decrementButtonMedium: {
@@ -396,6 +395,7 @@ const useButtonDisabledStyles = makeStyles({
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
   const { appearance, atBound, spinState, size } = state;
   const disabled = state.input.disabled;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
@@ -424,16 +424,15 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     state.root.className, // Get the classes from useInputStyles_unstable
     spinButtonClassNames.root,
     rootStyles.base,
+    rootStyles[size],
     appearance === 'outline' && rootStyles.outline,
     appearance === 'underline' && rootStyles.underline,
     filled && rootStyles.filled,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
+    !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
-    disabled && appearance === 'outline' && rootStyles.outlineDisabled,
-    disabled && appearance === 'underline' && rootStyles.underlineDisabled,
-    disabled && filled && rootStyles.filledDisabled,
     rootClassName, // Make sure any original class name is applied last
   );
 

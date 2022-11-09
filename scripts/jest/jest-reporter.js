@@ -13,7 +13,7 @@ class JestReporter extends DefaultReporter {
     super(...args);
 
     this._isLoggingError = false;
-    this.log = message => {
+    this.log = (/** @type {string} */ message) => {
       if (this._isLoggingError) {
         process.stderr.write(message + '\n');
       } else {

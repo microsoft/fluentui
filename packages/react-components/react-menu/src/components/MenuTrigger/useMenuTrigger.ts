@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -21,7 +21,7 @@ import { useARIAButtonProps } from '@fluentui/react-aria';
  * @param props - props from this instance of MenuTrigger
  */
 export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerState => {
-  const { children } = props;
+  const { children, disableButtonEnhancement = false } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
   const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
@@ -45,7 +45,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
-  const child = React.isValidElement(children) ? getTriggerChild<Partial<MenuTriggerChildProps>>(children) : undefined;
+  const child = getTriggerChild(children);
 
   const onContextMenu = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
@@ -121,32 +121,34 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const triggerProps = {
+  const contextMenuProps = {
     'aria-haspopup': 'menu',
     'aria-expanded': !open && !isSubmenu ? undefined : open,
     id: triggerId,
     ...child?.props,
     ref: useMergedRefs(triggerRef, child?.ref),
-    onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
-    onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
-    onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
-    onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
+    onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
+    onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
+    onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
+    onMouseMove: useEventCallback(mergeCallbacks(child?.props.onMouseMove, onMouseMove)),
   } as const;
 
-  const ariaButtonTriggerProps = useARIAButtonProps(
+  const triggerChildProps = {
+    ...contextMenuProps,
+    onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+    onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
+  };
+
+  const ariaButtonTriggerChildProps = useARIAButtonProps(
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
-    {
-      ...triggerProps,
-      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
-      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
-    },
+    triggerChildProps,
   );
 
   return {
     isSubmenu,
-    children: applyTriggerPropsToChildren<MenuTriggerChildProps>(
+    children: applyTriggerPropsToChildren(
       children,
-      openOnContext ? triggerProps : ariaButtonTriggerProps,
+      openOnContext ? contextMenuProps : disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
     ),
   };
 };

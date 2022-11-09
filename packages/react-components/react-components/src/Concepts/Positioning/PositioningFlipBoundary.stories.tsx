@@ -35,14 +35,14 @@ export const FlipBoundary = () => {
       <Checkbox label="Open" checked={open} onChange={(e, data) => setOpen(data.checked as boolean)} />
       <div ref={setBoundaryRef} className={styles.boundary}>
         <Popover open={open} positioning={{ flipBoundary: boundaryRef, position: 'above', align: 'start' }}>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <Button className={styles.trigger}>Position: above</Button>
           </PopoverTrigger>
           <PopoverSurface>Stays within the flip boundary</PopoverSurface>
         </Popover>
 
         <Popover open={open} positioning={{ position: 'below', align: 'start' }}>
-          <PopoverTrigger>
+          <PopoverTrigger disableButtonEnhancement>
             <Button className={styles.trigger}>Position: below</Button>
           </PopoverTrigger>
           <PopoverSurface>Overflows the flip boundary</PopoverSurface>

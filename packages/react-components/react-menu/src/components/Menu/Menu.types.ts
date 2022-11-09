@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePositioningMouseTarget } from '@fluentui/react-positioning';
+import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
@@ -109,7 +109,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: ReturnType<typeof usePositioningMouseTarget>[0];
+    contextTarget?: PositioningVirtualElement;
 
     /**
      * Whether this menu is a submenu
@@ -134,7 +134,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
-    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
+    setContextTarget: SetVirtualMouseTarget;
 
     /**
      * Callback to open/close the popup

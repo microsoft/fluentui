@@ -24,6 +24,15 @@
     "./prettier/**",
     "./fluentui-publish/**",
     "./puppeteer/**",
-    "./triage-bot/**"
+    "./triage-bot/**",
+    "./webpack/**",
+    "./jest/**",
+    "./dependency-graph-generator/**",
+    "./typescript/**",
+    "./tasks/**",
+    "./babel/**",
+    "./api-extractor/**",
+    "./typescript/**",
+    "./lint-staged/**"
   ]
 }

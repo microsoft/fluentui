@@ -13,22 +13,22 @@ const serve = (
   configureMiddleware: (express: Express) => Express = app => app,
 ): Promise<Server> => {
   return new Promise((resolve, reject) => {
-    const server = configureMiddleware(
-      express().use(
-        historyApiFallback({
-          verbose: false,
-        }),
-      ),
-    )
-      .use(express.static(directoryPath))
-      .listen(port, host, err => {
-        if (err) {
-          reject(err);
-        } else {
+    try {
+      const server = configureMiddleware(
+        express().use(
+          historyApiFallback({
+            verbose: false,
+          }),
+        ),
+      )
+        .use(express.static(directoryPath))
+        .listen(port, host, () => {
           log(colors.yellow(`Server running at http://${host}:${port}`));
           resolve(server);
-        }
-      });
+        });
+    } catch (err) {
+      reject(err);
+    }
   });
 };
 

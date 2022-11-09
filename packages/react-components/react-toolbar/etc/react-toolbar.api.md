@@ -14,23 +14,11 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { RadioGroupProps } from '@fluentui/react-radio';
-import { RadioGroupState } from '@fluentui/react-radio';
-import { RadioProps } from '@fluentui/react-radio';
-import { RadioState } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
-
-// @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
-
-// @public (undocumented)
-export type RadioGroupContextValues = {
-    radioGroup: RadioGroupContextValue;
-};
 
 // @public
 export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
@@ -53,8 +41,9 @@ export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonSt
 export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
 
 // @public (undocumented)
-export type ToolbarContextValue = Pick<ToolbarProps, 'size'> & {
+export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical' | 'checkedValues'> & {
     handleToggleButton?: ToggableHandler;
+    handleRadio?: ToggableHandler;
 };
 
 // @public (undocumented)
@@ -66,7 +55,9 @@ export type ToolbarContextValues = {
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
 // @public
-export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
+export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>> & {
+    vertical?: boolean;
+};
 
 // @public
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
@@ -74,32 +65,24 @@ export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & Divide
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
     size?: 'small' | 'medium';
+    vertical?: boolean;
     checkedValues?: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;
     onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
 };
 
 // @public
-export const ToolbarRadio: ForwardRefComponent<ToolbarRadioProps>;
+export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 
 // @public
-export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
-
-// @public
-export type ToolbarRadioGroupProps = RadioGroupProps;
-
-// @public
-export type ToolbarRadioGroupState = RadioGroupState;
-
-// @public
-export type ToolbarRadioProps = RadioProps & {
-    size?: 'small' | 'medium';
+export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
+    appearance?: 'primary' | 'subtle';
+    name: string;
+    value: string;
 };
 
 // @public
-export type ToolbarRadioState = RadioState & {
-    size?: 'small' | 'medium';
-};
+export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
 
 // @public (undocumented)
 export type ToolbarSlots = {
@@ -107,8 +90,9 @@ export type ToolbarSlots = {
 };
 
 // @public
-export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarProps, 'size' | 'checkedValues'>> & Pick<ToolbarProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
+export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarProps, 'size' | 'checkedValues' | 'vertical'>> & Pick<ToolbarProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
     handleToggleButton: ToggableHandler;
+    handleRadio: ToggableHandler;
 };
 
 // @public
@@ -117,13 +101,12 @@ export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 // @public
 export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
+    name: string;
+    value: string;
 };
 
 // @public
-export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & {
-    name?: string;
-    value?: string;
-};
+export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarToggleButtonProps, 'name' | 'value'>;
 
 // @public
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;

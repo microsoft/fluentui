@@ -6,12 +6,12 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
 export type OnVisibleChangeData = {
@@ -22,17 +22,14 @@ export type OnVisibleChangeData = {
 export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.FC<TooltipProps> & FluentTriggerComponent;
+export const Tooltip: React_2.FC<TooltipProps>;
 
 // @public (undocumented)
 export const tooltipClassNames: SlotClassNames<TooltipSlots>;
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Pick<PortalProps, 'mountNode'> & {
+export type TooltipProps = ComponentProps<TooltipSlots> & TriggerProps<TooltipTriggerProps> & Pick<PortalProps, 'mountNode'> & {
     appearance?: 'normal' | 'inverted';
-    children?: (React_2.ReactElement & {
-        ref?: React_2.Ref<unknown>;
-    }) | ((props: TooltipTriggerProps) => React_2.ReactElement | null) | null;
     hideDelay?: number;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
     positioning?: PositioningShorthand;
@@ -57,7 +54,7 @@ export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mo
 
 // @public
 export type TooltipTriggerProps = {
-    ref?: React_2.Ref<never>;
+    ref?: React_2.Ref<unknown>;
 } & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave'>;
 
 // @public

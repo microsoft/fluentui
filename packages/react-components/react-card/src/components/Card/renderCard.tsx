@@ -8,5 +8,10 @@ import type { CardSlots, CardState } from './Card.types';
 export const renderCard_unstable = (state: CardState) => {
   const { slots, slotProps } = getSlots<CardSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {slotProps.root.children}
+      {state.hasSelectSlot && slots.select ? <slots.select {...slotProps.select} /> : null}
+    </slots.root>
+  );
 };

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Tue, 25 Oct 2022 00:35:38 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 08:39:59 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.1",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Sep 2022 09:49:39 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

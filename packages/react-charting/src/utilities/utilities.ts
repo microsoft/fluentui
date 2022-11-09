@@ -200,14 +200,18 @@ export function createDateXAxis(
   culture?: string,
   options?: Intl.DateTimeFormatOptions,
   timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition,
+  customDateTimeFormatter?: (dateTime: Date) => string,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
-
-  if (culture && options) {
+  if (customDateTimeFormatter) {
+    xAxis.tickFormat((domainValue: Date, _index: number) => {
+      return customDateTimeFormatter(domainValue);
+    });
+  } else if (culture && options) {
     xAxis.tickFormat((domainValue: Date, _index: number) => {
       return domainValue.toLocaleString(culture, options);
     });

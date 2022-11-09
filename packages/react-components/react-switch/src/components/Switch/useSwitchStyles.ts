@@ -34,7 +34,6 @@ const useRootStyles = makeStyles({
 
   vertical: {
     flexDirection: 'column',
-    paddingTop: tokens.spacingVerticalXS,
   },
 });
 
@@ -43,6 +42,7 @@ const useIndicatorStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.borderWidth('1px'),
+    lineHeight: 0,
     boxSizing: 'border-box',
     fill: 'currentColor',
     flexShrink: 0,
@@ -50,8 +50,8 @@ const useIndicatorStyles = makeStyles({
     height: `${trackHeight}px`,
     ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     pointerEvents: 'none',
-    transitionDuration: '200ms',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionDuration: tokens.durationNormal,
+    transitionTimingFunction: tokens.curveEasyEase,
     transitionProperty: 'background, border, color',
     width: `${trackWidth}px`,
 
@@ -60,8 +60,8 @@ const useIndicatorStyles = makeStyles({
     },
 
     '> *': {
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+      transitionDuration: tokens.durationNormal,
+      transitionTimingFunction: tokens.curveEasyEase,
       transitionProperty: 'transform',
 
       '@media screen and (prefers-reduced-motion: reduce)': {
@@ -70,12 +70,6 @@ const useIndicatorStyles = makeStyles({
     },
   },
 
-  labelBefore: {
-    marginLeft: 0,
-  },
-  labelAfter: {
-    marginRight: 0,
-  },
   labelAbove: {
     marginTop: 0,
   },
@@ -112,6 +106,7 @@ const useInputStyles = makeStyles({
       },
 
       [`& ~ .${switchClassNames.label}`]: {
+        cursor: 'default',
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
@@ -206,15 +201,8 @@ const useInputStyles = makeStyles({
   },
   above: {
     bottom: 0,
-    height: `calc(${trackHeight}px + 2 * ${tokens.spacingVerticalS})`,
-    width: '100%',
-  },
-
-  labelHorizontal: {
-    width: `calc(${trackWidth}px + ${tokens.spacingHorizontalS})`,
-  },
-  labelVertical: {
     height: `calc(${trackHeight}px + ${tokens.spacingVerticalS})`,
+    width: '100%',
   },
 });
 
@@ -230,14 +218,15 @@ const useLabelStyles = makeStyles({
     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
   above: {
+    paddingTop: tokens.spacingVerticalXS,
     paddingBottom: tokens.spacingVerticalXS,
     width: '100%',
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalXS,
   },
   before: {
-    paddingRight: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalXS,
   },
 });
 
@@ -262,8 +251,6 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   state.indicator.className = mergeClasses(
     switchClassNames.indicator,
     indicatorStyles.base,
-    label && labelPosition === 'before' && indicatorStyles.labelBefore,
-    label && labelPosition === 'after' && indicatorStyles.labelAfter,
     label && labelPosition === 'above' && indicatorStyles.labelAbove,
     state.indicator.className,
   );
@@ -272,9 +259,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     switchClassNames.input,
     inputStyles.base,
     inputStyles.highContrast,
-    inputStyles[labelPosition],
-    label && (labelPosition === 'before' || labelPosition === 'after') && inputStyles.labelHorizontal,
-    label && labelPosition === 'above' && inputStyles.labelVertical,
+    label && inputStyles[labelPosition],
     state.input.className,
   );
 

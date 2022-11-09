@@ -153,6 +153,11 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
@@ -170,8 +175,7 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
@@ -245,6 +249,7 @@ const useContentStyles = makeStyles({
 export const useInputStyles_unstable = (state: InputState): InputState => {
   const { size, appearance } = state;
   const disabled = state.input.disabled;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
@@ -261,6 +266,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
     filled && rootStyles.filled,
+    !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
     state.root.className,
   );

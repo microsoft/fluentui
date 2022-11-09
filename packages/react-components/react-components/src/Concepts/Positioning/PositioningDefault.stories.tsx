@@ -4,7 +4,7 @@ import { Button, Popover, PopoverSurface, PopoverTrigger, PositioningProps } fro
 export const Default = (props: PositioningProps) => {
   return (
     <Popover positioning={props}>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <Button appearance="primary">Click me</Button>
       </PopoverTrigger>
 

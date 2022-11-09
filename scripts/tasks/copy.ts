@@ -1,10 +1,10 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { series, resolveCwd, copyTask, copyInstructionsTask, logger } from 'just-scripts';
+import { series, resolveCwd, copyTask, copyInstructionsTask, logger, TaskFunction } from 'just-scripts';
 import { getProjectMetadata, findGitRoot } from '../monorepo';
 import { getTsPathAliasesConfig } from './utils';
 
-export function expandSourcePath(pattern: string): string {
+export function expandSourcePath(pattern: string): string | null {
   if (!pattern) {
     return null;
   }
@@ -29,6 +29,7 @@ export function expandSourcePath(pattern: string): string {
     return pattern.replace(packageName, path.dirname(resolvedPackageJson));
   } catch (e) {
     console.error(e);
+    return null;
   }
 }
 
@@ -42,7 +43,7 @@ export function copyCompiled() {
 
   const packageDir = process.cwd();
 
-  if (!isUsingTsSolutionConfigs) {
+  if (!(isUsingTsSolutionConfigs && tsConfig)) {
     throw new Error(`this task compliant only with packages that use TS solution config files.`);
   }
 
@@ -57,16 +58,22 @@ export function copyCompiled() {
 
   const projectMetadata = getProjectMetadata({ root, name: packageJson.name });
 
+  if (!projectMetadata.sourceRoot) {
+    throw new Error(`${packageJson.name} is missing 'sourceRoot' in workspace.json`);
+  }
+
   const paths = {
-    esm: {
-      in: path.join(
-        packageDir,
-        tsConfig.compilerOptions.outDir as string,
-        path.dirname(packageJson.module),
-        projectMetadata.sourceRoot,
-      ),
-      out: path.join(packageDir, path.dirname(packageJson.module)),
-    },
+    esm: packageJson.module
+      ? {
+          in: path.join(
+            packageDir,
+            tsConfig.compilerOptions.outDir as string,
+            path.dirname(packageJson.module),
+            projectMetadata.sourceRoot,
+          ),
+          out: path.join(packageDir, path.dirname(packageJson.module)),
+        }
+      : null,
     commonJs: {
       in: path.join(
         packageDir,
@@ -78,17 +85,21 @@ export function copyCompiled() {
     },
   };
 
-  return series(
-    copyTask({
-      paths: [paths.esm.in],
-      dest: paths.esm.out,
-    }),
+  const tasks = [
+    paths.esm
+      ? copyTask({
+          paths: [paths.esm.in],
+          dest: paths.esm.out,
+        })
+      : null,
     copyTask({
       paths: [paths.commonJs.in],
 
       dest: paths.commonJs.out,
     }),
-  );
+  ].filter(Boolean) as TaskFunction[];
+
+  return series(...tasks);
 }
 export function copy() {
   const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
@@ -110,7 +121,7 @@ export function copy() {
 
     if (Array.isArray(sources)) {
       return copyTask({
-        paths: sources.map(src => expandSourcePath(src)),
+        paths: sources.map(src => expandSourcePath(src)).filter(Boolean) as string[],
         dest: destinationPath,
       });
     }

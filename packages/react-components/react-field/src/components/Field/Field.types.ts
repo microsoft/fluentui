@@ -35,7 +35,7 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * A message about the validation state. The appearance of the `validationMessage` depends on `validationState`.
    */
-  validationMessage?: Slot<'span'>;
+  validationMessage?: Slot<'div'>;
 
   /**
    * The icon associated with the `validationMessage`. If the `validationState` prop is set, this will default to an
@@ -48,7 +48,7 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * Additional hint text below the field.
    */
-  hint?: Slot<'span'>;
+  hint?: Slot<'div'>;
 };
 
 /**
@@ -117,6 +117,13 @@ export type FieldConfig<T extends FieldComponent> = {
    * @default htmlFor
    */
   labelConnection?: 'htmlFor' | 'aria-labelledby';
+
+  /**
+   * Should the aria-invalid and aria-errormessage attributes be set when validationState="error".
+   *
+   * @default true
+   */
+  ariaInvalidOnError?: boolean;
 };
 
 /**

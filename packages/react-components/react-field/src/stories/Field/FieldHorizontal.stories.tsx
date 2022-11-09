@@ -4,7 +4,7 @@ import { InputField } from '@fluentui/react-field';
 
 const useStyles = makeStyles({
   stack: {
-    display: 'inline-grid',
+    display: 'grid',
     rowGap: tokens.spacingVerticalM,
     width: '400px',
   },

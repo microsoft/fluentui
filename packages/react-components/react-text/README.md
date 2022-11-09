@@ -1,8 +1,6 @@
 # @fluentui/react-text
 
-> WIP 🚧 - These are not production-ready components as we are still in a Beta phase.
-
-<!-- TODO: Add link to the new website -->
+**React Text components for [Fluent UI React](https://react.fluentui.dev/)**
 
 The Text component exists to ensure consistency in your application's content by setting fixed sizes and other styles.
 This package also exports wrappers which ensure your text follows the Fluent design standards of typography.
@@ -47,7 +45,7 @@ const App = () => (
 
 ## Typography wrappers
 
-![List of typography variants by sorted descending by size](./assets/typography-examples.gif 'Typography wrapper list')
+![List of typography variants by sorted descending by size](./docs/assets/typography-examples.gif 'Typography wrapper list')
 
 Wrappers offer an easy way to use text according to the Fluent Design System while also providing semantic code readability.
 

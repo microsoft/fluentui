@@ -1,6 +1,6 @@
 # @fluentui/react-tabster
 
-**Tabster components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Tabster components for [Fluent UI React](https://react.fluentui.dev)**
 
 Library for focus management that leverages [tabster](https://github.com/microsoft/tabster).
 

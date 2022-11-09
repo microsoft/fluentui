@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MessageBar actions contrast in high contrast mode",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

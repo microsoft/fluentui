@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 26 Oct 2022 07:52:54 GMT",
+      "tag": "@fluentui/web-components_v2.5.8",
+      "version": "2.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "400b81dc432ff1720a89ffafee0666c4e920272b",
+            "comment": "emit activeid as part of accordion change event"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Oct 2022 07:44:53 GMT",
+      "tag": "@fluentui/web-components_v2.5.7",
+      "version": "2.5.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b63fc36cbcbe821d2e53d7924a3cc5aedb6a33a2",
+            "comment": "Cleaned up shared styles for button and input for improved reuse and color updates"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:23 GMT",
+      "tag": "@fluentui/web-components_v2.5.6",
+      "version": "2.5.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "337a32b1a4f2e82235e193e115666aee659c650c",
+            "comment": "chore: migrate to webpack5 and apply single version policy"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Sep 2022 07:47:29 GMT",
       "tag": "@fluentui/web-components_v2.5.6",
       "version": "2.5.6",

@@ -34,6 +34,8 @@ import { CardState } from '@fluentui/react-card';
 import { CheckboxField } from '@fluentui/react-field';
 import { checkboxFieldClassNames } from '@fluentui/react-field';
 import { CheckboxFieldProps } from '@fluentui/react-field';
+import { ColumnDefinition } from '@fluentui/react-table';
+import { ColumnId } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
@@ -45,46 +47,11 @@ import { ComboboxOpenEvents } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import { ComboboxState } from '@fluentui/react-combobox';
+import { createColumn } from '@fluentui/react-table';
+import { CreateColumnOptions } from '@fluentui/react-table';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
-import { Dialog } from '@fluentui/react-dialog';
-import { DialogActions } from '@fluentui/react-dialog';
-import { dialogActionsClassNames } from '@fluentui/react-dialog';
-import { DialogActionsPosition } from '@fluentui/react-dialog';
-import { DialogActionsProps } from '@fluentui/react-dialog';
-import { DialogActionsSlots } from '@fluentui/react-dialog';
-import { DialogActionsState } from '@fluentui/react-dialog';
-import { DialogBody } from '@fluentui/react-dialog';
-import { dialogBodyClassNames } from '@fluentui/react-dialog';
-import { DialogBodyProps } from '@fluentui/react-dialog';
-import { DialogBodySlots } from '@fluentui/react-dialog';
-import { DialogBodyState } from '@fluentui/react-dialog';
-import { DialogContent } from '@fluentui/react-dialog';
-import { dialogContentClassNames } from '@fluentui/react-dialog';
-import { DialogContentProps } from '@fluentui/react-dialog';
-import { DialogContentSlots } from '@fluentui/react-dialog';
-import { DialogContentState } from '@fluentui/react-dialog';
-import { DialogOpenChangeData } from '@fluentui/react-dialog';
-import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
-import { DialogProps } from '@fluentui/react-dialog';
-import { DialogSlots } from '@fluentui/react-dialog';
-import { DialogState } from '@fluentui/react-dialog';
-import { DialogSurface } from '@fluentui/react-dialog';
-import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
-import { DialogSurfaceProps } from '@fluentui/react-dialog';
-import { DialogSurfaceSlots } from '@fluentui/react-dialog';
-import { DialogSurfaceState } from '@fluentui/react-dialog';
-import { DialogTitle } from '@fluentui/react-dialog';
-import { dialogTitleClassNames } from '@fluentui/react-dialog';
-import { DialogTitleProps } from '@fluentui/react-dialog';
-import { DialogTitleSlots } from '@fluentui/react-dialog';
-import { DialogTitleState } from '@fluentui/react-dialog';
-import { DialogTrigger } from '@fluentui/react-dialog';
-import { DialogTriggerAction } from '@fluentui/react-dialog';
-import { DialogTriggerChildProps } from '@fluentui/react-dialog';
-import { DialogTriggerProps } from '@fluentui/react-dialog';
-import { DialogTriggerState } from '@fluentui/react-dialog';
 import { Dropdown } from '@fluentui/react-combobox';
 import { dropdownClassNames } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
@@ -121,6 +88,22 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
+import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
+import { Persona } from '@fluentui/react-persona';
+import { personaClassNames } from '@fluentui/react-persona';
+import { PersonaProps } from '@fluentui/react-persona';
+import { PersonaSlots } from '@fluentui/react-persona';
+import { PersonaState } from '@fluentui/react-persona';
+import { Progress } from '@fluentui/react-progress';
+import { progressClassNames } from '@fluentui/react-progress';
+import { ProgressField } from '@fluentui/react-field';
+import { progressFieldClassNames } from '@fluentui/react-field';
+import { ProgressFieldProps } from '@fluentui/react-field';
+import { ProgressProps } from '@fluentui/react-progress';
+import { ProgressSlots } from '@fluentui/react-progress';
+import { ProgressState } from '@fluentui/react-progress';
 import { RadioGroupField } from '@fluentui/react-field';
 import { radioGroupFieldClassNames } from '@fluentui/react-field';
 import { RadioGroupFieldProps } from '@fluentui/react-field';
@@ -130,18 +113,13 @@ import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
-import { renderDialog_unstable } from '@fluentui/react-dialog';
-import { renderDialogActions_unstable } from '@fluentui/react-dialog';
-import { renderDialogBody_unstable } from '@fluentui/react-dialog';
-import { renderDialogContent_unstable } from '@fluentui/react-dialog';
-import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
-import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
-import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
+import { renderPersona_unstable } from '@fluentui/react-persona';
+import { renderProgress_unstable } from '@fluentui/react-progress';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
@@ -153,6 +131,8 @@ import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { RowId } from '@fluentui/react-table';
+import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectField } from '@fluentui/react-field';
@@ -220,8 +200,11 @@ import { tableSelectionCellClassNames } from '@fluentui/react-table';
 import { TableSelectionCellProps } from '@fluentui/react-table';
 import { TableSelectionCellSlots } from '@fluentui/react-table';
 import { TableSelectionCellState } from '@fluentui/react-table';
+import { TableSelectionState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
+import { TableSortState } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
+import { TableStatePlugin } from '@fluentui/react-table';
 import { TextareaField } from '@fluentui/react-field';
 import { textareaFieldClassNames } from '@fluentui/react-field';
 import { TextareaFieldProps } from '@fluentui/react-field';
@@ -253,18 +236,6 @@ import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
-import { useDialog_unstable } from '@fluentui/react-dialog';
-import { useDialogActions_unstable } from '@fluentui/react-dialog';
-import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
-import { useDialogBody_unstable } from '@fluentui/react-dialog';
-import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
-import { useDialogContent_unstable } from '@fluentui/react-dialog';
-import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
-import { useDialogSurface_unstable } from '@fluentui/react-dialog';
-import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
-import { useDialogTitle_unstable } from '@fluentui/react-dialog';
-import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
-import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useField_unstable } from '@fluentui/react-field';
@@ -278,8 +249,15 @@ import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
+import { usePersona_unstable } from '@fluentui/react-persona';
+import { usePersonaStyles_unstable } from '@fluentui/react-persona';
+import { useProgress_unstable } from '@fluentui/react-progress';
+import { useProgressStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelection } from '@fluentui/react-table';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
+import { useSort } from '@fluentui/react-table';
+import { useTable } from '@fluentui/react-table';
 import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
@@ -294,6 +272,7 @@ import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
+import { UseTableOptions } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
 import { useTableSelectionCell_unstable } from '@fluentui/react-table';
@@ -363,6 +342,10 @@ export { checkboxFieldClassNames }
 
 export { CheckboxFieldProps }
 
+export { ColumnDefinition }
+
+export { ColumnId }
+
 export { Combobox }
 
 export { comboboxClassNames }
@@ -385,85 +368,15 @@ export { ComboboxSlots }
 
 export { ComboboxState }
 
+export { createColumn }
+
+export { CreateColumnOptions }
+
 export { DATA_OVERFLOW_ITEM }
 
 export { DATA_OVERFLOW_MENU }
 
 export { DATA_OVERFLOWING }
-
-export { Dialog }
-
-export { DialogActions }
-
-export { dialogActionsClassNames }
-
-export { DialogActionsPosition }
-
-export { DialogActionsProps }
-
-export { DialogActionsSlots }
-
-export { DialogActionsState }
-
-export { DialogBody }
-
-export { dialogBodyClassNames }
-
-export { DialogBodyProps }
-
-export { DialogBodySlots }
-
-export { DialogBodyState }
-
-export { DialogContent }
-
-export { dialogContentClassNames }
-
-export { DialogContentProps }
-
-export { DialogContentSlots }
-
-export { DialogContentState }
-
-export { DialogOpenChangeData }
-
-export { DialogOpenChangeEvent }
-
-export { DialogProps }
-
-export { DialogSlots }
-
-export { DialogState }
-
-export { DialogSurface }
-
-export { dialogSurfaceClassNames }
-
-export { DialogSurfaceProps }
-
-export { DialogSurfaceSlots }
-
-export { DialogSurfaceState }
-
-export { DialogTitle }
-
-export { dialogTitleClassNames }
-
-export { DialogTitleProps }
-
-export { DialogTitleSlots }
-
-export { DialogTitleState }
-
-export { DialogTrigger }
-
-export { DialogTriggerAction }
-
-export { DialogTriggerChildProps }
-
-export { DialogTriggerProps }
-
-export { DialogTriggerState }
 
 export { Dropdown }
 
@@ -537,6 +450,38 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
+export { PartitionAvatarGroupItems }
+
+export { partitionAvatarGroupItems }
+
+export { PartitionAvatarGroupItemsOptions }
+
+export { Persona }
+
+export { personaClassNames }
+
+export { PersonaProps }
+
+export { PersonaSlots }
+
+export { PersonaState }
+
+export { Progress }
+
+export { progressClassNames }
+
+export { ProgressField }
+
+export { progressFieldClassNames }
+
+export { ProgressFieldProps }
+
+export { ProgressProps }
+
+export { ProgressSlots }
+
+export { ProgressState }
+
 export { RadioGroupField }
 
 export { radioGroupFieldClassNames }
@@ -555,20 +500,6 @@ export { renderCardPreview_unstable }
 
 export { renderCombobox_unstable }
 
-export { renderDialog_unstable }
-
-export { renderDialogActions_unstable }
-
-export { renderDialogBody_unstable }
-
-export { renderDialogContent_unstable }
-
-export { renderDialogSurface_unstable }
-
-export { renderDialogTitle_unstable }
-
-export { renderDialogTrigger_unstable }
-
 export { renderDropdown_unstable }
 
 export { renderField_unstable }
@@ -578,6 +509,10 @@ export { renderListbox_unstable }
 export { renderOption_unstable }
 
 export { renderOptionGroup_unstable }
+
+export { renderPersona_unstable }
+
+export { renderProgress_unstable }
 
 export { renderSelect_unstable }
 
@@ -600,6 +535,10 @@ export { renderTableRow_unstable }
 export { renderTableSelectionCell_unstable }
 
 export { renderToolbar_unstable }
+
+export { RowId }
+
+export { RowState }
 
 export { Select }
 
@@ -735,9 +674,16 @@ export { TableSelectionCellSlots }
 
 export { TableSelectionCellState }
 
+export { TableSelectionState }
+
 export { TableSlots }
 
+export { TableSortState }
+
+export { TableState as HeadlessTableState }
 export { TableState }
+
+export { TableStatePlugin }
 
 export { TextareaField }
 
@@ -801,30 +747,6 @@ export { useCombobox_unstable }
 
 export { useComboboxStyles_unstable }
 
-export { useDialog_unstable }
-
-export { useDialogActions_unstable }
-
-export { useDialogActionsStyles_unstable }
-
-export { useDialogBody_unstable }
-
-export { useDialogBodyStyles_unstable }
-
-export { useDialogContent_unstable }
-
-export { useDialogContentStyles_unstable }
-
-export { useDialogSurface_unstable }
-
-export { useDialogSurfaceStyles_unstable }
-
-export { useDialogTitle_unstable }
-
-export { useDialogTitleStyles_unstable }
-
-export { useDialogTrigger_unstable }
-
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
@@ -851,9 +773,23 @@ export { useOptionStyles_unstable }
 
 export { useOverflowMenu }
 
+export { usePersona_unstable }
+
+export { usePersonaStyles_unstable }
+
+export { useProgress_unstable }
+
+export { useProgressStyles_unstable }
+
 export { useSelect_unstable }
 
+export { useSelection }
+
 export { useSelectStyles_unstable }
+
+export { useSort }
+
+export { useTable }
 
 export { useTable_unstable }
 
@@ -882,6 +818,8 @@ export { useTableHeaderCell_unstable }
 export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
+
+export { UseTableOptions }
 
 export { useTableRow_unstable }
 
