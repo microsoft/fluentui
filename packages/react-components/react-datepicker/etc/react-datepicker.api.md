@@ -4,20 +4,69 @@
 
 ```ts
 
-import { DayOfWeek } from '@fluentui/date-time-utilities';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import type { IBaseProps } from '@fluentui/utilities';
 import type { ICalendarProps } from '@fluentui/react';
-import type { ICalendarStrings } from '@fluentui/date-time-utilities';
 import type { ICalloutProps } from '@fluentui/react';
 import type { IComponentAs } from '@fluentui/utilities';
-import type { IDateFormatting } from '@fluentui/date-time-utilities';
 import type { IRefObject } from '@fluentui/utilities';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { ITextFieldProps } from '@fluentui/react';
 import type { ITheme } from '@fluentui/style-utilities';
 import * as React_2 from 'react';
+
+// @public
+export function addDays(date: Date, days: number): Date;
+
+// @public
+export function addMonths(date: Date, months: number): Date;
+
+// @public
+export function addWeeks(date: Date, weeks: number): Date;
+
+// @public
+export function addYears(date: Date, years: number): Date;
+
+// @public (undocumented)
+export interface CalendarStrings extends DateGridStrings {
+    closeButtonAriaLabel?: string;
+    dayMarkedAriaLabel?: string;
+    goToToday: string;
+    monthPickerHeaderAriaLabel?: string;
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
+    selectedDateFormatString?: string;
+    todayDateFormatString?: string;
+    weekNumberFormatString?: string;
+    yearPickerHeaderAriaLabel?: string;
+}
+
+// @public
+export function compareDatePart(date1: Date, date2: Date): Number;
+
+// @public
+export function compareDates(date1: Date, date2: Date): boolean;
+
+// @public (undocumented)
+export interface DateFormatting {
+    formatDay: (date: Date) => string;
+    formatMonth: (date: Date, strings: DateGridStrings) => string;
+    formatMonthDayYear: (date: Date, strings: DateGridStrings) => string;
+    formatMonthYear: (date: Date, strings: DateGridStrings) => string;
+    formatYear: (date: Date) => string;
+}
+
+// @public (undocumented)
+export interface DateGridStrings {
+    days: string[];
+    months: string[];
+    shortDays: string[];
+    shortMonths: string[];
+}
 
 // @public (undocumented)
 export const DatePicker: React_2.FunctionComponent<DatePickerProps>;
@@ -33,7 +82,7 @@ export interface DatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAt
     calloutProps?: ICalloutProps;
     className?: string;
     componentRef?: IRefObject<IDatePicker>;
-    dateTimeFormatter?: IDateFormatting;
+    dateTimeFormatter?: DateFormatting;
     disableAutoFocus?: boolean;
     disabled?: boolean;
     firstDayOfWeek?: DayOfWeek;
@@ -68,7 +117,7 @@ export interface DatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAt
 }
 
 // @public (undocumented)
-export interface DatePickerStrings extends ICalendarStrings {
+export interface DatePickerStrings extends CalendarStrings {
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
@@ -107,8 +156,81 @@ export interface DatePickerStyles {
     wrapper?: IStyle;
 }
 
+// @public
+export enum DateRangeType {
+    // (undocumented)
+    Day = 0,
+    // (undocumented)
+    Month = 2,
+    // (undocumented)
+    Week = 1,
+    // (undocumented)
+    WorkWeek = 3
+}
+
+// @public
+export enum DayOfWeek {
+    // (undocumented)
+    Friday = 5,
+    // (undocumented)
+    Monday = 1,
+    // (undocumented)
+    Saturday = 6,
+    // (undocumented)
+    Sunday = 0,
+    // (undocumented)
+    Thursday = 4,
+    // (undocumented)
+    Tuesday = 2,
+    // (undocumented)
+    Wednesday = 3
+}
+
+// @public (undocumented)
+export const DAYS_IN_WEEK = 7;
+
 // @public (undocumented)
 export const defaultDatePickerStrings: DatePickerStrings;
+
+// @public
+export enum FirstWeekOfYear {
+    // (undocumented)
+    FirstDay = 0,
+    // (undocumented)
+    FirstFourDayWeek = 2,
+    // (undocumented)
+    FirstFullWeek = 1
+}
+
+// @public
+export function getDatePartHashValue(date: Date): number;
+
+// @public
+export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
+
+// @public
+export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
+
+// @public
+export function getMonthEnd(date: Date): Date;
+
+// @public
+export function getMonthStart(date: Date): Date;
+
+// @public
+export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
+
+// @public
+export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number;
+
+// @public
+export function getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, navigatedDate: Date): number[];
+
+// @public
+export function getYearEnd(date: Date): Date;
+
+// @public
+export function getYearStart(date: Date): Date;
 
 // @public (undocumented)
 export interface IDatePicker {
@@ -116,6 +238,57 @@ export interface IDatePicker {
     reset(): void;
     showDatePickerPopup(): void;
 }
+
+// @public
+export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
+
+// @public
+export enum MonthOfYear {
+    // (undocumented)
+    April = 3,
+    // (undocumented)
+    August = 7,
+    // (undocumented)
+    December = 11,
+    // (undocumented)
+    February = 1,
+    // (undocumented)
+    January = 0,
+    // (undocumented)
+    July = 6,
+    // (undocumented)
+    June = 5,
+    // (undocumented)
+    March = 2,
+    // (undocumented)
+    May = 4,
+    // (undocumented)
+    November = 10,
+    // (undocumented)
+    October = 9,
+    // (undocumented)
+    September = 8
+}
+
+// @public
+export function setMonth(date: Date, month: number): Date;
+
+// @public (undocumented)
+export const TimeConstants: {
+    MillisecondsInOneDay: number;
+    MillisecondsIn1Sec: number;
+    MillisecondsIn1Min: number;
+    MillisecondsIn30Mins: number;
+    MillisecondsIn1Hour: number;
+    MinutesInOneDay: number;
+    MinutesInOneHour: number;
+    DaysInOneWeek: number;
+    MonthInOneYear: number;
+    HoursInOneDay: number;
+    SecondsInOneMinute: number;
+    OffsetTo24HourFormat: number;
+    TimeFormatRegex: RegExp;
+};
 
 // (No @packageDocumentation comment for this package)
 

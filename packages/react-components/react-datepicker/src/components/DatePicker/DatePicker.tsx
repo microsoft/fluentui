@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import { useAsync, useControllableValue, useId } from '@fluentui/react-hooks';
 import { Calendar, Callout, DirectionalHint, FocusTrapZone, TextField } from '@fluentui/react';
+import { useControllableState, useId } from '@fluentui/react-utilities';
 import {
   // TODO: classNamesFunction,
   css,
@@ -9,12 +8,13 @@ import {
   getNativeProps,
   format,
   getPropsWithDefaults,
+  Async,
   KeyCodes,
 } from '@fluentui/utilities';
+import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
 import { useDatePickerStyles_unstable } from './useDatePickerStyles';
 import type { ICalendar, ITextField, ITextFieldProps } from '@fluentui/react';
-import type { IRenderFunction } from '@fluentui/utilities';
 import type {
   DatePickerProps,
   // TODO: , IDatePickerStyleProps, IDatePickerStyles
@@ -65,13 +65,16 @@ function useFocusLogic() {
 function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePickerProps, focus: () => void) {
   const [isCalendarShown, setIsCalendarShown] = React.useState(false);
   const isMounted = React.useRef(false);
-  const async = useAsync();
+  const asyncRef = React.useRef<Async>();
+  if (!asyncRef.current) {
+    asyncRef.current = new Async();
+  }
 
   React.useEffect(() => {
     if (isMounted.current && !isCalendarShown) {
       // In browsers like IE, textfield gets unfocused when datepicker is collapsed
       if (allowTextInput) {
-        async.requestAnimationFrame(focus);
+        asyncRef.current?.requestAnimationFrame(focus);
       }
 
       // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
@@ -81,16 +84,32 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePicke
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCalendarShown]);
 
+  React.useEffect(() => {
+    return () => {
+      asyncRef.current?.dispose();
+      asyncRef.current = undefined;
+    };
+  }, []);
+
   return [isCalendarShown, setIsCalendarShown] as const;
 }
 
 function useSelectedDate({ formatDate, value, onSelectDate }: DatePickerProps) {
-  const [selectedDate, setSelectedDateState] = useControllableValue(value, undefined, (ev, newValue) =>
-    onSelectDate?.(newValue),
-  );
+  const [selectedDate, setSelectedDateState] = useControllableState({
+    initialState: undefined,
+    state: value,
+  });
   const [formattedDate, setFormattedDate] = React.useState(() => (value && formatDate ? formatDate(value) : ''));
 
   const setSelectedDate = (newDate: Date | undefined) => {
+    if (
+      (selectedDate === undefined && newDate !== undefined) ||
+      (selectedDate !== undefined && newDate === undefined) ||
+      (newDate && selectedDate && (newDate > selectedDate || newDate < selectedDate))
+    ) {
+      onSelectDate?.(newDate);
+    }
+
     setSelectedDateState(newDate);
     setFormattedDate(newDate && formatDate ? formatDate(newDate) : '');
   };
@@ -394,7 +413,10 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
 
     const renderTextfieldDescription = (
       inputProps?: ITextFieldProps,
-      defaultRender?: IRenderFunction<ITextFieldProps>,
+      defaultRender?: (
+        props?: ITextFieldProps,
+        defaultRender?: (props: ITextFieldProps) => JSX.Element | null,
+      ) => JSX.Element | null,
     ) => {
       return (
         <>

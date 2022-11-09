@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
+import { DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { ICalendarProps, ICalloutProps, ITextFieldProps } from '@fluentui/react';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
 import type { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
+import type { CalendarStrings, DateFormatting } from '../../utils';
 
 /**
  * {@docCategory DatePicker}
@@ -216,7 +216,7 @@ export interface DatePickerProps
   /**
    * Apply additional formatting to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: IDateFormatting;
+  dateTimeFormatter?: DateFormatting;
 
   /**
    * The minimum allowable date.
@@ -258,7 +258,7 @@ export interface DatePickerProps
 /**
  * {@docCategory DatePicker}
  */
-export interface DatePickerStrings extends ICalendarStrings {
+export interface DatePickerStrings extends CalendarStrings {
   /**
    * Error message to render for TextField if isRequired validation fails.
    */
