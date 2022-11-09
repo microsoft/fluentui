@@ -1,6 +1,7 @@
 import type { HorizontalSpacingTokens, SpacingTokens, VerticalSpacingTokens } from '../types';
 
-export const spacings: SpacingTokens = {
+// Intentionally not exported! Use horizontalSpacings and verticalSpacings instead.
+const spacings: SpacingTokens = {
   none: '0',
   xxs: '2px',
   xs: '4px',
