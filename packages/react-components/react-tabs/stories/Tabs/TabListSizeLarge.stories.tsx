@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SizeMedium = () => {
+export const SizeLarge = () => {
   const styles = useStyles();
 
   const renderTabs = () => {
@@ -31,20 +31,20 @@ export const SizeMedium = () => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedValue="tab2" size="medium">
+      <TabList defaultSelectedValue="tab2" size="large">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" size="medium" vertical>
+      <TabList defaultSelectedValue="tab2" size="large" vertical>
         {renderTabs()}
       </TabList>
     </div>
   );
 };
 
-SizeMedium.parameters = {
+SizeLarge.parameters = {
   docs: {
     description: {
-      story: 'A tab list can have `medium` tabs (default).',
+      story: 'A tab list can have `large` tabs.',
     },
   },
 };
