@@ -3,8 +3,8 @@ import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type {
-  FieldControl,
   FieldConfig,
+  FieldControl,
   FieldProps,
   FieldPropsWithOptionalComponentProps,
   FieldState,
