@@ -1,11 +1,11 @@
-import { requestPostAnimationFrame } from './requestPostAnimationFrame';
+import afterframe from 'afterframe';
 
 export type PerformanceMeasureFn = (measureName?: string, startMark?: string) => void;
 
 export const performanceMeasure: PerformanceMeasureFn = (measureName = 'stress', startMark = 'start') => {
   performance.mark(startMark);
 
-  requestPostAnimationFrame(() => {
+  afterframe(() => {
     performance.measure(measureName, startMark);
   });
 };

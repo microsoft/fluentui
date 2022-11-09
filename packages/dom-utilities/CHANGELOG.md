@@ -1,8 +1,17 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Mon, 08 Aug 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Nov 2022 07:48:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.3)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.2..@fluentui/dom-utilities_v2.2.3)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
 
 ## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.2)
 
