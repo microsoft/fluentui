@@ -232,7 +232,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           top: auto;
           width: 12px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           background-color: WindowText;
           border-color: Window;
         }
@@ -261,7 +261,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
             speak: none;
             vertical-align: top;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Window;
           }
       data-icon-name="SkypeMinus"
@@ -331,7 +331,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           top: auto;
           width: 12px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           background-color: WindowText;
           border-color: Window;
         }
@@ -360,7 +360,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
             speak: none;
             vertical-align: top;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Window;
           }
       data-icon-name="SkypeMinus"

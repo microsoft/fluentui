@@ -108,7 +108,7 @@ exports[`TagPicker renders correctly 1`] = `
                 &:hover .ms-TagItem-close {
                   color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             data-is-focusable={true}
@@ -178,7 +178,7 @@ exports[`TagPicker renders correctly 1`] = `
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -195,7 +195,7 @@ exports[`TagPicker renders correctly 1`] = `
                     background: #e1dfdd;
                     color: #323130;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
@@ -295,7 +295,7 @@ exports[`TagPicker renders correctly 1`] = `
                 font-weight: 400;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
@@ -307,7 +307,7 @@ exports[`TagPicker renders correctly 1`] = `
                 font-weight: 400;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
@@ -319,7 +319,7 @@ exports[`TagPicker renders correctly 1`] = `
                 font-weight: 400;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           data-lpignore={true}
@@ -451,7 +451,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 &:hover .ms-TagItem-close {
                   color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             data-is-focusable={true}
@@ -521,7 +521,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -538,7 +538,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                     background: #e1dfdd;
                     color: #323130;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
@@ -638,7 +638,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 font-weight: 400;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
@@ -650,7 +650,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 font-weight: 400;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
@@ -662,7 +662,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 font-weight: 400;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           data-lpignore={true}

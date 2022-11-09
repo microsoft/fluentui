@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-icons
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.11)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.10..@fluentui/react-icons_v0.4.11)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.2 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [0.4.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.10)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.9..@fluentui/react-icons_v0.4.10)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [0.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.9)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.8..@fluentui/react-icons_v0.4.9)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.0 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [0.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.8)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.7..@fluentui/react-icons_v0.4.8)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.37.0 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+
+## [0.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.7)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.6..@fluentui/react-icons_v0.4.7)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.1 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [0.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.6)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.5..@fluentui/react-icons_v0.4.6)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.5)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.4..@fluentui/react-icons_v0.4.5)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.35.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
 
 ## [0.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.4)
 

@@ -40,10 +40,12 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <Icon {...getFileTypeIconProps({ type: FileIconType.docset, size: 16, imageFileType: 'png' })} />
         <h3>Size 20 folder icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 20, imageFileType: 'svg' })} />
-        <h3>Size 40 genericfile icon as .png</h3>
+        <h3>Size 40 generic file icon as .png</h3>
         <Icon {...getFileTypeIconProps({ size: 40, imageFileType: 'png' })} />
         <h3>Size 48 listitem icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.listItem, size: 48, imageFileType: 'svg' })} />
+        <h3>Size 48 video icon with image filetype unspecified </h3>
+        <Icon {...getFileTypeIconProps({ type: FileIconType.stream, size: 48 })} />
         <h3>Size 64 sharedfolder icon as .png</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 64, imageFileType: 'png' })} />
         <h3>Size 64 linkedfolder icon as .png</h3>

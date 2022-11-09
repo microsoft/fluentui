@@ -1,8 +1,26 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.20.2)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.20.1..@uifabric/merge-styles_v7.20.2)
+
+### Patches
+
+- Add some logic to stylesheet that will do a simple append instead of using insert before if the reference node isn't actually a child of the document head. ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.20.1)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.19.1..@uifabric/merge-styles_v7.20.1)
+
+### Patches
+
+- getVendorSettings.js file was leading to app crash if userAgent was null. Have added a null check for userAgent ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
 
 ## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.19.0)
 

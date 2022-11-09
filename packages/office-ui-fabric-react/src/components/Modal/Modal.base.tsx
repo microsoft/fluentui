@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {
-  classNamesFunction,
-  getId,
   allowScrollOnElement,
   allowOverscrollOnElement,
-  KeyCodes,
+  classNamesFunction,
+  createMergedRef,
+  css,
   elementContains,
+  getId,
   warnDeprecations,
   Async,
   EventGroup,
+  KeyCodes,
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration } from './Modal.styles';
@@ -56,6 +58,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 
   private _onModalCloseTimer: number;
   private _focusTrapZone = React.createRef<IFocusTrapZone>();
+  private _focusTrapZoneMergedRef = createMergedRef();
   private _scrollableContent: HTMLDivElement | null;
   private _lastSetX: number;
   private _lastSetY: number;
@@ -158,6 +161,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       scrollableContentClassName,
       elementToFocusOnDismiss,
       firstFocusableSelector,
+      focusTrapZoneProps,
       forceFocusInsideTrap,
       ignoreExternalFocusing,
       isBlocking,
@@ -210,19 +214,24 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       insertFirst: isModeless,
       className: classNames.layer,
     };
+
     const modalContent = (
       <FocusTrapZone
+        {...focusTrapZoneProps}
         data-id={this.state.id}
-        componentRef={this._focusTrapZone}
-        className={classNames.main}
-        elementToFocusOnDismiss={elementToFocusOnDismiss}
-        isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
-        ignoreExternalFocusing={ignoreExternalFocusing}
-        forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
-        firstFocusableSelector={firstFocusableSelector}
-        focusPreviouslyFocusedInnerElement={true}
+        componentRef={this._focusTrapZoneMergedRef(this._focusTrapZone, focusTrapZoneProps?.componentRef)}
+        className={css(classNames.main, focusTrapZoneProps?.className)}
+        elementToFocusOnDismiss={focusTrapZoneProps?.elementToFocusOnDismiss ?? elementToFocusOnDismiss}
+        isClickableOutsideFocusTrap={
+          focusTrapZoneProps?.isClickableOutsideFocusTrap ?? (isModeless || isClickableOutsideFocusTrap || !isBlocking)
+        }
+        ignoreExternalFocusing={focusTrapZoneProps?.ignoreExternalFocusing ?? ignoreExternalFocusing}
+        forceFocusInsideTrap={(focusTrapZoneProps?.forceFocusInsideTrap ?? forceFocusInsideTrap) && !isModeless}
+        // eslint-disable-next-line deprecation/deprecation
+        firstFocusableSelector={focusTrapZoneProps?.firstFocusableSelector || firstFocusableSelector}
+        focusPreviouslyFocusedInnerElement={focusTrapZoneProps?.focusPreviouslyFocusedInnerElement ?? true}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
-        enableAriaHiddenSiblings={enableAriaHiddenSiblings}
+        enableAriaHiddenSiblings={focusTrapZoneProps?.enableAriaHiddenSiblings ?? enableAriaHiddenSiblings}
       >
         {dragOptions && isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -514,7 +523,8 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
   };
 
-  private _onExitKeyboardMoveMode = () => {
+  private _onExitKeyboardMoveMode = (ev: React.FocusEvent<HTMLDivElement>) => {
+    this.props.focusTrapZoneProps?.onBlur?.(ev);
     this._lastSetX = 0;
     this._lastSetY = 0;
     this.setState({ isInKeyboardMoveMode: false });

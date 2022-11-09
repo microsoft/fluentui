@@ -239,7 +239,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       onRenderCaretDown = this._onRenderCaretDown,
       onRenderLabel = this._onRenderLabel,
     } = props;
-    const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
+    const { isOpen, selectedIndices, calloutRenderEdge, hasFocus } = this.state;
     // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
@@ -311,7 +311,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               onMouseDown={this._onDropdownMouseDown}
               onFocus={this._onFocus}
             >
-              <span id={this._optionId} className={this._classNames.title} aria-live="polite" aria-atomic={true}>
+              <span
+                id={this._optionId}
+                className={this._classNames.title}
+                aria-live={hasFocus ? 'polite' : undefined}
+                aria-atomic={hasFocus ? true : undefined}
+              >
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)

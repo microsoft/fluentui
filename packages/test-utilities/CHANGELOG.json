@@ -2,6 +2,51 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@uifabric/test-utilities_v7.3.5",
+      "version": "7.3.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/jest-serializer-merge-styles to v7.2.6",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@uifabric/test-utilities_v7.3.4",
+      "version": "7.3.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/jest-serializer-merge-styles to v7.2.5",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@uifabric/test-utilities_v7.3.3",
+      "version": "7.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/jest-serializer-merge-styles to v7.2.4",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "@uifabric/test-utilities_v7.3.2",
       "version": "7.3.2",

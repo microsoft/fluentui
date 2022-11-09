@@ -905,6 +905,9 @@ export class DefaultButton extends React.Component<IButtonProps, {}> {
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
+// @public (undocumented)
+export const DetailsColumn: React.FunctionComponent<IDetailsColumnProps>;
+
 // @public
 export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     constructor(props: IDetailsColumnProps);
@@ -1320,6 +1323,12 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 export const FontIcon: React.FunctionComponent<IFontIconProps>;
 
 // @public (undocumented)
+export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: IPersonaProps[], isCompact: boolean) => IActivityItemClassNames;
+
+// @public (undocumented)
+export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles | undefined, animateBeaconSignal?: boolean | undefined, beaconColorOne?: string | undefined, beaconColorTwo?: string | undefined, isCompact?: boolean | undefined) => IActivityItemStyles;
+
+// @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
 // @public
@@ -1327,6 +1336,9 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public (undocumented)
+export function getBasePickerStyles(props: IBasePickerStyleProps): IBasePickerStyles;
 
 // @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
@@ -1341,7 +1353,33 @@ export function getColorFromRGBA(rgba: IRGB): IColor;
 export function getColorFromString(inputColor: string): IColor | undefined;
 
 // @public (undocumented)
+export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
+
+// @public (undocumented)
+export const getCommandButtonStyles: (customStyles: IButtonStyles | undefined) => IButtonStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "getContextualMenuItemClassNames" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated (undocumented)
+export const getContextualMenuItemClassNames: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string | undefined, dividerClassName?: string | undefined, iconClassName?: string | undefined, subMenuClassName?: string | undefined, primaryDisabled?: boolean | undefined, className?: string | undefined) => IContextualMenuItemStyles;
+
+// @public
+export const getContextualMenuItemStyles: (props: IContextualMenuItemStyleProps) => IContextualMenuItemStyles;
+
+// @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
+
+// @public (undocumented)
+export const getDetailsColumnStyles: (props: IDetailsColumnStyleProps) => IDetailsColumnStyles;
+
+// @public (undocumented)
+export const getDetailsHeaderStyles: (props: IDetailsHeaderStyleProps) => IDetailsHeaderStyles;
+
+// @public (undocumented)
+export const getDetailsListStyles: (props: IDetailsListStyleProps) => IDetailsListStyles;
+
+// @public (undocumented)
+export const getDetailsRowCheckStyles: (props: IDetailsRowCheckStyleProps) => IDetailsRowCheckStyles;
 
 // @public (undocumented)
 export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
@@ -1352,8 +1390,26 @@ export const getFontIcon: (iconName: string, className?: string | undefined, ari
 // @public
 export function getFullColorString(color: IColor): string;
 
+// @public
+export const GetGroupCount: (groups: IGroup[] | undefined) => number;
+
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
+
+// @public (undocumented)
+export function getInitialResponsiveMode(): ResponsiveMode;
+
+// @public
+export function getLayerCount(hostId: string): number;
+
+// @public
+export function getLayerHost(hostId: string): ILayerHost | undefined;
+
+// @public
+export function getLayerHostSelector(): string | undefined;
+
+// @public (undocumented)
+export const getLayerStyles: (props: ILayerStyleProps) => ILayerStyles;
 
 // @public
 export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
@@ -1380,11 +1436,23 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 // @public
 export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
+// @public (undocumented)
+export function getPeoplePickerItemStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles;
+
+// @public (undocumented)
+export function getPeoplePickerItemSuggestionStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeoplePickerItemSuggestionStyles;
+
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
+// @public (undocumented)
+export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode;
+
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public (undocumented)
+export const getShimmeredDetailsListStyles: (props: Required<Pick<import("./ShimmeredDetailsList.types").IShimmeredDetailsListProps, "theme">>) => IShimmeredDetailsListStyles;
 
 // @public (undocumented)
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
@@ -1393,6 +1461,21 @@ export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean
 export function getSubmenuItems(item: IContextualMenuItem, options?: {
     target?: Target_2;
 }): IContextualMenuItem[] | undefined;
+
+// @public (undocumented)
+export function getSuggestionsItemStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemStyles;
+
+// @public (undocumented)
+export function getSuggestionsStyles(props: ISuggestionsStyleProps): ISuggestionsStyles;
+
+// @public (undocumented)
+export function getTagItemStyles(props: ITagItemStyleProps): ITagItemStyles;
+
+// @public (undocumented)
+export function getTagItemSuggestionStyles(props: ITagItemSuggestionStyleProps): ITagItemSuggestionStyles;
+
+// @public (undocumented)
+export function getTextFieldStyles(props: ITextFieldStyleProps): ITextFieldStyles;
 
 // @public @deprecated (undocumented)
 export const Grid: React.FunctionComponent<IButtonGridProps>;
@@ -1518,6 +1601,28 @@ export interface IAccessiblePopupProps {
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
+}
+
+// @public (undocumented)
+export interface IActivityItemClassNames {
+    // (undocumented)
+    activityContent?: string;
+    // (undocumented)
+    activityPersona?: string;
+    // (undocumented)
+    activityText?: string;
+    // (undocumented)
+    activityTypeIcon?: string;
+    // (undocumented)
+    commentText?: string;
+    // (undocumented)
+    personaContainer?: string;
+    // (undocumented)
+    pulsingBeacon?: string;
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    timeStamp?: string;
 }
 
 // @public (undocumented)
@@ -3335,8 +3440,6 @@ export interface IContextualMenuListProps {
     totalItemCount: number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -3820,6 +3923,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     initialFocusedIndex?: number;
     isHeaderVisible?: boolean;
     isPlaceholderData?: boolean;
+    isSelectedOnFocus?: boolean;
     items: any[];
     layoutMode?: DetailsListLayoutMode;
     listProps?: IListProps;
@@ -5106,6 +5210,7 @@ export interface IGroupDividerProps {
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
     onGroupHeaderKeyUp?: (ev: React.KeyboardEvent<HTMLElement>, group: IGroup) => void;
+    onRenderName?: IRenderFunction<IGroupHeaderProps>;
     onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
     onToggleCollapse?: (group: IGroup) => void;
     onToggleSelectGroup?: (group: IGroup) => void;
@@ -5666,6 +5771,19 @@ export type ILayerBaseState = {
     layerElement?: HTMLElement;
 };
 
+// @public
+export interface ILayerHost {
+    hostId: string;
+    notifyLayersChanged(): void;
+    rootRef: React.RefObject<HTMLDivElement | null>;
+}
+
+// @public (undocumented)
+export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
+    componentRef?: IRefObject<ILayerHost>;
+    id?: string;
+}
+
 // @public (undocumented)
 export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
     className?: string;
@@ -6055,6 +6173,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     containerClassName?: string;
     dragOptions?: IDragOptions;
     enableAriaHiddenSiblings?: boolean;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
     isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
@@ -6154,6 +6273,7 @@ export interface INavProps {
     componentRef?: IRefObject<INav>;
     // @deprecated
     expandButtonAriaLabel?: string;
+    focusZoneProps?: IFocusZoneProps;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
@@ -6213,6 +6333,9 @@ export interface INavStyles {
     navItems: IStyle;
     root: IStyle;
 }
+
+// @public
+export function initializeResponsiveMode(element?: HTMLElement): void;
 
 export { IObjectWithKey }
 
@@ -6604,6 +6727,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     primaryText?: string;
     secondaryText?: string;
     showInitialsUntilImageLoads?: boolean;
+    showOverflowTooltip?: boolean;
     // (undocumented)
     showSecondaryText?: boolean;
     showUnknownPersonaCoin?: boolean;
@@ -7317,9 +7441,11 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnEscapePress?: boolean;
     selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode;
     selectionPreservedOnEmptyClick?: boolean;
+    toggleWithoutModifierPressed?: boolean;
 }
 
 // @public (undocumented)
@@ -8588,11 +8714,23 @@ export interface IWindowWithSegments extends Window {
     getWindowSegments?: () => DOMRect[];
 }
 
+// @public (undocumented)
+export interface IWithResponsiveModeState {
+    // (undocumented)
+    responsiveMode?: ResponsiveMode;
+}
+
 // @public
 export interface IWithViewportProps {
     delayFirstMeasure?: boolean;
     disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
+}
+
+// @public (undocumented)
+export interface IWithViewportState {
+    // (undocumented)
+    viewport?: IViewport;
 }
 
 // @public (undocumented)
@@ -8747,9 +8885,6 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     render(): React.ReactNode;
     }
 
-// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ILayerHost" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export class LayerHost extends React.Component<ILayerHostProps> implements ILayerHost {
     constructor(props: ILayerHostProps);
@@ -8979,6 +9114,9 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
         createGenericItem: typeof createGenericItem;
     };
 }
+
+// @public
+export function notifyHostChanged(id: string): void;
 
 // @public @deprecated (undocumented)
 export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
@@ -9292,11 +9430,17 @@ export enum PivotLinkFormat {
     tabs = 1
 }
 
+// @public
+export type PivotLinkFormatType = 'links' | 'tabs';
+
 // @public (undocumented)
 export enum PivotLinkSize {
     large = 1,
     normal = 0
 }
+
+// @public
+export type PivotLinkSizeType = 'normal' | 'large';
 
 // @public (undocumented)
 export const PlainCard: React.FunctionComponent<IPlainCardProps>;
@@ -9444,6 +9588,12 @@ export enum RectangleEdge {
     // (undocumented)
     top = 1
 }
+
+// @public
+export function registerLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function registerLayerHost(hostId: string, layerHost: ILayerHost): void;
 
 // @public (undocumented)
 export const ResizeGroup: typeof ResizeGroupBase;
@@ -9639,7 +9789,9 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
+        toggleWithoutModifierPressed: boolean;
         selectionMode: SelectionMode;
+        selectionClearedOnEscapePress: boolean;
     };
     // (undocumented)
     static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState;
@@ -9668,6 +9820,12 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps>;
 
 // @public
 export function sequencesToID(keySequences: string[]): string;
+
+// @public
+export function setLayerHostSelector(selector?: string): void;
+
+// @public
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void;
 
 // @public
 export enum Shade {
@@ -10313,6 +10471,12 @@ export function transitionKeysAreEqual(key1: IKeytipTransitionKey, key2: IKeytip
 export function transitionKeysContain(keys: IKeytipTransitionKey[], key: IKeytipTransitionKey): boolean;
 
 // @public
+export function unregisterLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void;
+
+// @public
 export function updateA(color: IColor, a: number): IColor;
 
 // @public
@@ -10329,6 +10493,9 @@ export function updateT(color: IColor, t: number): IColor;
 
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
+
+// @public
+export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => ResponsiveMode;
 
 // @public
 export enum ValidationState {
@@ -10355,6 +10522,16 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     render(): JSX.Element;
     readonly selectedOptions: IComboBoxOption[];
 }
+
+// @public (undocumented)
+export function withResponsiveMode<TProps extends {
+    responsiveMode?: ResponsiveMode;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>): any;
+
+// @public
+export function withViewport<TProps extends {
+    viewport?: IViewport;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>): any;
 
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";

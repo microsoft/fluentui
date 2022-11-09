@@ -1,8 +1,82 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.4](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.16.4)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.16.3..@uifabric/react-hooks_v7.16.4)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.5 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.16.3](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.16.3)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.16.2..@uifabric/react-hooks_v7.16.3)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.4 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [7.16.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.16.2)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.16.1..@uifabric/react-hooks_v7.16.2)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.0 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [7.16.1](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.16.1)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.16.0..@uifabric/react-hooks_v7.16.1)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.37.0 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.16.0)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.15.2..@uifabric/react-hooks_v7.16.0)
+
+### Patches
+
+- Bump @uifabric/test-utilities to v7.3.3 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @fluentui/react-window-provider to v1.0.4 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+- Bump @uifabric/utilities to v7.36.1 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [7.15.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.15.2)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.15.1..@uifabric/react-hooks_v7.15.2)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.15.1](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.15.1)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.15.0..@uifabric/react-hooks_v7.15.1)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.35.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.15.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.14.2..@uifabric/react-hooks_v7.15.0)
+
+### Minor changes
+
+- feat: Port useEventCallback from master ([PR #23835](https://github.com/microsoft/fluentui/pull/23835) by tmichon@microsoft.com)
 
 ## [7.14.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.14.2)
 

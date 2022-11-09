@@ -1,0 +1,64 @@
+{
+  "name": "@fluentui/react-experiments",
+  "entries": [
+    {
+      "date": "Wed, 12 Oct 2022 12:22:45 GMT",
+      "tag": "@fluentui/react-experiments_v7.45.10",
+      "version": "7.45.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "chore: add signal styles to pre-copy.",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "c04722cf5a6dc47e2abcf784c551f9c4e94ab3e0",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 12:22:39 GMT",
+      "tag": "@fluentui/react-experiments_v7.45.6",
+      "version": "7.45.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Correct the exported file in Foundation",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "6726c066c89b51a611a1db8157c81198f2bb8767",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "@fluentui/react-experiments_v7.45.0",
+      "version": "7.45.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Renamed to react-experiments",
+            "author": "gcox@microsoft.com",
+            "commit": "2df91b03cca74389d86159a02b85438af7c960c7",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.45.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b4b0a094e6b32fa8731e8257e677d4eaa78c6ccb",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.15",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/theme-samples",
-  "version": "7.4.27",
+  "version": "7.5.27",
   "description": "Sample themes for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,10 +26,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@fluentui/theme": "^1.7.6",
+    "@fluentui/theme": "^1.7.13",
     "@uifabric/set-version": "^7.0.24",
-    "@uifabric/variants": "^7.2.37",
-    "office-ui-fabric-react": "^7.185.7",
+    "@uifabric/variants": "^7.3.4",
+    "office-ui-fabric-react": "^7.199.6",
     "tslib": "^1.10.0"
   }
 }

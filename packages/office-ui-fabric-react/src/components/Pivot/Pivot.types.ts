@@ -151,6 +151,18 @@ export interface IPivotStyles {
 
 /**
  * {@docCategory Pivot}
+ * Display mode for the pivot links/tabs
+ */
+export type PivotLinkFormatType = 'links' | 'tabs';
+
+/**
+ * {@docCategory Pivot}
+ * Size of the pivot links/tabs
+ */
+export type PivotLinkSizeType = 'normal' | 'large';
+
+/**
+ * {@docCategory Pivot}
  */
 export enum PivotLinkFormat {
   /**

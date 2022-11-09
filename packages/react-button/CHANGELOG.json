@@ -2,6 +2,209 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 31 Oct 2022 12:24:01 GMT",
+      "tag": "@fluentui/react-button_v0.20.16",
+      "version": "0.20.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v0.19.16",
+            "author": "gcox@microsoft.com",
+            "commit": "3727ad313afda0d34c28b76c39eba0dc17dba8da",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 18:13:33 GMT",
+      "tag": "@fluentui/react-button_v0.20.15",
+      "version": "0.20.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.25.0",
+            "author": "gcox@microsoft.com",
+            "commit": "cbcc767fb704968a387823e2e9bf70d147809ad4",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 12:23:16 GMT",
+      "tag": "@fluentui/react-button_v0.20.14",
+      "version": "0.20.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.24.0",
+            "author": "gcox@microsoft.com",
+            "commit": "c87f7ca5ac04d105c94f61f86e8885047133e417",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Sep 2022 21:44:22 GMT",
+      "tag": "@fluentui/react-button_v0.20.13",
+      "version": "0.20.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v0.19.13",
+            "author": "arujain@microsoft.com",
+            "commit": "32e9cad4d9120c34c4c42c16312c48d76f0e0c30",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Sep 2022 12:30:34 GMT",
+      "tag": "@fluentui/react-button_v0.20.12",
+      "version": "0.20.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.23.0",
+            "author": "gcox@microsoft.com",
+            "commit": "329cfaed40945b42efc4d15ffdb2746c81c6abb3",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 18:25:04 GMT",
+      "tag": "@fluentui/react-button_v0.20.11",
+      "version": "0.20.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.38.0",
+            "author": "gcox@microsoft.com",
+            "commit": "26cac141351b351aadd175f37ef0e0030bdd698e",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 16:57:15 GMT",
+      "tag": "@fluentui/react-button_v0.20.10",
+      "version": "0.20.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.37.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "9c47d023d945cfe75049dc8521ff4885dff17c90",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 23:27:06 GMT",
+      "tag": "@fluentui/react-button_v0.20.9",
+      "version": "0.20.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v0.19.9",
+            "author": "gcox@microsoft.com",
+            "commit": "4e6f8be75f7613117739c82c6fa89a939405a6ac",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 19:01:23 GMT",
+      "tag": "@fluentui/react-button_v0.20.8",
+      "version": "0.20.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.22.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "@fluentui/react-button_v0.20.7",
+      "version": "0.20.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Aug 2022 12:21:32 GMT",
+      "tag": "@fluentui/react-button_v0.20.6",
+      "version": "0.20.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.35.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 12:27:44 GMT",
+      "tag": "@fluentui/react-button_v0.20.5",
+      "version": "0.20.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snaps",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.21.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@fluentui/react-button_v0.20.4",
+      "version": "0.20.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update high-contrast mixins to support forced-colors (#23285)",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "@fluentui/react-button_v0.20.3",
       "version": "0.20.3",

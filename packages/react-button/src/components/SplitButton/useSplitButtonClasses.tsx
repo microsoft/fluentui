@@ -61,6 +61,7 @@ export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitB
       top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
       bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
 
+      // eslint-disable-next-line deprecation/deprecation
       [EdgeChromiumHighContrastSelector]: {
         backgroundColor: 'var(--button-highContrast-dividerColor)',
       },
@@ -68,6 +69,7 @@ export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitB
       [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
         backgroundColor: 'var(--button-disabled-dividerColor)',
 
+        // eslint-disable-next-line deprecation/deprecation
         [EdgeChromiumHighContrastSelector]: {
           backgroundColor: 'var(--button-highContrast-disabled-dividerColor, var(--button-highContrast-dividerColor))',
         },

@@ -83,7 +83,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 border-color: Highlight;
                 forced-color-adjust: none;
@@ -132,7 +132,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -145,7 +145,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -157,7 +157,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -169,7 +169,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="DatePicker0-label"

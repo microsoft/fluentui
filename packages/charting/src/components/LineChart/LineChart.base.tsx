@@ -487,7 +487,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     } else {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     }
-    for (let i = 0; i < this._points.length; i++) {
+    for (let i = this._points.length - 1; i >= 0; i--) {
       const linesForLine: JSX.Element[] = [];
       const bordersForLine: JSX.Element[] = [];
       const pointsForLine: JSX.Element[] = [];

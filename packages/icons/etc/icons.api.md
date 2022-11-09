@@ -3613,6 +3613,9 @@ export const enum IconNames {
 }
 
 // @public (undocumented)
+export type IconNamesInput = keyof typeof IconNames;
+
+// @public (undocumented)
 export function initializeIcons(baseUrl?: string, options?: IIconOptions): void;
 
 
