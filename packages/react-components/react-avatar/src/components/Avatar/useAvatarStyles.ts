@@ -89,7 +89,6 @@ const useStyles = makeStyles({
 
   ring: {
     '::before': {
-      ...shorthands.borderColor(tokens.colorBrandBackgroundStatic),
       ...shorthands.borderStyle('solid'),
     },
   },
@@ -216,130 +215,163 @@ const useColorStyles = makeStyles({
   neutral: {
     color: tokens.colorNeutralForeground3,
     backgroundColor: tokens.colorNeutralBackground6,
+    // The ::before element is the ring when active
+    '::before': { color: tokens.colorBrandStroke1 },
   },
   brand: {
     color: tokens.colorNeutralForegroundStaticInverted,
     backgroundColor: tokens.colorBrandBackgroundStatic,
+    '::before': { color: tokens.colorBrandStroke1 },
   },
   'dark-red': {
     color: tokens.colorPaletteDarkRedForeground2,
     backgroundColor: tokens.colorPaletteDarkRedBackground2,
+    '::before': { color: tokens.colorPaletteDarkRedBorderActive },
   },
   cranberry: {
     color: tokens.colorPaletteCranberryForeground2,
     backgroundColor: tokens.colorPaletteCranberryBackground2,
+    '::before': { color: tokens.colorPaletteCranberryBorderActive },
   },
   red: {
     color: tokens.colorPaletteRedForeground2,
     backgroundColor: tokens.colorPaletteRedBackground2,
+    '::before': { color: tokens.colorPaletteRedBorderActive },
   },
   pumpkin: {
     color: tokens.colorPalettePumpkinForeground2,
     backgroundColor: tokens.colorPalettePumpkinBackground2,
+    '::before': { color: tokens.colorPalettePumpkinBorderActive },
   },
   peach: {
     color: tokens.colorPalettePeachForeground2,
     backgroundColor: tokens.colorPalettePeachBackground2,
+    '::before': { color: tokens.colorPalettePeachBorderActive },
   },
   marigold: {
     color: tokens.colorPaletteMarigoldForeground2,
     backgroundColor: tokens.colorPaletteMarigoldBackground2,
+    '::before': { color: tokens.colorPaletteMarigoldBorderActive },
   },
   gold: {
     color: tokens.colorPaletteGoldForeground2,
     backgroundColor: tokens.colorPaletteGoldBackground2,
+    '::before': { color: tokens.colorPaletteGoldBorderActive },
   },
   brass: {
     color: tokens.colorPaletteBrassForeground2,
     backgroundColor: tokens.colorPaletteBrassBackground2,
+    '::before': { color: tokens.colorPaletteBrassBorderActive },
   },
   brown: {
     color: tokens.colorPaletteBrownForeground2,
     backgroundColor: tokens.colorPaletteBrownBackground2,
+    '::before': { color: tokens.colorPaletteBrownBorderActive },
   },
   forest: {
     color: tokens.colorPaletteForestForeground2,
     backgroundColor: tokens.colorPaletteForestBackground2,
+    '::before': { color: tokens.colorPaletteForestBorderActive },
   },
   seafoam: {
     color: tokens.colorPaletteSeafoamForeground2,
     backgroundColor: tokens.colorPaletteSeafoamBackground2,
+    '::before': { color: tokens.colorPaletteSeafoamBorderActive },
   },
   'dark-green': {
     color: tokens.colorPaletteDarkGreenForeground2,
     backgroundColor: tokens.colorPaletteDarkGreenBackground2,
+    '::before': { color: tokens.colorPaletteDarkGreenBorderActive },
   },
   'light-teal': {
     color: tokens.colorPaletteLightTealForeground2,
     backgroundColor: tokens.colorPaletteLightTealBackground2,
+    '::before': { color: tokens.colorPaletteLightTealBorderActive },
   },
   teal: {
     color: tokens.colorPaletteTealForeground2,
     backgroundColor: tokens.colorPaletteTealBackground2,
+    '::before': { color: tokens.colorPaletteTealBorderActive },
   },
   steel: {
     color: tokens.colorPaletteSteelForeground2,
     backgroundColor: tokens.colorPaletteSteelBackground2,
+    '::before': { color: tokens.colorPaletteSteelBorderActive },
   },
   blue: {
     color: tokens.colorPaletteBlueForeground2,
     backgroundColor: tokens.colorPaletteBlueBackground2,
+    '::before': { color: tokens.colorPaletteBlueBorderActive },
   },
   'royal-blue': {
     color: tokens.colorPaletteRoyalBlueForeground2,
     backgroundColor: tokens.colorPaletteRoyalBlueBackground2,
+    '::before': { color: tokens.colorPaletteRoyalBlueBorderActive },
   },
   cornflower: {
     color: tokens.colorPaletteCornflowerForeground2,
     backgroundColor: tokens.colorPaletteCornflowerBackground2,
+    '::before': { color: tokens.colorPaletteCornflowerBorderActive },
   },
   navy: {
     color: tokens.colorPaletteNavyForeground2,
     backgroundColor: tokens.colorPaletteNavyBackground2,
+    '::before': { color: tokens.colorPaletteNavyBorderActive },
   },
   lavender: {
     color: tokens.colorPaletteLavenderForeground2,
     backgroundColor: tokens.colorPaletteLavenderBackground2,
+    '::before': { color: tokens.colorPaletteLavenderBorderActive },
   },
   purple: {
     color: tokens.colorPalettePurpleForeground2,
     backgroundColor: tokens.colorPalettePurpleBackground2,
+    '::before': { color: tokens.colorPalettePurpleBorderActive },
   },
   grape: {
     color: tokens.colorPaletteGrapeForeground2,
     backgroundColor: tokens.colorPaletteGrapeBackground2,
+    '::before': { color: tokens.colorPaletteGrapeBorderActive },
   },
   lilac: {
     color: tokens.colorPaletteLilacForeground2,
     backgroundColor: tokens.colorPaletteLilacBackground2,
+    '::before': { color: tokens.colorPaletteLilacBorderActive },
   },
   pink: {
     color: tokens.colorPalettePinkForeground2,
     backgroundColor: tokens.colorPalettePinkBackground2,
+    '::before': { color: tokens.colorPalettePinkBorderActive },
   },
   magenta: {
     color: tokens.colorPaletteMagentaForeground2,
     backgroundColor: tokens.colorPaletteMagentaBackground2,
+    '::before': { color: tokens.colorPaletteMagentaBorderActive },
   },
   plum: {
     color: tokens.colorPalettePlumForeground2,
     backgroundColor: tokens.colorPalettePlumBackground2,
+    '::before': { color: tokens.colorPalettePlumBorderActive },
   },
   beige: {
     color: tokens.colorPaletteBeigeForeground2,
     backgroundColor: tokens.colorPaletteBeigeBackground2,
+    '::before': { color: tokens.colorPaletteBeigeBorderActive },
   },
   mink: {
     color: tokens.colorPaletteMinkForeground2,
     backgroundColor: tokens.colorPaletteMinkBackground2,
+    '::before': { color: tokens.colorPaletteMinkBorderActive },
   },
   platinum: {
     color: tokens.colorPalettePlatinumForeground2,
     backgroundColor: tokens.colorPalettePlatinumBackground2,
+    '::before': { color: tokens.colorPalettePlatinumBorderActive },
   },
   anchor: {
     color: tokens.colorPaletteAnchorForeground2,
     backgroundColor: tokens.colorPaletteAnchorBackground2,
+    '::before': { color: tokens.colorPaletteAnchorBorderActive },
   },
 });
 
