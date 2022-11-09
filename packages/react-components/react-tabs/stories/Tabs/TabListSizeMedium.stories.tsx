@@ -44,7 +44,7 @@ export const SizeMedium = () => {
 SizeMedium.parameters = {
   docs: {
     description: {
-      story: 'A tab list can have `medium` tabs. The default size is `medium`.',
+      story: 'A tab list can have `medium` tabs (default).',
     },
   },
 };

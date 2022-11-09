@@ -45,7 +45,7 @@ function setupTest(packages: Package[]) {
 
   // response to 'gh auth'
   spawnSyncMock.mockReturnValueOnce({
-    output: ['Logged in to github.com'],
+    output: [['Logged in to github.com']],
   });
 
   // response to epic creation
@@ -114,7 +114,7 @@ describe('epic-generator', () => {
 
     it('requires you to have logged in with gh', () => {
       spawnSyncMock.mockReturnValueOnce({
-        output: ['You are not logged into any GitHub hosts. Run gh auth login to authenticate.'],
+        output: [['You are not logged into any GitHub hosts. Run gh auth login to authenticate.']],
       });
 
       const tree = createTreeWithEmptyWorkspace();
