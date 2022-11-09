@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Move SwitchField into the @fluentui/react-switch package and export as _unstable",
+  "packageName": "@fluentui/react-switch",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
