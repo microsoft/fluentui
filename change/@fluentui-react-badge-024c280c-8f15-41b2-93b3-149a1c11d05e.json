@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "test: replace deprecated module.parent with require.main within isConformance",
+  "packageName": "@fluentui/react-badge",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

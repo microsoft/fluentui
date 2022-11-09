@@ -70,7 +70,7 @@ const useRootStyles = makeStyles({
 
   // Transition styles
   transition: {
-    transitionDuration: '100ms',
+    transitionDuration: tokens.durationFaster,
     transitionProperty: 'background, border, color',
     transitionTimingFunction: tokens.curveEasyEase,
 

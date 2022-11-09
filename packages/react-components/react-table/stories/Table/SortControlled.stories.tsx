@@ -21,6 +21,7 @@ import {
   ColumnId,
   useSort,
   TableCellLayout,
+  createColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -89,34 +90,37 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
-    columnId: 'file',
-    compare: (a, b) => {
-      return a.file.label.localeCompare(b.file.label);
-    },
-  },
-  {
-    columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
-  },
-  {
-    columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
-  },
-  {
-    columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
-  },
-];
-
 export const SortControlled = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+        compare: (a, b) => {
+          return a.file.label.localeCompare(b.file.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+        compare: (a, b) => {
+          return a.author.label.localeCompare(b.author.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+        compare: (a, b) => {
+          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+        compare: (a, b) => {
+          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+        },
+      }),
+    ],
+    [],
+  );
+
   const [sortState, setSortState] = React.useState<{
     sortDirection: 'ascending' | 'descending';
     sortColumn: ColumnId | undefined;

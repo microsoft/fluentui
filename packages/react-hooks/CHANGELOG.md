@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Thu, 20 Oct 2022 07:43:12 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Nov 2022 07:48:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.13)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.12..@fluentui/react-hooks_v8.6.13)
+
+### Patches
+
+- Bump @fluentui/react-window-provider to v2.2.4 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/utilities to v8.13.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/test-utilities to v8.2.4 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
 
 ## [8.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.12)
 

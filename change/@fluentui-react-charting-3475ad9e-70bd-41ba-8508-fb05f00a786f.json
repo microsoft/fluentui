@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix legends selection bugs",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
