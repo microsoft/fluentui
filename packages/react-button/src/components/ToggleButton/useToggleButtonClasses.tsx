@@ -15,6 +15,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState, Togg
         color: 'var(--button-checked-iconColor)',
       },
 
+      // eslint-disable-next-line deprecation/deprecation
       [EdgeChromiumHighContrastSelector]: {
         background: 'var(--button-highContrast-checked-background)',
         color: 'var(--button-highContrast-checked-contentColor)',
@@ -30,6 +31,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState, Togg
           color: 'var(--button-checkedHovered-iconColor)',
         },
 
+        // eslint-disable-next-line deprecation/deprecation
         [EdgeChromiumHighContrastSelector]: {
           background:
             'var(--button-highContrast-checkedHovered-background, var(--button-highContrast-checked-background))',
@@ -48,6 +50,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState, Togg
           color: 'var(--button-checkedPressed-iconColor, var(--button-checkedHovered-iconColor))',
         },
 
+        // eslint-disable-next-line deprecation/deprecation
         [EdgeChromiumHighContrastSelector]: {
           background:
             'var(--button-highContrast-checkedPressed-background, ' +

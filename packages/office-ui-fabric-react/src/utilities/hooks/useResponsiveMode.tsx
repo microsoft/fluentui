@@ -3,6 +3,9 @@ import { getWindow } from '@uifabric/utilities';
 import { useOnEvent } from '@uifabric/react-hooks';
 import { ResponsiveMode, getResponsiveMode, getInitialResponsiveMode } from '../decorators/withResponsiveMode';
 
+/**
+ * Hook to get the current responsive mode (window size category).
+ */
 export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null>) => {
   const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(getInitialResponsiveMode);
 

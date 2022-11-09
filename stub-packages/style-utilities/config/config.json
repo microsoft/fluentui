@@ -1,0 +1,9 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/index.js",
+      "manifest": "./src/office-ui-styling.manifest.json",
+      "outputPath": "./dist/office-ui-styling.js"
+    }
+  ]
+}

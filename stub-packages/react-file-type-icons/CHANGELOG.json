@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/react-file-type-icons",
+  "entries": [
+    {
+      "date": "Thu, 01 Sep 2022 12:21:47 GMT",
+      "tag": "@fluentui/react-file-type-icons_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added stub react-file-type-icons",
+            "author": "gcox@microsoft.com",
+            "commit": "246e3c681bd699a3772af05fbeca99aaa0438016",
+            "package": "@fluentui/react-file-type-icons"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.10.0",
+            "author": "gcox@microsoft.com",
+            "commit": "246e3c681bd699a3772af05fbeca99aaa0438016",
+            "package": "@fluentui/react-file-type-icons"
+          }
+        ]
+      }
+    }
+  ]
+}

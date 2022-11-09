@@ -110,6 +110,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
           boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset',
           zIndex: 1,
 
+          // eslint-disable-next-line deprecation/deprecation
           [EdgeChromiumHighContrastSelector]: {
             borderColor: 'var(--button-highContrast-focusColor)',
             boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
@@ -120,6 +121,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
           marginLeft: 'var(--button-contentGap)',
         },
 
+        // eslint-disable-next-line deprecation/deprecation
         [EdgeChromiumHighContrastSelector]: {
           forcedColorAdjust: 'var(--button-forcedColorAdjust)',
 
@@ -142,6 +144,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
             color: 'var(--button-hovered-iconColor, var(--button-iconColor))',
           },
 
+          // eslint-disable-next-line deprecation/deprecation
           [EdgeChromiumHighContrastSelector]: {
             background: 'var(--button-highContrast-hovered-background, var(--button-highContrast-background))',
             borderColor: 'var(--button-highContrast-hovered-borderColor, var(--button-highContrast-borderColor))',
@@ -166,6 +169,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
             color: 'var(--button-pressed-iconColor, var(--button-iconColor))',
           },
 
+          // eslint-disable-next-line deprecation/deprecation
           [EdgeChromiumHighContrastSelector]: {
             background:
               'var(--button-highContrast-pressed-background, ' +
@@ -200,6 +204,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
             color: 'var(--button-disabled-iconColor)',
           },
 
+          // eslint-disable-next-line deprecation/deprecation
           [EdgeChromiumHighContrastSelector]: {
             background: 'var(--button-highContrast-disabled-background, var(--button-highContrast-background))',
             borderColor: 'var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor))',

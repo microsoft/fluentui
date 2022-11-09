@@ -1,8 +1,309 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Fri, 20 May 2022 12:22:01 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Nov 2022 12:23:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.17.27](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.27)
+
+Tue, 01 Nov 2022 12:23:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.26..@uifabric/tsx-editor_v0.17.27)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.6 ([PR #23896](https://github.com/microsoft/fluentui/pull/23896) by tmichon@microsoft.com)
+
+## [0.17.26](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.26)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.25..@uifabric/tsx-editor_v0.17.26)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.5 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [0.17.25](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.25)
+
+Wed, 12 Oct 2022 12:22:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.24..@uifabric/tsx-editor_v0.17.25)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.4 ([PR #25149](https://github.com/microsoft/fluentui/pull/25149) by seanmonahan@microsoft.com)
+
+## [0.17.24](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.24)
+
+Tue, 04 Oct 2022 18:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.23..@uifabric/tsx-editor_v0.17.24)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.3 ([PR #25064](https://github.com/microsoft/fluentui/pull/25064) by gcox@microsoft.com)
+
+## [0.17.23](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.23)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.22..@uifabric/tsx-editor_v0.17.23)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.2 ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
+
+## [0.17.22](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.22)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.21..@uifabric/tsx-editor_v0.17.22)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [0.17.21](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.21)
+
+Fri, 30 Sep 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.20..@uifabric/tsx-editor_v0.17.21)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.199.0 ([PR #25019](https://github.com/microsoft/fluentui/pull/25019) by gcox@microsoft.com)
+
+## [0.17.20](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.20)
+
+Thu, 29 Sep 2022 12:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.19..@uifabric/tsx-editor_v0.17.20)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.198.2 ([PR #24998](https://github.com/microsoft/fluentui/pull/24998) by gcox@microsoft.com)
+
+## [0.17.19](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.19)
+
+Tue, 27 Sep 2022 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.18..@uifabric/tsx-editor_v0.17.19)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.198.1 ([PR #24954](https://github.com/microsoft/fluentui/pull/24954) by gcox@microsoft.com)
+
+## [0.17.18](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.18)
+
+Tue, 06 Sep 2022 20:18:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.17..@uifabric/tsx-editor_v0.17.18)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.6 ([PR #24673](https://github.com/microsoft/fluentui/pull/24673) by gcox@microsoft.com)
+
+## [0.17.17](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.17)
+
+Fri, 02 Sep 2022 21:05:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.16..@uifabric/tsx-editor_v0.17.17)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.5 ([PR #24656](https://github.com/microsoft/fluentui/pull/24656) by gcox@microsoft.com)
+
+## [0.17.16](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.16)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.15..@uifabric/tsx-editor_v0.17.16)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.4 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [0.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.15)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.14..@uifabric/tsx-editor_v0.17.15)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.16.1 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+
+## [0.17.14](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.14)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.13..@uifabric/tsx-editor_v0.17.14)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.2 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [0.17.13](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.13)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.12..@uifabric/tsx-editor_v0.17.13)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.1 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+
+## [0.17.12](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.12)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.11..@uifabric/tsx-editor_v0.17.12)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [0.17.11](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.11)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.10..@uifabric/tsx-editor_v0.17.11)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.196.0 ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+
+## [0.17.10](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.10)
+
+Wed, 24 Aug 2022 17:07:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.9..@uifabric/tsx-editor_v0.17.10)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.195.0 ([PR #24493](https://github.com/microsoft/fluentui/pull/24493) by gcox@microsoft.com)
+
+## [0.17.9](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.9)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.8..@uifabric/tsx-editor_v0.17.9)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.194.0 ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+
+## [0.17.8](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.8)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.7..@uifabric/tsx-editor_v0.17.8)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.193.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [0.17.7](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.7)
+
+Tue, 02 Aug 2022 21:25:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.6..@uifabric/tsx-editor_v0.17.7)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.192.0 ([PR #24192](https://github.com/microsoft/fluentui/pull/24192) by gcox@microsoft.com)
+
+## [0.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.6)
+
+Fri, 29 Jul 2022 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.5..@uifabric/tsx-editor_v0.17.6)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.191.0 ([PR #24097](https://github.com/microsoft/fluentui/pull/24097) by gcox@microsoft.com)
+
+## [0.17.5](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.5)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.4..@uifabric/tsx-editor_v0.17.5)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.190.3 ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
+
+## [0.17.4](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.4)
+
+Tue, 26 Jul 2022 12:27:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.3..@uifabric/tsx-editor_v0.17.4)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.190.2 ([PR #24069](https://github.com/microsoft/fluentui/pull/24069) by tmichon@microsoft.com)
+
+## [0.17.3](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.3)
+
+Mon, 25 Jul 2022 12:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.2..@uifabric/tsx-editor_v0.17.3)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.190.1 ([PR #23990](https://github.com/microsoft/fluentui/pull/23990) by sarah.higley@microsoft.com)
+
+## [0.17.2](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.2)
+
+Tue, 19 Jul 2022 12:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.1..@uifabric/tsx-editor_v0.17.2)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.190.0 ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
+
+## [0.17.1](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.1)
+
+Fri, 15 Jul 2022 12:21:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.17.0..@uifabric/tsx-editor_v0.17.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.189.1 ([PR #23893](https://github.com/microsoft/fluentui/pull/23893) by cqc@cuiqingcai.com)
+
+## [0.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.17.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.16.32..@uifabric/tsx-editor_v0.17.0)
+
+### Minor changes
+
+- Bump office-ui-fabric-react to v7.189.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.15.0 ([PR #23835](https://github.com/microsoft/fluentui/pull/23835) by tmichon@microsoft.com)
+
+## [0.16.32](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.32)
+
+Thu, 30 Jun 2022 12:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.16.31..@uifabric/tsx-editor_v0.16.32)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.188.0 ([PR #23777](https://github.com/microsoft/fluentui/pull/23777) by Humberto.Morimoto@microsoft.com)
+
+## [0.16.31](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.31)
+
+Thu, 23 Jun 2022 12:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.16.30..@uifabric/tsx-editor_v0.16.31)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.187.0 ([PR #23638](https://github.com/microsoft/fluentui/pull/23638) by Humberto.Morimoto@microsoft.com)
+
+## [0.16.30](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.30)
+
+Thu, 16 Jun 2022 12:21:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.16.29..@uifabric/tsx-editor_v0.16.30)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.186.0 ([PR #23548](https://github.com/microsoft/fluentui/pull/23548) by seanmonahan@microsoft.com)
+
+## [0.16.29](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.29)
+
+Tue, 14 Jun 2022 12:28:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.16.28..@uifabric/tsx-editor_v0.16.29)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.185.9 ([PR #23488](https://github.com/microsoft/fluentui/pull/23488) by shmiitian@gmail.com)
+
+## [0.16.28](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.28)
+
+Thu, 09 Jun 2022 12:31:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.16.27..@uifabric/tsx-editor_v0.16.28)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.185.8 ([PR #23425](https://github.com/microsoft/fluentui/pull/23425) by sarah.higley@microsoft.com)
 
 ## [0.16.27](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.27)
 

@@ -15,5 +15,12 @@ export * from './DetailsRowCheck.types';
 export * from './DetailsRowFields';
 export * from './DetailsRowFields.types';
 export * from './DetailsFooter.types';
+export * from './DetailsColumn';
 export * from './DetailsColumn.base';
 export * from './DetailsColumn.types';
+
+export { getStyles as getDetailsColumnStyles } from './DetailsColumn.styles';
+export { getStyles as getDetailsHeaderStyles } from './DetailsHeader.styles';
+export { getStyles as getDetailsListStyles } from './DetailsList.styles';
+export { getStyles as getDetailsRowCheckStyles } from './DetailsRowCheck.styles';
+export { getStyles as getShimmeredDetailsListStyles } from './ShimmeredDetailsList.styles';

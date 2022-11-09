@@ -1,0 +1,13 @@
+{
+  "copyTo": {
+    "lib/components/signals": [
+      "@uifabric/experiments/lib/components/signals/**/Signal.scss.*",
+      "@uifabric/experiments/lib/components/signals/**/Signals.scss.*"
+    ],
+    "dist": [
+      "@uifabric/example-app-base/index.html",
+      "react/umd/react.development.js",
+      "react-dom/umd/react-dom.development.js"
+    ]
+  }
+}

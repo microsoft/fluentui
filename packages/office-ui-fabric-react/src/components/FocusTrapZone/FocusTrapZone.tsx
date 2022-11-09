@@ -332,8 +332,18 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       const focusedElement = this._getDocument().activeElement as HTMLElement;
 
       if (!elementContains(this._root.current, focusedElement)) {
-        this.focus();
-        this._hasFocus = true; // set focus here since we stop event propagation
+        const doc = this._getDocument();
+        if (doc && doc.activeElement === doc.body) {
+          setTimeout(() => {
+            if (doc && doc.activeElement === doc.body) {
+              this.focus();
+              this._hasFocus = true;
+            }
+          }, 0);
+        } else {
+          this.focus();
+          this._hasFocus = true; // set focus here since we stop event propagation
+        }
         ev.preventDefault();
         ev.stopPropagation();
       }

@@ -4,10 +4,12 @@ import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { NavFabricDemoAppExample } from './Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './Nav.Nested.Example';
 import { NavCustomGroupHeadersExample } from './Nav.CustomGroupHeaders.Example';
+import { NavFocusZoneExample } from './Nav.FocusZone.Example';
 
 const NavBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.Basic.Example.tsx') as string;
 const NavFabricDemoAppExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
 const NavNestedExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.Nested.Example.tsx') as string;
+const NavFocusZoneExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.FocusZone.Example.tsx') as string;
 const NavCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
 
 export const NavPageProps: IDocPageProps = {
@@ -29,6 +31,11 @@ export const NavPageProps: IDocPageProps = {
       title: 'Nav with nested links',
       code: NavNestedExampleCode,
       view: <NavNestedExample />,
+    },
+    {
+      title: 'Nav with FocusZone props override',
+      code: NavFocusZoneExampleCode,
+      view: <NavFocusZoneExample />,
     },
     {
       title: 'Nav with custom group header',

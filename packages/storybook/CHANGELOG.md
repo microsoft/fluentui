@@ -1,8 +1,312 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Fri, 20 May 2022 12:22:01 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Nov 2022 12:23:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.27](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.27)
+
+Tue, 01 Nov 2022 12:23:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.26..@fluentui/storybook_v0.9.27)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.27 ([PR #23896](https://github.com/microsoft/fluentui/pull/23896) by tmichon@microsoft.com)
+
+## [0.9.26](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.26)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.25..@fluentui/storybook_v0.9.26)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.26 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [0.9.25](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.25)
+
+Wed, 12 Oct 2022 12:22:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.24..@fluentui/storybook_v0.9.25)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.25 ([PR #25149](https://github.com/microsoft/fluentui/pull/25149) by seanmonahan@microsoft.com)
+
+## [0.9.24](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.24)
+
+Tue, 04 Oct 2022 18:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.23..@fluentui/storybook_v0.9.24)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.24 ([PR #25064](https://github.com/microsoft/fluentui/pull/25064) by gcox@microsoft.com)
+
+## [0.9.23](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.23)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.22..@fluentui/storybook_v0.9.23)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.23 ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
+
+## [0.9.22](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.22)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.21..@fluentui/storybook_v0.9.22)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.22 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [0.9.21](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.21)
+
+Fri, 30 Sep 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.20..@fluentui/storybook_v0.9.21)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.21 ([PR #25019](https://github.com/microsoft/fluentui/pull/25019) by gcox@microsoft.com)
+
+## [0.9.20](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.20)
+
+Thu, 29 Sep 2022 12:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.19..@fluentui/storybook_v0.9.20)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.20 ([PR #24998](https://github.com/microsoft/fluentui/pull/24998) by gcox@microsoft.com)
+
+## [0.9.19](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.19)
+
+Tue, 27 Sep 2022 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.18..@fluentui/storybook_v0.9.19)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.19 ([PR #24954](https://github.com/microsoft/fluentui/pull/24954) by gcox@microsoft.com)
+
+## [0.9.18](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.18)
+
+Tue, 06 Sep 2022 20:18:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.17..@fluentui/storybook_v0.9.18)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.18 ([PR #24673](https://github.com/microsoft/fluentui/pull/24673) by gcox@microsoft.com)
+
+## [0.9.17](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.17)
+
+Fri, 02 Sep 2022 21:05:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.16..@fluentui/storybook_v0.9.17)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.17 ([PR #24656](https://github.com/microsoft/fluentui/pull/24656) by gcox@microsoft.com)
+
+## [0.9.16](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.16)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.15..@fluentui/storybook_v0.9.16)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.16 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [0.9.15](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.15)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.14..@fluentui/storybook_v0.9.15)
+
+### Patches
+
+- Bump @fluentui/react-theme-provider to v0.19.10 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+
+## [0.9.14](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.14)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.13..@fluentui/storybook_v0.9.14)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.14 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [0.9.13](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.13)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.12..@fluentui/storybook_v0.9.13)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.13 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+
+## [0.9.12](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.12)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.11..@fluentui/storybook_v0.9.12)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.12 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [0.9.11](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.11)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.10..@fluentui/storybook_v0.9.11)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.11 ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+
+## [0.9.10](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.10)
+
+Wed, 24 Aug 2022 17:07:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.9..@fluentui/storybook_v0.9.10)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.10 ([PR #24493](https://github.com/microsoft/fluentui/pull/24493) by gcox@microsoft.com)
+
+## [0.9.9](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.9)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.8..@fluentui/storybook_v0.9.9)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.9 ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+
+## [0.9.8](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.8)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.7..@fluentui/storybook_v0.9.8)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.8 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [0.9.7](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.7)
+
+Tue, 02 Aug 2022 21:25:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.6..@fluentui/storybook_v0.9.7)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.7 ([PR #24192](https://github.com/microsoft/fluentui/pull/24192) by gcox@microsoft.com)
+
+## [0.9.6](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.6)
+
+Fri, 29 Jul 2022 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.5..@fluentui/storybook_v0.9.6)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.6 ([PR #24097](https://github.com/microsoft/fluentui/pull/24097) by gcox@microsoft.com)
+
+## [0.9.5](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.5)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.4..@fluentui/storybook_v0.9.5)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.5 ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
+
+## [0.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.4)
+
+Tue, 26 Jul 2022 12:27:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.3..@fluentui/storybook_v0.9.4)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.4 ([PR #24069](https://github.com/microsoft/fluentui/pull/24069) by tmichon@microsoft.com)
+
+## [0.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.3)
+
+Mon, 25 Jul 2022 12:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.2..@fluentui/storybook_v0.9.3)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.3 ([PR #23990](https://github.com/microsoft/fluentui/pull/23990) by sarah.higley@microsoft.com)
+
+## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.2)
+
+Tue, 19 Jul 2022 12:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.1..@fluentui/storybook_v0.9.2)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.2 ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.1)
+
+Fri, 15 Jul 2022 12:21:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.0..@fluentui/storybook_v0.9.1)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.1 ([PR #23893](https://github.com/microsoft/fluentui/pull/23893) by cqc@cuiqingcai.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.8.33..@fluentui/storybook_v0.9.0)
+
+### Minor changes
+
+- Bump @uifabric/azure-themes to v7.10.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.189.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @uifabric/mdl2-theme to v0.7.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @uifabric/theme-samples to v7.5.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @fluentui/react-theme-provider to v0.19.4 ([PR #23835](https://github.com/microsoft/fluentui/pull/23835) by tmichon@microsoft.com)
+
+## [0.8.33](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.33)
+
+Thu, 30 Jun 2022 12:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.8.32..@fluentui/storybook_v0.8.33)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.9.33 ([PR #23777](https://github.com/microsoft/fluentui/pull/23777) by Humberto.Morimoto@microsoft.com)
+
+## [0.8.32](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.32)
+
+Thu, 23 Jun 2022 12:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.8.31..@fluentui/storybook_v0.8.32)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.9.32 ([PR #23638](https://github.com/microsoft/fluentui/pull/23638) by Humberto.Morimoto@microsoft.com)
+
+## [0.8.31](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.31)
+
+Thu, 16 Jun 2022 12:21:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.8.30..@fluentui/storybook_v0.8.31)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.9.31 ([PR #23548](https://github.com/microsoft/fluentui/pull/23548) by seanmonahan@microsoft.com)
+
+## [0.8.30](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.30)
+
+Tue, 14 Jun 2022 12:28:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.8.29..@fluentui/storybook_v0.8.30)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.9.30 ([PR #23488](https://github.com/microsoft/fluentui/pull/23488) by shmiitian@gmail.com)
+
+## [0.8.29](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.29)
+
+Thu, 09 Jun 2022 12:31:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.8.28..@fluentui/storybook_v0.8.29)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.9.29 ([PR #23425](https://github.com/microsoft/fluentui/pull/23425) by sarah.higley@microsoft.com)
 
 ## [0.8.28](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.28)
 

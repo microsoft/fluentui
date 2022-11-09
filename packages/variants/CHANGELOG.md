@@ -1,8 +1,71 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.4](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.3.4)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.3.3..@uifabric/variants_v7.3.4)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.13 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.3.3](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.3.3)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.3.2..@uifabric/variants_v7.3.3)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.12 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [7.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.3.2)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.3.1..@uifabric/variants_v7.3.2)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.11 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [7.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.3.1)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.3.0..@uifabric/variants_v7.3.1)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.10 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.3.0)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.2.39..@uifabric/variants_v7.3.0)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.9 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.39)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.2.38..@uifabric/variants_v7.2.39)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.8 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.2.38](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.38)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.2.37..@uifabric/variants_v7.2.38)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.7 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
 
 ## [7.2.37](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.37)
 

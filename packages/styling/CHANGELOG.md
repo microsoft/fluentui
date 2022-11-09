@@ -1,8 +1,107 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.25.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.25.1)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.24.0..@uifabric/styling_v7.25.1)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.2 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [7.24.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.24.0)
+
+Tue, 04 Oct 2022 12:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.23.1..@uifabric/styling_v7.24.0)
+
+### Minor changes
+
+- undo removal of initializeThemeInCustomizations sideeffect ([PR #25050](https://github.com/microsoft/fluentui/pull/25050) by gcox@microsoft.com)
+
+## [7.23.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.23.1)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.23.0..@uifabric/styling_v7.23.1)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.1 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [7.23.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.23.0)
+
+Thu, 29 Sep 2022 12:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.22.3..@uifabric/styling_v7.23.0)
+
+### Minor changes
+
+- Removed the initializeThemeInCustomizations side effect from index ([PR #24998](https://github.com/microsoft/fluentui/pull/24998) by gcox@microsoft.com)
+
+## [7.22.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.22.3)
+
+Fri, 02 Sep 2022 18:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.22.2..@uifabric/styling_v7.22.3)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.38.0 ([PR #24654](https://github.com/microsoft/fluentui/pull/24654) by gcox@microsoft.com)
+
+## [7.22.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.22.2)
+
+Fri, 02 Sep 2022 16:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.22.1..@uifabric/styling_v7.22.2)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.37.0 ([PR #24627](https://github.com/microsoft/fluentui/pull/24627) by mgodbolt@microsoft.com)
+
+## [7.22.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.22.1)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.21.3..@uifabric/styling_v7.22.1)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.1 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
+
+## [7.21.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.21.3)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.21.2..@uifabric/styling_v7.21.3)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.21.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.21.2)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.21.1..@uifabric/styling_v7.21.2)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.35.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.21.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.21.1)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.21.0..@uifabric/styling_v7.21.1)
+
+### Patches
+
+- fix broken media queries ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
+
+## [7.21.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.21.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.20.2..@uifabric/styling_v7.21.0)
+
+### Minor changes
+
+- Update high-contrast mixins to support forced-colors (#23285) ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
 
 ## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.20.2)
 

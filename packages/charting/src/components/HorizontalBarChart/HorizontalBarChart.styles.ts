@@ -17,6 +17,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
     items: {
       height: '32px',
       marginTop: '5px',
+      position: 'relative',
     },
     chart: {
       width: '100%',
@@ -47,6 +48,8 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       borderTop: '8px solid',
       borderTopColor: palette.blue,
       marginBottom: '4px',
+      position: 'absolute',
+      top: '12px',
     },
   };
 };

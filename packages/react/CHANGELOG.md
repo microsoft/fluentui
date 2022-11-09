@@ -1,8 +1,169 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Sep 2022 12:22:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.199.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.199.0)
+
+Fri, 30 Sep 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.198.0..@fluentui/react_v7.199.0)
+
+### Patches
+
+- chore: Add Viewport file to export withViewport decorator ([PR #25002](https://github.com/microsoft/fluentui/pull/25002) by mgodbolt@microsoft.com)
+- Bump office-ui-fabric-react to v7.199.0 ([PR #25019](https://github.com/microsoft/fluentui/pull/25019) by gcox@microsoft.com)
+
+## [7.198.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.198.0)
+
+Fri, 23 Sep 2022 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.197.0..@fluentui/react_v7.198.0)
+
+### Minor changes
+
+- fix: Export useResponsiveMode ([PR #24909](https://github.com/microsoft/fluentui/pull/24909) by mgodbolt@microsoft.com)
+
+## [7.197.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.197.0)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.196.0..@fluentui/react_v7.197.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.197.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+## [7.196.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.196.0)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.195.0..@fluentui/react_v7.196.0)
+
+### Minor changes
+
+- Added missing export files in packages/react ([PR #24517](https://github.com/microsoft/fluentui/pull/24517) by gcox@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.196.0 ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+
+## [7.195.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.195.0)
+
+Wed, 24 Aug 2022 17:07:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.194.0..@fluentui/react_v7.195.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.195.0 ([PR #24493](https://github.com/microsoft/fluentui/pull/24493) by gcox@microsoft.com)
+
+## [7.194.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.194.0)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.193.0..@fluentui/react_v7.194.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.194.0 ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+
+## [7.193.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.193.0)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.192.0..@fluentui/react_v7.193.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.193.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.192.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.192.0)
+
+Tue, 02 Aug 2022 21:25:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.191.0..@fluentui/react_v7.192.0)
+
+### Minor changes
+
+- Added top-level export for decorators ([PR #24192](https://github.com/microsoft/fluentui/pull/24192) by gcox@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.192.0 ([PR #24192](https://github.com/microsoft/fluentui/pull/24192) by gcox@microsoft.com)
+
+## [7.191.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.191.0)
+
+Fri, 29 Jul 2022 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.190.2..@fluentui/react_v7.191.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.191.0 ([PR #24097](https://github.com/microsoft/fluentui/pull/24097) by gcox@microsoft.com)
+
+## [7.190.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.190.2)
+
+Tue, 26 Jul 2022 12:27:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.190.0..@fluentui/react_v7.190.2)
+
+### Patches
+
+- feat: Allow SelectionZone attributes to disallow behaviors. ([PR #24069](https://github.com/microsoft/fluentui/pull/24069) by tmichon@microsoft.com)
+
+## [7.190.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.190.0)
+
+Tue, 19 Jul 2022 12:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.189.0..@fluentui/react_v7.190.0)
+
+### Minor changes
+
+- feat: adds keyboard overrides to SelectionZone and DetailsList ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.190.0 ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
+
+## [7.189.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.189.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.188.0..@fluentui/react_v7.189.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.189.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+
+## [7.188.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.188.0)
+
+Thu, 30 Jun 2022 12:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.187.0..@fluentui/react_v7.188.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.188.0 ([PR #23777](https://github.com/microsoft/fluentui/pull/23777) by Humberto.Morimoto@microsoft.com)
+
+## [7.187.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.187.0)
+
+Thu, 23 Jun 2022 12:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.186.0..@fluentui/react_v7.187.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.187.0 ([PR #23638](https://github.com/microsoft/fluentui/pull/23638) by Humberto.Morimoto@microsoft.com)
+
+## [7.186.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.186.0)
+
+Thu, 16 Jun 2022 12:21:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.185.9..@fluentui/react_v7.186.0)
+
+### Minor changes
+
+- feat: add isSelectedOnFocus prop to DetailsList ([PR #23548](https://github.com/microsoft/fluentui/pull/23548) by seanmonahan@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.186.0 ([PR #23548](https://github.com/microsoft/fluentui/pull/23548) by seanmonahan@microsoft.com)
+
+## [7.185.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.185.9)
+
+Tue, 14 Jun 2022 12:28:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.185.6..@fluentui/react_v7.185.9)
+
+### Patches
+
+- set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode ([PR #23488](https://github.com/microsoft/fluentui/pull/23488) by shmiitian@gmail.com)
 
 ## [7.185.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.185.6)
 

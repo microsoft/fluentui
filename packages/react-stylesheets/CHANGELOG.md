@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-stylesheets
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.2.9)
+
+Mon, 31 Oct 2022 12:24:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-stylesheets_v0.2.8..@fluentui/react-stylesheets_v0.2.9)
+
+### Patches
+
+- Bump @uifabric/jest-serializer-merge-styles to v7.2.6 ([PR #25387](https://github.com/microsoft/fluentui/pull/25387) by gcox@microsoft.com)
+
+## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.2.8)
+
+Fri, 30 Sep 2022 21:44:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-stylesheets_v0.2.7..@fluentui/react-stylesheets_v0.2.8)
+
+### Patches
+
+- Bump @uifabric/jest-serializer-merge-styles to v7.2.5 ([PR #25035](https://github.com/microsoft/fluentui/pull/25035) by arujain@microsoft.com)
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.2.7)
+
+Thu, 01 Sep 2022 23:27:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-stylesheets_v0.2.6..@fluentui/react-stylesheets_v0.2.7)
+
+### Patches
+
+- Bump @uifabric/jest-serializer-merge-styles to v7.2.4 ([PR #24628](https://github.com/microsoft/fluentui/pull/24628) by gcox@microsoft.com)
 
 ## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.2.6)
 

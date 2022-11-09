@@ -33,13 +33,13 @@ exports[`ComboBox Renders correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open:after {
           border-color: Highlight;
         }
         &:after {
@@ -64,46 +64,46 @@ exports[`ComboBox Renders correctly 1`] = `
         &:hover .ms-ComboBox-Input::placeholder {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
           color: GrayText;
         }
         &:hover .ms-ComboBox-Input:-ms-input-placeholder {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
           color: GrayText;
         }
         &:hover .ms-ComboBox-Input::-ms-input-placeholder {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
           color: GrayText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:after {
           border-color: Highlight;
         }
         &:active {
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:after {
           border-color: Highlight;
         }
         &:focus {
@@ -112,19 +112,19 @@ exports[`ComboBox Renders correctly 1`] = `
         &:focus .ms-ComboBox-Input {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus:after {
           border-color: Highlight;
         }
         &:focus:after {
@@ -165,25 +165,25 @@ exports[`ComboBox Renders correctly 1`] = `
           &::placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
             color: GrayText;
           }
           &:-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-clear {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
@@ -255,7 +255,7 @@ exports[`ComboBox Renders correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -267,7 +267,7 @@ exports[`ComboBox Renders correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: ButtonFace;
             border-color: ButtonText;
@@ -279,7 +279,7 @@ exports[`ComboBox Renders correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
@@ -290,7 +290,7 @@ exports[`ComboBox Renders correctly 1`] = `
             background-color: #edebe9;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
@@ -398,13 +398,13 @@ exports[`ComboBox Renders correctly when open 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open:after {
           border-color: Highlight;
         }
         &:after {
@@ -424,31 +424,31 @@ exports[`ComboBox Renders correctly when open 1`] = `
         & .ms-ComboBox-Input {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
           border-color: Highlight;
         }
         &:active {
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:after {
           border-color: Highlight;
         }
         &:focus {
@@ -457,19 +457,19 @@ exports[`ComboBox Renders correctly when open 1`] = `
         &:focus .ms-ComboBox-Input {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus:after {
           border-color: Highlight;
         }
         &:focus:after {
@@ -512,25 +512,25 @@ exports[`ComboBox Renders correctly when open 1`] = `
           &::placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
             color: GrayText;
           }
           &:-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-clear {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
@@ -592,7 +592,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -604,7 +604,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
@@ -615,7 +615,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
             background-color: #e1dfdd;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
@@ -723,7 +723,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                 outline: transparent;
                 position: absolute;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border-color: WindowText;
                 border-style: solid;
                 border-width: 1px;
@@ -784,7 +784,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           text-align: left;
                           user-select: none;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           color: GrayText;
                           forced-color-adjust: none;
@@ -861,7 +861,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           top: 2px;
                           z-index: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           bottom: -2px;
                           left: -2px;
                           outline-color: ButtonText;
@@ -873,7 +873,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           position: relative;
                           top: 0px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           border-color: Background;
                           border: none;
                         }
@@ -891,7 +891,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           background-color: #f3f2f1;
                           color: #201f1e;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                           border-color: Highlight;
                           color: Highlight;
                         }
@@ -1018,7 +1018,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                         top: 2px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -1030,7 +1030,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                         position: relative;
                         top: 0px;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         background-color: Highlight;
                         border-color: Highlight;
@@ -1051,7 +1051,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                       &:hover {
                         background-color: #f3f2f1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                         -ms-high-contrast-adjust: none;
                         background-color: Highlight;
                         border-color: Highlight;
@@ -1161,13 +1161,13 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open:after {
           border-color: Highlight;
         }
         &:after {
@@ -1187,31 +1187,31 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
         & .ms-ComboBox-Input {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
           border-color: Highlight;
         }
         &:active {
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:after {
           border-color: Highlight;
         }
         &:focus {
@@ -1220,19 +1220,19 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
         &:focus .ms-ComboBox-Input {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus:after {
           border-color: Highlight;
         }
         &:focus:after {
@@ -1275,25 +1275,25 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
           &::placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
             color: GrayText;
           }
           &:-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-clear {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
@@ -1356,7 +1356,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1368,7 +1368,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
@@ -1379,7 +1379,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
             background-color: #e1dfdd;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
@@ -1487,7 +1487,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 outline: transparent;
                 position: absolute;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border-color: WindowText;
                 border-style: solid;
                 border-width: 1px;
@@ -1548,7 +1548,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           text-align: left;
                           user-select: none;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           color: GrayText;
                           forced-color-adjust: none;
@@ -1607,7 +1607,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         &:hover .ms-Checkbox-checkbox {
                           border-color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                           border-color: Highlight;
                         }
                         &:focus .ms-Checkbox-checkbox {
@@ -1617,22 +1617,22 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           color: #605e5c;
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                           color: Highlight;
                         }
                         &:hover .ms-Checkbox-text {
                           color: #201f1e;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-text {
                           color: WindowText;
                         }
                         &:focus .ms-Checkbox-text {
                           color: #201f1e;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-Checkbox-text {
                           color: WindowText;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           border-color: Background;
                           border: none;
                         }
@@ -1663,7 +1663,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             outline-offset: 2px;
                             outline: 1px solid #605e5c;
                           }
-                          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                             outline: 1px solid WindowText;
                           }
                       data-index="1"
@@ -1719,7 +1719,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                               width: 20px;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               border-color: WindowText;
                               forced-color-adjust: none;
@@ -1740,7 +1740,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                 opacity: 0;
                                 speak: none;
                               }
-                              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                 -ms-high-contrast-adjust: none;
                                 color: Window;
                                 forced-color-adjust: none;
@@ -1819,36 +1819,36 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         background: #005a9e;
                         border-color: #005a9e;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         border-color: Background;
                         border: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                         background: Highlight;
                         border-color: Highlight;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-Checkbox-checkbox {
                         background: Highlight;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
                         background: Highlight;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
                         color: Window;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                         color: Window;
                       }
                       &:hover .ms-Checkbox-text {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-text {
                         color: WindowText;
                       }
                       &:focus .ms-Checkbox-text {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-Checkbox-text {
                         color: WindowText;
                       }
                       &.ms-Checkbox {
@@ -1879,7 +1879,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           outline-offset: 2px;
                           outline: 1px solid #605e5c;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                           outline: 1px solid WindowText;
                         }
                     data-index="3"
@@ -1937,7 +1937,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                             width: 20px;
                           }
-                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                             -ms-high-contrast-adjust: none;
                             background: Highlight;
                             border-color: Highlight;
@@ -1959,7 +1959,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                               opacity: 1;
                               speak: none;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               color: Window;
                               forced-color-adjust: none;
@@ -2030,13 +2030,13 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open:after {
           border-color: Highlight;
         }
         &:after {
@@ -2061,46 +2061,46 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         &:hover .ms-ComboBox-Input::placeholder {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
           color: GrayText;
         }
         &:hover .ms-ComboBox-Input:-ms-input-placeholder {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
           color: GrayText;
         }
         &:hover .ms-ComboBox-Input::-ms-input-placeholder {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
           color: GrayText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:after {
           border-color: Highlight;
         }
         &:active {
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:after {
           border-color: Highlight;
         }
         &:focus {
@@ -2109,19 +2109,19 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         &:focus .ms-ComboBox-Input {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-ComboBox-Input {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: WindowText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
           -ms-high-contrast-adjust: none;
           background-color: Window;
           color: HighlightText;
           forced-color-adjust: none;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus:after {
           border-color: Highlight;
         }
         &:focus:after {
@@ -2164,25 +2164,25 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           &::placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
             color: GrayText;
           }
           &:-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-input-placeholder {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
             color: GrayText;
           }
           &::-ms-clear {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
@@ -2255,7 +2255,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2267,7 +2267,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: ButtonFace;
             border-color: ButtonText;
@@ -2279,7 +2279,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
@@ -2290,7 +2290,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             background-color: #edebe9;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Highlight;
             border-color: Highlight;
