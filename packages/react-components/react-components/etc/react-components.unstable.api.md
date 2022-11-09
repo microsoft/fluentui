@@ -63,6 +63,8 @@ import { ComboboxOpenEvents } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import { ComboboxState } from '@fluentui/react-combobox';
+import { createColumn } from '@fluentui/react-table';
+import { CreateColumnOptions } from '@fluentui/react-table';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
@@ -112,6 +114,9 @@ import { PersonaSlots } from '@fluentui/react-persona';
 import { PersonaState } from '@fluentui/react-persona';
 import { Progress } from '@fluentui/react-progress';
 import { progressClassNames } from '@fluentui/react-progress';
+import { ProgressField } from '@fluentui/react-field';
+import { progressFieldClassNames } from '@fluentui/react-field';
+import { ProgressFieldProps } from '@fluentui/react-field';
 import { ProgressProps } from '@fluentui/react-progress';
 import { ProgressSlots } from '@fluentui/react-progress';
 import { ProgressState } from '@fluentui/react-progress';
@@ -421,6 +426,10 @@ export { ComboboxSlots }
 
 export { ComboboxState }
 
+export { createColumn }
+
+export { CreateColumnOptions }
+
 export { DATA_OVERFLOW_ITEM }
 
 export { DATA_OVERFLOW_MENU }
@@ -518,6 +527,12 @@ export { PersonaState }
 export { Progress }
 
 export { progressClassNames }
+
+export { ProgressField }
+
+export { progressFieldClassNames }
+
+export { ProgressFieldProps }
 
 export { ProgressProps }
 

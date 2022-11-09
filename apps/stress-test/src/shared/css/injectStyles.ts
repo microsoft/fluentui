@@ -158,7 +158,7 @@ export const randomCssFromSelectors = (selectors: string[]): string => {
   let css = '';
 
   selectors.forEach(selector => {
-    css += `${selector} { background-color: ${choice(colors)}; }\n`;
+    css += `${selector} { background-color: ${choice(colors)}; transition-duration: 0ms; }\n`;
   });
 
   return css;

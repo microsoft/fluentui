@@ -1,12 +1,5 @@
 import * as React from 'react';
 import {
-  bundleIcon,
-  CalendarMonthFilled,
-  CalendarMonthRegular,
-  FilterFilled,
-  FilterRegular,
-} from '@fluentui/react-icons';
-import {
   makeStyles,
   Menu,
   MenuButton,
@@ -16,9 +9,7 @@ import {
   MenuTrigger,
   Tooltip,
 } from '@fluentui/react-components';
-
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
-const Filter = bundleIcon(FilterFilled, FilterRegular);
+import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -34,7 +25,7 @@ export const Icon = () => {
     <div className={styles.wrapper}>
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton icon={<CalendarMonth />}>With calendar icon</MenuButton>
+          <MenuButton icon={<CalendarMonthRegular />}>With calendar icon</MenuButton>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -46,7 +37,7 @@ export const Icon = () => {
 
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton icon={<CalendarMonth />} menuIcon={<Filter />}>
+          <MenuButton icon={<CalendarMonthRegular />} menuIcon={<FilterRegular />}>
             With calendar icon and custom filter menu icon
           </MenuButton>
         </MenuTrigger>
@@ -61,7 +52,7 @@ export const Icon = () => {
       <Menu>
         <MenuTrigger disableButtonEnhancement>
           <Tooltip content="With calendar icon and no contents" relationship="label">
-            <MenuButton icon={<CalendarMonth />} />
+            <MenuButton icon={<CalendarMonthRegular />} />
           </Tooltip>
         </MenuTrigger>
         <MenuPopover>

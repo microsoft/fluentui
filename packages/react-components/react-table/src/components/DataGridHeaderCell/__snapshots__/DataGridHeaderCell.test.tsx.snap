@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataGridHeaderCell renders a default state 1`] = `
+<div>
+  <div
+    class="fui-DataGridHeaderCell fui-TableHeaderCell"
+    role="columnheader"
+  >
+    <button
+      class="fui-DataGridHeaderCell__button fui-TableHeaderCell__button"
+      role="presentation"
+      tabindex="-1"
+      type="button"
+    >
+      Default DataGridHeaderCell
+    </button>
+  </div>
+</div>
+`;
