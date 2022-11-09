@@ -35,7 +35,7 @@ export function useSSRContext(): SSRContextValue {
  *
  * @public
  */
-export const SSRProvider: React.FC = props => {
+export const SSRProvider: React.FC<{ children: React.ReactNode }> = props => {
   const [value] = React.useState<SSRContextValue>(() => ({ current: 0 }));
 
   return <SSRContext.Provider value={value}>{props.children}</SSRContext.Provider>;
