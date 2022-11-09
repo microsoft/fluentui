@@ -299,8 +299,8 @@ export type { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/re
 export { SliderField_unstable as SliderField, sliderFieldClassNames } from '@fluentui/react-slider';
 export type { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
 
-export { SpinButtonField_unstable as SpinButtonField, spinButtonFieldClassNames } from '@fluentui/react-spinButton';
-export type { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinButton';
+export { SpinButtonField_unstable as SpinButtonField, spinButtonFieldClassNames } from '@fluentui/react-spinbutton';
+export type { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
 
 export { SwitchField_unstable as SwitchField, switchFieldClassNames } from '@fluentui/react-switch';
 export type { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
