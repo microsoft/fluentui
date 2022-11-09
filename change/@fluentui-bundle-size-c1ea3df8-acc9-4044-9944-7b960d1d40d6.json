@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix(typings): fix type errors exposed by node 14 typings",
+  "packageName": "@fluentui/bundle-size",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

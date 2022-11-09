@@ -22,7 +22,7 @@ async function performTest() {
 
     // Install dependencies, using the minimum TS version supported for consumers
     const dependencies = [
-      '@types/node',
+      '@types/node@14',
       '@types/react@17',
       '@types/react-dom@17',
       'react@17',

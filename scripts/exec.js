@@ -42,10 +42,10 @@ function exec(cmd, displayName, cwd = process.cwd(), opts = {}) {
     );
 
     if (opts.stdout) {
-      child.stdout.pipe(opts.stdout);
+      child.stdout?.pipe(opts.stdout);
     }
     if (opts.stderr) {
-      child.stderr.pipe(opts.stderr);
+      child.stderr?.pipe(opts.stderr);
     }
   });
 }
