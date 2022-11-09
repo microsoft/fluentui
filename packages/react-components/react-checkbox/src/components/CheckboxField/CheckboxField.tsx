@@ -1,9 +1,14 @@
 import * as React from 'react';
-import type { CheckboxProps } from '@fluentui/react-checkbox';
-import { Checkbox } from '@fluentui/react-checkbox';
+import type { FieldProps } from '@fluentui/react-field';
+import {
+  getFieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { FieldProps } from '../../Field';
-import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from '../../Field';
+import type { CheckboxProps } from '../../Checkbox';
+import { Checkbox } from '../../Checkbox';
 
 export type CheckboxFieldProps = Omit<FieldProps<typeof Checkbox>, 'label'> & {
   /**

@@ -4,18 +4,31 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Progress: ForwardRefComponent<ProgressProps>;
 
 // @public (undocumented)
 export const progressClassNames: SlotClassNames<ProgressSlots>;
+
+// @public (undocumented)
+export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unstable>;
+
+// @public (undocumented)
+export const progressFieldClassNames: SlotClassNames<FieldSlots<React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className" | "id" | "aria-describedby" | "aria-errormessage" | "aria-invalid" | "aria-labelledby">>>>;
+
+// @public (undocumented)
+export type ProgressFieldProps_unstable = FieldProps<typeof Progress>;
 
 // @public
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {

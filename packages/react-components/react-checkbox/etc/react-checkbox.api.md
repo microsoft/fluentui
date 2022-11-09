@@ -8,17 +8,31 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
 // @public (undocumented)
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
+
+// @public (undocumented)
+export const CheckboxField_unstable: ForwardRefComponent<CheckboxFieldProps_unstable>;
+
+// @public (undocumented)
+export const checkboxFieldClassNames: SlotClassNames<FieldSlots<React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className" | "id" | "aria-describedby" | "aria-errormessage" | "aria-invalid" | "aria-labelledby">>>>;
+
+// @public (undocumented)
+export type CheckboxFieldProps_unstable = Omit<FieldProps<typeof Checkbox>, 'label'> & {
+    label?: CheckboxProps['label'];
+    fieldLabel?: FieldProps<typeof Checkbox>['label'];
+};
 
 // @public
 export interface CheckboxOnChangeData {

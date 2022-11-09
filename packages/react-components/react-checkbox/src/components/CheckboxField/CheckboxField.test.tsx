@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { CheckboxField } from './CheckboxField';
 
 describe('CheckboxField', () => {
@@ -21,6 +21,7 @@ describe('CheckboxField', () => {
         },
       ],
     },
+    disabledTests: ['exported-top-level'], // TODO re-enable once component is exported without _unstable
   });
 
   // Most functionality is tested by Field.test.tsx, and Checkbox's tests

@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { Switch } from '@fluentui/react-switch';
+import type { FieldProps } from '@fluentui/react-field';
+import {
+  getFieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { FieldProps } from '../../Field';
-import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from '../../Field';
+import { Switch } from '../../Switch';
 
 // The Field's `label` prop overrides the Switch's built-in `label`.
 // Therefore, the Switch's `labelPosition` has no effect and is omitted to avoid confusion.

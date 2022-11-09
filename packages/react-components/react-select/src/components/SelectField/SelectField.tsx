@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { Select } from '@fluentui/react-select';
+import type { FieldProps } from '@fluentui/react-field';
+import {
+  getFieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { FieldProps } from '../../Field';
-import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from '../../Field';
+import { Select } from '../../Select';
 
 export type SelectFieldProps = FieldProps<typeof Select>;
 

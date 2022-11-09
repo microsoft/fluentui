@@ -4,18 +4,31 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
 
 // @public (undocumented)
 export const inputClassNames: SlotClassNames<InputSlots>;
+
+// @public (undocumented)
+export const InputField_unstable: ForwardRefComponent<InputFieldProps_unstable>;
+
+// @public (undocumented)
+export const inputFieldClassNames: SlotClassNames<FieldSlots<React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className" | "id" | "aria-describedby" | "aria-errormessage" | "aria-invalid" | "aria-labelledby">>>>;
+
+// @public (undocumented)
+export type InputFieldProps_unstable = FieldProps<typeof Input>;
 
 // @public
 export type InputOnChangeData = {
