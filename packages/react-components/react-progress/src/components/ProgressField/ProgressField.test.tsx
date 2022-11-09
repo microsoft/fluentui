@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { fieldConformanceTestOptions } from '@fluentui/react-field';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { ProgressField } from './ProgressField';
@@ -9,7 +8,18 @@ describe('ProgressField', () => {
     Component: ProgressField,
     displayName: 'ProgressField',
     primarySlot: 'control',
-    testOptions: fieldConformanceTestOptions,
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'label text',
+            validationState: 'error',
+            validationMessage: 'validation message text',
+            hint: 'hint text',
+          },
+        },
+      ],
+    },
     disabledTests: ['exported-top-level'], // TODO re-enable once component is exported without _unstable
   });
 

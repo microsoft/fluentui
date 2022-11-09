@@ -1,4 +1,3 @@
-import { fieldConformanceTestOptions } from '@fluentui/react-field';
 import { isConformant } from '../../common/isConformant';
 import { TextareaField } from './TextareaField';
 
@@ -7,7 +6,18 @@ describe('TextareaField', () => {
     Component: TextareaField,
     displayName: 'TextareaField',
     primarySlot: 'control',
-    testOptions: fieldConformanceTestOptions,
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'label text',
+            validationState: 'error',
+            validationMessage: 'validation message text',
+            hint: 'hint text',
+          },
+        },
+      ],
+    },
     disabledTests: ['exported-top-level'], // TODO re-enable once component is exported without _unstable
   });
 
