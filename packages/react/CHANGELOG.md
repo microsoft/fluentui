@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 04 Nov 2022 07:48:06 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Nov 2022 07:48:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.101.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.101.0)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.100.0..@fluentui/react_v8.101.0)
+
+### Minor changes
+
+- This change removes top-level export * from the index.js of @fluentui/react, which was implicitly exporting duplicates of symbols. Changing to explicit exports means that the export * as the top level barrel file can't introduce duplicate names. This works around an issue identified in esbuild: https://github.com/evanw/esbuild/issues/2658 ([PR #25545](https://github.com/microsoft/fluentui/pull/25545) by dzearing@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.5.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.23 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/merge-styles to v8.5.4 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/react-focus to v8.8.9 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/react-hooks to v8.6.13 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.4 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/style-utilities to v8.8.2 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/theme to v2.6.18 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/utilities to v8.13.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/common-styles to v1.2.12 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/example-data to v8.4.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.21 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/test-utilities to v8.2.4 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/webpack-utilities to v8.1.9 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
 
 ## [8.100.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.100.0)
 

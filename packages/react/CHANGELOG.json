@@ -2,6 +2,117 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/react_v8.101.0",
+      "version": "8.101.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6ab9ad73f61226c779bd6bc297daa12b11791551",
+            "comment": "This change removes top-level export * from the index.js of @fluentui/react, which was implicitly exporting duplicates of symbols. Changing to explicit exports means that the export * as the top level barrel file can't introduce duplicate names. This works around an issue identified in esbuild: https://github.com/evanw/esbuild/issues/2658"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.5.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.23",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.5.4",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.9",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.13",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.4",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/set-version to v8.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.8.2",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.18",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.12",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/example-data to v8.4.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.21",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/test-utilities to v8.2.4",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/webpack-utilities to v8.1.9",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Nov 2022 07:48:06 GMT",
       "tag": "@fluentui/react_v8.100.0",
       "version": "8.100.0",

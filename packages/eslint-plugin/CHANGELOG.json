@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.6",
+      "version": "1.12.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "6ab9ad73f61226c779bd6bc297daa12b11791551",
+            "comment": "Updating react-legacy linting to warn on export star usage."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Oct 2022 07:38:21 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.5",
       "version": "1.12.5",

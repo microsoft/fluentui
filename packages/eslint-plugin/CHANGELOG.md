@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 10 Oct 2022 07:38:21 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Nov 2022 07:48:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.6)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.5..@fluentui/eslint-plugin_v1.12.6)
+
+### Patches
+
+- Updating react-legacy linting to warn on export star usage. ([PR #25545](https://github.com/microsoft/fluentui/pull/25545) by dzearing@microsoft.com)
 
 ## [1.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.5)
 

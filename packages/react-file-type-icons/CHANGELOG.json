@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.8.1",
+      "version": "8.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/set-version to v8.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.8.2",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Oct 2022 07:43:42 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.8.0",
       "version": "8.8.0",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.14.12",
+  "version": "5.14.13",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,13 +28,13 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react": "^8.100.0",
+    "@fluentui/react": "^8.101.0",
     "@types/react-addons-test-utils": "0.14.18",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.20"
+    "@fluentui/jest-serializer-merge-styles": "^8.0.21"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^8.8.8",
+    "@fluentui/react-focus": "^8.8.9",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
@@ -46,7 +46,7 @@
     "@types/d3-shape": "^1.2.3",
     "@types/d3-time-format": "^2.1.0",
     "@types/d3-time": "^1.1.0",
-    "@fluentui/set-version": "^8.2.2",
+    "@fluentui/set-version": "^8.2.3",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
     "d3-format": "^1.4.4",
@@ -60,7 +60,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react": "^8.100.0",
+    "@fluentui/react": "^8.101.0",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",

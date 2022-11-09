@@ -2,6 +2,33 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/theme_v2.6.18",
+      "version": "2.6.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/merge-styles to v8.5.4",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/utilities to v8.13.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/set-version to v8.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 07:43:13 GMT",
       "tag": "@fluentui/theme_v2.6.17",
       "version": "2.6.17",

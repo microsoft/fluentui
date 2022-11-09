@@ -2,6 +2,27 @@
   "name": "@fluentui/react-window-provider",
   "entries": [
     {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/react-window-provider_v2.2.4",
+      "version": "2.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-window-provider",
+            "comment": "Bump @fluentui/set-version to v8.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-window-provider",
+            "comment": "Bump @fluentui/test-utilities to v8.2.4",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 07:43:12 GMT",
       "tag": "@fluentui/react-window-provider_v2.2.3",
       "version": "2.2.3",
