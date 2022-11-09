@@ -12,6 +12,10 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
+const reservedSpaceClassNames = {
+  content: 'fui-Tab__content--reserved-space',
+};
+
 /**
  * Styles for the root slot
  */
@@ -309,6 +313,8 @@ const useActiveIndicatorStyles = makeStyles({
  */
 const useIconStyles = makeStyles({
   base: {
+    gridColumnStart: 1,
+    gridRowStart: 1,
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
@@ -340,6 +346,17 @@ const useContentStyles = makeStyles({
   },
   selected: {
     ...typographyStyles.body1Strong,
+  },
+  noIconBefore: {
+    gridColumnStart: 1,
+    gridRowStart: 1,
+  },
+  iconBefore: {
+    gridColumnStart: 2,
+    gridRowStart: 1,
+  },
+  placeholder: {
+    visibility: 'hidden',
   },
 });
 
@@ -384,6 +401,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
       size === 'small' &&
       (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
     selected && disabled && activeIndicatorStyles.disabled,
+
     state.root.className,
   );
 
@@ -391,10 +409,23 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     state.icon.className = mergeClasses(tabClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
   }
 
+  // This needs to be before state.content.className is updated
+  if (state.contentReservedSpaceClassName !== undefined) {
+    state.contentReservedSpaceClassName = mergeClasses(
+      reservedSpaceClassNames.content,
+      contentStyles.base,
+      contentStyles.selected,
+      state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
+      contentStyles.placeholder,
+      state.content.className,
+    );
+  }
+
   state.content.className = mergeClasses(
     tabClassNames.content,
     contentStyles.base,
     selected && contentStyles.selected,
+    state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
     state.content.className,
   );
 

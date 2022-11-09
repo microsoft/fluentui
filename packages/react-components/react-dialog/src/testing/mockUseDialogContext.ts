@@ -1,5 +1,5 @@
-import { useDialogContext_unstable } from './dialogContext';
-import type { DialogContextValue } from './dialogContext';
+import { useDialogContext_unstable } from '../contexts/dialogContext';
+import type { DialogContextValue } from '../contexts/dialogContext';
 
 /**
  * A test utility to mock the useDialogContext_unstable hook that relies on context selector

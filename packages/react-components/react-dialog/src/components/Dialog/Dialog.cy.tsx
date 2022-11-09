@@ -30,7 +30,7 @@ import {
   dialogTriggerCloseId,
   dialogTriggerCloseSelector,
   dialogTriggerOpenSelector,
-} from './selectors';
+} from '../../testing/selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -179,6 +179,7 @@ describe('Dialog', () => {
         }
       }, [open]);
       return (
+        //eslint-disable-next-line react/jsx-no-bind
         <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
           <DialogTrigger disableButtonEnhancement>
             <Button>Open dialog</Button>
