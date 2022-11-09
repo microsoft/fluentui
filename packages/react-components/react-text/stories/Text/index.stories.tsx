@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import { Text } from '@fluentui/react-components';
 import textDescriptionMd from './TextDescription.md';
+import textBestPracticesMd from './TextBestPractices.md';
 
 export { Default } from './Default.stories';
 export { Font } from './TextFont.stories';
@@ -19,7 +20,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: textDescriptionMd,
+        component: [textDescriptionMd, textBestPracticesMd].join('\n'),
       },
     },
   },
