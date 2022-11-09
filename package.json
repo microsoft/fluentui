@@ -249,7 +249,7 @@
     "lage": "1.8.8",
     "lerna": "5.5.2",
     "lint-staged": "10.2.10",
-    "loader-utils": "2.0.0",
+    "loader-utils": "2.0.3",
     "markdown-table": "2.0.0",
     "memfs": "3.2.2",
     "mini-css-extract-plugin": "2.6.1",
