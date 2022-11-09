@@ -8,6 +8,8 @@ These issues are used by core contributors to track the list of items that shoul
 completed as part of creating a v9 component. More info can be found here: https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide
 -->
 
+💡 When you create a PR for any of the checklist items, add a link to this Epic under the PR's **Related Issues** section.
+
 ## Preparation
 
 - [ ] [Open UI Research](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#open-ui-research)
@@ -15,25 +17,20 @@ completed as part of creating a v9 component. More info can be found here: https
 - [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
   - [link to each issue]
 - [ ] [Create react-\* package and component from template](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-package)
-  - [link to PR]
-  - [link to package: `https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-<your-component>`]
+  - [link to package: https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-(your-component)]
 - [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
-  - [link to PR, if applicable]
+  - [link to draft implementation, if applicable]
 - [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
-  - [link to PR]
-  - [link to Spec.md: `https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-<your-component>/Spec.md`]
 
 ## Implementation
 
 - [ ] [Component implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#implement-the-control)
-  - [link(s) to component implementation related PRs]
 - [ ] Initial conformance and unit tests (validate basic functionality)
 - [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
   - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
   - [ ] README.md covering basic usage
   - [ ] MIGRATION.md guide (include v8 and v0)
 - [ ] Component exported from `@fluentui/react-components/unstable`
-  - [link to PR]
 
 ## Validation
 
@@ -44,8 +41,7 @@ completed as part of creating a v9 component. More info can be found here: https
   - [ ] Performance test scenario
   - [ ] Accessibility behavior tests
   - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
-  - [Link to PR(s)]
-- [ ] [Validate in product](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
+- [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
 - [ ] Finalize documentation
   - [ ] Review and add any missing storybook stories
   - [ ] Finalize migration guide
