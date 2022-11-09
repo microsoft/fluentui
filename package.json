@@ -153,7 +153,7 @@
     "@types/loader-utils": "2.0.3",
     "@types/markdown-table": "2.0.0",
     "@types/micromatch": "4.0.2",
-    "@types/node": "10.17.55",
+    "@types/node": "14.18.32",
     "@types/node-fetch": "2.5.7",
     "@types/prettier": "2.2.3",
     "@types/progress": "2.0.5",
