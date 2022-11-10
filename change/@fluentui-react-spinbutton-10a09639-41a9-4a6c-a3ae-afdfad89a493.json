@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Move SpinButtonField into the @fluentui/react-spinbutton package and export as _unstable",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

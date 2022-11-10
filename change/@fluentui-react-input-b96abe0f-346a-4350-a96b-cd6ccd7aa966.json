@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Move InputField into the @fluentui/react-input package and export as _unstable",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

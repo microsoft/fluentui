@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Move individual field components into their respective packages, and out of @fluentui/react-field",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

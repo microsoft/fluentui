@@ -33,6 +33,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-field": "9.0.0-alpha.7",
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.2.0",
     "@griffel/react": "^1.4.2",

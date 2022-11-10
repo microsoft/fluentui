@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { Slider } from '@fluentui/react-slider';
+import type { FieldProps } from '@fluentui/react-field';
+import {
+  getFieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { FieldProps } from '../../Field';
-import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from '../../Field';
+import { Slider } from '../../Slider';
 
 export type SliderFieldProps = FieldProps<typeof Slider>;
 

@@ -32,6 +32,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-field": "9.0.0-alpha.7",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-label": "^9.0.9",
     "@fluentui/react-tabster": "^9.2.1",
