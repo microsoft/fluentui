@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Clean up Field tests and story imports in preparation of moving to individual packages",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

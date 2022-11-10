@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "9.0.10",
+  "version": "9.0.11",
   "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -27,16 +27,17 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.16",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.17",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-field": "9.0.0-alpha.7",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-label": "^9.0.8",
-    "@fluentui/react-tabster": "^9.2.0",
+    "@fluentui/react-label": "^9.0.9",
+    "@fluentui/react-tabster": "^9.2.1",
     "@fluentui/react-theme": "^9.1.1",
-    "@fluentui/react-utilities": "^9.1.2",
-    "@griffel/react": "^1.4.1",
+    "@fluentui/react-utilities": "^9.2.0",
+    "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -53,9 +54,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }

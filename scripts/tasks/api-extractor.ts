@@ -67,6 +67,10 @@ export function apiExtractor() {
   const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
 
   const { isUsingTsSolutionConfigs, packageJson, tsConfig, tsConfigPath } = getTsPathAliasesConfig();
+  const messages = {
+    TS7016: [] as string[],
+    TS2305: [] as string[],
+  };
 
   return apiExtractorConfigsForExecution.length
     ? (series(
@@ -82,6 +86,39 @@ export function apiExtractor() {
               typescriptCompilerFolder: args['typescript-compiler-folder'],
               configJsonFilePath: args.config ?? configPath,
               localBuild: args.local ?? !process.env.TF_BUILD,
+              onResult: result => {
+                if (!isUsingTsSolutionConfigs) {
+                  return;
+                }
+                if (result.succeeded === true) {
+                  return;
+                }
+
+                if (messages.TS2305.length) {
+                  const errTitle = [
+                    chalk.bgRed.white.bold(`api-extractor | API VIOLATION:`),
+                    chalk.red(`  Your package public API uses \`@internal\` marked API's from following packages:`),
+                    '\n',
+                  ].join('');
+                  const logErr = formatApiViolationMessage(messages.TS2305);
+
+                  logger.error(errTitle, logErr, '\n');
+                }
+
+                if (messages.TS7016.length) {
+                  const errTitle = [
+                    chalk.bgRed.white.bold(`api-extractor | MISSING DEPENDENCY TYPE DECLARATIONS:`),
+                    chalk.red(`  Package dependencies are missing index.d.ts type definitions:`),
+                    '\n',
+                  ].join('');
+                  const logErr = formatMissingApiViolationMessage(messages.TS7016);
+                  const logFix = chalk.blueBright(
+                    `${chalk.bold('🛠 FIX')}: run '${chalk.italic(`yarn lage generate-api --to ${packageJson.name}`)}'`,
+                  );
+
+                  logger.error(errTitle, logErr, '\n', logFix, '\n');
+                }
+              },
 
               messageCallback: message => {
                 if (!isUsingTsSolutionConfigs) {
@@ -92,23 +129,11 @@ export function apiExtractor() {
                 }
 
                 if (message.messageId === compilerMessages.TS2305) {
-                  logger.error(
-                    chalk.bgRed.white.bold(`api-extractor | API VIOLATION:`),
-                    chalk.red(`Looks like your package public API surface uses \`@internal\` marked API's!`),
-                    '\n',
-                  );
+                  messages.TS2305.push(message.text);
                 }
 
                 if (message.messageId === compilerMessages.TS7016) {
-                  logger.error(
-                    chalk.bgRed.white.bold(`api-extractor | MISSING DEPENDENCY TYPE DECLARATIONS:`),
-                    chalk.red(`Looks like your package dependencies don't have generated index.d.ts type definitions.`),
-                    '\n',
-                    chalk.blueBright(
-                      `🛠 Fix this by running: ${chalk.italic(`yarn lage generate-api --to ${packageJson.name}`)}`,
-                    ),
-                    '\n',
-                  );
+                  messages.TS7016.push(message.text);
                 }
               },
               onConfigLoaded: config => {
@@ -117,7 +142,12 @@ export function apiExtractor() {
                 }
 
                 logger.info(`api-extractor: package is using TS path aliases. Overriding TS compiler settings.`);
-                const compilerConfig = getTsPathAliasesApiExtractorConfig({ tsConfig, tsConfigPath, packageJson });
+
+                const compilerConfig = getTsPathAliasesApiExtractorConfig({
+                  tsConfig,
+                  tsConfigPath,
+                  packageJson,
+                });
 
                 config.compiler = compilerConfig;
               },
@@ -137,4 +167,71 @@ export function apiExtractor() {
 
         logger.info(`skipping api-extractor execution - no configs present`);
       };
+}
+
+/**
+ *
+ * @example
+ *
+ * ```
+ (TS2305) Module '"@fluentui/react-shared-contexts"' has no exported member 'ThemeContextValue_unstable'.
+ (TS2305) Module '"@fluentui/react-shared-contexts"' has no exported member 'TooltipVisibilityContextValue_unstable'.
+
+  ↓ ↓ ↓
+
+ @fluentui/react-shared-contexts:
+        - TooltipVisibilityContextValue_unstable
+        - ThemeContextValue_unstable
+ ```
+ */
+function formatApiViolationMessage(messages: string[]) {
+  const regexPkg = /'"(@fluentui\/[a-z-]+)"'/i;
+  const exportedTokenRegex = /'([a-z-_]+)'/i;
+
+  const byPackage = messages.reduce((acc, curr) => {
+    const [, packageName] = regexPkg.exec(curr) ?? [];
+    const [, exportedToken] = exportedTokenRegex.exec(curr) ?? [];
+    if (acc[packageName]) {
+      acc[packageName].add(exportedToken);
+      return acc;
+    }
+    acc[packageName] = new Set([exportedToken]);
+    return acc;
+  }, {} as Record<string, Set<string>>);
+
+  return Object.entries(byPackage)
+    .map(([packageName, tokens]) => {
+      return [
+        chalk.red.underline(packageName) + ':',
+        Array.from(tokens)
+          .map(token => chalk.italic.red('  - ' + token))
+          .join('\n'),
+      ].join('\n');
+    })
+    .join('\n');
+}
+
+/**
+ *
+ * @example
+ ```
+ (TS7016) Could not find a declaration file for module '@fluentui/react-theme'
+ (TS7016) Could not find a declaration file for module '@fluentui/react-shared-contexts'
+
+ ↓ ↓ ↓
+
+ - @fluentui/react-theme
+ - @fluentui/react-shared-contexts
+ ```
+ */
+function formatMissingApiViolationMessage(messages: string[]) {
+  const regexPkg = /'(@fluentui\/[a-z-]+)'/i;
+
+  return Object.values(
+    messages.reduce((acc, curr) => {
+      const [, packageName] = regexPkg.exec(curr) ?? [];
+      acc[curr] = chalk.italic.red('\t- ' + packageName);
+      return acc;
+    }, {} as Record<string, string>),
+  ).join('\n');
 }

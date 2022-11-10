@@ -5,7 +5,7 @@
   "description": "Storybook addons and utils for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.1.5",
+    "@fluentui/react-provider": "^9.1.6",
     "@fluentui/react-theme": "^9.1.1",
     "tslib": "^2.1.0"
   },
@@ -45,9 +45,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }

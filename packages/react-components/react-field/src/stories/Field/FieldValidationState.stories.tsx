@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-field';
+import { InputField } from '@fluentui/react-components/unstable';
 import { SparkleFilled } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({

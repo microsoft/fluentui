@@ -4,9 +4,13 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PopoverProps } from '@fluentui/react-popover';
+import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -18,15 +22,19 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
-export type InfoButtonProps = ComponentProps<InfoButtonSlots> & {};
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+    size?: 'small' | 'medium' | 'large';
+};
 
 // @public (undocumented)
 export type InfoButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'button'>>;
+    popover: NonNullable<Slot<PopoverProps>>;
+    content: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
 
 // @public
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;

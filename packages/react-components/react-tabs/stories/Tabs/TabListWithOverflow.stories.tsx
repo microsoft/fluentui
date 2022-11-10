@@ -25,9 +25,31 @@ import {
   CalendarWeekStartRegular,
   CalendarWorkWeekRegular,
   MoreHorizontalRegular,
+  Calendar3DayFilled,
+  CalendarAgendaFilled,
+  CalendarChatFilled,
+  CalendarDayFilled,
+  CalendarMonthFilled,
+  CalendarSearchFilled,
+  CalendarTodayFilled,
+  CalendarWeekStartFilled,
+  CalendarWorkWeekFilled,
+  MoreHorizontalFilled,
+  bundleIcon,
 } from '@fluentui/react-icons';
 import { useIsOverflowItemVisible, useOverflowMenu, Overflow, OverflowItem } from '@fluentui/react-overflow';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
+
+const Calendar3Day = bundleIcon(Calendar3DayFilled, Calendar3DayRegular);
+const CalendarAgenda = bundleIcon(CalendarAgendaFilled, CalendarAgendaRegular);
+const CalendarChat = bundleIcon(CalendarChatFilled, CalendarChatRegular);
+const CalendarDay = bundleIcon(CalendarDayFilled, CalendarDayRegular);
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+const CalendarSearch = bundleIcon(CalendarSearchFilled, CalendarSearchRegular);
+const CalendarToday = bundleIcon(CalendarTodayFilled, CalendarTodayRegular);
+const CalendarWeekStart = bundleIcon(CalendarWeekStartFilled, CalendarWeekStartRegular);
+const CalendarWorkWeek = bundleIcon(CalendarWorkWeekFilled, CalendarWorkWeekRegular);
+const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
 //----- Example Tab Data -----//
 
@@ -41,47 +63,47 @@ const tabs: ExampleTab[] = [
   {
     id: 'today',
     name: 'Today',
-    icon: <CalendarTodayRegular />,
+    icon: <CalendarToday />,
   },
   {
     id: 'agenda',
     name: 'Agenda',
-    icon: <CalendarAgendaRegular />,
+    icon: <CalendarAgenda />,
   },
   {
     id: 'day',
     name: 'Day',
-    icon: <CalendarDayRegular />,
+    icon: <CalendarDay />,
   },
   {
     id: 'threeDay',
     name: 'Three Day',
-    icon: <Calendar3DayRegular />,
+    icon: <Calendar3Day />,
   },
   {
     id: 'workWeek',
     name: 'Work Week',
-    icon: <CalendarWorkWeekRegular />,
+    icon: <CalendarWorkWeek />,
   },
   {
     id: 'week',
     name: 'Week',
-    icon: <CalendarWeekStartRegular />,
+    icon: <CalendarWeekStart />,
   },
   {
     id: 'month',
     name: 'Month',
-    icon: <CalendarMonthRegular />,
+    icon: <CalendarMonth />,
   },
   {
     id: 'search',
     name: 'Search',
-    icon: <CalendarSearchRegular />,
+    icon: <CalendarSearch />,
   },
   {
     id: 'chat',
     name: 'Conversations',
-    icon: <CalendarChatRegular />,
+    icon: <CalendarChat />,
   },
 ];
 
@@ -149,7 +171,7 @@ const OverflowMenu = (props: OverflowMenuProps) => {
           appearance="transparent"
           className={styles.menuButton}
           ref={ref}
-          icon={<MoreHorizontalRegular />}
+          icon={<MoreHorizontal />}
           aria-label={`${overflowCount} more tabs`}
           role="tab"
         />

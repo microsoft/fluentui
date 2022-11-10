@@ -129,8 +129,8 @@ module.exports = async function buildFixture(preparedFixture, quiet) {
     /* eslint-enable @typescript-eslint/naming-convention */
   ]);
 
-  await fs.writeFile(webpackOutputPath, terserOutput.code);
-  await fs.writeFile(terserOutputPath, terserOutputMinified.code);
+  await fs.writeFile(webpackOutputPath, terserOutput.code ?? '');
+  await fs.writeFile(terserOutputPath, terserOutputMinified.code ?? '');
 
   if (!quiet) {
     console.log(
