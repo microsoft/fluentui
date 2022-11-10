@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update d3 scale version",
+  "packageName": "@uifabric/charting",
+  "email": "atisjai@microsoft.com",
+  "dependentChangeType": "patch"
+}
