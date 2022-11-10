@@ -2139,7 +2139,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         // allowing autoComplete, handle the input here
         if (!allowFreeform && !allowFreeSearch && autoComplete === 'on') {
           this._onInputChange(ev.key);
-          return;
+          break;
         }
 
         // allow the key to propagate by default
