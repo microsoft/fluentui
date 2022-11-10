@@ -27,6 +27,10 @@ jobs:
         displayName: yarn (install packages)
 
       - script: |
+          yarn workspace @fluentui/vr-tests-react-components convert
+        displayName: Convert screener component to storywright
+
+      - script: |
           yarn workspace @fluentui/vr-tests-react-components screener:build
         displayName: Build VR tests components package
 
@@ -45,5 +49,18 @@ jobs:
           ArtifactName: 'vrscreenshot'
           publishLocation: 'Container'
 
-      - bash: node packages/screenshotdiff/dist/index.js release --buildId $(Build.BuildId)
+      # - bash: cd packages/screenshotdiff && yarn build
+      #   displayName: 'Build'
+
+      - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentui" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'
+        env:
+          API_URL: $(System.CollectionUri)
+          API_TOKEN: $(TEST_PAT)
+          API_REPOSITORY: $(Build.Repository.Name)
+          API_PROJECT: $(System.TeamProject)
+          GITHUB_API_TOKEN: $(GITHUB_TEST_PAT)
+          STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
+          STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
+          BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
+          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
