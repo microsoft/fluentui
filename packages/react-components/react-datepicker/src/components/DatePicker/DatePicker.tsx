@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Calendar /* Callout, DirectionalHint, FocusTrapZone, TextField */ } from '@fluentui/react';
 import { InputField } from '@fluentui/react-field';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
+import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { useControllableState, useId } from '@fluentui/react-utilities';
 import {
   // TODO: classNamesFunction,
@@ -266,7 +266,7 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
     const calendar = React.useRef<ICalendar>(null);
     const datePickerDiv = React.useRef<HTMLDivElement>(null);
 
-    const [/*textFieldRef*/ _, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
+    const [, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
     const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility(props, focus);
     const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate(props);
     const [errorMessage, validateTextInput, setErrorMessage, statusMessage, setStatusMessage] = useErrorMessage(
@@ -502,10 +502,6 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
     //   );
     // };
 
-    // const calloutDismissed = React.useCallback((): void => {
-    //   calendarDismissed();
-    // }, [calendarDismissed]);
-
     const classNames = useDatePickerStyles_unstable({
       className,
       disabled,
@@ -529,6 +525,15 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
       : borderless
       ? 'filled-lighter'
       : 'outline';
+
+    const onPopoverOpenChanged = React.useCallback(
+      (ev: OpenPopoverEvents, data: OnOpenChangeData) => {
+        if (!data.open) {
+          calendarDismissed();
+        }
+      },
+      [calendarDismissed],
+    );
 
     return (
       <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
@@ -570,8 +575,8 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
             onRenderDescription={renderTextfieldDescription}
             onRenderInput={readOnly ? renderReadOnlyInput : undefined}
           /> */}
-          <Popover open={isCalendarShown} positioning="below-start" trapFocus>
-            <PopoverTrigger disableButtonEnhancement>
+          <Popover onOpenChange={onPopoverOpenChanged} open={isCalendarShown} positioning="below-start" trapFocus>
+            <PopoverTrigger>
               {popoverTriggerChildProps => (
                 <InputField
                   appearance={inputAppearance}
