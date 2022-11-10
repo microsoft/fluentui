@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Move TextareaField into the @fluentui/react-textarea package and export as _unstable",
+  "packageName": "@fluentui/react-textarea",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

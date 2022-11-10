@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { Input } from '@fluentui/react-input';
+import type { FieldProps } from '@fluentui/react-field';
+import {
+  getFieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { FieldProps } from '../../Field';
-import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from '../../Field';
+import { Input } from '../../Input';
 
 export type InputFieldProps = FieldProps<typeof Input>;
 

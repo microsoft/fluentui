@@ -1,7 +1,7 @@
+import { tokens, typographyStyles } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { FieldControl, FieldProps, FieldSlots, FieldState } from './Field.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<FieldControl>> => ({
   root: `fui-${name}`,

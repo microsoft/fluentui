@@ -1,24 +1,21 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Radio } from '@fluentui/react-radio';
-import {
-  CheckboxField,
-  ComboboxField,
-  InputField,
-  ProgressField,
-  RadioGroupField,
-  SelectField,
-  SliderField,
-  SpinButtonField,
-  SwitchField,
-  TextareaField,
-} from '@fluentui/react-field';
+import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
+import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
 import { SparkleFilled } from '@fluentui/react-icons';
-import { FieldControl, FieldPropsWithOptionalComponentProps } from '@fluentui/react-field/src/Field';
+import type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+import { InputField_unstable as InputField } from '@fluentui/react-input';
+import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
+import { Radio, RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
+import { SelectField_unstable as SelectField } from '@fluentui/react-select';
+import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
+import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
+import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
+import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 
 type FieldControlProps = Pick<
-  FieldPropsWithOptionalComponentProps<FieldControl>,
+  InputFieldProps,
   'orientation' | 'required' | 'label' | 'validationState' | 'validationMessage' | 'validationMessageIcon' | 'hint'
 >;
 
