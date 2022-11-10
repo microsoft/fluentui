@@ -343,6 +343,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   public componentDidUpdate(prevProps: IComboBoxInternalProps, prevState: IComboBoxState) {
     const {
       allowFreeform,
+      allowFreeSearch,
       text,
       onMenuOpen,
       onMenuDismissed,
@@ -388,7 +389,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
             prevProps.hoisted.selectedIndices &&
             selectedIndices &&
             prevProps.hoisted.selectedIndices[0] !== selectedIndices[0]) ||
-            !allowFreeform ||
+            (!allowFreeform && !allowFreeSearch) ||
             text !== prevProps.text)))
     ) {
       this._onFocus();
@@ -554,12 +555,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return null;
     }
 
-    const visibleValue = normalizeToString(this._currentVisibleValue);
-    if (comboBox.value !== visibleValue) {
-      return visibleValue;
-    }
-
-    return comboBox.value;
+    return normalizeToString(this._currentVisibleValue);
   };
 
   private _renderComboBoxWrapper = (
@@ -683,6 +679,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const {
       text,
       allowFreeform,
+      allowFreeSearch,
       autoComplete,
       hoisted: { suggestedDisplayValue, selectedIndices, currentOptions },
     } = this.props;
@@ -714,8 +711,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     } else {
       // Single-select
       let index: number = this._getFirstSelectedIndex();
-      if (allowFreeform) {
-        // If we are allowing freeform and autocomplete is also true
+      if (allowFreeform || allowFreeSearch) {
+        // If we are allowing freeform/free search and autocomplete is also true
         // and we've got a pending value that matches an option, remember
         // the matched option's index
         if (autoComplete === 'on' && currentPendingIndexValid) {
@@ -796,7 +793,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this.props.onInputValueChange(updatedValue);
     }
 
-    this.props.allowFreeform
+    this.props.allowFreeform || this.props.allowFreeSearch
       ? this._processInputChangeWithFreeform(updatedValue)
       : this._processInputChangeWithoutFreeform(updatedValue);
   };
@@ -911,7 +908,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       }
     }
 
-    // If we get here, either autoComplete is on or we did not find a match with autoComplete on.
+    // If we get here, either autoComplete is off or we did not find a match with autoComplete on.
     // Remember we are not allowing freeform, so at this point, if we have a pending valid value index
     // use that; otherwise use the selectedIndex
     const index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : this._getFirstSelectedIndex();
@@ -1967,6 +1964,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const {
       disabled,
       allowFreeform,
+      allowFreeSearch,
       autoComplete,
       hoisted: { currentOptions },
     } = this.props;
@@ -2095,7 +2093,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       case KeyCodes.home:
       case KeyCodes.end:
-        if (allowFreeform) {
+        if (allowFreeform || allowFreeSearch) {
           return;
         }
 
@@ -2118,7 +2116,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       /* eslint-disable no-fallthrough */
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
-        if (!allowFreeform && autoComplete === 'off') {
+        if (!allowFreeform && !allowFreeSearch && autoComplete === 'off') {
           break;
         }
 
@@ -2137,12 +2135,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           return;
         }
 
-        // If we are not allowing freeform and
+        // If we are not allowing freeform or free search and
         // allowing autoComplete, handle the input here
-        // since we have marked the input as readonly
-        if (!allowFreeform && autoComplete === 'on') {
+        if (!allowFreeform && !allowFreeSearch && autoComplete === 'on') {
           this._onInputChange(ev.key);
-          break;
+          return;
         }
 
         // allow the key to propagate by default
@@ -2158,7 +2155,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * @param ev - the keyboard event that was fired
    */
   private _onInputKeyUp = (ev: React.KeyboardEvent<HTMLElement | Autofill>): void => {
-    const { disabled, allowFreeform, autoComplete } = this.props;
+    const { disabled, allowFreeform, allowFreeSearch, autoComplete } = this.props;
     const isOpen = this.state.isOpen;
 
     // We close the menu on key up only if ALL of the following are true:
@@ -2183,7 +2180,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         // If we are not allowing freeform and are not autoComplete
         // make space expand/collapse the combo box
         // and allow the event to propagate
-        if (!allowFreeform && autoComplete === 'off') {
+        if (!allowFreeform && !allowFreeSearch && autoComplete === 'off') {
           this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
         }
         return;
