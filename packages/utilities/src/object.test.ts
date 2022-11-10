@@ -1,4 +1,55 @@
-import { assign, filteredAssign, mapEnumByName, values, omit } from './object';
+import { assign, filteredAssign, mapEnumByName, values, omit, shallowCompare } from './object';
+
+describe('shallowCompare', () => {
+  it('returns true for matching objects', () => {
+    const a = {
+      a: 1,
+      b: 'string',
+      c: {
+        d: 2,
+      },
+    };
+
+    const b = { ...a };
+
+    expect(shallowCompare(a, b)).toBeTruthy();
+  });
+
+  it('returns false when one object is a superset of the other', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const a: { [key: string]: any } = {
+      a: 1,
+      b: 'string',
+      c: {
+        d: 2,
+      },
+    };
+
+    const b = { ...a, e: 'extra' };
+
+    expect(shallowCompare(a, b)).toBeFalsy();
+
+    a.e = 'extra';
+    a.f = 3;
+
+    expect(shallowCompare(a, b)).toBeFalsy();
+  });
+
+  it('returns true for two empty objects', () => {
+    expect(shallowCompare({}, {})).toBeTruthy();
+  });
+
+  it('returns true for two null or undefined objects', () => {
+    expect(shallowCompare(null, null)).toBeTruthy();
+    expect(shallowCompare(undefined, undefined)).toBeTruthy();
+    expect(shallowCompare(null, undefined)).toBeTruthy();
+  });
+
+  it('returns false when comparing null or undefined against an object', () => {
+    expect(shallowCompare(null, { a: 1 })).toBeFalsy();
+    expect(shallowCompare(undefined, { a: 1 })).toBeFalsy();
+  });
+});
 
 describe('assign', () => {
   it('can copy an object', () => {
