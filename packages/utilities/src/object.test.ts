@@ -35,14 +35,32 @@ describe('shallowCompare', () => {
     expect(shallowCompare(a, b)).toBeFalsy();
   });
 
+  it('returns false when nested objects are not strictly equal', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const a: { [key: string]: any } = {
+      a: 1,
+      b: 'string',
+      c: {
+        d: 2,
+      },
+    };
+
+    const b = { ...a, c: { ...a.c } };
+
+    expect(shallowCompare(a, b)).toBeFalsy();
+  });
+
   it('returns true for two empty objects', () => {
     expect(shallowCompare({}, {})).toBeTruthy();
   });
 
-  it('returns true for two null or undefined objects', () => {
+  it('returns true for two falsy values', () => {
     expect(shallowCompare(null, null)).toBeTruthy();
     expect(shallowCompare(undefined, undefined)).toBeTruthy();
     expect(shallowCompare(null, undefined)).toBeTruthy();
+    expect(shallowCompare(0, '')).toBeTruthy();
+    expect(shallowCompare(null, '')).toBeTruthy();
+    expect(shallowCompare(0, undefined)).toBeTruthy();
   });
 
   it('returns false when comparing null or undefined against an object', () => {
