@@ -140,10 +140,10 @@ export interface IComboBoxProps
 
   /**
    * When true, the Combobox will allow the user to type freely while the Combobox is focused.
-   * On Blur, the value will be set to the matching option, or the previous selection.
+   * On Blur, the value will be set to the matching option, or the previous selection if there is no match.
    * @defaultvalue false
    */
-  allowFreeSearch?: boolean;
+  allowFreeInput?: boolean;
 
   /**
    * Whether the ComboBox auto completes. As the user is entering text, potential matches will be

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ComboBox, IComboBoxOption, IComboBoxStyles, SelectableOptionMenuItemType } from '@fluentui/react';
+import { ComboBox, SelectableOptionMenuItemType } from '@fluentui/react';
+import type { IComboBoxOption, IComboBoxStyles } from '@fluentui/react';
 
 const options: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
@@ -19,23 +20,23 @@ const options: IComboBoxOption[] = [
 // Optional styling to make the example look nicer
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 
-export const ComboBoxFreeSearchExample: React.FunctionComponent = () => {
+export const ComboBoxFreeInputExample: React.FunctionComponent = () => {
   return (
     <div>
       <ComboBox
-        label="ComboBox with allowFreeSearch and autocomplete"
+        label="ComboBox with allowFreeInput and autocomplete"
         options={options}
         styles={comboBoxStyles}
-        allowFreeSearch
-        autoComplete="off"
+        allowFreeInput
+        autoComplete="on"
       />
       <ComboBox
         defaultSelectedKey="C"
-        label="ComboBox with allowFreeSearch without autocomplete"
+        label="ComboBox with allowFreeInput without autocomplete"
         options={options}
         styles={comboBoxStyles}
-        allowFreeSearch
-        autoComplete="on"
+        allowFreeInput
+        autoComplete="off"
       />
     </div>
   );

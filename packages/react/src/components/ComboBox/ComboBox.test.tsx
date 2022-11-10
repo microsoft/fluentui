@@ -279,9 +279,9 @@ describe('ComboBox', () => {
     expect(combobox.getAttribute('value')).toEqual('Foo');
   });
 
-  it('Can insert text in uncontrolled case with autoComplete and allowFreeSearch on', () => {
+  it('Can insert text in uncontrolled case with autoComplete and allowFreeInput on', () => {
     const { getByRole } = render(
-      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeSearch />,
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeInput />,
     );
 
     const combobox = getByRole('combobox');
@@ -315,9 +315,9 @@ describe('ComboBox', () => {
     expect(combobox.getAttribute('value')).toEqual('f');
   });
 
-  it('Can insert text in uncontrolled case with autoComplete off and allowFreeSearch on', () => {
+  it('Can insert text in uncontrolled case with autoComplete off and allowFreeInput on', () => {
     const { getByRole } = render(
-      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeSearch />,
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeInput />,
     );
 
     const combobox = getByRole('combobox');
@@ -609,14 +609,14 @@ describe('ComboBox', () => {
     expect(changedValue).toEqual('');
   });
 
-  it('onInputValueChange is called when the input changes with allowFreeSearch', () => {
+  it('onInputValueChange is called when the input changes with allowFreeInput', () => {
     let changedValue: string | undefined = undefined;
     const onInputValueChangeHandler = (value: string) => {
       changedValue = value;
     };
 
     const { getByRole } = render(
-      <ComboBox options={DEFAULT_OPTIONS} allowFreeSearch onInputValueChange={onInputValueChangeHandler} />,
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeInput onInputValueChange={onInputValueChangeHandler} />,
     );
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'a');
@@ -629,10 +629,10 @@ describe('ComboBox', () => {
     expect(changedValue).toEqual('');
   });
 
-  it('onChange is called when a full matching option is typed and submitted with allowFreeSearch', () => {
+  it('onChange is called when a full matching option is typed and submitted with allowFreeInput', () => {
     const onChange = jest.fn();
 
-    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS2} allowFreeSearch onChange={onChange} />);
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS2} allowFreeInput onChange={onChange} />);
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'foo');
     expect(onChange).not.toHaveBeenCalled();
@@ -641,20 +641,20 @@ describe('ComboBox', () => {
     expect(onChange).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS2[1], 1, 'Foo');
   });
 
-  it('onChange is not called when a non-matching is typed and submitted with allowFreeSearch', () => {
+  it('onChange is not called when a non-matching string is typed and submitted with allowFreeInput', () => {
     const onChange = jest.fn();
 
-    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS2} allowFreeSearch onChange={onChange} />);
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS2} allowFreeInput onChange={onChange} />);
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'abc{enter}');
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('onPendingValueChanged is called when a full matching option is typed with allowFreeSearch', () => {
+  it('onPendingValueChanged is called when a full matching option is typed with allowFreeInput', () => {
     const onPendingValueChanged = jest.fn();
 
     const { getByRole } = render(
-      <ComboBox options={DEFAULT_OPTIONS2} allowFreeSearch onPendingValueChanged={onPendingValueChanged} />,
+      <ComboBox options={DEFAULT_OPTIONS2} allowFreeInput onPendingValueChanged={onPendingValueChanged} />,
     );
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'foo');

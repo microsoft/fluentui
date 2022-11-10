@@ -343,7 +343,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   public componentDidUpdate(prevProps: IComboBoxInternalProps, prevState: IComboBoxState) {
     const {
       allowFreeform,
-      allowFreeSearch,
+      allowFreeInput,
       text,
       onMenuOpen,
       onMenuDismissed,
@@ -377,7 +377,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     //   just opened/closed the menu OR
     //   are focused AND
     //     updated the selectedIndex with the menu closed OR
-    //     are not allowing freeform OR
+    //     are not allowing freeform or free input OR
     //     the value changed
     // we need to set selection
     if (
@@ -389,7 +389,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
             prevProps.hoisted.selectedIndices &&
             selectedIndices &&
             prevProps.hoisted.selectedIndices[0] !== selectedIndices[0]) ||
-            (!allowFreeform && !allowFreeSearch) ||
+            (!allowFreeform && !allowFreeInput) ||
             text !== prevProps.text)))
     ) {
       this._onFocus();
@@ -679,7 +679,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const {
       text,
       allowFreeform,
-      allowFreeSearch,
+      allowFreeInput,
       autoComplete,
       hoisted: { suggestedDisplayValue, selectedIndices, currentOptions },
     } = this.props;
@@ -711,7 +711,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     } else {
       // Single-select
       let index: number = this._getFirstSelectedIndex();
-      if (allowFreeform || allowFreeSearch) {
+      if (allowFreeform || allowFreeInput) {
         // If we are allowing freeform/free search and autocomplete is also true
         // and we've got a pending value that matches an option, remember
         // the matched option's index
@@ -793,7 +793,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this.props.onInputValueChange(updatedValue);
     }
 
-    this.props.allowFreeform || this.props.allowFreeSearch
+    this.props.allowFreeform || this.props.allowFreeInput
       ? this._processInputChangeWithFreeform(updatedValue)
       : this._processInputChangeWithoutFreeform(updatedValue);
   };
@@ -1964,7 +1964,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const {
       disabled,
       allowFreeform,
-      allowFreeSearch,
+      allowFreeInput,
       autoComplete,
       hoisted: { currentOptions },
     } = this.props;
@@ -2093,7 +2093,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       case KeyCodes.home:
       case KeyCodes.end:
-        if (allowFreeform || allowFreeSearch) {
+        if (allowFreeform || allowFreeInput) {
           return;
         }
 
@@ -2116,7 +2116,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       /* eslint-disable no-fallthrough */
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
-        if (!allowFreeform && !allowFreeSearch && autoComplete === 'off') {
+        if (!allowFreeform && !allowFreeInput && autoComplete === 'off') {
           break;
         }
 
@@ -2137,7 +2137,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
         // If we are not allowing freeform or free search and
         // allowing autoComplete, handle the input here
-        if (!allowFreeform && !allowFreeSearch && autoComplete === 'on') {
+        if (!allowFreeform && !allowFreeInput && autoComplete === 'on') {
           this._onInputChange(ev.key);
           break;
         }
@@ -2155,7 +2155,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * @param ev - the keyboard event that was fired
    */
   private _onInputKeyUp = (ev: React.KeyboardEvent<HTMLElement | Autofill>): void => {
-    const { disabled, allowFreeform, allowFreeSearch, autoComplete } = this.props;
+    const { disabled, allowFreeform, allowFreeInput, autoComplete } = this.props;
     const isOpen = this.state.isOpen;
 
     // We close the menu on key up only if ALL of the following are true:
@@ -2177,10 +2177,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.space:
-        // If we are not allowing freeform and are not autoComplete
+        // If we are not allowing freeform or free input, and autoComplete is off
         // make space expand/collapse the combo box
         // and allow the event to propagate
-        if (!allowFreeform && !allowFreeSearch && autoComplete === 'off') {
+        if (!allowFreeform && !allowFreeInput && autoComplete === 'off') {
           this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
         }
         return;
