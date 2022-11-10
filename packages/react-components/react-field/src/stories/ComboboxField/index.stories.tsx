@@ -1,4 +1,4 @@
-import { ComboboxField } from '@fluentui/react-field';
+import { ComboboxField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './ComboboxFieldDescription.md';
 

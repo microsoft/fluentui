@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { SliderFieldProps } from '@fluentui/react-field';
-import { SliderField } from '@fluentui/react-field';
+import type { SliderFieldProps } from '@fluentui/react-components/unstable';
+import { SliderField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<SliderFieldProps>) => (
   <SliderField

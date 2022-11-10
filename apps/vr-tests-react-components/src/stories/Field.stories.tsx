@@ -15,17 +15,17 @@ import {
   TextareaField,
 } from '@fluentui/react-field';
 import { SparkleFilled } from '@fluentui/react-icons';
-import { FieldComponent, FieldPropsWithOptionalComponentProps } from '@fluentui/react-field/src/Field';
+import { FieldControl, FieldPropsWithOptionalComponentProps } from '@fluentui/react-field/src/Field';
 
-type FieldComponentProps = Pick<
-  FieldPropsWithOptionalComponentProps<FieldComponent>,
+type FieldControlProps = Pick<
+  FieldPropsWithOptionalComponentProps<FieldControl>,
   'orientation' | 'required' | 'label' | 'validationState' | 'validationMessage' | 'validationMessageIcon' | 'hint'
 >;
 
 /**
  * Common VR tests for all field components. Pass the given Field component (or a wrapper around it).
  */
-const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldComponentProps>) =>
+const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldControlProps>) =>
   storiesOf(name, module)
     .addDecorator(story => <Screener steps={new Steps().snapshot('default').end()}>{story()}</Screener>)
     .addDecorator(story => (
@@ -65,7 +65,7 @@ const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldCo
  */
 const storiesOfFieldWithSize = (
   name: string,
-  Field: React.VoidFunctionComponent<FieldComponentProps & { size?: 'small' | 'medium' | 'large' }>,
+  Field: React.VoidFunctionComponent<FieldControlProps & { size?: 'small' | 'medium' | 'large' }>,
 ) =>
   storiesOfField(name, Field)
     .addStory('size:small', () => <Field label="Example field" size="small" />)

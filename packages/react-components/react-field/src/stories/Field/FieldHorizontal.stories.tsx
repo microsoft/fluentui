@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-field';
+import { InputField } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
   stack: {

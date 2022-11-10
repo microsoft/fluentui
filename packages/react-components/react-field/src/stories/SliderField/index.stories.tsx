@@ -1,4 +1,4 @@
-import { SliderField } from '@fluentui/react-field';
+import { SliderField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './SliderFieldDescription.md';
 
