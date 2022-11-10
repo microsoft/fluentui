@@ -3,8 +3,8 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
 import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
-import { FieldControl, FieldPropsWithOptionalComponentProps } from '@fluentui/react-field/src/Field';
 import { SparkleFilled } from '@fluentui/react-icons';
+import type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { Radio, RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
@@ -15,7 +15,7 @@ import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 
 type FieldControlProps = Pick<
-  FieldPropsWithOptionalComponentProps<FieldControl>,
+  InputFieldProps,
   'orientation' | 'required' | 'label' | 'validationState' | 'validationMessage' | 'validationMessageIcon' | 'hint'
 >;
 
