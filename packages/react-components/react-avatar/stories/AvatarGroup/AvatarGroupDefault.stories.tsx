@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
-import type { AvatarGroupProps } from '@fluentui/react-avatar';
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupPopover,
+  partitionAvatarGroupItems,
+} from '@fluentui/react-components';
+import type { AvatarGroupProps } from '@fluentui/react-components';
 
 const names = [
   'Johnie McConnell',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-components';
 
 export const Initials = () => <Avatar name="Cecil Robin Folk" initials="CRF" />;
 

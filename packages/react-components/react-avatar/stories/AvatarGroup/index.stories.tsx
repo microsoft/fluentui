@@ -1,4 +1,4 @@
-import { AvatarGroup } from '@fluentui/react-avatar';
+import { AvatarGroup } from '@fluentui/react-components';
 
 import bestPracticesMd from './AvatarGroupBestPractices.md';
 import descriptionMd from './AvatarGroupDescription.md';
@@ -11,7 +11,7 @@ export { SizeStack } from './AvatarGroupSizeStack.stories';
 export { SizePie } from './AvatarGroupSizePie.stories';
 
 export default {
-  title: 'Preview Components/AvatarGroup',
+  title: 'Components/AvatarGroup',
   component: AvatarGroup,
   parameters: {
     docs: {

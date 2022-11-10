@@ -44,6 +44,24 @@ import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
+import { AvatarGroup } from '@fluentui/react-avatar';
+import { avatarGroupClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupContextValue } from '@fluentui/react-avatar';
+import { AvatarGroupContextValues } from '@fluentui/react-avatar';
+import { AvatarGroupItem } from '@fluentui/react-avatar';
+import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItemProps } from '@fluentui/react-avatar';
+import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
+import { AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupPopover } from '@fluentui/react-avatar';
+import { avatarGroupPopoverClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverProps } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverSlots } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverState } from '@fluentui/react-avatar';
+import { AvatarGroupProps } from '@fluentui/react-avatar';
+import { AvatarGroupProvider } from '@fluentui/react-avatar';
+import { AvatarGroupSlots } from '@fluentui/react-avatar';
+import { AvatarGroupState } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
 import { AvatarSizes } from '@fluentui/react-avatar';
@@ -260,6 +278,9 @@ import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
 import { PartialTheme } from '@fluentui/react-theme';
+import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
 import { Popover } from '@fluentui/react-popover';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { PopoverProps } from '@fluentui/react-popover';
@@ -309,6 +330,9 @@ import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
 import { renderBadge_unstable } from '@fluentui/react-badge';
 import { renderButton_unstable } from '@fluentui/react-button';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
@@ -476,6 +500,14 @@ import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupContext_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
+import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
@@ -676,6 +708,42 @@ export { arrowHeights }
 export { Avatar }
 
 export { avatarClassNames }
+
+export { AvatarGroup }
+
+export { avatarGroupClassNames }
+
+export { AvatarGroupContextValue }
+
+export { AvatarGroupContextValues }
+
+export { AvatarGroupItem }
+
+export { avatarGroupItemClassNames }
+
+export { AvatarGroupItemProps }
+
+export { AvatarGroupItemSlots }
+
+export { AvatarGroupItemState }
+
+export { AvatarGroupPopover }
+
+export { avatarGroupPopoverClassNames }
+
+export { AvatarGroupPopoverProps }
+
+export { AvatarGroupPopoverSlots }
+
+export { AvatarGroupPopoverState }
+
+export { AvatarGroupProps }
+
+export { AvatarGroupProvider }
+
+export { AvatarGroupSlots }
+
+export { AvatarGroupState }
 
 export { AvatarNamedColor }
 
@@ -1109,6 +1177,12 @@ export { OpenPopoverEvents }
 
 export { PartialTheme }
 
+export { PartitionAvatarGroupItems }
+
+export { partitionAvatarGroupItems }
+
+export { PartitionAvatarGroupItemsOptions }
+
 export { Popover }
 
 export { PopoverContextValue }
@@ -1206,6 +1280,12 @@ export { renderAccordionItem_unstable }
 export { renderAccordionPanel_unstable }
 
 export { renderAvatar_unstable }
+
+export { renderAvatarGroup_unstable }
+
+export { renderAvatarGroupItem_unstable }
+
+export { renderAvatarGroupPopover_unstable }
 
 export { renderBadge_unstable }
 
@@ -1540,6 +1620,22 @@ export { useArrowNavigationGroup }
 export { UseArrowNavigationGroupOptions }
 
 export { useAvatar_unstable }
+
+export { useAvatarGroup_unstable }
+
+export { useAvatarGroupContext_unstable }
+
+export { useAvatarGroupContextValues }
+
+export { useAvatarGroupItem_unstable }
+
+export { useAvatarGroupItemStyles_unstable }
+
+export { useAvatarGroupPopover_unstable }
+
+export { useAvatarGroupPopoverStyles_unstable }
+
+export { useAvatarGroupStyles_unstable }
 
 export { useAvatarStyles_unstable }
 

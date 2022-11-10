@@ -40,9 +40,9 @@ export {
 } from './AvatarGroupPopover';
 export type { AvatarGroupPopoverProps, AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover';
 export {
-  AvatarGroupProvider,
-  useAvatarGroupContext_unstable,
   AvatarContextProvider,
+  AvatarGroupProvider,
   useAvatarContext,
+  useAvatarGroupContext_unstable,
 } from './contexts/index';
 export type { AvatarContextValue } from './contexts/index';

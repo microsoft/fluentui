@@ -9,22 +9,6 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
-import { AvatarGroup } from '@fluentui/react-avatar';
-import { avatarGroupClassNames } from '@fluentui/react-avatar';
-import { AvatarGroupItem } from '@fluentui/react-avatar';
-import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
-import { AvatarGroupItemProps } from '@fluentui/react-avatar';
-import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
-import { AvatarGroupItemState } from '@fluentui/react-avatar';
-import { AvatarGroupPopover } from '@fluentui/react-avatar';
-import { avatarGroupPopoverClassNames } from '@fluentui/react-avatar';
-import { AvatarGroupPopoverProps } from '@fluentui/react-avatar';
-import { AvatarGroupPopoverSlots } from '@fluentui/react-avatar';
-import { AvatarGroupPopoverState } from '@fluentui/react-avatar';
-import { AvatarGroupProps } from '@fluentui/react-avatar';
-import { AvatarGroupProvider } from '@fluentui/react-avatar';
-import { AvatarGroupSlots } from '@fluentui/react-avatar';
-import { AvatarGroupState } from '@fluentui/react-avatar';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { cardCSSVars } from '@fluentui/react-card';
@@ -104,9 +88,6 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
-import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
-import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
-import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
 import { Persona } from '@fluentui/react-persona';
 import { personaClassNames } from '@fluentui/react-persona';
 import { PersonaProps } from '@fluentui/react-persona';
@@ -124,9 +105,6 @@ import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-rad
 import { radioGroupFieldClassNames } from '@fluentui/react-radio';
 import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
 import { renderAlert_unstable } from '@fluentui/react-alert';
-import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
-import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
-import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
@@ -245,13 +223,6 @@ import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
 import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
-import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupContext_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -317,38 +288,6 @@ export { AlertProps }
 export { AlertSlots }
 
 export { AlertState }
-
-export { AvatarGroup }
-
-export { avatarGroupClassNames }
-
-export { AvatarGroupItem }
-
-export { avatarGroupItemClassNames }
-
-export { AvatarGroupItemProps }
-
-export { AvatarGroupItemSlots }
-
-export { AvatarGroupItemState }
-
-export { AvatarGroupPopover }
-
-export { avatarGroupPopoverClassNames }
-
-export { AvatarGroupPopoverProps }
-
-export { AvatarGroupPopoverSlots }
-
-export { AvatarGroupPopoverState }
-
-export { AvatarGroupProps }
-
-export { AvatarGroupProvider }
-
-export { AvatarGroupSlots }
-
-export { AvatarGroupState }
 
 export { Card }
 
@@ -508,12 +447,6 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
-export { PartitionAvatarGroupItems }
-
-export { partitionAvatarGroupItems }
-
-export { PartitionAvatarGroupItemsOptions }
-
 export { Persona }
 
 export { personaClassNames }
@@ -547,12 +480,6 @@ export { radioGroupFieldClassNames }
 export { RadioGroupFieldProps }
 
 export { renderAlert_unstable }
-
-export { renderAvatarGroup_unstable }
-
-export { renderAvatarGroupItem_unstable }
-
-export { renderAvatarGroupPopover_unstable }
 
 export { renderCard_unstable }
 
@@ -790,20 +717,6 @@ export { ToolbarToggleButtonState }
 export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
-
-export { useAvatarGroup_unstable }
-
-export { useAvatarGroupContext_unstable }
-
-export { useAvatarGroupItem_unstable }
-
-export { useAvatarGroupItemStyles_unstable }
-
-export { useAvatarGroupPopover_unstable }
-
-export { useAvatarGroupPopoverStyles_unstable }
-
-export { useAvatarGroupStyles_unstable }
 
 export { useCard_unstable }
 
