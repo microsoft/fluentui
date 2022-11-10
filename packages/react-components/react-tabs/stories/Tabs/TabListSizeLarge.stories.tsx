@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles, shorthands, Tab, TabList } from '@fluentui/react-components';
+import { CalendarMonthRegular, CalendarMonthFilled, bundleIcon } from '@fluentui/react-icons';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const useStyles = makeStyles({
   root: {
@@ -20,7 +22,7 @@ export const SizeLarge = () => {
     return (
       <>
         <Tab value="tab1">First Tab</Tab>
-        <Tab icon={<CalendarMonthRegular />} value="tab2">
+        <Tab icon={<CalendarMonth />} value="tab2">
           Second Tab
         </Tab>
         <Tab value="tab3">Third Tab</Tab>

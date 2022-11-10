@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added support for regular/filled icon toggling",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

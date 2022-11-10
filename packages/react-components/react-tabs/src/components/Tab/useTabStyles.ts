@@ -16,6 +16,13 @@ const reservedSpaceClassNames = {
   content: 'fui-Tab__content--reserved-space',
 };
 
+// These should match the constants defined in @fluentui/react-icons
+// This package avoids taking a dependency on the icons package for only the constants.
+const iconClassNames = {
+  filled: 'fui-Icon-filled',
+  regular: 'fui-Icon-regular',
+};
+
 /**
  * Styles for the root slot
  */
@@ -360,6 +367,12 @@ const useIconStyles = makeStyles({
     display: 'inline-flex',
     justifyContent: 'center',
     ...shorthands.overflow('hidden'),
+    [`& .${iconClassNames.filled}`]: {
+      display: 'none',
+    },
+    [`& .${iconClassNames.regular}`]: {
+      display: 'inline',
+    },
   },
   // per design, the small and medium font sizes are the same.
   // the size prop only affects spacing.
@@ -377,6 +390,14 @@ const useIconStyles = makeStyles({
     fontSize: '24px',
     height: '24px',
     width: '24px',
+  },
+  selected: {
+    [`& .${iconClassNames.filled}`]: {
+      display: 'inline',
+    },
+    [`& .${iconClassNames.regular}`]: {
+      display: 'none',
+    },
   },
 });
 
@@ -463,7 +484,13 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(tabClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(
+      tabClassNames.icon,
+      iconStyles.base,
+      iconStyles[size],
+      selected && iconStyles.selected,
+      state.icon.className,
+    );
   }
 
   // This needs to be before state.content.className is updated
