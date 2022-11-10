@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test(react): clean up persona-coin test and use isConformant without side-effects",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
