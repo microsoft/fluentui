@@ -12,7 +12,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
-const useCheckedStyles = makeStyles({
+const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
@@ -74,6 +74,7 @@ const useCheckedStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
@@ -144,7 +145,7 @@ const useCheckedStyles = makeStyles({
   },
 });
 
-const useDisabledStyles = makeStyles({
+const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -214,15 +215,15 @@ const useDisabledStyles = makeStyles({
 
 const useIconCheckedStyles = makeStyles({
   // Appearance variations
-  subtle: {
+  subtleOrTransparent: {
     color: tokens.colorNeutralForeground2BrandSelected,
   },
 });
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
-  const checkedStyles = useCheckedStyles();
-  const disabledStyles = useDisabledStyles();
-  const iconStyles = useIconCheckedStyles();
+  const rootCheckedStyles = useRootCheckedStyles();
+  const rootDisabledStyles = useRootDisabledStyles();
+  const iconCheckedStyles = useIconCheckedStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
@@ -230,13 +231,13 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
     toggleButtonClassNames.root,
 
     // Checked styles
-    checked && checkedStyles.base,
-    checked && checkedStyles.highContrast,
-    appearance && checked && checkedStyles[appearance],
+    checked && rootCheckedStyles.base,
+    checked && rootCheckedStyles.highContrast,
+    appearance && checked && rootCheckedStyles[appearance],
 
     // Disabled styles
-    (disabled || disabledFocusable) && disabledStyles.base,
-    appearance && (disabled || disabledFocusable) && disabledStyles[appearance],
+    (disabled || disabledFocusable) && rootDisabledStyles.base,
+    appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // User provided class name
     state.root.className,
@@ -245,7 +246,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      appearance === 'subtle' && checked && iconStyles.subtle,
+      (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
       state.icon.className,
     );
   }
