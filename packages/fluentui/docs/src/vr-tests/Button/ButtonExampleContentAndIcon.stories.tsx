@@ -14,10 +14,18 @@ export default {
   decorators: [story => <Screener steps={screenerSteps}>{story()}</Screener>],
 } as ComponentMeta<typeof Button>;
 
-const ButtonTeams = getThemeStoryVariant(Button, 'teamsV2');
+const ButtonExampleContentAndIconTeams = getThemeStoryVariant(ButtonExampleContentAndIcon, 'teamsV2');
 
-const ButtonTeamsDark = getThemeStoryVariant(Button, 'teamsDarkV2');
+const ButtonExampleContentAndIconTeamsDark = getThemeStoryVariant(ButtonExampleContentAndIcon, 'teamsDarkV2');
 
-const ButtonTeamsHighContrast = getThemeStoryVariant(Button, 'teamsHighContrast');
+const ButtonExampleContentAndIconTeamsHighContrast = getThemeStoryVariant(
+  ButtonExampleContentAndIcon,
+  'teamsHighContrast',
+);
 
-export { ButtonTeams, ButtonTeamsDark, ButtonTeamsHighContrast, ButtonExampleContentAndIcon };
+export {
+  ButtonExampleContentAndIcon,
+  ButtonExampleContentAndIconTeams,
+  ButtonExampleContentAndIconTeamsDark,
+  ButtonExampleContentAndIconTeamsHighContrast,
+};

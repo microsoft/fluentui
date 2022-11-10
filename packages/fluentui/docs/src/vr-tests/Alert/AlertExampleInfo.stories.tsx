@@ -17,10 +17,10 @@ export default {
   ],
 } as ComponentMeta<typeof Alert>;
 
-const AlertTeams = getThemeStoryVariant(Alert, 'teamsV2');
+const AlertExampleInfoTeams = getThemeStoryVariant(AlertExampleInfo, 'teamsV2');
 
-const AlertTeamsDark = getThemeStoryVariant(Alert, 'teamsDarkV2');
+const AlertExampleInfoTeamsDark = getThemeStoryVariant(AlertExampleInfo, 'teamsDarkV2');
 
-const AlertTeamsHighContrast = getThemeStoryVariant(Alert, 'teamsHighContrast');
+const AlertExampleInfoTeamsHighContrast = getThemeStoryVariant(AlertExampleInfo, 'teamsHighContrast');
 
-export { AlertTeams, AlertTeamsDark, AlertTeamsHighContrast, AlertExampleInfo };
+export { AlertExampleInfo, AlertExampleInfoTeams, AlertExampleInfoTeamsDark, AlertExampleInfoTeamsHighContrast };

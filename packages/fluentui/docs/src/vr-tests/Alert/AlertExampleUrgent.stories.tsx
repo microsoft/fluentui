@@ -5,7 +5,6 @@ import Screener from 'screener-storybook/src/screener';
 import { ComponentMeta } from '@storybook/react';
 import { Alert } from '@fluentui/react-northstar';
 import { getFocusScreenerSteps, getHoverScreenerSteps } from './commonScreenerSteps';
-
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
 import AlertExampleUrgent from '../../examples/components/Alert/Variations/AlertExampleUrgent.shorthand';
 
@@ -18,10 +17,15 @@ export default {
   ],
 } as ComponentMeta<typeof Alert>;
 
-const AlertTeams = getThemeStoryVariant(Alert, 'teamsV2');
+const AlertExampleUrgentTeams = getThemeStoryVariant(AlertExampleUrgent, 'teamsV2');
 
-const AlertTeamsDark = getThemeStoryVariant(Alert, 'teamsDarkV2');
+const AlertExampleUrgentTeamsDark = getThemeStoryVariant(AlertExampleUrgent, 'teamsDarkV2');
 
-const AlertTeamsHighContrast = getThemeStoryVariant(Alert, 'teamsHighContrast');
+const AlertExampleUrgentTeamsHighContrast = getThemeStoryVariant(AlertExampleUrgent, 'teamsHighContrast');
 
-export { AlertTeams, AlertTeamsDark, AlertTeamsHighContrast, AlertExampleUrgent };
+export {
+  AlertExampleUrgent,
+  AlertExampleUrgentTeams,
+  AlertExampleUrgentTeamsDark,
+  AlertExampleUrgentTeamsHighContrast,
+};

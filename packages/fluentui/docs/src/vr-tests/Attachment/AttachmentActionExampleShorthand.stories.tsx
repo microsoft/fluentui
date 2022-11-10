@@ -14,10 +14,18 @@ export default {
   decorators: [story => <Screener steps={screenerSteps}>{story()}</Screener>],
 } as ComponentMeta<typeof Attachment>;
 
-const AttachmentTeams = getThemeStoryVariant(Attachment, 'teamsV2');
+const AttachmentActionExampleShorthandTeams = getThemeStoryVariant(AttachmentActionExampleShorthand, 'teamsV2');
 
-const AttachmentTeamsDark = getThemeStoryVariant(Attachment, 'teamsDarkV2');
+const AttachmentActionExampleShorthandTeamsDark = getThemeStoryVariant(AttachmentActionExampleShorthand, 'teamsDarkV2');
 
-const AttachmentTeamsHighContrast = getThemeStoryVariant(Attachment, 'teamsHighContrast');
+const AttachmentActionExampleShorthandTeamsHighContrast = getThemeStoryVariant(
+  AttachmentActionExampleShorthand,
+  'teamsHighContrast',
+);
 
-export { AttachmentTeams, AttachmentTeamsDark, AttachmentTeamsHighContrast, AttachmentActionExampleShorthand };
+export {
+  AttachmentActionExampleShorthand,
+  AttachmentActionExampleShorthandTeams,
+  AttachmentActionExampleShorthandTeamsDark,
+  AttachmentActionExampleShorthandTeamsHighContrast,
+};
