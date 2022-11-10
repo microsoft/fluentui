@@ -4,7 +4,7 @@
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -88,12 +88,12 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
     "./unstable": {
-      "types": "./lib/unstable/index.d.ts",
+      "types": "./dist/unstable.d.ts",
       "import": "./lib/unstable/index.js",
       "require": "./lib-commonjs/unstable/index.js"
     },
