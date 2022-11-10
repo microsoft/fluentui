@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix d3-scale dependency in react-charting",
+  "packageName": "@fluentui/react-charting",
+  "email": "atisjai@microsoft.com",
+  "dependentChangeType": "patch"
+}
