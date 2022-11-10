@@ -22,8 +22,6 @@ const generateCustomerId = (): string => {
   return hash.toString().padStart(10, '0').substring(2);
 };
 
-let isSubmitting = false;
-
 interface FormTextareas {
   knowledge: string;
   effort: string;
@@ -72,29 +70,29 @@ const useFormValidation = (
   handleSubmit: (callback: OnSubmit<FormTextareas>) => (e?: React.BaseSyntheticEvent) => Promise<void>,
 ) => {
   const pubSub = usePubSub();
-  const isHandlingSubmit = React.useRef(false);
+  const isSubmitting = React.useRef(false);
 
   const wrappedHandleSubmit = React.useCallback(
     (callback: OnSubmit<FormTextareas>) => {
       const handler = handleSubmit(callback);
       return async (e: React.BaseSyntheticEvent) => {
-        isHandlingSubmit.current = true;
+        isSubmitting.current = true;
         const result = await handler(e);
-        isHandlingSubmit.current = false;
+        isSubmitting.current = false;
         return result;
       };
     },
-    [isHandlingSubmit, handleSubmit],
+    [isSubmitting, handleSubmit],
   );
 
   const onFieldValidated = React.useCallback(
     (field: string) => {
-      if (!isHandlingSubmit.current) {
+      if (!isSubmitting.current) {
         pubSub.publish(field, 'validate');
       }
       return true;
     },
-    [isHandlingSubmit, pubSub],
+    [isSubmitting, pubSub],
   );
 
   const notifyFormFieldError = React.useCallback(
@@ -127,18 +125,10 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
-    if (formState.isSubmitting) {
-      isSubmitting = true;
-    }
-  }, [formState]);
-
-  React.useEffect(() => {
     // If the form is submitting and has errors, focus the first error fiel, otherwise do nothing
-    if (!isSubmitting || !formState.isSubmitted || formState.isValid) {
+    if (!formState.isSubmitting || formState.isValid) {
       return;
     }
-    isSubmitting = false;
-
     const firstErrorName = Object.keys(errors)[0] as keyof FormTextareas;
     const firstErrorField = document.getElementById(firstErrorName);
 
@@ -279,7 +269,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
                 }
                 rules={{
                   required: isProblemNotSolved,
-                  minLength: isProblemNotSolved ? 20 : 0,
+                  minLength: 20,
                   validate: {
                     always: () => {
                       if (!formState.isSubmitting) {
@@ -346,15 +336,8 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
             <div>
               <Label htmlFor="customerId">Your customer id:</Label>
-              <Textarea
-                id="customerId"
-                defaultValue={generateCustomerId()}
-                readOnly
-                aria-describedby="customerIdHint"
-              />
+              <Textarea id="customerId" defaultValue={generateCustomerId()} readOnly />
             </div>
-
-            <p id="customerIdHint">We will use the customer id to track your feedback.</p>
 
             <Button type="submit">Submit</Button>
           </form>

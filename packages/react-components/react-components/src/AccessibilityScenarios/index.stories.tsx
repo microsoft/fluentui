@@ -1,7 +1,9 @@
 export { PersonalFormAccordion } from './Accordion.stories';
 export { FAQAccordion } from './AccordionFaq.stories';
 export { MessengerButtons } from './Button.stories';
+export { UserProfileCards } from './Card.stories';
 export { QuestionnaireAboutFoodCheckboxes } from './Checkbox.stories';
+export { FavoritesComboboxes } from './Combobox.stories';
 export { RegistrationFormInputs } from './Input.stories';
 export { TicketOrderFormFields } from './Fields.stories';
 export { SiteNavigationLinks } from './Link.stories';
@@ -19,6 +21,7 @@ export { MailSettingsVerticalTabList } from './TabListVertical.stories';
 export { QuestionnaireAboutCustomerExperienceTextareas } from './Textarea.stories';
 export { DeviceControlsToggleButtons } from './ToggleButton.stories';
 export { ButtonsWithTooltip } from './Tooltip.stories';
+export { TextEditorToolbars } from './Toolbar.stories';
 
 export default {
   title: 'Concepts/Developer/Accessibility/Stories',
