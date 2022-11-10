@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { Calendar /* Callout, DirectionalHint, FocusTrapZone, TextField */ } from '@fluentui/react';
-import { InputField } from '@fluentui/react-field';
+import { Calendar } from '@fluentui/react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { useControllableState, useId } from '@fluentui/react-utilities';
 import {
   // TODO: classNamesFunction,
-  // css,
   divProperties,
   getNativeProps,
   format,
@@ -17,14 +14,13 @@ import {
 import { mergeClasses } from '@griffel/react';
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
+import { renderDatePicker_unstable } from './renderDatePicker';
 import { useDatePickerStyles_unstable } from './useDatePickerStyles';
 import type { ICalendar, ITextField /*, ITextFieldProps */ } from '@fluentui/react';
 import type { InputOnChangeData } from '@fluentui/react-input';
 import type { InputFieldProps } from '@fluentui/react-field';
-import type {
-  DatePickerProps,
-  // TODO: , IDatePickerStyleProps, IDatePickerStyles
-} from './DatePicker.types';
+import type { OnOpenChangeData, OpenPopoverEvents } from '@fluentui/react-popover';
+import type { DatePickerProps } from './DatePicker.types';
 
 // TODO: const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -240,6 +236,7 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
       className,
       // TODO: styles,
       initialPickerDate,
+      isMonthPickerVisible,
       isRequired,
       disabled,
       ariaLabel,
@@ -258,6 +255,14 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
       calendarAs: CalendarType = Calendar,
       tabIndex,
       disableAutoFocus = true,
+      showMonthPickerAsOverlay,
+      today,
+      highlightCurrentMonth,
+      highlightSelectedMonth,
+      showWeekNumbers,
+      firstWeekOfYear,
+      showGoToToday,
+      dateTimeFormatter,
     } = props;
 
     const id = useId('DatePicker', props.id);
@@ -526,7 +531,7 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
       ? 'filled-lighter'
       : 'outline';
 
-    const onPopoverOpenChanged = React.useCallback(
+    const onPopoverOpenChange = React.useCallback(
       (ev: OpenPopoverEvents, data: OnOpenChangeData) => {
         if (!data.open) {
           calendarDismissed();
@@ -535,159 +540,88 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
       [calendarDismissed],
     );
 
-    return (
-      <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
-        <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
-          {/* <TextField
-            aria-controls={isCalendarShown ? calloutId : undefined}
-            aria-expanded={isCalendarShown}
-            aria-haspopup="dialog"
-            ariaLabel={ariaLabel}
-            borderless={borderless}
-            data-is-focusable={dataIsFocusable}
-            disabled={disabled}
-            errorMessage={errorMessage}
-            label={label}
-            onBlur={onTextFieldBlur}
-            onChange={onTextFieldChanged}
-            onClick={onTextFieldClick}
-            onFocus={onTextFieldFocus}
-            onKeyDown={onTextFieldKeyDown}
-            placeholder={placeholder}
-            readOnly={!allowTextInput}
-            required={isRequired}
-            role="combobox"
-            tabIndex={tabIndex}
-            underlined={underlined}
-            value={formattedDate}
-            {...textFieldProps}
-            className={css(classNames.textField, textFieldProps && textFieldProps.className)}
-            id={textFieldId}
-            // TODO: Doesn't have an exact equivalent
-            iconProps={{
-              iconName: 'Calendar',
-              ...iconProps,
-              className: css(classNames.icon, iconProps && iconProps.className),
-              onClick: onIconClick,
-            }}
-            // TODO: Doesn't have an equivalent in InputField
-            componentRef={textFieldRef}
-            onRenderDescription={renderTextfieldDescription}
-            onRenderInput={readOnly ? renderReadOnlyInput : undefined}
-          /> */}
-          <Popover onOpenChange={onPopoverOpenChanged} open={isCalendarShown} positioning="below-start" trapFocus>
-            <PopoverTrigger>
-              {popoverTriggerChildProps => (
-                <InputField
-                  appearance={inputAppearance}
-                  aria-controls={isCalendarShown ? calloutId : undefined}
-                  aria-expanded={isCalendarShown}
-                  aria-haspopup="dialog"
-                  aria-label={ariaLabel}
-                  contentAfter={
-                    <CalendarMonthRegular
-                      // className={mergeClasses(classNames.icon, iconProps?.className)}
-                      onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>}
-                    />
-                  }
-                  data-is-focusable={dataIsFocusable}
-                  disabled={disabled}
-                  label={label}
-                  onBlur={onTextFieldBlur}
-                  onChange={onTextFieldChanged}
-                  onClick={onTextFieldClick}
-                  onFocus={onTextFieldFocus}
-                  onKeyDown={onTextFieldKeyDown}
-                  root={popoverTriggerChildProps as InputFieldProps['root']}
-                  placeholder={placeholder}
-                  readOnly={!allowTextInput}
-                  required={isRequired}
-                  role="combobox"
-                  tabIndex={tabIndex}
-                  validationMessage={errorMessage ?? statusMessage}
-                  validationState={errorMessage ? 'error' : undefined}
-                  value={formattedDate}
-                  {...(textFieldProps as InputFieldProps)}
-                  className={mergeClasses(classNames.textField, textFieldProps?.className)}
-                  id={textFieldId}
-                />
-              )}
-            </PopoverTrigger>
-            <PopoverSurface
-              aria-label={pickerAriaLabel}
-              className={mergeClasses(classNames.callout, calloutProps?.className)}
-              id={calloutId}
-              role="dialog"
-            >
-              <CalendarType
-                {...calendarProps}
-                onSelectDate={onSelectDate}
-                onDismiss={calendarDismissed}
-                isMonthPickerVisible={props.isMonthPickerVisible}
-                showMonthPickerAsOverlay={props.showMonthPickerAsOverlay}
-                today={props.today}
-                value={selectedDate || initialPickerDate}
-                firstDayOfWeek={firstDayOfWeek}
-                strings={strings!}
-                highlightCurrentMonth={props.highlightCurrentMonth}
-                highlightSelectedMonth={props.highlightSelectedMonth}
-                showWeekNumbers={props.showWeekNumbers}
-                firstWeekOfYear={props.firstWeekOfYear}
-                showGoToToday={props.showGoToToday}
-                dateTimeFormatter={props.dateTimeFormatter}
-                minDate={minDate}
-                maxDate={maxDate}
-                componentRef={calendar}
-                showCloseButton={showCloseButton}
-                allFocusable={allFocusable}
-              />
-            </PopoverSurface>
-          </Popover>
-        </div>
-        {/* {isCalendarShown && (
-          <Callout
-            ariaLabel={pickerAriaLabel}
-            className={css(classNames.callout, calloutProps && calloutProps.className)}
-            directionalHint={DirectionalHint.bottomLeftEdge}
-            doNotLayer={false}
-            gapSpace={0}
-            id={calloutId}
-            isBeakVisible={false}
-            role="dialog"
-            target={datePickerDiv.current}
-            // TODO: Doesn't have an equivalent in Popover
-            {...calloutProps}
-            onDismiss={calloutDismissed}
-            onPositioned={onCalloutPositioned}
-          >
-            <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={disableAutoFocus}>
-              <CalendarType
-                {...calendarProps}
-                onSelectDate={onSelectDate}
-                onDismiss={calendarDismissed}
-                isMonthPickerVisible={props.isMonthPickerVisible}
-                showMonthPickerAsOverlay={props.showMonthPickerAsOverlay}
-                today={props.today}
-                value={selectedDate || initialPickerDate}
-                firstDayOfWeek={firstDayOfWeek}
-                strings={strings!}
-                highlightCurrentMonth={props.highlightCurrentMonth}
-                highlightSelectedMonth={props.highlightSelectedMonth}
-                showWeekNumbers={props.showWeekNumbers}
-                firstWeekOfYear={props.firstWeekOfYear}
-                showGoToToday={props.showGoToToday}
-                dateTimeFormatter={props.dateTimeFormatter}
-                minDate={minDate}
-                maxDate={maxDate}
-                componentRef={calendar}
-                showCloseButton={showCloseButton}
-                allFocusable={allFocusable}
-              />
-            </FocusTrapZone>
-          </Callout>
-        )} */}
-      </div>
-    );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const state: any = {
+      Calendar: CalendarType,
+      calendar: {
+        ...calendarProps,
+        allFocusable,
+        componentRef: calendar,
+        dateTimeFormatter,
+        firstDayOfWeek,
+        firstWeekOfYear,
+        highlightCurrentMonth,
+        highlightSelectedMonth,
+        isMonthPickerVisible,
+        maxDate,
+        minDate,
+        onDismiss: calendarDismissed,
+        onSelectDate,
+        showCloseButton,
+        showGoToToday,
+        showMonthPickerAsOverlay,
+        showWeekNumbers,
+        strings,
+        today,
+        value: selectedDate || initialPickerDate,
+      },
+      inputField: {
+        appearance: inputAppearance,
+        'aria-controls': isCalendarShown ? calloutId : undefined,
+        'aria-expanded': isCalendarShown,
+        'aria-haspopup': 'dialog',
+        'aria-label': ariaLabel,
+        contentAfter: (
+          <CalendarMonthRegular
+            // className={mergeClasses(classNames.icon, iconProps?.className)}
+            onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>}
+          />
+        ),
+        'data-is-focusable': dataIsFocusable,
+        disabled,
+        label,
+        onBlur: onTextFieldBlur,
+        onChange: onTextFieldChanged,
+        onClick: onTextFieldClick,
+        onFocus: onTextFieldFocus,
+        onKeyDown: onTextFieldKeyDown,
+        placeholder,
+        readOnly: !allowTextInput,
+        required: isRequired,
+        role: 'combobox',
+        tabIndex,
+        validationMessage: errorMessage ?? statusMessage,
+        validationState: errorMessage ? 'error' : undefined,
+        value: formattedDate,
+        ...(textFieldProps as InputFieldProps),
+        className: mergeClasses(classNames.textField, textFieldProps?.className),
+        id: textFieldId,
+      },
+      popover: {
+        onOpenChange: onPopoverOpenChange,
+        open: isCalendarShown,
+        position: 'below-start',
+        trapFocus: true,
+      },
+      popoverSurface: {
+        'aria-label': pickerAriaLabel,
+        className: mergeClasses(classNames.callout, calloutProps?.className),
+        id: calloutId,
+        role: 'dialog',
+      },
+      root: {
+        ...nativeProps,
+        className: classNames.root,
+        ref: forwardedRef,
+      },
+      wrapper: {
+        'aria-owns': isCalendarShown ? calloutId : undefined,
+        className: classNames.wrapper,
+        ref: datePickerDiv,
+      },
+    };
+
+    return renderDatePicker_unstable(state);
   },
 );
 DatePicker.displayName = 'DatePicker';
