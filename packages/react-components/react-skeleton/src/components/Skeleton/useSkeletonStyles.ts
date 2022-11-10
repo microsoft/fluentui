@@ -1,33 +1,158 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { SkeletonSlots, SkeletonState } from './Skeleton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
   root: 'fui-Skeleton',
-  // TODO: add class names for all slots on SkeletonSlots.
-  // Should be of the form `<slotName>: 'fui-Skeleton__<slotName>`
+  wrapper: 'fui-Skeleton__wrapper',
+  gradient: 'fui-Skeleton__gradient',
+  data: 'fui-Skeleton__data',
+};
+
+const BACKGROUND_OFF_SCREEN_POSITION = '100%';
+
+const skeletonAnimation = {
+  '0%': {
+    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+  },
+  '100%': {
+    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+  },
+};
+
+const skeletonAnimationRTL = {
+  '100%': {
+    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+  },
+  '0%': {
+    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+  },
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+const useRootStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    position: 'relative',
+    height: 'auto',
+  },
+});
+
+/**
+ * Styles for the wrapper slot
+ */
+const useWrapperStyles = makeStyles({
+  base: {
+    position: 'relative',
+    ...shorthands.overflow('hidden'),
+    transform: 'translateZ(0)',
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    transitionProperty: 'opacity',
+    transitionDuration: '0.3s',
+    transitionTimingFunction: 'ease',
+
+    '@media screen and (forced-colors: active)': {
+      backgroundColor: `WindowText
+      linear-gradient(
+        to right,
+        transparent 0%,
+        Window 50%,
+        transparent 100%)
+      0 0 / 90% 100%
+      no-repeat`,
+    },
+  },
+});
+
+/**
+ * Styles for the gradient slot
+ */
+const useGradientStyles = makeStyles({
+  base: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: `tokens.colorNeutralBackgroundDisabled
+                  linear-gradient(
+                    to right,
+                    ${tokens.colorNeutralBackgroundDisabled} 0%,
+                    ${tokens.spacingVerticalM} 50%,
+                    ${tokens.colorNeutralBackgroundDisabled} 100%)
+                  0 0 / 90% 100%
+                  no-repeat`,
+    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+    animationDuration: '2s',
+    animationTimingFunction: 'ease-in-out',
+    animationDirection: 'normal',
+    animationIterationCount: 'infinite',
+    animationName: skeletonAnimation,
   },
 
-  // TODO add additional classes for different states and/or slots
+  rtl: {
+    animationName: skeletonAnimationRTL,
+  },
+});
+
+/**
+ * Styling for the data slot
+ */
+const useDataStyles = makeStyles({
+  base: {
+    position: 'absolute',
+    top: '0',
+    bottom: '0',
+    left: '0',
+    right: '0',
+    opacity: '0',
+    backgroundColor: 'transparent',
+    ...shorthands.border('none'),
+    transitionProperty: 'opacity',
+    transitionDuration: '0.3s',
+    transitionTimingFunction: 'ease',
+  },
+
+  loaded: {
+    opacity: '1',
+    position: 'static',
+  },
 });
 
 /**
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(skeletonClassNames.root, styles.root, state.root.className);
+  const { isDataLoaded } = state;
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const rootStyles = useRootStyles();
+  const wrapperStyles = useWrapperStyles();
+  const gradientStyles = useGradientStyles();
+  const dataStyles = useDataStyles();
+  const { dir } = useFluent();
+
+  state.root.className = mergeClasses(skeletonClassNames.root, rootStyles.root, state.root.className);
+
+  state.wrapper.className = mergeClasses(skeletonClassNames.wrapper, wrapperStyles.base, state.wrapper.className);
+
+  state.gradient.className = mergeClasses(
+    skeletonClassNames.gradient,
+    gradientStyles.base,
+    dir === 'rtl' && gradientStyles.rtl,
+    skeletonClassNames.gradient,
+  );
+
+  if (state.data) {
+    state.data.className = mergeClasses(
+      skeletonClassNames.data,
+      dataStyles.base,
+      isDataLoaded && dataStyles.loaded,
+      skeletonClassNames.data,
+    );
+  }
 
   return state;
 };
