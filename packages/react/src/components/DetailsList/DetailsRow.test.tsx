@@ -6,7 +6,7 @@ import { SelectionMode, Selection } from '../../Selection';
 import { DetailsRow } from './DetailsRow';
 import { getTheme } from '../../Styling';
 import type { IDetailsRowProps } from './DetailsRow.types';
-import type { IColumn } from './DetailsList.types';
+import type { IDetailsListProps, IColumn } from './DetailsList.types';
 
 const _columns: IColumn[] = [
   {
@@ -43,7 +43,7 @@ function mockItems(count: number): any[] {
 
 const renderRow = (row: IDetailsRowProps) => <div>{row.item.name}</div>;
 
-const mockProps = {
+const mockProps: IDetailsListProps = {
   items: mockItems(5),
   columns: _columns,
   onRenderRow: renderRow,

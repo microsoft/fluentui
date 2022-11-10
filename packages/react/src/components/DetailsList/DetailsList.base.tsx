@@ -9,6 +9,7 @@ import {
   getRTLSafeKeyCode,
   classNamesFunction,
   memoizeFunction,
+  warnMutuallyExclusive,
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -57,6 +58,7 @@ import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from
 import type { IListProps } from '../../List';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
+const COMPONENT_NAME = 'DetailsList';
 
 export interface IDetailsListState {
   focusedItemIndex: number;
@@ -800,6 +802,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       version: {},
       getDerivedStateFromProps: this._getDerivedStateFromProps,
     };
+
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      selection: 'getKey',
+    });
 
     this._selection =
       props.selection ||

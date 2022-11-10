@@ -66,14 +66,10 @@ export interface IDetailsList extends IList {
   updateColumn: (column: IColumn, options: { width?: number; newColumnIndex?: number }) => void;
 }
 
-export type ConditionalDetailsListProps =
-  | { selection?: IDetailsListPropsBase['selection']; getKey?: never }
-  | { selection?: never; getKey?: IDetailsListPropsBase['getKey'] };
-
 /**
  * {@docCategory DetailsList}
  */
-export interface IDetailsListPropsBase extends IBaseProps<IDetailsList>, IWithViewportProps {
+export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
   /** Theme provided by a higher-order component. */
   theme?: ITheme;
 
@@ -361,8 +357,6 @@ export interface IDetailsListPropsBase extends IBaseProps<IDetailsList>, IWithVi
    */
   focusZoneProps?: IFocusZoneProps;
 }
-
-export type IDetailsListProps = IDetailsListPropsBase & ConditionalDetailsListProps;
 
 /**
  * {@docCategory DetailsList}

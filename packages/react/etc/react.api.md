@@ -1074,15 +1074,6 @@ export { concatStyleSets }
 export { concatStyleSetsWithProps }
 
 // @public (undocumented)
-export type ConditionalDetailsListProps = {
-    selection?: IDetailsListPropsBase['selection'];
-    getKey?: never;
-} | {
-    selection?: never;
-    getKey?: IDetailsListPropsBase['getKey'];
-};
-
-// @public (undocumented)
 export enum ConstrainMode {
     horizontalConstrained = 1,
     unconstrained = 0
@@ -4580,10 +4571,7 @@ export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 }
 
 // @public (undocumented)
-export type IDetailsListProps = IDetailsListPropsBase & ConditionalDetailsListProps;
-
-// @public (undocumented)
-export interface IDetailsListPropsBase extends IBaseProps<IDetailsList>, IWithViewportProps {
+export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
     // @deprecated
     ariaLabel?: string;
     ariaLabelForGrid?: string;
@@ -8235,10 +8223,18 @@ export interface IShimmerColors {
     shimmerWave?: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListPropsBase" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export type IShimmeredDetailsListProps = IShimmeredDetailsListPropsBase & ConditionalDetailsListProps;
+// @public
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
+    ariaLabelForShimmer?: string;
+    detailsListStyles?: IDetailsListProps['styles'];
+    enableShimmer?: boolean;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps, index?: number, defaultRender?: (props: IDetailsRowProps) => React_2.ReactNode) => React_2.ReactNode;
+    removeFadingOverlay?: boolean;
+    shimmerLines?: number;
+    // @deprecated
+    shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+}
 
 // @public
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;

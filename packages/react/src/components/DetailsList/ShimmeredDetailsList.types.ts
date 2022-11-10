@@ -1,16 +1,14 @@
 import * as React from 'react';
-import type { ConditionalDetailsListProps, IDetailsListProps, IDetailsListPropsBase } from './DetailsList.types';
+import type { IDetailsListProps } from './DetailsList.types';
 import type { IDetailsRowProps } from './DetailsRow.types';
 import type { IStyle } from '../../Styling';
 import type { IStyleFunctionOrObject } from '../../Utilities';
-
-export type IShimmeredDetailsListProps = IShimmeredDetailsListPropsBase & ConditionalDetailsListProps;
 
 /**
  * ShimmeredDetailsList props interface
  * {@docCategory DetailsList}
  */
-interface IShimmeredDetailsListPropsBase extends Omit<IDetailsListPropsBase, 'styles'> {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
   /**
    * DetailsList styles to pass through.
    */
