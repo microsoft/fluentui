@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove unwanted aria attributes on context menu",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
