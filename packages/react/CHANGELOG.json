@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 10 Nov 2022 07:55:03 GMT",
+      "tag": "@fluentui/react_v8.101.0",
+      "version": "8.101.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test(react): clean up persona-coin test and use isConformant without side-effects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Nov 2022 07:48:12 GMT",
       "tag": "@fluentui/react_v8.101.0",
       "version": "8.101.0",
