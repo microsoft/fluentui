@@ -3,9 +3,11 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const { promisify } = require('util');
+const child_process = require('child_process');
 const { rollup: lernaAliases } = require('lerna-alias');
 const { default: PQueue } = require('p-queue');
-const exec = require('../exec');
+const exec = promisify(child_process.exec);
 
 const eslintForPackageScript = path.join(__dirname, 'eslint-for-package.js');
 
@@ -60,7 +62,7 @@ async function runEslintOnFilesGroupedPerPackage() {
     Object.entries(filesGroupedByPackage).map(([packagePath, files]) => async () => {
       // This script handles running eslint on ONLY the appropriate files for each package.
       // See its comments for more details.
-      return exec(`node ${eslintForPackageScript} ${files.join(' ')}`, undefined, packagePath, process).catch(() => {
+      return exec(`node ${eslintForPackageScript} ${files.join(' ')}`, { cwd: packagePath }).catch(() => {
         // The subprocess should already have handled logging. Just mark that there was an error.
         hasError = true;
       });
