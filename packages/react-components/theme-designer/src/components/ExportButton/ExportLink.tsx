@@ -163,7 +163,7 @@ export const ExportLink = () => {
     const EditIcon = bundleIcon(EditFilled, EditRegular);
     return (
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton>Select </MenuButton>
         </MenuTrigger>
         <MenuPopover>

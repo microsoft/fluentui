@@ -124,7 +124,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
               </div>
               <div>
                 <Menu>
-                  <MenuTrigger>
+                  <MenuTrigger disableButtonEnhancement>
                     <MenuButton shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
                       {name} {colorValue}
                     </MenuButton>

@@ -3,10 +3,10 @@ import { render, fireEvent, createEvent } from '@testing-library/react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { MenuItem } from './MenuItem';
 import * as renderer from 'react-test-renderer';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuListProvider } from '../../contexts/menuListContext';
-import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import { mockUseMenuContext } from '../../testing/mockUseMenuContext';
 import type { MenuItemProps } from './MenuItem.types';
 
 jest.mock('../../contexts/menuContext');

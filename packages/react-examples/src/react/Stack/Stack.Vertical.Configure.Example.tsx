@@ -102,6 +102,7 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
 
   return (
     <Stack
+      enableScopedSelectors
       disableShrink={disableShrink}
       wrap={wrap}
       verticalAlign={verticalAlignment}
@@ -147,12 +148,12 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
   const [emptyChildren, setEmptyChildren] = React.useState<string[]>([]);
 
   return (
-    <Stack tokens={sectionStackTokens}>
-      <Stack horizontal tokens={configureStackTokens}>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
+      <Stack enableScopedSelectors horizontal tokens={configureStackTokens}>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider label="Number of items:" min={1} max={10} step={1} defaultValue={5} onChange={setNumItems} />
-            <Stack horizontal>
+            <Stack enableScopedSelectors horizontal>
               <Checkbox label="Shadow around items" onChange={toggleShowBoxShadow} styles={checkboxStyles} />
               <Checkbox label="Prevent item overflow" onChange={togglePreventOverflow} styles={checkboxStyles} />
               <Checkbox label="Shrink items" onChange={toggleDisableShrink} styles={checkboxStyles} />
@@ -161,7 +162,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Container height:"
               min={1}
@@ -177,9 +178,9 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
         </Stack.Item>
       </Stack>
 
-      <Stack horizontal tokens={configureStackTokens}>
+      <Stack enableScopedSelectors horizontal tokens={configureStackTokens}>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Vertical gap between items:"
               min={0}
@@ -189,7 +190,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               showValue
               onChange={setChildrenGap}
             />
-            <Stack horizontal verticalAlign="end" tokens={configureStackTokens}>
+            <Stack enableScopedSelectors horizontal verticalAlign="end" tokens={configureStackTokens}>
               <Stack.Item grow>
                 <Dropdown
                   selectedKey={verticalAlignment}
@@ -233,7 +234,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Left padding:"
               min={0}
@@ -255,7 +256,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Top padding:"
               min={0}

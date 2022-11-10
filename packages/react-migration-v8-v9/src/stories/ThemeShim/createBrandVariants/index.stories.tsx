@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { createTheme, DefaultPalette } from '@fluentui/react';
+import { DefaultPalette } from '@fluentui/react';
 import { Button, makeStyles, Textarea, TextareaProps, shorthands, RadioGroup, Radio } from '@fluentui/react-components';
-import { createBrandVariants, createV9Theme } from '../../../components/Theme/index';
+import { createBrandVariants } from '../../../components/Theme/index';
 
 import descriptionMd from './Description.md';
 import { Meta } from '@storybook/react';
@@ -90,17 +90,15 @@ export const Default = () => {
       <div>{message}</div>
       <h2>v9 BrandVariants</h2>
       <div className={styles.result}>
-        {Object.keys(brandVariants)
-          .sort()
-          .map(key => (
-            <>
-              <div>{key}</div>
-              <div>
-                {brandVariants[key]}&nbsp;
-                <span className={styles.colorBlock} style={{ backgroundColor: brandVariants[key] }} />
-              </div>
-            </>
-          ))}
+        {Object.keys(brandVariants).map(key => (
+          <>
+            <div>{key}</div>
+            <div>
+              {brandVariants[key]}&nbsp;
+              <span className={styles.colorBlock} style={{ backgroundColor: brandVariants[key] }} />
+            </div>
+          </>
+        ))}
       </div>
     </div>
   );

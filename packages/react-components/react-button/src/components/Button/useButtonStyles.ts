@@ -19,8 +19,10 @@ const useRootStyles = makeStyles({
   // Base styles
   base: {
     alignItems: 'center',
+    boxSizing: 'border-box',
     display: 'inline-flex',
     justifyContent: 'center',
+    textDecorationLine: 'none',
     verticalAlign: 'middle',
 
     ...shorthands.margin(0),
@@ -68,9 +70,9 @@ const useRootStyles = makeStyles({
 
   // Transition styles
   transition: {
-    transitionDuration: '100ms',
+    transitionDuration: tokens.durationFaster,
     transitionProperty: 'background, border, color',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionTimingFunction: tokens.curveEasyEase,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -141,12 +143,20 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Hover,
+
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
+
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandPressed,
+      },
     },
   },
   transparent: {
@@ -427,17 +437,6 @@ const useIconStyles = makeStyles({
     [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
 
-  // Appearance variations
-  subtle: {
-    ':hover': {
-      color: tokens.colorNeutralForeground2BrandHover,
-    },
-
-    ':hover:active': {
-      color: tokens.colorNeutralForeground2BrandPressed,
-    },
-  },
-
   // Icon position variations
   before: {
     marginRight: `var(${iconSpacingVar})`,
@@ -490,7 +489,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       buttonClassNames.icon,
       iconStyles.base,
       state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
-      appearance === 'subtle' && iconStyles.subtle,
       iconStyles[size],
       state.icon.className,
     );

@@ -10,6 +10,9 @@ export { WithTooltip } from './ToolbarWithTooltip.stories';
 export { WithPopover } from './ToolbarWithPopover.stories';
 export { Subtle } from './ToolbarSubtle.stories';
 export { ControlledToggleButton } from './ToolbarControlledToggleButton.stories';
+export { Radio } from './ToolbarRadio.stories';
+export { ControlledRadio } from './ToolbarRadioControlled.stories';
+export { Vertical } from './ToolbarVertical.stories';
 
 export default {
   title: 'Preview Components/Toolbar',

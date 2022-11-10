@@ -146,6 +146,12 @@ const useRootStyles = makeStyles({
       borderBottomColor: tokens.colorCompoundBrandStroke,
     },
   },
+
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
 });
 
 /**
@@ -232,6 +238,7 @@ const useTextareaResizeStyles = makeStyles({
 export const useTextareaStyles_unstable = (state: TextareaState): TextareaState => {
   const { size, appearance, resize } = state;
   const disabled = state.textarea.disabled;
+  const invalid = `${state.textarea['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
@@ -243,6 +250,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
+    !disabled && invalid && rootStyles.invalid,
     state.root.className,
   );
 

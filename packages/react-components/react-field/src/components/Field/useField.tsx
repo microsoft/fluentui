@@ -3,8 +3,8 @@ import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type {
-  FieldComponent,
   FieldConfig,
+  FieldControl,
   FieldProps,
   FieldPropsWithOptionalComponentProps,
   FieldState,
@@ -19,7 +19,7 @@ const validationMessageIcons = {
 /**
  * Partition the props used by the Field itself, from the props that are passed to the underlying field component.
  */
-export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent>>(props: Props) => {
+export const getPartitionedFieldProps = <Props extends FieldProps<FieldControl>>(props: Props) => {
   const {
     className,
     control,
@@ -60,14 +60,14 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
  * @param ref - Ref to the control slot (primary slot)
  * @param params - Configuration parameters for this Field
  */
-export const useField_unstable = <T extends FieldComponent>(
+export const useField_unstable = <T extends FieldControl>(
   props: FieldPropsWithOptionalComponentProps<T>,
   ref: React.Ref<HTMLElement>,
   params: FieldConfig<T>,
 ): FieldState<T> => {
   const [fieldProps, controlProps] = getPartitionedFieldProps(props);
   const { orientation = 'vertical', validationState } = fieldProps;
-  const { labelConnection = 'htmlFor' } = params;
+  const { labelConnection = 'htmlFor', ariaInvalidOnError = true } = params;
 
   const baseId = useId('field-');
 
@@ -118,7 +118,7 @@ export const useField_unstable = <T extends FieldComponent>(
     control['aria-labelledby'] ??= label.id;
   }
 
-  if (validationState === 'error') {
+  if (validationState === 'error' && ariaInvalidOnError) {
     control['aria-invalid'] ??= true;
     if (validationMessage) {
       control['aria-errormessage'] ??= validationMessage.id;
@@ -134,7 +134,7 @@ export const useField_unstable = <T extends FieldComponent>(
     }
   }
 
-  const state: FieldState<FieldComponent> = {
+  const state: FieldState<FieldControl> = {
     orientation,
     validationState,
     classNames: params.classNames,

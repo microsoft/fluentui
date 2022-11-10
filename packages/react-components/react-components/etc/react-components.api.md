@@ -96,6 +96,43 @@ import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
+import { Dialog } from '@fluentui/react-dialog';
+import { DialogActions } from '@fluentui/react-dialog';
+import { dialogActionsClassNames } from '@fluentui/react-dialog';
+import { DialogActionsPosition } from '@fluentui/react-dialog';
+import { DialogActionsProps } from '@fluentui/react-dialog';
+import { DialogActionsSlots } from '@fluentui/react-dialog';
+import { DialogActionsState } from '@fluentui/react-dialog';
+import { DialogBody } from '@fluentui/react-dialog';
+import { dialogBodyClassNames } from '@fluentui/react-dialog';
+import { DialogBodyProps } from '@fluentui/react-dialog';
+import { DialogBodySlots } from '@fluentui/react-dialog';
+import { DialogBodyState } from '@fluentui/react-dialog';
+import { DialogContent } from '@fluentui/react-dialog';
+import { dialogContentClassNames } from '@fluentui/react-dialog';
+import { DialogContentProps } from '@fluentui/react-dialog';
+import { DialogContentSlots } from '@fluentui/react-dialog';
+import { DialogContentState } from '@fluentui/react-dialog';
+import { DialogOpenChangeData } from '@fluentui/react-dialog';
+import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
+import { DialogProps } from '@fluentui/react-dialog';
+import { DialogSlots } from '@fluentui/react-dialog';
+import { DialogState } from '@fluentui/react-dialog';
+import { DialogSurface } from '@fluentui/react-dialog';
+import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+import { DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import { DialogSurfaceState } from '@fluentui/react-dialog';
+import { DialogTitle } from '@fluentui/react-dialog';
+import { dialogTitleClassNames } from '@fluentui/react-dialog';
+import { DialogTitleProps } from '@fluentui/react-dialog';
+import { DialogTitleSlots } from '@fluentui/react-dialog';
+import { DialogTitleState } from '@fluentui/react-dialog';
+import { DialogTrigger } from '@fluentui/react-dialog';
+import { DialogTriggerAction } from '@fluentui/react-dialog';
+import { DialogTriggerChildProps } from '@fluentui/react-dialog';
+import { DialogTriggerProps } from '@fluentui/react-dialog';
+import { DialogTriggerState } from '@fluentui/react-dialog';
 import { Display } from '@fluentui/react-text';
 import { displayClassNames } from '@fluentui/react-text';
 import { Divider } from '@fluentui/react-divider';
@@ -235,6 +272,7 @@ import { PopoverSurfaceProps } from '@fluentui/react-popover';
 import { PopoverSurfaceSlots } from '@fluentui/react-popover';
 import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTrigger } from '@fluentui/react-popover';
+import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
@@ -275,6 +313,13 @@ import { renderBadge_unstable } from '@fluentui/react-badge';
 import { renderButton_unstable } from '@fluentui/react-button';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
+import { renderDialog_unstable } from '@fluentui/react-dialog';
+import { renderDialogActions_unstable } from '@fluentui/react-dialog';
+import { renderDialogBody_unstable } from '@fluentui/react-dialog';
+import { renderDialogContent_unstable } from '@fluentui/react-dialog';
+import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
+import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
+import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
@@ -443,6 +488,18 @@ import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
 import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useDialog_unstable } from '@fluentui/react-dialog';
+import { useDialogActions_unstable } from '@fluentui/react-dialog';
+import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogBody_unstable } from '@fluentui/react-dialog';
+import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogContent_unstable } from '@fluentui/react-dialog';
+import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogSurface_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -724,6 +781,80 @@ export { createTeamsDarkTheme }
 
 export { CurveTokens }
 
+export { Dialog }
+
+export { DialogActions }
+
+export { dialogActionsClassNames }
+
+export { DialogActionsPosition }
+
+export { DialogActionsProps }
+
+export { DialogActionsSlots }
+
+export { DialogActionsState }
+
+export { DialogBody }
+
+export { dialogBodyClassNames }
+
+export { DialogBodyProps }
+
+export { DialogBodySlots }
+
+export { DialogBodyState }
+
+export { DialogContent }
+
+export { dialogContentClassNames }
+
+export { DialogContentProps }
+
+export { DialogContentSlots }
+
+export { DialogContentState }
+
+export { DialogOpenChangeData }
+
+export { DialogOpenChangeEvent }
+
+export { DialogProps }
+
+export { DialogSlots }
+
+export { DialogState }
+
+export { DialogSurface }
+
+export { dialogSurfaceClassNames }
+
+export { DialogSurfaceProps }
+
+export { DialogSurfaceSlots }
+
+export { DialogSurfaceState }
+
+export { DialogTitle }
+
+export { dialogTitleClassNames }
+
+export { DialogTitleProps }
+
+export { DialogTitleSlots }
+
+export { DialogTitleState }
+
+export { DialogTrigger }
+
+export { DialogTriggerAction }
+
+export { DialogTriggerChildProps }
+
+export { DialogTriggerProps }
+
+export { DialogTriggerState }
+
 export { Display }
 
 export { displayClassNames }
@@ -1002,6 +1133,8 @@ export { PopoverSurfaceState }
 
 export { PopoverTrigger }
 
+export { PopoverTriggerChildProps }
+
 export { PopoverTriggerProps }
 
 export { PopoverTriggerState }
@@ -1081,6 +1214,20 @@ export { renderButton_unstable }
 export { renderCheckbox_unstable }
 
 export { renderCompoundButton_unstable }
+
+export { renderDialog_unstable }
+
+export { renderDialogActions_unstable }
+
+export { renderDialogBody_unstable }
+
+export { renderDialogContent_unstable }
+
+export { renderDialogSurface_unstable }
+
+export { renderDialogTitle_unstable }
+
+export { renderDialogTrigger_unstable }
 
 export { renderDivider_unstable }
 
@@ -1417,6 +1564,30 @@ export { useCompoundButtonStyles_unstable }
 export { useCounterBadge_unstable }
 
 export { useCounterBadgeStyles_unstable }
+
+export { useDialog_unstable }
+
+export { useDialogActions_unstable }
+
+export { useDialogActionsStyles_unstable }
+
+export { useDialogBody_unstable }
+
+export { useDialogBodyStyles_unstable }
+
+export { useDialogContent_unstable }
+
+export { useDialogContentStyles_unstable }
+
+export { useDialogSurface_unstable }
+
+export { useDialogSurfaceStyles_unstable }
+
+export { useDialogTitle_unstable }
+
+export { useDialogTitleStyles_unstable }
+
+export { useDialogTrigger_unstable }
 
 export { useDivider_unstable }
 

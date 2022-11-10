@@ -4,12 +4,17 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { FieldControl } from '@fluentui/react-field';
+import type { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Progress: ForwardRefComponent<ProgressProps>;
@@ -17,11 +22,22 @@ export const Progress: ForwardRefComponent<ProgressProps>;
 // @public (undocumented)
 export const progressClassNames: SlotClassNames<ProgressSlots>;
 
+// @public (undocumented)
+export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unstable>;
+
+// @public (undocumented)
+export const progressFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
+
+// @public (undocumented)
+export type ProgressFieldProps_unstable = FieldProps<typeof Progress>;
+
 // @public
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
+    shape?: 'rounded' | 'rectangular';
     value?: number;
     max?: number;
     thickness?: 'medium' | 'large';
+    validationState?: 'success' | 'warning' | 'error';
 };
 
 // @public (undocumented)
@@ -31,7 +47,7 @@ export type ProgressSlots = {
 };
 
 // @public
-export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'thickness'>> & Pick<ProgressProps, 'value'>;
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressProps, 'value' | 'validationState'>;
 
 // @public
 export const renderProgress_unstable: (state: ProgressState) => JSX.Element;

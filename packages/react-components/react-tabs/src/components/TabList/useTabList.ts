@@ -19,7 +19,14 @@ import { TabValue } from '../Tab/Tab.types';
  * @param ref - reference to root HTMLElement of TabList
  */
 export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
-  const { appearance = 'transparent', disabled = false, onTabSelect, size = 'medium', vertical = false } = props;
+  const {
+    appearance = 'transparent',
+    reserveSelectedTabSpace = true,
+    disabled = false,
+    onTabSelect,
+    size = 'medium',
+    vertical = false,
+  } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
@@ -81,6 +88,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
       ...props,
     }),
     appearance,
+    reserveSelectedTabSpace,
     disabled,
     selectedValue,
     size,

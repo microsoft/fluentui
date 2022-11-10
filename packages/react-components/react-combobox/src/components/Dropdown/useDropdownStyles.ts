@@ -16,7 +16,6 @@ export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -137,7 +136,8 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
-
+  },
+  outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       borderBottomColor: tokens.colorNeutralStrokeAccessible,
@@ -155,9 +155,29 @@ const useStyles = makeStyles({
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+  },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
+  disabled: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
   },
 });
 
@@ -190,6 +210,10 @@ const useIconStyles = makeStyles({
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
   },
+
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
 });
 
 /**
@@ -197,10 +221,20 @@ const useIconStyles = makeStyles({
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
   const { appearance, open, placeholderVisible, size } = state;
+  const invalid = `${state.button['aria-invalid']}` === 'true';
+  const disabled = state.button.disabled;
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
-  state.root.className = mergeClasses(dropdownClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.root.className = mergeClasses(
+    dropdownClassNames.root,
+    styles.root,
+    styles[appearance],
+    invalid && appearance !== 'underline' && styles.invalid,
+    invalid && appearance === 'underline' && styles.invalidUnderline,
+    disabled && styles.disabled,
+    state.root.className,
+  );
 
   state.button.className = mergeClasses(
     dropdownClassNames.button,
@@ -224,6 +258,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
       dropdownClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[size],
+      disabled && iconStyles.disabled,
       state.expandIcon.className,
     );
   }

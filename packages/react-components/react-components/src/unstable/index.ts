@@ -16,6 +16,7 @@ export {
   avatarGroupClassNames,
   avatarGroupItemClassNames,
   avatarGroupPopoverClassNames,
+  partitionAvatarGroupItems,
   renderAvatarGroup_unstable,
   renderAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
@@ -37,6 +38,8 @@ export type {
   AvatarGroupPopoverProps,
   AvatarGroupPopoverSlots,
   AvatarGroupPopoverState,
+  PartitionAvatarGroupItems,
+  PartitionAvatarGroupItemsOptions,
 } from '@fluentui/react-avatar';
 export {
   Card,
@@ -176,68 +179,6 @@ export {
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
 
 export {
-  Dialog,
-  useDialog_unstable,
-  renderDialog_unstable,
-  DialogTitle,
-  dialogTitleClassNames,
-  useDialogTitle_unstable,
-  useDialogTitleStyles_unstable,
-  renderDialogTitle_unstable,
-  DialogTrigger,
-  useDialogTrigger_unstable,
-  renderDialogTrigger_unstable,
-  DialogBody,
-  dialogBodyClassNames,
-  useDialogBody_unstable,
-  useDialogBodyStyles_unstable,
-  renderDialogBody_unstable,
-  DialogActions,
-  dialogActionsClassNames,
-  useDialogActions_unstable,
-  useDialogActionsStyles_unstable,
-  renderDialogActions_unstable,
-  DialogSurface,
-  dialogSurfaceClassNames,
-  useDialogSurface_unstable,
-  useDialogSurfaceStyles_unstable,
-  renderDialogSurface_unstable,
-  DialogContent,
-  dialogContentClassNames,
-  useDialogContentStyles_unstable,
-  useDialogContent_unstable,
-  renderDialogContent_unstable,
-} from '@fluentui/react-dialog';
-
-export type {
-  DialogProps,
-  DialogOpenChangeData,
-  DialogOpenChangeEvent,
-  DialogSlots,
-  DialogState,
-  DialogTriggerProps,
-  DialogTriggerChildProps,
-  DialogTriggerState,
-  DialogTriggerAction,
-  DialogActionsProps,
-  DialogActionsSlots,
-  DialogActionsState,
-  DialogActionsPosition,
-  DialogBodyProps,
-  DialogBodySlots,
-  DialogBodyState,
-  DialogTitleProps,
-  DialogTitleSlots,
-  DialogTitleState,
-  DialogSurfaceProps,
-  DialogSurfaceSlots,
-  DialogSurfaceState,
-  DialogContentProps,
-  DialogContentSlots,
-  DialogContentState,
-} from '@fluentui/react-dialog';
-
-export {
   TableCell,
   tableCellClassNames,
   tableCellClassName,
@@ -291,7 +232,12 @@ export {
   useTableCellLayoutStyles_unstable,
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
+  useTable,
+  useSelection,
+  useSort,
+  createColumn,
 } from '@fluentui/react-table';
+
 export type {
   SortDirection,
   TableHeaderCellProps,
@@ -320,47 +266,55 @@ export type {
   TableCellActionsProps,
   TableCellActionsState,
   TableCellActionsSlots,
+  UseTableOptions,
+  TableState as HeadlessTableState,
+  TableSelectionState,
+  TableSortState,
+  TableStatePlugin,
+  RowState,
+  RowId,
+  ColumnDefinition,
+  ColumnId,
+  CreateColumnOptions,
 } from '@fluentui/react-table';
 
+export { CheckboxField_unstable as CheckboxField, checkboxFieldClassNames } from '@fluentui/react-checkbox';
+export type { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
+
+export { ComboboxField_unstable as ComboboxField, comboboxFieldClassNames } from '@fluentui/react-combobox';
+export type { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
+
+export { InputField_unstable as InputField, inputFieldClassNames } from '@fluentui/react-input';
+export type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+
+export { ProgressField_unstable as ProgressField, progressFieldClassNames } from '@fluentui/react-progress';
+export type { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
+
+export { RadioGroupField_unstable as RadioGroupField, radioGroupFieldClassNames } from '@fluentui/react-radio';
+export type { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
+
+export { SelectField_unstable as SelectField, selectFieldClassNames } from '@fluentui/react-select';
+export type { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
+
+export { SliderField_unstable as SliderField, sliderFieldClassNames } from '@fluentui/react-slider';
+export type { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
+
+export { SpinButtonField_unstable as SpinButtonField, spinButtonFieldClassNames } from '@fluentui/react-spinbutton';
+export type { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
+
+export { SwitchField_unstable as SwitchField, switchFieldClassNames } from '@fluentui/react-switch';
+export type { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
+
+export { TextareaField_unstable as TextareaField, textareaFieldClassNames } from '@fluentui/react-textarea';
+export type { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
+
 export {
-  CheckboxField,
-  checkboxFieldClassNames,
-  ComboboxField,
-  comboboxFieldClassNames,
   getFieldClassNames,
-  InputField,
-  inputFieldClassNames,
-  RadioGroupField,
-  radioGroupFieldClassNames,
   renderField_unstable,
-  SelectField,
-  selectFieldClassNames,
-  SliderField,
-  sliderFieldClassNames,
-  SpinButtonField,
-  spinButtonFieldClassNames,
-  SwitchField,
-  switchFieldClassNames,
-  TextareaField,
-  textareaFieldClassNames,
   useFieldStyles_unstable,
   useField_unstable,
 } from '@fluentui/react-field';
-export type {
-  CheckboxFieldProps,
-  ComboboxFieldProps,
-  FieldConfig,
-  FieldProps,
-  FieldSlots,
-  FieldState,
-  InputFieldProps,
-  RadioGroupFieldProps,
-  SelectFieldProps,
-  SliderFieldProps,
-  SpinButtonFieldProps,
-  SwitchFieldProps,
-  TextareaFieldProps,
-} from '@fluentui/react-field';
+export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
   Persona,
@@ -370,3 +324,12 @@ export {
   usePersona_unstable,
 } from '@fluentui/react-persona';
 export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
+
+export {
+  Progress,
+  progressClassNames,
+  renderProgress_unstable,
+  useProgressStyles_unstable,
+  useProgress_unstable,
+} from '@fluentui/react-progress';
+export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/react-progress';

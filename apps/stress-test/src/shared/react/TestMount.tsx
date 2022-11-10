@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styleInjector } from '../css/injectStyles';
-// import { requestPostAnimationFrame } from '../utils/requestPostAnimationFrame';
 import { ReactSelectorTree } from './ReactSelectorTree';
 import type { TestProps } from './types';
 
@@ -18,7 +17,7 @@ const debouncedOnRender: DebouncedOnRender = () => {
       clearTimeout(timeoutId);
     }
 
-    timeoutId = setTimeout(() => {
+    timeoutId = window.setTimeout(() => {
       requestAnimationFrame(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
