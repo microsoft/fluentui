@@ -1,9 +1,9 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { FieldComponent, FieldProps, FieldSlots, FieldState } from './Field.types';
+import type { FieldControl, FieldProps, FieldSlots, FieldState } from './Field.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
-export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<FieldComponent>> => ({
+export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<FieldControl>> => ({
   root: `fui-${name}`,
   control: `fui-${name}__control`,
   label: `fui-${name}__label`,
@@ -81,9 +81,9 @@ const useValidationMessageIconStyles = makeStyles({
 /**
  * Apply styling to the Field slots based on the state
  */
-export const useFieldStyles_unstable = <T extends FieldComponent>(state: FieldState<T>) => {
+export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldState<T>) => {
   const classNames = state.classNames;
-  const validationState: FieldProps<FieldComponent>['validationState'] = state.validationState;
+  const validationState: FieldProps<FieldControl>['validationState'] = state.validationState;
   const horizontal = state.orientation === 'horizontal';
 
   const rootStyles = useRootStyles();

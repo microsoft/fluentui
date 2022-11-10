@@ -1,4 +1,4 @@
-import { TextareaField } from '@fluentui/react-field';
+import { TextareaField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './TextareaFieldDescription.md';
 

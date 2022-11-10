@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxField } from '@fluentui/react-field';
+import { CheckboxField } from '@fluentui/react-components/unstable';
 
 export const FieldLabel = () => <CheckboxField fieldLabel="Example checkbox field label" />;
 

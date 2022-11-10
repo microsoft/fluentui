@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Radio } from '@fluentui/react-components';
-import type { RadioGroupFieldProps } from '@fluentui/react-field';
-import { RadioGroupField } from '@fluentui/react-field';
+import type { RadioGroupFieldProps } from '@fluentui/react-components/unstable';
+import { RadioGroupField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<RadioGroupFieldProps>) => (
   <RadioGroupField

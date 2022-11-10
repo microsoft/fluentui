@@ -1,4 +1,4 @@
-import { ProgressField } from '@fluentui/react-field';
+import { ProgressField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './ProgressFieldDescription.md';
 

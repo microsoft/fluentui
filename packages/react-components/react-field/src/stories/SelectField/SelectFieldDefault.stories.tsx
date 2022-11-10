@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { SelectFieldProps } from '@fluentui/react-field';
-import { SelectField } from '@fluentui/react-field';
+import type { SelectFieldProps } from '@fluentui/react-components/unstable';
+import { SelectField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<SelectFieldProps>) => (
   <SelectField

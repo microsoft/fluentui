@@ -7,6 +7,7 @@ describe('CheckboxField', () => {
   isConformant({
     Component: CheckboxField,
     displayName: 'CheckboxField',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {
@@ -20,6 +21,7 @@ describe('CheckboxField', () => {
         },
       ],
     },
+    disabledTests: ['exported-top-level'], // TODO re-enable once component is exported without _unstable
   });
 
   // Most functionality is tested by Field.test.tsx, and Checkbox's tests

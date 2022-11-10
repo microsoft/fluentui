@@ -1,4 +1,4 @@
-import { RadioGroupField } from '@fluentui/react-field';
+import { RadioGroupField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './RadioGroupFieldDescription.md';
 

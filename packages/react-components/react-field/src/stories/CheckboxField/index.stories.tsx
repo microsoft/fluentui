@@ -1,4 +1,4 @@
-import { CheckboxField } from '@fluentui/react-field';
+import { CheckboxField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './CheckboxFieldDescription.md';
 

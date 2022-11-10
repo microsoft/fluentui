@@ -3,8 +3,8 @@ import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type {
-  FieldComponent,
   FieldConfig,
+  FieldControl,
   FieldProps,
   FieldPropsWithOptionalComponentProps,
   FieldState,
@@ -19,7 +19,7 @@ const validationMessageIcons = {
 /**
  * Partition the props used by the Field itself, from the props that are passed to the underlying field component.
  */
-export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent>>(props: Props) => {
+export const getPartitionedFieldProps = <Props extends FieldProps<FieldControl>>(props: Props) => {
   const {
     className,
     control,
@@ -60,7 +60,7 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
  * @param ref - Ref to the control slot (primary slot)
  * @param params - Configuration parameters for this Field
  */
-export const useField_unstable = <T extends FieldComponent>(
+export const useField_unstable = <T extends FieldControl>(
   props: FieldPropsWithOptionalComponentProps<T>,
   ref: React.Ref<HTMLElement>,
   params: FieldConfig<T>,
@@ -134,7 +134,7 @@ export const useField_unstable = <T extends FieldComponent>(
     }
   }
 
-  const state: FieldState<FieldComponent> = {
+  const state: FieldState<FieldControl> = {
     orientation,
     validationState,
     classNames: params.classNames,

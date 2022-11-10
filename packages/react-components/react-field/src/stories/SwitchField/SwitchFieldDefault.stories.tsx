@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { SwitchFieldProps } from '@fluentui/react-field';
-import { SwitchField } from '@fluentui/react-field';
+import type { SwitchFieldProps } from '@fluentui/react-components/unstable';
+import { SwitchField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<SwitchFieldProps>) => (
   <SwitchField

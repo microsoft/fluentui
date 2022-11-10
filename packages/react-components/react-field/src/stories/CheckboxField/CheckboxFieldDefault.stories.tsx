@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { CheckboxFieldProps } from '@fluentui/react-field';
-import { CheckboxField } from '@fluentui/react-field';
+import type { CheckboxFieldProps } from '@fluentui/react-components/unstable';
+import { CheckboxField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<CheckboxFieldProps>) => (
   <CheckboxField

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { TextareaFieldProps } from '@fluentui/react-field';
-import { TextareaField } from '@fluentui/react-field';
+import type { TextareaFieldProps } from '@fluentui/react-components/unstable';
+import { TextareaField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<TextareaFieldProps>) => (
   <TextareaField

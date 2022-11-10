@@ -1,4 +1,4 @@
-import { InputField } from '@fluentui/react-field';
+import { InputField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './InputFieldDescription.md';
 

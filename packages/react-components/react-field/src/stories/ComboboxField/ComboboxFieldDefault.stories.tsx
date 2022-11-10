@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Option } from '@fluentui/react-combobox';
-import type { ComboboxFieldProps } from '@fluentui/react-field';
-import { ComboboxField } from '@fluentui/react-field';
+import type { ComboboxFieldProps } from '@fluentui/react-components/unstable';
+import { ComboboxField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<ComboboxFieldProps>) => (
   <ComboboxField

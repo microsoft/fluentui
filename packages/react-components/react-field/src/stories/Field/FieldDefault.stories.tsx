@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InputField, InputFieldProps } from '@fluentui/react-field';
+import { InputField, InputFieldProps } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<InputFieldProps>) => (
   <InputField

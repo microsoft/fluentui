@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { ProgressFieldProps } from '@fluentui/react-field';
-import { ProgressField } from '@fluentui/react-field';
+import type { ProgressFieldProps } from '@fluentui/react-components/unstable';
+import { ProgressField } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<ProgressFieldProps>) => (
   <ProgressField
