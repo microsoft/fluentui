@@ -33,7 +33,13 @@ function groupFilesByPackage() {
   );
 
   for (const file of files) {
-    const packagePath = packagesWithEslint.find(packagePath => file.startsWith(packagePath));
+    const packagePath = packagesWithEslint.find(packagePath => {
+      // if file lives within searched package we will get only shortened absolute path `/src/abc.ts`
+      // we add `.` to make it relative and thus have match pattern to check upon
+      const normalizedFilePath = file.replace(packagePath, '.');
+      return normalizedFilePath.startsWith('./');
+    });
+
     // Exclude files in a package without an eslintrc (or not in a package at all)
     if (packagePath) {
       if (!filesByPackage[packagePath]) {
