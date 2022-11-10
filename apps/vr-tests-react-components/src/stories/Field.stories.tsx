@@ -10,7 +10,7 @@ import { ProgressField_unstable as ProgressField } from '@fluentui/react-progres
 import { Radio, RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
-import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinButton';
+import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
 import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 
