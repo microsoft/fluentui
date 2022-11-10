@@ -19,8 +19,11 @@ interface ITestStyles {
   root: IStyle;
 }
 interface ITestProps {
+  // eslint-disable-next-line react/require-default-props
   cool?: boolean;
+  // eslint-disable-next-line react/require-default-props
   styles?: IStyleFunctionOrObject<{}, ITestStyles>;
+  // eslint-disable-next-line react/require-default-props
   children?: React.ReactNode;
 }
 

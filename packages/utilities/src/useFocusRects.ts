@@ -73,6 +73,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
  * Function Component wrapper which enables calling `useFocusRects` hook.
  * Renders nothing.
  */
+// eslint-disable-next-line react/require-default-props
 export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTMLElement> }> = props => {
   useFocusRects(props.rootRef);
   return null;
