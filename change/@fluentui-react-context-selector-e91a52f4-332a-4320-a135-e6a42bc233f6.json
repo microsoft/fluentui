@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: create valid export maps",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

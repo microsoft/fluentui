@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: create valid export maps",
+  "packageName": "@fluentui/react-combobox",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

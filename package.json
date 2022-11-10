@@ -303,6 +303,7 @@
     "tsconfig-paths-webpack-plugin": "4.0.0",
     "tslib": "2.4.0",
     "typescript": "4.3.5",
+    "vrscreenshotdiff": "0.0.6",
     "webpack": "5.74.0",
     "webpack-bundle-analyzer": "4.4.2",
     "webpack-cli": "4.10.0",
