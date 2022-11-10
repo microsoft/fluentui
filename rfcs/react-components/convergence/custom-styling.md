@@ -211,4 +211,22 @@ yarn create-recomposed-library my-components
 - our style hooks are currently monolithic. We may need to create building block style hooks designed for re-use
 - no consistency between approaches partners might take in creating centralized custom styling solutions
 
+
+## Option C: Allow component customization through component level CSS custom properties
+
+### Improvement - Remove dependency on classNames and DOM order
+
+### Improvement - Explicit APIs for modifying commonly moified styles
+
+checkboxCheckedBackground = 'foo' vs  ':enabled:not(:checked):not(:indeterminate)': { background: 'foo'}
+
+### Improvement - Perf - complex selectors are much slower than local CSS variables
+
+### Open issues
+
+### Pros
+
+
+### Cons
+
 ## Decision making
