@@ -8,6 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { FieldControl } from '@fluentui/react-field';
 import type { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -28,7 +29,7 @@ export const textareaClassNames: SlotClassNames<TextareaSlots>;
 export const TextareaField_unstable: ForwardRefComponent<TextareaFieldProps_unstable>;
 
 // @public (undocumented)
-export const textareaFieldClassNames: SlotClassNames<FieldSlots<React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className" | "id" | "aria-describedby" | "aria-errormessage" | "aria-invalid" | "aria-labelledby">>>>;
+export const textareaFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
 
 // @public (undocumented)
 export type TextareaFieldProps_unstable = FieldProps<typeof Textarea>;

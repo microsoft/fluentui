@@ -8,6 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { FieldControl } from '@fluentui/react-field';
 import type { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -25,7 +26,7 @@ export const inputClassNames: SlotClassNames<InputSlots>;
 export const InputField_unstable: ForwardRefComponent<InputFieldProps_unstable>;
 
 // @public (undocumented)
-export const inputFieldClassNames: SlotClassNames<FieldSlots<React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className" | "id" | "aria-describedby" | "aria-errormessage" | "aria-invalid" | "aria-labelledby">>>>;
+export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
 
 // @public (undocumented)
 export type InputFieldProps_unstable = FieldProps<typeof Input>;

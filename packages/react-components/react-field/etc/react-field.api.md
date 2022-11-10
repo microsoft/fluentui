@@ -24,6 +24,9 @@ export type FieldConfig<T extends FieldControl> = {
 };
 
 // @public
+export type FieldControl = React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-errormessage'>>;
+
+// @public
 export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success';

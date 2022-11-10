@@ -8,6 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { FieldControl } from '@fluentui/react-field';
 import type { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -34,7 +35,7 @@ export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
 export const SpinButtonField_unstable: ForwardRefComponent<SpinButtonFieldProps_unstable>;
 
 // @public (undocumented)
-export const spinButtonFieldClassNames: SlotClassNames<FieldSlots<React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className" | "id" | "aria-describedby" | "aria-errormessage" | "aria-invalid" | "aria-labelledby">>>>;
+export const spinButtonFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
 
 // @public (undocumented)
 export type SpinButtonFieldProps_unstable = FieldProps<typeof SpinButton>;

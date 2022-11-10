@@ -8,6 +8,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { FieldControl } from '@fluentui/react-field';
 import type { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -26,7 +27,7 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 export const CheckboxField_unstable: ForwardRefComponent<CheckboxFieldProps_unstable>;
 
 // @public (undocumented)
-export const checkboxFieldClassNames: SlotClassNames<FieldSlots<React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className" | "id" | "aria-describedby" | "aria-errormessage" | "aria-invalid" | "aria-labelledby">>>>;
+export const checkboxFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
 
 // @public (undocumented)
 export type CheckboxFieldProps_unstable = Omit<FieldProps<typeof Checkbox>, 'label'> & {
