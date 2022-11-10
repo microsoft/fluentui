@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: supports colSpan property for th",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
