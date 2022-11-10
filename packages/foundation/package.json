@@ -42,7 +42,7 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-hooks-testing-library": "^0.5.0",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.8.6"
   },
   "dependencies": {
     "@uifabric/merge-styles": "^7.20.2",
