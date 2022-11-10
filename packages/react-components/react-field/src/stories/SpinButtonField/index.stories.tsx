@@ -1,4 +1,4 @@
-import { SpinButtonField } from '@fluentui/react-field';
+import { SpinButtonField } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './SpinButtonFieldDescription.md';
 
