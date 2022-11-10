@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Calendar, Callout, DirectionalHint, FocusTrapZone /*, TextField */ } from '@fluentui/react';
 import { InputField } from '@fluentui/react-field';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { useControllableState, useId } from '@fluentui/react-utilities';
 import {
   // TODO: classNamesFunction,
@@ -358,18 +359,18 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
       [calendarDismissed, props.calendarProps],
     );
 
-    const onCalloutPositioned = React.useCallback((): void => {
-      let shouldFocus = true;
-      // If the user has specified that the callout shouldn't use initial focus, then respect
-      // that and don't attempt to set focus. That will default to true within the callout
-      // so we need to check if it's undefined here.
-      if (props.calloutProps && props.calloutProps.setInitialFocus !== undefined) {
-        shouldFocus = props.calloutProps.setInitialFocus;
-      }
-      if (calendar.current && shouldFocus) {
-        calendar.current.focus();
-      }
-    }, [props.calloutProps]);
+    // const onCalloutPositioned = React.useCallback((): void => {
+    //   let shouldFocus = true;
+    //   // If the user has specified that the callout shouldn't use initial focus, then respect
+    //   // that and don't attempt to set focus. That will default to true within the callout
+    //   // so we need to check if it's undefined here.
+    //   if (props.calloutProps && props.calloutProps.setInitialFocus !== undefined) {
+    //     shouldFocus = props.calloutProps.setInitialFocus;
+    //   }
+    //   if (calendar.current && shouldFocus) {
+    //     calendar.current.focus();
+    //   }
+    // }, [props.calloutProps]);
 
     const onTextFieldBlur = React.useCallback(
       (ev: React.FocusEvent<HTMLElement>): void => {
@@ -501,9 +502,9 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
     //   );
     // };
 
-    const calloutDismissed = React.useCallback((): void => {
-      calendarDismissed();
-    }, [calendarDismissed]);
+    // const calloutDismissed = React.useCallback((): void => {
+    //   calendarDismissed();
+    // }, [calendarDismissed]);
 
     const classNames = useDatePickerStyles_unstable({
       className,
@@ -569,51 +570,88 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
             onRenderDescription={renderTextfieldDescription}
             onRenderInput={readOnly ? renderReadOnlyInput : undefined}
           /> */}
-          <InputField
-            appearance={inputAppearance}
-            aria-controls={isCalendarShown ? calloutId : undefined}
-            aria-expanded={isCalendarShown}
-            aria-haspopup="dialog"
-            aria-label={ariaLabel}
-            contentAfter={
-              <CalendarMonthRegular
-                // className={mergeClasses(classNames.icon, iconProps?.className)}
-                onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>}
+          <Popover open={isCalendarShown} positioning="below-start" trapFocus>
+            <PopoverTrigger disableButtonEnhancement>
+              {popoverTriggerChildProps => (
+                <InputField
+                  appearance={inputAppearance}
+                  aria-controls={isCalendarShown ? calloutId : undefined}
+                  aria-expanded={isCalendarShown}
+                  aria-haspopup="dialog"
+                  aria-label={ariaLabel}
+                  contentAfter={
+                    <CalendarMonthRegular
+                      // className={mergeClasses(classNames.icon, iconProps?.className)}
+                      onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>}
+                    />
+                  }
+                  data-is-focusable={dataIsFocusable}
+                  disabled={disabled}
+                  label={label}
+                  onBlur={onTextFieldBlur}
+                  onChange={onTextFieldChanged}
+                  onClick={onTextFieldClick}
+                  onFocus={onTextFieldFocus}
+                  onKeyDown={onTextFieldKeyDown}
+                  root={popoverTriggerChildProps as InputFieldProps['root']}
+                  placeholder={placeholder}
+                  readOnly={!allowTextInput}
+                  required={isRequired}
+                  role="combobox"
+                  tabIndex={tabIndex}
+                  validationMessage={errorMessage ?? statusMessage}
+                  validationState={errorMessage ? 'error' : undefined}
+                  value={formattedDate}
+                  {...(textFieldProps as InputFieldProps)}
+                  className={mergeClasses(classNames.textField, textFieldProps?.className)}
+                  id={textFieldId}
+                />
+              )}
+            </PopoverTrigger>
+            <PopoverSurface
+              aria-label={pickerAriaLabel}
+              className={mergeClasses(classNames.callout, calloutProps?.className)}
+              id={calloutId}
+              role="dialog"
+            >
+              <CalendarType
+                {...calendarProps}
+                onSelectDate={onSelectDate}
+                onDismiss={calendarDismissed}
+                isMonthPickerVisible={props.isMonthPickerVisible}
+                showMonthPickerAsOverlay={props.showMonthPickerAsOverlay}
+                today={props.today}
+                value={selectedDate || initialPickerDate}
+                firstDayOfWeek={firstDayOfWeek}
+                strings={strings!}
+                highlightCurrentMonth={props.highlightCurrentMonth}
+                highlightSelectedMonth={props.highlightSelectedMonth}
+                showWeekNumbers={props.showWeekNumbers}
+                firstWeekOfYear={props.firstWeekOfYear}
+                showGoToToday={props.showGoToToday}
+                dateTimeFormatter={props.dateTimeFormatter}
+                minDate={minDate}
+                maxDate={maxDate}
+                componentRef={calendar}
+                showCloseButton={showCloseButton}
+                allFocusable={allFocusable}
               />
-            }
-            data-is-focusable={dataIsFocusable}
-            disabled={disabled}
-            label={label}
-            onBlur={onTextFieldBlur}
-            onChange={onTextFieldChanged}
-            onClick={onTextFieldClick}
-            onFocus={onTextFieldFocus}
-            onKeyDown={onTextFieldKeyDown}
-            placeholder={placeholder}
-            readOnly={!allowTextInput}
-            required={isRequired}
-            role="combobox"
-            tabIndex={tabIndex}
-            validationMessage={errorMessage ?? statusMessage}
-            validationState={errorMessage ? 'error' : undefined}
-            value={formattedDate}
-            {...(textFieldProps as InputFieldProps)}
-            className={mergeClasses(classNames.textField, textFieldProps?.className)}
-            id={textFieldId}
-          />
+            </PopoverSurface>
+          </Popover>
         </div>
-        {isCalendarShown && (
+        {/* {isCalendarShown && (
           <Callout
-            id={calloutId}
-            role="dialog"
             ariaLabel={pickerAriaLabel}
-            isBeakVisible={false}
-            gapSpace={0}
-            doNotLayer={false}
-            target={datePickerDiv.current}
-            directionalHint={DirectionalHint.bottomLeftEdge}
-            {...calloutProps}
             className={css(classNames.callout, calloutProps && calloutProps.className)}
+            directionalHint={DirectionalHint.bottomLeftEdge}
+            doNotLayer={false}
+            gapSpace={0}
+            id={calloutId}
+            isBeakVisible={false}
+            role="dialog"
+            target={datePickerDiv.current}
+            // TODO: Doesn't have an equivalent in Popover
+            {...calloutProps}
             onDismiss={calloutDismissed}
             onPositioned={onCalloutPositioned}
           >
@@ -642,7 +680,7 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = React.forwar
               />
             </FocusTrapZone>
           </Callout>
-        )}
+        )} */}
       </div>
     );
   },
