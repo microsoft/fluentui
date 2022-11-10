@@ -45,7 +45,7 @@
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "16.8.6"
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.12",

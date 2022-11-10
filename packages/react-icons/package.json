@@ -42,7 +42,7 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-is": "^16.6.3",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "16.8.6"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",

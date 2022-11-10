@@ -43,7 +43,7 @@
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "16.8.6"
   },
   "dependencies": {
     "@fluentui/react-compose": "^0.19.24",
