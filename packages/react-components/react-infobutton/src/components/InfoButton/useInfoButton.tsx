@@ -1,9 +1,21 @@
 import * as React from 'react';
-import { DefaultInfoButtonIcon } from './DefaultInfoButtonIcon';
+import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
+
+const infoButtonIconMap = {
+  small: <DefaultInfoButtonIcon12 />,
+  medium: <DefaultInfoButtonIcon16 />,
+  large: <DefaultInfoButtonIcon20 />,
+} as const;
+
+const popoverSizeMap = {
+  small: 'small',
+  medium: 'small',
+  large: 'medium',
+} as const;
 
 /**
  * Create the state required to render InfoButton.
@@ -15,7 +27,11 @@ import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
  * @param ref - reference to root HTMLElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
+  const { size = 'medium' } = props;
+
   const state: InfoButtonState = {
+    size,
+
     components: {
       root: 'button',
       popover: Popover,
@@ -23,7 +39,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     },
 
     root: getNativeElementProps('button', {
-      children: <DefaultInfoButtonIcon />,
+      children: infoButtonIconMap[size],
       type: 'button',
       ...props,
       ref,
@@ -33,7 +49,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       defaultProps: {
         children: <></>,
         positioning: 'above-start',
-        size: 'small',
+        size: popoverSizeMap[size],
         withArrow: true,
       },
     }),

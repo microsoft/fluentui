@@ -22,7 +22,9 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
-export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>>;
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+    size?: 'small' | 'medium' | 'large';
+};
 
 // @public (undocumented)
 export type InfoButtonSlots = {
@@ -32,7 +34,7 @@ export type InfoButtonSlots = {
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
 
 // @public
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
