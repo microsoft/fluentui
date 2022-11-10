@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IBaseProps } from '@fluentui/utilities';
 import type { ICalendarProps } from '@fluentui/react';
 import type { ICalloutProps } from '@fluentui/react';
@@ -69,7 +70,7 @@ export interface DateGridStrings {
 }
 
 // @public (undocumented)
-export const DatePicker: React_2.FunctionComponent<DatePickerProps>;
+export const DatePicker: ForwardRefComponent<DatePickerProps>;
 
 // @public (undocumented)
 export interface DatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLDivElement> {
