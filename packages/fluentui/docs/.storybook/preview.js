@@ -6,13 +6,17 @@ import Screener from 'screener-storybook/src/screener';
 export const parameters = { layout: 'none' };
 /** @type {import("@storybook/react").DecoratorFn[]} */
 export const decorators = [
-  story => (
-    <Provider theme={teamsTheme}>
-      <div className="testWrapper" style={{ width: '600px' }}>
-        {story()}
-      </div>
-    </Provider>
-  ),
+  (story, context) => {
+    const isRtl = context.id.toLowerCase().includes('rtl');
+
+    return (
+      <Provider theme={teamsTheme} dir={isRtl ? 'rtl' : 'ltr'}>
+        <div className="testWrapper" style={{ width: '600px' }}>
+          {story()}
+        </div>
+      </Provider>
+    );
+  },
 ];
 
 // For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
