@@ -2,6 +2,83 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:54 GMT",
+      "tag": "@fluentui/react-button_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "81a3171e14fcaead04c6cf3fbf8eda962178b442",
+            "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "6bfd92ec66ded6bc86d73b072d7ee5b3a7b5fcac",
+            "comment": "fix: Showing correct behavior for icons inside of Buttons on hover, pressed and toggle states."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "8dc8e99d3ef23ec868eb1128bb8e167373d1f4cc",
+            "comment": "fix: Adding expanded styles for MenuButtons and making various other styling fixes for Button components."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.3.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.3.0",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Nov 2022 11:57:48 GMT",
       "tag": "@fluentui/react-button_v9.1.7",
       "version": "9.1.7",

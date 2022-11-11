@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 02 Nov 2022 11:58:04 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.3.0)
+
+Fri, 11 Nov 2022 14:57:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.2.1..@fluentui/react-tabster_v9.3.0)
+
+### Minor changes
+
+- Add both options to axis config ([PR #25568](https://github.com/microsoft/fluentui/pull/25568) by chassunc@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.2.1)
 

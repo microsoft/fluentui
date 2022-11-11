@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Adding expanded styles for MenuButtons and making various other styling fixes for Button components.",
-  "packageName": "@fluentui/react-button",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

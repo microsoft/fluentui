@@ -2,6 +2,71 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:57 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.12",
+      "version": "9.0.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move CheckboxField into the @fluentui/react-checkbox package and export as _unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.8",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.0.10",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.3.0",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Nov 2022 11:57:49 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.11",
       "version": "9.0.11",

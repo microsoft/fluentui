@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Move InputField into the @fluentui/react-input package and export as _unstable",
-  "packageName": "@fluentui/react-combobox",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

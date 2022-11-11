@@ -2,6 +2,51 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:58:09 GMT",
+      "tag": "@fluentui/react-persona_v9.1.0-beta.3",
+      "version": "9.1.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.2.6",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.0.12",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Nov 2022 11:57:56 GMT",
       "tag": "@fluentui/react-persona_v9.1.0-beta.2",
       "version": "9.1.0-beta.2",
