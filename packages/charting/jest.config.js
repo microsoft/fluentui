@@ -22,7 +22,13 @@ const config = createConfig({
   snapshotSerializers: [resolveMergeStylesSerializer()],
 
   moduleNameMapper: {
-    ...getEsmOnlyPackagesToCjsMapping(),
+    'd3-scale': 'd3-scale/dist/d3-scale.min.js',
+    'd3-array': 'd3-scale/node_modules/d3-array/dist/d3-array.min.js',
+    'd3-interpolate': 'd3-scale/node_modules/d3-interpolate/dist/d3-interpolate.min.js',
+    'd3-color': 'd3-scale/node_modules/d3-color/dist/d3-color.min.js',
+    'd3-format': 'd3-scale/node_modules/d3-format/dist/d3-format.min.js',
+    'd3-time-format': 'd3-scale/node_modules/d3-time-format/dist/d3-time-format.min.js',
+    'd3-time': 'd3-scale/node_modules/d3-time/dist/d3-time.min.js',
   },
 });
 
