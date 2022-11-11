@@ -66,7 +66,7 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
    *
    * @default medium
    */
-  size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | '2-extra-large';
+  size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
 
   /**
    * The position of the text relative to the avatar/presence.

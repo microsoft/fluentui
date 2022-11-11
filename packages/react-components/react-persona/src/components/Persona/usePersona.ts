@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Avatar, AvatarSizes } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-avatar';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { PersonaProps, PersonaState } from './Persona.types';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
 /**
  * Create the state required to render Persona.
@@ -28,28 +27,6 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
   const quaternaryText = resolveShorthand(props.quaternaryText);
 
   const numTextLines = [primaryText, secondaryText, tertiaryText, quaternaryText].filter(Boolean).length;
-
-  const presenceSize: PresenceBadgeProps['size'] = presenceSizes[size];
-  const avatarSize: AvatarSizes = avatarSizes[size];
-
-  const avatar: PersonaState['avatar'] = !presenceOnly
-    ? resolveShorthand(props.avatar, {
-        required: true,
-        defaultProps: {
-          name,
-          badge: props.presence,
-          size: avatarSize,
-        },
-      })
-    : undefined;
-
-  const presence: PersonaState['presence'] = presenceOnly
-    ? resolveShorthand(props.presence, {
-        defaultProps: {
-          size: presenceSize,
-        },
-      })
-    : undefined;
 
   return {
     numTextLines,
@@ -76,8 +53,23 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
       },
       /* excludedPropNames */ ['name'],
     ),
-    avatar,
-    presence,
+    avatar: !presenceOnly
+      ? resolveShorthand(props.avatar, {
+          required: true,
+          defaultProps: {
+            name,
+            badge: props.presence,
+            size: avatarSizes[size],
+          },
+        })
+      : undefined,
+    presence: presenceOnly
+      ? resolveShorthand(props.presence, {
+          defaultProps: {
+            size: presenceSizes[size],
+          },
+        })
+      : undefined,
     primaryText,
     secondaryText,
     tertiaryText,
@@ -91,7 +83,7 @@ const presenceSizes = {
   medium: 'small',
   large: 'medium',
   'extra-large': 'large',
-  '2-extra-large': 'extra-large',
+  huge: 'large',
 } as const;
 
 const avatarSizes = {
@@ -100,5 +92,5 @@ const avatarSizes = {
   medium: 32,
   large: 36,
   'extra-large': 40,
-  '2-extra-large': 56,
+  huge: 56,
 } as const;

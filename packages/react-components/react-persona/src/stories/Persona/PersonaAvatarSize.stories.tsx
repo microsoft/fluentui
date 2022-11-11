@@ -16,12 +16,48 @@ export const AvatarSize = () => {
 
   return (
     <div className={styles.root}>
-      <Persona size="extra-small" name="Kevin Sturgis" avatar={{ color: 'colorful' }} secondaryText="Available" />
-      <Persona size="small" name="Kevin Sturgis" avatar={{ color: 'colorful' }} secondaryText="Available" />
-      <Persona size="medium" name="Kevin Sturgis" avatar={{ color: 'colorful' }} secondaryText="Available" />
-      <Persona size="large" name="Kevin Sturgis" avatar={{ color: 'colorful' }} secondaryText="Available" />
-      <Persona size="extra-large" name="Kevin Sturgis" avatar={{ color: 'colorful' }} secondaryText="Available" />
-      <Persona size="2-extra-large" name="Kevin Sturgis" avatar={{ color: 'colorful' }} secondaryText="Available" />
+      <Persona
+        presence={{ status: 'available' }}
+        size="extra-small"
+        name="Kevin Sturgis"
+        avatar={{ color: 'colorful' }}
+        secondaryText="Available"
+      />
+      <Persona
+        presence={{ status: 'available' }}
+        size="small"
+        name="Kevin Sturgis"
+        avatar={{ color: 'colorful' }}
+        secondaryText="Available"
+      />
+      <Persona
+        presence={{ status: 'available' }}
+        size="medium"
+        name="Kevin Sturgis"
+        avatar={{ color: 'colorful' }}
+        secondaryText="Available"
+      />
+      <Persona
+        presence={{ status: 'available' }}
+        size="large"
+        name="Kevin Sturgis"
+        avatar={{ color: 'colorful' }}
+        secondaryText="Available"
+      />
+      <Persona
+        presence={{ status: 'available' }}
+        size="extra-large"
+        name="Kevin Sturgis"
+        avatar={{ color: 'colorful' }}
+        secondaryText="Available"
+      />
+      <Persona
+        presence={{ status: 'available' }}
+        size="huge"
+        name="Kevin Sturgis"
+        avatar={{ color: 'colorful' }}
+        secondaryText="Available"
+      />
     </div>
   );
 };

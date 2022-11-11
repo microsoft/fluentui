@@ -19,7 +19,7 @@ const horizontalCoinSpacingVar = `--fui-Persona__coin--horizontalSpacing`;
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
+  base: {
     display: 'inline-grid',
     gridAutoColumns: 'max-content',
     gridAutoRows: 'max-content',
@@ -27,12 +27,10 @@ const useStyles = makeStyles({
   after: {
     gridAutoFlow: 'column',
     justifyItems: 'start',
-    columnGap: '8px',
   },
   before: {
     gridAutoFlow: 'column',
     justifyItems: 'end',
-    columnGap: '8px',
   },
   below: {
     justifyItems: 'center',
@@ -46,6 +44,21 @@ const useStyles = makeStyles({
   },
   center: {
     alignSelf: 'center',
+  },
+
+  // These alignToPrimary styles are needed due to presence being too small to center with the primary text.
+  alignToPrimary: {
+    gridTemplateColumns: `max-content [middle] max-content`,
+  },
+  afterAlignToPrimary: {
+    alignSelf: 'center',
+    gridRowStart: 'unset',
+    gridColumnEnd: 'middle',
+  },
+  beforeAlignToPrimary: {
+    alignSelf: 'center',
+    gridRowStart: 'unset',
+    gridColumnStart: 'middle',
   },
 });
 
@@ -65,7 +78,7 @@ const useAvatarSpacingStyles = makeStyles({
   'extra-large': {
     [horizontalCoinSpacingVar]: tokens.spacingHorizontalMNudge,
   },
-  '2-extra-large': {
+  huge: {
     [horizontalCoinSpacingVar]: tokens.spacingHorizontalM,
   },
   after: {
@@ -87,16 +100,16 @@ const usePresenceHorizontalSpacingStyles = makeStyles({
     [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
   },
   medium: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
+    [horizontalCoinSpacingVar]: tokens.spacingHorizontalS,
   },
   large: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
+    [horizontalCoinSpacingVar]: tokens.spacingHorizontalMNudge,
   },
   'extra-large': {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
+    [horizontalCoinSpacingVar]: tokens.spacingHorizontalMNudge,
   },
-  '2-extra-large': {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
+  huge: {
+    [horizontalCoinSpacingVar]: tokens.spacingHorizontalM,
   },
   after: {
     marginRight: `var(${horizontalCoinSpacingVar})`,
@@ -109,40 +122,25 @@ const usePresenceHorizontalSpacingStyles = makeStyles({
   },
 });
 
-const usePresenceVerticalSpacingStyles = makeStyles({
-  'extra-small': {
-    marginTop: tokens.spacingHorizontalSNudge,
-  },
-  small: {
-    marginTop: tokens.spacingHorizontalSNudge,
-  },
-  medium: {
-    marginTop: tokens.spacingHorizontalSNudge,
-  },
-  large: {
-    marginTop: tokens.spacingHorizontalSNudge,
-  },
-  'extra-large': {
-    marginTop: tokens.spacingHorizontalSNudge,
-  },
-  '2-extra-large': {
-    marginTop: tokens.spacingHorizontalSNudge,
-  },
-});
-
 /**
  * Apply styling to the Persona slots based on the state
  */
 export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => {
   const { size, textAlignment, textPosition } = state;
-  const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state);
+  const alignToPrimary = textAlignment === 'start' && size !== 'extra-large' && size !== 'huge';
+  const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state, alignToPrimary);
 
   const styles = useStyles();
   const avatarSpacingStyles = useAvatarSpacingStyles();
-  const presenceVerticalSpacingStyles = usePresenceVerticalSpacingStyles();
   const presenceHorizontalSpacingStyles = usePresenceHorizontalSpacingStyles();
 
-  state.root.className = mergeClasses(personaClassNames.root, styles.root, styles[textPosition], state.root.className);
+  state.root.className = mergeClasses(
+    personaClassNames.root,
+    styles.base,
+    styles[textPosition],
+    textPosition !== 'below' && alignToPrimary && styles.alignToPrimary,
+    state.root.className,
+  );
 
   if (state.avatar) {
     state.avatar.className = mergeClasses(
@@ -162,7 +160,8 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
       styles[textAlignment],
       presenceHorizontalSpacingStyles[size],
       presenceHorizontalSpacingStyles[textPosition],
-      textAlignment === 'start' && presenceVerticalSpacingStyles[size],
+      textPosition === 'after' && alignToPrimary && styles.afterAlignToPrimary,
+      textPosition === 'before' && alignToPrimary && styles.beforeAlignToPrimary,
       state.presence.className,
     );
   }
@@ -213,6 +212,13 @@ const useTextStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
 
+  beforeAlignToPrimary: {
+    gridColumnEnd: 'middle',
+  },
+  afterAlignToPrimary: {
+    gridColumnStart: 'middle',
+  },
+
   body1: typographyStyles.body1,
   caption1: typographyStyles.caption1,
   subtitle2: typographyStyles.subtitle2,
@@ -220,53 +226,62 @@ const useTextStyles = makeStyles({
 
 const useTextClassNames = (
   state: PersonaState,
+  alignToPrimary: boolean,
 ): {
   primaryTextClassName: string;
   optionalTextClassName: string;
 } => {
-  const { presenceOnly, size } = state;
-  const multiline = state.numTextLines > 1;
+  const { presenceOnly, size, textPosition } = state;
   const textStyles = useTextStyles();
+
   let primaryTextSize;
   let optionalTextSize;
+  let alignToPrimaryClassName;
 
   if (presenceOnly) {
-    switch (size) {
-      case 'extra-small':
-        primaryTextSize = multiline ? textStyles.body1 : textStyles.caption1;
-        optionalTextSize = textStyles.caption1;
-        break;
-      case 'small':
-      case 'medium':
-      case 'large':
-      case 'extra-large':
-      case '2-extra-large':
-        primaryTextSize = textStyles.body1;
-        optionalTextSize = textStyles.caption1;
-        break;
+    if (size === 'extra-small') {
+      primaryTextSize = state.numTextLines > 1 ? textStyles.body1 : textStyles.caption1;
+      optionalTextSize = textStyles.caption1;
+    } else if (size === 'extra-large' || size === 'huge') {
+      primaryTextSize = textStyles.subtitle2;
+      optionalTextSize = textStyles.caption1;
+    } else {
+      primaryTextSize = textStyles.body1;
+      optionalTextSize = textStyles.caption1;
+    }
+
+    if (alignToPrimary) {
+      if (textPosition === 'before') {
+        alignToPrimaryClassName = textStyles.beforeAlignToPrimary;
+      } else if (textPosition === 'after') {
+        alignToPrimaryClassName = textStyles.afterAlignToPrimary;
+      }
     }
   } else {
-    switch (size) {
-      case 'extra-small':
-      case 'small':
-      case 'medium':
-      case 'large':
-        primaryTextSize = textStyles.body1;
-        optionalTextSize = textStyles.caption1;
-        break;
-      case 'extra-large':
-        primaryTextSize = textStyles.subtitle2;
-        optionalTextSize = textStyles.caption1;
-        break;
-      case '2-extra-large':
-        primaryTextSize = textStyles.subtitle2;
-        optionalTextSize = textStyles.body1;
-        break;
+    if (size === 'huge') {
+      primaryTextSize = textStyles.subtitle2;
+      optionalTextSize = textStyles.body1;
+    } else if (size === 'extra-large') {
+      primaryTextSize = textStyles.subtitle2;
+      optionalTextSize = textStyles.caption1;
+    } else {
+      primaryTextSize = textStyles.body1;
+      optionalTextSize = textStyles.caption1;
     }
   }
 
   return {
-    primaryTextClassName: mergeClasses(textStyles.base, textStyles.primaryText, primaryTextSize),
-    optionalTextClassName: mergeClasses(textStyles.base, textStyles.optionalText, optionalTextSize),
+    primaryTextClassName: mergeClasses(
+      textStyles.base,
+      textStyles.primaryText,
+      primaryTextSize,
+      alignToPrimaryClassName,
+    ),
+    optionalTextClassName: mergeClasses(
+      textStyles.base,
+      textStyles.optionalText,
+      optionalTextSize,
+      alignToPrimaryClassName,
+    ),
   };
 };
