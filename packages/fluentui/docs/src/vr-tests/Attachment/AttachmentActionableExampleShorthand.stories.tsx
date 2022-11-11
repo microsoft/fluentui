@@ -2,7 +2,7 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Screener from 'screener-storybook/src/screener';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Attachment } from '@fluentui/react-northstar';
 import screenerSteps from './commonScreenerSteps';
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
@@ -14,15 +14,18 @@ export default {
   decorators: [story => <Screener steps={screenerSteps}>{story()}</Screener>],
 } as ComponentMeta<typeof Attachment>;
 
-const AttachmentActionableExampleShorthandTeams = getThemeStoryVariant(AttachmentActionableExampleShorthand, 'teamsV2');
+const AttachmentActionableExampleShorthandTeams = getThemeStoryVariant(
+  (AttachmentActionableExampleShorthand as unknown) as ComponentStory<any>,
+  'teamsV2',
+);
 
 const AttachmentActionableExampleShorthandTeamsDark = getThemeStoryVariant(
-  AttachmentActionableExampleShorthand,
+  (AttachmentActionableExampleShorthand as unknown) as ComponentStory<any>,
   'teamsDarkV2',
 );
 
 const AttachmentActionableExampleShorthandTeamsHighContrast = getThemeStoryVariant(
-  AttachmentActionableExampleShorthand,
+  (AttachmentActionableExampleShorthand as unknown) as ComponentStory<any>,
   'teamsHighContrast',
 );
 
