@@ -137,7 +137,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
     this.selection.setItems(items);
     this.state = {
-      items: items,
+      items,
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
@@ -393,9 +393,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         key: item.key ? item.key : index,
         selected: selectedIndices!.indexOf(index) !== -1,
         onRemoveItem: () => this.removeItem(item),
-        disabled: disabled,
+        disabled,
         onItemChange: this.onItemChange,
-        removeButtonAriaLabel: removeButtonAriaLabel,
+        removeButtonAriaLabel,
         removeButtonIconProps,
       }),
     );
@@ -437,7 +437,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   }
 
   protected updateSuggestions(suggestions: any[]) {
-    this.suggestionStore.updateSuggestions(suggestions, 0);
+    const maxSuggestionsCount = this.props.pickerSuggestionsProps?.resultsMaximumNumber;
+    this.suggestionStore.updateSuggestions(suggestions, 0, maxSuggestionsCount);
     this.forceUpdate();
   }
 
@@ -962,7 +963,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     if (updatedValue !== undefined) {
       this.resolveNewValue(updatedValue, newSuggestions);
     } else {
-      this.suggestionStore.updateSuggestions(newSuggestions, -1);
+      const maxSuggestionsCount = this.props.pickerSuggestionsProps?.resultsMaximumNumber;
+      this.suggestionStore.updateSuggestions(newSuggestions, -1, maxSuggestionsCount);
       if (this.state.suggestionsLoading) {
         this.setState({
           suggestionsLoading: false,
@@ -981,7 +983,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       // If the component is a controlled component then the controlling component will need to add or remove the items.
       this.onChange(items);
     } else {
-      this.setState({ items: items }, () => {
+      this.setState({ items }, () => {
         this._onSelectedItemsUpdated(items);
       });
     }
