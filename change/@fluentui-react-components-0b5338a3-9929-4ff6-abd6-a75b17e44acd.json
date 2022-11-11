@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update exports for field components from @fluentui/react-components/unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 02 Nov 2022 11:57:47 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.2.6)
+
+Fri, 11 Nov 2022 14:57:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.2.5..@fluentui/react-avatar_v9.2.6)
+
+### Patches
+
+- chore: Replacing use of hard-coded constants with curve and duration tokens from theme. ([PR #25522](https://github.com/microsoft/fluentui/pull/25522) by humberto_makoto@hotmail.com)
+- fix: Update Avatar active ring color to match base color ([PR #25497](https://github.com/microsoft/fluentui/pull/25497) by behowell@microsoft.com)
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- chore: Remove AvatarGroup unstable warnings. ([PR #25005](https://github.com/microsoft/fluentui/pull/25005) by esteban.230@hotmail.com)
+- chore: Migrate to new package structure. ([PR #25473](https://github.com/microsoft/fluentui/pull/25473) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-badge to v9.0.12 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-popover to v9.3.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-tabster to v9.3.0 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-tooltip to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.2.5)
 

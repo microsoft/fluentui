@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test: replace deprecated module.parent with require.main within isConformance",
-  "packageName": "@fluentui/react-label",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

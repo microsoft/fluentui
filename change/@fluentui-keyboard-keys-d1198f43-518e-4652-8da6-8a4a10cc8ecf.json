@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: create valid export maps",
-  "packageName": "@fluentui/keyboard-keys",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

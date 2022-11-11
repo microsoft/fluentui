@@ -2,6 +2,27 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Nov 2022 11:58:06 GMT",
       "tag": "@fluentui/react-utilities_v9.2.0",
       "version": "9.2.0",

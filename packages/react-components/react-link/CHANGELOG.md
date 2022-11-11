@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 02 Nov 2022 11:57:54 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:58:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.11)
+
+Fri, 11 Nov 2022 14:58:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.10..@fluentui/react-link_v9.0.11)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-tabster to v9.3.0 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.10)
 

@@ -2,6 +2,57 @@
   "name": "@fluentui/react-spinner",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:39 GMT",
+      "tag": "@fluentui/react-spinner_v9.0.10",
+      "version": "9.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "4606358e5e1a4be309e14d3fd28944ecf0e99821",
+            "comment": "Add documentation for Spinner when reduced-motion is active"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "81a3171e14fcaead04c6cf3fbf8eda962178b442",
+            "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinner",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinner",
+            "comment": "Bump @fluentui/react-label to v9.0.10",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinner",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinner",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Nov 2022 11:58:02 GMT",
       "tag": "@fluentui/react-spinner_v9.0.9",
       "version": "9.0.9",

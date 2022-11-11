@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: create valid export maps",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

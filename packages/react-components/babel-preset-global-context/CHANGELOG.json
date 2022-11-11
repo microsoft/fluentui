@@ -2,6 +2,27 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:49 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.8",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Nov 2022 11:58:07 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.7",
       "version": "9.0.0-beta.7",

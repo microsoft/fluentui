@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Showing correct behavior for icons inside of Buttons on hover, pressed and toggle states.",
-  "packageName": "@fluentui/react-button",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

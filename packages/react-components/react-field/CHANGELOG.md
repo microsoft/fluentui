@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Wed, 02 Nov 2022 11:57:52 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:58:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.8)
+
+Fri, 11 Nov 2022 14:58:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.7..@fluentui/react-field_v9.0.0-alpha.8)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- chore: Clean up Field tests and story imports in preparation of moving to individual packages ([PR #25594](https://github.com/microsoft/fluentui/pull/25594) by behowell@microsoft.com)
+- chore: Move individual field components into their respective packages, and out of @fluentui/react-field ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-label to v9.0.10 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.7)
 

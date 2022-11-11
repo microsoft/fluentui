@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update disabled + underline and filled styles to match other text-like form control styles",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

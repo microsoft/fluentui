@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: removes unnecessary union case for DialogOpenChangeData",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

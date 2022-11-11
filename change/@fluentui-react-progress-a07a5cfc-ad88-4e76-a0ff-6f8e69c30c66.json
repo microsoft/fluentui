@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add styling and documentation for reduced-motion",
-  "packageName": "@fluentui/react-progress",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

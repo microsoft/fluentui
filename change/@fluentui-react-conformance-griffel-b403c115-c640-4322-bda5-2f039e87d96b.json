@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: create valid export maps",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

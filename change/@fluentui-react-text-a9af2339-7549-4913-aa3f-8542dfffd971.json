@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor Text documentation and add missing guidance for presets/alignment",
-  "packageName": "@fluentui/react-text",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "none"
-}

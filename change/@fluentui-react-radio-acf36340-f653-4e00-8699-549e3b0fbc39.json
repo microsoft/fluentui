@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Move RadioGroupField into the @fluentui/react-radio package and export as _unstable",
-  "packageName": "@fluentui/react-radio",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

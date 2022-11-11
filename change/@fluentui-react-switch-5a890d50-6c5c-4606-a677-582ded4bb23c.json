@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme.",
-  "packageName": "@fluentui/react-switch",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

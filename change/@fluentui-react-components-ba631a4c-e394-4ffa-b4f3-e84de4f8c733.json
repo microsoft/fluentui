@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: stories from migrated v9 packages are now included.",
-  "packageName": "@fluentui/react-components",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

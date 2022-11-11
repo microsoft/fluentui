@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added support for reserving space for selected state",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
