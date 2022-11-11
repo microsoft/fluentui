@@ -3,9 +3,11 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const { promisify } = require('util');
+const child_process = require('child_process');
 const { rollup: lernaAliases } = require('lerna-alias');
 const { default: PQueue } = require('p-queue');
-const exec = require('../exec');
+const exec = promisify(child_process.exec);
 
 const eslintForPackageScript = path.join(__dirname, 'eslint-for-package.js');
 
@@ -31,7 +33,13 @@ function groupFilesByPackage() {
   );
 
   for (const file of files) {
-    const packagePath = packagesWithEslint.find(packagePath => file.startsWith(packagePath));
+    const packagePath = packagesWithEslint.find(packagePath => {
+      // if file lives within searched package we will get only shortened absolute path `/src/abc.ts`
+      // we add `.` to make it relative and thus have match pattern to check upon
+      const normalizedFilePath = file.replace(packagePath, '.');
+      return normalizedFilePath.startsWith('./');
+    });
+
     // Exclude files in a package without an eslintrc (or not in a package at all)
     if (packagePath) {
       if (!filesByPackage[packagePath]) {
@@ -60,7 +68,7 @@ async function runEslintOnFilesGroupedPerPackage() {
     Object.entries(filesGroupedByPackage).map(([packagePath, files]) => async () => {
       // This script handles running eslint on ONLY the appropriate files for each package.
       // See its comments for more details.
-      return exec(`node ${eslintForPackageScript} ${files.join(' ')}`, undefined, packagePath, process).catch(() => {
+      return exec(`node ${eslintForPackageScript} ${files.join(' ')}`, { cwd: packagePath }).catch(() => {
         // The subprocess should already have handled logging. Just mark that there was an error.
         hasError = true;
       });

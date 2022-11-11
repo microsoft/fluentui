@@ -78,11 +78,11 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   selectedValue?: TabValue;
 
   /**
-   * A tab list can be either 'small' or 'medium' size.
+   * A tab list can be either 'small', 'medium', or 'large' size.
    * The size affects each of the contained tabs.
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * A tab list can arrange its tabs vertically.

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Wed, 02 Nov 2022 11:57:49 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.32)
+
+Fri, 11 Nov 2022 14:57:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.31..@fluentui/react-card_v9.0.0-beta.32)
+
+### Changes
+
+- feat: add selectable feature to card ([PR #24486](https://github.com/microsoft/fluentui/pull/24486) by marcosvmmoura@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-tabster to v9.3.0 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-button to v9.1.8 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.31)
 

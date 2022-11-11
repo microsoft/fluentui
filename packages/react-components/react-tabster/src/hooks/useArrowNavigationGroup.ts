@@ -7,7 +7,7 @@ export interface UseArrowNavigationGroupOptions {
    * Focus will navigate vertically, horizontally or in both directions (grid), defaults to horizontally
    * @defaultValue vertical
    */
-  axis?: 'vertical' | 'horizontal' | 'grid';
+  axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
   /**
    * Focus will cycle to the first/last elements of the group without stopping
    */
@@ -60,6 +60,8 @@ function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Typ
       return Types.MoverDirections.Horizontal;
     case 'grid':
       return Types.MoverDirections.Grid;
+    case 'both':
+      return Types.MoverDirections.Both;
 
     case 'vertical':
     default:

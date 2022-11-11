@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-shared-contexts",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "description": "Fluent UI React Contexts shared by multiple components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.1",
+    "@fluentui/react-theme": "^9.1.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -42,9 +42,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 02 Nov 2022 11:58:06 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.1)
+
+Fri, 11 Nov 2022 14:57:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.2.0..@fluentui/react-utilities_v9.2.1)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.0)
 
