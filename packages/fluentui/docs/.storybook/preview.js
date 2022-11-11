@@ -6,13 +6,12 @@ import Screener from 'screener-storybook/src/screener';
 export const parameters = { layout: 'none' };
 /** @type {import("@storybook/react").DecoratorFn[]} */
 export const decorators = [
-  story => <Provider theme={teamsTheme}>{story()}</Provider>,
   story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+    <Provider theme={teamsTheme}>
       <div className="testWrapper" style={{ width: '600px' }}>
         {story()}
       </div>
-    </Screener>
+    </Provider>
   ),
 ];
 
