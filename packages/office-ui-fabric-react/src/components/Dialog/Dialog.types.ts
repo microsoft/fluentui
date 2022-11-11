@@ -144,6 +144,11 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   * @deprecated Pass through via modalProps.subtitleAriaId instead
   */
   ariaDescribedById?: string;
+
+  /**
+   * The heading level of title in dialog
+   */
+   titleAriaLevel?: number;
 }
 
 export interface IDialogStyleProps {

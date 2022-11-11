@@ -44,6 +44,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       type,
       getStyles,
       theme,
+      titleAriaLevel = 1
     } = this.props;
 
     const classNames = getClassNames(getStyles!, {
@@ -62,7 +63,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     return (
       <div className={ classNames.content }>
         <div className={ classNames.header }>
-          <p className={ classNames.title } id={ titleId } role='heading' aria-level={ 1 }>{ title }</p>
+          <p className={ classNames.title } id={ titleId } role='heading' aria-level={ titleAriaLevel }>{ title }</p>
           <div className={ classNames.topButton }>
             { this.props.topButtonsProps!.map((props) => (
               <IconButton { ...props } />

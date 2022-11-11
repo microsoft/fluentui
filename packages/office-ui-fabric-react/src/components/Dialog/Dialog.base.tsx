@@ -90,6 +90,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       title,
       topButtonsProps,
       type,
+      titleAriaLevel
     } = this.props;
 
     const modalProps = {
@@ -139,6 +140,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
           type={ type !== undefined ? type : dialogContentProps!.type }
           onDismiss={ onDismiss ? onDismiss : dialogContentProps!.onDismiss }
           className={ contentClassName || dialogContentProps!.className }
+          titleAriaLevel={titleAriaLevel}
           { ...dialogContentProps }
         >
           { this.props.children }
