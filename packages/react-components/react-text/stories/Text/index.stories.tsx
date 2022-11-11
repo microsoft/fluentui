@@ -1,17 +1,18 @@
 import { Meta } from '@storybook/react';
 import { Text } from '@fluentui/react-components';
 import textDescriptionMd from './TextDescription.md';
-import textBestPractices from './TextBestPractices.md';
+import textBestPracticesMd from './TextBestPractices.md';
 
 export { Default } from './Default.stories';
-export { Typography } from './TextTypography.stories';
+export { Font } from './TextFont.stories';
+export { Size } from './TextSize.stories';
+export { Weight } from './TextWeight.stories';
 export { Italic } from './TextItalic.stories';
 export { Underline } from './TextUnderline.stories';
 export { StrikeThrough } from './TextStrikeThrough.stories';
-export { Weight } from './TextWeight.stories';
-export { Size } from './TextSize.stories';
 export { Truncate } from './TextTruncate.stories';
-export { Font } from './TextFont.stories';
+export { Alignment } from './TextAlignment.stories';
+export { Presets } from './TextPresets.stories';
 
 export default {
   title: 'Components/Text',
@@ -19,7 +20,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [textDescriptionMd, textBestPractices].join('\n'),
+        component: [textDescriptionMd, textBestPracticesMd].join('\n'),
       },
     },
   },
