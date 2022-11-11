@@ -14,7 +14,8 @@ export default {
       <Screener
         steps={new Steps()
           .focus(`.${accordionTitleSlotClassNames.contentWrapper}`)
-          .snapshot('Focuses the accordion title')}
+          .snapshot('Focuses the accordion title')
+          .end()}
       >
         {story()}
       </Screener>
