@@ -7,6 +7,7 @@ const dataGridContext = createContext<DataGridContextValue | undefined>(undefine
 
 const dataGridContextDefaultValue: DataGridContextValue = {
   ...defaultTableState,
+  focusMode: 'none',
 };
 
 export const DataGridContextProvider = dataGridContext.Provider;

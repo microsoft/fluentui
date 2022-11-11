@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/global-context",
-  "version": "9.0.0-beta.7",
+  "version": "9.0.0-beta.8",
   "description": "Extension of React createContext to be a true singleton on the global scope",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -30,8 +30,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.1.0",
-    "@fluentui/react-utilities": "^9.2.0",
+    "@fluentui/react-context-selector": "^9.1.1",
+    "@fluentui/react-utilities": "^9.2.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -47,5 +47,13 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

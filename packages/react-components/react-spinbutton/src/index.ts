@@ -14,3 +14,6 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from './SpinButton';
+
+export { SpinButtonField as SpinButtonField_unstable, spinButtonFieldClassNames } from './SpinButtonField';
+export type { SpinButtonFieldProps as SpinButtonFieldProps_unstable } from './SpinButtonField';
