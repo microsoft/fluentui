@@ -5,7 +5,6 @@ import DropdownExampleFreeform from '../../examples/components/Dropdown/Types/Dr
 import DropdownExampleInline from '../../examples/components/Dropdown/Types/DropdownExampleInline.shorthand';
 import DropdownExampleInverted from '../../examples/components/Dropdown/Types/DropdownExampleInverted.shorthand';
 import DropdownExampleSearch from '../../examples/components/Dropdown/Types/DropdownExampleSearch.shorthand';
-import DropdownExampleControlled from '../../examples/components/Dropdown/Usage/DropdownExampleControlled.shorthand';
 import DropdownExampleRender from '../../examples/components/Dropdown/Usage/DropdownExampleRender.shorthand';
 import DropdownExamplePosition from '../../examples/components/Dropdown/Variations/DropdownExamplePosition.shorthand';
 import DropdownExampleSearchMultipleFluid from '../../examples/components/Dropdown/Variations/DropdownExampleSearchMultipleFluid.shorthand';
@@ -19,7 +18,6 @@ export {
   DropdownExampleInline,
   DropdownExampleInverted,
   DropdownExampleSearch,
-  DropdownExampleControlled,
   DropdownExampleRender,
   DropdownExamplePosition,
   DropdownExampleSearchMultipleFluid,

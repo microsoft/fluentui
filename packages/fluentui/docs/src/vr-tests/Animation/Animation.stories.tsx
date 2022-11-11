@@ -7,7 +7,6 @@ import AnimationExampleDirection from '../../examples/components/Animation/Types
 import AnimationExampleDuration from '../../examples/components/Animation/Types/AnimationExampleDuration.shorthand';
 import AnimationExampleFillMode from '../../examples/components/Animation/Types/AnimationExampleFillMode.shorthand';
 import AnimationExampleIterationCount from '../../examples/components/Animation/Types/AnimationExampleIterationCount.shorthand';
-import AnimationExamplePlayState from '../../examples/components/Animation/Types/AnimationExamplePlayState.shorthand';
 import AnimationExampleTimingFunction from '../../examples/components/Animation/Types/AnimationExampleTimingFunction.shorthand';
 import AnimationExampleVisible from '../../examples/components/Animation/Usage/AnimationExampleVisible.shorthand';
 
@@ -20,7 +19,6 @@ export {
   AnimationExampleDuration,
   AnimationExampleFillMode,
   AnimationExampleIterationCount,
-  AnimationExamplePlayState,
   AnimationExampleTimingFunction,
   AnimationExampleVisible,
 };

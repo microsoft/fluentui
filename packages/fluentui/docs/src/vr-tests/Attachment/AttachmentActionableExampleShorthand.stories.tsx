@@ -2,11 +2,28 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Screener from 'screener-storybook/src/screener';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 import { Attachment } from '@fluentui/react-northstar';
 import screenerSteps from './commonScreenerSteps';
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
-import AttachmentActionableExampleShorthand from '../../examples/components/Attachment/Variations/AttachmentActionableExample.shorthand';
+import { MoreIcon, TableIcon } from '@fluentui/react-icons-northstar';
+
+const handleClick = message => e => {
+  alert(`'${message}' was clicked`);
+  e.stopPropagation();
+};
+
+const AttachmentActionableExampleShorthand = () => (
+  <Attachment
+    actionable
+    icon={<TableIcon />}
+    header="Document.docx"
+    description="800 Kb"
+    action={{ icon: <MoreIcon />, onClick: handleClick('More Action'), title: 'More Action' }}
+    progress={33}
+    onClick={handleClick('Attachment')}
+  />
+);
 
 export default {
   component: Attachment,
@@ -14,18 +31,15 @@ export default {
   decorators: [story => <Screener steps={screenerSteps}>{story()}</Screener>],
 } as ComponentMeta<typeof Attachment>;
 
-const AttachmentActionableExampleShorthandTeams = getThemeStoryVariant(
-  (AttachmentActionableExampleShorthand as unknown) as ComponentStory<any>,
-  'teamsV2',
-);
+const AttachmentActionableExampleShorthandTeams = getThemeStoryVariant(AttachmentActionableExampleShorthand, 'teamsV2');
 
 const AttachmentActionableExampleShorthandTeamsDark = getThemeStoryVariant(
-  (AttachmentActionableExampleShorthand as unknown) as ComponentStory<any>,
+  AttachmentActionableExampleShorthand,
   'teamsDarkV2',
 );
 
 const AttachmentActionableExampleShorthandTeamsHighContrast = getThemeStoryVariant(
-  (AttachmentActionableExampleShorthand as unknown) as ComponentStory<any>,
+  AttachmentActionableExampleShorthand,
   'teamsHighContrast',
 );
 

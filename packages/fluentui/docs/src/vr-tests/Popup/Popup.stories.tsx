@@ -9,11 +9,7 @@ import PopupExamplePointing from '../../examples/components/Popup/Types/PopupExa
 import PopupFocusTrapExample from '../../examples/components/Popup/Types/PopupFocusTrapExample.shorthand';
 import PopupExampleAsync from '../../examples/components/Popup/Usage/PopupExampleAsync.shorthand';
 import PopupCloseButtonExample from '../../examples/components/Popup/Usage/PopupExampleCloseButton';
-import PopupContextOnElement from '../../examples/components/Popup/Usage/PopupExampleContextOnElement';
 import PopupExampleNested from '../../examples/components/Popup/Usage/PopupExampleNested.shorthand';
-import PopupExampleOn from '../../examples/components/Popup/Usage/PopupExampleOn.shorthand';
-import PopupExampleOnMultiple from '../../examples/components/Popup/Usage/PopupExampleOnMultiple.shorthand';
-import PopupExampleOnWithFocusTrap from '../../examples/components/Popup/Usage/PopupExampleOnWithFocusTrap.shorthand';
 import PopupExampleAutoSize from '../../examples/components/Popup/Variations/PopupExampleAutoSize.shorthand';
 import PopupExamplePosition from '../../examples/components/Popup/Variations/PopupExamplePosition.shorthand';
 import PopupExampleContainerTransformed from '../../examples/components/Popup/Visual/PopupExampleContainerTransformed';
@@ -31,11 +27,7 @@ export {
   PopupFocusTrapExample,
   PopupExampleAsync,
   PopupCloseButtonExample,
-  PopupContextOnElement,
   PopupExampleNested,
-  PopupExampleOn,
-  PopupExampleOnMultiple,
-  PopupExampleOnWithFocusTrap,
   PopupExampleAutoSize,
   PopupExamplePosition,
   PopupExampleContainerTransformed,
