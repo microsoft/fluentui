@@ -1,4 +1,3 @@
-import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { DatePicker } from '@fluentui/react-datepicker';
 
 import descriptionMd from './DatePickerDescription.md';
@@ -12,8 +11,6 @@ export { TextInput } from './DatePickerTextInput.stories';
 export { CustomDateFormatting } from './DatePickerCustomDateFormatting.stories';
 export { DateBoundaries } from './DatePickerDateBoundaries.stories';
 export { ExternalControls } from './DatePickerExternalControls.stories';
-
-initializeIcons();
 
 export default {
   title: 'Preview Components/DatePicker',

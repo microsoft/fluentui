@@ -17,7 +17,7 @@ import { mergeClasses } from '@griffel/react';
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
 import { useDatePickerStyles_unstable } from './useDatePickerStyles';
-import type { ICalendar, ITextField /*, ITextFieldProps */ } from '@fluentui/react';
+import type { ICalendar, ITextField } from '@fluentui/react';
 import type { InputOnChangeData } from '@fluentui/react-input';
 import type { InputFieldProps } from '@fluentui/react-field';
 import type { OnOpenChangeData, OpenPopoverEvents } from '@fluentui/react-popover';
