@@ -300,7 +300,7 @@ export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
 export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
-    'aria-haspopup': 'menu';
+    'aria-haspopup'?: 'menu';
     'aria-expanded'?: boolean;
     id: string;
     ref: React_2.Ref<never>;
