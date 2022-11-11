@@ -4,17 +4,18 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IBaseProps } from '@fluentui/utilities';
 import type { ICalendarProps } from '@fluentui/react';
 import type { ICalloutProps } from '@fluentui/react';
 import type { IComponentAs } from '@fluentui/utilities';
+import { InputField } from '@fluentui/react-field';
 import type { IRefObject } from '@fluentui/utilities';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { ITextFieldProps } from '@fluentui/react';
 import type { ITheme } from '@fluentui/style-utilities';
-import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export function addDays(date: Date, days: number): Date;
@@ -73,49 +74,49 @@ export interface DateGridStrings {
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
 
 // @public (undocumented)
-export interface DatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLDivElement> {
-    allFocusable?: boolean;
-    allowTextInput?: boolean;
-    ariaLabel?: string;
-    borderless?: boolean;
-    calendarAs?: IComponentAs<ICalendarProps>;
-    calendarProps?: ICalendarProps;
-    calloutProps?: ICalloutProps;
-    className?: string;
+export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     componentRef?: IRefObject<IDatePicker>;
-    dateTimeFormatter?: DateFormatting;
-    disableAutoFocus?: boolean;
+    styles?: IStyleFunctionOrObject<DatePickerStyleProps, DatePickerStyles>;
+    theme?: ITheme;
+    calloutProps?: ICalloutProps;
+    calendarProps?: ICalendarProps;
+    textField?: ITextFieldProps;
+    calendarAs?: IComponentAs<ICalendarProps>;
+    onSelectDate?: (date: Date | null | undefined) => void;
+    label?: string;
+    isRequired?: boolean;
     disabled?: boolean;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
+    ariaLabel?: string;
+    underlined?: boolean;
+    pickerAriaLabel?: string;
+    isMonthPickerVisible?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    allowTextInput?: boolean;
+    disableAutoFocus?: boolean;
+    openOnClick?: boolean;
+    placeholder?: string;
+    today?: Date;
+    value?: Date;
     formatDate?: (date?: Date) => string;
+    parseDateFromString?: (dateStr: string) => Date | null;
+    firstDayOfWeek?: DayOfWeek;
+    strings?: DatePickerStrings;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
-    initialPickerDate?: Date;
-    isMonthPickerVisible?: boolean;
-    isRequired?: boolean;
-    label?: string;
-    maxDate?: Date;
-    minDate?: Date;
-    onAfterMenuDismiss?: () => void;
-    onSelectDate?: (date: Date | null | undefined) => void;
-    openOnClick?: boolean;
-    parseDateFromString?: (dateStr: string) => Date | null;
-    pickerAriaLabel?: string;
-    placeholder?: string;
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
     showWeekNumbers?: boolean;
-    strings?: DatePickerStrings;
-    styles?: IStyleFunctionOrObject<DatePickerStyleProps, DatePickerStyles>;
+    firstWeekOfYear?: FirstWeekOfYear;
+    showGoToToday?: boolean;
+    borderless?: boolean;
+    className?: string;
+    dateTimeFormatter?: DateFormatting;
+    minDate?: Date;
+    maxDate?: Date;
+    initialPickerDate?: Date;
+    allFocusable?: boolean;
+    onAfterMenuDismiss?: () => void;
+    showCloseButton?: boolean;
     tabIndex?: number;
-    textField?: ITextFieldProps;
-    theme?: ITheme;
-    today?: Date;
-    underlined?: boolean;
-    value?: Date;
-}
+};
 
 // @public (undocumented)
 export interface DatePickerStrings extends CalendarStrings {

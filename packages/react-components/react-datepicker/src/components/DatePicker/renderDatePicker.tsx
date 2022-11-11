@@ -1,35 +1,34 @@
 import * as React from 'react';
-import { InputField } from '@fluentui/react-field';
 import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
-// import { getSlots } from '@fluentui/react-utilities';
-// import type { DatePickerState, DatePickerSlots } from './DatePicker.types';
+import { getSlots } from '@fluentui/react-utilities';
+import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
 /**
  * Render the final JSX of DatePicker
  */
-// export const renderDatePicker_unstable = (state: DatePickerState) => {
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const renderDatePicker_unstable = (state: any) => {
-  // const { slots, slotProps } = getSlots<DatePickerSlots>(state);
+export const renderDatePicker_unstable = (state: DatePickerState) => {
+  const { slots, slotProps } = getSlots<DatePickerSlots>(state);
 
   // TODO Add additional slots in the appropriate place
   // return <slots.root {...slotProps.root} />;
-  const { calendar, inputField, popover, popoverSurface, root, wrapper, Calendar } = state;
+  const { calendar, calendarAs: Calendar, popover, popoverSurface } = state;
 
   return (
-    <div {...root}>
-      <div {...wrapper}>
+    <slots.root {...slotProps.root}>
+      <slots.wrapper {...slotProps.wrapper}>
         <Popover {...popover}>
           <PopoverTrigger>
-            {popoverTriggerChildProps => (
-              <InputField {...inputField} root={{ ...popoverTriggerChildProps, ...inputField.props }} />
-            )}
+            {popoverTriggerChildProps => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const rootProps: any = { root: popoverTriggerChildProps };
+              return <slots.inputField {...slotProps.inputField} {...rootProps} />;
+            }}
           </PopoverTrigger>
           <PopoverSurface {...popoverSurface}>
             <Calendar {...calendar} />
           </PopoverSurface>
         </Popover>
-      </div>
-    </div>
+      </slots.wrapper>
+    </slots.root>
   );
 };

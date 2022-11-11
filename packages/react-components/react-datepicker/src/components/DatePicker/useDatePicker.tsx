@@ -2,11 +2,12 @@ import * as React from 'react';
 // import { getNativeElementProps } from '@fluentui/react-utilities';
 import { Calendar } from '@fluentui/react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { useControllableState, useId } from '@fluentui/react-utilities';
+import { InputField } from '@fluentui/react-field';
+import { getNativeElementProps, resolveShorthand, useControllableState, useId } from '@fluentui/react-utilities';
 import {
   // TODO: classNamesFunction,
-  divProperties,
-  getNativeProps,
+  // divProperties,
+  // getNativeProps,
   format,
   getPropsWithDefaults,
   Async,
@@ -15,15 +16,14 @@ import {
 import { mergeClasses } from '@griffel/react';
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
-
 import { useDatePickerStyles_unstable } from './useDatePickerStyles';
 import type { ICalendar, ITextField /*, ITextFieldProps */ } from '@fluentui/react';
 import type { InputOnChangeData } from '@fluentui/react-input';
 import type { InputFieldProps } from '@fluentui/react-field';
 import type { OnOpenChangeData, OpenPopoverEvents } from '@fluentui/react-popover';
-import type { DatePickerProps } from './DatePicker.types';
+import type { DatePickerProps, DatePickerSlots, DatePickerState } from './DatePicker.types';
 
-const DEFAULT_PROPS: DatePickerProps = {
+const DEFAULT_PROPS: Omit<DatePickerProps, keyof DatePickerSlots> = {
   allowTextInput: false,
   formatDate: (date?: Date) => (date ? date.toDateString() : ''),
   parseDateFromString: (dateStr: string) => {
@@ -237,7 +237,10 @@ function useErrorMessage(
  * @param ref - reference to root HTMLElement of DatePicker
  */
 // export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLElement>): DatePickerState => {
-export const useDatePicker_unstable = (propsWithoutDefaults: DatePickerProps, forwardedRef: React.Ref<HTMLElement>) => {
+export const useDatePicker_unstable = (
+  propsWithoutDefaults: DatePickerProps,
+  forwardedRef: React.Ref<HTMLElement>,
+): DatePickerState => {
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
   const {
@@ -264,7 +267,7 @@ export const useDatePicker_unstable = (propsWithoutDefaults: DatePickerProps, fo
     textField: textFieldProps,
     underlined,
     allFocusable,
-    calendarAs: CalendarType = Calendar,
+    calendarAs = Calendar,
     tabIndex,
     disableAutoFocus = true,
     showMonthPickerAsOverlay,
@@ -527,15 +530,15 @@ export const useDatePicker_unstable = (propsWithoutDefaults: DatePickerProps, fo
     isDatePickerShown: isCalendarShown,
   });
 
-  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
-  // const iconProps = textFieldProps && textFieldProps.iconProps;
+  // const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
+  // // const iconProps = textFieldProps && textFieldProps.iconProps;
   const textFieldId =
     textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
-  // const readOnly = !allowTextInput && !disabled;
+  // // const readOnly = !allowTextInput && !disabled;
 
-  const dataIsFocusable =
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
+  // const dataIsFocusable =
+  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
 
   const inputAppearance: InputFieldProps['appearance'] = underlined
     ? 'underline'
@@ -552,9 +555,57 @@ export const useDatePicker_unstable = (propsWithoutDefaults: DatePickerProps, fo
     [calendarDismissed],
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const state: any = {
-    Calendar: CalendarType,
+  const root = getNativeElementProps('div', {
+    ref: forwardedRef,
+    ...props,
+    className: classNames.root,
+  });
+  const inputFieldShorthand = resolveShorthand(props.inputField, {
+    defaultProps: {
+      appearance: inputAppearance,
+      'aria-controls': isCalendarShown ? calloutId : undefined,
+      'aria-expanded': isCalendarShown,
+      'aria-haspopup': 'dialog',
+      'aria-label': ariaLabel,
+      contentAfter: (
+        <CalendarMonthRegular
+          // className={mergeClasses(classNames.icon, iconProps?.className)}
+          onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>}
+        />
+      ),
+      disabled,
+      label,
+      onBlur: onTextFieldBlur,
+      onChange: onTextFieldChanged,
+      onClick: onTextFieldClick,
+      onFocus: onTextFieldFocus,
+      onKeyDown: onTextFieldKeyDown,
+      placeholder,
+      readOnly: !allowTextInput,
+      required: isRequired,
+      role: 'combobox',
+      tabIndex,
+      validationMessage: errorMessage ?? statusMessage,
+      validationState: errorMessage ? 'error' : undefined,
+      value: formattedDate,
+      ...(textFieldProps as InputFieldProps),
+      className: mergeClasses(classNames.textField, textFieldProps?.className),
+      id: textFieldId,
+    },
+    required: true,
+  });
+  const wrapperShorthand = resolveShorthand(props.wrapper, {
+    defaultProps: {
+      'aria-owns': isCalendarShown ? calloutId : undefined,
+      className: classNames.wrapper,
+      ref: datePickerDiv,
+    },
+    required: true,
+  });
+
+  const state: DatePickerState = {
+    calendarAs,
+
     calendar: {
       ...calendarProps,
       allFocusable,
@@ -577,42 +628,10 @@ export const useDatePicker_unstable = (propsWithoutDefaults: DatePickerProps, fo
       today,
       value: selectedDate || initialPickerDate,
     },
-    inputField: {
-      appearance: inputAppearance,
-      'aria-controls': isCalendarShown ? calloutId : undefined,
-      'aria-expanded': isCalendarShown,
-      'aria-haspopup': 'dialog',
-      'aria-label': ariaLabel,
-      contentAfter: (
-        <CalendarMonthRegular
-          // className={mergeClasses(classNames.icon, iconProps?.className)}
-          onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>}
-        />
-      ),
-      'data-is-focusable': dataIsFocusable,
-      disabled,
-      label,
-      onBlur: onTextFieldBlur,
-      onChange: onTextFieldChanged,
-      onClick: onTextFieldClick,
-      onFocus: onTextFieldFocus,
-      onKeyDown: onTextFieldKeyDown,
-      placeholder,
-      readOnly: !allowTextInput,
-      required: isRequired,
-      role: 'combobox',
-      tabIndex,
-      validationMessage: errorMessage ?? statusMessage,
-      validationState: errorMessage ? 'error' : undefined,
-      value: formattedDate,
-      ...(textFieldProps as InputFieldProps),
-      className: mergeClasses(classNames.textField, textFieldProps?.className),
-      id: textFieldId,
-    },
     popover: {
       onOpenChange: onPopoverOpenChange,
       open: isCalendarShown,
-      position: 'below-start',
+      positioning: 'below-start',
       trapFocus: true,
     },
     popoverSurface: {
@@ -621,16 +640,17 @@ export const useDatePicker_unstable = (propsWithoutDefaults: DatePickerProps, fo
       id: calloutId,
       role: 'dialog',
     },
-    root: {
-      ...nativeProps,
-      className: classNames.root,
-      ref: forwardedRef,
+
+    // Slots definition
+    components: {
+      root: 'div',
+      inputField: InputField,
+      wrapper: 'div',
     },
-    wrapper: {
-      'aria-owns': isCalendarShown ? calloutId : undefined,
-      className: classNames.wrapper,
-      ref: datePickerDiv,
-    },
+
+    inputField: inputFieldShorthand,
+    root,
+    wrapper: wrapperShorthand,
   };
 
   return state;
