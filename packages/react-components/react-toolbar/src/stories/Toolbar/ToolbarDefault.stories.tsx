@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
-  TextBold24Regular,
-  TextItalic24Regular,
-  TextUnderline24Regular,
+  FontIncrease24Regular,
+  FontDecrease24Regular,
+  TextFont24Regular,
   AlertSnooze24Regular,
   MoreHorizontal24Filled,
 } from '@fluentui/react-icons';
@@ -12,9 +12,9 @@ import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
-    <ToolbarButton aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
-    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
-    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncrease24Regular />} />
+    <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecrease24Regular />} />
+    <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
     <ToolbarDivider />
     <ToolbarToggleButton
       aria-label="Snooze Alert Option"

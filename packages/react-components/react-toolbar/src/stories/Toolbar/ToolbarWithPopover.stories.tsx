@@ -4,40 +4,106 @@ import type { ToolbarProps } from '@fluentui/react-toolbar';
 import { Popover, PopoverSurface, PopoverTrigger, Button } from '@fluentui/react-components';
 import { CalendarMonthRegular, Accessibility24Filled } from '@fluentui/react-icons';
 
-export const WithPopover = (props: Partial<ToolbarProps>) => (
-  <Toolbar {...props} size="small">
-    <Popover withArrow>
-      <PopoverTrigger disableButtonEnhancement>
-        <ToolbarButton appearance="primary">See more...</ToolbarButton>
-      </PopoverTrigger>
-      <PopoverSurface>
-        <div>
-          <h3>Popover content</h3>
-          <Button>Action</Button>
-        </div>
-      </PopoverSurface>
-    </Popover>
-    <ToolbarDivider />
-    <Popover withArrow>
-      <PopoverTrigger disableButtonEnhancement>
-        <ToolbarButton aria-label="Popover trigger - Calendar" icon={<CalendarMonthRegular />} />
-      </PopoverTrigger>
-      <PopoverSurface>
-        <div>
-          <h3>Popover content</h3>
-          <Button>Action</Button>
-        </div>
-      </PopoverSurface>
-    </Popover>
-    <Popover withArrow>
-      <PopoverTrigger disableButtonEnhancement>
-        <ToolbarButton aria-label="Popover trigger - Accessibility" icon={<Accessibility24Filled />} />
-      </PopoverTrigger>
-      <PopoverSurface>
-        <div>
-          <h3>Popover content - Accessibility</h3> <Button>Action</Button>
-        </div>
-      </PopoverSurface>
-    </Popover>
-  </Toolbar>
-);
+export const WithPopover = (props: Partial<ToolbarProps>) => {
+  const [open, setOpen] = React.useState({
+    first: false,
+    second: false,
+    third: false,
+  });
+
+  return (
+    <Toolbar {...props} size="small">
+      <Popover
+        withArrow
+        trapFocus
+        open={open.first}
+        onOpenChange={() => {
+          setOpen(currOpen => ({
+            ...currOpen,
+            first: !currOpen.first,
+          }));
+        }}
+      >
+        <PopoverTrigger disableButtonEnhancement>
+          <ToolbarButton appearance="primary">See more...</ToolbarButton>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <div>
+            <h3>Popover content</h3>
+            <Button
+              onClick={() =>
+                setOpen(currOpen => ({
+                  ...currOpen,
+                  first: false,
+                }))
+              }
+            >
+              Close
+            </Button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+      <ToolbarDivider />
+      <Popover
+        withArrow
+        trapFocus
+        open={open.second}
+        onOpenChange={() => {
+          setOpen(currOpen => ({
+            ...currOpen,
+            second: !currOpen.second,
+          }));
+        }}
+      >
+        <PopoverTrigger disableButtonEnhancement>
+          <ToolbarButton aria-label="Open Calendar Popover" icon={<CalendarMonthRegular />} />
+        </PopoverTrigger>
+        <PopoverSurface>
+          <div>
+            <h3>Popover content</h3>
+            <Button
+              onClick={() =>
+                setOpen(currOpen => ({
+                  ...currOpen,
+                  second: false,
+                }))
+              }
+            >
+              Close
+            </Button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+      <Popover
+        withArrow
+        trapFocus
+        open={open.third}
+        onOpenChange={() => {
+          setOpen(currOpen => ({
+            ...currOpen,
+            third: !currOpen.third,
+          }));
+        }}
+      >
+        <PopoverTrigger disableButtonEnhancement>
+          <ToolbarButton aria-label="Open Accessibility Popover" icon={<Accessibility24Filled />} />
+        </PopoverTrigger>
+        <PopoverSurface>
+          <div>
+            <h3>Popover content - Accessibility</h3>{' '}
+            <Button
+              onClick={() =>
+                setOpen(currOpen => ({
+                  ...currOpen,
+                  third: false,
+                }))
+              }
+            >
+              Close
+            </Button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+    </Toolbar>
+  );
+};

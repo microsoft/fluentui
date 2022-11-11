@@ -5,8 +5,8 @@ import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Vertical = (props: Partial<ToolbarProps>) => (
   <Toolbar vertical {...props}>
-    <ToolbarButton aria-label="Text option - Bold" icon={<TextBold24Regular />} />
-    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
-    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarButton aria-label="Bold" icon={<TextBold24Regular />} />
+    <ToolbarButton aria-label="Italic" icon={<TextItalic24Regular />} />
+    <ToolbarButton aria-label="Underline" icon={<TextUnderline24Regular />} />
   </Toolbar>
 );

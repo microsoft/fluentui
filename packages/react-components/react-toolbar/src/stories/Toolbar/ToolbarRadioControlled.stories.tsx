@@ -16,24 +16,14 @@ export const ControlledRadio = (props: Partial<ToolbarProps>) => {
 
   return (
     <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <ToolbarRadioButton aria-label="Align left" name="text-style" value="italic" icon={<AlignLeft24Regular />} />
       <ToolbarRadioButton
-        aria-label="Radio Option - Align left"
-        name="text-style"
-        value="italic"
-        icon={<AlignLeft24Regular />}
-      />
-      <ToolbarRadioButton
-        aria-label="Radio Option - Align Center"
+        aria-label="Align Center"
         name="text-style"
         value="bold"
         icon={<AlignCenterHorizontal24Regular />}
       />
-      <ToolbarRadioButton
-        aria-label="Radio Option - Align Right"
-        name="text-style"
-        value="underline"
-        icon={<AlignRight24Regular />}
-      />
+      <ToolbarRadioButton aria-label="Align Right" name="text-style" value="underline" icon={<AlignRight24Regular />} />
     </Toolbar>
   );
 };
