@@ -490,7 +490,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       const rowFocusZoneProps = isHeaderVisible || index > 0 ? {} : { tabIndex: 0 };
 
       const rowProps: IDetailsRowProps = {
-        item,
+        item: item,
         itemIndex: index,
         flatIndexOffset: (isHeaderVisible ? 2 : 1) + numOfGroupHeadersBeforeItem,
         compact,
@@ -698,27 +698,27 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             onRenderDetailsHeader(
               {
                 componentRef: headerRef,
-                selectionMode,
+                selectionMode: selectionMode,
                 layoutMode: layoutMode!,
-                selection,
+                selection: selection,
                 columns: adjustedColumns,
                 onColumnClick: onColumnHeaderClick,
                 onColumnContextMenu: onColumnHeaderContextMenu,
-                onColumnResized,
-                onColumnIsSizingChanged,
-                onColumnAutoResized,
-                groupNestingDepth,
+                onColumnResized: onColumnResized,
+                onColumnIsSizingChanged: onColumnIsSizingChanged,
+                onColumnAutoResized: onColumnAutoResized,
+                groupNestingDepth: groupNestingDepth,
                 isAllCollapsed: isCollapsed,
                 onToggleCollapseAll: onToggleCollapse,
                 ariaLabel: ariaLabelForListHeader,
-                ariaLabelForSelectAllCheckbox,
-                ariaLabelForSelectionColumn,
-                selectAllVisibility,
+                ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
+                ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
+                selectAllVisibility: selectAllVisibility,
                 collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                viewport,
-                columnReorderProps,
-                minimumPixelsForDrag,
-                cellStyleProps,
+                viewport: viewport,
+                columnReorderProps: columnReorderProps,
+                minimumPixelsForDrag: minimumPixelsForDrag,
+                cellStyleProps: cellStyleProps,
                 checkboxVisibility,
                 indentWidth,
                 onRenderDetailsCheckbox: onRenderCheckbox,
@@ -896,8 +896,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       if (isValidTargetIndex) {
         if (columnReorderOptions.onColumnDrop) {
           const dragDropDetails: IColumnDragDropDetails = {
-            draggedIndex,
-            targetIndex,
+            draggedIndex: draggedIndex,
+            targetIndex: targetIndex,
           };
           columnReorderOptions.onColumnDrop(dragDropDetails);
           /* eslint-disable deprecation/deprecation */
@@ -1089,11 +1089,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   };
 
   private _onGroupExpandStateChanged = (isSomeGroupExpanded: boolean): void => {
-    this.setState({ isSomeGroupExpanded });
+    this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
   };
 
   private _onColumnIsSizingChanged = (column: IColumn, isSizing: boolean): void => {
-    this.setState({ isSizing });
+    this.setState({ isSizing: isSizing });
   };
 
   private _getGroupNestingDepth(): number {
@@ -1189,7 +1189,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     return {
       ...previousState,
-      adjustedColumns,
+      adjustedColumns: adjustedColumns,
       lastWidth: viewportWidth,
     };
   }
@@ -1517,7 +1517,7 @@ export function buildColumns(
           isRowHeader: false,
           columnActionsMode: columnActionsMode ?? ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
-          onColumnClick,
+          onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName,
         });
       }

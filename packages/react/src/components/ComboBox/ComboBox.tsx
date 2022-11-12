@@ -1851,7 +1851,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     this.props.hoisted.setSuggestedDisplayValue(suggestedDisplayValue);
     this.setState({
       currentPendingValue: normalizeToString(currentPendingValue),
-      currentPendingValueValidIndex,
+      currentPendingValueValidIndex: currentPendingValueValidIndex,
       currentPendingValueValidIndexOnHover: HoverStatus.default,
     });
   }
@@ -1955,7 +1955,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean): void {
     this._focusInputAfterClose = focusInputAfterClose;
     this.setState({
-      isOpen,
+      isOpen: isOpen,
     });
   }
 
