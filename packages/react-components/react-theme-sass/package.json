@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-theme-sass",
-  "version": "9.0.0-alpha.3",
+  "version": "9.0.0-alpha.4",
   "description": "SASS variables referencing react-theme design tokens injected to DOM by react-provider.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "style": "sass/tokens.scss",
   "sideEffects": false,
   "repository": {
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-theme": "^9.1.1"
+    "@fluentui/react-theme": "^9.1.2"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -35,5 +35,13 @@
       "patch"
     ]
   },
-  "dependencies": {}
+  "dependencies": {},
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  }
 }

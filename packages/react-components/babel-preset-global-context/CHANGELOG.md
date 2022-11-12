@@ -1,8 +1,18 @@
 # Change Log - @fluentui/babel-preset-global-context
 
-This log was last generated on Wed, 02 Nov 2022 11:58:07 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.8)
+
+Fri, 11 Nov 2022 14:57:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.7..@fluentui/babel-preset-global-context_v9.0.0-beta.8)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/global-context to v9.0.0-beta.8 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.7)
 

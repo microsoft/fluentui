@@ -2,9 +2,9 @@ import path from 'path';
 import * as fs from 'fs-extra';
 import * as _ from 'lodash';
 import * as yargs from 'yargs';
+import { execSync } from 'child_process';
 
 import { findGitRoot } from './monorepo';
-import execSync from './exec-sync';
 import { createTempDir } from './projects-test';
 
 const themes = ['light', 'dark', 'teamsDark', 'highContrast'] as const;
@@ -34,6 +34,8 @@ function getGeneratedFiles(tmpDir: string) {
 function runPipeline(theme: typeof themes[number], pipelineDir: string, outDir: string) {
   console.log(`Running pipeline for ${theme} theme`);
 
+  console.log(`Generate tokens for theme`);
+
   // https://github.com/microsoft/fluentui-token-pipeline
   execSync(
     [
@@ -44,8 +46,7 @@ function runPipeline(theme: typeof themes[number], pipelineDir: string, outDir: 
       `--in src/${_.kebabCase(theme)}.json`,
       `--out ${outDir}/${theme}`,
     ].join(' '),
-    `Generate tokens for theme:${theme}`,
-    pipelineDir,
+    { cwd: pipelineDir },
   );
 }
 
@@ -59,14 +60,15 @@ function setupDesignTokensRepo(options: { argv: typeof argv }) {
     return { pipelineDir, tmpDir };
   }
 
+  console.log('Clone design tokens repo');
   // clone repo, install deps
-  execSync(
-    'git clone --depth 1 https://github.com/microsoft/fluentui-design-tokens.git',
-    'Clone design tokens repo',
-    tmpDir,
-  );
+  execSync('git clone --depth 1 https://github.com/microsoft/fluentui-design-tokens.git', {
+    cwd: tmpDir,
+    stdio: 'inherit',
+  });
   const pipelineDir = path.join(tmpDir, 'fluentui-design-tokens');
-  execSync('npm install', 'Install dependencies', pipelineDir);
+  console.log('Install dependencies');
+  execSync('npm install', { cwd: pipelineDir, stdio: 'inherit' });
 
   return { pipelineDir, tmpDir };
 }
@@ -83,7 +85,8 @@ const tokenPipeline = () => {
     fs.copySync(file.src, file.dest, { overwrite: true });
   });
 
-  execSync(`npx prettier --write ${path.join(repoRoot, 'packages/react-components/react-theme/src')}`, 'Prettier');
+  console.log('Format');
+  execSync(`npx prettier --write ${path.join(repoRoot, 'packages/react-components/react-theme/src')}`);
 };
 
 tokenPipeline();
