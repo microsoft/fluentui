@@ -41,7 +41,7 @@ export const Outline = () => (
 
 export const Primary = () => (
   <Button id={buttonId} appearance="primary">
-    Hello, world
+    olleH, world
   </Button>
 );
 
