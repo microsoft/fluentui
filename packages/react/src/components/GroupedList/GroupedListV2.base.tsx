@@ -15,12 +15,12 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
   IGroupedList,
-  IGroupedListProps,
   IGroup,
   IGroupRenderProps,
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
+import type { IGroupedListV2Props } from './GroupedListV2.types';
 import { GroupHeader } from './GroupHeader';
 import { GroupShowAll } from './GroupShowAll';
 import { GroupFooter } from './GroupFooter';
@@ -29,17 +29,11 @@ import type { IGroupShowAllProps } from './GroupShowAll.styles';
 import type { IGroupFooterProps } from './GroupFooter.types';
 
 export interface IGroupedListV2State {
-  selectionMode?: IGroupedListProps['selectionMode'];
-  compact?: IGroupedListProps['compact'];
+  selectionMode?: IGroupedListV2Props['selectionMode'];
+  compact?: IGroupedListV2Props['compact'];
   groups?: IGroup[];
-  items?: IGroupedListProps['items'];
-  listProps?: IGroupedListProps['listProps'];
-  version: {};
-  groupExpandedVersion: {};
-}
-
-export interface IGroupedListV2Props extends IGroupedListProps {
-  listRef: React.Ref<List>;
+  items?: IGroupedListV2Props['items'];
+  listProps?: IGroupedListV2Props['listProps'];
   version: {};
   groupExpandedVersion: {};
 }
@@ -472,7 +466,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       return renderFooter(item, flattenedIndex);
     } else {
       const level = item.group.level ? item.group.level + 1 : 1;
-      return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex);
+      return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex, item.group);
     }
   };
 
@@ -532,13 +526,13 @@ const GroupItem = <T,>({
 };
 
 export class GroupedListV2Wrapper
-  extends React.Component<IGroupedListProps, IGroupedListV2State>
+  extends React.Component<IGroupedListV2Props, IGroupedListV2State>
   implements IGroupedList {
   public static displayName: string = 'GroupedListV2';
   private _list = React.createRef<List>();
 
   public static getDerivedStateFromProps(
-    nextProps: IGroupedListProps,
+    nextProps: IGroupedListV2Props,
     previousState: IGroupedListV2State,
   ): IGroupedListV2State {
     const { groups, selectionMode, compact, items, listProps } = nextProps;
@@ -562,7 +556,7 @@ export class GroupedListV2Wrapper
     return nextState;
   }
 
-  constructor(props: IGroupedListProps) {
+  constructor(props: IGroupedListV2Props) {
     super(props);
     initializeComponentRef(this);
 
