@@ -4,12 +4,17 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { FieldControl } from '@fluentui/react-field';
+import type { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSlider_unstable: (state: SliderState) => JSX.Element;
@@ -26,6 +31,15 @@ export const sliderCSSVars: {
     sliderProgressVar: string;
     sliderStepsPercentVar: string;
 };
+
+// @public (undocumented)
+export const SliderField_unstable: ForwardRefComponent<SliderFieldProps_unstable>;
+
+// @public (undocumented)
+export const sliderFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
+
+// @public (undocumented)
+export type SliderFieldProps_unstable = FieldProps<typeof Slider>;
 
 // @public (undocumented)
 export type SliderOnChangeData = {

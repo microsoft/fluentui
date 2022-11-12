@@ -618,6 +618,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             border: 0px;
           }
       data-is-focusable={false}
+      hidden={false}
       id="toolTipcallout0"
       style={
         Object {
@@ -1365,6 +1366,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             border: 0px;
           }
       data-is-focusable={false}
+      hidden={false}
       id="toolTipcallout0"
       style={
         Object {
@@ -1988,6 +1990,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2545,6 +2550,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2783,6 +2791,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       </g>
     </svg>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3360,6 +3371,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3937,6 +3951,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -4514,6 +4531,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -5091,5 +5111,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;

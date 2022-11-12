@@ -9,7 +9,7 @@ export const OffsetFunction = () => {
 
   return (
     <Popover positioning={{ position: 'after', offset }}>
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <Button appearance="primary">Click me</Button>
       </PopoverTrigger>
 

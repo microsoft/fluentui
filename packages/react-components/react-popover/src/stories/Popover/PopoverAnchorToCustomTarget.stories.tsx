@@ -37,7 +37,7 @@ export const AnchorToCustomTarget = () => {
   return (
     <div className={styles.container}>
       <Popover positioning={{ positioningRef }}>
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button>Popover trigger</Button>
         </PopoverTrigger>
 

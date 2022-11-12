@@ -2,6 +2,219 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 16 Nov 2022 07:47:29 GMT",
+      "tag": "@fluentui/react-charting_v5.14.15",
+      "version": "5.14.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.101.2",
+            "commit": "9066dc6a278db9df1fe3a277e66c94c201107d14"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Nov 2022 07:44:59 GMT",
+      "tag": "@fluentui/react-charting_v5.14.14",
+      "version": "5.14.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.10",
+            "commit": "84243dc77a4a9d2a8231c01bf880845d49f38f1a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.101.1",
+            "commit": "84243dc77a4a9d2a8231c01bf880845d49f38f1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/react-charting_v5.14.13",
+      "version": "5.14.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.9",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.101.0",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.21",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Nov 2022 07:48:06 GMT",
+      "tag": "@fluentui/react-charting_v5.14.12",
+      "version": "5.14.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6fe1046ebcf6ccc769cb3bb0e58960fbd4e00b42",
+            "comment": "Fix legends selection bugs"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6dcd17c6c6e46df9f9bb8eaa44ceb6a3ce8950d2",
+            "comment": "Fix overlay opacity in line chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.100.0",
+            "commit": "176464a38a9b6210505d6950e8bd81df959427e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Nov 2022 07:52:12 GMT",
+      "tag": "@fluentui/react-charting_v5.14.11",
+      "version": "5.14.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.99.3",
+            "commit": "e2933893722b3de0c5358bd5f20b54992a316514"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Nov 2022 07:49:22 GMT",
+      "tag": "@fluentui/react-charting_v5.14.10",
+      "version": "5.14.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.99.2",
+            "commit": "a180b67ce1107e8d4cb02aceb2e92a9e162b532e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Oct 2022 07:45:40 GMT",
+      "tag": "@fluentui/react-charting_v5.14.9",
+      "version": "5.14.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.99.1",
+            "commit": "79fd5b5f2563cd20a14ac66f784dfd9a640e0aaa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Oct 2022 07:45:08 GMT",
+      "tag": "@fluentui/react-charting_v5.14.8",
+      "version": "5.14.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.99.0",
+            "commit": "6c136eb60ae73382d3336b2ff11b113924d6eddc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Oct 2022 07:52:53 GMT",
+      "tag": "@fluentui/react-charting_v5.14.7",
+      "version": "5.14.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fd0e28e497856c9ddb6c82d0b6b336f5c263fb7e",
+            "comment": "Fix wrong narration when legend selected"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.8",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.98.8",
+            "commit": "135655c2e9e32b5d50610d17792768ba0cb4e65e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 07:43:18 GMT",
+      "tag": "@fluentui/react-charting_v5.14.6",
+      "version": "5.14.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.98.7",
+            "commit": "fd0e28e497856c9ddb6c82d0b6b336f5c263fb7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Oct 2022 07:45:24 GMT",
+      "tag": "@fluentui/react-charting_v5.14.5",
+      "version": "5.14.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.98.6",
+            "commit": "e255da7cf629534ebaaac05af3b5bb9a2f7def71"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Oct 2022 07:44:53 GMT",
       "tag": "@fluentui/react-charting_v5.14.4",
       "version": "5.14.4",

@@ -163,7 +163,7 @@ export const ExportLink = () => {
     const EditIcon = bundleIcon(EditFilled, EditRegular);
     return (
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton>Select </MenuButton>
         </MenuTrigger>
         <MenuPopover>
@@ -309,7 +309,7 @@ export const ExportLink = () => {
       files: {
         'example.tsx': {
           isBinary: false,
-          content: content,
+          content,
         },
         'index.html': {
           isBinary: false,

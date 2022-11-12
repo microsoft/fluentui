@@ -1,8 +1,354 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 20 Oct 2022 08:39:25 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.7.0)
+
+Fri, 11 Nov 2022 14:57:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.3..@fluentui/react-components_v9.7.0)
+
+### Minor changes
+
+- `@fluentui/react-tabs`
+  - Added support for reserving space for selected state ([PR #25542](https://github.com/microsoft/fluentui/pull/25542) by gcox@microsoft.com)
+  - Added large size tabs ([PR #25577](https://github.com/microsoft/fluentui/pull/25577) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - Add both options to axis config ([PR #25568](https://github.com/microsoft/fluentui/pull/25568) by chassunc@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Move AvatarGroup to stable. ([PR #25005](https://github.com/microsoft/fluentui/pull/25005) by esteban.230@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-portal`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25481](https://github.com/microsoft/fluentui/pull/25481) by tristan.watanabe@gmail.com)
+- `@fluentui/react-portal-compat`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: Migrate to new package structure. ([PR #25481](https://github.com/microsoft/fluentui/pull/25481) by tristan.watanabe@gmail.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: Move RadioGroupField into the @fluentui/react-radio package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: Move SliderField into the @fluentui/react-slider package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Move SpinButtonField into the @fluentui/react-spinbutton package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+  - fix: update disabled + underline and filled styles to match other text-like form control styles ([PR #25543](https://github.com/microsoft/fluentui/pull/25543) by sarah.higley@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - Add documentation for Spinner when reduced-motion is active ([PR #25561](https://github.com/microsoft/fluentui/pull/25561) by ololubek@microsoft.com)
+  - chore: Replacing use of hard-coded constants with curve and duration tokens from theme. ([PR #25522](https://github.com/microsoft/fluentui/pull/25522) by humberto_makoto@hotmail.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - bugfix: adds line-height=0 to switch indicator slot ([PR #25507](https://github.com/microsoft/fluentui/pull/25507) by bernardo.sunderhus@gmail.com)
+  - chore: Move SwitchField into the @fluentui/react-switch package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+  - chore: Replacing use of hard-coded constants with curve and duration tokens from theme. ([PR #25522](https://github.com/microsoft/fluentui/pull/25522) by humberto_makoto@hotmail.com)
+- `@fluentui/react-tabs`
+  - Added support for regular/filled icon toggling ([PR #25597](https://github.com/microsoft/fluentui/pull/25597) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - chore: Move TextareaField into the @fluentui/react-textarea package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- `@fluentui/react-theme`
+  - Fixed incorrect typography style ([PR #25577](https://github.com/microsoft/fluentui/pull/25577) by gcox@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: Replacing use of hard-coded constants with curve and duration tokens from theme. ([PR #25522](https://github.com/microsoft/fluentui/pull/25522) by humberto_makoto@hotmail.com)
+  - fix: Update Avatar active ring color to match base color ([PR #25497](https://github.com/microsoft/fluentui/pull/25497) by behowell@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - chore: Remove AvatarGroup unstable warnings. ([PR #25005](https://github.com/microsoft/fluentui/pull/25005) by esteban.230@hotmail.com)
+  - chore: Migrate to new package structure. ([PR #25473](https://github.com/microsoft/fluentui/pull/25473) by tristan.watanabe@gmail.com)
+- `@fluentui/react-badge`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - chore: Replacing use of hard-coded constants with curve and duration tokens from theme. ([PR #25522](https://github.com/microsoft/fluentui/pull/25522) by humberto_makoto@hotmail.com)
+  - fix: Showing correct behavior for icons inside of Buttons on hover, pressed and toggle states. ([PR #25479](https://github.com/microsoft/fluentui/pull/25479) by humberto_makoto@hotmail.com)
+  - fix: Adding expanded styles for MenuButtons and making various other styling fixes for Button components. ([PR #25521](https://github.com/microsoft/fluentui/pull/25521) by humberto_makoto@hotmail.com)
+- `@fluentui/react-checkbox`
+  - chore: Move CheckboxField into the @fluentui/react-checkbox package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Update exports for field components from @fluentui/react-components/unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+  - chore: Export ProgressField from @fluentui/react-components/unstable ([PR #25536](https://github.com/microsoft/fluentui/pull/25536) by behowell@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - feat: Exports `createColumn` utility from `@fluentui/react-table` as unstable ([PR #25495](https://github.com/microsoft/fluentui/pull/25495) by lingfangao@hotmail.com)
+- `@fluentui/react-context-selector`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: removes unnecessary union case for DialogOpenChangeData ([PR #25504](https://github.com/microsoft/fluentui/pull/25504) by bernardo.sunderhus@gmail.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: update disabled + underline styles, have all text-like form control disabled states match ([PR #25543](https://github.com/microsoft/fluentui/pull/25543) by sarah.higley@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - chore: Move InputField into the @fluentui/react-input package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- `@fluentui/react-label`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: remove unwanted aria attributes on context menu ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-progress`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - Add styling and documentation for reduced-motion ([PR #25563](https://github.com/microsoft/fluentui/pull/25563) by ololubek@microsoft.com)
+  - chore: Move ProgressField into the @fluentui/react-progress package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- `@fluentui/react-select`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - chore: Move SelectField into the @fluentui/react-select package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+  - fix: update disabled + underline styles, have all text-like form control disabled states match ([PR #25543](https://github.com/microsoft/fluentui/pull/25543) by sarah.higley@microsoft.com)
+- `@fluentui/react-table`
+  - feat:  Implement child render function for DataGrid rows ([PR #25476](https://github.com/microsoft/fluentui/pull/25476) by lingfangao@hotmail.com)
+  - feat: Implement `focusMode` prop for DataGrid, apply role="grid" correctly ([PR #25530](https://github.com/microsoft/fluentui/pull/25530) by lingfangao@hotmail.com)
+  - BREAKING: ColumnDefinition type is stricter, use createColumn to create column definition. Implments render function for DataGridRow. ([PR #25495](https://github.com/microsoft/fluentui/pull/25495) by lingfangao@hotmail.com)
+- `@fluentui/react-theme-sass`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/babel-preset-global-context`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/global-context`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - feat: add selectable feature to card ([PR #24486](https://github.com/microsoft/fluentui/pull/24486) by marcosvmmoura@gmail.com)
+- `@fluentui/react-combobox`
+  - chore: Move InputField into the @fluentui/react-input package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - fix: update disabled + underline styles, have all text-like form control disabled states match ([PR #25543](https://github.com/microsoft/fluentui/pull/25543) by sarah.higley@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+  - chore: Clean up Field tests and story imports in preparation of moving to individual packages ([PR #25594](https://github.com/microsoft/fluentui/pull/25594) by behowell@microsoft.com)
+  - chore: Move individual field components into their respective packages, and out of @fluentui/react-field ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+
+## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.3)
+
+Wed, 02 Nov 2022 14:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.2..@fluentui/react-components_v9.6.3)
+
+### Changes
+
+- `@fluentui/react-table`
+  - fix(useTable): sort should adapt to enhanced row types ([PR #25487](https://github.com/microsoft/fluentui/pull/25487) by lingfangao@hotmail.com)
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.2)
+
+Wed, 02 Nov 2022 11:57:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.1..@fluentui/react-components_v9.6.2)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - exposes internal typings: ARIAButtonAlteredProps and ARIAButtonElement ([PR #25403](https://github.com/microsoft/fluentui/pull/25403) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-context-selector`
+  - exposes internal type: ContextSelector ([PR #25404](https://github.com/microsoft/fluentui/pull/25404) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25408](https://github.com/microsoft/fluentui/pull/25408) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25410](https://github.com/microsoft/fluentui/pull/25410) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25411](https://github.com/microsoft/fluentui/pull/25411) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - exposes new typings to avoid exposing internal methods ([PR #25407](https://github.com/microsoft/fluentui/pull/25407) by bernardo.sunderhus@gmail.com)
+  - feat: position updates are handled out of react lifecycle ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by lingfangao@hotmail.com)
+- `@fluentui/react-shared-contexts`
+  - exposes internal methods and types that are used in the API surface ([PR #25405](https://github.com/microsoft/fluentui/pull/25405) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tooltip`
+  - removes exposing of internal type FluentTriggerComponent ([PR #25409](https://github.com/microsoft/fluentui/pull/25409) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - feat: exposes internal methods that are used in the API surface ([PR #25406](https://github.com/microsoft/fluentui/pull/25406) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: Removing gaps between ::after pseudo-element and AvatarGroupItem/AvatarGroupPopover." ([PR #25382](https://github.com/microsoft/fluentui/pull/25382) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: Migrate to new package structure. ([PR #25360](https://github.com/microsoft/fluentui/pull/25360) by tristan.watanabe@gmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25469](https://github.com/microsoft/fluentui/pull/25469) by tristan.watanabe@gmail.com)
+- `@fluentui/react-label`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25470](https://github.com/microsoft/fluentui/pull/25470) by tristan.watanabe@gmail.com)
+- `@fluentui/react-link`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25471](https://github.com/microsoft/fluentui/pull/25471) by tristan.watanabe@gmail.com)
+- `@fluentui/react-menu`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - refactor: usePortalMount node updates mount node attributes in memo ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-slider`
+  - Adding cursor pointer to the Slider component ([PR #25184](https://github.com/microsoft/fluentui/pull/25184) by petrduda@microsoft.com)
+  - fix: Pad in slider so the thumb does not render outside the bounds of the root element ([PR #25378](https://github.com/microsoft/fluentui/pull/25378) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - make allowCondition a optional parameter for findAllFocusable function ([PR #25416](https://github.com/microsoft/fluentui/pull/25416) by marcosvmmoura@gmail.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-field`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - fix: update styles based on design review ([PR #24339](https://github.com/microsoft/fluentui/pull/24339) by sarah.higley@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25359](https://github.com/microsoft/fluentui/pull/25359) by tristan.watanabe@gmail.com)
+- `@fluentui/react-table`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - feat: Initialize DataGrid components ([PR #25442](https://github.com/microsoft/fluentui/pull/25442) by lingfangao@hotmail.com)
+- `@fluentui/react-toolbar`
+  - chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+  - chore: remove dependencies on Fluent UI v8 ([PR #25466](https://github.com/microsoft/fluentui/pull/25466) by olfedias@microsoft.com)
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.1)
+
+Wed, 26 Oct 2022 18:05:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.6.0..@fluentui/react-components_v9.6.1)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: export react-table logic hooks ([PR #25386](https://github.com/microsoft/fluentui/pull/25386) by bernardo.sunderhus@gmail.com)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.6.0)
+
+Tue, 25 Oct 2022 22:09:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.3..@fluentui/react-components_v9.6.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - fix: Change react-persona to pinned version. ([PR #25367](https://github.com/microsoft/fluentui/pull/25367) by esteban.230@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - fix: Export PopoverTriggerChildProps ([PR #25159](https://github.com/microsoft/fluentui/pull/25159) by lingfangao@hotmail.com)
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.3)
+
+Tue, 25 Oct 2022 00:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.5.2..@fluentui/react-components_v9.5.3)
+
+### Patches
+
+- `@fluentui/react-avatar`
+  - fix: Add undefined option to overflowItems in partitionAvatarGroupItems. ([PR #25310](https://github.com/microsoft/fluentui/pull/25310) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - chore: Migrate to new package structure. ([PR #25335](https://github.com/microsoft/fluentui/pull/25335) by tristan.watanabe@gmail.com)
+- `@fluentui/react-button`
+  - chore: Migrate to new package structure. ([PR #25336](https://github.com/microsoft/fluentui/pull/25336) by tristan.watanabe@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: Migrate to new package structure. ([PR #25337](https://github.com/microsoft/fluentui/pull/25337) by tristan.watanabe@gmail.com)
+- `@fluentui/react-components`
+  - feat: add react-progress to react-components/unstable ([PR #25226](https://github.com/microsoft/fluentui/pull/25226) by ololubek@microsoft.com)
+  - chore: Export missing partitionAvatarGroupItems in unstable. ([PR #25310](https://github.com/microsoft/fluentui/pull/25310) by esteban.230@hotmail.com)
+  - chore: Updating react-persona's version. ([PR #25357](https://github.com/microsoft/fluentui/pull/25357) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - bugfix: adds cursor pointer style to dialog close button ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-image`
+  - chore: Migrate to new package structure. ([PR #25230](https://github.com/microsoft/fluentui/pull/25230) by tristan.watanabe@gmail.com)
+- `@fluentui/react-spinbutton`
+  - feat: updates internal SpinButton padding ([PR #25286](https://github.com/microsoft/fluentui/pull/25286) by seanmonahan@microsoft.com)
+- `@fluentui/react-text`
+  - chore: Migrate to new package structure. ([PR #25231](https://github.com/microsoft/fluentui/pull/25231) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- `@fluentui/react-components`
+  - Add uncomplete Input scenario ([PR #21651](https://github.com/microsoft/fluentui/pull/21651) by adam.samec@gmail.com)
+- `@fluentui/react-field`
+  - feat: Add support for validationState to ProgressField ([PR #25253](https://github.com/microsoft/fluentui/pull/25253) by behowell@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: Change version back to beta. ([PR #25357](https://github.com/microsoft/fluentui/pull/25357) by esteban.230@hotmail.com)
+- `@fluentui/react-progress`
+  - feat: Add validationState to Progress, to make the bar red or green ([PR #25253](https://github.com/microsoft/fluentui/pull/25253) by behowell@microsoft.com)
+  - feat: add react-progress to react-components/unstable ([PR #25226](https://github.com/microsoft/fluentui/pull/25226) by ololubek@microsoft.com)
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.5.2)
 

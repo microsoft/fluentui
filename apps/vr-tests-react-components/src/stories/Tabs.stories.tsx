@@ -93,6 +93,38 @@ storiesOf('TabList and Tab Converged', module)
     },
   )
   .addStory(
+    'Large size',
+    () => (
+      <TabList size="large">
+        <Tab value="1">First</Tab>
+        <Tab className="mouse-target" value="2">
+          Second
+        </Tab>
+        <Tab value="3">Third</Tab>
+      </TabList>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Vertical and large size',
+    () => (
+      <TabList size="large" vertical>
+        <Tab value="1">First</Tab>
+        <Tab className="mouse-target" value="2">
+          Second
+        </Tab>
+        <Tab value="3">Third</Tab>
+      </TabList>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
     'Tab Selected (default)',
     () => (
       <TabList defaultSelectedValue="2">

@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Thu, 20 Oct 2022 08:39:42 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.5)
+
+Fri, 11 Nov 2022 14:57:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.4..@fluentui/react-progress_v9.0.0-alpha.5)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Add styling and documentation for reduced-motion ([PR #25563](https://github.com/microsoft/fluentui/pull/25563) by ololubek@microsoft.com)
+- chore: Move ProgressField into the @fluentui/react-progress package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.8 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.4)
+
+Wed, 02 Nov 2022 11:57:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.3..@fluentui/react-progress_v9.0.0-alpha.4)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.1.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.3)
+
+Tue, 25 Oct 2022 00:35:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.2..@fluentui/react-progress_v9.0.0-alpha.3)
+
+### Changes
+
+- feat: Add validationState to Progress, to make the bar red or green ([PR #25253](https://github.com/microsoft/fluentui/pull/25253) by behowell@microsoft.com)
+- feat: add react-progress to react-components/unstable ([PR #25226](https://github.com/microsoft/fluentui/pull/25226) by ololubek@microsoft.com)
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.2)
 

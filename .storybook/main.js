@@ -71,7 +71,8 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
          */
         enforce: 'post',
         test: /\.stories\.tsx$/,
-        include: /src/,
+        //TODO: simplify once all v9 packages have been migrated to new package structure. Tracking work: https://github.com/microsoft/fluentui/issues/24129
+        include: /stories|src/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -96,6 +97,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   core: {
     builder: 'webpack5',
     lazyCompilation: true,
+    disableTelemetry: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo

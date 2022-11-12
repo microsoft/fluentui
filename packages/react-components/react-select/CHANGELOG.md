@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Thu, 20 Oct 2022 08:39:44 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.14)
+
+Fri, 11 Nov 2022 14:57:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.13..@fluentui/react-select_v9.0.0-beta.14)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- chore: Move SelectField into the @fluentui/react-select package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- fix: update disabled + underline styles, have all text-like form control disabled states match ([PR #25543](https://github.com/microsoft/fluentui/pull/25543) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.8 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.13)
+
+Wed, 02 Nov 2022 11:57:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.12..@fluentui/react-select_v9.0.0-beta.13)
+
+### Changes
+
+- fix: update styles based on design review ([PR #24339](https://github.com/microsoft/fluentui/pull/24339) by sarah.higley@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- chore: Migrate to new package structure. ([PR #25359](https://github.com/microsoft/fluentui/pull/25359) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.12)
 

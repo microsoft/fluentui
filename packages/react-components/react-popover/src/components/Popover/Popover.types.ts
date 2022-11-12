@@ -2,7 +2,7 @@ import * as React from 'react';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
-  usePositioningMouseTarget,
+  SetVirtualMouseTarget,
 } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
@@ -157,7 +157,7 @@ export type PopoverState = Pick<
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
-    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
+    setContextTarget: SetVirtualMouseTarget;
 
     /**
      * Callback to open/close the Popover

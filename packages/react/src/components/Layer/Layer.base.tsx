@@ -6,6 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import {
   classNamesFunction,
+  css,
   getDocument,
   setPortalAttribute,
   setVirtualParent,
@@ -30,25 +31,28 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
     const layerRef = React.useRef<HTMLDivElement>();
-    const fabricRef = React.useRef<HTMLDivElement>(null);
+    const fabricElementRef = React.useRef<HTMLDivElement>(null);
 
     // Tracks if the layer mount events need to be raised.
     // Required to allow the DOM to render after the layer element is added.
     const [needRaiseLayerMount, setNeedRaiseLayerMount] = React.useState(false);
 
     const {
-      eventBubblingEnabled,
-      styles,
-      theme,
-      className,
       children,
+      className,
+      eventBubblingEnabled,
+      fabricProps,
       hostId,
+      insertFirst,
       onLayerDidMount = () => undefined,
       // eslint-disable-next-line deprecation/deprecation
       onLayerMounted = () => undefined,
       onLayerWillUnmount,
-      insertFirst,
+      styles,
+      theme,
     } = props;
+
+    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -166,7 +170,8 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
               {/* eslint-disable deprecation/deprecation */}
               <Fabric
                 {...(!eventBubblingEnabled && getFilteredEvents())}
-                className={classNames.content}
+                {...fabricProps}
+                className={css(classNames.content, fabricProps?.className)}
                 ref={fabricRef}
               >
                 {children}

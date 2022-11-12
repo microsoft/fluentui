@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Thu, 20 Oct 2022 08:39:34 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:58:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.11)
+
+Fri, 11 Nov 2022 14:58:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.10..@fluentui/react-image_v9.0.11)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.10)
+
+Wed, 02 Nov 2022 11:57:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.9..@fluentui/react-image_v9.0.10)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.9)
+
+Tue, 25 Oct 2022 00:35:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.8..@fluentui/react-image_v9.0.9)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25230](https://github.com/microsoft/fluentui/pull/25230) by tristan.watanabe@gmail.com)
 
 ## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.8)
 

@@ -485,7 +485,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: currentOptions.map((item, index) => ({ ...item, index: index })),
+              options: currentOptions.map((item, index) => ({ ...item, index })),
               onDismiss: this._onDismiss,
             },
             this._onRenderContainer,
@@ -694,7 +694,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // unless we are open and have a valid current pending index
     if (
       !(isOpen && currentPendingIndexValid) &&
-      text &&
+      (text || text === '') &&
       (currentPendingValue === null || currentPendingValue === undefined)
     ) {
       return text;
@@ -1851,7 +1851,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     this.props.hoisted.setSuggestedDisplayValue(suggestedDisplayValue);
     this.setState({
       currentPendingValue: normalizeToString(currentPendingValue),
-      currentPendingValueValidIndex: currentPendingValueValidIndex,
+      currentPendingValueValidIndex,
       currentPendingValueValidIndexOnHover: HoverStatus.default,
     });
   }
@@ -1955,7 +1955,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean): void {
     this._focusInputAfterClose = focusInputAfterClose;
     this.setState({
-      isOpen: isOpen,
+      isOpen,
     });
   }
 

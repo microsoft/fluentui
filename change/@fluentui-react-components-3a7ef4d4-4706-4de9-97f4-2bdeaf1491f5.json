@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "refactor: use getPackageStoriesGlob instead of invalid/duplicated local getVnextStories",
+  "packageName": "@fluentui/react-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

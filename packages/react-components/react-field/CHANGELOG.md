@@ -1,8 +1,60 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Thu, 20 Oct 2022 08:39:33 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:58:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.8)
+
+Fri, 11 Nov 2022 14:58:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.7..@fluentui/react-field_v9.0.0-alpha.8)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- chore: Clean up Field tests and story imports in preparation of moving to individual packages ([PR #25594](https://github.com/microsoft/fluentui/pull/25594) by behowell@microsoft.com)
+- chore: Move individual field components into their respective packages, and out of @fluentui/react-field ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-label to v9.0.10 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.7)
+
+Wed, 02 Nov 2022 11:57:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.6..@fluentui/react-field_v9.0.0-alpha.7)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-checkbox to v9.0.11 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-combobox to v9.0.0-beta.14 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-input to v9.2.4 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-label to v9.0.9 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-progress to v9.0.0-alpha.4 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-radio to v9.0.10 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-select to v9.0.0-beta.13 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-slider to v9.0.9 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.7 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-switch to v9.0.10 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-textarea to v9.1.4 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.6)
+
+Tue, 25 Oct 2022 00:35:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.5..@fluentui/react-field_v9.0.0-alpha.6)
+
+### Changes
+
+- feat: Add support for validationState to ProgressField ([PR #25253](https://github.com/microsoft/fluentui/pull/25253) by behowell@microsoft.com)
+- Bump @fluentui/react-checkbox to v9.0.10 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-input to v9.2.3 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-progress to v9.0.0-alpha.3 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.6 ([PR #25363](https://github.com/microsoft/fluentui/pull/25363) by beachball)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.5)
 
