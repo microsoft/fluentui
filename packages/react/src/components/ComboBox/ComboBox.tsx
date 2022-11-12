@@ -485,7 +485,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: currentOptions.map((item, index) => ({ ...item, index })),
+              options: currentOptions.map((item, index) => ({ ...item, index: index })),
               onDismiss: this._onDismiss,
             },
             this._onRenderContainer,
