@@ -1,52 +1,24 @@
 import * as React from 'react';
-// import { getNativeElementProps } from '@fluentui/react-utilities';
+import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { Calendar } from '@fluentui/react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { InputField } from '@fluentui/react-field';
+import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { getNativeElementProps, resolveShorthand, useControllableState, useId } from '@fluentui/react-utilities';
 import {
   // TODO: classNamesFunction,
   // divProperties,
   // getNativeProps,
   format,
-  getPropsWithDefaults,
   Async,
-  KeyCodes,
 } from '@fluentui/utilities';
 import { mergeClasses } from '@griffel/react';
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
 import { useDatePickerStyles_unstable } from './useDatePickerStyles';
 import type { ICalendar, ITextField } from '@fluentui/react';
-import type { InputOnChangeData } from '@fluentui/react-input';
-import type { InputFieldProps } from '@fluentui/react-field';
+import type { InputOnChangeData, InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 import type { OnOpenChangeData, OpenPopoverEvents } from '@fluentui/react-popover';
-import type { DatePickerProps, DatePickerSlots, DatePickerState } from './DatePicker.types';
-
-const DEFAULT_PROPS: Omit<DatePickerProps, keyof DatePickerSlots> = {
-  allowTextInput: false,
-  formatDate: (date?: Date) => (date ? date.toDateString() : ''),
-  parseDateFromString: (dateStr: string) => {
-    const date = Date.parse(dateStr);
-    return date ? new Date(date) : null;
-  },
-  firstDayOfWeek: DayOfWeek.Sunday,
-  initialPickerDate: new Date(),
-  isRequired: false,
-  isMonthPickerVisible: true,
-  showMonthPickerAsOverlay: false,
-  strings: defaultDatePickerStrings,
-  highlightCurrentMonth: false,
-  highlightSelectedMonth: false,
-  borderless: false,
-  pickerAriaLabel: 'Calendar',
-  showWeekNumbers: false,
-  firstWeekOfYear: FirstWeekOfYear.FirstDay,
-  showGoToToday: true,
-  showCloseButton: false,
-  underlined: false,
-  allFocusable: false,
-};
+import type { DatePickerProps, DatePickerState } from './DatePicker.types';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
   return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
@@ -103,7 +75,7 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePicke
   return [isCalendarShown, setIsCalendarShown] as const;
 }
 
-function useSelectedDate({ formatDate, value, onSelectDate }: DatePickerProps) {
+function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
   const [selectedDate, setSelectedDateState] = useControllableState({
     initialState: undefined,
     state: value,
@@ -132,14 +104,14 @@ function useSelectedDate({ formatDate, value, onSelectDate }: DatePickerProps) {
 
 function useErrorMessage(
   {
-    isRequired,
     allowTextInput,
-    strings,
-    parseDateFromString,
-    onSelectDate,
     formatDate,
-    minDate,
+    isRequired,
     maxDate,
+    minDate,
+    onSelectDate,
+    parseDateFromString,
+    strings,
   }: DatePickerProps,
   selectedDate: Date | undefined,
   setSelectedDate: (date: Date | undefined) => void,
@@ -236,48 +208,53 @@ function useErrorMessage(
  * @param props - props from this instance of DatePicker
  * @param ref - reference to root HTMLElement of DatePicker
  */
-// export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLElement>): DatePickerState => {
-export const useDatePicker_unstable = (
-  propsWithoutDefaults: DatePickerProps,
-  forwardedRef: React.Ref<HTMLElement>,
-): DatePickerState => {
-  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLElement>): DatePickerState => {
+  const defaultFormatDate = (date?: Date) => (date ? date.toDateString() : '');
+  const defaultParseDateFromString = (dateStr: string) => {
+    const date = Date.parse(dateStr);
+    return date ? new Date(date) : null;
+  };
 
   const {
-    firstDayOfWeek,
-    strings,
-    label,
-    // TODO: theme,
-    className,
-    // TODO: styles,
-    initialPickerDate,
-    isMonthPickerVisible,
-    isRequired,
-    disabled,
+    allowTextInput = false,
+    allFocusable = false,
     ariaLabel,
-    pickerAriaLabel,
-    placeholder,
-    allowTextInput,
-    borderless,
-    minDate,
-    maxDate,
-    showCloseButton,
+    borderless = false,
+    calendarAs = Calendar,
     calendarProps,
     calloutProps,
-    textField: textFieldProps,
-    underlined,
-    allFocusable,
-    calendarAs = Calendar,
-    tabIndex,
-    disableAutoFocus = true,
-    showMonthPickerAsOverlay,
-    today,
-    highlightCurrentMonth,
-    highlightSelectedMonth,
-    showWeekNumbers,
-    firstWeekOfYear,
-    showGoToToday,
+    className,
     dateTimeFormatter,
+    disabled,
+    disableAutoFocus = true,
+    firstDayOfWeek = DayOfWeek.Sunday,
+    firstWeekOfYear = FirstWeekOfYear.FirstDay,
+    formatDate = defaultFormatDate,
+    highlightCurrentMonth = false,
+    highlightSelectedMonth = false,
+    initialPickerDate = new Date(),
+    isMonthPickerVisible = true,
+    isRequired = false,
+    label,
+    maxDate,
+    minDate,
+    onAfterMenuDismiss,
+    onSelectDate: onUserSelectDate,
+    parseDateFromString = defaultParseDateFromString,
+    pickerAriaLabel = 'Calendar',
+    placeholder,
+    showCloseButton = false,
+    showGoToToday = true,
+    showMonthPickerAsOverlay = false,
+    showWeekNumbers = false,
+    strings = defaultDatePickerStrings,
+    tabIndex,
+    textField: textFieldProps,
+    today,
+    underlined = false,
+    value,
+    // TODO: styles,
+    // TODO: theme,
   } = props;
 
   const id = useId('DatePicker', props.id);
@@ -287,10 +264,23 @@ export const useDatePicker_unstable = (
   const datePickerDiv = React.useRef<HTMLDivElement>(null);
 
   const [, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
-  const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility(props, focus);
-  const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate(props);
+  const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }, focus);
+  const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate({
+    formatDate,
+    onSelectDate: onUserSelectDate,
+    value,
+  });
   const [errorMessage, validateTextInput, setErrorMessage, statusMessage, setStatusMessage] = useErrorMessage(
-    props,
+    {
+      allowTextInput,
+      formatDate,
+      isRequired,
+      maxDate,
+      minDate,
+      onSelectDate: onUserSelectDate,
+      parseDateFromString,
+      strings,
+    },
     selectedDate,
     setSelectedDate,
     formattedDate,
@@ -392,12 +382,9 @@ export const useDatePicker_unstable = (
   //   }
   // }, [props.calloutProps]);
 
-  const onTextFieldBlur = React.useCallback(
-    (ev: React.FocusEvent<HTMLElement>): void => {
-      validateTextInput();
-    },
-    [validateTextInput],
-  );
+  const onTextFieldBlur = React.useCallback((): void => {
+    validateTextInput();
+  }, [validateTextInput]);
 
   const onTextFieldChanged = React.useCallback(
     (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, data: InputOnChangeData): void => {
@@ -420,9 +407,8 @@ export const useDatePicker_unstable = (
 
   const onTextFieldKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
-      // eslint-disable-next-line deprecation/deprecation
-      switch (ev.which) {
-        case KeyCodes.enter:
+      switch (ev.key) {
+        case Enter:
           ev.preventDefault();
           ev.stopPropagation();
           if (!isCalendarShown) {
@@ -437,11 +423,11 @@ export const useDatePicker_unstable = (
           }
           break;
 
-        case KeyCodes.escape:
+        case Escape:
           handleEscKey(ev);
           break;
 
-        case KeyCodes.down:
+        case ArrowDown:
           if (ev.altKey && !isCalendarShown) {
             showDatePickerPopup();
           }
@@ -556,7 +542,7 @@ export const useDatePicker_unstable = (
   );
 
   const root = getNativeElementProps('div', {
-    ref: forwardedRef,
+    ref,
     ...props,
     className: classNames.root,
   });
@@ -603,7 +589,7 @@ export const useDatePicker_unstable = (
     required: true,
   });
 
-  const state: DatePickerState = {
+  return {
     calendarAs,
 
     calendar: {
@@ -652,20 +638,4 @@ export const useDatePicker_unstable = (
     root,
     wrapper: wrapperShorthand,
   };
-
-  return state;
-
-  // return {
-  //   // TODO add appropriate props/defaults
-  //   components: {
-  //     // TODO add each slot's element type or component
-  //     root: 'div',
-  //   },
-  //   // TODO add appropriate slots, for example:
-  //   // mySlot: resolveShorthand(props.mySlot),
-  //   root: getNativeElementProps('div', {
-  //     ref,
-  //     ...props,
-  //   }),
-  // };
 };

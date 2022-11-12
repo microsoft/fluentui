@@ -1,4 +1,4 @@
-import { InputField } from '@fluentui/react-field';
+import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { ICalendarProps, ICalloutProps, ITextFieldProps } from '@fluentui/react';
 import type { PopoverProps, PopoverSurfaceProps } from '@fluentui/react-popover';

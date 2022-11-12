@@ -31,10 +31,10 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.1",
     "@fluentui/react": "^8.100.0",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-input": "^9.2.4",
-    "@fluentui/react-field": "9.0.0-alpha.7",
     "@fluentui/react-popover": "^9.3.0",
     "@fluentui/react-theme": "^9.1.1",
     "@fluentui/react-utilities": "^9.2.0",

@@ -9,7 +9,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { ICalendarProps } from '@fluentui/react';
 import type { ICalloutProps } from '@fluentui/react';
 import type { IComponentAs } from '@fluentui/utilities';
-import { InputField } from '@fluentui/react-field';
+import { InputField_unstable } from '@fluentui/react-input';
 import type { IRefObject } from '@fluentui/utilities';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
