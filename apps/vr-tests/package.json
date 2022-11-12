@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "storywright": "0.0.25"
+    "storywright": "0.0.26-beta.1"
   },
   "dependencies": {
     "@fluentui/example-data": "^8.4.3",
