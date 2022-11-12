@@ -42,7 +42,7 @@ const nameAndImage = [
 /** Arrays of example values for each Avatar prop */
 const examples = {
   size: [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128],
-  nameAndImage,
+  nameAndImage: nameAndImage,
   name: nameAndImage.map(p => p.name),
   image: nameAndImage.map(p => p.image),
   badge: [
