@@ -18,7 +18,6 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     links: {
       stroke: pathColor ? pathColor : theme.palette.black,
       fill: 'none',
-      //border: 'solid red',
       strokeWidth: 3,
       selectors: {
         [HighContrastSelector]: {
@@ -49,7 +48,6 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     nodeTextContainer: {
       selectors: {
         text: {
-          fill: theme.semanticColors.bodyText,
           selectors: {
             [HighContrastSelectorBlack]: {
               fill: 'rgb(179, 179, 179)',

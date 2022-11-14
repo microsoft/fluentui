@@ -34,7 +34,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
         nodes: [
           {
             nodeId: 0,
-            name: '192.168.42.72 is the node for testing the wrap',
+            name: '192.168.42.72',
             color: '#8764B8',
             borderColor: '#4B3867',
           },
@@ -90,6 +90,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
             nodeId: 9,
             name: 'Clicked',
             color: '#4F6BED',
+            borderColor: '#3B52B4',
           },
           {
             nodeId: 10,
@@ -99,7 +100,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
           },
           {
             nodeId: 11,
-            name: 'No action',
+            name: ' No further action  required',
             color: '#4F6BED',
             borderColor: '#3B52B4',
           },
