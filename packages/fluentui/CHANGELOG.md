@@ -30,6 +30,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Limit keyboard detection in inputs @jurokapsiar ([#25087](https://github.com/microsoft/fluentui/pull/25087))
 - Dropdown Freeform search should be case insensitive @jurokapsiar ([#24879](https://github.com/microsoft/fluentui/pull/24879))
 - Update styles to v0 Loader to match v9 Spinner @GianoglioEnrico ([#25169](https://github.com/microsoft/fluentui/pull/25169))
+- Update styles to v0 Checkbox Toggle to match v9 Switch @GianoglioEnrico ([#25440])(https://github.com/microsoft/fluentui/pull/25440)
 
 ### Fixes
 - Allow React 17 in `peerDependencies` of all packages and bump react-is to 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
