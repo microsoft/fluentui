@@ -43,8 +43,8 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
-      memorizeCurrent,
-      tabbable,
+      memorizeCurrent: memorizeCurrent,
+      tabbable: tabbable,
     },
     ...(ignoreDefaultKeydown && {
       focusable: {
