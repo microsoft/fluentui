@@ -78,7 +78,7 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
   /**
    * The vertical alignment of the text relative to the avatar/presence.
    *
-   * @default after
+   * @default start
    */
   textAlignment?: 'start' | 'center';
 };
