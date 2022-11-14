@@ -2,13 +2,14 @@ import * as React from 'react';
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
 import type { ToolbarProps } from '@fluentui/react-toolbar';
 import { Popover, PopoverSurface, PopoverTrigger, Button } from '@fluentui/react-components';
-import { CalendarMonthRegular, Accessibility24Filled } from '@fluentui/react-icons';
+import { MathFormatLinear24Regular, Image24Regular, Table24Filled } from '@fluentui/react-icons';
 
 export const WithPopover = (props: Partial<ToolbarProps>) => {
   const [open, setOpen] = React.useState({
     first: false,
     second: false,
     third: false,
+    fourth: false,
   });
 
   return (
@@ -25,7 +26,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         }}
       >
         <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton appearance="primary">See more...</ToolbarButton>
+          <ToolbarButton appearance="primary" icon={<Table24Filled />} aria-label="Insert Table" />
         </PopoverTrigger>
         <PopoverSurface>
           <div>
@@ -43,7 +44,6 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
           </div>
         </PopoverSurface>
       </Popover>
-      <ToolbarDivider />
       <Popover
         withArrow
         trapFocus
@@ -56,7 +56,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         }}
       >
         <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton aria-label="Open Calendar Popover" icon={<CalendarMonthRegular />} />
+          <ToolbarButton aria-label="Inser image" icon={<Image24Regular />} />
         </PopoverTrigger>
         <PopoverSurface>
           <div>
@@ -86,16 +86,47 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         }}
       >
         <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton aria-label="Open Accessibility Popover" icon={<Accessibility24Filled />} />
+          <ToolbarButton aria-label="Insert Formula" icon={<MathFormatLinear24Regular />} />
         </PopoverTrigger>
         <PopoverSurface>
           <div>
-            <h3>Popover content - Accessibility</h3>{' '}
+            <h3>Popover content - Formula</h3>{' '}
             <Button
               onClick={() =>
                 setOpen(currOpen => ({
                   ...currOpen,
                   third: false,
+                }))
+              }
+            >
+              Close
+            </Button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+      <ToolbarDivider />
+      <Popover
+        withArrow
+        trapFocus
+        open={open.fourth}
+        onOpenChange={() => {
+          setOpen(currOpen => ({
+            ...currOpen,
+            fourth: !currOpen.third,
+          }));
+        }}
+      >
+        <PopoverTrigger disableButtonEnhancement>
+          <ToolbarButton>Quick Actions</ToolbarButton>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <div>
+            <h3>Popover content - Quick Actions</h3>{' '}
+            <Button
+              onClick={() =>
+                setOpen(currOpen => ({
+                  ...currOpen,
+                  fourth: false,
                 }))
               }
             >

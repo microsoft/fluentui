@@ -15,15 +15,21 @@ export const ControlledRadio = (props: Partial<ToolbarProps>) => {
   };
 
   return (
-    <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
-      <ToolbarRadioButton aria-label="Align left" name="text-style" value="italic" icon={<AlignLeft24Regular />} />
+    <Toolbar
+      checkedValues={checkedValues}
+      onCheckedValueChange={onChange}
+      defaultCheckedValues={{
+        textOptions: ['bold'],
+      }}
+    >
+      <ToolbarRadioButton aria-label="Align left" name="textStyle" value="italic" icon={<AlignLeft24Regular />} />
       <ToolbarRadioButton
         aria-label="Align Center"
-        name="text-style"
+        name="textStyle"
         value="bold"
         icon={<AlignCenterHorizontal24Regular />}
       />
-      <ToolbarRadioButton aria-label="Align Right" name="text-style" value="underline" icon={<AlignRight24Regular />} />
+      <ToolbarRadioButton aria-label="Align Right" name="textStyle" value="underline" icon={<AlignRight24Regular />} />
     </Toolbar>
   );
 };

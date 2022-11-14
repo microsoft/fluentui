@@ -6,14 +6,14 @@ import { TextUnderline24Regular, TextBold24Regular, TextItalic24Regular } from '
 
 export const WithTooltip = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props} size="small">
-    <Tooltip content="Makes text Bold" relationship="label" withArrow>
+    <Tooltip content="Makes selected text Bold" relationship="description" withArrow>
       <ToolbarToggleButton aria-label="Bold" icon={<TextBold24Regular />} name="textOptions" value="bold" />
     </Tooltip>
     <ToolbarDivider />
-    <Tooltip content="Makes text Italic" relationship="label" withArrow>
+    <Tooltip content="Makes selected text Italic" relationship="description" withArrow>
       <ToolbarToggleButton aria-label="Italic" icon={<TextItalic24Regular />} name="textOptions" value="italic" />
     </Tooltip>
-    <Tooltip content="Makes text Underline" relationship="label" withArrow>
+    <Tooltip content="Makes selected text Underline" relationship="description" withArrow>
       <ToolbarToggleButton
         aria-label="Underline"
         icon={<TextUnderline24Regular />}
