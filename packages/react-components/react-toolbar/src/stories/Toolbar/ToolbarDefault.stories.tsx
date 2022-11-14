@@ -3,11 +3,10 @@ import {
   FontIncrease24Regular,
   FontDecrease24Regular,
   TextFont24Regular,
-  AlertSnooze24Regular,
   MoreHorizontal24Filled,
 } from '@fluentui/react-icons';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
-import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
 import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Default = (props: Partial<ToolbarProps>) => (
@@ -16,12 +15,6 @@ export const Default = (props: Partial<ToolbarProps>) => (
     <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecrease24Regular />} />
     <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
     <ToolbarDivider />
-    <ToolbarToggleButton
-      aria-label="Snooze Alert Option"
-      name="toggle"
-      value="toggle"
-      icon={<AlertSnooze24Regular />}
-    />
     <Menu>
       <MenuTrigger>
         <ToolbarButton aria-label="More menu" icon={<MoreHorizontal24Filled />} />
