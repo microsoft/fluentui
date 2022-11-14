@@ -82,7 +82,7 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -90,11 +90,11 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },

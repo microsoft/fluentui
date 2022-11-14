@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Match hover background colors between table row and cell actions",
+  "packageName": "@fluentui/react-table",
+  "email": "tigeroakes@microsoft.com",
+  "dependentChangeType": "patch"
+}
