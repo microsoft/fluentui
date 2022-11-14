@@ -49,7 +49,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     // internal monorepo custom addons
 
     /**  @see ../packages/react-components/react-storybook-addon */
-    // loadWorkspaceAddon('@fluentui/react-storybook-addon'),
+    loadWorkspaceAddon('@fluentui/react-storybook-addon'),
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
