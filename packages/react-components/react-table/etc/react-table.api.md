@@ -130,7 +130,7 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'>;
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'> & UseSortOptions;
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
