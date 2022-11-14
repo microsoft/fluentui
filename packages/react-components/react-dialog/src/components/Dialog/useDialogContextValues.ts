@@ -2,7 +2,7 @@ import type { DialogContextValue, DialogSurfaceContextValue } from '../../contex
 import type { DialogContextValues, DialogState } from './Dialog.types';
 
 export function useDialogContextValues_unstable(state: DialogState): DialogContextValues {
-  const { modalType, open, dialogContentId, dialogRef, dialogTitleId, isNestedDialog, requestOpenChange } = state;
+  const { modalType, open, dialogRef, dialogTitleId, isNestedDialog, requestOpenChange } = state;
 
   /**
    * This context is created with "@fluentui/react-context-selector",
@@ -12,7 +12,6 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     open,
     modalType,
     dialogRef,
-    dialogContentId,
     dialogTitleId,
     isNestedDialog,
     requestOpenChange,
