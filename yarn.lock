@@ -1609,12 +1609,24 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.0.0.tgz#ec1d31f54c72dd0460276e2149e59bd13c0f01f6"
   integrity sha512-sm3nW0hHAxTv3gRDdCH8rNVQxijF+qPFo5gAeXCErRjKC7Qc28lIQ3R9Vd7Gw+KgwfA7RhRydDFuGeI0peGq7A==
 
+"@floating-ui/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.0.1.tgz#00e64d74e911602c8533957af0cce5af6b2e93c8"
+  integrity sha512-bO37brCPfteXQfFY0DyNDGB3+IMe4j150KFQcgJ5aBP295p9nBGeHEs/p0czrRbtlHq4Px/yoPXO/+dOCcF4uA==
+
 "@floating-ui/dom@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.0.0.tgz#66923a56755b6cb7a5958ecf25fe293912672d65"
   integrity sha512-PMqJvY5Fae8HVQgUqM+lidprS6p9LSvB0AUhCdYKqr3YCaV+WaWCeVNBtXPRY2YIdrgcsL2+vd5F07FxgihHUw==
   dependencies:
     "@floating-ui/core" "^1.0.0"
+
+"@floating-ui/dom@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.0.4.tgz#cc0f2a03db7193b1b932b90d09c5c81235682a60"
+  integrity sha512-maYJRv+sAXTy4K9mzdv0JPyNW5YPVHrqtY90tEdI6XNpuLOP26Ci2pfwPsKBA/Wh4Z3FX5sUrtUFTdMYj9v+ug==
+  dependencies:
+    "@floating-ui/core" "^1.0.1"
 
 "@fluent-blocks/colors@9.2.0":
   version "9.2.0"
@@ -3011,30 +3023,31 @@
     eslint-plugin-react "7.24.0"
     eslint-plugin-security "1.4.0"
 
-"@microsoft/fast-colors@^5.3.0":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.3.1.tgz#defc59874176e42316be7e6d24c31885ead8ca56"
-  integrity sha512-72RZXVfCbwQzvo5sXXkuLXLT7rMeYaSf5r/6ewQiv/trBtqpWRm4DEH2EilHw/iWTBKOXs1qZNQndgUMa5n4LA==
-
-"@microsoft/fast-element@^1.10.4", "@microsoft/fast-element@^1.11.0":
+"@microsoft/fast-element@^1.10.4":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.11.0.tgz#494f6c87057bcbb42406982d68a92887d6b5acb1"
   integrity sha512-VKJYMkS5zgzHHb66sY7AFpYv6IfFhXrjQcAyNgi2ivD65My1XOhtjfKez5ELcLFRJfgZNAxvI8kE69apXERTkw==
 
-"@microsoft/fast-foundation@^2.47.0":
-  version "2.47.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.47.0.tgz#a4cc8c5277e21d080215f5adcaed4266a8dd8a8e"
-  integrity sha512-EyFuioaZQ9ngjUNRQi8R3dIPPsaNQdUOS+tP0G7b1MJRhXmQWIitBM6IeveQA6ZvXG6H21dqgrfEWlsYrUZ2sw==
-  dependencies:
-    "@microsoft/fast-element" "^1.11.0"
-    "@microsoft/fast-web-utilities" "^5.4.1"
-    tabbable "^5.2.0"
-    tslib "^1.13.0"
+"@microsoft/fast-element@^2.0.0-beta.17":
+  version "2.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.0.0-beta.17.tgz#46f9b1feaf57e0cb841d31a80574537257b2239f"
+  integrity sha512-R9NLnH0rh/btfBIdDicHGblw4uk4U7TNTnfpZ25W5IC52cWg7DLr0ky5GujH7wXge8F4ze/Z8anABzhC9eHYrA==
 
-"@microsoft/fast-web-utilities@^5.4.0", "@microsoft/fast-web-utilities@^5.4.1":
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.4.1.tgz#8e3082ee2ff2b5467f17e7cb1fb01b0e4906b71f"
-  integrity sha512-ReWYncndjV3c8D8iq9tp7NcFNc1vbVHvcBFPME2nNFKNbS1XCesYZGlIlf3ot5EmuOXPlrzUHOWzQ2vFpIkqDg==
+"@microsoft/fast-foundation@^3.0.0-alpha.21":
+  version "3.0.0-alpha.21"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-3.0.0-alpha.21.tgz#b867b3483d9e2ed496b301e6a6c4017adfa333f4"
+  integrity sha512-hKY2aI7OI54SN+h2ayJVh4CLD8dcbCuaOWihdiUTBnwNVgl/xANazO3q+Cs2P/5gHHOy2lIgJOZvsK9ilBsCQQ==
+  dependencies:
+    "@floating-ui/dom" "^1.0.3"
+    "@microsoft/fast-element" "^2.0.0-beta.17"
+    "@microsoft/fast-web-utilities" "^6.0.0"
+    tabbable "^5.2.0"
+    tslib "^2.4.0"
+
+"@microsoft/fast-web-utilities@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-6.0.0.tgz#7678c2b2cd12aeef785f4e2288da93a4db9e38a6"
+  integrity sha512-ckCA4Xn91ja1Qz+jhGGL1Q3ZeuRpA5VvYcRA7GzA1NP545sl14bwz3tbHCq8jIk+PL7mkSaIveGMYuJB2L4Izg==
   dependencies:
     exenv-es6 "^1.1.1"
 
