@@ -24,9 +24,9 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
-          storyPackageName: '@fluentui/vr-tests-react-components'
-          storyPackagePath: 'apps/vr-tests-react-components'
-          shouldbuildstorybookaddon: true
+          vrTestPackageName: '@fluentui/vr-tests-react-components'
+          vrTestPackagePath: 'apps/vr-tests-react-components'
+          shouldBuildstorybookaddon: true
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentuiv9" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'
@@ -51,9 +51,9 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
-          storyPackageName: '@fluentui/vr-tests'
-          storyPackagePath: 'apps/vr-tests'
-          shouldbuildstorybookaddon: false
+          vrTestPackageName: '@fluentui/vr-tests'
+          vrTestPackagePath: 'apps/vr-tests'
+          shouldBuildstorybookaddon: false
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentuiv8" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'

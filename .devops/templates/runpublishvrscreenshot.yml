@@ -2,13 +2,13 @@ parameters:
   - name: fluentVersion
     type: string
     default: v8
-  - name: storyPackageName
+  - name: vrTestPackageName
     type: string
     default: '@fluentui/vr-tests'
-  - name: storyPackagePath
+  - name: vrTestPackagePath
     type: string
     default: 'apps/vr-tests'
-  - name: shouldbuildstorybookaddon
+  - name: shouldBuildstorybookaddon
     type: boolean
     default: false
 
