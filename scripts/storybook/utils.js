@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
-const { stripIndents } = require('@nrwl/devkit');
+const { stripIndents, offsetFromRoot } = require('@nrwl/devkit');
 const { workspaceRoot } = require('nx/src/utils/app-root');
 
-const { isConvergedPackage, getAllPackageInfo } = require('../monorepo');
+const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('../monorepo');
 
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
@@ -132,5 +132,45 @@ function getCodesandboxBabelOptions() {
   }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
 }
 
+/**
+ * Get glob mapping array for all stories of packages that are dependency for provided package (provided package included).
+ *
+ * This helper is useful for creating aggregated storybooks which will generate multiple stories across packages.
+ *
+ * @param {{packageName:string,callerPath:string}} options
+ * @returns
+ */
+function getPackageStoriesGlob(options) {
+  // Dependencies to exclude stories loading. @see https://github.com/microsoft/fluentui/pull/23226#pullrequestreview-985613768
+  const excludedDependencies = ['@fluentui/react-overflow'];
+
+  const projectMetadata = getProjectMetadata({ name: options.packageName });
+
+  /** @type {Record<string,unknown>} */
+  const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
+  );
+
+  const dependencies = /** @type {Record<string,string>} */ (Object.assign(packageJson.dependencies, {
+    [options.packageName]: '*',
+  }));
+  const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
+
+  return Object.keys(dependencies)
+    .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludedDependencies.includes(pkgName))
+    .map(pkgName => {
+      const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+      const pkgMetadata = getProjectMetadata({ name: pkgName });
+
+      //TODO: simplify once v9 migration [https://github.com/microsoft/fluentui/issues/24129] is complete.
+      if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
+        return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
+      }
+
+      return `${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`;
+    });
+}
+
+exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.getCodesandboxBabelOptions = getCodesandboxBabelOptions;

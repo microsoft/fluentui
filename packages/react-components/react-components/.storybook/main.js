@@ -1,5 +1,6 @@
+const { getPackageStoriesGlob } = require('@fluentui/scripts/storybook');
+
 const rootMain = require('../../../../.storybook/main');
-const utils = require('./main.utils');
 
 module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
@@ -7,7 +8,7 @@ module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescr
     ...rootMain.stories,
     '../src/**/*.stories.mdx',
     '../src/**/index.stories.@(ts|tsx)',
-    ...utils.getVnextStories(),
+    ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],
