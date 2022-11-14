@@ -75,6 +75,7 @@
     "@microsoft/fast-element": "^2.0.0-beta.17",
     "@microsoft/fast-foundation": "^3.0.0-alpha.21",
     "@microsoft/fast-web-utilities": "^6.0.0",
+    "@fluentui/react-theme": "^9.1.1",
     "tslib": "^1.13.0"
   }
 }
