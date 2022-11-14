@@ -7,6 +7,7 @@ import type { SkeletonState, SkeletonSlots } from './Skeleton.types';
  */
 export const renderSkeleton_unstable = (state: SkeletonState) => {
   const { slots, slotProps } = getSlots<SkeletonSlots>(state);
+  const { isDataLoaded } = state;
 
   // TODO Add additional slots in the appropriate place
   return (
@@ -14,7 +15,7 @@ export const renderSkeleton_unstable = (state: SkeletonState) => {
       <slots.wrapper {...slotProps.wrapper}>
         {slots.gradient && <slots.gradient {...slotProps.gradient} />}
       </slots.wrapper>
-      {slots.data && <slots.data {...slotProps.data} />}
+      {isDataLoaded && slots.data && <slots.data {...slotProps.data} />}
     </slots.root>
   );
 };

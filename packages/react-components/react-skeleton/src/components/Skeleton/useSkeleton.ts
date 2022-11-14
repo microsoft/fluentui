@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { SkeletonProps, SkeletonState } from './Skeleton.types';
 
 /**
@@ -12,17 +12,39 @@ import type { SkeletonProps, SkeletonState } from './Skeleton.types';
  * @param ref - reference to root HTMLElement of Skeleton
  */
 export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLElement>): SkeletonState => {
+  //Props
+  const { color, isDataLoaded = false } = props;
+
+  const root = getNativeElementProps('div', {
+    ref,
+    role: 'progressbar',
+    ...props,
+  });
+
+  const wrapper = resolveShorthand(props.wrapper, {
+    required: true,
+  });
+
+  const gradient = resolveShorthand(props.gradient, {
+    required: true,
+  });
+
+  const data = resolveShorthand(props.data, {
+    required: false,
+  });
+
   return {
-    // TODO add appropriate props/defaults
+    color,
+    isDataLoaded,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      wrapper: 'div',
+      gradient: 'div',
+      data: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root,
+    wrapper,
+    gradient,
+    data,
   };
 };
