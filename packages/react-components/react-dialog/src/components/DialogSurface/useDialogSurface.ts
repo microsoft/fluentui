@@ -35,7 +35,6 @@ export const useDialogSurface_unstable = (
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
-  const dialogContentId = useDialogContext_unstable(ctx => ctx.dialogContentId);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -83,7 +82,6 @@ export const useDialogSurface_unstable = (
       tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
       'aria-modal': modalType !== 'non-modal',
       role: modalType === 'alert' ? 'alertdialog' : 'dialog',
-      'aria-describedby': dialogContentId,
       'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
       ...props,
       ...modalAttributes,

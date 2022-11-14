@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add documentation for Spinner when reduced-motion is active",
-  "packageName": "@fluentui/react-spinner",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

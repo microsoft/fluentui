@@ -9,7 +9,7 @@ import {
   PersonCallRegular,
 } from '@fluentui/react-icons';
 
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-components';
 
 export const Icon = () => (
   <>

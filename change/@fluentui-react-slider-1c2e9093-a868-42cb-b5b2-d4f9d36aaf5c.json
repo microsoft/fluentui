@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Move SliderField into the @fluentui/react-slider package and export as _unstable",
-  "packageName": "@fluentui/react-slider",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

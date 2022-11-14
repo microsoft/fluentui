@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Move SelectField into the @fluentui/react-select package and export as _unstable",
-  "packageName": "@fluentui/react-select",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
