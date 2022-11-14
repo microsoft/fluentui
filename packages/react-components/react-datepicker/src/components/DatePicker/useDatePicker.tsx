@@ -7,8 +7,7 @@ import { getNativeElementProps, resolveShorthand, useControllableState, useId } 
 import {
   // TODO: classNamesFunction,
   // divProperties,
-  // getNativeProps,
-  format,
+  // getNativeProps
   Async,
 } from '@fluentui/utilities';
 import { mergeClasses } from '@griffel/react';
@@ -139,7 +138,7 @@ function useErrorMessage(
           // default the newer isResetStatusMessage string to invalidInputErrorMessage for legacy support
           const selectedText = formatDate ? formatDate(selectedDate) : '';
           const statusText = strings!.isResetStatusMessage
-            ? format(strings!.isResetStatusMessage, inputValue, selectedText)
+            ? strings!.isResetStatusMessage.replace('{0}', inputValue).replace('{1}', selectedText)
             : strings!.invalidInputErrorMessage || '';
           setStatusMessage(statusText);
         } else {
