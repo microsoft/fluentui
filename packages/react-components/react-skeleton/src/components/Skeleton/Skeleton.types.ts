@@ -27,6 +27,7 @@ export type SkeletonSlots = {
  * Skeleton Props
  */
 export type SkeletonProps = ComponentProps<SkeletonSlots> & {
+  children?: React.ReactNode;
   /**
    * Sets the width value of the skeleton wave wrapper.
    * @defaultvalue 100%
@@ -44,16 +45,6 @@ export type SkeletonProps = ComponentProps<SkeletonSlots> & {
    * @defaultvalue disabledBackground
    */
   color?: string;
-
-  /**
-   * Elements to render in one line of the Skeleton.
-   */
-  skeletonElements?: SkeletonElement[];
-
-  /**
-   * Custom elements when necessary to build complex placeholder skeletons.
-   */
-  customElementsGroup?: React.ReactNode;
 };
 
 /**
@@ -154,4 +145,4 @@ export enum SkeletonElementsDefaultHeights {
  */
 export type SkeletonState = ComponentState<SkeletonSlots> &
   Required<Pick<SkeletonProps, 'isDataLoaded'>> &
-  Pick<SkeletonProps, 'skeletonElements' | 'customElementsGroup' | 'color'>;
+  Pick<SkeletonProps, 'color'>;
