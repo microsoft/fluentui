@@ -712,7 +712,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // Single-select
       let index: number = this._getFirstSelectedIndex();
       if (allowFreeform || allowFreeInput) {
-        // If we are allowing freeform/free search and autocomplete is also true
+        // If we are allowing freeform/free input and autocomplete is also true
         // and we've got a pending value that matches an option, remember
         // the matched option's index
         if (autoComplete === 'on' && currentPendingIndexValid) {
@@ -2135,7 +2135,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           return;
         }
 
-        // If we are not allowing freeform or free search and
+        // If we are not allowing freeform or free input and
         // allowing autoComplete, handle the input here
         if (!allowFreeform && !allowFreeInput && autoComplete === 'on') {
           this._onInputChange(ev.key);
