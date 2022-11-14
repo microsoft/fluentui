@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 14 Nov 2022 12:22:44 GMT",
+      "tag": "@fluentui/react-charting_v4.23.16",
+      "version": "4.23.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update d3 scale version",
+            "author": "atisjai@microsoft.com",
+            "commit": "7faf03956fea4b58d15dba88b4b2772da2609612",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 19:01:23 GMT",
       "tag": "@fluentui/react-charting_v4.23.0",
       "version": "4.23.0",

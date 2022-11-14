@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 01 Nov 2022 12:23:09 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Nov 2022 12:22:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.16](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.16)
+
+Mon, 14 Nov 2022 12:22:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.23.15..@uifabric/charting_v4.23.16)
+
+### Patches
+
+- Update d3 scale version ([PR #25618](https://github.com/microsoft/fluentui/pull/25618) by atisjai@microsoft.com)
 
 ## [4.23.15](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.15)
 

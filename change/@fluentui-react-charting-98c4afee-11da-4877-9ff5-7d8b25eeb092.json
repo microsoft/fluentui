@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update d3 scale version",
-  "packageName": "@fluentui/react-charting",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}

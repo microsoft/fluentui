@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Nov 2022 12:22:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v4.23.16)
+
+Mon, 14 Nov 2022 12:22:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v4.23.0..@fluentui/react-charting_v4.23.16)
+
+### Patches
+
+- Update d3 scale version ([PR #25618](https://github.com/microsoft/fluentui/pull/25618) by atisjai@microsoft.com)
 
 ## [4.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v4.23.0)
 
