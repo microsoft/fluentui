@@ -1629,14 +1629,6 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-conformance-griffel@9.0.0-beta.17":
-  version "9.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-conformance-griffel/-/react-conformance-griffel-9.0.0-beta.17.tgz#c92b66753aa9a2ae16c3f5d8ae4effbe3fc36b68"
-  integrity sha512-WxG3KIOZQ0u/9mdt6K9oXX3XXzICOK17JSxqHoHYI4c2wgsIk6olTCFxZMRfxc4+7p4loDQYDHEBD5aVPTFnBg==
-  dependencies:
-    "@griffel/react" "^1.4.2"
-    tslib "^2.1.0"
-
 "@fluentui/react-icons@^2.0.175":
   version "2.0.175"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.175.tgz#70f60989b5792c1770253beeb0a1f4dc9329e59d"
@@ -23775,6 +23767,20 @@ send@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/send/-/send-0.17.1.tgz#c1d8b059f7900f7466dd4938bdc44e11ddb376c8"
   integrity sha512-BsVKsiGcQMFwT8UxypobUKyv7irCNRHk1T0G680vk88yf6LBByGcZJOTJCrTP2xVN6yI+XjPJcNuE3V4fT9sAg==
+  dependencies:
+    debug "2.6.9"
+    depd "~1.1.2"
+    destroy "~1.0.4"
+    encodeurl "~1.0.2"
+    escape-html "~1.0.3"
+    etag "~1.8.1"
+    fresh "0.5.2"
+    http-errors "~1.7.2"
+    mime "1.6.0"
+    ms "2.1.1"
+    on-finished "~2.3.0"
+    range-parser "~1.2.1"
+    statuses "~1.5.0"
 
 sentence-case@^2.1.0:
   version "2.1.1"
