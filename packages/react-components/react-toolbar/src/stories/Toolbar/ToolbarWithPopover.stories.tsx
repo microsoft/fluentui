@@ -5,55 +5,15 @@ import { Popover, PopoverSurface, PopoverTrigger, Button } from '@fluentui/react
 import { MathFormatLinear24Regular, Image24Regular, Table24Filled } from '@fluentui/react-icons';
 
 export const WithPopover = (props: Partial<ToolbarProps>) => {
-  const [open, setOpen] = React.useState({
-    first: false,
-    second: false,
-    third: false,
-    fourth: false,
-  });
+  const [open, setOpen] = React.useState<'first' | 'second' | 'third' | 'fourth' | undefined>();
 
   return (
     <Toolbar {...props} size="small">
       <Popover
         withArrow
         trapFocus
-        open={open.first}
-        onOpenChange={() => {
-          setOpen(currOpen => ({
-            ...currOpen,
-            first: !currOpen.first,
-          }));
-        }}
-      >
-        <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton appearance="primary" icon={<Table24Filled />} aria-label="Insert Table" />
-        </PopoverTrigger>
-        <PopoverSurface>
-          <div>
-            <h3>Popover content</h3>
-            <Button
-              onClick={() =>
-                setOpen(currOpen => ({
-                  ...currOpen,
-                  first: false,
-                }))
-              }
-            >
-              Close
-            </Button>
-          </div>
-        </PopoverSurface>
-      </Popover>
-      <Popover
-        withArrow
-        trapFocus
-        open={open.second}
-        onOpenChange={() => {
-          setOpen(currOpen => ({
-            ...currOpen,
-            second: !currOpen.second,
-          }));
-        }}
+        open={open === 'first'}
+        onOpenChange={(_, data) => setOpen(data.open ? 'first' : undefined)}
       >
         <PopoverTrigger disableButtonEnhancement>
           <ToolbarButton aria-label="Inser image" icon={<Image24Regular />} />
@@ -61,46 +21,38 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Popover content</h3>
-            <Button
-              onClick={() =>
-                setOpen(currOpen => ({
-                  ...currOpen,
-                  second: false,
-                }))
-              }
-            >
-              Close
-            </Button>
+            <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
       </Popover>
       <Popover
         withArrow
         trapFocus
-        open={open.third}
-        onOpenChange={() => {
-          setOpen(currOpen => ({
-            ...currOpen,
-            third: !currOpen.third,
-          }));
-        }}
+        open={open === 'second'}
+        onOpenChange={(_, data) => setOpen(data.open ? 'second' : undefined)}
+      >
+        <PopoverTrigger disableButtonEnhancement>
+          <ToolbarButton appearance="primary" icon={<Table24Filled />} aria-label="Insert Table" />
+        </PopoverTrigger>
+        <PopoverSurface>
+          <div>
+            <h3>Popover content</h3>
+            <Button onClick={() => setOpen(undefined)}>Close</Button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+      <Popover
+        withArrow
+        trapFocus
+        open={open === 'third'}
+        onOpenChange={(_, data) => setOpen(data.open ? 'third' : undefined)}
       >
         <PopoverTrigger disableButtonEnhancement>
           <ToolbarButton aria-label="Insert Formula" icon={<MathFormatLinear24Regular />} />
         </PopoverTrigger>
         <PopoverSurface>
           <div>
-            <h3>Popover content - Formula</h3>{' '}
-            <Button
-              onClick={() =>
-                setOpen(currOpen => ({
-                  ...currOpen,
-                  third: false,
-                }))
-              }
-            >
-              Close
-            </Button>
+            <h3>Popover content - Formula</h3> <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
       </Popover>
@@ -108,30 +60,15 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
       <Popover
         withArrow
         trapFocus
-        open={open.fourth}
-        onOpenChange={() => {
-          setOpen(currOpen => ({
-            ...currOpen,
-            fourth: !currOpen.third,
-          }));
-        }}
+        open={open === 'fourth'}
+        onOpenChange={(_, data) => setOpen(data.open ? 'fourth' : undefined)}
       >
         <PopoverTrigger disableButtonEnhancement>
           <ToolbarButton>Quick Actions</ToolbarButton>
         </PopoverTrigger>
         <PopoverSurface>
           <div>
-            <h3>Popover content - Quick Actions</h3>{' '}
-            <Button
-              onClick={() =>
-                setOpen(currOpen => ({
-                  ...currOpen,
-                  fourth: false,
-                }))
-              }
-            >
-              Close
-            </Button>
+            <h3>Popover content - Quick Actions</h3> <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
       </Popover>
