@@ -7,6 +7,7 @@ module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConf
   stories: ['../src/**/*.stories.tsx'],
   core: {
     builder: 'webpack5',
+    disableTelemetry: true,
   },
   babel: {},
   typescript: {

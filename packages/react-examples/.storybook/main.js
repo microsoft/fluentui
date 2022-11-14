@@ -44,6 +44,7 @@ const config = {
 
   core: {
     builder: 'webpack5',
+    disableTelemetry: true,
   },
 };
 
