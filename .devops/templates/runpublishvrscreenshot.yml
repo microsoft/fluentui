@@ -13,10 +13,28 @@ parameters:
     default: false
 
 steps:
+  - script: |
+      echo REASON
+      echo $(Build.Reason)
+      echo SOURCE BRANCH
+      echo $(Build.SourceBranch)
+
+    displayName: yarn (install packages)
+
   - task: Bash@3
     inputs:
       filePath: yarn-ci.sh
     displayName: yarn (install packages)
+
+  - script: |
+      echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
+      packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr=true
+      if [[ $packageAffected == false ]]; then
+        echo "Should skip screener"
+      else
+        echo "Should NOT skip screener"
+      fi
+    displayName: Should
 
   - script: |
       yarn workspace ${{ parameters.storyPackageName }} convert
