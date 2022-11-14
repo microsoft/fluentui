@@ -22,7 +22,7 @@ steps:
       yarn workspace ${{ parameters.vrTestPackageName }} convert
     displayName: Convert screener component to storywright
 
-  - ${{ if eq(parameters.shouldbuildstorybookaddon, 'true') }}:
+  - ${{ if eq(parameters.shouldBuildstorybookaddon, 'true') }}:
       - script: |
           yarn build --to @fluentui/react-storybook-addon
         displayName: Build react-storybook-addon
