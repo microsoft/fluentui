@@ -29,6 +29,7 @@ import {
   dialogSurfaceSelector,
   dialogTriggerCloseId,
   dialogTriggerCloseSelector,
+  dialogTriggerOpenId,
   dialogTriggerOpenSelector,
 } from '../../testing/selectors';
 
@@ -39,7 +40,7 @@ describe('Dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger disableButtonEnhancement>
-          <Button>Open dialog</Button>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
           <DialogBody>
@@ -51,7 +52,9 @@ describe('Dialog', () => {
             </DialogContent>
             <DialogActions>
               <DialogTrigger disableButtonEnhancement>
-                <Button appearance="secondary">Close</Button>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
             </DialogActions>
@@ -66,7 +69,7 @@ describe('Dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger disableButtonEnhancement>
-          <Button>Open dialog</Button>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
           <DialogBody>
@@ -78,7 +81,9 @@ describe('Dialog', () => {
             </DialogContent>
             <DialogActions>
               <DialogTrigger disableButtonEnhancement>
-                <Button appearance="secondary">Close</Button>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
             </DialogActions>
@@ -93,7 +98,7 @@ describe('Dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger disableButtonEnhancement>
-          <Button>Open dialog</Button>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
           <DialogBody>
@@ -122,7 +127,7 @@ describe('Dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger disableButtonEnhancement>
-          <Button>Open dialog</Button>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface id="dialog-surface">
           <DialogBody>
@@ -143,7 +148,7 @@ describe('Dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger disableButtonEnhancement>
-          <Button>Open dialog</Button>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
           <DialogBody>
@@ -182,7 +187,7 @@ describe('Dialog', () => {
         //eslint-disable-next-line react/jsx-no-bind
         <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -212,7 +217,7 @@ describe('Dialog', () => {
     mount(
       <Dialog modalType="non-modal">
         <DialogTrigger disableButtonEnhancement>
-          <Button>Open dialog</Button>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
           <DialogBody>
@@ -270,7 +275,7 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="modal">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -282,7 +287,9 @@ describe('Dialog', () => {
               </DialogContent>
               <DialogActions>
                 <DialogTrigger disableButtonEnhancement>
-                  <Button appearance="secondary">Close</Button>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
               </DialogActions>
@@ -298,7 +305,7 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="modal">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
@@ -309,7 +316,9 @@ describe('Dialog', () => {
             </DialogBody>
             <DialogActions>
               <DialogTrigger disableButtonEnhancement>
-                <Button appearance="secondary">Close</Button>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
             </DialogActions>
@@ -325,7 +334,7 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="non-modal">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -337,7 +346,9 @@ describe('Dialog', () => {
               </DialogContent>
               <DialogActions>
                 <DialogTrigger disableButtonEnhancement>
-                  <Button appearance="secondary">Close</Button>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
               </DialogActions>
@@ -353,7 +364,7 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="non-modal">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -365,7 +376,9 @@ describe('Dialog', () => {
               </DialogContent>
               <DialogActions>
                 <DialogTrigger disableButtonEnhancement>
-                  <Button appearance="secondary">Close</Button>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
               </DialogActions>
@@ -382,7 +395,7 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -394,7 +407,9 @@ describe('Dialog', () => {
               </DialogContent>
               <DialogActions>
                 <DialogTrigger disableButtonEnhancement>
-                  <Button appearance="secondary">Close</Button>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
               </DialogActions>
@@ -410,7 +425,7 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -422,7 +437,9 @@ describe('Dialog', () => {
               </DialogContent>
               <DialogActions>
                 <DialogTrigger disableButtonEnhancement>
-                  <Button appearance="secondary">Close</Button>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
               </DialogActions>

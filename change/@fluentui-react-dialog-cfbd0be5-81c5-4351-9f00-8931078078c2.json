@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: removes aria-haspopup",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
