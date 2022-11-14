@@ -118,3 +118,5 @@ The Spinner is non-interactive.
 - **Touch** - Nothing
 
 ## Accessibility
+
+When reduced motion, is active the `indeterminate` `Spinner` will rotate once and then stop animating.

@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-portal",
-  "version": "9.0.8",
+  "version": "9.0.10",
   "description": "A utility component that creates portals compatible with Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -31,10 +31,10 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.0.2",
-    "@fluentui/react-tabster": "^9.2.0",
-    "@fluentui/react-utilities": "^9.1.2",
-    "@griffel/react": "^1.4.1",
+    "@fluentui/react-shared-contexts": "^9.1.1",
+    "@fluentui/react-tabster": "^9.3.0",
+    "@fluentui/react-utilities": "^9.2.1",
+    "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -51,9 +51,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }

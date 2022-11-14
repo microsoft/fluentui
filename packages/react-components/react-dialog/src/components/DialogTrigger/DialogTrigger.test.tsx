@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DialogTrigger } from './DialogTrigger';
 import * as renderer from 'react-test-renderer';
 import { createEvent, fireEvent, render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
-import { mockUseDialogContext } from '../../contexts/dialogContext.mock';
+import { isConformant } from '../../testing/isConformant';
+import { mockUseDialogContext } from '../../testing/mockUseDialogContext';
 import { Enter } from '@fluentui/keyboard-keys';
 import { DialogTriggerProps } from './DialogTrigger.types';
 
@@ -56,7 +56,7 @@ describe('DialogTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-haspopup="dialog"
+          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
@@ -86,27 +86,13 @@ describe('DialogTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-haspopup="dialog"
+          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
         </button>,
       ]
     `);
-  });
-
-  it('should not open dialog when aria-disabled is true', () => {
-    const requestOpenChange = jest.fn();
-    mockUseDialogContext({ requestOpenChange });
-
-    const { getByRole } = render(
-      <DialogTrigger>
-        <button aria-disabled>trigger</button>
-      </DialogTrigger>,
-    );
-    fireEvent.click(getByRole('button'));
-
-    expect(requestOpenChange).toBeCalledTimes(0);
   });
 
   it('should open dialog when aria-disabled is false', () => {

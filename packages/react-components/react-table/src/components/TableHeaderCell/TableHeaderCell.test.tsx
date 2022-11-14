@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableHeaderCell } from './TableHeaderCell';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableHeaderCellProps } from './TableHeaderCell.types';
 import { TableContextProvider, tableContextDefaultValue } from '../../contexts/tableContext';
 import { SortDirection } from '../Table/Table.types';

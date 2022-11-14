@@ -77,6 +77,10 @@ describe('Tab', () => {
     ['vertical', { ...defaultContext, vertical: true }],
     ['small size', { ...defaultContext, size: 'small' }],
     ['small size and vertical', { ...defaultContext, size: 'small', vertical: true }],
+    ['medium size', { ...defaultContext, size: 'medium' }],
+    ['medium size and vertical', { ...defaultContext, size: 'medium', vertical: true }],
+    ['large size', { ...defaultContext, size: 'large' }],
+    ['large size and vertical', { ...defaultContext, size: 'large', vertical: true }],
   ])('renders %s correctly with icon slotted', (_testName, tabList) => {
     const contextValues = {
       tabList: tabList as TabListContextValue,

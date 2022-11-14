@@ -17,7 +17,7 @@ const EditIcon = bundleIcon(EditFilled, EditRegular);
 
 export const MenuItemsWithIcons = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import {
   makeStyles,
   Menu,
@@ -10,9 +9,8 @@ import {
   SplitButton,
   Tooltip,
 } from '@fluentui/react-components';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import type { MenuButtonProps } from '@fluentui/react-components';
-
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const useStyles = makeStyles({
   wrapper: {
@@ -31,7 +29,7 @@ export const SizeLarge = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} size="large">
               Large
@@ -48,9 +46,9 @@ export const SizeLarge = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} size="large">
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} size="large">
               Large with calendar icon
             </SplitButton>
           )}
@@ -65,7 +63,7 @@ export const SizeLarge = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <Tooltip
               content="Large with calendar icon only"
@@ -75,7 +73,7 @@ export const SizeLarge = () => {
               <SplitButton
                 menuButton={triggerProps}
                 primaryActionButton={{ ref: setPrimaryActionButtonRef }}
-                icon={<CalendarMonth />}
+                icon={<CalendarMonthRegular />}
                 size="large"
               />
             </Tooltip>

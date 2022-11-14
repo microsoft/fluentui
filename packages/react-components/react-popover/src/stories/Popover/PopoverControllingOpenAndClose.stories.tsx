@@ -30,7 +30,7 @@ export const ControllingOpenAndClose = () => {
   return (
     <div>
       <Popover open={open} onOpenChange={handleOpenChange}>
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button>Controlled trigger</Button>
         </PopoverTrigger>
         <PopoverSurface>
