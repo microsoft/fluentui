@@ -83,6 +83,10 @@ export function copyCompiled() {
       ),
       out: path.join(packageDir, path.dirname(packageJson.main)),
     },
+    amd: {
+      in: path.join(packageDir, tsConfig.compilerOptions.outDir as string, 'lib-amd', projectMetadata.sourceRoot),
+      out: path.join(packageDir, 'lib-amd'),
+    },
   };
 
   const tasks = [
@@ -97,6 +101,12 @@ export function copyCompiled() {
 
       dest: paths.commonJs.out,
     }),
+    fs.existsSync(paths.amd.in)
+      ? copyTask({
+          paths: [paths.amd.in],
+          dest: paths.amd.out,
+        })
+      : null,
   ].filter(Boolean) as TaskFunction[];
 
   return series(...tasks);
