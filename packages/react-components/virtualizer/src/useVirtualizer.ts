@@ -4,7 +4,6 @@ import { useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
-import { VirtualizerFlow } from './Virtualizer.types';
 import { resolveShorthand } from '@fluentui/react-utilities';
 
 export function useVirtualizer_unstable(props: React.PropsWithChildren<VirtualizerProps>): VirtualizerState {
@@ -14,7 +13,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     children,
     sizeOfChild,
     bufferItems = Math.round(virtualizerLength / 4.0),
-    flow = VirtualizerFlow.Vertical,
+    isVertical = true,
     bufferSize = Math.floor(bufferItems / 2.0) * itemSize,
     scrollViewRef,
     isReversed = false,
@@ -107,7 +106,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
         // If we don't find an intersecting area, ignore for now.
         return;
       }
-      const isVertical = flow === VirtualizerFlow.Vertical;
+
       if (latestEntry.target === afterElementRef.current) {
         // We need to inverse the buffer count
         bufferCount = virtualizerLength - bufferItems;
@@ -396,7 +395,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     afterBufferHeight: calculateAfter(),
     totalVirtualizerHeight: calculateTotalSize(),
     virtualizerStartIndex,
-    flow,
+    isVertical,
     bufferSize,
     isReversed,
   };

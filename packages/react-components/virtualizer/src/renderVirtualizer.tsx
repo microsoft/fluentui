@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { VirtualizerFlow, VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
+import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const { slots, slotProps } = getSlots<VirtualizerSlots>(state);
-  const { isReversed, flow, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
+  const { isReversed, isVertical, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
 
-  const isVertical = flow === VirtualizerFlow.Vertical;
   const beforeHeightPx = beforeBufferHeight + 'px';
   const afterHeightPx = afterBufferHeight + 'px';
   const beforeBufferHeightPx = beforeBufferHeight + bufferSize + 'px';

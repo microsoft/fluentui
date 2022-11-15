@@ -9,7 +9,7 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { Virtualizer, VirtualizerFlow } from '@fluentui/react-components/unstable';
+import { Virtualizer } from '@fluentui/react-components/unstable';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
 import { useTable, ColumnDefinition, ColumnId, useSort } from '../../src/hooks';
 import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
@@ -183,7 +183,6 @@ export const Virtualized = () => {
       </TableHeader>
       <TableBody>
         <Virtualizer
-          flow={VirtualizerFlow.Vertical}
           virtualizerLength={100}
           itemSize={44}
           sizeOfChild={(node, index) => {

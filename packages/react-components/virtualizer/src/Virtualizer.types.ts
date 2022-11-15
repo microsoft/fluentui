@@ -8,14 +8,6 @@ export type VirtualizerSlots = {
   afterContainer?: Slot<'div'>;
 };
 
-/**
- * The direction of Virtualizer
- */
-export enum VirtualizerFlow {
-  Vertical = 'Vertical',
-  Horizontal = 'Horizontal',
-}
-
 export type VirtualizerState = ComponentState<VirtualizerSlots> & {
   /**
    * The current virtualized array of children to show in the DOM.
@@ -40,7 +32,7 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> & {
   /**
    * The scroll direction (vertical vs horizontal)
    */
-  flow: VirtualizerFlow;
+  isVertical: boolean;
   /**
    * Tells the virtualizer to measure in the reverse direction (for column-reverse order etc.)
    */
@@ -84,14 +76,14 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   scrollViewRef?: MutableRefObject<HTMLElement | null>;
 
   /**
+   * The scroll direction (vertical vs horizontal)
+   */
+  isVertical?: boolean;
+
+  /**
    * Tells the virtualizer to measure in the reverse direction (for column-reverse order etc.)
    */
   isReversed?: boolean;
-
-  /**
-   * The scroll direction (vertical vs horizontal)
-   */
-  flow?: VirtualizerFlow;
 
   /**
    * Callback for acquiring size of individual items

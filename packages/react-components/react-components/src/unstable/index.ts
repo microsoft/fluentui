@@ -373,7 +373,6 @@ export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/reac
 
 export {
   Virtualizer,
-  VirtualizerFlow,
   useVirtualizerStyles_unstable,
   useVirtualizer_unstable,
   renderVirtualizer_unstable,

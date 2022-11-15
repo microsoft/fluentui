@@ -23,14 +23,6 @@ export const useVirtualizerStyles_unstable: (state: VirtualizerState) => Virtual
 // @public
 export const Virtualizer: React_2.FC<VirtualizerProps>;
 
-// @public
-export enum VirtualizerFlow {
-    // (undocumented)
-    Horizontal = "Horizontal",
-    // (undocumented)
-    Vertical = "Vertical"
-}
-
 // @public (undocumented)
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
     itemSize: number;
@@ -38,8 +30,8 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
     bufferItems?: number;
     bufferSize?: number;
     scrollViewRef?: MutableRefObject<HTMLElement | null>;
+    isVertical?: boolean;
     isReversed?: boolean;
-    flow?: VirtualizerFlow;
     sizeOfChild?: (target: ReactNode, index: number) => number;
     onUpdateIndex?: (index: number, prevIndex: number) => void;
     onCalculateIndex?: (newIndex: number) => number;
@@ -60,7 +52,7 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> & {
     afterBufferHeight: number;
     beforeBufferHeight: number;
     totalVirtualizerHeight: number;
-    flow: VirtualizerFlow;
+    isVertical: boolean;
     isReversed?: boolean;
     bufferSize: number;
 };
