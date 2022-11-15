@@ -48,7 +48,7 @@
     "@fluentui/react-label": "^9.0.10",
     "@fluentui/react-link": "^9.0.11",
     "@fluentui/react-menu": "^9.4.1",
-    "@fluentui/react-overflow": "9.0.0-beta.14",
+    "@fluentui/react-overflow": "9.0.0-rc.0",
     "@fluentui/react-persona": "9.1.0-beta.3",
     "@fluentui/react-portal": "^9.0.10",
     "@fluentui/react-popover": "^9.3.1",
