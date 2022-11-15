@@ -10,27 +10,35 @@ const useStyles = makeStyles({
   },
 });
 
-export const Position = () => {
+export const TextAlignment = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Persona textPosition="after" name="Kevin Sturgis" presence={{ status: 'available' }} secondaryText="Available" />
-      <Persona textPosition="below" name="Kevin Sturgis" presence={{ status: 'available' }} secondaryText="Available" />
       <Persona
-        textPosition="before"
+        textAlignment="start"
         name="Kevin Sturgis"
         presence={{ status: 'available' }}
         secondaryText="Available"
+        tertiaryText="Software Engineer"
+        quaternaryText="Microsoft"
+      />
+      <Persona
+        textAlignment="center"
+        name="Kevin Sturgis"
+        presence={{ status: 'available' }}
+        secondaryText="Available"
+        tertiaryText="Software Engineer"
+        quaternaryText="Microsoft"
       />
     </div>
   );
 };
 
-Position.parameters = {
+TextAlignment.parameters = {
   docs: {
     description: {
-      story: 'A Persona supports three text positions, `after` being the default position.',
+      story: 'A Persona supports two text alignments, `start` being the default position.',
     },
   },
 };

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Adding size and textAlignment props and updating styles.",
+  "packageName": "@fluentui/react-persona",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -2,11 +2,11 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Persona } from '@fluentui/react-persona';
-import { AvatarSizes } from '@fluentui/react-avatar';
-import { BadgeProps } from '@fluentui/react-badge/src/Badge';
+import type { PersonaProps } from '@fluentui/react-persona';
 
-const avatarSizes: AvatarSizes[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
-const badgeSizes: BadgeProps['size'][] = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'];
+const sizes: PersonaProps['size'][] = ['extra-small', 'small', 'medium', 'large', 'extra-large', 'huge'];
+const textPositions: PersonaProps['textPosition'][] = ['before', 'below', 'after'];
+const textAlignments: PersonaProps['textAlignment'][] = ['start', 'center'];
 
 storiesOf('Persona Converged', module)
   .addDecorator(story => (
@@ -31,26 +31,20 @@ storiesOf('Persona Converged', module)
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
-  .addStory('single-double-lines', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
-      <Persona name="Kevin Sturgis" />
-      <Persona presence={{ status: 'available' }} name="Kevin Sturgis" />
-      <Persona presenceOnly presence={{ status: 'available' }} name="Kevin Sturgis" />
-      <Persona name="Kevin Sturgis" secondaryText="Available" />
-      <Persona presence={{ status: 'available' }} name="Kevin Sturgis" secondaryText="Available" />
-      <Persona presenceOnly presence={{ status: 'available' }} name="Kevin Sturgis" secondaryText="Available" />
-    </div>
-  ))
   .addStory('size-avatar', () => (
     <div
       className="testWrapper"
       style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
     >
-      {avatarSizes.map(size => (
-        <Persona avatar={{ size }} name="Kevin Sturgis" secondaryText="Software Engineer" key={size} />
+      {sizes.map(size => (
+        <Persona
+          size={size}
+          name="Kevin Sturgis"
+          secondaryText="Software Engineer"
+          tertiaryText="Available"
+          quaternaryText="Microsoft"
+          key={size}
+        />
       ))}
     </div>
   ))
@@ -59,36 +53,49 @@ storiesOf('Persona Converged', module)
       className="testWrapper"
       style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
     >
-      {badgeSizes.map(size => (
+      {sizes.map(size => (
         <Persona
+          size={size}
           presenceOnly
-          presence={{ size, status: 'available' }}
+          presence={{ status: 'available' }}
           name="Kevin Sturgis"
-          secondaryText="Available"
+          secondaryText="Software Engineer"
+          tertiaryText="Available"
+          quaternaryText="Microsoft"
           key={size}
         />
       ))}
     </div>
   ))
-  .addStory('scaling', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
-      <Persona name="Kevin Sturgis" presence={{ status: 'away' }} />
-      <Persona name="Kevin Sturgis" presence={{ status: 'away' }} secondaryText="Away" />
-      <Persona
-        name="Kevin Sturgis"
-        presence={{ status: 'away' }}
-        secondaryText="Away"
-        tertiaryText="Software Engineer"
-      />
-      <Persona
-        name="Kevin Sturgis"
-        presence={{ status: 'away' }}
-        secondaryText="Away"
-        tertiaryText="Software Engineer"
-        quaternaryText="Last available 4:00 pm"
-      />
+  .addStory('textPosition', () => (
+    <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
+      {textPositions.map(textPosition => (
+        <Persona
+          textPosition={textPosition}
+          presenceOnly
+          presence={{ status: 'available' }}
+          name="Kevin Sturgis"
+          secondaryText="Software Engineer"
+          tertiaryText="Available"
+          quaternaryText="Microsoft"
+          key={textPosition}
+        />
+      ))}
+    </div>
+  ))
+  .addStory('textAlignment', () => (
+    <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
+      {textAlignments.map(textAlignment => (
+        <Persona
+          textAlignment={textAlignment}
+          presenceOnly
+          presence={{ status: 'available' }}
+          name="Kevin Sturgis"
+          secondaryText="Software Engineer"
+          tertiaryText="Available"
+          quaternaryText="Microsoft"
+          key={textAlignment}
+        />
+      ))}
     </div>
   ));

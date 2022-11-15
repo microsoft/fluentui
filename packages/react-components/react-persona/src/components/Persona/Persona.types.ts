@@ -62,22 +62,32 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
   presenceOnly?: boolean;
 
   /**
+   * The size of a Persona and its text.
+   *
+   * @default medium
+   */
+  size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+
+  /**
    * The position of the text relative to the avatar/presence.
    *
    * @default after
    */
-  textPosition?: 'before' | 'after' | 'below';
+  textPosition?: 'after' | 'before' | 'below';
+
+  /**
+   * The vertical alignment of the text relative to the avatar/presence.
+   *
+   * @default start
+   */
+  textAlignment?: 'center' | 'start';
 };
 
 /**
  * State used in rendering Persona
  */
 export type PersonaState = ComponentState<PersonaSlots> &
-  Required<Pick<PersonaProps, 'textPosition' | 'presenceOnly'>> & {
-    /**
-     * Whether the sizing type is fixed or not.
-     */
-    fixed: boolean;
+  Required<Pick<PersonaProps, 'presenceOnly' | 'size' | 'textAlignment' | 'textPosition'>> & {
     /**
      * The number of text lines used.
      */
