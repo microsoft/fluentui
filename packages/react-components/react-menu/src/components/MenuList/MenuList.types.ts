@@ -85,7 +85,7 @@ export type MenuListContextValues = {
 };
 
 /**
- * @deprecated
+ * @deprecated this type is not being used internally anymore
  */
 export type UninitializedMenuListState = Omit<
   MenuListState,

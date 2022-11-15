@@ -18,6 +18,6 @@ export function useMenuGroup_unstable(props: MenuGroupProps, ref: React.Ref<HTML
       role: 'group',
       ...props,
     }),
-    headerId: headerId,
+    headerId,
   };
 }
