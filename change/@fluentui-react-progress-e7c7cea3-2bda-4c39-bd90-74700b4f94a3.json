@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update validationState tokens to use background instead of foreground",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

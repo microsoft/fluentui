@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "react-menu: deprecates MenuOpenEvents in favor of MenuOpenEvent",
+  "packageName": "@fluentui/react-components",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
