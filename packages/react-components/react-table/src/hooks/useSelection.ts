@@ -37,31 +37,32 @@ export function useSelectionState<TItem>(
   });
 
   const selectionManager = React.useMemo(() => {
-    return createSelectionManager(selectionMode, newSelectedItems => {
+    return createSelectionManager(selectionMode, (e, newSelectedItems) => {
       setSelected(() => {
-        onSelectionChange?.(newSelectedItems);
+        onSelectionChange?.(e as React.SyntheticEvent, newSelectedItems);
         return newSelectedItems;
       });
     });
   }, [onSelectionChange, selectionMode, setSelected]);
 
-  const toggleAllRows: TableSelectionState['toggleAllRows'] = useEventCallback(() => {
+  const toggleAllRows: TableSelectionState['toggleAllRows'] = useEventCallback(e => {
     selectionManager.toggleAllItems(
+      e,
       items.map((item, i) => getRowId?.(item) ?? i),
       selected,
     );
   });
 
-  const toggleRow: TableSelectionState['toggleRow'] = useEventCallback((rowId: RowId) =>
-    selectionManager.toggleItem(rowId, selected),
+  const toggleRow: TableSelectionState['toggleRow'] = useEventCallback((e, rowId: RowId) =>
+    selectionManager.toggleItem(e, rowId, selected),
   );
 
-  const deselectRow: TableSelectionState['deselectRow'] = useEventCallback((rowId: RowId) =>
-    selectionManager.deselectItem(rowId, selected),
+  const deselectRow: TableSelectionState['deselectRow'] = useEventCallback((e, rowId: RowId) =>
+    selectionManager.deselectItem(e, rowId, selected),
   );
 
-  const selectRow: TableSelectionState['selectRow'] = useEventCallback((rowId: RowId) =>
-    selectionManager.selectItem(rowId, selected),
+  const selectRow: TableSelectionState['selectRow'] = useEventCallback((e, rowId: RowId) =>
+    selectionManager.selectItem(e, rowId, selected),
   );
 
   const isRowSelected: TableSelectionState['isRowSelected'] = (rowId: RowId) =>

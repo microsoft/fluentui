@@ -137,11 +137,11 @@ export const SortControlled = () => {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: setSortState })],
+    [useSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
 
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => toggleColumnSort(columnId),
+    onClick: (e: React.MouseEvent) => toggleColumnSort(e, columnId),
     sortDirection: getSortDirection(columnId),
   });
 

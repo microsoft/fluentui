@@ -126,7 +126,7 @@ export const MultipleSelectControlled = () => {
       useSelection({
         selectionMode: 'multiselect',
         selectedItems: selectedRows,
-        onSelectionChange: setSelectedRows,
+        onSelectionChange: (e, nextSelelectedRows) => setSelectedRows(nextSelelectedRows),
       }),
     ],
   );
@@ -135,10 +135,10 @@ export const MultipleSelectControlled = () => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
-      onClick: () => toggleRow(row.rowId),
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
         if (e.key === ' ' || e.key === 'Enter') {
-          toggleRow(row.rowId);
+          toggleRow(e, row.rowId);
         }
       },
       selected,

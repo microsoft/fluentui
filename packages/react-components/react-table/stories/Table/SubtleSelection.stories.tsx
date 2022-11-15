@@ -129,10 +129,10 @@ export const SubtleSelection = () => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
-      onClick: () => toggleRow(row.rowId),
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
         if (e.key === ' ' || e.key === 'Enter') {
-          toggleRow(row.rowId);
+          toggleRow(e, row.rowId);
         }
       },
       selected,
@@ -140,7 +140,6 @@ export const SubtleSelection = () => {
     };
   });
 
-  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (

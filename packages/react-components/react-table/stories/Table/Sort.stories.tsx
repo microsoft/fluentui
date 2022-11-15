@@ -133,8 +133,8 @@ export const Sort = () => {
   );
 
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => {
-      toggleColumnSort(columnId);
+    onClick: (e: React.MouseEvent) => {
+      toggleColumnSort(e, columnId);
     },
     sortDirection: getSortDirection(columnId),
   });
