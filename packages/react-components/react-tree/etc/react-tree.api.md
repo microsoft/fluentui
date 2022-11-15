@@ -4,6 +4,63 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const Tree: ForwardRefComponent<TreeProps>;
+
+// @public
+export const TreeBranch: ForwardRefComponent<TreeBranchProps>;
+
+// @public (undocumented)
+export const treeBranchClassNames: SlotClassNames<TreeBranchSlots>;
+
+// @public (undocumented)
+export type TreeBranchProps = ComponentProps<TreeBranchSlots> & {};
+
+// @public (undocumented)
+export type TreeBranchSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeBranchState = ComponentState<TreeBranchSlots>;
+
+// @public (undocumented)
+export const treeClassNames: SlotClassNames<TreeSlots>;
+
+// @public
+export const TreeLeaf: ForwardRefComponent<TreeLeafProps>;
+
+// @public (undocumented)
+export const treeLeafClassNames: SlotClassNames<TreeLeafSlots>;
+
+// @public (undocumented)
+export type TreeLeafProps = ComponentProps<TreeLeafSlots> & {};
+
+// @public (undocumented)
+export type TreeLeafSlots = {
+    root: Slot<'div'>;
+};
+
+// @public (undocumented)
+export type TreeLeafState = ComponentState<TreeLeafSlots>;
+
+// @public (undocumented)
+export type TreeProps = ComponentProps<TreeSlots> & {};
+
+// @public (undocumented)
+export type TreeSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeState = ComponentState<TreeSlots>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
