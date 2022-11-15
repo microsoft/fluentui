@@ -9,7 +9,7 @@ storiesOf('InfoButton', module)
   .addStory(
     'size',
     () => (
-      <div style={{ display: 'flex', flexDirection: 'column', padding: '25px', gap: '80px', alignItems: 'start' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', padding: '50px', gap: '80px', alignItems: 'start' }}>
         <InfoButton id="show-content-small" size="small" content={infoButtonContent} />
         <InfoButton id="show-content-medium" size="medium" content={infoButtonContent} />
         <InfoButton id="show-content-large" size="large" content={infoButtonContent} />
@@ -23,7 +23,7 @@ storiesOf('InfoButton', module)
   .addStory(
     'size-open',
     () => (
-      <div style={{ display: 'flex', flexDirection: 'column', padding: '25px', gap: '80px', alignItems: 'start' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', padding: '50px', gap: '80px', alignItems: 'start' }}>
         <InfoButton
           id="show-content-small"
           size="small"
