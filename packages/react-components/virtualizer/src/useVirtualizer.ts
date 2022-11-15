@@ -24,8 +24,8 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
   // Safe access array version of children
   const childArray = useMemo(() => (Array.isArray(children) ? children : [children]), [children]);
 
-  // Tracks the initial item to start virtualizer at
-  const [virtualizerStartIndex, setVirtualizerStartIndex] = useState<number>(0);
+  // Tracks the initial item to start virtualizer at, -1 implies first render cycle
+  const [virtualizerStartIndex, setVirtualizerStartIndex] = useState<number>(-1);
 
   // Store ref to before padding element
   const beforeElementRef = useRef<Element | null>(null);
@@ -391,10 +391,10 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
         role: 'none',
       },
     }),
-    beforeBufferHeight: calculateBefore(),
-    afterBufferHeight: calculateAfter(),
-    totalVirtualizerHeight: calculateTotalSize(),
-    virtualizerStartIndex,
+    beforeBufferHeight: hasInitialized.current ? calculateBefore() : 0,
+    afterBufferHeight: hasInitialized.current ? calculateAfter() : 0,
+    totalVirtualizerHeight: hasInitialized.current ? calculateTotalSize() : virtualizerLength * itemSize,
+    virtualizerStartIndex: hasInitialized.current ? virtualizerStartIndex : 0,
     isVertical,
     bufferSize,
     isReversed,
