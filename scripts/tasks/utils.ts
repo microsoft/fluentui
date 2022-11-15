@@ -71,7 +71,8 @@ export function getTsPathAliasesApiExtractorConfig(options: {
       /**
        * just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
        */
-      paths: undefined,
+      // @ts-expect-error - just-scripts provides invalid types
+      paths: createNormalizedTsPaths({ definitionsRootPath: options.definitionsRootPath, rootTsConfig }),
     },
   };
 

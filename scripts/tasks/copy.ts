@@ -39,29 +39,20 @@ export function expandSourcePath(pattern: string): string | null {
  */
 export function copyCompiled() {
   const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
-  const root = findGitRoot();
-
-  const packageDir = process.cwd();
 
   if (!(isUsingTsSolutionConfigs && tsConfig)) {
-    throw new Error(`this task compliant only with packages that use TS solution config files.`);
-  }
-
-  // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
-  const hasNewCompilationSetup = (tsConfig.compilerOptions.outDir as string).includes('dist/out-tsc');
-
-  if (!hasNewCompilationSetup) {
-    logger.info('copy-compiled: noop ');
-
+    logger.warn(`This task works only with packages that use TS solution config files. Skipping...`);
     return;
   }
 
+  const root = findGitRoot();
   const projectMetadata = getProjectMetadata({ root, name: packageJson.name });
 
   if (!projectMetadata.sourceRoot) {
     throw new Error(`${packageJson.name} is missing 'sourceRoot' in workspace.json`);
   }
 
+  const packageDir = process.cwd();
   const paths = {
     esm: packageJson.module
       ? {
