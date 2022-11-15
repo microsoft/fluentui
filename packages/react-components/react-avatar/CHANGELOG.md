@@ -1,6 +1,6 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Fri, 11 Nov 2022 14:57:52 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:52 GMT and should not be manually modified1.
 
 <!-- Start content -->
 
