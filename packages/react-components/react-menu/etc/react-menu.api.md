@@ -220,10 +220,49 @@ export type MenuOpenChangeData = {
     bubble?: boolean;
     keyboard?: boolean;
     open: boolean;
-};
+} & ({
+    type: 'menuTriggerContextMenu';
+    event: React_2.MouseEvent<HTMLElement>;
+} | {
+    type: 'menuTriggerClick';
+    event: React_2.MouseEvent<HTMLElement>;
+} | {
+    type: 'menuTriggerMouseEnter';
+    event: React_2.MouseEvent<HTMLElement>;
+} | {
+    type: 'menuTriggerMouseLeave';
+    event: React_2.MouseEvent<HTMLElement>;
+} | {
+    type: 'menuTriggerMouseMove';
+    event: React_2.MouseEvent<HTMLElement>;
+} | {
+    type: 'menuTriggerKeyDown';
+    event: React_2.KeyboardEvent<HTMLElement>;
+} | {
+    type: 'menuItemClick';
+    event: React_2.MouseEvent<HTMLElement>;
+} | {
+    type: 'menuPopoverMouseEnter';
+    event: React_2.MouseEvent<HTMLElement>;
+} | {
+    type: 'menuPopoverKeyDown';
+    event: React_2.KeyboardEvent<HTMLElement>;
+} | {
+    type: 'clickOutside';
+    event: MouseEvent | TouchEvent;
+} | {
+    type: 'scrollOutside';
+    event: MouseEvent | TouchEvent;
+} | {
+    type: 'menuMouseEnter';
+    event: MouseEvent | TouchEvent;
+});
 
 // @public
-export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
+export type MenuOpenEvent = MenuOpenChangeData['event'];
+
+// @public @deprecated (undocumented)
+export type MenuOpenEvents = MenuOpenEvent;
 
 // @public
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
@@ -250,7 +289,7 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<MenuListProps, 'checked
     defaultOpen?: boolean;
     hoverDelay?: number;
     inline?: boolean;
-    onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
@@ -290,7 +329,7 @@ export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'onOpenChang
     menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
     menuTrigger: React_2.ReactNode;
     setContextTarget: SetVirtualMouseTarget;
-    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
 };

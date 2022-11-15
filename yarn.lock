@@ -24472,10 +24472,10 @@ storybook-addon-performance@0.16.1:
     tiny-invariant "^1.1.0"
     xstate "^4.22.0"
 
-storywright@0.0.23-beta.6:
-  version "0.0.23-beta.6"
-  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.23-beta.6.tgz#cf44dadd29caddd51a7b1b6af1074f8efc876f76"
-  integrity sha512-Kwhk0xlRdy+e8CP21ZueAVSkw0e367MgO2XJPqPdet/RsE+rr4j0VOGA/TjqsHP+G25/FxwZI0UL/6q9alNUfQ==
+storywright@0.0.26-beta.1:
+  version "0.0.26-beta.1"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.26-beta.1.tgz#2ded8936ae7f9495a85efa8a206660fef69298a4"
+  integrity sha512-zNWRzTl8rOSDBFrbvozOcOshvLJPJzcSpm8sfZD6My24lsNK1xXsXDAykWZ7hh9y2XRtlXBL0Rewx82OoVKCXA==
   dependencies:
     playwright "^1.27.0"
     prop-types "^15.6.0"
@@ -26712,10 +26712,10 @@ void-elements@^2.0.0:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
-vrscreenshotdiff@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/vrscreenshotdiff/-/vrscreenshotdiff-0.0.6.tgz#0a90b76e5571a49fd0af1d3e05270d3e509b51fb"
-  integrity sha512-VO4PIzhsENi4V8nsBjCF0soBc7JdEDdHntPJRfMcgAQdFPMOGKr1JKUtoSHdI+fca5KvNS0MDrUi6hhAeOBnow==
+vrscreenshotdiff@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/vrscreenshotdiff/-/vrscreenshotdiff-0.0.9.tgz#a484fb7303ce52f72bc01cd1851dc8f9d46f3ca1"
+  integrity sha512-EF5IV2DS2QoTT1TjSbvhRi2sLK3Hn87Wysj64p5QfBWGfTX3vVv1x6anQX/ktU849iXyCxQjSex2F44xxImPog==
   dependencies:
     "@octokit/rest" "^19.0.3"
     adal-node "^0.2.3"
