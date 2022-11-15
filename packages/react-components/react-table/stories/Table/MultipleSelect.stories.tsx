@@ -140,7 +140,6 @@ export const MultipleSelect = () => {
     };
   });
 
-  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
