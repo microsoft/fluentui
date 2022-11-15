@@ -58,6 +58,8 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         Compact: {},
         Grouped: {},
         LargeGrouped: { title: 'Large Grouped' },
+        GroupedV2: { title: 'Grouped V2' },
+        LargeGroupedV2: { title: 'Large Grouped V2' },
         CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
         CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
         CustomFooter: { title: 'Custom Footer' },

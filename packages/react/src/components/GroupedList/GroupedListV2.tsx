@@ -2,7 +2,8 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { getStyles } from './GroupedList.styles';
 import { GroupedListV2Wrapper } from './GroupedListV2.base';
-import type { IGroupedListProps, IGroupedListStyles, IGroupedListStyleProps } from './GroupedList.types';
+import type { IGroupedListStyles, IGroupedListStyleProps } from './GroupedList.types';
+import type { IGroupedListV2Props } from './GroupedListV2.types';
 
 /**
  * NOTE: GroupedListV2 is "unstable" and meant for preview use. It passes
@@ -13,8 +14,8 @@ import type { IGroupedListProps, IGroupedListStyles, IGroupedListStyleProps } fr
  * that addresses issues GroupedList has with virtualizing nested lists under certain
  * conditions.
  */
-const GroupedListV2: React.FunctionComponent<IGroupedListProps> = styled<
-  IGroupedListProps,
+const GroupedListV2: React.FunctionComponent<IGroupedListV2Props> = styled<
+  IGroupedListV2Props,
   IGroupedListStyleProps,
   IGroupedListStyles
 >(GroupedListV2Wrapper, getStyles, undefined, {
