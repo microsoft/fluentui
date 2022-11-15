@@ -1,6 +1,6 @@
 import { useIntersectionObserver } from './useIntersectionObserver';
 import type { ReactNode } from 'react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
@@ -9,13 +9,13 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 
 export function useVirtualizer_unstable(props: React.PropsWithChildren<VirtualizerProps>): VirtualizerState {
   const {
+    itemSize,
+    virtualizerLength,
     children,
     sizeOfChild,
-    itemSize = 45,
-    virtualizerLength = 30,
-    bufferItems = Math.round(virtualizerLength / 3),
+    bufferItems = Math.round(virtualizerLength / 4.0),
     flow = VirtualizerFlow.Vertical,
-    bufferSize = 250,
+    bufferSize = Math.floor(bufferItems / 2.0) * itemSize,
     scrollViewRef,
     isReversed = false,
     onUpdateIndex,
@@ -89,71 +89,68 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
         return;
       }
 
-      /* IO initiates this function when needed,
-      we don't need to iterate through the results,
-      we simply need to know that an interaction has happened to efficiently update based
-      on scroll position from container ref */
-      let measurementPos = Math.abs(
-        flow === VirtualizerFlow.Vertical
-          ? scrollViewRef?.current?.scrollTop ?? 0
-          : scrollViewRef?.current?.scrollLeft ?? 0,
-      );
-
+      /* IO initiates this function when needed (bookend entering view) */
+      let measurementPos = 0;
       let bufferCount = bufferItems;
-      if (!scrollViewRef) {
-        // We are not inside a direct parent scroll view, use bookends to chop down until we find position.
-        // We do NOT use scroll position as this implies we are unbounded - (scroll start pos may not be 0 or local)
-        const latestEntry =
-          entries.length === 1
-            ? entries[0]
-            : entries.find(entry => {
+
+      // Grab latest entry that is intersecting
+      const latestEntry =
+        entries.length === 1
+          ? entries[0]
+          : entries
+              .sort((entry1, entry2) => entry2.time - entry1.time)
+              .find(entry => {
                 return entry.intersectionRatio > 0;
               });
 
-        if (!latestEntry) {
-          // If we don't find an intersecting area, ignore for now.
-          return;
-        }
-
-        const isVertical = flow === VirtualizerFlow.Vertical;
-        if (latestEntry.target === afterElementRef.current) {
-          // We need to inverse the buffer count
-          bufferCount = virtualizerLength - bufferItems;
-          measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
-          if (isVertical) {
-            if (isReversed) {
-              measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
-            } else {
-              measurementPos += Math.abs(latestEntry.boundingClientRect.top);
-            }
-          } else {
-            if (isReversed) {
-              measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
-            } else {
-              measurementPos += Math.abs(latestEntry.boundingClientRect.left);
-            }
+      if (!latestEntry) {
+        // If we don't find an intersecting area, ignore for now.
+        return;
+      }
+      const isVertical = flow === VirtualizerFlow.Vertical;
+      if (latestEntry.target === afterElementRef.current) {
+        // We need to inverse the buffer count
+        bufferCount = virtualizerLength - bufferItems;
+        measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
+        if (isVertical) {
+          if (isReversed) {
+            // Scrolling 'up' and hit the after element below
+            measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
+          } else if (latestEntry.boundingClientRect.top < 0) {
+            // Scrolling 'down' and hit the after element above top: 0
+            measurementPos -= latestEntry.boundingClientRect.top;
           }
-        } else if (latestEntry.target === beforeElementRef.current) {
-          measurementPos = isReversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
-          if (isVertical) {
-            if (isReversed) {
-              measurementPos += Math.abs(latestEntry.boundingClientRect.top);
-            } else {
-              measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
-            }
-          } else {
-            if (isReversed) {
-              measurementPos += Math.abs(latestEntry.boundingClientRect.left);
-            } else {
-              measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
-            }
+        } else {
+          if (isReversed) {
+            // Scrolling 'left' and hit the after element
+            measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
+          } else if (latestEntry.boundingClientRect.left < 0) {
+            // Scrolling 'right' and hit the after element
+            measurementPos -= latestEntry.boundingClientRect.left;
           }
         }
-
-        if (isReversed) {
-          // We're reversed, up is down, left is right, invert the scroll measure.
-          measurementPos = Math.max(calculateTotalSize() - Math.abs(measurementPos), 0);
+      } else if (latestEntry.target === beforeElementRef.current) {
+        measurementPos = isReversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
+        if (isVertical) {
+          if (!isReversed) {
+            measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
+          } else if (latestEntry.boundingClientRect.top < 0) {
+            // Scrolling 'down' in reverse order and hit the before element above top: 0
+            measurementPos -= latestEntry.boundingClientRect.top;
+          }
+        } else {
+          if (!isReversed) {
+            measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
+          } else if (latestEntry.boundingClientRect.left < 0) {
+            // Scrolling 'left' and hit before element
+            measurementPos -= latestEntry.boundingClientRect.left;
+          }
         }
+      }
+
+      if (isReversed) {
+        // We're reversed, up is down, left is right, invert the scroll measure.
+        measurementPos = Math.max(calculateTotalSize() - Math.abs(measurementPos), 0);
       }
 
       // For now lets use hardcoded size to assess current element to paginate on

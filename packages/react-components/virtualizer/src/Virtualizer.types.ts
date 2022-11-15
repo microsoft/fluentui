@@ -1,4 +1,4 @@
-import type { ReactNode, MutableRefObject, HTMLAttributes } from 'react';
+import type { ReactNode, MutableRefObject } from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type VirtualizerSlots = {
@@ -65,7 +65,8 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   virtualizerLength: number;
 
   /**
-   * Determines how many elements to render before the current index. (Ensure it's enough items to cover viewport)
+   * Determines how many elements to render before the current index.
+   * (Ensure it's enough items to move the buffer bookends outside viewport)
    * This will default to 1/3rd of virtualizerLength which is recommended.
    */
   bufferItems?: number;
@@ -77,10 +78,10 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   bufferSize?: number;
 
   /**
-   * This should be passed if you have a scrollview that is offset
-   * so that the intersection observer correctly fires.
+   * This should be passed if you have a scrollView that is offset
+   * so that the intersection observer correctly fires instead of running on root body.
    */
-  scrollViewRef?: MutableRefObject<HTMLDivElement | null>;
+  scrollViewRef?: MutableRefObject<HTMLElement | null>;
 
   /**
    * Tells the virtualizer to measure in the reverse direction (for column-reverse order etc.)

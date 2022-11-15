@@ -378,4 +378,4 @@ export {
   useVirtualizer_unstable,
   renderVirtualizer_unstable,
 } from '@fluentui/virtualizer';
-export type { VirtualizerProps, VirtualizerState, VirtualizerSlots } from '@fluentUi/virtualizer';
+export type { VirtualizerProps, VirtualizerState, VirtualizerSlots } from '@fluentui/virtualizer';

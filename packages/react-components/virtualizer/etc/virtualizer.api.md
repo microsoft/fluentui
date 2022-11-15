@@ -6,8 +6,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { HTMLAttributes } from 'react';
 import type { MutableRefObject } from 'react';
 import * as React_2 from 'react';
 import type { ReactNode } from 'react';
@@ -17,13 +15,13 @@ import type { Slot } from '@fluentui/react-utilities';
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
 
 // @public (undocumented)
-export function useVirtualizer_unstable(props: VirtualizerProps, ref: React_2.Ref<HTMLElement>): VirtualizerState;
+export function useVirtualizer_unstable(props: React_2.PropsWithChildren<VirtualizerProps>): VirtualizerState;
 
 // @public
 export const useVirtualizerStyles_unstable: (state: VirtualizerState) => VirtualizerState;
 
 // @public
-export const Virtualizer: ForwardRefComponent<VirtualizerProps>;
+export const Virtualizer: React_2.FC<VirtualizerProps>;
 
 // @public
 export enum VirtualizerFlow {
@@ -34,33 +32,31 @@ export enum VirtualizerFlow {
 }
 
 // @public (undocumented)
-export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & Partial<VirtualizerContextValue> & {
-    itemSize?: number;
+export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
+    itemSize: number;
+    virtualizerLength: number;
     bufferItems?: number;
     bufferSize?: number;
-    virtualizerLength?: number;
-    scrollViewRef?: MutableRefObject<HTMLDivElement | null>;
-    enableDebug?: boolean;
+    scrollViewRef?: MutableRefObject<HTMLElement | null>;
     isReversed?: boolean;
     flow?: VirtualizerFlow;
     sizeOfChild?: (target: ReactNode, index: number) => number;
     onUpdateIndex?: (index: number, prevIndex: number) => void;
     onCalculateIndex?: (newIndex: number) => number;
-    onRenderContainer?: (virtualizedChildren: ReactNode[], containerProps: HTMLAttributes<ReactNode>) => ReactNode;
 };
 
 // @public (undocumented)
 export type VirtualizerSlots = {
-    root: NonNullable<Slot<'div'>>;
-    before: Slot<'div'>;
-    beforeContainer: Slot<'div'>;
-    after: Slot<'div'>;
-    afterContainer: Slot<'div'>;
+    before?: Slot<'div'>;
+    beforeContainer?: Slot<'div'>;
+    after?: Slot<'div'>;
+    afterContainer?: Slot<'div'>;
 };
 
 // @public (undocumented)
-export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerContextValue & {
+export type VirtualizerState = ComponentState<VirtualizerSlots> & {
     virtualizedChildren: ReactNode[];
+    virtualizerStartIndex: number;
     afterBufferHeight: number;
     beforeBufferHeight: number;
     totalVirtualizerHeight: number;
