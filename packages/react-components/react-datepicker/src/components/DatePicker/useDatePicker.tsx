@@ -387,7 +387,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
         }
 
         if (newValue) {
-          console.log(newValue);
           setFormattedDate(newValue);
         }
       }
@@ -572,7 +571,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   inputFieldShorthand.onClick = onTextFieldClick;
   inputFieldShorthand.onFocus = onTextFieldFocus;
   inputFieldShorthand.onKeyDown = onTextFieldKeyDown;
-  console.log(formattedDate);
   inputFieldShorthand.value = formattedDate;
 
   const wrapperShorthand = resolveShorthand(props.wrapper, {
