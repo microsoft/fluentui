@@ -68,10 +68,7 @@ storiesOf('Persona Converged', module)
     </div>
   ))
   .addStory('textPosition', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'row', gap: '50px', padding: '10px', maxWidth: '750px' }}
-    >
+    <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
       {textPositions.map(textPosition => (
         <Persona
           textPosition={textPosition}
@@ -87,10 +84,7 @@ storiesOf('Persona Converged', module)
     </div>
   ))
   .addStory('textAlignment', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'row', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
+    <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
       {textAlignments.map(textAlignment => (
         <Persona
           textAlignment={textAlignment}
