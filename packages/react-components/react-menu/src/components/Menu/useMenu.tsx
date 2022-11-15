@@ -41,11 +41,11 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const positioningState = {
-    position: isSubmenu ? ('after' as const) : ('below' as const),
-    align: isSubmenu ? ('top' as const) : ('start' as const),
+    position: isSubmenu ? 'after' : 'below',
+    align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
     ...resolvePositioningShorthand(props.positioning),
-  };
+  } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -69,10 +69,10 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
+
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
   // TODO Better way to narrow types ?
-
   const [open, setOpen] = useMenuOpenState({
     hoverDelay,
     isSubmenu,
@@ -112,7 +112,6 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     open,
     setOpen,
     checkedValues,
-    defaultCheckedValues,
     onCheckedValueChange,
     persistOnItemClick,
   };
@@ -123,22 +122,20 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
  * i.e checkboxes and radios
  */
 const useMenuSelectableState = (
-  state: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+  props: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
   const [checkedValues, setCheckedValues] = useControllableState({
-    state: state.checkedValues,
-    defaultState: state.defaultCheckedValues,
+    state: props.checkedValues,
+    defaultState: props.defaultCheckedValues,
     initialState: {},
   });
-  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
   const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, { name, checkedItems }) => {
-    if (onCheckedValueChangeOriginal) {
-      onCheckedValueChangeOriginal(e, { name, checkedItems });
-    }
+    props.onCheckedValueChange?.(e, { name, checkedItems });
 
-    setCheckedValues(s => {
-      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
-    });
+    setCheckedValues(currentValue => ({
+      ...currentValue,
+      [name]: checkedItems,
+    }));
   });
 
   return [checkedValues, onCheckedValueChange] as const;
@@ -149,18 +146,17 @@ const useMenuOpenState = (
     MenuState,
     | 'isSubmenu'
     | 'menuPopoverRef'
-    | 'onOpenChange'
     | 'setContextTarget'
     | 'triggerRef'
     | 'openOnContext'
     | 'closeOnScroll'
     | 'hoverDelay'
   > &
-    Pick<MenuProps, 'open' | 'defaultOpen'>,
+    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
-  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+  const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const shouldHandleCloseRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);

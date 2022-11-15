@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import type { SelectableHandler } from '../selectable/index';
-import type { MenuListProps } from '../components/index';
+import type { MenuCheckedValueChangeData, MenuCheckedValueChangeEvent, MenuListProps } from '../components/index';
 
 export const MenuListContext: Context<MenuListContextValue> = createContext<MenuListContextValue | undefined>(
   undefined,
@@ -10,7 +10,6 @@ export const MenuListContext: Context<MenuListContextValue> = createContext<Menu
 
 const menuListContextDefaultValue: MenuListContextValue = {
   checkedValues: {},
-  onCheckedValueChange: () => null,
   setFocusByFirstCharacter: () => null,
   toggleCheckbox: () => null,
   selectRadio: () => null,
@@ -21,13 +20,20 @@ const menuListContextDefaultValue: MenuListContextValue = {
 /**
  * Context shared between MenuList and its children components
  */
-export type MenuListContextValue = Pick<
-  MenuListProps,
-  'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'
-> & {
+export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIcons' | 'hasCheckmarks'> & {
   setFocusByFirstCharacter?: (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
   toggleCheckbox?: SelectableHandler;
   selectRadio?: SelectableHandler;
+  /**
+   * Callback when checked items change for value with a name
+   *
+   * @param event - React's original SyntheticEvent
+   * @param data - A data object with relevant information
+   *
+   * @deprecated this property is not used internally anymore,
+   * the signature remains just to avoid breaking changes
+   */
+  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 };
 
 export const MenuListProvider = MenuListContext.Provider;

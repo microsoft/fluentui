@@ -22,13 +22,6 @@ export type MenuProps = ComponentProps<MenuSlots> &
     children: [JSX.Element, JSX.Element] | JSX.Element;
 
     /**
-     * Whether the popup is open by default
-     *
-     * @default false
-     */
-    defaultOpen?: boolean;
-
-    /**
      * Sets the delay for mouse open/close for the popover one mouse enter/leave
      */
     hoverDelay?: number;
@@ -53,6 +46,13 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * @default false
      */
     open?: boolean;
+
+    /**
+     * Whether the popup is open by default
+     *
+     * @default false
+     */
+    defaultOpen?: boolean;
 
     /**
      * Opens the menu on right click (context menu), removes all other menu open interactions
@@ -89,7 +89,6 @@ export type MenuProps = ComponentProps<MenuSlots> &
   };
 
 export type MenuState = ComponentState<MenuSlots> &
-  Pick<MenuProps, 'onOpenChange' | 'defaultCheckedValues'> &
   Required<
     Pick<
       MenuProps,
@@ -150,6 +149,20 @@ export type MenuState = ComponentState<MenuSlots> &
      * The ref for the MenuTrigger, used for popup positioning
      */
     triggerRef: React.MutableRefObject<HTMLElement>;
+
+    /**
+     * Call back when the component requests to change value
+     * The `open` value is used as a hint when directly controlling the component
+     * @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    /**
+     * Default values to be checked on mount
+     @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    defaultCheckedValues?: Record<string, string[]>;
   };
 
 export type MenuContextValues = {
