@@ -1,11 +1,10 @@
-// your app's webpack.config.js
-const path = require('path');
 const custom = require('@fluentui/scripts/storybook/webpack.config');
 
-module.exports = {
+module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConfig} */ ({
   stories: ['../src/**/*.stories.tsx'],
   core: {
     builder: 'webpack5',
+    disableTelemetry: true,
   },
   babel: {},
   typescript: {
@@ -16,4 +15,4 @@ module.exports = {
     return custom(config);
   },
   addons: ['@storybook/addon-actions'],
-};
+});

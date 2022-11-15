@@ -27,7 +27,7 @@ steps:
         echo "Should NOT skip vrTest"
         echo "##vso[task.setvariable variable=vrTestSkip;]no"
       fi
-    displayName: Should
+    displayName: Check if vrTests should be skipped
 
   - script: |
       yarn workspace ${{ parameters.vrTestPackageName }} convert

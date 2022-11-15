@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -137,18 +137,19 @@ export const SortControlled = () => {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: setSortState })],
+    [useSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => toggleColumnSort(columnId),
+    onClick: (e: React.MouseEvent) => toggleColumnSort(e, columnId),
     sortDirection: getSortDirection(columnId),
   });
 
   const rows = sort(getRows());
 
   return (
-    <Table sortable>
+    <Table sortable {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>

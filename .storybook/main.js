@@ -97,6 +97,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   core: {
     builder: 'webpack5',
     lazyCompilation: true,
+    disableTelemetry: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
