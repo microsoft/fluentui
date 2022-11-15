@@ -6,7 +6,7 @@ InfoButtons provide a way to display additional information about a form field o
 >
 > ```jsx
 >
-> import { Persona } from '@fluentui/react-components/unstable';
+> import { InfoButton } from '@fluentui/react-components/unstable';
 >
 > ```
 >
