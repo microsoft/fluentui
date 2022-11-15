@@ -129,10 +129,10 @@ export const MultipleSelect = () => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
-      onClick: () => toggleRow(row.rowId),
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
         if (e.key === ' ' || e.key === 'Enter') {
-          toggleRow(row.rowId);
+          toggleRow(e, row.rowId);
         }
       },
       selected,
