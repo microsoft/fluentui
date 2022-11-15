@@ -26,8 +26,8 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
     name?: string;
     presenceOnly?: boolean;
     size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
-    textPosition?: 'before' | 'after' | 'below';
-    textAlignment?: 'start' | 'center';
+    textPosition?: 'after' | 'before' | 'below';
+    textAlignment?: 'center' | 'start';
 };
 
 // @public (undocumented)

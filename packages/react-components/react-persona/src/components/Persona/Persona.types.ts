@@ -73,14 +73,14 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
    *
    * @default after
    */
-  textPosition?: 'before' | 'after' | 'below';
+  textPosition?: 'after' | 'before' | 'below';
 
   /**
    * The vertical alignment of the text relative to the avatar/presence.
    *
    * @default start
    */
-  textAlignment?: 'start' | 'center';
+  textAlignment?: 'center' | 'start';
 };
 
 /**
