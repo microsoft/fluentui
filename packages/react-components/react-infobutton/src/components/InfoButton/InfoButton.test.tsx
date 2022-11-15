@@ -27,13 +27,13 @@ describe('InfoButton', () => {
     Component: InfoButton,
     displayName: 'InfoButton',
     requiredProps: {
-      content: 'Popover content',
+      content: "This is an InfoButton's content",
     },
     testOptions: {
       'has-static-classnames': [
         {
           props: {
-            content: 'Popover content',
+            content: "This is an InfoButton's content",
           },
           expectedClassNames: {
             root: infoButtonClassNames.root,
