@@ -45,7 +45,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Call back when the component requests to change value
      * The `open` value is used as a hint when directly controlling the component
      */
-    onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
 
     /**
      * Whether the popup is open
@@ -139,7 +139,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * Callback to open/close the popup
      */
-    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
 
     /**
      * Id for the MenuTrigger element for aria relationship
@@ -151,6 +151,19 @@ export type MenuState = ComponentState<MenuSlots> &
      */
     triggerRef: React.MutableRefObject<HTMLElement>;
   };
+
+export type MenuContextValues = {
+  menu: MenuContextValue;
+};
+
+/**
+ * The supported events that will trigger open/close of the menu
+ */
+export type MenuOpenEvent = MenuOpenChangeData['event'];
+/**
+ * @deprecated use MenuOpenEvent instead
+ */
+export type MenuOpenEvents = MenuOpenEvent;
 
 /**
  * Data attached to open/close events
@@ -167,18 +180,53 @@ export type MenuOpenChangeData = {
    */
   keyboard?: boolean;
   open: boolean;
-};
-
-export type MenuContextValues = {
-  menu: MenuContextValue;
-};
-
-/**
- * The supported events that will trigger open/close of the menu
- */
-export type MenuOpenEvents =
-  | MouseEvent
-  | TouchEvent
-  | React.FocusEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.MouseEvent<HTMLElement>;
+} & (
+  | {
+      type: 'menuTriggerContextMenu';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerClick';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerMouseEnter';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerMouseLeave';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerMouseMove';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerKeyDown';
+      event: React.KeyboardEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuItemClick';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuPopoverMouseEnter';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuPopoverKeyDown';
+      event: React.KeyboardEvent<HTMLElement>;
+    }
+  | {
+      type: 'clickOutside';
+      event: MouseEvent | TouchEvent;
+    }
+  | {
+      type: 'scrollOutside';
+      event: MouseEvent | TouchEvent;
+    }
+  | {
+      type: 'menuMouseEnter';
+      event: MouseEvent | TouchEvent;
+    }
+);

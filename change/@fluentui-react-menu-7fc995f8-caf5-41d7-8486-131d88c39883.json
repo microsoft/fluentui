@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: menu open change data union types",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

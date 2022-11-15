@@ -253,6 +253,7 @@ import { MenuListProvider } from '@fluentui/react-menu';
 import { MenuListSlots } from '@fluentui/react-menu';
 import { MenuListState } from '@fluentui/react-menu';
 import { MenuOpenChangeData } from '@fluentui/react-menu';
+import { MenuOpenEvent } from '@fluentui/react-menu';
 import { MenuOpenEvents } from '@fluentui/react-menu';
 import { MenuPopover } from '@fluentui/react-menu';
 import { menuPopoverClassNames } from '@fluentui/react-menu';
@@ -1126,6 +1127,8 @@ export { MenuListSlots }
 export { MenuListState }
 
 export { MenuOpenChangeData }
+
+export { MenuOpenEvent }
 
 export { MenuOpenEvents }
 
