@@ -83,10 +83,5 @@ export const usePresenceBadge_unstable = (
     outOfOffice,
   };
 
-  // const IconElement = iconMap(status, outOfOffice, state.size);
-  // if (IconElement) {
-  //   state.icon!.children = <IconElement />;
-  // }
-
   return state;
 };
