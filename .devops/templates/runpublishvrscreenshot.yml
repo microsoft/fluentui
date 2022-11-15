@@ -1,0 +1,47 @@
+parameters:
+  - name: fluentVersion
+    type: string
+    default: v8
+  - name: vrTestPackageName
+    type: string
+    default: '@fluentui/vr-tests'
+  - name: vrTestPackagePath
+    type: string
+    default: 'apps/vr-tests'
+  - name: shouldBuildstorybookaddon
+    type: boolean
+    default: false
+
+steps:
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn (install packages)
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} convert
+    displayName: Convert screener component to storywright
+
+  - ${{ if eq(parameters.shouldBuildstorybookaddon, 'true') }}:
+      - script: |
+          yarn build --to @fluentui/react-storybook-addon
+        displayName: Build react-storybook-addon
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} screener:build
+    displayName: Build VR tests components package
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} test:component --verbose
+    displayName: 'Run VR tests'
+
+  - script: |
+      mkdir -p screenshots
+      cp -rf ${{ parameters.vrTestPackagePath }}/dist/screenshots/*.png screenshots/
+    displayName: Collate Artifacts
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'screenshots'
+      ArtifactName: 'vrscreenshot${{ parameters.fluentVersion }}'
+      publishLocation: 'Container'
