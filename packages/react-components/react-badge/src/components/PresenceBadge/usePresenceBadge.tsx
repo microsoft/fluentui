@@ -54,29 +54,39 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
-  const statusText = DEFAULT_STRINGS[props.status ?? 'available'];
+  const size = props.size ?? 'medium';
+  const status = props.status ?? 'available';
+  const outOfOffice = props.outOfOffice ?? false;
+
+  const statusText = DEFAULT_STRINGS[status];
   const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
+
+  const IconElement = iconMap(status, outOfOffice, size);
+
   const state: PresenceBadgeState = {
     ...useBadge_unstable(
       {
-        size: 'medium',
         'aria-label': statusText + oofText,
         role: 'img',
         ...props,
+        size,
         icon: resolveShorthand(props.icon, {
+          defaultProps: {
+            children: IconElement ? <IconElement /> : null,
+          },
           required: true,
         }),
       },
       ref,
     ),
-    status: props.status ?? 'available',
-    outOfOffice: props.outOfOffice ?? false,
+    status,
+    outOfOffice,
   };
 
-  const IconElement = iconMap(state.status, state.outOfOffice, state.size);
-  if (IconElement) {
-    state.icon!.children = <IconElement />;
-  }
+  // const IconElement = iconMap(status, outOfOffice, state.size);
+  // if (IconElement) {
+  //   state.icon!.children = <IconElement />;
+  // }
 
   return state;
 };
