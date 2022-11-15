@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#!/usr/bin/env bash
+
 find ./src -type f |while read fname; do
   impor=""
   if grep -q "screener-storybook" $fname; then
@@ -21,3 +23,4 @@ done
 find ./src -type f | xargs sed -i "s/Screener.Steps/Steps/g"
 find ./src -type f | xargs sed -i "s/<Screener/<StoryWright/g"
 find ./src -type f | xargs sed -i "s/Screener>/StoryWright>/g"
+
