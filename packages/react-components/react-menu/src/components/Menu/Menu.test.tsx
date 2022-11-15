@@ -9,6 +9,7 @@ import { MenuItem } from '../MenuItem/index';
 import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
 import { MenuItemRadio } from '../MenuItemRadio/index';
 import { MenuPopover } from '../MenuPopover/index';
+import { MenuOpenChangeData } from './Menu.types';
 
 describe('Menu', () => {
   isConformant({
@@ -20,6 +21,9 @@ describe('Menu', () => {
       'component-has-static-classnames-object',
       // Menu does not have own styles
       'make-styles-overrides-win',
+      // TODO:
+      // onOpenChange: A second (data) argument cannot be a union
+      'consistent-callback-args',
     ],
     Component: Menu,
     displayName: 'Menu',
@@ -82,7 +86,12 @@ describe('Menu', () => {
 
     // Assert
     expect(onOpenChange).toHaveBeenCalledTimes(1);
-    expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: !open, keyboard: false });
+    expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), {
+      open: !open,
+      keyboard: false,
+      type: 'menuTriggerClick',
+      event: expect.anything(),
+    } as MenuOpenChangeData);
   });
 
   it('should call onOpenChange when menu is opened and closed', () => {
@@ -107,8 +116,19 @@ describe('Menu', () => {
 
     // Assert
     expect(onOpenChange).toHaveBeenCalledTimes(2);
-    expect(onOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), { open: true, keyboard: false });
-    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), { open: false, keyboard: false, bubble: true });
+    expect(onOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), {
+      open: true,
+      keyboard: false,
+      type: 'menuTriggerClick',
+      event: expect.anything(),
+    });
+    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), {
+      open: false,
+      keyboard: false,
+      bubble: true,
+      type: 'menuItemClick',
+      event: expect.anything(),
+    });
   });
 
   it.each([

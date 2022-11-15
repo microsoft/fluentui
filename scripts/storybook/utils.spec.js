@@ -137,7 +137,7 @@ describe(`utils`, () => {
     });
   });
 
-  describe(`#getReactComponentsStories`, () => {
+  describe(`#getPackageStoriesGlob`, () => {
     it(`should generate storybook stories string array of glob based on package.json#dependencies field`, () => {
       const actual = getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname });
 
