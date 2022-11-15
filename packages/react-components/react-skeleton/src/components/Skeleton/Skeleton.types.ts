@@ -41,10 +41,16 @@ export type SkeletonProps = ComponentProps<SkeletonSlots> & {
   isDataLoaded?: boolean;
 
   /**
-   * The background color to set for the Shimmer
+   * The background color to set for the Skeleton
    * @defaultvalue disabledBackground
    */
   color?: string;
+
+  /**
+   * The animation type for the Skeleton
+   * @defaultValue wave
+   */
+  animation?: string;
 };
 
 /**
@@ -144,5 +150,5 @@ export enum SkeletonElementsDefaultHeights {
  * State used in rendering Skeleton
  */
 export type SkeletonState = ComponentState<SkeletonSlots> &
-  Required<Pick<SkeletonProps, 'isDataLoaded'>> &
+  Required<Pick<SkeletonProps, 'isDataLoaded' | 'children' | 'animation'>> &
   Pick<SkeletonProps, 'color'>;

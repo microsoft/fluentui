@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { SkeletonProps, SkeletonState } from './Skeleton.types';
+import { SkeletonLine } from '../SkeletonLine/SkeletonLine';
 
 /**
  * Create the state required to render Skeleton.
@@ -13,11 +14,13 @@ import type { SkeletonProps, SkeletonState } from './Skeleton.types';
  */
 export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLElement>): SkeletonState => {
   //Props
-  const { color, isDataLoaded = false } = props;
+  const { color, isDataLoaded = false, children = <SkeletonLine />, animation = 'wave' } = props;
 
   const root = getNativeElementProps('div', {
     ref,
     role: 'progressbar',
+    'aria-busy': 'true',
+    'aria-label': 'content is loading',
     ...props,
   });
 
@@ -36,6 +39,8 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
   return {
     color,
     isDataLoaded,
+    children,
+    animation,
     components: {
       root: 'div',
       wrapper: 'div',

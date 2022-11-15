@@ -13,7 +13,7 @@ export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
 
 const BACKGROUND_OFF_SCREEN_POSITION = '100%';
 
-const skeletonAnimation = {
+const skeletonWaveAnimation = {
   '0%': {
     transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
   },
@@ -22,12 +22,24 @@ const skeletonAnimation = {
   },
 };
 
-const skeletonAnimationRTL = {
+const skeletonWaveAnimationRTL = {
   '100%': {
     transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
   },
   '0%': {
     transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+  },
+};
+
+const skeletonPulseAnimation = {
+  '0%': {
+    transform: `opacity(1)`,
+  },
+  '50%': {
+    transform: `opacity(0.4)`,
+  },
+  '100%': {
+    transform: `opacity(1)`,
   },
 };
 
@@ -49,7 +61,7 @@ const useWrapperStyles = makeStyles({
     position: 'relative',
     ...shorthands.overflow('hidden'),
     transform: 'translateZ(0)',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    backgroundColor: tokens.colorNeutralStencil1,
     transitionProperty: 'opacity',
     transitionDuration: '0.3s',
     transitionTimingFunction: 'ease',
@@ -77,24 +89,38 @@ const useGradientStyles = makeStyles({
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: `tokens.colorNeutralBackgroundDisabled
+    backgroundColor: `tokens.colorNeutralStencil1
                   linear-gradient(
                     to right,
-                    ${tokens.colorNeutralBackgroundDisabled} 0%,
-                    ${tokens.spacingVerticalM} 50%,
-                    ${tokens.colorNeutralBackgroundDisabled} 100%)
+                    ${tokens.colorNeutralStencil1} 0%,
+                    ${tokens.colorNeutralStencil2} 50%,
+                    ${tokens.colorNeutralStencil1} 100%)
                   0 0 / 90% 100%
                   no-repeat`,
-    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
     animationDuration: '2s',
     animationTimingFunction: 'ease-in-out',
     animationDirection: 'normal',
     animationIterationCount: 'infinite',
-    animationName: skeletonAnimation,
   },
 
-  rtl: {
-    animationName: skeletonAnimationRTL,
+  wave: {
+    animationName: skeletonWaveAnimation,
+  },
+
+  rtlWave: {
+    backgroundColor: `tokens.colorNeutralStencil1
+    linear-gradient(
+      to left,
+      ${tokens.colorNeutralStencil1} %,
+      ${tokens.colorNeutralStencil2} 50%,
+      ${tokens.colorNeutralStencil1} 100%)
+    0 0 / 90% 100%
+    no-repeat`,
+    animationName: skeletonWaveAnimationRTL,
+  },
+
+  pulse: {
+    animationName: skeletonPulseAnimation,
   },
 });
 
@@ -126,7 +152,7 @@ const useDataStyles = makeStyles({
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
-  const { isDataLoaded } = state;
+  const { isDataLoaded, animation } = state;
 
   const rootStyles = useRootStyles();
   const wrapperStyles = useWrapperStyles();
@@ -141,7 +167,9 @@ export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState 
   state.gradient.className = mergeClasses(
     skeletonClassNames.gradient,
     gradientStyles.base,
-    dir === 'rtl' && gradientStyles.rtl,
+    dir === 'ltr' && animation === 'wave' && gradientStyles.wave,
+    dir === 'rtl' && animation === 'wave' && gradientStyles.rtlWave,
+    animation === 'pulse' && gradientStyles.pulse,
     skeletonClassNames.gradient,
   );
 
