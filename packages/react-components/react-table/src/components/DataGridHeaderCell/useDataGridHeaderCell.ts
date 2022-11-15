@@ -25,7 +25,7 @@ export const useDataGridHeaderCell_unstable = (
   const sortDirection = useDataGridContext_unstable(ctx => ctx.sort.getSortDirection(columnId));
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
     if (sortable) {
-      toggleColumnSort(columnId);
+      toggleColumnSort(e, columnId);
     }
     props.onClick?.(e);
   });
