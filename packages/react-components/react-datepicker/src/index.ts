@@ -34,3 +34,4 @@ export {
   setMonth,
 } from './utils';
 export type { CalendarStrings, DateFormatting, DateGridStrings } from './utils';
+export * from './Calendar';
