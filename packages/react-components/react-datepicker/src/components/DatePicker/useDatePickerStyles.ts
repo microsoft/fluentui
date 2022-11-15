@@ -1,8 +1,7 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { DatePickerStyles, DatePickerStyleProps } from './DatePicker.types';
-import type { DatePickerSlots } from './DatePicker.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { DatePickerSlots, DatePickerStyles, DatePickerStyleProps } from './DatePicker.types';
 
 export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string> = {
   root: 'fui-DatePicker',
