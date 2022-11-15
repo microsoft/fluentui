@@ -4,7 +4,10 @@ import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
-import { Toolbar, ToolbarButton, ToolbarToggleButton, ToolbarRadioButton } from '@fluentui/react-toolbar';
+import { Toolbar } from '../Toolbar';
+import { ToolbarButton } from '../ToolbarButton';
+import { ToolbarToggleButton } from '../ToolbarToggleButton';
+import { ToolbarRadioButton } from '../ToolbarRadioButton';
 
 const button = "[type='button']";
 
