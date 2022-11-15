@@ -82,7 +82,7 @@ describe('Toolbar', () => {
   });
 
   describe('Toggle Button', () => {
-    it('should toggle button state', () => {
+    it('should toggle button state on click', () => {
       mount(
         <Toolbar>
           <ToolbarToggleButton name="group" value="first">
@@ -123,7 +123,7 @@ describe('Toolbar', () => {
   });
 
   describe('Radio Button', () => {
-    it('should toggle button state', () => {
+    it('should toggle button state on click', () => {
       mount(
         <Toolbar>
           <ToolbarRadioButton name="group" value="first">
