@@ -214,7 +214,6 @@ const useTextClassNames = (
   let alignToPrimaryClassName;
 
   if (presenceOnly) {
-    primaryTextSize;
     if (size === 'extra-small') {
       primaryTextSize = state.numTextLines > 1 ? textStyles.body1 : textStyles.caption1;
     } else if (size === 'extra-large' || size === 'huge') {
