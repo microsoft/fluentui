@@ -158,7 +158,7 @@ const useRootStyles = makeStyles({
     color: tokens.colorNeutralForegroundStaticInverted,
   },
   'ghost-success': {
-    color: tokens.colorPaletteGreenForeground2,
+    color: tokens.colorPaletteGreenForeground3,
   },
   'ghost-warning': {
     color: tokens.colorPaletteYellowForeground2,
@@ -191,7 +191,8 @@ const useRootStyles = makeStyles({
     color: tokens.colorNeutralForegroundStaticInverted,
   },
   'outline-success': {
-    color: tokens.colorPaletteGreenForeground2,
+    color: tokens.colorPaletteGreenForeground3,
+    ...shorthands.borderColor(tokens.colorPaletteGreenBorder2),
   },
   'outline-warning': {
     color: tokens.colorPaletteYellowForeground2,
