@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add both options to axis config",
-  "packageName": "@fluentui/react-tabster",
-  "email": "chassunc@microsoft.com",
-  "dependentChangeType": "patch"
-}

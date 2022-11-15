@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:50 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 22:09:50 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0",
       "version": "9.0.0",

@@ -10,6 +10,7 @@ import {
   menuTriggerSelector,
   menuItemSelector,
   menuSelector,
+  menuTriggerId,
 } from '../../testing/selectors';
 
 import {
@@ -34,7 +35,7 @@ describe('MenuTrigger', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -55,7 +56,7 @@ describe('MenuTrigger', () => {
     mount(
       <Menu openOnHover hoverDelay={1}>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -77,7 +78,7 @@ describe('MenuTrigger', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -101,7 +102,7 @@ describe('MenuTrigger', () => {
       mount(
         <Menu>
           <MenuTrigger disableButtonEnhancement>
-            <button>Menu</button>
+            <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
@@ -120,7 +121,7 @@ describe('MenuTrigger', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -136,7 +137,7 @@ describe('MenuTrigger', () => {
 describe('Custom Trigger', () => {
   const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, {}>((props, ref) => {
     return (
-      <button {...props} ref={ref}>
+      <button id={menuTriggerId} {...props} ref={ref}>
         Custom Trigger
       </button>
     );
@@ -181,7 +182,7 @@ describe('MenuItem', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -203,7 +204,7 @@ describe('MenuItem', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -225,7 +226,7 @@ describe('MenuItem', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -248,7 +249,7 @@ describe('MenuItemCheckbox', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -272,7 +273,7 @@ describe('MenuItemCheckbox', () => {
       mount(
         <Menu>
           <MenuTrigger disableButtonEnhancement>
-            <button>Menu</button>
+            <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
@@ -298,7 +299,7 @@ describe('MenuItemRadio', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -323,7 +324,7 @@ describe('MenuItemRadio', () => {
       mount(
         <Menu>
           <MenuTrigger disableButtonEnhancement>
-            <button>Menu</button>
+            <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
@@ -351,7 +352,7 @@ describe('MenuItemRadio', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -395,7 +396,7 @@ describe('Menu', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -418,7 +419,7 @@ describe('Menu', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -434,7 +435,7 @@ describe('Menu', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -450,7 +451,7 @@ describe('Menu', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -466,7 +467,7 @@ describe('Menu', () => {
     mount(
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -491,7 +492,7 @@ describe('Menu', () => {
     mount(
       <Menu closeOnScroll>
         <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
+          <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -515,7 +516,7 @@ describe('Menu', () => {
       <>
         <Menu closeOnScroll>
           <MenuTrigger disableButtonEnhancement>
-            <button>Menu</button>
+            <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
@@ -537,7 +538,7 @@ describe('Menu', () => {
         <button>Before</button>
         <Menu closeOnScroll>
           <MenuTrigger disableButtonEnhancement>
-            <button>Menu</button>
+            <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
@@ -557,7 +558,7 @@ describe('Menu', () => {
       mount(
         <Menu>
           <MenuTrigger>
-            <button>Menu</button>
+            <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
@@ -577,7 +578,7 @@ describe('SplitMenuItem', () => {
   const example = (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <button>Menu</button>
+        <button id={menuTriggerId}>Menu</button>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
@@ -691,7 +692,7 @@ describe(`Nested Menus`, () => {
   const UncontrolledExample = () => (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <button>Toggle menu</button>
+        <button id={menuTriggerId}>Toggle menu</button>
       </MenuTrigger>
 
       <MenuPopover>
@@ -785,7 +786,7 @@ describe(`Nested Menus`, () => {
     return (
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <button>Toggle menu</button>
+          <button id={menuTriggerId}>Toggle menu</button>
         </MenuTrigger>
 
         <MenuPopover>
@@ -811,7 +812,7 @@ describe(`Nested Menus`, () => {
           .click()
           .get(menuSelector)
           .within(() => {
-            cy.get(menuTriggerSelector).trigger('mousemove');
+            cy.get(menuItemSelector).eq(4).trigger('mousemove');
           })
           .get(menuSelector)
           .should('have.length', 2)
@@ -829,7 +830,7 @@ describe(`Nested Menus`, () => {
             .click()
             .get(menuSelector)
             .within(() => {
-              cy.get(menuTriggerSelector).focus().type(key);
+              cy.get(menuItemSelector).eq(4).focus().type(key);
             })
             .get(menuSelector)
             .eq(1)
@@ -846,7 +847,7 @@ describe(`Nested Menus`, () => {
         cy.get(menuTriggerSelector).click();
 
         cy.get(menuSelector).within(() => {
-          cy.get(menuTriggerSelector).trigger('mousemove');
+          cy.get(menuItemSelector).eq(4).trigger('mousemove');
         });
         cy.get(menuSelector).should('have.length', 2);
 
@@ -854,7 +855,7 @@ describe(`Nested Menus`, () => {
         cy.get(menuSelector)
           .eq(0)
           .within(() => {
-            cy.get(menuTriggerSelector).trigger('mouseout');
+            cy.get(menuItemSelector).eq(4).trigger('mouseout');
           });
 
         // move mouse over first element in nested menu
@@ -875,7 +876,7 @@ describe(`Nested Menus`, () => {
           .click()
           .get(menuSelector)
           .within(() => {
-            cy.get(menuTriggerSelector).click().focus().type('{rightarrow}');
+            cy.get(menuItemSelector).eq(4).click().focus().type('{rightarrow}');
           })
           .get(menuSelector)
           .eq(1)
@@ -893,7 +894,7 @@ describe(`Nested Menus`, () => {
             .click()
             .get(menuSelector)
             .within(() => {
-              cy.get(menuTriggerSelector).focus().type('{rightarrow}').focused().type(key);
+              cy.get(menuItemSelector).eq(4).focus().type('{rightarrow}').focused().type(key);
             })
             .get(menuSelector)
             .should('have.length', 1);
@@ -906,7 +907,7 @@ describe(`Nested Menus`, () => {
           .click()
           .get(menuSelector)
           .within(() => {
-            cy.get(menuTriggerSelector).type('{rightarrow}');
+            cy.get(menuItemSelector).eq(4).type('{rightarrow}');
           })
           .get(menuSelector)
           .eq(1)
@@ -929,7 +930,7 @@ describe(`Nested Menus`, () => {
           .click()
           .get(menuSelector)
           .within(() => {
-            cy.get(menuTriggerSelector).type('{rightarrow}');
+            cy.get(menuItemSelector).eq(4).type('{rightarrow}');
           })
           .get(menuSelector)
           .eq(1)
@@ -949,7 +950,7 @@ describe(`Nested Menus`, () => {
           .click()
           .get(menuSelector)
           .within(() => {
-            cy.get(menuTriggerSelector).type('{rightarrow}');
+            cy.get(menuItemSelector).eq(4).type('{rightarrow}');
           })
           .get(menuSelector)
           .eq(1)
@@ -964,7 +965,7 @@ describe('Context menu', () => {
   const ContextMenuExample = () => (
     <Menu openOnContext>
       <MenuTrigger disableButtonEnhancement>
-        <button>trigger</button>
+        <button id={menuTriggerId}>trigger</button>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>

@@ -3,7 +3,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const fs = require('fs');
 const yargs = require('yargs');
-const execSync = require('./exec-sync');
+const { execSync } = require('child_process');
 const { findGitRoot } = require('./monorepo/index');
 const chalk = require('chalk');
 
@@ -19,7 +19,7 @@ if (fs.existsSync(configPath)) {
   try {
     console.log("Attempting to npm link globally installed ngrok so it can be require'd");
     // This will probably install ngrok globally if it's not already present
-    execSync('npm link ngrok@3', undefined, gitRoot);
+    execSync('npm link ngrok@3', { cwd: gitRoot, stdio: 'inherit' });
     // @ts-expect-error - no types for ngrok
     ngrok = require('ngrok');
   } catch (err) {

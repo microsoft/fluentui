@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Wed, 02 Nov 2022 11:58:03 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.1.0)
+
+Fri, 11 Nov 2022 14:57:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.0.10..@fluentui/react-tabs_v9.1.0)
+
+### Minor changes
+
+- Added support for reserving space for selected state ([PR #25542](https://github.com/microsoft/fluentui/pull/25542) by gcox@microsoft.com)
+- Added large size tabs ([PR #25577](https://github.com/microsoft/fluentui/pull/25577) by gcox@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-tabster to v9.3.0 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+### Patches
+
+- Added support for regular/filled icon toggling ([PR #25597](https://github.com/microsoft/fluentui/pull/25597) by gcox@microsoft.com)
 
 ## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.10)
 

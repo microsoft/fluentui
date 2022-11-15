@@ -2,6 +2,27 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:47 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:38 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.3",
       "version": "9.0.0-alpha.3",
