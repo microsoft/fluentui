@@ -13,7 +13,7 @@ export const personaClassNames: SlotClassNames<PersonaSlots> = {
   quaternaryText: 'fui-Persona__quaternaryText',
 };
 
-const horizontalCoinSpacingVar = `--fui-Persona__coin--horizontalSpacing`;
+const avatarSpacing = `--fui-Persona__avatar--spacing`;
 
 /**
  * Styles for the root slot
@@ -64,61 +64,37 @@ const useStyles = makeStyles({
 
 const useAvatarSpacingStyles = makeStyles({
   'extra-small': {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
+    [avatarSpacing]: tokens.spacingHorizontalSNudge,
   },
   small: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalS,
+    [avatarSpacing]: tokens.spacingHorizontalS,
   },
   medium: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalS,
+    [avatarSpacing]: tokens.spacingHorizontalS,
   },
   large: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalMNudge,
+    [avatarSpacing]: tokens.spacingHorizontalMNudge,
   },
   'extra-large': {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalMNudge,
+    [avatarSpacing]: tokens.spacingHorizontalMNudge,
   },
   huge: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalM,
+    [avatarSpacing]: tokens.spacingHorizontalM,
   },
   after: {
-    marginRight: `var(${horizontalCoinSpacingVar})`,
+    marginRight: `var(${avatarSpacing})`,
   },
   below: {
-    marginBottom: `var(${horizontalCoinSpacingVar})`,
+    marginBottom: `var(${avatarSpacing})`,
   },
   before: {
-    marginLeft: `var(${horizontalCoinSpacingVar})`,
+    marginLeft: `var(${avatarSpacing})`,
   },
 });
 
-const usePresenceHorizontalSpacingStyles = makeStyles({
-  'extra-small': {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
-  },
+const usePresenceSpacingStyles = makeStyles({
   small: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalSNudge,
-  },
-  medium: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalS,
-  },
-  large: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalMNudge,
-  },
-  'extra-large': {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalMNudge,
-  },
-  huge: {
-    [horizontalCoinSpacingVar]: tokens.spacingHorizontalM,
-  },
-  after: {
-    marginRight: `var(${horizontalCoinSpacingVar})`,
-  },
-  below: {
-    marginBottom: `var(${horizontalCoinSpacingVar})`,
-  },
-  before: {
-    marginLeft: `var(${horizontalCoinSpacingVar})`,
+    [avatarSpacing]: tokens.spacingHorizontalSNudge,
   },
 });
 
@@ -132,7 +108,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 
   const styles = useStyles();
   const avatarSpacingStyles = useAvatarSpacingStyles();
-  const presenceHorizontalSpacingStyles = usePresenceHorizontalSpacingStyles();
+  const presenceSpacingStyles = { ...avatarSpacingStyles, ...usePresenceSpacingStyles() };
 
   state.root.className = mergeClasses(
     personaClassNames.root,
@@ -158,8 +134,8 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
       personaClassNames.presence,
       styles.coin,
       styles[textAlignment],
-      presenceHorizontalSpacingStyles[size],
-      presenceHorizontalSpacingStyles[textPosition],
+      presenceSpacingStyles[size],
+      presenceSpacingStyles[textPosition],
       textPosition === 'after' && alignToPrimary && styles.afterAlignToPrimary,
       textPosition === 'before' && alignToPrimary && styles.beforeAlignToPrimary,
       state.presence.className,
@@ -235,19 +211,16 @@ const useTextClassNames = (
   const textStyles = useTextStyles();
 
   let primaryTextSize;
-  let optionalTextSize;
   let alignToPrimaryClassName;
 
   if (presenceOnly) {
+    primaryTextSize;
     if (size === 'extra-small') {
       primaryTextSize = state.numTextLines > 1 ? textStyles.body1 : textStyles.caption1;
-      optionalTextSize = textStyles.caption1;
     } else if (size === 'extra-large' || size === 'huge') {
       primaryTextSize = textStyles.subtitle2;
-      optionalTextSize = textStyles.caption1;
     } else {
       primaryTextSize = textStyles.body1;
-      optionalTextSize = textStyles.caption1;
     }
 
     if (alignToPrimary) {
@@ -260,13 +233,10 @@ const useTextClassNames = (
   } else {
     if (size === 'huge') {
       primaryTextSize = textStyles.subtitle2;
-      optionalTextSize = textStyles.body1;
     } else if (size === 'extra-large') {
       primaryTextSize = textStyles.subtitle2;
-      optionalTextSize = textStyles.caption1;
     } else {
       primaryTextSize = textStyles.body1;
-      optionalTextSize = textStyles.caption1;
     }
   }
 
@@ -280,7 +250,7 @@ const useTextClassNames = (
     optionalTextClassName: mergeClasses(
       textStyles.base,
       textStyles.optionalText,
-      optionalTextSize,
+      !presenceOnly && size === 'huge' ? textStyles.body1 : textStyles.caption1,
       alignToPrimaryClassName,
     ),
   };

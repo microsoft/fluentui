@@ -65,9 +65,7 @@ export const PresenceSize = () => {
 PresenceSize.parameters = {
   docs: {
     description: {
-      story:
-        `A Persona supports different sizes, medium being the default. When a size is specified for presence` +
-        `, the size is respected.`,
+      story: `A Persona supports different sizes, medium being the default.`,
     },
   },
 };

@@ -65,9 +65,7 @@ export const AvatarSize = () => {
 AvatarSize.parameters = {
   docs: {
     description: {
-      story:
-        `A Persona supports different sizes, medium being the default. When a size is specified for avatar` +
-        `, the size is respected.`,
+      story: `A Persona supports different sizes, medium being the default.`,
     },
   },
 };
