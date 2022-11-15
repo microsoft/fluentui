@@ -239,6 +239,10 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   const calendar = React.useRef<ICalendar>(null);
   const datePickerDiv = React.useRef<HTMLDivElement>(null);
 
+  // Code to trigger bundle size increase
+  let bundle = 1;
+  bundle = bundle ?? 2;
+
   const [textFieldRef, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility(props, focus);
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate(props);
