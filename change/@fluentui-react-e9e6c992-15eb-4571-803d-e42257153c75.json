@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Always give panel header background color",
+  "packageName": "@fluentui/react",
+  "email": "naethell@microsoft.com",
+  "dependentChangeType": "patch"
+}
