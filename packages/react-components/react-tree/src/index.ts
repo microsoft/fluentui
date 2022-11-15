@@ -1,3 +1,3 @@
-export { Tree } from './Tree';
-export { TreeBranch } from './TreeBranch';
-export { TreeLeaf } from './TreeLeaf';
+export { Tree, treeClassNames } from './Tree';
+export { TreeBranch, treeBranchClassNames } from './TreeBranch';
+export { TreeLeaf, treeLeafClassNames } from './TreeLeaf';
