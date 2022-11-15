@@ -39,10 +39,26 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
+const rootTsConfig = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../../tsconfig.base.json'), 'utf-8'),
+) as TsConfig;
+
+function createNormalizedTsPaths(options: { definitionsRootPath: string; rootTsConfig: TsConfig }) {
+  const paths = (options.rootTsConfig.compilerOptions.paths as unknown) as Record<string, string[]>;
+
+  const normalizedPaths = Object.entries(paths).reduce((acc, [pkgName, pathAliases]) => {
+    acc[pkgName] = [path.join(options.definitionsRootPath, pathAliases[0].replace('index.ts', 'index.d.ts'))];
+    return acc;
+  }, {} as typeof paths);
+
+  return normalizedPaths;
+}
+
 export function getTsPathAliasesApiExtractorConfig(options: {
   tsConfig: TsConfig;
   tsConfigPath: string;
   packageJson: PackageJson;
+  definitionsRootPath: string;
 }) {
   /**
    * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
