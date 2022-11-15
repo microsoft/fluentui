@@ -1,47 +1,73 @@
 import * as React from 'react';
+import Screener from 'screener-storybook/src/screener';
 import { Toolbar, ToolbarProps, ToolbarButton, ToolbarDivider, ToolbarToggleButton } from '@fluentui/react-toolbar';
-import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import {
   TextBold24Regular,
   TextItalic24Regular,
   TextUnderline24Regular,
   AlertSnooze24Regular,
-  MoreHorizontal24Filled,
 } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
-import { withScreenerSteps } from '../../utilities';
+import { steps } from './utils';
 
 export default {
   title: 'Toolbar Converged',
   Component: Toolbar,
-  decorators: [story => withScreenerSteps({ story, steps: [] })],
+  decorators: [
+    story => (
+      <Screener steps={steps}>
+        <div className="testWrapper" style={{ width: '300px' }}>
+          {story()}
+        </div>
+      </Screener>
+    ),
+  ],
 } as ComponentMeta<typeof Toolbar>;
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
-    <ToolbarButton aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
     <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
     <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
     <ToolbarDivider />
     <ToolbarToggleButton
+      id="snooze-toggle"
       aria-label="Snooze Alert Option"
       name="toggle"
       value="toggle"
       icon={<AlertSnooze24Regular />}
     />
-    <Menu>
-      <MenuTrigger>
-        <ToolbarButton aria-label="More menu" icon={<MoreHorizontal24Filled />} />
-      </MenuTrigger>
+  </Toolbar>
+);
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>New </MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>Open File</MenuItem>
-          <MenuItem>Open Folder</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+export const Vertical = (props: Partial<ToolbarProps>) => (
+  <Toolbar vertical>
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarDivider />
+    <ToolbarToggleButton
+      id="snooze-toggle"
+      aria-label="Snooze Alert Option"
+      name="toggle"
+      value="toggle"
+      icon={<AlertSnooze24Regular />}
+    />
+  </Toolbar>
+);
+
+export const Small = (props: Partial<ToolbarProps>) => (
+  <Toolbar size="small">
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarDivider />
+    <ToolbarToggleButton
+      id="snooze-toggle"
+      aria-label="Snooze Alert Option"
+      name="toggle"
+      value="toggle"
+      icon={<AlertSnooze24Regular />}
+    />
   </Toolbar>
 );
