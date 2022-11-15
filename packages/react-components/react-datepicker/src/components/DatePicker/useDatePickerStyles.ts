@@ -1,12 +1,13 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DatePickerStyles, DatePickerStyleProps } from './DatePicker.types';
-// import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
-// import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { DatePickerSlots } from './DatePicker.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const datePickerClassNames = {
-  //: SlotClassNames<DatePickerSlots> = {
+export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string> = {
   root: 'fui-DatePicker',
+  inputField: 'fui-DatePicker-inputField',
+  wrapper: 'fui-DatePicker-wrapper',
   callout: 'fui-DatePicker-callout',
   withLabel: 'ms-DatePicker-event--with-label',
   withoutLabel: 'ms-DatePicker-event--without-label',
@@ -122,6 +123,7 @@ export const useDatePickerStyles_unstable = (props: DatePickerStyleProps): Recor
       rootStyles.normalize,
       className,
     ),
+    wrapper: datePickerClassNames.wrapper,
     textField: mergeClasses(textFieldStyles.base, disabled && textFieldStyles.disabled),
     callout: datePickerClassNames.callout,
     icon: mergeClasses(
@@ -133,6 +135,5 @@ export const useDatePickerStyles_unstable = (props: DatePickerStyleProps): Recor
     statusMessage: statusMessageStyles.base,
     readOnlyTextField: mergeClasses(readOnlyTextFieldStyles.base, underlined && readOnlyTextFieldStyles.underlined),
     readOnlyPlaceholder: readOnlyPlaceholderStyles.base,
-    wrapper: '',
   };
 };

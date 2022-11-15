@@ -9,8 +9,6 @@ import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 export const renderDatePicker_unstable = (state: DatePickerState) => {
   const { slots, slotProps } = getSlots<DatePickerSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  // return <slots.root {...slotProps.root} />;
   const { calendar, calendarAs: Calendar, popover, popoverSurface } = state;
 
   return (

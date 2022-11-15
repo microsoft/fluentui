@@ -4,12 +4,7 @@ import { Calendar } from '@fluentui/react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { getNativeElementProps, resolveShorthand, useControllableState, useId } from '@fluentui/react-utilities';
-import {
-  // TODO: classNamesFunction,
-  // divProperties,
-  // getNativeProps
-  Async,
-} from '@fluentui/utilities';
+import { Async } from '@fluentui/utilities';
 import { mergeClasses } from '@griffel/react';
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
@@ -198,6 +193,12 @@ function useErrorMessage(
   ] as const;
 }
 
+const defaultFormatDate = (date?: Date) => (date ? date.toDateString() : '');
+const defaultParseDateFromString = (dateStr: string) => {
+  const date = Date.parse(dateStr);
+  return date ? new Date(date) : null;
+};
+
 /**
  * Create the state required to render DatePicker.
  *
@@ -208,12 +209,6 @@ function useErrorMessage(
  * @param ref - reference to root HTMLElement of DatePicker
  */
 export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLElement>): DatePickerState => {
-  const defaultFormatDate = (date?: Date) => (date ? date.toDateString() : '');
-  const defaultParseDateFromString = (dateStr: string) => {
-    const date = Date.parse(dateStr);
-    return date ? new Date(date) : null;
-  };
-
   const {
     allowTextInput = false,
     allFocusable = false,
@@ -252,15 +247,12 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     today,
     underlined = false,
     value,
-    // TODO: styles,
-    // TODO: theme,
   } = props;
 
   const id = useId('DatePicker', props.id);
   const calloutId = useId('DatePicker-Callout');
 
   const calendar = React.useRef<ICalendar>(null);
-  const datePickerDiv = React.useRef<HTMLDivElement>(null);
 
   const [, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }, focus);
@@ -395,6 +387,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
         }
 
         if (newValue) {
+          console.log(newValue);
           setFormattedDate(newValue);
         }
       }
@@ -545,6 +538,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     ...props,
     className: classNames.root,
   });
+
   const inputFieldShorthand = resolveShorthand(props.inputField, {
     defaultProps: {
       appearance: inputAppearance,
@@ -560,11 +554,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       ),
       disabled,
       label,
-      onBlur: onTextFieldBlur,
-      onChange: onTextFieldChanged,
-      onClick: onTextFieldClick,
-      onFocus: onTextFieldFocus,
-      onKeyDown: onTextFieldKeyDown,
       placeholder,
       readOnly: !allowTextInput,
       required: isRequired,
@@ -572,18 +561,24 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       tabIndex,
       validationMessage: errorMessage ?? statusMessage,
       validationState: errorMessage ? 'error' : undefined,
-      value: formattedDate,
       ...(textFieldProps as InputFieldProps),
       className: mergeClasses(classNames.textField, textFieldProps?.className),
       id: textFieldId,
     },
     required: true,
   });
+  inputFieldShorthand.onBlur = onTextFieldBlur;
+  inputFieldShorthand.onChange = onTextFieldChanged;
+  inputFieldShorthand.onClick = onTextFieldClick;
+  inputFieldShorthand.onFocus = onTextFieldFocus;
+  inputFieldShorthand.onKeyDown = onTextFieldKeyDown;
+  console.log(formattedDate);
+  inputFieldShorthand.value = formattedDate;
+
   const wrapperShorthand = resolveShorthand(props.wrapper, {
     defaultProps: {
       'aria-owns': isCalendarShown ? calloutId : undefined,
       className: classNames.wrapper,
-      ref: datePickerDiv,
     },
     required: true,
   });
