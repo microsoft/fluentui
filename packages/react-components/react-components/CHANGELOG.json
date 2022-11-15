@@ -2,6 +2,687 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 11 Nov 2022 14:57:29 GMT",
+      "tag": "@fluentui/react-components_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "792bd72b19e360afe9ac8e9da298dc3d85776c74",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "792bd72b19e360afe9ac8e9da298dc3d85776c74",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move RadioGroupField into the @fluentui/react-radio package and export as _unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move SliderField into the @fluentui/react-slider package and export as _unstable"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move SpinButtonField into the @fluentui/react-spinbutton package and export as _unstable"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "023737b640281434710caecc55270838895b50bc",
+            "comment": "fix: update disabled + underline and filled styles to match other text-like form control styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "4606358e5e1a4be309e14d3fd28944ecf0e99821",
+            "comment": "Add documentation for Spinner when reduced-motion is active"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "81a3171e14fcaead04c6cf3fbf8eda962178b442",
+            "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "ef2a48de9977e1dc5a370a3c27360eabe5afc71a",
+            "comment": "bugfix: adds line-height=0 to switch indicator slot"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move SwitchField into the @fluentui/react-switch package and export as _unstable"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "81a3171e14fcaead04c6cf3fbf8eda962178b442",
+            "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "715bd7f0686e1080ec0cbbdb5aa14c0d6ef18498",
+            "comment": "Added support for regular/filled icon toggling"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move TextareaField into the @fluentui/react-textarea package and export as _unstable"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d5d03853c4aabcf7cedd715caddd987ba44c1a60",
+            "comment": "Fixed incorrect typography style"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "81a3171e14fcaead04c6cf3fbf8eda962178b442",
+            "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "19c8608a71aa59113bea131bbbd1922125303ced",
+            "comment": "fix: Update Avatar active ring color to match base color"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b932f8ce3676d1fd82a6bdc79364007c9d3b2def",
+            "comment": "chore: Remove AvatarGroup unstable warnings."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "50d5f2ef0d6a06851e78f736055fcc313d61029b",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "81a3171e14fcaead04c6cf3fbf8eda962178b442",
+            "comment": "chore: Replacing use of hard-coded constants with curve and duration tokens from theme."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "6bfd92ec66ded6bc86d73b072d7ee5b3a7b5fcac",
+            "comment": "fix: Showing correct behavior for icons inside of Buttons on hover, pressed and toggle states."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "8dc8e99d3ef23ec868eb1128bb8e167373d1f4cc",
+            "comment": "fix: Adding expanded styles for MenuButtons and making various other styling fixes for Button components."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move CheckboxField into the @fluentui/react-checkbox package and export as _unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Update exports for field components from @fluentui/react-components/unstable"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5de3909d8110cf1e9f17995108629060c306cb4c",
+            "comment": "chore: Export ProgressField from @fluentui/react-components/unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "6645c490bdc0ae1147e46890bef10759934457d3",
+            "comment": "feat: Exports `createColumn` utility from `@fluentui/react-table` as unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "d1228a137bb5f28014bad869d88584ae95ba46da",
+            "comment": "chore: removes unnecessary union case for DialogOpenChangeData"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "023737b640281434710caecc55270838895b50bc",
+            "comment": "fix: update disabled + underline styles, have all text-like form control disabled states match"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move InputField into the @fluentui/react-input package and export as _unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720",
+            "comment": "fix: remove unwanted aria attributes on context menu"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "792bd72b19e360afe9ac8e9da298dc3d85776c74",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "69f16cd042b061b118b3d8b45d556eee3acd02a3",
+            "comment": "refactor Text documentation and add missing guidance for presets/alignment"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "65768ac4e7c6d8bc233535ab8726d3c8f3f224bc",
+            "comment": "chore: update toolbar stories examples"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "169e9b94b0cf741102596f106ed726d9402145cc",
+            "comment": "fix: ToolbarRadio example and click"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "13ef547e23e88e3c52488225fd1a967347b1560d",
+            "comment": "fix: stories from migrated v9 packages are now included."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "956c72db167ea7f1f0be7c9713fc663ab6194544",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "43d8356d0ede055caedd64bc73a7658efe884616",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "d8dec99eae6f1138d8dade6ec57663916a348762",
+            "comment": "Add styling and documentation for reduced-motion"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move ProgressField into the @fluentui/react-progress package and export as _unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move SelectField into the @fluentui/react-select package and export as _unstable"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "023737b640281434710caecc55270838895b50bc",
+            "comment": "fix: update disabled + underline styles, have all text-like form control disabled states match"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "48c85202ce3c230fdc83bde3ce494f952632b16f",
+            "comment": "feat:  Implement child render function for DataGrid rows"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "3088a39d2d18156388378ac9a629e48277347ae7",
+            "comment": "feat: Implement `focusMode` prop for DataGrid, apply role=\"grid\" correctly"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6645c490bdc0ae1147e46890bef10759934457d3",
+            "comment": "BREAKING: ColumnDefinition type is stricter, use createColumn to create column definition. Implments render function for DataGridRow."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "7c951efddfb820f51d6a52a8f994f1c1c712698a",
+            "comment": "feat: add selectable feature to card"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move InputField into the @fluentui/react-input package and export as _unstable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "023737b640281434710caecc55270838895b50bc",
+            "comment": "fix: update disabled + underline styles, have all text-like form control disabled states match"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "b997f7086d8bc5d630f95eec27aa464f2cb53fe1",
+            "comment": "chore: Clean up Field tests and story imports in preparation of moving to individual packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move individual field components into their respective packages, and out of @fluentui/react-field"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b0f2a9accff1456c09a3df81b46a7e84191cb3d6",
+            "comment": "Added support for reserving space for selected state"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "d5d03853c4aabcf7cedd715caddd987ba44c1a60",
+            "comment": "Added large size tabs"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "65b289ef0e47b684365058f16b50587a5fae8633",
+            "comment": "Add both options to axis config"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b932f8ce3676d1fd82a6bdc79364007c9d3b2def",
+            "comment": "feat: Move AvatarGroup to stable."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Nov 2022 14:27:34 GMT",
       "tag": "@fluentui/react-components_v9.6.3",
       "version": "9.6.3",

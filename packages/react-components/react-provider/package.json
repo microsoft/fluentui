@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.1.6",
+  "version": "9.1.7",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -19,25 +19,24 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-provider/src && yarn docs",
     "storybook": "start-storybook",
     "start": "yarn storybook",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.17",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.18",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@griffel/core": "^1.8.1",
     "@griffel/react": "^1.4.2",
-    "@fluentui/react-shared-contexts": "^9.1.0",
-    "@fluentui/react-tabster": "^9.2.1",
-    "@fluentui/react-theme": "^9.1.1",
-    "@fluentui/react-utilities": "^9.2.0",
+    "@fluentui/react-shared-contexts": "^9.1.1",
+    "@fluentui/react-tabster": "^9.3.0",
+    "@fluentui/react-theme": "^9.1.2",
+    "@fluentui/react-utilities": "^9.2.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -54,9 +53,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }

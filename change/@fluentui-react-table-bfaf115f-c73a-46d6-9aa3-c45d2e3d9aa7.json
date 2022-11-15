@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: `sortable` prop no longer enables `TableHeader` navigation",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

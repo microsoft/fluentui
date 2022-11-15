@@ -68,7 +68,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
     disabled?: boolean;
     onTabSelect?: SelectTabEventHandler;
     selectedValue?: TabValue;
-    size?: 'small' | 'medium';
+    size?: 'small' | 'medium' | 'large';
     vertical?: boolean;
 };
 
@@ -105,7 +105,7 @@ export type TabState = ComponentState<TabSlots> & Pick<TabProps, 'value'> & Requ
     iconOnly: boolean;
     selected: boolean;
     contentReservedSpaceClassName?: string;
-    size: 'small' | 'medium';
+    size: 'small' | 'medium' | 'large';
     vertical: boolean;
 };
 

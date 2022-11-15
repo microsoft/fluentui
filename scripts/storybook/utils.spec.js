@@ -2,7 +2,7 @@ const { stripIndents } = require('@nrwl/devkit');
 const fs = require('fs');
 const path = require('path');
 const tmp = require('tmp');
-const { loadWorkspaceAddon } = require('./utils');
+const { loadWorkspaceAddon, getPackageStoriesGlob } = require('./utils');
 
 tmp.setGracefulCleanup();
 
@@ -134,6 +134,24 @@ describe(`utils`, () => {
 
         module.exports = { managerEntries, config };"
       `);
+    });
+  });
+
+  describe(`#getReactComponentsStories`, () => {
+    it(`should generate storybook stories string array of glob based on package.json#dependencies field`, () => {
+      const actual = getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname });
+
+      const expected = [
+        expect.stringContaining('../../packages/react-'),
+        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.stories.mdx)'),
+      ];
+
+      expect(actual).toEqual(expect.arrayContaining(expected));
+
+      const first = actual[0];
+      expect(first.startsWith('../../packages/react-')).toBeTruthy();
+
+      expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
     });
   });
 });
