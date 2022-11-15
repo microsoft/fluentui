@@ -1,6 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useSelectionState } from './useSelection';
 import { mockTableState } from '../testing/mockTableState';
+import { mockSyntheticEvent } from '../testing/mockSyntheticEvent';
 
 describe('useSelectionState', () => {
   const items = [{ value: 'a' }, { value: 'b' }, { value: 'c' }, { value: 'd' }];
@@ -38,7 +39,7 @@ describe('useSelectionState', () => {
         ),
       );
       act(() => {
-        result.current.selection.toggleAllRows();
+        result.current.selection.toggleAllRows(mockSyntheticEvent());
       });
 
       expect(Array.from(result.current.selection.selectedRows)).toEqual(items.map(item => item.value));
@@ -52,12 +53,12 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleAllRows();
+          result.current.selection.toggleAllRows(mockSyntheticEvent());
         });
         expect(result.current.selection.selectedRows.size).toBe(items.length);
         expect(Array.from(result.current.selection.selectedRows)).toEqual(items.map((_, i) => i));
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith(new Set([0, 1, 2, 3]));
+        expect(onSelectionChange).toHaveBeenCalledWith({}, new Set([0, 1, 2, 3]));
       });
 
       it('should deselect all rows', () => {
@@ -67,16 +68,16 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleAllRows();
+          result.current.selection.toggleAllRows(mockSyntheticEvent());
         });
 
         act(() => {
-          result.current.selection.toggleAllRows();
+          result.current.selection.toggleAllRows(mockSyntheticEvent());
         });
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set());
       });
     });
     describe('clearRows', () => {
@@ -87,15 +88,15 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleAllRows();
+          result.current.selection.toggleAllRows(mockSyntheticEvent());
         });
         act(() => {
-          result.current.selection.clearRows();
+          result.current.selection.clearRows(mockSyntheticEvent());
         });
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set());
       });
     });
 
@@ -107,12 +108,12 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
+        expect(onSelectionChange).toHaveBeenCalledWith({}, new Set([1]));
       });
 
       it('should select multiple rows', () => {
@@ -122,18 +123,18 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.selectRow(2);
+          result.current.selection.selectRow(mockSyntheticEvent(), 2);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(2);
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([1, 2]));
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set([1, 2]));
       });
     });
 
@@ -145,16 +146,16 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.deselectRow(1);
+          result.current.selection.deselectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set());
       });
     });
 
@@ -166,13 +167,13 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleRow(1);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
+        expect(onSelectionChange).toHaveBeenCalledWith({}, new Set([1]));
       });
 
       it('should deselect selected row', () => {
@@ -182,17 +183,17 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleRow(1);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.toggleRow(1);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set());
       });
 
       it('should select another unselected row', () => {
@@ -202,18 +203,18 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleRow(1);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.toggleRow(2);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 2);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(2);
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([1, 2]));
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set([1, 2]));
       });
     });
 
@@ -224,7 +225,7 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleAllRows();
+          result.current.selection.toggleAllRows(mockSyntheticEvent());
         });
 
         expect(result.current.selection.allRowsSelected).toBe(true);
@@ -245,11 +246,11 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleAllRows();
+          result.current.selection.toggleAllRows(mockSyntheticEvent());
         });
 
         act(() => {
-          result.current.selection.deselectRow(1);
+          result.current.selection.deselectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(3);
@@ -264,7 +265,7 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);
@@ -318,15 +319,15 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
         act(() => {
-          result.current.selection.clearRows();
+          result.current.selection.clearRows(mockSyntheticEvent());
         });
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set());
       });
     });
 
@@ -338,12 +339,12 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
+        expect(onSelectionChange).toHaveBeenCalledWith({}, new Set([1]));
       });
 
       it('should select another row', () => {
@@ -353,17 +354,17 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.selectRow(2);
+          result.current.selection.selectRow(mockSyntheticEvent(), 2);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set([2]));
       });
     });
 
@@ -375,16 +376,16 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.deselectRow(1);
+          result.current.selection.deselectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set());
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set());
       });
     });
 
@@ -396,13 +397,13 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleRow(1);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith(new Set([1]));
+        expect(onSelectionChange).toHaveBeenCalledWith({}, new Set([1]));
       });
 
       it('should deselect selected row', () => {
@@ -412,17 +413,17 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleRow(1);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.toggleRow(2);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 2);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set([2]));
       });
 
       it('should select another unselected row', () => {
@@ -432,18 +433,18 @@ describe('useSelectionState', () => {
         );
 
         act(() => {
-          result.current.selection.toggleRow(1);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 1);
         });
 
         act(() => {
-          result.current.selection.toggleRow(2);
+          result.current.selection.toggleRow(mockSyntheticEvent(), 2);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, new Set([2]));
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, new Set([2]));
       });
     });
 
@@ -452,7 +453,7 @@ describe('useSelectionState', () => {
         const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);
@@ -472,7 +473,7 @@ describe('useSelectionState', () => {
         const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
 
         act(() => {
-          result.current.selection.selectRow(1);
+          result.current.selection.selectRow(mockSyntheticEvent(), 1);
         });
 
         expect(result.current.selection.selectedRows.size).toBe(1);

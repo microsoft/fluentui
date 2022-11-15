@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-components';
 import { Meta } from '@storybook/react';
 
 export { Default } from './AvatarDefault.stories';

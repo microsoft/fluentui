@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Wed, 02 Nov 2022 11:57:49 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.15)
+
+Fri, 11 Nov 2022 14:57:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.14..@fluentui/react-combobox_v9.0.0-beta.15)
+
+### Changes
+
+- chore: Move InputField into the @fluentui/react-input package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- fix: update disabled + underline styles, have all text-like form control disabled states match ([PR #25543](https://github.com/microsoft/fluentui/pull/25543) by sarah.higley@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.8 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-portal to v9.0.10 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-positioning to v9.3.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.14)
 

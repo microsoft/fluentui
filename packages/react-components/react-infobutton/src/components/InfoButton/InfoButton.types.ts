@@ -18,9 +18,16 @@ export type InfoButtonSlots = {
 /**
  * InfoButton Props
  */
-export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>>;
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+  /**
+   * Size of the InfoButton.
+   *
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+};
 
 /**
  * State used in rendering InfoButton
  */
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;

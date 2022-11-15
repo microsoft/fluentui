@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Wed, 02 Nov 2022 11:58:04 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.6)
+
+Fri, 11 Nov 2022 14:57:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.5..@fluentui/react-text_v9.1.6)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.5)
 

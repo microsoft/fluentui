@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added large size tabs",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
