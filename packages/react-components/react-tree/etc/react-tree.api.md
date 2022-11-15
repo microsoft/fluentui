@@ -4,6 +4,91 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const renderTree_unstable: (state: TreeState) => JSX.Element;
+
+// @public
+export const renderTreeBranch_unstable: (state: TreeBranchState) => JSX.Element;
+
+// @public
+export const renderTreeLeaf_unstable: (state: TreeLeafState) => JSX.Element;
+
+// @public
+export const Tree: ForwardRefComponent<TreeProps>;
+
+// @public
+export const TreeBranch: ForwardRefComponent<TreeBranchProps>;
+
+// @public (undocumented)
+export const treeBranchClassNames: SlotClassNames<TreeBranchSlots>;
+
+// @public
+export type TreeBranchProps = ComponentProps<TreeBranchSlots> & {};
+
+// @public (undocumented)
+export type TreeBranchSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeBranchState = ComponentState<TreeBranchSlots>;
+
+// @public (undocumented)
+export const treeClassNames: SlotClassNames<TreeSlots>;
+
+// @public
+export const TreeLeaf: ForwardRefComponent<TreeLeafProps>;
+
+// @public (undocumented)
+export const treeLeafClassNames: SlotClassNames<TreeLeafSlots>;
+
+// @public
+export type TreeLeafProps = ComponentProps<TreeLeafSlots> & {};
+
+// @public (undocumented)
+export type TreeLeafSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeLeafState = ComponentState<TreeLeafSlots>;
+
+// @public
+export type TreeProps = ComponentProps<TreeSlots> & {};
+
+// @public (undocumented)
+export type TreeSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeState = ComponentState<TreeSlots>;
+
+// @public
+export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
+
+// @public
+export const useTreeBranch_unstable: (props: TreeBranchProps, ref: React_2.Ref<HTMLElement>) => TreeBranchState;
+
+// @public
+export const useTreeBranchStyles_unstable: (state: TreeBranchState) => TreeBranchState;
+
+// @public
+export const useTreeLeaf_unstable: (props: TreeLeafProps, ref: React_2.Ref<HTMLElement>) => TreeLeafState;
+
+// @public
+export const useTreeLeafStyles_unstable: (state: TreeLeafState) => TreeLeafState;
+
+// @public
+export const useTreeStyles_unstable: (state: TreeState) => TreeState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
