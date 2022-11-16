@@ -2012,8 +2012,10 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
     render(): JSX.Element;
 }
 
+// Warning: (ae-forgotten-export) The symbol "IGroupedListV2Props" needs to be exported by the entry point index.d.ts
+//
 // @public
-export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListProps>;
+export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListV2Props>;
 
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
