@@ -82,7 +82,7 @@ jobs:
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
-          API_TOKEN: $(TEST_PAT)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
           API_REPOSITORY: $(Build.Repository.Name)
           API_PROJECT: $(System.TeamProject)
           SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv9
@@ -159,7 +159,7 @@ jobs:
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
-          API_TOKEN: $(TEST_PAT)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
           API_REPOSITORY: $(Build.Repository.Name)
           API_PROJECT: $(System.TeamProject)
           SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv8
