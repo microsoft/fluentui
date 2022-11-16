@@ -29,6 +29,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   image: {
+    display: 'inline-flex',
     marginRight: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
     gridColumnStart: '1',
     gridRowStart: 'span 2',

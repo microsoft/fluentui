@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "exposes internal methods and types that are used in the API surface",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -15,19 +15,41 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { ReactNode } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export type CellRenderFunction = (column: ColumnDefinition<any>) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface ColumnDefinition<TItem> {
     // (undocumented)
     columnId: ColumnId;
     // (undocumented)
-    compare?: (a: TItem, b: TItem) => number;
+    compare: (a: TItem, b: TItem) => number;
+    // (undocumented)
+    renderCell: (item: TItem) => React_2.ReactNode;
+    // (undocumented)
+    renderHeaderCell: () => React_2.ReactNode;
 }
 
 // @public (undocumented)
 export type ColumnId = string | number;
+
+// @public
+export function createColumn<TItem>(options: CreateColumnOptions<TItem>): {
+    columnId: ColumnId;
+    renderCell: (item: TItem) => ReactNode;
+    renderHeaderCell: () => ReactNode;
+    compare: (a: TItem, b: TItem) => number;
+};
+
+// @public (undocumented)
+export interface CreateColumnOptions<TItem> extends Partial<ColumnDefinition<TItem>> {
+    // (undocumented)
+    columnId: ColumnId;
+}
 
 // @public
 export const DataGrid: ForwardRefComponent<DataGridProps>;
@@ -39,7 +61,9 @@ export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
 export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots>;
 
 // @public
-export type DataGridBodyProps = TableBodyProps;
+export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
+    children: RowRenderFunction;
+};
 
 // @public (undocumented)
 export type DataGridBodySlots = TableBodySlots;
@@ -66,7 +90,14 @@ export type DataGridCellState = TableCellState;
 export const dataGridClassNames: SlotClassNames<DataGridSlots>;
 
 // @public (undocumented)
-export type DataGridContextValues = TableContextValues;
+export type DataGridContextValue = HeadlessTableState<any> & {
+    focusMode: FocusMode;
+};
+
+// @public (undocumented)
+export type DataGridContextValues = TableContextValues & {
+    dataGrid: DataGridContextValue;
+};
 
 // @public
 export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
@@ -99,7 +130,7 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps;
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'>;
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
@@ -108,7 +139,9 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps = TableRowProps;
+export type DataGridRowProps = Omit<TableRowProps, 'children'> & {
+    children: CellRenderFunction;
+};
 
 // @public (undocumented)
 export type DataGridRowSlots = TableRowSlots;
@@ -135,7 +168,12 @@ export type DataGridSelectionCellState = TableSelectionCellState;
 export type DataGridSlots = TableSlots;
 
 // @public
-export type DataGridState = TableState;
+export type DataGridState = TableState & {
+    tableState: HeadlessTableState<unknown>;
+} & Pick<DataGridContextValue, 'focusMode'>;
+
+// @public (undocumented)
+export type FocusMode = 'none' | 'cell';
 
 // @public (undocumented)
 export interface HeadlessTableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
@@ -195,6 +233,9 @@ export const renderTableSelectionCell_unstable: (state: TableSelectionCellState)
 
 // @public (undocumented)
 export type RowId = string | number;
+
+// @public (undocumented)
+export type RowRenderFunction<TItem = any> = (row: RowState<TItem>) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface RowState<TItem> {
@@ -408,14 +449,14 @@ export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & 
 // @public (undocumented)
 export interface TableSelectionState {
     allRowsSelected: boolean;
-    clearRows: () => void;
-    deselectRow: (rowId: RowId) => void;
+    clearRows: (e: React_2.SyntheticEvent) => void;
+    deselectRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
     isRowSelected: (rowId: RowId) => boolean;
     selectedRows: Set<RowId>;
-    selectRow: (rowId: RowId) => void;
+    selectRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
     someRowsSelected: boolean;
-    toggleAllRows: () => void;
-    toggleRow: (rowId: RowId) => void;
+    toggleAllRows: (e: React_2.SyntheticEvent) => void;
+    toggleRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
 }
 
 // @public (undocumented)
@@ -426,11 +467,11 @@ export type TableSlots = {
 // @public (undocumented)
 export interface TableSortState<TItem> {
     getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
-    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
-    sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
+    setColumnSort: (event: React_2.SyntheticEvent, columnId: ColumnId, sortDirection: SortDirection) => void;
+    sort: <TRowState extends RowState<TItem>>(rows: TRowState[]) => TRowState[];
     sortColumn: ColumnId | undefined;
     sortDirection: SortDirection;
-    toggleColumnSort: (columnId: ColumnId) => void;
+    toggleColumnSort: (event: React_2.SyntheticEvent, columnId: ColumnId) => void;
 }
 
 // @public

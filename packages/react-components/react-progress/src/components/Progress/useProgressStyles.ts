@@ -98,6 +98,10 @@ const useBarStyles = makeStyles({
     animationName: indeterminateProgress,
     animationDuration: '3s',
     animationIterationCount: 'infinite',
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      animationDuration: '0.01ms',
+      animationIterationCount: '1',
+    },
   },
 
   rtl: {
@@ -105,13 +109,13 @@ const useBarStyles = makeStyles({
   },
 
   error: {
-    backgroundColor: tokens.colorPaletteRedForeground1,
+    backgroundColor: tokens.colorPaletteRedBackground3,
   },
   warning: {
-    backgroundColor: tokens.colorPaletteDarkOrangeForeground1,
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
   },
   success: {
-    backgroundColor: tokens.colorPaletteGreenForeground1,
+    backgroundColor: tokens.colorPaletteGreenBackground3,
   },
 });
 

@@ -17,7 +17,7 @@ export function isConformant<TProps = {}>(
       'consistent-callback-args',
       'component-has-static-classnames-object',
     ],
-    componentPath: module!.parent!.filename.replace('.test', ''),
+    componentPath: require.main?.filename.replace('.test', ''),
   };
 
   baseIsConformant(defaultOptions, testInfo);

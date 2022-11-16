@@ -1,31 +1,100 @@
 import * as React from 'react';
-import { action } from '@storybook/addon-actions';
-import { makeStyles, shorthands, Subtitle1 } from '@fluentui/react-components';
-import { SampleCard } from './SampleCard.stories';
+import {
+  makeStyles,
+  shorthands,
+  tokens,
+  Button,
+  Text,
+  Caption1,
+  Subtitle1,
+  Body1,
+  mergeClasses,
+} from '@fluentui/react-components';
+import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { Card, CardHeader, CardProps } from '@fluentui/react-card';
+
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
+
+  return `${ASSET_URL}${asset}`;
+};
 
 const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  themeContainer: {
+  main: {
+    ...shorthands.gap('36px'),
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.padding('16px'),
-    ...shorthands.gap('16px'),
+    flexWrap: 'wrap',
   },
-  header: {
-    marginBottom: '12px',
+
+  title: {
+    ...shorthands.margin(0, 0, '12px'),
+  },
+
+  description: {
+    ...shorthands.margin(0, 0, '12px'),
+  },
+
+  card: {
+    width: '480px',
+    maxWidth: '100%',
+    height: 'fit-content',
+  },
+
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+
+  logo: {
+    ...shorthands.borderRadius('4px'),
+    width: '48px',
+    height: '48px',
+  },
+
+  text: {
+    ...shorthands.margin(0),
   },
 });
 
-const Title = (props: { children: React.ReactNode }) => {
+const Header = ({ title, description }: Record<string, string>) => {
   const styles = useStyles();
 
   return (
-    <Subtitle1 as="h4" block className={styles.header}>
-      {props.children}
-    </Subtitle1>
+    <>
+      {title ? (
+        <Subtitle1 as="h4" block className={styles.title}>
+          {title}
+        </Subtitle1>
+      ) : null}
+
+      {description ? (
+        <Body1 as="p" block className={styles.description}>
+          {description}
+        </Body1>
+      ) : null}
+    </>
+  );
+};
+
+const CardExample = ({ className, ...props }: CardProps) => {
+  const styles = useStyles();
+
+  const onClick = React.useCallback(() => console.log('Interactive!'), []);
+
+  return (
+    <Card {...props} className={mergeClasses(className, styles.card)} onClick={onClick}>
+      <CardHeader
+        image={<img className={styles.logo} src={resolveAsset('app_logo.svg')} />}
+        header={<Text weight="semibold">App Name</Text>}
+        description={<Caption1 className={styles.caption}>Developer</Caption1>}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+      />
+
+      <p className={styles.text}>
+        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      </p>
+    </Card>
   );
 };
 
@@ -33,39 +102,50 @@ export const Appearance = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.themeContainer}>
-      <div>
-        <Title>Filled (default)</Title>
-        <SampleCard appearance="filled" />
-      </div>
-      <div>
-        <Title>Filled - Interactive</Title>
-        <SampleCard onClick={action('Filled Card clicked')} appearance="filled" />
-      </div>
-      <div>
-        <Title>Filled Alternative</Title>
-        <SampleCard appearance="filled-alternative" />
-      </div>
-      <div>
-        <Title>Filled Alternative - Interactive</Title>
-        <SampleCard onClick={action('Filled Alternative Card clicked')} appearance="filled-alternative" />
-      </div>
-      <div>
-        <Title>Outline</Title>
-        <SampleCard appearance="outline" />
-      </div>
-      <div>
-        <Title>Outline - Interactive</Title>
-        <SampleCard onClick={action('Outline Card clicked')} appearance="outline" />
-      </div>
-      <div>
-        <Title>Subtle</Title>
-        <SampleCard appearance="subtle" />
-      </div>
-      <div>
-        <Title>Subtle - Interactive</Title>
-        <SampleCard onClick={action('Subtle Card clicked')} appearance="subtle" />
-      </div>
+    <div className={styles.main}>
+      <section>
+        <Header
+          title="Default"
+          description="This is the default style to use for cards. Use this style variant for most of your card
+          designs."
+        />
+        <CardExample />
+      </section>
+
+      <section>
+        <Header
+          title="Filled Alternative"
+          description="Use if your card is being displayed on a lighter gray or white surface. This ensures that you
+          have adequate contrast between the card surface and the background of the application."
+        />
+        <CardExample appearance="filled-alternative" />
+      </section>
+
+      <section>
+        <Header
+          title="Outline"
+          description="Use when you don't want a filled background color but a discernable outline (border) on the
+          card."
+        />
+        <CardExample appearance="outline" />
+      </section>
+
+      <section>
+        <Header
+          title="Subtle"
+          description="This variant doesn't have a background or border for the card container. However, it does include
+          interaction states that display a visible footprint when interacting with the card item."
+        />
+        <CardExample appearance="subtle" />
+      </section>
     </div>
   );
+};
+
+Appearance.parameters = {
+  docs: {
+    description: {
+      story: 'Cards can have different styles depending on the situation and where it is placed.',
+    },
+  },
 };

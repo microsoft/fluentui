@@ -10,10 +10,8 @@ describe('DataGridBody', () => {
     displayName: 'DataGridBody',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<DataGridBody>Default DataGridBody</DataGridBody>);
+  it('renders items from render function', () => {
+    const result = render(<DataGridBody>{() => 'foo'}</DataGridBody>);
     expect(result.container).toMatchSnapshot();
   });
 });

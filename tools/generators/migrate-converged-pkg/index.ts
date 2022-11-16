@@ -262,16 +262,12 @@ const templates = {
             outDir: 'dist',
             types: ['jest', 'node'],
           } as TsConfig['compilerOptions'],
-          include: [
-            '**/*.spec.ts',
-            '**/*.spec.tsx',
-            '**/*.test.ts',
-            '**/*.test.tsx',
-            '**/*.d.ts',
-            './src/testing/**/*.ts',
-            './src/testing/**/*.tsx',
-          ],
+          include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
         };
+
+        if (options.hasConformance) {
+          tsConfig.include.push('./src/testing/**/*.ts', './src/testing/**/*.tsx');
+        }
 
         if (options.js) {
           tsConfig.include = globsToJs(tsConfig.include);
