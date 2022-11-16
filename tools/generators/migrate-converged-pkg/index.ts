@@ -130,7 +130,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   // update package npm scripts
   updatePackageJson(tree, optionsWithTsConfigs);
-  updateApiExtractorForLocalBuilds(tree, optionsWithTsConfigs);
+  updateApiExtractor(tree, optionsWithTsConfigs);
 
   // setup storybook
   setupStorybook(tree, options);
@@ -155,12 +155,6 @@ const templates = {
       main: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
-        // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
-        dtsRollup: {
-          enabled: true,
-          untrimmedFilePath: '',
-          publicTrimmedFilePath: '<projectFolder>/dist/index.d.ts',
-        },
       },
       unstable: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
@@ -174,8 +168,7 @@ const templates = {
         },
         dtsRollup: {
           enabled: true,
-          untrimmedFilePath: '<projectFolder>/dist/unstable-untrimmed.d.ts',
-          publicTrimmedFilePath: '<projectFolder>/dist/unstable.d.ts',
+          untrimmedFilePath: '<projectFolder>/dist/unstable.d.ts',
         },
       },
     };
@@ -576,11 +569,11 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   updateUnstablePackageJson();
-  updateUnstableApiExtractorForLocalBuilds();
+  updateUnstableApiExtractor();
 
   return tree;
 
-  function updateUnstableApiExtractorForLocalBuilds() {
+  function updateUnstableApiExtractor() {
     const apiExtractor = templates.apiExtractor();
 
     writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.unstable.json'), apiExtractor.unstable);
@@ -646,7 +639,6 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   function setupScripts(json: PackageJson) {
     const scripts = {
-      'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
       test: 'jest --passWithNoTests',
       'type-check': 'tsc -b tsconfig.json',
     };
@@ -686,11 +678,20 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 }
 
-function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
+function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   const apiExtractor = templates.apiExtractor();
+  const scripts = {
+    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+  };
 
   tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
+
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    Object.assign(json.scripts, scripts);
+
+    return json;
+  });
 
   return tree;
 }

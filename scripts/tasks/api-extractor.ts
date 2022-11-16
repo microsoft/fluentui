@@ -147,6 +147,7 @@ export function apiExtractor() {
                   tsConfig,
                   tsConfigPath,
                   packageJson,
+                  definitionsRootPath: 'dist/out-tsc/types',
                 });
 
                 config.compiler = compilerConfig;

@@ -39,18 +39,42 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
+const rootTsConfig = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../../tsconfig.base.json'), 'utf-8'),
+) as TsConfig;
+
+function createNormalizedTsPaths(options: { definitionsRootPath: string; rootTsConfig: TsConfig }) {
+  const paths = (options.rootTsConfig.compilerOptions.paths as unknown) as Record<string, string[]>;
+
+  const normalizedPaths = Object.entries(paths).reduce((acc, [pkgName, pathAliases]) => {
+    acc[pkgName] = [path.join(options.definitionsRootPath, pathAliases[0].replace('index.ts', 'index.d.ts'))];
+    return acc;
+  }, {} as typeof paths);
+
+  return normalizedPaths;
+}
+
 export function getTsPathAliasesApiExtractorConfig(options: {
   tsConfig: TsConfig;
   tsConfigPath: string;
   packageJson: PackageJson;
+  definitionsRootPath: string;
 }) {
+  const hasNewCompilationSetup = ((options.tsConfig.compilerOptions as unknown) as { outDir: string }).outDir.includes(
+    'dist/out-tsc',
+  );
+  // TODO: after all v9 is migrated to new tsc processing use only createNormalizedTsPaths
+  const normalizedPaths = hasNewCompilationSetup
+    ? createNormalizedTsPaths({ definitionsRootPath: options.definitionsRootPath, rootTsConfig })
+    : undefined;
+
   /**
    * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
    *
    * NOTES:
    * - `extends` is properly resolved via api-extractor which uses TS api
    * - `skipLibCheck` needs to be explicitly set to `false` so errors propagate to api-extractor
-   * - `paths` is set to `undefined` so api-extractor won't use source files rather rollup-ed declaration files only
+   * - `paths` is overriden to path mapping that points to generated declaration files. This also enables creation of dts rollup without a need of generating rollups for all dependencies 🫡
    *
    */
   const apiExtractorTsConfig: TsConfig = {
@@ -71,7 +95,8 @@ export function getTsPathAliasesApiExtractorConfig(options: {
       /**
        * just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
        */
-      paths: undefined,
+      // @ts-expect-error - just-scripts provides invalid types
+      paths: normalizedPaths,
     },
   };
 

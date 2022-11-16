@@ -34,7 +34,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     if (hasNewCompilationSetup) {
       options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     } else {
-      // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+      // TODO: remove after all v9 is migrated to new tsc processing
       options.baseUrl = '.';
       options.rootDir = './src';
     }
