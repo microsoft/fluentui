@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 16 Nov 2022 07:47:29 GMT",
+      "tag": "@fluentui/react_v8.101.2",
+      "version": "8.101.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "9cd5e0afbd6505e57f4d3fa70c59190c0608cbb7",
+            "comment": "fix: Making Stack properly render non-ReactElement children."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "00815ce18bbe098b1c9cd61c7f2fd04b87d1ae0d",
+            "comment": "fix: set correct aria-posinset and aria-rowindex values on GroupedListV2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Nov 2022 07:44:59 GMT",
       "tag": "@fluentui/react_v8.101.1",
       "version": "8.101.1",
