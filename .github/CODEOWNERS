@@ -86,7 +86,7 @@ apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
 
 #### Packages
-packages/azure-themes @hyoshis @Jacqueline-ms
+packages/azure-themes @robtaft-ms @Jacqueline-ms
 packages/bundle-size @microsoft/teams-prg
 packages/date-time-utilities @microsoft/fluent-date-time
 packages/eslint-plugin @microsoft/fluentui-react-build
