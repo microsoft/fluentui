@@ -17,7 +17,7 @@ pool: '1ES-Host-Ubuntu'
 jobs:
   - job: VisualRegressionTest_V9
     variables:
-      pipelineId: '211'
+      pipelineId: '311'
       pipelineName: 'fluent-ui VRT Pipeline v9'
 
     workspace:
@@ -95,7 +95,7 @@ jobs:
 
   - job: VisualRegressionTest_V8
     variables:
-      pipelineId: '212'
+      pipelineId: '312'
       pipelineName: 'fluent-ui VRT Pipeline v8'
     workspace:
       clean: all
