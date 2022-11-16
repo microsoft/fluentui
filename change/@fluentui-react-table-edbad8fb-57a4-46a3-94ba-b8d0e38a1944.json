@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: Headless table callbacks require event",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

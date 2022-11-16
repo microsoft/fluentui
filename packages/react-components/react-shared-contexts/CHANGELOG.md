@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 02 Nov 2022 11:58:00 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.1.1)
+
+Fri, 11 Nov 2022 14:57:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.1.0..@fluentui/react-shared-contexts_v9.1.1)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.1.0)
 
