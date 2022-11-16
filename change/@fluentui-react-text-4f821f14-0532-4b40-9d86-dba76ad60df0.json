@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test: replace deprecated module.parent with require.main within isConformance",
-  "packageName": "@fluentui/react-text",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

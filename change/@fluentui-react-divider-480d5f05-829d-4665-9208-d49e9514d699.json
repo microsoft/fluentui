@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: create valid export maps",
-  "packageName": "@fluentui/react-divider",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

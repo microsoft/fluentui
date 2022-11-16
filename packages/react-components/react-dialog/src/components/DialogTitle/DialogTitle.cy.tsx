@@ -14,7 +14,7 @@ import {
   DialogTrigger,
 } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
-import { dialogActionSelector, dialogTriggerOpenSelector } from '../../testing/selectors';
+import { dialogActionSelector, dialogTriggerOpenId, dialogTriggerOpenSelector } from '../../testing/selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -24,7 +24,7 @@ describe('DialogTitle', () => {
       mount(
         <Dialog modalType="modal">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -53,7 +53,7 @@ describe('DialogTitle', () => {
       mount(
         <Dialog modalType="non-modal">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
@@ -82,7 +82,7 @@ describe('DialogTitle', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger disableButtonEnhancement>
-            <Button>Open dialog</Button>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>

@@ -4,7 +4,7 @@ import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
-import { menuTriggerSelector, menuItemSelector, menuSelector } from '../../testing/selectors';
+import { menuItemSelector, menuSelector } from '../../testing/selectors';
 
 import { MenuList, MenuItem, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-menu';
 const mount = (element: JSX.Element) => {
@@ -53,19 +53,19 @@ describe('MenuList', () => {
 
     it('should not open a menu trigger with ArrowDown', () => {
       mount(<Example />);
-      cy.get(menuTriggerSelector).focus().type('{downarrow}').get(menuSelector).should('have.length', 1);
+      cy.get(menuItemSelector).eq(3).focus().type('{downarrow}').get(menuSelector).should('have.length', 1);
     });
 
     it('should focus next menuitem from a menu trigger with ArrowDown', () => {
       mount(<Example />);
-      cy.get('body').click().get(menuTriggerSelector).focus().type('{downarrow}');
+      cy.get('body').click().get(menuItemSelector).eq(3).focus().type('{downarrow}');
 
       cy.focused().get(menuItemSelector).first().should('be.focused');
     });
 
     it('should open a menu trigger with ArrowRight', () => {
       mount(<Example />);
-      cy.get(menuTriggerSelector).focus().type('{rightarrow}').get(menuSelector).should('have.length', 2);
+      cy.get(menuItemSelector).eq(3).focus().type('{rightarrow}').get(menuSelector).should('have.length', 2);
     });
   });
 });
