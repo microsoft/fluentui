@@ -1,13 +1,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Steps } from 'screener-storybook/src/screener';
+import { Steps } from 'storywright';
 import { checkboxClassName } from '@fluentui/react-northstar';
 import { keys } from '../utilities';
 
-const screenerSteps = new Steps()
+const StoryWrightSteps = new Steps()
   .click(`.${checkboxClassName}`)
   .snapshot('Checks checkbox')
   .keys('body', keys.tab)
   .snapshot('Focuses checkbox')
   .end();
 
-export default screenerSteps;
+export default StoryWrightSteps;

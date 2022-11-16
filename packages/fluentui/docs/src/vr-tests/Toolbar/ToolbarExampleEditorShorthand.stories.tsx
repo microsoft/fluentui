@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Toolbar } from '@fluentui/react-northstar';
@@ -11,7 +11,9 @@ export default {
   component: Toolbar,
   title: 'Toolbar',
   decorators: [
-    story => <Screener steps={new Steps().keys('body', keys.tab).snapshot('Focuses item').end()}>{story()}</Screener>,
+    story => (
+      <StoryWright steps={new Steps().keys('body', keys.tab).snapshot('Focuses item').end()}>{story()}</StoryWright>
+    ),
   ],
 } as ComponentMeta<typeof Toolbar>;
 

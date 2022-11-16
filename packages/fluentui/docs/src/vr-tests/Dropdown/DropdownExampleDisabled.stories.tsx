@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames, dropdownSearchInputSlotClassNames } from '@fluentui/react-northstar';
@@ -17,12 +17,14 @@ export default {
   title: 'Dropdown',
   decorators: [
     story => (
-      <Screener steps={new Steps().hover(selectors.triggerButton).snapshot('Mouse hover on trigger').end()}>
+      <StoryWright steps={new Steps().hover(selectors.triggerButton).snapshot('Mouse hover on trigger').end()}>
         {story()}
-      </Screener>
+      </StoryWright>
     ),
     story => (
-      <Screener steps={new Steps().hover(selectors.input).snapshot('Mouse hover on input').end()}>{story()}</Screener>
+      <StoryWright steps={new Steps().hover(selectors.input).snapshot('Mouse hover on input').end()}>
+        {story()}
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Dropdown>;

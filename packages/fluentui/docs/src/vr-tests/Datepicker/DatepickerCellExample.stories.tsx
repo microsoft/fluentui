@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Datepicker, inputClassName } from '@fluentui/react-northstar';
@@ -13,7 +13,7 @@ export default {
   title: 'Datepicker',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps()
           .click(`.${inputClassName}`)
           .snapshot('Shows datepicker popup.')
@@ -24,7 +24,7 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Datepicker>;

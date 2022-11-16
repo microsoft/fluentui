@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Input, inputClassName } from '@fluentui/react-northstar';
@@ -12,11 +12,11 @@ export default {
   title: 'Input',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps().setValue(`.${inputClassName} input`, 'Some text...').snapshot('Can be clearable').end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Input>;

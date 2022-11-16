@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Slider } from '@fluentui/react-northstar';
-import { focusSliderSteps, rightArrowSteps, upArrowSteps } from './commonScreenerSteps';
+import { focusSliderSteps, rightArrowSteps, upArrowSteps } from './commonStoryWrightSteps';
 import { getThemeStoryVariant } from '../utilities';
 import SliderExampleRtl from '../../examples/components/Slider/Rtl/SliderExample.rtl';
 
@@ -12,9 +12,9 @@ export default {
   component: Slider,
   title: 'Slider',
   decorators: [
-    story => <Screener steps={focusSliderSteps}>{story()}</Screener>,
-    story => <Screener steps={rightArrowSteps}>{story()}</Screener>,
-    story => <Screener steps={upArrowSteps}>{story()}</Screener>,
+    story => <StoryWright steps={focusSliderSteps}>{story()}</StoryWright>,
+    story => <StoryWright steps={rightArrowSteps}>{story()}</StoryWright>,
+    story => <StoryWright steps={upArrowSteps}>{story()}</StoryWright>,
   ],
 } as ComponentMeta<typeof Slider>;
 

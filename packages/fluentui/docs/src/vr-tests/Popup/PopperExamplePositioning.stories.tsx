@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Popup } from '@fluentui/react-northstar';
@@ -11,8 +11,8 @@ export default {
   title: 'Popup',
   decorators: [
     story => (
-      <Screener
-        steps={new Steps() // A popper can't be opened in visual tests by default as it makes Screener results unstable
+      <StoryWright
+        steps={new Steps() // A popper can't be opened in visual tests by default as it makes { StoryWright } results unstable
           // because of 1px shift on different renders
           .click('#open-popper')
           .snapshot('Opened on Box A (default position)')
@@ -25,7 +25,7 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Popup>;

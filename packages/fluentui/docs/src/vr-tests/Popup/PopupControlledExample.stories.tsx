@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Popup, buttonClassName, dropdownSlotClassNames } from '@fluentui/react-northstar';
@@ -18,13 +18,13 @@ export default {
   title: 'Popup',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps()
           .click(selectors.popupTrigger)
           .click(selectors.toggleIndicator)
           .hover(selectors.item(2))
 
-          // A hack to load images properly in Screener
+          // A hack to load images properly in StoryWright
           .wait(500)
 
           .snapshot('Prepares to select item out of popup.')
@@ -33,7 +33,7 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Popup>;

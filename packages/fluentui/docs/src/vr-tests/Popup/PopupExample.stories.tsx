@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Popup, buttonClassName } from '@fluentui/react-northstar';
@@ -12,7 +12,9 @@ export default {
   title: 'Popup',
   decorators: [
     story => (
-      <Screener steps={new Steps().click(`.${buttonClassName}`).snapshot('Shows popup').end()}>{story()}</Screener>
+      <StoryWright steps={new Steps().click(`.${buttonClassName}`).snapshot('Shows popup').end()}>
+        {story()}
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Popup>;

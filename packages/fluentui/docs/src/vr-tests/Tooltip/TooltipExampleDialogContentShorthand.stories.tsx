@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tooltip, buttonClassName, dialogSlotClassNames } from '@fluentui/react-northstar';
@@ -11,7 +11,7 @@ export default {
   title: 'Tooltip',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps()
           .click(`.${buttonClassName}`)
           .hover(`.${dialogSlotClassNames.content} .${buttonClassName}`)
@@ -19,7 +19,7 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Tooltip>;

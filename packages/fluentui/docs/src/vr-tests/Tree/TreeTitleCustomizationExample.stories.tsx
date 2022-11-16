@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tree, treeItemClassName, treeTitleClassName } from '@fluentui/react-northstar';
@@ -16,11 +16,11 @@ export default {
   title: 'Tree',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps().click(selectors.treeTitle(1)).click(selectors.treeTitle(2)).snapshot('Exapanded').end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Tree>;

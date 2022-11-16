@@ -1,17 +1,17 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Menu } from '@fluentui/react-northstar';
-import getScreenerSteps from './commonScreenerSteps';
+import getStoryWrightSteps from './commonStoryWrightSteps';
 import { getThemeStoryVariant } from '../utilities';
 import MenuExampleIconOnly from '../../examples/components/Menu/Slots/MenuExampleIconOnly.shorthand';
 
 export default {
   component: Menu,
   title: 'Menu',
-  decorators: [story => <Screener steps={getScreenerSteps({})}>{story()}</Screener>],
+  decorators: [story => <StoryWright steps={getStoryWrightSteps({})}>{story()}</StoryWright>],
 } as ComponentMeta<typeof Menu>;
 
 const MenuExampleIconOnlyTeams = getThemeStoryVariant(MenuExampleIconOnly, 'teamsV2');

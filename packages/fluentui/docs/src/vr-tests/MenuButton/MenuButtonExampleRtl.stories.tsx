@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { MenuButton, buttonClassName } from '@fluentui/react-northstar';
@@ -11,9 +11,9 @@ export default {
   title: 'MenuButton',
   decorators: [
     story => (
-      <Screener steps={new Steps().click(`.${buttonClassName}`).snapshot('RTL: Shows menuButton').end()}>
+      <StoryWright steps={new Steps().click(`.${buttonClassName}`).snapshot('RTL: Shows menuButton').end()}>
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof MenuButton>;

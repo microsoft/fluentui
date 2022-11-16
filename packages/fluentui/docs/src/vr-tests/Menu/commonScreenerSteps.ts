@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Steps } from 'screener-storybook/src/screener';
+import { Steps } from 'storywright';
 import { menuClassName } from '@fluentui/react-northstar';
 import { keys } from '../utilities';
 
@@ -8,7 +8,7 @@ export const selectors = {
   item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
 };
 
-const getScreenerSteps = ({ vertical = false, startItem = 2, endItem = 3 }) =>
+const getStoryWrightSteps = ({ vertical = false, startItem = 2, endItem = 3 }) =>
   new Steps()
     .hover(selectors.item(startItem))
     .snapshot('Hovers 2nd item (hover state styles)')
@@ -20,4 +20,4 @@ const getScreenerSteps = ({ vertical = false, startItem = 2, endItem = 3 }) =>
     .snapshot('Navigates to previous item (active and focus state styles)')
     .end();
 
-export default getScreenerSteps;
+export default getStoryWrightSteps;

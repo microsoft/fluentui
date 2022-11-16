@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Provider, buttonClassName } from '@fluentui/react-northstar';
@@ -14,7 +14,7 @@ export default {
   title: 'Provider',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps()
           .click(button)
           .keys(button, keys.downArrow)
@@ -22,7 +22,7 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Provider>;

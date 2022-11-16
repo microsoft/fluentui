@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Steps } from 'screener-storybook/src/screener';
+import { Steps } from 'storywright';
 import { sliderSlotClassNames } from '@fluentui/react-northstar';
 import { keys } from '../utilities';
 

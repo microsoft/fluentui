@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Divider, RadioGroup } from '@fluentui/react-northstar';
@@ -49,7 +49,9 @@ export default {
   component: RadioGroup,
   title: 'RadioGroup',
   decorators: [
-    story => <Screener steps={new Steps().keys('body', keys.tab).snapshot('Focuses item').end()}>{story()}</Screener>,
+    story => (
+      <StoryWright steps={new Steps().keys('body', keys.tab).snapshot('Focuses item').end()}>{story()}</StoryWright>
+    ),
   ],
 } as ComponentMeta<typeof RadioGroup>;
 

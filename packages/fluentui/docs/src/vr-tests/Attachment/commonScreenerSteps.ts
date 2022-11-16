@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { Steps } from 'screener-storybook/src/screener';
+import { Steps } from 'storywright';
 import { attachmentClassName, attachmentActionClassName } from '@fluentui/react-northstar';
 import { keys } from '../utilities/utils';
 
@@ -8,7 +8,7 @@ const selectors = {
   action: `.${attachmentActionClassName}`,
 };
 
-const screenerSteps = new Steps()
+const StoryWrightSteps = new Steps()
   .hover(selectors.root)
   .snapshot('Hovers root')
   .keys('body', keys.tab)
@@ -20,4 +20,4 @@ const screenerSteps = new Steps()
   .snapshot('Focuses action')
   .end();
 
-export default screenerSteps;
+export default StoryWrightSteps;

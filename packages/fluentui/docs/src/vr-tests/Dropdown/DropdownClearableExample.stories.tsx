@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames } from '@fluentui/react-northstar';
@@ -23,7 +23,7 @@ const steps = new Steps()
 export default {
   component: Dropdown,
   title: 'Dropdown',
-  decorators: [story => <Screener steps={steps}>{story()}</Screener>],
+  decorators: [story => <StoryWright steps={steps}>{story()}</StoryWright>],
 } as ComponentMeta<typeof Dropdown>;
 
 export { DropdownClearableExample };

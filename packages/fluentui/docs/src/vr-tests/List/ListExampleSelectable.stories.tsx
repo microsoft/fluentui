@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { List, listItemClassName, listClassName } from '@fluentui/react-northstar';
@@ -17,7 +17,7 @@ export default {
   title: 'List',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps()
           .hover(selectors.item(2))
           .snapshot('Highlights an item')
@@ -28,9 +28,11 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
-    story => <Screener steps={new Steps().keys('body', keys.tab).snapshot('Focuses item').end()}>{story()}</Screener>,
+    story => (
+      <StoryWright steps={new Steps().keys('body', keys.tab).snapshot('Focuses item').end()}>{story()}</StoryWright>
+    ),
   ],
 } as ComponentMeta<typeof List>;
 

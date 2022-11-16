@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tooltip, buttonClassName } from '@fluentui/react-northstar';
@@ -12,10 +12,12 @@ export default {
   title: 'Tooltip',
   decorators: [
     story => (
-      <Screener steps={new Steps().hover(`.${buttonClassName}`).snapshot('Shows tooltip').end()}>{story()}</Screener>
+      <StoryWright steps={new Steps().hover(`.${buttonClassName}`).snapshot('Shows tooltip').end()}>
+        {story()}
+      </StoryWright>
     ),
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps()
           .keys('body', keys.tab)
           .snapshot('Has outline on keyboard')
@@ -24,7 +26,7 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Tooltip>;

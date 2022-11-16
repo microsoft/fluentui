@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Input } from '@fluentui/react-northstar';
@@ -12,7 +12,7 @@ export default {
   title: 'Input',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps()
           .snapshot('Input: Labels')
           .setValue(`#inside-label`, 'Some text...')
@@ -20,7 +20,7 @@ export default {
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Input>;

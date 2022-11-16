@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Toolbar } from '@fluentui/react-northstar';
@@ -11,11 +11,11 @@ export default {
   title: 'Toolbar',
   decorators: [
     story => (
-      <Screener
+      <StoryWright
         steps={new Steps().click('[title="More"').snapshot('Toolbar fits within bounds of the chat message').end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Toolbar>;

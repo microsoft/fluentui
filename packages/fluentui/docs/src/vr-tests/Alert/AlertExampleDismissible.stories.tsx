@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Alert } from '@fluentui/react-northstar';
-import { getFocusScreenerSteps, getHoverScreenerSteps } from './commonScreenerSteps';
+import { getFocusStoryWrightSteps, getHoverStoryWrightSteps } from './commonStoryWrightSteps';
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
 import AlertExampleDismissible from '../../examples/components/Alert/Types/AlertExampleDismissible.shorthand';
 
@@ -12,8 +12,8 @@ export default {
   component: Alert,
   title: 'Alert',
   decorators: [
-    story => <Screener steps={getFocusScreenerSteps}>{story()}</Screener>,
-    story => <Screener steps={getHoverScreenerSteps}>{story()}</Screener>,
+    story => <StoryWright steps={getFocusStoryWrightSteps}>{story()}</StoryWright>,
+    story => <StoryWright steps={getHoverStoryWrightSteps}>{story()}</StoryWright>,
   ],
 } as ComponentMeta<typeof Alert>;
 

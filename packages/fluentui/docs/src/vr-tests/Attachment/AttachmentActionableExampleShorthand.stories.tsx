@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Attachment } from '@fluentui/react-northstar';
-import screenerSteps from './commonScreenerSteps';
+import StoryWrightSteps from './commonStoryWrightSteps';
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
 import { MoreIcon, TableIcon } from '@fluentui/react-icons-northstar';
 
@@ -28,7 +28,7 @@ const AttachmentActionableExampleShorthand = () => (
 export default {
   component: Attachment,
   title: 'Attachment',
-  decorators: [story => <Screener steps={screenerSteps}>{story()}</Screener>],
+  decorators: [story => <StoryWright steps={StoryWrightSteps}>{story()}</StoryWright>],
 } as ComponentMeta<typeof Attachment>;
 
 const AttachmentActionableExampleShorthandTeams = getThemeStoryVariant(AttachmentActionableExampleShorthand, 'teamsV2');
