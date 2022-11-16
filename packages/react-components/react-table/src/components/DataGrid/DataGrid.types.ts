@@ -1,5 +1,6 @@
+import * as React from 'react';
 import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
-import type { TableState as HeadlessTableState, UseSortOptions } from '../../hooks';
+import type { SortState, TableState as HeadlessTableState, UseSortOptions } from '../../hooks';
 
 export type DataGridSlots = TableSlots;
 
@@ -26,7 +27,9 @@ export type DataGridContextValue = HeadlessTableState<any> & {
 export type DataGridProps = TableProps &
   Pick<DataGridContextValue, 'items' | 'columns'> &
   Pick<Partial<DataGridContextValue>, 'focusMode'> &
-  UseSortOptions;
+  Pick<UseSortOptions, 'sortState' | 'defaultSortState'> & {
+    onSortChange: (e: React.MouseEvent, sortState: SortState) => void;
+  };
 
 /**
  * State used in rendering DataGrid
