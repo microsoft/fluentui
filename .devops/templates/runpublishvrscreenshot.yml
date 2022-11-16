@@ -19,29 +19,53 @@ steps:
     displayName: yarn (install packages)
 
   - script: |
+      isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
+      echo $isPR
+      if [[ $isPR == true ]]; then
+        packageAffected=$(yarn --silent check:affected-package --packages ${{ parameters.vrTestPackageName }} --pr=true)
+        if [[ $packageAffected == false ]]; then
+          echo "In PR pipeline but NOT affecting test package. Skipping test run"
+          echo "##vso[task.setvariable variable=vrTestSkip;]yes"
+        else
+          echo "In PR pipeline and affecting test package. NOT Skipping test run"
+          echo "##vso[task.setvariable variable=vrTestSkip;]no"
+        fi
+      else
+        echo "Not in PR pipeline. NOT Skipping test run"
+        echo "##vso[task.setvariable variable=vrTestSkip;]no"
+      fi
+    displayName: Check if vrTests should be skipped
+
+  - script: |
       yarn workspace ${{ parameters.vrTestPackageName }} convert
     displayName: Convert screener component to storywright
+    condition: eq(variables['vrTestSkip'], 'no')
 
   - ${{ if eq(parameters.shouldBuildstorybookaddon, 'true') }}:
       - script: |
           yarn build --to @fluentui/react-storybook-addon
         displayName: Build react-storybook-addon
+        condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
       yarn workspace ${{ parameters.vrTestPackageName }} screener:build
     displayName: Build VR tests components package
+    condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
       yarn workspace ${{ parameters.vrTestPackageName }} test:component --verbose
     displayName: 'Run VR tests'
+    condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
       mkdir -p screenshots
       cp -rf ${{ parameters.vrTestPackagePath }}/dist/screenshots/*.png screenshots/
     displayName: Collate Artifacts
+    condition: eq(variables['vrTestSkip'], 'no')
 
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: 'screenshots'
       ArtifactName: 'vrscreenshot${{ parameters.fluentVersion }}'
       publishLocation: 'Container'
+    condition: eq(variables['vrTestSkip'], 'no')

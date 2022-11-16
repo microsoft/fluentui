@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 15 Nov 2022 07:44:59 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Nov 2022 07:47:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.101.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.101.2)
+
+Wed, 16 Nov 2022 07:47:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.101.1..@fluentui/react_v8.101.2)
+
+### Patches
+
+- fix: Making Stack properly render non-ReactElement children. ([PR #25685](https://github.com/microsoft/fluentui/pull/25685) by humberto_makoto@hotmail.com)
+- fix: set correct aria-posinset and aria-rowindex values on GroupedListV2 ([PR #25520](https://github.com/microsoft/fluentui/pull/25520) by seanmonahan@microsoft.com)
 
 ## [8.101.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.101.1)
 
