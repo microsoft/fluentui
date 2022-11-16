@@ -65,6 +65,11 @@ import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
 import { getFieldClassNames } from '@fluentui/react-field';
+import { InfoButton } from '@fluentui/react-infobutton';
+import { infoButtonClassNames } from '@fluentui/react-infobutton';
+import { InfoButtonProps } from '@fluentui/react-infobutton';
+import { InfoButtonSlots } from '@fluentui/react-infobutton';
+import { InfoButtonState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
@@ -112,6 +117,7 @@ import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { renderField_unstable } from '@fluentui/react-field';
+import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
@@ -237,6 +243,8 @@ import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
+import { useInfoButton_unstable } from '@fluentui/react-infobutton';
+import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
 import { useListbox_unstable } from '@fluentui/react-combobox';
@@ -401,6 +409,16 @@ export { FieldState }
 
 export { getFieldClassNames }
 
+export { InfoButton }
+
+export { infoButtonClassNames }
+
+export { InfoButtonProps }
+
+export { InfoButtonSlots }
+
+export { InfoButtonState }
+
 export { InputField }
 
 export { inputFieldClassNames }
@@ -494,6 +512,8 @@ export { renderCombobox_unstable }
 export { renderDropdown_unstable }
 
 export { renderField_unstable }
+
+export { renderInfoButton_unstable }
 
 export { renderListbox_unstable }
 
@@ -745,6 +765,10 @@ export { useDropdownStyles_unstable }
 export { useField_unstable }
 
 export { useFieldStyles_unstable }
+
+export { useInfoButton_unstable }
+
+export { useInfoButtonStyles_unstable }
 
 export { useIsOverflowGroupVisible }
 

@@ -43,6 +43,7 @@
     "@fluentui/react-divider": "^9.1.4",
     "@fluentui/react-field": "9.0.0-alpha.8",
     "@fluentui/react-image": "^9.0.11",
+    "@fluentui/react-infobutton": "9.0.0-beta.0",
     "@fluentui/react-input": "^9.2.5",
     "@fluentui/react-label": "^9.0.10",
     "@fluentui/react-link": "^9.0.11",

@@ -133,6 +133,15 @@ export type {
 } from '@fluentui/react-toolbar';
 
 export {
+  InfoButton,
+  infoButtonClassNames,
+  useInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  renderInfoButton_unstable,
+} from '@fluentui/react-infobutton';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
+
+export {
   Overflow,
   OverflowItem,
   useIsOverflowGroupVisible,
