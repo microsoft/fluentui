@@ -4,7 +4,7 @@ import { StoryWright } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Alert } from '@fluentui/react-northstar';
-import { getFocusStoryWrightSteps, getHoverStoryWrightSteps } from './commonStoryWrightSteps';
+import screenerSteps from './commonStoryWrightSteps';
 
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
 import AlertExampleOof from '../../examples/components/Alert/Variations/AlertExampleOofs.shorthand';
@@ -12,10 +12,7 @@ import AlertExampleOof from '../../examples/components/Alert/Variations/AlertExa
 export default {
   component: Alert,
   title: 'Alert',
-  decorators: [
-    story => <StoryWright steps={getFocusStoryWrightSteps}>{story()}</StoryWright>,
-    story => <StoryWright steps={getHoverStoryWrightSteps}>{story()}</StoryWright>,
-  ],
+  decorators: [story => <StoryWright steps={screenerSteps}>{story()}</StoryWright>],
 } as ComponentMeta<typeof Alert>;
 
 const AlertExampleOofTeams = getThemeStoryVariant(AlertExampleOof, 'teamsV2');
