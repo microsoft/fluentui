@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: return correct icon name for documentsFolder",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "1330321+yume-chan@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

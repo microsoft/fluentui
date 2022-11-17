@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 17 Nov 2022 07:51:43 GMT",
+      "tag": "@fluentui/react_v8.102.0",
+      "version": "8.102.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c7a1e243f8366456cb12af369ae5b749aabaec95",
+            "comment": "fix: FloatingPeoplePicker roles should be listbox/option"
+          }
+        ],
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e2f2b9f6546c0e2df7ebe222242d8ca9a93f2fe0",
+            "comment": "fix: pickers limit keyboard navigation to resultsMaximumNumber."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Nov 2022 07:47:29 GMT",
       "tag": "@fluentui/react_v8.101.2",
       "version": "8.101.2",
