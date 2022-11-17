@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Steps } from 'storywright';
+import { Keys, Steps } from 'storywright';
 import { menuClassName } from '@fluentui/react-northstar';
-import { keys } from '../utilities';
 
 export const selectors = {
   menu: `.${menuClassName}`,
@@ -14,9 +13,9 @@ const getStoryWrightSteps = ({ vertical = false, startItem = 2, endItem = 3 }) =
     .snapshot('Hovers 2nd item (hover state styles)')
     .click(selectors.item(startItem))
     .snapshot('Clicks on 2nd item (active state styles)')
-    .keys(selectors.item(startItem), vertical ? keys.downArrow : keys.rightArrow)
+    .keys(selectors.item(startItem), vertical ? Keys.downArrow : Keys.rightArrow)
     .snapshot('Navigates to next item (focus state styles)')
-    .keys(selectors.item(endItem), vertical ? keys.upArrow : keys.leftArrow)
+    .keys(selectors.item(endItem), vertical ? Keys.upArrow : Keys.leftArrow)
     .snapshot('Navigates to previous item (active and focus state styles)')
     .end();
 

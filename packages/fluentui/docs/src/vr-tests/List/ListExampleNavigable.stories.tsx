@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { List, listItemClassName, listClassName } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import ListExampleNavigable from '../../examples/components/List/Types/ListExampleNavigable.shorthand';
 
 const selectors = {
@@ -25,7 +25,7 @@ export default {
           .snapshot('Clicks on an item')
           .hover(selectors.item(3))
           .snapshot('Highlights another item')
-          .keys(selectors.item(2), keys.downArrow)
+          .keys(selectors.item(2), Keys.downArrow)
           .snapshot('Focuses last item using keyboard')
           .end()}
       >
@@ -33,7 +33,7 @@ export default {
       </StoryWright>
     ),
     story => (
-      <StoryWright steps={new Steps().keys('body', keys.tab).snapshot('Focuses item').end()}>{story()}</StoryWright>
+      <StoryWright steps={new Steps().keys('body', Keys.tab).snapshot('Focuses item').end()}>{story()}</StoryWright>
     ),
   ],
 } as ComponentMeta<typeof List>;

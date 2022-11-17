@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Steps } from 'storywright';
+import { Keys, Steps } from 'storywright';
 import { buttonClassName } from '@fluentui/react-northstar';
-import { keys } from '../utilities/utils';
 
 const button = `.${buttonClassName}`;
 
@@ -10,7 +9,7 @@ const StoryWrightSteps = new Steps()
   .snapshot('Hovers the first button')
   .click(button)
   .snapshot('Clicks the first button')
-  .keys(button, keys.tab)
+  .keys(button, Keys.tab)
   .snapshot('Focuses on the second button')
   .end();
 

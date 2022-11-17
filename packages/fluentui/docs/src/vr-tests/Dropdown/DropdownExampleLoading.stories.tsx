@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames, dropdownSearchInputSlotClassNames } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import DropdownExampleLoading from '../../examples/components/Dropdown/State/DropdownExampleLoading.shorthand';
 
 const selectors = {
@@ -23,7 +23,7 @@ export default {
     ),
     story => (
       <StoryWright
-        steps={new Steps().keys(selectors.input, keys.upArrow).snapshot('showing loading in the bottom').end()}
+        steps={new Steps().keys(selectors.input, Keys.upArrow).snapshot('showing loading in the bottom').end()}
       >
         {story()}
       </StoryWright>

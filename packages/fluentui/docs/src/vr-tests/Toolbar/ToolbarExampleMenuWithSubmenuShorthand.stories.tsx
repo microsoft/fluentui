@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Toolbar, toolbarItemWrapperClassName, toolbarMenuItemClassName } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import ToolbarExampleMenuWithSubmenuShorthand from '../../examples/components/Toolbar/Content/ToolbarExampleMenuWithSubmenu.shorthand';
 
 export default {
@@ -16,7 +16,7 @@ export default {
         steps={new Steps()
           .click(`.${toolbarItemWrapperClassName} button`)
           .snapshot('Shows menu')
-          .keys(`.${toolbarMenuItemClassName}#ToolbarExampleMenuWithSubmenu_Play`, keys.rightArrow)
+          .keys(`.${toolbarMenuItemClassName}#ToolbarExampleMenuWithSubmenu_Play`, Keys.rightArrow)
           .snapshot('Opens first submenu')
           .click(`.${toolbarMenuItemClassName}#ToolbarExampleMenuWithSubmenu_Appearance`)
           .snapshot('Opens second submenu')

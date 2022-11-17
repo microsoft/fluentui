@@ -1,10 +1,9 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSearchInputSlotClassNames, dropdownSlotClassNames } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
 import DropdownExampleSearchMultiple from '../../examples/components/Dropdown/Types/DropdownExampleSearchMultiple.shorthand';
 
 const selectors = {
@@ -25,7 +24,7 @@ export default {
           .click(selectors.item(2))
           .click(selectors.toggleIndicator)
           .click(selectors.item(2))
-          .keys(selectors.input, keys.leftArrow)
+          .keys(selectors.input, Keys.leftArrow)
           .snapshot('Selects last selected element')
           .hover(selectors.selectedItem(1))
           .snapshot('Hovers first selected element')

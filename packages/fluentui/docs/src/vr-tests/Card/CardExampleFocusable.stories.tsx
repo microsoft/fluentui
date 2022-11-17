@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Card } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import CardExampleFocusable from '../../examples/components/Card/Usage/CardExampleFocusable';
 
 export default {
@@ -12,7 +12,7 @@ export default {
   title: 'Card',
   decorators: [
     story => (
-      <StoryWright steps={new Steps().keys('body', keys.tab).snapshot('Focus on a card').end()}>{story()}</StoryWright>
+      <StoryWright steps={new Steps().keys('body', Keys.tab).snapshot('Focus on a card').end()}>{story()}</StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Card>;

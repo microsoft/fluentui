@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tree, treeTitleClassName, treeItemClassName } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import TreeExampleShorthand from '../../examples/components/Tree/Types/TreeExample.shorthand';
 
 const selectors = {
@@ -21,10 +21,10 @@ export default {
         steps={new Steps()
           .click(selectors.treeTitle(1))
           .snapshot('Focus on click subtree')
-          .keys(selectors.treeItem(2), keys.downArrow)
+          .keys(selectors.treeItem(2), Keys.downArrow)
           .snapshot('Focus on keyboard subtree')
           .click(selectors.treeTitle(2))
-          .keys(selectors.treeItem(2), keys.downArrow)
+          .keys(selectors.treeItem(2), Keys.downArrow)
           .snapshot('Focus on keyboard leaf')
           .click(selectors.treeTitle(4))
           .snapshot('Focus on click leaf')

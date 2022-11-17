@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tooltip, buttonClassName } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import TooltipExamplePointing from '../../examples/components/Tooltip/Types/TooltipExamplePointing.shorthand';
 
 export default {
@@ -19,7 +19,7 @@ export default {
     story => (
       <StoryWright
         steps={new Steps()
-          .keys('body', keys.tab)
+          .keys('body', Keys.tab)
           .snapshot('Has outline on keyboard')
           .click(`.${buttonClassName}`)
           .snapshot('No outline after click')

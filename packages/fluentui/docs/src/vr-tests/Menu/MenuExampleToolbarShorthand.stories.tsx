@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Menu, menuClassName } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import MenuExampleToolbarShorthand from '../../examples/components/Menu/Usage/MenuExampleToolbar.shorthand';
 
 const selectors = {
@@ -24,13 +24,13 @@ export default {
           .snapshot('Hovers 2nd item (hover state styles)')
           .click(selectors.item(2))
           .snapshot('Clicks on 2nd item (active state styles)')
-          .keys(selectors.item(2), keys.rightArrow)
+          .keys(selectors.item(2), Keys.rightArrow)
           .snapshot('Navigates to next item (focus state styles)')
-          .keys(selectors.item(5), keys.leftArrow)
+          .keys(selectors.item(5), Keys.leftArrow)
           .snapshot('Navigates to previous item (active and focus state styles)')
           .click(selectors.lastItem)
           .snapshot('Clicks on the last item and opens submenu')
-          .keys(selectors.lastItem, keys.downArrow)
+          .keys(selectors.lastItem, Keys.downArrow)
           .snapshot('Focuses on the first element in the submenu')
           .end()}
       >

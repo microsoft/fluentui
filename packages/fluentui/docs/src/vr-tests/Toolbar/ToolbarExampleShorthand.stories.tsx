@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Toolbar, toolbarClassName, toolbarItemClassName } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import ToolbarExampleShorthand from '../../examples/components/Toolbar/Usage/ToolbarExampleWithTooltip.shorthand';
 
 const selectors = {
@@ -21,7 +21,7 @@ export default {
           .hover(selectors.item(1))
           .snapshot('Hovers 1st item (show tooltip)')
           .click(selectors.item(1))
-          .keys(selectors.item(1), keys.rightArrow)
+          .keys(selectors.item(1), Keys.rightArrow)
           .snapshot('Navigates to next item (shows tooltip)')
           .end()}
       >

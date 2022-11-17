@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { Steps } from 'storywright';
+import { Keys, Steps } from 'storywright';
 import { attachmentClassName, attachmentActionClassName } from '@fluentui/react-northstar';
-import { keys } from '../utilities/utils';
 
 const selectors = {
   root: `.${attachmentClassName}`,
@@ -11,12 +10,12 @@ const selectors = {
 const StoryWrightSteps = new Steps()
   .hover(selectors.root)
   .snapshot('Hovers root')
-  .keys('body', keys.tab)
+  .keys('body', Keys.tab)
   .snapshot('Focuses root')
   .hover(selectors.action)
   .snapshot('Hovers action')
-  .keys('body', keys.tab)
-  .keys('body', keys.tab)
+  .keys('body', Keys.tab)
+  .keys('body', Keys.tab)
   .snapshot('Focuses action')
   .end();
 

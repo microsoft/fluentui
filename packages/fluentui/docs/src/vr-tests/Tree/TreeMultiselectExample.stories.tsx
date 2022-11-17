@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tree, treeItemClassName, treeTitleClassName, treeTitleSlotClassNames } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import TreeMultiselectExample from '../../examples/components/Tree/Usage/TreeMultiselectExample.shorthand';
 
 const selectors = {
@@ -36,16 +36,16 @@ export default {
           .snapshot('selected, when group partially selected')
           .click(selectors.selectionIndicator(2))
           .snapshot('all children selected')
-          .keys(selectors.treeTitle(7), keys.space)
+          .keys(selectors.treeTitle(7), Keys.space)
           .snapshot('selected, when space pressed')
           .click(selectors.treeTitle(15))
           .click(selectors.selectionIndicator(15))
           .snapshot('group fully selected, when it has non selectable children')
           .click(selectors.selectionIndicator(15))
-          .keys(selectors.treeTitle(16), keys.space)
-          .keys(selectors.treeTitle(17), keys.space)
+          .keys(selectors.treeTitle(16), Keys.space)
+          .keys(selectors.treeTitle(17), Keys.space)
           .snapshot('selected, when group has non selectable item')
-          .keys(selectors.treeItem(15), keys.space)
+          .keys(selectors.treeItem(15), Keys.space)
           .snapshot('toggle group selected')
           .end()}
       >

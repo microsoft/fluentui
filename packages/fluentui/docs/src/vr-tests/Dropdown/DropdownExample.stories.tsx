@@ -1,10 +1,10 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryWright, Steps } from 'storywright';
+import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames } from '@fluentui/react-northstar';
-import { getThemeStoryVariant, keys } from '../utilities';
+import { getThemeStoryVariant } from '../utilities';
 import DropdownExample from '../../examples/components/Dropdown/Types/DropdownExample.shorthand';
 
 const selectors = {
@@ -41,11 +41,11 @@ export default {
     story => (
       <StoryWright
         steps={new Steps()
-          .keys('body', keys.tab)
+          .keys('body', Keys.tab)
           .snapshot('Focuses trigger')
-          .keys(selectors.triggerButton, keys.downArrow)
+          .keys(selectors.triggerButton, Keys.downArrow)
           .snapshot('Focuses first item')
-          .keys(selectors.triggerButton, keys.downArrow)
+          .keys(selectors.triggerButton, Keys.downArrow)
           .snapshot('Focuses second item')
           .end()}
       >
