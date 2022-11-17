@@ -3,6 +3,30 @@ import type { IPalette, ISemanticColors, IFontStyles, IFontWeight, IEffects, The
 
 import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
 
+import { getBasePickerStyles } from './componentStyles/BasePicker.styles';
+import { getBreadcrumbStyles } from './componentStyles/Breadcrumb.styles';
+import { getDefaultButtonStyles, getIconButtonStyles } from './componentStyles/Button.styles';
+import { getCalloutContentStyles } from './componentStyles/Callout.styles';
+import { getCheckboxStyles, getM365CheckboxStyles } from './componentStyles/Checkbox.styles';
+import { getChoiceGroupStyles, getM365ChoiceGroupStyles } from './componentStyles/ChoiceGroup.styles';
+import { getChoiceGroupOptionStyles } from './componentStyles/ChoiceGroupOption.styles';
+import { getColorPickerGridCellStyles } from './componentStyles/ColorPickerGridStyles.styles';
+import { getCommandBarStyles } from './componentStyles/CommandBar.styles';
+import { getCommandBarButtonStyles } from './componentStyles/CommandBarButton.styles';
+import { getContextualMenuStyles } from './componentStyles/ContextualMenu.styles';
+import { getDialogContentStyles, getDialogStyles } from './componentStyles/Dialog.styles';
+import { getDropdownStyles } from './componentStyles/Dropdown.styles';
+import { getMessageBarStyles } from './componentStyles/MessageBar.styles';
+import { getModalStyles } from './componentStyles/Modal.styles';
+import { getPivotStyles } from './componentStyles/Pivot.styles';
+import { getSearchBoxStyles } from './componentStyles/SearchBox.styles';
+import { getSliderStyles } from './componentStyles/Slider.styles';
+import { getSpinButtonStyles } from './componentStyles/SpinButton.styles';
+import { getSpinnerStyles } from './componentStyles/Spinner.styles';
+import { getTagItemStyles } from './componentStyles/TagItem.styles';
+import { getTextFieldStyles } from './componentStyles/TextField.styles';
+import { getToggleStyles } from './componentStyles/Toggle.styles';
+
 import { black, blackAlpha, grey, sharedColors, white, whiteAlpha } from './themeDuplicates';
 
 const mappedNeutrals = {
@@ -295,6 +319,108 @@ const mapFonts = (baseFonts: IFontStyles, theme: ThemeV9): IFontStyles => {
   };
 };
 
+import type { ISettings } from '@fluentui/react';
+
+export const getV9ComponentStyles: { [key: string]: ISettings } = {
+  Breadcrumb: {
+    styles: getBreadcrumbStyles,
+  },
+  CalloutContent: {
+    styles: getCalloutContentStyles,
+  },
+  Checkbox: {
+    styles: getCheckboxStyles,
+  },
+  ChoiceGroup: {
+    styles: getChoiceGroupStyles,
+  },
+  ChoiceGroupOption: {
+    styles: getChoiceGroupOptionStyles,
+  },
+  ColorPickerGridCell: {
+    styles: getColorPickerGridCellStyles,
+  },
+  CommandBar: {
+    styles: getCommandBarStyles,
+  },
+  CommandBarButton: {
+    styles: getCommandBarButtonStyles,
+  },
+  CompoundButton: {
+    styles: getDefaultButtonStyles,
+  },
+  ContextualMenu: {
+    styles: getContextualMenuStyles,
+  },
+  DefaultButton: {
+    styles: getDefaultButtonStyles,
+  },
+  Dialog: {
+    styles: getDialogStyles,
+  },
+  DialogContent: {
+    styles: getDialogContentStyles,
+  },
+  Dropdown: {
+    styles: getDropdownStyles,
+  },
+  IconButton: {
+    styles: getIconButtonStyles,
+  },
+  M365Checkbox: {
+    styles: getM365CheckboxStyles,
+  },
+  M365ChoiceGroup: {
+    styles: getM365ChoiceGroupStyles,
+  },
+  MessageBar: {
+    styles: getMessageBarStyles,
+  },
+  Modal: {
+    styles: getModalStyles,
+  },
+  Pivot: {
+    styles: getPivotStyles,
+  },
+  // People Pickers
+  NormalPeoplePicker: {
+    styles: getBasePickerStyles,
+  },
+  CompactPeoplePicker: {
+    styles: getBasePickerStyles,
+  },
+  ListPeoplePickerBase: {
+    styles: getBasePickerStyles,
+  },
+  SearchBox: {
+    styles: getSearchBoxStyles,
+  },
+  Slider: {
+    styles: getSliderStyles,
+  },
+  SpinButton: {
+    styles: getSpinButtonStyles,
+  },
+  Spinner: {
+    styles: getSpinnerStyles,
+  },
+  TagItem: {
+    styles: getTagItemStyles,
+  },
+  TagPicker: {
+    styles: getBasePickerStyles,
+  },
+  Tag: {
+    styles: getTagItemStyles,
+  },
+  TextField: {
+    styles: getTextFieldStyles,
+  },
+  Toggle: {
+    styles: getToggleStyles,
+  },
+};
+
 /**
  * Overlays v9 shadows and border radii on a base set of v8 effects.
  */
@@ -327,9 +453,12 @@ export const createV8Theme = (
 ): ThemeV8 => {
   const baseTheme = themeV8 || createTheme({ isInverted: isDarkTheme });
 
+  console.log(baseTheme);
+
   return {
     ...baseTheme,
     palette: mapPalette(brandColors, isDarkTheme),
+    components: getV9ComponentStyles,
     semanticColors: mapSemanticColors(baseTheme.semanticColors, themeV9),
     fonts: mapFonts(baseTheme.fonts, themeV9),
     effects: mapEffects(baseTheme.effects, themeV9),

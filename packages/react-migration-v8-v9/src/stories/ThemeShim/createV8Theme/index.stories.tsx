@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Theme as ThemeV8 } from '@fluentui/react';
+import { Theme as ThemeV8, ThemeProvider, Tooltip } from '@fluentui/react';
 import {
   Button,
   makeStyles,
@@ -13,10 +13,20 @@ import {
   createLightTheme,
   createDarkTheme,
   Checkbox,
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  Label,
 } from '@fluentui/react-components';
 import { brandWeb, createV8Theme } from '../../../components/Theme/index';
 import descriptionMd from './Description.md';
 import { Meta } from '@storybook/react';
+import { FluentComponentSamples } from './FluentComponentSamples';
+import { ChevronDown12Regular } from '@fluentui/react-icons';
+
+const { useState } = React;
 
 const useStyles = makeStyles({
   root: {
@@ -54,16 +64,33 @@ const useStyles = makeStyles({
   },
 });
 
+enum BrandRampType {
+  V9Light = 'V9 Light',
+  V9Dark = 'V9 Dark',
+  Custom = 'Custom',
+}
+
+enum ThemeCreationSteps {
+  ChoseBaseBrandRamp,
+  CustomizeBrandRamp,
+  CustomizeTokens,
+  ThemeCreated,
+}
+
 export const Default = () => {
   const styles = useStyles();
 
   const defaultBrandVariantText = JSON.stringify(brandWeb, null, 4);
   const defaultV9ThemeText = JSON.stringify(webLightTheme, null, 4);
 
-  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
-  const [brandVariantText, setBrandVariantText] = React.useState(defaultBrandVariantText);
-  const [v9ThemeText, setV9ThemeText] = React.useState(defaultV9ThemeText);
-  const [v8Theme, setV8Theme] = React.useState<ThemeV8>();
+  const [brandRampType, setBrandRampType] = useState<BrandRampType>();
+
+  const [currentStep, setCurrentStep] = useState<ThemeCreationSteps>(ThemeCreationSteps.ChoseBaseBrandRamp);
+
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [brandVariantText, setBrandVariantText] = useState(defaultBrandVariantText);
+  const [v9ThemeText, setV9ThemeText] = useState(defaultV9ThemeText);
+  const [v8Theme, setV8Theme] = useState<ThemeV8>();
 
   const v8Effects = React.useMemo(() => ((v8Theme ? v8Theme.effects : {}) as unknown) as Record<string, string>, [
     v8Theme,
@@ -87,6 +114,7 @@ export const Default = () => {
   const [message, setMessage] = React.useState('');
 
   const onBrandVariantTextChange: TextareaProps['onChange'] = (_, data) => {
+    console.log(data.value);
     setBrandVariantText(data.value);
   };
 
@@ -94,27 +122,35 @@ export const Default = () => {
     setV9ThemeText(data.value);
   };
 
-  const onResetBrand = () => {
+  const onStartOver = () => {
+    setBrandRampType(undefined);
     setBrandVariantText(defaultBrandVariantText);
+    setCurrentStep(ThemeCreationSteps.ChoseBaseBrandRamp);
   };
 
-  const onResetTheme = () => {
-    setV9ThemeText(defaultV9ThemeText);
-  };
-
-  const onSetLightBrandTheme = React.useCallback(() => {
-    const brandVariants = JSON.parse(brandVariantText) as BrandVariants;
-    const v9Theme = createLightTheme(brandVariants);
+  const selectV9LightBrandRamp = React.useCallback(() => {
+    const v9Theme = createLightTheme(brandWeb);
     setV9ThemeText(JSON.stringify(v9Theme, null, 4));
     setIsDarkTheme(false);
-  }, [brandVariantText]);
+    setBrandRampType(BrandRampType.V9Light);
+    setCurrentStep(ThemeCreationSteps.CustomizeTokens);
+  }, [brandRampType]);
 
-  const onSetDarkBrandTheme = React.useCallback(() => {
-    const brandVariants = JSON.parse(brandVariantText) as BrandVariants;
-    const v9Theme = createDarkTheme(brandVariants);
+  const selectV9DarkBrandRamp = React.useCallback(() => {
+    const v9Theme = createDarkTheme(brandWeb);
     setV9ThemeText(JSON.stringify(v9Theme, null, 4));
     setIsDarkTheme(true);
-  }, [brandVariantText]);
+    setBrandRampType(BrandRampType.V9Dark);
+    setCurrentStep(ThemeCreationSteps.CustomizeTokens);
+  }, [brandRampType]);
+
+  const selectCustomBrandRamp = React.useCallback(() => {
+    const v9Theme = createLightTheme(brandWeb);
+    setV9ThemeText(JSON.stringify(v9Theme, null, 4));
+    setIsDarkTheme(true);
+    setBrandRampType(BrandRampType.Custom);
+    setCurrentStep(ThemeCreationSteps.CustomizeBrandRamp);
+  }, [brandRampType]);
 
   const onCreateTheme = React.useCallback(() => {
     try {
@@ -122,104 +158,144 @@ export const Default = () => {
       const v9Theme = JSON.parse(v9ThemeText) as ThemeV9;
       const newV8Theme = createV8Theme(brandVariants, v9Theme, isDarkTheme);
       setV8Theme(newV8Theme);
+      setCurrentStep(ThemeCreationSteps.ThemeCreated);
     } catch (e) {
       setMessage((e as Error).message);
     }
-  }, [brandVariantText, isDarkTheme, v9ThemeText]);
-
+  }, [brandVariantText, isDarkTheme, v9ThemeText, currentStep]);
   return (
     <div className={styles.root}>
-      <h2>Brand</h2>
-      <Textarea
-        resize="both"
-        textarea={{ className: styles.editor }}
-        value={brandVariantText}
-        onChange={onBrandVariantTextChange}
-      />
-      <div className={styles.actions}>
-        <Button onClick={onResetBrand}>Reset</Button>
-        <Button onClick={onSetLightBrandTheme}>Set Light v9 Theme from Brand</Button>
-        <Button onClick={onSetDarkBrandTheme}>Set Dark v9 Theme from Brand</Button>
-      </div>
-      <h2>v9 Theme</h2>
-      <Textarea
-        resize="both"
-        textarea={{ className: styles.editor }}
-        value={v9ThemeText}
-        onChange={onV9ThemeTextChange}
-      />
-      <div className={styles.actions}>
-        <Button onClick={onResetTheme}>Reset</Button>
-        <Button onClick={onCreateTheme}>Create</Button>
-        <Checkbox
-          label="Dark Theme"
-          checked={isDarkTheme}
-          onChange={(_, data) => setIsDarkTheme(data.checked === true)}
-        />
-      </div>
-      <h2>v8 Theme</h2>
-      <div>{message}</div>
-      <h3>effects</h3>
-      <div className={styles.result}>
-        {Object.keys(v8Effects)
-          .sort()
-          .map(key => (
-            <>
-              <div>{key}</div>
-              <div>{v8Effects[key]}</div>
-            </>
-          ))}
-      </div>
-      <h3>fonts</h3>
-      <div className={styles.result}>
-        {Object.keys(v8Fonts)
-          .sort()
-          .map(key => (
-            <>
-              <div>{key}</div>
-              <div>{JSON.stringify(v8Fonts[key])}</div>
-            </>
-          ))}
-      </div>
-      <h3>palette</h3>
-      <div className={styles.result}>
-        {Object.keys(v8Palette)
-          .sort()
-          .map(key => (
-            <>
-              <div>{key}</div>
-              <div>
-                {v8Palette[key]}&nbsp;
-                <span className={styles.colorBlock} style={{ backgroundColor: v8Palette[key] }} />
-              </div>
-            </>
-          ))}
-      </div>
-      <h3>semanticColors</h3>
-      <div className={styles.result}>
-        {Object.keys(v8SemanticColors)
-          .sort()
-          .map(key => (
-            <>
-              <div>{key}</div>
-              <div>
-                {v8SemanticColors[key]}&nbsp;
-                <span className={styles.colorBlock} style={{ backgroundColor: v8SemanticColors[key] }} />
-              </div>
-            </>
-          ))}
-      </div>
-      <h3>spacing</h3>
-      <div className={styles.result}>
-        {Object.keys(v8Spacing)
-          .sort()
-          .map(key => (
-            <>
-              <div>{key}</div>
-              <div>{v8Spacing[key]}</div>
-            </>
-          ))}
-      </div>
+      {currentStep === ThemeCreationSteps.ChoseBaseBrandRamp && (
+        <>
+          {' '}
+          <h2>Select your brand ramp</h2>
+          <Label>Current brand ramp</Label>
+          <Menu>
+            <MenuTrigger disableButtonEnhancement>
+              <Button icon={<ChevronDown12Regular />} iconPosition="after">
+                {brandRampType ? brandRampType : 'Select Brand Ramp Type'}
+              </Button>
+            </MenuTrigger>
+
+            <MenuPopover>
+              <MenuList>
+                <MenuItem onClick={selectV9LightBrandRamp}>V9 Light </MenuItem>
+                <MenuItem onClick={selectV9DarkBrandRamp}>V9 Dark</MenuItem>
+                <MenuItem onClick={selectCustomBrandRamp}>Custom</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </>
+      )}
+
+      {currentStep === ThemeCreationSteps.CustomizeBrandRamp && (
+        <>
+          {' '}
+          <h2>Customize your brand ramp</h2>
+          <Textarea
+            resize="both"
+            disabled={brandRampType !== BrandRampType.Custom}
+            textarea={{ className: styles.editor }}
+            value={brandVariantText}
+            onChange={onBrandVariantTextChange}
+          />{' '}
+          <Button onClick={onStartOver}>Start over</Button>
+        </>
+      )}
+
+      {currentStep === ThemeCreationSteps.CustomizeTokens && (
+        <>
+          <h2>Adjust any generated v9 Theme token values</h2>
+          <Textarea
+            resize="both"
+            textarea={{ className: styles.editor }}
+            value={v9ThemeText}
+            onChange={onV9ThemeTextChange}
+          />
+          <div className={styles.actions}>
+            <Button appearance="primary" onClick={onCreateTheme}>
+              Create my theme
+            </Button>
+            <Checkbox
+              label="Dark Theme"
+              checked={isDarkTheme}
+              onChange={(_, data) => setIsDarkTheme(data.checked === true)}
+            />
+            <Button onClick={onStartOver}>Start over</Button>
+          </div>
+        </>
+      )}
+      {currentStep === ThemeCreationSteps.ThemeCreated && (
+        <>
+          <h2>Your new v8 Theme</h2>
+          <Button onClick={onStartOver}>Start over</Button>
+          <ThemeProvider theme={v8Theme}>
+            <FluentComponentSamples />
+          </ThemeProvider>
+          <div>{message}</div>
+          <h3>effects</h3>
+          <div className={styles.result}>
+            {Object.keys(v8Effects)
+              .sort()
+              .map(key => (
+                <>
+                  <div>{key}</div>
+                  <div>{v8Effects[key]}</div>
+                </>
+              ))}
+          </div>
+          <h3>fonts</h3>
+          <div className={styles.result}>
+            {Object.keys(v8Fonts)
+              .sort()
+              .map(key => (
+                <>
+                  <div>{key}</div>
+                  <div>{JSON.stringify(v8Fonts[key])}</div>
+                </>
+              ))}
+          </div>
+          <h3>palette</h3>
+          <div className={styles.result}>
+            {Object.keys(v8Palette)
+              .sort()
+              .map(key => (
+                <>
+                  <div>{key}</div>
+                  <div>
+                    {v8Palette[key]}&nbsp;
+                    <span className={styles.colorBlock} style={{ backgroundColor: v8Palette[key] }} />
+                  </div>
+                </>
+              ))}
+          </div>
+          <h3>semanticColors</h3>
+          <div className={styles.result}>
+            {Object.keys(v8SemanticColors)
+              .sort()
+              .map(key => (
+                <>
+                  <div>{key}</div>
+                  <div>
+                    {v8SemanticColors[key]}&nbsp;
+                    <span className={styles.colorBlock} style={{ backgroundColor: v8SemanticColors[key] }} />
+                  </div>
+                </>
+              ))}
+          </div>
+          <h3>spacing</h3>
+          <div className={styles.result}>
+            {Object.keys(v8Spacing)
+              .sort()
+              .map(key => (
+                <>
+                  <div>{key}</div>
+                  <div>{v8Spacing[key]}</div>
+                </>
+              ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
