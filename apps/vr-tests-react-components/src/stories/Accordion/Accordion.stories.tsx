@@ -23,7 +23,7 @@ export const Size = () => (
   <Accordion openItems={[0, 1, 2, 3]}>
     <AccordionItem value={0}>
       <AccordionHeader size="small">Small</AccordionHeader>
-      <AccordionPanel>Small Panel</AccordionPanel>
+      <AccordionPanel>Meow</AccordionPanel>
     </AccordionItem>
     <AccordionItem value={1}>
       <AccordionHeader size="medium">Medium</AccordionHeader>
