@@ -3,7 +3,7 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
@@ -104,7 +104,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
         onMouseLeave={this._handleChartMouseLeave}
       >
-        <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
+        <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
           <div>
             <svg
               className={this._classNames.chart}
