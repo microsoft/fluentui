@@ -39,10 +39,11 @@ steps:
       fi
     displayName: Check if vrTests should be skipped
 
-  - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} convert
-    displayName: Convert screener component to storywright
-    condition: eq(variables['vrTestSkip'], 'no')
+  - ${{ if eq(parameters.shouldBuildNorthstar, 'false') }}:
+      - script: |
+          yarn workspace ${{ parameters.vrTestPackageName }} convert
+        displayName: Convert screener component to storywright
+        condition: eq(variables['vrTestSkip'], 'no')
 
   - ${{ if eq(parameters.shouldBuildstorybookaddon, 'true') }}:
       - script: |
