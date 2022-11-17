@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Thu, 17 Nov 2022 23:05:32 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Nov 2022 14:57:50 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.1",
       "version": "9.0.1",

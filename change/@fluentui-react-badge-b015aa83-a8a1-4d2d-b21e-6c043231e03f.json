@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Allow PresenceBadge's icon to be overridden by the user.",
-  "packageName": "@fluentui/react-badge",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

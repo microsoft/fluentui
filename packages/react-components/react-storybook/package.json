@@ -27,7 +27,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.1.7",
+    "@fluentui/react-provider": "^9.1.8",
     "@fluentui/react-theme": "^9.1.2",
     "tslib": "^2.1.0"
   },

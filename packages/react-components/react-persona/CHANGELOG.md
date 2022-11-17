@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Fri, 11 Nov 2022 14:58:09 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Nov 2022 23:05:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.0-beta.4)
+
+Thu, 17 Nov 2022 23:05:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.0-beta.3..@fluentui/react-persona_v9.1.0-beta.4)
+
+### Changes
+
+- feat: Adding size and textAlignment props and updating styles. ([PR #25626](https://github.com/microsoft/fluentui/pull/25626) by esteban.230@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.7 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-badge to v9.0.13 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
 
 ## [9.1.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.0-beta.3)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update Badge colors with new mappings from design",
-  "packageName": "@fluentui/react-badge",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
