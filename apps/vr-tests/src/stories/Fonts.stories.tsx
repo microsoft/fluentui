@@ -48,7 +48,7 @@ storiesOf('Fonts', module)
     <div style={getStyle('en')}>
       {Weights.map(weight => (
         <p key={weight} style={{ fontWeight: weight }}>
-          Weight {weight}: Testing fontweight
+          Weight {weight}: Testing tonfweight
         </p>
       ))}
     </div>
