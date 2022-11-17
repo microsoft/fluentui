@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: pickers limit keyboard navigation to resultsMaximumNumber.",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
