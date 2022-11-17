@@ -11,11 +11,11 @@ storiesOf('InfoButton', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('rest', { cropTo: '.testWrapper' })
-        .hover('button')
+        .hover('#info-button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .focus('button')
+        .focus('#info-button')
         .snapshot('focus', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('#info-button')
         .snapshot('active', { cropTo: '.testWrapper' })
         .end()}
     >
@@ -26,7 +26,7 @@ storiesOf('InfoButton', module)
     'size',
     () => (
       <div style={{ padding: '60px' }}>
-        <InfoButton content="This is the content of an InfoButton." />
+        <InfoButton id="info-button" content="This is the content of an InfoButton." />
       </div>
     ),
     {
