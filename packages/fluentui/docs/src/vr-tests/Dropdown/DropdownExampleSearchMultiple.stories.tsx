@@ -4,6 +4,7 @@ import { Keys, StoryWright, Steps } from 'storywright';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSearchInputSlotClassNames, dropdownSlotClassNames } from '@fluentui/react-northstar';
+import { getThemeStoryVariant } from '../utilities';
 import DropdownExampleSearchMultiple from '../../examples/components/Dropdown/Types/DropdownExampleSearchMultiple.shorthand';
 
 const selectors = {
