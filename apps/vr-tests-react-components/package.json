@@ -5,7 +5,7 @@
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
     "build": "build-storybook -o dist/storybook",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --partitionIndex 1 --totalPartitions 20",
+    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
     "convert": "bash convertStoriesToStoryWright.sh",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
