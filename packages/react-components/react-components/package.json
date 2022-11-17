@@ -19,11 +19,10 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-components/src && yarn docs",
-    "storybook": "start-storybook --port 3000 --no-manager-cache",
+    "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -44,11 +43,12 @@
     "@fluentui/react-divider": "^9.1.4",
     "@fluentui/react-field": "9.0.0-alpha.8",
     "@fluentui/react-image": "^9.0.11",
+    "@fluentui/react-infobutton": "9.0.0-beta.0",
     "@fluentui/react-input": "^9.2.5",
     "@fluentui/react-label": "^9.0.10",
     "@fluentui/react-link": "^9.0.11",
     "@fluentui/react-menu": "^9.4.1",
-    "@fluentui/react-overflow": "9.0.0-beta.14",
+    "@fluentui/react-overflow": "9.0.0-rc.0",
     "@fluentui/react-persona": "9.1.0-beta.3",
     "@fluentui/react-portal": "^9.0.10",
     "@fluentui/react-popover": "^9.3.1",

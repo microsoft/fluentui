@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(react-components): align storybook configuration with rest of the suite",
+  "packageName": "@fluentui/react-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
