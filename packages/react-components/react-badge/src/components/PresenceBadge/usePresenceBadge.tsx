@@ -14,11 +14,7 @@ import {
 import { useBadge_unstable } from '../Badge/index';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
-const iconMap = (
-  status: PresenceBadgeState['status'],
-  outOfOffice: boolean,
-  size: PresenceBadgeState['size'],
-): React.FunctionComponent | null => {
+const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, size: PresenceBadgeState['size']) => {
   switch (status) {
     case 'available':
       return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
@@ -54,29 +50,32 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
-  const statusText = DEFAULT_STRINGS[props.status ?? 'available'];
+  const { size = 'medium', status = 'available', outOfOffice = false } = props;
+
+  const statusText = DEFAULT_STRINGS[status];
   const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
+
+  const IconElement = iconMap(status, outOfOffice, size);
+
   const state: PresenceBadgeState = {
     ...useBadge_unstable(
       {
-        size: 'medium',
         'aria-label': statusText + oofText,
         role: 'img',
         ...props,
+        size,
         icon: resolveShorthand(props.icon, {
+          defaultProps: {
+            children: IconElement ? <IconElement /> : null,
+          },
           required: true,
         }),
       },
       ref,
     ),
-    status: props.status ?? 'available',
-    outOfOffice: props.outOfOffice ?? false,
+    status,
+    outOfOffice,
   };
-
-  const IconElement = iconMap(state.status, state.outOfOffice, state.size);
-  if (IconElement) {
-    state.icon!.children = <IconElement />;
-  }
 
   return state;
 };
