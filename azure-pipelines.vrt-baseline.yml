@@ -32,7 +32,7 @@ jobs:
         displayName: 'Run Screenshotdiff update baseline'
         env:
           API_URL: $(System.CollectionUri)
-          API_TOKEN: $(fabric-public-pipeline-access-PAT)
+          API_TOKEN: $(ADO_PAT)
           API_REPOSITORY: $(Build.Repository.Name)
           API_PROJECT: $(System.TeamProject)
           SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv9
@@ -59,7 +59,7 @@ jobs:
         displayName: 'Run Screenshotdiff update baseline'
         env:
           API_URL: $(System.CollectionUri)
-          API_TOKEN: $(fabric-public-pipeline-access-PAT)
+          API_TOKEN: $(ADO_PAT)
           API_REPOSITORY: $(Build.Repository.Name)
           API_PROJECT: $(System.TeamProject)
           SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv8
