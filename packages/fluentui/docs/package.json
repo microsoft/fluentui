@@ -59,7 +59,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2",
-    "storywright": "0.0.23-beta.1"
+    "storywright": "0.0.26-beta.1"
   },
   "publishConfig": {
     "access": "public"
