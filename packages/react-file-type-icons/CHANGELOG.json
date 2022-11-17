@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 17 Nov 2022 07:51:44 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.8.3",
+      "version": "8.8.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "1330321+yume-chan@users.noreply.github.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "5c824b85641d3f2aaa2fb1bf14717c1deadd0a91",
+            "comment": "fix: return correct icon name for documentsFolder"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Nov 2022 07:44:59 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.8.2",
       "version": "8.8.2",
