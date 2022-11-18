@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 11 Nov 2022 14:57:49 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Nov 2022 23:05:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.2)
+
+Thu, 17 Nov 2022 23:05:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.2.1..@fluentui/react-utilities_v9.2.2)
+
+### Patches
+
+- fix: supports colSpan property for th ([PR #25613](https://github.com/microsoft/fluentui/pull/25613) by bernardo.sunderhus@gmail.com)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.1)
 
