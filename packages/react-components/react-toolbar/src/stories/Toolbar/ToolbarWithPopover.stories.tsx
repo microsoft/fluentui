@@ -16,11 +16,12 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         onOpenChange={(_, data) => setOpen(data.open ? 'first' : undefined)}
       >
         <PopoverTrigger disableButtonEnhancement>
-          <ToolbarButton aria-label="Inser image" icon={<Image24Regular />} />
+          <ToolbarButton aria-label="Insert image" icon={<Image24Regular />} />
         </PopoverTrigger>
         <PopoverSurface>
           <div>
             <h3>Popover content</h3>
+            <Button>Open users list</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -37,6 +38,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Popover content</h3>
+            <Button>Calculate total</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -52,7 +54,9 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         </PopoverTrigger>
         <PopoverSurface>
           <div>
-            <h3>Popover content - Formula</h3> <Button onClick={() => setOpen(undefined)}>Close</Button>
+            <h3>Popover content - Formula</h3>
+            <Button>Calculate total</Button>
+            <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
       </Popover>
@@ -68,7 +72,9 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         </PopoverTrigger>
         <PopoverSurface>
           <div>
-            <h3>Popover content - Quick Actions</h3> <Button onClick={() => setOpen(undefined)}>Close</Button>
+            <h3>Popover content - Quick Actions</h3>
+            <Button>Calculate total</Button>
+            <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
       </Popover>

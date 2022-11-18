@@ -17,7 +17,7 @@ export const Default = (props: Partial<ToolbarProps>) => (
     <ToolbarDivider />
     <Menu>
       <MenuTrigger>
-        <ToolbarButton aria-label="More menu" icon={<MoreHorizontal24Filled />} />
+        <ToolbarButton aria-label="More" icon={<MoreHorizontal24Filled />} />
       </MenuTrigger>
 
       <MenuPopover>

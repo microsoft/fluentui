@@ -7,16 +7,16 @@ export const Radio = (props: Partial<ToolbarProps>) => (
   <Toolbar
     {...props}
     defaultCheckedValues={{
-      textOptions: ['bold'],
+      textOptions: ['center'],
     }}
   >
-    <ToolbarRadioButton aria-label="Align left" name="textOptions" value="italic" icon={<AlignLeft24Regular />} />
+    <ToolbarRadioButton aria-label="Align left" name="textOptions" value="left" icon={<AlignLeft24Regular />} />
     <ToolbarRadioButton
       aria-label="Align Center"
       name="textOptions"
-      value="bold"
+      value="center"
       icon={<AlignCenterHorizontal24Regular />}
     />
-    <ToolbarRadioButton aria-label="Align Right" name="textOptions" value="underline" icon={<AlignRight24Regular />} />
+    <ToolbarRadioButton aria-label="Align Right" name="textOptions" value="right" icon={<AlignRight24Regular />} />
   </Toolbar>
 );
