@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "chore: Migrate to new package structure.",
   "packageName": "@fluentui/react-popover",
   "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
