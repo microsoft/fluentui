@@ -28,7 +28,7 @@ export type DataGridProps = TableProps &
   Pick<DataGridContextValue, 'items' | 'columns'> &
   Pick<Partial<DataGridContextValue>, 'focusMode'> &
   Pick<UseSortOptions, 'sortState' | 'defaultSortState'> & {
-    onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
+    onSortChange?(e: React.MouseEvent, sortState: SortState): void;
   };
 
 /**

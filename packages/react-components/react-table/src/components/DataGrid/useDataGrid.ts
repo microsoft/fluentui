@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
-import { useTable, useSort, SortState } from '../../hooks';
+import { useTable, useSort } from '../../hooks';
 
 /**
  * Create the state required to render DataGrid.
@@ -22,7 +22,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     useSort({
       defaultSortState: props.defaultSortState,
       sortState: props.sortState,
-      onSortChange: props.onSortChange as (e: React.SyntheticEvent, sortState: SortState) => void,
+      onSortChange: props.onSortChange,
     }),
   ]);
 
