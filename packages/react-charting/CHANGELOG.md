@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 17 Nov 2022 07:51:44 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Nov 2022 07:45:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.17)
+
+Fri, 18 Nov 2022 07:45:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.16..@fluentui/react-charting_v5.14.17)
+
+### Patches
+
+- Allow focus navigation with tab key in donut chart ([PR #25654](https://github.com/microsoft/fluentui/pull/25654) by kumarkshitij@microsoft.com)
 
 ## [5.14.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.16)
 

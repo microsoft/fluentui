@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Allow focus navigation with tab key in donut chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
