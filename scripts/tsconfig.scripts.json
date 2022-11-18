@@ -84,6 +84,9 @@
       "path": "./package-manager/tsconfig.json"
     },
     {
+      "path": "./utils/tsconfig.json"
+    },
+    {
       "path": "./tsconfig.json"
     }
   ]

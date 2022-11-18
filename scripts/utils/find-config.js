@@ -1,5 +1,3 @@
-// @ts-check
-
 /**
  * Find a config file path, starting in the current directory and looking up to the Git root directory
  * (which contain .git) or the drive root.
@@ -40,4 +38,4 @@ function findConfig(configName, cwd) {
   return undefined;
 }
 
-module.exports = findConfig;
+exports.findConfig = findConfig;
