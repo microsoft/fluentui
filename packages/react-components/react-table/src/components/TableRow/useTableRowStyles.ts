@@ -25,7 +25,7 @@ const useTableLayoutStyles = makeStyles({
     height: '34px',
   },
 
-  smaller: {
+  'extra-small': {
     height: '24px',
   },
 });
@@ -44,7 +44,7 @@ const useFlexLayoutStyles = makeStyles({
     minHeight: '34px',
   },
 
-  smaller: {
+  'extra-small': {
     minHeight: '24px',
   },
 });
@@ -108,7 +108,7 @@ const useStyles = makeStyles({
     ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
-  smaller: {
+  'extra-small': {
     fontSize: tokens.fontSizeBase200,
   },
 
