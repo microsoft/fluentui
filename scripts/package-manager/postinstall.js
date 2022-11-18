@@ -1,4 +1,3 @@
-// @ts-check
 const { spawnSync } = require('child_process');
 const chalk = require('chalk');
 

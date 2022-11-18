@@ -81,6 +81,9 @@
       "path": "./fluentui-publish/tsconfig.json"
     },
     {
+      "path": "./package-manager/tsconfig.json"
+    },
+    {
       "path": "./tsconfig.json"
     }
   ]
