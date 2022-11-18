@@ -215,7 +215,7 @@ storiesOf('Button Special Scenarios (compat)', module)
       />
       <DefaultButton
         {...baseProps}
-        text="This is a much longer string of text in a constrained space"
+        text="This is a much longer111 string of text in a constrained space"
         iconProps={{ iconName: 'Add' }}
         menuIconProps={{}}
         styles={{ root: { width: '100%' } }}
