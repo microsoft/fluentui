@@ -1,8 +1,7 @@
-// @ts-check
-
 const { spawnSync } = require('child_process');
 const prompts = require('prompts');
-const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
+const { getAllPackageInfo } = require('../monorepo');
+
 const allPackages = getAllPackageInfo();
 const extraArgs = process.argv.slice(2);
 
@@ -19,10 +18,15 @@ const projectsWithStartCommand = Object.entries(allPackages)
     }
 
     return acc;
-  }, [])
+  }, /** @type {import('prompts').Choice[]} */ ([]))
   .filter(n => n && !defaults.includes(n.title))
   .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
 
+/**
+ *
+ * @param {string} input
+ * @param {import('prompts').Choice[]} choices
+ */
 const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.includes(input)));
 
 (async () => {

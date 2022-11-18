@@ -57,6 +57,9 @@
       "path": "./generators/tsconfig.json"
     },
     {
+      "path": "./executors/tsconfig.json"
+    },
+    {
       "path": "./github/tsconfig.json"
     },
     {

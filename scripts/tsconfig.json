@@ -35,6 +35,7 @@
     "./typescript/**",
     "./lint-staged/**",
     "./generators/**",
+    "./executors/**",
     "./package-manager/**",
     "./utils/**"
   ]
