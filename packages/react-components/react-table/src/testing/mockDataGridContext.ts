@@ -1,5 +1,12 @@
 import { DataGridContextValue } from '../components/DataGrid/DataGrid.types';
-import { ColumnDefinition, createColumn, defaultTableSelectionState, defaultTableSortState } from '../hooks';
+import {
+  ColumnDefinition,
+  createColumn,
+  defaultTableSelectionState,
+  defaultTableSortState,
+  TableSelectionState,
+  TableSortState,
+} from '../hooks';
 
 interface Item {
   first: string;
@@ -18,15 +25,18 @@ const testItems: Item[] = [
   { first: 'first', second: 'second', third: 'third' },
 ];
 
-export function mockDataGridContext(options: Partial<DataGridContextValue> = {}) {
+export function mockDataGridContext(
+  options: Partial<DataGridContextValue> = {},
+  substates: { sort?: Partial<TableSortState<unknown>>; selection?: Partial<TableSelectionState> } = {},
+) {
   const mockContext: DataGridContextValue = {
     columns: testColumns,
     items: testItems,
     focusMode: 'none',
     getRowId: () => '',
     getRows: () => [],
-    selection: defaultTableSelectionState,
-    sort: defaultTableSortState,
+    selection: { ...defaultTableSelectionState, ...substates.selection },
+    sort: { ...defaultTableSortState, ...substates.sort },
     ...options,
   };
 

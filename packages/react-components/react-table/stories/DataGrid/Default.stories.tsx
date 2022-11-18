@@ -149,7 +149,7 @@ export const Default = () => {
   );
 
   return (
-    <DataGrid items={items} columns={columns} focusMode="cell">
+    <DataGrid items={items} columns={columns} focusMode="cell" sortable>
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (

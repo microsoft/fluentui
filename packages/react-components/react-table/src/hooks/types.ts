@@ -139,7 +139,7 @@ export interface UseSortOptions {
   /**
    * Called when sort changes
    */
-  onSortChange?: (e: React.SyntheticEvent, state: SortState) => void;
+  onSortChange?(e: React.SyntheticEvent, state: SortState): void;
 }
 
 export interface UseSelectionOptions {
