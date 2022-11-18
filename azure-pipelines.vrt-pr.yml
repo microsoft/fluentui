@@ -17,7 +17,7 @@ pool: '1ES-Host-Ubuntu'
 jobs:
   - job: VisualRegressionTest_V9
     variables:
-      pipelineId: '211'
+      pipelineId: '311'
       pipelineName: 'fluent-ui VRT Pipeline v9'
 
     workspace:
@@ -82,7 +82,7 @@ jobs:
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
-          API_TOKEN: $(TEST_PAT)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
           API_REPOSITORY: $(Build.Repository.Name)
           API_PROJECT: $(System.TeamProject)
           SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv9
@@ -91,11 +91,13 @@ jobs:
           STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
           BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+          GITHUB_REPO_OWNER: 'microsoft'
+          GITHUB_REPO_NAME: 'fluentui'
         condition: eq(variables['vrTestSkip'], 'no')
 
   - job: VisualRegressionTest_V8
     variables:
-      pipelineId: '212'
+      pipelineId: '312'
       pipelineName: 'fluent-ui VRT Pipeline v8'
     workspace:
       clean: all
@@ -159,7 +161,7 @@ jobs:
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
-          API_TOKEN: $(TEST_PAT)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
           API_REPOSITORY: $(Build.Repository.Name)
           API_PROJECT: $(System.TeamProject)
           SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv8
@@ -168,4 +170,6 @@ jobs:
           STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
           BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+          GITHUB_REPO_OWNER: 'microsoft'
+          GITHUB_REPO_NAME: 'fluentui'
         condition: eq(variables['vrTestSkip'], 'no')

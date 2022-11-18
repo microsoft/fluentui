@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 11 Nov 2022 14:57:29 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Nov 2022 23:05:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.7.1)
+
+Thu, 17 Nov 2022 23:05:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.7.0..@fluentui/react-components_v9.7.1)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feature: menu open change data union types ([PR #25503](https://github.com/microsoft/fluentui/pull/25503) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - fix: supports colSpan property for th ([PR #25613](https://github.com/microsoft/fluentui/pull/25613) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-badge`
+  - chore: Update Badge colors with new mappings from design ([PR #25599](https://github.com/microsoft/fluentui/pull/25599) by behowell@microsoft.com)
+  - fix: Allow PresenceBadge's icon to be overridden by the user. ([PR #25684](https://github.com/microsoft/fluentui/pull/25684) by humberto_makoto@hotmail.com)
+- `@fluentui/react-components`
+  - feat: bump @fluentui/react-overflow to RC ([PR #25659](https://github.com/microsoft/fluentui/pull/25659) by lingfangao@hotmail.com)
+  - feat: Adding InfoButton to unstable. ([PR #25686](https://github.com/microsoft/fluentui/pull/25686) by esteban.230@hotmail.com)
+  - react-menu: deprecates MenuOpenEvents in favor of MenuOpenEvent ([PR #25503](https://github.com/microsoft/fluentui/pull/25503) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - feat: removes aria-haspopup ([PR #25611](https://github.com/microsoft/fluentui/pull/25611) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/priority-overflow`
+  - feat: Bump to RC ([PR #25659](https://github.com/microsoft/fluentui/pull/25659) by lingfangao@hotmail.com)
+- `@fluentui/react-infobutton`
+  - chore: Making the package public and preparing to add to unstable. ([PR #25686](https://github.com/microsoft/fluentui/pull/25686) by esteban.230@hotmail.com)
+- `@fluentui/react-overflow`
+  - feat: Bump to RC ([PR #25659](https://github.com/microsoft/fluentui/pull/25659) by lingfangao@hotmail.com)
+- `@fluentui/react-persona`
+  - feat: Adding size and textAlignment props and updating styles. ([PR #25626](https://github.com/microsoft/fluentui/pull/25626) by esteban.230@hotmail.com)
+- `@fluentui/react-progress`
+  - fix: update validationState tokens to use background instead of foreground ([PR #25664](https://github.com/microsoft/fluentui/pull/25664) by ololubek@microsoft.com)
+- `@fluentui/react-table`
+  - BREAKING: `sortable` prop no longer enables `TableHeader` navigation ([PR #25656](https://github.com/microsoft/fluentui/pull/25656) by lingfangao@hotmail.com)
+  - fix: Match hover background colors between table row and cell actions ([PR #25628](https://github.com/microsoft/fluentui/pull/25628) by tigeroakes@microsoft.com)
+  - BREAKING: Headless table callbacks require event ([PR #25658](https://github.com/microsoft/fluentui/pull/25658) by lingfangao@hotmail.com)
 
 ## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.7.0)
 

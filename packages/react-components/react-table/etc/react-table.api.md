@@ -130,7 +130,9 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'>;
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'> & Pick<UseSortOptions, 'sortState' | 'defaultSortState'> & {
+    onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
+};
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
