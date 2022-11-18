@@ -81,6 +81,11 @@ export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlo
  */
 export type FieldPropsWithOptionalComponentProps<T extends FieldControl> = FieldProps<T> & {
   /**
+   * A ref to the underlying control.
+   */
+  ref?: React.Ref<HTMLElement>;
+
+  /**
    * Whether the field label should be marked as required.
    */
   required?: boolean;
