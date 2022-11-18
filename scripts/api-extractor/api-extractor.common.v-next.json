@@ -9,10 +9,7 @@
   },
   "dtsRollup": {
     "enabled": true,
-    // TODO: replace following line with these 2 commented ones after all v9 is migrated to new build and .d.ts API stripping
     "untrimmedFilePath": "<projectFolder>/dist/index.d.ts",
-    // "untrimmedFilePath": "<projectFolder>/dist/untrimmed.d.ts",
-    // "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts",
     "omitTrimmingComments": false
   },
   "compiler": {
