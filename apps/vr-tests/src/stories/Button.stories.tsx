@@ -72,7 +72,7 @@ storiesOf('Button (compat)', module)
       Button
     </DefaultButton>
   ))
-  .addStory('No Icon', () => <DefaultButton>Button</DefaultButton>)
+  .addStory('No Icon', () => <DefaultButton>MEOW</DefaultButton>)
   .addStory('Icon Only', () => <DefaultButton iconProps={baseProps.iconProps} />);
 
 storiesOf('Button Action (compat)', module)
