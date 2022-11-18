@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 18 Nov 2022 07:45:45 GMT",
+      "tag": "@fluentui/react-charting_v5.14.17",
+      "version": "5.14.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "50ee71862affde61ace35edcb5c3d6f67928f343",
+            "comment": "Allow focus navigation with tab key in donut chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 07:51:44 GMT",
       "tag": "@fluentui/react-charting_v5.14.16",
       "version": "5.14.16",
