@@ -26,10 +26,10 @@ const useCustomOptionStyles = makeStyles({
     ...shorthands.gap('5px'),
   },
   icon: {
-    ...shorthands.flex('0 0 auto'),
+    ...shorthands.flex(0, 0, 'auto'),
   },
   text: {
-    ...shorthands.flex('1 1 auto'),
+    ...shorthands.flex(1, 1, 'auto'),
   },
 });
 
