@@ -54,6 +54,9 @@
       "path": "./screener/tsconfig.json"
     },
     {
+      "path": "./generators/tsconfig.json"
+    },
+    {
       "path": "./github/tsconfig.json"
     },
     {

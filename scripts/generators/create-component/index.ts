@@ -6,9 +6,10 @@ import * as fs from 'fs-extra';
 import * as os from 'os';
 import * as path from 'path';
 import { execSync } from 'child_process';
-import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 import chalk from 'chalk';
 import { names, WorkspaceJsonConfiguration } from '@nrwl/devkit';
+
+import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '../../monorepo';
 
 //#endregion
 
@@ -69,6 +70,9 @@ module.exports = (plop: NodePlopAPI) => {
     actions: (answers: Answers): Actions => {
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
       const packageMetadata = getProjectMetadata({ root, name: answers.packageNpmName });
+      if (!packageMetadata.sourceRoot) {
+        throw new Error(`${answers.packageNpmName} has is missing sourceRoot path in workspace.json`);
+      }
 
       const packageName = answers.packageNpmName.replace('@fluentui/', '');
       const componentPath = path.join(packageMetadata.sourceRoot, 'components', answers.componentName);
