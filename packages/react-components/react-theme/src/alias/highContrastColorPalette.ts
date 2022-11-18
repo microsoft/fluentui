@@ -16,7 +16,7 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
     [`colorPalette${color}Border2`]: hcCanvasText,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  return Object.assign(acc, sharedColorTokens);
 }, {} as StatusColorPaletteTokens);
 
 const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedColor) => {
@@ -27,7 +27,7 @@ const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedCol
     [`colorPalette${color}BorderActive`]: hcHighlight,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  return Object.assign(acc, sharedColorTokens);
 }, {} as PersonaColorPaletteTokens);
 
 export const colorPaletteTokens: ColorPaletteTokens = { ...statusColorPaletteTokens, ...personaColorPaletteTokens };
