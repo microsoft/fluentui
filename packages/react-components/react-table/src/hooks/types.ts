@@ -92,6 +92,8 @@ export interface TableSelectionState {
    * Checks if a given rowId is selected
    */
   isRowSelected: (rowId: RowId) => boolean;
+
+  selectionMode: SelectionMode;
 }
 
 export interface RowState<TItem> {
@@ -158,7 +160,7 @@ export interface UseSelectionOptions {
   /**
    * Called when selection changes
    */
-  onSelectionChange?: (e: React.SyntheticEvent, selectedItems: Set<RowId>) => void;
+  onSelectionChange?(e: React.SyntheticEvent, selectedItems: Set<RowId>): void;
 }
 
 export interface UseTableOptions<TItem> {

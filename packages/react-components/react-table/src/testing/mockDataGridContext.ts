@@ -37,6 +37,7 @@ export function mockDataGridContext(
     getRows: () => [],
     selection: { ...defaultTableSelectionState, ...substates.selection },
     sort: { ...defaultTableSortState, ...substates.sort },
+    selectableRows: false,
     ...options,
   };
 
