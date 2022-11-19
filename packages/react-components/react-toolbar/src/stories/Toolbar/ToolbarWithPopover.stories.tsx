@@ -21,7 +21,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Popover content</h3>
-            <Button>Open users list</Button>
+            <Button>Example 1</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -38,7 +38,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Popover content</h3>
-            <Button>Calculate total</Button>
+            <Button>Example 2</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -55,7 +55,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Popover content - Formula</h3>
-            <Button>Calculate total</Button>
+            <Button>Example 3</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -73,7 +73,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Popover content - Quick Actions</h3>
-            <Button>Calculate total</Button>
+            <Button>Example 4</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
