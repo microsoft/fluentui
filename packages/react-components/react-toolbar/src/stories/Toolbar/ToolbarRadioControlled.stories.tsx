@@ -19,7 +19,7 @@ export const ControlledRadio = (props: Partial<ToolbarProps>) => {
       checkedValues={checkedValues}
       onCheckedValueChange={onChange}
       defaultCheckedValues={{
-        textOptions: ['center'],
+        textStyle: ['center'],
       }}
     >
       <ToolbarRadioButton aria-label="Align left" name="textStyle" value="left" icon={<AlignLeft24Regular />} />
