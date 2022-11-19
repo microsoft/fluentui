@@ -129,10 +129,11 @@ export const SingleSelect = () => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
-      onClick: () => toggleRow(row.rowId),
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          toggleRow(row.rowId);
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
         }
       },
       selected,
@@ -179,4 +180,18 @@ export const SingleSelect = () => {
       </TableBody>
     </Table>
   );
+};
+
+SingleSelect.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The single selection scenario is similar to the multiple selection scenario. The `TableSelectionCell`',
+        'Can render both checkbox and radio style components which are Fluent',
+        '[Checkbox](?path=/docs/components-checkbox--default) and [Radio](?path=/docs/components-radio--default)',
+        'components. While the design recommendation is to use checkbox for multiselect and radio for single select.',
+        'There is no obligation to do so.',
+      ].join('\n'),
+    },
+  },
 };

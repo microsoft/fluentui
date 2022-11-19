@@ -41,10 +41,6 @@ const useStyles = makeStyles({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    '& svg': {
-      width: '16px',
-      height: '16px',
-    },
   },
 
   subtle: {

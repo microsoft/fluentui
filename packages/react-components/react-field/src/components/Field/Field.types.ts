@@ -12,7 +12,7 @@ import type { SlotComponent } from './SlotComponent.types';
 export type FieldControl = React.VoidFunctionComponent<
   Pick<
     React.HTMLAttributes<HTMLElement>,
-    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-errormessage'
+    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid'
   >
 >;
 
@@ -81,6 +81,11 @@ export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlo
  */
 export type FieldPropsWithOptionalComponentProps<T extends FieldControl> = FieldProps<T> & {
   /**
+   * A ref to the underlying control.
+   */
+  ref?: React.Ref<HTMLElement>;
+
+  /**
    * Whether the field label should be marked as required.
    */
   required?: boolean;
@@ -119,7 +124,7 @@ export type FieldConfig<T extends FieldControl> = {
   labelConnection?: 'htmlFor' | 'aria-labelledby';
 
   /**
-   * Should the aria-invalid and aria-errormessage attributes be set when validationState="error".
+   * Should the aria-invalid attribute be set when validationState="error".
    *
    * @default true
    */

@@ -129,10 +129,11 @@ export const MultipleSelect = () => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
-      onClick: () => toggleRow(row.rowId),
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          toggleRow(row.rowId);
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
         }
       },
       selected,
@@ -140,14 +141,15 @@ export const MultipleSelect = () => {
     };
   });
 
-  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table>
+    <Table {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
+            tabIndex={0}
+            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
           />
@@ -157,7 +159,7 @@ export const MultipleSelect = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
+      <TableBody>
         {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
@@ -184,4 +186,16 @@ export const MultipleSelect = () => {
       </TableBody>
     </Table>
   );
+};
+
+MultipleSelect.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Selection can be achieved easily by combining the `TableSelectionCell` component along with',
+        'other primitive components. The hook can handle state management for selection, although its use is not',
+        'necessary if users already have their own state management.',
+      ].join('\n'),
+    },
+  },
 };

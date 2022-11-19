@@ -125,7 +125,7 @@ export const SingleSelectControlled = () => {
       useSelection({
         selectionMode: 'single',
         selectedItems: selectedRows,
-        onSelectionChange: setSelectedRows,
+        onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
       }),
     ],
   );
@@ -134,10 +134,11 @@ export const SingleSelectControlled = () => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
-      onClick: () => toggleRow(row.rowId),
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          toggleRow(row.rowId);
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
         }
       },
       selected,
@@ -185,4 +186,15 @@ export const SingleSelectControlled = () => {
       </TableBody>
     </Table>
   );
+};
+
+SingleSelectControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control selection features with external',
+        'user state.',
+      ].join('\n'),
+    },
+  },
 };

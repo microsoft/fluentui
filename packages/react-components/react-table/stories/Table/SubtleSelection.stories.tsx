@@ -129,10 +129,10 @@ export const SubtleSelection = () => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
-      onClick: () => toggleRow(row.rowId),
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          toggleRow(row.rowId);
+        if (e.key === ' ') {
+          toggleRow(e, row.rowId);
         }
       },
       selected,
@@ -140,14 +140,15 @@ export const SubtleSelection = () => {
     };
   });
 
-  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table>
+    <Table {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
+            tabIndex={0}
+            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
           />
@@ -157,7 +158,7 @@ export const SubtleSelection = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
+      <TableBody>
         {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
@@ -166,7 +167,7 @@ export const SubtleSelection = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} subtle checked={selected} />
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} subtle checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
@@ -184,4 +185,18 @@ export const SubtleSelection = () => {
       </TableBody>
     </Table>
   );
+};
+
+SubtleSelection.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By setting the `subtle` prop on the `TableSelectionCell` component, the selection indicator will only',
+        'appear when:',
+        '- the `TableRow` component is hovered.',
+        '- The current focused element is within the `TableRow`',
+        '- The `TableSelectionCell` is checked',
+      ].join('\n'),
+    },
+  },
 };

@@ -3,8 +3,14 @@ import { Dropdown } from '@fluentui/react-combobox';
 
 import descriptionMd from './DropdownDescription.md';
 import bestPracticesMd from './DropdownBestPractices.md';
+import accessibilityMd from './DropdownAccessibility.md';
 
 export { Default } from './DropdownDefault.stories';
+export { Appearance } from './DropdownAppearance.stories';
+export { Grouped } from './DropdownGrouped.stories';
+export { CustomOptions } from './DropdownCustomOptions.stories';
+export { Multiselect } from './DropdownMultiselect.stories';
+export { Size } from './DropdownSize.stories';
 
 export default {
   title: 'Preview Components/Dropdown',
@@ -12,7 +18,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, accessibilityMd].join('\n'),
       },
     },
   },

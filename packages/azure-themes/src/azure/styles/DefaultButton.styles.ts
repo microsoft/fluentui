@@ -13,7 +13,34 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       height: StyleConstants.inputControlHeight,
       padding: '0px 16px',
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+      // danger button
       selectors: {
+        '&.danger': {
+          outlineColor: extendedSemanticColors.ButtonBackgroundDanger,
+          borderColor: extendedSemanticColors.ButtonBorderDanger,
+          backgroundColor: extendedSemanticColors.ButtonBackgroundDanger,
+          color: extendedSemanticColors.ButtonBackgroundDangerText,
+          selectors: {
+            ':hover': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
+              borderColor: `${extendedSemanticColors.ButtonBorderDangerHovered} !important`,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+            ':active': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              borderColor: `${extendedSemanticColors.ButtonBorderDangerPressed} !important`,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+            ':focus': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              borderColor: extendedSemanticColors.ButtonBorderDangerPressed,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+          },
+        },
         // standard button
         '&.is-expanded': {
           color: semanticColors.buttonTextHovered,

@@ -187,10 +187,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         font-weight: 400;
                         height: 44px;
                         line-height: 44px;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -348,10 +344,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         font-weight: 400;
                         height: 44px;
                         line-height: 44px;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -571,10 +563,6 @@ exports[`Nav renders Nav correctly 1`] = `
                       font-weight: 400;
                       height: 44px;
                       line-height: 44px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
