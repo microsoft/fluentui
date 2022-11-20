@@ -25,9 +25,22 @@ export const MyIcon = createSvgIcon({
 });
 ```
 
+And its usage would be like:
+
+```jsx
+// Usage Example
+
+// Default filled icon
+<MyIcon />
+
+// Outline Icon
+<MyIcon outline />
+```
+
 To achieve the same using V9 we have to make usage of a combination with `wrapIcon` and `bundleIcon`.
 
 ```jsx
+// MyIcon.tsx
 import { FluentIconsProps, bundleIcon, wrapIcon } from '@fluentui/react-icons';
 
 export const MyOutlineIcon = wrapIcon((props: FluentIconsProps) => {
@@ -51,6 +64,18 @@ export const MyFilledIcon = wrapIcon((props: FluentIconsProps) => {
 }, 'MyFilledIcon');
 
 export const MyIcon = bundleIcon(MyFilledIcon, MyOutlineIcon);
+```
+
+And its usage would be like:
+
+```jsx
+// Usage Example
+
+// Default outlined icon
+<MyIcon />
+
+// Filled Icon
+<MyIcon filled />
 ```
 
 An Icon created with `createSvgIcon` is filled by default while an Icon created with `wrapIcon` is outline by default, so when replacing the usage of `createSvgIcon` remember to add filled prop to the Icon usage.
