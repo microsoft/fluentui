@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "chore: Replace fontSizeBase400 styles with body2",
+  "comment": "chore: Replace use of fontSize tokens with typographyStyles",
   "packageName": "@fluentui/react-select",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
