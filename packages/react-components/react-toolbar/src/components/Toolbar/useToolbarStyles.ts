@@ -19,6 +19,15 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     width: 'fit-content',
   },
+  small: {
+    height: '32px',
+  },
+  medium: {
+    height: '40',
+  },
+  large: {
+    height: '48px',
+  },
 });
 
 /**
@@ -26,11 +35,14 @@ const useStyles = makeStyles({
  */
 export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => {
   const styles = useStyles();
-  const { vertical } = state;
+  const { vertical, size } = state;
   state.root.className = mergeClasses(
     toolbarClassNames.root,
     styles.root,
     vertical && styles.vertical,
+    size === 'small' && styles.small,
+    size === 'medium' && styles.medium,
+    size === 'large' && styles.large,
     state.root.className,
   );
 
