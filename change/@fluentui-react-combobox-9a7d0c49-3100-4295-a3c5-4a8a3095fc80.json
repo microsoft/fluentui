@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Replace fontSizeBase400 styles with body2",
+  "packageName": "@fluentui/react-combobox",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

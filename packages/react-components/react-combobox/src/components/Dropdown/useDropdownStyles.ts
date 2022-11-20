@@ -1,4 +1,4 @@
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
@@ -100,8 +100,7 @@ const useStyles = makeStyles({
 
   // size variants
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    ...typographyStyles.caption1,
     ...shorthands.padding(
       '3px',
       tokens.spacingHorizontalSNudge,
@@ -110,8 +109,7 @@ const useStyles = makeStyles({
     ),
   },
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    ...typographyStyles.body1,
     ...shorthands.padding(
       '5px',
       tokens.spacingHorizontalMNudge,
@@ -121,8 +119,7 @@ const useStyles = makeStyles({
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    ...typographyStyles.body2,
     ...shorthands.padding(
       '7px',
       tokens.spacingHorizontalM,
