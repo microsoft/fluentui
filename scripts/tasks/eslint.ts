@@ -4,17 +4,23 @@ import * as constants from './eslint-constants';
 import * as fs from 'fs';
 
 const files = [path.join(process.cwd(), constants.directory)];
+// used specifically for v9 packages
 const storiesPath = path.join(process.cwd(), 'stories');
 const hasStorySubfolder =
   fs.existsSync(storiesPath) &&
   fs
     .readdirSync(storiesPath)
     .map(subfolder => {
-      const storyFiles = fs.readdirSync(path.join(storiesPath, subfolder));
-      return storyFiles.map(file => path.join(storiesPath, file));
+      const storyPath = path.join(storiesPath, subfolder);
+      const storyFiles = !path.extname(storyPath).length ? fs.readdirSync(storyPath) : [];
+
+      if (storyFiles.length) {
+        return storyFiles.map(fileName => path.join(storiesPath, fileName));
+      }
+      return storyPath;
     })
     .flat()
-    .some(file => constants.extensions.includes(path.extname(file)));
+    .some(fileName => constants.extensions.includes(path.extname(fileName)));
 
 if (hasStorySubfolder) {
   files.push(storiesPath);
