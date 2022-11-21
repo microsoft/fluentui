@@ -7,7 +7,7 @@ import path from 'path';
 import readPkgUp from 'read-pkg-up';
 import { Transform } from 'stream';
 
-import config from '../../config';
+import config from '../config';
 import gulpReactDocgen from '../plugins/gulp-react-docgen';
 
 const logWatchAdd = (filePath: string) => log('Created', chalk.blue(path.basename(filePath)));

@@ -1,33 +1,31 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { webpack as lernaAliases } from '../lernaAliasNorthstar';
+import { argv } from 'yargs';
 import webpack from 'webpack';
-import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
+import { getDefaultEnvironmentVars } from '../../monorepo';
 import config from '../config';
 
 const { paths } = config;
+
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
-  // CI should use production builds to improve perf of loading pages
-  mode: 'production',
+  mode: Boolean(argv.debug) ? 'development' : 'production',
   entry: {
-    app: paths.e2eSrc('app'),
+    app: paths.perfSrc('index'),
   },
   output: {
     filename: `[name].js`,
-    path: paths.e2eDist(),
+    path: paths.perfDist(),
+    pathinfo: true,
+    publicPath: config.compiler_public_path,
   },
-  // CI should not use sourcemaps, but it's useful for local debugging
-  devtool: process.env.CI ? false : config.compiler_devtool,
+  devtool: config.compiler_devtool,
   node: {
     global: true,
   },
   module: {
-    noParse: [
-      /anchor-js/,
-      /prettier\/parser-typescript/, // prettier issue, should be solved after upgrade prettier to version 2 https://github.com/prettier/prettier/issues/6903
-    ],
+    noParse: [/anchor-js/],
     rules: [
       {
         test: /\.(js|ts|tsx)$/,
@@ -40,7 +38,7 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin(getDefaultEnvironmentVars(true)),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars(!argv.debug)),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         configFile: paths.e2e('tsconfig.json'),
@@ -49,8 +47,8 @@ const webpackConfig: webpack.Configuration = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: paths.e2eSrc('index.html'),
-          to: paths.e2eDist(),
+          from: paths.perfSrc('index.html'),
+          to: paths.perfDist(),
         },
       ],
     }),
@@ -60,10 +58,25 @@ const webpackConfig: webpack.Configuration = {
       path: require.resolve('path-browserify'),
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias: lernaAliases(),
+    alias: {
+      ...config.lernaAliases({ type: 'webpack' }),
+      src: paths.packageSrc('react-northstar'),
+
+      // We are using React in production mode with tracing.
+      // https://gist.github.com/bvaughn/25e6233aeb1b4f0cdb8d8366e54a3977
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
+
+      // Can be removed once Prettier will be upgraded to v2
+      // https://github.com/prettier/prettier/issues/6903
+      '@microsoft/typescript-etw': false,
+    },
   },
   performance: {
     hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
+  },
+  optimization: {
+    nodeEnv: !!argv.debug ? 'development' : 'production',
   },
 };
 

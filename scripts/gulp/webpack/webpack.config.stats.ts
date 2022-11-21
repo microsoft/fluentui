@@ -2,12 +2,13 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
-import config from '../config';
 import glob from 'glob';
 import * as _ from 'lodash';
 import { argv } from 'yargs';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+import config from '../config';
 
 const { paths } = config;
 
