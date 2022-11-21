@@ -3,7 +3,7 @@ import { SelectorTreeNode } from '../tree/types';
 import { DOMSelectorTreeComponentRenderer } from './types';
 import { renderVanillaSelectorTree } from './VanillaSelectorTree';
 import { styleInjector } from '../css/injectStyles';
-import { requestPostAnimationFrame } from '../utils/requestPostAnimationFrame';
+import afterframe from 'afterframe';
 
 export const testMount = (
   tree: SelectorTreeNode,
@@ -19,7 +19,7 @@ export const testMount = (
 
   const vanillaTree = renderVanillaSelectorTree(tree, selectors, componentRenderer, testOptions);
 
-  requestPostAnimationFrame(() => {
+  afterframe(() => {
     performance.measure('stress', 'start');
   });
   return vanillaTree;

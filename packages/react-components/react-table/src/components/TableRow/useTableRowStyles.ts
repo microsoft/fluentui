@@ -16,36 +16,12 @@ const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-row',
   },
-
-  medium: {
-    height: '44px',
-  },
-
-  small: {
-    height: '34px',
-  },
-
-  smaller: {
-    height: '24px',
-  },
 });
 
 const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-  },
-
-  medium: {
-    minHeight: '44px',
-  },
-
-  small: {
-    minHeight: '34px',
-  },
-
-  smaller: {
-    minHeight: '24px',
   },
 });
 
@@ -82,7 +58,7 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -90,11 +66,11 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -172,7 +148,6 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     !isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
-    state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
     styles[state.appearance],
     state.root.className,
   );

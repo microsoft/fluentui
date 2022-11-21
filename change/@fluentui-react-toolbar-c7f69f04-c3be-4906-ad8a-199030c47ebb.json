@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: remove dependencies on Fluent UI v8",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -332,8 +332,6 @@ describe('migrate-converged-pkg generator', () => {
         '**/*.test.js',
         '**/*.test.jsx',
         '**/*.d.ts',
-        './src/testing/**/*.js',
-        './src/testing/**/*.jsx',
       ]);
     });
 
@@ -855,11 +853,6 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-          "dtsRollup": Object {
-            "enabled": true,
-            "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts",
-            "untrimmedFilePath": "",
-          },
           "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
         }
       `);
@@ -1495,8 +1488,7 @@ describe('migrate-converged-pkg generator', () => {
             },
             "dtsRollup": Object {
               "enabled": true,
-              "publicTrimmedFilePath": "<projectFolder>/dist/unstable.d.ts",
-              "untrimmedFilePath": "<projectFolder>/dist/unstable-untrimmed.d.ts",
+              "untrimmedFilePath": "<projectFolder>/dist/unstable.d.ts",
             },
             "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
             "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",

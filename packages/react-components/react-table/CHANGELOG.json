@@ -2,6 +2,258 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Thu, 17 Nov 2022 23:05:47 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "aef719f25d85a8d83f3d6b44d61b75d55f805ee8",
+            "comment": "BREAKING: `sortable` prop no longer enables `TableHeader` navigation"
+          },
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "2c004858da092ef9ae0aad2f96b313ec0102913d",
+            "comment": "fix: Match hover background colors between table row and cell actions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b49ab600353c77e48b67cc23bcb422535cad1b83",
+            "comment": "BREAKING: Headless table callbacks require event"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.2",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.7",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.13",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.2",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.12",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.3.1",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.2.2",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:57:41 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "48c85202ce3c230fdc83bde3ce494f952632b16f",
+            "comment": "feat:  Implement child render function for DataGrid rows"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "3088a39d2d18156388378ac9a629e48277347ae7",
+            "comment": "feat: Implement `focusMode` prop for DataGrid, apply role=\"grid\" correctly"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6645c490bdc0ae1147e46890bef10759934457d3",
+            "comment": "BREAKING: ColumnDefinition type is stricter, use createColumn to create column definition. Implments render function for DataGridRow."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.6",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.12",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.11",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.3.0",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Nov 2022 14:27:34 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "072f0419c79f8bd672e5c251fdd4a08e5bf9d4e8",
+            "comment": "fix(useTable): sort should adapt to enhanced row types"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Nov 2022 11:58:02 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "870f51fc39736198871559d6e12ece5663b0525f",
+            "comment": "chore: Updates folder structure"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "acce21b88a9bbd59651661d87cc964ce2ff5ff28",
+            "comment": "feat: Initialize DataGrid components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.5",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.11",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.10",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.2.1",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:40 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",

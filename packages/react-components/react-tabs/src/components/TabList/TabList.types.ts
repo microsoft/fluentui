@@ -48,6 +48,15 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   appearance?: 'transparent' | 'subtle';
 
   /**
+   * Tab size may change between unselected and selected states.
+   * The default scenario is a selected tab has bold text.
+   *
+   * When true, this property requests tabs be the same size whether unselected or selected.
+   * @default true
+   */
+  reserveSelectedTabSpace?: boolean;
+
+  /**
    * The value of the tab to be selected by default.
    * Typically useful when the selectedValue is uncontrolled.
    */
@@ -69,11 +78,11 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   selectedValue?: TabValue;
 
   /**
-   * A tab list can be either 'small' or 'medium' size.
+   * A tab list can be either 'small', 'medium', or 'large' size.
    * The size affects each of the contained tabs.
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * A tab list can arrange its tabs vertically.
@@ -82,7 +91,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   vertical?: boolean;
 };
 
-export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue'> &
+export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue' | 'reserveSelectedTabSpace'> &
   Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     /** A callback to allow a tab to register itself with the tab list. */
     onRegister: RegisterTabEventHandler;

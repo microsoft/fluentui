@@ -1,19 +1,31 @@
 import * as React from 'react';
 
-import { Body1, Caption1, Button } from '@fluentui/react-components';
+import { makeStyles, Body1, Caption1, Button, shorthands } from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
 import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-card';
 
-const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
-const avatarElviaURL = ASSET_URL + '/stories/assets/avatar_elvia.svg';
-const wordLogoURL = ASSET_URL + '/stories/assets/word_logo.svg';
-const docTemplateURL = ASSET_URL + '/stories/assets/doc_template.png';
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
+
+  return `${ASSET_URL}${asset}`;
+};
+
+const useStyles = makeStyles({
+  card: {
+    ...shorthands.margin('auto'),
+    width: '720px',
+    maxWidth: '100%',
+  },
+});
 
 export const Default = () => {
+  const styles = useStyles();
+
   return (
-    <Card>
+    <Card className={styles.card}>
       <CardHeader
-        image={{ as: 'img', src: avatarElviaURL, alt: 'Face of a person' }}
+        image={<img src={resolveAsset('avatar_elvia.svg')} alt="Face of a person" />}
         header={
           <Body1>
             <b>Elvia Atkins</b> mentioned you
@@ -22,9 +34,10 @@ export const Default = () => {
         description={<Caption1>5h ago · About us - Overview</Caption1>}
       />
 
-      <CardPreview logo={<img src={wordLogoURL} alt="Microsoft Word logo" />}>
-        <img src={docTemplateURL} alt="Preview of a Word document " />
+      <CardPreview logo={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word logo" />}>
+        <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document " />
       </CardPreview>
+
       <CardFooter>
         <Button icon={<ArrowReplyRegular fontSize={16} />}>Reply</Button>
         <Button icon={<ShareRegular fontSize={16} />}>Share</Button>

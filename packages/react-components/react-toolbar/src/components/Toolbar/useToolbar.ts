@@ -18,7 +18,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
 
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,
-    axis: 'horizontal',
+    axis: 'both',
   });
 
   const initialState: UninitializedToolbarState = {
@@ -65,7 +65,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
       if (name && value) {
         onCheckedValueChange?.(e, {
           name,
-          checkedItems: checkedValues?.[name],
+          checkedItems: [value],
         });
       }
     },

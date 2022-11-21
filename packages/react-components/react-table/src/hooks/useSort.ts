@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { ColumnId, RowState, SortState, TableSortState, TableState, UseSortOptions } from './types';
 
@@ -6,7 +7,7 @@ const noop = () => undefined;
 export const defaultTableSortState: TableSortState<unknown> = {
   getSortDirection: () => 'ascending',
   setColumnSort: noop,
-  sort: (rows: RowState<unknown>[]) => [...rows],
+  sort: <TRowState extends RowState<unknown>>(rows: TRowState[]) => [...rows],
   sortColumn: undefined,
   sortDirection: 'ascending',
   toggleColumnSort: noop,
@@ -33,7 +34,7 @@ export function useSortState<TItem>(tableState: TableState<TItem>, options: UseS
 
   const { sortColumn, sortDirection } = sorted;
 
-  const toggleColumnSort = (columnId: ColumnId | undefined) => {
+  const toggleColumnSort = (e: React.SyntheticEvent, columnId: ColumnId | undefined) => {
     setSorted(s => {
       const newState = { ...s, sortColumn: columnId };
       if (s.sortColumn === columnId) {
@@ -42,18 +43,18 @@ export function useSortState<TItem>(tableState: TableState<TItem>, options: UseS
         newState.sortDirection = 'ascending';
       }
 
-      onSortChange?.(newState);
+      onSortChange?.(e, newState);
       return newState;
     });
   };
 
-  const setColumnSort: TableSortState<TItem>['setColumnSort'] = (nextSortColumn, nextSortDirection) => {
+  const setColumnSort: TableSortState<TItem>['setColumnSort'] = (e, nextSortColumn, nextSortDirection) => {
     const newState = { sortColumn: nextSortColumn, sortDirection: nextSortDirection };
-    onSortChange?.(newState);
+    onSortChange?.(e, newState);
     setSorted(newState);
   };
 
-  const sort = (rows: RowState<TItem>[]) => {
+  const sort = <TRowState extends RowState<TItem>>(rows: TRowState[]) => {
     return rows.slice().sort((a, b) => {
       const sortColumnDef = columns.find(column => column.columnId === sortColumn);
       if (!sortColumnDef?.compare) {

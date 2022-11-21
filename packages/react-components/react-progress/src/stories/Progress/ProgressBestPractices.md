@@ -6,6 +6,7 @@
 - Display operation description
 - Show text above and/or below the bar
 - Combine steps of a single operation into one bar
+- Use `ProgressField` to add a `description` and `hint` message for the `indeterminate` `Progress` when `reduced-motion` is active
 
 ### Don't
 

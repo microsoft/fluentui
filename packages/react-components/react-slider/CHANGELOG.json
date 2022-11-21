@@ -2,6 +2,169 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Thu, 17 Nov 2022 23:05:46 GMT",
+      "tag": "@fluentui/react-slider_v9.0.11",
+      "version": "9.0.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.9",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.3.1",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.2.2",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.11",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:57:37 GMT",
+      "tag": "@fluentui/react-slider_v9.0.10",
+      "version": "9.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move SliderField into the @fluentui/react-slider package and export as _unstable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.8",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.3.0",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.10",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Nov 2022 11:58:00 GMT",
+      "tag": "@fluentui/react-slider_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c485aa5dceddd7c2fa85132e0dee0c3aad0c6caf",
+            "comment": "Adding cursor pointer to the Slider component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "cf51abd3cd628e8116e3e23866b34cacb52f9919",
+            "comment": "fix: Pad in slider so the thumb does not render outside the bounds of the root element"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.2.1",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.9",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Oct 2022 08:39:46 GMT",
       "tag": "@fluentui/react-slider_v9.0.8",
       "version": "9.0.8",

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Thu, 20 Oct 2022 08:39:31 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:58:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.18)
+
+Fri, 11 Nov 2022 14:58:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.17..@fluentui/react-conformance-griffel_v9.0.0-beta.18)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+
+## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.17)
+
+Wed, 02 Nov 2022 11:57:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.16..@fluentui/react-conformance-griffel_v9.0.0-beta.17)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
 
 ## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.16)
 
