@@ -1,4 +1,3 @@
-import { withFluentProvider, withStrictMode } from '@fluentui/react-storybook';
 import 'cypress-storybook/react';
 import * as dedent from 'dedent';
 import './docs-root.css';
@@ -23,7 +22,7 @@ window.__setCurrentStory = function (categorization, story) {
 };
 
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
-export const decorators = [withFluentProvider, withStrictMode];
+export const decorators = [];
 
 /** @type {import('@storybook/addons').Parameters} */
 export const parameters = {

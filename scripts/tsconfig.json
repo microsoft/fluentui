@@ -33,6 +33,10 @@
     "./babel/**",
     "./api-extractor/**",
     "./typescript/**",
-    "./lint-staged/**"
+    "./lint-staged/**",
+    "./generators/**",
+    "./executors/**",
+    "./package-manager/**",
+    "./utils/**"
   ]
 }
