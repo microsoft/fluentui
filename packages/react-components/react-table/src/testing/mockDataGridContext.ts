@@ -33,7 +33,7 @@ export function mockDataGridContext(
     columns: testColumns,
     items: testItems,
     focusMode: 'none',
-    getRowId: () => '',
+    getRowId: undefined,
     getRows: () => [],
     selection: { ...defaultTableSelectionState, ...substates.selection },
     sort: { ...defaultTableSortState, ...substates.sort },
