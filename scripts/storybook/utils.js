@@ -105,7 +105,7 @@ function loadWorkspaceAddon(addonName, options = {}) {
   `;
 
   if (!fs.existsSync(tsConfigDistPath)) {
-    fs.mkdirSync(tsConfigDistPath);
+    fs.mkdirSync(tsConfigDistPath, { recursive: true });
   }
 
   fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
