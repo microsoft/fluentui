@@ -23,6 +23,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   const isHeader = useIsInTableHeader();
   const columnDefs = useDataGridContext_unstable(ctx => ctx.columns);
   const selectable = useDataGridContext_unstable(ctx => ctx.selectableRows);
+  const selected = useDataGridContext_unstable(ctx => ctx.selection.isRowSelected(rowId));
   const appearance = useDataGridContext_unstable(ctx => {
     if (!isHeader && selectable && ctx.selection.isRowSelected(rowId)) {
       return ctx.selectionAppearance;
@@ -31,8 +32,6 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     return 'none';
   });
   const toggleRow = useDataGridContext_unstable(ctx => ctx.selection.toggleRow);
-
-  // const selectionCell = resolveShorthand(props.selectionCell, { required: selectable });
 
   const cellRenderFunction = props.children;
   const cells = columnDefs.map(columnDef => {
@@ -59,7 +58,18 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     props.onKeyDown?.(e);
   });
 
-  const baseState = useTableRow_unstable({ appearance, ...props, onClick, onKeyDown, children: cells, as: 'div' }, ref);
+  const baseState = useTableRow_unstable(
+    {
+      appearance,
+      'aria-selected': selectable ? selected : undefined,
+      ...props,
+      onClick,
+      onKeyDown,
+      children: cells,
+      as: 'div',
+    },
+    ref,
+  );
 
   return {
     ...baseState,
