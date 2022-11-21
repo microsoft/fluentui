@@ -11,17 +11,17 @@ V0 exports a `createSvgIcon` function that allows creating a custom icon such as
 
 ```jsx
 export const MyIcon = createSvgIcon({
-    svg: ({ classes }) => (
-        <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
-            <g className={classes.outlinePart>
-                <path d="..." />
-            </g>
-            <g className={classes.filledPart}>
-                <path d="..." />
-            </g>
-        </svg>
-    ),
-    displayName: "MyIcon"
+  svg: ({ classes }) => (
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+      <g className={classes.outlinePart}>
+        <path d="..." />
+      </g>
+      <g className={classes.filledPart}>
+        <path d="..." />
+      </g>
+    </svg>
+  ),
+  displayName: 'MyIcon',
 });
 ```
 
@@ -79,6 +79,20 @@ And its usage would be like:
 ```
 
 An Icon created with `createSvgIcon` is filled by default while an Icon created with `wrapIcon` is outline by default, so when replacing the usage of `createSvgIcon` remember to add filled prop to the Icon usage.
+
+### Sizing
+
+`createSvgIcon` from V0 will allow you to set a range of pre-defined size values (`small`,`smaller`,`smallest`,`medium`,`large`,`largest`,`larger`). e.g.:
+
+```jsx
+<MyIcon size="small" />
+```
+
+The V9 wrapIcon has a different approach allowing to set the fontSize which would change directly the icon size.
+
+```jsx
+<MyIcon fontSize={24} />
+```
 
 ## v0 - v9 Icon Catalog
 
