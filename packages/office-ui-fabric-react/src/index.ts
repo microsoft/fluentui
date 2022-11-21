@@ -89,14 +89,7 @@ export * from './Utilities';
 export * from './Viewport';
 export * from './WindowProvider';
 
-export {
-  ThemeContext,
-  ThemeProvider,
-  makeStyles,
-  useTheme,
-  ThemeProviderProps,
-  UseStylesOptions,
-} from './ThemeProvider';
+export { ThemeContext, ThemeProvider, makeStyles, useTheme, ThemeProviderProps, UseStylesOptions } from './Theme';
 
 export {
   CommunicationColors,
