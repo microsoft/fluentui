@@ -13,6 +13,18 @@ const useTableLayoutStyles = makeStyles({
     display: 'table-cell',
     verticalAlign: 'middle',
   },
+
+  medium: {
+    height: '44px',
+  },
+
+  small: {
+    height: '34px',
+  },
+
+  smaller: {
+    height: '24px',
+  },
 });
 
 const useFlexLayoutStyles = makeStyles({
@@ -21,6 +33,18 @@ const useFlexLayoutStyles = makeStyles({
     minWidth: '0px',
     alignItems: 'center',
     ...shorthands.flex(1, 1, '0px'),
+  },
+
+  medium: {
+    minHeight: '44px',
+  },
+
+  small: {
+    minHeight: '34px',
+  },
+
+  smaller: {
+    minHeight: '24px',
   },
 });
 
@@ -47,6 +71,7 @@ export const useTableCellStyles_unstable = (state: TableCellState): TableCellSta
     tableCellClassNames.root,
     styles.root,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
     state.root.className,
   );
   return state;
