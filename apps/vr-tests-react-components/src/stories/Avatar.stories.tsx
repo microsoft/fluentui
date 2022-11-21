@@ -42,7 +42,7 @@ const nameAndImage = [
 /** Arrays of example values for each Avatar prop */
 const examples = {
   size: [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128],
-  nameAndImage: nameAndImage,
+  nameAndImage,
   name: nameAndImage.map(p => p.name),
   image: nameAndImage.map(p => p.image),
   badge: [
@@ -218,15 +218,15 @@ storiesOf('Avatar Converged', module)
   .addStory('size+inactive+badge', () => (
     <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
   ))
-  .addStory('size+active+badge', () => (
-    <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
-  ))
+  // .addStory('size+active+badge', () => (
+  //   <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
+  // ))
   .addStory('size+active+shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="shadow" />
   ))
-  .addStory('size+active+ring-shadow', () => (
-    <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
-  ))
+  // .addStory('size+active+ring-shadow', () => (
+  //   <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
+  // ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
     <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
