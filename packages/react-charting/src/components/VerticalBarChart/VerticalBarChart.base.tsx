@@ -506,9 +506,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           }}
           onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
-          aria-label="Vertical bar chart"
-          role="text"
-          aria-labelledby={`toolTip${this._calloutId}`}
+          aria-label={this._getAriaLabel(point)}
+          role="img"
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           onBlur={this._onBarLeave}
@@ -555,9 +554,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
           height={barHeight}
-          aria-label="Vertical bar chart"
-          role="text"
-          aria-labelledby={`toolTip${this._calloutId}`}
+          aria-label={this._getAriaLabel(point)}
+          role="img"
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
@@ -705,5 +703,20 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: IVerticalBarChartDataPoint): string => {
+    const xValue = point.xAxisCalloutData || point.x;
+    const legend = point.legend;
+    const yValue = point.yAxisCalloutData || point.y;
+    const lineLegend = this.props.lineLegendText || 'Line';
+    const lineYValue = point.lineData?.yAxisCalloutData || point.lineData?.y;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      `${xValue}. ` +
+        (legend ? `${legend}, ` : '') +
+        `${yValue}.` +
+        (typeof lineYValue !== 'undefined' ? ` ${lineLegend}, ${lineYValue}.` : '')
+    );
   };
 }

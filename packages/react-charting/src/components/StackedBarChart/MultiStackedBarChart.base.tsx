@@ -202,9 +202,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
-          aria-labelledby={this._calloutId}
           role="img"
-          aria-label="Multi stacked bar chart"
+          aria-label={this._getAriaLabel(point)}
           onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
@@ -460,5 +459,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: IChartDataPoint): string => {
+    const legend = point.xAxisCalloutData || point.legend;
+    const yValue = point.yAxisCalloutData || point.data || 0;
+    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 }
