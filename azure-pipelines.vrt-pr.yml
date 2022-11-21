@@ -247,7 +247,7 @@ jobs:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           API_REPOSITORY: $(Build.Repository.Name)
           API_PROJECT: $(System.TeamProject)
-          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv8
+          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv0
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
           STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
