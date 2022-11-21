@@ -333,7 +333,7 @@ export type TableCellSlots = {
 };
 
 // @public
-export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
+export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
 
 // @public (undocumented)
 export const tableClassName = "fui-Table";
