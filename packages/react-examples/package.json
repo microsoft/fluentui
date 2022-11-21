@@ -23,7 +23,7 @@
     "@types/d3-fetch": "^3.0.1"
   },
   "dependencies": {
-    "@fluentui/azure-themes": "^8.5.26",
+    "@fluentui/azure-themes": "^8.5.27",
     "@fluentui/date-time-utilities": "^8.5.3",
     "@fluentui/dom-utilities": "^2.2.3",
     "@fluentui/example-data": "^8.4.3",
