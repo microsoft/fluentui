@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
-  TextBold16Regular,
-  TextItalic16Regular,
-  TextUnderline16Regular,
+  FontDecrease24Regular,
+  TextFont24Regular,
+  FontIncrease24Regular,
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
@@ -29,16 +29,16 @@ export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = p
     return null;
   }
 
-  if (id.includes('underline')) {
-    return <MenuItem icon={<TextUnderline16Regular />}> Underline</MenuItem>;
+  if (id.includes('increase')) {
+    return <MenuItem icon={<FontIncrease24Regular />}>Increase Font Size</MenuItem>;
   }
 
-  if (id.includes('bold')) {
-    return <MenuItem icon={<TextBold16Regular />}> Bold</MenuItem>;
+  if (id.includes('decrease')) {
+    return <MenuItem icon={<FontDecrease24Regular />}>Decrease Font Size</MenuItem>;
   }
 
-  if (id.includes('italic')) {
-    return <MenuItem icon={<TextItalic16Regular />}> Italic</MenuItem>;
+  if (id.includes('reset')) {
+    return <MenuItem icon={<TextFont24Regular />}>Reset Font Size</MenuItem>;
   }
 
   return <MenuItem {...(rest as MenuItemProps)}>Item {id}</MenuItem>;
@@ -66,7 +66,7 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <Button ref={ref} icon={<MoreHorizontal20Filled />} appearance="subtle" />
+        <Button ref={ref} icon={<MoreHorizontal20Filled />} aria-label="More items" appearance="subtle" />
       </MenuTrigger>
 
       <MenuPopover>
@@ -125,94 +125,94 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
     <Overflow padding={90}>
       <Toolbar {...props} size="small">
         <ToolbarOverflowButton
-          overflowId="underline-1"
+          overflowId="increase-1"
           overflowGroupId="1"
           appearance="subtle"
-          aria-label="Italic option ( Group 1 )"
-          icon={<TextUnderline16Regular />}
+          aria-label="Increase Font Size ( Group 1 )"
+          icon={<FontIncrease24Regular />}
         />
 
         <ToolbarOverflowButton
-          overflowId="bold-1"
+          overflowId="decrease-1"
           overflowGroupId="1"
           appearance="subtle"
-          aria-label="Bold option ( Group 1 )"
-          icon={<TextBold16Regular />}
+          aria-label="Decrease Font Size ( Group 1 )"
+          icon={<FontDecrease24Regular />}
         />
 
         <ToolbarOverflowDivider groupId="1" />
 
         <ToolbarOverflowButton
-          overflowId="underline-2"
+          overflowId="increase-2"
           overflowGroupId="2"
           appearance="subtle"
-          aria-label="Underline option ( Group 2 )"
-          icon={<TextUnderline16Regular />}
+          aria-label="Increase Font Size ( Group 2 )"
+          icon={<FontIncrease24Regular />}
         />
 
         <ToolbarOverflowButton
-          overflowId="bold-2"
+          overflowId="decrease-2"
           overflowGroupId="2"
           appearance="subtle"
-          aria-label="Bold option ( Group 2 )"
-          icon={<TextBold16Regular />}
+          aria-label="Decrease Font Size ( Group 2 )"
+          icon={<FontDecrease24Regular />}
         />
 
         <ToolbarOverflowButton
-          overflowId="italic-1"
+          overflowId="reset-1"
           overflowGroupId="2"
           appearance="subtle"
-          aria-label="Italic option ( Group 2 )"
-          icon={<TextItalic16Regular />}
+          aria-label="Reset Font Size ( Group 2 )"
+          icon={<TextFont24Regular />}
         />
 
         <ToolbarOverflowButton
-          overflowId="underline-3"
+          overflowId="increase-3"
           overflowGroupId="2"
           appearance="subtle"
-          aria-label="Underline option ( Group 2 )"
-          icon={<TextUnderline16Regular />}
+          aria-label="Increase Font Size ( Group 2 )"
+          icon={<FontIncrease24Regular />}
         />
 
         <ToolbarOverflowButton
-          overflowId="bold-3"
+          overflowId="decrease-3"
           overflowGroupId="2"
           appearance="subtle"
-          aria-label="Bold option ( Group 2 )"
-          icon={<TextBold16Regular />}
+          aria-label="Decrease Font Size ( Group 2 )"
+          icon={<FontDecrease24Regular />}
         />
 
         <ToolbarOverflowDivider groupId="2" />
 
         <ToolbarOverflowButton
-          overflowId="underline-4"
+          overflowId="increase-4"
           overflowGroupId="3"
           appearance="subtle"
-          aria-label="Underline option ( Group 3 )"
-          icon={<TextUnderline16Regular />}
+          aria-label="Increase Font Size ( Group 3 )"
+          icon={<FontIncrease24Regular />}
         />
 
         <ToolbarOverflowButton
-          overflowId="bold-4"
+          overflowId="decrease-4"
           overflowGroupId="3"
           appearance="subtle"
-          aria-label="Bold option ( Group 3 )"
-          icon={<TextBold16Regular />}
+          aria-label="Decrease Font Size ( Group 3 )"
+          icon={<FontDecrease24Regular />}
         />
 
         <ToolbarOverflowButton
-          overflowId="italic-2"
+          overflowId="reset-2"
           overflowGroupId="3"
           appearance="subtle"
-          aria-label="Italic option ( Group 3 )"
-          icon={<TextItalic16Regular />}
+          aria-label="Reset Font Size ( Group 3 )"
+          icon={<TextFont24Regular />}
         />
 
         <OverflowMenu
           itemIds={[
-            ['underline-1', 'bold-1'],
-            ['underline-2', 'bold-2', 'italic-1', 'underline-3', 'bold-3'],
-            ['underline-4', 'bold-4', 'italic-2'],
+            ['increase-1', 'decrease-1'],
+            ['increase-2', 'decrease-2', 'reset-1', 'increase-3', 'decrease-3'],
+            ['increase-4', 'decrease-4', 'reset-2'],
           ]}
         />
       </Toolbar>
