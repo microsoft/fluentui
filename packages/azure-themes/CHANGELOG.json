@@ -2,6 +2,21 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Mon, 21 Nov 2022 07:43:37 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.27",
+      "version": "8.5.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "0f9411603014dd78ce985e81e9c3663b60eb20df",
+            "comment": "Azure theme: indeterminate checkbox and danger button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 07:51:44 GMT",
       "tag": "@fluentui/azure-themes_v8.5.26",
       "version": "8.5.26",
