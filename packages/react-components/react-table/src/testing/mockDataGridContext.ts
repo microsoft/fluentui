@@ -38,6 +38,8 @@ export function mockDataGridContext(
     selection: { ...defaultTableSelectionState, ...substates.selection },
     sort: { ...defaultTableSortState, ...substates.sort },
     selectableRows: false,
+    subtleSelection: false,
+    selectionAppearance: 'brand',
     ...options,
   };
 
