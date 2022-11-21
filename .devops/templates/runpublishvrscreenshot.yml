@@ -11,6 +11,9 @@ parameters:
   - name: shouldBuildstorybookaddon
     type: boolean
     default: false
+  - name: shouldBuildNorthstar
+    type: boolean
+    default: false
 
 steps:
   - task: Bash@3
@@ -39,12 +42,18 @@ steps:
   - script: |
       yarn workspace ${{ parameters.vrTestPackageName }} convert
     displayName: Convert screener component to storywright
-    condition: eq(variables['vrTestSkip'], 'no')
+    condition: and(eq(variables['vrTestSkip'], 'no'), eq('${{ parameters.shouldBuildNorthstar }}', 'false'))
 
   - ${{ if eq(parameters.shouldBuildstorybookaddon, 'true') }}:
       - script: |
           yarn build --to @fluentui/react-storybook-addon
         displayName: Build react-storybook-addon
+        condition: eq(variables['vrTestSkip'], 'no')
+
+  - ${{ if eq(parameters.shouldBuildNorthstar, 'true') }}:
+      - script: |
+          yarn build --to @fluentui/docs
+        displayName: Build react-northstar
         condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
