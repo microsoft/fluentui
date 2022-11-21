@@ -5,6 +5,7 @@ exports[`DataGridSelectionCell renders a default state 1`] = `
   <div
     class="fui-DataGridSelectionCell fui-TableSelectionCell"
     role="gridcell"
+    tabindex="0"
   >
     <span
       class="fui-Checkbox fui-DataGridSelectionCell__checkboxIndicator fui-TableSelectionCell__checkboxIndicator"
@@ -12,6 +13,7 @@ exports[`DataGridSelectionCell renders a default state 1`] = `
       <input
         class="fui-Checkbox__input"
         id="checkbox-9"
+        tabindex="-1"
         type="checkbox"
       />
       <div
