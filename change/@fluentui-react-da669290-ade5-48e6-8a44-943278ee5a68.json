@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Add theme and ThemeProvider exports to better match v8 API",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "minor"
-}
