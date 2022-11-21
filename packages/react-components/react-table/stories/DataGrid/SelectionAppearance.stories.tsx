@@ -176,3 +176,14 @@ export const SelectionAppearance = () => {
     </DataGrid>
   );
 };
+
+SelectionAppearance.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The `selectionAppearance` prop will vary the appearance of selected rows. The default appearance is a brand',
+        'background color. However a neutral (grey) background is also available.',
+      ].join('\n'),
+    },
+  },
+};

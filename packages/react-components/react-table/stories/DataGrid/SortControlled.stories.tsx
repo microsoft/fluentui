@@ -181,3 +181,14 @@ export const SortControlled = () => {
     </DataGrid>
   );
 };
+
+SortControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'To enable sorting, the `sortable` prop needs to be set. The API surface is directly',
+        'equivalent to the usage of `useTableFeatures`.',
+      ].join('\n'),
+    },
+  },
+};

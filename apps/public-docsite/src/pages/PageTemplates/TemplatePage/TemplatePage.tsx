@@ -34,12 +34,12 @@ const TemplatePageBase: React.FunctionComponent<ITemplatePageProps> = props => {
       // Pass all the props to the Page component.
       {...props}
       // Use the platform specific props from the doc.ts file.
-      {...TemplatePageProps[platform]}
+      {...TemplatePageProps[platform!]}
       // Use the getSubTitle helper function to get the page header subtitle from the active platform.
-      subTitle={getSubTitle(platform)}
+      subTitle={getSubTitle(platform!)}
       // You can define custom sections using the `otherSections` prop.
       // Here it is using a method that takes the platform as an argument to return the correct array of section props.
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
 
       // You can hide the side rail by setting `showSideRail` to false.
       // showSideRail={false}

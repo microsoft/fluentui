@@ -1,9 +1,8 @@
 import * as path from 'path';
-import { webpack as lernaAliases } from '../../../lernaAliasNorthstar';
 import { LicenseWebpackPlugin } from 'license-webpack-plugin';
 import webpack from 'webpack';
 
-import config from '../../../config';
+import config from '../../config';
 
 const { paths } = config;
 
@@ -60,7 +59,7 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json'],
       alias: {
-        ...lernaAliases(),
+        ...config.lernaAliases({ type: 'webpack' }),
         src: paths.packageSrc('react-northstar'),
       },
     },
