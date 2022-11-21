@@ -240,7 +240,7 @@ jobs:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "Fluent UI v0" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
+      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v0" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)

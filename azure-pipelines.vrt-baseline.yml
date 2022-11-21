@@ -84,7 +84,7 @@ jobs:
           vrTestPackagePath: 'packages/fluentui/docs'
           shouldBuildNorthstar: true
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "Fluent UI v0" --buildId $(Build.BuildId)
+      - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "FluentUI-v0" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'
         env:
           API_URL: $(System.CollectionUri)
