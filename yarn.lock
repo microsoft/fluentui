@@ -1238,22 +1238,6 @@
   resolved "https://registry.yarnpkg.com/@fluentui/public-docsite-setup/-/public-docsite-setup-0.3.1.tgz#b11a9c06456a7e8f3cff3c0fb96bb74614e2a81d"
   integrity sha512-nmoE31FrBB9OXsawvtu2mRzP1WBaPeintsCKCjrFUJs1hwbd/CnfEztXbOFLy+yQf10ZrEvUSQ2DTdKY3IsVoA==
 
-"@fluentui/react-theme-provider@^0.18.5":
-  version "0.18.5"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme-provider/-/react-theme-provider-0.18.5.tgz#97c3ca9fc794929b2ffa9d5526470d278a38ba4d"
-  integrity sha512-eAbha0U4Fly9EoHVOVMMc+2AA1PlQDu76qGVNAdj0IpJyJEkyerCDY/qYVjV21L9ju5uO8Yw1QYdHUsNaY9xvQ==
-  dependencies:
-    "@fluentui/react-compose" "^0.19.15"
-    "@fluentui/react-stylesheets" "^0.2.5"
-    "@fluentui/react-window-provider" "^1.0.2"
-    "@fluentui/theme" "^1.7.4"
-    "@uifabric/merge-styles" "^7.19.2"
-    "@uifabric/react-hooks" "^7.13.12"
-    "@uifabric/set-version" "^7.0.24"
-    "@uifabric/utilities" "^7.33.5"
-    classnames "^2.2.6"
-    tslib "^1.10.0"
-
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
