@@ -12,6 +12,7 @@ export const toolbarClassNames: SlotClassNames<ToolbarSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    alignItems: 'center',
     ...shorthands.padding('4px', '8px', '4px', '8px'),
     ...shorthands.gap('8px'),
   },
