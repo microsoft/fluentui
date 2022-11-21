@@ -1,3 +1,4 @@
+import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Button } from '@fluentui/react-northstar';
@@ -20,6 +21,7 @@ import ButtonExampleFluid from '../../examples/components/Button/Variations/Butt
 import ButtonExampleSizeShorthand from '../../examples/components/Button/Variations/ButtonExampleSize.shorthand';
 
 export default { component: Button, title: 'Button' } as ComponentMeta<typeof Button>;
+const ButtonTest = () => <Button content={'Test'} />;
 
 export {
   ButtonDefaultBsize,
@@ -39,4 +41,5 @@ export {
   ButtonExampleFlat,
   ButtonExampleFluid,
   ButtonExampleSizeShorthand,
+  ButtonTest,
 };
