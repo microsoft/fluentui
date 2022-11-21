@@ -1,4 +1,4 @@
-import { safeLaunchOptions } from '../puppeteer/puppeteer.config';
+import { safeLaunchOptions } from '../puppeteer';
 import express from 'express';
 import http from 'http';
 import puppeteer from 'puppeteer';

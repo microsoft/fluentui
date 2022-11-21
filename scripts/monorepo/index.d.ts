@@ -105,3 +105,11 @@ export const getDefaultEnvironmentVars: (
 };
 
 export const workspaceRoot: string;
+
+export declare const eslintConstants: {
+  /** List of file extensions to lint, in format used by eslint (comma-separated, with leading .) */
+  extensions: string;
+
+  /** Subdirectory to lint within package (relative path) */
+  directory: string;
+};

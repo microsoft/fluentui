@@ -38,6 +38,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
+    '@storybook/addon-links',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
 

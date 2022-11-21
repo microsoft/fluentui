@@ -1,7 +1,6 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TableCellActionsSlots, TableCellActionsState } from './TableCellActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots> = {
   root: 'fui-TableCellActions',
@@ -18,13 +17,6 @@ const useStyles = makeStyles({
     transform: 'translateY(-50%)',
     opacity: 0,
     marginLeft: 'auto',
-
-    ...createCustomFocusIndicatorStyle(
-      {
-        opacity: 1,
-      },
-      { selector: 'focus-within' },
-    ),
   },
 
   visible: {

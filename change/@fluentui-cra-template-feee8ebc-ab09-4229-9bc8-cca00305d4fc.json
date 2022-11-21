@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: enable isolateModules",
+  "comment": "chore: remove scripts/tsconfig.json from config",
   "packageName": "@fluentui/cra-template",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "none"

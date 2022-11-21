@@ -5,7 +5,7 @@
   "scripts": {
     "code-style": "just-scripts code-style",
     "test": "jest",
-    "type-check": "tsc -b tsconfig.scripts.json"
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*"

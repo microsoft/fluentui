@@ -133,7 +133,7 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> & Pick<UseSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
@@ -533,15 +533,6 @@ export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionC
 // @public
 export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
 
-// @public (undocumented)
-export function useSelection<TItem>(options: UseSelectionOptions): (tableState: HeadlessTableState<TItem>) => HeadlessTableState<TItem>;
-
-// @public (undocumented)
-export function useSort<TItem>(options: UseSortOptions): (tableState: HeadlessTableState<TItem>) => HeadlessTableState<TItem>;
-
-// @public (undocumented)
-export function useTable<TItem>(options: UseTableOptions<TItem>, plugins?: TableStatePlugin[]): HeadlessTableState<TItem>;
-
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
 
@@ -572,6 +563,9 @@ export const useTableCellStyles_unstable: (state: TableCellState) => TableCellSt
 // @public (undocumented)
 export const useTableContext: () => TableContextValue;
 
+// @public (undocumented)
+export function useTableFeatures<TItem>(options: UseTableOptions<TItem>, plugins?: TableStatePlugin[]): HeadlessTableState<TItem>;
+
 // @public
 export const useTableHeader_unstable: (props: TableHeaderProps, ref: React_2.Ref<HTMLElement>) => TableHeaderState;
 
@@ -600,11 +594,17 @@ export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLE
 // @public
 export const useTableRowStyles_unstable: (state: TableRowState) => TableRowState;
 
+// @public (undocumented)
+export function useTableSelection<TItem>(options: UseTableSelectionOptions): (tableState: HeadlessTableState<TItem>) => HeadlessTableState<TItem>;
+
 // @public
 export const useTableSelectionCell_unstable: (props: TableSelectionCellProps, ref: React_2.Ref<HTMLElement>) => TableSelectionCellState;
 
 // @public
 export const useTableSelectionCellStyles_unstable: (state: TableSelectionCellState) => TableSelectionCellState;
+
+// @public (undocumented)
+export function useTableSort<TItem>(options: UseTableSortOptions): (tableState: HeadlessTableState<TItem>) => HeadlessTableState<TItem>;
 
 // @public
 export const useTableStyles_unstable: (state: TableState) => TableState;

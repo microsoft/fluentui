@@ -2,7 +2,7 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as glob from 'glob';
-import { findGitRoot } from '../monorepo/index';
+import { findGitRoot } from '../monorepo';
 
 const generateOnly = process.argv.includes('-g');
 const beachballBin = require.resolve('beachball/bin/beachball.js');
