@@ -74,8 +74,10 @@
     "@uifabric/icons": "^7.9.5",
     "@uifabric/merge-styles": "^7.20.2",
     "@uifabric/react-hooks": "^7.16.4",
+    "@fluentui/react-theme-provider": "^0.18.5",
     "@uifabric/set-version": "^7.0.24",
     "@uifabric/styling": "^7.25.1",
+    "@fluentui/theme": "1.7.13",
     "@uifabric/utilities": "^7.38.2",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
