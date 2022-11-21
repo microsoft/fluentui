@@ -279,6 +279,16 @@ describe('ComboBox', () => {
     expect(combobox.getAttribute('value')).toEqual('Foo');
   });
 
+  it('Can insert text in uncontrolled case with autoComplete and allowFreeInput on', () => {
+    const { getByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeInput />,
+    );
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('Foo');
+  });
+
   it('Can insert text in uncontrolled case with autoComplete on and allowFreeform off', () => {
     const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" />);
 
@@ -303,6 +313,16 @@ describe('ComboBox', () => {
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'f');
     expect(combobox.getAttribute('value')).toEqual('f');
+  });
+
+  it('Can insert text in uncontrolled case with autoComplete off and allowFreeInput on', () => {
+    const { getByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeInput />,
+    );
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'xyz');
+    expect(combobox.getAttribute('value')).toEqual('xyz');
   });
 
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform off', () => {
@@ -587,6 +607,58 @@ describe('ComboBox', () => {
 
     userEvent.clear(combobox);
     expect(changedValue).toEqual('');
+  });
+
+  it('onInputValueChange is called when the input changes with allowFreeInput', () => {
+    let changedValue: string | undefined = undefined;
+    const onInputValueChangeHandler = (value: string) => {
+      changedValue = value;
+    };
+
+    const { getByRole } = render(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeInput onInputValueChange={onInputValueChangeHandler} />,
+    );
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'a');
+    expect(changedValue).toEqual('a');
+
+    userEvent.type(combobox, 'bcd');
+    expect(changedValue).toEqual('abcd');
+
+    userEvent.clear(combobox);
+    expect(changedValue).toEqual('');
+  });
+
+  it('onChange is called when a full matching option is typed and submitted with allowFreeInput', () => {
+    const onChange = jest.fn();
+
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS2} allowFreeInput onChange={onChange} />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'foo');
+    expect(onChange).not.toHaveBeenCalled();
+
+    userEvent.type(combobox, '{enter}');
+    expect(onChange).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS2[1], 1, 'Foo');
+  });
+
+  it('onChange is not called when a non-matching string is typed and submitted with allowFreeInput', () => {
+    const onChange = jest.fn();
+
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS2} allowFreeInput onChange={onChange} />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'abc{enter}');
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('onPendingValueChanged is called when a full matching option is typed with allowFreeInput', () => {
+    const onPendingValueChanged = jest.fn();
+
+    const { getByRole } = render(
+      <ComboBox options={DEFAULT_OPTIONS2} allowFreeInput onPendingValueChanged={onPendingValueChanged} />,
+    );
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'foo');
+    expect(onPendingValueChanged).toHaveBeenCalledWith(DEFAULT_OPTIONS2[1], 1, undefined);
   });
 
   it('suggestedDisplayValue is set to undefined when the selected input is cleared', () => {
