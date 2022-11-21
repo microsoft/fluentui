@@ -5,8 +5,18 @@ import * as fs from 'fs';
 
 const files = [path.join(process.cwd(), constants.directory)];
 const storiesPath = path.join(process.cwd(), 'stories');
+const hasStorySubfolder =
+  fs.existsSync(storiesPath) &&
+  fs
+    .readdirSync(storiesPath)
+    .map(subfolder => {
+      const storyFiles = fs.readdirSync(path.join(storiesPath, subfolder));
+      return storyFiles.map(file => path.join(storiesPath, file));
+    })
+    .flat()
+    .some(file => constants.extensions.includes(path.extname(file)));
 
-if (fs.existsSync(storiesPath)) {
+if (hasStorySubfolder) {
   files.push(storiesPath);
 }
 
