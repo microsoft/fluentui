@@ -47,8 +47,7 @@ export interface IContextualMenuProps
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
-   * @deprecated ContextualMenu has no imperative methods in its public interface,
-   * so componentRef no longer returns a ref
+   * @deprecated ContextualMenu has no imperative methods, so componentRef no longer returns a ref
    */
   componentRef?: IRefObject<IContextualMenu>;
 
