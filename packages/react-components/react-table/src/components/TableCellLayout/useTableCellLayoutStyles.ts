@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { typographyStyles } from '@fluentui/react-theme';
 
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots> = {
   root: 'fui-TableCellLayout',
@@ -33,8 +34,8 @@ const useStyles = makeStyles({
 
   mediaPrimary: {
     '& svg': {
-      width: '28px',
-      height: '28px',
+      width: '24px',
+      height: '24px',
     },
   },
 
@@ -43,8 +44,8 @@ const useStyles = makeStyles({
   },
 
   description: {
-    fontSize: tokens.fontSizeBase300,
     color: tokens.colorNeutralForeground2,
+    ...typographyStyles.caption1,
   },
 });
 

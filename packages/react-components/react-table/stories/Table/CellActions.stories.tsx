@@ -2,12 +2,15 @@ import * as React from 'react';
 import {
   FolderRegular,
   EditRegular,
+  EditFilled,
   OpenRegular,
   DocumentRegular,
   PeopleRegular,
   DocumentPdfRegular,
   VideoRegular,
   MoreHorizontalRegular,
+  MoreHorizontalFilled,
+  bundleIcon,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
 import {
@@ -20,6 +23,9 @@ import {
   TableCellActions,
   TableCellLayout,
 } from '@fluentui/react-components/unstable';
+
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
 const items = [
   {
@@ -83,8 +89,8 @@ export const CellActions = () => {
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               <TableCellActions>
-                <Button icon={<EditRegular />} appearance="subtle" />
-                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                <Button icon={<EditIcon />} appearance="subtle" />
+                <Button icon={<MoreHorizontalIcon />} appearance="subtle" />
               </TableCellActions>
             </TableCell>
             <TableCell>
