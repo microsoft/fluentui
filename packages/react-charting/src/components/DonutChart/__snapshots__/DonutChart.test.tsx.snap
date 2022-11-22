@@ -47,7 +47,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
         >
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -68,7 +68,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -86,7 +86,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           </g>
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -107,7 +107,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -590,7 +590,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
         >
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -611,7 +611,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -629,7 +629,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           </g>
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -650,7 +650,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1049,7 +1049,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1070,7 +1070,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1088,7 +1088,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -1109,7 +1109,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1429,7 +1429,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         >
           <g>
             <path
-              aria-labelledby="callout11"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1450,7 +1450,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1468,7 +1468,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           </g>
           <g>
             <path
-              aria-labelledby="callout11"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -1489,7 +1489,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1809,7 +1809,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout4"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1830,7 +1830,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1848,7 +1848,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout4"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -1869,7 +1869,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1940,7 +1940,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout7"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1961,7 +1961,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -1979,7 +1979,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout7"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -2000,7 +2000,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -2320,7 +2320,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout15"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -2341,7 +2341,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
@@ -2361,7 +2361,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout15"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -2382,7 +2382,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
             <text
               className=
