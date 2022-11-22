@@ -44,9 +44,9 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
       <div>
         <label id={`${comboId}-outline`}>Outline</label>
         <Combobox aria-labelledby={`${comboId}-outline`} placeholder="Select a color" appearance="outline" {...props}>
-          <Option label="Red" />
-          <Option label="Green" />
-          <Option label="Blue" />
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
         </Combobox>
       </div>
 
@@ -58,9 +58,9 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
           appearance="underline"
           {...props}
         >
-          <Option label="Red" />
-          <Option label="Green" />
-          <Option label="Blue" />
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
         </Combobox>
       </div>
 
@@ -72,9 +72,9 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
           appearance="filled-darker"
           {...props}
         >
-          <Option label="Red" />
-          <Option label="Green" />
-          <Option label="Blue" />
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
         </Combobox>
       </div>
 
@@ -86,9 +86,9 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
           appearance="filled-lighter"
           {...props}
         >
-          <Option label="Red" />
-          <Option label="Green" />
-          <Option label="Blue" />
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
         </Combobox>
       </div>
     </div>

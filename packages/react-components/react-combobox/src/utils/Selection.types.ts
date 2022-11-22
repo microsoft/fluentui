@@ -34,11 +34,11 @@ export type SelectionValue = {
 
 /*
  * Data for the onOptionSelect callback.
- * `optionValue` and `optionLabel` will be undefined if multiple options are modified at once.
+ * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
  */
 export type OptionOnSelectData = {
   optionValue: string | undefined;
-  optionLabel: string | undefined;
+  optionText: string | undefined;
   selectedOptions: string[];
 };
 

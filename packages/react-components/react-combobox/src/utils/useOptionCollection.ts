@@ -15,8 +15,8 @@ export const useOptionCollection = (): OptionCollectionState => {
       const item = nodes.current.find(node => node.option.id === id);
       return item?.option;
     };
-    const getOptionsMatchingLabel = (matcher: (value: string) => boolean) => {
-      return nodes.current.filter(node => matcher(node.option.label)).map(node => node.option);
+    const getOptionsMatchingText = (matcher: (value: string) => boolean) => {
+      return nodes.current.filter(node => matcher(node.option.text)).map(node => node.option);
     };
 
     return {
@@ -24,7 +24,7 @@ export const useOptionCollection = (): OptionCollectionState => {
       getOptionAtIndex,
       getIndexOfId,
       getOptionById,
-      getOptionsMatchingLabel,
+      getOptionsMatchingText,
     };
   }, []);
 

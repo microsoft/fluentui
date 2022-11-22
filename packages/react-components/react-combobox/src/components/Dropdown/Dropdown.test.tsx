@@ -26,9 +26,9 @@ describe('Dropdown', () => {
   it('renders a default state', () => {
     const result = render(
       <Dropdown>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
     expect(result.container).toMatchSnapshot();
@@ -37,9 +37,9 @@ describe('Dropdown', () => {
   it('renders an open listbox', () => {
     const result = render(
       <Dropdown open inlinePopup>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
     expect(result.container).toMatchSnapshot();
@@ -48,9 +48,9 @@ describe('Dropdown', () => {
   it('renders the popup under document.body by default', () => {
     const { container } = render(
       <Dropdown open>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
     expect(container.querySelector('[role=listbox]')).toBeNull();
@@ -60,9 +60,9 @@ describe('Dropdown', () => {
   it('renders the popup inline when specified', () => {
     const { container } = render(
       <Dropdown open inlinePopup>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
@@ -72,9 +72,9 @@ describe('Dropdown', () => {
   it('opens the popup on click', () => {
     const { getByRole } = render(
       <Dropdown>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -87,9 +87,9 @@ describe('Dropdown', () => {
   it('closes the popup on click with defaultOpen', () => {
     const { getByRole } = render(
       <Dropdown defaultOpen>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -106,9 +106,9 @@ describe('Dropdown', () => {
   it('does not close the combobox on click with controlled open', () => {
     const { getByRole } = render(
       <Dropdown open>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -126,9 +126,9 @@ describe('Dropdown', () => {
   it('opens the popup on enter', () => {
     const { getByRole } = render(
       <Dropdown>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -141,9 +141,9 @@ describe('Dropdown', () => {
   it('opens and closes the popup with alt + arrow keys', () => {
     const { getByRole } = render(
       <Dropdown>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -159,9 +159,9 @@ describe('Dropdown', () => {
   it('closes the popup with escape', () => {
     const { getByRole } = render(
       <Dropdown defaultOpen>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -175,9 +175,9 @@ describe('Dropdown', () => {
 
     const { getByRole } = render(
       <Dropdown onOpenChange={onOpen}>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -191,9 +191,9 @@ describe('Dropdown', () => {
   it('should set defaultSelectedOptions', () => {
     const { getByTestId } = render(
       <Dropdown open defaultSelectedOptions={['Green']}>
-        <Option label="Red" />
-        <Option data-testid="green" label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option data-testid="green">Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -203,9 +203,9 @@ describe('Dropdown', () => {
   it('should set multiple defaultSelectedOptions', () => {
     const { getByTestId } = render(
       <Dropdown open multiselect defaultSelectedOptions={['Green', 'Red']}>
-        <Option data-testid="red" label="Red" />
-        <Option data-testid="green" label="Green" />
-        <Option data-testid="blue" label="Blue" />
+        <Option data-testid="red">Red</Option>
+        <Option data-testid="green">Green</Option>
+        <Option data-testid="blue">Blue</Option>
       </Dropdown>,
     );
 
@@ -217,9 +217,13 @@ describe('Dropdown', () => {
   it('should set defaultSelectedOptions based on Option `value`', () => {
     const { getByTestId } = render(
       <Dropdown open multiselect defaultSelectedOptions={['b', 'c']}>
-        <Option label="Red" value="a" />
-        <Option data-testid="green" label="Green" value="b" />
-        <Option data-testid="blue" label="Blue" value="c" />
+        <Option value="a">Red</Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
       </Dropdown>,
     );
 
@@ -230,9 +234,9 @@ describe('Dropdown', () => {
   it('should set selectedOptions', () => {
     const { getByTestId } = render(
       <Dropdown open selectedOptions={['Green']}>
-        <Option label="Red" />
-        <Option data-testid="green" label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option data-testid="green">Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -242,9 +246,15 @@ describe('Dropdown', () => {
   it('should set selectedOptions based on Option `value`', () => {
     const { getByTestId } = render(
       <Dropdown open multiselect selectedOptions={['a', 'c']}>
-        <Option data-testid="red" label="Red" value="a" />
-        <Option data-testid="green" label="Green" value="b" />
-        <Option data-testid="blue" label="Blue" value="c" />
+        <Option data-testid="red" value="a">
+          Red
+        </Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
       </Dropdown>,
     );
 
@@ -256,9 +266,9 @@ describe('Dropdown', () => {
   it('should change defaultSelectedOptions on click', () => {
     const { getByTestId } = render(
       <Dropdown open defaultSelectedOptions={['Green']}>
-        <Option data-testid="red" label="Red" />
-        <Option data-testid="green" label="Green" />
-        <Option label="Blue" />
+        <Option data-testid="red">Red</Option>
+        <Option data-testid="green">Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -271,9 +281,9 @@ describe('Dropdown', () => {
   it('selects an option on click', () => {
     const { getByTestId, getByRole } = render(
       <Dropdown defaultOpen>
-        <Option data-testid="red" label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option data-testid="red">Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -285,9 +295,9 @@ describe('Dropdown', () => {
   it('selects an option on enter and space', () => {
     const { getByTestId, getByRole } = render(
       <Dropdown open data-testid="combobox">
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -306,9 +316,9 @@ describe('Dropdown', () => {
   it('does not select a disabled option with the keyboard', () => {
     const { getByTestId, getByRole } = render(
       <Dropdown open data-testid="combobox">
-        <Option label="Red" disabled />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option disabled>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -322,9 +332,9 @@ describe('Dropdown', () => {
   it('selects an option when tabbing away from an open combobox', () => {
     const { getByTestId, getByRole } = render(
       <Dropdown defaultOpen data-testid="combobox">
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -337,9 +347,9 @@ describe('Dropdown', () => {
   it('adds to selection for multiselect', () => {
     const { getByText } = render(
       <Dropdown open multiselect defaultSelectedOptions={['Red']}>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -355,9 +365,9 @@ describe('Dropdown', () => {
 
     const { getByRole, getByText } = render(
       <Dropdown value="Red" onOptionSelect={onOptionSelect}>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -367,7 +377,7 @@ describe('Dropdown', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(1);
     expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
       optionValue: 'Green',
-      optionLabel: 'Green',
+      optionText: 'Green',
       selectedOptions: ['Green'],
     });
   });
@@ -377,9 +387,9 @@ describe('Dropdown', () => {
 
     const { getByRole, getByText } = render(
       <Dropdown value="Red" onOptionSelect={onOptionSelect}>
-        <Option label="Red" />
-        <Option label="Green" value="test" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option value="test">Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -389,7 +399,7 @@ describe('Dropdown', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(1);
     expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
       optionValue: 'test',
-      optionLabel: 'Green',
+      optionText: 'Green',
       selectedOptions: ['test'],
     });
   });
@@ -399,9 +409,9 @@ describe('Dropdown', () => {
 
     const { getByRole, getByText } = render(
       <Dropdown value="Red" onOptionSelect={onOptionSelect} multiselect>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -412,12 +422,12 @@ describe('Dropdown', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(2);
     expect(onOptionSelect).toHaveBeenNthCalledWith(1, expect.anything(), {
       optionValue: 'Green',
-      optionLabel: 'Green',
+      optionText: 'Green',
       selectedOptions: ['Green'],
     });
     expect(onOptionSelect).toHaveBeenNthCalledWith(2, expect.anything(), {
       optionValue: 'Blue',
-      optionLabel: 'Blue',
+      optionText: 'Blue',
       selectedOptions: ['Green', 'Blue'],
     });
   });
@@ -425,9 +435,9 @@ describe('Dropdown', () => {
   it('stays open on click for multiselect', () => {
     const { getByText, getByRole } = render(
       <Dropdown defaultOpen multiselect>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -439,9 +449,9 @@ describe('Dropdown', () => {
   it('should respect value over selected options', () => {
     const { getByRole } = render(
       <Dropdown value="foo" selectedOptions={['Green']}>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -451,9 +461,9 @@ describe('Dropdown', () => {
   it('should change defaultValue on select', () => {
     const { getByRole, getByText } = render(
       <Dropdown defaultValue="foo" defaultOpen>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -465,9 +475,9 @@ describe('Dropdown', () => {
   it('should not change value on select', () => {
     const { getByRole, getByText } = render(
       <Dropdown value="Red" defaultOpen>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -480,9 +490,9 @@ describe('Dropdown', () => {
   it('should set active option on click', () => {
     const { getByTestId } = render(
       <Dropdown open data-testid="combobox">
-        <Option label="Red" />
-        <Option label="Green" data-testid="clicked" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option data-testid="clicked">Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -495,9 +505,9 @@ describe('Dropdown', () => {
   it('should move active option with arrow down', () => {
     const { getByTestId, getByText } = render(
       <Dropdown defaultOpen data-testid="combobox">
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -510,9 +520,9 @@ describe('Dropdown', () => {
   it('should move active option with arrow up', () => {
     const { getByTestId, getByText } = render(
       <Dropdown open data-testid="combobox">
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -527,10 +537,10 @@ describe('Dropdown', () => {
   it('should move to first matching active option by typing a matching string', () => {
     const { getByRole, getByText } = render(
       <Dropdown>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Groot" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Groot</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -544,9 +554,9 @@ describe('Dropdown', () => {
   it('should clear active option when typing a string with no matches', () => {
     const { getByRole, getByText } = render(
       <Dropdown>
-        <Option label="Red" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 
@@ -564,11 +574,11 @@ describe('Dropdown', () => {
   it('should cycle through options by repeating the same letter', () => {
     const { getByRole, getByText } = render(
       <Dropdown open>
-        <Option label="Cat" />
-        <Option label="Dog" />
-        <Option label="Dolphin" />
-        <Option label="Duck" />
-        <Option label="Horse" />
+        <Option>Cat</Option>
+        <Option>Dog</Option>
+        <Option>Dolphin</Option>
+        <Option>Duck</Option>
+        <Option>Horse</Option>
       </Dropdown>,
     );
 
@@ -586,10 +596,10 @@ describe('Dropdown', () => {
   it('should not move active option when typing a matching string', () => {
     const { getByRole, getByText } = render(
       <Dropdown>
-        <Option label="Red" />
-        <Option label="Redder" />
-        <Option label="Green" />
-        <Option label="Blue" />
+        <Option>Red</Option>
+        <Option>Redder</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Dropdown>,
     );
 

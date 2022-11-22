@@ -5,8 +5,8 @@ export type OptionValue = {
   /** The `id` attribute of the option. */
   id: string;
 
-  /** The `label` string for the option. */
-  label: string;
+  /** The `text` string for the option. */
+  text: string;
 
   /** The value string of the option. */
   value: string;
@@ -25,8 +25,8 @@ export type OptionCollectionState = {
   /** Returns the option data by key. */
   getOptionById(id: string): OptionValue | undefined;
 
-  /** Returns an array of options filtered by a value matching function against the option label text. */
-  getOptionsMatchingLabel(matcher: (value: string) => boolean): OptionValue[];
+  /** Returns an array of options filtered by a value matching function against the option's text string. */
+  getOptionsMatchingText(matcher: (value: string) => boolean): OptionValue[];
 
   /** The unordered option data. */
   options: OptionValue[];

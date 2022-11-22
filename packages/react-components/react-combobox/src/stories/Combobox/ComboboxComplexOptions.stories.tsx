@@ -22,7 +22,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
     <div className={styles.root}>
       <label id={comboId}>Schedule a meeting</label>
       <Combobox aria-labelledby={comboId} {...props}>
-        <Option label="Katri Athokas">
+        <Option text="Katri Athokas">
           <Persona
             avatar={{ color: 'colorful' }}
             name="Katri Athokas"
@@ -32,7 +32,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
             secondaryText="Available"
           />
         </Option>
-        <Option label="Elvia Atkins">
+        <Option text="Elvia Atkins">
           <Persona
             avatar={{ color: 'colorful' }}
             name="Elvia Atkins"
@@ -42,7 +42,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
             secondaryText="Busy"
           />
         </Option>
-        <Option label="Cameron Evans">
+        <Option text="Cameron Evans">
           <Persona
             avatar={{ color: 'colorful' }}
             name="Cameron Evans"
@@ -52,7 +52,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
             secondaryText="Away"
           />
         </Option>
-        <Option label="Wanda Howard">
+        <Option text="Wanda Howard">
           <Persona
             avatar={{ color: 'colorful' }}
             name="Wanda Howard"

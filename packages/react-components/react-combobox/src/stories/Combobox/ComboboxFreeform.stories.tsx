@@ -22,7 +22,9 @@ export const Freeform = (props: Partial<ComboboxProps>) => {
       <label id={comboId}>Best pet</label>
       <Combobox aria-labelledby={comboId} freeform placeholder="Select an animal" {...props}>
         {options.map(option => (
-          <Option key={option} label={option} disabled={option === 'Ferret'} />
+          <Option key={option} disabled={option === 'Ferret'}>
+            {option}
+          </Option>
         ))}
       </Combobox>
     </div>

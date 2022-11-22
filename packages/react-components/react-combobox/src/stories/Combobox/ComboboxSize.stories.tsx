@@ -29,27 +29,27 @@ export const Size = (props: Partial<ComboboxProps>) => {
       <div>
         <label id={`${comboId}-small`}>Small</label>
         <Combobox aria-labelledby={`${comboId}-small`} placeholder="Select a color" size="small" {...props}>
-          <Option label="Red" />
-          <Option label="Green" />
-          <Option label="Blue" />
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
         </Combobox>
       </div>
 
       <div>
         <label htmlFor={`${comboId}-med`}>Medium</label>
         <Combobox aria-labelledby={`${comboId}-med`} placeholder="Select a color" size="medium" {...props}>
-          <Option label="Red" />
-          <Option label="Green" />
-          <Option label="Blue" />
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
         </Combobox>
       </div>
 
       <div>
         <label htmlFor={`${comboId}-large`}>Large</label>
         <Combobox aria-labelledby={`${comboId}-large`} placeholder="Select a color" size="large" {...props}>
-          <Option label="Red" />
-          <Option label="Green" />
-          <Option label="Blue" />
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
         </Combobox>
       </div>
     </div>
