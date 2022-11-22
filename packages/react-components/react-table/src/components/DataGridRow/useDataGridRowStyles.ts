@@ -5,6 +5,7 @@ import { useTableRowStyles_unstable } from '../TableRow/useTableRowStyles';
 
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots> = {
   root: 'fui-DataGridRow',
+  selectionCell: 'fuid-DataGridRow__selectionCell',
 };
 
 /**
