@@ -65,9 +65,9 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const SizeSmaller = () => {
+export const SizeExtraSmall = () => {
   return (
-    <Table size="smaller">
+    <Table size="extra-small">
       <TableHeader>
         <TableRow>
           {columns.map(column => (

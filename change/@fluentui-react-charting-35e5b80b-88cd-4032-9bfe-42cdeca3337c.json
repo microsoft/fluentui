@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix wrong narration in browse mode",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -405,7 +405,6 @@ describe('Overflow', () => {
     );
 
     setContainerSize(350);
-    cy.get(`[${selectors.divider}="4"]`);
     cy.get(`[${selectors.divider}="4"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 3);
     setContainerSize(250);

@@ -333,7 +333,7 @@ export type TableCellSlots = {
 };
 
 // @public
-export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
+export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
 
 // @public (undocumented)
 export const tableClassName = "fui-Table";
@@ -346,7 +346,7 @@ export const TableContextProvider: React_2.Provider<TableContextValue | undefine
 
 // @public (undocumented)
 export type TableContextValue = {
-    size: 'small' | 'smaller' | 'medium';
+    size: 'extra-small' | 'small' | 'medium';
     noNativeElements: boolean;
     sortable: boolean;
 };
