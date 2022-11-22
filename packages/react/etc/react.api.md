@@ -3903,6 +3903,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 // @public (undocumented)
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React_2.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
+    allowFreeInput?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
     autofill?: IAutofillProps;
@@ -4237,6 +4238,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutProps?: ICalloutProps;
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IContextualMenu>;
     contextualMenuItemAs?: React_2.ComponentClass<IContextualMenuItemProps> | React_2.FunctionComponent<IContextualMenuItemProps>;
     coverTarget?: boolean;

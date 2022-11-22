@@ -16,36 +16,12 @@ const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-row',
   },
-
-  medium: {
-    height: '44px',
-  },
-
-  small: {
-    height: '34px',
-  },
-
-  smaller: {
-    height: '24px',
-  },
 });
 
 const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-  },
-
-  medium: {
-    minHeight: '44px',
-  },
-
-  small: {
-    minHeight: '34px',
-  },
-
-  smaller: {
-    minHeight: '24px',
   },
 });
 
@@ -66,7 +42,7 @@ const useStyles = makeStyles({
     ),
     ...createCustomFocusIndicatorStyle(
       {
-        ...shorthands.outline('2px', 'solid'),
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
       { selector: 'focus', enableOutline: true },
@@ -82,7 +58,6 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -94,7 +69,6 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -144,9 +118,7 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
+
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
@@ -172,7 +144,6 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     !isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
-    state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
     styles[state.appearance],
     state.root.className,
   );

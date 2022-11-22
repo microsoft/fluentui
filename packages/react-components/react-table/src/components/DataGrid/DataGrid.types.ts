@@ -5,8 +5,8 @@ import type {
   TableState as HeadlessTableState,
   UseSortOptions,
   SelectionMode,
-  RowId,
   UseSelectionOptions,
+  OnSelectionChangeData,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
 
@@ -56,7 +56,7 @@ export type DataGridProps = TableProps &
   Pick<UseSortOptions, 'sortState' | 'defaultSortState'> &
   Pick<UseSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
-    onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, selectedItems: Set<RowId>) => void;
+    onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
     /**
      * Enables row selection and sets the selection mode
      * @default false

@@ -49,6 +49,9 @@ const Example = () => (
       <CompoundButton secondaryText="secondary text." text="CompoundButton" />
       <DefaultButton primary={true} text="Default button as primary" />
       <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
+      <Label>Danger buttons (both primary and default)</Label>
+      <DefaultButton className="danger" text="danger defaultbutton" />
+      <PrimaryButton className="danger" text="danger primarybutton" />
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
@@ -104,6 +107,17 @@ const Example = () => (
       <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked />
       <Checkbox label="Disabled checkbox" disabled />
       <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
+      <Checkbox
+        label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
+        defaultIndeterminate
+        defaultChecked={true}
+      />
+      <Checkbox label="Disabled indeterminate checkbox" disabled defaultIndeterminate />
+      <Checkbox label="Indeterminate checkbox (controlled)" indeterminate={true} />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
