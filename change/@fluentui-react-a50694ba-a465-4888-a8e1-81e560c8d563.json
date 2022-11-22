@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add allowFreeInput to ComboBox, to allow typing while the combobox is in focus",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
