@@ -4,10 +4,16 @@
 
 ```ts
 
+import { CommunicationColors } from '@fluentui/theme';
+import { ComponentsStyles } from '@fluentui/theme';
+import { ComponentStyles } from '@fluentui/theme';
 import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { DefaultSpacing } from '@fluentui/theme';
+import { Depths } from '@fluentui/theme';
 import { EventGroup } from '@uifabric/utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { FluentTheme } from '@fluentui/theme';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
@@ -36,7 +42,16 @@ import { IStyleFunction } from '@uifabric/utilities';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { LocalizedFontFamilies } from '@fluentui/theme';
+import { LocalizedFontNames } from '@fluentui/theme';
+import { makeStyles } from '@fluentui/react-theme-provider';
+import { mergeThemes } from '@fluentui/theme';
+import { MotionAnimations } from '@fluentui/theme';
+import { MotionDurations } from '@fluentui/theme';
+import { MotionTimings } from '@fluentui/theme';
+import { NeutralColors } from '@fluentui/theme';
 import { Omit } from '@uifabric/utilities';
+import { PartialTheme } from '@fluentui/theme';
 import { Point } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -45,7 +60,14 @@ import { Selection } from '@uifabric/utilities';
 import { SELECTION_CHANGE } from '@uifabric/utilities';
 import { SelectionDirection } from '@uifabric/utilities';
 import { SelectionMode } from '@uifabric/utilities';
+import { SharedColors } from '@fluentui/theme';
 import { Target } from '@uifabric/react-hooks';
+import { Theme } from '@fluentui/theme';
+import { ThemeContext } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { ThemeProviderProps } from '@fluentui/react-theme-provider';
+import { UseStylesOptions } from '@fluentui/react-theme-provider';
+import { useTheme } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
 export class ActionButton extends React.Component<IButtonProps, {}> {
@@ -752,6 +774,8 @@ export class CommandBarButton extends React.Component<IButtonProps, {}> {
 // @public (undocumented)
 export const CommandButton: typeof ActionButton;
 
+export { CommunicationColors }
+
 // @public (undocumented)
 export const CompactPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 
@@ -763,6 +787,10 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
         createGenericItem: typeof createGenericItem;
     };
 }
+
+export { ComponentsStyles }
+
+export { ComponentStyles }
 
 // @public (undocumented)
 export class CompoundButton extends React.Component<IButtonProps, {}> {
@@ -904,6 +932,10 @@ export class DefaultButton extends React.Component<IButtonProps, {}> {
 
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
+
+export { DefaultSpacing }
+
+export { Depths }
 
 // @public (undocumented)
 export const DetailsColumn: React.FunctionComponent<IDetailsColumnProps>;
@@ -1298,6 +1330,8 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
     // (undocumented)
     static defaultProps: any;
 }
+
+export { FluentTheme }
 
 // @public
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
@@ -8960,6 +8994,12 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
     };
 }
 
+export { LocalizedFontFamilies }
+
+export { LocalizedFontNames }
+
+export { makeStyles }
+
 // @public (undocumented)
 export const MarqueeSelection: React.FunctionComponent<IMarqueeSelectionProps>;
 
@@ -9032,6 +9072,8 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 // @public
 export function mergeOverflows(keySequences: string[], overflowKeySequences: string[]): string[];
 
+export { mergeThemes }
+
 // @public (undocumented)
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
@@ -9088,6 +9130,12 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
 }
 
+export { MotionAnimations }
+
+export { MotionDurations }
+
+export { MotionTimings }
+
 // @public (undocumented)
 export const Nav: React.FunctionComponent<INavProps>;
 
@@ -9102,6 +9150,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // (undocumented)
     readonly selectedKey: string | undefined;
     }
+
+export { NeutralColors }
 
 // @public (undocumented)
 export const NormalPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
@@ -9216,6 +9266,8 @@ export enum PanelType {
     smallFixedNear = 2,
     smallFluid = 0
 }
+
+export { PartialTheme }
 
 // @public (undocumented)
 export const PeoplePickerItem: React.FunctionComponent<IPeoplePickerItemSelectedProps>;
@@ -9849,6 +9901,8 @@ export enum Shade {
     Unshaded = 0
 }
 
+export { SharedColors }
+
 // @public (undocumented)
 export const Shimmer: React.FunctionComponent<IShimmerProps>;
 
@@ -10390,6 +10444,10 @@ export const TextStyles: ITextComponent['styles'];
 // @public (undocumented)
 export const TextView: ITextComponent['view'];
 
+export { Theme }
+
+export { ThemeContext }
+
 // @public (undocumented)
 export class ThemeGenerator {
     static getThemeAsCode(slotRules: IThemeRules): any;
@@ -10400,6 +10458,10 @@ export class ThemeGenerator {
     static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }
+
+export { ThemeProvider }
+
+export { ThemeProviderProps }
 
 // @public (undocumented)
 export function themeRulesStandardCreator(): IThemeRules;
@@ -10496,6 +10558,10 @@ export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options
 
 // @public
 export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => ResponsiveMode;
+
+export { UseStylesOptions }
+
+export { useTheme }
 
 // @public
 export enum ValidationState {

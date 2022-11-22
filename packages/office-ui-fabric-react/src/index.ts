@@ -89,4 +89,25 @@ export * from './Utilities';
 export * from './Viewport';
 export * from './WindowProvider';
 
+export { ThemeContext, ThemeProvider, makeStyles, useTheme, ThemeProviderProps, UseStylesOptions } from './Theme';
+
+export {
+  CommunicationColors,
+  DefaultSpacing,
+  Depths,
+  FluentTheme,
+  LocalizedFontFamilies,
+  LocalizedFontNames,
+  mergeThemes,
+  MotionDurations,
+  MotionTimings,
+  MotionAnimations,
+  NeutralColors,
+  SharedColors,
+  ComponentStyles,
+  ComponentsStyles,
+  PartialTheme,
+  Theme,
+} from './Theme';
+
 import './version';
