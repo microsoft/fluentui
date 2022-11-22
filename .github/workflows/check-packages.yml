@@ -1,6 +1,7 @@
 name: Check packages
 on:
   pull_request:
+
 jobs:
   dependency-deduplication:
     runs-on: ubuntu-latest
