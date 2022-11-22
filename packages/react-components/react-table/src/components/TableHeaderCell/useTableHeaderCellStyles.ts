@@ -63,7 +63,7 @@ const useStyles = makeStyles({
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
+    ...shorthands.gap(tokens.spacingHorizontalXS),
     minHeight: '32px',
     ...shorthands.flex(1, 1, '0px'),
   },
@@ -74,6 +74,7 @@ const useStyles = makeStyles({
   sortIcon: {
     display: 'flex',
     alignItems: 'center',
+    paddingTop: tokens.spacingVerticalXXS,
   },
 });
 
