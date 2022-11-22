@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Deprecate the ContextualMenu componentRef because it has no public methods",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -4238,6 +4238,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutProps?: ICalloutProps;
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IContextualMenu>;
     contextualMenuItemAs?: React_2.ComponentClass<IContextualMenuItemProps> | React_2.FunctionComponent<IContextualMenuItemProps>;
     coverTarget?: boolean;
