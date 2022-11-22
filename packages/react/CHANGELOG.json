@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 22 Nov 2022 07:47:00 GMT",
+      "tag": "@fluentui/react_v8.103.0",
+      "version": "8.103.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d395d861e9e699ab8a3c1509d2efd5326ca475e6",
+            "comment": "fix: Deprecate the ContextualMenu componentRef because it has no public methods"
+          }
+        ],
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bb2f3c4215e257f676dcc20182d0069331efebb2",
+            "comment": "feat: add allowFreeInput to ComboBox, to allow typing while the combobox is in focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 07:51:43 GMT",
       "tag": "@fluentui/react_v8.102.0",
       "version": "8.102.0",

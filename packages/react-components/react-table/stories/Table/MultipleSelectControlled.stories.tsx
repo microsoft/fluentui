@@ -126,7 +126,7 @@ export const MultipleSelectControlled = () => {
       useSelection({
         selectionMode: 'multiselect',
         selectedItems: selectedRows,
-        onSelectionChange: (e, nextSelelectedRows) => setSelectedRows(nextSelelectedRows),
+        onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
       }),
     ],
   );
