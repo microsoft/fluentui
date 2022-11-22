@@ -139,8 +139,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout0"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -173,8 +172,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout0"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -514,8 +512,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout0"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -548,8 +545,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout0"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -806,8 +802,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout0"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -838,8 +833,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout0"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -1018,8 +1012,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout25"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -1050,8 +1043,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout25"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -1216,8 +1208,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout16"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -1248,8 +1239,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout16"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -1428,8 +1418,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout4"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -1460,8 +1449,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout4"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -1610,8 +1598,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout12"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -1642,8 +1629,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout12"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -1822,8 +1808,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout8"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -1854,8 +1839,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout8"
+            aria-label="Winter is coming, 23."
             className=
 
                 {
@@ -2004,8 +1988,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
       >
         <g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout20"
+            aria-label="first Lorem ipsum dolor sit amet, 40."
             className=
 
                 {
@@ -2036,8 +2019,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             />
           </g>
           <g
-            aria-label="Stacked bar chart"
-            aria-labelledby="callout20"
+            aria-label="Winter is coming, 23."
             className=
 
                 {

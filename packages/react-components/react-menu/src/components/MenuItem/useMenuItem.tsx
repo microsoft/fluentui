@@ -79,7 +79,13 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             }),
             onClick: useEventCallback(event => {
               if (!hasSubmenu && !persistOnClick) {
-                setOpen(event, { open: false, keyboard: dismissedWithKeyboardRef.current, bubble: true });
+                setOpen(event, {
+                  open: false,
+                  keyboard: dismissedWithKeyboardRef.current,
+                  bubble: true,
+                  type: 'menuItemClick',
+                  event,
+                });
                 dismissedWithKeyboardRef.current = false;
               }
 

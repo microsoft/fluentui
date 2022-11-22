@@ -5,7 +5,7 @@
   "description": "Storybook addons and utils for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -19,17 +19,16 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-storybook/src && yarn docs",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.1.6",
-    "@fluentui/react-theme": "^9.1.1",
+    "@fluentui/react-provider": "^9.1.8",
+    "@fluentui/react-theme": "^9.1.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -45,9 +44,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }

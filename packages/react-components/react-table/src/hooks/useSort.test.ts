@@ -3,6 +3,7 @@ import { ColumnDefinition } from './types';
 import { useSortState } from './useSort';
 import { mockTableState } from '../testing/mockTableState';
 import { createColumn } from './createColumn';
+import { mockSyntheticEvent } from '../testing/mockSyntheticEvent';
 
 describe('useSortState', () => {
   it('should use default sort state', () => {
@@ -49,13 +50,13 @@ describe('useSortState', () => {
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
-        result.current.sort.toggleColumnSort(1);
+        result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
 
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('ascending');
       expect(onSortChange).toHaveBeenCalledTimes(1);
-      expect(onSortChange).toHaveBeenCalledWith({ sortColumn: 1, sortDirection: 'ascending' });
+      expect(onSortChange).toHaveBeenCalledWith({}, { sortColumn: 1, sortDirection: 'ascending' });
     });
 
     it('should toggle sort direction on a column', () => {
@@ -69,17 +70,17 @@ describe('useSortState', () => {
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
-        result.current.sort.toggleColumnSort(1);
+        result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
 
       act(() => {
-        result.current.sort.toggleColumnSort(1);
+        result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
 
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('descending');
       expect(onSortChange).toHaveBeenCalledTimes(2);
-      expect(onSortChange).toHaveBeenNthCalledWith(2, { sortColumn: 1, sortDirection: 'descending' });
+      expect(onSortChange).toHaveBeenNthCalledWith(2, {}, { sortColumn: 1, sortDirection: 'descending' });
     });
   });
 
@@ -95,13 +96,13 @@ describe('useSortState', () => {
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
-        result.current.sort.setColumnSort(1, 'ascending');
+        result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'ascending');
       });
 
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('ascending');
       expect(onSortChange).toHaveBeenCalledTimes(1);
-      expect(onSortChange).toHaveBeenCalledWith({ sortColumn: 1, sortDirection: 'ascending' });
+      expect(onSortChange).toHaveBeenCalledWith({}, { sortColumn: 1, sortDirection: 'ascending' });
     });
 
     it('should sort a column in descending order', () => {
@@ -115,13 +116,13 @@ describe('useSortState', () => {
         useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
-        result.current.sort.setColumnSort(1, 'descending');
+        result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'descending');
       });
 
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('descending');
       expect(onSortChange).toHaveBeenCalledTimes(1);
-      expect(onSortChange).toHaveBeenCalledWith({ sortColumn: 1, sortDirection: 'descending' });
+      expect(onSortChange).toHaveBeenCalledWith({}, { sortColumn: 1, sortDirection: 'descending' });
     });
   });
 
@@ -137,7 +138,7 @@ describe('useSortState', () => {
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
-        result.current.sort.toggleColumnSort(2);
+        result.current.sort.toggleColumnSort(mockSyntheticEvent(), 2);
       });
 
       result.current.sort.sort([
@@ -154,7 +155,7 @@ describe('useSortState', () => {
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
-        result.current.sort.toggleColumnSort(1);
+        result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
 
       const rows = [
@@ -176,10 +177,10 @@ describe('useSortState', () => {
       const items = [{ value: 1 }, { value: 2 }];
       const { result } = renderHook(() => useSortState(mockTableState({ items, columns: columnDefinition }), {}));
       act(() => {
-        result.current.sort.toggleColumnSort(1);
+        result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
       act(() => {
-        result.current.sort.toggleColumnSort(1);
+        result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
 
       const rows = [
@@ -200,7 +201,7 @@ describe('useSortState', () => {
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
-        result.current.sort.setColumnSort(1, 'descending');
+        result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'descending');
       });
 
       expect(result.current.sort.getSortDirection(1)).toEqual('descending');
@@ -214,7 +215,7 @@ describe('useSortState', () => {
 
       const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
-        result.current.sort.setColumnSort(1, 'descending');
+        result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'descending');
       });
 
       expect(result.current.sort.getSortDirection(2)).toBeUndefined();

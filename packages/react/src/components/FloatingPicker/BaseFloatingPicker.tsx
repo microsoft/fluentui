@@ -72,7 +72,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString,
+        queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -281,7 +281,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         if (
           this.props.onRemoveSuggestion &&
           this.suggestionsControl.current &&
-          this.suggestionsControl.current.hasSuggestionSelected &&
+          this.suggestionsControl.current.hasSuggestionSelected() &&
           this.suggestionsControl.current.currentSuggestion &&
           ev.shiftKey
         ) {

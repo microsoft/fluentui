@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 04 Nov 2022 07:48:06 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Nov 2022 07:47:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.18)
+
+Tue, 22 Nov 2022 07:47:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.17..@fluentui/react-charting_v5.14.18)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.0 ([PR #25499](https://github.com/microsoft/fluentui/pull/25499) by beachball)
+
+## [5.14.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.17)
+
+Fri, 18 Nov 2022 07:45:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.16..@fluentui/react-charting_v5.14.17)
+
+### Patches
+
+- Allow focus navigation with tab key in donut chart ([PR #25654](https://github.com/microsoft/fluentui/pull/25654) by kumarkshitij@microsoft.com)
+
+## [5.14.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.16)
+
+Thu, 17 Nov 2022 07:51:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.15..@fluentui/react-charting_v5.14.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.102.0 ([PR #25638](https://github.com/microsoft/fluentui/pull/25638) by beachball)
+
+## [5.14.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.15)
+
+Wed, 16 Nov 2022 07:47:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.14..@fluentui/react-charting_v5.14.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.101.2 ([PR #25626](https://github.com/microsoft/fluentui/pull/25626) by beachball)
+
+## [5.14.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.14)
+
+Tue, 15 Nov 2022 07:44:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.13..@fluentui/react-charting_v5.14.14)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.10 ([PR #25643](https://github.com/microsoft/fluentui/pull/25643) by beachball)
+- Bump @fluentui/react to v8.101.1 ([PR #25643](https://github.com/microsoft/fluentui/pull/25643) by beachball)
+
+## [5.14.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.13)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.12..@fluentui/react-charting_v5.14.13)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.9 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/react to v8.101.0 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.21 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
 
 ## [5.14.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.12)
 
