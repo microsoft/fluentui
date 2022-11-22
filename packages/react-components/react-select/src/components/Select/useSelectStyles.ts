@@ -15,15 +15,6 @@ const iconSizes = {
   large: '24px',
 };
 
-// This 400 style is not in the typography styles.
-// May need a design change
-const contentSizes = {
-  400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-};
-
 //TODO: Should fieldHeights be a set of global design tokens or constants?
 const fieldHeights = {
   small: '24px',
@@ -166,7 +157,7 @@ const useSelectStyles = makeStyles({
     height: fieldHeights.large,
     paddingLeft: paddingLeft.large,
     paddingRight: paddingRight.large,
-    ...contentSizes[400],
+    ...typographyStyles.body2,
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
