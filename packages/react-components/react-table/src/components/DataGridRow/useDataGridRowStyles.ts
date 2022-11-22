@@ -5,7 +5,7 @@ import { useTableRowStyles_unstable } from '../TableRow/useTableRowStyles';
 
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots> = {
   root: 'fui-DataGridRow',
-  selectionCell: 'fuid-DataGridRow__selectionCell',
+  selectionCell: 'fui-DataGridRow__selectionCell',
 };
 
 /**
@@ -14,6 +14,9 @@ export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots> = {
 export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGridRowState => {
   useTableRowStyles_unstable(state);
   state.root.className = mergeClasses(dataGridRowClassNames.root, state.root.className);
+  if (state.selectionCell) {
+    state.selectionCell.className = mergeClasses(dataGridRowClassNames.selectionCell, state.selectionCell.className);
+  }
 
   return state;
 };
