@@ -25,7 +25,7 @@ import { ChevronDown12Regular } from '@fluentui/react-icons';
 
 import { getBrandTokensFromPalette } from './colorHelpers';
 
-const { useState, useCallback, useMemo, useRef } = React;
+const { useState, useCallback, useMemo } = React;
 
 const useStyles = makeStyles({
   root: {
