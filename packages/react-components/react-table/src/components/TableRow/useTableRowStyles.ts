@@ -82,7 +82,7 @@ const useStyles = makeStyles({
     ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
-  smaller: {
+  'extra-small': {
     fontSize: tokens.fontSizeBase200,
   },
 
