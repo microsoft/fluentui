@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding Fluent 2 styles to createv8Theme, fixing issue that blocked palette colors from propogating to semantic colors. Simplifying UX on storybook page.",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
