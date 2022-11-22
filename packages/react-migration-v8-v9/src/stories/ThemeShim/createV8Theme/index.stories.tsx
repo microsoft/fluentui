@@ -25,7 +25,7 @@ import { ChevronDown12Regular } from '@fluentui/react-icons';
 
 import { getBrandTokensFromPalette } from './colorHelpers';
 
-const { useState, useCallback, useMemo } = React;
+const { useState, useMemo } = React;
 
 const useStyles = makeStyles({
   root: {
@@ -39,6 +39,9 @@ const useStyles = makeStyles({
   editor: {
     width: '400px',
     height: '300px',
+  },
+  provider: {
+    width: '100%',
   },
   wizardActionBar: {
     display: 'flex',
@@ -123,13 +126,13 @@ export const Default = () => {
     isDark ? setBrandStartValue(defaultDarkBrandRampStart) : setBrandStartValue(defaultLightBrandRampStart);
   };
 
-  const selectV9LightBrandRamp = useCallback(() => {
+  const selectV9LightBrandRamp = () => {
     setPostBrandRampSelectionState(false, false);
-  }, [isDarkTheme, v9ThemeText, currentStep, brandStartValue]);
+  };
 
-  const selectV9DarkBrandRamp = useCallback(() => {
+  const selectV9DarkBrandRamp = () => {
     setPostBrandRampSelectionState(true, false);
-  }, [isDarkTheme, v9ThemeText, currentStep, brandStartValue]);
+  };
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
@@ -177,7 +180,7 @@ export const Default = () => {
         <>
           <h2>Your new v8 Theme</h2>
           <Button onClick={onStartOver}>Start over</Button>
-          <ThemeProvider theme={v8Theme}>
+          <ThemeProvider className={styles.provider} theme={v8Theme}>
             <FluentComponentSamples />
           </ThemeProvider>
           <div>{errorMessage}</div>

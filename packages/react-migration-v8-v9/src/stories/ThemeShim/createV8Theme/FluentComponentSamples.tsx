@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mergeStyles } from '@fluentui/merge-styles';
 import { DefaultButton, IconButton, initializeIcons, PrimaryButton } from '@fluentui/react';
 import { Checkbox } from '@fluentui/react';
@@ -16,25 +16,22 @@ import { Toggle } from '@fluentui/react';
 import type { FunctionComponent } from 'react';
 import * as React from 'react';
 
-const mainPanelNumericalWidth = 1100;
-const mainPanelWidth = `${mainPanelNumericalWidth}px`;
 const mainPanelInnerContent = mergeStyles({
-  marginRight: 'auto',
-  marginLeft: 'auto',
-  marginTop: '32px',
-  marginBottom: '64px',
-  width: mainPanelWidth,
+  padding: 16,
 });
 
 /* eslint-disable no-console */
+const columnMinWidth = 270;
 
-const columnSpace = 48;
-const columns = 3;
-const sampleColumn = mergeStyles({
-  width: (mainPanelNumericalWidth - columnSpace * (columns - 1)) / columns,
+const wrapperDiv = mergeStyles({
+  display: 'flex',
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
 });
-const iconButtonStyles = mergeStyles({
-  color: '#0078D4',
+
+const columnDiv = mergeStyles({
+  maxWidth: columnMinWidth,
 });
 
 const commandBarItems = [
@@ -126,9 +123,9 @@ export const FluentComponentSamples: FunctionComponent = () => {
 
   return (
     <div className={mainPanelInnerContent}>
-      <Stack gap={32}>
-        <CommandBar farItems={commandBarFarItems} items={commandBarItems} styles={{ root: { padding: 'unset' } }} />
-        <Stack.Item className={sampleColumn} grow={1}>
+      <CommandBar farItems={commandBarFarItems} items={commandBarItems} styles={{ root: { padding: 'unset' } }} />
+      <div className={wrapperDiv}>
+        <div className={columnDiv}>
           <Stack gap={32}>
             <Stack gap={20}>
               <Text variant="small">STORIES</Text>
@@ -145,8 +142,8 @@ export const FluentComponentSamples: FunctionComponent = () => {
               presence={PersonaPresence.online}
             />
           </Stack>
-        </Stack.Item>
-        <Stack.Item className={sampleColumn} grow={1}>
+        </div>
+        <div className={columnDiv}>
           <Stack gap={32}>
             <Dropdown
               selectedKey="content"
@@ -177,8 +174,8 @@ export const FluentComponentSamples: FunctionComponent = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack.Item>
-        <Stack.Item className={sampleColumn} grow={1}>
+        </div>
+        <div className={columnDiv}>
           <Stack gap={32}>
             <Slider disabled={isContentDisabled} max={11} />
             <Toggle
@@ -186,31 +183,26 @@ export const FluentComponentSamples: FunctionComponent = () => {
               offText="Off"
               inlineLabel
               label="Toggle for disabled states"
-              // eslint-disable-next-line @typescript-eslint/unbound-method
+              // eslint-disable-next-line @typescript-eslint/unbound-method, react/jsx-no-bind
               onChange={_onToggleChange}
             />
             <Pivot>
               <PivotItem headerText="Home" />
               <PivotItem headerText="Pages" />
               <PivotItem headerText="Documents" />
-              <PivotItem headerText="Activity" />
             </Pivot>
             <Stack horizontal gap={15}>
-              <IconButton disabled={isContentDisabled} iconProps={{ iconName: 'Like' }} className={iconButtonStyles} />
-              <IconButton
-                disabled={isContentDisabled}
-                iconProps={{ iconName: 'SingleBookmark' }}
-                className={iconButtonStyles}
-              />
-              <IconButton disabled={isContentDisabled} iconProps={{ iconName: 'Sunny' }} className={iconButtonStyles} />
+              <IconButton disabled={isContentDisabled} iconProps={{ iconName: 'Like' }} />
+              <IconButton disabled={isContentDisabled} iconProps={{ iconName: 'SingleBookmark' }} />
+              <IconButton disabled={isContentDisabled} iconProps={{ iconName: 'Sunny' }} />
             </Stack>
             <Stack horizontal gap={10}>
               <PrimaryButton disabled={isContentDisabled} text="Primary button" />
               <DefaultButton disabled={isContentDisabled} text="Default button" />
             </Stack>
           </Stack>
-        </Stack.Item>
-      </Stack>
+        </div>
+      </div>
     </div>
   );
 };
