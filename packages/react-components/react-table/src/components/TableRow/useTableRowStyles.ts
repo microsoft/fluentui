@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     ),
     ...createCustomFocusIndicatorStyle(
       {
-        ...shorthands.outline('2px', 'solid'),
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
       { selector: 'focus', enableOutline: true },
@@ -58,7 +58,6 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -70,7 +69,6 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -120,9 +118,7 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
+
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
