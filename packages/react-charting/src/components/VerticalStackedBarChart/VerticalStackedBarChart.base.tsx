@@ -493,7 +493,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         const legend: ILegend = {
           title: point.legend,
-          color: color,
+          color,
           action: () => {
             this._onLegendClick(point.legend);
           },
@@ -719,12 +719,12 @@ export class VerticalStackedBarChartBase extends React.Component<
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         const classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
-          shouldHighlight: shouldHighlight,
+          shouldHighlight,
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {
           'data-is-focusable': !this.props.hideTooltip,
-          'aria-labelledby': `toolTip${this._calloutId}`,
+          'aria-label': this._getAriaLabel(singleChartData, point),
           onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
           onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
           onMouseLeave: this._handleMouseOut,
@@ -777,7 +777,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
-            role="text"
+            role="img"
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
           />
         );
@@ -785,14 +785,14 @@ export class VerticalStackedBarChartBase extends React.Component<
       const groupRef: IRefArrayData = {};
       const stackFocusProps = shouldFocusWholeStack && {
         'data-is-focusable': !this.props.hideTooltip,
-        'aria-labelledby': `toolTip${this._calloutId}`,
+        'aria-label': this._getAriaLabel(singleChartData),
         onMouseOver: this._onStackHover.bind(this, singleChartData),
         onMouseMove: this._onStackHover.bind(this, singleChartData),
         onMouseLeave: this._handleMouseOut,
         onFocus: this._onStackFocus.bind(this, singleChartData, groupRef),
         onBlur: this._handleMouseOut,
         onClick: this._onClick.bind(this, singleChartData),
-        role: 'text',
+        role: 'img',
       };
       return (
         <g
@@ -925,5 +925,35 @@ export class VerticalStackedBarChartBase extends React.Component<
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (singleChartData: IVerticalStackedChartProps, point?: IVSChartDataPoint): string => {
+    if (!point) {
+      /** if shouldFocusWholeStack is true */
+      const xValue = singleChartData.xAxisCalloutData || singleChartData.xAxisPoint;
+      const pointValues = singleChartData.chartData
+        .map(pt => {
+          const legend = pt.legend;
+          const yValue = pt.yAxisCalloutData || pt.data;
+          return `${legend}, ${yValue}.`;
+        })
+        .join(' ');
+      const lineValues = singleChartData.lineData
+        ?.map(ln => {
+          const legend = ln.legend;
+          const yValue = ln.yAxisCalloutData || ln.data || ln.y;
+          return `${legend}, ${yValue}.`;
+        })
+        .join(' ');
+      return (
+        singleChartData.stackCallOutAccessibilityData?.ariaLabel ||
+        `${xValue}. ${pointValues}` + (lineValues ? ` ${lineValues}` : '')
+      );
+    }
+    /** if shouldFocusWholeStack is false */
+    const xValue = singleChartData.xAxisCalloutData || point.xAxisCalloutData || singleChartData.xAxisPoint;
+    const legend = point.legend;
+    const yValue = point.yAxisCalloutData || point.data;
+    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 }

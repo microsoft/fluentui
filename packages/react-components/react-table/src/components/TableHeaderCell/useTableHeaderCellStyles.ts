@@ -64,7 +64,7 @@ const useStyles = makeStyles({
     height: '100%',
     alignItems: 'center',
     ...shorthands.gap(tokens.spacingHorizontalXS),
-    minHeight: '44px',
+    minHeight: '32px',
     ...shorthands.flex(1, 1, '0px'),
   },
   sortable: {

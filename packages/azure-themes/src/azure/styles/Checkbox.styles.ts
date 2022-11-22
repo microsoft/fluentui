@@ -31,14 +31,29 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
         width: StyleConstants.inputHeight,
         height: StyleConstants.inputHeight,
       },
+      indeterminate && {
+        selectors: {
+          '::after': {
+            top: 3,
+            left: 3,
+          },
+        },
+      },
       checked && {
         backgroundColor: BaseColors.WHITE,
         borderColor: extendedSemanticColors.checkboxBorderChecked,
-        selectors: {},
       },
       disabled && {
         borderColor: extendedSemanticColors.checkBoxDisabled,
       },
+      disabled &&
+        indeterminate && {
+          selectors: {
+            '::after': {
+              backgroundColor: extendedSemanticColors.checkBoxDisabled,
+            },
+          },
+        },
       disabled &&
         checked && {
           borderColor: extendedSemanticColors.checkBoxDisabled,

@@ -58,8 +58,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onBlur={this._onBlur}
           opacity={opacity}
           onClick={href ? this._redirectToUrl.bind(this, href) : this.props.data?.data.onClick}
-          aria-labelledby={this.props.calloutId}
-          role="text"
+          aria-label={this._getAriaLabel()}
+          role="img"
         />
         <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
           {this.props.valueInsideDonut!}
@@ -100,6 +100,13 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
   }
+
+  private _getAriaLabel = (): string => {
+    const point = this.props.data!.data;
+    const legend = point.xAxisCalloutData || point.legend;
+    const yValue = point.yAxisCalloutData || point.data || 0;
+    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+  };
 }
 
 function _updateChart(newProps: IArcProps): void {

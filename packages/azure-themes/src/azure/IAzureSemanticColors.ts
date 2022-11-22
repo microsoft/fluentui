@@ -69,6 +69,23 @@ export interface IAzureSemanticColors {
     background: string;
     text: string;
   };
+  dangerButton: {
+    rest: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    hover: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    pressed: {
+      text: string;
+      background: string;
+      border: string;
+    };
+  };
   secondaryButton: {
     rest: {
       background: string;
