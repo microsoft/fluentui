@@ -6,7 +6,7 @@ import { useTableContext } from '../../contexts/tableContext';
 const tableAvatarSizeMap = {
   medium: 32,
   small: 24,
-  smaller: 20,
+  'extra-small': 20,
 } as const;
 
 /**

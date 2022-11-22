@@ -346,7 +346,7 @@ export const TableContextProvider: React_2.Provider<TableContextValue | undefine
 
 // @public (undocumented)
 export type TableContextValue = {
-    size: 'small' | 'smaller' | 'medium';
+    size: 'extra-small' | 'small' | 'medium';
     noNativeElements: boolean;
     sortable: boolean;
 };

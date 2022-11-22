@@ -23,7 +23,7 @@ const useTableLayoutStyles = makeStyles({
     height: '34px',
   },
 
-  smaller: {
+  'extra-small': {
     height: '24px',
   },
 });
@@ -44,7 +44,7 @@ const useFlexLayoutStyles = makeStyles({
     minHeight: '34px',
   },
 
-  smaller: {
+  'extra-small': {
     minHeight: '24px',
   },
 });

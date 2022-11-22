@@ -7,7 +7,7 @@ export { SortControlled } from './SortControlled.stories';
 export { CellActions } from './CellActions.stories';
 export { PrimaryCell } from './PrimaryCell.stories';
 export { SizeSmall } from './SizeSmall.stories';
-export { SizeSmaller } from './SizeSmaller.stories';
+export { SizeExtraSmall } from './SizeExtraSmall.stories';
 export { NonNativeElements } from './NonNativeElements.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
 export { SingleSelect } from './SingleSelect.stories';
