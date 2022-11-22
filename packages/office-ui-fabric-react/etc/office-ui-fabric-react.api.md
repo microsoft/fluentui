@@ -2437,6 +2437,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
         documentContainsFocus: boolean;
     }) => void;
     onScroll?: () => void;
+    popupProps?: IPopupProps;
     preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
     // @deprecated
     preventDismissOnLostFocus?: boolean;

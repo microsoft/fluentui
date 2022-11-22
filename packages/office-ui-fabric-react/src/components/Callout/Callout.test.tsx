@@ -308,4 +308,26 @@ describe('Callout', () => {
     expect(previousFocusElement).not.toBeFalsy();
     expect(previousFocusElement).toEqual(focusedElement);
   });
+
+  it('passes popupProps through to Popup', () => {
+    let threwException = false;
+
+    try {
+      ReactDOM.render<HTMLDivElement>(
+        <div>
+          <Callout doNotLayer role="dialog" popupProps={{ 'aria-modal': 'true' }}>
+            content
+          </Callout>
+        </div>,
+        realDom,
+      );
+    } catch (e) {
+      threwException = true;
+    }
+
+    expect(threwException).toEqual(false);
+    const popup = document.querySelector('[role=dialog]') as HTMLDivElement;
+
+    expect(popup.getAttribute('aria-modal')).toEqual('true');
+  });
 });

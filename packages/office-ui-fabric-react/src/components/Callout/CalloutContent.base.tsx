@@ -203,6 +203,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       onScroll,
       // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
+      popupProps,
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
@@ -263,6 +264,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             style={overflowStyle}
             onMouseDown={this._mouseDownOnPopup}
             onMouseUp={this._mouseUpOnPopup}
+            {...popupProps}
           >
             {children}
           </Popup>
