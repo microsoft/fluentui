@@ -135,113 +135,46 @@ const mapPalette = (brandColors: BrandVariants, inverted: boolean): IPalette => 
 /**
  * Returns v9 theme colors overlaid on a base set of v8 semantic colors
  */
-const mapSemanticColors = (baseColors: ISemanticColors, theme: ThemeV9): ISemanticColors => {
-  return {
-    ...baseColors,
-    accentButtonBackground: theme.colorBrandBackground,
-    accentButtonText: theme.colorNeutralForegroundOnBrand,
-    actionLink: theme.colorNeutralForeground1,
-    actionLinkHovered: theme.colorNeutralForeground1Hover,
-    // blockingBackground,
-    // blockingIcon,
-    bodyBackground: theme.colorNeutralBackground1,
-    bodyBackgroundChecked: theme.colorNeutralBackground1Selected,
-    bodyBackgroundHovered: theme.colorNeutralBackground1Hover,
-    bodyDivider: theme.colorNeutralStroke2,
-    bodyFrameBackground: theme.colorNeutralBackground1,
-    bodyFrameDivider: theme.colorNeutralStroke2,
-    bodyStandoutBackground: theme.colorNeutralBackground2,
-    bodySubtext: theme.colorNeutralForeground2,
-    bodyText: theme.colorNeutralForeground1,
-    bodyTextChecked: theme.colorNeutralForeground1Selected,
-    buttonBackground: theme.colorNeutralBackground1,
-    buttonBackgroundChecked: theme.colorNeutralBackground1Selected,
-    buttonBackgroundCheckedHovered: theme.colorNeutralBackground1Hover,
-    buttonBackgroundDisabled: theme.colorNeutralBackgroundDisabled,
-    buttonBackgroundHovered: theme.colorNeutralBackground1Hover,
-    buttonBackgroundPressed: theme.colorNeutralBackground1Pressed,
-    buttonBorder: theme.colorNeutralStroke1,
-    buttonBorderDisabled: theme.colorNeutralStrokeDisabled,
-    buttonText: theme.colorNeutralForeground1,
-    buttonTextChecked: theme.colorNeutralForeground1,
-    buttonTextCheckedHovered: theme.colorNeutralForeground1,
-    buttonTextDisabled: theme.colorNeutralForegroundDisabled,
-    buttonTextHovered: theme.colorNeutralForeground1,
-    buttonTextPressed: theme.colorNeutralForeground1,
-    cardShadow: theme.shadow4,
-    cardShadowHovered: theme.shadow8,
-    cardStandoutBackground: theme.colorNeutralBackground1,
-    defaultStateBackground: theme.colorNeutralBackground2,
-    disabledBackground: theme.colorNeutralBackgroundDisabled,
-    disabledBodySubtext: theme.colorNeutralForegroundDisabled,
-    disabledBodyText: theme.colorNeutralForegroundDisabled,
-    disabledBorder: theme.colorNeutralStrokeDisabled,
-    disabledSubtext: theme.colorNeutralForegroundDisabled,
-    disabledText: theme.colorNeutralForegroundDisabled,
-    // errorBackground,
-    // errorIcon,
-    // errorText: ,
-    focusBorder: theme.colorStrokeFocus2,
-    // infoBackground,
-    // infoIcon,
-    inputBackground: theme.colorNeutralBackground1,
-    inputBackgroundChecked: theme.colorBrandBackground,
-    inputBackgroundCheckedHovered: theme.colorBrandBackgroundHover,
-    inputBorder: theme.colorNeutralStrokeAccessible,
-    inputBorderHovered: theme.colorNeutralStrokeAccessibleHover,
-    inputFocusBorderAlt: theme.colorBrandStroke1,
-    inputForegroundChecked: theme.colorNeutralForegroundOnBrand,
-    inputIcon: theme.colorNeutralForeground3,
-    inputIconDisabled: theme.colorNeutralForegroundDisabled,
-    inputIconHovered: theme.colorNeutralForeground3,
-    inputPlaceholderBackgroundChecked: theme.colorBrandBackgroundInvertedSelected,
-    inputPlaceholderText: theme.colorNeutralForeground4,
-    inputText: theme.colorNeutralForeground1,
-    inputTextHovered: theme.colorNeutralForeground1Hover,
-    link: theme.colorBrandForegroundLink,
-    linkHovered: theme.colorBrandForegroundLinkHover,
-    listBackground: theme.colorNeutralBackground1,
-    listHeaderBackgroundHovered: theme.colorNeutralBackground1Hover,
-    listHeaderBackgroundPressed: theme.colorNeutralBackground1Pressed,
-    listItemBackgroundChecked: theme.colorNeutralBackground1Selected,
-    listItemBackgroundCheckedHovered: theme.colorNeutralBackground1Selected,
-    listItemBackgroundHovered: theme.colorNeutralBackground1Hover,
-    listText: theme.colorNeutralForeground1,
-    listTextColor: theme.colorNeutralForeground1,
-    menuBackground: theme.colorNeutralBackground1,
-    menuDivider: theme.colorNeutralStroke2,
-    menuHeader: theme.colorNeutralForeground3,
-    menuIcon: theme.colorNeutralForeground1,
-    menuItemBackgroundChecked: theme.colorNeutralBackground1,
-    menuItemBackgroundHovered: theme.colorNeutralBackground1Hover,
-    menuItemBackgroundPressed: theme.colorNeutralBackground1Hover,
-    menuItemText: theme.colorNeutralForeground1,
-    menuItemTextHovered: theme.colorNeutralForeground1Hover,
-    messageLink: theme.colorBrandForegroundLink,
-    messageLinkHovered: theme.colorBrandForegroundLinkHover,
-    messageText: theme.colorNeutralForeground1,
-    primaryButtonBackground: theme.colorBrandBackground,
-    primaryButtonBackgroundDisabled: theme.colorNeutralBackgroundDisabled,
-    primaryButtonBackgroundHovered: theme.colorBrandBackgroundHover,
-    primaryButtonBackgroundPressed: theme.colorBrandBackgroundPressed,
-    primaryButtonBorder: theme.colorTransparentStroke,
-    primaryButtonText: theme.colorNeutralForegroundOnBrand,
-    primaryButtonTextDisabled: theme.colorNeutralForegroundDisabled,
-    primaryButtonTextHovered: theme.colorNeutralForegroundOnBrand,
-    primaryButtonTextPressed: theme.colorNeutralForegroundOnBrand,
-    // severeWarningBackground,
-    // severeWarningIcon,
-    // smallInputBorder,
-    // successBackground,
-    // successIcon,
-    // successText: ,
-    // variantBorder,
-    // variantBorderHovered,
-    // warningBackground,
-    // warningHighlight,
-    // warningIcon,
-    // warningText: ,
-  };
+const mapSemanticColors = (baseColors: ISemanticColors, v8Palette: IPalette, isDarkTheme: boolean): ISemanticColors => {
+  const p = v8Palette;
+
+  if (!isDarkTheme) {
+    return {
+      ...baseColors,
+      inputBorder: p.neutralQuaternary,
+
+      // Checkbox
+      inputBackgroundChecked: p.themePrimary,
+      inputBackground: p.white,
+      bodyTextChecked: p.neutralPrimary,
+      inputBackgroundCheckedHovered: p.themeDarkAlt,
+
+      // Errors and warnings
+      warningText: p.neutralPrimary,
+
+      // Message bar colors
+      messageText: p.neutralPrimary,
+      messageLink: p.themeDarkAlt,
+      messageLinkHovered: p.themeDarker,
+      infoIcon: p.neutralSecondary,
+      warningIcon: p.neutralPrimary,
+      infoBackground: p.neutralLighter,
+    };
+  } else {
+    return {
+      ...baseColors,
+      primaryButtonText: p.black,
+      primaryButtonTextHovered: p.black,
+      primaryButtonTextPressed: p.black,
+      primaryButtonTextDisabled: p.neutralTertiaryAlt,
+      primaryButtonBackgroundDisabled: p.neutralLighter,
+      accentButtonText: p.black,
+      accentButtonBackground: p.themePrimary,
+      inputPlaceholderText: p.neutralSecondaryAlt,
+      inputForegroundChecked: p.black,
+      inputBorder: p.neutralQuaternary,
+    };
+  }
 };
 
 /**
@@ -321,7 +254,7 @@ const mapFonts = (baseFonts: IFontStyles, theme: ThemeV9): IFontStyles => {
 
 import type { ISettings } from '@fluentui/react';
 
-export const getV9ComponentStyles: { [key: string]: ISettings } = {
+const getV9ComponentStyles: { [key: string]: ISettings } = {
   Breadcrumb: {
     styles: getBreadcrumbStyles,
   },
@@ -451,15 +384,13 @@ export const createV8Theme = (
   isDarkTheme: boolean = false,
   themeV8?: ThemeV8,
 ): ThemeV8 => {
-  const baseTheme = themeV8 || createTheme({ isInverted: isDarkTheme });
-
-  console.log(baseTheme);
+  const palette = mapPalette(brandColors, isDarkTheme);
+  const baseTheme =
+    themeV8 || createTheme({ isInverted: isDarkTheme, palette: palette, components: getV9ComponentStyles });
 
   return {
     ...baseTheme,
-    palette: mapPalette(brandColors, isDarkTheme),
-    components: getV9ComponentStyles,
-    semanticColors: mapSemanticColors(baseTheme.semanticColors, themeV9),
+    semanticColors: mapSemanticColors(baseTheme.semanticColors, palette, isDarkTheme),
     fonts: mapFonts(baseTheme.fonts, themeV9),
     effects: mapEffects(baseTheme.effects, themeV9),
     isInverted: isDarkTheme || themeV8?.isInverted === true,

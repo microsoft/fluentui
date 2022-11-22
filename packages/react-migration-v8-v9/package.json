@@ -28,6 +28,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluent-blocks/colors": "9.2.0",
     "@ctrl/tinycolor": "3.3.4",
     "@fluentui/react": "^8.100.0",
     "@fluentui/react-components": "^9.6.3",
