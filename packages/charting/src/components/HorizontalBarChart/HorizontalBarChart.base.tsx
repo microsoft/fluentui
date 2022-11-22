@@ -309,6 +309,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           width={value + '%'}
           height={this._barHeight}
           fill={color}
+          role="img"
+          aria-label={this._getAriaLabel(point)}
         />
       );
     });
@@ -319,5 +321,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAriaLabel = (point: IChartDataPoint): string => {
+    const legend = point.xAxisCalloutData || point.legend;
+    const yValue =
+      point.yAxisCalloutData ||
+      (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
+    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 }

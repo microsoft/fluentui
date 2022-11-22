@@ -96,8 +96,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 40%."
               className=
 
                   {
@@ -127,8 +126,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 23%."
               className=
 
                   {
@@ -242,8 +240,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -273,8 +270,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -484,8 +480,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout26"
+              aria-label="2020/04/30, 40%."
               className=
 
                   {
@@ -515,8 +510,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout26"
+              aria-label="2020/04/30, 23%."
               className=
 
                   {
@@ -626,8 +620,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout26"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -657,8 +650,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout26"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -872,8 +864,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout7"
+              aria-label="2020/04/30, 40%."
               className=
 
                   {
@@ -903,8 +894,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout7"
+              aria-label="2020/04/30, 23%."
               className=
 
                   {
@@ -1018,8 +1008,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout7"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -1049,8 +1038,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout7"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -1174,8 +1162,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout19"
+              aria-label="2020/04/30, 40%."
               className=
 
                   {
@@ -1205,8 +1192,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout19"
+              aria-label="2020/04/30, 23%."
               className=
 
                   {
@@ -1320,8 +1306,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout19"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -1351,8 +1336,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout19"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -1745,8 +1729,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-label="2020/04/30, 40%."
               className=
 
                   {
@@ -1776,8 +1759,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-label="2020/04/30, 23%."
               className=
 
                   {
@@ -1891,8 +1873,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 }
           >
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {
@@ -1922,8 +1903,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               />
             </g>
             <g
-              aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-label="2020/04/30, 87%."
               className=
 
                   {

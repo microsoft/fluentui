@@ -319,9 +319,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         const rectElement: JSX.Element = (
           <g
             key={id}
-            {...(this.state.calloutId && {
-              'aria-labelledby': `${this.state.calloutId}`,
-            })}
+            role="img"
+            aria-label={this._getAriaLabel(dataPointObject)}
             data-is-focusable={true}
             fillOpacity={this._getOpacity(dataPointObject.legend)}
             transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
@@ -686,5 +685,17 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAriaLabel = (point: FlattenData): string => {
+    const xValue = point.x;
+    const yValue = point.y;
+    const legend = point.legend;
+    const zValue = point.ratio ? `${point.ratio[0]}/${point.ratio[1]}` : point.rectText || point.value;
+    const description = point.descriptionMessage;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
+    );
   };
 }
