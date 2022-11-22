@@ -36,7 +36,7 @@ describe('ProgressField', () => {
     expect(label.htmlFor).toBeFalsy();
   });
 
-  it('uses aria-describedby on error, instead of aria-errormessage ', () => {
+  it('does not set aria-invalid on error ', () => {
     const result = render(<ProgressField label="Test label" validationState="error" validationMessage="Test error" />);
 
     const progress = result.getByRole('progressbar');
