@@ -4,6 +4,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
+import { IPopupProps } from '../../Popup';
 import { Target } from '@uifabric/react-hooks';
 
 export { Target };
@@ -183,6 +184,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional props to pass to the Layer component hosting the panel.
    */
   layerProps?: ILayerProps;
+
+  /**
+   * Optional props to pass the Popup component that the callout uses.
+   */
+  popupProps?: IPopupProps;
 
   /**
    * Optional callback that is called once the callout has been correctly positioned.
