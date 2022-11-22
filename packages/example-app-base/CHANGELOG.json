@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 22 Nov 2022 12:29:03 GMT",
+      "tag": "@uifabric/example-app-base_v7.22.28",
+      "version": "7.22.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.200.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "20af2873d67127d324a181a9fbc923a9d10d11d0",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Nov 2022 12:23:09 GMT",
       "tag": "@uifabric/example-app-base_v7.22.27",
       "version": "7.22.27",

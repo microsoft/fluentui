@@ -1,8 +1,17 @@
 # Change Log - dom-tests
 
-This log was last generated on Tue, 01 Nov 2022 12:23:09 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Nov 2022 12:29:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/dom-tests_v7.0.0)
+
+Tue, 22 Nov 2022 12:29:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/dom-tests_v7.0.0..dom-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.200.0 ([PR #25745](https://github.com/microsoft/fluentui/pull/25745) by mgodbolt@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/dom-tests_v7.0.0)
 

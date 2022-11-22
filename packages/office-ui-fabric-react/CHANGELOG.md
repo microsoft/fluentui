@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 Nov 2022 12:23:09 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Nov 2022 12:29:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.200.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.200.0)
+
+Tue, 22 Nov 2022 12:29:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.199.6..office-ui-fabric-react_v7.200.0)
+
+### Minor changes
+
+- Add theme and ThemeProvider exports to OUFR to better match v8 ([PR #25745](https://github.com/microsoft/fluentui/pull/25745) by mgodbolt@microsoft.com)
 
 ## [7.199.6](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.199.6)
 

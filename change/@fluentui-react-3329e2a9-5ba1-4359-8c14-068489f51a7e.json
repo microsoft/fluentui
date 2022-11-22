@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add theme and ThemeProvider exports to OUFR to better match v8",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

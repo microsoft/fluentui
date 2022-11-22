@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 22 Nov 2022 12:29:03 GMT",
+      "tag": "@fluentui/react_v7.200.0",
+      "version": "7.200.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add theme and ThemeProvider exports to OUFR to better match v8",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "20af2873d67127d324a181a9fbc923a9d10d11d0",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.200.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "20af2873d67127d324a181a9fbc923a9d10d11d0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Sep 2022 12:22:39 GMT",
       "tag": "@fluentui/react_v7.199.0",
       "version": "7.199.0",

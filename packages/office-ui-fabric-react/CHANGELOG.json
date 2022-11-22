@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 22 Nov 2022 12:29:03 GMT",
+      "tag": "office-ui-fabric-react_v7.200.0",
+      "version": "7.200.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add theme and ThemeProvider exports to OUFR to better match v8",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "20af2873d67127d324a181a9fbc923a9d10d11d0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Nov 2022 12:23:09 GMT",
       "tag": "office-ui-fabric-react_v7.199.6",
       "version": "7.199.6",
