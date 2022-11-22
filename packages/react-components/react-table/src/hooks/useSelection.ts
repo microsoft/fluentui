@@ -39,7 +39,7 @@ export function useSelectionState<TItem>(
   const selectionManager = React.useMemo(() => {
     return createSelectionManager(selectionMode, (e, newSelectedItems) => {
       setSelected(() => {
-        onSelectionChange?.(e as React.SyntheticEvent, newSelectedItems);
+        onSelectionChange?.(e as React.SyntheticEvent, { selectedItems: newSelectedItems });
         return newSelectedItems;
       });
     });

@@ -125,7 +125,7 @@ export const SingleSelectControlled = () => {
       useSelection({
         selectionMode: 'single',
         selectedItems: selectedRows,
-        onSelectionChange: (e, nextSelectedRows) => setSelectedRows(nextSelectedRows),
+        onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
       }),
     ],
   );
