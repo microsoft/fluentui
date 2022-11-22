@@ -67,7 +67,7 @@ describe('Field', () => {
     expect(input.getAttribute('aria-describedby')).toBe(hint.id);
   });
 
-  it('sets aria-describedby to the validationMessage if not an error', () => {
+  it('sets aria-describedby to the validationMessage', () => {
     const result = render(<MockField validationMessage="Test validation message" validationState="warning" />);
     const input = result.getByRole('textbox');
     const validationMessage = result.getByText('Test validation message');
@@ -76,9 +76,9 @@ describe('Field', () => {
     expect(input.getAttribute('aria-describedby')).toBe(validationMessage.id);
   });
 
-  it('sets aria-describedby to the hint + validationMessage if not an error', () => {
+  it('sets aria-describedby to the validationMessage + hint', () => {
     const result = render(
-      <MockField hint="Test hint" validationMessage="Test validation message" validationState="success" />,
+      <MockField hint="Test hint" validationMessage="Test validation message" validationState="error" />,
     );
     const input = result.getByRole('textbox');
     const hint = result.getByText('Test hint');
@@ -87,13 +87,20 @@ describe('Field', () => {
     expect(input.getAttribute('aria-describedby')).toBe(validationMessage.id + ' ' + hint.id);
   });
 
-  it('sets aria-errormessage to the validationMessage if an error', () => {
-    const result = render(<MockField validationMessage="Test validation message" validationState="error" />);
+  it('sets aria-describedby to the validationMessage + hint + user aria-describedby', () => {
+    const result = render(
+      <MockField
+        hint="Test hint"
+        validationMessage="Test validation message"
+        validationState="error"
+        aria-describedby="test-describedby"
+      />,
+    );
     const input = result.getByRole('textbox');
+    const hint = result.getByText('Test hint');
     const validationMessage = result.getByText('Test validation message');
 
-    expect(validationMessage.id).toBeTruthy();
-    expect(input.getAttribute('aria-errormessage')).toBe(validationMessage.id);
+    expect(input.getAttribute('aria-describedby')).toBe(validationMessage.id + ' ' + hint.id + ' test-describedby');
   });
 
   it('sets aria-invalid if an error', () => {
@@ -103,7 +110,7 @@ describe('Field', () => {
     expect(input.getAttribute('aria-invalid')).toBeTruthy();
   });
 
-  it('does not override user aria props', () => {
+  it('does not override user aria props, EXCEPT aria-describedby', () => {
     const result = render(
       <MockField
         label="test label"
@@ -111,7 +118,6 @@ describe('Field', () => {
         validationMessage="test description"
         hint="test hint"
         aria-labelledby="test-labelledby"
-        aria-describedby="test-describedby"
         aria-errormessage="test-errormessage"
         aria-invalid={false}
       />,
@@ -120,8 +126,23 @@ describe('Field', () => {
     const input = result.getByRole('textbox');
 
     expect(input.getAttribute('aria-labelledby')).toBe('test-labelledby');
-    expect(input.getAttribute('aria-describedby')).toBe('test-describedby');
     expect(input.getAttribute('aria-errormessage')).toBe('test-errormessage');
     expect(input.getAttribute('aria-invalid')).toBe('false');
+  });
+
+  it('does not override user aria-describedby on the control slot', () => {
+    const result = render(
+      <MockField
+        label="test label"
+        validationState="error"
+        validationMessage="test description"
+        hint="test hint"
+        control={{ 'aria-describedby': 'test-describedby' }}
+      />,
+    );
+
+    const input = result.getByRole('textbox');
+
+    expect(input.getAttribute('aria-describedby')).toBe('test-describedby');
   });
 });
