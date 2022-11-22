@@ -143,8 +143,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             onClick={[Function]}
           >
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 94%."
               data-is-focusable={true}
               fill="#004b50"
               height={8}
@@ -159,8 +158,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               y={0}
             />
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="13457/15000."
               data-is-focusable={false}
               fill="#c8c6c4"
               height={8}
@@ -309,8 +307,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             onClick={[Function]}
           >
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 19%."
               data-is-focusable={true}
               fill="#5c2d91"
               height={8}
@@ -325,8 +322,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               y={0}
             />
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="14200/15000."
               data-is-focusable={false}
               fill="#c8c6c4"
               height={8}
@@ -651,8 +647,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             onClick={[Function]}
           >
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 94%."
               data-is-focusable={true}
               fill="#004b50"
               height={8}
@@ -667,8 +662,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               y={0}
             />
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="13457/15000."
               data-is-focusable={false}
               fill="#c8c6c4"
               height={8}
@@ -817,8 +811,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             onClick={[Function]}
           >
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 19%."
               data-is-focusable={true}
               fill="#5c2d91"
               height={8}
@@ -833,8 +826,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               y={0}
             />
             <rect
-              aria-label="Horizontal bar chart"
-              aria-labelledby="callout0"
+              aria-label="14200/15000."
               data-is-focusable={false}
               fill="#c8c6c4"
               height={8}
