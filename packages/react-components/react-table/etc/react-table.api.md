@@ -130,7 +130,9 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'>;
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'> & Pick<UseSortOptions, 'sortState' | 'defaultSortState'> & {
+    onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
+};
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
@@ -331,7 +333,7 @@ export type TableCellSlots = {
 };
 
 // @public
-export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
+export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
 
 // @public (undocumented)
 export const tableClassName = "fui-Table";
@@ -344,7 +346,7 @@ export const TableContextProvider: React_2.Provider<TableContextValue | undefine
 
 // @public (undocumented)
 export type TableContextValue = {
-    size: 'small' | 'smaller' | 'medium';
+    size: 'extra-small' | 'small' | 'medium';
     noNativeElements: boolean;
     sortable: boolean;
 };
@@ -449,14 +451,14 @@ export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & 
 // @public (undocumented)
 export interface TableSelectionState {
     allRowsSelected: boolean;
-    clearRows: () => void;
-    deselectRow: (rowId: RowId) => void;
+    clearRows: (e: React_2.SyntheticEvent) => void;
+    deselectRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
     isRowSelected: (rowId: RowId) => boolean;
     selectedRows: Set<RowId>;
-    selectRow: (rowId: RowId) => void;
+    selectRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
     someRowsSelected: boolean;
-    toggleAllRows: () => void;
-    toggleRow: (rowId: RowId) => void;
+    toggleAllRows: (e: React_2.SyntheticEvent) => void;
+    toggleRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
 }
 
 // @public (undocumented)
@@ -467,11 +469,11 @@ export type TableSlots = {
 // @public (undocumented)
 export interface TableSortState<TItem> {
     getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
-    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
+    setColumnSort: (event: React_2.SyntheticEvent, columnId: ColumnId, sortDirection: SortDirection) => void;
     sort: <TRowState extends RowState<TItem>>(rows: TRowState[]) => TRowState[];
     sortColumn: ColumnId | undefined;
     sortDirection: SortDirection;
-    toggleColumnSort: (columnId: ColumnId) => void;
+    toggleColumnSort: (event: React_2.SyntheticEvent, columnId: ColumnId) => void;
 }
 
 // @public

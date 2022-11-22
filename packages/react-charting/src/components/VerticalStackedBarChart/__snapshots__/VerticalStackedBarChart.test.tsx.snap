@@ -103,7 +103,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           key="0false"
         >
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata1, 40%."
             className=
 
                 {
@@ -120,14 +120,14 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
             y={78.84615384615384}
           />
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata2, 5%."
             className=
 
                 {
@@ -144,7 +144,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
@@ -156,7 +156,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           key="1false"
         >
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata1, 30%."
             className=
 
                 {
@@ -173,14 +173,14 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}
             y={127.88461538461539}
           />
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata2, 20%."
             className=
 
                 {
@@ -197,7 +197,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}
@@ -708,7 +708,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           key="0false"
         >
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata1, 40%."
             className=
 
                 {
@@ -725,14 +725,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
             y={78.84615384615384}
           />
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata2, 5%."
             className=
 
                 {
@@ -749,7 +749,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
@@ -761,7 +761,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           key="1false"
         >
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata1, 30%."
             className=
 
                 {
@@ -778,14 +778,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}
             y={127.88461538461539}
           />
           <rect
-            aria-labelledby="toolTipcallout0"
+            aria-label="2020/04/30. Metadata2, 20%."
             className=
 
                 {
@@ -802,7 +802,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}
@@ -1227,7 +1227,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       />
       <g>
         <g
-          aria-labelledby="toolTipcallout0"
+          aria-label="0. Metadata1, 40%. Metadata2, 5%. Line1, 15."
           data-is-focusable={true}
           id="0-singleBar"
           key="0true"
@@ -1237,7 +1237,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           onMouseLeave={[Function]}
           onMouseMove={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
         >
           <rect
             className=
@@ -1249,7 +1249,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#0078d4"
             height={196.15384615384616}
             key="0"
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
@@ -1265,7 +1265,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#00188f"
             height={24.51923076923077}
             key="1"
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
@@ -1273,7 +1273,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           />
         </g>
         <g
-          aria-labelledby="toolTipcallout0"
+          aria-label="20. Metadata1, 30%. Metadata2, 20%. Line1, 30."
           data-is-focusable={true}
           id="1-singleBar"
           key="1true"
@@ -1283,7 +1283,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           onMouseLeave={[Function]}
           onMouseMove={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
         >
           <rect
             className=
@@ -1295,7 +1295,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#0078d4"
             height={147.1153846153846}
             key="1"
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}
@@ -1311,7 +1311,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#00188f"
             height={98.07692307692308}
             key="2"
-            role="text"
+            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}

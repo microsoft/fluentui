@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-components';
 import { Meta } from '@storybook/react';
 
 export { Default } from './AvatarDefault.stories';
@@ -7,6 +7,7 @@ export { Name } from './AvatarName.stories';
 export { Image } from './AvatarImage.stories';
 export { Icon } from './AvatarIcon.stories';
 export { Badge } from './AvatarBadge.stories';
+export { BadgeIcon } from './AvatarBadgeIcon.stories';
 export { Square } from './AvatarSquare.stories';
 export { ColorBrand } from './AvatarColorBrand.stories';
 export { ColorColorful } from './AvatarColorColorful.stories';

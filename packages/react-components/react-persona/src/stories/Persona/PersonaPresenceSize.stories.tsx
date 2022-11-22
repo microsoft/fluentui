@@ -17,38 +17,44 @@ export const PresenceSize = () => {
   return (
     <div className={styles.root}>
       <Persona
+        size="extra-small"
         presenceOnly
-        presence={{ status: 'available', size: 'tiny' }}
+        presence={{ status: 'available' }}
         name="Kevin Sturgis"
         secondaryText="Available"
       />
       <Persona
+        size="small"
         presenceOnly
-        presence={{ status: 'available', size: 'extra-small' }}
+        presence={{ status: 'available' }}
         name="Kevin Sturgis"
         secondaryText="Available"
       />
       <Persona
+        size="medium"
         presenceOnly
-        presence={{ status: 'available', size: 'small' }}
+        presence={{ status: 'available' }}
         name="Kevin Sturgis"
         secondaryText="Available"
       />
       <Persona
+        size="large"
         presenceOnly
-        presence={{ status: 'available', size: 'medium' }}
+        presence={{ status: 'available' }}
         name="Kevin Sturgis"
         secondaryText="Available"
       />
       <Persona
+        size="extra-large"
         presenceOnly
-        presence={{ status: 'available', size: 'large' }}
+        presence={{ status: 'available' }}
         name="Kevin Sturgis"
         secondaryText="Available"
       />
       <Persona
+        size="huge"
         presenceOnly
-        presence={{ status: 'available', size: 'extra-large' }}
+        presence={{ status: 'available' }}
         name="Kevin Sturgis"
         secondaryText="Available"
       />
@@ -59,9 +65,7 @@ export const PresenceSize = () => {
 PresenceSize.parameters = {
   docs: {
     description: {
-      story:
-        `A Persona supports all PresenceBadge's sizes respecting its default size medium. When a size is specified ` +
-        `, Persona will apply styles to the text lines based on the size of the PresenceBadge.`,
+      story: `A Persona supports different sizes, medium being the default.`,
     },
   },
 };

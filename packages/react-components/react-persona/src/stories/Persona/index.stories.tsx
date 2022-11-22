@@ -3,8 +3,8 @@ import { Persona } from '@fluentui/react-persona';
 import descriptionMd from './PersonaDescription.md';
 
 export { Default } from './PersonaDefault.stories';
-export { Position } from './PersonaPosition.stories';
-export { SizingScaled } from './PersonaSizingScaled.stories';
+export { TextAlignment } from './PersonaTextAlignment.stories';
+export { TextPosition } from './PersonaTextPosition.stories';
 export { PresenceSize } from './PersonaPresenceSize.stories';
 export { AvatarSize } from './PersonaAvatarSize.stories';
 
