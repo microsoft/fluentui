@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Invoke `onOpenChange` callback without checking if open state has flipped",
+  "comment": "fix: Invoke `onOpenChange` callback without checking if open state has flipped",
   "packageName": "@fluentui/react-popover",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
