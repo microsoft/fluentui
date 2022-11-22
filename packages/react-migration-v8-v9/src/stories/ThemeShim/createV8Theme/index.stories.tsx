@@ -63,7 +63,7 @@ const useStyles = makeStyles({
 });
 
 enum ThemeCreationSteps {
-  ChoseBaseBrandRamp,
+  ChoseBaseTheme,
   CustomizeBrandRamp,
   ThemeCreated,
 }
@@ -78,7 +78,7 @@ export const Default = () => {
 
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
   const [brandStartValue, setBrandStartValue] = useState<string>(defaultLightBrandRampStart);
-  const [currentStep, setCurrentStep] = useState<ThemeCreationSteps>(ThemeCreationSteps.ChoseBaseBrandRamp);
+  const [currentStep, setCurrentStep] = useState<ThemeCreationSteps>(ThemeCreationSteps.ChoseBaseTheme);
   const [v9ThemeText, setV9ThemeText] = useState(defaultV9ThemeText);
   const [v8Theme, setV8Theme] = useState<ThemeV8>();
   const [errorMessage, setErrorMessage] = useState('');
@@ -111,7 +111,7 @@ export const Default = () => {
   const onStartOver = () => {
     setIsDarkTheme(false);
     setBrandStartValue(defaultLightBrandRampStart);
-    setCurrentStep(ThemeCreationSteps.ChoseBaseBrandRamp);
+    setCurrentStep(ThemeCreationSteps.ChoseBaseTheme);
   };
 
   const setPostBrandRampSelectionState = (isDark: boolean, isCustom: boolean) => {
@@ -120,11 +120,7 @@ export const Default = () => {
     setIsDarkTheme(isDark);
     setCurrentStep(ThemeCreationSteps.CustomizeBrandRamp);
 
-    if (!isDark) {
-      setBrandStartValue(defaultLightBrandRampStart);
-    } else {
-      setBrandStartValue(defaultDarkBrandRampStart);
-    }
+    isDark ? setBrandStartValue(defaultDarkBrandRampStart) : setBrandStartValue(defaultLightBrandRampStart);
   };
 
   const selectV9LightBrandRamp = useCallback(() => {
@@ -143,7 +139,7 @@ export const Default = () => {
 
   return (
     <div className={styles.root}>
-      {currentStep === ThemeCreationSteps.ChoseBaseBrandRamp && (
+      {currentStep === ThemeCreationSteps.ChoseBaseTheme && (
         <>
           <h2>Light or dark theme?</h2>
           <Menu>
