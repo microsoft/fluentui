@@ -13,6 +13,7 @@ import {
   MenuItemProps,
   MenuItem,
   MenuDivider,
+  Tooltip,
 } from '@fluentui/react-components';
 
 import {
@@ -269,14 +270,20 @@ export const TextEditorToolbars: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Text editor Toolbars">
       <Toolbar aria-label="Character formatting">
-        <ToolbarToggleButton name="bold" value="bold" icon={<TextBold24Regular />} aria-label="Bold" />
-        <ToolbarToggleButton name="italic" value="italic" icon={<TextItalic24Regular />} aria-label="Italic" />
-        <ToolbarToggleButton
-          name="underline"
-          value="underline"
-          icon={<TextUnderline24Regular />}
-          aria-label="Underline"
-        />
+        <Tooltip content="Makes selected text bold" relationship="description" withArrow>
+          <ToolbarToggleButton name="bold" value="bold" icon={<TextBold24Regular />} aria-label="Bold" />
+        </Tooltip>
+        <Tooltip content="Makes selected text italic" relationship="description" withArrow>
+          <ToolbarToggleButton name="italic" value="italic" icon={<TextItalic24Regular />} aria-label="Italic" />
+        </Tooltip>
+        <Tooltip content="Makes selected text underline" relationship="description" withArrow>
+          <ToolbarToggleButton
+            name="underline"
+            value="underline"
+            icon={<TextUnderline24Regular />}
+            aria-label="Underline"
+          />
+        </Tooltip>
 
         <ToolbarDivider />
 
