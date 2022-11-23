@@ -322,7 +322,7 @@ export type TableCellLayoutSlots = {
 // @public
 export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'> & {
     avatarSize: AvatarSizes | undefined;
-};
+} & Pick<TableContextValue, 'size'>;
 
 // @public
 export type TableCellProps = ComponentProps<TableCellSlots> & {};
