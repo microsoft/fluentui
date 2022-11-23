@@ -27,7 +27,7 @@ Persona has a slot for an `Avatar` and `PresenceBadge`, giving the user the abil
 
 ## Sample Code
 
-![Avatar](./etc/images/avatar.png)
+![Avatar](../etc/images/avatar.png)
 
 Persona with Avatar:
 
@@ -35,7 +35,7 @@ Persona with Avatar:
 <Persona name="Kevin Sturgis" secondaryText="Software Engineer" />
 ```
 
-![PresenceBadge](./etc/images/badge.png)
+![PresenceBadge](../etc/images/badge.png)
 
 Persona with PresenceBadge:
 
@@ -43,7 +43,7 @@ Persona with PresenceBadge:
 <Persona presenceOnly name="Kevin Sturgis" presence={{ status: 'offline', outOfOffice: true }} />
 ```
 
-![Avatar and PresenceBadge](./etc/images/avatar_badge.png)
+![Avatar and PresenceBadge](../etc/images/avatar_badge.png)
 
 Persona with Avatar + PresenceBadge:
 
@@ -60,11 +60,16 @@ Persona with Avatar + PresenceBadge:
 
 > I will refer to the avatar and presence as content.
 
-There are three alignment variants:
+There are three position variants:
 
 - after: Content on the left and text on the right.
 - below: Content on top and text on the bottom.
 - before: Content on the right and text on the left.
+
+There are two vertical alignment variants:
+
+- start: Content is aligned on top with the text.
+- center: Content and text are centered.
 
 There are 3 content variants:
 
@@ -72,10 +77,7 @@ There are 3 content variants:
 - PresenceBadge
 - Avatar + PresenceBadge
 
-There are 2 sizing variants:
-
-- scaled: When there is no specified size in the props of either `avatar` or `presence`, the content is resized based on the number of text lines used.
-- fixed: When there is a specified size of either `avatar` or `presence`, the text lines are styled based on the size of the content.
+There are 6 sizing variants: `extra-small`, `small`, `medium`, `large`, `extra-large`, `huge`.
 
 ## API
 
@@ -97,19 +99,23 @@ export type PersonaSlots = {
 
   /**
    * Avatar to display.
+   *
+   * If a PresenceBadge and an Avatar are provided, the Avatar will display the PresenceBadge as its presence.
    */
   avatar?: Slot<typeof Avatar>;
 
   /**
    * PresenceBadge to display.
+   *
+   * If `presenceOnly` is true, the PresenceBadge will be displayed instead of the Avatar.
    */
   presence?: Slot<typeof PresenceBadge>;
 
   /**
    * The first line of text in the Persona, larger than the rest of the lines.
    *
-   * This defaults to the `name` prop, and it is recomended that you only set its value if it should be different from
-   * from the `name` prop.
+   * `primaryText` defaults to the `name` prop. We recomend to only use `name`, use `primaryText` when the text is
+   *  different than the `name` prop.
    */
   primaryText?: Slot<'span'>;
 
@@ -132,22 +138,42 @@ export type PersonaSlots = {
 /**
  * Persona Props
  */
-export type PersonaProps = Omit<ComponentProps<PersonaSlots>, 'badge'> &
-  Pick<AvatarProps, 'name'> & {
-    /**
-     * Whether to display only the presence.
-     *
-     * @default false
-     */
-    presenceOnly?: boolean;
+export type PersonaProps = ComponentProps<PersonaSlots> & {
+  /**
+   * The name of the person or entity represented by the Persona.
+   *
+   * When `primaryText` is not provided, this will be used as the default value for `primaryText`.
+   */
+  name?: string;
 
-    /**
-     * Position the text will be rendered in.
-     *
-     * @default after
-     */
-    textPosition?: 'before' | 'after' | 'below';
-  };
+  /**
+   * Whether to display only the presence.
+   *
+   * @default false
+   */
+  presenceOnly?: boolean;
+
+  /**
+   * The size of a Persona and its text.
+   *
+   * @default medium
+   */
+  size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+
+  /**
+   * The position of the text relative to the avatar/presence.
+   *
+   * @default after
+   */
+  textPosition?: 'after' | 'before' | 'below';
+
+  /**
+   * The vertical alignment of the text relative to the avatar/presence.
+   *
+   * @default start
+   */
+  textAlignment?: 'center' | 'start';
+};
 ```
 
 ## Structure
@@ -157,12 +183,9 @@ To avoid the [issue](https://github.com/microsoft/fluentui/issues/23386) v8 has,
 - _**Internal**_
 
 ```jsx
-const coin = (
-  <>
-    {!presenceOnly && slots.avatar && <slots.avatar {...slotProps.avatar} />}
-    {presenceOnly && slots.presence && <slots.presence {...slotProps.presence} />}
-  </>
-);
+const coin = presenceOnly
+  ? slots.presence && <slots.presence {...slotProps.presence} />
+  : slots.avatar && <slots.avatar {...slotProps.avatar} />;
 
 return (
   <slots.root {...slotProps.root}>

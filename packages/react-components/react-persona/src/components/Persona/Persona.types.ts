@@ -22,8 +22,8 @@ export type PersonaSlots = {
   /**
    * The first line of text in the Persona, larger than the rest of the lines.
    *
-   * This defaults to the `name` prop, and it is recomended that you only set its value if it should be different from
-   * from the `name` prop.
+   * `primaryText` defaults to the `name` prop. We recomend to only use `name`, use `primaryText` when the text is
+   *  different than the `name` prop.
    */
   primaryText?: Slot<'span'>;
 
