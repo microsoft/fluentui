@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 22 Nov 2022 07:47:00 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Nov 2022 07:54:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.103.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.1)
+
+Wed, 23 Nov 2022 07:54:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.0..@fluentui/react_v8.103.1)
+
+### Patches
+
+- fix: TooltipHost calls onRenderContent without passing props ([PR #25726](https://github.com/microsoft/fluentui/pull/25726) by behowell@microsoft.com)
 
 ## [8.103.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.0)
 
