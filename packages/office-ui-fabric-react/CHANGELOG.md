@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 22 Nov 2022 12:29:03 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Nov 2022 12:28:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.201.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.201.0)
+
+Wed, 23 Nov 2022 12:28:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.200.0..office-ui-fabric-react_v7.201.0)
+
+### Minor changes
+
+- feat: add popupProps to Callout ([PR #25757](https://github.com/microsoft/fluentui/pull/25757) by sarah.higley@microsoft.com)
 
 ## [7.200.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.200.0)
 
