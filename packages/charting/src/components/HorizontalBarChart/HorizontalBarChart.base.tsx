@@ -121,9 +121,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                           p.onClick();
                         }
                       }}
-                      aria-labelledby={this._calloutId}
                       role="img"
-                      aria-label="Horizontal bar chart"
+                      aria-label={this._getAriaLabel(points!.chartData![0])}
                       data-is-focusable={true}
                       onBlur={this._hoverOff}
                       onMouseLeave={this._hoverOff}
@@ -309,8 +308,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           width={value + '%'}
           height={this._barHeight}
           fill={color}
-          role="img"
-          aria-label={this._getAriaLabel(point)}
         />
       );
     });

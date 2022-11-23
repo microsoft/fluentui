@@ -915,24 +915,24 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _getAriaLabel = (singleChartData: IVerticalStackedChartProps, point?: IVSChartDataPoint): string => {
     if (!point) {
       /** if shouldFocusWholeStack is true */
-      const xValue = singleChartData.xAxisCalloutData || singleChartData.xAxisPoint;
+      const xVal = singleChartData.xAxisCalloutData || singleChartData.xAxisPoint;
       const pointValues = singleChartData.chartData
         .map(pt => {
-          const legend = pt.legend;
-          const yValue = pt.yAxisCalloutData || pt.data;
-          return `${legend}, ${yValue}.`;
+          const leg = pt.legend;
+          const yVal = pt.yAxisCalloutData || pt.data;
+          return `${leg}, ${yVal}.`;
         })
         .join(' ');
       const lineValues = singleChartData.lineData
         ?.map(ln => {
-          const legend = ln.legend;
-          const yValue = ln.yAxisCalloutData || ln.data || ln.y;
-          return `${legend}, ${yValue}.`;
+          const leg = ln.legend;
+          const yVal = ln.yAxisCalloutData || ln.data || ln.y;
+          return `${leg}, ${yVal}.`;
         })
         .join(' ');
       return (
         singleChartData.stackCallOutAccessibilityData?.ariaLabel ||
-        `${xValue}. ${pointValues}` + (lineValues ? ` ${lineValues}` : '')
+        `${xVal}. ${pointValues}` + (lineValues ? ` ${lineValues}` : '')
       );
     }
     /** if shouldFocusWholeStack is false */
