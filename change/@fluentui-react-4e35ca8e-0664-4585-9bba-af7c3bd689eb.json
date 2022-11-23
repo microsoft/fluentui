@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: TooltipHost calls onRenderContent without passing props",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
