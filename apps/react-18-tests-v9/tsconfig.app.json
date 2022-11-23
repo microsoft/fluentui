@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
+    "noEmit": true,
     "lib": ["ES2019", "dom"],
     "outDir": "dist",
     "declaration": true,
