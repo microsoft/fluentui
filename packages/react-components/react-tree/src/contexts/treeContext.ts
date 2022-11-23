@@ -1,13 +1,12 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { TreeOpenChangeData } from '../Tree';
-import * as React from 'react';
+import { TreeItemElement } from '../TreeItem';
 
 export type TreeContextValue = {
-  openTrees: string[];
   level: number;
-  treeRef: React.RefObject<HTMLElement>;
-  subtreeRef: React.RefObject<HTMLElement>;
-  isSubtree: boolean;
+  openSubtrees: string[];
+  focusFirstSubtreeItem(target: TreeItemElement): void;
+  focusSubtreeOwnerItem(target: TreeItemElement): void;
   /**
    * Requests dialog main component to update it's internal open state
    */
@@ -16,10 +15,13 @@ export type TreeContextValue = {
 
 const defaultContextValue: TreeContextValue = {
   level: 0,
-  isSubtree: false,
-  treeRef: React.createRef(),
-  subtreeRef: React.createRef(),
-  openTrees: [],
+  openSubtrees: [],
+  focusFirstSubtreeItem() {
+    /* noop */
+  },
+  focusSubtreeOwnerItem() {
+    /* noop */
+  },
   requestOpenChange() {
     /* noop */
   },

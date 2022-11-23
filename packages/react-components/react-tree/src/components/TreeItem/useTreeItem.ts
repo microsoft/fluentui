@@ -2,10 +2,8 @@ import * as React from 'react';
 import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
 import type { TreeItemElement, TreeItemElementIntersection, TreeItemProps, TreeItemState } from './TreeItem.types';
 import { useARIAButtonProps } from '@fluentui/react-aria';
-import { useFocusFinders } from '@fluentui/react-tabster';
 import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Create the state required to render TreeItem.
  *
@@ -18,15 +16,13 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeItemElement>): TreeItemState => {
   const { 'aria-owns': ariaOwns, as = 'div', onKeyDown, ...rest } = props;
 
-  const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
   const level = useTreeContext_unstable(ctx => ctx.level);
-  const treeRef = useTreeContext_unstable(ctx => ctx.treeRef);
-  const subtreeRef = useTreeContext_unstable(ctx => ctx.subtreeRef);
-  const { findFirstFocusable } = useFocusFinders();
-  const { targetDocument } = useFluent_unstable();
+  const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
+  const focusFirstSubtreeItem = useTreeContext_unstable(ctx => ctx.focusFirstSubtreeItem);
+  const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
 
   const isBranch = typeof ariaOwns === 'string';
-  const open = useTreeContext_unstable(ctx => isBranch && ctx.openTrees.includes(ariaOwns!));
+  const open = useTreeContext_unstable(ctx => isBranch && ctx.openSubtrees.includes(ariaOwns!));
 
   const handleClick = useEventCallback((event: React.MouseEvent<TreeItemElementIntersection>) => {
     if (isBranch) {
@@ -35,19 +31,15 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
   });
   const handleArrowRight = (event: React.KeyboardEvent<TreeItemElementIntersection>) => {
     if (open && isBranch) {
-      // find first focusable on the subtree and focus on it
-      const subtree = targetDocument?.getElementById(ariaOwns!);
-      if (subtree) {
-        subtree && findFirstFocusable(subtree)?.focus();
-      }
+      focusFirstSubtreeItem(event.currentTarget);
     }
     if (isBranch && !open) {
       requestOpenChange({ event, open: true, type: 'arrowRight', id: ariaOwns! });
     }
   };
   const handleArrowLeft = (event: React.KeyboardEvent<TreeItemElementIntersection>) => {
-    if ((!isBranch || !open) && subtreeRef.current && subtreeRef.current.id) {
-      treeRef.current?.querySelector<TreeItemElementIntersection>(`[aria-owns="${subtreeRef.current.id}"]`)?.focus();
+    if (!isBranch || !open) {
+      focusSubtreeOwnerItem(event.currentTarget);
     }
     if (isBranch && open) {
       requestOpenChange({ event, open: false, type: 'arrowLeft', id: ariaOwns! });
@@ -71,8 +63,6 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
     components: {
       root: 'div',
     },
-    open,
-    isLeaf: !isBranch,
     root: getNativeElementProps(
       as,
       useARIAButtonProps(as, {

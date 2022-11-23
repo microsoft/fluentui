@@ -5,9 +5,12 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import type { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
+import { useTreeWalker } from '../../utils/useTreeWalker';
+import { TreeItemElement } from '../TreeItem/TreeItem.types';
 
 /**
  * Create the state required to render Tree.
@@ -19,89 +22,168 @@ import { useTreeContext_unstable } from '../../contexts/treeContext';
  * @param ref - reference to root HTMLElement of Tree
  */
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
-  const isSubtree = useTreeContext_unstable(ctx => ctx.isSubtree);
+  const isSubtree = useTreeContext_unstable(ctx => ctx.level > 0);
+  // as isSubtree is static, this doesn't break rule of hooks
+  // and if this becomes an issue later on, this can be easily converted
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return isSubtree ? useSubtree(props, ref) : useRootTree(props, ref);
+};
+
+/**
+ * Create the common state required to render Tree.
+ *
+ * The returned state can be modified with hooks such as useTreeStyles_unstable,
+ * before being passed to renderTree_unstable.
+ *
+ * @param props - props from this instance of Tree
+ * @param ref - reference to root HTMLElement of Tree
+ */
+function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);
-  const rootOpenTrees = useTreeContext_unstable(ctx => ctx.openTrees);
-  const rootRequestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
-  const parentTreeRef = useTreeContext_unstable(ctx => ctx.treeRef);
-  warnIfNecessary(props, isSubtree);
-  const { openSubtrees: stateOpenTrees, defaultOpenSubtrees: defaultOpenTrees, onOpenChange, ...rest } = props;
+  const focusFirstSubtreeItem = useTreeContext_unstable(ctx => ctx.focusFirstSubtreeItem);
+  const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
+  const openSubtrees = useTreeContext_unstable(ctx => ctx.openSubtrees);
+  const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
+  const isSubtree = parentLevel > 0;
+
+  if (isSubtree) {
+    warnIfNoProperPropsSubtree(props);
+  }
+
+  const open = useTreeContext_unstable(
+    ctx => !isSubtree || props.id === undefined || ctx.openSubtrees.includes(props.id),
+  );
   const arrowNavigationProps = useArrowNavigationGroup({
     tabbable: true,
     axis: 'vertical',
   });
-  const [localOpenTrees, setOpenTrees] = useControllableState({
-    state: React.useMemo(() => normalizeOpenTreesOrUndefined(stateOpenTrees), [stateOpenTrees]),
-    defaultState: () => normalizeOpenTrees(defaultOpenTrees),
-    initialState: [],
-  });
-  const localRequestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
-    onOpenChange?.(data.event, data);
-    if (!data.event.isDefaultPrevented()) {
-      setOpenTrees(updateOpenTrees(data, openTrees));
-    }
-  });
-  const openTrees = isSubtree ? rootOpenTrees : localOpenTrees;
-  const requestOpenChange = isSubtree ? rootRequestOpenChange : localRequestOpenChange;
-  const isOpen = React.useMemo(() => !isSubtree || props.id === undefined || openTrees.includes(props.id), [
-    props.id,
-    openTrees,
-    isSubtree,
-  ]);
-  const treeRef = React.useRef<HTMLElement>(null);
-  const subtreeRef = React.useRef<HTMLElement>(null);
 
   return {
     components: {
       root: 'div',
     },
-    isOpen,
-    treeRef: isSubtree ? parentTreeRef : treeRef,
-    subtreeRef,
+    open,
     level: parentLevel + 1,
+    openSubtrees,
+    requestOpenChange,
+    focusFirstSubtreeItem,
+    focusSubtreeOwnerItem,
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, isSubtree ? subtreeRef : treeRef),
+      ref,
       role: isSubtree ? 'group' : 'tree',
-      ...rest,
+      ...props,
       ...(isSubtree ? undefined : arrowNavigationProps),
     }),
-    openTrees,
-    requestOpenChange,
   };
-};
+}
 
-function warnIfNecessary(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>, isSubtree: boolean) {
-  if (process.env.NODE_ENV === 'development') {
-    if (isSubtree) {
-      if (!props.id) {
-        // eslint-disable-next-line no-console
-        console.warn('as sub Tree must have an id to be referred by a TreeItem');
+/**
+ * Create the state required to render the root Tree.
+ *
+ * The returned state can be modified with hooks such as useTreeStyles_unstable,
+ * before being passed to renderTree_unstable.
+ *
+ * @param props - props from this instance of Tree
+ * @param ref - reference to root HTMLElement of Tree
+ */
+function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
+  warnIfNoProperPropsRootTree(props);
+  const { openSubtrees: stateOpenSubtrees, defaultOpenSubtrees, onOpenChange } = props;
+  const [openSubtrees, setOpenSubtrees] = useControllableState({
+    state: React.useMemo(() => normalizeOpenSubtreesOrUndefined(stateOpenSubtrees), [stateOpenSubtrees]),
+    defaultState: () => normalizeOpenSubtrees(defaultOpenSubtrees),
+    initialState: [],
+  });
+  const { targetDocument } = useFluent_unstable();
+  const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
+    onOpenChange?.(data.event, data);
+    if (!data.event.isDefaultPrevented()) {
+      setOpenSubtrees(updateOpenSubtrees(data, openSubtrees));
+    }
+  });
+  const { treeWalker: treeWalkerRef, root: treeRef } = useTreeWalker(NodeFilter.SHOW_ELEMENT, {
+    acceptNode: filterTreeItemAndSubtree,
+  });
+  const commonState = useSubtree(props, useMergedRefs(ref, treeRef));
+  return {
+    ...commonState,
+    openSubtrees,
+    requestOpenChange,
+    focusFirstSubtreeItem: useEventCallback(target => {
+      const treeWalker = treeWalkerRef.current;
+      if (!treeWalker) {
+        return;
       }
-    } else if (!props['aria-label'] && !props['aria-labelledby']) {
+      const groupId = target.getAttribute('aria-owns');
+      if (groupId && targetDocument) {
+        const element = targetDocument.getElementById(groupId);
+        if (treeWalker && element) {
+          treeWalker.currentNode = element;
+          const firstTreeItem = treeWalker.firstChild() as TreeItemElement | null;
+          return firstTreeItem?.focus();
+        }
+      }
+    }),
+    focusSubtreeOwnerItem: useEventCallback(target => {
+      const treeWalker = treeWalkerRef.current;
+      if (!treeWalker) {
+        return;
+      }
+      treeWalker.currentNode = target;
+      const group = treeWalker.parentNode() as HTMLElement | null;
+      if (group) {
+        while (treeWalker.previousNode()) {
+          const treeItem = treeWalker.currentNode as TreeItemElement;
+          if (treeItem.getAttribute('aria-owns') === group.id) {
+            return treeItem.focus();
+          }
+        }
+      }
+    }),
+  };
+}
+
+function filterTreeItemAndSubtree(node: Node) {
+  const element = node as HTMLElement & { role: string };
+  return element.role === 'treeitem' || element.role === 'group' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+}
+
+function warnIfNoProperPropsSubtree(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>) {
+  if (process.env.NODE_ENV === 'development') {
+    if (!props.id) {
+      // eslint-disable-next-line no-console
+      console.warn('as sub Tree must have an id to be referred by a TreeItem');
+    }
+  }
+}
+
+function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>) {
+  if (process.env.NODE_ENV === 'development') {
+    if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console
       console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
     }
   }
 }
 
-function normalizeOpenTrees(openItems?: string | string[]) {
-  if (!openItems) {
+function normalizeOpenSubtrees(openSubtrees?: string | string[]) {
+  if (!openSubtrees) {
     return [];
   }
-  return Array.isArray(openItems) ? openItems : [openItems];
+  return Array.isArray(openSubtrees) ? openSubtrees : [openSubtrees];
 }
 
-function normalizeOpenTreesOrUndefined(openItems?: string | string[]) {
-  if (!openItems) {
+function normalizeOpenSubtreesOrUndefined(openSubtrees?: string | string[]) {
+  if (!openSubtrees) {
     return undefined;
   }
-  return normalizeOpenTrees(openItems);
+  return normalizeOpenSubtrees(openSubtrees);
 }
 
-function updateOpenTrees(data: TreeOpenChangeData, previousOpenTrees: string[]) {
+function updateOpenSubtrees(data: TreeOpenChangeData, previousOpenSubtrees: string[]) {
   if (data.open) {
-    return previousOpenTrees.includes(data.id) ? previousOpenTrees : [...previousOpenTrees, data.id];
+    return previousOpenSubtrees.includes(data.id) ? previousOpenSubtrees : [...previousOpenSubtrees, data.id];
   }
-  const nextOpenItems = previousOpenTrees.filter(value => value !== data.id);
-  return nextOpenItems.length === previousOpenTrees.length ? previousOpenTrees : nextOpenItems;
+  const nextOpenItems = previousOpenSubtrees.filter(value => value !== data.id);
+  return nextOpenItems.length === previousOpenSubtrees.length ? previousOpenSubtrees : nextOpenItems;
 }

@@ -51,6 +51,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
  * State used in rendering Tree
  */
 export type TreeState = ComponentState<TreeSlots> &
-  Pick<TreeContextValue, 'level' | 'openTrees' | 'requestOpenChange' | 'treeRef' | 'subtreeRef'> & {
-    isOpen: boolean;
+  TreeContextValue & {
+    open: boolean;
   };

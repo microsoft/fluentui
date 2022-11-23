@@ -9,7 +9,10 @@ import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -22,11 +25,10 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
 export type TreeContextValue = {
-    openTrees: string[];
     level: number;
-    treeRef: React_2.RefObject<HTMLElement>;
-    subtreeRef: React_2.RefObject<HTMLElement>;
-    isSubtree: boolean;
+    openSubtrees: string[];
+    focusFirstSubtreeItem(target: TreeItemElement): void;
+    focusSubtreeOwnerItem(target: TreeItemElement): void;
     requestOpenChange(data: TreeOpenChangeData): void;
 };
 
@@ -45,10 +47,7 @@ export type TreeItemSlots = {
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots> & {
-    open: boolean;
-    isLeaf: boolean;
-};
+export type TreeItemState = ComponentState<TreeItemSlots>;
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
@@ -58,7 +57,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 };
 
 // @public (undocumented)
-export const TreeProvider: React_2.Provider<TreeContextValue | undefined> & React_2.FC<React_2.ProviderProps<TreeContextValue | undefined>>;
+export const TreeProvider: Provider<TreeContextValue | undefined> & FC<ProviderProps<TreeContextValue | undefined>>;
 
 // @public (undocumented)
 export type TreeSlots = {
@@ -66,8 +65,8 @@ export type TreeSlots = {
 };
 
 // @public
-export type TreeState = ComponentState<TreeSlots> & Pick<TreeContextValue, 'level' | 'openTrees' | 'requestOpenChange' | 'treeRef' | 'subtreeRef'> & {
-    isOpen: boolean;
+export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
+    open: boolean;
 };
 
 // @public (undocumented)

@@ -21,10 +21,4 @@ export type TreeItemProps = ComponentProps<TreeItemSlots>;
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> & {
-  open: boolean;
-  /**
-   * indicates if this TreeItem is a leaf (has no subtree)
-   */
-  isLeaf: boolean;
-};
+export type TreeItemState = ComponentState<TreeItemSlots>;

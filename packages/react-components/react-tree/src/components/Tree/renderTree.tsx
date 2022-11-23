@@ -4,12 +4,12 @@ import type { TreeState, TreeSlots, TreeContextValues } from './Tree.types';
 import { TreeProvider } from '../../contexts';
 
 export const renderTree_unstable = (state: TreeState, contextValues: TreeContextValues) => {
-  const { isOpen } = state;
+  const { open } = state;
   const { slots, slotProps } = getSlots<TreeSlots>(state);
 
   return (
     <TreeProvider value={contextValues.tree}>
-      {isOpen && <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>}
+      {open && <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>}
     </TreeProvider>
   );
 };
