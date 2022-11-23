@@ -354,8 +354,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
             onFocus={this._onBarFocus.bind(this, pointData, singleSet, refIndexNumber)}
             onBlur={this._onBarLeave}
             onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
-            aria-labelledby={`toolTip${this._calloutId}`}
-            role="text"
+            aria-label={this._getAriaLabel(pointData, singleSet.xAxisPoint)}
+            role="img"
           />,
         );
     });
@@ -533,5 +533,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
     }
+  };
+
+  private _getAriaLabel = (point: IGVBarChartSeriesPoint, xAxisPoint: string): string => {
+    const xValue = point.xAxisCalloutData || xAxisPoint;
+    const legend = point.legend;
+    const yValue = point.yAxisCalloutData || point.data;
+    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 }
