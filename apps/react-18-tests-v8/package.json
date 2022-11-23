@@ -4,16 +4,14 @@
   "version": "8.0.0",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
+    "type-check": "tsc -b tsconfig.json",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
     "lint": "eslint --ext .js,.ts.,.tsx ./src",
     "test": "jest --passWithNoTests",
-    "start": "webpack-dev-server --mode=development",
-    "type-check": "tsc -b tsconfig.json"
+    "start": "webpack-dev-server --mode=development"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
