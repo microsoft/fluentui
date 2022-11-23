@@ -391,6 +391,7 @@ interface ISNodeExtra {
   color?: string;
   borderColor?: string;
   actualValue?: number;
+  layer?: number;
 }
 
 interface ISLinkExtra {
