@@ -106,11 +106,9 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
 
   ...createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    outlineColor: tokens.colorTransparentStroke,
-    outlineWidth: tokens.strokeWidthThick,
-    outlineStyle: 'solid',
+    borderColor: tokens.colorTransparentStroke,
+    borderRadius: tokens.borderRadiusMedium,
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
     boxShadow: `
       ${tokens.shadow4},
       0 0 0 2px ${tokens.colorStrokeFocus2}
