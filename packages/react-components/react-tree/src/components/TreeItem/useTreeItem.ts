@@ -18,12 +18,15 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeItemElement>): TreeItemState => {
   const { 'aria-owns': ariaOwns, as = 'div', onKeyDown, ...rest } = props;
 
-  const { openTrees, requestOpenChange, level, treeRef, subtreeRef } = useTreeContext_unstable();
+  const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
+  const level = useTreeContext_unstable(ctx => ctx.level);
+  const treeRef = useTreeContext_unstable(ctx => ctx.treeRef);
+  const subtreeRef = useTreeContext_unstable(ctx => ctx.subtreeRef);
   const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent_unstable();
 
   const isBranch = typeof ariaOwns === 'string';
-  const open = React.useMemo(() => isBranch && openTrees.includes(ariaOwns!), [ariaOwns, openTrees, isBranch]);
+  const open = useTreeContext_unstable(ctx => isBranch && ctx.openTrees.includes(ariaOwns!));
 
   const handleClick = useEventCallback((event: React.MouseEvent<TreeItemElementIntersection>) => {
     if (isBranch) {

@@ -1,3 +1,4 @@
+import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { TreeOpenChangeData } from '../Tree';
 import * as React from 'react';
 
@@ -24,9 +25,10 @@ const defaultContextValue: TreeContextValue = {
   },
 };
 
-export const TreeContext: React.Context<TreeContextValue | undefined> = React.createContext<
-  TreeContextValue | undefined
->(undefined);
+export const TreeContext: Context<TreeContextValue | undefined> = createContext<TreeContextValue | undefined>(
+  undefined,
+);
 
 export const { Provider: TreeProvider } = TreeContext;
-export const useTreeContext_unstable = (): TreeContextValue => React.useContext(TreeContext) ?? defaultContextValue;
+export const useTreeContext_unstable = <T>(selector: ContextSelector<TreeContextValue, T>): T =>
+  useContextSelector(TreeContext, (ctx = defaultContextValue) => selector(ctx));

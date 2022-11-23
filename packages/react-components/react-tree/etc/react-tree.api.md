@@ -8,6 +8,7 @@ import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -57,7 +58,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 };
 
 // @public (undocumented)
-export const TreeProvider: React_2.Provider<TreeContextValue | undefined>;
+export const TreeProvider: React_2.Provider<TreeContextValue | undefined> & React_2.FC<React_2.ProviderProps<TreeContextValue | undefined>>;
 
 // @public (undocumented)
 export type TreeSlots = {
@@ -70,7 +71,7 @@ export type TreeState = ComponentState<TreeSlots> & Pick<TreeContextValue, 'leve
 };
 
 // @public (undocumented)
-export const useTreeContext_unstable: () => TreeContextValue;
+export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
 
 // (No @packageDocumentation comment for this package)
 

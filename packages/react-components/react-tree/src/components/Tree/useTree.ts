@@ -19,13 +19,11 @@ import { useTreeContext_unstable } from '../../contexts/treeContext';
  * @param ref - reference to root HTMLElement of Tree
  */
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
-  const {
-    isSubtree,
-    level: parentLevel,
-    openTrees: rootOpenTrees,
-    requestOpenChange: rootRequestOpenChange,
-    treeRef: parentTreeRef,
-  } = useTreeContext_unstable();
+  const isSubtree = useTreeContext_unstable(ctx => ctx.isSubtree);
+  const parentLevel = useTreeContext_unstable(ctx => ctx.level);
+  const rootOpenTrees = useTreeContext_unstable(ctx => ctx.openTrees);
+  const rootRequestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
+  const parentTreeRef = useTreeContext_unstable(ctx => ctx.treeRef);
   warnIfNecessary(props, isSubtree);
   const { openSubtrees: stateOpenTrees, defaultOpenSubtrees: defaultOpenTrees, onOpenChange, ...rest } = props;
   const arrowNavigationProps = useArrowNavigationGroup({
