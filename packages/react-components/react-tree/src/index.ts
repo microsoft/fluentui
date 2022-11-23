@@ -1,8 +1,7 @@
 export { Tree, treeClassNames } from './Tree';
 export type { TreeProps, TreeState, TreeSlots } from './Tree';
 
-export { TreeBranch, treeBranchClassNames } from './TreeBranch';
-export type { TreeBranchProps, TreeBranchState, TreeBranchSlots } from './TreeBranch';
+export { TreeItem, treeItemClassNames } from './TreeItem';
+export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
 
-export { TreeLeaf, treeLeafClassNames } from './TreeLeaf';
-export type { TreeLeafProps, TreeLeafState, TreeLeafSlots } from './TreeLeaf';
+export type { TreeContextValue, useTreeContext_unstable, TreeProvider } from './contexts';

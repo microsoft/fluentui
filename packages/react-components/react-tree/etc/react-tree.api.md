@@ -4,54 +4,60 @@
 
 ```ts
 
+import type { ARIAButtonElement } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Tree: ForwardRefComponent<TreeProps>;
 
-// @public
-export const TreeBranch: ForwardRefComponent<TreeBranchProps>;
-
-// @public (undocumented)
-export const treeBranchClassNames: SlotClassNames<TreeBranchSlots>;
-
-// @public (undocumented)
-export type TreeBranchProps = ComponentProps<TreeBranchSlots> & {};
-
-// @public (undocumented)
-export type TreeBranchSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type TreeBranchState = ComponentState<TreeBranchSlots>;
-
 // @public (undocumented)
 export const treeClassNames: SlotClassNames<TreeSlots>;
 
+// @public (undocumented)
+export type TreeContextValue = {
+    openTrees: string[];
+    level: number;
+    treeRef: React_2.RefObject<HTMLElement>;
+    subtreeRef: React_2.RefObject<HTMLElement>;
+    isSubtree: boolean;
+    requestOpenChange(data: TreeOpenChangeData): void;
+};
+
 // @public
-export const TreeLeaf: ForwardRefComponent<TreeLeafProps>;
+export const TreeItem: ForwardRefComponent<TreeItemProps>;
 
 // @public (undocumented)
-export const treeLeafClassNames: SlotClassNames<TreeLeafSlots>;
+export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
+
+// @public
+export type TreeItemProps = ComponentProps<TreeItemSlots>;
 
 // @public (undocumented)
-export type TreeLeafProps = ComponentProps<TreeLeafSlots> & {};
+export type TreeItemSlots = {
+    root: NonNullable<Slot<ARIAButtonSlotProps<'div' | 'a'>>>;
+};
 
-// @public (undocumented)
-export type TreeLeafSlots = {
-    root: Slot<'div'>;
+// @public
+export type TreeItemState = ComponentState<TreeItemSlots> & {
+    open: boolean;
+    isLeaf: boolean;
 };
 
 // @public (undocumented)
-export type TreeLeafState = ComponentState<TreeLeafSlots>;
+export type TreeProps = ComponentProps<TreeSlots> & {
+    openSubtrees?: string | string[];
+    defaultOpenSubtrees?: string | string[];
+    onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
+};
 
 // @public (undocumented)
-export type TreeProps = ComponentProps<TreeSlots> & {};
+export const TreeProvider: React_2.Provider<TreeContextValue | undefined>;
 
 // @public (undocumented)
 export type TreeSlots = {
@@ -59,7 +65,12 @@ export type TreeSlots = {
 };
 
 // @public
-export type TreeState = ComponentState<TreeSlots>;
+export type TreeState = ComponentState<TreeSlots> & Pick<TreeContextValue, 'level' | 'openTrees' | 'requestOpenChange' | 'treeRef' | 'subtreeRef'> & {
+    isOpen: boolean;
+};
+
+// @public (undocumented)
+export const useTreeContext_unstable: () => TreeContextValue;
 
 // (No @packageDocumentation comment for this package)
 
