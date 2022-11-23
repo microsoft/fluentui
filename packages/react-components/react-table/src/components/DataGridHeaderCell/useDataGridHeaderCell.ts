@@ -1,6 +1,10 @@
 import * as React from 'react';
+import { useEventCallback } from '@fluentui/react-utilities';
 import type { DataGridHeaderCellProps, DataGridHeaderCellState } from './DataGridHeaderCell.types';
 import { useTableHeaderCell_unstable } from '../TableHeaderCell/useTableHeaderCell';
+import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
+import { useColumnIdContext } from '../../contexts/columnIdContext';
+import { useTableContext } from '../../contexts/tableContext';
 
 /**
  * Create the state required to render DataGridHeaderCell.
@@ -15,5 +19,18 @@ export const useDataGridHeaderCell_unstable = (
   props: DataGridHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): DataGridHeaderCellState => {
-  return useTableHeaderCell_unstable({ ...props, as: 'div' }, ref);
+  const columnId = useColumnIdContext();
+  const { sortable } = useTableContext();
+  const toggleColumnSort = useDataGridContext_unstable(ctx => ctx.sort.toggleColumnSort);
+  const sortDirection = useDataGridContext_unstable(ctx =>
+    sortable ? ctx.sort.getSortDirection(columnId) : undefined,
+  );
+  const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
+    if (sortable) {
+      toggleColumnSort(e, columnId);
+    }
+    props.onClick?.(e);
+  });
+
+  return useTableHeaderCell_unstable({ sortDirection, as: 'div', ...props, onClick }, ref);
 };

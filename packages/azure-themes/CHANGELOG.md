@@ -1,8 +1,35 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 17 Nov 2022 07:51:44 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Nov 2022 07:54:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.29](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.29)
+
+Wed, 23 Nov 2022 07:54:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.28..@fluentui/azure-themes_v8.5.29)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.1 ([PR #25726](https://github.com/microsoft/fluentui/pull/25726) by beachball)
+
+## [8.5.28](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.28)
+
+Tue, 22 Nov 2022 07:47:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.27..@fluentui/azure-themes_v8.5.28)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.0 ([PR #25499](https://github.com/microsoft/fluentui/pull/25499) by beachball)
+
+## [8.5.27](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.27)
+
+Mon, 21 Nov 2022 07:43:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.26..@fluentui/azure-themes_v8.5.27)
+
+### Patches
+
+- Azure theme: indeterminate checkbox and danger button ([PR #25383](https://github.com/microsoft/fluentui/pull/25383) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [8.5.26](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.26)
 
