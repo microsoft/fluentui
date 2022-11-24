@@ -61,7 +61,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _nodePadding: number = 8;
   private _calloutId: string;
   private _linkId: string;
-  private _tooltipId: string;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -77,7 +76,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
-    this._tooltipId = getId('tooltip');
   }
   public componentDidMount(): void {
     this._fitParentContainer();
@@ -128,27 +126,20 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const nodeData = this._createNodes(width);
     const linkData = this._createLinks();
     return (
-      <>
-        <div
-          id={this._tooltipId}
-          className={this._classNames.toolTip}
-          style={{ position: 'absolute', display: 'none' }}
-        />
-        <div
-          className={this._classNames.root}
-          role={'presentation'}
-          ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
-        >
-          <FocusZone direction={FocusZoneDirection.bidirectional} isCircularNavigation={true} allowTabKey={true}>
-            <svg width={width} height={height} id={getId('sankeyChart')}>
-              <g className={this._classNames.links} strokeOpacity={1}>
-                {linkData}
-              </g>
-              <g className={this._classNames.nodes}>{nodeData}</g>
-            </svg>
-          </FocusZone>
-        </div>
-      </>
+      <div
+        className={this._classNames.root}
+        role={'presentation'}
+        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+      >
+        <FocusZone direction={FocusZoneDirection.bidirectional} isCircularNavigation={true} allowTabKey={true}>
+          <svg width={width} height={height} id={getId('sankeyChart')}>
+            <g className={this._classNames.links} strokeOpacity={1}>
+              {linkData}
+            </g>
+            <g className={this._classNames.nodes}>{nodeData}</g>
+          </svg>
+        </FocusZone>
+      </div>
     );
   }
 
@@ -379,7 +370,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
         const truncatedname: string = this._truncateText(singleNode.name, 116, padding);
         const isTruncated: boolean = truncatedname.slice(-3) === '...';
-
+        const id = getId('tooltip');
+        const div = select('body')
+          .append('div')
+          .attr('id', id)
+          .attr('class', this._classNames.toolTip!)
+          .style('opacity', 0);
         const node = (
           <g id={getId('nodeGElement')} key={index}>
             <rect
@@ -431,8 +427,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                         : NON_SELECTED_TEXT_COLOR
                     }
                     fontSize={10}
-                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated)}
-                    onMouseOut={this._hideTooltip.bind(this)}
+                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated, div)}
+                    onMouseOut={this._hideTooltip.bind(this, div)}
                   >
                     {truncatedname}
                   </text>
@@ -821,19 +817,18 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _showTooltip(text: string, checkTrcuncated: boolean, evt: any) {
+  private _showTooltip(text: string, checkTrcuncated: boolean, div: any, evt: any) {
     if (checkTrcuncated) {
       //Fixing tooltip position by attaching it to the element rather than page
-      const tooltip = document.getElementById(this._tooltipId)!;
-      tooltip.innerHTML = text;
-      tooltip.style.display = 'block';
-      tooltip.style.left = evt.pageX + 'px';
-      tooltip.style.top = evt.pageY - 28 + 'px';
+      div.style('opacity', 0.9);
+      div
+        .html(text)
+        .style('left', evt.pageX + 'px')
+        .style('top', evt.pageY - 28 + 'px');
     }
   }
 
-  private _hideTooltip() {
-    const tooltip = document.getElementById(this._tooltipId)!;
-    tooltip.style.display = 'none';
+  private _hideTooltip(div: any) {
+    div.style('opacity', 0);
   }
 }
