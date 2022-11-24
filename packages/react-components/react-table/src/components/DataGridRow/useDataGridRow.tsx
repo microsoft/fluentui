@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { DataGridRowProps, DataGridRowState } from './DataGridRow.types';
 import { useTableRow_unstable } from '../TableRow/useTableRow';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
+import { ColumnIdContextProvider } from '../../contexts/columnIdContext';
 
 /**
  * Create the state required to render DataGridRow.
@@ -17,7 +18,11 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
 
   const cellRenderFunction = props.children;
   const children = columnDefs.map(columnDef => {
-    return cellRenderFunction(columnDef);
+    return (
+      <ColumnIdContextProvider value={columnDef.columnId} key={columnDef.columnId}>
+        {cellRenderFunction(columnDef)}
+      </ColumnIdContextProvider>
+    );
   });
 
   return useTableRow_unstable({ ...props, children, as: 'div' }, ref);

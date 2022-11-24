@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 17 Nov 2022 07:51:43 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Nov 2022 07:54:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.103.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.1)
+
+Wed, 23 Nov 2022 07:54:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.0..@fluentui/react_v8.103.1)
+
+### Patches
+
+- fix: TooltipHost calls onRenderContent without passing props ([PR #25726](https://github.com/microsoft/fluentui/pull/25726) by behowell@microsoft.com)
+
+## [8.103.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.0)
+
+Tue, 22 Nov 2022 07:47:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.102.0..@fluentui/react_v8.103.0)
+
+### Minor changes
+
+- feat: add allowFreeInput to ComboBox, to allow typing while the combobox is in focus ([PR #25602](https://github.com/microsoft/fluentui/pull/25602) by sarah.higley@microsoft.com)
+
+### Patches
+
+- fix: Deprecate the ContextualMenu componentRef because it has no public methods ([PR #25499](https://github.com/microsoft/fluentui/pull/25499) by mgodbolt@microsoft.com)
 
 ## [8.102.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.102.0)
 
