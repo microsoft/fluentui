@@ -827,7 +827,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       tooltip.innerHTML = text;
       tooltip.style.display = 'block';
       tooltip.style.left = evt.pageX + 'px';
-      tooltip.style.top = evt.pageY - 28 + 'px';
+      tooltip.style.top = window.scrollY + evt.pageY + 'px';
     }
   }
 
