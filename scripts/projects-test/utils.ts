@@ -1,4 +1,5 @@
 import fs from 'fs';
+import fsExtra from 'fs-extra';
 import path from 'path';
 import tmp from 'tmp';
 // note: there's nothing gulp-specific about this utility, it just runs commands
@@ -55,4 +56,19 @@ export function log(context: string) {
 export async function shEcho(cmd: string, cwd?: string) {
   console.log(`+ cd ${cwd ?? '.'} &&\n    ${cmd}`);
   await sh(cmd, cwd);
+}
+
+/**
+ * Generates a folder of files based on provided templates.
+ * This is similar to nx `@nrwl/devkit#generateFiles` without templating and ability to run on virtual FS
+ *
+ * @example
+ * ```typescript
+ * generateFiles(path.join(__dirname , 'files'), path.join(tempFolderRoot,'./tools/scripts'))
+ *
+ * @param srcFolder - the source folder of files (absolute path)
+ * @param target - the target folder (absolute path)
+ */
+export function generateFiles(srcFolder: string, target: string) {
+  fsExtra.copySync(srcFolder, target, { recursive: true });
 }

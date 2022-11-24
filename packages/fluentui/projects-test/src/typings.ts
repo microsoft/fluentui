@@ -8,6 +8,7 @@ import {
   prepareTempDirs,
   log,
   shEcho,
+  generateFiles,
 } from '@fluentui/scripts/projects-test';
 
 export async function typings() {
@@ -37,9 +38,7 @@ export async function typings() {
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
-  fs.mkdirSync(path.resolve(tempPaths.testApp, 'src'));
-  fs.copyFileSync(scaffoldPath('index.tsx'), path.resolve(tempPaths.testApp, 'src/index.tsx'));
-  fs.copyFileSync(scaffoldPath('tsconfig.json'), path.resolve(tempPaths.testApp, 'tsconfig.json'));
+  generateFiles(scaffoldPath(), tempPaths.testApp);
   logger(`✔️ Source and configs were copied`);
 
   await shEcho(`which yarn`);
