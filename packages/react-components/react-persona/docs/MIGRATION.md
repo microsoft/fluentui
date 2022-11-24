@@ -10,10 +10,6 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 - `coinProps` => Use `avatar`'s or `presence`'s slot props
 - `componentRef` => NOT SUPPORTED - use `ref` instead
 - `hidePersonaDetails` => Use the `Avatar` component for this case
-- ```
-
-  ```
-
 - `imageShouldFadeIn` => NOT SUPPORTED
 - `isOutOfOffice` => Use the `outOfOffice` prop of the `presence` slot. E.g.: `presence={{ outOfOffice: true }}`
 - `presence` => Use the `status` prop of the `presence` slot. E.g.: `presence={{ status: 'away' }}`
@@ -24,22 +20,22 @@ Here's how the API of v8's `Persona` compares to the one from v9's `Persona` com
 
 ## Property Mapping
 
-| v8 `Persona`             | v9 `Persona`                           |
-| ------------------------ | -------------------------------------- |
-| `coinProps`              | `avatar` or `badge` slot props         |
-| `coinSize`               | `size` in the `badge` or `avatar` slot |
-| `className`              | `className`                            |
-| `componentRef`           | `ref`                                  |
-| `hidePersonaDetails`     | -                                      |
-| `imageShouldFadeIn`      | -                                      |
-| `isOutOfOffice`          | `status` in `presence` slot props      |
-| `optionalText`           | `quaternaryText`                       |
-| `presence`               | `presence`                             |
-| `presenceTitle`          | -                                      |
-| `primaryText`            | `primaryText`                          |
-| `secondaryText`          | `secondaryText`                        |
-| `showOverflowTooltip`    | -                                      |
-| `showUnknownPersonaCoin` | -                                      |
-| `styles`                 | `className`                            |
-| `tertiaryText`           | `tertiaryText`                         |
-| `text`                   | `name`                                 |
+| v8 `Persona`             | v9 `Persona`                      |
+| ------------------------ | --------------------------------- |
+| `coinProps`              | `avatar` or `badge` slot props    |
+| `coinSize`               | `size`                            |
+| `className`              | `className`                       |
+| `componentRef`           | `ref`                             |
+| `hidePersonaDetails`     | -                                 |
+| `imageShouldFadeIn`      | -                                 |
+| `isOutOfOffice`          | `status` in `presence` slot props |
+| `optionalText`           | `quaternaryText`                  |
+| `presence`               | `presence`                        |
+| `presenceTitle`          | `name`                            |
+| `primaryText`            | `name`                            |
+| `secondaryText`          | `secondaryText`                   |
+| `showOverflowTooltip`    | -                                 |
+| `showUnknownPersonaCoin` | -                                 |
+| `styles`                 | `className`                       |
+| `tertiaryText`           | `tertiaryText`                    |
+| `text`                   | `name`                            |
