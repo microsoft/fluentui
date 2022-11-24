@@ -825,6 +825,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _showTooltip(text: string, checkTrcuncated: boolean, textId: string, evt: any) {
     if (checkTrcuncated) {
+      //Fixing tooltip position by attaching it to the element rather than page
       const tooltip = document.getElementById(this._tooltipId)!;
       const textContainer = document.getElementById(textId)?.getBoundingClientRect();
       tooltip.innerHTML = text;
