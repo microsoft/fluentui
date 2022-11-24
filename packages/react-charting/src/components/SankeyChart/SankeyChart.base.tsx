@@ -61,6 +61,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _nodePadding: number = 8;
   private _calloutId: string;
   private _linkId: string;
+  private _tooltipId: string;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -76,6 +77,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
+    this._tooltipId = getId('tooltip');
   }
   public componentDidMount(): void {
     this._fitParentContainer();
@@ -127,7 +129,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const linkData = this._createLinks();
     return (
       <>
-        <div id="tooltip" className={this._classNames.toolTip} style={{ position: 'absolute', display: 'none' }} />
+        <div
+          id={this._tooltipId}
+          className={this._classNames.toolTip}
+          style={{ position: 'absolute', display: 'none' }}
+        />
         <div
           className={this._classNames.root}
           role={'presentation'}
@@ -817,7 +823,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _showTooltip(text: string, checkTrcuncated: boolean, evt: any) {
     if (checkTrcuncated) {
-      const tooltip = document.getElementById('tooltip')!;
+      const tooltip = document.getElementById(this._tooltipId)!;
       tooltip.innerHTML = text;
       tooltip.style.display = 'block';
       tooltip.style.left = evt.pageX + 'px';
@@ -826,7 +832,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   private _hideTooltip() {
-    const tooltip = document.getElementById('tooltip')!;
+    const tooltip = document.getElementById(this._tooltipId)!;
     tooltip.style.display = 'none';
   }
 }
