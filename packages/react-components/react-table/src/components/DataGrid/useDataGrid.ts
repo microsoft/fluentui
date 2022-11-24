@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
-import { useTable, useSort } from '../../hooks';
+import { useTable, useSort, useSelection } from '../../hooks';
 
 /**
  * Create the state required to render DataGrid.
@@ -14,20 +14,40 @@ import { useTable, useSort } from '../../hooks';
  * @param ref - reference to root HTMLElement of DataGrid
  */
 export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLElement>): DataGridState => {
-  const { items, columns, focusMode = 'none' } = props;
+  const {
+    items,
+    columns,
+    focusMode = 'none',
+    selectionMode,
+    onSortChange,
+    onSelectionChange,
+    defaultSortState,
+    sortState,
+    selectedItems,
+    defaultSelectedItems,
+    subtleSelection = false,
+    selectionAppearance = 'brand',
+  } = props;
+
   const navigable = focusMode !== 'none';
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   const tableState = useTable({ items, columns }, [
     useSort({
-      defaultSortState: props.defaultSortState,
-      sortState: props.sortState,
-      onSortChange: props.onSortChange,
+      defaultSortState,
+      sortState,
+      onSortChange,
+    }),
+    useSelection({
+      defaultSelectedItems,
+      selectedItems,
+      onSelectionChange,
+      selectionMode: selectionMode ?? 'multiselect',
     }),
   ]);
 
   const baseTableState = useTable_unstable(
-    { role: 'grid', as: 'div', ...(navigable && keyboardNavAttr), ...props },
+    { role: 'grid', as: 'div', noNativeElements: true, ...(navigable && keyboardNavAttr), ...props },
     ref,
   );
 
@@ -35,5 +55,8 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     ...baseTableState,
     focusMode,
     tableState,
+    selectableRows: !!selectionMode,
+    subtleSelection,
+    selectionAppearance,
   };
 };
