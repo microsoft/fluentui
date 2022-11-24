@@ -8,6 +8,15 @@ import config from '../config';
 
 const { paths } = config;
 
+const aliases = lernaAliases();
+const finalAliases: Record<string, string> = {};
+for (const alias of Object.entries(aliases)) {
+  const [packageName, path] = alias;
+  if (!path.includes('react-components')) {
+    finalAliases[packageName] = path;
+  }
+}
+
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
@@ -60,7 +69,7 @@ const webpackConfig: webpack.Configuration = {
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      ...lernaAliases(),
+      ...finalAliases,
       src: paths.packageSrc('react-northstar'),
 
       // We are using React in production mode with tracing.

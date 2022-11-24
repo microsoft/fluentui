@@ -46,7 +46,8 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
 
   // Resolve the initials slot, defaulted to getInitials.
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
-    required: true,
+    required: true, // TODO is this necessary?
+    // TODO could be lazy factory?
     defaultProps: {
       children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
       id: baseId + '__initials',
@@ -57,6 +58,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   let icon: AvatarState['icon'] = undefined;
   if (!initials?.children) {
     initials = undefined;
+    // TODO is this necessary when there are no initials but there is an image?
     icon = resolveShorthand(props.icon, {
       required: true,
       defaultProps: {
