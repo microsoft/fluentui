@@ -9,6 +9,6 @@
   },
   "scripts": {
     "type-check": "tsc -p .",
-    "test": "node -r @fluentui/scripts/babel/register src/index.ts"
+    "test": "ts-node --swc ./src/index.ts"
   }
 }
