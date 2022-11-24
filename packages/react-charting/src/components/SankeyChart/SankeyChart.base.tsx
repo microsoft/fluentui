@@ -60,6 +60,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _reqID: number;
   private _nodePadding: number = 8;
   private _calloutId: string;
+  private _linkId: string;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -74,6 +75,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       isCalloutVisible: false,
     };
     this._calloutId = getId('callout');
+    this._linkId = getId('link');
   }
   public componentDidMount(): void {
     this._fitParentContainer();
@@ -285,11 +287,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           .y0((p: any) => p.y0)
           .y1((p: any) => p.y1)
           .curve(d3CurveBasis);
-        const gradientUrl = `url(#gradient-${index})`;
+        const gradientUrl = `url(#gradient-${this._linkId}-${index})`;
         const link = (
           <>
             <defs>
-              <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id={`gradient-${this._linkId}-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0" stopColor={(singleLink.source as SNode).color} />
                 <stop offset="100%" stopColor={(singleLink.target as SNode).color} />
               </linearGradient>
