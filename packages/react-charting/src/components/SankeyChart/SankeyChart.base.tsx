@@ -379,6 +379,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
         const truncatedname: string = this._truncateText(singleNode.name, 116, padding);
         const isTruncated: boolean = truncatedname.slice(-3) === '...';
+        const textId = getId('descriptionText');
 
         const node = (
           <g id={getId('nodeGElement')} key={index}>
@@ -413,6 +414,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               <g className={this._classNames.nodeTextContainer}>
                 <g className="nodeName">
                   <text
+                    id={textId}
                     x={singleNode.x0}
                     y={singleNode.y0}
                     dy={'1.2em'}
@@ -431,7 +433,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                         : NON_SELECTED_TEXT_COLOR
                     }
                     fontSize={10}
-                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated)}
+                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated, textId)}
                     onMouseOut={this._hideTooltip.bind(this)}
                   >
                     {truncatedname}
@@ -821,13 +823,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _showTooltip(text: string, checkTrcuncated: boolean, evt: any) {
+  private _showTooltip(text: string, checkTrcuncated: boolean, textId: string, evt: any) {
     if (checkTrcuncated) {
       const tooltip = document.getElementById(this._tooltipId)!;
+      const textContainer = document.getElementById(textId)?.getBoundingClientRect();
       tooltip.innerHTML = text;
       tooltip.style.display = 'block';
-      tooltip.style.left = evt.pageX + 'px';
-      tooltip.style.top = window.scrollY + evt.pageY + 'px';
+      tooltip.style.left = window.scrollX + textContainer!.right + 'px';
+      tooltip.style.top = window.scrollY + textContainer!.top + 'px';
     }
   }
 
