@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: prevent infinite loop when Picker has itemLimit=0",
-  "packageName": "@fluentui/react",
-  "email": "r.vanbaaren@link-it.nl",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 23 Nov 2022 07:54:36 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Nov 2022 07:53:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.103.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.2)
+
+Thu, 24 Nov 2022 07:53:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.1..@fluentui/react_v8.103.2)
+
+### Patches
+
+- fix: Revert fix for margin added by safari. ([PR #25759](https://github.com/microsoft/fluentui/pull/25759) by esteban.230@hotmail.com)
+- fix: prevent infinite loop when Picker has itemLimit=0 ([PR #25557](https://github.com/microsoft/fluentui/pull/25557) by r.vanbaaren@link-it.nl)
 
 ## [8.103.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.1)
 
