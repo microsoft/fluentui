@@ -3,6 +3,7 @@ import type { DataGridBodyProps, DataGridBodyState } from './DataGridBody.types'
 import { useTableBody_unstable } from '../TableBody/useTableBody';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { useTableContext } from '../../contexts/tableContext';
+import { RowIdContextProvider } from '../../contexts/rowIdContext';
 
 /**
  * Create the state required to render DataGridBody.
@@ -20,6 +21,10 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
   const rows = sortable ? sort(getRows()) : getRows();
 
   const { children: renderRow } = props;
-  const children = rows.map(row => renderRow(row));
+  const children = rows.map(row => (
+    <RowIdContextProvider key={row.rowId} value={row.rowId}>
+      {renderRow(row)}
+    </RowIdContextProvider>
+  ));
   return useTableBody_unstable({ ...props, children, as: 'div' }, ref);
 };

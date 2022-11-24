@@ -92,6 +92,9 @@ export const dataGridClassNames: SlotClassNames<DataGridSlots>;
 // @public (undocumented)
 export type DataGridContextValue = HeadlessTableState<any> & {
     focusMode: FocusMode;
+    selectableRows: boolean;
+    subtleSelection: boolean;
+    selectionAppearance: TableRowProps['appearance'];
 };
 
 // @public (undocumented)
@@ -130,8 +133,10 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode'> & Pick<UseSortOptions, 'sortState' | 'defaultSortState'> & {
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> & Pick<UseSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
+    onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
+    selectionMode?: SelectionMode_2;
 };
 
 // @public
@@ -141,15 +146,17 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps = Omit<TableRowProps, 'children'> & {
+export type DataGridRowProps = Omit<TableRowProps, 'children'> & ComponentProps<DataGridRowSlots> & {
     children: CellRenderFunction;
 };
 
 // @public (undocumented)
-export type DataGridRowSlots = TableRowSlots;
+export type DataGridRowSlots = TableRowSlots & {
+    selectionCell?: Slot<typeof TableSelectionCell>;
+};
 
 // @public
-export type DataGridRowState = TableRowState;
+export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots>;
 
 // @public
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
@@ -172,7 +179,7 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: HeadlessTableState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode'>;
+} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance'>;
 
 // @public (undocumented)
 export type FocusMode = 'none' | 'cell';
@@ -455,6 +462,8 @@ export interface TableSelectionState {
     deselectRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
     isRowSelected: (rowId: RowId) => boolean;
     selectedRows: Set<RowId>;
+    // (undocumented)
+    selectionMode: SelectionMode_2;
     selectRow: (e: React_2.SyntheticEvent, rowId: RowId) => void;
     someRowsSelected: boolean;
     toggleAllRows: (e: React_2.SyntheticEvent) => void;

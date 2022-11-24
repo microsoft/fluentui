@@ -9,41 +9,49 @@ import { DataGridRow } from '../DataGridRow/DataGridRow';
 import { DataGridCell } from '../DataGridCell/DataGridCell';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
+interface Item {
+  first: string;
+  second: string;
+  third: string;
+}
+
+const testColumns: ColumnDefinition<Item>[] = [
+  createColumn({ columnId: 'first', renderHeaderCell: () => 'first', renderCell: item => item.first }),
+  createColumn({ columnId: 'second', renderHeaderCell: () => 'second', renderCell: item => item.second }),
+  createColumn({ columnId: 'third', renderHeaderCell: () => 'third', renderCell: item => item.third }),
+];
+const testItems: Item[] = [
+  { first: 'first', second: 'second', third: 'third' },
+  { first: 'first', second: 'second', third: 'third' },
+  { first: 'first', second: 'second', third: 'third' },
+];
+
 describe('DataGrid', () => {
   isConformant<DataGridProps>({
     Component: DataGrid,
     displayName: 'DataGrid',
+    requiredProps: {
+      items: testItems,
+      columns: testColumns,
+    },
   });
-
-  interface Item {
-    first: string;
-    second: string;
-    third: string;
-  }
-
-  const testColumns: ColumnDefinition<Item>[] = [
-    createColumn({ columnId: 'first', renderHeaderCell: () => 'first', renderCell: item => item.first }),
-    createColumn({ columnId: 'second', renderHeaderCell: () => 'second', renderCell: item => item.second }),
-    createColumn({ columnId: 'third', renderHeaderCell: () => 'third', renderCell: item => item.third }),
-  ];
-  const testItems: Item[] = [
-    { first: 'first', second: 'second', third: 'third' },
-    { first: 'first', second: 'second', third: 'third' },
-    { first: 'first', second: 'second', third: 'third' },
-  ];
 
   it('renders a default state', () => {
     const result = render(
       <DataGrid items={testItems} columns={testColumns}>
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
+            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+              <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
+            )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
           {({ item, rowId }: RowState<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
+              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+                <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
+              )}
             </DataGridRow>
           )}
         </DataGridBody>
@@ -57,13 +65,17 @@ describe('DataGrid', () => {
       <DataGrid items={testItems} columns={testColumns} focusMode="cell">
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
+            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+              <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
+            )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
           {({ item, rowId }: RowState<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
+              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+                <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
+              )}
             </DataGridRow>
           )}
         </DataGridBody>
@@ -80,13 +92,17 @@ describe('DataGrid', () => {
       <DataGrid items={testItems} columns={testColumns} focusMode="none">
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
+            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+              <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
+            )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
           {({ item, rowId }: RowState<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
+              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+                <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
+              )}
             </DataGridRow>
           )}
         </DataGridBody>
@@ -101,13 +117,17 @@ describe('DataGrid', () => {
       <DataGrid items={testItems} columns={testColumns}>
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }) => <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>}
+            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+              <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
+            )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
           {({ item, rowId }: RowState<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }) => <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>}
+              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+                <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
+              )}
             </DataGridRow>
           )}
         </DataGridBody>

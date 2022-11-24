@@ -149,20 +149,18 @@ export const Default = () => {
   );
 
   return (
-    <DataGrid items={items} columns={columns} focusMode="cell" sortable>
+    <DataGrid items={items} columns={columns} focusMode="cell" sortable selectionMode="multiselect">
       <DataGridHeader>
         <DataGridRow>
-          {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
-            <DataGridHeaderCell key={columnId}>{renderHeaderCell()}</DataGridHeaderCell>
+          {({ renderHeaderCell }: ColumnDefinition<Item>) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
           )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody>
         {({ item, rowId }: RowState<Item>) => (
           <DataGridRow key={rowId}>
-            {({ renderCell, columnId }: ColumnDefinition<Item>) => (
-              <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
-            )}
+            {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>
