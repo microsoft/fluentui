@@ -24,11 +24,10 @@ module.exports = () => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: {
-            // NOTE: swc-loader throws errors on v8 codebase
-            loader: 'ts-loader',
+            loader: 'esbuild-loader',
             options: {
-              transpileOnly: true,
-              experimentalWatchApi: true,
+              loader: 'tsx',
+              target: 'es2019',
             },
           },
         },
