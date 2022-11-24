@@ -145,7 +145,7 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
 
 function filterTreeItemAndSubtree(node: Node) {
   const element = node as HTMLElement & { role: string };
-  return element.role === 'treeitem' || element.role === 'group' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+  return element.role === 'treeitem' || element.role === 'group' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
 }
 
 function warnIfNoProperPropsSubtree(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>) {
