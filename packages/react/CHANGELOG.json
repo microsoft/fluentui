@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 24 Nov 2022 07:53:48 GMT",
+      "tag": "@fluentui/react_v8.103.2",
+      "version": "8.103.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "e445a84cec0924e1b2acd10a06132b42149596ca",
+            "comment": "fix: Revert fix for margin added by safari."
+          },
+          {
+            "author": "r.vanbaaren@link-it.nl",
+            "package": "@fluentui/react",
+            "commit": "cd3cdee917b09bc31005de0e789609e9b55968bd",
+            "comment": "fix: prevent infinite loop when Picker has itemLimit=0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Nov 2022 07:54:36 GMT",
       "tag": "@fluentui/react_v8.103.1",
       "version": "8.103.1",

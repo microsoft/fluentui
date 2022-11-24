@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Revert fix for margin added by safari.",
-  "packageName": "@fluentui/react",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
