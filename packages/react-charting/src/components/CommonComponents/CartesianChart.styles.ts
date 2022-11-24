@@ -64,10 +64,12 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           },
         ],
         path: {
-          display: 'none',
+          //  display: 'none',
+          opacity: 0.1,
         },
         line: {
           opacity: 0.2,
+          width: '1px',
           stroke: theme.semanticColors.bodyText,
           selectors: {
             [HighContrastSelectorBlack]: {

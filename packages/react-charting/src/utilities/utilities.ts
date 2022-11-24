@@ -20,6 +20,7 @@ import {
   ILineChartDataPoint,
   IDataPoint,
   IVerticalBarChartDataPoint,
+  IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -32,6 +33,7 @@ export enum ChartTypes {
   VerticalStackedBarChart,
   GroupedVerticalBarChart,
   HeatMapChart,
+  HorizontalBarChartWithAxis,
 }
 
 export enum XAxisTypes {
@@ -173,23 +175,21 @@ function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
   const formatMonth = locale.format('%B');
   const formatYear = locale.format('%Y');
 
-  return (
-    d3TimeSecond(date) < date
-      ? formatMillisecond
-      : d3TimeMinute(date) < date
-      ? formatSecond
-      : d3TimeHour(date) < date
-      ? formatMinute
-      : d3TimeDay(date) < date
-      ? formatHour
-      : d3TimeMonth(date) < date
-      ? d3TimeWeek(date) < date
-        ? formatDay
-        : formatWeek
-      : d3TimeYear(date) < date
-      ? formatMonth
-      : formatYear
-  )(date);
+  return (d3TimeSecond(date) < date
+    ? formatMillisecond
+    : d3TimeMinute(date) < date
+    ? formatSecond
+    : d3TimeHour(date) < date
+    ? formatMinute
+    : d3TimeDay(date) < date
+    ? formatHour
+    : d3TimeMonth(date) < date
+    ? d3TimeWeek(date) < date
+      ? formatDay
+      : formatWeek
+    : d3TimeYear(date) < date
+    ? formatMonth
+    : formatYear)(date);
 }
 
 /**
@@ -303,7 +303,27 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
  * @param {IYAxisParams} yAxisParams
  * @param {boolean} isRtl
  */
-export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData) {
+export function createYAxis(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+  axisData: IAxisData,
+  chartType: ChartTypes,
+  barWidth: number,
+) {
+  switch (chartType) {
+    case ChartTypes.HorizontalBarChartWithAxis:
+      return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth);
+    default:
+      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData);
+  }
+}
+
+export function createYAxisForHorizontalBarChartWithAxis(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+  axisData: IAxisData,
+  barWidth: number,
+) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -326,7 +346,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean, axisData:
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, domainValues[domainValues.length - 1]])
+    .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis
@@ -334,6 +354,44 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean, axisData:
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  axisData.yAxisDomainValues = domainValues;
+  return yAxisScale;
+}
+
+export function createYAxisForOtherCharts(yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData) {
+  const {
+    yMinMaxValues = { startValue: 0, endValue: 0 },
+    yAxisElement = null,
+    yMaxValue = 0,
+    yMinValue = 0,
+    containerHeight,
+    containerWidth,
+    margins,
+    tickPadding = 12,
+    maxOfYVal = 0,
+    yAxisTickFormat,
+    yAxisTickCount = 4,
+    eventAnnotationProps,
+    eventLabelHeight,
+  } = yAxisParams;
+
+  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
+  const yAxisScale = d3ScaleLinear()
+    .domain([finalYmin, finalYmax])
+    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+  const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(domainValues)
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
@@ -802,6 +860,7 @@ export function getDomainNRangeValues(
         domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
         break;
       case ChartTypes.VerticalBarChart:
+      case ChartTypes.HorizontalBarChartWithAxis:
         domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
         break;
       default:
@@ -871,7 +930,9 @@ export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: n
  * @param {IVerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[]): {
+export function findVerticalNumericMinMaxOfY(
+  points: IVerticalBarChartDataPoint[],
+): {
   startValue: number;
   endValue: number;
 } {
@@ -903,6 +964,7 @@ export function getMinMaxOfYAxis(points: any, chartType: ChartTypes): { startVal
       minMaxValues = findVSBCNumericMinMaxOfY(points);
       break;
     case ChartTypes.VerticalBarChart:
+    case ChartTypes.HorizontalBarChartWithAxis:
       minMaxValues = findVerticalNumericMinMaxOfY(points);
       break;
     default:

@@ -250,7 +250,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
-      yScale = createYAxis(YAxisParams, this._isRtl, axisData);
+      yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
     }
     this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis

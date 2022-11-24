@@ -182,6 +182,57 @@ export interface IVerticalBarChartDataPoint {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
+export interface IHorizontalBarChartWithAxisDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   */
+  x: number | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
+
+  /**
+   * data to render the line along with bars
+   */
+  lineData?: ILineDataInVerticalBarChart;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+}
+
 export interface ILineDataInVerticalBarChart {
   y: IVerticalBarChartDataPoint['y'];
   yAxisCalloutData?: string | undefined;
