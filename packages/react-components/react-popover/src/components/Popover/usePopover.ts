@@ -169,15 +169,8 @@ function useOpenState(
         setContextTarget(undefined);
       }
 
-      setOpenState(prevOpen => {
-        // More than one event (mouse, focus, keyboard) can request the Popover to close
-        // We assume the first event is the correct one
-        if (prevOpen !== shouldOpen) {
-          onOpenChange?.(e, { open: shouldOpen });
-        }
-
-        return shouldOpen;
-      });
+      setOpenState(shouldOpen);
+      onOpenChange?.(e, { open: shouldOpen });
     },
     [setOpenState, onOpenChange, setContextTarget],
   );
