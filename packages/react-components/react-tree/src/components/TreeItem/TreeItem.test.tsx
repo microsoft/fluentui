@@ -2,13 +2,9 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TreeItem } from './TreeItem';
 import { isConformant } from '../../testing/isConformant';
-import { TreeItemProps } from './index';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { TreeItemProps } from './TreeItem.types';
 
 describe('TreeItem', () => {
-  beforeEach(() => {
-    resetIdsForTests();
-  });
   isConformant<TreeItemProps>({
     Component: TreeItem,
     displayName: 'TreeItem',

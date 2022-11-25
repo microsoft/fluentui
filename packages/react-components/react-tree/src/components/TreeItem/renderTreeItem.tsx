@@ -8,5 +8,12 @@ import type { TreeItemState, TreeItemSlots } from './TreeItem.types';
 export const renderTreeItem_unstable = (state: TreeItemState) => {
   const { slots, slotProps } = getSlots<TreeItemSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+      {slots.beforeIcon && <slots.beforeIcon {...slotProps.beforeIcon} />}
+      {slotProps.root.children}
+      {slots.afterIcon && <slots.afterIcon {...slotProps.afterIcon} />}
+    </slots.root>
+  );
 };

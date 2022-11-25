@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { TreeItemElement } from '../TreeItem/TreeItem.types';
+import type { BaseTreeItemElement } from '../BaseTreeItem/BaseTreeItem.types';
 import { TreeContextValue } from '../../contexts/treeContext';
 
 export type TreeSlots = {
@@ -9,11 +9,11 @@ export type TreeSlots = {
 
 export type TreeOpenChangeData = { open: boolean; id: string } & (
   | {
-      event: React.MouseEvent<TreeItemElement>;
+      event: React.MouseEvent<BaseTreeItemElement>;
       type: 'click';
     }
   | {
-      event: React.KeyboardEvent<TreeItemElement>;
+      event: React.KeyboardEvent<BaseTreeItemElement>;
       type: 'arrowRight' | 'arrowLeft';
     }
 );
