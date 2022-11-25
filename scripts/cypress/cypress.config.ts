@@ -39,7 +39,6 @@ const cypressWebpackConfig = (): Configuration => {
     },
   };
 
-  // const isV8 = path.basename(process.cwd()) === 'react-examples';
 
   if (isV8()) {
     // For v8, reuse the storybook webpack config helper to add required options for building v8,
