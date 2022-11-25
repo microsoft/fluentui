@@ -1,5 +1,8 @@
 // @ts-check
 
+const { resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
+const getResolveAlias = require('@fluentui/scripts/webpack/getResolveAlias');
+
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
@@ -9,12 +12,18 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
-      diagnostics: false,
+      diagnostics: { warnOnly: true, exclude: ['packages/**'] },
     },
   },
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
+  moduleNameMapper: {
+    '\\.(scss)$': '@fluentui/scripts/jest/jest-style-mock.js',
+    ...getResolveAlias(),
+  },
+  snapshotSerializers: [resolveMergeStylesSerializer()],
 };

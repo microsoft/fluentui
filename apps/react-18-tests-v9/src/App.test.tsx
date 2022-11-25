@@ -2,9 +2,9 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
-import { FluentProvider } from '@fluentui/react-provider';
+import { App } from './App';
 
-describe('FluentProvider', () => {
+describe('App with React 18', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
 
@@ -16,14 +16,14 @@ describe('FluentProvider', () => {
     resetIdsForTests();
   });
 
-  describe('FluentProvider in React 18', () => {
-    it('applies matching className in strict mode', () => {
+  describe('FluentProvider', () => {
+    it('should apply matching className in strict mode', () => {
       const { getByText } = render(
         <React.StrictMode>
-          <FluentProvider>Test</FluentProvider>
+          <App />
         </React.StrictMode>,
       );
-      const element = getByText('Test');
+      const element = getByText('Click Me');
       const elementProviderClassName = element.className.split(' ')[1];
       const matchingStyleTag = document.getElementById(elementProviderClassName);
 

@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightTheme, FluentProvider, Button } from '@fluentui/react-components';
 
 // This app is here as a simple sandbox to render v9 controls inside of an React 18 environement.
 
