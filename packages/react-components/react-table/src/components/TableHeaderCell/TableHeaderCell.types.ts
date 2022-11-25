@@ -17,6 +17,9 @@ export type TableHeaderCellSlots = {
  * TableHeaderCell Props
  */
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+  /**
+   * @default undefined
+   */
   sortDirection?: SortDirection;
 };
 

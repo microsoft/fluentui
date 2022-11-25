@@ -36,6 +36,10 @@ export type TableCellLayoutSlots = {
  * TableCellLayout Props
  */
 export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
+  /**
+   * Renders design variants of the table cell
+   * @default undefined
+   */
   appearance?: 'primary';
 };
 
