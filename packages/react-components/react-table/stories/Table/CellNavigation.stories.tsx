@@ -115,7 +115,6 @@ CellNavigation.parameters = {
       story: [
         'The `Table` primitive components do not support keyboard navigation. This should be added by users.',
         'Cell navigation can be achieved simply using the `useArrowNavigationGroup` utility provided by the Library.',
-        'user state.',
       ].join('\n'),
     },
   },

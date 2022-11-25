@@ -117,7 +117,7 @@ CellActions.parameters = {
   docs: {
     description: {
       story: [
-        '`TableCellActions` is a container that is visible when the `TableRow`is hovered or focus lies within the',
+        '`TableCellActions` is a container that is visible when the `TableRow`is hovered',
         'or when the current focused element is within the row. It is commonly used to contain interactive actions',
         'like buttons, but can be used for any generic content. Please ensure that the contents of cell actions',
         'are accessible.',

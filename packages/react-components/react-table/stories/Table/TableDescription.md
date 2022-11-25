@@ -12,7 +12,7 @@
 > - Please contact us if you intend to use this in your product
 
 > 💡 This component is considered **low-level** and should be used when there is a need for more **customization** and
-> support for **non-standard features**. Please check out the [DataGrid component](?path=/docs/preview-components-datagrid--default)
+> support for **non-standard features**. Please check out the **DataGrid component**
 > if you don't need lots of customization and rely on common features. There is less work involved and you will benefit
 > from first class Microsoft design and accessibility support.
 
