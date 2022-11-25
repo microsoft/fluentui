@@ -6,6 +6,7 @@ import { ToolbarRadioButton } from '@fluentui/react-toolbar';
 
 import {
   Button,
+  Text,
   Menu,
   MenuTrigger,
   MenuList,
@@ -14,6 +15,9 @@ import {
   MenuItem,
   MenuDivider,
   Tooltip,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
 } from '@fluentui/react-components';
 
 import {
@@ -266,9 +270,49 @@ const OverflowToolbar = (props: Partial<ToolbarProps>) => {
   );
 };
 
-export const TextEditorToolbars: React.FunctionComponent = () => {
+export const TextEditorToolbars: React.FC = () => {
+  const [tablePopoverOpened, setTablePopoverOpened] = React.useState(false);
+  const [graphicsPopoverOpened, setGraphicsPopoverOpened] = React.useState(false);
+
+  const closeTableDialog = () => {
+    setTablePopoverOpened(false);
+  };
+  const closeGraphicsDialog = () => {
+    setGraphicsPopoverOpened(false);
+  };
+
   return (
     <Scenario pageTitle="Text editor Toolbars">
+      <Toolbar vertical aria-label="File">
+        <Menu>
+          <MenuTrigger>
+            <ToolbarButton aria-haspopup="menu">New</ToolbarButton>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Empty document</MenuItem>
+              <MenuItem>From template</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+        <Menu>
+          <MenuTrigger>
+            <ToolbarButton aria-haspopup="menu">Open</ToolbarButton>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>From this PC</MenuItem>
+              <MenuItem>From cloud</MenuItem>
+              <MenuItem>Recent files</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+        <ToolbarButton>Save</ToolbarButton>
+        <ToolbarButton aria-haspopup="dialog">Save as...</ToolbarButton>
+        <ToolbarButton aria-haspopup="dialog">Print...</ToolbarButton>
+        <ToolbarButton>Close</ToolbarButton>
+      </Toolbar>
+
       <Toolbar aria-label="Character formatting">
         <Tooltip content="Makes selected text bold" relationship="description" withArrow>
           <ToolbarToggleButton name="bold" value="bold" icon={<TextBold24Regular />} aria-label="Bold" />
@@ -301,10 +345,52 @@ export const TextEditorToolbars: React.FunctionComponent = () => {
       <OverflowToolbar />
 
       <Toolbar aria-label="Insert">
-        <ToolbarButton aria-haspopup="dialog">Image</ToolbarButton>
-        <ToolbarButton aria-haspopup="dialog">Table</ToolbarButton>
-        <ToolbarButton aria-haspopup="dialog">Formula</ToolbarButton>
-        <ToolbarButton aria-haspopup="dialog">Symbol</ToolbarButton>
+        <Popover
+          open={tablePopoverOpened}
+          onOpenChange={(event, data) => {
+            setTablePopoverOpened(data.open);
+          }}
+          trapFocus
+          withArrow
+        >
+          <PopoverTrigger>
+            <ToolbarButton aria-haspopup="dialog">Table</ToolbarButton>
+          </PopoverTrigger>
+          <PopoverSurface aria-labelledby="tableDialogTitle">
+            <Text as="h2" id="tableDialogTitle">
+              Insert table
+            </Text>
+            <Button onClick={closeTableDialog}>Table 2x2</Button>
+            <Button onClick={closeTableDialog}>Table 3x2</Button>
+            <Button onClick={closeTableDialog}>Table 2x3</Button>
+            <Button onClick={closeTableDialog}>Table 3x3</Button>
+            <Button onClick={closeTableDialog}>Cancel</Button>
+          </PopoverSurface>
+        </Popover>
+
+        <Popover
+          open={graphicsPopoverOpened}
+          onOpenChange={(event, data) => {
+            setGraphicsPopoverOpened(data.open);
+          }}
+          trapFocus
+          withArrow
+        >
+          <PopoverTrigger>
+            <ToolbarButton aria-haspopup="dialog">Graphics</ToolbarButton>
+          </PopoverTrigger>
+          <PopoverSurface aria-labelledby="graphicsDialogTitle">
+            <Text as="h2" id="graphicsDialogTitle">
+              Insert graphics
+            </Text>
+            <Button onClick={closeGraphicsDialog}>Image</Button>
+            <Button onClick={closeGraphicsDialog}>Shape</Button>
+            <Button onClick={closeGraphicsDialog}>Cancel</Button>
+          </PopoverSurface>
+        </Popover>
+
+        <ToolbarButton>Formula</ToolbarButton>
+        <ToolbarButton>Symbol</ToolbarButton>
 
         <ToolbarDivider />
 

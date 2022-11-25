@@ -4,28 +4,6 @@ import { Button, Input, Label, Popover, PopoverSurface, PopoverTrigger } from '@
 
 import { Scenario } from './utils';
 
-interface AddPeopleContentProps {
-  setPopoverOpened: (state: boolean) => void;
-}
-
-const AddPeopleContent: React.FunctionComponent<AddPeopleContentProps> = (props: AddPeopleContentProps) => {
-  const { setPopoverOpened } = props;
-
-  return (
-    <>
-      <Label htmlFor="addPeopleInput">Enter name, email or tag</Label>
-      <Input type="text" name="addPeopleInput" id="addPeopleInput" />
-      <Button
-        onClick={() => {
-          setPopoverOpened(false);
-        }}
-      >
-        Cancel
-      </Button>
-    </>
-  );
-};
-
 export const AddPeoplePopover: React.FunctionComponent = () => {
   const [popoverOpened, setPopoverOpened] = React.useState(false);
 
@@ -39,11 +17,19 @@ export const AddPeoplePopover: React.FunctionComponent = () => {
         trapFocus
       >
         <PopoverTrigger>
-          <Button>Add people</Button>
+          <Button aria-haspopup="dialog">Add people</Button>
         </PopoverTrigger>
 
         <PopoverSurface aria-label="Add someone to the chat">
-          <AddPeopleContent setPopoverOpened={setPopoverOpened} />
+          <Label htmlFor="addPeopleInput">Enter name, email or tag</Label>
+          <Input type="text" name="addPeopleInput" id="addPeopleInput" />
+          <Button
+            onClick={() => {
+              setPopoverOpened(false);
+            }}
+          >
+            Cancel
+          </Button>
         </PopoverSurface>
       </Popover>
     </Scenario>
