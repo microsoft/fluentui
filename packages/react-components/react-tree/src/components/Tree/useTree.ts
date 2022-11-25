@@ -10,7 +10,6 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useTreeWalker } from '../../utils/useTreeWalker';
-import { TreeItemElement } from '../TreeItem/TreeItem.types';
 
 /**
  * Create the state required to render Tree.
@@ -119,7 +118,7 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
         const element = targetDocument.getElementById(groupId);
         if (treeWalker && element) {
           treeWalker.currentNode = element;
-          const firstTreeItem = treeWalker.firstChild() as TreeItemElement | null;
+          const firstTreeItem = treeWalker.firstChild() as HTMLElement | null;
           return firstTreeItem?.focus();
         }
       }
@@ -133,7 +132,7 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
       const group = treeWalker.parentNode() as HTMLElement | null;
       if (group) {
         while (treeWalker.previousNode()) {
-          const treeItem = treeWalker.currentNode as TreeItemElement;
+          const treeItem = treeWalker.currentNode as HTMLElement;
           if (treeItem.getAttribute('aria-owns') === group.id) {
             return treeItem.focus();
           }

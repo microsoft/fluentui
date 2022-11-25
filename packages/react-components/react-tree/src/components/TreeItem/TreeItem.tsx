@@ -6,7 +6,7 @@ import type { TreeItemProps } from './TreeItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TreeItem component - Represents a single node on the Tree
+ * TreeItem component - TODO: add more docs
  */
 export const TreeItem: ForwardRefComponent<TreeItemProps> = React.forwardRef((props, ref) => {
   const state = useTreeItem_unstable(props, ref);

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseTreeItem renders a default state 1`] = `
+<div>
+  <div
+    aria-level="0"
+    class="fui-BaseTreeItem"
+    role="treeitem"
+    tabindex="0"
+  >
+    Default BaseTreeItem
+  </div>
+</div>
+`;
