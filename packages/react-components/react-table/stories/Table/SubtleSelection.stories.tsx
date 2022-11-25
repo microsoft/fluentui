@@ -131,7 +131,7 @@ export const SubtleSelection = () => {
       ...row,
       onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
+        if (e.key === ' ') {
           toggleRow(e, row.rowId);
         }
       },
@@ -165,7 +165,7 @@ export const SubtleSelection = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} subtle checked={selected} />
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} subtle checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

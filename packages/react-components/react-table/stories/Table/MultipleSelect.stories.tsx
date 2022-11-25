@@ -131,7 +131,8 @@ export const MultipleSelect = () => {
       ...row,
       onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
+        if (e.key === ' ') {
+          e.preventDefault();
           toggleRow(e, row.rowId);
         }
       },
