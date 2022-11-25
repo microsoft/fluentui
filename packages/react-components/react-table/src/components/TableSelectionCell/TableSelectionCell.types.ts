@@ -20,17 +20,25 @@ export type TableSelectionCellSlots = {
  */
 export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
   /**
-   * A table can have two kinds of selection modes
+   * A table can have two kinds of selection modes.
+   * @default checkbox
    */
   type?: 'checkbox' | 'radio';
-  checked?: CheckboxProps['checked'];
+
   /**
-   * Only visible when checked or the parent row is hovered
+   * @default false
+   */
+  checked?: CheckboxProps['checked'];
+
+  /**
+   * Only visible when checked or the parent row is hovered/focused
+   * @default false
    */
   subtle?: boolean;
 
   /**
    * Completely hides the selection cell visually but takes up the same space
+   * @default false
    */
   hidden?: boolean;
 };
