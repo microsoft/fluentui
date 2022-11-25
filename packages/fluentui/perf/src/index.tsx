@@ -1,6 +1,7 @@
 import '@babel/polyfill';
 
 import { Provider, Telemetry, teamsTheme } from '@fluentui/react-northstar';
+import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 import * as React from 'react';
@@ -9,7 +10,11 @@ import * as ReactDOM from 'react-dom';
 import { ProfilerMeasure, ProfilerMeasureCycle } from '../types';
 
 const mountNode = document.querySelector('#root');
-const performanceExamplesContext = require.context('@fluentui/docs/src/examples/', true, /.perf.tsx$/);
+const performanceExamplesContext = require.context(
+  '@fluentui/docs/src/examples/components/Avatar/Performance',
+  true,
+  /.perf.tsx$/,
+);
 
 // Heads up!
 // We want to randomize examples to avoid any notable issues with always first example
@@ -33,32 +38,34 @@ const renderCycle = async (
 
   await asyncRender(
     <Provider theme={teamsTheme} telemetryRef={telemetryRef}>
-      <React.Profiler
-        id={exampleName}
-        onRender={(id: string, phase: string, actualTime: number, startTime: number, commitTime: number) => {
-          const renderComponentTelemetry = _.reduce(
-            _.values(telemetryRef.current.performance),
-            (acc, next) => {
-              return {
-                componentCount: acc.componentCount + next.instances,
-                renderComponentTime: acc.renderComponentTime + next.msTotal,
-              };
-            },
-            { componentCount: 0, renderComponentTime: 0 },
-          );
+      <FluentProvider theme={teamsLightTheme}>
+        <React.Profiler
+          id={exampleName}
+          onRender={(id: string, phase: string, actualTime: number, startTime: number, commitTime: number) => {
+            const renderComponentTelemetry = _.reduce(
+              _.values(telemetryRef.current.performance),
+              (acc, next) => {
+                return {
+                  componentCount: acc.componentCount + next.instances,
+                  renderComponentTime: acc.renderComponentTime + next.msTotal,
+                };
+              },
+              { componentCount: 0, renderComponentTime: 0 },
+            );
 
-          profilerMeasure = {
-            actualTime,
-            exampleIndex,
-            phase,
-            commitTime,
-            startTime,
-            ...renderComponentTelemetry,
-          };
-        }}
-      >
-        <Component />
-      </React.Profiler>
+            profilerMeasure = {
+              actualTime,
+              exampleIndex,
+              phase,
+              commitTime,
+              startTime,
+              ...renderComponentTelemetry,
+            };
+          }}
+        >
+          <Component />
+        </React.Profiler>
+      </FluentProvider>
     </Provider>,
     mountNode,
   );
