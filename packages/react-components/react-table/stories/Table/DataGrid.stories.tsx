@@ -20,9 +20,10 @@ import {
   TableCellLayout,
   useTable,
   ColumnDefinition,
-  RowId,
   useSelection,
+  useSort,
   createColumn,
+  ColumnId,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -91,32 +92,41 @@ const items: Item[] = [
   },
 ];
 
-export const MultipleSelectControlled = () => {
+export const DataGrid = () => {
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
         columnId: 'file',
+        compare: (a, b) => {
+          return a.file.label.localeCompare(b.file.label);
+        },
       }),
       createColumn<Item>({
         columnId: 'author',
+        compare: (a, b) => {
+          return a.author.label.localeCompare(b.author.label);
+        },
       }),
       createColumn<Item>({
         columnId: 'lastUpdated',
+        compare: (a, b) => {
+          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+        },
       }),
       createColumn<Item>({
         columnId: 'lastUpdate',
+        compare: (a, b) => {
+          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+        },
       }),
     ],
     [],
   );
 
-  const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<RowId>([0, 1]),
-  );
-
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
+    sort: { getSortDirection, toggleColumnSort, sort },
   } = useTable(
     {
       columns,
@@ -125,32 +135,41 @@ export const MultipleSelectControlled = () => {
     [
       useSelection({
         selectionMode: 'multiselect',
-        selectedItems: selectedRows,
-        onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
+        defaultSelectedItems: new Set([0, 1]),
       }),
+      useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
     ],
   );
 
-  const rows = getRows(row => {
-    const selected = isRowSelected(row.rowId);
-    return {
-      ...row,
-      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ') {
-          e.preventDefault();
-          toggleRow(e, row.rowId);
-        }
-      },
-      selected,
-      appearance: selected ? ('brand' as const) : ('none' as const),
-    };
+  const rows = sort(
+    getRows(row => {
+      const selected = isRowSelected(row.rowId);
+      return {
+        ...row,
+        onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
+        onKeyDown: (e: React.KeyboardEvent) => {
+          if (e.key === ' ') {
+            e.preventDefault();
+            toggleRow(e, row.rowId);
+          }
+        },
+        selected,
+        appearance: selected ? ('brand' as const) : ('none' as const),
+      };
+    }),
+  );
+
+  const headerSortProps = (columnId: ColumnId) => ({
+    onClick: (e: React.MouseEvent) => {
+      toggleColumnSort(e, columnId);
+    },
+    sortDirection: getSortDirection(columnId),
   });
 
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} sortable>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -159,10 +178,10 @@ export const MultipleSelectControlled = () => {
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
           />
-          <TableHeaderCell>File</TableHeaderCell>
-          <TableHeaderCell>Author</TableHeaderCell>
-          <TableHeaderCell>Last updated</TableHeaderCell>
-          <TableHeaderCell>Last update</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
+          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -175,16 +194,16 @@ export const MultipleSelectControlled = () => {
             appearance={appearance}
           >
             <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
-            <TableCell>
+            <TableCell tabIndex={0}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell>
+            <TableCell tabIndex={0}>
               <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
+            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
+            <TableCell tabIndex={0}>
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
@@ -194,12 +213,13 @@ export const MultipleSelectControlled = () => {
   );
 };
 
-MultipleSelectControlled.parameters = {
+DataGrid.parameters = {
   docs: {
     description: {
       story: [
-        'By default our hook is uncontrolled. However, it is possible to control selection features with external',
-        'user state.',
+        'The `DataGrid` component is simply a composition of hook and primitive `Table` components',
+        'along with some convenience features such as accessible markup and event handlers.',
+        'Any feature of the `DataGrid` is achievable with the primitive components and hook',
       ].join('\n'),
     },
   },
