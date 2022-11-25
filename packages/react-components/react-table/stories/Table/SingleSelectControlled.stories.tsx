@@ -186,3 +186,14 @@ export const SingleSelectControlled = () => {
     </Table>
   );
 };
+
+SingleSelectControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control selection features with external',
+        'user state.',
+      ].join('\n'),
+    },
+  },
+};

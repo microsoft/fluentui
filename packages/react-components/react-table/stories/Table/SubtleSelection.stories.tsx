@@ -184,3 +184,17 @@ export const SubtleSelection = () => {
     </Table>
   );
 };
+
+SubtleSelection.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By setting the `subtle` prop on the `TableSelectionCell` component, the selection indicator will only',
+        'appear when:',
+        '- the `TableRow` component is hovered.',
+        '- The current focused element is within the `TableRow`',
+        '- The `TableSelectionCell` is checked',
+      ].join('\n'),
+    },
+  },
+};

@@ -184,3 +184,15 @@ export const MultipleSelect = () => {
     </Table>
   );
 };
+
+MultipleSelect.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Selection can be achieved easily by combining the `TableSelectionCell` component along with',
+        'other primitive components. The hook can handle state management for selection, although its use is not',
+        'necessary if users already have their own state management.',
+      ].join('\n'),
+    },
+  },
+};

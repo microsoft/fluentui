@@ -183,3 +183,14 @@ export const SortControlled = () => {
     </Table>
   );
 };
+
+SortControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control sort features',
+        'with external user state.',
+      ].join('\n'),
+    },
+  },
+};
