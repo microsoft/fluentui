@@ -177,10 +177,6 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -320,10 +316,6 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -628,10 +620,6 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               font-size: 14px;
               font-weight: 400;
               height: 50%;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -771,10 +759,6 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               font-size: 14px;
               font-weight: 400;
               height: 50%;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;

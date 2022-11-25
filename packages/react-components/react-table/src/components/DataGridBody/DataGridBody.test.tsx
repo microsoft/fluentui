@@ -6,6 +6,8 @@ import { DataGridBodyProps } from './DataGridBody.types';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { TableContextProvider } from '../../contexts/tableContext';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';
+import { useRowIdContext } from '../../contexts/rowIdContext';
+import { TableState, RowState } from '../../hooks/types';
 
 describe('DataGridBody', () => {
   isConformant<DataGridBodyProps>({
@@ -44,5 +46,35 @@ describe('DataGridBody', () => {
     );
 
     expect(sort).toHaveBeenCalledTimes(0);
+  });
+
+  it('renders row id context around each cell', () => {
+    const testRows = [
+      { rowId: 1, item: {} },
+      { rowId: 2, item: {} },
+      { rowId: 3, item: {} },
+    ];
+
+    const getRows: TableState<unknown>['getRows'] = <TRowState extends RowState<unknown>>() =>
+      (testRows as unknown) as TRowState[];
+    const ctx = mockDataGridContext({ getRows });
+    const TestComponent = () => {
+      const rowId = useRowIdContext();
+      return <span role="status">{rowId}</span>;
+    };
+    const { getAllByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridBody>{() => <TestComponent />}</DataGridBody>
+      </DataGridContextProvider>,
+    );
+
+    const columnIds = getAllByRole('status').map(el => el.textContent);
+    expect(columnIds).toMatchInlineSnapshot(`
+      Array [
+        "1",
+        "2",
+        "3",
+      ]
+    `);
   });
 });

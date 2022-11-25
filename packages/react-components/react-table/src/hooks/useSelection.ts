@@ -15,6 +15,7 @@ export const defaultTableSelectionState: TableSelectionState = {
   someRowsSelected: false,
   toggleAllRows: noop,
   toggleRow: noop,
+  selectionMode: 'multiselect',
 };
 
 export function useSelection<TItem>(options: UseSelectionOptions) {
@@ -39,7 +40,7 @@ export function useSelectionState<TItem>(
   const selectionManager = React.useMemo(() => {
     return createSelectionManager(selectionMode, (e, newSelectedItems) => {
       setSelected(() => {
-        onSelectionChange?.(e as React.SyntheticEvent, newSelectedItems);
+        onSelectionChange?.(e as React.SyntheticEvent, { selectedItems: newSelectedItems });
         return newSelectedItems;
       });
     });
@@ -71,6 +72,7 @@ export function useSelectionState<TItem>(
   return {
     ...tableState,
     selection: {
+      selectionMode,
       someRowsSelected: selected.size > 0,
       allRowsSelected: selectionMode === 'single' ? selected.size > 0 : selected.size === items.length,
       selectedRows: selected,

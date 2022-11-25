@@ -7,9 +7,9 @@ export type TableSlots = {
 export type TableContextValue = {
   /**
    * Affects the sizes of all table subcomponents
-   * @default medium
+   * @default
    */
-  size: 'small' | 'smaller' | 'medium';
+  size: 'extra-small' | 'small' | 'medium';
 
   /**
    * Render all table elements as divs intead of semantic table elements

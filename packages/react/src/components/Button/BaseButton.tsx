@@ -714,9 +714,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     const splitButtonProps = {
       ...splitButtonMenuProps,
       styles: classNames,
-      checked: checked,
-      disabled: disabled,
-      allowDisabledFocus: allowDisabledFocus,
+      checked,
+      disabled,
+      allowDisabledFocus,
       onClick: this._onMenuClick,
       menuProps: undefined,
       iconProps: { ...menuIconProps, className: this._classNames.menuIcon },
