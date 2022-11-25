@@ -13,13 +13,13 @@ export const CalendarPage: React.FunctionComponent<IControlsPageProps> = props =
     <ControlsAreaPage
       {...props}
       title="Calendar"
-      {...CalendarPageProps[props.platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...CalendarPageProps[props.platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'android':
       return [
