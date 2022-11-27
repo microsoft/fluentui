@@ -32,11 +32,16 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
 
+  mediaExtraSmall: {
+    fontSize: '16px',
+  },
+
+  mediaSmallAndMedium: {
+    fontSize: '20px',
+  },
+
   mediaPrimary: {
-    '& svg': {
-      width: '24px',
-      height: '24px',
-    },
+    fontSize: '24px',
   },
 
   mainPrimary: {
@@ -58,9 +63,16 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   const primary = state.appearance === 'primary';
 
   if (state.media) {
+    const mediaSizedStyles = {
+      small: styles.mediaSmallAndMedium,
+      medium: styles.mediaSmallAndMedium,
+      'extra-small': styles.mediaExtraSmall,
+    };
+
     state.media.className = mergeClasses(
       tableCellLayoutClassNames.media,
       styles.media,
+      mediaSizedStyles[state.size],
       primary && styles.mediaPrimary,
       state.media.className,
     );

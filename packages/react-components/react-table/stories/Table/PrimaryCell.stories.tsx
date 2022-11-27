@@ -115,3 +115,15 @@ export const PrimaryCell = () => {
     </Table>
   );
 };
+
+PrimaryCell.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A primary cell creates emphasis by increasing icon size and font weight for the main text.',
+        'Generally the primary cell should be used in the first column of a table, but there is no obligation',
+        'to do so and can be used in any column by the user.',
+      ].join('\n'),
+    },
+  },
+};
