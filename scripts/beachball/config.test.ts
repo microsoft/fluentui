@@ -1,6 +1,7 @@
 import { config as sharedConfig } from './shared.config';
 import v8Config from './release-v8.config';
 import vNextConfig from './release-vNext.config';
+import webComponentsConfig from './release-web-components.config';
 
 describe(`beachball configs`, () => {
   it(`should generate shared config`, () => {
@@ -70,5 +71,20 @@ describe(`beachball configs`, () => {
         include: includeScopes,
       },
     ]);
+  });
+
+  it(`should generate web-components release config`, () => {
+    expect(webComponentsConfig.scope).toEqual(
+      expect.arrayContaining([
+        'packages/web-components',
+        '!packages/fluentui/*',
+        '!apps/*',
+        '!apps/perf-test-react-components',
+        '!apps/vr-tests-react-components',
+        '!packages/react-components/react-components',
+      ]),
+    );
+    expect(webComponentsConfig.scope.some(scope => scope.startsWith('!packages/react-'))).toBe(true);
+    expect(webComponentsConfig.changelog).toEqual(sharedConfig.changelog);
   });
 });
