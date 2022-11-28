@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Radio } from '@fluentui/react-radio';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { RadioGroupField } from './RadioGroupField';
 
 describe('RadioGroupField', () => {
