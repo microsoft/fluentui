@@ -77,6 +77,7 @@ export type TreeItemSlots = BaseTreeItemSlots & {
     expandIcon?: Slot<'span'>;
     beforeIcon?: Slot<'span'>;
     afterIcon?: Slot<'span'>;
+    actionIcon?: Slot<'span'>;
 };
 
 // @public

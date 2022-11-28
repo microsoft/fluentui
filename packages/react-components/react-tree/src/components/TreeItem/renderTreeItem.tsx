@@ -14,6 +14,7 @@ export const renderTreeItem_unstable = (state: TreeItemState) => {
       {slots.beforeIcon && <slots.beforeIcon {...slotProps.beforeIcon} />}
       {slotProps.root.children}
       {slots.afterIcon && <slots.afterIcon {...slotProps.afterIcon} />}
+      {slots.actionIcon && <slots.actionIcon {...slotProps.actionIcon} />}
     </slots.root>
   );
 };

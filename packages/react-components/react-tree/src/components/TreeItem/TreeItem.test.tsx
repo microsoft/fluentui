@@ -8,6 +8,18 @@ describe('TreeItem', () => {
   isConformant<TreeItemProps>({
     Component: TreeItem,
     displayName: 'TreeItem',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            expandIcon: 'Test Expand Icon',
+            beforeIcon: 'Test Before Icon',
+            afterIcon: 'Test After Icon',
+            actionIcon: 'test Action Icon',
+          },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
