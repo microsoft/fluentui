@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "BREAKING: `useTable` renamed to `useTableFeatures`",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
