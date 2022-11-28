@@ -18,7 +18,7 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   useSelection,
   createColumn,
@@ -112,7 +112,7 @@ export const SubtleSelection = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,

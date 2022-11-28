@@ -539,9 +539,6 @@ export function useSelection<TItem>(options: UseSelectionOptions): (tableState: 
 // @public (undocumented)
 export function useSort<TItem>(options: UseSortOptions): (tableState: HeadlessTableState<TItem>) => HeadlessTableState<TItem>;
 
-// @public (undocumented)
-export function useTable<TItem>(options: UseTableOptions<TItem>, plugins?: TableStatePlugin[]): HeadlessTableState<TItem>;
-
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
 
@@ -571,6 +568,9 @@ export const useTableCellStyles_unstable: (state: TableCellState) => TableCellSt
 
 // @public (undocumented)
 export const useTableContext: () => TableContextValue;
+
+// @public (undocumented)
+export function useTableFeatures<TItem>(options: UseTableOptions<TItem>, plugins?: TableStatePlugin[]): HeadlessTableState<TItem>;
 
 // @public
 export const useTableHeader_unstable: (props: TableHeaderProps, ref: React_2.Ref<HTMLElement>) => TableHeaderState;

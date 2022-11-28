@@ -16,7 +16,7 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   ColumnId,
   useSort,
@@ -124,7 +124,7 @@ export const Sort = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
@@ -185,7 +185,7 @@ Sort.parameters = {
       story: [
         'Using the `sortable` prop will configure all header cells to be buttons and add extra styles.',
         'The `TableHeaderCell` component accepts a `sortDirection` prop that will indicate whether the',
-        'header is sorted. Handling the sort of data and column state is handled by our hook.',
+        'header is sorted. Handling the sort of data and column state is handled by `useTableFeatures`.',
       ].join('\n'),
     },
   },

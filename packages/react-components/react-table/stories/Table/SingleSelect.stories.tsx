@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableSelectionCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   useSelection,
   TableCellLayout,
@@ -112,7 +112,7 @@ export const SingleSelect = () => {
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,

@@ -262,7 +262,6 @@ import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelection } from '@fluentui/react-table';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSort } from '@fluentui/react-table';
-import { useTable } from '@fluentui/react-table';
 import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
@@ -273,6 +272,7 @@ import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
+import { useTableFeatures } from '@fluentui/react-table';
 import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
@@ -804,8 +804,6 @@ export { useSelectStyles_unstable }
 
 export { useSort }
 
-export { useTable }
-
 export { useTable_unstable }
 
 export { useTableBody_unstable }
@@ -825,6 +823,8 @@ export { useTableCellLayoutStyles_unstable }
 export { useTableCellStyles_unstable }
 
 export { useTableContext }
+
+export { useTableFeatures }
 
 export { useTableHeader_unstable }
 

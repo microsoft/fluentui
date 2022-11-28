@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableSelectionCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   RowId,
   useSelection,
@@ -116,7 +116,7 @@ export const SingleSelectControlled = () => {
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
@@ -192,7 +192,8 @@ SingleSelectControlled.parameters = {
   docs: {
     description: {
       story: [
-        'By default our hook is uncontrolled. However, it is possible to control selection features with external',
+        'By default the `useTableFeatures` hook is uncontrolled. ',
+        'However, it is possible to control selection features with external',
         'user state.',
       ].join('\n'),
     },

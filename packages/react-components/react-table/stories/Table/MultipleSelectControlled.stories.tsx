@@ -18,7 +18,7 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   RowId,
   useSelection,
@@ -117,7 +117,7 @@ export const MultipleSelectControlled = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,

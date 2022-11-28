@@ -208,7 +208,7 @@ export {
   useTableCellLayoutStyles_unstable,
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
-  useTable,
+  useTableFeatures,
   useSelection,
   useSort,
   createColumn,

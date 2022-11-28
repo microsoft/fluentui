@@ -16,7 +16,7 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   ColumnId,
   useSort,
@@ -132,7 +132,7 @@ export const SortControlled = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
