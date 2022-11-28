@@ -16,7 +16,7 @@ import { useBaseTreeItem_unstable } from '../BaseTreeItem/index';
  */
 export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeItemElement>): TreeItemState => {
   const treeItemState = useBaseTreeItem_unstable(props, ref);
-  const { expandIcon, beforeIcon, afterIcon } = props;
+  const { expandIcon, beforeIcon, afterIcon, actionIcon } = props;
   const { dir } = useFluent_unstable();
   const expandIconRotation = treeItemState.open ? 90 : dir !== 'rtl' ? 0 : 180;
   return {
@@ -26,6 +26,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
       expandIcon: 'span',
       beforeIcon: 'span',
       afterIcon: 'span',
+      actionIcon: 'span',
     },
     beforeIcon: resolveShorthand(beforeIcon, {
       defaultProps: { 'aria-hidden': true },
@@ -39,6 +40,9 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
         children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
         'aria-hidden': true,
       },
+    }),
+    actionIcon: resolveShorthand(actionIcon, {
+      defaultProps: { 'aria-hidden': true },
     }),
   };
 };
