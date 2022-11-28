@@ -25,7 +25,7 @@ As we start working on new components, there might be some components that are s
 - It should encourage components that provide high value beyond general purpose layout.
 - It should promote the use of our composition model and already created components. This will help us achieve a consistent look and feel across apps.
 - It should be generic enough to be used in multiple scenarios. This is to avoid creating a component that is only used in one place.
-- (if option 1 or 3 is chaosen) It should provide more than a blurb of code snippets that the users might just copy and paste.
+- (if option 1 or 3 is chosen) It should provide more than a blurb of code snippets that the users might just copy and paste.
 
 ## Chosen option (Option 1: Recipes)
 
