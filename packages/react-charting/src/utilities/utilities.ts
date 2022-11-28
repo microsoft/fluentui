@@ -312,7 +312,7 @@ export function createYAxis(
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
-      return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth);
+      return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
       return createYAxisForOtherCharts(yAxisParams, isRtl, axisData);
   }
@@ -344,19 +344,20 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
-    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+    .range([
+      containerHeight - margins.bottom! - barWidth / 2,
+      margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0) + barWidth / 2,
+    ]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis
     .tickPadding(tickPadding)
-    .tickValues(domainValues)
+    .ticks(yAxisTickCount)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
 
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
 }
 
@@ -397,13 +398,74 @@ export function createYAxisForOtherCharts(yAxisParams: IYAxisParams, isRtl: bool
   return yAxisScale;
 }
 
+export const createStringYAxis = (
+  yAxisParams: IYAxisParams,
+  dataPoints: string[],
+  isRtl: boolean,
+  chartType: ChartTypes,
+  barWidth: number | undefined,
+  culture?: string,
+) => {
+  switch (chartType) {
+    case ChartTypes.HorizontalBarChartWithAxis:
+      return createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, isRtl, barWidth!, culture);
+    default:
+      return createStringYAxisForOtherCharts(yAxisParams, dataPoints, isRtl);
+  }
+};
+
 /**
- * Creating String Y axis of the chart
+ * Creating String Y axis of the chart for Horizontal Bar Chart With Axis
  * @param yAxisParams
  * @param dataPoints
  * @param isRtl
  */
-export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
+export const createStringYAxisForHorizontalBarChartWithAxis = (
+  yAxisParams: IYAxisParams,
+  dataPoints: string[],
+  isRtl: boolean,
+  barWidth: number,
+  culture?: string,
+) => {
+  const {
+    containerHeight,
+    containerWidth,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding = 0,
+  } = yAxisParams;
+  const yAxisCount = 8;
+  const yAxistickSize = 8;
+
+  const yAxisScale = d3ScaleBand()
+    .domain(dataPoints)
+    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2])
+    .padding(yAxisPadding);
+  const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis
+    .tickSize(yAxistickSize)
+    .tickPadding(tickPadding)
+    .ticks(yAxisCount)
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!))
+    .tickFormat((y: string, index: number) => {
+      return convertToLocaleString(dataPoints[index], culture) as string;
+    });
+  if (yAxisTickFormat) {
+    yAxis.tickFormat(yAxisTickFormat);
+  }
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  return yAxisScale;
+};
+
+/**
+ * Creating String Y axis of the chart for other chart except Horizontal Bar Chart With Axis
+ * @param yAxisParams
+ * @param dataPoints
+ * @param isRtl
+ */
+export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
@@ -621,6 +683,59 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
 }
 
 /**
+ * This method used for wrapping of y axis labels (tick values).
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function createWrapOfYLabels(node: SVGElement | null, yAxis: any, noOfCharsToTruncate: number) {
+  if (node === null) {
+    return;
+  }
+  const axisNode = d3Select(node).call(yAxis);
+  const arr: number[] = [];
+  axisNode.selectAll('.tick text').each(function () {
+    const text = d3Select(this);
+    const totalWord = text.text();
+    const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
+    const totalWordLength = text.text().length;
+    const words = text.text().split(/\s+/).reverse();
+    arr.push(words.length);
+    let lineNumber: number = 0;
+    const lineHeight = 1.1; // ems
+    const y = text.attr('y');
+    const dy = parseFloat(text.attr('dy'));
+    const dx = parseFloat(text.attr('dx'));
+    let tspan = text
+      .text(null)
+      .append('tspan')
+      .attr('x', 0)
+      .attr('y', y)
+      .attr('id', 'BaseSpan')
+      .attr('dy', dy + 'em')
+      .attr('data-', totalWord);
+
+    if (totalWordLength > noOfCharsToTruncate) {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'showDots')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', dy)
+        .attr('dx', ++lineNumber * lineHeight + dx - 5 + 'em')
+        .text(truncatedWord);
+    } else {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'LessLength')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .attr('dx', ++lineNumber * lineHeight + dx - 5 + 'em')
+        .text(totalWord);
+    }
+  });
+}
+
+/**
  * This method displays a tooltip to the x axis lables(tick values)
  * when prop 'showXAxisLablesTooltip' enables to the respected chart.
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
@@ -752,6 +867,39 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
+ * Calculates Domain and range values for Numeric X axis.
+ * This method calculates Horizontal Chart with Axis
+ * @export
+ * @param {ILineChartPoints[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfNumericForHorizontalBarChartWithAxis(
+  points: IHorizontalBarChartWithAxisDataPoint[],
+  margins: IMargins,
+  containerWidth: number,
+  isRTL: boolean,
+): IDomainNRange {
+  const xMax = d3Max(
+    points,
+    (point: IVerticalBarChartDataPoint | IHorizontalBarChartWithAxisDataPoint) => point.x as number,
+  )!;
+
+  // const xMin = d3Min(
+  //   points,
+  //   (point: IVerticalBarChartDataPoint | IHorizontalBarChartWithAxisDataPoint) => point.x as number,
+  // )!;
+  const rMin = margins.left!;
+  const rMax = containerWidth - margins.right!;
+
+  return isRTL
+    ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
+    : { dStartValue: 0, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
+}
+
+/**
  * Calculates Range values of x Axis string axis
  * For String axis, we need to give domain values (Not start and end array values)
  * So sending 0 as domain values. Domain will be handled at creation of string axis
@@ -860,8 +1008,10 @@ export function getDomainNRangeValues(
         domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
         break;
       case ChartTypes.VerticalBarChart:
-      case ChartTypes.HorizontalBarChartWithAxis:
         domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
+        break;
+      case ChartTypes.HorizontalBarChartWithAxis:
+        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL);
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
@@ -941,6 +1091,24 @@ export function findVerticalNumericMinMaxOfY(
 
   return { startValue: yMin, endValue: yMax };
 }
+/**
+ * Fins the min and max values of the vertical bar chart y axis data point.
+ * @export
+ * @param {IVerticalBarChartDataPoint[]} points
+ * @returns {{ startValue: number; endValue: number }}
+ */
+export function findHBCWANumericMinMaxOfY(
+  points: IHorizontalBarChartWithAxisDataPoint[],
+  yAxisType: YAxisType | undefined,
+): { startValue: number; endValue: number } {
+  if (yAxisType !== undefined && yAxisType === YAxisType.NumericAxis) {
+    const yMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    const yMin = d3Min(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+
+    return { startValue: yMin, endValue: yMax };
+  }
+  return { startValue: 0, endValue: 0 };
+}
 
 /**
  * For creating Y axis, need to calculate y axis domain values from given points. This may vary based on chart type.
@@ -952,7 +1120,11 @@ export function findVerticalNumericMinMaxOfY(
  * @returns {{ startValue: number; endValue: number }}
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getMinMaxOfYAxis(points: any, chartType: ChartTypes): { startValue: number; endValue: number } {
+export function getMinMaxOfYAxis(
+  points: any,
+  chartType: ChartTypes,
+  yAxisType: YAxisType | undefined,
+): { startValue: number; endValue: number } {
   let minMaxValues: { startValue: number; endValue: number };
 
   switch (chartType) {
@@ -964,8 +1136,10 @@ export function getMinMaxOfYAxis(points: any, chartType: ChartTypes): { startVal
       minMaxValues = findVSBCNumericMinMaxOfY(points);
       break;
     case ChartTypes.VerticalBarChart:
-    case ChartTypes.HorizontalBarChartWithAxis:
       minMaxValues = findVerticalNumericMinMaxOfY(points);
+      break;
+    case ChartTypes.HorizontalBarChartWithAxis:
+      minMaxValues = findHBCWANumericMinMaxOfY(points, yAxisType);
       break;
     default:
       minMaxValues = { startValue: 0, endValue: 0 };

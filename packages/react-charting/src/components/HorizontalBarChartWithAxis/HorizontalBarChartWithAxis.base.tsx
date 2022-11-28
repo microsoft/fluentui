@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
-import { select as d3Select } from 'd3-selection';
+import { select as d3Select, event as d3Event } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -27,6 +27,7 @@ import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
+  YAxisType,
   XAxisTypes,
   NumericAxis,
   StringAxis,
@@ -67,10 +68,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _isRtl: boolean = getRTL();
   private _bars: JSX.Element[];
   private _xAxisLabels: string[];
-  private _yMax: number;
+  private _yAxisLabels: string[];
+  private _xMax: number;
   private _isHavingLine: boolean;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
+  private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
@@ -97,14 +100,19 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
+    this._yAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].y, false) as YAxisType)
+        : YAxisType.StringAxis;
   }
 
   public render(): JSX.Element {
     this._adjustProps();
     this._xAxisLabels = this._points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.x as string);
-    this._yMax = Math.max(
-      d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y)!,
-      this.props.yMaxValue || 0,
+    this._yAxisLabels = this._points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
+    this._xMax = Math.max(
+      d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
+      this.props.xMaxValue || 0,
     );
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
@@ -141,6 +149,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
         xAxisType={this._xAxisType}
+        yAxisType={this._yAxisType}
+        stringDatasetForYAxisDomain={this._yAxisLabels}
         calloutProps={calloutProps}
         tickParams={tickParams}
         {...(this._isHavingLine && { isCalloutForStack: true })}
@@ -326,11 +336,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     containerHeight: number,
     containerWidth: number,
     xElement?: SVGElement | null,
+    yElement?: SVGElement | null,
   ) => {
     return (this._bars =
-      this._xAxisType === XAxisTypes.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!));
+      this._yAxisType === YAxisType.NumericAxis
+        ? this._createNumericBars(containerHeight, containerWidth, xElement!, yElement!)
+        : this._createStringBars(containerHeight, containerWidth, xElement!, yElement!));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -344,7 +355,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     }
     const domainValues = [];
     for (let i = 0; i < this._colors.length; i++) {
-      domainValues.push(increment * i * this._yMax);
+      domainValues.push(increment * i * this._xMax);
     }
     const colorScale = d3ScaleLinear<string>().domain(domainValues).range(this._colors);
     return colorScale;
@@ -375,11 +386,11 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     // callout data for the bar
     YValueHover.push({
       legend: selectedPoint[0].legend,
-      y: selectedPoint[0].y,
+      y: selectedPoint[0].x,
       color: !useSingleColor
         ? selectedPoint[0].color
           ? selectedPoint[0].color
-          : this._createColors()(selectedPoint[0].y)
+          : this._createColors()(selectedPoint[0].x)
         : this._createColors()(1),
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
@@ -404,7 +415,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
-        dataForHoverCard: point.y,
+        dataForHoverCard: point.x,
         selectedLegendTitle: point.legend!,
         color: point.color || color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
@@ -449,7 +460,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             refSelected: obj.refElement,
             isCalloutVisible: true,
             selectedLegendTitle: point.legend!,
-            dataForHoverCard: point.y,
+            dataForHoverCard: point.x,
             color: point.color || color,
             xCalloutValue: point.xAxisCalloutData || point.x.toString(),
             yCalloutValue: point.yAxisCalloutData!,
@@ -472,32 +483,38 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   ): { xBarScale: any; yBarScale: any } => {
     if (isNumericScale) {
       const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
-      const xMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+      //const xMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+      //const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
+        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
         .nice()
-        .range([
-          this.margins.left! + this._barWidth / 2,
-          containerWidth - this.margins.right! - this._barWidth - this._barWidth / 2,
-        ]);
+        .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
-        .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
+        .domain([0, yMax])
+        .range([containerHeight - this.margins.bottom! - this._barWidth / 2, this.margins.top! + this._barWidth / 2]);
       return { xBarScale, yBarScale };
     } else {
-      const xBarScale = d3ScaleBand()
-        .domain(this._xAxisLabels)
-        .range([this.margins.left!, containerWidth - this.margins.right!])
-        .padding(this.props.xAxisPadding || 0.1);
+      const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+      const yBarScale = d3ScaleBand()
+        .domain(this._yAxisLabels)
+        .range([containerHeight - this.margins.bottom! - this._barWidth / 2, this.margins.top! + this._barWidth / 2])
+        .padding(0.1);
 
-      const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
-        .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
+      const xBarScale = d3ScaleLinear()
+        .domain([0, xMax])
+        .range([this.margins.left!, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
     }
   };
 
-  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _createNumericBars(
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+    yElement: SVGElement,
+  ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
     const colorScale = this._createColors();
@@ -521,23 +538,23 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           key={point.x}
           x={this.margins.left!}
           className={this._classNames.opacityChangeOnHover}
-          y={containerHeight - this.margins.bottom! - yBarScale(point.y) - this._barWidth / 2}
+          y={yBarScale(point.y)}
           //width={this._barWidth}
           data-is-focusable={!this.props.hideTooltip}
-          width={Math.max(xBarScale(point.x), 0) - this.margins.left! + this._barWidth / 2}
+          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
           height={this._barWidth}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
           onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
+          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.x))}
           aria-label="Vertical bar chart"
           role="text"
           aria-labelledby={`toolTip${this._calloutId}`}
           onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
+          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
           onBlur={this._onBarLeave}
-          fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+          fill={point.color && !useSingleColor ? point.color : colorScale(point.x)}
         />
       );
     });
@@ -551,21 +568,65 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     // Used to display tooltip at x axis labels.
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
+      const yAxisElement = d3Select(yElement).call(yBarScale);
       try {
         document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
       } catch (e) {}
-      const tooltipProps = {
+      const xtooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
         xAxis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+
+      const ytooltipProps = {
+        tooltipCls: this._classNames.tooltip!,
+        id: this._tooltipId,
+        yAxis: yAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(xtooltipProps);
+      yAxisElement && this._tooltipOfYAxislabels(ytooltipProps);
     }
     return bars;
   }
+  private _tooltipOfYAxislabels(ytooltipProps: any) {
+    const { tooltipCls, yAxis, id } = ytooltipProps;
+    if (yAxis === null) {
+      return null;
+    }
+    const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
+    const aa = yAxis!.selectAll('#BaseSpan')._groups[0];
+    const baseSpanLength = aa && Object.keys(aa)!.length;
+    const originalDataArray: string[] = [];
+    for (let i = 0; i < baseSpanLength; i++) {
+      const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
+      originalDataArray.push(originalData);
+    }
+    const tickObject = yAxis!.selectAll('.tick')._groups[0];
+    const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
+    for (let i = 0; i < tickObjectLength; i++) {
+      const d1 = tickObject[i];
+      d3Select(d1)
+        .on('mouseover', d => {
+          div.style('opacity', 0.9);
+          div
+            .html(originalDataArray[i])
+            .style('left', d3Event.pageX + 'px')
+            .style('top', d3Event.pageY - 28 + 'px');
+        })
+        .on('mouseout', d => {
+          div.style('opacity', 0);
+        });
+    }
+  }
 
-  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _createStringBars(
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+    yElement: SVGElement,
+  ): JSX.Element[] {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
@@ -576,10 +637,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return (
         <rect
           key={point.x}
-          x={xBarScale(point.x)}
-          y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
-          width={this._barWidth}
-          height={barHeight}
+          x={this.margins.left! - this._barWidth / 2}
+          y={yBarScale(point.y)}
+          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
+          height={this._barWidth}
           aria-label="Horizontal bar chart with Axis"
           role="text"
           aria-labelledby={`toolTip${this._calloutId}`}
@@ -587,13 +648,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             this._refCallback(e, point.legend!);
           }}
           onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
+          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.x))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
           data-is-focusable={!this.props.hideTooltip}
-          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
-          fill={point.color ? point.color : colorScale(point.y)}
-          transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}
+          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
+          fill={point.color ? point.color : colorScale(point.x)}
+          transform={`translate(${0.5 * (yBarScale.bandwidth() - this._barWidth)}, 0)`}
         />
       );
     });
@@ -608,17 +669,24 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     // Used to display tooltip at x axis labels.
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
+      const yAxisElement = d3Select(yElement).call(yBarScale);
       try {
         document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
       } catch (e) {}
-      const tooltipProps = {
+      const xtooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
         xAxis: xAxisElement,
-        showTooltip: this.props.showXAxisLablesTooltip,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+
+      const ytooltipProps = {
+        tooltipCls: this._classNames.tooltip!,
+        id: this._tooltipId,
+        yAxis: yAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(xtooltipProps);
+      yAxisElement && this._tooltipOfYAxislabels(ytooltipProps);
     }
     return bars;
   }
@@ -723,7 +791,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
-      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+      this._xMax = Math.max(domainValue[domainValue.length - 1], this.props.xMaxValue || 0);
     }
   };
 }
