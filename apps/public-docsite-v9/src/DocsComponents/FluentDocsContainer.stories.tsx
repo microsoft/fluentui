@@ -5,6 +5,7 @@ import { webLightTheme, FluentProvider } from '@fluentui/react-components';
 
 interface IFluentDocsContainerProps {
   context: FluentStoryContext & DocsContextProps;
+  children: React.ReactNode;
 }
 
 /**

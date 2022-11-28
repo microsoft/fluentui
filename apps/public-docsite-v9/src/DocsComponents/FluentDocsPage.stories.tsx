@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  DocsContextProps,
   DocsContext,
   ArgsTable,
   Title,
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
 });
 
 export const FluentDocsPage = () => {
-  const context = React.useContext(DocsContext);
+  const context = React.useContext(DocsContext as React.Context<DocsContextProps<any>>);
   // eslint-disable-next-line deprecation/deprecation
   const selectedTheme = themes.find(theme => theme.id === context.globals![THEME_ID]);
   const stories = context.componentStories();

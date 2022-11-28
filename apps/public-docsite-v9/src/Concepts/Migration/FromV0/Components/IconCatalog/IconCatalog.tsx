@@ -48,7 +48,7 @@ const mapping = _mapping.filter(Boolean) as Array<NonNullable<typeof _mapping[nu
 const IconCatalogInner: React.FC = () => {
   const styles = useStyles();
   const [searchTerm, setSearchTerm] = React.useState<string | undefined>(undefined);
-  const [searchV0, setSearchV0] = React.useState(true);
+  const [searchV0, setSearchV0] = React.useState<boolean>(true);
 
   const updateSearch = React.useCallback(
     (newSearchTerm: string) => {
@@ -75,10 +75,14 @@ const IconCatalogInner: React.FC = () => {
     [searchTerm, searchV0],
   );
 
-  const onInputChange: InputProps['onChange'] = React.useCallback((e, { value }) => updateSearchDebounced(value), [
-    updateSearchDebounced,
-  ]);
-  const onSwitchChange: SwitchProps['onChange'] = React.useCallback((e, { checked }) => setSearchV0(checked), []);
+  const onInputChange: InputProps['onChange'] = React.useCallback(
+    (_e: any, { value }: any) => updateSearchDebounced(value),
+    [updateSearchDebounced],
+  );
+  const onSwitchChange: SwitchProps['onChange'] = React.useCallback(
+    (_e: any, { checked }: any) => setSearchV0(checked),
+    [],
+  );
 
   return (
     <>

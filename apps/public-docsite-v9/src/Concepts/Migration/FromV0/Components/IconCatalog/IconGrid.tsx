@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { FixedSizeList as List } from 'react-window';
+import { FixedSizeList, FixedSizeListProps } from 'react-window';
+
 import type { ListChildComponentProps } from 'react-window';
 import { ComparisonTile as ComparisonTileBase } from './ComparisonTile';
 import { V0IconComponent, V9IconComponent } from './types';
 
 const ComparisonTile = React.memo(ComparisonTileBase);
+const List = FixedSizeList as React.ComponentType<FixedSizeListProps>;
 
 interface IIconGridProps {
   entries: {
