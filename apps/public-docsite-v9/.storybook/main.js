@@ -1,5 +1,6 @@
 const rootMain = require('../../../.storybook/main');
 const { getPackageStoriesGlob } = require('@fluentui/scripts/storybook');
+const path = require('path');
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
@@ -14,6 +15,14 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+    localConfig.resolve = {
+      ...localConfig.resolve,
+      alias: {
+        react: path.resolve(__dirname, '../node_modules/react'),
+        'react-dom': path.resolve(__dirname, '../node_modules/react-dom'),
+      },
+    };
 
     // add your own webpack tweaks if needed
 
