@@ -41,11 +41,11 @@ Note that labels and helper text are included here for completeness but will be 
 
 #### Base `SpinButton` Anatomy
 
-![Base SpinButton Anatomy (annotated)](./spec-assets/spec-spinbutton-anatomy.png)
+![Base SpinButton Anatomy (annotated)](./assets/spec-spinbutton-anatomy.png)
 
 #### Alternate/Optional `SpinButton` Anatomy
 
-![Alternate/Optional SpinButton Anatomy (annotated)](./spec-assets/spec-spinbutton-anatomy-alt-optional.png)
+![Alternate/Optional SpinButton Anatomy (annotated)](./assets/spec-spinbutton-anatomy-alt-optional.png)
 
 ### Common Features
 
@@ -74,7 +74,7 @@ Unlike directly typing input into the control, step buttons do not allow input o
 
 Most implementations flip the layout of the control for RTL. Using the base example, the step buttons appear on the left with the value on the right as opposed to the LTR version where the value is on the left and the steppers on the right.
 
-![Example of an RTL SpinButton](./spec-assets/spec-spinbutton-rtl.png)
+![Example of an RTL SpinButton](./assets/spec-spinbutton-rtl.png)
 
 ### a11y
 
