@@ -1,6 +1,6 @@
 import type { UseTableOptions, TableState, RowState, RowEnhancer, TableStatePlugin, TableSortState } from './types';
-import { defaultTableSelectionState } from './useSelection';
-import { defaultTableSortState } from './useSort';
+import { defaultTableSelectionState } from './useTableSelection';
+import { defaultTableSortState } from './useTableSort';
 
 const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
 

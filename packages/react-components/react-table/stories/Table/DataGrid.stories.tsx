@@ -20,8 +20,8 @@ import {
   TableCellLayout,
   useTableFeatures,
   ColumnDefinition,
-  useSelection,
-  useSort,
+  useTableSelection,
+  useTableSort,
   createColumn,
   ColumnId,
 } from '@fluentui/react-components/unstable';
@@ -133,11 +133,11 @@ export const DataGrid = () => {
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),
-      useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
+      useTableSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
     ],
   );
 

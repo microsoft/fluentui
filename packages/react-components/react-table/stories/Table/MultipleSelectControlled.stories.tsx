@@ -21,7 +21,7 @@ import {
   useTableFeatures,
   ColumnDefinition,
   RowId,
-  useSelection,
+  useTableSelection,
   createColumn,
 } from '@fluentui/react-components/unstable';
 
@@ -123,7 +123,7 @@ export const MultipleSelectControlled = () => {
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         selectedItems: selectedRows,
         onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),

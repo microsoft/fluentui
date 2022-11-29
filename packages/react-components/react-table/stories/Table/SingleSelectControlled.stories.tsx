@@ -20,7 +20,7 @@ import {
   useTableFeatures,
   ColumnDefinition,
   RowId,
-  useSelection,
+  useTableSelection,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -122,7 +122,7 @@ export const SingleSelectControlled = () => {
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'single',
         selectedItems: selectedRows,
         onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),

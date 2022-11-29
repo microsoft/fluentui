@@ -19,7 +19,7 @@ import {
   TableSelectionCell,
   useTableFeatures,
   ColumnDefinition,
-  useSelection,
+  useTableSelection,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -118,7 +118,7 @@ export const SingleSelect = () => {
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'single',
         defaultSelectedItems: new Set([1]),
       }),

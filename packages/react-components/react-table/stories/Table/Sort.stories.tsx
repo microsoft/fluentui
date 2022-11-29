@@ -19,7 +19,7 @@ import {
   useTableFeatures,
   ColumnDefinition,
   ColumnId,
-  useSort,
+  useTableSort,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -129,7 +129,7 @@ export const Sort = () => {
       columns,
       items,
     },
-    [useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
+    [useTableSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
   );
 
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });

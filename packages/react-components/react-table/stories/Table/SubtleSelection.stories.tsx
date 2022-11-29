@@ -20,7 +20,7 @@ import {
   TableCellLayout,
   useTableFeatures,
   ColumnDefinition,
-  useSelection,
+  useTableSelection,
   createColumn,
 } from '@fluentui/react-components/unstable';
 
@@ -118,7 +118,7 @@ export const SubtleSelection = () => {
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),

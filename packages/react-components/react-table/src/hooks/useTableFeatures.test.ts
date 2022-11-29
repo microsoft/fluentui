@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { createColumn } from './createColumn';
-import { defaultTableSelectionState, useSelection } from './useSelection';
-import { defaultTableSortState, useSort } from './useSort';
+import { defaultTableSelectionState, useTableSelection } from './useTableSelection';
+import { defaultTableSortState, useTableSort } from './useTableSort';
 import { useTableFeatures } from './useTableFeatures';
 
 describe('useTableFeatures', () => {
@@ -12,7 +12,7 @@ describe('useTableFeatures', () => {
           columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
-        [useSort({})],
+        [useTableSort({})],
       ),
     );
 
@@ -36,7 +36,7 @@ describe('useTableFeatures', () => {
           columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
-        [useSelection({ selectionMode: 'multiselect' })],
+        [useTableSelection({ selectionMode: 'multiselect' })],
       ),
     );
 

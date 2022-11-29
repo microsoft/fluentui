@@ -21,6 +21,6 @@ feature sets. The library provides a default `useTableFeatures` hook that handle
 features. There is no obligation to use our hook with these components, we've created it for convenience.
 
 The `useTableFeatures` hook was designed with feature composition in mind. This means that are composed using
-plugins hooks such as `useSort` and `useSelection` as a part of `useTableFeatures`. This means
+plugins hooks such as `useTableSort` and `useTableSelection` as a part of `useTableFeatures`. This means
 that as the feature set expands, users will not need to pay the bundle size price for features that they do not intend
 to use. Please consult the usage examples below for more details.

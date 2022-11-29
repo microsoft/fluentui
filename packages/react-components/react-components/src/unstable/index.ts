@@ -209,8 +209,8 @@ export {
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
   useTableFeatures,
-  useSelection,
-  useSort,
+  useTableSelection,
+  useTableSort,
   createColumn,
 } from '@fluentui/react-table';
 
