@@ -6,8 +6,8 @@ import { useTableContext } from '../../contexts/tableContext';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
 
 const sortIcons = {
-  ascending: <ArrowUpRegular />,
-  descending: <ArrowDownRegular />,
+  ascending: <ArrowUpRegular fontSize={12} />,
+  descending: <ArrowDownRegular fontSize={12} />,
 };
 
 /**

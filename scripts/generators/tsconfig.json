@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.scripts.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["**/plop-templates/**", "**/plop-templates-node/**", "**/plop-templates-react/**"]
+}

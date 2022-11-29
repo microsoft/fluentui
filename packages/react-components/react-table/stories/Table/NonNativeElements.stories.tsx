@@ -100,3 +100,17 @@ export const NonNativeElements = () => {
     </Table>
   );
 };
+
+NonNativeElements.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default `Table` components will render native semantic `<table>` HTML elements.',
+        'Native semantic elements provide the best accessibility support and it is recommended to user them.',
+        'However, for certain use cases (i.e. Virtualization) the native semantic elements are not advisable',
+        'due to strict browser layouting. Using the `noNativeElements` prop will ensure that all components are',
+        'rendered as divs while ensuring a layout experience similar to semantic table elements.',
+      ].join('\n'),
+    },
+  },
+};

@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 17 Nov 2022 07:51:44 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Nov 2022 07:53:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.20)
+
+Thu, 24 Nov 2022 07:53:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.19..@fluentui/react-charting_v5.14.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.2 ([PR #25770](https://github.com/microsoft/fluentui/pull/25770) by beachball)
+
+## [5.14.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.19)
+
+Wed, 23 Nov 2022 07:54:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.18..@fluentui/react-charting_v5.14.19)
+
+### Patches
+
+- Fix wrong narration in browse mode ([PR #25616](https://github.com/microsoft/fluentui/pull/25616) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react to v8.103.1 ([PR #25726](https://github.com/microsoft/fluentui/pull/25726) by beachball)
+
+## [5.14.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.18)
+
+Tue, 22 Nov 2022 07:47:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.17..@fluentui/react-charting_v5.14.18)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.0 ([PR #25499](https://github.com/microsoft/fluentui/pull/25499) by beachball)
+
+## [5.14.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.17)
+
+Fri, 18 Nov 2022 07:45:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.16..@fluentui/react-charting_v5.14.17)
+
+### Patches
+
+- Allow focus navigation with tab key in donut chart ([PR #25654](https://github.com/microsoft/fluentui/pull/25654) by kumarkshitij@microsoft.com)
 
 ## [5.14.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.16)
 
