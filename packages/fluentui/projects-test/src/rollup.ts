@@ -1,4 +1,3 @@
-import fs from 'fs-extra';
 import path from 'path';
 
 import {
@@ -9,6 +8,7 @@ import {
   log,
   shEcho,
   workspaceRoot,
+  generateFiles,
 } from '@fluentui/scripts/projects-test';
 
 export async function rollup() {
@@ -43,12 +43,8 @@ export async function rollup() {
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   logger('STEP 3. Copy scaffold files to test project');
-  fs.copyFileSync(path.resolve(scaffoldPathRoot, 'app.js'), path.resolve(tempPaths.testApp, 'app.js'));
-  fs.copyFileSync(
-    path.resolve(scaffoldPathRoot, 'rollup.config.js'),
-    path.resolve(tempPaths.testApp, 'rollup.config.js'),
-  );
-  fs.copyFileSync(path.resolve(scaffoldPathRoot, 'index.html'), path.resolve(tempPaths.testApp, 'index.html'));
+  generateFiles(scaffoldPathRoot, tempPaths.testApp);
+
   logger(`✔️ Source and bundler's config were created`);
 
   logger('STEP 4. Build test project');

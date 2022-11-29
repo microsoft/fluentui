@@ -1,4 +1,3 @@
-import fs from 'fs-extra';
 import path from 'path';
 
 import {
@@ -10,6 +9,7 @@ import {
   performBrowserTest,
   prepareCreateReactApp,
   workspaceRoot,
+  generateFiles,
 } from '@fluentui/scripts/projects-test';
 
 /**
@@ -41,7 +41,7 @@ export async function createReactApp() {
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   logger("STEP 3. Reference Fluent UI components in test project's App.tsx");
-  fs.copyFileSync(path.resolve(scaffoldPathRoot, 'App.tsx'), path.resolve(testAppPathRoot, 'src', 'App.tsx'));
+  generateFiles(scaffoldPathRoot, testAppPathRoot);
 
   logger('STEP 4. Build test project..');
   await shEcho(`yarn build`, testAppPathRoot);

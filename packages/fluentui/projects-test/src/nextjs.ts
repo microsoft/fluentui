@@ -1,4 +1,3 @@
-import fs from 'fs-extra';
 import path from 'path';
 
 import {
@@ -9,6 +8,7 @@ import {
   shEcho,
   performBrowserTest,
   workspaceRoot,
+  generateFiles,
 } from '@fluentui/scripts/projects-test';
 
 export async function nextjs() {
@@ -32,8 +32,7 @@ export async function nextjs() {
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   logger('STEP 3. Copy scaffold files to test project');
-  fs.mkdirSync(path.resolve(tempPaths.testApp, 'pages'));
-  fs.copyFileSync(path.resolve(scaffoldPathRoot, 'index.js'), path.resolve(tempPaths.testApp, 'pages', 'index.js'));
+  generateFiles(scaffoldPathRoot, tempPaths.testApp);
   logger(`✔️ Source and bundler's config were created`);
 
   logger('STEP 4. Build test project');
