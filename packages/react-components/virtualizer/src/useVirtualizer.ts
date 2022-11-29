@@ -283,9 +283,10 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
       return [];
     }
 
-    const end = Math.min(virtualizerStartIndex + virtualizerLength, childArray.length);
+    const actualIndex = Math.max(virtualizerStartIndex, 0);
+    const end = Math.min(actualIndex + virtualizerLength, childArray.length);
 
-    return childArray.slice(virtualizerStartIndex, end);
+    return childArray.slice(actualIndex, end);
   };
 
   const setBeforeRef = (element: HTMLDivElement) => {
