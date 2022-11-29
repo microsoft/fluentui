@@ -48,7 +48,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
     required: true,
     defaultProps: {
-      children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
+      children: getInitials(name, dir === 'rtl', { allowPhoneInitials: true, firstInitialOnly: size <= 16 }),
       id: baseId + '__initials',
     },
   });
