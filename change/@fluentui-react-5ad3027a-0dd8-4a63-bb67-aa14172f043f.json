@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Allow data-selection-disabled to be respected by DetailsRow.",
+  "packageName": "@fluentui/react",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
