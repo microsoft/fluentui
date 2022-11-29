@@ -1,7 +1,5 @@
-// @ts-check
-
 const fs = require('fs');
-const findConfig = require('./find-config');
+const { findConfig } = require('./find-config');
 const jju = require('jju');
 
 /**
@@ -20,4 +18,4 @@ function readConfig(file, cwd) {
   }
 }
 
-module.exports = { readConfig };
+exports.readConfig = readConfig;

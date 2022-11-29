@@ -1,4 +1,6 @@
-// @ts-check
+/**
+ * @see {@link ../../azure-pipelines.bundlesize.yml}
+ */
 
 // This script collates bundle size information from minified files in apps/test-bundles/dist
 // and writes to apps/test-bundles/dist/bundlesizes.json.
@@ -8,7 +10,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const distRoot = path.resolve(__dirname, '../apps/test-bundles/dist');
+const distRoot = path.resolve(__dirname, '../../apps/test-bundles/dist');
+/** @type {Record<string,number>} */
 const sizes = {};
 const outputFilename = 'bundlesize.json';
 
@@ -24,10 +27,10 @@ items.forEach(item => {
 
 fs.writeFileSync(path.join(distRoot, outputFilename), JSON.stringify({ sizes }));
 
-function getFilesizeInBytes(fileName) {
+function getFilesizeInBytes(/** @type {string} */ fileName) {
   return fs.statSync(fileName).size;
 }
 
-function getComponentName(fileName) {
+function getComponentName(/** @type {string} */ fileName) {
   return path.basename(fileName, '.min.js');
 }

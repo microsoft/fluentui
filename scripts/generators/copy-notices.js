@@ -1,4 +1,4 @@
-const monorepo = require('./monorepo');
+const monorepo = require('../monorepo');
 const path = require('path');
 const fs = require('fs');
 
