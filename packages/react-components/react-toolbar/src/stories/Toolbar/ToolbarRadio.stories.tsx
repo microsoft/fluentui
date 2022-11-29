@@ -4,24 +4,19 @@ import { Toolbar, ToolbarRadioButton } from '@fluentui/react-toolbar';
 import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Radio = (props: Partial<ToolbarProps>) => (
-  <Toolbar {...props}>
+  <Toolbar
+    {...props}
+    defaultCheckedValues={{
+      textOptions: ['center'],
+    }}
+  >
+    <ToolbarRadioButton aria-label="Align left" name="textOptions" value="left" icon={<AlignLeft24Regular />} />
     <ToolbarRadioButton
-      aria-label="Radio Option - Align left"
-      name="text-style"
-      value="italic"
-      icon={<AlignLeft24Regular />}
-    />
-    <ToolbarRadioButton
-      aria-label="Radio Option - Align Center"
-      name="text-style"
-      value="bold"
+      aria-label="Align Center"
+      name="textOptions"
+      value="center"
       icon={<AlignCenterHorizontal24Regular />}
     />
-    <ToolbarRadioButton
-      aria-label="Radio Option - Align Right"
-      name="text-style"
-      value="underline"
-      icon={<AlignRight24Regular />}
-    />
+    <ToolbarRadioButton aria-label="Align Right" name="textOptions" value="right" icon={<AlignRight24Regular />} />
   </Toolbar>
 );

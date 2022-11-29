@@ -14,20 +14,10 @@ export const ControlledToggleButton = () => {
 
   return (
     <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <ToolbarToggleButton aria-label="Bold" icon={<TextBold24Regular />} name="textOptions" value="bold" />
+      <ToolbarToggleButton aria-label="Italic" icon={<TextItalic24Regular />} name="textOptions" value="italic" />
       <ToolbarToggleButton
-        aria-label="Text option - Bold"
-        icon={<TextBold24Regular />}
-        name="textOptions"
-        value="bold"
-      />
-      <ToolbarToggleButton
-        aria-label="Text option - Italic"
-        icon={<TextItalic24Regular />}
-        name="textOptions"
-        value="italic"
-      />
-      <ToolbarToggleButton
-        aria-label="Text option - Underline"
+        aria-label="Underline"
         icon={<TextUnderline24Regular />}
         name="textOptions"
         value="underline"
