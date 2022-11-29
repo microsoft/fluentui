@@ -58,7 +58,7 @@ const CardExample = (props: CardProps) => {
       <CardHeader
         header={<Body1 weight="semibold">iOS App Prototype</Body1>}
         description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
       />
     </Card>
   );
@@ -77,11 +77,13 @@ export const Selectable = () => {
       <CardExample
         aria-label={getCardLabel(selected1)}
         selected={selected1}
+        selectableProps={{ 'aria-label': 'iOS App Prototype' }}
         onSelectionChange={(_, { selected }) => setSelected1(selected)}
       />
       <CardExample
         aria-label={getCardLabel(selected2)}
         selected={selected2}
+        selectableProps={{ 'aria-label': 'iOS App Prototype' }}
         onSelectionChange={(_, { selected }) => setSelected2(selected)}
       />
     </div>

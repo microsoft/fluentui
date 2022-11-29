@@ -2,6 +2,7 @@ import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles';
 import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
@@ -21,6 +22,11 @@ export const cardClassNames: SlotClassNames<CardSlots> = {
 export const cardCSSVars = {
   cardSizeVar: '--fui-Card--size',
   cardBorderRadiusVar: '--fui-Card--border-radius',
+};
+
+const focusOutlineStyle = {
+  outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
+  outlineWidth: tokens.strokeWidthThick,
 };
 
 const useStyles = makeStyles({
@@ -58,15 +64,12 @@ const useStyles = makeStyles({
     [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
       flexGrow: 1,
     },
-
-    ...createFocusOutlineStyle({
-      style: {
-        outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-        outlineWidth: tokens.strokeWidthThick,
-      },
-      selector: 'focus',
-    }),
   },
+
+  selectableFocused: createFocusOutlineStyle({
+    style: focusOutlineStyle,
+    selector: 'focus-within',
+  }),
 
   orientationHorizontal: {
     flexDirection: 'row',
@@ -80,8 +83,14 @@ const useStyles = makeStyles({
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the first element.
     // Since this is on horizontal cards, the left padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
       marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the last element.
+    // Since this is on horizontal cards, the right padding is removed to keep the content flush with the border.
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
+      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
   },
   orientationVertical: {
@@ -92,11 +101,22 @@ const useStyles = makeStyles({
       marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
       marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
+
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the first element.
     // Since this is on vertical cards, the top padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
       marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+    [`> .${cardClassNames.select} + .${cardPreviewClassNames.root}`]: {
+      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the first element.
+    // Since this is on vertical cards, the bottom padding is removed to keep the content flush with the border.
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
+      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
   },
 
@@ -111,21 +131,6 @@ const useStyles = makeStyles({
   sizeLarge: {
     [cardCSSVars.cardSizeVar]: '16px',
     [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
-  },
-
-  interactiveLink: {
-    textDecorationLine: 'none',
-  },
-  interactiveButton: {
-    ...shorthands.border('0'),
-    width: '100%',
-    alignItems: 'normal',
-    appearance: 'none',
-    lineHeight: 'inherit',
-    fontFamily: 'inherit',
-    fontSize: 'inherit',
-    fontWeight: 'inherit',
-    textAlign: 'start',
   },
 
   filled: {
@@ -286,42 +291,19 @@ const useStyles = makeStyles({
     position: 'absolute',
     top: '4px',
     right: '4px',
+    zIndex: 1,
   },
 
   selectHidden: {
-    width: 0,
-    height: 0,
+    ...shorthands.overflow('hidden'),
+    width: '1px',
+    height: '1px',
     position: 'absolute',
-    top: 0,
-    right: 0,
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
   },
 });
-
-const getInteractiveClassnames = (state: CardState, styles: ReturnType<typeof useStyles>) => {
-  const selectedMap = {
-    filled: styles.filledInteractiveSelected,
-    'filled-alternative': styles.filledAlternativeInteractiveSelected,
-    outline: styles.outlineInteractiveSelected,
-    subtle: styles.subtleInteractiveSelected,
-  };
-  const interactiveMap = {
-    filled: styles.filledInteractive,
-    'filled-alternative': styles.filledAlternativeInteractive,
-    outline: styles.outlineInteractive,
-    subtle: styles.subtleInteractive,
-  };
-  const baseClass = mergeClasses(interactiveMap[state.appearance], state.selected && selectedMap[state.appearance]);
-
-  if (state.components.root === 'button') {
-    return mergeClasses(baseClass, styles.interactiveButton);
-  }
-
-  if (state.components.root === 'a') {
-    return mergeClasses(baseClass, styles.interactiveLink);
-  }
-
-  return baseClass;
-};
 
 /**
  * Apply styling to the Card slots based on the state.
@@ -347,13 +329,28 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     subtle: styles.subtle,
   };
 
+  const selectedMap = {
+    filled: styles.filledInteractiveSelected,
+    'filled-alternative': styles.filledAlternativeInteractiveSelected,
+    outline: styles.outlineInteractiveSelected,
+    subtle: styles.subtleInteractiveSelected,
+  };
+  const interactiveMap = {
+    filled: styles.filledInteractive,
+    'filled-alternative': styles.filledAlternativeInteractive,
+    outline: styles.outlineInteractive,
+    subtle: styles.subtleInteractive,
+  };
+
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
     orientationMap[state.orientation],
     sizeMap[state.size],
     appearanceMap[state.appearance],
-    state.interactive && getInteractiveClassnames(state, styles),
+    (state.interactive || state.selectable) && interactiveMap[state.appearance],
+    state.selected && selectedMap[state.appearance],
+    state.selectFocused && styles.selectableFocused,
     state.root.className,
   );
 

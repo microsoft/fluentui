@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix selectable card accessibility",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

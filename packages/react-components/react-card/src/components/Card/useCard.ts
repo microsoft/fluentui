@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { useFocusableGroup, useFocusWithin } from '@fluentui/react-tabster';
 
-import type { CardProps, CardRefElement, CardState } from './Card.types';
+import type { CardProps, CardState } from './Card.types';
 import { useCardSelectable } from './useCardSelectable';
 
 const focusMap = {
@@ -42,16 +42,24 @@ const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, { interactive 
  * @param props - props from this instance of Card
  * @param ref - reference to the root element of Card
  */
-export const useCard_unstable = (props: CardProps, ref: React.Ref<CardRefElement>): CardState => {
-  const { appearance = 'filled', orientation = 'vertical', size = 'medium', as = 'div' } = props;
-  const cardRef = React.useRef<CardRefElement>(null);
+export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
+  const { appearance = 'filled', orientation = 'vertical', size = 'medium' } = props;
 
-  const { selectable, hasSelectSlot, selected, selectableSlot, selectableProps } = useCardSelectable(props, cardRef);
+  const cardBaseRef = useFocusWithin<HTMLDivElement>();
+  const {
+    selectable,
+    hasSelectSlot,
+    selected,
+    selectableSlot,
+    selectableProps,
+    selectableTag,
+    selectFocused,
+  } = useCardSelectable(props, cardBaseRef);
+
+  const cardRef = useMergedRefs(cardBaseRef, ref);
 
   const interactive = Boolean(
-    selectable ||
-      ['a', 'button'].includes(as) ||
-      props.onClick ||
+    props.onClick ||
       props.onDoubleClick ||
       props.onMouseUp ||
       props.onMouseDown ||
@@ -70,15 +78,16 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<CardRefElement
     interactive,
     selectable,
     hasSelectSlot,
+    selectFocused,
     selected,
 
     components: {
-      root: as,
-      select: 'div',
+      root: 'div',
+      select: selectableTag,
     },
 
-    root: getNativeElementProps(as, {
-      ref: ref || cardRef,
+    root: getNativeElementProps('div', {
+      ref: cardRef,
       role: 'group',
       ...focusAttributes,
       ...props,

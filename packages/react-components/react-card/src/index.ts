@@ -6,7 +6,7 @@ export {
   useCardStyles_unstable,
   useCard_unstable,
 } from './Card';
-export type { CardProps, CardSlots, CardState, CarOnSelectionChangeEvent } from './Card';
+export type { CardProps, CardSlots, CardState, CardOnSelectionChangeEvent } from './Card';
 export {
   CardFooter,
   cardFooterClassNames,

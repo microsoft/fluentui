@@ -26,7 +26,8 @@ const useStyles = makeStyles({
     ...shorthands.margin(0, 0, '12px'),
   },
 
-  horizontalCard: {
+  horizontalCardImage: {
+    width: '60px',
     height: '60px',
   },
 
@@ -87,7 +88,7 @@ export const Orientation = () => {
         <Title>'horizontal'</Title>
 
         <Card size="small" orientation="horizontal">
-          <CardPreview className={styles.horizontalCard}>
+          <CardPreview className={styles.horizontalCardImage}>
             <img src={resolveAsset('logo.svg')} alt="Company Logo" />
           </CardPreview>
 

@@ -68,6 +68,9 @@ export type CardHeaderSlots = {
 export type CardHeaderState = ComponentState<CardHeaderSlots>;
 
 // @public
+export type CardOnSelectionChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
+
+// @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
 // @public
@@ -93,12 +96,13 @@ export type CardProps = ComponentProps<CardSlots> & {
     size?: 'small' | 'medium' | 'large';
     selected?: boolean;
     defaultSelected?: boolean;
-    onSelectionChange?: (event: CarOnSelectionChangeEvent, data: CardOnSelectData) => void;
+    onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
+    selectableProps?: React_2.InputHTMLAttributes<HTMLInputElement>;
 };
 
 // @public
 export type CardSlots = {
-    root: Slot<'div', 'a' | 'button'>;
+    root: Slot<'div'>;
     select?: Slot<'div', 'input'>;
 };
 
@@ -108,10 +112,8 @@ export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'ap
     selectable: boolean;
     hasSelectSlot: boolean;
     selected: boolean;
+    selectFocused: boolean;
 }>;
-
-// @public
-export type CarOnSelectionChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;
@@ -126,7 +128,7 @@ export const renderCardHeader_unstable: (state: CardHeaderState) => JSX.Element;
 export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Element;
 
 // @public
-export const useCard_unstable: (props: CardProps, ref: React_2.Ref<CardRefElement>) => CardState;
+export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;
 
 // @public
 export const useCardFooter_unstable: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;

@@ -2,16 +2,11 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
- * Card refs to the root element slot.
- */
-export type CardRefElement = HTMLDivElement | HTMLButtonElement | HTMLAnchorElement;
-
-/**
  * Card selected event type
  *
  * This event is fired when a selectable card changes its selection state.
  */
-export type CarOnSelectionChangeEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
+export type CardOnSelectionChangeEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
 
 /**
  * Data sent from the selection events on a selectable card.
@@ -27,7 +22,7 @@ export type CardSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'div', 'a' | 'button'>;
+  root: Slot<'div'>;
 
   /**
    * Select element represents a checkbox.
@@ -111,7 +106,12 @@ export type CardProps = ComponentProps<CardSlots> & {
   /**
    * Callback to be called when the selected state value changes.
    */
-  onSelectionChange?: (event: CarOnSelectionChangeEvent, data: CardOnSelectData) => void;
+  onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
+
+  /**
+   * Properties passed to the internal checkbox element.
+   */
+  selectableProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
 /**
@@ -147,5 +147,12 @@ export type CardState = ComponentState<CardSlots> &
        * @default false
        */
       selected: boolean;
+
+      /**
+       * Defines whether the card internal checkbox is currently focused.
+       *
+       * @default false
+       */
+      selectFocused: boolean;
     }
   >;
