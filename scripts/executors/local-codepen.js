@@ -4,8 +4,9 @@ const path = require('path');
 const fs = require('fs');
 const yargs = require('yargs');
 const { execSync } = require('child_process');
-const { findGitRoot } = require('./monorepo/index');
 const chalk = require('chalk');
+
+const { findGitRoot } = require('../monorepo');
 
 const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
@@ -15,6 +16,9 @@ const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
 const gitRoot = findGitRoot();
 
 if (fs.existsSync(configPath)) {
+  /**
+   * @type {any}
+   */
   let ngrok;
   try {
     console.log("Attempting to npm link globally installed ngrok so it can be require'd");

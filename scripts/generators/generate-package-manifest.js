@@ -1,8 +1,12 @@
-// @ts-check
+/**
+ * This is used solely for V8 release.
+ * @see {@link ../../azure-pipelines.release.yml}
+ */
+
 const path = require('path');
 const fs = require('fs-extra');
 const semver = require('semver');
-const { getAllPackageInfo, findGitRoot } = require('./monorepo/index');
+const { getAllPackageInfo, findGitRoot } = require('../monorepo');
 
 // Generate "manifest" file with package.jsons of all the monorepo packages (mainly for ODSP)
 

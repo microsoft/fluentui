@@ -6,8 +6,10 @@ import * as path from 'path';
 import { sync as replaceInFileSync, ReplaceResult } from 'replace-in-file';
 import { findGitRoot, PackageInfo, listAllTrackedFiles, stageAndCommit } from 'workspace-tools';
 
-const readConfig: (pth: string) => PackageInfo = require('./read-config').readConfig;
-const writeConfig: (pth: string, newValue: any) => void = require('./write-config');
+const { readConfig: _readConfig, writeConfig: _writeConfig } = require('./utils');
+
+const readConfig: (pth: string) => PackageInfo = _readConfig;
+const writeConfig: (pth: string, newValue: any) => void = _writeConfig;
 const { runPrettier } = require('./prettier');
 
 const gitRoot = findGitRoot(process.cwd());
@@ -157,6 +159,9 @@ function updateReferences(renameInfo: RenameInfo): string[] {
       }
 
       const match = nameRegex.exec(substr);
+      if (!match) {
+        throw new Error('no matches found');
+      }
       // This is the scope or the packages or apps section of the path
       const firstPart = match[1] === oldScope ? newScope : match[1];
       return `${firstPart}/${newUnscopedName}`;

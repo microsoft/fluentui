@@ -7,7 +7,8 @@ import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
-import { findGitRoot, PackageJson } from '../monorepo/index';
+
+import { findGitRoot, PackageJson } from '../../monorepo';
 
 const root = findGitRoot();
 
@@ -210,14 +211,15 @@ function replaceVersionsFromReference(
   const errorPackages: string[] = [];
 
   for (const depType of depTypes) {
-    if (!newPackageJson[depType]) {
+    const packageDependencies = newPackageJson[depType];
+    if (!packageDependencies) {
       continue;
     }
-    for (const depPkg of Object.keys(newPackageJson[depType])) {
+    for (const depPkg of Object.keys(packageDependencies)) {
       if (!answers.hasTests && /\b(jest|enzyme|test(ing)?|react-conformance)\b/.test(depPkg)) {
-        delete newPackageJson[depType][depPkg];
+        delete packageDependencies[depPkg];
       } else if (referenceDeps[depType]?.[depPkg]) {
-        newPackageJson[depType][depPkg] = referenceDeps[depType][depPkg];
+        packageDependencies[depPkg] = referenceDeps[depType]?.[depPkg] as string;
       } else {
         // Record the error and wait to throw until later for better logs
         errorPackages.push(`${depPkg} (${depType})`);

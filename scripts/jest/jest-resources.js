@@ -5,7 +5,7 @@ const { resolveCwd } = require('just-scripts');
 
 const merge = require('../tasks/merge');
 const { findRepoDeps } = require('../monorepo');
-const findConfig = require('../find-config');
+const { findConfig } = require('../utils');
 
 const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);

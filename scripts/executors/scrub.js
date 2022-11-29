@@ -1,5 +1,3 @@
-// @ts-check
-
 const child_process = require('child_process');
 const fs = require('fs');
 const os = require('os');
@@ -58,7 +56,7 @@ function deleteNodeModulesSymlinks(packagePath, failedPaths) {
   const modules = fs.readdirSync(nodeModulesPath);
   /** @type {string} */
   let mod;
-  while ((mod = modules.pop())) {
+  while ((mod = /** @type {string} */ (modules.pop()))) {
     const modulePath = path.join(nodeModulesPath, mod);
     if (mod[0] === '@' && !/[/\\]/.test(mod)) {
       // Add any scoped modules to the list of things to check
@@ -133,6 +131,9 @@ async function run() {
     console.log('Clearing gulp-cache failed, likely due it not being installed.');
   }
 
+  /**
+   * @type {string[]}
+   */
   const failedPaths = [];
 
   console.log("\nDeleting symlinks from packages' node_modules and rush temp files...");

@@ -1,4 +1,3 @@
-// @ts-check
 const path = require('path');
 const { spawnSync } = require('child_process');
 
@@ -36,6 +35,10 @@ function main() {
 }
 
 function userInvokedNpmInstall() {
+  if (!npmPath) {
+    return false;
+  }
+
   return path.basename(npmPath).includes('npm');
 }
 

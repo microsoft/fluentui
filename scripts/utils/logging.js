@@ -8,7 +8,7 @@ const isVerbose = process.argv.indexOf('--verbose') > -1;
  * @param {string} packageName
  * @param {string} task
  */
-module.exports.logStartTask = (packageName, task) => {
+exports.logStartTask = (packageName, task) => {
   console.log(`${getTimePrefix(packageName)} Starting: ${chalk.cyan(task)}`);
 };
 
@@ -19,7 +19,7 @@ module.exports.logStartTask = (packageName, task) => {
  * @param {number} startTime
  * @param {string} errorMessage
  */
-module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
+exports.logEndTask = (packageName, task, startTime, errorMessage) => {
   console.log(
     `${getTimePrefix(packageName)} ${getPassFail(errorMessage === undefined)}: ${chalk.cyan(task)} (${getDuration(
       startTime,
@@ -31,7 +31,7 @@ module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
  *
  * @param {unknown} taskStatus
  */
-module.exports.logStatus = taskStatus => {
+exports.logStatus = taskStatus => {
   if (isProduction || isVerbose) {
     console.log('  ' + taskStatus);
   }
@@ -43,7 +43,7 @@ module.exports.logStatus = taskStatus => {
  * @param {boolean} passed
  * @param {number} startTime
  */
-module.exports.logEndBuild = (packageName, passed, startTime) => {
+exports.logEndBuild = (packageName, passed, startTime) => {
   console.log();
   console.log(
     `${
