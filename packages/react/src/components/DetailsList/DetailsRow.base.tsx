@@ -327,7 +327,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
-        data-selection-disabled={(this.props as any)['data-selection-disabled'] ?? disabled ?? undefined}
+        data-selection-disabled={(this.props as any)['data-selection-disabled'] ?? (disabled || undefined)}
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         data-automationid="DetailsRow"
