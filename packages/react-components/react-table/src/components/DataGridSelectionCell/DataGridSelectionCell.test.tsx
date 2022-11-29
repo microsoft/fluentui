@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { DataGridSelectionCell } from './DataGridSelectionCell';
 import { isConformant } from '../../testing/isConformant';
 import { DataGridSelectionCellProps } from '../../../dist/index';
 import { dataGridSelectionCellClassNames } from './useDataGridSelectionCellStyles';
+import { mockDataGridContext } from '../../testing/mockDataGridContext';
+import { DataGridContextProvider } from '../../contexts/dataGridContext';
+import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
 describe('DataGridSelectionCell', () => {
   isConformant<DataGridSelectionCellProps>({
@@ -33,10 +36,95 @@ describe('DataGridSelectionCell', () => {
     },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  it('should render radio selection indicator if selection mode is single select', () => {
+    const ctx = mockDataGridContext({ selectableRows: true }, { selection: { selectionMode: 'single' } });
+    const { queryByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridSelectionCell />
+      </DataGridContextProvider>,
+    );
 
-  it('renders a default state', () => {
-    const result = render(<DataGridSelectionCell>Default DataGridSelectionCell</DataGridSelectionCell>);
-    expect(result.container).toMatchSnapshot();
+    expect(queryByRole('radio')).not.toBeNull();
+  });
+
+  it('should render checkbox selection indicator if selection mode is multi select', () => {
+    const ctx = mockDataGridContext({ selectableRows: true }, { selection: { selectionMode: 'multiselect' } });
+    const { queryByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridSelectionCell />
+      </DataGridContextProvider>,
+    );
+
+    expect(queryByRole('checkbox')).not.toBeNull();
+  });
+
+  it('should render checked checkbox if row is selected', () => {
+    const isRowSelected = () => true;
+    const ctx = mockDataGridContext(
+      { selectableRows: true },
+      { selection: { isRowSelected, selectionMode: 'multiselect' } },
+    );
+    const { getByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridSelectionCell />
+      </DataGridContextProvider>,
+    );
+
+    expect((getByRole('checkbox') as HTMLInputElement).checked).toBe(true);
+  });
+
+  describe('in header', () => {
+    it('should render indeterminate checkbox if some rows are selected in multiselect mode', () => {
+      const someRowsSelected = true;
+      const allRowsSelected = false;
+      const ctx = mockDataGridContext(
+        { selectableRows: true },
+        { selection: { someRowsSelected, allRowsSelected, selectionMode: 'multiselect' } },
+      );
+      const { getByRole } = render(
+        <DataGridHeader>
+          <DataGridContextProvider value={ctx}>
+            <DataGridSelectionCell />
+          </DataGridContextProvider>
+        </DataGridHeader>,
+      );
+
+      expect((getByRole('checkbox') as HTMLInputElement).indeterminate).toBe(true);
+    });
+
+    it('should render checked checkbox if all rows are selected in multiselect mode', () => {
+      const allRowsSelected = true;
+      const ctx = mockDataGridContext(
+        { selectableRows: true },
+        { selection: { allRowsSelected, selectionMode: 'multiselect' } },
+      );
+      const { getByRole } = render(
+        <DataGridHeader>
+          <DataGridContextProvider value={ctx}>
+            <DataGridSelectionCell />
+          </DataGridContextProvider>
+        </DataGridHeader>,
+      );
+
+      expect((getByRole('checkbox') as HTMLInputElement).checked).toBe(true);
+    });
+
+    it('should toggle all rows in multiselect mode', () => {
+      const toggleAllRows = jest.fn();
+      const ctx = mockDataGridContext(
+        { selectableRows: true },
+        { selection: { toggleAllRows, selectionMode: 'multiselect' } },
+      );
+      const { getByRole } = render(
+        <DataGridHeader>
+          <DataGridContextProvider value={ctx}>
+            <DataGridSelectionCell />
+          </DataGridContextProvider>
+        </DataGridHeader>,
+      );
+
+      fireEvent.click(getByRole('checkbox'));
+      expect(toggleAllRows).toHaveBeenCalledTimes(1);
+    });
   });
 });
