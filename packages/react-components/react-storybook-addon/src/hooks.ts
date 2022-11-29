@@ -1,7 +1,7 @@
 import { useGlobals as useStorybookGlobals, Args as StorybookArgs } from '@storybook/api';
 import { StoryContext as StorybookContext, Parameters } from '@storybook/addons';
 
-import { THEME_ID } from './constants';
+import { STRICT_MODE_ID, THEME_ID } from './constants';
 import { ThemeIds } from './theme';
 
 export interface FluentStoryContext extends StorybookContext {
@@ -14,6 +14,7 @@ export interface FluentStoryContext extends StorybookContext {
  */
 export interface FluentGlobals extends StorybookArgs {
   [THEME_ID]?: ThemeIds;
+  [STRICT_MODE_ID]?: boolean;
 }
 
 /**
