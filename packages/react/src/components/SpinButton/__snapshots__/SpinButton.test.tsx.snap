@@ -62,6 +62,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
     className=
 
         {
+          border-color: #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -69,17 +70,19 @@ exports[`SpinButton snapshots renders correctly 1`] = `
           position: relative;
         }
         &:after {
-          border-color: #605e5c;
           border-radius: 2px;
-          border-style: solid;
           border-width: 1px;
-          bottom: 0px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
           content: '';
-          left: 0px;
+          left: -1px;
           pointer-events: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+          border-color: GrayText;
         }
         &:hover:after {
           border-color: #323130;
@@ -503,6 +506,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
     className=
 
         {
+          border-color: #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -510,17 +514,19 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
           position: relative;
         }
         &:after {
-          border-color: #605e5c;
           border-radius: 2px;
-          border-style: solid;
           border-width: 1px;
-          bottom: 0px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
           content: '';
-          left: 0px;
+          left: -1px;
           pointer-events: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+          border-color: GrayText;
         }
         &:hover:after {
           border-color: #323130;
