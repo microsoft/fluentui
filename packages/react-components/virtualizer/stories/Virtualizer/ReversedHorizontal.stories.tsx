@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     minWidth: '100px',
     minHeight: '100px',
     height: '100%',
-    zIndex: 1,
   },
 });
 

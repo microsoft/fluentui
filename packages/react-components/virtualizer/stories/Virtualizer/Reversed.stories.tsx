@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     height: '100px',
     lineHeight: '100px',
     width: '100%',
-    zIndex: 1,
   },
 });
 
