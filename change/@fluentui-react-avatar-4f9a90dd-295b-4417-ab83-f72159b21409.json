@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "added allowPhoneInitials option in getInitials call for Avatar",
+  "packageName": "@fluentui/react-avatar",
+  "email": "kakrookaran@gmail.com",
+  "dependentChangeType": "patch"
+}
