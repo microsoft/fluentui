@@ -2,6 +2,21 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Tue, 29 Nov 2022 07:51:06 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v1.0.15",
+      "version": "1.0.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "0da8d7556d18b42a7c702c513e702ba3723d64d3",
+            "comment": "feat(scripts): enable ts processing via ts solution config for non v9 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Nov 2022 07:53:48 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v1.0.15",
       "version": "1.0.15",

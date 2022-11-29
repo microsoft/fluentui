@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "feat(scripts): enable ts processing via ts solution config for non v9 packages",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
