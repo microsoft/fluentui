@@ -13,7 +13,7 @@ export default {
   decorators: [story => withScreenerSteps({ story, steps })],
 } as ComponentMeta<typeof Button>;
 
-export const Default = () => <Button id={buttonId}>Hello, world</Button>;
+export const Default = () => <Button id={buttonId}>leHlo, world</Button>;
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
