@@ -31,7 +31,7 @@ As we start working on new components, there might be some components that are s
 
 ### What is a recipe?
 
-A recipe is a document that allows you to communicate how to build a component, explain a concept, or how to use our library to build an experience.
+A recipe is a document that allows you to communicate how to build a component, how to explain a concept, or how to use our library to build an experience.
 
 ### What is expected of a recipe?
 
@@ -49,7 +49,7 @@ A recipe should have the following aspects:
 
 When a component is simple enough to be built with already created components, we can provide a recipe that will guide the user on how to build said component. This will help by not creating a component that does not provide high value and keep the library small.
 
-These recipes will also help when we get requests to create a component, but we won't work on it in the near future. By providing a recipe, we can help fill the request partially and allow the user to build the component themselves. If the recipe gets enough traction, we can revisit prioritizing working on this component.
+These recipes will also help when we get requests to create a component, but we won't work on it in the near future. By providing a recipe, we can help fill the requests partially and allow the user to build the component themselves. If the recipe gets enough traction, we can revisit prioritizing working on this component.
 
 #### Concept recipes
 
