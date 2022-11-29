@@ -13,6 +13,8 @@ import type { Theme } from '@fluentui/react-theme';
 // @public
 export interface FluentGlobals extends Args {
     // (undocumented)
+    [STRICT_MODE_ID]?: boolean;
+    // (undocumented)
     [THEME_ID]?: ThemeIds;
 }
 
