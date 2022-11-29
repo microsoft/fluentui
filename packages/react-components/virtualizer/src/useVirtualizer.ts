@@ -13,10 +13,10 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     children,
     sizeOfChild,
     bufferItems = Math.round(virtualizerLength / 4.0),
-    isVertical = true,
     bufferSize = Math.floor(bufferItems / 2.0) * itemSize,
     scrollViewRef,
     isReversed = false,
+    isHorizontal = false,
     onUpdateIndex,
     onCalculateIndex,
   } = props;
@@ -111,7 +111,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
         // We need to inverse the buffer count
         bufferCount = virtualizerLength - bufferItems;
         measurementPos = isReversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
-        if (isVertical) {
+        if (!isHorizontal) {
           if (isReversed) {
             // Scrolling 'up' and hit the after element below
             measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
@@ -130,7 +130,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
         }
       } else if (latestEntry.target === beforeElementRef.current) {
         measurementPos = isReversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
-        if (isVertical) {
+        if (!isHorizontal) {
           if (!isReversed) {
             measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
           } else if (latestEntry.boundingClientRect.top < 0) {
@@ -395,7 +395,7 @@ export function useVirtualizer_unstable(props: React.PropsWithChildren<Virtualiz
     afterBufferHeight: hasInitialized.current ? calculateAfter() : 0,
     totalVirtualizerHeight: hasInitialized.current ? calculateTotalSize() : virtualizerLength * itemSize,
     virtualizerStartIndex: hasInitialized.current ? virtualizerStartIndex : 0,
-    isVertical,
+    isHorizontal,
     bufferSize,
     isReversed,
   };

@@ -4,7 +4,7 @@ import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const { slots, slotProps } = getSlots<VirtualizerSlots>(state);
-  const { isReversed, isVertical, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
+  const { isReversed, isHorizontal, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
 
   const beforeHeightPx = beforeBufferHeight + 'px';
   const afterHeightPx = afterBufferHeight + 'px';
@@ -21,39 +21,39 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const bottomPosPx = bottomPos + 'px';
 
   const beforeBuffer = {
-    ...(!isReversed && isVertical && { top: topPosPx }),
-    ...(isReversed && isVertical && { bottom: topPosPx }),
-    ...(isReversed && !isVertical && { left: topPosPx }),
-    ...(!isReversed && !isVertical && { right: topPosPx }),
+    ...(!isReversed && !isHorizontal && { top: topPosPx }),
+    ...(isReversed && !isHorizontal && { bottom: topPosPx }),
+    ...(isReversed && isHorizontal && { left: `-${topPosPx}` }),
+    ...(!isReversed && isHorizontal && { right: topPosPx }),
   };
 
   const afterBuffer = {
-    ...(isReversed && isVertical && { top: bottomPosPx }),
-    ...(!isReversed && isVertical && { bottom: bottomPosPx }),
-    ...(!isReversed && !isVertical && { left: bottomPosPx }),
-    ...(isReversed && !isVertical && { right: bottomPosPx }),
+    ...(isReversed && !isHorizontal && { top: bottomPosPx }),
+    ...(!isReversed && !isHorizontal && { bottom: bottomPosPx }),
+    ...(!isReversed && isHorizontal && { left: `-${bottomPosPx}` }),
+    ...(isReversed && isHorizontal && { right: bottomPosPx }),
   };
 
   const beforeStyle = {
-    height: isVertical ? beforeBufferHeightPx : '100%',
-    width: isVertical ? '100%' : beforeBufferHeightPx,
-  };
-
-  const beforeContainerStyle = {
-    height: isVertical ? beforeHeightPx : '100%',
-    width: isVertical ? '100%' : beforeHeightPx,
+    height: isHorizontal ? '100%' : beforeBufferHeightPx,
+    width: isHorizontal ? beforeBufferHeightPx : '100%',
     ...beforeBuffer,
   };
 
+  const beforeContainerStyle = {
+    height: isHorizontal ? '100%' : beforeHeightPx,
+    width: isHorizontal ? beforeHeightPx : '100%',
+  };
+
   const afterStyle = {
-    height: isVertical ? afterBufferHeightPx : '100%',
-    width: isVertical ? '100%' : afterBufferHeightPx,
+    height: isHorizontal ? '100%' : afterBufferHeightPx,
+    width: isHorizontal ? afterBufferHeightPx : '100%',
+    ...afterBuffer,
   };
 
   const afterContainerStyle = {
-    height: isVertical ? afterHeightPx : '100%',
-    width: isVertical ? '100%' : afterHeightPx,
-    ...afterBuffer,
+    height: isHorizontal ? '100%' : afterHeightPx,
+    width: isHorizontal ? afterHeightPx : '100%',
   };
 
   return (

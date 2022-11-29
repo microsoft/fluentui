@@ -18,21 +18,21 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> & {
    */
   virtualizerStartIndex: number;
   /**
-   * The current virtualized array of children to show in the DOM.
+   * Current buffer height required at beginning of array.
    */
   afterBufferHeight: number;
   /**
-   * The current virtualized array of children to show in the DOM.
+   * Current buffer height required at end of array.
    */
   beforeBufferHeight: number;
   /**
-   * The current virtualized array of children to show in the DOM.
+   * The total current height of the scrollBiew/child content.
    */
   totalVirtualizerHeight: number;
   /**
-   * The scroll direction (vertical vs horizontal)
+   * The scroll direction (vertical vs horizontal) - defaults to Vertical if not provided
    */
-  isVertical: boolean;
+  isHorizontal: boolean;
   /**
    * Tells the virtualizer to measure in the reverse direction (for column-reverse order etc.)
    */
@@ -78,7 +78,7 @@ export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
   /**
    * The scroll direction (vertical vs horizontal)
    */
-  isVertical?: boolean;
+  isHorizontal?: boolean;
 
   /**
    * Tells the virtualizer to measure in the reverse direction (for column-reverse order etc.)
