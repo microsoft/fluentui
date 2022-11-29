@@ -37,7 +37,7 @@ The following table will help you navigate the 3 projects and understand their d
 
 |                                                                              EP04: Foundational APIs                                                                               |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://youtu.be/uxuIJlYmKGk?utm_source=github" target="_blank"><img src="ghdocs/medias/fluentui-ep04-preview.gif" alt="Watch EP04: Foundational APIs" width="240" /></a> |
+| <a href="https://learn.microsoft.com/en-us/shows/fluent-ui-insights/fluent-ui-insights-apis-in-v9-slots-jsx-children-triggers?utm_source=github" target="_blank"><img src="ghdocs/medias/fluentui-ep04-preview.gif" alt="Watch EP04: Foundational APIs" width="240" /></a> |
 
 ## Licenses
 
