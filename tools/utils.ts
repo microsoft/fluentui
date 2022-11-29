@@ -197,7 +197,7 @@ export function isPackageVersionConverged(versionString: string) {
 
 export function isPackageVersionPrerelease(versionString: string) {
   const version = semver.parse(versionString);
-  return version?.prerelease?.length && version?.prerelease?.length > 0;
+  return Boolean(version?.prerelease?.length && version?.prerelease?.length > 0);
 }
 
 export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {

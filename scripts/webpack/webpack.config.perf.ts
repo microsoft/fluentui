@@ -11,7 +11,7 @@ const { paths } = config;
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
-  mode: 'development',
+  mode: Boolean(argv.debug) ? 'development' : 'production',
   entry: {
     app: paths.perfSrc('index'),
   },
@@ -39,7 +39,7 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin(getDefaultEnvironmentVars()),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars(!argv.debug)),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         configFile: paths.e2e('tsconfig.json'),

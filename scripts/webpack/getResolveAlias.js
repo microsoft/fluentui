@@ -1,7 +1,7 @@
 const path = require('path');
 
 const { findRepoDeps, findGitRoot } = require('../monorepo');
-const { readConfig } = require('../read-config');
+const { readConfig } = require('../utils');
 
 /**
  *

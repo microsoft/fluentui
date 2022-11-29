@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { TreeState, TreeSlots } from './Tree.types';
+import type { TreeState, TreeSlots, TreeContextValues } from './Tree.types';
+import { TreeProvider } from '../../contexts';
 
-export const renderTree_unstable = (state: TreeState) => {
+export const renderTree_unstable = (state: TreeState, contextValues: TreeContextValues) => {
+  const { open } = state;
   const { slots, slotProps } = getSlots<TreeSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return (
+    <TreeProvider value={contextValues.tree}>
+      {open && <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>}
+    </TreeProvider>
+  );
 };
