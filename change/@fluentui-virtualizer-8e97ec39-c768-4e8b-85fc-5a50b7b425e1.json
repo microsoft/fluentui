@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[FEAT] Initial unstable release of the Virtualizer",
+  "packageName": "@fluentui/virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
