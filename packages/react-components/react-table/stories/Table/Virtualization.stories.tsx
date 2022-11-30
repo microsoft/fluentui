@@ -20,8 +20,8 @@ import {
   TableCellLayout,
   TableSelectionCell,
   createColumn,
-  useTable,
-  useSelection,
+  useTableFeatures,
+  useTableSelection,
   RowState as RowStateBase,
 } from '@fluentui/react-components/unstable';
 
@@ -120,13 +120,13 @@ export const Virtualization = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),
@@ -216,7 +216,7 @@ Virtualization.parameters = {
         'make virtualization a lot easier.',
         '',
         'The `Table` primitive components are unopinionated with respect to virtualization. They should be compatible',
-        'with any virtualization library. Hoisting business logic to a state management hook like `useTableFeautres',
+        'with any virtualization library. Hoisting business logic to a state management hook like `useTableFeaturesFeautres',
         'means that features can persist between the mounting/unmounting that happens during virtualization.',
         'The below example uses the [react-window](https://www.npmjs.com/package/react-window) library.',
       ].join('\n'),
