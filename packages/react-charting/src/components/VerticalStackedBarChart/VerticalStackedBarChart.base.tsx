@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -818,6 +818,9 @@ export class VerticalStackedBarChartBase extends React.Component<
               y={yPoint - 6}
               textAnchor="middle"
               className={classNames.totalValueText}
+              data-is-focusable={true}
+              aria-label={`Total: ${totalValue}`}
+              role="img"
             >
               {d3FormatPrefix(totalValue < 1000 ? '.2~' : '.1', totalValue)(totalValue)}
             </text>
@@ -871,10 +874,10 @@ export class VerticalStackedBarChartBase extends React.Component<
 
       return { xBarScale, yBarScale };
     } else {
-      const xBarScale = (xAxisPoint: string) => {
-        const pointIndex = this._xAxisLabels.indexOf(xAxisPoint);
-        return this.margins.left! + this._domainMargin + 3 * this._barWidth * pointIndex;
-      };
+      const xBarScale = d3ScaleBand()
+        .domain(this._xAxisLabels)
+        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
+        .paddingInner(2 / 3);
 
       return { xBarScale, yBarScale };
     }

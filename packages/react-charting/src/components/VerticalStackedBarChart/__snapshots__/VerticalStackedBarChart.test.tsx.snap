@@ -152,12 +152,15 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             />
           </g>
           <text
+            aria-label="Total: 45"
             className=
 
                 {
                   font-size: 12px;
                   font-weight: 600;
                 }
+            data-is-focusable={true}
+            role="img"
             textAnchor="middle"
             x={56}
             y={48.326923076923066}
@@ -219,12 +222,15 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             />
           </g>
           <text
+            aria-label="Total: 50"
             className=
 
                 {
                   font-size: 12px;
                   font-weight: 600;
                 }
+            data-is-focusable={true}
+            role="img"
             textAnchor="middle"
             x={-36}
             y={23.807692307692307}
@@ -785,12 +791,15 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             />
           </g>
           <text
+            aria-label="Total: 45"
             className=
 
                 {
                   font-size: 12px;
                   font-weight: 600;
                 }
+            data-is-focusable={true}
+            role="img"
             textAnchor="middle"
             x={56}
             y={48.326923076923066}
@@ -852,12 +861,15 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             />
           </g>
           <text
+            aria-label="Total: 50"
             className=
 
                 {
                   font-size: 12px;
                   font-weight: 600;
                 }
+            data-is-focusable={true}
+            role="img"
             textAnchor="middle"
             x={-36}
             y={23.807692307692307}
@@ -1327,12 +1339,15 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             />
           </g>
           <text
+            aria-label="Total: 45"
             className=
 
                 {
                   font-size: 12px;
                   font-weight: 600;
                 }
+            data-is-focusable={true}
+            role="img"
             textAnchor="middle"
             x={56}
             y={48.326923076923066}
@@ -1385,12 +1400,15 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             />
           </g>
           <text
+            aria-label="Total: 50"
             className=
 
                 {
                   font-size: 12px;
                   font-weight: 600;
                 }
+            data-is-focusable={true}
+            role="img"
             textAnchor="middle"
             x={-36}
             y={23.807692307692307}
