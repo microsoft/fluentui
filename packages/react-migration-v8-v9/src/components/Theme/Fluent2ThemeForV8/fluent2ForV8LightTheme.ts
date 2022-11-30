@@ -17,8 +17,7 @@ const fluent2ForV8DLightEffects: IExtendedEffects = {
   roundedCornerCircle: '50%',
 };
 
-// Warnings and errors
-
+// grays used in semantic slots but don't fit in the palette.
 const grey38 = '#616161';
 const grey26 = '#424242';
 const grey74 = '#BDBDBD';
