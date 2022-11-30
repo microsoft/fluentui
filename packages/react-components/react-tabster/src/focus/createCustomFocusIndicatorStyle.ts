@@ -2,7 +2,7 @@ import { defaultOptions, FOCUS_VISIBLE_ATTR, FOCUS_WITHIN_ATTR } from './constan
 import { makeResetStyles } from '@griffel/react';
 import type { GriffelStyle } from '@griffel/react';
 
-// TODO: Use the directly from @griffel/react
+// TODO: Use the type directly from @griffel/react
 // https://github.com/microsoft/griffel/pull/278
 type GriffelResetStyle = Parameters<typeof makeResetStyles>[0];
 
