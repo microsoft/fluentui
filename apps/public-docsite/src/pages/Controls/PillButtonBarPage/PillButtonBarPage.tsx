@@ -11,7 +11,7 @@ export const PillButtonBarPage: React.FunctionComponent<IControlsPageProps> = pr
   return (
     <ControlsAreaPage
       {...props}
-      {...PillButtonBarPageProps[props.platform]}
+      {...PillButtonBarPageProps[props.platform!]}
       otherSections={_otherSections(props.platform) as IPageSectionProps[]}
     />
   );

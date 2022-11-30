@@ -155,11 +155,11 @@ export class Nav extends React.Component<INavProps, INavState> {
       <li
         className={css(
           styles.link,
-          isPageActive(page.url) && styles.isActive,
+          isPageActive(page.url!) && styles.isActive,
           hasActiveChild(page) && styles.hasActiveChild,
           page.isHomePage && styles.isHomePage,
         )}
-        key={linkIndex + page.url}
+        key={linkIndex + page.url!}
       >
         {page.title.toLowerCase().indexOf(searchQuery) !== -1 && (
           <Link href={page.url} onClick={this._onLinkClick} target={page.isExternal ? '_blank' : undefined}>

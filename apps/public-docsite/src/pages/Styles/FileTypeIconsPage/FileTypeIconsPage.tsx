@@ -18,8 +18,8 @@ export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = prop
   return (
     <StylesAreaPage
       {...props}
-      {...FileTypeIconsPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...FileTypeIconsPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };

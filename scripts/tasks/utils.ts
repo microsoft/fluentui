@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as jju from 'jju';
 import type { TscTaskOptions } from 'just-scripts';
+import { stripJsonComments } from '@nrwl/devkit';
 
 export function getTsPathAliasesConfig() {
   const cwd = process.cwd();
@@ -15,6 +16,15 @@ export function getTsPathAliasesConfig() {
   const isUsingTsSolutionConfigs = Boolean(tsConfig);
 
   return { tsConfig, isUsingTsSolutionConfigs, tsConfigFile, tsConfigPath, packageJson };
+}
+
+export function getTsPathAliasesConfigV8() {
+  const cwd = process.cwd();
+  const tsConfigFile = 'tsconfig.json';
+  const tsConfigPath = path.join(cwd, `./${tsConfigFile}`);
+  const tsConfig = JSON.parse(stripJsonComments(fs.readFileSync(tsConfigPath, 'utf-8')));
+  const isUsingV8pathAliases = tsConfig.extends && tsConfig.extends.includes('tsconfig.base.v8.json');
+  return { isUsingV8pathAliases, tsConfigFileV8: tsConfigFile };
 }
 
 const packagesWithInvalidTypes = [

@@ -16,10 +16,10 @@ const GetStartedPageBase: React.FunctionComponent<IGetStartedPageProps> = props 
   return (
     <Page
       title="Get started"
-      subTitle={getSubTitle(platform)}
+      subTitle={getSubTitle(platform!)}
       {...props}
-      {...GetStartedPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...GetStartedPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
