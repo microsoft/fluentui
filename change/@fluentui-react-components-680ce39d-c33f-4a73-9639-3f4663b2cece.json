@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "[NEW] Add virtualizer component (unstable) to exports",
+  "packageName": "@fluentui/react-components",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
