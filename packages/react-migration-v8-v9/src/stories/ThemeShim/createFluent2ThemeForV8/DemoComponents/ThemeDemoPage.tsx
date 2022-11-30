@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-no-bind */
-import { ITheme, mergeStyles } from '@fluentui/react';
-import { ThemeProvider } from '@fluentui/react';
 import type { FunctionComponent } from 'react';
 import { useState } from 'react';
 import * as React from 'react';
+
+import { ITheme, mergeStyles } from '@fluentui/react';
+import { ThemeProvider } from '@fluentui/react';
+import { ChevronDown12Regular } from '@fluentui/react-icons';
 
 import { BreadcrumbBasicExample } from './FluentV8ComponentDemos/Breadcrumb.example';
 import { ButtonExample } from './FluentV8ComponentDemos/Button.example';
@@ -34,7 +36,6 @@ import { TooltipBasicExample } from './FluentV8ComponentDemos/Tooltip.example';
 import { Fluent2ForV8LightTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2ForV8LightTheme';
 import { Fluent2ForV8DarkTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2ForV8DarkTheme';
 import { Button, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import { ChevronDown12Regular } from '@fluentui/react-icons';
 import { FluentComponentSamples } from './FluentV8ComponentSamples';
 
 const rootStyles = mergeStyles({ padding: 20 });
