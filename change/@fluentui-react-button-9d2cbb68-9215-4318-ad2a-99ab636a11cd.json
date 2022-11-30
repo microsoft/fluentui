@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: refactor to use makeResetStyles",
+  "packageName": "@fluentui/react-button",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

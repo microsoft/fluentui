@@ -5,6 +5,7 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
+import { makeResetStyles } from '@griffel/react';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
 import { Types } from 'tabster';
@@ -13,7 +14,7 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
 
 // @public
-export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
+export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {

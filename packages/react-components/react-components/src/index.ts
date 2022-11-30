@@ -1,6 +1,8 @@
 // Utilities
 export {
   __css,
+  __resetCSS,
+  __resetStyles,
   __styles,
   createDOMRenderer,
   makeStaticStyles,
