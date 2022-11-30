@@ -576,7 +576,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             onMouseOver={this._onRectMouseMove}
             {...points[index]!.lineOptions}
           />
-          {singleStackedData.length == 1} ?
+          {singleStackedData.length === 1} ?
           <circle
             id={`${index}-graph-${this._uniqueIdForGraph}`}
             cx={xScale(singleStackedData[0].xVal)}
