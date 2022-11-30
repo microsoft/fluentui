@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/virtualizer",
   "version": "9.0.0-alpha.0",
-  "private": true,
   "description": "Virtualizer for tables/list",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
