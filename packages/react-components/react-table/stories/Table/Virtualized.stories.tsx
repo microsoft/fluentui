@@ -191,7 +191,7 @@ export const Virtualized = () => {
           }}
         >
           {rows.map(({ item }, index) => (
-            <TableRow key={item.file.label} style={{ height: index % 2 == 0 ? '88px' : '44px' }}>
+            <TableRow key={item.file.label} style={{ height: index % 2 === 0 ? '88px' : '44px' }}>
               <TableCell>
                 <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
