@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Virtualizer } from '@fluentui/react-components/unstable';
-import { makeStyles } from '@griffel/react';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -28,7 +28,7 @@ export const ReversedHorizontal = () => {
       nodeList.push(<span className={styles.child}>{`Node-${i}`}</span>);
     }
     return nodeList;
-  }, [childLength]);
+  }, [styles.child]);
 
   return (
     <div className={styles.container}>
