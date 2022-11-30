@@ -1,5 +1,14 @@
-import { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
-import { TableState as HeadlessTableState } from '../../hooks';
+import * as React from 'react';
+import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
+import type {
+  SortState,
+  TableState as HeadlessTableState,
+  UseSortOptions,
+  SelectionMode,
+  UseSelectionOptions,
+  OnSelectionChangeData,
+} from '../../hooks';
+import { TableRowProps } from '../TableRow/TableRow.types';
 
 export type DataGridSlots = TableSlots;
 
@@ -18,6 +27,24 @@ export type DataGridContextValue = HeadlessTableState<any> & {
    * @default none
    */
   focusMode: FocusMode;
+
+  /**
+   * Lets child components know if rows selection is enabled
+   * @see selectionMode prop enables row selection on the component
+   */
+  selectableRows: boolean;
+
+  /**
+   * Enables subtle selection style
+   * @default false
+   */
+  subtleSelection: boolean;
+
+  /**
+   * Row appearance when selected
+   * @default brand
+   */
+  selectionAppearance: TableRowProps['appearance'];
 };
 
 /**
@@ -25,12 +52,22 @@ export type DataGridContextValue = HeadlessTableState<any> & {
  */
 export type DataGridProps = TableProps &
   Pick<DataGridContextValue, 'items' | 'columns'> &
-  Pick<Partial<DataGridContextValue>, 'focusMode'>;
+  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> &
+  Pick<UseSortOptions, 'sortState' | 'defaultSortState'> &
+  Pick<UseSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+    onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
+    onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
+    /**
+     * Enables row selection and sets the selection mode
+     * @default false
+     */
+    selectionMode?: SelectionMode;
+  };
 
 /**
  * State used in rendering DataGrid
  */
 export type DataGridState = TableState & { tableState: HeadlessTableState<unknown> } & Pick<
     DataGridContextValue,
-    'focusMode'
+    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance'
   >;

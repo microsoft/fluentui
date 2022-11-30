@@ -99,8 +99,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       />
       <g>
         <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
+          aria-label="2020/04/30. First, 10%."
           className=
 
               {
@@ -114,14 +113,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
           width={32}
           x={56}
           y={224}
         />
         <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
+          aria-label="2020/04/30. Second, 20%."
           className=
 
               {
@@ -135,14 +133,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
+          aria-label="2020/04/30. Third, 37%."
           className=
 
               {
@@ -156,7 +153,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={122}
@@ -751,8 +748,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       />
       <g>
         <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
+          aria-label="2020/04/30. First, 10%."
           className=
 
               {
@@ -766,14 +762,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
           width={32}
           x={56}
           y={224}
         />
         <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
+          aria-label="2020/04/30. Second, 20%."
           className=
 
               {
@@ -787,14 +782,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
+          aria-label="2020/04/30. Third, 37%."
           className=
 
               {
@@ -808,7 +802,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="text"
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={122}

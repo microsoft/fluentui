@@ -1,5 +1,5 @@
 import { getAllPackageInfo, findGitRoot } from '../monorepo';
-import { readConfig } from '../read-config';
+import { readConfig } from '../utils';
 import * as glob from 'glob';
 import * as path from 'path';
 import * as fs from 'fs';

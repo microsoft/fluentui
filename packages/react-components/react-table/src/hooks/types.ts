@@ -10,6 +10,10 @@ export interface SortState {
   sortDirection: SortDirection;
 }
 
+export interface OnSelectionChangeData {
+  selectedItems: Set<RowId>;
+}
+
 export interface CreateColumnOptions<TItem> extends Partial<ColumnDefinition<TItem>> {
   columnId: ColumnId;
 }
@@ -92,6 +96,8 @@ export interface TableSelectionState {
    * Checks if a given rowId is selected
    */
   isRowSelected: (rowId: RowId) => boolean;
+
+  selectionMode: SelectionMode;
 }
 
 export interface RowState<TItem> {
@@ -139,7 +145,7 @@ export interface UseSortOptions {
   /**
    * Called when sort changes
    */
-  onSortChange?: (e: React.SyntheticEvent, state: SortState) => void;
+  onSortChange?(e: React.SyntheticEvent, state: SortState): void;
 }
 
 export interface UseSelectionOptions {
@@ -158,7 +164,7 @@ export interface UseSelectionOptions {
   /**
    * Called when selection changes
    */
-  onSelectionChange?: (e: React.SyntheticEvent, selectedItems: Set<RowId>) => void;
+  onSelectionChange?(e: React.SyntheticEvent, data: OnSelectionChangeData): void;
 }
 
 export interface UseTableOptions<TItem> {

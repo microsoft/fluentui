@@ -25,8 +25,6 @@ import { Markdown } from '../Markdown/index';
 import { codeFontFamily } from '../CodeSnippet/CodeSnippet.styles';
 import { titleCase } from '../../utilities/string';
 
-// TODO: remove
-export { IApiReferencesTableProps };
 export type IApiReferencesTableState = {};
 
 /** @internal */

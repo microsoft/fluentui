@@ -1,7 +1,7 @@
 import { task, series } from 'gulp';
 import fs from 'fs';
 
-import config from '../../config';
+import config from '../config';
 import getScreenerStates from '../../screener/screener.states';
 
 const { paths } = config;

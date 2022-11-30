@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.101.1",
+  "version": "8.103.3",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,7 @@
     "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "codepen": "node ../../scripts/local-codepen.js",
+    "codepen": "node ../../scripts/executors/local-codepen.js",
     "e2e": "yarn workspace @fluentui/react-examples cypress run --component",
     "e2e:local": "yarn workspace @fluentui/react-examples cypress open --component",
     "just": "just-scripts",

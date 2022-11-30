@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toolbar",
-  "version": "9.0.0-beta.13",
+  "version": "9.0.0-beta.14",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,13 +32,13 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.1.8",
-    "@fluentui/react-divider": "^9.1.4",
+    "@fluentui/react-button": "^9.1.9",
+    "@fluentui/react-divider": "^9.1.5",
     "@fluentui/react-theme": "^9.1.2",
-    "@fluentui/react-utilities": "^9.2.1",
-    "@fluentui/react-context-selector": "^9.1.1",
-    "@fluentui/react-radio": "^9.0.11",
-    "@fluentui/react-tabster": "^9.3.0",
+    "@fluentui/react-utilities": "^9.2.2",
+    "@fluentui/react-context-selector": "^9.1.2",
+    "@fluentui/react-radio": "^9.0.12",
+    "@fluentui/react-tabster": "^9.3.1",
     "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },

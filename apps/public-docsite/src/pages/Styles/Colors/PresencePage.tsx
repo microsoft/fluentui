@@ -11,8 +11,8 @@ export const ColorsPresencePage: React.FunctionComponent<IStylesPageProps> = pro
   return (
     <StylesAreaPage
       {...props}
-      {...ColorsPresencePageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...ColorsPresencePageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };

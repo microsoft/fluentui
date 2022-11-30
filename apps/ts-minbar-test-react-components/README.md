@@ -1,1 +1,3 @@
-This test package was created to ensure that `@fluentui/react-components` remains compatible with Typescript 3.9 and no non TS 3.9 compatible code are introduced.
+# ts-minbar-test-react-components
+
+This test app ensures that `@fluentui/react-components` is compatible back to Typescript 3.9.

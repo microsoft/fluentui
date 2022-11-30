@@ -12,8 +12,8 @@ import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 
-import sh from '../sh';
-import config from '../../config';
+import { sh } from '../../utils';
+import config from '../config';
 import gulpComponentMenuBehaviors from '../plugins/gulp-component-menu-behaviors';
 import gulpDoctoc from '../plugins/gulp-doctoc';
 import gulpExampleMenu from '../plugins/gulp-example-menu';
@@ -122,7 +122,7 @@ task('build:docs:schema', () =>
 );
 
 task('build:docs:webpack', cb => {
-  webpackPlugin(require('../../webpack/webpack.config').default, cb);
+  webpackPlugin(require('../webpack/webpack.config').default, cb);
 });
 
 task('build:docs:assets:component:info', cb => {
@@ -186,7 +186,7 @@ task('serve:docs', async () => {
 });
 
 task('serve:docs:hot', async () => {
-  const webpackConfig = require('../../webpack/webpack.config').default;
+  const webpackConfig = require('../webpack/webpack.config').default;
   const compiler = webpack(webpackConfig);
 
   server = await serve(paths.docsDist(), config.server_host, config.server_port, app => {

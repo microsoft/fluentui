@@ -17,7 +17,7 @@ import {
   ProfilerMeasureCycle,
   ReducedMeasures,
 } from '../../../packages/fluentui/perf/types';
-import config from '../../config';
+import config from '../config';
 import webpackPlugin from '../plugins/gulp-webpack';
 import { Browser, createChrome, createElectron } from './browserAdapters';
 
@@ -156,7 +156,7 @@ async function runMeasures(
 task('perf:clean', () => del(paths.perfDist(), { force: true }));
 
 task('perf:build', cb => {
-  webpackPlugin(require('../../webpack/webpack.config.perf').default, cb);
+  webpackPlugin(require('../webpack/webpack.config.perf').default, cb);
 });
 
 task('perf:run', async () => {

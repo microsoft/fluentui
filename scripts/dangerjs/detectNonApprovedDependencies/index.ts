@@ -1,3 +1,4 @@
+import * as path from 'path';
 import {
   getFailedPackageVersionConstraints,
   getVersionConstraints,
@@ -5,10 +6,8 @@ import {
   getPackageName,
   FailedConstraintsExplanation,
 } from './utils';
-import config from '../../config';
 import { DangerJS } from '../types';
-
-const { paths } = config;
+import { workspaceRoot } from '../utils';
 
 /**
  * This check uses the following logic:
@@ -23,7 +22,9 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
   const allFailedVersionConstraints: FailedConstraintsExplanation[] = [];
 
   const dependencyPackageIds = getRuntimeDependencies('react-northstar');
-  const versionConstraints = await getVersionConstraints(paths.packages('react-northstar', 'package.json'));
+  const versionConstraints = await getVersionConstraints(
+    path.resolve(workspaceRoot, 'packages/fluentui/react-northstar/package.json'),
+  );
 
   dependencyPackageIds.forEach(packageId => {
     const failedPackageVersionConstraints = getFailedPackageVersionConstraints(

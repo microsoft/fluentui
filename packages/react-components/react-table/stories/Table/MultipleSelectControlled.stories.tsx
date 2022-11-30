@@ -126,7 +126,7 @@ export const MultipleSelectControlled = () => {
       useSelection({
         selectionMode: 'multiselect',
         selectedItems: selectedRows,
-        onSelectionChange: (e, nextSelelectedRows) => setSelectedRows(nextSelelectedRows),
+        onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
       }),
     ],
   );
@@ -137,7 +137,8 @@ export const MultipleSelectControlled = () => {
       ...row,
       onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
-        if (e.key === ' ' || e.key === 'Enter') {
+        if (e.key === ' ') {
+          e.preventDefault();
           toggleRow(e, row.rowId);
         }
       },
@@ -149,10 +150,12 @@ export const MultipleSelectControlled = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table>
+    <Table {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
+            tabIndex={0}
+            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
           />
@@ -162,7 +165,7 @@ export const MultipleSelectControlled = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
+      <TableBody>
         {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
@@ -189,4 +192,15 @@ export const MultipleSelectControlled = () => {
       </TableBody>
     </Table>
   );
+};
+
+MultipleSelectControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control selection features with external',
+        'user state.',
+      ].join('\n'),
+    },
+  },
 };

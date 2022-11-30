@@ -80,7 +80,29 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
     const { isTooltipVisible } = this.state;
     const tooltipId = id || this._defaultTooltipId;
-    const tooltipContent = tooltipProps?.onRenderContent ? tooltipProps.onRenderContent() : content;
+
+    const tooltipRenderProps = {
+      id: `${tooltipId}--tooltip`,
+      content,
+      targetElement: this._getTargetElement(),
+      directionalHint,
+      directionalHintForRTL,
+      calloutProps: assign({}, calloutProps, {
+        onDismiss: this._hideTooltip,
+        onFocus: this._onTooltipContentFocus,
+        onMouseEnter: this._onTooltipMouseEnter,
+        onMouseLeave: this._onTooltipMouseLeave,
+      }),
+      onMouseEnter: this._onTooltipMouseEnter,
+      onMouseLeave: this._onTooltipMouseLeave,
+      ...getNativeProps(this.props, divProperties, ['id']), // Make sure we use the id above
+      ...tooltipProps,
+    };
+
+    // Get the content of the tooltip for use in the hidden div used for screen readers
+    const tooltipContent = tooltipProps?.onRenderContent
+      ? tooltipProps.onRenderContent(tooltipRenderProps, props => (props?.content ? <>{props.content}</> : null))
+      : content;
     const showTooltip = isTooltipVisible && !!tooltipContent;
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && !!tooltipContent ? tooltipId : undefined;
 
@@ -98,25 +120,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         aria-describedby={ariaDescribedBy}
       >
         {children}
-        {showTooltip && (
-          <Tooltip
-            id={`${tooltipId}--tooltip`}
-            content={content}
-            targetElement={this._getTargetElement()}
-            directionalHint={directionalHint}
-            directionalHintForRTL={directionalHintForRTL}
-            calloutProps={assign({}, calloutProps, {
-              onDismiss: this._hideTooltip,
-              onFocus: this._onTooltipContentFocus,
-              onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave,
-            })}
-            onMouseEnter={this._onTooltipMouseEnter}
-            onMouseLeave={this._onTooltipMouseLeave}
-            {...getNativeProps(this.props, divProperties, ['id'])} // Make sure we use the id above
-            {...tooltipProps}
-          />
-        )}
+        {showTooltip && <Tooltip {...tooltipRenderProps} />}
         <div hidden={true} id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
           {tooltipContent}
         </div>

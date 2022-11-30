@@ -178,3 +178,15 @@ export const Sort = () => {
     </Table>
   );
 };
+
+Sort.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Using the `sortable` prop will configure all header cells to be buttons and add extra styles.',
+        'The `TableHeaderCell` component accepts a `sortDirection` prop that will indicate whether the',
+        'header is sorted. Handling the sort of data and column state is handled by our hook.',
+      ].join('\n'),
+    },
+  },
+};

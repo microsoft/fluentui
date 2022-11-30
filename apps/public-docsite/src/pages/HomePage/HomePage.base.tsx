@@ -105,7 +105,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     const { theme, styles } = this.props;
 
     this._classNames = getClassNames(styles, {
-      theme,
+      theme: theme!,
       isMountedOffset,
     });
 
@@ -164,15 +164,15 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     const { theme, styles } = this.props;
 
     const classNames = getClassNames(styles, {
-      theme,
+      theme: theme!,
       isMountedOffset,
       isInverted: true,
     });
 
-    const { versions, selectedMajorName } = SiteDefinition.versionSwitcherDefinition;
+    const { versions, selectedMajorName } = SiteDefinition.versionSwitcherDefinition!;
 
-    const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
-    const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.white };
+    const versionSwitcherColor: IRawStyle = { color: theme!.palette.white };
+    const versionSwitcherActiveColor: IRawStyle = { color: theme!.palette.white };
 
     return (
       <div className={classNames.platformCardsSection}>
@@ -335,7 +335,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
     // We need to get classNames within this method for offset transitions and inverted sections.
     const classNames = getClassNames(styles, {
-      theme,
+      theme: theme!,
       isMountedOffset,
       isInverted: true,
     });
