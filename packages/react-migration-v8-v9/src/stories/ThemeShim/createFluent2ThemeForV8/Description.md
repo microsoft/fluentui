@@ -1,4 +1,4 @@
-These two themes support the Fluent 2 look and feel for Fluent UI v8. This allows teams to change the UI in a single change, and then migrate components over time to v9 without further disrupting their users.
+These two themes support the Fluent 2 look and feel but are compatible with the v8 code base. This allows teams to change the UI in a single change, and then migrate components over time to v9 without further disrupting their users.
 
 These themes change colors, effects and component styles to closely match the new design language.
 

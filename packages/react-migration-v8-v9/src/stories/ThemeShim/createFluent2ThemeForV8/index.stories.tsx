@@ -9,7 +9,7 @@ export const Default = () => {
 };
 
 export default {
-  title: 'Migration Shims/Theme/Fleuent2ThemeForV8',
+  title: 'Migration Shims/Theme/Fluent2ThemeForV8',
   parameters: {
     docs: {
       description: {
