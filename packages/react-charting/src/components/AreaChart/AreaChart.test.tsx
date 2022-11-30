@@ -44,6 +44,18 @@ const chartPoints = {
   lineChartData: points,
 };
 
+const singlePoint = [
+  {
+    legend: 'metaData1',
+    data: [{ x: 20, y: 50 }],
+    color: 'red',
+  },
+];
+const singleChartPoint = {
+  chartTitle: 'AreaChart',
+  lineChartData: singlePoint,
+};
+
 describe('AreaChart snapShot testing', () => {
   it('renders Areachart correctly', () => {
     const component = renderer.create(<AreaChart data={chartPoints} />);
@@ -83,6 +95,12 @@ describe('AreaChart snapShot testing', () => {
 
   it('renders yAxisTickFormat correctly', () => {
     const component = renderer.create(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Areachart with single point correctly', () => {
+    const component = renderer.create(<AreaChart data={singleChartPoint} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
