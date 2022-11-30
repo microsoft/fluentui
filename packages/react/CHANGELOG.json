@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 30 Nov 2022 07:46:31 GMT",
+      "tag": "@fluentui/react_v8.103.3",
+      "version": "8.103.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "60b2e7d6d6ccc51d1aa8e4216613106a9b4dd0e1",
+            "comment": "fix: Allow data-selection-disabled to be respected by DetailsRow."
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a1ed5fe8f610c82cc319add155655e9f66b3ff8e",
+            "comment": "chore: update codepen scripts task alias path"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Nov 2022 07:53:48 GMT",
       "tag": "@fluentui/react_v8.103.2",
       "version": "8.103.2",
