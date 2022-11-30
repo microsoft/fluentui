@@ -11,7 +11,7 @@ import { Fluent2ForV8LightTheme, Fluent2ForV8DarkTheme } from "@fluentui/react-m
 const selectedTheme = someThemeStateVariableDictatingLightOrDark ? Fluent2ForV8LightTheme : Fluent2ForV8DarkTheme;
 
 <ThemeProvider theme={selectedTheme}>
-  //app jsx.
+  // app jsx
 </ThemeProvider>
 
 ```
