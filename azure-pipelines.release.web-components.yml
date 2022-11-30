@@ -54,7 +54,7 @@ jobs:
         displayName: Build, Test, Lint
 
       - script: |
-          yarn beachball publish -b origin/web-components-v3 --access public -y -n $(npmToken) --tag alpha --prerelease-prefix alpha --config scripts/beachball/release-web-components.config.js
+          yarn beachball publish -b origin/web-components-v3 --access public -y -n $(npmToken) --config scripts/beachball/release-web-components.config.js
           git reset --hard origin/web-components-v3
         env:
           GITHUB_PAT: $(githubPAT)
