@@ -5,7 +5,7 @@ import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const ControlledRadio = (props: Partial<ToolbarProps>) => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
-    edit: ['italic', 'bold'],
+    textOptions: ['center'],
   });
 
   const onChange: ToolbarProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
@@ -16,24 +16,14 @@ export const ControlledRadio = (props: Partial<ToolbarProps>) => {
 
   return (
     <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <ToolbarRadioButton aria-label="Align left" name="textOptions" value="left" icon={<AlignLeft24Regular />} />
       <ToolbarRadioButton
-        aria-label="Radio Option - Align left"
-        name="text-style"
-        value="italic"
-        icon={<AlignLeft24Regular />}
-      />
-      <ToolbarRadioButton
-        aria-label="Radio Option - Align Center"
-        name="text-style"
-        value="bold"
+        aria-label="Align Center"
+        name="textOptions"
+        value="center"
         icon={<AlignCenterHorizontal24Regular />}
       />
-      <ToolbarRadioButton
-        aria-label="Radio Option - Align Right"
-        name="text-style"
-        value="underline"
-        icon={<AlignRight24Regular />}
-      />
+      <ToolbarRadioButton aria-label="Align Right" name="textOptions" value="right" icon={<AlignRight24Regular />} />
     </Toolbar>
   );
 };

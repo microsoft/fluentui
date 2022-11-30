@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.65.0 ]------------------------------- -->
+## [v0.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.65.0) (2022-10-31)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.64.0..@fluentui/react-northstar_v0.65.0)
+
 ### BREAKING CHANGES
 - Styles from `ChatMessage` content slot were moved to exact component `ChatMessageContent` @yuanboxue-amber ([#24691](https://github.com/microsoft/fluentui/pull/24691))
 - Remove `goToToday` prop from `DatePicker` as it had no effect @miroslavstastny ([#25242](https://github.com/microsoft/fluentui/pull/25242))

@@ -13,7 +13,8 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "types": ["webpack-env"]
+    "types": ["webpack-env"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

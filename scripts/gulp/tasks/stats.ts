@@ -7,7 +7,7 @@ import stableStringify from 'json-stable-stringify-without-jsonify';
 import { argv } from 'yargs';
 import requestHttp from 'request-promise-native';
 
-import config from '../../config';
+import config from '../config';
 
 const { paths } = config;
 
@@ -115,7 +115,7 @@ const currentStatsFilePath = paths.docsSrc('currentBundleStats.json');
 
 task('stats:build:bundle', async () => {
   process.env.NODE_ENV = 'build';
-  const webpackStatsConfig = require('../../webpack/webpack.config.stats').default;
+  const webpackStatsConfig = require('../webpack/webpack.config.stats').default;
 
   const assets = await compileOneByOne(webpackStatsConfig);
   const results = _(assets)
