@@ -12,10 +12,10 @@ describe('visitUrl', () => {
     jest.spyOn(console, 'error').mockImplementation(noop);
 
     const pageMock: Partial<Page> = {
-      goto: jest.fn().mockImplementation(() => Promise.reject()),
+      goto: jest.fn().mockImplementation(() => Promise.reject('page wont open - mock')),
     };
 
-    await expect(visitUrl(pageMock as Page, 'https://localhost:8080')).rejects.toMatchInlineSnapshot(`undefined`);
+    await expect(visitUrl(pageMock as Page, 'https://localhost:8080')).rejects.toMatchInlineSnapshot(`page wont open - mock`);
     expect(pageMock.goto).toHaveBeenCalledTimes(5);
   });
 
