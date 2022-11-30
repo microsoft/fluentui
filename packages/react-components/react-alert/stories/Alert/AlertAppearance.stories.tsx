@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Alert } from '@fluentui/react-alert';
+import { FluentProvider, teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-components';
 
 const renderAlerts = (appearance: 'primary' | 'inverted') => (
   <div style={{ flexGrow: 1 }}>
@@ -23,10 +24,16 @@ const renderAlerts = (appearance: 'primary' | 'inverted') => (
 );
 
 export const Appearance = () => (
-  <div style={{ display: 'flex', gap: '20px' }}>
-    {renderAlerts('primary')}
-    {renderAlerts('inverted')}
-  </div>
+  <>
+    {[teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme].map(theme => (
+      <FluentProvider theme={theme} key={'appearance-toast'}>
+        <div style={{ display: 'flex', gap: '20px', margin: '20px 0', padding: '20px' }}>
+          {renderAlerts('primary')}
+          {renderAlerts('inverted')}
+        </div>{' '}
+      </FluentProvider>
+    ))}
+  </>
 );
 
 Appearance.storyName = 'Appearance';
