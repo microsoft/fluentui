@@ -308,8 +308,8 @@ export const TextEditorToolbars: React.FC = () => {
           </MenuPopover>
         </Menu>
         <ToolbarButton>Save</ToolbarButton>
-        <ToolbarButton aria-haspopup="dialog">Save as...</ToolbarButton>
-        <ToolbarButton aria-haspopup="dialog">Print...</ToolbarButton>
+        <ToolbarButton>Save as...</ToolbarButton>
+        <ToolbarButton>Print...</ToolbarButton>
         <ToolbarButton>Close</ToolbarButton>
       </Toolbar>
 
@@ -354,7 +354,7 @@ export const TextEditorToolbars: React.FC = () => {
           withArrow
         >
           <PopoverTrigger>
-            <ToolbarButton aria-haspopup="dialog">Table</ToolbarButton>
+            <ToolbarButton>Table</ToolbarButton>
           </PopoverTrigger>
           <PopoverSurface aria-labelledby="tableDialogTitle">
             <Text as="h2" id="tableDialogTitle">
@@ -377,7 +377,7 @@ export const TextEditorToolbars: React.FC = () => {
           withArrow
         >
           <PopoverTrigger>
-            <ToolbarButton aria-haspopup="dialog">Graphics</ToolbarButton>
+            <ToolbarButton>Graphics</ToolbarButton>
           </PopoverTrigger>
           <PopoverSurface aria-labelledby="graphicsDialogTitle">
             <Text as="h2" id="graphicsDialogTitle">

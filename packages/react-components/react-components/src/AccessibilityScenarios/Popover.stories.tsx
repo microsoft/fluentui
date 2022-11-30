@@ -17,7 +17,7 @@ export const AddPeoplePopover: React.FunctionComponent = () => {
         trapFocus
       >
         <PopoverTrigger>
-          <Button aria-haspopup="dialog">Add people</Button>
+          <Button>Add people</Button>
         </PopoverTrigger>
 
         <PopoverSurface aria-label="Add someone to the chat">
