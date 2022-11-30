@@ -1,5 +1,7 @@
-const lernaAlias = require('../lernaAliasNorthstar');
-const findGitRoot = require('../monorepo/findGitRoot');
+const { getLernaAliases, workspaceRoot } = require('../monorepo');
+
+// northstar packages should pull these from npm, not the repo
+const excludedPackages = ['@fluentui/dom-utilities'];
 
 module.exports = (/** @type {import('@jest/types').Config.InitialOptions} */ customConfig) => ({
   coverageDirectory: './coverage/',
@@ -14,8 +16,10 @@ module.exports = (/** @type {import('@jest/types').Config.InitialOptions} */ cus
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   ...customConfig,
   moduleNameMapper: {
-    ...lernaAlias.jest({
-      directory: findGitRoot(),
+    ...getLernaAliases({
+      type: 'jest',
+      excludedPackages,
+      directory: workspaceRoot,
     }),
     ...customConfig.moduleNameMapper,
   },

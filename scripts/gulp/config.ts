@@ -2,6 +2,12 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import * as webpack from 'webpack';
 import { URL } from 'url';
+import { getLernaAliases } from '../monorepo';
+
+// northstar packages should pull these from npm, not the repo
+const excludedPackages = ['@fluentui/dom-utilities'];
+const lernaAliases = (options: Omit<Parameters<typeof getLernaAliases>[number], 'excludedPackages'>) =>
+  getLernaAliases({ excludedPackages, ...options });
 
 // ------------------------------------
 // Environment vars
@@ -30,7 +36,7 @@ const envConfig = {
   // ----------------------------------
   // Project Structure
   // ----------------------------------
-  path_base: path.resolve(__dirname, '..'),
+  path_base: path.resolve(__dirname, '../../'),
   dir_build: 'scripts',
   dir_docs: 'packages/fluentui/docs',
   dir_docs_dist: 'packages/fluentui/docs/dist',
@@ -167,6 +173,7 @@ const config = {
   isRoot,
   /** Package name the task is running against: default to react if running at root, or cwd otherwise */
   package: packageName,
+  lernaAliases,
 };
 
 export default config;

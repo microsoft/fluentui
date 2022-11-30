@@ -1,9 +1,10 @@
 import type { AddChange } from 'parse-diff';
 import * as fs from 'fs';
+import * as path from 'path';
+import type { DangerDSLType } from 'danger';
 
-import config from '../config';
-import { DangerJS } from './types';
-import { DangerDSLType } from 'danger';
+import { workspaceRoot } from './utils';
+import type { DangerJS } from './types';
 
 const CHANGELOG_FILE = 'packages/fluentui/CHANGELOG.md';
 
@@ -11,7 +12,7 @@ const CHANGELOG_FILE = 'packages/fluentui/CHANGELOG.md';
  * This function asserts that added entries into the changelog file are placed in the right section.
  */
 const hasAddedLinesAfterVersionInChangelog = async (danger: DangerDSLType): Promise<boolean> => {
-  const changelogContent = fs.readFileSync(config.paths.base(CHANGELOG_FILE)).toString();
+  const changelogContent = fs.readFileSync(path.resolve(workspaceRoot, CHANGELOG_FILE)).toString();
   const versionLineNumber = changelogContent
     .split('\n')
     .findIndex(line => line.startsWith('<!--') && line.endsWith('-->'));

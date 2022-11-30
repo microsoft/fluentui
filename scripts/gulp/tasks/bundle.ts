@@ -3,8 +3,8 @@ import babel from 'gulp-babel';
 import sourcemaps from 'gulp-sourcemaps';
 import del from 'del';
 
-import config from '../../config';
-import sh from '../sh';
+import config from '../config';
+import { sh } from '../../utils';
 
 const { paths } = config;
 

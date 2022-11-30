@@ -13,10 +13,8 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const webpackVersion = /** @type {string} */ (require('webpack/package.json').version);
 
 const merge = require('../tasks/merge');
-const { findGitRoot } = require('../monorepo');
+const { getDefaultEnvironmentVars, findGitRoot } = require('../monorepo');
 const getResolveAlias = require('./getResolveAlias');
-
-const getDefaultEnvironmentVars = require('./getDefaultEnvironmentVars');
 
 console.log(`Webpack version: ${webpackVersion}`);
 

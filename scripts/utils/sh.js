@@ -1,10 +1,18 @@
-import * as childProcess from 'child_process';
+const childProcess = require('child_process');
 
-const sh = (command: string, cwd?: string, pipeOutputToResult: boolean = false): Promise<string> =>
+/**
+ *
+ * @param {string} command
+ * @param {string=} cwd
+ * @param {boolean} pipeOutputToResult
+ * @returns {Promise<string>}
+ */
+const sh = (command, cwd, pipeOutputToResult = false) =>
   new Promise((resolve, reject) => {
     const [cmd, ...args] = command.split(' ');
 
-    const options: childProcess.SpawnOptions = {
+    /** @type {import('child_process').SpawnOptions} */
+    const options = {
       cwd: cwd || process.cwd(),
       env: process.env,
       stdio: pipeOutputToResult ? 'pipe' : 'inherit',
@@ -30,4 +38,4 @@ const sh = (command: string, cwd?: string, pipeOutputToResult: boolean = false):
     });
   });
 
-export default sh;
+exports.sh = sh;

@@ -2,8 +2,9 @@ import fs from 'fs';
 import fsExtra from 'fs-extra';
 import path from 'path';
 import tmp from 'tmp';
-// note: there's nothing gulp-specific about this utility, it just runs commands
-import sh from '../gulp/sh';
+
+import { sh } from '../utils';
+import { workspaceRoot } from '../monorepo';
 
 // Clean up created files/folders on exit, even after exceptions
 // (will not catch SIGINT on windows)
@@ -72,3 +73,5 @@ export async function shEcho(cmd: string, cwd?: string) {
 export function generateFiles(srcFolder: string, target: string) {
   fsExtra.copySync(srcFolder, target, { recursive: true });
 }
+
+export { workspaceRoot };

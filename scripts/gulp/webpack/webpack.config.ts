@@ -1,6 +1,5 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import _ from 'lodash';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -8,7 +7,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import config from '../config';
-import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
+import { getDefaultEnvironmentVars } from '../../monorepo';
 
 const { paths } = config;
 const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
@@ -104,7 +103,8 @@ const webpackConfig: webpack.Configuration &
         babelStandalone: require('@babel/standalone/package.json').version,
         lodash: require('lodash/package.json').version,
         prettier: require('prettier/package.json').version,
-        fluentUI: require('../package.json').version,
+        // FIXME?: this is not used anywhere in doc templates and also points to wrong package.json (one within scripts/)
+        fluentUI: require('../../package.json').version,
         reactVis: require('react-vis/package.json').version,
       },
     }),
@@ -124,7 +124,7 @@ const webpackConfig: webpack.Configuration &
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      ...lernaAliases(),
+      ...config.lernaAliases({ type: 'webpack' }),
       src: paths.packageSrc('react-northstar'),
       faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',

@@ -1,9 +1,10 @@
-import config from '../config';
 import { safeLaunchOptions } from '../puppeteer/puppeteer.config';
 import express from 'express';
 import http from 'http';
 import puppeteer from 'puppeteer';
 import { AddressInfo } from 'net';
+
+const SERVER_HOST = 'localhost';
 
 function startServer(publicDirectory: string, listenPort: number) {
   return new Promise<http.Server>((resolve, reject) => {
@@ -11,7 +12,7 @@ function startServer(publicDirectory: string, listenPort: number) {
       const app = express();
       app.use(express.static(publicDirectory));
 
-      const server = app.listen(listenPort, config.server_host, () => {
+      const server = app.listen(listenPort, SERVER_HOST, () => {
         resolve(server);
       });
     } catch (err) {
@@ -57,7 +58,7 @@ export async function performBrowserTest(publicDirectory: string) {
     error = pageError;
   });
 
-  const url = `http://${config.server_host}:${port}`;
+  const url = `http://${SERVER_HOST}:${port}`;
   console.log(`Loading ${url} in puppeteer...`);
   await page.goto(url);
   console.log('Page loaded');
