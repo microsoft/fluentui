@@ -2,4 +2,4 @@ export * from './themeDuplicates';
 export * from './v8ThemeShim';
 export * from './v9BrandVariantsShim';
 export * from './v9ThemeShim';
-export * from './fluent2ThemeForV8';
+export * from './Fluent2ThemeForV8';

@@ -31,8 +31,8 @@ import { TextFieldBasicExample } from './FluentV8ComponentDemos/TextField.exampl
 import { ToggleBasicExample } from './FluentV8ComponentDemos/Toggle.example';
 import { TooltipBasicExample } from './FluentV8ComponentDemos/Tooltip.example';
 
-import { Fluent2ForV8LightTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2-for-v8-light-theme';
-import { Fluent2ForV8DarkTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2-for-v8-dark-theme';
+import { Fluent2ForV8LightTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2ForV8LightTheme';
+import { Fluent2ForV8DarkTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2ForV8DarkTheme';
 import { Button, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { ChevronDown12Regular } from '@fluentui/react-icons';
 import { FluentComponentSamples } from './FluentV8ComponentSamples';
