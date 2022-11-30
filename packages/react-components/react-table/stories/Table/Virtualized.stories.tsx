@@ -187,7 +187,7 @@ export const Virtualized = () => {
           itemSize={44}
           sizeOfChild={(node, index) => {
             // An example of simple dynamic sizing
-            return index % 2 == 0 ? 88 : 44;
+            return index % 2 === 0 ? 88 : 44;
           }}
         >
           {rows.map(({ item }, index) => (
