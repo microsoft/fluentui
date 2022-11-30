@@ -17,8 +17,6 @@ import { apiExtractor } from './api-extractor';
 import { lintImports } from './lint-imports';
 import { prettier } from './prettier';
 import { screener } from './screener';
-import { checkForModifiedFiles } from './check-for-modified-files';
-import { generateVersionFiles } from './generate-version-files';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
 import { startStorybookTask, buildStorybookTask } from './storybook';
@@ -65,8 +63,6 @@ export function preset() {
   task('api-extractor', apiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
-  task('check-for-modified-files', checkForModifiedFiles);
-  task('generate-version-files', generateVersionFiles);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
