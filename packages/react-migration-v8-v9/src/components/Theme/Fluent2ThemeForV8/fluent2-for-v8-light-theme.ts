@@ -23,7 +23,7 @@ const grey38 = '#616161';
 const grey26 = '#424242';
 const grey74 = '#BDBDBD';
 
-export const fluent2LightPalette: Partial<IPalette> = {
+const fluent2LightPalette: Partial<IPalette> = {
   accent: '#0f6cbd',
   themePrimary: '#0f6cbd',
   themeLighterAlt: '#ebf3fc',

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adds Fluent2ForV8DarkTheme and Fluent2ForV8LightTheme",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}

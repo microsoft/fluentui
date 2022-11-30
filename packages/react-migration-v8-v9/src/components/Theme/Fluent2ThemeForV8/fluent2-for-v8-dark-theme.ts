@@ -16,7 +16,7 @@ const fluent2ForV8DarkEffects: IExtendedEffects = {
   roundedCornerCircle: '50%',
 };
 
-export const fluent2ForV8DarkPalette: Partial<IPalette> = {
+const fluent2ForV8DarkPalette: Partial<IPalette> = {
   accent: '#2886de',
   themePrimary: '#2886de',
   themeLighterAlt: '#0A2E4A',
