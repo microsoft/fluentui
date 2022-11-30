@@ -191,7 +191,7 @@ export const getStyles = (props: ISpinButtonStyleProps): ISpinButtonStyles => {
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: DEFAULT_MIN_WIDTH,
-        ...getInputFocusStyle(SpinButtonRootBorderColor, effects.roundedCorner2),
+        ...getInputFocusStyle(SpinButtonRootBorderColor, effects.roundedCorner2, 'border', 0),
         ':after': {
           borderWidth: '1px',
           [HighContrastSelector]: {

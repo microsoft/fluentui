@@ -73,13 +73,13 @@ exports[`SpinButton snapshots renders correctly 1`] = `
           border-radius: 2px;
           border-width: 1px;
           border: 2px solid #605e5c;
-          bottom: -1px;
+          bottom: 0px;
           content: '';
-          left: -1px;
+          left: 0px;
           pointer-events: none;
           position: absolute;
-          right: -1px;
-          top: -1px;
+          right: 0px;
+          top: 0px;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
           border-color: GrayText;
@@ -517,13 +517,13 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
           border-radius: 2px;
           border-width: 1px;
           border: 2px solid #605e5c;
-          bottom: -1px;
+          bottom: 0px;
           content: '';
-          left: -1px;
+          left: 0px;
           pointer-events: none;
           position: absolute;
-          right: -1px;
-          top: -1px;
+          right: 0px;
+          top: 0px;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
           border-color: GrayText;
