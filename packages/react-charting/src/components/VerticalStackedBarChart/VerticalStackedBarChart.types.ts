@@ -123,6 +123,11 @@ export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
   opacityChangeOnHover?: IStyle;
 
   /**
+   * Style for the text above the bars
+   */
+  totalValueText: IStyle;
+
+  /**
    * Style for the chart.
    * @deprecated use root instead.
    */

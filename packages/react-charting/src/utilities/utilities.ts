@@ -100,6 +100,8 @@ export interface IXAxisParams {
   xAxistickSize?: number;
   tickPadding?: number;
   xAxisPadding?: number;
+  xAxisInnerPadding?: number;
+  xAxisOuterPadding?: number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[];
@@ -248,11 +250,20 @@ export function createStringXAxis(
   dataset: string[],
   culture?: string,
 ) {
-  const { domainNRangeValues, xAxisCount = 6, xAxistickSize = 6, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
+  const {
+    domainNRangeValues,
+    xAxisCount = 6,
+    xAxistickSize = 6,
+    tickPadding = 10,
+    xAxisPadding = 0.1,
+    xAxisInnerPadding,
+    xAxisOuterPadding,
+  } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
-    .padding(xAxisPadding);
+    .paddingInner(typeof xAxisInnerPadding !== 'undefined' ? xAxisInnerPadding : xAxisPadding)
+    .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)

@@ -99,110 +99,138 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       />
       <g>
         <g
-          id="0-singleBar"
           key="0false"
         >
-          <rect
-            aria-label="2020/04/30. Metadata1, 40%."
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={196.15384615384616}
+              key="0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={48}
+              y={78.84615384615384}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={24.51923076923077}
+              key="1"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={48}
+              y={54.326923076923066}
+            />
+          </g>
+          <text
             className=
 
                 {
-                  cursor: default;
-                  opacity: ;
+                  font-size: 12px;
+                  font-weight: 600;
                 }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={196.15384615384616}
-            key="0"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={40}
-            y={78.84615384615384}
-          />
-          <rect
-            aria-label="2020/04/30. Metadata2, 5%."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={24.51923076923077}
-            key="1"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={40}
-            y={54.326923076923066}
-          />
+            textAnchor="middle"
+            x={56}
+            y={48.326923076923066}
+          >
+            45
+          </text>
         </g>
         <g
-          id="1-singleBar"
           key="1false"
         >
-          <rect
-            aria-label="2020/04/30. Metadata1, 30%."
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={147.1153846153846}
+              key="1"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={-44}
+              y={127.88461538461539}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={98.07692307692308}
+              key="2"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={-44}
+              y={29.807692307692307}
+            />
+          </g>
+          <text
             className=
 
                 {
-                  cursor: default;
-                  opacity: ;
+                  font-size: 12px;
+                  font-weight: 600;
                 }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={147.1153846153846}
-            key="1"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={-52}
-            y={127.88461538461539}
-          />
-          <rect
-            aria-label="2020/04/30. Metadata2, 20%."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={98.07692307692308}
-            key="2"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={-52}
-            y={29.807692307692307}
-          />
+            textAnchor="middle"
+            x={-36}
+            y={23.807692307692307}
+          >
+            50
+          </text>
         </g>
       </g>
       <g />
@@ -704,110 +732,138 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       />
       <g>
         <g
-          id="0-singleBar"
           key="0false"
         >
-          <rect
-            aria-label="2020/04/30. Metadata1, 40%."
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={196.15384615384616}
+              key="0"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={48}
+              y={78.84615384615384}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={24.51923076923077}
+              key="1"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={48}
+              y={54.326923076923066}
+            />
+          </g>
+          <text
             className=
 
                 {
-                  cursor: default;
-                  opacity: ;
+                  font-size: 12px;
+                  font-weight: 600;
                 }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={196.15384615384616}
-            key="0"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={40}
-            y={78.84615384615384}
-          />
-          <rect
-            aria-label="2020/04/30. Metadata2, 5%."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={24.51923076923077}
-            key="1"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={40}
-            y={54.326923076923066}
-          />
+            textAnchor="middle"
+            x={56}
+            y={48.326923076923066}
+          >
+            45
+          </text>
         </g>
         <g
-          id="1-singleBar"
           key="1false"
         >
-          <rect
-            aria-label="2020/04/30. Metadata1, 30%."
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={147.1153846153846}
+              key="1"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={-44}
+              y={127.88461538461539}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={98.07692307692308}
+              key="2"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width={16}
+              x={-44}
+              y={29.807692307692307}
+            />
+          </g>
+          <text
             className=
 
                 {
-                  cursor: default;
-                  opacity: ;
+                  font-size: 12px;
+                  font-weight: 600;
                 }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={147.1153846153846}
-            key="1"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={-52}
-            y={127.88461538461539}
-          />
-          <rect
-            aria-label="2020/04/30. Metadata2, 20%."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={98.07692307692308}
-            key="2"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            transform="translate(0, 0)"
-            width={32}
-            x={-52}
-            y={29.807692307692307}
-          />
+            textAnchor="middle"
+            x={-36}
+            y={23.807692307692307}
+          >
+            50
+          </text>
         </g>
       </g>
       <g />
@@ -1227,92 +1283,120 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       />
       <g>
         <g
-          aria-label="0. Metadata1, 40%. Metadata2, 5%. Line1, 15."
-          data-is-focusable={true}
-          id="0-singleBar"
           key="0true"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          role="img"
         >
-          <rect
+          <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%. Line1, 15."
+            data-is-focusable={true}
+            id="0-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          >
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#0078d4"
+              height={196.15384615384616}
+              key="0"
+              width={16}
+              x={48}
+              y={78.84615384615384}
+            />
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#00188f"
+              height={24.51923076923077}
+              key="1"
+              width={16}
+              x={48}
+              y={54.326923076923066}
+            />
+          </g>
+          <text
             className=
 
                 {
-                  cursor: default;
-                  opacity: ;
+                  font-size: 12px;
+                  font-weight: 600;
                 }
-            fill="#0078d4"
-            height={196.15384615384616}
-            key="0"
-            transform="translate(0, 0)"
-            width={32}
-            x={40}
-            y={78.84615384615384}
-          />
-          <rect
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-            fill="#00188f"
-            height={24.51923076923077}
-            key="1"
-            transform="translate(0, 0)"
-            width={32}
-            x={40}
-            y={54.326923076923066}
-          />
+            textAnchor="middle"
+            x={56}
+            y={48.326923076923066}
+          >
+            45
+          </text>
         </g>
         <g
-          aria-label="20. Metadata1, 30%. Metadata2, 20%. Line1, 30."
-          data-is-focusable={true}
-          id="1-singleBar"
           key="1true"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          role="img"
         >
-          <rect
+          <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%. Line1, 30."
+            data-is-focusable={true}
+            id="1-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          >
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#0078d4"
+              height={147.1153846153846}
+              key="1"
+              width={16}
+              x={-44}
+              y={127.88461538461539}
+            />
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#00188f"
+              height={98.07692307692308}
+              key="2"
+              width={16}
+              x={-44}
+              y={29.807692307692307}
+            />
+          </g>
+          <text
             className=
 
                 {
-                  cursor: default;
-                  opacity: ;
+                  font-size: 12px;
+                  font-weight: 600;
                 }
-            fill="#0078d4"
-            height={147.1153846153846}
-            key="1"
-            transform="translate(0, 0)"
-            width={32}
-            x={-52}
-            y={127.88461538461539}
-          />
-          <rect
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-            fill="#00188f"
-            height={98.07692307692308}
-            key="2"
-            transform="translate(0, 0)"
-            width={32}
-            x={-52}
-            y={29.807692307692307}
-          />
+            textAnchor="middle"
+            x={-36}
+            y={23.807692307692307}
+          >
+            50
+          </text>
         </g>
       </g>
       <g>
@@ -1322,7 +1406,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           stroke="#ffb900"
           strokeLinecap="round"
           strokeWidth={3}
-          transform="translate(0, 0)"
           x1={56}
           x2={-36}
           y1={201.4423076923077}
@@ -1337,7 +1420,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           r={8}
           stroke="#ffb900"
           strokeWidth={3}
-          transform="translate(0, 0)"
           visibility="visibility"
         />
         <circle
@@ -1349,7 +1431,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           r={8}
           stroke="#ffb900"
           strokeWidth={3}
-          transform="translate(0, 0)"
           visibility="hidden"
         />
       </g>
