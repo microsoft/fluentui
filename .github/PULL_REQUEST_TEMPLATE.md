@@ -12,7 +12,7 @@ PR flow tips:
 * [ ] Once you're ready (ideally the pipeline is passing) promote your PR to Ready for Review. This step will auto-assign reviewers for your PR.
 -->
 
-## Current Behavior
+## Previous Behavior
 
 <!-- This is the behavior we have today -->
 
@@ -24,4 +24,4 @@ PR flow tips:
 
 <!-- Please link the issue being fixed so it gets closed when this is merged. -->
 
-Fixes #
+* Fixes #

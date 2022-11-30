@@ -10,15 +10,6 @@ export const inputClassNames: SlotClassNames<InputSlots> = {
   contentAfter: 'fui-Input__contentAfter',
 };
 
-// TODO(sharing) use theme values once available
-const contentSizes = {
-  // TODO: This 400 style is not in the typography styles.
-  // May need a design change
-  400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-};
 // TODO(sharing) should these be shared somewhere?
 const fieldHeights = {
   small: '24px',
@@ -109,7 +100,7 @@ const useRootStyles = makeStyles({
   large: {
     minHeight: fieldHeights.large,
     ...shorthands.padding('0', tokens.spacingHorizontalM),
-    ...contentSizes[400],
+    ...typographyStyles.body2,
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
   outline: {
@@ -175,8 +166,7 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
@@ -209,7 +199,7 @@ const useInputElementStyles = makeStyles({
     ...typographyStyles.body1,
   },
   large: {
-    ...contentSizes[400],
+    ...typographyStyles.body2,
     ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
   },
   disabled: {

@@ -34,7 +34,7 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
    */
   onChange?: (
     evt?: React.FormEvent<HTMLElement | HTMLInputElement>,
-    props?: IChoiceGroupOption | IChoiceGroupOptionProps,
+    props?: IChoiceGroupOption & IChoiceGroupOptionProps,
   ) => void;
 
   /**
@@ -42,13 +42,13 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
    */
   onFocus?: (
     ev?: React.FocusEvent<HTMLElement | HTMLInputElement>,
-    props?: IChoiceGroupOption | IChoiceGroupOptionProps,
+    props?: IChoiceGroupOption & IChoiceGroupOptionProps,
   ) => void | undefined;
 
   /**
    * Callback for the ChoiceGroup creating the option to be notified when the choice has lost focus.
    */
-  onBlur?: (ev?: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void;
+  onBlur?: (ev?: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption & IChoiceGroupOptionProps) => void;
 
   /**
    * Indicates if the ChoiceGroupOption should appear focused, visually

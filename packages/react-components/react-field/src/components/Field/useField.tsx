@@ -2,13 +2,7 @@ import * as React from 'react';
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import type {
-  FieldComponent,
-  FieldConfig,
-  FieldProps,
-  FieldPropsWithOptionalComponentProps,
-  FieldState,
-} from './Field.types';
+import type { FieldConfig, FieldControl, FieldPropsWithOptionalComponentProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
@@ -19,7 +13,7 @@ const validationMessageIcons = {
 /**
  * Partition the props used by the Field itself, from the props that are passed to the underlying field component.
  */
-export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent>>(props: Props) => {
+export const getPartitionedFieldProps = (props: FieldPropsWithOptionalComponentProps<FieldControl>) => {
   const {
     className,
     control,
@@ -60,7 +54,7 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
  * @param ref - Ref to the control slot (primary slot)
  * @param params - Configuration parameters for this Field
  */
-export const useField_unstable = <T extends FieldComponent>(
+export const useField_unstable = <T extends FieldControl>(
   props: FieldPropsWithOptionalComponentProps<T>,
   ref: React.Ref<HTMLElement>,
   params: FieldConfig<T>,
@@ -76,21 +70,12 @@ export const useField_unstable = <T extends FieldComponent>(
     defaultProps: getNativeElementProps('div', fieldProps),
   });
 
-  const control = resolveShorthand(fieldProps.control, {
-    required: true,
-    defaultProps: {
-      ref,
-      id: baseId + '__control',
-      ...controlProps,
-    },
-  });
-
   const label = resolveShorthand(fieldProps.label, {
     defaultProps: {
       id: baseId + '__label',
       required: controlProps.required,
       size: typeof controlProps.size === 'string' ? controlProps.size : undefined,
-      htmlFor: labelConnection === 'htmlFor' ? control.id : undefined,
+      // htmlFor is handled below
     },
   });
 
@@ -115,26 +100,36 @@ export const useField_unstable = <T extends FieldComponent>(
 
   // Hook up aria props on the control
   if (label && labelConnection === 'aria-labelledby') {
-    control['aria-labelledby'] ??= label.id;
+    controlProps['aria-labelledby'] ??= label.id;
+  }
+
+  if (validationMessage || hint) {
+    // The control is described by the validation message, or hint, or both
+    // We also preserve and append any aria-describedby supplied by the user
+    // For reference: https://github.com/microsoft/fluentui/pull/25580#discussion_r1017259933
+    controlProps['aria-describedby'] = [validationMessage?.id, hint?.id, controlProps['aria-describedby']]
+      .filter(Boolean)
+      .join(' ');
   }
 
   if (validationState === 'error' && ariaInvalidOnError) {
-    control['aria-invalid'] ??= true;
-    if (validationMessage) {
-      control['aria-errormessage'] ??= validationMessage.id;
-    }
-    if (hint) {
-      control['aria-describedby'] ??= hint.id;
-    }
-  } else {
-    // If the state is not an error, then the control is described by the validation message, or hint, or both
-    const describedby = validationMessage || hint;
-    if (describedby) {
-      control['aria-describedby'] ??= validationMessage && hint ? `${validationMessage.id} ${hint.id}` : describedby.id;
-    }
+    controlProps['aria-invalid'] ??= true;
   }
 
-  const state: FieldState<FieldComponent> = {
+  const control = resolveShorthand(fieldProps.control, {
+    required: true,
+    defaultProps: {
+      ref,
+      id: baseId + '__control',
+      ...controlProps,
+    },
+  });
+
+  if (label && labelConnection === 'htmlFor') {
+    label.htmlFor ??= control.id;
+  }
+
+  const state: FieldState<FieldControl> = {
     orientation,
     validationState,
     classNames: params.classNames,

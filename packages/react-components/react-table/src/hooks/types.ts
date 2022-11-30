@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
 
 export type RowId = string | number;
@@ -9,9 +10,19 @@ export interface SortState {
   sortDirection: SortDirection;
 }
 
+export interface OnSelectionChangeData {
+  selectedItems: Set<RowId>;
+}
+
+export interface CreateColumnOptions<TItem> extends Partial<ColumnDefinition<TItem>> {
+  columnId: ColumnId;
+}
+
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
-  compare?: (a: TItem, b: TItem) => number;
+  compare: (a: TItem, b: TItem) => number;
+  renderHeaderCell: () => React.ReactNode;
+  renderCell: (item: TItem) => React.ReactNode;
 }
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
@@ -30,11 +41,11 @@ export interface TableSortState<TItem> {
   /**
    * Set the sort direction for the specified column
    */
-  setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
+  setColumnSort: (event: React.SyntheticEvent, columnId: ColumnId, sortDirection: SortDirection) => void;
   /**
    * Toggles the sort direction for specified column
    */
-  toggleColumnSort: (columnId: ColumnId) => void;
+  toggleColumnSort: (event: React.SyntheticEvent, columnId: ColumnId) => void;
   /**
    * Returns the sort direction if a column is sorted,
    * returns undefined if the column is not sorted
@@ -44,30 +55,30 @@ export interface TableSortState<TItem> {
   /**
    * Sorts rows and returns a **shallow** copy of original items
    */
-  sort: (rows: RowState<TItem>[]) => RowState<TItem>[];
+  sort: <TRowState extends RowState<TItem>>(rows: TRowState[]) => TRowState[];
 }
 
 export interface TableSelectionState {
   /**
    * Clears all selected rows
    */
-  clearRows: () => void;
+  clearRows: (e: React.SyntheticEvent) => void;
   /**
    * Selects single row
    */
-  selectRow: (rowId: RowId) => void;
+  selectRow: (e: React.SyntheticEvent, rowId: RowId) => void;
   /**
    * De-selects single row
    */
-  deselectRow: (rowId: RowId) => void;
+  deselectRow: (e: React.SyntheticEvent, rowId: RowId) => void;
   /**
    * Toggle selection of all rows
    */
-  toggleAllRows: () => void;
+  toggleAllRows: (e: React.SyntheticEvent) => void;
   /**
    * Toggle selection of single row
    */
-  toggleRow: (rowId: RowId) => void;
+  toggleRow: (e: React.SyntheticEvent, rowId: RowId) => void;
   /**
    * Collection of row ids corresponding to selected rows
    */
@@ -85,6 +96,8 @@ export interface TableSelectionState {
    * Checks if a given rowId is selected
    */
   isRowSelected: (rowId: RowId) => boolean;
+
+  selectionMode: SelectionMode;
 }
 
 export interface RowState<TItem> {
@@ -132,7 +145,7 @@ export interface UseSortOptions {
   /**
    * Called when sort changes
    */
-  onSortChange?: (state: SortState) => void;
+  onSortChange?(e: React.SyntheticEvent, state: SortState): void;
 }
 
 export interface UseSelectionOptions {
@@ -151,7 +164,7 @@ export interface UseSelectionOptions {
   /**
    * Called when selection changes
    */
-  onSelectionChange?: (selectedItems: Set<RowId>) => void;
+  onSelectionChange?(e: React.SyntheticEvent, data: OnSelectionChangeData): void;
 }
 
 export interface UseTableOptions<TItem> {

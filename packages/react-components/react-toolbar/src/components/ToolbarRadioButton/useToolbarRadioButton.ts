@@ -28,10 +28,6 @@ export const useToolbarRadioButton_unstable = (
 
   const handleOnClick = useEventCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-
       handleRadio?.(e, state.name, state.value, state.checked);
       onClickOriginal?.(e);
     },

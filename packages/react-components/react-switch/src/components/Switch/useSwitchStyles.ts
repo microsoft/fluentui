@@ -42,6 +42,7 @@ const useIndicatorStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.borderWidth('1px'),
+    lineHeight: 0,
     boxSizing: 'border-box',
     fill: 'currentColor',
     flexShrink: 0,
@@ -49,8 +50,8 @@ const useIndicatorStyles = makeStyles({
     height: `${trackHeight}px`,
     ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     pointerEvents: 'none',
-    transitionDuration: '200ms',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionDuration: tokens.durationNormal,
+    transitionTimingFunction: tokens.curveEasyEase,
     transitionProperty: 'background, border, color',
     width: `${trackWidth}px`,
 
@@ -59,8 +60,8 @@ const useIndicatorStyles = makeStyles({
     },
 
     '> *': {
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+      transitionDuration: tokens.durationNormal,
+      transitionTimingFunction: tokens.curveEasyEase,
       transitionProperty: 'transform',
 
       '@media screen and (prefers-reduced-motion: reduce)': {

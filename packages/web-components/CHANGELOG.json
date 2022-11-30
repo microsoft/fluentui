@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 15 Nov 2022 07:44:58 GMT",
+      "tag": "@fluentui/web-components_v2.5.8",
+      "version": "2.5.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d419dfa7124fb15ebae8a27b30bdad869964301b",
+            "comment": "chore(.storybook): disable telemetry"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Oct 2022 07:52:54 GMT",
       "tag": "@fluentui/web-components_v2.5.8",
       "version": "2.5.8",

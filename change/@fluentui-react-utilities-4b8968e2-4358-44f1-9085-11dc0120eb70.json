@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: exposes internal methods that are used in the API surface",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

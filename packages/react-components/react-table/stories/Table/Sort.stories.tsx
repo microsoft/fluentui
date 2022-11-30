@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -21,6 +21,7 @@ import {
   ColumnId,
   useSort,
   TableCellLayout,
+  createColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -89,34 +90,37 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
-    columnId: 'file',
-    compare: (a, b) => {
-      return a.file.label.localeCompare(b.file.label);
-    },
-  },
-  {
-    columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
-  },
-  {
-    columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
-  },
-  {
-    columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
-  },
-];
-
 export const Sort = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+        compare: (a, b) => {
+          return a.file.label.localeCompare(b.file.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+        compare: (a, b) => {
+          return a.author.label.localeCompare(b.author.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+        compare: (a, b) => {
+          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+        compare: (a, b) => {
+          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+        },
+      }),
+    ],
+    [],
+  );
+
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
@@ -128,9 +132,11 @@ export const Sort = () => {
     [useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
   );
 
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => {
-      toggleColumnSort(columnId);
+    onClick: (e: React.MouseEvent) => {
+      toggleColumnSort(e, columnId);
     },
     sortDirection: getSortDirection(columnId),
   });
@@ -138,7 +144,7 @@ export const Sort = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable>
+    <Table sortable {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -171,4 +177,16 @@ export const Sort = () => {
       </TableBody>
     </Table>
   );
+};
+
+Sort.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Using the `sortable` prop will configure all header cells to be buttons and add extra styles.',
+        'The `TableHeaderCell` component accepts a `sortDirection` prop that will indicate whether the',
+        'header is sorted. Handling the sort of data and column state is handled by our hook.',
+      ].join('\n'),
+    },
+  },
 };

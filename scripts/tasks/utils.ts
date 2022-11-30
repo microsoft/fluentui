@@ -2,8 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as jju from 'jju';
 import type { TscTaskOptions } from 'just-scripts';
-import { offsetFromRoot } from '@nrwl/devkit';
-import { appRootPath } from '@nrwl/tao/src/utils/app-root';
 
 export function getTsPathAliasesConfig() {
   const cwd = process.cwd();
@@ -41,31 +39,64 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
+const rootTsConfig = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../../tsconfig.base.json'), 'utf-8'),
+) as TsConfig;
+
+function createNormalizedTsPaths(options: { definitionsRootPath: string; rootTsConfig: TsConfig }) {
+  const paths = (options.rootTsConfig.compilerOptions.paths as unknown) as Record<string, string[]>;
+
+  const normalizedPaths = Object.entries(paths).reduce((acc, [pkgName, pathAliases]) => {
+    acc[pkgName] = [path.join(options.definitionsRootPath, pathAliases[0].replace('index.ts', 'index.d.ts'))];
+    return acc;
+  }, {} as typeof paths);
+
+  return normalizedPaths;
+}
+
 export function getTsPathAliasesApiExtractorConfig(options: {
   tsConfig: TsConfig;
   tsConfigPath: string;
   packageJson: PackageJson;
+  definitionsRootPath: string;
 }) {
-  const rootOffset = offsetFromRoot(path.dirname(options.tsConfigPath.replace(appRootPath, '')));
+  const hasNewCompilationSetup = ((options.tsConfig.compilerOptions as unknown) as { outDir: string }).outDir.includes(
+    'dist/out-tsc',
+  );
+  // TODO: after all v9 is migrated to new tsc processing use only createNormalizedTsPaths
+  const normalizedPaths = hasNewCompilationSetup
+    ? createNormalizedTsPaths({ definitionsRootPath: options.definitionsRootPath, rootTsConfig })
+    : undefined;
+
   /**
-   * This special TSConfig config is all that's needed for api-extractor so it has all type information used for package:
+   * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
    *
    * NOTES:
-   * - `compilerOptions.paths` doesn't work, nor is possible to turn them off when `extends` is used
+   * - `extends` is properly resolved via api-extractor which uses TS api
+   * - `skipLibCheck` needs to be explicitly set to `false` so errors propagate to api-extractor
+   * - `paths` is overriden to path mapping that points to generated declaration files. This also enables creation of dts rollup without a need of generating rollups for all dependencies 🫡
    *
    */
   const apiExtractorTsConfig: TsConfig = {
-    include: options.tsConfig.include,
-    /**
-     * `files` might be used to specify additional `d.ts` or global type definitions. IF they exist in package tsconfig we need to include them
-     */
-    ...(options.tsConfig.files ? { files: options.tsConfig.files } : null),
+    ...options.tsConfig,
     compilerOptions: {
+      ...options.tsConfig.compilerOptions,
       ...enableAllowSyntheticDefaultImports({ pkgJson: options.packageJson }),
-      strict: true,
-      lib: options.tsConfig.compilerOptions.lib,
-      typeRoots: ['node_modules/@types', `${rootOffset}typings`],
-      types: options.tsConfig.compilerOptions.types,
+      /**
+       * This option has no effect on type declarations '.d.ts' thus can be turned off. For more info see https://www.typescriptlang.org/tsconfig#non-module-files
+       *
+       * NOTE: Some v8 packages (font-icons-mdl2) use `preserveConstEnums: false` which clashes with isolateModules - TSC will error
+       */
+      isolatedModules: false,
+      /**
+       * needs to be explicitly set to `false` so errors propagate to api-extractor
+       */
+      skipLibCheck: false,
+      /**
+       * just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
+       */
+      // @ts-expect-error - just-scripts provides invalid types
+      paths: normalizedPaths,
     },
   };
 

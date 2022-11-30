@@ -10,6 +10,19 @@ const applyV8WebpackConfig: (config: Configuration) => Configuration = require('
 
 const isLocalRun = !process.env.DEPLOYURL;
 
+function isV8() {
+  const packageJsonPath = path.join(process.cwd(), 'package.json');
+  if (!fs.existsSync(packageJsonPath)) {
+    return false;
+  }
+
+  const packageJson: Record<string, unknown> = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+  if (typeof packageJson.version !== 'string') {
+    return false;
+  }
+  return packageJson.version.startsWith('8.');
+}
+
 const cypressWebpackConfig = (): Configuration => {
   const webpackConfig: Configuration = {
     resolve: {
@@ -26,9 +39,8 @@ const cypressWebpackConfig = (): Configuration => {
     },
   };
 
-  const isV8 = path.basename(process.cwd()) === 'react-examples';
 
-  if (isV8) {
+  if (isV8()) {
     // For v8, reuse the storybook webpack config helper to add required options for building v8,
     // including the `resolve.alias` config that's currently REQUIRED to make tests re-run when a
     // component file in @fluentui/react is modified while running in open mode.

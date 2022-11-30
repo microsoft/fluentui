@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -21,6 +21,7 @@ import {
   ColumnId,
   useSort,
   TableCellLayout,
+  createColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -89,34 +90,37 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
-    columnId: 'file',
-    compare: (a, b) => {
-      return a.file.label.localeCompare(b.file.label);
-    },
-  },
-  {
-    columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
-  },
-  {
-    columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
-  },
-  {
-    columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
-  },
-];
-
 export const SortControlled = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+        compare: (a, b) => {
+          return a.file.label.localeCompare(b.file.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+        compare: (a, b) => {
+          return a.author.label.localeCompare(b.author.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+        compare: (a, b) => {
+          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+        compare: (a, b) => {
+          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+        },
+      }),
+    ],
+    [],
+  );
+
   const [sortState, setSortState] = React.useState<{
     sortDirection: 'ascending' | 'descending';
     sortColumn: ColumnId | undefined;
@@ -133,18 +137,19 @@ export const SortControlled = () => {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: setSortState })],
+    [useSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => toggleColumnSort(columnId),
+    onClick: (e: React.MouseEvent) => toggleColumnSort(e, columnId),
     sortDirection: getSortDirection(columnId),
   });
 
   const rows = sort(getRows());
 
   return (
-    <Table sortable>
+    <Table sortable {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -177,4 +182,15 @@ export const SortControlled = () => {
       </TableBody>
     </Table>
   );
+};
+
+SortControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control sort features',
+        'with external user state.',
+      ].join('\n'),
+    },
+  },
 };

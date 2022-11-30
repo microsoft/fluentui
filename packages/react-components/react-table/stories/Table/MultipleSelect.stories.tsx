@@ -21,6 +21,7 @@ import {
   useTable,
   ColumnDefinition,
   useSelection,
+  createColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -89,22 +90,25 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
-    columnId: 'file',
-  },
-  {
-    columnId: 'author',
-  },
-  {
-    columnId: 'lastUpdated',
-  },
-  {
-    columnId: 'lastUpdate',
-  },
-];
-
 export const MultipleSelect = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+      }),
+    ],
+    [],
+  );
+
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
@@ -121,25 +125,31 @@ export const MultipleSelect = () => {
     ],
   );
 
-  const rows = getRows(row => ({
-    ...row,
-    onClick: () => toggleRow(row.rowId),
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        toggleRow(row.rowId);
-      }
-    },
-    selected: isRowSelected(row.rowId),
-  }));
+  const rows = getRows(row => {
+    const selected = isRowSelected(row.rowId);
+    return {
+      ...row,
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
+        }
+      },
+      selected,
+      appearance: selected ? ('brand' as const) : ('none' as const),
+    };
+  });
 
-  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table>
+    <Table {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
+            tabIndex={0}
+            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
           />
@@ -149,14 +159,14 @@ export const MultipleSelect = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
-        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+      <TableBody>
+        {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
             onClick={onClick}
             onKeyDown={onKeyDown}
             aria-selected={selected}
-            appearance={selected ? 'brand' : 'none'}
+            appearance={appearance}
           >
             <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell>
@@ -176,4 +186,16 @@ export const MultipleSelect = () => {
       </TableBody>
     </Table>
   );
+};
+
+MultipleSelect.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Selection can be achieved easily by combining the `TableSelectionCell` component along with',
+        'other primitive components. The hook can handle state management for selection, although its use is not',
+        'necessary if users already have their own state management.',
+      ].join('\n'),
+    },
+  },
 };

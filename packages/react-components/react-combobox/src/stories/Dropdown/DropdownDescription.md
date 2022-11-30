@@ -1,4 +1,4 @@
-A dropdown is a list in which the selected item is always visible while other items are visible on demand by clicking a dropdown button. Dropdowns are typically used for forms.
+A Dropdown is a selection component composed of a button and a list of options. The button displays the current selected item or a placeholder, and the list is visible on demand by clicking the button. Dropdowns are typically used in forms.
 
 <!-- Don't allow prettier to collapse code block into single line -->
 <!-- prettier-ignore -->

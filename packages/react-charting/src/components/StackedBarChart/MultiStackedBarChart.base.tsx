@@ -25,13 +25,12 @@ export interface IRefArrayData {
 export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
-  selectedLegendTitle: string;
+  selectedLegend: string;
+  activeLegend: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
-  isLegendHovered: boolean;
-  isLegendSelected: boolean;
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
@@ -55,12 +54,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.state = {
       isCalloutVisible: false,
       refArray: [],
-      selectedLegendTitle: '',
+      selectedLegend: '',
+      activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
-      isLegendHovered: false,
-      isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
@@ -186,10 +184,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       startingPoint.push(prevPosition);
 
       const styles = this.props.styles;
-      let shouldHighlight = true;
-      if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
-      }
+      const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
@@ -207,9 +202,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
-          aria-labelledby={this._calloutId}
           role="img"
-          aria-label="Multi stacked bar chart"
+          aria-label={this._getAriaLabel(point)}
           onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
@@ -280,9 +274,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         this.setState({
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible:
-            this.state.isLegendSelected === false ||
-            (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
           color: color,
@@ -310,13 +302,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
   };
 
-  private _onHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: true,
-        selectedLegendTitle: customMessage,
-      });
-    }
+  private _onHover(legendTitle: string): void {
+    this.setState({
+      activeLegend: legendTitle,
+    });
   }
 
   private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
@@ -344,8 +333,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               hoverAction: () => {
                 this._onHover(point.legend!);
               },
-              onMouseOutAction: (isLegendSelected?: boolean) => {
-                this._onLeave(isLegendSelected);
+              onMouseOutAction: () => {
+                this._onLeave();
               },
             };
             actions.push(legend);
@@ -369,8 +358,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             hoverAction: () => {
               this._onHover(point.legend!);
             },
-            onMouseOutAction: (isLegendSelected?: boolean) => {
-              this._onLeave(isLegendSelected);
+            onMouseOutAction: () => {
+              this._onLeave();
             },
           };
           actions.push(legend);
@@ -388,34 +377,22 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   };
 
-  private _onClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          selectedLegendTitle: customMessage,
-        });
-      } else {
-        this.setState({
-          selectedLegendTitle: customMessage,
-        });
-      }
+  private _onClick(legendTitle: string): void {
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        isLegendSelected: true,
-        selectedLegendTitle: customMessage,
+        selectedLegend: legendTitle,
       });
     }
   }
 
-  private _onLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: false,
-        selectedLegendTitle: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLeave(): void {
+    this.setState({
+      activeLegend: '',
+    });
   }
 
   private _onBarHover(
@@ -431,9 +408,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       this.setState({
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        isCalloutVisible:
-          this.state.isLegendSelected === false ||
-          (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!),
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
         color: color,
@@ -464,5 +439,31 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: IChartDataPoint): string => {
+    const legend = point.xAxisCalloutData || point.legend;
+    const yValue = point.yAxisCalloutData || point.data || 0;
+    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 }

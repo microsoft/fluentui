@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
+import { useTable, useSort, useSelection } from '../../hooks';
 
 /**
  * Create the state required to render DataGrid.
@@ -12,5 +14,49 @@ import { useTable_unstable } from '../Table/useTable';
  * @param ref - reference to root HTMLElement of DataGrid
  */
 export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLElement>): DataGridState => {
-  return useTable_unstable({ ...props, as: 'div' }, ref);
+  const {
+    items,
+    columns,
+    focusMode = 'none',
+    selectionMode,
+    onSortChange,
+    onSelectionChange,
+    defaultSortState,
+    sortState,
+    selectedItems,
+    defaultSelectedItems,
+    subtleSelection = false,
+    selectionAppearance = 'brand',
+  } = props;
+
+  const navigable = focusMode !== 'none';
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+
+  const tableState = useTable({ items, columns }, [
+    useSort({
+      defaultSortState,
+      sortState,
+      onSortChange,
+    }),
+    useSelection({
+      defaultSelectedItems,
+      selectedItems,
+      onSelectionChange,
+      selectionMode: selectionMode ?? 'multiselect',
+    }),
+  ]);
+
+  const baseTableState = useTable_unstable(
+    { role: 'grid', as: 'div', noNativeElements: true, ...(navigable && keyboardNavAttr), ...props },
+    ref,
+  );
+
+  return {
+    ...baseTableState,
+    focusMode,
+    tableState,
+    selectableRows: !!selectionMode,
+    subtleSelection,
+    selectionAppearance,
+  };
 };

@@ -5,6 +5,7 @@ module.exports = {
   staticDirs: ['../public'],
   core: {
     builder: 'webpack5',
+    disableTelemetry: true,
   },
   addons: [
     {

@@ -22,6 +22,7 @@ import {
   RowId,
   useSelection,
   TableCellLayout,
+  createColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -90,22 +91,25 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
-    columnId: 'file',
-  },
-  {
-    columnId: 'author',
-  },
-  {
-    columnId: 'lastUpdated',
-  },
-  {
-    columnId: 'lastUpdate',
-  },
-];
-
 export const SingleSelectControlled = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+      }),
+    ],
+    [],
+  );
+
   const [selectedRows, setSelectedRows] = React.useState(
     () => new Set<RowId>([1]),
   );
@@ -121,21 +125,26 @@ export const SingleSelectControlled = () => {
       useSelection({
         selectionMode: 'single',
         selectedItems: selectedRows,
-        onSelectionChange: setSelectedRows,
+        onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
       }),
     ],
   );
 
-  const rows = getRows(row => ({
-    ...row,
-    onClick: () => toggleRow(row.rowId),
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        toggleRow(row.rowId);
-      }
-    },
-    selected: isRowSelected(row.rowId),
-  }));
+  const rows = getRows(row => {
+    const selected = isRowSelected(row.rowId);
+    return {
+      ...row,
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
+        }
+      },
+      selected,
+      appearance: selected ? ('brand' as const) : ('none' as const),
+    };
+  });
 
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
@@ -151,13 +160,13 @@ export const SingleSelectControlled = () => {
         </TableRow>
       </TableHeader>
       <TableBody {...keyboardNavAttr}>
-        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+        {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
             onClick={onClick}
             onKeyDown={onKeyDown}
             aria-selected={selected}
-            appearance={selected ? 'neutral' : 'none'}
+            appearance={appearance}
           >
             <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
             <TableCell>
@@ -177,4 +186,15 @@ export const SingleSelectControlled = () => {
       </TableBody>
     </Table>
   );
+};
+
+SingleSelectControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control selection features with external',
+        'user state.',
+      ].join('\n'),
+    },
+  },
 };

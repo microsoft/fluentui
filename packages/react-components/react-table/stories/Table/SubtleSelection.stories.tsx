@@ -21,6 +21,7 @@ import {
   useTable,
   ColumnDefinition,
   useSelection,
+  createColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -89,22 +90,25 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
-    columnId: 'file',
-  },
-  {
-    columnId: 'author',
-  },
-  {
-    columnId: 'lastUpdated',
-  },
-  {
-    columnId: 'lastUpdate',
-  },
-];
-
 export const SubtleSelection = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+      }),
+    ],
+    [],
+  );
+
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
@@ -121,25 +125,30 @@ export const SubtleSelection = () => {
     ],
   );
 
-  const rows = getRows(row => ({
-    ...row,
-    onClick: () => toggleRow(row.rowId),
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        toggleRow(row.rowId);
-      }
-    },
-    selected: isRowSelected(row.rowId),
-  }));
+  const rows = getRows(row => {
+    const selected = isRowSelected(row.rowId);
+    return {
+      ...row,
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ') {
+          toggleRow(e, row.rowId);
+        }
+      },
+      selected,
+      appearance: selected ? ('brand' as const) : ('none' as const),
+    };
+  });
 
-  // eslint-disable-next-line deprecation/deprecation
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table>
+    <Table {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
+            tabIndex={0}
+            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
           />
@@ -149,10 +158,16 @@ export const SubtleSelection = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
-        {rows.map(({ item, selected, onClick, onKeyDown }) => (
-          <TableRow key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
-            <TableSelectionCell tabIndex={0} subtle checked={selected} />
+      <TableBody>
+        {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
+          <TableRow
+            key={item.file.label}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
+            aria-selected={selected}
+            appearance={appearance}
+          >
+            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} subtle checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
@@ -170,4 +185,18 @@ export const SubtleSelection = () => {
       </TableBody>
     </Table>
   );
+};
+
+SubtleSelection.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By setting the `subtle` prop on the `TableSelectionCell` component, the selection indicator will only',
+        'appear when:',
+        '- the `TableRow` component is hovered.',
+        '- The current focused element is within the `TableRow`',
+        '- The `TableSelectionCell` is checked',
+      ].join('\n'),
+    },
+  },
 };

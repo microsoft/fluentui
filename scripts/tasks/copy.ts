@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { series, resolveCwd, copyTask, copyInstructionsTask, logger } from 'just-scripts';
+import { series, resolveCwd, copyTask, copyInstructionsTask, logger, TaskFunction } from 'just-scripts';
 import { getProjectMetadata, findGitRoot } from '../monorepo';
 import { getTsPathAliasesConfig } from './utils';
 
@@ -44,14 +44,15 @@ export function copyCompiled() {
   const packageDir = process.cwd();
 
   if (!(isUsingTsSolutionConfigs && tsConfig)) {
-    throw new Error(`this task compliant only with packages that use TS solution config files.`);
+    logger.warn(`copy-compiled: works only with packages that use TS solution config files. Skipping...`);
+    return;
   }
 
   // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
   const hasNewCompilationSetup = (tsConfig.compilerOptions.outDir as string).includes('dist/out-tsc');
 
   if (!hasNewCompilationSetup) {
-    logger.info('copy-compiled: noop ');
+    logger.info('copy-compiled: noop');
 
     return;
   }
@@ -61,20 +62,19 @@ export function copyCompiled() {
   if (!projectMetadata.sourceRoot) {
     throw new Error(`${packageJson.name} is missing 'sourceRoot' in workspace.json`);
   }
-  if (!packageJson.module) {
-    throw new Error(`${packageJson.name} is missing 'module' property in package.json`);
-  }
 
   const paths = {
-    esm: {
-      in: path.join(
-        packageDir,
-        tsConfig.compilerOptions.outDir as string,
-        path.dirname(packageJson.module),
-        projectMetadata.sourceRoot,
-      ),
-      out: path.join(packageDir, path.dirname(packageJson.module)),
-    },
+    esm: packageJson.module
+      ? {
+          in: path.join(
+            packageDir,
+            tsConfig.compilerOptions.outDir as string,
+            path.dirname(packageJson.module),
+            projectMetadata.sourceRoot,
+          ),
+          out: path.join(packageDir, path.dirname(packageJson.module)),
+        }
+      : null,
     commonJs: {
       in: path.join(
         packageDir,
@@ -84,19 +84,33 @@ export function copyCompiled() {
       ),
       out: path.join(packageDir, path.dirname(packageJson.main)),
     },
+    amd: {
+      in: path.join(packageDir, tsConfig.compilerOptions.outDir as string, 'lib-amd', projectMetadata.sourceRoot),
+      out: path.join(packageDir, 'lib-amd'),
+    },
   };
 
-  return series(
-    copyTask({
-      paths: [paths.esm.in],
-      dest: paths.esm.out,
-    }),
+  const tasks = [
+    paths.esm
+      ? copyTask({
+          paths: [paths.esm.in],
+          dest: paths.esm.out,
+        })
+      : null,
     copyTask({
       paths: [paths.commonJs.in],
 
       dest: paths.commonJs.out,
     }),
-  );
+    fs.existsSync(paths.amd.in)
+      ? copyTask({
+          paths: [paths.amd.in],
+          dest: paths.amd.out,
+        })
+      : null,
+  ].filter(Boolean) as TaskFunction[];
+
+  return series(...tasks);
 }
 export function copy() {
   const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');

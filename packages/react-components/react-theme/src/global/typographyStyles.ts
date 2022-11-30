@@ -26,7 +26,7 @@ export const typographyStyles: TypographyStyles = {
   body2: {
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase400,
   },
   caption1: {

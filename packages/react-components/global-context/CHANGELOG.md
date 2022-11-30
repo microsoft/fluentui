@@ -1,8 +1,39 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Thu, 20 Oct 2022 08:39:56 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Nov 2022 23:05:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.9)
+
+Thu, 17 Nov 2022 23:05:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.8..@fluentui/global-context_v9.0.0-beta.9)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.8)
+
+Fri, 11 Nov 2022 14:57:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.7..@fluentui/global-context_v9.0.0-beta.8)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.7)
+
+Wed, 02 Nov 2022 11:58:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.6..@fluentui/global-context_v9.0.0-beta.7)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.6)
 
