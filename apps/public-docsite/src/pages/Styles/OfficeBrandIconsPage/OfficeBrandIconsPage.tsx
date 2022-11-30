@@ -20,8 +20,8 @@ export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = p
   return (
     <StylesAreaPage
       {...props}
-      {...OfficeBrandIconsPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...OfficeBrandIconsPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
