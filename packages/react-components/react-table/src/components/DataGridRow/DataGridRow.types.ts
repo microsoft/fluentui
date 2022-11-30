@@ -5,6 +5,10 @@ import type { TableRowProps, TableRowSlots, TableRowState } from '../TableRow/Ta
 import type { TableSelectionCell } from '../TableSelectionCell/TableSelectionCell';
 
 export type DataGridRowSlots = TableRowSlots & {
+  /**
+   * When selection is enabled on the @see DataGrid, all rows
+   * will render the selection cell.
+   */
   selectionCell?: Slot<typeof TableSelectionCell>;
 };
 

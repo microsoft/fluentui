@@ -175,3 +175,14 @@ export const MultipleSelect = () => {
     </DataGrid>
   );
 };
+
+MultipleSelect.parameters = {
+  docs: {
+    description: {
+      story: [
+        'In order to enable this feature the `selectionMode` prop needs to be set. The API surface is directly',
+        'equivalent to the usage of `useTableFeatures`.',
+      ].join('\n'),
+    },
+  },
+};

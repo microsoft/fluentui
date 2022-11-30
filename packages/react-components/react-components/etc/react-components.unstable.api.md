@@ -52,6 +52,43 @@ import { CreateColumnOptions } from '@fluentui/react-table';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { DataGrid } from '@fluentui/react-table';
+import { DataGridBody } from '@fluentui/react-table';
+import { dataGridBodyClassNames } from '@fluentui/react-table';
+import { DataGridBodyProps } from '@fluentui/react-table';
+import { DataGridBodySlots } from '@fluentui/react-table';
+import { DataGridBodyState } from '@fluentui/react-table';
+import { DataGridCell } from '@fluentui/react-table';
+import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellProps } from '@fluentui/react-table';
+import { DataGridCellSlots } from '@fluentui/react-table';
+import { DataGridCellState } from '@fluentui/react-table';
+import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextValue } from '@fluentui/react-table';
+import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridHeader } from '@fluentui/react-table';
+import { DataGridHeaderCell } from '@fluentui/react-table';
+import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
+import { DataGridHeaderCellProps } from '@fluentui/react-table';
+import { DataGridHeaderCellSlots } from '@fluentui/react-table';
+import { DataGridHeaderCellState } from '@fluentui/react-table';
+import { dataGridHeaderClassNames } from '@fluentui/react-table';
+import { DataGridHeaderProps } from '@fluentui/react-table';
+import { DataGridHeaderSlots } from '@fluentui/react-table';
+import { DataGridHeaderState } from '@fluentui/react-table';
+import { DataGridProps } from '@fluentui/react-table';
+import { DataGridRow } from '@fluentui/react-table';
+import { dataGridRowClassNames } from '@fluentui/react-table';
+import { DataGridRowProps } from '@fluentui/react-table';
+import { DataGridRowSlots } from '@fluentui/react-table';
+import { DataGridRowState } from '@fluentui/react-table';
+import { DataGridSelectionCell } from '@fluentui/react-table';
+import { dataGridSelectionCellClassNames } from '@fluentui/react-table';
+import { DataGridSelectionCellProps } from '@fluentui/react-table';
+import { DataGridSelectionCellSlots } from '@fluentui/react-table';
+import { DataGridSelectionCellState } from '@fluentui/react-table';
+import { DataGridSlots } from '@fluentui/react-table';
+import { DataGridState } from '@fluentui/react-table';
 import { Dropdown } from '@fluentui/react-combobox';
 import { dropdownClassNames } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
@@ -115,6 +152,13 @@ import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
+import { renderDataGrid_unstable } from '@fluentui/react-table';
+import { renderDataGridBody_unstable } from '@fluentui/react-table';
+import { renderDataGridCell_unstable } from '@fluentui/react-table';
+import { renderDataGridHeader_unstable } from '@fluentui/react-table';
+import { renderDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { renderDataGridRow_unstable } from '@fluentui/react-table';
+import { renderDataGridSelectionCell_unstable } from '@fluentui/react-table';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
@@ -171,6 +215,9 @@ import { tableCellClassName } from '@fluentui/react-table';
 import { tableCellClassNames } from '@fluentui/react-table';
 import { TableCellLayout } from '@fluentui/react-table';
 import { tableCellLayoutClassNames } from '@fluentui/react-table';
+import { TableCellLayoutProps } from '@fluentui/react-table';
+import { TableCellLayoutSlots } from '@fluentui/react-table';
+import { TableCellLayoutState } from '@fluentui/react-table';
 import { TableCellProps } from '@fluentui/react-table';
 import { TableCellSlots } from '@fluentui/react-table';
 import { TableCellState } from '@fluentui/react-table';
@@ -239,6 +286,20 @@ import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
+import { useDataGrid_unstable } from '@fluentui/react-table';
+import { useDataGridBody_unstable } from '@fluentui/react-table';
+import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
+import { useDataGridCell_unstable } from '@fluentui/react-table';
+import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridHeader_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderStyles_unstable } from '@fluentui/react-table';
+import { useDataGridRow_unstable } from '@fluentui/react-table';
+import { useDataGridRowStyles_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCell_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridStyles_unstable } from '@fluentui/react-table';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useField_unstable } from '@fluentui/react-field';
@@ -383,6 +444,80 @@ export { DATA_OVERFLOW_MENU }
 
 export { DATA_OVERFLOWING }
 
+export { DataGrid }
+
+export { DataGridBody }
+
+export { dataGridBodyClassNames }
+
+export { DataGridBodyProps }
+
+export { DataGridBodySlots }
+
+export { DataGridBodyState }
+
+export { DataGridCell }
+
+export { dataGridCellClassNames }
+
+export { DataGridCellProps }
+
+export { DataGridCellSlots }
+
+export { DataGridCellState }
+
+export { dataGridClassNames }
+
+export { DataGridContextValue }
+
+export { DataGridContextValues }
+
+export { DataGridHeader }
+
+export { DataGridHeaderCell }
+
+export { dataGridHeaderCellClassNames }
+
+export { DataGridHeaderCellProps }
+
+export { DataGridHeaderCellSlots }
+
+export { DataGridHeaderCellState }
+
+export { dataGridHeaderClassNames }
+
+export { DataGridHeaderProps }
+
+export { DataGridHeaderSlots }
+
+export { DataGridHeaderState }
+
+export { DataGridProps }
+
+export { DataGridRow }
+
+export { dataGridRowClassNames }
+
+export { DataGridRowProps }
+
+export { DataGridRowSlots }
+
+export { DataGridRowState }
+
+export { DataGridSelectionCell }
+
+export { dataGridSelectionCellClassNames }
+
+export { DataGridSelectionCellProps }
+
+export { DataGridSelectionCellSlots }
+
+export { DataGridSelectionCellState }
+
+export { DataGridSlots }
+
+export { DataGridState }
+
 export { Dropdown }
 
 export { dropdownClassNames }
@@ -509,6 +644,20 @@ export { renderCardPreview_unstable }
 
 export { renderCombobox_unstable }
 
+export { renderDataGrid_unstable }
+
+export { renderDataGridBody_unstable }
+
+export { renderDataGridCell_unstable }
+
+export { renderDataGridHeader_unstable }
+
+export { renderDataGridHeaderCell_unstable }
+
+export { renderDataGridRow_unstable }
+
+export { renderDataGridSelectionCell_unstable }
+
 export { renderDropdown_unstable }
 
 export { renderField_unstable }
@@ -620,6 +769,12 @@ export { tableCellClassNames }
 export { TableCellLayout }
 
 export { tableCellLayoutClassNames }
+
+export { TableCellLayoutProps }
+
+export { TableCellLayoutSlots }
+
+export { TableCellLayoutState }
 
 export { TableCellProps }
 
@@ -757,6 +912,34 @@ export { useCardStyles_unstable }
 export { useCombobox_unstable }
 
 export { useComboboxStyles_unstable }
+
+export { useDataGrid_unstable }
+
+export { useDataGridBody_unstable }
+
+export { useDataGridBodyStyles_unstable }
+
+export { useDataGridCell_unstable }
+
+export { useDataGridCellStyles_unstable }
+
+export { useDataGridHeader_unstable }
+
+export { useDataGridHeaderCell_unstable }
+
+export { useDataGridHeaderCellStyles_unstable }
+
+export { useDataGridHeaderStyles_unstable }
+
+export { useDataGridRow_unstable }
+
+export { useDataGridRowStyles_unstable }
+
+export { useDataGridSelectionCell_unstable }
+
+export { useDataGridSelectionCellStyles_unstable }
+
+export { useDataGridStyles_unstable }
 
 export { useDropdown_unstable }
 
