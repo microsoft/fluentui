@@ -1,7 +1,7 @@
 import { task } from 'gulp';
 import { argv } from 'yargs';
 
-import config from '../../config';
+import config from '../config';
 import { getAllPackageInfo } from '../../monorepo';
 import { screenerRunner } from '../../screener/screener.runner';
 import getConfig from '../../screener/screener.config';

@@ -34,7 +34,9 @@ const getVariables = options => {
  * @param {Record<string,string>} [otherValues] - Other values to include in the environment. Key is the
  * environment variable name and value is the non-stringified value.
  */
-module.exports = (isProduction, otherValues) => ({
+const getDefaultEnvironmentVars = (isProduction, otherValues) => ({
   'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : process.env.NODE_ENV || 'development'),
   ...(otherValues && getVariables(otherValues)),
 });
+
+exports.getDefaultEnvironmentVars = getDefaultEnvironmentVars;
