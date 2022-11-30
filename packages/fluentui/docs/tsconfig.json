@@ -1,5 +1,5 @@
 {
-  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "extends": "../../../tsconfig.base.v0.json",
   "compilerOptions": {
     "module": "esnext",
     "paths": {
@@ -10,7 +10,6 @@
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"]
     },
-    "typeRoots": ["../../../typings", "../../../node_modules/@types"],
     "types": ["node", "webpack-env"],
     "skipLibCheck": true
   },
