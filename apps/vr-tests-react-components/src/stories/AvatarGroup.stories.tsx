@@ -99,6 +99,7 @@ storiesOf('AvatarGroup Converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -118,11 +119,13 @@ storiesOf('AvatarGroup Converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory('layoutPie', () => <AvatarGroupList layout="pie" />, {
     includeHighContrast: true,
     includeDarkMode: true,
+    includeRtl: true,
   })
   .addStory('overflowIndicator', () => <AvatarGroupList overflowIndicator="icon" />, {
     includeHighContrast: true,
