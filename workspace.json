@@ -46,7 +46,7 @@
     },
     "@fluentui/circulars-test": {
       "root": "packages/fluentui/circulars-test",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -85,7 +85,7 @@
     },
     "@fluentui/docs": {
       "root": "packages/fluentui/docs",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -102,7 +102,7 @@
     },
     "@fluentui/e2e": {
       "root": "packages/fluentui/e2e",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -158,7 +158,7 @@
     },
     "@fluentui/local-sandbox": {
       "root": "packages/fluentui/local-sandbox",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -209,7 +209,7 @@
     },
     "@fluentui/perf": {
       "root": "packages/fluentui/perf",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -220,7 +220,7 @@
     },
     "@fluentui/perf-test-northstar": {
       "root": "packages/fluentui/perf-test-northstar",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -243,7 +243,7 @@
     },
     "@fluentui/projects-test": {
       "root": "packages/fluentui/projects-test",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
