@@ -8,14 +8,14 @@ import * as path from 'path';
 export function copyTypes() {
   const packagesToResolve = ['@fluentui/react', '@fluentui/react-hooks', '@fluentui/example-data'];
   const resolvedPackages = [];
-  const pathsToCopy = [];
+  const pathsToCopy: string[] = [];
 
   while (packagesToResolve.length) {
-    const pkg = packagesToResolve.shift();
+    const pkg = packagesToResolve.shift() as string;
     resolvedPackages.push(pkg);
 
     const packageMatch = pkg.match(/^@fluentui\/([\w-]+)/);
-    const dtsPath = expandSourcePath(`${pkg}/dist/${packageMatch[1]}.d.ts`);
+    const dtsPath = (packageMatch ? expandSourcePath(`${pkg}/dist/${packageMatch[1]}.d.ts`) : '') as string;
 
     if (fs.existsSync(dtsPath)) {
       // copy this .d.ts
