@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-import { Toolbar, ToolbarButton, ToolbarToggleButton, ToolbarDivider } from '@fluentui/react-components/unstable';
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarToggleButton,
+  ToolbarRadioButton,
+  ToolbarDivider,
+} from '@fluentui/react-toolbar';
 import type { ToolbarProps, ToolbarButtonProps, ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
-import { ToolbarRadioButton } from '@fluentui/react-toolbar';
 
 import {
   Button,
@@ -197,19 +202,7 @@ const OverflowToolbar = (props: Partial<ToolbarProps>) => {
   });
   const onChange: ToolbarProps['onCheckedValueChange'] = (event, { name, checkedItems }) => {
     setCheckedValues(s => {
-      // Ensure that at least one item within a group is selected
-      if (checkedItems.length === 0) {
-        return s;
-      }
-      const prevCheckedItems = s[name];
-      const newCheckedItems: string[] = [];
-      checkedItems.forEach(value => {
-        // Only check the item if it is different than the previously checked item
-        if (prevCheckedItems[0] !== value) {
-          newCheckedItems.push(value);
-        }
-      });
-      return s ? { ...s, [name]: newCheckedItems } : { [name]: newCheckedItems };
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
     });
   };
 
