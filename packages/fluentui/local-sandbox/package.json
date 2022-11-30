@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/local-sandbox",
-  "version": "0.64.0",
+  "version": "0.65.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -10,9 +10,8 @@
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "^0.64.0"
+    "@fluentui/react-northstar": "^0.65.0"
   },
-  "devDependencies": {},
   "publishConfig": {
     "access": "public"
   }
