@@ -1,5 +1,5 @@
 import { tokens } from '@fluentui/react-theme';
-import { GriffelStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 import type { AlertSlots, AlertState } from './Alert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
