@@ -47,7 +47,7 @@ const p = fluent2ForV8DarkPalette;
 // shortcut since the gray scale isn't part of the v8 palette.
 const grey36 = '#5C5C5C';
 
-const extendedSemanticColors: Partial<ISemanticColors> = {
+const semanticColorMappingOverridesForDark: Partial<ISemanticColors> = {
   primaryButtonText: p.black,
   primaryButtonTextHovered: p.black,
   primaryButtonTextPressed: p.black,
@@ -82,7 +82,7 @@ const extendedSemanticColors: Partial<ISemanticColors> = {
 
 export const Fluent2ForV8DarkTheme: ITheme = createTheme({
   palette: fluent2ForV8DarkPalette,
-  semanticColors: extendedSemanticColors,
+  semanticColors: semanticColorMappingOverridesForDark,
   components: getFluent2ForV8ComponentStyles,
   effects: fluent2ForV8DarkEffects,
 });
