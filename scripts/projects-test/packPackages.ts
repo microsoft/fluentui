@@ -3,9 +3,8 @@ import { PackageGraph } from '@lerna/package-graph';
 import fs from 'fs-extra';
 import path from 'path';
 
-import sh from '../gulp/sh';
-
 import { createTempDir, shEcho } from './utils';
+import { sh } from '../utils';
 
 type PackedPackages = Record<string, string>;
 

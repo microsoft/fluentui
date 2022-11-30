@@ -167,3 +167,14 @@ export const KeyboardNavigation = () => {
     </DataGrid>
   );
 };
+
+KeyboardNavigation.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Keyboard navigation can be achieved with the `focusMode` prop. This prop needs to be explicitly set since',
+        'there is no keyboard navigation enabled by default.',
+      ].join('\n'),
+    },
+  },
+};
