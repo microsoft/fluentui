@@ -32,3 +32,5 @@ export {
   useCardPreview_unstable,
 } from './CardPreview';
 export type { CardPreviewProps, CardPreviewSlots, CardPreviewState } from './CardPreview';
+export { CardProvider, useCardContext_unstable } from './Card';
+export type { CardContextValue } from './Card';

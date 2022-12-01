@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
+import { useCardContext_unstable } from '../Card/CardContext';
 
 /**
  * Create the state required to render CardPreview.
@@ -13,6 +14,26 @@ import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
  */
 export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<HTMLElement>): CardPreviewState => {
   const { logo } = props;
+
+  const {
+    selectableA11yProps: { referenceLabel, setReferenceLabel },
+  } = useCardContext_unstable();
+  const previewRef = useMergedRefs(ref, React.useRef<HTMLDivElement>(null));
+
+  React.useEffect(() => {
+    if (referenceLabel) {
+      return;
+    }
+
+    if (previewRef.current) {
+      const img = previewRef.current.querySelector('img');
+
+      if (img && img.alt) {
+        setReferenceLabel(img.alt);
+      }
+    }
+  }, [setReferenceLabel, referenceLabel, previewRef]);
+
   return {
     components: {
       root: 'div',
@@ -20,7 +41,7 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
     },
 
     root: getNativeElementProps('div', {
-      ref,
+      ref: previewRef,
       ...props,
     }),
     logo: resolveShorthand(logo),

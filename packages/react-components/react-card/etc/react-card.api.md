@@ -18,6 +18,17 @@ export const Card: ForwardRefComponent<CardProps>;
 export const cardClassNames: SlotClassNames<CardSlots>;
 
 // @public
+export interface CardContextValue {
+    // (undocumented)
+    selectableA11yProps: {
+        referenceId?: string;
+        setReferenceId: (referenceId: string) => void;
+        referenceLabel?: string;
+        setReferenceLabel: (referenceLabel: string) => void;
+    };
+}
+
+// @public
 export const cardCSSVars: {
     cardSizeVar: string;
     cardBorderRadiusVar: string;
@@ -59,8 +70,8 @@ export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 export type CardHeaderSlots = {
     root: Slot<'div'>;
     image: Slot<'div', 'img'>;
-    header: Slot<'span'>;
-    description: Slot<'span'>;
+    header: Slot<'div'>;
+    description: Slot<'div'>;
     action?: Slot<'div'>;
 };
 
@@ -97,26 +108,28 @@ export type CardProps = ComponentProps<CardSlots> & {
     selected?: boolean;
     defaultSelected?: boolean;
     onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
-    selectableProps?: React_2.InputHTMLAttributes<HTMLInputElement>;
 };
+
+// @internal (undocumented)
+export const CardProvider: React_2.Provider<CardContextValue | undefined>;
 
 // @public
 export type CardSlots = {
     root: Slot<'div'>;
-    select?: Slot<'div', 'input'>;
+    floatingAction?: Slot<'div'>;
+    checkbox?: Slot<'input'>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
+export type CardState = ComponentState<CardSlots> & CardContextValue & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
     interactive: boolean;
     selectable: boolean;
-    hasSelectSlot: boolean;
     selected: boolean;
     selectFocused: boolean;
 }>;
 
 // @public
-export const renderCard_unstable: (state: CardState) => JSX.Element;
+export const renderCard_unstable: (state: CardState, cardContextValue: CardContextValue) => JSX.Element;
 
 // @public
 export const renderCardFooter_unstable: (state: CardFooterState) => JSX.Element;
@@ -129,6 +142,9 @@ export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Elemen
 
 // @public
 export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;
+
+// @internal (undocumented)
+export const useCardContext_unstable: () => CardContextValue;
 
 // @public
 export const useCardFooter_unstable: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;

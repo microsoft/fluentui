@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Button, Caption1, Body1, tokens, Checkbox } from '@fluentui/react-components';
+import { makeStyles, shorthands, Button, Caption1, tokens, Checkbox, Text } from '@fluentui/react-components';
 import { MoreHorizontal20Filled } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-card';
 
@@ -52,25 +52,23 @@ const CardExample = (props: CardProps) => {
         className={styles.grayBackground}
         logo={<img className={styles.logoBadge} alt="app logo" src={resolveAsset('logo3.svg')} />}
       >
-        <img alt="presentation preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
+        <img alt="Presentation Preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
       </CardPreview>
 
       <CardHeader
-        header={<Body1 weight="semibold">iOS App Prototype</Body1>}
+        header={<Text weight="semibold">iOS App Prototype</Text>}
         description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
       />
     </Card>
   );
 };
 
-export const SelectableWithCheckbox = () => {
+export const SelectableIndicator = () => {
   const styles = useStyles();
 
   const [selected1, setSelected1] = React.useState(false);
   const [selected2, setSelected2] = React.useState(false);
-
-  const getCardLabel = React.useCallback((isSelected: boolean) => (isSelected ? 'Unselect card' : 'Select card'), []);
 
   const onFirstCardSelected = React.useCallback((_, { selected }) => setSelected1(selected), [setSelected1]);
   const onSecondCardSelected = React.useCallback((_, { selected }) => setSelected2(selected), [setSelected2]);
@@ -78,14 +76,12 @@ export const SelectableWithCheckbox = () => {
   return (
     <div className={styles.main}>
       <CardExample
-        aria-label={getCardLabel(selected1)}
-        select={<Checkbox checked={selected1} aria-label={getCardLabel(selected1)} />}
+        floatingAction={<Checkbox checked={selected1} />}
         selected={selected1}
         onSelectionChange={onFirstCardSelected}
       />
       <CardExample
-        aria-label={getCardLabel(selected2)}
-        select={<Checkbox checked={selected2} aria-label={getCardLabel(selected2)} />}
+        floatingAction={<Checkbox checked={selected2} />}
         selected={selected2}
         onSelectionChange={onSecondCardSelected}
       />
@@ -93,11 +89,11 @@ export const SelectableWithCheckbox = () => {
   );
 };
 
-SelectableWithCheckbox.parameters = {
+SelectableIndicator.parameters = {
   docs: {
     description: {
-      story: `By default, selectable cards do not include a checkbox to represent its selection state. Checkboxes can be
-        composed together as an additional component by using the \`select\` property.`,
+      story: `By default, selectable cards do not include any element to represent its selection state. For example,
+      checkboxes can be composed together as an additional element by using the \`floatingIndicator\` property.`,
     },
   },
 };

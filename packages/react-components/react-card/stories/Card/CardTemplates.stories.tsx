@@ -57,6 +57,7 @@ const useStyles = makeStyles({
 
   taskCheckbox: {
     display: 'flex',
+    alignItems: 'flex-start',
   },
 });
 

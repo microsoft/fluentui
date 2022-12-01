@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusableGroup, useFocusWithin } from '@fluentui/react-tabster';
 
 import type { CardProps, CardState } from './Card.types';
 import { useCardSelectable } from './useCardSelectable';
+import { cardContextDefaultValue } from './CardContext';
 
 const focusMap = {
   off: undefined,
@@ -43,20 +44,29 @@ const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, { interactive 
  * @param ref - reference to the root element of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
-  const { appearance = 'filled', orientation = 'vertical', size = 'medium' } = props;
+  const { appearance = 'filled', orientation = 'vertical', size = 'medium', floatingAction } = props;
+
+  const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
+  const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
 
   const cardBaseRef = useFocusWithin<HTMLDivElement>();
-  const {
-    selectable,
-    hasSelectSlot,
-    selected,
-    selectableSlot,
-    selectableProps,
-    selectableTag,
-    selectFocused,
-  } = useCardSelectable(props, cardBaseRef);
+  const { selectable, selected, selectableRef, selectableCardProps, selectFocused, checkboxSlot } = useCardSelectable(
+    props,
+    { referenceId, referenceLabel },
+    cardBaseRef,
+  );
 
   const cardRef = useMergedRefs(cardBaseRef, ref);
+
+  const floatingActionSlot = React.useMemo(
+    () =>
+      resolveShorthand(floatingAction, {
+        defaultProps: {
+          ref: selectableRef,
+        },
+      }),
+    [floatingAction, selectableRef],
+  );
 
   const interactive = Boolean(
     props.onClick ||
@@ -70,6 +80,12 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
   );
 
   const focusAttributes = useCardFocusAttributes(props, { interactive });
+  const selectableA11yProps = {
+    setReferenceId,
+    referenceId,
+    referenceLabel,
+    setReferenceLabel,
+  };
 
   return {
     appearance,
@@ -77,13 +93,14 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
     size,
     interactive,
     selectable,
-    hasSelectSlot,
     selectFocused,
     selected,
+    selectableA11yProps,
 
     components: {
       root: 'div',
-      select: selectableTag,
+      floatingAction: 'div',
+      checkbox: 'input',
     },
 
     root: getNativeElementProps('div', {
@@ -91,9 +108,10 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
       role: 'group',
       ...focusAttributes,
       ...props,
-      ...selectableProps,
+      ...selectableCardProps,
     }),
 
-    select: selectableSlot,
+    floatingAction: floatingActionSlot,
+    checkbox: checkboxSlot,
   };
 };

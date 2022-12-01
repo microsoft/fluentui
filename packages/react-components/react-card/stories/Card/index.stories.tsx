@@ -8,7 +8,7 @@ export { Orientation } from './CardOrientation.stories';
 export { Size } from './CardSize.stories';
 export { Appearance } from './CardAppearance.stories';
 export { Selectable } from './CardSelectable.stories';
-export { SelectableWithCheckbox } from './CardSelectableCheckbox.stories';
+export { SelectableIndicator } from './CardSelectableIndicator.stories';
 export { FocusMode } from './CardFocusMode.stories';
 export { Templates } from './CardTemplates.stories';
 

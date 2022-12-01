@@ -16,6 +16,18 @@ export type CardOnSelectData = {
 };
 
 /**
+ * Data shared between card components
+ */
+export interface CardContextValue {
+  selectableA11yProps: {
+    referenceId?: string;
+    setReferenceId: (referenceId: string) => void;
+    referenceLabel?: string;
+    setReferenceLabel: (referenceLabel: string) => void;
+  };
+}
+
+/**
  * Slots available in the Card component.
  */
 export type CardSlots = {
@@ -27,7 +39,12 @@ export type CardSlots = {
   /**
    * Select element represents a checkbox.
    */
-  select?: Slot<'div', 'input'>;
+  floatingAction?: Slot<'div'>;
+
+  /**
+   * The internal checkbox element that renders when the card is selectable.
+   */
+  checkbox?: Slot<'input'>;
 };
 
 /**
@@ -97,7 +114,7 @@ export type CardProps = ComponentProps<CardSlots> & {
   selected?: boolean;
 
   /**
-   * Defines whether the card is initially in a selected state or not when rendered.
+   * Defines whether the card is initially in a selected state when rendered.
    *
    * @default false
    */
@@ -107,17 +124,13 @@ export type CardProps = ComponentProps<CardSlots> & {
    * Callback to be called when the selected state value changes.
    */
   onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
-
-  /**
-   * Properties passed to the internal checkbox element.
-   */
-  selectableProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
 /**
  * State used in rendering Card.
  */
 export type CardState = ComponentState<CardSlots> &
+  CardContextValue &
   Required<
     Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
       /**
@@ -133,13 +146,6 @@ export type CardState = ComponentState<CardSlots> &
        * @default false
        */
       selectable: boolean;
-
-      /**
-       * Represents a selectable card that contains a slot for the select element.
-       *
-       * @default false
-       */
-      hasSelectSlot: boolean;
 
       /**
        * Defines whether the card is currently selected.

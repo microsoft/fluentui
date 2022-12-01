@@ -13,7 +13,8 @@ import type { CardSlots, CardState } from './Card.types';
  */
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
-  select: 'fui-Card__select',
+  floatingAction: 'fui-Card__select',
+  checkbox: 'fui-Card__checkbox',
 };
 
 /**
@@ -64,6 +65,11 @@ const useStyles = makeStyles({
     [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
       flexGrow: 1,
     },
+
+    ...createFocusOutlineStyle({
+      style: focusOutlineStyle,
+      selector: 'focus',
+    }),
   },
 
   selectableFocused: createFocusOutlineStyle({
@@ -108,7 +114,7 @@ const useStyles = makeStyles({
     [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
       marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
-    [`> .${cardClassNames.select} + .${cardPreviewClassNames.root}`]: {
+    [`> .${cardClassNames.floatingAction} + .${cardPreviewClassNames.root}`]: {
       marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
 
@@ -294,7 +300,7 @@ const useStyles = makeStyles({
     zIndex: 1,
   },
 
-  selectHidden: {
+  hiddenCheckbox: {
     ...shorthands.overflow('hidden'),
     width: '1px',
     height: '1px',
@@ -354,12 +360,16 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     state.root.className,
   );
 
-  if (state.select) {
-    state.select.className = mergeClasses(
-      cardClassNames.select,
-      state.hasSelectSlot ? styles.select : styles.selectHidden,
-      state.select.className,
+  if (state.floatingAction) {
+    state.floatingAction.className = mergeClasses(
+      cardClassNames.floatingAction,
+      styles.select,
+      state.floatingAction.className,
     );
+  }
+
+  if (state.checkbox) {
+    state.checkbox.className = mergeClasses(cardClassNames.checkbox, styles.hiddenCheckbox, state.checkbox.className);
   }
 
   return state;
