@@ -3,11 +3,10 @@
 bundle-size/
 config/
 coverage/
-docs/
+e2e/
 etc/
 node_modules/
 src/
-stories/
 dist/types/
 temp/
 __fixtures__
@@ -17,7 +16,7 @@ __tests__
 *.api.json
 *.log
 *.spec.*
-*.cy.*
+*.stories.*
 *.test.*
 *.yml
 
