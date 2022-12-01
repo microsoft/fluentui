@@ -3,25 +3,24 @@ import { task, series, parallel, condition, option, addResolvePath } from 'just-
 import path from 'path';
 import fs from 'fs';
 
-import { babel } from './tasks/babel';
-import { clean } from './tasks/clean';
-import { copy, copyCompiled } from './tasks/copy';
-import { jest as jestTask, jestWatch } from './tasks/jest';
-import { sass } from './tasks/sass';
-import { ts } from './tasks/ts';
-import { eslint } from './tasks/eslint';
-import { webpack, webpackDevServer } from './tasks/webpack';
-import { apiExtractor } from './tasks/api-extractor';
-import { lintImports } from './tasks/lint-imports';
-import { prettier } from './tasks/prettier';
-import { screener } from './tasks/screener';
-import { checkForModifiedFiles } from './tasks/check-for-modified-files';
-import { generateVersionFiles } from './tasks/generate-version-files';
-import { postprocessTask } from './tasks/postprocess';
-import { postprocessAmdTask } from './tasks/postprocess-amd';
-import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { isConvergedPackage } from './monorepo';
-import { getJustArgv } from './tasks/argv';
+import { isConvergedPackage } from '../monorepo';
+
+import { babel } from './babel';
+import { clean } from './clean';
+import { copy, copyCompiled } from './copy';
+import { jest as jestTask, jestWatch } from './jest';
+import { sass } from './sass';
+import { ts } from './ts';
+import { eslint } from './eslint';
+import { webpack, webpackDevServer } from './webpack';
+import { apiExtractor } from './api-extractor';
+import { lintImports } from './lint-imports';
+import { prettier } from './prettier';
+import { screener } from './screener';
+import { postprocessTask } from './postprocess';
+import { postprocessAmdTask } from './postprocess-amd';
+import { startStorybookTask, buildStorybookTask } from './storybook';
+import { getJustArgv } from './argv';
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -46,7 +45,7 @@ export function preset() {
 
   const args = getJustArgv();
 
-  task('no-op', () => {}).cached();
+  task('no-op', () => {}).cached!();
   task('clean', clean);
   task('copy', copy);
   task('copy-compiled', copyCompiled);
@@ -64,15 +63,14 @@ export function preset() {
   task('api-extractor', apiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
-  task('check-for-modified-files', checkForModifiedFiles);
-  task('generate-version-files', generateVersionFiles);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
 
   task('ts:compile', () => {
+    const moduleFlag = args.module;
     // default behaviour
-    if (!args.module) {
+    if (!moduleFlag) {
       return parallel(
         'ts:commonjs',
         'ts:esm',
@@ -81,9 +79,9 @@ export function preset() {
     }
 
     return parallel(
-      condition('ts:commonjs', () => args.module.cjs),
-      condition('ts:esm', () => args.module.esm),
-      condition('ts:amd', () => args.module.amd),
+      condition('ts:commonjs', () => moduleFlag.cjs),
+      condition('ts:esm', () => moduleFlag.esm),
+      condition('ts:amd', () => moduleFlag.amd),
     );
   });
 
@@ -114,9 +112,9 @@ export function preset() {
   task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached();
+  task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
-  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached();
+  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
 
   task(
     'bundle',
