@@ -412,7 +412,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
     ...({ 'data-is-focusable': !disabled } as any),
   };
 
-  const sliderBoxProps: React.HTMLAttributes<HTMLElement> = {
+  const sliderBoxProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement> = {
     id,
     className: css(classNames.slideBox, buttonProps.className),
     ref: sliderBoxRef,
