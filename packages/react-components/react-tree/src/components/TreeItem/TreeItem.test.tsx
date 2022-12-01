@@ -13,8 +13,8 @@ describe('TreeItem', () => {
         {
           props: {
             expandIcon: 'Test Expand Icon',
-            beforeIcon: 'Test Before Icon',
-            afterIcon: 'Test After Icon',
+            iconBefore: 'Test Icon Before',
+            iconAfter: 'Test Icon After',
             actionIcon: 'test Action Icon',
           },
         },
