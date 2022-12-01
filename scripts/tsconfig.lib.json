@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "outDir": "../../dist",
+    "resolveJsonModule": true,
+    "types": ["node", "jest"]
+  },
+  "include": ["index.ts"],
+  "files": ["../typings/find-free-port/index.d.ts"]
+}

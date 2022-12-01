@@ -1,5 +1,3 @@
-module.exports = merge;
-
 /**
  *
  * @param {Record<string,any>} obj1
@@ -23,3 +21,5 @@ function merge(obj1, obj2) {
 
   return merged;
 }
+
+exports.merge = merge;
