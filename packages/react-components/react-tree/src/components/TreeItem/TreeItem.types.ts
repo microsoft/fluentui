@@ -20,11 +20,11 @@ export type TreeItemSlots = BaseTreeItemSlots & {
   /**
    * Icon slot that renders right before main content
    */
-  beforeIcon?: Slot<'span'>;
+  iconBefore?: Slot<'span'>;
   /**
    * Icon slot that renders right after main content
    */
-  afterIcon?: Slot<'span'>;
+  iconAfter?: Slot<'span'>;
   /**
    * Icon slot that renders on the end of the main content
    */
