@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { tscTask, TscTaskOptions, logger } from 'just-scripts';
 import { getJustArgv } from './argv';
-import { getTsPathAliasesConfig } from './utils';
+import { getTsPathAliasesConfig, getTsPathAliasesConfigV8 } from './utils';
 
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
@@ -20,6 +20,15 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.inlineSources = true;
     options.sourceRoot = path.relative(libPath, srcPath);
     options.sourceMap = true;
+  }
+
+  const { isUsingV8pathAliases, tsConfigFileV8 } = getTsPathAliasesConfigV8();
+
+  if (isUsingV8pathAliases) {
+    logger.info(`📣 TSC: V8 package is using TS path aliases. Overriding tsconfig settings.`);
+    options.baseUrl = '.';
+    options.rootDir = './src';
+    options.project = tsConfigFileV8;
   }
 
   const { isUsingTsSolutionConfigs, tsConfigFile, tsConfig } = getTsPathAliasesConfig();

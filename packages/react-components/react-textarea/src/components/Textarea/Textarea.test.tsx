@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
 import { Textarea } from './Textarea';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 function getTextarea(): HTMLTextAreaElement {
   return screen.getByRole('textbox') as HTMLTextAreaElement;

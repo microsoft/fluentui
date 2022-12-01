@@ -161,7 +161,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
   private _onSearchQueryChanged: ISearchBoxProps['onChange'] = (ev, newValue) => {
     this.setState({
-      searchQuery: newValue,
+      searchQuery: newValue!,
     });
   };
 }

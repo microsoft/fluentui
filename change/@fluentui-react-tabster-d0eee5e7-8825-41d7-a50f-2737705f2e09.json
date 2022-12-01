@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: allow GriffelResetStyle to be passed to createCustomFocusIndicatorStyle",
+  "packageName": "@fluentui/react-tabster",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -11,6 +11,7 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "isolatedModules": true,
     "types": ["jest"]
   },
   "include": ["src"]

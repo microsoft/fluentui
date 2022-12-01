@@ -1,4 +1,3 @@
-import config from '@fluentui/scripts/config';
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -9,17 +8,20 @@ import {
   log,
   shEcho,
   generateFiles,
+  workspaceRoot,
 } from '@fluentui/scripts/projects-test';
 
 export async function typings() {
   const logger = log('test:projects:typings');
 
-  const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/typings'));
+  const scaffoldPathRoot = path.resolve(__dirname, '../assets/typings');
   const tempPaths = prepareTempDirs('project-typings-');
   logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
   // Install dependencies, ensuring we specify the same TS version as our projects use
-  const rootPkgJson: { devDependencies: Record<string, string> } = fs.readJSONSync(config.paths.base('package.json'));
+  const rootPkgJson: { devDependencies: Record<string, string> } = fs.readJSONSync(
+    path.resolve(workspaceRoot, 'package.json'),
+  );
   const { typescript: tsVersion } = rootPkgJson.devDependencies;
 
   const dependencies = [
@@ -32,13 +34,13 @@ export async function typings() {
   await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger, config.paths.base(), ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, workspaceRoot, ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
-  generateFiles(scaffoldPath(), tempPaths.testApp);
+  generateFiles(scaffoldPathRoot, tempPaths.testApp);
   logger(`✔️ Source and configs were copied`);
 
   await shEcho(`which yarn`);

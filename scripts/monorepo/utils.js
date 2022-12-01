@@ -1,7 +1,6 @@
-// @ts-check
-
 const fs = require('fs');
 const path = require('path');
+const { workspaceRoot } = require('nx/src/utils/app-root');
 
 const findGitRoot = require('./findGitRoot');
 
@@ -19,3 +18,4 @@ function getProjectMetadata(options) {
 }
 
 exports.getProjectMetadata = getProjectMetadata;
+exports.workspaceRoot = workspaceRoot;

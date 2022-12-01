@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 import * as path from 'path';
-
-import config from '@fluentui/scripts/config';
+import { workspaceRoot } from 'nx/src/utils/app-root';
 
 // TODO: check false positive potential regression reports in fluent ui repo and fix
 
@@ -29,7 +28,7 @@ export function getFluentPerfRegressions() {
 function linkToFlamegraph(value: string, filename: string) {
   const urlForDeployPath = process.env.DEPLOYURL
     ? `${process.env.DEPLOYURL}/perf-test-northstar`
-    : 'file://' + config.paths.packageDist('perf-test');
+    : 'file://' + path.resolve(workspaceRoot, 'packages/fluentui/perf-test/dist');
 
   return `[${value}](${urlForDeployPath}/${path.basename(filename)})`;
 }
@@ -109,7 +108,7 @@ const checkPerfRegressions = (reporter: Reporter) => {
   reporter.markdown('## Perf Analysis (`@fluentui/react-northstar`)');
 
   try {
-    perfCounts = require(config.paths.packageDist('perf-test-northstar', 'perfCounts.json'));
+    perfCounts = require(path.resolve(workspaceRoot, 'packages/perf-test-northstar/dist/perfCounts.json'));
   } catch {
     reporter.warn('No perf measurements available');
     return;

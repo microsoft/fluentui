@@ -3,7 +3,7 @@ import fs from 'fs';
 import { task, series } from 'gulp';
 import webpackPlugin from '../../plugins/gulp-webpack';
 
-import config from '../../../config';
+import config from '../../config';
 
 import { cyclesToSkip } from './config';
 import { buildWebpackConfig, configureCircularDependencyCheckPlugin, isCycleToSkip } from './utils';
