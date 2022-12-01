@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     minHeight: '44px',
     ...shorthands.padding('0', '12px'),
     ...shorthands.borderRadius('4px'),
-    ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeInteractive),
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     boxShadow: tokens.shadow8,
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightSemibold,
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
   },
   inverted: {
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundInverted2,
     backgroundColor: tokens.colorNeutralBackgroundInverted,
   },
   icon: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     ...shorthands.padding('0'),
     minWidth: 0,
     marginLeft: 'auto',
-    color: tokens.colorBrandForegroundLink,
+    color: tokens.colorBrandForeground1,
   },
 });
 
@@ -60,17 +60,32 @@ const useIntentIconStyles = makeStyles({
   },
 });
 
+const useIntentIconStylesInverted = makeStyles({
+  warning: {
+    // TODO: update this when token is created
+    color: tokens.colorPaletteYellowForeground2,
+  },
+  info: {
+    color: tokens.colorNeutralForegroundInverted2,
+  },
+});
+
+const useActionButtonColorInverted = makeStyles({ action: { color: tokens.colorBrandForegroundInverted } });
+
 /**
  * Apply styling to the Alert slots based on the state
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const styles = useStyles();
-  const intentIconStyles = useIntentIconStyles();
+  const inverted = state.appearance === 'inverted';
+  const intentIconStylesPrimary = useIntentIconStyles();
+  const mergedIntentIconStylesInverted = { ...intentIconStylesPrimary, ...useIntentIconStylesInverted() };
+  const actionStylesInverted = useActionButtonColorInverted();
 
   state.root.className = mergeClasses(
     alertClassNames.root,
     styles.root,
-    state.appearance !== 'primary' && styles.inverted,
+    inverted && styles.inverted,
     state.root.className,
   );
 
@@ -78,7 +93,7 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
     state.icon.className = mergeClasses(
       alertClassNames.icon,
       styles.icon,
-      state.intent && intentIconStyles[state.intent],
+      state.intent && (inverted ? mergedIntentIconStylesInverted[state.intent] : intentIconStylesPrimary[state.intent]),
       state.icon.className,
     );
   }
@@ -88,7 +103,13 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   }
 
   if (state.action) {
-    state.action.className = mergeClasses(alertClassNames.action, styles.action, state.action.className);
+    // Note: inverted && actionStylesInverted.action has the highest piority and must be merged last
+    state.action.className = mergeClasses(
+      alertClassNames.action,
+      styles.action,
+      inverted && actionStylesInverted.action,
+      state.action.className,
+    );
   }
 
   return state;
