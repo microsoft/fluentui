@@ -12,17 +12,6 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export interface Circle extends SkeletonElement {
-    height?: number;
-}
-
-// @public
-export interface Line extends SkeletonElement {
-    height?: number;
-    width?: number | string;
-}
-
-// @public
 export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
 
 // @public
@@ -32,44 +21,21 @@ export const Skeleton: ForwardRefComponent<SkeletonProps>;
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
 
 // @public
-export interface SkeletonElement {
-    height?: number;
-    type: SkeletonElementType;
-    verticalAlign?: 'top' | 'center' | 'bottom';
-    width?: number | string;
-}
-
-// @public
-export enum SkeletonElementsDefaultHeights {
-    circle = 24,
-    line = 16
-}
-
-// @public
-export enum SkeletonElementType {
-    circle = 2,
-    line = 1
-}
-
-// @public
-export type SkeletonProps = ComponentProps<SkeletonSlots> & {
-    children?: React_2.ReactNode;
+export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width' | 'animation'> & {
     width?: number | string;
     isDataLoaded?: boolean;
-    color?: string;
+    skeletonColor?: string;
     animation?: string;
 };
 
 // @public (undocumented)
 export type SkeletonSlots = {
     root: NonNullable<Slot<'div'>>;
-    wrapper: NonNullable<Slot<'div'>>;
     gradient: NonNullable<Slot<'div'>>;
-    data: Slot<'div'>;
 };
 
 // @public
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'isDataLoaded' | 'children' | 'animation'>> & Pick<SkeletonProps, 'color'>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'isDataLoaded' | 'animation'>>;
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;

@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SkeletonLineSlots, SkeletonLineState } from './SkeletonLine.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const SkeletonLineClassNames: SlotClassNames<SkeletonLineSlots> = {
   root: 'fui-SkeletonLine',
@@ -15,6 +16,7 @@ const useRootStyles = makeStyles({
     height: '16px',
     width: '100%',
     alignItems: 'center',
+    backgroundColor: tokens.colorNeutralStencil1,
   },
 });
 

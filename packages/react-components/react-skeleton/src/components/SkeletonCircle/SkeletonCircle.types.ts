@@ -22,16 +22,10 @@ export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {
    * @defaultvalue center
    */
   verticalAlign?: 'top' | 'center' | 'bottom';
-
-  /**
-   * The width of the SkeletonCircle
-   * @defaultValue 100%
-   */
-  width?: number | string;
 };
 
 /**
  * State used in rendering SkeletonCircle
  */
 export type SkeletonCircleState = ComponentState<SkeletonCircleSlots> &
-  Required<Pick<SkeletonCircleProps, 'height' | 'verticalAlign' | 'width'>>;
+  Required<Pick<SkeletonCircleProps, 'height' | 'verticalAlign'>>;

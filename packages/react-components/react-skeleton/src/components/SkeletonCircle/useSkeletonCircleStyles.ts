@@ -1,6 +1,7 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SkeletonCircleSlots, SkeletonCircleState } from './SkeletonCircle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const SkeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots> = {
   root: 'fui-SkeletonCircle',
@@ -12,10 +13,15 @@ export const SkeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots> = {
 const useRootStyles = makeStyles({
   root: {
     position: 'relative',
-    height: '24px',
-    width: '100%',
     alignItems: 'center',
-    borderRadius: '4px',
+    boxSizing: 'border-box',
+    ...shorthands.borderRadius('50%'),
+    ...shorthands.borderColor(tokens.colorNeutralStencil1),
+    backgroundColor: tokens.colorNeutralStencil1,
+
+    '@media screen and (forced-colors:active)': {
+      ...shorthands.borderColor('Window'),
+    },
   },
 });
 
@@ -23,7 +29,7 @@ const useRootStyles = makeStyles({
  * Apply styling to the SkeletonCircle slots based on the state
  */
 export const useSkeletonCircleStyles_unstable = (state: SkeletonCircleState): SkeletonCircleState => {
-  const { height, width, verticalAlign } = state;
+  const { height, verticalAlign } = state;
 
   const rootStyles = useRootStyles();
 
@@ -32,16 +38,11 @@ export const useSkeletonCircleStyles_unstable = (state: SkeletonCircleState): Sk
   if (height) {
     state.root.style = {
       height,
+      width: height,
       ...state.root.style,
     };
   }
 
-  if (width) {
-    state.root.style = {
-      width,
-      ...state.root.style,
-    };
-  }
   if (verticalAlign) {
     state.root.style = {
       alignItems: verticalAlign,

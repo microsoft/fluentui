@@ -6,9 +6,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
   root: 'fui-Skeleton',
-  wrapper: 'fui-Skeleton__wrapper',
   gradient: 'fui-Skeleton__gradient',
-  data: 'fui-Skeleton__data',
 };
 
 const BACKGROUND_OFF_SCREEN_POSITION = '100%';
@@ -32,15 +30,14 @@ const skeletonWaveAnimationRTL = {
 };
 
 const skeletonPulseAnimation = {
-  '0%': {
-    transform: `opacity(1)`,
-  },
-  '50%': {
-    transform: `opacity(0.4)`,
-  },
-  '100%': {
-    transform: `opacity(1)`,
-  },
+  '0%': { transform: `scale(1)` },
+  '30%': { transform: `scale(1)` },
+  '40%': { transform: `scale(1.05)` },
+  '50%': { transform: `scale(1)` },
+  '60%': { transform: `scale(1)` },
+  '70%': { transform: `scale(1.03)` },
+  '80%': { transform: `scale(1)` },
+  '100%': { transform: `scale(1)` },
 };
 
 /**
@@ -50,18 +47,9 @@ const useRootStyles = makeStyles({
   root: {
     position: 'relative',
     height: 'auto',
-  },
-});
-
-/**
- * Styles for the wrapper slot
- */
-const useWrapperStyles = makeStyles({
-  base: {
-    position: 'relative',
     ...shorthands.overflow('hidden'),
     transform: 'translateZ(0)',
-    backgroundColor: tokens.colorNeutralStencil1,
+    backgroundColor: tokens.colorNeutralStencil2,
     transitionProperty: 'opacity',
     transitionDuration: '0.3s',
     transitionTimingFunction: 'ease',
@@ -73,9 +61,16 @@ const useWrapperStyles = makeStyles({
         transparent 0%,
         Window 50%,
         transparent 100%)
-      0 0 / 90% 100%
-      no-repeat`,
+      `,
     },
+  },
+
+  pulse: {
+    animationDuration: '2s',
+    animationTimingFunction: 'ease-in-out',
+    animationDirection: 'normal',
+    animationIterationCount: 'infinite',
+    animationName: skeletonPulseAnimation,
   },
 });
 
@@ -85,18 +80,18 @@ const useWrapperStyles = makeStyles({
 const useGradientStyles = makeStyles({
   base: {
     position: 'absolute',
+    opacity: '30%',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: `tokens.colorNeutralStencil1
+    backgroundImage: `
                   linear-gradient(
                     to right,
-                    ${tokens.colorNeutralStencil1} 0%,
-                    ${tokens.colorNeutralStencil2} 50%,
-                    ${tokens.colorNeutralStencil1} 100%)
-                  0 0 / 90% 100%
-                  no-repeat`,
+                    ${tokens.colorNeutralStencil2} 0%,
+                    ${tokens.colorNeutralStencil1} 50%,
+                    ${tokens.colorNeutralStencil2} 100%)
+                  `,
     animationDuration: '2s',
     animationTimingFunction: 'ease-in-out',
     animationDirection: 'normal',
@@ -108,43 +103,14 @@ const useGradientStyles = makeStyles({
   },
 
   rtlWave: {
-    backgroundColor: `tokens.colorNeutralStencil1
+    backgroundImage: `
     linear-gradient(
       to left,
-      ${tokens.colorNeutralStencil1} %,
+      ${tokens.colorNeutralStencil1} 0%,
       ${tokens.colorNeutralStencil2} 50%,
       ${tokens.colorNeutralStencil1} 100%)
-    0 0 / 90% 100%
-    no-repeat`,
+   `,
     animationName: skeletonWaveAnimationRTL,
-  },
-
-  pulse: {
-    animationName: skeletonPulseAnimation,
-  },
-});
-
-/**
- * Styling for the data slot
- */
-const useDataStyles = makeStyles({
-  base: {
-    position: 'absolute',
-    top: '0',
-    bottom: '0',
-    left: '0',
-    right: '0',
-    opacity: '0',
-    backgroundColor: 'transparent',
-    ...shorthands.border('none'),
-    transitionProperty: 'opacity',
-    transitionDuration: '0.3s',
-    transitionTimingFunction: 'ease',
-  },
-
-  loaded: {
-    opacity: '1',
-    position: 'static',
   },
 });
 
@@ -152,33 +118,26 @@ const useDataStyles = makeStyles({
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
-  const { isDataLoaded, animation } = state;
+  const { animation } = state;
 
   const rootStyles = useRootStyles();
-  const wrapperStyles = useWrapperStyles();
   const gradientStyles = useGradientStyles();
-  const dataStyles = useDataStyles();
   const { dir } = useFluent();
 
-  state.root.className = mergeClasses(skeletonClassNames.root, rootStyles.root, state.root.className);
-
-  state.wrapper.className = mergeClasses(skeletonClassNames.wrapper, wrapperStyles.base, state.wrapper.className);
-
-  state.gradient.className = mergeClasses(
-    skeletonClassNames.gradient,
-    gradientStyles.base,
-    dir === 'ltr' && animation === 'wave' && gradientStyles.wave,
-    dir === 'rtl' && animation === 'wave' && gradientStyles.rtlWave,
-    animation === 'pulse' && gradientStyles.pulse,
-    skeletonClassNames.gradient,
+  state.root.className = mergeClasses(
+    skeletonClassNames.root,
+    rootStyles.root,
+    animation === 'pulse' && rootStyles.pulse,
+    state.root.className,
   );
 
-  if (state.data) {
-    state.data.className = mergeClasses(
-      skeletonClassNames.data,
-      dataStyles.base,
-      isDataLoaded && dataStyles.loaded,
-      skeletonClassNames.data,
+  if (state.gradient) {
+    state.gradient.className = mergeClasses(
+      skeletonClassNames.gradient,
+      gradientStyles.base,
+      dir === 'ltr' && animation === 'wave' && gradientStyles.wave,
+      dir === 'rtl' && animation === 'wave' && gradientStyles.rtlWave,
+      skeletonClassNames.gradient,
     );
   }
 
