@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: enable isolateModules",
-  "packageName": "@fluentui/api-docs",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

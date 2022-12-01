@@ -70,7 +70,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   ];
 
   /** Gets the top level page from the current URL and returns a link to it. */
-  private _getAreaLink = (): JSX.Element => {
+  private _getAreaLink = (): JSX.Element | undefined => {
     const area = getSiteArea(SiteDefinition.pages);
     const pageForArea = SiteDefinition.pages.filter(page => page.title === area)[0];
     if (pageForArea) {
@@ -78,7 +78,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
 
       return (
         <li>
-          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url)} underline>
+          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url!)} underline>
             {title}
           </Link>
         </li>
@@ -87,7 +87,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   };
 
   /** Renders a button to go back in the browser history only if there is a page to go back to. */
-  private _renderBackButton = (): JSX.Element => {
+  private _renderBackButton = (): JSX.Element | undefined => {
     if (window.history.length > 1) {
       return (
         <p>

@@ -13,13 +13,13 @@ export const ListCellsPage: React.FunctionComponent<IControlsPageProps> = props 
     <ControlsAreaPage
       {...props}
       title="List Cells"
-      {...ListCellsPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...ListCellsPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [

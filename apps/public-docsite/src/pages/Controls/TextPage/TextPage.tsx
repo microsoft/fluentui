@@ -15,13 +15,13 @@ export const TextPage: React.FunctionComponent<IControlsPageProps> = props => {
     <ControlsAreaPage
       {...props}
       title="Text"
-      {...TextPageProps[props.platform]}
-      otherSections={_otherSections(platform) as any}
+      {...TextPageProps[props.platform!]}
+      otherSections={_otherSections(platform!) as any}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [

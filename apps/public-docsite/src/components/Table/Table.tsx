@@ -59,7 +59,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
       </td>
     ) : (
       // eslint-disable-next-line react/no-danger
-      <td className={cell.className} key={index} dangerouslySetInnerHTML={{ __html: cell.html }} />
+      <td className={cell.className} key={index} dangerouslySetInnerHTML={{ __html: cell.html! }} />
     );
   }
 

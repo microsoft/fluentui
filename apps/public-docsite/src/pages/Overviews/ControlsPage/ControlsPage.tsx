@@ -20,21 +20,21 @@ const ControlsPageBase: React.FunctionComponent<IPageProps<Platforms>> = props =
       {...props}
       title="Controls"
       platform={platform}
-      subTitle={getSubTitle(platform)}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      subTitle={getSubTitle(platform!)}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
       showSideRail={false}
       versionSwitcherDefinition={platform === Platforms.web ? SiteDefinition.versionSwitcherDefinition : undefined}
-      {...ControlsPageProps[platform]}
+      {...ControlsPageProps[platform!]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   const controls = SiteDefinition.pages.filter(page => page.title === 'Controls')[0].platforms;
-  const platformControls: INavPage[] = controls[platform];
+  const platformControls: INavPage[] | undefined = controls![platform];
 
   if (platformControls) {
-    let sections: IPageSectionProps<Platforms>[] = platformControls
+    let sections = platformControls
       .filter(page => !page.isHiddenFromMainNav && page.isCategory)
       .map(
         category =>
@@ -55,14 +55,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </ul>
             ),
           },
-      );
+      ) as IPageSectionProps<Platforms>[];
 
-    _otherControlsRequestSections(platform) !== undefined && sections.push(_otherControlsRequestSections(platform));
+    const _otherControlsRequestSectionsValue = _otherControlsRequestSections(platform);
+
+    _otherControlsRequestSectionsValue !== undefined && sections.push(_otherControlsRequestSectionsValue);
     return sections;
   }
 }
 
-function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<Platforms> {
+function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<Platforms> | undefined {
   switch (platform) {
     case 'web':
       return {

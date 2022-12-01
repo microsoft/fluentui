@@ -13,13 +13,13 @@ export const PeoplePickerPage: React.FunctionComponent<IControlsPageProps> = pro
     <ControlsAreaPage
       {...props}
       title="People Picker"
-      {...PeoplePickerPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...PeoplePickerPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'android':
       return [

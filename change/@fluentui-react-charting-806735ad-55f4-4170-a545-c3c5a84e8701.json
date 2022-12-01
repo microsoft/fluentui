@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Support single point in area chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}
