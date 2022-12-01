@@ -54,7 +54,7 @@ const getPercent = (value: number, sliderMin: number, sliderMax: number) => {
 
 const useComponentRef = (
   props: ISliderProps,
-  sliderBoxRef: React.RefObject<HTMLElement>,
+  sliderBoxRef: React.RefObject<HTMLDivElement>,
   value: number | undefined,
   range: [number, number] | undefined,
 ) => {
@@ -341,7 +341,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
 
   const lowerValueThumbRef = React.useRef<HTMLElement>(null);
   const thumbRef = React.useRef<HTMLElement>(null);
-  const sliderBoxRef = React.useRef<HTMLElement>(null);
+  const sliderBoxRef = React.useRef<HTMLDivElement>(null);
   useComponentRef(props, sliderBoxRef, value, ranged ? [lowerValue, value] : undefined);
   const getPositionStyles = getSlotStyleFn(vertical ? 'bottom' : getRTL(props.theme) ? 'right' : 'left');
   const getTrackStyles = getSlotStyleFn(vertical ? 'height' : 'width');
@@ -412,7 +412,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
     ...({ 'data-is-focusable': !disabled } as any),
   };
 
-  const sliderBoxProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement> = {
+  const sliderBoxProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement> = {
     id,
     className: css(classNames.slideBox, buttonProps.className),
     ref: sliderBoxRef,
