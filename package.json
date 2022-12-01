@@ -105,6 +105,7 @@
     "@storybook/addon-docs": "6.5.5",
     "@storybook/addon-essentials": "6.5.5",
     "@storybook/addon-knobs": "6.4.0",
+    "@storybook/addon-links": "6.5.5",
     "@storybook/addons": "6.5.5",
     "@storybook/api": "6.5.5",
     "@storybook/builder-webpack5": "6.5.5",
