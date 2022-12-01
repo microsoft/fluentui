@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     height: '32px',
   },
   medium: {
-    height: '40',
+    height: '40px',
   },
   large: {
     height: '48px',
