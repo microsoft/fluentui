@@ -88,7 +88,7 @@ const CardExample = ({ className, ...props }: CardProps) => {
         image={<img className={styles.logo} src={resolveAsset('app_logo.svg')} />}
         header={<Text weight="semibold">App Name</Text>}
         description={<Caption1 className={styles.caption}>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
       />
 
       <p className={styles.text}>
