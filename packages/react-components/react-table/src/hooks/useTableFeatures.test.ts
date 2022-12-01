@@ -1,18 +1,18 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { createColumn } from './createColumn';
-import { defaultTableSelectionState, useSelection } from './useSelection';
-import { defaultTableSortState, useSort } from './useSort';
-import { useTable } from './useTable';
+import { defaultTableSelectionState, useTableSelection } from './useTableSelection';
+import { defaultTableSortState, useTableSort } from './useTableSort';
+import { useTableFeatures } from './useTableFeatures';
 
-describe('useTable', () => {
+describe('useTableFeatures', () => {
   it('should return sort state', () => {
     const { result } = renderHook(() =>
-      useTable(
+      useTableFeatures(
         {
           columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
-        [useSort({})],
+        [useTableSort({})],
       ),
     );
 
@@ -31,12 +31,12 @@ describe('useTable', () => {
 
   it('should return selection state', () => {
     const { result } = renderHook(() =>
-      useTable(
+      useTableFeatures(
         {
           columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
-        [useSelection({ selectionMode: 'multiselect' })],
+        [useTableSelection({ selectionMode: 'multiselect' })],
       ),
     );
 
@@ -56,7 +56,7 @@ describe('useTable', () => {
   describe('getRows', () => {
     it('should enahnce rows', () => {
       const { result } = renderHook(() =>
-        useTable({
+        useTableFeatures({
           columns: [createColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         }),
@@ -90,7 +90,7 @@ describe('useTable', () => {
 
     it('should use custom rowId', () => {
       const { result } = renderHook(() =>
-        useTable({
+        useTableFeatures({
           columns: [createColumn({ columnId: 1 })],
           items: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
           getRowId: item => item.value,
@@ -103,7 +103,7 @@ describe('useTable', () => {
 
     it('should return original items', () => {
       const { result } = renderHook(() =>
-        useTable({
+        useTableFeatures({
           columns: [createColumn({ columnId: 1 })],
           items: [{ value: 1 }, { value: 2 }, { value: 3 }],
         }),

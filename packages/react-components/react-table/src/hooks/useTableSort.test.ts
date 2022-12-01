@@ -1,11 +1,11 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { ColumnDefinition } from './types';
-import { useSortState } from './useSort';
+import { useTableSortState } from './useTableSort';
 import { mockTableState } from '../testing/mockTableState';
 import { createColumn } from './createColumn';
 import { mockSyntheticEvent } from '../testing/mockSyntheticEvent';
 
-describe('useSortState', () => {
+describe('useTableSortState', () => {
   it('should use default sort state', () => {
     const columnDefinition = [
       createColumn({ columnId: 1 }),
@@ -13,7 +13,7 @@ describe('useSortState', () => {
       createColumn({ columnId: 3 }),
     ];
     const { result } = renderHook(() =>
-      useSortState(mockTableState({ columns: columnDefinition }), {
+      useTableSortState(mockTableState({ columns: columnDefinition }), {
         defaultSortState: { sortColumn: 2, sortDirection: 'descending' },
       }),
     );
@@ -29,7 +29,7 @@ describe('useSortState', () => {
       createColumn({ columnId: 3 }),
     ];
     const { result } = renderHook(() =>
-      useSortState(mockTableState({ columns: columnDefinition }), {
+      useTableSortState(mockTableState({ columns: columnDefinition }), {
         sortState: { sortColumn: 2, sortDirection: 'descending' },
       }),
     );
@@ -47,7 +47,7 @@ describe('useSortState', () => {
       ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
-        useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
+        useTableSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
         result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
@@ -67,7 +67,7 @@ describe('useSortState', () => {
       ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
-        useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
+        useTableSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
         result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
@@ -93,7 +93,7 @@ describe('useSortState', () => {
       ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
-        useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
+        useTableSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
         result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'ascending');
@@ -113,7 +113,7 @@ describe('useSortState', () => {
       ];
       const onSortChange = jest.fn();
       const { result } = renderHook(() =>
-        useSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
+        useTableSortState(mockTableState({ columns: columnDefinition }), { onSortChange }),
       );
       act(() => {
         result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'descending');
@@ -136,7 +136,7 @@ describe('useSortState', () => {
         createColumn({ columnId: 3, compare: createMockCompare() }),
       ];
 
-      const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
+      const { result } = renderHook(() => useTableSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
         result.current.sort.toggleColumnSort(mockSyntheticEvent(), 2);
       });
@@ -153,7 +153,7 @@ describe('useSortState', () => {
         createColumn({ columnId: 1, compare: (a, b) => a.value - b.value }),
       ];
 
-      const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
+      const { result } = renderHook(() => useTableSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
         result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
@@ -175,7 +175,7 @@ describe('useSortState', () => {
       ];
 
       const items = [{ value: 1 }, { value: 2 }];
-      const { result } = renderHook(() => useSortState(mockTableState({ items, columns: columnDefinition }), {}));
+      const { result } = renderHook(() => useTableSortState(mockTableState({ items, columns: columnDefinition }), {}));
       act(() => {
         result.current.sort.toggleColumnSort(mockSyntheticEvent(), 1);
       });
@@ -199,7 +199,7 @@ describe('useSortState', () => {
     it('should return sort direction for the sorted column', () => {
       const columnDefinition: ColumnDefinition<{ value: number }>[] = [createColumn({ columnId: 1 })];
 
-      const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
+      const { result } = renderHook(() => useTableSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
         result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'descending');
       });
@@ -213,7 +213,7 @@ describe('useSortState', () => {
         createColumn({ columnId: 2 }),
       ];
 
-      const { result } = renderHook(() => useSortState(mockTableState({ columns: columnDefinition }), {}));
+      const { result } = renderHook(() => useTableSortState(mockTableState({ columns: columnDefinition }), {}));
       act(() => {
         result.current.sort.setColumnSort(mockSyntheticEvent(), 1, 'descending');
       });

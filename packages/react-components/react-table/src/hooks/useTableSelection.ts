@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { createSelectionManager } from './selectionManager';
-import type { RowId, TableSelectionState, TableState, UseSelectionOptions } from './types';
+import type { RowId, TableSelectionState, TableState, UseTableSelectionOptions } from './types';
 
 const noop = () => undefined;
 
@@ -18,15 +18,15 @@ export const defaultTableSelectionState: TableSelectionState = {
   selectionMode: 'multiselect',
 };
 
-export function useSelection<TItem>(options: UseSelectionOptions) {
+export function useTableSelection<TItem>(options: UseTableSelectionOptions) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableState<TItem>) => useSelectionState(tableState, options);
+  return (tableState: TableState<TItem>) => useTableSelectionState(tableState, options);
 }
 
-export function useSelectionState<TItem>(
+export function useTableSelectionState<TItem>(
   tableState: TableState<TItem>,
-  options: UseSelectionOptions,
+  options: UseTableSelectionOptions,
 ): TableState<TItem> {
   const { items, getRowId } = tableState;
   const { selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;

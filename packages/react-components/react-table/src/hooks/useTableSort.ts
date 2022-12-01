@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
-import type { ColumnId, RowState, SortState, TableSortState, TableState, UseSortOptions } from './types';
+import type { ColumnId, RowState, SortState, TableSortState, TableState, UseTableSortOptions } from './types';
 
 const noop = () => undefined;
 
@@ -13,13 +13,16 @@ export const defaultTableSortState: TableSortState<unknown> = {
   toggleColumnSort: noop,
 };
 
-export function useSort<TItem>(options: UseSortOptions) {
+export function useTableSort<TItem>(options: UseTableSortOptions) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableState<TItem>) => useSortState(tableState, options);
+  return (tableState: TableState<TItem>) => useTableSortState(tableState, options);
 }
 
-export function useSortState<TItem>(tableState: TableState<TItem>, options: UseSortOptions): TableState<TItem> {
+export function useTableSortState<TItem>(
+  tableState: TableState<TItem>,
+  options: UseTableSortOptions,
+): TableState<TItem> {
   const { columns } = tableState;
   const { sortState, defaultSortState, onSortChange } = options;
 

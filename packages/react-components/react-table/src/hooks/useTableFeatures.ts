@@ -1,6 +1,6 @@
 import type { UseTableOptions, TableState, RowState, RowEnhancer, TableStatePlugin, TableSortState } from './types';
-import { defaultTableSelectionState } from './useSelection';
-import { defaultTableSortState } from './useSort';
+import { defaultTableSelectionState } from './useTableSelection';
+import { defaultTableSortState } from './useTableSort';
 
 const defaultRowEnhancer: RowEnhancer<unknown, RowState<unknown>> = row => row;
 
@@ -13,7 +13,10 @@ export const defaultTableState: TableState<unknown> = {
   columns: [],
 };
 
-export function useTable<TItem>(options: UseTableOptions<TItem>, plugins: TableStatePlugin[] = []): TableState<TItem> {
+export function useTableFeatures<TItem>(
+  options: UseTableOptions<TItem>,
+  plugins: TableStatePlugin[] = [],
+): TableState<TItem> {
   const { items, getRowId, columns } = options;
 
   const getRows = <TRowState extends RowState<TItem>>(

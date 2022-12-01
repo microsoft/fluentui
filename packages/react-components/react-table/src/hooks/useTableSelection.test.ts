@@ -1,14 +1,14 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useSelectionState } from './useSelection';
+import { useTableSelectionState } from './useTableSelection';
 import { mockTableState } from '../testing/mockTableState';
 import { mockSyntheticEvent } from '../testing/mockSyntheticEvent';
 
-describe('useSelectionState', () => {
+describe('useTableSelectionState', () => {
   const items = [{ value: 'a' }, { value: 'b' }, { value: 'c' }, { value: 'd' }];
 
   it('should use default selected state', () => {
     const { result } = renderHook(() =>
-      useSelectionState(mockTableState({ items }), {
+      useTableSelectionState(mockTableState({ items }), {
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([1]),
       }),
@@ -19,7 +19,7 @@ describe('useSelectionState', () => {
 
   it('should use user selected state', () => {
     const { result } = renderHook(() =>
-      useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', selectedItems: new Set([1]) }),
+      useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', selectedItems: new Set([1]) }),
     );
 
     expect(Array.from(result.current.selection.selectedRows)).toEqual([1]);
@@ -28,7 +28,7 @@ describe('useSelectionState', () => {
   describe('multiselect', () => {
     it('should use custom row id', () => {
       const { result } = renderHook(() =>
-        useSelectionState(
+        useTableSelectionState(
           mockTableState({
             getRowId: (item: { value: string }) => item.value,
             items,
@@ -49,7 +49,7 @@ describe('useSelectionState', () => {
       it('should select all rows', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -64,7 +64,7 @@ describe('useSelectionState', () => {
       it('should deselect all rows', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -84,7 +84,7 @@ describe('useSelectionState', () => {
       it('should clear selection', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -104,7 +104,7 @@ describe('useSelectionState', () => {
       it('should select row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -119,7 +119,7 @@ describe('useSelectionState', () => {
       it('should select multiple rows', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -142,7 +142,7 @@ describe('useSelectionState', () => {
       it('should make row unselected', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -163,7 +163,7 @@ describe('useSelectionState', () => {
       it('should select unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -179,7 +179,7 @@ describe('useSelectionState', () => {
       it('should deselect selected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -199,7 +199,7 @@ describe('useSelectionState', () => {
       it('should select another unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
         );
 
         act(() => {
@@ -221,7 +221,7 @@ describe('useSelectionState', () => {
     describe('allRowsSelected', () => {
       it('should return true if all rows are selected', () => {
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
         );
 
         act(() => {
@@ -233,7 +233,7 @@ describe('useSelectionState', () => {
 
       it('should return false if there is no selected row', () => {
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
         );
 
         expect(result.current.selection.selectedRows.size).toBe(0);
@@ -242,7 +242,7 @@ describe('useSelectionState', () => {
 
       it('should return false if not all rows are selected', () => {
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
         );
 
         act(() => {
@@ -261,7 +261,7 @@ describe('useSelectionState', () => {
     describe('someRowsSelected', () => {
       it('should return true if there is a selected row', () => {
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
         );
 
         act(() => {
@@ -274,7 +274,7 @@ describe('useSelectionState', () => {
 
       it('should return false if there is no selected row', () => {
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
         );
 
         expect(result.current.selection.selectedRows.size).toBe(0);
@@ -288,7 +288,7 @@ describe('useSelectionState', () => {
       it('should throw when not in production', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         expect(result.current.selection.toggleAllRows).toThrowErrorMatchingInlineSnapshot(
@@ -301,7 +301,7 @@ describe('useSelectionState', () => {
         const nodeEnv = (process.env.NODE_ENV = 'production');
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         result.current.selection.toggleAllRows;
@@ -315,7 +315,7 @@ describe('useSelectionState', () => {
       it('should clear selection', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
@@ -335,7 +335,7 @@ describe('useSelectionState', () => {
       it('should select row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
@@ -350,7 +350,7 @@ describe('useSelectionState', () => {
       it('should select another row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
@@ -372,7 +372,7 @@ describe('useSelectionState', () => {
       it('should make row unselected', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
@@ -393,7 +393,7 @@ describe('useSelectionState', () => {
       it('should select unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
@@ -409,7 +409,7 @@ describe('useSelectionState', () => {
       it('should deselect selected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
@@ -429,7 +429,7 @@ describe('useSelectionState', () => {
       it('should select another unselected row', () => {
         const onSelectionChange = jest.fn();
         const { result } = renderHook(() =>
-          useSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single', onSelectionChange }),
         );
 
         act(() => {
@@ -450,7 +450,9 @@ describe('useSelectionState', () => {
 
     describe('allRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
+        const { result } = renderHook(() =>
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single' }),
+        );
 
         act(() => {
           result.current.selection.selectRow(mockSyntheticEvent(), 1);
@@ -461,7 +463,9 @@ describe('useSelectionState', () => {
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
+        const { result } = renderHook(() =>
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single' }),
+        );
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(result.current.selection.allRowsSelected).toBe(false);
@@ -470,7 +474,9 @@ describe('useSelectionState', () => {
 
     describe('someRowsSelected', () => {
       it('should return true if there is a selected row', () => {
-        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
+        const { result } = renderHook(() =>
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single' }),
+        );
 
         act(() => {
           result.current.selection.selectRow(mockSyntheticEvent(), 1);
@@ -481,7 +487,9 @@ describe('useSelectionState', () => {
       });
 
       it('should return false if there is no selected row', () => {
-        const { result } = renderHook(() => useSelectionState(mockTableState({ items }), { selectionMode: 'single' }));
+        const { result } = renderHook(() =>
+          useTableSelectionState(mockTableState({ items }), { selectionMode: 'single' }),
+        );
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(result.current.selection.someRowsSelected).toBe(false);

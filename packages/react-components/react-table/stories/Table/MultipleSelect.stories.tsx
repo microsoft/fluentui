@@ -18,9 +18,9 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
-  useSelection,
+  useTableSelection,
   createColumn,
 } from '@fluentui/react-components/unstable';
 
@@ -112,13 +112,13 @@ export const MultipleSelect = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),
@@ -193,7 +193,8 @@ MultipleSelect.parameters = {
     description: {
       story: [
         'Selection can be achieved easily by combining the `TableSelectionCell` component along with',
-        'other primitive components. The hook can handle state management for selection, although its use is not',
+        'other primitive components. `useTableFeatures` can handle state management for selection,',
+        'although its use is not',
         'necessary if users already have their own state management.',
       ].join('\n'),
     },
