@@ -68,7 +68,6 @@ const useComponentRef = (
         return range;
       },
       focus() {
-        console.log(sliderBoxRef.current);
         sliderBoxRef.current?.focus();
       },
     }),
