@@ -9,10 +9,21 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { Virtualizer } from '@fluentui/react-components/unstable';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { useTable, ColumnDefinition, ColumnId, useSort } from '../../src/hooks';
-import { TableCellLayout } from '../../src/components/TableCellLayout/TableCellLayout';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  useTable,
+  ColumnDefinition,
+  ColumnId,
+  useSort,
+  TableCellLayout,
+  createColumn,
+  Virtualizer,
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
@@ -104,34 +115,36 @@ const generateContent = (): Item[] => {
 
 const fullItemList: Item[] = generateContent();
 
-const columns: ColumnDefinition<Item>[] = [
-  {
-    columnId: 'file',
-    compare: (a, b) => {
-      return a.file.label.localeCompare(b.file.label);
-    },
-  },
-  {
-    columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
-  },
-  {
-    columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
-  },
-  {
-    columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
-  },
-];
-
 export const Virtualized = () => {
+  const columns: ColumnDefinition<Item>[] = React.useMemo(
+    () => [
+      createColumn<Item>({
+        columnId: 'file',
+        compare: (a, b) => {
+          return a.file.label.localeCompare(b.file.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'author',
+        compare: (a, b) => {
+          return a.author.label.localeCompare(b.author.label);
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdated',
+        compare: (a, b) => {
+          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+        },
+      }),
+      createColumn<Item>({
+        columnId: 'lastUpdate',
+        compare: (a, b) => {
+          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+        },
+      }),
+    ],
+    [],
+  );
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
@@ -144,8 +157,8 @@ export const Virtualized = () => {
   );
 
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => {
-      toggleColumnSort(columnId);
+    onClick: (e: React.MouseEvent) => {
+      toggleColumnSort(e, columnId);
     },
     sortDirection: getSortDirection(columnId),
   });
