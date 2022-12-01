@@ -486,7 +486,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: currentOptions.map((item, index) => ({ ...item, index: index })),
+              options: currentOptions.map((item, index) => ({ ...item, index })),
               onDismiss: this._onDismiss,
             },
             this._onRenderContainer,
@@ -1493,7 +1493,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
         <CommandButton
-          id={id + '-list' + item.index}
+          id={item.id ?? id + '-list' + item.index}
           key={item.key}
           data-index={item.index}
           styles={optionStyles}
@@ -1520,7 +1520,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         </CommandButton>
       ) : (
         <Checkbox
-          id={id + '-list' + item.index}
+          id={item.id ?? id + '-list' + item.index}
           ariaLabel={item.ariaLabel}
           key={item.key}
           styles={optionStyles}
@@ -1848,7 +1848,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     this.props.hoisted.setSuggestedDisplayValue(suggestedDisplayValue);
     this.setState({
       currentPendingValue: normalizeToString(currentPendingValue),
-      currentPendingValueValidIndex: currentPendingValueValidIndex,
+      currentPendingValueValidIndex,
       currentPendingValueValidIndexOnHover: HoverStatus.default,
     });
   }
@@ -1951,9 +1951,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean): void {
     this._focusInputAfterClose = focusInputAfterClose;
-    this.setState({
-      isOpen: isOpen,
-    });
+    this.setState({ isOpen });
   }
 
   /**
@@ -2359,11 +2357,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * null otherwise
    */
   private _getAriaActiveDescendantValue(): string | undefined {
-    const { selectedIndices } = this.props.hoisted;
+    const { currentOptions, selectedIndices } = this.props.hoisted;
     const { isOpen, currentPendingValueValidIndex } = this.state;
-    let descendantText = isOpen && selectedIndices?.length ? this._id + '-list' + selectedIndices[0] : undefined;
+    const options = currentOptions.map((item, index) => ({ ...item, index }));
+    let descendantText =
+      isOpen && selectedIndices?.length
+        ? options[selectedIndices[0]].id ?? this._id + '-list' + selectedIndices[0]
+        : undefined;
     if (isOpen && this._hasFocus() && currentPendingValueValidIndex !== -1) {
-      descendantText = this._id + '-list' + currentPendingValueValidIndex;
+      descendantText = options[currentPendingValueValidIndex].id ?? this._id + '-list' + currentPendingValueValidIndex;
     }
     return descendantText;
   }
