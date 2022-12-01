@@ -75,8 +75,8 @@ export type TreeItemProps = ComponentProps<TreeItemSlots> & BaseTreeItemProps;
 // @public (undocumented)
 export type TreeItemSlots = BaseTreeItemSlots & {
     expandIcon?: Slot<'span'>;
-    beforeIcon?: Slot<'span'>;
-    afterIcon?: Slot<'span'>;
+    iconBefore?: Slot<'span'>;
+    iconAfter?: Slot<'span'>;
     actionIcon?: Slot<'span'>;
 };
 
