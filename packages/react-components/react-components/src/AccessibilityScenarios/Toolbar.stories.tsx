@@ -7,7 +7,12 @@ import {
   ToolbarRadioButton,
   ToolbarDivider,
 } from '@fluentui/react-toolbar';
-import type { ToolbarProps, ToolbarButtonProps, ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import type {
+  ToolbarProps,
+  ToolbarButtonProps,
+  ToolbarToggleButtonProps,
+  ToolbarRadioButtonProps,
+} from '@fluentui/react-toolbar';
 
 import {
   Button,
@@ -56,27 +61,35 @@ interface ToolbarToggleItem {
   label: string;
 }
 
-type OverflowToolbarItems = Array<Array<ToolbarItem | ToolbarToggleItem>>;
+interface ToolbarRadioItem {
+  id: string;
+  type: 'radio';
+  name: string;
+  value: string;
+  label: string;
+}
+
+type OverflowToolbarItems = Array<Array<ToolbarItem | ToolbarToggleItem | ToolbarRadioItem>>;
 
 const overflowToolbarItems: OverflowToolbarItems = [
   [
     {
       id: 'align-left',
-      type: 'toggle',
+      type: 'radio',
       name: 'align',
       value: 'left',
       label: 'Align left',
     },
     {
       id: 'align-center',
-      type: 'toggle',
+      type: 'radio',
       name: 'align',
       value: 'center',
       label: 'Align center',
     },
     {
       id: 'align-right',
-      type: 'toggle',
+      type: 'radio',
       name: 'align',
       value: 'right',
       label: 'Align right',
@@ -166,6 +179,11 @@ type ToolbarOverflowToggleButtonProps = {
   overflowGroupId: string;
 } & ToolbarToggleButtonProps;
 
+type ToolbarOverflowRadioButtonProps = {
+  overflowId: string;
+  overflowGroupId: string;
+} & ToolbarRadioButtonProps;
+
 const ToolbarOverflowButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowButtonProps) => {
   return (
     <OverflowItem id={overflowId} groupId={overflowGroupId}>
@@ -178,6 +196,14 @@ const ToolbarOverflowToggleButton = ({ overflowId, overflowGroupId, ...props }: 
   return (
     <OverflowItem id={overflowId} groupId={overflowGroupId}>
       <ToolbarToggleButton {...props} />
+    </OverflowItem>
+  );
+};
+
+const ToolbarOverflowRadioButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowRadioButtonProps) => {
+  return (
+    <OverflowItem id={overflowId} groupId={overflowGroupId}>
+      <ToolbarRadioButton {...props} />
     </OverflowItem>
   );
 };
@@ -238,6 +264,19 @@ const OverflowToolbar = (props: Partial<ToolbarProps>) => {
                       >
                         {item.label}
                       </ToolbarOverflowToggleButton>
+                    );
+                  } else if (item.type === 'radio') {
+                    return (
+                      <ToolbarOverflowRadioButton
+                        key={item.id}
+                        name={item.name}
+                        value={item.value}
+                        appearance="subtle"
+                        overflowId={item.id}
+                        overflowGroupId={`${groupIndex + 1}`}
+                      >
+                        {item.label}
+                      </ToolbarOverflowRadioButton>
                     );
                   }
                   return (
