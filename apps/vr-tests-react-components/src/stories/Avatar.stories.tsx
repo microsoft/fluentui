@@ -218,6 +218,9 @@ storiesOf('Avatar Converged', module)
   .addStory('size+inactive+badge', () => (
     <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
   ))
+
+  /* Temporarily disable these stories as these cause noise with storywright
+  The issue is raised against playwright. Till it gets fixed we disabled these. https://github.com/microsoft/playwright/issues/18373
   .addStory('size+active+badge', () => (
     <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
   ))
@@ -226,7 +229,7 @@ storiesOf('Avatar Converged', module)
   ))
   .addStory('size+active+ring-shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
-  ))
+  ))*/
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
     <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
