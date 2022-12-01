@@ -1,4 +1,4 @@
-import config from '../../../config';
+import config from '../../config';
 
 const reactPackageDist = (filePath: string) => config.paths.packageDist('react-northstar', 'es', filePath);
 

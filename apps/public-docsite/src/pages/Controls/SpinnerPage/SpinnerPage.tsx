@@ -10,13 +10,13 @@ export const SpinnerPage: React.FunctionComponent<IControlsPageProps> = props =>
     <ControlsAreaPage
       {...props}
       title="Spinner"
-      {...SpinnerPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...SpinnerPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [

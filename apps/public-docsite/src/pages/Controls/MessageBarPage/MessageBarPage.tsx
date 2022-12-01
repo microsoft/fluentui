@@ -11,7 +11,7 @@ export const MessageBarPage: React.FunctionComponent<IControlsPageProps> = props
   return (
     <ControlsAreaPage
       {...props}
-      {...MessageBarPageProps[props.platform]}
+      {...MessageBarPageProps[props.platform!]}
       otherSections={_otherSections(props.platform) as IPageSectionProps[]}
     />
   );

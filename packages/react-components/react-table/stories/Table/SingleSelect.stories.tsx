@@ -17,9 +17,9 @@ import {
   TableHeader,
   TableHeaderCell,
   TableSelectionCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
-  useSelection,
+  useTableSelection,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -112,13 +112,13 @@ export const SingleSelect = () => {
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'single',
         defaultSelectedItems: new Set([1]),
       }),

@@ -11,13 +11,13 @@ export const NavBarPage: React.FunctionComponent<IControlsPageProps> = props => 
   return (
     <ControlsAreaPage
       {...props}
-      {...NavBarPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...NavBarPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [

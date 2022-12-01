@@ -1,13 +1,13 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
-import config from '../config';
-import { DangerJS } from './types';
-import { PackageJson } from '../monorepo';
+import type { DangerJS } from './types';
+import type { PackageJson } from '../monorepo';
+import { workspaceRoot } from './utils';
 
 const packageJsonFilename = 'package.json';
 const webComponentsPackageJsonFilename = 'packages/web-components/package.json';
-const scriptFilename = path.relative(config.paths.base(), __filename);
+const scriptFilename = path.relative(workspaceRoot, __filename);
 
 /**
  * This check ensures that the `@storybook/html` dep is specified under web-components rather than
@@ -39,8 +39,10 @@ export async function checkStorybookVersions({ danger, fail }: DangerJS) {
   // Read the package.jsons and compare the dep versions.
   // (It would be possible to check the detailed diffs of the file and determine whether specifically
   // the @storybook/react line changed, but just reading and comparing the files is simpler.)
-  const rootPackageJson: PackageJson = fs.readJSONSync(config.paths.base(packageJsonFilename));
-  const webComponentsPackageJson: PackageJson = fs.readJSONSync(config.paths.base(webComponentsPackageJsonFilename));
+  const rootPackageJson: PackageJson = fs.readJSONSync(path.resolve(workspaceRoot, packageJsonFilename));
+  const webComponentsPackageJson: PackageJson = fs.readJSONSync(
+    path.resolve(workspaceRoot, webComponentsPackageJsonFilename),
+  );
 
   const storybookReactVersion = rootPackageJson.devDependencies?.['@storybook/react'];
   const storybookHtmlVersion = webComponentsPackageJson.devDependencies?.['@storybook/html'];

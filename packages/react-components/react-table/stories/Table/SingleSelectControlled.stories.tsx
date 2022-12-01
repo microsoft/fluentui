@@ -17,10 +17,10 @@ import {
   TableHeader,
   TableHeaderCell,
   TableSelectionCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   RowId,
-  useSelection,
+  useTableSelection,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -116,13 +116,13 @@ export const SingleSelectControlled = () => {
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'single',
         selectedItems: selectedRows,
         onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
@@ -192,7 +192,8 @@ SingleSelectControlled.parameters = {
   docs: {
     description: {
       story: [
-        'By default our hook is uncontrolled. However, it is possible to control selection features with external',
+        'By default the `useTableFeatures` hook is uncontrolled. ',
+        'However, it is possible to control selection features with external',
         'user state.',
       ].join('\n'),
     },

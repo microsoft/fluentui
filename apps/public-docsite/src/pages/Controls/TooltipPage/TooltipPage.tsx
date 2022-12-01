@@ -11,7 +11,7 @@ export const TooltipPage: React.FunctionComponent<IControlsPageProps> = props =>
     <ControlsAreaPage
       {...props}
       title="Tooltip"
-      {...TooltipPageProps[props.platform]}
+      {...TooltipPageProps[props.platform!]}
       otherSections={_otherSections(props.platform) as IPageSectionProps[]}
     />
   );
