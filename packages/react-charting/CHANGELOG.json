@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 01 Dec 2022 07:57:10 GMT",
+      "tag": "@fluentui/react-charting_v5.14.22",
+      "version": "5.14.22",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ],
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a5ea64ce03f9292af9f799283bbd022ef037fbc1",
+            "comment": "Support single point in area chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Nov 2022 07:46:31 GMT",
       "tag": "@fluentui/react-charting_v5.14.21",
       "version": "5.14.21",

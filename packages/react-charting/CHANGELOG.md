@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 30 Nov 2022 07:46:31 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Dec 2022 07:57:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.22)
+
+Thu, 01 Dec 2022 07:57:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.21..@fluentui/react-charting_v5.14.22)
+
+### Patches
+
+- Support single point in area chart ([PR #25842](https://github.com/microsoft/fluentui/pull/25842) by atishay.jain@microsoft.com)
 
 ## [5.14.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.21)
 
