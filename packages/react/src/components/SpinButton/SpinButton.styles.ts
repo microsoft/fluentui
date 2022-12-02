@@ -133,7 +133,6 @@ export const getStyles = (props: ISpinButtonStyleProps): ISpinButtonStyles => {
   const SpinButtonInputTextColorSelected = palette.white;
   const SpinButtonInputBackgroundColorSelected = semanticColors.inputBackgroundChecked;
   const SpinButtonIconDisabledColor = semanticColors.disabledText;
-
   return {
     root: [
       fonts.medium,
@@ -192,49 +191,34 @@ export const getStyles = (props: ISpinButtonStyleProps): ISpinButtonStyles => {
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: DEFAULT_MIN_WIDTH,
-        selectors: {
-          // setting border using pseudo-element here in order to prevent:
-          // input and chevron buttons to overlap border under certain resolutions
-          ':after': {
-            pointerEvents: 'none',
-            content: "''",
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            bottom: 0,
-            right: 0,
-            borderWidth: '1px',
-            borderStyle: 'solid',
-            borderColor: SpinButtonRootBorderColor,
-            borderRadius: effects.roundedCorner2,
+        ...getInputFocusStyle(SpinButtonRootBorderColor, effects.roundedCorner2, 'border', 0),
+        ':after': {
+          borderWidth: '1px',
+          [HighContrastSelector]: {
+            borderColor: 'GrayText',
           },
         },
       },
       (labelPosition === Position.top || labelPosition === Position.bottom) && {
         width: '100%',
       },
+
       !disabled && [
         {
-          selectors: {
-            ':hover': {
-              selectors: {
-                ':after': {
-                  borderColor: SpinButtonRootBorderColorHovered,
-                },
-                [HighContrastSelector]: {
-                  selectors: {
-                    ':after': {
-                      borderColor: 'Highlight',
-                    },
-                  },
-                },
-              },
+          ':hover:after': {
+            borderColor: SpinButtonRootBorderColorHovered,
+            [HighContrastSelector]: {
+              borderColor: 'Highlight',
             },
           },
         },
         isFocused && {
-          selectors: {
-            '&&': getInputFocusStyle(SpinButtonRootBorderColorFocused, effects.roundedCorner2),
+          ':hover:after, :after': {
+            borderColor: SpinButtonRootBorderColorFocused,
+            borderWidth: '2px',
+            [HighContrastSelector]: {
+              borderColor: 'Highlight',
+            },
           },
         },
       ],
