@@ -25,7 +25,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -59,7 +59,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -224,7 +224,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -258,7 +258,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -674,7 +674,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -708,7 +708,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -873,7 +873,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -907,7 +907,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1240,7 +1240,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1274,7 +1274,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1433,7 +1433,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1467,7 +1467,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1718,7 +1718,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1752,7 +1752,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1901,7 +1901,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1935,7 +1935,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2176,7 +2176,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2210,7 +2210,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2369,7 +2369,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2403,7 +2403,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2584,7 +2584,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2618,7 +2618,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2751,7 +2751,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2785,7 +2785,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -3217,7 +3217,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -3251,7 +3251,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -3410,7 +3410,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -3444,7 +3444,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;

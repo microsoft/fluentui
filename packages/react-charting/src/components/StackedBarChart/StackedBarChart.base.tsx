@@ -99,6 +99,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       benchmarkRatio,
       targetColor: targetData ? targetData.color : '',
       targetRatio,
+      showTriangle: !!(benchmarkData || targetData),
     });
     const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (

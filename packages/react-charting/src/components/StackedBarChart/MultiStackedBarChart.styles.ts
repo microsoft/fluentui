@@ -33,13 +33,13 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       whiteSpace: 'nowrap',
       display: 'block',
       color: '#171717',
-      marginBottom: '8px',
+      marginBottom: '5px',
     },
     singleChartRoot: {
       width: width ? width : '100%',
       display: 'flex',
       flexDirection: 'column',
-      marginBottom: '16px',
+      marginBottom: '10px',
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',

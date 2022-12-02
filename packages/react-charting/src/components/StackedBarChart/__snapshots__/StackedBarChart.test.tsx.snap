@@ -46,7 +46,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -130,7 +130,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -416,7 +416,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -500,7 +500,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -703,7 +703,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -787,7 +787,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -910,7 +910,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -994,7 +994,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1117,7 +1117,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1191,7 +1191,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1314,7 +1314,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1398,7 +1398,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1521,7 +1521,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1579,7 +1579,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1702,7 +1702,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1786,7 +1786,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1909,7 +1909,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             {
               color: #171717;
               display: block;
-              margin-bottom: 8px;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1967,7 +1967,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             {
               display: block;
               height: 12px;
-              margin-bottom: 16px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >

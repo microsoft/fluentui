@@ -192,6 +192,11 @@ export interface IStackedBarChartStyleProps {
    * the ratio position for the target triangle
    */
   targetRatio?: number;
+
+  /**
+   * prop to check if benchmark data or target data is provided
+   */
+  showTriangle?: boolean;
 }
 
 export interface IStackedBarChartStyles {
