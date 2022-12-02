@@ -3,10 +3,10 @@ import { FontIncrease24Regular, FontDecrease24Regular, TextFont24Regular } from 
 import { Toolbar, ToolbarButton } from '@fluentui/react-toolbar';
 import type { ToolbarProps } from '@fluentui/react-toolbar';
 
-export const Small = (props: Partial<ToolbarProps>) => (
+export const Large = (props: Partial<ToolbarProps>) => (
   <Toolbar
     {...props}
-    size="small"
+    size="large"
     style={{
       border: '2px solid black',
       borderRadius: '8px',

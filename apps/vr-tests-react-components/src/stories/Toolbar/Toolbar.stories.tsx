@@ -71,3 +71,19 @@ export const Small = (props: Partial<ToolbarProps>) => (
     />
   </Toolbar>
 );
+
+export const Large = (props: Partial<ToolbarProps>) => (
+  <Toolbar size="large">
+    <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
+    <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
+    <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+    <ToolbarDivider />
+    <ToolbarToggleButton
+      id="snooze-toggle"
+      aria-label="Snooze Alert Option"
+      name="toggle"
+      value="toggle"
+      icon={<AlertSnooze24Regular />}
+    />
+  </Toolbar>
+);
