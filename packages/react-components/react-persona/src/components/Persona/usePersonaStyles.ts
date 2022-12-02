@@ -21,7 +21,6 @@ const avatarSpacing = `--fui-Persona__avatar--spacing`;
 const useStyles = makeStyles({
   base: {
     display: 'inline-grid',
-    gridAutoColumns: 'max-content',
     gridAutoRows: 'max-content',
   },
   after: {
@@ -48,7 +47,7 @@ const useStyles = makeStyles({
 
   // These alignToPrimary styles are needed due to presence being too small to center with the primary text.
   alignToPrimary: {
-    gridTemplateColumns: `max-content [middle] max-content`,
+    gridTemplateColumns: `auto [middle] auto`,
   },
   afterAlignToPrimary: {
     alignSelf: 'center',
