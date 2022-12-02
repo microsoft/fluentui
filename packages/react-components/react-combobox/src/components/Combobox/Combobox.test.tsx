@@ -133,6 +133,25 @@ describe('Combobox', () => {
     expect(queryByRole('listbox')).toBeNull();
   });
 
+  it('closes the popup on blur/outside click after clicking on the expand icon', () => {
+    const { getByTestId, queryByRole } = render(
+      <>
+        <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>
+        <div data-testid="outside">outside</div>
+      </>,
+    );
+
+    userEvent.click(getByTestId('icon'));
+    expect(queryByRole('listbox')).not.toBeNull();
+
+    userEvent.click(getByTestId('outside'));
+    expect(queryByRole('listbox')).toBeNull();
+  });
+
   it('does not close the combobox on click with controlled open', () => {
     const { getByRole } = render(
       <Combobox open>

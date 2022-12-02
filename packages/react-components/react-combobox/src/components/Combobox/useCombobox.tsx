@@ -203,8 +203,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};
   const onExpandIconMouseDown = useEventCallback(
     mergeCallbacks(onIconMouseDown, () => {
-      // do not dismiss on blur when clicking the icon
-      baseState.ignoreNextBlur.current = true;
+      // do not dismiss on blur when closing via clicking the icon
+      if (open) {
+        baseState.ignoreNextBlur.current = true;
+      }
     }),
   );
 
