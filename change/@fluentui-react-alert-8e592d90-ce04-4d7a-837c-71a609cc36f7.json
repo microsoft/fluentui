@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "simplify component main.js by using root main.js as an addon",
+  "packageName": "@fluentui/react-alert",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}
