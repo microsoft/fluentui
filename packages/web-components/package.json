@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "2.6.1",
+  "version": "3.0.0-alpha.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -77,5 +77,13 @@
     "@microsoft/fast-foundation": "^2.49.6",
     "@microsoft/fast-web-utilities": "^5.4.0",
     "tslib": "^2.1.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ],
+    "tag": "alpha"
   }
 }
