@@ -133,7 +133,7 @@ describe('Combobox', () => {
     expect(queryByRole('listbox')).toBeNull();
   });
 
-  it('closes the popup on blur/outside click', () => {
+  it('closes the popup on blur/outside click after clicking on the expand icon', () => {
     const { getByTestId, queryByRole } = render(
       <>
         <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
