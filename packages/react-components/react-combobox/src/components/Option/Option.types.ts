@@ -20,7 +20,7 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
   disabled?: boolean;
 
   /*
-   * Defines a string value for the option, used as a unique identifier for the option.
+   * Defines a unique identifier for the option.
    * Use this to control selectedOptions, or to get the option value in the onOptionSelect callback.
    * Defaults to `text` if not provided.
    */
