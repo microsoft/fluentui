@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: adds disableButtonEnhancement on triggers",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}
