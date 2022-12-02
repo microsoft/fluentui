@@ -22,6 +22,8 @@
     "bundlesizecollect": "node ./scripts/generators/bundle-size-collect",
     "change": "beachball change --no-commit",
     "check:change": "beachball check",
+    "change:wc": "beachball change --no-commit -b web-components-v3",
+    "check:change:wc": "beachball check -b web-components-v3",
     "check:modified-files": "node -r ./scripts/ts-node/register ./scripts/executors/check-for-modified-files",
     "check:affected-package": "node ./scripts/executors/checkIfPackagesAffected.js",
     "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/html|@storybook/mdx2-csf|svelte|@testing-library|vue|@cypress/react|cypress|@swc/wasm|@cactuslab/usepubsub|react-vis|@microsoft/load-themed-styles\"",
