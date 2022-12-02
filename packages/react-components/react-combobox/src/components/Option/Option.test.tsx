@@ -43,7 +43,8 @@ describe('Option', () => {
         <b>Text content</b>
       </Option>,
     );
-    expect(result.container).toMatchSnapshot();
+    expect(result.getByText('Text content').tagName).toBe('B');
+    expect(result.queryByText('Default')).toBeNull();
   });
 
   it('renders a default multi-select state', () => {

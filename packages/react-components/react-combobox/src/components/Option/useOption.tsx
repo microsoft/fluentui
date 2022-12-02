@@ -8,15 +8,15 @@ import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
 function getTextString(text: string | undefined, children: React.ReactNode) {
-  if (text) {
+  if (text !== undefined) {
     return text;
   }
 
-  let valueString = '';
+  let textString = '';
   let hasNonStringChild = false;
   React.Children.forEach(children, child => {
     if (typeof child === 'string') {
-      valueString += child;
+      textString += child;
     } else {
       hasNonStringChild = true;
     }
@@ -28,7 +28,7 @@ function getTextString(text: string | undefined, children: React.ReactNode) {
     console.warn('Provide a `text` prop to Option components when they contain non-string children.');
   }
 
-  return valueString;
+  return textString;
 }
 
 /**

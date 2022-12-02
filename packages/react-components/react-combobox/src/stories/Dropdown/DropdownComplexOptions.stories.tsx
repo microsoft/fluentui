@@ -72,7 +72,7 @@ ComplexOptions.parameters = {
     description: {
       story:
         'Options can have structured JSX children. ' +
-        "When this is the case, the Option's `label` should function as the plain text version of the option, " +
+        "When this is the case, the Option's `text` prop should be a plain text version of the option, " +
         "and is used as the Dropdown button's content when the option is selected.",
     },
   },
