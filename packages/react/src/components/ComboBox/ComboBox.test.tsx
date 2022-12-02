@@ -165,6 +165,28 @@ describe('ComboBox', () => {
     expect(getByRole('combobox').getAttribute('value')).toEqual('');
   });
 
+  it('Respects a user provided id for an option', () => {
+    const options: IComboBoxOption[] = [
+      { key: 0, text: 'zero' },
+      { key: 1, text: 'one', id: 'one' },
+      { key: 2, text: 'two' },
+    ];
+
+    const { getByRole, getAllByRole } = render(<ComboBox options={options} />);
+    const combobox = getByRole('combobox');
+    // open combobox
+    userEvent.click(combobox);
+
+    const optionArray = getAllByRole('option');
+    expect(optionArray.length).toEqual(3);
+
+    const regex = new RegExp(/ComboBox[0-9]+-list[0-9]+/);
+    expect(regex.test(optionArray[0].getAttribute('id')!)).toEqual(true);
+    expect(regex.test(optionArray[1].getAttribute('id')!)).toEqual(false);
+    expect(optionArray[1].getAttribute('id')).toEqual('one');
+    expect(regex.test(optionArray[2].getAttribute('id')!)).toEqual(true);
+  });
+
   it('Applies correct attributes to the selected option', () => {
     const { getByRole, getAllByRole } = render(<ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="2" />);
 

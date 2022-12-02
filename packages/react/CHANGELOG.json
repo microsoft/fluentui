@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 02 Dec 2022 07:54:14 GMT",
+      "tag": "@fluentui/react_v8.103.4",
+      "version": "8.103.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "83b69f2b7dcf27ad9502c686708f019ce921715e",
+            "comment": "fix: Fixing Slider's programmatic focus."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3c754611eccb854647820ce5b5fd8b5f6b0cf1c0",
+            "comment": "fix: Respecting user-provided ids in ComboBox options."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Nov 2022 07:46:31 GMT",
       "tag": "@fluentui/react_v8.103.3",
       "version": "8.103.3",
