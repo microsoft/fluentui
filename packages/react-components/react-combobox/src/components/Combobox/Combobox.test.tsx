@@ -118,6 +118,22 @@ describe('Combobox', () => {
     expect(getByRole('listbox')).not.toBeNull();
   });
 
+  it('opens the popup when typing', () => {
+    const { getByRole } = render(
+      <Combobox>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.tab();
+    userEvent.keyboard('xyz');
+
+    expect(getByRole('listbox')).not.toBeNull();
+    expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('true');
+  });
+
   it('closes the popup on expand icon click', () => {
     const { getByTestId, queryByRole } = render(
       <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
@@ -618,7 +634,7 @@ describe('Combobox', () => {
     );
 
     userEvent.tab();
-    userEvent.keyboard('gr');
+    userEvent.keyboard('xyz');
     userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');

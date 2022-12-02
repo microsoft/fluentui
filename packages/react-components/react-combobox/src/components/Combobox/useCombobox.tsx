@@ -7,6 +7,7 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
@@ -140,6 +141,13 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }
   };
 
+  // open Combobox when typing
+  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!open && getDropdownActionFromKey(ev) === 'Type') {
+      setOpen(ev, true);
+    }
+  };
+
   // resolve input and listbox slot props
   let triggerSlot: Slot<'input'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
@@ -156,6 +164,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
+  triggerSlot.onKeyDown = mergeCallbacks(triggerSlot.onKeyDown, onTriggerKeyDown);
 
   // only resolve listbox slot if needed
   listboxSlot =
