@@ -15,7 +15,7 @@ export const useToolbarButton_unstable = (
 ): ToolbarButtonState => {
   const size = useToolbarContext_unstable(ctx => ctx.size);
   const { vertical = false, ...buttonProps } = props;
-  const state = useButton_unstable({ size, appearance: 'transparent', ...buttonProps }, ref);
+  const state = useButton_unstable({ size, appearance: 'subtle', ...buttonProps }, ref);
   return {
     vertical,
     ...state,

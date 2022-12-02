@@ -3,4 +3,5 @@ module.exports = {
   ...require('./read-config'),
   ...require('./write-config'),
   ...require('./sh'),
+  ...require('./merge'),
 };

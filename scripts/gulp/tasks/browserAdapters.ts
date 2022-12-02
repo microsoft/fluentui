@@ -3,7 +3,7 @@ import CDP from 'chrome-remote-interface';
 import puppeteer from 'puppeteer';
 import * as net from 'net';
 
-import { safeLaunchOptions } from '../../puppeteer/puppeteer.config';
+import { safeLaunchOptions } from '../../puppeteer';
 
 export type Page = {
   executeJavaScript: <R>(code: string) => Promise<R>;
