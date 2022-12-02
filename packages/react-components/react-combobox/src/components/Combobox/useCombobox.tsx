@@ -143,8 +143,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   // open Combobox when typing
   const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    if (getDropdownActionFromKey(ev) === 'Type') {
-      !open && setOpen(ev, true);
+    if (!open && getDropdownActionFromKey(ev) === 'Type') {
+      setOpen(ev, true);
     }
   };
 
