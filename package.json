@@ -20,7 +20,7 @@
     "buildto:lerna": "node ./scripts/executors/buildTo.js",
     "bundle": "lage bundle --verbose",
     "bundlesizecollect": "node ./scripts/generators/bundle-size-collect",
-    "change": "beachball change --no-commit",
+    "change": "beachball change --no-commit -b web-components-v3",
     "check:change": "beachball check",
     "check:modified-files": "node -r ./scripts/ts-node/register ./scripts/executors/check-for-modified-files",
     "check:affected-package": "node ./scripts/executors/checkIfPackagesAffected.js",
