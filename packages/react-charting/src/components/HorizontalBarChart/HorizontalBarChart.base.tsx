@@ -82,10 +82,15 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           const chartDataText = this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
+          const classNames = getClassNames(this.props.styles!, {
+            theme: this.props.theme!,
+            width: this.props.width,
+            showTriangle: !!points!.chartData![0].data,
+          });
 
           return (
             <div key={index}>
-              <div className={this._classNames.items}>
+              <div className={classNames.items}>
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
                     {points!.chartTitle && (
@@ -261,11 +266,14 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
 
     const benchmarkStyles = {
-      marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
-      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)',
+      left: 'calc(' + benchmarkRatio + '% - 4px)',
     };
 
-    return <div className={this._classNames.triangle} style={benchmarkStyles} />;
+    return (
+      <div className={this._classNames.benchmarkContainer}>
+        <div className={this._classNames.triangle} style={benchmarkStyles} />
+      </div>
+    );
   }
 
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {

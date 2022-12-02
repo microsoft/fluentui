@@ -18,8 +18,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
       className=
 
           {
-            margin-bottom: 16px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -52,7 +51,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -176,8 +175,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
       className=
 
           {
-            margin-bottom: 16px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -210,7 +208,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -510,8 +508,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       className=
 
           {
-            margin-bottom: 16px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -544,7 +541,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -668,8 +665,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       className=
 
           {
-            margin-bottom: 16px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -702,7 +698,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 {
                   color: #171717;
                   display: block;
-                  margin-bottom: 8px;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
