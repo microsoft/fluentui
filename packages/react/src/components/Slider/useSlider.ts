@@ -54,7 +54,7 @@ const getPercent = (value: number, sliderMin: number, sliderMax: number) => {
 
 const useComponentRef = (
   props: ISliderProps,
-  thumb: React.RefObject<HTMLSpanElement>,
+  sliderBoxRef: React.RefObject<HTMLDivElement>,
   value: number | undefined,
   range: [number, number] | undefined,
 ) => {
@@ -68,16 +68,14 @@ const useComponentRef = (
         return range;
       },
       focus() {
-        if (thumb.current) {
-          thumb.current.focus();
-        }
+        sliderBoxRef.current?.focus();
       },
     }),
-    [thumb, value, range],
+    [range, sliderBoxRef, value],
   );
 };
 
-export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
+export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivElement>) => {
   const {
     step = 1,
     className,
@@ -343,12 +341,8 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const lowerValueThumbRef = React.useRef<HTMLElement>(null);
   const thumbRef = React.useRef<HTMLElement>(null);
-  useComponentRef(
-    props,
-    ranged && !vertical ? lowerValueThumbRef : thumbRef,
-    value,
-    ranged ? [lowerValue, value] : undefined,
-  );
+  const sliderBoxRef = React.useRef<HTMLDivElement>(null);
+  useComponentRef(props, sliderBoxRef, value, ranged ? [lowerValue, value] : undefined);
   const getPositionStyles = getSlotStyleFn(vertical ? 'bottom' : getRTL(props.theme) ? 'right' : 'left');
   const getTrackStyles = getSlotStyleFn(vertical ? 'height' : 'width');
   const originValue = originFromZero ? 0 : min;
@@ -361,7 +355,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const rootProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: classNames.root,
-    ref: ref,
+    ref,
   };
 
   const labelProps: ILabelProps = {
@@ -418,13 +412,14 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ...({ 'data-is-focusable': !disabled } as any),
   };
 
-  const sliderBoxProps: React.HTMLAttributes<HTMLElement> = {
+  const sliderBoxProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement> = {
     id,
     className: css(classNames.slideBox, buttonProps.className),
+    ref: sliderBoxRef,
     ...(!disabled && {
       onMouseDown: onMouseDownOrTouchStart,
       onTouchStart: onMouseDownOrTouchStart,
-      onKeyDown: onKeyDown,
+      onKeyDown,
     }),
     ...(buttonProps &&
       getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties, ['id', 'className'])),
