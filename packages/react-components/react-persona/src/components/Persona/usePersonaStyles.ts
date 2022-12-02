@@ -23,13 +23,16 @@ const useStyles = makeStyles({
     display: 'inline-grid',
     gridAutoRows: 'max-content',
   },
+
   after: {
     gridAutoFlow: 'column',
     justifyItems: 'start',
+    gridTemplateColumns: 'max-content [middle] auto',
   },
   before: {
     gridAutoFlow: 'column',
     justifyItems: 'end',
+    gridTemplateColumns: 'auto [middle] max-content',
   },
   below: {
     justifyItems: 'center',
@@ -45,10 +48,6 @@ const useStyles = makeStyles({
     alignSelf: 'center',
   },
 
-  // These alignToPrimary styles are needed due to presence being too small to center with the primary text.
-  alignToPrimary: {
-    gridTemplateColumns: `auto [middle] auto`,
-  },
   afterAlignToPrimary: {
     alignSelf: 'center',
     gridRowStart: 'unset',
@@ -101,21 +100,16 @@ const usePresenceSpacingStyles = makeStyles({
  * Apply styling to the Persona slots based on the state
  */
 export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => {
-  const { size, textAlignment, textPosition } = state;
-  const alignToPrimary = textAlignment === 'start' && size !== 'extra-large' && size !== 'huge';
+  const { presenceOnly, size, textAlignment, textPosition } = state;
+
+  const alignToPrimary = presenceOnly && textAlignment === 'start' && size !== 'extra-large' && size !== 'huge';
   const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state, alignToPrimary);
 
   const styles = useStyles();
   const avatarSpacingStyles = useAvatarSpacingStyles();
   const presenceSpacingStyles = { ...avatarSpacingStyles, ...usePresenceSpacingStyles() };
 
-  state.root.className = mergeClasses(
-    personaClassNames.root,
-    styles.base,
-    styles[textPosition],
-    textPosition !== 'below' && alignToPrimary && styles.alignToPrimary,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(personaClassNames.root, styles.base, styles[textPosition], state.root.className);
 
   if (state.avatar) {
     state.avatar.className = mergeClasses(
