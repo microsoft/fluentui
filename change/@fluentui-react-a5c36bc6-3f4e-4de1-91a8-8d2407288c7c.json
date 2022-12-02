@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Respecting user-provided ids in ComboBox options.",
-  "packageName": "@fluentui/react",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}
