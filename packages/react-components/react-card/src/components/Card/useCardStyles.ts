@@ -13,7 +13,7 @@ import type { CardSlots, CardState } from './Card.types';
  */
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
-  floatingAction: 'fui-Card__select',
+  floatingAction: 'fui-Card__floatingAction',
   checkbox: 'fui-Card__checkbox',
 };
 

@@ -265,19 +265,22 @@ describe('Card', () => {
     it('should not be selectable by default', () => {
       mountFluent(<CardSample />);
 
-      cy.get(`.${cardClassNames.select}`).should('not.exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.exist');
     });
 
     it('should render select slot - selected prop', () => {
       mountFluent(<CardSample selected />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
     it('should render select slot - defaultSelected prop', () => {
       mountFluent(<CardSample defaultSelected />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
     it('should render select slot - onSelectionChange prop', () => {
@@ -289,62 +292,65 @@ describe('Card', () => {
 
       mountFluent(<Example />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
     it('should render select slot custom JSX is provided', () => {
-      mountFluent(<CardSample select={<span />} />);
+      mountFluent(<CardSample floatingAction={<span />} />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.exist');
     });
 
     it('should have internal checkbox when selectable - no select slot', () => {
       mountFluent(<CardSample selected />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
     it('should render custom select slot', () => {
-      mountFluent(<CardSample select={<input type="checkbox" />} />);
+      mountFluent(<CardSample floatingAction={<input type="checkbox" />} />);
 
-      cy.get(`.${cardClassNames.select} input[type="checkbox"]`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction} input[type="checkbox"]`).should('exist');
     });
 
     it('should select with a mouse click', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
-      cy.get(`.${cardClassNames.select}`).should('not.be.checked');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.be.checked');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
     });
 
     it('should have checkbox pre-selected and toggle its value', () => {
       mountFluent(<CardSample defaultSelected />);
 
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.select}`).should('not.be.checked');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.be.checked');
     });
 
     it('should select with the Space key', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
-      cy.get(`.${cardClassNames.select}`).focus().realPress('Space');
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${cardClassNames.checkbox}`).focus().realPress('Space');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
     });
 
     it('should NOT select when focused on an action', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
       cy.get(`.${cardClassNames.root} button`).first().focus().realPress('Enter');
-      cy.get(`.${cardClassNames.select}`).should('not.be.checked');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.be.checked');
     });
 
     it('should select with the Enter key if card does not have any actions inside', () => {
       mountFluent(<CardSampleNoActions defaultSelected={false} />);
 
-      cy.get(`.${cardClassNames.select}`).focus().realPress('Enter');
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${cardClassNames.checkbox}`).focus().realPress('Enter');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
     });
 
     it('should sync selected value with custom slot', () => {
@@ -355,7 +361,7 @@ describe('Card', () => {
 
         return (
           <CardSample
-            select={<input type="checkbox" className="custom-select-slot" checked={checked} />}
+            floatingAction={<input type="checkbox" className="custom-select-slot" checked={checked} />}
             onSelectionChange={onSelectionChange}
           />
         );
@@ -363,9 +369,9 @@ describe('Card', () => {
 
       mountFluent(<Example />);
 
-      cy.get(`.${cardClassNames.select} .custom-select-slot`).should('not.be.checked');
+      cy.get(`.${cardClassNames.floatingAction} .custom-select-slot`).should('not.be.checked');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.select} .custom-select-slot`).should('be.checked');
+      cy.get(`.${cardClassNames.floatingAction} .custom-select-slot`).should('be.checked');
     });
   });
 });
