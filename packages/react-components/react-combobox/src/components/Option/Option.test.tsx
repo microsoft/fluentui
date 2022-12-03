@@ -3,10 +3,11 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { fireEvent, render } from '@testing-library/react';
 import { ListboxContext } from '../../contexts/ListboxContext';
 import { Option } from './Option';
+import type { OptionProps } from './Option.types';
 import { isConformant } from '../../common/isConformant';
 
 describe('Option', () => {
-  isConformant({
+  isConformant<OptionProps>({
     Component: Option,
     displayName: 'Option',
   });
@@ -34,6 +35,16 @@ describe('Option', () => {
   it('renders a default single-select state', () => {
     const result = render(<Option>Default Option</Option>);
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('renders child content', () => {
+    const result = render(
+      <Option text="Default">
+        <b>Text content</b>
+      </Option>,
+    );
+    expect(result.getByText('Text content').tagName).toBe('B');
+    expect(result.queryByText('Default')).toBeNull();
   });
 
   it('renders a default multi-select state', () => {
@@ -69,6 +80,18 @@ describe('Option', () => {
   it('sets aria-selected based on text', () => {
     const { getByText } = render(
       <ListboxContext.Provider value={{ ...defaultContextValues, selectedOptions: ['Option 1'] }}>
+        <Option text="Option 1">one</Option>
+        <Option text="Option 2">two</Option>
+      </ListboxContext.Provider>,
+    );
+
+    expect(getByText('one').getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('two').getAttribute('aria-selected')).toEqual('false');
+  });
+
+  it('sets aria-selected based on children', () => {
+    const { getByText } = render(
+      <ListboxContext.Provider value={{ ...defaultContextValues, selectedOptions: ['Option 1'] }}>
         <Option>Option 1</Option>
         <Option>Option 2</Option>
       </ListboxContext.Provider>,
@@ -81,11 +104,26 @@ describe('Option', () => {
   it('ignores text if value is set', () => {
     const { getByText } = render(
       <ListboxContext.Provider value={{ ...defaultContextValues, selectedOptions: ['Option 1'] }}>
-        <Option value="not-selected">Option 1</Option>
+        <Option value="not-selected" text="Option 1">
+          one
+        </Option>
       </ListboxContext.Provider>,
     );
 
-    expect(getByText('Option 1').getAttribute('aria-selected')).toEqual('false');
+    expect(getByText('one').getAttribute('aria-selected')).toEqual('false');
+  });
+
+  it('calls console.warn if the text prop is absent and the children is not a string', () => {
+    const warnFn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    render(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      <Option>
+        <b>Some text content</b>
+      </Option>,
+    );
+
+    expect(warnFn).toHaveBeenCalledTimes(1);
   });
 
   it('calls onClick', () => {
@@ -126,6 +164,7 @@ describe('Option', () => {
     expect(typeof registerProps?.id).toEqual('string');
     expect(registerProps?.disabled).toBeFalsy();
     expect(registerProps?.value).toEqual('Option 1');
+    expect(registerProps?.text).toEqual('Option 1');
     expect(registerRef).toEqual(getByRole('option'));
   });
 
@@ -133,8 +172,8 @@ describe('Option', () => {
     const registerOption = jest.fn();
     render(
       <ListboxContext.Provider value={{ ...defaultContextValues, registerOption }}>
-        <Option id="op1" disabled value="foo">
-          Option 1
+        <Option id="op1" disabled value="foo" text="Option 1">
+          text content
         </Option>
       </ListboxContext.Provider>,
     );
@@ -144,18 +183,19 @@ describe('Option', () => {
     expect(registerProps?.id).toEqual('op1');
     expect(registerProps?.disabled).toBeTruthy();
     expect(registerProps?.value).toEqual('foo');
+    expect(registerProps?.text).toEqual('Option 1');
   });
 
   it('re-registers when the value changes', () => {
     const registerOption = jest.fn();
     const result = render(
       <ListboxContext.Provider value={{ ...defaultContextValues, registerOption }}>
-        <Option value="foo">Option 1</Option>
+        <Option value="foo" text="Option 1" />
       </ListboxContext.Provider>,
     );
     result.rerender(
       <ListboxContext.Provider value={{ ...defaultContextValues, registerOption }}>
-        <Option value="bar">Option 1</Option>
+        <Option value="bar" text="Option 1" />
       </ListboxContext.Provider>,
     );
 
@@ -174,7 +214,7 @@ describe('Option', () => {
     );
 
     fireEvent.click(getByRole('option'));
-    const optionData = { id: 'optionId', disabled: undefined, value: 'foo' };
+    const optionData = { id: 'optionId', disabled: undefined, text: 'Option 1', value: 'foo' };
 
     expect(selectOption).toHaveBeenCalledTimes(1);
     expect(selectOption).toHaveBeenCalledWith(expect.anything(), optionData);

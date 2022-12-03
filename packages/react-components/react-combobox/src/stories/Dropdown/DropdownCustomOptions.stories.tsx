@@ -40,7 +40,7 @@ const CustomOption = (props: CustomOptionProps) => {
   const Icon = animalIcons[animal];
   const styles = useCustomOptionStyles();
   return (
-    <Option value={animal} className={styles.option} checkIcon={<CheckboxChecked24Regular />} {...optionProps}>
+    <Option text={animal} className={styles.option} checkIcon={<CheckboxChecked24Regular />} {...optionProps}>
       <Icon className={styles.icon} />
       <span className={styles.text}>{animal}</span>
     </Option>
