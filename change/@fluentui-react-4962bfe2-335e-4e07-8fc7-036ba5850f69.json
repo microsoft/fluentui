@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Make Buttons align correctly when put inside of DialogFooter.",
+  "packageName": "@fluentui/react",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
