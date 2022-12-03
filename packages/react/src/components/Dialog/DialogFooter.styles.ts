@@ -42,9 +42,10 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
     actionsRight: [
       classNames.actionsRight,
       {
-        textAlign: 'right',
-        marginRight: '-4px',
+        display: 'flex',
         fontSize: '0',
+        justifyContent: 'flex-end',
+        marginRight: '-4px',
       },
     ],
   };
