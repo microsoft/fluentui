@@ -26,6 +26,7 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
         selectors: {
           '.ms-Button': {
             lineHeight: 'normal',
+            verticalAlign: 'middle',
           },
         },
       },
@@ -42,6 +43,7 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
     actionsRight: [
       classNames.actionsRight,
       {
+        alignItems: 'center',
         display: 'flex',
         fontSize: '0',
         justifyContent: 'flex-end',
