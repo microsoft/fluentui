@@ -32,7 +32,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     activeOption,
     clearSelection,
     getIndexOfId,
-    getOptionsMatchingValue,
+    getOptionsMatchingText,
     hasFocus,
     open,
     selectOption,
@@ -77,8 +77,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       return;
     }
 
-    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString) === 0;
-    const matches = getOptionsMatchingValue(matcher);
+    const matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString) === 0;
+    const matches = getOptionsMatchingText(matcher);
 
     // return first matching option after the current active option, looping back to the top
     if (matches.length > 1 && activeOption) {
