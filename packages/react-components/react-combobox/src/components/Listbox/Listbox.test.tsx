@@ -182,9 +182,9 @@ describe('Listbox', () => {
       </Listbox>,
     );
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Red').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Blue').getAttribute('aria-selected')).toEqual('false');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Red').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Blue').getAttribute('aria-checked')).toEqual('false');
   });
 
   it('should set selectedOptions', () => {
@@ -225,8 +225,8 @@ describe('Listbox', () => {
 
     fireEvent.click(getByText('Red'));
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Red').getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Red').getAttribute('aria-checked')).toEqual('true');
   });
 
   it('should fire onChange when an option is selected', () => {
