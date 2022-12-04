@@ -355,7 +355,7 @@ describe('Dropdown', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByText('Red', { selector: '[role=option]' }).getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('Red', { selector: '[role=menuitemcheckbox]' }).getAttribute('aria-selected')).toEqual('true');
     expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
     expect(getByText('Blue').getAttribute('aria-selected')).toEqual('false');
   });
@@ -443,7 +443,7 @@ describe('Dropdown', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByRole('listbox')).not.toBeNull();
+    expect(getByRole('menu')).not.toBeNull();
   });
 
   it('should respect value over selected options', () => {

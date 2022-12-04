@@ -32,6 +32,30 @@ describe('Listbox', () => {
     expect(result.container).toMatchSnapshot();
   });
 
+  it('uses lisbox/option semantics for single-select', () => {
+    const { getAllByRole } = render(
+      <Listbox>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+    expect(getAllByRole('listbox').length).toEqual(1);
+    expect(getAllByRole('option').length).toEqual(3);
+  });
+
+  it('uses menu/menuitemcheckbox semantics for multi-select', () => {
+    const { getAllByRole } = render(
+      <Listbox multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+    expect(getAllByRole('menu').length).toEqual(1);
+    expect(getAllByRole('menuitemcheckbox').length).toEqual(3);
+  });
+
   /* Moving activeOption */
   it('should set active option on click', () => {
     const { getByTestId } = render(

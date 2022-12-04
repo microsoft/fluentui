@@ -115,7 +115,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, optionRef),
-      role: 'option',
+      role: multiselect ? 'menuitemcheckbox' : 'option',
       'aria-disabled': disabled ? 'true' : undefined,
       'aria-selected': `${selected}`,
       id,
