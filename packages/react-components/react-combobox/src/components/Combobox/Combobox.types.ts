@@ -29,14 +29,21 @@ export type ComboboxSlots = {
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   ComboboxBaseProps & {
     /*
+     * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
+     */
+    children?: React.ReactNode;
+
+    /*
      * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
      */
     freeform?: boolean;
 
-    /*
-     * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
+    /**
+     * When true, space will insert a character into the text field instead of selecting options.
+     * This is not recommended for most scenarios, but is useful in special cases where typing a space is necessary.
+     * @default false
      */
-    children?: React.ReactNode;
+    allowSpaceAsCharacter?: boolean;
   };
 
 /**

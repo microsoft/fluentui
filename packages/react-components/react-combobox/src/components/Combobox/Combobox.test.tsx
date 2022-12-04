@@ -377,6 +377,23 @@ describe('Combobox', () => {
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
   });
 
+  it('does not select with space if allowSpaceAsCharacter is true', () => {
+    const { getByTestId, getByText } = render(
+      <Combobox open allowSpaceAsCharacter data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    userEvent.type(combobox, 'gre ');
+
+    expect((combobox as HTMLInputElement).value).toEqual('gre ');
+    expect(getByText('Green').getAttribute('aria-selected')).toEqual('false');
+  });
+
   it('does not select a disabled option with the keyboard', () => {
     const { getByTestId, getByRole } = render(
       <Combobox open data-testid="combobox">

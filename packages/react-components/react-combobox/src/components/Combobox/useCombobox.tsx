@@ -43,7 +43,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue,
     value,
   } = baseState;
-  const { freeform, multiselect } = props;
+  const { allowSpaceAsCharacter, freeform, multiselect } = props;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -141,13 +141,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }
   };
 
-  // open Combobox when typing
-  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!open && getDropdownActionFromKey(ev) === 'Type') {
-      setOpen(ev, true);
-    }
-  };
-
   // resolve input and listbox slot props
   let triggerSlot: Slot<'input'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
@@ -164,7 +157,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
-  triggerSlot.onKeyDown = mergeCallbacks(triggerSlot.onKeyDown, onTriggerKeyDown);
 
   // only resolve listbox slot if needed
   listboxSlot =
@@ -180,6 +172,25 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
+
+  // open Combobox when typing
+  // if allowSpaceAsCharacter is true, treat spacebar like other printable characters
+  const originalOnKeyDown = triggerSlot.onKeyDown;
+  triggerSlot.onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    const isPrintableSpace = allowSpaceAsCharacter && ev.key === ' ';
+    if (!open && (getDropdownActionFromKey(ev) === 'Type' || isPrintableSpace)) {
+      setOpen(ev, true);
+    }
+
+    // use default input behavior when space is pressed if allowSpaceAsCharacter is true
+    if (isPrintableSpace) {
+      props.input?.onKeyDown?.(ev);
+      return;
+    }
+
+    // otherwise, handle the space key
+    originalOnKeyDown?.(ev);
+  };
 
   const state: ComboboxState = {
     components: {
