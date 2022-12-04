@@ -9,6 +9,8 @@ export { ComplexOptions } from './ComboboxComplexOptions.stories';
 export { CustomOptions } from './ComboboxCustomOptions.stories';
 export { Freeform } from './ComboboxFreeform.stories';
 export { Multiselect } from './ComboboxMultiselect.stories';
+export { MultiselectWithTags } from './ComboboxMultiselectWithTags.stories';
+export { MultiselectWithValueString } from './ComboboxMultiselectWithValueString.stories';
 export { Grouped } from './ComboboxGrouped.stories';
 export { Appearance } from './ComboboxAppearance.stories';
 export { Size } from './ComboboxSize.stories';
