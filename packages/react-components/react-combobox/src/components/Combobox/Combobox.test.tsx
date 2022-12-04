@@ -440,7 +440,7 @@ describe('Combobox', () => {
 
   it('clears typed characters after selection for multiselect', () => {
     const { getByRole, getByText } = render(
-      <Combobox defaultOpen multiselect>
+      <Combobox open multiselect>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -450,7 +450,7 @@ describe('Combobox', () => {
     const combobox = getByRole('combobox');
 
     userEvent.type(combobox, 'gr');
-    userEvent.type(combobox, '{Enter}');
+    userEvent.click(getByText('Green'));
 
     expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
     expect((combobox as HTMLInputElement).value).toEqual('');
