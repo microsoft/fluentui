@@ -3,12 +3,12 @@ import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
-import type { ComboboxBaseProps, ComboboxBaseOpenEvents } from './ComboboxBase.types';
+import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
 
 /**
  * State shared between Combobox and Dropdown components
  */
-export const useComboboxBaseState = (props: ComboboxBaseProps) => {
+export const useComboboxBaseState = (props: ComboboxBaseProps, editable = false): ComboboxBaseState => {
   const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
 
   const optionCollection = useOptionCollection();
@@ -47,11 +47,12 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     }
 
     if (multiselect) {
-      return selectedOptions.join(', ');
+      // editable inputs should not display multiple selected options in the input as text
+      return editable ? '' : selectedOptions.join(', ');
     }
 
     return selectedOptions[0];
-  }, [controllableValue, isFirstMount, multiselect, props.defaultValue, selectedOptions]);
+  }, [controllableValue, editable, isFirstMount, multiselect, props.defaultValue, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({
