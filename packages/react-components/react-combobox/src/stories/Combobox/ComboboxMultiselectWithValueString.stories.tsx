@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, typographyStyles, useId } from '@fluentui/react-components';
+import { makeStyles, shorthands, useId } from '@fluentui/react-components';
 import { Combobox, Option } from '@fluentui/react-combobox';
 import type { ComboboxProps } from '@fluentui/react-combobox';
 
@@ -11,9 +11,6 @@ const useStyles = makeStyles({
     justifyItems: 'start',
     ...shorthands.gap('2px'),
     maxWidth: '400px',
-  },
-  description: {
-    ...typographyStyles.caption1,
   },
 });
 

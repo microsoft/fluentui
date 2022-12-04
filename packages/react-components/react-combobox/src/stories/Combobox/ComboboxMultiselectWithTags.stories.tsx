@@ -32,9 +32,12 @@ export const MultiselectWithTags = (props: Partial<ComboboxProps>) => {
   const selectedListRef = React.useRef<HTMLUListElement>(null);
   const comboboxInputRef = React.useRef<HTMLInputElement>(null);
 
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
+
+  // Handle selectedOptions both when an option is selected or deselected in the Combobox,
+  // and when an option is removed by clicking on a tag
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
 
   const onSelect: ComboboxProps['onOptionSelect'] = (event, data) => {
     setSelectedOptions(data.selectedOptions);
