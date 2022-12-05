@@ -178,7 +178,6 @@ import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
-import { renderVirtualizer_unstable } from '@fluentui/virtualizer';
 import { RowId } from '@fluentui/react-table';
 import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
@@ -348,12 +347,6 @@ import { useTableStyles_unstable } from '@fluentui/react-table';
 import { useToolbar_unstable } from '@fluentui/react-toolbar';
 import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
-import { useVirtualizer_unstable } from '@fluentui/virtualizer';
-import { useVirtualizerStyles_unstable } from '@fluentui/virtualizer';
-import { Virtualizer } from '@fluentui/virtualizer';
-import { VirtualizerProps } from '@fluentui/virtualizer';
-import { VirtualizerSlots } from '@fluentui/virtualizer';
-import { VirtualizerState } from '@fluentui/virtualizer';
 
 export { Alert }
 
@@ -703,8 +696,6 @@ export { renderTableSelectionCell_unstable }
 
 export { renderToolbar_unstable }
 
-export { renderVirtualizer_unstable }
-
 export { RowId }
 
 export { RowState }
@@ -1043,18 +1034,6 @@ export { useToolbar_unstable }
 export { useToolbarDividerStyles_unstable }
 
 export { useToolbarStyles_unstable }
-
-export { useVirtualizer_unstable }
-
-export { useVirtualizerStyles_unstable }
-
-export { Virtualizer }
-
-export { VirtualizerProps }
-
-export { VirtualizerSlots }
-
-export { VirtualizerState }
 
 // (No @packageDocumentation comment for this package)
 

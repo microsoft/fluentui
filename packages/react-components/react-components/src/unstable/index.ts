@@ -370,11 +370,3 @@ export {
   useProgress_unstable,
 } from '@fluentui/react-progress';
 export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/react-progress';
-
-export {
-  Virtualizer,
-  useVirtualizerStyles_unstable,
-  useVirtualizer_unstable,
-  renderVirtualizer_unstable,
-} from '@fluentui/virtualizer';
-export type { VirtualizerProps, VirtualizerState, VirtualizerSlots } from '@fluentui/virtualizer';
