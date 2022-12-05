@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove the unecessary extra specificity and styles in hover and focus styles",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
