@@ -116,8 +116,9 @@ export const SelectableIndicator = () => {
       <div className={styles.row}>
         <Card className={styles.card} selected={selected3} onSelectionChange={onThirdCardSelected}>
           <CardHeader
-            header={<Text weight="semibold">iOS App Prototype</Text>}
-            description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
+            image={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word Logo" />}
+            header={<Text weight="semibold">Secret Project Briefing</Text>}
+            description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
             action={
               <div className={styles.actions}>
                 <Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />
@@ -129,8 +130,9 @@ export const SelectableIndicator = () => {
 
         <Card className={styles.card} selected={selected4} onSelectionChange={onForthCardSelected}>
           <CardHeader
-            header={<Text weight="semibold">iOS App Prototype</Text>}
-            description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
+            image={<img src={resolveAsset('excel_logo.svg')} alt="Microsoft Excel Logo" />}
+            header={<Text weight="semibold">Team Budget</Text>}
+            description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
             action={
               <div className={styles.actions}>
                 <Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />
