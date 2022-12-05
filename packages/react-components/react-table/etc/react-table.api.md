@@ -181,6 +181,9 @@ export type DataGridState = TableState & {
     tableState: HeadlessTableState<unknown>;
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance'>;
 
+// @public
+export const DataGridVirtualizedBody: ForwardRefComponent<DataGridVirtualizedBodyProps>;
+
 // @public (undocumented)
 export type FocusMode = 'none' | 'cell';
 

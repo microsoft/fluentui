@@ -12,5 +12,7 @@ export const dataGridVirtualizedBodyClassNames: SlotClassNames<DataGridVirtualiz
 export const useDataGridVirtualizedBodyStyles_unstable = (
   state: DataGridVirtualizedBodyState,
 ): DataGridVirtualizedBodyState => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return useDataGridBodyStyles_unstable(state);
 };
