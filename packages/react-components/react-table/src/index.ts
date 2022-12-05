@@ -174,3 +174,4 @@ export type {
   DataGridSelectionCellState,
   DataGridSelectionCellSlots,
 } from './DataGridSelectionCell';
+export { DataGridVirtualizedBody } from './DataGridVirtualizedBody';
