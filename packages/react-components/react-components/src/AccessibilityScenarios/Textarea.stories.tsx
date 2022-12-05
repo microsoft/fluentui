@@ -7,21 +7,6 @@ import { Scenario } from './utils';
 import { useForm, Controller, OnSubmit } from 'react-hook-form';
 import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
 
-const generateCustomerId = (): string => {
-  let char;
-  let hash = 0;
-  const random = Math.random().toString();
-  for (let i = 0; i < random.length; i++) {
-    char = random.charCodeAt(i);
-    //eslint-disable-next-line no-bitwise
-    hash = (hash << 5) - hash + char;
-    //eslint-disable-next-line no-bitwise
-    hash |= 0; // Convert to 32bit integer
-  }
-  hash += 2147483647; // Convert to positive integer
-  return hash.toString().padStart(10, '0').substring(2);
-};
-
 interface FormTextareas {
   knowledge: string;
   effort: string;
@@ -121,6 +106,21 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
   const [isProblemNotSolved, setIsProblemNotSolved] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
+
+  const customerId = React.useMemo((): string => {
+    let char;
+    let hash = 0;
+    const random = Math.random().toString();
+    for (let i = 0; i < random.length; i++) {
+      char = random.charCodeAt(i);
+      //eslint-disable-next-line no-bitwise
+      hash = (hash << 5) - hash + char;
+      //eslint-disable-next-line no-bitwise
+      hash |= 0; // Convert to 32bit integer
+    }
+    hash += 2147483647; // Convert to positive integer
+    return hash.toString().padStart(10, '0').substring(2);
+  }, []);
 
   React.useEffect(() => {
     // If the form is submitting and has errors, focus the first error fiel, otherwise do nothing
@@ -334,7 +334,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
             <div>
               <Label htmlFor="customerId">Your customer id:</Label>
-              <Textarea id="customerId" defaultValue={generateCustomerId()} readOnly />
+              <Textarea id="customerId" defaultValue={customerId} readOnly />
             </div>
 
             <Button type="submit">Submit</Button>

@@ -21,21 +21,6 @@ const regexes = {
   validEmail: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 };
 
-const generateSecurityCode = (): string => {
-  let char;
-  let hash = 0;
-  const random = Math.random().toString();
-  for (let i = 0; i < random.length; i++) {
-    char = random.charCodeAt(i);
-    //eslint-disable-next-line no-bitwise
-    hash = (hash << 5) - hash + char;
-    //eslint-disable-next-line no-bitwise
-    hash |= 0; // Convert to 32bit integer
-  }
-  hash += 2147483647; // Convert to positive integer
-  return hash.toString().padStart(8, '0').substring(2);
-};
-
 interface FormInputs {
   fullName: string;
   nickname: string;
@@ -136,6 +121,21 @@ const RegistrationFormInputsAccessibility = () => {
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [isSendNewsletter, setIsSendNewsletter] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
+
+  const securityCode = React.useMemo((): string => {
+    let char;
+    let hash = 0;
+    const random = Math.random().toString();
+    for (let i = 0; i < random.length; i++) {
+      char = random.charCodeAt(i);
+      //eslint-disable-next-line no-bitwise
+      hash = (hash << 5) - hash + char;
+      //eslint-disable-next-line no-bitwise
+      hash |= 0; // Convert to 32bit integer
+    }
+    hash += 2147483647; // Convert to positive integer
+    return hash.toString().padStart(8, '0').substring(2);
+  }, []);
 
   React.useEffect(() => {
     // If the form is submitting and has errors, focus the first error fiel, otherwise do nothing
@@ -408,7 +408,7 @@ const RegistrationFormInputsAccessibility = () => {
           )}
 
           <Label htmlFor="securityCode">Your security code:</Label>
-          <Input type="text" id="securityCode" value={generateSecurityCode()} readOnly />
+          <Input type="text" id="securityCode" value={securityCode} readOnly />
 
           <Button type="submit">Register</Button>
         </form>

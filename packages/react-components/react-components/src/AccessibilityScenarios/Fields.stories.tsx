@@ -22,21 +22,6 @@ const regexes = {
   validEmail: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 };
 
-const generateTicketNumber = (): string => {
-  let char;
-  let hash = 0;
-  const random = Math.random().toString();
-  for (let i = 0; i < random.length; i++) {
-    char = random.charCodeAt(i);
-    //eslint-disable-next-line no-bitwise
-    hash = (hash << 5) - hash + char;
-    //eslint-disable-next-line no-bitwise
-    hash |= 0; // Convert to 32bit integer
-  }
-  hash += 2147483647; // Convert to positive integer
-  return hash.toString().padStart(8, '0');
-};
-
 let isSubmitting = false;
 
 interface FormInputs {
@@ -141,6 +126,21 @@ const TicketOrderFormFieldsAccessibility = () => {
   const [isSendNewsletter, setIsSendNewsletter] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
+  const ticketNumber = React.useMemo((): string => {
+    let char;
+    let hash = 0;
+    const random = Math.random().toString();
+    for (let i = 0; i < random.length; i++) {
+      char = random.charCodeAt(i);
+      //eslint-disable-next-line no-bitwise
+      hash = (hash << 5) - hash + char;
+      //eslint-disable-next-line no-bitwise
+      hash |= 0; // Convert to 32bit integer
+    }
+    hash += 2147483647; // Convert to positive integer
+    return hash.toString().padStart(8, '0');
+  }, []);
+
   React.useEffect(() => {
     if (formState.isSubmitting) {
       isSubmitting = true;
@@ -194,7 +194,7 @@ const TicketOrderFormFieldsAccessibility = () => {
             <InputField
               type="text"
               id="ticketNumber"
-              value={generateTicketNumber()}
+              value={ticketNumber}
               readOnly
               label="Your ticket number:"
               hint="Please remember the ticket number. You will need it for identification."
