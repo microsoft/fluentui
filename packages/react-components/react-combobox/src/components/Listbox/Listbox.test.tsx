@@ -219,7 +219,11 @@ describe('Listbox', () => {
     fireEvent.click(getByText('Red'));
 
     expect(onOptionSelect).toHaveBeenCalled();
-    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({
+      optionValue: 'Red',
+      optionText: 'Red',
+      selectedOptions: ['Red'],
+    });
   });
 
   it('should not change selection with selectedOptions', () => {
@@ -239,7 +243,11 @@ describe('Listbox', () => {
 
     expect(option.getAttribute('aria-selected')).toEqual('false');
     expect(onOptionSelect).toHaveBeenCalled();
-    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({
+      optionValue: 'Red',
+      optionText: 'Red',
+      selectedOptions: ['Red'],
+    });
   });
 
   it('should select option with the enter key', () => {

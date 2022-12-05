@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 30 Nov 2022 07:46:31 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 07:54:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.24)
+
+Mon, 05 Dec 2022 07:54:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.23..@fluentui/react-charting_v5.14.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.5 ([PR #25884](https://github.com/microsoft/fluentui/pull/25884) by beachball)
+
+## [5.14.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.23)
+
+Fri, 02 Dec 2022 07:54:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.22..@fluentui/react-charting_v5.14.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.4 ([PR #25863](https://github.com/microsoft/fluentui/pull/25863) by beachball)
+
+## [5.14.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.22)
+
+Thu, 01 Dec 2022 07:57:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.21..@fluentui/react-charting_v5.14.22)
+
+### Patches
+
+- Support single point in area chart ([PR #25842](https://github.com/microsoft/fluentui/pull/25842) by atishay.jain@microsoft.com)
 
 ## [5.14.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.21)
 

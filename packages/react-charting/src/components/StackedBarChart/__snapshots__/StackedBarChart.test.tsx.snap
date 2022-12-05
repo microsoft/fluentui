@@ -38,15 +38,15 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -91,26 +91,22 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
           className=
 
               {
-                color: #000000;
-                font-size: 12px;
+                color: #323130;
+                font-size: 14px;
                 font-weight: 600;
               }
         >
           40
         </span>
-        <span>
-          /
-          <span
-            className=
+        <span
+          className=
 
-                {
-                  color: #000000;
-                  font-size: 12px;
-                  opacity: 0.6;
-                }
-          >
-            63
-          </span>
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
         </span>
       </div>
     </div>
@@ -132,8 +128,9 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -164,7 +161,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               key="0"
               width="63.49206349206349%"
               x="0%"
@@ -197,7 +194,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               key="1"
               width="36.507936507936506%"
               x="63.49206349206349%"
@@ -411,15 +408,15 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -464,26 +461,22 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
           className=
 
               {
-                color: #000000;
-                font-size: 12px;
+                color: #323130;
+                font-size: 14px;
                 font-weight: 600;
               }
         >
           40
         </span>
-        <span>
-          /
-          <span
-            className=
+        <span
+          className=
 
-                {
-                  color: #000000;
-                  font-size: 12px;
-                  opacity: 0.6;
-                }
-          >
-            63
-          </span>
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
         </span>
       </div>
     </div>
@@ -505,8 +498,9 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -537,7 +531,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               key="0"
               width="63.49206349206349%"
               x="0%"
@@ -570,7 +564,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               key="1"
               width="36.507936507936506%"
               x="63.49206349206349%"
@@ -701,15 +695,15 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -754,26 +748,22 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
           className=
 
               {
-                color: #000000;
-                font-size: 12px;
+                color: #323130;
+                font-size: 14px;
                 font-weight: 600;
               }
         >
           40
         </span>
-        <span>
-          /
-          <span
-            className=
+        <span
+          className=
 
-                {
-                  color: #000000;
-                  font-size: 12px;
-                  opacity: 0.6;
-                }
-          >
-            63
-          </span>
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
         </span>
       </div>
     </div>
@@ -795,8 +785,9 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -826,7 +817,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -857,7 +848,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -911,15 +902,15 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -964,26 +955,22 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           className=
 
               {
-                color: #000000;
-                font-size: 12px;
+                color: #323130;
+                font-size: 14px;
                 font-weight: 600;
               }
         >
           40
         </span>
-        <span>
-          /
-          <span
-            className=
+        <span
+          className=
 
-                {
-                  color: #000000;
-                  font-size: 12px;
-                  opacity: 0.6;
-                }
-          >
-            63
-          </span>
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
         </span>
       </div>
     </div>
@@ -1005,8 +992,9 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1036,7 +1024,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1067,7 +1055,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1121,15 +1109,15 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1174,8 +1162,8 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           className=
 
               {
-                color: #000000;
-                font-size: 12px;
+                color: #323130;
+                font-size: 14px;
                 font-weight: 600;
               }
         >
@@ -1201,8 +1189,9 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1232,7 +1221,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1263,7 +1252,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1317,15 +1306,15 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1370,26 +1359,22 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           className=
 
               {
-                color: #000000;
-                font-size: 12px;
+                color: #323130;
+                font-size: 14px;
                 font-weight: 600;
               }
         >
           40
         </span>
-        <span>
-          /
-          <span
-            className=
+        <span
+          className=
 
-                {
-                  color: #000000;
-                  font-size: 12px;
-                  opacity: 0.6;
-                }
-          >
-            63
-          </span>
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
         </span>
       </div>
     </div>
@@ -1411,8 +1396,9 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1442,7 +1428,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1473,7 +1459,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1527,15 +1513,15 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1591,8 +1577,9 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1622,7 +1609,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1653,7 +1640,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1707,15 +1694,15 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1760,26 +1747,22 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           className=
 
               {
-                color: #000000;
-                font-size: 12px;
+                color: #323130;
+                font-size: 14px;
                 font-weight: 600;
               }
         >
           40
         </span>
-        <span>
-          /
-          <span
-            className=
+        <span
+          className=
 
-                {
-                  color: #000000;
-                  font-size: 12px;
-                  opacity: 0.6;
-                }
-          >
-            63
-          </span>
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
         </span>
       </div>
     </div>
@@ -1801,8 +1784,9 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -1832,7 +1816,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <rect
               fill="#5c005c"
-              height={8}
+              height={12}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1863,7 +1847,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <rect
               fill="#e81123"
-              height={8}
+              height={12}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1917,15 +1901,15 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 3px;
           }
     >
       <div
         className=
             ms-TooltipHost
             {
+              color: #171717;
               display: block;
-              font-weight: 700;
+              margin-bottom: 5px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -1981,8 +1965,9 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         className=
 
             {
-              height: 16px;
-              margin-bottom: 12px;
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
               width: 100%;
             }
       >
@@ -2012,7 +1997,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           >
             <rect
               fill="#5c005c"
-              height={16}
+              height={12}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -2043,7 +2028,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           >
             <rect
               fill="#e81123"
-              height={16}
+              height={12}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}

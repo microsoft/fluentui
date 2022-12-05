@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 30 Nov 2022 07:46:31 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 07:54:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.103.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.5)
+
+Mon, 05 Dec 2022 07:54:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.4..@fluentui/react_v8.103.5)
+
+### Patches
+
+- fix: Make Buttons align correctly when put inside of DialogFooter. ([PR #25884](https://github.com/microsoft/fluentui/pull/25884) by makotom@microsoft.com)
+- remove the unecessary extra specificity and styles in hover and focus styles ([PR #25834](https://github.com/microsoft/fluentui/pull/25834) by mgodbolt@microsoft.com)
+
+## [8.103.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.4)
+
+Fri, 02 Dec 2022 07:54:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.3..@fluentui/react_v8.103.4)
+
+### Patches
+
+- fix: Fixing Slider's programmatic focus. ([PR #25869](https://github.com/microsoft/fluentui/pull/25869) by makotom@microsoft.com)
+- fix: Respecting user-provided ids in ComboBox options. ([PR #25867](https://github.com/microsoft/fluentui/pull/25867) by makotom@microsoft.com)
 
 ## [8.103.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.3)
 

@@ -5,6 +5,8 @@ import bestPracticesMd from './ToolbarBestPractices.md';
 
 export { Default } from './ToolbarDefault.stories';
 export { Small } from './ToolbarSmall.stories';
+export { Medium } from './ToolbarMedium.stories';
+export { Large } from './ToolbarLarge.stories';
 export { OverflowItems } from './ToolbarOverflow.stories';
 export { WithTooltip } from './ToolbarWithTooltip.stories';
 export { WithPopover } from './ToolbarWithPopover.stories';

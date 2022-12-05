@@ -3972,6 +3972,24 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^3.2.0"
 
+"@storybook/addon-links@6.5.5":
+  version "6.5.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.5.5.tgz#1f5aeac63f526f7cf802d2921fe3ff7013213a8b"
+  integrity sha512-0UrlCtlhZouM7KREgEnLqvW0jfJfg9rXs9AcVBSrpvh8NL0OM9D9K1zqN+prxKcmTzWAmCU+9QXVZNTnyLrhEQ==
+  dependencies:
+    "@storybook/addons" "6.5.5"
+    "@storybook/client-logger" "6.5.5"
+    "@storybook/core-events" "6.5.5"
+    "@storybook/csf" "0.0.2--canary.4566f4d.1"
+    "@storybook/router" "6.5.5"
+    "@types/qs" "^6.9.5"
+    core-js "^3.8.2"
+    global "^4.4.0"
+    prop-types "^15.7.2"
+    qs "^6.10.0"
+    regenerator-runtime "^0.13.7"
+    ts-dedent "^2.0.0"
+
 "@storybook/addon-measure@6.5.5":
   version "6.5.5"
   resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-6.5.5.tgz#19165fc24c3b24a7ec31480a6a1a7fd5d333c774"
@@ -10802,9 +10820,9 @@ decimal.js@^10.2.1:
   integrity sha512-V0pfhfr8suzyPGOx3nmq4aHqabehUZn6Ch9kyFpV79TGDTWFmHqUqXdabR7QHqxzrYolF4+tVmJhUG4OURg5dQ==
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 decompress-response@^3.3.0:
   version "3.3.0"
