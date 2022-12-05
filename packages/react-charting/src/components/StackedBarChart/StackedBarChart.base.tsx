@@ -27,7 +27,7 @@ export interface IStackedBarChartState {
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
   public static defaultProps: Partial<IStackedBarChartProps> = {
-    barHeight: 16,
+    barHeight: 12,
     hideNumberDisplay: false,
     hideLegend: false,
     ignoreFixStyle: false,
@@ -61,7 +61,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._adjustProps();
     const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
     const { palette } = this.props.theme!;
-    const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
+    const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 12;
 
     if (benchmarkData) {
       // benchmark color is used to render color for benchmark triangle and benchmark legend
@@ -99,6 +99,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       benchmarkRatio,
       targetColor: targetData ? targetData.color : '',
       targetRatio,
+      showTriangle: !!(benchmarkData || targetData),
     });
     const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
@@ -118,15 +119,18 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!this.props.hideDenominator && (
-                  <span>
-                    /<span className={this._classNames.ratioDenominator}>{convertToLocaleString(total, culture)}</span>
+                  <span className={this._classNames.ratioDenominator}>
+                    {' / ' + convertToLocaleString(total, culture)}
                   </span>
                 )}
               </div>
             )}
             {showNumber && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{getChartData()}</strong>
+              <div
+                className={this._classNames.ratioNumerator}
+                {...getAccessibleDataObject(data!.chartDataAccessibilityData)}
+              >
+                {getChartData()}
               </div>
             )}
           </div>
@@ -311,7 +315,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         ? [
             this._generateEmptyBar(
               barHeight,
-              this.props.barBackgroundColor ? this.props.barBackgroundColor : palette.neutralTertiary,
+              this.props.barBackgroundColor ? this.props.barBackgroundColor : palette.neutralLight,
             ),
           ]
         : bars,
