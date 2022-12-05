@@ -19,9 +19,7 @@
     "e2e:local": "cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
-    "start": "yarn storybook",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
