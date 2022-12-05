@@ -202,9 +202,10 @@ export class DetailsHeaderBase
 
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
-    const hasGroupExpander = groupNestingDepth! > 0;
-    const showGroupExpander = hasGroupExpander && this.props.collapseAllVisibility === CollapseAllVisibility.visible;
-    const columnIndexOffset = 1 + (showCheckbox ? 1 : 0) + (hasGroupExpander ? 1 : 0);
+    const showGroupExpander =
+      groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible;
+    // const columnIndexOffset = 1 + (showCheckbox ? 1 : 0) + (showGroupExpander ? 1 : 0);
+    const columnIndexOffset = this._computeColumnIndexOffset(showCheckbox);
 
     const isRTL = getRTL(theme);
     return (
@@ -425,6 +426,21 @@ export class DetailsHeaderBase
     this._draggedColumnIndex = -1;
   };
 
+  private _computeColumnIndexOffset = (showCheckbox: boolean) => {
+    const hasGroupExpander = this.props.groupNestingDepth! > 0;
+
+    let offset = 1;
+    if (showCheckbox) {
+      offset += 1;
+    }
+
+    if (hasGroupExpander) {
+      offset += 1;
+    }
+
+    return offset;
+  };
+
   /**
    * @returns whether or not the "Select All" checkbox column is hidden.
    */
@@ -440,7 +456,13 @@ export class DetailsHeaderBase
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
-      this._draggedColumnIndex = this._isCheckboxColumnHidden() ? itemIndex - 1 : itemIndex - 2;
+      // const { groupNestingDepth, collapseAllVisibility } = this.props;
+      // const showGroupExpander = groupNestingDepth! > 0 && collapseAllVisibility === CollapseAllVisibility.visible;
+      // const showGroupExpander = false;
+      // this._draggedColumnIndex = this._isCheckboxColumnHidden()
+      //   ? itemIndex - (showGroupExpander ? 2 : 1)
+      //   : itemIndex - (showGroupExpander ? 3 : 2);
+      this._draggedColumnIndex = itemIndex - this._computeColumnIndexOffset(!this._isCheckboxColumnHidden());
       this._getDropHintPositions();
       if (columnReorderProps.onColumnDragStart) {
         columnReorderProps.onColumnDragStart(true);
