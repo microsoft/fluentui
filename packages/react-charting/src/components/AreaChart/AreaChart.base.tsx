@@ -267,7 +267,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
       this.setState({
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         isCalloutVisible: false,
         isShowCalloutPending: true,
         lineXValue: this._xAxisRectScale(pointToHighlight),
@@ -302,7 +302,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!found) {
       this.setState({
         isCalloutVisible: false,
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         displayOfLine: InterceptVisibility.hide,
         isCircleClicked: false,
       });
@@ -471,7 +471,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       const legend: ILegend = {
         title: singleChartData.legend,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(singleChartData.legend);
         },
@@ -576,16 +576,33 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             onMouseOver={this._onRectMouseMove}
             {...points[index]!.lineOptions}
           />
-          <path
-            id={`${index}-graph-${this._uniqueIdForGraph}`}
-            d={area(singleStackedData)!}
-            fill={this._colors[index]}
-            opacity={this._opacity[index]}
-            fillOpacity={this._getOpacity(points[index]!.legend)}
-            onMouseMove={this._onRectMouseMove}
-            onMouseOut={this._onRectMouseOut}
-            onMouseOver={this._onRectMouseMove}
-          />
+          {singleStackedData.length === 1 ? (
+            <circle
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              cx={xScale(singleStackedData[0].xVal)}
+              cy={yScale(singleStackedData[0].values[1])}
+              r={6}
+              stroke={this._colors[index]}
+              strokeWidth={3}
+              fill={this._colors[index]}
+              opacity={this._opacity[index]}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
+            />
+          ) : (
+            <path
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              d={area(singleStackedData)!}
+              fill={this._colors[index]}
+              opacity={this._opacity[index]}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
+            />
+          )}
         </React.Fragment>,
       );
     });

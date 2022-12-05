@@ -1,2 +1,2 @@
-export { preset } from './just.config';
+export { preset } from './tasks';
 export * from 'just-scripts';

@@ -2,6 +2,355 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:19 GMT",
+      "tag": "@fluentui/react-components_v9.7.2",
+      "version": "9.7.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1a558639a977347b237c9134f09b47f0fc00ad48",
+            "comment": "fix: AvatarGroup's pie layout places inline items correctly in rtl."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "076ac58a921376c6ee488f10e610dc05095acbf3",
+            "comment": "chore: refactor to use makeResetStyles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "8811bf9bf2f5d2c6591ffdaa0a4024456f66bfbd",
+            "comment": "BREAKING: rename useTable->useTableFeatures, useSelection->useTableSelection, useSort->useTableSort"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "076ac58a921376c6ee488f10e610dc05095acbf3",
+            "comment": "chore: add exports for CSS extraction in Griffel"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "8607e1bc8dbc03f9416f1c24d403f04ca91cd597",
+            "comment": "feat: Export `DataGrid` as unstable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "41b0dbe63181a473ea54811fffd5a9582d7b28b6",
+            "comment": "chore: deprecates unused type UninitializedMenuListState"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "6679b1430f61182d34c0b90de33806d9624d811a",
+            "comment": "chore: Replace use of fontSize tokens with typographyStyles"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "41b0dbe63181a473ea54811fffd5a9582d7b28b6",
+            "comment": "chore: removes prop spreading on MenuList state"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "6f036a808e0d09e6395abe1f6d3046d1f7d2c28d",
+            "comment": "fix: MenuDivider thickness should be `strokeWidthThin`"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c279105c23c0f00294b59e727ffd7f726d874e2b",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ee15af6700870457f304bca6bcb4724a50b621f1",
+            "comment": "fix: Invoke `onOpenChange` callback without checking if open state has flipped"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "a002e76a91b5c53844ea69d7b7eb63be5ad48f82",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "536d01dceb058546fbd97b9118e7248df7d19f88",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "5b183163c77ca9cdba1c67185139479530f7a5b6",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "5874b65a2be89f82ab07baab183f6b19ca9af239",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "515f53fe2d85659868d85a6f56892010f0e1c6e6",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "6f450a1713c40d5429306ab1f6d76bc19e65c295",
+            "comment": "fix: focus-within attribute no longer the same as focus-visible"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "076ac58a921376c6ee488f10e610dc05095acbf3",
+            "comment": "fix: allow GriffelResetStyle to be passed to createCustomFocusIndicatorStyle"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "6679b1430f61182d34c0b90de33806d9624d811a",
+            "comment": "chore: Replace use of fontSize tokens with typographyStyles"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "178c2be4bcd691f2cf5874f771236f2e6b8c1cd5",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "28562d1701b8c814916567932b9064c677fb5268",
+            "comment": "refactor: Use Object.assign to reduce loop runtime"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "417d952edfecba732ebb670fe18a73343c8b6cb4",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "3fdfc72488fe30b83f665c7267c5e8cb802682ff",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "84a26d8111dc4bb9d3cd1edbb99691e68899d261",
+            "comment": " feat: update Option value to be a non-display value, and add an Option text prop that is required if the child is not a string"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d1c530bef46d1ddd962ee29ff8fd510475ec5c96",
+            "comment": "fix: open Combobox popup when typing"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "6679b1430f61182d34c0b90de33806d9624d811a",
+            "comment": "chore: Replace use of fontSize tokens with typographyStyles"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e19f11c2cc4e52c06d93bcd2eed8ae84572b18d1",
+            "comment": "fix: Combobox should close on blur after clicking expand icon"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "79a448b20b02bdb5b9832734e6fa19d9c82d5865",
+            "comment": "fix: Field should use aria-describedby instead of aria-errormessage"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "886907609cb066a4c08364b57a7cb718b4069434",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "df99a7d82e3ca707300a079e0050db218d6cfcce",
+            "comment": "chore: Updating Persona's docs to match implementation."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "fafaced9e47597c8ae38d68518887926082986cb",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "7f4466d1f16a45c6268d540ccd6c088e0c79dfbb",
+            "comment": "fix: Make Persona's text wrap when overflowing its container."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "77b8194cfeefddf753b473be572233fc5defe186",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "6679b1430f61182d34c0b90de33806d9624d811a",
+            "comment": "chore: Replace use of fontSize tokens with typographyStyles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "dfe430630188bb7e2fe2ddc15b5269fcfd1bf20b",
+            "comment": "fix: TableHeaderCell design fixes"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f64a67537afb35cb5007c16160d0a1deb656d875",
+            "comment": "BREAKING(useTable): `onSelectionChange` returns data object"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f7d7f82f6b3117ce163c6fee84b03c8774bed95f",
+            "comment": "docs: Update docstrings for props"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "35de934c73603a2fc9416327ab1cf89283f76c5f",
+            "comment": "fix: Various design fixes to Table components"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6f450a1713c40d5429306ab1f6d76bc19e65c295",
+            "comment": "fix: Cell actions should have correct background when row focused within"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "3ca7917d818ccde26b1dc172241f88a6e8f322b3",
+            "comment": "fix: Table row height is determined by cells"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f1a66a851248f1a2140cb387a62c19468afd3365",
+            "comment": "BREAKING: change `smaller` size to `extra-small`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "2d9a9f3147deea6d0c0a60747e1074faf47968c3",
+            "comment": "fix(TableCellLayout): Icon sizes in should match design spec"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "31d2fa0e30649e991925fec10d49ac8fae2dc585",
+            "comment": "feat: `DataGrid` supports row sorting"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "8811bf9bf2f5d2c6591ffdaa0a4024456f66bfbd",
+            "comment": "BREAKING: rename useTable->useTableFeatures, useSelection->useTableSelection, useSort->useTableSort"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6b90a6e90a71bb3ca36a6bc633d0d535ccb717e9",
+            "comment": "feat: DataGrid supports selection"
+          }
+        ],
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "3c7120c60f749da6b0c1427bbdc69320daa4e1e7",
+            "comment": "feat: add Dropdown stories"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b7bc3cad64eeb09c193b102b9497b1b01464dfeb",
+            "comment": "Added a link in the docs to the MenuButton"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "690571f25f33d5c2c63e9773e035d164a6dbeba7",
+            "comment": "fix: Remove cypress test line causing intermittent CI failures."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "109f6e6966ce703169c98134f1aedbaec17d6f93",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "536d01dceb058546fbd97b9118e7248df7d19f88",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "8607e1bc8dbc03f9416f1c24d403f04ca91cd597",
+            "comment": "docs: Improve `DataGrid` docs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "a1ed5fe8f610c82cc319add155655e9f66b3ff8e",
+            "comment": "chore: update token-pipeline scripts task alias path"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "109f6e6966ce703169c98134f1aedbaec17d6f93",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "803091ab911f810964555cedb64f7355df2d4554",
+            "comment": "chore: update default button appearance for toolbar"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "1bff9a3148961667fe516b46fead5798db794ae6",
+            "comment": "feat: add large size for toolbar"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "109f6e6966ce703169c98134f1aedbaec17d6f93",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:30 GMT",
       "tag": "@fluentui/react-components_v9.7.1",
       "version": "9.7.1",

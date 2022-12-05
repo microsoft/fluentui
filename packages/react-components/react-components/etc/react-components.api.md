@@ -5,6 +5,8 @@
 ```ts
 
 import { __css } from '@griffel/react';
+import { __resetCSS } from '@griffel/react';
+import { __resetStyles } from '@griffel/react';
 import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
@@ -631,6 +633,10 @@ import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
 
 export { __css }
+
+export { __resetCSS }
+
+export { __resetStyles }
 
 export { __styles }
 

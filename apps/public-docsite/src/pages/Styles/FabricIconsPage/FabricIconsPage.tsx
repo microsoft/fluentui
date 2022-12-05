@@ -19,8 +19,8 @@ export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props 
   return (
     <StylesAreaPage
       {...props}
-      {...FabricIconsPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...FabricIconsPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
@@ -52,7 +52,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Pivot
               onLinkClick={item => {
-                setSelectedItem(item.props.itemKey);
+                setSelectedItem(item!.props.itemKey!);
               }}
             >
               <PivotItem headerText="Fluent UI React (font)" itemKey="react-font" className={styles.iconGrid}>

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Table row height is determined by cells",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

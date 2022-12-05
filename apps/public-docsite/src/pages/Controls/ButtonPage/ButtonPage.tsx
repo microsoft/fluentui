@@ -58,14 +58,14 @@ export class ButtonPage extends React.Component<
       <ControlsAreaPage
         {...this.props}
         title="Button"
-        {...buttonPageProps[this.props.platform]}
+        {...buttonPageProps[this.props.platform!]}
         exampleKnobs={this.renderKnobs()}
-        otherSections={this._otherSections(this.props.platform) as IPageSectionProps[]}
+        otherSections={this._otherSections(this.props.platform!) as IPageSectionProps[]}
       />
     );
   }
 
-  private _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+  private _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
     switch (platform) {
       case 'ios':
         return [

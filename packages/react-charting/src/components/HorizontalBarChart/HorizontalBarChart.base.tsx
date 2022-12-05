@@ -76,16 +76,21 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
               x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
               y: points.chartData![0].horizontalBarChartdata!.y,
             },
-            color: palette.neutralTertiaryAlt,
+            color: palette.neutralLight,
           };
 
           const chartDataText = this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
+          const classNames = getClassNames(this.props.styles!, {
+            theme: this.props.theme!,
+            width: this.props.width,
+            showTriangle: !!points!.chartData![0].data,
+          });
 
           return (
-            <div key={index} className={this._classNames.items}>
-              <div className={this._classNames.items}>
+            <div key={index}>
+              <div className={classNames.items}>
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
                     {points!.chartTitle && (
@@ -171,7 +176,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       this._calloutAnchorPoint = point;
       this.setState({
         isCalloutVisible: true,
-        hoverValue: hoverValue,
+        hoverValue,
         lineColor: point.color!,
         legend: point.legend!,
         refSelected: currentHoveredElement!.refElement,
@@ -201,7 +206,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   };
 
   private _adjustProps = (): void => {
-    this._barHeight = this.props.barHeight || 8;
+    this._barHeight = this.props.barHeight || 12;
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       width: this.props.width,
@@ -240,7 +245,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         return (
           <div {...accessibilityData}>
             <span className={this._classNames.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
-            <span className={this._classNames.chartDataTextDenominator}>{'/' + convertToLocaleString(y, culture)}</span>
+            <span className={this._classNames.chartDataTextDenominator}>
+              {' / ' + convertToLocaleString(y, culture)}
+            </span>
           </div>
         );
       case 'percentage':
@@ -259,11 +266,14 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
 
     const benchmarkStyles = {
-      marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
-      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)',
+      left: 'calc(' + benchmarkRatio + '% - 4px)',
     };
 
-    return <div className={this._classNames.triangle} style={benchmarkStyles} />;
+    return (
+      <div className={this._classNames.benchmarkContainer}>
+        <div className={this._classNames.triangle} style={benchmarkStyles} />
+      </div>
+    );
   }
 
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {

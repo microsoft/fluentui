@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:39 GMT",
+      "tag": "@fluentui/react-utilities_v9.2.2",
+      "version": "9.2.2",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "109f6e6966ce703169c98134f1aedbaec17d6f93",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:30 GMT",
       "tag": "@fluentui/react-utilities_v9.2.2",
       "version": "9.2.2",

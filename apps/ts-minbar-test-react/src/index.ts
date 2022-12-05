@@ -1,10 +1,17 @@
-import config from '@fluentui/scripts/config';
 import * as path from 'path';
+
 import {
   addResolutionPathsForProjectPackages,
   packProjectPackages,
 } from '@fluentui/scripts/projects-test/packPackages';
-import { prepareTempDirs, log, shEcho, TempPaths, generateFiles } from '@fluentui/scripts/projects-test/utils';
+import {
+  prepareTempDirs,
+  log,
+  shEcho,
+  TempPaths,
+  workspaceRoot,
+  generateFiles,
+} from '@fluentui/scripts/projects-test/utils';
 
 const tsVersion = '3.9';
 const testName = 'ts-minbar-react';
@@ -14,7 +21,7 @@ async function performTest() {
   const logger = log(`test:${testName}`);
 
   try {
-    const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../files'));
+    const scaffoldPathRoot = path.resolve(__dirname, '../files');
 
     tempPaths = prepareTempDirs(`${testName}-`);
     logger(`✔️ Temporary directories created under ${tempPaths.root}`);
@@ -31,14 +38,14 @@ async function performTest() {
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
     logger(`✔️ Dependencies were installed`);
 
-    const lernaRoot = config.paths.allPackages();
+    const lernaRoot = workspaceRoot;
     const packedPackages = await packProjectPackages(logger, lernaRoot, ['@fluentui/react']);
     await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
     await shEcho(`yarn add ${packedPackages['@fluentui/react']}`, tempPaths.testApp);
     logger(`✔️ Fluent UI packages were added to dependencies`);
 
-    generateFiles(scaffoldPath(), tempPaths.testApp);
+    generateFiles(scaffoldPathRoot, tempPaths.testApp);
     logger(`✔️ Source and configs were copied`);
 
     await shEcho(`npx npm-which yarn`);
