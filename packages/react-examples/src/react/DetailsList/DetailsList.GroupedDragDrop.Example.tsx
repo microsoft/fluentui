@@ -221,6 +221,7 @@ export class DetailsListGroupedDragDropExample extends React.Component<{}, IDeta
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
         this._draggedItem = item;
         this._draggedIndex = itemIndex!;
+        // event?.stopPropagation();
       },
       onDragEnd: (item?: any, event?: DragEvent) => {
         this._draggedItem = undefined;
