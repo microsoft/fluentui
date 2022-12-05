@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Thu, 17 Nov 2022 23:05:45 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.16)
+
+Mon, 05 Dec 2022 18:29:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.15..@fluentui/react-select_v9.0.0-beta.16)
+
+### Changes
+
+- chore: Replace use of fontSize tokens with typographyStyles ([PR #25727](https://github.com/microsoft/fluentui/pull/25727) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.10 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.15)
 

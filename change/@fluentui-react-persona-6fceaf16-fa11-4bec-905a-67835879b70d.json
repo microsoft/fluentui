@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Updating Persona's docs to match implementation.",
-  "packageName": "@fluentui/react-persona",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

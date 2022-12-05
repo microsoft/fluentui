@@ -2,6 +2,33 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:20 GMT",
+      "tag": "@fluentui/react-button_v9.1.10",
+      "version": "9.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "076ac58a921376c6ee488f10e610dc05095acbf3",
+            "comment": "chore: refactor to use makeResetStyles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.3.2",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:34 GMT",
       "tag": "@fluentui/react-button_v9.1.9",
       "version": "9.1.9",

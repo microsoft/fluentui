@@ -2,6 +2,35 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:36 GMT",
+      "tag": "@fluentui/react-theme_v9.1.3",
+      "version": "9.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "28562d1701b8c814916567932b9064c677fb5268",
+            "comment": "refactor: Use Object.assign to reduce loop runtime"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "417d952edfecba732ebb670fe18a73343c8b6cb4",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "a1ed5fe8f610c82cc319add155655e9f66b3ff8e",
+            "comment": "chore: update token-pipeline scripts task alias path"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:50 GMT",
       "tag": "@fluentui/react-theme_v9.1.2",
       "version": "9.1.2",

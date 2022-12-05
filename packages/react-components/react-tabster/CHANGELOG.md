@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 17 Nov 2022 23:05:49 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.3.2)
+
+Mon, 05 Dec 2022 18:29:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.3.1..@fluentui/react-tabster_v9.3.2)
+
+### Patches
+
+- fix: focus-within attribute no longer the same as focus-visible ([PR #25790](https://github.com/microsoft/fluentui/pull/25790) by lingfangao@hotmail.com)
+- fix: allow GriffelResetStyle to be passed to createCustomFocusIndicatorStyle ([PR #25216](https://github.com/microsoft/fluentui/pull/25216) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.1.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.3.1)
 

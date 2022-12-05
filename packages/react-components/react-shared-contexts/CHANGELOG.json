@@ -2,6 +2,29 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:29 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.1.2",
+      "version": "9.1.2",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "536d01dceb058546fbd97b9118e7248df7d19f88",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:46 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.1.1",
       "version": "9.1.1",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": " feat: update Option value to be a non-display value, and add an Option text prop that is required if the child is not a string",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
