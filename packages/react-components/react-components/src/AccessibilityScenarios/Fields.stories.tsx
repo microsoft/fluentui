@@ -72,13 +72,11 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
   return (
     <>
       {isAlerting ? (
-        <div role="alert" style={{ color: 'red' }} id={`${id}Errors`}>
+        <div role="alert" id={`${id}Errors`}>
           {children}
         </div>
       ) : (
-        <div style={{ color: 'green' }} id={`${id}Errors`}>
-          {children}
-        </div>
+        <div id={`${id}Errors`}>{children}</div>
       )}
     </>
   );
