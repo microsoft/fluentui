@@ -68,16 +68,18 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
     [floatingAction, selectableRef],
   );
 
-  const interactive = Boolean(
-    props.onClick ||
-      props.onDoubleClick ||
-      props.onMouseUp ||
-      props.onMouseDown ||
-      props.onPointerUp ||
-      props.onPointerDown ||
-      props.onTouchStart ||
-      props.onTouchEnd,
-  );
+  const interactive = ([
+    'onClick',
+    'onDoubleClick',
+    'onMouseUp',
+    'onMouseDown',
+    'onPointerUp',
+    'onPointerDown',
+    'onTouchStart',
+    'onTouchEnd',
+    'onDragStart',
+    'onDragEnd',
+  ] as (keyof React.HTMLAttributes<HTMLElement>)[]).some(prop => !!props[prop]);
 
   const focusAttributes = useCardFocusAttributes(props, { interactive });
   const selectableA11yProps = {
