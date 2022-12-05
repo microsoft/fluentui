@@ -1,5 +1,5 @@
 import { IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
-import { FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
   const { className, width, barHeight, shouldHighlight, theme, href } = props;
@@ -19,26 +19,27 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     },
     chart: {
       width: '100%',
-      height: barHeight ? barHeight : 16,
+      height: barHeight ? barHeight : 12,
+      display: 'block',
     },
     chartTitle: {
       ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '3px',
     },
     chartTitleLeft: {
-      fontWeight: FontWeights.bold,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
+      color: '#171717',
+      marginBottom: '5px',
     },
     singleChartRoot: {
       width: width ? width : '100%',
       display: 'flex',
       flexDirection: 'column',
-      marginBottom: '16px',
+      marginBottom: '10px',
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
@@ -51,6 +52,15 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
           strokeWidth: '2px',
         },
       },
+    },
+    ratioNumerator: {
+      fontSize: FontSizes.medium,
+      fontWeight: FontWeights.semibold,
+      color: theme.palette.neutralPrimary,
+    },
+    ratioDenominator: {
+      fontSize: FontSizes.medium,
+      color: theme.palette.neutralPrimary,
     },
     placeHolderOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
