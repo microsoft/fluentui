@@ -79,7 +79,7 @@ export const useCardSelectable = (
     const selectableCheckboxProps: CardSlots['checkbox'] = {};
 
     if (referenceId) {
-      selectableCheckboxProps['aria-describedby'] = referenceId;
+      selectableCheckboxProps['aria-labelledby'] = referenceId;
     } else if (referenceLabel) {
       selectableCheckboxProps['aria-label'] = referenceLabel;
     }

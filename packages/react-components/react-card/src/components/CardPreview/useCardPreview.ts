@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
 import { useCardContext_unstable } from '../Card/CardContext';
+import { cardPreviewClassNames } from './useCardPreviewStyles';
 
 /**
  * Create the state required to render CardPreview.
@@ -25,11 +26,17 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
       return;
     }
 
-    if (previewRef.current) {
-      const img = previewRef.current.querySelector('img');
+    if (previewRef.current && previewRef.current.parentNode) {
+      const img = previewRef.current.parentNode.querySelector<HTMLImageElement>(`.${cardPreviewClassNames.root} > img`);
 
-      if (img && img.alt) {
-        setReferenceLabel(img.alt);
+      if (img) {
+        const ariaLabel = img.getAttribute('aria-label');
+
+        if (img.alt) {
+          setReferenceLabel(img.alt);
+        } else if (ariaLabel) {
+          setReferenceLabel(ariaLabel);
+        }
       }
     }
   }, [setReferenceLabel, referenceLabel, previewRef]);

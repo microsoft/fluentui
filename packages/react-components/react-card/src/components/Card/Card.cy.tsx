@@ -4,68 +4,106 @@ import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
-import { Card, CardFooter, CardHeader, cardClassNames } from '@fluentui/react-card';
+import {
+  Card,
+  CardFooter,
+  CardHeader,
+  cardClassNames,
+  cardHeaderClassNames,
+  cardPreviewClassNames,
+  CardPreview,
+} from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-const CardSample = (props: CardProps) => {
-  const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
 
-  const powerpointLogoURL = ASSET_URL + '/stories/assets/powerpoint_logo.svg';
-
-  return (
-    <>
-      <p tabIndex={0} id="before">
-        Before
-      </p>
-      <Card id="card" {...props}>
-        <CardHeader
-          image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
-          header={<b>App Name</b>}
-          description={<span>Developer</span>}
-        />
-        <div>
-          Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar
-          plum.
-        </div>
-        <CardFooter>
-          <Button id="open-button" appearance="primary">
-            Open
-          </Button>
-          <Button id="close-button" appearance="outline">
-            Close
-          </Button>
-        </CardFooter>
-      </Card>
-      <p tabIndex={0} id="after">
-        After
-      </p>
-    </>
-  );
+  return `${ASSET_URL}${asset}`;
 };
 
-const CardSampleNoActions = (props: CardProps) => {
-  return (
-    <>
-      <p tabIndex={0} id="before">
-        Before
-      </p>
-      <Card id="card" {...props}>
-        <CardHeader header={<b>App Name</b>} description={<span>Developer</span>} />
-        <div>
-          Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar
-          plum.
-        </div>
-      </Card>
-      <p tabIndex={0} id="after">
-        After
-      </p>
-    </>
-  );
-};
+const CardSample = (props: CardProps) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+
+    <Card id="card" {...props}>
+      <CardHeader
+        image={<img src={resolveAsset('powerpoint_logo.svg')} alt="Microsoft PowerPoint logo" />}
+        header={<b>App Name</b>}
+        description={<span>Developer</span>}
+      />
+
+      <div>
+        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      </div>
+
+      <CardFooter>
+        <Button id="open-button" appearance="primary">
+          Open
+        </Button>
+
+        <Button id="close-button" appearance="outline">
+          Close
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
+
+const CardWithPreview = (props: CardProps) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+
+    <Card id="card" {...props}>
+      <CardPreview>
+        <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document" />
+      </CardPreview>
+
+      <CardFooter>
+        <Button id="open-button" appearance="primary">
+          Open
+        </Button>
+
+        <Button id="close-button" appearance="outline">
+          Close
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
+
+const CardSampleNoActions = (props: CardProps) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+    <Card id="card" {...props}>
+      <CardHeader header={<b>App Name</b>} description={<span>Developer</span>} />
+      <div>
+        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      </div>
+    </Card>
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
 
 describe('Card', () => {
   describe('focus behaviors', () => {
@@ -372,6 +410,27 @@ describe('Card', () => {
       cy.get(`.${cardClassNames.floatingAction} .custom-select-slot`).should('not.be.checked');
       cy.get(`.${cardClassNames.root}`).realClick();
       cy.get(`.${cardClassNames.floatingAction} .custom-select-slot`).should('be.checked');
+    });
+
+    it('should sync selectable aria-labelledby with card header id', () => {
+      mountFluent(<CardSample selected />);
+
+      cy.get(`.${cardHeaderClassNames.header}`).should('have.attr', 'id');
+      cy.get(`.${cardHeaderClassNames.header}`).then(header => {
+        cy.get(`.${cardClassNames.checkbox}`).then(slot => {
+          expect(header.attr('id')).equals(slot.attr('aria-labelledby'));
+        });
+      });
+    });
+
+    it('should sync selectable aria-label with card preview alt', () => {
+      mountFluent(<CardWithPreview selected />);
+
+      cy.get(`.${cardPreviewClassNames.root} img`).then(img => {
+        cy.get(`.${cardClassNames.checkbox}`).then(slot => {
+          expect(img.attr('alt')).equals(slot.attr('aria-label'));
+        });
+      });
     });
   });
 });
