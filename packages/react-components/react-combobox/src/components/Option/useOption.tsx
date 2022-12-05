@@ -7,18 +7,28 @@ import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
-function getValueString(value: string | undefined, children: React.ReactNode) {
-  if (value) {
-    return value;
+function getTextString(text: string | undefined, children: React.ReactNode) {
+  if (text !== undefined) {
+    return text;
   }
 
-  let valueString = '';
+  let textString = '';
+  let hasNonStringChild = false;
   React.Children.forEach(children, child => {
     if (typeof child === 'string') {
-      valueString += child;
+      textString += child;
+    } else {
+      hasNonStringChild = true;
     }
   });
-  return valueString;
+
+  // warn if an Option has non-string children and no text prop
+  if (hasNonStringChild) {
+    // eslint-disable-next-line no-console
+    console.warn('Provide a `text` prop to Option components when they contain non-string children.');
+  }
+
+  return textString;
 }
 
 /**
@@ -31,17 +41,19 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { disabled, value } = props;
+  const { children, disabled, text, value } = props;
   const optionRef = React.useRef<HTMLElement>(null);
-  const optionValue = getValueString(value, props.children);
+  const optionText = getTextString(text, children);
+  const optionValue = value ?? optionText;
 
   // use the id if provided, otherwise use a generated id
   const id = useId('fluent-option', props.id);
 
   // data used for context registration & events
-  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, value: optionValue }), [
+  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, text: optionText, value: optionValue }), [
     id,
     disabled,
+    optionText,
     optionValue,
   ]);
 

@@ -1,7 +1,7 @@
 import path from 'path';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 
-import config from '../../../config';
+import config from '../../config';
 
 export const isCycleToSkip = (proposedCycle: string[], benignCycles: string[][]) => {
   return benignCycles.some(benignCycle => {

@@ -1,6 +1,8 @@
 require('../babel/register');
 
 const cp = require('child_process');
+const path = require('path');
+const { workspaceRoot } = require('../monorepo');
 
 function getCurrentHash() {
   try {
@@ -20,12 +22,10 @@ function getCurrentHash() {
   return '';
 }
 
-const config = require('../config').default;
-
-const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
+const { compilerOptions } = require(path.resolve(workspaceRoot, 'packages/fluentui/docs/tsconfig.json'));
 
 require('tsconfig-paths').register({
-  baseUrl: config.path_base,
+  baseUrl: workspaceRoot,
   paths: compilerOptions.paths,
 });
 

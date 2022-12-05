@@ -208,6 +208,10 @@ export {
   useTableCellLayoutStyles_unstable,
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
+  useTableFeatures,
+  useTableSelection,
+  useTableSort,
+  createColumn,
   DataGridCell,
   dataGridCellClassNames,
   useDataGridCellStyles_unstable,
@@ -243,10 +247,6 @@ export {
   useDataGridSelectionCell_unstable,
   renderDataGridSelectionCell_unstable,
   dataGridSelectionCellClassNames,
-  useTable,
-  useSelection,
-  useSort,
-  createColumn,
 } from '@fluentui/react-table';
 
 export type {

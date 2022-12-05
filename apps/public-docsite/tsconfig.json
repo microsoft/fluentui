@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
     "outDir": "lib",
     "target": "es5",
@@ -6,18 +7,12 @@
     "module": "esnext",
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
     "preserveConstEnums": true,
-    "noImplicitThis": true,
     "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "lib": ["es2015", "dom"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"]
+    "lib": ["ES2015", "DOM"],
+    "types": ["webpack-env", "custom-global", "node"]
   },
   "include": ["src"]
 }

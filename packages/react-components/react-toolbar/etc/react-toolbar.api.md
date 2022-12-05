@@ -64,7 +64,7 @@ export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & Divide
 
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
-    size?: 'small' | 'medium';
+    size?: 'small' | 'medium' | 'large';
     vertical?: boolean;
     checkedValues?: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;

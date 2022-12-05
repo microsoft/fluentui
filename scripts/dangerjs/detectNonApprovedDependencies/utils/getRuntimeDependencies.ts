@@ -1,8 +1,5 @@
 import { spawnSync } from 'child_process';
-
-import config from '../../../config';
-
-const { paths } = config;
+import { workspaceRoot } from '../../utils';
 
 /**
  * It is necessary to run corresponding Gulp task in a separate process.
@@ -14,7 +11,7 @@ const getRuntimeDependencies = (packageName: string) => {
   const dependencyRegex = /^dependency:\s+(.*)$/;
   const result = spawnSync(`yarn gulp test:dependencies:list --prefix="dependency: " --package=${packageName}`, {
     shell: true,
-    cwd: paths.base(),
+    cwd: workspaceRoot,
     stdio: 'pipe',
     encoding: 'utf-8',
   });

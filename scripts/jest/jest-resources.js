@@ -3,9 +3,8 @@ const path = require('path');
 const resolve = require('resolve');
 const { resolveCwd } = require('just-scripts');
 
-const merge = require('../tasks/merge');
 const { findRepoDeps } = require('../monorepo');
-const { findConfig } = require('../utils');
+const { findConfig, merge } = require('../utils');
 
 const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);

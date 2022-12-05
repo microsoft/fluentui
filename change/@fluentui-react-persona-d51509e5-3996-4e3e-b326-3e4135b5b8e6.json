@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Make Persona's text wrap when overflowing its container.",
+  "packageName": "@fluentui/react-persona",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
