@@ -18,9 +18,7 @@ export const useCardSelectable = (
   const checkboxRef = React.useRef<HTMLInputElement>(null);
   const selectableRef = React.useRef<HTMLDivElement>(null);
 
-  const isSelectable = [selected, defaultSelected, onSelectionChange].some(bool => typeof bool !== 'undefined');
-
-  const hasFloatingActionSlot = Boolean(floatingAction);
+  const isSelectable = [selected, defaultSelected, onSelectionChange].some(prop => typeof prop !== 'undefined');
 
   const [isCardSelected, setIsCardSelected] = React.useState(false);
   const [isSelectFocused, setIsSelectFocused] = React.useState(false);
@@ -72,7 +70,7 @@ export const useCardSelectable = (
   );
 
   const checkboxSlot = React.useMemo(() => {
-    if (!isSelectable || hasFloatingActionSlot) {
+    if (!isSelectable || !!floatingAction) {
       return;
     }
 
@@ -95,7 +93,7 @@ export const useCardSelectable = (
         ...selectableCheckboxProps,
       },
     });
-  }, [isSelectable, hasFloatingActionSlot, checkbox, isCardSelected, referenceId, referenceLabel, onChangeHandler]);
+  }, [isSelectable, floatingAction, referenceId, referenceLabel, checkbox, isCardSelected, onChangeHandler]);
 
   const selectableCardProps = React.useMemo(() => {
     if (!isSelectable) {
