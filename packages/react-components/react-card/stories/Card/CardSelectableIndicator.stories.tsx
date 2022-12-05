@@ -150,7 +150,7 @@ SelectableIndicator.parameters = {
   docs: {
     description: {
       story: `By default, selectable cards do not include any element to represent its selection state. For example,
-      checkboxes can be composed together as an additional element by using the \`floatingIndicator\` property.`,
+      checkboxes can be composed together as an additional element by using the \`floatingAction\` property.`,
     },
   },
 };
