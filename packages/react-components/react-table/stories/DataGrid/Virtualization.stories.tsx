@@ -161,20 +161,9 @@ export const Virtualization = () => {
           )}
         </DataGridRow>
       </DataGridHeader>
-      <DataGridVirtualizedBody
-        itemSize={50}
-        height={400}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          overflowAnchor: 'none',
-          overflowY: 'auto',
-          width: '100%',
-          height: '100%',
-        }}
-      >
-        {({ item, rowId }: RowState<Item>) => (
-          <DataGridRow key={rowId}>
+      <DataGridVirtualizedBody itemSize={50} height={400}>
+        {({ item, rowId }: RowState<Item>, style) => (
+          <DataGridRow key={rowId} style={style}>
             {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}

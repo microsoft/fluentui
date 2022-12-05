@@ -15,24 +15,14 @@ export const useDataGridVirtualizedBody_unstable = (
   props: DataGridVirtualizedBodyProps,
   ref: React.Ref<HTMLElement>,
 ): DataGridVirtualizedBodyState => {
-  const { height: maxHeight, itemSize } = props;
+  const { height, itemSize } = props;
+  const childrenFn = props.children;
   const baseState = useDataGridBody_unstable(props, ref);
 
   return {
     ...baseState,
-    root: {
-      ...baseState.root,
-      style: {
-        maxHeight,
-        display: 'flex',
-        flexDirection: 'column',
-        overflowAnchor: 'none',
-        overflowY: 'auto',
-        width: '100%',
-        height: '100%',
-        ...baseState.root.style,
-      },
-    },
     itemSize,
+    height,
+    childrenFn,
   };
 };
