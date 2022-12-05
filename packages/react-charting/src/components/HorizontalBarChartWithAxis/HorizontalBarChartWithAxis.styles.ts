@@ -9,16 +9,16 @@ export const getStyles = (props: IHorizontalBarChartWithAxisStyleProps): IHorizo
 
     xAxisTicks: [],
 
-    yAxisTicks: [
-      {
-        transform: 'scaleX(-1)',
-      },
-    ],
-    yAxisDomain: [
-      {
-        transform: 'scaleX(-1)',
-      },
-    ],
+    // yAxisTicks: [
+    //   {
+    //     transform: 'scaleX(-1)',
+    //   },
+    // ],
+    // yAxisDomain: [
+    //   {
+    //     transform: 'scaleX(-1)',
+    //   },
+    // ],
 
     tooltip: {
       ...theme.fonts.medium,

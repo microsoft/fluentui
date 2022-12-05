@@ -41,6 +41,7 @@ enum CircleVisbility {
 }
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
+  xStart: number;
   selectedLegendTitle: string;
   dataPointCalloutProps?: IHorizontalBarChartWithAxisDataPoint; // define this in hover and focus
   /**
@@ -50,6 +51,8 @@ export interface IHorizontalBarChartWithAxisState extends IBasestate {
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  tooltipElement?: any;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -75,6 +78,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
+  //private cartesianChartElement: SVGElement | null;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -91,6 +95,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       activeXdataPoint: null,
       YValueHover: [],
       hoverXValue: '',
+      xStart: 0,
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
@@ -148,6 +153,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         {...this.props}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
+        startFromX={this.state.xStart}
         xAxisType={this._xAxisType}
         yAxisType={this._yAxisType}
         stringDatasetForYAxisDomain={this._yAxisLabels}
@@ -442,6 +448,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       YValueHover: [],
       hoverXValue: '',
     });
+    this._onTooltipOut();
   };
 
   private _onBarFocus = (
@@ -489,10 +496,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
         .nice()
-        .range([this.margins.left!, containerWidth - this.margins.right!]);
+        .range([this.margins.left! + this.state.xStart, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
         .domain([0, yMax])
-        .range([containerHeight - this.margins.bottom! - this._barWidth / 2, this.margins.top! + this._barWidth / 2]);
+        .range([containerHeight - this.margins.bottom!, this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
       const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
@@ -503,7 +510,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
       const xBarScale = d3ScaleLinear()
         .domain([0, xMax])
-        .range([this.margins.left!, containerWidth - this.margins.right!]);
+        .range([this.margins.left! + this.state.xStart, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
     }
   };
@@ -536,12 +543,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return (
         <rect
           key={point.x}
-          x={this.margins.left!}
+          x={this.margins.left! + this.state.xStart}
           className={this._classNames.opacityChangeOnHover}
-          y={yBarScale(point.y)}
+          y={yBarScale(point.y) - this._barWidth / 2}
           //width={this._barWidth}
           data-is-focusable={!this.props.hideTooltip}
-          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
+          width={Math.max(xBarScale(point.x), 0) - this.margins.left! - this.state.xStart}
           height={this._barWidth}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
@@ -561,30 +568,22 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!this.props.showXAxisLablesTooltip) {
       try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
       } catch (e) {}
     }
     // Used to display tooltip at x axis labels.
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
       const yAxisElement = d3Select(yElement).call(yBarScale);
       try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        //document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
       } catch (e) {}
-      const xtooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        xAxis: xAxisElement,
-      };
-
       const ytooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
         yAxis: yAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(xtooltipProps);
       yAxisElement && this._tooltipOfYAxislabels(ytooltipProps);
     }
     return bars;
@@ -606,19 +605,40 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
     for (let i = 0; i < tickObjectLength; i++) {
       const d1 = tickObject[i];
-      d3Select(d1)
-        .on('mouseover', d => {
-          div.style('opacity', 0.9);
-          div
-            .html(originalDataArray[i])
-            .style('left', d3Event.pageX + 'px')
-            .style('top', d3Event.pageY - 28 + 'px');
-        })
-        .on('mouseout', d => {
-          div.style('opacity', 0);
+      d3Select(d1).on('mouseover', d => {
+        div.style('opacity', 0.9);
+        div
+          .html(originalDataArray[i])
+          .style('left', d3Event.pageX + 'px')
+          .style('top', d3Event.pageY - 28 + 'px');
+        this.setState({
+          tooltipElement: div,
+          xStart: div.node()!.getBoundingClientRect().width,
         });
+      });
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onTooltipOut = (): void => {
+    this.state.tooltipElement.style('opacity', 0);
+    this.setState({
+      xStart: 0,
+      tooltipElement: undefined,
+    });
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onTooltipHover = (div: any, text: string): void => {
+    div.style('opacity', 0.9);
+    div
+      .html(text)
+      .style('left', d3Event.pageX + 'px')
+      .style('top', d3Event.pageY - 28 + 'px');
+    this.setState({
+      tooltipElement: div,
+      xStart: div.node()!.getBoundingClientRect().width,
+    });
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createStringBars(
@@ -637,9 +657,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return (
         <rect
           key={point.x}
-          x={this.margins.left! - this._barWidth / 2}
-          y={yBarScale(point.y)}
-          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
+          x={this.margins.left! + this.state.xStart}
+          y={yBarScale(point.y) + this._barWidth / 2}
+          width={Math.max(xBarScale(point.x), 0) - this.margins.left! - this.state.xStart}
           height={this._barWidth}
           aria-label="Horizontal bar chart with Axis"
           role="text"
@@ -654,38 +674,30 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
           fill={point.color ? point.color : colorScale(point.x)}
-          transform={`translate(${0.5 * (yBarScale.bandwidth() - this._barWidth)}, 0)`}
+          //transform={`translate(${0.5 * (yBarScale.bandwidth() - this._barWidth)}, 0)`}
         />
       );
     });
-
+    d3Select(xElement).select('.path').style('stroke-opacity', 1);
     // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
+    if (!this.props.showYAxisLablesTooltip) {
       try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        //document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
       } catch (e) {}
     }
     // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
+    if (this.props.showYAxisLablesTooltip) {
       const yAxisElement = d3Select(yElement).call(yBarScale);
       try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        //document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
       } catch (e) {}
-      const xtooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        xAxis: xAxisElement,
-      };
-
       const ytooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
         yAxis: yAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(xtooltipProps);
       yAxisElement && this._tooltipOfYAxislabels(ytooltipProps);
     }
     return bars;

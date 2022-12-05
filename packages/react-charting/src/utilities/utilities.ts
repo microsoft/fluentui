@@ -346,10 +346,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
-    .range([
-      containerHeight - margins.bottom! - barWidth / 2,
-      margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0) + barWidth / 2,
-    ]);
+    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis
     .tickPadding(tickPadding)
@@ -434,7 +431,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
     margins,
     yAxisTickFormat,
     yAxisElement,
-    yAxisPadding = 0,
+    yAxisPadding = 0.1,
   } = yAxisParams;
   const yAxisCount = 8;
   const yAxistickSize = 8;
@@ -445,7 +442,6 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
     .padding(yAxisPadding);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis
-    .tickSize(yAxistickSize)
     .tickPadding(tickPadding)
     .ticks(yAxisCount)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!))
@@ -881,6 +877,7 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
+  shiftX: number,
 ): IDomainNRange {
   const xMax = d3Max(
     points,
@@ -891,8 +888,8 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   //   points,
   //   (point: IVerticalBarChartDataPoint | IHorizontalBarChartWithAxisDataPoint) => point.x as number,
   // )!;
-  const rMin = margins.left!;
-  const rMax = containerWidth - margins.right!;
+  const rMin = margins.left! + shiftX;
+  const rMax = containerWidth - margins.right! - shiftX;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
@@ -996,6 +993,7 @@ export function getDomainNRangeValues(
   xAxisType: XAxisTypes,
   barWidth: number,
   tickValues: Date[] | number[] | undefined,
+  shiftX: number,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -1011,7 +1009,7 @@ export function getDomainNRangeValues(
         domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
         break;
       case ChartTypes.HorizontalBarChartWithAxis:
-        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL);
+        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };

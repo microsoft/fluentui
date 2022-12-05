@@ -51,6 +51,7 @@ export interface ICartesianChartState {
    * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
    */
   _removalValueForTextTuncate?: number;
+  startFromX: number;
 }
 
 /**
@@ -74,6 +75,19 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
 
+  public static getDerivedStateFromProps(
+    nextProps: IModifiedCartesianChartProps,
+    previousState: ICartesianChartState,
+  ): Partial<ICartesianChartState> | null {
+    if (nextProps.startFromX && nextProps.startFromX !== previousState.startFromX) {
+      return {
+        startFromX: nextProps.startFromX,
+      };
+    }
+
+    return null;
+  }
+
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
     this.state = {
@@ -83,6 +97,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       _height: this.props.height || 350,
       _removalValueForTextTuncate: 0,
       isRemoveValCalculated: true,
+      startFromX: 0,
     };
     this.idForGraph = getId('chart_');
     /**
@@ -153,17 +168,20 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
-
+    const margins = this.margins;
+    //margins.left! += this.state.startFromX;
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
-        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
+        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : margins,
         this.state.containerWidth,
         chartType,
         this._isRtl,
         this.props.xAxisType,
         this.props.barwidth!,
         this.props.tickValues!,
+        // This is only used for Horizontal Bar Chart for y as string axis
+        this.state.startFromX,
       ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
@@ -176,7 +194,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     };
 
     const YAxisParams = {
-      margins: this.margins,
+      margins: margins,
       containerWidth: this.state.containerWidth,
       containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
       yAxisElement: this.yAxisElement,
@@ -286,9 +304,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       height: this.state.containerHeight,
     };
 
-    const yAxisStartPoint =
-      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis ? this.props.barwidth! / 2 : 0;
-
     const children = this.props.children({
       ...this.state,
       xScale,
@@ -309,7 +324,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         className={this._classNames.root}
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
-        onMouseLeave={this.props.onChartMouseLeave}
+        onMouseLeave={this._onChartLeave}
       >
         <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
           <svg
@@ -326,7 +341,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               id={`xAxisGElement${this.idForGraph}`}
               // To add wrap of x axis lables feature, need to remove word height from svg height.
               transform={`translate(0, ${
-                svgDimensions.height - this.margins.bottom! - this.state._removalValueForTextTuncate!
+                svgDimensions.height - margins.bottom! - this.state._removalValueForTextTuncate!
               })`}
               className={this._classNames.xAxis}
             />
@@ -336,8 +351,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }}
               id={`yAxisGElement${this.idForGraph}`}
               transform={`translate(${
-                this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left!
-              }, ${yAxisStartPoint})`}
+                this._isRtl ? svgDimensions.width - margins.right! : margins.left! + this.state.startFromX
+              }, 0)`}
               className={this._classNames.yAxis}
             />
             {children}
@@ -570,5 +585,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         this.xAxisElement,
         this.yAxisElement,
       );
+  };
+
+  private _onChartLeave = (): void => {
+    this.setState({
+      startFromX: 0,
+    });
+    this.props.onChartMouseLeave && this.props.onChartMouseLeave();
   };
 }

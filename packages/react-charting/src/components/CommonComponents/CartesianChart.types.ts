@@ -539,4 +539,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   /** Padding before first bar/line-point and after last bar/line-point */
   xAxisOuterPadding?: number;
+
+  //starting point of x axis
+  startFromX?: number;
 }
