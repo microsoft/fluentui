@@ -71,7 +71,6 @@
     "@fluentui/react-tooltip": "^9.1.2",
     "@fluentui/react-utilities": "^9.2.2",
     "@fluentui/react-text": "^9.1.7",
-    "@fluentui/virtualizer": "9.0.0-alpha.0",
     "@griffel/react": "^1.4.2",
     "tslib": "^2.1.0"
   },
