@@ -51,7 +51,7 @@ export type DataGridContextValue = HeadlessTableState<any> & {
  * DataGrid Props
  */
 export type DataGridProps = TableProps &
-  Pick<DataGridContextValue, 'items' | 'columns'> &
+  Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> &
   Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
   Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
@@ -69,5 +69,5 @@ export type DataGridProps = TableProps &
  */
 export type DataGridState = TableState & { tableState: HeadlessTableState<unknown> } & Pick<
     DataGridContextValue,
-    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance'
+    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'
   >;
