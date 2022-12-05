@@ -5,6 +5,18 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 
 import type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots } from './Card.types';
 
+/**
+ * @internal
+ *
+ * Create the state related to selectable cards.
+ *
+ * This internal hook controls all the logic for selectable cards and is
+ * intended to be used alongside with useCard_unstable.
+ *
+ * @param props - props from this instance of Card
+ * @param a11yProps - accessibility props shared between elements of the card
+ * @param ref - reference to the root element of Card
+ */
 export const useCardSelectable = (
   props: CardProps,
   a11yProps: Pick<CardContextValue['selectableA11yProps'], 'referenceId' | 'referenceLabel'>,

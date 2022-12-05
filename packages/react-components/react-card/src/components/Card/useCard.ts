@@ -13,24 +13,40 @@ const focusMap = {
   'tab-only': 'unlimited',
 } as const;
 
-type UseCardFocusAttributesOptions = {
-  interactive: boolean;
-};
-
-const useCardFocusAttributes = ({ focusMode = 'off' }: CardProps, { interactive }: UseCardFocusAttributesOptions) => {
-  const internalFocusMode = interactive ? 'no-tab' : focusMode;
+/**
+ * Create the state for interactive cards.
+ *
+ * This internal hook defines if the card is interactive
+ * and control focus properties based on that.
+ *
+ * @param props - props from this instance of Card
+ */
+const useCardInteractive = ({ focusMode, ...props }: CardProps) => {
+  const interactive = ([
+    'onClick',
+    'onDoubleClick',
+    'onMouseUp',
+    'onMouseDown',
+    'onPointerUp',
+    'onPointerDown',
+    'onTouchStart',
+    'onTouchEnd',
+    'onDragStart',
+    'onDragEnd',
+  ] as (keyof React.HTMLAttributes<HTMLElement>)[]).some(prop => !!props[prop]);
 
   const groupperAttrs = useFocusableGroup({
-    tabBehavior: focusMap[internalFocusMode],
+    tabBehavior: focusMap[interactive ? 'no-tab' : 'off'],
   });
 
-  if (internalFocusMode === 'off') {
-    return null;
-  }
-
-  return {
+  const interactiveFocusAttributes = {
     ...groupperAttrs,
     tabIndex: 0,
+  };
+
+  return {
+    interactive,
+    focusAttributes: interactive ? interactiveFocusAttributes : null,
   };
 };
 
@@ -68,26 +84,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
     [floatingAction, selectableRef],
   );
 
-  const interactive = ([
-    'onClick',
-    'onDoubleClick',
-    'onMouseUp',
-    'onMouseDown',
-    'onPointerUp',
-    'onPointerDown',
-    'onTouchStart',
-    'onTouchEnd',
-    'onDragStart',
-    'onDragEnd',
-  ] as (keyof React.HTMLAttributes<HTMLElement>)[]).some(prop => !!props[prop]);
-
-  const focusAttributes = useCardFocusAttributes(props, { interactive });
-  const selectableA11yProps = {
-    setReferenceId,
-    referenceId,
-    referenceLabel,
-    setReferenceLabel,
-  };
+  const { interactive, focusAttributes } = useCardInteractive(props);
 
   return {
     appearance,
@@ -97,7 +94,12 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
     selectable,
     selectFocused,
     selected,
-    selectableA11yProps,
+    selectableA11yProps: {
+      setReferenceId,
+      referenceId,
+      referenceLabel,
+      setReferenceLabel,
+    },
 
     components: {
       root: 'div',
