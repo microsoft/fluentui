@@ -21,7 +21,7 @@ const focusMap = {
  *
  * @param props - props from this instance of Card
  */
-const useCardInteractive = ({ focusMode, ...props }: CardProps) => {
+const useCardInteractive = ({ focusMode = 'off', ...props }: CardProps) => {
   const interactive = ([
     'onClick',
     'onDoubleClick',
@@ -33,10 +33,10 @@ const useCardInteractive = ({ focusMode, ...props }: CardProps) => {
     'onTouchEnd',
     'onDragStart',
     'onDragEnd',
-  ] as (keyof React.HTMLAttributes<HTMLElement>)[]).some(prop => !!props[prop]);
+  ] as (keyof React.HTMLAttributes<HTMLElement>)[]).some(prop => props[prop]);
 
   const groupperAttrs = useFocusableGroup({
-    tabBehavior: focusMap[interactive ? 'no-tab' : 'off'],
+    tabBehavior: focusMap[interactive ? 'no-tab' : focusMode],
   });
 
   const interactiveFocusAttributes = {
@@ -46,7 +46,7 @@ const useCardInteractive = ({ focusMode, ...props }: CardProps) => {
 
   return {
     interactive,
-    focusAttributes: interactive ? interactiveFocusAttributes : null,
+    focusAttributes: focusMode === 'off' ? null : interactiveFocusAttributes,
   };
 };
 
