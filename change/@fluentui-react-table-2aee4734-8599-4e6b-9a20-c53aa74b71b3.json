@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: TableHeaderCell design fixes",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

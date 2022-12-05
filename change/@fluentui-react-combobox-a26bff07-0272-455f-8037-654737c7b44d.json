@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Combobox should close on blur after clicking expand icon",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

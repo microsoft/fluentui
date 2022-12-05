@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Thu, 17 Nov 2022 23:05:43 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.3.3)
+
+Mon, 05 Dec 2022 18:29:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.3.2..@fluentui/react-popover_v9.3.3)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25735](https://github.com/microsoft/fluentui/pull/25735) by tristan.watanabe@gmail.com)
+- fix: Invoke `onOpenChange` callback without checking if open state has flipped ([PR #25741](https://github.com/microsoft/fluentui/pull/25741) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.12 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-positioning to v9.3.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-tabster to v9.3.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.3.2)
 

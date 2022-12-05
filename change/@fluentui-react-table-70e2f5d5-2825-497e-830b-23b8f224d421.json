@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: change `smaller` size to `extra-small`",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

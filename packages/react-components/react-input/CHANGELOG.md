@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Thu, 17 Nov 2022 23:05:40 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.7)
+
+Mon, 05 Dec 2022 18:29:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.2.6..@fluentui/react-input_v9.2.7)
+
+### Patches
+
+- chore: Replace use of fontSize tokens with typographyStyles ([PR #25727](https://github.com/microsoft/fluentui/pull/25727) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.10 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-text to v9.1.8 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.6)
 

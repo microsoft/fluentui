@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "BREAKING: rename useTable->useTableFeatures, useSelection->useTableSelection, useSort->useTableSort",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
