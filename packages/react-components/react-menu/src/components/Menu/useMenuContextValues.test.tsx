@@ -15,7 +15,6 @@ describe('useMenuContextValues_unstable', () => {
     expect(result.current.menu).toMatchInlineSnapshot(`
       Object {
         "checkedValues": Object {},
-        "defaultCheckedValues": undefined,
         "hasCheckmarks": false,
         "hasIcons": false,
         "inline": false,

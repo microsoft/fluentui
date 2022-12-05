@@ -179,6 +179,16 @@ export interface IMultiStackedBarChartStyles {
   opacityChangeOnHover: IStyle;
 
   /**
+   * Style for the chart ratio numerator
+   */
+  ratioNumerator: IStyle;
+
+  /**
+   * Style for the chart ratio denominator
+   */
+  ratioDenominator: IStyle;
+
+  /**
    * Style to change the opacity of placeholder data point when we hover a single bar or legend
    */
   placeHolderOnHover: IStyle;
