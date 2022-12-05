@@ -10,11 +10,37 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   return {
     root: {
       height: StyleConstants.inputControlHeight,
-      padding: '0px 16px',
+      padding: StyleConstants.buttonPadding,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
       selectors: {
         '::after': {
           outlineColor: 'white !important',
+        },
+        '&.danger': {
+          outlineColor: extendedSemanticColors.ButtonBackgroundDanger,
+          borderColor: `${extendedSemanticColors.ButtonBorderDanger} !important`,
+          backgroundColor: extendedSemanticColors.ButtonBackgroundDanger,
+          color: extendedSemanticColors.ButtonBackgroundDangerText,
+          selectors: {
+            ':hover': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
+              borderColor: `${extendedSemanticColors.ButtonBorderDangerHovered} !important`,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+            ':active': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              borderColor: extendedSemanticColors.ButtonBorderDangerPressed,
+              backgroundColor: `${extendedSemanticColors.ButtonBackgroundDangerPressed} !important`,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+            ':focus': {
+              outlineColor: `${extendedSemanticColors.ButtonBackgroundDangerPressed} !important`,
+              borderColor: `${extendedSemanticColors.ButtonBackgroundDangerPressed} !important`,
+              backgroundColor: `${extendedSemanticColors.ButtonBackgroundDangerPressed} !important`,
+              color: `${extendedSemanticColors.ButtonBackgroundDangerTextHovered} !important`,
+            },
+          },
         },
       },
     },
