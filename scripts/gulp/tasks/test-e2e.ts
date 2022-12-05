@@ -4,7 +4,7 @@ import { Server } from 'http';
 import portfinder from 'portfinder';
 import * as yargs from 'yargs';
 
-import config from '../../config';
+import config from '../config';
 import webpackPlugin from '../plugins/gulp-webpack';
 
 import cypress from '../plugins/gulp-cypress';
@@ -17,7 +17,7 @@ const argv = yargs.option('skipBuild', {}).option('testNamePattern', { alias: 't
 task('test:e2e:clean', () => del(paths.e2eDist(), { force: true }));
 
 task('test:e2e:build', cb => {
-  webpackPlugin(require('../../webpack/webpack.config.e2e').default, cb);
+  webpackPlugin(require('../webpack/webpack.config.e2e').default, cb);
 });
 
 let server: Server;

@@ -1,4 +1,4 @@
-import sh from '../sh';
+import { sh } from '../../utils';
 
 export type CypressPluginConfig = {
   serverUrl: string;

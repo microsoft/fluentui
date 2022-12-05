@@ -5,7 +5,7 @@ import Vinyl from 'vinyl';
 
 import getComponentInfo, { GetComponentInfoOptions } from './util/getComponentInfo';
 
-import config from '../../config';
+import config from '../config';
 
 const { paths } = config;
 

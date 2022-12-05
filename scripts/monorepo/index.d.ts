@@ -89,3 +89,27 @@ export declare function getProjectMetadata(options: {
  * @param options.production - include production dependencies
  */
 export async function getDependencies(packageName: string, options?: { production?: true; dev?: true }): string[];
+
+export function getLernaAliases(
+  options: {
+    excludedPackages: string[];
+    type: keyof typeof import('lerna-alias');
+  } & import('lerna-alias').Options,
+): import('lerna-alias').Aliases;
+
+export const getDefaultEnvironmentVars: (
+  isProduction?: boolean | undefined,
+  otherValues?: Record<string, string> | undefined,
+) => {
+  'process.env.NODE_ENV': string;
+};
+
+export const workspaceRoot: string;
+
+export declare const eslintConstants: {
+  /** List of file extensions to lint, in format used by eslint (comma-separated, with leading .) */
+  extensions: string;
+
+  /** Subdirectory to lint within package (relative path) */
+  directory: string;
+};

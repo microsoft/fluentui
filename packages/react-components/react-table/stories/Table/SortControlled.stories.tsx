@@ -16,10 +16,10 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   ColumnId,
-  useSort,
+  useTableSort,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -132,12 +132,12 @@ export const SortControlled = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
+    [useTableSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 

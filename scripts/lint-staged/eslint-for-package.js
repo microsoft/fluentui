@@ -4,7 +4,7 @@ const micromatch = require('micromatch');
 const fs = require('fs-extra');
 const path = require('path');
 const { ESLint } = require('eslint');
-const constants = require('../tasks/eslint-constants');
+const { eslintConstants } = require('../monorepo');
 
 /**
  * Run ESLint for certain files from a particular package.
@@ -32,7 +32,7 @@ async function run() {
     // (Note that until we start linting all files in the package and can remove the constants.directory
     // segment here, the glob needs to start with the absolute package path in case someone has named
     // the directory containing all their git repos "src".)
-    includePattern = path.join(packagePath, constants.directory, '**', `*{${constants.extensions}}`);
+    includePattern = path.join(packagePath, eslintConstants.directory, '**', `*{${eslintConstants.extensions}}`);
     eslint = new ESLint({ fix: true, cache: true });
   } else {
     // Otherwise, look for the --ext option to determine extensions

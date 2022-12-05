@@ -1,4 +1,4 @@
-import { runPrettierForFolder } from '../prettier/prettier-helpers';
+import { runPrettierForFolder } from '../prettier';
 
 export function prettier() {
   runPrettierForFolder(process.cwd());

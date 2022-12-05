@@ -67,7 +67,7 @@ export function createSite<TPlatforms extends string>(
       }
       if (page.platforms) {
         Object.keys(page.platforms).forEach((plat: TPlatforms) => {
-          const platformPages: INavPage<TPlatforms>[] = page.platforms && page.platforms[plat];
+          const platformPages: INavPage<TPlatforms>[] | undefined = page.platforms && page.platforms[plat];
           routes = routes.concat(_createRoutes(platformPages || []));
         });
       }

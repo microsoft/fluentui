@@ -3,7 +3,7 @@ import * as fs from 'fs';
 
 import { getPackageName, getPackageVersion } from './packageNameUtils';
 import { isIgnored } from '../approvedPackages';
-import { PackageJson } from '../../../monorepo';
+import type { PackageJson } from '../../../monorepo';
 
 type Constraints = { [PackageId: string]: string[] };
 

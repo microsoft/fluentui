@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import { argv } from 'yargs';
 
 import { prepareWebpackConfig, runWebpack } from './utils';
-import config from '../../../config';
+import config from '../../config';
 
 const { paths } = config;
 

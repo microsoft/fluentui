@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Added a link in the docs to the MenuButton",
+  "packageName": "@fluentui/react-menu",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}
