@@ -93,13 +93,20 @@ export const Large = (props: Partial<ToolbarProps>) => (
 
 export const VerticalButton = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
+    <ToolbarButton
+      vertical
+      id="bold-button"
+      aria-label="Text option - Bold"
+      appearance="primary"
+      icon={<TextBold24Regular />}
+    />
     <ToolbarButton vertical appearance="primary" icon={<FontIncreaseRegular />}>
       Increase
     </ToolbarButton>
     <ToolbarButton vertical icon={<FontDecreaseRegular />}>
       Decrease
     </ToolbarButton>
-    <ToolbarButton vertical icon={<TextFontRegular />}>
+    <ToolbarButton id="snooze-toggle" vertical icon={<TextFontRegular />}>
       Reset
     </ToolbarButton>
   </Toolbar>
