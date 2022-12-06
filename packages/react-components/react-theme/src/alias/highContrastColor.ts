@@ -62,8 +62,8 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForegroundInvertedLinkPressed: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkSelected: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorBrandForegroundInverted: hcCanvasText, // CanvasText Global.Color.hcCanvasText
-  colorBrandForegroundInvertedHover: hcCanvasText, // CanvasText Global.Color.hcCanvasText
-  colorBrandForegroundInvertedPressed: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorBrandForegroundInvertedHover: hcHighlightText, // HighlightText Global.Color.hcHighlightText
+  colorBrandForegroundInvertedPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorBrandForegroundOnLight: hcButtonText, // ButtonText Global.Color.hcButtonText
   colorBrandForegroundOnLightHover: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorBrandForegroundOnLightPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
@@ -110,6 +110,8 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackgroundInvertedDisabled: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralStencil1: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStencil2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralStencil1Alpha: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralStencil2Alpha: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorBackgroundOverlay: blackAlpha[50], // rgba(0, 0, 0, 0.5) Global.Color.BlackAlpha.50
   colorScrollbarOverlay: hcButtonFace, // ButtonFace Global.Color.hcButtonFace
   colorBrandBackground: hcButtonFace, // ButtonFace Global.Color.hcButtonFace
