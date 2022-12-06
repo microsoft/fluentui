@@ -39,6 +39,7 @@ export {
   getRTLSafeKey,
   mergeCallbacks,
   shouldPreventDefaultOnKeyDown,
+  isHTMLElement,
 } from './utils/index';
 
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';

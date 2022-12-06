@@ -98,4 +98,15 @@ storiesOf('Persona Converged', module)
         />
       ))}
     </div>
+  ))
+  .addStory('textWrap', () => (
+    <div className="testWrapper" style={{ padding: '10px', width: '200px' }}>
+      <Persona
+        presence={{ status: 'available' }}
+        name="Do in incididunt ea minim laboris et est do consequat."
+        secondaryText="Ea cupidatat esse ullamco velit officia sint ea sit duis id ea id eu."
+        tertiaryText="Eiusmod mollit labore cupidatat enim amet dolor dolor."
+        quaternaryText="Commodo est aute sunt eiusmod sint elit irure incididunt reprehenderit culpa."
+      />
+    </div>
   ));

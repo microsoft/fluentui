@@ -214,6 +214,23 @@ describe('Dropdown', () => {
     expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('false');
   });
 
+  it('should set defaultSelectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Dropdown open multiselect defaultSelectedOptions={['b', 'c']}>
+        <Option value="a">Red</Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
+  });
+
   it('should set selectedOptions', () => {
     const { getByTestId } = render(
       <Dropdown open selectedOptions={['Green']}>
@@ -224,6 +241,26 @@ describe('Dropdown', () => {
     );
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
+  });
+
+  it('should set selectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Dropdown open multiselect selectedOptions={['a', 'c']}>
+        <Option data-testid="red" value="a">
+          Red
+        </Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('false');
   });
 
   it('should change defaultSelectedOptions on click', () => {
@@ -340,7 +377,30 @@ describe('Dropdown', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(1);
     expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
       optionValue: 'Green',
+      optionText: 'Green',
       selectedOptions: ['Green'],
+    });
+  });
+
+  it('calls onOptionSelect with Option value prop', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Dropdown value="Red" onOptionSelect={onOptionSelect}>
+        <Option>Red</Option>
+        <Option value="test">Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
+      optionValue: 'test',
+      optionText: 'Green',
+      selectedOptions: ['test'],
     });
   });
 
@@ -362,10 +422,12 @@ describe('Dropdown', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(2);
     expect(onOptionSelect).toHaveBeenNthCalledWith(1, expect.anything(), {
       optionValue: 'Green',
+      optionText: 'Green',
       selectedOptions: ['Green'],
     });
     expect(onOptionSelect).toHaveBeenNthCalledWith(2, expect.anything(), {
       optionValue: 'Blue',
+      optionText: 'Blue',
       selectedOptions: ['Green', 'Blue'],
     });
   });

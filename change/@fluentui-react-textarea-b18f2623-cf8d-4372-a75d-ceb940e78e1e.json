@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Replace use of fontSize tokens with typographyStyles",
-  "packageName": "@fluentui/react-textarea",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

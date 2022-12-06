@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Replace use of fontSize tokens with typographyStyles",
-  "packageName": "@fluentui/react-select",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
