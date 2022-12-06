@@ -15,6 +15,7 @@ export { ControlledToggleButton } from './ToolbarControlledToggleButton.stories'
 export { Radio } from './ToolbarRadio.stories';
 export { ControlledRadio } from './ToolbarRadioControlled.stories';
 export { Vertical } from './ToolbarVertical.stories';
+export { FarGroup } from './ToolbarFarGroup.stories';
 
 export default {
   title: 'Preview Components/Toolbar',
