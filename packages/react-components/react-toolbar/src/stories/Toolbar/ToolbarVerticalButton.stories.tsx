@@ -5,13 +5,13 @@ import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const VerticalButton = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
-    <ToolbarButton vertical appearance="primary" icon={<FontIncreaseRegular fontSize={24} />}>
+    <ToolbarButton vertical appearance="primary" icon={<FontIncreaseRegular />}>
       Increase
     </ToolbarButton>
-    <ToolbarButton vertical icon={<FontDecreaseRegular fontSize={24} />}>
+    <ToolbarButton vertical icon={<FontDecreaseRegular />}>
       Decrease
     </ToolbarButton>
-    <ToolbarButton vertical icon={<TextFontRegular fontSize={24} />}>
+    <ToolbarButton vertical icon={<TextFontRegular />}>
       Reset
     </ToolbarButton>
   </Toolbar>
