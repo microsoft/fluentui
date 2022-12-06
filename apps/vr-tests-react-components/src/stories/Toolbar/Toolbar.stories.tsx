@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles } from '@griffel/react';
 import {
   Toolbar,
   ToolbarProps,
