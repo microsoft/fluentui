@@ -31,7 +31,7 @@ When a component is simple enough to be built with already created components, w
 
 These recipes will also help when we get requests to create a component, but we won't work on it in the near future. By poroviding a recipe, we can help partially fill the requests and allow the user to build the component themselves. If the recipe gets enough traction, we can revisit prioritizing working on this component.
 
-> - Component recipes should be generic enough to be used in multiple scenarios and not just one.
+> Component recipes should be generic enough to be used in multiple scenarios and not just one.
 
 ### **Concept Recipes**
 
