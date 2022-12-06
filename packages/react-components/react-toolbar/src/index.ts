@@ -14,3 +14,5 @@ export { ToolbarToggleButton } from './ToolbarToggleButton';
 export type { ToolbarToggleButtonProps, ToolbarToggleButtonState } from './ToolbarToggleButton';
 export { ToolbarRadioButton } from './ToolbarRadioButton';
 export type { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './ToolbarRadioButton';
+export { ToolbarGroup } from './ToolbarGroup';
+export type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup';

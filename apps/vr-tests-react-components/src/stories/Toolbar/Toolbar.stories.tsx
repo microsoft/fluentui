@@ -1,11 +1,22 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Toolbar, ToolbarProps, ToolbarButton, ToolbarDivider, ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { makeStyles } from '@griffel/react';
+import {
+  Toolbar,
+  ToolbarProps,
+  ToolbarButton,
+  ToolbarDivider,
+  ToolbarToggleButton,
+  ToolbarGroup,
+} from '@fluentui/react-toolbar';
 import {
   TextBold24Regular,
   TextItalic24Regular,
   TextUnderline24Regular,
   AlertSnooze24Regular,
+  FontIncreaseRegular,
+  FontDecreaseRegular,
+  TextFontRegular,
 } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { steps } from './utils';
@@ -16,7 +27,7 @@ export default {
   decorators: [
     story => (
       <Screener steps={steps}>
-        <div className="testWrapper" style={{ width: '300px' }}>
+        <div className="testWrapper" style={{ width: '600px' }}>
           {story()}
         </div>
       </Screener>
@@ -87,3 +98,31 @@ export const Large = (props: Partial<ToolbarProps>) => (
     />
   </Toolbar>
 );
+
+const useStyles = makeStyles({
+  toolbar: {
+    justifyContent: 'space-between',
+  },
+});
+
+export const FarGroup = (props: Partial<ToolbarProps>) => {
+  const farGroupStyles = useStyles();
+  return (
+    <Toolbar {...props} className={farGroupStyles.toolbar}>
+      <ToolbarGroup role="presentation">
+        <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
+        <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
+        <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
+        <ToolbarDivider />
+        <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
+        <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
+        <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
+      </ToolbarGroup>
+      <ToolbarGroup role="presentation">
+        <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
+        <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
+        <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
+      </ToolbarGroup>
+    </Toolbar>
+  );
+};
