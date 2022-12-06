@@ -6,9 +6,6 @@ const useBaseStyles = makeStyles({
   vertical: {
     flexDirection: 'column',
   },
-  verticalIcon: {
-    fontSize: '24px',
-  },
 });
 
 /**
@@ -19,7 +16,4 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState) => {
   const buttonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(state.root.className, state.vertical && buttonStyles.vertical);
-  if (state.icon) {
-    state.icon.className = mergeClasses(state.root.className, state.vertical && buttonStyles.verticalIcon);
-  }
 };
