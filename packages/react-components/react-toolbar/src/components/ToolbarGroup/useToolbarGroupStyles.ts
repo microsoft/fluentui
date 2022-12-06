@@ -21,7 +21,7 @@ const useStyles = makeStyles({
  */
 export const useToolbarGroupStyles_unstable = (state: ToolbarGroupState): ToolbarGroupState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(toolbarGroupClassNames.root, styles.root);
+  state.root.className = mergeClasses(toolbarGroupClassNames.root, styles.root, state.root.className);
 
   return state;
 };
