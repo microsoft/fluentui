@@ -6,7 +6,7 @@ import { SkeletonGap } from '../../src/components/SkeletonGap/SkeletonGap';
 
 const SkeletonElementsFirstRow = () => {
   return (
-    <div style={{ display: 'flex', paddingBottom: '10px' }}>
+    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
       <SkeletonCircle />
       <SkeletonGap width="2%" height="24px" />
       <SkeletonLine height="24px" />
@@ -15,7 +15,7 @@ const SkeletonElementsFirstRow = () => {
 };
 const SkeletonElementsSecondRow = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
       <SkeletonCircle height="24px" />
       <SkeletonGap width="2%" height="24px" />
       <SkeletonLine height="16px" width="20%" />
@@ -31,7 +31,7 @@ const SkeletonElementsSecondRow = () => {
 
 const SkeletonElementsThirdRow = () => {
   return (
-    <div style={{ display: 'flex', paddingBottom: '10px' }}>
+    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
       <SkeletonCircle height="24px" />
       <SkeletonGap width="2%" height="24px" />
       <SkeletonLine height="16px" width="20%" />
