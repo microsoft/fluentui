@@ -2,6 +2,39 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:35 GMT",
+      "tag": "@fluentui/react-textarea_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "6679b1430f61182d34c0b90de33806d9624d811a",
+            "comment": "chore: Replace use of fontSize tokens with typographyStyles"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "178c2be4bcd691f2cf5874f771236f2e6b8c1cd5",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.10",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:49 GMT",
       "tag": "@fluentui/react-textarea_v9.1.6",
       "version": "9.1.6",

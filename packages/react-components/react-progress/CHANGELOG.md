@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Thu, 17 Nov 2022 23:05:44 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.7)
+
+Mon, 05 Dec 2022 18:29:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.6..@fluentui/react-progress_v9.0.0-alpha.7)
+
+### Changes
+
+- chore: Migrate to new package structure. ([PR #25744](https://github.com/microsoft/fluentui/pull/25744) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.10 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.6)
 

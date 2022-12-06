@@ -118,6 +118,22 @@ describe('Combobox', () => {
     expect(getByRole('listbox')).not.toBeNull();
   });
 
+  it('opens the popup when typing', () => {
+    const { getByRole } = render(
+      <Combobox>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.tab();
+    userEvent.keyboard('xyz');
+
+    expect(getByRole('listbox')).not.toBeNull();
+    expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('true');
+  });
+
   it('closes the popup on expand icon click', () => {
     const { getByTestId, queryByRole } = render(
       <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
@@ -130,6 +146,25 @@ describe('Combobox', () => {
     userEvent.tab();
     userEvent.click(getByTestId('icon'));
 
+    expect(queryByRole('listbox')).toBeNull();
+  });
+
+  it('closes the popup on blur/outside click after clicking on the expand icon', () => {
+    const { getByTestId, queryByRole } = render(
+      <>
+        <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>
+        <div data-testid="outside">outside</div>
+      </>,
+    );
+
+    userEvent.click(getByTestId('icon'));
+    expect(queryByRole('listbox')).not.toBeNull();
+
+    userEvent.click(getByTestId('outside'));
     expect(queryByRole('listbox')).toBeNull();
   });
 
@@ -243,6 +278,23 @@ describe('Combobox', () => {
     expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('false');
   });
 
+  it('should set defaultSelectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Combobox open multiselect defaultSelectedOptions={['b', 'c']}>
+        <Option value="a">Red</Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
+      </Combobox>,
+    );
+
+    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
+  });
+
   it('should set selectedOptions', () => {
     const { getByTestId } = render(
       <Combobox open selectedOptions={['Green']}>
@@ -253,6 +305,26 @@ describe('Combobox', () => {
     );
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
+  });
+
+  it('should set selectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Combobox open multiselect selectedOptions={['a', 'c']}>
+        <Option data-testid="red" value="a">
+          Red
+        </Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
+      </Combobox>,
+    );
+
+    expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('false');
   });
 
   it('should change defaultSelectedOptions on click', () => {
@@ -423,7 +495,30 @@ describe('Combobox', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(1);
     expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
       optionValue: 'Green',
+      optionText: 'Green',
       selectedOptions: ['Green'],
+    });
+  });
+
+  it('calls onOptionSelect with Option value prop', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Combobox value="Red" onOptionSelect={onOptionSelect}>
+        <Option>Red</Option>
+        <Option value="test">Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
+      optionValue: 'test',
+      optionText: 'Green',
+      selectedOptions: ['test'],
     });
   });
 
@@ -445,10 +540,12 @@ describe('Combobox', () => {
     expect(onOptionSelect).toHaveBeenCalledTimes(2);
     expect(onOptionSelect).toHaveBeenNthCalledWith(1, expect.anything(), {
       optionValue: 'Green',
+      optionText: 'Green',
       selectedOptions: ['Green'],
     });
     expect(onOptionSelect).toHaveBeenNthCalledWith(2, expect.anything(), {
       optionValue: 'Blue',
+      optionText: 'Blue',
       selectedOptions: ['Green', 'Blue'],
     });
   });
@@ -599,7 +696,7 @@ describe('Combobox', () => {
     );
 
     userEvent.tab();
-    userEvent.keyboard('gr');
+    userEvent.keyboard('xyz');
     userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
