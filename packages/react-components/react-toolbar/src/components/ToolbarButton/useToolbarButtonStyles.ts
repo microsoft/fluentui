@@ -20,6 +20,6 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState) => {
 
   state.root.className = mergeClasses(state.root.className, state.vertical && buttonStyles.vertical);
   if (state.icon) {
-    state.icon.className = mergeClasses(state.root.className, state.vertical && buttonStyles.verticalIcon);
+    state.icon.className = mergeClasses(state.icon.className, state.vertical && buttonStyles.verticalIcon);
   }
 };
