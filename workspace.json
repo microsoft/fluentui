@@ -650,6 +650,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-recipes": {
+      "root": "packages/react-components/react-recipes",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-recipes/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/react-select": {
       "root": "packages/react-components/react-select",
       "projectType": "library",
