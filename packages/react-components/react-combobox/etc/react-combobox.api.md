@@ -160,7 +160,13 @@ export type OptionGroupState = ComponentState<OptionGroupSlots>;
 export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
     disabled?: boolean;
     value?: string;
-};
+} & ({
+    text?: string;
+    children: string;
+} | {
+    text: string;
+    children?: React_2.ReactNode;
+});
 
 // @public (undocumented)
 export type OptionSlots = {

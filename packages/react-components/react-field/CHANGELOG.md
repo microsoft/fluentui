@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Thu, 17 Nov 2022 23:05:39 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.10)
+
+Mon, 05 Dec 2022 18:29:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.9..@fluentui/react-field_v9.0.0-alpha.10)
+
+### Changes
+
+- fix: Field should use aria-describedby instead of aria-errormessage ([PR #25580](https://github.com/microsoft/fluentui/pull/25580) by behowell@microsoft.com)
+- chore: Migrate to new package structure. ([PR #25817](https://github.com/microsoft/fluentui/pull/25817) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-label to v9.0.12 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.9)
 

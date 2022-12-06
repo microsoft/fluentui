@@ -18,10 +18,10 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
-  useSelection,
-  useSort,
+  useTableSelection,
+  useTableSort,
   createColumn,
   ColumnId,
 } from '@fluentui/react-components/unstable';
@@ -127,17 +127,17 @@ export const DataGrid = () => {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),
-      useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
+      useTableSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
     ],
   );
 
@@ -217,7 +217,7 @@ DataGrid.parameters = {
   docs: {
     description: {
       story: [
-        'The `DataGrid` component is simply a composition of hook and primitive `Table` components',
+        'The `DataGrid` component is a composition of the `useTableFeatures` hook and primitive `Table` components',
         'along with some convenience features such as accessible markup and event handlers.',
         'Any feature of the `DataGrid` is achievable with the primitive components and hook',
       ].join('\n'),

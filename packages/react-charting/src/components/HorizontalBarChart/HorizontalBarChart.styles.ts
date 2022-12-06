@@ -1,8 +1,8 @@
-import { FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
-  const { className, theme, width } = props;
+  const { className, theme, width, barHeight, showTriangle } = props;
   const { palette } = theme!;
 
   return {
@@ -15,14 +15,12 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       className,
     ],
     items: {
-      height: '32px',
-      marginTop: '5px',
-      position: 'relative',
+      marginBottom: showTriangle ? '16px' : '10px',
     },
     chart: {
       width: '100%',
-      height: '8px',
-      marginBottom: '11px',
+      height: barHeight ? barHeight : 12,
+      display: 'block',
     },
     barWrapper: {
       stroke: theme.palette.white,
@@ -32,31 +30,39 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '3px',
     },
     chartTitleLeft: {
-      fontWeight: FontWeights.bold,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
+      color: '#171717',
+      marginBottom: '5px',
     },
     chartTitleRight: {
-      fontWeight: FontWeights.bold,
+      fontSize: FontSizes.medium,
+      fontWeight: FontWeights.semibold,
+      color: theme.palette.neutralPrimary,
     },
     chartDataTextDenominator: {
-      fontWeight: FontWeights.semibold,
+      fontSize: FontSizes.medium,
+      color: theme.palette.neutralPrimary,
+    },
+    benchmarkContainer: {
+      position: 'relative',
+      height: '7px',
+      marginTop: '-3px',
+      marginBottom: '-1px',
     },
     triangle: {
       width: '0',
       height: '0',
       borderLeft: '4px solid transparent',
       borderRight: '4px solid transparent',
-      borderTop: '8px solid',
+      borderTop: '7px solid',
       borderTopColor: palette.blue,
       marginBottom: '4px',
       position: 'absolute',
-      top: '12px',
     },
   };
 };

@@ -2,6 +2,51 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:26 GMT",
+      "tag": "@fluentui/react-persona_v9.1.0-beta.5",
+      "version": "9.1.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "df99a7d82e3ca707300a079e0050db218d6cfcce",
+            "comment": "chore: Updating Persona's docs to match implementation."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "fafaced9e47597c8ae38d68518887926082986cb",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "7f4466d1f16a45c6268d540ccd6c088e0c79dfbb",
+            "comment": "fix: Make Persona's text wrap when overflowing its container."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.2.8",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.0.14",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:42 GMT",
       "tag": "@fluentui/react-persona_v9.1.0-beta.4",
       "version": "9.1.0-beta.4",

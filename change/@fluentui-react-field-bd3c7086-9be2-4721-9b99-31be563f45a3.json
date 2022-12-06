@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Field should use aria-describedby instead of aria-errormessage",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

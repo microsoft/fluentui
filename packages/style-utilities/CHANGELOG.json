@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Thu, 01 Dec 2022 07:57:13 GMT",
+      "tag": "@fluentui/style-utilities_v8.8.3",
+      "version": "8.8.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "5079ab52943dded035d7bf7348d1c2762271ae9d",
+            "comment": "chore: resolve leaking global type issues exposed by using ts path aliases"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Nov 2022 07:44:59 GMT",
       "tag": "@fluentui/style-utilities_v8.8.3",
       "version": "8.8.3",

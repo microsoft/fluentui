@@ -1,42 +1,96 @@
 {
-  // This config is used for running build scripts through ts-node
-  "extends": "./tsconfig.scripts.json",
+  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "noUnusedLocals": true,
-    "outDir": "../../dist",
-    "resolveJsonModule": true,
-    "types": ["node", "jest"]
+    "pretty": true,
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
+    "typeRoots": ["../typings", "../node_modules/@types"]
   },
-  "include": ["."],
-  "exclude": [
-    "node_modules",
-    "./cypress/**",
-    "./storybook/**",
-    "./monorepo/**",
-    "./beachball/**",
-    "./dangerjs/**",
-    "./github/**",
-    "./gulp/**",
-    "./projects-test/**",
-    "./update-release-notes/**",
-    "./prettier/**",
-    "./fluentui-publish/**",
-    "./puppeteer/**",
-    "./triage-bot/**",
-    "./webpack/**",
-    "./jest/**",
-    "./dependency-graph-generator/**",
-    "./typescript/**",
-    "./tasks/**",
-    "./babel/**",
-    "./api-extractor/**",
-    "./typescript/**",
-    "./lint-staged/**",
-    "./generators/**",
-    "./executors/**",
-    "./package-manager/**",
-    "./utils/**"
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./api-extractor/tsconfig.json"
+    },
+    {
+      "path": "./babel/tsconfig.json"
+    },
+    {
+      "path": "./lint-staged/tsconfig.json"
+    },
+    {
+      "path": "./typescript/tsconfig.json"
+    },
+    {
+      "path": "./tasks/tsconfig.json"
+    },
+    {
+      "path": "./jest/tsconfig.json"
+    },
+    {
+      "path": "./webpack/tsconfig.json"
+    },
+    {
+      "path": "./dependency-graph-generator/tsconfig.json"
+    },
+    {
+      "path": "./triage-bot/tsconfig.json"
+    },
+    {
+      "path": "./cypress/tsconfig.json"
+    },
+    {
+      "path": "./beachball/tsconfig.json"
+    },
+    {
+      "path": "./storybook/tsconfig.json"
+    },
+    {
+      "path": "./monorepo/tsconfig.json"
+    },
+    {
+      "path": "./screener/tsconfig.json"
+    },
+    {
+      "path": "./generators/tsconfig.json"
+    },
+    {
+      "path": "./executors/tsconfig.json"
+    },
+    {
+      "path": "./github/tsconfig.json"
+    },
+    {
+      "path": "./puppeteer/tsconfig.json"
+    },
+    {
+      "path": "./gulp/tsconfig.json"
+    },
+    {
+      "path": "./dangerjs/tsconfig.json"
+    },
+    {
+      "path": "./projects-test/tsconfig.json"
+    },
+    {
+      "path": "./update-release-notes/tsconfig.json"
+    },
+    {
+      "path": "./prettier/tsconfig.json"
+    },
+    {
+      "path": "./fluentui-publish/tsconfig.json"
+    },
+    {
+      "path": "./package-manager/tsconfig.json"
+    },
+    {
+      "path": "./utils/tsconfig.json"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
   ]
 }

@@ -133,7 +133,7 @@ export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' 
   columns: ColumnDefinition<TItem>[];
 }
 
-export interface UseSortOptions {
+export interface UseTableSortOptions {
   /**
    * Used to control sorting
    */
@@ -148,7 +148,7 @@ export interface UseSortOptions {
   onSortChange?(e: React.SyntheticEvent, state: SortState): void;
 }
 
-export interface UseSelectionOptions {
+export interface UseTableSelectionOptions {
   /**
    * Can be multi or single select
    */

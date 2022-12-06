@@ -2,6 +2,57 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:20 GMT",
+      "tag": "@fluentui/react-avatar_v9.2.8",
+      "version": "9.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1a558639a977347b237c9134f09b47f0fc00ad48",
+            "comment": "fix: AvatarGroup's pie layout places inline items correctly in rtl."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.14",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.3.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.2",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.3.2",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:33 GMT",
       "tag": "@fluentui/react-avatar_v9.2.7",
       "version": "9.2.7",

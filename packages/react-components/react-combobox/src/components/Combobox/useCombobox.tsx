@@ -7,6 +7,7 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
@@ -31,7 +32,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     activeOption,
     clearSelection,
     getIndexOfId,
-    getOptionsMatchingValue,
+    getOptionsMatchingText,
     hasFocus,
     open,
     selectOption,
@@ -76,8 +77,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       return;
     }
 
-    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString) === 0;
-    const matches = getOptionsMatchingValue(matcher);
+    const matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString) === 0;
+    const matches = getOptionsMatchingText(matcher);
 
     // return first matching option after the current active option, looping back to the top
     if (matches.length > 1 && activeOption) {
@@ -140,6 +141,13 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }
   };
 
+  // open Combobox when typing
+  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!open && getDropdownActionFromKey(ev) === 'Type') {
+      setOpen(ev, true);
+    }
+  };
+
   // resolve input and listbox slot props
   let triggerSlot: Slot<'input'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
@@ -156,6 +164,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
+  triggerSlot.onKeyDown = mergeCallbacks(triggerSlot.onKeyDown, onTriggerKeyDown);
 
   // only resolve listbox slot if needed
   listboxSlot =
@@ -203,8 +212,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};
   const onExpandIconMouseDown = useEventCallback(
     mergeCallbacks(onIconMouseDown, () => {
-      // do not dismiss on blur when clicking the icon
-      baseState.ignoreNextBlur.current = true;
+      // do not dismiss on blur when closing via clicking the icon
+      if (open) {
+        baseState.ignoreNextBlur.current = true;
+      }
     }),
   );
 

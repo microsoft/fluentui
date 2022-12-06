@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Thu, 17 Nov 2022 23:05:47 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.13)
+
+Mon, 05 Dec 2022 18:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.12..@fluentui/react-table_v9.0.0-alpha.13)
+
+### Changes
+
+- fix: TableHeaderCell design fixes ([PR #25712](https://github.com/microsoft/fluentui/pull/25712) by lingfangao@hotmail.com)
+- BREAKING(useTable): `onSelectionChange` returns data object ([PR #25731](https://github.com/microsoft/fluentui/pull/25731) by lingfangao@hotmail.com)
+- docs: Update docstrings for props ([PR #25787](https://github.com/microsoft/fluentui/pull/25787) by lingfangao@hotmail.com)
+- fix: Various design fixes to Table components ([PR #25715](https://github.com/microsoft/fluentui/pull/25715) by lingfangao@hotmail.com)
+- fix: Cell actions should have correct background when row focused within ([PR #25790](https://github.com/microsoft/fluentui/pull/25790) by lingfangao@hotmail.com)
+- fix: Table row height is determined by cells ([PR #25717](https://github.com/microsoft/fluentui/pull/25717) by lingfangao@hotmail.com)
+- BREAKING: change `smaller` size to `extra-small` ([PR #25713](https://github.com/microsoft/fluentui/pull/25713) by lingfangao@hotmail.com)
+- fix(TableCellLayout): Icon sizes in should match design spec ([PR #25764](https://github.com/microsoft/fluentui/pull/25764) by lingfangao@hotmail.com)
+- feat: `DataGrid` supports row sorting ([PR #25655](https://github.com/microsoft/fluentui/pull/25655) by lingfangao@hotmail.com)
+- BREAKING: rename useTable->useTableFeatures, useSelection->useTableSelection, useSort->useTableSort ([PR #25797](https://github.com/microsoft/fluentui/pull/25797) by lingfangao@hotmail.com)
+- feat: DataGrid supports selection ([PR #25719](https://github.com/microsoft/fluentui/pull/25719) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.8 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.14 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-radio to v9.0.13 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-tabster to v9.3.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.12)
 
