@@ -17,6 +17,7 @@ export const useToolbarGroup_unstable = (
     },
     root: getNativeElementProps<React.HTMLAttributes<HTMLDivElement>>('div', {
       ref,
+      role: 'presentation',
       ...props,
     }),
   };
