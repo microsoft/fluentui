@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonLine renders a default state 1`] = `
+<div>
+  <div
+    class="fui-SkeletonLine"
+    style="align-items: center; width: 100%; height: 16px;"
+  />
+</div>
+`;

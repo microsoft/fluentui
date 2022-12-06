@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonCircle renders a default state 1`] = `
+<div>
+  <div
+    class="fui-SkeletonCircle"
+    style="align-items: center; height: 24px; width: 24px;"
+  />
+</div>
+`;

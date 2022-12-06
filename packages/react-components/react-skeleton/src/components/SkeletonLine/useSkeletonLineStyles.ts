@@ -3,7 +3,7 @@ import type { SkeletonLineSlots, SkeletonLineState } from './SkeletonLine.types'
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
-export const SkeletonLineClassNames: SlotClassNames<SkeletonLineSlots> = {
+export const skeletonLineClassNames: SlotClassNames<SkeletonLineSlots> = {
   root: 'fui-SkeletonLine',
 };
 
@@ -28,7 +28,7 @@ export const useSkeletonLineStyles_unstable = (state: SkeletonLineState): Skelet
 
   const rootStyles = useRootStyles();
 
-  state.root.className = mergeClasses(SkeletonLineClassNames.root, rootStyles.root, state.root.className);
+  state.root.className = mergeClasses(skeletonLineClassNames.root, rootStyles.root, state.root.className);
 
   if (height) {
     state.root.style = {

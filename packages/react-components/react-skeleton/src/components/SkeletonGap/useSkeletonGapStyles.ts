@@ -3,7 +3,7 @@ import type { SkeletonGapSlots, SkeletonGapState } from './SkeletonGap.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
-export const SkeletonGapClassNames: SlotClassNames<SkeletonGapSlots> = {
+export const skeletonGapClassNames: SlotClassNames<SkeletonGapSlots> = {
   root: 'fui-SkeletonGap',
 };
 
@@ -38,7 +38,7 @@ export const useSkeletonGapStyles_unstable = (state: SkeletonGapState): Skeleton
 
   const rootStyles = useRootStyles();
 
-  state.root.className = mergeClasses(SkeletonGapClassNames.root, rootStyles.root, state.root.className);
+  state.root.className = mergeClasses(skeletonGapClassNames.root, rootStyles.root, state.root.className);
 
   if (height) {
     state.root.style = {

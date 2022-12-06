@@ -3,7 +3,7 @@ import type { SkeletonCircleSlots, SkeletonCircleState } from './SkeletonCircle.
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
-export const SkeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots> = {
+export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots> = {
   root: 'fui-SkeletonCircle',
 };
 
@@ -33,7 +33,7 @@ export const useSkeletonCircleStyles_unstable = (state: SkeletonCircleState): Sk
 
   const rootStyles = useRootStyles();
 
-  state.root.className = mergeClasses(SkeletonCircleClassNames.root, rootStyles.root, state.root.className);
+  state.root.className = mergeClasses(skeletonCircleClassNames.root, rootStyles.root, state.root.className);
 
   if (height) {
     state.root.style = {

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonGap renders a default state 1`] = `
+<div>
+  <div
+    class="fui-SkeletonGap"
+    style="width: 100%; height: 16px;"
+  />
+</div>
+`;

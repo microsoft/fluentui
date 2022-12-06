@@ -3,9 +3,15 @@
 exports[`Skeleton renders a default state 1`] = `
 <div>
   <div
+    aria-busy="true"
+    aria-label="content is loading"
     class="fui-Skeleton"
+    role="progressbar"
   >
     Default Skeleton
+    <div
+      class="fui-Skeleton__gradient fui-Skeleton__gradient"
+    />
   </div>
 </div>
 `;
