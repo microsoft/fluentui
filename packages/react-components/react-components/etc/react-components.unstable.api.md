@@ -320,10 +320,7 @@ import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { useProgress_unstable } from '@fluentui/react-progress';
 import { useProgressStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
-import { useSelection } from '@fluentui/react-table';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
-import { useSort } from '@fluentui/react-table';
-import { useTable } from '@fluentui/react-table';
 import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
@@ -334,6 +331,7 @@ import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
+import { useTableFeatures } from '@fluentui/react-table';
 import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
@@ -341,8 +339,10 @@ import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
 import { UseTableOptions } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
+import { useTableSelection } from '@fluentui/react-table';
 import { useTableSelectionCell_unstable } from '@fluentui/react-table';
 import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useTableSort } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
 import { useToolbar_unstable } from '@fluentui/react-toolbar';
 import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
@@ -981,13 +981,7 @@ export { useProgressStyles_unstable }
 
 export { useSelect_unstable }
 
-export { useSelection }
-
 export { useSelectStyles_unstable }
-
-export { useSort }
-
-export { useTable }
 
 export { useTable_unstable }
 
@@ -1009,6 +1003,8 @@ export { useTableCellStyles_unstable }
 
 export { useTableContext }
 
+export { useTableFeatures }
+
 export { useTableHeader_unstable }
 
 export { useTableHeaderCell_unstable }
@@ -1023,9 +1019,13 @@ export { useTableRow_unstable }
 
 export { useTableRowStyles_unstable }
 
+export { useTableSelection }
+
 export { useTableSelectionCell_unstable }
 
 export { useTableSelectionCellStyles_unstable }
+
+export { useTableSort }
 
 export { useTableStyles_unstable }
 

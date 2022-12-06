@@ -1,6 +1,7 @@
 import 'cypress-storybook/react';
 import * as dedent from 'dedent';
 import './docs-root.css';
+import { withLinks } from '@storybook/addon-links';
 
 // This patches globals set up by cypress-storybook to work around its usage of the deprecated
 // forceReRender API that no longer works with storyStoreV7
@@ -22,7 +23,7 @@ window.__setCurrentStory = function (categorization, story) {
 };
 
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
-export const decorators = [];
+export const decorators = [withLinks];
 
 /** @type {import('@storybook/addons').Parameters} */
 export const parameters = {

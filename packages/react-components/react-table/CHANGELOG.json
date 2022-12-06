@@ -2,6 +2,119 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:31 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "dfe430630188bb7e2fe2ddc15b5269fcfd1bf20b",
+            "comment": "fix: TableHeaderCell design fixes"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f64a67537afb35cb5007c16160d0a1deb656d875",
+            "comment": "BREAKING(useTable): `onSelectionChange` returns data object"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f7d7f82f6b3117ce163c6fee84b03c8774bed95f",
+            "comment": "docs: Update docstrings for props"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "35de934c73603a2fc9416327ab1cf89283f76c5f",
+            "comment": "fix: Various design fixes to Table components"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6f450a1713c40d5429306ab1f6d76bc19e65c295",
+            "comment": "fix: Cell actions should have correct background when row focused within"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "3ca7917d818ccde26b1dc172241f88a6e8f322b3",
+            "comment": "fix: Table row height is determined by cells"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f1a66a851248f1a2140cb387a62c19468afd3365",
+            "comment": "BREAKING: change `smaller` size to `extra-small`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "2d9a9f3147deea6d0c0a60747e1074faf47968c3",
+            "comment": "fix(TableCellLayout): Icon sizes in should match design spec"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "31d2fa0e30649e991925fec10d49ac8fae2dc585",
+            "comment": "feat: `DataGrid` supports row sorting"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "8811bf9bf2f5d2c6591ffdaa0a4024456f66bfbd",
+            "comment": "BREAKING: rename useTable->useTableFeatures, useSelection->useTableSelection, useSort->useTableSort"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6b90a6e90a71bb3ca36a6bc633d0d535ccb717e9",
+            "comment": "feat: DataGrid supports selection"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.8",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.14",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.13",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.3.2",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "8607e1bc8dbc03f9416f1c24d403f04ca91cd597",
+            "comment": "docs: Improve `DataGrid` docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:47 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.12",
       "version": "9.0.0-alpha.12",

@@ -4,7 +4,7 @@ import through2 from 'through2';
 
 import { sh } from '../../utils';
 import { workspaceRoot } from '../../monorepo';
-import { runPrettier } from '../../prettier/prettier-helpers';
+import { runPrettier } from '../../prettier';
 
 const insideGitRepo = fs.existsSync(path.resolve(workspaceRoot, '.git'));
 
