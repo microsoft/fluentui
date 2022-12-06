@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 05 Dec 2022 07:54:46 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Dec 2022 07:59:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.25)
+
+Tue, 06 Dec 2022 07:59:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.24..@fluentui/react-charting_v5.14.25)
+
+### Patches
+
+- Adjust stacked bar chart styles as per design ([PR #25334](https://github.com/microsoft/fluentui/pull/25334) by kumarkshitij@microsoft.com)
+- Adjust horizontal bar chart styles as per design ([PR #25268](https://github.com/microsoft/fluentui/pull/25268) by kumarkshitij@microsoft.com)
 
 ## [5.14.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.24)
 

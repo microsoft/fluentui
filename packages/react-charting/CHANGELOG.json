@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 06 Dec 2022 07:59:31 GMT",
+      "tag": "@fluentui/react-charting_v5.14.25",
+      "version": "5.14.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "52fb1e3d6365e9241ac8c1114829b9b988f2e130",
+            "comment": "Adjust stacked bar chart styles as per design"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d3e106f3bdf0f1469995ae1f0c2b560bebe1dc1e",
+            "comment": "Adjust horizontal bar chart styles as per design"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 07:54:46 GMT",
       "tag": "@fluentui/react-charting_v5.14.24",
       "version": "5.14.24",
