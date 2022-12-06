@@ -131,6 +131,12 @@ export const FarGroup = (props: Partial<ToolbarProps>) => {
   return (
     <Toolbar {...props} className={farGroupStyles.toolbar}>
       <ToolbarGroup role="presentation">
+        <ToolbarButton
+          id="bold-button"
+          aria-label="Text option - Bold"
+          appearance="primary"
+          icon={<TextBold24Regular />}
+        />
         <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
         <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
         <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
@@ -142,7 +148,13 @@ export const FarGroup = (props: Partial<ToolbarProps>) => {
       <ToolbarGroup role="presentation">
         <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
         <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />
-        <ToolbarButton aria-label="Reset Font Size" icon={<TextFontRegular />} />
+        <ToolbarToggleButton
+          id="snooze-toggle"
+          aria-label="Snooze Alert Option"
+          name="toggle"
+          value="toggle"
+          icon={<AlertSnooze24Regular />}
+        />
       </ToolbarGroup>
     </Toolbar>
   );
