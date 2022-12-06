@@ -12,22 +12,13 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
   onMouseLeave={[Function]}
 >
   <div
-    className=
-
-        {
-          height: 32px;
-          margin-top: 5px;
-          position: relative;
-        }
     key="0"
   >
     <div
       className=
 
           {
-            height: 32px;
-            margin-top: 5px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -52,15 +43,15 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -101,7 +92,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             className=
 
                 {
-                  font-weight: 700;
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
                 }
             data-is-focusable={true}
             role="text"
@@ -126,8 +119,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           className=
 
               {
-                height: 8px;
-                margin-bottom: 11px;
+                display: block;
+                height: 12px;
                 width: 100%;
               }
         >
@@ -146,7 +139,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 94%."
               data-is-focusable={true}
               fill="#004b50"
-              height={8}
+              height={12}
               key="0"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -160,8 +153,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             <rect
               aria-label="13457/15000."
               data-is-focusable={false}
-              fill="#c8c6c4"
-              height={8}
+              fill="#edebe9"
+              height={12}
               key="1"
               onBlur={[Function]}
               onMouseLeave={[Function]}
@@ -176,22 +169,13 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
     </div>
   </div>
   <div
-    className=
-
-        {
-          height: 32px;
-          margin-top: 5px;
-          position: relative;
-        }
     key="1"
   >
     <div
       className=
 
           {
-            height: 32px;
-            margin-top: 5px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -216,15 +200,15 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -265,7 +249,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             className=
 
                 {
-                  font-weight: 700;
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
                 }
             data-is-focusable={true}
             role="text"
@@ -290,8 +276,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           className=
 
               {
-                height: 8px;
-                margin-bottom: 11px;
+                display: block;
+                height: 12px;
                 width: 100%;
               }
         >
@@ -310,7 +296,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 19%."
               data-is-focusable={true}
               fill="#5c2d91"
-              height={8}
+              height={12}
               key="0"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -324,8 +310,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             <rect
               aria-label="14200/15000."
               data-is-focusable={false}
-              fill="#c8c6c4"
-              height={8}
+              fill="#edebe9"
+              height={12}
               key="1"
               onBlur={[Function]}
               onMouseLeave={[Function]}
@@ -516,22 +502,13 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
   onMouseLeave={[Function]}
 >
   <div
-    className=
-
-        {
-          height: 32px;
-          margin-top: 5px;
-          position: relative;
-        }
     key="0"
   >
     <div
       className=
 
           {
-            height: 32px;
-            margin-top: 5px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -556,15 +533,15 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -605,7 +582,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             className=
 
                 {
-                  font-weight: 700;
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
                 }
             data-is-focusable={true}
             role="text"
@@ -630,8 +609,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           className=
 
               {
-                height: 8px;
-                margin-bottom: 11px;
+                display: block;
+                height: 12px;
                 width: 100%;
               }
         >
@@ -650,7 +629,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 94%."
               data-is-focusable={true}
               fill="#004b50"
-              height={8}
+              height={12}
               key="0"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -664,8 +643,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             <rect
               aria-label="13457/15000."
               data-is-focusable={false}
-              fill="#c8c6c4"
-              height={8}
+              fill="#edebe9"
+              height={12}
               key="1"
               onBlur={[Function]}
               onMouseLeave={[Function]}
@@ -680,22 +659,13 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
     </div>
   </div>
   <div
-    className=
-
-        {
-          height: 32px;
-          margin-top: 5px;
-          position: relative;
-        }
     key="1"
   >
     <div
       className=
 
           {
-            height: 32px;
-            margin-top: 5px;
-            position: relative;
+            margin-bottom: 10px;
           }
     >
       <div
@@ -720,15 +690,15 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -769,7 +739,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             className=
 
                 {
-                  font-weight: 700;
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
                 }
             data-is-focusable={true}
             role="text"
@@ -794,8 +766,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           className=
 
               {
-                height: 8px;
-                margin-bottom: 11px;
+                display: block;
+                height: 12px;
                 width: 100%;
               }
         >
@@ -814,7 +786,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 19%."
               data-is-focusable={true}
               fill="#5c2d91"
-              height={8}
+              height={12}
               key="0"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -828,8 +800,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             <rect
               aria-label="14200/15000."
               data-is-focusable={false}
-              fill="#c8c6c4"
-              height={8}
+              fill="#edebe9"
+              height={12}
               key="1"
               onBlur={[Function]}
               onMouseLeave={[Function]}

@@ -119,7 +119,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   controlOutlineDisabled: DarkSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: DarkSemanticColors.controlOutlines.hover,
   iconButtonFill: DarkSemanticColors.primaryButton.rest.background,
-  iconButtonFillHovered: DarkSemanticColors.primaryButton.hover.background,
+  iconButtonFillHovered: DarkSemanticColors.commandBar.button.hover.icon,
   labelText: DarkSemanticColors.text.label,
   sliderActiveBackground: DarkSemanticColors.slider.activeBackground,
   sliderInActiveHover: DarkSemanticColors.slider.inactiveBackgroundHovered,

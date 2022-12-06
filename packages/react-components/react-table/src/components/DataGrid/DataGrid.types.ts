@@ -3,9 +3,9 @@ import type { TableContextValues, TableProps, TableSlots, TableState } from '../
 import type {
   SortState,
   TableState as HeadlessTableState,
-  UseSortOptions,
+  UseTableSortOptions,
   SelectionMode,
-  UseSelectionOptions,
+  UseTableSelectionOptions,
   OnSelectionChangeData,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
@@ -53,8 +53,8 @@ export type DataGridContextValue = HeadlessTableState<any> & {
 export type DataGridProps = TableProps &
   Pick<DataGridContextValue, 'items' | 'columns'> &
   Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> &
-  Pick<UseSortOptions, 'sortState' | 'defaultSortState'> &
-  Pick<UseSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+  Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
+  Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
     /**

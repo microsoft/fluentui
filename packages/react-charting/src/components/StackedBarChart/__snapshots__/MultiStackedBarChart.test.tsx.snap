@@ -25,7 +25,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -51,15 +51,15 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -100,12 +100,26 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -127,7 +141,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -156,7 +171,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             >
               <rect
                 fill="#e81123"
-                height={16}
+                height={12}
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -188,7 +203,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -209,7 +224,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -235,15 +250,15 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -284,12 +299,26 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -311,7 +340,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -340,7 +370,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             >
               <rect
                 fill="#0078d4"
-                height={16}
+                height={12}
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -372,7 +402,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -644,7 +674,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -670,15 +700,15 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -719,12 +749,26 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -746,7 +790,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -775,7 +820,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             >
               <rect
                 fill="#e81123"
-                height={16}
+                height={12}
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -807,7 +852,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -828,7 +873,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -854,15 +899,15 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -903,12 +948,26 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -930,7 +989,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -959,7 +1019,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             >
               <rect
                 fill="#0078d4"
-                height={16}
+                height={12}
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -991,7 +1051,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -1180,7 +1240,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1206,15 +1266,15 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1255,12 +1315,26 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -1282,7 +1356,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -1310,7 +1385,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             >
               <rect
                 fill="#e81123"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1340,7 +1415,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1358,7 +1433,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1384,15 +1459,15 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1433,12 +1508,26 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -1460,7 +1549,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -1488,7 +1578,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             >
               <rect
                 fill="#0078d4"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1518,7 +1608,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1628,7 +1718,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1654,15 +1744,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1703,9 +1793,17 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
+            </span>
           </div>
         </div>
       </div>
@@ -1726,7 +1824,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -1754,7 +1853,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             >
               <rect
                 fill="#e81123"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1784,7 +1883,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1802,7 +1901,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -1828,15 +1927,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -1877,9 +1976,17 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
+            </span>
           </div>
         </div>
       </div>
@@ -1900,7 +2007,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -1928,7 +2036,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             >
               <rect
                 fill="#0078d4"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1958,7 +2066,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2068,7 +2176,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2094,15 +2202,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2143,12 +2251,26 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -2170,7 +2292,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -2198,7 +2321,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             >
               <rect
                 fill="#e81123"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2228,7 +2351,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2246,7 +2369,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2272,15 +2395,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2321,12 +2444,26 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -2348,7 +2485,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -2376,7 +2514,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             >
               <rect
                 fill="#0078d4"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2406,7 +2544,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2446,7 +2584,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2472,15 +2610,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2536,7 +2674,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -2564,7 +2703,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             >
               <rect
                 fill="#e81123"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2594,7 +2733,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2612,7 +2751,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -2638,15 +2777,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -2687,12 +2826,26 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -2714,7 +2867,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -2742,7 +2896,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             >
               <rect
                 fill="#0078d4"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2772,7 +2926,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3063,7 +3217,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -3089,15 +3243,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -3138,12 +3292,26 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -3165,7 +3333,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -3193,7 +3362,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             >
               <rect
                 fill="#e81123"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3223,7 +3392,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3241,7 +3410,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             width: 100%;
           }
     >
@@ -3267,15 +3436,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 3px;
               }
         >
           <div
             className=
                 ms-TooltipHost
                 {
+                  color: #171717;
                   display: block;
-                  font-weight: 700;
+                  margin-bottom: 5px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -3316,12 +3485,26 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             data-is-focusable={true}
             role="text"
           >
-            <strong>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
               40
-            </strong>
-            <span>
-              /
-              63
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
             </span>
           </div>
         </div>
@@ -3343,7 +3526,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             className=
 
                 {
-                  height: 16px;
+                  display: block;
+                  height: 12px;
                   width: 100%;
                 }
           >
@@ -3371,7 +3555,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             >
               <rect
                 fill="#0078d4"
-                height={16}
+                height={12}
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3401,7 +3585,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             >
               <rect
                 fill="#107c10"
-                height={16}
+                height={12}
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}

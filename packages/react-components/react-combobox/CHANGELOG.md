@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Thu, 17 Nov 2022 23:05:35 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.17)
+
+Mon, 05 Dec 2022 18:29:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.16..@fluentui/react-combobox_v9.0.0-beta.17)
+
+### Changes
+
+-  feat: update Option value to be a non-display value, and add an Option text prop that is required if the child is not a string ([PR #25379](https://github.com/microsoft/fluentui/pull/25379) by sarah.higley@microsoft.com)
+- fix: open Combobox popup when typing ([PR #25769](https://github.com/microsoft/fluentui/pull/25769) by sarah.higley@microsoft.com)
+- chore: Replace use of fontSize tokens with typographyStyles ([PR #25727](https://github.com/microsoft/fluentui/pull/25727) by behowell@microsoft.com)
+- fix: Combobox should close on blur after clicking expand icon ([PR #25771](https://github.com/microsoft/fluentui/pull/25771) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.10 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-portal to v9.0.12 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-positioning to v9.3.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.16)
 

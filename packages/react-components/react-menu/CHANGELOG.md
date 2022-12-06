@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 17 Nov 2022 23:05:41 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.5.1)
+
+Mon, 05 Dec 2022 18:29:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.5.0..@fluentui/react-menu_v9.5.1)
+
+### Patches
+
+- chore: removes prop spreading on MenuList state ([PR #25672](https://github.com/microsoft/fluentui/pull/25672) by bernardo.sunderhus@gmail.com)
+- fix: MenuDivider thickness should be `strokeWidthThin` ([PR #25711](https://github.com/microsoft/fluentui/pull/25711) by lingfangao@hotmail.com)
+- Bump @fluentui/react-portal to v9.0.12 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-positioning to v9.3.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-tabster to v9.3.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.5.0)
 

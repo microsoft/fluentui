@@ -82,6 +82,8 @@ export type {
   MenuListProps,
   MenuListSlots,
   MenuListState,
+  // UninitializedMenuListState is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   UninitializedMenuListState,
 } from './MenuList';
 export {

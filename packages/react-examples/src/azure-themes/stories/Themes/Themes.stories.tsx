@@ -64,7 +64,6 @@ const Example = () => (
       <ButtonIconWithTooltipExample />
       <ButtonContextualMenuExample />
       <ButtonActionExample />
-
       <Label>Toggle button</Label>
       <ButtonToggleExample />
       <ButtonSplitExample checked={false} />

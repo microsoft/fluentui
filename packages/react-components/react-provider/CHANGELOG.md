@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Thu, 17 Nov 2022 23:05:45 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.1.9)
+
+Mon, 05 Dec 2022 18:29:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.1.8..@fluentui/react-provider_v9.1.9)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25809](https://github.com/microsoft/fluentui/pull/25809) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.1.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-tabster to v9.3.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.1.8)
 
