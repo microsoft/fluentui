@@ -6,6 +6,9 @@ import {
   TextItalic24Regular,
   TextUnderline24Regular,
   AlertSnooze24Regular,
+  FontIncreaseRegular,
+  FontDecreaseRegular,
+  TextFontRegular,
 } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { steps } from './utils';
@@ -85,5 +88,19 @@ export const Large = (props: Partial<ToolbarProps>) => (
       value="toggle"
       icon={<AlertSnooze24Regular />}
     />
+  </Toolbar>
+);
+
+export const VerticalButton = (props: Partial<ToolbarProps>) => (
+  <Toolbar {...props}>
+    <ToolbarButton vertical appearance="primary" icon={<FontIncreaseRegular />}>
+      Increase
+    </ToolbarButton>
+    <ToolbarButton vertical icon={<FontDecreaseRegular />}>
+      Decrease
+    </ToolbarButton>
+    <ToolbarButton vertical icon={<TextFontRegular />}>
+      Reset
+    </ToolbarButton>
   </Toolbar>
 );
