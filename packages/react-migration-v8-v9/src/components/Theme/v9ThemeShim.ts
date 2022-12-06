@@ -105,7 +105,7 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorNeutralStencil1: palette.neutralLight,
     colorNeutralStencil2: palette.neutralLighterAlt,
     colorNeutralStencil1Alpha: inverted ? whiteAlpha[10] : blackAlpha[10],
-    colorNeutralStencil2Alpha: inverted ? whiteAlpha[10] : blackAlpha[5],
+    colorNeutralStencil2Alpha: inverted ? whiteAlpha[5] : blackAlpha[5],
     colorBackgroundOverlay: blackAlpha[40],
     colorScrollbarOverlay: blackAlpha[50],
     colorBrandBackground: palette.themePrimary,
