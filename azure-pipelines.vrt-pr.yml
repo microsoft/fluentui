@@ -234,7 +234,7 @@ jobs:
           Write-Host "Response: $pipelineBuildInfo"
           [int]$latestBuildId = $pipelineBuildInfo.value.id
           Write-Host "Setting variable LatestBuildId=$latestBuildId"
-          Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
+          Write-Host "##vso[task.setvariable variable=LatestBuildId]276721"
         name: GetLatestGreenCIBuild
         env:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
