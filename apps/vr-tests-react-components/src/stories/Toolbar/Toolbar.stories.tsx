@@ -27,7 +27,7 @@ export default {
   decorators: [
     story => (
       <Screener steps={steps}>
-        <div className="testWrapper" style={{ width: '300px' }}>
+        <div className="testWrapper" style={{ width: '600px' }}>
           {story()}
         </div>
       </Screener>
