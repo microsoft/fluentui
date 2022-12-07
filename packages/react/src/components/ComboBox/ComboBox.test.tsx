@@ -369,6 +369,17 @@ describe('ComboBox', () => {
     expect(combobox.getAttribute('value')).toEqual('One');
   });
 
+  it(`Can insert text in uncontrolled case with autoComplete and allowFreeform on but does not autocomplete to disabled
+      matching option`, () => {
+    const { getByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS4} autoComplete="on" allowFreeform />,
+    );
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('f');
+  });
+
   it('Can insert an empty string in uncontrolled case with autoComplete and allowFreeform on', () => {
     const { getByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform />,
