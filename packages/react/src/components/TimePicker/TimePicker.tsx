@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useConst } from '@fluentui/react-hooks';
 import { KeyCodes } from '../../Utilities';
 import {
   TimeConstants,
@@ -52,7 +51,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
-  const initialValue = useConst(defaultValue || new Date());
+  const initialValue = defaultValue || new Date();
   const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, initialValue), [
     increments,
     timeRange,
