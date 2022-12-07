@@ -27,12 +27,13 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     defaultSelectedItems,
     subtleSelection = false,
     selectionAppearance = 'brand',
+    getRowId,
   } = props;
 
   const navigable = focusMode !== 'none';
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
-  const tableState = useTableFeatures({ items, columns }, [
+  const tableState = useTableFeatures({ items, columns, getRowId }, [
     useTableSort({
       defaultSortState,
       sortState,

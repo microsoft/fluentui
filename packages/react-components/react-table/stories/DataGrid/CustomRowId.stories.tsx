@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, Checkbox } from '@fluentui/react-components';
 import { TableCellLayout } from '@fluentui/react-components/unstable';
 import {
   DataGridBody,
@@ -20,6 +20,8 @@ import {
   ColumnDefinition,
   RowState,
   createColumn,
+  RowId,
+  DataGridProps,
 } from '@fluentui/react-table';
 
 type FileCell = {
@@ -88,7 +90,7 @@ const items: Item[] = [
   },
 ];
 
-export const Default = () => {
+export const CustomRowId = () => {
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
@@ -148,30 +150,58 @@ export const Default = () => {
     [],
   );
 
-  return (
-    <DataGrid
-      items={items}
-      columns={columns}
-      focusMode="cell"
-      sortable
-      selectionMode="multiselect"
-      getRowId={item => item.file.label}
-      onSelectionChange={(e, data) => console.log(data)}
-    >
-      <DataGridHeader>
-        <DataGridRow>
-          {({ renderHeaderCell }: ColumnDefinition<Item>) => (
-            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-          )}
-        </DataGridRow>
-      </DataGridHeader>
-      <DataGridBody>
-        {({ item, rowId }: RowState<Item>) => (
-          <DataGridRow key={rowId}>
-            {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
-          </DataGridRow>
-        )}
-      </DataGridBody>
-    </DataGrid>
+  const [selectedRows, setSelectedRows] = React.useState(
+    new Set<RowId>(['Thursday presentation']),
   );
+  const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
+    setSelectedRows(data.selectedItems);
+  };
+
+  return (
+    <>
+      <ul>
+        {items.map(item => (
+          <li key={item.file.label}>
+            <Checkbox label={item.file.label} checked={selectedRows.has(item.file.label)} />
+          </li>
+        ))}
+      </ul>
+
+      <DataGrid
+        items={items}
+        columns={columns}
+        focusMode="cell"
+        selectionMode="multiselect"
+        selectedItems={selectedRows}
+        onSelectionChange={onSelectionChange}
+        getRowId={item => item.file.label}
+      >
+        <DataGridHeader>
+          <DataGridRow>
+            {({ renderHeaderCell }: ColumnDefinition<Item>) => (
+              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+            )}
+          </DataGridRow>
+        </DataGridHeader>
+        <DataGridBody>
+          {({ item, rowId }: RowState<Item>) => (
+            <DataGridRow key={rowId}>
+              {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>
+    </>
+  );
+};
+
+CustomRowId.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default row Ids are the index of the item in the collection. In order to use a row Id based on the data',
+        'use the `getRowId` prop.',
+      ].join('\n'),
+    },
+  },
 };
