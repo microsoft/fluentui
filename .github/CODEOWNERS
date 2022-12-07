@@ -54,7 +54,7 @@ perf-test/ @microsoft/fluentui-react-build
 # todo-app/
 
 #### Packages
-packages/azure-themes/ @hyoshis @Jacqueline-ms
+packages/azure-themes @robtaft-ms @Jacqueline-ms
 packages/charting/ @microsoft/charting-team
 packages/date-time @ermercer @evlevy
 packages/date-time-utilities @ermercer @evlevy
