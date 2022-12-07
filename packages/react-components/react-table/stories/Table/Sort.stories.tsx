@@ -144,7 +144,7 @@ export const Sort = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable {...keyboardNavAttr}>
+    <Table sortable {...keyboardNavAttr} aria-label="Table with sort">
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
