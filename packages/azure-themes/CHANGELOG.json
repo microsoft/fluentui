@@ -2,6 +2,21 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 07 Dec 2022 07:43:15 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.34",
+      "version": "8.5.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "3b98e91e026e9a458d792e767902e060eaba5a3c",
+            "comment": "action button fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 07:54:46 GMT",
       "tag": "@fluentui/azure-themes_v8.5.33",
       "version": "8.5.33",

@@ -12899,7 +12899,7 @@ fast-loops@^1.0.0, fast-loops@^1.0.1:
   resolved "https://registry.yarnpkg.com/fast-loops/-/fast-loops-1.1.2.tgz#2ee75ba943a08a9b1ffdf9b49f133322c99bda68"
   integrity sha512-ql8BgnHFryLogmmzR5O3uobe+3Zzaq6h6MWn/VtAyL9OXb51r5PSTbCm9f56fvEvMWWGjbdkr4xyhT0/vLJkKw==
 
-fast-png@6.1.0:
+fast-png@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/fast-png/-/fast-png-6.1.0.tgz#c0abd3015346e16752acbe4ea74f1f0170b55b9e"
   integrity sha512-v8e/40RKZbE1mALigoqBOkYnemCVSMmVlGSz8fawZAZg5UQ9OZeR00L++CPvrhIGm2F6TxV5u9lbWD0oOJHcCw==
@@ -17225,10 +17225,10 @@ joycon@^3.0.1:
   resolved "https://registry.yarnpkg.com/joycon/-/joycon-3.1.1.tgz#bce8596d6ae808f8b68168f5fc69280996894f03"
   integrity sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==
 
-jpeg-js@0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.4.3.tgz#6158e09f1983ad773813704be80680550eff977b"
-  integrity sha512-ru1HWKek8octvUHFHvE5ZzQ1yAsJmIvRdGWvSoKV52XKyuyYA437QWDttXT8eZXDSbuMpHlLzPDZUPd6idIz+Q==
+jpeg-js@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.4.4.tgz#a9f1c6f1f9f0fa80cdb3484ed9635054d28936aa"
+  integrity sha512-WZzeDOEtTOBK4Mdsar0IqEU5sMr3vSV2RqkAIzUEV2BHnUfKGyswWFPFwK5EeDo93K3FohSHbLAjj0s1Wzd+dg==
 
 js-message@1.0.5:
   version "1.0.5"
@@ -21289,19 +21289,19 @@ pirates@^4.0.0, pirates@^4.0.1, pirates@^4.0.4, pirates@^4.0.5:
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
   integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
-pixel-buffer-diff-folders@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/pixel-buffer-diff-folders/-/pixel-buffer-diff-folders-1.1.2.tgz#2995e410a67152b0f3c44408eebc0081865823b3"
-  integrity sha512-Rr4HHKsW0ovmGw1nPchrv/xgn4gzhLFhNb+algIMfiI94UXFLHmWCobiBiK7ZZRj2Wx6MZeGcYeX0pE000KU/w==
+pixel-buffer-diff-folders@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/pixel-buffer-diff-folders/-/pixel-buffer-diff-folders-1.3.0.tgz#89d1f1af84fb469311de6fc20bda807105280a62"
+  integrity sha512-EYARjQXOAN/XKdnUiJC2JX6GdyJ1hv1MXZlGbPdB6sAKxFJJN4Cl1zZcHCVKh2eOAaWEvegTctx0VNRRrcqeog==
   dependencies:
-    fast-png "6.1.0"
-    jpeg-js "0.4.3"
-    pixel-buffer-diff "1.3.2"
+    fast-png "^6.1.0"
+    jpeg-js "^0.4.4"
+    pixel-buffer-diff "1.3.3"
 
-pixel-buffer-diff@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/pixel-buffer-diff/-/pixel-buffer-diff-1.3.2.tgz#55137cf38a034d7dc091c8d5eb3b27fc5d55b8d0"
-  integrity sha512-qE/EcXw2Gbm0kX9k4OEaGCvz7wrzDFJH60hAV4WQjCERoxv9Uhkk7M2pyy6QqZZLDs0gHw1c0igIpWtcADkwKg==
+pixel-buffer-diff@1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/pixel-buffer-diff/-/pixel-buffer-diff-1.3.3.tgz#081965c3711663db4c749281c79d0caf461b4cbf"
+  integrity sha512-Idq8Wps2P5iKgvP3DEb0aZuKqqDuqsiqY0jJmqHMYfCzq4xuNPygFg1zdZSM5k5m14u8Ww72mTY39Bu2XtT2+A==
 
 pkg-dir@4.2.0, pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   version "4.2.0"
@@ -26737,10 +26737,10 @@ void-elements@^2.0.0:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
-vrscreenshotdiff@0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/vrscreenshotdiff/-/vrscreenshotdiff-0.0.11.tgz#d5ee4338b2bce6319f1f3cbb7176f566a86fdbd5"
-  integrity sha512-JLhGNXoDU2IWRTEcejhRSsZJlREeeRMUlQ6AIop+aS6QfQMZ6LpSczl1DzWYx6olZeUKfTybGu4im1FxTytJtw==
+vrscreenshotdiff@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/vrscreenshotdiff/-/vrscreenshotdiff-0.0.16.tgz#54b312a3d87d9c6bcd20f9aa2c2973e43989fa1a"
+  integrity sha512-LVrjP+11tKwsxdk+MUmK93d+B4LT/gFYdKA/I/bjRuCsRnNWvmrgbbCg0QKv1BausE8pKeH/YNKJPQzoGWd0JQ==
   dependencies:
     "@octokit/rest" "^19.0.3"
     adal-node "^0.2.3"
@@ -26748,8 +26748,9 @@ vrscreenshotdiff@0.0.11:
     azure-storage "^2.10.3"
     azure-storage-simple "1.0.0"
     lodash "^4.17.21"
-    pixel-buffer-diff-folders "^1.1.2"
+    pixel-buffer-diff-folders "^1.3.0"
     unzipper "^0.10.5"
+    yargs "^13.3.0"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"

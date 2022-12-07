@@ -51,9 +51,9 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForegroundInvertedLinkHover: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkPressed: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkSelected: white, // #ffffff Global.Color.White
-  colorBrandForegroundInverted: brand[100], // #2899f5 Global.Color.Brand.100
-  colorBrandForegroundInvertedHover: brand[110], // #3aa0f3 Global.Color.Brand.110
-  colorBrandForegroundInvertedPressed: brand[100], // #2899f5 Global.Color.Brand.100
+  colorBrandForegroundInverted: brand[80], // #0078d4 Global.Color.Brand.80
+  colorBrandForegroundInvertedHover: brand[70], // #106ebe Global.Color.Brand.70
+  colorBrandForegroundInvertedPressed: brand[60], // #005a9e Global.Color.Brand.60
   colorBrandForegroundOnLight: brand[80], // #0078d4 Global.Color.Brand.80
   colorBrandForegroundOnLightHover: brand[70], // #106ebe Global.Color.Brand.70
   colorBrandForegroundOnLightPressed: brand[50], // #004c87 Global.Color.Brand.50
@@ -100,6 +100,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackgroundInvertedDisabled: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
   colorNeutralStencil1: grey[34], // #575757 Global.Color.Grey.34
   colorNeutralStencil2: grey[20], // #333333 Global.Color.Grey.20
+  colorNeutralStencil1Alpha: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
+  colorNeutralStencil2Alpha: whiteAlpha[5], // rgba(255, 255, 255, 0.05) Global.Color.WhiteAlpha.5
   colorBackgroundOverlay: blackAlpha[50], // rgba(0, 0, 0, 0.5) Global.Color.BlackAlpha.50
   colorScrollbarOverlay: whiteAlpha[60], // rgba(255, 255, 255, 0.6) Global.Color.WhiteAlpha.60
   colorBrandBackground: brand[70], // #106ebe Global.Color.Brand.70
