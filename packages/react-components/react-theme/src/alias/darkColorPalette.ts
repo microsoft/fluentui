@@ -1,3 +1,5 @@
+/* color palette used in both darkTheme and teamsDarkTheme */
+
 import { statusSharedColors, personaSharedColors } from '../global/colorPalette';
 import { statusSharedColorNames, personaSharedColorNames } from '../sharedColorNames';
 import { ColorPaletteTokens, PersonaColorPaletteTokens, StatusColorPaletteTokens } from '../types';
@@ -19,6 +21,18 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
   return Object.assign(acc, sharedColorTokens);
 }, {} as StatusColorPaletteTokens);
 
+// one-off patches
+statusColorPaletteTokens.colorPaletteRedForeground3 = statusSharedColors.red.tint30;
+statusColorPaletteTokens.colorPaletteRedBorder2 = statusSharedColors.red.tint30;
+statusColorPaletteTokens.colorPaletteGreenForeground3 = statusSharedColors.green.tint40;
+statusColorPaletteTokens.colorPaletteGreenBorder2 = statusSharedColors.green.tint40;
+statusColorPaletteTokens.colorPaletteDarkOrangeForeground3 = statusSharedColors.darkOrange.tint30;
+statusColorPaletteTokens.colorPaletteDarkOrangeBorder2 = statusSharedColors.darkOrange.tint30;
+
+statusColorPaletteTokens.colorPaletteRedForegroundInverted = statusSharedColors.red.primary;
+statusColorPaletteTokens.colorPaletteGreenForegroundInverted = statusSharedColors.green.primary;
+statusColorPaletteTokens.colorPaletteYellowForegroundInverted = statusSharedColors.yellow.shade30;
+
 const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
   const sharedColorTokens = {
@@ -29,5 +43,9 @@ const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedCol
 
   return Object.assign(acc, sharedColorTokens);
 }, {} as PersonaColorPaletteTokens);
+
+// one-off patches
+personaColorPaletteTokens.colorPaletteDarkRedBackground2 = personaSharedColors.darkRed.shade20;
+personaColorPaletteTokens.colorPalettePlumBackground2 = personaSharedColors.plum.shade20;
 
 export const colorPaletteTokens: ColorPaletteTokens = { ...statusColorPaletteTokens, ...personaColorPaletteTokens };
