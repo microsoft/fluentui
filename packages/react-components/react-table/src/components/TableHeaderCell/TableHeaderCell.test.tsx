@@ -94,7 +94,7 @@ describe('TableHeaderCell', () => {
     },
   );
 
-  it('should not render aria-sort when column is not sorted', () => {
+  it('should render aria-sort "none" when column is not sorted', () => {
     const { getByRole } = render(
       <TableContextProvider
         value={{
@@ -106,6 +106,6 @@ describe('TableHeaderCell', () => {
         <TableHeaderCell>Cell</TableHeaderCell>
       </TableContextProvider>,
     );
-    expect(getByRole('columnheader').hasAttribute('aria-sort')).toBe(false);
+    expect(getByRole('columnheader').getAttribute('aria-sort')).toEqual('none');
   });
 });
