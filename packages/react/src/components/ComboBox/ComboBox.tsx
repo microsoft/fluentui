@@ -810,7 +810,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     if (updatedValue === '') {
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter(option => isNormalOption(option) && getPreviewText(option) === updatedValue);
+        .filter(option => isNormalOption(option) && !option.disabled && getPreviewText(option) === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -852,7 +852,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter(option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase() === updatedValue);
+        .filter(
+          option =>
+            isNormalOption(option) && !option.disabled && getPreviewText(option).toLocaleLowerCase() === updatedValue,
+        );
 
       // if we found a match remember the index
       if (items.length === 1) {
