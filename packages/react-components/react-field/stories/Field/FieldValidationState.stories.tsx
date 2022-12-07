@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-components/unstable';
+import { Field } from '../../src/index';
+import { Input, makeStyles, tokens } from '@fluentui/react-components';
 import { SparkleFilled } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -15,30 +15,38 @@ export const ValidationState = () => {
   const styles = useStyles();
   return (
     <div className={styles.stack}>
-      <InputField
+      <Field
         label="Error state"
         validationState="error"
-        validationMessage="This is an error message"
+        validationMessage="This is an error message."
         orientation="horizontal"
-      />
-      <InputField
+      >
+        <Input />
+      </Field>
+      <Field
         label="Warning state"
         validationState="warning"
-        validationMessage="This is a warning message"
+        validationMessage="This is a warning message."
         orientation="horizontal"
-      />
-      <InputField
+      >
+        <Input />
+      </Field>
+      <Field
         label="Success state"
         validationState="success"
-        validationMessage="This is a success message"
+        validationMessage="This is a success message."
         orientation="horizontal"
-      />
-      <InputField
+      >
+        <Input />
+      </Field>
+      <Field
         label="Custom state"
         validationMessageIcon={<SparkleFilled />}
-        validationMessage="This validation message has a custom icon"
+        validationMessage="This validation message has a custom icon."
         orientation="horizontal"
-      />
+      >
+        <Input />
+      </Field>
     </div>
   );
 };
