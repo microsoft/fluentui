@@ -32,6 +32,30 @@ describe('Listbox', () => {
     expect(result.container).toMatchSnapshot();
   });
 
+  it('uses lisbox/option semantics for single-select', () => {
+    const { getAllByRole } = render(
+      <Listbox>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+    expect(getAllByRole('listbox').length).toEqual(1);
+    expect(getAllByRole('option').length).toEqual(3);
+  });
+
+  it('uses menu/menuitemcheckbox semantics for multi-select', () => {
+    const { getAllByRole } = render(
+      <Listbox multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+    expect(getAllByRole('menu').length).toEqual(1);
+    expect(getAllByRole('menuitemcheckbox').length).toEqual(3);
+  });
+
   /* Moving activeOption */
   it('should set active option on click', () => {
     const { getByTestId } = render(
@@ -158,9 +182,9 @@ describe('Listbox', () => {
       </Listbox>,
     );
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Red').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Blue').getAttribute('aria-selected')).toEqual('false');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Red').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Blue').getAttribute('aria-checked')).toEqual('false');
   });
 
   it('should set selectedOptions', () => {
@@ -201,8 +225,8 @@ describe('Listbox', () => {
 
     fireEvent.click(getByText('Red'));
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Red').getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Red').getAttribute('aria-checked')).toEqual('true');
   });
 
   it('should fire onChange when an option is selected', () => {
