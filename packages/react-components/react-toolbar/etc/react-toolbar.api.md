@@ -63,6 +63,15 @@ export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>> & {
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
 
 // @public
+export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
+
+// @public
+export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
+
+// @public
+export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
+
+// @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
     size?: 'small' | 'medium' | 'large';
     vertical?: boolean;

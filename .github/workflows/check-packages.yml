@@ -15,7 +15,7 @@ jobs:
           node-version: 14.18.1
           cache: 'yarn'
 
-      - uses: tj-actions/changed-files@v32
+      - uses: tj-actions/changed-files@v34
         id: changed-files-specific
         with:
           files: |

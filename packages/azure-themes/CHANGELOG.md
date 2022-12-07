@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 05 Dec 2022 07:54:46 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Dec 2022 07:43:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.34](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.34)
+
+Wed, 07 Dec 2022 07:43:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.33..@fluentui/azure-themes_v8.5.34)
+
+### Patches
+
+- action button fix ([PR #25900](https://github.com/microsoft/fluentui/pull/25900) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [8.5.33](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.33)
 
