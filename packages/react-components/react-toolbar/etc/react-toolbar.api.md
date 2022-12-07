@@ -32,10 +32,12 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 // @public
 export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
     appearance?: 'primary' | 'subtle';
+} & {
+    vertical?: boolean;
 };
 
 // @public
-export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState;
+export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState & Required<Pick<ToolbarButtonProps, 'vertical'>>;
 
 // @public (undocumented)
 export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
