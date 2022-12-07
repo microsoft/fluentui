@@ -44,14 +44,15 @@ export function copyCompiled() {
   const packageDir = process.cwd();
 
   if (!(isUsingTsSolutionConfigs && tsConfig)) {
-    throw new Error(`this task compliant only with packages that use TS solution config files.`);
+    logger.warn(`copy-compiled: works only with packages that use TS solution config files. Skipping...`);
+    return;
   }
 
   // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
   const hasNewCompilationSetup = (tsConfig.compilerOptions.outDir as string).includes('dist/out-tsc');
 
   if (!hasNewCompilationSetup) {
-    logger.info('copy-compiled: noop ');
+    logger.info('copy-compiled: noop');
 
     return;
   }
@@ -83,6 +84,10 @@ export function copyCompiled() {
       ),
       out: path.join(packageDir, path.dirname(packageJson.main)),
     },
+    amd: {
+      in: path.join(packageDir, tsConfig.compilerOptions.outDir as string, 'lib-amd', projectMetadata.sourceRoot),
+      out: path.join(packageDir, 'lib-amd'),
+    },
   };
 
   const tasks = [
@@ -97,6 +102,12 @@ export function copyCompiled() {
 
       dest: paths.commonJs.out,
     }),
+    fs.existsSync(paths.amd.in)
+      ? copyTask({
+          paths: [paths.amd.in],
+          dest: paths.amd.out,
+        })
+      : null,
   ].filter(Boolean) as TaskFunction[];
 
   return series(...tasks);

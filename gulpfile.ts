@@ -6,15 +6,13 @@ import { task, parallel } from 'gulp';
 import * as path from 'path';
 import * as tsPaths from 'tsconfig-paths';
 
-import config from './scripts/config';
-
-const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
+const { compilerOptions } = require('./packages/fluentui/docs/tsconfig.json');
 
 // add node_modules/.bin to the path so we can invoke .bin CLIs in tasks
 process.env.PATH = process.env.PATH + path.delimiter + path.resolve(__dirname, 'node_modules', '.bin');
 
 tsPaths.register({
-  baseUrl: config.path_base,
+  baseUrl: __dirname,
   paths: compilerOptions.paths,
 });
 

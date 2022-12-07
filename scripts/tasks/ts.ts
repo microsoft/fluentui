@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { tscTask, TscTaskOptions, logger } from 'just-scripts';
 import { getJustArgv } from './argv';
-import { getTsPathAliasesConfig } from './utils';
+import { getTsPathAliasesConfig, getTsPathAliasesConfigV8 } from './utils';
 
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
@@ -22,6 +22,15 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.sourceMap = true;
   }
 
+  const { isUsingV8pathAliases, tsConfigFileV8 } = getTsPathAliasesConfigV8();
+
+  if (isUsingV8pathAliases) {
+    logger.info(`📣 TSC: V8 package is using TS path aliases. Overriding tsconfig settings.`);
+    options.baseUrl = '.';
+    options.rootDir = './src';
+    options.project = tsConfigFileV8;
+  }
+
   const { isUsingTsSolutionConfigs, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
 
   if (isUsingTsSolutionConfigs && tsConfig) {
@@ -34,7 +43,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     if (hasNewCompilationSetup) {
       options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     } else {
-      // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+      // TODO: remove after all v9 is migrated to new tsc processing
       options.baseUrl = '.';
       options.rootDir = './src';
     }

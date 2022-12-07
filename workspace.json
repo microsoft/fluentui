@@ -692,13 +692,6 @@
       "sourceRoot": "packages/react-components/react-spinner/src",
       "tags": ["vNext", "platform:web"]
     },
-    "@fluentui/react-storybook": {
-      "root": "packages/react-components/react-storybook",
-      "projectType": "library",
-      "sourceRoot": "packages/react-components/react-storybook/src",
-      "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
     "@fluentui/react-storybook-addon": {
       "root": "packages/react-components/react-storybook-addon",
       "projectType": "library",

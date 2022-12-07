@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 15 Nov 2022 07:44:58 GMT",
+      "tag": "@fluentui/utilities_v8.13.4",
+      "version": "8.13.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "b75de6cbb07fae634938821eb1afef450e1e46ef",
+            "comment": "fix: handle null and undefined in shallowCompare, add tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Nov 2022 07:48:12 GMT",
       "tag": "@fluentui/utilities_v8.13.3",
       "version": "8.13.3",

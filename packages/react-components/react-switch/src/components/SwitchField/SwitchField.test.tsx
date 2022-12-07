@@ -1,4 +1,4 @@
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { SwitchField } from './SwitchField';
 
 describe('SwitchField', () => {

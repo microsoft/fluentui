@@ -222,10 +222,6 @@ exports[`ComboBox Renders correctly 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -558,10 +554,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -831,10 +823,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             font-weight: 400;
                             height: auto;
                             line-height: 20px;
-                            margin-bottom: 0px;
-                            margin-left: 0px;
-                            margin-right: 0px;
-                            margin-top: 0px;
                             min-height: 36px;
                             outline: transparent;
                             overflow-wrap: break-word;
@@ -990,10 +978,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          margin-bottom: 0px;
-                          margin-left: 0px;
-                          margin-right: 0px;
-                          margin-top: 0px;
                           min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -1339,10 +1323,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -2233,10 +2213,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;

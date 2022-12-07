@@ -5,6 +5,8 @@
 ```ts
 
 import { __css } from '@griffel/react';
+import { __resetCSS } from '@griffel/react';
+import { __resetStyles } from '@griffel/react';
 import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
@@ -253,6 +255,7 @@ import { MenuListProvider } from '@fluentui/react-menu';
 import { MenuListSlots } from '@fluentui/react-menu';
 import { MenuListState } from '@fluentui/react-menu';
 import { MenuOpenChangeData } from '@fluentui/react-menu';
+import { MenuOpenEvent } from '@fluentui/react-menu';
 import { MenuOpenEvents } from '@fluentui/react-menu';
 import { MenuPopover } from '@fluentui/react-menu';
 import { menuPopoverClassNames } from '@fluentui/react-menu';
@@ -630,6 +633,10 @@ import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
 
 export { __css }
+
+export { __resetCSS }
+
+export { __resetStyles }
 
 export { __styles }
 
@@ -1126,6 +1133,8 @@ export { MenuListSlots }
 export { MenuListState }
 
 export { MenuOpenChangeData }
+
+export { MenuOpenEvent }
 
 export { MenuOpenEvents }
 

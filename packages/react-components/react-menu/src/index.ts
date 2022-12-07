@@ -7,7 +7,17 @@ export { MenuListProvider, useMenuListContext_unstable } from './contexts/menuLi
 export type { MenuListContextValue } from './contexts/menuListContext';
 
 export { Menu, renderMenu_unstable, useMenuContextValues_unstable, useMenu_unstable } from './Menu';
-export type { MenuContextValues, MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuSlots, MenuState } from './Menu';
+export type {
+  MenuContextValues,
+  MenuOpenChangeData,
+  MenuOpenEvent,
+  // MenuOpenEvents is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
+  MenuOpenEvents,
+  MenuProps,
+  MenuSlots,
+  MenuState,
+} from './Menu';
 export {
   MenuDivider,
   menuDividerClassNames,
@@ -72,6 +82,8 @@ export type {
   MenuListProps,
   MenuListSlots,
   MenuListState,
+  // UninitializedMenuListState is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   UninitializedMenuListState,
 } from './MenuList';
 export {

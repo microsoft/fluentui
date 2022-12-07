@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Fri, 11 Nov 2022 14:57:33 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.7)
+
+Mon, 05 Dec 2022 18:29:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.6..@fluentui/react-progress_v9.0.0-alpha.7)
+
+### Changes
+
+- chore: Migrate to new package structure. ([PR #25744](https://github.com/microsoft/fluentui/pull/25744) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.10 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.6)
+
+Thu, 17 Nov 2022 23:05:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.5..@fluentui/react-progress_v9.0.0-alpha.6)
+
+### Changes
+
+- fix: update validationState tokens to use background instead of foreground ([PR #25664](https://github.com/microsoft/fluentui/pull/25664) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.9 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.5)
 

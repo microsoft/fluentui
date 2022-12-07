@@ -46,7 +46,7 @@ function _processStackChildren(
 
   childrenArray = React.Children.map(childrenArray, child => {
     if (!child || !React.isValidElement(child)) {
-      return null;
+      return child;
     }
 
     if (child.type === React.Fragment) {

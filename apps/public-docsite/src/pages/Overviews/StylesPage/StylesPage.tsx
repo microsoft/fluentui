@@ -17,8 +17,8 @@ const StylesPageBase: React.FunctionComponent<IPageProps<Platforms>> = props => 
     <Page
       title="Styles"
       platform={platform}
-      subTitle={getSubTitle(platform)}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      subTitle={getSubTitle(platform!)}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
       showSideRail={false}
       sectionWrapperClassName={styles.cardWrapper}
     />

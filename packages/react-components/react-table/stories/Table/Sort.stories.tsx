@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -16,10 +16,10 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   ColumnId,
-  useSort,
+  useTableSort,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -124,17 +124,19 @@ export const Sort = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
-    [useSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
+    [useTableSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
   );
 
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => {
-      toggleColumnSort(columnId);
+    onClick: (e: React.MouseEvent) => {
+      toggleColumnSort(e, columnId);
     },
     sortDirection: getSortDirection(columnId),
   });
@@ -142,7 +144,7 @@ export const Sort = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable>
+    <Table sortable {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -175,4 +177,16 @@ export const Sort = () => {
       </TableBody>
     </Table>
   );
+};
+
+Sort.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Using the `sortable` prop will configure all header cells to be buttons and add extra styles.',
+        'The `TableHeaderCell` component accepts a `sortDirection` prop that will indicate whether the',
+        'header is sorted. Handling the sort of data and column state is handled by `useTableFeatures`.',
+      ].join('\n'),
+    },
+  },
 };

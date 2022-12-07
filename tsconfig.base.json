@@ -60,7 +60,6 @@
       "@fluentui/react-slider": ["packages/react-components/react-slider/src/index.ts"],
       "@fluentui/react-spinbutton": ["packages/react-components/react-spinbutton/src/index.ts"],
       "@fluentui/react-spinner": ["packages/react-components/react-spinner/src/index.ts"],
-      "@fluentui/react-storybook": ["packages/react-components/react-storybook/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],

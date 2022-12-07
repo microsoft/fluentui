@@ -25,7 +25,9 @@ export const personaClassNames: SlotClassNames<PersonaSlots>;
 export type PersonaProps = ComponentProps<PersonaSlots> & {
     name?: string;
     presenceOnly?: boolean;
-    textPosition?: 'before' | 'after' | 'below';
+    size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+    textPosition?: 'after' | 'before' | 'below';
+    textAlignment?: 'center' | 'start';
 };
 
 // @public (undocumented)
@@ -40,8 +42,7 @@ export type PersonaSlots = {
 };
 
 // @public
-export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'textPosition' | 'presenceOnly'>> & {
-    fixed: boolean;
+export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'presenceOnly' | 'size' | 'textAlignment' | 'textPosition'>> & {
     numTextLines: number;
 };
 

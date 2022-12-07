@@ -16,36 +16,12 @@ const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-row',
   },
-
-  medium: {
-    height: '44px',
-  },
-
-  small: {
-    height: '34px',
-  },
-
-  smaller: {
-    height: '24px',
-  },
 });
 
 const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-  },
-
-  medium: {
-    minHeight: '44px',
-  },
-
-  small: {
-    minHeight: '34px',
-  },
-
-  smaller: {
-    minHeight: '24px',
   },
 });
 
@@ -61,15 +37,34 @@ const useStyles = makeStyles({
         [`& .${tableSelectionCellClassNames.root}`]: {
           opacity: 1,
         },
+        [`& .${tableCellActionsClassNames.root}`]: {
+          opacity: 1,
+        },
       },
       { selector: 'focus-within' },
     ),
     ...createCustomFocusIndicatorStyle(
       {
-        ...shorthands.outline('2px', 'solid'),
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
       { selector: 'focus', enableOutline: true },
+    ),
+  },
+
+  // When focus is within the row the background colour
+  // should be the same as hover, except when there is a brand
+  // or neutral appearance applied on the row
+  noAppearanceFocusWithin: {
+    ...createCustomFocusIndicatorStyle(
+      {
+        [`& .${tableCellActionsClassNames.root}`]: {
+          backgroundColor: tokens.colorSubtleBackgroundHover,
+        },
+
+        backgroundColor: tokens.colorSubtleBackgroundHover,
+      },
+      { selector: 'focus-within' },
     ),
   },
 
@@ -82,7 +77,6 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -94,7 +88,6 @@ const useStyles = makeStyles({
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
     },
@@ -108,7 +101,7 @@ const useStyles = makeStyles({
     ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
-  smaller: {
+  'extra-small': {
     fontSize: tokens.fontSizeBase200,
   },
 
@@ -144,9 +137,7 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
+
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
@@ -172,8 +163,8 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     !isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
-    state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
     styles[state.appearance],
+    state.appearance === 'none' && !isHeaderRow && styles.noAppearanceFocusWithin,
     state.root.className,
   );
 

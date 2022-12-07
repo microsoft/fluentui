@@ -40,7 +40,7 @@ export interface IMultiStackedBarChartState {
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
   public static defaultProps: Partial<IMultiStackedBarChartProps> = {
-    barHeight: 16,
+    barHeight: 12,
     hideRatio: [],
     hideDenominator: [],
   };
@@ -166,7 +166,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       const color: string = point.color
         ? point.color
         : point.placeHolder
-        ? palette.neutralTertiaryAlt
+        ? palette.neutralLight
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
@@ -202,9 +202,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
-          aria-labelledby={this._calloutId}
           role="img"
-          aria-label="Multi stacked bar chart"
+          aria-label={this._getAriaLabel(point)}
           onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
@@ -217,14 +216,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     if (data.chartData!.length === 0) {
       bars.push(
         <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
+          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
         </g>,
       );
     }
     if (total === 0) {
       bars.push(
         <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
+          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
         </g>,
       );
     }
@@ -247,13 +246,20 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             )}
             {showRatio && (
               <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{getChartData()}</strong>
-                {!hideDenominator && <span>/{convertToLocaleString(total, culture)}</span>}
+                <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
+                {!hideDenominator && (
+                  <span className={this._classNames.ratioDenominator}>
+                    {' / ' + convertToLocaleString(total, culture)}
+                  </span>
+                )}
               </div>
             )}
             {showNumber && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{getChartData()}</strong>
+              <div
+                className={this._classNames.ratioNumerator}
+                {...getAccessibleDataObject(data!.chartDataAccessibilityData)}
+              >
+                {getChartData()}
               </div>
             )}
           </div>
@@ -460,5 +466,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: IChartDataPoint): string => {
+    const legend = point.xAxisCalloutData || point.legend;
+    const yValue = point.yAxisCalloutData || point.data || 0;
+    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 }

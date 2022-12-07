@@ -47,41 +47,41 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   const child = getTriggerChild(children);
 
-  const onContextMenu = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
 
     if (openOnContext) {
-      e.preventDefault();
-      setOpen(e, { open: true, keyboard: false });
+      event.preventDefault();
+      setOpen(event, { open: true, keyboard: false, type: 'menuTriggerContextMenu', event });
     }
   };
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
 
     if (!openOnContext) {
-      setOpen(e, { open: !open, keyboard: openedWithKeyboardRef.current });
+      setOpen(event, { open: !open, keyboard: openedWithKeyboardRef.current, type: 'menuTriggerClick', event });
       openedWithKeyboardRef.current = false;
     }
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
 
-    const key = e.key;
+    const key = event.key;
 
     if (!openOnContext && ((isSubmenu && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))) {
-      setOpen(e, { open: true, keyboard: true });
+      setOpen(event, { open: true, keyboard: true, type: 'menuTriggerKeyDown', event });
     }
 
     if (key === Escape && !isSubmenu) {
-      setOpen(e, { open: false, keyboard: true });
+      setOpen(event, { open: false, keyboard: true, type: 'menuTriggerKeyDown', event });
     }
 
     // if menu is already open, can't rely on effects to focus
@@ -90,34 +90,34 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const onMouseEnter = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onMouseEnter = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
     if (openOnHover && hasMouseMoved.current) {
-      setOpen(e, { open: true, keyboard: false });
+      setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
     }
   };
 
   // Opening a menu when a mouse hasn't moved and just entering the trigger is a bad a11y experience
   // First time open the mouse using mousemove and then continue with mouseenter
   // Only use once to determine that the user is using the mouse since it is an expensive event to handle
-  const onMouseMove = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onMouseMove = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
     if (openOnHover && !hasMouseMoved.current) {
-      setOpen(e, { open: true, keyboard: false });
+      setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseMove', event });
       hasMouseMoved.current = true;
     }
   };
 
-  const onMouseLeave = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onMouseLeave = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
     if (openOnHover) {
-      setOpen(e, { open: false, keyboard: false });
+      setOpen(event, { open: false, keyboard: false, type: 'menuTriggerMouseLeave', event });
     }
   };
 

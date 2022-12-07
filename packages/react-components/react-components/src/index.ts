@@ -1,6 +1,8 @@
 // Utilities
 export {
   __css,
+  __resetCSS,
+  __resetStyles,
   __styles,
   createDOMRenderer,
   makeStaticStyles,
@@ -465,6 +467,9 @@ export type {
   MenuListSlots,
   MenuListState,
   MenuOpenChangeData,
+  MenuOpenEvent,
+  // MenuOpenEvents is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   MenuOpenEvents,
   MenuPopoverProps,
   MenuPopoverSlots,
@@ -479,6 +484,8 @@ export type {
   MenuTriggerProps,
   MenuTriggerState,
   SelectableHandler,
+  // UninitializedMenuListState is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   UninitializedMenuListState,
 } from '@fluentui/react-menu';
 export {

@@ -86,7 +86,7 @@ apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
 
 #### Packages
-packages/azure-themes @hyoshis @Jacqueline-ms
+packages/azure-themes @robtaft-ms @Jacqueline-ms
 packages/bundle-size @microsoft/teams-prg
 packages/date-time-utilities @microsoft/fluent-date-time
 packages/eslint-plugin @microsoft/fluentui-react-build
@@ -111,7 +111,6 @@ packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
 packages/react-components/react-shared-contexts @microsoft/teams-prg
-packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg

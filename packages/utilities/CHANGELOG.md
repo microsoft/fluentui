@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 09 Nov 2022 07:48:12 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Nov 2022 07:44:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.4)
+
+Tue, 15 Nov 2022 07:44:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.3..@fluentui/utilities_v8.13.4)
+
+### Patches
+
+- fix: handle null and undefined in shallowCompare, add tests ([PR #25623](https://github.com/microsoft/fluentui/pull/25623) by sarah.higley@microsoft.com)
 
 ## [8.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.3)
 

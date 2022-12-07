@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: update Listbox and Option to use menu and menuitemcheckbox semantics for multiselect",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -152,7 +152,7 @@ jobs:
         displayName: 'Publish artifact: homepage.htm'
 
       - script: |
-          node ./scripts/generate-package-manifest
+          node ./scripts/generators/generate-package-manifest
         displayName: 'Generate package manifest'
 
       - task: PublishBuildArtifacts@1

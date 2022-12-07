@@ -16,11 +16,15 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
     [`colorPalette${color}Border2`]: statusSharedColors[sharedColor].primary,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  return Object.assign(acc, sharedColorTokens);
 }, {} as StatusColorPaletteTokens);
 
 // one-off patch for yellow
 statusColorPaletteTokens.colorPaletteYellowForeground1 = statusSharedColors.yellow.shade30;
+
+statusColorPaletteTokens.colorPaletteRedForegroundInverted = statusSharedColors.red.tint20;
+statusColorPaletteTokens.colorPaletteGreenForegroundInverted = statusSharedColors.green.tint20;
+statusColorPaletteTokens.colorPaletteYellowForegroundInverted = statusSharedColors.yellow.tint40;
 
 const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
@@ -30,7 +34,7 @@ const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedCol
     [`colorPalette${color}BorderActive`]: personaSharedColors[sharedColor].primary,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  return Object.assign(acc, sharedColorTokens);
 }, {} as PersonaColorPaletteTokens);
 
 export const colorPaletteTokens: ColorPaletteTokens = { ...statusColorPaletteTokens, ...personaColorPaletteTokens };

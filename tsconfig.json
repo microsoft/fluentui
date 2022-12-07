@@ -1,4 +1,4 @@
 {
-  "extends": "./scripts/tsconfig.json",
+  "extends": "@tsconfig/node14/tsconfig.json",
   "include": ["./{apps,packages}/*/just.config.ts"]
 }

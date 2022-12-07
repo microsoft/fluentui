@@ -13,7 +13,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
+import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
 import { Tab } from '@fluentui/keyboard-keys';
 
 /**
@@ -41,11 +41,11 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const positioningState = {
-    position: isSubmenu ? ('after' as const) : ('below' as const),
-    align: isSubmenu ? ('top' as const) : ('start' as const),
+    position: isSubmenu ? 'after' : 'below',
+    align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
     ...resolvePositioningShorthand(props.positioning),
-  };
+  } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -69,10 +69,10 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
+
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
   // TODO Better way to narrow types ?
-
   const [open, setOpen] = useMenuOpenState({
     hoverDelay,
     isSubmenu,
@@ -112,7 +112,6 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     open,
     setOpen,
     checkedValues,
-    defaultCheckedValues,
     onCheckedValueChange,
     persistOnItemClick,
   };
@@ -123,22 +122,20 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
  * i.e checkboxes and radios
  */
 const useMenuSelectableState = (
-  state: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+  props: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
   const [checkedValues, setCheckedValues] = useControllableState({
-    state: state.checkedValues,
-    defaultState: state.defaultCheckedValues,
+    state: props.checkedValues,
+    defaultState: props.defaultCheckedValues,
     initialState: {},
   });
-  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
   const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, { name, checkedItems }) => {
-    if (onCheckedValueChangeOriginal) {
-      onCheckedValueChangeOriginal(e, { name, checkedItems });
-    }
+    props.onCheckedValueChange?.(e, { name, checkedItems });
 
-    setCheckedValues(s => {
-      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
-    });
+    setCheckedValues(currentValue => ({
+      ...currentValue,
+      [name]: checkedItems,
+    }));
   });
 
   return [checkedValues, onCheckedValueChange] as const;
@@ -149,18 +146,17 @@ const useMenuOpenState = (
     MenuState,
     | 'isSubmenu'
     | 'menuPopoverRef'
-    | 'onOpenChange'
     | 'setContextTarget'
     | 'triggerRef'
     | 'openOnContext'
     | 'closeOnScroll'
     | 'hoverDelay'
   > &
-    Pick<MenuProps, 'open' | 'defaultOpen'>,
+    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
-  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+  const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const shouldHandleCloseRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);
@@ -174,7 +170,7 @@ const useMenuOpenState = (
     initialState: false,
   });
 
-  const trySetOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
+  const trySetOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
     onOpenChange?.(event, { ...data });
     if (data.open && e.type === 'contextmenu') {
@@ -200,7 +196,7 @@ const useMenuOpenState = (
     setOpenState(data.open);
   });
 
-  const setOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
+  const setOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
     clearTimeout(setOpenTimeout.current);
     if (!(e instanceof Event) && e.persist) {
       // < React 17 still uses pooled synthetic events
@@ -228,7 +224,7 @@ const useMenuOpenState = (
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
     ) as React.MutableRefObject<HTMLElement>[],
-    callback: e => setOpen(e, { open: false }),
+    callback: event => setOpen(event, { open: false, type: 'clickOutside', event }),
   });
 
   // only close on scroll for context, or when closeOnScroll is specified
@@ -236,7 +232,7 @@ const useMenuOpenState = (
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
-    callback: ev => setOpen(ev, { open: false }),
+    callback: event => setOpen(event, { open: false, type: 'scrollOutside', event }),
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
     ) as React.MutableRefObject<HTMLElement>[],
@@ -245,11 +241,11 @@ const useMenuOpenState = (
 
   useOnMenuMouseEnter({
     element: targetDocument,
-    callback: e => {
+    callback: event => {
       // When moving from a menu directly back to its trigger, this handler can close the menu
       // Explicitly check a flag to see if this situation happens
       if (!enteringTriggerRef.current) {
-        setOpen(e, { open: false });
+        setOpen(event, { open: false, type: 'menuMouseEnter', event });
       }
     },
     disabled: !open,

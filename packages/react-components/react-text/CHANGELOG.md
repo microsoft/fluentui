@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Fri, 11 Nov 2022 14:57:45 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.8)
+
+Mon, 05 Dec 2022 18:29:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.7..@fluentui/react-text_v9.1.8)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.7)
+
+Thu, 17 Nov 2022 23:05:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.6..@fluentui/react-text_v9.1.7)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
 
 ## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.6)
 

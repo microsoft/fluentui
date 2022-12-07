@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(TableHeaderCell): should render `aria-sort=\"none\"` if not sorted",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

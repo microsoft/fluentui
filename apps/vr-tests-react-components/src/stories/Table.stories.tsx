@@ -265,8 +265,8 @@ const SizeSmall: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   </Table>
 );
 
-const SizeSmaller: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
-  <Table size="smaller" noNativeElements={noNativeElements}>
+const SizeExtraSmall: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table size="extra-small" noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
@@ -616,7 +616,7 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
       includeRtl: true,
     })
     .addStory('size - small', () => <SizeSmall noNativeElements={noNativeElements} />)
-    .addStory('size - smaller', () => <SizeSmaller noNativeElements={noNativeElements} />)
+    .addStory('size - extra small', () => <SizeExtraSmall noNativeElements={noNativeElements} />)
     .addStory('primary cell', () => <PrimaryCell noNativeElements={noNativeElements} />)
     .addStory('multiselect', () => <Multiselect noNativeElements={noNativeElements} />, {
       includeDarkMode: true,

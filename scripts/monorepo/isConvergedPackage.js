@@ -1,5 +1,5 @@
 const semver = require('semver');
-const { readConfig } = require('../read-config');
+const { readConfig } = require('../utils');
 const { getProjectMetadata } = require('./utils');
 
 /**

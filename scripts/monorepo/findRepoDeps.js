@@ -1,4 +1,4 @@
-const { readConfig } = require('../read-config');
+const { readConfig } = require('../utils');
 const getAllPackageInfo = require('./getAllPackageInfo');
 
 /**

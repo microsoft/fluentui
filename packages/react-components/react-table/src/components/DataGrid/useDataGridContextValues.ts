@@ -8,6 +8,9 @@ export function useDataGridContextValues_unstable(state: DataGridState): DataGri
     dataGrid: {
       ...state.tableState,
       focusMode: state.focusMode,
+      selectableRows: state.selectableRows,
+      subtleSelection: state.subtleSelection,
+      selectionAppearance: state.selectionAppearance,
     },
   };
 }

@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { FluentProvider } from './FluentProvider';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function

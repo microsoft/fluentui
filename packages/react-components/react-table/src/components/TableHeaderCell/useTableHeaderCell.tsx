@@ -6,8 +6,8 @@ import { useTableContext } from '../../contexts/tableContext';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
 
 const sortIcons = {
-  ascending: <ArrowUpRegular />,
-  descending: <ArrowDownRegular />,
+  ascending: <ArrowUpRegular fontSize={12} />,
+  descending: <ArrowDownRegular fontSize={12} />,
 };
 
 /**
@@ -35,7 +35,7 @@ export const useTableHeaderCell_unstable = (
     root: getNativeElementProps(rootComponent, {
       ref,
       role: rootComponent === 'div' ? 'columnheader' : undefined,
-      'aria-sort': props.sortDirection,
+      'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
       ...props,
     }),
     sortIcon: resolveShorthand(props.sortIcon, {

@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -16,10 +16,10 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   ColumnId,
-  useSort,
+  useTableSort,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -132,23 +132,24 @@ export const SortControlled = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: setSortState })],
+    [useTableSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => toggleColumnSort(columnId),
+    onClick: (e: React.MouseEvent) => toggleColumnSort(e, columnId),
     sortDirection: getSortDirection(columnId),
   });
 
   const rows = sort(getRows());
 
   return (
-    <Table sortable>
+    <Table sortable {...keyboardNavAttr}>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -181,4 +182,15 @@ export const SortControlled = () => {
       </TableBody>
     </Table>
   );
+};
+
+SortControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control sort features',
+        'with external user state.',
+      ].join('\n'),
+    },
+  },
 };

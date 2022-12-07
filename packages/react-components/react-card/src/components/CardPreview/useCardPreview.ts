@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
+import { useCardContext_unstable } from '../Card/CardContext';
+import { cardPreviewClassNames } from './useCardPreviewStyles';
 
 /**
  * Create the state required to render CardPreview.
@@ -13,6 +15,32 @@ import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
  */
 export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<HTMLElement>): CardPreviewState => {
   const { logo } = props;
+
+  const {
+    selectableA11yProps: { referenceLabel, setReferenceLabel },
+  } = useCardContext_unstable();
+  const previewRef = useMergedRefs(ref, React.useRef<HTMLDivElement>(null));
+
+  React.useEffect(() => {
+    if (referenceLabel) {
+      return;
+    }
+
+    if (previewRef.current && previewRef.current.parentNode) {
+      const img = previewRef.current.parentNode.querySelector<HTMLImageElement>(`.${cardPreviewClassNames.root} > img`);
+
+      if (img) {
+        const ariaLabel = img.getAttribute('aria-label');
+
+        if (img.alt) {
+          setReferenceLabel(img.alt);
+        } else if (ariaLabel) {
+          setReferenceLabel(ariaLabel);
+        }
+      }
+    }
+  }, [setReferenceLabel, referenceLabel, previewRef]);
+
   return {
     components: {
       root: 'div',
@@ -20,7 +48,7 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
     },
 
     root: getNativeElementProps('div', {
-      ref,
+      ref: previewRef,
       ...props,
     }),
     logo: resolveShorthand(logo),

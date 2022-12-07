@@ -16,8 +16,13 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
     [`colorPalette${color}Border2`]: hcCanvasText,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  return Object.assign(acc, sharedColorTokens);
 }, {} as StatusColorPaletteTokens);
+
+// one-off patches
+statusColorPaletteTokens.colorPaletteRedForegroundInverted = hcCanvasText;
+statusColorPaletteTokens.colorPaletteGreenForegroundInverted = hcCanvasText;
+statusColorPaletteTokens.colorPaletteYellowForegroundInverted = hcCanvasText;
 
 const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
@@ -27,7 +32,7 @@ const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedCol
     [`colorPalette${color}BorderActive`]: hcHighlight,
   };
 
-  return { ...acc, ...sharedColorTokens };
+  return Object.assign(acc, sharedColorTokens);
 }, {} as PersonaColorPaletteTokens);
 
 export const colorPaletteTokens: ColorPaletteTokens = { ...statusColorPaletteTokens, ...personaColorPaletteTokens };
