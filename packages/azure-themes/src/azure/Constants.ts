@@ -5,8 +5,9 @@ import {
   getScreenSelector,
 } from 'office-ui-fabric-react/lib/Styling';
 
-export const inputHeight = '18px';
+export const inputHeight = '18px
 export const buttonPadding = '0px 16px';
+export const commandBarHeight = '36px';
 export const borderWidth = '1px';
 export const borderRadius = '3px';
 export const borderWidthError = '1px';
