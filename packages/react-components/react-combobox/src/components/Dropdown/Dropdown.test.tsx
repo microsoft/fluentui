@@ -483,7 +483,7 @@ describe('Dropdown', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
     expect(getByRole('combobox').textContent).toEqual('Red, Green');
   });
 

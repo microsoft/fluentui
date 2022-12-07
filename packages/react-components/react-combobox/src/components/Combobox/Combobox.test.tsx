@@ -452,7 +452,7 @@ describe('Combobox', () => {
     userEvent.type(combobox, 'gr');
     userEvent.click(getByText('Green'));
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
     expect((combobox as HTMLInputElement).value).toEqual('');
   });
 
