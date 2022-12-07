@@ -35,7 +35,7 @@ export const useTableHeaderCell_unstable = (
     root: getNativeElementProps(rootComponent, {
       ref,
       role: rootComponent === 'div' ? 'columnheader' : undefined,
-      'aria-sort': props.sortDirection,
+      'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
       ...props,
     }),
     sortIcon: resolveShorthand(props.sortIcon, {
