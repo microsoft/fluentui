@@ -3,7 +3,6 @@
 exports[`DataGridHeaderCell renders a default state 1`] = `
 <div>
   <div
-    aria-sort="none"
     class="fui-DataGridHeaderCell fui-TableHeaderCell"
     role="columnheader"
   >

@@ -3,7 +3,6 @@
 exports[`TableHeaderCell renders a default state 1`] = `
 <tr>
   <th
-    aria-sort="none"
     class="fui-TableHeaderCell"
   >
     <button

@@ -108,4 +108,19 @@ describe('TableHeaderCell', () => {
     );
     expect(getByRole('columnheader').getAttribute('aria-sort')).toEqual('none');
   });
+
+  it('should not render aria-sort table is not sortable', () => {
+    const { getByRole } = render(
+      <TableContextProvider
+        value={{
+          ...tableContextDefaultValue,
+          noNativeElements: true,
+          sortable: false,
+        }}
+      >
+        <TableHeaderCell>Cell</TableHeaderCell>
+      </TableContextProvider>,
+    );
+    expect(getByRole('columnheader').hasAttribute('aria-sort')).toBe(false);
+  });
 });
