@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useButton_unstable } from '@fluentui/react-button';
-import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 import { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.types';
 
 /**
@@ -13,9 +12,8 @@ export const useToolbarButton_unstable = (
   props: ToolbarButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarButtonState => {
-  const size = useToolbarContext_unstable(ctx => ctx.size);
   const { vertical = false, ...buttonProps } = props;
-  const state = useButton_unstable({ size, appearance: 'subtle', ...buttonProps }, ref);
+  const state = useButton_unstable({ appearance: 'subtle', ...buttonProps }, ref);
   return {
     vertical,
     ...state,
