@@ -27,7 +27,7 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  const baseState = useComboboxBaseState(props, true);
+  const baseState = useComboboxBaseState({ ...props, editable: true });
   const {
     activeOption,
     clearSelection,
@@ -63,9 +63,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   // set active option and selection based on typing
   const getOptionFromInput = (inputValue: string): OptionValue | undefined => {
-    const searchString = inputValue.trim().toLowerCase();
+    const searchString = inputValue?.trim().toLowerCase();
 
-    if (searchString.length === 0) {
+    if (!searchString || searchString.length === 0) {
       return;
     }
 

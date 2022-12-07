@@ -8,8 +8,15 @@ import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } fro
 /**
  * State shared between Combobox and Dropdown components
  */
-export const useComboboxBaseState = (props: ComboboxBaseProps, editable = false): ComboboxBaseState => {
-  const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
+export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boolean }): ComboboxBaseState => {
+  const {
+    appearance = 'outline',
+    editable = false,
+    inlinePopup = false,
+    multiselect,
+    onOpenChange,
+    size = 'medium',
+  } = props;
 
   const optionCollection = useOptionCollection();
   const { getOptionAtIndex, getOptionsMatchingText } = optionCollection;
