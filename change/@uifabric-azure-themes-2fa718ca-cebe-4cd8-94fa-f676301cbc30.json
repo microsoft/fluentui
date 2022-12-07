@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "cherry picked from #25900",
+  "packageName": "@uifabric/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
