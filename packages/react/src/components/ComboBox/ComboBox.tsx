@@ -833,7 +833,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
         .filter(
-          option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
+          option =>
+            isNormalOption(option) &&
+            !option.disabled &&
+            getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -893,7 +896,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         const items = currentOptions
           .map((item, i) => ({ ...item, index: i }))
 
-          .filter(option => isNormalOption(option) && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+          .filter(
+            option =>
+              isNormalOption(option) && !option.disabled && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0,
+          );
 
         // If we found a match, update the state
         if (items.length > 0) {
