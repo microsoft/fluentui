@@ -15,10 +15,80 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
 
 // @public
+export const renderSkeletonCircle_unstable: (state: SkeletonCircleState) => JSX.Element;
+
+// @public
+export const renderSkeletonGap_unstable: (state: SkeletonGapState) => JSX.Element;
+
+// @public
+export const renderSkeletonLine_unstable: (state: SkeletonLineState) => JSX.Element;
+
+// @public
 export const Skeleton: ForwardRefComponent<SkeletonProps>;
+
+// @public
+export const SkeletonCircle: ForwardRefComponent<SkeletonCircleProps>;
+
+// @public (undocumented)
+export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots>;
+
+// @public
+export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {
+    height?: number | string;
+    verticalAlign?: 'top' | 'center' | 'bottom';
+};
+
+// @public (undocumented)
+export type SkeletonCircleSlots = {
+    root: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type SkeletonCircleState = ComponentState<SkeletonCircleSlots> & Required<Pick<SkeletonCircleProps, 'height' | 'verticalAlign'>>;
 
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
+
+// @public
+export const SkeletonGap: ForwardRefComponent<SkeletonGapProps>;
+
+// @public (undocumented)
+export const skeletonGapClassNames: SlotClassNames<SkeletonGapSlots>;
+
+// @public
+export type SkeletonGapProps = ComponentProps<SkeletonGapSlots> & {
+    height?: number | string;
+    width?: number | string;
+};
+
+// @public (undocumented)
+export type SkeletonGapSlots = {
+    root: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type SkeletonGapState = ComponentState<SkeletonGapSlots> & Required<Pick<SkeletonGapProps, 'height' | 'width'>>;
+
+// @public
+export const SkeletonLine: ForwardRefComponent<SkeletonLineProps>;
+
+// @public (undocumented)
+export const skeletonLineClassNames: SlotClassNames<SkeletonLineSlots>;
+
+// @public
+export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {
+    height?: number | string;
+    verticalAlign?: 'top' | 'center' | 'bottom';
+    width?: number | string;
+};
+
+// @public (undocumented)
+export type SkeletonLineSlots = {
+    root: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type SkeletonLineState = ComponentState<SkeletonLineSlots> & Required<Pick<SkeletonLineProps, 'height' | 'verticalAlign' | 'width'>>;
 
 // @public
 export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width' | 'animation'> & {
@@ -39,6 +109,24 @@ export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<Skelet
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
+
+// @public
+export const useSkeletonCircle_unstable: (props: SkeletonCircleProps, ref: React_2.Ref<HTMLElement>) => SkeletonCircleState;
+
+// @public
+export const useSkeletonCircleStyles_unstable: (state: SkeletonCircleState) => SkeletonCircleState;
+
+// @public
+export const useSkeletonGap_unstable: (props: SkeletonGapProps, ref: React_2.Ref<HTMLElement>) => SkeletonGapState;
+
+// @public
+export const useSkeletonGapStyles_unstable: (state: SkeletonGapState) => SkeletonGapState;
+
+// @public
+export const useSkeletonLine_unstable: (props: SkeletonLineProps, ref: React_2.Ref<HTMLElement>) => SkeletonLineState;
+
+// @public
+export const useSkeletonLineStyles_unstable: (state: SkeletonLineState) => SkeletonLineState;
 
 // @public
 export const useSkeletonStyles_unstable: (state: SkeletonState) => SkeletonState;
