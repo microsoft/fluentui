@@ -108,6 +108,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     }
   }, [id, optionData, registerOption]);
 
+  const semanticProps = multiselect
+    ? { role: 'menuitemcheckbox', 'aria-checked': selected }
+    : { role: 'option', 'aria-selected': selected };
+
   return {
     components: {
       root: 'div',
@@ -115,10 +119,9 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, optionRef),
-      role: 'option',
       'aria-disabled': disabled ? 'true' : undefined,
-      'aria-selected': `${selected}`,
       id,
+      ...semanticProps,
       ...props,
       onClick,
     }),
