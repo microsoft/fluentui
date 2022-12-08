@@ -154,7 +154,7 @@ export const SubtleSelection = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} aria-lable="Table with subtle selection">
+    <Table {...keyboardNavAttr} aria-label="Table with subtle selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
