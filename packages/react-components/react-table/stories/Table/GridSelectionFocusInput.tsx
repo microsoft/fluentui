@@ -90,7 +90,7 @@ const items: Item[] = [
   },
 ];
 
-export const GridSelection = () => {
+export const GridSelectionFocusInput = () => {
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
@@ -143,6 +143,16 @@ export const GridSelection = () => {
 
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   return (
     <Table {...keyboardNavAttr} role="grid">
       <TableHeader>
@@ -150,13 +160,12 @@ export const GridSelection = () => {
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
+            onKeyDown={toggleAllKeydown}
           />
-          <TableHeaderCell>File</TableHeaderCell>
-          <TableHeaderCell>Author</TableHeaderCell>
-          <TableHeaderCell>Last updated</TableHeaderCell>
-          <TableHeaderCell>Last update</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>File</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>Author</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>Last updated</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -168,13 +177,7 @@ export const GridSelection = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell
-              aria-selected={selected}
-              role="gridcell"
-              tabIndex={0}
-              checked={selected}
-              checkboxIndicator={{ tabIndex: -1 }}
-            />
+            <TableSelectionCell aria-selected={selected} role="gridcell" checked={selected} />
             <TableCell role="gridcell" tabIndex={0}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

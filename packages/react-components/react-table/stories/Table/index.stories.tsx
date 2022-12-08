@@ -11,8 +11,8 @@ import {
 import descriptionMd from './TableDescription.md';
 
 export { Default } from './Default.stories';
-export { TableSelection } from './TableSelection.stories';
-export { GridSelection } from './GridSelection.stories';
+export { GridSelectionFocusCell } from './GridSelectionFocusCell.stories';
+export { GridSelectionFocusInput } from './GridSelectionFocusInput';
 
 export default {
   title: 'Preview Components/Table',

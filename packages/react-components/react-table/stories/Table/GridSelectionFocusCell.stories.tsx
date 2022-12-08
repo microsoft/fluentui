@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -90,7 +90,7 @@ const items: Item[] = [
   },
 ];
 
-export const TableSelection = () => {
+export const GridSelectionFocusCell = () => {
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
@@ -141,18 +141,35 @@ export const TableSelection = () => {
     };
   });
 
+  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   return (
-    <Table>
+    <Table {...keyboardNavAttr} role="grid">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
+            tabIndex={0}
+            checkboxIndicator={{ tabIndex: -1 }}
+            role="checkbox"
+            aria-checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
           />
-          <TableHeaderCell>File</TableHeaderCell>
-          <TableHeaderCell>Author</TableHeaderCell>
-          <TableHeaderCell>Last updated</TableHeaderCell>
-          <TableHeaderCell>Last update</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>File</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>Author</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>Last updated</TableHeaderCell>
+          <TableHeaderCell tabIndex={0}>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -164,17 +181,25 @@ export const TableSelection = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell checked={selected} />
-            <TableCell>
+            <TableSelectionCell
+              aria-selected={selected}
+              role="gridcell"
+              tabIndex={0}
+              checked={selected}
+              checkboxIndicator={{ tabIndex: -1 }}
+            />
+            <TableCell role="gridcell" tabIndex={0}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell>
+            <TableCell role="gridcell" tabIndex={0}>
               <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
+            <TableCell role="gridcell" tabIndex={0}>
+              {item.lastUpdated.label}
+            </TableCell>
+            <TableCell role="gridcell" tabIndex={0}>
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
