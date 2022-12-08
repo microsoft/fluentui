@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -140,7 +140,6 @@ export const SingleSelect = () => {
       appearance: selected ? ('brand' as const) : ('none' as const),
     };
   });
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
     <Table aria-label="Table with single selection">
@@ -153,7 +152,7 @@ export const SingleSelect = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
+      <TableBody>
         {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
@@ -162,7 +161,7 @@ export const SingleSelect = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
+            <TableSelectionCell checked={selected} type="radio" />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
