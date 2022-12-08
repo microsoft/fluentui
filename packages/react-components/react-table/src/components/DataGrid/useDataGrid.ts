@@ -17,7 +17,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
   const {
     items,
     columns,
-    focusMode = 'none',
+    focusMode = 'cell',
     selectionMode,
     onSortChange,
     onSelectionChange,
