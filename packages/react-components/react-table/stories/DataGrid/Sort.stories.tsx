@@ -152,7 +152,7 @@ export const Sort = () => {
   const defaultSortState = React.useMemo<SortState>(() => ({ sortColumn: 'file', sortDirection: 'ascending' }), []);
 
   return (
-    <DataGrid items={items} columns={columns} focusMode="cell" sortable defaultSortState={defaultSortState}>
+    <DataGrid items={items} columns={columns} sortable defaultSortState={defaultSortState}>
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }: ColumnDefinition<Item>) => (
