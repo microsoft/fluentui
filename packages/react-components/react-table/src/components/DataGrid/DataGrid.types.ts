@@ -12,7 +12,7 @@ import { TableRowProps } from '../TableRow/TableRow.types';
 
 export type DataGridSlots = TableSlots;
 
-export type FocusMode = 'none' | 'cell';
+export type FocusMode = 'none' | 'cell' | 'row_unstable';
 
 export type DataGridContextValues = TableContextValues & {
   dataGrid: DataGridContextValue;
