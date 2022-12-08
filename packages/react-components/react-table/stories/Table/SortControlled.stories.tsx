@@ -149,7 +149,7 @@ export const SortControlled = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable {...keyboardNavAttr}>
+    <Table sortable {...keyboardNavAttr} aria-label="Table with controlled sort">
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
