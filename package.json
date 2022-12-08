@@ -288,7 +288,7 @@
     "screener-storybook": "0.23.0",
     "semver": "^6.2.0",
     "source-map-loader": "4.0.0",
-    "storybook-addon-export-to-codesandbox": "0.7.0",
+    "storybook-addon-export-to-codesandbox": "0.7.1",
     "storybook-addon-performance": "0.16.1",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
