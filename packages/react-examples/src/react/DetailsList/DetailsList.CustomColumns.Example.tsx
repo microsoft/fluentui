@@ -118,7 +118,7 @@ function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
       );
 
     default:
-      return <span>{fieldContent}</span>;
+      return <span data-is-focusable={true}>Hello</span>; //{fieldContent}
   }
 }
 
