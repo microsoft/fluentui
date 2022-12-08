@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, createEvent } from '@testing-library/react';
 import { DataGridRow } from './DataGridRow';
 import { isConformant } from '../../testing/isConformant';
 import { DataGridRowProps } from './DataGridRow.types';
@@ -79,6 +79,21 @@ describe('DataGridRow', () => {
       fireEvent.keyDown(getByRole('row'), { key: ' ' });
 
       expect(toggleRow).toHaveBeenCalledTimes(1);
+    });
+
+    it('should prevent default on spacebar', () => {
+      const ctx = mockDataGridContext({ selectableRows: true });
+      const { getByRole } = render(
+        <DataGridContextProvider value={ctx}>
+          <DataGridRow>{() => <div />}</DataGridRow>
+        </DataGridContextProvider>,
+      );
+
+      const row = getByRole('row');
+      const keyDownEvent = createEvent.keyDown(row, { key: ' ' });
+      fireEvent(row, keyDownEvent);
+
+      expect(keyDownEvent.defaultPrevented).toBe(true);
     });
 
     it('should not toggle row on click if in header', () => {
