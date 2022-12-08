@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 05 Dec 2022 07:54:46 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Dec 2022 07:46:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.103.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.6)
+
+Thu, 08 Dec 2022 07:46:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.5..@fluentui/react_v8.103.6)
+
+### Patches
+
+- fix: Always give panel header a background color, even before resize. ([PR #25665](https://github.com/microsoft/fluentui/pull/25665) by naethell@microsoft.com)
 
 ## [8.103.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.5)
 
