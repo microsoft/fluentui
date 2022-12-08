@@ -90,7 +90,7 @@ const items: Item[] = [
   },
 ];
 
-export const MultipleSelect = () => {
+export const GridSelection = () => {
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
@@ -144,7 +144,7 @@ export const MultipleSelect = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} role="grid">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -166,17 +166,25 @@ export const MultipleSelect = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checked={selected} />
-            <TableCell>
+            <TableSelectionCell
+              aria-selected={selected}
+              role="gridcell"
+              tabIndex={0}
+              checked={selected}
+              checkboxIndicator={{ tabIndex: -1 }}
+            />
+            <TableCell role="gridcell" tabIndex={0}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell>
+            <TableCell role="gridcell" tabIndex={0}>
               <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell>
+            <TableCell role="gridcell" tabIndex={0}>
+              {item.lastUpdated.label}
+            </TableCell>
+            <TableCell role="gridcell" tabIndex={0}>
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
@@ -184,17 +192,4 @@ export const MultipleSelect = () => {
       </TableBody>
     </Table>
   );
-};
-
-MultipleSelect.parameters = {
-  docs: {
-    description: {
-      story: [
-        'Selection can be achieved easily by combining the `TableSelectionCell` component along with',
-        'other primitive components. `useTableFeatures` can handle state management for selection,',
-        'although its use is not',
-        'necessary if users already have their own state management.',
-      ].join('\n'),
-    },
-  },
 };

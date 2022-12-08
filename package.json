@@ -257,6 +257,7 @@
     "mini-css-extract-plugin": "2.6.1",
     "node-fetch": "2.6.7",
     "nx": "13.10.6",
+    "patch-package": "6.5.0",
     "portfinder": "1.0.28",
     "postcss": "8.3.5",
     "postcss-loader": "4.1.0",

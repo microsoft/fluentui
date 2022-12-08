@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots> = {
@@ -34,6 +35,20 @@ const useStyles = makeStyles({
     textAlign: 'center',
     whiteSpace: 'nowrap',
     ...shorthands.padding(0),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus-within', enableOutline: true },
+    ),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus', enableOutline: true },
+    ),
   },
 
   radioIndicator: {

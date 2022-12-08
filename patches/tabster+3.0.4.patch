@@ -1,0 +1,13 @@
+diff --git a/node_modules/tabster/dist/tabster.esm.js b/node_modules/tabster/dist/tabster.esm.js
+index c347d91..ec38ba6 100644
+--- a/node_modules/tabster/dist/tabster.esm.js
++++ b/node_modules/tabster/dist/tabster.esm.js
+@@ -5418,7 +5418,7 @@ class ModalizerAPI {
+  * Licensed under the MIT License.
+  */
+ 
+-const _inputSelector = /*#__PURE__*/["input", "textarea", "*[contenteditable]"].join(", ");
++const _inputSelector = /*#__PURE__*/["input[type='text']", "textarea", "*[contenteditable]"].join(", ");
+ 
+ class MoverDummyManager extends DummyInputManager {
+   constructor(element, tabster, getMemorized) {

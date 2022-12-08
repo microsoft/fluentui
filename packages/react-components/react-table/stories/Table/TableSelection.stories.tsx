@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -90,7 +90,7 @@ const items: Item[] = [
   },
 ];
 
-export const MultipleSelect = () => {
+export const TableSelection = () => {
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
@@ -141,10 +141,8 @@ export const MultipleSelect = () => {
     };
   });
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
-
   return (
-    <Table {...keyboardNavAttr}>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -166,7 +164,7 @@ export const MultipleSelect = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checked={selected} />
+            <TableSelectionCell checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
@@ -184,17 +182,4 @@ export const MultipleSelect = () => {
       </TableBody>
     </Table>
   );
-};
-
-MultipleSelect.parameters = {
-  docs: {
-    description: {
-      story: [
-        'Selection can be achieved easily by combining the `TableSelectionCell` component along with',
-        'other primitive components. `useTableFeatures` can handle state management for selection,',
-        'although its use is not',
-        'necessary if users already have their own state management.',
-      ].join('\n'),
-    },
-  },
 };
