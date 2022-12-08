@@ -73,7 +73,6 @@ jobs:
         env:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
-        condition: eq(variables['vrTestSkip'], 'no')
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v7" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'
@@ -92,4 +91,3 @@ jobs:
           GITHUB_REPO_NAME: 'fluentui'
           VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
           VR_APP_NAME: $(VR_APP_NAME)
-        condition: eq(variables['vrTestSkip'], 'no')
