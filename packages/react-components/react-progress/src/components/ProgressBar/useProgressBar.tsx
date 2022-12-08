@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { ProgressProps, ProgressState } from './Progress.types';
+import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 
 /**
- * Create the state required to render Progress.
+ * Create the state required to render ProgressBar.
  *
- * The returned state can be modified with hooks such as useProgressStyles_unstable,
- * before being passed to renderProgress_unstable.
+ * The returned state can be modified with hooks such as useProgressBarStyles_unstable,
+ * before being passed to renderProgressBar_unstable.
  *
- * @param props - props from this instance of Progress
- * @param ref - reference to root HTMLElement of Progress
+ * @param props - props from this instance of ProgressBar
+ * @param ref - reference to root HTMLElement of ProgressBar
  */
-export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
+export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
   // Props
   const { max = 1.0, shape = 'rounded', thickness = 'medium', validationState, value } = props;
 
@@ -28,7 +28,7 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
     required: true,
   });
 
-  const state: ProgressState = {
+  const state: ProgressBarState = {
     max,
     shape,
     thickness,
