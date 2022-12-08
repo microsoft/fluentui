@@ -146,7 +146,7 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps = Omit<TableRowProps, 'children'> & ComponentProps<DataGridRowSlots> & {
+export type DataGridRowProps = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
     children: CellRenderFunction;
 };
 
