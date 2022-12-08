@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell.types';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tableHeaderCellClassName = 'fui-TableHeaderCell';
 export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
@@ -31,6 +32,13 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus-within', enableOutline: true },
+    ),
   },
 
   rootInteractive: {
@@ -55,6 +63,7 @@ const useStyles = makeStyles({
     ...shorthands.borderStyle('none'),
     WebkitAppearance: 'button',
     textAlign: 'unset',
+    outlineStyle: 'none',
   },
   button: {
     position: 'relative',

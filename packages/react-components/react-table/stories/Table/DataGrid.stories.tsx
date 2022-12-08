@@ -169,7 +169,7 @@ export const DataGrid = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} sortable>
+    <Table {...keyboardNavAttr} sortable role="grid">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -193,17 +193,25 @@ export const DataGrid = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
-            <TableCell tabIndex={0}>
+            <TableSelectionCell
+              role="gridcell"
+              aria-selected={selected}
+              tabIndex={0}
+              checkboxIndicator={{ tabIndex: -1 }}
+              checked={selected}
+            />
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
+              {item.lastUpdated.label}
+            </TableCell>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>

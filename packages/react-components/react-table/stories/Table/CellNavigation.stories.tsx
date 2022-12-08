@@ -69,7 +69,7 @@ export const CellNavigation = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} role="grid">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -81,10 +81,10 @@ export const CellNavigation = () => {
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout
                 media={
                   <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
@@ -93,11 +93,13 @@ export const CellNavigation = () => {
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
+              {item.lastUpdated.label}
+            </TableCell>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
-            <TableCell>
+            <TableCell role="gridcell">
               <TableCellLayout>
                 <Button icon={<EditRegular />}>Edit</Button>
               </TableCellLayout>
