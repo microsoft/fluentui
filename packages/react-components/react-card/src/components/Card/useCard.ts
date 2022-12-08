@@ -66,23 +66,13 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
   const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
 
   const cardBaseRef = useFocusWithin<HTMLDivElement>();
-  const { selectable, selected, selectableRef, selectableCardProps, selectFocused, checkboxSlot } = useCardSelectable(
+  const { selectable, selected, selectableCardProps, selectFocused, checkboxSlot } = useCardSelectable(
     props,
     { referenceId, referenceLabel },
     cardBaseRef,
   );
 
   const cardRef = useMergedRefs(cardBaseRef, ref);
-
-  const floatingActionSlot = React.useMemo(
-    () =>
-      resolveShorthand(floatingAction, {
-        defaultProps: {
-          ref: selectableRef,
-        },
-      }),
-    [floatingAction, selectableRef],
-  );
 
   const { interactive, focusAttributes } = useCardInteractive(props);
 
@@ -115,7 +105,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
       ...selectableCardProps,
     }),
 
-    floatingAction: floatingActionSlot,
+    floatingAction: resolveShorthand(floatingAction),
     checkbox: checkboxSlot,
   };
 };
