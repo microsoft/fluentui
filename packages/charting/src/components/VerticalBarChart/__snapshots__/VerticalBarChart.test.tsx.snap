@@ -448,6 +448,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -879,6 +882,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -986,6 +992,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
       </g>
     </svg>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1437,6 +1446,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1888,6 +1900,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2339,6 +2354,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2790,5 +2808,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
