@@ -150,6 +150,8 @@ export const GridSelection = () => {
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            tabIndex={0}
+            checkboxIndicator={{ tabIndex: -1 }}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
