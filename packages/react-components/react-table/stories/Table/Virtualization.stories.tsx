@@ -151,8 +151,18 @@ export const Virtualization = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   return (
-    <Table noNativeElements {...keyboardNavAttr}>
+    <Table noNativeElements {...keyboardNavAttr} aria-label="Table with selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -160,6 +170,7 @@ export const Virtualization = () => {
             checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
@@ -175,6 +186,8 @@ export const Virtualization = () => {
             const { item, selected, appearance, onClick, onKeyDown } = data[index];
             return (
               <TableRow
+                aria-rowindex={index}
+                aria-rowcount={data.length}
                 style={style}
                 key={item.file.label}
                 onKeyDown={onKeyDown}

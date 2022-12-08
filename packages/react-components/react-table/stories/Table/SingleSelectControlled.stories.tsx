@@ -149,7 +149,7 @@ export const SingleSelectControlled = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table>
+    <Table aria-label="Table with controlled single selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" hidden />
