@@ -21,7 +21,7 @@ export type CellRenderFunction = (column: ColumnDefinition<any>) => React.ReactN
  * DataGridRow Props
  */
 export type DataGridRowProps = Omit<TableRowProps, 'children'> &
-  ComponentProps<DataGridRowSlots> & {
+  Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
     children: CellRenderFunction;
   };
 
