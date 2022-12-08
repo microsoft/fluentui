@@ -9,7 +9,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -133,8 +133,6 @@ export const Virtualization = () => {
     ],
   );
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
-
   const rows: RowState[] = getRows(row => {
     const selected = isRowSelected(row.rowId);
     return {
@@ -162,12 +160,10 @@ export const Virtualization = () => {
   );
 
   return (
-    <Table noNativeElements {...keyboardNavAttr} aria-label="Table with selection">
+    <Table noNativeElements aria-label="Table with selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
             onKeyDown={toggleAllKeydown}
@@ -194,7 +190,7 @@ export const Virtualization = () => {
                 onClick={onClick}
                 appearance={appearance}
               >
-                <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+                <TableSelectionCell checked={selected} />
                 <TableCell>
                   <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
                 </TableCell>
