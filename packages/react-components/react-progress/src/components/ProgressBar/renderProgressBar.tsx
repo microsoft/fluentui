@@ -9,3 +9,6 @@ export const renderProgressBar_unstable = (state: ProgressBarState) => {
   const { slots, slotProps } = getSlots<ProgressBarSlots>(state);
   return <slots.root {...slotProps.root}>{slots.bar && <slots.bar {...slotProps.bar} />}</slots.root>;
 };
+
+/** @deprecated renamed to renderProgressBar_unstable */
+export const renderProgress_unstable = renderProgressBar_unstable;

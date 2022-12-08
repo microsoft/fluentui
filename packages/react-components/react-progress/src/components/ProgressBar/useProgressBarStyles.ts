@@ -9,6 +9,9 @@ export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
   bar: 'fui-ProgressBar__bar',
 };
 
+/** @deprecated renamed to progressBarClassNames */
+export const progressClassNames = progressBarClassNames;
+
 // If the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios.
 const ZERO_THRESHOLD = 0.01;
@@ -158,3 +161,6 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
 
   return state;
 };
+
+/** @deprecated renamed to useProgressBarStyles_unstable */
+export const useProgressStyles_unstable = useProgressBarStyles_unstable;

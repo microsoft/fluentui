@@ -44,3 +44,6 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
 
   return state;
 };
+
+/** @deprecated renamed to useProgressBar_unstable */
+export const useProgress_unstable = useProgressBar_unstable;

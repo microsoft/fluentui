@@ -11,6 +11,9 @@ export type ProgressBarSlots = {
   bar?: NonNullable<Slot<'div'>>;
 };
 
+/** @deprecated renamed to ProgressBarSlots */
+export type ProgressSlots = ProgressBarSlots;
+
 /**
  * ProgressBar Props
  */
@@ -45,9 +48,15 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
   validationState?: 'success' | 'warning' | 'error';
 };
 
+/** @deprecated renamed to ProgressBarProps */
+export type ProgressProps = ProgressBarProps;
+
 /**
  * State used in rendering ProgressBar
  */
 export type ProgressBarState = ComponentState<ProgressBarSlots> &
   Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> &
   Pick<ProgressBarProps, 'value' | 'validationState'>;
+
+/** @deprecated renamed to ProgressBarState */
+export type ProgressState = ProgressBarState;
