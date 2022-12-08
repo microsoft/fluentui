@@ -6,7 +6,7 @@
 
 /// <reference types="react" />
 
-import type { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FieldControl } from '@fluentui/react-field';
 import type { FieldProps } from '@fluentui/react-field';
@@ -16,39 +16,41 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public @deprecated (undocumented)
+export const Progress: React_2.ForwardRefExoticComponent<Omit<ComponentProps<ProgressBarSlots, "root">, "size"> & {
+    shape?: "rounded" | "rectangular" | undefined;
+    value?: number | undefined;
+    max?: number | undefined;
+    thickness?: "medium" | "large" | undefined;
+    validationState?: "error" | "success" | "warning" | undefined;
+} & React_2.RefAttributes<HTMLDivElement>>;
+
 // @public
-const ProgressBar: ForwardRefComponent<ProgressBarProps>;
-export { ProgressBar as Progress }
-export { ProgressBar }
+export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
 // @public (undocumented)
-const progressBarClassNames: SlotClassNames<ProgressBarSlots>;
-export { progressBarClassNames }
-export { progressBarClassNames as progressClassNames }
+export const progressBarClassNames: SlotClassNames<ProgressBarSlots>;
 
 // @public
-type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
+export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
     shape?: 'rounded' | 'rectangular';
     value?: number;
     max?: number;
     thickness?: 'medium' | 'large';
     validationState?: 'success' | 'warning' | 'error';
 };
-export { ProgressBarProps }
-export { ProgressBarProps as ProgressProps }
 
 // @public (undocumented)
-type ProgressBarSlots = {
+export type ProgressBarSlots = {
     root: NonNullable<Slot<'div'>>;
     bar?: NonNullable<Slot<'div'>>;
 };
-export { ProgressBarSlots }
-export { ProgressBarSlots as ProgressSlots }
 
 // @public
-type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'validationState'>;
-export { ProgressBarState }
-export { ProgressBarState as ProgressState }
+export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'validationState'>;
+
+// @public @deprecated (undocumented)
+export const progressClassNames: SlotClassNames<ProgressBarSlots>;
 
 // @public (undocumented)
 export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unstable>;
@@ -59,20 +61,32 @@ export const progressFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
 // @public (undocumented)
 export type ProgressFieldProps_unstable = FieldProps<typeof ProgressBar>;
 
-// @public
-const renderProgressBar_unstable: (state: ProgressBarState) => JSX.Element;
-export { renderProgressBar_unstable }
-export { renderProgressBar_unstable as renderProgress_unstable }
+// @public @deprecated (undocumented)
+export type ProgressProps = ProgressBarProps;
+
+// @public @deprecated (undocumented)
+export type ProgressSlots = ProgressBarSlots;
+
+// @public @deprecated (undocumented)
+export type ProgressState = ProgressBarState;
+
+// @public @deprecated (undocumented)
+export const renderProgress_unstable: (state: ProgressBarState) => JSX.Element;
 
 // @public
-const useProgressBar_unstable: (props: ProgressBarProps, ref: React_2.Ref<HTMLElement>) => ProgressBarState;
-export { useProgressBar_unstable }
-export { useProgressBar_unstable as useProgress_unstable }
+export const renderProgressBar_unstable: (state: ProgressBarState) => JSX.Element;
+
+// @public @deprecated (undocumented)
+export const useProgress_unstable: (props: ProgressBarProps, ref: React_2.Ref<HTMLElement>) => ProgressBarState;
 
 // @public
-const useProgressBarStyles_unstable: (state: ProgressBarState) => ProgressBarState;
-export { useProgressBarStyles_unstable }
-export { useProgressBarStyles_unstable as useProgressStyles_unstable }
+export const useProgressBar_unstable: (props: ProgressBarProps, ref: React_2.Ref<HTMLElement>) => ProgressBarState;
+
+// @public
+export const useProgressBarStyles_unstable: (state: ProgressBarState) => ProgressBarState;
+
+// @public @deprecated (undocumented)
+export const useProgressStyles_unstable: (state: ProgressBarState) => ProgressBarState;
 
 // (No @packageDocumentation comment for this package)
 
