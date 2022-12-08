@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Thu, 08 Dec 2022 12:22:07 GMT",
+      "tag": "@uifabric/azure-themes_v7.10.30",
+      "version": "7.10.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cherry picked from #25900",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "f336bec5f7e7763e5cac2d130afa58768514ec9b",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Nov 2022 12:28:00 GMT",
       "tag": "@uifabric/azure-themes_v7.10.29",
       "version": "7.10.29",
