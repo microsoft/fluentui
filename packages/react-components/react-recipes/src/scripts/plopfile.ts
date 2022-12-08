@@ -23,6 +23,9 @@ module.exports = (plop: NodePlopAPI) => {
         type: 'input',
         name: 'recipeName',
         message: 'New recipe name (ex: My Recipe):',
+        validate: (input: string) =>
+          /^([A-Z][a-z]+)([\ ][A-Z][a-z]+)+/m.test(input) ||
+          'Must enter a Capitalized per word recipe name (ex: My Recipe Name)',
       },
     ],
 

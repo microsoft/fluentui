@@ -1,9 +1,9 @@
 import { Meta } from '@storybook/addon-docs';
-import { {{fileName}}SnippetExample } from './src';
+import { MediaObjectSnippetExample } from './code-snippets';
 
-<Meta title="Concepts/Recipes/{{recipeName}}" />
+<Meta title="Concepts/Recipes/Media Object" />
 
-## {{recipeName}} recipe
+## Media Object recipe
 
 ### **Overview**
 
@@ -17,6 +17,16 @@ Add a description of the recipe here. This should be a short description and wha
 Add a list of ingredients here. This should be a list of required dependencies such as: @fluentui/react-button.
 -->
 
+- <a href="#" data-sb-kind="components-image--default">
+    @fluentui/react-image
+  </a>
+- <a href="#" data-sb-kind="concepts-developer-icons-icons--page">
+    @fluentui/react-icons
+  </a>
+- <a href="#" data-sb-kind="components-text--default">
+    @fluentui/react-text
+  </a>
+
 ### **Steps**
 
 <!--
@@ -27,7 +37,7 @@ Note: Code snippets in this section should be minimal and only include the impor
 
 This is an example of a code snippet:
 
-<{{fileName}}SnippetExample />
+<MediaObjectSnippetExample />
 
 ```tsx
 <Button>This is a Button</Button>
@@ -46,4 +56,3 @@ When adding examples, make sure to add a description of the variant and preferab
 <!--
 Add a list of best practices here. This list could have do's and don'ts or just general guidelines.
 -->
-
