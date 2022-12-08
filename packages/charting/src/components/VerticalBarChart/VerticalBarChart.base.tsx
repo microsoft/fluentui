@@ -45,7 +45,7 @@ export interface IVerticalBarChartState extends IBasestate {
   /**
    * data point of x, where rectangle is hovered or focused
    */
-  acitveXdataPoint: number | string | null;
+  activeXdataPoint: number | string | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
@@ -83,7 +83,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       selectedLegendTitle: '',
       xCalloutValue: '',
       yCalloutValue: '',
-      acitveXdataPoint: null,
+      activeXdataPoint: null,
       YValueHover: [],
       hoverXValue: '',
       calloutLegend: '',
@@ -217,7 +217,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             stroke={lineLegendColor}
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
-            visibility={this.state.acitveXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
             onClick={item.point.lineData?.onClick}
           />
         );
@@ -386,7 +386,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         xCalloutValue: point.xAxisCalloutData || point.x.toString(),
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
-        acitveXdataPoint: point.x,
+        activeXdataPoint: point.x,
         YValueHover,
         hoverXValue,
         callOutAccessibilityData: point.callOutAccessibilityData,
@@ -402,7 +402,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
-      acitveXdataPoint: null,
+      activeXdataPoint: null,
       YValueHover: [],
       hoverXValue: '',
     });
