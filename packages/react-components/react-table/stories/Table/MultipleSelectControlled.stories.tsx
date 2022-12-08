@@ -160,7 +160,7 @@ export const MultipleSelectControlled = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} aria-lable="Table with controlled multiselect">
+    <Table {...keyboardNavAttr} aria-label="Table with controlled multiselect">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
