@@ -5,11 +5,13 @@
   "description": "Visual Regression Tests for Fluent UI React",
   "scripts": {
     "build": "just-scripts build",
+    "build:storybook": "build-storybook -o dist/storybook",
     "clean": "",
     "code-style": "just-scripts code-style",
     "convert": "bash convertStoriesToStoryWright.sh",
     "just": "just-scripts",
     "screener": "screener-storybook --conf screener.config.js",
+    "screener:build": "yarn build:storybook",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555",
     "test": "just-scripts test",
