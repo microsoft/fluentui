@@ -141,10 +141,20 @@ export const MultipleSelect = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} aria-label="Table with multiselect">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -152,6 +162,7 @@ export const MultipleSelect = () => {
             checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
