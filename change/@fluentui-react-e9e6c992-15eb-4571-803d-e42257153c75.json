@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Always give panel header a background color, even before resize.",
+  "packageName": "@fluentui/react",
+  "email": "naethell@microsoft.com",
+  "dependentChangeType": "patch"
+}
