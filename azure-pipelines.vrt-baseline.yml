@@ -19,7 +19,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v7
-          vrTestPackageName: '@fluentui/vr-tests'
+          vrTestPackageName: 'vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "FluentUI-v7" --buildId $(Build.BuildId)

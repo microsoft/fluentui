@@ -4,7 +4,7 @@ parameters:
     default: v7
   - name: vrTestPackageName
     type: string
-    default: '@fluentui/vr-tests'
+    default: 'vr-tests'
   - name: vrTestPackagePath
     type: string
     default: 'apps/vr-tests'
