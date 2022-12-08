@@ -74,6 +74,7 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalXS),
     minHeight: '32px',
     ...shorthands.flex(1, 1, '0px'),
+    outlineStyle: 'none',
   },
   sortable: {
     cursor: 'pointer',
