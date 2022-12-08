@@ -11,7 +11,7 @@ export const renderField_unstable = (state: FieldState) => {
   return (
     <slots.root {...slotProps.root}>
       {slots.label && <slots.label {...slotProps.label} />}
-      {slotProps.root.children}
+      <slots.control {...slotProps.control} />
       {slots.validationMessage && (
         <slots.validationMessage {...slotProps.validationMessage}>
           {slots.validationMessageIcon && <slots.validationMessageIcon {...slotProps.validationMessageIcon} />}

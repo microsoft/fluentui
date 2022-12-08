@@ -5,6 +5,7 @@ import type { FieldSlots, FieldState } from './Field.types';
 
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: `fui-Field`,
+  control: `fui-Field__control`,
   label: `fui-Field__label`,
   validationMessage: `fui-Field__validationMessage`,
   validationMessageIcon: `fui-Field__validationMessageIcon`,
@@ -24,6 +25,10 @@ const useRootStyles = makeStyles({
   horizontal: {
     gridTemplateRows: 'auto auto auto auto',
     gridTemplateColumns: '1fr 2fr',
+  },
+
+  secondColumn: {
+    gridColumnStart: '2',
   },
 });
 
@@ -88,6 +93,13 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.root.className,
   );
 
+  if (state.control) {
+    state.control.className = mergeClasses(
+      fieldClassNames.control,
+      horizontal && rootStyles.secondColumn,
+      state.control.className,
+    );
+  }
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(

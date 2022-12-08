@@ -22,7 +22,6 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
     required?: boolean;
     size?: 'small' | 'medium' | 'large';
     htmlFor?: string;
-    ariaInvalidOnError?: boolean;
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success';
 };
@@ -30,6 +29,7 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
 // @public
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
+    control: Slot<'div'>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;

@@ -20,19 +20,15 @@ const validationMessageIcons = {
  * @param ref - Ref to the control slot (primary slot)
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>): FieldState => {
-  const {
-    ariaInvalidOnError = true,
-    children,
-    htmlFor,
-    orientation = 'vertical',
-    required,
-    size,
-    validationState,
-  } = props;
+  const { children, htmlFor, orientation = 'vertical', required, size, validationState } = props;
 
   const baseId = useId('field-');
 
-  const root = getNativeElementProps('div', props);
+  const root = getNativeElementProps('div', props, ['children']);
+
+  const control = resolveShorthand(props.control, {
+    required: true,
+  });
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
@@ -46,6 +42,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
   const validationMessage = resolveShorthand(props.validationMessage, {
     defaultProps: {
       id: baseId + '__validationMessage',
+      role: validationState === 'error' ? 'alert' : undefined,
     },
   });
 
@@ -66,7 +63,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
 
   const childProps: FieldChildProps = { ...childElement?.props };
 
-  if (label) {
+  if (label && !htmlFor) {
     childProps['aria-labelledby'] ??= label.id;
   }
 
@@ -83,14 +80,14 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
     childProps['aria-required'] ??= true;
   }
 
-  if (validationState === 'error' && ariaInvalidOnError) {
+  if (validationState === 'error') {
     childProps['aria-invalid'] ??= true;
   }
 
   if (typeof children === 'function') {
-    root.children = children(childProps);
+    control.children = children(childProps);
   } else if (childElement) {
-    root.children = React.cloneElement(childElement, childProps);
+    control.children = React.cloneElement(childElement, childProps);
   }
 
   return {
@@ -98,12 +95,14 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
     validationState,
     components: {
       root: 'div',
+      control: 'div',
       label: Label,
       validationMessage: 'div',
       validationMessageIcon: 'span',
       hint: 'div',
     },
     root,
+    control,
     label,
     validationMessageIcon,
     validationMessage,
