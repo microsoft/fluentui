@@ -10,7 +10,6 @@ import {
 import descriptionMd from './DataGridDescription.md';
 
 export { Default } from './Default.stories';
-export { KeyboardNavigation } from './KeyboardNavigation.stories';
 export { Sort } from './Sort.stories';
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
