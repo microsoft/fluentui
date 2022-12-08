@@ -132,6 +132,7 @@ export const SubtleSelection = () => {
       onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
         if (e.key === ' ') {
+          e.preventDefault();
           toggleRow(e, row.rowId);
         }
       },
@@ -140,13 +141,24 @@ export const SubtleSelection = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   return (
-    <Table>
+    <Table aria-label="Table with subtle selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>

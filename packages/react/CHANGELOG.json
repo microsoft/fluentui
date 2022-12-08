@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 08 Dec 2022 07:46:37 GMT",
+      "tag": "@fluentui/react_v8.103.6",
+      "version": "8.103.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "naethell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0a56bc44f375de754ab0693b938adbd58412184c",
+            "comment": "fix: Always give panel header a background color, even before resize."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 07:54:46 GMT",
       "tag": "@fluentui/react_v8.103.5",
       "version": "8.103.5",

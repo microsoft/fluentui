@@ -169,7 +169,7 @@ export const DataGrid = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} sortable role="grid">
+    <Table {...keyboardNavAttr} role="grid" sortable aria-label="DataGrid implementation with Table primitives">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
