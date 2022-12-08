@@ -173,8 +173,6 @@ export const DataGrid = () => {
       <TableHeader>
         <TableRow>
           <TableSelectionCell
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
           />
@@ -193,13 +191,7 @@ export const DataGrid = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell
-              role="gridcell"
-              aria-selected={selected}
-              tabIndex={0}
-              checkboxIndicator={{ tabIndex: -1 }}
-              checked={selected}
-            />
+            <TableSelectionCell role="gridcell" aria-selected={selected} checked={selected} />
             <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

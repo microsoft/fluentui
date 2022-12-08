@@ -53,6 +53,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLTableRowElement>) => {
     if (selectable && !isHeader && e.key === ' ') {
       toggleRow(e, rowId);
+      e.preventDefault();
     }
 
     props.onKeyDown?.(e);
