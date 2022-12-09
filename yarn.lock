@@ -26418,6 +26418,11 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+use-disposable@^0.1.0-alpha.0:
+  version "0.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/use-disposable/-/use-disposable-0.1.0-alpha.0.tgz#0d66363dfc636966f171a1eb2f1642bd2167620e"
+  integrity sha512-sYeFxqZQj0Y5A0ZKyK4tthrM+pnUtAH0zni0dwx/oHrLGlKrjS5FuLF7LZ6QnBfrOQ/Yw1HqFJgzaa9HwbmusQ==
+
 use-immer@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/use-immer/-/use-immer-0.6.0.tgz#ca6aa5ade93018e2c65cf128d19ada54fc23f70d"
