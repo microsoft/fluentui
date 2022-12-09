@@ -135,14 +135,14 @@ import { personaClassNames } from '@fluentui/react-persona';
 import { PersonaProps } from '@fluentui/react-persona';
 import { PersonaSlots } from '@fluentui/react-persona';
 import { PersonaState } from '@fluentui/react-persona';
-import { Progress } from '@fluentui/react-progress';
-import { progressClassNames } from '@fluentui/react-progress';
+import { ProgressBar } from '@fluentui/react-progress';
+import { progressBarClassNames } from '@fluentui/react-progress';
+import { ProgressBarProps } from '@fluentui/react-progress';
+import { ProgressBarSlots } from '@fluentui/react-progress';
+import { ProgressBarState } from '@fluentui/react-progress';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { progressFieldClassNames } from '@fluentui/react-progress';
 import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
-import { ProgressProps } from '@fluentui/react-progress';
-import { ProgressSlots } from '@fluentui/react-progress';
-import { ProgressState } from '@fluentui/react-progress';
 import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
 import { radioGroupFieldClassNames } from '@fluentui/react-radio';
 import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
@@ -166,7 +166,7 @@ import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderPersona_unstable } from '@fluentui/react-persona';
-import { renderProgress_unstable } from '@fluentui/react-progress';
+import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
@@ -317,8 +317,8 @@ import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { usePersona_unstable } from '@fluentui/react-persona';
 import { usePersonaStyles_unstable } from '@fluentui/react-persona';
-import { useProgress_unstable } from '@fluentui/react-progress';
-import { useProgressStyles_unstable } from '@fluentui/react-progress';
+import { useProgressBar_unstable } from '@fluentui/react-progress';
+import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useTable_unstable } from '@fluentui/react-table';
@@ -610,21 +610,21 @@ export { PersonaSlots }
 
 export { PersonaState }
 
-export { Progress }
+export { ProgressBar }
 
-export { progressClassNames }
+export { progressBarClassNames }
+
+export { ProgressBarProps }
+
+export { ProgressBarSlots }
+
+export { ProgressBarState }
 
 export { ProgressField }
 
 export { progressFieldClassNames }
 
 export { ProgressFieldProps }
-
-export { ProgressProps }
-
-export { ProgressSlots }
-
-export { ProgressState }
 
 export { RadioGroupField }
 
@@ -672,7 +672,7 @@ export { renderOptionGroup_unstable }
 
 export { renderPersona_unstable }
 
-export { renderProgress_unstable }
+export { renderProgressBar_unstable }
 
 export { renderSelect_unstable }
 
@@ -975,9 +975,9 @@ export { usePersona_unstable }
 
 export { usePersonaStyles_unstable }
 
-export { useProgress_unstable }
+export { useProgressBar_unstable }
 
-export { useProgressStyles_unstable }
+export { useProgressBarStyles_unstable }
 
 export { useSelect_unstable }
 
