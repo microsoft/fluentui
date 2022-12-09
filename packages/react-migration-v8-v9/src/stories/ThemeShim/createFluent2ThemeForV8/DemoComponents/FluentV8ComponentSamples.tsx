@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { mergeStyles } from '@fluentui/merge-styles';
+import { mergeStyles } from '@fluentui/react';
 import { DefaultButton, IconButton, initializeIcons, PrimaryButton } from '@fluentui/react';
 import { Checkbox } from '@fluentui/react';
 import { ChoiceGroup } from '@fluentui/react';

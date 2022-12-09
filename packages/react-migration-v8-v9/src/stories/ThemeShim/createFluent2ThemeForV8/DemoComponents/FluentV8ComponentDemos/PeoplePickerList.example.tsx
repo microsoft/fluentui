@@ -1,9 +1,12 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mru, people } from '@fluentui/example-data';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import type { IPersonaProps, IPersonaStyles } from '@fluentui/react/lib/Persona';
 import type { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { ListPeoplePicker, PeoplePickerItemSuggestion, ValidationState } from '@fluentui/react/lib/Pickers';
 import * as React from 'react';
+
+/* eslint-disable no-console */
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
@@ -45,13 +48,13 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
 
   const onFilterChanged = (
     filterText: string,
-    currentPersonas: IPersonaProps[],
+    currentPersonas?: IPersonaProps[],
     limitResults?: number,
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
 
-      filteredPersonas = removeDuplicates(filteredPersonas, currentPersonas);
+      filteredPersonas = currentPersonas ? removeDuplicates(filteredPersonas, currentPersonas) : filteredPersonas;
       filteredPersonas = limitResults ? filteredPersonas.slice(0, limitResults) : filteredPersonas;
 
       return filterPromise(filteredPersonas);
@@ -72,8 +75,8 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
     }
   };
 
-  const returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
-    return filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas));
+  const returnMostRecentlyUsed = (currentPersonas?: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
+    return currentPersonas ? filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas)) : mostRecentlyUsed;
   };
 
   const onRemoveSuggestion = (item: IPersonaProps): void => {

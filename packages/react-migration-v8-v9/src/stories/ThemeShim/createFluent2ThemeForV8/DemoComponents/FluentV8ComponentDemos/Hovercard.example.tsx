@@ -2,6 +2,8 @@ import type { IExpandingCardProps, IHoverCard, IPlainCardProps } from '@fluentui
 import { DefaultButton, HoverCard, HoverCardType, mergeStyleSets } from '@fluentui/react';
 import * as React from 'react';
 
+/* eslint-disable no-console */
+
 const classNames = mergeStyleSets({
   plainCard: {
     width: 200,
@@ -84,8 +86,8 @@ export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
   };
 
   const expandingCardProps: IExpandingCardProps = {
-    onRenderCompactCard: onRenderCompactCard,
-    onRenderExpandedCard: onRenderExpandedCard,
+    onRenderCompactCard,
+    onRenderExpandedCard,
   };
 
   return (

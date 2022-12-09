@@ -1,5 +1,6 @@
 import type { IButtonProps } from '@fluentui/react';
 import { DefaultButton, TeachingBubble } from '@fluentui/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import * as React from 'react';
 

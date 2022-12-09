@@ -2,7 +2,7 @@ import type { IButtonProps, IButtonStyles, IStyleFunctionOrObject, ITheme } from
 
 export function getCommandBarButtonStyles(props: IButtonProps): IStyleFunctionOrObject<IButtonProps, IButtonStyles> {
   const { theme } = props;
-  const { semanticColors, effects } = theme!; // tslint:disable-line:no-non-null-assertion
+  const { semanticColors, effects } = theme!;
 
   const rightCorners = {
     borderRadius: 0,
@@ -22,7 +22,7 @@ export function getCommandBarButtonStyles(props: IButtonProps): IStyleFunctionOr
     paddingRight: 4,
   };
 
-  const defaultSplitStyles: Partial<IButtonStyles> = getSplitButtonStyles(theme!); // tslint:disable-line:no-non-null-assertion
+  const defaultSplitStyles: Partial<IButtonStyles> = getSplitButtonStyles(theme!);
 
   const styles: Partial<IButtonStyles> = {
     root: {

@@ -10,7 +10,7 @@ import {
   Text,
 } from '@fluentui/react';
 import * as React from 'react';
-import { fullWidthMessageBarStyle } from '../../../../../components/Theme/Fluent2ThemeForV8/Fluent2ComponentStylesForV8/MessageBar.styles';
+import { fullWidthMessageBarStyle } from '../../../../../components/Theme/fluent2ThemeForV8/fluent2ComponentStylesForV8/MessageBar.styles';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 interface IExampleProps {

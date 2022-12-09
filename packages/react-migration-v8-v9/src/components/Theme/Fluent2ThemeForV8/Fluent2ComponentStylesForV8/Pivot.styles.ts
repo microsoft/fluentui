@@ -2,7 +2,7 @@ import type { IPivotStyleProps, IPivotStyles, IStyleFunctionOrObject } from '@fl
 
 export function getPivotStyles(props: IPivotStyleProps): IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles> {
   const { theme } = props;
-  const { effects, semanticColors, palette } = theme;
+  const { effects, semanticColors } = theme;
 
   return {
     link: {

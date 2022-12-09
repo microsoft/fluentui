@@ -81,8 +81,6 @@ const getTextHoverColor = (props: IChoiceGroupOptionStyleProps) => {
 export const getDefaultChoiceGroupOptionStyles = (
   props: IChoiceGroupOptionStyleProps,
 ): Partial<IChoiceGroupOptionStyles> => {
-  const { theme, checked } = props;
-
   return {
     field: {
       color: getChoiceGroupTextColor(props),
@@ -128,14 +126,4 @@ export function getChoiceGroupOptionStyles(
   props: IChoiceGroupOptionStyleProps,
 ): IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles> {
   return getDefaultChoiceGroupOptionStyles(props);
-}
-
-export function getM365ChoiceGroupOptionStyles(
-  props: IChoiceGroupOptionStyleProps,
-): IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles> {
-  const choiceGroupOptionStyles = getDefaultChoiceGroupOptionStyles(props);
-
-  return {
-    ...choiceGroupOptionStyles,
-  };
 }

@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { setVirtualParent } from '@fluentui/dom-utilities';
 import type { ICommandBarItemProps } from '@fluentui/react';
 import type { IButtonProps } from '@fluentui/react';
@@ -5,6 +6,8 @@ import { CommandBar } from '@fluentui/react';
 import { FocusTrapZone } from '@fluentui/react';
 import { Checkbox } from '@fluentui/react';
 import * as React from 'react';
+
+/* eslint-disable no-console */
 
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 

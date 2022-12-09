@@ -1,4 +1,4 @@
-import type { IContextualMenuProps, IIconProps, IStackTokens } from '@fluentui/react';
+import type { IContextualMenuProps, IIconProps } from '@fluentui/react';
 import { Toggle } from '@fluentui/react';
 import { IconButton } from '@fluentui/react';
 import { CompoundButton } from '@fluentui/react';
@@ -6,9 +6,10 @@ import { DefaultButton, PrimaryButton } from '@fluentui/react';
 import * as React from 'react';
 import { useState } from 'react';
 
-// Example formatting
-const stackTokens: IStackTokens = { childrenGap: 40 };
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-alert */
 
+// Example formatting
 const emojiIcon: IIconProps = { iconName: 'Emoji2' };
 
 const menuProps: IContextualMenuProps = {
@@ -31,12 +32,12 @@ export const ButtonExample: React.FunctionComponent = () => {
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
-  const _onDisabledChanged = (ev: React.MouseEvent<HTMLElement>, disabled: boolean): void => {
-    setIsDisabled(disabled);
+  const _onDisabledChanged = (ev: React.MouseEvent<HTMLElement>, disabled?: boolean): void => {
+    setIsDisabled(!!disabled);
   };
 
-  const _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled: boolean): void => {
-    setIsChecked(toggled);
+  const _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled?: boolean): void => {
+    setIsChecked(!!toggled);
   };
 
   return (

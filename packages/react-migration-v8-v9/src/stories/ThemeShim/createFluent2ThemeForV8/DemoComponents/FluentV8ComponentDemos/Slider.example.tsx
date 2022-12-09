@@ -2,6 +2,9 @@ import type { IStackStyles, IStackTokens } from '@fluentui/react';
 import { Slider, Stack } from '@fluentui/react';
 import * as React from 'react';
 
+/* eslint-disable no-console */
+/* eslint-disable react/jsx-no-bind */
+
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
 const sliderAriaValueText = (value: number) => `${value} percent`;

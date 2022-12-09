@@ -1,5 +1,6 @@
 import type { ITooltipHostStyles } from '@fluentui/react';
 import { DefaultButton, TooltipHost } from '@fluentui/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useId } from '@fluentui/react-hooks';
 import * as React from 'react';
 

@@ -3,6 +3,9 @@ import { mergeStyles, TagPicker, Toggle } from '@fluentui/react';
 import * as React from 'react';
 import { useState } from 'react';
 
+/* eslint-disable no-console */
+/* eslint-disable react/jsx-no-bind */
+
 const rootClass = mergeStyles({
   maxWidth: 500,
 });
@@ -45,7 +48,7 @@ const listContainsTagList = (tag: ITag, tagList?: ITag[]) => {
   return tagList.some(compareTag => compareTag.key === tag.key);
 };
 
-const filterSuggestedTags = (filterText: string, tagList: ITag[]): ITag[] => {
+const filterSuggestedTags = (filterText: string, tagList?: ITag[]): ITag[] => {
   return filterText
     ? testTags.filter(
         tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0 && !listContainsTagList(tag, tagList),
@@ -53,7 +56,7 @@ const filterSuggestedTags = (filterText: string, tagList: ITag[]): ITag[] => {
     : [];
 };
 
-const filterSelectedTags = (filterText: string, tagList: ITag[]): ITag[] => {
+const filterSelectedTags = (filterText: string, tagList?: ITag[]): ITag[] => {
   return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
 };
 
@@ -64,16 +67,16 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
   const picker = React.useRef<IBasePicker<ITag>>(null);
   const [tagPicker, setTagPicker] = useState<boolean>(false);
 
-  const _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled: boolean): void => {
-    setTagPicker(toggled);
+  const _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled?: boolean): void => {
+    setTagPicker(!!toggled);
   };
 
-  const onItemSelected = React.useCallback((item: ITag): ITag | null => {
-    if (picker.current && listContainsTagList(item, picker.current.items)) {
+  const onItemSelected = React.useCallback((item?: ITag): ITag | null => {
+    if (picker.current && item && listContainsTagList(item, picker.current.items)) {
       return null;
     }
 
-    return item;
+    return item ?? null;
   }, []);
 
   return (

@@ -5,7 +5,7 @@ import type {
   IDialogStyles,
   IStyleFunctionOrObject,
 } from '@fluentui/react';
-import type { IExtendedEffects } from '@m365-admin/customizations';
+import { IExtendedEffects } from '../fluent2ForV8.types';
 
 export function getDialogStyles(props: IDialogStyleProps): IStyleFunctionOrObject<IDialogStyleProps, IDialogStyles> {
   const { theme } = props;

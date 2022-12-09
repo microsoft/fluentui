@@ -1,5 +1,5 @@
 import type { ICommandBarStyleProps, ICommandBarStyles, IStyleFunctionOrObject } from '@fluentui/react';
-import type { IExtendedEffects } from '@m365-admin/customizations';
+import { IExtendedEffects } from '../fluent2ForV8.types';
 
 export function getCommandBarStyles(
   props: ICommandBarStyleProps,

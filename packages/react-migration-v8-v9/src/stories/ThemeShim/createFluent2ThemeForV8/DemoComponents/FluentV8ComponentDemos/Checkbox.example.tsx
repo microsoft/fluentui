@@ -1,6 +1,8 @@
 import { Checkbox, Stack } from '@fluentui/react';
 import * as React from 'react';
 
+/* eslint-disable no-console */
+
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };
 

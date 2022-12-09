@@ -3,7 +3,7 @@ import type {
   IColorPickerGridCellStyles,
   IStyleFunctionOrObject,
 } from '@fluentui/react';
-import type { IExtendedEffects } from '@m365-admin/customizations';
+import { IExtendedEffects } from '../fluent2ForV8.types';
 
 export function getColorPickerGridCellStyles(
   props: IColorPickerGridCellStyleProps,

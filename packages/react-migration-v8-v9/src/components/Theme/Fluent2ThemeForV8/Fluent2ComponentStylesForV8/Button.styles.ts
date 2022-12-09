@@ -1,6 +1,4 @@
-// OneDrive:IgnoreCodeCoverage
-
-import { IButtonProps, IButtonStyles, IStyleFunctionOrObject, ITheme, SemanticColorSlots } from '@fluentui/react';
+import { IButtonProps, IButtonStyles, IStyleFunctionOrObject, ITheme } from '@fluentui/react';
 import { concatStyleSets } from '@fluentui/react';
 
 type FocusStyleType = {

@@ -6,6 +6,8 @@ import { TooltipHost } from '@fluentui/react';
 import { Icon } from '@fluentui/react';
 import * as React from 'react';
 
+/* eslint-disable no-console */
+
 const labelStyles: Partial<ILabelStyles> = {
   root: { margin: '10px 0', selectors: { '&:not(:first-child)': { marginTop: 24 } } },
 };
@@ -95,8 +97,8 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
   );
 };
 
-function _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem): void {
-  console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
+function _onBreadcrumbItemClicked(ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem): void {
+  console.log(`Breadcrumb item with key "${item?.key}" has been clicked.`);
 }
 
 function _getCustomDivider(dividerProps: IDividerAsProps): JSX.Element {

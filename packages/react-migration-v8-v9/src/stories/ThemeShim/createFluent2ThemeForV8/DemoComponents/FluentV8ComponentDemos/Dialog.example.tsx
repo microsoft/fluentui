@@ -2,6 +2,7 @@ import { DefaultButton, PrimaryButton } from '@fluentui/react';
 import { ContextualMenu } from '@fluentui/react';
 import { Dialog, DialogFooter, DialogType } from '@fluentui/react';
 import { Toggle } from '@fluentui/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import * as React from 'react';
 

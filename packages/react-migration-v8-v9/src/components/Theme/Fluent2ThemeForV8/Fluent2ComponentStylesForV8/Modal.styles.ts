@@ -1,5 +1,5 @@
 import type { IModalStyleProps, IModalStyles, IStyleFunctionOrObject } from '@fluentui/react';
-import type { IExtendedEffects } from '@m365-admin/customizations';
+import { IExtendedEffects } from '../fluent2ForV8.types';
 
 export function getModalStyles(props: IModalStyleProps): IStyleFunctionOrObject<IModalStyleProps, IModalStyles> {
   const { theme } = props;

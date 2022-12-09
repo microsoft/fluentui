@@ -1,5 +1,4 @@
 import type { ICheckboxStyleProps, ICheckboxStyles, IStyleFunctionOrObject } from '@fluentui/react';
-import type { IM365CheckboxStyleProps, IM365CheckboxStyles } from '@m365-admin/m365-checkbox';
 
 const externalPadding = '3px';
 
@@ -84,7 +83,7 @@ const getHoveredTextColor = (props: ICheckboxStyleProps) => {
 };
 
 const getCheckmarkColor = (props: ICheckboxStyleProps) => {
-  const { theme, disabled, checked } = props;
+  const { theme, disabled } = props;
 
   if (disabled) {
     return theme.semanticColors.buttonTextDisabled;
@@ -144,35 +143,4 @@ export function getCheckboxStyles(
   props: ICheckboxStyleProps,
 ): IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles> {
   return getDefaultCheckboxStyles(props);
-}
-
-export function getM365CheckboxStyles(
-  props: IM365CheckboxStyleProps,
-): IStyleFunctionOrObject<IM365CheckboxStyleProps, IM365CheckboxStyles> {
-  const checkboxStyles = getDefaultCheckboxStyles(props);
-
-  return {
-    ...checkboxStyles,
-    description: {
-      color: getTextColor(props),
-      paddingTop: '3px',
-    },
-    root: {
-      ...checkboxStyles.root,
-      '&:hover .m365-checkbox-description': {
-        color: getHoveredTextColor(props),
-      },
-    },
-    checkboxContainer: {
-      width: 'fit-content',
-      padding: externalPadding,
-      '&:hover .m365-checkbox-description': {
-        color: getHoveredTextColor(props),
-      },
-    },
-    label: {
-      ...checkboxStyles.label,
-      paddingBottom: '0px',
-    },
-  };
 }

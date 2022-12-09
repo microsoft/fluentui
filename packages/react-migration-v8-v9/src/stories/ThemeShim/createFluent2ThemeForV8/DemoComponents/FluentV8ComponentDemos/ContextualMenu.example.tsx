@@ -1,8 +1,12 @@
 import type { IContextualMenuProps } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react';
 import { ContextualMenuItemType } from '@fluentui/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useConst } from '@fluentui/react-hooks';
 import * as React from 'react';
+
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 
 export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({
@@ -28,9 +32,9 @@ export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
         key: 'linkWithOnClick',
         name: 'Link click',
         href: 'http://bing.com',
-        onClick: (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+        onClick: ev => {
           alert('Link clicked');
-          ev.preventDefault();
+          ev?.preventDefault();
         },
         target: '_blank',
       },

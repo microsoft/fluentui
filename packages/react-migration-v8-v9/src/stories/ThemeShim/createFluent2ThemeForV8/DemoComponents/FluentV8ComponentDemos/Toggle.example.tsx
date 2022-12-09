@@ -3,6 +3,8 @@ import { Stack } from '@fluentui/react/lib/Stack';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import * as React from 'react';
 
+/* eslint-disable no-console */
+
 const stackTokens = { childrenGap: 50 };
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 const columnProps: Partial<IStackProps> = {

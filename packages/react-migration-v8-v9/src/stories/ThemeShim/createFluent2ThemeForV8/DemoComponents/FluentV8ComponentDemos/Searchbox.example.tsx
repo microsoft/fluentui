@@ -5,6 +5,7 @@ import * as React from 'react';
 
 const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-bind */
 export const SearchBoxFullSizeExample = () => {
   return (

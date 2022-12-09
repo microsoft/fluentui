@@ -12,6 +12,7 @@ import {
   Toggle,
 } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import * as React from 'react';
 
@@ -26,8 +27,8 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
   const labelId = useId('callout-label');
   const descriptionId = useId('callout-description');
 
-  const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setDirectionalHint(option.key as DirectionalHint);
+  const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): void => {
+    setDirectionalHint(option?.key as DirectionalHint);
   };
 
   const onGapSliderChange = (value: number): void => {

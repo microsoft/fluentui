@@ -1,7 +1,10 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mru, people } from '@fluentui/example-data';
-import type { IBasePickerSuggestionsProps, IPeoplePickerItemSelectedProps, IPersonaProps } from '@fluentui/react';
+import type { IBasePickerSuggestionsProps, IPersonaProps, IPickerItemProps } from '@fluentui/react';
 import { Checkbox, NormalPeoplePicker, PeoplePickerItem, ValidationState } from '@fluentui/react';
 import * as React from 'react';
+
+/* eslint-disable no-console */
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
@@ -30,13 +33,13 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
 
   const onFilterChanged = (
     filterText: string,
-    currentPersonas: IPersonaProps[],
+    currentPersonas?: IPersonaProps[],
     limitResults?: number,
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
 
-      filteredPersonas = removeDuplicates(filteredPersonas, currentPersonas);
+      filteredPersonas = currentPersonas ? removeDuplicates(filteredPersonas, currentPersonas) : filteredPersonas;
       filteredPersonas = limitResults ? filteredPersonas.slice(0, limitResults) : filteredPersonas;
 
       return filterPromise(filteredPersonas);
@@ -57,8 +60,8 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
     }
   };
 
-  const returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
-    return filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas));
+  const returnMostRecentlyUsed = (currentPersonas?: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
+    return currentPersonas ? filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas)) : mostRecentlyUsed;
   };
 
   const onRemoveSuggestion = (item: IPersonaProps): void => {
@@ -82,7 +85,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
     }
   };
 
-  const renderItemWithSecondaryText = (props: IPeoplePickerItemSelectedProps) => {
+  const renderItemWithSecondaryText = (props: IPickerItemProps<IPersonaProps>) => {
     const newProps = {
       ...props,
       item: {

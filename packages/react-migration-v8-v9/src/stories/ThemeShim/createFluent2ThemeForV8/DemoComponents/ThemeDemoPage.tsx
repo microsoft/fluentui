@@ -13,7 +13,7 @@ import { CalloutDirectionalExample } from './FluentV8ComponentDemos/Callout.exam
 import { CheckboxExample } from './FluentV8ComponentDemos/Checkbox.example';
 import { ChoiceGroupExample } from './FluentV8ComponentDemos/Choicegroup.example';
 import { CommandBarBasicExample } from './FluentV8ComponentDemos/CommandBar.example';
-import { ContextualMenuDefaultExample } from './FluentV8ComponentDemos/ContextualMenu';
+import { ContextualMenuDefaultExample } from './FluentV8ComponentDemos/ContextualMenu.example';
 import { DialogBasicExample } from './FluentV8ComponentDemos/Dialog.example';
 import { DropdownExample } from './FluentV8ComponentDemos/Dropdown.example';
 import { HoverCardInstantDismissExample } from './FluentV8ComponentDemos/Hovercard.example';
@@ -33,8 +33,8 @@ import { TextFieldBasicExample } from './FluentV8ComponentDemos/TextField.exampl
 import { ToggleBasicExample } from './FluentV8ComponentDemos/Toggle.example';
 import { TooltipBasicExample } from './FluentV8ComponentDemos/Tooltip.example';
 
-import { Fluent2ForV8LightTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2ForV8LightTheme';
-import { Fluent2ForV8DarkTheme } from '../../../../components/Theme/Fluent2ThemeForV8/fluent2ForV8DarkTheme';
+import { Fluent2ForV8LightTheme } from '../../../../components/Theme/fluent2ThemeForV8/fluent2ForV8LightTheme';
+import { Fluent2ForV8DarkTheme } from '../../../../components/Theme/fluent2ThemeForV8/fluent2ForV8DarkTheme';
 import { Button, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { FluentComponentSamples } from './FluentV8ComponentSamples';
 
