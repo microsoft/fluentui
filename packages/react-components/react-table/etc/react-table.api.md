@@ -182,7 +182,7 @@ export type DataGridState = TableState & {
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'>;
 
 // @public (undocumented)
-export type FocusMode = 'none' | 'cell';
+export type FocusMode = 'none' | 'cell' | 'row_unstable';
 
 // @public (undocumented)
 export interface HeadlessTableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
