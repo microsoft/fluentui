@@ -14,7 +14,7 @@
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555",
     "test": "just-scripts test",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
+    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true  --partitionIndex 1 --totalPartitions 20",
     "vrt:build": "yarn build:storybook"
   },
   "dependencies": {
