@@ -38,8 +38,8 @@ export {
   getPartitionedNativeProps,
   getRTLSafeKey,
   mergeCallbacks,
-  shouldPreventDefaultOnKeyDown,
   isHTMLElement,
+  isInteractiveHTMLElement,
 } from './utils/index';
 
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';
