@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: deprecates unused type UninitializedMenuListState",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -35,6 +35,11 @@ const DEFAULT_OPTIONS3: IComboBoxOption[] = [
   { key: '2', text: 'Foo' },
   { key: '3', text: 'Bar' },
 ];
+const DEFAULT_OPTIONS4: IComboBoxOption[] = [
+  { key: '1', text: 'One' },
+  { key: '2', text: 'Foo', disabled: true },
+  { key: '3', text: 'Bar' },
+];
 
 const RUSSIAN_OPTIONS: IComboBoxOption[] = [
   { key: '0', text: 'сестра' },
@@ -353,6 +358,26 @@ describe('ComboBox', () => {
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'f');
     expect(combobox.getAttribute('value')).toEqual('One');
+  });
+
+  it(`Cannot insert text that matches disabled option in uncontrolled case with autoComplete on and allowFreeform
+      off`, () => {
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS4} autoComplete="on" />);
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('One');
+  });
+
+  it(`Can insert text in uncontrolled case with autoComplete and allowFreeform on but does not autocomplete to disabled
+      matching option`, () => {
+    const { getByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS4} autoComplete="on" allowFreeform />,
+    );
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('f');
   });
 
   it('Can insert an empty string in uncontrolled case with autoComplete and allowFreeform on', () => {

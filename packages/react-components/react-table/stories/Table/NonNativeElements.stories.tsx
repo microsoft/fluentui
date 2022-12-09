@@ -67,7 +67,7 @@ const columns = [
 
 export const NonNativeElements = () => {
   return (
-    <Table noNativeElements>
+    <Table noNativeElements aria-label="Table without semantic HTML elements">
       <TableHeader>
         <TableRow>
           {columns.map(column => (

@@ -75,7 +75,7 @@ const columns = [
 
 export const PrimaryCell = () => {
   return (
-    <Table>
+    <Table aria-label="Table with primary cell layout">
       <TableHeader>
         <TableRow>
           {columns.map(column => (

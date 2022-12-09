@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Thu, 17 Nov 2022 23:05:42 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.0-beta.5)
+
+Mon, 05 Dec 2022 18:29:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.0-beta.4..@fluentui/react-persona_v9.1.0-beta.5)
+
+### Changes
+
+- chore: Updating Persona's docs to match implementation. ([PR #25770](https://github.com/microsoft/fluentui/pull/25770) by esteban.230@hotmail.com)
+- chore: Migrate to new package structure. ([PR #25737](https://github.com/microsoft/fluentui/pull/25737) by tristan.watanabe@gmail.com)
+- fix: Make Persona's text wrap when overflowing its container. ([PR #25880](https://github.com/microsoft/fluentui/pull/25880) by esteban.230@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.8 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-badge to v9.0.14 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.1.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.0-beta.4)
 

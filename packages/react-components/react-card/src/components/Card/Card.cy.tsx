@@ -4,68 +4,106 @@ import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
-import { Card, CardFooter, CardHeader, cardClassNames } from '@fluentui/react-card';
+import {
+  Card,
+  CardFooter,
+  CardHeader,
+  cardClassNames,
+  cardHeaderClassNames,
+  cardPreviewClassNames,
+  CardPreview,
+} from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-const CardSample = (props: CardProps) => {
-  const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
 
-  const powerpointLogoURL = ASSET_URL + '/stories/assets/powerpoint_logo.svg';
-
-  return (
-    <>
-      <p tabIndex={0} id="before">
-        Before
-      </p>
-      <Card id="card" {...props}>
-        <CardHeader
-          image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
-          header={<b>App Name</b>}
-          description={<span>Developer</span>}
-        />
-        <div>
-          Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar
-          plum.
-        </div>
-        <CardFooter>
-          <Button id="open-button" appearance="primary">
-            Open
-          </Button>
-          <Button id="close-button" appearance="outline">
-            Close
-          </Button>
-        </CardFooter>
-      </Card>
-      <p tabIndex={0} id="after">
-        After
-      </p>
-    </>
-  );
+  return `${ASSET_URL}${asset}`;
 };
 
-const CardSampleNoActions = (props: CardProps) => {
-  return (
-    <>
-      <p tabIndex={0} id="before">
-        Before
-      </p>
-      <Card id="card" {...props}>
-        <CardHeader header={<b>App Name</b>} description={<span>Developer</span>} />
-        <div>
-          Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar
-          plum.
-        </div>
-      </Card>
-      <p tabIndex={0} id="after">
-        After
-      </p>
-    </>
-  );
-};
+const CardSample = (props: CardProps) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+
+    <Card id="card" {...props}>
+      <CardHeader
+        image={<img src={resolveAsset('powerpoint_logo.svg')} alt="Microsoft PowerPoint logo" />}
+        header={<b>App Name</b>}
+        description={<span>Developer</span>}
+      />
+
+      <div>
+        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      </div>
+
+      <CardFooter>
+        <Button id="open-button" appearance="primary">
+          Open
+        </Button>
+
+        <Button id="close-button" appearance="outline">
+          Close
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
+
+const CardWithPreview = (props: CardProps) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+
+    <Card id="card" {...props}>
+      <CardPreview>
+        <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document" />
+      </CardPreview>
+
+      <CardFooter>
+        <Button id="open-button" appearance="primary">
+          Open
+        </Button>
+
+        <Button id="close-button" appearance="outline">
+          Close
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
+
+const CardSampleNoActions = (props: CardProps) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+    <Card id="card" {...props}>
+      <CardHeader header={<b>App Name</b>} description={<span>Developer</span>} />
+      <div>
+        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      </div>
+    </Card>
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
 
 describe('Card', () => {
   describe('focus behaviors', () => {
@@ -265,22 +303,25 @@ describe('Card', () => {
     it('should not be selectable by default', () => {
       mountFluent(<CardSample />);
 
-      cy.get(`.${cardClassNames.select}`).should('not.exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.exist');
     });
 
-    it('should be checked when prop is present - selected prop', () => {
+    it('should render select slot - selected prop', () => {
       mountFluent(<CardSample selected />);
 
-      cy.get('#card').should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
-    it('should be checked when prop is present - defaultSelected prop', () => {
+    it('should render select slot - defaultSelected prop', () => {
       mountFluent(<CardSample defaultSelected />);
 
-      cy.get('#card').should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
-    it('should not be checked when prop is present - onSelectionChange prop', () => {
+    it('should render select slot - onSelectionChange prop', () => {
       const Example = () => {
         const onSelectionChange = React.useCallback(() => null, []);
 
@@ -289,64 +330,65 @@ describe('Card', () => {
 
       mountFluent(<Example />);
 
-      cy.get('#card').should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
-    it('should have internal checkbox when selectable - select prop', () => {
-      mountFluent(<CardSample select={<span />} />);
+    it('should render select slot custom JSX is provided', () => {
+      mountFluent(<CardSample floatingAction={<span />} />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('exist');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.exist');
+    });
+
+    it('should have internal checkbox when selectable - no select slot', () => {
+      mountFluent(<CardSample selected />);
+
+      cy.get(`.${cardClassNames.checkbox}`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction}`).should('not.exist');
     });
 
     it('should render custom select slot', () => {
-      mountFluent(<CardSample select={<input type="checkbox" />} />);
+      mountFluent(<CardSample floatingAction={<input type="checkbox" />} />);
 
-      cy.get(`.${cardClassNames.select} input[type="checkbox"]`).should('exist');
+      cy.get(`.${cardClassNames.floatingAction} input[type="checkbox"]`).should('exist');
     });
 
     it('should select with a mouse click', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.be.checked');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
     });
 
     it('should have checkbox pre-selected and toggle its value', () => {
       mountFluent(<CardSample defaultSelected />);
 
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.be.checked');
     });
 
     it('should select with the Space key', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
-      cy.get(`.${cardClassNames.root}`).focus().realPress('Space');
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
-    });
-
-    it('should NOT select with the Enter key if card has any actions inside', () => {
-      mountFluent(<CardSample defaultSelected={false} />);
-
-      cy.get(`.${cardClassNames.root}`).focus().realPress('Enter');
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
-      cy.get(`.${cardClassNames.root} button`).first().should('be.focused');
+      cy.get(`.${cardClassNames.checkbox}`).focus().realPress('Space');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
     });
 
     it('should NOT select when focused on an action', () => {
       mountFluent(<CardSample defaultSelected={false} />);
 
       cy.get(`.${cardClassNames.root} button`).first().focus().realPress('Enter');
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'false');
+      cy.get(`.${cardClassNames.checkbox}`).should('not.be.checked');
     });
 
     it('should select with the Enter key if card does not have any actions inside', () => {
       mountFluent(<CardSampleNoActions defaultSelected={false} />);
 
-      cy.get(`.${cardClassNames.root}`).focus().realPress('Enter');
-      cy.get(`.${cardClassNames.root}`).should('have.attr', 'aria-checked', 'true');
+      cy.get(`.${cardClassNames.checkbox}`).focus().realPress('Enter');
+      cy.get(`.${cardClassNames.checkbox}`).should('be.checked');
     });
 
     it('should sync selected value with custom slot', () => {
@@ -357,7 +399,7 @@ describe('Card', () => {
 
         return (
           <CardSample
-            select={<input type="checkbox" className="custom-select-slot" checked={checked} />}
+            floatingAction={<input type="checkbox" className="custom-select-slot" checked={checked} />}
             onSelectionChange={onSelectionChange}
           />
         );
@@ -365,9 +407,30 @@ describe('Card', () => {
 
       mountFluent(<Example />);
 
-      cy.get(`.${cardClassNames.select} .custom-select-slot`).should('not.be.checked');
+      cy.get(`.${cardClassNames.floatingAction} .custom-select-slot`).should('not.be.checked');
       cy.get(`.${cardClassNames.root}`).realClick();
-      cy.get(`.${cardClassNames.select} .custom-select-slot`).should('be.checked');
+      cy.get(`.${cardClassNames.floatingAction} .custom-select-slot`).should('be.checked');
+    });
+
+    it('should sync selectable aria-labelledby with card header id', () => {
+      mountFluent(<CardSample selected />);
+
+      cy.get(`.${cardHeaderClassNames.header}`).should('have.attr', 'id');
+      cy.get(`.${cardHeaderClassNames.header}`).then(header => {
+        cy.get(`.${cardClassNames.checkbox}`).then(slot => {
+          expect(header.attr('id')).equals(slot.attr('aria-labelledby'));
+        });
+      });
+    });
+
+    it('should sync selectable aria-label with card preview alt', () => {
+      mountFluent(<CardWithPreview selected />);
+
+      cy.get(`.${cardPreviewClassNames.root} img`).then(img => {
+        cy.get(`.${cardClassNames.checkbox}`).then(slot => {
+          expect(img.attr('alt')).equals(slot.attr('aria-label'));
+        });
+      });
     });
   });
 });

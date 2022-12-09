@@ -18,6 +18,17 @@ export const Card: ForwardRefComponent<CardProps>;
 export const cardClassNames: SlotClassNames<CardSlots>;
 
 // @public
+export interface CardContextValue {
+    // (undocumented)
+    selectableA11yProps: {
+        referenceId?: string;
+        setReferenceId: (referenceId: string) => void;
+        referenceLabel?: string;
+        setReferenceLabel: (referenceLabel: string) => void;
+    };
+}
+
+// @public
 export const cardCSSVars: {
     cardSizeVar: string;
     cardBorderRadiusVar: string;
@@ -59,13 +70,16 @@ export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 export type CardHeaderSlots = {
     root: Slot<'div'>;
     image: Slot<'div', 'img'>;
-    header: Slot<'span'>;
-    description: Slot<'span'>;
+    header: Slot<'div'>;
+    description: Slot<'div'>;
     action?: Slot<'div'>;
 };
 
 // @public
 export type CardHeaderState = ComponentState<CardHeaderSlots>;
+
+// @public
+export type CardOnSelectionChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
 
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
@@ -93,28 +107,29 @@ export type CardProps = ComponentProps<CardSlots> & {
     size?: 'small' | 'medium' | 'large';
     selected?: boolean;
     defaultSelected?: boolean;
-    onSelectionChange?: (event: CarOnSelectionChangeEvent, data: CardOnSelectData) => void;
+    onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
 };
+
+// @internal (undocumented)
+export const CardProvider: React_2.Provider<CardContextValue | undefined>;
 
 // @public
 export type CardSlots = {
-    root: Slot<'div', 'a' | 'button'>;
-    select?: Slot<'div', 'input'>;
+    root: Slot<'div'>;
+    floatingAction?: Slot<'div'>;
+    checkbox?: Slot<'input'>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
+export type CardState = ComponentState<CardSlots> & CardContextValue & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
     interactive: boolean;
     selectable: boolean;
-    hasSelectSlot: boolean;
     selected: boolean;
+    selectFocused: boolean;
 }>;
 
 // @public
-export type CarOnSelectionChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
-
-// @public
-export const renderCard_unstable: (state: CardState) => JSX.Element;
+export const renderCard_unstable: (state: CardState, cardContextValue: CardContextValue) => JSX.Element;
 
 // @public
 export const renderCardFooter_unstable: (state: CardFooterState) => JSX.Element;
@@ -126,7 +141,10 @@ export const renderCardHeader_unstable: (state: CardHeaderState) => JSX.Element;
 export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Element;
 
 // @public
-export const useCard_unstable: (props: CardProps, ref: React_2.Ref<CardRefElement>) => CardState;
+export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;
+
+// @internal (undocumented)
+export const useCardContext_unstable: () => CardContextValue;
 
 // @public
 export const useCardFooter_unstable: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;

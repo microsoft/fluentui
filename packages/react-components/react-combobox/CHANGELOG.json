@@ -2,6 +2,71 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:21 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.17",
+      "version": "9.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "84a26d8111dc4bb9d3cd1edbb99691e68899d261",
+            "comment": " feat: update Option value to be a non-display value, and add an Option text prop that is required if the child is not a string"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d1c530bef46d1ddd962ee29ff8fd510475ec5c96",
+            "comment": "fix: open Combobox popup when typing"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "6679b1430f61182d34c0b90de33806d9624d811a",
+            "comment": "chore: Replace use of fontSize tokens with typographyStyles"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e19f11c2cc4e52c06d93bcd2eed8ae84572b18d1",
+            "comment": "fix: Combobox should close on blur after clicking expand icon"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.10",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.0.12",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.3.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ],
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "3c7120c60f749da6b0c1427bbdc69320daa4e1e7",
+            "comment": "feat: add Dropdown stories"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:35 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.16",
       "version": "9.0.0-beta.16",

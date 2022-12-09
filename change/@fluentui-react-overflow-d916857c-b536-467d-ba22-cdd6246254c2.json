@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: Remove cypress test line causing intermittent CI failures.",
-  "packageName": "@fluentui/react-overflow",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

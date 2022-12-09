@@ -24,3 +24,6 @@ The `useTableFeatures` hook was designed with feature composition in mind. This 
 plugins hooks such as `useTableSort` and `useTableSelection` as a part of `useTableFeatures`. This means
 that as the feature set expands, users will not need to pay the bundle size price for features that they do not intend
 to use. Please consult the usage examples below for more details.
+
+> ⚠️ Once there is any kind of keyboard navigation on the component it must follow the
+> [aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids)

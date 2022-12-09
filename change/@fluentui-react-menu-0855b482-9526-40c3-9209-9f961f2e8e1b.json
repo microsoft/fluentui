@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: removes prop spreading on MenuList state",
-  "packageName": "@fluentui/react-menu",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
