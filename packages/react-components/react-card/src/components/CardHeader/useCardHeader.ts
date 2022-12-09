@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
+import { useCardContext_unstable } from '../Card/CardContext';
+import { cardHeaderClassNames } from './useCardHeaderStyles';
 
 /**
  * Create the state required to render CardHeader.
@@ -14,12 +16,27 @@ import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HTMLElement>): CardHeaderState => {
   const { image, header, description, action } = props;
 
+  const {
+    selectableA11yProps: { referenceId, setReferenceId },
+  } = useCardContext_unstable();
+  const headerRef = React.useRef<HTMLDivElement>(null);
+
+  const generatedId = useId(cardHeaderClassNames.header, referenceId);
+
+  React.useEffect(() => {
+    if (header && headerRef.current) {
+      const { id } = headerRef.current;
+
+      setReferenceId(id ? id : generatedId);
+    }
+  }, [header, setReferenceId, generatedId]);
+
   return {
     components: {
       root: 'div',
       image: 'div',
-      header: 'span',
-      description: 'span',
+      header: 'div',
+      description: 'div',
       action: 'div',
     },
 
@@ -30,6 +47,10 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
     image: resolveShorthand(image),
     header: resolveShorthand(header, {
       required: true,
+      defaultProps: {
+        ref: headerRef,
+        id: referenceId,
+      },
     }),
     description: resolveShorthand(description),
     action: resolveShorthand(action),

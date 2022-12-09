@@ -1,22 +1,40 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ARIAButtonElement, ARIAButtonElementIntersection, ARIAButtonSlotProps } from '@fluentui/react-aria';
+import {
+  BaseTreeItemElement,
+  BaseTreeItemElementIntersection,
+  BaseTreeItemProps,
+  BaseTreeItemSlots,
+} from '../BaseTreeItem/index';
 
-export type TreeItemElement = ARIAButtonElement<'div' | 'a'>;
+export type TreeItemElement = BaseTreeItemElement;
 
 /** @internal */
-export type TreeItemElementIntersection = ARIAButtonElementIntersection<'div' | 'a'>;
+export type TreeItemElementIntersection = BaseTreeItemElementIntersection;
 
-export type TreeItemSlots = {
+export type TreeItemSlots = BaseTreeItemSlots & {
   /**
-   * TreeItem root wraps around `props.content`
+   * Expand icon slot,
+   * by default renders a chevron icon to indicate opening and closing
    */
-  root: NonNullable<Slot<ARIAButtonSlotProps<'div' | 'a'>>>;
+  expandIcon?: Slot<'span'>;
+  /**
+   * Icon slot that renders right before main content
+   */
+  iconBefore?: Slot<'span'>;
+  /**
+   * Icon slot that renders right after main content
+   */
+  iconAfter?: Slot<'span'>;
+  /**
+   * Icon slot that renders on the end of the main content
+   */
+  actionIcon?: Slot<'span'>;
 };
 
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<TreeItemSlots>;
+export type TreeItemProps = ComponentProps<TreeItemSlots> & BaseTreeItemProps;
 
 /**
  * State used in rendering TreeItem

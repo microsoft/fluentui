@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: focus-within attribute no longer the same as focus-visible",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

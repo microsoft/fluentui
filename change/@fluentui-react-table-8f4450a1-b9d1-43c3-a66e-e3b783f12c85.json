@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(TableCellLayout): Icon sizes in should match design spec",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

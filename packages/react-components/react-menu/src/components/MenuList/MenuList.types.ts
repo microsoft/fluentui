@@ -47,7 +47,6 @@ export type MenuListProps = ComponentProps<MenuListSlots> & {
 };
 
 export type MenuListState = ComponentState<MenuListSlots> &
-  Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> &
   Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & {
     /**
      * Selects a radio item, will de-select the currently selected ratio item
@@ -63,12 +62,31 @@ export type MenuListState = ComponentState<MenuListSlots> &
      * Toggles the state of a checkbox item
      */
     toggleCheckbox: SelectableHandler;
+
+    /**
+     * Default values to be checked on mount
+     * @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    defaultCheckedValues?: Record<string, string[]>;
+    /**
+     * Callback when checked items change for value with a name
+     *
+     * @param event - React's original SyntheticEvent
+     * @param data - A data object with relevant information
+     * @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
   };
 
 export type MenuListContextValues = {
   menuList: MenuListContextValue;
 };
 
+/**
+ * @deprecated this type is not being used internally anymore
+ */
 export type UninitializedMenuListState = Omit<
   MenuListState,
   'checkedValues' | 'selectRadio' | 'setFocusByFirstCharacter' | 'toggleCheckbox'

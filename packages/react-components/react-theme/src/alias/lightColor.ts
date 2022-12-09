@@ -100,7 +100,9 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackgroundInvertedDisabled: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
   colorNeutralStencil1: grey[90], // #e6e6e6 Global.Color.Grey.90
   colorNeutralStencil2: grey[98], // #fafafa Global.Color.Grey.98
-  colorBackgroundOverlay: blackAlpha[10], // rgba(0, 0, 0, 0.1) Global.Color.BlackAlpha.10
+  colorNeutralStencil1Alpha: blackAlpha[10], // rgba(0, 0, 0, 0.1) Global.Color.BlackAlpha.10
+  colorNeutralStencil2Alpha: blackAlpha[5], // rgba(0, 0, 0, 0.05) Global.Color.BlackAlpha.5
+  colorBackgroundOverlay: blackAlpha[40], // rgba(0, 0, 0, 0.4) Global.Color.BlackAlpha.40
   colorScrollbarOverlay: blackAlpha[50], // rgba(0, 0, 0, 0.5) Global.Color.BlackAlpha.50
   colorBrandBackground: brand[80], // #0078d4 Global.Color.Brand.80
   colorBrandBackgroundHover: brand[70], // #106ebe Global.Color.Brand.70

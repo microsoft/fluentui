@@ -99,6 +99,8 @@ export type ColorTokens = {
   colorNeutralBackgroundInvertedDisabled: string;
   colorNeutralStencil1: string;
   colorNeutralStencil2: string;
+  colorNeutralStencil1Alpha: string;
+  colorNeutralStencil2Alpha: string;
   colorBackgroundOverlay: string;
   colorScrollbarOverlay: string;
   colorBrandBackground: string;
@@ -158,6 +160,7 @@ export type ColorPaletteRed =
   | 'colorPaletteRedForeground1'
   | 'colorPaletteRedForeground2'
   | 'colorPaletteRedForeground3'
+  | 'colorPaletteRedForegroundInverted'
   | 'colorPaletteRedBorderActive'
   | 'colorPaletteRedBorder1'
   | 'colorPaletteRedBorder2';
@@ -169,6 +172,7 @@ export type ColorPaletteGreen =
   | 'colorPaletteGreenForeground1'
   | 'colorPaletteGreenForeground2'
   | 'colorPaletteGreenForeground3'
+  | 'colorPaletteGreenForegroundInverted'
   | 'colorPaletteGreenBorderActive'
   | 'colorPaletteGreenBorder1'
   | 'colorPaletteGreenBorder2';
@@ -191,6 +195,7 @@ export type ColorPaletteYellow =
   | 'colorPaletteYellowForeground1'
   | 'colorPaletteYellowForeground2'
   | 'colorPaletteYellowForeground3'
+  | 'colorPaletteYellowForegroundInverted'
   | 'colorPaletteYellowBorderActive'
   | 'colorPaletteYellowBorder1'
   | 'colorPaletteYellowBorder2';

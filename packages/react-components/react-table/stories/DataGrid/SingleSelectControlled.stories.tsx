@@ -161,7 +161,6 @@ export const SingleSelectControlled = () => {
     <DataGrid
       items={items}
       columns={columns}
-      focusMode="cell"
       selectionMode="single"
       selectedItems={selectedRows}
       onSelectionChange={onSelectionChange}

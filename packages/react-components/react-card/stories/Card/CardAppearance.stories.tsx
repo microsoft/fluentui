@@ -57,11 +57,11 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = ({ title, description }: Record<string, string>) => {
+const ExampleHeader = ({ title, description }: Record<string, string>) => {
   const styles = useStyles();
 
   return (
-    <>
+    <header>
       {title ? (
         <Subtitle1 as="h4" block className={styles.title}>
           {title}
@@ -73,7 +73,7 @@ const Header = ({ title, description }: Record<string, string>) => {
           {description}
         </Body1>
       ) : null}
-    </>
+    </header>
   );
 };
 
@@ -88,7 +88,7 @@ const CardExample = ({ className, ...props }: CardProps) => {
         image={<img className={styles.logo} src={resolveAsset('app_logo.svg')} />}
         header={<Text weight="semibold">App Name</Text>}
         description={<Caption1 className={styles.caption}>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
       />
 
       <p className={styles.text}>
@@ -104,7 +104,7 @@ export const Appearance = () => {
   return (
     <div className={styles.main}>
       <section>
-        <Header
+        <ExampleHeader
           title="Default"
           description="This is the default style to use for cards. Use this style variant for most of your card
           designs."
@@ -113,7 +113,7 @@ export const Appearance = () => {
       </section>
 
       <section>
-        <Header
+        <ExampleHeader
           title="Filled Alternative"
           description="Use if your card is being displayed on a lighter gray or white surface. This ensures that you
           have adequate contrast between the card surface and the background of the application."
@@ -122,7 +122,7 @@ export const Appearance = () => {
       </section>
 
       <section>
-        <Header
+        <ExampleHeader
           title="Outline"
           description="Use when you don't want a filled background color but a discernable outline (border) on the
           card."
@@ -131,7 +131,7 @@ export const Appearance = () => {
       </section>
 
       <section>
-        <Header
+        <ExampleHeader
           title="Subtle"
           description="This variant doesn't have a background or border for the card container. However, it does include
           interaction states that display a visible footprint when interacting with the card item."

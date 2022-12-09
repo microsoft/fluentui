@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Fri, 11 Nov 2022 14:57:47 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.5)
+
+Mon, 05 Dec 2022 18:29:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.4..@fluentui/react-theme-sass_v9.0.0-alpha.5)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.4)
 

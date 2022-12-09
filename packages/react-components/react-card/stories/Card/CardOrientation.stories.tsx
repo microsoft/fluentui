@@ -26,7 +26,8 @@ const useStyles = makeStyles({
     ...shorthands.margin(0, 0, '12px'),
   },
 
-  horizontalCard: {
+  horizontalCardImage: {
+    width: '60px',
     height: '60px',
   },
 
@@ -73,7 +74,7 @@ export const Orientation = () => {
             image={<img src={resolveAsset('app_logo.svg')} className={styles.headerImage} />}
             header={<Text weight="semibold">App Name</Text>}
             description={<Caption1 className={styles.caption}>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
           />
 
           <p className={styles.text}>
@@ -87,7 +88,7 @@ export const Orientation = () => {
         <Title>'horizontal'</Title>
 
         <Card size="small" orientation="horizontal">
-          <CardPreview className={styles.horizontalCard}>
+          <CardPreview className={styles.horizontalCardImage}>
             <img src={resolveAsset('logo.svg')} alt="Company Logo" />
           </CardPreview>
 
@@ -95,7 +96,7 @@ export const Orientation = () => {
             image={<Avatar badge={{ status: 'available' }} image={{ src: resolveAsset('avatar_elvia.svg') }} />}
             header={<Text weight="semibold">Strategy 2021</Text>}
             description={<Caption1>https://aka.ms/fluentui</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
           />
         </Card>
       </section>

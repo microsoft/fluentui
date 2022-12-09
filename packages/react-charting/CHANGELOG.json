@@ -2,6 +2,72 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 09 Dec 2022 07:54:31 GMT",
+      "tag": "@fluentui/react-charting_v5.14.27",
+      "version": "5.14.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.103.7",
+            "commit": "af081ef87e336cfe7e69b42a086165ec5dd3d735"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Dec 2022 07:46:37 GMT",
+      "tag": "@fluentui/react-charting_v5.14.26",
+      "version": "5.14.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.103.6",
+            "commit": "0a56bc44f375de754ab0693b938adbd58412184c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Dec 2022 07:59:31 GMT",
+      "tag": "@fluentui/react-charting_v5.14.25",
+      "version": "5.14.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "52fb1e3d6365e9241ac8c1114829b9b988f2e130",
+            "comment": "Adjust stacked bar chart styles as per design"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d3e106f3bdf0f1469995ae1f0c2b560bebe1dc1e",
+            "comment": "Adjust horizontal bar chart styles as per design"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Dec 2022 07:54:46 GMT",
+      "tag": "@fluentui/react-charting_v5.14.24",
+      "version": "5.14.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.103.5",
+            "commit": "98715bfad186c1fd0493c558901913a770227000"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Dec 2022 07:54:15 GMT",
       "tag": "@fluentui/react-charting_v5.14.23",
       "version": "5.14.23",

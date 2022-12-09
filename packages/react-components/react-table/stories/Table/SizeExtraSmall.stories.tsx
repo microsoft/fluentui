@@ -67,7 +67,7 @@ const columns = [
 
 export const SizeExtraSmall = () => {
   return (
-    <Table size="extra-small">
+    <Table size="extra-small" aria-label="Table with extra-small size">
       <TableHeader>
         <TableRow>
           {columns.map(column => (

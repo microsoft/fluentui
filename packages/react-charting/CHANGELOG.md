@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 02 Dec 2022 07:54:15 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Dec 2022 07:54:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.14.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.27)
+
+Fri, 09 Dec 2022 07:54:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.26..@fluentui/react-charting_v5.14.27)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.7 ([PR #25947](https://github.com/microsoft/fluentui/pull/25947) by beachball)
+
+## [5.14.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.26)
+
+Thu, 08 Dec 2022 07:46:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.25..@fluentui/react-charting_v5.14.26)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.6 ([PR #25665](https://github.com/microsoft/fluentui/pull/25665) by beachball)
+
+## [5.14.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.25)
+
+Tue, 06 Dec 2022 07:59:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.24..@fluentui/react-charting_v5.14.25)
+
+### Patches
+
+- Adjust stacked bar chart styles as per design ([PR #25334](https://github.com/microsoft/fluentui/pull/25334) by kumarkshitij@microsoft.com)
+- Adjust horizontal bar chart styles as per design ([PR #25268](https://github.com/microsoft/fluentui/pull/25268) by kumarkshitij@microsoft.com)
+
+## [5.14.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.24)
+
+Mon, 05 Dec 2022 07:54:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.14.23..@fluentui/react-charting_v5.14.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.5 ([PR #25884](https://github.com/microsoft/fluentui/pull/25884) by beachball)
 
 ## [5.14.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.14.23)
 
