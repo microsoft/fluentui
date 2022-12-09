@@ -59,7 +59,7 @@ If you don't have the capacity to migrate your usage of v8 to v9 or want to try 
 A shim component accepts v0 or v8 props but renders a v9 component.
 Shim components depend on both v9 and the previous version, so you may not be able to reduce a bundle size.
 
-We author shim components for popular component in the `@fluentui/react-migration-v8-v9` package.
+We author shim components for popular components in the `@fluentui/react-migration-v8-v9` package.
 These shim components are _best effort_.
 We welcome contributions and fixes to our migration components.
 
@@ -92,7 +92,7 @@ const menuProps: IContextualMenuProps = {
 
 If you had data props that were constants, you can quickly convert them to TSX/JSX children.
 
-Continuing the contextual menu button example: To have a contextual menu in v9, you can need to declare a `Menu` structure with `MenuItem` children.
+Continuing the contextual menu button example: To have a contextual menu in v9, you need to declare a `Menu` structure with `MenuItem` children.
 
 ```tsx
 <Menu>
@@ -163,7 +163,7 @@ The className prop can be set on the component as well as on individual slots.
 If you have customized v8 components using the styles prop and passed custom style objects, you will need to convert them to class names.
 There may not be a one-to-one mapping between the parts from a v8 styles object to the slots of a v9 component.
 
-For example, a v8 Persona with customized styles to display the primary text be steel blue and the secondary text have extra top and left margin.
+For example, a v8 Persona with customized styles to display the primary text as steel blue and the secondary text to have extra top and left margin.
 
 ```tsx
 const personaStyles: Partial<IPersonaStyles> = {
