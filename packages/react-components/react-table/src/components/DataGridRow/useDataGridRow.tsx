@@ -24,6 +24,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   const columnDefs = useDataGridContext_unstable(ctx => ctx.columns);
   const selectable = useDataGridContext_unstable(ctx => ctx.selectableRows);
   const selected = useDataGridContext_unstable(ctx => ctx.selection.isRowSelected(rowId));
+  const tabbable = useDataGridContext_unstable(ctx => ctx.focusMode === 'row_unstable');
   const appearance = useDataGridContext_unstable(ctx => {
     if (!isHeader && selectable && ctx.selection.isRowSelected(rowId)) {
       return ctx.selectionAppearance;
@@ -69,6 +70,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
       onKeyDown,
       children: cells,
       as: 'div',
+      tabIndex: tabbable && !isHeader ? 0 : undefined,
     },
     ref,
   );
