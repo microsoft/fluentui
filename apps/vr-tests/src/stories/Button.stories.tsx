@@ -94,7 +94,7 @@ storiesOf('Button Action', module)
   .addStory('Root', () => <ActionButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
   .addStory('Checked', () => <ActionButton {...baseProps} checked={true} />)
-  .addStory('No Icon', () => <ActionButton>Button</ActionButton>)
+  .addStory('No Icon', () => <ActionButton>Hello WORLD</ActionButton>)
   .addStory('Icon Only', () => <ActionButton iconProps={baseProps.iconProps} />);
 
 storiesOf('Button Compound', module)
