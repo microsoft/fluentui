@@ -52,6 +52,32 @@ describe('DataGridRow', () => {
     `);
   });
 
+  it('should set tabindex 0 if row focus is enabled', () => {
+    const ctx = mockDataGridContext({ focusMode: 'row_unstable' });
+    const { getByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridRow>{() => <div />}</DataGridRow>
+      </DataGridContextProvider>,
+    );
+
+    const row = getByRole('row');
+    expect(row.tabIndex).toBe(0);
+    expect(row.getAttribute('tabindex')).toBe('0');
+  });
+
+  it.each(['none', 'cell'] as const)('should not set tabindex if focus mode is %s', focusMode => {
+    const ctx = mockDataGridContext({ focusMode });
+    const { getByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridRow>{() => <div />}</DataGridRow>
+      </DataGridContextProvider>,
+    );
+
+    const row = getByRole('row');
+    expect(row.tabIndex).toBe(-1);
+    expect(row.hasAttribute('tabindex')).toBe(false);
+  });
+
   describe('selectable', () => {
     it('should toggle row on click', () => {
       const toggleRow = jest.fn();
