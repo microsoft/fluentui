@@ -81,7 +81,7 @@ describe('DataGridRow', () => {
       expect(toggleRow).toHaveBeenCalledTimes(1);
     });
 
-    it('should prevent default on spacebar', () => {
+    it('should prevent default on spacebar select', () => {
       const ctx = mockDataGridContext({ selectableRows: true });
       const { getByRole } = render(
         <DataGridContextProvider value={ctx}>
@@ -90,10 +90,39 @@ describe('DataGridRow', () => {
       );
 
       const row = getByRole('row');
-      const keyDownEvent = createEvent.keyDown(row, { key: ' ' });
+      const keyDownEvent = createEvent.keyDown(row, { key: ' ', target: document.createElement('div') });
       fireEvent(row, keyDownEvent);
 
       expect(keyDownEvent.defaultPrevented).toBe(true);
+    });
+
+    it('should toggle row on spacebar if element is interactive', () => {
+      const toggleRow = jest.fn();
+      const ctx = mockDataGridContext({ selectableRows: true }, { selection: { toggleRow } });
+      const { getAllByRole } = render(
+        <DataGridContextProvider value={ctx}>
+          <DataGridRow>{() => <button />}</DataGridRow>
+        </DataGridContextProvider>,
+      );
+
+      fireEvent.keyDown(getAllByRole('button')[0], { key: ' ' });
+
+      expect(toggleRow).toHaveBeenCalledTimes(0);
+    });
+
+    it('should not prevent default on spacebar on interactive element', () => {
+      const ctx = mockDataGridContext({ selectableRows: true });
+      const { getAllByRole } = render(
+        <DataGridContextProvider value={ctx}>
+          <DataGridRow>{() => <button />}</DataGridRow>
+        </DataGridContextProvider>,
+      );
+
+      const button = getAllByRole('button')[0];
+      const keyDownEvent = createEvent.keyDown(button, { key: ' ' });
+      fireEvent(button, keyDownEvent);
+
+      expect(keyDownEvent.defaultPrevented).toBe(false);
     });
 
     it('should not toggle row on click if in header', () => {

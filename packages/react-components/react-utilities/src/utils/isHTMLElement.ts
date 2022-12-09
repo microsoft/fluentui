@@ -7,7 +7,7 @@
  * might be problematic while operating with [multiple realms](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_realms)
  *
  */
-export function isHTMLElement(element?: Node | null): element is HTMLElement {
+export function isHTMLElement(element?: Node | null | undefined): element is HTMLElement {
   return Boolean(
     element !== null &&
       element?.ownerDocument?.defaultView &&
