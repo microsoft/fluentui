@@ -282,15 +282,111 @@ yarn create-recomposed-library my-components
 
 ### 💡 Improvement - Remove dependency on classNames and DOM order
 
+```tsx
+// Button with component tokens and global fallbacks
+const ButtonTokens = {
+  background: "--fui-button-background",
+  color: "--fui-button-color",
+  border: "--fui-button-complex-selector"
+};
+const useButtonStyles = makeResetStyles({
+  backgroundColor: `var(${ButtonTokens.background}, ${tokens.colorBrandBackground})`,
+  color: `var(${ButtonTokens.color}, ${tokens.colorNeutralForegroundOnBrand})`,
+  border: "4px solid",
+  ":enabled:not(:checked):not(:indeterminate)": {
+    borderColor: `var(${ButtonTokens.border}, orange)`
+  }
+});
+
+const Button = (props) => {
+  const styles = useButtonStyles();
+  return (
+    <button {...props} className={mergeClasses(styles, props.className)}>
+      {props.children}
+    </button>
+  );
+};
+```
+
+```tsx
+// Customizing button via className
+const useCustomButtonStyle = makeResetStyles({
+  [ButtonTokens.background]: "red",
+  [ButtonTokens.color]: "white",
+  [ButtonTokens.border]: "green",
+  ":hover": {
+    [ButtonTokens.background]: "green",
+    [ButtonTokens.color]: "pink",
+    [ButtonTokens.border]: "blue"
+  },
+  ":active": {
+    [ButtonTokens.background]: "orange",
+    [ButtonTokens.color]: "black",
+    [ButtonTokens.border]: "purple"
+  }
+});
+
+export const CustomButton = (props) => {
+  const rootStyle = useCustomButtonStyle();
+  return <Button className={rootStyle}>Hello</Button>;
+};
+```
+
+
+```tsx
+// making changes in composition
+const useCustomButtonStyle = makeResetStyles({
+  [ButtonTokens.background]: "red",
+  [ButtonTokens.color]: "white",
+  [ButtonTokens.border]: "green",
+  ":hover": {
+    [ButtonTokens.background]: "green",
+    [ButtonTokens.color]: "pink",
+    [ButtonTokens.border]: "blue"
+  },
+  ":active": {
+    [ButtonTokens.background]: "orange",
+    [ButtonTokens.color]: "black",
+    [ButtonTokens.border]: "purple"
+  }
+});
+
+export const CustomButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const state = useButton_unstable(props, ref);
+  const rootStyle = useCustomButtonStyle();
+  state.root.className= rootStyle;
+  useButtonStyles_unstable(state);
+
+  return renderButton_unstable(state);
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<ButtonProps>;
+
+```
+
+
 ### 💡 Improvement - Explicit APIs for modifying commonly modified styles
 
 checkboxCheckedBackground = 'foo' vs ':enabled:not(:checked):not(:indeterminate)': { background: 'foo'}
 
 ### 💡 Improvement - Perf - complex selectors are much slower than local CSS variables
 
+Single className adding multiple css variables is much more performant than complex selectors targeting individual parts of the control
+
+```
+.foo {
+  --a: green;
+  --b: yellow;
+}
+
+vs
+
+.foo:enabled:not(:checked):not(:indeterminate)' > svg
+
 ### 👍
 
 ### 👎
+
+Composition approach would be difficult to adjust at runtime because css vars are already set on the root, and new styles would either need to replace the old one, be more specific, or not use makeResetStyles so user could override individual css vars
 
 ### 🤔
 
