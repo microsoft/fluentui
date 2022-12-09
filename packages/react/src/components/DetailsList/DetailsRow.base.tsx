@@ -363,7 +363,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         <GroupSpacer
           indentWidth={indentWidth}
           role="gridcell"
-          count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
+          count={groupNestingDepth! === 0 ? -1 : groupNestingDepth!}
         />
 
         {item && rowFields}

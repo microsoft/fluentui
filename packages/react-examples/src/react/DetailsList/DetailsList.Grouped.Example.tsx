@@ -10,6 +10,7 @@ import {
   IToggleStyles,
   mergeStyles,
   Toggle,
+  CollapseAllVisibility,
 } from '@fluentui/react';
 import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
@@ -19,10 +20,10 @@ const controlWrapperClass = mergeStyles({
   flexWrap: 'wrap',
 });
 const toggleStyles: Partial<IToggleStyles> = {
-  root: { margin: margin },
+  root: { margin },
   label: { marginLeft: 10 },
 };
-const addItemButtonStyles: Partial<IButtonStyles> = { root: { margin: margin } };
+const addItemButtonStyles: Partial<IButtonStyles> = { root: { margin } };
 
 export interface IDetailsListGroupedExampleItem {
   key: string;
