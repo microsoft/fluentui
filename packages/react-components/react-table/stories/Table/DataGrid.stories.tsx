@@ -202,7 +202,7 @@ export const DataGrid = () => {
               aria-selected={selected}
               checked={selected}
             />
-            <TableCell tabIndex={0} role="gridcell">
+            <TableCell tabIndex={0} role="gridcell" aria-selected={selected}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell tabIndex={0} role="gridcell">
