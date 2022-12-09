@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/example-data": "*",
+    "@fluentui/example-data": "^8.4.3",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.18",
     "@fluentui/react-hooks": "^8.6.14",
