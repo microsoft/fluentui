@@ -9,7 +9,7 @@ import VideoExample from '../../examples/components/Video/Types/VideoExample.sho
 export default {
   component: Video,
   title: 'Video',
-  decorators: [story => <StoryWright steps={new Steps().wait(3000).snapshot('Video').end()}>{story()}</StoryWright>],
+  decorators: [story => <StoryWright steps={new Steps().wait(3000).end()}>{story()}</StoryWright>],
 } as ComponentMeta<typeof Video>;
 
 export { VideoExample };
