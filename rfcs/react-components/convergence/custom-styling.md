@@ -381,6 +381,7 @@ Single className adding multiple css variables is much more performant than comp
 vs
 
 .foo:enabled:not(:checked):not(:indeterminate)' > svg
+```
 
 ### 👍
 
