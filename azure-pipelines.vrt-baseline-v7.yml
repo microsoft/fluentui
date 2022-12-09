@@ -1,0 +1,38 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - 7.0
+
+variables:
+  skipComponentGovernanceDetection: true
+
+pool: '1ES-Host-Ubuntu'
+
+jobs:
+  - job: VRToolUpdateBaseline_V7
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - template: .devops/templates/runpublishvrscreenshot.yml
+        parameters:
+          fluentVersion: v7
+          vrTestPackageName: 'vr-tests'
+          vrTestPackagePath: 'apps/vr-tests'
+
+      - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "FluentUI-v7" --buildId $(Build.BuildId)
+        displayName: 'Run Screenshotdiff update baseline'
+        env:
+          API_URL: $(System.CollectionUri)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
+          API_REPOSITORY: $(Build.Repository.Name)
+          API_PROJECT: $(System.TeamProject)
+          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv7
+          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
+          STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
+          STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
+          BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
+          VR_APPROVAL_CLIENT_SECRET: $(VRClientSecret)
+          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)

@@ -1,0 +1,39 @@
+parameters:
+  - name: fluentVersion
+    type: string
+    default: v7
+  - name: vrTestPackageName
+    type: string
+    default: 'vr-tests'
+  - name: vrTestPackagePath
+    type: string
+    default: 'apps/vr-tests'
+
+steps:
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn (install packages)
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} convert
+    displayName: Convert screener component to storywright
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} vrt:build
+    displayName: Build VR tests components package
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} test:component --verbose
+    displayName: 'Run VR tests'
+
+  - script: |
+      mkdir -p screenshots
+      cp -rf ${{ parameters.vrTestPackagePath }}/dist/screenshots/*.png screenshots/
+    displayName: Collate Artifacts
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'screenshots'
+      ArtifactName: 'vrscreenshot${{ parameters.fluentVersion }}'
+      publishLocation: 'Container'
