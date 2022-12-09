@@ -73,7 +73,10 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
 // @internal
-export function isHTMLElement(element?: Node | null): element is HTMLElement;
+export function isHTMLElement(element?: Node | null | undefined): element is HTMLElement;
+
+// @internal
+export function isInteractiveHTMLElement(element: Node | null | undefined): boolean;
 
 // @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
@@ -101,9 +104,6 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
     required?: Required;
     defaultProps?: Props;
 };
-
-// @internal
-export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
