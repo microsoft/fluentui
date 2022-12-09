@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Stopping autocomplete in Combobox from suggesting disabled options.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

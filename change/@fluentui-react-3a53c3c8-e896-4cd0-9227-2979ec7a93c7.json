@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Removing weird hover style on first option in multiselect Comboboxes.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

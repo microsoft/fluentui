@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 09 Dec 2022 07:54:30 GMT",
+      "tag": "@fluentui/react_v8.103.7",
+      "version": "8.103.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "af081ef87e336cfe7e69b42a086165ec5dd3d735",
+            "comment": "fix: Removing weird hover style on first option in multiselect Comboboxes."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3749722c85c3f7d6ef5e6386b09659aeb8dac6d7",
+            "comment": "fix: Stopping autocomplete in Combobox from suggesting disabled options."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Dec 2022 07:46:37 GMT",
       "tag": "@fluentui/react_v8.103.6",
       "version": "8.103.6",
