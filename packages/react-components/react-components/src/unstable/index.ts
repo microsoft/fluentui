@@ -363,10 +363,15 @@ export {
 export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
 
 export {
+  // eslint-disable-next-line deprecation/deprecation
   Progress,
+  // eslint-disable-next-line deprecation/deprecation
   progressClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   renderProgress_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   useProgressStyles_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   useProgress_unstable,
   ProgressBar,
   progressBarClassNames,
