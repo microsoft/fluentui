@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import Screener, { Keys } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities';
 import { TagPicker, Fabric, ITag } from 'office-ui-fabric-react';
@@ -27,7 +27,8 @@ const getTextFromItem = (item: ITag) => item.name;
 
 const getList = () => testTags;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
+// Pickers that are 'disabled' are added before the Screener decorator because css classes
+// for suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
@@ -43,7 +44,7 @@ storiesOf('TagPicker', module)
         .snapshot('Open Suggestion Menu', { cropTo: '.testWrapper' })
         .hover('.ms-Suggestions-item')
         .snapshot('Suggestion Menu Item Hover', { cropTo: '.testWrapper' })
-        .keys('.ms-BasePicker-input', Screener.Keys.upArrow)
+        .keys('.ms-BasePicker-input', Keys.upArrow)
         .end()}
     >
       {story()}
