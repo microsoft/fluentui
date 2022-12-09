@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -151,15 +151,11 @@ export const MultipleSelect = () => {
     [toggleAllRows],
   );
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
-
   return (
-    <Table {...keyboardNavAttr} aria-label="Table with multiselect">
+    <Table aria-label="Table with multiselect">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
             onKeyDown={toggleAllKeydown}
@@ -179,7 +175,7 @@ export const MultipleSelect = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+            <TableSelectionCell checked={selected} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>

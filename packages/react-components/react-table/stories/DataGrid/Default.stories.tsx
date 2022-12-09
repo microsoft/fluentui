@@ -152,7 +152,6 @@ export const Default = () => {
     <DataGrid
       items={items}
       columns={columns}
-      focusMode="cell"
       sortable
       selectionMode="multiselect"
       getRowId={item => item.file.label}

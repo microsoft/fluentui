@@ -24,7 +24,7 @@ export type DataGridContextValues = TableContextValues & {
 export type DataGridContextValue = HeadlessTableState<any> & {
   /**
    * How focus navigation will work in the datagrid
-   * @default none
+   * @default cell
    */
   focusMode: FocusMode;
 

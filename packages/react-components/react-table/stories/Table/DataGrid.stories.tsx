@@ -169,13 +169,15 @@ export const DataGrid = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} sortable aria-label="DataGrid implementation with Table primitives">
+    <Table {...keyboardNavAttr} role="grid" sortable aria-label="DataGrid implementation with Table primitives">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
+            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
+            aria-checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             tabIndex={0}
             checkboxIndicator={{ tabIndex: -1 }}
-            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
+            role="checkbox"
             onClick={toggleAllRows}
           />
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -193,17 +195,25 @@ export const DataGrid = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
-            <TableCell tabIndex={0}>
+            <TableSelectionCell
+              tabIndex={0}
+              checkboxIndicator={{ tabIndex: -1 }}
+              role="gridcell"
+              aria-selected={selected}
+              checked={selected}
+            />
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
+              {item.lastUpdated.label}
+            </TableCell>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>

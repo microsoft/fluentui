@@ -4,13 +4,13 @@ import {
   useControllableState,
   useEventCallback,
   useMergedRefs,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useTreeWalker } from '../../utils/useTreeWalker';
-import { TreeItemElement } from '../TreeItem/TreeItem.types';
 
 /**
  * Create the state required to render Tree.
@@ -119,8 +119,10 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
         const element = targetDocument.getElementById(groupId);
         if (treeWalker && element) {
           treeWalker.currentNode = element;
-          const firstTreeItem = treeWalker.firstChild() as TreeItemElement | null;
-          return firstTreeItem?.focus();
+          const firstTreeItem = treeWalker.firstChild();
+          if (isHTMLElement(firstTreeItem)) {
+            return firstTreeItem?.focus();
+          }
         }
       }
     }),
@@ -130,11 +132,11 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
         return;
       }
       treeWalker.currentNode = target;
-      const group = treeWalker.parentNode() as HTMLElement | null;
-      if (group) {
+      const group = treeWalker.parentNode();
+      if (isHTMLElement(group)) {
         while (treeWalker.previousNode()) {
-          const treeItem = treeWalker.currentNode as TreeItemElement;
-          if (treeItem.getAttribute('aria-owns') === group.id) {
+          const treeItem = treeWalker.currentNode;
+          if (isHTMLElement(treeItem) && treeItem.getAttribute('aria-owns') === group.id) {
             return treeItem.focus();
           }
         }
