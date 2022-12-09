@@ -883,8 +883,7 @@
       "root": "packages/tokens",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/tokens/src",
-      "tags": ["vNext", "platform:web"]
+      "sourceRoot": "packages/tokens/src"
     },
     "@fluentui/ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",
