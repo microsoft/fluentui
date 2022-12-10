@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright, Steps, Step } from 'storywright';
+import { StoryWright, Steps } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorTall } from '../utilities/index';
 import { Slider, ThemeProvider } from '@fluentui/react';
