@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StoryWright, Step } from 'storywright';
 import { StoryContext } from './types';
 
-export const withScreenerSteps = ({
+export const withStoryWrightSteps = ({
   story,
   context,
   steps,
