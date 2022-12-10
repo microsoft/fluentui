@@ -10,7 +10,6 @@ import {
   IToggleStyles,
   mergeStyles,
   Toggle,
-  CollapseAllVisibility,
 } from '@fluentui/react';
 import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 

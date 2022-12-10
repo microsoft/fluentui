@@ -14,7 +14,6 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
-import { CollapseAllVisibility } from '../../GroupedList';
 import { classNamesFunction } from '../../Utilities';
 import type { IDisposable } from '../../Utilities';
 import type { IColumn } from './DetailsList.types';
