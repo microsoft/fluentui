@@ -10,7 +10,6 @@
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
-    "screener": "just-scripts screener",
     "screener:build": "yarn build",
     "start": "start-storybook",
     "test": "just-scripts test",
@@ -63,7 +62,6 @@
     "@griffel/react": "^1.4.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "screener-storybook": "0.23.0",
     "tslib": "^2.1.0"
   }
 }
