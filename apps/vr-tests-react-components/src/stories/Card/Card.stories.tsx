@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import { MoreHorizontal24Filled } from '@fluentui/react-icons';
 import { Body1, Caption1 } from '@fluentui/react-text';
@@ -13,11 +13,11 @@ export default {
 
   decorators: [
     story => (
-      <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
         <div className="testWrapper" style={{ width: '600px' }}>
           {story()}
         </div>
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Card>;

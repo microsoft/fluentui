@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Step } from 'screener-storybook/src/screener';
+import { StoryWright, Step } from 'storywright';
 import { StoryContext } from './types';
 
 export const withScreenerSteps = ({
@@ -11,5 +11,5 @@ export const withScreenerSteps = ({
   steps: Step[];
   context?: StoryContext;
 }) => {
-  return <Screener steps={steps}> {story()} </Screener>;
+  return <StoryWright steps={steps}> {story()} </StoryWright>;
 };
