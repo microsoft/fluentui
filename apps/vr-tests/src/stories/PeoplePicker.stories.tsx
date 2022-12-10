@@ -130,7 +130,7 @@ const getTextFromItem = (persona: IPersonaProps): string => persona.text as stri
 
 const getPeople = () => people;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// Pickers that are 'disabled' are added before the StoryWright decorator because css classes for
 // suggestion items won't exist
 storiesOf('PeoplePicker', module)
   .addDecorator(TestWrapperDecorator)
