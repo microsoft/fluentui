@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import {
@@ -203,8 +203,8 @@ storiesOf('PeoplePicker', module)
 storiesOf('PeoplePicker', module)
   .addDecorator(TestWrapperDecorator)
   .addStory('Normal with text', () => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .setValue('.ms-BasePicker-input', 'a')
         .snapshot('suggestion: "a"')
@@ -219,14 +219,14 @@ storiesOf('PeoplePicker', module)
           pickerSuggestionsProps={suggestionProps}
         />
       </Fabric>
-    </Screener>
+    </StoryWright>
   ));
 
 storiesOf('PeoplePicker', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .hover('.ms-Suggestions-item')
@@ -234,7 +234,7 @@ storiesOf('PeoplePicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Normal', () => (
     <Fabric>
