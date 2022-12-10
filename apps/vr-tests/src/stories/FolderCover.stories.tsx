@@ -6,7 +6,7 @@ import {
   renderFolderCoverWithLayout,
   SharedSignal,
 } from '@fluentui/react-experiments';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
 import { TestWrapperDecorator } from '../utilities/index';

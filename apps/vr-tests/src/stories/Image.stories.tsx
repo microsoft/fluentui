@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 import { TestWrapperDecorator } from '../utilities/index';
 
 const img350x150 = 'http://fabricweb.azureedge.net/fabric-website/placeholders/350x150.png';

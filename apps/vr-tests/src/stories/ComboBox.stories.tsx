@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorTallFixedWidth } from '../utilities/index';
 import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from '@fluentui/react';

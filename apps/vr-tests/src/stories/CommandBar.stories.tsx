@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorTall } from '../utilities/index';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';

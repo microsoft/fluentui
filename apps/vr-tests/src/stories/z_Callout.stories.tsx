@@ -1,6 +1,6 @@
 // NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
 import * as React from 'react';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
 

@@ -21,7 +21,7 @@ import {
   FollowedSignal,
   NotFollowedSignal,
 } from '@fluentui/react-experiments';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { Fabric } from '@fluentui/react';
