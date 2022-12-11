@@ -178,7 +178,9 @@ function useErrorMessage(
     if (isFirstLoadRef.current) {
       isFirstLoadRef.current = false;
 
-      if (!validateOnLoad) return;
+      if (!validateOnLoad) {
+        return;
+      }
     }
 
     if (isRequired && !selectedDate) {
