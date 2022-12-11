@@ -198,6 +198,7 @@ function useErrorMessage(
     // eslint-disable-next-line react-hooks/exhaustive-deps
     selectedDate && getDatePartHashValue(selectedDate),
     isRequired,
+    validateOnLoad,
   ]);
 
   return [
