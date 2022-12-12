@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Cherry picked from Azure theme 8.0 danger button commit",
+  "packageName": "@uifabric/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
