@@ -2485,7 +2485,6 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2517,6 +2516,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2538,7 +2538,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       </g>
       <g>
         <path
-          d="M10,17.884615384615383Z"
+          d="M10,20Z"
           fill="transparent"
           id="0-line-areaChart_55"
           onMouseMove={[Function]}
@@ -2550,7 +2550,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <circle
           cx={10}
-          cy={17.884615384615383}
+          cy={20}
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_55"
@@ -2564,12 +2564,12 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <g
           clipPath="url(#clip)"
-          d="M10,17.884615384615383L10,-35Z"
+          d="M10,20L10,-35Z"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={10}
-            cy={17.884615384615383}
+            cy={20}
             data-is-focusable={true}
             fill="red"
             id="circle57_0"
