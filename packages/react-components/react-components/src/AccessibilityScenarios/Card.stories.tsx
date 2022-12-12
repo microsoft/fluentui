@@ -11,12 +11,26 @@ interface CardTemplateProps {
   cardId: string;
   name: string;
   lastSeen: string;
-  focusMode: FocusModeType;
+  focusMode?: FocusModeType;
+  selectable?: boolean;
 }
-const CardTemplate: React.FunctionComponent<CardTemplateProps> = ({ cardId, name, lastSeen, focusMode }) => {
+const CardTemplate: React.FunctionComponent<CardTemplateProps> = ({
+  cardId,
+  name,
+  lastSeen,
+  focusMode,
+  selectable = false,
+}) => {
   const messageDescId = `${cardId}-message-desc`;
+  const [cardSelected, setCardSelected] = React.useState(false);
+
   return (
-    <Card focusMode={focusMode} aria-label={`${name} card`}>
+    <Card
+      focusMode={focusMode}
+      selected={selectable ? cardSelected : undefined}
+      onSelectionChange={selectable ? (event, { selected }) => setCardSelected(selected) : undefined}
+      aria-label={`${name} card`}
+    >
       <CardHeader
         image={{ as: 'img', src: '#', alt: 'Face of a person' }}
         header={{ as: 'h3', children: name }}
@@ -35,15 +49,36 @@ const CardTemplate: React.FunctionComponent<CardTemplateProps> = ({ cardId, name
 
 interface CardGroupProps {
   groupId: string;
-  focusMode: FocusModeType;
+  focusMode?: FocusModeType;
+  selectable?: boolean;
 }
-const CardGroup: React.FunctionComponent<CardGroupProps> = ({ groupId, focusMode }) => (
-  <>
-    <CardTemplate cardId={`card1-${groupId}`} name="Bruce wayne" lastSeen="4 hours" focusMode={focusMode} />
-    <CardTemplate cardId={`card2-${groupId}`} name="Clark Kent" lastSeen="30 minutes" focusMode={focusMode} />
-    <CardTemplate cardId={`card3-${groupId}`} name="Peter Parker" lastSeen="2 days" focusMode={focusMode} />
-  </>
-);
+const CardGroup: React.FunctionComponent<CardGroupProps> = ({ groupId, focusMode, selectable }) => {
+  return (
+    <>
+      <CardTemplate
+        cardId={`card1-${groupId}`}
+        name="Bruce wayne"
+        lastSeen="4 hours"
+        focusMode={focusMode}
+        selectable={selectable}
+      />
+      <CardTemplate
+        cardId={`card2-${groupId}`}
+        name="Clark Kent"
+        lastSeen="30 minutes"
+        focusMode={focusMode}
+        selectable={selectable}
+      />
+      <CardTemplate
+        cardId={`card3-${groupId}`}
+        name="Peter Parker"
+        lastSeen="2 days"
+        focusMode={focusMode}
+        selectable={selectable}
+      />
+    </>
+  );
+};
 
 export const UserProfileCards: React.FunctionComponent = () => (
   <Scenario pageTitle="User profile cards">
@@ -65,5 +100,7 @@ export const UserProfileCards: React.FunctionComponent = () => (
 
     <h2>Variant 4: Focus card with Tab, but no enter or leave</h2>
     <CardGroup groupId="group4" focusMode="tab-only" />
+    <h2>Variant 5: Selectable</h2>
+    <CardGroup groupId="group5" selectable={true} />
   </Scenario>
 );
