@@ -57,7 +57,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -704,7 +703,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1269,7 +1267,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2322,7 +2319,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2680,7 +2676,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3018,7 +3013,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3126,7 +3120,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3484,7 +3477,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3842,7 +3834,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -4200,7 +4191,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -4558,7 +4548,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;

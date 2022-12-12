@@ -57,7 +57,6 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -612,7 +611,6 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -949,7 +947,6 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1376,7 +1373,6 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1553,7 +1549,6 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1890,7 +1885,6 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;

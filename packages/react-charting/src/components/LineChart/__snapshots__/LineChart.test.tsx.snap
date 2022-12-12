@@ -58,7 +58,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -580,7 +579,6 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1000,7 +998,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1754,7 +1751,6 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2089,7 +2085,6 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2404,7 +2399,6 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2579,7 +2573,6 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2914,7 +2907,6 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3249,7 +3241,6 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3584,7 +3575,6 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
