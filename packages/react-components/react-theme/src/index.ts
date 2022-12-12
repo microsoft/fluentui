@@ -1,9 +1,9 @@
-export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from './themes/index';
-export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index';
+export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
+export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from '@fluentui/tokens';
 
-export { themeToTokensObject } from './themeToTokensObject';
-export { tokens } from './tokens';
-export { typographyStyles } from './global/index';
+export { themeToTokensObject } from '@fluentui/tokens';
+export { tokens } from '@fluentui/tokens';
+export { typographyStyles } from '@fluentui/tokens';
 
 export type {
   Brands,
@@ -62,4 +62,4 @@ export type {
   Theme,
   TypographyStyle,
   TypographyStyles,
-} from './types';
+} from '@fluentui/tokens';
