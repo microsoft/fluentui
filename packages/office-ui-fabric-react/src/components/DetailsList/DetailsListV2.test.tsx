@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
-import { safeMount } from '@fluentui/test-utilities';
-import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
+import { safeMount } from '@uifabric/test-utilities';
+import { EventGroup, KeyCodes, resetIds, IRenderFunction } from '../../Utilities';
 import { SelectionMode, Selection, SelectionZone } from '../../Selection';
 import { getTheme } from '../../Styling';
 import { DetailsHeader } from './DetailsHeader';
@@ -14,7 +14,6 @@ import { DetailsRow } from './DetailsRow';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { IDragDropEvents } from '../../DragDrop';
 import { IGroup } from '../../GroupedList';
-import { IRenderFunction } from '../../Utilities';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IColumn, IDetailsGroupDividerProps, IDetailsList } from './DetailsList.types';
@@ -374,7 +373,6 @@ describe('DetailsListV2', () => {
         ).toEqual('2');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
       },
-      true /* attach */,
     );
   });
 
@@ -714,7 +712,6 @@ describe('DetailsListV2', () => {
         expect((document.activeElement as HTMLElement).textContent).toEqual('4');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
       },
-      true /* attach */,
     );
   });
 
@@ -752,7 +749,6 @@ describe('DetailsListV2', () => {
         ).toEqual('0');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
       },
-      true /* attach */,
     );
   });
 

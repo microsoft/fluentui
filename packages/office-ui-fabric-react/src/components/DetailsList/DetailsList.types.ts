@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
-import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from './../../utilities/dragdrop/index';
 import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
