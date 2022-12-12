@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Autofill only sets input selectionRange if input is in focus\"",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
