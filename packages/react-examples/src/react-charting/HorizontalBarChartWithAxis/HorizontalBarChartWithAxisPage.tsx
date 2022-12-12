@@ -19,7 +19,7 @@ export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDe
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Horizontal Bar Chart"
+        title="Horizontal Bar Chart With Axis"
         componentName="HorizontalBarChartWithAxisExample"
         exampleCards={
           <div>
@@ -27,13 +27,13 @@ export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDe
               <HorizontalBarChartWithAxisBasicExample />
             </ExampleCard>
             <ExampleCard
-              title="HorizontalBarChartWithAxis Custom Callout"
+              title="HorizontalBarChartWithAxis Tooltip Callout"
               code={HorizontalBarChartWithAxisTooltipExampleCode}
             >
               <HorizontalBarChartWithAxisTooltipExample />
             </ExampleCard>
             <ExampleCard
-              title="HorizontalBarChartWithAxis with benchmark"
+              title="HorizontalBarChartWithAxis with String Y Axis And Tooltip"
               code={HorizontalBarChartWithAxisStringAxisTooltipExampleCode}
             >
               <HorizontalBarChartWithAxisStringAxisTooltipExample />
@@ -55,25 +55,28 @@ export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDe
               rectangular bar length is proportional to the values they represent. There will always be a maximum data
               value (color) that is used to represent the total length.
             </p>
-            <p>Numerical values are represented through abbreviations. </p>
-            <h4>Bar chart custom data</h4>
             <p>
-              This property allows customizing the right side data part of the chart. See the usage of
-              <code>barChartCustomData</code>
-              prop in custom callout variant.
+              The bar widths are proportional to the number of bars and space available within the charting area. The
+              bar width can be changed using the <code>barWidth</code> property.
             </p>
-            <h4>Custom hover callout</h4>
+            <h3>Implementation details</h3>
+            <p>
+              The chart provides an option to select a color scale based on the range of x values. Similar x values will
+              end up having similar color. Use the <code>colors</code> attribute to define the color scale.
+            </p>
+            <p>
+              Use <code>useSingleColor</code> to use a single color for all bars.
+            </p>
+            <p>
+              Use <code>lineLegendText and lineLegendColor</code> to specify the text and color for legends of lines in
+              the chart.
+            </p>
             <p>
               See <code>onRenderCalloutPerHorizontalBar</code> prop to customize the hover callout.
             </p>
             <p>
-              Set the <code>chartDataMode</code> as number, fraction or percentage to specify how numerical values will
-              be shown on the chart.
-            </p>
-            <h4>Benchmark data</h4>
-            <p>
-              Set the <code>data</code> attribute of IChartDataPoint to specify the benchmark value. The benchmark value
-              is shown as an inverted triangle in the chart.
+              If the y data points are of String there are 2 modes to view them, the first to truncates y axis labels
+              and the second enables to view the complete labels.
             </p>
           </div>
         }
