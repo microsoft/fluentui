@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "Add labels to arcs in donut chart",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",

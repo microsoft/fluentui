@@ -71,18 +71,20 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={49.9501809476667}
+              y={-27.45868575324308}
+            >
+              20.0k
+            </text>
           </g>
           <g>
             <path
@@ -110,18 +112,20 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={-49.950180947666674}
+              y={27.458685753243135}
+            >
+              39.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -614,18 +618,20 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={49.9501809476667}
+              y={-27.45868575324308}
+            >
+              20.0k
+            </text>
           </g>
           <g>
             <path
@@ -653,18 +659,20 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={-49.950180947666674}
+              y={27.458685753243135}
+            >
+              39.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -1073,18 +1081,20 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={49.9501809476667}
+              y={-27.45868575324308}
+            >
+              20.0k
+            </text>
           </g>
           <g>
             <path
@@ -1112,18 +1122,20 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={-49.950180947666674}
+              y={27.458685753243135}
+            >
+              39.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -1453,18 +1465,20 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={0}
+              y={0}
+            >
+              20.0k
+            </text>
           </g>
           <g>
             <path
@@ -1492,18 +1506,20 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={0}
+              y={0}
+            >
+              39.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -1833,18 +1849,20 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={0}
+              y={0}
+            >
+              20.0k
+            </text>
           </g>
           <g>
             <path
@@ -1872,18 +1890,20 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={0}
+              y={0}
+            >
+              39.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -1964,18 +1984,20 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={0}
+              y={0}
+            >
+              20.0k
+            </text>
           </g>
           <g>
             <path
@@ -2003,18 +2025,20 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            />
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={0}
+              y={0}
+            >
+              39.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -2344,19 +2368,19 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={0}
+              y={0}
             >
-              1,000
+              20.0k
             </text>
           </g>
           <g>
@@ -2385,21 +2409,41 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               role="img"
             />
             <text
+              aria-hidden={true}
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    font-size: 12px;
+                    font-weight: 600;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={0}
+              y={0}
             >
-              1,000
+              39.0k
             </text>
           </g>
+          <text
+            aria-label="1000"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(179, 179, 179);
+                }
+            data-is-focusable={true}
+            dominantBaseline="middle"
+            role="img"
+            textAnchor="middle"
+            y={5}
+          >
+            1.0k
+          </text>
         </g>
       </svg>
     </div>

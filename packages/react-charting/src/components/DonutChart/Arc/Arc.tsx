@@ -107,15 +107,15 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
     return (
       <text
-        x={(base / hyp) * labelRadius}
-        y={(perp / hyp) * labelRadius}
+        x={(hyp === 0 ? 0 : base / hyp) * labelRadius}
+        y={(hyp === 0 ? 0 : perp / hyp) * labelRadius}
         textAnchor={angle > Math.PI ? 'end' : 'start'}
         dominantBaseline={angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto'}
         className={className}
         aria-hidden={true}
       >
         {showLabelsInPercent
-          ? d3Format('.0%')(arcValue / totalValue!)
+          ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
           : d3FormatPrefix(arcValue < 1000 ? '.2~' : '.1', arcValue)(arcValue)}
       </text>
     );
