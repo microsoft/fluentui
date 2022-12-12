@@ -46,7 +46,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction, getId } from '@uifabric/utilities';
+import { composeComponentAs, composeRenderFunction, getId } from '@uifabric/utilities';
 import { useConst } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
@@ -554,8 +554,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onBlur: onBlur,
   };
 
+  const FinalGroupedList =
+    groups && groupProps?.groupedListAs ? composeComponentAs(groupProps.groupedListAs, GroupedList) : GroupedList;
+
   const list = groups ? (
-    <GroupedList
+    <FinalGroupedList
       focusZoneProps={focusZoneProps}
       componentRef={groupedListRef}
       groups={groups}
