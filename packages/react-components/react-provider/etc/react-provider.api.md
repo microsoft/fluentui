@@ -11,7 +11,7 @@ import type { ProviderContextValue_unstable } from '@fluentui/react-shared-conte
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { Theme } from '@fluentui/react-theme';
+import { Theme } from '@fluentui/tokens';
 import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
