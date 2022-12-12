@@ -35,6 +35,7 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  YAxisType,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -931,7 +932,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._colorFillBars = this.props.colorFillBars!;
     }
 
-    const yMinMaxValues = getMinMaxOfYAxis(this._points, ChartTypes.LineChart);
+    const yMinMaxValues = getMinMaxOfYAxis(this._points, ChartTypes.LineChart, YAxisType.NumericAxis);
     const FILL_Y_PADDING = 3;
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];

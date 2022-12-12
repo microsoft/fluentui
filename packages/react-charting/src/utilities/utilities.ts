@@ -726,7 +726,7 @@ export function truncateYAxisLabels(node: SVGElement | null, yAxis: any, noOfCha
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
     const dx = parseFloat(text.attr('dx'));
-    let tspan = text
+    text
       .text(null)
       .append('tspan')
       .attr('x', x)
@@ -736,7 +736,7 @@ export function truncateYAxisLabels(node: SVGElement | null, yAxis: any, noOfCha
       .attr('data-', totalWord);
 
     if (totalWordLength > noOfCharsToTruncate) {
-      tspan = text
+      text
         .append('tspan')
         .attr('id', 'showDots')
         .attr('x', x)
@@ -745,7 +745,7 @@ export function truncateYAxisLabels(node: SVGElement | null, yAxis: any, noOfCha
         .attr('dx', lineHeight + dx + 'em')
         .text(truncatedWord);
     } else {
-      tspan = text
+      text
         .append('tspan')
         .attr('id', 'LessLength')
         .attr('x', x)
