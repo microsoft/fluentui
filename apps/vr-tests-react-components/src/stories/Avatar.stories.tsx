@@ -243,4 +243,5 @@ storiesOf('Avatar Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('image-bad-url', () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />);
+  .addStory('image-bad-url', () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />)
+  .addStory('image-bad-url+icon', () => <Avatar image={{ src: `${imageRoot}/bad_image_url.jpg` }} />);
