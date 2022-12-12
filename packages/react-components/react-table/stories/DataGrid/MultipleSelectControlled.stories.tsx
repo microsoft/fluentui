@@ -161,7 +161,6 @@ export const MultipleSelectControlled = () => {
     <DataGrid
       items={items}
       columns={columns}
-      focusMode="cell"
       selectionMode="multiselect"
       selectedItems={selectedRows}
       onSelectionChange={onSelectionChange}

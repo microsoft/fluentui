@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "docs: Update docstrings for props",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -154,7 +154,6 @@ export const SelectionAppearance = () => {
     <DataGrid
       items={items}
       columns={columns}
-      focusMode="cell"
       selectionMode="multiselect"
       selectionAppearance="neutral"
       defaultSelectedItems={defaultSelectedItems}

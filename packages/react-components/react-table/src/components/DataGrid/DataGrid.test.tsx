@@ -87,7 +87,7 @@ describe('DataGrid', () => {
     );
   });
 
-  it('should not render tabster attributes when `focusMode` has value `none`', () => {
+  it('should none render tabster attributes when `focusMode` has value `none`', () => {
     const result = render(
       <DataGrid items={testItems} columns={testColumns} focusMode="none">
         <DataGridHeader>
@@ -112,7 +112,7 @@ describe('DataGrid', () => {
     expect(result.getByRole('grid').hasAttribute('data-tabster')).toBe(false);
   });
 
-  it('should not render tabster attributes when `focusMode` prop is not set', () => {
+  it('should render tabster attributes when `focusMode` prop is not set', () => {
     const result = render(
       <DataGrid items={testItems} columns={testColumns}>
         <DataGridHeader>
@@ -134,6 +134,8 @@ describe('DataGrid', () => {
       </DataGrid>,
     );
 
-    expect(result.getByRole('grid').hasAttribute('data-tabster')).toBe(false);
+    expect(result.getByRole('grid').getAttribute('data-tabster')).toMatchInlineSnapshot(
+      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"`,
+    );
   });
 });

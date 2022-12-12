@@ -209,9 +209,9 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
-    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('red').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-checked')).toEqual('false');
   });
 
   it('should set defaultSelectedOptions based on Option `value`', () => {
@@ -227,8 +227,8 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-checked')).toEqual('true');
   });
 
   it('should set selectedOptions', () => {
@@ -258,9 +258,9 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
-    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('true');
-    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('red').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('green').getAttribute('aria-checked')).toEqual('false');
   });
 
   it('should change defaultSelectedOptions on click', () => {
@@ -355,9 +355,9 @@ describe('Dropdown', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByText('Red', { selector: '[role=option]' }).getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Blue').getAttribute('aria-selected')).toEqual('false');
+    expect(getByText('Red', { selector: '[role=menuitemcheckbox]' }).getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Blue').getAttribute('aria-checked')).toEqual('false');
   });
 
   it('calls onOptionSelect with correct data for single-select', () => {
@@ -443,7 +443,7 @@ describe('Dropdown', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByRole('listbox')).not.toBeNull();
+    expect(getByRole('menu')).not.toBeNull();
   });
 
   it('should respect value over selected options', () => {

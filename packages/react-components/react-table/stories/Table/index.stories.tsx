@@ -17,6 +17,7 @@ export { NonNativeElements } from './NonNativeElements.stories';
 export { CellActions } from './CellActions.stories';
 export { PrimaryCell } from './PrimaryCell.stories';
 export { CellNavigation } from './CellNavigation.stories';
+export { RowNavigation } from './RowNavigation.stories';
 export { Sort } from './Sort.stories';
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
@@ -24,6 +25,7 @@ export { SingleSelect } from './SingleSelect.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { SubtleSelection } from './SubtleSelection.stories';
+export { Virtualization } from './Virtualization.stories';
 export { DataGrid } from './DataGrid.stories';
 
 export default {

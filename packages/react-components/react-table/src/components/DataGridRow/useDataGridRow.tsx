@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { isInteractiveHTMLElement, useEventCallback, resolveShorthand } from '@fluentui/react-utilities';
+import { Space } from '@fluentui/keyboard-keys';
 import type { DataGridRowProps, DataGridRowState } from './DataGridRow.types';
 import { useTableRow_unstable } from '../TableRow/useTableRow';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { ColumnIdContextProvider } from '../../contexts/columnIdContext';
 import { DataGridSelectionCell } from '../DataGridSelectionCell/DataGridSelectionCell';
 import { useRowIdContext } from '../../contexts/rowIdContext';
-import { useEventCallback } from '@fluentui/react-utilities';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
-import { resolveShorthand } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render DataGridRow.
@@ -24,6 +24,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   const columnDefs = useDataGridContext_unstable(ctx => ctx.columns);
   const selectable = useDataGridContext_unstable(ctx => ctx.selectableRows);
   const selected = useDataGridContext_unstable(ctx => ctx.selection.isRowSelected(rowId));
+  const tabbable = useDataGridContext_unstable(ctx => ctx.focusMode === 'row_unstable');
   const appearance = useDataGridContext_unstable(ctx => {
     if (!isHeader && selectable && ctx.selection.isRowSelected(rowId)) {
       return ctx.selectionAppearance;
@@ -51,7 +52,9 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   });
 
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLTableRowElement>) => {
-    if (selectable && !isHeader && e.key === ' ') {
+    if (selectable && !isHeader && e.key === Space && !isInteractiveHTMLElement(e.target as HTMLElement)) {
+      // stop scrolling
+      e.preventDefault();
       toggleRow(e, rowId);
     }
 
@@ -67,6 +70,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
       onKeyDown,
       children: cells,
       as: 'div',
+      tabIndex: tabbable && !isHeader ? 0 : undefined,
     },
     ref,
   );

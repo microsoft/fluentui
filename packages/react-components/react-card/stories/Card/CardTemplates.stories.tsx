@@ -17,7 +17,7 @@ import {
   CheckmarkCircle16Regular,
   CircleHalfFill16Regular,
   Comment16Regular,
-  MoreHorizontal16Filled,
+  MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 
@@ -57,6 +57,7 @@ const useStyles = makeStyles({
 
   taskCheckbox: {
     display: 'flex',
+    alignItems: 'flex-start',
   },
 });
 
@@ -150,7 +151,7 @@ export const Templates = () => {
           image={{ as: 'img', src: powerpointLogoURL }}
           header={<Text weight="semibold">Team Offsite 2020</Text>}
           description={<Caption1 className={styles.caption}>OneDrive &gt; Presentations</Caption1>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal16Filled />} />}
+          action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
         />
       </Card>
 
@@ -159,7 +160,7 @@ export const Templates = () => {
           image={{ as: 'img', src: excelLogo }}
           header={<Text weight="semibold">Team Budget</Text>}
           description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal16Filled />} />}
+          action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
         />
       </Card>
 
@@ -168,7 +169,7 @@ export const Templates = () => {
           image={{ as: 'img', src: wordLogo }}
           header={<Text weight="semibold">Secret Project Briefing</Text>}
           description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal16Filled />} />}
+          action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
         />
       </Card>
     </div>

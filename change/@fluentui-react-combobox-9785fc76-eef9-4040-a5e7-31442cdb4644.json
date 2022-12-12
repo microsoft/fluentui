@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: open Combobox popup when typing",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -15,6 +15,9 @@ find ./src -type f |while read fname; do
     if grep "Step " $fname; then
       impor="${impor}Step , "
     fi
+    if grep "Keys " $fname; then
+      impor="${impor}Keys , "
+    fi
   fi
   impor="${impor%??}"
   sed -i "s/import.*screener'/import { ${impor} } from 'storywright'/g" $fname

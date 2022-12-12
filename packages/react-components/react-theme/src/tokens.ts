@@ -97,6 +97,8 @@ export const tokens: Record<keyof Theme, string> = {
   colorNeutralBackgroundInvertedDisabled: 'var(--colorNeutralBackgroundInvertedDisabled)',
   colorNeutralStencil1: 'var(--colorNeutralStencil1)',
   colorNeutralStencil2: 'var(--colorNeutralStencil2)',
+  colorNeutralStencil1Alpha: 'var(--colorNeutralStencil1Alpha)',
+  colorNeutralStencil2Alpha: 'var(--colorNeutralStencil2Alpha)',
   colorBackgroundOverlay: 'var(--colorBackgroundOverlay)',
   colorScrollbarOverlay: 'var(--colorScrollbarOverlay)',
   colorBrandBackground: 'var(--colorBrandBackground)',
@@ -160,6 +162,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorPaletteRedForeground1: 'var(--colorPaletteRedForeground1)',
   colorPaletteRedForeground2: 'var(--colorPaletteRedForeground2)',
   colorPaletteRedForeground3: 'var(--colorPaletteRedForeground3)',
+  colorPaletteRedForegroundInverted: 'var(--colorPaletteRedForegroundInverted)',
 
   // Color palette green tokens
   colorPaletteGreenBackground1: 'var(--colorPaletteGreenBackground1)',
@@ -171,6 +174,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorPaletteGreenForeground1: 'var(--colorPaletteGreenForeground1)',
   colorPaletteGreenForeground2: 'var(--colorPaletteGreenForeground2)',
   colorPaletteGreenForeground3: 'var(--colorPaletteGreenForeground3)',
+  colorPaletteGreenForegroundInverted: 'var(--colorPaletteGreenForegroundInverted)',
 
   // Color palette dark orange tokens
   colorPaletteDarkOrangeBackground1: 'var(--colorPaletteDarkOrangeBackground1)',
@@ -193,6 +197,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorPaletteYellowForeground1: 'var(--colorPaletteYellowForeground1)',
   colorPaletteYellowForeground2: 'var(--colorPaletteYellowForeground2)',
   colorPaletteYellowForeground3: 'var(--colorPaletteYellowForeground3)',
+  colorPaletteYellowForegroundInverted: 'var(--colorPaletteYellowForegroundInverted)',
 
   // Color palette berry tokens
   colorPaletteBerryBackground1: 'var(--colorPaletteBerryBackground1)',

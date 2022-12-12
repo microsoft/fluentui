@@ -67,7 +67,7 @@ const columns = [
 
 export const Default = () => {
   return (
-    <Table>
+    <Table arial-label="Default table">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
