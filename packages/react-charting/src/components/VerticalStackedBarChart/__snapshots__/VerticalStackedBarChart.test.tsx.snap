@@ -89,6 +89,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -735,6 +736,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1299,6 +1301,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1447,12 +1450,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           transform="translate(0, 0)"
           x1={56}
           x2={-36}
-          y1={201.4423076923077}
-          y2={127.88461538461539}
+          y1={198.5}
+          y2={122}
         />
         <circle
           cx={56}
-          cy={201.4423076923077}
+          cy={198.5}
           fill="#ffffff"
           key="0-0-dot"
           onMouseOver={[Function]}
@@ -1464,7 +1467,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         />
         <circle
           cx={-36}
-          cy={127.88461538461539}
+          cy={122}
           fill="#ffffff"
           key="0-1-dot"
           onMouseOver={[Function]}
@@ -2351,6 +2354,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2708,6 +2712,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3045,6 +3050,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3152,6 +3158,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3509,6 +3516,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3866,6 +3874,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -4223,6 +4232,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -4580,6 +4590,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;

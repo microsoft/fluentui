@@ -317,6 +317,11 @@ export interface ICartesianChartProps {
   showYAxisLablesTooltip?: boolean;
 
   /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
+
+  /**
    * @default 4
    * Used for X axis labels
    * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.

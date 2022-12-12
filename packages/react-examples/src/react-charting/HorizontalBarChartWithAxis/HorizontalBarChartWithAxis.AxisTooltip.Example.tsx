@@ -5,12 +5,6 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
-
-const options: IChoiceGroupOption[] = [
-  { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
-  { key: 'showTooltip', text: 'Show Tooltip at X axis ticks' },
-];
 
 interface IVerticalBarState {
   selectedCallout: string;
@@ -54,15 +48,6 @@ export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}
     const rootStyle = { width: '650px', height: '350px' };
     return (
       <>
-        <div>
-          <ChoiceGroup
-            options={options}
-            defaultSelectedKey="showTooltip"
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
-            label="Pick one"
-          />
-        </div>
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             chartTitle="Horizontal bar chart axis tooltip example "
@@ -71,8 +56,6 @@ export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}
             width={650}
             hideLegend={true}
             hideTooltip={false}
-            showXAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
-            wrapXAxisLables={this.state.selectedCallout === 'WrapTickValues' ? true : false}
           />
         </div>
       </>

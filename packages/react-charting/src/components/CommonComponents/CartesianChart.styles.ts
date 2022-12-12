@@ -64,8 +64,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           },
         ],
         path: {
-          //  display: 'none',
-          opacity: 0.1,
+          display: 'none',
         },
         line: {
           opacity: 0.2,

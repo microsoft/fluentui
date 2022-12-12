@@ -25,11 +25,11 @@ import {
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
-  createWrapOfYLabels,
+  truncateYAxisLabels,
   rotateXAxisLabels,
   Points,
   pointTypes,
-  ChartTypes,
+  calculateLongestYAxisLabel,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 
@@ -74,19 +74,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
-
-  public static getDerivedStateFromProps(
-    nextProps: IModifiedCartesianChartProps,
-    previousState: ICartesianChartState,
-  ): Partial<ICartesianChartState> | null {
-    if (nextProps.startFromX && nextProps.startFromX !== previousState.startFromX) {
-      return {
-        startFromX: nextProps.startFromX,
-      };
-    }
-
-    return null;
-  }
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
@@ -166,23 +153,39 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
+
+    const margin = { ...this.margins };
+    if (this.props.showYAxisLables) {
+      const maxYAxisLabelLength = calculateLongestYAxisLabel(points, this.props.theme!);
+      if (this.state.startFromX !== maxYAxisLabelLength) {
+        this.setState({
+          startFromX: maxYAxisLabelLength,
+        });
+      }
+      margin.left! += this.state.startFromX;
+    } else if (this.state.startFromX !== 0) {
+      this.setState({
+        startFromX: 0,
+      });
+    }
     // Callback for margins to the chart
-    this.props.getmargins && this.props.getmargins(this.margins);
-    const margins = this.margins;
-    //margins.left! += this.state.startFromX;
+    this.props.getmargins && this.props.getmargins(margin);
+
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
-        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : margins,
+        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
         this.state.containerWidth,
         chartType,
         this._isRtl,
         this.props.xAxisType,
         this.props.barwidth!,
         this.props.tickValues!,
-        // This is only used for Horizontal Bar Chart for y as string axis
+        // This is only used for Horizontal Bar Chart with Axis for y as string axis
         this.state.startFromX,
       ),
+      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+      margins: this.margins,
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
       xAxisCount: this.props.xAxisTickCount,
@@ -194,7 +197,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     };
 
     const YAxisParams = {
-      margins: margins,
+      margins: this.margins,
       containerWidth: this.state.containerWidth,
       containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
       yAxisElement: this.yAxisElement,
@@ -218,7 +221,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     let xScale: any;
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams, culture);
+        xScale = createNumericXAxis(XAxisParams, this.props.chartType, culture);
         break;
       case XAxisTypes.DateAxis:
         xScale = createDateXAxis(
@@ -234,7 +237,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams, culture);
+        xScale = createNumericXAxis(XAxisParams, this.props.chartType, culture);
     }
     this._xScale = xScale;
 
@@ -281,10 +284,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     /*
-     * To enable display complete y axis tick values by truncating the rest of the text and showing elipsis,
+     * To truncate y axis tick values by truncating the rest of the text and showing elipsis,
      * */
     if (this.props.showYAxisLablesTooltip) {
-      yScale && createWrapOfYLabels(this.yAxisElement, yScale, this.props.noOfCharsToTruncate || 4);
+      yScale && truncateYAxisLabels(this.yAxisElement, yScale, this.props.noOfCharsToTruncate || 4);
     }
 
     this.props.getAxisData && this.props.getAxisData(axisData);
@@ -341,7 +344,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               id={`xAxisGElement${this.idForGraph}`}
               // To add wrap of x axis lables feature, need to remove word height from svg height.
               transform={`translate(0, ${
-                svgDimensions.height - margins.bottom! - this.state._removalValueForTextTuncate!
+                svgDimensions.height - this.margins.bottom! - this.state._removalValueForTextTuncate!
               })`}
               className={this._classNames.xAxis}
             />
@@ -351,7 +354,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }}
               id={`yAxisGElement${this.idForGraph}`}
               transform={`translate(${
-                this._isRtl ? svgDimensions.width - margins.right! : margins.left! + this.state.startFromX
+                this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left! + this.state.startFromX
               }, 0)`}
               className={this._classNames.yAxis}
             />

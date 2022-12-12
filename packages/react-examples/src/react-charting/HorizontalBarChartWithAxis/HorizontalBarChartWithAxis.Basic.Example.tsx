@@ -10,7 +10,7 @@ import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
-interface IVerticalChartState {
+interface IHorizontalBarChartWithAxisState {
   width: number;
   height: number;
   isCalloutselected: boolean;
@@ -24,7 +24,7 @@ const options: IChoiceGroupOption[] = [
 
 export class HorizontalBarChartWithAxisBasicExample extends React.Component<
   IHorizontalBarChartWithAxisProps,
-  IVerticalChartState
+  IHorizontalBarChartWithAxisState
 > {
   constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);

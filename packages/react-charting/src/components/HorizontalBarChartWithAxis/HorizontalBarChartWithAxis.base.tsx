@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { max as d3Max, min as d3Min } from 'd3-array';
-import { line as d3Line } from 'd3-shape';
+import { max as d3Max } from 'd3-array';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
@@ -32,16 +31,10 @@ import {
   NumericAxis,
   StringAxis,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
 } from '../../utilities/index';
 
-enum CircleVisbility {
-  show = 'visibility',
-  hide = 'hidden',
-}
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
-  xStart: number;
   selectedLegendTitle: string;
   dataPointCalloutProps?: IHorizontalBarChartWithAxisDataPoint; // define this in hover and focus
   /**
@@ -70,15 +63,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
   private _bars: JSX.Element[];
-  private _xAxisLabels: string[];
   private _yAxisLabels: string[];
   private _xMax: number;
-  private _isHavingLine: boolean;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
-  //private cartesianChartElement: SVGElement | null;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -95,9 +85,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       activeXdataPoint: null,
       YValueHover: [],
       hoverXValue: '',
-      xStart: 0,
     };
-    this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
     this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
@@ -113,7 +101,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
   public render(): JSX.Element {
     this._adjustProps();
-    this._xAxisLabels = this._points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.x as string);
     this._yAxisLabels = this._points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
     this._xMax = Math.max(
       d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
@@ -130,10 +117,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       id: `toolTip${this._calloutId}`,
       target: this.state.refSelected,
       isBeakVisible: false,
-      ...(this._isHavingLine && {
-        YValueHover: this.state.YValueHover,
-        hoverXValue: this.state.hoverXValue,
-      }),
       gapSpace: 15,
       color: this.state.color,
       legend: this.state.selectedLegendTitle,
@@ -153,15 +136,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         {...this.props}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
-        startFromX={this.state.xStart}
         xAxisType={this._xAxisType}
         yAxisType={this._yAxisType}
         stringDatasetForYAxisDomain={this._yAxisLabels}
         calloutProps={calloutProps}
         tickParams={tickParams}
-        {...(this._isHavingLine && { isCalloutForStack: true })}
         legendBars={legendBars}
-        datasetForXAxisDomain={this._xAxisLabels}
         barwidth={this._barWidth}
         focusZoneDirection={FocusZoneDirection.vertical}
         customizedCallout={this._getCustomizedCallout()}
@@ -175,9 +155,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           return (
             <>
               <g>{this._bars}</g>
-              {this._isHavingLine && (
-                <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
-              )}
             </>
           );
         }}
@@ -185,137 +162,26 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     );
   }
 
-  private _createLine = (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    xScale: any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    yScale: any,
-    containerHeight: number = 0,
-    containerWidth: number = 0,
-  ): React.ReactNode => {
-    const isNumericAxis = this._xAxisType === XAxisTypes.NumericAxis;
-    const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumericAxis);
-    const colorScale = this._createColors();
-    const { theme } = this.props;
-    const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const lineData: Array<any> = [];
-    const line: JSX.Element[] = [];
-    data &&
-      data.forEach((item: IHorizontalBarChartWithAxisDataPoint, index: number) => {
-        if (item.lineData && item.lineData.y) {
-          lineData.push({ x: item.x, y: item.lineData!.y, point: item, index });
-        }
-      });
-    const linePath = d3Line()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => yScale(d.y));
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = this.state.selectedLegendTitle === lineLegendText;
-    }
-    const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
-      ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
-      : 0;
-
-    if (lineBorderWidth > 0) {
-      line.push(
-        <path
-          opacity={shouldHighlight ? 1 : 0.1}
-          d={linePath(lineData)!}
-          fill="transparent"
-          strokeLinecap="square"
-          strokeWidth={3 + lineBorderWidth * 2}
-          stroke={theme!.palette.white}
-        />,
-      );
-    }
-    line.push(
-      <path
-        opacity={shouldHighlight ? 1 : 0.1}
-        d={linePath(lineData)!}
-        fill="transparent"
-        strokeLinecap="square"
-        strokeWidth={3}
-        stroke={lineLegendColor}
-      />,
-    );
-
-    const dots: React.ReactNode[] = lineData.map(
-      (
-        item: { x: number | string; y: number; point: IHorizontalBarChartWithAxisDataPoint; index: number },
-        index: number,
-      ) => {
-        return (
-          <circle
-            key={index}
-            cx={!isNumericAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
-            cy={yScale(item.y)}
-            onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
-            onMouseOut={this._onBarLeave}
-            r={8}
-            stroke={lineLegendColor}
-            fill={this.props.theme!.palette.white}
-            strokeWidth={3}
-            visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
-            onClick={item.point.lineData?.onClick}
-          />
-        );
-      },
-    );
-
-    return (
-      <>
-        {line}
-        {dots}
-      </>
-    );
-  };
-
-  private _checkForLine = (): boolean => {
-    const { data } = this.props;
-    return data!.some((item: IHorizontalBarChartWithAxisDataPoint) => item?.lineData?.y !== undefined);
-  };
-
   private _adjustProps(): void {
     this._points = this.props.data || [];
     this._barWidth = this.props.barWidth || 32;
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
-    this._isHavingLine = this._checkForLine();
   }
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;
   };
 
-  private _renderContentForBothLineAndBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
-    const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
-    const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
-      return (
-        <ChartHoverCard
-          key={index}
-          Legend={item.legend}
-          {...(index === 0 && { XValue: `${hoverXValue || item.data}` })}
-          color={item.color}
-          YValue={item.data || item.y}
-          culture={this.props.culture}
-        />
-      );
-    });
-    return <>{content}</>;
-  };
   private _renderContentForOnlyBars = (props: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
     const { useSingleColor = false } = this.props;
     return (
       <>
         <ChartHoverCard
-          XValue={props.xAxisCalloutData || (props.x as string)}
+          XValue={props.xAxisCalloutData || props.x.toString()}
           Legend={props.legend}
           YValue={props.yAxisCalloutData || props.y}
-          color={!useSingleColor && props.color ? props.color : this._createColors()(props.y)}
+          color={!useSingleColor && props.color ? props.color : this._createColors()(props.x)}
           culture={this.props.culture}
         />
       </>
@@ -323,11 +189,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   };
 
   private _renderCallout = (props?: IHorizontalBarChartWithAxisDataPoint): JSX.Element | null => {
-    return props
-      ? this._isHavingLine
-        ? this._renderContentForBothLineAndBars(props)
-        : this._renderContentForOnlyBars(props)
-      : null;
+    return props ? this._renderContentForOnlyBars(props) : null;
   };
 
   private _getCustomizedCallout = () => {
@@ -375,20 +237,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     point: IHorizontalBarChartWithAxisDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
     const YValueHover: IYValueHover[] = [];
-    const { theme, useSingleColor = false } = this.props;
-    const { data, lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
+    const { useSingleColor = false } = this.props;
+    const { data } = this.props;
     const selectedPoint = data!.filter((xDataPoint: IHorizontalBarChartWithAxisDataPoint) => xDataPoint.x === point.x);
-    // there might be no y value of the line for the hovered bar. so we need to check this condition
-    if (this._isHavingLine && selectedPoint[0].lineData?.y !== undefined) {
-      // callout data for the  line
-      YValueHover.push({
-        legend: lineLegendText,
-        color: lineLegendColor,
-        y: selectedPoint[0].lineData?.y,
-        data: selectedPoint[0].lineData?.yAxisCalloutData,
-        yAxisCalloutData: selectedPoint[0].lineData?.yAxisCalloutData,
-      });
-    }
     // callout data for the bar
     YValueHover.push({
       legend: selectedPoint[0].legend,
@@ -448,7 +299,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       YValueHover: [],
       hoverXValue: '',
     });
-    this._onTooltipOut();
   };
 
   private _onBarFocus = (
@@ -462,15 +312,18 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     ) {
       const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
       this._refArray.forEach((obj: IRefArrayData, index: number) => {
-        if (obj.index === point.legend! && refArrayIndexNumber === index) {
+        if (
+          //obj.index === point.legend! &&
+          refArrayIndexNumber === index
+        ) {
           this.setState({
             refSelected: obj.refElement,
             isCalloutVisible: true,
             selectedLegendTitle: point.legend!,
             dataForHoverCard: point.x,
             color: point.color || color,
-            xCalloutValue: point.xAxisCalloutData || point.x.toString(),
-            yCalloutValue: point.yAxisCalloutData!,
+            xCalloutValue: point.yAxisCalloutData || point.y.toString(),
+            yCalloutValue: point.xAxisCalloutData! || point.x.toString(),
             dataPointCalloutProps: point,
             activeXdataPoint: point.x,
             YValueHover,
@@ -490,13 +343,11 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   ): { xBarScale: any; yBarScale: any } => {
     if (isNumericScale) {
       const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
-      //const xMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
-      //const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
         .nice()
-        .range([this.margins.left! + this.state.xStart, containerWidth - this.margins.right!]);
+        .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
         .domain([0, yMax])
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
@@ -510,7 +361,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
       const xBarScale = d3ScaleLinear()
         .domain([0, xMax])
-        .range([this.margins.left! + this.state.xStart, containerWidth - this.margins.right!]);
+        .range([this.margins.left!, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
     }
   };
@@ -525,7 +376,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
     const colorScale = this._createColors();
-    //const xMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
     const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -543,20 +393,19 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return (
         <rect
           key={point.x}
-          x={this.margins.left! + this.state.xStart}
+          x={this.margins.left!}
           className={this._classNames.opacityChangeOnHover}
           y={yBarScale(point.y) - this._barWidth / 2}
-          //width={this._barWidth}
           data-is-focusable={!this.props.hideTooltip}
-          width={Math.max(xBarScale(point.x), 0) - this.margins.left! - this.state.xStart}
+          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
           height={this._barWidth}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
           onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.x))}
-          aria-label="Vertical bar chart"
-          role="text"
+          aria-label={this._getAriaLabel(point)}
+          role="img"
           aria-labelledby={`toolTip${this._calloutId}`}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
@@ -565,29 +414,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         />
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        // document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const yAxisElement = d3Select(yElement).call(yBarScale);
-      try {
-        //document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const ytooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        yAxis: yAxisElement,
-      };
-      yAxisElement && this._tooltipOfYAxislabels(ytooltipProps);
-    }
     return bars;
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _tooltipOfYAxislabels(ytooltipProps: any) {
     const { tooltipCls, yAxis, id } = ytooltipProps;
     if (yAxis === null) {
@@ -605,40 +434,21 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
     for (let i = 0; i < tickObjectLength; i++) {
       const d1 = tickObject[i];
-      d3Select(d1).on('mouseover', d => {
-        div.style('opacity', 0.9);
-        div
-          .html(originalDataArray[i])
-          .style('left', d3Event.pageX + 'px')
-          .style('top', d3Event.pageY - 28 + 'px');
-        this.setState({
-          tooltipElement: div,
-          xStart: div.node()!.getBoundingClientRect().width,
+      d3Select(d1)
+        .on('mouseover', d => {
+          if (!this.state.tooltipElement) {
+            div.style('opacity', 0.9);
+            div
+              .html(originalDataArray[i])
+              .style('left', d3Event.pageX + 'px')
+              .style('top', d3Event.pageY - 28 + 'px');
+          }
+        })
+        .on('mouseout', d => {
+          div.style('opacity', 0);
         });
-      });
     }
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _onTooltipOut = (): void => {
-    this.state.tooltipElement.style('opacity', 0);
-    this.setState({
-      xStart: 0,
-      tooltipElement: undefined,
-    });
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _onTooltipHover = (div: any, text: string): void => {
-    div.style('opacity', 0.9);
-    div
-      .html(text)
-      .style('left', d3Event.pageX + 'px')
-      .style('top', d3Event.pageY - 28 + 'px');
-    this.setState({
-      tooltipElement: div,
-      xStart: div.node()!.getBoundingClientRect().width,
-    });
-  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createStringBars(
@@ -657,13 +467,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return (
         <rect
           key={point.x}
-          x={this.margins.left! + this.state.xStart}
+          x={this.margins.left!}
           y={yBarScale(point.y) + this._barWidth / 2}
-          width={Math.max(xBarScale(point.x), 0) - this.margins.left! - this.state.xStart}
+          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
           height={this._barWidth}
-          aria-label="Horizontal bar chart with Axis"
-          role="text"
           aria-labelledby={`toolTip${this._calloutId}`}
+          aria-label={this._getAriaLabel(point)}
+          role="img"
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
@@ -674,25 +484,26 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
           fill={point.color ? point.color : colorScale(point.x)}
-          //transform={`translate(${0.5 * (yBarScale.bandwidth() - this._barWidth)}, 0)`}
         />
       );
     });
-    d3Select(xElement).select('.path').style('stroke-opacity', 1);
+
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!this.props.showYAxisLablesTooltip) {
       try {
-        //document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        //eslint-disable-next-line no-empty
       } catch (e) {}
     }
-    // Used to display tooltip at x axis labels.
+    // Used to display tooltip at y axis labels.
     if (this.props.showYAxisLablesTooltip) {
       const yAxisElement = d3Select(yElement).call(yBarScale);
-      try {
-        //document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
+      if (!this.state.tooltipElement) {
+        try {
+          document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+          //eslint-disable-next-line no-empty
+        } catch (e) {}
+      }
       const ytooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
@@ -749,8 +560,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   }
 
   private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
-    const { theme, useSingleColor } = this.props;
-    const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
+    const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
     data.forEach((point: IHorizontalBarChartWithAxisDataPoint, _index: number) => {
       const color: string = !useSingleColor ? point.color! : this._createColors()(1);
@@ -770,23 +580,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       };
       actions.push(legend);
     });
-    if (this._isHavingLine && lineLegendText && lineLegendColor) {
-      const lineLegend: ILegend = {
-        title: lineLegendText,
-        color: lineLegendColor,
-        action: () => {
-          this._onLegendClick(lineLegendText);
-        },
-        hoverAction: () => {
-          this._onLegendHover(lineLegendText);
-        },
-        onMouseOutAction: (isLegendSelected?: boolean) => {
-          this._onLegendLeave(isLegendSelected);
-        },
-        isLineLegendInBarChart: true,
-      };
-      actions.unshift(lineLegend);
-    }
     const legends = (
       <Legends
         legends={actions}
@@ -805,5 +598,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._xMax = Math.max(domainValue[domainValue.length - 1], this.props.xMaxValue || 0);
     }
+  };
+  private _getAriaLabel = (point: IHorizontalBarChartWithAxisDataPoint): string => {
+    const xValue = point.xAxisCalloutData || point.x;
+    const yValue = point.yAxisCalloutData || point.y;
+    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
   };
 }
