@@ -4,13 +4,11 @@ import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
-import { wrapTextInsideDonut } from '../../../utilities/index';
+import { format as d3Format, formatPrefix as d3FormatPrefix } from 'd3-format';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
 }
-
-const TEXT_PADDING: number = 5;
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
@@ -61,23 +59,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           aria-label={this._getAriaLabel()}
           role="img"
         />
-        <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
-          {this.props.valueInsideDonut!}
-        </text>
+        {this._renderArcLabel(classNames.arcLabel)}
       </g>
     );
-  }
-
-  public componentDidUpdate(): void {
-    const { href } = this.props;
-    const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
-    const classNames = getClassNames(getStyles, {
-      color: this.props.color,
-      href: href!,
-      theme: this.props.theme!,
-    });
-
-    wrapTextInsideDonut(classNames.insideDonutString, this.props.innerRadius! * 2 - TEXT_PADDING);
   }
 
   private _onFocus(data: IChartDataPoint, id: string): void {
@@ -106,6 +90,35 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue = point.yAxisCalloutData || point.data || 0;
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+  };
+
+  private _renderArcLabel = (className: string) => {
+    const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue } = this.props;
+
+    if (Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12) {
+      return null;
+    }
+
+    const [base, perp] = arc.centroid(data);
+    const hyp = Math.sqrt(base * base + perp * perp);
+    const labelRadius = Math.max(innerRadius!, outerRadius!) + 2;
+    const angle = (data!.startAngle + data!.endAngle) / 2;
+    const arcValue = data!.value;
+
+    return (
+      <text
+        x={(base / hyp) * labelRadius}
+        y={(perp / hyp) * labelRadius}
+        textAnchor={angle > Math.PI ? 'end' : 'start'}
+        dominantBaseline={angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto'}
+        className={className}
+        aria-hidden={true}
+      >
+        {showLabelsInPercent
+          ? d3Format('.0%')(arcValue / totalValue!)
+          : d3FormatPrefix(arcValue < 1000 ? '.2~' : '.1', arcValue)(arcValue)}
+      </text>
+    );
   };
 }
 

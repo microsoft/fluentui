@@ -75,6 +75,11 @@ export interface IPieProps {
    * id of the focused arc
    */
   focusedArcId?: string;
+
+  /**
+   * Prop to show arc labels in percentage format
+   */
+  showLabelsInPercent?: boolean;
 }
 
 export interface IPieStyles {
@@ -82,4 +87,16 @@ export interface IPieStyles {
    * Style set for the card header component root
    */
   root: IStyle;
+
+  /**
+   * Style set for the inside donut string
+   */
+  insideDonutString: IStyle;
+}
+
+export interface IPieStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
 }

@@ -7,7 +7,7 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+import { getAccessibleDataObject } from '../../utilities/index';
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export interface IDonutChartState {
@@ -126,8 +126,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
-                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
+                valueInsideDonut={valueInsideDonut}
                 theme={this.props.theme!}
+                showLabelsInPercent={this.props.showLabelsInPercent}
               />
             </svg>
           </div>
@@ -282,14 +283,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     } else {
       return valueInsideDonut;
     }
-  }
-
-  private _toLocaleString(data: string | number | undefined) {
-    const localeString = convertToLocaleString(data, this.props.culture);
-    if (!localeString) {
-      return data;
-    }
-    return localeString?.toString();
   }
 
   /**
