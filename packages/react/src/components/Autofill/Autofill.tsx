@@ -95,7 +95,10 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
+    const isFocused = this._inputElement.current && this._inputElement.current === document.activeElement;
+
     if (
+      isFocused &&
       this._autoFillEnabled &&
       this.value &&
       suggestedDisplayValue &&
