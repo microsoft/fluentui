@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 13 Dec 2022 07:46:30 GMT",
+      "tag": "@fluentui/react_v8.103.8",
+      "version": "8.103.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0e5a232bacdd7f5fe8c58b61f789d0e43d800992",
+            "comment": "fix: Grouped DetailsList alignment and cell count when CollapseAllVisibility is hidden"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c2b76828654d1cdccc1e710b6bf647992ba4d3ae",
+            "comment": "fix: Autofill only sets input selectionRange if input is in focus\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Dec 2022 07:54:30 GMT",
       "tag": "@fluentui/react_v8.103.7",
       "version": "8.103.7",

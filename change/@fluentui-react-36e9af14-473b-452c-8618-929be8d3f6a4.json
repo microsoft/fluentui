@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Grouped DetailsList alignment and cell count when CollapseAllVisibility is hidden",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
