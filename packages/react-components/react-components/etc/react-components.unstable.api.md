@@ -145,6 +145,9 @@ import { progressClassNames } from '@fluentui/react-progress';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { progressFieldClassNames } from '@fluentui/react-progress';
 import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
+import { ProgressProps } from '@fluentui/react-progress';
+import { ProgressSlots } from '@fluentui/react-progress';
+import { ProgressState } from '@fluentui/react-progress';
 import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
 import { radioGroupFieldClassNames } from '@fluentui/react-radio';
 import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
@@ -634,6 +637,12 @@ export { ProgressField }
 export { progressFieldClassNames }
 
 export { ProgressFieldProps }
+
+export { ProgressProps }
+
+export { ProgressSlots }
+
+export { ProgressState }
 
 export { RadioGroupField }
 
