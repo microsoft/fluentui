@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 09 Dec 2022 07:54:30 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Dec 2022 07:46:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.103.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.8)
+
+Tue, 13 Dec 2022 07:46:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.7..@fluentui/react_v8.103.8)
+
+### Patches
+
+- fix: Grouped DetailsList alignment and cell count when CollapseAllVisibility is hidden ([PR #25957](https://github.com/microsoft/fluentui/pull/25957) by sarah.higley@microsoft.com)
+- fix: Autofill only sets input selectionRange if input is in focus" ([PR #25971](https://github.com/microsoft/fluentui/pull/25971) by sarah.higley@microsoft.com)
 
 ## [8.103.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.7)
 
