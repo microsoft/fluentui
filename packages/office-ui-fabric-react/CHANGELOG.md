@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 23 Nov 2022 12:28:00 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Dec 2022 12:27:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.201.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.201.1)
+
+Tue, 13 Dec 2022 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.201.0..office-ui-fabric-react_v7.201.1)
+
+### Patches
+
+- fix: Autofill only sets input selectionRange if input is in focus ([PR #25972](https://github.com/microsoft/fluentui/pull/25972) by sarah.higley@microsoft.com)
 
 ## [7.201.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.201.0)
 

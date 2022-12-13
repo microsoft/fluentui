@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 13 Dec 2022 12:27:55 GMT",
+      "tag": "office-ui-fabric-react_v7.201.1",
+      "version": "7.201.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Autofill only sets input selectionRange if input is in focus",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "0bb189f3afaf5fb2be070ae5376744d894d86392",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Nov 2022 12:28:00 GMT",
       "tag": "office-ui-fabric-react_v7.201.0",
       "version": "7.201.0",

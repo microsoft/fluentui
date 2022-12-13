@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 13 Dec 2022 12:27:55 GMT",
+      "tag": "@uifabric/azure-themes_v7.10.31",
+      "version": "7.10.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry picked from Azure theme 8.0 danger button commit",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "cbb8529a497d167bb3119dff271267c47bd9f362",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Dec 2022 12:22:07 GMT",
       "tag": "@uifabric/azure-themes_v7.10.30",
       "version": "7.10.30",
