@@ -225,8 +225,8 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     [items?.length],
   );
 
-  const isNextPaddleHidden = (): boolean => items !== undefined && !circular && activeIndex === items.length - 1;
-  const isPreviousPaddleHidden = (): boolean => items !== undefined && !circular && activeIndex === 0;
+  const nextPaddleHidden = items !== undefined && !circular && activeIndex === items.length - 1;
+  const previousPaddleHidden = items !== undefined && !circular && activeIndex === 0;
 
   const unhandledProps = useUnhandledProps(Carousel.handledProps, props);
   const getA11yProps = useAccessibility<CarouselBehaviorProps>(accessibility, {
@@ -252,8 +252,8 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
       },
     },
     mapPropsToBehavior: () => ({
-      paddlePreviousHidden: isPreviousPaddleHidden(),
-      paddleNextHidden: isNextPaddleHidden(),
+      paddlePreviousHidden: previousPaddleHidden,
+      paddleNextHidden: nextPaddleHidden,
       navigation,
       ariaLiveOn,
       'aria-roledescription': ariaRoleDescription,
@@ -433,7 +433,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
             getA11yProps('paddlePrevious', {
               className: carouselSlotClassNames.paddlePrevious,
               previous: true,
-              hidden: isPreviousPaddleHidden(),
+              hidden: previousPaddleHidden,
               disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) =>
@@ -446,7 +446,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
             getA11yProps('paddleNext', {
               className: carouselSlotClassNames.paddleNext,
               next: true,
-              hidden: isNextPaddleHidden(),
+              hidden: nextPaddleHidden,
               disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) => handlePaddleOverrides(predefinedProps, 'paddleNext'),
