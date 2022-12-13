@@ -379,4 +379,14 @@ export {
   useProgressBarStyles_unstable,
   useProgressBar_unstable,
 } from '@fluentui/react-progress';
-export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';
+export type {
+  // eslint-disable-next-line deprecation/deprecation
+  ProgressProps,
+  // eslint-disable-next-line deprecation/deprecation
+  ProgressState,
+  // eslint-disable-next-line deprecation/deprecation
+  ProgressSlots,
+  ProgressBarProps,
+  ProgressBarState,
+  ProgressBarSlots,
+} from '@fluentui/react-progress';
