@@ -45,11 +45,17 @@ export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => (
         tabIndex: -1,
         'aria-hidden': 'true',
       }),
+      ...(props.paddleNextHidden && {
+        'data-is-visible': 'false',
+      }),
     },
     paddlePrevious: {
       ...(props.navigation && {
         tabIndex: -1,
         'aria-hidden': 'true',
+      }),
+      ...(props.paddlePreviousHidden && {
+        'data-is-visible': 'false',
       }),
     },
   },
@@ -80,6 +86,8 @@ export type CarouselBehaviorProps = {
   /** Element type. */
   navigation: Object | Object[];
   ariaLiveOn: boolean;
+  paddleNextHidden: boolean;
+  paddlePreviousHidden: boolean;
   'aria-roledescription'?: string;
   'aria-label'?: string;
 };
