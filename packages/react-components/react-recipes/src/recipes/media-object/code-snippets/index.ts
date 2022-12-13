@@ -1,1 +1,2 @@
-export * from './MediaObject';
+export * from './FlexMediaObject';
+export * from './GridMediaObject';

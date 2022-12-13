@@ -1,15 +1,17 @@
 import { Meta } from '@storybook/addon-docs';
-import { MediaObjectSnippetExample } from './code-snippets';
+import {
+  FlexTextAlignmentVariations,
+  FlexTextVerticalAlignmentVariations,
+  FlexSkeleton,
+  FlexIconMediaObject,
+  GridIconMediaObject,
+} from './code-snippets';
 
 <Meta title="Concepts/Recipes/Media Object" />
 
 ## Media Object recipe
 
 ### **Overview**
-
-<!--
-Add a description of the recipe here. This should be a short description and what it does.
--->
 
 A Media Object, is a pattern that is commonly used to display some media content and a description of that content.
 It is commonly used to display an Avatar/Image of a person along with their name and description. We provide an
@@ -21,46 +23,118 @@ want to add.
 
 ### **Ingredients**
 
-<!--
-Add a list of ingredients here. This should be a list of required dependencies such as: @fluentui/react-button.
--->
-
-- <a href="#" data-sb-kind="components-image--default">
-    @fluentui/react-image
-  </a>
 - <a href="#" data-sb-kind="concepts-developer-icons-icons--page">
     @fluentui/react-icons
+  </a>
+- <a href="#" data-sb-kind="components-image--default">
+    @fluentui/react-image
   </a>
 - <a href="#" data-sb-kind="components-text--default">
     @fluentui/react-text
   </a>
 
+> **\*\*Note:\*\*** This recipe is meant to provide a way to use custom media. If you want to use
+> `Avatar` or `PresenceBadge` as media, this should be done using the Persona Component.
+
 ### **Steps**
 
-<!--
-Add a list of steps here. This should be an explanation of how to achieve the outcome.
+There are two ways to build a Media Object, you can use a grid layout or a flex layout. We will cover both in this
+recipe. There are upsides and downsides to both, but the main difference is that grid layout uses less dom than the
+flex option.
 
-Note: Code snippets in this section should be minimal and only include the important parts of the component.
--->
+#### **Flex Layout**
 
-This is an example of a code snippet:
+The main idea behind the flex layout is to have a container and two children. As shown below, the parent div will
+contain the media and another div (text div) that will contain the text content.
 
-<MediaObjectSnippetExample />
+<FlexSkeleton />
+
+This structure will then look like this:
+
+```html
+<div class="media-object">
+  <Attach24Regular />
+  <div class="text">
+    <Text size="{400}" weight="bold"> File.tsx </Text>
+    <Text size="{200}">256 Gb</Text>
+  </div>
+</div>
+```
+
+To achieve this layout, the parent and text div need to have `display: flex`. The text div should have a
+`flex-direction: column` to stack the text lines vertically. This will leave us with the following makeStyles call:
 
 ```tsx
-<Button>This is a Button</Button>
+import { makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  mediaObject: {
+    display: 'flex',
+  },
+  text: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+});
 ```
+
+After these steps we can achieve something like this:
+
+<FlexIconMediaObject />
+
+#### **Grid Layout**
+
+When using a grid for Media Object, we only need a parent div and we can input the items directly into it.
+
+```html
+<div class="media-object">
+  <Attach24Regular class="media />
+  <Text size="{400}" weight="bold">File.tsx</Text>
+  <Text size="{200}">256 Gb</Text>
+</div>
+```
+
+> As you can see, the grid layout has one less layer of dom compared to the flex layout. This is especially important
+> when the component is going to be used in a list or the items have many layers themselves.
+
+To get the initial layout, we need to set the parent to `display: grid`, `grid-auto-flow: column` and the media to `grid-row-start: span 2`.
+There are many ways to achieve a Media Object with grid, but this is the simplest one. One caveat is that
+you need to know how many lines of text you will have to set the `grid-row-start` correctly.
+
+If these lines of text are applied dynamically, you can use `grid-template-columns` with a separator to achieve the
+same result.
+
+```tsx
+import { makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  mediaObject: {
+    display: 'grid',
+    gridAutoFlow: 'column',
+  },
+  media: {
+    gridRowStart: 'span 2',
+  },
+});
+```
+
+after these steps, we will be left with something like this:
+
+<GridIconMediaObject />
 
 ### **Variants**
 
-<!--
-Add a list of variants here, not all recipes will have variants.
+There are a few common variants that you might want to use when building a Media Object. These are some of them:
 
-When adding examples, make sure to add a description of the variant and preferably explain the main idea over providing code snippets.
--->
+- #### **Text Alignment Variations**
+
+<FlexTextAlignmentVariations />
+
+- #### **Text Vertical Alignment Variations**
+
+<FlexTextVerticalAlignmentVariations />
 
 ### **Best practices**
 
-<!--
-Add a list of best practices here. This list could have do's and don'ts or just general guidelines.
--->
+- The higher up the text line, the more important it is. You should not apply higher weights to the lines underneath.
+- When using `grid-template-columns` make sure the dom makes sense and not differ from how the grid is placing them.
