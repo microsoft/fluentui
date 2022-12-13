@@ -1563,6 +1563,9 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     render(): JSX.Element;
     }
 
+// @public
+export const GroupedListV2_unstable: React.FunctionComponent<IGroupedListProps>;
+
 // @public (undocumented)
 export const GroupFooter: React.FunctionComponent<IGroupFooterProps>;
 
@@ -3789,6 +3792,8 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsI
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     // (undocumented)
+    groupedListAs?: IComponentAs<IGroupedListProps>;
+    // (undocumented)
     onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
     // (undocumented)
     onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
@@ -5968,6 +5973,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     onPageRemoved?: (page: IPage<T>) => void;
     onPagesUpdated?: (pages: IPage<T>[]) => void;
     onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
+    onRenderCellConditional?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode | null;
     onRenderPage?: IRenderFunction<IPageProps<T>>;
     onRenderRoot?: IRenderFunction<IListOnRenderRootProps<T>>;
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
@@ -8964,6 +8970,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     static defaultProps: {
         startIndex: number;
         onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
+        onRenderCellConditional: undefined;
         renderedWindowsAhead: number;
         renderedWindowsBehind: number;
     };

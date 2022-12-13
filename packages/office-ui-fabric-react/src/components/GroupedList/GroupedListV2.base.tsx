@@ -238,15 +238,24 @@ const getKey: IListProps['getKey'] = (item, _index) => {
   return null;
 };
 
-const renderGroupHeader = (props: IGroupHeaderProps): JSX.Element => {
+const renderGroupHeader = (
+  props: IGroupHeaderProps,
+  _defaultRender?: (props: IGroupHeaderProps) => JSX.Element | null,
+): JSX.Element => {
   return <GroupHeader {...props} />;
 };
 
-const renderGroupShowAll = (props: IGroupShowAllProps): JSX.Element => {
+const renderGroupShowAll = (
+  props: IGroupShowAllProps,
+  _defaultRender?: (props: IGroupShowAllProps) => JSX.Element | null,
+): JSX.Element => {
   return <GroupShowAll {...props} />;
 };
 
-const renderGroupFooter = (props: IGroupFooterProps): JSX.Element | null => {
+const renderGroupFooter = (
+  props: IGroupFooterProps,
+  _defaultRender?: (props: IGroupFooterProps) => JSX.Element | null,
+): JSX.Element | null => {
   if (props.group && props.footerText) {
     return <GroupFooter {...props} />;
   }
@@ -403,7 +412,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       ariaLevel: group.level ? group.level + 1 : 1,
       ariaSetSize: groups ? groups.length : undefined,
       ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
-    };
+    } as IGroupHeaderProps & { key: string; ariaLevel: number; ariaSetSize?: number; ariaPosInSet?: number };
 
     return (
       <GroupItem

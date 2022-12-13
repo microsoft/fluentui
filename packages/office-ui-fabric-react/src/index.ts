@@ -33,6 +33,7 @@ export * from './FocusTrapZone';
 export * from './FocusZone';
 export * from './Grid';
 export * from './GroupedList';
+export * from './GroupedListV2';
 export * from './HoverCard';
 export * from './Icon';
 export * from './Icons';
