@@ -94,7 +94,10 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
+    const isFocused = this._inputElement.current && this._inputElement.current === document.activeElement;
+
     if (
+      isFocused &&
       this._autoFillEnabled &&
       value &&
       suggestedDisplayValue &&
@@ -106,8 +109,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
 
-      if (shouldSelectFullRange && this._inputElement.current) {
-        this._inputElement.current.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      if (shouldSelectFullRange) {
+        this._inputElement.current!.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
       } else {
         while (
           differenceIndex < value.length &&
@@ -115,8 +118,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         ) {
           differenceIndex++;
         }
-        if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(
+        if (differenceIndex > 0) {
+          this._inputElement.current!.setSelectionRange(
             differenceIndex,
             suggestedDisplayValue.length,
             SELECTION_BACKWARD,
