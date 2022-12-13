@@ -37,13 +37,13 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
             {
               alignment-adjust: center;
               box-sizing: content-box;
-              height: 0px;
+              height: 40px;
               overflow: visible;
               width: 0px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(0, 20)"
         >
           <g>
             <path
@@ -584,13 +584,13 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
             {
               alignment-adjust: center;
               box-sizing: content-box;
-              height: 0px;
+              height: 40px;
               overflow: visible;
               width: 0px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(0, 20)"
         >
           <g>
             <path
@@ -1049,11 +1049,13 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              height: 40px;
               overflow: visible;
+              width: 80px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(40, 20)"
         >
           <g>
             <path
@@ -1149,7 +1151,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 80px;
         }
   >
     <div
@@ -1433,11 +1435,13 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              height: 40px;
               overflow: visible;
+              width: 80px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(40, 20)"
         >
           <g>
             <path
@@ -1533,7 +1537,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 80px;
         }
   >
     <div
@@ -1817,11 +1821,13 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              height: 40px;
               overflow: visible;
+              width: 80px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(40, 20)"
         >
           <g>
             <path
@@ -1952,11 +1958,13 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              height: 40px;
               overflow: visible;
+              width: 80px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(40, 20)"
         >
           <g>
             <path
@@ -2052,7 +2060,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 80px;
         }
   >
     <div
@@ -2336,11 +2344,13 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              height: 40px;
               overflow: visible;
+              width: 80px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(40, 20)"
         >
           <g>
             <path
@@ -2456,7 +2466,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 80px;
         }
   >
     <div
