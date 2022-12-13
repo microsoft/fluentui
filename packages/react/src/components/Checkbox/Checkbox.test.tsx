@@ -219,7 +219,9 @@ describe('Checkbox', () => {
     expect(checkbox!.indeterminate).toEqual(false);
     expect(checkboxInput.indeterminate).toEqual(false);
 
-    checkboxComponent.rerender(<Checkbox title="indeterminate-title" checked={true} componentRef={checkboxRef} />);
+    checkboxComponent.rerender(
+      <Checkbox title="indeterminate-title" indeterminate={false} checked={true} componentRef={checkboxRef} />,
+    );
 
     expect(checkbox!.indeterminate).toEqual(false);
     expect(checkboxInput.indeterminate).toEqual(false);
