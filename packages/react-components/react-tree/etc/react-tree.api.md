@@ -70,18 +70,21 @@ export const TreeItem: ForwardRefComponent<TreeItemProps>;
 export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
 
 // @public
-export type TreeItemProps = ComponentProps<TreeItemSlots> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps & {
+    appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
+    size?: 'small' | 'medium';
+};
 
 // @public (undocumented)
 export type TreeItemSlots = BaseTreeItemSlots & {
     expandIcon?: Slot<'span'>;
     iconBefore?: Slot<'span'>;
     iconAfter?: Slot<'span'>;
-    actionIcon?: Slot<'span'>;
+    actions?: Slot<'span'>;
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots>;
+export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState & Required<Pick<TreeItemProps, 'appearance' | 'size'>>;
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {

@@ -15,7 +15,7 @@ describe('TreeItem', () => {
             expandIcon: 'Test Expand Icon',
             iconBefore: 'Test Icon Before',
             iconAfter: 'Test Icon After',
-            actionIcon: 'test Action Icon',
+            actions: 'test Actions',
           },
         },
       ],
