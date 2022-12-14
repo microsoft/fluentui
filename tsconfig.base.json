@@ -37,6 +37,7 @@
       "@fluentui/react-divider": ["packages/react-components/react-divider/src/index.ts"],
       "@fluentui/react-field": ["packages/react-components/react-field/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
+      "@fluentui/react-foobar": ["packages/react-components/react-foobar/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
       "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],

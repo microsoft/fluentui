@@ -465,6 +465,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/react-foobar": {
+      "root": "packages/react-components/react-foobar",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-foobar/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-hooks": {
       "root": "packages/react-hooks",
       "projectType": "library",
