@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updated to support longer theme name in dropdown",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
