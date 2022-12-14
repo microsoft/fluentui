@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "cherry-pick: GroupedList: fix virtualization (unstable preview) (#24460)",
+  "packageName": "office-ui-fabric-react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
