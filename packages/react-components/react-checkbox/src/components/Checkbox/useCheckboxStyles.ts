@@ -189,7 +189,7 @@ const useIndicatorStyles = makeStyles({
   },
 });
 
-// Can't use makeResetStyles for Label because Label is a component that uses makeResetStyles.
+// Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
