@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { getStyles } from './GroupedList.styles';
 import { GroupedListV2Wrapper } from './GroupedListV2.base';
-import { IGroupedListProps, IGroupedListStyles, IGroupedListStyleProps } from './GroupedList.types';
+import { IGroupedListStyles, IGroupedListStyleProps } from './GroupedList.types';
 import { IGroupedListV2Props } from './GroupedListV2.types';
 
 /**
