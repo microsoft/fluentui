@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
@@ -15,133 +15,134 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
 const indicatorSizeMedium = '16px';
 const indicatorSizeLarge = '20px';
 
-const useRootStyles = makeStyles({
-  base: {
-    position: 'relative',
-    display: 'inline-flex',
-    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+const useRootBaseClassName = makeResetStyles({
+  position: 'relative',
+  display: 'inline-flex',
+  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+});
+
+const useInputBaseClassName = makeResetStyles({
+  boxSizing: 'border-box',
+  cursor: 'pointer',
+  height: '100%',
+  margin: 0,
+  opacity: 0,
+  position: 'absolute',
+  top: 0,
+  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
+  // This is done so that clicking on that "empty space" still toggles the checkbox.
+  width: `calc(${indicatorSizeMedium} + 2 * ${tokens.spacingHorizontalS})`,
+
+  // When unchecked, hide the the checkmark icon (child of the indicator slot)
+  [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
+    opacity: 0,
+  },
+
+  // Colors for the unchecked state
+  ':enabled:not(:checked):not(:indeterminate)': {
+    [`& ~ .${checkboxClassNames.label}`]: {
+      color: tokens.colorNeutralForeground3,
+    },
+    [`& ~ .${checkboxClassNames.indicator}`]: {
+      borderColor: tokens.colorNeutralStrokeAccessible,
+    },
+
+    ':hover': {
+      [`& ~ .${checkboxClassNames.label}`]: {
+        color: tokens.colorNeutralForeground2,
+      },
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+      },
+    },
+
+    ':active:hover': {
+      [`& ~ .${checkboxClassNames.label}`]: {
+        color: tokens.colorNeutralForeground1,
+      },
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+      },
+    },
+  },
+
+  // Colors for the checked state
+  ':enabled:checked:not(:indeterminate)': {
+    [`& ~ .${checkboxClassNames.label}`]: {
+      color: tokens.colorNeutralForeground1,
+    },
+    [`& ~ .${checkboxClassNames.indicator}`]: {
+      backgroundColor: tokens.colorCompoundBrandBackground,
+      color: tokens.colorNeutralForegroundInverted,
+      borderColor: tokens.colorCompoundBrandBackground,
+    },
+
+    ':hover': {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
+        borderColor: tokens.colorCompoundBrandBackgroundHover,
+      },
+    },
+
+    ':active:hover': {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
+        borderColor: tokens.colorCompoundBrandBackgroundPressed,
+      },
+    },
+  },
+
+  // Colors for the mixed state
+  ':enabled:indeterminate': {
+    [`& ~ .${checkboxClassNames.label}`]: {
+      color: tokens.colorNeutralForeground1,
+    },
+    [`& ~ .${checkboxClassNames.indicator}`]: {
+      borderColor: tokens.colorCompoundBrandStroke,
+      color: tokens.colorCompoundBrandForeground1,
+    },
+
+    ':hover': {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        borderColor: tokens.colorCompoundBrandStrokeHover,
+        color: tokens.colorCompoundBrandForeground1Hover,
+      },
+    },
+
+    ':active:hover': {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        borderColor: tokens.colorCompoundBrandStrokePressed,
+        color: tokens.colorCompoundBrandForeground1Pressed,
+      },
+    },
+  },
+
+  ':disabled': {
+    cursor: 'default',
+
+    [`& ~ .${checkboxClassNames.label}`]: {
+      cursor: 'default',
+      color: tokens.colorNeutralForegroundDisabled,
+      '@media (forced-colors: active)': {
+        color: 'GrayText',
+      },
+    },
+    [`& ~ .${checkboxClassNames.indicator}`]: {
+      borderColor: tokens.colorNeutralStrokeDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
+      '@media (forced-colors: active)': {
+        color: 'GrayText',
+      },
+    },
+    [`& ~ .${checkboxClassNames.indicator} svg`]: {
+      '@media (forced-colors: active)': {
+        color: 'GrayText',
+      },
+    },
   },
 });
 
 const useInputStyles = makeStyles({
-  base: {
-    boxSizing: 'border-box',
-    cursor: 'pointer',
-    height: '100%',
-    ...shorthands.margin(0),
-    opacity: 0,
-    position: 'absolute',
-    top: 0,
-
-    // When unchecked, hide the the checkmark icon (child of the indicator slot)
-    [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
-      opacity: 0,
-    },
-
-    // Colors for the unchecked state
-    ':enabled:not(:checked):not(:indeterminate)': {
-      [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground3,
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
-      },
-
-      ':hover': {
-        [`& ~ .${checkboxClassNames.label}`]: {
-          color: tokens.colorNeutralForeground2,
-        },
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
-        },
-      },
-
-      ':active:hover': {
-        [`& ~ .${checkboxClassNames.label}`]: {
-          color: tokens.colorNeutralForeground1,
-        },
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
-        },
-      },
-    },
-
-    // Colors for the checked state
-    ':enabled:checked:not(:indeterminate)': {
-      [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackground,
-        color: tokens.colorNeutralForegroundInverted,
-        ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
-      },
-
-      ':hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-          ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
-        },
-      },
-
-      ':active:hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-          ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
-        },
-      },
-    },
-
-    // Colors for the mixed state
-    ':enabled:indeterminate': {
-      [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
-        color: tokens.colorCompoundBrandForeground1,
-      },
-
-      ':hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
-          color: tokens.colorCompoundBrandForeground1Hover,
-        },
-      },
-
-      ':active:hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
-          color: tokens.colorCompoundBrandForeground1Pressed,
-        },
-      },
-    },
-
-    ':disabled': {
-      cursor: 'default',
-
-      [`& ~ .${checkboxClassNames.label}`]: {
-        cursor: 'default',
-        color: tokens.colorNeutralForegroundDisabled,
-        '@media (forced-colors: active)': {
-          color: 'GrayText',
-        },
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-        color: tokens.colorNeutralForegroundDisabled,
-        '@media (forced-colors: active)': {
-          color: 'GrayText',
-        },
-      },
-      [`& ~ .${checkboxClassNames.indicator} svg`]: {
-        '@media (forced-colors: active)': {
-          color: 'GrayText',
-        },
-      },
-    },
-  },
-
   before: {
     right: 0,
   },
@@ -149,40 +150,33 @@ const useInputStyles = makeStyles({
     left: 0,
   },
 
-  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
-  // This is done so that clicking on that "empty space" still toggles the checkbox.
-  medium: {
-    width: `calc(${indicatorSizeMedium} + 2 * ${tokens.spacingHorizontalS})`,
-  },
   large: {
     width: `calc(${indicatorSizeLarge} + 2 * ${tokens.spacingHorizontalS})`,
   },
 });
 
+const useIndicatorBaseClassName = makeResetStyles({
+  alignSelf: 'flex-start',
+  boxSizing: 'border-box',
+  flexShrink: 0,
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+
+  border: tokens.strokeWidthThin + ' solid',
+  borderRadius: tokens.borderRadiusSmall,
+  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
+  fill: 'currentColor',
+  pointerEvents: 'none',
+
+  fontSize: '12px',
+  height: indicatorSizeMedium,
+  width: indicatorSizeMedium,
+});
+
 const useIndicatorStyles = makeStyles({
-  base: {
-    alignSelf: 'flex-start',
-    boxSizing: 'border-box',
-    flexShrink: 0,
-
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...shorthands.overflow('hidden'),
-
-    ...shorthands.border(tokens.strokeWidthThin, 'solid'),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
-    fill: 'currentColor',
-    pointerEvents: 'none',
-  },
-
-  medium: {
-    fontSize: '12px',
-    height: indicatorSizeMedium,
-    width: indicatorSizeMedium,
-  },
-
   large: {
     fontSize: '16px',
     height: indicatorSizeLarge,
@@ -194,10 +188,10 @@ const useIndicatorStyles = makeStyles({
   },
 });
 
+// Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    color: 'inherit',
     cursor: 'pointer',
     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
@@ -225,26 +219,28 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
-  const rootStyles = useRootStyles();
-  state.root.className = mergeClasses(checkboxClassNames.root, rootStyles.base, state.root.className);
-
   const { labelPosition, shape, size } = state;
 
+  const rootBaseClassName = useRootBaseClassName();
+  state.root.className = mergeClasses(checkboxClassNames.root, rootBaseClassName, state.root.className);
+
+  const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
   state.input.className = mergeClasses(
     checkboxClassNames.input,
-    inputStyles.base,
-    inputStyles[size],
+    inputBaseClassName,
+    size === 'large' && inputStyles.large,
     inputStyles[labelPosition],
     state.input.className,
   );
 
+  const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
     state.indicator.className = mergeClasses(
       checkboxClassNames.indicator,
-      indicatorStyles.base,
-      indicatorStyles[size],
+      indicatorBaseClassName,
+      size === 'large' && indicatorStyles.large,
       shape === 'circular' && indicatorStyles.circular,
       state.indicator.className,
     );
