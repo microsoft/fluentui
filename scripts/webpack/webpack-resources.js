@@ -12,11 +12,9 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // @ts-ignore - accessing package.json is a private API access, thus ignoring TS here
 const webpackVersion = /** @type {string} */ (require('webpack/package.json').version);
 
-const merge = require('../tasks/merge');
-const { findGitRoot } = require('../monorepo');
+const { merge } = require('../utils');
+const { getDefaultEnvironmentVars, findGitRoot } = require('../monorepo');
 const getResolveAlias = require('./getResolveAlias');
-
-const getDefaultEnvironmentVars = require('./getDefaultEnvironmentVars');
 
 console.log(`Webpack version: ${webpackVersion}`);
 

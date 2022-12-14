@@ -18,9 +18,9 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
-  useSelection,
+  useTableSelection,
   createColumn,
 } from '@fluentui/react-components/unstable';
 
@@ -112,13 +112,13 @@ export const SubtleSelection = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),
@@ -132,6 +132,7 @@ export const SubtleSelection = () => {
       onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
         if (e.key === ' ') {
+          e.preventDefault();
           toggleRow(e, row.rowId);
         }
       },
@@ -140,10 +141,20 @@ export const SubtleSelection = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} aria-label="Table with subtle selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -151,6 +162,7 @@ export const SubtleSelection = () => {
             checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>

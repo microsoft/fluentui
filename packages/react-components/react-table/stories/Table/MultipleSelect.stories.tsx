@@ -18,9 +18,9 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
-  useSelection,
+  useTableSelection,
   createColumn,
 } from '@fluentui/react-components/unstable';
 
@@ -112,13 +112,13 @@ export const MultipleSelect = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),
@@ -141,10 +141,20 @@ export const MultipleSelect = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} aria-label="Table with multiselect">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -152,6 +162,7 @@ export const MultipleSelect = () => {
             checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
@@ -193,7 +204,8 @@ MultipleSelect.parameters = {
     description: {
       story: [
         'Selection can be achieved easily by combining the `TableSelectionCell` component along with',
-        'other primitive components. The hook can handle state management for selection, although its use is not',
+        'other primitive components. `useTableFeatures` can handle state management for selection,',
+        'although its use is not',
         'necessary if users already have their own state management.',
       ].join('\n'),
     },

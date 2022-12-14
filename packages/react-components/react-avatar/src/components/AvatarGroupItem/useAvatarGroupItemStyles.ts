@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useSizeStyles } from '../../Avatar';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
 import type { AvatarGroupProps } from '../../AvatarGroup';
 import type { AvatarSizes } from '../../Avatar';
@@ -128,6 +129,33 @@ const usePieStyles = makeStyles({
       transformOrigin: '0 0',
     },
   },
+  rtlSlices: {
+    // Two slices
+    // 1st of 2 items
+    '&:nth-of-type(1):nth-last-of-type(2)': {
+      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
+    },
+    // 2nd of 2 items
+    '&:nth-of-type(2):nth-last-of-type(1)': {
+      clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
+    },
+
+    // Three slices
+    // 1st of 3 items
+    '&:nth-of-type(1):nth-last-of-type(3)': {
+      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
+    },
+    // 2nd of 3 items
+    '&:nth-of-type(2):nth-last-of-type(2)': {
+      clipPath: `inset(0 var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}) 0)`,
+      left: '0',
+    },
+    // 3rd of 3 items
+    '&:nth-of-type(3):nth-last-of-type(1)': {
+      clipPath: `inset(var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}) 0 0)`,
+      left: '0',
+    },
+  },
   thick: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThick },
   thicker: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThicker },
   thickest: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThickest },
@@ -138,6 +166,7 @@ const usePieStyles = makeStyles({
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
   const { isOverflowItem, layout, size } = state;
+  const { dir } = useFluent();
 
   const avatarStyles = useAvatarStyles();
   const overflowLabelStyles = useOverflowLabelStyles();
@@ -166,6 +195,10 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
       }
 
       rootClasses.push(pieStyles.slices);
+
+      if (dir === 'rtl') {
+        rootClasses.push(pieStyles.rtlSlices);
+      }
     }
   } else {
     rootClasses.push(rootStyles.overflowItem);

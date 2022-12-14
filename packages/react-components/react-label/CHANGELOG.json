@@ -2,6 +2,21 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:39 GMT",
+      "tag": "@fluentui/react-label_v9.0.12",
+      "version": "9.0.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:40 GMT",
       "tag": "@fluentui/react-label_v9.0.11",
       "version": "9.0.11",

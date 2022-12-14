@@ -2,7 +2,7 @@ import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IChartProps } from '../../types/IDataPoint';
 
-export { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
+export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
 export interface ISankeyChartProps {
   /**

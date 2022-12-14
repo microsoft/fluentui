@@ -32,10 +32,12 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 // @public
 export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
     appearance?: 'primary' | 'subtle';
+} & {
+    vertical?: boolean;
 };
 
 // @public
-export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState;
+export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState & Required<Pick<ToolbarButtonProps, 'vertical'>>;
 
 // @public (undocumented)
 export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
@@ -63,8 +65,17 @@ export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>> & {
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
 
 // @public
+export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
+
+// @public
+export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
+
+// @public
+export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
+
+// @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
-    size?: 'small' | 'medium';
+    size?: 'small' | 'medium' | 'large';
     vertical?: boolean;
     checkedValues?: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;

@@ -22,6 +22,10 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
 // one-off patch for yellow
 statusColorPaletteTokens.colorPaletteYellowForeground1 = statusSharedColors.yellow.shade30;
 
+statusColorPaletteTokens.colorPaletteRedForegroundInverted = statusSharedColors.red.tint20;
+statusColorPaletteTokens.colorPaletteGreenForegroundInverted = statusSharedColors.green.tint20;
+statusColorPaletteTokens.colorPaletteYellowForegroundInverted = statusSharedColors.yellow.tint40;
+
 const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
   const sharedColorTokens = {

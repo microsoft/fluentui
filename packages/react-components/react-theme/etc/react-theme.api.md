@@ -63,7 +63,7 @@ export type ColorPaletteGold = 'colorPaletteGoldBackground2' | 'colorPaletteGold
 export type ColorPaletteGrape = 'colorPaletteGrapeBackground2' | 'colorPaletteGrapeForeground2' | 'colorPaletteGrapeBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteGreen = 'colorPaletteGreenBackground1' | 'colorPaletteGreenBackground2' | 'colorPaletteGreenBackground3' | 'colorPaletteGreenForeground1' | 'colorPaletteGreenForeground2' | 'colorPaletteGreenForeground3' | 'colorPaletteGreenBorderActive' | 'colorPaletteGreenBorder1' | 'colorPaletteGreenBorder2';
+export type ColorPaletteGreen = 'colorPaletteGreenBackground1' | 'colorPaletteGreenBackground2' | 'colorPaletteGreenBackground3' | 'colorPaletteGreenForeground1' | 'colorPaletteGreenForeground2' | 'colorPaletteGreenForeground3' | 'colorPaletteGreenForegroundInverted' | 'colorPaletteGreenBorderActive' | 'colorPaletteGreenBorder1' | 'colorPaletteGreenBorder2';
 
 // @public (undocumented)
 export type ColorPaletteLavender = 'colorPaletteLavenderBackground2' | 'colorPaletteLavenderForeground2' | 'colorPaletteLavenderBorderActive';
@@ -108,7 +108,7 @@ export type ColorPalettePumpkin = 'colorPalettePumpkinBackground2' | 'colorPalet
 export type ColorPalettePurple = 'colorPalettePurpleBackground2' | 'colorPalettePurpleForeground2' | 'colorPalettePurpleBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteRed = 'colorPaletteRedBackground1' | 'colorPaletteRedBackground2' | 'colorPaletteRedBackground3' | 'colorPaletteRedForeground1' | 'colorPaletteRedForeground2' | 'colorPaletteRedForeground3' | 'colorPaletteRedBorderActive' | 'colorPaletteRedBorder1' | 'colorPaletteRedBorder2';
+export type ColorPaletteRed = 'colorPaletteRedBackground1' | 'colorPaletteRedBackground2' | 'colorPaletteRedBackground3' | 'colorPaletteRedForeground1' | 'colorPaletteRedForeground2' | 'colorPaletteRedForeground3' | 'colorPaletteRedForegroundInverted' | 'colorPaletteRedBorderActive' | 'colorPaletteRedBorder1' | 'colorPaletteRedBorder2';
 
 // @public (undocumented)
 export type ColorPaletteRoyalBlue = 'colorPaletteRoyalBlueBackground2' | 'colorPaletteRoyalBlueForeground2' | 'colorPaletteRoyalBlueBorderActive';
@@ -126,7 +126,7 @@ export type ColorPaletteTeal = 'colorPaletteTealBackground2' | 'colorPaletteTeal
 export type ColorPaletteTokens = StatusColorPaletteTokens & PersonaColorPaletteTokens;
 
 // @public (undocumented)
-export type ColorPaletteYellow = 'colorPaletteYellowBackground1' | 'colorPaletteYellowBackground2' | 'colorPaletteYellowBackground3' | 'colorPaletteYellowForeground1' | 'colorPaletteYellowForeground2' | 'colorPaletteYellowForeground3' | 'colorPaletteYellowBorderActive' | 'colorPaletteYellowBorder1' | 'colorPaletteYellowBorder2';
+export type ColorPaletteYellow = 'colorPaletteYellowBackground1' | 'colorPaletteYellowBackground2' | 'colorPaletteYellowBackground3' | 'colorPaletteYellowForeground1' | 'colorPaletteYellowForeground2' | 'colorPaletteYellowForeground3' | 'colorPaletteYellowForegroundInverted' | 'colorPaletteYellowBorderActive' | 'colorPaletteYellowBorder1' | 'colorPaletteYellowBorder2';
 
 // @public
 export type ColorTokens = {
@@ -225,6 +225,8 @@ export type ColorTokens = {
     colorNeutralBackgroundInvertedDisabled: string;
     colorNeutralStencil1: string;
     colorNeutralStencil2: string;
+    colorNeutralStencil1Alpha: string;
+    colorNeutralStencil2Alpha: string;
     colorBackgroundOverlay: string;
     colorScrollbarOverlay: string;
     colorBrandBackground: string;

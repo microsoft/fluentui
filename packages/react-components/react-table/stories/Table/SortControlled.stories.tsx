@@ -16,10 +16,10 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   ColumnId,
-  useSort,
+  useTableSort,
   TableCellLayout,
   createColumn,
 } from '@fluentui/react-components/unstable';
@@ -132,12 +132,12 @@ export const SortControlled = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
+    [useTableSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
@@ -149,7 +149,7 @@ export const SortControlled = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable {...keyboardNavAttr}>
+    <Table sortable {...keyboardNavAttr} aria-label="Table with controlled sort">
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>

@@ -1,9 +1,9 @@
 import { eslintTask } from 'just-scripts';
 import * as path from 'path';
-import * as constants from './eslint-constants';
+import { eslintConstants } from '../monorepo';
 import * as fs from 'fs';
 
-const files = [path.join(process.cwd(), constants.directory)];
+const files = [path.join(process.cwd(), eslintConstants.directory)];
 const storiesPath = path.join(process.cwd(), 'stories');
 
 if (fs.existsSync(storiesPath)) {
@@ -13,7 +13,7 @@ if (fs.existsSync(storiesPath)) {
 export const eslint = eslintTask({
   // TODO: also lint config files?
   files,
-  extensions: constants.extensions,
+  extensions: eslintConstants.extensions,
   cache: true, // only lint files changed since last lint
   fix: process.argv.includes('--fix'),
   // If requested, display a table with 10 slowest rules after running.

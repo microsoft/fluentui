@@ -8,6 +8,7 @@ import {
   Table,
   Video,
   MarkdownCode,
+  ITableRowProps,
 } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { MotionPageProps } from './MotionPage.doc';
@@ -16,7 +17,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/MotionPage/docs';
 
-const PatternTable = ({ rows }) => (
+const PatternTable = ({ rows }: { rows: ITableRowProps[] }) => (
   <Table
     columns={[
       { title: 'Element', data: 'element' },
@@ -26,7 +27,7 @@ const PatternTable = ({ rows }) => (
       { title: 'Delay', data: 'delay' },
     ]}
     rows={rows}
-    formatter={(column, row) => row[column.data]}
+    formatter={(column, row) => row[column.data!]}
   />
 );
 
@@ -35,8 +36,8 @@ export const MotionPage: React.FunctionComponent<IStylesPageProps> = props => {
   return (
     <StylesAreaPage
       {...props}
-      {...MotionPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...MotionPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
@@ -333,7 +334,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 },
               ]}
               formatter={(column, row) =>
-                column.data === 'duration' ? row[column.data] : <MarkdownCode>{row[column.data]}</MarkdownCode>
+                column.data === 'duration' ? row[column.data] : <MarkdownCode>{row[column.data!]}</MarkdownCode>
               }
             />
           ),
@@ -376,7 +377,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 },
               ]}
               formatter={(column, row) =>
-                column.data === 'name' ? row[column.data] : <MarkdownCode>{row[column.data]}</MarkdownCode>
+                column.data === 'name' ? row[column.data] : <MarkdownCode>{row[column.data!]}</MarkdownCode>
               }
             />
           ),

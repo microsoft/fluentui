@@ -2,6 +2,86 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 08 Dec 2022 07:46:37 GMT",
+      "tag": "@fluentui/react_v8.103.6",
+      "version": "8.103.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "naethell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0a56bc44f375de754ab0693b938adbd58412184c",
+            "comment": "fix: Always give panel header a background color, even before resize."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Dec 2022 07:54:46 GMT",
+      "tag": "@fluentui/react_v8.103.5",
+      "version": "8.103.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "98715bfad186c1fd0493c558901913a770227000",
+            "comment": "fix: Make Buttons align correctly when put inside of DialogFooter."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e1d595b1b12066d3ef1fd7dfc71bd0a81728316e",
+            "comment": "remove the unecessary extra specificity and styles in hover and focus styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Dec 2022 07:54:14 GMT",
+      "tag": "@fluentui/react_v8.103.4",
+      "version": "8.103.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "83b69f2b7dcf27ad9502c686708f019ce921715e",
+            "comment": "fix: Fixing Slider's programmatic focus."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3c754611eccb854647820ce5b5fd8b5f6b0cf1c0",
+            "comment": "fix: Respecting user-provided ids in ComboBox options."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Nov 2022 07:46:31 GMT",
+      "tag": "@fluentui/react_v8.103.3",
+      "version": "8.103.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "60b2e7d6d6ccc51d1aa8e4216613106a9b4dd0e1",
+            "comment": "fix: Allow data-selection-disabled to be respected by DetailsRow."
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a1ed5fe8f610c82cc319add155655e9f66b3ff8e",
+            "comment": "chore: update codepen scripts task alias path"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Nov 2022 07:53:48 GMT",
       "tag": "@fluentui/react_v8.103.2",
       "version": "8.103.2",

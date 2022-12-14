@@ -176,3 +176,18 @@ export const SubtleSelection = () => {
     </DataGrid>
   );
 };
+
+SubtleSelection.parameters = {
+  docs: {
+    description: {
+      story: [
+        'To enable subtle selection mode, the `subtleSelection` should be set.',
+        'The selection indicator slot will only',
+        'appear when:',
+        '- the `DataGridRow` component is hovered.',
+        '- The current focused element is within the `DataGridRow`',
+        '- The `DataGridSelectionCell` is checked',
+      ].join('\n'),
+    },
+  },
+};

@@ -576,16 +576,33 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             onMouseOver={this._onRectMouseMove}
             {...points[index]!.lineOptions}
           />
-          <path
-            id={`${index}-graph-${this._uniqueIdForGraph}`}
-            d={area(singleStackedData)!}
-            fill={this._colors[index]}
-            opacity={this._opacity[index]}
-            fillOpacity={this._getOpacity(points[index]!.legend)}
-            onMouseMove={this._onRectMouseMove}
-            onMouseOut={this._onRectMouseOut}
-            onMouseOver={this._onRectMouseMove}
-          />
+          {singleStackedData.length === 1 ? (
+            <circle
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              cx={xScale(singleStackedData[0].xVal)}
+              cy={yScale(singleStackedData[0].values[1])}
+              r={6}
+              stroke={this._colors[index]}
+              strokeWidth={3}
+              fill={this._colors[index]}
+              opacity={this._opacity[index]}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
+            />
+          ) : (
+            <path
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              d={area(singleStackedData)!}
+              fill={this._colors[index]}
+              opacity={this._opacity[index]}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
+            />
+          )}
         </React.Fragment>,
       );
     });

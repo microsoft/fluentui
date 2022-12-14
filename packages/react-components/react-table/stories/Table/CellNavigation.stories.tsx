@@ -69,7 +69,7 @@ export const CellNavigation = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} aria-label="Table with grid keyboard navigation">
       <TableHeader>
         <TableRow>
           {columns.map(column => (

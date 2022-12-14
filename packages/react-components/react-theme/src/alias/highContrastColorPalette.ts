@@ -19,6 +19,11 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
   return Object.assign(acc, sharedColorTokens);
 }, {} as StatusColorPaletteTokens);
 
+// one-off patches
+statusColorPaletteTokens.colorPaletteRedForegroundInverted = hcCanvasText;
+statusColorPaletteTokens.colorPaletteGreenForegroundInverted = hcCanvasText;
+statusColorPaletteTokens.colorPaletteYellowForegroundInverted = hcCanvasText;
+
 const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
   const sharedColorTokens = {

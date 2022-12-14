@@ -37,6 +37,9 @@ const useStyles = makeStyles({
         [`& .${tableSelectionCellClassNames.root}`]: {
           opacity: 1,
         },
+        [`& .${tableCellActionsClassNames.root}`]: {
+          opacity: 1,
+        },
       },
       { selector: 'focus-within' },
     ),
@@ -46,6 +49,22 @@ const useStyles = makeStyles({
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
       { selector: 'focus', enableOutline: true },
+    ),
+  },
+
+  // When focus is within the row the background colour
+  // should be the same as hover, except when there is a brand
+  // or neutral appearance applied on the row
+  noAppearanceFocusWithin: {
+    ...createCustomFocusIndicatorStyle(
+      {
+        [`& .${tableCellActionsClassNames.root}`]: {
+          backgroundColor: tokens.colorSubtleBackgroundHover,
+        },
+
+        backgroundColor: tokens.colorSubtleBackgroundHover,
+      },
+      { selector: 'focus-within' },
     ),
   },
 
@@ -145,6 +164,7 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     styles[state.appearance],
+    state.appearance === 'none' && !isHeaderRow && styles.noAppearanceFocusWithin,
     state.root.className,
   );
 

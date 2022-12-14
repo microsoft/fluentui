@@ -6,7 +6,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import doctrine from 'doctrine';
 import { Transform } from 'stream';
-import config from '../../config';
+import config from '../config';
 
 const { paths } = config;
 

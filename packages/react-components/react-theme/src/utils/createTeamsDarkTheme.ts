@@ -1,4 +1,4 @@
-import { colorPaletteTokens } from '../alias/teamsDarkColorPalette';
+import { colorPaletteTokens } from '../alias/darkColorPalette';
 import { generateColorTokens } from '../alias/teamsDarkColor';
 
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';

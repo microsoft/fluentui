@@ -486,7 +486,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: currentOptions.map((item, index) => ({ ...item, index: index })),
+              options: currentOptions.map((item, index) => ({ ...item, index })),
               onDismiss: this._onDismiss,
             },
             this._onRenderContainer,
@@ -810,7 +810,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     if (updatedValue === '') {
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter(option => isNormalOption(option) && getPreviewText(option) === updatedValue);
+        .filter(option => isNormalOption(option) && !option.disabled && getPreviewText(option) === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -833,7 +833,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
         .filter(
-          option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
+          option =>
+            isNormalOption(option) &&
+            !option.disabled &&
+            getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -849,7 +852,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter(option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase() === updatedValue);
+        .filter(
+          option =>
+            isNormalOption(option) && !option.disabled && getPreviewText(option).toLocaleLowerCase() === updatedValue,
+        );
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -893,7 +899,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         const items = currentOptions
           .map((item, i) => ({ ...item, index: i }))
 
-          .filter(option => isNormalOption(option) && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+          .filter(
+            option =>
+              isNormalOption(option) && !option.disabled && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0,
+          );
 
         // If we found a match, update the state
         if (items.length > 0) {
@@ -1493,7 +1502,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
         <CommandButton
-          id={id + '-list' + item.index}
+          id={item.id ?? id + '-list' + item.index}
           key={item.key}
           data-index={item.index}
           styles={optionStyles}
@@ -1520,7 +1529,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         </CommandButton>
       ) : (
         <Checkbox
-          id={id + '-list' + item.index}
+          id={item.id ?? id + '-list' + item.index}
           ariaLabel={item.ariaLabel}
           key={item.key}
           styles={optionStyles}
@@ -1848,7 +1857,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     this.props.hoisted.setSuggestedDisplayValue(suggestedDisplayValue);
     this.setState({
       currentPendingValue: normalizeToString(currentPendingValue),
-      currentPendingValueValidIndex: currentPendingValueValidIndex,
+      currentPendingValueValidIndex,
       currentPendingValueValidIndexOnHover: HoverStatus.default,
     });
   }
@@ -1951,9 +1960,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean): void {
     this._focusInputAfterClose = focusInputAfterClose;
-    this.setState({
-      isOpen: isOpen,
-    });
+    this.setState({ isOpen });
   }
 
   /**
@@ -2359,11 +2366,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * null otherwise
    */
   private _getAriaActiveDescendantValue(): string | undefined {
-    const { selectedIndices } = this.props.hoisted;
+    const { currentOptions, selectedIndices } = this.props.hoisted;
     const { isOpen, currentPendingValueValidIndex } = this.state;
-    let descendantText = isOpen && selectedIndices?.length ? this._id + '-list' + selectedIndices[0] : undefined;
+    const options = currentOptions.map((item, index) => ({ ...item, index }));
+    let descendantText =
+      isOpen && selectedIndices?.length
+        ? options[selectedIndices[0]].id ?? this._id + '-list' + selectedIndices[0]
+        : undefined;
     if (isOpen && this._hasFocus() && currentPendingValueValidIndex !== -1) {
-      descendantText = this._id + '-list' + currentPendingValueValidIndex;
+      descendantText = options[currentPendingValueValidIndex].id ?? this._id + '-list' + currentPendingValueValidIndex;
     }
     return descendantText;
   }

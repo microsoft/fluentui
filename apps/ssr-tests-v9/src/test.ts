@@ -3,50 +3,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 import type { Browser } from 'puppeteer';
 
-import { PROVIDER_ID } from './utils/constants';
 import { hrToSeconds } from './utils/helpers';
 import { launchBrowser } from './utils/launchBrowser';
+import { visitPage } from './utils/visitPage';
 
 class RenderError extends Error {
   public name = 'RangeError';
-}
-
-export async function runTest(browser: Browser, url: string): Promise<void> {
-  const page = await browser.newPage();
-  await page.setRequestInterception(true);
-
-  let error: Error | undefined;
-
-  page.on('console', message => {
-    if (message.type() === 'error') {
-      // Ignoring network errors as we have an interceptor that prevents loading everything except our JS bundle
-      if (!message.text().includes('net::ERR_FAILED')) {
-        error = new RenderError(message.text());
-      }
-    }
-  });
-
-  page.on('request', request => {
-    // Our interceptor allows only our HTML and JS output
-    if (request.url() === url || request.url().endsWith('/out-esm.js')) {
-      return request.continue();
-    }
-
-    return request.abort();
-  });
-
-  page.on('pageerror', err => {
-    error = err;
-  });
-
-  await page.goto(url);
-  await page.waitForSelector(`#${PROVIDER_ID}`);
-
-  await page.close();
-
-  if (error) {
-    throw error;
-  }
 }
 
 async function test(): Promise<void> {
@@ -68,7 +30,7 @@ async function test(): Promise<void> {
     const url = `file://${htmlPath}`;
     console.log(`Using "${url}"`);
 
-    await runTest(browser, url);
+    await visitPage(browser, url);
     console.log(`Test finished successfully in ${hrToSeconds(process.hrtime(startTime))}`);
   } finally {
     if (browser) {

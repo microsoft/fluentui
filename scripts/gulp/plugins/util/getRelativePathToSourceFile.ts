@@ -1,5 +1,5 @@
 import path from 'path';
-import config from '../../../config';
+import config from '../../config';
 
 const examplesPath = config.paths.docsSrc('examples', 'components');
 

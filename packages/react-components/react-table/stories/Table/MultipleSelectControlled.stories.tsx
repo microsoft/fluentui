@@ -18,10 +18,10 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   TableCellLayout,
-  useTable,
+  useTableFeatures,
   ColumnDefinition,
   RowId,
-  useSelection,
+  useTableSelection,
   createColumn,
 } from '@fluentui/react-components/unstable';
 
@@ -117,13 +117,13 @@ export const MultipleSelectControlled = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'multiselect',
         selectedItems: selectedRows,
         onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
@@ -147,10 +147,20 @@ export const MultipleSelectControlled = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} aria-label="Table with controlled multiselect">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -158,6 +168,7 @@ export const MultipleSelectControlled = () => {
             checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>

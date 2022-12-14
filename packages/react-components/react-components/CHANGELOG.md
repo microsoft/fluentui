@@ -1,8 +1,85 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 17 Nov 2022 23:05:30 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.7.2)
+
+Mon, 05 Dec 2022 18:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.7.1..@fluentui/react-components_v9.7.2)
+
+### Patches
+
+- `@fluentui/react-avatar`
+  - fix: AvatarGroup's pie layout places inline items correctly in rtl. ([PR #25822](https://github.com/microsoft/fluentui/pull/25822) by esteban.230@hotmail.com)
+- `@fluentui/react-button`
+  - chore: refactor to use makeResetStyles ([PR #25216](https://github.com/microsoft/fluentui/pull/25216) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - BREAKING: rename useTable->useTableFeatures, useSelection->useTableSelection, useSort->useTableSort ([PR #25797](https://github.com/microsoft/fluentui/pull/25797) by lingfangao@hotmail.com)
+  - chore: add exports for CSS extraction in Griffel ([PR #25216](https://github.com/microsoft/fluentui/pull/25216) by olfedias@microsoft.com)
+  - feat: Export `DataGrid` as unstable ([PR #25805](https://github.com/microsoft/fluentui/pull/25805) by lingfangao@hotmail.com)
+  - chore: deprecates unused type UninitializedMenuListState ([PR #25672](https://github.com/microsoft/fluentui/pull/25672) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-input`
+  - chore: Replace use of fontSize tokens with typographyStyles ([PR #25727](https://github.com/microsoft/fluentui/pull/25727) by behowell@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: removes prop spreading on MenuList state ([PR #25672](https://github.com/microsoft/fluentui/pull/25672) by bernardo.sunderhus@gmail.com)
+  - fix: MenuDivider thickness should be `strokeWidthThin` ([PR #25711](https://github.com/microsoft/fluentui/pull/25711) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - chore: Migrate to new package structure. ([PR #25735](https://github.com/microsoft/fluentui/pull/25735) by tristan.watanabe@gmail.com)
+  - fix: Invoke `onOpenChange` callback without checking if open state has flipped ([PR #25741](https://github.com/microsoft/fluentui/pull/25741) by yuanboxue@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: Migrate to new package structure. ([PR #25809](https://github.com/microsoft/fluentui/pull/25809) by tristan.watanabe@gmail.com)
+- `@fluentui/react-radio`
+  - chore: Migrate to new package structure. ([PR #25810](https://github.com/microsoft/fluentui/pull/25810) by tristan.watanabe@gmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: Migrate to new package structure. ([PR #25813](https://github.com/microsoft/fluentui/pull/25813) by tristan.watanabe@gmail.com)
+- `@fluentui/react-spinner`
+  - chore: Migrate to new package structure. ([PR #25814](https://github.com/microsoft/fluentui/pull/25814) by tristan.watanabe@gmail.com)
+- `@fluentui/react-switch`
+  - chore: Migrate to new package structure. ([PR #25819](https://github.com/microsoft/fluentui/pull/25819) by tristan.watanabe@gmail.com)
+- `@fluentui/react-tabster`
+  - fix: focus-within attribute no longer the same as focus-visible ([PR #25790](https://github.com/microsoft/fluentui/pull/25790) by lingfangao@hotmail.com)
+  - fix: allow GriffelResetStyle to be passed to createCustomFocusIndicatorStyle ([PR #25216](https://github.com/microsoft/fluentui/pull/25216) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Replace use of fontSize tokens with typographyStyles ([PR #25727](https://github.com/microsoft/fluentui/pull/25727) by behowell@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25820](https://github.com/microsoft/fluentui/pull/25820) by tristan.watanabe@gmail.com)
+- `@fluentui/react-theme`
+  - refactor: Use Object.assign to reduce loop runtime ([PR #25433](https://github.com/microsoft/fluentui/pull/25433) by tigeroakes@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25812](https://github.com/microsoft/fluentui/pull/25812) by tristan.watanabe@gmail.com)
+- `@fluentui/react-tooltip`
+  - chore: Migrate to new package structure. ([PR #25818](https://github.com/microsoft/fluentui/pull/25818) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- `@fluentui/react-combobox`
+  -  feat: update Option value to be a non-display value, and add an Option text prop that is required if the child is not a string ([PR #25379](https://github.com/microsoft/fluentui/pull/25379) by sarah.higley@microsoft.com)
+  - fix: open Combobox popup when typing ([PR #25769](https://github.com/microsoft/fluentui/pull/25769) by sarah.higley@microsoft.com)
+  - chore: Replace use of fontSize tokens with typographyStyles ([PR #25727](https://github.com/microsoft/fluentui/pull/25727) by behowell@microsoft.com)
+  - fix: Combobox should close on blur after clicking expand icon ([PR #25771](https://github.com/microsoft/fluentui/pull/25771) by sarah.higley@microsoft.com)
+- `@fluentui/react-field`
+  - fix: Field should use aria-describedby instead of aria-errormessage ([PR #25580](https://github.com/microsoft/fluentui/pull/25580) by behowell@microsoft.com)
+  - chore: Migrate to new package structure. ([PR #25817](https://github.com/microsoft/fluentui/pull/25817) by tristan.watanabe@gmail.com)
+- `@fluentui/react-persona`
+  - chore: Updating Persona's docs to match implementation. ([PR #25770](https://github.com/microsoft/fluentui/pull/25770) by esteban.230@hotmail.com)
+  - chore: Migrate to new package structure. ([PR #25737](https://github.com/microsoft/fluentui/pull/25737) by tristan.watanabe@gmail.com)
+  - fix: Make Persona's text wrap when overflowing its container. ([PR #25880](https://github.com/microsoft/fluentui/pull/25880) by esteban.230@hotmail.com)
+- `@fluentui/react-progress`
+  - chore: Migrate to new package structure. ([PR #25744](https://github.com/microsoft/fluentui/pull/25744) by tristan.watanabe@gmail.com)
+- `@fluentui/react-select`
+  - chore: Replace use of fontSize tokens with typographyStyles ([PR #25727](https://github.com/microsoft/fluentui/pull/25727) by behowell@microsoft.com)
+- `@fluentui/react-table`
+  - fix: TableHeaderCell design fixes ([PR #25712](https://github.com/microsoft/fluentui/pull/25712) by lingfangao@hotmail.com)
+  - BREAKING(useTable): `onSelectionChange` returns data object ([PR #25731](https://github.com/microsoft/fluentui/pull/25731) by lingfangao@hotmail.com)
+  - docs: Update docstrings for props ([PR #25787](https://github.com/microsoft/fluentui/pull/25787) by lingfangao@hotmail.com)
+  - fix: Various design fixes to Table components ([PR #25715](https://github.com/microsoft/fluentui/pull/25715) by lingfangao@hotmail.com)
+  - fix: Cell actions should have correct background when row focused within ([PR #25790](https://github.com/microsoft/fluentui/pull/25790) by lingfangao@hotmail.com)
+  - fix: Table row height is determined by cells ([PR #25717](https://github.com/microsoft/fluentui/pull/25717) by lingfangao@hotmail.com)
+  - BREAKING: change `smaller` size to `extra-small` ([PR #25713](https://github.com/microsoft/fluentui/pull/25713) by lingfangao@hotmail.com)
+  - fix(TableCellLayout): Icon sizes in should match design spec ([PR #25764](https://github.com/microsoft/fluentui/pull/25764) by lingfangao@hotmail.com)
+  - feat: `DataGrid` supports row sorting ([PR #25655](https://github.com/microsoft/fluentui/pull/25655) by lingfangao@hotmail.com)
+  - BREAKING: rename useTable->useTableFeatures, useSelection->useTableSelection, useSort->useTableSort ([PR #25797](https://github.com/microsoft/fluentui/pull/25797) by lingfangao@hotmail.com)
+  - feat: DataGrid supports selection ([PR #25719](https://github.com/microsoft/fluentui/pull/25719) by lingfangao@hotmail.com)
 
 ## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.7.1)
 

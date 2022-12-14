@@ -149,7 +149,15 @@ export const Default = () => {
   );
 
   return (
-    <DataGrid items={items} columns={columns} focusMode="cell" sortable selectionMode="multiselect">
+    <DataGrid
+      items={items}
+      columns={columns}
+      focusMode="cell"
+      sortable
+      selectionMode="multiselect"
+      getRowId={item => item.file.label}
+      onSelectionChange={(e, data) => console.log(data)}
+    >
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }: ColumnDefinition<Item>) => (
