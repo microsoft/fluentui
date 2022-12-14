@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Change name to ProgressBar",
+  "comment": "chore: Change name to ProgressBar",
   "packageName": "@fluentui/react-progress",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"

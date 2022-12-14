@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Rename Progress to ProgressBar",
+  "comment": "chore: Rename Progress to ProgressBar",
   "packageName": "@fluentui/react-components",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
