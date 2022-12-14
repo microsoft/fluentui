@@ -81,8 +81,8 @@ const useActionButtonColorInverted = makeStyles({
     '&:focus': { ...shorthands.outline('0') },
     '&:focus-visible': {
       zIndex: 1,
-      ...shorthands.outline('.2rem', 'solid', tokens.colorNeutralBackground5Pressed),
-      ...shorthands.borderRadius('0.4rem'),
+      ...shorthands.outline('2px', 'solid', tokens.colorNeutralBackground5Pressed),
+      ...shorthands.borderRadius('4px'),
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
