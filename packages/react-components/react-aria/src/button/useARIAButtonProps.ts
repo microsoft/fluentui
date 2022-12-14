@@ -73,7 +73,8 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
     // If enter is pressed, activate the button
     else if (key === Enter) {
       ev.preventDefault();
-      ev.currentTarget.click();
+      // TODO: use isHTMLElement here as soon as isHTMLElement supports unknown
+      (ev.target as HTMLElement).click();
     }
   });
 
@@ -94,7 +95,8 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
 
     if (key === Space) {
       ev.preventDefault();
-      ev.currentTarget.click();
+      // TODO: use isHTMLElement here as soon as isHTMLElement supports unknown
+      (ev.target as HTMLElement).click();
     }
   });
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: emit click from target instead of currentTarget",
+  "packageName": "@fluentui/react-aria",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
