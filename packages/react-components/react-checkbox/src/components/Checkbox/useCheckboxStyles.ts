@@ -11,19 +11,43 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   indicator: 'fui-Checkbox__indicator',
 };
 
-// The indicator size is used by the indicator and label styles
-const indicatorSizeMedium = '16px';
-const indicatorSizeLarge = '20px';
+const vars = {
+  labelColor: '--UNSTABLE__fui-Checkbox__label--color',
+  indicatorBackgroundColor: '--UNSTABLE__fui-Checkbox__indicator--backgroundColor',
+  indicatorBorderColor: '--UNSTABLE__fui-Checkbox__indicator--borderColor',
+  indicatorColor: '--UNSTABLE__fui-Checkbox__indicator--color',
+  indicatorSize: '--UNSTABLE__fui-Checkbox__indicator--size',
+  indicatorOpacity: '--UNSTABLE__fui-Checkbox__indicator--opacity',
+} as const;
+
+const values = {
+  labelColor: `var(${vars.labelColor}, ${tokens.colorNeutralForeground3})`,
+  indicatorBackgroundColor: `var(${vars.indicatorBackgroundColor})`,
+  indicatorBorderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
+  indicatorColor: `var(${vars.indicatorColor}, transparent)`,
+  indicatorSize: `var(${vars.indicatorSize}, 16px)`,
+  indicatorOpacity: `var(${vars.indicatorOpacity})`,
+} as const;
 
 const useRootBaseClassName = makeResetStyles({
   position: 'relative',
   display: 'inline-flex',
+  cursor: 'pointer',
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+});
+
+const useRootStyles = makeStyles({
+  large: {
+    [vars.indicatorSize]: '20px',
+  },
+  disabled: {
+    cursor: 'default',
+  },
 });
 
 const useInputBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
-  cursor: 'pointer',
+  cursor: 'inherit',
   height: '100%',
   margin: 0,
   opacity: 0,
@@ -31,37 +55,37 @@ const useInputBaseClassName = makeResetStyles({
   top: 0,
   // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
   // This is done so that clicking on that "empty space" still toggles the checkbox.
-  width: `calc(${indicatorSizeMedium} + 2 * ${tokens.spacingHorizontalS})`,
+  width: `calc(${values.indicatorSize} + 2 * ${tokens.spacingHorizontalS})`,
 
-  // When unchecked, hide the the checkmark icon (child of the indicator slot)
-  [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
-    opacity: 0,
+  // When unchecked, hide the checkmark icon
+  [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator}`]: {
+    [vars.indicatorOpacity]: 0,
   },
 
   // Colors for the unchecked state
   ':enabled:not(:checked):not(:indeterminate)': {
     [`& ~ .${checkboxClassNames.label}`]: {
-      color: tokens.colorNeutralForeground3,
+      [vars.labelColor]: tokens.colorNeutralForeground3,
     },
     [`& ~ .${checkboxClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessible,
     },
 
     ':hover': {
       [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground2,
+        [vars.labelColor]: tokens.colorNeutralForeground2,
       },
       [`& ~ .${checkboxClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
 
     ':active:hover': {
       [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
+        [vars.labelColor]: tokens.colorNeutralForeground1,
       },
       [`& ~ .${checkboxClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
       },
     },
   },
@@ -69,25 +93,25 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the checked state
   ':enabled:checked:not(:indeterminate)': {
     [`& ~ .${checkboxClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      [vars.labelColor]: tokens.colorNeutralForeground1,
     },
     [`& ~ .${checkboxClassNames.indicator}`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
-      borderColor: tokens.colorCompoundBrandBackground,
+      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
+      [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
     },
 
     ':hover': {
       [`& ~ .${checkboxClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        borderColor: tokens.colorCompoundBrandBackgroundHover,
+        [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundHover,
+        [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundHover,
       },
     },
 
     ':active:hover': {
       [`& ~ .${checkboxClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        borderColor: tokens.colorCompoundBrandBackgroundPressed,
+        [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundPressed,
+        [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundPressed,
       },
     },
   },
@@ -95,48 +119,40 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the mixed state
   ':enabled:indeterminate': {
     [`& ~ .${checkboxClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      [vars.labelColor]: tokens.colorNeutralForeground1,
     },
     [`& ~ .${checkboxClassNames.indicator}`]: {
-      borderColor: tokens.colorCompoundBrandStroke,
-      color: tokens.colorCompoundBrandForeground1,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
+      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
     },
 
     ':hover': {
       [`& ~ .${checkboxClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokeHover,
-        color: tokens.colorCompoundBrandForeground1Hover,
+        [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
+        [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
       },
     },
 
     ':active:hover': {
       [`& ~ .${checkboxClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokePressed,
-        color: tokens.colorCompoundBrandForeground1Pressed,
+        [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
+        [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
       },
     },
   },
 
   ':disabled': {
-    cursor: 'default',
-
     [`& ~ .${checkboxClassNames.label}`]: {
-      cursor: 'default',
-      color: tokens.colorNeutralForegroundDisabled,
+      [vars.labelColor]: tokens.colorNeutralForegroundDisabled,
       '@media (forced-colors: active)': {
-        color: 'GrayText',
+        [vars.labelColor]: 'GrayText',
       },
     },
     [`& ~ .${checkboxClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
+      [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
       '@media (forced-colors: active)': {
-        color: 'GrayText',
-      },
-    },
-    [`& ~ .${checkboxClassNames.indicator} svg`]: {
-      '@media (forced-colors: active)': {
-        color: 'GrayText',
+        [vars.indicatorColor]: 'GrayText',
       },
     },
   },
@@ -148,10 +164,6 @@ const useInputStyles = makeStyles({
   },
   after: {
     left: 0,
-  },
-
-  large: {
-    width: `calc(${indicatorSizeLarge} + 2 * ${tokens.spacingHorizontalS})`,
   },
 });
 
@@ -165,24 +177,24 @@ const useIndicatorBaseClassName = makeResetStyles({
   justifyContent: 'center',
   overflow: 'hidden',
 
-  border: tokens.strokeWidthThin + ' solid',
+  color: values.indicatorColor,
+  backgroundColor: values.indicatorBackgroundColor,
+  border: tokens.strokeWidthThin + ' solid ' + values.indicatorBorderColor,
   borderRadius: tokens.borderRadiusSmall,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',
   pointerEvents: 'none',
 
-  fontSize: '12px',
-  height: indicatorSizeMedium,
-  width: indicatorSizeMedium,
+  fontSize: `calc(${values.indicatorSize} - 4px)`,
+  height: values.indicatorSize,
+  width: values.indicatorSize,
+
+  '> *': {
+    opacity: values.indicatorOpacity,
+  },
 });
 
 const useIndicatorStyles = makeStyles({
-  large: {
-    fontSize: '16px',
-    height: indicatorSizeLarge,
-    width: indicatorSizeLarge,
-  },
-
   circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   },
@@ -192,8 +204,14 @@ const useIndicatorStyles = makeStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    cursor: 'pointer',
+    color: values.labelColor,
+    cursor: 'inherit',
     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+
+    // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
+    // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
+    marginTop: `calc((${values.indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${values.indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
   },
 
   before: {
@@ -201,17 +219,6 @@ const useLabelStyles = makeStyles({
   },
   after: {
     paddingLeft: tokens.spacingHorizontalXS,
-  },
-
-  // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
-  // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
-  medium: {
-    marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
-  },
-  large: {
-    marginTop: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
   },
 });
 
@@ -222,14 +229,20 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   const { labelPosition, shape, size } = state;
 
   const rootBaseClassName = useRootBaseClassName();
-  state.root.className = mergeClasses(checkboxClassNames.root, rootBaseClassName, state.root.className);
+  const rootStyles = useRootStyles();
+  state.root.className = mergeClasses(
+    checkboxClassNames.root,
+    rootBaseClassName,
+    size === 'large' && rootStyles.large,
+    state.input.disabled && rootStyles.disabled,
+    state.root.className,
+  );
 
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
   state.input.className = mergeClasses(
     checkboxClassNames.input,
     inputBaseClassName,
-    size === 'large' && inputStyles.large,
     inputStyles[labelPosition],
     state.input.className,
   );
@@ -240,7 +253,6 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
     state.indicator.className = mergeClasses(
       checkboxClassNames.indicator,
       indicatorBaseClassName,
-      size === 'large' && indicatorStyles.large,
       shape === 'circular' && indicatorStyles.circular,
       state.indicator.className,
     );
@@ -251,7 +263,6 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
     state.label.className = mergeClasses(
       checkboxClassNames.label,
       labelStyles.base,
-      labelStyles[size],
       labelStyles[labelPosition],
       state.label.className,
     );

@@ -11,12 +11,29 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
   label: 'fui-Radio__label',
 };
 
+const vars = {
+  cursor: '--UNSTABLE__fui-Radio--cursor',
+  labelColor: '--UNSTABLE__fui-Radio__label--color',
+  indicatorBorderColor: '--UNSTABLE__fui-Radio__indicator--borderColor',
+  indicatorColor: '--UNSTABLE__fui-Radio__indicator--color',
+  iconOpacity: '--UNSTABLE__fui-Radio__icon--opacity',
+} as const;
+
+const values = {
+  cursor: `var(${vars.cursor}, pointer)`,
+  labelColor: `var(${vars.labelColor}, ${tokens.colorNeutralForeground3})`,
+  indicatorBorderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
+  indicatorColor: `var(${vars.indicatorColor}, transparent)`,
+  iconOpacity: `var(${vars.iconOpacity})`,
+} as const;
+
 // The indicator size is used by the indicator and label styles
 const indicatorSize = '16px';
 
 const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
   position: 'relative',
+  cursor: 'pointer',
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
@@ -24,6 +41,9 @@ const useRootStyles = makeStyles({
   vertical: {
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  disabled: {
+    cursor: 'default',
   },
 });
 
@@ -36,43 +56,37 @@ const useInputBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   margin: 0,
   opacity: 0,
+  cursor: 'inherit',
 
-  ':enabled': {
-    cursor: 'pointer',
-    [`& ~ .${radioClassNames.label}`]: {
-      cursor: 'pointer',
-    },
-  },
-
-  // When unchecked, hide the circle icon (child of the indicator)
-  [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
-    opacity: '0',
+  // When unchecked, hide the circle icon
+  [`:not(:checked) ~ .${radioClassNames.indicator}`]: {
+    [vars.iconOpacity]: 0,
   },
 
   // Colors for the unchecked state
   ':enabled:not(:checked)': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground3,
+      [vars.labelColor]: tokens.colorNeutralForeground3,
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessible,
     },
 
     ':hover': {
       [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground2,
+        [vars.labelColor]: tokens.colorNeutralForeground2,
       },
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
+        [vars.labelColor]: tokens.colorNeutralForeground1,
       },
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
       },
     },
   },
@@ -80,24 +94,24 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the checked state
   ':enabled:checked': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      [vars.labelColor]: tokens.colorNeutralForeground1,
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorCompoundBrandStroke,
-      color: tokens.colorCompoundBrandForeground1,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
+      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
     },
 
     ':hover': {
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokeHover,
-        color: tokens.colorCompoundBrandForeground1Hover,
+        [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
+        [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokePressed,
-        color: tokens.colorCompoundBrandForeground1Pressed,
+        [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
+        [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
       },
     },
   },
@@ -105,12 +119,17 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the disabled state
   ':disabled': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-      cursor: 'default',
+      [vars.labelColor]: tokens.colorNeutralForegroundDisabled,
+      '@media (forced-colors: active)': {
+        [vars.labelColor]: 'GrayText',
+      },
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
+      [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
+      '@media (forced-colors: active)': {
+        [vars.indicatorColor]: 'GrayText',
+      },
     },
   },
 });
@@ -134,17 +153,24 @@ const useIndicatorBaseClassName = makeResetStyles({
   justifyContent: 'center',
   overflow: 'hidden',
 
-  border: tokens.strokeWidthThin + ' solid',
+  color: values.indicatorColor,
+  border: tokens.strokeWidthThin + ' solid ' + values.indicatorBorderColor,
   borderRadius: tokens.borderRadiusCircular,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',
   pointerEvents: 'none',
+
+  '> *': {
+    opacity: values.iconOpacity,
+  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
+    color: values.labelColor,
+    cursor: 'inherit',
     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
@@ -175,6 +201,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
     radioClassNames.root,
     rootBaseClassName,
     labelPosition === 'below' && rootStyles.vertical,
+    state.input.disabled && rootStyles.disabled,
     state.root.className,
   );
 
