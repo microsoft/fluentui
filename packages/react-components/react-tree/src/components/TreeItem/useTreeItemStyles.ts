@@ -154,9 +154,12 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   const iconAfterStyles = useIconAfter();
   const actionsStyles = useActionsStyles();
 
+  const { dir } = useFluent_unstable();
   const level = useTreeContext_unstable(ctx => ctx.level) - 1;
+  const size = useTreeContext_unstable(ctx => ctx.size);
+  const appearance = useTreeContext_unstable(ctx => ctx.appearance);
 
-  const { iconAfter, actions, appearance, iconBefore, expandIcon, size } = state;
+  const { iconAfter, actions, iconBefore, expandIcon } = state;
 
   state.root.className = mergeClasses(
     treeItemClassNames.root,
@@ -167,13 +170,13 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
     state.root.className,
   );
 
-  const { dir } = useFluent_unstable();
-  const paddingStart = dir === 'ltr' ? ('paddingLeft' as const) : ('paddingRight' as const);
-  const paddingLevelSize = state.size === 'medium' ? tokens.spacingHorizontalXXL : tokens.spacingHorizontalM;
+  const paddingLevelSize = size === 'medium' ? tokens.spacingHorizontalXXL : tokens.spacingHorizontalM;
 
   state.root.style = {
     ...state.root.style,
-    [paddingStart]: `calc((${paddingLevelSize} * ${level}) + ${state.isLeaf ? tokens.spacingHorizontalXXL : '0px'})`,
+    [dir === 'ltr' ? 'paddingLeft' : 'paddingRight']: `calc((${paddingLevelSize} * ${level}) + ${
+      state.isLeaf ? tokens.spacingHorizontalXXL : '0px'
+    })`,
   };
 
   if (expandIcon) {

@@ -35,27 +35,9 @@ export type TreeItemSlots = BaseTreeItemSlots & {
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> &
-  BaseTreeItemProps & {
-    /**
-     * A tree item can have various appearances:
-     * - 'subtle' (default): The default tree item styles.
-     * - 'subtle-alpha': Minimizes emphasis on hovered or focused states.
-     * - 'transparent': Removes background color.
-     * @default 'subtle'
-     */
-    appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
-
-    /**
-     * Size of the tree item.
-     * @default 'medium'
-     */
-    size?: 'small' | 'medium';
-  };
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps;
 
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> &
-  BaseTreeItemState &
-  Required<Pick<TreeItemProps, 'appearance' | 'size'>>;
+export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;

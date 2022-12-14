@@ -17,7 +17,7 @@ import { useEventCallback } from '@fluentui/react-utilities';
  */
 export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeItemElement>): TreeItemState => {
   const treeItemState = useBaseTreeItem_unstable(props, ref);
-  const { appearance = 'subtle', expandIcon, iconBefore, iconAfter, actions, size = 'medium' } = props;
+  const { expandIcon, iconBefore, iconAfter, actions } = props;
   const { dir } = useFluent_unstable();
   const expandIconRotation = treeItemState.open ? 90 : dir !== 'rtl' ? 0 : 180;
 
@@ -31,8 +31,6 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
 
   return {
     ...treeItemState,
-    appearance,
-    size,
     components: {
       ...treeItemState.components,
       expandIcon: 'span',

@@ -3,27 +3,17 @@ import { Tree, TreeItem } from '@fluentui/react-tree';
 
 export const Appearance = () => {
   return (
-    <Tree aria-label="Tree">
-      <TreeItem aria-owns="default-subtree-1">Default tree</TreeItem>
-      <Tree id="default-subtree-1">
-        <TreeItem>Default tree items</TreeItem>
-        <TreeItem>Default tree items</TreeItem>
+    <>
+      <Tree aria-label="Tree">
+        <TreeItem>Subtle tree item</TreeItem>
       </Tree>
-      <TreeItem appearance="subtle-alpha" aria-owns="default-subtree-2">
-        Subtle alpha appearance
-      </TreeItem>
-      <Tree id="default-subtree-2">
-        <TreeItem appearance="subtle-alpha">Subtle alpha item</TreeItem>
-        <TreeItem appearance="subtle-alpha">Subtle alpha item</TreeItem>
+      <Tree appearance="subtle-alpha" aria-label="Tree">
+        <TreeItem>Subtle-alpha tree item</TreeItem>
       </Tree>
-      <TreeItem appearance="transparent" aria-owns="default-subtree-3">
-        Transparent
-      </TreeItem>
-      <Tree id="default-subtree-3">
-        <TreeItem appearance="transparent">Transparent item</TreeItem>
-        <TreeItem appearance="transparent">Transparent item</TreeItem>
+      <Tree appearance="transparent" aria-label="Tree">
+        <TreeItem>Transparent tree item</TreeItem>
       </Tree>
-    </Tree>
+    </>
   );
 };
 
