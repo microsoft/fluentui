@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 import {
   GroupedListV2_unstable as GroupedListV2,
   Selection,

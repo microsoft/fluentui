@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 import { GroupedList, Selection, SelectionMode, DetailsRow, IGroup, IColumn } from '@fluentui/react';
 
 const groupCount = 5;
