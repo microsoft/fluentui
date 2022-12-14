@@ -4,7 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { useTreeContext_unstable } from '../../contexts/index';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import * as React from 'react';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
@@ -13,6 +13,13 @@ export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   iconAfter: 'fui-TreeItem__iconAfter',
   actions: 'fui-TreeItem__actions',
 };
+
+const treeItemTokens = {
+  level: '--fluent-TreeItem--level',
+} as const;
+const treeItemTokenValues = {
+  level: `var(${treeItemTokens.level}, 0)`,
+} as const;
 
 /**
  * Styles for the root slot
@@ -26,6 +33,7 @@ const useRootStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
     display: 'flex',
     paddingRight: tokens.spacingHorizontalNone,
+    paddingLeft: `calc(${treeItemTokenValues.level} * ${tokens.spacingHorizontalXXL})`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
@@ -79,6 +87,11 @@ const useRootStyles = makeStyles({
   small: {
     minHeight: '24px',
     ...typographyStyles.caption1,
+  },
+  leaf: {
+    // FIXME: for some reason prettier is not wrapping this after 120 characters
+    // eslint-disable-next-line @fluentui/max-len
+    paddingLeft: `calc((${treeItemTokenValues.level} * ${tokens.spacingHorizontalXXL}) + ${tokens.spacingHorizontalXXL})`,
   },
 });
 
@@ -154,7 +167,6 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   const iconAfterStyles = useIconAfter();
   const actionsStyles = useActionsStyles();
 
-  const { dir } = useFluent_unstable();
   const level = useTreeContext_unstable(ctx => ctx.level) - 1;
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
@@ -167,17 +179,14 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
     rootStyles[appearance],
     rootStyles.focusIndicator,
     rootStyles[size],
+    state.isLeaf && rootStyles.leaf,
     state.root.className,
   );
 
-  const paddingLevelSize = size === 'medium' ? tokens.spacingHorizontalXXL : tokens.spacingHorizontalM;
-
   state.root.style = {
     ...state.root.style,
-    [dir === 'ltr' ? 'paddingLeft' : 'paddingRight']: `calc((${paddingLevelSize} * ${level}) + ${
-      state.isLeaf ? tokens.spacingHorizontalXXL : '0px'
-    })`,
-  };
+    [treeItemTokens.level]: level,
+  } as React.CSSProperties;
 
   if (expandIcon) {
     expandIcon.className = mergeClasses(
