@@ -116,6 +116,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/fluent2-theme": {
+      "root": "packages/fluent2-theme",
+      "projectType": "library",
+      "implicitDependencies": []
+    },
     "@fluentui/font-icons-mdl2": {
       "root": "packages/font-icons-mdl2",
       "projectType": "library",

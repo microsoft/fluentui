@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added package with Fluent 2 theme for v8",
+  "packageName": "@fluentui/fluent2-theme",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
