@@ -2,11 +2,11 @@
 
 ### Do
 
-- Use an `indeterminate` Progress when the total units to completion is unknown
+- Use an `indeterminate` `ProgressBar` when the total units to completion is unknown
 - Display operation description
 - Show text above and/or below the bar
 - Combine steps of a single operation into one bar
-- Use `ProgressField` to add a `description` and `hint` message for the `indeterminate` `Progress` when `reduced-motion` is active
+- Use `ProgressField` to add a `description` and `hint` message for the `indeterminate` `ProgressBar` when `reduced-motion` is active
 
 ### Don't
 

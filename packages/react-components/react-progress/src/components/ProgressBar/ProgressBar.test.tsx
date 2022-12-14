@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Progress } from './Progress';
+import { ProgressBar } from './ProgressBar';
 import { isConformant } from '../../testing/isConformant';
 
-describe('Progress', () => {
+describe('ProgressBar', () => {
   isConformant({
-    Component: Progress,
-    displayName: 'Progress',
+    Component: ProgressBar,
+    displayName: 'ProgressBar',
     testOptions: {
       'has-static-classnames': [
         {
@@ -20,29 +20,29 @@ describe('Progress', () => {
   });
 
   it('has role progressbar', () => {
-    const result = render(<Progress />);
+    const result = render(<ProgressBar />);
     expect(result.getByRole('progressbar')).toBeDefined();
   });
   it('does not add aria attributes for indeterminate', () => {
-    const result = render(<Progress />);
+    const result = render(<ProgressBar />);
     expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toBeFalsy();
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toBeFalsy();
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toBeFalsy();
   });
   it('adds aria attributes for determinate', () => {
-    const result = render(<Progress value={0.52} />);
+    const result = render(<ProgressBar value={0.52} />);
     expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0.52');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
   });
   it('updates the max prop properly', () => {
-    const result = render(<Progress value={13} max={42} />);
+    const result = render(<ProgressBar value={13} max={42} />);
     expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('13');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('42');
   });
   it('sets valuemin and valuemax when value is 0', () => {
-    const result = render(<Progress value={0} />);
+    const result = render(<ProgressBar value={0} />);
     expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
