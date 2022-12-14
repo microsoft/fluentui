@@ -26,7 +26,7 @@ setAddon({
   addStory(storyName, storyFn, config = {}) {
     this.add(storyName, (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
       return (
-        <FluentProvider passStylesToPortals={false} theme={webLightTheme}>
+        <FluentProvider applyStylesToPortals={false} theme={webLightTheme}>
           {storyFn(context)}
         </FluentProvider>
       );
@@ -34,7 +34,7 @@ setAddon({
     if (config.includeRtl) {
       this.add(storyName + ' - RTL', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
         return (
-          <FluentProvider passStylesToPortals={false} theme={webLightTheme} dir="rtl">
+          <FluentProvider applyStylesToPortals={false} theme={webLightTheme} dir="rtl">
             {storyFn(context)}
           </FluentProvider>
         );
@@ -43,7 +43,7 @@ setAddon({
     if (config.includeDarkMode) {
       this.add(storyName + ' - Dark Mode', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
         return (
-          <FluentProvider passStylesToPortals={false} theme={webDarkTheme}>
+          <FluentProvider applyStylesToPortals={false} theme={webDarkTheme}>
             {storyFn(context)}
           </FluentProvider>
         );
@@ -54,7 +54,7 @@ setAddon({
         /** @type {import('../src/utilities/types').StoryContext} */ context,
       ) => {
         return (
-          <FluentProvider passStylesToPortals={false} theme={teamsHighContrastTheme}>
+          <FluentProvider applyStylesToPortals={false} theme={teamsHighContrastTheme}>
             {storyFn(context)}
           </FluentProvider>
         );

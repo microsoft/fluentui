@@ -12,14 +12,14 @@ export type FluentProviderSlots = {
 };
 
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
-  /** Sets the direction of text & generated styles. */
-  dir?: 'ltr' | 'rtl';
-
   /**
    * Passes styles applied to a component down to portals if enabled.
    * @default true
    */
-  passStylesToPortals?: boolean;
+  applyStylesToPortals?: boolean;
+
+  /** Sets the direction of text & generated styles. */
+  dir?: 'ltr' | 'rtl';
 
   /** Provides the document, can be undefined during SSR render. */
   targetDocument?: Document;
@@ -30,7 +30,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 
 export type FluentProviderState = ComponentState<FluentProviderSlots> &
   Pick<FluentProviderProps, 'targetDocument'> &
-  Required<Pick<FluentProviderProps, 'dir' | 'passStylesToPortals'>> & {
+  Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir'>> & {
     theme: ThemeContextValue;
     themeClassName: string;
   };

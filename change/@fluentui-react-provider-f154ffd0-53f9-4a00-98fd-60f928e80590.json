@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "add \"passStylesToPortals\" prop",
+  "comment": "add \"applyStylesToPortals\" prop",
   "packageName": "@fluentui/react-provider",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"

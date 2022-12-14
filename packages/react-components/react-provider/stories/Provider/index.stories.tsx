@@ -6,7 +6,7 @@ import bestPracticesMd from './FluentProviderBestPractices.md';
 
 export { Default } from './FluentProviderDefault.stories';
 export { Dir } from './FluentProviderDir.stories';
-export { PassStylesToPortals } from './FluentProviderPassStylesToPortals.stories';
+export { ApplyStylesToPortals } from './FluentProviderApplyStylesToPortals.stories';
 export { Nested } from './FluentProviderNested.stories';
 export { Frame } from './FluentProviderFrame.stories';
 

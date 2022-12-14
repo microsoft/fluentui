@@ -69,11 +69,11 @@ describe('useFluentProviderContextValues_unstable', () => {
       expect(result.current.themeClassName).toBe('foo');
     });
 
-    it('passes classes only from "themeClassName" when "passStylesToPortals" is false', () => {
+    it('passes classes only from "themeClassName" when "applyStylesToPortals" is false', () => {
       const { result } = renderHook(() => {
         const state = {
           ...useFluentProvider_unstable({}, React.createRef()),
-          passStylesToPortals: false,
+          applyStylesToPortals: false,
           root: { className: 'foo' },
           themeClassName: 'bar',
         };

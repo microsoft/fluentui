@@ -53,7 +53,7 @@ const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }
   );
 };
 
-const PassStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ targetDocument }) => {
+const ApplyStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ targetDocument }) => {
   const styles = useStyles();
 
   return (
@@ -62,17 +62,17 @@ const PassStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ t
         <div>An element inside a provider</div>
         <Portal>
           <div className={styles.portal}>
-            A portal created by FluentProvider with <code>passStylesToPortals={`{true}`}</code>. Styles from
+            A portal created by FluentProvider with <code>applyStylesToPortals={`{true}`}</code>. Styles from
             FluentProvider are applied
           </div>
         </Portal>
       </FluentProvider>
 
-      <FluentProvider className={styles.provider} passStylesToPortals={false} targetDocument={targetDocument}>
+      <FluentProvider className={styles.provider} applyStylesToPortals={false} targetDocument={targetDocument}>
         <div>An element inside a provider</div>
         <Portal>
           <div className={styles.portal}>
-            A portal created by FluentProvider with <code>passStylesToPortals={`{false}`}</code>. Styles from
+            A portal created by FluentProvider with <code>applyStylesToPortals={`{false}`}</code>. Styles from
             FluentProvider are not applied
           </div>
         </Portal>
@@ -81,24 +81,24 @@ const PassStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ t
   );
 };
 
-export const PassStylesToPortals = () => (
+export const ApplyStylesToPortals = () => (
   // FrameRenderer is redundant this example, it's used only to render portals inside an iframe
   // to make them visible in Storybook
   <FrameRenderer>
     {(externalDocument, renderer) => (
       <RendererProvider renderer={renderer} targetDocument={externalDocument}>
-        <PassStylesToPortalsExample targetDocument={externalDocument} />
+        <ApplyStylesToPortalsExample targetDocument={externalDocument} />
       </RendererProvider>
     )}
   </FrameRenderer>
 );
 
-PassStylesToPortals.parameters = {
+ApplyStylesToPortals.parameters = {
   docs: {
     description: {
       story: [
-        '`passStylesToPortals` controls if styles from FluentProvider should be applied to components that use Portal ',
-        'component.',
+        '`applyStylesToPortals` controls if styles from FluentProvider should be applied to components that use ',
+        'Portal component.',
       ].join(''),
     },
   },
