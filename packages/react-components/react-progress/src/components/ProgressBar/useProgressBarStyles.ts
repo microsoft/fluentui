@@ -9,6 +9,7 @@ export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
   bar: 'fui-ProgressBar__bar',
 };
 
+// TODO #25997: Remove deprecated export before ProgressBar is released as stable
 /** @deprecated renamed to progressBarClassNames */
 export const progressClassNames = progressBarClassNames;
 
@@ -162,5 +163,6 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
   return state;
 };
 
+// TODO #25997: Remove deprecated export before ProgressBar is released as stable
 /** @deprecated renamed to useProgressBarStyles_unstable */
 export const useProgressStyles_unstable = useProgressBarStyles_unstable;

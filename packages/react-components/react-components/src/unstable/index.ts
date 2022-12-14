@@ -363,14 +363,19 @@ export {
 export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
 
 export {
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   Progress,
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   progressClassNames,
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   renderProgress_unstable,
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   useProgressStyles_unstable,
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   useProgress_unstable,
   ProgressBar,
@@ -380,10 +385,13 @@ export {
   useProgressBar_unstable,
 } from '@fluentui/react-progress';
 export type {
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   ProgressProps,
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   ProgressState,
+  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
   // eslint-disable-next-line deprecation/deprecation
   ProgressSlots,
   ProgressBarProps,
