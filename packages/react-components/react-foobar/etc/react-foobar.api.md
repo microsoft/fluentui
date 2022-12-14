@@ -4,6 +4,39 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const Foobar: ForwardRefComponent<FoobarProps>;
+
+// @public (undocumented)
+export const foobarClassNames: SlotClassNames<FoobarSlots>;
+
+// @public
+export type FoobarProps = ComponentProps<FoobarSlots> & {};
+
+// @public (undocumented)
+export type FoobarSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type FoobarState = ComponentState<FoobarSlots>;
+
+// @public
+export const renderFoobar_unstable: (state: FoobarState) => JSX.Element;
+
+// @public
+export const useFoobar_unstable: (props: FoobarProps, ref: React_2.Ref<HTMLElement>) => FoobarState;
+
+// @public
+export const useFoobarStyles_unstable: (state: FoobarState) => FoobarState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
