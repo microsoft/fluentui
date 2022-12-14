@@ -5,7 +5,6 @@ import ChatExampleHeader from '../../examples/components/Chat/Content/ChatExampl
 import ChatExampleHeaderOverride from '../../examples/components/Chat/Content/ChatExampleHeaderOverride.shorthand';
 import ChatExampleReactionGroup from '../../examples/components/Chat/Content/ChatExampleReactionGroup.shorthand';
 import ChatExampleReadStatus from '../../examples/components/Chat/Content/ChatExampleReadStatus.shorthand';
-import ChatPlayground from '../../examples/components/Chat/Playground';
 import ChatExampleRtl from '../../examples/components/Chat/Rtl/ChatExample.rtl';
 import ChatExampleComfyRefresh from '../../examples/components/Chat/Types/ChatExampleComfyRefresh';
 import ChatExampleCompact from '../../examples/components/Chat/Types/ChatExampleCompact';
@@ -19,7 +18,6 @@ export {
   ChatExampleHeaderOverride,
   ChatExampleReactionGroup,
   ChatExampleReadStatus,
-  ChatPlayground,
   ChatExampleRtl,
   ChatExampleComfyRefresh,
   ChatExampleCompact,
