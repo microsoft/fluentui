@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     ...shorthands.margin('0', '8px', '0', '0'),
   },
   action: {
-    ...shorthands.padding('0'),
+    ...shorthands.padding('5px', '10px'),
     minWidth: 0,
     marginLeft: 'auto',
     color: tokens.colorBrandForeground1,
@@ -61,25 +61,41 @@ const useIntentIconStyles = makeStyles({
 });
 
 const useIntentIconStylesInverted = makeStyles({
+  success: {
+    color: tokens.colorPaletteGreenForegroundInverted,
+  },
+  error: {
+    color: tokens.colorPaletteRedForegroundInverted,
+  },
   warning: {
-    // TODO: update this when token is created
-    color: tokens.colorPaletteYellowForeground2,
+    color: tokens.colorPaletteYellowForegroundInverted,
   },
   info: {
     color: tokens.colorNeutralForegroundInverted2,
   },
 });
 
-const useActionButtonColorInverted = makeStyles({ action: { color: tokens.colorBrandForegroundInverted } });
+const useActionButtonColorInverted = makeStyles({
+  action: {
+    color: tokens.colorBrandForegroundInverted,
+    '&:focus': { ...shorthands.outline('0') },
+    '&:focus-visible': {
+      zIndex: 1,
+      ...shorthands.outline('.2rem', 'solid', tokens.colorNeutralBackground5Pressed),
+      ...shorthands.borderRadius('0.4rem'),
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+    },
+  },
+});
 
 /**
  * Apply styling to the Alert slots based on the state
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
-  const styles = useStyles();
   const inverted = state.appearance === 'inverted';
+  const styles = useStyles();
   const intentIconStylesPrimary = useIntentIconStyles();
-  const mergedIntentIconStylesInverted = { ...intentIconStylesPrimary, ...useIntentIconStylesInverted() };
+  const intentIconStylesInverted = useIntentIconStylesInverted();
   const actionStylesInverted = useActionButtonColorInverted();
 
   state.root.className = mergeClasses(
@@ -93,7 +109,7 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
     state.icon.className = mergeClasses(
       alertClassNames.icon,
       styles.icon,
-      state.intent && (inverted ? mergedIntentIconStylesInverted[state.intent] : intentIconStylesPrimary[state.intent]),
+      state.intent && (inverted ? intentIconStylesInverted[state.intent] : intentIconStylesPrimary[state.intent]),
       state.icon.className,
     );
   }
