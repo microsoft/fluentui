@@ -7,7 +7,7 @@ import {
   DetailsRow,
   IGroup,
   IColumn,
-} from '@fluentui/react';
+} from 'office-ui-fabric-react';
 
 const groupCount = 5;
 const groupDepth = 5;
