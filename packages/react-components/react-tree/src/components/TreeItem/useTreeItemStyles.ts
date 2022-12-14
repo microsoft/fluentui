@@ -152,7 +152,7 @@ const useActionsStyles = makeStyles({
     display: 'none',
     alignItems: 'center',
     marginLeft: 'auto',
-    ...shorthands.padding(0, tokens.spacingHorizontalXS, 0, tokens.spacingHorizontalXS),
+    ...shorthands.padding(0, tokens.spacingHorizontalXS),
   },
 });
 
