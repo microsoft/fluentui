@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "In Timepicker intialValue const used the useConst hook which does not update the initial value of the timepicker if the TimePicker receive updated date via props",
+  "packageName": "@fluentui/react",
+  "email": "harminder_Sethi@outlook.com",
+  "dependentChangeType": "patch"
+}

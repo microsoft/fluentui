@@ -7,6 +7,7 @@ import {
   ceilMinuteToIncrement,
   getDateFromTimeSelection,
 } from '@fluentui/date-time-utilities';
+import { useControllableValue } from '@fluentui/react-hooks';
 import { ComboBox } from '../../ComboBox';
 import type { IComboBox, IComboBoxOption } from '../../ComboBox';
 import type { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
@@ -51,8 +52,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
-  const initialValue = defaultValue || new Date();
-  const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, initialValue), [
+  const [initialValue] = useControllableValue(defaultValue, new Date());
+  const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, initialValue as Date), [
     increments,
     timeRange,
     initialValue,
