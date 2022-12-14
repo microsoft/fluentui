@@ -718,23 +718,24 @@ describe('DetailsListV2', () => {
   it('reset focusedItemIndex when setKey updates', () => {
     jest.useFakeTimers();
 
-    let component: DetailsListBase | null;
+    let component: any;
 
     safeMount(
       <DetailsList
         items={mockData(5)}
         setKey={'key1'}
         initialFocusedIndex={0}
-        componentRef={value => (component = value as any)}
+        componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
-        groupProps={groupProps}
       />,
       (wrapper: ReactWrapper) => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(3);
-        jest.runAllTimers();
-        expect(component!.state.focusedItemIndex).toEqual(3);
+        expect(component).toBeDefined();
+        component.setState({ focusedItemIndex: 3 });
+        setTimeout(() => {
+          expect(component.state.focusedItemIndex).toEqual(3);
+        }, 0);
+        jest.runOnlyPendingTimers();
 
         // update props to new setKey
         const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
@@ -742,12 +743,14 @@ describe('DetailsListV2', () => {
         wrapper.update();
 
         // verify that focusedItemIndex is reset to 0 and 0th row is focused
-        jest.runAllTimers();
-        expect(component!.state.focusedItemIndex).toEqual(0);
-        expect(
-          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-        ).toEqual('0');
-        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
+        setTimeout(() => {
+          expect(component.state.focusedItemIndex).toEqual(0);
+          expect(
+            (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+          ).toEqual('0');
+          expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
+        }, 0);
+        jest.runOnlyPendingTimers();
       },
     );
   });

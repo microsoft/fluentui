@@ -10,6 +10,9 @@ import {
   IRenderFunction,
   classNamesFunction,
   memoizeFunction,
+  getId,
+  composeRenderFunction,
+  composeComponentAs,
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -46,6 +49,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
+import { useConst } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -361,7 +365,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groups && groupIndex !== undefined && groups[groupIndex] !== undefined ? groups[groupIndex].key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -389,7 +394,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groups && groupIndex !== undefined && groups[groupIndex] !== undefined ? groups[groupIndex].key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
