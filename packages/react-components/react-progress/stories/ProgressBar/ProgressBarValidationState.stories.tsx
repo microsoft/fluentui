@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import { Progress } from '@fluentui/react-progress';
+import { ProgressBar } from '@fluentui/react-progress';
 
 const useStyles = makeStyles({
   container: {
@@ -14,9 +14,9 @@ export const ValidationState = () => {
   const styles = useStyles();
   return (
     <div className={styles.container}>
-      <Progress value={0.75} validationState="error" />
-      <Progress value={0.95} validationState="warning" />
-      <Progress value={1} validationState="success" />
+      <ProgressBar value={0.75} validationState="error" />
+      <ProgressBar value={0.95} validationState="warning" />
+      <ProgressBar value={1} validationState="success" />
     </div>
   );
 };

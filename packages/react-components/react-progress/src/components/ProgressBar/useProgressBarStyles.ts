@@ -1,13 +1,17 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type { ProgressState, ProgressSlots } from './Progress.types';
+import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const progressClassNames: SlotClassNames<ProgressSlots> = {
-  root: 'fui-Progress',
-  bar: 'fui-Progress__bar',
+export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
+  root: 'fui-ProgressBar',
+  bar: 'fui-ProgressBar__bar',
 };
+
+// TODO #25997: Remove deprecated export before ProgressBar is released as stable
+/** @deprecated renamed to progressBarClassNames */
+export const progressClassNames = progressBarClassNames;
 
 // If the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios.
@@ -18,7 +22,7 @@ const barThicknessValues = {
   large: '4px',
 };
 
-const indeterminateProgress = {
+const indeterminateProgressBar = {
   '0%': {
     left: '0%',
   },
@@ -26,7 +30,7 @@ const indeterminateProgress = {
     left: '100%',
   },
 };
-const indeterminateProgressRTL = {
+const indeterminateProgressBarRTL = {
   '100%': {
     right: '-100%',
   },
@@ -64,7 +68,7 @@ const useRootStyles = makeStyles({
 });
 
 /**
- * Styles for the progress bar
+ * Styles for the ProgressBar bar
  */
 const useBarStyles = makeStyles({
   base: {
@@ -95,7 +99,7 @@ const useBarStyles = makeStyles({
       ${tokens.colorTransparentBackground} 50%,
       ${tokens.colorNeutralBackground6} 100%
     )`,
-    animationName: indeterminateProgress,
+    animationName: indeterminateProgressBar,
     animationDuration: '3s',
     animationIterationCount: 'infinite',
     '@media screen and (prefers-reduced-motion: reduce)': {
@@ -105,7 +109,7 @@ const useBarStyles = makeStyles({
   },
 
   rtl: {
-    animationName: indeterminateProgressRTL,
+    animationName: indeterminateProgressBarRTL,
   },
 
   error: {
@@ -120,16 +124,16 @@ const useBarStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Progress slots based on the state
+ * Apply styling to the ProgressBar slots based on the state
  */
-export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
+export const useProgressBarStyles_unstable = (state: ProgressBarState): ProgressBarState => {
   const { max, shape, thickness, validationState, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const { dir } = useFluent();
 
   state.root.className = mergeClasses(
-    progressClassNames.root,
+    progressBarClassNames.root,
     rootStyles.root,
     rootStyles[shape],
     rootStyles[thickness],
@@ -138,7 +142,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
 
   if (state.bar) {
     state.bar.className = mergeClasses(
-      progressClassNames.bar,
+      progressBarClassNames.bar,
       barStyles.base,
       value === undefined && barStyles.indeterminate,
       value === undefined && dir === 'rtl' && barStyles.rtl,
@@ -158,3 +162,7 @@ export const useProgressStyles_unstable = (state: ProgressState): ProgressState 
 
   return state;
 };
+
+// TODO #25997: Remove deprecated export before ProgressBar is released as stable
+/** @deprecated renamed to useProgressBarStyles_unstable */
+export const useProgressStyles_unstable = useProgressBarStyles_unstable;

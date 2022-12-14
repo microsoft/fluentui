@@ -7,15 +7,15 @@ import {
   useField_unstable,
 } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Progress } from '../../Progress';
+import { ProgressBar } from '../../ProgressBar';
 
-export type ProgressFieldProps = FieldProps<typeof Progress>;
+export type ProgressFieldProps = FieldProps<typeof ProgressBar>;
 
 export const progressFieldClassNames = getFieldClassNames('ProgressField');
 
 export const ProgressField: ForwardRefComponent<ProgressFieldProps> = React.forwardRef((props, ref) => {
   const state = useField_unstable(props, ref, {
-    component: Progress,
+    component: ProgressBar,
     classNames: progressFieldClassNames,
     labelConnection: 'aria-labelledby',
     ariaInvalidOnError: false,
