@@ -2,6 +2,7 @@ import { carouselBehavior } from '@fluentui/accessibility';
 
 const roleDescription = 'carousel';
 const label = 'portrait collection';
+// set both props to false, as tests are writen in 'Carousel-test.tsx' file
 const paddleHiddenProps = {
   paddlePreviousHidden: false,
   paddleNextHidden: false,
