@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+
+- Fix `Dropdown` allowing interaction with selected items when disabled @chpalac ([#25954](https://github.com/microsoft/fluentui/pull/25954))
+
 <!--------------------------------[ v0.65.0 ]------------------------------- -->
 ## [v0.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.65.0) (2022-10-31)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.64.0..@fluentui/react-northstar_v0.65.0)
