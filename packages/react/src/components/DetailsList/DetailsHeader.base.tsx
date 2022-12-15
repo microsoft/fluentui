@@ -204,7 +204,6 @@ export class DetailsHeaderBase
     const IconComponent = useFastIcons ? FontIcon : Icon;
     const showGroupExpander =
       groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible;
-    // const columnIndexOffset = 1 + (showCheckbox ? 1 : 0) + (showGroupExpander ? 1 : 0);
     const columnIndexOffset = this._computeColumnIndexOffset(showCheckbox);
 
     const isRTL = getRTL(theme);
@@ -456,12 +455,6 @@ export class DetailsHeaderBase
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
-      // const { groupNestingDepth, collapseAllVisibility } = this.props;
-      // const showGroupExpander = groupNestingDepth! > 0 && collapseAllVisibility === CollapseAllVisibility.visible;
-      // const showGroupExpander = false;
-      // this._draggedColumnIndex = this._isCheckboxColumnHidden()
-      //   ? itemIndex - (showGroupExpander ? 2 : 1)
-      //   : itemIndex - (showGroupExpander ? 3 : 2);
       this._draggedColumnIndex = itemIndex - this._computeColumnIndexOffset(!this._isCheckboxColumnHidden());
       this._getDropHintPositions();
       if (columnReorderProps.onColumnDragStart) {
