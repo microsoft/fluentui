@@ -506,6 +506,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             this._onLegendClick(point.legend);
           },
           hoverAction: () => {
+            this._handleChartMouseLeave();
             this._onLegendHover(point.legend);
           },
           onMouseOutAction: (isLegendSelected?: boolean) => {

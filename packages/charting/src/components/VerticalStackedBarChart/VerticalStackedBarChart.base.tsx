@@ -501,7 +501,12 @@ export class VerticalStackedBarChartBase extends React.Component<
           action: () => {
             this._onLegendClick(point.legend);
           },
-          hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.legend) : undefined,
+          hoverAction: allowHoverOnLegend
+            ? () => {
+                this._handleChartMouseLeave();
+                this._onLegendHover(point.legend);
+              }
+            : undefined,
           onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
         };
 
@@ -518,7 +523,12 @@ export class VerticalStackedBarChartBase extends React.Component<
           action: () => {
             this._onLegendClick(point.title);
           },
-          hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.title) : undefined,
+          hoverAction: allowHoverOnLegend
+            ? () => {
+                this._handleChartMouseLeave();
+                this._onLegendHover(point.title);
+              }
+            : undefined,
           onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
         };
         legendsOfLine.push(legend);

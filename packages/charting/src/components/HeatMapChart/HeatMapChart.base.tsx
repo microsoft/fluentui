@@ -436,6 +436,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._onLegendClick(item.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(item.legend);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {

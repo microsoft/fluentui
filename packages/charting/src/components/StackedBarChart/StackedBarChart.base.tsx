@@ -218,6 +218,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         hoverAction:
           total > 0
             ? () => {
+                this._handleChartMouseLeave();
                 this._onHover(point.legend!);
               }
             : undefined,
