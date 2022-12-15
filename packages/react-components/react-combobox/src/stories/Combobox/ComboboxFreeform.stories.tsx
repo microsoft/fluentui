@@ -49,7 +49,7 @@ export const Freeform = (props: Partial<ComboboxProps>) => {
         onOptionSelect={onOptionSelect}
         {...props}
       >
-        {/* We recommend displaying the custom freeform string, if it doesn't match an animal */}
+        {/* We recommend displaying a custom freeform string, if the user input doesn't match an animal */}
         {customSearch ? (
           <Option key="freeform" text={customSearch}>
             "{customSearch}"
