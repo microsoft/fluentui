@@ -202,8 +202,8 @@ export class DetailsHeaderBase
 
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
-    const showGroupExpander =
-      groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible;
+    const hasGroupExpander = groupNestingDepth! > 0;
+    const showGroupExpander = hasGroupExpander && this.props.collapseAllVisibility === CollapseAllVisibility.visible;
     const columnIndexOffset = this._computeColumnIndexOffset(showCheckbox);
 
     const isRTL = getRTL(theme);
