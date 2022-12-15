@@ -29,6 +29,11 @@ export type TreeItemSlots = BaseTreeItemSlots & {
   /**
    * Actions slot that renders on the end of tree item
    */
+  badges?: Slot<'span'>;
+  /**
+   * Actions slot that renders on the end of tree item
+   * when the item is hovered/focused
+   */
   actions?: Slot<'span'>;
 };
 

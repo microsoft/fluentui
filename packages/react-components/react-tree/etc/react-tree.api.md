@@ -79,6 +79,7 @@ export type TreeItemSlots = BaseTreeItemSlots & {
     expandIcon?: Slot<'span'>;
     iconBefore?: Slot<'span'>;
     iconAfter?: Slot<'span'>;
+    badges?: Slot<'span'>;
     actions?: Slot<'span'>;
 };
 

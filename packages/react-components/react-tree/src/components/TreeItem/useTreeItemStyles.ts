@@ -12,6 +12,7 @@ export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   iconBefore: 'fui-TreeItem__iconBefore',
   iconAfter: 'fui-TreeItem__iconAfter',
   actions: 'fui-TreeItem__actions',
+  badges: 'fui-TreeItem__badges',
 };
 
 const treeItemTokens = {
@@ -45,6 +46,11 @@ const useRootStyles = makeStyles({
     ':focus': {
       [`& .${treeItemClassNames.actions}`]: {
         display: 'flex',
+        opacity: '1',
+        position: 'relative',
+        width: 'unset',
+        height: 'unset',
+        right: 'unset',
       },
     },
     ':hover': {
@@ -52,9 +58,26 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       [`& .${treeItemClassNames.actions}`]: {
         display: 'flex',
+        opacity: '1',
+        position: 'relative',
+        width: 'unset',
+        height: 'unset',
+        right: 'unset',
       },
       [`& .${treeItemClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Hover,
+      },
+    },
+  },
+  actionsAndBadges: {
+    ':focus': {
+      [`& .${treeItemClassNames.badges}`]: {
+        display: 'none',
+      },
+    },
+    ':hover': {
+      [`& .${treeItemClassNames.badges}`]: {
+        display: 'none',
       },
     },
   },
@@ -147,10 +170,25 @@ const useIconAfter = makeStyles({
 /**
  * Styles for the action icon slot
  */
+const useBadgesStyles = makeStyles({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    marginLeft: 'auto',
+    ...shorthands.padding(0, tokens.spacingHorizontalXS),
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+  },
+});
+/**
+ * Styles for the action icon slot
+ */
 const useActionsStyles = makeStyles({
   base: {
-    display: 'none',
-    alignItems: 'center',
+    opacity: '0',
+    position: 'absolute',
+    width: 0,
+    height: 0,
+    right: 0,
     marginLeft: 'auto',
     ...shorthands.padding(0, tokens.spacingHorizontalXS),
   },
@@ -166,12 +204,13 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   const iconBeforeStyles = useIconBefore();
   const iconAfterStyles = useIconAfter();
   const actionsStyles = useActionsStyles();
+  const badgesStyles = useBadgesStyles();
 
   const level = useTreeContext_unstable(ctx => ctx.level) - 1;
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
 
-  const { iconAfter, actions, iconBefore, expandIcon } = state;
+  const { iconAfter, actions, iconBefore, expandIcon, badges } = state;
 
   state.root.className = mergeClasses(
     treeItemClassNames.root,
@@ -179,6 +218,7 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
     rootStyles[appearance],
     rootStyles.focusIndicator,
     rootStyles[size],
+    actions && badges && rootStyles.actionsAndBadges,
     state.isLeaf && rootStyles.leaf,
     state.root.className,
   );
@@ -217,6 +257,9 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
 
   if (actions) {
     actions.className = mergeClasses(treeItemClassNames.actions, actionsStyles.base, actions.className);
+  }
+  if (badges) {
+    badges.className = mergeClasses(treeItemClassNames.badges, badgesStyles.base, badges.className);
   }
 
   return state;

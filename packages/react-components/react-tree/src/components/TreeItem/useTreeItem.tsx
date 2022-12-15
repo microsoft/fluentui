@@ -17,7 +17,7 @@ import { useEventCallback } from '@fluentui/react-utilities';
  */
 export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeItemElement>): TreeItemState => {
   const treeItemState = useBaseTreeItem_unstable(props, ref);
-  const { expandIcon, iconBefore, iconAfter, actions } = props;
+  const { expandIcon, iconBefore, iconAfter, actions, badges } = props;
   const { dir } = useFluent_unstable();
   const expandIconRotation = treeItemState.open ? 90 : dir !== 'rtl' ? 0 : 180;
 
@@ -37,6 +37,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
       iconBefore: 'span',
       iconAfter: 'span',
       actions: 'span',
+      badges: 'span',
     },
     iconBefore: resolveShorthand(iconBefore, {
       defaultProps: { 'aria-hidden': true },
@@ -48,6 +49,11 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
       required: !treeItemState.isLeaf,
       defaultProps: {
         children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
+        'aria-hidden': true,
+      },
+    }),
+    badges: resolveShorthand(badges, {
+      defaultProps: {
         'aria-hidden': true,
       },
     }),
