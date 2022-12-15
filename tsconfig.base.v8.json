@@ -16,6 +16,7 @@
       "@fluentui/codemods": ["packages/codemods/src/index.ts"],
       "@fluentui/date-time-utilities": ["packages/date-time-utilities/src/index.ts"],
       "@fluentui/example-data": ["packages/example-data/src/index.ts"],
+      "@fluentui/fluent2-theme": ["packages/fluent2-theme/src/index.ts"],
       "@fluentui/font-icons-mdl2": ["packages/font-icons-mdl2/src/index.ts"],
       "@fluentui/foundation-legacy": ["packages/foundation-legacy/src/index.ts"],
       "@fluentui/jest-serializer-merge-styles": ["packages/jest-serializer-merge-styles/src/index.ts"],

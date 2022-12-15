@@ -92,9 +92,11 @@ export const Frame = () => {
 Frame.parameters = {
   docs: {
     description: {
-      story:
-        'A Fluent provider does not cross an iframee boundary.' +
-        'Renderer provider supports Fluent provider within the iframe.',
+      story: [
+        'A FluentProvider does not cross an iframe boundary.',
+        'To render into iframes pass a proper `Document` instance to `targetDocument` prop on',
+        'FluentProvider & RendererProvider.',
+      ].join(' '),
     },
   },
 };
