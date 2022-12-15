@@ -35,7 +35,7 @@ initializeIcons();
 
 // blog storage is now immutable, so new versions of fabric-core will be at a new url based on the build number
 addCSSToHeader(
-  'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221201.001/office-ui-fabric-core/11.1.0/css/fabric.min.css',
+  'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-core/11.1.0/css/fabric.min.css',
 );
 
 let rootElement: HTMLElement;
