@@ -40,6 +40,7 @@ export async function screener() {
 }
 
 /**
+ * test
  * Collect all stories and testing steps.
  * This is is run inside a puppeteer instance in screener-runner
  * logic from https://github.com/screener-io/screener-storybook/blob/6198f2ff33af7ba254d635dcfc41398455fd4dd4/src/runner.js#L9
