@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Hide callout on legend hover",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
