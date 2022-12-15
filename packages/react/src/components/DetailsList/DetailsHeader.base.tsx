@@ -426,7 +426,7 @@ export class DetailsHeaderBase
   };
 
   private _computeColumnIndexOffset = (showCheckbox: boolean) => {
-    const hasGroupExpander = this.props.groupNestingDepth! > 0;
+    const hasGroupExpander = this.props.groupNestingDepth && this.props.groupNestingDepth > 0;
 
     let offset = 1;
     if (showCheckbox) {
