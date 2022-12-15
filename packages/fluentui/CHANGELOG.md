@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixes
 - `Carousel` fix for FZ - Adding data-is-visible prop #25973 @kolaps33 ([#25973](https://github.com/microsoft/fluentui/pull/25973))
 - Fix `Dropdown` allowing interaction with selected items when disabled @chpalac ([#25954](https://github.com/microsoft/fluentui/pull/25954))
+- Fix `Button` styles for `disabledFocusable` when `text` @chpalac ([#26012](https://github.com/microsoft/fluentui/pull/26012))
 
 <!--------------------------------[ v0.65.0 ]------------------------------- -->
 ## [v0.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.65.0) (2022-10-31)
