@@ -15,7 +15,7 @@ import {
 } from './DetailsList.types';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
-import { EventGroup, IRenderFunction } from '../../Utilities';
+import { EventGroup, IRenderFunction, resetIds } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';
 import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
 import { getTheme } from '../../Styling';
@@ -70,7 +70,15 @@ function customColumnDivider(
   );
 }
 
+Object.defineProperty(window, 'scrollTo', {
+  value: jest.fn(),
+});
+
 describe('DetailsList', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders List correctly with onRenderDivider props', () => {
     const component = renderer.create(
       <DetailsList
