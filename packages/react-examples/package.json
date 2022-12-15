@@ -33,7 +33,7 @@
     "@fluentui/react": "^8.103.8",
     "@fluentui/react-cards": "^0.205.35",
     "@fluentui/react-charting": "^5.14.28",
-    "@fluentui/react-docsite-components": "^8.10.35",
+    "@fluentui/react-docsite-components": "^8.11.0",
     "@fluentui/react-experiments": "^8.14.30",
     "@fluentui/react-file-type-icons": "^8.8.3",
     "@fluentui/react-focus": "^8.8.10",
