@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Tue, 13 Dec 2022 07:46:31 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Dec 2022 07:47:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.0)
+
+Thu, 15 Dec 2022 07:47:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.10.35..@fluentui/react-docsite-components_v8.11.0)
+
+### Minor changes
+
+- Updated to support longer theme name in dropdown ([PR #25982](https://github.com/microsoft/fluentui/pull/25982) by gcox@microsoft.com)
 
 ## [8.10.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.10.35)
 

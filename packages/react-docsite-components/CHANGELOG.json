@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Thu, 15 Dec 2022 07:47:25 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.11.0",
+      "version": "8.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "983c8a8477ffb675d5c756b5407d926bb90a5ad7",
+            "comment": "Updated to support longer theme name in dropdown"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Dec 2022 07:46:31 GMT",
       "tag": "@fluentui/react-docsite-components_v8.10.35",
       "version": "8.10.35",

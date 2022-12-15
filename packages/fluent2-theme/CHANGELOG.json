@@ -1,5 +1,20 @@
 {
   "name": "@fluentui/fluent2-theme",
   "entries": [
+    {
+      "date": "Thu, 15 Dec 2022 07:47:25 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.104.0",
+      "version": "8.104.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "983c8a8477ffb675d5c756b5407d926bb90a5ad7",
+            "comment": "Added package with Fluent 2 theme for v8"
+          }
+        ]
+      }
+    }
   ]
 }
