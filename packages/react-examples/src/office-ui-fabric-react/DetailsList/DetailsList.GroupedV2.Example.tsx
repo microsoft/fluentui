@@ -11,8 +11,8 @@ import {
   mergeStyles,
   Toggle,
   GroupedListV2_unstable as GroupedListV2,
-} from '@fluentui/react';
-import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
+} from 'office-ui-fabric-react';
+import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
 const margin = '0 20px 20px 0';
 const controlWrapperClass = mergeStyles({
@@ -132,6 +132,3 @@ export const DetailsListGroupedV2Example: React.FC = () => {
     </div>
   );
 };
-
-// @ts-expect-error Storybook
-DetailsListGroupedV2Example.storyName = 'V2 Grouped';

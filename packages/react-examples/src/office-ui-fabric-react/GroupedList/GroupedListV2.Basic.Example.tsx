@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IGroup } from '@fluentui/react/lib/GroupedList';
-import { GroupedListV2_unstable as GroupedListV2 } from '@fluentui/react/lib/GroupedListV2';
-import { IColumn, DetailsRow } from '@fluentui/react/lib/DetailsList';
-import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
-import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
-import { useBoolean, useConst } from '@fluentui/react-hooks';
-import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
+import { IGroup } from 'office-ui-fabric-react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from 'office-ui-fabric-react/lib/GroupedListV2';
+import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { useBoolean, useConst } from '@uifabric/react-hooks';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
 const toggleStyles: Partial<IToggleStyles> = { root: { marginBottom: '20px' } };
 const groupCount = 3;
@@ -76,6 +76,3 @@ export const GroupedListV2BasicExample: React.FunctionComponent = () => {
     </div>
   );
 };
-
-// @ts-expect-error Storybook
-GroupedListV2BasicExample.storyName = 'V2 Basic';

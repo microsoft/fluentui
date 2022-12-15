@@ -64,6 +64,3 @@ export const DetailsListGroupedV2LargeExmaple: React.FC = () => {
     />
   );
 };
-
-// @ts-expect-error Storybook
-DetailsListGroupedV2LargeExmaple.storyName = 'V2 Grouped Large';

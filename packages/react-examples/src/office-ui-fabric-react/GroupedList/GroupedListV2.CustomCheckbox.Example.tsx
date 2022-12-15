@@ -5,14 +5,14 @@ import {
   IGroupHeaderProps,
   IGroupRenderProps,
   IGroup,
-} from '@fluentui/react/lib/GroupedList';
-import { GroupedListV2_unstable as GroupedListV2 } from '@fluentui/react/lib/GroupedListV2';
-import { IColumn, IObjectWithKey, DetailsRow } from '@fluentui/react/lib/DetailsList';
-import { FocusZone } from '@fluentui/react/lib/FocusZone';
-import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
-import { Icon } from '@fluentui/react/lib/Icon';
-import { useConst } from '@fluentui/react-hooks';
-import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
+} from 'office-ui-fabric-react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from 'office-ui-fabric-react/lib/GroupedListV2';
+import { IColumn, IObjectWithKey, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { useConst } from '@uifabric/react-hooks';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
 const groupCount = 3;
 const groupDepth = 1;
@@ -83,6 +83,3 @@ export const GroupedListV2CustomCheckboxExample: React.FunctionComponent = () =>
     </div>
   );
 };
-
-// @ts-expect-error Storybook
-GroupedListV2CustomCheckboxExample.storyName = 'V2 Custom Checkbox';

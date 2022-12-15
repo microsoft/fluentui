@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IGroup, IGroupHeaderProps, IGroupFooterProps } from '@fluentui/react/lib/GroupedList';
-import { GroupedListV2_unstable as GroupedListV2 } from '@fluentui/react/lib/GroupedListV2';
-import { Link } from '@fluentui/react/lib/Link';
-import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
-import { getTheme, mergeStyleSets, IRawStyle } from '@fluentui/react/lib/Styling';
+import { IGroup, IGroupHeaderProps, IGroupFooterProps } from 'office-ui-fabric-react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from 'office-ui-fabric-react/lib/GroupedListV2';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
+import { getTheme, mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
 const headerAndFooterStyles: IRawStyle = {
@@ -77,6 +77,3 @@ const groups: IGroup[] = createGroups(4, 0, 0, 5);
 export const GroupedListV2CustomExample: React.FunctionComponent = () => (
   <GroupedListV2 items={items} onRenderCell={onRenderCell} groupProps={groupedListProps} groups={groups} />
 );
-
-// @ts-expect-error Storybook
-GroupedListV2CustomExample.storyName = 'V2 Custom';
