@@ -54,13 +54,34 @@ describe('useFluentProviderContextValues_unstable', () => {
     expect(result.current.theme).toEqual({ colorBrandBackground: '#fff' });
   });
 
-  it('should return a value for "themeClassname"', () => {
-    const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({ className: 'foo' }, React.createRef());
+  describe('themeClassname', () => {
+    it('passes classes from "root" slot by default', () => {
+      const { result } = renderHook(() => {
+        const state = {
+          ...useFluentProvider_unstable({}, React.createRef()),
+          root: { className: 'foo' },
+          themeClassName: 'bar',
+        };
 
-      return useFluentProviderContextValues_unstable(state);
+        return useFluentProviderContextValues_unstable(state);
+      });
+
+      expect(result.current.themeClassName).toBe('foo');
     });
 
-    expect(result.current.themeClassName).toBe('foo');
+    it('passes classes only from "themeClassName" when "applyStylesToPortals" is false', () => {
+      const { result } = renderHook(() => {
+        const state = {
+          ...useFluentProvider_unstable({}, React.createRef()),
+          applyStylesToPortals: false,
+          root: { className: 'foo' },
+          themeClassName: 'bar',
+        };
+
+        return useFluentProviderContextValues_unstable(state);
+      });
+
+      expect(result.current.themeClassName).toBe('bar');
+    });
   });
 });

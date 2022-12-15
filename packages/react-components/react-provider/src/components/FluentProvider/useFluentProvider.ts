@@ -30,7 +30,12 @@ export const useFluentProvider_unstable = (
    * nesting providers with the same "dir" should not add additional attributes to DOM
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
-  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme } = props;
+  const {
+    applyStylesToPortals = true,
+    dir = parentContext.dir,
+    targetDocument = parentContext.targetDocument,
+    theme,
+  } = props;
   const mergedTheme = mergeThemes(parentTheme, theme);
 
   React.useEffect(() => {
@@ -46,6 +51,7 @@ export const useFluentProvider_unstable = (
   }, []);
 
   return {
+    applyStylesToPortals,
     dir,
     targetDocument,
     theme: mergedTheme,
