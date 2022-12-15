@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { DetailsHeader, DetailsList, IColumn, IDetailsHeaderProps, IGroup } from '@fluentui/react/lib/DetailsList';
-import { GroupedListV2_unstable as GroupedListV2 } from '@fluentui/react/lib/GroupedListV2';
+import {
+  DetailsHeader,
+  DetailsList,
+  IColumn,
+  IDetailsHeaderProps,
+  IGroup,
+} from 'office-ui-fabric-react/lib/DetailsList';
+import { GroupedListV2_unstable as GroupedListV2 } from 'office-ui-fabric-react/lib/GroupedListV2';
 
 interface IDetailsListGroupedLargeExampleItem {
   key: string;
