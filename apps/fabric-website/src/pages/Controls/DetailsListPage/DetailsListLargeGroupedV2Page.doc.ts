@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { DetailsListLargeGroupedPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/DetailsList/DetailsList.doc';
+import { DetailsListLargeGroupedPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/DetailsList/DetailsList.doc';
 
 export const DetailsListLargeGroupedV2PageProps: TFabricPlatformPageProps = {
   web: {
