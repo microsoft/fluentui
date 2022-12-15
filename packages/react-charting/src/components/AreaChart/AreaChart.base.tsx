@@ -267,7 +267,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
       this.setState({
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         isCalloutVisible: false,
         isShowCalloutPending: true,
         lineXValue: this._xAxisRectScale(pointToHighlight),
@@ -302,7 +302,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!found) {
       this.setState({
         isCalloutVisible: false,
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         displayOfLine: InterceptVisibility.hide,
         isCircleClicked: false,
       });
@@ -471,11 +471,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       const legend: ILegend = {
         title: singleChartData.legend,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(singleChartData.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(singleChartData.legend);
         },
         onMouseOutAction: () => {
