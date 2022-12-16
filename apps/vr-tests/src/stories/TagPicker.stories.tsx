@@ -27,7 +27,7 @@ const getTextFromItem = (item: ITag) => item.name;
 
 const getList = () => testTags;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes
+// Pickers that are 'disabled' are added before the StoryWright decorator because css classes
 // for suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
