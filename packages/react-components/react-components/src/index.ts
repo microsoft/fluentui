@@ -695,3 +695,12 @@ export type {
   DialogContentSlots,
   DialogContentState,
 } from '@fluentui/react-dialog';
+
+export {
+  ProgressBar,
+  progressBarClassNames,
+  renderProgressBar_unstable,
+  useProgressBarStyles_unstable,
+  useProgressBar_unstable,
+} from '@fluentui/react-progress';
+export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';
