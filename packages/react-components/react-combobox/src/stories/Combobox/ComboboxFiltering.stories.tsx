@@ -16,13 +16,13 @@ const useStyles = makeStyles({
 export const Filtering = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
-  const [matchingOptions, setmatchingOptions] = React.useState([...options]);
+  const [matchingOptions, setMatchingOptions] = React.useState([...options]);
   const styles = useStyles();
 
   const onChange: ComboboxProps['onChange'] = event => {
     const value = event.target.value.trim();
     const matches = options.filter(option => option.toLowerCase().indexOf(value.toLowerCase()) === 0);
-    setmatchingOptions(matches);
+    setMatchingOptions(matches);
   };
 
   return (
