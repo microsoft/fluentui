@@ -16,10 +16,6 @@ steps:
     displayName: yarn (install packages)
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} convert
-    displayName: Convert screener component to storywright
-
-  - script: |
       yarn workspace ${{ parameters.vrTestPackageName }} vrt:build
     displayName: Build VR tests components package
 
