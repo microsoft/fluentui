@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: drag and drop column reorder for grouped DetailsList",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
