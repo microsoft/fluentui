@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Button } from '@fluentui/react-northstar';
 import ButtonDefaultBsize from '../../examples/components/Button/Performance/ButtonDefault.bsize';
