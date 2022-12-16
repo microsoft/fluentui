@@ -56,13 +56,14 @@ const rootClass = mergeStyles({
   maxWidth: 500,
 });
 
-const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+const baseProductionCdnUrl =
+  'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-react-assets/';
 
 const TestImages = {
   documentPreview: baseProductionCdnUrl + 'document-preview.png',
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
   documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
-  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png',
+  iconPpt: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/item-types/32/pptx.png',
   personaFemale: baseProductionCdnUrl + 'persona-female.png',
 };
 
