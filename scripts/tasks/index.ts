@@ -16,7 +16,6 @@ import { webpack, webpackDevServer } from './webpack';
 import { apiExtractor } from './api-extractor';
 import { lintImports } from './lint-imports';
 import { prettier } from './prettier';
-import { screener } from './screener';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
 import { startStorybookTask, buildStorybookTask } from './storybook';
@@ -120,8 +119,6 @@ export function preset() {
     'bundle',
     condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
-
-  task('screener', screener);
 }
 
 preset.basic = basicPreset;
