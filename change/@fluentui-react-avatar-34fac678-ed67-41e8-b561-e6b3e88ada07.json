@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Avatar shouldn't render an icon when displaying an image (performance)",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
