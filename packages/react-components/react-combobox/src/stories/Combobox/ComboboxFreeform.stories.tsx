@@ -15,7 +15,25 @@ const useStyles = makeStyles({
 
 export const Freeform = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
-  const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
+  const options = [
+    'Cat',
+    'Caterpillar',
+    'Catfish',
+    'Cheetah',
+    'Chicken',
+    'Cockatiel',
+    'Cow',
+    'Dog',
+    'Dolphin',
+    'Ferret',
+    'Firefly',
+    'Fish',
+    'Fox',
+    'Fox Terrier',
+    'Frog',
+    'Hamster',
+    'Snake',
+  ];
   const [matchingOptions, setMatchingOptions] = React.useState([...options]);
   const [customSearch, setCustomSearch] = React.useState<string | undefined>();
   const styles = useStyles();
