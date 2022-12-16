@@ -230,7 +230,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/fluent-date-time
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
-
+packages/fluent2-theme @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 ## Experiments
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon

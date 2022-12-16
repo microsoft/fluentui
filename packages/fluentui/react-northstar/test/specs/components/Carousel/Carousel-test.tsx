@@ -344,4 +344,26 @@ describe('Carousel', () => {
       ).toBe(animationEnterFromNext);
     });
   });
+
+  describe('focus zone "visible" attribute', () => {
+    it('should has data-is-visible=false when previous paddle is hidden', () => {
+      const wrapper = renderCarousel({ defaultActiveIndex: 0 });
+      const paddlePrevios = getPaddlePreviousWrapper(wrapper).getDOMNode();
+      const paddleNext = getPaddleNextWrapper(wrapper).getDOMNode();
+
+      expect(paddlePrevios).toHaveAttribute('data-is-visible');
+      expect(paddlePrevios.getAttribute('data-is-visible')).toEqual('false');
+      expect(paddleNext).not.toHaveAttribute('data-is-visible');
+    });
+
+    it('should has data-is-visible=false when next paddle is hidden', () => {
+      const wrapper = renderCarousel({ defaultActiveIndex: 3 });
+      const paddleNext = getPaddleNextWrapper(wrapper).getDOMNode();
+      const paddlePrevios = getPaddlePreviousWrapper(wrapper).getDOMNode();
+
+      expect(paddleNext).toHaveAttribute('data-is-visible');
+      expect(paddleNext.getAttribute('data-is-visible')).toEqual('false');
+      expect(paddlePrevios).not.toHaveAttribute('data-is-visible');
+    });
+  });
 });
