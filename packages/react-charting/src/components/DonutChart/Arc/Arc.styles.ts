@@ -20,7 +20,7 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       strokeWidth: 4,
       fill: 'transparent',
     },
-    arcLabel: {
+    arcValue: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
     },

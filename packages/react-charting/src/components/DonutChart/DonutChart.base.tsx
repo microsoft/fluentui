@@ -94,7 +94,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const { palette } = this.props.theme!;
 
     /**
-     * Resize SVG box to prevent overflow of arc labels
+     * Resize SVG box to prevent overflow of arc values
      */
     const adjustedWidth = Math.min(this._rootElem ? this._rootElem.offsetWidth : Infinity, this.state._width! + 80);
     const adjustedHeight = this.state._height! + 40;
@@ -141,7 +141,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 calloutId={this._calloutId}
                 valueInsideDonut={valueInsideDonut}
                 theme={this.props.theme!}
-                showLabelsInPercent={this.props.showLabelsInPercent}
+                showValuesInPercent={this.props.showValuesInPercent}
+                hideValues={this.props.hideValues}
               />
             </svg>
           </div>

@@ -57,8 +57,9 @@ export class Pie extends React.Component<IPieProps, {}> {
         valueInsideDonut={this.props.valueInsideDonut}
         theme={this.props.theme!}
         focusedArcId={this.props.focusedArcId}
-        showLabelsInPercent={this.props.showLabelsInPercent}
+        showValuesInPercent={this.props.showValuesInPercent}
         totalValue={this._totalValue}
+        hideValues={this.props.hideValues}
       />
     );
   };
@@ -106,11 +107,11 @@ export class Pie extends React.Component<IPieProps, {}> {
       theme: this.props.theme!,
     });
 
-    let finalString = valueInsideDonut;
+    let finalText = valueInsideDonut;
     /** Format the value if it is numeric */
     if (!isNaN(Number(valueInsideDonut))) {
       const value = Number(valueInsideDonut);
-      finalString = d3FormatPrefix(value < 1000 ? '.2~' : '.1', value)(value);
+      finalText = d3FormatPrefix(value < 1000 ? '.2~' : '.1', value)(value);
     }
 
     return (
@@ -123,7 +124,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         aria-label={valueInsideDonut.toString()}
         role="img"
       >
-        {finalString}
+        {finalText}
       </text>
     );
   };

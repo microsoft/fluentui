@@ -59,7 +59,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           aria-label={this._getAriaLabel()}
           role="img"
         />
-        {this._renderArcLabel(classNames.arcLabel)}
+        {this._renderArcValue(classNames.arcValue)}
       </g>
     );
   }
@@ -92,29 +92,29 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
-  private _renderArcLabel = (className: string) => {
-    const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue } = this.props;
+  private _renderArcValue = (className: string) => {
+    const { arc, data, innerRadius, outerRadius, showValuesInPercent, totalValue, hideValues } = this.props;
 
-    if (Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12) {
+    if (hideValues || Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12) {
       return null;
     }
 
     const [base, perp] = arc.centroid(data);
     const hyp = Math.sqrt(base * base + perp * perp);
-    const labelRadius = Math.max(innerRadius!, outerRadius!) + 2;
+    const textRadius = Math.max(innerRadius!, outerRadius!) + 2;
     const angle = (data!.startAngle + data!.endAngle) / 2;
     const arcValue = data!.value;
 
     return (
       <text
-        x={(hyp === 0 ? 0 : base / hyp) * labelRadius}
-        y={(hyp === 0 ? 0 : perp / hyp) * labelRadius}
+        x={(hyp === 0 ? 0 : base / hyp) * textRadius}
+        y={(hyp === 0 ? 0 : perp / hyp) * textRadius}
         textAnchor={angle > Math.PI ? 'end' : 'start'}
         dominantBaseline={angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto'}
         className={className}
         aria-hidden={true}
       >
-        {showLabelsInPercent
+        {showValuesInPercent
           ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
           : d3FormatPrefix(arcValue < 1000 ? '.2~' : '.1', arcValue)(arcValue)}
       </text>
