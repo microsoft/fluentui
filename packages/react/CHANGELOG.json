@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 16 Dec 2022 07:50:07 GMT",
+      "tag": "@fluentui/react_v8.103.9",
+      "version": "8.103.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7cb446d4311c0621a3dcecd4eed7fe0c3476de53",
+            "comment": "fix: drag and drop column reorder for grouped DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Dec 2022 07:46:30 GMT",
       "tag": "@fluentui/react_v8.103.8",
       "version": "8.103.8",

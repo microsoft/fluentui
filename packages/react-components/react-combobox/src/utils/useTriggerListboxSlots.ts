@@ -145,7 +145,7 @@ export function useTriggerListboxSlots(
           event.preventDefault();
           break;
         case 'Tab':
-          activeOption && selectOption(event, activeOption);
+          !multiselect && activeOption && selectOption(event, activeOption);
           break;
         default:
           newIndex = getIndexFromAction(action, activeIndex, maxIndex);

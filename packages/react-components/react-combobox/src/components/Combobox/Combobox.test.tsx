@@ -438,6 +438,24 @@ describe('Combobox', () => {
     expect(getByRole('menu')).not.toBeNull();
   });
 
+  it('clears typed characters after selection for multiselect', () => {
+    const { getByRole, getByText } = render(
+      <Combobox open multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'gr');
+    userEvent.click(getByText('Green'));
+
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect((combobox as HTMLInputElement).value).toEqual('');
+  });
+
   it('should respect value over selected options', () => {
     const { getByRole } = render(
       <Combobox value="foo" selectedOptions={['Green']}>

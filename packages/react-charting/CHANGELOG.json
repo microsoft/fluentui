@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 16 Dec 2022 07:50:07 GMT",
+      "tag": "@fluentui/react-charting_v5.14.29",
+      "version": "5.14.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7af0c8852e037dac9ff29e9b1eb4641cc4acaeea",
+            "comment": "Hide callout on legend hover"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.103.9",
+            "commit": "7cb446d4311c0621a3dcecd4eed7fe0c3476de53"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Dec 2022 07:46:31 GMT",
       "tag": "@fluentui/react-charting_v5.14.28",
       "version": "5.14.28",
