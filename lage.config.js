@@ -4,7 +4,6 @@ module.exports = {
     build: ['^build'],
     'build:info': [],
     bundle: ['build'],
-    screener: ['build'],
     lint: ['build'],
     clean: [],
     test: ['build'],
