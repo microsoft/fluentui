@@ -5995,6 +5995,8 @@ export interface IListState<T = any> {
     // (undocumented)
     getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
     // (undocumented)
+    hasMounted: boolean;
+    // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
     // (undocumented)
@@ -8980,7 +8982,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
-    static getDerivedStateFromProps<T = any>(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+    static getDerivedStateFromProps<U = any>(nextProps: IListProps<U>, previousState: IListState<U>): IListState<U>;
     // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
