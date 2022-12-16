@@ -57,12 +57,12 @@ steps:
         condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} screener:build
+      yarn workspace ${{ parameters.vrTestPackageName }} vr:build
     displayName: Build VR tests components package
     condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} test:component --verbose
+      yarn workspace ${{ parameters.vrTestPackageName }} vr:test --verbose
     displayName: 'Run VR tests'
     condition: eq(variables['vrTestSkip'], 'no')
 
