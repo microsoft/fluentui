@@ -22,7 +22,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       pointerEvents: 'none',
     },
 
-    totalValueText: {
+    barValue: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
     },

@@ -710,7 +710,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           ? (singleChartData.xAxisPoint as number)
           : (singleChartData.xAxisPoint as string),
       );
-      let totalValue = 0;
+      let barValue = 0;
 
       // Removing datapoints with zero data
       const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
@@ -752,7 +752,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           barHeight = barMinimumHeight;
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
-        totalValue += point.data;
+        barValue += point.data;
 
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
@@ -812,17 +812,17 @@ export class VerticalStackedBarChartBase extends React.Component<
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
-          {this._barWidth >= 16 && (
+          {!this.props.hideValues && this._barWidth >= 16 && (
             <text
               x={xPoint + this._barWidth / 2}
               y={yPoint - 6}
               textAnchor="middle"
-              className={classNames.totalValueText}
+              className={classNames.barValue}
               data-is-focusable={true}
-              aria-label={`Total: ${totalValue}`}
+              aria-label={`Total: ${barValue}`}
               role="img"
             >
-              {d3FormatPrefix(totalValue < 1000 ? '.2~' : '.1', totalValue)(totalValue)}
+              {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
             </text>
           )}
         </g>
