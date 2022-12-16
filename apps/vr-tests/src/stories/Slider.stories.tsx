@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import { StoryWright, Steps, Step } from 'storywright';
+import { StoryWright, Steps } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Slider } from 'office-ui-fabric-react';
