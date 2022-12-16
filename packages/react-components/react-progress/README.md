@@ -8,29 +8,29 @@ These are not production-ready components and **should never be used in product*
 
 ## Usage
 
-To import `Progress`:
+To import `ProgressBar`:
 
 ```js
-import { Progress } from '@fluentui/react-progress';
+import { ProgressBar } from '@fluentui/react-progress';
 ```
 
 Once the Progress component graduates to a production release, the component will be available at:
 
 ```js
-import { Progress } from '@fluentui/react-components';
+import { ProgressBar } from '@fluentui/react-components';
 ```
 
 ### Examples
 
 ```jsx
-const ProgressExample = () => {
-  return <Progress thickness="large" value={0.5} />;
+const ProgressBarExample = () => {
+  return <ProgressBar thickness="large" value={0.5} />;
 };
 ```
 
 #### Using ProgressField
 
-The `ProgressField` component is a wrapper around the `Progress` component that allows the user to add a `label`, `hint`, `validationMessage`, and `validationState` to the `Progress` component. You can pass these props, as well as the regular `Progress` props to a `ProgressField` component.
+The `ProgressField` component is a wrapper around the `ProgressBar` component that allows the user to add a `label`, `hint`, `validationMessage`, and `validationState` to the `ProgressBar` component. You can pass these props, as well as the regular `ProgressBar` props to a `ProgressField` component.
 
 To import `ProgressField`:
 
@@ -42,7 +42,7 @@ import { ProgressField } from '@fluentui/react-field';
 const ProgressFieldExample = () => {
   return (
     <ProgressField
-      label="Determinate Progress"
+      label="Determinate ProgressBar"
       hint="This is a determinate Progress with description"
       value={0.5}
       validationState="warning"
