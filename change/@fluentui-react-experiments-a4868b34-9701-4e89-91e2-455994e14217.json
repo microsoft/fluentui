@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Updating cdn links to match latest.",
+  "packageName": "@fluentui/react-experiments",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
