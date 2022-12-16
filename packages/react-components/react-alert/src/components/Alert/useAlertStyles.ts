@@ -78,13 +78,13 @@ const useIntentIconStylesInverted = makeStyles({
 const useActionButtonColorInverted = makeStyles({
   action: {
     color: tokens.colorBrandForegroundInverted,
-    '&:focus': { ...shorthands.outline('0') },
-    '&:focus-visible': {
-      zIndex: 1,
-      ...shorthands.outline('2px', 'solid', tokens.colorNeutralBackground5Pressed),
-      ...shorthands.borderRadius('4px'),
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+        outlineColor: tokens.colorNeutralBackground5Pressed,
+      },
+      { enableOutline: true },
+    ),
   },
 });
 
