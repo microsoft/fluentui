@@ -6,7 +6,7 @@ const selectors = {
   dismissAction: `.${alertDismissActionClassName}`,
 };
 
-const storywrightSteps = new Steps()
+const StoryWrightSteps = new Steps()
   .hover(selectors.dismissAction)
   .snapshot('Hovers the action button')
   .keys('body', Keys.tab)
@@ -15,4 +15,4 @@ const storywrightSteps = new Steps()
   .snapshot('Hovers the focused action button')
   .end();
 
-export default storywrightSteps;
+export default StoryWrightSteps;
