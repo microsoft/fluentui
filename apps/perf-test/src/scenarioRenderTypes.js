@@ -13,8 +13,8 @@ const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {
   ThemeProvider: AllRenderTypes,
-  GroupedList: AllRenderTypes,
-  GroupedListV2: AllRenderTypes,
+  GroupedList: DefaultRenderTypes,
+  GroupedListV2: DefaultRenderTypes,
 };
 
 module.exports = {
