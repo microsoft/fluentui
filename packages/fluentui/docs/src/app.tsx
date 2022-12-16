@@ -23,8 +23,7 @@ import Routes from './routes';
 // Experimental dev-time accessibility attributes integrity validation.
 import { setup } from '@fluentui/ability-attributes';
 
-// Temporarily disabling the validation for Screener.
-if (process.env.NODE_ENV !== 'production' && !process.env.SCREENER) {
+if (process.env.NODE_ENV !== 'production') {
   setup();
 }
 
