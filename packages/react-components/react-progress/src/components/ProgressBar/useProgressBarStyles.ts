@@ -20,18 +20,18 @@ const barThicknessValues = {
 
 const indeterminateProgressBar = {
   '0%': {
-    left: '0%',
+    left: '0% /* @noflip */',
   },
   '100%': {
-    left: '100%',
+    left: '100% /* @noflip */',
   },
 };
 const indeterminateProgressBarRTL = {
   '100%': {
-    right: '-100%',
+    right: '-100% /* @noflip */',
   },
   '0%': {
-    right: '100%',
+    right: '100% /* @noflip */',
   },
 };
 
