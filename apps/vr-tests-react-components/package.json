@@ -5,7 +5,6 @@
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
     "build": "build-storybook -o dist/storybook",
-    "convert": "bash convertStoriesToStoryWright.sh",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
