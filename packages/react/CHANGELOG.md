@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 13 Dec 2022 07:46:30 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Dec 2022 07:50:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.103.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.9)
+
+Fri, 16 Dec 2022 07:50:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.8..@fluentui/react_v8.103.9)
+
+### Patches
+
+- fix: drag and drop column reorder for grouped DetailsList ([PR #26015](https://github.com/microsoft/fluentui/pull/26015) by seanmonahan@microsoft.com)
 
 ## [8.103.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.8)
 
