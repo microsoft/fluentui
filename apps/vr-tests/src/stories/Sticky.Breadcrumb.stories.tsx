@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import {
@@ -166,6 +166,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
                 selectionPreservedOnEmptyClick={true}
                 ariaLabelForSelectionColumn="Toggle selection"
                 ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+                // eslint-disable-next-line no-alert
                 onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
               />
             </MarqueeSelection>
@@ -223,8 +224,8 @@ const cropTo = { cropTo: '.testWrapper' };
 storiesOf('Sticky breadcrumb and sticky details list header', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', cropTo)
         .executeScript(`${getElement}.scrollTop = 5`)
         .snapshot(
@@ -244,7 +245,7 @@ storiesOf('Sticky breadcrumb and sticky details list header', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('ScrollablePane Sticky Breadcrumb Details List', () => (
     <ScrollablePaneStickyBreadcrumbExample />

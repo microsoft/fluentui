@@ -1,6 +1,7 @@
+/* eslint-disable @fluentui/max-len */
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 import {
@@ -88,13 +89,13 @@ storiesOf('DocumentCard', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   // Commenting out this story as it has some racing issues with the truncation logic and causes the test to fail on unrelated PRs
   // .addStory('Root', () => (
@@ -135,13 +136,13 @@ storiesOf('DocumentCard', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Compact with preview list', () => (
     <Fabric>

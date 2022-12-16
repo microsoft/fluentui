@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright, Steps, Step } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Slider } from 'office-ui-fabric-react';
@@ -8,15 +8,15 @@ import { Slider } from 'office-ui-fabric-react';
 storiesOf('Slider', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Slider-line')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',

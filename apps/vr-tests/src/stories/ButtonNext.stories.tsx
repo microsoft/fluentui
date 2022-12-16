@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
@@ -86,7 +86,7 @@ const TeamsTheme: PartialTheme = {
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -105,7 +105,7 @@ storiesOf('Button Next', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => <Button>Hello, world</Button>)
   .addStory('Primary', () => <Button primary>Hello, world</Button>)
@@ -133,7 +133,7 @@ storiesOf('Button Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -152,7 +152,7 @@ storiesOf('Button Next - Teams Theme', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => <Button>Hello, world</Button>)
   .addStory('Primary', () => <Button primary>Hello, world</Button>)
@@ -168,7 +168,7 @@ storiesOf('Button Next - With icon before content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -188,7 +188,7 @@ storiesOf('Button Next - With icon before content', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => <Button icon="X">Hello, world</Button>)
   .addStory('Primary', () => (
@@ -231,7 +231,7 @@ storiesOf('Button Next - With icon after content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -250,7 +250,7 @@ storiesOf('Button Next - With icon after content', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => (
     <Button icon="X" iconPosition="after">
@@ -297,7 +297,7 @@ storiesOf('Button Next - Circular', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -316,7 +316,7 @@ storiesOf('Button Next - Circular', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => (
     <Button circular icon="X">
@@ -363,7 +363,7 @@ storiesOf('Button Next - Icon only', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -382,7 +382,7 @@ storiesOf('Button Next - Icon only', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => (
     <Button iconOnly icon="X">
@@ -429,7 +429,7 @@ storiesOf('Button Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -448,7 +448,7 @@ storiesOf('Button Next - Block', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => (
     <Button block icon="X">
@@ -495,7 +495,7 @@ storiesOf('Button Next - Inverted', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -514,7 +514,7 @@ storiesOf('Button Next - Inverted', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => (
     <Button inverted icon="X">
@@ -561,7 +561,7 @@ storiesOf('Button Next - Loading', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -580,7 +580,7 @@ storiesOf('Button Next - Loading', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => (
     <Button loading icon="X">
@@ -627,7 +627,7 @@ storiesOf('Button Next - Sizes', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -646,7 +646,7 @@ storiesOf('Button Next - Sizes', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Smallest', () => (
     <Button icon="X" size="smallest">
@@ -683,7 +683,7 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
@@ -702,7 +702,7 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)
   .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)

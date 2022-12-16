@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Slider } from '@uifabric/experiments';
@@ -14,15 +14,15 @@ const marks = [
 storiesOf('Experimental Slider', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Slider-line')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('With Tickmarks', () => (
     <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>

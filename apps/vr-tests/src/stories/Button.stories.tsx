@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator, FabricDecoratorTall } from '../utilities';
 import {
@@ -48,7 +48,7 @@ const commandProps: IButtonProps = {
 storiesOf('Button Default', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -58,7 +58,7 @@ storiesOf('Button Default', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <DefaultButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <DefaultButton {...baseProps} disabled={true} />)
@@ -79,7 +79,7 @@ storiesOf('Button Default', module)
 storiesOf('Button Action', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -89,7 +89,7 @@ storiesOf('Button Action', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <ActionButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
@@ -100,7 +100,7 @@ storiesOf('Button Action', module)
 storiesOf('Button Compound', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -110,7 +110,7 @@ storiesOf('Button Compound', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <CompoundButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <CompoundButton {...baseProps} disabled={true} />)
@@ -130,7 +130,7 @@ storiesOf('Button Command', module)
   ))
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -143,7 +143,7 @@ storiesOf('Button Command', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <CommandBarButton {...commandProps} />, { rtl: true })
   .addStory('Disabled', () => <CommandBarButton {...commandProps} disabled={true} />)
@@ -152,7 +152,7 @@ storiesOf('Button Command', module)
 storiesOf('Button Split', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button:nth-child(1)')
@@ -171,7 +171,7 @@ storiesOf('Button Split', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { rtl: true })
   .addStory('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
@@ -194,9 +194,9 @@ storiesOf('Button Split', module)
 storiesOf('Button Special Scenarios', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
 
   .addStory('primary with placeholder', () => (
@@ -227,7 +227,7 @@ storiesOf('Button Special Scenarios', module)
 storiesOf('IconButton Scenarios', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('icon', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -235,7 +235,7 @@ storiesOf('IconButton Scenarios', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
 
   .addStory('normal icon button', () => (

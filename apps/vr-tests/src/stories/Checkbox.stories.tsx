@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Checkbox, Persona, PersonaSize } from 'office-ui-fabric-react';
@@ -9,13 +9,13 @@ storiesOf('Checkbox', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
@@ -56,8 +56,8 @@ storiesOf('Checkbox Indeterminate', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Checkbox')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -66,7 +66,7 @@ storiesOf('Checkbox Indeterminate', module)
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Uncontrolled Indeterminate checkbox', () => (
     <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />

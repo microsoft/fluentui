@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth, FabricDecorator } from '../utilities';
 import {
@@ -29,8 +29,8 @@ const iconProps = { iconName: 'IncreaseIndentLegacy' };
 storiesOf('SpinButton', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-spinButton-input')
         .snapshot('hover input', { cropTo: '.testWrapper' })
@@ -44,7 +44,7 @@ storiesOf('SpinButton', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <Fabric>
@@ -70,9 +70,9 @@ storiesOf('SpinButton', module)
 storiesOf('SpinButton', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Label at end',

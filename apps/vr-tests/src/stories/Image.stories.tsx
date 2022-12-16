@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/react';
 import { Image, ImageFit, Label, Layer, IImageProps } from 'office-ui-fabric-react';
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { FabricDecorator } from '../utilities';
 
 const img350x150 = 'http://placehold.it/350x150';
@@ -53,13 +53,13 @@ storiesOf('Image', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('No fit, no w/h', () => (
     <div>

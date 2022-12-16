@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import {
@@ -131,7 +131,8 @@ const getTextFromItem = (persona: IPersonaProps): string => persona.text as stri
 
 const getPeople = () => people;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
+// Pickers that are 'disabled' are added before the Screener decorator because
+// css classes for suggestion items won't exist
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
   .addStory('Normal disabled', () => (
@@ -203,8 +204,8 @@ storiesOf('PeoplePicker', module)
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
   .addStory('Normal with text', () => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .setValue('.ms-BasePicker-input', 'a')
         .snapshot('suggestion: "a"')
@@ -219,14 +220,14 @@ storiesOf('PeoplePicker', module)
           pickerSuggestionsProps={suggestionProps}
         />
       </Fabric>
-    </Screener>
+    </StoryWright>
   ));
 
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .hover('.ms-Suggestions-item')
@@ -234,7 +235,7 @@ storiesOf('PeoplePicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Normal', () => (
     <Fabric>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from 'office-ui-fabric-react';
@@ -50,13 +50,13 @@ storiesOf('Coachmark', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-PositioningContainer' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Collapsed', () => (
     <Fabric>

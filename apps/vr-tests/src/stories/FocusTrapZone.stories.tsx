@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Panel, PanelType, Dialog, DialogType } from 'office-ui-fabric-react';
@@ -7,15 +7,15 @@ import { Panel, PanelType, Dialog, DialogType } from 'office-ui-fabric-react';
 storiesOf('FocusTrapZones', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default')
         .click('.ms-Panel-closeButton')
         .snapshot('click on panel close button')
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Dialog nested in Panel',
@@ -34,6 +34,7 @@ storiesOf('FocusTrapZones', module)
             dialogContentProps={{
               type: DialogType.normal,
               title:
+                // eslint-disable-next-line @fluentui/max-len
                 'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. Focus should be trapped in the dialog.',
               subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
             }}

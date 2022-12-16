@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
@@ -9,11 +9,9 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHi
 storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}
-    >
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'WideIllustration',

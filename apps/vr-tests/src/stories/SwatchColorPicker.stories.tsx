@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { SwatchColorPicker, ISwatchColorPickerProps } from 'office-ui-fabric-react';
@@ -18,8 +18,8 @@ const props: ISwatchColorPickerProps = {
 storiesOf('SwatchColorPicker', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -43,7 +43,7 @@ storiesOf('SwatchColorPicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Circle', () => <SwatchColorPicker {...props} />, { rtl: true })
   .addStory('Circle over 24px size', () => (
