@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, typographyStyles, useId } from '@fluentui/react-components';
+import { makeStyles, shorthands, useId } from '@fluentui/react-components';
 import { Combobox, Option } from '@fluentui/react-combobox';
 import type { ComboboxProps } from '@fluentui/react-combobox';
 
@@ -12,53 +12,64 @@ const useStyles = makeStyles({
     ...shorthands.gap('2px'),
     maxWidth: '400px',
   },
-  description: {
-    ...typographyStyles.caption1,
-  },
 });
 
-export const Multiselect = (props: Partial<ComboboxProps>) => {
+export const MultiselectWithValueString = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-multi');
-  const selectedListId = `${comboId}-selection`;
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [value, setValue] = React.useState('');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
 
   const onSelect: ComboboxProps['onOptionSelect'] = (event, data) => {
+    // update selectedOptions
     setSelectedOptions(data.selectedOptions);
+
+    // reset value to an empty string after selection
+    setValue('');
   };
 
-  const labelledBy = selectedOptions.length > 0 ? `${comboId} ${selectedListId}` : comboId;
+  // clear value on focus
+  const onFocus = () => {
+    setValue('');
+  };
+
+  // update value to selected options on blur
+  const onBlur = () => {
+    setValue(selectedOptions.join(', '));
+  };
+
+  // update value on input change
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  };
 
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pets</label>
       <Combobox
-        aria-labelledby={labelledBy}
+        aria-labelledby={comboId}
         multiselect={true}
         placeholder="Select one or more animals"
+        value={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        onFocus={onFocus}
         onOptionSelect={onSelect}
         {...props}
       >
         {options.map(option => (
-          <Option key={option} disabled={option === 'Ferret'}>
-            {option}
-          </Option>
+          <Option key={option}>{option}</Option>
         ))}
       </Combobox>
-      {selectedOptions.length ? (
-        <span id={selectedListId} className={styles.description}>
-          Chosen pets: {selectedOptions.join(', ')}
-        </span>
-      ) : null}
     </div>
   );
 };
 
-Multiselect.parameters = {
+MultiselectWithValueString.parameters = {
   docs: {
     description: {
-      story: 'Combobox supports multiselect, and options within a multiselect will display checkbox icons.',
+      story: 'Multiselect Combobox supports using a controlled value to display selected options when not in focus.',
     },
   },
 };

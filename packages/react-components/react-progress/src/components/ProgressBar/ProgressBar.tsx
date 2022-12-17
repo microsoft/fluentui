@@ -15,8 +15,4 @@ export const ProgressBar: ForwardRefComponent<ProgressBarProps> = React.forwardR
   return renderProgressBar_unstable(state);
 });
 
-// TODO #25997: Remove deprecated export before ProgressBar is released as stable
-/** @deprecated renamed to ProgressBar */
-export const Progress = ProgressBar;
-
 ProgressBar.displayName = 'ProgressBar';
