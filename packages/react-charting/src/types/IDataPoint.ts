@@ -398,7 +398,7 @@ interface ISLinkExtra {
   source: number;
   target: number;
   value: number;
-  originalValue?: number;
+  unnormalizedValue?: number;
 }
 
 export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
