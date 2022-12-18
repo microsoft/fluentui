@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "prerelease",
   "comment": "Fixing Alert component UI via updating tokens",
   "packageName": "@fluentui/react-alert",
   "email": "marigome@microsoft.com",
