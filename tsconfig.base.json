@@ -73,7 +73,8 @@
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],
       "@fluentui/react-tree": ["packages/react-components/react-tree/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
-      "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"]
+      "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
+      "@fluentui/tokens": ["packages/tokens/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
