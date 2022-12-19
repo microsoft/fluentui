@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Fixing Alert component UI via updating tokens",
+  "comment": "fix: update tokens to match the spec",
   "packageName": "@fluentui/react-alert",
   "email": "marigome@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
