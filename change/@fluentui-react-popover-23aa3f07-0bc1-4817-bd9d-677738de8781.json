@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: remove unneeded eslint rule line disables.",
+  "packageName": "@fluentui/react-popover",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
