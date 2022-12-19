@@ -22,14 +22,7 @@ export function writeContainerUpdates(options: {
   strategy: Strategy;
   coordinates: Coords;
 }) {
-  const {
-    container,
-    placement,
-    middlewareData,
-    strategy,
-    lowPPI,
-    coordinates: { x, y },
-  } = options;
+  const { container, placement, middlewareData, strategy, lowPPI, coordinates } = options;
   if (!container) {
     return;
   }
@@ -48,6 +41,9 @@ export function writeContainerUpdates(options: {
   if (middlewareData.hide?.referenceHidden) {
     container.setAttribute(DATA_POSITIONING_HIDDEN, '');
   }
+
+  const x = Math.round(coordinates.x);
+  const y = Math.round(coordinates.y);
 
   Object.assign(container.style, {
     transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
