@@ -884,6 +884,13 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/tokens": {
+      "root": "packages/tokens",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/tokens/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",
       "projectType": "application"
