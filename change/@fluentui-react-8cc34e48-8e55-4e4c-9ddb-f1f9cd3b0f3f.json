@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: set correct aria-posinset and aria-rowindex values on GroupedListV2",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
