@@ -29,7 +29,6 @@ describe('Popover', () => {
       const [open, setOpen] = React.useState(false);
 
       return (
-        // eslint-disable-next-line react/jsx-no-bind
         <Popover open={open} onOpenChange={(e, data) => setOpen(data.open)}>
           <PopoverTrigger disableButtonEnhancement>
             <button>Trigger</button>
@@ -297,7 +296,6 @@ describe('Popover', () => {
       };
 
       return (
-        // eslint-disable-next-line react/jsx-no-bind
         <Popover onOpenChange={onOpenChange}>
           <PopoverTrigger disableButtonEnhancement>
             <button>Popover trigger</button>

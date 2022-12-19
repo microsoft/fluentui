@@ -34,6 +34,7 @@
     "@fluentui/react-avatar": "^9.2.8",
     "@fluentui/react-button": "^9.1.10",
     "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-tabster": "^9.3.2",
     "@fluentui/react-theme": "^9.1.3",
     "@fluentui/react-utilities": "^9.2.2",
     "@griffel/react": "^1.4.2",
