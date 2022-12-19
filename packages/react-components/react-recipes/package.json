@@ -26,9 +26,9 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.7.1",
+    "@fluentui/react-components": "^9.7.2",
     "@fluentui/react-icons": "^2.0.175",
-    "fs-extra": "8.1.0",
+    "fs-extra": "^8.1.0",
     "node-plop": "^0.25.0",
     "plop": "^2.6.0",
     "tslib": "^2.1.0"
