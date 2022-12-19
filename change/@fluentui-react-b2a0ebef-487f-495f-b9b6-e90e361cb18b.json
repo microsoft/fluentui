@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ComboBox button is not aria-hidden by default",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
