@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { AlertSlots, AlertState } from './Alert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
