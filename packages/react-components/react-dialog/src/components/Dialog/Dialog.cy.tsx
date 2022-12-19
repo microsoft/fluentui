@@ -184,7 +184,6 @@ describe('Dialog', () => {
         }
       }, [open]);
       return (
-        //eslint-disable-next-line react/jsx-no-bind
         <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
           <DialogTrigger disableButtonEnhancement>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>

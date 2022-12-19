@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Add @noflip to animation styles to prevent extra from css being generated",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

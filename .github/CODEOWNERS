@@ -178,6 +178,7 @@ packages/react-migration-v8-v9 @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/react-components/react-recipes @microsoft/cxe-red
+packages/tokens @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 
@@ -231,7 +232,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/fluent-date-time
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
-
+packages/fluent2-theme @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 ## Experiments
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon

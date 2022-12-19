@@ -18,6 +18,7 @@ export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
  */
 export type ListboxState = ComponentState<ListboxSlots> &
   OptionCollectionState &
+  Pick<SelectionProps, 'multiselect'> &
   SelectionState & {
     /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;

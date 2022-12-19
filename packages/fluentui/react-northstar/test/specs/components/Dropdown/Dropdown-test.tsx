@@ -1873,6 +1873,14 @@ describe('Dropdown', () => {
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getItemNodes()).toHaveLength(items.length - 1);
     });
+
+    it('should not call onRemove when dropdown is disabled', () => {
+      const onRemove = jest.fn();
+      const value = { header: items[0], onRemove };
+      const { clickOnSelectedItemAtIndex } = renderDropdown({ multiple: true, value, disabled: true });
+      clickOnSelectedItemAtIndex(0);
+      expect(onRemove).not.toHaveBeenCalled();
+    });
   });
 
   describe('items', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import Screener, { Keys } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TagPicker, Fabric, ITag } from '@fluentui/react';
@@ -43,7 +43,7 @@ storiesOf('TagPicker', module)
         .snapshot('Open Suggestion Menu', { cropTo: '.testWrapper' })
         .hover('.ms-Suggestions-item')
         .snapshot('Suggestion Menu Item Hover', { cropTo: '.testWrapper' })
-        .keys('.ms-BasePicker-input', Screener.Keys.upArrow)
+        .keys('.ms-BasePicker-input', Keys.upArrow)
         .end()}
     >
       {story()}
