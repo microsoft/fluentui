@@ -235,6 +235,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           ':hover': {
             color: v.textColorDisabled,
           },
+          ':active': {
+            color: v.textColorDisabled,
+          },
         }),
 
         ...(!p.text && {
