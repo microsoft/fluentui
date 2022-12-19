@@ -18,6 +18,7 @@ import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-sha
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
+    applyStylesToPortals?: boolean | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
@@ -36,6 +37,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
 
 // @public (undocumented)
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
+    applyStylesToPortals?: boolean;
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document;
     theme?: PartialTheme;
@@ -47,7 +49,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'dir'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
 };

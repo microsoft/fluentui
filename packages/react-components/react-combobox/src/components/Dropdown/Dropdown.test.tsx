@@ -472,7 +472,22 @@ describe('Dropdown', () => {
     expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
-  it('should not change value on select', () => {
+  it('should update value after selection for multiselect', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen defaultSelectedOptions={['Red']} multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByRole('combobox').textContent).toEqual('Red, Green');
+  });
+
+  it('should not change controlled value on select', () => {
     const { getByRole, getByText } = render(
       <Dropdown value="Red" defaultOpen>
         <Option>Red</Option>

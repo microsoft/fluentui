@@ -23,7 +23,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const optionCollection = useOptionCollection();
   const { getCount, getOptionAtIndex, getIndexOfId } = optionCollection;
 
-  const { selectedOptions, selectOption } = useSelection(props);
+  const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -96,6 +96,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       ...props,
     }),
     multiselect,
+    clearSelection,
     ...optionCollection,
     ...optionContextValues,
   };
