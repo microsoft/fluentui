@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore(react-theme): re-export theme from tokens package",
+  "comment": "chore: re-export theme from tokens package",
   "packageName": "@fluentui/react-provider",
   "email": "miroslav.stastny@microsoft.com",
   "dependentChangeType": "patch"
