@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add @fluentui/tokens package",
+  "packageName": "@fluentui/tokens",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
