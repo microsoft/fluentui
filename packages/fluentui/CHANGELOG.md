@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Features
+- Unstyled prop for `Tree`, `TreeItem` and `TreeTitle` @jurokapsiar ([#25886](https://github.com/microsoft/fluentui/pull/25886))
+
 ### Fixes
 - `Carousel` fix for FZ - Adding data-is-visible prop #25973 @kolaps33 ([#25973](https://github.com/microsoft/fluentui/pull/25973))
 - Fix `Dropdown` allowing interaction with selected items when disabled @chpalac ([#25954](https://github.com/microsoft/fluentui/pull/25954))
