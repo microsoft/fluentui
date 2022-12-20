@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 07:53:33 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.14",
+      "version": "0.3.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:10 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.13",
       "version": "0.3.13",

@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 07:53:32 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.7",
+      "version": "1.12.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "bfe6a0aebc33fd01023fb9c89b78a698f3247abf",
+            "comment": "Turn off react/jsx-no-bind rule for cypress component test files."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:07 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.6",
       "version": "1.12.6",

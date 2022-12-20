@@ -15,8 +15,8 @@
     "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
-    "@fluentui/example-data": "^8.4.3",
-    "@fluentui/react": "^8.103.9",
+    "@fluentui/example-data": "^8.4.4",
+    "@fluentui/react": "^8.103.10",
     "@fluentui/scripts": "^1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",

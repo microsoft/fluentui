@@ -2,6 +2,63 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 07:53:33 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.32",
+      "version": "8.14.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.103.10",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/theme to v2.6.20",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/example-data to v8.4.4",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.25",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.5",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/style-utilities to v8.8.4",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/common-styles to v1.2.14",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Dec 2022 07:50:07 GMT",
       "tag": "@fluentui/react-experiments_v8.14.31",
       "version": "8.14.31",

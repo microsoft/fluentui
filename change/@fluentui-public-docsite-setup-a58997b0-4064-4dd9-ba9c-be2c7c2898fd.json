@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Updating cdn links to match latest.",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
