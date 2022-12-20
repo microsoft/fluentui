@@ -33,7 +33,9 @@ function isConvergedPackage(options = {}) {
     return false;
   }
 
-  return semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version);
+  const hasVNextTag = !!metadata.tags?.includes('vNext');
+
+  return semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version) || hasVNextTag;
 }
 
 /**
