@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/GroupedList';
+import { IGroup } from 'office-ui-fabric-react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from 'office-ui-fabric-react/lib/GroupedListV2';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
@@ -23,7 +24,7 @@ const columns = Object.keys(items[0])
 
 const groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
-export const GroupedListBasicExample: React.FunctionComponent = () => {
+export const GroupedListV2BasicExample: React.FunctionComponent = () => {
   const [isCompactMode, { toggle: toggleIsCompactMode }] = useBoolean(false);
   const selection = useConst(() => {
     const s = new Selection();
@@ -62,7 +63,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         styles={toggleStyles}
       />
       <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-        <GroupedList
+        <GroupedListV2
           items={items}
           // eslint-disable-next-line react/jsx-no-bind
           onRenderCell={onRenderCell}

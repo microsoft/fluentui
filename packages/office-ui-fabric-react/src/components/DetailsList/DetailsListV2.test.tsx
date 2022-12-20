@@ -3,26 +3,22 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { safeMount } from '@uifabric/test-utilities';
+import { EventGroup, KeyCodes, resetIds, IRenderFunction } from '../../Utilities';
+import { SelectionMode, Selection, SelectionZone } from '../../Selection';
+import { getTheme } from '../../Styling';
+import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
-
-import {
-  IDetailsList,
-  IColumn,
-  DetailsListLayoutMode,
-  CheckboxVisibility,
-  IDetailsGroupDividerProps,
-} from './DetailsList.types';
-import { IDetailsColumnProps } from './DetailsColumn';
-import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
-import { EventGroup, IRenderFunction, resetIds } from '../../Utilities';
-import { IDragDropEvents } from './../../utilities/dragdrop/index';
-import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
-import { getTheme } from '../../Styling';
-import { KeyCodes } from '@uifabric/utilities';
-import { IGroup } from '../../GroupedList';
-import { DetailsRow, IDetailsRowProps } from './DetailsRow';
+import { CheckboxVisibility, DetailsListLayoutMode, IDetailsGroupRenderProps } from './DetailsList.types';
+import { DetailsRow } from './DetailsRow';
 import { DetailsRowCheck } from './DetailsRowCheck';
+import { IDragDropEvents } from '../../DragDrop';
+import { IGroup } from '../../GroupedList';
+import { IDetailsColumnProps } from './DetailsColumn';
+import { IDetailsHeaderProps } from './DetailsHeader';
+import { IColumn, IDetailsGroupDividerProps, IDetailsList } from './DetailsList.types';
+import { IDetailsRowProps } from './DetailsRow';
+import { GroupedListV2_unstable as GroupedListV2 } from '../GroupedList/GroupedListV2';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -70,13 +66,48 @@ function customColumnDivider(
   );
 }
 
-Object.defineProperty(window, 'scrollTo', {
-  value: jest.fn(),
-});
+const groupProps: IDetailsGroupRenderProps = {
+  groupedListAs: GroupedListV2,
+};
 
-describe('DetailsList', () => {
+/**
+ * NOTE: There isn't actually a DetailsListV2 control, rather
+ * this control uses GroupedListV2 for rendering.
+ */
+describe('DetailsListV2', () => {
+  let spy: jest.SpyInstance;
+  beforeAll(() => {
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+    spy = jest.spyOn(window, 'scrollTo').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    spy.mockRestore();
+  });
+
   beforeEach(() => {
     resetIds();
+  });
+
+  afterEach(() => {
+    if (((setTimeout as unknown) as jest.Mock).mock) {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
+    }
+  });
+
+  it('renders List correctly', () => {
+    const component = renderer.create(
+      <DetailsList
+        items={mockData(5)}
+        onRenderRow={() => null}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        groupProps={groupProps}
+      />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders List correctly with onRenderDivider props', () => {
@@ -87,6 +118,7 @@ describe('DetailsList', () => {
         onRenderRow={() => null}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
     );
     const tree = component.toJSON();
@@ -101,19 +133,7 @@ describe('DetailsList', () => {
         onRenderRow={() => null}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
-      />,
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders List correctly', () => {
-    const component = renderer.create(
-      <DetailsList
-        items={mockData(5)}
-        onRenderRow={() => null}
-        skipViewportMeasures={true}
-        onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
     );
     const tree = component.toJSON();
@@ -128,6 +148,7 @@ describe('DetailsList', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
     );
     const tree = component.toJSON();
@@ -152,17 +173,15 @@ describe('DetailsList', () => {
         flexMargin={-640}
         skipViewportMeasures={false}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
       () => {
         expect(component).toBeTruthy();
         component!.focusIndex(2);
         setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
-          elements.forEach((element: Element) => {
-            const itemKey = element.getAttribute('aria-colindex')!;
-            expect(itemKey).toBeDefined();
-
-            if (itemKey === '1') {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+          elements.forEach((element: Element, index: number) => {
+            if (index === 0) {
               return;
             }
 
@@ -173,14 +192,14 @@ describe('DetailsList', () => {
             expect(width).toBeDefined();
             expect(width[0]).toBeDefined();
 
-            if (itemKey === '2') {
+            if (index === 1) {
               expect(width[0]).toBe('121');
-            } else if (itemKey === '3') {
+            } else if (index === 2) {
               expect(width[0]).toBe('348');
-            } else if (itemKey === '4') {
+            } else if (index === 3) {
               expect(width[0]).toBe('123');
             } else {
-              fail('Unexpected itemKey.');
+              fail('Unexpected index.');
             }
           });
         }, 0);
@@ -206,17 +225,15 @@ describe('DetailsList', () => {
         flexMargin={-640}
         skipViewportMeasures={false}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
       () => {
         expect(component).toBeTruthy();
         component!.focusIndex(2);
         setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
-          elements.forEach((element: Element) => {
-            const itemKey = element.getAttribute('aria-colindex')!;
-            expect(itemKey).toBeDefined();
-
-            if (itemKey === '1') {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+          elements.forEach((element: Element, index: number) => {
+            if (index === 0) {
               return;
             }
 
@@ -227,12 +244,12 @@ describe('DetailsList', () => {
             expect(width).toBeDefined();
             expect(width[0]).toBeDefined();
 
-            if (itemKey === '2') {
+            if (index === 1) {
               expect(width[0]).toBe('336');
-            } else if (itemKey === '3') {
+            } else if (index === 2) {
               expect(width[0]).toBe('255');
             } else {
-              fail('Unexpected itemKey.');
+              fail('Unexpected index.');
             }
           });
         }, 0);
@@ -259,17 +276,15 @@ describe('DetailsList', () => {
         skipViewportMeasures={false}
         onShouldVirtualize={() => false}
         delayFirstMeasure
+        groupProps={groupProps}
       />,
       () => {
         expect(component).toBeTruthy();
         component!.focusIndex(2);
         setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
-          elements.forEach((element: Element) => {
-            const itemKey = element.getAttribute('aria-colindex')!;
-            expect(itemKey).toBeDefined();
-
-            if (itemKey === '1') {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+          elements.forEach((element: Element, index: number) => {
+            if (index === 0) {
               return;
             }
 
@@ -280,12 +295,12 @@ describe('DetailsList', () => {
             expect(width).toBeDefined();
             expect(width[0]).toBeDefined();
 
-            if (itemKey === '2') {
+            if (index === 1) {
               expect(width[0]).toBe('336');
-            } else if (itemKey === '3') {
+            } else if (index === 2) {
               expect(width[0]).toBe('255');
             } else {
-              fail('Unexpected itemKey.');
+              fail('Unexpected index.');
             }
           });
         }, 0);
@@ -302,6 +317,7 @@ describe('DetailsList', () => {
         compact={true}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
     );
     const tree = component.toJSON();
@@ -329,6 +345,7 @@ describe('DetailsList', () => {
           },
         ]}
         checkboxVisibility={CheckboxVisibility.hidden}
+        groupProps={groupProps}
       />,
     );
     const tree = component.toJSON();
@@ -338,24 +355,23 @@ describe('DetailsList', () => {
   it('focuses row by index', () => {
     jest.useFakeTimers();
 
-    let component: any;
+    let component: IDetailsList | null;
     safeMount(
       <DetailsList
         items={mockData(5)}
         componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
       () => {
-        expect(component).toBeDefined();
-        (component as IDetailsList).focusIndex(2);
-        setTimeout(() => {
-          expect(
-            (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-          ).toEqual('2');
-          expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-        }, 0);
-        jest.runOnlyPendingTimers();
+        expect(component).toBeTruthy();
+        component!.focusIndex(2);
+        jest.runAllTimers();
+        expect(
+          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+        ).toEqual('2');
+        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
       },
     );
   });
@@ -375,6 +391,7 @@ describe('DetailsList', () => {
         selection={selection}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
       wrapper => {
         expect(component).toBeTruthy();
@@ -404,6 +421,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         isSelectedOnFocus={false}
+        groupProps={groupProps}
       />,
       wrapper => {
         expect(component).toBeTruthy();
@@ -432,6 +450,7 @@ describe('DetailsList', () => {
         selection={selection}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
+        groupProps={groupProps}
       />,
       wrapper => {
         expect(component).toBeTruthy();
@@ -462,6 +481,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         isSelectedOnFocus={false}
+        groupProps={groupProps}
       />,
       wrapper => {
         expect(component).toBeTruthy();
@@ -481,7 +501,12 @@ describe('DetailsList', () => {
     const items = [...mockData(5), null, null];
 
     safeMount(
-      <DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />,
+      <DetailsList
+        items={items}
+        skipViewportMeasures={true}
+        onRenderMissingItem={onRenderMissingItem}
+        groupProps={groupProps}
+      />,
       () => {
         expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
       },
@@ -493,27 +518,48 @@ describe('DetailsList', () => {
     const items = mockData(5);
 
     safeMount(
-      <DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />,
+      <DetailsList
+        items={items}
+        skipViewportMeasures={true}
+        onRenderMissingItem={onRenderMissingItem}
+        groupProps={groupProps}
+      />,
       () => {
         expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
       },
     );
   });
 
-  it('executes onItemInvoked when double click or enter is pressed', () => {
+  it('executes onItemInvoked when double click is pressed', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
     safeMount(
-      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} groupProps={groupProps} />,
       (wrapper: ReactWrapper) => {
         wrapper
           .find('.ms-DetailsRow')
           .first()
-          .simulate('dblclick')
+          .simulate('dblclick');
+
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
+      },
+    );
+  });
+
+  it('executes onItemInvoked when enter is pressed', () => {
+    const items = mockData(5);
+    const onItemInvoked = jest.fn();
+
+    safeMount(
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} groupProps={groupProps} />,
+      (wrapper: ReactWrapper) => {
+        wrapper
+          .find('.ms-DetailsRow')
+          .first()
           .simulate('keydown', { which: KeyCodes.enter });
 
-        expect(onItemInvoked).toHaveBeenCalledTimes(2);
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
       },
     );
   });
@@ -556,7 +602,13 @@ describe('DetailsList', () => {
     const columns = mockData(5, true);
 
     ReactDOM.render(
-      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
+      <DetailsListBase
+        columns={columns}
+        skipViewportMeasures={true}
+        items={items}
+        dragDropEvents={_dragDropEvents}
+        groupProps={groupProps}
+      />,
       container,
     );
 
@@ -570,7 +622,13 @@ describe('DetailsList', () => {
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
     ReactDOM.render(
-      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
+      <DetailsListBase
+        columns={columns}
+        skipViewportMeasures={true}
+        items={items}
+        dragDropEvents={_dragDropEvents}
+        groupProps={groupProps}
+      />,
       container,
     );
 
@@ -583,7 +641,13 @@ describe('DetailsList', () => {
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
     ReactDOM.render(
-      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents2} />,
+      <DetailsListBase
+        columns={columns}
+        skipViewportMeasures={true}
+        items={items}
+        dragDropEvents={_dragDropEvents2}
+        groupProps={groupProps}
+      />,
       container,
     );
 
@@ -597,6 +661,8 @@ describe('DetailsList', () => {
   });
 
   it('focuses into row element', () => {
+    jest.useFakeTimers();
+
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = item && column && column.fieldName ? item[column.fieldName] : '';
       if (value === null || value === undefined) {
@@ -614,9 +680,7 @@ describe('DetailsList', () => {
       return valueKey;
     };
 
-    jest.useFakeTimers();
-
-    let component: any;
+    let component: IDetailsList | null;
     safeMount(
       <DetailsList
         items={mockData(5)}
@@ -625,10 +689,11 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
         onRenderItemColumn={onRenderColumn}
         getCellValueKey={getCellValueKey}
+        groupProps={groupProps}
       />,
       () => {
-        expect(component).toBeDefined();
-        (component as IDetailsList).focusIndex(3);
+        expect(component).toBeTruthy();
+        component!.focusIndex(3);
         jest.runOnlyPendingTimers();
         expect(
           (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
@@ -636,13 +701,13 @@ describe('DetailsList', () => {
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
 
         // Set element visibility manually as a test workaround
-        (component as IDetailsList).focusIndex(4);
+        component!.focusIndex(4);
         jest.runOnlyPendingTimers();
         ((document.activeElement as HTMLElement).children[1] as any).isVisible = true;
         ((document.activeElement as HTMLElement).children[1].children[0] as any).isVisible = true;
         ((document.activeElement as HTMLElement).children[1].children[0].children[0] as any).isVisible = true;
 
-        (component as IDetailsList).focusIndex(4, true);
+        component!.focusIndex(4, true);
         jest.runOnlyPendingTimers();
         expect((document.activeElement as HTMLElement).textContent).toEqual('4');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
@@ -691,15 +756,20 @@ describe('DetailsList', () => {
   });
 
   it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
+    jest.useFakeTimers();
+
     const columns: IColumn[] = mockData(2, true);
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();
 
-    safeMount(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />, () => {
-      jest.runOnlyPendingTimers();
-      expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
-      expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
-    });
+    safeMount(
+      <DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} groupProps={groupProps} />,
+      () => {
+        jest.runOnlyPendingTimers();
+        expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
+        expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
+      },
+    );
   });
 
   it('invokes optional onRenderDetailsHeader prop to customize DetailsHeader rendering when provided', () => {
@@ -711,6 +781,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeaderMock}
+        groupProps={groupProps}
       />,
       () => {
         expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
@@ -734,6 +805,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeader}
+        groupProps={groupProps}
       />,
       () => {
         expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(4);
@@ -755,6 +827,7 @@ describe('DetailsList', () => {
         checkboxVisibility={CheckboxVisibility.always}
         selectionMode={SelectionMode.multiple}
         selection={selection}
+        groupProps={groupProps}
       />,
       () => {
         expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
@@ -770,7 +843,12 @@ describe('DetailsList', () => {
 
   it('initializes the selection mode object with the selectionMode prop', () => {
     safeMount(
-      <DetailsList items={mockData(5)} columns={mockData(5, true)} selectionMode={SelectionMode.none} />,
+      <DetailsList
+        items={mockData(5)}
+        columns={mockData(5, true)}
+        selectionMode={SelectionMode.none}
+        groupProps={groupProps}
+      />,
       (wrapper: ReactWrapper) => {
         const selectionZone = wrapper.find(SelectionZone);
 
@@ -781,48 +859,16 @@ describe('DetailsList', () => {
 
   it('handles updates to items and groups', () => {
     const tableOneItems = [
-      {
-        f1: 'A1',
-        f2: 'B1',
-        f3: 'C1',
-      },
-      {
-        f1: 'A2',
-        f2: 'B2',
-        f3: 'C2',
-      },
-      {
-        f1: 'A3',
-        f2: 'B3',
-        f3: 'C3',
-      },
-      {
-        f1: 'A4',
-        f2: 'B4',
-        f3: 'C4',
-      },
+      { f1: 'A1', f2: 'B1', f3: 'C1' },
+      { f1: 'A2', f2: 'B2', f3: 'C2' },
+      { f1: 'A3', f2: 'B3', f3: 'C3' },
+      { f1: 'A4', f2: 'B4', f3: 'C4' },
     ];
     const tableTwoItems = [
-      {
-        f1: 'D1',
-        f2: 'E1',
-        f3: 'F1',
-      },
-      {
-        f1: 'D2',
-        f2: 'E2',
-        f3: 'F2',
-      },
-      {
-        f1: 'D3',
-        f2: 'E3',
-        f3: 'F3',
-      },
-      {
-        f1: 'D4',
-        f2: 'E4',
-        f3: 'F4',
-      },
+      { f1: 'D1', f2: 'E1', f3: 'F1' },
+      { f1: 'D2', f2: 'E2', f3: 'F2' },
+      { f1: 'D3', f2: 'E3', f3: 'F3' },
+      { f1: 'D4', f2: 'E4', f3: 'F4' },
     ];
 
     const groupOneGroups: IGroup[] = [
@@ -867,7 +913,7 @@ describe('DetailsList', () => {
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
-        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        groupProps={{ onRenderHeader: onRenderGroupHeader, ...groupProps }}
         items={tableOneItems}
         groups={groupOneGroups}
         layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -883,7 +929,7 @@ describe('DetailsList', () => {
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
-        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        groupProps={{ onRenderHeader: onRenderGroupHeader, ...groupProps }}
         items={tableTwoItems}
         groups={groupOneGroups}
         layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -899,7 +945,7 @@ describe('DetailsList', () => {
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
-        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        groupProps={{ onRenderHeader: onRenderGroupHeader, ...groupProps }}
         items={tableTwoItems}
         groups={groupTwoGroups}
         layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -915,7 +961,7 @@ describe('DetailsList', () => {
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
-        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        groupProps={{ onRenderHeader: onRenderGroupHeader, ...groupProps }}
         items={tableOneItems}
         groups={groupTwoGroups}
         layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -927,41 +973,12 @@ describe('DetailsList', () => {
   });
 
   it('handles paged updates to items within groups', () => {
-    const roundOneItems = [
-      {
-        f1: 'A1',
-        f2: 'B1',
-        f3: 'C1',
-      },
-      undefined,
-      {
-        f1: 'A3',
-        f2: 'B3',
-        f3: 'C3',
-      },
-      undefined,
-    ];
+    const roundOneItems = [{ f1: 'A1', f2: 'B1', f3: 'C1' }, undefined, { f1: 'A3', f2: 'B3', f3: 'C3' }, undefined];
     const roundTwoItems = [
-      {
-        f1: 'A1',
-        f2: 'B1',
-        f3: 'C1',
-      },
-      {
-        f1: 'A2',
-        f2: 'B2',
-        f3: 'C2',
-      },
-      {
-        f1: 'A3',
-        f2: 'B3',
-        f3: 'C3',
-      },
-      {
-        f1: 'A4',
-        f2: 'B4',
-        f3: 'C4',
-      },
+      { f1: 'A1', f2: 'B1', f3: 'C1' },
+      { f1: 'A2', f2: 'B2', f3: 'C2' },
+      { f1: 'A3', f2: 'B3', f3: 'C3' },
+      { f1: 'A4', f2: 'B4', f3: 'C4' },
     ];
 
     const groups: IGroup[] = [
@@ -1004,7 +1021,7 @@ describe('DetailsList', () => {
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
         onRenderMissingItem={onRenderMissingItem}
-        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        groupProps={{ onRenderHeader: onRenderGroupHeader, ...groupProps }}
         items={roundOneItems}
         groups={groups}
         layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -1021,7 +1038,7 @@ describe('DetailsList', () => {
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
         onRenderMissingItem={onRenderMissingItem}
-        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        groupProps={{ onRenderHeader: onRenderGroupHeader, ...groupProps }}
         items={roundTwoItems}
         groups={groups}
         layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -1055,6 +1072,7 @@ describe('DetailsList', () => {
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="select row"
+        groupProps={groupProps}
       />,
       container,
     );
@@ -1073,6 +1091,7 @@ describe('DetailsList', () => {
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="select row"
+        groupProps={groupProps}
       />,
     );
 
@@ -1103,6 +1122,7 @@ describe('DetailsList', () => {
           },
         ]}
         checkButtonGroupAriaLabel="select section"
+        groupProps={groupProps}
       />,
       container,
     );

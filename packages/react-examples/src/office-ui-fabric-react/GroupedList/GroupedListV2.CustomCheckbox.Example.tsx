@@ -1,16 +1,16 @@
 import * as React from 'react';
 import {
   GroupHeader,
-  GroupedList,
-  IGroup,
   IGroupHeaderCheckboxProps,
   IGroupHeaderProps,
   IGroupRenderProps,
+  IGroup,
 } from 'office-ui-fabric-react/lib/GroupedList';
+import { GroupedListV2_unstable as GroupedListV2 } from 'office-ui-fabric-react/lib/GroupedListV2';
 import { IColumn, IObjectWithKey, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { useConst } from '@uifabric/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
@@ -23,11 +23,18 @@ const groupProps: IGroupRenderProps = {
   ),
 };
 
-const onRenderGroupHeaderCheckbox = (props?: IGroupHeaderCheckboxProps) => (
-  <Toggle checked={props ? props.checked : undefined} />
-);
+/* This is rendered within a checkbox, so it must not be interactive itself. */
+const onRenderGroupHeaderCheckbox = (props?: IGroupHeaderCheckboxProps) => {
+  const iconStyles = { root: { fontSize: '36px' } };
 
-export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
+  return props?.checked ? (
+    <Icon iconName="ToggleRight" styles={iconStyles} />
+  ) : (
+    <Icon iconName="ToggleLeft" styles={iconStyles} />
+  );
+};
+
+export const GroupedListV2CustomCheckboxExample: React.FunctionComponent = () => {
   const items: IObjectWithKey[] = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
   const groups = useConst(() => createGroups(groupCount, groupDepth, 0, groupCount));
   const columns = useConst(() =>
@@ -63,7 +70,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
     <div>
       <FocusZone>
         <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-          <GroupedList
+          <GroupedListV2
             items={items}
             onRenderCell={onRenderCell}
             selection={selection}
