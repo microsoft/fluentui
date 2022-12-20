@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 23 Nov 2022 12:28:00 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 12:28:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.202.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.202.0)
+
+Tue, 20 Dec 2022 12:28:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.201.0..@fluentui/react_v7.202.0)
+
+### Patches
+
+- add GroupedListV2 export ([PR #25985](https://github.com/microsoft/fluentui/pull/25985) by seanmonahan@microsoft.com)
+- Bump office-ui-fabric-react to v7.202.0 ([PR #25985](https://github.com/microsoft/fluentui/pull/25985) by seanmonahan@microsoft.com)
 
 ## [7.201.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.201.0)
 

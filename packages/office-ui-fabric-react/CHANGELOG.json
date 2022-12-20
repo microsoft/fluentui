@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 12:28:38 GMT",
+      "tag": "office-ui-fabric-react_v7.202.0",
+      "version": "7.202.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "cherry-pick: GroupedList: fix virtualization (unstable preview) (#24460)",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "f5d5ccd2346e02de9b1bb02038ff9ecde5d78ae7",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Dec 2022 12:27:55 GMT",
       "tag": "office-ui-fabric-react_v7.201.1",
       "version": "7.201.1",

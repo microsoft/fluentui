@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 12:28:38 GMT",
+      "tag": "@fluentui/react_v7.202.0",
+      "version": "7.202.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add GroupedListV2 export",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "f5d5ccd2346e02de9b1bb02038ff9ecde5d78ae7",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.202.0",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "f5d5ccd2346e02de9b1bb02038ff9ecde5d78ae7",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Nov 2022 12:28:00 GMT",
       "tag": "@fluentui/react_v7.201.0",
       "version": "7.201.0",

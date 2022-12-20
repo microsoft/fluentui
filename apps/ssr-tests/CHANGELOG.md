@@ -1,8 +1,17 @@
 # Change Log - ssr-tests
 
-This log was last generated on Tue, 13 Dec 2022 12:27:55 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 12:28:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v7.0.0)
+
+Tue, 20 Dec 2022 12:28:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v7.0.0..ssr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/fabric-website-resources to v7.10.15 ([PR #25985](https://github.com/microsoft/fluentui/pull/25985) by seanmonahan@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v7.0.0)
 

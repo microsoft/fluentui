@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 13 Dec 2022 12:27:55 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 12:28:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.202.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.202.0)
+
+Tue, 20 Dec 2022 12:28:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.201.1..office-ui-fabric-react_v7.202.0)
+
+### Minor changes
+
+- cherry-pick: GroupedList: fix virtualization (unstable preview) (#24460) ([PR #25985](https://github.com/microsoft/fluentui/pull/25985) by seanmonahan@microsoft.com)
 
 ## [7.201.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.201.1)
 
