@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import {
   Body1,
   Caption1,
@@ -17,11 +17,11 @@ import {
 
 storiesOf('Text Converged', module)
   .addDecorator((story: () => React.ReactNode) => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '250px' }}>
         {story()}
       </div>
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Default',

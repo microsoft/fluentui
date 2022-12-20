@@ -11,7 +11,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -591,8 +591,8 @@ storiesOf('Positioning', module)
   .addStory('target property', () => <TargetProp />)
   .addStory('imperative target', () => <ImperativeTarget />)
   .addStory('visibility modifiers', () => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('has "[data-popper-is-intersecting]" when the popover intersects boundaries')
         .executeScript('document.querySelector("#scrollable-area").scrollTop = 80')
         .snapshot(`has "[data-popper-escaped]" when the popper escapes the reference element's boundary`)
@@ -601,6 +601,6 @@ storiesOf('Positioning', module)
         .end()}
     >
       <VisibilityModifiers />
-    </Screener>
+    </StoryWright>
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true });

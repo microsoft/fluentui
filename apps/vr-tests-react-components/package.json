@@ -5,15 +5,14 @@
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
     "build": "build-storybook -o dist/storybook",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
     "convert": "bash convertStoriesToStoryWright.sh",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
-    "screener": "just-scripts screener",
     "screener:build": "yarn build",
     "start": "start-storybook",
     "test": "just-scripts test",
+    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
     "type-check": "tsc"
   },
   "devDependencies": {
@@ -63,7 +62,6 @@
     "@griffel/react": "^1.4.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "screener-storybook": "0.23.0",
     "tslib": "^2.1.0"
   }
 }
