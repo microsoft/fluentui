@@ -150,7 +150,6 @@ describe('Custom Trigger', () => {
     };
 
     return (
-      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger disableButtonEnhancement>
           <CustomMenuTrigger />
@@ -714,7 +713,6 @@ describe(`Nested Menus`, () => {
     };
 
     return (
-      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger disableButtonEnhancement>
           <MenuItem>Editor Layout</MenuItem>
@@ -738,7 +736,6 @@ describe(`Nested Menus`, () => {
     };
 
     return (
-      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger disableButtonEnhancement>
           <MenuItem>Appearance</MenuItem>
@@ -763,7 +760,6 @@ describe(`Nested Menus`, () => {
     };
 
     return (
-      // eslint-disable-next-line react/jsx-no-bind
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger disableButtonEnhancement>
           <MenuItem>Preferences</MenuItem>

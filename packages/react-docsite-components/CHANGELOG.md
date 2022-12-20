@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Fri, 09 Dec 2022 07:54:31 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 07:53:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.2)
+
+Tue, 20 Dec 2022 07:53:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.1..@fluentui/react-docsite-components_v8.11.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.10 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/theme to v2.6.20 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/example-data to v8.4.4 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/public-docsite-setup to v0.3.14 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.37 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/common-styles to v1.2.14 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+
+## [8.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.1)
+
+Fri, 16 Dec 2022 07:50:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.0..@fluentui/react-docsite-components_v8.11.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.9 ([PR #26015](https://github.com/microsoft/fluentui/pull/26015) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.36 ([PR #26015](https://github.com/microsoft/fluentui/pull/26015) by beachball)
+
+## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.0)
+
+Thu, 15 Dec 2022 07:47:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.10.35..@fluentui/react-docsite-components_v8.11.0)
+
+### Minor changes
+
+- Updated to support longer theme name in dropdown ([PR #25982](https://github.com/microsoft/fluentui/pull/25982) by gcox@microsoft.com)
+
+## [8.10.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.10.35)
+
+Tue, 13 Dec 2022 07:46:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.10.34..@fluentui/react-docsite-components_v8.10.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.8 ([PR #25971](https://github.com/microsoft/fluentui/pull/25971) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.35 ([PR #25971](https://github.com/microsoft/fluentui/pull/25971) by beachball)
 
 ## [8.10.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.10.34)
 

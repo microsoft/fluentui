@@ -243,8 +243,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       ...this.props.calloutProps,
     };
     const tickParams = {
-      tickValues: tickValues,
-      tickFormat: tickFormat,
+      tickValues,
+      tickFormat,
     };
 
     return (
@@ -371,7 +371,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           if (isLegendMultiSelectEnabled) {
             this._handleMultipleLineLegendSelectionAction(point);
@@ -383,6 +383,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.setState({ activeLegend: '' });
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this.setState({ activeLegend: point.legend });
         },
         ...(point.legendShape && {
@@ -412,6 +413,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               this.setState({ activeLegend: '' });
             },
             hoverAction: () => {
+              this._handleChartMouseLeave();
               this.setState({ activeLegend: title });
             },
             opacity: this._getColorFillBarOpacity(colorFillBar),
