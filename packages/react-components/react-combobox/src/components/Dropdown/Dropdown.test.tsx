@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Dropdown', () => {
   isConformant({
