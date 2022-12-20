@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Add bundle size tests for Fields",
+  "packageName": "@fluentui/react-combobox",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}
