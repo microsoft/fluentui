@@ -201,7 +201,7 @@ export function isPackageVersionPrerelease(versionString: string) {
 }
 
 export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
-  const hasVNextTag = project.tags?.includes('vNext');
+  const hasVNextTag = !!project.tags?.includes('vNext');
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
   return isPackageVersionConverged(packageJson.version) || hasVNextTag;
 }
