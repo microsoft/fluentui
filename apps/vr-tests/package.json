@@ -12,7 +12,6 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
-    "screener": "just-scripts screener",
     "start": "just-scripts dev:storybook",
     "type-check": "tsc"
   },
@@ -31,7 +30,6 @@
     "@fluentui/storybook": "^1.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "screener-storybook": "0.23.0",
     "tslib": "^2.1.0"
   }
 }
