@@ -4,11 +4,12 @@ import { Markdown, MarkdownHeader, IPageSectionProps } from '@fluentui/react-doc
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { OfficeBrandIconsPageProps } from './OfficeBrandIconsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
+import { cdnUrl } from '../../../utilities/cdn';
 import * as styles from './OfficeBrandIconsPage.module.scss';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs';
-const fabricCDN = 'https://static2.sharepointonline.com/files/fabric-cdn-prod_20200430.002/assets';
+const fabricCDN = `${cdnUrl}/assets`;
 
 const productIcons = require<
   { icon: string; name: string }[]
