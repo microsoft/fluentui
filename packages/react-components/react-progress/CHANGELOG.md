@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Mon, 05 Dec 2022 18:29:28 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 14:59:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.8)
+
+Tue, 20 Dec 2022 14:59:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.7..@fluentui/react-progress_v9.0.0-alpha.8)
+
+### Changes
+
+- chore: Change name to ProgressBar ([PR #25929](https://github.com/microsoft/fluentui/pull/25929) by ololubek@microsoft.com)
+- fix: Add @noflip to animation styles to prevent extra from css being generated ([PR #26029](https://github.com/microsoft/fluentui/pull/26029) by ololubek@microsoft.com)
+- (chore): remove deprecated exports from ProgressBar ([PR #26027](https://github.com/microsoft/fluentui/pull/26027) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.11 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.7)
 

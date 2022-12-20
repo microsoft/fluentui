@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(DataGridRow): `children` type should only be render function",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

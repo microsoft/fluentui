@@ -2,6 +2,273 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 14:59:20 GMT",
+      "tag": "@fluentui/react-components_v9.7.3",
+      "version": "9.7.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marigome@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "f944ddda46a4f5f997fd7614a62b72fcbab09da6",
+            "comment": "fix: update tokens to match the spec"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "5a613ed831254b8d8fbb8fd4648bfc034050a7eb",
+            "comment": "fix: remove unnecessary selectable ref and add support for aria-describedby on card preview"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "5743aed3aa6b7048694111230c534008a59348ff",
+            "comment": "fix selectable card accessibility"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e7ee1eff2c65a070786a31ee1170072937c0e143",
+            "comment": "feat: update Listbox and Option to use menu and menuitemcheckbox semantics for multiselect"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "72504f20386a53a551b2580a52c760704f526b21",
+            "comment": "feat: multiselect Combobox does not display selected options in the text field"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "fdd8d8fb759a143e8f3d6792960ca10b197c3b23",
+            "comment": "chore: Change name to ProgressBar"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "25bc50c2fda3b80ce3f57245ce589db69e11f296",
+            "comment": "fix: Add @noflip to animation styles to prevent extra from css being generated"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "9e3f40f8ca67016590ced1a18aa16d9c02b3b5c6",
+            "comment": "(chore): remove deprecated exports from ProgressBar"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "76054827c6b9ccc7ad73a818952f2d636ffc9e6d",
+            "comment": "fix: Explicit focus outline for TableHeaderCell and TableSelectionCell"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "67a7284ac5934475134ce72af3965f3f9a223636",
+            "comment": "fix(DataGridSelectionCell): should render `aria-selected` on the cell"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "622bcbbe42920f53466bed4ad998b67daac3d6d3",
+            "comment": "fix: DataGrid supports keyboard navigation by default"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "c847712d9293db7028bc01e9ba4204e055ebbfb7",
+            "comment": "feat: Add row focus as unstable feature due to a11y unknowns"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b1f470d42273869bc4e10fefff6f08b90640092d",
+            "comment": "fix(DataGridRow): `children` type should only be render function"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "dc96e9c54ac445396cd5e74812fd2ac1acdd15eb",
+            "comment": "fix: DataGridRow should prevent default on spacebar"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b0aab3b9647e55a355e5e1c0d4e4cf7cc7955fdb",
+            "comment": "feat: DataGrid supports custom row Ids"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "ac32a5c210e34916f6990ebe4449621344ba0839",
+            "comment": "fix(TableHeaderCell): should render `aria-sort=\"none\"` if not sorted"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "43e7eb9324b43d02d8d828ff722ed3f3858f3d30",
+            "comment": "feat: add new tokens"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "a5ab294131ad122d9e76118183e771aeb133d9db",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "82bd84ff65c8316297ef7601154c5e5c321040ab",
+            "comment": "fix: Avatar shouldn't render an icon when displaying an image (performance)"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "9c6efea1aea75e3e0d7355a729785ade9af638c5",
+            "comment": "chore: Update Checkbox to use griffel reset styles"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9e3f40f8ca67016590ced1a18aa16d9c02b3b5c6",
+            "comment": "(chore): remove deprecated exports from ProgressBar"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "fdd8d8fb759a143e8f3d6792960ca10b197c3b23",
+            "comment": "chore: Rename Progress to ProgressBar"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "15328c336f754535450e7190802b9ea4b948f5e6",
+            "comment": "fix: always apply typography styles in MenuPopover"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "15328c336f754535450e7190802b9ea4b948f5e6",
+            "comment": "fix: always apply typography styles in PopoverSurface"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "905b3b2e74e472bd2d9cb825c0dc12d3dee4aa46",
+            "comment": "fix: Coordinates should be rounded to integers"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "15328c336f754535450e7190802b9ea4b948f5e6",
+            "comment": "add \"applyStylesToPortals\" prop"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "9c6efea1aea75e3e0d7355a729785ade9af638c5",
+            "comment": "chore: Update Radio to use griffel reset styles"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "49c1f3477d8f69760616b9d1fa7e32b81b6ca18e",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "43e7eb9324b43d02d8d828ff722ed3f3858f3d30",
+            "comment": "fix: update theme tokens"
+          }
+        ],
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "9693ad97624e44786c6fa0418c7f5e8fa407af2a",
+            "comment": "chore: Add Checkbox bundle size test"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "bb467c1f5f53e3f1bf3adbc5ce1af5e544284744",
+            "comment": "chore: bump react toolbar"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "49c1f3477d8f69760616b9d1fa7e32b81b6ca18e",
+            "comment": "chore: Move tabster FocusIndicator story doc to Concepts/Accessiblity folder of this package."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bfe6a0aebc33fd01023fb9c89b78a698f3247abf",
+            "comment": "chore: remove unneeded eslint rule line disables."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "4d5cf677ea4d882be7cda6903d7fce9fd6a20189",
+            "comment": "chore: Move Field migration guide to Migration.md"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "bfe6a0aebc33fd01023fb9c89b78a698f3247abf",
+            "comment": "chore: remove unneeded eslint rule line disables."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "bfe6a0aebc33fd01023fb9c89b78a698f3247abf",
+            "comment": "chore: remove unneeded eslint rule line disables."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "81c1239976fbf6dbc3c3c160462eac1b3ddfd0a8",
+            "comment": "docs: Table examples generally navigate with tab"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "bb467c1f5f53e3f1bf3adbc5ce1af5e544284744",
+            "comment": "chore: bump react toolbar"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "501417bb2baed548d19cfffa6a0e3d2d5f8816fb",
+            "comment": "feat: Implement `ToolbarGroup` component"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "267b34f21c2ecef570540be8d17c68b04f365a9d",
+            "comment": "feat: add Vertical Button variation for toolbar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f3e6e65b7f6435dc6b09bfd626e99921a10983d8",
+            "comment": "feat: isHTMLElement helper function"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dc96e9c54ac445396cd5e74812fd2ac1acdd15eb",
+            "comment": "feat: replace shouldPreventKeydown with isInteractiveHTMLElement"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:19 GMT",
       "tag": "@fluentui/react-components_v9.7.2",
       "version": "9.7.2",
