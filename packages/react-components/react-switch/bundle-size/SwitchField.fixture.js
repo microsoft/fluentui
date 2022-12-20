@@ -1,6 +1,6 @@
-import { SwitchField } from '@fluentui/react-switch';
+import { SwitchField_unstable } from '@fluentui/react-switch';
 
-console.log(SwitchField);
+console.log(SwitchField_unstable);
 
 export default {
   name: 'SwitchField',

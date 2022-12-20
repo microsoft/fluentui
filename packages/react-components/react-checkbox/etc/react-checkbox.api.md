@@ -9,7 +9,6 @@
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
@@ -24,16 +23,10 @@ export const Checkbox: ForwardRefComponent<CheckboxProps>;
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 
 // @public (undocumented)
-export const CheckboxField_unstable: ForwardRefComponent<CheckboxFieldProps_unstable>;
+export const CheckboxField_unstable: ForwardRefComponent<any>;
 
 // @public (undocumented)
 export const checkboxFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
-
-// @public (undocumented)
-export type CheckboxFieldProps_unstable = Omit<FieldProps<typeof Checkbox>, 'label'> & {
-    label?: CheckboxProps['label'];
-    fieldLabel?: FieldProps<typeof Checkbox>['label'];
-};
 
 // @public
 export interface CheckboxOnChangeData {

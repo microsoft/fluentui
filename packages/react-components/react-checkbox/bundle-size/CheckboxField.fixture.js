@@ -1,6 +1,6 @@
-import { CheckboxField } from '@fluentui/react-checkbox';
+import { CheckboxField_unstable } from '@fluentui/react-checkbox';
 
-console.log(CheckboxField);
+console.log(CheckboxField_unstable);
 
 export default {
   name: 'CheckboxField',

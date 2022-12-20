@@ -1,6 +1,6 @@
-import { ComboboxField } from '@fluentui/react-combobox';
+import { ComboboxField_unstable } from '@fluentui/react-combobox';
 
-console.log(ComboboxField);
+console.log(ComboboxField_unstable);
 
 export default {
   name: 'ComboboxField',

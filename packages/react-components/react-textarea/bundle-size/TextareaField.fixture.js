@@ -1,6 +1,6 @@
-import { TextareaField } from '@fluentui/react-textarea';
+import { TextareaField_unstable } from '@fluentui/react-textarea';
 
-console.log(TextareaField);
+console.log(TextareaField_unstable);
 
 export default {
   name: 'TextareaField',

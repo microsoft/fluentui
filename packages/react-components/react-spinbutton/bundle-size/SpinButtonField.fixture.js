@@ -1,6 +1,6 @@
-import { SpinButtonField } from '@fluentui/react-spinbutton';
+import { SpinButtonField_unstable } from '@fluentui/react-spinbutton';
 
-console.log(SpinButtonField);
+console.log(SpinButtonField_unstable);
 
 export default {
   name: 'SpinButtonField',

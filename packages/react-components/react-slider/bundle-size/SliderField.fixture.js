@@ -1,6 +1,6 @@
-import { SliderField } from '@fluentui/react-slider';
+import { SliderField_unstable } from '@fluentui/react-slider';
 
-console.log(SliderField);
+console.log(SliderField_unstable);
 
 export default {
   name: 'SliderField',
