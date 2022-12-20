@@ -31,8 +31,8 @@
     "@fluentui/scripts": "*"
   },
   "dependencies": {
-    "@griffel/core": "^1.8.1",
-    "@griffel/react": "^1.4.2",
+    "@griffel/core": "^1.9.0",
+    "@griffel/react": "^1.5.2",
     "@fluentui/react-shared-contexts": "^9.1.4",
     "@fluentui/react-tabster": "^9.3.4",
     "@fluentui/react-theme": "^9.1.5",
