@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/tokens",
+  "entries": [
+    {
+      "date": "Tue, 20 Dec 2022 07:53:34 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.1",
+      "version": "1.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e81182c7d8ad8dc5534d171b88918d6a514dbac1",
+            "comment": "Add @fluentui/tokens package"
+          }
+        ]
+      }
+    }
+  ]
+}

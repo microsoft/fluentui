@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Updating cdn links to match latest.",
-  "packageName": "@fluentui/theme",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
