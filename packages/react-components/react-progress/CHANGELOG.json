@@ -2,6 +2,39 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Mon, 05 Dec 2022 18:29:28 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "77b8194cfeefddf753b473be572233fc5defe186",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.10",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.2",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Nov 2022 23:05:44 GMT",
       "tag": "@fluentui/react-progress_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",

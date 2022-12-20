@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING(useTable): `onSelectionChange` returns data object",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "feat: Implement `ToolbarGroup` component",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "chassunc@microsoft.com",
+  "dependentChangeType": "none"
+}

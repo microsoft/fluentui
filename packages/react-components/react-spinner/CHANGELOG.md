@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Thu, 17 Nov 2022 23:05:47 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.12)
+
+Mon, 05 Dec 2022 18:29:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.11..@fluentui/react-spinner_v9.0.12)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25814](https://github.com/microsoft/fluentui/pull/25814) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-label to v9.0.12 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
 
 ## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.11)
 

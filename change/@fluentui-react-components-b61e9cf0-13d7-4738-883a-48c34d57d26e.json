@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: add exports for CSS extraction in Griffel",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

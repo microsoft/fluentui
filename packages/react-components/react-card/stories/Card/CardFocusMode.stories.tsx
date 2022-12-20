@@ -75,7 +75,7 @@ const CardExample = (props: CardProps) => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
       />
 
       <p className={styles.text}>

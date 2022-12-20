@@ -21,10 +21,9 @@ export const useDataGridSelectionCell_unstable = (
 ): DataGridSelectionCellState => {
   const isHeader = useIsInTableHeader();
   const rowId = useRowIdContext();
-  const multiselect = useDataGridContext_unstable(ctx => ctx.selection.selectionMode === 'multiselect');
   const subtle = useDataGridContext_unstable(ctx => ctx.subtleSelection);
   const checked = useDataGridContext_unstable(ctx => {
-    if (isHeader && multiselect) {
+    if (isHeader && ctx.selection.selectionMode === 'multiselect') {
       return ctx.selection.allRowsSelected ? true : ctx.selection.someRowsSelected ? 'mixed' : false;
     }
 
@@ -51,7 +50,9 @@ export const useDataGridSelectionCell_unstable = (
       checked,
       type,
       tabIndex: 0,
-      hidden: isHeader && !multiselect,
+      hidden: isHeader && type === 'radio',
+      'aria-checked': isHeader ? checked : undefined,
+      'aria-selected': isHeader || checked === 'mixed' ? undefined : checked,
       subtle,
       checkboxIndicator: { tabIndex: -1 },
       ...props,

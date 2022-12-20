@@ -116,6 +116,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/fluent2-theme": {
+      "root": "packages/fluent2-theme",
+      "projectType": "library",
+      "implicitDependencies": []
+    },
     "@fluentui/font-icons-mdl2": {
       "root": "packages/font-icons-mdl2",
       "projectType": "library",
@@ -878,6 +883,13 @@
       "root": "apps/theming-designer",
       "projectType": "application",
       "implicitDependencies": []
+    },
+    "@fluentui/tokens": {
+      "root": "packages/tokens",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/tokens/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",

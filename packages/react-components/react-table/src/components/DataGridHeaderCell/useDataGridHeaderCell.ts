@@ -32,5 +32,8 @@ export const useDataGridHeaderCell_unstable = (
     props.onClick?.(e);
   });
 
-  return useTableHeaderCell_unstable({ sortDirection, as: 'div', ...props, onClick }, ref);
+  return useTableHeaderCell_unstable(
+    { sortDirection, as: 'div', tabIndex: sortable ? undefined : 0, ...props, onClick },
+    ref,
+  );
 };

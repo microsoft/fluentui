@@ -3,10 +3,10 @@
 exports[`Option renders a default multi-select state 1`] = `
 <div>
   <div
-    aria-selected="false"
+    aria-checked="false"
     class="fui-Option"
     id="fluent-option1"
-    role="option"
+    role="menuitemcheckbox"
   >
     <span
       aria-hidden="true"
@@ -67,10 +67,10 @@ exports[`Option renders a default single-select state 1`] = `
 exports[`Option renders a selected multi-select state 1`] = `
 <div>
   <div
-    aria-selected="true"
+    aria-checked="true"
     class="fui-Option"
     id="fluent-option1"
-    role="option"
+    role="menuitemcheckbox"
   >
     <span
       aria-hidden="true"

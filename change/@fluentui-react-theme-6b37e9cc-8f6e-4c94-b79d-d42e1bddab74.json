@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: Use Object.assign to reduce loop runtime",
-  "packageName": "@fluentui/react-theme",
-  "email": "tigeroakes@microsoft.com",
-  "dependentChangeType": "patch"
-}

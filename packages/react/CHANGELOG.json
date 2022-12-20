@@ -2,6 +2,135 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 07:53:33 GMT",
+      "tag": "@fluentui/react_v8.103.10",
+      "version": "8.103.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.25",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.5",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.11",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.8.4",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.20",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.14",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/example-data to v8.4.4",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Dec 2022 07:50:07 GMT",
+      "tag": "@fluentui/react_v8.103.9",
+      "version": "8.103.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7cb446d4311c0621a3dcecd4eed7fe0c3476de53",
+            "comment": "fix: drag and drop column reorder for grouped DetailsList"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Dec 2022 07:46:30 GMT",
+      "tag": "@fluentui/react_v8.103.8",
+      "version": "8.103.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0e5a232bacdd7f5fe8c58b61f789d0e43d800992",
+            "comment": "fix: Grouped DetailsList alignment and cell count when CollapseAllVisibility is hidden"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c2b76828654d1cdccc1e710b6bf647992ba4d3ae",
+            "comment": "fix: Autofill only sets input selectionRange if input is in focus\""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Dec 2022 07:54:30 GMT",
+      "tag": "@fluentui/react_v8.103.7",
+      "version": "8.103.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "af081ef87e336cfe7e69b42a086165ec5dd3d735",
+            "comment": "fix: Removing weird hover style on first option in multiselect Comboboxes."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3749722c85c3f7d6ef5e6386b09659aeb8dac6d7",
+            "comment": "fix: Stopping autocomplete in Combobox from suggesting disabled options."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Dec 2022 07:46:37 GMT",
+      "tag": "@fluentui/react_v8.103.6",
+      "version": "8.103.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "naethell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0a56bc44f375de754ab0693b938adbd58412184c",
+            "comment": "fix: Always give panel header a background color, even before resize."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 07:54:46 GMT",
       "tag": "@fluentui/react_v8.103.5",
       "version": "8.103.5",

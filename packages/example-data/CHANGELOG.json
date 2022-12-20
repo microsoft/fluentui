@@ -2,6 +2,21 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 07:53:32 GMT",
+      "tag": "@fluentui/example-data_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/example-data",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:07 GMT",
       "tag": "@fluentui/example-data_v8.4.3",
       "version": "8.4.3",

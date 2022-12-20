@@ -23,6 +23,7 @@ import {
   windowsLogoColor,
   macLogoColor,
   crossPlatformLogoColor,
+  cdnUrl,
 } from '../../utilities/index';
 import { SiteDefinition } from '../../SiteDefinition/SiteDefinition';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
@@ -41,7 +42,7 @@ registerIcons({
   },
 });
 
-const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/';
+const fabricUsageIconBaseUrl = `${cdnUrl}/assets/brand-icons/product/svg/`;
 
 /**
  * List of App/Brand icon names that use Fluent UI.
@@ -363,8 +364,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneHalf}>
             <Image
-              src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-1x.png"
-              srcSet="https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-1x.png 1x, https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-2x.png 2x"
+              src={`${cdnUrl}/fabric-website/images/discover-resources-1x.png`}
+              srcSet={
+                `${cdnUrl}/fabric/fabric-website/images/discover-resources-1x.png 1x` +
+                `, ${cdnUrl}/fabric-website/images/discover-resources-2x.png 2x`
+              }
               alt="Resources illustration"
               className={this._classNames.illustration}
             />

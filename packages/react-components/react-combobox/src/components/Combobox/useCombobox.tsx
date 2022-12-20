@@ -27,7 +27,7 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  const baseState = useComboboxBaseState(props);
+  const baseState = useComboboxBaseState({ ...props, editable: true });
   const {
     activeOption,
     clearSelection,
@@ -61,19 +61,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setPopupWidth(width);
   }, [open]);
 
-  // handle input type-to-select
-  const getSearchString = (inputValue: string): string => {
-    // if there are commas in the value string, take the text after the last comma
-    const searchString = inputValue.split(',').pop();
-
-    return searchString?.trim().toLowerCase() || '';
-  };
-
   // set active option and selection based on typing
   const getOptionFromInput = (inputValue: string): OptionValue | undefined => {
-    const searchString = getSearchString(inputValue);
+    const searchString = inputValue?.trim().toLowerCase();
 
-    if (searchString.length === 0) {
+    if (!searchString || searchString.length === 0) {
       return;
     }
 
@@ -102,7 +94,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     // handle selection and updating value if freeform is false
     if (!baseState.open && !freeform) {
       // select matching option, if the value fully matches
-      if (value && activeOption && getSearchString(value) === activeOption?.value.toLowerCase()) {
+      if (value && activeOption && value.trim().toLowerCase() === activeOption?.value.toLowerCase()) {
         baseState.selectOption(ev, activeOption);
       }
 

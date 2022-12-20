@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Fri, 11 Nov 2022 14:57:46 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2022 18:29:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.3)
+
+Mon, 05 Dec 2022 18:29:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.2..@fluentui/react-theme_v9.1.3)
+
+### Patches
+
+- refactor: Use Object.assign to reduce loop runtime ([PR #25433](https://github.com/microsoft/fluentui/pull/25433) by tigeroakes@microsoft.com)
+- chore: Migrate to new package structure. ([PR #25812](https://github.com/microsoft/fluentui/pull/25812) by tristan.watanabe@gmail.com)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.2)
 

@@ -338,6 +338,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 this._onClick(point.legend!);
               },
               hoverAction: () => {
+                this._handleChartMouseLeave();
                 this._onHover(point.legend!);
               },
               onMouseOutAction: () => {
@@ -363,6 +364,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               this._onClick(point.legend!);
             },
             hoverAction: () => {
+              this._handleChartMouseLeave();
               this._onHover(point.legend!);
             },
             onMouseOutAction: () => {

@@ -13,6 +13,6 @@ import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
  * @param ref - reference to root HTMLElement of DataGridCell
  */
 export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Ref<HTMLElement>): DataGridCellState => {
-  const tabbable = useDataGridContext_unstable(ctx => ctx.focusMode !== 'none');
+  const tabbable = useDataGridContext_unstable(ctx => ctx.focusMode === 'cell');
   return useTableCell_unstable({ as: 'div', role: 'gridcell', tabIndex: tabbable ? 0 : undefined, ...props }, ref);
 };

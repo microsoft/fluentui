@@ -476,6 +476,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           this._onLegendClick(singleChartData.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(singleChartData.legend);
         },
         onMouseOutAction: () => {

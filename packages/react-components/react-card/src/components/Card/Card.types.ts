@@ -2,16 +2,11 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
- * Card refs to the root element slot.
- */
-export type CardRefElement = HTMLDivElement | HTMLButtonElement | HTMLAnchorElement;
-
-/**
  * Card selected event type
  *
  * This event is fired when a selectable card changes its selection state.
  */
-export type CarOnSelectionChangeEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
+export type CardOnSelectionChangeEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
 
 /**
  * Data sent from the selection events on a selectable card.
@@ -21,18 +16,35 @@ export type CardOnSelectData = {
 };
 
 /**
+ * Data shared between card components
+ */
+export interface CardContextValue {
+  selectableA11yProps: {
+    referenceId?: string;
+    setReferenceId: (referenceId: string) => void;
+    referenceLabel?: string;
+    setReferenceLabel: (referenceLabel: string) => void;
+  };
+}
+
+/**
  * Slots available in the Card component.
  */
 export type CardSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'div', 'a' | 'button'>;
+  root: Slot<'div'>;
 
   /**
    * Select element represents a checkbox.
    */
-  select?: Slot<'div', 'input'>;
+  floatingAction?: Slot<'div'>;
+
+  /**
+   * The internal checkbox element that renders when the card is selectable.
+   */
+  checkbox?: Slot<'input'>;
 };
 
 /**
@@ -102,7 +114,7 @@ export type CardProps = ComponentProps<CardSlots> & {
   selected?: boolean;
 
   /**
-   * Defines whether the card is initially in a selected state or not when rendered.
+   * Defines whether the card is initially in a selected state when rendered.
    *
    * @default false
    */
@@ -111,13 +123,14 @@ export type CardProps = ComponentProps<CardSlots> & {
   /**
    * Callback to be called when the selected state value changes.
    */
-  onSelectionChange?: (event: CarOnSelectionChangeEvent, data: CardOnSelectData) => void;
+  onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
 };
 
 /**
  * State used in rendering Card.
  */
 export type CardState = ComponentState<CardSlots> &
+  CardContextValue &
   Required<
     Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
       /**
@@ -135,17 +148,17 @@ export type CardState = ComponentState<CardSlots> &
       selectable: boolean;
 
       /**
-       * Represents a selectable card that contains a slot for the select element.
-       *
-       * @default false
-       */
-      hasSelectSlot: boolean;
-
-      /**
        * Defines whether the card is currently selected.
        *
        * @default false
        */
       selected: boolean;
+
+      /**
+       * Defines whether the card internal checkbox is currently focused.
+       *
+       * @default false
+       */
+      selectFocused: boolean;
     }
   >;

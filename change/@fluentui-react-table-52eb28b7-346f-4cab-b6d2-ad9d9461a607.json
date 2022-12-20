@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Cell actions should have correct background when row focused within",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
