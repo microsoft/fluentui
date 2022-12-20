@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "(chore): remove deprecated exports from ProgressBar",
-  "packageName": "@fluentui/react-components",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

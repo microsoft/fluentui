@@ -2,6 +2,119 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 14:59:28 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "76054827c6b9ccc7ad73a818952f2d636ffc9e6d",
+            "comment": "fix: Explicit focus outline for TableHeaderCell and TableSelectionCell"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "67a7284ac5934475134ce72af3965f3f9a223636",
+            "comment": "fix(DataGridSelectionCell): should render `aria-selected` on the cell"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "622bcbbe42920f53466bed4ad998b67daac3d6d3",
+            "comment": "fix: DataGrid supports keyboard navigation by default"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "c847712d9293db7028bc01e9ba4204e055ebbfb7",
+            "comment": "feat: Add row focus as unstable feature due to a11y unknowns"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b1f470d42273869bc4e10fefff6f08b90640092d",
+            "comment": "fix(DataGridRow): `children` type should only be render function"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "dc96e9c54ac445396cd5e74812fd2ac1acdd15eb",
+            "comment": "fix: DataGridRow should prevent default on spacebar"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "b0aab3b9647e55a355e5e1c0d4e4cf7cc7955fdb",
+            "comment": "feat: DataGrid supports custom row Ids"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "ac32a5c210e34916f6990ebe4449621344ba0839",
+            "comment": "fix(TableHeaderCell): should render `aria-sort=\"none\"` if not sorted"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.9",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.15",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.14",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.3.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "81c1239976fbf6dbc3c3c160462eac1b3ddfd0a8",
+            "comment": "docs: Table examples generally navigate with tab"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:31 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.13",
       "version": "9.0.0-alpha.13",

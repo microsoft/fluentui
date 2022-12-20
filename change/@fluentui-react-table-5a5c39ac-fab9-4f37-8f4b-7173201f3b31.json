@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add row focus as unstable feature due to a11y unknowns",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,63 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 14:59:22 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.18",
+      "version": "9.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e7ee1eff2c65a070786a31ee1170072937c0e143",
+            "comment": "feat: update Listbox and Option to use menu and menuitemcheckbox semantics for multiselect"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "72504f20386a53a551b2580a52c760704f526b21",
+            "comment": "feat: multiselect Combobox does not display selected options in the text field"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.11",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.0.13",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.3.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:21 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.17",
       "version": "9.0.0-beta.17",

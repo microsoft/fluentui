@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Mon, 05 Dec 2022 18:29:36 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 14:59:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.4)
+
+Tue, 20 Dec 2022 14:59:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.3..@fluentui/react-theme_v9.1.4)
+
+### Patches
+
+- fix: update theme tokens ([PR #25903](https://github.com/microsoft/fluentui/pull/25903) by miroslav.stastny@microsoft.com)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.3)
 

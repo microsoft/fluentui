@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Mon, 05 Dec 2022 18:29:37 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 14:59:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.6)
+
+Tue, 20 Dec 2022 14:59:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.5..@fluentui/react-theme-sass_v9.0.0-alpha.6)
+
+### Changes
+
+- feat: add new tokens ([PR #25903](https://github.com/microsoft/fluentui/pull/25903) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.5)
 

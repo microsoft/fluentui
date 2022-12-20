@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 14:59:31 GMT",
+      "tag": "@fluentui/react-theme_v9.1.4",
+      "version": "9.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "43e7eb9324b43d02d8d828ff722ed3f3858f3d30",
+            "comment": "fix: update theme tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:36 GMT",
       "tag": "@fluentui/react-theme_v9.1.3",
       "version": "9.1.3",
