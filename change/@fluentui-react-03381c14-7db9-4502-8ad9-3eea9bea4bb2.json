@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: export GroupedListV2 types",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
