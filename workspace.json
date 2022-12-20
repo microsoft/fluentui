@@ -732,6 +732,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-tags": {
+      "root": "packages/react-components/react-tags",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-tags/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-telemetry": {
       "root": "packages/fluentui/react-telemetry",
       "projectType": "library",
