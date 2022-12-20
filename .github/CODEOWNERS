@@ -66,7 +66,7 @@ packages/fluentui/react-northstar/src/components/Chat @microsoft/fluentui-norths
 packages/fluentui/react-northstar/src/themes/teams/components/Chat @microsoft/fluentui-northstar @Hirse
 
 #### Web Components
-packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
+packages/web-components @microsoft/fui-wc
 
 #### Apps
 apps/public-docsite @microsoft/fluentui-v8-website
