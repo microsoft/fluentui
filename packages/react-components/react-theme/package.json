@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "tslib": "^2.1.0",
-    "@fluentui/tokens": "1.0.0-alpha.0"
+    "@fluentui/tokens": "1.0.0-alpha.1"
   },
   "beachball": {
     "disallowedChangeTypes": [
