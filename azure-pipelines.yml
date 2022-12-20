@@ -83,22 +83,3 @@ jobs:
           githubTargetLink: $(deployUrl)/
 
       - template: .devops/templates/cleanup.yml
-
-  - job: Screener
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: |
-          yarn lage screener --to vr-tests --debug --verbose --no-cache
-        displayName: run VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
-
-      - template: .devops/templates/cleanup.yml
