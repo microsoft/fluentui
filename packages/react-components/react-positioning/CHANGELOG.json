@@ -2,6 +2,39 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 14:59:26 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.4",
+      "version": "9.3.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "905b3b2e74e472bd2d9cb825c0dc12d3dee4aa46",
+            "comment": "fix: Coordinates should be rounded to integers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:28 GMT",
       "tag": "@fluentui/react-positioning_v9.3.3",
       "version": "9.3.3",

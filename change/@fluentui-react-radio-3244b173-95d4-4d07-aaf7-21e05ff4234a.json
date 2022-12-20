@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update Radio to use griffel reset styles",
-  "packageName": "@fluentui/react-radio",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

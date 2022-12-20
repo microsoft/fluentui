@@ -2,6 +2,57 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 14:59:26 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "fdd8d8fb759a143e8f3d6792960ca10b197c3b23",
+            "comment": "chore: Change name to ProgressBar"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "25bc50c2fda3b80ce3f57245ce589db69e11f296",
+            "comment": "fix: Add @noflip to animation styles to prevent extra from css being generated"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "9e3f40f8ca67016590ced1a18aa16d9c02b3b5c6",
+            "comment": "(chore): remove deprecated exports from ProgressBar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.11",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:28 GMT",
       "tag": "@fluentui/react-progress_v9.0.0-alpha.7",
       "version": "9.0.0-alpha.7",

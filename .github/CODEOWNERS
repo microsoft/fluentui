@@ -66,7 +66,7 @@ packages/fluentui/react-northstar/src/components/Chat @microsoft/fluentui-norths
 packages/fluentui/react-northstar/src/themes/teams/components/Chat @microsoft/fluentui-northstar @Hirse
 
 #### Web Components
-packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
+packages/web-components @microsoft/fui-wc
 
 #### Apps
 apps/public-docsite @microsoft/fluentui-v8-website
@@ -177,6 +177,7 @@ packages/react-components/react-infobutton @microsoft/cxe-red @sopranopillow
 packages/react-migration-v8-v9 @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-skeleton @microsoft/cxe-red
+packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
@@ -231,7 +232,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/fluent-date-time
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
-
+packages/fluent2-theme @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 ## Experiments
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon

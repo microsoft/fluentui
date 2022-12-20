@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 09 Nov 2022 07:48:12 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 07:53:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.7)
+
+Tue, 20 Dec 2022 07:53:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.6..@fluentui/eslint-plugin_v1.12.7)
+
+### Patches
+
+- Turn off react/jsx-no-bind rule for cypress component test files. ([PR #26003](https://github.com/microsoft/fluentui/pull/26003) by tristan.watanabe@gmail.com)
 
 ## [1.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.6)
 

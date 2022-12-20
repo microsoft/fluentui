@@ -1,12 +1,12 @@
-import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, formatFiles } from '@nrwl/devkit';
 import * as semver from 'semver';
 import { VersionBumpGeneratorSchema } from './schema';
 import {
   getProjectConfig,
-  isPackageVersionConverged,
   packageJsonHasBeachballConfig,
   printUserLogs,
   UserLog,
+  isPackageConverged,
 } from '../../utils';
 import { PackageJson } from '../../types';
 
@@ -129,7 +129,7 @@ function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog
   const projects = getProjects(host);
 
   projects.forEach((project, projectName) => {
-    if (isPackageConverged(projectName, host)) {
+    if (isPackageConverged(host, project)) {
       runMigrationOnProject(
         host,
         {
@@ -163,25 +163,6 @@ function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpTy
   }
 
   return semverVersion.version;
-}
-
-/**
- * @returns whether the package is converged
- */
-function isPackageConverged(packageName: string, host: Tree) {
-  let config: ReturnType<typeof getProjectConfig>;
-  try {
-    config = getProjectConfig(host, { packageName });
-  } catch (err) {
-    if (!(err as Error).message.startsWith('Cannot find configuration for')) {
-      throw err;
-    }
-
-    return false;
-  }
-
-  const packageJson = readJson(host, config.paths.packageJson);
-  return isPackageVersionConverged(packageJson.version);
 }
 
 function normalizeOptions(host: Tree, options: ValidatedSchema) {
@@ -227,15 +208,6 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
   };
   if (!validateBumpType(schema.bumpType)) {
     throw new Error(`${schema.bumpType} is not a valid bumpType, please use one of ${validbumpTypes}`);
-  }
-
-  if (schema.name) {
-    if (!isPackageConverged(schema.name, tree)) {
-      throw new Error(
-        `${schema.name} is not converged package consumed by customers.
-        Make sure to run the migration on packages with version 9.x.x and has the alpha tag`,
-      );
-    }
   }
 
   const validatedSchema: ValidatedSchema = {

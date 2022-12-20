@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 05 Dec 2022 18:29:21 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 14:59:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.18)
+
+Tue, 20 Dec 2022 14:59:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.17..@fluentui/react-combobox_v9.0.0-beta.18)
+
+### Changes
+
+- feat: update Listbox and Option to use menu and menuitemcheckbox semantics for multiselect ([PR #25905](https://github.com/microsoft/fluentui/pull/25905) by sarah.higley@microsoft.com)
+- feat: multiselect Combobox does not display selected options in the text field ([PR #25898](https://github.com/microsoft/fluentui/pull/25898) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.11 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-portal to v9.0.13 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-positioning to v9.3.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
 
 ## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.17)
 
