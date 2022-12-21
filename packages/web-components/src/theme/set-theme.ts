@@ -1,4 +1,4 @@
-import type { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/tokens';
 import * as tokens from './design-tokens';
 
 /**

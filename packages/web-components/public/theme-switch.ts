@@ -1,4 +1,4 @@
-import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/react-theme';
+import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 import { setTheme } from '../src/theme';
 
 const themes = {
