@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Removing gaps between ::after pseudo-element and AvatarGroupItem/AvatarGroupPopover.\"",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

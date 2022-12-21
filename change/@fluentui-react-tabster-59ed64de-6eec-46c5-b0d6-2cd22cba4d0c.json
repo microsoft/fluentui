@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "make allowCondition a optional parameter for findAllFocusable function",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

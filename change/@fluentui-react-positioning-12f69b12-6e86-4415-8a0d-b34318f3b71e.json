@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "exposes new typings to avoid exposing internal methods",
-  "packageName": "@fluentui/react-positioning",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
