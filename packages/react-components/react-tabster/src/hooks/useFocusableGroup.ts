@@ -1,6 +1,7 @@
 import { Types, getGroupper } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
+import * as React from 'react';
 
 export interface UseFocusableGroupOptions {
   /**
@@ -14,11 +15,14 @@ export interface UseFocusableGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.TabsterDOMAttribute => {
-  const tabster = useTabster();
+  const getTabster = useTabster();
 
-  if (tabster) {
-    getGroupper(tabster);
-  }
+  React.useEffect(() => {
+    const tabster = getTabster();
+    if (tabster) {
+      getGroupper(tabster);
+    }
+  }, [getTabster]);
 
   return useTabsterAttributes({
     groupper: {

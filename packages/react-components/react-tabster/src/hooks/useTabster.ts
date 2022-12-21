@@ -4,31 +4,31 @@ import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 /**
- * Tries to get a tabster instance on the current window or creates a new one
- * Since Tabster is single instance only, feel free to call this hook to ensure Tabster exists if necessary
+ * Returns a factory for tabster instance. The factory should only be used
+ * in effects or event callbacks. **Do not invoke the factory at render time, it can break in strict mode.**
  *
  * @internal
  * @returns Tabster core instance
  */
-export const useTabster = (): TabsterTypes.TabsterCore | null => {
+export const useTabster = (): (() => TabsterTypes.TabsterCore | null) => {
   const { targetDocument } = useFluent();
-
-  const defaultView = targetDocument?.defaultView || undefined;
-  const tabster = React.useMemo(() => {
-    if (!defaultView) {
-      return null;
-    }
-
-    return createTabster(defaultView, { autoRoot: {}, controlTab: false });
-  }, [defaultView]);
+  const tabsterInstanceRef = React.useRef<TabsterTypes.TabsterCore | null>(null);
 
   useIsomorphicLayoutEffect(() => {
     return () => {
-      if (tabster) {
-        disposeTabster(tabster);
+      if (tabsterInstanceRef.current) {
+        disposeTabster(tabsterInstanceRef.current);
       }
     };
-  }, [tabster]);
+  }, [targetDocument]);
 
-  return tabster;
+  return React.useCallback(() => {
+    const defaultView = targetDocument?.defaultView || undefined;
+    if (!defaultView || tabsterInstanceRef.current) {
+      return tabsterInstanceRef.current;
+    }
+
+    tabsterInstanceRef.current = createTabster(defaultView, { autoRoot: {}, controlTab: false });
+    return tabsterInstanceRef.current;
+  }, [targetDocument]);
 };

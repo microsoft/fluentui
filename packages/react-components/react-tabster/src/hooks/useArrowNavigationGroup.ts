@@ -1,6 +1,7 @@
 import { Types, getMover } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
+import * as React from 'react';
 
 export interface UseArrowNavigationGroupOptions {
   /**
@@ -33,18 +34,21 @@ export interface UseArrowNavigationGroupOptions {
  */
 export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
   const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown } = options;
-  const tabster = useTabster();
+  const getTabster = useTabster();
 
-  if (tabster) {
-    getMover(tabster);
-  }
+  React.useEffect(() => {
+    const tabster = getTabster();
+    if (tabster) {
+      getMover(tabster);
+    }
+  }, [getTabster]);
 
   return useTabsterAttributes({
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
-      memorizeCurrent: memorizeCurrent,
-      tabbable: tabbable,
+      memorizeCurrent,
+      tabbable,
     },
     ...(ignoreDefaultKeydown && {
       focusable: {
