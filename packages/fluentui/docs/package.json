@@ -73,8 +73,6 @@
     "screener:build": "yarn build:storybook",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
     "start:storybook": "start-storybook",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
-    "vr:build": "cross-env NODE_ENV=production gulp screener:build",
-    "vr:test": "gulp screener:runner"
+    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }
 }
