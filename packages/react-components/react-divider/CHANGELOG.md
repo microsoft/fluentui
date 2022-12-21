@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Tue, 20 Dec 2022 14:59:34 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.1.8)
+
+Wed, 21 Dec 2022 10:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.1.7..@fluentui/react-divider_v9.1.8)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.1.7)
 

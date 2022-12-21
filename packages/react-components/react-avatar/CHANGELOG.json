@@ -2,6 +2,51 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:33 GMT",
+      "tag": "@fluentui/react-avatar_v9.2.10",
+      "version": "9.2.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.16",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.3.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.3.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:21 GMT",
       "tag": "@fluentui/react-avatar_v9.2.9",
       "version": "9.2.9",

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Tue, 20 Dec 2022 14:59:28 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.15)
+
+Wed, 21 Dec 2022 10:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.14..@fluentui/react-table_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.2.10 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.16 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-radio to v9.0.15 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-tabster to v9.3.4 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.14)
 

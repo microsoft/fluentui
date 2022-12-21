@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 20 Dec 2022 14:59:20 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2022 10:20:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.7.4)
+
+Wed, 21 Dec 2022 10:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.7.3..@fluentui/react-components_v9.7.4)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - chore: re-export theme from tokens package ([PR #25966](https://github.com/microsoft/fluentui/pull/25966) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-theme`
+  - chore: re-export theme from tokens package ([PR #25966](https://github.com/microsoft/fluentui/pull/25966) by miroslav.stastny@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-combobox`
+  - chore: Migrate to new package structure. ([PR #26037](https://github.com/microsoft/fluentui/pull/26037) by tristan.watanabe@gmail.com)
+- `@fluentui/tokens`
+  - Hoist theme tokens from react-theme to tokens package ([PR #25966](https://github.com/microsoft/fluentui/pull/25966) by miroslav.stastny@microsoft.com)
 
 ## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.7.3)
 

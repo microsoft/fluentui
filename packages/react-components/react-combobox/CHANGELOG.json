@@ -2,6 +2,53 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:28 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.19",
+      "version": "9.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d301e75ec1f47418ebabdc63e608f3fb5a37b6d9",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.12",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.0.14",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.3.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ],
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:22 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.18",
       "version": "9.0.0-beta.18",

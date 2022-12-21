@@ -2,6 +2,47 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:28 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.16",
+      "version": "9.0.16",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.12",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.0.14",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.3.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:22 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.15",
       "version": "9.0.15",

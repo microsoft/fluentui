@@ -2,6 +2,41 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:29 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.12",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:26 GMT",
       "tag": "@fluentui/react-progress_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",
