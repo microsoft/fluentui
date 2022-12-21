@@ -6,6 +6,7 @@ import {
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import { useDisposable } from 'use-disposable';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 export type UsePortalMountNodeOptions = {
   /**
@@ -46,7 +47,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
   // We don't want to re-create the portal element when its attributes change.
   // This also should not be done in an effect because, changing the value of css variables
   // after initial mount can trigger interesting CSS side effects like transitions.
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!element) {
       return;
     }
