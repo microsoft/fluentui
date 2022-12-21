@@ -8,6 +8,11 @@ import { useFocusVisible } from '@fluentui/react-tabster';
 import { useDisposable } from 'use-disposable';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
+// String concatenation is used to prevent bundlers to complain with older versions of React
+const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
+  ? (React as never)['useInsertion' + 'Effect']
+  : useIsomorphicLayoutEffect;
+
 export type UsePortalMountNodeOptions = {
   /**
    * Since hooks cannot be called conditionally use this flag to disable creating the node
@@ -47,7 +52,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
   // We don't want to re-create the portal element when its attributes change.
   // This also should not be done in an effect because, changing the value of css variables
   // after initial mount can trigger interesting CSS side effects like transitions.
-  useIsomorphicLayoutEffect(() => {
+  useInsertionEffect(() => {
     if (!element) {
       return;
     }
