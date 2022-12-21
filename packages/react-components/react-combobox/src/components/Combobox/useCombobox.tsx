@@ -43,7 +43,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue,
     value,
   } = baseState;
-  const { freeform, multiselect } = props;
+  const { disabled, freeform, multiselect } = props;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -104,6 +104,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   baseState.setOpen = (ev, newState: boolean) => {
+    if (disabled) {
+      return;
+    }
+
     if (!newState && !freeform) {
       setValue(undefined);
     }
@@ -136,7 +140,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   // open Combobox when typing
   const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (!open && getDropdownActionFromKey(ev) === 'Type') {
-      setOpen(ev, true);
+      baseState.setOpen(ev, true);
     }
   };
 
@@ -195,7 +199,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     ...baseState,
-    setOpen,
   };
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
