@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: enable strict checking in all just-config files and their dependencies",
+  "packageName": "@fluentui/codemods",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
