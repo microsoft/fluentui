@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 07:47:36 GMT",
+      "tag": "@fluentui/react_v8.104.0",
+      "version": "8.104.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cf10f5be18439d0c0c3f53baac7f996237569691",
+            "comment": "chore: export GroupedListV2 types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 07:53:33 GMT",
       "tag": "@fluentui/react_v8.103.10",
       "version": "8.103.10",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 20 Dec 2022 07:53:33 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2022 07:47:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.0)
+
+Wed, 21 Dec 2022 07:47:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.10..@fluentui/react_v8.104.0)
+
+### Minor changes
+
+- chore: export GroupedListV2 types ([PR #26052](https://github.com/microsoft/fluentui/pull/26052) by seanmonahan@microsoft.com)
 
 ## [8.103.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.10)
 
