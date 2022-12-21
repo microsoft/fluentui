@@ -2,6 +2,103 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:28 GMT",
+      "tag": "@fluentui/react-components_v9.7.4",
+      "version": "9.7.4",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d301e75ec1f47418ebabdc63e608f3fb5a37b6d9",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "97c1c1ab218afb20e37bfc35936fd88177d439b4",
+            "comment": "Hoist theme tokens from react-theme to tokens package"
+          }
+        ],
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "97c1c1ab218afb20e37bfc35936fd88177d439b4",
+            "comment": "chore: re-export theme from tokens package"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "97c1c1ab218afb20e37bfc35936fd88177d439b4",
+            "comment": "chore: re-export theme from tokens package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:20 GMT",
       "tag": "@fluentui/react-components_v9.7.3",
       "version": "9.7.3",

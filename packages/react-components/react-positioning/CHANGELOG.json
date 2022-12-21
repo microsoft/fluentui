@@ -2,6 +2,27 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:33 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.5",
+      "version": "9.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:26 GMT",
       "tag": "@fluentui/react-positioning_v9.3.4",
       "version": "9.3.4",

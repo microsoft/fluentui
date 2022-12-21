@@ -2,6 +2,21 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:33 GMT",
+      "tag": "@fluentui/react-text_v9.1.10",
+      "version": "9.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:34 GMT",
       "tag": "@fluentui/react-text_v9.1.9",
       "version": "9.1.9",

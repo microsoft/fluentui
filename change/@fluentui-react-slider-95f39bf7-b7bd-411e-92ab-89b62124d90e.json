@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Add bundle size tests for Fields",
-  "packageName": "@fluentui/react-slider",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "none"
-}

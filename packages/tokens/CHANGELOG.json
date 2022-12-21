@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:33 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.2",
+      "version": "1.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "97c1c1ab218afb20e37bfc35936fd88177d439b4",
+            "comment": "Hoist theme tokens from react-theme to tokens package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 07:53:34 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.1",
       "version": "1.0.0-alpha.1",

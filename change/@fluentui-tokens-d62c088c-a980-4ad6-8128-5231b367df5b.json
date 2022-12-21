@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Hoist theme tokens from react-theme to tokens package",
-  "packageName": "@fluentui/tokens",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

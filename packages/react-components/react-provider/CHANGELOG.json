@@ -2,6 +2,39 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Wed, 21 Dec 2022 10:20:30 GMT",
+      "tag": "@fluentui/react-provider_v9.1.11",
+      "version": "9.1.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "97c1c1ab218afb20e37bfc35936fd88177d439b4",
+            "comment": "chore: re-export theme from tokens package"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.3.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 14:59:27 GMT",
       "tag": "@fluentui/react-provider_v9.1.10",
       "version": "9.1.10",
