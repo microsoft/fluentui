@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { DevOnlyStoryHeader } from '../utilities';
@@ -105,6 +105,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
               makeProvinceIntoSuggestion(this.state.Provinces[key]),
             )}
             onSuggestionClick={(_: any, province: Province) => {
+              // eslint-disable-next-line no-alert
               alert(`clicked ${province.name} `);
             }}
             onRenderNoResultFound={NoResultFound}
@@ -131,8 +132,8 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
 storiesOf('(Dev-Only) Suggestions', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testRoot' })
         .hover('#province-fake-long-province')
         .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
@@ -143,7 +144,7 @@ storiesOf('(Dev-Only) Suggestions', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Test of closeButton with overflowing wide custom element', () => (
     <SimpleSuggestionsExample />

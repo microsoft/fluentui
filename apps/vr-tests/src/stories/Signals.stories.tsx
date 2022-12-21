@@ -21,7 +21,7 @@ import {
   FollowedSignal,
   NotFollowedSignal,
 } from '@uifabric/experiments';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Fabric } from 'office-ui-fabric-react';
@@ -46,9 +46,9 @@ const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
 storiesOf('Signals', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('You checked out', () => (
     <SignalExample name="You checked out" signal={<YouCheckedOutSignal />} />

@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
 import { TextField } from 'office-ui-fabric-react';
@@ -8,8 +8,8 @@ import { TextField } from 'office-ui-fabric-react';
 storiesOf('TextField', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TextField-field')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -19,7 +19,7 @@ storiesOf('TextField', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <TextField label="Standard" />)
   .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {

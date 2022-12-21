@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import {
@@ -15,6 +15,7 @@ import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList
 const _items: {}[] = [];
 const _selection = new Selection();
 // script to simulate drag so that drop hint is rendered
+// eslint-disable-next-line import/no-webpack-loader-syntax
 const dndScript = require('!raw-loader!../../dndSim.js') as string;
 
 const columns: IColumn[] = [
@@ -116,8 +117,8 @@ const _columnReorderProps = {
 storiesOf('DetailsHeader', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })
         .hover('[aria-colindex=2]')
         .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
@@ -139,7 +140,7 @@ storiesOf('DetailsHeader', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
 
   .addStory('Root', () => (

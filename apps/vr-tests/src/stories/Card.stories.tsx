@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
 import { Button, IButtonStyles, IButtonTokens } from '@uifabric/experiments';
@@ -174,8 +174,8 @@ storiesOf('Card', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Card')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -185,7 +185,7 @@ storiesOf('Card', module)
       }
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Vertical Card - Basic - Non hoverable', () => (
     <Fabric>

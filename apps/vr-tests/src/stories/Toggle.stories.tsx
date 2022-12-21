@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { IToggleProps, Toggle } from 'office-ui-fabric-react';
@@ -14,9 +14,9 @@ const baseProps: IToggleProps = {
 storiesOf('Toggle', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Checked', () => <Toggle {...baseProps} defaultChecked={true} />, { rtl: true })
   .addStory('Unchecked', () => <Toggle {...baseProps} defaultChecked={false} />, { rtl: true })

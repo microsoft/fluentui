@@ -52,8 +52,7 @@
     "test": "lage test --verbose",
     "update-api": "cd packages/office-ui-fabric-react && yarn update-api",
     "update-snapshots": "lage update-snapshots --verbose",
-    "update-a11y": "cd apps/a11y-tests && yarn update-snapshots",
-    "vrtest": "cd apps && cd vr-tests && yarn screener"
+    "update-a11y": "cd apps/a11y-tests && yarn update-snapshots"
   },
   "devDependencies": {
     "beachball": "1.53.0",

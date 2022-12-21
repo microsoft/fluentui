@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Keys } from 'screener-storybook/src/screener';
+import { StoryWright, Steps, Keys } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities';
 import { TagPicker, Fabric, ITag } from 'office-ui-fabric-react';
@@ -27,7 +27,7 @@ const getTextFromItem = (item: ITag) => item.name;
 
 const getList = () => testTags;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes
+// Pickers that are 'disabled' are added before the StoryWright decorator because css classes
 // for suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
@@ -36,8 +36,8 @@ storiesOf('TagPicker', module)
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .setValue('.ms-BasePicker-input', 'a')
@@ -48,7 +48,7 @@ storiesOf('TagPicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <TagPicker
@@ -86,9 +86,9 @@ storiesOf('TagPicker', module)
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('With long tag', () => (
     // This example MUST be inside a narrow container which forces the tag to overflow
@@ -108,8 +108,8 @@ storiesOf('TagPicker', module)
 storiesOf('TagItem', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TagItem')
         .snapshot('Tag Item Hover', { cropTo: '.testWrapper' })
@@ -122,7 +122,7 @@ storiesOf('TagItem', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Selected',
