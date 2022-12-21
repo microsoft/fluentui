@@ -6,7 +6,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { FelaComponent, RendererProvider, ThemeProvider } from 'react-fela';
 
-const felaRenderer = (createFelaRenderer() as any).getOriginalRenderer();
+const felaRenderer = (createFelaRenderer()() as any).getOriginalRenderer();
 
 function createSnapshot(component: JSX.Element, theme = {}) {
   const div = document.createElement('div');

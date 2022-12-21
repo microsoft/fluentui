@@ -550,6 +550,8 @@ export type {
   IGroupedListSectionProps,
   IGroupedListSectionState,
   IGroupedListState,
+  IGroupedListV2Props,
+  IGroupedListV2State,
 } from './GroupedList';
 export {
   ExpandingCard,

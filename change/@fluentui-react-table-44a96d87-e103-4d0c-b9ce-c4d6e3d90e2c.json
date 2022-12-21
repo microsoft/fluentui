@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: DataGrid supports keyboard navigation by default",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

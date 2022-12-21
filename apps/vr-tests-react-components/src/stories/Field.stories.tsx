@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
 import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
@@ -24,11 +24,11 @@ type FieldControlProps = Pick<
  */
 const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldControlProps>) =>
   storiesOf(name, module)
-    .addDecorator(story => <Screener steps={new Steps().snapshot('default').end()}>{story()}</Screener>)
+    .addDecorator(story => <StoryWright steps={new Steps().snapshot('default').end()}>{story()}</StoryWright>)
     .addDecorator(story => (
       <div style={{ display: 'flex' }}>
         <div className="testWrapper" style={{ padding: '10px', width: '480px' }}>
-          <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+          <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
         </div>
       </div>
     ))

@@ -1,4 +1,12 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
-  "root": true
+  "root": true,
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@fluentui/*", "react", "react-dom"]
+      }
+    ]
+  }
 }

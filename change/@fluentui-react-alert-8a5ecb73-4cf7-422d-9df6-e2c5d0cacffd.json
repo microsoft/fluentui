@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: update tokens to match the spec",
-  "packageName": "@fluentui/react-alert",
-  "email": "marigome@microsoft.com",
-  "dependentChangeType": "patch"
-}

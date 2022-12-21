@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import {
@@ -116,8 +116,8 @@ const _columnReorderProps = {
 storiesOf('DetailsHeader', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })
         .hover('[data-item-key=a]')
         .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
@@ -139,7 +139,7 @@ storiesOf('DetailsHeader', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
 
   .addStory('Root', () => (

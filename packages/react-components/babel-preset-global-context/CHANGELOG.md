@@ -1,8 +1,17 @@
 # Change Log - @fluentui/babel-preset-global-context
 
-This log was last generated on Thu, 17 Nov 2022 23:05:31 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 14:59:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.10)
+
+Tue, 20 Dec 2022 14:59:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.9..@fluentui/babel-preset-global-context_v9.0.0-beta.10)
+
+### Changes
+
+- Bump @fluentui/global-context to v9.0.0-beta.10 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.9)
 

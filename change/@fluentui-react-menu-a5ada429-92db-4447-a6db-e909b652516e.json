@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove unneeded eslint rule line disables.",
-  "packageName": "@fluentui/react-menu",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}
