@@ -21,9 +21,6 @@
       "path": "./lint-staged/tsconfig.json"
     },
     {
-      "path": "./typescript/tsconfig.json"
-    },
-    {
       "path": "./tasks/tsconfig.json"
     },
     {
