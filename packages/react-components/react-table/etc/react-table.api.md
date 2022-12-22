@@ -71,6 +71,7 @@ export type DataGridBodySlots = TableBodySlots;
 // @public
 export type DataGridBodyState = TableBodyState & {
     rows: RowState<any>[];
+    renderRow: RowRenderFunction;
 };
 
 // @public
@@ -183,9 +184,6 @@ export type DataGridState = TableState & {
     tableState: HeadlessTableState<unknown>;
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'>;
 
-// @public
-export const DataGridVirtualizedBody: ForwardRefComponent<DataGridVirtualizedBodyProps>;
-
 // @public (undocumented)
 export type FocusMode = 'none' | 'cell' | 'row_unstable';
 
@@ -252,7 +250,7 @@ export type RowId = string | number;
 export const RowIdContextProvider: React_2.Provider<RowId | undefined>;
 
 // @public (undocumented)
-export type RowRenderFunction<TItem = any> = (row: RowState<TItem>) => React_2.ReactNode;
+export type RowRenderFunction = (row: RowState<any>, ...rest: any[]) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface RowState<TItem> {

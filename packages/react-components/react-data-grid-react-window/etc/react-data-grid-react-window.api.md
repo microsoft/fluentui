@@ -17,7 +17,7 @@ import type { RowState } from '@fluentui/react-components/unstable';
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
 
 // @public
-export type DataGridBodyProps = DataGridBodyProps_2 & {
+export type DataGridBodyProps = Omit<DataGridBodyProps_2, 'children'> & {
     itemSize: number;
     height: number;
     children: RowRenderFunction;
@@ -27,8 +27,8 @@ export type DataGridBodyProps = DataGridBodyProps_2 & {
 export type DataGridBodySlots = DataGridBodySlots_2;
 
 // @public
-export type DataGridBodyState = DataGridBodyState_2 & Pick<DataGridBodyProps, 'itemSize' | 'height'> & {
-    childrenFn: RowRenderFunction;
+export type DataGridBodyState = Omit<DataGridBodyState_2, 'renderRow'> & Pick<DataGridBodyProps, 'itemSize' | 'height'> & {
+    renderRow: RowRenderFunction;
 };
 
 // @public

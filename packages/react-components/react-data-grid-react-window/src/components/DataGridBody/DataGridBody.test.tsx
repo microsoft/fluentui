@@ -1,18 +1,15 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
 import { DataGridBody } from './DataGridBody';
+import { DataGridBodyProps } from './DataGridBody.types';
 import { isConformant } from '../../testing/isConformant';
 
 describe('DataGridBody', () => {
-  isConformant({
+  isConformant<DataGridBodyProps>({
     Component: DataGridBody,
     displayName: 'DataGridBody',
-  });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<DataGridBody>Default DataGridBody</DataGridBody>);
-    expect(result.container).toMatchSnapshot();
+    disabledTests: ['component-has-static-classnames-object'],
+    requiredProps: {
+      height: 50,
+      itemSize: 1000,
+    },
   });
 });
