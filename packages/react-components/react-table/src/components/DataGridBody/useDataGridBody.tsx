@@ -26,5 +26,9 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
       {renderRow(row)}
     </RowIdContextProvider>
   ));
-  return useTableBody_unstable({ ...props, children, as: 'div' }, ref);
+  const baseState = useTableBody_unstable({ ...props, children, as: 'div' }, ref);
+  return {
+    ...baseState,
+    rows,
+  };
 };

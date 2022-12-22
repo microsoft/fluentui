@@ -4,6 +4,39 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import type { DataGridBodyProps as DataGridBodyProps_2 } from '@fluentui/react-components/unstable';
+import type { DataGridBodySlots as DataGridBodySlots_2 } from '@fluentui/react-components/unstable';
+import type { DataGridBodyState as DataGridBodyState_2 } from '@fluentui/react-components/unstable';
+import type { ForwardRefComponent } from '@fluentui/react-components';
+import * as React_2 from 'react';
+import type { RowState } from '@fluentui/react-components/unstable';
+
+// @public
+export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
+
+// @public
+export type DataGridBodyProps = DataGridBodyProps_2 & {
+    itemSize: number;
+    height: number;
+    children: RowRenderFunction;
+};
+
+// @public (undocumented)
+export type DataGridBodySlots = DataGridBodySlots_2;
+
+// @public
+export type DataGridBodyState = DataGridBodyState_2 & Pick<DataGridBodyProps, 'itemSize' | 'height'> & {
+    childrenFn: RowRenderFunction;
+};
+
+// @public
+export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;
+
+// @public
+export const useDataGridBody_unstable: (props: DataGridBodyProps, ref: React_2.Ref<HTMLElement>) => DataGridBodyState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
