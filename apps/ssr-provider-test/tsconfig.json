@@ -9,18 +9,11 @@
     "jsx": "preserve",
     "noUnusedLocals": true,
     "preserveConstEnums": true,
+    "skipLibCheck": true,
     "allowJs": true,
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
   "include": [],
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+  "files": []
 }

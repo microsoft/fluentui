@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   createDOMRenderer,
   FluentProvider,
@@ -7,20 +8,19 @@ import {
   webLightTheme,
 } from '@fluentui/react-components';
 import type { AppProps } from 'next/app';
-import * as React from 'react';
 
 type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
 
 function MyApp({ Component, pageProps, renderer }: EnhancedAppProps) {
+  const SSRProviderWithChildren = SSRProvider as React.FC<{ children: React.ReactNode }>;
+
   return (
-    // 👇 Accepts a renderer from <Document /> or creates a default one
-    //    Also triggers rehydration a client
     <RendererProvider renderer={renderer || createDOMRenderer()}>
-      <SSRProvider>
+      <SSRProviderWithChildren>
         <FluentProvider theme={webLightTheme}>
           <Component {...pageProps} />
         </FluentProvider>
-      </SSRProvider>
+      </SSRProviderWithChildren>
     </RendererProvider>
   );
 }

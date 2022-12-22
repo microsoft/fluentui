@@ -1,20 +1,18 @@
 import * as React from 'react';
 import { createDOMRenderer, renderToStyleElements } from '@fluentui/react-components';
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    // 👇 creates a renderer that will be used for SSR
     const renderer = createDOMRenderer();
     const originalRenderPage = ctx.renderPage;
 
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: App =>
-          function EnhancedApp(props) {
+          function EnchancedApp(props) {
             const enhancedProps = {
               ...props,
-              // 👇 this is required to provide a proper renderer instance
               renderer,
             };
 
@@ -30,7 +28,6 @@ class MyDocument extends Document {
       styles: (
         <>
           {initialProps.styles}
-          {/* 👇 adding Fluent UI styles elements to output */}
           {styles}
         </>
       ),

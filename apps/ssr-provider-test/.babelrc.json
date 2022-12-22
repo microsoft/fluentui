@@ -1,0 +1,3 @@
+{
+  "presets": ["@griffel", "@babel/preset-typescript", "next/babel"]
+}
