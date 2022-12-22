@@ -6,14 +6,13 @@
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
     "code-style": "just-scripts code-style",
-    "convert": "bash convertStoriesToStoryWright.sh",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "start": "just-scripts dev:storybook",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "vr:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
+    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
