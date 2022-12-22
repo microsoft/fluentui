@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Animation } from '@fluentui/react-northstar';
 import AnimationExample from '../../examples/components/Animation/Types/AnimationExample.shorthand';

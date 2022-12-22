@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { List } from '@fluentui/react-northstar';
 import ListExample from '../../examples/components/List/Content/ListExampleContent.shorthand';
