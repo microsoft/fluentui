@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: do not use outlineStyle: none in createCustomFocusIndicatorStyle",
+  "packageName": "@fluentui/react-tabster",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
