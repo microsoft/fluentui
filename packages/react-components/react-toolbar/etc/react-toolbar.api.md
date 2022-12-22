@@ -24,6 +24,9 @@ import { ToggleButtonState } from '@fluentui/react-button';
 export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
 
 // @public
+export const renderToolbarGroup_unstable: (state: ToolbarGroupState) => JSX.Element;
+
+// @public
 export const Toolbar: ForwardRefComponent<ToolbarProps>;
 
 // @public
@@ -66,6 +69,9 @@ export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & Divide
 
 // @public
 export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
+
+// @public (undocumented)
+export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots>;
 
 // @public
 export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
@@ -123,10 +129,37 @@ export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & To
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
 
 // @public
+export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
+
+// @public
+export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => void;
+
+// @public
+export const useToolbarDivider_unstable: (props: ToolbarDividerProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerState;
+
+// @public
 export const useToolbarDividerStyles_unstable: (state: ToolbarDividerState) => ToolbarDividerState;
 
 // @public
+export const useToolbarGroup_unstable: (props: ToolbarGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarGroupState;
+
+// @public
+export const useToolbarGroupStyles_unstable: (state: ToolbarGroupState) => ToolbarGroupState;
+
+// @public
+export const useToolbarRadioButton_unstable: (props: ToolbarRadioButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarRadioButtonState;
+
+// @public
+export const useToolbarRadioButtonStyles_unstable: (state: ToolbarRadioButtonState) => void;
+
+// @public
 export const useToolbarStyles_unstable: (state: ToolbarState) => ToolbarState;
+
+// @public
+export const useToolbarToggleButton_unstable: (props: ToolbarToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarToggleButtonState;
+
+// @public
+export const useToolbarToggleButtonStyles_unstable: (state: ToolbarToggleButtonState) => void;
 
 // (No @packageDocumentation comment for this package)
 
