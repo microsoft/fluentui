@@ -31,10 +31,10 @@ export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | Gr
 ): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle {
   return {
     ':focus': {
-      outlineStyle: enableOutline ? undefined : 'none',
+      outlineColor: enableOutline ? undefined : 'transparent',
     },
     ':focus-visible': {
-      outlineStyle: enableOutline ? undefined : 'none',
+      outlineColor: enableOutline ? undefined : 'transparent',
     },
 
     ...(selector === 'focus' && {
