@@ -4,6 +4,7 @@ import {
   BaseTreeItemElementIntersection,
   BaseTreeItemProps,
   BaseTreeItemSlots,
+  BaseTreeItemState,
 } from '../BaseTreeItem/index';
 
 export type TreeItemElement = BaseTreeItemElement;
@@ -26,17 +27,22 @@ export type TreeItemSlots = BaseTreeItemSlots & {
    */
   iconAfter?: Slot<'span'>;
   /**
-   * Icon slot that renders on the end of the main content
+   * Actions slot that renders on the end of tree item
    */
-  actionIcon?: Slot<'span'>;
+  badges?: Slot<'span'>;
+  /**
+   * Actions slot that renders on the end of tree item
+   * when the item is hovered/focused
+   */
+  actions?: Slot<'span'>;
 };
 
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<TreeItemSlots> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps;
 
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots>;
+export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;
