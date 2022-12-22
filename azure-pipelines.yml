@@ -51,13 +51,6 @@ steps:
       githubDescription: 'Click "Details" to go to the deployed website for this pull request'
       githubTargetLink: $(deployUrl)/index.html
 
-  # disable in this branch due to issues installing old version of ngrok
-  #  - script: |
-  #      npm run vrtest
-  #    displayName: run VR Test
-  #    env:
-  #      SCREENER_API_KEY: $(screener.key)
-
   # In theory the "workspace: clean: all" setting should handle this, but it doesn't always seem to work.
   # ReallyClean is a custom task from our internal UI Fabric azure-devops-tasks repo which attempts to
   # delete the given directory with multiple retries.
