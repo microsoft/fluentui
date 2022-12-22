@@ -109,6 +109,8 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
    * @param data - All props and proposed value.
    */
   onKeyDown?: ComponentKeyboardEventHandler<TreeItemProps>;
+
+  unstyled?: boolean;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
@@ -225,6 +227,7 @@ export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
+    unstyled: props.unstyled,
   });
 
   const handleSelection = e => {
@@ -355,6 +358,7 @@ TreeItem.propTypes = {
   title: customPropTypes.itemShorthand,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   selectable: PropTypes.bool,
+  unstyled: PropTypes.bool,
   onKeyDown: PropTypes.func,
 };
 
