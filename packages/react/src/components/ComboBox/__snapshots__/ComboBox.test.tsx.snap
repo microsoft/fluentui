@@ -202,7 +202,6 @@ exports[`ComboBox Renders correctly 1`] = `
         value="testValue"
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -533,7 +532,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
         value="Option 2"
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -1302,7 +1300,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
         value=""
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -2193,7 +2190,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         value=""
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon

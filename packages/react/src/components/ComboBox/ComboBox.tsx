@@ -570,7 +570,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       required,
       errorMessage,
       buttonIconProps,
-      isButtonAriaHidden = true,
+      isButtonAriaHidden,
       title,
       placeholder: placeholderProp,
       tabIndex,
