@@ -245,11 +245,7 @@ function createReport(scenarioSettings: ScenarioSetting, testResults: CookResult
  */
 function createScenarioTable(scenarioSettings: ScenarioSetting, testResults: CookResults, showAll: boolean) {
   const resultsToDisplay = Object.keys(testResults).filter(
-    key =>
-      showAll ||
-      (testResults[key].analysis &&
-        testResults[key].analysis?.regression &&
-        testResults[key].analysis?.regression?.isRegression),
+    key => showAll || testResults[key].analysis?.regression?.isRegression,
   );
 
   if (resultsToDisplay.length === 0) {
