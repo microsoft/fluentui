@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Segment } from '@fluentui/react-northstar';
 import SegmentExampleRtl from '../../examples/components/Segment/Rtl/SegmentExample.rtl';

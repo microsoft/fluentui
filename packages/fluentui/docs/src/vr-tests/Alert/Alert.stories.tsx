@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Alert } from '@fluentui/react-northstar';
 import AlertDefaultBsize from '../../examples/components/Alert/Performance/AlertDefault.bsize';
