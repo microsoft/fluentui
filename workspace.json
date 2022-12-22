@@ -419,6 +419,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-data-grid-react-window": {
+      "root": "packages/react-components/react-data-grid-react-window",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-data-grid-react-window/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-date-time": {
       "root": "packages/react-date-time",
       "projectType": "library",

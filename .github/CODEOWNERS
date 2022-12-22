@@ -179,6 +179,7 @@ packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
+packages/react-components/react-data-grid-react-window @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 
