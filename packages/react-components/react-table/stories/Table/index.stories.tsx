@@ -27,7 +27,6 @@ export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { SubtleSelection } from './SubtleSelection.stories';
 export { Virtualization } from './Virtualization.stories';
 export { DataGrid } from './DataGrid.stories';
-export { Virtualized } from './Virtualized.stories';
 
 export default {
   title: 'Preview Components/Table',
