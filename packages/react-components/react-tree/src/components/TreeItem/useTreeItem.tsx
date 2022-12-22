@@ -21,12 +21,12 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<TreeIt
   const { dir } = useFluent_unstable();
   const expandIconRotation = treeItemState.open ? 90 : dir !== 'rtl' ? 0 : 180;
 
-  // stop the propagation of a click from actions to ensure it doesn't open the treeitem
+  // prevent default of a click from actions to ensure it doesn't open the treeitem
   const handleActionsClick = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
     if (isResolvedShorthand(actions)) {
       actions.onClick?.(event);
     }
-    event.stopPropagation();
+    event.preventDefault();
   });
 
   return {
