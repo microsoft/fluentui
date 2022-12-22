@@ -135,7 +135,13 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Monitored"
             className=
@@ -143,6 +149,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -334,7 +341,13 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Unmonitored"
             className=
@@ -342,6 +355,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -784,7 +798,13 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Monitored"
             className=
@@ -792,6 +812,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -983,7 +1004,13 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Unmonitored"
             className=
@@ -991,6 +1018,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -1350,7 +1378,13 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Monitored"
             className=
@@ -1358,6 +1392,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -1543,7 +1578,13 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Unmonitored"
             className=
@@ -1551,6 +1592,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -1818,7 +1860,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Monitored"
             className=
@@ -1826,6 +1874,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -2001,7 +2050,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Unmonitored"
             className=
@@ -2009,6 +2064,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -2286,7 +2342,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Monitored"
             className=
@@ -2294,6 +2356,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -2479,7 +2542,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Unmonitored"
             className=
@@ -2487,6 +2556,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -2668,7 +2738,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Monitored"
             className=
@@ -2676,6 +2752,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -2861,7 +2938,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Unmonitored"
             className=
@@ -2869,6 +2952,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -3327,7 +3411,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Monitored"
             className=
@@ -3335,6 +3425,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >
@@ -3520,7 +3611,13 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
-        <div>
+        <div
+          className=
+
+              {
+                padding-right: 0px;
+              }
+        >
           <svg
             aria-label="Unmonitored"
             className=
@@ -3528,6 +3625,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 {
                   display: block;
                   height: 12px;
+                  overflow: visible;
                   width: 100%;
                 }
           >

@@ -9,11 +9,13 @@ import {
   IMultiStackedBarChartProps,
   IMultiStackedBarChartStyles,
   IMultiStackedBarChartStyleProps,
+  MultiStackedBarChartVariant,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -48,6 +50,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
+  private _maxBarValue: number;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -78,11 +81,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._classNames = getClassNames(this.props.styles!, {
       legendColor: this.state.color,
       theme: theme!,
+      variant: this.props.variant,
+      hideValues: this.props.hideValues,
     });
 
     const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
     const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
+    this._getMaxBarValue();
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
         singleChartData!,
@@ -138,10 +144,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    const total = data.chartData!.reduce(
+    const barValue = data.chartData!.reduce(
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
+    const total = this.props.variant === MultiStackedBarChartVariant.Relative ? this._maxBarValue : barValue;
 
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -156,6 +163,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       return sumOfPercent;
     });
+
+    let val = total === 0 ? 0 : ((total - barValue) / total) * 100;
+    if (val < 1 && val !== 0) {
+      val = 1;
+    } else if (val > 99 && val !== 100) {
+      val = 99;
+    }
+    sumOfPercent += val;
 
     const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
 
@@ -190,6 +205,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         theme: this.props.theme!,
         shouldHighlight: shouldHighlight,
         href: href,
+        variant: this.props.variant,
+        hideValues: this.props.hideValues,
       });
 
       return (
@@ -220,16 +237,35 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </g>,
       );
     }
-    if (total === 0) {
+    if (barValue === 0) {
       bars.push(
         <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
         </g>,
       );
     }
+    if (this.props.variant === MultiStackedBarChartVariant.Relative && !this.props.hideValues) {
+      bars.push(
+        <text
+          key="text"
+          x={`${startingPoint[startingPoint.length - 1] + value}%`}
+          y={barHeight / 2}
+          dominantBaseline="central"
+          transform="translate(4)"
+          className={this._classNames.barValue}
+          data-is-focusable={true}
+          aria-label={`Total: ${barValue}`}
+          role="img"
+        >
+          {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+        </text>,
+      );
+    }
     const hideNumber = hideRatio === undefined ? false : hideRatio;
-    const showRatio = !hideNumber && data!.chartData!.length === 2;
-    const showNumber = !hideNumber && data!.chartData!.length === 1;
+    const showRatio =
+      this.props.variant !== MultiStackedBarChartVariant.Relative && !hideNumber && data!.chartData!.length === 2;
+    const showNumber =
+      this.props.variant !== MultiStackedBarChartVariant.Relative && !hideNumber && data!.chartData!.length === 1;
     const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.singleChartRoot}>
@@ -249,7 +285,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!hideDenominator && (
                   <span className={this._classNames.ratioDenominator}>
-                    {' / ' + convertToLocaleString(total, culture)}
+                    {' / ' + convertToLocaleString(barValue, culture)}
                   </span>
                 )}
               </div>
@@ -265,7 +301,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           </div>
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div>
+          <div className={this._classNames.chartWrapper}>
             <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
               {bars}
             </svg>
@@ -474,5 +510,17 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const legend = point.xAxisCalloutData || point.legend;
     const yValue = point.yAxisCalloutData || point.data || 0;
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+  };
+
+  private _getMaxBarValue = () => {
+    let maxBarValue = 0;
+    this.props.data!.forEach(({ chartData }) => {
+      const barValue = chartData!.reduce(
+        (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
+        0,
+      );
+      maxBarValue = Math.max(maxBarValue, barValue);
+    });
+    this._maxBarValue = maxBarValue;
   };
 }

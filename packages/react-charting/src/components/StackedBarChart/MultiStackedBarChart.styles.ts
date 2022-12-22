@@ -1,8 +1,12 @@
-import { IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
+import {
+  IMultiStackedBarChartStyleProps,
+  IMultiStackedBarChartStyles,
+  MultiStackedBarChartVariant,
+} from './MultiStackedBarChart.types';
 import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
-  const { className, width, barHeight, shouldHighlight, theme, href } = props;
+  const { className, width, barHeight, shouldHighlight, theme, href, variant, hideValues } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -21,6 +25,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       width: '100%',
       height: barHeight ? barHeight : 12,
       display: 'block',
+      overflow: 'visible',
     },
     chartTitle: {
       ...theme.fonts.small,
@@ -33,13 +38,13 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       whiteSpace: 'nowrap',
       display: 'block',
       color: '#171717',
-      marginBottom: '5px',
+      marginBottom: variant === MultiStackedBarChartVariant.Relative ? '4px' : '5px',
     },
     singleChartRoot: {
       width: width ? width : '100%',
       display: 'flex',
       flexDirection: 'column',
-      marginBottom: '10px',
+      marginBottom: variant === MultiStackedBarChartVariant.Relative ? '16px' : '10px',
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
@@ -79,6 +84,14 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     },
     noData: {
       cursor: href ? 'pointer' : 'default',
+    },
+    barValue: {
+      fontSize: FontSizes.small,
+      fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
+    },
+    chartWrapper: {
+      paddingRight: variant === MultiStackedBarChartVariant.Relative && !hideValues ? 40 : 0,
     },
   };
 };

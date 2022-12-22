@@ -9,11 +9,13 @@ import {
   IHorizontalBarChartStyles,
   IChartDataPoint,
   IRefArrayData,
+  HorizontalBarChartVariant,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -79,13 +81,15 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             color: palette.neutralLight,
           };
 
-          const chartDataText = this._getChartDataText(points!);
+          const chartDataText =
+            this.props.variant === HorizontalBarChartVariant.Relative ? null : this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
           const classNames = getClassNames(this.props.styles!, {
             theme: this.props.theme!,
             width: this.props.width,
             showTriangle: !!points!.chartData![0].data,
+            variant: this.props.variant,
           });
 
           return (
@@ -108,7 +112,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                   </div>
                 </FocusZone>
                 {points!.chartData![0].data && this._createBenchmark(points!)}
-                <FocusZone direction={FocusZoneDirection.horizontal}>
+                <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
                   <svg className={this._classNames.chart} aria-label={points!.chartTitle}>
                     <g
                       id={keyVal}
@@ -123,7 +127,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                           p.onClick();
                         }
                       }}
-                      className={this._classNames.barWrapper}
                     >
                       {bars}
                     </g>
@@ -213,6 +216,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       className: this.props.className,
       barHeight: this._barHeight,
       color: this.state.lineColor,
+      variant: this.props.variant,
+      hideValues: this.props.hideValues,
     });
   };
 
@@ -276,7 +281,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   }
 
-  private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
+  private _createBars(data: IChartProps, palette: IPalette): (JSX.Element | null)[] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -321,6 +326,27 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       startingPoint.push(prevPosition);
 
       const xValue = point.horizontalBarChartdata!.x;
+
+      if (index > 0 && this.props.variant === HorizontalBarChartVariant.Relative) {
+        if (this.props.hideValues) {
+          return null;
+        }
+
+        const barValue = point.horizontalBarChartdata!.y - xValue;
+        return (
+          <text
+            x={`${startingPoint[index]}%`}
+            y={this._barHeight / 2}
+            dominantBaseline="central"
+            transform="translate(4)"
+            className={this._classNames.barValue}
+            aria-hidden={true}
+          >
+            {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+          </text>
+        );
+      }
+
       return (
         <rect
           key={index}
@@ -336,6 +362,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           aria-label={this._getAriaLabel(point)}
           onBlur={this._hoverOff}
           onMouseLeave={this._hoverOff}
+          className={this._classNames.barWrapper}
         />
       );
     });
