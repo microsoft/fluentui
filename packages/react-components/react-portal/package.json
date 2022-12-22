@@ -34,7 +34,8 @@
     "@fluentui/react-tabster": "^9.3.4",
     "@fluentui/react-utilities": "^9.3.0",
     "@griffel/react": "^1.4.2",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "use-disposable": "^1.0.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
