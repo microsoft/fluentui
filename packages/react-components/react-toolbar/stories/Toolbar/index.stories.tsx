@@ -1,4 +1,4 @@
-import { Toolbar } from '@fluentui/react-toolbar';
+import { Toolbar } from '@fluentui/react-components/unstable';
 
 import descriptionMd from './ToolbarDescription.md';
 import bestPracticesMd from './ToolbarBestPractices.md';
