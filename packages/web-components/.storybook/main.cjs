@@ -1,10 +1,15 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const ResolveTypescriptPlugin = require('resolve-typescript-plugin');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|mdx)'],
   staticDirs: ['../public'],
   core: {
     builder: 'webpack5',
+  },
+  features: {
+    babelModeV7: true,
+    buildStoriesJson: true,
   },
   addons: [
     {
@@ -21,14 +26,21 @@ module.exports = {
     },
   ],
   webpackFinal: async config => {
-    config.module.rules.push({
-      test: /\.ts$/,
-      use: [
-        {
-          loader: 'ts-loader',
+    config.resolve.plugins = [new ResolveTypescriptPlugin()];
+    config.module.rules.push(
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        sideEffects: true,
+        options: {
+          transpileOnly: true,
         },
-      ],
-    });
+      },
+      {
+        test: /.storybook\/preview.js/,
+        resolve: { fullySpecified: false },
+      },
+    );
     config.resolve.extensions.push('.ts');
     config.resolve.extensions.push('.js');
     config.plugins.push(
