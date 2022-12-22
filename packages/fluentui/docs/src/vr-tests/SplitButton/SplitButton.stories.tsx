@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { SplitButton } from '@fluentui/react-northstar';
 import SplitButtonIconAndContentExampleShorthand from '../../examples/components/SplitButton/Slots/SplitButtonIconAndContentExample.shorthand';

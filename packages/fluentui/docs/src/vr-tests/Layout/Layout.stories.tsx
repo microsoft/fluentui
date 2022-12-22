@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Layout } from '@fluentui/react-northstar';
 import LayoutExample from '../../examples/components/Layout/Types/LayoutExample.shorthand';
