@@ -9,7 +9,6 @@ import { RowIdContextProvider } from '../../contexts/rowIdContext';
 export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
   const { slots, slotProps } = getSlots<DataGridBodySlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
       {state.rows.map(row => (
