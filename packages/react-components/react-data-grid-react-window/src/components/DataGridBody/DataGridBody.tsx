@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useDataGridBodyStyles_unstable } from '@fluentui/react-components/unstable';
 import type { ForwardRefComponent } from '@fluentui/react-components';
+import { useDataGridBodyStyles_unstable } from './useDataGridBodyStyles';
 import { useDataGridBody_unstable } from './useDataGridBody';
 import { renderDataGridBody_unstable } from './renderDataGridBody';
 import type { DataGridBodyProps } from './DataGridBody.types';
