@@ -6,6 +6,7 @@ exports[`TreeItem renders a default state 1`] = `
     aria-level="0"
     class="fui-TreeItem"
     role="treeitem"
+    style="--fluent-TreeItem--level: -1;"
     tabindex="0"
   >
     Default TreeItem

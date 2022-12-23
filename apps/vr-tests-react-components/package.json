@@ -5,15 +5,14 @@
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
     "build": "build-storybook -o dist/storybook",
-    "convert": "bash convertStoriesToStoryWright.sh",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
-    "screener:build": "yarn build",
     "start": "start-storybook",
     "test": "just-scripts test",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "vr:build": "yarn build",
+    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

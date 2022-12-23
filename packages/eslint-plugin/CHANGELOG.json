@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 23 Dec 2022 07:55:40 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.7",
+      "version": "1.12.7",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a18b520c2d9ad5a7936b2a14ae4156d602e69bc9",
+            "comment": "nit: replace screener word usage with storywright."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 07:53:32 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.7",
       "version": "1.12.7",

@@ -1,7 +1,5 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { StoryWright, Steps } from 'storywright';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Popup } from '@fluentui/react-northstar';
 import PopperExamplePositioning from '../../examples/components/Popup/Visual/PopperExamplePositioning';
