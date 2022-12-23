@@ -179,6 +179,47 @@ export const Component = () => {
 };
 ```
 
+## Controlled
+
+V0 only allows to set an item active in a controlled way through `active` property in a toolbar item. V9 Toolbar doesn't need that by default by can also be controlled.
+
+V9 Controlled:
+
+```javascript
+import {
+  Toolbar,
+  ToolbarToggleButton,
+  ToolbarDivider,
+  ToolbarButton
+} from '@fluentui/react-components';
+
+
+
+const Component = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
+    textOptions: ['bold', 'italic'],
+  });
+  const onChange: ToolbarProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  };
+
+  return (
+    <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <ToolbarToggleButton aria-label="Bold" icon={<TextBold24Regular />} name="textOptions" value="bold" />
+      <ToolbarToggleButton aria-label="Italic" icon={<TextItalic24Regular />} name="textOptions" value="italic" />
+      <ToolbarToggleButton
+        aria-label="Underline"
+        icon={<TextUnderline24Regular />}
+        name="textOptions"
+        value="underline"
+      />
+    </Toolbar>
+  );
+}
+```
+
 ## How to migrate props:
 
 | `Toolbar` props           | migrate guide                                                                                                                                           |
