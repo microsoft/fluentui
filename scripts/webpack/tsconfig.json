@@ -3,5 +3,6 @@
   "compilerOptions": {
     "types": ["node"]
   },
-  "include": ["*"]
+  "include": ["*"],
+  "files": ["../../typings/ignore-not-found-export-webpack-plugin/index.d.ts"]
 }

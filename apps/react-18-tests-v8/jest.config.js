@@ -1,7 +1,7 @@
 // @ts-check
 
 const { resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
-const getResolveAlias = require('@fluentui/scripts/webpack/getResolveAlias');
+const { getResolveAlias } = require('@fluentui/scripts/webpack');
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
