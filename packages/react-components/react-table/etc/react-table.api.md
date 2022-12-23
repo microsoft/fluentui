@@ -69,7 +69,10 @@ export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
 export type DataGridBodySlots = TableBodySlots;
 
 // @public
-export type DataGridBodyState = TableBodyState;
+export type DataGridBodyState = TableBodyState & {
+    rows: RowState<any>[];
+    renderRow: RowRenderFunction;
+};
 
 // @public
 export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
@@ -156,7 +159,10 @@ export type DataGridRowSlots = TableRowSlots & {
 };
 
 // @public
-export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots>;
+export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
+    renderCell: CellRenderFunction;
+    columnDefs: ColumnDefinition<any>[];
+};
 
 // @public
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;

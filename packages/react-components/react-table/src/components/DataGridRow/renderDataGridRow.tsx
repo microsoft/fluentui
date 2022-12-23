@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import type { DataGridRowState, DataGridRowSlots } from './DataGridRow.types';
+import { ColumnIdContextProvider } from '../../contexts/columnIdContext';
 
 /**
  * Render the final JSX of DataGridRow
@@ -11,7 +12,11 @@ export const renderDataGridRow_unstable = (state: DataGridRowState) => {
   return (
     <slots.root {...slotProps.root}>
       {slots.selectionCell && <slots.selectionCell {...slotProps.selectionCell} />}
-      {slotProps.root.children}
+      {state.columnDefs.map(columnDef => (
+        <ColumnIdContextProvider value={columnDef.columnId} key={columnDef.columnId}>
+          {state.renderCell(columnDef)}
+        </ColumnIdContextProvider>
+      ))}
     </slots.root>
   );
 };
