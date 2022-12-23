@@ -97,7 +97,7 @@
     "@microsoft/api-extractor": "7.18.1",
     "@microsoft/eslint-plugin-sdl": "0.1.9",
     "@microsoft/load-themed-styles": "1.10.26",
-    "@microsoft/loader-load-themed-styles": "1.7.205",
+    "@microsoft/loader-load-themed-styles": "2.0.17",
     "@nrwl/cli": "13.10.6",
     "@nrwl/devkit": "13.10.6",
     "@nrwl/jest": "13.10.6",
