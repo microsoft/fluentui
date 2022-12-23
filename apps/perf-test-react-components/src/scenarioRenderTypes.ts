@@ -9,15 +9,8 @@
  */
 
 const AllRenderTypes = ['mount', 'virtual-rerender', 'virtual-rerender-with-unmount'];
-const DefaultRenderTypes = ['mount'];
+export const DefaultRenderTypes = ['mount'];
 
-const scenarioRenderTypes = {
-  ThemeProvider: AllRenderTypes,
-  GroupedList: AllRenderTypes,
-  GroupedListV2: AllRenderTypes,
-};
-
-module.exports = {
-  scenarioRenderTypes,
-  DefaultRenderTypes,
+export const scenarioRenderTypes = {
+  FluentProviderWithTheme: AllRenderTypes,
 };

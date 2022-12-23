@@ -1,10 +1,8 @@
-// @ts-check
-const fs = require('fs');
-const glob = require('glob');
+import * as fs from 'fs';
+import glob from 'glob';
+import { splitStyles } from '@microsoft/load-themed-styles';
 
-function createEsm(css) {
-  const { splitStyles } = require('@microsoft/load-themed-styles');
-
+function createEsm(css: string) {
   // Create a source file.
   const source = [
     `/* eslint-disable */`,
@@ -15,10 +13,10 @@ function createEsm(css) {
   return source.join('\n');
 }
 
-exports.transformCssTask = function () {
+export function transformCssTask() {
   const cssFiles = glob.sync('esm/**/*.css');
-  for (let cssFile of cssFiles) {
+  for (const cssFile of cssFiles) {
     fs.writeFileSync(`${cssFile}.js`, createEsm(fs.readFileSync(cssFile, 'utf-8')));
     fs.unlinkSync(cssFile);
   }
-};
+}
