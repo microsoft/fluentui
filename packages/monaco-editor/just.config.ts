@@ -25,6 +25,6 @@ task('ts:postprocess', postprocessTask([...defaultLibPaths, 'esm/**/*.d.ts']));
 task('ts', series(parallel('ts:esm', 'ts:commonjs'), 'ts:postprocess'));
 task('eslint', eslint);
 
-task('build', series('clean', 'copy', 'transform-css', 'ts')).cached();
+task('build', series('clean', 'copy', 'transform-css', 'ts')).cached!();
 
 task('lint', 'eslint');
