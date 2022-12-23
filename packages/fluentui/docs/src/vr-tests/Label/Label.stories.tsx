@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Label } from '@fluentui/react-northstar';
 import LabelExampleShorthand from '../../examples/components/Label/Content/LabelExample.shorthand';

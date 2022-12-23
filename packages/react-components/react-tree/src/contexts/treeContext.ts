@@ -4,6 +4,8 @@ import { TreeOpenChangeData } from '../Tree';
 export type TreeContextValue = {
   level: number;
   openSubtrees: string[];
+  appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+  size: 'small' | 'medium';
   focusFirstSubtreeItem(target: HTMLElement): void;
   focusSubtreeOwnerItem(target: HTMLElement): void;
   /**
@@ -24,6 +26,8 @@ const defaultContextValue: TreeContextValue = {
   requestOpenChange() {
     /* noop */
   },
+  appearance: 'subtle',
+  size: 'medium',
 };
 
 export const TreeContext: Context<TreeContextValue | undefined> = createContext<TreeContextValue | undefined>(

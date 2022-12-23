@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Card } from '@fluentui/react-northstar';
 import CardExampleBody from '../../examples/components/Card/Slots/CardExampleBody';

@@ -5,8 +5,7 @@ import * as fs from 'fs';
 import * as jju from 'jju';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
-// use via CJS syntax which implies `any` because , as cypress doesn't properly resolves `esModuleInterop` setting
-const applyV8WebpackConfig: (config: Configuration) => Configuration = require('../storybook/webpack.config');
+import { createStorybookWebpackConfig } from '../webpack';
 
 const isLocalRun = !process.env.DEPLOYURL;
 
@@ -39,14 +38,13 @@ const cypressWebpackConfig = (): Configuration => {
     },
   };
 
-
   if (isV8()) {
     // For v8, reuse the storybook webpack config helper to add required options for building v8,
     // including the `resolve.alias` config that's currently REQUIRED to make tests re-run when a
     // component file in @fluentui/react is modified while running in open mode.
     // (This is different than the v9 config because v8 doesn't use tsconfig paths, so the only way
     // it can respond to file edits is by using `resolve.alias`, which doesn't work with esbuild.)
-    return applyV8WebpackConfig(webpackConfig);
+    return createStorybookWebpackConfig(webpackConfig);
   }
 
   // For v9, use tsconfig paths and esbuild-loader

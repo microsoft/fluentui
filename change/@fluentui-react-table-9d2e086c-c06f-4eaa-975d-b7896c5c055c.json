@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: DataGridSelection cell should focus on input, not cell",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

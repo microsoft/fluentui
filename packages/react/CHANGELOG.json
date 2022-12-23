@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 23 Dec 2022 07:55:40 GMT",
+      "tag": "@fluentui/react_v8.104.1",
+      "version": "8.104.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "36af377c3f0501b6de07bcab1c4efae743bf9f19",
+            "comment": "fix: ComboBox button is not aria-hidden by default"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Dec 2022 07:47:36 GMT",
       "tag": "@fluentui/react_v8.104.0",
       "version": "8.104.0",
