@@ -2,15 +2,15 @@ const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpa
 const path = require('path');
 const webpack = require('webpack');
 
-const findGitRoot = require('../monorepo/findGitRoot');
-const getResolveAlias = require('../webpack/getResolveAlias');
+const { findGitRoot } = require('../monorepo');
+const { getResolveAlias } = require('./getResolveAlias');
 
 /**
  * Updates the given webpack config to include resolutions and other options for v8 packages.
  * @param {webpack.Configuration} config webpack config, WILL BE MUTATED
  * @returns {webpack.Configuration} the same object that was passed in
  */
-module.exports = config => {
+const createStorybookWebpackConfig = config => {
   config.resolveLoader = {
     ...config.resolveLoader,
     modules: [
@@ -103,3 +103,5 @@ module.exports = config => {
 
   return config;
 };
+
+exports.createStorybookWebpackConfig = createStorybookWebpackConfig;

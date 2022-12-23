@@ -14,7 +14,7 @@ const webpackVersion = /** @type {string} */ (require('webpack/package.json').ve
 
 const { merge } = require('../utils');
 const { getDefaultEnvironmentVars, findGitRoot } = require('../monorepo');
-const getResolveAlias = require('./getResolveAlias');
+const { getResolveAlias } = require('./getResolveAlias');
 
 console.log(`Webpack version: ${webpackVersion}`);
 
@@ -33,7 +33,7 @@ const cssRule = {
  */
 const target = ['web', 'es5'];
 
-module.exports = {
+const api = {
   webpack,
 
   /** Get the list of node_modules directories where loaders should be resolved */
@@ -313,6 +313,8 @@ module.exports = {
     });
   },
 };
+
+module.exports = api;
 
 /**
  *
