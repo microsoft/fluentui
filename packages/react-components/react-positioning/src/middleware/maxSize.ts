@@ -1,9 +1,15 @@
 import { size } from '@floating-ui/dom';
 import type { Middleware } from '@floating-ui/dom';
 import type { PositioningOptions } from '../types';
+import { getBoundary } from '../utils/getBoundary';
+export interface MaxSizeMiddlewareOptions extends Pick<PositioningOptions, 'overflowBoundary'> {
+  container: HTMLElement | null;
+}
 
-export function maxSize(autoSize: PositioningOptions['autoSize']): Middleware {
+export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSizeMiddlewareOptions): Middleware {
+  const { container, overflowBoundary } = options;
   return size({
+    ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
       const applyMaxWidth =
         autoSize === 'always' ||
