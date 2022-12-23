@@ -159,7 +159,10 @@ export type DataGridRowSlots = TableRowSlots & {
 };
 
 // @public
-export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots>;
+export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
+    renderCell: CellRenderFunction;
+    columnDefs: ColumnDefinition<any>[];
+};
 
 // @public
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
