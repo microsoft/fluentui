@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "nit: replace screener word usage with storywright.",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

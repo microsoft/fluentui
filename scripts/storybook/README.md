@@ -1,8 +1,8 @@
-# Storybook utils
+# Storybook
 
-This module contains solely v9 packages storybook tools.
+Utils for storybook.
 
-> **💡 NOTE:** only exception is `webpack.config.js` that is used for v8
+> **NOTE:** This module contains solely v9 packages storybook tools.
 
 # API
 

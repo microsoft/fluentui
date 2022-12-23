@@ -84,8 +84,4 @@ function getResolveAlias(useLib, cwd) {
   return alias;
 }
 
-module.exports = getResolveAlias;
-
-if (require.main === module) {
-  console.log(getResolveAlias());
-}
+exports.getResolveAlias = getResolveAlias;

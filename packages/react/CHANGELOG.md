@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 21 Dec 2022 07:47:36 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Dec 2022 07:55:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.1)
+
+Fri, 23 Dec 2022 07:55:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.0..@fluentui/react_v8.104.1)
+
+### Patches
+
+- fix: ComboBox button is not aria-hidden by default ([PR #26050](https://github.com/microsoft/fluentui/pull/26050) by sarah.higley@microsoft.com)
 
 ## [8.104.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.0)
 
