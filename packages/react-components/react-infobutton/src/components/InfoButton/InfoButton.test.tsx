@@ -1,5 +1,5 @@
 import { InfoButton } from './InfoButton';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles';
 import type { RenderResult } from '@testing-library/react';
 
