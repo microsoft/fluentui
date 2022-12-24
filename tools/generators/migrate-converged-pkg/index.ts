@@ -139,7 +139,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   setupBabel(tree, options);
 
   updateNxWorkspace(tree, options);
-  moveDocsToSubfolder(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
 }
@@ -820,20 +819,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 
   return tree;
-}
-
-function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
-  const root = options.projectConfig.root;
-
-  visitNotIgnoredFiles(tree, root, treePath => {
-    const currPath = treePath.toLowerCase();
-    if (currPath.includes('.md') && (currPath.includes('spec') || currPath.includes('migration'))) {
-      const fileName = path.basename(treePath);
-      const newPath = joinPathFragments(root, 'docs', fileName);
-
-      !tree.exists(newPath) && tree.rename(treePath, newPath);
-    }
-  });
 }
 
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
