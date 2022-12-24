@@ -11,15 +11,6 @@ variables:
 pool:
   vmImage: 'Ubuntu 20.04'
 
-schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
-  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
-    branches:
-      include:
-        - 6.0
-
 steps:
   - task: NodeTool@0
     inputs:
