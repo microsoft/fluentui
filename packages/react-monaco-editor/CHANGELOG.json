@@ -2,6 +2,27 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Mon, 26 Dec 2022 07:45:11 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.39",
+      "version": "1.7.39",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "0ba1e7e3d1804a407efd9b58fdb38318f1d99447",
+            "comment": "refactor(scripts): separate /storybook and /webpack and introduce barell api within /webpack"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Dec 2022 07:55:40 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.39",
       "version": "1.7.39",

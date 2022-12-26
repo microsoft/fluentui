@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Mon, 26 Dec 2022 07:45:09 GMT",
+      "tag": "@fluentui/api-docs_v8.2.4",
+      "version": "8.2.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/api-docs",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:05 GMT",
       "tag": "@fluentui/api-docs_v8.2.4",
       "version": "8.2.4",
