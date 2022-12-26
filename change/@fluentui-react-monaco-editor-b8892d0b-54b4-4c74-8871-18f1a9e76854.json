@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: enable strict checking in all just-config files and their dependencies",
-  "packageName": "@fluentui/react-monaco-editor",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
