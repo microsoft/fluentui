@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor(scripts): separate /storybook and /webpack and introduce barell api within /webpack",
-  "packageName": "@fluentui/react-monaco-editor",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

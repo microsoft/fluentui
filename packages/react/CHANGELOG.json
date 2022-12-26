@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 26 Dec 2022 07:45:11 GMT",
+      "tag": "@fluentui/react_v8.104.1",
+      "version": "8.104.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0ba1e7e3d1804a407efd9b58fdb38318f1d99447",
+            "comment": "refactor(scripts): separate /storybook and /webpack and introduce barell api within /webpack"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Dec 2022 07:55:40 GMT",
       "tag": "@fluentui/react_v8.104.1",
       "version": "8.104.1",
