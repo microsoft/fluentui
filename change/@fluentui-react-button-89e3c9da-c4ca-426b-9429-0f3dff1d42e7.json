@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: use individual outlineX CSS props instead of the compound outline prop\"",
+  "comment": "chore: use outline shorthand instead of compound prop for consistency",
   "packageName": "@fluentui/react-button",
   "email": "sarah.higley@microsoft.com",
   "dependentChangeType": "patch"
