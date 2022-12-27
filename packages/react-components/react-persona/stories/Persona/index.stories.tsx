@@ -9,7 +9,7 @@ export { PresenceSize } from './PersonaPresenceSize.stories';
 export { AvatarSize } from './PersonaAvatarSize.stories';
 
 export default {
-  title: 'Preview Components/Persona',
+  title: 'Components/Persona',
   component: Persona,
   parameters: {
     docs: {

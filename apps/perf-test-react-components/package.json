@@ -18,7 +18,7 @@
     "@griffel/core": "^1.8.1",
     "@fluentui/react-avatar": "^9.2.10",
     "@fluentui/react-button": "^9.1.12",
-    "@fluentui/react-persona": "9.1.0-beta.7",
+    "@fluentui/react-persona": "^9.1.0",
     "@fluentui/react-provider": "^9.1.11",
     "@fluentui/react-spinbutton": "^9.0.12",
     "@fluentui/react-theme": "^9.1.5",
