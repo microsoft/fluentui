@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Persona } from '@fluentui/react-persona';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
+import { makeStyles, shorthands, useId, Persona } from '@fluentui/react-components';
 import { Dropdown, Option } from '@fluentui/react-combobox';
 import type { DropdownProps } from '@fluentui/react-combobox';
 
