@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/scripts": "*",
     "@types/stylis": "4.0.0",
     "lerna-alias": "^3.0.3-0"
   },

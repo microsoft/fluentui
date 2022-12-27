@@ -38,7 +38,7 @@
     "@fluentui/example-data": "^8.4.4",
     "@fluentui/jest-serializer-merge-styles": "^8.0.21",
     "@fluentui/react-conformance": "*",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/scripts": "*",
     "@fluentui/test-utilities": "^8.2.4",
     "@fluentui/webpack-utilities": "^8.1.9",
     "office-ui-fabric-core": "^11.0.0"

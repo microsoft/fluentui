@@ -22,7 +22,7 @@
     "@fluentui/react-provider": "^9.1.11",
     "@fluentui/react-spinbutton": "^9.0.12",
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/scripts": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",

@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/scripts": "*",
     "@fluentui/jest-serializer-merge-styles": "^8.0.21",
     "@fluentui/test-utilities": "^8.2.4"
   },
