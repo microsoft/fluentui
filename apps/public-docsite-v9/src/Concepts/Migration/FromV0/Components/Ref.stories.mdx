@@ -1,0 +1,25 @@
+# Ref component Migration guide
+
+The `Ref` component from V0 is deprecated as it used the deprecated `findDomNode` utility from React. All V9 components support ref forwarding, so you can simply use `useRef` to the component.
+
+Before:
+
+```tsx
+import { Flex, Flex } from '@fluentui/react-northstar';
+const Component = ({ popupRef }) => (
+  <Ref innerRef={popupRef}>
+    <Flex>some content</Flex>
+  </Ref>
+);
+```
+
+After:
+
+```tsx
+import { Flex } from '@fluentui/react-components';
+const Component = () => {
+  const ref = React.useRef(null);
+
+  return <Flex ref={ref}>some content</Flex>;
+};
+```
