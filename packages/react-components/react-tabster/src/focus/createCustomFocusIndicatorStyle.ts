@@ -24,19 +24,9 @@ export interface CreateCustomFocusIndicatorStyleOptions {
  */
 export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(
   style: TStyle,
-  {
-    selector = defaultOptions.selector,
-    enableOutline = false,
-  }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
+  { selector = defaultOptions.selector }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
 ): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle {
   return {
-    ':focus': {
-      outlineColor: enableOutline ? undefined : 'transparent',
-    },
-    ':focus-visible': {
-      outlineColor: enableOutline ? undefined : 'transparent',
-    },
-
     ...(selector === 'focus' && {
       [`&[${FOCUS_VISIBLE_ATTR}]`]: style,
     }),
