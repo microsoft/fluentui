@@ -233,6 +233,8 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
     state.root.className,
   );
 
+  state.groupper.className = mergeClasses(treeItemClassNames.groupper, state.groupper.className);
+
   state.root.style = {
     ...state.root.style,
     [treeItemTokens.level]: level,
