@@ -1,16 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import {
-  BaseTreeItemElement,
-  BaseTreeItemElementIntersection,
-  BaseTreeItemProps,
-  BaseTreeItemSlots,
-  BaseTreeItemState,
-} from '../BaseTreeItem/index';
-
-export type TreeItemElement = BaseTreeItemElement;
-
-/** @internal */
-export type TreeItemElementIntersection = BaseTreeItemElementIntersection;
+import { BaseTreeItemProps, BaseTreeItemSlots, BaseTreeItemState } from '../BaseTreeItem/index';
 
 export type TreeItemSlots = BaseTreeItemSlots & {
   /**
@@ -35,6 +24,7 @@ export type TreeItemSlots = BaseTreeItemSlots & {
    * when the item is hovered/focused
    */
   actions?: Slot<'span'>;
+  groupper: NonNullable<Slot<'span'>>;
 };
 
 /**
