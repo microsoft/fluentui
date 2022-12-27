@@ -371,8 +371,7 @@
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "@types/jest-axe/axe-core": "4.2.1",
-    "eslint": "7.25.0",
-    "requestretry": "7.0.0"
+    "eslint": "7.25.0"
   },
   "syncpack": {
     "prod": true,
