@@ -1,4 +1,4 @@
-import { Persona } from '@fluentui/react-persona';
+import { Persona } from '@fluentui/react-components';
 
 import descriptionMd from './PersonaDescription.md';
 
