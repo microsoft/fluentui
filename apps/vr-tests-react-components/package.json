@@ -57,7 +57,6 @@
     "@fluentui/react-tooltip": "^9.1.5",
     "@fluentui/react-toolbar": "9.0.0-rc.2",
     "@fluentui/react-utilities": "^9.3.0",
-    "@fluentui/scripts": "*",
     "@griffel/react": "^1.4.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
