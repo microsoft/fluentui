@@ -21,10 +21,6 @@ const useStyles = makeStyles({
       display: 'none',
     },
   },
-  center: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
 });
 
 export const InfoButtonSnippetExample = () => {
@@ -32,23 +28,17 @@ export const InfoButtonSnippetExample = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className={styles.center}>
-      <Popover
-        open={open}
-        onOpenChange={(e, data) => setOpen(data.open)}
-        withArrow
-        size="medium"
-        positioning="above-start"
-      >
-        <PopoverTrigger>
-          <Button
-            className={open ? styles.buttonOpen : ''}
-            appearance="transparent"
-            icon={<DefaultInfoButtonIcon16 />}
-          />
-        </PopoverTrigger>
-        <PopoverSurface role="note">This is an example InfoButton.</PopoverSurface>
-      </Popover>
-    </div>
+    <Popover
+      open={open}
+      onOpenChange={(e, data) => setOpen(data.open)}
+      withArrow
+      size="medium"
+      positioning="above-start"
+    >
+      <PopoverTrigger>
+        <Button className={open ? styles.buttonOpen : ''} appearance="transparent" icon={<DefaultInfoButtonIcon16 />} />
+      </PopoverTrigger>
+      <PopoverSurface role="note">This is an example InfoButton.</PopoverSurface>
+    </Popover>
   );
 };

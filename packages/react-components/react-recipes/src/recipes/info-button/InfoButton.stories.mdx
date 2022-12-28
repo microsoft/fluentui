@@ -1,10 +1,13 @@
+import LinkTo from '@storybook/addon-links/react';
 import { Meta } from '@storybook/addon-docs';
 import { InfoButtonSnippetExample } from './code-snippets';
-import LinkTo from '@storybook/addon-links/react';
+import { Example } from '../../templates';
 
 <Meta title="Concepts/Recipes/Info Button" />
 
-## Info Button recipe
+---
+
+# Info Button recipe
 
 ### **Overview**
 
@@ -19,16 +22,18 @@ can be used along with the field variants of input components and labels.
 - <LinkTo kind="preview-components-field--default">@fluentui/react-field</LinkTo>
 - <LinkTo kind="components-label--default">@fluentui/react-label</LinkTo>
 
-### **Steps**
+## **Steps**
 
-<InfoButtonSnippetExample />
+<Example>
+  <InfoButtonSnippetExample />
+</Example>
 
 To achieve an `InfoButton` like the one above, there are three main components/ingredients needed. The first one being
 the `Button` component that serves as our trigger and visible button. The second being the `Info` icon along with the
 `bundleIcon` utility that will be displayed inside the `Button`. Finally, the `Popover` component that will be used to
 display the content of the `InfoButton`.
 
-#### **1. Create the `Button`.**
+### **1. Create the `Button`.**
 
 We first need to create an icon with the `bundleIcon` utility. You'll need to pass the filled and regular versions of
 the icon to the utility. The name will change based on the size, we use `Info16Filled` and `Info16Regular` (notice the
@@ -38,7 +43,7 @@ link above pointing to `@fluenui/react-icons`.
 After having the icon, we will create the `Button` component. We will use the `icon` slot to pass the icon we created
 and set the `appearance` to `transparent`. This will make the button transparent and only show the icon.
 
-#### **2. Integrate the `Popover` with the `Button` we created.**
+### **2. Integrate the `Popover` with the `Button` we created.**
 
 Now that we have a `Button` ready to be used, we can integrate it with the `Popover` component. We will use the Popover
 and have two children, the `PopoverTrigger` which wraps our `Button` and the `PopoverContent` which will wrap what
@@ -48,7 +53,7 @@ example, but the `Popover` will require some additional props to be set. These a
 - `withArrow`: this will add an arrow at the bottom of the `Popover` to indicate that it is attached to the `Button`.
 - `positioning: 'above-start'`: this will position the `Popover` above the `Button` and align it to the left side.
 
-#### **3. Add selected styles to the `Button`.**
+### **3. Add selected styles to the `Button`.**
 
 You'll notice that our current progress has a missing style, when the `InfoButton` is opened, the `Button`'s icon should
 have the filled appearance. To achieve this, we will need to add an open state to our `InfoButton` using
@@ -64,11 +69,11 @@ for more details. Finally, we will also add the `colorNeutralForeground2BrandHov
 found in the tokens exported by `@fluentui/react-components`. Once we have this className, we need to apply it to the
 icon whenever the `Popover` is open by using the `state` we created.
 
-### **Variants**
+## **Variants**
 
-#### **Sizing**
+### **Sizing**
 
-**Small**
+- #### **Small**
 
 | Attribute                    | Size                |
 | ---------------------------- | ------------------- |
@@ -78,7 +83,7 @@ icon whenever the `Popover` is open by using the `state` we created.
 | Popover's vertical padding   | `spacingVerticalXS` |
 | Popover's horizontal padding | `spacingVerticalXS` |
 
-**Medium**
+- #### **Medium**
 
 | Attribute                    | Size                |
 | ---------------------------- | ------------------- |
@@ -88,7 +93,7 @@ icon whenever the `Popover` is open by using the `state` we created.
 | Popover's vertical padding   | `spacingVerticalXS` |
 | Popover's horizontal padding | `spacingVerticalXS` |
 
-**Large**
+- #### **Large**
 
 | Attribute                    | Size                 |
 | ---------------------------- | -------------------- |
@@ -98,9 +103,9 @@ icon whenever the `Popover` is open by using the `state` we created.
 | Popover's vertical padding   | `spacingVerticalXXS` |
 | Popover's horizontal padding | `spacingVerticalXXS` |
 
-### **Best practices**
+## **Best practices**
 
-#### **Accessibility**
+### **Accessibility**
 
 - The `PopoverSurface` should have a role of `note`.
 - The `aria-label` should be set to `"information"`.
@@ -108,6 +113,6 @@ icon whenever the `Popover` is open by using the `state` we created.
   `aria-labelledby="<field-label-id / label-id> info-button-id"`. The first id being either the label's id or the
   field's label id and the second being the `Button`'s id.
 
-#### **Dont's**
+### **Dont's**
 
 - Because the Popover isn't always visible, don't include information that people must know in order to complete the field.

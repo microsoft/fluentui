@@ -1,16 +1,13 @@
-import { Meta } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
-import {
-  FlexTextAlignmentVariations,
-  FlexTextVerticalAlignmentVariations,
-  FlexSkeleton,
-  FlexIconMediaObject,
-  GridIconMediaObject,
-} from './code-snippets';
+import { Meta } from '@storybook/addon-docs';
+import { TextPositionVariations, TextAlignmentVariations, FlexSkeleton, IconMediaObject } from './code-snippets';
+import { Example } from '../../templates';
 
 <Meta title="Concepts/Recipes/Media Object" />
 
-## Media Object recipe
+---
+
+# Media Object recipe
 
 ### **Overview**
 
@@ -29,65 +26,33 @@ want to add.
 - <LinkTo kind="components-text--default">@fluentui/react-text</LinkTo>
 
 > **\*\*Note:\*\*** This recipe is meant to provide a way to use custom media. If you want to use
-> `Avatar` or `PresenceBadge` as media, this should be done using the Persona Component.
+> `Avatar` or `PresenceBadge` as media, please refer to our Persona Component.
 
-### **Steps**
+## **Steps**
 
 There are two ways to build a Media Object, you can use a grid layout or a flex layout. We will cover both in this
 recipe. There are upsides and downsides to both, but the main difference is that grid layout uses less dom than the
 flex option.
 
-#### **Flex Layout**
+### **Flex Layout**
 
-The main idea behind the flex layout is to have a container and two children. As shown below, the parent div will
+The main idea behind the flex layout is to have a container and two children, as shown below. The parent div will
 contain the media and another div (text div) that will contain the text content.
 
-<FlexSkeleton />
-
-This structure will then look like this:
-
-```html
-<div class="media-object">
-  <Attach24Regular />
-  <div class="text">
-    <Text size="{400}" weight="bold"> File.tsx </Text>
-    <Text size="{200}">256 Gb</Text>
-  </div>
-</div>
-```
+<Example centered>
+  <FlexSkeleton />
+</Example>
 
 To achieve this layout, the parent and text div need to have `display: flex`. The text div should have a
-`flex-direction: column` to stack the text lines vertically. This will leave us with the following makeStyles call:
+`flex-direction: column` to stack the text lines vertically. After these steps we can achieve something like this:
 
-```tsx
-import { makeStyles } from '@fluentui/react-components';
+<Example centered>
+  <IconMediaObject />
+</Example>
 
-const useStyles = makeStyles({
-  mediaObject: {
-    display: 'flex',
-  },
-  text: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
-```
-
-After these steps we can achieve something like this:
-
-<FlexIconMediaObject />
-
-#### **Grid Layout**
+### **Grid Layout**
 
 When using a grid for Media Object, we only need a parent div and we can input the items directly into it.
-
-```html
-<div class="media-object">
-  <Attach24Regular class="media />
-  <Text size="{400}" weight="bold">File.tsx</Text>
-  <Text size="{200}">256 Gb</Text>
-</div>
-```
 
 > As you can see, the grid layout has one less layer of dom compared to the flex layout. This is especially important
 > when the component is going to be used in a list or the items have many layers themselves.
@@ -99,37 +64,30 @@ you need to know how many lines of text you will have to set the `grid-row-start
 If these lines of text are applied dynamically, you can use `grid-template-columns` with a separator to achieve the
 same result.
 
-```tsx
-import { makeStyles } from '@fluentui/react-components';
+After these steps, we will be left with something like the example shown in the beginning.
 
-const useStyles = makeStyles({
-  mediaObject: {
-    display: 'grid',
-    gridAutoFlow: 'column',
-  },
-  media: {
-    gridRowStart: 'span 2',
-  },
-});
-```
-
-after these steps, we will be left with something like this:
-
-<GridIconMediaObject />
-
-### **Variants**
+## **Variants**
 
 There are a few common variants that you might want to use when building a Media Object. These are some of them:
 
-- #### **Text Alignment Variations**
+- ### **Text Alignment Variations**
 
-<FlexTextAlignmentVariations />
+There are text alignment variations that might be useful when building an application. These can be ones below where the
+first one is after the media, the second one is below, and the last one is before.
 
-- #### **Text Vertical Alignment Variations**
+<Example centered>
+  <TextPositionVariations />
+</Example>
 
-<FlexTextVerticalAlignmentVariations />
+- ### **Text Vertical Alignment Variations**
 
-### **Best practices**
+There are also vertical alignment variations, these include start and center as seen below.
+
+<Example centered>
+  <TextAlignmentVariations />
+</Example>
+
+## **Best practices**
 
 - The higher up the text line, the more important it is. You should not apply higher weights to the lines underneath.
 - When using `grid-template-columns` make sure the dom makes sense and not differ from how the grid is placing them.
