@@ -8,7 +8,7 @@ import { sum as d3Sum } from 'd3-array';
 import { ChartHoverCard, IBasestate, SLink, SNode } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { select, selectAll } from 'd3-selection';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import { IMargins } from '../../utilities/utilities';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
@@ -17,7 +17,7 @@ const PADDING_PERCENTAGE = 0.3;
 type NodesInColumns = { [key: number]: SNode[] };
 type NodeColors = { fillColor: string; borderColor: string };
 
-interface ISankeyChartState extends IBasestate {
+export interface ISankeyChartState extends IBasestate {
   containerWidth: number;
   containerHeight: number;
   selectedState: boolean;
@@ -131,7 +131,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <FocusZone direction={FocusZoneDirection.bidirectional} isCircularNavigation={true} allowTabKey={true}>
+        <FocusZone
+          direction={FocusZoneDirection.bidirectional}
+          isCircularNavigation={true}
+          handleTabKey={FocusZoneTabbableElements.all}
+        >
           <svg width={width} height={height} id={getId('sankeyChart')}>
             <g className={this._classNames.links} strokeOpacity={1}>
               {linkData}
@@ -302,7 +306,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           .curve(d3CurveBasis);
         const gradientUrl = `url(#gradient-${this._linkId}-${index})`;
         const link = (
-          <>
+          <g key={`${this._linkId}-${index}`}>
             <defs>
               <linearGradient id={`gradient-${this._linkId}-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0" stopColor={(singleLink.source as SNode).color} />
@@ -336,7 +340,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                 </Callout>
               )}
             </path>
-          </>
+          </g>
         );
         links.push(link);
       });
@@ -394,7 +398,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           .style('opacity', 0);
         const nodeId = getId('nodeBar');
         const node = (
-          <g id={getId('nodeGElement')}>
+          <g key={index} id={getId('nodeGElement')}>
             <rect
               x={singleNode.x0}
               y={singleNode.y0}
@@ -426,6 +430,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               <g className={this._classNames.nodeTextContainer}>
                 <g className="nodeName">
                   <text
+                    id={`${nodeId}-name`}
                     x={singleNode.x0}
                     y={singleNode.y0}
                     dy={'1.2em'}
