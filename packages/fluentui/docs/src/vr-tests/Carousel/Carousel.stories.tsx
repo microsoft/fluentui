@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Carousel } from '@fluentui/react-northstar';
 import CarouselExample from '../../examples/components/Carousel/Types/CarouselExample.shorthand';

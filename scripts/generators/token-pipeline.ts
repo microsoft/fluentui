@@ -22,11 +22,11 @@ function getGeneratedFiles(tmpDir: string) {
   return [
     {
       src: path.join(tmpDir, 'light/global-colors.ts'), // the same global colors are generated for all theme, just use light
-      dest: path.join(repoRoot, 'packages/react-components/react-theme/src/global/colors.ts'),
+      dest: path.join(repoRoot, 'packages/tokens/src/global/colors.ts'),
     },
     ...themes.map(theme => ({
       src: path.join(tmpDir, `${theme}/alias-colors.ts`),
-      dest: path.join(repoRoot, `packages/react-components/react-theme/src/alias/${theme}Color.ts`),
+      dest: path.join(repoRoot, `packages/tokens/src/alias/${theme}Color.ts`),
     })),
   ];
 }
@@ -86,7 +86,7 @@ const tokenPipeline = () => {
   });
 
   console.log('Format');
-  execSync(`npx prettier --write ${path.join(repoRoot, 'packages/react-components/react-theme/src')}`);
+  execSync(`npx prettier --write ${path.join(repoRoot, 'packages/tokens/src')}`);
 };
 
 tokenPipeline();

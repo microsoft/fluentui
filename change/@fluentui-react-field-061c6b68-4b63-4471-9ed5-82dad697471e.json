@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Field migration guide to Migration.md",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextBold24Regular, TextItalic24Regular, TextUnderline24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarToggleButton, ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarToggleButton, ToolbarProps } from '@fluentui/react-components/unstable';
 
 export const ControlledToggleButton = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({

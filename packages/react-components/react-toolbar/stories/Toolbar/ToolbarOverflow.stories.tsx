@@ -5,8 +5,8 @@ import {
   FontIncrease24Regular,
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
-import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
-import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-components/unstable';
+import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-components/unstable';
 import {
   Overflow,
   OverflowItem,

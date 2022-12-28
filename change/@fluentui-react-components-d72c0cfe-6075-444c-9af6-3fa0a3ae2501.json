@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: set @fluentui/react-storybook-addon dev dependency to a pinned version.",
+  "packageName": "@fluentui/react-components",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
