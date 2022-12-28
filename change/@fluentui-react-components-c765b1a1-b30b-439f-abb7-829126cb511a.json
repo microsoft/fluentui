@@ -3,5 +3,5 @@
   "comment": "feat: Moving Persona to stable.",
   "packageName": "@fluentui/react-components",
   "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "minor"
 }
