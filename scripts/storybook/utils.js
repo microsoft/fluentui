@@ -162,7 +162,6 @@ function getPackageStoriesGlob(options) {
       const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
       const pkgMetadata = getProjectMetadata({ name: pkgName });
 
-      //TODO: simplify once v9 migration [https://github.com/microsoft/fluentui/issues/24129] is complete.
       if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
         return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
       }
