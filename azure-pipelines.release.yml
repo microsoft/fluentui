@@ -66,9 +66,10 @@ steps:
       npm run publish:beachball -- -b origin/6.0 -t lts-6 -n $(npmToken) --access public -y
     displayName: 'Publish Change Requests and Bump Versions'
 
-  - script: |
-      node scripts/updateReleaseNotes.js --token=$(githubPAT) --apply --debug
-    displayName: 'Update github release notes'
+  # TODO: updateReleaseNotes script results in too many calls to the github API causing a timeout, needs to be refactored
+  # - script: |
+  #     node scripts/updateReleaseNotes.js --token=$(githubPAT) --apply --debug
+  #   displayName: 'Update github release notes'
 
   - script: |
       oufrVersion=$(node -p -e "require('./packages/office-ui-fabric-react/package.json').version") &&
