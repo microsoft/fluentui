@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: replace shouldPreventKeydown with isInteractiveHTMLElement",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

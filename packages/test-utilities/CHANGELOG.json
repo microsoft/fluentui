@@ -2,6 +2,21 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Mon, 26 Dec 2022 07:45:12 GMT",
+      "tag": "@fluentui/test-utilities_v8.2.4",
+      "version": "8.2.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:14 GMT",
       "tag": "@fluentui/test-utilities_v8.2.4",
       "version": "8.2.4",

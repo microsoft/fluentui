@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Tue, 20 Dec 2022 07:53:34 GMT",
+      "tag": "@fluentui/theme_v2.6.20",
+      "version": "2.6.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/theme",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:14 GMT",
       "tag": "@fluentui/theme_v2.6.19",
       "version": "2.6.19",

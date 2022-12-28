@@ -7,10 +7,11 @@
  * might be problematic while operating with [multiple realms](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_realms)
  *
  */
-export function isHTMLElement(element?: Node | null | undefined): element is HTMLElement {
+export function isHTMLElement(element?: unknown): element is HTMLElement {
+  const typedElement = element as Node | null | undefined;
   return Boolean(
-    element !== null &&
-      element?.ownerDocument?.defaultView &&
-      element instanceof element.ownerDocument.defaultView.HTMLElement,
+    typedElement !== null &&
+      typedElement?.ownerDocument?.defaultView &&
+      typedElement instanceof typedElement.ownerDocument.defaultView.HTMLElement,
   );
 }

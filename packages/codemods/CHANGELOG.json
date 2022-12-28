@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Mon, 26 Dec 2022 07:45:09 GMT",
+      "tag": "@fluentui/codemods_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:06 GMT",
       "tag": "@fluentui/codemods_v8.4.6",
       "version": "8.4.6",

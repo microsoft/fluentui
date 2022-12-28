@@ -21,9 +21,6 @@
       "path": "./lint-staged/tsconfig.json"
     },
     {
-      "path": "./typescript/tsconfig.json"
-    },
-    {
       "path": "./tasks/tsconfig.json"
     },
     {
@@ -49,9 +46,6 @@
     },
     {
       "path": "./monorepo/tsconfig.json"
-    },
-    {
-      "path": "./screener/tsconfig.json"
     },
     {
       "path": "./generators/tsconfig.json"
@@ -88,6 +82,9 @@
     },
     {
       "path": "./utils/tsconfig.json"
+    },
+    {
+      "path": "./ts-node/tsconfig.json"
     },
     {
       "path": "./tsconfig.lib.json"

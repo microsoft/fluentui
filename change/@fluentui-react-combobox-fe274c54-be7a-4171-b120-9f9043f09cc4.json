@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: multiselect Combobox does not display selected options in the text field",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

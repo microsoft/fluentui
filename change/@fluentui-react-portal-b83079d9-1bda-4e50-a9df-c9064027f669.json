@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Portals should render correctly in strict mode",
+  "packageName": "@fluentui/react-portal",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

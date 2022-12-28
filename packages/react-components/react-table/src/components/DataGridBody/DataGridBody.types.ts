@@ -22,4 +22,9 @@ export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
 /**
  * State used in rendering DataGridBody
  */
-export type DataGridBodyState = TableBodyState;
+export type DataGridBodyState = TableBodyState & {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  rows: RowState<any>[];
+
+  renderRow: RowRenderFunction;
+};

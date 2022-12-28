@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Mon, 05 Dec 2022 18:29:39 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.36)
+
+Wed, 21 Dec 2022 10:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.35..@fluentui/react-card_v9.0.0-beta.36)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.3.4 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-button to v9.1.12 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.35)
+
+Tue, 20 Dec 2022 14:59:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.34..@fluentui/react-card_v9.0.0-beta.35)
+
+### Changes
+
+- fix: remove unnecessary selectable ref and add support for aria-describedby on card preview ([PR #25934](https://github.com/microsoft/fluentui/pull/25934) by marcosvmmoura@gmail.com)
+- fix selectable card accessibility ([PR #25827](https://github.com/microsoft/fluentui/pull/25827) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.3.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-button to v9.1.11 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
 
 ## [9.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.34)
 

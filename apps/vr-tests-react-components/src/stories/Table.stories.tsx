@@ -26,7 +26,7 @@ import {
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 
 const items = [
   {
@@ -595,7 +595,7 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
-      <Screener steps={new Screener.Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</Screener>
+      <StoryWright steps={new Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</StoryWright>
     ))
     .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
@@ -690,15 +690,15 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
 
   storiesOf(`Table ${layoutName} - subtle selection`, module)
     .addDecorator(story => (
-      <Screener steps={new Screener.Steps().hover('.not-selected').snapshot('hover unselected row').end()}>
+      <StoryWright steps={new Steps().hover('.not-selected').snapshot('hover unselected row').end()}>
         {story()}
-      </Screener>
+      </StoryWright>
     ))
     .addStory('rest', () => <SubtleSelection noNativeElements={noNativeElements} />);
   storiesOf(`Table layout ${layoutName} - headers`, module)
     .addDecorator(story => (
-      <Screener
-        steps={new Screener.Steps()
+      <StoryWright
+        steps={new Steps()
           .hover('.columnheader')
           .snapshot('hover header')
           .mouseDown('.columnheader')
@@ -706,7 +706,7 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ))
     .addStory('sortable', () => <SortableHeaders noNativeElements={noNativeElements} />, {
       includeDarkMode: true,

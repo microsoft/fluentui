@@ -178,6 +178,7 @@ import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { RowId } from '@fluentui/react-table';
 import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
@@ -268,7 +269,14 @@ import { ToolbarContextValues } from '@fluentui/react-toolbar';
 import { ToolbarDivider } from '@fluentui/react-toolbar';
 import { ToolbarDividerProps } from '@fluentui/react-toolbar';
 import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarGroup } from '@fluentui/react-toolbar';
+import { toolbarGroupClassNames } from '@fluentui/react-toolbar';
+import { ToolbarGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarGroupState } from '@fluentui/react-toolbar';
 import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButton } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
 import { ToolbarSlots } from '@fluentui/react-toolbar';
 import { ToolbarState } from '@fluentui/react-toolbar';
 import { ToolbarToggleButton } from '@fluentui/react-toolbar';
@@ -345,8 +353,17 @@ import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
 import { useTableSort } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
 import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDivider_unstable } from '@fluentui/react-toolbar';
 import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroupStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButtonStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
 
 export { Alert }
 
@@ -696,6 +713,8 @@ export { renderTableSelectionCell_unstable }
 
 export { renderToolbar_unstable }
 
+export { renderToolbarGroup_unstable }
+
 export { RowId }
 
 export { RowState }
@@ -877,7 +896,21 @@ export { ToolbarDividerProps }
 
 export { ToolbarDividerState }
 
+export { ToolbarGroup }
+
+export { toolbarGroupClassNames }
+
+export { ToolbarGroupProps }
+
+export { ToolbarGroupState }
+
 export { ToolbarProps }
+
+export { ToolbarRadioButton }
+
+export { ToolbarRadioButtonProps }
+
+export { ToolbarRadioButtonState }
 
 export { ToolbarSlots }
 
@@ -1031,9 +1064,27 @@ export { useTableStyles_unstable }
 
 export { useToolbar_unstable }
 
+export { useToolbarButton_unstable }
+
+export { useToolbarButtonStyles_unstable }
+
+export { useToolbarDivider_unstable }
+
 export { useToolbarDividerStyles_unstable }
 
+export { useToolbarGroup_unstable }
+
+export { useToolbarGroupStyles_unstable }
+
+export { useToolbarRadioButton_unstable }
+
+export { useToolbarRadioButtonStyles_unstable }
+
 export { useToolbarStyles_unstable }
+
+export { useToolbarToggleButton_unstable }
+
+export { useToolbarToggleButtonStyles_unstable }
 
 // (No @packageDocumentation comment for this package)
 

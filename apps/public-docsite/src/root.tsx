@@ -5,11 +5,11 @@ import * as platformPickerStyles from '@fluentui/react-docsite-components/lib/co
 import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { androidLogo, appleLogo, webLogo, macLogo, windowsLogo, crossPlatformLogo } from './utilities/index';
+import { androidLogo, appleLogo, webLogo, macLogo, windowsLogo, crossPlatformLogo, cdnUrl } from './utilities/index';
 
 // TODO: handle redirects
 
-initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/assets/item-types/');
+initializeFileTypeIcons(cdnUrl + '/assets/item-types/');
 
 setRTL(false);
 
