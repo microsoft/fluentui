@@ -59,12 +59,18 @@ const useSecondaryTextStyles = makeStyles({
   },
 });
 
-const useValidationMessageIconStyles = makeStyles({
+const useValidationMessageStyles = makeStyles({
   base: {
+    display: 'flex',
+  },
+
+  icon: {
+    display: 'block',
     fontSize: '12px',
     lineHeight: '12px',
     verticalAlign: 'middle',
     marginRight: tokens.spacingHorizontalXS,
+    marginTop: tokens.spacingVerticalXXS,
   },
 
   error: {
@@ -112,12 +118,12 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
     );
   }
 
-  const validationMessageIconStyles = useValidationMessageIconStyles();
+  const validationMessageStyles = useValidationMessageStyles();
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = mergeClasses(
       classNames.validationMessageIcon,
-      validationMessageIconStyles.base,
-      !!validationState && validationMessageIconStyles[validationState],
+      validationMessageStyles.icon,
+      !!validationState && validationMessageStyles[validationState],
       state.validationMessageIcon.className,
     );
   }
@@ -126,6 +132,7 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   if (state.validationMessage) {
     state.validationMessage.className = mergeClasses(
       classNames.validationMessage,
+      validationMessageStyles.base,
       secondaryTextStyles.base,
       horizontal && rootStyles.secondColumn,
       validationState === 'error' && secondaryTextStyles.error,
