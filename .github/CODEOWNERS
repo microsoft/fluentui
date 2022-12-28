@@ -53,10 +53,10 @@
 /migrations.json @microsoft/fluentui-react-build
 
 #### Meta and License stuff
-/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
-/packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
-/.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar
-/.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar
+/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
+/packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
+/.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
+/.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar @tudorpopams
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
