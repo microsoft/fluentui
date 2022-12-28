@@ -1,5 +1,5 @@
 import * as T from '@babel/types';
-import { BabelPlugin } from './types';
+import type { BabelPlugin } from './types';
 
 /**
  * Creates an default import:
