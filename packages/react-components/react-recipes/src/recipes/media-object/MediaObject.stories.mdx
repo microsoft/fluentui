@@ -43,8 +43,15 @@ contain the media and another div (text div) that will contain the text content.
   <FlexSkeleton />
 </Example>
 
-To achieve this layout, the parent and text div need to have `display: flex`. The text div should have a
-`flex-direction: column` to stack the text lines vertically. After these steps we can achieve something like this:
+To achieve this layout, we will follow these steps:
+
+#### **Step 1: Creating our parent and text containers.**
+
+As seen above, we will first need to create our parent div and our text containers. These containers will need to have
+the `display: flex` css property and a `row` direction for the parent and a `column` direction for the text container.
+That is all we need to do! Since we are using flex box we don't need to worry about dynamically placing items. Do take into
+account that using this approach will be heavier on the dom than the grid approach. After these steps you should be able
+to build something like the example below (spacing aside).
 
 <Example centered>
   <IconMediaObject />
@@ -52,19 +59,40 @@ To achieve this layout, the parent and text div need to have `display: flex`. Th
 
 ### **Grid Layout**
 
-When using a grid for Media Object, we only need a parent div and we can input the items directly into it.
+When using a grid for Media Object, we only need a parent div and we can pass the items directly into it.
+As you can tell, the grid layout has one less layer of dom compared to the flex layout. This is especially important
+when the component is going to be used repeatedly in a list or the media or/and text have many layers themselves.
 
-> As you can see, the grid layout has one less layer of dom compared to the flex layout. This is especially important
-> when the component is going to be used in a list or the items have many layers themselves.
+To get started, we will follow these steps:
 
-To get the initial layout, we need to set the parent to `display: grid`, `grid-auto-flow: column` and the media to `grid-row-start: span 2`.
-There are many ways to achieve a Media Object with grid, but this is the simplest one. One caveat is that
-you need to know how many lines of text you will have to set the `grid-row-start` correctly.
+#### **Step 1: Creating our grid.**
 
-If these lines of text are applied dynamically, you can use `grid-template-columns` with a separator to achieve the
-same result.
+To get the initial layout, we need to add these css properties to our parent div:
 
-After these steps, we will be left with something like the example shown in the beginning.
+- `display: grid`: This will create our grid layout and allow us to use the grid properties.
+- `grid-auto-flow: column`: This will make the grid flow as a column and allow our media to be on the left and our text on the right.
+
+#### **Step 2: Adding our media.**
+
+Our next step is to add our media. Unlike the flex layout, we will need to add some css properties to our media because
+we are using `grid-auto-flow: column`. To make our media take all the rows on the left, we will need to make our media
+span the number of rows the text will take. If we have 4 lines of text, we will need to add `grid-row-start: span 4`.
+While this could be done dynamically using line names, this is the simplest way to achieve a media object with grid.
+After these steps we should be able to add our media and text, and get the desired layout shown above.
+
+#### **Step 3 (_optional_): Dynamically place media and text.**
+
+If you want to dynamically place your media and text, you can use `grid-template-columns` to achieve this. For the basic
+layout, we need to add the css property `grid-template-columns: max-content [middle] auto`. This will create two columns
+and a line name called middle. The max-content column will be the media which will help only use the space needed for the
+media and the auto column will be the text so we can wrap it when there is not enough space in our container.
+
+#### **Step 4 (_optional_): Let your media and text know where to start and end.**
+
+Now that we have our template columns, we need to let your text know where to start and our media where to end. The media
+must end at the middle line and the text must start at the middle line. This has the pro of not having to know how many
+rows of text we will have, but the downside is that we have to let the media and text know where to start or end. To let
+the media know where to end, we will add `grid-column-end: middle` and we do the same with the text with `grid-column-start`.
 
 ## **Variants**
 
@@ -90,4 +118,5 @@ There are also vertical alignment variations, these include start and center as 
 ## **Best practices**
 
 - The higher up the text line, the more important it is. You should not apply higher weights to the lines underneath.
-- When using `grid-template-columns` make sure the dom makes sense and not differ from how the grid is placing them.
+- When using `grid-template-columns` make sure the dom makes sense and not differ from how the grid is placing them. Do
+  not have your dom be `<media> <text>` when the rendered result looks like `<text> <media>`.
