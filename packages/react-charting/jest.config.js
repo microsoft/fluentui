@@ -3,9 +3,9 @@ let path = require('path');
 
 function getEsmOnlyPackagesToCjsMapping() {
   /**
-   * relative path to monorepo root
+   * relative path to jest cwd
    */
-  const prefix = `<rootDir>/../../`;
+  const prefix = `<rootDir>/`;
   /**
    * map of packages that ship only as ESM
    */
