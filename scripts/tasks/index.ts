@@ -7,7 +7,7 @@ import { isConvergedPackage } from '../monorepo';
 
 import { babel } from './babel';
 import { clean } from './clean';
-import { copy, copyCompiled } from './copy';
+import { copy, copyCompiled, expandSourcePath } from './copy';
 import { jest as jestTask, jestWatch } from './jest';
 import { sass } from './sass';
 import { ts } from './ts';
@@ -16,7 +16,7 @@ import { webpack, webpackDevServer } from './webpack';
 import { apiExtractor } from './api-extractor';
 import { lintImports } from './lint-imports';
 import { prettier } from './prettier';
-import { postprocessTask } from './postprocess';
+import * as postprocess from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
 import { startStorybookTask, buildStorybookTask } from './storybook';
 import { getJustArgv } from './argv';
@@ -51,7 +51,7 @@ export function preset() {
   task('jest', jestTask);
   task('jest-watch', jestWatch);
   task('sass', sass());
-  task('ts:postprocess', postprocessTask());
+  task('ts:postprocess', postprocess.postprocessTask());
   task('postprocess:amd', postprocessAmdTask);
   task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
@@ -127,3 +127,5 @@ if (process.cwd() === __dirname) {
   // load the preset if this is being run within the scripts package
   preset();
 }
+
+export { postprocess, eslint, ts, expandSourcePath };

@@ -1,7 +1,5 @@
 import { preset, task, series, parallel, copyInstructions, copyInstructionsTask, cleanTask } from '@fluentui/scripts';
-import { ts } from '@fluentui/scripts/tasks/ts';
-import { postprocessTask, defaultLibPaths } from '@fluentui/scripts/tasks/postprocess';
-import { eslint } from '@fluentui/scripts/tasks/eslint';
+import { ts, postprocess, eslint } from '@fluentui/scripts/tasks';
 import * as path from 'path';
 import { transformCssTask } from './tasks/transformCssTask';
 
@@ -21,7 +19,7 @@ task(
 task('transform-css', transformCssTask);
 task('ts:esm', ts.esm);
 task('ts:commonjs', ts.commonjs);
-task('ts:postprocess', postprocessTask([...defaultLibPaths, 'esm/**/*.d.ts']));
+task('ts:postprocess', postprocess.postprocessTask([...postprocess.defaultLibPaths, 'esm/**/*.d.ts']));
 task('ts', series(parallel('ts:esm', 'ts:commonjs'), 'ts:postprocess'));
 task('eslint', eslint);
 
