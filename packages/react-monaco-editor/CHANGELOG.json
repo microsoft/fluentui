@@ -2,6 +2,21 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Thu, 29 Dec 2022 07:45:27 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.39",
+      "version": "1.7.39",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "2119358057078b8f9e844f4a88a813287edc64ca",
+            "comment": "chore(scripts): remove deep imports from /scripts/tasks/*"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Dec 2022 07:45:11 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.39",
       "version": "1.7.39",
