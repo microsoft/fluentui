@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { TaskFunction, TscTaskOptions, logger } from 'just-scripts';
 import { exec, encodeArgs, spawn } from 'just-scripts-utils';
 import { stripJsonComments } from '@nrwl/devkit';
 
@@ -29,7 +28,6 @@ function getSwcTaskConfig(options: any) {
 }
 
 function swcTask(options: any) {
-  console.log('options ', options);
   const outDir = options.outDir;
   const cmd = `npx swc src -d ${outDir} -C module.type=${options.type}`;
   console.log('swc task cli command: ', cmd);

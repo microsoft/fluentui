@@ -84,3 +84,8 @@ export const ts = {
     return tscTask(options);
   },
 };
+
+export function tsDeclarationFilesEmit() {
+  const options = prepareTsTaskConfig({});
+  return tscTask(options);
+}

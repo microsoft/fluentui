@@ -10,7 +10,7 @@ import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
 import { jest as jestTask, jestWatch } from './jest';
 import { sass } from './sass';
-import { ts } from './ts';
+import { ts, tsDeclarationFilesEmit } from './ts';
 import { swc } from './swc';
 import { eslint } from './eslint';
 import { webpack, webpackDevServer } from './webpack';
@@ -90,11 +90,14 @@ export function preset() {
 
   task('swc', () => {
     return series(
+      'ts:declaration-files-emit',
       'swc:compile',
       'copy-compiled',
       condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
     );
   });
+
+  task('ts:declaration-files-emit', tsDeclarationFilesEmit);
 
   task('ts:compile', () => {
     const moduleFlag = args.module;
