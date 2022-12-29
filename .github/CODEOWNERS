@@ -31,14 +31,6 @@
 /scripts @microsoft/fluentui-react-build
 /tools @microsoft/fluentui-react-build
 
-### TODO: remove - Temporary rules for /scripts packaging initiative
-**/just.config.ts @microsoft/fluentui-react-build
-**/jest.config.js @microsoft/fluentui-react-build
-**/tsconfig.json @microsoft/fluentui-react-build
-**/tsconfig.lib.json @microsoft/fluentui-react-build
-**/tsconfig.spec.json @microsoft/fluentui-react-build
-**/package.json @microsoft/fluentui-react-build
-
 #### Root Build files
 /.eslintrc.* @microsoft/fluentui-react-build
 /.gitattributes @microsoft/fluentui-react-build
@@ -246,3 +238,11 @@ packages/fluent2-theme @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon
 packages/react-experiments/src/components/TileList @ThomasMichon
+
+### TODO: remove - Temporary rules for /scripts packaging initiative
+**/just.config.ts @microsoft/fluentui-react-build
+**/jest.config.js @microsoft/fluentui-react-build
+**/tsconfig.json @microsoft/fluentui-react-build
+**/tsconfig.lib.json @microsoft/fluentui-react-build
+**/tsconfig.spec.json @microsoft/fluentui-react-build
+**/package.json @microsoft/fluentui-react-build
