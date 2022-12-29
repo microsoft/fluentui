@@ -11,6 +11,7 @@ import { copy, copyCompiled } from './copy';
 import { jest as jestTask, jestWatch } from './jest';
 import { sass } from './sass';
 import { ts } from './ts';
+import { swc } from './swc';
 import { eslint } from './eslint';
 import { webpack, webpackDevServer } from './webpack';
 import { apiExtractor } from './api-extractor';
@@ -65,6 +66,35 @@ export function preset() {
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
+  task('swc:commonjs', swc.commonjs);
+  task('swc:esm', swc.esm);
+  task('swc:amd', swc.amd);
+
+  task('swc:compile', () => {
+    const moduleFlag = args.module;
+    // default behaviour
+    if (!moduleFlag) {
+      return parallel(
+        'swc:commonjs',
+        'swc:esm',
+        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+      );
+    }
+
+    return parallel(
+      condition('swc:commonjs', () => moduleFlag.cjs),
+      condition('swc:esm', () => moduleFlag.esm),
+      condition('swc:amd', () => moduleFlag.amd),
+    );
+  });
+
+  task('swc', () => {
+    return series(
+      'swc:compile',
+      'copy-compiled',
+      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+    );
+  });
 
   task('ts:compile', () => {
     const moduleFlag = args.module;
@@ -113,7 +143,7 @@ export function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
-  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
+  task('build', series('clean', 'copy', 'sass', isConvergedPackage() ? 'swc' : 'ts', 'api-extractor')).cached!();
 
   task(
     'bundle',
