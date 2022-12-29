@@ -474,7 +474,6 @@
         "dependencies": [
           "@fluentui/a11y-testing",
           "@fluentui/dom-utilities",
-          "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-conformance",
           "stylis"
@@ -485,7 +484,6 @@
           "@fluentui/react-northstar-emotion-renderer"
         ],
         "dependencies": [
-          "@fluentui/eslint-plugin",
           "stylis"
         ]
       },

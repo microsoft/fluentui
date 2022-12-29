@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/scripts": "*",
     "@types/simulant": "^0.2.0",
     "lerna-alias": "^3.0.3-0",
     "simulant": "^0.2.2"

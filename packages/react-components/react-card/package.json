@@ -32,7 +32,7 @@
     "@fluentui/react-conformance-griffel": "9.0.0-beta.18",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-button": "^9.1.12",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.1",
