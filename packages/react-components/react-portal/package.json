@@ -27,7 +27,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.1.4",

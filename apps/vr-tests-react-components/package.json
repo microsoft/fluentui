@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/scripts": "*",
     "storywright": "0.0.26-beta.1"
   },
   "dependencies": {
@@ -57,7 +57,6 @@
     "@fluentui/react-tooltip": "^9.1.5",
     "@fluentui/react-toolbar": "9.0.0-rc.2",
     "@fluentui/react-utilities": "^9.3.0",
-    "@fluentui/scripts": "^1.0.0",
     "@griffel/react": "^1.4.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",

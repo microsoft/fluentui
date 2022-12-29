@@ -18,13 +18,12 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/react": "^8.104.1",
     "@fluentui/react-northstar": "^0.65.0",
     "@fluentui/react-icons-northstar": "^0.65.0",
-    "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
     "@fluentui/react-components": "^9.7.4",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",

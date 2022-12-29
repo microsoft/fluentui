@@ -29,7 +29,7 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.18",
     "@fluentui/react-label": "^9.0.14",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@griffel/react": "^1.4.2",

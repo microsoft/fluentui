@@ -12,12 +12,12 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/example-data": "^8.4.4",
     "@fluentui/react": "^8.104.1",
-    "@fluentui/scripts": "^1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",

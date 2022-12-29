@@ -25,7 +25,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@types/react-syntax-highlighter": "^10.2.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/react": "^8.104.1",
