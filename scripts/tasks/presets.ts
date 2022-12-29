@@ -93,7 +93,7 @@ export function preset() {
       'ts:declaration-files-emit',
       'swc:compile',
       'copy-compiled',
-      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+      // condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
     );
   });
 
