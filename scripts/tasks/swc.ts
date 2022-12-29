@@ -32,14 +32,14 @@ function swcTask(options: any) {
   console.log('options ', options);
   const outDir = options.outDir;
   const cmd = `npx swc src -d ${outDir} -C module.type=${options.type}`;
-  console.log('cmd', cmd);
+  console.log('swc task cli command: ', cmd);
   return exec(cmd);
 }
 
 export const swc = {
   commonjs: () => {
     const options = getSwcTaskConfig({
-      'out-dir': 'swc-lib-commonjs',
+      outDir: 'lib-commonjs',
       type: 'commonjs',
     });
 
@@ -47,7 +47,7 @@ export const swc = {
   },
   esm: () => {
     const options = getSwcTaskConfig({
-      'out-dir': 'swc-lib',
+      outDir: 'lib',
       type: 'es6',
     });
 
@@ -57,7 +57,7 @@ export const swc = {
   amd: () => {
     const options = getSwcTaskConfig({
       target: 'es5',
-      'out-dir': 'lib-amd',
+      outDir: 'lib-amd',
       type: 'amd',
     });
 
