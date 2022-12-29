@@ -319,6 +319,7 @@
     "source-map-loader": "4.0.0",
     "storybook-addon-export-to-codesandbox": "0.7.1",
     "storybook-addon-performance": "0.16.1",
+    "storywright": "0.0.26-beta.1",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
     "swc-loader": "0.2.3",
