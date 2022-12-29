@@ -141,6 +141,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   updateNxWorkspace(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
+
+  setupSwcConfig(tree, options);
 }
 
 // ==== helpers ====
@@ -388,6 +390,33 @@ const templates = {
     .git*
     .prettierignore
   ` + os.EOL,
+  swcConfig: () => {
+    return {
+      $schema: 'https://json.schemastore.org/swcrc',
+      env: { targets: { chrome: '79', edge: '79', firefox: '69', opera: '64', safari: '13.1' } },
+      exclude: [
+        '/testing',
+        '/**/*.cy.ts',
+        '/**/*.cy.tsx',
+        '/**/*.spec.ts',
+        '/**/*.spec.tsx',
+        '/**/*.test.ts',
+        '/**/*.test.tsx',
+      ],
+      jsc: {
+        parser: {
+          syntax: 'typescript',
+          tsx: true,
+          decorators: false,
+          dynamicImport: false,
+        },
+        target: 'es2019',
+        externalHelpers: true,
+      },
+      minify: false,
+      sourceMaps: true,
+    };
+  },
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -550,6 +579,15 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
 
   return tree;
+}
+
+function setupSwcConfig(tree: Tree, options: NormalizedSchema) {
+  const swcConfig = templates.swcConfig();
+  if (tree.exists(joinPathFragments(options.projectConfig.root, '.swcrc'))) {
+    return;
+  }
+
+  writeJson(tree, joinPathFragments(options.projectConfig.root, '.swcrc'), swcConfig);
 }
 
 interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
