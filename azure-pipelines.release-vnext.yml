@@ -71,7 +71,7 @@ jobs:
         displayName: Publish changes and bump versions
 
       - script: |
-          node -r ./scripts/ts-node/register scripts/beachball/tagVNext.ts --token $(npmToken)
+          node -r ./scripts/ts-node/register scripts/executors/tag-react-components.ts --token $(npmToken)
         displayName: Tag prelease packages with prerelease tag
         continueOnError: true
 
