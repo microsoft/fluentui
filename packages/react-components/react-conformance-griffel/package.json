@@ -32,7 +32,8 @@
   },
   "dependencies": {
     "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@swc/helpers": "^0.4.11"
   },
   "beachball": {
     "disallowedChangeTypes": [
