@@ -2,7 +2,7 @@ const { readConfig } = require('../utils');
 const getAllPackageInfo = require('./getAllPackageInfo');
 
 /**
- * @param {import('./index').PackageJson} packageJson
+ * @param {import('./types').PackageJson} packageJson
  * @param {boolean|undefined} dev
  */
 function getDeps(packageJson, dev) {
@@ -13,7 +13,7 @@ function getDeps(packageJson, dev) {
   return Object.keys({ ...packageJson.dependencies, ...(dev && packageJson.devDependencies) });
 }
 
-/** @type {import('./index').PackageInfo[]} */
+/** @type {import('./types').PackageInfo[]} */
 let repoDeps;
 /**
  * @type {string}
@@ -21,11 +21,11 @@ let repoDeps;
 let cwdForRepoDeps;
 
 /**
- * Find all the dependencies (and their dependencies) within the repo for a specific package (in the CWD when this was called)
- * @param {object} [options]
+ * Find all the dependencies (and their dependencies) within the repo for a specific package (by default, in the CWD when this was called)
+ * @param {Object} [options]
  * @param {string} [options.cwd] optional different cwd
  * @param {boolean} [options.dev] include dev deps, default true
- * @returns {import('./index').PackageInfo[]}
+ * @returns {import('./types').PackageInfo[]}
  */
 function findRepoDeps(options = {}) {
   const { cwd = process.cwd(), dev = true } = options;

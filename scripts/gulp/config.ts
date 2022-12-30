@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import * as webpack from 'webpack';
 import { URL } from 'url';
+
 import { getLernaAliases } from '../monorepo';
 
 // northstar packages should pull these from npm, not the repo

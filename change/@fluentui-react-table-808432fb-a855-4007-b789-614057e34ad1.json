@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor: render function children called in component render function",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

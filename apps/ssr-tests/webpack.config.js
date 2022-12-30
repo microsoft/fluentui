@@ -1,4 +1,4 @@
-const { getResolveAlias, resources } = require('../../scripts/webpack');
+const { getResolveAlias, resources } = require('@fluentui/scripts/webpack');
 
 module.exports = resources.createConfig('ssr-tests', false, {
   entry: './test/test.js',

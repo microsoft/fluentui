@@ -3,7 +3,9 @@ const path = require('path');
 const lernaAlias = require('lerna-alias');
 const findGitRoot = require('./findGitRoot');
 
-/** @type {import('./').AllPackageInfo} */
+/**
+ * @type {import('./types').AllPackageInfo}
+ */
 let packageInfo;
 /**
  * @type {string}

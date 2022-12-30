@@ -371,15 +371,6 @@ export {
 export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
-  Persona,
-  personaClassNames,
-  renderPersona_unstable,
-  usePersonaStyles_unstable,
-  usePersona_unstable,
-} from '@fluentui/react-persona';
-export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
-
-export {
   ProgressBar,
   progressBarClassNames,
   renderProgressBar_unstable,
