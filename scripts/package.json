@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "code-style": "just-scripts code-style",
     "test": "jest",
     "type-check": "tsc -b tsconfig.json"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
-  },
+  "devDependencies": {},
   "dependencies": {}
 }
