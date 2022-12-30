@@ -1,5 +1,4 @@
-import { copyTask } from '@fluentui/scripts';
-import { expandSourcePath } from '@fluentui/scripts/tasks';
+import { copyTask, expandSourcePath } from '@fluentui/scripts/tasks';
 import * as fs from 'fs';
 import * as path from 'path';
 
