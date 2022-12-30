@@ -41,7 +41,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     const hasNewCompilationSetup = tsConfigOutDir.includes('dist/out-tsc');
 
     if (hasNewCompilationSetup) {
-      options.outDir = `${tsConfigOutDir}/${options.outDir}`;
+      options.outDir = options.outDir ? `${tsConfigOutDir}/${options.outDir}` : undefined;
     } else {
       // TODO: remove after all v9 is migrated to new tsc processing
       options.baseUrl = '.';
