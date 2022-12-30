@@ -75,7 +75,9 @@ export function preset() {
     // default behaviour
     if (!moduleFlag) {
       return parallel(
-        'swc:commonjs',
+        // 'swc:commonjs',
+        //testing to see if build works when using old TS commonjs transpilation
+        'ts:commonjs',
         'swc:esm',
         condition('swc:amd', () => !!args.production && !isConvergedPackage()),
       );
@@ -92,6 +94,7 @@ export function preset() {
     return series(
       'ts:declaration-files-emit',
       'swc:compile',
+      'copy-compiled',
       condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
     );
   });
