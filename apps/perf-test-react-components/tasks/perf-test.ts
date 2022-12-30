@@ -3,7 +3,7 @@ import path from 'path';
 import flamegrill, { CookResults, Scenarios, ScenarioConfig, CookResult } from 'flamegrill';
 import { scenarioIterations } from '../src/scenarioIterations';
 import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
-import { argv } from '@fluentui/scripts';
+import { argv } from '@fluentui/scripts/tasks';
 
 type ScenarioSetting = Record<string, { scenarioName: string; iterations: number; renderType: string }>;
 
