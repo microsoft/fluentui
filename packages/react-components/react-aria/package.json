@@ -31,7 +31,8 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.1",
     "@fluentui/react-utilities": "^9.3.0",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@swc/helpers": "^0.4.11"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",

@@ -27,7 +27,8 @@
     "@fluentui/scripts": "*"
   },
   "dependencies": {
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@swc/helpers": "^0.4.11"
   },
   "beachball": {
     "disallowedChangeTypes": [

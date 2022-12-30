@@ -34,7 +34,9 @@
       "patch"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "@swc/helpers": "^0.4.11"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
