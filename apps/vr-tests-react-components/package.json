@@ -16,8 +16,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "storywright": "0.0.26-beta.1"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.15",
@@ -47,7 +46,7 @@
     "@fluentui/react-slider": "^9.0.14",
     "@fluentui/react-spinner": "^9.0.14",
     "@fluentui/react-spinbutton": "^9.0.12",
-    "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
+    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/react-switch": "^9.0.15",
     "@fluentui/react-tabs": "^9.1.4",
     "@fluentui/react-table": "9.0.0-alpha.15",
@@ -57,7 +56,6 @@
     "@fluentui/react-tooltip": "^9.1.5",
     "@fluentui/react-toolbar": "9.0.0-rc.2",
     "@fluentui/react-utilities": "^9.3.0",
-    "@fluentui/scripts": "^1.0.0",
     "@griffel/react": "^1.4.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",

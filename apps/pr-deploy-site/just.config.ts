@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts';
+import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts/tasks';
 import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts/monorepo/index';
 
 task('clean', cleanTask());

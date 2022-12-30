@@ -84,7 +84,7 @@
       "path": "./utils/tsconfig.json"
     },
     {
-      "path": "./tsconfig.lib.json"
+      "path": "./ts-node/tsconfig.json"
     }
   ]
 }
