@@ -1,4 +1,4 @@
-import { preset, task, series } from '@fluentui/scripts';
+import { preset, task, series } from '@fluentui/scripts/tasks';
 import { generatePageJsonFiles } from '@fluentui/api-docs';
 
 preset();

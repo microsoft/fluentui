@@ -1,5 +1,16 @@
-import { preset, task, series, parallel, copyInstructions, copyInstructionsTask, cleanTask } from '@fluentui/scripts';
-import { ts, postprocess, eslint } from '@fluentui/scripts/tasks';
+import {
+  basicPreset,
+  task,
+  series,
+  parallel,
+  copyInstructions,
+  copyInstructionsTask,
+  cleanTask,
+  ts,
+  postprocess,
+  eslint,
+} from '@fluentui/scripts/tasks';
+
 import * as path from 'path';
 import { transformCssTask } from './tasks/transformCssTask';
 
@@ -7,7 +18,7 @@ const monacoEditorPath = path.dirname(require.resolve('monaco-editor/package.jso
 const monacoSrcPath = path.join(monacoEditorPath, 'esm');
 const monacoDestPath = path.join(__dirname, 'esm');
 
-preset.basic();
+basicPreset();
 
 task('clean', cleanTask({ paths: ['esm', 'lib', 'lib-commonjs'].map(p => path.join(process.cwd(), p)) }));
 task(
