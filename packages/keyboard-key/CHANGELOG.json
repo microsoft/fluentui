@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Fri, 30 Dec 2022 07:51:01 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.3",
+      "version": "0.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Dec 2022 07:57:09 GMT",
       "tag": "@fluentui/keyboard-key_v0.4.3",
       "version": "0.4.3",
