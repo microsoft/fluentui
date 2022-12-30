@@ -2,6 +2,21 @@
   "name": "@fluentui/monaco-editor",
   "entries": [
     {
+      "date": "Fri, 30 Dec 2022 07:51:01 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Dec 2022 07:45:27 GMT",
       "tag": "@fluentui/monaco-editor_v1.3.3",
       "version": "1.3.3",
