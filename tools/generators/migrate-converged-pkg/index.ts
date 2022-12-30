@@ -666,6 +666,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   packageJson = setupScripts(packageJson);
   packageJson = setupExportMaps(packageJson);
+  packageJson = addSwcHelpers(packageJson);
 
   writeJson(tree, options.paths.packageJson, packageJson);
 
@@ -709,6 +710,12 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     function normalizePackageEntryPointPaths(entryPath: string) {
       return './' + path.normalize(entryPath);
     }
+  }
+
+  //TODO: remove after migration to swc transpilation is complete
+  function addSwcHelpers(json: PackageJson) {
+    json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.4.11' };
+    return json;
   }
 }
 
