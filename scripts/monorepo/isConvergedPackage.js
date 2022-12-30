@@ -35,8 +35,6 @@ function isConvergedPackage(options = {}) {
 
   const hasVNextTag = !!metadata.tags?.includes('vNext');
 
-  if (packageJson.name === '@fluentui/react-theme' || packageJson.name === '@fluentui/tokens') return false;
-
   return semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version) || hasVNextTag;
 }
 
