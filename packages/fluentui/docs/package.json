@@ -58,8 +58,7 @@
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized": "^9.21.8",
-    "@types/react-window": "^1.8.2",
-    "storywright": "0.0.26-beta.1"
+    "@types/react-window": "^1.8.2"
   },
   "publishConfig": {
     "access": "public"
