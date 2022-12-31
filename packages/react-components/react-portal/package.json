@@ -36,7 +36,7 @@
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0",
     "use-disposable": "^1.0.1",
-    "@swc/helpers": "^0.4.11"
+    "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",

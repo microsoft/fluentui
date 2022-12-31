@@ -35,7 +35,7 @@
     "keyborg": "^1.2.1",
     "tabster": "^3.0.6",
     "tslib": "^2.1.0",
-    "@swc/helpers": "^0.4.11"
+    "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
