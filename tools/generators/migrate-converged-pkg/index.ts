@@ -714,7 +714,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   //TODO: remove after migration to swc transpilation is complete
   function addSwcHelpers(json: PackageJson) {
-    json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.4.11' };
+    json.dependencies = { ...json.dependencies, '@swc/core': '^1.3.24', '@swc/helpers': '^0.4.11' };
     return json;
   }
 }
