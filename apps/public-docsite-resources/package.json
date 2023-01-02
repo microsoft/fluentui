@@ -29,7 +29,7 @@
   "devDependencies": {
     "@fluentui/api-docs": "^8.2.4",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/react": "^8.104.1",
