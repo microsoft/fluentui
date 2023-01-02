@@ -2,6 +2,21 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Mon, 02 Jan 2023 07:46:39 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.9",
+      "version": "8.1.9",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Dec 2022 07:51:11 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.9",
       "version": "8.1.9",
