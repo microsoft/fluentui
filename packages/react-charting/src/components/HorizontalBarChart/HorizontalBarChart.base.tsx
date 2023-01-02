@@ -81,6 +81,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             color: palette.neutralLight,
           };
 
+          /** Hide right side text of chart title for relative variant */
           const chartDataText =
             this.props.variant === HorizontalBarChartVariant.Relative ? null : this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
@@ -326,13 +327,19 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       startingPoint.push(prevPosition);
 
       const xValue = point.horizontalBarChartdata!.x;
+      const placeholderIndex = 1;
 
-      if (index > 0 && this.props.variant === HorizontalBarChartVariant.Relative) {
+      /**
+       * Render bar value instead of placeholder bar for relative variant
+       */
+      if (index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.Relative) {
         if (this.props.hideValues) {
           return null;
         }
 
+        /** Calculate bar value by subtracting placeholder value from total value */
         const barValue = point.horizontalBarChartdata!.y - xValue;
+
         return (
           <text
             x={`${startingPoint[index]}%`}
