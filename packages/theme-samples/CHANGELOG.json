@@ -2,6 +2,21 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Mon, 02 Jan 2023 07:46:39 GMT",
+      "tag": "@fluentui/theme-samples_v8.7.39",
+      "version": "8.7.39",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/theme-samples",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Dec 2022 07:51:10 GMT",
       "tag": "@fluentui/theme-samples_v8.7.39",
       "version": "8.7.39",

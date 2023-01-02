@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
