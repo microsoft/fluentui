@@ -55,6 +55,7 @@ export interface IGroupedVerticalBarChartState extends IBasestate {
   titleForHoverCard: string;
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
 }
 
 export class GroupedVerticalBarChartBase extends React.Component<
@@ -98,6 +99,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       yCalloutValue: '',
       YValueHover: [],
       hoverXValue: '',
+      calloutLegend: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -136,7 +138,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       isBeakVisible: false,
       setInitialFocus: true,
       color: this.state.color,
-      Legend: this.state.titleForHoverCard,
+      Legend: this.state.calloutLegend,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       YValueHover: this.state.YValueHover,
@@ -233,16 +235,15 @@ export class GroupedVerticalBarChartBase extends React.Component<
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void => {
     mouseEvent.persist();
-    if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)) &&
-      this._calloutAnchorPoint !== pointData
-    ) {
+    if (this._calloutAnchorPoint !== pointData) {
       this._calloutAnchorPoint = pointData;
       this.setState({
         refSelected: mouseEvent,
-        isCalloutVisible: true,
-        titleForHoverCard: pointData.legend,
+        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected === true && this.state.titleForHoverCard === pointData.legend),
+        calloutLegend: pointData.legend,
         dataForHoverCard: pointData.data,
         color: pointData.color,
         xCalloutValue: pointData.xAxisCalloutData,
@@ -272,30 +273,28 @@ export class GroupedVerticalBarChartBase extends React.Component<
     groupData: any,
     refArrayIndexNumber: number,
   ): void => {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)
-    ) {
-      this._refArray.forEach((obj: IRefArrayData, index: number) => {
-        if (obj.index === pointData.legend && refArrayIndexNumber === index) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            titleForHoverCard: pointData.legend,
-            dataForHoverCard: pointData.data,
-            color: pointData.color,
-            xCalloutValue: pointData.xAxisCalloutData,
-            yCalloutValue: pointData.yAxisCalloutData,
-            dataPointCalloutProps: pointData,
-            callOutAccessibilityData: this.props.isCalloutForStack
-              ? groupData.stackCallOutAccessibilityData
-              : pointData.callOutAccessibilityData,
-            YValueHover: groupData.groupSeries,
-            hoverXValue: pointData.xAxisCalloutData,
-          });
-        }
-      });
-    }
+    this._refArray.forEach((obj: IRefArrayData, index: number) => {
+      if (obj.index === pointData.legend && refArrayIndexNumber === index) {
+        this.setState({
+          refSelected: obj.refElement,
+          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
+          isCalloutVisible:
+            this.state.isLegendSelected === false ||
+            (this.state.isLegendSelected === true && this.state.titleForHoverCard === pointData.legend),
+          calloutLegend: pointData.legend,
+          dataForHoverCard: pointData.data,
+          color: pointData.color,
+          xCalloutValue: pointData.xAxisCalloutData,
+          yCalloutValue: pointData.yAxisCalloutData,
+          dataPointCalloutProps: pointData,
+          callOutAccessibilityData: this.props.isCalloutForStack
+            ? groupData.stackCallOutAccessibilityData
+            : pointData.callOutAccessibilityData,
+          YValueHover: groupData.groupSeries,
+          hoverXValue: pointData.xAxisCalloutData,
+        });
+      }
+    });
   };
 
   private _redirectToUrl = (href: string | undefined): void => {
@@ -507,6 +506,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             this._onLegendClick(point.legend);
           },
           hoverAction: () => {
+            this._handleChartMouseLeave();
             this._onLegendHover(point.legend);
           },
           onMouseOutAction: (isLegendSelected?: boolean) => {

@@ -18,6 +18,7 @@ export const getStyles = (props: IArcProps): IArcStyles => {
     focusRing: {
       stroke: theme.semanticColors.focusBorder,
       strokeWidth: 4,
+      fill: 'transparent',
     },
     insideDonutString: {
       fontSize: FontSizes.large,

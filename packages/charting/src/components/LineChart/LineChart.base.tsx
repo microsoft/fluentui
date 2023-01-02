@@ -361,6 +361,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.setState({ activeLegend: '' });
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this.setState({ activeLegend: point.legend });
         },
         ...(point.legendShape && {
@@ -390,6 +391,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               this.setState({ activeLegend: '' });
             },
             hoverAction: () => {
+              this._handleChartMouseLeave();
               this.setState({ activeLegend: title });
             },
             opacity: this._colorFillBarsOpacity,

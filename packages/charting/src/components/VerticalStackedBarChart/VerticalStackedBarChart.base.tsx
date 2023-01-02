@@ -70,6 +70,7 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   stackCalloutProps?: IVerticalStackedChartProps;
   activeXAxisDataPoint: number | string;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -107,6 +108,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       xCalloutValue: '',
       yCalloutValue: '',
       activeXAxisDataPoint: '',
+      calloutLegend: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       colors: 'IVSChartDataPoint.color',
@@ -153,7 +155,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       isBeakVisible: false,
       gapSpace: 15,
       color: this.state.color,
-      legend: this.state.selectedLegendTitle,
+      legend: this.state.calloutLegend,
       XValue: this.state.xCalloutValue!,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       YValueHover: this.state.YValueHover,
@@ -499,7 +501,12 @@ export class VerticalStackedBarChartBase extends React.Component<
           action: () => {
             this._onLegendClick(point.legend);
           },
-          hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.legend) : undefined,
+          hoverAction: allowHoverOnLegend
+            ? () => {
+                this._handleChartMouseLeave();
+                this._onLegendHover(point.legend);
+              }
+            : undefined,
           onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
         };
 
@@ -516,7 +523,12 @@ export class VerticalStackedBarChartBase extends React.Component<
           action: () => {
             this._onLegendClick(point.title);
           },
-          hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.title) : undefined,
+          hoverAction: allowHoverOnLegend
+            ? () => {
+                this._handleChartMouseLeave();
+                this._onLegendHover(point.title);
+              }
+            : undefined,
           onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
         };
         legendsOfLine.push(legend);
@@ -551,16 +563,18 @@ export class VerticalStackedBarChartBase extends React.Component<
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
-    if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
-      this._calloutAnchorPoint !== point
-    ) {
+    if (this._calloutAnchorPoint !== point) {
       this._calloutAnchorPoint = point;
       this.setState({
         refSelected,
-        isCalloutVisible: true,
-        selectedLegendTitle: point.legend,
+        /**
+         * Show the callout if highlighted bar is focused/hovered
+         * and Hide it if unhighlighted bar is focused/hovered
+         */
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected === true && this.state.selectedLegendTitle === point.legend),
+        calloutLegend: point.legend,
         dataForHoverCard: point.data,
         color,
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,

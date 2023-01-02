@@ -356,6 +356,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -695,6 +698,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -799,6 +805,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
       <g />
     </svg>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1158,6 +1167,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1517,6 +1529,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1876,6 +1891,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2235,6 +2253,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2594,5 +2615,8 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;

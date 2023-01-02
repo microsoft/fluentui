@@ -257,7 +257,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _onRectFocus = (id: string, data: FlattenData): void => {
     this.setState({
       target: this._rectRefArray[id].refElement,
-      isCalloutVisible: true,
+      /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
+      isCalloutVisible:
+        this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected === true && this.state.activeLegend === data.legend),
       calloutYValue: `${data.rectText}`,
       calloutTextColor: this._colorScale(data.value),
       calloutLegend: data.legend,
@@ -274,7 +277,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       this._calloutAnchorPoint = data;
       this.setState({
         target: this._rectRefArray[id].refElement,
-        isCalloutVisible: true,
+        /** Show the callout if highlighted rectangle is hovered and Hide it if unhighlighted rectangle is hovered */
+        isCalloutVisible:
+          this.state.isLegendSelected === false ||
+          (this.state.isLegendSelected === true && this.state.activeLegend === data.legend),
         calloutYValue: `${data.rectText}`,
         calloutTextColor: this._colorScale(data.value),
         calloutLegend: data.legend,
@@ -429,6 +435,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._onLegendClick(item.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(item.legend);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
