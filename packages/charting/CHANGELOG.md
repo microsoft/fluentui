@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 20 Dec 2022 12:28:38 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jan 2023 12:21:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.22](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.22)
+
+Mon, 02 Jan 2023 12:21:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.23.21..@uifabric/charting_v4.23.22)
+
+### Patches
+
+- Fix wrong narration when legend selected ([PR #25936](https://github.com/microsoft/fluentui/pull/25936) by kumarkshitij@microsoft.com)
 
 ## [4.23.21](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.21)
 
