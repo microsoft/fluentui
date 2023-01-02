@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "storywright": "0.0.26-beta.1"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/example-data": "^8.4.4",
@@ -25,7 +25,6 @@
     "@fluentui/react-experiments": "^8.14.34",
     "@fluentui/react-hooks": "^8.6.14",
     "@fluentui/react-icons-mdl2": "^1.3.28",
-    "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
