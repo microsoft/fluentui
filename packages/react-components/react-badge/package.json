@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.175",
-    "@griffel/react": "^1.4.2",
+    "@griffel/react": "^1.5.2",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.3.0",
     "tslib": "^2.1.0"
