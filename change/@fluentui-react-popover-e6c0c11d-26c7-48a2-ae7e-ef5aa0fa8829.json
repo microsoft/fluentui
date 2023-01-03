@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add new prop unstable_disableAutoFocus on Popover",
+  "packageName": "@fluentui/react-popover",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
