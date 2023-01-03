@@ -3,6 +3,7 @@ import {
   ElementDefinitionContext,
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
+  AnchoredRegion
 } from '@microsoft/fast-foundation';
 import { elevationShadowTooltip } from '../styles/index';
 import {
