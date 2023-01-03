@@ -343,25 +343,27 @@ const Arrow: React.FC = () => {
 
 const AutoSize = () => {
   const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
   const { containerRef, targetRef } = usePositioning({
     position: 'below',
     autoSize: true,
+    overflowBoundary,
   });
 
   return (
     <div
+      ref={setOverflowBoundary}
       className={styles.boundary}
       style={{
         display: 'flex',
         flexDirection: 'column',
         height: 200,
         padding: '10px 50px',
-        overflow: 'hidden',
         position: 'relative',
       }}
     >
       <button ref={targetRef}>Target</button>
-      <Box ref={containerRef} style={{ overflow: 'auto' }}>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
         pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta
