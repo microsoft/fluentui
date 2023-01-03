@@ -28,49 +28,6 @@ export type {
   FluentProviderState,
 } from '@fluentui/react-provider';
 export {
-  Radio,
-  radioClassNames,
-  RadioGroup,
-  RadioGroupProvider,
-  radioGroupClassNames,
-  renderRadio_unstable,
-  renderRadioGroup_unstable,
-  useRadio_unstable,
-  useRadioGroupContext_unstable,
-  useRadioGroupContextValues,
-  useRadioGroup_unstable,
-  useRadioGroupStyles_unstable,
-  useRadioStyles_unstable,
-} from '@fluentui/react-radio';
-export type {
-  RadioGroupContextValue,
-  RadioGroupContextValues,
-  RadioGroupOnChangeData,
-  RadioGroupProps,
-  RadioGroupSlots,
-  RadioGroupState,
-  RadioOnChangeData,
-  RadioProps,
-  RadioSlots,
-  RadioState,
-} from '@fluentui/react-radio';
-export {
-  SpinButton,
-  renderSpinButton_unstable,
-  spinButtonClassNames,
-  useSpinButtonStyles_unstable,
-  useSpinButton_unstable,
-} from '@fluentui/react-spinbutton';
-export type {
-  SpinButtonOnChangeData,
-  SpinButtonChangeEvent,
-  SpinButtonProps,
-  SpinButtonSlots,
-  SpinButtonState,
-  SpinButtonSpinState,
-  SpinButtonBounds,
-} from '@fluentui/react-spinbutton';
-export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
   useArrowNavigationGroup,
@@ -489,6 +446,14 @@ export type {
   UninitializedMenuListState,
 } from '@fluentui/react-menu';
 export {
+  Persona,
+  personaClassNames,
+  renderPersona_unstable,
+  usePersonaStyles_unstable,
+  usePersona_unstable,
+} from '@fluentui/react-persona';
+export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
+export {
   Popover,
   PopoverSurface,
   PopoverProvider,
@@ -521,6 +486,33 @@ export type {
 export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
+  Radio,
+  radioClassNames,
+  RadioGroup,
+  RadioGroupProvider,
+  radioGroupClassNames,
+  renderRadio_unstable,
+  renderRadioGroup_unstable,
+  useRadio_unstable,
+  useRadioGroupContext_unstable,
+  useRadioGroupContextValues,
+  useRadioGroup_unstable,
+  useRadioGroupStyles_unstable,
+  useRadioStyles_unstable,
+} from '@fluentui/react-radio';
+export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+  RadioGroupSlots,
+  RadioGroupState,
+  RadioOnChangeData,
+  RadioProps,
+  RadioSlots,
+  RadioState,
+} from '@fluentui/react-radio';
+export {
   Slider,
   sliderClassNames,
   sliderCSSVars,
@@ -530,6 +522,22 @@ export {
   renderSlider_unstable,
 } from '@fluentui/react-slider';
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+export {
+  SpinButton,
+  renderSpinButton_unstable,
+  spinButtonClassNames,
+  useSpinButtonStyles_unstable,
+  useSpinButton_unstable,
+} from '@fluentui/react-spinbutton';
+export type {
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
+  SpinButtonProps,
+  SpinButtonSlots,
+  SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
+} from '@fluentui/react-spinbutton';
 export {
   Spinner,
   spinnerClassNames,
