@@ -342,6 +342,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
         return (
           <text
+            key={index}
             x={`${startingPoint[index]}%`}
             y={this._barHeight / 2}
             dominantBaseline="central"
