@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Persona, PersonaProps } from '@fluentui/react-persona';
+import { Persona } from '@fluentui/react-components';
+import type { PersonaProps } from '@fluentui/react-components';
 
 export const Default = (props: Partial<PersonaProps>) => {
   return (

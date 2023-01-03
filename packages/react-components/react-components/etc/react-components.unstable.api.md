@@ -130,11 +130,6 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
-import { Persona } from '@fluentui/react-persona';
-import { personaClassNames } from '@fluentui/react-persona';
-import { PersonaProps } from '@fluentui/react-persona';
-import { PersonaSlots } from '@fluentui/react-persona';
-import { PersonaState } from '@fluentui/react-persona';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -165,7 +160,6 @@ import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
-import { renderPersona_unstable } from '@fluentui/react-persona';
 import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
@@ -323,8 +317,6 @@ import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
-import { usePersona_unstable } from '@fluentui/react-persona';
-import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
@@ -617,16 +609,6 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
-export { Persona }
-
-export { personaClassNames }
-
-export { PersonaProps }
-
-export { PersonaSlots }
-
-export { PersonaState }
-
 export { ProgressBar }
 
 export { progressBarClassNames }
@@ -686,8 +668,6 @@ export { renderListbox_unstable }
 export { renderOption_unstable }
 
 export { renderOptionGroup_unstable }
-
-export { renderPersona_unstable }
 
 export { renderProgressBar_unstable }
 
@@ -1003,10 +983,6 @@ export { useOptionGroupStyles_unstable }
 export { useOptionStyles_unstable }
 
 export { useOverflowMenu }
-
-export { usePersona_unstable }
-
-export { usePersonaStyles_unstable }
 
 export { useProgressBar_unstable }
 
