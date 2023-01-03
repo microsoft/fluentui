@@ -167,15 +167,6 @@ task('component-info:debug', done => {
 task('build:docs', series('build:docs:assets', 'build:docs:webpack'));
 
 // ----------------------------------------
-// Deploy
-// ----------------------------------------
-
-task('deploy:docs', cb => {
-  const relativePath = path.relative(process.cwd(), paths.docsDist());
-  return sh(`gh-pages -d ${relativePath} -m "deploy docs [ci skip]"`);
-});
-
-// ----------------------------------------
 // Serve
 // ----------------------------------------
 
