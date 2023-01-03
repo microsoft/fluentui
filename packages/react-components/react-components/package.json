@@ -27,7 +27,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/scripts": "*",
     "react-hook-form": "^5.7.2"
   },
   "dependencies": {
@@ -71,7 +71,7 @@
     "@fluentui/react-tooltip": "^9.1.5",
     "@fluentui/react-utilities": "^9.3.0",
     "@fluentui/react-text": "^9.1.10",
-    "@griffel/react": "^1.4.2",
+    "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

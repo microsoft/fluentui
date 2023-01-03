@@ -13,6 +13,6 @@
   "license": "MIT",
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   }
 }

@@ -790,54 +790,6 @@ describe('migrate-converged-pkg generator', () => {
         expect.objectContaining({ e2e: 'cypress run --component', 'e2e:local': 'cypress open --component' }),
       );
     });
-
-    it(`should migrate existing files in e2e folder to new setup`, async () => {
-      const { paths, projectConfig } = setup({ projectName: options.name });
-      const sourceRoot = joinPathFragments(projectConfig.root, 'src');
-      const e2eFolderPath = joinPathFragments(projectConfig.root, 'e2e');
-
-      function createOldE2eSetup() {
-        writeJson<TsConfig>(tree, joinPathFragments(e2eFolderPath, 'tsconfig.json'), {
-          extends: '../../tsconfig.base.json',
-          compilerOptions: {},
-        });
-        tree.write(
-          `${e2eFolderPath}/Dummy.e2e.ts`,
-          stripIndents`
-         describe('Cypress test', () => {
-           before(() => {
-            cy.visitStorybook();
-           });
-         });
-        `,
-        );
-
-        tree.write(
-          `${e2eFolderPath}/selectors.ts`,
-          stripIndents`
-          export const dummySelector = '[role="dummy"]';
-        `,
-        );
-
-        return tree;
-      }
-
-      createOldE2eSetup();
-
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'tsconfig.json'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'selectors.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'Dummy.e2e.ts'))).toBeTruthy();
-
-      await generator(tree, { name: options.name });
-
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'tsconfig.json'))).toBeFalsy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'selectors.ts'))).toBeFalsy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'Dummy.e2e.ts'))).toBeFalsy();
-
-      expect(tree.exists(paths.tsconfig.cypress)).toBeTruthy();
-      expect(tree.exists(joinPathFragments(sourceRoot, 'components', 'Dummy', 'Dummy.cy.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(sourceRoot, 'testing', 'selectors.ts'))).toBeTruthy();
-    });
   });
 
   describe(`api-extractor.json updates`, () => {
@@ -1305,76 +1257,6 @@ describe('migrate-converged-pkg generator', () => {
       const content = tree.read(workspacePaths.github.codeowners, 'utf8');
 
       expect(content).toContain(`packages/react-dummy @org/team-awesome`);
-    });
-  });
-
-  describe(`common folder migration`, () => {
-    function setup(config: { projectName: string }) {
-      const projectConfig = readProjectConfiguration(tree, config.projectName);
-      const sourceRoot = projectConfig.sourceRoot ?? joinPathFragments(projectConfig.root, 'src');
-      const paths = {
-        packageJson: `${projectConfig.root}/package.json`,
-        commonFolder: joinPathFragments(sourceRoot, 'common'),
-        testingFolder: joinPathFragments(sourceRoot, 'testing'),
-        components: joinPathFragments(sourceRoot, 'components'),
-      };
-
-      function createCommonFolderTestSetup() {
-        tree.write(
-          `${paths.commonFolder}/isConformant.ts`,
-          stripIndents`
-         export const isConformant(){}
-        `,
-        );
-        tree.write(
-          `${paths.commonFolder}/mockDummy.ts`,
-          stripIndents`
-         export const mockDummy(){}
-        `,
-        );
-        tree.write(
-          `${paths.components}/Dummy/Dummy.test.tsx`,
-          stripIndents`
-           import { isConformant } from "../../common/isConformant"
-           import { mockDummy } from "../../common/mockDummy"
-        `,
-        );
-
-        return tree;
-      }
-
-      return { projectConfig, paths, createCommonFolderTestSetup };
-    }
-
-    it(`should move all files from src/common to src/testing`, async () => {
-      const { paths, createCommonFolderTestSetup } = setup({ projectName: options.name });
-
-      createCommonFolderTestSetup();
-
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'isConformant.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'mockDummy.ts'))).toBeTruthy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'isConformant.ts'))).toBeFalsy();
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'mockDummy.ts'))).toBeFalsy();
-
-      expect(tree.exists(joinPathFragments(paths.testingFolder, 'isConformant.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(paths.testingFolder, 'mockDummy.ts'))).toBeTruthy();
-    });
-
-    it(`should update imports of files from common/ to testing/ correctly `, async () => {
-      const { paths, createCommonFolderTestSetup } = setup({ projectName: options.name });
-
-      createCommonFolderTestSetup();
-      const testFilePath = joinPathFragments(paths.components, 'Dummy', 'Dummy.test.tsx');
-
-      await generator(tree, options);
-
-      expect(tree.read(testFilePath)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import { isConformant } from \\"../../testing/isConformant\\"
-        import { mockDummy } from \\"../../testing/mockDummy\\""
-      `);
     });
   });
 
