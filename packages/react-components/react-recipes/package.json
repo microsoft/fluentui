@@ -23,14 +23,14 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@types/fs-extra": "8.0.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.7.4",
     "@fluentui/react-icons": "^2.0.175",
     "fs-extra": "^8.1.0",
-    "node-plop": "^0.25.0",
-    "plop": "^2.6.0",
+    "node-plop": "0.25.0",
+    "plop": "2.6.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
