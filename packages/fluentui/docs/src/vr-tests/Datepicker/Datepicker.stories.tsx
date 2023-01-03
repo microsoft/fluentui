@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Datepicker } from '@fluentui/react-northstar';
 import DatepickerHeaderExample from '../../examples/components/Datepicker/Slots/DatepickerHeaderExample.shorthand';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
@@ -7,8 +7,8 @@ import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react
 storiesOf('Pivot', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Pivot-link.is-selected')
         .snapshot('hover-selected', { cropTo: '.testWrapper' })
@@ -20,7 +20,7 @@ storiesOf('Pivot', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <Pivot>
@@ -123,8 +123,8 @@ storiesOf('Pivot - Overflow', module)
     </div>
   ))
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .executeScript('document.getElementById("testWrapper").style.width = "500px"')
         .snapshot('Medium', { cropTo: '.testWrapper' })
         .executeScript('document.getElementById("testWrapper").style.width = "750px"')
@@ -140,7 +140,7 @@ storiesOf('Pivot - Overflow', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <Pivot overflowBehavior="menu">

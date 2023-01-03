@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Form } from '@fluentui/react-northstar';
 import FormExampleRtl from '../../examples/components/Form/Rtl/FormExample.rtl';

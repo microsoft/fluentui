@@ -116,8 +116,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
     );
     return;
   }
-  // Perform common folder migration first then update TsConfig files accordingly afterwards.
-  migrateCommonFolderToTesting(tree, options);
 
   // 1. update TsConfigs
   const { configs } = updatedLocalTsConfig(tree, options);
@@ -135,14 +133,12 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   // setup storybook
   setupStorybook(tree, options);
 
-  migrateE2ESetupToCypress(tree, options);
   setupCypress(tree, options);
 
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
 
   updateNxWorkspace(tree, options);
-  moveDocsToSubfolder(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
 }
@@ -755,8 +751,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       return json;
     });
-
-    moveStoriesToPackageRoot(tree, options);
   }
 
   if (sbAction === 'remove') {
@@ -825,116 +819,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 
   return tree;
-}
-/**
- * TODO: Remove function after migration is complete.
- */
-function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
-  const e2ePath = joinPathFragments(options.projectConfig.root, 'e2e');
-  const e2eFolderExists = tree.exists(e2ePath);
-
-  if (!e2eFolderExists) {
-    return;
-  }
-
-  visitNotIgnoredFiles(tree, e2ePath, treePath => {
-    if (treePath.includes('selectors.ts')) {
-      const newFilePath = joinPathFragments(options.paths.sourceRoot, 'testing', path.basename(treePath));
-
-      // Move testing helper file to src/testing.
-      tree.rename(treePath, newFilePath);
-      return;
-    }
-
-    if (treePath.includes('.e2e.')) {
-      const content = tree.read(treePath, 'utf8');
-      const fileName = path.basename(treePath).replace('e2e', 'cy');
-      const componentName = fileName.split('.')[0];
-      const newCypressTestPath = joinPathFragments(options.paths.sourceRoot, 'components', componentName, fileName);
-      // Move cypress component test file to appropriate src/components/{ComponentName} location.
-      tree.rename(treePath, newCypressTestPath);
-
-      //Update file imports of cypress component test file.
-      if (content && content.includes('./selectors')) {
-        const newContent = content.replace('./selectors', '../../testing/selectors');
-        tree.write(newCypressTestPath, newContent);
-      }
-      return;
-    }
-
-    if (treePath.includes('tsconfig.json')) {
-      const newCypressTSConfigPath = joinPathFragments(options.projectConfig.root, 'tsconfig.cy.json');
-      // Move e2e folder tsconfig.json to root
-      tree.rename(treePath, newCypressTSConfigPath);
-      return;
-    }
-  });
-}
-
-/**
- * TODO: Remove function after migration is complete.
- */
-function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
-  const sourceRoot = options.paths.sourceRoot;
-  const commonFolderPath = joinPathFragments(sourceRoot, 'common');
-  const commonFolderExists = tree.exists(commonFolderPath);
-
-  if (!commonFolderExists) {
-    return;
-  }
-
-  // Move any files in src/common/ to src/testing/
-  visitNotIgnoredFiles(tree, commonFolderPath, treePath => {
-    const fileName = path.basename(treePath);
-    const newPath = joinPathFragments(sourceRoot, 'testing', fileName);
-    tree.rename(treePath, newPath);
-
-    // Update files that import moved file to reflect file location change from common/ to testing/
-    visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), nestedTreePath => {
-      const fileContent = tree.read(nestedTreePath, 'utf8');
-      if (fileContent && fileContent.includes('common/')) {
-        const newContent = fileContent.replace('common/', 'testing/');
-        tree.write(nestedTreePath, newContent);
-      }
-    });
-  });
-}
-
-function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
-  const root = options.projectConfig.root;
-
-  visitNotIgnoredFiles(tree, root, treePath => {
-    const currPath = treePath.toLowerCase();
-    if (currPath.includes('.md') && (currPath.includes('spec') || currPath.includes('migration'))) {
-      const fileName = path.basename(treePath);
-      const newPath = joinPathFragments(root, 'docs', fileName);
-
-      !tree.exists(newPath) && tree.rename(treePath, newPath);
-    }
-  });
-}
-
-/**
- * TODO: Remove function after migration is complete.
- */
-function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
-  const oldStoriesPath = joinPathFragments(options.paths.sourceRoot, 'stories');
-  const storiesExistInNewPath = tree.exists(options.paths.stories);
-
-  if (storiesExistInNewPath) {
-    return;
-  }
-
-  visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
-    if (treePath.includes('.stories.') || treePath.includes('.md')) {
-      const newStoryPath = treePath
-        .split('/')
-        .filter(str => str !== 'src')
-        .join('/');
-
-      tree.rename(treePath, newStoryPath);
-    }
-  });
 }
 
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {

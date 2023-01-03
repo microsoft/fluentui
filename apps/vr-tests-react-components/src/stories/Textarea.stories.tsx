@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Textarea } from '@fluentui/react-textarea';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
@@ -7,7 +7,7 @@ import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorato
 storiesOf('Textarea Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('textarea')
@@ -18,7 +18,7 @@ storiesOf('Textarea Converged', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Appearance: outline (default)', () => <Textarea placeholder="Placeholder" />)
   .addStory('Appearance: filled-darker', () => <Textarea appearance="filled-darker" placeholder="Placeholder" />)
@@ -43,7 +43,7 @@ storiesOf('Textarea Converged', module)
 storiesOf('Textarea Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('Size: small', () => <Textarea size="small" placeholder="Placeholder" />)
   .addStory('Size: medium', () => <Textarea size="medium" placeholder="Placeholder" />)

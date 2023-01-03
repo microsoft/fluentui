@@ -27,7 +27,7 @@ function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
  * Returns all the dependencies of a given package name
  * @param {string} packageName including `@fluentui/` prefix
  * @param {Object} options
- * @param {string} [options.dev] include dev dependencies
+ * @param {boolean} [options.dev] include dev dependencies
  * @param {boolean} [options.production] include production dependencies
  */
 async function getDependencies(packageName, options = { production: true }) {

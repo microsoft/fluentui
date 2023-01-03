@@ -58,6 +58,8 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 export type TreeContextValue = {
     level: number;
     openSubtrees: string[];
+    appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+    size: 'small' | 'medium';
     focusFirstSubtreeItem(target: HTMLElement): void;
     focusSubtreeOwnerItem(target: HTMLElement): void;
     requestOpenChange(data: TreeOpenChangeData): void;
@@ -70,21 +72,24 @@ export const TreeItem: ForwardRefComponent<TreeItemProps>;
 export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
 
 // @public
-export type TreeItemProps = ComponentProps<TreeItemSlots> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps;
 
 // @public (undocumented)
 export type TreeItemSlots = BaseTreeItemSlots & {
     expandIcon?: Slot<'span'>;
     iconBefore?: Slot<'span'>;
     iconAfter?: Slot<'span'>;
-    actionIcon?: Slot<'span'>;
+    badges?: Slot<'span'>;
+    actions?: Slot<'span'>;
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots>;
+export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
+    appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
+    size?: 'small' | 'medium';
     openSubtrees?: string | string[];
     defaultOpenSubtrees?: string | string[];
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;

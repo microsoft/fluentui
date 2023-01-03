@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const getResolveAlias = require('@fluentui/scripts/webpack/getResolveAlias');
+const { getResolveAlias } = require('@fluentui/scripts/webpack');
 
 module.exports = () => {
   return {

@@ -13,6 +13,7 @@ import {
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { MotionPageProps } from './MotionPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
+import { cdnUrl } from '../../../utilities/cdn';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/MotionPage/docs';
@@ -59,7 +60,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
 
               <MarkdownHeader as="h3">Delete & Slide</MarkdownHeader>
               <p>This pattern for deleting an object from the view and how the remaining objects realign themselves.</p>
-              <Video source="https://static2.sharepointonline.com/files/fabric/fabric-website/video/deleteslide.mp4" />
+              <Video source={`${cdnUrl}/fabric-website/video/deleteslide.mp4`} />
               <PatternTable
                 rows={[
                   {
@@ -81,7 +82,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
 
               <MarkdownHeader as="h3">Slide & Add</MarkdownHeader>
               <p>This pattern for adding an object to a view, and how the other objects react to the new element.</p>
-              <Video source="https://static2.sharepointonline.com/files/fabric/fabric-website/video/slideadd.mp4" />
+              <Video source={`${cdnUrl}/fabric-website/video/slideadd.mp4"`} />
               <PatternTable
                 rows={[
                   {
@@ -106,7 +107,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 This pattern handles the transition from one view into another. Some elements persist, some leave the
                 view, and new ones enter as well.
               </p>
-              <Video source="https://static2.sharepointonline.com/files/fabric/fabric-website/video/drillin.mp4" />
+              <Video source={`${cdnUrl}/fabric-website/video/drillin.mp4`} />
               <PatternTable
                 rows={[
                   {
@@ -131,7 +132,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 This pattern handles the transition from one view into another. Some elements persist, some leave the
                 view, and new ones enter as well.
               </p>
-              <Video source="https://static2.sharepointonline.com/files/fabric/fabric-website/video/drillinwithcontinuity.mp4" />
+              <Video source={`${cdnUrl}/fabric-website/video/drillinwithcontinuity.mp4`} />
               <PatternTable
                 rows={[
                   {
@@ -163,7 +164,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 This pattern describes the transition from selecting one tab to another. Includes the selection state
                 that travels across the tab set. Also describes the tab content coming in and out as well.
               </p>
-              <Video source="https://static2.sharepointonline.com/files/fabric/fabric-website/video/tabspivots.mp4" />
+              <Video source={`${cdnUrl}/fabric-website/video/tabspivots.mp4`} />
               <PatternTable
                 rows={[
                   {

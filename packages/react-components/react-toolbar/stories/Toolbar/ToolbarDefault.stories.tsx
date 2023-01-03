@@ -6,8 +6,8 @@ import {
   MoreHorizontal24Filled,
 } from '@fluentui/react-icons';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
-import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
-import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-components/unstable';
+import type { ToolbarProps } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
