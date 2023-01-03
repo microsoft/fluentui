@@ -1678,10 +1678,10 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@griffel/babel-preset@1.4.3", "@griffel/babel-preset@^1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.3.tgz#31319170b818990c28a49e0bb710f1a27aa9cc05"
-  integrity sha512-UAf/Rwme2F5r+we15HJs245z26whby/IuT8kaBK8XCvdNLKUPBVF8OaQmixfLTz/V8Xb+U+xtJsEVYrwr9Q6ag==
+"@griffel/babel-preset@1.4.8", "@griffel/babel-preset@^1.4.8":
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.8.tgz#75b0fd442639e3df0d372b9b75d27f3f3fe1a3a9"
+  integrity sha512-c9dMGarvCvwsR511jsAGz6U++BZhsT2s+ZeqpZ6f2xSlHZFYtMhUiBbONlmiW9iPzn2AP1F/hYU3NnUplqO5hA==
   dependencies:
     "@babel/core" "^7.12.13"
     "@babel/generator" "^7.12.13"
@@ -1694,10 +1694,10 @@
     stylis "^4.0.13"
     tslib "^2.1.0"
 
-"@griffel/core@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.8.1.tgz#c72215cb292fed23dd21967c8886e2d9f52008f4"
-  integrity sha512-Zig4h+o2f8v7tV13yQCmRaEKp6Psdi+NZEPQOmM7DJNmAHYQgcHJcLqJH7SOGWr+QOh3ZXVpQ2EP3JDKz479GQ==
+"@griffel/core@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.9.0.tgz#53ff246ace962fc156151a87129145e8121491db"
+  integrity sha512-fiPf/mfcO6B96n4qgRFwA6TBEkPu8x2nWCHEGPnB+RrSttbiwzgsxuy+ojsf6QVeeS+i9qQegRbK2rIow+238Q==
   dependencies:
     "@emotion/hash" "^0.8.0"
     csstype "^3.0.10"
@@ -1713,44 +1713,40 @@
     "@typescript-eslint/utils" "^5.20.0"
     csstype "^3.0.10"
 
-"@griffel/jest-serializer@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@griffel/jest-serializer/-/jest-serializer-1.1.1.tgz#38a8bb13a2591ea8006757cf58b0ec108d484ced"
-  integrity sha512-X3pF+vJiBsCnQLueL2dv+Ml+zyVxwB7zc5L/lKhkB1vc3Xt4tFGINXVRNPAs7P0hSbMF2+Z331prXWhSCAOY/g==
+"@griffel/jest-serializer@1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@griffel/jest-serializer/-/jest-serializer-1.1.4.tgz#9c68826d5d6eac9a5f426dcc5931590381780eb7"
+  integrity sha512-o9jObAHmgsPij1DFD2iyUmcce4yAl90KALxhoBugCDPxGNLFFpy3K5eDtFxkqMwCfiwd1TTyOrj/g1TW85+gqQ==
   dependencies:
     tslib "^2.1.0"
 
-"@griffel/react@1.4.2", "@griffel/react@^1.0.0", "@griffel/react@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.4.2.tgz#d4d3a9b24334e11cae188d8fb5574aa946e46cc2"
-  integrity sha512-VM047UxJFiq/OX5YkRPVuGB9NdU/TxVX9nrBRncXuxzVRRmvf+1OmHlcXWaFuXVj0JOjiMBzm4jH34lqPRGS+Q==
+"@griffel/react@1.5.2", "@griffel/react@^1.0.0", "@griffel/react@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.5.2.tgz#c3bb743653f57a4f99b2c25fe6d0b56b4aa4f772"
+  integrity sha512-y27CVUYIFuJue18AiSnaocfhXvbkjDvH5oafJY+3zdcY7hx17oaGQZ2qdKegRkZJlyKcMU//J/1HJ4SrIDrXRA==
   dependencies:
-    "@griffel/core" "^1.8.1"
+    "@griffel/core" "^1.9.0"
     tslib "^2.1.0"
 
-"@griffel/webpack-extraction-plugin@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@griffel/webpack-extraction-plugin/-/webpack-extraction-plugin-0.2.1.tgz#23bb9a5de1bd59ee9c9e9cda47a44358f6a7e218"
-  integrity sha512-FVM5+tBiIJ5B+Dtth6YL/+z8I5ShgZKYXa+m9/QXsMou/6+y+6ySThOtklFEr7K0b05uNlt2srLgWI38UBT8og==
+"@griffel/webpack-extraction-plugin@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@griffel/webpack-extraction-plugin/-/webpack-extraction-plugin-0.3.3.tgz#fc9f80d808ceed00e4d167a2b115cb52f1a28190"
+  integrity sha512-rDvSVo9jHOqTGxvN4hASFTFklc0dvdzvnDunAAhilPZFgAjdCABduhL9iuQtpwWghwWWRfxLjVOgJnnzCIpHjg==
   dependencies:
     "@babel/core" "^7.12.13"
     "@babel/helper-plugin-utils" "^7.12.13"
-    "@griffel/react" "1.4.2"
-    loader-utils "^2.0.0"
-    schema-utils "^3.1.1"
+    "@griffel/react" "1.5.2"
     stylis "^4.0.13"
     tslib "^2.1.0"
 
-"@griffel/webpack-loader@2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.1.3.tgz#6553f8d2b4fa77253fdc58e01c3f00d784b17ca1"
-  integrity sha512-bXSUbcP4iBc+oZnyWuDCHTuywzbbD0MCxgrVmmHzBnRjYi1ZnGvQqUFFZxA9f31JYnY6y+MkIZMr2xd44codjA==
+"@griffel/webpack-loader@2.1.8":
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.1.8.tgz#68694d42962d049050b366811fae5312e0be3f70"
+  integrity sha512-5dJr1CSE6N5+IYbyN3YoplgAhCT0CpyrepzsGTRs2P1Lab6CUDCdo4UhJI1Mi9wdiSuA9KCg9yEHiMtMKKKfkg==
   dependencies:
     "@babel/core" "^7.12.13"
-    "@griffel/babel-preset" "^1.4.3"
+    "@griffel/babel-preset" "^1.4.8"
     enhanced-resolve "^5.8.2"
-    loader-utils "^2.0.0"
-    schema-utils "^3.1.1"
     tslib "^2.1.0"
 
 "@gulp-sourcemaps/identity-map@1.X":

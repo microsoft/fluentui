@@ -34,7 +34,7 @@
     "@fluentui/react-field": "9.0.0-alpha.12",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.3.0",
-    "@griffel/react": "^1.4.2",
+    "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

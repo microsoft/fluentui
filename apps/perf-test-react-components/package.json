@@ -16,7 +16,7 @@
     "@fluentui/scripts": "*"
   },
   "dependencies": {
-    "@griffel/core": "^1.8.1",
+    "@griffel/core": "^1.9.0",
     "@fluentui/react-avatar": "^9.2.10",
     "@fluentui/react-button": "^9.1.12",
     "@fluentui/react-persona": "9.1.0-beta.7",
