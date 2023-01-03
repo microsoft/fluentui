@@ -39,7 +39,7 @@ function isConvergedPackage(options = {}) {
 }
 
 /**
- * Determins if a version is the 0.0.0 nightly version used by converged packages
+ * Determines if a version is the 0.0.0 nightly version used by converged packages
  * @param {string} version
  */
 function isNightlyVersion(version) {
