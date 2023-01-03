@@ -602,6 +602,7 @@ import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
@@ -1827,6 +1828,8 @@ export { useRadioGroupContextValues }
 export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
+
+export { useScrollbarWidth }
 
 export { useSlider_unstable }
 

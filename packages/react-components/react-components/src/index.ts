@@ -139,6 +139,7 @@ export {
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
+  useScrollbarWidth,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
