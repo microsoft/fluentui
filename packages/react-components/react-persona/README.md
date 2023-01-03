@@ -7,12 +7,6 @@
 To import Persona:
 
 ```js
-import { Persona } from '@fluentui/react-persona';
-```
-
-To import Persona from `@fluentui/react-components`:
-
-```js
 import { Persona } from '@fluentui/react-components';
 ```
 
