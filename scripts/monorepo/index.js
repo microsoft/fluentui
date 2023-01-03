@@ -6,7 +6,6 @@ module.exports = {
   isConvergedPackage: require('./isConvergedPackage'),
   getAffectedPackages: require('./getAffectedPackages'),
   eslintConstants: require('./eslint-constants'),
-  getNthCommit: require('./getNthCommit'),
   ...require('./getDefaultEnvironmentVars'),
   ...require('./get-lerna-aliases'),
   ...require('./utils'),
