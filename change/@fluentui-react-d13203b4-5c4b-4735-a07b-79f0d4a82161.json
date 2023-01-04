@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Stopping className being unset in inner Stacks.",
+  "packageName": "@fluentui/react",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
