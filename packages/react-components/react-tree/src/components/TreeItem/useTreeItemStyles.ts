@@ -196,6 +196,10 @@ const useActionsStyles = makeStyles({
     marginLeft: 'auto',
     ...shorthands.padding(0, tokens.spacingHorizontalXS),
   },
+  open: {
+    opacity: '1',
+    position: 'relative',
+  },
 });
 
 export const expandIconInlineStyles = {
@@ -268,7 +272,12 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   }
 
   if (actions) {
-    actions.className = mergeClasses(treeItemClassNames.actions, actionsStyles.base, actions.className);
+    actions.className = mergeClasses(
+      treeItemClassNames.actions,
+      actionsStyles.base,
+      state.keepActionsOpen && actionsStyles.open,
+      actions.className,
+    );
   }
   if (badges) {
     badges.className = mergeClasses(treeItemClassNames.badges, badgesStyles.base, badges.className);

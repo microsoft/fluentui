@@ -35,4 +35,10 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeIte
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;
+export type TreeItemState = ComponentState<TreeItemSlots> &
+  BaseTreeItemState & {
+    /**
+     * boolean indicating that actions should remain open due to focus on some portal
+     */
+    keepActionsOpen: boolean;
+  };

@@ -3,25 +3,27 @@ import { Tree, TreeItem } from '@fluentui/react-tree';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Button, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
-const RenderActions = () => (
-  <>
-    <Button appearance="subtle" icon={<Edit20Regular />} />
-    <Menu inline>
-      <MenuTrigger disableButtonEnhancement>
-        <Button appearance="subtle" icon={<MoreHorizontal20Regular />} />
-      </MenuTrigger>
+const RenderActions = () => {
+  return (
+    <>
+      <Button appearance="subtle" icon={<Edit20Regular />} />
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <Button appearance="subtle" icon={<MoreHorizontal20Regular />} />
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>New </MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>Open File</MenuItem>
-          <MenuItem>Open Folder</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  </>
-);
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem disabled>Open File</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
+  );
+};
 
 export const Actions = () => (
   <Tree aria-label="Tree">

@@ -83,7 +83,9 @@ export type TreeItemSlots = BaseTreeItemSlots & {
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;
+export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState & {
+    keepActionsOpen: boolean;
+};
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
