@@ -6,7 +6,7 @@ import { colors, log } from 'gulp-util';
 
 type Express = ReturnType<typeof express>;
 
-const serve = (
+export const serve = (
   directoryPath: string,
   host: string,
   port: number,
@@ -40,5 +40,3 @@ export const forceClose = (server: Server): Promise<void> => {
     server.close(err => (err ? reject(err) : resolve()));
   });
 };
-
-export default serve;

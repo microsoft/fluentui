@@ -1,8 +1,6 @@
 import { danger, fail, warn, markdown, message } from 'danger';
 
-import detectNonApprovedDependencies from './scripts/dangerjs/detectNonApprovedDependencies';
-import checkChangelog from './scripts/dangerjs/checkChangelog';
-import { checkStorybookVersions } from './scripts/dangerjs/checkStorybookVersions';
+import { detectNonApprovedDependencies, checkChangelog, checkStorybookVersions } from '@fluentui/scripts/dangerjs';
 
 /**
  * This trick (of explicitly passing Danger JS utils as function arg, instead of importing them at places where needed)
