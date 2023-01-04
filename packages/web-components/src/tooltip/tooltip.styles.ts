@@ -108,7 +108,9 @@ export const tooltipStyles: (
     ${context.tagFor(AnchoredRegion)}.right .tooltip {
       margin-left: 12px;
     }
-  `.withBehaviors(forcedColorsStylesheetBehavior(css `
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
         :host([disabled]) {
           opacity: 1;
         }
