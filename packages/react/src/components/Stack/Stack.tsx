@@ -63,19 +63,12 @@ function _processStackChildren(
     }
     const childClassName = childAsReactElement.props.className;
 
-    const clonedElementProps = {
+    return React.cloneElement(childAsReactElement, {
       ...defaultItemProps,
       ...childAsReactElement.props,
       ...(childClassName && { className: childClassName }),
       ...(enableScopedSelectors && { className: css(StackGlobalClassNames.child, childClassName) }),
-    };
-
-    // Delete the className if it is undefined so it does not unset other classNames passed in.
-    if (clonedElementProps.className === undefined) {
-      delete clonedElementProps.className;
-    }
-
-    return React.cloneElement(childAsReactElement, clonedElementProps);
+    });
   });
 
   return childrenArray;
