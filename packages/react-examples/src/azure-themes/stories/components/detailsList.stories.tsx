@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Announced } from '@fluentui/react/lib/Announced';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn, SelectionMode } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { ThemeProvider } from '@fluentui/react';
@@ -73,6 +73,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             compact={true}
+            // selectionMode={SelectionMode.single}
             items={items}
             columns={this._columns}
             setKey="set"
