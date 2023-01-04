@@ -242,6 +242,9 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 ### TODO: remove - Temporary rules for /scripts packaging initiative
 **/just.config.ts @microsoft/fluentui-react-build
 **/jest.config.js @microsoft/fluentui-react-build
+**/wepback.*.js @microsoft/fluentui-react-build
+**/.eslintrc.js @microsoft/fluentui-react-build
+**/.eslintrc.json @microsoft/fluentui-react-build
 **/tsconfig.json @microsoft/fluentui-react-build
 **/tsconfig.lib.json @microsoft/fluentui-react-build
 **/tsconfig.spec.json @microsoft/fluentui-react-build
