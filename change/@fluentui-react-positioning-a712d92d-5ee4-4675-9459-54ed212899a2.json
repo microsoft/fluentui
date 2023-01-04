@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Autosize middleware should set box-sizing border-box",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

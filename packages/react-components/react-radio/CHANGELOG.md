@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Wed, 21 Dec 2022 10:20:30 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Jan 2023 01:40:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.0.16)
+
+Wed, 04 Jan 2023 01:40:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.0.15..@fluentui/react-radio_v9.0.16)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.4 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.13 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-label to v9.0.15 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-tabster to v9.3.5 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
 
 ## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.0.15)
 

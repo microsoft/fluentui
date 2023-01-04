@@ -18,7 +18,7 @@
     "@fluentui/scripts": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.7.4",
+    "@fluentui/react-components": "^9.8.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.6",
     "react": "18.2.0",

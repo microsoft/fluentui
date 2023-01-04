@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 20 Dec 2022 14:59:33 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Jan 2023 01:40:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.3.1)
+
+Wed, 04 Jan 2023 01:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.3.0..@fluentui/react-utilities_v9.3.1)
+
+### Patches
+
+- feat: generalize is HTMLElement attribute to unknown ([PR #25991](https://github.com/microsoft/fluentui/pull/25991) by bernardo.sunderhus@gmail.com)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.3.0)
 
