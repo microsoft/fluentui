@@ -6,9 +6,8 @@ import * as yargs from 'yargs';
 
 import config from '../config';
 import webpackPlugin from '../plugins/gulp-webpack';
-
 import cypress from '../plugins/gulp-cypress';
-import serve, { forceClose } from '../serve';
+import { serve, forceClose } from './serve';
 
 const { paths } = config;
 

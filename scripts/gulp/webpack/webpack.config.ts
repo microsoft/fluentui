@@ -6,8 +6,9 @@ import TerserPlugin from 'terser-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import config from '../config';
 import { getDefaultEnvironmentVars } from '../../monorepo';
+
+import config from '../config';
 
 const { paths } = config;
 const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
