@@ -3,7 +3,7 @@ const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox');
 
-const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('../scripts/storybook');
+const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('@fluentui/scripts/storybook');
 
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
