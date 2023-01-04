@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix fluent-tooltip not showing anchor pointer when wc prefix is changed",
+  "packageName": "@fluentui/web-components",
+  "email": "abcy@microsoft.com",
+  "dependentChangeType": "patch"
+}
