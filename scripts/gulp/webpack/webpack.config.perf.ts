@@ -2,7 +2,9 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { argv } from 'yargs';
 import webpack from 'webpack';
+
 import { getDefaultEnvironmentVars } from '../../monorepo';
+
 import config from '../config';
 
 const { paths } = config;

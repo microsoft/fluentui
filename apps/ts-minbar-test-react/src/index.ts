@@ -3,15 +3,13 @@ import * as path from 'path';
 import {
   addResolutionPathsForProjectPackages,
   packProjectPackages,
-} from '@fluentui/scripts/projects-test/packPackages';
-import {
   prepareTempDirs,
   log,
   shEcho,
   TempPaths,
   workspaceRoot,
   generateFiles,
-} from '@fluentui/scripts/projects-test/utils';
+} from '@fluentui/scripts/projects-test';
 
 const tsVersion = '3.9';
 const testName = 'ts-minbar-react';

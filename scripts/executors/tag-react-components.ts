@@ -54,12 +54,14 @@ function getPackagesToTag() {
     .filter(Boolean) as Array<{ name: string; version: string }> | [];
 }
 
-if (require.main === module && process.env.RELEASE_VNEXT) {
-  const argv = yargs.argv;
-
+function main(argv: yargs.Arguments) {
   if (!argv.token || typeof argv.token !== 'string') {
     throw new Error('Please pass an NPM token through the --token argument');
   }
 
   tagPackages(argv.token);
+}
+
+if (require.main === module && process.env.RELEASE_VNEXT) {
+  main(yargs.argv);
 }
