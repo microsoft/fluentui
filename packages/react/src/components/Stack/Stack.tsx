@@ -62,13 +62,20 @@ function _processStackChildren(
       defaultItemProps = { shrink: !disableShrink };
     }
 
-    return React.cloneElement(childAsReactElement, {
+    const clonedElementProps = {
       ...defaultItemProps,
       ...childAsReactElement.props,
       className: enableScopedSelectors
         ? css(StackGlobalClassNames.child, childAsReactElement.props.className)
         : childAsReactElement.props.className,
-    });
+    };
+
+    // Delete the className if it is undefined so it does not unset other classNames passed in.
+    if (clonedElementProps.className === undefined) {
+      delete clonedElementProps.className;
+    }
+
+    return React.cloneElement(childAsReactElement, clonedElementProps);
   });
 
   return childrenArray;
