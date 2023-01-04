@@ -1,9 +1,9 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
+  AnchoredRegion,
   ElementDefinitionContext,
   forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
-  AnchoredRegion
+  FoundationElementDefinition
 } from '@microsoft/fast-foundation';
 import { elevationShadowTooltip } from '../styles/index';
 import {
