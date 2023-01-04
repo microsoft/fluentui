@@ -42,7 +42,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     root: {
       ...treeItemState.root,
       onClick: useEventCallback(event => {
-        //  if click event comer from actions, ignore it
+        //  if click event originates from actions, ignore it
         if (actionsRef.current && actionsRef.current?.contains(event.target as Node)) {
           return;
         }
