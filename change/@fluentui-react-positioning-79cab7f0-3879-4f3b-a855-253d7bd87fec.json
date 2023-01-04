@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: force update memory leak in positioning manager",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

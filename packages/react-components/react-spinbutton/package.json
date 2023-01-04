@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-spinbutton",
-  "version": "9.0.12",
+  "version": "9.0.13",
   "description": "Fluent UI React SpinButton component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,18 +27,18 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.18",
-    "@fluentui/react-label": "^9.0.14",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/react-label": "^9.0.15",
     "@fluentui/scripts": "*"
   },
   "dependencies": {
     "@griffel/react": "^1.5.2",
     "@fluentui/keyboard-keys": "^9.0.1",
-    "@fluentui/react-field": "9.0.0-alpha.12",
+    "@fluentui/react-field": "9.0.0-alpha.13",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-input": "^9.2.9",
+    "@fluentui/react-input": "^9.2.10",
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.3.0",
+    "@fluentui/react-utilities": "^9.3.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
