@@ -1,7 +1,7 @@
 import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
 import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type {
   PositioningOptions,
@@ -51,13 +51,10 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
     }
   }, [enabled, resolvePositioningOptions]);
 
-  const setOverrideTarget = React.useCallback(
-    (target: TargetElement | null) => {
-      overrideTargetRef.current = target;
-      updatePositionManager();
-    },
-    [updatePositionManager],
-  );
+  const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
+    overrideTargetRef.current = target;
+    updatePositionManager();
+  });
 
   React.useImperativeHandle(
     options.positioningRef,
