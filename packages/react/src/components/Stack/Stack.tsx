@@ -61,13 +61,13 @@ function _processStackChildren(
     if (_isStackItem(child)) {
       defaultItemProps = { shrink: !disableShrink };
     }
+    const childClassName = childAsReactElement.props.className;
 
     const clonedElementProps = {
       ...defaultItemProps,
       ...childAsReactElement.props,
-      className: enableScopedSelectors
-        ? css(StackGlobalClassNames.child, childAsReactElement.props.className)
-        : childAsReactElement.props.className,
+      ...(childClassName && { className: childClassName }),
+      ...(enableScopedSelectors && { className: css(StackGlobalClassNames.child, childClassName) }),
     };
 
     // Delete the className if it is undefined so it does not unset other classNames passed in.
