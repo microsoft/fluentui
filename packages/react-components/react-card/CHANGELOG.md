@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Jan 2023 01:40:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.37)
+
+Wed, 04 Jan 2023 01:40:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.36..@fluentui/react-card_v9.0.0-beta.37)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.3.5 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-button to v9.1.13 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
 
 ## [9.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.36)
 

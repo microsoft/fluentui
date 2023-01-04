@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: generalize is HTMLElement attribute to unknown",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
