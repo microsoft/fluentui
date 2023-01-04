@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(scripts): introduce ts-node sub-package",
+  "packageName": "@fluentui/tokens",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

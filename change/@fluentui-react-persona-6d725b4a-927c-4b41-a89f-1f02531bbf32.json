@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Moving Persona to stable.",
+  "packageName": "@fluentui/react-persona",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

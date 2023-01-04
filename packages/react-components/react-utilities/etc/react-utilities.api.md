@@ -73,10 +73,10 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
 // @internal
-export function isHTMLElement(element?: Node | null | undefined): element is HTMLElement;
+export function isHTMLElement(element?: unknown): element is HTMLElement;
 
 // @internal
-export function isInteractiveHTMLElement(element: Node | null | undefined): boolean;
+export function isInteractiveHTMLElement(element: unknown): boolean;
 
 // @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;

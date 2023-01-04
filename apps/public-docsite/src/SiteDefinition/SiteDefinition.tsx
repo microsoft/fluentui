@@ -3,14 +3,14 @@ import { ISiteDefinition, LoadingComponent } from '@fluentui/react-docsite-compo
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 import { platforms } from './SiteDefinition.platforms';
+import { cdnUrl } from '../utilities/cdn';
 import { SiteGlobals } from '@fluentui/public-docsite-setup';
 
 declare const window: Window & SiteGlobals;
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Fluent UI',
-  siteLogoSource:
-    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/microsoftfluentui-logo-rgb_no-padding.svg',
+  siteLogoSource: `${cdnUrl}/fabric-website/images/microsoftfluentui-logo-rgb_no-padding.svg`,
   platforms,
   pages: [
     {

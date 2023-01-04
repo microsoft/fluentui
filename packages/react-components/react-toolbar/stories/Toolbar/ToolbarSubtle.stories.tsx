@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TextBold24Regular, TextItalic24Regular, TextUnderline24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarToggleButton } from '@fluentui/react-toolbar';
-import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarToggleButton } from '@fluentui/react-components/unstable';
+import type { ToolbarProps } from '@fluentui/react-components/unstable';
 
 export const Subtle = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>

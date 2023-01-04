@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Combobox', () => {
   isConformant({
@@ -436,6 +436,24 @@ describe('Combobox', () => {
     userEvent.click(getByText('Green'));
 
     expect(getByRole('menu')).not.toBeNull();
+  });
+
+  it('clears typed characters after selection for multiselect', () => {
+    const { getByRole, getByText } = render(
+      <Combobox open multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'gr');
+    userEvent.click(getByText('Green'));
+
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect((combobox as HTMLInputElement).value).toEqual('');
   });
 
   it('should respect value over selected options', () => {

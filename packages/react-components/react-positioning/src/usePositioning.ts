@@ -189,7 +189,7 @@ function usePositioningOptions(options: PositioningOptions) {
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement }),
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
-        autoSize && maxSizeMiddleware(autoSize),
+        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),

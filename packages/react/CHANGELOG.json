@@ -2,6 +2,153 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 02 Jan 2023 07:46:45 GMT",
+      "tag": "@fluentui/react_v8.104.1",
+      "version": "8.104.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:51:03 GMT",
+      "tag": "@fluentui/react_v8.104.1",
+      "version": "8.104.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Dec 2022 07:45:11 GMT",
+      "tag": "@fluentui/react_v8.104.1",
+      "version": "8.104.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0ba1e7e3d1804a407efd9b58fdb38318f1d99447",
+            "comment": "refactor(scripts): separate /storybook and /webpack and introduce barell api within /webpack"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Dec 2022 07:55:40 GMT",
+      "tag": "@fluentui/react_v8.104.1",
+      "version": "8.104.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "36af377c3f0501b6de07bcab1c4efae743bf9f19",
+            "comment": "fix: ComboBox button is not aria-hidden by default"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Dec 2022 07:47:36 GMT",
+      "tag": "@fluentui/react_v8.104.0",
+      "version": "8.104.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cf10f5be18439d0c0c3f53baac7f996237569691",
+            "comment": "chore: export GroupedListV2 types"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 07:53:33 GMT",
+      "tag": "@fluentui/react_v8.103.10",
+      "version": "8.103.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.25",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.5",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.11",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.8.4",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.20",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.14",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/example-data to v8.4.4",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Dec 2022 07:50:07 GMT",
+      "tag": "@fluentui/react_v8.103.9",
+      "version": "8.103.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7cb446d4311c0621a3dcecd4eed7fe0c3476de53",
+            "comment": "fix: drag and drop column reorder for grouped DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Dec 2022 07:46:30 GMT",
       "tag": "@fluentui/react_v8.103.8",
       "version": "8.103.8",

@@ -1,11 +1,10 @@
-let { createConfig, resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
-let path = require('path');
+const { createV8Config: createConfig } = require('@fluentui/scripts/jest');
 
 function getEsmOnlyPackagesToCjsMapping() {
   /**
-   * relative path to monorepo root
+   * relative path to jest cwd
    */
-  const prefix = `<rootDir>/../../`;
+  const prefix = `<rootDir>/`;
   /**
    * map of packages that ship only as ESM
    */
@@ -18,8 +17,8 @@ function getEsmOnlyPackagesToCjsMapping() {
 }
 
 const config = createConfig({
-  setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-  snapshotSerializers: [resolveMergeStylesSerializer(), 'enzyme-to-json/serializer'],
+  setupFiles: ['./config/tests.js'],
+  snapshotSerializers: ['@fluentui/jest-serializer-merge-styles', 'enzyme-to-json/serializer'],
 
   moduleNameMapper: {
     ...getEsmOnlyPackagesToCjsMapping(),

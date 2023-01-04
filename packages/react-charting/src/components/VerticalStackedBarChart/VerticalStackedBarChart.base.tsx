@@ -493,11 +493,16 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         const legend: ILegend = {
           title: point.legend,
-          color: color,
+          color,
           action: () => {
             this._onLegendClick(point.legend);
           },
-          hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.legend) : undefined,
+          hoverAction: allowHoverOnLegend
+            ? () => {
+                this._handleChartMouseLeave();
+                this._onLegendHover(point.legend);
+              }
+            : undefined,
           onMouseOutAction: allowHoverOnLegend ? () => this._onLegendLeave() : undefined,
         };
 
@@ -514,7 +519,12 @@ export class VerticalStackedBarChartBase extends React.Component<
           action: () => {
             this._onLegendClick(point.title);
           },
-          hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.title) : undefined,
+          hoverAction: allowHoverOnLegend
+            ? () => {
+                this._handleChartMouseLeave();
+                this._onLegendHover(point.title);
+              }
+            : undefined,
           onMouseOutAction: allowHoverOnLegend ? () => this._onLegendLeave() : undefined,
         };
         legendsOfLine.push(legend);
@@ -719,7 +729,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         const classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
-          shouldHighlight: shouldHighlight,
+          shouldHighlight,
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {

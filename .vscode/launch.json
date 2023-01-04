@@ -137,7 +137,7 @@
         "--age",
         "10"
       ],
-      "runtimeArgs": ["--nolazy", "--inspect", "-r", "${workspaceRoot}/scripts/ts-node-register"],
+      "runtimeArgs": ["--nolazy", "--inspect", "-r", "${workspaceRoot}/scripts/ts-node/register"],
       "env": {
         "NODE_ENV": "development"
       },

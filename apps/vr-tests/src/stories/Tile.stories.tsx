@@ -8,7 +8,7 @@ import {
   SharedSignal,
   ITileBackgroundProps,
 } from '@fluentui/react-experiments';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
 import { TestWrapperDecorator } from '../utilities/index';
@@ -136,13 +136,13 @@ storiesOf('Tile', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Document tile with fit landscape image', () => (
     <DocumentTileWithThumbnail
@@ -187,7 +187,7 @@ storiesOf('Tile', module)
         itemActivity={<SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>}
         foreground={
           <img
-            src={`https://static2.sharepointonline.com/files/fabric/assets/item-types/48/docx.svg`}
+            src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/item-types/48/docx.svg"
             style={{
               display: 'block',
               width: '64px',
@@ -221,15 +221,15 @@ storiesOf('MediaTile', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Tile')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Media tile with single activity line', () => (
     <MediaTileBox>
