@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Overflow } from '@fluentui/react-overflow';
+import { Overflow, OverflowItem } from '@fluentui/react-components/unstable';
 import { ComponentMeta } from '@storybook/react';
 import descriptionMd from './OverflowDescription.md';
 
@@ -15,6 +15,9 @@ export { PriorityWithDividers } from './PriorityWithDividers.stories';
 export default {
   title: 'Components/Overflow',
   component: Overflow,
+  subcomponents: {
+    OverflowItem,
+  },
   parameters: {
     docs: {
       description: {
