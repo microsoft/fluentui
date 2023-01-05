@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove Pickers live announcement text after timeout",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
