@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       Use file type icons to indicate to users that they are creating a new file of that type. Make sure
                       that a file of the type that the icon represents loads when the user selects the icon. For
                       example, do not use a Word .docx icon to open a .txt file. File type icons should always represent
-                      Microsoft Office files.
+                      Microsoft 365 files.
                       <br />
                       <br />
                       If you're looking for icons for command bars, navigation, status indicators, or similar, check out
@@ -57,7 +57,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       </Link>
                       . {/* comment to prevent eslint/prettier conflict */}Alternatively, if you're looking for brand
                       logos, or the icons of apps themselves, check out the{' '}
-                      <Link href="#/styles/web/office-brand-icons" underline>
+                      <Link href="#/styles/web/m365-brand-icons" underline>
                         Fluent UI brand icons page
                       </Link>
                       .

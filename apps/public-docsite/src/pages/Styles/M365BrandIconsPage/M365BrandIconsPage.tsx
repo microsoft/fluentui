@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Image, Link } from '@fluentui/react';
 import { Markdown, MarkdownHeader, IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
-import { OfficeBrandIconsPageProps } from './OfficeBrandIconsPage.doc';
+import { M365BrandIconsPageProps } from './M365BrandIconsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { cdnUrl } from '../../../utilities/cdn';
-import * as styles from './OfficeBrandIconsPage.module.scss';
+import * as styles from './M365BrandIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/M365BrandIconsPage/docs';
 const fabricCDN = `${cdnUrl}/assets`;
 
 const productIcons = require<
@@ -16,12 +16,12 @@ const productIcons = require<
   // eslint-disable-next-line import/no-extraneous-dependencies
 >('@fluentui/public-docsite/lib/data/brand-icons-products.json');
 
-export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
+export const M365BrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage
       {...props}
-      {...OfficeBrandIconsPageProps[platform!]}
+      {...M365BrandIconsPageProps[platform!]}
       otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
@@ -33,23 +33,23 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
       return [
         {
           sectionName: 'Overview',
-          editUrl: `${baseUrl}/web/OfficeBrandIconsOverview.md`,
+          editUrl: `${baseUrl}/web/M365BrandIconsOverview.md`,
           content: (
             <>
               <Markdown>
                 {
-                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsOverview.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsOverview.md') as string
                 }
               </Markdown>
-              <MarkdownHeader as="h3">When should I use Office Brand icons?</MarkdownHeader>
+              <MarkdownHeader as="h3">When should I use Microsoft 365 Brand icons?</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
-                      Use Office brand icons to help your users transition between Microsoft products. Product icons
-                      should only be used when the behavior of the command (app icon) is to launch the application. Do
-                      not use a product icon to create a new file of that type. For example, do not use the Word app
-                      icon for the menu option that allows users create a new Word document.
+                      Use Microsoft 365 brand icons to help your users transition between Microsoft products. Product
+                      icons should only be used when the behavior of the command (app icon) is to launch the
+                      application. Do not use a product icon to create a new file of that type. For example, do not use
+                      the Word app icon for the menu option that allows users create a new Word document.
                     </p>
                     <p>
                       If you're looking for icons for command bars, navigation, status indicators, or similar, check out
@@ -97,14 +97,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
         {
           sectionName: 'Format and sizes',
-          editUrl: `${baseUrl}/web/OfficeBrandIconsFormat.md`,
+          editUrl: `${baseUrl}/web/M365BrandIconsFormat.md`,
           content: (
             <div className="ms-Grid">
               <div className="ms-Grid-row">
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <Markdown>
                     {
-                      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsFormat.md') as string
+                      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsFormat.md') as string
                     }
                   </Markdown>
                 </div>
@@ -154,22 +154,22 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
         {
           sectionName: 'Resolutions',
-          editUrl: `${baseUrl}/web/OfficeBrandIconsResolutions.md`,
+          editUrl: `${baseUrl}/web/M365BrandIconsResolutions.md`,
           content: (
             <Markdown>
               {
-                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsResolutions.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsResolutions.md') as string
               }
             </Markdown>
           ),
         },
         {
           sectionName: 'Implementation',
-          editUrl: `${baseUrl}/web/OfficeBrandIconsImplementation.md`,
+          editUrl: `${baseUrl}/web/M365BrandIconsImplementation.md`,
           content: (
             <Markdown>
               {
-                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsImplementation.md') as string
               }
             </Markdown>
           ),
