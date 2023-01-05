@@ -818,10 +818,155 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/scripts": {
-      "root": "scripts",
+    "@fluentui/scripts-api-extractor": {
+      "root": "scripts/api-extractor",
+      "sourceRoot": "scripts/api-extractor",
       "projectType": "library",
-      "implicitDependencies": []
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-babel": {
+      "root": "scripts/babel",
+      "sourceRoot": "scripts/babel",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-beachball": {
+      "root": "scripts/beachball",
+      "sourceRoot": "scripts/beachball",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-cypress": {
+      "root": "scripts/cypress",
+      "sourceRoot": "scripts/cypress/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-dangerjs": {
+      "root": "scripts/dangerjs",
+      "sourceRoot": "scripts/dangerjs/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-dependency-graph-generator": {
+      "root": "scripts/dependency-graph-generator",
+      "sourceRoot": "scripts/dependency-graph-generator",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-executors": {
+      "root": "scripts/executors",
+      "sourceRoot": "scripts/executors",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-fluentui-publish": {
+      "root": "scripts/fluentui-publish",
+      "sourceRoot": "scripts/fluentui-publish",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-generators": {
+      "root": "scripts/generators",
+      "sourceRoot": "scripts/generators",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-github": {
+      "root": "scripts/github",
+      "sourceRoot": "scripts/github/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-gulp": {
+      "root": "scripts/gulp",
+      "sourceRoot": "scripts/gulp/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-jest": {
+      "root": "scripts/jest",
+      "sourceRoot": "scripts/jest/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-lint-staged": {
+      "root": "scripts/lint-staged",
+      "sourceRoot": "scripts/lint-staged",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-monorepo": {
+      "root": "scripts/monorepo",
+      "sourceRoot": "scripts/monorepo/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-package-manager": {
+      "root": "scripts/package-manager",
+      "sourceRoot": "scripts/package-manager",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-prettier": {
+      "root": "scripts/prettier",
+      "sourceRoot": "scripts/prettier/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-projects-test": {
+      "root": "scripts/projects-test",
+      "sourceRoot": "scripts/projects-test/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-puppeteer": {
+      "root": "scripts/puppeteer",
+      "sourceRoot": "scripts/puppeteer/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-storybook": {
+      "root": "scripts/storybook",
+      "sourceRoot": "scripts/storybook/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-tasks": {
+      "root": "scripts/tasks",
+      "sourceRoot": "scripts/tasks/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-triage-bot": {
+      "root": "scripts/triage-bot",
+      "sourceRoot": "scripts/triage-bot/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-ts-node": {
+      "root": "scripts/ts-node",
+      "sourceRoot": "scripts/ts-node",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-update-release-notes": {
+      "root": "scripts/update-release-notes",
+      "sourceRoot": "scripts/update-release-notes",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-utils": {
+      "root": "scripts/utils",
+      "sourceRoot": "scripts/utils/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-webpack": {
+      "root": "scripts/webpack",
+      "sourceRoot": "scripts/webpack/src",
+      "projectType": "library",
+      "tags": ["tools"]
     },
     "@fluentui/set-version": {
       "root": "packages/set-version",

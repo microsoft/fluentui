@@ -34,6 +34,7 @@ function groupFilesByPackage() {
   );
 
   for (const file of files) {
+    // eslint-disable-next-line no-shadow
     const packagePath = packagesWithEslint.find(packagePath => {
       // if file lives within searched package we will get only shortened absolute path `/src/abc.ts`
       // we add `.` to make it relative and thus have match pattern to check upon
@@ -66,6 +67,7 @@ async function runEslintOnFilesGroupedPerPackage() {
   let hasError = false;
 
   await queue.addAll(
+    // eslint-disable-next-line no-shadow
     Object.entries(filesGroupedByPackage).map(([packagePath, files]) => async () => {
       const cmd = `node ${eslintForPackageScript} ${files.join(' ')}`;
 
