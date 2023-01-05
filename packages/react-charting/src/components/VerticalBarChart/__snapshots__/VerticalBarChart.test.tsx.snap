@@ -98,66 +98,117 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="2020/04/30. First, 10%."
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={51}
+        <g
           key="0"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={224}
-        />
-        <rect
-          aria-label="2020/04/30. Second, 20%."
-          className=
+        >
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
 
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={255}
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={51}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={224}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={218}
+          >
+            10.0k
+          </text>
+        </g>
+        <g
           key="10000"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="2020/04/30. Third, 37%."
-          className=
+        >
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
 
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={153}
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={255}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={20}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={14}
+          >
+            50.0k
+          </text>
+        </g>
+        <g
           key="25000"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={122}
-        />
+        >
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={153}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={122}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={116}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -747,66 +798,117 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="2020/04/30. First, 10%."
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={51}
+        <g
           key="0"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={224}
-        />
-        <rect
-          aria-label="2020/04/30. Second, 20%."
-          className=
+        >
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
 
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={255}
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={51}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={224}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={218}
+          >
+            10.0k
+          </text>
+        </g>
+        <g
           key="10000"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="2020/04/30. Third, 37%."
-          className=
+        >
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
 
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={153}
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={255}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={20}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={14}
+          >
+            50.0k
+          </text>
+        </g>
+        <g
           key="25000"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={122}
-        />
+        >
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={153}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={122}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={116}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>

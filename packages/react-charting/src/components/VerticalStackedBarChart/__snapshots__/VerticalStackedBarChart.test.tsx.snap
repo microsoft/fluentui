@@ -123,6 +123,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={48}
               y={78.84615384615384}
@@ -146,6 +147,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={48}
               y={54.326923076923066}
@@ -162,6 +164,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             role="img"
             textAnchor="middle"
+            transform="translate(0, 0)"
             x={56}
             y={48.326923076923066}
           >
@@ -193,6 +196,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={-44}
               y={127.88461538461539}
@@ -216,6 +220,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={-44}
               y={29.807692307692307}
@@ -232,6 +237,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             role="img"
             textAnchor="middle"
+            transform="translate(0, 0)"
             x={-36}
             y={23.807692307692307}
           >
@@ -762,6 +768,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={48}
               y={78.84615384615384}
@@ -785,6 +792,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={48}
               y={54.326923076923066}
@@ -801,6 +809,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             role="img"
             textAnchor="middle"
+            transform="translate(0, 0)"
             x={56}
             y={48.326923076923066}
           >
@@ -832,6 +841,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={-44}
               y={127.88461538461539}
@@ -855,6 +865,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               role="img"
+              transform="translate(0, 0)"
               width={16}
               x={-44}
               y={29.807692307692307}
@@ -871,6 +882,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             role="img"
             textAnchor="middle"
+            transform="translate(0, 0)"
             x={-36}
             y={23.807692307692307}
           >
@@ -1319,6 +1331,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="#0078d4"
               height={196.15384615384616}
               key="0"
+              transform="translate(0, 0)"
               width={16}
               x={48}
               y={78.84615384615384}
@@ -1333,6 +1346,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="#00188f"
               height={24.51923076923077}
               key="1"
+              transform="translate(0, 0)"
               width={16}
               x={48}
               y={54.326923076923066}
@@ -1349,6 +1363,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             role="img"
             textAnchor="middle"
+            transform="translate(0, 0)"
             x={56}
             y={48.326923076923066}
           >
@@ -1380,6 +1395,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="#0078d4"
               height={147.1153846153846}
               key="1"
+              transform="translate(0, 0)"
               width={16}
               x={-44}
               y={127.88461538461539}
@@ -1394,6 +1410,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="#00188f"
               height={98.07692307692308}
               key="2"
+              transform="translate(0, 0)"
               width={16}
               x={-44}
               y={29.807692307692307}
@@ -1410,6 +1427,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             role="img"
             textAnchor="middle"
+            transform="translate(0, 0)"
             x={-36}
             y={23.807692307692307}
           >
@@ -1424,6 +1442,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           stroke="#ffb900"
           strokeLinecap="round"
           strokeWidth={3}
+          transform="translate(0, 0)"
           x1={56}
           x2={-36}
           y1={201.4423076923077}
@@ -1438,6 +1457,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           r={8}
           stroke="#ffb900"
           strokeWidth={3}
+          transform="translate(0, 0)"
           visibility="visibility"
         />
         <circle
@@ -1449,6 +1469,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           r={8}
           stroke="#ffb900"
           strokeWidth={3}
+          transform="translate(0, 0)"
           visibility="hidden"
         />
       </g>

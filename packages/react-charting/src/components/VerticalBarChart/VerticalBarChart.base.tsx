@@ -33,6 +33,7 @@ import {
   getTypeOfAxis,
   tooltipOfXAxislabels,
 } from '../../utilities/index';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -69,6 +70,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
+  private _minDomainMargin = 8;
+  private _domainMargin: number;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -94,6 +97,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
+    this._domainMargin = this._minDomainMargin;
   }
 
   public render(): JSX.Element {
@@ -150,6 +154,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
+        getDomainMargins={this._getDomainMargins}
+        {...(this._xAxisType !== XAxisTypes.NumericAxis && { xAxisInnerPadding: 2 / 3, xAxisOuterPadding: 0 })}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -256,7 +262,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = this.props.barWidth || 32;
+    this._barWidth = this.props.barWidth || 16;
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._isHavingLine = this._checkForLine();
@@ -457,8 +463,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([
-          this.margins.left! + this._barWidth / 2,
-          containerWidth - this.margins.right! - this._barWidth - this._barWidth / 2,
+          this.margins.left! + this._domainMargin,
+          containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
         ]);
       const yBarScale = d3ScaleLinear()
         .domain([0, this._yMax])
@@ -467,8 +473,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     } else {
       const xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
-        .range([this.margins.left!, containerWidth - this.margins.right!])
-        .padding(this.props.xAxisPadding || 0.1);
+        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
+        .paddingInner(2 / 3);
 
       const yBarScale = d3ScaleLinear()
         .domain([0, this._yMax])
@@ -492,27 +498,31 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
+      const xPoint = xBarScale(point.x as number);
+      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
       return (
-        <rect
-          key={point.x}
-          x={xBarScale(point.x as number)}
-          className={this._classNames.opacityChangeOnHover}
-          y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
-          width={this._barWidth}
-          data-is-focusable={!this.props.hideTooltip}
-          height={Math.max(yBarScale(point.y), 0)}
-          ref={(e: SVGRectElement) => {
-            this._refCallback(e, point.legend!);
-          }}
-          onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
-          aria-label={this._getAriaLabel(point)}
-          role="img"
-          onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
-          onBlur={this._onBarLeave}
-          fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-        />
+        <g key={point.x}>
+          <rect
+            x={xPoint}
+            className={this._classNames.opacityChangeOnHover}
+            y={yPoint}
+            width={this._barWidth}
+            data-is-focusable={!this.props.hideTooltip}
+            height={barHeight}
+            ref={(e: SVGRectElement) => {
+              this._refCallback(e, point.legend!);
+            }}
+            onClick={point.onClick}
+            onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
+            aria-label={this._getAriaLabel(point)}
+            role="img"
+            onMouseLeave={this._onBarLeave}
+            onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
+            onBlur={this._onBarLeave}
+            fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+          />
+          {this._renderBarValue(xPoint, yPoint, point.y)}
+        </g>
       );
     });
     // Removing un wanted tooltip div from DOM, when prop not provided.
@@ -547,27 +557,30 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
+      const xPoint = xBarScale(point.x);
+      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
       return (
-        <rect
-          key={point.x}
-          x={xBarScale(point.x)}
-          y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
-          width={this._barWidth}
-          height={barHeight}
-          aria-label={this._getAriaLabel(point)}
-          role="img"
-          ref={(e: SVGRectElement) => {
-            this._refCallback(e, point.legend!);
-          }}
-          onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
-          onMouseLeave={this._onBarLeave}
-          onBlur={this._onBarLeave}
-          data-is-focusable={!this.props.hideTooltip}
-          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
-          fill={point.color ? point.color : colorScale(point.y)}
-          transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}
-        />
+        <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}>
+          <rect
+            x={xPoint}
+            y={yPoint}
+            width={this._barWidth}
+            height={barHeight}
+            aria-label={this._getAriaLabel(point)}
+            role="img"
+            ref={(e: SVGRectElement) => {
+              this._refCallback(e, point.legend!);
+            }}
+            onClick={point.onClick}
+            onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
+            onMouseLeave={this._onBarLeave}
+            onBlur={this._onBarLeave}
+            data-is-focusable={!this.props.hideTooltip}
+            onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
+            fill={point.color ? point.color : colorScale(point.y)}
+          />
+          {this._renderBarValue(xPoint, yPoint, point.y)}
+        </g>
       );
     });
 
@@ -720,5 +733,45 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         `${yValue}.` +
         (typeof lineYValue !== 'undefined' ? ` ${lineLegend}, ${lineYValue}.` : '')
     );
+  };
+
+  private _renderBarValue(xPoint: number, yPoint: number, barValue: number) {
+    if (this.props.hideValues || this._barWidth < 16) {
+      return null;
+    }
+
+    return (
+      <text
+        x={xPoint + this._barWidth / 2}
+        y={yPoint - 6}
+        textAnchor="middle"
+        className={this._classNames.barValue}
+        aria-hidden={true}
+      >
+        {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+      </text>
+    );
+  }
+
+  private _getDomainMargins = (containerWidth: number): IMargins => {
+    if (this._xAxisType !== XAxisTypes.NumericAxis) {
+      const totalWidth =
+        containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
+      const reqWidth = (3 * this._xAxisLabels.length - 2) * this._barWidth;
+
+      this._domainMargin = this._minDomainMargin;
+      if (totalWidth >= reqWidth) {
+        this._domainMargin += (totalWidth - reqWidth) / 2;
+      } else {
+        const bandwidth = totalWidth / (3 * this._xAxisLabels.length - 2);
+        this._domainMargin += (this._barWidth - bandwidth) / 2;
+      }
+    }
+
+    return {
+      ...this.margins,
+      left: this.margins.left! + this._domainMargin,
+      right: this.margins.right! + this._domainMargin,
+    };
   };
 }

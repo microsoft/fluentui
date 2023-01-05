@@ -756,8 +756,8 @@ export function domainRageOfVerticalNumeric(
 ): IDomainNRange {
   const xMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
   const xMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-  const rMin = margins.left! + barWidth;
-  const rMax = containerWidth - margins.right! - barWidth;
+  const rMin = margins.left! + barWidth / 2;
+  const rMax = containerWidth - margins.right! - barWidth / 2;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMin, rEndValue: rMax }
