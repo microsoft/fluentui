@@ -62,6 +62,11 @@
   padding: 48px 0 0 0;
 }
 
+#docs-root .sbdocs-h2 code {
+  border-radius: 4px;
+  font-size: 20px;
+}
+
 #docs-root .sbdocs-h3 {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
@@ -70,6 +75,11 @@
   margin: 25px 0 0 0 !important;
   letter-spacing: -0.01em;
   color: #000000;
+}
+
+#docs-root .sbdocs-h3 code {
+  border-radius: 3px;
+  font-size: 16px;
 }
 
 /* Only apply to H3s inside of stories which have a parent with an ID */
@@ -318,7 +328,11 @@
 }
 
 #docs-root code {
-  margin: 1px 0 1px 0;
+  padding: 0.1em 0.2em;
+  display: inline-block;
+  background-color: rgba(17, 16, 15, 0.1);
+  border-radius: 2px;
+  font-family: 'Cascadia Code', 'Fira Code', 'Courier New', Courier, monospace;
 }
 
 .os-content-glue {
