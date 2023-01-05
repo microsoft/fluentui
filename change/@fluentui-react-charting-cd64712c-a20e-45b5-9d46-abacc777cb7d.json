@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Modify vertical stacked bar chart as per design",
+  "comment": "Modify vertical bar charts as per design",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"
