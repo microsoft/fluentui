@@ -191,9 +191,7 @@ export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => 
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
 
 // @public (undocumented)
-export function useScrollbarWidth(options: {
-    targetDocument: Document | undefined | null;
-}): number;
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
