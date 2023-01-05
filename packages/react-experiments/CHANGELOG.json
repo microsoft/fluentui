@@ -2,6 +2,29 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 05 Jan 2023 07:59:54 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.35",
+      "version": "8.14.35",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "b69b35c04ebb846cb24ba6f1bc60cc9baf55a91b",
+            "comment": "chore(scripts): remove deep imports from scripts/webpack/"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.104.2",
+            "commit": "6daf6e3e4d5f888e77181ecf4f7dd63763d2752d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Jan 2023 07:46:46 GMT",
       "tag": "@fluentui/react-experiments_v8.14.34",
       "version": "8.14.34",

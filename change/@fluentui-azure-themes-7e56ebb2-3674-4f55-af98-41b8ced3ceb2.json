@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "alphabetized azure theme constants, renamed choicegroup to choicefield",
-  "packageName": "@fluentui/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 23 Dec 2022 07:55:40 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jan 2023 07:59:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.2)
+
+Thu, 05 Jan 2023 07:59:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.1..@fluentui/react_v8.104.2)
+
+### Patches
+
+- Fix the react errors when we set the ThemeProvider as a React.Fragment to remove the root div, issue: 16633 ([PR #26160](https://github.com/microsoft/fluentui/pull/26160) by farcemolina@microsoft.com)
+- fix: remove Pickers live announcement text after timeout ([PR #26055](https://github.com/microsoft/fluentui/pull/26055) by sarah.higley@microsoft.com)
+- fix: Stopping className being unset in inner Stacks. ([PR #26169](https://github.com/microsoft/fluentui/pull/26169) by makotom@microsoft.com)
 
 ## [8.104.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.1)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Thu, 05 Jan 2023 07:59:50 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.2.25",
+      "version": "8.2.25",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "b69b35c04ebb846cb24ba6f1bc60cc9baf55a91b",
+            "comment": "chore(scripts): remove deep imports from scripts/webpack/"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Jan 2023 07:46:42 GMT",
       "tag": "@fluentui/foundation-legacy_v8.2.25",
       "version": "8.2.25",
