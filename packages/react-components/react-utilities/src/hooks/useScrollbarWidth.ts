@@ -28,11 +28,11 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions) {
       return cache.get(targetDocument);
     }
 
-    const outer = document.createElement('div');
+    const outer = targetDocument.createElement('div');
     outer.style.visibility = 'hidden';
     outer.style.overflow = 'scroll';
 
-    const inner = document.createElement('div');
+    const inner = targetDocument.createElement('div');
     outer.appendChild(inner);
 
     targetDocument.body.appendChild(outer);
