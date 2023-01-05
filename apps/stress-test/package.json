@@ -10,10 +10,10 @@
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
-    "@fluentui/react": "^8.104.1",
+    "@fluentui/react": "^8.104.2",
     "@fluentui/react-components": "^9.8.0",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/web-components": "^2.5.8",
+    "@fluentui/web-components": "^2.5.9",
     "@microsoft/fast-element": "^1.10.4",
     "afterframe": "1.0.2",
     "react": "17.0.2",

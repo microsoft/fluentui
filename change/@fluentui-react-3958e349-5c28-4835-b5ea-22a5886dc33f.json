@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix the react errors when we set the ThemeProvider as a React.Fragment to remove the root div, issue: 16633",
-  "packageName": "@fluentui/react",
-  "email": "farcemolina@microsoft.com",
-  "dependentChangeType": "patch"
-}

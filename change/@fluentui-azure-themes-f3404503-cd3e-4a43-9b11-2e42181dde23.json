@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Azure Theme > DetailsList checkbox border removed from unselected rest state",
-  "packageName": "@fluentui/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
