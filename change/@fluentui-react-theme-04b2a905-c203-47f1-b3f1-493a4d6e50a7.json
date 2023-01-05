@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated storybook docs",
+  "packageName": "@fluentui/react-theme",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
