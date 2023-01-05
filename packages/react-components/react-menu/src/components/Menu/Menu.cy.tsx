@@ -937,9 +937,7 @@ describe(`Nested Menus`, () => {
 
       it('should move focus out of document if menu trigger is the last focusable element in DOM', () => {
         mount(
-          <>
-            <Example />
-          </>,
+          <Example />,
         );
 
         cy.get(menuTriggerSelector)
