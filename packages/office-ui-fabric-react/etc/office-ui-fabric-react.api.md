@@ -1563,10 +1563,30 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     render(): JSX.Element;
     }
 
-// Warning: (ae-forgotten-export) The symbol "IGroupedListV2Props" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const GroupedListV2_unstable: React.FunctionComponent<IGroupedListV2Props>;
+
+// @public (undocumented)
+export const GroupedListV2FC: React.FC<IGroupedListV2Props>;
+
+// @public (undocumented)
+export class GroupedListV2Wrapper extends React.Component<IGroupedListV2Props, IGroupedListV2State> implements IGroupedList {
+    constructor(props: IGroupedListV2Props);
+    // (undocumented)
+    static displayName: string;
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: IGroupedListV2Props, previousState: IGroupedListV2State): IGroupedListV2State;
+    // (undocumented)
+    getStartItemIndexInView(): number;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    toggleCollapseAll(allCollapsed: boolean): void;
+}
 
 // @public (undocumented)
 export const GroupFooter: React.FunctionComponent<IGroupFooterProps>;
@@ -5371,6 +5391,32 @@ export interface IGroupedListStyles {
     groupIsDropping: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupedListV2Props extends IGroupedListProps {
+    groupExpandedVersion?: {};
+    listRef?: React.Ref<List>;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number, group?: IGroup) => React.ReactNode;
+    version?: {};
+}
+
+// @public (undocumented)
+export interface IGroupedListV2State {
+    // (undocumented)
+    compact?: IGroupedListV2Props['compact'];
+    // (undocumented)
+    groupExpandedVersion: {};
+    // (undocumented)
+    groups?: IGroup[];
+    // (undocumented)
+    items?: IGroupedListV2Props['items'];
+    // (undocumented)
+    listProps?: IGroupedListV2Props['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListV2Props['selectionMode'];
+    // (undocumented)
+    version: {};
 }
 
 // @public (undocumented)
