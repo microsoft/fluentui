@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(scripts): remove deep imports from scripts/webpack/",
-  "packageName": "@fluentui/merge-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

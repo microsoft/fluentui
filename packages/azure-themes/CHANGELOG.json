@@ -2,6 +2,41 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Thu, 05 Jan 2023 07:59:48 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.42",
+      "version": "8.5.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "d609197699f488438eb89ac2b1f5e6338a7e5454",
+            "comment": "alphabetized azure theme constants, renamed choicegroup to choicefield"
+          },
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "391c79fe8263f9439c2cba3d392b4824a5aad86a",
+            "comment": "Azure Theme > DetailsList checkbox border removed from unselected rest state"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.2",
+            "commit": "6daf6e3e4d5f888e77181ecf4f7dd63763d2752d"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "b69b35c04ebb846cb24ba6f1bc60cc9baf55a91b",
+            "comment": "chore(scripts): remove deep imports from scripts/webpack/"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Jan 2023 07:46:40 GMT",
       "tag": "@fluentui/azure-themes_v8.5.41",
       "version": "8.5.41",
