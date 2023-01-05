@@ -295,7 +295,7 @@
 #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
 #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
 #docs-root .css-16d4d7t {
-  font-family: Menlo, monospace;
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -332,7 +332,6 @@
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
   border-radius: 2px;
-  font-family: 'Cascadia Code', 'Fira Code', 'Courier New', Courier, monospace;
 }
 
 .os-content-glue {
