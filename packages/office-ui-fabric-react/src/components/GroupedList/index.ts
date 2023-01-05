@@ -11,4 +11,6 @@ export { GroupSpacer } from './GroupSpacer';
 export * from './GroupSpacer.types';
 export * from './GroupedListSection';
 
-export { GroupedListV2_unstable } from './GroupedListV2';
+export * from './GroupedListV2';
+export * from './GroupedListV2.base';
+export * from './GroupedListV2.types';

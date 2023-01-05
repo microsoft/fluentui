@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: export GroupedListV2 types (#26052)",
+  "packageName": "office-ui-fabric-react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
