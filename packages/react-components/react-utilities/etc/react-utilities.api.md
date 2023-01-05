@@ -190,6 +190,9 @@ export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => 
 // @internal (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
 
+// @public (undocumented)
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
+
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
