@@ -1,7 +1,24 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
-import { Overflow } from '@fluentui/react-overflow';
-import { OverflowMenu, TestOverflowGroupDivider, TestOverflowItem } from './utils.stories';
+import {
+  makeStyles,
+  shorthands,
+  Button,
+  Divider,
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  MenuButton,
+} from '@fluentui/react-components';
+import {
+  Overflow,
+  OverflowItem,
+  useIsOverflowGroupVisible,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+} from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
   container: {
@@ -18,22 +35,111 @@ export const PriorityWithDividers = () => {
   return (
     <Overflow overflowDirection="start" padding={30}>
       <div className={styles.container}>
-        <TestOverflowItem id={'6'} priority={6} groupId={'1'} />
-        <TestOverflowGroupDivider groupId={'1'} />
-        <TestOverflowItem id={'7'} priority={7} groupId={'2'} />
-        <TestOverflowGroupDivider groupId={'2'} />
-        <TestOverflowItem id={'4'} priority={4} groupId={'3'} />
-        <TestOverflowItem id={'5'} priority={5} groupId={'3'} />
-        <TestOverflowGroupDivider groupId={'3'} />
-        <TestOverflowItem id={'1'} priority={1} groupId={'4'} />
-        <TestOverflowItem id={'2'} priority={2} groupId={'4'} />
-        <TestOverflowItem id={'3'} priority={3} groupId={'4'} />
-        <TestOverflowGroupDivider groupId={'4'} />
-        <TestOverflowItem id={'8'} priority={8} groupId={'5'} />
+        <OverflowItem id={'6'} priority={6} groupId={'1'}>
+          <Button>Priority 6</Button>
+        </OverflowItem>
+        <OverflowGroupDivider groupId={'1'} />
+        <OverflowItem id={'7'} priority={7} groupId={'2'}>
+          <Button>Priority 7</Button>
+        </OverflowItem>
+        <OverflowGroupDivider groupId={'2'} />
+        <OverflowItem id={'4'} priority={4} groupId={'3'}>
+          <Button>Priority 4</Button>
+        </OverflowItem>
+        <OverflowItem id={'5'} priority={5} groupId={'3'}>
+          <Button>Priority 5</Button>
+        </OverflowItem>
+        <OverflowGroupDivider groupId={'3'} />
+        <OverflowItem id={'1'} priority={1} groupId={'4'}>
+          <Button>Priority 1</Button>
+        </OverflowItem>
+        <OverflowItem id={'2'} priority={2} groupId={'4'}>
+          <Button>Priority 2</Button>
+        </OverflowItem>
+        <OverflowItem id={'3'} priority={3} groupId={'4'}>
+          <Button>Priority 3</Button>
+        </OverflowItem>
+        <OverflowGroupDivider groupId={'4'} />
+        <OverflowItem id={'8'} priority={8} groupId={'5'}>
+          <Button>Priority 8</Button>
+        </OverflowItem>
         <OverflowMenu
           itemIds={['6', 'divider-1', '7', 'divider-2', '4', '5', 'divider-3', '1', '2', '3', 'divider-4', '8']}
         />
       </div>
     </Overflow>
   );
+};
+
+const OverflowGroupDivider: React.FC<{
+  groupId: string;
+}> = props => {
+  const isGroupVisible = useIsOverflowGroupVisible(props.groupId);
+
+  if (isGroupVisible === 'hidden') {
+    return null;
+  }
+
+  return <Divider vertical appearance="brand" style={{ flexGrow: 0, paddingRight: '4px', paddingLeft: '4px' }} />;
+};
+
+const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
+  const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuButton ref={ref}>+{overflowCount} items</MenuButton>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          {itemIds.map(i => {
+            // This is purely a simplified convention for documentation examples
+            // Could be done in other ways too
+            if (typeof i === 'string' && i.startsWith('divider')) {
+              const groupId = i.split('-')[1];
+              return <OverflowMenuDivider key={i} id={groupId} />;
+            }
+            return <OverflowMenuItem key={i} id={i} />;
+          })}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+const OverflowMenuItem: React.FC<{ id: string }> = props => {
+  const { id } = props;
+  const isVisible = useIsOverflowItemVisible(id);
+
+  if (isVisible) {
+    return null;
+  }
+
+  return <MenuItem>Item {id}</MenuItem>;
+};
+
+const OverflowMenuDivider: React.FC<{
+  id: string;
+}> = props => {
+  const isGroupVisible = useIsOverflowGroupVisible(props.id);
+
+  if (isGroupVisible === 'visible') {
+    return null;
+  }
+
+  return <MenuDivider />;
+};
+
+PriorityWithDividers.parameters = {
+  docs: {
+    description: {
+      story: ['Overflow groups will respect the priority of overflow items.'].join('\n'),
+    },
+  },
 };

@@ -21,29 +21,49 @@ import {
 const useStyles = makeStyles({
   container: {
     display: 'flex',
+    justifyContent: 'space-between',
+    minWidth: 0,
+    ...shorthands.overflow('hidden'),
+  },
+
+  overflowContainer: {
+    display: 'flex',
+    flexGrow: 1,
     flexWrap: 'nowrap',
     minWidth: 0,
-    ...shorthands.gap('4px'),
     ...shorthands.overflow('hidden'),
+  },
+
+  farItems: {
+    dislay: 'flex',
+    ...shorthands.gap('4px'),
+    flexWrap: 'nowrap',
+    marginRight: '10px', //to allow the resize handle to be grabbed
   },
 });
 
-export const MinimumVisible = () => {
+export const Wrapped = () => {
+  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
   const styles = useStyles();
 
-  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
-
   return (
-    <Overflow minimumVisible={4}>
-      <div className={styles.container}>
-        {itemIds.map(i => (
-          <OverflowItem key={i} id={i}>
-            <Button style={{ paddingLeft: 2, paddingRight: 2 }}>Item {i}</Button>
-          </OverflowItem>
-        ))}
-        <OverflowMenu itemIds={itemIds} />
+    <div className={styles.container}>
+      <Overflow>
+        <div className={styles.overflowContainer}>
+          {itemIds.map(i => (
+            <OverflowItem key={i} id={i.toString()}>
+              <Button>Priority {i}</Button>
+            </OverflowItem>
+          ))}
+          <OverflowMenu itemIds={itemIds} />
+        </div>
+      </Overflow>
+
+      <div className={styles.farItems}>
+        <Button>Foo</Button>
+        <Button>Bar</Button>
       </div>
-    </Overflow>
+    </div>
   );
 };
 
@@ -83,12 +103,10 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   );
 };
 
-MinimumVisible.parameters = {
+Wrapped.parameters = {
   docs: {
     description: {
-      story: [
-        'The `Overflow` component will stop overflowing past a certain number of minimum visible overflow items',
-      ].join('\n'),
+      story: ['Overflow containers can be wrapped by other DOM elements.'].join('\n'),
     },
   },
 };

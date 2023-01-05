@@ -1,51 +1,119 @@
 import * as React from 'react';
-import { Button, makeStyles, shorthands } from '@fluentui/react-components';
-import { Overflow } from '@fluentui/react-overflow';
-import { OverflowMenu, TestOverflowItem } from './utils.stories';
+import {
+  makeStyles,
+  shorthands,
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuButton,
+} from '@fluentui/react-components';
+import {
+  Overflow,
+  OverflowItem,
+  OverflowItemProps,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+} from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    justifyContent: 'space-between',
-    minWidth: 0,
-    ...shorthands.overflow('hidden'),
-  },
-
-  overflowContainer: {
-    display: 'flex',
-    flexGrow: 1,
     flexWrap: 'nowrap',
     minWidth: 0,
     ...shorthands.overflow('hidden'),
-  },
-
-  farItems: {
-    dislay: 'flex',
-    ...shorthands.gap('4px'),
-    flexWrap: 'nowrap',
-    marginRight: '10px', //to allow the resize handle to be grabbed
   },
 });
 
 export const Pinned = () => {
-  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
   const styles = useStyles();
 
-  return (
-    <div className={styles.container}>
-      <Overflow>
-        <div className={styles.overflowContainer}>
-          {itemIds.map(i => (
-            <TestOverflowItem key={i} id={i} />
-          ))}
-          <OverflowMenu itemIds={itemIds} />
-        </div>
-      </Overflow>
+  const [selected, setSelected] = React.useState<string>('6');
 
-      <div className={styles.farItems}>
-        <Button>Foo</Button>
-        <Button>Bar</Button>
+  const onSelect = (itemId: string) => {
+    setSelected(itemId);
+  };
+
+  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
+
+  return (
+    <Overflow>
+      <div className={styles.container}>
+        {itemIds.map(i => (
+          <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected === i} />
+        ))}
+        <OverflowMenu itemIds={itemIds} onSelect={onSelect} />
       </div>
-    </div>
+    </Overflow>
   );
+};
+
+const OverflowSelectionItem: React.FC<{
+  onSelectItem?: (item: string) => void;
+  selected?: boolean;
+  id: string;
+}> = props => {
+  const onClick = () => {
+    props.onSelectItem?.(props.id);
+  };
+
+  return (
+    <OverflowItem id={props.id} priority={props.selected ? 1000 : undefined}>
+      <Button appearance={props.selected ? 'primary' : 'secondary'} onClick={onClick}>
+        Item {props.id}
+      </Button>
+    </OverflowItem>
+  );
+};
+
+const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'> & { onClick: () => void }> = props => {
+  const { id, onClick } = props;
+  const isVisible = useIsOverflowItemVisible(id);
+
+  if (isVisible) {
+    return null;
+  }
+
+  return <MenuItem onClick={onClick}>Item {id}</MenuItem>;
+};
+
+const OverflowMenu: React.FC<{
+  itemIds: string[];
+  onSelect: (itemId: string) => void;
+}> = ({ itemIds, onSelect }) => {
+  const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuButton ref={ref}>+{overflowCount} items</MenuButton>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          {itemIds.map(i => (
+            <OverflowMenuItem onClick={() => onSelect(i)} key={i} id={i} />
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+Pinned.parameters = {
+  docs: {
+    description: {
+      story: [
+        'An item can be pinned (always visible) by setting it to be a higher priority that all other overflow items.',
+        'This can be useful when implementing selection scenarios where the selected item must always be visible.',
+        'Try selecting different items below to observe this effect.',
+      ].join('\n'),
+    },
+  },
 };

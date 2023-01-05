@@ -141,9 +141,6 @@ function getCodesandboxBabelOptions() {
  * @returns
  */
 function getPackageStoriesGlob(options) {
-  // Dependencies to exclude stories loading. @see https://github.com/microsoft/fluentui/pull/23226#pullrequestreview-985613768
-  const excludedDependencies = ['@fluentui/react-overflow'];
-
   const projectMetadata = getProjectMetadata({ name: options.packageName });
 
   /** @type {Record<string,unknown>} */
@@ -157,7 +154,7 @@ function getPackageStoriesGlob(options) {
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)
-    .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludedDependencies.includes(pkgName))
+    .filter(pkgName => pkgName.startsWith('@fluentui/'))
     .map(pkgName => {
       const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
       const pkgMetadata = getProjectMetadata({ name: pkgName });

@@ -23,25 +23,24 @@ const useStyles = makeStyles({
     display: 'flex',
     flexWrap: 'nowrap',
     minWidth: 0,
-    ...shorthands.gap('4px'),
     ...shorthands.overflow('hidden'),
   },
 });
 
-export const MinimumVisible = () => {
+export const OverflowByPriority = () => {
   const styles = useStyles();
 
-  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
+  const priorities = [2, 3, 6, 1, 4, 5, 0, 7];
 
   return (
-    <Overflow minimumVisible={4}>
+    <Overflow>
       <div className={styles.container}>
-        {itemIds.map(i => (
-          <OverflowItem key={i} id={i}>
-            <Button style={{ paddingLeft: 2, paddingRight: 2 }}>Item {i}</Button>
+        {priorities.map(i => (
+          <OverflowItem key={i} id={i.toString()} priority={i}>
+            <Button>Priority {i}</Button>
           </OverflowItem>
         ))}
-        <OverflowMenu itemIds={itemIds} />
+        <OverflowMenu itemIds={priorities.map(x => x.toString())} />
       </div>
     </Overflow>
   );
@@ -83,11 +82,12 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   );
 };
 
-MinimumVisible.parameters = {
+OverflowByPriority.parameters = {
   docs: {
     description: {
       story: [
-        'The `Overflow` component will stop overflowing past a certain number of minimum visible overflow items',
+        'By assigning each `OverflowItem` a numerical priority, the items can overflow in user configured order',
+        'that does not follow DOM order.',
       ].join('\n'),
     },
   },
