@@ -59,6 +59,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     size?: PopoverSize;
     trapFocus?: UseModalAttributesOptions['trapFocus'];
     legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
+    unstable_disableAutoFocus?: boolean;
 };
 
 // @public (undocumented)
