@@ -2,130 +2,38 @@
 
 ## Contributors
 
-Geoff Cox
-Mason Tejera - MADS use cases
-Ben Howell - easier recomposition
-Micah Godbolt - component CSS vars
+- Geoff Cox
+- Mason Tejera - MADS use cases
+- Ben Howell - easier recomposition
+- Micah Godbolt - component CSS vars
 
 ## Summary
 
-Fluent UI React v9 is built today to adopt the Fluent 2 design as its default style.
+Fluent UI React v9 is built today to adopt the Fluent 2 design as its default style. We strongly recommend that
+Microsoft applications leverage the default style and limit customization to a brand-based theme.
 
-Partners migrating from v0/v8 to v9 have brought up that v9's custom styling does not
-provide the same granularity of customization as previous versions.
-Partners are concerned their customers won't be able to deviate from the Fluent 2 design.
+Currently, v9 has mechanisms to support several customization scenarios:
 
-Please see the appendix for partner use cases and scenarios.
+- Custom themes => Customize style values for all components
+- `classname` prop => Customize the style of one instance of a component
+- Extended design tokens => Support theme for a custom component or custom class/style
+- Hooks recomposition => Create a new component customizing the behavior, style, or rendering of an existing component.
 
-This RFC considers different options for adding new custom styling mechanisms or improving existing ones.
+See the appendix for more detailed analysis of the capabilities and limitations of each of these mechansisms.
 
-## Current Theme and Style Customizations
+## Problem
 
-There are several mechanisms for customizing the theme and style of components in v9.
-Different mechanisms allow different scopes of customization: all components, components of a specific type, or
-individual instances of a component.
+Partners migrating from v0/v8 to v9 have brought up that v9's custom styling does not provide the same granularity of
+customization as previous versions. See the appendix for detailed partner use cases and scenarios.
 
-### Don't
+Partners producing component libaries or component design surfaces are the most concerned about the lack of
+customization. They would like to customize the style of a single type of component without changing the style of
+other components.
 
-One of the goals of the Fluent 2 design is to create a consistent, accessible, and modern design across
-Microsoft.
-Customers and partners are discouraged from deviating from the Fluent 2 design.
-Existing systems that have deeply customized styles or extended themes should consider not migrating customizations
-forward as they adopt Fluent v9.
-The Fluent 2 design includes design tokens for brand color ramps that allow products to distinguish themselves without
-writing customization code.
+Example: Change the border radius and border width of all Button components without changing those styles for
+Input components.
 
-### Custom Themes
-
-FluentProvider has a theme prop to define the CSS variable values corresponding to the Fluent 2 design tokens.
-A complete theme or a partial theme can be passed to FluentProvider.
-FluentProvider can be used multiple times at different levels of the DOM hierarchy to customize a subset of component instances.
-
-#### 👍
-
-- Can customize multiple component instances at once
-- Components remain consistently styled
-- Themes are not fragile because the tokens are not component specific
-- High performance of rendering and theme switching because of a limited number of CSS variables.
-
-#### 👎
-
-- Cannot change a specific component type because Fluent 2 design tokens are general purpose and used by multiple components.
-- Expensive to change a single instance of a component
-
-#### 🤔
-
-- Difficult to discover which design tokens a component uses without reading the style hook code
-
-### Extended Design Tokens
-
-FluentProvider theme will also accept a theme with additional name/value pairs to define extended CSS variables.
-Callers can use the themeToTokensObject method to get the set of tokens to be referenced when creating styles.
-
-#### 👍
-
-- Handles special cases where no Fluent 2 design token fits
-
-#### 👎
-
-- Themes using extended tokens are fragile and not portable across applications
-- Adding too many CSS variables degrades performance (limit is around ~300 tokens total)
-- themeToTokens prevents tree-shaking of tokens
-
-### Component and Slot ClassName Prop
-
-All v9 components have a `className` prop which applies custom styles.
-Each slot also has a `className` props which applies custom styles to a part of a component.
-Custom styles can be built with Griffel makeStyles() and mergeClasses() to
-
-#### 👍
-
-- Component instances can be custom styled
-
-#### 👎
-
-- Custom style selectors are tightly bound to the implementation of the component's CSS (e.g. pseudo-elements)
-- CSS specificity can make overriding styles very difficult
-- Custom styles cannot leverage props or state easily from outside the component hooks
-- A wrapper is required to customize all instances of a component type without having to pass the className to every instance usage
-- Griffel still emits the overridden classes.
-
-#### 🤔
-
-- Can be difficult to build and debug custom styles in the browser with Griffel's creation of atomic CSS classes
-
-### Recomposition with Hooks
-
-Components are built using v9's hooks composition architecture.
-
-- Each _Component_.tsx calls use*Component* and use*Component*Styles hooks, then call the render*Component* method.
-- The use*Component* hook maps props to state by setting default values, slot components, and component behavior.
-- The use*Component*Styles hooks builds styles and the className on each slot.
-- The render*Component* method renders the slot elements or components with their associated props.
-
-Recomposing a component allows behavior, style, or layout to be fully customized.
-
-#### 👍
-
-- Component types can be custom styled
-- Caller get complete control of customization with access to props and state.
-- Unused styles can be tree-shaken
-- Allows replacement of Griffel with a different styling system
-- Easier to avoid tight binding to CSS implementation as entire chunks of CSS can be replaced.
-- Uses the hooks composition model for its intended purpose, to handle special cases of customization
-- Follows the recommended approach for partners with large products to create an abstraction layer that manages the Fluent dependency.
-
-#### 👎
-
-- Does not provide partners with an out-of-the-box solution
-- Non-trivial effort to create a library with every component re-exported
-- Increased maintenance cost keeping up with new and changed components
-
-#### 🤔
-
-- Style hooks are currently monolithic. We may need to create building block style hooks designed for re-use
-
-## Option A: Expose an optional useCustomStyles hook from React.Context per component
+## Option A: React.Context useCustomStyles hooks
 
 Each component could check context for a useCustomStyle hook within the useComponentStyle hook.
 If this hook was defined, it is called at the end of the method before returning state.
@@ -285,20 +193,20 @@ yarn create-recomposed-library my-components
 ```tsx
 // Button with component tokens and global fallbacks
 const ButtonTokens = {
-  background: "--fui-button-background",
-  color: "--fui-button-color",
-  border: "--fui-button-complex-selector"
+  background: '--fui-button-background',
+  color: '--fui-button-color',
+  border: '--fui-button-complex-selector',
 };
 const useButtonStyles = makeResetStyles({
   backgroundColor: `var(${ButtonTokens.background}, ${tokens.colorBrandBackground})`,
   color: `var(${ButtonTokens.color}, ${tokens.colorNeutralForegroundOnBrand})`,
-  border: "4px solid",
-  ":enabled:not(:checked):not(:indeterminate)": {
-    borderColor: `var(${ButtonTokens.border}, orange)`
-  }
+  border: '4px solid',
+  ':enabled:not(:checked):not(:indeterminate)': {
+    borderColor: `var(${ButtonTokens.border}, orange)`,
+  },
 });
 
-const Button = (props) => {
+const Button = props => {
   const styles = useButtonStyles();
   return (
     <button {...props} className={mergeClasses(styles, props.className)}>
@@ -311,58 +219,55 @@ const Button = (props) => {
 ```tsx
 // Customizing button via className
 const useCustomButtonStyle = makeResetStyles({
-  [ButtonTokens.background]: "red",
-  [ButtonTokens.color]: "white",
-  [ButtonTokens.border]: "green",
-  ":hover": {
-    [ButtonTokens.background]: "green",
-    [ButtonTokens.color]: "pink",
-    [ButtonTokens.border]: "blue"
+  [ButtonTokens.background]: 'red',
+  [ButtonTokens.color]: 'white',
+  [ButtonTokens.border]: 'green',
+  ':hover': {
+    [ButtonTokens.background]: 'green',
+    [ButtonTokens.color]: 'pink',
+    [ButtonTokens.border]: 'blue',
   },
-  ":active": {
-    [ButtonTokens.background]: "orange",
-    [ButtonTokens.color]: "black",
-    [ButtonTokens.border]: "purple"
-  }
+  ':active': {
+    [ButtonTokens.background]: 'orange',
+    [ButtonTokens.color]: 'black',
+    [ButtonTokens.border]: 'purple',
+  },
 });
 
-export const CustomButton = (props) => {
+export const CustomButton = props => {
   const rootStyle = useCustomButtonStyle();
   return <Button className={rootStyle}>Hello</Button>;
 };
 ```
 
-
 ```tsx
 // making changes in composition
 const useCustomButtonStyle = makeResetStyles({
-  [ButtonTokens.background]: "red",
-  [ButtonTokens.color]: "white",
-  [ButtonTokens.border]: "green",
-  ":hover": {
-    [ButtonTokens.background]: "green",
-    [ButtonTokens.color]: "pink",
-    [ButtonTokens.border]: "blue"
+  [ButtonTokens.background]: 'red',
+  [ButtonTokens.color]: 'white',
+  [ButtonTokens.border]: 'green',
+  ':hover': {
+    [ButtonTokens.background]: 'green',
+    [ButtonTokens.color]: 'pink',
+    [ButtonTokens.border]: 'blue',
   },
-  ":active": {
-    [ButtonTokens.background]: "orange",
-    [ButtonTokens.color]: "black",
-    [ButtonTokens.border]: "purple"
-  }
+  ':active': {
+    [ButtonTokens.background]: 'orange',
+    [ButtonTokens.color]: 'black',
+    [ButtonTokens.border]: 'purple',
+  },
 });
 
 export const CustomButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
   const state = useButton_unstable(props, ref);
   const rootStyle = useCustomButtonStyle();
-  state.root.className= rootStyle;
+  state.root.className = rootStyle;
   useButtonStyles_unstable(state);
 
   return renderButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react
 }) as ForwardRefComponent<ButtonProps>;
-
 ```
-
 
 ### 💡 Improvement - Explicit APIs for modifying commonly modified styles
 
@@ -391,16 +296,12 @@ Composition approach would be difficult to adjust at runtime because css vars ar
 
 ### 🤔
 
-## Option D: component CSS var references with fallbacks to design token CSS vars
-
-//TODO @Geoff | @Micah
-
-## Option E: Component token constants referencing design token constants
+## Option D: Build time component tokens
 
 Each component would define a hierarchy component-level token constants.
 Component tokens would reference alias tokens.
 The hierarchy would have levels for slot and state variations.
-The component style hook would then use the component tokens rather than alias tokens.
+The component style hook would then use the component token constants rather than alias token constants.
 The component's tokens could be substituted at build time for a mapping to other tokens (CSS var references)
 
 ```ts
@@ -485,3 +386,90 @@ We often use it to disagree with subtle styling opinions of specific components 
 We sometimes use this to patch regressions in CSS caused at the Fluent level. It’s faster for us to fix in place rather than go through the process of getting it fixed directly in Fluent.
 
 We regularly use this functionality to fix color contrast ratio bugs related to a11y, especially when the brand colors are changed. There are many instances where re-mapping color slots at a central location has hard to track ripple effects. The best way to fix the issue is often assigning a new semantic slot or palette color to a specific element in the component’s styles.
+
+## Appendix: Current mechanisms analysis
+
+There are several mechanisms for customizing the theme and style of components in v9.
+Different mechanisms allow different scopes of customization: all components, components of a specific type, or
+individual instances of a component.
+
+### Custom Themes
+
+`FluentProvider` has a `theme` prop to define the CSS variable values corresponding to the Fluent 2 design tokens.
+A complete theme or a partial theme can be passed to `FluentProvider`.
+`FluentProvider` can be used multiple times at different levels of the DOM hierarchy to customize a subset of component instances.
+
+#### Capabilities
+
+- Can customize multiple component instances at once
+- Components remain consistently styled
+- Themes are not fragile because the tokens are not component specific
+- High performance of rendering and theme switching because of a limited number of CSS variables.
+
+#### Limitations
+
+- Cannot change a specific component type because Fluent 2 design tokens are general purpose and used by multiple components.
+- Expensive to change a single instance of a component
+- Difficult to discover which design tokens a component uses without reading the style hook code
+
+### Extended Design Tokens
+
+`FluentProvider` will also accept a theme with additional name/value pairs to define extended CSS variables.
+Callers can use the `themeToTokensObject` method to get the set of tokens to be referenced when creating styles.
+
+#### Capabilities
+
+- Handles special cases where no appropriate Fluent 2 design token exists
+
+#### Limitations
+
+- Themes using extended tokens are fragile and not portable across applications
+- Adding too many CSS variables degrades performance (limit is around ~300 tokens total)
+- `themeToTokens` prevents tree-shaking of tokens
+
+### `classname` Prop
+
+All v9 components have a `className` prop which applies custom styles.
+Each slot also has a `className` props which applies custom styles to a part of a component.
+Custom styles can be built with Griffel `makeStyles()` and `mergeClasses().
+
+#### Capabilities
+
+- Component instances can be custom styled
+
+#### Limitations
+
+- Custom style selectors are tightly bound to the implementation of the component's CSS (e.g. pseudo-elements)
+- CSS specificity can make overriding styles very difficult
+- Custom styles cannot leverage props or state easily from outside the component hooks
+- A wrapper is required to customize all instances of a component type without having to pass the className to every instance usage
+- Griffel still emits the overridden classes.
+- Can be difficult to debug custom styles in the browser with Griffel's creation of atomic CSS classes
+
+### Recomposition with Hooks
+
+Components are built using v9's hooks composition architecture.
+
+- Each _Component_.tsx calls use*Component* and use*Component*Styles hooks, then call the render*Component* method.
+- The use*Component* hook maps props to state by setting default values, slot components, and component behavior.
+- The use*Component*Styles hooks builds styles and the className on each slot.
+- The render*Component* method renders the slot elements or components with their associated props.
+
+Recomposing a component allows behavior, style, or layout to be fully customized.
+
+#### Capabilities
+
+- Component types can be custom styled
+- Caller get complete control of customization with access to props and state.
+- Unused styles can be tree-shaken
+- Allows replacement of Griffel with a different styling system
+- Easier to avoid tight binding to CSS implementation as entire chunks of CSS can be replaced.
+- Uses the hooks composition model for its intended purpose, to handle special cases of customization
+- Follows the recommended approach for partners with large products to create an abstraction layer that manages the Fluent dependency.
+
+#### Limitations
+
+- Does not provide partners with an out-of-the-box solution
+- Non-trivial effort to create a library with every component re-exported
+- Increased maintenance cost keeping up with new and changed components
+- Style hooks are currently monolithic. We may need to create building block style hooks designed for re-use
