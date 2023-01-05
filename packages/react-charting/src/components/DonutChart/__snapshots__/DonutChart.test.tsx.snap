@@ -70,19 +70,36 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              />
+            </g>
           </g>
           <g>
             <path
@@ -109,19 +126,36 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -613,19 +647,36 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              />
+            </g>
           </g>
           <g>
             <path
@@ -652,19 +703,36 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -1072,19 +1140,38 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
           <g>
             <path
@@ -1111,19 +1198,38 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -1452,19 +1558,38 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
           <g>
             <path
@@ -1491,19 +1616,38 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -1832,19 +1976,38 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
           <g>
             <path
@@ -1871,19 +2034,38 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -1963,19 +2145,38 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
           <g>
             <path
@@ -2002,19 +2203,38 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
-            />
+            >
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -2343,21 +2563,38 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
             >
-              1,000
-            </text>
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                1,000
+              </text>
+            </g>
           </g>
           <g>
             <path
@@ -2384,21 +2621,38 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               opacity={1}
               role="img"
             />
-            <text
+            <g
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
                     fill: rgb(179, 179, 179);
                   }
-              textAnchor="middle"
-              y={5}
             >
-              1,000
-            </text>
+              <text
+                className=
+
+                    {
+                      fill: #323130;
+                      font-size: 18px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
+                id="Donut_center_text"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="middle"
+                y={5}
+              >
+                1,000
+              </text>
+            </g>
           </g>
         </g>
       </svg>

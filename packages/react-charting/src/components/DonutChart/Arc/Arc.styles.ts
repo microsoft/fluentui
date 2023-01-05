@@ -29,5 +29,32 @@ export const getStyles = (props: IArcProps): IArcStyles => {
         },
       },
     },
+    tooltip: {
+      ...theme.fonts.medium,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '8px',
+      position: 'absolute',
+      textAlign: 'center',
+      top: '0px',
+      background: theme.semanticColors.bodyBackground,
+      borderRadius: '2px',
+      pointerEvents: 'none',
+    },
+    nodeTextContainer: {
+      selectors: {
+        text: {
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              fill: 'rgb(179, 179, 179)',
+            },
+          },
+        },
+      },
+      marginTop: '4px',
+      marginLeft: '8px',
+      marginBottom: '4px',
+      marginRight: '8px',
+    },
   };
 };
