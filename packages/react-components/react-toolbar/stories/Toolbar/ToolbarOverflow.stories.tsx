@@ -5,23 +5,25 @@ import {
   FontIncrease24Regular,
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
-import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-components/unstable';
-import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-components/unstable';
 import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
   Overflow,
   OverflowItem,
   useOverflowMenu,
   useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
-} from '@fluentui/react-overflow';
+} from '@fluentui/react-components/unstable';
+import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-components/unstable';
 import { Button, Menu, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import type { MenuItemProps } from '@fluentui/react-components';
 
-export interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
+interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
   id: string;
 }
 
-export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = props => {
+const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = props => {
   const { id, ...rest } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -44,7 +46,7 @@ export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = p
   return <MenuItem {...(rest as MenuItemProps)}>Item {id}</MenuItem>;
 };
 
-export const ToolbarMenuOverflowDivider: React.FC<{
+const ToolbarMenuOverflowDivider: React.FC<{
   id: string;
 }> = props => {
   const isGroupVisible = useIsOverflowGroupVisible(props.id);
@@ -56,7 +58,7 @@ export const ToolbarMenuOverflowDivider: React.FC<{
   return <MenuDivider />;
 };
 
-export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ itemIds }) => {
+const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ itemIds }) => {
   const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -88,11 +90,11 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
   );
 };
 
-export type ToolbarOverflowDividerProps = {
+type ToolbarOverflowDividerProps = {
   groupId: string;
 };
 
-export const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps) => {
+const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps) => {
   const groupVisibleState = useIsOverflowGroupVisible(groupId);
 
   if (groupVisibleState !== 'hidden') {
@@ -102,12 +104,12 @@ export const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps)
   return null;
 };
 
-export type ToolbarOverflowMenuProps = {
+type ToolbarOverflowMenuProps = {
   overflowId: string;
   overflowGroupId: string;
 } & ToolbarButtonProps;
 
-export const ToolbarOverflowButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowMenuProps) => {
+const ToolbarOverflowButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowMenuProps) => {
   return (
     <OverflowItem id={overflowId} groupId={overflowGroupId}>
       <ToolbarButton {...props} />
