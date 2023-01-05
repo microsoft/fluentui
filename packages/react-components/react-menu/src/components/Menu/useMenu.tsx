@@ -263,11 +263,11 @@ const useMenuOpenState = (
     } else {
       if (shouldHandleCloseRef.current) {
         // We know that React effects are sync so we focus the trigger here
-        // after any event handler (event handlers will call setState).
-        // Since the browser only performs the default behaviour for Tab once
-        // events have fully bubbled up the window, the browser will move
+        // after any event handler (event handlers will update state and re-render).
+        // Since the browser only performs the default behaviour for the Tab key once
+        // keyboard events have fully bubbled up the window, the browser will move
         // focus to the next tabbable element before/after the trigger if needed.
-        // If tab was not pressed, then we simply focus the trigger as expected.
+        // If the Tab key was not pressed, focus will remain on the trigger as expected.
         state.triggerRef.current?.focus();
       }
     }
