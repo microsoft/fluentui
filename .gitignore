@@ -160,3 +160,6 @@ rush.json
 
 # tsdoc
 tsdoc-metadata.json
+
+# NextJS
+apps/ssr-provider-test/.next
