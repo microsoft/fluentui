@@ -11,6 +11,6 @@ Available attributes:
 - **data-selection-index:** the index of the item being represented.This would go on the root of the tile/row.
 - **data-selection-invoke:** this boolean flag would be set on the element which should immediately invoke the item on click.There is also a nuanced behavior where we will clear selection and select the item if mousedown occurs on an unselected item.
 - **data-selection-toggle:** this boolean flag would be set on the element which should handle toggles.This could be a checkbox or a div.
-- **data-selection-toggle-all:** this boolean flag indicates that clicking it should toggle all selection.
+- **data-selection-all-toggle:** this boolean flag indicates that clicking it should toggle all selection.
 - **data-selection-disabled:** allows a branch of the DOM to be marked to ignore input events that alter selections.
 - **data-selection-select:** allows a branch of the DOM to ensure that the current item is selected upon interaction
