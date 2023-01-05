@@ -77,7 +77,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _bars: JSX.Element[];
   private _xAxisType: XAxisTypes;
   private _barWidth: number;
-  private _additionalSpace: number;
   private _calloutId: string;
   private _colors: string[];
   private margins: IMargins;
@@ -400,7 +399,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _adjustProps(): void {
     this._points = this.props.data || [];
     this._barWidth = this.props.barWidth || 16;
-    this._additionalSpace = 0.5 * this._barWidth;
     const { theme } = this.props;
     const { palette } = theme!;
     // eslint-disable-next-line deprecation/deprecation
