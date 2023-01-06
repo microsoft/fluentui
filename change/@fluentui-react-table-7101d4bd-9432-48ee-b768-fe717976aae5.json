@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: use \"unknown\" instead of \"any\"",
+  "packageName": "@fluentui/react-table",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
