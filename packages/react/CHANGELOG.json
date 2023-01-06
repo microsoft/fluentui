@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 06 Jan 2023 08:00:14 GMT",
+      "tag": "@fluentui/react_v8.104.2",
+      "version": "8.104.2",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "92c695cd39a46fb5e4ce35ca44f94a4f49e63410",
+            "comment": "Suggestions: change resultsFooter docs to mention not adding interactive elements"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Jan 2023 07:59:51 GMT",
       "tag": "@fluentui/react_v8.104.2",
       "version": "8.104.2",

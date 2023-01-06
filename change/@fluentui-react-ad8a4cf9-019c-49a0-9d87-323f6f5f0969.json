@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Suggestions: change resultsFooter docs to mention not adding interactive elements",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}
