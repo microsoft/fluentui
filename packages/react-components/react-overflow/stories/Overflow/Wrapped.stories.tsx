@@ -52,7 +52,7 @@ export const Wrapped = () => {
         <div className={styles.overflowContainer}>
           {itemIds.map(i => (
             <OverflowItem key={i} id={i.toString()}>
-              <Button>Priority {i}</Button>
+              <Button>Item{i}</Button>
             </OverflowItem>
           ))}
           <OverflowMenu itemIds={itemIds} />
