@@ -12,10 +12,9 @@ export type DataGridRowSlots = TableRowSlots & {
   selectionCell?: Slot<typeof TableSelectionCell>;
 };
 
-// Use any here since we can't know the user types
+// Use unknown here since we can't know the user types
 // The user is responsible for narrowing the type downstream
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type CellRenderFunction = (column: ColumnDefinition<any>) => React.ReactNode;
+export type CellRenderFunction = (column: ColumnDefinition<unknown>) => React.ReactNode;
 
 /**
  * DataGridRow Props
@@ -31,6 +30,5 @@ export type DataGridRowProps = Omit<TableRowProps, 'children'> &
 export type DataGridRowState = TableRowState &
   ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    columnDefs: ColumnDefinition<any>[];
+    columnDefs: ColumnDefinition<unknown>[];
   };

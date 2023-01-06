@@ -20,7 +20,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type CellRenderFunction = (column: ColumnDefinition<any>) => React_2.ReactNode;
+export type CellRenderFunction = (column: ColumnDefinition<unknown>) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface ColumnDefinition<TItem> {
@@ -161,7 +161,7 @@ export type DataGridRowSlots = TableRowSlots & {
 // @public
 export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
-    columnDefs: ColumnDefinition<any>[];
+    columnDefs: ColumnDefinition<unknown>[];
 };
 
 // @public
