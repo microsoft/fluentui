@@ -122,12 +122,12 @@ export const stylesPagesWeb: INavPage[] = [
       //   getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/IconsPage/IconsPage').IconsPage))
       // },
       {
-        title: 'M365 Brand Icons',
-        url: '#/styles/web/m365-brand-icons',
-        component: () => <LoadingComponent title="M365 Brand Icons" />,
+        title: 'M365 Product Icons',
+        url: '#/styles/web/m365-product-icons',
+        component: () => <LoadingComponent title="M365 Product Icons" />,
         getComponent: cb =>
           require.ensure([], require =>
-            cb(require<any>('../../../pages/Styles/M365BrandIconsPage/M365BrandIconsPage').M365BrandIconsPage),
+            cb(require<any>('../../../pages/Styles/M365ProductIconsPage/M365ProductIconsPage').M365ProductIconsPage),
           ),
       },
       {

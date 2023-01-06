@@ -11,7 +11,7 @@ const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FileTypeIconsPage/docs';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const documentIcons = require<{ name: string }[]>('@fluentui/public-docsite/lib/data/brand-icons-documents.json');
+const documentIcons = require<{ name: string }[]>('@fluentui/public-docsite/lib/data/product-icons-documents.json');
 
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -55,10 +55,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       <Link href="#/styles/web/icons" underline>
                         Fluent UI icons page
                       </Link>
-                      . {/* comment to prevent eslint/prettier conflict */}Alternatively, if you're looking for brand
+                      . {/* comment to prevent eslint/prettier conflict */}Alternatively, if you're looking for product
                       logos, or the icons of apps themselves, check out the{' '}
-                      <Link href="#/styles/web/m365-brand-icons" underline>
-                        Fluent UI brand icons page
+                      <Link href="#/styles/web/m365-product-icons" underline>
+                        Fluent UI product icons page
                       </Link>
                       .
                     </p>

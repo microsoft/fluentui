@@ -2,26 +2,26 @@ import * as React from 'react';
 import { Image, Link } from '@fluentui/react';
 import { Markdown, MarkdownHeader, IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
-import { M365BrandIconsPageProps } from './M365BrandIconsPage.doc';
+import { M365ProductIconsPageProps } from './M365ProductIconsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { cdnUrl } from '../../../utilities/cdn';
-import * as styles from './M365BrandIconsPage.module.scss';
+import * as styles from './M365ProductIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/M365BrandIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/M365ProductIconsPage/docs';
 const fabricCDN = `${cdnUrl}/assets`;
 
 const productIcons = require<
   { icon: string; name: string }[]
   // eslint-disable-next-line import/no-extraneous-dependencies
->('@fluentui/public-docsite/lib/data/brand-icons-products.json');
+>('@fluentui/public-docsite/lib/data/product-icons.json');
 
-export const M365BrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
+export const M365ProductIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage
       {...props}
-      {...M365BrandIconsPageProps[platform!]}
+      {...M365ProductIconsPageProps[platform!]}
       otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
@@ -33,20 +33,20 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
       return [
         {
           sectionName: 'Overview',
-          editUrl: `${baseUrl}/web/M365BrandIconsOverview.md`,
+          editUrl: `${baseUrl}/web/M365ProductIconsOverview.md`,
           content: (
             <>
               <Markdown>
                 {
-                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsOverview.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365ProductIconsPage/docs/web/M365ProductIconsOverview.md') as string
                 }
               </Markdown>
-              <MarkdownHeader as="h3">When should I use Microsoft 365 Brand icons?</MarkdownHeader>
+              <MarkdownHeader as="h3">When should I use Microsoft 365 Product icons?</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
-                      Use Microsoft 365 brand icons to help your users transition between Microsoft products. Product
+                      Use Microsoft 365 product icons to help your users transition between Microsoft products. Product
                       icons should only be used when the behavior of the command (app icon) is to launch the
                       application. Do not use a product icon to create a new file of that type. For example, do not use
                       the Word app icon for the menu option that allows users create a new Word document.
@@ -97,14 +97,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
         {
           sectionName: 'Format and sizes',
-          editUrl: `${baseUrl}/web/M365BrandIconsFormat.md`,
+          editUrl: `${baseUrl}/web/M365ProductIconsFormat.md`,
           content: (
             <div className="ms-Grid">
               <div className="ms-Grid-row">
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <Markdown>
                     {
-                      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsFormat.md') as string
+                      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365ProductIconsPage/docs/web/M365ProductIconsFormat.md') as string
                     }
                   </Markdown>
                 </div>
@@ -154,29 +154,29 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
         {
           sectionName: 'Resolutions',
-          editUrl: `${baseUrl}/web/M365BrandIconsResolutions.md`,
+          editUrl: `${baseUrl}/web/M365ProductIconsResolutions.md`,
           content: (
             <Markdown>
               {
-                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsResolutions.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365ProductIconsPage/docs/web/M365ProductIconsResolutions.md') as string
               }
             </Markdown>
           ),
         },
         {
           sectionName: 'Implementation',
-          editUrl: `${baseUrl}/web/M365BrandIconsImplementation.md`,
+          editUrl: `${baseUrl}/web/M365ProductIconsImplementation.md`,
           content: (
             <Markdown>
               {
-                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365BrandIconsPage/docs/web/M365BrandIconsImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/M365ProductIconsPage/docs/web/M365ProductIconsImplementation.md') as string
               }
             </Markdown>
           ),
         },
 
         {
-          sectionName: 'Branded icon library',
+          sectionName: 'Product icon library',
           content: (
             <>
               <ul className={styles.iconList}>
