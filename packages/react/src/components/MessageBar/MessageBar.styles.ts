@@ -1,5 +1,6 @@
 import {
   HighContrastSelector,
+  HighContrastSelectorWhite,
   ScreenWidthMaxSmall,
   getScreenSelector,
   getGlobalClassNames,
@@ -43,15 +44,6 @@ const backgroundColor: { [key: string]: keyof ISemanticColors } = {
   [MessageBarType.info]: 'infoBackground',
 };
 
-const highContrastBackgroundColor: { [key: string]: string } = {
-  [MessageBarType.error]: 'rgba(255, 0, 0, 0.3)',
-  [MessageBarType.blocked]: 'rgba(255, 0, 0, 0.3)',
-  [MessageBarType.success]: 'rgba(48, 241, 73, 0.3)',
-  [MessageBarType.warning]: 'rgba(255, 254, 57, 0.3)',
-  [MessageBarType.severeWarning]: 'rgba(255, 0, 0, 0.3)',
-  [MessageBarType.info]: 'Window',
-};
-
 const iconColor: { [key: string]: keyof ISemanticColors } = {
   [MessageBarType.error]: 'errorIcon',
   [MessageBarType.blocked]: 'errorIcon',
@@ -71,7 +63,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     expandSingleLine,
     messageBarType = MessageBarType.info,
   } = props;
-  const { semanticColors, fonts } = theme;
+  const { semanticColors, fonts, palette } = theme;
 
   const SmallScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 
@@ -116,6 +108,24 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     },
   ];
 
+  const highContrastBorderColor: { [key: string]: string } = {
+    [MessageBarType.error]: 'rgba(255, 0, 0)',
+    [MessageBarType.blocked]: 'rgba(255, 0, 0)',
+    [MessageBarType.success]: palette.greenLight,
+    [MessageBarType.warning]: palette.yellowLight,
+    [MessageBarType.severeWarning]: 'rgba(255, 0, 0)',
+    [MessageBarType.info]: 'WindowText',
+  };
+
+  const highContrastWhiteBorderColor: { [key: string]: string } = {
+    [MessageBarType.error]: palette.red,
+    [MessageBarType.blocked]: palette.red,
+    [MessageBarType.success]: palette.green,
+    [MessageBarType.warning]: 'rgba(150, 100, 0)',
+    [MessageBarType.severeWarning]: palette.orange,
+    [MessageBarType.info]: 'WindowText',
+  };
+
   return {
     root: [
       classNames.root,
@@ -146,9 +156,12 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
           },
           [HighContrastSelector]: {
             ...getHighContrastNoAdjustStyle(),
-            background: highContrastBackgroundColor[messageBarType],
-            border: '1px solid WindowText',
+            background: 'transparent',
+            border: `1px solid ${highContrastBorderColor[messageBarType]}`,
             color: 'WindowText',
+          },
+          [HighContrastSelectorWhite]: {
+            border: `1px solid ${highContrastWhiteBorderColor[messageBarType]}`,
           },
         },
       },
