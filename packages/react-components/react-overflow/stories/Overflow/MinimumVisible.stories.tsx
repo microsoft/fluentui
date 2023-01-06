@@ -23,7 +23,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexWrap: 'nowrap',
     minWidth: 0,
-    ...shorthands.gap('4px'),
     ...shorthands.overflow('hidden'),
   },
 });
