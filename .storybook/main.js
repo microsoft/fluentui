@@ -3,7 +3,7 @@ const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox');
 
-const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('../scripts/storybook');
+const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('@fluentui/scripts/storybook');
 
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
@@ -38,6 +38,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
+    '@storybook/addon-links',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
 
@@ -71,7 +72,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
          */
         enforce: 'post',
         test: /\.stories\.tsx$/,
-        include: /src/,
+        include: /stories/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -96,6 +97,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   core: {
     builder: 'webpack5',
     lazyCompilation: true,
+    disableTelemetry: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo

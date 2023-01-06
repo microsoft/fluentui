@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { TreeNode } from '../tree/RandomTree';
+import { TreeNode } from '../tree/types';
 import { ReactTree } from './ReactTree';
-import { RandomSelectorTreeNode, SelectorTreeNode } from '../tree/RandomSelectorTreeNode';
+import { RandomSelectorTreeNode, SelectorTreeNode } from '../tree/types';
 import { ReactSelectorTreeComponentRenderer } from './types';
 
 type ReactSelectorTreeProps = {

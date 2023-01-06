@@ -8,17 +8,28 @@ module.exports = {
     lint: ['build'],
     clean: [],
     test: ['build'],
+    'type-check': ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
-    '@fluentui/react-18-tests-v8#type-check': ['@fluentui/react#build'],
   },
 
   // Adds some ADO-specific logging commands for reporting failures
   ...(process.env.TF_BUILD && { reporter: 'adoLog' }),
 
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag
-  ignore: ['change/**', 'rfcs/**', 'README.md'],
+  ignore: [
+    'change/**',
+    'rfcs/**',
+    'README.md',
+    '.vscode/**',
+    '.github/*.yml',
+    '.github/*.json',
+    '.github/*.md',
+    '.github/CODEOWNERS',
+    '.github/MAINTAINERS',
+    '.github/ISSUE_TEMPLATE/**',
+  ],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md
   cacheOptions: {

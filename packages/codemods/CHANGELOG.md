@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Wed, 24 Aug 2022 16:36:05 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Oct 2022 07:38:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.5)
+
+Wed, 12 Oct 2022 07:38:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.4..@fluentui/codemods_v8.4.5)
+
+### Patches
+
+- fix: Do not fail on empty configMod config ([PR #25148](https://github.com/microsoft/fluentui/pull/25148) by miroslav.stastny@microsoft.com)
 
 ## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.4)
 

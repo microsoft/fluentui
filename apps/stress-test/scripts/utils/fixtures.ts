@@ -1,8 +1,9 @@
 import fs from 'fs-extra';
 import { join } from 'path';
 import { getFixturesDir, remove } from './paths.js';
-import { RandomTree } from '../../src/shared/tree/RandomTree.js';
-import { RandomSelectorTreeNode, selectorTreeCreator } from '../../src/shared/tree/RandomSelectorTreeNode.js';
+import { RandomTree } from './tree/RandomTree.js';
+import { RandomSelectorTreeNode } from '../../src/shared/tree/types.js';
+import { selectorTreeCreator } from './tree/RandomSelectorTreeNode.js';
 import glob from 'glob';
 
 type BuildTreeFixture = (name: string, options: { [key: string]: string }) => void;
@@ -20,77 +21,87 @@ const defaultFixtureOptions: DefaultFixtureOptions = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   xs_1: {
     minBreadth: '1',
-    maxBreadth: '3',
+    maxBreadth: '5',
     minDepth: '1',
-    maxDepth: '3',
+    maxDepth: '5',
+    targetSize: '250',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   xs_2: {
     minBreadth: '1',
-    maxBreadth: '3',
+    maxBreadth: '5',
     minDepth: '1',
-    maxDepth: '3',
-    seed: '4212021',
+    maxDepth: '5',
+    targetSize: '250',
+    seed: '7032017',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   s_1: {
     minBreadth: '2',
-    maxBreadth: '5',
+    maxBreadth: '10',
     minDepth: '2',
-    maxDepth: '5',
+    maxDepth: '10',
+    targetSize: '500',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   s_2: {
     minBreadth: '2',
-    maxBreadth: '5',
+    maxBreadth: '10',
     minDepth: '2',
-    maxDepth: '5',
-    seed: '4212021',
+    maxDepth: '10',
+    targetSize: '500',
+    seed: '7032017',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   m_1: {
-    minBreadth: '3',
-    maxBreadth: '8',
-    minDepth: '3',
-    maxDepth: '8',
+    minBreadth: '4',
+    maxBreadth: '20',
+    minDepth: '4',
+    maxDepth: '20',
+    targetSize: '1000',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   m_2: {
-    minBreadth: '3',
-    maxBreadth: '8',
-    minDepth: '3',
-    maxDepth: '8',
-    seed: '4212021',
+    minBreadth: '4',
+    maxBreadth: '20',
+    minDepth: '4',
+    maxDepth: '20',
+    targetSize: '1000',
+    seed: '7032017',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   l_1: {
-    minBreadth: '5',
-    maxBreadth: '15',
-    minDepth: '4',
-    maxDepth: '15',
+    minBreadth: '8',
+    maxBreadth: '40',
+    minDepth: '8',
+    maxDepth: '40',
+    targetSize: '2000',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   l_2: {
-    minBreadth: '5',
-    maxBreadth: '15',
-    minDepth: '4',
-    maxDepth: '15',
-    seed: '4212021',
+    minBreadth: '8',
+    maxBreadth: '40',
+    minDepth: '8',
+    maxDepth: '40',
+    targetSize: '2000',
+    seed: '7032017',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   xl_1: {
-    minBreadth: '10',
-    maxBreadth: '20',
-    minDepth: '10',
-    maxDepth: '20',
+    minBreadth: '16',
+    maxBreadth: '80',
+    minDepth: '16',
+    maxDepth: '80',
+    targetSize: '4000',
   },
   // eslint-disable-next-line @typescript-eslint/naming-convention
   xl_2: {
-    minBreadth: '10',
-    maxBreadth: '20',
-    minDepth: '10',
-    maxDepth: '20',
-    seed: '4212021',
+    minBreadth: '16',
+    maxBreadth: '80',
+    minDepth: '16',
+    maxDepth: '80',
+    targetSize: '4000',
+    seed: '7032017',
   },
 };
 
@@ -123,7 +134,7 @@ export const buildTreeFixture: BuildTreeFixture = (name, options) => {
 
   const data = {
     tree: JSON.parse(jsonTree),
-    selectors,
+    selectors: Array.from(new Set(selectors)),
   };
 
   const js = `export default ${JSON.stringify(data, null, 2)};`;

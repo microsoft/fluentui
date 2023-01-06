@@ -42,8 +42,6 @@ yarn test                  # run all packages' tests once
 yarn build                 # build all packages
 yarn build:fluentui:docs   # build docs
 
-gulp deploy:docs           # deploy gh-pages doc site
-
 yarn lint                  # lint all packages
 
 yarn prettier              # run prettier on changed files

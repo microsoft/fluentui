@@ -20,8 +20,8 @@ export type PageConfig = {
  * config objects used to generate the Webpack config.
  */
 const getPages: () => PageConfig[] = () => {
-  const extPattern = /\.(tsx|wc.ts)/;
-  const pagePattern = './src/pages/**/*/index.?(tsx|wc.ts)';
+  const extPattern = /\.(tsx?)/;
+  const pagePattern = './src/pages/**/*/index.?(tsx|ts)';
 
   const files = glob.sync(pagePattern);
 

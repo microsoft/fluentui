@@ -53,8 +53,15 @@ const buildTestConfig: BuildTestConfig = options => {
   return configs;
 };
 
+const getUrl = (target: string, port: number): string => {
+  if (target.startsWith('http')) {
+    return target;
+  }
+
+  return `http://localhost:${port}/${target}`;
+};
+
 const makeConfigJson: MakeConfigJson = (_scenario, browser, testCase, sampleSize, targets, size, testOptions, port) => {
-  const baseUrl = `http://localhost:${port}`;
   const json = {
     $schema: 'https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json',
     sampleSize,
@@ -72,7 +79,6 @@ const makeConfigJson: MakeConfigJson = (_scenario, browser, testCase, sampleSize
         ],
 
         expand: targets.map(target => {
-          // const params = querystring.stringify({ test: testCase, ...testOptions });
           const targetParams = target.includes('?') ? querystring.parse(target.substring(target.indexOf('?') + 1)) : {};
           const params = querystring.stringify({
             ...targetParams,
@@ -85,7 +91,7 @@ const makeConfigJson: MakeConfigJson = (_scenario, browser, testCase, sampleSize
 
           return {
             name: `${target} - ${testCase} - ${size}`,
-            url: `${baseUrl}/${targetWithoutParams}/?${params}`,
+            url: `${getUrl(targetWithoutParams, port)}/?${params}`,
           };
         }),
       },

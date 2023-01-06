@@ -12,7 +12,7 @@ export interface ICategory {
 // Exporting this object to be used in generating a TOC (table of content) for docs.microsoft documentation repo.
 // Any changes to this object need to be communicated to avoid accidental breaking of the documentation
 // and to allow the appropriate actions to be taken to mitigate this.
-export const categories: { Other?: ICategory; [name: string]: ICategory } = {
+export const categories: { [name: string]: ICategory } = {
   'Basic Inputs': {
     Button: {},
     Checkbox: {},
@@ -35,6 +35,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     DatePicker: {},
     PeoplePicker: {},
     SwatchColorPicker: {},
+    TimePicker: {},
   },
   'Items & Lists': {
     List: { title: 'Basic List' },
@@ -57,6 +58,8 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         Compact: {},
         Grouped: {},
         LargeGrouped: { title: 'Large Grouped' },
+        GroupedV2: { title: 'Grouped V2' },
+        LargeGroupedV2: { title: 'Large Grouped V2' },
         CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
         CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
         CustomFooter: { title: 'Custom Footer' },

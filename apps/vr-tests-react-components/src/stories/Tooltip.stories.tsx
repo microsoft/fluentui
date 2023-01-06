@@ -4,7 +4,7 @@ import { Tooltip } from '@fluentui/react-tooltip';
 import { TestWrapperDecorator } from '../utilities/index';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -125,13 +125,10 @@ const TooltipPositioning: React.FC = () => {
 storiesOf('Tooltip Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .click('#show-tooltips')
-        .snapshot('positioned tooltips', { cropTo: '.testWrapper' })
-        .end()}
+    <StoryWright
+      steps={new Steps().click('#show-tooltips').snapshot('positioned tooltips', { cropTo: '.testWrapper' }).end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('positioning', () => <TooltipPositioning />, { includeRtl: true, includeHighContrast: true });

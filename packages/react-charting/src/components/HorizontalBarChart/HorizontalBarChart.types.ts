@@ -104,6 +104,11 @@ export interface IHorizontalBarChartStyleProps {
    * @default 15
    */
   barHeight?: number;
+
+  /**
+   * prop to check if benchmark data is provided
+   */
+  showTriangle?: boolean;
 }
 
 export interface IHorizontalBarChartStyles {
@@ -116,6 +121,7 @@ export interface IHorizontalBarChartStyles {
    * Styling for each item in the container
    */
   items: IStyle;
+
   /**
    * Style for the chart.
    */
@@ -132,14 +138,24 @@ export interface IHorizontalBarChartStyles {
   barWrapper: IStyle;
 
   /**
-   * Style for the chart data text.
+   * Style for left side text of the chart title
    */
-  chartDataText: IStyle;
+  chartTitleLeft: IStyle;
+
+  /**
+   * Style for right side text of the chart title
+   */
+  chartTitleRight: IStyle;
 
   /**
    * Style for the chart data text denominator.
    */
   chartDataTextDenominator: IStyle;
+
+  /**
+   * Style for the benchmark container
+   */
+  benchmarkContainer: IStyle;
 
   /**
    * Style for the benchmark triangle
