@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 02 Jan 2023 12:21:48 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jan 2023 12:29:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.23)
+
+Fri, 06 Jan 2023 12:29:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.23.22..@uifabric/charting_v4.23.23)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.203.0 ([PR #26188](https://github.com/microsoft/fluentui/pull/26188) by seanmonahan@microsoft.com)
 
 ## [4.23.22](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.22)
 

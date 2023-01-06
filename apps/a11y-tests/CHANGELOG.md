@@ -1,8 +1,17 @@
 # Change Log - a11y-tests
 
-This log was last generated on Mon, 02 Jan 2023 12:21:48 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jan 2023 12:29:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v7.0.0)
+
+Fri, 06 Jan 2023 12:29:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v7.0.0..a11y-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.203.0 ([PR #26188](https://github.com/microsoft/fluentui/pull/26188) by seanmonahan@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v7.0.0)
 

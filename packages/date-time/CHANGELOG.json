@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 06 Jan 2023 12:29:54 GMT",
+      "tag": "@uifabric/date-time_v7.23.32",
+      "version": "7.23.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.203.0",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "8821ba7acd4afe9922ed90a5895a630475ec5da8",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Dec 2022 12:28:38 GMT",
       "tag": "@uifabric/date-time_v7.23.31",
       "version": "7.23.31",

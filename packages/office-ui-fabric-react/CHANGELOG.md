@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Dec 2022 12:28:38 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jan 2023 12:29:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.203.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.203.0)
+
+Fri, 06 Jan 2023 12:29:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.202.0..office-ui-fabric-react_v7.203.0)
+
+### Minor changes
+
+- chore: export GroupedListV2 types (#26052) ([PR #26188](https://github.com/microsoft/fluentui/pull/26188) by seanmonahan@microsoft.com)
 
 ## [7.202.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.202.0)
 

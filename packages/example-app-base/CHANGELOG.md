@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 20 Dec 2022 12:28:38 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jan 2023 12:29:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.22.32](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.22.32)
+
+Fri, 06 Jan 2023 12:29:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.22.31..@uifabric/example-app-base_v7.22.32)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.203.0 ([PR #26188](https://github.com/microsoft/fluentui/pull/26188) by seanmonahan@microsoft.com)
 
 ## [7.22.31](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.22.31)
 
