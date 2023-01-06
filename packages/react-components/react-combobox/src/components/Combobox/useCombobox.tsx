@@ -44,7 +44,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue,
     value,
   } = baseState;
-  const { disabled, freeform, multiselect } = props;
+  const { disabled, freeform, inlinePopup, multiselect } = props;
   const comboId = useId('combobox-');
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -194,6 +194,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: {
+        'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
         ...rootNativeProps,
       },
     }),

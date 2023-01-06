@@ -73,6 +73,7 @@ exports[`Combobox renders an open listbox 1`] = `
     </span>
     <div
       class="fui-Listbox fui-Combobox__listbox"
+      id="fluent-listbox10"
       role="listbox"
       style="position: fixed; left: 0px; top: 0px; margin: 0px; width: 0px;"
     >
