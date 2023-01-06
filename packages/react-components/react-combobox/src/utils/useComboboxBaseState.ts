@@ -68,10 +68,13 @@ export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boo
     initialState: false,
   });
 
-  const setOpen = (event: ComboboxBaseOpenEvents, newState: boolean) => {
-    onOpenChange?.(event, { open: newState });
-    setOpenState(newState);
-  };
+  const setOpen = React.useCallback(
+    (event: ComboboxBaseOpenEvents, newState: boolean) => {
+      onOpenChange?.(event, { open: newState });
+      setOpenState(newState);
+    },
+    [onOpenChange, setOpenState],
+  );
 
   // update active option based on change in open state
   React.useEffect(() => {

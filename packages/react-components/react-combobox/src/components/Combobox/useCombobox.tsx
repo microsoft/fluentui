@@ -55,11 +55,16 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
   // calculate listbox width style based on trigger width
-  const [popupWidth, setPopupWidth] = React.useState<string>();
+  const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
   React.useEffect(() => {
-    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
-    setPopupWidth(width);
-  }, [open]);
+    // only recalculate width when opening
+    if (open) {
+      const width = `${rootRef.current?.clientWidth}px`;
+      if (width !== popupDimensions?.width) {
+        setPopupDimensions({ width });
+      }
+    }
+  }, [open, popupDimensions]);
 
   // set active option and selection based on typing
   const getOptionFromInput = (inputValue: string): OptionValue | undefined => {
@@ -165,7 +170,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
           required: true,
           defaultProps: {
             children: props.children,
-            style: { width: popupWidth },
+            style: popupDimensions,
           },
         })
       : undefined;
