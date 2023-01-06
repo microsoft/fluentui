@@ -228,7 +228,7 @@ Virtualization.parameters = {
         '',
         'The `Table` primitive components are unopinionated with respect to virtualization. They should be compatible',
         'with any virtualization library. Hoisting business logic to a state management',
-        'hook like `useTableFeaturesFeautres',
+        'hook like `useTableFeatures`',
         'means that features can persist between the mounting/unmounting that happens during virtualization.',
         'The below example uses the [react-window](https://www.npmjs.com/package/react-window) library.',
       ].join('\n'),
