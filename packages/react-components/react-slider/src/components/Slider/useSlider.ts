@@ -34,9 +34,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     },
     root: resolveShorthand(root, {
       required: true,
-      defaultProps: {
-        ...nativeProps.root,
-      },
+      defaultProps: nativeProps.root,
     }),
     input: resolveShorthand(input, {
       required: true,
