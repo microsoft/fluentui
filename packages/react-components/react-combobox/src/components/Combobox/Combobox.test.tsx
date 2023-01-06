@@ -113,7 +113,7 @@ describe('Combobox', () => {
 
   it('Respects author-provided labels for the chevron button', () => {
     const renderedCombobox = render(
-      <Combobox expandIcon={{ 'aria-label': 'test label' }}>
+      <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-label': 'test label' }}>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -125,7 +125,7 @@ describe('Combobox', () => {
     expect(chevronButton?.getAttribute('aria-labelledby')).toBeFalsy();
 
     renderedCombobox.rerender(
-      <Combobox expandIcon={{ 'aria-labelledby': 'testId' }}>
+      <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-labelledby': 'testId' }}>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
