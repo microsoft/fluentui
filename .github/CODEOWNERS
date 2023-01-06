@@ -28,7 +28,6 @@
 /.githooks @microsoft/fluentui-react-build
 /.storybook @microsoft/fluentui-react-build
 /.vscode @microsoft/fluentui-react-build
-/scripts @microsoft/fluentui-react-build
 /tools @microsoft/fluentui-react-build
 
 #### Root Build files
@@ -57,6 +56,33 @@
 /packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 /.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 /.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar @tudorpopams
+
+## Tooling packages
+scripts/api-extractor @microsoft/fluentui-react-build
+scripts/babel @microsoft/fluentui-react-build
+scripts/beachball @microsoft/fluentui-react-build
+scripts/cypress @microsoft/fluentui-react-build
+scripts/dangerjs @microsoft/fluentui-react-build
+scripts/dependency-graph-generator @microsoft/fluentui-react-build
+scripts/executors @microsoft/fluentui-react-build
+scripts/fluentui-publish @microsoft/fluentui-react-build
+scripts/generators @microsoft/fluentui-react-build
+scripts/github @microsoft/fluentui-react-build
+scripts/gulp @microsoft/fluentui-react-build @microsoft/teams-prg
+scripts/jest @microsoft/fluentui-react-build
+scripts/lint-staged @microsoft/fluentui-react-build
+scripts/monorepo @microsoft/fluentui-react-build
+scripts/package-manager @microsoft/fluentui-react-build
+scripts/prettier @microsoft/fluentui-react-build
+scripts/projects-test @microsoft/fluentui-react-build
+scripts/puppeteer @microsoft/fluentui-react-build
+scripts/storybook @microsoft/fluentui-react-build
+scripts/tasks @microsoft/fluentui-react-build
+scripts/triage-bot @microsoft/fluentui-react-build @microsoft/cxe-prg
+scripts/ts-node @microsoft/fluentui-react-build
+scripts/update-release-notes @microsoft/fluentui-react-build
+scripts/utils @microsoft/fluentui-react-build
+scripts/webpack @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
@@ -181,8 +207,6 @@ packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
 packages/react-components/react-data-grid-react-window @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
-
-
 
 ## Components
 packages/react @microsoft/cxe-red @microsoft/cxe-coastal
