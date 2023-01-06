@@ -112,7 +112,8 @@ Pinned.parameters = {
       story: [
         'An item can be pinned (always visible) by setting it to be a higher priority that all other overflow items.',
         'This can be useful when implementing selection scenarios where the selected item must always be visible.',
-        'Try selecting different items below to observe this effect.',
+        'Try selecting different items below to observe this effect. The pinned item will be overflowed if there',
+        'is no space left for any overflow item.',
       ].join('\n'),
     },
   },
