@@ -1,6 +1,7 @@
-import { danger, fail, warn, markdown, message } from 'danger';
+// @ts-check
 
-import { detectNonApprovedDependencies, checkChangelog, checkStorybookVersions } from '@fluentui/scripts-dangerjs';
+const { danger, fail, warn, markdown, message } = require('danger');
+const { detectNonApprovedDependencies, checkChangelog, checkStorybookVersions } = require('@fluentui/scripts-dangerjs');
 
 /**
  * This trick (of explicitly passing Danger JS utils as function arg, instead of importing them at places where needed)
@@ -8,7 +9,7 @@ import { detectNonApprovedDependencies, checkChangelog, checkStorybookVersions }
  */
 const dangerJS = { danger, fail, warn, markdown, message };
 
-export default async () => {
+module.exports = async () => {
   await checkChangelog(dangerJS);
   await detectNonApprovedDependencies(dangerJS);
   await checkStorybookVersions(dangerJS);

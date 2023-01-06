@@ -2,7 +2,7 @@
   "name": "@fluentui/scripts-dangerjs",
   "version": "0.0.1",
   "private": true,
-  "main": "src/index.ts",
+  "main": "src/index.js",
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
