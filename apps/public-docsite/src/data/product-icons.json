@@ -7,7 +7,7 @@
   { "icon": "onenote", "name": "OneNote" },
   { "icon": "sharepoint", "name": "SharePoint" },
   { "icon": "teams", "name": "Microsoft Teams" },
-  { "icon": "office", "name": "Office" },
+  { "icon": "m365", "name": "Microsoft 365" },
   { "icon": "access", "name": "Access" },
   { "icon": "delve", "name": "Delve" },
   { "icon": "forms", "name": "Microsoft Forms" },
