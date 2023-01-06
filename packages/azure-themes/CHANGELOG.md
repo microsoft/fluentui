@@ -1,8 +1,19 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Fri, 23 Dec 2022 07:55:40 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jan 2023 07:59:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.42](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.42)
+
+Thu, 05 Jan 2023 07:59:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.41..@fluentui/azure-themes_v8.5.42)
+
+### Patches
+
+- alphabetized azure theme constants, renamed choicegroup to choicefield ([PR #26013](https://github.com/microsoft/fluentui/pull/26013) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Azure Theme > DetailsList checkbox border removed from unselected rest state ([PR #26152](https://github.com/microsoft/fluentui/pull/26152) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.104.2 ([PR #26055](https://github.com/microsoft/fluentui/pull/26055) by beachball)
 
 ## [8.5.41](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.41)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 05 Jan 2023 07:59:57 GMT",
+      "tag": "@fluentui/web-components_v2.5.9",
+      "version": "2.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "abcy@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "b53326ef8367bbd954237bd039c5520188ed1071",
+            "comment": "Fix fluent-tooltip not showing anchor pointer when wc prefix is changed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Nov 2022 07:44:58 GMT",
       "tag": "@fluentui/web-components_v2.5.8",
       "version": "2.5.8",

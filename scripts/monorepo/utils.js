@@ -6,11 +6,14 @@ const findGitRoot = require('./findGitRoot');
 
 /**
  * Gets project metadata from monorepo source of truth which is `workspace.json`
- * @param {{root?:string;name:string}} options
+ * @param {Object} options
+ * @param {string} [options.root] - repo root path
+ * @param {string} options.name - package name
  * @returns {import('@nrwl/devkit').ProjectConfiguration}
  */
 function getProjectMetadata(options) {
   const { root = findGitRoot() } = options;
+
   /**@type {import('@nrwl/devkit').WorkspaceJsonConfiguration} */
   const nxWorkspace = JSON.parse(fs.readFileSync(path.join(root, 'workspace.json'), 'utf-8'));
 

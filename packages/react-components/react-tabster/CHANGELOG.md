@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Jan 2023 01:40:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.3.5)
+
+Wed, 04 Jan 2023 01:40:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.3.4..@fluentui/react-tabster_v9.3.5)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- fix: Bump tabster to 3.0.6 ([PR #26076](https://github.com/microsoft/fluentui/pull/26076) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
 
 ## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.3.4)
 

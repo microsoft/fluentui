@@ -50,11 +50,6 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
   return {
     root: {
       borderTop: StyleConstants.borderNone,
-      selectors: {
-        '.ms-DetailsRow-check': {
-          opacity: 1,
-        },
-      },
     },
     headerWrapper: {
       selectors: {
@@ -116,11 +111,6 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
         color: semanticColors.listText,
         fontSize: theme.fonts.medium.fontSize,
         borderBottom: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
-        selectors: {
-          '.ms-DetailsRow-check': {
-            opacity: 1,
-          },
-        },
       },
       !isSelected && [
         {
