@@ -216,6 +216,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       // open and set focus
       state.setOpen(event, !state.open);
       triggerRef.current?.focus();
+
+      // set focus visible=false, since this can only be done with the mouse/pointer
+      setFocusVisible(false);
     }),
   );
 
