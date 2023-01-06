@@ -1,4 +1,4 @@
-To use the Microsoft 365 multicolor brand icons, select the format and size that best meets your needs. Fluent UI includes a media query that automatically selects the right image file for the pixel density of the screen you’re targeting.
+To use the Microsoft 365 multicolor product icons, select the format and size that best meets your needs. Fluent UI includes a media query that automatically selects the right image file for the pixel density of the screen you’re targeting.
 
 The following code shows you how to specify a 96px product icon by brand using the [office-ui-fabric-core](https://github.com/OfficeDev/office-ui-fabric-core) CSS and a `<div>` element:
 
