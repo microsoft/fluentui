@@ -198,7 +198,6 @@ import { IEventRecordList } from '@fluentui/utilities';
 import { IEventRecordsByName } from '@fluentui/utilities';
 import { IFitContentToBoundsOptions } from '@fluentui/utilities';
 import { IFocusRectsContext } from '@fluentui/utilities';
-import { IFocusRectsContext as IFocusRectsContext_2 } from '@fluentui/utilities/lib/useFocusRects';
 import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontFace } from '@fluentui/style-utilities';
@@ -508,9 +507,9 @@ export class BaseButton extends React_2.Component<IBaseButtonProps, IBaseButtonS
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    context: React_2.ContextType<typeof FocusRectsContext>;
+    context: IFocusRectsContext;
     // (undocumented)
-    static contextType: React_2.Context<IFocusRectsContext_2 | undefined>;
+    static contextType: React_2.Context<IFocusRectsContext | undefined>;
     // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)

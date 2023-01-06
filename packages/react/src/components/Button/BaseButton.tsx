@@ -27,7 +27,7 @@ import { ContextualMenu } from '../../ContextualMenu';
 import { getBaseButtonClassNames } from './BaseButton.classNames';
 import { getSplitButtonClassNames as getBaseSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
-import type { IRenderFunction } from '../../Utilities';
+import type { IFocusRectsContext, IRenderFunction } from '../../Utilities';
 import type { IContextualMenuProps } from '../../ContextualMenu';
 import type { IButtonProps, IButton } from './Button.types';
 import type { IButtonClassNames } from './BaseButton.classNames';
@@ -69,7 +69,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   // needed to access registeredProviders when manually setting focus visibility
   public static contextType = FocusRectsContext;
-  public context: React.ContextType<typeof FocusRectsContext>;
+  public context: IFocusRectsContext;
 
   private _async: Async;
   private _events: EventGroup;
