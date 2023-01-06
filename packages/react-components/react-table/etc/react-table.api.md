@@ -329,7 +329,7 @@ export type TableCellLayoutSlots = {
     media: Slot<'span'>;
     main: Slot<'span'>;
     description: Slot<'span'>;
-    wrapper: Slot<'div'>;
+    content: Slot<'div'>;
 };
 
 // @public
