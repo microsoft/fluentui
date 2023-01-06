@@ -19,5 +19,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "random-seedable": "1.0.8"
+  },
+  "devDependencies": {
+    "@fluentui/scripts-tasks": "*"
   }
 }

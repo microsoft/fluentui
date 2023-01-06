@@ -1,5 +1,5 @@
 const rootMain = require('../../../.storybook/main');
-const { getPackageStoriesGlob } = require('@fluentui/scripts/storybook');
+const { getPackageStoriesGlob } = require('@fluentui/scripts-storybook');
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
