@@ -13,7 +13,11 @@ exports[`Checkbox renders a custom indicator 1`] = `
     <div
       aria-hidden="true"
       class="fui-Checkbox__indicator"
-    />
+    >
+      <span
+        id="indicator"
+      />
+    </div>
     <label
       class="fui-Label fui-Checkbox__label"
       for="checkbox-1"
