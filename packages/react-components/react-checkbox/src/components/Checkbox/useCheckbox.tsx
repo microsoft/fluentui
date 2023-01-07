@@ -103,6 +103,13 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     }),
   };
 
+  // Don't render the indicator's children (checkmark) when unchecked.
+  // Note that this is explicitly overriding any user-provided children, to maintain backwards compatibility
+  // with an earlier implementation that always hid the indicator icon via css when unchecked.
+  if (!checked && state.indicator) {
+    state.indicator.children = undefined;
+  }
+
   state.input.onChange = useEventCallback(ev => {
     const val = ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked;
     onChange?.(ev, { checked: val });
