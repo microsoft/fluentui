@@ -18,8 +18,8 @@
     "@fluentui/scripts": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.104.3",
-    "@fluentui/react-hooks": "^8.6.14",
+    "@fluentui/react": "^8.104.4",
+    "@fluentui/react-hooks": "^8.6.15",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.6",
     "react": "18.2.0",

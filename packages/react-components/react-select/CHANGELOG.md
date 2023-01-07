@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 21:51:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.21)
+
+Mon, 09 Jan 2023 21:51:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.20..@fluentui/react-select_v9.0.0-beta.21)
+
+### Changes
+
+- fix: no interactive hover style when disabled ([PR #26068](https://github.com/microsoft/fluentui/pull/26068) by sarah.higley@microsoft.com)
 
 ## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.20)
 

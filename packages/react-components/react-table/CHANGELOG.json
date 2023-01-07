@@ -2,6 +2,21 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 21:51:24 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.19",
+            "commit": "fb5708446f369a57f48b87a0141d6a651acddbde"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:00 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.17",
       "version": "9.0.0-alpha.17",
