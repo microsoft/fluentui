@@ -39,8 +39,7 @@ const useRootStyles = makeStyles({
 
 const useIndicatorBaseClassName = makeResetStyles({
   borderRadius: tokens.borderRadiusCircular,
-  borderStyle: 'solid',
-  borderWidth: '1px',
+  border: '1px solid',
   lineHeight: 0,
   boxSizing: 'border-box',
   fill: 'currentColor',
