@@ -5,6 +5,7 @@ exports[`TreeItem renders a default state 1`] = `
   <span
     class="fui-TreeItem__groupper"
     data-tabster="{\\"groupper\\":{}}"
+    role="presentation"
   >
     <div
       aria-level="0"

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExtractSlotProps, isResolvedShorthand, resolveShorthand, Slot } from '@fluentui/react-utilities';
+import { isResolvedShorthand, resolveShorthand } from '@fluentui/react-utilities';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useEventCallback } from '@fluentui/react-utilities';
@@ -82,7 +82,10 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     },
     groupper: resolveShorthand(groupper, {
       required: true,
-      defaultProps: groupperProps as ExtractSlotProps<Slot<'span'>>,
+      defaultProps: {
+        role: 'presentation',
+        ...groupperProps,
+      },
     }),
     iconBefore: resolveShorthand(iconBefore, {
       defaultProps: { 'aria-hidden': true },
