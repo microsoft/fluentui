@@ -11,14 +11,6 @@ const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'block',
   },
-
-  roottable: {
-    display: 'table-row-group',
-  },
-
-  rootFlex: {
-    display: 'block',
-  },
 });
 
 const useTableLayoutStyles = makeStyles({
