@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: Slot<'div', 'button'>;
+  root: Slot<'div'>;
 
   /**
    * Icon slot rendered before children content
@@ -55,6 +55,4 @@ export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
 };
 
 export type MenuItemState = ComponentState<MenuItemSlots> &
-  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
-    isNativeButton: boolean;
-  };
+  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
