@@ -69,6 +69,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
+  private _isChartEmpty: boolean;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -94,6 +95,21 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
+    this._isChartEmpty = false;
+  }
+
+  public componentDidMount(): void {
+    const isChartEmpty =
+      d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine;
+    if (isChartEmpty || this._isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_VerticalBarChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
   }
 
   public render(): JSX.Element {
@@ -154,12 +170,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           return (
-            <>
-              <g>{this._bars}</g>
-              {this._isHavingLine && (
-                <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
-              )}
-            </>
+            !this._isChartEmpty && (
+              <>
+                <g>{this._bars}</g>
+                {this._isHavingLine && (
+                  <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
+                )}
+              </>
+            )
           );
         }}
       />
@@ -318,10 +336,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     containerWidth: number,
     xElement?: SVGElement | null,
   ) => {
-    return (this._bars =
-      this._xAxisType === XAxisTypes.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!));
+    if (!this._isChartEmpty) {
+      return (this._bars =
+        this._xAxisType === XAxisTypes.NumericAxis
+          ? this._createNumericBars(containerHeight, containerWidth, xElement!)
+          : this._createStringBars(containerHeight, containerWidth, xElement!));
+    } else {
+      return [];
+    }
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -681,6 +703,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
+      const domainRange =
+        d3Max(domainValue, (domain: number) => domain)! - d3Min(domainValue, (domain: number) => domain)!;
+      if (domainRange === 0) {
+        this._isChartEmpty = true;
+      }
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
     }
   };
