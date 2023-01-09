@@ -145,7 +145,7 @@ const Example = () => (
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
-      <Label>Split button example</Label>
+      <Label>Spin button example</Label>
       <SpinButtonBasicExample />
     </Stack>
 
