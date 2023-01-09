@@ -21,11 +21,16 @@ export type CellRenderFunction = (column: ColumnDefinition<any>) => React.ReactN
  * DataGridRow Props
  */
 export type DataGridRowProps = Omit<TableRowProps, 'children'> &
-  ComponentProps<DataGridRowSlots> & {
+  Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
     children: CellRenderFunction;
   };
 
 /**
  * State used in rendering DataGridRow
  */
-export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots>;
+export type DataGridRowState = TableRowState &
+  ComponentState<DataGridRowSlots> & {
+    renderCell: CellRenderFunction;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    columnDefs: ColumnDefinition<any>[];
+  };

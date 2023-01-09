@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: set focus visibility className on correct element when calling setFocusVisibility directly",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

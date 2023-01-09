@@ -2,7 +2,7 @@
 
 ## Background
 
-The `Progress` component is used to display the current progress of an operation flow, or show that an operation is currently being executed.
+The `ProgressBar` component is used to display the current progress of an operation flow, or show that an operation is currently being executed.
 
 ## Prior Art
 
@@ -31,26 +31,26 @@ The existing components are:
 Basic example:
 
 ```jsx
-import { Progress } from '@fluentui/react-progress';
+import { ProgressBar } from '@fluentui/react-progress';
 
 function App() {
-  return <Progress thickness="large" />;
+  return <ProgressBar thickness="large" />;
 }
 ```
 
 ## Variants
 
-- Indeterminate Progress
-  - The default Progress that animates indefinitely
-- Determinate Progress
-  - The determinate form of the Progress component that incrementally loads from 0% to 100%
+- Indeterminate ProgressBar
+  - The default ProgressBar that animates indefinitely
+- Determinate ProgressBar
+  - The determinate form of the ProgressBar component that incrementally loads from 0% to 100%
 - Error/success
   - The validationState prop can be set to "error", "warning", or "success" to make the bar red, orange, or green, respectively.
   - The prop name was chosen to align with the Field prop of the same name, allowing ProgressField to have the same API as other fields.
 
 #### Adding Label and Description with ProgressField
 
-There is a `ProgressField` component that adds a `label`, validation state(`success`, `warning`, `error`), and hint text to the `Progress`.
+There is a `ProgressField` component that adds a `label`, validation state(`success`, `warning`, `error`), and hint text to the `ProgressBar`.
 You can use it like so:
 
 ```jsx
@@ -72,25 +72,25 @@ export const Default = (props: ProgressFieldProps) => (
 
 ### Shape
 
-The Progress is represented as a rounded rectangular area with an inner animated bar that either travels across the area indefinitely or animates up till a specified point
+The ProgressBar is represented as a rounded rectangular area with an inner animated bar that either travels across the area indefinitely or animates up till a specified point
 
 ## API
 
 ### Slots
 
-- `root` - The root element of the Progress, which also serves as the track for the Progress bar. The html element is a `div`
+- `root` - The root element of the ProgressBar, which also serves as the track for the Progress bar. The html element is a `div`
 - `bar` - The div element that gets animated into a Progress bar. The html element is `div`
 
 ### Props
 
-See API at [Progress.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-progress/src/components/Progress/Progress.types.ts).
+See API at [ProgressBar.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-progress/src/components/ProgressBar/ProgressBar.types.ts).
 
 ## Structure
 
 ```html
-<div class="fui-Progress">
+<div class="fui-ProgressBar">
   <!-- Bar for Progress -->
-  <div class="fui-Progess__bar" />
+  <div class="fui-ProgressBar__bar" />
 </div>
 ```
 
@@ -102,14 +102,14 @@ See [MIGRATION.md](./MIGRATION.md).
 
 ### States
 
-- **Display** - The Progress will use the following priority:
+- **Display** - The ProgressBar will use the following priority:
 
-  - Specifying the `value` prop will alter the Progress from `indeterminate` to `determinate`.
+  - Specifying the `value` prop will alter the ProgressBar from `indeterminate` to `determinate`.
   - The component also has `rtl` support and will animate the progress bar from right to left if set.
 
 ### Interaction
 
-The Progress is non-interactive.
+The ProgressBar is non-interactive.
 
 - **Keyboard** - Not keyboard focusable.
 - **Mouse**
@@ -120,5 +120,5 @@ The Progress is non-interactive.
 
 ## Accessibility
 
-- The `determinate` Progress has the proper `aria` attributes assigned to the element that will allow screen readers to get the `max` and current `value` of the `Progress`.
-- When `reduced-motion` is active, the `indeterminate` `Progress` will animate only once. Use `ProgressField` to add a `description` and `hint` message to the `Progress` bar.
+- The `determinate` ProgressBar has the proper `aria` attributes assigned to the element that will allow screen readers to get the `max` and current `value` of the `ProgressBar`.
+- When `reduced-motion` is active, the `indeterminate` `ProgressBar` will animate only once. Use `ProgressField` to add a `description` and `hint` message to the `ProgressBar` bar.

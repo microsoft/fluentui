@@ -39,6 +39,7 @@ declare module '@storybook/addons' {
          * enable/disable rendering decorators in Docs mode
          */
         excludeDecorators: boolean;
+        type: 'source' | 'auto' | 'dynamic';
       };
 
       container?: React.ComponentType<any>;

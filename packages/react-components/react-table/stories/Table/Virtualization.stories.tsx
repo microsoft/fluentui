@@ -9,7 +9,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -56,6 +56,8 @@ interface ReactWindowRenderFnProps extends ListChildComponentProps {
 }
 
 export const Virtualization = () => {
+  const { targetDocument } = useFluent();
+  const scrollbarWidth = useScrollbarWidth({ targetDocument });
   const columns = React.useMemo(
     () => [
       createColumn<Item>({
@@ -133,8 +135,6 @@ export const Virtualization = () => {
     ],
   );
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
-
   const rows: RowState[] = getRows(row => {
     const selected = isRowSelected(row.rowId);
     return {
@@ -151,22 +151,31 @@ export const Virtualization = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   return (
-    <Table noNativeElements {...keyboardNavAttr}>
+    <Table noNativeElements aria-label="Table with selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
           {/** Scrollbar alignment for the header */}
-          <div role="presentation" style={{ width: 16 }} />
+          <div role="presentation" style={{ width: scrollbarWidth }} />
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -175,13 +184,15 @@ export const Virtualization = () => {
             const { item, selected, appearance, onClick, onKeyDown } = data[index];
             return (
               <TableRow
+                aria-rowindex={index}
+                aria-rowcount={data.length}
                 style={style}
                 key={item.file.label}
                 onKeyDown={onKeyDown}
                 onClick={onClick}
                 appearance={appearance}
               >
-                <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+                <TableSelectionCell checked={selected} />
                 <TableCell>
                   <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
                 </TableCell>

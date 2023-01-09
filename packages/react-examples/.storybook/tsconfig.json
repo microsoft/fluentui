@@ -1,17 +1,11 @@
 {
-  "extends": "../../../tsconfig.base.json",
+  "extends": "../../../tsconfig.base.v8.json",
   "compilerOptions": {
     "jsx": "preserve",
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "../../..",
-    "paths": {
-      "@fluentui/scripts/storybook/webpack.config": ["scripts/storybook/webpack.config.js"],
-      "@fluentui/font-icons-mdl2": ["packages/font-icons-mdl2/src/index.ts"],
-      "@fluentui/storybook": ["packages/storybook/src/index.ts"]
-    }
+    "allowSyntheticDefaultImports": true
   },
   "include": ["**/*.js"]
 }

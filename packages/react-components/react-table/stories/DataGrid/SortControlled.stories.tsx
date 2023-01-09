@@ -156,14 +156,7 @@ export const SortControlled = () => {
   };
 
   return (
-    <DataGrid
-      items={items}
-      columns={columns}
-      focusMode="cell"
-      sortable
-      sortState={sortState}
-      onSortChange={onSortChange}
-    >
+    <DataGrid items={items} columns={columns} sortable sortState={sortState} onSortChange={onSortChange}>
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }: ColumnDefinition<Item>) => (

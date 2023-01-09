@@ -1,4 +1,4 @@
-const custom = require('@fluentui/scripts/storybook/webpack.config');
+const { createStorybookWebpackConfig } = require('@fluentui/scripts/webpack');
 
 module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConfig} */ ({
   stories: ['../src/**/*.stories.tsx'],
@@ -12,7 +12,7 @@ module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConf
     reactDocgen: false,
   },
   webpackFinal: config => {
-    return custom(config);
+    return createStorybookWebpackConfig(config);
   },
   addons: ['@storybook/addon-actions'],
 });

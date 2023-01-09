@@ -507,6 +507,10 @@ export class BaseButton extends React_2.Component<IBaseButtonProps, IBaseButtonS
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: IFocusRectsContext;
+    // (undocumented)
+    static contextType: React_2.Context<IFocusRectsContext | undefined>;
+    // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)
     dismissMenu(): void;
@@ -2012,8 +2016,6 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
     render(): JSX.Element;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IGroupedListV2Props" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListV2Props>;
 
@@ -6126,6 +6128,32 @@ export interface IGroupedListStyles {
     groupIsDropping: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupedListV2Props extends IGroupedListProps {
+    groupExpandedVersion?: {};
+    listRef?: React_2.Ref<List>;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number, group?: IGroup) => React_2.ReactNode;
+    version?: {};
+}
+
+// @public (undocumented)
+export interface IGroupedListV2State {
+    // (undocumented)
+    compact?: IGroupedListV2Props['compact'];
+    // (undocumented)
+    groupExpandedVersion: {};
+    // (undocumented)
+    groups?: IGroup[];
+    // (undocumented)
+    items?: IGroupedListV2Props['items'];
+    // (undocumented)
+    listProps?: IGroupedListV2Props['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListV2Props['selectionMode'];
+    // (undocumented)
+    version: {};
 }
 
 // @public (undocumented)

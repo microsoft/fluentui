@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dialog } from '@fluentui/react-northstar';
 import DialogExample from '../../examples/components/Dialog/Types/DialogExample.shorthand';

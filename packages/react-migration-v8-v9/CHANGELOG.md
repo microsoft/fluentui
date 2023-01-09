@@ -1,8 +1,90 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Mon, 05 Dec 2022 07:54:46 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jan 2023 07:59:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.27)
+
+Thu, 05 Jan 2023 07:59:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.26..@fluentui/react-migration-v8-v9_v1.0.27)
+
+### Patches
+
+- Bump @fluentui/react to v8.104.2 ([PR #26055](https://github.com/microsoft/fluentui/pull/26055) by beachball)
+
+## [1.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.26)
+
+Wed, 04 Jan 2023 07:45:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.25..@fluentui/react-migration-v8-v9_v1.0.26)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+
+## [1.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.25)
+
+Fri, 23 Dec 2022 07:55:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.24..@fluentui/react-migration-v8-v9_v1.0.25)
+
+### Patches
+
+- Bump @fluentui/react to v8.104.1 ([PR #26073](https://github.com/microsoft/fluentui/pull/26073) by beachball)
+
+## [1.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.24)
+
+Wed, 21 Dec 2022 07:47:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.23..@fluentui/react-migration-v8-v9_v1.0.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.104.0 ([PR #26052](https://github.com/microsoft/fluentui/pull/26052) by beachball)
+
+## [1.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.23)
+
+Tue, 20 Dec 2022 07:53:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.22..@fluentui/react-migration-v8-v9_v1.0.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.10 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+
+## [1.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.22)
+
+Fri, 16 Dec 2022 07:50:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.21..@fluentui/react-migration-v8-v9_v1.0.22)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.9 ([PR #26015](https://github.com/microsoft/fluentui/pull/26015) by beachball)
+
+## [1.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.21)
+
+Tue, 13 Dec 2022 07:46:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.20..@fluentui/react-migration-v8-v9_v1.0.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.8 ([PR #25971](https://github.com/microsoft/fluentui/pull/25971) by beachball)
+
+## [1.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.20)
+
+Fri, 09 Dec 2022 07:54:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.19..@fluentui/react-migration-v8-v9_v1.0.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.103.7 ([PR #25947](https://github.com/microsoft/fluentui/pull/25947) by beachball)
+
+## [1.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.19)
+
+Thu, 08 Dec 2022 07:46:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v1.0.18..@fluentui/react-migration-v8-v9_v1.0.19)
+
+### Patches
+
+- fix: update theme tokens ([PR #25903](https://github.com/microsoft/fluentui/pull/25903) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react to v8.103.6 ([PR #25665](https://github.com/microsoft/fluentui/pull/25665) by beachball)
 
 ## [1.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v1.0.18)
 

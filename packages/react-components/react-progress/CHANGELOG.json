@@ -2,6 +2,139 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Wed, 04 Jan 2023 01:40:22 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "2c38f1e4ae07b2b60df596efe11015a68f166dbf",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.13",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.3.1",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Dec 2022 10:20:29 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.12",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.4",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 14:59:26 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "fdd8d8fb759a143e8f3d6792960ca10b197c3b23",
+            "comment": "chore: Change name to ProgressBar"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "25bc50c2fda3b80ce3f57245ce589db69e11f296",
+            "comment": "fix: Add @noflip to animation styles to prevent extra from css being generated"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "9e3f40f8ca67016590ced1a18aa16d9c02b3b5c6",
+            "comment": "(chore): remove deprecated exports from ProgressBar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.11",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:28 GMT",
       "tag": "@fluentui/react-progress_v9.0.0-alpha.7",
       "version": "9.0.0-alpha.7",

@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 import { TestObject } from '@fluentui/react-conformance';
-import parseDocblock from '@fluentui/scripts/gulp/plugins/util/parseDocblock';
+import { parseDocblock } from '@fluentui/scripts/gulp';
 
 /**
  * northstar-specific tests that run using react-conformance

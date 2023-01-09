@@ -69,7 +69,10 @@ export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
 export type DataGridBodySlots = TableBodySlots;
 
 // @public
-export type DataGridBodyState = TableBodyState;
+export type DataGridBodyState = TableBodyState & {
+    rows: RowState<any>[];
+    renderRow: RowRenderFunction;
+};
 
 // @public
 export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
@@ -133,7 +136,7 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
@@ -146,7 +149,7 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps = Omit<TableRowProps, 'children'> & ComponentProps<DataGridRowSlots> & {
+export type DataGridRowProps = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
     children: CellRenderFunction;
 };
 
@@ -156,7 +159,10 @@ export type DataGridRowSlots = TableRowSlots & {
 };
 
 // @public
-export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots>;
+export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
+    renderCell: CellRenderFunction;
+    columnDefs: ColumnDefinition<any>[];
+};
 
 // @public
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
@@ -179,10 +185,10 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: HeadlessTableState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance'>;
+} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'>;
 
 // @public (undocumented)
-export type FocusMode = 'none' | 'cell';
+export type FocusMode = 'none' | 'cell' | 'row_unstable';
 
 // @public (undocumented)
 export interface HeadlessTableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {

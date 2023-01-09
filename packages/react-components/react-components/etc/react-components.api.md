@@ -284,6 +284,11 @@ import { PartialTheme } from '@fluentui/react-theme';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
+import { Persona } from '@fluentui/react-persona';
+import { personaClassNames } from '@fluentui/react-persona';
+import { PersonaProps } from '@fluentui/react-persona';
+import { PersonaSlots } from '@fluentui/react-persona';
+import { PersonaState } from '@fluentui/react-persona';
 import { Popover } from '@fluentui/react-popover';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { PopoverProps } from '@fluentui/react-popover';
@@ -366,6 +371,7 @@ import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
+import { renderPersona_unstable } from '@fluentui/react-persona';
 import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
@@ -589,6 +595,8 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { usePersona_unstable } from '@fluentui/react-persona';
+import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { usePopover_unstable } from '@fluentui/react-popover';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
@@ -602,6 +610,7 @@ import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
@@ -1192,6 +1201,16 @@ export { partitionAvatarGroupItems }
 
 export { PartitionAvatarGroupItemsOptions }
 
+export { Persona }
+
+export { personaClassNames }
+
+export { PersonaProps }
+
+export { PersonaSlots }
+
+export { PersonaState }
+
 export { Popover }
 
 export { PopoverContextValue }
@@ -1355,6 +1374,8 @@ export { renderMenuPopover_unstable }
 export { renderMenuSplitGroup_unstable }
 
 export { renderMenuTrigger_unstable }
+
+export { renderPersona_unstable }
 
 export { renderPopover_unstable }
 
@@ -1802,6 +1823,10 @@ export { useModalAttributes }
 
 export { UseModalAttributesOptions }
 
+export { usePersona_unstable }
+
+export { usePersonaStyles_unstable }
+
 export { usePopover_unstable }
 
 export { usePopoverContext_unstable }
@@ -1827,6 +1852,8 @@ export { useRadioGroupContextValues }
 export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
+
+export { useScrollbarWidth }
 
 export { useSlider_unstable }
 

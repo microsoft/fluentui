@@ -39,4 +39,30 @@ describe('DataGridCell', () => {
     expect(result.getByRole('gridcell').tabIndex).toBe(-1);
     expect(result.getByRole('gridcell').hasAttribute('tabindex')).toBe(false);
   });
+
+  it('should set tabindex 0 if cell focus is enabled', () => {
+    const ctx = mockDataGridContext({ focusMode: 'cell' });
+    const { getByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridCell>Default DataGridCell</DataGridCell>
+      </DataGridContextProvider>,
+    );
+
+    const row = getByRole('gridcell');
+    expect(row.tabIndex).toBe(0);
+    expect(row.getAttribute('tabindex')).toBe('0');
+  });
+
+  it.each(['none', 'row_unstable'] as const)('should not set tabindex if focus mode is %s', focusMode => {
+    const ctx = mockDataGridContext({ focusMode });
+    const { getByRole } = render(
+      <DataGridContextProvider value={ctx}>
+        <DataGridCell>Default DataGridCell</DataGridCell>
+      </DataGridContextProvider>,
+    );
+
+    const row = getByRole('gridcell');
+    expect(row.tabIndex).toBe(-1);
+    expect(row.hasAttribute('tabindex')).toBe(false);
+  });
 });

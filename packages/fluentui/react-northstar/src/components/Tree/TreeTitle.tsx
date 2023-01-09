@@ -79,6 +79,8 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** The id of the parent tree title, if any. */
   parent?: string;
+
+  unstyled?: boolean;
 }
 
 export type TreeTitleStylesProps = Pick<
@@ -166,6 +168,7 @@ export const TreeTitle = (React.forwardRef<HTMLAnchorElement, TreeTitleProps>((p
       variables,
     }),
     rtl: context.rtl,
+    unstyled: props.unstyled,
   });
 
   const ElementType = getElementType(props);
@@ -239,6 +242,7 @@ TreeTitle.propTypes = {
   selectable: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  unstyled: PropTypes.bool,
   indeterminate: PropTypes.bool,
   parent: PropTypes.string,
 };

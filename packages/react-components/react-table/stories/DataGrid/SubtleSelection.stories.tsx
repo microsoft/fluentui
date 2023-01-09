@@ -154,7 +154,6 @@ export const SubtleSelection = () => {
     <DataGrid
       items={items}
       columns={columns}
-      focusMode="cell"
       selectionMode="multiselect"
       subtleSelection
       defaultSelectedItems={defaultSelectedItems}

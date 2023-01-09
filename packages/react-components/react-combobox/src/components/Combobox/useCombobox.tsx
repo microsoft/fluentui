@@ -27,7 +27,7 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  const baseState = useComboboxBaseState(props);
+  const baseState = useComboboxBaseState({ ...props, editable: true });
   const {
     activeOption,
     clearSelection,
@@ -55,25 +55,22 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
   // calculate listbox width style based on trigger width
-  const [popupWidth, setPopupWidth] = React.useState<string>();
+  const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
   React.useEffect(() => {
-    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
-    setPopupWidth(width);
-  }, [open]);
-
-  // handle input type-to-select
-  const getSearchString = (inputValue: string): string => {
-    // if there are commas in the value string, take the text after the last comma
-    const searchString = inputValue.split(',').pop();
-
-    return searchString?.trim().toLowerCase() || '';
-  };
+    // only recalculate width when opening
+    if (open) {
+      const width = `${rootRef.current?.clientWidth}px`;
+      if (width !== popupDimensions?.width) {
+        setPopupDimensions({ width });
+      }
+    }
+  }, [open, popupDimensions]);
 
   // set active option and selection based on typing
   const getOptionFromInput = (inputValue: string): OptionValue | undefined => {
-    const searchString = getSearchString(inputValue);
+    const searchString = inputValue?.trim().toLowerCase();
 
-    if (searchString.length === 0) {
+    if (!searchString || searchString.length === 0) {
       return;
     }
 
@@ -102,7 +99,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     // handle selection and updating value if freeform is false
     if (!baseState.open && !freeform) {
       // select matching option, if the value fully matches
-      if (value && activeOption && getSearchString(value) === activeOption?.value.toLowerCase()) {
+      if (value && activeOption && value.trim().toLowerCase() === activeOption?.value.toLowerCase()) {
         baseState.selectOption(ev, activeOption);
       }
 
@@ -173,7 +170,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
           required: true,
           defaultProps: {
             children: props.children,
-            style: { width: popupWidth },
+            style: popupDimensions,
           },
         })
       : undefined;
@@ -224,6 +221,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       // open and set focus
       state.setOpen(event, !state.open);
       triggerRef.current?.focus();
+
+      // set focus visible=false, since this can only be done with the mouse/pointer
+      setFocusVisible(false);
     }),
   );
 
