@@ -436,7 +436,9 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'>;
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'> & {
+    isHeaderRow: boolean;
+};
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
@@ -445,7 +447,7 @@ export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots>;
 
 // @public
-export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
+export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellSlots>> & {
     type?: 'checkbox' | 'radio';
     checked?: CheckboxProps['checked'];
     subtle?: boolean;
