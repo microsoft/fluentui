@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 
   farItems: {
-    dislay: 'flex',
+    display: 'flex',
     ...shorthands.gap('4px'),
     flexWrap: 'nowrap',
     marginRight: '10px', //to allow the resize handle to be grabbed
