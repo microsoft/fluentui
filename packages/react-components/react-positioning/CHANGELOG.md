@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 04 Jan 2023 01:40:20 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 14:34:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.7)
+
+Mon, 09 Jan 2023 14:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.6..@fluentui/react-positioning_v9.3.7)
+
+### Patches
+
+- fix: setOverrideTarget should be an event callback ([PR #26157](https://github.com/microsoft/fluentui/pull/26157) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.6)
 

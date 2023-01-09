@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: remove Event type in selectionManager",
-  "packageName": "@fluentui/react-table",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
