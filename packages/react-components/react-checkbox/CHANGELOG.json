@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 21:51:23 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.19",
+      "version": "9.0.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "204f1c46b7257a0bc4cc6506242f4c0c02b5b17f",
+            "comment": "perf: Don't render Checkbox icon when unchecked"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:02 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.18",
       "version": "9.0.18",

@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 21:51:23 GMT",
+      "tag": "@fluentui/react-components_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "204f1c46b7257a0bc4cc6506242f4c0c02b5b17f",
+            "comment": "perf: Don't render Checkbox icon when unchecked"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "fb5708446f369a57f48b87a0141d6a651acddbde",
+            "comment": "revert: MenuItem root slot only supports div"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e361553bf9966758a89630a2d5fc94a94ded5d5f",
+            "comment": "fix: disabled cursor style, opening when disabled, and hover styles"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "e361553bf9966758a89630a2d5fc94a94ded5d5f",
+            "comment": "fix: no interactive hover style when disabled"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:34:54 GMT",
       "tag": "@fluentui/react-components_v9.9.0",
       "version": "9.9.0",

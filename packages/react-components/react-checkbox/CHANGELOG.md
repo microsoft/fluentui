@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 21:51:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.19)
+
+Mon, 09 Jan 2023 21:51:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.18..@fluentui/react-checkbox_v9.0.19)
+
+### Patches
+
+- perf: Don't render Checkbox icon when unchecked ([PR #26248](https://github.com/microsoft/fluentui/pull/26248) by behowell@microsoft.com)
 
 ## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.18)
 
