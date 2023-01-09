@@ -7,7 +7,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useDataGridContextValues_unstable } from './useDataGridContextValues';
 
 /**
- * DataGrid component - TODO: add more docs
+ * DataGrid component
  */
 export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((props, ref) => {
   const state = useDataGrid_unstable(props, ref);
