@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 05 Jan 2023 07:59:54 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 07:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.36)
+
+Mon, 09 Jan 2023 07:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.35..@fluentui/react-experiments_v8.14.36)
+
+### Patches
+
+- Bump @fluentui/react to v8.104.3 ([PR #26132](https://github.com/microsoft/fluentui/pull/26132) by beachball)
 
 ## [8.14.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.35)
 
