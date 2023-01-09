@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Mon, 09 Jan 2023 14:35:00 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 21:51:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.18)
+
+Mon, 09 Jan 2023 21:51:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.17..@fluentui/react-table_v9.0.0-alpha.18)
+
+### Changes
+
+- Bump @fluentui/react-checkbox to v9.0.19 ([PR #26261](https://github.com/microsoft/fluentui/pull/26261) by beachball)
 
 ## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.17)
 
