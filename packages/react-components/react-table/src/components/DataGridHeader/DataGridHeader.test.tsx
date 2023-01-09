@@ -10,8 +10,6 @@ describe('DataGridHeader', () => {
     displayName: 'DataGridHeader',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<DataGridHeader>Default DataGridHeader</DataGridHeader>);
     expect(result.container).toMatchSnapshot();

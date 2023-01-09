@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 14:34:54 GMT",
+      "tag": "@fluentui/priority-overflow_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "2611ae5441e4bc702c4ce6404c7186f6c2de7cc3",
+            "comment": "fix: Minimum visible overflow items should be respected"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:47 GMT",
       "tag": "@fluentui/priority-overflow_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

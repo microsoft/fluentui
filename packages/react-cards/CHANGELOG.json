@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 07:49:46 GMT",
+      "tag": "@fluentui/react-cards_v0.205.41",
+      "version": "0.205.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.104.3",
+            "commit": "1d3c92581624aeebaf60d7d4601f400352a961da"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Jan 2023 07:59:52 GMT",
       "tag": "@fluentui/react-cards_v0.205.40",
       "version": "0.205.40",

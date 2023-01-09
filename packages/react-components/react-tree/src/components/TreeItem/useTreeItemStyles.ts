@@ -13,6 +13,7 @@ export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   iconAfter: 'fui-TreeItem__iconAfter',
   actions: 'fui-TreeItem__actions',
   badges: 'fui-TreeItem__badges',
+  groupper: 'fui-TreeItem__groupper',
 };
 
 const treeItemTokens = {
@@ -45,24 +46,22 @@ const useRootStyles = makeStyles({
     },
     ':focus': {
       [`& .${treeItemClassNames.actions}`]: {
-        display: 'flex',
         opacity: '1',
         position: 'relative',
-        width: 'unset',
-        height: 'unset',
-        right: 'unset',
+      },
+    },
+    ':focus-within': {
+      [`& .${treeItemClassNames.actions}`]: {
+        opacity: '1',
+        position: 'relative',
       },
     },
     ':hover': {
       color: tokens.colorNeutralForeground2Hover,
       backgroundColor: tokens.colorSubtleBackgroundHover,
       [`& .${treeItemClassNames.actions}`]: {
-        display: 'flex',
         opacity: '1',
         position: 'relative',
-        width: 'unset',
-        height: 'unset',
-        right: 'unset',
       },
       [`& .${treeItemClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Hover,
@@ -71,6 +70,11 @@ const useRootStyles = makeStyles({
   },
   actionsAndBadges: {
     ':focus': {
+      [`& .${treeItemClassNames.badges}`]: {
+        display: 'none',
+      },
+    },
+    ':focus-within': {
       [`& .${treeItemClassNames.badges}`]: {
         display: 'none',
       },
@@ -184,15 +188,25 @@ const useBadgesStyles = makeStyles({
  */
 const useActionsStyles = makeStyles({
   base: {
+    display: 'flex',
     opacity: '0',
     position: 'absolute',
-    width: 0,
-    height: 0,
     right: 0,
+    top: 0,
     marginLeft: 'auto',
     ...shorthands.padding(0, tokens.spacingHorizontalXS),
   },
+  open: {
+    opacity: '1',
+    position: 'relative',
+  },
 });
+
+export const expandIconInlineStyles = {
+  90: { transform: `rotate(90deg)` },
+  0: { transform: `rotate(0deg)` },
+  180: { transform: `rotate(180deg)` },
+} as const;
 
 /**
  * Apply styling to the TreeItem slots based on the state
@@ -222,6 +236,8 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
     state.isLeaf && rootStyles.leaf,
     state.root.className,
   );
+
+  state.groupper.className = mergeClasses(treeItemClassNames.groupper, state.groupper.className);
 
   state.root.style = {
     ...state.root.style,
@@ -256,7 +272,12 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   }
 
   if (actions) {
-    actions.className = mergeClasses(treeItemClassNames.actions, actionsStyles.base, actions.className);
+    actions.className = mergeClasses(
+      treeItemClassNames.actions,
+      actionsStyles.base,
+      state.keepActionsOpen && actionsStyles.open,
+      actions.className,
+    );
   }
   if (badges) {
     badges.className = mergeClasses(treeItemClassNames.badges, badgesStyles.base, badges.className);

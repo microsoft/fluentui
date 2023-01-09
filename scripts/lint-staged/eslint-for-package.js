@@ -1,9 +1,10 @@
 // @ts-check
 
-const micromatch = require('micromatch');
-const fs = require('fs-extra');
 const path = require('path');
 const { ESLint } = require('eslint');
+const fs = require('fs-extra');
+const micromatch = require('micromatch');
+
 const { eslintConstants } = require('../monorepo');
 
 /**
@@ -57,18 +58,19 @@ async function run() {
 
   // Lint files then fix all auto-fixable issues
   const results = await eslint.lintFiles(filteredFiles);
+
   await ESLint.outputFixes(results);
 
   // Format results
   const formatter = await eslint.loadFormatter();
   const resultText = formatter.format(results);
   if (resultText) {
-    console.error(resultText);
-    process.exit(1);
+    throw new Error(resultText);
   }
 }
 
 run().catch(err => {
-  console.log(err);
-  process.exit(1);
+  // logging is handled by ./eslint.js. If you wanna directly call this script and see errors uncomment following line ↓
+  // console.error(err);
+  throw new Error(err);
 });
