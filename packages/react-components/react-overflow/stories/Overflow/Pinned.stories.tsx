@@ -61,7 +61,11 @@ const OverflowSelectionItem: React.FC<{
 
   return (
     <OverflowItem id={props.id} priority={props.selected ? 1000 : undefined}>
-      <Button appearance={props.selected ? 'primary' : 'secondary'} onClick={onClick}>
+      <Button
+        aria-pressed={props.selected ? 'true' : 'false'}
+        appearance={props.selected ? 'primary' : 'secondary'}
+        onClick={onClick}
+      >
         Item {props.id}
       </Button>
     </OverflowItem>
