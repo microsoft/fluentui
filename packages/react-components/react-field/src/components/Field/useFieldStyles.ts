@@ -19,16 +19,23 @@ const useRootStyles = makeStyles({
   base: {
     display: 'grid',
     gridAutoFlow: 'row',
+    gridTemplateColumns: 'auto 1fr',
     justifyItems: 'start',
   },
 
   horizontal: {
     gridTemplateRows: 'auto auto auto auto',
-    gridTemplateColumns: '1fr 2fr',
+    gridTemplateColumns: '1fr auto 2fr',
+  },
+
+  fullWidth: {
+    gridColumnStart: '1',
+    gridColumnEnd: '-1',
   },
 
   secondColumn: {
     gridColumnStart: '2',
+    gridColumnEnd: '-1',
   },
 });
 
@@ -59,18 +66,18 @@ const useSecondaryTextStyles = makeStyles({
   },
 });
 
-const useValidationMessageStyles = makeStyles({
+const useValidationMessageIconStyles = makeStyles({
   base: {
-    display: 'flex',
-  },
-
-  icon: {
     display: 'block',
+    alignSelf: 'start',
     fontSize: '12px',
     lineHeight: '12px',
-    verticalAlign: 'middle',
     marginRight: tokens.spacingHorizontalXS,
-    marginTop: tokens.spacingVerticalXXS,
+    marginTop: tokens.spacingVerticalXS,
+  },
+
+  horizontal: {
+    gridColumnStart: 2,
   },
 
   error: {
@@ -103,6 +110,7 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   if (state.control) {
     state.control.className = mergeClasses(
       classNames.control,
+      !horizontal && rootStyles.fullWidth,
       horizontal && rootStyles.secondColumn,
       state.control.className,
     );
@@ -113,17 +121,19 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
     state.label.className = mergeClasses(
       classNames.label,
       labelStyles.base,
+      !horizontal && rootStyles.fullWidth,
       horizontal && labelStyles.horizontal,
       state.label.className,
     );
   }
 
-  const validationMessageStyles = useValidationMessageStyles();
+  const validationMessageIconStyles = useValidationMessageIconStyles();
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = mergeClasses(
       classNames.validationMessageIcon,
-      validationMessageStyles.icon,
-      !!validationState && validationMessageStyles[validationState],
+      validationMessageIconStyles.base,
+      horizontal && validationMessageIconStyles.horizontal,
+      !!validationState && validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
     );
   }
@@ -132,9 +142,7 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   if (state.validationMessage) {
     state.validationMessage.className = mergeClasses(
       classNames.validationMessage,
-      validationMessageStyles.base,
       secondaryTextStyles.base,
-      horizontal && rootStyles.secondColumn,
       validationState === 'error' && secondaryTextStyles.error,
       state.validationMessage.className,
     );
@@ -144,6 +152,7 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
     state.hint.className = mergeClasses(
       classNames.hint,
       secondaryTextStyles.base,
+      rootStyles.fullWidth,
       horizontal && rootStyles.secondColumn,
       state.hint.className,
     );

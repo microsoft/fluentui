@@ -14,10 +14,12 @@ export const renderField_unstable = <T extends FieldControl>(state: FieldState<T
       {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {slots.control && <slots.control {...(slotProps.control as any)} />}
       {slots.validationMessage && (
-        <slots.validationMessage {...slotProps.validationMessage}>
+        <>
           {slots.validationMessageIcon && <slots.validationMessageIcon {...slotProps.validationMessageIcon} />}
-          {slotProps.validationMessage.children}
-        </slots.validationMessage>
+          <slots.validationMessage {...slotProps.validationMessage}>
+            {slotProps.validationMessage.children}
+          </slots.validationMessage>
+        </>
       )}
       {slots.hint && <slots.hint {...slotProps.hint} />}
     </slots.root>
