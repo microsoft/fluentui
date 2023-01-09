@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Stops using ARIAButton types for MenuItem root",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
