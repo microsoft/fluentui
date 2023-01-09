@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: disabled cursor style, opening when disabled, and hover styles",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
