@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Explicit focus outline for TableHeaderCell and TableSelectionCell",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

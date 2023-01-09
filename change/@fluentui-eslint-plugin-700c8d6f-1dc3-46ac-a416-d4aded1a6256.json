@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add cypress.config to config files glob to fix linting",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

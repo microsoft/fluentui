@@ -6,7 +6,7 @@ import type { TableHeaderProps } from './TableHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TableHeader component - TODO: add more docs
+ * TableHeader component
  */
 export const TableHeader: ForwardRefComponent<TableHeaderProps> = React.forwardRef((props, ref) => {
   const state = useTableHeader_unstable(props, ref);

@@ -54,11 +54,11 @@ describe('mergeComponentStyles', () => {
       expect(() => mergeComponentStyles(null, styles)).not.toThrow();
 
       expect(() => mergeComponentStyles(styles, undefined)).not.toThrow();
-      // @ts-expect-error
+
       expect(() => mergeComponentStyles(styles, stylesWithUndefined)).not.toThrow();
 
       expect(() => mergeComponentStyles(undefined, styles)).not.toThrow();
-      // @ts-expect-error
+
       expect(() => mergeComponentStyles(stylesWithUndefined, styles)).not.toThrow();
     });
 

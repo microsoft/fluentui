@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import {
@@ -13,8 +13,8 @@ import {
 storiesOf('Dropdown', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Dropdown')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -26,7 +26,7 @@ storiesOf('Dropdown', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',
@@ -181,8 +181,8 @@ storiesOf('Dropdown', module)
 storiesOf('Dropdown Disabled', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Dropdown')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -192,7 +192,7 @@ storiesOf('Dropdown Disabled', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <Dropdown

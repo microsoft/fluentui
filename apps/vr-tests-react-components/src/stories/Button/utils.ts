@@ -1,4 +1,4 @@
-import Screener from 'screener-storybook/src/screener';
+import { Steps } from 'storywright';
 import { makeStyles } from '@griffel/react';
 
 export const buttonId = 'button-id';
@@ -9,7 +9,7 @@ export const useStyles = makeStyles({
   },
 });
 
-export const steps = new Screener.Steps()
+export const steps = new Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
   .hover('#button-id')
   .snapshot('hover', { cropTo: '.testWrapper' })

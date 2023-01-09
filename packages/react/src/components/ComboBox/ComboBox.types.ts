@@ -246,10 +246,9 @@ export interface IComboBoxProps
   dropdownMaxWidth?: number;
 
   /**
-   * Whether to hide the ComboBox's caret (expand) button element from screen readers. This is true
-   * (hidden) by default because all functionality is handled by the input element, and the arrow
-   * button is only meant to be decorative.
-   * @defaultvalue true
+   * Whether to hide the ComboBox's caret (expand) button element from screen readers. This is false
+   * (exposed to AT) by default because Android Talkback cannot otherwise expand the combobox.
+   * @defaultvalue false
    */
   isButtonAriaHidden?: boolean;
 

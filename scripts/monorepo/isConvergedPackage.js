@@ -33,11 +33,13 @@ function isConvergedPackage(options = {}) {
     return false;
   }
 
-  return semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version);
+  const hasVNextTag = !!metadata.tags?.includes('vNext');
+
+  return semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version) || hasVNextTag;
 }
 
 /**
- * Determins if a version is the 0.0.0 nightly version used by converged packages
+ * Determines if a version is the 0.0.0 nightly version used by converged packages
  * @param {string} version
  */
 function isNightlyVersion(version) {

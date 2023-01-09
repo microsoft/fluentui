@@ -5,7 +5,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
 import { tableSelectionCellClassNames } from '../TableSelectionCell/useTableSelectionCellStyles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 export const tableRowClassName = 'fui-TableRow';
 export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
@@ -151,7 +150,6 @@ const useStyles = makeStyles({
  * Apply styling to the TableRow slots based on the state
  */
 export const useTableRowStyles_unstable = (state: TableRowState): TableRowState => {
-  const isHeaderRow = useIsInTableHeader();
   const styles = useStyles();
   const layoutStyles = {
     table: useTableLayoutStyles(),
@@ -160,11 +158,11 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
   state.root.className = mergeClasses(
     tableRowClassNames.root,
     styles.root,
-    !isHeaderRow && styles.rootInteractive,
+    !state.isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     styles[state.appearance],
-    state.appearance === 'none' && !isHeaderRow && styles.noAppearanceFocusWithin,
+    state.appearance === 'none' && !state.isHeaderRow && styles.noAppearanceFocusWithin,
     state.root.className,
   );
 

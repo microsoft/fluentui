@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Persona } from '@fluentui/react-persona';
 import type { PersonaProps } from '@fluentui/react-persona';
@@ -15,7 +15,7 @@ storiesOf('Persona Converged', module)
     </div>
   ))
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory(
     'basic',

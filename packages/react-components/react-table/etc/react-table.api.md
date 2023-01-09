@@ -69,7 +69,10 @@ export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
 export type DataGridBodySlots = TableBodySlots;
 
 // @public
-export type DataGridBodyState = TableBodyState;
+export type DataGridBodyState = TableBodyState & {
+    rows: RowState<any>[];
+    renderRow: RowRenderFunction;
+};
 
 // @public
 export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
@@ -156,7 +159,10 @@ export type DataGridRowSlots = TableRowSlots & {
 };
 
 // @public
-export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots>;
+export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
+    renderCell: CellRenderFunction;
+    columnDefs: ColumnDefinition<any>[];
+};
 
 // @public
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
@@ -323,7 +329,7 @@ export type TableCellLayoutSlots = {
     media: Slot<'span'>;
     main: Slot<'span'>;
     description: Slot<'span'>;
-    wrapper: Slot<'div'>;
+    content: Slot<'div'>;
 };
 
 // @public
@@ -430,7 +436,9 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'>;
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'> & {
+    isHeaderRow: boolean;
+};
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
@@ -439,7 +447,7 @@ export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots>;
 
 // @public
-export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
+export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellSlots>> & {
     type?: 'checkbox' | 'radio';
     checked?: CheckboxProps['checked'];
     subtle?: boolean;

@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { ListboxContext } from '../../contexts/ListboxContext';
 import { Option } from './Option';
 import type { OptionProps } from './Option.types';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Option', () => {
   isConformant<OptionProps>({

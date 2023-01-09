@@ -11,7 +11,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -343,25 +343,27 @@ const Arrow: React.FC = () => {
 
 const AutoSize = () => {
   const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
   const { containerRef, targetRef } = usePositioning({
     position: 'below',
     autoSize: true,
+    overflowBoundary,
   });
 
   return (
     <div
+      ref={setOverflowBoundary}
       className={styles.boundary}
       style={{
         display: 'flex',
         flexDirection: 'column',
         height: 200,
         padding: '10px 50px',
-        overflow: 'hidden',
         position: 'relative',
       }}
     >
       <button ref={targetRef}>Target</button>
-      <Box ref={containerRef} style={{ overflow: 'auto' }}>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
         pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta
@@ -591,8 +593,8 @@ storiesOf('Positioning', module)
   .addStory('target property', () => <TargetProp />)
   .addStory('imperative target', () => <ImperativeTarget />)
   .addStory('visibility modifiers', () => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('has "[data-popper-is-intersecting]" when the popover intersects boundaries')
         .executeScript('document.querySelector("#scrollable-area").scrollTop = 80')
         .snapshot(`has "[data-popper-escaped]" when the popper escapes the reference element's boundary`)
@@ -601,6 +603,6 @@ storiesOf('Positioning', module)
         .end()}
     >
       <VisibilityModifiers />
-    </Screener>
+    </StoryWright>
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true });
