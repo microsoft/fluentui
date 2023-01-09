@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "revert: MenuItem root slot only supports div",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

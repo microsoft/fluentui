@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 09 Jan 2023 14:34:54 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 21:51:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.9.1)
+
+Mon, 09 Jan 2023 21:51:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.9.0..@fluentui/react-components_v9.9.1)
+
+### Patches
+
+- `@fluentui/react-checkbox`
+  - perf: Don't render Checkbox icon when unchecked ([PR #26248](https://github.com/microsoft/fluentui/pull/26248) by behowell@microsoft.com)
+- `@fluentui/react-menu`
+  - revert: MenuItem root slot only supports div ([PR #26261](https://github.com/microsoft/fluentui/pull/26261) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-combobox`
+  - fix: disabled cursor style, opening when disabled, and hover styles ([PR #26068](https://github.com/microsoft/fluentui/pull/26068) by sarah.higley@microsoft.com)
+- `@fluentui/react-select`
+  - fix: no interactive hover style when disabled ([PR #26068](https://github.com/microsoft/fluentui/pull/26068) by sarah.higley@microsoft.com)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.9.0)
 
