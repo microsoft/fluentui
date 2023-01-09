@@ -132,6 +132,12 @@ describe('VerticalStackedBarChart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should not render bar values', () => {
+    const component = renderer.create(<VerticalStackedBarChart data={chartPoints} hideValues={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('VerticalStackedBarChart - basic props', () => {
