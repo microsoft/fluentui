@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 05 Jan 2023 07:59:51 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 07:49:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.3)
+
+Mon, 09 Jan 2023 07:49:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.2..@fluentui/react_v8.104.3)
+
+### Patches
+
+- fix: set focus visibility className on correct element when calling setFocusVisibility directly ([PR #26132](https://github.com/microsoft/fluentui/pull/26132) by sarah.higley@microsoft.com)
 
 ## [8.104.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.2)
 
