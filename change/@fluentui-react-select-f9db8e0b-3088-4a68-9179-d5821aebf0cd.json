@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: no interactive hover style when disabled",
+  "packageName": "@fluentui/react-select",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
