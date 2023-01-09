@@ -7,19 +7,19 @@ This package includes a collection of icons to represent file types.
 
 ## Getting started
 
-If you are using Fluent UI React components, you can make all file type icons available by calling the `initializeFileTypeIcons` function from the `@fluentui/react-file-type-icons` package:
+If you are using Fluent UI React components, you can make all file type icons available by calling the `initializeFileTypeIcons` function from the `@uifabric/file-type-icons` package:
 
 ```tsx
 import { initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
 
-// Register icons and pull the fonts from the default SharePoint cdn.
+// Register icons and pull the fonts from the default Microsoft Fluent CDN:
 initializeFileTypeIcons();
 
-// ...or, register icons and pull the fonts from your own cdn:
+// Or register icons and pull the fonts from a different CDN or folder path:
 initializeFileTypeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-**NOTE:** Do not use the `item-types-fluent` icon set that was previously uploaded to the Fabric CDN; it is deprecated.
+**NOTE:** Proceed carefully if you override the default CDN location, whose contents may not match the registered file type icons and supported extensions. Do not use the `item-types-fluent` icon set that was previously uploaded to the Fluent CDN; it's deprecated.
 
 ## Usage in code
 
