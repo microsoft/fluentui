@@ -211,12 +211,10 @@ export type MenuListSlots = {
 };
 
 // @public (undocumented)
-export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & {
+export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
     selectRadio: SelectableHandler;
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
-    defaultCheckedValues?: Record<string, string[]>;
-    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 };
 
 // @public
