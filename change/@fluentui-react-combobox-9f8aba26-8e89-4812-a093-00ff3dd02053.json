@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: perf improvements with useEventCallback",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

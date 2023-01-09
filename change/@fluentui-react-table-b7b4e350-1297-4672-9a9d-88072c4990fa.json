@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING(TableCellLayout): `wrapper` slot renamed to `content`",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Combobox always starts at the first option if multiselect, and correctly sets focus visible\"",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
