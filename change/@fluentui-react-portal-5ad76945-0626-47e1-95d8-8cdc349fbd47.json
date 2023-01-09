@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: elementContains supports Node types",
-  "packageName": "@fluentui/react-portal",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

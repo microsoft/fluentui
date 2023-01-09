@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Minimum visible overflow items should be respected",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

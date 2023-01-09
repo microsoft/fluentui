@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MenuList props should win over context props",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
