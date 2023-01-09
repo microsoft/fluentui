@@ -25,8 +25,8 @@
     "@fluentui/react": "^8.104.3",
     "@fluentui/theme": "^2.6.20",
     "@storybook/addon-knobs": "6.4.0",
-    "@storybook/addon-essentials": "6.5.5",
-    "@storybook/addons": "6.5.5",
+    "@storybook/addon-essentials": "6.5.15",
+    "@storybook/addons": "6.5.15",
     "@fluentui/azure-themes": "^8.5.43",
     "@fluentui/theme-samples": "^8.7.41",
     "tslib": "^2.1.0"
