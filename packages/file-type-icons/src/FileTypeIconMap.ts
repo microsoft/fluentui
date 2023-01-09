@@ -256,6 +256,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   classifier: {
     extensions: ['classifier'],
   },
+  clipchamp: {
+    extensions: ['clipchamp'],
+  },
   csv: {
     extensions: ['csv'],
   },
