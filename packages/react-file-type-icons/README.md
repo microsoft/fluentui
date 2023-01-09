@@ -7,7 +7,7 @@ This package includes a collection of icons to represent file types.
 
 ## Getting started
 
-If you are using Fluent UI React components, you can make all file type icons available by calling the `initializeFileTypeIcons` function from the `@uifabric/file-type-icons` package:
+If you are using Fluent UI React components, you can make all file type icons available by calling the `initializeFileTypeIcons` function from the `@fluentui/react-file-type-icons` package:
 
 ```tsx
 import { initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
