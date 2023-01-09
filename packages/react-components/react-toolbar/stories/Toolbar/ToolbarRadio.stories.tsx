@@ -6,6 +6,7 @@ import type { ToolbarProps } from '@fluentui/react-components/unstable';
 export const Radio = (props: Partial<ToolbarProps>) => (
   <Toolbar
     {...props}
+    aria-label="Toolbar with Radio Buttons"
     defaultCheckedValues={{
       textOptions: ['center'],
     }}
