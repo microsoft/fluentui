@@ -33,7 +33,7 @@ export const Dividers = () => {
   const styles = useStyles();
 
   return (
-    <Overflow overflowDirection="start" padding={30}>
+    <Overflow padding={30}>
       <div className={styles.container}>
         <OverflowItem id={'1'} groupId={'1'}>
           <Button>Item 1</Button>
