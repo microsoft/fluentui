@@ -46,7 +46,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       content: 'span',
       secondaryContent: 'span',
     },
-    isNativeButton: as === 'button',
     root: getNativeElementProps(
       as,
       useARIAButtonProps(as, {
