@@ -75,12 +75,13 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   );
 
   const [checkedValues, setCheckedValues] = useControllableState({
-    state: hasMenuContext ? menuContext.checkedValues : props.checkedValues,
+    state: props.checkedValues ?? (hasMenuContext ? menuContext.checkedValues : undefined),
     defaultState: props.defaultCheckedValues,
     initialState: {},
   });
 
-  const handleCheckedValueChange = hasMenuContext ? menuContext.onCheckedValueChange : props.onCheckedValueChange;
+  const handleCheckedValueChange =
+    props.onCheckedValueChange ?? (hasMenuContext ? menuContext.onCheckedValueChange : undefined);
 
   const toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
