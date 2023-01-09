@@ -3,6 +3,10 @@ import descriptionMd from './MenuListDescription.md';
 
 export { Default } from './MenuListDefault.stories';
 export { MenuListWithNestedSubmenus } from './MenuListNestedSubmenus.stories';
+export { CheckboxItems } from './MenuListCheckboxItems.stories';
+export { RadioItems } from './MenuListRadioItems.stories';
+export { ControlledCheckboxItems } from './MenuListControlledCheckboxItems.stories';
+export { ControlledRadioItems } from './MenuListControlledRadioItems.stories';
 
 export default {
   title: 'Components/Menu/MenuList',
