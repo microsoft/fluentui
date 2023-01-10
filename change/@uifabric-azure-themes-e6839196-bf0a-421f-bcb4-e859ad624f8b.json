@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Cherry picked from 26152- fixing azure theme detailslist checkbox styling",
+  "packageName": "@uifabric/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
