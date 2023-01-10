@@ -20,6 +20,7 @@ export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
 export type DataGridBodyProps = Omit<DataGridBodyProps_2, 'children'> & {
     itemSize: number;
     height: number;
+    width?: string | number;
     children: RowRenderFunction;
 };
 
@@ -27,7 +28,7 @@ export type DataGridBodyProps = Omit<DataGridBodyProps_2, 'children'> & {
 export type DataGridBodySlots = DataGridBodySlots_2;
 
 // @public
-export type DataGridBodyState = Omit<DataGridBodyState_2, 'renderRow'> & Pick<DataGridBodyProps, 'itemSize' | 'height'> & {
+export type DataGridBodyState = Omit<DataGridBodyState_2, 'renderRow'> & Pick<DataGridBodyProps, 'itemSize' | 'height'> & Pick<Required<DataGridBodyProps>, 'width'> & {
     renderRow: RowRenderFunction;
 };
 

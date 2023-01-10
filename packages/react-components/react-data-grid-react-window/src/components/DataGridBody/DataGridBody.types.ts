@@ -40,6 +40,7 @@ export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
  * State used in rendering DataGridBody
  */
 export type DataGridBodyState = Omit<DataGridBodyStateBase, 'renderRow'> &
-  Pick<DataGridBodyProps, 'itemSize' | 'height' | 'width'> & {
+  Pick<DataGridBodyProps, 'itemSize' | 'height'> &
+  Pick<Required<DataGridBodyProps>, 'width'> & {
     renderRow: RowRenderFunction;
   };
