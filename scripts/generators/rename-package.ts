@@ -9,7 +9,7 @@ import { findGitRoot, PackageInfo, listAllTrackedFiles, stageAndCommit } from 'w
 const { readConfig: _readConfig, writeConfig: _writeConfig } = require('./utils');
 
 const readConfig: (pth: string) => PackageInfo = _readConfig;
-const writeConfig: (pth: string, newValue: any) => void = _writeConfig;
+const writeConfig: (pth: string, newValue: unknown) => void = _writeConfig;
 const { runPrettier } = require('./prettier');
 
 const gitRoot = findGitRoot(process.cwd());
@@ -25,6 +25,7 @@ const nameStartLookbehind = '(?<=[\'"`/! ]|^)';
 const nameEndLookahead = '(?=[\'"`/ @]|$)';
 
 const getPackageNameParts = (packageName: string): [string | undefined, string] =>
+  // eslint-disable-next-line no-sparse-arrays
   packageName[0] === '@' ? (packageName.split('/') as [string, string]) : [, packageName];
 
 const getPackagePath = (unscopedPackageName: string) => {
@@ -54,7 +55,7 @@ function getPackageToRename(): RenameInfo {
   if (oldNameArg) {
     const [oldScope = '@uifabric', oldUnscopedName] = getPackageNameParts(oldNameArg);
     const [newScope = '@fluentui', newUnscopedName] = getPackageNameParts(newNameArg || oldUnscopedName);
-    let packageJson = getPackageJson(oldUnscopedName);
+    const packageJson = getPackageJson(oldUnscopedName);
     return {
       oldUnscopedName,
       oldScope,
