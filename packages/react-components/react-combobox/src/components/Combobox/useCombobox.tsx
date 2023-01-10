@@ -236,15 +236,15 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     const hasExpandLabel = state.expandIcon['aria-label'] || state.expandIcon['aria-labelledby'];
     const defaultOpenString = 'Open'; // this is english-only since it is the fallback
     if (!hasExpandLabel) {
-      if (props['aria-label']) {
-        state.expandIcon['aria-label'] = `${defaultOpenString} ${props['aria-label']}`;
-      } else if (props['aria-labelledby']) {
+      if (props['aria-labelledby']) {
         const chevronId = state.expandIcon.id ?? `${comboId}-chevron`;
         const chevronLabelledBy = `${chevronId} ${state.input['aria-labelledby']}`;
 
         state.expandIcon['aria-label'] = defaultOpenString;
         state.expandIcon.id = chevronId;
         state.expandIcon['aria-labelledby'] = chevronLabelledBy;
+      } else if (props['aria-label']) {
+        state.expandIcon['aria-label'] = `${defaultOpenString} ${props['aria-label']}`;
       } else {
         state.expandIcon['aria-label'] = defaultOpenString;
       }
