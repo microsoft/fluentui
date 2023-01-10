@@ -129,6 +129,10 @@ export {
   useToolbar_unstable,
   useToolbarDividerStyles_unstable,
   useToolbarStyles_unstable,
+  useToolbarRadioGroupStyles_unstable,
+  renderToolbarRadioGroup_unstable,
+  useToolbarRadioGroup_unstable,
+  ToolbarRadioGroup,
 } from '@fluentui/react-toolbar';
 
 export type {
@@ -147,6 +151,8 @@ export type {
   ToolbarGroupState,
   ToolbarRadioButtonProps,
   ToolbarRadioButtonState,
+  ToolbarRadioGroupProps,
+  ToolbarRadioGroupState,
 } from '@fluentui/react-toolbar';
 
 export {
