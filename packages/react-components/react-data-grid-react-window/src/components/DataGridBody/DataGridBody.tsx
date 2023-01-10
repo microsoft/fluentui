@@ -6,7 +6,7 @@ import { renderDataGridBody_unstable } from './renderDataGridBody';
 import type { DataGridBodyProps } from './DataGridBody.types';
 
 /**
- * DataGridBody component - TODO: add more docs
+ * DataGridBody component
  */
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> = React.forwardRef((props, ref) => {
   const state = useDataGridBody_unstable(props, ref);
