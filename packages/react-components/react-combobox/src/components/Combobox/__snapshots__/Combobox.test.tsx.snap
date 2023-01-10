@@ -13,7 +13,10 @@ exports[`Combobox renders a default state 1`] = `
       value=""
     />
     <span
+      aria-expanded="false"
+      aria-label="Open"
       class="fui-Combobox__expandIcon"
+      role="button"
     >
       <svg
         aria-hidden="true"
@@ -40,7 +43,7 @@ exports[`Combobox renders an open listbox 1`] = `
     class="fui-Combobox"
   >
     <input
-      aria-activedescendant="fluent-option1"
+      aria-activedescendant="fluent-option11"
       aria-expanded="true"
       class="fui-Combobox__input"
       role="combobox"
@@ -48,7 +51,10 @@ exports[`Combobox renders an open listbox 1`] = `
       value=""
     />
     <span
+      aria-expanded="true"
+      aria-label="Open"
       class="fui-Combobox__expandIcon"
+      role="button"
     >
       <svg
         aria-hidden="true"
@@ -73,7 +79,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option1"
+        id="fluent-option11"
         role="option"
       >
         <span
@@ -100,7 +106,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option2"
+        id="fluent-option12"
         role="option"
       >
         <span
@@ -127,7 +133,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option3"
+        id="fluent-option13"
         role="option"
       >
         <span
