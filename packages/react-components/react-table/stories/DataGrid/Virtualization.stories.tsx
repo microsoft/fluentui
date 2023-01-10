@@ -43,6 +43,7 @@ type AuthorCell = {
 };
 
 type Item = {
+  index: number;
   file: FileCell;
   author: AuthorCell;
   lastUpdated: LastUpdatedCell;
@@ -63,7 +64,12 @@ export const Virtualization = () => {
           return 'File';
         },
         renderCell: item => {
-          return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
+          return (
+            <TableCellLayout media={item.file.icon}>
+              <strong>[{item.index}] </strong>
+              {item.file.label}
+            </TableCellLayout>
+          );
         },
       }),
       createColumn<Item>({
@@ -112,7 +118,7 @@ export const Virtualization = () => {
   );
 
   const items = React.useMemo(() => {
-    const baseItems: Item[] = [
+    const baseItems = [
       {
         file: { label: 'Meeting notes', icon: <DocumentRegular /> },
         author: { label: 'Max Mustermann', status: 'available' },
@@ -151,7 +157,7 @@ export const Virtualization = () => {
       },
     ];
 
-    return new Array(1500).fill(0).map((_, i) => baseItems[i % baseItems.length]);
+    return new Array(1500).fill(0).map((_, i) => ({ ...baseItems[i % baseItems.length], index: i }));
   }, []);
 
   return (
