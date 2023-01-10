@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding styles for SpinButton",
+  "packageName": "@fluentui/fluent2-theme",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
