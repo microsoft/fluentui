@@ -19,7 +19,10 @@ export const useToolbarRadioButton_unstable = (
   const size = useToolbarContext_unstable(ctx => ctx.size);
 
   const { onClick: onClickOriginal } = props;
-  const toggleButtonState = useToggleButton_unstable({ size, checked, role: 'radio', ...props }, ref);
+  const toggleButtonState = useToggleButton_unstable(
+    { size, checked, role: 'radio', 'aria-checked': checked, 'aria-pressed': undefined, ...props },
+    ref,
+  );
   const state: ToolbarRadioButtonState = {
     ...toggleButtonState,
     name: props.name,
