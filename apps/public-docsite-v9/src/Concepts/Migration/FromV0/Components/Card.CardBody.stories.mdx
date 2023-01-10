@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Card Migration/CardBody" />
+
+# Card Body Migration
+
+## Overview
+
+This component is not needed anymore. Instead, pass any content under the main Card component.
+
+Before:
+
+```jsx
+import { Card, CardBody } from '@fluentui/react-northstar';
+
+export const CardBodyExample = () => (
+  <Card elevated>
+    <CardBody fitted>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </CardBody>
+  </Card>
+);
+```
+
+After:
+
+```jsx
+import { Card } from '@fluentui/react-components/unstable';
+
+export const CardBodyExample = () => (
+  <Card>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </Card>
+);
+```
