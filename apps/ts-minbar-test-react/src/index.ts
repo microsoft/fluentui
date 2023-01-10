@@ -9,7 +9,7 @@ import {
   TempPaths,
   workspaceRoot,
   generateFiles,
-} from '@fluentui/scripts/projects-test';
+} from '@fluentui/scripts-projects-test';
 
 const tsVersion = '3.9';
 const testName = 'ts-minbar-react';

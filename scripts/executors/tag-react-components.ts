@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import * as semver from 'semver';
 import yargs from 'yargs';
 
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo';
+import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 
 function tagPackages(npmToken: string) {
   const packagesToTag = getPackagesToTag();
@@ -22,7 +22,8 @@ function tagPackages(npmToken: string) {
 
 function tagPackage(name: string, version: string, npmToken: string): boolean {
   const prerelease = semver.parse(version)?.prerelease;
-  if (prerelease == null || prerelease.length == 0) {
+  // eslint-disable-next-line eqeqeq
+  if (prerelease == null || prerelease.length === 0) {
     return true;
   }
 
@@ -50,6 +51,8 @@ function getPackagesToTag() {
           version: packageInfo.packageJson.version,
         };
       }
+
+      return;
     })
     .filter(Boolean) as Array<{ name: string; version: string }> | [];
 }

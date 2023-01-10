@@ -30,8 +30,10 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react": "^8.104.4",
     "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/scripts": "*",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.22"
+    "@fluentui/jest-serializer-merge-styles": "^8.0.22",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.12",

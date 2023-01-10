@@ -29,8 +29,11 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/test-utilities": "^8.2.5",
-    "@fluentui/scripts": "*",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.22"
+    "@fluentui/jest-serializer-merge-styles": "^8.0.22",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.4.4",

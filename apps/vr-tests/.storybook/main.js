@@ -1,4 +1,4 @@
-const { createStorybookWebpackConfig } = require('@fluentui/scripts/webpack');
+const { createStorybookWebpackConfig } = require('@fluentui/scripts-webpack');
 
 module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConfig} */ ({
   stories: ['../src/**/*.stories.tsx'],

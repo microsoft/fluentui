@@ -4,8 +4,8 @@ import * as _ from 'lodash';
 import * as yargs from 'yargs';
 import { execSync } from 'child_process';
 
-import { findGitRoot } from '../monorepo';
-import { createTempDir } from '../projects-test';
+import { findGitRoot } from '@fluentui/scripts-monorepo';
+import { createTempDir } from '@fluentui/scripts-projects-test';
 
 const themes = ['light', 'dark', 'teamsDark', 'highContrast'] as const;
 const repoRoot = findGitRoot();

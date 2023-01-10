@@ -32,7 +32,6 @@
     "@fluentui/a11y-testing": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/scripts": "*",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
     "@types/simulant": "^0.2.0",
@@ -41,7 +40,10 @@
     "fela-tools": "^10.6.1",
     "lerna-alias": "^3.0.3-0",
     "qs": "^6.8.0",
-    "simulant": "^0.2.2"
+    "simulant": "^0.2.2",
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-jest": "*"
   },
   "files": [
     "dist"

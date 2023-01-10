@@ -18,7 +18,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*"
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react": "^8.104.4",

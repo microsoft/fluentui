@@ -27,7 +27,9 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.19"
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-field": "9.0.0-alpha.14",

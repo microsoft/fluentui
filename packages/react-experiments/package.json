@@ -32,9 +32,11 @@
     "@types/deep-assign": "^0.1.1",
     "@types/prop-types": "15.7.1",
     "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/scripts": "*",
     "@fluentui/jest-serializer-merge-styles": "^8.0.22",
-    "react-hooks-testing-library": "^0.5.0"
+    "react-hooks-testing-library": "^0.5.0",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "@fluentui/react": "^8.104.4",

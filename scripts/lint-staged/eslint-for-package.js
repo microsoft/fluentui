@@ -4,8 +4,7 @@ const path = require('path');
 const { ESLint } = require('eslint');
 const fs = require('fs-extra');
 const micromatch = require('micromatch');
-
-const { eslintConstants } = require('../monorepo');
+const { eslintConstants } = require('@fluentui/scripts-monorepo');
 
 /**
  * Run ESLint for certain files from a particular package.
