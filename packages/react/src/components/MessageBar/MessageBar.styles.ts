@@ -140,6 +140,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       !isMultiline && truncated && classNames.expandingSingleLine,
       {
         background: semanticColors[backgroundColor[messageBarType]],
+        boxSizing: 'border-box',
         color: semanticColors.messageText,
         minHeight: 32,
         width: '100%',
