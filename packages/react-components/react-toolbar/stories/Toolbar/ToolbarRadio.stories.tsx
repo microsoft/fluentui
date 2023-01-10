@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AlignCenterHorizontal24Regular, AlignLeft24Regular, AlignRight24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarRadioButton } from '@fluentui/react-toolbar';
-import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarRadioButton } from '@fluentui/react-components/unstable';
+import type { ToolbarProps } from '@fluentui/react-components/unstable';
 
 export const Radio = (props: Partial<ToolbarProps>) => (
   <Toolbar

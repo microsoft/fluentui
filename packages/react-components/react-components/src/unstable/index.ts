@@ -109,8 +109,21 @@ export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-sele
 export {
   Toolbar,
   ToolbarButton,
+  useToolbarButtonStyles_unstable,
+  useToolbarButton_unstable,
+  ToolbarRadioButton,
+  useToolbarRadioButton_unstable,
+  useToolbarRadioButtonStyles_unstable,
   ToolbarDivider,
+  useToolbarDivider_unstable,
+  ToolbarGroup,
+  useToolbarGroupStyles_unstable,
+  useToolbarGroup_unstable,
+  renderToolbarGroup_unstable,
+  toolbarGroupClassNames,
   ToolbarToggleButton,
+  useToolbarToggleButtonStyles_unstable,
+  useToolbarToggleButton_unstable,
   renderToolbar_unstable,
   toolbarClassNames,
   useToolbar_unstable,
@@ -130,6 +143,10 @@ export type {
   ToolbarState,
   ToolbarToggleButtonProps,
   ToolbarToggleButtonState,
+  ToolbarGroupProps,
+  ToolbarGroupState,
+  ToolbarRadioButtonProps,
+  ToolbarRadioButtonState,
 } from '@fluentui/react-toolbar';
 
 export {
@@ -352,15 +369,6 @@ export {
   useField_unstable,
 } from '@fluentui/react-field';
 export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
-
-export {
-  Persona,
-  personaClassNames,
-  renderPersona_unstable,
-  usePersonaStyles_unstable,
-  usePersona_unstable,
-} from '@fluentui/react-persona';
-export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
 
 export {
   ProgressBar,

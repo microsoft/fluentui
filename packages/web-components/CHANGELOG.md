@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 26 Oct 2022 07:52:54 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.10)
+
+Tue, 10 Jan 2023 07:50:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.9..@fluentui/web-components_v2.5.10)
+
+### Patches
+
+- fix: layering zindex issue with sub menus ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by jes@microsoft.com)
+
+## [2.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.9)
+
+Thu, 05 Jan 2023 07:59:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.8..@fluentui/web-components_v2.5.9)
+
+### Patches
+
+- Fix fluent-tooltip not showing anchor pointer when wc prefix is changed ([PR #26154](https://github.com/microsoft/fluentui/pull/26154) by abcy@microsoft.com)
 
 ## [2.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.8)
 

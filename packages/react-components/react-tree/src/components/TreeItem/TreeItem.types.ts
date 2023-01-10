@@ -1,15 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import {
-  BaseTreeItemElement,
-  BaseTreeItemElementIntersection,
-  BaseTreeItemProps,
-  BaseTreeItemSlots,
-} from '../BaseTreeItem/index';
-
-export type TreeItemElement = BaseTreeItemElement;
-
-/** @internal */
-export type TreeItemElementIntersection = BaseTreeItemElementIntersection;
+import { BaseTreeItemProps, BaseTreeItemSlots, BaseTreeItemState } from '../BaseTreeItem/index';
 
 export type TreeItemSlots = BaseTreeItemSlots & {
   /**
@@ -26,17 +16,29 @@ export type TreeItemSlots = BaseTreeItemSlots & {
    */
   iconAfter?: Slot<'span'>;
   /**
-   * Icon slot that renders on the end of the main content
+   * Actions slot that renders on the end of tree item
    */
-  actionIcon?: Slot<'span'>;
+  badges?: Slot<'span'>;
+  /**
+   * Actions slot that renders on the end of tree item
+   * when the item is hovered/focused
+   */
+  actions?: Slot<'span'>;
+  groupper: NonNullable<Slot<'span'>>;
 };
 
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<TreeItemSlots> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps;
 
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots>;
+export type TreeItemState = ComponentState<TreeItemSlots> &
+  BaseTreeItemState & {
+    /**
+     * boolean indicating that actions should remain open due to focus on some portal
+     */
+    keepActionsOpen: boolean;
+  };

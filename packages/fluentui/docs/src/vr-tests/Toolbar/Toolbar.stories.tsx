@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Toolbar } from '@fluentui/react-northstar';
 import ToolbarExampleCustomContentShorthand from '../../examples/components/Toolbar/Content/ToolbarExampleCustomContent.shorthand';

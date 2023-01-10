@@ -130,11 +130,6 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
-import { Persona } from '@fluentui/react-persona';
-import { personaClassNames } from '@fluentui/react-persona';
-import { PersonaProps } from '@fluentui/react-persona';
-import { PersonaSlots } from '@fluentui/react-persona';
-import { PersonaState } from '@fluentui/react-persona';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -165,7 +160,6 @@ import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
-import { renderPersona_unstable } from '@fluentui/react-persona';
 import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
@@ -178,6 +172,7 @@ import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { RowId } from '@fluentui/react-table';
 import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
@@ -268,7 +263,14 @@ import { ToolbarContextValues } from '@fluentui/react-toolbar';
 import { ToolbarDivider } from '@fluentui/react-toolbar';
 import { ToolbarDividerProps } from '@fluentui/react-toolbar';
 import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarGroup } from '@fluentui/react-toolbar';
+import { toolbarGroupClassNames } from '@fluentui/react-toolbar';
+import { ToolbarGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarGroupState } from '@fluentui/react-toolbar';
 import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButton } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
 import { ToolbarSlots } from '@fluentui/react-toolbar';
 import { ToolbarState } from '@fluentui/react-toolbar';
 import { ToolbarToggleButton } from '@fluentui/react-toolbar';
@@ -315,8 +317,6 @@ import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
-import { usePersona_unstable } from '@fluentui/react-persona';
-import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
@@ -345,8 +345,17 @@ import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
 import { useTableSort } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
 import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDivider_unstable } from '@fluentui/react-toolbar';
 import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroupStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButtonStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
 
 export { Alert }
 
@@ -600,16 +609,6 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
-export { Persona }
-
-export { personaClassNames }
-
-export { PersonaProps }
-
-export { PersonaSlots }
-
-export { PersonaState }
-
 export { ProgressBar }
 
 export { progressBarClassNames }
@@ -670,8 +669,6 @@ export { renderOption_unstable }
 
 export { renderOptionGroup_unstable }
 
-export { renderPersona_unstable }
-
 export { renderProgressBar_unstable }
 
 export { renderSelect_unstable }
@@ -695,6 +692,8 @@ export { renderTableRow_unstable }
 export { renderTableSelectionCell_unstable }
 
 export { renderToolbar_unstable }
+
+export { renderToolbarGroup_unstable }
 
 export { RowId }
 
@@ -877,7 +876,21 @@ export { ToolbarDividerProps }
 
 export { ToolbarDividerState }
 
+export { ToolbarGroup }
+
+export { toolbarGroupClassNames }
+
+export { ToolbarGroupProps }
+
+export { ToolbarGroupState }
+
 export { ToolbarProps }
+
+export { ToolbarRadioButton }
+
+export { ToolbarRadioButtonProps }
+
+export { ToolbarRadioButtonState }
 
 export { ToolbarSlots }
 
@@ -971,10 +984,6 @@ export { useOptionStyles_unstable }
 
 export { useOverflowMenu }
 
-export { usePersona_unstable }
-
-export { usePersonaStyles_unstable }
-
 export { useProgressBar_unstable }
 
 export { useProgressBarStyles_unstable }
@@ -1031,9 +1040,27 @@ export { useTableStyles_unstable }
 
 export { useToolbar_unstable }
 
+export { useToolbarButton_unstable }
+
+export { useToolbarButtonStyles_unstable }
+
+export { useToolbarDivider_unstable }
+
 export { useToolbarDividerStyles_unstable }
 
+export { useToolbarGroup_unstable }
+
+export { useToolbarGroupStyles_unstable }
+
+export { useToolbarRadioButton_unstable }
+
+export { useToolbarRadioButtonStyles_unstable }
+
 export { useToolbarStyles_unstable }
+
+export { useToolbarToggleButton_unstable }
+
+export { useToolbarToggleButtonStyles_unstable }
 
 // (No @packageDocumentation comment for this package)
 

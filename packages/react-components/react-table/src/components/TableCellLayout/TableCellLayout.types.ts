@@ -29,7 +29,7 @@ export type TableCellLayoutSlots = {
   /**
    * A layout wrapper for the main and description slots
    */
-  wrapper: Slot<'div'>;
+  content: Slot<'div'>;
 };
 
 /**

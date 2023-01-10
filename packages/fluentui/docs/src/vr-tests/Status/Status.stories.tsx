@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Status } from '@fluentui/react-northstar';
 import StatusExampleShorthand from '../../examples/components/Status/Types/StatusExample.shorthand';

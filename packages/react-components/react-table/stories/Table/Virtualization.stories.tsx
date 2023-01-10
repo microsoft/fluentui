@@ -9,7 +9,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -56,6 +56,8 @@ interface ReactWindowRenderFnProps extends ListChildComponentProps {
 }
 
 export const Virtualization = () => {
+  const { targetDocument } = useFluent();
+  const scrollbarWidth = useScrollbarWidth({ targetDocument });
   const columns = React.useMemo(
     () => [
       createColumn<Item>({
@@ -173,7 +175,7 @@ export const Virtualization = () => {
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
           {/** Scrollbar alignment for the header */}
-          <div role="presentation" style={{ width: 16 }} />
+          <div role="presentation" style={{ width: scrollbarWidth }} />
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -226,7 +228,7 @@ Virtualization.parameters = {
         '',
         'The `Table` primitive components are unopinionated with respect to virtualization. They should be compatible',
         'with any virtualization library. Hoisting business logic to a state management',
-        'hook like `useTableFeaturesFeautres',
+        'hook like `useTableFeatures`',
         'means that features can persist between the mounting/unmounting that happens during virtualization.',
         'The below example uses the [react-window](https://www.npmjs.com/package/react-window) library.',
       ].join('\n'),

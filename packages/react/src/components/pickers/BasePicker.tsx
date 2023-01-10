@@ -838,6 +838,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
       this.setState({ selectionRemoved: item });
       this._updateSelectedItems(newItems);
+
+      // reset selection removed text after a timeout so it isn't reached by screen reader virtual cursor.
+      // the exact timing isn't important, the live region will fully read even if the text is removed.
+      this._async.setTimeout(() => {
+        this.setState({ selectionRemoved: undefined });
+      }, 1000);
     }
   };
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-spinner",
-  "version": "9.0.13",
+  "version": "9.0.16",
   "description": "Spinner component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,14 +27,15 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.18",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.4",
-    "@fluentui/react-label": "^9.0.13",
-    "@fluentui/react-utilities": "^9.3.0",
-    "@griffel/react": "^1.4.2",
+    "@fluentui/react-theme": "^9.1.5",
+    "@fluentui/react-label": "^9.0.16",
+    "@fluentui/react-utilities": "^9.4.0",
+    "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
