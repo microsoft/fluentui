@@ -11,7 +11,7 @@ export type DataGridBodySlots = DataGridBodySlotsBase;
 // Use any here since we can't know the user types
 // The user is responsible for narrowing the type downstream
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RowRenderFunction = (row: RowState<any>, styles: React.CSSProperties) => React.ReactNode;
+export type RowRenderFunction = (row: RowState<any>, style: React.CSSProperties) => React.ReactNode;
 
 /**
  * DataGridBody Props
@@ -29,7 +29,7 @@ export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
    * The width of the virtualized container
    * @default 100%
    */
-  width: string | number;
+  width?: string | number;
   /**
    * Children render function for rows
    */

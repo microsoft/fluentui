@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useScrollbarWidth } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
 import {
   DataGridRow,
   DataGrid,
@@ -50,7 +50,8 @@ type Item = {
 };
 
 export const Virtualization = () => {
-  const scrollbarWidth = useScrollbarWidth();
+  const { targetDocument } = useFluent();
+  const scrollbarWidth = useScrollbarWidth({ targetDocument });
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
