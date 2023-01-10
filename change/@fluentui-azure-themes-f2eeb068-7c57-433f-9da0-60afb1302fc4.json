@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Spin button height fix for Azure theme. Reduced to 24px to match textfield / dropdown",
+  "packageName": "@fluentui/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
