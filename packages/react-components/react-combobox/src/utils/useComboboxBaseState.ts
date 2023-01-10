@@ -68,18 +68,21 @@ export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boo
     initialState: false,
   });
 
-  const setOpen = (event: ComboboxBaseOpenEvents, newState: boolean) => {
-    onOpenChange?.(event, { open: newState });
-    setOpenState(newState);
-  };
+  const setOpen = React.useCallback(
+    (event: ComboboxBaseOpenEvents, newState: boolean) => {
+      onOpenChange?.(event, { open: newState });
+      setOpenState(newState);
+    },
+    [onOpenChange, setOpenState],
+  );
 
   // update active option based on change in open state
   React.useEffect(() => {
     if (open && !activeOption) {
-      // if there is a selection, start at the most recently selected item
-      if (selectedOptions.length > 0) {
-        const lastSelectedOption = getOptionsMatchingText(v => v === selectedOptions[selectedOptions.length - 1]).pop();
-        lastSelectedOption && setActiveOption(lastSelectedOption);
+      // if it is single-select and there is a selected option, start at the selected option
+      if (!multiselect && selectedOptions.length > 0) {
+        const selectedOption = getOptionsMatchingText(v => v === selectedOptions[0]).pop();
+        selectedOption && setActiveOption(selectedOption);
       }
       // default to starting at the first option
       else {

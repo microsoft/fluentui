@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Tue, 20 Dec 2022 07:53:32 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.8)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.7..@fluentui/eslint-plugin_v1.12.8)
+
+### Patches
+
+- fix: add cypress.config to config files glob to fix linting ([PR #26212](https://github.com/microsoft/fluentui/pull/26212) by martinhochel@microsoft.com)
 
 ## [1.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.7)
 

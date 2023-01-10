@@ -12,6 +12,7 @@ export { ComplexOptions } from './DropdownComplexOptions.stories';
 export { CustomOptions } from './DropdownCustomOptions.stories';
 export { Multiselect } from './DropdownMultiselect.stories';
 export { Size } from './DropdownSize.stories';
+export { Disabled } from './DropdownDisabled.stories';
 
 export default {
   title: 'Preview Components/Dropdown',

@@ -6,8 +6,6 @@
 
 /// <reference types="react" />
 
-import type { ARIAButtonElement } from '@fluentui/react-aria';
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -30,7 +28,7 @@ export type BaseTreeItemProps = ComponentProps<BaseTreeItemSlots>;
 
 // @public (undocumented)
 export type BaseTreeItemSlots = {
-    root: Slot<ARIAButtonSlotProps>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -81,10 +79,13 @@ export type TreeItemSlots = BaseTreeItemSlots & {
     iconAfter?: Slot<'span'>;
     badges?: Slot<'span'>;
     actions?: Slot<'span'>;
+    groupper: NonNullable<Slot<'span'>>;
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;
+export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState & {
+    keepActionsOpen: boolean;
+};
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
@@ -109,7 +110,7 @@ export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
 };
 
 // @public
-export const useBaseTreeItem_unstable: (props: BaseTreeItemProps, ref: React_2.Ref<BaseTreeItemElement>) => BaseTreeItemState;
+export const useBaseTreeItem_unstable: (props: BaseTreeItemProps, ref: React_2.Ref<HTMLDivElement>) => BaseTreeItemState;
 
 // @public
 export const useBaseTreeItemStyles_unstable: (state: BaseTreeItemState) => BaseTreeItemState;
@@ -121,7 +122,7 @@ export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>)
 export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
 
 // @public
-export const useTreeItem_unstable: (props: TreeItemProps, ref: React_2.Ref<TreeItemElement>) => TreeItemState;
+export const useTreeItem_unstable: (props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>) => TreeItemState;
 
 // @public
 export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;

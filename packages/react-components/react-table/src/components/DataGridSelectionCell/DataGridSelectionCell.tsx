@@ -6,7 +6,7 @@ import type { DataGridSelectionCellProps } from './DataGridSelectionCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * DataGridSelectionCell component - TODO: add more docs
+ * DataGridSelectionCell component
  */
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps> = React.forwardRef((props, ref) => {
   const state = useDataGridSelectionCell_unstable(props, ref);

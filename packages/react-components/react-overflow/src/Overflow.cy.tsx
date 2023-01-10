@@ -434,4 +434,22 @@ describe('Overflow', () => {
     setContainerSize(500);
     cy.get(`[${selectors.menu}]`).should('not.exist');
   });
+
+  it('should start overflowing once minimum visible items is reached', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    mount(
+      <Container minimumVisible={5}>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    setContainerSize(195);
+    cy.get(`[${selectors.menu}]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+  });
 });

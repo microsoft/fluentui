@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
-import type {
-  BaseTreeItemElement,
-  BaseTreeItemElementIntersection,
-  BaseTreeItemProps,
-  BaseTreeItemState,
-} from './BaseTreeItem.types';
-import { useARIAButtonProps } from '@fluentui/react-aria';
-import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
+import type { BaseTreeItemProps, BaseTreeItemState } from './BaseTreeItem.types';
+import { ArrowRight, ArrowLeft, Enter } from '@fluentui/keyboard-keys';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 /**
  * Create the state required to render BaseTreeItem.
@@ -20,7 +14,7 @@ import { useTreeContext_unstable } from '../../contexts/treeContext';
  */
 export const useBaseTreeItem_unstable = (
   props: BaseTreeItemProps,
-  ref: React.Ref<BaseTreeItemElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): BaseTreeItemState => {
   const { 'aria-owns': ariaOwns, as = 'div', onKeyDown, ...rest } = props;
 
@@ -32,12 +26,12 @@ export const useBaseTreeItem_unstable = (
   const isBranch = typeof ariaOwns === 'string';
   const open = useTreeContext_unstable(ctx => isBranch && ctx.openSubtrees.includes(ariaOwns!));
 
-  const handleClick = useEventCallback((event: React.MouseEvent<BaseTreeItemElementIntersection>) => {
+  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isBranch) {
       requestOpenChange({ event, open: !open, type: 'click', id: ariaOwns! });
     }
   });
-  const handleArrowRight = (event: React.KeyboardEvent<BaseTreeItemElementIntersection>) => {
+  const handleArrowRight = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (open && isBranch) {
       focusFirstSubtreeItem(event.currentTarget);
     }
@@ -45,7 +39,7 @@ export const useBaseTreeItem_unstable = (
       requestOpenChange({ event, open: true, type: 'arrowRight', id: ariaOwns! });
     }
   };
-  const handleArrowLeft = (event: React.KeyboardEvent<BaseTreeItemElementIntersection>) => {
+  const handleArrowLeft = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (!isBranch || !open) {
       focusSubtreeOwnerItem(event.currentTarget);
     }
@@ -53,12 +47,20 @@ export const useBaseTreeItem_unstable = (
       requestOpenChange({ event, open: false, type: 'arrowLeft', id: ariaOwns! });
     }
   };
-  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<BaseTreeItemElementIntersection>) => {
+  const handleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (isBranch) {
+      requestOpenChange({ event, open: !open, type: 'enter', id: ariaOwns! });
+    }
+  };
+  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
     if (event.isDefaultPrevented()) {
       return;
     }
-    switch (event.code) {
+    switch (event.key) {
+      case Enter: {
+        return handleEnter(event);
+      }
       case ArrowRight: {
         return handleArrowRight(event);
       }
@@ -73,20 +75,17 @@ export const useBaseTreeItem_unstable = (
     },
     isLeaf: !isBranch,
     open,
-    root: getNativeElementProps(
-      as,
-      useARIAButtonProps(as, {
-        ...rest,
-        // casting here is required to convert union to intersection
-        ref: ref as React.Ref<BaseTreeItemElementIntersection>,
-        'aria-owns': ariaOwns,
-        'aria-level': level,
-        // FIXME: tabster fails to navigate when aria-expanded is true
-        // 'aria-expanded': isBranch ? isOpen : undefined,
-        role: 'treeitem',
-        onClick: handleClick,
-        onKeyDown: handleKeyDown,
-      }),
-    ),
+    root: getNativeElementProps(as, {
+      ...rest,
+      ref,
+      tabIndex: 0,
+      'aria-owns': ariaOwns,
+      'aria-level': level,
+      // FIXME: tabster fails to navigate when aria-expanded is true
+      // 'aria-expanded': isBranch ? isOpen : undefined,
+      role: 'treeitem',
+      onClick: handleClick,
+      onKeyDown: handleKeyDown,
+    }),
   };
 };

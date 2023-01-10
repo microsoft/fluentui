@@ -2,6 +2,29 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 14:34:54 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.12",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:45 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",
