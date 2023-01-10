@@ -71,7 +71,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _yMax: number;
   private _calloutId: string;
   private _tooltipId: string;
-  private _isNumeric: XAxisTypes;
+  private _xAxisType: XAxisTypes;
   private _isRtl: boolean = getRTL();
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
   private _barWidth: number;
@@ -113,7 +113,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._keys = keys;
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
-    this._isNumeric = getTypeOfAxis(points[0].name, true) as XAxisTypes;
+    this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const legends: JSX.Element = this._getLegendData(points, this.props.theme!.palette);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -154,7 +154,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         chartType={ChartTypes.GroupedVerticalBarChart}
         calloutProps={calloutProps}
         legendBars={legends}
-        xAxisType={this._isNumeric}
+        xAxisType={this._xAxisType}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         tickPadding={this.props.tickPadding || 5}
@@ -542,14 +542,17 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _getDomainMargins = (containerWidth: number): IMargins => {
     const totalWidth =
       containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
-    const barWidth = this.props.barwidth || 16;
+    const barWidth = Math.min(this.props.barwidth || 16, 24);
     let groupWidth = this._keys.length * barWidth;
     const reqWidth = this._xAxisLabels.length * groupWidth + (this._xAxisLabels.length - 1) * barWidth * 2;
 
+    this._domainMargin = this._minDomainMargin;
     if (totalWidth >= reqWidth) {
-      this._domainMargin = this._minDomainMargin + (totalWidth - reqWidth) / 2;
+      this._domainMargin += (totalWidth - reqWidth) / 2;
     } else {
-      groupWidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * (2 / this._keys.length));
+      const maxBandwidth =
+        totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * (2 / this._keys.length));
+      groupWidth = maxBandwidth;
     }
     this._barWidth = (19 * groupWidth) / (20 * this._keys.length - 1);
 

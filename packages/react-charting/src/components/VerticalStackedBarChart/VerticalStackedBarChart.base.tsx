@@ -991,15 +991,17 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (this._xAxisType !== XAxisTypes.NumericAxis) {
       const totalWidth =
         containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
-      const reqWidth = (3 * this._xAxisLabels.length - 2) * this._barWidth;
+      let barWidth = Math.min(this.props.barWidth || 16, 24);
+      const reqWidth = (3 * this._xAxisLabels.length - 2) * barWidth;
 
       this._domainMargin = this._minDomainMargin;
       if (totalWidth >= reqWidth) {
         this._domainMargin += (totalWidth - reqWidth) / 2;
       } else {
-        const bandwidth = totalWidth / (3 * this._xAxisLabels.length - 2);
-        this._domainMargin += (this._barWidth - bandwidth) / 2;
+        const maxBandwidth = totalWidth / (3 * this._xAxisLabels.length - 2);
+        barWidth = maxBandwidth;
       }
+      this._barWidth = barWidth;
     }
 
     return {
