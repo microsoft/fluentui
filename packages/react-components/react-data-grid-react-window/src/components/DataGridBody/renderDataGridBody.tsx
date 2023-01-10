@@ -4,7 +4,7 @@ import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import { getSlots } from '@fluentui/react-components';
 import { RowState, RowIdContextProvider } from '@fluentui/react-components/unstable';
 
-/**P
+/**
  * Render the final JSX of DataGridVirtualizedBody
  */
 export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
