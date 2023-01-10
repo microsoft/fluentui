@@ -12,7 +12,7 @@ import { useDataGridBody_unstable as useDataGridBodyBase_unstable } from '@fluen
  * @param ref - reference to root HTMLElement of DataGridBody
  */
 export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Ref<HTMLElement>): DataGridBodyState => {
-  const { height, itemSize } = props;
+  const { height, itemSize, width = '100%' } = props;
   const baseState = useDataGridBodyBase_unstable(props, ref);
 
   return {
@@ -20,5 +20,6 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
     itemSize,
     height,
     renderRow: props.children,
+    width,
   };
 };

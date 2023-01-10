@@ -17,8 +17,22 @@ export type RowRenderFunction = (row: RowState<any>, styles: React.CSSProperties
  * DataGridBody Props
  */
 export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
+  /**
+   * The size of each row
+   */
   itemSize: number;
+  /**
+   * The height of the virtualized container
+   */
   height: number;
+  /**
+   * The width of the virtualized container
+   * @default 100%
+   */
+  width: string | number;
+  /**
+   * Children render function for rows
+   */
   children: RowRenderFunction;
 };
 
@@ -26,6 +40,6 @@ export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
  * State used in rendering DataGridBody
  */
 export type DataGridBodyState = Omit<DataGridBodyStateBase, 'renderRow'> &
-  Pick<DataGridBodyProps, 'itemSize' | 'height'> & {
+  Pick<DataGridBodyProps, 'itemSize' | 'height' | 'width'> & {
     renderRow: RowRenderFunction;
   };
