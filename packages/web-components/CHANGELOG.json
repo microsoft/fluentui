@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 10 Jan 2023 07:50:14 GMT",
+      "tag": "@fluentui/web-components_v2.5.10",
+      "version": "2.5.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f",
+            "comment": "fix: layering zindex issue with sub menus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Jan 2023 07:59:57 GMT",
       "tag": "@fluentui/web-components_v2.5.9",
       "version": "2.5.9",

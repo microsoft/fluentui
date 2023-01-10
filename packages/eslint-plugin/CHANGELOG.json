@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.8",
+      "version": "1.12.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "96c5a1cbb36d728bebfbf05203d372a82b1968d8",
+            "comment": "fix: add cypress.config to config files glob to fix linting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Dec 2022 07:55:40 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.7",
       "version": "1.12.7",
