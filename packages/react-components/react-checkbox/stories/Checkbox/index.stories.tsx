@@ -11,7 +11,6 @@ export { LabelBefore } from './CheckboxLabelBefore.stories';
 export { LabelWrapping } from './CheckboxLabelWrapping.stories';
 export { Required } from './CheckboxRequired.stories';
 export { Circular } from './CheckboxCircular.stories';
-export { CustomStyle } from './CheckboxCustomStyle.stories';
 
 export default {
   title: 'Components/Checkbox',

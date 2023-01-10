@@ -102,9 +102,6 @@ const useRootStyles = makeStyles({
       [`> .${checkboxClassNames.indicator}`]: {
         color: 'GrayText',
       },
-      [`> .${checkboxClassNames.indicator} svg`]: {
-        color: 'GrayText',
-      },
     },
   },
 });
