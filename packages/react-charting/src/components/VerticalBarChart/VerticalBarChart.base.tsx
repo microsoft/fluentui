@@ -755,15 +755,19 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
     if (this._xAxisType !== XAxisTypes.NumericAxis) {
+      /** Total width available to render the bars */
       const totalWidth =
         containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
       let barWidth = Math.min(this.props.barWidth || 16, 24);
+      /** Total width required to render the bars. Directly proportional to bar width */
       const reqWidth = (3 * this._xAxisLabels.length - 2) * barWidth;
 
       this._domainMargin = this._minDomainMargin;
       if (totalWidth >= reqWidth) {
+        // Center align the chart by setting equal left and right margins for domain
         this._domainMargin += (totalWidth - reqWidth) / 2;
       } else {
+        /** Maximum possible bar width to maintain 2:1 spacing */
         const maxBandwidth = totalWidth / (3 * this._xAxisLabels.length - 2);
         barWidth = maxBandwidth;
       }

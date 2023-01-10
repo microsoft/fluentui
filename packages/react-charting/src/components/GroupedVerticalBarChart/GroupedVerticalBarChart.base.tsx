@@ -420,6 +420,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
           ? [containerWidth! - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
           : [this.margins.left! + this._domainMargin, containerWidth! - this.margins.right! - this._domainMargin],
       )
+      // space_between_groups = 2 * bar_width
+      // group_width = this._keys.length * bar_width
+      // inner_padding = space_between_groups / (space_between_groups + group_width)
       .paddingInner(2 / (2 + this._keys.length));
     return x0Axis;
   };
@@ -540,20 +543,28 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
+    /** Total width available to render the bars */
     const totalWidth =
       containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
     const barWidth = Math.min(this.props.barwidth || 16, 24);
-    let groupWidth = this._keys.length * barWidth;
-    const reqWidth = this._xAxisLabels.length * groupWidth + (this._xAxisLabels.length - 1) * barWidth * 2;
+    let groupWidth = this._keys.length * barWidth; // (i)
+    /** Total width required to render the bars. Directly proportional to bar width */
+    const reqWidth = this._xAxisLabels.length * groupWidth + (this._xAxisLabels.length - 1) * barWidth * 2; // (ii)
 
     this._domainMargin = this._minDomainMargin;
     if (totalWidth >= reqWidth) {
+      // Center align the chart by setting equal left and right margins for domain
       this._domainMargin += (totalWidth - reqWidth) / 2;
     } else {
+      // From (i) and (ii)
+      /** Maximum possible group width to maintain 2:1 spacing */
       const maxBandwidth =
         totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * (2 / this._keys.length));
       groupWidth = maxBandwidth;
     }
+    // Adjust bar width to exclude space between bars in a group
+    // 1. x1_scale_inner_padding = space_between_bars / (space_between_bars + new_bar_width)
+    // 2. group_width = this._keys.length * new_bar_width + (this._keys.length -1) * space_between_bars
     this._barWidth = (19 * groupWidth) / (20 * this._keys.length - 1);
 
     return {
