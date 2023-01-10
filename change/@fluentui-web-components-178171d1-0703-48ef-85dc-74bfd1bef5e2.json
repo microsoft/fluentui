@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: layering zindex issue with sub menus",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
