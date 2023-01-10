@@ -9,6 +9,7 @@ import {
   MenuList,
   MenuItem,
   MenuButton,
+  tokens,
 } from '@fluentui/react-components';
 import {
   Overflow,
@@ -20,13 +21,6 @@ import {
 
 const useStyles = makeStyles({
   container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    minWidth: 0,
-    ...shorthands.overflow('hidden'),
-  },
-
-  overflowContainer: {
     display: 'flex',
     flexGrow: 1,
     flexWrap: 'nowrap',
@@ -40,6 +34,32 @@ const useStyles = makeStyles({
     flexWrap: 'nowrap',
     marginRight: '10px', //to allow the resize handle to be grabbed
   },
+
+  resizableArea: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    minWidth: '200px',
+    maxWidth: '1000px',
+    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
+    ...shorthands.padding('20px', '10px', '10px', '10px'),
+    ...shorthands.overflow('hidden'),
+    position: 'relative',
+    resize: 'horizontal',
+    '::after': {
+      content: `'Resizable Area'`,
+      position: 'absolute',
+      ...shorthands.padding('1px', '4px', '1px'),
+      top: '-2px',
+      left: '-2px',
+      fontFamily: 'monospace',
+      fontSize: '15px',
+      fontWeight: 900,
+      lineHeight: 1,
+      letterSpacing: '1px',
+      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackground,
+    },
+  },
 });
 
 export const Wrapped = () => {
@@ -47,9 +67,9 @@ export const Wrapped = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.resizableArea}>
       <Overflow>
-        <div className={styles.overflowContainer}>
+        <div className={styles.container}>
           {itemIds.map(i => (
             <OverflowItem key={i} id={i.toString()}>
               <Button>Item{i}</Button>

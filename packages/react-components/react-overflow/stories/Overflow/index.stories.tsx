@@ -25,11 +25,4 @@ export default {
       },
     },
   },
-  decorators: [
-    Story => (
-      <div style={{ resize: 'horizontal', overflow: 'hidden' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } as ComponentMeta<typeof Overflow>;

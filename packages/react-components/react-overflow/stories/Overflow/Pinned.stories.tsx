@@ -9,6 +9,8 @@ import {
   MenuList,
   MenuItem,
   MenuButton,
+  mergeClasses,
+  tokens,
 } from '@fluentui/react-components';
 import {
   Overflow,
@@ -25,6 +27,29 @@ const useStyles = makeStyles({
     minWidth: 0,
     ...shorthands.overflow('hidden'),
   },
+
+  resizableArea: {
+    minWidth: '200px',
+    maxWidth: '800px',
+    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
+    ...shorthands.padding('20px', '10px', '10px', '10px'),
+    position: 'relative',
+    resize: 'horizontal',
+    '::after': {
+      content: `'Resizable Area'`,
+      position: 'absolute',
+      ...shorthands.padding('1px', '4px', '1px'),
+      top: '-2px',
+      left: '-2px',
+      fontFamily: 'monospace',
+      fontSize: '15px',
+      fontWeight: 900,
+      lineHeight: 1,
+      letterSpacing: '1px',
+      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackground,
+    },
+  },
 });
 
 export const Pinned = () => {
@@ -40,7 +65,7 @@ export const Pinned = () => {
 
   return (
     <Overflow>
-      <div className={styles.container}>
+      <div className={mergeClasses(styles.container, styles.resizableArea)}>
         {itemIds.map(i => (
           <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected === i} />
         ))}
