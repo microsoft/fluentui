@@ -20,8 +20,7 @@ export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
         itemCount={state.rows.length}
       >
         {({ data, index, style }: ListChildComponentProps) => {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const row: RowState<any> = data[index];
+          const row: RowState<unknown> = data[index];
           return <RowIdContextProvider value={row.rowId}>{state.renderRow(row, style)}</RowIdContextProvider>;
         }}
       </List>
