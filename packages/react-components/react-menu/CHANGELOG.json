@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 21:51:23 GMT",
+      "tag": "@fluentui/react-menu_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "fb5708446f369a57f48b87a0141d6a651acddbde",
+            "comment": "revert: MenuItem root slot only supports div"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:34:57 GMT",
       "tag": "@fluentui/react-menu_v9.6.0",
       "version": "9.6.0",

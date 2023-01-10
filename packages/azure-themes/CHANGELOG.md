@@ -1,8 +1,19 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 09 Jan 2023 07:49:46 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.44](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.44)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.43..@fluentui/azure-themes_v8.5.44)
+
+### Patches
+
+- Spin button height fix for Azure theme. Reduced to 24px to match textfield / dropdown ([PR #26265](https://github.com/microsoft/fluentui/pull/26265) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.104.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
 
 ## [8.5.43](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.43)
 

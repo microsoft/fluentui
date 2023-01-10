@@ -85,7 +85,6 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
 
     if (key === Tab) {
       setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
-      event.preventDefault();
     }
 
     onKeyDownOriginal?.(event);

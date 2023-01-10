@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 21:51:23 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.22",
+      "version": "9.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e361553bf9966758a89630a2d5fc94a94ded5d5f",
+            "comment": "fix: disabled cursor style, opening when disabled, and hover styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:34:55 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.21",
       "version": "9.0.0-beta.21",

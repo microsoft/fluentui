@@ -2,6 +2,21 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 21:51:24 GMT",
+      "tag": "@fluentui/react-select_v9.0.0-beta.21",
+      "version": "9.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "e361553bf9966758a89630a2d5fc94a94ded5d5f",
+            "comment": "fix: no interactive hover style when disabled"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:02 GMT",
       "tag": "@fluentui/react-select_v9.0.0-beta.20",
       "version": "9.0.0-beta.20",
