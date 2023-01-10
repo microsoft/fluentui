@@ -9,7 +9,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar, useScrollbarWidth } from '@fluentui/react-components';
-import { TableCellLayout } from '@fluentui/react-components/unstable';
 import {
   DataGridRow,
   DataGrid,
@@ -19,7 +18,8 @@ import {
   ColumnDefinition,
   RowState,
   createColumn,
-} from '@fluentui/react-table';
+  TableCellLayout,
+} from '@fluentui/react-components/unstable';
 import { DataGridBody } from '@fluentui/react-data-grid-react-window';
 
 type FileCell = {
