@@ -10,7 +10,6 @@ import {
   MenuItem,
   MenuButton,
   tokens,
-  mergeClasses,
 } from '@fluentui/react-components';
 import {
   Overflow,
@@ -23,16 +22,27 @@ import {
 const useStyles = makeStyles({
   container: {
     display: 'flex',
+    flexGrow: 1,
     flexWrap: 'nowrap',
     minWidth: 0,
     ...shorthands.overflow('hidden'),
   },
 
+  farItems: {
+    display: 'flex',
+    ...shorthands.gap('4px'),
+    flexWrap: 'nowrap',
+    marginRight: '10px', //to allow the resize handle to be grabbed
+  },
+
   resizableArea: {
+    display: 'flex',
+    flexWrap: 'nowrap',
     minWidth: '200px',
-    maxWidth: '800px',
+    maxWidth: '1000px',
     ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
     ...shorthands.padding('20px', '10px', '10px', '10px'),
+    ...shorthands.overflow('hidden'),
     position: 'relative',
     resize: 'horizontal',
     '::after': {
@@ -52,22 +62,28 @@ const useStyles = makeStyles({
   },
 });
 
-export const MinimumVisible = () => {
+export const Wrapped = () => {
+  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
   const styles = useStyles();
 
-  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
-
   return (
-    <Overflow minimumVisible={4}>
-      <div className={mergeClasses(styles.container, styles.resizableArea)}>
-        {itemIds.map(i => (
-          <OverflowItem key={i} id={i}>
-            <Button style={{ paddingLeft: 2, paddingRight: 2 }}>Item {i}</Button>
-          </OverflowItem>
-        ))}
-        <OverflowMenu itemIds={itemIds} />
+    <div className={styles.resizableArea}>
+      <Overflow>
+        <div className={styles.container}>
+          {itemIds.map(i => (
+            <OverflowItem key={i} id={i.toString()}>
+              <Button>Item{i}</Button>
+            </OverflowItem>
+          ))}
+          <OverflowMenu itemIds={itemIds} />
+        </div>
+      </Overflow>
+
+      <div className={styles.farItems}>
+        <Button>Foo</Button>
+        <Button>Bar</Button>
       </div>
-    </Overflow>
+    </div>
   );
 };
 
@@ -107,12 +123,10 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   );
 };
 
-MinimumVisible.parameters = {
+Wrapped.parameters = {
   docs: {
     description: {
-      story: [
-        'The `Overflow` component will stop overflowing past a certain number of minimum visible overflow items',
-      ].join('\n'),
+      story: ['Overflow containers can be wrapped by other DOM elements.'].join('\n'),
     },
   },
 };

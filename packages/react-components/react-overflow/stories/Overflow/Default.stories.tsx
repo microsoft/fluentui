@@ -52,17 +52,17 @@ const useStyles = makeStyles({
   },
 });
 
-export const MinimumVisible = () => {
+export const Default = () => {
   const styles = useStyles();
 
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
 
   return (
-    <Overflow minimumVisible={4}>
+    <Overflow>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         {itemIds.map(i => (
           <OverflowItem key={i} id={i}>
-            <Button style={{ paddingLeft: 2, paddingRight: 2 }}>Item {i}</Button>
+            <Button>Item {i}</Button>
           </OverflowItem>
         ))}
         <OverflowMenu itemIds={itemIds} />
@@ -105,14 +105,4 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
       </MenuPopover>
     </Menu>
   );
-};
-
-MinimumVisible.parameters = {
-  docs: {
-    description: {
-      story: [
-        'The `Overflow` component will stop overflowing past a certain number of minimum visible overflow items',
-      ].join('\n'),
-    },
-  },
 };
