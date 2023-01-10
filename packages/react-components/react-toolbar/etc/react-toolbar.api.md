@@ -27,6 +27,9 @@ export const renderToolbar_unstable: (state: ToolbarState, contextValues: Toolba
 export const renderToolbarGroup_unstable: (state: ToolbarGroupState) => JSX.Element;
 
 // @public
+export const renderToolbarRadioGroup_unstable: (state: ToolbarRadioGroupState) => JSX.Element;
+
+// @public
 export const Toolbar: ForwardRefComponent<ToolbarProps>;
 
 // @public
@@ -101,6 +104,18 @@ export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick
 // @public
 export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
 
+// @public
+export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
+
+// @public (undocumented)
+export const toolbarRadioGroupClassNames: SlotClassNames<ToolbarRadioGroupSlots>;
+
+// @public
+export type ToolbarRadioGroupProps = ComponentProps<ToolbarRadioGroupSlots>;
+
+// @public
+export type ToolbarRadioGroupState = ComponentState<ToolbarRadioGroupSlots>;
+
 // @public (undocumented)
 export type ToolbarSlots = {
     root: Slot<'div'>;
@@ -151,6 +166,12 @@ export const useToolbarRadioButton_unstable: (props: ToolbarRadioButtonProps, re
 
 // @public
 export const useToolbarRadioButtonStyles_unstable: (state: ToolbarRadioButtonState) => void;
+
+// @public
+export const useToolbarRadioGroup_unstable: (props: ToolbarRadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarRadioGroupState;
+
+// @public
+export const useToolbarRadioGroupStyles_unstable: (state: ToolbarRadioGroupState) => ToolbarRadioGroupState;
 
 // @public
 export const useToolbarStyles_unstable: (state: ToolbarState) => ToolbarState;
