@@ -53,38 +53,46 @@ const useStyles = makeStyles({
   },
 });
 
+const GROUPS = {
+  ONE: 1,
+  TWO: 2,
+  THREE: 3,
+  FOUR: 4,
+  FIVE: 5,
+};
+
 export const PriorityWithDividers = () => {
   const styles = useStyles();
 
   return (
     <Overflow overflowDirection="start" padding={30}>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
-        <OverflowItem id={'6'} priority={6} groupId={'1'}>
+        <OverflowItem id={'6'} priority={6} groupId={GROUPS.ONE.toString()}>
           <Button>Priority 6</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'1'} />
-        <OverflowItem id={'7'} priority={7} groupId={'2'}>
+        <OverflowGroupDivider groupId={GROUPS.ONE} />
+        <OverflowItem id={'7'} priority={7} groupId={GROUPS.TWO.toString()}>
           <Button>Priority 7</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'2'} />
-        <OverflowItem id={'4'} priority={4} groupId={'3'}>
+        <OverflowGroupDivider groupId={GROUPS.TWO} />
+        <OverflowItem id={'4'} priority={4} groupId={GROUPS.THREE.toString()}>
           <Button>Priority 4</Button>
         </OverflowItem>
-        <OverflowItem id={'5'} priority={5} groupId={'3'}>
+        <OverflowItem id={'5'} priority={5} groupId={GROUPS.THREE.toString()}>
           <Button>Priority 5</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'3'} />
-        <OverflowItem id={'1'} priority={1} groupId={'4'}>
+        <OverflowGroupDivider groupId={GROUPS.THREE} />
+        <OverflowItem id={'1'} priority={1} groupId={GROUPS.FOUR.toString()}>
           <Button>Priority 1</Button>
         </OverflowItem>
-        <OverflowItem id={'2'} priority={2} groupId={'4'}>
+        <OverflowItem id={'2'} priority={2} groupId={GROUPS.FOUR.toString()}>
           <Button>Priority 2</Button>
         </OverflowItem>
-        <OverflowItem id={'3'} priority={3} groupId={'4'}>
+        <OverflowItem id={'3'} priority={3} groupId={GROUPS.FOUR.toString()}>
           <Button>Priority 3</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'4'} />
-        <OverflowItem id={'8'} priority={8} groupId={'5'}>
+        <OverflowGroupDivider groupId={GROUPS.FOUR} />
+        <OverflowItem id={'8'} priority={8} groupId={GROUPS.FIVE.toString()}>
           <Button>Priority 8</Button>
         </OverflowItem>
         <OverflowMenu
@@ -96,15 +104,21 @@ export const PriorityWithDividers = () => {
 };
 
 const OverflowGroupDivider: React.FC<{
-  groupId: string;
+  groupId: number;
 }> = props => {
-  const isGroupVisible = useIsOverflowGroupVisible(props.groupId);
-
-  if (isGroupVisible === 'hidden') {
+  const groupVisibility = useIsOverflowGroupVisible(props.groupId.toString());
+  if (groupVisibility === 'hidden') {
     return null;
   }
 
-  return <Divider vertical appearance="brand" style={{ flexGrow: 0, paddingRight: '4px', paddingLeft: '4px' }} />;
+  return (
+    <Divider
+      data-group={props.groupId}
+      vertical
+      appearance="brand"
+      style={{ flexGrow: 0, paddingRight: '4px', paddingLeft: '4px' }}
+    />
+  );
 };
 
 const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
@@ -122,14 +136,14 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
 
       <MenuPopover>
         <MenuList>
-          {itemIds.map(i => {
+          {itemIds.map(itemId => {
             // This is purely a simplified convention for documentation examples
             // Could be done in other ways too
-            if (typeof i === 'string' && i.startsWith('divider')) {
-              const groupId = i.split('-')[1];
-              return <OverflowMenuDivider key={i} id={groupId} />;
+            if (itemId.startsWith('divider')) {
+              const groupId = itemId.split('-')[1];
+              return <OverflowMenuDivider key={itemId} groupId={Number(groupId)} />;
             }
-            return <OverflowMenuItem key={i} id={i} />;
+            return <OverflowMenuItem key={itemId} id={itemId} />;
           })}
         </MenuList>
       </MenuPopover>
@@ -149,11 +163,29 @@ const OverflowMenuItem: React.FC<{ id: string }> = props => {
 };
 
 const OverflowMenuDivider: React.FC<{
-  id: string;
+  groupId: number;
 }> = props => {
-  const isGroupVisible = useIsOverflowGroupVisible(props.id);
+  const { groupId } = props;
 
-  if (isGroupVisible === 'visible') {
+  // ⚠️⚠️ This is important
+  // When collapsing based on custom priority, it's necessary to know
+  // about other overflow groups because dividers can be rendered both
+  // in the overflow container and the overflow menu.
+  // The below code sorts the overflow groups and determines
+  // if a divider should be rendered.
+  const groupVisibilities = Object.values(GROUPS).map(group => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    return { group, visibility: useIsOverflowGroupVisible(group.toString()) };
+  });
+
+  const currentGroupPosition = groupVisibilities.findIndex(x => x.group === groupId);
+  const precedesOverflowingGroup = groupVisibilities
+    .slice(currentGroupPosition + 1)
+    // If there is a overflowing/hidden group after the current group
+    // render the menu divider.
+    .some(groupVisibility => groupVisibility.visibility !== 'visible');
+
+  if (groupVisibilities[currentGroupPosition].visibility === 'visible' || !precedesOverflowingGroup) {
     return null;
   }
 
@@ -163,7 +195,13 @@ const OverflowMenuDivider: React.FC<{
 PriorityWithDividers.parameters = {
   docs: {
     description: {
-      story: ['Overflow groups will respect the priority of overflow items.'].join('\n'),
+      story: [
+        'Overflow groups will respect the priority of overflow items.',
+        '',
+        '> ⚠️ Consider carefully if you need this behaviour, the code required to manage divider visibility here is',
+        'non-trivial. This complexity comes from the fact that dividers can be visible both in the overflow container',
+        'and the overflow menu. Please read the code for the reference implementation carefully.',
+      ].join('\n'),
     },
   },
 };
