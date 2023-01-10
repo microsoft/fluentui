@@ -1,4 +1,4 @@
-import { createStorybookWebpackConfig } from '@fluentui/scripts/webpack';
+import { createStorybookWebpackConfig } from '@fluentui/scripts-webpack';
 import * as path from 'path';
 import { merge } from 'webpack-merge';
 

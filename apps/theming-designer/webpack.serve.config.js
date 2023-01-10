@@ -1,4 +1,4 @@
-const { getResolveAlias, resources } = require('@fluentui/scripts/webpack');
+const { getResolveAlias, resources } = require('@fluentui/scripts-webpack');
 
 module.exports = resources.createServeConfig(
   {

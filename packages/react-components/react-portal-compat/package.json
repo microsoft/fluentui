@@ -28,7 +28,9 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-components": "^9.9.1",
     "@fluentui/react-shared-contexts": "^9.1.4",
-    "@fluentui/scripts": "*"
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-portal-compat-context": "^9.0.4",

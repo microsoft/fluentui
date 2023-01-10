@@ -16,9 +16,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*",
     "@types/stylis": "4.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-jest": "*"
   },
   "files": [
     "dist"
