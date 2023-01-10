@@ -2,7 +2,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ToolbarRadioGroupSlots, ToolbarRadioGroupState } from './ToolbarRadioGroup.types';
 
-export const ToolbarRadioGroupClassNames: SlotClassNames<ToolbarRadioGroupSlots> = {
+export const toolbarRadioGroupClassNames: SlotClassNames<ToolbarRadioGroupSlots> = {
   root: 'fui-ToolbarRadioGroup',
 };
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
  */
 export const useToolbarRadioGroupStyles_unstable = (state: ToolbarRadioGroupState): ToolbarRadioGroupState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(ToolbarRadioGroupClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(toolbarRadioGroupClassNames.root, styles.root, state.root.className);
 
   return state;
 };

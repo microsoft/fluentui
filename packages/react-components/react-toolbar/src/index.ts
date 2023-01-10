@@ -42,4 +42,4 @@ export {
   renderToolbarRadioGroup_unstable,
   toolbarRadioGroupClassNames,
 } from './ToolbarRadioGroup';
-export type { ToolbarRadioGroupProps, ToolbarRadioGroupState } from './ToolbarGroup';
+export type { ToolbarRadioGroupProps, ToolbarRadioGroupState } from './ToolbarRadioGroup';
