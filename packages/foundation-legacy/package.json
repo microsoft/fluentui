@@ -26,9 +26,12 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*",
     "@fluentui/jest-serializer-merge-styles": "^8.0.22",
-    "react-hooks-testing-library": "^0.5.0"
+    "react-hooks-testing-library": "^0.5.0",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "@fluentui/merge-styles": "^8.5.5",

@@ -29,7 +29,9 @@
   "devDependencies": {
     "@fluentui/api-docs": "^8.2.5",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*"
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "@fluentui/react": "^8.104.4",

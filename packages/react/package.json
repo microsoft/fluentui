@@ -38,10 +38,13 @@
     "@fluentui/example-data": "^8.4.5",
     "@fluentui/jest-serializer-merge-styles": "^8.0.22",
     "@fluentui/react-conformance": "*",
-    "@fluentui/scripts": "*",
     "@fluentui/test-utilities": "^8.2.5",
     "@fluentui/webpack-utilities": "^8.1.10",
-    "office-ui-fabric-core": "^11.0.0"
+    "office-ui-fabric-core": "^11.0.0",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.5.4",

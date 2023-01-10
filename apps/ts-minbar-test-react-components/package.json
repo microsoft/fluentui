@@ -10,5 +10,9 @@
   "scripts": {
     "type-check": "tsc -p .",
     "test": "ts-node --swc ./src/index.ts"
+  },
+  "devDependencies": {
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-projects-test": "*"
   }
 }

@@ -53,7 +53,7 @@ jobs:
 
       ## Danger.js checks for Fluent UI N*
       - script: |
-          yarn danger ci
+          DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
         displayName: danger
         condition: eq(variables.isPR, true)
         env:

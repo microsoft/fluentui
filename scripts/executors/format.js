@@ -2,8 +2,8 @@
 // It only handles certain cases that prettier doesn't support as well/at all natively.
 
 const { execSync } = require('child_process');
-const { runPrettier, runPrettierForFolder } = require('../prettier');
-const { findGitRoot } = require('../monorepo');
+const { runPrettier, runPrettierForFolder } = require('@fluentui/scripts-prettier');
+const { findGitRoot } = require('@fluentui/scripts-monorepo');
 
 const parsedArgs = parseArgs();
 const root = findGitRoot();
@@ -36,10 +36,12 @@ function parseArgs() {
       },
       all: {
         description: 'Run prettier on all files',
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         boolean: true,
       },
       check: {
         description: 'Run prettier in check mode (useful for CI). Runs in write mode if not specified.',
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         boolean: true,
       },
     })

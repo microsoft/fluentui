@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "lib": ["ES2019"],
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"]
+  },
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "include": ["./src/**/*.ts", "./src/**/*.js"],
+  "files": ["../../typings/json-stable-stringify-without-jsonify/index.d.ts"]
+}

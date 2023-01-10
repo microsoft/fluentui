@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.17",

@@ -16,9 +16,10 @@
     "@fluentui/react": "^8.104.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "^7.0.2",
-    "@fluentui/scripts": "*",
     "@fluentui/public-docsite-resources": "^8.1.41",
-    "mocha": "^7.1.2"
+    "mocha": "^7.1.2",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "tslib": "^2.1.0"
