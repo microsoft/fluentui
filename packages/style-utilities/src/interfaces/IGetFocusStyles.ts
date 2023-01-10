@@ -49,7 +49,7 @@ export interface IGetFocusStylesOptions {
   borderRadius?: string | number | undefined;
 
   /**
-   * If default pointer events should be overriden.
+   * If default pointer events should be overridden.
    * @defaultvalue undefined
    */
   pointerEvents?: IRawStyle['pointerEvents'];
