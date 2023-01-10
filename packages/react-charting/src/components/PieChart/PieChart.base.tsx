@@ -3,6 +3,8 @@ import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { select as d3Select } from 'd3-selection';
+
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 
 export class PieChartBase extends React.Component<IPieChartProps, {}> {
@@ -12,6 +14,25 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     height: 350,
   };
   private _classNames: IProcessedStyleSet<IPieChartStyles>;
+
+  public componentDidMount(): void {
+    const isChartEmpty = !(
+      this.props.data &&
+      this.props.data.length &&
+      this.props.data.filter(item => item.y > 0).length
+    );
+    if (isChartEmpty) {
+      if (isChartEmpty) {
+        d3Select('body')
+          .append('div')
+          .attr('role', 'alert')
+          .attr('id', 'ariaLabel_PieChart')
+          .style('opacity', 0)
+          .attr('aria-label', 'Graph has no data to display')
+          .attr('tabIndex', 0);
+      }
+    }
+  }
 
   public render(): JSX.Element {
     const { data, width, height, colors, chartTitle } = this.props;

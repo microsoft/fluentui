@@ -8,6 +8,8 @@ import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../ind
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+import { select as d3Select } from 'd3-selection';
+
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export interface IDonutChartState {
@@ -80,6 +82,23 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       _width: (this._rootElem && this._rootElem!.offsetWidth)!,
       _height: (this._rootElem && this._rootElem!.offsetHeight - reducedHeight!)!,
     });
+
+    const isChartEmpty = !(
+      this.props.data &&
+      this.props.data.chartData &&
+      this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length
+    );
+    if (isChartEmpty) {
+      if (isChartEmpty) {
+        d3Select('body')
+          .append('div')
+          .attr('role', 'alert')
+          .attr('id', 'ariaLabel_DonutChart')
+          .style('opacity', 0)
+          .attr('aria-label', 'Graph has no data to display')
+          .attr('tabIndex', 0);
+      }
+    }
   }
 
   public render(): JSX.Element {
