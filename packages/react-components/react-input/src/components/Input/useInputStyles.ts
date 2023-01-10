@@ -216,8 +216,8 @@ const useContentStyles = makeStyles({
   base: {
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground3, // "icon color" in design spec
+    display: 'flex',
     // special case styling for icons (most common case) to ensure they're centered vertically
-    '> svg': { display: 'block' },
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
