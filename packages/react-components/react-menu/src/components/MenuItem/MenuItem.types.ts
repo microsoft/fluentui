@@ -1,8 +1,7 @@
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: Slot<ARIAButtonSlotProps<'div'>>;
+  root: Slot<'div', 'button'>;
 
   /**
    * Icon slot rendered before children content
@@ -46,6 +45,13 @@ export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
    * @default false
    */
   persistOnClick?: boolean;
+
+  disabled?: boolean;
+  /**
+   * @deprecated this property does nothing.
+   * disabled focusable is by default by simply using `disabled` property
+   */
+  disabledFocusable?: boolean;
 };
 
 export type MenuItemState = ComponentState<MenuItemSlots> &

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Wed, 04 Jan 2023 01:40:17 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 14:34:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.1.0)
+
+Mon, 09 Jan 2023 14:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.15..@fluentui/react-portal_v9.1.0)
+
+### Minor changes
+
+- feat: elementContains supports Node types ([PR #26158](https://github.com/microsoft/fluentui/pull/26158) by email not defined)
+- Bump @fluentui/react-tabster to v9.3.6 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.15)
 

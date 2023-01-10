@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 04 Jan 2023 01:40:03 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 14:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.9.0)
+
+Mon, 09 Jan 2023 14:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.8.0..@fluentui/react-components_v9.9.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: implement `useScrollbarWidth` utility hook ([PR #26144](https://github.com/microsoft/fluentui/pull/26144) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - Stops using ARIAButton types for MenuItem root ([PR #26257](https://github.com/microsoft/fluentui/pull/26257) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - feat: add new prop unstable_disableAutoFocus on Popover ([PR #26141](https://github.com/microsoft/fluentui/pull/26141) by yuanboxue@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: elementContains supports Node types ([PR #26158](https://github.com/microsoft/fluentui/pull/26158) by email not defined)
+- `@fluentui/react-utilities`
+  - feat: implement `useScrollbarWidth` utility hook ([PR #26144](https://github.com/microsoft/fluentui/pull/26144) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: MenuList props should win over context props ([PR #26252](https://github.com/microsoft/fluentui/pull/26252) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix: setOverrideTarget should be an event callback ([PR #26157](https://github.com/microsoft/fluentui/pull/26157) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/priority-overflow`
+  - fix: Minimum visible overflow items should be respected ([PR #26194](https://github.com/microsoft/fluentui/pull/26194) by lingfangao@hotmail.com)
+- `@fluentui/react-combobox`
+  - fix: perf improvements with useEventCallback ([PR #26191](https://github.com/microsoft/fluentui/pull/26191) by sarah.higley@microsoft.com)
+  - fix: Combobox always starts at the first option if multiselect, and correctly sets focus visible" ([PR #26173](https://github.com/microsoft/fluentui/pull/26173) by sarah.higley@microsoft.com)
+- `@fluentui/react-table`
+  - fix: remove Event type in selectionManager ([PR #26211](https://github.com/microsoft/fluentui/pull/26211) by olfedias@microsoft.com)
+  - refactor: Cleanup unused code ([PR #26219](https://github.com/microsoft/fluentui/pull/26219) by lingfangao@hotmail.com)
+  - BREAKING(TableCellLayout): `wrapper` slot renamed to `content` ([PR #26220](https://github.com/microsoft/fluentui/pull/26220) by lingfangao@hotmail.com)
 
 ## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.8.0)
 

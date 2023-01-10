@@ -2,6 +2,73 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 14:34:57 GMT",
+      "tag": "@fluentui/react-menu_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "307d7988ee9c589c17dce78f1c36719c6ebb91c2",
+            "comment": "fix: MenuList props should win over context props"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "26f0364b3837056ee8e0df42a7932c298c68290e",
+            "comment": "Stops using ARIAButton types for MenuItem root"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-aria to v9.3.5",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.5",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.1.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.3.7",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.3.6",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:13 GMT",
       "tag": "@fluentui/react-menu_v9.5.4",
       "version": "9.5.4",

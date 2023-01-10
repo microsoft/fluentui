@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Wed, 04 Jan 2023 01:40:56 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 14:34:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.21)
+
+Mon, 09 Jan 2023 14:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.20..@fluentui/react-combobox_v9.0.0-beta.21)
+
+### Changes
+
+- fix: perf improvements with useEventCallback ([PR #26191](https://github.com/microsoft/fluentui/pull/26191) by sarah.higley@microsoft.com)
+- fix: Combobox always starts at the first option if multiselect, and correctly sets focus visible" ([PR #26173](https://github.com/microsoft/fluentui/pull/26173) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.5 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.14 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-portal to v9.1.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-positioning to v9.3.7 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.20)
 

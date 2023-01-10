@@ -2,6 +2,183 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 14:34:54 GMT",
+      "tag": "@fluentui/react-components_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "2611ae5441e4bc702c4ce6404c7186f6c2de7cc3",
+            "comment": "Add tests for fix"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "bffa36e0a7824f1e54d73907912473692c40d70b",
+            "comment": "docs: fix typo in Table.types.ts"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f514d1ff53ea0b2a6e959b3d457f341d7f68575e",
+            "comment": "docs: Fix typos in react-table docs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "2611ae5441e4bc702c4ce6404c7186f6c2de7cc3",
+            "comment": "fix: Minimum visible overflow items should be respected"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d7a98c92818f5ad8c80548dc288cc2cc55731c93",
+            "comment": "fix: perf improvements with useEventCallback"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "54b6220d442231ffa0c3df88359f53373690da6f",
+            "comment": "fix: Combobox always starts at the first option if multiselect, and correctly sets focus visible\""
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "73bd103d70370326286daee55dad5c1c2b9861a7",
+            "comment": "fix: remove Event type in selectionManager"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "2bde4a96454105f8943284b590b6174ccb1aea94",
+            "comment": "refactor: Cleanup unused code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "87fcaf175c6588438c7f8dc2c2de5a4af5f94d1a",
+            "comment": "BREAKING(TableCellLayout): `wrapper` slot renamed to `content`"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "3c3291c008824d45e18580d51b6eb1526ea3792d",
+            "comment": "feat: implement `useScrollbarWidth` utility hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "26f0364b3837056ee8e0df42a7932c298c68290e",
+            "comment": "Stops using ARIAButton types for MenuItem root"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "46dc6befc9db655c2763908d91c7c603f1063af4",
+            "comment": "feat: add new prop unstable_disableAutoFocus on Popover"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-portal",
+            "commit": "a62c525a002fe1eed5c40aec4c041d1f850b7beb",
+            "comment": "feat: elementContains supports Node types"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "3c3291c008824d45e18580d51b6eb1526ea3792d",
+            "comment": "feat: implement `useScrollbarWidth` utility hook"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "307d7988ee9c589c17dce78f1c36719c6ebb91c2",
+            "comment": "fix: MenuList props should win over context props"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "42acf190805edde3e32fbbf4adf37046c51f625e",
+            "comment": "fix: setOverrideTarget should be an event callback"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:03 GMT",
       "tag": "@fluentui/react-components_v9.8.0",
       "version": "9.8.0",

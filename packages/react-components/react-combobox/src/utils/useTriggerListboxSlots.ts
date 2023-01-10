@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeCallbacks, useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
 import { Listbox } from '../components/Listbox/Listbox';
@@ -72,24 +72,34 @@ export function useTriggerListboxSlots(
     ref: useMergedRefs(ref, triggerSlot?.ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
   };
 
+  /*
+   * Handle focus when clicking the listbox popup:
+   * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
+   * 2. Do not close the listbox on button/input blur when clicking into the listbox
+   */
+  const listboxOnClick = useEventCallback(
+    mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
+      triggerRef.current?.focus();
+    }, listbox?.onClick),
+  );
+
+  const listboxOnMouseOver = useEventCallback(
+    mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
+      setFocusVisible(false);
+    }, listbox?.onMouseOver),
+  );
+
+  const listboxOnMouseDown = useEventCallback(
+    mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
+      ignoreNextBlur.current = true;
+    }, listbox?.onMouseDown),
+  );
+
   // listbox is nullable, only add event handlers if it exists
   if (listbox) {
-    /*
-     * Handle focus when clicking the listbox popup:
-     * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
-     * 2. Do not close the listbox on button/input blur when clicking into the listbox
-     */
-    listbox.onClick = mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
-      triggerRef.current?.focus();
-    }, listbox.onClick);
-
-    listbox.onMouseOver = mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
-      setFocusVisible(false);
-    }, listbox.onMouseOver);
-
-    listbox.onMouseDown = mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
-      ignoreNextBlur.current = true;
-    }, listbox.onMouseDown);
+    listbox.onClick = listboxOnClick;
+    listbox.onMouseOver = listboxOnMouseOver;
+    listbox.onMouseDown = listboxOnMouseDown;
   }
 
   // the trigger should open/close the popup on click or blur

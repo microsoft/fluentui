@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 04 Jan 2023 01:40:43 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.4.0)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.3.1..@fluentui/react-utilities_v9.4.0)
+
+### Minor changes
+
+- feat: implement `useScrollbarWidth` utility hook ([PR #26144](https://github.com/microsoft/fluentui/pull/26144) by lingfangao@hotmail.com)
 
 ## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.3.1)
 

@@ -284,4 +284,118 @@ describe('Menu', () => {
     // Assert
     expect(container.querySelector('[role="menu"]')).not.toBeNull();
   });
+
+  it('should call onCheckedValueChange when item is selected', () => {
+    const onCheckedValueChange = jest.fn();
+    const { getAllByRole } = render(
+      <Menu open inline onCheckedValueChange={onCheckedValueChange}>
+        <MenuTrigger disableButtonEnhancement>
+          <button>MenuTrigger</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItemCheckbox name="test" value="first">
+              First
+            </MenuItemCheckbox>
+            <MenuItemCheckbox name="test" value="second">
+              Second
+            </MenuItemCheckbox>
+            <MenuItemCheckbox name="test" value="third">
+              Third
+            </MenuItemCheckbox>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    const checkboxes = getAllByRole('menuitemcheckbox');
+    fireEvent.click(checkboxes[0]);
+    expect(onCheckedValueChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('should control checked items with checkedValues prop', () => {
+    const { container } = render(
+      <Menu open inline checkedValues={{ test: ['second'] }}>
+        <MenuTrigger disableButtonEnhancement>
+          <button>MenuTrigger</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItemCheckbox id="first" name="test" value="first">
+              First
+            </MenuItemCheckbox>
+            <MenuItemCheckbox id="second" name="test" value="second">
+              Second
+            </MenuItemCheckbox>
+            <MenuItemCheckbox id="third" name="test" value="third">
+              Third
+            </MenuItemCheckbox>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(container.querySelector('#first')?.getAttribute('aria-checked')).toBe('false');
+    expect(container.querySelector('#second')?.getAttribute('aria-checked')).toBe('true');
+    expect(container.querySelector('#third')?.getAttribute('aria-checked')).toBe('false');
+  });
+
+  it('should call onCheckedValueChange (applied to MenuList) when item is selected', () => {
+    const onCheckedValueChange = jest.fn();
+    const { getAllByRole } = render(
+      <Menu open inline>
+        <MenuTrigger disableButtonEnhancement>
+          <button>MenuTrigger</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList onCheckedValueChange={onCheckedValueChange}>
+            <MenuItemCheckbox name="test" value="first">
+              First
+            </MenuItemCheckbox>
+            <MenuItemCheckbox name="test" value="second">
+              Second
+            </MenuItemCheckbox>
+            <MenuItemCheckbox name="test" value="third">
+              Third
+            </MenuItemCheckbox>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    const checkboxes = getAllByRole('menuitemcheckbox');
+    fireEvent.click(checkboxes[0]);
+    expect(onCheckedValueChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('should control checked items with checkedValues prop (applied to MenuList)', () => {
+    const { container } = render(
+      <Menu open inline>
+        <MenuTrigger disableButtonEnhancement>
+          <button>MenuTrigger</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList checkedValues={{ test: ['second'] }}>
+            <MenuItemCheckbox id="first" name="test" value="first">
+              First
+            </MenuItemCheckbox>
+            <MenuItemCheckbox id="second" name="test" value="second">
+              Second
+            </MenuItemCheckbox>
+            <MenuItemCheckbox id="third" name="test" value="third">
+              Third
+            </MenuItemCheckbox>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(container.querySelector('#first')?.getAttribute('aria-checked')).toBe('false');
+    expect(container.querySelector('#second')?.getAttribute('aria-checked')).toBe('true');
+    expect(container.querySelector('#third')?.getAttribute('aria-checked')).toBe('false');
+  });
 });

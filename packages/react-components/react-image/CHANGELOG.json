@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 14:35:02 GMT",
+      "tag": "@fluentui/react-image_v9.0.17",
+      "version": "9.0.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:07 GMT",
       "tag": "@fluentui/react-image_v9.0.16",
       "version": "9.0.16",
