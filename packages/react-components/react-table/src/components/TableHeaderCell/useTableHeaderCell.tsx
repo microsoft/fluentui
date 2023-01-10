@@ -5,6 +5,7 @@ import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
 import type { TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { ResizeHandle } from './ResizeHandle';
 
 const sortIcons = {
   ascending: <ArrowUpRegular fontSize={12} />,
@@ -32,12 +33,19 @@ export const useTableHeaderCell_unstable = (
       root: rootComponent,
       button: 'button',
       sortIcon: 'span',
+      resizeHandle: 'div',
     },
     root: getNativeElementProps(rootComponent, {
       ref: useMergedRefs(ref, useFocusWithin()),
       role: rootComponent === 'div' ? 'columnheader' : undefined,
       'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
       ...props,
+    }),
+    resizeHandle: resolveShorthand(props.resizeHandle, {
+      required: true,
+      defaultProps: {
+        children: <ResizeHandle columnId={props.columnId} />,
+      },
     }),
     sortIcon: resolveShorthand(props.sortIcon, {
       required: !!props.sortDirection,
@@ -57,5 +65,6 @@ export const useTableHeaderCell_unstable = (
     }),
     sortable,
     noNativeElements,
+    columnId: props.columnId,
   };
 };

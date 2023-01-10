@@ -18,7 +18,13 @@ export { CellActions } from './CellActions.stories';
 export { PrimaryCell } from './PrimaryCell.stories';
 export { CellNavigation } from './CellNavigation.stories';
 export { RowNavigation } from './RowNavigation.stories';
+
 export { Sort } from './Sort.stories';
+export { ResizableUncontrolled } from './ResizableUncontrolled.stories';
+export { ResizableFlex } from './ResizableFlex.stories';
+export { ResizingControlled } from './ResizingControlled.stories';
+export { ResizingColumns } from './ResizingColumns.stories';
+
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
 export { SingleSelect } from './SingleSelect.stories';

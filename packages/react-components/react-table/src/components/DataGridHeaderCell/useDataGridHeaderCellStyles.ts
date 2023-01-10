@@ -7,6 +7,7 @@ export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlot
   root: 'fui-DataGridHeaderCell',
   button: 'fui-DataGridHeaderCell__button',
   sortIcon: 'fui-DataGridHeaderCell__sortIcon',
+  resizeHandle: 'fui-DataGridHeaderCell__resizeHandle',
 };
 
 /**

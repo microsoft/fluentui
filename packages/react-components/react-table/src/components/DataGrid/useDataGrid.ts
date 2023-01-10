@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
-import { useTableFeatures, useTableSort, useTableSelection } from '../../hooks';
+import { useTableFeatures_unstable, useTableSort, useTableSelection } from '../../hooks';
 
 /**
  * Create the state required to render DataGrid.
@@ -33,7 +33,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
   const navigable = focusMode !== 'none';
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
-  const tableState = useTableFeatures({ items, columns, getRowId }, [
+  const tableState = useTableFeatures_unstable({ items, columns, getRowId }, [
     useTableSort({
       defaultSortState,
       sortState,

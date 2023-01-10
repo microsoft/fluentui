@@ -131,6 +131,10 @@ export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' 
    * Table columns
    */
   columns: ColumnDefinition<TItem>[];
+
+  columnSizing: TableColumnSizingState;
+
+  tableRef: React.RefObject<HTMLDivElement>;
 }
 
 export interface UseTableSortOptions {
@@ -174,3 +178,47 @@ export interface UseTableOptions<TItem> {
 }
 
 export type TableStatePlugin = <TItem>(tableState: TableState<TItem>) => TableState<TItem>;
+
+export interface ColumnWidthState {
+  columnId: ColumnId;
+  width: number;
+  minWidth: number;
+  idealWidth: number;
+  padding: number;
+}
+
+export interface ColumnWidthProps {
+  style?: React.CSSProperties;
+  columnId?: ColumnId;
+}
+
+export interface TableColumnSizingState {
+  getOnMouseDown: (columnId: ColumnId) => (e: React.MouseEvent<HTMLElement>) => void;
+  getColumnWidth: (columnId: ColumnId) => number;
+  getTotalWidth: () => number;
+  setColumnWidth: (columnId: ColumnId, newSize: number) => void;
+  getColumnWidths: () => ColumnWidthState[];
+  getColumnProps: (columnId: ColumnId) => ColumnWidthProps;
+}
+
+export type ColumnResizeState = {
+  getColumnWidth: (columnId: ColumnId) => number;
+  getTotalWidth: () => number;
+  setColumnWidth: (columnId: ColumnId, width: number) => void;
+  setColumnIdealWidth: (columnId: ColumnId, minWidth: number) => void;
+  getLastColumn: () => ColumnWidthState;
+  getLength: () => number;
+  getColumnByIndex: (index: number) => ColumnWidthState;
+  getColumnById: (columnId: ColumnId) => ColumnWidthState | undefined;
+  getColumns: () => ColumnWidthState[];
+};
+
+export type ColumnSizingOptions = Record<
+  ColumnId,
+  Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & { defaultWidth?: number }
+>;
+
+export type UseColumnSizingParams = {
+  columnSizingOptions?: ColumnSizingOptions;
+  onColumnResize?: (columnId: ColumnId, width: number) => void;
+};

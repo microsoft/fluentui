@@ -21,7 +21,7 @@ import {
 
 const items = [
   {
-    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
+    file: { label: 'DD dJJJ', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
     lastUpdated: { label: '7h ago', timestamp: 1 },
     lastUpdate: {
