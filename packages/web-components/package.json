@@ -47,7 +47,7 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
-    "@storybook/html": "6.5.5",
+    "@storybook/html": "6.5.15",
     "@types/chai": "4.3.3",
     "@types/chai-spies": "1.0.3",
     "@types/karma": "6.3.3",
