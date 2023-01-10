@@ -65,7 +65,7 @@ export const PriorityWithDividers = () => {
   const styles = useStyles();
 
   return (
-    <Overflow overflowDirection="start" padding={30}>
+    <Overflow overflowDirection="start" padding={40}>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         <OverflowItem id={'6'} priority={6} groupId={GROUPS.ONE.toString()}>
           <Button>Priority 6</Button>

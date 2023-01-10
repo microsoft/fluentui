@@ -26,6 +26,7 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexWrap: 'nowrap',
+    minWidth: 0,
     ...shorthands.overflow('hidden'),
   },
 
@@ -57,7 +58,7 @@ export const Dividers = () => {
   const styles = useStyles();
 
   return (
-    <Overflow padding={30}>
+    <Overflow padding={40}>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         <OverflowItem id={'1'} groupId={'1'}>
           <Button>Item 1</Button>
