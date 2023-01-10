@@ -109,8 +109,21 @@ export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-sele
 export {
   Toolbar,
   ToolbarButton,
+  useToolbarButtonStyles_unstable,
+  useToolbarButton_unstable,
+  ToolbarRadioButton,
+  useToolbarRadioButton_unstable,
+  useToolbarRadioButtonStyles_unstable,
   ToolbarDivider,
+  useToolbarDivider_unstable,
+  ToolbarGroup,
+  useToolbarGroupStyles_unstable,
+  useToolbarGroup_unstable,
+  renderToolbarGroup_unstable,
+  toolbarGroupClassNames,
   ToolbarToggleButton,
+  useToolbarToggleButtonStyles_unstable,
+  useToolbarToggleButton_unstable,
   renderToolbar_unstable,
   toolbarClassNames,
   useToolbar_unstable,
@@ -130,6 +143,10 @@ export type {
   ToolbarState,
   ToolbarToggleButtonProps,
   ToolbarToggleButtonState,
+  ToolbarGroupProps,
+  ToolbarGroupState,
+  ToolbarRadioButtonProps,
+  ToolbarRadioButtonState,
 } from '@fluentui/react-toolbar';
 
 export {
@@ -354,47 +371,10 @@ export {
 export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
-  Persona,
-  personaClassNames,
-  renderPersona_unstable,
-  usePersonaStyles_unstable,
-  usePersona_unstable,
-} from '@fluentui/react-persona';
-export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
-
-export {
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  Progress,
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  progressClassNames,
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  renderProgress_unstable,
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  useProgressStyles_unstable,
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  useProgress_unstable,
   ProgressBar,
   progressBarClassNames,
   renderProgressBar_unstable,
   useProgressBarStyles_unstable,
   useProgressBar_unstable,
 } from '@fluentui/react-progress';
-export type {
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  ProgressProps,
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  ProgressState,
-  // TODO #25997: Remove deprecated export before ProgressBar is released as stable
-  // eslint-disable-next-line deprecation/deprecation
-  ProgressSlots,
-  ProgressBarProps,
-  ProgressBarState,
-  ProgressBarSlots,
-} from '@fluentui/react-progress';
+export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';

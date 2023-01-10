@@ -26,6 +26,7 @@ export {
   useOnClickOutside,
   useOnScrollOutside,
   usePrevious,
+  useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
 export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';

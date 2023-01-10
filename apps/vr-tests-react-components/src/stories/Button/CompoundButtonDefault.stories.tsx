@@ -1,14 +1,14 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps } from 'storywright';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, withScreenerSteps, RTL } from '../../utilities';
+import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
 import { buttonId } from './utils';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const steps = new Screener.Steps()
+const steps = new Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
   // https://github.com/microsoft/fluentui/issues/21998
   // .hover('#button-id')
@@ -20,7 +20,7 @@ const steps = new Screener.Steps()
 export default {
   title: 'CompoundButton Converged',
   component: CompoundButton,
-  decorators: [story => withScreenerSteps({ story, steps })],
+  decorators: [story => withStoryWrightSteps({ story, steps })],
 } as ComponentMeta<typeof CompoundButton>;
 
 export const Default = () => (

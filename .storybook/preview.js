@@ -35,6 +35,7 @@ export const parameters = {
   docs: {
     source: {
       excludeDecorators: true,
+      type: 'source',
     },
   },
   exportToCodeSandbox: {

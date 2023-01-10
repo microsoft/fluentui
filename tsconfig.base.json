@@ -33,6 +33,7 @@
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
+      "@fluentui/react-data-grid-react-window": ["packages/react-components/react-data-grid-react-window/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/src/index.ts"],
       "@fluentui/react-field": ["packages/react-components/react-field/src/index.ts"],
@@ -65,6 +66,7 @@
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
+      "@fluentui/react-tags": ["packages/react-components/react-tags/src/index.ts"],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
@@ -73,7 +75,8 @@
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],
       "@fluentui/react-tree": ["packages/react-components/react-tree/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
-      "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"]
+      "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
+      "@fluentui/tokens": ["packages/tokens/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

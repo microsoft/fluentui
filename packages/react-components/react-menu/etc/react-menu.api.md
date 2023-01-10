@@ -6,9 +6,8 @@
 
 /// <reference types="react" />
 
-import type { ARIAButtonElement } from '@fluentui/react-aria';
+import { ARIAButtonElement } from '@fluentui/react-aria';
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -134,6 +133,8 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
+    disabled?: boolean;
+    disabledFocusable?: boolean;
 };
 
 // @public
@@ -161,7 +162,7 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<ARIAButtonSlotProps<'div'>>;
+    root: Slot<'div'>;
     icon?: Slot<'span'>;
     checkmark?: Slot<'span'>;
     submenuIndicator?: Slot<'span'>;
@@ -170,9 +171,7 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
-    isNativeButton: boolean;
-};
+export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
 
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
@@ -211,12 +210,10 @@ export type MenuListSlots = {
 };
 
 // @public (undocumented)
-export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & {
+export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
     selectRadio: SelectableHandler;
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
-    defaultCheckedValues?: Record<string, string[]>;
-    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 };
 
 // @public

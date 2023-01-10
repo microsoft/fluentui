@@ -39,11 +39,6 @@ steps:
       fi
     displayName: Check if vrTests should be skipped
 
-  - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} convert
-    displayName: Convert screener component to storywright
-    condition: and(eq(variables['vrTestSkip'], 'no'), eq('${{ parameters.shouldBuildNorthstar }}', 'false'))
-
   - ${{ if eq(parameters.shouldBuildstorybookaddon, 'true') }}:
       - script: |
           yarn build --to @fluentui/react-storybook-addon
@@ -57,12 +52,12 @@ steps:
         condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} screener:build
+      yarn workspace ${{ parameters.vrTestPackageName }} vr:build
     displayName: Build VR tests components package
     condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} test:component --verbose
+      yarn workspace ${{ parameters.vrTestPackageName }} vr:test --verbose
     displayName: 'Run VR tests'
     condition: eq(variables['vrTestSkip'], 'no')
 

@@ -25,12 +25,12 @@ export const ControlledCheckboxItems = () => {
   };
 
   return (
-    <Menu>
+    <Menu checkedValues={checkedValues} onCheckedValueChange={onChange}>
       <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
       <MenuPopover>
-        <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MenuList>
           <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
             Cut
           </MenuItemCheckbox>

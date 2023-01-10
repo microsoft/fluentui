@@ -6,7 +6,7 @@ import through from 'through2';
 import Vinyl from 'vinyl';
 
 import { ExampleSource } from './util/docs-types';
-import transformStarImportPlugin from '../../babel/transform-star-import-plugin';
+import { transformStarImportPlugin } from '../../babel/plugins';
 import { getRelativePathToSourceFile } from './util';
 
 const prettierConfig = require('../../../prettier.config');

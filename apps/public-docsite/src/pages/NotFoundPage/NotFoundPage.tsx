@@ -12,11 +12,12 @@ import {
 } from '@fluentui/react-docsite-components/lib/index2';
 import { SiteDefinition } from '../../SiteDefinition/index';
 import { topNavHeight, mediaQuery } from '../../styles/constants';
+import { cdnUrl } from '../../utilities/cdn';
 
 const illustrations = [
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error1.svg',
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error2.svg',
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error3.svg',
+  `${cdnUrl}/office-ui-fabric-react-assets/images/error/error1.svg`,
+  `${cdnUrl}/office-ui-fabric-react-assets/images/error/error2.svg`,
+  `${cdnUrl}/office-ui-fabric-react-assets/images/error/error3.svg`,
 ];
 
 const rootClass = mergeStyles({

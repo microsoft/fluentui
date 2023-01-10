@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Thu, 17 Nov 2022 23:05:32 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 14:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.0-rc.2)
+
+Mon, 09 Jan 2023 14:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.0-rc.1..@fluentui/priority-overflow_v9.0.0-rc.2)
+
+### Changes
+
+- fix: Minimum visible overflow items should be respected ([PR #26194](https://github.com/microsoft/fluentui/pull/26194) by lingfangao@hotmail.com)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.0-rc.1)
 

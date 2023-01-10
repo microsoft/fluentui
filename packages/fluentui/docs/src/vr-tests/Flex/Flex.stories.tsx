@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Flex } from '@fluentui/react-northstar';
 import FlexExampleMediaCard from '../../examples/components/Flex/Rtl/FlexExample.rtl';

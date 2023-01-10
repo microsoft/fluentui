@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { ActivityItem, Icon } from '@fluentui/react';
@@ -8,13 +8,13 @@ storiesOf('ActivityItem', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory(
     'Root',

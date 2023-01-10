@@ -57,11 +57,6 @@ const useInputBaseClassName = makeResetStyles({
   // This is done so that clicking on that "empty space" still toggles the checkbox.
   width: `calc(${values.indicatorSize} + 2 * ${tokens.spacingHorizontalS})`,
 
-  // When unchecked, hide the checkmark icon
-  [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator}`]: {
-    [vars.indicatorOpacity]: 0,
-  },
-
   // Colors for the unchecked state
   ':enabled:not(:checked):not(:indeterminate)': {
     [`& ~ .${checkboxClassNames.label}`]: {

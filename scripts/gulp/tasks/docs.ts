@@ -13,6 +13,8 @@ import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 
 import { sh } from '../../utils';
+import { findGitRoot, getAllPackageInfo } from '../../monorepo';
+
 import config from '../config';
 import gulpComponentMenuBehaviors from '../plugins/gulp-component-menu-behaviors';
 import gulpDoctoc from '../plugins/gulp-doctoc';
@@ -22,8 +24,7 @@ import gulpReactDocgen from '../plugins/gulp-react-docgen';
 import { getRelativePathToSourceFile, getComponentInfo } from '../plugins/util';
 import webpackPlugin from '../plugins/gulp-webpack';
 import { Server } from 'http';
-import { findGitRoot, getAllPackageInfo } from '../../monorepo';
-import serve, { forceClose } from '../serve';
+import { serve, forceClose } from './serve';
 import { spawnSync } from 'child_process';
 
 const { paths } = config;
@@ -165,15 +166,6 @@ task('component-info:debug', done => {
 });
 
 task('build:docs', series('build:docs:assets', 'build:docs:webpack'));
-
-// ----------------------------------------
-// Deploy
-// ----------------------------------------
-
-task('deploy:docs', cb => {
-  const relativePath = path.relative(process.cwd(), paths.docsDist());
-  return sh(`gh-pages -d ${relativePath} -m "deploy docs [ci skip]"`);
-});
 
 // ----------------------------------------
 // Serve

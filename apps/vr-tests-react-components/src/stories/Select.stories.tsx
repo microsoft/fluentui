@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Select } from '@fluentui/react-select';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
@@ -7,7 +7,7 @@ import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorato
 storiesOf('Select Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('select')
@@ -18,7 +18,7 @@ storiesOf('Select Converged', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Appearance: outline (default)', () => (
     <Select>
@@ -74,7 +74,7 @@ storiesOf('Select Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   // note: due to reused "Select Converged" story ID, TestWrapperDecoratorFixedWidth is also reused
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('With value', () => (
     <Select>

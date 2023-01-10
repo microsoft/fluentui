@@ -1,7 +1,6 @@
 import gutil from 'gulp-util';
 import _ from 'lodash';
 import path from 'path';
-import { Transform } from 'stream';
 import through2, { FlushCallback, TransformFunction } from 'through2';
 import Vinyl from 'vinyl';
 

@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import * as webpack from 'webpack';
 import { URL } from 'url';
+
 import { getLernaAliases } from '../monorepo';
 
 // northstar packages should pull these from npm, not the repo
@@ -20,8 +21,7 @@ const deployUrl = process.env.DEPLOYURL ? new URL(process.env.DEPLOYURL) : undef
 const deployBasePath = deployUrl ? deployUrl.pathname : undefined;
 let __BASENAME__ = deployBasePath
   ? // This needs a trailing slash or images won't work.
-    // The path is different for standard PR deploy and screener deploy.
-    `${deployBasePath}/${process.env.SCREENER_BUILD ? 'react-northstar-screener' : 'react-northstar'}/`
+    `${deployBasePath}/react-northstar/`
   : '/';
 
 if (process.env.OFFICIALRELEASE) {
@@ -127,7 +127,6 @@ const config = {
     global: {},
     'process.env': {
       NODE_ENV: JSON.stringify(env),
-      SCREENER: !!process.env.SCREENER_API_KEY,
     },
     __PATH_SEP__: JSON.stringify(path.sep),
   },

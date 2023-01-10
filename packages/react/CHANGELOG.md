@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 13 Dec 2022 07:46:30 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 07:49:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.3)
+
+Mon, 09 Jan 2023 07:49:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.2..@fluentui/react_v8.104.3)
+
+### Patches
+
+- fix: set focus visibility className on correct element when calling setFocusVisibility directly ([PR #26132](https://github.com/microsoft/fluentui/pull/26132) by sarah.higley@microsoft.com)
+
+## [8.104.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.2)
+
+Thu, 05 Jan 2023 07:59:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.1..@fluentui/react_v8.104.2)
+
+### Patches
+
+- Fix the react errors when we set the ThemeProvider as a React.Fragment to remove the root div, issue: 16633 ([PR #26160](https://github.com/microsoft/fluentui/pull/26160) by farcemolina@microsoft.com)
+- fix: remove Pickers live announcement text after timeout ([PR #26055](https://github.com/microsoft/fluentui/pull/26055) by sarah.higley@microsoft.com)
+- fix: Stopping className being unset in inner Stacks. ([PR #26169](https://github.com/microsoft/fluentui/pull/26169) by makotom@microsoft.com)
+
+## [8.104.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.1)
+
+Fri, 23 Dec 2022 07:55:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.0..@fluentui/react_v8.104.1)
+
+### Patches
+
+- fix: ComboBox button is not aria-hidden by default ([PR #26050](https://github.com/microsoft/fluentui/pull/26050) by sarah.higley@microsoft.com)
+
+## [8.104.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.0)
+
+Wed, 21 Dec 2022 07:47:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.10..@fluentui/react_v8.104.0)
+
+### Minor changes
+
+- chore: export GroupedListV2 types ([PR #26052](https://github.com/microsoft/fluentui/pull/26052) by seanmonahan@microsoft.com)
+
+## [8.103.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.10)
+
+Tue, 20 Dec 2022 07:53:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.9..@fluentui/react_v8.103.10)
+
+### Patches
+
+- chore: Updating cdn links to match latest. ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by esteban.230@hotmail.com)
+- Bump @fluentui/foundation-legacy to v8.2.25 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.5 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/react-focus to v8.8.11 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/style-utilities to v8.8.4 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/theme to v2.6.20 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/common-styles to v1.2.14 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+- Bump @fluentui/example-data to v8.4.4 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+
+## [8.103.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.9)
+
+Fri, 16 Dec 2022 07:50:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.103.8..@fluentui/react_v8.103.9)
+
+### Patches
+
+- fix: drag and drop column reorder for grouped DetailsList ([PR #26015](https://github.com/microsoft/fluentui/pull/26015) by seanmonahan@microsoft.com)
 
 ## [8.103.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.103.8)
 
