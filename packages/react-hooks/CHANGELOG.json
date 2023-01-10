@@ -2,6 +2,39 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.15",
+      "version": "8.6.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/set-version to v8.2.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/utilities to v8.13.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/test-utilities to v8.2.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Jan 2023 07:59:55 GMT",
       "tag": "@fluentui/react-hooks_v8.6.14",
       "version": "8.6.14",

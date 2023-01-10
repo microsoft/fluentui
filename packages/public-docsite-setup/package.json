@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite-setup",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "description": "Bootstrap code for the Fluent UI website. Internal use only.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,7 +25,7 @@
   "license": "MIT",
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {}
 }

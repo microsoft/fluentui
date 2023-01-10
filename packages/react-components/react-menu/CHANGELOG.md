@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 09 Jan 2023 14:34:57 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 21:51:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.6.1)
+
+Mon, 09 Jan 2023 21:51:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.6.0..@fluentui/react-menu_v9.6.1)
+
+### Patches
+
+- revert: MenuItem root slot only supports div ([PR #26261](https://github.com/microsoft/fluentui/pull/26261) by lingfangao@hotmail.com)
 
 ## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.6.0)
 

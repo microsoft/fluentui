@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "2.5.9",
+  "version": "2.5.10",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -47,7 +47,7 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
-    "@storybook/html": "6.5.5",
+    "@storybook/html": "6.5.15",
     "@types/chai": "4.3.3",
     "@types/chai-spies": "1.0.3",
     "@types/karma": "6.3.3",

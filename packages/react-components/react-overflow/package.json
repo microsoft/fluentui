@@ -28,7 +28,9 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*"
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/priority-overflow": "^9.0.0-rc.2",

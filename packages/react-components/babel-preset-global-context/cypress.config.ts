@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress';
-import { baseConfig } from '@fluentui/scripts/cypress';
+import { baseConfig } from '@fluentui/scripts-cypress';
 
 /**
  * Extends the base cypress webpack config to add the babel preset

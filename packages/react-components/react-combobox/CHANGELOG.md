@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 09 Jan 2023 14:34:55 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 21:51:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.22)
+
+Mon, 09 Jan 2023 21:51:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.21..@fluentui/react-combobox_v9.0.0-beta.22)
+
+### Changes
+
+- fix: disabled cursor style, opening when disabled, and hover styles ([PR #26068](https://github.com/microsoft/fluentui/pull/26068) by sarah.higley@microsoft.com)
 
 ## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.21)
 
