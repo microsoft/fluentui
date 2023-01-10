@@ -12,7 +12,6 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
 };
 
 const vars = {
-  cursor: '--UNSTABLE__fui-Radio--cursor',
   labelColor: '--UNSTABLE__fui-Radio__label--color',
   indicatorBorderColor: '--UNSTABLE__fui-Radio__indicator--borderColor',
   indicatorColor: '--UNSTABLE__fui-Radio__indicator--color',
@@ -20,7 +19,6 @@ const vars = {
 } as const;
 
 const values = {
-  cursor: `var(${vars.cursor}, pointer)`,
   labelColor: `var(${vars.labelColor}, ${tokens.colorNeutralForeground3})`,
   indicatorBorderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
   indicatorColor: `var(${vars.indicatorColor}, transparent)`,
