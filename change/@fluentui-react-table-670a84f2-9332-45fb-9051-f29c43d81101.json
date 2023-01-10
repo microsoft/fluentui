@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat: Export row id provider",
+  "comment": "feat: Export RowIdProvider",
   "packageName": "@fluentui/react-table",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

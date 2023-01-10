@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Export RowIdProvider from react-table",
+  "comment": "feat: Export RowIdContextProvider and useRowIdContext from react-table",
   "packageName": "@fluentui/react-components",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
