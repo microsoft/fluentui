@@ -8,7 +8,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
   const [open, setOpen] = React.useState<'first' | 'second' | 'third' | 'fourth' | undefined>();
 
   return (
-    <Toolbar aria-label="Toolbar with Popover" {...props} size="small">
+    <Toolbar aria-label="with Popover" {...props} size="small">
       <Popover
         withArrow
         trapFocus

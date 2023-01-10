@@ -4,7 +4,7 @@ import { Toolbar, ToolbarButton } from '@fluentui/react-components/unstable';
 import type { ToolbarProps } from '@fluentui/react-components/unstable';
 
 export const VerticalButton = (props: Partial<ToolbarProps>) => (
-  <Toolbar aria-label="Toolbar Vertical Button" {...props}>
+  <Toolbar aria-label="Vertical Button" {...props}>
     <ToolbarButton vertical appearance="primary" icon={<FontIncreaseRegular />}>
       Increase
     </ToolbarButton>

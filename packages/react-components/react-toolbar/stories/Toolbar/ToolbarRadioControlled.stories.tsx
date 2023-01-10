@@ -15,11 +15,7 @@ export const ControlledRadio = (props: Partial<ToolbarProps>) => {
   };
 
   return (
-    <Toolbar
-      aria-label="Toolbar with controlled Radio Button"
-      checkedValues={checkedValues}
-      onCheckedValueChange={onChange}
-    >
+    <Toolbar aria-label="with controlled Radio Button" checkedValues={checkedValues} onCheckedValueChange={onChange}>
       <ToolbarRadioGroup>
         <ToolbarRadioButton aria-label="Align left" name="textOptions" value="left" icon={<AlignLeft24Regular />} />
         <ToolbarRadioButton
