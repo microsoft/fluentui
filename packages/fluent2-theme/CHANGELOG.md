@@ -1,8 +1,18 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Mon, 09 Jan 2023 07:49:46 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.7](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.104.7)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.104.6..@fluentui/fluent2-theme_v8.104.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.104.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
 
 ## [8.104.6](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.104.6)
 

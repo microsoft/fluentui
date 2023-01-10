@@ -25,6 +25,15 @@ Wed, 25 Jan 2023 14:49:08 GMT
 - add badge and counter badge as new components ([PR #26357](https://github.com/microsoft/fluentui/pull/26357) by chhol@microsoft.com)
 - add text as a new component ([PR #26090](https://github.com/microsoft/fluentui/pull/26090) by chhol@microsoft.com)
 
+## [2.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.10)
+
+Tue, 10 Jan 2023 07:50:14 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.9..@fluentui/web-components_v2.5.10)
+
+### Patches
+
+- fix: layering zindex issue with sub menus ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by jes@microsoft.com)
+
 ## [2.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.9)
 
 Thu, 05 Jan 2023 07:59:57 GMT

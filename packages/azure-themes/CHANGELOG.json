@@ -2,6 +2,33 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.44",
+      "version": "8.5.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "d34b9cdabed0763b72778818a1cbb509e446e6fc",
+            "comment": "Spin button height fix for Azure theme. Reduced to 24px to match textfield / dropdown"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/set-version to v8.2.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 07:49:46 GMT",
       "tag": "@fluentui/azure-themes_v8.5.43",
       "version": "8.5.43",
