@@ -17,7 +17,6 @@ const vars = {
   indicatorBorderColor: '--UNSTABLE__fui-Checkbox__indicator--borderColor',
   indicatorColor: '--UNSTABLE__fui-Checkbox__indicator--color',
   indicatorSize: '--UNSTABLE__fui-Checkbox__indicator--size',
-  indicatorOpacity: '--UNSTABLE__fui-Checkbox__indicator--opacity',
 } as const;
 
 const values = {
@@ -26,7 +25,6 @@ const values = {
   indicatorBorderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
   indicatorColor: `var(${vars.indicatorColor}, transparent)`,
   indicatorSize: `var(${vars.indicatorSize}, 16px)`,
-  indicatorOpacity: `var(${vars.indicatorOpacity})`,
 } as const;
 
 const useRootBaseClassName = makeResetStyles({
@@ -183,10 +181,6 @@ const useIndicatorBaseClassName = makeResetStyles({
   fontSize: `calc(${values.indicatorSize} - 4px)`,
   height: values.indicatorSize,
   width: values.indicatorSize,
-
-  '> *': {
-    opacity: values.indicatorOpacity,
-  },
 });
 
 const useIndicatorStyles = makeStyles({
