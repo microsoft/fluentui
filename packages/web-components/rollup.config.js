@@ -6,6 +6,9 @@ import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
 import typescript from 'rollup-plugin-typescript2';
 import { transformCSSFragment, transformHTMLFragment } from './build/transform-fragments';
 
+// eslint-disable-next-line no-undef
+const tsBin = require.resolve('typescript');
+
 const parserOptions = {
   sourceType: 'module',
 };
@@ -28,6 +31,8 @@ export default [
       resolve(),
       commonJS(),
       typescript({
+        // eslint-disable-next-line no-undef
+        typescript: require(tsBin),
         tsconfigOverride: {
           compilerOptions: {
             declaration: false,
