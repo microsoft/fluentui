@@ -46,14 +46,14 @@
     "test": "yarn doc:ci && yarn test-chrome:verbose",
     "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
-    "test-chrome": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage",
-    "test-chrome:verbose": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
-    "test-chrome:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
-    "test-chrome:debugger": "karma start karma.conf.js --browsers=ChromeDebugging",
-    "test-chrome:verbose:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
-    "test-chrome:verbose:debugger": "karma start karma.conf.js --browsers=ChromeDebugging --reporter=mocha",
-    "test-firefox": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage",
-    "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
+    "test-chrome": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --single-run --coverage",
+    "test-chrome:verbose": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
+    "test-chrome:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
+    "test-chrome:debugger": "karma start karma.conf.cjs --browsers=ChromeDebugging",
+    "test-chrome:verbose:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
+    "test-chrome:verbose:debugger": "karma start karma.conf.cjs --browsers=ChromeDebugging --reporter=mocha",
+    "test-firefox": "karma start karma.conf.cjs --browsers=FirefoxHeadless --single-run --coverage",
+    "test-firefox:verbose": "karma start karma.conf.cjs --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
     "@storybook/html": "6.5.5",
