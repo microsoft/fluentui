@@ -8,6 +8,7 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import { ValuesOf } from '@microsoft/fast-foundation';
 
 // @public
 class Text_2 extends FASTElement {
@@ -33,7 +34,7 @@ export const TextAlign: {
 };
 
 // @public
-export type TextAlign = typeof TextAlign[keyof typeof TextAlign];
+export type TextAlign = ValuesOf<typeof TextAlign>;
 
 // @public
 export const TextDefinition: FASTElementDefinition<typeof Text_2>;
@@ -46,7 +47,7 @@ export const TextFont: {
 };
 
 // @public
-export type TextFont = typeof TextFont[keyof typeof TextFont];
+export type TextFont = ValuesOf<typeof TextFont>;
 
 // @public
 export const TextSize: {
@@ -63,7 +64,7 @@ export const TextSize: {
 };
 
 // @public
-export type TextSize = typeof TextSize[keyof typeof TextSize];
+export type TextSize = ValuesOf<typeof TextSize>;
 
 // @public
 export const TextStyles: ElementStyles;
@@ -82,7 +83,7 @@ export const TextWeight: {
 };
 
 // @public
-export type TextWeight = typeof TextWeight[keyof typeof TextWeight];
+export type TextWeight = ValuesOf<typeof TextWeight>;
 
 // (No @packageDocumentation comment for this package)
 

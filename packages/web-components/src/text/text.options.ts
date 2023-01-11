@@ -1,3 +1,5 @@
+import { ValuesOf } from '@microsoft/fast-foundation';
+
 /**
  * TextSize constants
  * @public
@@ -20,7 +22,7 @@ export const TextSize = {
  * The font size and line height based on the theme tokens
  * @public
  */
-export type TextSize = typeof TextSize[keyof typeof TextSize];
+export type TextSize = ValuesOf<typeof TextSize>;
 
 /**
  * TextFont Constants
@@ -36,7 +38,7 @@ export const TextFont = {
  * Applies font family to the content
  * @public
  */
-export type TextFont = typeof TextFont[keyof typeof TextFont];
+export type TextFont = ValuesOf<typeof TextFont>;
 
 /**
  * TextWeight Constants
@@ -53,7 +55,7 @@ export const TextWeight = {
  * Applies font weight to the content
  * @public
  */
-export type TextWeight = typeof TextWeight[keyof typeof TextWeight];
+export type TextWeight = ValuesOf<typeof TextWeight>;
 
 /**
  * TextAlign Constants
@@ -70,4 +72,4 @@ export const TextAlign = {
  * Aligns the content
  * @public
  */
-export type TextAlign = typeof TextAlign[keyof typeof TextAlign];
+export type TextAlign = ValuesOf<typeof TextAlign>;
