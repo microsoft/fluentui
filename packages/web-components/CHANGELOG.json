@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 11 Jan 2023 07:50:49 GMT",
+      "tag": "@fluentui/web-components_v2.5.11",
+      "version": "2.5.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "854d1159c9a57d496f6db1ab9f20885136d20cc6",
+            "comment": "chore: upgrade version of storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Jan 2023 07:50:14 GMT",
       "tag": "@fluentui/web-components_v2.5.10",
       "version": "2.5.10",

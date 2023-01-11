@@ -2,6 +2,21 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Wed, 11 Jan 2023 07:50:53 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.2.26",
+      "version": "8.2.26",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Jan 2023 07:50:15 GMT",
       "tag": "@fluentui/foundation-legacy_v8.2.26",
       "version": "8.2.26",

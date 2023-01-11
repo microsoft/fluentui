@@ -250,7 +250,10 @@ export const renderTableSelectionCell_unstable: (state: TableSelectionCellState)
 export type RowId = string | number;
 
 // @public (undocumented)
-export type RowRenderFunction<TItem = any> = (row: RowState<TItem>) => React_2.ReactNode;
+export const RowIdContextProvider: React_2.Provider<RowId | undefined>;
+
+// @public (undocumented)
+export type RowRenderFunction = (row: RowState<any>, ...rest: any[]) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface RowState<TItem> {
@@ -540,6 +543,9 @@ export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionC
 
 // @public
 export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
+
+// @public (undocumented)
+export const useRowIdContext: () => RowId;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;

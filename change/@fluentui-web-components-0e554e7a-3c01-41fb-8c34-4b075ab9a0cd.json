@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: upgrade version of storybook",
-  "packageName": "@fluentui/web-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
