@@ -46,7 +46,7 @@ module.exports = function (config) {
     ],
     files: [`dist/esm/__test__/${setup}.js`],
     preprocessors: {
-      [`dist/esm/__test__/${setup}.js`]: ['webpack', 'sourcemap'],
+      [`dist/esm/__test__/${setup}.cjs`]: ['webpack', 'sourcemap'],
     },
     webpackMiddleware: {
       // webpack-dev-middleware configuration
