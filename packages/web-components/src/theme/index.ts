@@ -1,2 +1,2 @@
-export * from './design-tokens';
-export { setTheme } from './set-theme';
+export * from './design-tokens.js';
+export { setTheme } from './set-theme.js';

@@ -2,7 +2,8 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 import type { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 /**
- * @internal
+ * The base class used for constructing a fluent-text custom element
+ * @public
  */
 export class Text extends FASTElement {
   /**

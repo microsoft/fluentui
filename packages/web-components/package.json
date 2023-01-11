@@ -19,6 +19,16 @@
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
+  "exports": {
+    ".": {
+      "types": "./dist/dts/index.d.ts",
+      "default": "./dist/esm/index.js"
+    },
+    "./text": {
+      "types": "./dist/esm/text/define.d.ts",
+      "default": "./dist/esm/text/define.js"
+    }
+  },
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
