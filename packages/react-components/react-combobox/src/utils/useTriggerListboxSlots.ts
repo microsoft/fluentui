@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, useId, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
 import { Listbox } from '../components/Listbox/Listbox';
@@ -54,7 +54,9 @@ export function useTriggerListboxSlots(
   const triggerRef: typeof ref = React.useRef(null);
 
   // resolve listbox shorthand props
+  const listboxId = useId('fluent-listbox', listboxSlot?.id);
   const listbox: typeof listboxSlot = listboxSlot && {
+    id: listboxId,
     multiselect,
     tabIndex: undefined,
     ...listboxSlot,

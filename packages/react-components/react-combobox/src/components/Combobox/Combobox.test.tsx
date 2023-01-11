@@ -136,6 +136,18 @@ describe('Combobox', () => {
     expect(chevronButton?.getAttribute('aria-labelledby')).toEqual('testId');
   });
 
+  it('adds aria-owns pointing to the popup', () => {
+    const { getByRole, container } = render(
+      <Combobox open className="root">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+    const listboxId = getByRole('listbox').id;
+    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+  });
+
   /* open/close tests */
   it('opens the popup on click', () => {
     const { getByRole } = render(
