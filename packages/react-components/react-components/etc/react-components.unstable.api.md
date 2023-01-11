@@ -173,6 +173,7 @@ import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { renderToolbarRadioGroup_unstable } from '@fluentui/react-toolbar';
 import { RowId } from '@fluentui/react-table';
 import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
@@ -271,6 +272,9 @@ import { ToolbarProps } from '@fluentui/react-toolbar';
 import { ToolbarRadioButton } from '@fluentui/react-toolbar';
 import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
 import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroup } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupState } from '@fluentui/react-toolbar';
 import { ToolbarSlots } from '@fluentui/react-toolbar';
 import { ToolbarState } from '@fluentui/react-toolbar';
 import { ToolbarToggleButton } from '@fluentui/react-toolbar';
@@ -353,6 +357,8 @@ import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { useToolbarGroupStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarRadioButton_unstable } from '@fluentui/react-toolbar';
 import { useToolbarRadioButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioGroup_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioGroupStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarToggleButton_unstable } from '@fluentui/react-toolbar';
 import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
@@ -695,6 +701,8 @@ export { renderToolbar_unstable }
 
 export { renderToolbarGroup_unstable }
 
+export { renderToolbarRadioGroup_unstable }
+
 export { RowId }
 
 export { RowState }
@@ -892,6 +900,12 @@ export { ToolbarRadioButtonProps }
 
 export { ToolbarRadioButtonState }
 
+export { ToolbarRadioGroup }
+
+export { ToolbarRadioGroupProps }
+
+export { ToolbarRadioGroupState }
+
 export { ToolbarSlots }
 
 export { ToolbarState }
@@ -1055,6 +1069,10 @@ export { useToolbarGroupStyles_unstable }
 export { useToolbarRadioButton_unstable }
 
 export { useToolbarRadioButtonStyles_unstable }
+
+export { useToolbarRadioGroup_unstable }
+
+export { useToolbarRadioGroupStyles_unstable }
 
 export { useToolbarStyles_unstable }
 
