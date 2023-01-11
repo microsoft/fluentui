@@ -20,7 +20,7 @@ export const useToolbarRadioButton_unstable = (
 
   const { onClick: onClickOriginal } = props;
   const toggleButtonState = useToggleButton_unstable(
-    { size, checked, role: 'radio', 'aria-checked': checked, 'aria-pressed': undefined, ...props },
+    { size, checked, role: 'radio', 'aria-checked': checked, ...props },
     ref,
   );
   const state: ToolbarRadioButtonState = {
