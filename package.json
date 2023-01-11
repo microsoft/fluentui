@@ -219,8 +219,8 @@
     "express": "4.17.1",
     "extract-comments": "1.1.0",
     "file-loader": "6.2.0",
-    "fork-ts-checker-webpack-plugin": "6.1.0",
     "find-free-port": "2.0.0",
+    "fork-ts-checker-webpack-plugin": "6.1.0",
     "fs-extra": "8.1.0",
     "geckodriver": "3.0.2",
     "glob": "7.2.0",
@@ -297,7 +297,7 @@
     "through2": "4.0.2",
     "tmp": "0.2.1",
     "ts-jest": "26.5.6",
-    "ts-loader": "9.3.1",
+    "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.1.0",
     "tsconfig-paths-webpack-plugin": "4.0.0",
@@ -330,7 +330,9 @@
       "typings"
     ],
     "nohoist": [
-      "@fluentui/web-components/@storybook/html"
+      "@fluentui/web-components/@storybook/html",
+      "@fluentui/web-components/@microsoft/api-extractor",
+      "@fluentui/web-components/@microsoft/api-extractor/**"
     ]
   },
   "resolutions": {

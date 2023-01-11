@@ -26,9 +26,11 @@
     }
   },
   "scripts": {
+    "tsc": "tsc",
+    "api-extractor": "api-extractor",
     "clean": "node ./build/clean.js dist",
     "doc": "api-extractor run --local",
-    "doc:ci": "api-extractor run --local",
+    "doc:ci": "yarn doc",
     "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
     "dev": "tsc -p ./tsconfig.json -w",
     "tdd": "yarn dev & yarn test-chrome:watch",
@@ -77,9 +79,8 @@
     "karma-sourcemap-loader": "0.3.8",
     "karma-webpack": "5.0.0",
     "mocha": "7.2.0",
-    "resolve-typescript-plugin": "^1.2.0",
-    "ts-loader": "^7.0.2",
-    "typescript": "4.7.3"
+    "@microsoft/api-extractor": "7.31.2",
+    "typescript": "4.7.4"
   },
   "dependencies": {
     "@microsoft/fast-element": "^2.0.0-beta.17",

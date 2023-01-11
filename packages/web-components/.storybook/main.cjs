@@ -1,5 +1,6 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const ResolveTypescriptPlugin = require('resolve-typescript-plugin');
+
+const tsBin = require.resolve('typescript');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|mdx)'],
@@ -26,23 +27,29 @@ module.exports = {
     },
   ],
   webpackFinal: async config => {
-    config.resolve.plugins = [new ResolveTypescriptPlugin()];
+    config.resolve.extensionAlias = {
+      '.js': ['.ts', '.js'],
+      '.mjs': ['.mts', '.mjs'],
+    };
     config.module.rules.push(
       {
-        test: /\.ts$/,
+        test: /\.([cm]?ts|tsx)$/,
         loader: 'ts-loader',
         sideEffects: true,
         options: {
           transpileOnly: true,
+          compiler: tsBin,
         },
       },
+      // Following config is needed to be able to resolve @storybook packages imported in specified files that don't ship valid ESM
+      // It also enables importing other packages without proper ESM extensions, but that should be avoided !
+      // @see https://webpack.js.org/configuration/module/#resolvefullyspecified
       {
-        test: /.storybook\/preview.js/,
+        test: /\.storybook\/.+\.m?js/,
         resolve: { fullySpecified: false },
       },
     );
-    config.resolve.extensions.push('.ts');
-    config.resolve.extensions.push('.js');
+    config.resolve.extensions.push(...['.ts', '.js']);
     config.plugins.push(
       new CircularDependencyPlugin({
         exclude: /node_modules/,
