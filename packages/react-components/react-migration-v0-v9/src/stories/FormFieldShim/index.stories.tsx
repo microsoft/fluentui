@@ -2,13 +2,10 @@ import * as React from 'react';
 
 import descriptionMd from './Description.md';
 
-import { initializeIcons } from '@fluentui/react';
 import { FormField } from '@fluentui/react-northstar';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 import { InputField } from '@fluentui/react-components/unstable';
 import { FormFieldShim } from '../../components/FormField/FormFieldShim';
-
-initializeIcons();
 
 const useStyles = makeStyles({
   root: {
