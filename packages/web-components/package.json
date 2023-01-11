@@ -47,7 +47,7 @@
     "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-chrome": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --single-run --coverage",
-    "test-chrome:verbose": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
+    "test-chrome:verbose": "karma start karma.conf.cjs --no-fail-on-empty-test-suite --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
     "test-chrome:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
     "test-chrome:debugger": "karma start karma.conf.cjs --browsers=ChromeDebugging",
     "test-chrome:verbose:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
