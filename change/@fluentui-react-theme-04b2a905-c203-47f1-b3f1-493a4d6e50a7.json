@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Updated storybook docs",
   "packageName": "@fluentui/react-theme",
   "email": "gcox@microsoft.com",
