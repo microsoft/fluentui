@@ -194,7 +194,10 @@ export const Virtualization = () => {
               >
                 <TableSelectionCell checked={selected} checkboxIndicator={{ 'aria-label': 'Select row' }} />
                 <TableCell>
-                  <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+                  <TableCellLayout media={item.file.icon}>
+                    <strong>[{index}] </strong>
+                    {item.file.label}
+                  </TableCellLayout>
                 </TableCell>
                 <TableCell>
                   <TableCellLayout

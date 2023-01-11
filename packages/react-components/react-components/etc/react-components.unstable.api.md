@@ -178,6 +178,7 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { RowId } from '@fluentui/react-table';
+import { RowIdContextProvider } from '@fluentui/react-table';
 import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
@@ -325,6 +326,7 @@ import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
+import { useRowIdContext } from '@fluentui/react-table';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useTable_unstable } from '@fluentui/react-table';
@@ -711,6 +713,8 @@ export { renderToolbarGroup_unstable }
 
 export { RowId }
 
+export { RowIdContextProvider }
+
 export { RowState }
 
 export { Select }
@@ -1005,6 +1009,8 @@ export { useOverflowMenu }
 export { useProgressBar_unstable }
 
 export { useProgressBarStyles_unstable }
+
+export { useRowIdContext }
 
 export { useSelect_unstable }
 
