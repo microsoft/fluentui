@@ -29,7 +29,7 @@ import { useFocusWithin } from '@fluentui/react-tabster';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const { disabled, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
+  const { disabled = false, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -60,6 +60,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   const state: CheckboxState = {
     shape,
     checked,
+    disabled,
     size,
     labelPosition,
     components: {
