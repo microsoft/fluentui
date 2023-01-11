@@ -4,8 +4,65 @@
 
 ```ts
 
+import { ElementStyles } from '@microsoft/fast-element';
+import { ElementViewTemplate } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
+import { FASTElementDefinition } from '@microsoft/fast-element';
+
 // @public (undocumented)
-export const empty = "";
+export const FluentDesignSystem: Readonly<{
+    prefix: "fluent";
+    shadowRootMode: "open";
+    registry: CustomElementRegistry;
+}>;
+
+// @internal (undocumented)
+class Text_2 extends FASTElement {
+    // Warning: (ae-forgotten-export) The symbol "TextAlign" needs to be exported by the entry point index.d.ts
+    //
+    // @public
+    align: TextAlign;
+    // @public
+    block: boolean;
+    // Warning: (ae-forgotten-export) The symbol "TextFont" needs to be exported by the entry point index.d.ts
+    //
+    // @public
+    font: TextFont;
+    // @public
+    italic: boolean;
+    // @public
+    nowrap: boolean;
+    // Warning: (ae-forgotten-export) The symbol "TextSize" needs to be exported by the entry point index.d.ts
+    //
+    // @public
+    size: TextSize;
+    // @public
+    strikethrough: boolean;
+    // @public
+    truncate: boolean;
+    // @public
+    underline: boolean;
+    // Warning: (ae-forgotten-export) The symbol "TextWeight" needs to be exported by the entry point index.d.ts
+    //
+    // @public
+    weight: TextWeight;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "Text" should be prefixed with an underscore because the declaration is marked as @internal
+export { Text_2 as Text }
+
+// Warning: (ae-incompatible-release-tags) The symbol "definition" is marked as @public, but its signature references "Text_2" which is marked as @internal
+//
+// @public
+export const TextDefinition: FASTElementDefinition<typeof Text_2>;
+
+// @public
+export const TextStyles: ElementStyles;
+
+// Warning: (ae-incompatible-release-tags) The symbol "template" is marked as @public, but its signature references "Text_2" which is marked as @internal
+//
+// @public (undocumented)
+export const TextTemplate: ElementViewTemplate<Text_2>;
 
 // (No @packageDocumentation comment for this package)
 
