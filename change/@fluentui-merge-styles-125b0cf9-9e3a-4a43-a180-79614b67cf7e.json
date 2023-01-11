@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to packaged scripts",
-  "packageName": "@fluentui/merge-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
