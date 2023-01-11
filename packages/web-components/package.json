@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
   },
+  "type": "module",
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
