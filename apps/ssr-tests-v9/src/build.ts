@@ -1,4 +1,4 @@
-import { getPackageStoriesGlob } from '@fluentui/scripts/storybook';
+import { getPackageStoriesGlob } from '@fluentui/scripts-storybook';
 import { isCI } from 'ci-info';
 import * as fs from 'fs';
 import * as path from 'path';

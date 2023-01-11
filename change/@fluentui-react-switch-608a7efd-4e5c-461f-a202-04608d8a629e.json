@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Update Switch to use griffel reset styles",
+  "packageName": "@fluentui/react-switch",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

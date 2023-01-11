@@ -8,7 +8,7 @@ const webpack = require('webpack');
 const {
   getResolveAlias,
   resources: { createServeConfig },
-} = require('@fluentui/scripts/webpack');
+} = require('@fluentui/scripts-webpack');
 
 const { webpackMerge } = require('just-scripts');
 

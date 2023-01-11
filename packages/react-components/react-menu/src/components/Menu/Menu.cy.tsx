@@ -931,7 +931,27 @@ describe(`Nested Menus`, () => {
           .get(menuSelector)
           .eq(1)
           .realPress('Tab');
+
         cy.contains('After').should('be.focused').get(menuSelector).should('not.exist');
+      });
+
+      it('should move focus out of document if menu trigger is the last focusable element in DOM', () => {
+        mount(
+          <Example />,
+        );
+
+        cy.get(menuTriggerSelector)
+          .click()
+          .get(menuSelector)
+          .within(() => {
+            cy.get(menuItemSelector).eq(4).type('{rightarrow}');
+          })
+          .get(menuSelector)
+          .eq(1)
+          .realPress('Tab');
+
+        cy.realPress(['Shift', 'Tab']);
+        cy.get(menuTriggerSelector).should('be.focused');
       });
 
       it('should be able to shift tab to previous element after the root trigger', () => {

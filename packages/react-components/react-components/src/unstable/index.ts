@@ -72,9 +72,14 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  ComboboxProvider,
+  useComboboxContextValues,
+  ListboxProvider,
+  useListboxContextValues,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
+  ComboboxContextValue,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -86,6 +91,7 @@ export type {
   DropdownOpenEvents,
   DropdownSlots,
   DropdownState,
+  ListboxContextValue,
   ListboxContextValues,
   ListboxProps,
   ListboxSlots,
