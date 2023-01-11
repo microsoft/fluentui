@@ -35,7 +35,7 @@ export const useToolbarRadioButton_unstable = (
       onClickOriginal?.(e);
     },
   );
-
+  state.root['aria-pressed'] = undefined;
   state.root.onClick = handleOnClick;
   return state;
 };
