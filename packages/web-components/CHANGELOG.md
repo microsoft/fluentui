@@ -25,6 +25,15 @@ Wed, 25 Jan 2023 14:49:08 GMT
 - add badge and counter badge as new components ([PR #26357](https://github.com/microsoft/fluentui/pull/26357) by chhol@microsoft.com)
 - add text as a new component ([PR #26090](https://github.com/microsoft/fluentui/pull/26090) by chhol@microsoft.com)
 
+## [2.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.11)
+
+Wed, 11 Jan 2023 07:50:49 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.10..@fluentui/web-components_v2.5.11)
+
+### Patches
+
+- chore: upgrade version of storybook ([PR #26259](https://github.com/microsoft/fluentui/pull/26259) by mgodbolt@microsoft.com)
+
 ## [2.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.10)
 
 Tue, 10 Jan 2023 07:50:14 GMT

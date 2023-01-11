@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jan 2023 07:50:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.5)
+
+Wed, 11 Jan 2023 07:50:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.4..@fluentui/react_v8.104.5)
+
+### Patches
+
+- Set correct defaultRender for no results found ([PR #26267](https://github.com/microsoft/fluentui/pull/26267) by gcox@microsoft.com)
 
 ## [8.104.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.4)
 

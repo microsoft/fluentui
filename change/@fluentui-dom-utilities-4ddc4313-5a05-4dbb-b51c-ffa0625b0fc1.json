@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to packaged scripts",
-  "packageName": "@fluentui/dom-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
