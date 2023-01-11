@@ -22,15 +22,14 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
-export type InfoButtonProps = Omit<ComponentProps<Partial<Omit<InfoButtonSlots, 'popover'>>>, 'disabled'> & {
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
     size?: 'small' | 'medium' | 'large';
-    popover?: Partial<PopoverProps>;
 };
 
 // @public (undocumented)
 export type InfoButtonSlots = {
     root: NonNullable<Slot<'button'>>;
-    popover: NonNullable<Slot<PopoverProps>>;
+    popover: NonNullable<Slot<Partial<PopoverProps>>>;
     content: NonNullable<Slot<typeof PopoverSurface>>;
 };
 

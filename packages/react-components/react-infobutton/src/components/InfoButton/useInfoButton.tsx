@@ -35,7 +35,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
 
     components: {
       root: 'button',
-      popover: Popover,
+      popover: Popover as React.FC<Partial<PopoverProps>>,
       content: PopoverSurface,
     },
 
@@ -45,10 +45,9 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       ...props,
       ref,
     }),
-    popover: resolveShorthand(props.popover as PopoverProps, {
+    popover: resolveShorthand(props.popover, {
       required: true,
       defaultProps: {
-        children: <></>,
         positioning: 'above-start',
         size: popoverSizeMap[size],
         withArrow: true,
