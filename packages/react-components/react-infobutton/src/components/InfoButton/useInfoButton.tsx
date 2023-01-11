@@ -4,6 +4,7 @@ import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluent
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
+import type { PopoverProps } from '@fluentui/react-popover';
 
 const infoButtonIconMap = {
   small: <DefaultInfoButtonIcon12 />,
@@ -44,7 +45,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       ...props,
       ref,
     }),
-    popover: resolveShorthand(props.popover, {
+    popover: resolveShorthand(props.popover as PopoverProps, {
       required: true,
       defaultProps: {
         children: <></>,
@@ -56,7 +57,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     content: resolveShorthand(props.content, {
       required: true,
       defaultProps: {
-        role: 'dialog',
+        role: 'note',
       },
     }),
   };
