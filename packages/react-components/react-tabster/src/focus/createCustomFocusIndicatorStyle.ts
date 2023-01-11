@@ -10,7 +10,8 @@ export interface CreateCustomFocusIndicatorStyleOptions {
   selector?: 'focus' | 'focus-within';
   /**
    * Enables the browser default outline style
-   * @default false
+   * @deprecated The custom focus indicator no longer affects outline styles. Outline is overridden
+   * in the default focus indicator function, `createFocusOutlineStyle`.
    */
   enableOutline?: boolean;
 }

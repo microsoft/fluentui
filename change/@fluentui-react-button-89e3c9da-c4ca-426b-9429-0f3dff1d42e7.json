@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: use outline shorthand instead of compound prop for consistency",
-  "packageName": "@fluentui/react-button",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

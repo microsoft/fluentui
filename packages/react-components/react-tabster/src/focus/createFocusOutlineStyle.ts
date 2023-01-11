@@ -66,15 +66,14 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
  * @returns focus outline styles object for @see makeStyles
  */
 export const createFocusOutlineStyle = ({
-  enableOutline = false,
   selector = defaultOptions.selector,
   style = defaultOptions.style,
 }: CreateFocusOutlineStyleOptions = defaultOptions): GriffelStyle => ({
   ':focus': {
-    outlineStyle: enableOutline ? undefined : 'none',
+    outlineStyle: 'none',
   },
   ':focus-visible': {
-    outlineStyle: enableOutline ? undefined : 'none',
+    outlineStyle: 'none',
   },
 
   ...createCustomFocusIndicatorStyle(

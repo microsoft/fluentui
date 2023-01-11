@@ -108,11 +108,11 @@ const useRootBaseClassName = makeResetStyles({
   ...createCustomFocusIndicatorStyle({
     borderColor: tokens.colorTransparentStroke,
     borderRadius: tokens.borderRadiusMedium,
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
     boxShadow: `
       ${tokens.shadow4},
       0 0 0 2px ${tokens.colorStrokeFocus2}
     `,
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorTransparentStroke),
     zIndex: 1,
   }),
 });
