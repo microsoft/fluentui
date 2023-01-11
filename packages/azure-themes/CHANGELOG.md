@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 06 Jan 2023 12:29:54 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jan 2023 12:22:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.34](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.10.34)
+
+Wed, 11 Jan 2023 12:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.10.33..@uifabric/azure-themes_v7.10.34)
+
+### Patches
+
+- Cherry picked from 26152- fixing azure theme detailslist checkbox styling ([PR #26293](https://github.com/microsoft/fluentui/pull/26293) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.10.33](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.10.33)
 

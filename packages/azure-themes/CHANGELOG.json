@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 11 Jan 2023 12:22:17 GMT",
+      "tag": "@uifabric/azure-themes_v7.10.34",
+      "version": "7.10.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry picked from 26152- fixing azure theme detailslist checkbox styling",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "eac3939048901904ef4a6c3702e7a72b1a936f12",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Jan 2023 12:29:54 GMT",
       "tag": "@uifabric/azure-themes_v7.10.33",
       "version": "7.10.33",
