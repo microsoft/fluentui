@@ -5,7 +5,25 @@
 ```ts
 
 import { GriffelStyle } from '@fluentui/react-components';
+import { ObjectOf } from '@fluentui/react-northstar';
+import { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
+
+// @public (undocumented)
+export const FormFieldShim: React_2.ForwardRefExoticComponent<{
+    errorMessage?: WithContent | undefined;
+    required?: boolean | undefined;
+    control?: ({
+        content?: React_2.ReactNode;
+    } & ObjectOf<any> & {
+        children?: unknown;
+    } & {
+        error?: "true" | "false" | undefined;
+    }) | undefined;
+    label?: WithContent | undefined;
+} & {
+    children?: React_2.ReactNode;
+} & React_2.RefAttributes<HTMLInputElement>>;
 
 // @public (undocumented)
 export const grid: {
