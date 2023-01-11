@@ -95,6 +95,4 @@ export interface CheckboxOnChangeData {
  * State used in rendering Checkbox
  */
 export type CheckboxState = ComponentState<CheckboxSlots> &
-  Required<Pick<CheckboxProps, 'checked' | 'labelPosition' | 'shape' | 'size'>> & {
-    disabled: boolean | undefined;
-  };
+  Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
