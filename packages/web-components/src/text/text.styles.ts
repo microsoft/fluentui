@@ -1,5 +1,5 @@
 import { css } from "@microsoft/fast-element";
-import { fontFamilyBase, fontFamilyMonospace, fontFamilyNumeric, fontSizeBase100, fontSizeBase200, fontSizeBase300, fontSizeBase400, fontSizeBase500, fontSizeBase600, fontSizeHero1000, fontSizeHero700, fontSizeHero800, fontSizeHero900, fontWeightMedium, fontWeightRegular, fontWeightSemibold, lineHeightBase100, lineHeightBase200, lineHeightBase300, lineHeightBase400, lineHeightBase500, lineHeightBase600, lineHeightHero1000, lineHeightHero700, lineHeightHero800, lineHeightHero900 } from "../theme/design-tokens.js";
+import { fontFamilyBase, fontFamilyMonospace, fontFamilyNumeric, fontSizeBase100, fontSizeBase200, fontSizeBase300, fontSizeBase400, fontSizeBase500, fontSizeBase600, fontSizeHero1000, fontSizeHero700, fontSizeHero800, fontSizeHero900, fontWeightBold, fontWeightMedium, fontWeightRegular, fontWeightSemibold, lineHeightBase100, lineHeightBase200, lineHeightBase300, lineHeightBase400, lineHeightBase500, lineHeightBase600, lineHeightHero1000, lineHeightHero700, lineHeightHero800, lineHeightHero900 } from "../theme/design-tokens.js";
 
 /** Text styles
  * @public
@@ -19,13 +19,11 @@ export const styles = css`
   overflow: visible;
   text-overflow: clip;
 }
-:host([truncate]) ::slotted(*),
 :host([nowrap]) ::slotted(*) {
   white-space: nowrap;
   overflow: hidden;
 }
 :host([truncate]) ::slotted(*) {
-  display: block;
   text-overflow: ellipsis;
 }
 :host([block]) ::slotted(*) {
@@ -90,6 +88,9 @@ export const styles = css`
 }
 :host([weight="semibold"]) ::slotted(*) {
   font-weight: ${fontWeightSemibold};
+}
+:host([weight="bold"]) ::slotted(*) {
+  font-weight: ${fontWeightBold};
 }
 :host([align="center"]) ::slotted(*) {
   text-align: center;

@@ -46,6 +46,7 @@ export const TextWeight = {
   medium: 'medium',
   regular: 'regular',
   semibold: 'semibold',
+  bold: 'bold',
 } as const;
 
 /**
@@ -66,7 +67,7 @@ export const TextAlign = {
 } as const;
 
 /**
- * Applies font weight to the content
+ * Aligns the content
  * @public
  */
 export type TextAlign = typeof TextAlign[keyof typeof TextAlign];

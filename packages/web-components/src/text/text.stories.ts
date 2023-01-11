@@ -3,6 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
 import type { Text as FluentText } from './text.js';
 import './define.js';
+import { TextAlign, TextFont, TextSize, TextWeight } from './text.options';
 
 type TextStoryArgs = Args & FluentText;
 type TextStoryMeta = Meta<TextStoryArgs>;
@@ -72,25 +73,25 @@ export default {
       },
     },
     size: {
-      options: ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'],
+      options: Object.keys(TextSize),
       control: {
         type: 'select',
       },
     },
     weight: {
-      options: ['medium', 'regular', 'semibold'],
+      options: Object.keys(TextWeight),
       control: {
         type: 'select',
       },
     },
     align: {
-      options: ['start', 'end', 'center', 'justify'],
+      options: Object.keys(TextAlign),
       control: {
         type: 'select',
       },
     },
     font: {
-      options: ['base', 'numeric', 'monospace'],
+      options: Object.keys(TextFont),
       control: {
         type: 'select',
       },
