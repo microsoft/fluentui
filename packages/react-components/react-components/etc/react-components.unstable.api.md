@@ -34,8 +34,6 @@ import { CardState } from '@fluentui/react-card';
 import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
 import { checkboxFieldClassNames } from '@fluentui/react-checkbox';
 import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
-import { ColumnDefinition } from '@fluentui/react-table';
-import { ColumnId } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValue } from '@fluentui/react-combobox';
@@ -49,8 +47,8 @@ import { ComboboxProps } from '@fluentui/react-combobox';
 import { ComboboxProvider } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import { ComboboxState } from '@fluentui/react-combobox';
-import { createColumn } from '@fluentui/react-table';
-import { CreateColumnOptions } from '@fluentui/react-table';
+import { createTableColumn } from '@fluentui/react-table';
+import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
@@ -177,9 +175,6 @@ import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
-import { RowId } from '@fluentui/react-table';
-import { RowIdContextProvider } from '@fluentui/react-table';
-import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
@@ -223,9 +218,13 @@ import { TableCellSlots } from '@fluentui/react-table';
 import { TableCellState } from '@fluentui/react-table';
 import { tableClassName } from '@fluentui/react-table';
 import { tableClassNames } from '@fluentui/react-table';
+import { TableColumnDefinition } from '@fluentui/react-table';
+import { TableColumnId } from '@fluentui/react-table';
 import { TableContextProvider } from '@fluentui/react-table';
 import { TableContextValue } from '@fluentui/react-table';
 import { TableContextValues } from '@fluentui/react-table';
+import { TableFeaturePlugin } from '@fluentui/react-table';
+import { TableFeaturesState } from '@fluentui/react-table';
 import { TableHeader } from '@fluentui/react-table';
 import { TableHeaderCell } from '@fluentui/react-table';
 import { tableHeaderCellClassName } from '@fluentui/react-table';
@@ -242,6 +241,9 @@ import { TableProps } from '@fluentui/react-table';
 import { TableRow } from '@fluentui/react-table';
 import { tableRowClassName } from '@fluentui/react-table';
 import { tableRowClassNames } from '@fluentui/react-table';
+import { TableRowData } from '@fluentui/react-table';
+import { TableRowId } from '@fluentui/react-table';
+import { TableRowIdContextProvider } from '@fluentui/react-table';
 import { TableRowProps } from '@fluentui/react-table';
 import { TableRowSlots } from '@fluentui/react-table';
 import { TableRowState } from '@fluentui/react-table';
@@ -254,7 +256,6 @@ import { TableSelectionState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
 import { TableSortState } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
-import { TableStatePlugin } from '@fluentui/react-table';
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 import { textareaFieldClassNames } from '@fluentui/react-textarea';
 import { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
@@ -326,7 +327,6 @@ import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
-import { useRowIdContext } from '@fluentui/react-table';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useTable_unstable } from '@fluentui/react-table';
@@ -340,12 +340,13 @@ import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableFeatures } from '@fluentui/react-table';
+import { UseTableFeaturesOptions } from '@fluentui/react-table';
 import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
-import { UseTableOptions } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
+import { useTableRowIdContext } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
 import { useTableSelection } from '@fluentui/react-table';
 import { useTableSelectionCell_unstable } from '@fluentui/react-table';
@@ -425,10 +426,6 @@ export { checkboxFieldClassNames }
 
 export { CheckboxFieldProps }
 
-export { ColumnDefinition }
-
-export { ColumnId }
-
 export { Combobox }
 
 export { comboboxClassNames }
@@ -455,9 +452,9 @@ export { ComboboxSlots }
 
 export { ComboboxState }
 
-export { createColumn }
+export { createTableColumn }
 
-export { CreateColumnOptions }
+export { CreateTableColumnOptions }
 
 export { DATA_OVERFLOW_ITEM }
 
@@ -711,12 +708,6 @@ export { renderToolbar_unstable }
 
 export { renderToolbarGroup_unstable }
 
-export { RowId }
-
-export { RowIdContextProvider }
-
-export { RowState }
-
 export { Select }
 
 export { selectClassNames }
@@ -803,11 +794,19 @@ export { tableClassName }
 
 export { tableClassNames }
 
+export { TableColumnDefinition }
+
+export { TableColumnId }
+
 export { TableContextProvider }
 
 export { TableContextValue }
 
 export { TableContextValues }
+
+export { TableFeaturePlugin }
+
+export { TableFeaturesState }
 
 export { TableHeader }
 
@@ -841,6 +840,12 @@ export { tableRowClassName }
 
 export { tableRowClassNames }
 
+export { TableRowData }
+
+export { TableRowId }
+
+export { TableRowIdContextProvider }
+
 export { TableRowProps }
 
 export { TableRowSlots }
@@ -863,10 +868,7 @@ export { TableSlots }
 
 export { TableSortState }
 
-export { TableState as HeadlessTableState }
 export { TableState }
-
-export { TableStatePlugin }
 
 export { TextareaField }
 
@@ -1010,8 +1012,6 @@ export { useProgressBar_unstable }
 
 export { useProgressBarStyles_unstable }
 
-export { useRowIdContext }
-
 export { useSelect_unstable }
 
 export { useSelectStyles_unstable }
@@ -1038,6 +1038,8 @@ export { useTableContext }
 
 export { useTableFeatures }
 
+export { UseTableFeaturesOptions }
+
 export { useTableHeader_unstable }
 
 export { useTableHeaderCell_unstable }
@@ -1046,9 +1048,9 @@ export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
 
-export { UseTableOptions }
-
 export { useTableRow_unstable }
+
+export { useTableRowIdContext }
 
 export { useTableRowStyles_unstable }
 
