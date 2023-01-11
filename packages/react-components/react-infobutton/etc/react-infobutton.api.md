@@ -22,8 +22,9 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
-export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+export type InfoButtonProps = Omit<ComponentProps<Partial<Omit<InfoButtonSlots, 'popover'>>>, 'disabled'> & {
     size?: 'small' | 'medium' | 'large';
+    popover?: Partial<PopoverProps>;
 };
 
 // @public (undocumented)
