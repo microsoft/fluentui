@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: add aria-owns to combobox and dropdown\"",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
