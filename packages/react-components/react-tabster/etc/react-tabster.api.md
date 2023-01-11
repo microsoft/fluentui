@@ -18,13 +18,14 @@ export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | Gr
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    // @deprecated
     enableOutline?: boolean;
     // (undocumented)
     selector?: 'focus' | 'focus-within';
 }
 
 // @public
-export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateFocusOutlineStyleOptions extends CreateCustomFocusIndicatorStyleOptions {
