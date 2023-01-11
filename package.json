@@ -326,7 +326,7 @@
     "through2": "4.0.2",
     "tmp": "0.2.1",
     "ts-jest": "29.1.1",
-    "ts-loader": "9.3.1",
+    "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
     "tsconfig-paths-webpack-plugin": "4.1.0",
@@ -362,7 +362,9 @@
       "typings"
     ],
     "nohoist": [
-      "@fluentui/web-components/@storybook/html"
+      "@fluentui/web-components/@storybook/html",
+      "@fluentui/web-components/@microsoft/api-extractor",
+      "@fluentui/web-components/@microsoft/api-extractor/**"
     ]
   },
   "resolutions": {

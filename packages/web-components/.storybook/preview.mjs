@@ -1,6 +1,6 @@
-import * as Fluent from '../src/index-rollup';
-import webcomponentsTheme from './theme';
-import { switchTheme } from '../public/theme-switch';
+import * as Fluent from '../src/index-rollup.ts';
+import webcomponentsTheme from './theme.mjs';
+import { switchTheme } from '../public/theme-switch.ts';
 
 Fluent;
 

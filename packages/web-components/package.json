@@ -15,13 +15,16 @@
   "bugs": {
     "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
   },
+  "type": "module",
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
   "scripts": {
+    "tsc": "tsc",
+    "api-extractor": "api-extractor",
     "clean": "node ./build/clean.js dist",
     "doc": "api-extractor run --local",
-    "doc:ci": "api-extractor run --local",
+    "doc:ci": "yarn doc",
     "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
     "dev": "tsc -p ./tsconfig.json -w",
     "tdd": "yarn dev & yarn test-chrome:watch",
@@ -37,14 +40,14 @@
     "test": "yarn doc:ci && yarn test-chrome:verbose",
     "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
-    "test-chrome": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage",
-    "test-chrome:verbose": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
-    "test-chrome:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
-    "test-chrome:debugger": "karma start karma.conf.js --browsers=ChromeDebugging",
-    "test-chrome:verbose:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
-    "test-chrome:verbose:debugger": "karma start karma.conf.js --browsers=ChromeDebugging --reporter=mocha",
-    "test-firefox": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage",
-    "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
+    "test-chrome": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --single-run --coverage",
+    "test-chrome:verbose": "karma start karma.conf.cjs --no-fail-on-empty-test-suite --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
+    "test-chrome:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
+    "test-chrome:debugger": "karma start karma.conf.cjs --browsers=ChromeDebugging",
+    "test-chrome:verbose:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
+    "test-chrome:verbose:debugger": "karma start karma.conf.cjs --browsers=ChromeDebugging --reporter=mocha",
+    "test-firefox": "karma start karma.conf.cjs --browsers=FirefoxHeadless --single-run --coverage",
+    "test-firefox:verbose": "karma start karma.conf.cjs --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
     "@storybook/html": "6.5.15",
@@ -69,7 +72,9 @@
     "karma-source-map-support": "1.4.0",
     "karma-sourcemap-loader": "0.3.8",
     "karma-webpack": "5.0.0",
-    "mocha": "7.2.0"
+    "mocha": "7.2.0",
+    "@microsoft/api-extractor": "7.31.2",
+    "typescript": "4.7.4"
   },
   "dependencies": {
     "@microsoft/fast-element": "^2.0.0-beta.17",
