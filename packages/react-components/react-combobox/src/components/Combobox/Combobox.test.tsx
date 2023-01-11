@@ -145,7 +145,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
     const listboxId = getByRole('listbox').id;
-    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);\
+    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
   });
 
   /* open/close tests */
