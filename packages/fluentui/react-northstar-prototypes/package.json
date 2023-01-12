@@ -31,12 +31,13 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "*",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-virtualized": "^9.21.8",
-    "@types/react-window": "^1.8.2"
+    "@types/react-window": "^1.8.2",
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-babel": "*"
   },
   "files": [
     "dist"

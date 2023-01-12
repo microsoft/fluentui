@@ -15,6 +15,7 @@ export { MultiselectWithValueString } from './ComboboxMultiselectWithValueString
 export { Grouped } from './ComboboxGrouped.stories';
 export { Appearance } from './ComboboxAppearance.stories';
 export { Size } from './ComboboxSize.stories';
+export { Disabled } from './ComboboxDisabled.stories';
 
 export default {
   title: 'Preview Components/Combobox',

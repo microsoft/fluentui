@@ -7,7 +7,7 @@ const yargs = require('yargs');
 
 /** @typedef {import('yargs').Arguments<{root:string;'include-dev'?:string;'graphviz-path'?:string}>} CliArgs */
 
-const { findGitRoot, getDependencies } = require('../monorepo');
+const { findGitRoot, getDependencies } = require('@fluentui/scripts-monorepo');
 
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
 /**
@@ -163,8 +163,8 @@ yargs
   .command(
     '$0',
     'Generates dependency graphs for packages in the repo',
-    yargs => {
-      yargs
+    _yargs => {
+      _yargs
         .positional('root', {
           type: 'string',
           describe: 'The name of the root package in the dependency tree, without the `@fluentui/` prefix',
@@ -179,7 +179,7 @@ yargs
           description: 'The path to graphviz which needs to be installed, required for windows users',
         });
     },
-    async argv => await main(/** @type {CliArgs}*/ (argv)),
+    async argv => main(/** @type {CliArgs}*/ (argv)),
   )
   .demand('root')
   .help().argv;

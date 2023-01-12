@@ -1,7 +1,7 @@
 // @ts-check
 const path = require('path');
 const fs = require('fs-extra');
-const { resources } = require('@fluentui/scripts/webpack');
+const { resources } = require('@fluentui/scripts-webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 

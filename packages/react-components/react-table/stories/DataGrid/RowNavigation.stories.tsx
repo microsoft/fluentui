@@ -113,7 +113,15 @@ export const RowNavigation = () => {
         },
         renderCell: item => {
           return (
-            <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+            <TableCellLayout
+              media={
+                <Avatar
+                  aria-label={item.author.label}
+                  name={item.author.label}
+                  badge={{ status: item.author.status }}
+                />
+              }
+            >
               {item.author.label}
             </TableCellLayout>
           );
@@ -175,7 +183,7 @@ RowNavigation.parameters = {
       story: [
         'Different keyboard navigation strategies are supported through  the `focusMode` prop.',
         '',
-        "> ⚠️ The Fluent UI team currently don't know all the a11y specifics of row navigation yet to provide",
+        "> ⚠️ The Fluent UI team doesn't currently know all the a11y specifics of row navigation yet to provide",
         'accurate guidance for this scenario. Until then, if using the unstable mode of this keyboard navigation',
         'strategy, the user is responsible for the accessibility of the component.',
       ].join('\n'),

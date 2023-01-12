@@ -35,3 +35,5 @@ export {
   toolbarGroupClassNames,
 } from './ToolbarGroup';
 export type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup';
+export { ToolbarRadioGroup } from './ToolbarRadioGroup';
+export type { ToolbarRadioGroupProps, ToolbarRadioGroupState } from './ToolbarRadioGroup';

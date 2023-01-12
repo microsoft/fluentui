@@ -1,3 +1,3 @@
-import { preset } from '@fluentui/scripts/gulp';
+import { preset } from '@fluentui/scripts-gulp';
 
 preset();

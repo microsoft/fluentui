@@ -72,9 +72,14 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  ComboboxProvider,
+  useComboboxContextValues,
+  ListboxProvider,
+  useListboxContextValues,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
+  ComboboxContextValue,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -86,6 +91,7 @@ export type {
   DropdownOpenEvents,
   DropdownSlots,
   DropdownState,
+  ListboxContextValue,
   ListboxContextValues,
   ListboxProps,
   ListboxSlots,
@@ -129,6 +135,7 @@ export {
   useToolbar_unstable,
   useToolbarDividerStyles_unstable,
   useToolbarStyles_unstable,
+  ToolbarRadioGroup,
 } from '@fluentui/react-toolbar';
 
 export type {
@@ -147,6 +154,8 @@ export type {
   ToolbarGroupState,
   ToolbarRadioButtonProps,
   ToolbarRadioButtonState,
+  ToolbarRadioGroupProps,
+  ToolbarRadioGroupState,
 } from '@fluentui/react-toolbar';
 
 export {
@@ -264,6 +273,8 @@ export {
   useDataGridSelectionCell_unstable,
   renderDataGridSelectionCell_unstable,
   dataGridSelectionCellClassNames,
+  RowIdContextProvider,
+  useRowIdContext,
 } from '@fluentui/react-table';
 
 export type {

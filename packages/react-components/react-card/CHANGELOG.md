@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Wed, 04 Jan 2023 01:40:54 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jan 2023 14:34:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.38)
+
+Mon, 09 Jan 2023 14:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.37..@fluentui/react-card_v9.0.0-beta.38)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.3.6 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-button to v9.1.14 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.37)
 
