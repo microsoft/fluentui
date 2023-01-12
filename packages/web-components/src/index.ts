@@ -1,1 +1,1 @@
-export const empty = '';
+export * from './text/index.js';

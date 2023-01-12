@@ -4,7 +4,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "declarationDir": "dist/dts",
     "outDir": "dist/esm",
     "strictNullChecks": true,
