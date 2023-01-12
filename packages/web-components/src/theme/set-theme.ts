@@ -1,5 +1,5 @@
 import type { Theme } from '@fluentui/tokens';
-import * as tokens from './design-tokens';
+import * as tokens from './design-tokens.js';
 
 const tokenNames = Object.keys(tokens);
 

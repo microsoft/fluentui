@@ -4,8 +4,86 @@
 
 ```ts
 
-// @public (undocumented)
-export const empty = "";
+import { ElementStyles } from '@microsoft/fast-element';
+import { ElementViewTemplate } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
+import { FASTElementDefinition } from '@microsoft/fast-element';
+import { ValuesOf } from '@microsoft/fast-foundation';
+
+// @public
+class Text_2 extends FASTElement {
+    align: TextAlign;
+    block: boolean;
+    font: TextFont;
+    italic: boolean;
+    nowrap: boolean;
+    size: TextSize;
+    strikethrough: boolean;
+    truncate: boolean;
+    underline: boolean;
+    weight: TextWeight;
+}
+export { Text_2 as Text }
+
+// @public
+export const TextAlign: {
+    readonly start: "start";
+    readonly end: "end";
+    readonly center: "center";
+    readonly justify: "justify";
+};
+
+// @public
+export type TextAlign = ValuesOf<typeof TextAlign>;
+
+// @public
+export const TextDefinition: FASTElementDefinition<typeof Text_2>;
+
+// @public
+export const TextFont: {
+    readonly base: "base";
+    readonly numeric: "numeric";
+    readonly monospace: "monospace";
+};
+
+// @public
+export type TextFont = ValuesOf<typeof TextFont>;
+
+// @public
+export const TextSize: {
+    readonly _100: "100";
+    readonly _200: "200";
+    readonly _300: "300";
+    readonly _400: "400";
+    readonly _500: "500";
+    readonly _600: "600";
+    readonly _700: "700";
+    readonly _800: "800";
+    readonly _900: "900";
+    readonly _1000: "1000";
+};
+
+// @public
+export type TextSize = ValuesOf<typeof TextSize>;
+
+// @public
+export const TextStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextTemplate: ElementViewTemplate<Text_2>;
+
+// @public
+export const TextWeight: {
+    readonly medium: "medium";
+    readonly regular: "regular";
+    readonly semibold: "semibold";
+    readonly bold: "bold";
+};
+
+// @public
+export type TextWeight = ValuesOf<typeof TextWeight>;
 
 // (No @packageDocumentation comment for this package)
 
