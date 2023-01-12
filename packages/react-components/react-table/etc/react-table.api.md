@@ -250,7 +250,10 @@ export const renderTableSelectionCell_unstable: (state: TableSelectionCellState)
 export type RowId = string | number;
 
 // @public (undocumented)
-export type RowRenderFunction<TItem = any> = (row: RowState<TItem>) => React_2.ReactNode;
+export const RowIdContextProvider: React_2.Provider<RowId | undefined>;
+
+// @public (undocumented)
+export type RowRenderFunction = (row: RowState<any>, ...rest: any[]) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface RowState<TItem> {
@@ -329,7 +332,7 @@ export type TableCellLayoutSlots = {
     media: Slot<'span'>;
     main: Slot<'span'>;
     description: Slot<'span'>;
-    wrapper: Slot<'div'>;
+    content: Slot<'div'>;
 };
 
 // @public
@@ -436,7 +439,9 @@ export type TableRowSlots = {
 };
 
 // @public
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'>;
+export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'> & {
+    isHeaderRow: boolean;
+};
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
@@ -445,7 +450,7 @@ export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots>;
 
 // @public
-export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
+export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellSlots>> & {
     type?: 'checkbox' | 'radio';
     checked?: CheckboxProps['checked'];
     subtle?: boolean;
@@ -538,6 +543,9 @@ export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionC
 
 // @public
 export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
+
+// @public (undocumented)
+export const useRowIdContext: () => RowId;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;

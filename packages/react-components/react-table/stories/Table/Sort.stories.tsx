@@ -160,7 +160,11 @@ export const Sort = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}
@@ -184,6 +188,11 @@ Sort.parameters = {
         'Using the `sortable` prop will configure all header cells to be buttons and add extra styles.',
         'The `TableHeaderCell` component accepts a `sortDirection` prop that will indicate whether the',
         'header is sorted. Handling the sort of data and column state is handled by `useTableFeatures`.',
+        '',
+        '> Due to screen reader support, the sort status might not be announced once a sortable column header',
+        'is invoked. [This is a known issue.](https://github.com/nvaccess/nvda/issues/10890)',
+        'However the implementation still follows the',
+        '[pattern recommended by the WAI](https://www.w3.org/WAI/ARIA/apg/example-index/table/sortable-table.html)',
       ].join('\n'),
     },
   },

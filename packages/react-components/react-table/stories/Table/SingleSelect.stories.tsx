@@ -161,12 +161,12 @@ export const SingleSelect = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell checked={selected} type="radio" />
+            <TableSelectionCell checked={selected} type="radio" radioIndicator={{ 'aria-label': 'Select row' }} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout media={<Avatar aria-label={item.author.label} badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 14:34:59 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.7",
+      "version": "9.3.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "42acf190805edde3e32fbbf4adf37046c51f625e",
+            "comment": "fix: setOverrideTarget should be an event callback"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:20 GMT",
       "tag": "@fluentui/react-positioning_v9.3.6",
       "version": "9.3.6",

@@ -9,7 +9,7 @@ import {
   performBrowserTest,
   workspaceRoot,
   generateFiles,
-} from '@fluentui/scripts/projects-test';
+} from '@fluentui/scripts-projects-test';
 
 export async function nextjs() {
   const logger = log('test:projects:nextjs');

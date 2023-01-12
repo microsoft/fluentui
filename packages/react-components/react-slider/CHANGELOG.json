@@ -2,6 +2,39 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Mon, 09 Jan 2023 14:35:02 GMT",
+      "tag": "@fluentui/react-slider_v9.0.16",
+      "version": "9.0.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.14",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.3.6",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.16",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:27 GMT",
       "tag": "@fluentui/react-slider_v9.0.15",
       "version": "9.0.15",

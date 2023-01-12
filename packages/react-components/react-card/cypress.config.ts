@@ -1,3 +1,3 @@
-import { baseConfig } from '@fluentui/scripts/cypress';
+import { baseConfig } from '@fluentui/scripts-cypress';
 
 export default baseConfig;

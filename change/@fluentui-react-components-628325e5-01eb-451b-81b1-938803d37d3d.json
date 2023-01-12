@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Re-exporting missing exports from @fluentui/react-combobox.",
+  "packageName": "@fluentui/react-components",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

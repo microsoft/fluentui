@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Update PopoverSurface's role to note and remove need to cast props passed to popover slot.",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

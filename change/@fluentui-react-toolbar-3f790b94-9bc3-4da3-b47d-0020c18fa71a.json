@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: introduce more barrel file api within /scripts",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

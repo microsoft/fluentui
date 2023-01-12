@@ -9,7 +9,7 @@ import {
   ts,
   postprocess,
   eslint,
-} from '@fluentui/scripts/tasks';
+} from '@fluentui/scripts-tasks';
 
 import * as path from 'path';
 import { transformCssTask } from './tasks/transformCssTask';

@@ -38,6 +38,7 @@ import { ColumnDefinition } from '@fluentui/react-table';
 import { ColumnId } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
+import { ComboboxContextValue } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
 import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
 import { comboboxFieldClassNames } from '@fluentui/react-combobox';
@@ -45,6 +46,7 @@ import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/rea
 import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
 import { ComboboxOpenEvents } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxProvider } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import { ComboboxState } from '@fluentui/react-combobox';
 import { createColumn } from '@fluentui/react-table';
@@ -112,8 +114,10 @@ import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
+import { ListboxContextValue } from '@fluentui/react-combobox';
 import { ListboxContextValues } from '@fluentui/react-combobox';
 import { ListboxProps } from '@fluentui/react-combobox';
+import { ListboxProvider } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
 import { ListboxState } from '@fluentui/react-combobox';
 import { Option as Option_2 } from '@fluentui/react-combobox';
@@ -174,6 +178,7 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { RowId } from '@fluentui/react-table';
+import { RowIdContextProvider } from '@fluentui/react-table';
 import { RowState } from '@fluentui/react-table';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
@@ -287,6 +292,7 @@ import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxContextValues } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useDataGrid_unstable } from '@fluentui/react-table';
 import { useDataGridBody_unstable } from '@fluentui/react-table';
@@ -311,6 +317,7 @@ import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
 import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
@@ -319,6 +326,7 @@ import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
+import { useRowIdContext } from '@fluentui/react-table';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useTable_unstable } from '@fluentui/react-table';
@@ -425,6 +433,8 @@ export { Combobox }
 
 export { comboboxClassNames }
 
+export { ComboboxContextValue }
+
 export { ComboboxContextValues }
 
 export { ComboboxField }
@@ -438,6 +448,8 @@ export { ComboboxOpenChangeData }
 export { ComboboxOpenEvents }
 
 export { ComboboxProps }
+
+export { ComboboxProvider }
 
 export { ComboboxSlots }
 
@@ -573,9 +585,13 @@ export { Listbox }
 
 export { listboxClassNames }
 
+export { ListboxContextValue }
+
 export { ListboxContextValues }
 
 export { ListboxProps }
+
+export { ListboxProvider }
 
 export { ListboxSlots }
 
@@ -696,6 +712,8 @@ export { renderToolbar_unstable }
 export { renderToolbarGroup_unstable }
 
 export { RowId }
+
+export { RowIdContextProvider }
 
 export { RowState }
 
@@ -924,6 +942,8 @@ export { useCardStyles_unstable }
 
 export { useCombobox_unstable }
 
+export { useComboboxContextValues }
+
 export { useComboboxStyles_unstable }
 
 export { useDataGrid_unstable }
@@ -972,6 +992,8 @@ export { useIsOverflowItemVisible }
 
 export { useListbox_unstable }
 
+export { useListboxContextValues }
+
 export { useListboxStyles_unstable }
 
 export { useOption_unstable }
@@ -987,6 +1009,8 @@ export { useOverflowMenu }
 export { useProgressBar_unstable }
 
 export { useProgressBarStyles_unstable }
+
+export { useRowIdContext }
 
 export { useSelect_unstable }
 

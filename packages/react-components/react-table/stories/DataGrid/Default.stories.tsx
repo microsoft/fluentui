@@ -113,7 +113,15 @@ export const Default = () => {
         },
         renderCell: item => {
           return (
-            <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+            <TableCellLayout
+              media={
+                <Avatar
+                  aria-label={item.author.label}
+                  name={item.author.label}
+                  badge={{ status: item.author.status }}
+                />
+              }
+            >
               {item.author.label}
             </TableCellLayout>
           );
@@ -158,7 +166,7 @@ export const Default = () => {
       onSelectionChange={(e, data) => console.log(data)}
     >
       <DataGridHeader>
-        <DataGridRow>
+        <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
           {({ renderHeaderCell }: ColumnDefinition<Item>) => (
             <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
           )}
@@ -166,7 +174,7 @@ export const Default = () => {
       </DataGridHeader>
       <DataGridBody>
         {({ item, rowId }: RowState<Item>) => (
-          <DataGridRow key={rowId}>
+          <DataGridRow key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
             {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
