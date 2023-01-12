@@ -1,0 +1,33 @@
+import { attr } from '@microsoft/fast-element';
+import { FASTProgress } from '@microsoft/fast-foundation';
+import type { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progressbar.options.js';
+
+export class ProgressBar extends FASTProgress {
+  /**
+   * The thickness of the progress bar
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: thickness
+   */
+  @attr
+  public thickness: ProgressBarThickness = 'medium';
+
+  /**
+   * The shape of the progress bar
+   * @public
+   * @remarks
+   * HTML Attribute: shape
+   */
+  @attr
+  public shape: ProgressBarShape = 'rounded';
+
+  /**
+   * The validation state of the progress bar
+   * @public
+   * @remarks
+   * HTML Attribute: validation-state
+   */
+  @attr({ attribute: 'validation-state' })
+  public validationState: ProgressBarValidationState = null;
+}
