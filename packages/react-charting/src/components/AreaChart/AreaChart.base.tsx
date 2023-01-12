@@ -96,6 +96,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
   private _highlightedCircleId: string;
+  private _isChartEmpty: boolean;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -121,6 +122,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
+    this._isChartEmpty = false;
   }
 
   public componentDidUpdate() {
@@ -133,78 +135,100 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   }
 
+  public componentDidMount(): void {
+    if (this._isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_AreaChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
+  }
+
   public render(): JSX.Element {
-    const { lineChartData, chartTitle } = this.props.data;
-    const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
-    this._calloutPoints = calloutPoints;
-    const isXAxisDateType = getXAxisType(lineChartData!);
-    this._colors = colors;
-    this._opacity = opacity;
-    this._stackedData = stackedInfo.stackedData;
-    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
+    if (
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length &&
+      this.props.data.lineChartData[0].data &&
+      this.props.data.lineChartData[0].data.length
+    ) {
+      const { lineChartData, chartTitle } = this.props.data;
+      const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
+      this._calloutPoints = calloutPoints;
+      const isXAxisDateType = getXAxisType(lineChartData!);
+      this._colors = colors;
+      this._opacity = opacity;
+      this._stackedData = stackedInfo.stackedData;
+      const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
 
-    const tickParams = {
-      tickValues: this.props.tickValues,
-      tickFormat: this.props.tickFormat,
-    };
+      const tickParams = {
+        tickValues: this.props.tickValues,
+        tickFormat: this.props.tickFormat,
+      };
 
-    const calloutProps = {
-      target: this.state.refSelected,
-      isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topAutoEdge,
-      YValueHover: this.state.YValueHover,
-      hoverXValue: this.state.hoverXValue,
-      id: `toolTip${this._uniqueCallOutID}`,
-      gapSpace: 15,
-      isBeakVisible: false,
-      setInitialFocus: true,
-      onDismiss: this._closeCallout,
-      'data-is-focusable': true,
-      xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
-      ...this.props.calloutProps,
-    };
-    return (
-      <CartesianChart
-        {...this.props}
-        chartTitle={chartTitle}
-        points={lineChartData!}
-        chartType={ChartTypes.AreaChart}
-        calloutProps={calloutProps}
-        legendBars={legends}
-        isCalloutForStack
-        xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
-        tickParams={tickParams}
-        maxOfYVal={stackedInfo.maxOfYVal}
-        getGraphData={this._getGraphData}
-        getmargins={this._getMargins}
-        customizedCallout={this._getCustomizedCallout()}
-        onChartMouseLeave={this._handleChartMouseLeave}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
-          this._xAxisRectScale = props.xScale;
-          const ticks = this._xAxisRectScale.ticks();
-          const width1 = this._xAxisRectScale(ticks[ticks.length - 1]);
-          const rectHeight = props.containerHeight! - this.margins.top!;
-          return (
-            <>
-              <g>
-                <rect
-                  id={this._rectId}
-                  width={width1}
-                  height={rectHeight}
-                  fill={'transparent'}
-                  onMouseMove={this._onRectMouseMove}
-                  onMouseOut={this._onRectMouseOut}
-                  onMouseOver={this._onRectMouseMove}
-                />
-              </g>
-              <g>{this._chart}</g>
-            </>
-          );
-        }}
-      />
-    );
+      const calloutProps = {
+        target: this.state.refSelected,
+        isCalloutVisible: this.state.isCalloutVisible,
+        directionalHint: DirectionalHint.topAutoEdge,
+        YValueHover: this.state.YValueHover,
+        hoverXValue: this.state.hoverXValue,
+        id: `toolTip${this._uniqueCallOutID}`,
+        gapSpace: 15,
+        isBeakVisible: false,
+        setInitialFocus: true,
+        onDismiss: this._closeCallout,
+        'data-is-focusable': true,
+        xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
+        ...this.props.calloutProps,
+      };
+      return (
+        <CartesianChart
+          {...this.props}
+          chartTitle={chartTitle}
+          points={lineChartData!}
+          chartType={ChartTypes.AreaChart}
+          calloutProps={calloutProps}
+          legendBars={legends}
+          isCalloutForStack
+          xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+          tickParams={tickParams}
+          maxOfYVal={stackedInfo.maxOfYVal}
+          getGraphData={this._getGraphData}
+          getmargins={this._getMargins}
+          customizedCallout={this._getCustomizedCallout()}
+          onChartMouseLeave={this._handleChartMouseLeave}
+          /* eslint-disable react/jsx-no-bind */
+          // eslint-disable-next-line react/no-children-prop
+          children={(props: IChildProps) => {
+            this._xAxisRectScale = props.xScale;
+            const ticks = this._xAxisRectScale.ticks();
+            const width1 = this._xAxisRectScale(ticks[ticks.length - 1]);
+            const rectHeight = props.containerHeight! - this.margins.top!;
+            return (
+              <>
+                <g>
+                  <rect
+                    id={this._rectId}
+                    width={width1}
+                    height={rectHeight}
+                    fill={'transparent'}
+                    onMouseMove={this._onRectMouseMove}
+                    onMouseOut={this._onRectMouseOut}
+                    onMouseOver={this._onRectMouseMove}
+                  />
+                </g>
+                <g>{this._chart}</g>
+              </>
+            );
+          }}
+        />
+      );
+    }
+    this._isChartEmpty = true;
+    return <></>;
   }
 
   private _getMargins = (margins: IMargins) => {

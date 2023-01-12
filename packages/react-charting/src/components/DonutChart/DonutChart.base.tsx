@@ -89,15 +89,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length
     );
     if (isChartEmpty) {
-      if (isChartEmpty) {
-        d3Select('body')
-          .append('div')
-          .attr('role', 'alert')
-          .attr('id', 'ariaLabel_DonutChart')
-          .style('opacity', 0)
-          .attr('aria-label', 'Graph has no data to display')
-          .attr('tabIndex', 0);
-      }
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_DonutChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
     }
   }
 

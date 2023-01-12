@@ -22,15 +22,13 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
       this.props.data.filter(item => item.y > 0).length
     );
     if (isChartEmpty) {
-      if (isChartEmpty) {
-        d3Select('body')
-          .append('div')
-          .attr('role', 'alert')
-          .attr('id', 'ariaLabel_PieChart')
-          .style('opacity', 0)
-          .attr('aria-label', 'Graph has no data to display')
-          .attr('tabIndex', 0);
-      }
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_PieChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
     }
   }
 
