@@ -1,5 +1,5 @@
 import { DesignToken } from '@microsoft/fast-foundation';
-import * as tokens from '../theme/design-tokens';
+import * as tokens from '../theme/design-tokens.js';
 
 DesignToken.registerDefaultStyleTarget();
 
