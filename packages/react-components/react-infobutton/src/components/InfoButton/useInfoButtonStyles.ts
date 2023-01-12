@@ -28,7 +28,7 @@ const useButtonStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
 
     ...shorthands.overflow('hidden'),
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.margin(0),
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
