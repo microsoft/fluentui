@@ -13,7 +13,7 @@ type FieldComponent = React.VoidFunctionComponent<
     'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-errormessage'
   > & {
     /**
-     *
+     * FormField children to be rendered
      */
     children?: unknown;
   }
@@ -41,29 +41,29 @@ type WithContent = ObjectShorthandValue<React.HTMLAttributes<HTMLDivElement>> | 
  */
 type CustomInputFieldProps = React.PropsWithChildren<{
   /**
-   *
+   * Message to be shown when error state is true
    */
   errorMessage?: WithContent;
   /**
-   *
+   * Whether the field label should be marked as required.
    */
   required?: boolean;
   /**
-   *
+   * Control to be rendered
    */
   control?: ObjectShorthandValue<{
     /**
-     *
+     * Control content
      */
     content?: React.ReactNode;
   }> & {
     /**
-     *
+     * Error state
      */
     error?: 'true' | 'false';
   };
   /**
-   *
+   * Label to be rendered
    */
   label?: WithContent;
 }>;
