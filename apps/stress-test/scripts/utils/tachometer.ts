@@ -15,11 +15,13 @@ const executeCommand = (cmd: string) => {
     });
 
     tach.on('close', code => {
+      console.log(' LINGGGG', code);
       resolve(code);
     });
 
     tach.on('error', err => {
       tach.kill();
+      console.log(' LINGGGG');
       reject(err);
     });
   });
