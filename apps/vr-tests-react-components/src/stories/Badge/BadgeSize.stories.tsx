@@ -68,7 +68,7 @@ export const SizeExtraSmall = () => {
         <div key={appearance} className={styles.group}>
           <span className={styles.groupLabel}>appearance: {appearance}</span>
           {propValues.shape.map(shape => (
-            <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'medium'} />
+            <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={'extra-small'} />
           ))}
         </div>
       ))}
