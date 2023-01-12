@@ -4,7 +4,7 @@ import { Toolbar, ToolbarToggleButton } from '@fluentui/react-components/unstabl
 import type { ToolbarProps } from '@fluentui/react-components/unstable';
 
 export const Subtle = (props: Partial<ToolbarProps>) => (
-  <Toolbar {...props}>
+  <Toolbar aria-label="Subtle" {...props}>
     <ToolbarToggleButton aria-label="Bold" icon={<TextBold24Regular />} name="textOptions" value="bold" />
     <ToolbarToggleButton aria-label="Italic" icon={<TextItalic24Regular />} name="textOptions" value="italic" />
     <ToolbarToggleButton

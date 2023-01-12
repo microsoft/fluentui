@@ -66,6 +66,6 @@ describe('ToolbarRadioButton', () => {
 
     userEvent.click(getByText('bold'));
 
-    expect(getByText('bold').getAttribute('aria-pressed')).toBe('true');
+    expect(getByText('bold').getAttribute('aria-checked')).toBe('true');
   });
 });

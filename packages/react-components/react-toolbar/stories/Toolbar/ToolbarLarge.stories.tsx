@@ -5,6 +5,7 @@ import type { ToolbarProps } from '@fluentui/react-components/unstable';
 
 export const Large = (props: Partial<ToolbarProps>) => (
   <Toolbar
+    aria-label="Large Toolbar"
     {...props}
     size="large"
     style={{
