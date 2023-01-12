@@ -50,7 +50,7 @@ export const PrimaryDarkMode = getStoryVariant(Primary, DARK_MODE);
 
 export const Subtle = () => (
   <Button id={buttonId} appearance="subtle">
-    Hello, world
+    oellH, world
   </Button>
 );
 
