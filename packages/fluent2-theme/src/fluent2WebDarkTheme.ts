@@ -2,6 +2,7 @@ import type { IPalette, ISemanticColors, ITheme } from '@fluentui/react';
 import { createTheme } from '@fluentui/react';
 import { IExtendedEffects } from './types';
 import { fluent2ComponentStyles } from './fluent2ComponentStyles';
+import { fluent2SharedColors } from './fluent2SharedColors';
 
 const fluent2ForV8DarkEffects: IExtendedEffects = {
   elevation4: '0px 2px 4px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
@@ -16,29 +17,37 @@ const fluent2ForV8DarkEffects: IExtendedEffects = {
 };
 
 const fluent2ForV8DarkPalette: Partial<IPalette> = {
-  accent: '#2886de',
-  themePrimary: '#2886de',
-  themeLighterAlt: '#0A2E4A',
-  themeLighter: '#0c3b5e',
-  themeLight: '#0e4775',
-  themeTertiary: '#0f548c',
-  themeSecondary: '#2886de',
-  themeDarkAlt: '#479ef5',
-  themeDark: '#479ef5',
+  // properties are ordered here as in IPalette.ts
+
   themeDarker: '#62abf5',
-  neutralLighterAlt: '#1a1a1a',
-  neutralLighter: '#242424',
-  neutralLight: '#292929',
-  neutralQuaternaryAlt: '#2e2e2e',
-  neutralQuaternary: '#3d3d3d',
-  neutralTertiaryAlt: '#424242',
-  neutralTertiary: '#707070',
-  neutralSecondary: '#d1d1d1',
-  neutralPrimaryAlt: '#d6d6d6',
-  neutralPrimary: '#f5f5f5',
-  neutralDark: '#fafafa',
+  themeDark: '#479ef5',
+  themeDarkAlt: '#479ef5',
+  themePrimary: '#2886de',
+  themeSecondary: '#2886de',
+  themeTertiary: '#0f548c',
+  themeLight: '#0e4775',
+  themeLighter: '#0c3b5e',
+  themeLighterAlt: '#0A2E4A',
+
   black: '#ffffff', // Note white and black are inverted in this theme
+  blackTranslucent40: 'rgba(255 ,255 ,255 ,0.4)',
+  neutralDark: '#fafafa',
+  neutralPrimary: '#f5f5f5',
+  neutralPrimaryAlt: '#d6d6d6',
+  neutralSecondary: '#d1d1d1',
+  neutralSecondaryAlt: '#8a8886',
+  neutralTertiary: '#707070',
+  neutralTertiaryAlt: '#424242',
+  neutralQuaternary: '#3d3d3d',
+  neutralQuaternaryAlt: '#2e2e2e',
+  neutralLight: '#292929',
+  neutralLighter: '#242424',
+  neutralLighterAlt: '#1a1a1a',
+  accent: '#2886de',
   white: '#141414',
+  whiteTranslucent40: 'rgba(0, 0, 0, 0.4)',
+
+  ...fluent2SharedColors,
 };
 
 const p = fluent2ForV8DarkPalette;
