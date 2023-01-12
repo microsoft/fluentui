@@ -276,6 +276,9 @@ import { ToolbarProps } from '@fluentui/react-toolbar';
 import { ToolbarRadioButton } from '@fluentui/react-toolbar';
 import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
 import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroup } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupState } from '@fluentui/react-toolbar';
 import { ToolbarSlots } from '@fluentui/react-toolbar';
 import { ToolbarState } from '@fluentui/react-toolbar';
 import { ToolbarToggleButton } from '@fluentui/react-toolbar';
@@ -909,6 +912,12 @@ export { ToolbarRadioButton }
 export { ToolbarRadioButtonProps }
 
 export { ToolbarRadioButtonState }
+
+export { ToolbarRadioGroup }
+
+export { ToolbarRadioGroupProps }
+
+export { ToolbarRadioGroupState }
 
 export { ToolbarSlots }
 

@@ -6,6 +6,7 @@ import type { ToolbarProps } from '@fluentui/react-components/unstable';
 export const Medium = (props: Partial<ToolbarProps>) => (
   <Toolbar
     {...props}
+    aria-label="Medium"
     size="medium"
     style={{
       border: '2px solid black',

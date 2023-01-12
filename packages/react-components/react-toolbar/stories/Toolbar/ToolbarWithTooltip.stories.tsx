@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-icons';
 
 export const WithTooltip = (props: Partial<ToolbarProps>) => (
-  <Toolbar {...props} size="small">
+  <Toolbar aria-label="with Tooltip" {...props} size="small">
     <Tooltip content="Makes selected text Bold" relationship="description" withArrow>
       <ToolbarToggleButton aria-label="Bold" icon={<TextBold24Regular />} name="textOptions" value="bold" />
     </Tooltip>

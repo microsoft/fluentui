@@ -143,13 +143,13 @@ describe('Toolbar', () => {
         .focus()
         .get(button)
         .eq(0)
-        .should('have.attr', 'aria-pressed', 'false')
+        .should('have.attr', 'aria-checked', 'false')
         .get(button)
         .eq(0)
         .click()
         .get(button)
         .eq(0)
-        .should('have.attr', 'aria-pressed', 'true');
+        .should('have.attr', 'aria-checked', 'true');
     });
 
     it('should set default checked values', () => {
@@ -165,7 +165,7 @@ describe('Toolbar', () => {
         </Toolbar>,
       );
 
-      cy.get(button).eq(0).should('have.attr', 'aria-pressed', 'true');
+      cy.get(button).eq(0).should('have.attr', 'aria-checked', 'true');
     });
 
     it('should check new value and uncheck previously checked', () => {
@@ -186,16 +186,16 @@ describe('Toolbar', () => {
 
       cy.get(button)
         .eq(0)
-        .should('have.attr', 'aria-pressed', 'true')
+        .should('have.attr', 'aria-checked', 'true')
         .get(button)
         .eq(1)
         .click()
         .get(button)
         .eq(1)
-        .should('have.attr', 'aria-pressed', 'true')
+        .should('have.attr', 'aria-checked', 'true')
         .get(button)
         .eq(0)
-        .should('have.attr', 'aria-pressed', 'false');
+        .should('have.attr', 'aria-checked', 'false');
     });
   });
 });
