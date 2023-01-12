@@ -10,11 +10,12 @@ storiesOf('InfoButton', module)
     <StoryWright
       steps={new Steps()
         .snapshot('rest', { cropTo: '.testWrapper' })
-        .hover('#info-button')
+        .hover('.info-button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .focus('#info-button')
+        // keys 'tab' is used instead of .focus, since .focus won't show the focus indicator.
+        .keys('.info-button', 'Tab')
         .snapshot('focus', { cropTo: '.testWrapper' })
-        .mouseDown('#info-button')
+        .click('.info-button')
         .snapshot('active', { cropTo: '.testWrapper' })
         .end()}
     >
@@ -24,8 +25,8 @@ storiesOf('InfoButton', module)
   .addStory(
     'default',
     () => (
-      <div style={{ paddingTop: '60px' }}>
-        <InfoButton id="info-button" content="This is the content of an InfoButton." />
+      <div style={{ padding: '10px' }}>
+        <InfoButton className="info-button" content="This is the content of an InfoButton." />
       </div>
     ),
     {
@@ -42,7 +43,17 @@ storiesOf('InfoButton', module)
   .addStory(
     'size',
     () => (
-      <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '60px', gap: '80px', alignItems: 'start' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          paddingTop: '60px',
+          paddingLeft: '10px',
+          paddingBottom: '10px',
+          gap: '80px',
+          alignItems: 'start',
+        }}
+      >
         <InfoButton size="small" content="This is the content of an InfoButton." popover={{ open: true }} />
         <InfoButton size="medium" content="This is the content of an InfoButton." popover={{ open: true }} />
         <InfoButton size="large" content="This is the content of an InfoButton." popover={{ open: true }} />
