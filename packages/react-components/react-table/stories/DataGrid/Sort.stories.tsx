@@ -114,7 +114,15 @@ export const Sort = () => {
         },
         renderCell: item => {
           return (
-            <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+            <TableCellLayout
+              media={
+                <Avatar
+                  aria-label={item.author.label}
+                  name={item.author.label}
+                  badge={{ status: item.author.status }}
+                />
+              }
+            >
               {item.author.label}
             </TableCellLayout>
           );
@@ -177,6 +185,11 @@ Sort.parameters = {
       story: [
         'To enable sorting, the `sortable` prop needs to be set. The API surface is directly',
         'equivalent to the usage of `useTableFeatures`.',
+        '',
+        '> Due to screen reader support, the sort status might not be announced once a sortable column header',
+        'is invoked. [This is a known issue.](https://github.com/nvaccess/nvda/issues/10890)',
+        'However the implementation still follows the',
+        '[pattern recommended by the WAI](https://www.w3.org/WAI/ARIA/apg/example-index/table/sortable-table.html)',
       ].join('\n'),
     },
   },

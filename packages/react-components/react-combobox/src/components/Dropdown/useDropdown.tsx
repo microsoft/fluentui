@@ -146,6 +146,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: {
+        'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
         children: props.children,
         ...rootNativeProps,
       },

@@ -73,6 +73,7 @@ export {
 export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell';
 
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
+export { useRowIdContext, RowIdContextProvider } from './contexts/rowIdContext';
 export {
   TableSelectionCell,
   useTableSelectionCellStyles_unstable,

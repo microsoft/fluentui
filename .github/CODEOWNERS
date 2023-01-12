@@ -265,7 +265,7 @@ packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon
 packages/react-experiments/src/components/TileList @ThomasMichon
 
-### TODO: remove - Temporary rules for /scripts packaging initiative
+### generic rules for v-build. Might be tweaked based on needs.
 **/just.config.ts @microsoft/fluentui-react-build
 **/jest.config.js @microsoft/fluentui-react-build
 **/webpack.*.js @microsoft/fluentui-react-build
@@ -274,7 +274,6 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/tsconfig.json @microsoft/fluentui-react-build
 **/tsconfig.lib.json @microsoft/fluentui-react-build
 **/tsconfig.spec.json @microsoft/fluentui-react-build
-**/package.json @microsoft/fluentui-react-build
 **/cypress.config.ts @microsoft/fluentui-react-build
 **/api-extractor.json @microsoft/fluentui-react-build
 **/api-extractor.unstable.json @microsoft/fluentui-react-build

@@ -61,7 +61,7 @@ export type CheckboxSlots = {
 };
 
 // @public
-export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'labelPosition' | 'shape' | 'size'>>;
+export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export const renderCheckbox_unstable: (state: CheckboxState) => JSX.Element;
