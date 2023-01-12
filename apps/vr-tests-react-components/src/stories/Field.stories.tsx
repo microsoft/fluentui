@@ -33,7 +33,7 @@ const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldCo
       </div>
     ))
     .addStory('base', () => <Field label="Example field" />)
-    .addStory('required', () => <Field label="Example field" required />)
+    .addStory('required', () => <Field label="Example field2" required />)
     .addStory('validation', () => (
       <div style={{ display: 'grid', rowGap: '10px' }}>
         <Field label="Validation error" validationState="error" validationMessage="Error message" />
