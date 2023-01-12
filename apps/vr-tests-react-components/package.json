@@ -2,7 +2,7 @@
   "name": "@fluentui/vr-tests-react-components",
   "version": "9.0.0-rc.0",
   "private": true,
-  "description": "Visual regression tests for @fluentui/react-components",
+  "description": "Visual1 regression tests for @fluentui/react-components",
   "scripts": {
     "build": "build-storybook -o dist/storybook",
     "clean": "just-scripts clean",
