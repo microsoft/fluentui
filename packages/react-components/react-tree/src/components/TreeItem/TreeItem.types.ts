@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { BaseTreeItemProps, BaseTreeItemSlots, BaseTreeItemState } from '../BaseTreeItem/index';
 
-export type TreeItemSlots = BaseTreeItemSlots & {
+export type TreeItemSlots = {
+  root: Slot<'div'>;
   /**
    * Expand icon slot,
    * by default renders a chevron icon to indicate opening and closing
@@ -30,15 +30,16 @@ export type TreeItemSlots = BaseTreeItemSlots & {
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
 
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> &
-  BaseTreeItemState & {
-    /**
-     * boolean indicating that actions should remain open due to focus on some portal
-     */
-    keepActionsOpen: boolean;
-  };
+export type TreeItemState = ComponentState<TreeItemSlots> & {
+  open: boolean;
+  isLeaf: boolean;
+  /**
+   * boolean indicating that actions should remain open due to focus on some portal
+   */
+  keepActionsOpen: boolean;
+};
