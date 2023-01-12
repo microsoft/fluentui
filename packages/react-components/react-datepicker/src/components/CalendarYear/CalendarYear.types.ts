@@ -13,5 +13,4 @@ export type CalendarYearProps = ComponentProps<CalendarYearSlots> & {};
  * State used in rendering CalendarYear
  */
 export type CalendarYearState = ComponentState<CalendarYearSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from CalendarYearProps.
 // & Required<Pick<CalendarYearProps, 'propName'>>
