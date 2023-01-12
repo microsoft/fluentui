@@ -8,7 +8,10 @@ type DebouncedOnRender = () => React.ProfilerOnRenderCallback;
 const debouncedOnRender: DebouncedOnRender = () => {
   let start: number;
   let timeoutId: number;
-  return (_profilerId, _mode, _actualTime, _baseTime, startTime, commitTime) => {
+  return (_profilerId, mode, _actualTime, _baseTime, startTime, commitTime) => {
+    if (mode !== 'mount') {
+      return;
+    }
     if (!start) {
       start = startTime;
     }
