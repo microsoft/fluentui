@@ -1,6 +1,6 @@
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { FieldControl, FieldProps, FieldSlots, FieldState } from './Field.types';
 
 export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<FieldControl>> => ({
@@ -12,58 +12,28 @@ export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<Fiel
   hint: `fui-${name}__hint`,
 });
 
-/**
- * Styles for the root slot
- */
+// Size of the icon in the validation message
+const iconSize = '12px';
+
+const useRootBaseClassName = makeResetStyles({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+});
+
 const useRootStyles = makeStyles({
-  base: {
+  // In horizontal layout, the label takes up the entire first column.
+  // The last row is slack space in case the label is taller than the rest of the content.
+  horizontalWithLabel: {
     display: 'grid',
-    gridAutoFlow: 'row',
-    gridTemplateColumns: 'auto 1fr',
-    gridTemplateAreas: `
-      "label label"
-      "control control"
-      "validationIcon validationMessage"
-      "hint hint"
-    `,
     justifyItems: 'start',
+    gridTemplateColumns: '33% 1fr',
+    gridTemplateRows: 'auto auto auto 1fr',
   },
 
-  horizontal: {
-    gridTemplateColumns: '33% auto 1fr',
-    gridTemplateAreas: `
-      "label control control"
-      "label validationIcon validationMessage"
-      "label hint hint"
-      "label . ."
-    `,
-  },
-
-  label: {
-    gridColumnStart: 'label',
-    gridColumnEnd: 'label',
-    gridRowStart: 'label',
-    gridRowEnd: 'label',
-  },
-
-  control: {
-    gridColumnStart: 'control',
-    gridColumnEnd: 'control',
-  },
-
-  validationIcon: {
-    gridColumnStart: 'validationIcon',
-    gridColumnEnd: 'validationIcon',
-  },
-
-  validationMessage: {
-    gridColumnStart: 'validationMessage',
-    gridColumnEnd: 'validationMessage',
-  },
-
-  hint: {
-    gridColumnStart: 'hint',
-    gridColumnEnd: 'hint',
+  // In horizontal layout without a label, add padding to align with fields that do have a label.
+  horizontalNoLabel: {
+    paddingLeft: '33%',
   },
 });
 
@@ -75,33 +45,41 @@ const useLabelStyles = makeStyles({
 
   horizontal: {
     marginRight: tokens.spacingHorizontalM,
+    gridRowStart: '1',
+    gridRowEnd: '-1',
     alignSelf: 'start',
     justifySelf: 'stretch',
   },
 });
 
-const useSecondaryTextStyles = makeStyles({
-  base: {
-    marginTop: tokens.spacingVerticalXXS,
-    color: tokens.colorNeutralForeground3,
-    ...typographyStyles.caption1,
-  },
+const useMessageTextBaseClassName = makeResetStyles({
+  position: 'relative',
+  marginTop: tokens.spacingVerticalXXS,
+  color: tokens.colorNeutralForeground3,
+  ...typographyStyles.caption1,
+});
 
+const useMessageTextStyles = makeStyles({
   error: {
     color: tokens.colorPaletteRedForeground1,
   },
+
+  withIcon: {
+    paddingLeft: `calc(${iconSize} + ${tokens.spacingHorizontalXS})`,
+  },
 });
 
-const useValidationMessageIconStyles = makeStyles({
-  base: {
-    display: 'block',
-    alignSelf: 'start',
-    fontSize: '12px',
-    lineHeight: '12px',
-    marginRight: tokens.spacingHorizontalXS,
-    marginTop: tokens.spacingVerticalXS,
-  },
+const useIconBaseClassName = makeResetStyles({
+  position: 'absolute',
+  left: 0,
+  top: tokens.spacingVerticalXXS,
+  width: iconSize,
+  height: iconSize,
+  fontSize: iconSize,
+  lineHeight: iconSize,
+});
 
+const useIconStyles = makeStyles({
   error: {
     color: tokens.colorPaletteRedForeground1,
   },
@@ -121,51 +99,53 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   const validationState: FieldProps<FieldControl>['validationState'] = state.validationState;
   const horizontal = state.orientation === 'horizontal';
 
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     classNames.root,
-    rootStyles.base,
-    horizontal && rootStyles.horizontal,
+    rootBaseClassName,
+    horizontal && (state.label ? rootStyles.horizontalWithLabel : rootStyles.horizontalNoLabel),
     state.root.className,
   );
 
   if (state.control) {
-    state.control.className = mergeClasses(classNames.control, rootStyles.control, state.control.className);
+    state.control.className = mergeClasses(classNames.control, state.control.className);
   }
 
   const labelStyles = useLabelStyles();
   if (state.label) {
-    state.label.className = mergeClasses(classNames.label, rootStyles.label, labelStyles.base, state.label.className);
+    state.label.className = mergeClasses(
+      classNames.label,
+      labelStyles.base,
+      horizontal && labelStyles.horizontal,
+      state.label.className,
+    );
   }
 
-  const validationMessageIconStyles = useValidationMessageIconStyles();
+  const iconBaseClassName = useIconBaseClassName();
+  const iconStyles = useIconStyles();
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = mergeClasses(
       classNames.validationMessageIcon,
-      rootStyles.validationIcon,
-      validationMessageIconStyles.base,
-      !!validationState && validationMessageIconStyles[validationState],
+      iconBaseClassName,
+      !!validationState && iconStyles[validationState],
       state.validationMessageIcon.className,
     );
   }
 
-  const secondaryTextStyles = useSecondaryTextStyles();
+  const messageTextBaseClassName = useMessageTextBaseClassName();
+  const messageTextStyles = useMessageTextStyles();
   if (state.validationMessage) {
     state.validationMessage.className = mergeClasses(
       classNames.validationMessage,
-      rootStyles.validationMessage,
-      secondaryTextStyles.base,
-      validationState === 'error' && secondaryTextStyles.error,
+      messageTextBaseClassName,
+      validationState === 'error' && messageTextStyles.error,
+      !!state.validationMessageIcon && messageTextStyles.withIcon,
       state.validationMessage.className,
     );
   }
 
   if (state.hint) {
-    state.hint.className = mergeClasses(
-      classNames.hint,
-      secondaryTextStyles.base,
-      rootStyles.hint,
-      state.hint.className,
-    );
+    state.hint.className = mergeClasses(classNames.hint, messageTextBaseClassName, state.hint.className);
   }
 };

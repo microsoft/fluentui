@@ -43,7 +43,7 @@ export type FieldSlots<T extends FieldControl> = {
    *
    * This will only be displayed if `validationMessage` is set.
    */
-  validationMessageIcon?: Slot<'span'>;
+  validationMessageIcon?: Slot<'div'>;
 
   /**
    * Additional hint text below the field.

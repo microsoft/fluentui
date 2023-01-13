@@ -38,7 +38,7 @@ export type FieldSlots<T extends FieldControl> = {
     control: SlotComponent<T>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'div'>;
-    validationMessageIcon?: Slot<'span'>;
+    validationMessageIcon?: Slot<'div'>;
     hint?: Slot<'div'>;
 };
 
