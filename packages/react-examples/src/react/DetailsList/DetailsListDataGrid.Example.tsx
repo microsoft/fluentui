@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
-import { ReactSelectorTreeComponentRenderer } from '../../shared/react/types';
 
-interface DetailsListBasicExampleItem {
+export interface IDetailsListBasicExampleItem {
   file: string;
   author: string;
   lastUpdated: string;
   lastUpdate: string;
 }
 
-interface DetailsListBasicExampleState {
-  items: DetailsListBasicExampleItem[];
+export interface IDetailsListBasicExampleState {
+  items: IDetailsListBasicExampleItem[];
 }
 
-class DetailsListDataGridExample extends React.Component<{}, DetailsListBasicExampleState> {
+export class DetailsListSelectionExample extends React.Component<{}, IDetailsListBasicExampleState> {
   private _selection: Selection;
-  private _allItems: DetailsListBasicExampleItem[];
+  private _allItems: IDetailsListBasicExampleItem[];
   private _columns: IColumn[];
 
   constructor(props: {}) {
@@ -50,7 +49,7 @@ class DetailsListDataGridExample extends React.Component<{}, DetailsListBasicExa
     ];
 
     // Populate with items for demos.
-    this._allItems = new Array(15).fill(0).map((_, i) => items[i % items.length]);
+    this._allItems = items;
 
     this._columns = [
       { key: 'file', name: 'File', fieldName: 'file', minWidth: 150, maxWidth: 200 },
@@ -82,9 +81,3 @@ class DetailsListDataGridExample extends React.Component<{}, DetailsListBasicExa
     );
   }
 }
-
-const componentRenderer: ReactSelectorTreeComponentRenderer = (node, depth, index) => {
-  return <DetailsListDataGridExample />;
-};
-
-export default componentRenderer;

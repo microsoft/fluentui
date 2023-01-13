@@ -41,7 +41,7 @@ type Item = {
   lastUpdate: LastUpdateCell;
 };
 
-export const DataGrid = () => {
+const DataGrid = () => {
   const items = React.useMemo(() => {
     const baseItems: Item[] = [
       {
@@ -207,14 +207,6 @@ export const DataGrid = () => {
   );
 };
 
-DataGrid.parameters = {
-  docs: {
-    description: {
-      story: [
-        'The `DataGrid` component is a composition of the `useTableFeatures` hook and primitive `Table` components',
-        'along with some convenience features such as accessible markup and event handlers.',
-        'Any feature of the `DataGrid` is achievable with the primitive components and hook',
-      ].join('\n'),
-    },
-  },
-};
+DataGrid.iterations = 1000;
+
+export default DataGrid;

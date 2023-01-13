@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -12,10 +11,10 @@ import {
   useTableFeatures,
   ColumnDefinition,
   useTableSelection,
-  useTableSort,
   createColumn,
-  ColumnId,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-table';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
 type FileCell = {
   label: string;
@@ -41,7 +40,7 @@ type Item = {
   lastUpdate: LastUpdateCell;
 };
 
-export const DataGrid = () => {
+const MultipleSelect = () => {
   const items = React.useMemo(() => {
     const baseItems: Item[] = [
       {
@@ -80,32 +79,19 @@ export const DataGrid = () => {
 
     return new Array(15).fill(0).map((_, i) => baseItems[i % baseItems.length]);
   }, []);
-
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
         columnId: 'file',
-        compare: (a, b) => {
-          return a.file.label.localeCompare(b.file.label);
-        },
       }),
       createColumn<Item>({
         columnId: 'author',
-        compare: (a, b) => {
-          return a.author.label.localeCompare(b.author.label);
-        },
       }),
       createColumn<Item>({
         columnId: 'lastUpdated',
-        compare: (a, b) => {
-          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-        },
       }),
       createColumn<Item>({
         columnId: 'lastUpdate',
-        compare: (a, b) => {
-          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-        },
       }),
     ],
     [],
@@ -114,7 +100,6 @@ export const DataGrid = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
-    sort: { getSortDirection, toggleColumnSort, sort },
   } = useTableFeatures(
     {
       columns,
@@ -125,52 +110,49 @@ export const DataGrid = () => {
         selectionMode: 'multiselect',
         defaultSelectedItems: new Set([0, 1]),
       }),
-      useTableSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
     ],
   );
 
-  const rows = sort(
-    getRows(row => {
-      const selected = isRowSelected(row.rowId);
-      return {
-        ...row,
-        onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
-        onKeyDown: (e: React.KeyboardEvent) => {
-          if (e.key === ' ') {
-            e.preventDefault();
-            toggleRow(e, row.rowId);
-          }
-        },
-        selected,
-        appearance: selected ? ('brand' as const) : ('none' as const),
-      };
-    }),
-  );
-
-  const headerSortProps = (columnId: ColumnId) => ({
-    onClick: (e: React.MouseEvent) => {
-      toggleColumnSort(e, columnId);
-    },
-    sortDirection: getSortDirection(columnId),
+  const rows = getRows(row => {
+    const selected = isRowSelected(row.rowId);
+    return {
+      ...row,
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
+        }
+      },
+      selected,
+      appearance: selected ? ('brand' as const) : ('none' as const),
+    };
   });
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
 
   return (
-    <Table {...keyboardNavAttr} role="grid" sortable aria-label="DataGrid implementation with Table primitives">
+    <Table aria-label="Table with multiselect">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            aria-checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            role="checkbox"
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
             checkboxIndicator={{ 'aria-label': 'Select all rows ' }}
           />
-          <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdated')}>Last updated</TableHeaderCell>
-          <TableHeaderCell {...headerSortProps('lastUpdate')}>Last update</TableHeaderCell>
+          <TableHeaderCell>File</TableHeaderCell>
+          <TableHeaderCell>Author</TableHeaderCell>
+          <TableHeaderCell>Last updated</TableHeaderCell>
+          <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -182,22 +164,15 @@ export const DataGrid = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell
-              role="gridcell"
-              aria-selected={selected}
-              checked={selected}
-              checkboxIndicator={{ 'aria-label': 'Select row' }}
-            />
-            <TableCell tabIndex={0} role="gridcell" aria-selected={selected}>
+            <TableSelectionCell checked={selected} checkboxIndicator={{ 'aria-label': 'Select row' }} />
+            <TableCell>
               <TableCellLayout>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0} role="gridcell">
+            <TableCell>
               <TableCellLayout>{item.author.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0} role="gridcell">
-              {item.lastUpdated.label}
-            </TableCell>
-            <TableCell tabIndex={0} role="gridcell">
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell>
               <TableCellLayout>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
@@ -207,14 +182,7 @@ export const DataGrid = () => {
   );
 };
 
-DataGrid.parameters = {
-  docs: {
-    description: {
-      story: [
-        'The `DataGrid` component is a composition of the `useTableFeatures` hook and primitive `Table` components',
-        'along with some convenience features such as accessible markup and event handlers.',
-        'Any feature of the `DataGrid` is achievable with the primitive components and hook',
-      ].join('\n'),
-    },
-  },
-};
+MultipleSelect.decorator = (props: { children: React.ReactNode }) => (
+  <FluentProvider theme={webLightTheme}>{props.children}</FluentProvider>
+);
+export default MultipleSelect;

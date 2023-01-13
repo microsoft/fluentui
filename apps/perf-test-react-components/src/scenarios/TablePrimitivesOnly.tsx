@@ -8,6 +8,8 @@ import {
   TableHeaderCell,
   TableCellLayout,
 } from '@fluentui/react-table';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
 const columns = [
   { columnKey: 'file', label: 'File' },
@@ -16,9 +18,9 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const Default = () => {
+const Default = () => {
   const items = React.useMemo(() => {
-    const baseItems: Item[] = [
+    const baseItems = [
       {
         file: { label: 'Meeting notes' },
         author: { label: 'Max Mustermann' },
@@ -84,3 +86,8 @@ export const Default = () => {
     </Table>
   );
 };
+
+Default.decorator = (props: { children: React.ReactNode }) => (
+  <FluentProvider theme={webLightTheme}>{props.children}</FluentProvider>
+);
+export default Default;

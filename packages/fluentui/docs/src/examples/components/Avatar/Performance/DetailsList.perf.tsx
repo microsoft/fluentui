@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
-import { ReactSelectorTreeComponentRenderer } from '../../shared/react/types';
 
 interface DetailsListBasicExampleItem {
   file: string;
@@ -14,9 +13,9 @@ interface DetailsListBasicExampleState {
 }
 
 class DetailsListDataGridExample extends React.Component<{}, DetailsListBasicExampleState> {
-  private _selection: Selection;
-  private _allItems: DetailsListBasicExampleItem[];
-  private _columns: IColumn[];
+  _selection: Selection;
+  _allItems: DetailsListBasicExampleItem[];
+  _columns: IColumn[];
 
   constructor(props: {}) {
     super(props);
@@ -64,7 +63,7 @@ class DetailsListDataGridExample extends React.Component<{}, DetailsListBasicExa
     };
   }
 
-  public render(): JSX.Element {
+  render(): JSX.Element {
     const { items } = this.state;
 
     return (
@@ -83,8 +82,4 @@ class DetailsListDataGridExample extends React.Component<{}, DetailsListBasicExa
   }
 }
 
-const componentRenderer: ReactSelectorTreeComponentRenderer = (node, depth, index) => {
-  return <DetailsListDataGridExample />;
-};
-
-export default componentRenderer;
+export default DetailsListDataGridExample;

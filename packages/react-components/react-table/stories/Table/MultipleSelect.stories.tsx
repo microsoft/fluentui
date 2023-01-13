@@ -1,15 +1,5 @@
 import * as React from 'react';
 import {
-  FolderRegular,
-  EditRegular,
-  OpenRegular,
-  DocumentRegular,
-  PeopleRegular,
-  DocumentPdfRegular,
-  VideoRegular,
-} from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import {
   TableBody,
   TableCell,
   TableRow,
@@ -26,7 +16,6 @@ import {
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
 };
 
 type LastUpdatedCell = {
@@ -36,12 +25,10 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
 };
 
 type AuthorCell = {
   label: string;
-  status: PresenceBadgeStatus;
 };
 
 type Item = {
@@ -51,46 +38,45 @@ type Item = {
   lastUpdate: LastUpdateCell;
 };
 
-const items: Item[] = [
-  {
-    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
-    author: { label: 'Max Mustermann', status: 'available' },
-    lastUpdated: { label: '7h ago', timestamp: 3 },
-    lastUpdate: {
-      label: 'You edited this',
-      icon: <EditRegular />,
-    },
-  },
-  {
-    file: { label: 'Thursday presentation', icon: <FolderRegular /> },
-    author: { label: 'Erika Mustermann', status: 'busy' },
-    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
-    lastUpdate: {
-      label: 'You recently opened this',
-      icon: <OpenRegular />,
-    },
-  },
-  {
-    file: { label: 'Training recording', icon: <VideoRegular /> },
-    author: { label: 'John Doe', status: 'away' },
-    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
-    lastUpdate: {
-      label: 'You recently opened this',
-      icon: <OpenRegular />,
-    },
-  },
-  {
-    file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
-    author: { label: 'Jane Doe', status: 'offline' },
-    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 1 },
-    lastUpdate: {
-      label: 'You shared this in a Teams chat',
-      icon: <PeopleRegular />,
-    },
-  },
-];
-
 export const MultipleSelect = () => {
+  const items = React.useMemo(() => {
+    const baseItems: Item[] = [
+      {
+        file: { label: 'Meeting notes' },
+        author: { label: 'Max Mustermann' },
+        lastUpdated: { label: '7h ago', timestamp: 3 },
+        lastUpdate: {
+          label: 'You edited this',
+        },
+      },
+      {
+        file: { label: 'Thursday presentation' },
+        author: { label: 'Erika Mustermann' },
+        lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+        lastUpdate: {
+          label: 'You recently opened this',
+        },
+      },
+      {
+        file: { label: 'Training recording' },
+        author: { label: 'John Doe' },
+        lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+        lastUpdate: {
+          label: 'You recently opened this',
+        },
+      },
+      {
+        file: { label: 'Purchase order' },
+        author: { label: 'Jane Doe' },
+        lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 1 },
+        lastUpdate: {
+          label: 'You shared this in a Teams chat',
+        },
+      },
+    ];
+
+    return new Array(15).fill(0).map((_, i) => baseItems[i % baseItems.length]);
+  }, []);
   const columns: ColumnDefinition<Item>[] = React.useMemo(
     () => [
       createColumn<Item>({
@@ -178,16 +164,14 @@ export const MultipleSelect = () => {
           >
             <TableSelectionCell checked={selected} checkboxIndicator={{ 'aria-label': 'Select row' }} />
             <TableCell>
-              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+              <TableCellLayout>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar aria-label={item.author.label} badge={{ status: item.author.status }} />}>
-                {item.author.label}
-              </TableCellLayout>
+              <TableCellLayout>{item.author.label}</TableCellLayout>
             </TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
             <TableCell>
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+              <TableCellLayout>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}

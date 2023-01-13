@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@charlietango/use-script": "^2.1.1",
+    "@fluentui/react-components": "*",
     "@fluentui/ability-attributes": "^0.65.0",
     "@fluentui/accessibility": "^0.65.0",
     "@fluentui/code-sandbox": "^0.65.0",
