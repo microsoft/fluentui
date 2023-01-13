@@ -156,7 +156,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       d3Select('body')
         .append('div')
         .attr('role', 'alert')
-        .attr('id', 'ariaLabel_PieChart')
+        .attr('id', 'ariaLabel_HeatMapChart')
         .style('opacity', 0)
         .attr('aria-label', 'Graph has no data to display')
         .attr('tabIndex', 0);

@@ -105,6 +105,23 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._tooltipId = getId('GVBCTooltipId_');
   }
 
+  public componentDidMount(): void {
+    const isChartEmpty = !(
+      this.props.data &&
+      this.props.data.length &&
+      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length
+    );
+    if (isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_GroupedVerticalBarChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
+  }
+
   public render(): React.ReactNode {
     const points = this.props.data;
     const { keys, xAxisLabels, datasetForBars } = this._createSet(points);
