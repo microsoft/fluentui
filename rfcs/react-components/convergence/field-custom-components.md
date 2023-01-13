@@ -1,9 +1,8 @@
 # RFC: Field with custom components
 
----
-
-Author: _behowell_
-Contributors: _layershifter_
+- Author: _behowell_
+- Contributors: _layershifter_
+- PR: https://github.com/microsoft/fluentui/pull/26338
 
 ## Background
 
@@ -68,7 +67,7 @@ Add add `FieldContext` around the children of Field to allow for better integrat
       <Input id="input-id-42" />
     </Field>
     ```
-- Does not set the intrinsic `required` prop on the child input; uses `aria-required` instead ()
+- Does not set the intrinsic `required` prop on the child input when set on the Field; uses `aria-required` instead.
 - No type safety or checking that the contract was followed: TypeScript doesn't support checking that a JSX child supports certain props.
 - Adds a `<div>` around the input component for layout purposes (may be possible to avoid with css-grid trickery).
 
@@ -81,7 +80,7 @@ Add add `FieldContext` around the children of Field to allow for better integrat
     - May be unexpected that an `id` is added to a control without it being written out. Could theoretically have an effect on styling.
     - To work properly, Field must also be able to _read_ any existing `id` prop on its child, which is not possible when the child is a render function.
 
-## Discarded Option A: Add `makeField` function for custom Field components
+## Discarded Option A: Add `makeField()` to create custom Field components
 
 Uses the Higher-Order Component approach to wrap a given component to surround it with Field.
 
@@ -109,11 +108,11 @@ const MyInputField = makeField(MyInput);
 - Very restrictive on the JSX tree of child (e.g. can't wrap with a `<div>` or something, without encapsulating that in another wrapper component).
 - Doesn't work with intrinsic `<input>` without a wrapper control.
 
-## Discarded Option B: Add `field` wrapper for child component that uses FieldContext
+## Discarded Option B: Add `field()` to create a context-aware component for Field
 
-Adds a `<Field>` component similar to the main proposal, except it doesn't auto-apply props to child. Instead, it creates a `FieldContext`.
+Adds a `<Field>` component similar to the main proposal, except it doesn't auto-apply props to child.
 
-The wrapper `field` is similar to `makeField`, except the wrapper just merges props on the child, and doesn't add DOM elements or other functionality.
+The wrapper `field` is similar to `makeField`, except the wrapper gets props from `FieldContext` and merges them on the child. Unlike `makeField`, it doesn't modify the render tree of the wrapped component.
 
 ### Example
 
@@ -148,8 +147,6 @@ Add `<Field>`, `<FieldLabel>` and `<FieldMessage>` components, with no "magic" p
 
 ```jsx
 const id = useId('my-input');
-const messageId = useId('my-input-message');
-const hintId = useId('my-input-hint');
 
 <Field>
   <FieldLabel htmlFor={id} required>
