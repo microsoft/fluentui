@@ -40,7 +40,7 @@ storiesOf('ChoiceGroup', module)
     // prettier-ignore
     <ChoiceGroup
       options={ options }
-      label="kicP one"
+      label="Pick one"
       required
     />,
   )
