@@ -27,7 +27,7 @@
       "@fluentui/digest": ["packages/fluentui/digest/src/index.ts"],
       "@fluentui/docs-components": ["packages/fluentui/docs-components/src/index.ts"],
       "@fluentui/react-bindings": ["packages/fluentui/react-bindings/src/index.ts"],
-      "@fluentui/react-builder": ["packages/fluentui/react-builder/src/index.ts"],
+      "@fluentui/react-builder": ["packages/fluentui/react-builder/src/index.tsx"],
       "@fluentui/react-component-event-listener": ["packages/fluentui/react-component-event-listener/src/index.ts"],
       "@fluentui/react-component-nesting-registry": ["packages/fluentui/react-component-nesting-registry/src/index.ts"],
       "@fluentui/react-component-ref": ["packages/fluentui/react-component-ref/src/index.ts"],
