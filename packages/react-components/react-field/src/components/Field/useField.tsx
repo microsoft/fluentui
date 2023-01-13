@@ -138,7 +138,7 @@ export const useField_unstable = <T extends FieldControl>(
       control: params.component,
       label: Label,
       validationMessage: 'div',
-      validationMessageIcon: 'div',
+      validationMessageIcon: 'span',
       hint: 'div',
     },
     root,
