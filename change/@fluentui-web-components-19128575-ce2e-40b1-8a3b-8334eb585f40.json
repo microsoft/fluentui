@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update clean file to .cjs and ensure rimraf is in dependency tree",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "none"
+}
