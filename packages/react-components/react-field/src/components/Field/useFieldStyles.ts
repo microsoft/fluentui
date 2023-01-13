@@ -19,18 +19,14 @@ const iconSize = '12px';
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
-  // In vertical layout, the field is a simple stack.
-  vertical: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'start',
+  base: {
+    display: 'grid',
+    justifyItems: 'start',
   },
 
   // In horizontal layout, the field is a grid with the label taking up the entire first column.
   // The last row is slack space in case the label is taller than the rest of the content.
   horizontal: {
-    display: 'grid',
-    justifyItems: 'start',
     gridTemplateColumns: '33% 1fr',
     gridTemplateRows: 'auto auto auto 1fr',
   },
@@ -108,7 +104,7 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     classNames.root,
-    !horizontal && rootStyles.vertical,
+    rootStyles.base,
     horizontal && rootStyles.horizontal,
     horizontal && !state.label && rootStyles.horizontalNoLabel,
     state.root.className,
