@@ -125,7 +125,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
     }}
   >
     <Overflow padding={90}>
-      <Toolbar {...props} size="small">
+      <Toolbar {...props} aria-label="Overflow" size="small">
         <ToolbarOverflowButton
           overflowId="increase-1"
           overflowGroupId="1"
