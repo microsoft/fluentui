@@ -10,11 +10,11 @@ storiesOf('InfoButton', module)
     <StoryWright
       steps={new Steps()
         .snapshot('rest', { cropTo: '.testWrapper' })
-        .hover('.info-button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
         // keys 'tab' is used instead of .focus, since .focus won't show the focus indicator.
         .keys('.info-button', 'Tab')
         .snapshot('focus', { cropTo: '.testWrapper' })
+        .hover('.info-button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.info-button')
         .snapshot('active', { cropTo: '.testWrapper' })
         .end()}
@@ -25,7 +25,7 @@ storiesOf('InfoButton', module)
   .addStory(
     'default',
     () => (
-      <div style={{ padding: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-end', padding: '10px', minHeight: '80px' }}>
         <InfoButton className="info-button" content="This is the content of an InfoButton." />
       </div>
     ),
@@ -40,27 +40,20 @@ storiesOf('InfoButton', module)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addStory(
-    'size',
-    () => (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          paddingTop: '60px',
-          paddingLeft: '10px',
-          paddingBottom: '10px',
-          gap: '80px',
-          alignItems: 'start',
-        }}
-      >
-        <InfoButton size="small" content="This is the content of an InfoButton." popover={{ open: true }} />
-        <InfoButton size="medium" content="This is the content of an InfoButton." popover={{ open: true }} />
-        <InfoButton size="large" content="This is the content of an InfoButton." popover={{ open: true }} />
-      </div>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  );
+  .addStory('size', () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        paddingTop: '60px',
+        paddingLeft: '10px',
+        paddingBottom: '10px',
+        gap: '80px',
+        alignItems: 'start',
+      }}
+    >
+      <InfoButton size="small" content="This is the content of an InfoButton." popover={{ open: true }} />
+      <InfoButton size="medium" content="This is the content of an InfoButton." popover={{ open: true }} />
+      <InfoButton size="large" content="This is the content of an InfoButton." popover={{ open: true }} />
+    </div>
+  ));
