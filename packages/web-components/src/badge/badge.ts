@@ -1,0 +1,57 @@
+import { attr, FASTElement } from '@microsoft/fast-element';
+import { applyMixins, StartEnd } from '@microsoft/fast-foundation';
+import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options';
+
+/**
+ * The base class used for constructing a fluent-badge custom element
+ * @public
+ */
+export class Badge extends FASTElement {
+  /**
+   * The appearance the badge should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: appearance
+   */
+  @attr
+  public appearance: BadgeAppearance = BadgeAppearance.filled;
+
+  /**
+   * The color the badge should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: color
+   */
+  @attr
+  public color: BadgeColor = BadgeColor.brand;
+  /**
+   * The shape the badge should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: shape
+   */
+  @attr
+  public shape: BadgeShape = BadgeShape.circular;
+
+  /**
+   * The size the badge should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: size
+   */
+  @attr
+  public size: BadgeSize = BadgeSize.medium;
+}
+
+/**
+ * Mark internal because exporting class and interface of the same name
+ * confuses API extractor.
+ * TODO: Below will be unnecessary when Badge class gets updated
+ * @internal
+ */
+export interface Badge extends StartEnd {}
+applyMixins(Badge, StartEnd);
