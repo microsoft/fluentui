@@ -8,6 +8,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
+import { select as d3Select } from 'd3-selection';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -55,6 +56,19 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._refCallback = this._refCallback.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+  }
+
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.chartData && this.props.data.chartData.length);
+    if (isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_StackedBarChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
   }
 
   public render(): JSX.Element {

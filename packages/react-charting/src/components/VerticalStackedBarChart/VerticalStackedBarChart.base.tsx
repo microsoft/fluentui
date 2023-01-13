@@ -86,6 +86,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _tooltipId: string;
   private _yMax: number;
   private _calloutAnchorPoint: IVSChartDataPoint | null;
+  private _isChartEmpty: boolean;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -110,8 +111,13 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    this._adjustProps();
-    this._dataset = this._createDataSetLayer();
+    if (this.props.data && this.props.data.length && !this.props.data.filter(item => !item.xAxisPoint).length) {
+      this._adjustProps();
+      this._dataset = this._createDataSetLayer();
+      this._isChartEmpty = false;
+    } else {
+      this._isChartEmpty = true;
+    }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
   }
 
@@ -126,78 +132,94 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
   }
 
+  public componentDidMount(): void {
+    if (this._isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_VerticalStackedBarChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
+  }
+
   public render(): React.ReactNode {
-    this._adjustProps();
-    const _isHavingLines = this.props.data.some(
-      (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
-    );
-    const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
-    const { isCalloutForStack = false } = this.props;
-    this._dataset = this._createDataSetLayer();
-    const legendBars: JSX.Element = this._getLegendData(
-      this._points,
-      this.props.theme!.palette,
-      this._createLegendsForLine(this.props.data),
-    );
+    if (!this._isChartEmpty) {
+      this._adjustProps();
+      const _isHavingLines = this.props.data.some(
+        (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
+      );
+      const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
+      const { isCalloutForStack = false } = this.props;
+      this._dataset = this._createDataSetLayer();
+      const legendBars: JSX.Element = this._getLegendData(
+        this._points,
+        this.props.theme!.palette,
+        this._createLegendsForLine(this.props.data),
+      );
 
-    const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
-      isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topAutoEdge,
-      id: `toolTip${this._calloutId}`,
-      target: this.state.refSelected,
-      isBeakVisible: false,
-      gapSpace: 15,
-      color: this.state.color,
-      legend: this.state.calloutLegend,
-      XValue: this.state.xCalloutValue!,
-      YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
-      YValueHover: this.state.YValueHover,
-      hoverXValue: this.state.hoverXValue,
-      onDismiss: this._closeCallout,
-      preventDismissOnLostFocus: true,
-      ...this.props.calloutProps,
-      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
-    };
-    const tickParams = {
-      tickValues: this.props.tickValues,
-      tickFormat: this.props.tickFormat,
-    };
+      const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
+        isCalloutVisible: this.state.isCalloutVisible,
+        directionalHint: DirectionalHint.topAutoEdge,
+        id: `toolTip${this._calloutId}`,
+        target: this.state.refSelected,
+        isBeakVisible: false,
+        gapSpace: 15,
+        color: this.state.color,
+        legend: this.state.calloutLegend,
+        XValue: this.state.xCalloutValue!,
+        YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+        YValueHover: this.state.YValueHover,
+        hoverXValue: this.state.hoverXValue,
+        onDismiss: this._closeCallout,
+        preventDismissOnLostFocus: true,
+        ...this.props.calloutProps,
+        ...getAccessibleDataObject(this.state.callOutAccessibilityData),
+      };
+      const tickParams = {
+        tickValues: this.props.tickValues,
+        tickFormat: this.props.tickFormat,
+      };
 
-    return (
-      <CartesianChart
-        {...this.props}
-        points={this._dataset}
-        chartType={ChartTypes.VerticalStackedBarChart}
-        xAxisType={this._xAxisType}
-        calloutProps={calloutProps}
-        tickParams={tickParams}
-        legendBars={legendBars}
-        datasetForXAxisDomain={this._xAxisLabels}
-        isCalloutForStack={shouldFocusWholeStack}
-        barwidth={this._barWidth}
-        focusZoneDirection={
-          isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
-        }
-        getmargins={this._getMargins}
-        getGraphData={this._getGraphData}
-        getAxisData={this._getAxisData}
-        customizedCallout={this._getCustomizedCallout()}
-        onChartMouseLeave={this._handleChartMouseLeave}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
-          return (
-            <>
-              <g>{this._bars}</g>
-              <g>
-                {_isHavingLines &&
-                  this._createLines(props.xScale!, props.yScale!, props.containerHeight!, props.containerWidth!)}
-              </g>
-            </>
-          );
-        }}
-      />
-    );
+      return (
+        <CartesianChart
+          {...this.props}
+          points={this._dataset}
+          chartType={ChartTypes.VerticalStackedBarChart}
+          xAxisType={this._xAxisType}
+          calloutProps={calloutProps}
+          tickParams={tickParams}
+          legendBars={legendBars}
+          datasetForXAxisDomain={this._xAxisLabels}
+          isCalloutForStack={shouldFocusWholeStack}
+          barwidth={this._barWidth}
+          focusZoneDirection={
+            isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
+          }
+          getmargins={this._getMargins}
+          getGraphData={this._getGraphData}
+          getAxisData={this._getAxisData}
+          customizedCallout={this._getCustomizedCallout()}
+          onChartMouseLeave={this._handleChartMouseLeave}
+          /* eslint-disable react/jsx-no-bind */
+          // eslint-disable-next-line react/no-children-prop
+          children={(props: IChildProps) => {
+            return (
+              <>
+                <g>{this._bars}</g>
+                <g>
+                  {_isHavingLines &&
+                    this._createLines(props.xScale!, props.yScale!, props.containerHeight!, props.containerWidth!)}
+                </g>
+              </>
+            );
+          }}
+        />
+      );
+    }
+    this._isChartEmpty = true;
+    return <></>;
   }
 
   /**
