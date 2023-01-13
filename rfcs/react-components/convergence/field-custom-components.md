@@ -16,7 +16,9 @@ Field requires integration between its parts to ensure that the label, error mes
 
 ## Detailed Design or Proposal
 
-Implement a single `<Field>` component, which adds the following props to the child using cloneElement (or a render function):
+Implement a single `<Field>` component, which does the layout for field, including slots for `label`, `validationMesssage`, and `hint`.
+
+The control is the child, and Field adds the following props to the child using cloneElement (or a render function):
 
 - `aria-labelledby`
 - `aria-describedby`
@@ -30,6 +32,7 @@ Add add `FieldContext` around the children of Field to allow for better integrat
 ### Example
 
 ```jsx
+<>
   <Field label="FluentUI Input" validationState="error">
     <Input defaultValue="..." />
   </Field>
@@ -43,12 +46,13 @@ Add add `FieldContext` around the children of Field to allow for better integrat
   </Field>
 
   <Field label="Render props" validationState="error">
-    {(props) => (
+    {props => (
       <div>
         <MyInput defaultValue="..." {...props} />
       </div>
     )}
   </Field>
+</>
 ```
 
 ### Pros
@@ -80,7 +84,7 @@ Add add `FieldContext` around the children of Field to allow for better integrat
     - May be unexpected that an `id` is added to a control without it being written out. Could theoretically have an effect on styling.
     - To work properly, Field must also be able to _read_ any existing `id` prop on its child, which is not possible when the child is a render function.
 
-## Discarded Option A: Add `makeField()` to create custom Field components
+## ❌ Discarded Option A: Add `makeField()` to create custom Field components
 
 Uses the Higher-Order Component approach to wrap a given component to surround it with Field.
 
@@ -108,7 +112,7 @@ const MyInputField = makeField(MyInput);
 - Very restrictive on the JSX tree of child (e.g. can't wrap with a `<div>` or something, without encapsulating that in another wrapper component).
 - Doesn't work with intrinsic `<input>` without a wrapper control.
 
-## Discarded Option B: Add `field()` to create a context-aware component for Field
+## ❌ Discarded Option B: Add `field()` to create a context-aware component for Field
 
 Adds a `<Field>` component similar to the main proposal, except it doesn't auto-apply props to child.
 
@@ -117,8 +121,9 @@ The wrapper `field` is similar to `makeField`, except the wrapper gets props fro
 ### Example
 
 ```jsx
-  const MyInputInField = field(MyInput, (props) => {...});
+const MyInputInField = field(MyInput, props => mapMyInputFieldProps(props));
 
+<>
   <Field label="..." validationState="error">
     <MyInputInField defaultValue="..." />
   </Field>
@@ -127,6 +132,7 @@ The wrapper `field` is similar to `makeField`, except the wrapper gets props fro
       <MyInputInField defaultValue="..." />
     </div>
   </Field>
+</>;
 ```
 
 ### Pros
@@ -139,16 +145,16 @@ The wrapper `field` is similar to `makeField`, except the wrapper gets props fro
 - No type checking that the child of Field knows about FieldContext.
 - Adding a new prop for children is a breaking change, but it would be caught by compiler.
 
-## Discarded Option C: Field building blocks
+## ❌ Discarded Option C: Field building blocks
 
-Add `<Field>`, `<FieldLabel>` and `<FieldMessage>` components, with no "magic" prop settings. All aria attributes and others would need to be manually hooked up.
+Add `<Field>`, `<FieldLabel>` and `<FieldMessage>` components, with no "magic" prop settings. All relational attributes would need to be manually hooked up.
 
 ### Example
 
 ```jsx
 const id = useId('my-input');
 
-<Field>
+<Field orientation="horizontal">
   <FieldLabel htmlFor={id} required>
     Example Field
   </FieldLabel>
@@ -162,9 +168,11 @@ const id = useId('my-input');
 
 ### Pros
 
+- No magic: doesn't call cloneElement to automatically apply aria props to the control.
 - Very customizable.
 
 ### Cons
 
-- Not accessible by default.
+- Significantly different API for built-in controls (`InputField`, etc.) vs. custom controls.
+- Not accessible by default: requires author add correct aria props to each element.
 - Cumbersome to hook up all of the pieces.
