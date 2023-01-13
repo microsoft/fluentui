@@ -5,6 +5,7 @@ export {
   __resetStyles,
   __styles,
   createDOMRenderer,
+  makeResetStyles,
   makeStaticStyles,
   makeStyles,
   mergeClasses,

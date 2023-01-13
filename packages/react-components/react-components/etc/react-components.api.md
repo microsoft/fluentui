@@ -201,6 +201,7 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
@@ -1034,6 +1035,8 @@ export { LinkProps }
 export { LinkSlots }
 
 export { LinkState }
+
+export { makeResetStyles }
 
 export { makeStaticStyles }
 

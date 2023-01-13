@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Re-exporting makeResetStyles.",
+  "packageName": "@fluentui/react-components",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
