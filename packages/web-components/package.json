@@ -32,7 +32,7 @@
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
-    "clean": "node ./build/clean.js dist",
+    "clean": "node ./build/clean.cjs dist",
     "doc": "api-extractor run --local",
     "doc:ci": "yarn doc",
     "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
@@ -84,6 +84,7 @@
     "karma-webpack": "5.0.0",
     "mocha": "7.2.0",
     "@microsoft/api-extractor": "7.31.2",
+    "rimraf": "^3.0.2",
     "typescript": "4.7.4"
   },
   "dependencies": {
