@@ -33,7 +33,7 @@ const useRootStyles = makeStyles({
   },
 
   // In horizontal layout without a label, replace the label's column with padding.
-  // This lets grid auto-flow properly place the control, and keeps fields with and without labels aligned.
+  // This lets grid auto-flow properly place the other children, and keeps fields with and without labels aligned.
   horizontalNoLabel: {
     paddingLeft: '33%',
     gridTemplateColumns: '1fr',
