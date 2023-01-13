@@ -3,6 +3,8 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
+import { select as d3Select } from 'd3-selection';
+
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 
 export class SankeyChartBase extends React.Component<
@@ -15,15 +17,33 @@ export class SankeyChartBase extends React.Component<
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
   private chartContainer: HTMLDivElement;
   private _reqID: number;
+  private _isChartEmpty: boolean;
+
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
       containerHeight: 0,
       containerWidth: 0,
     };
+    this._isChartEmpty = !(
+      this.props.data &&
+      this.props.data.SankeyChartData &&
+      this.props.data.SankeyChartData.nodes.length &&
+      this.props.data.SankeyChartData.links.length
+    );
   }
   public componentDidMount(): void {
-    this._fitParentContainer();
+    if (this._isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_SankeyChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    } else {
+      this._fitParentContainer();
+    }
   }
 
   public componentDidUpdate(prevProps: ISankeyChartProps): void {
@@ -35,47 +55,50 @@ export class SankeyChartBase extends React.Component<
     cancelAnimationFrame(this._reqID);
   }
   public render(): React.ReactNode {
-    const { theme, className, styles, pathColor } = this.props;
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      width: this.state.containerWidth,
-      height: this.state.containerHeight,
-      pathColor: pathColor,
-      className,
-    });
-    const margin = { top: 10, right: 0, bottom: 10, left: 0 };
-    const width = this.state.containerWidth - margin.left - margin.right;
-    const height =
-      this.state.containerHeight - margin.top - margin.bottom > 0
-        ? this.state.containerHeight - margin.top - margin.bottom
-        : 0;
+    if (!this._isChartEmpty) {
+      const { theme, className, styles, pathColor } = this.props;
+      this._classNames = getClassNames(styles!, {
+        theme: theme!,
+        width: this.state.containerWidth,
+        height: this.state.containerHeight,
+        pathColor: pathColor,
+        className,
+      });
+      const margin = { top: 10, right: 0, bottom: 10, left: 0 };
+      const width = this.state.containerWidth - margin.left - margin.right;
+      const height =
+        this.state.containerHeight - margin.top - margin.bottom > 0
+          ? this.state.containerHeight - margin.top - margin.bottom
+          : 0;
 
-    const sankey = d3Sankey
-      .sankey()
-      .nodeWidth(5)
-      .nodePadding(6)
-      .extent([
-        [1, 1],
-        [width - 1, height - 6],
-      ]);
+      const sankey = d3Sankey
+        .sankey()
+        .nodeWidth(5)
+        .nodePadding(6)
+        .extent([
+          [1, 1],
+          [width - 1, height - 6],
+        ]);
 
-    sankey(this.props.data.SankeyChartData!);
-    const nodeData = this._createNodes(width);
-    const linkData = this._createLinks();
-    return (
-      <div
-        className={this._classNames.root}
-        role={'presentation'}
-        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
-      >
-        <svg width={width} height={height} id={getId('sankeyChart')}>
-          <g className={this._classNames.nodes}>{nodeData}</g>
-          <g className={this._classNames.links} strokeOpacity={0.2}>
-            {linkData}
-          </g>
-        </svg>
-      </div>
-    );
+      sankey(this.props.data.SankeyChartData!);
+      const nodeData = this._createNodes(width);
+      const linkData = this._createLinks();
+      return (
+        <div
+          className={this._classNames.root}
+          role={'presentation'}
+          ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        >
+          <svg width={width} height={height} id={getId('sankeyChart')}>
+            <g className={this._classNames.nodes}>{nodeData}</g>
+            <g className={this._classNames.links} strokeOpacity={0.2}>
+              {linkData}
+            </g>
+          </svg>
+        </div>
+      );
+    }
+    return <></>;
   }
 
   private _createLinks(): React.ReactNode[] | undefined {

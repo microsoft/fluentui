@@ -6,6 +6,8 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
+import { select as d3Select } from 'd3-selection';
+
 const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
 export interface ISparklineState {
@@ -42,39 +44,55 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   }
 
   public componentDidMount() {
-    const area = d3Area()
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .x((d: any) => this.x(d.x))
-      .y0(this.state._height)
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .y1((d: any) => this.y(d.y))
-      .curve(d3curveLinear);
-    this.area = area;
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length &&
+      !this.props.data.lineChartData.filter(item => !item.data.length).length
+    );
+    if (isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_SparklineChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    } else {
+      const area = d3Area()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .x((d: any) => this.x(d.x))
+        .y0(this.state._height)
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .y1((d: any) => this.y(d.y))
+        .curve(d3curveLinear);
+      this.area = area;
 
-    const line = d3Line()
+      const line = d3Line()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .x((d: any) => this.x(d.x))
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .y((d: any) => this.y(d.y))
+        .curve(d3curveLinear);
+      this.line = line;
+
+      const points = this.props.data!.lineChartData![0].data;
+
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      .x((d: any) => this.x(d.x))
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .y((d: any) => this.y(d.y))
-      .curve(d3curveLinear);
-    this.line = line;
+      const [xMin, xMax] = d3Extent(points, (d: any) => d.x);
 
-    const points = this.props.data!.lineChartData![0].data;
+      this.x = d3ScaleLinear()
+        .domain([xMin, xMax])
+        .range([this.margin.left!, this.state._width - this.margin.right!]);
+      this.y = d3ScaleLinear()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .domain([0, d3Max(points, (d: any) => d.y)])
+        .range([this.state._height - this.margin.bottom!, this.margin.top!]);
 
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    const [xMin, xMax] = d3Extent(points, (d: any) => d.x);
-
-    this.x = d3ScaleLinear()
-      .domain([xMin, xMax])
-      .range([this.margin.left!, this.state._width - this.margin.right!]);
-    this.y = d3ScaleLinear()
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .domain([0, d3Max(points, (d: any) => d.y)])
-      .range([this.state._height - this.margin.bottom!, this.margin.top!]);
-
-    this.setState({
-      _points: points,
-    });
+      this.setState({
+        _points: points,
+      });
+    }
   }
 
   public drawSparkline() {
