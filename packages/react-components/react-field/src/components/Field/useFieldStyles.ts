@@ -15,25 +15,28 @@ export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<Fiel
 // Size of the icon in the validation message
 const iconSize = '12px';
 
-const useRootBaseClassName = makeResetStyles({
+// In vertical layout, the field is a stack.
+const useRootVerticalClassName = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'start',
 });
 
-const useRootStyles = makeStyles({
-  // In horizontal layout, the label takes up the entire first column.
-  // The last row is slack space in case the label is taller than the rest of the content.
-  horizontalWithLabel: {
-    display: 'grid',
-    justifyItems: 'start',
-    gridTemplateColumns: '33% 1fr',
-    gridTemplateRows: 'auto auto auto 1fr',
-  },
+// In horizontal layout, the field is a grid with the label taking up the entire first column.
+// The last row is slack space in case the label is taller than the rest of the content.
+const useRootHorizontalClassName = makeResetStyles({
+  display: 'grid',
+  justifyItems: 'start',
+  gridTemplateColumns: '33% 1fr',
+  gridTemplateRows: 'auto auto auto 1fr',
+});
 
-  // In horizontal layout without a label, add padding to align with fields that do have a label.
+const useRootStyles = makeStyles({
+  // In horizontal layout without a label, replace the label's column with padding.
+  // This keeps fields with and without labels aligned.
   horizontalNoLabel: {
     paddingLeft: '33%',
+    gridTemplateColumns: '1fr',
   },
 });
 
@@ -99,12 +102,13 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   const validationState: FieldProps<FieldControl>['validationState'] = state.validationState;
   const horizontal = state.orientation === 'horizontal';
 
-  const rootBaseClassName = useRootBaseClassName();
+  const rootVerticalClassName = useRootVerticalClassName();
+  const rootHorizontalClassName = useRootHorizontalClassName();
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     classNames.root,
-    rootBaseClassName,
-    horizontal && (state.label ? rootStyles.horizontalWithLabel : rootStyles.horizontalNoLabel),
+    horizontal ? rootHorizontalClassName : rootVerticalClassName,
+    horizontal && !state.label && rootStyles.horizontalNoLabel,
     state.root.className,
   );
 
