@@ -93,7 +93,7 @@ these could be aggregated into a component that transcludes children.
 
 ### 👎
 
-- Custom styling all components requires adding and configuration lots of context providers.
+- Custom styling all components requires adding and configuring lots of context providers.
 - Requires writing new code for every component, adding a story, and documenting the feature.
 - Context is harder to discover as it is outside the props contract.
 - Callers doing custom styling may still take a dependency on the CSS internals of the component if they don't replace a
@@ -184,6 +184,7 @@ yarn create-recomposed-library my-components
 - non-trivial effort to create a library with every component re-exported
 - maintenance cost keeping up with new and changed components
 - our style hooks are currently monolithic. We may need to create building block style hooks designed for re-use
+- does not affect (reusable) components which are implemented outside the application's source.
 - no consistency between approaches partners might take in creating centralized custom styling solutions
 
 ## Option C: Component level CSS custom properties
