@@ -88,7 +88,7 @@ these could be aggregated into a component that transcludes children.
 - Fewer CSS specificity problems as styles can get overwritten.
 - Provides the type-safety expected from Fluent UI React.
 - Minimal code to add to each component. Could be put into the code generation template.
-- Does not significantly effect rendering performance.
+- Does not significantly affect rendering performance.
 - Partners building components can follow the same practice to support custom styling in their libraries.
 
 ### 👎
