@@ -210,6 +210,24 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   }
 
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length &&
+      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length
+    );
+    if (isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_LineChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
+  }
+
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
