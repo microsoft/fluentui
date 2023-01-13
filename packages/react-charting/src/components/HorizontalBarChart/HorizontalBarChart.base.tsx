@@ -14,6 +14,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
+import { select as d3Select } from 'd3-selection';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -55,6 +56,19 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
+  }
+
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.length);
+    if (isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_HorizontalBarChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
   }
 
   public render(): JSX.Element {
