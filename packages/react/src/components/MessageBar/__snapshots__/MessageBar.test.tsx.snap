@@ -160,7 +160,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
-        border: 1px solid rgba(255, 0, 0);
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
@@ -551,7 +551,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
-        border: 1px solid rgba(255, 0, 0);
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
@@ -812,7 +812,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
-        border: 1px solid rgba(255, 0, 0);
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
@@ -1079,7 +1079,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
         forced-color-adjust: none;
       }
       @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
-        border: 1px solid rgba(150, 100, 0);
+        border: 1px solid #966400;
       }
 >
   <div
@@ -1205,7 +1205,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
-        border: 1px solid rgba(255, 0, 0);
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
@@ -1472,7 +1472,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
         forced-color-adjust: none;
       }
       @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
-        border: 1px solid rgba(150, 100, 0);
+        border: 1px solid #966400;
       }
 >
   <div

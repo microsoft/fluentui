@@ -53,6 +53,24 @@ const iconColor: { [key: string]: keyof ISemanticColors } = {
   [MessageBarType.info]: 'infoIcon',
 };
 
+const highContrastBorderColor: { [key: string]: string } = {
+  [MessageBarType.error]: '#ff0000',
+  [MessageBarType.blocked]: '#ff0000',
+  [MessageBarType.success]: '#bad80a',
+  [MessageBarType.warning]: '#fff100',
+  [MessageBarType.severeWarning]: '#ff0000',
+  [MessageBarType.info]: 'WindowText',
+};
+
+const highContrastWhiteBorderColor: { [key: string]: string } = {
+  [MessageBarType.error]: '#e81123',
+  [MessageBarType.blocked]: '#e81123',
+  [MessageBarType.success]: '#107c10',
+  [MessageBarType.warning]: '#966400',
+  [MessageBarType.severeWarning]: '#d83b01',
+  [MessageBarType.info]: 'WindowText',
+};
+
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const {
     theme,
@@ -63,7 +81,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     expandSingleLine,
     messageBarType = MessageBarType.info,
   } = props;
-  const { semanticColors, fonts, palette } = theme;
+  const { semanticColors, fonts } = theme;
 
   const SmallScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 
@@ -107,24 +125,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       },
     },
   ];
-
-  const highContrastBorderColor: { [key: string]: string } = {
-    [MessageBarType.error]: 'rgba(255, 0, 0)',
-    [MessageBarType.blocked]: 'rgba(255, 0, 0)',
-    [MessageBarType.success]: palette.greenLight,
-    [MessageBarType.warning]: palette.yellowLight,
-    [MessageBarType.severeWarning]: 'rgba(255, 0, 0)',
-    [MessageBarType.info]: 'WindowText',
-  };
-
-  const highContrastWhiteBorderColor: { [key: string]: string } = {
-    [MessageBarType.error]: palette.red,
-    [MessageBarType.blocked]: palette.red,
-    [MessageBarType.success]: palette.green,
-    [MessageBarType.warning]: 'rgba(150, 100, 0)',
-    [MessageBarType.severeWarning]: palette.orange,
-    [MessageBarType.info]: 'WindowText',
-  };
 
   return {
     root: [
