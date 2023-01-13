@@ -26,7 +26,7 @@ See the appendix for more detailed analysis of the capabilities and limitations 
 Partners migrating from v0/v8 to v9 have brought up that v9's custom styling does not provide the same granularity of
 customization as previous versions. See the appendix for detailed partner use cases and scenarios.
 
-Partners producing component libaries or component design surfaces are the most concerned about the lack of
+Partners producing component libraries or component design surfaces are the most concerned about the lack of
 customization. They would like to customize the style of a single type of component without changing the style of
 other components.
 
