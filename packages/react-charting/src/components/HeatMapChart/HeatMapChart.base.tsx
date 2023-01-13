@@ -14,6 +14,7 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
+import { select as d3Select } from 'd3-selection';
 import {
   ChartTypes,
   convertToLocaleString,
@@ -148,6 +149,20 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       calloutId: '',
     };
   }
+
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.length);
+    if (isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_PieChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
+  }
+
   public render(): React.ReactNode {
     const {
       data,
