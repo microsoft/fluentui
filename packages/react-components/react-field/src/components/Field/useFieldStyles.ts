@@ -15,6 +15,9 @@ export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<Fiel
 // Size of the icon in the validation message
 const iconSize = '12px';
 
+/**
+ * Styles for the root slot
+ */
 const useRootStyles = makeStyles({
   // In vertical layout, the field is a simple stack.
   vertical: {
@@ -55,14 +58,14 @@ const useLabelStyles = makeStyles({
   },
 });
 
-const useMessageTextBaseClassName = makeResetStyles({
+const useSecondaryTextBaseClassName = makeResetStyles({
   position: 'relative',
   marginTop: tokens.spacingVerticalXXS,
   color: tokens.colorNeutralForeground3,
   ...typographyStyles.caption1,
 });
 
-const useMessageTextStyles = makeStyles({
+const useSecondaryTextStyles = makeStyles({
   error: {
     color: tokens.colorPaletteRedForeground1,
   },
@@ -72,7 +75,7 @@ const useMessageTextStyles = makeStyles({
   },
 });
 
-const useIconBaseClassName = makeResetStyles({
+const useValidationMessageIconBaseClassName = makeResetStyles({
   position: 'absolute',
   left: 0,
   top: tokens.spacingVerticalXXS,
@@ -82,7 +85,7 @@ const useIconBaseClassName = makeResetStyles({
   lineHeight: iconSize,
 });
 
-const useIconStyles = makeStyles({
+const useValidationMessageIconStyles = makeStyles({
   error: {
     color: tokens.colorPaletteRedForeground1,
   },
@@ -105,7 +108,8 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     classNames.root,
-    horizontal ? rootStyles.horizontal : rootStyles.vertical,
+    !horizontal && rootStyles.vertical,
+    horizontal && rootStyles.horizontal,
     horizontal && !state.label && rootStyles.horizontalNoLabel,
     state.root.className,
   );
@@ -124,30 +128,30 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
     );
   }
 
-  const iconBaseClassName = useIconBaseClassName();
-  const iconStyles = useIconStyles();
+  const validationMessageIconBaseClassName = useValidationMessageIconBaseClassName();
+  const validationMessageIconStyles = useValidationMessageIconStyles();
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = mergeClasses(
       classNames.validationMessageIcon,
-      iconBaseClassName,
-      !!validationState && iconStyles[validationState],
+      validationMessageIconBaseClassName,
+      !!validationState && validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
     );
   }
 
-  const messageTextBaseClassName = useMessageTextBaseClassName();
-  const messageTextStyles = useMessageTextStyles();
+  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
+  const secondaryTextStyles = useSecondaryTextStyles();
   if (state.validationMessage) {
     state.validationMessage.className = mergeClasses(
       classNames.validationMessage,
-      messageTextBaseClassName,
-      validationState === 'error' && messageTextStyles.error,
-      !!state.validationMessageIcon && messageTextStyles.withIcon,
+      secondaryTextBaseClassName,
+      validationState === 'error' && secondaryTextStyles.error,
+      !!state.validationMessageIcon && secondaryTextStyles.withIcon,
       state.validationMessage.className,
     );
   }
 
   if (state.hint) {
-    state.hint.className = mergeClasses(classNames.hint, messageTextBaseClassName, state.hint.className);
+    state.hint.className = mergeClasses(classNames.hint, secondaryTextBaseClassName, state.hint.className);
   }
 };
