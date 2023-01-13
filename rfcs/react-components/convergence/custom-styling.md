@@ -84,7 +84,7 @@ these could be aggregated into a component that transcludes children.
 - This builds on using slots as the addressable items for applying styles.
 - The custom styles can be built using Griffel with build-time optimization.
 - Can be applied at different scope like FluentProvider.
-- Does not require composing or introduce a new component type that must be adopted in lieu of the default component.
+- Does not require composing or introducing a new component type that must be adopted in lieu of the default component.
 - Fewer CSS specificity problems as styles can get overwritten.
 - Provides the type-safety expected from Fluent UI React.
 - Minimal code to add to each component. Could be put into the code generation template.
