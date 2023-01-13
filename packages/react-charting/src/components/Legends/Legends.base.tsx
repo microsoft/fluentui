@@ -16,6 +16,7 @@ import {
   ILegendOverflowData,
 } from './Legends.types';
 import { Shape } from './shape';
+import { select as d3Select } from 'd3-selection';
 
 import { silceOrAppendToArray } from '../../utilities/utilities';
 
@@ -54,6 +55,19 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       isHoverCardVisible: false,
       selectedLegends: [],
     };
+  }
+
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(this.props.legends && this.props.legends.length);
+    if (isChartEmpty) {
+      d3Select('body')
+        .append('div')
+        .attr('role', 'alert')
+        .attr('id', 'ariaLabel_LegendsChart')
+        .style('opacity', 0)
+        .attr('aria-label', 'Graph has no data to display')
+        .attr('tabIndex', 0);
+    }
   }
 
   public render(): JSX.Element {

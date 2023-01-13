@@ -111,7 +111,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    if (this.props.data && this.props.data.length && !this.props.data.filter(item => !item.xAxisPoint).length) {
+    if (
+      this.props.data &&
+      this.props.data.length &&
+      !this.props.data.filter((item: IVerticalStackedChartProps) => item.xAxisPoint === undefined).length
+    ) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
       this._isChartEmpty = false;
@@ -218,7 +222,6 @@ export class VerticalStackedBarChartBase extends React.Component<
         />
       );
     }
-    this._isChartEmpty = true;
     return <></>;
   }
 

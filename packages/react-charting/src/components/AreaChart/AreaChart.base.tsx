@@ -122,7 +122,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
-    this._isChartEmpty = false;
+    this._isChartEmpty = !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length &&
+      !this.props.data.lineChartData.filter(item => !item.data.length).length
+    );
   }
 
   public componentDidUpdate() {
@@ -148,13 +153,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    if (
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length &&
-      this.props.data.lineChartData[0].data &&
-      this.props.data.lineChartData[0].data.length
-    ) {
+    if (!this._isChartEmpty) {
       const { lineChartData, chartTitle } = this.props.data;
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
       this._calloutPoints = calloutPoints;
@@ -227,7 +226,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         />
       );
     }
-    this._isChartEmpty = true;
     return <></>;
   }
 
