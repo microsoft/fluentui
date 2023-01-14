@@ -21,8 +21,6 @@ export const styles = css`
     --progress-bar-radius: ${borderRadiusMedium};
     --progress-bar-color: ${colorCompoundBrandBackground};
     --progress-speed: 3s;
-
-    display: flex;
     align-items: center;
     height: var(--progress-bar-thickness);
     overflow-x: hidden;
