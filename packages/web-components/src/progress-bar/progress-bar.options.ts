@@ -35,7 +35,6 @@ export type ProgressBarShape = ValuesOf<typeof ProgressBarShape>;
  * @public
  */
 export const ProgressBarValidationState = {
-  null: null,
   success: 'success',
   warning: 'warning',
   error: 'error',
