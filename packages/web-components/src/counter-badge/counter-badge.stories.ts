@@ -7,7 +7,7 @@ import {
   CounterBadgeColor,
   CounterBadgeShape,
   CounterBadgeSize,
-} from './counter-badge.options';
+} from './counter-badge.options.js';
 import './define.js';
 
 type CounterBadgeStoryArgs = Args & FluentCounterBadge;
@@ -117,7 +117,7 @@ export default {
   },
 } as CounterBadgeStoryMeta;
 
-export const Badge = renderComponent(storyTemplate).bind({});
+export const CounterBadge = renderComponent(storyTemplate).bind({});
 
 export const Appearance = renderComponent(html<CounterBadgeStoryArgs>`
   <fluent-ccounter-badge appearance="filled">filled</fluent-ccounter-badge>

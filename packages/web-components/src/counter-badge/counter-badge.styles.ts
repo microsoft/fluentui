@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { badgeFilledStyles, badgeGhostStyles, badgeSizeStyles } from '../styles/index';
+import { badgeFilledStyles, badgeGhostStyles, badgeSizeStyles } from '../styles/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,

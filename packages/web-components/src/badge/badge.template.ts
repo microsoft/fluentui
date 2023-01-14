@@ -1,6 +1,7 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '@microsoft/fast-foundation';
 import type { Badge } from './badge.js';
+import type { BadgeOptions } from './badge.options.js';
 
 /**
  * The template for the Badge component.

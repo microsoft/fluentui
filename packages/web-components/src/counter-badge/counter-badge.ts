@@ -1,7 +1,11 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { applyMixins, StartEnd } from '@microsoft/fast-foundation';
-import { nullableNumberConverter } from '../../../../node_modules/@microsoft/fast-element/dist/dts/index';
-import { CounterBadgeAppearance, CounterBadgeColor, CounterBadgeShape, CounterBadgeSize } from './badge.options';
+import {
+  CounterBadgeAppearance,
+  CounterBadgeColor,
+  CounterBadgeShape,
+  CounterBadgeSize,
+} from './counter-badge.options.js';
 
 /**
  * The base class used for constructing a fluent-badge custom element
@@ -106,5 +110,6 @@ export class CounterBadge extends FASTElement {
  * TODO: Below will be unnecessary when Badge class gets updated
  * @internal
  */
-export type CounterBadge = StartEnd
+/* eslint-disable-next-line */
+export interface CounterBadge extends StartEnd {}
 applyMixins(CounterBadge, StartEnd);

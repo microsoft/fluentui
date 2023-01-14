@@ -1,4 +1,11 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
+import { BadgeOptions } from '../badge/badge.options.js';
+
+/**
+ * CounterBadge options
+ * @public
+ */
+export type CounterBadgeOptions = BadgeOptions;
 
 /**
  * CounterBadgeAppearance constants

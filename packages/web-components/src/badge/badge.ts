@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import { applyMixins, StartEnd } from '@microsoft/fast-foundation';
-import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options';
+import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 
 /**
  * The base class used for constructing a fluent-badge custom element
@@ -53,5 +53,6 @@ export class Badge extends FASTElement {
  * TODO: Below will be unnecessary when Badge class gets updated
  * @internal
  */
+/* eslint-disable-next-line */
 export interface Badge extends StartEnd {}
 applyMixins(Badge, StartEnd);
