@@ -31,6 +31,7 @@
     "@fluentui/react-field": "9.0.0-alpha.14",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-image": "^9.0.17",
+    "@fluentui/react-infobutton": "9.0.0-beta.6",
     "@fluentui/react-input": "^9.2.11",
     "@fluentui/react-label": "^9.0.16",
     "@fluentui/react-link": "^9.0.17",
