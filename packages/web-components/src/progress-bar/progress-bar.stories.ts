@@ -1,15 +1,15 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
-import type { ProgressBar as FluentProgressBar } from './progressbar.js';
-import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progressbar.options.js';
+import type { ProgressBar as FluentProgressBar } from './progress-bar.js';
+import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 import './define.js';
 
 type ProgressStoryArgs = Args & FluentProgressBar;
 type ProgressStoryMeta = Meta<ProgressStoryArgs>;
 
 const storyTemplate = html<ProgressStoryArgs>`
-  <fluent-progressbar
+  <fluent-progress-bar
     paused=${x => x.paused}
     thickness=${x => x.thickness}
     shape=${x => x.shape}
@@ -21,7 +21,7 @@ const storyTemplate = html<ProgressStoryArgs>`
     value=${x => x.value}
     validation-state=${x => x.validationState}
     aria-label="Progress bar"
-  ></fluent-progressbar>
+  ></fluent-progress-bar>
 `;
 
 export default {
@@ -79,5 +79,5 @@ export default {
 export const Progress = renderComponent(storyTemplate).bind({});
 
 export const ProgressIndeterminate = renderComponent(html<ProgressStoryArgs>`
-  <fluent-progressbar title="Indeterminate Bar" aria-label="Indeterminate progress bar"></fluent-progressbar>
+  <fluent-progress-bar title="Indeterminate Bar" aria-label="Indeterminate progress bar"></fluent-progress-bar>
 `);

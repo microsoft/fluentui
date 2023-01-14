@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
-import type { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progressbar.options.js';
+import type { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 export class ProgressBar extends FASTProgress {
   /**
