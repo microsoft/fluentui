@@ -30,7 +30,7 @@ export class CounterBadge extends FASTElement {
    * HTML Attribute: color
    */
   @attr
-  public color: CounterBadgeColor = CounterBadgeColor;
+  public color: CounterBadgeColor = CounterBadgeColor.brand;
   /**
    * The shape the badge should have.
    *
@@ -39,7 +39,7 @@ export class CounterBadge extends FASTElement {
    * HTML Attribute: shape
    */
   @attr
-  public shape: CounterBadgeShape = CounterBadgeAppearance.circular;
+  public shape: CounterBadgeShape = CounterBadgeShape.circular;
 
   /**
    * The size the badge should have.
@@ -60,6 +60,9 @@ export class CounterBadge extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public count: number = 0;
+  protected countChanged() {
+    this.setCount();
+  }
 
   /**
    * Max number to be displayed
@@ -70,13 +73,16 @@ export class CounterBadge extends FASTElement {
    */
   @attr({ attribute: 'overflow-count', converter: nullableNumberConverter })
   public overflowCount: number = 99;
+  protected overflowCountChanged() {
+    this.setCount();
+  }
 
   /**
    * If the badge should be shown when count is 0
    *
    * @public
    * @remarks
-   * HTML Attribute: showzero
+   * HTML Attribute: show-zero
    */
   @attr({ attribute: 'show-zero', mode: 'boolean' })
   public showZero: boolean = false;
@@ -88,7 +94,7 @@ export class CounterBadge extends FASTElement {
    * @remarks
    * HTML Attribute: dot
    */
-  @attr
+  @attr({ mode: 'boolean' })
   public dot: boolean = false;
 
   /**
@@ -97,10 +103,14 @@ export class CounterBadge extends FASTElement {
    * This is the default slotted content for the counter badge
    * If children are slotted, that will override the value returned
    */
-  public setCount() {
-    if ((this.count !== 0 || this.showZero) && !this.dot) {
-      return this.count > this.overflowCount ? `${this.overflowCount}+` : `${this.count}`;
+  public setCount(): string | void {
+    const count: number | null = this.count ?? 0;
+
+    if ((count !== 0 || this.showZero) && !this.dot) {
+      return count > this.overflowCount ? `${this.overflowCount}+` : `${count}`;
     }
+
+    return;
   }
 }
 

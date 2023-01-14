@@ -37,7 +37,9 @@ import {
   colorPaletteYellowForeground2,
   colorTransparentStroke,
   fontSizeBase100,
+  fontSizeBase200,
   lineHeightBase100,
+  lineHeightBase200,
   spacingHorizontalSNudge,
   spacingHorizontalXS,
   spacingHorizontalXXS,
@@ -81,8 +83,8 @@ export const badgeSizeStyles = css.partial`
   :host([size='medium']) {
     min-width: 20px;
     height: 20px;
-    font-size: ${fontSizeBase100};
-    line-height: ${lineHeightBase100};
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
     padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
   }
   :host([size='medium']) ::slotted(svg) {
@@ -91,8 +93,8 @@ export const badgeSizeStyles = css.partial`
   :host([size='large']) {
     min-width: 24px;
     height: 24px;
-    font-size: ${fontSizeBase100};
-    line-height: ${lineHeightBase100};
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
     padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
   }
   :host([size='large']) ::slotted(svg) {
@@ -101,8 +103,8 @@ export const badgeSizeStyles = css.partial`
   :host([size='extra-large']) {
     min-width: 32px;
     height: 32px;
-    font-size: ${fontSizeBase100};
-    line-height: ${lineHeightBase100};
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
     padding-inline: calc(${spacingHorizontalSNudge} + ${textPadding});
   }
   :host([size='extra-large']) ::slotted(svg) {

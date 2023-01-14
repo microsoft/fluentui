@@ -54,14 +54,14 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
   }
 
-  :host([dot]) {
+  ${badgeSizeStyles}
+  ${badgeFilledStyles}
+  ${badgeGhostStyles}
+
+  :host([dot][appearance][size]) {
     min-width: auto;
     width: 6px;
     height: 6px;
     padding: 0;
   }
-
-  ${badgeSizeStyles}
-  ${badgeFilledStyles}
-  ${badgeGhostStyles}
 `;

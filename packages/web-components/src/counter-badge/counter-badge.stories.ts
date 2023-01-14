@@ -1,4 +1,4 @@
-import { html, when } from '@microsoft/fast-element';
+import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
 import type { CounterBadge as FluentCounterBadge } from './counter-badge.js';
@@ -13,6 +13,8 @@ import './define.js';
 type CounterBadgeStoryArgs = Args & FluentCounterBadge;
 type CounterBadgeStoryMeta = Meta<CounterBadgeStoryArgs>;
 
+// TODO: Currently cannot show icon or content
+// in the counter badge stories because it projects as slotted content
 const storyTemplate = html<CounterBadgeStoryArgs>`
   <fluent-counter-badge
     appearance="${x => x.appearance}"
@@ -23,49 +25,18 @@ const storyTemplate = html<CounterBadgeStoryArgs>`
     overflow-count="${x => x.overflowCount}"
     ?show-zero="${x => x.showZero}"
     ?dot="${x => x.dot}"
-  >
-    ${when(
-      x => x.iconPosition === 'start',
-      html<CounterBadgeStoryArgs>`<svg
-        slot="start"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="1em"
-        height="1em"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 20 20"
-      >
-        <path
-          fill="currentColor"
-          d="M14.69 11.503c1 0 1.81.81 1.81 1.81v.689h-.005c-.034.78-.248 1.757-1.123 2.555C14.416 17.43 12.765 18 10 18c-2.766 0-4.416-.57-5.372-1.443c-.875-.798-1.089-1.776-1.123-2.555H3.5v-.69c0-.999.81-1.809 1.81-1.809h9.38ZM6.5 3A1.5 1.5 0 0 0 5 4.5v4A1.5 1.5 0 0 0 6.5 10h7A1.5 1.5 0 0 0 15 8.5v-4A1.5 1.5 0 0 0 13.5 3h-3v-.5A.48.48 0 0 0 10 2c-.276 0-.5.23-.5.5V3h-3ZM7 6.5a1 1 0 1 1 2 0a1 1 0 0 1-2 0Zm4 0a1 1 0 1 1 2 0a1 1 0 0 1-2 0Z"
-        />
-      </svg>`,
-    )}
-    ${x => x.content}
-    ${when(
-      x => x.iconPosition === 'end',
-      html<CounterBadgeStoryArgs>`<svg
-        slot="start"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="1em"
-        height="1em"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 20 20"
-      >
-        <path
-          fill="currentColor"
-          d="M14.69 11.503c1 0 1.81.81 1.81 1.81v.689h-.005c-.034.78-.248 1.757-1.123 2.555C14.416 17.43 12.765 18 10 18c-2.766 0-4.416-.57-5.372-1.443c-.875-.798-1.089-1.776-1.123-2.555H3.5v-.69c0-.999.81-1.809 1.81-1.809h9.38ZM6.5 3A1.5 1.5 0 0 0 5 4.5v4A1.5 1.5 0 0 0 6.5 10h7A1.5 1.5 0 0 0 15 8.5v-4A1.5 1.5 0 0 0 13.5 3h-3v-.5A.48.48 0 0 0 10 2c-.276 0-.5.23-.5.5V3h-3ZM7 6.5a1 1 0 1 1 2 0a1 1 0 0 1-2 0Zm4 0a1 1 0 1 1 2 0a1 1 0 0 1-2 0Z"
-        />
-      </svg>`,
-    )}
-  </fluent-counter-badge>
+  ></fluent-counter-badge>
 `;
 
 export default {
-  title: 'Components/Counter Badge',
+  title: 'Components/Badge/Counter Badge',
   args: {
-    content: null,
+    dot: false,
+    showZero: false,
+    appearance: CounterBadgeAppearance.filled,
+    color: CounterBadgeColor.brand,
+    shape: CounterBadgeShape.circular,
+    count: 5,
   },
   argTypes: {
     appearance: {
@@ -87,7 +58,7 @@ export default {
       },
     },
     size: {
-      options: Object.keys(CounterBadgeSize),
+      options: Object.values(CounterBadgeSize),
       control: {
         type: 'select',
       },
@@ -99,20 +70,16 @@ export default {
       },
     },
     dot: {
-      type: 'boolean',
+      control: 'boolean',
     },
     showZero: {
-      type: 'boolean',
+      control: 'boolean',
     },
     count: {
-      type: 'string',
-      defaultValue: '5',
+      control: 'number',
     },
     overflowCount: {
-      type: 'string',
-    },
-    content: {
-      type: 'string',
+      control: 'text',
     },
   },
 } as CounterBadgeStoryMeta;
@@ -120,33 +87,37 @@ export default {
 export const CounterBadge = renderComponent(storyTemplate).bind({});
 
 export const Appearance = renderComponent(html<CounterBadgeStoryArgs>`
-  <fluent-ccounter-badge appearance="filled">filled</fluent-ccounter-badge>
-  <fluent-ccounter-badge appearance="ghost">ghost</fluent-ccounter-badge>
+  <fluent-counter-badge appearance="filled"></fluent-counter-badge>
+  <fluent-counter-badge appearance="ghost"></fluent-counter-badge>
 `);
 
 export const Color = renderComponent(html<CounterBadgeStoryArgs>`
-  <fluent-ccounter-badge color="brand">brand</fluent-ccounter-badge>
-  <fluent-ccounter-badge color="danger">danger</fluent-ccounter-badge>
-  <fluent-ccounter-badge color="important">important</fluent-ccounter-badge>
-  <fluent-ccounter-badge color="informative">informative</fluent-ccounter-badge>
-  <fluent-ccounter-badge color="severe">severe</fluent-ccounter-badge>
-  <fluent-ccounter-badge color="subtle">subtle</fluent-ccounter-badge>
-  <fluent-ccounter-badge color="success">success</fluent-ccounter-badge>
-  <fluent-ccounter-badge color="warning">warning</fluent-ccounter-badge>
+  <fluent-counter-badge color="brand"></fluent-counter-badge>
+  <fluent-counter-badge color="danger"></fluent-counter-badge>
+  <fluent-counter-badge color="important"></fluent-counter-badge>
+  <fluent-counter-badge color="informative"></fluent-counter-badge>
+  <fluent-counter-badge color="severe"></fluent-counter-badge>
+  <fluent-counter-badge color="subtle"></fluent-counter-badge>
+  <fluent-counter-badge color="success"></fluent-counter-badge>
+  <fluent-counter-badge color="warning"></fluent-counter-badge>
 `);
 
 export const Shape = renderComponent(html<CounterBadgeStoryArgs>`
-  <fluent-ccounter-badge shape="circular"></fluent-ccounter-badge>
-  <fluent-ccounter-badge shape="rounded"></fluent-ccounter-badge>
+  <fluent-counter-badge shape="circular"></fluent-counter-badge>
+  <fluent-counter-badge shape="rounded"></fluent-counter-badge>
 `);
 
 export const Size = renderComponent(html<CounterBadgeStoryArgs>`
-  <fluent-ccounter-badge size="tiny"></fluent-ccounter-badge>
-  <fluent-ccounter-badge size="extra-small"></fluent-ccounter-badge>
-  <fluent-ccounter-badge size="small"></fluent-ccounter-badge>
-  <fluent-ccounter-badge size="medium"></fluent-ccounter-badge>
-  <fluent-ccounter-badge size="large"></fluent-ccounter-badge>
-  <fluent-ccounter-badge size="extra-large"></fluent-ccounter-badge>
+  <fluent-counter-badge size="tiny"></fluent-counter-badge>
+  <fluent-counter-badge size="extra-small"></fluent-counter-badge>
+  <fluent-counter-badge size="small"></fluent-counter-badge>
+  <fluent-counter-badge size="medium"></fluent-counter-badge>
+  <fluent-counter-badge size="large"></fluent-counter-badge>
+  <fluent-counter-badge size="extra-large"></fluent-counter-badge>
 `) as CounterBadgeStoryMeta;
 
-export const Dot = renderComponent(html<CounterBadgeStoryArgs>` <fluent-ccounter-badge dot></fluent-ccounter-badge> `);
+export const Dot = renderComponent(html<CounterBadgeStoryArgs>`<fluent-counter-badge dot></fluent-counter-badge>`);
+
+export const ShowZero = renderComponent(
+  html<CounterBadgeStoryArgs>`<fluent-counter-badge show-zero></fluent-counter-badge>`,
+);

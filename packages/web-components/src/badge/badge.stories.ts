@@ -49,7 +49,7 @@ const storyTemplate = html<BadgeStoryArgs>`
 `;
 
 export default {
-  title: 'Components/Badge',
+  title: 'Components/Badge/Badge',
   args: {
     content: null,
   },
@@ -73,7 +73,7 @@ export default {
       },
     },
     size: {
-      options: Object.keys(BadgeSize),
+      options: Object.values(BadgeSize),
       control: {
         type: 'select',
       },
@@ -85,7 +85,7 @@ export default {
       },
     },
     content: {
-      type: 'string',
+      control: 'text',
     },
   },
 } as BadgeStoryMeta;
