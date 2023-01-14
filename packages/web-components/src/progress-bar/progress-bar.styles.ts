@@ -107,8 +107,8 @@ export const styles = css`
     animation: indeterminate-2 var(--progress-speed) infinite;
   }
 
-  :host(.paused) .indeterminate-indicator-1,
-  :host(.paused) .indeterminate-indicator-2 {
+  :host([paused]) .indeterminate-indicator-1,
+  :host([paused]) .indeterminate-indicator-2 {
     animation: none;
     background-color: ${colorNeutralBackground6};
     width: 100%;
