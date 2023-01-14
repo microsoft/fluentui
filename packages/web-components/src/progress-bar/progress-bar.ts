@@ -29,5 +29,5 @@ export class ProgressBar extends FASTProgress {
    * HTML Attribute: validation-state
    */
   @attr({ attribute: 'validation-state' })
-  public validationState: ProgressBarValidationState = null;
+  public validationState: ProgressBarValidationState | null;
 }

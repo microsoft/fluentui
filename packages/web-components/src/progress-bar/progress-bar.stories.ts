@@ -10,7 +10,7 @@ type ProgressStoryMeta = Meta<ProgressStoryArgs>;
 
 const storyTemplate = html<ProgressStoryArgs>`
   <fluent-progress-bar
-    paused=${x => x.paused}
+    ?paused=${x => x.paused}
     thickness=${x => x.thickness}
     shape=${x => x.shape}
     min=${x => x.min}
