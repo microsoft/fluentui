@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
-import { useRowIdContext } from '../../contexts/rowIdContext';
+import { useTableRowIdContext } from '../../contexts/rowIdContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 import { useTableSelectionCell_unstable } from '../TableSelectionCell/useTableSelectionCell';
 import type { DataGridSelectionCellProps, DataGridSelectionCellState } from './DataGridSelectionCell.types';
@@ -20,7 +20,7 @@ export const useDataGridSelectionCell_unstable = (
   ref: React.Ref<HTMLElement>,
 ): DataGridSelectionCellState => {
   const isHeader = useIsInTableHeader();
-  const rowId = useRowIdContext();
+  const rowId = useTableRowIdContext();
   const subtle = useDataGridContext_unstable(ctx => ctx.subtleSelection);
   const checked = useDataGridContext_unstable(ctx => {
     if (isHeader && ctx.selection.selectionMode === 'multiselect') {

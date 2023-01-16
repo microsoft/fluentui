@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { RowState } from '../../hooks';
+import type { TableRowData } from '../../hooks';
 import type { TableBodySlots, TableBodyProps, TableBodyState } from '../TableBody/TableBody.types';
 
 export type DataGridBodySlots = TableBodySlots;
@@ -7,7 +7,7 @@ export type DataGridBodySlots = TableBodySlots;
 // Use any here since we can't know the user types
 // The user is responsible for narrowing the type downstream
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RowRenderFunction = (row: RowState<any>, ...rest: any[]) => React.ReactNode;
+export type RowRenderFunction = (row: TableRowData<any>, ...rest: any[]) => React.ReactNode;
 
 /**
  * DataGridBody Props
@@ -24,7 +24,7 @@ export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
  */
 export type DataGridBodyState = TableBodyState & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  rows: RowState<any>[];
+  rows: TableRowData<any>[];
 
   renderRow: RowRenderFunction;
 };
