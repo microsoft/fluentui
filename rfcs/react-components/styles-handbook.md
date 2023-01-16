@@ -369,7 +369,7 @@ Targets all `h1` & `div` tags.
 - match_attempts **1**
 - match_count **1**
 
-The performance in this example is acceptable because the page only has a single `h1` tag, this will not be a case in a real app. The performance problem is more obvious here with the `div` selector.
+The performance in this example is acceptable because the page only has a single `h1` tag, **this will not be a case in a real app**. The performance problem is more obvious here with the `div` selector.
 
 - selector `.fq4d7o6 > div`
 - match_attempts **501**
