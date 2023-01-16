@@ -403,13 +403,17 @@ const useClasses = makeStyles({
 });
 ```
 
-Exact colors should be never used in Fluent UI code and and we do not recommend their use in applications either. The exception are [system-colors][mdn-system-colors] used by forced colors mode:
+Exact colors should be never used in Fluent UI code and we do not recommend their use in applications either. The exception are [system-colors][mdn-system-colors] used by forced colors mode (inside media queries):
 
 ```js
 import { makeStyles } from '@griffel/react';
 
 const useClasses = makeStyles({
-  button: { color: 'ButtonText' },
+  button: {
+    '@media (forced-colors: active)': {
+      color: 'ButtonText',
+    },
+  },
 });
 ```
 
