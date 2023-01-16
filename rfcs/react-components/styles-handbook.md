@@ -171,7 +171,7 @@ const useClasses = makeStyles({
 // produces 26 classes ((4+4)+(4+4)+2+(4+4))
 ```
 
-Such cases might be unavoidable by design, next section covers APIs to address this problem.
+Such cases might be unavoidable by design, [the next section](#makeresetstyles) covers APIs to address this problem.
 
 ## `mergeClasses()`
 
