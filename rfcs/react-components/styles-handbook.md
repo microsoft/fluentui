@@ -10,8 +10,8 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Introduction](#introduction)
-- [Basics](#basics)
-- [APIs](#apis)
+- [Core concepts](#core-concepts)
+  - [Atomic CSS](#atomic-css)
   - [`makeStyles`](#makestyles)
     - [Limitations](#limitations)
     - [Performance caveat](#performance-caveat)
@@ -19,7 +19,6 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
     - [⚠️ Only combine classes with `mergeClasses`](#%EF%B8%8F-only-combine-classes-with-mergeclasses)
   - [`makeResetStyles`](#makeresetstyles)
     - [Hybrid approach (Using `makeStyles` and `makeResetStyles` together)](#hybrid-approach-using-makestyles-and-makeresetstyles-together)
-- [Advanced](#advanced)
   - [Understanding selector complexity](#understanding-selector-complexity)
 - [Best practices](#best-practices)
   - [Writting styles](#writting-styles)
@@ -42,7 +41,9 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
 
 Griffel is a hybrid CSS-in-JS that features runtime option like any other CSS-in-JS and [Ahead-of-time compilation][griffel-aot] with [CSS extraction][griffel-css-extraction] to reduce runtime footprint and improve performance.
 
-# Basics
+# Core concepts
+
+## Atomic CSS
 
 Griffel uses Atomic CSS to generate classes. In Atomic CSS every property-value is written as a single CSS rule.
 
@@ -65,8 +66,6 @@ Griffel uses Atomic CSS to generate classes. In Atomic CSS every property-value 
 ```
 
 [Learn more][griffel-atomic-css] about Atomic CSS.
-
-# APIs
 
 > 💡 **Note:** All examples in this document use `@griffel/react` package. However, if you're a Fluent UI consumer please use `@fluentui/react-components` in imports.
 
@@ -286,8 +285,6 @@ function Component(props) {
 }
 ```
 
-# Advanced
-
 ## Understanding selector complexity
 
 CSS Selectors are matched by browser engines from [right to left (bottom-up parsing)][stackoverflow-selectors-match]:
@@ -347,8 +344,6 @@ function App() {
   );
 }
 ```
-
-#### Measurements
 
 ##### No selector (best)
 
