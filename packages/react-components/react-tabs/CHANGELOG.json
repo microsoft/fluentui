@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:38:49 GMT",
+      "tag": "@fluentui/react-tabs_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.3.7",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:02 GMT",
       "tag": "@fluentui/react-tabs_v9.1.6",
       "version": "9.1.6",

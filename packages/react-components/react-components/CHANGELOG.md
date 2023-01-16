@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 09 Jan 2023 21:51:23 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2023 08:38:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.10.0)
+
+Mon, 16 Jan 2023 08:38:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.9.1..@fluentui/react-components_v9.10.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - chore: Re-exporting missing exports from @fluentui/react-combobox. ([PR #26294](https://github.com/microsoft/fluentui/pull/26294) by Humberto.Morimoto@microsoft.com)
+  - feat: Export RowIdContextProvider and useRowIdContext from react-table ([PR #26081](https://github.com/microsoft/fluentui/pull/26081) by lingfangao@hotmail.com)
+  - chore: Re-exporting makeResetStyles. ([PR #26353](https://github.com/microsoft/fluentui/pull/26353) by makotom@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-slider`
+  - fix: allow refs passed in root slot to merge with focus refs ([PR #26243](https://github.com/microsoft/fluentui/pull/26243) by mgodbolt@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Update Switch to use griffel reset styles ([PR #26007](https://github.com/microsoft/fluentui/pull/26007) by behowell@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Simplify Checkbox style selectors using component checked/disabled state ([PR #26247](https://github.com/microsoft/fluentui/pull/26247) by behowell@microsoft.com)
+- `@fluentui/react-input`
+  - fix: Update contentBefore and contentAfter slot styling for svg ([PR #26115](https://github.com/microsoft/fluentui/pull/26115) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: Tab should focus the window if trigger is the last focusable element ([PR #26163](https://github.com/microsoft/fluentui/pull/26163) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-table`
+  - feat: Export RowIdProvider ([PR #26081](https://github.com/microsoft/fluentui/pull/26081) by lingfangao@hotmail.com)
+  - fix(TableSelectionCell): Radios should not change selection on focus ([PR #26283](https://github.com/microsoft/fluentui/pull/26283) by lingfangao@hotmail.com)
+- `@fluentui/react-toolbar`
+  - feat: add new ToolbarRadioGroup component and a11y fixes ([PR #26275](https://github.com/microsoft/fluentui/pull/26275) by chassunc@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: add aria-owns to combobox and dropdown" ([PR #26246](https://github.com/microsoft/fluentui/pull/26246) by sarah.higley@microsoft.com)
+  - fix: button semantics for Combobox chevron, and pointer styles ([PR #26075](https://github.com/microsoft/fluentui/pull/26075) by sarah.higley@microsoft.com)
+- `@fluentui/react-field`
+  - fix: Field styles do not wrap SVG status icon in inline parent to avoid layout bugs ([PR #26150](https://github.com/microsoft/fluentui/pull/26150) by sarah.higley@microsoft.com)
+- `@fluentui/react-infobutton`
+  - fix: Update border for Teams HCM to be transparent. ([PR #26305](https://github.com/microsoft/fluentui/pull/26305) by esteban.230@hotmail.com)
+  - fix: Update PopoverSurface's role to note and remove need to cast props passed to popover slot. ([PR #26300](https://github.com/microsoft/fluentui/pull/26300) by esteban.230@hotmail.com)
 
 ## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.9.1)
 
