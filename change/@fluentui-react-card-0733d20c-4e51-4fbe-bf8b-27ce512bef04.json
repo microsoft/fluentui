@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: add migration guide for cards from V0 to V9",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "none"
-}

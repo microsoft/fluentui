@@ -33,10 +33,10 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.5",
-    "@fluentui/react-shared-contexts": "^9.1.4",
+    "@fluentui/react-shared-contexts": "^9.1.5",
     "@fluentui/react-aria": "^9.3.5",
-    "@fluentui/react-tabster": "^9.3.6",
-    "@fluentui/react-portal": "^9.1.0",
+    "@fluentui/react-tabster": "^9.3.7",
+    "@fluentui/react-portal": "^9.1.1",
     "@fluentui/keyboard-keys": "^9.0.1",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.4.0",

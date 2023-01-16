@@ -2,6 +2,53 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:38:57 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "1cb0b6daabfcff4b79830a1c2b3b7cba8dcf14c7",
+            "comment": "fix: add aria-owns to combobox and dropdown\""
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d1f139a1ffe3f9cd33c0469c9105cbfb57c8383d",
+            "comment": "fix: button semantics for Combobox chevron, and pointer styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.15",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.1.1",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.3.8",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 21:51:23 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.22",
       "version": "9.0.0-beta.22",
