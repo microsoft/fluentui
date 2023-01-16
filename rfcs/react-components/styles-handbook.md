@@ -26,12 +26,13 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
     - [Use `tokens` over direct colors](#use-tokens-over-direct-colors)
     - [Avoid rule duplication](#avoid-rule-duplication)
     - [Avoid `!important`](#avoid-important)
+    - [Use structured styles](#use-structured-styles)
   - [Performance](#performance)
     - [Use `mergeClasses` once for an element](#use-mergeclasses-once-for-an-element)
   - [Nested selectors](#nested-selectors)
     - [Use nested selectors with pseudo classes](#use-nested-selectors-with-pseudo-classes)
     - [Apply classes directly to elements](#apply-classes-directly-to-elements)
-    - [Do not use complicated selectors](#do-not-use-complicated-selectors)
+    - [Avoid complicated selectors](#avoid-complicated-selectors)
     - [Avoid input pseudo classes](#avoid-input-pseudo-classes)
   - [RTL styles](#rtl-styles)
     - [Using `@noflip`](#using-noflip)
@@ -386,15 +387,19 @@ Only matches the element that the class is applied to.
 - match_attempts **503**
 - match_count **2**
 
-##### `> h1` & `> div` (non ideal)
+##### `> h1` (non ideal)
 
-Targets all `h1` & `div` tags.
+Targets all `h1` tags on page.
 
 - selector `.fohk16y > h1`
 - match_attempts **1**
 - match_count **1**
 
-The performance in this example is acceptable because the page only has a single `h1` tag, **this will not be a case in a real app**. The performance problem is more obvious here with the `div` selector.
+The performance in this example is acceptable because the page only has a single `h1` tag, **this will not be a case in a real app**.
+
+##### `> div` (non ideal)
+
+The selector is similar to the previous case, but now it targets all `div` tags. All the example contains 501 `div`, the performance problem is more obvious here.
 
 - selector `.fq4d7o6 > div`
 - match_attempts **501**
@@ -402,11 +407,27 @@ The performance in this example is acceptable because the page only has a single
 
 #### Targeting a classname (better)
 
-The most effective since we only target elements with a specific class. However, this is still not optimal if there are 1000 elements with the class `ui-button` on the page.
+This kind of selectors may not be the most efficient for pages with 1000 elements of the class 'ui-button', but it is the most effective as it targets only elements with that specific class.
 
 - selector `.fqhvij7 > .ui-button`
 - match_attempts **1**
 - match_count **1**
+
+It is recommended to use this method in situations where pseudo selectors or pseudo classes are used, for example:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  test: {
+    ':hover': {
+      '> .ui-button': {
+        color: 'blue',
+      },
+    },
+  },
+});
+```
 
 # Best practices
 
@@ -498,6 +519,35 @@ const useClasses = makeStyles({
     display: 'flex !important',
   },
 });
+```
+
+### Use structured styles
+
+To make your code simpler, consider grouping styles that have similar conditions in `mergeClasses()` calls, and then apply them without the use of additional conditions at all.
+
+```js
+import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+
+const useBaseClassName = makeResetStyles({
+  display: 'flex',
+  fontSize: '16px',
+});
+const useClasses = makeStyles({
+  small: { fontSize: '12px' },
+  medium: {
+    /* defined in base styles */
+  },
+  large: { fontSize: '20px' },
+});
+
+function Component(props) {
+  const baseClassName = useBaseClassName();
+  const classes = useClasses();
+
+  const className = mergeClasses(baseClassName, classes[props.size]);
+
+  /* --- */
+}
 ```
 
 ## Performance
@@ -601,7 +651,7 @@ function App(props) {
 }
 ```
 
-### Do not use complicated selectors
+### Avoid complicated selectors
 
 Keep selectors simple to produce reusable CSS rules:
 
