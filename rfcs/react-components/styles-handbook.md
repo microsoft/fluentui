@@ -16,12 +16,13 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
     - [Limitations](#limitations)
     - [Performance caveat](#performance-caveat)
   - [`mergeClasses()`](#mergeclasses)
+    - [Order of arguments determines results](#order-of-arguments-determines-results)
     - [⚠️ Only combine classes with `mergeClasses`](#%EF%B8%8F-only-combine-classes-with-mergeclasses)
   - [`makeResetStyles`](#makeresetstyles)
     - [Hybrid approach (Using `makeStyles` and `makeResetStyles` together)](#hybrid-approach-using-makestyles-and-makeresetstyles-together)
   - [Understanding selector complexity](#understanding-selector-complexity)
 - [Best practices](#best-practices)
-  - [Writting styles](#writting-styles)
+  - [Writing styles](#writing-styles)
     - [Use `tokens` over direct colors](#use-tokens-over-direct-colors)
     - [Avoid rule duplication](#avoid-rule-duplication)
     - [Avoid `!important`](#avoid-important)
@@ -198,6 +199,30 @@ function Component(props) {
     props.foo && classes.foo /* styles specific for "foo" */,
     props.bar && classes.bar /* styles specific for "bar" */,
   );
+
+  /* --- */
+}
+```
+
+### Order of arguments determines results
+
+Unlike native CSS, the output of mergeClasses() is affected by the order of the classes passed in, allowing for control over priority of style overrides.
+
+```js
+import { mergeClasses, makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  blue: { color: 'blue' },
+  red: { color: 'red' },
+});
+
+function Component(props) {
+  // ℹ️ Order of arguments determines the results
+
+  const redClassName = mergeClasses(classes.blue, classes.red);
+  // 👆 { color: 'red' }
+  const blueClassName = mergeClasses(classes.red, classes.blue);
+  // 👆 { color: 'blue' }
 
   /* --- */
 }
