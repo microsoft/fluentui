@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import descriptionMd from './Description.md';
 
-import { FormField } from '@fluentui/react-northstar';
+import { FormField, Input, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 import { InputField } from '@fluentui/react-components/unstable';
 import { FormFieldShim } from '../../components/FormField/FormFieldShim';
@@ -33,12 +33,16 @@ export const Default = () => {
       <h3>v0</h3>
       <h3>shim</h3>
       <h3>v9</h3>
-      <FormField required>
-        <input />
-      </FormField>
-      <FormFieldShim required>
-        <input />
-      </FormFieldShim>
+      <Provider theme={teamsTheme}>
+        <FormField>
+          <Input />
+        </FormField>
+      </Provider>
+      <Provider theme={teamsTheme}>
+        <FormFieldShim required>
+          <Input />
+        </FormFieldShim>
+      </Provider>
       <InputField />
     </div>
   );
