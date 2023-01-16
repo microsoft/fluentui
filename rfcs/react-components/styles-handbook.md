@@ -369,7 +369,7 @@ Targets all `h1` & `div` tags.
 - match_attempts **1**
 - match_count **1**
 
-In this example performs better as page has a single `h1` tag, this will not be a case in the real app that it is visible on the next example with `div`.
+The performance in this example is acceptable because the page only has a single `h1` tag, this will not be a case in a real app. The performance problem is more obvious here with the `div` selector.
 
 - selector `.fq4d7o6 > div`
 - match_attempts **501**
@@ -418,6 +418,7 @@ const useClasses = makeStyles({
 Styles written for components should follow these rules:
 
 - base styles should contain the most of CSS definitions that are applicable to base state
+  - use `makeResetStyles` to define them
 - styles for permutations should be granular
 - base styles should not be duplicated by permutations
 
