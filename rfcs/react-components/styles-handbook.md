@@ -358,8 +358,8 @@ Only matches the element that the class is applied to.
 "\*" matches all elements on the page.
 
 - selector `.fzbuleu > *`
-- match_attempts **502**
-- match_count **1**
+- match_attempts **503**
+- match_count **2**
 
 ##### `> h1` & `> div` (non ideal)
 
@@ -385,7 +385,7 @@ The most effective since we only target elements with a specific class. However,
 
 # Best practices
 
-## Writting styles
+## Writing styles
 
 ### Use `tokens` over direct colors
 
