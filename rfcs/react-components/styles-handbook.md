@@ -136,7 +136,7 @@ const useClasses = makeStyles({
   },
 });
 // ⬇️⬇️⬇️
-// produces 6 classes (1+1+4)
+// produces 6 classes (1 + 1 + 4 for expanded padding)
 ```
 
 > 💡**Tip:** Preview generated classes consider in the [Try out][griffel-try-out] sandbox.
@@ -168,7 +168,7 @@ const useClasses = makeStyles({
   },
 });
 // ⬇️⬇️⬇️
-// produces 14 classes ((4+4)+(4+4)+2+(4+4))
+// produces 26 classes ((4+4)+(4+4)+2+(4+4))
 ```
 
 Such cases might be unavoidable by design, next section covers APIs to address this problem.
