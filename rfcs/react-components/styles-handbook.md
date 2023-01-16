@@ -20,6 +20,8 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
     - [⚠️ Only combine classes with `mergeClasses`](#%EF%B8%8F-only-combine-classes-with-mergeclasses)
   - [`makeResetStyles`](#makeresetstyles)
     - [Hybrid approach (Using `makeStyles` and `makeResetStyles` together)](#hybrid-approach-using-makestyles-and-makeresetstyles-together)
+  - [RTL styles](#rtl-styles)
+    - [CSS variables caveat](#css-variables-caveat)
   - [Understanding selector complexity](#understanding-selector-complexity)
 - [Best practices](#best-practices)
   - [Writing styles](#writing-styles)
@@ -29,13 +31,12 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
     - [Use structured styles](#use-structured-styles)
   - [Performance](#performance)
     - [Use `mergeClasses` once for an element](#use-mergeclasses-once-for-an-element)
+    - [Avoid unnecessary RTL transforms by using `@noflip`](#avoid-unnecessary-rtl-transforms-by-using-noflip)
   - [Nested selectors](#nested-selectors)
     - [Use nested selectors with pseudo classes](#use-nested-selectors-with-pseudo-classes)
     - [Apply classes directly to elements](#apply-classes-directly-to-elements)
     - [Avoid complicated selectors](#avoid-complicated-selectors)
     - [Avoid input pseudo classes](#avoid-input-pseudo-classes)
-  - [RTL styles](#rtl-styles)
-    - [Using `@noflip`](#using-noflip)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -308,6 +309,71 @@ function Component(props) {
   const className = mergeClasses(baseClassName, props.circular && classes.circular, props.primary && classes.primary);
 
   return <div className={className} />;
+}
+```
+
+## RTL styles
+
+`makeStyles` & `makeResetStyles` perform automatic flipping of properties and values in Right-To-Left (RTL) text direction.
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    paddingLeft: '10px',
+  },
+});
+```
+
+⬇️⬇️⬇️
+
+```css
+/* Will be applied in LTR */
+.frdkuqy {
+  padding-left: 10px;
+}
+/* Will be applied in RTL */
+.f81rol6 {
+  padding-right: 10px;
+}
+```
+
+### CSS variables caveat
+
+Values than contain CSS variables (or our `tokens`) might not be always converted, for example:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    // ⚠️ "boxShadow" will not be flipped in this example
+    boxShadow: 'var(--box-shadow)',
+  },
+});
+```
+
+In this case, please apply your own styles with the text direction from the `useFluent()` hook:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    boxShadow: 'var(--box-shadow)',
+  },
+  rtl: {
+    boxShadow: 'var(--box-shadow-in-rtl)',
+  },
+});
+
+function App() {
+  const classes = useClasses();
+  const { dir } = useFluent();
+  const className = mergeClasses(classes.root, dir === 'rtl' && classes.rtl);
+
+  /* --- */
 }
 ```
 
@@ -584,6 +650,52 @@ function Component(props) {
 }
 ```
 
+### Avoid unnecessary RTL transforms by using `@noflip`
+
+You can also control which rules you don't want to flip by adding a `/* @noflip */` CSS comment to your rule:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    paddingLeft: '10px /* @noflip */',
+  },
+});
+```
+
+⬇️⬇️⬇️
+
+```css
+/* Will be applied in LTR & RTL */
+.f6x5cb6 {
+  padding-left: 10px;
+}
+```
+
+This can be useful to define direction specific animations:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  ltr: {
+    animationName: {
+      '0%': { left: '0% /* @noflip */' },
+      '100%': { left: '100% /* @noflip */' },
+    },
+  },
+  rtl: {
+    animationName: {
+      '100%': { right: '-100% /* @noflip */' },
+      '0%': { right: '100% /* @noflip */' },
+    },
+  },
+});
+```
+
+In this case automatic flipping is disabled and will produce less CSS: 2 classes instead of 4.
+
 ## Nested selectors
 
 Use nested selectors responsibly in styles because they can cause "CSS rule explosion".
@@ -786,115 +898,6 @@ function Checkbox(props) {
   return <input className={mergeClasses(baseClassName, checked && classes.checked)} checked={checked} />;
 }
 ```
-
-## RTL styles
-
-Griffel performs automatic flipping of properties and values in Right-To-Left (RTL) text direction.
-
-```js
-import { makeStyles } from '@griffel/react';
-
-const useClasses = makeStyles({
-  root: {
-    paddingLeft: '10px',
-  },
-});
-```
-
-⬇️⬇️⬇️
-
-```css
-/* Will be applied in LTR */
-.frdkuqy {
-  padding-left: 10px;
-}
-/* Will be applied in RTL */
-.f81rol6 {
-  padding-right: 10px;
-}
-```
-
-Values than contain CSS variables (or our `tokens`) might not be always converted, for example:
-
-```js
-import { makeStyles } from '@griffel/react';
-
-const useClasses = makeStyles({
-  root: {
-    // ⚠️ "boxShadow" will not be flipped in this example
-    boxShadow: 'var(--box-shadow)',
-  },
-});
-```
-
-In this case, please apply your own styles with the text direction from the `useFluent()` hook:
-
-```js
-import { makeStyles } from '@griffel/react';
-
-const useClasses = makeStyles({
-  root: {
-    boxShadow: 'var(--box-shadow)',
-  },
-  rtl: {
-    boxShadow: 'var(--box-shadow-in-rtl)',
-  },
-});
-
-function App() {
-  const classes = useClasses();
-  const { dir } = useFluent();
-  const className = mergeClasses(classes.root, dir === 'rtl' && classes.rtl);
-
-  /* --- */
-}
-```
-
-### Using `@noflip`
-
-You can also control which rules you don't want to flip by adding a `/* @noflip */` CSS comment to your rule:
-
-```js
-import { makeStyles } from '@griffel/react';
-
-const useClasses = makeStyles({
-  root: {
-    paddingLeft: '10px /* @noflip */',
-  },
-});
-```
-
-⬇️⬇️⬇️
-
-```css
-/* Will be applied in LTR & RTL */
-.f6x5cb6 {
-  padding-left: 10px;
-}
-```
-
-This can be useful to define direction specific animations:
-
-```js
-import { makeStyles } from '@griffel/react';
-
-const useClasses = makeStyles({
-  ltr: {
-    animationName: {
-      '0%': { left: '0% /* @noflip */' },
-      '100%': { left: '100% /* @noflip */' },
-    },
-  },
-  rtl: {
-    animationName: {
-      '100%': { right: '-100% /* @noflip */' },
-      '0%': { right: '100% /* @noflip */' },
-    },
-  },
-});
-```
-
-In this case automatic flipping is disabled and will produce less CSS: 2 classes instead of 4.
 
 [fluent-colors]: https://react.fluentui.dev/?path=/docs/theme-color--page
 [griffel]: https://griffel.js.org
