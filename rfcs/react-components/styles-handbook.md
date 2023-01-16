@@ -622,6 +622,31 @@ Keep selectors simple to produce reusable CSS rules:
   }
   ```
 
+- Complicated selectors are hard to override as overrides should match component's styles
+
+  ```js
+  // On component side
+  makeResetStyles({
+    '> .some-classname': {
+      '> .other-classname': {
+        ':hover': {
+          display: 'flex',
+          alignItems: 'center',
+        },
+      },
+    },
+  });
+  // On consumer side 💥
+  makeStyles({
+    foo: {
+      '> .some-classname > .other-classname:hover': {
+        display: 'flex',
+        alignItems: 'center',
+      },
+    },
+  });
+  ```
+
 ```js
 import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
