@@ -2,6 +2,27 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:38:50 GMT",
+      "tag": "@fluentui/react-theme_v9.1.5",
+      "version": "9.1.5",
+      "comments": {
+        "none": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "3916d4647dcc180d4ea4c30b296b0866e6315d69",
+            "comment": "Updated storybook docs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:39 GMT",
       "tag": "@fluentui/react-theme_v9.1.5",
       "version": "9.1.5",

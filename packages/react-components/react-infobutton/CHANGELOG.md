@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2023 08:39:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.7)
+
+Mon, 16 Jan 2023 08:39:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.6..@fluentui/react-infobutton_v9.0.0-beta.7)
+
+### Changes
+
+- fix: Update border for Teams HCM to be transparent. ([PR #26305](https://github.com/microsoft/fluentui/pull/26305) by esteban.230@hotmail.com)
+- fix: Update PopoverSurface's role to note and remove need to cast props passed to popover slot. ([PR #26300](https://github.com/microsoft/fluentui/pull/26300) by esteban.230@hotmail.com)
+- Bump @fluentui/react-popover to v9.4.1 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.6)
 

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2023 08:39:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.15)
+
+Mon, 16 Jan 2023 08:39:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.14..@fluentui/react-field_v9.0.0-alpha.15)
+
+### Changes
+
+- fix: Field styles do not wrap SVG status icon in inline parent to avoid layout bugs ([PR #26150](https://github.com/microsoft/fluentui/pull/26150) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-label to v9.0.17 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.14)
 

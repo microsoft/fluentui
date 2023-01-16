@@ -2,6 +2,65 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:38:48 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "10942a5764b9f4c599c279fa7da32d6ca1ac501c",
+            "comment": "feat: Export RowIdProvider"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "ac636e8e2f5448a58343f51ad72f9fc5351e4b8e",
+            "comment": "fix(TableSelectionCell): Radios should not change selection on focus"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.13",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.20",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.18",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.3.7",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e3377c295d3dd11293b6a79b8014e80bce473a14",
+            "comment": "chore: Add bundle size fixtures for react-table"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 21:51:24 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

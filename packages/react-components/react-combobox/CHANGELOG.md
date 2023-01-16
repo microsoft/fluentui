@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 09 Jan 2023 21:51:23 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2023 08:38:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.23)
+
+Mon, 16 Jan 2023 08:38:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.22..@fluentui/react-combobox_v9.0.0-beta.23)
+
+### Changes
+
+- fix: add aria-owns to combobox and dropdown" ([PR #26246](https://github.com/microsoft/fluentui/pull/26246) by sarah.higley@microsoft.com)
+- fix: button semantics for Combobox chevron, and pointer styles ([PR #26075](https://github.com/microsoft/fluentui/pull/26075) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-portal to v9.1.1 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-positioning to v9.3.8 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.22)
 
