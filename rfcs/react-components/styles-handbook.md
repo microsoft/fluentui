@@ -427,15 +427,15 @@ Styles written for components should follow these rules:
 - base styles should not be duplicated by permutations
 
 ```js
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
+const useBaseClassName = makeResetStyles({
+  display: 'flex',
+  color: tokens.colorNeutralForeground1,
+  padding: '10px',
+});
 const useClasses = makeStyles({
-  base: {
-    display: 'flex',
-    color: tokens.colorNeutralForeground1,
-    ...shorthands.padding('10px'),
-  },
   // ❌ Don't do
   //  "display" & "padding" with the same values are defined in base styles
   primary: {
@@ -452,8 +452,9 @@ const useClasses = makeStyles({
 });
 
 function App(props) {
+  const baseClassName = useBaseClassName();
   const classes = useClasses();
-  const className = mergeClasses(classes.base, props.primary && classes.primary);
+  const className = mergeClasses(baseClassName, props.primary && classes.primary);
 
   /* --- */
 }
@@ -483,10 +484,11 @@ const useClasses = makeStyles({
 ```js
 // ❌ Don't do
 function Component(props) {
+  const baseClassName = useBaseClassName();
   const classes = useClasses();
 
   const classesForFoo = mergeClasses(/* ---- */);
-  const className = mergeClasses(classes.root, classesForFoo, mergeClasses(/* ---- */), mergeClasses(/* ---- */));
+  const className = mergeClasses(baseClassName, classesForFoo, mergeClasses(/* ---- */), mergeClasses(/* ---- */));
 
   /* --- */
 }
@@ -497,10 +499,11 @@ Conditions to apply styles might be complex, in this case consider to extract th
 ```js
 // ✅ Do
 function Component(props) {
+  const baseClassName = useBaseClassName();
   const classes = useClasses();
 
   const conditionForFoo = /* ---- */ true;
-  const className = mergeClasses(classes.root, conditionForFoo && classes.foo /* other condition */);
+  const className = mergeClasses(baseClassName, conditionForFoo && classes.foo /* other condition */);
 
   /* --- */
 }
@@ -515,10 +518,10 @@ Use nested selectors responsibly in styles because they can cause "CSS rule expl
 Use nested selectors when they are combined with pseudo classes:
 
 ```js
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-const useClasses = makeStyles({
+const useBaseClassName = makeResetStyles({
   base: {
     // ✅ Do
     // Shows filled icon on hover
@@ -543,7 +546,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 const useClasses = makeStyles({
-  root: {
+  slotA: {
     backgroundColor: tokens.colorNeutralBackground1,
     // ❌ Don't do
     // You can apply classes directly to that "div"
@@ -553,10 +556,10 @@ const useClasses = makeStyles({
   },
 
   // ✅ Do
-  root: {
+  slotA: {
     backgroundColor: tokens.colorNeutralBackground1,
   },
-  slot: {
+  slotB: {
     color: tokens.colorNeutralForeground1,
   },
 });
@@ -620,29 +623,27 @@ Keep selectors simple to produce reusable CSS rules:
   ```
 
 ```js
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-const useClasses = makeStyles({
-  root: {
-    // ❌ Don't do
-    // Avoid complex selectors i.e. simplify them
-    '> .foo-classname': {
-      '> .bar-classname': {
-        '> .baz-classname': {
-          display: 'flex',
-          alignItems: 'center',
-        },
+// ❌ Don't do
+// Avoid complex selectors i.e. simplify them
+const useBaseClassName = makeResetStyles({
+  '> .foo-classname': {
+    '> .bar-classname': {
+      '> .baz-classname': {
+        display: 'flex',
+        alignItems: 'center',
       },
     },
   },
+});
 
-  // ✅ Do
-  // Apply classes directly to an element
-  baz: {
-    display: 'flex',
-    alignItems: 'center',
-  },
+// ✅ Do
+// Apply classes directly to an element
+const useBaseBazClasses = makeResetStyles({
+  display: 'flex',
+  alignItems: 'center',
 });
 ```
 
@@ -658,19 +659,19 @@ Instead of usage [input pseudo classes][mdn-input-pseudo-classes] in styles, pre
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-const useClasses = makeStyles({
-  root: {
-    color: tokens.colorNeutralForeground1,
-    // ❌ Don't do
-    ':checked': {
-      color: tokens.colorNeutralForeground2,
-    },
+// ❌ Don't do
+const useBaseClassName = makeResetStyles({
+  color: tokens.colorNeutralForeground1,
+  ':checked': {
+    color: tokens.colorNeutralForeground2,
   },
+});
 
-  // ✅ Do
-  root: {
-    color: tokens.colorNeutralForeground1,
-  },
+// ✅ Do
+const useBaseClassName = makeResetStyles({
+  color: tokens.colorNeutralForeground1,
+});
+const useClasses = makeStyles({
   checked: {
     color: tokens.colorNeutralForeground2,
   },
@@ -678,9 +679,11 @@ const useClasses = makeStyles({
 
 function Checkbox(props) {
   const [checked, setChecked] = React.useState();
+
+  const baseClassName = useBaseClassName();
   const classes = useClasses();
 
-  return <input className={mergeClasses(classes.root, checked && classes.checked)} checked={checked} />;
+  return <input className={mergeClasses(baseClassName, checked && classes.checked)} checked={checked} />;
 }
 ```
 
