@@ -5,6 +5,7 @@ import {
   presenceAvailableRegular,
   presenceAwayFilled,
   presenceBusyFilled,
+  presenceBlockedRegular,
   presenceDndFilled,
   presenceDndRegular,
   presenceOfflineRegular,
@@ -20,6 +21,8 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
       return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
     case 'away':
       return outOfOffice ? presenceOfflineRegular[size] : presenceAwayFilled[size];
+    case 'blocked':
+      return presenceBlockedRegular[size];
     case 'busy':
       return outOfOffice ? presenceUnknownRegular[size] : presenceBusyFilled[size];
     case 'do-not-disturb':
@@ -41,6 +44,7 @@ const DEFAULT_STRINGS = {
   offline: 'offline',
   'do-not-disturb': 'do not disturb',
   unknown: 'unknown',
+  blocked: 'blocked',
 };
 
 /**
