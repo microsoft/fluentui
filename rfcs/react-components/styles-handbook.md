@@ -15,23 +15,23 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
   - [`makeStyles`](#makestyles)
     - [Limitations](#limitations)
   - [`mergeClasses()`](#mergeclasses)
-    - [Do not concatenate classes](#do-not-concatenate-classes)
+    - [⚠️ Only combine classes with `mergeClasses`](#%EF%B8%8F-only-combine-classes-with-mergeclasses)
   - [`makeResetStyles`](#makeresetstyles)
-    - [Hybrid approach](#hybrid-approach)
+    - [Hybrid approach (Using `makeStyles` and `makeResetStyles` together)](#hybrid-approach-using-makestyles-and-makeresetstyles-together)
 - [Advanced](#advanced)
-  - [Understanding selectors complexity](#understanding-selectors-complexity)
+  - [Understanding selector complexity](#understanding-selector-complexity)
 - [Best practices](#best-practices)
   - [Writting styles](#writting-styles)
     - [Use `tokens` over direct colors](#use-tokens-over-direct-colors)
-    - [Avoid duplication in rule definitions](#avoid-duplication-in-rule-definitions)
+    - [Avoid rule duplication](#avoid-rule-duplication)
     - [Avoid `!important`](#avoid-important)
   - [Performance](#performance)
-    - [Avoid nested `mergeClasses` calls](#avoid-nested-mergeclasses-calls)
+    - [Use `mergeClasses` once for an element](#use-mergeclasses-once-for-an-element)
   - [Nested selectors](#nested-selectors)
-    - [Usage with pseudo classes](#usage-with-pseudo-classes)
-    - [Do not use selectors to target elements](#do-not-use-selectors-to-target-elements)
-    - [Do not introduce complicated selectors](#do-not-introduce-complicated-selectors)
-    - [Avoid usage of input pseudo classes](#avoid-usage-of-input-pseudo-classes)
+    - [Use nested selectors with pseudo classes](#use-nested-selectors-with-pseudo-classes)
+    - [Apply classes directly to elements](#apply-classes-directly-to-elements)
+    - [Do not use complicated selectors](#do-not-use-complicated-selectors)
+    - [Avoid input pseudo classes](#avoid-input-pseudo-classes)
   - [RTL styles](#rtl-styles)
     - [Using `@noflip`](#using-noflip)
 
@@ -66,6 +66,8 @@ Griffel uses Atomic CSS to generate classes. In Atomic CSS every property-value 
 [Learn more][griffel-atomic-css] about Atomic CSS.
 
 # APIs
+
+> ⚠️ **Note:** All examples in this document use `@griffel/react` package. However, if you're a Fluent UI consumer please use `@fluentui/react-components` in imports.
 
 ## `makeStyles`
 
