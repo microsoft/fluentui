@@ -18,7 +18,6 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableColumnDefinition,
-  TableRowData,
   createTableColumn,
 } from '@fluentui/react-table';
 
@@ -168,15 +167,13 @@ export const SubtleSelection = () => {
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
-            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-          )}
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
-      <DataGridBody>
-        {({ item, rowId }: TableRowData<Item>) => (
-          <DataGridRow key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>

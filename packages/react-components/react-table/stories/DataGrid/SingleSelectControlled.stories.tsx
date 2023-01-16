@@ -18,7 +18,6 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableColumnDefinition,
-  TableRowData,
   createTableColumn,
   TableRowId,
   DataGridProps,
@@ -175,15 +174,13 @@ export const SingleSelectControlled = () => {
     >
       <DataGridHeader>
         <DataGridRow>
-          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
-            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-          )}
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
-      <DataGridBody>
-        {({ item, rowId }: TableRowData<Item>) => (
-          <DataGridRow key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>

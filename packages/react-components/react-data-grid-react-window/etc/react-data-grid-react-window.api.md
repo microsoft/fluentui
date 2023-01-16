@@ -14,14 +14,14 @@ import * as React_2 from 'react';
 import type { TableRowData } from '@fluentui/react-components/unstable';
 
 // @public
-export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
+export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
 
 // @public
-export type DataGridBodyProps = Omit<DataGridBodyProps_2, 'children'> & {
+export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyProps_2, 'children'> & {
     itemSize: number;
     height: number;
     width?: string | number;
-    children: RowRenderFunction;
+    children: RowRenderFunction<TItem>;
 };
 
 // @public (undocumented)
