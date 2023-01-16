@@ -13,6 +13,7 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
 - [Basics](#basics)
 - [APIs](#apis)
   - [`makeStyles`](#makestyles)
+    - [Limitations](#limitations)
     - [Performance caveat](#performance-caveat)
   - [`mergeClasses()`](#mergeclasses)
     - [⚠️ Only combine classes with `mergeClasses`](#%EF%B8%8F-only-combine-classes-with-mergeclasses)
@@ -67,19 +68,57 @@ Griffel uses Atomic CSS to generate classes. In Atomic CSS every property-value 
 
 # APIs
 
-> ⚠️ **Note:** All examples in this document use `@griffel/react` package. However, if you're a Fluent UI consumer please use `@fluentui/react-components` in imports.
+> 💡 **Note:** All examples in this document use `@griffel/react` package. However, if you're a Fluent UI consumer please use `@fluentui/react-components` in imports.
 
 ## `makeStyles`
 
 `makeStyles` is used to define style permutations in components and is used for style overrides. Returns a [React hook][react-hook] that should be called inside a component:
 
-```jsx
+```js
 import { makeStyles } from '@griffel/react';
 
 const useClasses = makeStyles({
   button: { display: 'flex' },
   icon: { paddingLeft: '5px' },
 });
+```
+
+### Limitations
+
+`makeStyles()` does not support [CSS shorthands][griffel-css-shorthands-support] in styles definitions. However, Griffel provides a set of [`shorthands` functions][griffel-css-shorthands] to mimic them:
+
+```js
+import { makeStyles, shorthands } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    // ❌ This is not supported, TypeScript compiler will throw, styles will not be inserted to DOM
+    padding: '2px 4px 8px 16px',
+    // ✅ Use shorthand functions to avoid writting CSS longhands
+    ...shorthands.padding('2px', '4px', '8px', '16px'),
+  },
+});
+```
+
+> 💡 **Note:** The most of the functions follow syntax in matching CSS properties, but each value should a separate argument:
+
+```js
+// ❌ Will produce wrong results:
+//   {
+//     paddingBottom: "2px 4px"
+//     paddingLeft: "2px 4px"
+//     paddingRight: "2px 4px"
+//     paddingTop: "2px 4px"
+//   }
+shorthands.padding('2px 4px');
+// ✅ Correct output:
+//   {
+//     paddingBottom: "2px"
+//     paddingLeft: "4px"
+//     paddingRight: "4px"
+//     paddingTop: "2px"
+//   }
+shorthands.padding('2px', '4px');
 ```
 
 ### Performance caveat
@@ -759,6 +798,8 @@ In this case automatic flipping is disabled and will produce less CSS: 2 classes
 [griffel-aot]: https://griffel.js.org/react/ahead-of-time-compilation/introduction
 [griffel-atomic-css]: https://griffel.js.org/react/guides/atomic-css
 [griffel-css-extraction]: https://griffel.js.org/react/css-extraction/introduction
+[griffel-css-shorthands]: https://griffel.js.org/react/api/shorthands
+[griffel-css-shorthands-support]: https://griffel.js.org/react/guides/limitations/#css-shorthands-are-not-supported
 [griffel-make-reset-styles]: https://griffel.js.org/react/api/make-reset-styles
 [griffel-merge-classes]: https://griffel.js.org/react/api/merge-classes
 [griffel-recalc-performance]: https://griffel.js.org/react/guides/atomic-css#recalculation-performance
