@@ -25,13 +25,13 @@ export const useFocusFinders = () => {
   ]);
 
   const findNextFocusable = React.useCallback(
-    (currentElement: HTMLElement, options: Pick<TabsterTypes.FindNextProps, 'container'> = {}) =>
+    (currentElement: HTMLElement, options: Pick<TabsterTypes.FindNextProps, 'container'>) =>
       tabster?.focusable.findNext({ currentElement, ...options }),
     [tabster],
   );
 
   const findPrevFocusable = React.useCallback(
-    (currentElement: HTMLElement, options: Pick<TabsterTypes.FindNextProps, 'container'> = {}) =>
+    (currentElement: HTMLElement, options: Pick<TabsterTypes.FindNextProps, 'container'>) =>
       tabster?.focusable.findPrev({ currentElement, ...options }),
     [tabster],
   );
