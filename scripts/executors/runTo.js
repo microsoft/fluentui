@@ -1,37 +1,16 @@
 const { spawnSync } = require('child_process');
 const lernaBin = require.resolve('lerna/cli.js');
-const getAllPackageInfo = require('./getAllPackageInfo');
 const os = require('os');
 
-const argv = process.argv.slice(2);
+const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
 
-if (require.main === module) {
-  // Display a usage message when there are no projects specified
-  if (argv.length < 2) {
-    console.log(`Usage:
-
-  yarn runto <script> <packagename1> [<packagename2> ...] [<args>]
-
-This command runs <script> for all packages up to and including "packagename1" (and "packagename2" etc).
-The package name can be a substring.
-If multiple packages match a pattern, they will all be built (along with their dependencies).
-`);
-
-    process.exit(0);
-  }
-
-  const restIndex = argv.findIndex(arg => arg.startsWith('--'));
-  const script = argv[0];
-  const projects = restIndex === -1 ? argv.slice(1) : argv.slice(1, restIndex);
-  const rest = restIndex === -1 ? [] : argv.slice(argv[restIndex] === '--' ? restIndex + 1 : restIndex);
-
-  runTo(script, projects, rest);
-}
+const isExecutedFromCli = require.main === module;
 
 /**
  * @param {string} script - Script to run
  * @param {string[]} projects - Projects to run in
  * @param {string[]} rest - Args to pass on
+ * @returns {void}
  */
 function runTo(script, projects, rest) {
   // This script matches substrings of the input for one more many projects
@@ -91,4 +70,32 @@ function runTo(script, projects, rest) {
   }
 }
 
-module.exports = runTo;
+function main() {
+  const argv = process.argv.slice(2);
+  // Display a usage message when there are no projects specified
+  if (argv.length < 2) {
+    console.log(`Usage:
+
+  yarn runto <script> <packagename1> [<packagename2> ...] [<args>]
+
+This command runs <script> for all packages up to and including "packagename1" (and "packagename2" etc).
+The package name can be a substring.
+If multiple packages match a pattern, they will all be built (along with their dependencies).
+`);
+
+    process.exit(0);
+  }
+
+  const restIndex = argv.findIndex(arg => arg.startsWith('--'));
+  const script = argv[0];
+  const projects = restIndex === -1 ? argv.slice(1) : argv.slice(1, restIndex);
+  const rest = restIndex === -1 ? [] : argv.slice(argv[restIndex] === '--' ? restIndex + 1 : restIndex);
+
+  runTo(script, projects, rest);
+}
+
+if (isExecutedFromCli) {
+  main();
+}
+
+exports.runTo = runTo;

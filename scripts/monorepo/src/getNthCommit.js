@@ -1,4 +1,4 @@
-const execSync = require('child_process').execSync;
+const { execSync } = require('child_process');
 
 /**
  * Returns SHA for the nth commit from a reference descending from the latest commit
@@ -12,4 +12,4 @@ function getNthCommit(n = 1, ref = 'HEAD') {
   return commitSha;
 }
 
-module.exports = getNthCommit;
+exports.getNthCommit = getNthCommit;

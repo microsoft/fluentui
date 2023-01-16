@@ -1,5 +1,4 @@
-const getAffectedPackages = require('./getAffectedPackages');
-const getNthCommit = require('./getNthCommit');
+const { getAffectedPackages, getNthCommit } = require('@fluentui/scripts-monorepo');
 const yargs = require('yargs');
 
 const args = yargs
@@ -39,8 +38,12 @@ const isPackageAffected = () => {
   return false;
 };
 
-/**
- * In order for pipeline to capture and save the return value from a node script,
- * the output needs to be printed.
- */
-console.log(isPackageAffected());
+function main() {
+  /**
+   * In order for pipeline to capture and save the return value from a node script,
+   * the output needs to be printed.
+   */
+  console.log(isPackageAffected());
+}
+
+main();

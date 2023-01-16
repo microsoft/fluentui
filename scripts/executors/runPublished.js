@@ -1,6 +1,6 @@
 const { spawnSync } = require('child_process');
-const getAllPackageInfo = require('./getAllPackageInfo');
-const isConvergedPackage = require('./isConvergedPackage');
+
+const { getAllPackageInfo, isConvergedPackage } = require('@fluentui/scripts-monorepo');
 const lageBin = require.resolve('lage/bin/lage.js');
 
 /**
